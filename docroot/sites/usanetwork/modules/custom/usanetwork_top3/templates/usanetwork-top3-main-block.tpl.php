@@ -6,7 +6,9 @@
   <div class="slider-wrapper">
     <?php foreach ($slides as $key => $slide) : ?>
       <div class="slide">
-        <div class="play-button"></div>
+        <?php if (!empty($slide['video'])): ?>
+          <div class="play-button"></div>
+        <?php endif; ?>
         <div class="slide-content">
           <div class="slide-content-inner" data-slide-id="<?php print $key; ?>" data-fid="<?php print $slide['fid']; ?>">
             <?php if (!empty($slide['image'])) : ?>
@@ -18,11 +20,12 @@
               <div class="title"><?php print $slide['title']; ?></div>
             <?php endif; ?>
           </div>
-          <div class="video-wrapper hide-block"
-                 data-src="//player.theplatform.com/p/HNK2IC/dd_usa_vod_noauth/embed/select/EJIlKSvvTE19?autoPlay=true">
+          <?php if (!empty($slide['video'])): ?>
+            <div class="video-wrapper hide-block"
+                 data-src="<?php print $slide['video']; ?>">
               <div class="fix-drag"></div>
             </div>
-<!--            <div class="video-wrapper hide-block --><?php //($slide['is_video']) ? print 'is-video' : FALSE; ?><!--"></div>-->
+          <?php endif; ?>
         </div>
       </div>
     <?php endforeach; ?>

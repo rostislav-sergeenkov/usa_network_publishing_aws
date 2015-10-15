@@ -10,9 +10,9 @@ include_once 'usanetwork_top3.features.inc';
  * Implements hook_menu().
  */
 function usanetwork_top3_menu() {
-  $items['top3_create_url/%/%/%/%'] = array(
+  $items['ajax/top3_create_url'] = array(
     'page callback' => '_usanetwork_top3_create_url',
-    'page arguments' => array(1, 2, 3, 4),
+    'page arguments' => array(),
     'access arguments' => array('access content'),
   );
   return $items;
@@ -80,6 +80,9 @@ function usanetwork_top3_theme($existing, $type, $theme, $path) {
   return $themes;
 }
 
+/*
+ * Main block for TOP3 Page
+ */
 function _usanetwork_top3_main_block() {
   if (path_is_admin(current_path())) {
     return '';
@@ -141,6 +144,9 @@ function _usanetwork_top3_main_block() {
   }
 }
 
+/*
+ * Implements hook_preprocess_block
+ */
 function usanetwork_top3_preprocess_block(&$vars) {
   if ($vars['block']->delta == 'usanetwork_top3_main_block') {
     $node = menu_get_object('node');
@@ -155,7 +161,28 @@ function usanetwork_top3_preprocess_block(&$vars) {
   }
 }
 
-function _usanetwork_top3_create_url($nid, $first, $second, $third) {
+/*
+ * Callbacl for ajax call
+ */
+function _usanetwork_top3_create_url() {
+  if (!empty($_POST['galleryNid']) && !empty($_POST['firstFid']) && !empty($_POST['secondFid']) && !empty($_POST['thirdFid']) && !empty($_POST['imageSrc'])) {
+    $data = $_POST['imageSrc'];
 
-  return url('node/' . $nid, array('query' => array('shared' => $first . '|' .  $second . '|' . $third)));
+    $new_folder = 'public://top3_shared/';
+    $is_writable = file_prepare_directory($new_folder, FILE_CREATE_DIRECTORY);
+
+    if ($is_writable) {
+      $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data));
+      $filename = 'image' . $_POST['firstFid'] . $_POST['secondFid'] . $_POST['thirdFid'];
+      $image_uri = 'public://top3_shared/' . $filename . '.png';
+      $isCreated = file_put_contents($image_uri, $data);
+
+      if ($isCreated) {
+        $image_url = file_create_url($image_uri);
+      }
+    }
+
+    $url = url('node/' . $_POST['galleryNid'], array('query' => array('shared' => $_POST['firstFid'] . '|' . $_POST['secondFid'] . '|' . $_POST['thirdFid'])));
+    return json_encode(array('url' => $url, 'image_url' => $image_url));
+  }
 }

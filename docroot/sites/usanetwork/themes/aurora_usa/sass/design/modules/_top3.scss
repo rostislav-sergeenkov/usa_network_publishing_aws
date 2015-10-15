@@ -16,6 +16,13 @@
   @include breakpoint($bp-1024-width) {
     padding: 0 get-vw(10px, 768) 0;
   }
+  &.shared-screen {
+    padding: 0;
+    & > .content {
+      max-width: none;
+      padding: 0;
+    }
+  }
   & > .content {
     @include clear();
     height: auto;
@@ -1344,13 +1351,23 @@
     transform: scale3d(1,1,1);
   }
   #shared-container {
+    padding: get-vw(80px, 1901) 0 get-vw(227px, 1901);
+    @include breakpoint($bp-min-1901-width) {
+      padding: 80px 0 227px;
+    }
+    @include breakpoint($bp-1024-width) {
+      padding: get-vw(80px, 768) 0 300px;
+    }
     .choose-top3-img {
       height: auto;
-      margin: 0 auto;
+      margin: 0 auto get-vw(60px, 1901);
       position: relative;
       text-align: center;
       text-transform: uppercase;
       width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        margin: 0 auto 60px;
+      }
       .top-choose-top3 {
         display: inline-block;
         font-family: $avalon-xlight;
@@ -1431,18 +1448,43 @@
       @include breakpoint($bp-min-1901-width) {
         padding: 30px 0;
       }
+      @include breakpoint($bp-1024-width) {
+        padding: 0;
+      }
+      .chosen-items-inner {
+        max-width: 1606px;
+        margin: 0 auto;
+        position: relative;
+        width: calc(68.8vw + 300px);
+        @include breakpoint($bp-1024-width) {
+          padding: get-vw(20px, 1024) get-vw(33px, 1024);
+          @include clear();
+        }
+      }
       .chosen-items-block-wrapper {
         float: left;
         height: get-vw(451px, 1901);
-        margin-right: get-vw(100px, 1901);
         width: get-vw(1216px, 1901);
         @include breakpoint($bp-min-1901-width) {
           height: 451px;
-          margin-right: 100px;
           width: 1216px;
         }
+        @include breakpoint($bp-1024-width) {
+          float: none;
+          height: auto;
+          width: 100%;
+        }
         .title {
+          bottom: 8%;
+          color: white;
+          display: block;
+          font-family: $avalon-medium;
+          left: auto;
+          line-height: 1.2;
           position: absolute;
+          text-align: center;
+          top: auto;
+          width: 100%;
         }
         .first, .second, .third {
           &:before {
@@ -1491,6 +1533,10 @@
           float: left;
           position: relative;
           width: 66%;
+          @include breakpoint($bp-1024-width) {
+            float: none;
+            width: 100%;
+          }
           &:before {
             border-top-width: get-vw(250px, 1901);
             border-left-width: get-vw(269px, 1901);
@@ -1522,15 +1568,50 @@
               width: get-vw(127.8px, 1024);
             }
           }
+          .title {
+            font-size: get-vw(48px, 1901);
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 48px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: get-vw(36.74px, 1024);
+            }
+          }
         }
         .second {
+          position: relative;
+          @include breakpoint($bp-1024-width) {
+            float: left;
+          }
           &:after {
             content: '2';
           }
         }
         .third {
+          bottom: 0;
+          position: absolute;
+          @include breakpoint($bp-1024-width) {
+            bottom: auto;
+            float: right;
+            position: relative;
+          }
           &:after {
             content: '3';
+          }
+        }
+        .second, .third {
+          width: 100%;
+          @include breakpoint($bp-1024-width) {
+            width: 49%;
+          }
+          .title {
+            font-size: get-vw(24px, 1901);
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 24px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: get-vw(18.37px, 1024);
+            }
           }
         }
         .img-wrap {
@@ -1538,20 +1619,30 @@
           height: 100%;
           position: relative;
           width: 32%;
-          .third {
-            bottom: 0;
-            position: absolute;
+          @include breakpoint($bp-1024-width) {
+            @include clear();
+            float: none;
+            height: auto;
+            margin-top: 2%;
+            width: 100%;
           }
         }
       }
       .advert {
         background: grey;
-        float: left;
+        float: right;
         height: 250px;
         margin: calc((23.72435vw - 250px)/2) auto 0;
         width: 300px;
         @include breakpoint($bp-min-1901-width) {
           margin: 100.5px 0 0;
+        }
+        @include breakpoint($bp-1024-width) {
+          float: none;
+          left: 50%;
+          margin: 0 0 0 -150px;
+          position: absolute;
+          top: calc(100% + 25px);
         }
       }
     }

@@ -30,25 +30,6 @@
         nextArrow = sliderContainer.find('.next'),
         prevArrow = sliderContainer.find('.prev');
 
-    sharebar = new Object();
-    sharebar.gigyaSharebar = {
-      containerID: "gigya-share-top3",
-      iconsOnly: true,
-      layout: "horizontal",
-      shareButtons: "facebook, twitter, tumblr, email",
-      shortURLs: "never",
-      showCounts: "none"
-    };
-
-    var url = window.location.href.split('#')[0];
-    sharebar.gigyaSharebar.ua = {
-      description: 'Test Usanetwork TOP3',
-      imageBhev: "url",
-      imageUrl: '',
-      linkBack: url,
-      title: 'USA Network Live TV Streaming'
-    };
-
     function infoOpen() {
       $('#info').hide();
       $('.control-button').hide();
@@ -648,6 +629,24 @@
                             },
                             success: function (data) {
                               console.info(data);
+                              sharebar = new Object();
+                              sharebar.gigyaSharebar = {
+                                containerID: "gigya-share-top3",
+                                iconsOnly: true,
+                                layout: "horizontal",
+                                shareButtons: "facebook, twitter, tumblr, email",
+                                shortURLs: "never",
+                                showCounts: "none"
+                              };
+
+                              var url = window.location.href.split('#')[0];
+                              sharebar.gigyaSharebar.ua = {
+                                description: 'Usanetwork TOP3',
+                                imageBhev: "url",
+                                imageUrl: '',
+                                linkBack: url,
+                                title: 'USA Network Live TV Streaming'
+                              };
                               if (typeof Drupal.gigya.showSharebar == 'function') {
                                 Drupal.gigya.showSharebar(sharebar);
                               }

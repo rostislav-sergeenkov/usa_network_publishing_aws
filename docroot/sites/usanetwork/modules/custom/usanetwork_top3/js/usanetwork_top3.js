@@ -566,6 +566,10 @@
                 var ctx = canvas.getContext('2d');
                 var image = new Image();
                 image.src = ctx['canvas'].toDataURL("image/png");
+                ctx['canvas'].height = 169;
+                ctx['canvas'].width = 300;
+                ctx.drawImage(image, 0, 0, 300, 169);
+                image.src = ctx['canvas'].toDataURL("image/png");
                 return image;
               }
 
@@ -624,10 +628,37 @@
                       html2canvas(shareBlock, {
                         onrendered: function(canvas) {
                           imgShare.append(convertCanvasToImage(canvas));
-                          $('.load-more-loader').remove();
-                          if (typeof Drupal.gigya.showSharebar == 'function') {
-                            Drupal.gigya.showSharebar(sharebar);
-                          }
+                          var galleryNid = $('#slider-container').attr('data-nid'),
+                              firstFid = $('#share-block .first .slide-content-inner').attr('data-fid'),
+                              secondFid = $('#share-block .second .slide-content-inner').attr('data-fid'),
+                              thirdFid = $('#share-block .third .slide-content-inner').attr('data-fid'),
+                              imageSrc = imgShare.find('img').attr('src');
+                          var serviceUrl = '/ajax/top3_create_url';
+                          console.info(serviceUrl);
+                          $.ajax({
+                            type: 'POST',
+                            url: serviceUrl,
+                            dataType: 'json',
+                            data: {
+                              galleryNid: galleryNid,
+                              firstFid: firstFid,
+                              secondFid: secondFid,
+                              thirdFid: thirdFid,
+                              imageSrc: imageSrc
+                            },
+                            success: function (data) {
+                              console.info(data);
+                              if (typeof Drupal.gigya.showSharebar == 'function') {
+                                Drupal.gigya.showSharebar(sharebar);
+                              }
+                              $('.load-more-loader').remove();
+                            },
+                            error: function () {
+                              console.info('error');
+                              $('.load-more-loader').remove();
+                            }
+                          });
+
                         }
                       });
                     });

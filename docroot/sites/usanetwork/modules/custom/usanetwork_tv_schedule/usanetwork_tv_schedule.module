@@ -879,7 +879,7 @@ function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {
 
             if (!empty($cover_image_field)) {
               $entity_image_fid = reset($cover_image_field[0]);
-              break;
+              break 2;
             }
 
             break;

@@ -30580,6 +30580,9 @@ body.blog .view-display-id-blog_content .views-row {
     font-size: 3.58789vw;
   }
 }
+#block-usanetwork-top3-usanetwork-top3-main-block #share-block .second, #block-usanetwork-top3-usanetwork-top3-main-block #share-block .third {
+  width: 100%;
+}
 #block-usanetwork-top3-usanetwork-top3-main-block #share-block .second .title, #block-usanetwork-top3-usanetwork-top3-main-block #share-block .third .title {
   font-size: 1.26249vw;
 }

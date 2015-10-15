@@ -1026,6 +1026,7 @@
       }
     }
     .second, .third {
+      width: 100%;
       .title {
         font-size: get-vw(24px, 1901);
         @include breakpoint($bp-min-1901-width) {

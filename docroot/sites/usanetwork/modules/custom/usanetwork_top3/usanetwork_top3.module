@@ -157,6 +157,11 @@ function usanetwork_top3_preprocess_block(&$vars) {
         $background = file_create_url($background_image['uri']);
         $vars['attributes_array']['style'][] = 'background: url(' . $background . ') repeat';
       }
+
+      $query_params = drupal_get_query_parameters();
+      if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
+        $vars['classes_array'][] = 'shared-screen';
+      }
     }
   }
 }
@@ -183,6 +188,6 @@ function _usanetwork_top3_create_url() {
     }
 
     $url = url('node/' . $_POST['galleryNid'], array('query' => array('shared' => $_POST['firstFid'] . '|' . $_POST['secondFid'] . '|' . $_POST['thirdFid'])));
-    return json_encode(array('url' => $url, 'image_url' => $image_url));
+    return drupal_json_output(array('url' => $url, 'image_url' => $image_url));
   }
 }

@@ -566,6 +566,10 @@
                 var ctx = canvas.getContext('2d');
                 var image = new Image();
                 image.src = ctx['canvas'].toDataURL("image/png");
+                ctx['canvas'].height = 169;
+                ctx['canvas'].width = 300;
+                ctx.drawImage(image, 0, 0, 300, 169);
+                image.src = ctx['canvas'].toDataURL("image/png");
                 return image;
               }
 
@@ -624,10 +628,25 @@
                       html2canvas(shareBlock, {
                         onrendered: function(canvas) {
                           imgShare.append(convertCanvasToImage(canvas));
-                          $('.load-more-loader').remove();
-                          if (typeof Drupal.gigya.showSharebar == 'function') {
-                            Drupal.gigya.showSharebar(sharebar);
-                          }
+                          var showNid = $('#slider-container').attr('data-nid');
+                          var serviceUrl = '/ajax/top3_create_url/' + showNid + '/' + Drupal.settings.newSeasonNumber;
+                          $.ajax({
+                            type: 'GET',
+                            url: serviceUrl,
+                            dataType: 'json',
+                            success: function (data) {
+
+
+                              if (typeof Drupal.gigya.showSharebar == 'function') {
+                                Drupal.gigya.showSharebar(sharebar);
+                              }
+                              $('.load-more-loader').remove();
+                            },
+                            error: function () {
+                              console.info('error');
+                            }
+                          });
+
                         }
                       });
                     });

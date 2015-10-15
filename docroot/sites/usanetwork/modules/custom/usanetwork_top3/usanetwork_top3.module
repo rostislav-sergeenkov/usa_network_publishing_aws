@@ -93,21 +93,36 @@ function _usanetwork_top3_main_block() {
     return '';
   }
 
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $logo_image = $node_wrapper->field_logo->value();
+  if (!empty($logo_image)) {
+    $logo = file_create_url($logo_image['uri']);
+  }
+
   $query_params = drupal_get_query_parameters();
   if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
     if (isset($query_params['shared']) && isset($query_params['node'])) {
       $shared_fids = explode('|', $query_params['shared']);
       $shared_files = file_load_multiple($shared_fids);
+      $slides = array();
+      foreach ($shared_files as $shared_file) {
+        list($title, $video_image) = _usanetwork_top3_get_title_and_image($node, $shared_file);
+        $slides[] = array(
+          'title' => !empty($title) ? $title : NULL,
+          'image' => !empty($video_image) ? image_style_url('2880x1620', $video_image) : NULL,
+//          'video' => isset($video) ? $video : NULL,
+        );
+      }
     }
-    return theme('usanetwork_top3_shared', array());
+    $theme_variables = array(
+      'slides' => $slides,
+      'logo' => isset($logo) ? $logo : NULL,
+      'node_path' => url('node/' . $node->nid),
+    );
+
+    return theme('usanetwork_top3_shared', $theme_variables);
   }
   else {
-    $node_wrapper = entity_metadata_wrapper('node', $node);
-    $logo_image = $node_wrapper->field_logo->value();
-    if (!empty($logo_image)) {
-      $logo = file_create_url($logo_image['uri']);
-    }
-
     $slides = array();
     if (!empty($node->field_slides_content)) {
       foreach ($node_wrapper->field_slides_content->getIterator() as $delta => $slide_item) {
@@ -119,7 +134,6 @@ function _usanetwork_top3_main_block() {
         else {
           $slide_image_url = $slide_image['uri'];
         }
-
         if (!empty($slide_video)) {
           $fid = $slide_video->fid;
           $video = _usanetwork_mpx_video_get_player_src(array(
@@ -148,6 +162,31 @@ function _usanetwork_top3_main_block() {
     return theme('usanetwork_top3_main_block', $theme_variables);
   }
 }
+
+function _usanetwork_top3_get_title_and_image($node, $shared_file) {
+  $db_select = db_select('field_data_field_slides_content', 'slides_content');
+  $db_select->condition('slides_content.entity_id', $node->nid);
+
+  if ($shared_file->filemime == 'image/png') {
+    $db_select->leftJoin('field_data_field_top3_image', 'top3_image', 'top3_image.entity_id=slides_content.field_slides_content_value');
+    $db_select->condition('top3_image.field_top3_image_fid', $shared_file->fid);
+  } else {
+    $db_select->join('field_data_field_top3_video', 'top3_video', 'top3_video.entity_id=slides_content.field_slides_content_value');
+    $db_select->condition('top3_video.field_top3_video_target_id', $shared_file->fid);
+    $db_select->leftJoin('field_data_field_top3_image', 'top3_image', 'top3_image.entity_id=slides_content.field_slides_content_value');
+    $db_select->addField('top3_image', 'field_top3_image_fid', 'slide_image');
+  }
+  $db_select->leftJoin('field_data_field_episodic_1_title', 'top3_title', 'top3_title.entity_id=slides_content.field_slides_content_value');
+  $db_select->addField('top3_title', 'field_episodic_1_title_value', 'slide_title');
+  $result = $db_select->execute()->fetchObject();
+
+  if ($result) {
+    return array(isset($result->slide_title) ? $result->slide_title : NULL, isset($result->slide_image) ? $result->slide_image : NULL);
+  } else {
+    return NULL;
+  }
+}
+
 
 /*
  * Implements hook_preprocess_block

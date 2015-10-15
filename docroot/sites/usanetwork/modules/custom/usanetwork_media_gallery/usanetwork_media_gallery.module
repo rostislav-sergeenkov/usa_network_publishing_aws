@@ -348,9 +348,12 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       $block_title = '';
       $galleries_list = _usanetwork_media_gallery_get_multiple_show_galleries();
     }
-    else {
+    elseif (!usanetwork_core_api_is_related_with_tv_content($node)) {
       $block_title = '';
       $galleries_list = _usanetwork_media_gallery_get_multiple_show_galleries();
+    }
+    else {
+      return '';
     }
     $rendered_items = array();
     foreach ($galleries_list as $gallery_item) {
@@ -936,7 +939,7 @@ function _usanetwork_media_gallery_is_multiple($gallery) {
     $gallery = node_load($gallery);
   }
 
-  if (!empty($gallery->field_multiple_show)) {
+  if (usanetwork_core_api_check_field($gallery, 'field_multiple_show', 'node')) {
     $gallery_wrapper = entity_metadata_wrapper('node', $gallery);
     return $gallery_wrapper->field_multiple_show;
   } else {
@@ -982,7 +985,7 @@ function usanetwork_media_gallery_metatag_pattern_alter(&$pattern, &$types, $tag
   if (isset($types['node']) && 'media_gallery' == $types['node']->type && 'og:title' == $tag_name) {
     $node = $types['node'];
     $is_multiple_gallery = _usanetwork_media_gallery_is_multiple($node);
-    $is_show_related = usanetwork_core_api_is_related_with_show($node);
+    $is_show_related = usanetwork_core_api_is_related_with_tv_content($node);
     if (!$is_show_related || $is_multiple_gallery) {
       $pattern = '[node:title] | Photo Galleries | [site:name]';
     }

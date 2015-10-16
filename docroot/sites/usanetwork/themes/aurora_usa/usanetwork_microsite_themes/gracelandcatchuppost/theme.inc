@@ -211,6 +211,7 @@ function usanetwork_microsite_gracelandcatchuppost_get_theme_registry_variables(
 function usanetwork_microsite_gracelandcatchuppost_get_theme_includes() {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   $site_theme_path = $theme_path . '/usanetwork_microsite_themes/gracelandcatchuppost';
+  $default_theme_path = $theme_path . '/usanetwork_microsite_themes/default';
   $module_path = drupal_get_path('module', 'usanetwork_microsite');
   $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
 
@@ -236,7 +237,7 @@ function usanetwork_microsite_gracelandcatchuppost_get_theme_includes() {
       $site_theme_path . '/js/ms_global.js',
       $site_theme_path . '/js/ms_videos.js',
       $site_theme_path . '/js/ms_characters.js',
-      $site_theme_path . '/js/ms_quizzes.js',
+      $default_theme_path . '/js/ms_quizzes.js',
 //      $site_theme_path . '/js/date.js',
 //      $site_theme_path . '/js/counter.rf.js',
       $site_theme_path . '/js/ms_video_endcard.js',

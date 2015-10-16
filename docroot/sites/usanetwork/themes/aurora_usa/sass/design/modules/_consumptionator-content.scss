@@ -169,6 +169,12 @@
       @include breakpoint($bp-1280-width) {
         display: none;
       }
+      &.no-all-link {
+        height: calc(100% - 45px);
+        @include breakpoint($bp-min-1901-width) {
+          height: calc(100% - 70px);
+        }
+      }
       ul, .bx-viewport, .bx-wrapper {
         height: 100%!important;
       }

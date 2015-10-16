@@ -563,6 +563,9 @@
 }
 #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
   .episode-landing-list-item {
+    @include breakpoint($between-641-768) {
+      min-height: 31vw;
+    }
     &.active {
       .episode-landing-info-block {
         .title {
@@ -576,6 +579,11 @@
         @include breakpoint($bp-640-width) {
           margin-bottom: 20px;
         }
+      }
+    }
+    .episode-landing-info-block {
+      @include breakpoint($between-641-768) {
+        min-height: 0;
       }
     }
     .buttons-bar {

@@ -11,52 +11,6 @@ function usanetwork_mpx_video_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
-  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'usa_global_mpx_videos';
-  $context->description = '';
-  $context->tag = 'videos page';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'videos' => 'videos',
-        'videos/*' => 'videos/*',
-        '~videos/live' => '~videos/live',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'system-main' => array(
-          'module' => 'system',
-          'delta' => 'main',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
-        'usanetwork_mpx_video-usa_global_mpx_video_nav' => array(
-          'module' => 'usanetwork_mpx_video',
-          'delta' => 'usa_global_mpx_video_nav',
-          'region' => 'content',
-          'weight' => '-9',
-        ),
-        'usanetwork_mpx_video-usa_mpx_video_views' => array(
-          'module' => 'usanetwork_mpx_video',
-          'delta' => 'usa_mpx_video_views',
-          'region' => 'content',
-          'weight' => '-8',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('videos page');
-  $export['usa_global_mpx_videos'] = $context;
-
-  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'usa_mpx_videos_live';

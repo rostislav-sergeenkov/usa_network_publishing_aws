@@ -133,4 +133,4 @@ $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mr
 <? */ ?>
 </div>
 
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>
+<div id="ms-characters-leaderboard-ad" class="midbanner ad-leaderboard"></div>

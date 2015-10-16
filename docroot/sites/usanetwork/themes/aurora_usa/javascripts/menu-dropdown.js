@@ -365,8 +365,6 @@
 
         showTitleMove();
         showMenuMove();
-        //temporary hard code
-        $(".tab .no-refresh[href^='/movies']").removeClass('no-refresh active');
 
         $(".tab .no-refresh").removeClass('active').bind('click', tabNavHandler);
         $(".main-menu-open a").bind('click', menuOpenHandler);

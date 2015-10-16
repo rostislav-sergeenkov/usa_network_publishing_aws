@@ -174,6 +174,19 @@
         //Drupal.behaviors.omniture_tracking.newPageView(name);
 
         if (typeof s_gi != 'undefined') {
+
+          if($('body').hasClass('node-type-tv-episode')) {
+            if (Drupal.settings.umbel_settings !== undefined) {
+              var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
+                  pageName = Drupal.settings.umbel_settings.usa_umbel_param_2;
+            }
+
+            s.linkTrackVars = 'events,prop3,prop4,prop5';
+            s.prop3 = 'Gallery';
+            s.prop4 = showName.trim() + ' : ' + pageName.trim();
+            s.prop5 = 'Episodic Gallery';
+          }
+
           void (s.t());
         }
       },

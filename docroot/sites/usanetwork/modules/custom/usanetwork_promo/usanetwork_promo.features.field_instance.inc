@@ -91,6 +91,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -197,6 +199,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Creating date overriding',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -301,6 +305,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -398,6 +404,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -504,6 +512,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -611,6 +621,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -718,6 +730,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -825,6 +839,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -931,6 +947,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Creating date overriding',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -1035,6 +1053,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1132,6 +1152,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1238,6 +1260,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1345,6 +1369,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1452,6 +1478,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1535,6 +1563,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1603,6 +1633,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1690,6 +1722,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Creating date overriding',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -1776,6 +1810,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1852,6 +1888,8 @@ function usanetwork_promo_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1951,6 +1989,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2033,6 +2073,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2115,6 +2157,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2197,6 +2241,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2297,6 +2343,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2325,6 +2373,8 @@ function usanetwork_promo_field_default_field_instances() {
   // Exported field_instance: 'node-media_gallery-field_promo_created_ovts'
   $field_instances['node-media_gallery-field_promo_created_ovts'] = array(
     'bundle' => 'media_gallery',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -2399,9 +2449,11 @@ function usanetwork_promo_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -2506,6 +2558,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2597,6 +2651,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2697,6 +2753,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2797,6 +2855,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2897,6 +2957,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2984,6 +3046,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3070,6 +3134,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Creating date overriding',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -3161,6 +3227,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3239,6 +3307,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3326,6 +3396,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3413,6 +3485,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3500,6 +3574,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3576,6 +3652,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3657,6 +3735,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Creating date overriding',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -3737,6 +3817,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3804,6 +3886,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3880,6 +3964,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3956,6 +4042,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -4032,6 +4120,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -4088,6 +4178,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Creating date overriding',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -4149,6 +4241,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -4222,6 +4316,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -4309,6 +4405,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Creating date overriding',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -4395,6 +4493,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -4468,6 +4568,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -4550,6 +4652,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -4632,6 +4736,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -4714,6 +4820,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -4815,6 +4923,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -4895,6 +5005,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Explore Tag',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -4982,6 +5094,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Hide Meta Text Bar (image overlay)',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -5066,6 +5180,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Movie',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -5148,6 +5264,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Associated Content',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -5239,6 +5357,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Associated video',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -5335,6 +5455,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -5431,6 +5553,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Creating date overriding',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -5529,6 +5653,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -5617,6 +5743,8 @@ function usanetwork_promo_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -5743,6 +5871,8 @@ function usanetwork_promo_field_default_field_instances() {
         'target' => 'default',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -5839,6 +5969,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -5960,6 +6092,8 @@ function usanetwork_promo_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => 'promo_regular',
       'file_extensions' => 'png gif jpg jpeg',
@@ -6076,6 +6210,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Text Line 1',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -6171,6 +6307,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Wide Image Text Line 1 override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6269,6 +6407,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Text Line 2',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -6364,6 +6504,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Wide Image Text Line 2 override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6455,6 +6597,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6549,6 +6693,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6643,6 +6789,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6743,6 +6891,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -6832,6 +6982,8 @@ function usanetwork_promo_field_default_field_instances() {
     'label' => 'Target',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -6850,6 +7002,7 @@ function usanetwork_promo_field_default_field_instances() {
   t('Associated video');
   t('Call to Action Text');
   t('Call to Action Type');
+  t('Created date override');
   t('Creating date overriding');
   t('Description');
   t('Enable this checkbox if you want to exclude this content from "Related content" block of TV Show and Consumptionator pages.');

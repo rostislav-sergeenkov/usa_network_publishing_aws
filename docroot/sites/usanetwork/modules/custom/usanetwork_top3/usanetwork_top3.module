@@ -275,7 +275,7 @@ function _usanetwork_top3_create_url() {
       }
     }
 
-    $url = url('node/' . $_POST['galleryNid'], array('query' => array('shared' => $_POST['firstFid'] . '|' . $_POST['secondFid'] . '|' . $_POST['thirdFid'])));
+    $url = url('node/' . $_POST['galleryNid'], array('query' => array('shared' => $_POST['firstFid'] . '|' . $_POST['secondFid'] . '|' . $_POST['thirdFid'], 'node' => $_POST['galleryNid'])));
     return drupal_json_output(array('url' => $url, 'image_url' => $image_url));
   }
 }

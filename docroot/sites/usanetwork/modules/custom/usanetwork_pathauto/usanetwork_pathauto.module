@@ -20,6 +20,13 @@ function usanetwork_pathauto_pathauto_alias_alter(&$alias, array &$context) {
         $alias = 'movies/' . $movie_title . '/' . $alias;
       }
     }
+    if ($context['type'] == 'media_gallery') {
+      if (_usanetwork_media_gallery_is_multiple($node)) {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $gallery_title = pathauto_cleanstring($node->title);
+        $alias = 'photos/' . $gallery_title;
+      }
+    }
   }
   if ($context['module'] == 'node' && $context['type'] == 'consumpt_post') {
     $node = $context['data']['node'];

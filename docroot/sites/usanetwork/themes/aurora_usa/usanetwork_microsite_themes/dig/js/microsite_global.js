@@ -3,13 +3,53 @@
  */
 (function ($) {
 
-/*
-  var urlPath = window.location.pathname;
-  var activeSection = 'home';
-  var minWidthForNav = 875;
-  var heightForHomeLogoAnim = 700;
-  var scrollTopForLogoAnim = 200;
-*/
+  /**
+   * DV on Sep 21, 2015: Temporarily adding redirects to existing global functions
+   * This is to allow the default/ms_quizzes.js code to work with Dig.
+   */
+  Drupal.behaviors.ms_global = {
+    // change url address
+    changeUrl: function(anchor, anchorFull) {
+      Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
+    },
+
+    setOmnitureData: function(anchor, itemTitle) {
+      Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
+    },
+
+    create728x90Ad: function(section) {
+      Drupal.behaviors.microsite_scroll.create728x90Ad(section);
+    },
+
+    sendSocialShareOmniture: function($this, title) {
+      title = title || null;
+      var $container = $this.parents('.gig-button-container'),
+          shareType = 'Share',
+          shareTitle = title;
+      if ($container.hasClass('gig-button-container-facebook')) {
+        shareType = 'Facebook';
+      }
+      else if ($container.hasClass('gig-button-container-twitter')) {
+        shareType = 'Twitter';
+      }
+      else if ($container.hasClass('gig-button-container-tumblr')) {
+        shareType = 'Tumblr';
+      }
+      else if ($container.hasClass('gig-button-container-pinterest')) {
+        shareType = 'Pinterest';
+      }
+
+      if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+        s.linkTrackVars = 'events,eVar73,eVar74';
+        s.linkTrackEvents = s.events = 'event41';
+        s.eVar73 = shareTitle;
+        s.eVar74 = shareType;
+        s.tl(this, 'o', 'Social Share');
+        s.manageVars('clearVars', s.linkTrackVars, 1);
+      }
+    }
+  }
+
   Drupal.behaviors.microsite_scroll = {
 
     quoteAnimationTimer: null,

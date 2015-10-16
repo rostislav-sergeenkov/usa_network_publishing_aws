@@ -1,7 +1,7 @@
 <?php
 
 define('USANETWORK_MENU_FULL_EPISODES_NUMBER', 6);
-
+define('USANETWORK_MENU_MOVIES_NUMBER', 6);
 define('USANETWORK_MENU_SHOWS_LANDING_SHOWS_NUMBER', 4);
 include_once 'usanetwork_menu.features.inc';
 
@@ -43,6 +43,15 @@ function usanetwork_menu_menu() {
     'page callback' => 'usanetwork_menu_full_shows_autocomplete',
     'access arguments' => array('administer nodes'),
     'delivery callback' => 'drupal_deliver_html_page',
+    'type' => MENU_CALLBACK,
+  );
+
+  // Movies autocompliter.
+  $items['usanetwork_menu/movies/autocomplete'] = array(
+    'title' => 'Select content',
+    'page callback' => 'usanetwork_menu_movies_autocomplete',
+    'access arguments' => array('administer nodes'),
+    'delivery callback' => 'drupal_json_output',
     'type' => MENU_CALLBACK,
   );
 
@@ -93,6 +102,11 @@ function usanetwork_menu_block_info() {
 
   $blocks['usanetwork_menu_sm_full_episodes'] = array(
     'info' => t('Homepage Menu: Full Episodes'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $blocks['usanetwork_menu_sm_movies'] = array(
+    'info' => t('Homepage Menu: Movies'),
     'cache' => DRUPAL_NO_CACHE,
   );
 
@@ -167,6 +181,11 @@ function usanetwork_menu_block_view($delta = '') {
     case 'usanetwork_menu_sm_full_episodes':
       $block['subject'] = '';
       $block['content'] = _usanetwork_menu_full_episodes_block();
+      break;
+
+    case 'usanetwork_menu_sm_movies':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_menu_movies_block();
       break;
 
     case 'usanetwork_menu_sm_menu':
@@ -275,6 +294,16 @@ function usanetwork_menu_theme() {
         ),
       ),
       'template' => 'templates/usanetwork-menu-full-episodes',
+    ),
+    'usanetwork_menu_movies' => array(
+      'variables' => array(
+        'items' => array(
+          'title' => NULL,
+          'url' => NULL,
+          'image' => NULL,
+        ),
+      ),
+      'template' => 'templates/usanetwork-menu-movies',
     ),
     'usanetwork_menu_aspot_onnow_tonight' => array(
       'variables' => array(
@@ -1149,7 +1178,7 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
     }
     $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
     $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
-    $field = $tv_content_fields[$tv_content_node->type];
+    $field = (!empty($tv_content_node)) ? $tv_content_fields[$tv_content_node->type] : NULL;
     $node_title = !empty($node->title) ? $entity_wrapper->title->value() : NULL;
     $gallery_type = !empty($node->field_gallery_type) ? $entity_wrapper->field_gallery_type->value() : '';
     if (!empty($episode_num) && !empty($season_num)) {
@@ -1162,7 +1191,11 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
     else {
       $title = $node_title;
     }
+    $is_multiple_gallery = _usanetwork_media_gallery_is_multiple($node);
+    $is_show_related = usanetwork_core_api_is_related_with_tv_content($node);
     $theme_variables = array(
+      'is_multilple' => !(empty($is_multiple_gallery)) ? TRUE : FALSE,
+      'is_show_related' => $is_show_related,
       'main_url' => url('<front>'),
       'authbar' => isset($authbar) ? $authbar : NULL,
       'show_url' => !empty($node->{$field}) ? url('node/' . $entity_wrapper->{$field}->value()->nid) : '',
@@ -1410,25 +1443,31 @@ function _usanetwork_menu_consumptionator_block_video($file) {
     $tv_content_node = usanetwork_core_api_get_tv_content_node($file);
     $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
     $field = $tv_content_fields[$tv_content_node->type];
+    $is_show_related = ($tv_content_node->type == 'tv_show') ? TRUE : FALSE;
     $theme_variables = array(
       'sharebar' => usanetwork_menu_render_sharebar($file, 'file', t('Share this video'), $file_wrapper->name->value(), $description),
       'authbar' => !empty($authbar) ? ($authbar) : '',
       'main_url' => url('<front>'),
-      'show_url' => !empty($file->{$field})
-          ? url('node/' . $file_wrapper->{$field}->value()->nid)
-          : '',
-      'show_name' => !empty($file->{$field})
-        ? $file_wrapper->{$field}->value()->title
-        : '',
+      'show_url' => $is_show_related
+          ? (!empty($file->{$field})
+            ? url('node/' . $file_wrapper->{$field}->value()->nid)
+            : '')
+          : url('movies'),
+      'show_name' => $is_show_related
+        ? (!empty($file->{$field})
+          ? $file_wrapper->{$field}->value()->title
+          : '')
+        : t('Movies'),
       'h1' => !empty($file->field_seo_h1) ? $file_wrapper->field_seo_h1->value() : '',
       'episode' => array(
-        'video_type' => !empty($file->field_mpx_full_episode)
-            ? (
-            $file_wrapper->field_mpx_full_episode->value()
+        'is_show_related' => $is_show_related,
+        'video_type' => $is_show_related
+          ? (!empty($file->field_mpx_full_episode)
+            ? ($file_wrapper->field_mpx_full_episode->value()
               ? t('Full Episode')
-              : t('Video')
-            )
-            : '',
+              : t('Video'))
+            : '')
+          : t('Movie'),
         'image_url' => !empty($episode_image_uri)
           ? image_style_url('300x169_video', $episode_image_uri)
           : '',
@@ -1785,6 +1824,26 @@ function usanetwork_menu_shows_autocomplete($title) {
   drupal_json_output($output);
 }
 
+function usanetwork_menu_movies_autocomplete($title) {
+  $query = db_select('node', 'n');
+  $query->fields('n',array('nid', 'title'));
+  $query->condition('n.title', '%' . $title . '%', 'LIKE');
+  $query->condition('n.type', 'movie', '=');
+  $query->condition('n.status', NODE_PUBLISHED, '=');
+  $query->range(0, 10);
+  $result = $query->execute()->fetchAll();
+
+  $output = array();
+  if (!empty($result) && is_array($result)) {
+    foreach($result as $row) {
+      $row->title = check_plain($row->title);
+      $key = $row->title . ' [node:' . $row->nid . ']';
+      $output[$key] = $row->title;
+    }
+  }
+  return $output;
+}
+
 /**
  *  Return shows landing page control form.
  */
@@ -1833,6 +1892,7 @@ function usanetwork_menu_shows_landing_main_form_submit($form, &$form_state) {
  */
 function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
   $header_full_episodes_shows = variable_get('header_full_episodes_shows', array());
+  $header_movies = variable_get('header_movies', array());
 
   $form['header_shows'] = array(
     '#type' => 'fieldset',
@@ -1852,6 +1912,24 @@ function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form
     );
   }
 
+  $form['header_movies'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Movies for Header'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  for ($i = 0; $i < USANETWORK_MENU_MOVIES_NUMBER; $i++) {
+    $form['header_movies']['usa_movie_' . $i] = array(
+      '#type' => 'textfield',
+      '#required' => FALSE,
+      '#default_value' => !empty($header_movies[$i])
+        ? $header_movies[$i]
+        : '',
+      '#autocomplete_path' => 'usanetwork_menu/movies/autocomplete',
+    );
+  }
+
   $form['#submit'][] = 'usanetwork_menu_form_usanetwork_settings_form_submit';
 }
 
@@ -1861,7 +1939,6 @@ function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form
 function usanetwork_menu_form_usanetwork_settings_form_submit(&$form, &$form_state) {
   if (!empty($form_state['values'])) {
     $header_full_episodes_shows = array();
-
     foreach ($form_state['values'] as $value_name => $value) {
       if (strpos($value_name, 'usa_full_episodes_show_') !== FALSE) {
         if (!empty($value)) {
@@ -1869,8 +1946,18 @@ function usanetwork_menu_form_usanetwork_settings_form_submit(&$form, &$form_sta
         }
       }
     }
+
+    $header_movies = array();
+    foreach ($form_state['values'] as $value_name => $value) {
+      if (strpos($value_name, 'usa_movie_') !== FALSE) {
+        if (!empty($value)) {
+          $header_movies[] = $value;
+        }
+      }
+    }
   }
 
+  variable_set('header_movies', $header_movies);
   variable_set('header_full_episodes_shows', $header_full_episodes_shows);
 }
 
@@ -1893,4 +1980,52 @@ function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, 
     return !empty($sharebar) ? render($sharebar) : '';
   }
   return '';
+}
+
+function _usanetwork_menu_movies_block() {
+  $header_movies = variable_get('header_movies', array());
+  $items = array();
+  $movie_nodes = array();
+  if (!empty($header_movies)) {
+    foreach ($header_movies as $needed_show) {
+      if (preg_match("/^(.+)\[node:(\d+)\]$/", $needed_show, $matches)) {
+        $movie_nodes[] = node_load($matches[2]);
+      }
+    }
+  }
+  else {
+    $movie_nodes = _usanetwork_movie_all_movies_get_movies('NOW&CREATED', USANETWORK_MENU_MOVIES_NUMBER);
+  }
+
+  if (!empty($movie_nodes)) {
+    foreach ($movie_nodes as $movie_node) {
+      if (!empty($movie_node) && $movie_node->type == 'movie') {
+        if ($movie_node->status) {
+          $movie_file_data = _usanetwork_movie_has_full_episode($movie_node);
+          $movie_file = file_load($movie_file_data->fid);
+          if (!$movie_file) {
+            continue;
+          }
+          $video_image_path = _usanetwork_mpx_video_get_image_path($movie_file);
+          $video_image = theme('image_style', array(
+            'path' => $video_image_path,
+            'style_name' => 'full_episodes_633x356',
+          ));
+          //$video_image = !empty($cover_media) ? image_style_url('full_episodes_633x356', $cover_media) : NULL;
+          $items_variables = array(
+            'url' => url('file/' . $movie_file->fid),
+            'title' => $movie_node->title,
+            'image' => $video_image,
+          );
+          $items[] = $items_variables;
+        }
+      }
+    }
+  }
+
+  $theme_variables = array(
+    'items' => $items,
+  );
+
+  return theme('usanetwork_menu_movies', $theme_variables);
 }

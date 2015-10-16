@@ -27,7 +27,15 @@ endif;
 ?>
 
 <div id="home-wrapper" class="clearfix">
-  <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>
+  <div id="head-leaderboard" class="ad-leaderboard">
+    <div class="region region-leaderboard">
+      <div id="block-mps-topbanner" class="block block-mps">
+        <div class="content">
+          <div id="topbanner"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="home-content-container">
     <div id="home-logo"><img src="<?php print $themePath; ?>/images/main_title.png" alt="Mr. Robot logo" />
@@ -84,6 +92,11 @@ endif;
 <?php endif; ?>
 
     <?php if (!empty($description)): ?>
+    <?php print $description; ?>
+    <?php endif; ?>
+
+<?php /* ?>
+    <?php if (!empty($description)): ?>
     <div id="home-description" class="section-description"><?php print $description; ?></div>
     <?php endif; ?>
 
@@ -92,14 +105,18 @@ endif;
         <li id="home-nav-binge" class="internal" data-menuanchor="videos"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/binge_btn.png" alt="Binge button" /></div></a><div class="home-button-text">watch from the beginning</div></li>
         <li id="home-nav-must-see-moments" class="internal" data-menuanchor="must-see-moments"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/msmoments_btn.png" alt="Must See Moments button" /></div></a><div class="home-button-text">watch the best scenes</div></li>
         <li id="home-nav-behind-the-scenes" class="internal" data-menuanchor="timeline"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/slideshow_btn.png" alt="Behind the Scenes button" /></div></a><div class="home-button-text">the making of mr. robot</div></li>
+<?php */ ?>
 <? /* ?>
         <li id="home-nav-infographic" class="internal" data-menuanchor="characters"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/meet_the_cast_btn.png" alt="Infographic button" /></div></a><div class="home-button-text">get to know the actors</div></li>
 <? */ ?>
+<?php /* ?>
         <li id="home-nav-infographic" class="internal" data-menuanchor="characters"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/infographic_btn.png" alt="Infographic button" /></div></a><div class="home-button-text">season at a glance</div></li>
         <li id="home-nav-do-not-disturb" class="internal" data-menuanchor="galleries"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/donotdisturb_btn.png" alt="Do Not Disturb button" /></div></a><div class="home-button-text">social graphics</div></li>
         <li id="home-nav-trivia" class="internal" data-menuanchor="quizzes"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/trivia_btn.png" alt="Trivia button" /></div></a><div class="home-button-text">think you know mr. robot?</div></li>
       </ul>
+      <div id="finale-packet"><a href="/mrrobot/blog/mr-robot-blog/mr-robot-finale-viewing-party-pack" target="_blank"><span>Mr. Robot Finale Viewing Party Pack"></span></a></div>
     </div>
+<?php */ ?>
   </div>
 </div>
 

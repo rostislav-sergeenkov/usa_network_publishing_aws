@@ -63,6 +63,11 @@ function usanetwork_movie_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_movies_all_movies_tv'] = array(
+    'info' => t('Movies: All movies TV'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   $blocks['usanetwork_movies_schedule'] = array(
     'info' => t('Movies: Schedule'),
     'cache' => DRUPAL_NO_CACHE,
@@ -228,7 +233,11 @@ function usanetwork_movie_block_view($delta = '') {
       break;
     case 'usanetwork_movies_all_movies':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_movie_all_movies_block();
+      $block['content'] = _usanetwork_movie_all_movies_block('NOW');
+      break;
+    case 'usanetwork_movies_all_movies_tv':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_movie_all_movies_block('TV');
       break;
     case 'usanetwork_movies_schedule':
       $block['subject'] = '';
@@ -283,24 +292,6 @@ function usanetwork_movie_form_movie_node_form_alter(&$form, &$form_state, $form
     if (strtolower($term->name) == 'character') {
       $character_role_id = $key;
       break;
-    }
-  }
-
-  // If we don't find a character term in the role vocab, there's no reason to
-  // go further since the user won't be able to select the character role.
-  if (!empty($character_role_id)) {
-    $lang = $form['language']['#value'];
-
-    $field_indices = array_filter(array_keys($form['field_movie_credit'][$lang]), 'is_int');
-    foreach ($field_indices as $key) {
-      if (isset($form['field_movie_credit'][$lang][$key]['field_movie_credit_role']) &&
-        isset($form['field_movie_credit'][$lang][$key]['field_movie_credit_character'])) {
-
-        // Show the character field only if the character role has been selected.
-        $form['field_movie_credit'][$lang][$key]['field_movie_credit_character']['#states']['visible'] = array(
-          ':input[name="field_movie_credit[' . $lang . '][' . $key . '][field_movie_credit_role][' . $lang . ']"]' => array('value' => "$character_role_id"),
-        );
-      }
     }
   }
 }
@@ -388,58 +379,14 @@ function usanetwork_movie_entity_insert($entity, $type) {
 /**
  * Renders content for photos block.
  */
-function _usanetwork_movie_all_movies_block() {
-  $params = drupal_get_query_parameters();
-  if (empty($params['sort_order']) || !in_array($params['sort_order'], array('ASC', 'DESC'))) {
-    $params['sort_order'] = 'ASC';
-  }
-  $sorters = _usanetwork_movie_all_movies_landing_page_sorters($params);
-  $movies = _usanetwork_movie_all_movies_get_movies($params['sort_order']);
-  $movies_block = _usanetwork_movies_all_movies_render_block($movies);
-  $video_sorter_title = $sorters[$params['sort_order']]['title'];
+function _usanetwork_movie_all_movies_block($category = 'NOW') {
+  $movies = _usanetwork_movie_all_movies_get_movies($category);
+  $movies_block = _usanetwork_movies_all_movies_render_block($movies, $category);
   $result = theme('usanetwork_movie_movies_landing', array(
-    'block_title' => t('All Movies'),
-    'movie_sorters' => $sorters,
-    'movie_sorter_title' => $video_sorter_title,
     'movies_block' => $movies_block,
-    'sorting_order' => $params['sort_order'],
+    'block_title' => ($category == 'NOW') ? t('AVAILABLE TO WATCH ONLINE NOW') : t('AVAILABLE ON TV'),
   ));
   return $result;
-}
-
-/**
- * Returns default sorters for gallery page.
- *
- * @return array
- */
-function _usanetwork_movie_all_movies_landing_page_sorters($params) {
-
-  $data['ASC'] = array(
-    'order' => 'ASC',
-    'title' => t('Sort A - Z'),
-    'active' => FALSE,
-    'url' => url('movies', array(
-      'query' => array(
-        'sort_order' => 'ASC',
-      )
-    )),
-  );
-  $data['DESC'] = array(
-    'order' => 'DESC',
-    'title' => t('Sort Z - A'),
-    'active' => FALSE,
-    'url' => url('movies', array(
-      'query' => array(
-        'sort_order' => 'DESC',
-      )
-    )),
-  );
-
-  if (isset($params['sort_order'])) {
-    $data[$params['sort_order']]['active'] = TRUE;
-  }
-
-  return $data;
 }
 
 /**
@@ -451,31 +398,52 @@ function _usanetwork_movie_all_movies_landing_page_sorters($params) {
  *
  * @return array
  */
-function _usanetwork_movie_all_movies_get_movies($sort = 'ASC') {
-  $query = new EntityFieldQuery();
-  $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'movie')
-    ->propertyCondition('status', NODE_PUBLISHED)
-    ->propertyOrderBy('title', $sort);
-  $result = $query->execute();
-  if (!empty($result['node'])) {
-    $nodes = entity_load('node', array_keys($result['node']));
+function _usanetwork_movie_all_movies_get_movies($sort = 'ALL', $limit = NULL) {
+  $sort = explode('&', $sort);
+  $db_select = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('n.type', 'movie')
+    ->condition('n.status', NODE_PUBLISHED);
+
+  if (in_array('NOW', $sort)) {
+    $db_select->join('field_data_field_movie', 'field_movie', 'n.nid = field_movie.field_movie_target_id');
+    $db_select->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id = field_movie.entity_id');
+    $db_select->condition('full_episode.field_mpx_full_episode_value', '1');
+    $db_select->join('mpx_video', 'mpx_video', 'mpx_video.fid = field_movie.entity_id');
+    $db_select->condition('mpx_video.status', '1');
+  } else {
+    $db_select->join('usanetwork_schedule', 's', 's.title = n.title');
+    $db_select->condition('s.start_time', strtotime('midnight +6 hours', REQUEST_TIME), '>=');
+  }
+
+  if (in_array('CREATED', $sort)) {
+    $db_select->orderBy('n.created', 'DESC');
+  }
+  else {
+    $db_select->orderBy('n.title', 'ASC');
+  }
+
+  if ($limit) {
+    $db_select->range(0, $limit);
+  }
+  $result = $db_select->execute()->fetchAllAssoc('nid');
+
+  if (!empty($result)) {
+    $nodes = entity_load('node', array_keys($result));
     return $nodes;
   }
   return FALSE;
 }
 
 /**
- *
  * Returns block of N items for movies page.
  * @param $items
-
  */
-function _usanetwork_movies_all_movies_render_block($items) {
+function _usanetwork_movies_all_movies_render_block($items, $category = 'NOW') {
 
   $theme_variables = array();
   foreach ($items as $item) {
-    $theme_variables['items'][] = _usanetwork_movies_all_movies_block_item($item);
+    $theme_variables['items'][] = _usanetwork_movies_all_movies_block_item($item, $category);
   }
   return theme('usanetwork_movie_movies_landing_block', $theme_variables);
 }
@@ -487,18 +455,23 @@ function _usanetwork_movies_all_movies_render_block($items) {
  *
  * @return mixed|string
  */
-function _usanetwork_movies_all_movies_block_item($movie) {
+function _usanetwork_movies_all_movies_block_item($movie, $category = 'NOW') {
   $schedule_data = _usanetwork_get_field_item('node', $movie, 'field_promo_topic', 'value');
   if (empty($schedule_data)) {
     $schedule_data = usanetwork_movie_schedule_get_data($movie->title);
   }
+  $has_full_episode = _usanetwork_movie_has_full_episode($movie);
   $image_url = usanetwork_core_api_get_content_image('node', $movie);
   $caption = _usanetwork_get_field_item('node', $movie, 'field_promo_violator_name', 'value');
   $theme_variables = array(
-    'target_url' => url('node/' . $movie->nid),
+    'watch_now' => (!empty($has_full_episode) && $category == 'NOW') ? 'watch-now' : NULL,
+    'target_url' => (!empty($has_full_episode) && $category == 'NOW') ? url('file/' . $has_full_episode->fid) : url('node/' . $movie->nid),
+    'icon' => (!empty($has_full_episode) && $category == 'NOW') ? 'full-video-icon-default' : NULL,
     'caption' => $caption,
     'title' => $movie->title,
-    'additional' => $schedule_data,
+    'additional' => (isset($has_full_episode->expiration_date)  && $category == 'NOW')
+      ? t('Available until') . ' ' . date('m/d/Y', $has_full_episode->expiration_date)
+      : $schedule_data,
     'image_desktop' => image_style_url('539x303', $image_url),
   );
   return theme('usanetwork_movie_movies_landing_item', $theme_variables);
@@ -548,8 +521,10 @@ function _usanetwork_movies_mb_block() {
             $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
           }
           $caption = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_violator_name', 'value');
+          $has_full_episode = _usanetwork_movie_has_full_episode($featured_movie);
           $promos[] = array(
-            'url' => url('node/' . $featured_movie->nid),
+            'watch_now' => !empty($has_full_episode) ? 'watch-now' : NULL,
+            'url' => empty($has_full_episode) ? url('node/' . $featured_movie->nid) : url('file/' . $has_full_episode->fid),
             'image' => array(
               'mobile' => !empty($cover_media)
                 ? image_style_url('719x414', $cover_media) : NULL,
@@ -560,10 +535,12 @@ function _usanetwork_movies_mb_block() {
                 )
                 : NULL,
             ),
-            'icon_type' => 'about-show-icon-default',
+            'icon_type' => $has_full_episode ? 'full-video-icon-default' : 'about-show-icon-default',
             'caption' => $caption,
             'title' => $featured_movie->title,
-            'description' => $show_time,
+            'description' => isset($has_full_episode->expiration_date)
+              ? t('Available until') . ' ' . date('m/d/Y', $has_full_episode->expiration_date)
+              : $show_time,
             'class' => $is_first ? 'three-line-video-large' : 'three-line-video',
             'is_first' => $is_first,
           );
@@ -577,10 +554,34 @@ function _usanetwork_movies_mb_block() {
     $theme_variables = array(
       'promos' => !empty($promos) ? $promos : FALSE,
       'ad' => isset($advert) ? $advert : FALSE,
+      'title_line_1' => t('FULL MOVIES ARE NOW AVAILABLE FOR STREAMING.'),
+      'title_line_2' => t('CHOOSE A TITLE BELOW AND START WATCHING NOW!'),
     );
     return theme('usanetwork_movies_all_movies_mb', $theme_variables);
   }
   return FALSE;
+}
+
+/**
+ * Define does movie have full episode
+ */
+function _usanetwork_movie_has_full_episode($movie) {
+  $db_select = db_select('mpx_video', 'mv')
+    ->fields('mv', array('fid', 'expiration_date'));
+  $db_select->condition('mv.status', '1');
+  $db_select->join('field_data_field_movie', 'field_movie' , 'mv.fid = field_movie.entity_id');
+  $db_select->condition('field_movie.field_movie_target_id', $movie->nid);
+  $db_select->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id = mv.fid');
+  $db_select->condition('full_episode.field_mpx_full_episode_value', '1');
+
+  $movie_file = $db_select->execute()->fetchObject();
+
+  if (!empty($movie_file)) {
+    return $movie_file;
+  }
+  else {
+    return FALSE;
+  }
 }
 
 /**
@@ -703,7 +704,6 @@ function usanetwork_movie_related_content_block() {
       'related_items_block' => $block_of_items,
       'load_more_link' => $load_more_link,
       'show_nid' => $movie_node->nid,
-      'movie_title' => $movie_node->title,
       'items_pre_page_limit' => USA_TV_SHOW_RELATED_ITEMS_ON_PAGE,
     ));
   }
@@ -1565,8 +1565,19 @@ function usanetwork_movie_consumptionator_get_ymal_item($node) {
  * @param int $start_from
  * @param $limit = 0, if = 0 it returns all data.
  */
-function _usanetwork_movie_cache_get_limited_related_video_content($movie_node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
+function _usanetwork_movie_cache_get_limited_related_video_content($movie_node, $file, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
   $data = _usanetwork_movie_cache_get_related_video_content($movie_node);
+
+  foreach ($data as $key => $data_item) {
+    if ($key < USA_TV_SHOW_RELATED_ITEMS_ON_PAGE * 2) {
+      if (($data_item->entity_id == $file->fid) && ($data_item->bundle == $file->type)) {
+        unset($data[$key]);
+      }
+    }
+    else {
+      break;
+    }
+  }
 
   if (!empty($data)) {
     if ($limit == 0) {
@@ -1588,7 +1599,8 @@ function _usanetwork_movie_cache_get_limited_related_video_content($movie_node, 
  * @param $accurate - if true cache will be create if it does not exist
  * @return bool|int|null|object|stdClass
  */
-function _usanetwork_movie_cache_get_related_video_content($movie_node, $full_object = FALSE, $accurate = FALSE) {
+function _usanetwork_movie_cache_get_related_video_content($movie_nid, $full_object = FALSE, $accurate = FALSE) {
+  $movie_node = node_load($movie_nid);
   $data = cache_get('usa_movie_related_video_' . $movie_node->nid);
 
   if (!$accurate && empty($data)) {

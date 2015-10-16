@@ -131,9 +131,9 @@
         var click = 'click';
         $(this).addClass('disabled');
         if ($(this).hasClass('more-episodes')){
-          Drupal.behaviors.usanetwork_episodes_autoloader.loadPageItems();
+          Drupal.behaviors.usanetwork_episodes_autoloader.loadPageItems(click);
         } else if($('.ajax-load-block .load-more-link a').hasClass('more-posts')) {
-          Drupal.behaviors.usanetwork_blog_posts_autoloader.loadPageItems();
+          Drupal.behaviors.usanetwork_blog_posts_autoloader.loadPageItems(click);
         } else {
           Drupal.behaviors.usanetwork_tv_shows_related_items_loader.getItems(click);
         }

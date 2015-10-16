@@ -1104,9 +1104,27 @@ function usanetwork_core_update_7176() {
 }
 
 /**
- * Enables usanetwork_top3 module.
+ * Enables custom_add_another module.
  */
 function usanetwork_core_update_7177() {
+  if (!module_exists('custom_add_another')) {
+    module_enable(array('custom_add_another'));
+  }
+}
+
+/**
+ * Enables usanetwork_dtm module.
+ */
+function usanetwork_core_update_7178() {
+  if (!module_exists('usanetwork_dtm')) {
+    module_enable(array('usanetwork_dtm'));
+  }
+}
+
+/**
+ * Enables usanetwork_top3 module.
+ */
+function usanetwork_core_update_7179() {
   if (!module_exists('usanetwork_top3')) {
     module_enable(array('usanetwork_top3'));
   }

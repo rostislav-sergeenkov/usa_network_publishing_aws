@@ -23,7 +23,13 @@
     <div class="menu-item tab video-title info">
       <h2>
         <a class="no-refresh nolink" data-state>
-          <span><?php print $episode['video_type'];?>: <?php print $episode['title']; ?></span>
+          <span>
+            <?php if ($episode['is_show_related']): ?>
+              <?php print $episode['video_type'];?>: <?php print $episode['title']; ?>
+            <?php else: ?>
+              <?php print $episode['title']; ?>
+            <?php endif; ?>
+          </span>
         </a>
       </h2>
     </div>
@@ -50,7 +56,11 @@
             </div>
             <?php if (!empty($episode['season_number']) && !empty($episode['episode_number'])): ?>
               <div class="additional">
-                <span>S<?php print $episode['season_number'] ?> <?php print t('episode') . ' ' . $episode['episode_number']; ?></span>
+                <?php if ($episode['is_show_related']): ?>
+                  <span>S<?php print $episode['season_number'] ?> <?php print t('episode') . ' ' . $episode['episode_number']; ?></span>
+                <?php else: ?>
+                  <span><?php print $episode['season_number'] ?></span>
+                <?php endif; ?>
                 <?php print $episode['running_time']; ?>
               </div>
             <?php endif; ?>

@@ -391,17 +391,31 @@ function _usanetwork_promo_file_get_promo_lines($file, $no_video_type = NULL) {
   $episode_season = !empty($file->field_mpx_season_number) ? $file_wrapper->field_mpx_season_number->value() : NULL;
   $episode_number = !empty($file->field_mpx_episode_number) ? $file_wrapper->field_mpx_episode_number->value() : NULL;
   $result['title'] = _usanetwork_core_get_video_title($file);
+  $tv_content_node = usanetwork_core_api_get_tv_content_node($file);
   if ($full_episode) {
     $result['topic'] = t('Full Episode');
     $result['description'] = '';
-    if (isset($episode_season) && isset($episode_number)) {
-      $result['description'] = t('S@season EP@episode_number', array('@season' => $episode_season, '@episode_number' => $episode_number));
-    }
-    elseif (isset($episode_season)) {
-      $result['description'] = t('S@season', array('@season' => $episode_season));
-    }
-    elseif (isset($episode_number)) {
-      $result['description'] = t('EP@episode_number', array('@episode_number' => $episode_number));
+    if ($tv_content_node->type == 'tv_show' ) {
+      if (isset($episode_season) && isset($episode_number)) {
+        $result['description'] = t('S@season EP@episode_number', array(
+            '@season' => $episode_season,
+            '@episode_number' => $episode_number
+          ));
+      }
+      elseif (isset($episode_season)) {
+        $result['description'] = t('S@season', array('@season' => $episode_season));
+      }
+      elseif (isset($episode_number)) {
+        $result['description'] = t('EP@episode_number', array('@episode_number' => $episode_number));
+      }
+    } else {
+      if (isset($file->field_mpx_airdate)) {
+        $air_date = $file_wrapper->field_mpx_airdate->value();
+        $air_year = date('Y', $air_date);
+      }
+      if (!empty($air_year)) {
+        $result['description'] = t('@air_year', array('@air_year' => $air_year));
+      }
     }
   }
   else {

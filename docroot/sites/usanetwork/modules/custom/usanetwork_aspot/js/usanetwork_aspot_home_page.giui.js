@@ -13,6 +13,9 @@
         changeDraggableElementsPosition(aspotHomeSlide);
       } else if($('body').hasClass('node-type-movie')) {
         changeDraggableElementsPosition(aspotMovieSlide);
+      } else if($('body').hasClass('node-type-usanetwork-aspot')) {
+        changeDraggableElementsPosition($('#home_page_aspot_preview'));
+        changeDraggableElementsPosition($('#show_aspot_preview'));
       }
 
       function changeDraggableElementsPosition(elem) {

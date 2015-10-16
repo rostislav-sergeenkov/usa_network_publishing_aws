@@ -23,7 +23,11 @@ $timestamp = time();
 $sponsorClass = 'camry2015';
 $sponsorImg = 'graceland-s2catchup-camry.svg';
 $sponsorPresentedBy = 'Presented by the Bold 2015 Camry';
-if ($timestamp > mktime(0, 0, 1, 8, 16, 2015)): // after Aug 16, 2015 00:00:01 AM ET
+if ($timestamp > mktime(0, 1, 0, 9, 21, 2015)): // after Sept 21, 2015 00:01:00 AM ET
+  $sponsorClass = '';
+  $sponsorImg = '';
+  $sponsorPresentedBy = '';
+elseif ($timestamp > mktime(0, 0, 1, 8, 16, 2015)): // after Aug 16, 2015 00:00:01 AM ET
   $sponsorClass = 'corolla';
   $sponsorImg = 'graceland-s2catchup-toyotacorrolla.svg';
   $sponsorPresentedBy = 'Presented by Toyota Corolla';
@@ -37,12 +41,14 @@ endif;
 <div id="gracelandcatchup-home" class="clearfix">
   <div id="home-content-container">
     <div id="home-logo"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-logo.png" alt="Graceland Catchup HQ" /></div>
+    <?php if ($sponsorImg != ''): ?>
     <div id="home-sponsored" class="<?php print $sponsorClass; ?>">
       <a href="http://ad.doubleclick.net/ddm/jump/N2724.117456.USANETWORK.COM/B8757919.119883868;sz=1x1;ord=<?php print $timestamp; ?>?" target="_blank">
         <img class="tracking" src="http://ad.doubleclick.net/ddm/ad/N2724.117456.USANETWORK.COM/B8757919.119883868;sz=1x1;ord=<?php print $timestamp; ?>?" border="0" width="1" height="1" alt="Advertisement">
         <img src="<?php print $themePath; ?>/images/<?php print $sponsorImg; ?>" alt="<?php print $sponsorPresentedBy; ?>">
       </a>
     </div>
+    <?php endif; ?>
     <div id="home-tunein"><?php if (!empty($tune_in)) print $tune_in; ?></div>
 
     <!-- start countdown timer -->
@@ -85,7 +91,6 @@ endif;
         <div id="caption">*Time is EST and CST</div>
       </div><!-- #countHolder -->
     </div><!-- end countdown timer -->
-<?php */ ?>
 
     <?php if (!empty($description)): ?>
     <div id="home-description" class="section-description"><?php print $description; ?></div>
@@ -99,6 +104,10 @@ endif;
         <li id="trivia" class="internal" data-menuanchor="quizzes"><a href="javascript:void(0)"><div class="home-button"><img src="<?php print $themePath; ?>/images/graceland-s2catchup-nav-trivia.png" alt="Trivia button" /></div></a><div class="spoiler-alert spoiler-high"></div></li>
       </ul>
     </div>
+<?php */ ?>
+    <?php if (!empty($description)): ?>
+    <?php print $description; ?>
+    <?php endif; ?>
   </div>
 </div>
 

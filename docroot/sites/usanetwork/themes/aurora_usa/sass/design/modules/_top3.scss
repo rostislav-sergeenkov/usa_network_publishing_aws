@@ -1428,7 +1428,7 @@
         line-height: get-vw(67px, 1901);
         text-align: center;
         text-transform: uppercase;
-        vertical-align: baseline;
+        vertical-align: bottom;
         width: get-vw(275px, 1901);
         @include breakpoint($bp-min-1901-width) {
           font-size: 22px;
@@ -1463,6 +1463,7 @@
         width: calc(68.8vw + 300px);
         @include breakpoint($bp-1024-width) {
           padding: get-vw(20px, 1024) get-vw(33px, 1024);
+          width: 100%;
           @include clear();
         }
       }

@@ -62,6 +62,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Body',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 0,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -131,6 +133,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Blog',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -196,6 +200,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Display Author',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -262,6 +268,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -323,6 +331,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Categories',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -382,6 +392,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Collection',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -446,6 +458,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -513,6 +527,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Contributor',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -585,6 +601,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Media Gallery',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -658,6 +676,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Override default value',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -732,6 +752,8 @@ function usanetwork_post_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
@@ -832,6 +854,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Show post cover',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -898,6 +922,8 @@ function usanetwork_post_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -937,6 +963,160 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'type' => 'media_generic',
       'weight' => 15,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_seo_h1'
+  $field_instances['node-post-field_seo_h1'] = array(
+    'bundle' => 'post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_seo_h1',
+    'label' => 'H1 Override',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_seo_page_title'
+  $field_instances['node-post-field_seo_page_title'] = array(
+    'bundle' => 'post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_seo_page_title',
+    'label' => 'Page Title Override',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 9,
     ),
   );
 
@@ -990,6 +1170,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1055,6 +1237,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Sponsored',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1122,6 +1306,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Sub title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1198,6 +1384,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Short Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1274,6 +1462,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Custom CSS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1296,6 +1486,177 @@ function usanetwork_post_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_usa_og_description'
+  $field_instances['node-post-field_usa_og_description'] = array(
+    'bundle' => 'post',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_og_description',
+    'label' => 'OG Description',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'rows' => 5,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-post-field_usa_og_image'
+  $field_instances['node-post-field_usa_og_image'] = array(
+    'bundle' => 'post',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_og_image',
+    'label' => 'OG Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'default_image' => 0,
+      'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'mpx' => 0,
+          'private' => 'private',
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'mpx_player' => 0,
+          'mpx_video_1' => 0,
+          'mpx_video_2' => 0,
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 'media_default--media_browser_1',
+          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_internet' => 0,
+          'pub_mpx_video' => 0,
+          'theplatform_mpx_mpxmedia' => 0,
+          'theplatform_mpx_mpxplayer' => 0,
+          'upload' => 'upload',
+        ),
+      ),
+      'type' => 'media_generic',
+      'weight' => 11,
     ),
   );
 
@@ -1325,6 +1686,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Banners',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1375,6 +1738,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'CSS File',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '',
       'file_extensions' => 'css',
@@ -1436,6 +1801,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Display Author',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1482,6 +1849,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Gigya Comments',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1524,6 +1893,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Global Header',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1579,6 +1950,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Display "Latest Posts" block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1625,6 +1998,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Override default value',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1667,6 +2042,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1709,6 +2086,8 @@ function usanetwork_post_field_default_field_instances() {
     'label' => 'Sponsored',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1752,6 +2131,8 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
     'label' => 'Custom Files',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg otf mp3 htf pdf',
@@ -1818,6 +2199,8 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
     'label' => 'Custom CSS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1864,11 +2247,15 @@ File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for
   t('For post default value is value of category or blog.  ');
   t('Gigya Comments');
   t('Global Header');
+  t('H1 Override');
   t('Local and remote image and video files are allowed for this set for Custom CSS and CSS file
 
 File formats accepted: png, gif, jpg, jpeg, otf, mp3, htf, pdf. Not intended for flex/swf integration.');
   t('Media Gallery');
+  t('OG Description');
+  t('OG Image');
   t('Override default value');
+  t('Page Title Override');
   t('Post Cover');
   t('Promo Image Override');
   t('Short Description');

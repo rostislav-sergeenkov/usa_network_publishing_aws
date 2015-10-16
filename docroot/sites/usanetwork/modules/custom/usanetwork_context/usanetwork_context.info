@@ -36,6 +36,7 @@ dependencies[] = usanetwork_snipe
 dependencies[] = usanetwork_static_page
 dependencies[] = usanetwork_timeline_gallery
 dependencies[] = usanetwork_token
+dependencies[] = usanetwork_top3
 features[context][] = consumpt_post_node
 features[context][] = explore_landing
 features[context][] = quiz_node

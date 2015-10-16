@@ -273,11 +273,14 @@
               prevArrow: prevArrow,
               slidesToShow: 1,
               slidesToScroll: 1,
-              //swipe: false,
+              swipe: false,
               speed: 300
             })
             .on('afterChange', function(event, slick, currentSlide){
               currentSlideNum.text(currentSlide + 1);
+              if ($('body').hasClass('node-type-top3-gallery')) {
+                Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+              }
             })
             .on('beforeChange', function(event, slick, currentSlide, nextSlide){
 
@@ -453,7 +456,7 @@
 
           new Draggable( el, droppableArr, {
 
-            draggabilly : { containment: document.body },
+            draggabilly : { containment: $('#slider-container') },
 
             onStart : function() {
 
@@ -874,6 +877,7 @@
 
     };
     top3Usanetwork.init();
+    Drupal.behaviors.mpsAdvert.mpsLoadAd('#topbox', 'topbox');
 
   });
 

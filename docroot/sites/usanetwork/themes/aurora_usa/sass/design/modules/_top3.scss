@@ -28,6 +28,7 @@
     height: auto;
     margin: 0 auto;
     max-width: 1681px;
+    overflow: hidden;
     position: relative;
     width: 100%;
     @include breakpoint($bp-1280-width) {
@@ -337,13 +338,14 @@
         }
         span {
           font-size: get-vw(90px, 1901);
-          vertical-align: text-bottom;
+          line-height: 0.1;
+          vertical-align: baseline;
           @include breakpoint($bp-min-1901-width) {
             font-size: 90px;
           }
           @include breakpoint($bp-1280-width) {
             font-size: get-vw(62px, 1024);
-            vertical-align: text-top;
+            vertical-align: top;
           }
           @include breakpoint($bp-768-width) {
             font-size: get-vw(46px, 480);
@@ -351,10 +353,10 @@
         }
       }
       img {
-        margin-top: get-vw(-20px, 1901);
+        margin-top: get-vw(-10px, 1901);
         width: 100%;
         @include breakpoint($bp-min-1901-width) {
-          margin-top: -20px;
+          margin-top: -10px;
         }
         @include breakpoint($bp-1280-width) {
           display: inline-block;
@@ -388,7 +390,6 @@
       }
     }
     .advert {
-      background: grey;
       height: 250px;
       margin: 0 auto;
       width: 300px;
@@ -1136,25 +1137,28 @@
     z-index: 100;
   }
   .slide-item-grab {
-    font-size: 2em;
-    display: inline-block;
-    height: get-vw(136px, 1901);
-    margin: calc(50%*0.5625 - 104px) calc(50% - 136px);
     background: #f9f9f9;
-    color: #76737C;
-    text-align: center;
     border-radius: 5px;
+    color: #76737C;
+    display: inline-block;
+    font-size: 2em;
+    height: get-vw(136px, 1901);
+    margin: get-vw(292px, 1901) 0 0 get-vw(519px, 1901);
+    margin: 0;
     overflow: hidden;
-    text-indent: -9000px;
     position:absolute;
+    text-align: center;
+    text-indent: -9000px;
     width: get-vw(242px, 1901);
     z-index: 500000;
     @include breakpoint($bp-min-1901-width) {
       height: 136px;
+      margin: 292px 0 0 519px;
       width: 242px;
     }
     @include breakpoint($bp-1024-width) {
-      height: get-vw(104.8px, 1024);
+      height: get-vw(104.08px, 1024);
+      margin: get-vw(223.46px, 1024) 0 0 get-vw(397.39px, 1024);
       width: get-vw(185.22px, 1024);
     }
     &:hover {
@@ -1392,7 +1396,8 @@
         }
         span {
           font-size: get-vw(90px, 1901);
-          vertical-align: text-top;
+          line-height: 0.1;
+          vertical-align: top;
           @include breakpoint($bp-min-1901-width) {
             font-size: 90px;
           }
@@ -1424,7 +1429,7 @@
         line-height: get-vw(67px, 1901);
         text-align: center;
         text-transform: uppercase;
-        vertical-align: text-bottom;
+        vertical-align: baseline;
         width: get-vw(275px, 1901);
         @include breakpoint($bp-min-1901-width) {
           font-size: 22px;
@@ -1630,7 +1635,6 @@
         }
       }
       .advert {
-        background: grey;
         float: right;
         height: 250px;
         margin: calc((23.72435vw - 250px)/2) auto 0;
@@ -1718,3 +1722,4 @@
     }
   }
 }
+

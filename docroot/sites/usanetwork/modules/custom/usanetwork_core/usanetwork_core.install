@@ -1102,3 +1102,12 @@ function usanetwork_core_update_7176() {
     module_enable(array('usanetwork_related_content'));
   }
 }
+
+/**
+ * Enables usanetwork_top3 module.
+ */
+function usanetwork_core_update_7177() {
+  if (!module_exists('usanetwork_top3')) {
+    module_enable(array('usanetwork_top3'));
+  }
+}

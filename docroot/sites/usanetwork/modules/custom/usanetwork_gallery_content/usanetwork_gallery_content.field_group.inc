@@ -200,7 +200,8 @@ function usanetwork_gallery_content_field_group_info() {
       0 => 'field_person',
       1 => 'field_gallery_type',
       2 => 'field_movie',
-      3 => 'group_show_rels',
+      3 => 'field_multiple_show',
+      4 => 'group_show_rels',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

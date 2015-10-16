@@ -1207,16 +1207,32 @@ function _usanetwork_tv_shows_pull_related_nodes($show_id, $start_from = 0,
     $query->addField('n', 'type', 'bundle');
     if (!empty($filters['fshow.bundle']['values']) && $filters['fshow.bundle']['values'] == 'post') {
       $query->join('field_data_field_blog', 'field_blog', 'field_blog.entity_id=n.nid');
-      $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=field_blog.field_blog_tid');
+      $query->leftJoin('field_data_field_show', 'show_field', 'show_field.entity_id=field_blog.field_blog_tid');
+      $query->leftJoin('field_data_field_multiple_show', 'multiple_show_field', 'multiple_show_field.entity_id=field_blog.field_blog_tid');
     }
     else {
-      $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=n.nid AND show_field.entity_type = \'node\'');
+      $query->leftJoin('field_data_field_show', 'show_field', 'show_field.entity_id=n.nid AND show_field.entity_type = \'node\'');
+      $query->leftJoin('field_data_field_multiple_show', 'multiple_show_field', 'multiple_show_field.entity_id=n.nid AND multiple_show_field.entity_type = \'node\'');
+      $query->condition(
+        db_or()
+          ->isNotNull('show_field.entity_id')
+          ->isNotNull('multiple_show_field.entity_id')
+      );
     }
-    $query->condition('show_field.field_show_target_id', $show_id);
-    $query->addField('show_field', 'entity_type', 'entity_type');
-    $query->condition('show_field.deleted', 0);
+    $query->condition(
+      db_or()
+        ->condition('show_field.field_show_target_id', $show_id)
+        ->condition('multiple_show_field.field_multiple_show_target_id', $show_id)
+    );
+    //$query->addField('show_field', 'entity_type', 'entity_type');
+    $query->addExpression("'node'", 'entity_type');
+    $query->condition(
+      db_or()
+        ->condition('show_field.deleted', 0)
+        ->condition('multiple_show_field.deleted', 0)
+    );
     // Join Show node
-    $query->join('node', 'show_node', 'show_field.field_show_target_id=show_node.nid');
+    $query->join('node', 'show_node', 'show_field.field_show_target_id=show_node.nid OR multiple_show_field.field_multiple_show_target_id=show_node.nid');
     $query->addField('show_node', 'title', 'show_title');
     // Join associated videos
     $query->leftJoin('field_data_field_promo_assoc_video', 'assoc_videos_field', 'assoc_videos_field.entity_id=n.nid');

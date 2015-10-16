@@ -227,9 +227,17 @@ function usanetwork_ads_form_entity_form_submit($form, &$form_state) {
   // remove empty omniture variables
   $variables = array();
   if (isset($entity_settings['omniture']['variables']) && is_array($entity_settings['omniture']['variables'])) {
-    foreach ($entity_settings['omniture']['variables'] as $item) {
-      if (!empty($item['key'])) {
-        $variables[] = $item;
+    if (module_exists('usanetwork_dtm')) {
+      foreach ($entity_settings['omniture']['variables'] as $item) {
+        if ($item['key'] !== '_none') {
+          $variables[] = $item;
+        }
+      }
+    } else {
+      foreach ($entity_settings['omniture']['variables'] as $item) {
+        if (!empty($item['key'])) {
+          $variables[] = $item;
+        }
       }
     }
   }
@@ -377,12 +385,21 @@ function _usanetwork_ads_omniture_variable_elements($defaults = array()) {
   $form = array(
     '#type' => 'fieldset',
     '#tree' => TRUE,
-  );;
-  $form['key'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Variable Name'),
-    '#default_value' => $defaults['key'],
   );
+  if (module_exists('usanetwork_dtm')) {
+    $form['key'] = array(
+      '#type' => 'select',
+      '#title' => t('Variable Name'),
+      '#default_value' => $defaults['key'],
+      '#options' => array_merge(array('_none' => ''), usanetwork_dtm_get_midration_array()),
+    );
+  } else {
+    $form['key'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Variable Name'),
+      '#default_value' => $defaults['key'],
+    );
+  }
   $form['value'] = array(
     '#type' => 'textfield',
     '#title' => t('Value'),

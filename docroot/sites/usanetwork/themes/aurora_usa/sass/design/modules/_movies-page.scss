@@ -11,3 +11,15 @@
     white-space: nowrap;
   }
 }
+.page-movies {
+  #block-usanetwork-movie-usanetwork-movies-all-movies, #block-usanetwork-movie-usanetwork-movies-schedule {
+    .landing-page-container {
+      background: $footer-promo-links;
+    }
+  }
+  #block-usanetwork-movie-usanetwork-movies-all-movies-tv {
+    .landing-page-container {
+      background: $poll-back;
+    }
+  }
+}

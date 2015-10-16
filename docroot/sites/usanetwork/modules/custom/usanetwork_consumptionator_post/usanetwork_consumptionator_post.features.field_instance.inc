@@ -1618,78 +1618,6 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-consumpt_post-field_media_gallery'
-  $field_instances['node-consumpt_post-field_media_gallery'] = array(
-    'bundle' => 'consumpt_post',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'admin_reference_preview' => array(
-        'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 1,
-          'view_mode' => 'admin_reference_preview',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'user_ref_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_media_gallery',
-    'label' => 'Media Gallery',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'entityreference_live_preview' => array(
-          'enabled' => 1,
-          'mode' => 'admin_reference_preview',
-        ),
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance: 'node-consumpt_post-field_override_display_author'
   $field_instances['node-consumpt_post-field_override_display_author'] = array(
     'bundle' => 'consumpt_post',
@@ -3235,7 +3163,6 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
   t('Gallery Recap');
   t('Gigya Share Bar');
   t('H1 Override');
-  t('Media Gallery');
   t('OG Description');
   t('OG Image');
   t('Override default value');

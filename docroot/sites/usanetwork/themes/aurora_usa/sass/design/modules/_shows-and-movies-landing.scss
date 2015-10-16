@@ -23,10 +23,16 @@
       @include breakpoint($bp-1280-width) {
         margin-bottom: 18px;
       }
-      @include breakpoint($bp-640-width) {
-        margin-bottom: 7px;
-        text-align: left;
-        padding-left: 22px;
+      .section-title-wrapper {
+        @include breakpoint($between-769-1024) {
+          max-width: calc(100% - 490px);
+        }
+        @include breakpoint($between-641-768) {
+          max-width: calc(100% - 346px);
+        }
+        @include breakpoint($bp-640-width) {
+          max-width: calc(100% - 163px);
+        }
       }
     }
     .upper-menu {
@@ -45,6 +51,13 @@
       }
       @include breakpoint($bp-640-width) {
         padding-right: 10px;
+      }
+      ~ .section-title {
+        @include breakpoint($bp-640-width) {
+          margin-bottom: 7px;
+          text-align: left;
+          padding-left: 22px;
+        }
       }
       .item-filter {
         &.sorter-items {

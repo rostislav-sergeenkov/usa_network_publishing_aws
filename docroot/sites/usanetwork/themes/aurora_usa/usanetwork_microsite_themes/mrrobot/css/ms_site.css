@@ -62,6 +62,7 @@ section > h2 {
 }
 #home #home-content-container #home-description {
   color: red;
+  line-height: 1;
 }
 #home #home-tunein {
   text-transform: none;
@@ -270,7 +271,7 @@ section > h2 {
   color: red;
 }
 #character-info li {
-  top: 8px;
+  top: 0;
 }
 #character-info li,
 #character-info .character-close {
@@ -407,5 +408,12 @@ section > h2 {
   .usanetwork-quiz-result .result-title {
     font-size: 1.7em;
     line-height: 1em;
+  }
+}
+
+/* BEGIN MOBILE DEVICE QUERIES */
+@media (max-device-width: 736px) {
+  #microsite #home .ad-leaderboard {
+    margin-left: calc(-50% - 150px);
   }
 }

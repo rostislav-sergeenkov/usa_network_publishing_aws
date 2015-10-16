@@ -49,3 +49,14 @@ function usanetwork_consumptionator_post_update_7001() {
     }
   }
 }
+
+/**
+ * Remove old "Media Gallery" field from Consumptionator Post
+ */
+function usanetwork_consumptionator_post_update_7002() {
+  $field_instance = field_read_instance('node', 'field_media_gallery', 'consumpt_post');
+
+  if ($field_instance) {
+    field_delete_instance($field_instance);
+  }
+}

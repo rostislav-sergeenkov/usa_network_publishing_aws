@@ -258,13 +258,14 @@ function usanetwork_core_api_get_tv_content_fields_names() {
 function usanetwork_core_api_get_tv_content_node($entity) {
   $field_names = usanetwork_core_api_get_tv_content_fields_names();
   if (isset($entity->nid)) {
-    $entity_wrapper = entity_metadata_wrapper('node', $entity);
+    $entity_type = 'node';
   }
   else {
-    $entity_wrapper = entity_metadata_wrapper('file', $entity);
+    $entity_type = 'file';
   }
+  $entity_wrapper = entity_metadata_wrapper($entity_type, $entity);
   foreach($field_names as $tv_content_type => $field_name) {
-    if (!empty($entity->$field_name)) {
+    if (usanetwork_core_api_check_field($entity_wrapper, $field_name)) {
       return $entity_wrapper->$field_name->value();
     }
   }
@@ -303,4 +304,50 @@ function usanetwork_core_api_check_entity_publish($entity, $entity_type = 'node'
       break;
   }
   return TRUE;
+}
+
+/**
+ * Check relation with show.
+ *
+ * @param $entity
+ */
+function usanetwork_core_api_is_related_with_tv_content($entity) {
+  if (!empty($entity->field_multiple_show)) {
+    return TRUE;
+  }
+  elseif (!empty($entity->field_show)) {
+    return TRUE;
+  }
+  elseif (!empty($entity->field_movie)) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Check is empty field for entity object.
+ *
+ * @param $entity_object
+ *   can be entity wrapper or just entity object.
+ * @param $field_name
+ * @param string $entity_type
+ *   is not required for entity wrapper.
+ * @return bool
+ */
+function usanetwork_core_api_check_field($entity_object, $field_name, $entity_type = 'node') {
+  if (is_a($entity_object, 'EntityDrupalWrapper')) {
+    $entity_type = $entity_object->type();
+    $entity_object = $entity_object->value();
+  }
+
+  if (is_object($entity_object)) {
+    $field = field_get_items($entity_type, $entity_object, $field_name);
+    if ($field) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
 }

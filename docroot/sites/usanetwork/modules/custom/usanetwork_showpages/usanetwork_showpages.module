@@ -785,6 +785,18 @@ function usanetwork_showpages_preprocess_html(&$vars) {
           break;
       }
     }
+    else {
+      switch ($node->type) {
+        case 'media_gallery':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          else {
+            $head_title = t("@title | Photo Galleries | USA Network", array('@title' => $node->title));
+          }
+          break;
+      }
+    }
     // end of node types
   } elseif ($file = menu_get_object('file')) {
     $tv_content = usanetwork_core_api_get_tv_content_node($file);

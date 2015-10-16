@@ -4,13 +4,21 @@
  */
 ?>
 <div class="landing-main-block movie-all-movies-main-block five-promo-item-block show-border">
+
+  <?php if (!empty($title_line_1) || !empty($title_line_2)): ?>
+    <div class="movies-main-description">
+      <div class="description-first-line"><?php print (!empty($title_line_1))? $title_line_1: ''; ?></div>
+      <div class="description-second-line"><?php print (!empty($title_line_2))? $title_line_2: ''; ?></div>
+    </div>
+  <?php endif; ?>
+
   <?php if (!empty($promos) && is_array($promos)):?>
   <ul>
     <?php $second_item = true;?>
     <?php foreach ($promos as $promo): ?>
     <?php if ($promo['is_first']): ?>
     <li class="first">
-      <div class="node node-usanetwork-promo <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
+      <div class="node node-usanetwork-promo<?php if (!empty($promo['class'])) : print ' ' . $promo['class']; endif; ?><?php if (!empty($promo['watch_now'])) :  print ' ' . $promo['watch_now']; endif; ?>">
         <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
           <div class="meta-wrapper">
             <div class="meta-wrapper-inner">
@@ -44,7 +52,7 @@
           <li class="last">
           <?php $second_item = false; ?>
         <?php endif; ?>
-          <div class="node node-usanetwork-promo usanetwork-movies-all-movies-lmb <?php print (!empty($promo['class']))? $promo['class']: ''; ?>">
+          <div class="node node-usanetwork-promo usanetwork-movies-all-movies-lmb<?php if (!empty($promo['class'])) : print ' ' . $promo['class']; endif; ?><?php if (!empty($promo['watch_now'])) :  print ' ' . $promo['watch_now']; endif; ?>">
             <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">

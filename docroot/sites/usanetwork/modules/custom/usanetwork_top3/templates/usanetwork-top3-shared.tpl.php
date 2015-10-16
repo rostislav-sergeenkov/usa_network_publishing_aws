@@ -7,7 +7,6 @@
     <?php if (!empty($logo)) : ?>
       <img src="<?php print $logo; ?>" alt="">
     <?php endif; ?>
-    <img src="http://usanetwork.local.usanetwork.com/sites/usanetwork/files/public/2015/10/top3titlesmall.png" alt="">
     <a href=<?php print $node_path; ?>" class="choose-top3-button show-color">create your own</a>
   </div>
   <div class="chosen-items-block show-color">

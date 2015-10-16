@@ -271,6 +271,7 @@
               infinite: true,
               nextArrow: nextArrow,
               prevArrow: prevArrow,
+              respondTo: 'window',
               slidesToShow: 1,
               slidesToScroll: 1,
               swipe: false,

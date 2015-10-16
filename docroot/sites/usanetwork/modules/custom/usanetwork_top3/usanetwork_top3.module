@@ -80,6 +80,35 @@ function usanetwork_top3_theme($existing, $type, $theme, $path) {
   return $themes;
 }
 
+/**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_top3_image_default_styles() {
+  $styles = array();
+  $styles['369x84'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 369,
+          'height' => 84,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 369,
+          'height' => 84,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
 /*
  * Main block for TOP3 Page
  */
@@ -96,7 +125,12 @@ function _usanetwork_top3_main_block() {
   $node_wrapper = entity_metadata_wrapper('node', $node);
   $logo_image = $node_wrapper->field_logo->value();
   if (!empty($logo_image)) {
-    $logo = file_create_url($logo_image['uri']);
+    $logo = image_style_url('369x84', $logo_image['uri']);
+  }
+
+  $advert_block = module_invoke('mps', 'block_view', 'topbox');
+  if (!empty($advert_block['content'])) {
+    $advert = render($advert_block['content']);
   }
 
   $query_params = drupal_get_query_parameters();
@@ -106,10 +140,16 @@ function _usanetwork_top3_main_block() {
       $shared_files = file_load_multiple($shared_fids);
       $slides = array();
       foreach ($shared_files as $shared_file) {
-        list($title, $video_image) = _usanetwork_top3_get_title_and_image($node, $shared_file);
+        list($title, $image) = _usanetwork_top3_get_title_and_image($node, $shared_file);
+        if (empty($image)) {
+          $image_url = _usanetwork_mpx_video_get_image_path($shared_file);
+        }
+        else {
+          $image_url = file_load($image)->uri;
+        }
         $slides[] = array(
           'title' => !empty($title) ? $title : NULL,
-          'image' => !empty($video_image) ? image_style_url('2880x1620', $video_image) : NULL,
+          'image' => !empty($image_url) ? image_style_url('2880x1620', $image_url) : NULL,
 //          'video' => isset($video) ? $video : NULL,
         );
       }
@@ -118,6 +158,7 @@ function _usanetwork_top3_main_block() {
       'slides' => $slides,
       'logo' => isset($logo) ? $logo : NULL,
       'node_path' => url('node/' . $node->nid),
+      'advert_block' => isset($advert) ? $advert : NULL,
     );
 
     return theme('usanetwork_top3_shared', $theme_variables);
@@ -150,6 +191,7 @@ function _usanetwork_top3_main_block() {
           'image' => !empty($slide_image_url) ? image_style_url('2880x1620', $slide_image_url) : NULL,
           'fid' => $fid,
           'video' => isset($video) ? $video : NULL,
+          'advert_block' => isset($advert) ? $advert : NULL,
         );
       }
     }
@@ -158,6 +200,7 @@ function _usanetwork_top3_main_block() {
       'slides' => $slides,
       'logo' => isset($logo) ? $logo : NULL,
       'nid' => $node->nid,
+      'top3_title' => $node->title,
     );
     return theme('usanetwork_top3_main_block', $theme_variables);
   }
@@ -170,6 +213,7 @@ function _usanetwork_top3_get_title_and_image($node, $shared_file) {
   if ($shared_file->filemime == 'image/png') {
     $db_select->leftJoin('field_data_field_top3_image', 'top3_image', 'top3_image.entity_id=slides_content.field_slides_content_value');
     $db_select->condition('top3_image.field_top3_image_fid', $shared_file->fid);
+    $db_select->addField('top3_image', 'field_top3_image_fid', 'slide_image');
   } else {
     $db_select->join('field_data_field_top3_video', 'top3_video', 'top3_video.entity_id=slides_content.field_slides_content_value');
     $db_select->condition('top3_video.field_top3_video_target_id', $shared_file->fid);

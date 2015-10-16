@@ -14,7 +14,7 @@
       <div class="chosen-items-block-wrapper">
         <div class="first show-color show-font">
           <div class="img-wrapper">
-            <img src="http://usanetwork.local.usanetwork.com/sites/usanetwork/files/public/styles/2880x1620/public/media-mpx/11339675.jpg?itok=qtQS2mXW">
+            <img src="<?php print $slides[0]['image']; ?>">
           </div>
           <?php if (isset($slides[0]['title'])): ?>
             <div class="title"><?php print $slides[0]['title']; ?></div>
@@ -23,7 +23,7 @@
         <div class="img-wrap">
           <div class="second show-color show-font">
             <div class="img-wrapper">
-              <img src="http://usanetwork.local.usanetwork.com/sites/usanetwork/files/public/styles/2880x1620/public/media-mpx/10863542.jpg?itok=JfKGmJl_">
+              <img src="<?php print $slides[1]['image']; ?>">
             </div>
             <?php if (isset($slides[1]['title'])): ?>
               <div class="title"><?php print $slides[1]['title']; ?></div>
@@ -31,7 +31,7 @@
           </div>
           <div class="third show-color show-font">
             <div class="img-wrapper">
-              <img src="http://usanetwork.local.usanetwork.com/sites/usanetwork/files/public/styles/2880x1620/public/media-mpx/13230263.jpg?itok=fMFJeDNw">
+              <img src="<?php print $slides[2]['image']; ?>">
             </div>
             <?php if (isset($slides[2]['title'])): ?>
               <div class="title"><?php print $slides[2]['title']; ?></div>
@@ -42,6 +42,9 @@
       <div class="node-wrapper advert">
         <div class="advertisement">
           <div id="topbox">
+          <?php if (!empty($advert_block)): ?>
+            <?php print $advert_block; ?>
+          <?php endif; ?>
           </div
         </div>
       </div>

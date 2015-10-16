@@ -392,6 +392,7 @@ function usanetwork_context_context_default_contexts() {
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
+        'top3_gallery' => 'top3_gallery',
         'tv_episode' => 'tv_episode',
         'tv_season' => 'tv_season',
         'tv_show' => 'tv_show',

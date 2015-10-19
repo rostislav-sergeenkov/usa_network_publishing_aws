@@ -987,7 +987,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -2632,7 +2632,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
   t('Call to Action Text');
   t('Call to Action Type');
   t('Cover Item');
-  t('Creating date overriding');
+  t('Created date override');
   t('Custom CSS');
   t('Description');
   t('Episode');

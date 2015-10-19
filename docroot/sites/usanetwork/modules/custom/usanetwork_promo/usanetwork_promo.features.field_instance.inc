@@ -196,7 +196,7 @@ function usanetwork_promo_field_default_field_instances() {
     'entity_type' => 'file',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -944,7 +944,7 @@ function usanetwork_promo_field_default_field_instances() {
     'entity_type' => 'file',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -1719,7 +1719,7 @@ function usanetwork_promo_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -3131,7 +3131,7 @@ function usanetwork_promo_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -3732,7 +3732,7 @@ function usanetwork_promo_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -4175,7 +4175,7 @@ function usanetwork_promo_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -4402,7 +4402,7 @@ function usanetwork_promo_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -5550,7 +5550,7 @@ function usanetwork_promo_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -7003,7 +7003,7 @@ function usanetwork_promo_field_default_field_instances() {
   t('Call to Action Text');
   t('Call to Action Type');
   t('Created date override');
-  t('Creating date overriding');
+  t('Created date override');
   t('Description');
   t('Enable this checkbox if you want to exclude this content from "Related content" block of TV Show and Consumptionator pages.');
   t('Exclude from Related Content block');

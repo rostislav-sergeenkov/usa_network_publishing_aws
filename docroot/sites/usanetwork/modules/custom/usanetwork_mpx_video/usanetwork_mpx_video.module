@@ -1627,6 +1627,10 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         ));
         $vars['video_inactive'] = $video;
       }
+
+      if ($file->filename == 'eps1.0_hellofriend.mov') {
+        $vars['watchwith'] = TRUE;
+      }
     }
   }
   // Fill H1 tag.

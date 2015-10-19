@@ -76,7 +76,6 @@
       infoClose();
       $('#start-button').once(function(){
         $('#start-button').remove();
-        $('#info-close').css({display: 'block'});
         top3Usanetwork.carousel();
       });
     });

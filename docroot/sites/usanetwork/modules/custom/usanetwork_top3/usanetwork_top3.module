@@ -105,6 +105,26 @@ function usanetwork_top3_image_default_styles() {
       ),
     ),
   );
+  $styles['1280x720'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 1280,
+          'height' => 720,
+        ),
+        'weight' => 0,
+      ),
+        array(
+          'name' => 'image_scale_and_crop',
+          'data' => array(
+            'width' => 1280,
+            'height' => 720,
+          ),
+          'weight' => 1,
+        ),
+    ),
+  );
 
   return $styles;
 }
@@ -191,7 +211,7 @@ function _usanetwork_top3_main_block() {
         $title = $slide_item->field_episodic_1_title->value();
         $slides[] = array(
           'title' => !empty($title) ? $title : NULL,
-          'image' => !empty($slide_image_url) ? image_style_url('2880x1620', $slide_image_url) : NULL,
+          'image' => !empty($slide_image_url) ? image_style_url('1280x720', $slide_image_url) : NULL,
           'fid' => $fid,
           'video' => !empty($video) ? $video : NULL,
           'video_link' => !empty($video_link) ? $video_link : NULL,

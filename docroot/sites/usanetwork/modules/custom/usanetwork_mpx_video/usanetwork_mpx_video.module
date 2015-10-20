@@ -1839,8 +1839,12 @@ function theme_usanetwork_mpx_video($variables) {
 
 /**
  *  Returns src for players
+ *  $return_type:
+ *    - player
+ *    - video
+ *    - link
  */
-function _usanetwork_mpx_video_get_player_src($variables) {
+function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video') {
   $file = (object) $variables['file'];
 
   $mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
@@ -1863,15 +1867,25 @@ function _usanetwork_mpx_video_get_player_src($variables) {
     return '';
   }
 
-  $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/select/' . $released_file_pid;
-  $player_parameters = array(
-    'query' => (isset($variables['pub_mpx_player_parameters'])
-      ? $variables['pub_mpx_player_parameters']
-      : array()),
-    'external' => TRUE,
-  );
+  if ($return_type == 'video') {
+    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/select/' . $released_file_pid;
+    $player_parameters = array(
+        'query' => (isset($variables['pub_mpx_player_parameters'])
+            ? $variables['pub_mpx_player_parameters']
+            : array()),
+        'external' => TRUE,
+    );
 
-  return url($player_source, $player_parameters);
+    return url($player_source, $player_parameters);
+  }
+  elseif ($return_type == 'player') {
+    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
+    return url($player_source);
+  }
+  elseif ($return_type == 'link') {
+    $player_source = '//link.theplatform.com/s/' . $mpx_account_pid . '/' . $released_file_pid;
+    return url($player_source);
+  }
 }
 
 /**

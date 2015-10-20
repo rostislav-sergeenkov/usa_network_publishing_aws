@@ -708,11 +708,11 @@
                               };
 
                               sharebar.gigyaSharebar.ua = {
-                                description: 'Usanetwork TOP3',
+                                description: Drupal.settings.top3_description,
                                 imageBhev: "url",
                                 imageUrl: data.image_url,
                                 linkBack: url,
-                                title: 'USA TOP3'
+                                title: Drupal.settings.top3_title
                               };
                               if (typeof Drupal.gigya.showSharebar == 'function') {
                                 Drupal.gigya.showSharebar(sharebar);

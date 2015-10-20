@@ -895,9 +895,16 @@
     .first, .second, .third {
       display: block;
       float: left;
+      height: get-vw(161px, 1901);
       margin-right: 2%;
       position: relative;
       width: 32%;
+      @include breakpoint($bp-min-1901-width) {
+        height: 161px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(123.219px, 1024);
+      }
       .title {
         display: none;
       }
@@ -1116,13 +1123,19 @@
     position: absolute;
     opacity: .7;
     display: none;
-    font-size: 2.7em;
+    font-size: get-vw(40px, 1901);
     text-align: center;
     z-index: 1000;
     font-weight: bold;
     padding: 15px 0 0 0;
     top: 0;
     left: 0;
+    @include breakpoint($bp-min-1901-width) {
+      font-size: 40px;
+    }
+    @include breakpoint($bp-1024-width) {
+      font-size: get-vw(30.6px, 1024);
+    }
   }
   .slider-wrapper {
     height: 100%;
@@ -1175,9 +1188,6 @@
   .slide-content_remove {
     display: none;
   }
-  .is-dragging {
-    background: #4e4c52;
-  }
   .is-active {
     z-index: 100;
   }
@@ -1216,15 +1226,13 @@
     }
   }
   .preview-item-grab {
-    display: inline-block;
+    display: block;
     margin: 0;
     width: 32%;
     height: auto;
-    background: #f9f9f9;
     text-align: center;
     border-radius: 5px;
     overflow: hidden;
-    text-indent: -9000px;
     position:absolute;
     z-index: 500000;
     &:hover {

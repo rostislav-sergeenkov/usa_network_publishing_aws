@@ -857,12 +857,17 @@
       }
     }
     .first, .second, .third {
-      display: inline-block;
+      display: block;
+      float: left;
+      margin-right: 2%;
       position: relative;
       width: 32%;
       .title {
         display: none;
       }
+    }
+    .third {
+      margin-right: 0;
     }
     img {
       height: 100%;
@@ -894,6 +899,8 @@
       }
     }
     .preview-items-block {
+      @include clear();
+      line-height: 1;
       margin: get-vw(15px, 1901) auto get-vw(30px, 1901);
       position: relative;
       width: 70%;

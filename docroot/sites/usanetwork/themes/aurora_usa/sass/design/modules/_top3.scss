@@ -201,16 +201,16 @@
       &:before {
         display: block;
         font-family: "ico-font";
-        font-size: get-vw(45px, 1901);
+        font-size: get-vw(40px, 1901);
         font-weight: bold;
         line-height: get-vw(106px, 1901);
         position: absolute;
         @include breakpoint($bp-min-1901-width) {
-          font-size: 45px;
+          font-size: 40px;
           line-height: 106px;
         }
         @include breakpoint($bp-1024-width) {
-          font-size: get-vw(34.4px, 1024);
+          font-size: get-vw(30.625px, 1024);
           line-height: get-vw(81px, 1024);
         }
       }
@@ -219,26 +219,12 @@
       right: 0;
       &:before {
         content: "\e608";
-        right: get-vw(-10px, 1901);
-        @include breakpoint($bp-min-1901-width) {
-          right: -10px;
-        }
-        @include breakpoint($bp-1024-width) {
-          right: get-vw(-7.65px, 1024);
-        }
       }
     }
     .prev.control-button {
       left: 0;
       &:before {
         content: "\e607";
-        left: get-vw(-10px, 1901);
-        @include breakpoint($bp-min-1901-width) {
-          left: -10px;
-        }
-        @include breakpoint($bp-1024-width) {
-          left: get-vw(-7.65px, 1024);
-        }
       }
     }
     .drag-group {
@@ -548,12 +534,20 @@
     position: absolute;
     top: 0px;
     width: 100%;
-    .info-block-wrapper {
+    .info-block-back {
       background: black;
       height: 100%;
+      left: 0;
       opacity: 0.7;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+    .info-block-wrapper {
+      height: 100%;
       position: relative;
       width: 100%;
+      z-index: 1;
     }
     .info-text {
       bottom: get-vw(250px, 1901);
@@ -795,7 +789,7 @@
     right: get-vw(40px, 1901);
     top: get-vw(40px, 1901);
     width: get-vw(53px, 1901);
-    z-index: 1;
+    z-index: 2;
     @include breakpoint($bp-min-1901-width) {
       height: 53px;
       right: 40px;
@@ -838,12 +832,20 @@
     .close-button {
       display: block;
     }
+    .share-block-preview-back {
+      height: 100%;
+      left: 0;
+      opacity: 0.7;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
     .share-block-preview-wrapper {
       height: 100%;
-      opacity: 0.7;
       padding-top: get-vw(216px, 1901);
       position: relative;
       width: 100%;
+      z-index: 1;
       @include breakpoint($bp-min-1901-width) {
         padding-top: 216px;
       }
@@ -927,6 +929,7 @@
       }
     }
     .first, .second, .third {
+      color: black;
       position: relative;
       &:before {
         @include cssRightTriangle(get-vw(110px, 1901), white, top, right);
@@ -1248,6 +1251,7 @@
 
   .drop-area__item {
     position: relative;
+    color: black;
     display: inline-block;
     height: get-vw(136px, 1901);
     margin: 0 1% 0 1%;
@@ -1492,6 +1496,7 @@
           width: 100%;
         }
         .first, .second, .third {
+          color: black;
           &:before {
             @include cssRightTriangle(get-vw(110px, 1901), white, top, right);
             border-left-width: get-vw(119px, 1901);

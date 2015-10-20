@@ -419,28 +419,46 @@
 
         //simulation mouse controlls to resize drag contex
         var mouse_button = false;
-        $('.slide-content')
-            .mousedown(function(){
-              mouse_button = true;
-              $('.slide-content').addClass('slide-item-grab');
-            })
-            .mouseup(function(){
-              mouse_button = false;
-              $('.slide-content').removeClass('slide-item-grab');
+        var IE_version = getInternetExplorerVersion();
+        switch (IE_version) {
 
-            })
-            .mouseout(function(){
-              if (mouse_button) {
-                mouse_button = false;
-                $('.slide-content').removeClass('slide-item-grab');
-              }
-            })
-            .mouseover(function(){
-              if (mouse_button) {
-                mouse_button = false;
-                $('.slide-content').removeClass('slide-item-grab');
-              }
+          case 11:
+            $('.slide-content').on('pointerdown', function(el){
+              mouse_button = true;
+              $(el.currentTarget).addClass('slide-item-grab');
             });
+
+            break;
+
+          case 10:
+            $('.slide-content').on('MSPointerDown', function(el){
+              mouse_button = true;
+              $(el.currentTarget).addClass('slide-item-grab');
+            });
+
+            break;
+
+        }
+        $('.slide-content').on('mousedown', function(el){
+          mouse_button = true;
+          $(el.currentTarget).addClass('slide-item-grab');
+        });
+        $('.slide-content').on('mouseup', function(){
+          mouse_button = false;
+          $('.slide-content').removeClass('slide-item-grab');
+        });
+        $('.slide-content').on('mouseout', function(){
+          if (mouse_button) {
+            mouse_button = false;
+            $('.slide-content').removeClass('slide-item-grab');
+          }
+        });
+        $('.slide-content').on('mouseover', function(){
+          if (mouse_button) {
+            mouse_button = false;
+            $('.slide-content').removeClass('slide-item-grab');
+          }
+        });
 
         //mobile draging
         $('.slide-content').on('touchstart', function(e){
@@ -493,7 +511,7 @@
               dropZone = setInterval(function(){
 
                 for(count=0; count<top3target.length; count++){
-
+                  console.info(top3target);
                   onDragCount = top3target[count].classList.length == 4;
                   isHighlighet = top3target[count].classList[3] == 'highlight';
 
@@ -550,9 +568,9 @@
                 var ctx = canvas.getContext('2d');
                 var image = new Image();
                 image.src = ctx['canvas'].toDataURL("image/png");
-                ctx['canvas'].height = 169;
-                ctx['canvas'].width = 300;
-                ctx.drawImage(image, 0, 0, 300, 169);
+                ctx['canvas'].height = 338;
+                ctx['canvas'].width = 600;
+                ctx.drawImage(image, 0, 0, 600, 338);
                 image.src = ctx['canvas'].toDataURL("image/png");
                 return image;
               }
@@ -663,30 +681,6 @@
                       });
                     });
                   });
-
-                  /*$('#share-button-temp').click(function(){
-                    location.reload();
-                    $('#share-block').css({
-                      visibility: 'hidden',
-                      zIndex:'0'
-                    });
-                    $('#share-block .slide-content-inner').remove();
-                    $('#share-img img').remove();
-                    $('.drop-area__item').removeAttr('style');
-                    $('.drop-area__item .slide-content-inner').remove();
-                    $('#share-block-preview .slide-content-inner').remove();
-                    classie.remove( dropArea, 'show' );
-                    sliderWrapper.slick('slickGoTo', 0);
-                    $('#share-button-temp').hide().unbind('click');
-                    $('#share-button').removeClass('ready').unbind('click').show();
-                    $('.control-button').show();
-                    $('#counter').show();
-                    slideTitle.show();
-                    $('.play-button').show();
-                    $('#info').show();
-                    $('.drag-group').show();
-                    $('#drag-icon-block').show();
-                  });*/
 
                   $('#share-block-preview').once('share-block-preview',function () {
                     $('#drag-icon-block').remove();

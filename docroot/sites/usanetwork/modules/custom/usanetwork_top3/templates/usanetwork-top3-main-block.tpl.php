@@ -61,7 +61,8 @@
   </div>
   <div id="share-block-preview">
     <div id="share-preview-close" class="close-button"></div>
-    <div class="share-block-preview-wrapper show-color">
+    <div class="share-block-preview-back show-color"></div>
+      <div class="share-block-preview-wrapper">
       <div class="first-text-line"><?php print t('CLICK AND DRAG THE THUMBNAILS OVER A DIFFERENT BOX TO CHANGE THE ORDER OR CLOSE TO CONTINUE PICKING YOUR TOP 3'); ?></div>
       <div class="preview-items-block">
         <div class="first preview-item" id="preview-one" data-id="one">

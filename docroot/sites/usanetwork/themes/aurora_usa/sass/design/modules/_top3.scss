@@ -937,7 +937,8 @@
         padding-top: get-vw(165.3px, 1024);
       }
     }
-    .first, .second, .third {
+    .preview-item {
+      color: black;
       display: block;
       float: left;
       height: get-vw(161px, 1901);
@@ -950,12 +951,65 @@
       @include breakpoint($bp-1024-width) {
         height: get-vw(123.219px, 1024);
       }
+      &:before {
+        @include cssRightTriangle(get-vw(68px, 1901), white, top, right);
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        @include breakpoint($bp-min-1901-width) {
+          border-top-width: 68px;
+          border-left-width: 68px;
+        }
+        @include breakpoint($bp-1024-width) {
+          border-top-width: get-vw(52.03px, 1024);
+          border-left-width: get-vw(52.03px, 1024);
+        }
+      }
+      &:after {
+        display: block;
+        font-family: $tex-gyreschola-regular;
+        font-size: get-vw(40px, 1901);
+        height: get-vw(40px, 1901);
+        line-height: get-vw(40px, 1901);
+        position: absolute;
+        text-align: center;
+        right: 0;
+        top: 0;
+        width: get-vw(40px, 1901);
+        z-index: 1;
+        @include breakpoint($bp-min-1901-width) {
+          height: 40px;
+          font-size: 40px;
+          line-height: 40px;
+          width: 40px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(30.6px, 1024);
+          height: get-vw(30.6px, 1024);
+          line-height: get-vw(30.6px, 1024);
+          width: get-vw(30.6px, 1024);
+        }
+      }
       .title {
         display: none;
       }
     }
+    .first {
+      &:after {
+        content: '1';
+      }
+    }
+    .second {
+      &:after {
+        content: '2';
+      }
+    }
     .third {
       margin-right: 0;
+      &:after {
+        content: '3';
+      }
     }
     img {
       height: 100%;

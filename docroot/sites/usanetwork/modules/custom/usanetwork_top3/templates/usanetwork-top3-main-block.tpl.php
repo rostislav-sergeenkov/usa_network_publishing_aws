@@ -74,13 +74,13 @@
         <div
           class="first-text-line"><?php print t('CLICK AND DRAG THE THUMBNAILS OVER A DIFFERENT BOX TO CHANGE THE ORDER OR CLOSE TO CONTINUE PICKING YOUR TOP 3'); ?></div>
         <div class="preview-items-block">
-          <div class="first preview-item" id="preview-one" data-id="one">
+          <div class="first preview-item show-color show-font" id="preview-one" data-id="one">
 
           </div>
-          <div class="second preview-item" id="preview-two" data-id="two">
+          <div class="second preview-item show-color show-font" id="preview-two" data-id="two">
 
           </div>
-          <div class="third preview-item" id="preview-three" data-id="three">
+          <div class="third preview-item show-color show-font" id="preview-three" data-id="three">
 
           </div>
         </div>

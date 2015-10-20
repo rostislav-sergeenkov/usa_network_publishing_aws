@@ -42,6 +42,7 @@
   <div class="container-message"><?php print t('Sorry you have already added that item.'); ?></div>
   <div id="info-block">
     <div id="info-close" class="close-button"></div>
+    <div class="info-block-back"></div>
     <div class="info-block-wrapper">
       <div class="info-text">
         <div class="top-text"><?php print t('Select your top 3 favorite ') . $top3_title . t(' and then share them with your friends and family!'); ?></div>
@@ -61,7 +62,8 @@
   </div>
   <div id="share-block-preview">
     <div id="share-preview-close" class="close-button"></div>
-    <div class="share-block-preview-wrapper show-color">
+    <div class="share-block-preview-back show-color"></div>
+    <div class="share-block-preview-wrapper">
       <div class="first-text-line"><?php print t('CLICK AND DRAG THE THUMBNAILS OVER A DIFFERENT BOX TO CHANGE THE ORDER OR CLOSE TO CONTINUE PICKING YOUR TOP 3'); ?></div>
       <div class="preview-items-block">
         <div class="first preview-item" id="preview-one" data-id="one">

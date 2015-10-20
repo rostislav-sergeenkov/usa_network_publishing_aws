@@ -1606,7 +1606,7 @@ function _usanetwork_tv_shows_aspot_block() {
     $alternative_title_field = field_get_items('node', $show_node, 'field_tvs_lea_block_title');
 
     $theme_variables['episodes_block_title'] = t('Latest full episodes');
-    $theme_variables['show'] = usanetwork_aspot_tvshow_render($show_node);
+    $theme_variables['show'] = '<div id="ajax_aspot_show"></div>';
 
     $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
 

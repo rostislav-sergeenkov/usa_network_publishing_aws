@@ -27,6 +27,15 @@ function usanetwork_aspot_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/usanetwork-aspot/get-aspot-show/%node'] = array(
+    'title' => '',
+    'page callback' => 'usanetwork_aspot_get_aspot_show_ajax',
+    'page arguments' => array(3),
+    'delivery callback' => 'drupal_json_output',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -304,7 +313,7 @@ function usanetwork_aspot_block_view($delta = '') {
     case 'usanetwork_aspot_carousel':
       $block['subject'] = '';
       $block['content'] = array(
-        '#markup' => _usanetwork_aspot_carousel_block(),
+        '#markup' => '<div id="ajax_aspot_slider"></div>',
         '#attached' => array(
           'js' => array(
             path_to_theme('aurora_usa') . '/javascripts/slick.min.js',
@@ -774,6 +783,16 @@ function usanetwork_aspot_get_aspot_carousel_ajax() {
   return $result;
 }
 
+function usanetwork_aspot_get_aspot_show_ajax($show_node) {
+  $aspot_version = usanetwork_aspot_get_adobe_ab_aspot_version();
+  $content = usanetwork_aspot_tvshow_render($show_node, $aspot_version);
+  $result = array();
+  if (!empty($content)) {
+    $result['content'] = $content;
+  }
+  return $result;
+}
+
 /**
  * @return array
  */
@@ -783,6 +802,10 @@ function usanetwork_aspot_get_adobe_ab_versions_of_slides() {
     1 => 'b',
     2 => 'c',
   );
+}
+
+function usanetwork_aspot_get_adobe_ab_aspot_version() {
+  return 'b';
 }
 
 function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
@@ -922,14 +945,26 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
   return theme('usanetwork_aspot_carousel_slide', $theme_array);
 }
 
-function usanetwork_aspot_tvshow_render($show_node) {
+function usanetwork_aspot_tvshow_render($show_node, $aspot_version = NULL) {
   $aspot_field = field_get_items('node', $show_node, 'field_usa_tv_a_spot');
 
   if (!empty($aspot_field) && is_array($aspot_field)) {
     foreach ($aspot_field as $aspot) {
       if (!empty($aspot['target_id'])) {
         $aspot_node = node_load($aspot['target_id']);
-
+        $get_other_version = FALSE;
+        if ($aspot_version) {
+          if (usanetwork_core_api_check_field($aspot_node, 'field_a_spot', 'node')) {
+            $get_other_version = TURE;
+          }
+        }
+        if ($get_other_version) {
+          $aspot_wrapper = entity_metadata_wrapper('node', $aspot_node);
+          $version_delta = usanetwork_aspot_get_delta_letter_by_version($aspot_version) - 1;
+          if (isset($aspot_wrapper->field_a_spot[$version_delta])) {
+            $aspot_node = $aspot_wrapper->field_a_spot[$version_delta]->value();
+          }
+        }
         if ($aspot_node) {
           return usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node);
         }

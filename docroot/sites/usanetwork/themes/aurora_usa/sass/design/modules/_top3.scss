@@ -101,6 +101,12 @@
             top: get-vw(30.6px, 1024);
             width: get-vw(40.5px, 1024);
           }
+          @include breakpoint($bp-768-width) {
+            border-width: 2px;
+          }
+          @include breakpoint($bp-480-width) {
+            border-width: 1px;
+          }
           &:before {
             content: '\e627';
             display: block;
@@ -118,6 +124,12 @@
             @include breakpoint($bp-1024-width) {
               font-size: get-vw(30.6px, 1024);
               line-height: calc(3.66vw - 3px);
+            }
+            @include breakpoint($bp-768-width) {
+              line-height: calc(3.66vw - 2px);
+            }
+            @include breakpoint($bp-480-width) {
+              line-height: calc(3.66vw - 1px);
             }
           }
           &.play {
@@ -759,6 +771,12 @@
       top: get-vw(30.6px, 1024);
       width: get-vw(40.5px, 1024);
     }
+    @include breakpoint($bp-768-width) {
+      border-width: 2px;
+    }
+    @include breakpoint($bp-480-width) {
+      border-width: 1px;
+    }
     &:before {
       content: '\e623';
       display: block;
@@ -776,6 +794,12 @@
       @include breakpoint($bp-1024-width) {
         font-size: get-vw(30.6px, 1024);
         line-height: calc(3.66vw - 3px);
+      }
+      @include breakpoint($bp-768-width) {
+        line-height: calc(3.66vw - 2px);
+      }
+      @include breakpoint($bp-480-width) {
+        line-height: calc(3.66vw - 1px);
       }
     }
   }
@@ -802,6 +826,12 @@
       top: get-vw(30.6px, 1024);
       width: get-vw(40.5px, 1024);
     }
+    @include breakpoint($bp-768-width) {
+      border-width: 2px;
+    }
+    @include breakpoint($bp-480-width) {
+      border-width: 1px;
+    }
     &:before {
       content: '\e624';
       display: block;
@@ -819,6 +849,12 @@
       @include breakpoint($bp-1024-width) {
         font-size: get-vw(30.6px, 1024);
         line-height: calc(3.66vw - 3px);
+      }
+      @include breakpoint($bp-768-width) {
+        line-height: calc(3.66vw - 2px);
+      }
+      @include breakpoint($bp-480-width) {
+        line-height: calc(3.66vw - 1px);
       }
     }
   }

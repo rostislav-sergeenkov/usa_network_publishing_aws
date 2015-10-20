@@ -222,6 +222,12 @@ function _usanetwork_top3_main_block() {
 
     $player = _usanetwork_mpx_video_get_player_src(array('parent_account' => '1', 'player_id' => 'top3_usa'), 'player');
 
+    if (!empty($node->body)){
+      $top3_description = strip_tags($node_wrapper->body->value->value());
+    }
+
+    drupal_add_js(array('top3_title' => $node->title, 'top3_description' => isset($top3_description) ? $top3_description : ''),'setting');
+
     $theme_variables = array(
       'slides' => $slides,
       'logo' => isset($logo) ? $logo : NULL,

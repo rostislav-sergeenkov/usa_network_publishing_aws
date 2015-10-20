@@ -44,7 +44,72 @@
       padding-bottom: calc(26.25vw + 250px);
     }
   }
-  #slider-container {
+  // player iframe
+  #slider-player {
+    opacity: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+    &, iframe {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  // play button
+  #play-button {
+    background: none;
+    border: 3px solid white;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: none;
+    height: get-vw(53px, 1901);
+    left: get-vw(40px, 1901);
+    position: absolute;
+    top: get-vw(40px, 1901);
+    width: get-vw(53px, 1901);
+    z-index: 1;
+    @include breakpoint($bp-min-1901-width) {
+      height: 53px;
+      left: 40px;
+      top: 40px;
+      width: 53px;
+    }
+    @include breakpoint($bp-1024-width) {
+      height: get-vw(40.5px, 1024);
+      left: get-vw(30.6px, 1024);
+      top: get-vw(30.6px, 1024);
+      width: get-vw(40.5px, 1024);
+    }
+    &:before {
+      content: '\e627';
+      display: block;
+      font-family: "ico-font";
+      font-size: get-vw(40px, 1901);
+      height: 100%;
+      line-height: calc(2.7vw - 3px);
+      position: relative;
+      text-align: center;
+      width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 40px;
+        line-height: 50px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(30.6px, 1024);
+        line-height: calc(3.66vw - 3px);
+      }
+    }
+    &.play {
+      &:before {
+        content: '\e626';
+      }
+    }
+    &.inactive {
+      display: none;
+    }
+  }
+  #top3-slider-wrapper {
     float: left;
     height: get-vw(720px, 1901);
     overflow: hidden;
@@ -67,6 +132,10 @@
     @include breakpoint($bp-480-width) {
       height: 52.8vw;
     }
+  }
+  #slider-container {
+    height: 100%;
+    width: 100%;
     .load-more-loader {
       margin-top: -16px;
       top: 50%;
@@ -101,12 +170,6 @@
             top: get-vw(30.6px, 1024);
             width: get-vw(40.5px, 1024);
           }
-          @include breakpoint($bp-768-width) {
-            border-width: 2px;
-          }
-          @include breakpoint($bp-480-width) {
-            border-width: 1px;
-          }
           &:before {
             content: '\e627';
             display: block;
@@ -125,12 +188,6 @@
               font-size: get-vw(30.6px, 1024);
               line-height: calc(3.66vw - 3px);
             }
-            @include breakpoint($bp-768-width) {
-              line-height: calc(3.66vw - 2px);
-            }
-            @include breakpoint($bp-480-width) {
-              line-height: calc(3.66vw - 1px);
-            }
           }
           &.play {
             &:before {
@@ -144,22 +201,9 @@
       }
     }
 
-    .video-wrapper {
+    .video-data {
       height: 100%;
       width: 100%;
-      &.active {
-        display: block;
-        background: #000000;
-        height: 100%;
-        width: 100%;
-        .fix-drag {
-          position: absolute;
-          height: calc(100% - 33px);
-          top: 0;
-          left: 0;
-          width: 100%;
-        }
-      }
     }
 
     .img-wrapper {
@@ -865,6 +909,7 @@
     position: absolute;
     top: 0;
     width: 100%;
+    z-index: 1;
     .close-button {
       display: block;
     }
@@ -1150,7 +1195,7 @@
     height: 100%;
     width: 100%;
     &.inactive {
-      display: none;
+      visibility: hidden;
     }
     .title {
       display: none;
@@ -1182,7 +1227,7 @@
     z-index: 100;
   }
   .slide-item-grab {
-    background: #f9f9f9;
+    //background: #f9f9f9;
     border-radius: 5px;
     color: #76737C;
     display: inline-block;
@@ -1193,6 +1238,7 @@
     position:absolute;
     text-align: center;
     text-indent: -9000px;
+    visibility: visible;
     width: get-vw(242px, 1901);
     z-index: 500000;
     @include breakpoint($bp-min-1901-width) {
@@ -1213,6 +1259,9 @@
     &:active {
       cursor: -webkit-grabbing;
       cursor: grabbing;
+    }
+    .slide-content-inner.inactive {
+      visibility: visible;
     }
   }
   .preview-item-grab {

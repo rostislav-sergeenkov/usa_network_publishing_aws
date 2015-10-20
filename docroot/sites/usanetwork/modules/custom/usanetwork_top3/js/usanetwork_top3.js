@@ -28,14 +28,17 @@
         slide = sliderContainer.find('.slide'),
         slideTitle = slide.find('.title'),
         nextArrow = sliderContainer.find('.next'),
-        prevArrow = sliderContainer.find('.prev');
+        prevArrow = sliderContainer.find('.prev'),
+        playButton = $('#play-button'),
+        videoBlock = $('#slider-player');
 
     function infoOpen() {
       $('#info').hide();
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
-      $('.play-button').hide();
+      //$('.play-button').hide();
+      playerService.hidePlayButton();
       $('.drag-group').hide();
       $('#info-block').show();
     }
@@ -44,7 +47,8 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
-      $('.play-button').show();
+      //$('.play-button').show();
+      playerService.showPlayButton();
       $('.drag-group').show();
       $('#info').show();
     }
@@ -53,7 +57,8 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
-      $('.play-button').hide();
+      //$('.play-button').hide();
+      playerService.hidePlayButton();
       $('.drag-group').hide();
       $('#drag-icon-block').hide();
       $('#share-block-preview').show();
@@ -63,7 +68,8 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
-      $('.play-button').show();
+      //$('.play-button').show();
+      playerService.showPlayButton();
       $('.drag-group').show();
       $('#drag-icon-block').show();
       $('#info').show();
@@ -86,111 +92,148 @@
     // player service
     var playerService = {
 
-      createPlayer: function (el) {
-        var elem = el || $('#slider-container .slick-active'),
-            videoBlock = elem.find('.video-wrapper'),
-            neighborBlock = elem.find('.slide-content-inner'),
-            src = videoBlock.data('src'),
-            frame = "<iframe src=" + src + " id='slide-player' allowfullscreen='' width='100%' height='100%' frameborder='0'></iframe>";
+      playerStatus: false, // default value
+      mediaLoadStatus: false, // default value
+      mediaPlayStatus: false, // default value
+
+      createPlayer: function () {
+            var src = videoBlock.data('player-src'),
+            frame, slide;
+
+        if (src == undefined || src == '') {
+          src = $('#slider-container .slide .video-data:eq(0)').data('src').replace('autoPlay=true', 'autoPlay=false')
+        }
+
+        frame = "<iframe src=" + src + " id='pdk-player' allowfullscreen='' width='100%' height='100%' frameborder='0'></iframe>";
 
         if (!videoBlock.hasClass('active')) {
-          console.info('createPlayer');
-          // make image block inactive
-          neighborBlock.addClass('inactive');
-
-          // show video player
           videoBlock
               .append(frame)
-              .addClass('active')
-              .removeClass('hide-block')
-              .velocity("fadeIn", {
-                duration: 200
-              });
+              .addClass('active');
 
           // add player listeners
-          playerService.bindPlayer(elem);
+          playerService.bindPlayer();
         }
       },
+      bindPlayer: function () {
 
-      removePlayer: function (el) {
-        var elem = el || $('#slider-container .slick-active'),
-            videoBlock = elem.find('.video-wrapper'),
-            neighborBlock = elem.find('.slide-content-inner'),
-            frame = videoBlock.find('#slide-player'),
-            playButton = elem.find('.play-button');
+        // check on $pdk object
+        if (!($pdk = window.$pdk)) {
+          return;
+        }
+
+
+        $pdk.bind('pdk-player');
+        $pdk.controller.addEventListener('OnMediaStart', _onMediaStart);
+        $pdk.controller.addEventListener('OnMediaPause', _onMediaPause);
+        $pdk.controller.addEventListener('OnMediaUnpause', _onMediaUnpause);
+        $pdk.controller.addEventListener('OnMediaLoadStart', _onMediaLoadStart);
+        $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+
+        function _onMediaStart(pdkEvent) {
+          playerService.mediaLoadStatus = false;
+          playerService.mediaPlayStatus = true;
+          // change status play button
+          playButton.attr('data-player-status', 'start');
+        }
+
+        function _onMediaPause(pdkEvent) {
+          playButton.removeClass('play');
+        }
+
+        function _onMediaUnpause(pdkEvent) {
+          playButton.addClass('play');
+        }
+
+        function _onMediaLoadStart(pdkEvent) {
+          playerService.mediaLoadStatus = true;
+        }
+
+        function _onReleaseEnd(pdkEvent) {
+          playerService.mediaPlayStatus = false;
+          // hide player
+          playerService.hidePlayer();
+        }
+      },
+      playPlayer: function () {
+        $pdk.controller.clickPlayButton(true);
+        $pdk.controller.pause(false);
+      },
+      pausePlayer: function () {
+        $pdk.controller.clickPlayButton(false);
+        $pdk.controller.pause(true);
+      },
+      showPlayer: function () {
+        var activeSlide = $('#slider-container .slick-active'),
+            srcLink = activeSlide.find('.video-data').data('src-link'),
+            src = activeSlide.find('.video-data').data('src'),
+            neighborBlock = activeSlide.find('.slide-content-inner');
 
         if (videoBlock.hasClass('active')) {
-          console.info('removePlayer');
-          // hide video block
-          videoBlock
-              .addClass('hide-block')
-              .removeClass('active')
-              .css({
-                display: 'none',
-                opacity: 0
-              });
 
-          // remove player block
-          frame.remove();
+          //change player status
+          playerService.playerStatus = true;
+
+          // change video in player
+          $pdk.controller.setReleaseURL(srcLink, true);
+
+          neighborBlock.addClass('inactive');
+          videoBlock.velocity("fadeIn", {
+            duration: 200
+          });
+        }
+      },
+      hidePlayer: function (el) {
+        var activeSlide = $('#slider-container .slick-active'),
+            neighborBlock = activeSlide.find('.slide-content-inner'),
+            playButton = $('#play-button');
+
+        if (playerService.playerStatus) {
+
+          //change player status
+          playerService.playerStatus = false;
+
+          // stop video
+          $pdk.controller.endCurrentRelease();
 
           // make image block active
           neighborBlock.removeClass('inactive');
+          videoBlock.css({
+            opacity: 0
+          });
 
           // reset play button
           playButton
               .removeAttr('data-player-status')
               .removeClass('inactive play');
-
-          // reset player listeners
-          playerService.resetPlayer();
         }
       },
-
-      bindPlayer: function (elem) {
-
-        var playButton = elem.find('.play-button.inactive');
-
-        // check on $pdk object
-        if (!($pdk = window.$pdk)) {
-          console.info('bindPlayer return');
-          return;
-        }
-        console.info('bindPlayer');
-        $pdk.bind('slide-player');
-        $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
-        $pdk.controller.addEventListener('OnMediaStart', _onMediaStart);
-
-        function _onMediaStart(pdkEvent) {
-          console.info('_onMediaStart');
-          // change status play button
-          playButton.attr('data-player-status', 'start');
-        }
-
-        function _onReleaseEnd(pdkEvent) {
-          console.info('OnReleaseEnd');
-          // remove player
-          playerService.removePlayer();
-        }
-      },
-
-      playPlayer: function () {
-        console.info('playPlayer');
-        $pdk.controller.clickPlayButton(true);
-        $pdk.controller.pause(false);
-      },
-
-      pausePlayer: function () {
-        console.info('pausePlayer');
-        $pdk.controller.clickPlayButton(false);
-        $pdk.controller.pause(true);
-      },
-
       resetPlayer: function () {
-        console.info('resetPlayer');
-        $pdk.controller.listenerId = 0;
-        for (var key in $pdk.controller.listeners) {
-          delete $pdk.controller.listeners[key];
+        if (playerService.mediaLoadStatus) {
+          // stop video
+          $pdk.controller.endCurrentRelease();
+        } else {
+          playerService.pausePlayer();
         }
+      },
+      showPlayButton: function () {
+        var slideActive = $('#slider-container .slick-active'),
+            srcLink;
+
+        if (slideActive.length > 0) {
+          srcLink = slideActive.find('.video-data').data('src-link');
+        } else {
+          srcLink = $('#slider-container .slide:eq(0) .video-data').data('src-link');
+        }
+
+        if (srcLink != undefined) {
+          playButton.show();
+        } else {
+          playButton.hide();
+        }
+      },
+      hidePlayButton: function () {
+        playButton.hide();
       }
     };
     // end
@@ -199,21 +242,18 @@
       init : function(config){
 
         // add click on play button in slide
-        $('#slider-container .play-button').on('click', function () {
+        $('#play-button').on('click', function () {
 
-          var playButton = $(this),
-              parentBlock = playButton.closest('.slide.slick-active');
+          var playBtn = $(this);
 
-          if (!playButton.hasClass('inactive')) {
-            playButton
-                .addClass('inactive play');
-            playerService.createPlayer(parentBlock);
-          } else if(playButton.data('player-status') === 'start') {
-            if (playButton.hasClass('play')) {
-              playButton.removeClass('play');
+          if (!playBtn.hasClass('inactive')) {
+            playBtn.addClass('inactive play');
+            // show player
+            playerService.showPlayer();
+          } else if(playBtn.data('player-status') === 'start') {
+            if (playBtn.hasClass('play')) {
               playerService.pausePlayer();
-            } else if (!playButton.hasClass('play')){
-              playButton.addClass('play');
+            } else if (!playBtn.hasClass('play')){
               playerService.playPlayer();
             }
           }
@@ -277,17 +317,17 @@
               speed: 300
             })
             .on('afterChange', function(event, slick, currentSlide){
+              playerService.showPlayButton();
               currentSlideNum.text(currentSlide + 1);
               if ($('body').hasClass('node-type-top3-gallery')) {
                 Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
               }
             })
             .on('beforeChange', function(event, slick, currentSlide, nextSlide){
-
-              var currentSlideBlock = sliderWrapper.find('.slide.slick-active');
-
-              // remove player
-              playerService.removePlayer(currentSlideBlock);
+              if (playerService.playerStatus) {
+                // hide player
+                playerService.hidePlayer();
+              }
             });
 
       },
@@ -480,6 +520,13 @@
 
               console.log($(el).attr('data-slide-id'));
 
+              // check player status on drag start
+              if (playerService.mediaLoadStatus ) {
+                playerService.resetPlayer();
+              } else if (playerService.mediaPlayStatus) {
+                playerService.pausePlayer();
+              }
+
               //finds induvidul all id in drop area
               var matchId = $(el).find('.slide-content-inner').attr('data-slide-id');
               var findMatchOne = $('#one').find('.slide-content-inner').attr('data-slide-id');
@@ -511,7 +558,7 @@
               dropZone = setInterval(function(){
 
                 for(count=0; count<top3target.length; count++){
-                  console.info(top3target);
+                  //console.info(top3target);
                   onDragCount = top3target[count].classList.length == 4;
                   isHighlighet = top3target[count].classList[3] == 'highlight';
 
@@ -614,7 +661,8 @@
                       $('.control-button').hide();
                       $('#counter').hide();
                       slideTitle.hide();
-                      $('.play-button').hide();
+                      //$('.play-button').hide();
+                      playerService.hidePlayButton();
                       $('.drag-group').hide();
                       $('#share-block img').remove();
                       $('#share-block .first').html($('#one .slide-content-inner').clone());
@@ -870,6 +918,8 @@
       }
 
     };
+    // create player block
+    playerService.createPlayer();
     top3Usanetwork.init();
     Drupal.behaviors.mpsAdvert.mpsLoadAd('#topbox', 'topbox');
 

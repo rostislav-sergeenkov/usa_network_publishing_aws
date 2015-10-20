@@ -19,18 +19,19 @@ function usanetwork_aspot_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/usanetwork-aspot/get-aspot-carousel'] = array(
+  $items['ajax/usanetwork-aspot/get-aspot-carousel/%'] = array(
     'title' => '',
     'page callback' => 'usanetwork_aspot_get_aspot_carousel_ajax',
+    'page arguments' => array(3),
     'delivery callback' => 'drupal_json_output',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/usanetwork-aspot/get-aspot-show/%node'] = array(
+  $items['ajax/usanetwork-aspot/get-aspot-show/%node/%'] = array(
     'title' => '',
     'page callback' => 'usanetwork_aspot_get_aspot_show_ajax',
-    'page arguments' => array(3),
+    'page arguments' => array(3, 4),
     'delivery callback' => 'drupal_json_output',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -771,8 +772,9 @@ function _usanetwork_aspot_carousel_block($slides_versions_arr = array()) {
 /**
  * Ajax Callback witch return aspot carousel for home section.
  */
-function usanetwork_aspot_get_aspot_carousel_ajax() {
-  $slides_versions_arr = usanetwork_aspot_get_adobe_ab_versions_of_slides();
+function usanetwork_aspot_get_aspot_carousel_ajax($versions) {
+  // Versions parameter example - "s1vbs2vbs3vc"
+  $slides_versions_arr = usanetwork_aspot_get_adobe_ab_versions_of_slides($versions);
   $content =  _usanetwork_aspot_carousel_block($slides_versions_arr);
   $js_settings = drupal_add_js();
   $js_settings_string = drupal_json_encode(drupal_array_merge_deep_array($js_settings['settings']['data']));
@@ -783,8 +785,7 @@ function usanetwork_aspot_get_aspot_carousel_ajax() {
   return $result;
 }
 
-function usanetwork_aspot_get_aspot_show_ajax($show_node) {
-  $aspot_version = usanetwork_aspot_get_adobe_ab_aspot_version();
+function usanetwork_aspot_get_aspot_show_ajax($show_node, $aspot_version) {
   $content = usanetwork_aspot_tvshow_render($show_node, $aspot_version);
   $result = array();
   if (!empty($content)) {
@@ -794,18 +795,21 @@ function usanetwork_aspot_get_aspot_show_ajax($show_node) {
 }
 
 /**
+ * Parse A-spot versions parameter.
+ *
  * @return array
  */
-function usanetwork_aspot_get_adobe_ab_versions_of_slides() {
-  return array(
-    0 => 'b',
-    1 => 'b',
-    2 => 'c',
-  );
-}
-
-function usanetwork_aspot_get_adobe_ab_aspot_version() {
-  return 'b';
+function usanetwork_aspot_get_adobe_ab_versions_of_slides($versions) {
+  $versions_arr = explode('s', $versions);
+  $versions_result = array();
+  foreach ($versions_arr as $version) {
+    $version_arr =  explode('v', $version);
+    if (!empty($version_arr[0]) && !empty($version_arr[1])) {
+      // $version[0] is index of slide. $version[1] is version.
+      $versions_result[$version_arr[0] - 1] = $version_arr[1];
+    }
+  }
+  return $versions_result;
 }
 
 function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {

@@ -29,6 +29,12 @@ function usanetwork_top3_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'usanetwork_top3-usanetwork_top3_main_block' => array(
           'module' => 'usanetwork_top3',
           'delta' => 'usanetwork_top3_main_block',

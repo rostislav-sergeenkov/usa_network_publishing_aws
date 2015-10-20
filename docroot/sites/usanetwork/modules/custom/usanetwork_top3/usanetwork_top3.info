@@ -21,6 +21,7 @@ dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = text
 dependencies[] = usanetwork_field_formatters
+dependencies[] = usanetwork_menu
 dependencies[] = usanetwork_opengraph
 dependencies[] = usanetwork_promo
 dependencies[] = usanetwork_seo

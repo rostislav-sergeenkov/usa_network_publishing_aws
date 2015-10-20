@@ -144,6 +144,61 @@
     // start
     .slide {
       position: relative;
+      &.slick-active {
+        .play-button {
+          background: none;
+          border: 3px solid white;
+          border-radius: 50%;
+          color: white;
+          cursor: pointer;
+          display: none;
+          height: get-vw(53px, 1901);
+          left: get-vw(40px, 1901);
+          position: absolute;
+          top: get-vw(40px, 1901);
+          width: get-vw(53px, 1901);
+          z-index: 1;
+          @include breakpoint($bp-min-1901-width) {
+            height: 53px;
+            left: 40px;
+            top: 40px;
+            width: 53px;
+          }
+          @include breakpoint($bp-1024-width) {
+            height: get-vw(40.5px, 1024);
+            left: get-vw(30.6px, 1024);
+            top: get-vw(30.6px, 1024);
+            width: get-vw(40.5px, 1024);
+          }
+          &:before {
+            content: '\e627';
+            display: block;
+            font-family: "ico-font";
+            font-size: get-vw(40px, 1901);
+            height: 100%;
+            line-height: calc(2.7vw - 3px);
+            position: relative;
+            text-align: center;
+            width: 100%;
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 40px;
+              line-height: 50px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: get-vw(30.6px, 1024);
+              line-height: calc(3.66vw - 3px);
+            }
+          }
+          &.play {
+            &:before {
+              content: '\e626';
+            }
+          }
+        }
+      }
+      .play-button, .play-button.inactive {
+        display: none;
+      }
     }
 
     .video-data {
@@ -760,6 +815,12 @@
       top: get-vw(30.6px, 1024);
       width: get-vw(40.5px, 1024);
     }
+    @include breakpoint($bp-768-width) {
+      border-width: 2px;
+    }
+    @include breakpoint($bp-480-width) {
+      border-width: 1px;
+    }
     &:before {
       content: '\e623';
       display: block;
@@ -777,6 +838,12 @@
       @include breakpoint($bp-1024-width) {
         font-size: get-vw(30.6px, 1024);
         line-height: calc(3.66vw - 3px);
+      }
+      @include breakpoint($bp-768-width) {
+        line-height: calc(3.66vw - 2px);
+      }
+      @include breakpoint($bp-480-width) {
+        line-height: calc(3.66vw - 1px);
       }
     }
   }
@@ -803,6 +870,12 @@
       top: get-vw(30.6px, 1024);
       width: get-vw(40.5px, 1024);
     }
+    @include breakpoint($bp-768-width) {
+      border-width: 2px;
+    }
+    @include breakpoint($bp-480-width) {
+      border-width: 1px;
+    }
     &:before {
       content: '\e624';
       display: block;
@@ -820,6 +893,12 @@
       @include breakpoint($bp-1024-width) {
         font-size: get-vw(30.6px, 1024);
         line-height: calc(3.66vw - 3px);
+      }
+      @include breakpoint($bp-768-width) {
+        line-height: calc(3.66vw - 2px);
+      }
+      @include breakpoint($bp-480-width) {
+        line-height: calc(3.66vw - 1px);
       }
     }
   }
@@ -859,12 +938,17 @@
       }
     }
     .first, .second, .third {
-      display: inline-block;
+      display: block;
+      float: left;
+      margin-right: 2%;
       position: relative;
       width: 32%;
       .title {
         display: none;
       }
+    }
+    .third {
+      margin-right: 0;
     }
     img {
       height: 100%;
@@ -896,6 +980,8 @@
       }
     }
     .preview-items-block {
+      @include clear();
+      line-height: 1;
       margin: get-vw(15px, 1901) auto get-vw(30px, 1901);
       position: relative;
       width: 70%;

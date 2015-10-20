@@ -501,11 +501,11 @@
         });
 
         //mobile draging
-        $('.slide-content').on('touchstart', function(e){
-          $('.slide-content').addClass('slide-item-grab');
+        $('.slide-content').on('touchstart', function(el){
+          $(el.currentTarget).addClass('slide-item-grab');
         });
 
-        $('.slide-content').on('touchend', function(e){
+        $('.slide-content').on('touchend', function(){
           $('.slide-content').removeClass('slide-item-grab');
         });
 
@@ -818,11 +818,11 @@
             });
 
         //mobile draging
-        $('.preview-item').on('touchstart', function(e){
-          $('.preview-item').addClass('preview-item-grab');
+        $('.preview-item').on('touchstart', function(el){
+          $(el.currentTarget).addClass('preview-item-grab');
         });
 
-        $('.preview-item').on('touchend', function(e){
+        $('.preview-item').on('touchend', function(){
           $('.preview-item').removeClass('preview-item-grab');
         });
 

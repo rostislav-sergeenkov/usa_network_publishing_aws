@@ -180,7 +180,9 @@ function _usanetwork_top3_main_block() {
           $video = _usanetwork_mpx_video_get_player_src(array(
             'file' => $slide_video,
             'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
+            'player_id' => 'top3_usa',
           ));
+          $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $slide_video,), 'link');
         }
         else {
           $fid = $slide_image['fid'];
@@ -191,16 +193,20 @@ function _usanetwork_top3_main_block() {
           'image' => !empty($slide_image_url) ? image_style_url('2880x1620', $slide_image_url) : NULL,
           'fid' => $fid,
           'video' => isset($video) ? $video : NULL,
+          'video_link' => isset($video_link) ? $video_link : NULL,
           'advert_block' => isset($advert) ? $advert : NULL,
         );
       }
     }
+
+    $player = $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $slide_video, 'player_id' => 'top3_usa'), 'player');
 
     $theme_variables = array(
       'slides' => $slides,
       'logo' => isset($logo) ? $logo : NULL,
       'nid' => $node->nid,
       'top3_title' => $node->title,
+      'player' => $player,
     );
     return theme('usanetwork_top3_main_block', $theme_variables);
   }

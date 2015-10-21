@@ -1,7 +1,7 @@
 (function ($) {
-  Drupal.behaviors.homeSlides = {
-    attach: function (context, settings) {
 
+  Drupal.behaviors.ajax_aspot = {
+    initHomeAspot: function () {
       // vars
       var slidesSettings = [],
           dataShiftPercent,
@@ -15,6 +15,7 @@
       // elements
           stickyMenu = $('.region-header'),
           aspotBlock = $('.block-usanetwork-aspot'),
+          aspotBlockImg = aspotBlock.find('img'),
           nextButton = $('.block-usanetwork-aspot .next-button'),
           nextButtonWrapper = $('.block-usanetwork-aspot .next-button-wrapper'),
           slider = $('.block-usanetwork-aspot .slider-container'),
@@ -26,11 +27,13 @@
           slideMove = sliderSpeed * 0.1, // default value
           slideMoveSpeed = 800,
       // name animation
-          nameAnimation = 'linear'; // default animation
+          nameAnimation = 'linear', // default animation
+          settings = Drupal.settings,
+          counterImg = 0;
 
       // check count slides before init
       if (slide.length === 1) {
-        $(window).load(function () {
+        aspotBlockImg.load(function () {
           // change logo color
           changeLogoColor(slide.length - 1);
 
@@ -78,88 +81,91 @@
         })
       });
 
-      $(document.body).once(function () {
+      // Start init slider
+      // On init slide change
+      slider
+          .on('init', function (event, slick) {
 
-        // Start init slider
-        // On init slide change
-        slider
-            .on('init', function (event, slick) {
+            // start next button
+            nextButton.addClass('ready');
 
-              // start next button
-              nextButton.addClass('ready');
+            // change logo color
+            changeLogoColor(slick.currentSlide);
+          })
 
-              // show content
-              slide.eq(slick.currentSlide).not('.slick-cloned').find('.slide-content').css('display', 'block');
+        // init slider
+          .slick({
+            // slider settings
+            //adaptiveHeight: true,
+            autoplay: false,
+            autoplaySpeed: sliderSpeed,
+            centerPadding: '0',
+            cssEase: '',
+            easing: nameAnimation,
+            infinite: true,
+            lazyLoad: 'ondemand',
+            //lazyLoad: 'progressive',
+            pauseOnHover: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            speed: slideMoveSpeed,
+            useCSS: false,
 
-              // change logo color
-              changeLogoColor(slick.currentSlide);
-            })
+            // controls
+            nextArrow: nextButton,
+            prevArrow: ''
+          })
 
-          // init slider
-            .slick({
-              // slider settings
-              //adaptiveHeight: true,
-              autoplay: false,
-              autoplaySpeed: sliderSpeed,
-              centerPadding: '0',
-              cssEase: '',
-              easing: nameAnimation,
-              infinite: true,
-              lazyLoad: 'ondemand',
-              //lazyLoad: 'progressive',
-              pauseOnHover: true,
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              speed: slideMoveSpeed,
-              useCSS: false,
+        // On before slide change
+          .on('afterChange', function (event, slick, currentSlide) {
 
-              // controls
-              nextArrow: nextButton,
-              prevArrow: ''
-            })
+            var nextSlideIndex = currentSlide + 1;
 
-          // On before slide change
-            .on('afterChange', function (event, slick, currentSlide) {
+            // check next slide index
+            if (nextSlideIndex > (slick.$slides.length - 1)) {
+              nextSlideIndex = 0;
+            }
 
-              var nextSlideIndex = currentSlide + 1;
+            // check sticky header & slider pause
+            switchSlider();
 
-              // check next slide index
-              if (nextSlideIndex > (slick.$slides.length - 1)) {
-                nextSlideIndex = 0;
-              }
+            // show slide content
+            showElements(currentSlide, nextSlideIndex);
+          })
 
-              // check sticky header & slider pause
-              svitchSlider();
+        // On before slide change
+          .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            // hide slide content
+            hideElements(currentSlide, nextSlide);
+          })
 
-              // show slide content
-              showElements(currentSlide, nextSlideIndex);
-            })
+        // On swipe
+          .on('swipe', function (event, slick, direction) {
 
-          // On before slide change
-            .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-              // hide slide content
-              hideElements(currentSlide, nextSlide);
-            })
+            // stop autoplay
+            slider.addClass('isStopped');
+            slider.slick('slickPause');
 
-          // On swipe
-            .on('swipe', function (event, slick, direction) {
+            if (direction === 'right') {
+              resetSlide();
+            }
 
-              // stop autoplay
-              slider.addClass('isStopped');
-              slider.slick('slickPause');
+            // hide next button
+            hideNextButton();
+          });
+      // end init slider
 
-              if (direction === 'right') {
-                resetSlide();
-              }
+      // event when load first slide img
+      var firstImg = slide.eq(0).not('.slick-cloned').find('img');
+      firstImg.load(function () {
+        slide.eq(0).not('.slick-cloned').find('.slide-content, .slide-content .aspot-draggable-element').show();
+      });
 
-              // hide next button
-              hideNextButton();
-            });
-        // end init slider
+      //start autoplay
+      aspotBlockImg.load(function () {
+        counterImg = counterImg + 1;
 
-        //start autoplay
-        $(window).load(function () {
-
+        if (aspotBlockImg.length === counterImg) {
           var currentSlide = slider.slick('slickCurrentSlide'),
               nextSlide = slider.slick('slickCurrentSlide') + 1;
 
@@ -177,7 +183,7 @@
 
           waitForFinalEvent(function () {
             // check sticky menu
-            svitchSlider();
+            switchSlider();
           }, 600, 'load page'); // dependence from stickyHeader: timeout = 500
 
           // fix autoplay when click next button
@@ -187,47 +193,47 @@
               stopAutoplay();
             }
           });
-        });
+        }
+      });
 
-        // event on hover
-        slider
-            .mouseover(function () {
-              // stop auto play
-              stopAutoplay();
-            })
-            .mouseout(function () {
-              // check sticky menu
-              svitchSlider();
-            });
-
-        // shech sticky header for autoplay on scroll
-        $(window).on('scroll', function () {
-          if (slide.length > 1) {
-            waitForFinalEvent(function () {
-              // check sticky menu
-              svitchSlider();
-            }, 200, 'scroll page');
-          }
-        });
-
-        $(window).on('resize', function () {
-
-          if (slide.length > 1) {
-
-            // reset slide img margin-left
-            resetSlide();
-
+      // event on hover
+      slider
+          .mouseover(function () {
             // stop auto play
             stopAutoplay();
+          })
+          .mouseout(function () {
+            // check sticky menu
+            switchSlider();
+          });
 
-            waitForFinalEvent(function () {
+      // shech sticky header for autoplay on scroll
+      $(window).on('scroll', function () {
+        if (slide.length > 1) {
+          waitForFinalEvent(function () {
+            // check sticky menu
+            switchSlider();
+          }, 200, 'scroll page');
+        }
+      });
 
-              // check sticky menu
-              svitchSlider();
+      $(window).on('resize', function () {
 
-            }, 500, 'aspot resize');
-          }
-        });
+        if (slide.length > 1) {
+
+          // reset slide img margin-left
+          resetSlide();
+
+          // stop auto play
+          stopAutoplay();
+
+          waitForFinalEvent(function () {
+
+            // check sticky menu
+            switchSlider();
+
+          }, 500, 'aspot resize');
+        }
       });
 
       //=============
@@ -255,7 +261,7 @@
       }
 
       // check sticky menu
-      function svitchSlider() {
+      function switchSlider() {
         if (stickyMenu.hasClass('sticky-shows-submenu')) {
           if (!slider.hasClass('isStopped')) {
             slider.slick('slickPause');
@@ -302,13 +308,13 @@
       function showNextbutton() {
 
         nextButton.velocity({
-              'right': '0'
-            }, {
+          'right': '0'
+        }, {
           duration: timeAnimateShow,
           easing: nameAnimation,
           complete: function (elements) {
             nextButton.removeClass('disable');
-            svitchSlider();
+            switchSlider();
           }
         });
 
@@ -376,6 +382,62 @@
         // hide next button
         hideNextButton();
       }
+    },
+    getAspot: function (url) {
+      $.ajax({
+        url: url,
+        method: "GET"
+      }).done(function (data) {
+        console.info('ajax done');
+
+        var settings = $.parseJSON(data.settings);
+        // extend settings
+        $.extend(true, Drupal.settings, settings);
+
+        // append html
+        if ($('#ajax_aspot_slider').length > 0) {
+          $('#ajax_aspot_slider').append(data.content);
+        } else if ($('#ajax_aspot_show').length > 0) {
+          $('#ajax_aspot_show').append(data.content);
+        }
+
+        // check and create images on page
+        if (typeof window.picturefill != 'undefined') {
+          window.picturefill();
+        }
+
+        //call back foк home page aspot slider
+        if ($('#block-usanetwork-aspot-usanetwork-aspot-carousel').length > 0) {
+          Drupal.behaviors.ajax_aspot.initHomeAspot();
+        }
+
+        Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+
+      }).fail(function () {
+        console.info('ajax fail');
+      });
+    },
+    attach: function (context, settings) {
+
+      var _self = Drupal.behaviors.ajax_aspot;
+
+      $(document.body).once(function () {
+
+        var _body = $('body'),
+            url;
+
+        if (_body.hasClass('front')) {
+          url = 'ajax/usanetwork-aspot/get-aspot-carousel/s1vb';
+        } else if (_body.hasClass('node-type-tv-show')) {
+          url = 'ajax/usanetwork-aspot/get-aspot-show/' + settings.usanetwork_tv_show_nid + '/s1vb';
+        }
+
+        console.info('ajax send');
+
+        // send ajax
+        _self.getAspot(url);
+
+      });
     }
-  };
-}(jQuery));
+  }
+})(jQuery);

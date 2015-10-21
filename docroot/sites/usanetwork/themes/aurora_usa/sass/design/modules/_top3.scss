@@ -81,6 +81,12 @@
       top: get-vw(30.6px, 1024);
       width: get-vw(40.5px, 1024);
     }
+    @include breakpoint($bp-768-width) {
+      border-width: 2px;
+    }
+    @include breakpoint($bp-480-width) {
+      border-width: 1px;
+    }
     &:before {
       content: '\e627';
       display: block;
@@ -98,6 +104,12 @@
       @include breakpoint($bp-1024-width) {
         font-size: get-vw(30.6px, 1024);
         line-height: calc(3.66vw - 3px);
+      }
+      @include breakpoint($bp-768-width) {
+        line-height: calc(3.66vw - 2px);
+      }
+      @include breakpoint($bp-480-width) {
+        line-height: calc(3.66vw - 1px);
       }
     }
     &.play {
@@ -144,61 +156,6 @@
     // start
     .slide {
       position: relative;
-      &.slick-active {
-        .play-button {
-          background: none;
-          border: 3px solid white;
-          border-radius: 50%;
-          color: white;
-          cursor: pointer;
-          display: none;
-          height: get-vw(53px, 1901);
-          left: get-vw(40px, 1901);
-          position: absolute;
-          top: get-vw(40px, 1901);
-          width: get-vw(53px, 1901);
-          z-index: 1;
-          @include breakpoint($bp-min-1901-width) {
-            height: 53px;
-            left: 40px;
-            top: 40px;
-            width: 53px;
-          }
-          @include breakpoint($bp-1024-width) {
-            height: get-vw(40.5px, 1024);
-            left: get-vw(30.6px, 1024);
-            top: get-vw(30.6px, 1024);
-            width: get-vw(40.5px, 1024);
-          }
-          &:before {
-            content: '\e627';
-            display: block;
-            font-family: "ico-font";
-            font-size: get-vw(40px, 1901);
-            height: 100%;
-            line-height: calc(2.7vw - 3px);
-            position: relative;
-            text-align: center;
-            width: 100%;
-            @include breakpoint($bp-min-1901-width) {
-              font-size: 40px;
-              line-height: 50px;
-            }
-            @include breakpoint($bp-1024-width) {
-              font-size: get-vw(30.6px, 1024);
-              line-height: calc(3.66vw - 3px);
-            }
-          }
-          &.play {
-            &:before {
-              content: '\e626';
-            }
-          }
-        }
-      }
-      .play-button, .play-button.inactive {
-        display: none;
-      }
     }
 
     .video-data {
@@ -1291,13 +1248,13 @@
     z-index: 100;
   }
   .slide-item-grab {
-    //background: #f9f9f9;
+    background: $header-menu-item-separator;
     border-radius: 5px;
     color: #76737C;
     display: inline-block;
     font-size: 2em;
     height: get-vw(136px, 1901);
-    margin: get-vw(292px, 1901) 0 0 get-vw(519px, 1901);
+    margin: 0;
     overflow: hidden;
     position:absolute;
     text-align: center;
@@ -1307,12 +1264,10 @@
     z-index: 500000;
     @include breakpoint($bp-min-1901-width) {
       height: 136px;
-      margin: 292px 0 0 519px;
       width: 242px;
     }
     @include breakpoint($bp-1024-width) {
       height: get-vw(104.08px, 1024);
-      margin: get-vw(223.46px, 1024) 0 0 get-vw(397.39px, 1024);
       width: get-vw(185.22px, 1024);
     }
     &:hover {

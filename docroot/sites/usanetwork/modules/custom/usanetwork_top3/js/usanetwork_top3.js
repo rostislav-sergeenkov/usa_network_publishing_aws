@@ -708,11 +708,11 @@
                               };
 
                               sharebar.gigyaSharebar.ua = {
-                                description: 'Usanetwork TOP3',
+                                description: Drupal.settings.top3_description,
                                 imageBhev: "url",
                                 imageUrl: data.image_url,
                                 linkBack: url,
-                                title: 'USA TOP3'
+                                title: Drupal.settings.top3_title
                               };
                               if (typeof Drupal.gigya.showSharebar == 'function') {
                                 Drupal.gigya.showSharebar(sharebar);
@@ -843,8 +843,8 @@
 
                 for(count=0; count<top3PreviewTarget.length; count++){
                   console.info(top3PreviewTarget);
-                  onDragCount = top3PreviewTarget[count].classList.length == 3;
-                  isHighlighet = top3PreviewTarget[count].classList[2] == 'highlight';
+                  onDragCount = top3PreviewTarget[count].classList.length == 5;
+                  isHighlighet = top3PreviewTarget[count].classList[4] == 'highlight';
 
                   //console.log(onDragCount);
                   //console.log(isHighlighet);

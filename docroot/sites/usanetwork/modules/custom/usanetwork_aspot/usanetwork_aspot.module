@@ -19,19 +19,18 @@ function usanetwork_aspot_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/usanetwork-aspot/get-aspot-carousel/%'] = array(
+  $items['ajax/usanetwork-aspot/get-aspot-carousel'] = array(
     'title' => '',
     'page callback' => 'usanetwork_aspot_get_aspot_carousel_ajax',
-    'page arguments' => array(3),
     'delivery callback' => 'drupal_json_output',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
 
-  $items['ajax/usanetwork-aspot/get-aspot-show/%node/%'] = array(
+  $items['ajax/usanetwork-aspot/get-aspot-show/%node'] = array(
     'title' => '',
     'page callback' => 'usanetwork_aspot_get_aspot_show_ajax',
-    'page arguments' => array(3, 4),
+    'page arguments' => array(3),
     'delivery callback' => 'drupal_json_output',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -772,7 +771,7 @@ function _usanetwork_aspot_carousel_block($slides_versions_arr = array()) {
 /**
  * Ajax Callback witch return aspot carousel for home section.
  */
-function usanetwork_aspot_get_aspot_carousel_ajax($versions) {
+function usanetwork_aspot_get_aspot_carousel_ajax($versions = array()) {
   // Versions parameter example - "s1vbs2vbs3vc"
   $slides_versions_arr = usanetwork_aspot_get_adobe_ab_versions_of_slides($versions);
   $content =  _usanetwork_aspot_carousel_block($slides_versions_arr);
@@ -785,7 +784,7 @@ function usanetwork_aspot_get_aspot_carousel_ajax($versions) {
   return $result;
 }
 
-function usanetwork_aspot_get_aspot_show_ajax($show_node, $aspot_version) {
+function usanetwork_aspot_get_aspot_show_ajax($show_node, $aspot_version = NULL) {
   $content = usanetwork_aspot_tvshow_render($show_node, $aspot_version);
   $result = array();
   if (!empty($content)) {

@@ -189,7 +189,7 @@ function _usanetwork_top3_main_block() {
       foreach ($node_wrapper->field_slides_content->getIterator() as $delta => $slide_item) {
         $slide_image = $slide_item->field_top3_image->value();
         $slide_video = $slide_item->field_top3_video->value();
-        if ((!empty($slide_video)) && (($slide_video->mpx_video_data['status'] !== 1) || ($slide_video->type !== 'mpx_video_1'))) {
+        if ((!empty($slide_video)) && (($slide_video->mpx_video_data['status'] !== "1") || ($slide_video->type !== 'mpx_video_1'))) {
           continue;
         }
         if (empty($slide_image)) {

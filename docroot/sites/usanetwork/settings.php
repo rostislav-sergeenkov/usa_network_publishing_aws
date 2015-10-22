@@ -141,6 +141,34 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['apachesolr_read_only'] = "0";
     break;
 
+  case 'qa':
+
+    require_once('/var/www/site-php/usaqa/usaqa-settings.inc');
+    // Envronment indicator settings.
+    $conf['environment_indicator_overwritten_name'] = 'QA SERVER';
+    $conf['environment_indicator_overwritten_color'] = '#0000CC';
+    $conf['environment_indicator_overwritten_position'] = 'top';
+    $conf['environment_indicator_overwritten_fixed'] = FALSE;
+
+    // File path settings. Acquia automatically figures our the public and tmp
+    // file paths, however we have to set the private path manually.
+    $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
+    $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
+    // Memchache settings
+    $conf['cache_backends'][] = './includes/cache-install.inc';
+    $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';
+    $conf['cache_default_class'] = 'MemCacheDrupal';
+    $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+    $conf['cache_class_cache_page'] = 'DrupalFakeCache';
+    
+    # Add in stampede protection
+    $conf['memcache_stampede_protection'] = TRUE;
+    # Move semaphore out of the database and into memory for performance purposes
+    $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
+
+    $conf['apachesolr_read_only'] = "0";
+    break;
+
   case 'acc':
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'ACCEPTANCE';

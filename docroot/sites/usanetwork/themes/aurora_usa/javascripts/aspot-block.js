@@ -424,15 +424,27 @@
       $(document.body).once(function () {
 
         var _body = $('body'),
+            numberSlides = 20,
+            paramsUrl = '',
             url;
 
         if (_body.hasClass('front')) {
-          url = 'ajax/usanetwork-aspot/get-aspot-carousel/s1vb';
-        } else if (_body.hasClass('node-type-tv-show')) {
-          url = 'ajax/usanetwork-aspot/get-aspot-show/' + settings.usanetwork_tv_show_nid + '/s1vb';
-        }
 
-        console.info('ajax send');
+          for (var i = 0; i < numberSlides; i++) {
+            var param = window['aspot_slide' + i];
+            if (param != undefined) {
+              paramsUrl += 's' + i + 'v' + param;
+            }
+          }
+          url = 'ajax/usanetwork-aspot/get-aspot-carousel' + '/' + paramsUrl;
+
+        } else if (_body.hasClass('node-type-tv-show')) {
+
+          if (window['aspot'] != undefined) {
+            paramsUrl = window['aspot'];
+          }
+          url = 'ajax/usanetwork-aspot/get-aspot-show/' + settings.usanetwork_tv_show_nid + '/' + paramsUrl;
+        }
 
         // send ajax
         _self.getAspot(url);

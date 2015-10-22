@@ -1630,6 +1630,10 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       if ($file->filename == 'eps1.0_hellofriend.mov') {
         $vars['watchwith'] = TRUE;
+        drupal_add_js('var bindPdk = function(id) {
+              $pdk.bind(document.getElementById(id));
+              $pdk.controller._iframeOnload();
+            }', array('type' => 'inline', 'scope' => 'header', 'preprocess' => FALSE, 'weight' => 50));
       }
     }
   }
@@ -1821,6 +1825,9 @@ function theme_usanetwork_mpx_video($variables) {
       'id' => 'pdk-player',
       'data-src' => url($player_source, $player_parameters),
     );
+    if ($variables['watchwith'] == TRUE) {
+      $iframe_tag['element']['#attributes']['onload'] = 'bindPdk(this.id);';
+    }
   } else {
     $iframe_tag['element']['#attributes'] = array(
       'src' => url($player_source, $player_parameters),

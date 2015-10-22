@@ -137,6 +137,8 @@ function usanetwork_top3_field_default_field_instances() {
   // Exported field_instance: 'field_collection_item-field_slides_content-field_top3_video'
   $field_instances['field_collection_item-field_slides_content-field_top3_video'] = array(
     'bundle' => 'field_slides_content',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',

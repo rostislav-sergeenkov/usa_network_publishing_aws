@@ -29732,6 +29732,16 @@ body.blog .view-display-id-blog_content .views-row {
     width: 3.95508vw;
   }
 }
+@media (max-width: 768px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #play-button {
+    border-width: 2px;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #play-button {
+    border-width: 1px;
+  }
+}
 #block-usanetwork-top3-usanetwork-top3-main-block #play-button:before {
   content: '\e627';
   display: block;
@@ -29753,6 +29763,16 @@ body.blog .view-display-id-blog_content .views-row {
   #block-usanetwork-top3-usanetwork-top3-main-block #play-button:before {
     font-size: 2.98828vw;
     line-height: calc(3.66vw - 3px);
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #play-button:before {
+    line-height: calc(3.66vw - 2px);
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #play-button:before {
+    line-height: calc(3.66vw - 1px);
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #play-button.play:before {
@@ -29806,65 +29826,6 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide {
   position: relative;
-}
-#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide.slick-active .play-button {
-  background: none;
-  border: 3px solid white;
-  border-radius: 50%;
-  color: white;
-  cursor: pointer;
-  display: none;
-  height: 2.78801vw;
-  left: 2.10416vw;
-  position: absolute;
-  top: 2.10416vw;
-  width: 2.78801vw;
-  z-index: 1;
-}
-@media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide.slick-active .play-button {
-    height: 53px;
-    left: 40px;
-    top: 40px;
-    width: 53px;
-  }
-}
-@media (max-width: 1024px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide.slick-active .play-button {
-    height: 3.95508vw;
-    left: 2.98828vw;
-    top: 2.98828vw;
-    width: 3.95508vw;
-  }
-}
-#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide.slick-active .play-button:before {
-  content: '\e627';
-  display: block;
-  font-family: "ico-font";
-  font-size: 2.10416vw;
-  height: 100%;
-  line-height: calc(2.7vw - 3px);
-  position: relative;
-  text-align: center;
-  width: 100%;
-}
-@media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide.slick-active .play-button:before {
-    font-size: 40px;
-    line-height: 50px;
-  }
-}
-@media (max-width: 1024px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide.slick-active .play-button:before {
-    font-size: 2.98828vw;
-    line-height: calc(3.66vw - 3px);
-  }
-}
-#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide.slick-active .play-button.play:before {
-  content: '\e626';
-}
-#block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide .play-button, #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .slide .play-button.inactive {
-  display: none;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .video-data {
   height: 100%;
@@ -31182,12 +31143,13 @@ body.blog .view-display-id-blog_content .views-row {
   z-index: 100;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .slide-item-grab {
+  background: #b9b9b9;
   border-radius: 5px;
   color: #76737C;
   display: inline-block;
   font-size: 2em;
   height: 7.15413vw;
-  margin: 15.36034vw 0 0 27.30142vw;
+  margin: 0;
   overflow: hidden;
   position: absolute;
   text-align: center;
@@ -31199,14 +31161,12 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .slide-item-grab {
     height: 136px;
-    margin: 292px 0 0 519px;
     width: 242px;
   }
 }
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .slide-item-grab {
     height: 10.16406vw;
-    margin: 21.82227vw 0 0 38.80762vw;
     width: 18.08789vw;
   }
 }

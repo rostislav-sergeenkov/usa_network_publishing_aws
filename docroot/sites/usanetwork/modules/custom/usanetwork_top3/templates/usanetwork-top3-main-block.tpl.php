@@ -3,7 +3,7 @@
 ?>
 <div id="top3-slider-wrapper">
   <div id="slider-player" data-player-src="<?php print $player; ?>"></div>
-  <div id="play-button" class=""></div>
+  <div id="play-button"></div>
   <div id="slider-container" data-nid="<?php print $nid; ?>">
 
     <div class="slider-wrapper">

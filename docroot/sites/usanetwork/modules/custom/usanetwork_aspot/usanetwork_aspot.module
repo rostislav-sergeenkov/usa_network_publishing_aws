@@ -319,7 +319,7 @@ function usanetwork_aspot_block_view($delta = '') {
             path_to_theme('aurora_usa') . '/javascripts/slick.min.js',
             path_to_theme('aurora_usa') . '/javascripts/aspot-block.js',
             drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js',
-            "var aspot_slide = {};" => array('type' => 'inline', 'scope' => 'header'),
+            "var aspot_slide = {};" => array('type' => 'inline', 'scope' => 'header', 'weight' => -1000000, 'every_page' => TRUE),
           ),
         ),
       );

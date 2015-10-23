@@ -632,7 +632,7 @@
                 ctx['canvas'].height = 338;
                 ctx['canvas'].width = 600;
                 ctx.drawImage(image, 0, 0, 600, 338);
-                image.src = ctx['canvas'].toDataURL("image/png");
+                image.src = ctx['canvas'].toDataURL("image/jpeg", "1.0");
                 return image;
               }
 
@@ -687,58 +687,62 @@
                         zIndex:'1'
                       });
                       $('#slider-container .slider-wrapper').before('<div class="load-more-loader"></div>');
-                      html2canvas(shareBlock, {
-                        onrendered: function(canvas) {
-                          imgShare.append(convertCanvasToImage(canvas));
-                          var galleryNid = $('#slider-container').attr('data-nid'),
-                              firstFid = $('#share-block .first .slide-content-inner').attr('data-fid'),
-                              secondFid = $('#share-block .second .slide-content-inner').attr('data-fid'),
-                              thirdFid = $('#share-block .third .slide-content-inner').attr('data-fid'),
-                              imageSrc = imgShare.find('img').attr('src');
-                          var serviceUrl = '/ajax/top3_create_url';
-                          $.ajax({
-                            type: 'POST',
-                            url: serviceUrl,
-                            dataType: 'json',
-                            data: {
-                              galleryNid: galleryNid,
-                              firstFid: firstFid,
-                              secondFid: secondFid,
-                              thirdFid: thirdFid,
-                              imageSrc: imageSrc
-                            },
-                            success: function (data) {
-                              var url = 'http://' + window.location.hostname + data.url;
-                              sharebar = new Object();
-                              sharebar.gigyaSharebar = {
-                                containerID: "gigya-share-top3",
-                                iconsOnly: true,
-                                layout: "horizontal",
-                                shareButtons: "facebook, twitter, tumblr, email",
-                                shortURLs: "never",
-                                showCounts: "none"
-                              };
+                      setTimeout(function(){
+                        html2canvas(shareBlock, {
+                          onrendered: function(canvas) {
+                            imgShare.append(convertCanvasToImage(canvas));
+                            var galleryNid = $('#slider-container').attr('data-nid'),
+                                firstFid = $('#share-block .first .slide-content-inner').attr('data-fid'),
+                                secondFid = $('#share-block .second .slide-content-inner').attr('data-fid'),
+                                thirdFid = $('#share-block .third .slide-content-inner').attr('data-fid'),
+                                imageSrc = imgShare.find('img').attr('src');
+                            var serviceUrl = '/ajax/top3_create_url';
+                            $.ajax({
+                              type: 'POST',
+                              url: serviceUrl,
+                              dataType: 'json',
+                              data: {
+                                galleryNid: galleryNid,
+                                firstFid: firstFid,
+                                secondFid: secondFid,
+                                thirdFid: thirdFid,
+                                imageSrc: imageSrc
+                              },
+                              success: function (data) {
+                                console.info(data.image_url);
+                                var url = 'http://' + window.location.hostname + data.url;
+                                sharebar = new Object();
+                                sharebar.gigyaSharebar = {
+                                  containerID: "gigya-share-top3",
+                                  iconsOnly: true,
+                                  layout: "horizontal",
+                                  shareButtons: "facebook, twitter, tumblr, email",
+                                  shortURLs: "never",
+                                  showCounts: "none"
+                                };
 
-                              sharebar.gigyaSharebar.ua = {
-                                description: Drupal.settings.top3_description,
-                                imageBhev: "url",
-                                imageUrl: data.image_url,
-                                linkBack: url,
-                                title: Drupal.settings.top3_title
-                              };
-                              if (typeof Drupal.gigya.showSharebar == 'function') {
-                                Drupal.gigya.showSharebar(sharebar);
+                                sharebar.gigyaSharebar.ua = {
+                                  description: Drupal.settings.top3_description,
+                                  imageBhev: "url",
+                                  imageUrl: data.image_url,
+                                  linkBack: url,
+                                  title: Drupal.settings.top3_title
+                                };
+                                if (typeof Drupal.gigya.showSharebar == 'function') {
+                                  Drupal.gigya.showSharebar(sharebar);
+                                }
+                                $('.load-more-loader').remove();
+                              },
+                              error: function () {
+                                console.info('error');
+                                $('.load-more-loader').remove();
                               }
-                              $('.load-more-loader').remove();
-                            },
-                            error: function () {
-                              console.info('error');
-                              $('.load-more-loader').remove();
-                            }
-                          });
+                            });
 
-                        }
-                      });
+                          }
+                        });
+                      },500);
+
                     });
                   });
 

@@ -302,9 +302,11 @@ function _usanetwork_top3_create_url() {
     $is_writable = file_prepare_directory($new_folder, FILE_CREATE_DIRECTORY);
 
     if ($is_writable) {
-      $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data));
+//      $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data));
+      preg_match('/data:image\/([^;]*);base64,(.*)/', $data, $matches);
       $filename = 'image' . $_POST['firstFid'] . $_POST['secondFid'] . $_POST['thirdFid'];
-      $image_uri = 'public://top3_shared/' . $filename . '.png';
+      $image_uri = 'public://top3_shared/' . $filename . '.' . $matches[1];
+      $data = base64_decode($matches[2]);
       $isCreated = file_put_contents($image_uri, $data);
 
       if ($isCreated) {

@@ -9,7 +9,6 @@
         dropAreaTimeout,
         dragItemSize = $('.slide-content'),
         top3target = $('.drop-area__item'),
-        top3PreviewTarget = $('.preview-item'),
         ins0 = $('#one').attr('id'),
         ins1 = $('#two').attr('id'),
         ins2 = $('#three').attr('id'),
@@ -359,11 +358,8 @@
               $('.drop-area__item').removeClass('ui-sortable-handle');
               var cleanUp = draggableEl;
               topItem=$(draggableEl).find('.slide-content-inner');
-              console.info(topItem);
-              console.info(draggableEl);
+
               instanceDrop = instance.el.id;
-              console.info(instance);
-              console.info(instanceDrop);
 
               // show checkmark inside the droppabe element
               classie.add( instance.el, 'drop-feedback' );
@@ -374,11 +370,8 @@
               clearInterval(dropZone2);
               dropZone2 = setInterval(function(){
                 //check drop zone: full or not
-                for(i=0; i<top3target.length; i++){
-
-                  onDragCount = top3target[i].classList.length == 4;
-                  elementDropped = top3target[i].classList[3] == 'drop-feedback';
-                  //console.log('after drop', count);
+                top3target.each(function() {
+                  elementDropped = $(this).hasClass('drop-feedback');
                   console.info(elementDropped);
                   if(elementDropped == true){
                     topItem.find('.title').removeAttr('style');
@@ -449,7 +442,7 @@
                       previewOpen();
                     }
                   }
-                }
+                });
               },900);
 
               $(draggableEl).css('visibility','hidden');
@@ -805,8 +798,6 @@
               console.info('drop');
               instanceDrop = instance.el.id;
               instanceDrag = $(draggableEl).attr('id');
-              console.info(instanceDrag);
-              console.info(instanceDrop);
 
               if(instanceDrop!=instanceDrag){
                 var dragId = $(draggableEl).attr('data-id');

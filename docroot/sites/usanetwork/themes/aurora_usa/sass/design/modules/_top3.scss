@@ -96,6 +96,7 @@
       line-height: calc(2.7vw - 3px);
       position: relative;
       text-align: center;
+      text-shadow: 1px 1px 0.5em $aspot-shadow;
       width: 100%;
       @include breakpoint($bp-min-1901-width) {
         font-size: 40px;
@@ -899,7 +900,7 @@
       display: block;
       float: left;
       height: get-vw(161px, 1901);
-      margin-right: 2%;
+      margin-right: 1.9%;
       position: relative;
       width: 32%;
       @include breakpoint($bp-min-1901-width) {
@@ -948,24 +949,26 @@
           width: get-vw(30.6px, 1024);
         }
       }
+      &:nth-child(1) {
+        &:after {
+          content: '1';
+        }
+      }
+      &:nth-child(2) {
+        &:after {
+          content: '2';
+        }
+      }
+      &:nth-child(3) {
+        &:after {
+          content: '3';
+        }
+      }
+      &:last-child {
+        margin-right: 0;
+      }
       .title {
         display: none;
-      }
-    }
-    .first {
-      &:after {
-        content: '1';
-      }
-    }
-    .second {
-      &:after {
-        content: '2';
-      }
-    }
-    .third {
-      margin-right: 0;
-      &:after {
-        content: '3';
       }
     }
     img {
@@ -1423,6 +1426,42 @@
         width: get-vw(30.6px, 1024);
       }
     }
+    &:nth-child(1) {
+      &:after {
+        content: '1';
+      }
+      + .ui-sortable-placeholder {
+        + .drop-area__item {
+          &:after {
+            content: '2';
+          }
+          + .drop-area__item {
+            &:after {
+              content: '3';
+            }
+          }
+        }
+      }
+    }
+    &:nth-child(2) {
+      &:after {
+        content: '2';
+      }
+      + .ui-sortable-placeholder {
+        + .drop-area__item {
+          &:after {
+            content: '3';
+          }
+        }
+      }
+    }
+    &:nth-child(3) {
+      &:after {
+        content: '3';
+      }
+    }
+
+
     .slide-content-inner {
       height: 100%;
       width: 100%;
@@ -1437,21 +1476,6 @@
       .title {
         display: none;
       }
-    }
-  }
-  #one {
-    &:after {
-      content: '1';
-    }
-  }
-  #two {
-    &:after {
-      content: '2';
-    }
-  }
-  #three {
-    &:after {
-      content: '3';
     }
   }
 

@@ -193,6 +193,7 @@
       font-size: get-vw(28px, 1901);
       left: get-vw(110px, 1901);
       position: absolute;
+      text-shadow: 1px 1px 0.5em $aspot-shadow;
       top: get-vw(30px, 1901);
       @include breakpoint($bp-min-1901-width) {
         font-size: 28px;
@@ -231,6 +232,7 @@
         font-weight: bold;
         line-height: get-vw(106px, 1901);
         position: absolute;
+        text-shadow: 1px 1px 0.5em $aspot-shadow;
         @include breakpoint($bp-min-1901-width) {
           font-size: 40px;
           line-height: 106px;
@@ -1161,6 +1163,9 @@
       cursor: -webkit-grabbing;
       cursor: grabbing;
     }
+    .title {
+      text-shadow: 1px 1px 0.5em $aspot-shadow;
+    }
   }
   .slide-content-inner {
     height: 100%;
@@ -1769,6 +1774,7 @@
     left: 0;
     line-height: get-vw(60px, 1901);
     position: absolute;
+    text-shadow: 1px 1px 0.5em $aspot-shadow;
     top: 0;
     @include breakpoint($bp-min-1901-width) {
       font-size: 60px;
@@ -1788,6 +1794,7 @@
     margin-left: get-vw(-70px, 1901);
     position: absolute;
     text-align: center;
+    text-shadow: 1px 1px 0.5em $aspot-shadow;
     top: 105%;
     width: get-vw(140px, 1901);
     white-space: nowrap;

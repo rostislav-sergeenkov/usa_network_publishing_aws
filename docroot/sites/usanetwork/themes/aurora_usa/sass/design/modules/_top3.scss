@@ -60,22 +60,26 @@
     background: none;
     border: 3px solid white;
     border-radius: 50%;
+    box-shadow: 1px 1px get-vw(15px, 1901) $aspot-shadow;
     color: white;
     cursor: pointer;
     display: none;
     height: get-vw(53px, 1901);
     left: get-vw(40px, 1901);
     position: absolute;
+    text-shadow: 1px 1px 0.5em $aspot-shadow;
     top: get-vw(40px, 1901);
     width: get-vw(53px, 1901);
     z-index: 1;
     @include breakpoint($bp-min-1901-width) {
+      box-shadow: 1px 1px 15px $aspot-shadow;
       height: 53px;
       left: 40px;
       top: 40px;
       width: 53px;
     }
     @include breakpoint($bp-1024-width) {
+      box-shadow: 1px 1px get-vw(11.48px, 1024) $aspot-shadow;
       height: get-vw(40.5px, 1024);
       left: get-vw(30.6px, 1024);
       top: get-vw(30.6px, 1024);
@@ -752,22 +756,26 @@
   #info {
     border: 3px solid white;
     border-radius: 50%;
+    box-shadow: 1px 1px get-vw(15px, 1901) $aspot-shadow;
     color: white;
     display: none;
     cursor: pointer;
     height: get-vw(53px, 1901);
     position: absolute;
     right: get-vw(40px, 1901);
+    text-shadow: 1px 1px 0.5em $aspot-shadow;
     top: get-vw(40px, 1901);
     width: get-vw(53px, 1901);
     z-index: 1;
     @include breakpoint($bp-min-1901-width) {
+      box-shadow: 1px 1px 15px $aspot-shadow;
       height: 53px;
       right: 40px;
       top: 40px;
       width: 53px;
     }
     @include breakpoint($bp-1024-width) {
+      box-shadow: 1px 1px get-vw(11.48px, 1024) $aspot-shadow;
       height: get-vw(40.5px, 1024);
       right: get-vw(30.6px, 1024);
       top: get-vw(30.6px, 1024);
@@ -808,21 +816,25 @@
   .close-button {
     border: 3px solid white;
     border-radius: 50%;
+    box-shadow: 1px 1px get-vw(15px, 1901) $aspot-shadow;
     color: white;
     cursor: pointer;
     height: get-vw(53px, 1901);
     position: absolute;
     right: get-vw(40px, 1901);
+    text-shadow: 1px 1px 0.5em $aspot-shadow;
     top: get-vw(40px, 1901);
     width: get-vw(53px, 1901);
     z-index: 2;
     @include breakpoint($bp-min-1901-width) {
+      box-shadow: 1px 1px 15px $aspot-shadow;
       height: 53px;
       right: 40px;
       top: 40px;
       width: 53px;
     }
     @include breakpoint($bp-1024-width) {
+      box-shadow: 1px 1px get-vw(11.48px, 1024) $aspot-shadow;
       height: get-vw(40.5px, 1024);
       right: get-vw(30.6px, 1024);
       top: get-vw(30.6px, 1024);
@@ -1138,7 +1150,14 @@
       }
     }
     .second, .third {
+      height: get-vw(219px, 1901);
       width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        height: 219px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(168px, 1024);
+      }
       .title {
         font-size: get-vw(24px, 1901);
         @include breakpoint($bp-min-1901-width) {

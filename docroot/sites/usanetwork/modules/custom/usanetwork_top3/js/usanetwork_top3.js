@@ -19,7 +19,6 @@
         preview0 = $('#preview-one'),
         preview1 = $('#preview-two'),
         preview2 = $('#preview-three'),
-        dropZone,
         dropZone2,
         sliderContainer = $('#slider-container'),
         sliderWrapper = sliderContainer.find('.slider-wrapper'),
@@ -73,6 +72,23 @@
       $('.drag-group').show();
       $('#drag-icon-block').show();
       $('#info').show();
+    }
+
+    function changeTwoItems(first, second, target) {
+      if(Math.abs(second - first) == 1) {
+        if (second - first > 0) {
+          target.eq(second).insertBefore(target.eq(first));
+        } else {
+          target.eq(first).insertBefore(target.eq(second));
+        }
+      }
+      if(Math.abs(second - first) == 2) {
+        if (second - first > 0) {
+          target.eq(first).insertAfter(target.eq(second));
+        } else {
+          target.eq(first).insertBefore(target.eq(second));
+        }
+      }
     }
 
     $('#info').click(function(){
@@ -340,7 +356,7 @@
           droppableArr.push( new Droppable( el, {
 
             onDrop : function( instance, draggableEl ) {
-
+              $('.drop-area__item').removeClass('ui-sortable-handle');
               var cleanUp = draggableEl;
               topItem=$(draggableEl).find('.slide-content-inner');
               console.info(topItem);
@@ -362,7 +378,7 @@
 
                   onDragCount = top3target[i].classList.length == 4;
                   elementDropped = top3target[i].classList[3] == 'drop-feedback';
-                  console.log('after drop', count);
+                  //console.log('after drop', count);
                   console.info(elementDropped);
                   if(elementDropped == true){
                     topItem.find('.title').removeAttr('style');
@@ -538,11 +554,12 @@
           });
         });
 
-        $('.slide-content').on('touchend', function(){
+        /*$('.slide-content').on('touchend', function(){
+          console.info('touchend');
           $('.slide-content').css({
             'margin': '0'
           }).removeClass('slide-item-grab');
-        });
+        });*/
 
         // initialize draggable(s)
         [].slice.call(document.querySelectorAll( '.slider-wrapper .slide-content' )).forEach( function( el ) {
@@ -577,29 +594,6 @@
                 }
               }
 
-              //check where to drop the selectied item
-              clearInterval(dropZone);
-              dropZone = setInterval(function(){
-
-                for(count=0; count<top3target.length; count++){
-                  //console.info(top3target);
-                  onDragCount = top3target[count].classList.length == 4;
-                  isHighlighet = top3target[count].classList[3] == 'highlight';
-
-                  //console.log(onDragCount);
-                  //console.log(isHighlighet);
-
-                  if(onDragCount == true && isHighlighet == true){
-                    console.log('this is the drop area', count);
-
-
-                    //finds induvidul id in drop area
-                    //console.log($(top3target[count]).find('.mainContent').attr('id'));
-
-                    //finds induvidul id of dragging el
-                  }
-                }
-              },500);
 
               // add class 'drag-active' to body
               classie.add( body, 'drag-active' );
@@ -652,7 +646,6 @@
               var afterDropFn = function() {
 
                 clearInterval(dropZone2);
-                clearInterval(dropZone);
 
                 $('.active').find('.title').show();
                 $('.container-message').fadeOut(500).removeClass('not-allowed');
@@ -691,9 +684,9 @@
                       playerService.hidePlayButton();
                       $('.drag-group').hide();
                       $('#share-block img').remove();
-                      $('#share-block .first').html($('#one .slide-content-inner').clone());
-                      $('#share-block .second').html($('#two .slide-content-inner').clone());
-                      $('#share-block .third').html($('#three .slide-content-inner').clone());
+                      $('#share-block .first').html($('#share-block-preview .preview-item:eq(0) .slide-content-inner').clone());
+                      $('#share-block .second').html($('#share-block-preview .preview-item:eq(1) .slide-content-inner').clone());
+                      $('#share-block .third').html($('#share-block-preview .preview-item:eq(2) .slide-content-inner').clone());
                       var shareBlock = $('#share-block'),
                           imgShare = $('#share-img');
                       shareBlock.css({
@@ -756,6 +749,22 @@
                     });
                   });
 
+                  $(function() {
+                    var start_item = '';
+                    $('.drag-group').sortable({
+                      //observe the update event...
+                      start: function(event, ui) {
+                        start_item = $('.drop-area__item').index($(ui.item));
+                      },
+                      update: function(event, ui) {
+                        var finish_item = $('.drop-area__item').index($(ui.item));
+                        changeTwoItems(start_item, finish_item, $('.preview-item'));
+                      },
+                      items: ".drop-area__item"
+                    });
+                    $('.drag-group').disableSelection();
+                  });
+
                   $('#share-block-preview').once('share-block-preview',function () {
                     $('#drag-icon-block').remove();
                     previewOpen();
@@ -766,6 +775,7 @@
                   setTimeout(function(){
                     classie.add( dropArea, 'show' );
                   },1000);
+
 
                 }
               };
@@ -863,30 +873,6 @@
 
               console.log(el);
 
-              //check where to drop the selectied item
-              clearInterval(dropZone);
-              dropZone = setInterval(function(){
-
-                for(count=0; count<top3PreviewTarget.length; count++){
-                  console.info(top3PreviewTarget);
-                  onDragCount = top3PreviewTarget[count].classList.length == 5;
-                  isHighlighet = top3PreviewTarget[count].classList[4] == 'highlight';
-
-                  //console.log(onDragCount);
-                  //console.log(isHighlighet);
-
-                  if(onDragCount == true && isHighlighet == true){
-                    console.log('this is the drop area', count);
-
-
-                    //finds induvidul id in drop area
-                    //console.log($(top3target[count]).find('.mainContent').attr('id'));
-
-                    //finds induvidul id of dragging el
-                  }
-                }
-              },500);
-
               // add class 'drag-active' to body
               classie.add( body, 'drag-active' );
 
@@ -918,7 +904,6 @@
               var afterDropFn = function() {
 
                 clearInterval(dropZone2);
-                clearInterval(dropZone);
 
                 // remove class 'drag-active' from body
                 classie.remove( body, 'drag-active' );

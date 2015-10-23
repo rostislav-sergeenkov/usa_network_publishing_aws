@@ -3,7 +3,7 @@
 ?>
 <div id="top3-slider-wrapper">
   <div id="slider-player" data-player-src="<?php print $player; ?>"></div>
-  <div id="play-button"></div>
+  <div id="play-button" class="round-button"></div>
   <div id="slider-container" data-nid="<?php print $nid; ?>">
 
     <div class="slider-wrapper">
@@ -40,11 +40,11 @@
       <span class="total-slides"></span>
     </div>
 
-    <div id="info"></div>
+    <div id="info" class="round-button"></div>
     <div
-      class="container-message"><?php print t('Sorry you have already added that item.'); ?></div>
+      class="container-message"><div class="message-wrapper"><div class="message-wrapper-inner"><?php print t('Sorry you have already added that item.'); ?></div></div></div>
     <div id="info-block">
-      <div id="info-close" class="close-button"></div>
+      <div id="info-close" class="close-button round-button"></div>
       <div class="info-block-back"></div>
       <div class="info-block-wrapper">
         <div class="info-text">
@@ -68,7 +68,7 @@
     <div id="drag-icon-block">
     </div>
     <div id="share-block-preview">
-      <div id="share-preview-close" class="close-button"></div>
+      <div id="share-preview-close" class="close-button round-button"></div>
       <div class="share-block-preview-back show-color"></div>
       <div class="share-block-preview-wrapper">
         <div

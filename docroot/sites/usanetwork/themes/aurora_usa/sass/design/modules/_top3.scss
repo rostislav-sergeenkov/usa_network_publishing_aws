@@ -1620,6 +1620,7 @@
           width: 66%;
           @include breakpoint($bp-1024-width) {
             float: none;
+            height: get-vw(529.3px, 1024);
             width: 100%;
           }
           &:before {
@@ -1691,7 +1692,7 @@
             height: 218px;
           }
           @include breakpoint($bp-1024-width) {
-            height: get-vw(167.5px, 1024);
+            height: get-vw(259.344px, 1024);
             width: 49%;
           }
           .title {

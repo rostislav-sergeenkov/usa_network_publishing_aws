@@ -31555,6 +31555,7 @@ body.blog .view-display-id-blog_content .views-row {
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .chosen-items-block .chosen-items-block-wrapper .first {
     float: none;
+    height: 51.68945vw;
     width: 100%;
   }
 }
@@ -31646,7 +31647,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .chosen-items-block .chosen-items-block-wrapper .second, #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .chosen-items-block .chosen-items-block-wrapper .third {
-    height: 16.35742vw;
+    height: 25.32656vw;
     width: 49%;
   }
 }

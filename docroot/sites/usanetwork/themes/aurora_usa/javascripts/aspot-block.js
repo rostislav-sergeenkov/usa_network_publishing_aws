@@ -388,7 +388,6 @@
         url: url,
         method: "GET"
       }).done(function (data) {
-        console.info('ajax done');
 
         var settings = $.parseJSON(data.settings);
         // extend settings
@@ -428,7 +427,8 @@
             url;
 
         if (_body.hasClass('front')) {
-          if (typeof aspot_slide != undefined) {
+
+          if (typeof aspot_slide != "undefined") {
             for (var key in aspot_slide) {
               var num = key.replace('slide', ''),
                   ver = aspot_slide[key];
@@ -439,8 +439,8 @@
 
         } else if (_body.hasClass('node-type-tv-show')) {
 
-          if (typeof window['aspot'] != undefined) {
-            paramsUrl = window['aspot'];
+          if (typeof aspot != "undefined") {
+            paramsUrl = aspot;
           }
           url = 'ajax/usanetwork-aspot/get-aspot-show/' + settings.usanetwork_tv_show_nid + '/' + paramsUrl;
         }

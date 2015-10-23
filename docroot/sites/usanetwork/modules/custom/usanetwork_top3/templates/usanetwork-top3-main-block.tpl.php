@@ -42,7 +42,7 @@
 
     <div id="info"></div>
     <div
-      class="container-message"><?php print t('Sorry you have already added that item.'); ?></div>
+      class="container-message"><div class="message-wrapper"><div class="message-wrapper-inner"><?php print t('Sorry you have already added that item.'); ?></div></div></div>
     <div id="info-block">
       <div id="info-close" class="close-button"></div>
       <div class="info-block-back"></div>

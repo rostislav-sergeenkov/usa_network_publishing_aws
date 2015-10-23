@@ -204,7 +204,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -1979,7 +1979,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_promo_created_ovts',
-    'label' => 'Creating date overriding',
+    'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -3152,7 +3152,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
   t('Collection');
   t('Consumptionator Blog');
   t('Contributor');
-  t('Creating date overriding');
+  t('Created date override');
   t('Custom CSS');
   t('Description');
   t('Display Author');

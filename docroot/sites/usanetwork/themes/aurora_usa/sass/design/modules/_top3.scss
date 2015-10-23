@@ -23,6 +23,63 @@
       padding: 0;
     }
   }
+  .round-button {
+    background: none;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 1px 1px get-vw(15px, 1901) $aspot-shadow;
+    color: white;
+    cursor: pointer;
+    height: get-vw(53px, 1901);
+    line-height: get-vw(47px, 1901);
+    line-height: calc(2.788vw - 6px);
+    position: absolute;
+    text-shadow: 1px 1px 0.5em $aspot-shadow;
+    top: get-vw(40px, 1901);
+    width: get-vw(53px, 1901);
+    z-index: 1;
+    @include breakpoint($bp-min-1901-width) {
+      box-shadow: 1px 1px 15px $aspot-shadow;
+      height: 53px;
+      line-height: 47px;
+      top: 40px;
+      width: 53px;
+    }
+    @include breakpoint($bp-1024-width) {
+      box-shadow: 1px 1px get-vw(11.48px, 1024) $aspot-shadow;
+      height: get-vw(40.5px, 1024);
+      line-height: get-vw(34.5625px, 1024);
+      line-height: calc(3.962vw - 6px);
+      top: get-vw(30.6px, 1024);
+      width: get-vw(40.5px, 1024);
+    }
+    @include breakpoint($bp-768-width) {
+      border-width: 2px;
+      line-height: get-vw(26.375px, 768);
+      line-height: calc(3.955vw - 4px);
+    }
+    @include breakpoint($bp-480-width) {
+      border-width: 1px;
+      line-height: get-vw(18.984px, 480);
+      line-height: calc(3.955vw - 2px);
+    }
+    &:before {
+      display: block;
+      font-family: "ico-font";
+      font-size: get-vw(40px, 1901);
+      height: 100%;
+      position: relative;
+      text-align: center;
+      text-shadow: 1px 1px 0.5em $aspot-shadow;
+      width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 40px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(30.6px, 1024);
+      }
+    }
+  }
   & > .content {
     @include clear();
     height: auto;
@@ -57,65 +114,16 @@
   }
   // play button
   #play-button {
-    background: none;
-    border: 3px solid white;
-    border-radius: 50%;
-    box-shadow: 1px 1px get-vw(15px, 1901) $aspot-shadow;
-    color: white;
-    cursor: pointer;
     display: none;
-    height: get-vw(53px, 1901);
     left: get-vw(40px, 1901);
-    position: absolute;
-    text-shadow: 1px 1px 0.5em $aspot-shadow;
-    top: get-vw(40px, 1901);
-    width: get-vw(53px, 1901);
-    z-index: 1;
     @include breakpoint($bp-min-1901-width) {
-      box-shadow: 1px 1px 15px $aspot-shadow;
-      height: 53px;
       left: 40px;
-      top: 40px;
-      width: 53px;
     }
     @include breakpoint($bp-1024-width) {
-      box-shadow: 1px 1px get-vw(11.48px, 1024) $aspot-shadow;
-      height: get-vw(40.5px, 1024);
       left: get-vw(30.6px, 1024);
-      top: get-vw(30.6px, 1024);
-      width: get-vw(40.5px, 1024);
-    }
-    @include breakpoint($bp-768-width) {
-      border-width: 2px;
-    }
-    @include breakpoint($bp-480-width) {
-      border-width: 1px;
     }
     &:before {
       content: '\e627';
-      display: block;
-      font-family: "ico-font";
-      font-size: get-vw(40px, 1901);
-      height: 100%;
-      line-height: calc(2.7vw - 3px);
-      position: relative;
-      text-align: center;
-      text-shadow: 1px 1px 0.5em $aspot-shadow;
-      width: 100%;
-      @include breakpoint($bp-min-1901-width) {
-        font-size: 40px;
-        line-height: 50px;
-      }
-      @include breakpoint($bp-1024-width) {
-        font-size: get-vw(30.6px, 1024);
-        line-height: calc(3.66vw - 3px);
-      }
-      @include breakpoint($bp-768-width) {
-        line-height: calc(3.66vw - 2px);
-      }
-      @include breakpoint($bp-480-width) {
-        line-height: calc(3.66vw - 1px);
-      }
     }
     &.play {
       &:before {
@@ -754,122 +762,29 @@
     }
   }
   #info {
-    border: 3px solid white;
-    border-radius: 50%;
-    box-shadow: 1px 1px get-vw(15px, 1901) $aspot-shadow;
-    color: white;
     display: none;
-    cursor: pointer;
-    height: get-vw(53px, 1901);
-    position: absolute;
     right: get-vw(40px, 1901);
-    text-shadow: 1px 1px 0.5em $aspot-shadow;
-    top: get-vw(40px, 1901);
-    width: get-vw(53px, 1901);
-    z-index: 1;
     @include breakpoint($bp-min-1901-width) {
-      box-shadow: 1px 1px 15px $aspot-shadow;
-      height: 53px;
       right: 40px;
-      top: 40px;
-      width: 53px;
     }
     @include breakpoint($bp-1024-width) {
-      box-shadow: 1px 1px get-vw(11.48px, 1024) $aspot-shadow;
-      height: get-vw(40.5px, 1024);
       right: get-vw(30.6px, 1024);
-      top: get-vw(30.6px, 1024);
-      width: get-vw(40.5px, 1024);
-    }
-    @include breakpoint($bp-768-width) {
-      border-width: 2px;
-    }
-    @include breakpoint($bp-480-width) {
-      border-width: 1px;
     }
     &:before {
       content: '\e623';
-      display: block;
-      font-family: "ico-font";
-      font-size: get-vw(40px, 1901);
-      height: 100%;
-      line-height: calc(2.7vw - 3px);
-      position: relative;
-      text-align: center;
-      width: 100%;
-      @include breakpoint($bp-min-1901-width) {
-        font-size: 40px;
-        line-height: 50px;
-      }
-      @include breakpoint($bp-1024-width) {
-        font-size: get-vw(30.6px, 1024);
-        line-height: calc(3.66vw - 3px);
-      }
-      @include breakpoint($bp-768-width) {
-        line-height: calc(3.66vw - 2px);
-      }
-      @include breakpoint($bp-480-width) {
-        line-height: calc(3.66vw - 1px);
-      }
     }
   }
   .close-button {
-    border: 3px solid white;
-    border-radius: 50%;
-    box-shadow: 1px 1px get-vw(15px, 1901) $aspot-shadow;
-    color: white;
-    cursor: pointer;
-    height: get-vw(53px, 1901);
-    position: absolute;
     right: get-vw(40px, 1901);
-    text-shadow: 1px 1px 0.5em $aspot-shadow;
-    top: get-vw(40px, 1901);
-    width: get-vw(53px, 1901);
     z-index: 2;
     @include breakpoint($bp-min-1901-width) {
-      box-shadow: 1px 1px 15px $aspot-shadow;
-      height: 53px;
       right: 40px;
-      top: 40px;
-      width: 53px;
     }
     @include breakpoint($bp-1024-width) {
-      box-shadow: 1px 1px get-vw(11.48px, 1024) $aspot-shadow;
-      height: get-vw(40.5px, 1024);
       right: get-vw(30.6px, 1024);
-      top: get-vw(30.6px, 1024);
-      width: get-vw(40.5px, 1024);
-    }
-    @include breakpoint($bp-768-width) {
-      border-width: 2px;
-    }
-    @include breakpoint($bp-480-width) {
-      border-width: 1px;
     }
     &:before {
       content: '\e624';
-      display: block;
-      font-family: "ico-font";
-      font-size: get-vw(40px, 1901);
-      height: 100%;
-      line-height: calc(2.7vw - 3px);
-      position: relative;
-      text-align: center;
-      width: 100%;
-      @include breakpoint($bp-min-1901-width) {
-        font-size: 40px;
-        line-height: 50px;
-      }
-      @include breakpoint($bp-1024-width) {
-        font-size: get-vw(30.6px, 1024);
-        line-height: calc(3.66vw - 3px);
-      }
-      @include breakpoint($bp-768-width) {
-        line-height: calc(3.66vw - 2px);
-      }
-      @include breakpoint($bp-480-width) {
-        line-height: calc(3.66vw - 1px);
-      }
     }
   }
   #share-block-preview {
@@ -1054,18 +969,17 @@
       position: relative;
       &:before {
         @include cssRightTriangle(get-vw(110px, 1901), white, top, right);
-        border-left-width: get-vw(119px, 1901);
         position: absolute;
         right: 0;
         top: 0;
         z-index: 1;
         @include breakpoint($bp-min-1901-width) {
           border-top-width: 110px;
-          border-left-width: 119px;
+          border-left-width: 110px;
         }
         @include breakpoint($bp-1024-width) {
           border-top-width: get-vw(84px, 1024);
-          border-left-width: get-vw(91px, 1024);
+          border-left-width: get-vw(84px, 1024);
         }
       }
       &:after {
@@ -1110,14 +1024,14 @@
       width: 66%;
       &:before {
         border-top-width: get-vw(250px, 1901);
-        border-left-width: get-vw(269px, 1901);
+        border-left-width: get-vw(250px, 1901);
         @include breakpoint($bp-min-1901-width) {
           border-top-width: 250px;
-          border-left-width: 269px;
+          border-left-width: 250px;
         }
         @include breakpoint($bp-1024-width) {
           border-top-width: get-vw(191px, 1024);
-          border-left-width: get-vw(205px, 1024);
+          border-left-width: get-vw(191px, 1024);
         }
       }
       &:after {
@@ -1661,18 +1575,17 @@
           color: black;
           &:before {
             @include cssRightTriangle(get-vw(110px, 1901), white, top, right);
-            border-left-width: get-vw(119px, 1901);
             position: absolute;
             right: 0;
             top: 0;
             z-index: 1;
             @include breakpoint($bp-min-1901-width) {
               border-top-width: 110px;
-              border-left-width: 119px;
+              border-left-width: 110px;
             }
             @include breakpoint($bp-1024-width) {
               border-top-width: get-vw(84px, 1024);
-              border-left-width: get-vw(91px, 1024);
+              border-left-width: get-vw(84px, 1024);
             }
           }
           &:after {
@@ -1711,14 +1624,14 @@
           }
           &:before {
             border-top-width: get-vw(250px, 1901);
-            border-left-width: get-vw(269px, 1901);
+            border-left-width: get-vw(250px, 1901);
             @include breakpoint($bp-min-1901-width) {
               border-top-width: 250px;
-              border-left-width: 269px;
+              border-left-width: 250px;
             }
             @include breakpoint($bp-1024-width) {
               border-top-width: get-vw(191px, 1024);
-              border-left-width: get-vw(205px, 1024);
+              border-left-width: get-vw(191px, 1024);
             }
           }
           &:after {
@@ -1772,8 +1685,13 @@
           }
         }
         .second, .third {
+          height: get-vw(218px, 1901);
           width: 100%;
+          @include breakpoint($bp-min-1901-width) {
+            height: 218px;
+          }
           @include breakpoint($bp-1024-width) {
+            height: get-vw(167.5px, 1024);
             width: 49%;
           }
           .title {

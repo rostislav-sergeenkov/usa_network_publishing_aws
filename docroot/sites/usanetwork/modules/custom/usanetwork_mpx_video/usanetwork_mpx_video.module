@@ -1262,7 +1262,10 @@ function _usanetwork_get_google_watch_variables($file) {
   $google_watch['potentialAction'] = array(
     '0' => array(
       '@type' => 'WatchAction',
-      'target' => url('file/' . $file->fid, array('absolute' => TRUE)),
+      'target' => url('file/' . $file->fid, array(
+        'absolute' => TRUE,
+        'query' => array('cid' => 'gwa_' . (isset($show) ? drupal_clean_css_identifier($show->title) : '') . '_GoogleWatchActions_' . date('Ymd', $available_date))
+      )),
       'expectsAcceptanceOf' => array(
         '@type' => 'Offer',
         'category' => $entitlement,
@@ -1626,6 +1629,10 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
           'file' => $file
         ));
         $vars['video_inactive'] = $video;
+      }
+
+      if ($file->filename == 'eps1.0_hellofriend.mov') {
+        $vars['watchwith'] = TRUE;
       }
     }
   }

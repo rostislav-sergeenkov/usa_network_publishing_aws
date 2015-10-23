@@ -795,6 +795,11 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = t("@title | Photo Galleries | USA Network", array('@title' => $node->title));
           }
           break;
+        case 'post':
+          if (is_array($seo_page_title) && !empty($seo_page_title[0]['value'])) {
+            $head_title = $seo_page_title[0]['value'];
+          }
+          break;
       }
     }
     // end of node types

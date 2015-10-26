@@ -369,7 +369,7 @@
         //HotFix: Remove dropdown option from tab "Shop"
         $(".tab .no-refresh").each(function(){
           if ($(this).text() == 'shop' ||  $(this).text() == 'Shop') {
-            $(this).removeClass('no-refresh active');
+            $(this).removeClass('no-refresh active').attr('target', '_blank');
             return false;
           }
         });

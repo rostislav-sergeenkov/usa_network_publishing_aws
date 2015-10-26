@@ -47,7 +47,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: main-menu_movies:movies
@@ -90,6 +90,26 @@ function usanetwork_menu_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
+  // Exported menu link: main-menu_shop:http://www.nbcuniversalstore.com/?v=usa
+  $menu_links['main-menu_shop:http://www.nbcuniversalstore.com/?v=usa'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'http://www.nbcuniversalstore.com/?v=usa',
+    'router_path' => '',
+    'link_title' => 'Shop',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_shop:http://www.nbcuniversalstore.com/?v=usa',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
+    'customized' => 1,
+  );
   // Exported menu link: main-menu_shows:<nolink>
   $menu_links['main-menu_shows:<nolink>'] = array(
     'menu_name' => 'main-menu',
@@ -116,6 +136,7 @@ function usanetwork_menu_menu_default_menu_links() {
   t('Home');
   t('Movies');
   t('Schedule');
+  t('Shop');
   t('Shows');
 
 

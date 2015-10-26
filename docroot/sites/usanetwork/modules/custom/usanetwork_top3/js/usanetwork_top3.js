@@ -760,11 +760,10 @@
 
                   $('#share-block-preview').once('share-block-preview',function () {
                     $('.drag-group').sortable({
-                      //observe the update event...
                       start: function(event, ui) {
-                        console.info('sort');
                         start_item = $('.drop-area__item').index($(ui.item));
                       },
+                      //observe the update event...
                       update: function(event, ui) {
                         var finish_item = $('.drop-area__item').index($(ui.item));
                         changeTwoItems(start_item, finish_item, $('.preview-item'));

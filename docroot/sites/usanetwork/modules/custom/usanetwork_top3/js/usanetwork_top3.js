@@ -28,7 +28,8 @@
         nextArrow = sliderContainer.find('.next'),
         prevArrow = sliderContainer.find('.prev'),
         playButton = $('#play-button'),
-        videoBlock = $('#slider-player');
+        videoBlock = $('#slider-player'),
+        start_item = '';
 
     function infoOpen() {
       $('#info').hide();
@@ -718,7 +719,9 @@
                                 imageSrc: imageSrc
                               },
                               success: function (data) {
-                                console.info(data.image_url);
+                                console.info(Drupal.settings);
+                                console.info(Drupal.settings.top3_title);
+                                console.info(Drupal.settings.top3_description);
                                 var url = 'http://' + window.location.hostname + data.url;
                                 sharebar = new Object();
                                 sharebar.gigyaSharebar = {
@@ -755,11 +758,11 @@
                     });
                   });
 
-                  $(function() {
-                    var start_item = '';
+                  $('#share-block-preview').once('share-block-preview',function () {
                     $('.drag-group').sortable({
                       //observe the update event...
                       start: function(event, ui) {
+                        console.info('sort');
                         start_item = $('.drop-area__item').index($(ui.item));
                       },
                       update: function(event, ui) {
@@ -769,9 +772,6 @@
                       items: ".drop-area__item"
                     });
                     $('.drag-group').disableSelection();
-                  });
-
-                  $('#share-block-preview').once('share-block-preview',function () {
                     $('#drag-icon-block').remove();
                     previewOpen();
                     top3Usanetwork.previewDroppables();

@@ -1270,7 +1270,7 @@
     height: 100%;
     width: 100%;
     &.inactive {
-      visibility: hidden;
+      opacity: 0;
     }
     .title {
       display: none;
@@ -1331,7 +1331,7 @@
       cursor: grabbing;
     }
     .slide-content-inner.inactive {
-      visibility: visible;
+      opacity: 1;
     }
   }
   .preview-item-grab {

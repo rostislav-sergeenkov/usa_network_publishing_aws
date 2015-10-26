@@ -629,6 +629,8 @@
               function convertCanvasToImage(canvas) {
                 var ctx = canvas.getContext('2d');
                 var image = new Image();
+                image.height = ctx['canvas'].height;
+                image.width = ctx['canvas'].width;
                 image.src = ctx['canvas'].toDataURL("image/jpeg", "1.0");
                 return image;
               }
@@ -720,8 +722,8 @@
                               },
                               success: function (data) {
                                 console.info(Drupal.settings);
-                                console.info(Drupal.settings.top3_title);
-                                console.info(Drupal.settings.top3_description);
+                                console.info(Drupal.settings.top3_settings.top3_title);
+                                console.info(Drupal.settings.top3_settings.top3_description);
                                 var url = 'http://' + window.location.hostname + data.url;
                                 sharebar = new Object();
                                 sharebar.gigyaSharebar = {
@@ -734,11 +736,11 @@
                                 };
 
                                 sharebar.gigyaSharebar.ua = {
-                                  description: Drupal.settings.top3_description,
+                                  description: Drupal.settings.top3_settings.top3_description,
                                   imageBhev: "url",
                                   imageUrl: data.image_url,
                                   linkBack: url,
-                                  title: Drupal.settings.top3_title
+                                  title: Drupal.settings.top3_settings.top3_title
                                 };
                                 if (typeof Drupal.gigya.showSharebar == 'function') {
                                   Drupal.gigya.showSharebar(sharebar);

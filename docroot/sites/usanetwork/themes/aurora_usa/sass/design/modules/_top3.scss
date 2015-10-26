@@ -1,3 +1,102 @@
+#share-image-block {
+  display: none;
+  height: 720px;
+  width: 1280px;
+  left: 0;
+  padding: 0 2.5%;
+  position: absolute;
+  top: 0px;
+  z-index: 0;
+  .admin-menu & {
+    top: 30px;
+  }
+  .share-image-block-wrapper {
+    height: 451px;
+    line-height: 1;
+    margin-top: -225.5px;
+    top: 50%;
+    position: absolute;
+    width: 95%;
+  }
+  .first, .second, .third {
+    color: black;
+    position: relative;
+    &:before {
+      @include cssRightTriangle(110px, white, top, right);
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+    }
+    &:after {
+      display: block;
+      font-family: $tex-gyreschola-regular;
+      font-size: 60px;
+      height: 60px;
+      line-height: 50px;
+      position: absolute;
+      text-align: center;
+      right: 0;
+      top: 0;
+      width: 80px;
+      z-index: 1;
+    }
+    .title {
+      bottom: 8%;
+      display: block;
+      font-family: $avalon-medium;
+      left: auto;
+      line-height: 1.2;
+      text-align: center;
+      top: auto;
+      width: 100%;
+    }
+  }
+  .first {
+    float: left;
+    height: 100%;
+    width: 66%;
+    &:before {
+      border-top-width: 250px;
+      border-left-width: 250px;
+    }
+    &:after {
+      content: '1';
+      font-size: 125px;
+      height: 125px;
+      line-height: 125px;
+      width: 167px;
+    }
+    .title {
+      font-size: 48px;
+    }
+  }
+  .second, .third {
+    height: 219px;
+    width: 100%;
+    .title {
+      font-size: 24px;
+    }
+  }
+  .second {
+    &:after {
+      content: '2';
+    }
+  }
+  .third {
+    &:after {
+      content: '3';
+    }
+    bottom: 0;
+    position: absolute;
+  }
+  .img-wrap {
+    float: right;
+    height: 100%;
+    position: relative;
+    width: 32%;
+  }
+}
 #block-usanetwork-top3-usanetwork-top3-main-block {
   background: url(../images/top3back.png) repeat;
   height: auto;
@@ -32,7 +131,7 @@
     cursor: pointer;
     height: get-vw(53px, 1901);
     line-height: get-vw(47px, 1901);
-    line-height: calc(2.788vw - 6px);
+    //line-height: calc(2.788vw - 6px);
     position: absolute;
     text-shadow: 1px 1px 0.5em $aspot-shadow;
     top: get-vw(40px, 1901);
@@ -49,19 +148,19 @@
       box-shadow: 1px 1px get-vw(11.48px, 1024) $aspot-shadow;
       height: get-vw(40.5px, 1024);
       line-height: get-vw(34.5625px, 1024);
-      line-height: calc(3.962vw - 6px);
+      //line-height: calc(3.962vw - 6px);
       top: get-vw(30.6px, 1024);
       width: get-vw(40.5px, 1024);
     }
     @include breakpoint($bp-768-width) {
       border-width: 2px;
       line-height: get-vw(26.375px, 768);
-      line-height: calc(3.955vw - 4px);
+      //line-height: calc(3.955vw - 4px);
     }
     @include breakpoint($bp-480-width) {
       border-width: 1px;
       line-height: get-vw(18.984px, 480);
-      line-height: calc(3.955vw - 2px);
+      //line-height: calc(3.955vw - 2px);
     }
     &:before {
       display: block;

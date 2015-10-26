@@ -5,7 +5,6 @@
   <div id="slider-player" data-player-src="<?php print $player; ?>"></div>
   <div id="play-button" class="round-button"></div>
   <div id="slider-container" data-nid="<?php print $nid; ?>">
-
     <div class="slider-wrapper">
       <?php foreach ($slides as $key => $slide) : ?>
         <div class="slide">

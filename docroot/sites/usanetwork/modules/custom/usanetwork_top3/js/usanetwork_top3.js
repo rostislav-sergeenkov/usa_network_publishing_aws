@@ -628,10 +628,6 @@
               function convertCanvasToImage(canvas) {
                 var ctx = canvas.getContext('2d');
                 var image = new Image();
-                image.src = ctx['canvas'].toDataURL("image/png");
-                ctx['canvas'].height = 338;
-                ctx['canvas'].width = 600;
-                ctx.drawImage(image, 0, 0, 600, 338);
                 image.src = ctx['canvas'].toDataURL("image/jpeg", "1.0");
                 return image;
               }
@@ -677,19 +673,32 @@
                       playerService.hidePlayButton();
                       $('.drag-group').hide();
                       $('#share-block img').remove();
-                      $('#share-block .first').html($('#share-block-preview .preview-item:eq(0) .slide-content-inner').clone());
-                      $('#share-block .second').html($('#share-block-preview .preview-item:eq(1) .slide-content-inner').clone());
-                      $('#share-block .third').html($('#share-block-preview .preview-item:eq(2) .slide-content-inner').clone());
+                      $('<div id="share-image-block" class="show-color">' +
+                          '<div class="share-image-block-wrapper">' +
+                          ' <div class="first show-color show-font"></div> ' +
+                          '<div class="img-wrap"> ' +
+                          '<div class="second show-color show-font"></div> ' +
+                          '<div class="third show-color show-font"></div>' +
+                          ' </div>' +
+                          ' </div>' +
+                          ' </div>').insertBefore('#block-usanetwork-top3-usanetwork-top3-main-block');
+
+                      $('#share-block .first, #share-image-block .first').html($('#share-block-preview .preview-item:eq(0) .slide-content-inner').clone());
+                      $('#share-block .second, #share-image-block .second').html($('#share-block-preview .preview-item:eq(1) .slide-content-inner').clone());
+                      $('#share-block .third, #share-image-block .third').html($('#share-block-preview .preview-item:eq(2) .slide-content-inner').clone());
                       var shareBlock = $('#share-block'),
+                          shareImageBlock = $('#share-image-block'),
                           imgShare = $('#share-img');
                       shareBlock.css({
                         visibility: 'visible',
                         zIndex:'1'
                       });
+                      shareImageBlock.show();
                       $('#slider-container .slider-wrapper').before('<div class="load-more-loader"></div>');
                       setTimeout(function(){
-                        html2canvas(shareBlock, {
+                        html2canvas(shareImageBlock, {
                           onrendered: function(canvas) {
+                            shareImageBlock.remove();
                             imgShare.append(convertCanvasToImage(canvas));
                             var galleryNid = $('#slider-container').attr('data-nid'),
                                 firstFid = $('#share-block .first .slide-content-inner').attr('data-fid'),
@@ -741,7 +750,7 @@
 
                           }
                         });
-                      },500);
+                      },1000);
 
                     });
                   });

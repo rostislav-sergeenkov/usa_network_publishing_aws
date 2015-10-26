@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -29675,12 +29675,23 @@ body.blog .view-display-id-blog_content .views-row {
   width: 80px;
   z-index: 1;
 }
+#share-image-block .first .slide-content-inner, #share-image-block .second .slide-content-inner, #share-image-block .third .slide-content-inner {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+#share-image-block .first .slide-content-inner .img-wrapper, #share-image-block .second .slide-content-inner .img-wrapper, #share-image-block .third .slide-content-inner .img-wrapper {
+  height: 100%;
+  width: 100%;
+}
 #share-image-block .first .title, #share-image-block .second .title, #share-image-block .third .title {
   bottom: 8%;
+  color: white !important;
   display: block;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   left: auto;
   line-height: 1.2;
+  position: absolute;
   text-align: center;
   top: auto;
   width: 100%;

@@ -51,6 +51,7 @@ function usanetwork_top3_block_view($delta) {
             drupal_get_path('module', 'usanetwork_top3') . '/js/html2canvas.min.js',
             drupal_get_path('theme', 'aurora_usa') . '/javascripts/slick.min.js',
             drupal_get_path('module', 'jquery_update') . '/replace/ui/ui/minified/jquery-ui.min.js',
+            drupal_get_path('module', 'usanetwork_top3') . '/js/jquery.ui.touch-punch.min.js',
             drupal_get_path('module', 'usanetwork_top3') . '/js/usanetwork_top3.js',
           ),
           'css' => array(

@@ -55,7 +55,10 @@
           sliderSpeed = 6000;
         }
 
-        if (sliderAutoplay === 1) {
+        // set autoplay true/false
+        if (typeof _AT_Admin != 'undefined' && _AT_Admin == 1) {
+          startAuto = false;
+        } else if (sliderAutoplay === 1) {
           startAuto = true;
         } else if (sliderAutoplay === 0) {
           startAuto = false;
@@ -116,7 +119,7 @@
             prevArrow: ''
           })
 
-        // On before slide change
+           // On before slide change
           .on('afterChange', function (event, slick, currentSlide) {
 
             var nextSlideIndex = currentSlide + 1;
@@ -133,13 +136,13 @@
             showElements(currentSlide, nextSlideIndex);
           })
 
-        // On before slide change
+          // On before slide change
           .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
             // hide slide content
             hideElements(currentSlide, nextSlide);
           })
 
-        // On swipe
+          // On swipe
           .on('swipe', function (event, slick, direction) {
 
             // stop autoplay

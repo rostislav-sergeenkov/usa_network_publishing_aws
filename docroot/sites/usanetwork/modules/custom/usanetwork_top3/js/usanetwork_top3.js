@@ -699,7 +699,7 @@
                       setTimeout(function(){
                         html2canvas(shareImageBlock, {
                           onrendered: function(canvas) {
-                            shareImageBlock.remove();
+                            //shareImageBlock.remove();
                             imgShare.append(convertCanvasToImage(canvas));
                             var galleryNid = $('#slider-container').attr('data-nid'),
                                 firstFid = $('#share-block .first .slide-content-inner').attr('data-fid'),

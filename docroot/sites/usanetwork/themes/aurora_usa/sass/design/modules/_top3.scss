@@ -41,12 +41,23 @@
       width: 80px;
       z-index: 1;
     }
+    .slide-content-inner {
+      height: 100%;
+      position: relative;
+      width: 100%;
+      .img-wrapper {
+        height: 100%;
+        width: 100%;
+      }
+    }
     .title {
       bottom: 8%;
+      color: white!important;
       display: block;
       font-family: $avalon-medium;
       left: auto;
       line-height: 1.2;
+      position: absolute;
       text-align: center;
       top: auto;
       width: 100%;

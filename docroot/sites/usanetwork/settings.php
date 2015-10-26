@@ -206,6 +206,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
   case 'prod':
   case 'edit':
+
+    require_once('/var/www/site-php/usa/usa-settings.inc');
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'LIVE';
     $conf['environment_indicator_overwritten_color'] = '#990000';

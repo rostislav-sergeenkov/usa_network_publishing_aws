@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -25963,6 +25963,10 @@ yx-axis
     display: block !important;
   }
 }
+#block-usanetwork-aspot-usanetwork-aspot-carousel #ajax_aspot_slider {
+  height: 100%;
+  width: 100%;
+}
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
   display: none;
   position: absolute;
@@ -26496,6 +26500,10 @@ yx-axis
     height: auto;
     width: 100%;
   }
+}
+.aspot-and-episodes .show-aspot #ajax_aspot_show {
+  height: 100%;
+  width: 100%;
 }
 .aspot-and-episodes .show-aspot .slide {
   height: 100%;

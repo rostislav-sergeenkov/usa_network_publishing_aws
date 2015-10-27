@@ -52,7 +52,7 @@
           <div
             class="color-text show-color show-font"><?php print t('How it works'); ?></div>
           <div
-            class="bottom-text"><?php print t('Use the icon shown below to click & drag the thumbnail into the ranking boxes. Fill all 3 boxes and share your personalized page.'); ?></div>
+            class="bottom-text"><?php print t('Use the icon shown below to click & drag'); ?><br><?php print t('the thumbnail into the ranking boxes.'); ?><br><?php print t('Fill all 3 boxes and share your personalized page.'); ?></div>
           <div id="start-button"
                class="show-color"><?php print t('Start now!'); ?></div>
         </div>

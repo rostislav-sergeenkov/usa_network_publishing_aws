@@ -313,7 +313,7 @@ function usanetwork_aspot_block_view($delta = '') {
     case 'usanetwork_aspot_carousel':
       $block['subject'] = '';
       $block['content'] = array(
-        '#markup' => '<div id="ajax_aspot_slider"></div>',
+        '#markup' => '<div id="ajax_aspot_slider">' . _usanetwork_aspot_carousel_block() . '</div>',
         '#attached' => array(
           'js' => array(
             path_to_theme('aurora_usa') . '/javascripts/slick.min.js',

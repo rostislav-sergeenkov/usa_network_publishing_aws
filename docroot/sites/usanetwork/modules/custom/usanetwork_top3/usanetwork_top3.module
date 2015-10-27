@@ -25,7 +25,7 @@ function usanetwork_top3_block_info() {
   $blocks = array();
   $blocks['usanetwork_top3_main_block'] = array(
     'info' => t('TOP3: Main Block'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
+    'cache' => DRUPAL_NO_CACHE,
   );
   return $blocks;
 }

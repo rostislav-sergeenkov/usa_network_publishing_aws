@@ -81,17 +81,15 @@
           <?php endif; ?>
           <?php print $video; ?>
           <?php if (!empty($watchwith)) : ?>
-            <div ng-app="watchwith" ng-strict-di>
+            <div id="wwRootContainer">
               <watchwith
                   airing-id="d9d9aaed-bb7e-4ba7-becd-018336a66b14"
                   access-key="N2D8AUM7NVZ"
                   player-element="#pdk-player"
                   player-type="mpx">
               </watchwith>
+              <script type="application/javascript" src="http://snowbird.watchwith.com/~chihiro/WD-71/wwLoader.js"></script>
             </div>
-            <script type="application/javascript" src="http://apps.watchwith.com/watchwith-ng/dev/watchwith-ng.js"></script>
-            <script type="application/javascript" src="http://apps.watchwith.com/wng-demos/usa-mr-robot/wng-usa.js"></script>
-            <script type="application/javascript" src="http://apps.watchwith.com/wng-demos/usa-mr-robot/templates.js"></script>
           <?php endif; ?>
         </div>
       <?php

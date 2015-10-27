@@ -555,6 +555,7 @@
     position: relative;
     text-align: center;
     text-transform: uppercase;
+    visibility: hidden;
     width: get-vw(225px, 1901);
     @include breakpoint($bp-min-1901-width) {
       font-size: 30px;
@@ -906,10 +907,7 @@
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 1;
-    .close-button {
-      display: block;
-    }
+    z-index: 101;
     .share-block-preview-back {
       height: 100%;
       left: 0;
@@ -920,18 +918,15 @@
     }
     .share-block-preview-wrapper {
       height: 100%;
-      padding-top: get-vw(216px, 1901);
+      padding-top: get-vw(155px, 1901);
       position: relative;
       width: 100%;
       z-index: 1;
       @include breakpoint($bp-min-1901-width) {
-        padding-top: 216px;
-      }
-      @include breakpoint($bp-1280-width) {
-        padding-top: get-vw(184px, 1600);
+        padding-top: 155px;
       }
       @include breakpoint($bp-1024-width) {
-        padding-top: get-vw(165.3px, 1024);
+        padding-top: get-vw(118.635px, 1024);
       }
     }
     .preview-item {
@@ -1029,14 +1024,44 @@
       }
     }
     .last-text-line {
+      background: white;
+      color: black;
+      cursor: pointer;
       font-family: $avalon-medium;
       font-size: get-vw(48px, 1901);
+      line-height: get-vw(80px, 1901);
+      margin: 0 auto;
       text-align: center;
+      text-transform: uppercase;
+      width: 65%;
       @include breakpoint($bp-min-1901-width) {
         font-size: 48px;
+        line-height: 80px;
       }
       @include breakpoint($bp-1024-width) {
         font-size: get-vw(36.74px, 1024);
+        line-height: get-vw(61.23px, 1024);
+      }
+    }
+    .share-preview-close {
+      color: white;
+      cursor: pointer;
+      font-family: $avalon-medium;
+      font-size: get-vw(48px, 1901);
+      line-height: get-vw(80px, 1901);
+      margin: get-vw(20px, 1901) auto 0;
+      text-align: center;
+      text-transform: uppercase;
+      width: 25%;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 48px;
+        line-height: 80px;
+        margin: 20px auto 0;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(36.74px, 1024);
+        line-height: get-vw(61.23px, 1024);
+        margin: get-vw(15.3px, 1024) auto 0;
       }
     }
     .preview-items-block {
@@ -1234,7 +1259,7 @@
     text-align: center;
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 101;
     @include breakpoint($bp-min-1901-width) {
       font-size: 40px;
     }
@@ -1323,7 +1348,7 @@
     text-indent: -9000px;
     visibility: visible;
     width: get-vw(242px, 1901);
-    z-index: 500000;
+    z-index: 101;
     @include breakpoint($bp-min-1901-width) {
       height: 136px;
       width: 242px;
@@ -1354,7 +1379,7 @@
     border-radius: 5px;
     overflow: hidden;
     position:absolute;
-    z-index: 500000;
+    z-index: 101;
     &:hover {
       cursor: move;
       cursor: -webkit-grab;
@@ -1408,7 +1433,7 @@
     }
     &.show {
       bottom: 0;
-      z-index: 1000;
+      z-index: 100;
     }
     &.not-allowed {
       bottom: -500px;
@@ -1924,6 +1949,11 @@
     &:after {
       content: 'drag';
     }
+  }
+}
+.desktop-only {
+  .touch & {
+    display: none;
   }
 }
 

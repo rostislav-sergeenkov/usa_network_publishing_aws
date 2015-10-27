@@ -35,7 +35,6 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
-      //$('.play-button').hide();
       playerService.hidePlayButton();
       $('.drag-group').hide();
       $('#info-block').show();
@@ -45,28 +44,27 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
-      //$('.play-button').show();
       playerService.showPlayButton();
       $('.drag-group').show();
       $('#info').show();
     }
     function previewOpen() {
+      $('#share-button').css('visibility','hidden');
       $('#info').hide();
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
-      //$('.play-button').hide();
       playerService.hidePlayButton();
       $('.drag-group').hide();
       $('#drag-icon-block').hide();
       $('#share-block-preview').show();
     }
     function previewClose() {
+      $('#share-button').css('visibility','visible');
       $('#share-block-preview').hide();
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
-      //$('.play-button').show();
       playerService.showPlayButton();
       $('.drag-group').show();
       $('#drag-icon-block').show();
@@ -619,6 +617,7 @@
                 image.height = ctx['canvas'].height;
                 image.width = ctx['canvas'].width;
                 image.src = ctx['canvas'].toDataURL("image/jpeg", "1.0");
+                console.info('CanvasToImageFinish');
                 return image;
               }
 
@@ -652,7 +651,8 @@
                   classie.add( body, 'selectionComplete' );
                   //highlight share btn
                   $('#share-button').once('share-button',function () {
-                    $('#share-button').addClass('ready').click(function(){
+                    $('#share-button, #preview-share-button').addClass('ready').click(function(){
+                      console.info('share-click');
                       $('#share-button').hide();
                       $('#share-block-preview').hide();
                       $('#info').hide();
@@ -688,8 +688,10 @@
                       setTimeout(function(){
                         html2canvas(shareImageBlock, {
                           onrendered: function(canvas) {
+                            console.info('canvas-render');
                             shareImageBlock.remove();
                             imgShare.append(convertCanvasToImage(canvas));
+                            console.info('image-render');
                             var galleryNid = $('#slider-container').attr('data-nid'),
                                 firstFid = $('#share-block .first .slide-content-inner').attr('data-fid'),
                                 secondFid = $('#share-block .second .slide-content-inner').attr('data-fid'),
@@ -736,7 +738,6 @@
                                 $('.load-more-loader').remove();
                               }
                             });
-
                           }
                         });
                       },1000);

@@ -7,7 +7,6 @@
         //dropAreaPreview = document.getElementById( 'share-block-preview' ),
         droppableArr = [],
         dropAreaTimeout,
-        dragItemSize = $('.slide-content'),
         top3target = $('.drop-area__item'),
         ins0 = $('#one').attr('id'),
         ins1 = $('#two').attr('id'),
@@ -365,15 +364,11 @@
               // show checkmark inside the droppabe element
               classie.add( instance.el, 'drop-feedback' );
 
-              console.log('draggableEl',draggableEl);
-              console.log('instance', instance.el.id);
-
               clearInterval(dropZone2);
               dropZone2 = setInterval(function(){
                 //check drop zone: full or not
                 top3target.each(function() {
                   elementDropped = $(this).hasClass('drop-feedback');
-                  console.info(elementDropped);
                   if(elementDropped == true){
                     topItem.find('.title').removeAttr('style');
                     switch (instanceDrop) {
@@ -527,7 +522,6 @@
         });
         /*$('.slide-content').on('mouseout', function(){
           if (mouse_button) {
-            console.info('mouseout');
             mouse_button = false;
             $('.slide-content').css("margin", 0).removeClass('slide-item-grab');
           }
@@ -535,7 +529,6 @@
         $('.slide-content').on('mouseover', function(){
           if (mouse_button) {
             mouse_button = false;
-            console.info('mouseover');
             $('.slide-content').css("margin", 0).removeClass('slide-item-grab');
           }
         });*/
@@ -549,7 +542,6 @@
         });
 
         /*$('.slide-content').on('touchend', function(){
-          console.info('touchend');
           $('.slide-content').css({
             'margin': '0'
           }).removeClass('slide-item-grab');
@@ -563,8 +555,6 @@
             draggabilly : { containment: sliderContainer },
 
             onStart : function() {
-
-              console.log($(el).attr('data-slide-id'));
 
               // check player status on drag start
               if (playerService.mediaLoadStatus ) {
@@ -597,9 +587,6 @@
 
               // show dropArea
               classie.add( dropArea, 'show' );
-
-              //chnage size of drag-item
-              console.log(dragItemSize);
 
             },
 
@@ -721,9 +708,6 @@
                                 imageSrc: imageSrc
                               },
                               success: function (data) {
-                                console.info(Drupal.settings);
-                                console.info(Drupal.settings.top3_settings.top3_title);
-                                console.info(Drupal.settings.top3_settings.top3_description);
                                 var url = 'http://' + window.location.hostname + data.url;
                                 sharebar = new Object();
                                 sharebar.gigyaSharebar = {
@@ -876,16 +860,11 @@
 
             onStart : function() {
 
-              console.log(el);
-
               // add class 'drag-active' to body
               classie.add( body, 'drag-active' );
 
               // clear timeout: dropAreaTimeout (toggle drop area)
               clearTimeout( dropAreaTimeout );
-
-              //chnage size of drag-item
-              console.log(dragItemSize);
 
             },
 

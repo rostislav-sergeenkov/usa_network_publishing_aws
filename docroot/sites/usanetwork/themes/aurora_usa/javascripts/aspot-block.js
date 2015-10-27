@@ -29,7 +29,8 @@
       // name animation
           nameAnimation = 'linear', // default animation
           settings = Drupal.settings,
-          counterImg = 0;
+          counterImg = 0,
+          _AT_Admin = $.urlParam('_AT_Admin');
 
       // check count slides before init
       if (slide.length === 1) {
@@ -55,7 +56,10 @@
           sliderSpeed = 6000;
         }
 
-        if (sliderAutoplay === 1) {
+        // set autoplay true/false
+        if (typeof _AT_Admin != 'undefined' && _AT_Admin == 1) {
+          startAuto = false;
+        } else if (sliderAutoplay === 1) {
           startAuto = true;
         } else if (sliderAutoplay === 0) {
           startAuto = false;
@@ -116,7 +120,7 @@
             prevArrow: ''
           })
 
-        // On before slide change
+           // On before slide change
           .on('afterChange', function (event, slick, currentSlide) {
 
             var nextSlideIndex = currentSlide + 1;
@@ -133,13 +137,13 @@
             showElements(currentSlide, nextSlideIndex);
           })
 
-        // On before slide change
+          // On before slide change
           .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
             // hide slide content
             hideElements(currentSlide, nextSlide);
           })
 
-        // On swipe
+          // On swipe
           .on('swipe', function (event, slick, direction) {
 
             // stop autoplay
@@ -164,7 +168,6 @@
       //start autoplay
       aspotBlockImg.load(function () {
         counterImg = counterImg + 1;
-
         if (aspotBlockImg.length === counterImg) {
           var currentSlide = slider.slick('slickCurrentSlide'),
               nextSlide = slider.slick('slickCurrentSlide') + 1;
@@ -317,12 +320,6 @@
             switchSlider();
           }
         });
-
-        //$(nextButton).animate({
-        //  'right': '+=10%'
-        //}, timeAnimateShow, nameAnimation, function () {
-        //  $(this).removeClass('disable');
-        //});
       }
 
       // show slide content
@@ -429,24 +426,50 @@
         if (_body.hasClass('front')) {
 
           if (typeof aspot_slide != "undefined") {
+
             for (var key in aspot_slide) {
               var num = key.replace('slide', ''),
                   ver = aspot_slide[key];
               paramsUrl += 's' + num + 'v' + ver;
             }
+            url = 'ajax/usanetwork-aspot/get-aspot-carousel' + '/' + paramsUrl;
           }
-          url = 'ajax/usanetwork-aspot/get-aspot-carousel' + '/' + paramsUrl;
+
+          if (paramsUrl != '') {
+
+            $('#ajax_aspot_slider').empty();
+            // send ajax
+            _self.getAspot(url);
+
+          } else {
+
+            // check and create images on page
+            if (typeof window.picturefill != 'undefined') {
+              window.picturefill();
+            }
+
+            _self.initHomeAspot();
+
+            Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+          }
 
         } else if (_body.hasClass('node-type-tv-show')) {
 
           if (typeof aspot != "undefined") {
             paramsUrl = aspot;
-          }
-          url = 'ajax/usanetwork-aspot/get-aspot-show/' + settings.usanetwork_tv_show_nid + '/' + paramsUrl;
-        }
+            url = 'ajax/usanetwork-aspot/get-aspot-show/' + settings.usanetwork_tv_show_nid + '/' + paramsUrl;
 
-        // send ajax
-        _self.getAspot(url);
+          }
+          if (paramsUrl != '') {
+
+            $('#ajax_aspot_show').empty();
+            // send ajax
+            _self.getAspot(url);
+
+          } else {
+            Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+          }
+        }
 
       });
     }

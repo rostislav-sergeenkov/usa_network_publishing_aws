@@ -25963,10 +25963,6 @@ yx-axis
     display: block !important;
   }
 }
-#block-usanetwork-aspot-usanetwork-aspot-carousel #ajax_aspot_slider {
-  height: 100%;
-  width: 100%;
-}
 #block-usanetwork-aspot-usanetwork-aspot-carousel .next-button {
   display: none;
   position: absolute;

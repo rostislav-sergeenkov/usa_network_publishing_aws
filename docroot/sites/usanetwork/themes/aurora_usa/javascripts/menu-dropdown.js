@@ -366,6 +366,14 @@
         showTitleMove();
         showMenuMove();
 
+        //HotFix: Remove dropdown option from tab "Shop"
+        $(".tab .no-refresh").each(function(){
+          if ($(this).text() == 'shop' ||  $(this).text() == 'Shop') {
+            $(this).removeClass('no-refresh active').attr('target', '_blank');
+            return false;
+          }
+        });
+
         $(".tab .no-refresh").removeClass('active').bind('click', tabNavHandler);
         $(".main-menu-open a").bind('click', menuOpenHandler);
 

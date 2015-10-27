@@ -1,7 +1,7 @@
 (function ($) {
 
   Drupal.behaviors.ajax_aspot = {
-    initHomeAspot: function (_AT_Admin) {
+    initHomeAspot: function () {
       // vars
       var slidesSettings = [],
           dataShiftPercent,
@@ -459,11 +459,13 @@
             paramsUrl = aspot;
             url = 'ajax/usanetwork-aspot/get-aspot-show/' + settings.usanetwork_tv_show_nid + '/' + paramsUrl;
 
-            if (paramsUrl != '') {
-              $('#ajax_aspot_show').empty();
-              // send ajax
-              _self.getAspot(url);
-            }
+          }
+          if (paramsUrl != '') {
+
+            $('#ajax_aspot_show').empty();
+            // send ajax
+            _self.getAspot(url);
+
           } else {
             Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
           }

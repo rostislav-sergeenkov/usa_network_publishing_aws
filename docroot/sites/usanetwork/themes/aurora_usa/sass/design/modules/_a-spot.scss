@@ -29,7 +29,6 @@
       }
     }
   }
-
   .next-button {
     display: none;
     position: absolute;
@@ -95,7 +94,7 @@
     }
     .wrp {
       background: #000000;
-//      overflow: hidden;
+      //      overflow: hidden;
     }
     .slide-content {
       overflow: hidden;
@@ -218,9 +217,9 @@
     }
     .cta-link {
       position: relative;
-      &:not(.cta_button_0){
+      &:not(.cta_button_0) {
         a {
-          background: none!important;
+          background: none !important;
         }
       }
       &.cta_button_0 {
@@ -475,6 +474,10 @@
     @include breakpoint($bp-640-width) {
       float: none;
       height: auto;
+      width: 100%;
+    }
+    #ajax_aspot_show {
+      height: 100%;
       width: 100%;
     }
     .slide {

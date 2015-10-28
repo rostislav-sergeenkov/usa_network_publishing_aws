@@ -111,13 +111,6 @@ function usanetwork_social_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'usanetwork_social_enable_ideamelt';
-  $strongarm->value = 0;
-  $export['usanetwork_social_enable_ideamelt'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'usanetwork_social_global_twitter_echo_query_template';
   $strongarm->value = '([CHILDRENOF]/[PATH] [STATE] [MARKERS] [TAGS] [SOURCE]) [SORTORDER] [SAFEHTML] [ITEMSPERPAGE] [CHILDREN]';
   $export['usanetwork_social_global_twitter_echo_query_template'] = $strongarm;
@@ -128,13 +121,6 @@ function usanetwork_social_strongarm() {
   $strongarm->name = 'usanetwork_social_global_twitter_path';
   $strongarm->value = '*';
   $export['usanetwork_social_global_twitter_path'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'usanetwork_social_ideamelt_api_key';
-  $strongarm->value = 'dev.usanetwork';
-  $export['usanetwork_social_ideamelt_api_key'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

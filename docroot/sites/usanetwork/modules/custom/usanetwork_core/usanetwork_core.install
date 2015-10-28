@@ -1122,10 +1122,19 @@ function usanetwork_core_update_7178() {
 }
 
 /**
+ * Enables advagg module.
+ */
+function usanetwork_core_update_7179() {
+  if (!module_exists('advagg')) {
+    module_enable(array('advagg'));
+  }
+}
+
+/**
  * Implements hook_update_N().
  * Delete ideamelt fields and field groups.
  */
-function usanetwork_core_update_7179() {
+function usanetwork_core_update_7180() {
   $fields_to_delete = array(
     'field_ideamelt_action_type',
     'field_ideamelt_object_type',

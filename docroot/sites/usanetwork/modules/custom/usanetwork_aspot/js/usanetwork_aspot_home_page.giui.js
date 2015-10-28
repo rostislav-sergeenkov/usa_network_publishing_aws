@@ -94,6 +94,8 @@
     attach: function (context, settings) {
       if ($('body').hasClass('node-type-movie')) {
         Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+      } else if ($('body').hasClass('node-type-usanetwork-aspot')) {
+        Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
       }
     }
   };

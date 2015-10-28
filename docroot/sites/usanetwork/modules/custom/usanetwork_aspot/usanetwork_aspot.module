@@ -19,6 +19,23 @@ function usanetwork_aspot_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/usanetwork-aspot/get-aspot-carousel'] = array(
+    'title' => '',
+    'page callback' => 'usanetwork_aspot_get_aspot_carousel_ajax',
+    'delivery callback' => 'drupal_json_output',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['ajax/usanetwork-aspot/get-aspot-show/%node'] = array(
+    'title' => '',
+    'page callback' => 'usanetwork_aspot_get_aspot_show_ajax',
+    'page arguments' => array(3),
+    'delivery callback' => 'drupal_json_output',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -159,6 +176,16 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
   $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork_aspot') . '/css/usanetwork_aspot.main.css';
   $form['#validate'][] = 'usanetwork_aspot_validate';
   $form['#submit'][] = 'usanetwork_aspot_submit_draggable_ui_items_submit';
+  _usanetwork_aspot_versions_titles($form);
+}
+
+function _usanetwork_aspot_versions_titles(&$form) {
+  $aspots = &$form['field_a_spot'][LANGUAGE_NONE];
+  foreach($aspots as $delta => &$aspot) {
+    if (is_numeric($delta)) {
+      $aspot['target_id']['#title'] = strtoupper(usanetwork_aspot_get_version_letter_by_delta($delta+1)) . ' Version:';
+    }
+  }
 }
 
 /**
@@ -286,12 +313,13 @@ function usanetwork_aspot_block_view($delta = '') {
     case 'usanetwork_aspot_carousel':
       $block['subject'] = '';
       $block['content'] = array(
-        '#markup' => _usanetwork_aspot_carousel_block(),
+        '#markup' => '<div id="ajax_aspot_slider">' . _usanetwork_aspot_carousel_block() . '</div>',
         '#attached' => array(
           'js' => array(
             path_to_theme('aurora_usa') . '/javascripts/slick.min.js',
-            path_to_theme('aurora_usa') . '/javascripts/home-sliders.js',
-            drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
+            path_to_theme('aurora_usa') . '/javascripts/aspot-block.js',
+            drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js',
+            "var aspot_slide = {};" => array('type' => 'inline', 'scope' => 'header', 'weight' => -1000000, 'every_page' => TRUE),
           ),
         ),
       );
@@ -693,7 +721,7 @@ function usanetwork_aspot_aspot_settings($aspot_array, $lang) {
   }
 }
 
-function _usanetwork_aspot_carousel_block() {
+function _usanetwork_aspot_carousel_block($slides_versions_arr = array()) {
   if (arg(0) && arg(0) == 'admin') {
     return '';
   }
@@ -707,7 +735,7 @@ function _usanetwork_aspot_carousel_block() {
     return '';
   }
   $homepage_node = node_load($homepage_nids[0]);
-  $carousel_nodes = _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node);
+  $carousel_nodes = _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node, $slides_versions_arr);
   $output_array = array();
 
   if (!empty($carousel_nodes)) {
@@ -739,6 +767,49 @@ function _usanetwork_aspot_carousel_block() {
   }
 
   return '';
+}
+
+/**
+ * Ajax Callback witch return aspot carousel for home section.
+ */
+function usanetwork_aspot_get_aspot_carousel_ajax($versions = array()) {
+  // Versions parameter example - "s1vbs2vbs3vc"
+  $slides_versions_arr = usanetwork_aspot_get_adobe_ab_versions_of_slides($versions);
+  $content =  _usanetwork_aspot_carousel_block($slides_versions_arr);
+  $js_settings = drupal_add_js();
+  $js_settings_string = drupal_json_encode(drupal_array_merge_deep_array($js_settings['settings']['data']));
+  $result = array(
+    'content' => $content,
+    'settings' => $js_settings_string,
+  );
+  return $result;
+}
+
+function usanetwork_aspot_get_aspot_show_ajax($show_node, $aspot_version = NULL) {
+  $content = usanetwork_aspot_tvshow_render($show_node, $aspot_version);
+  $result = array();
+  if (!empty($content)) {
+    $result['content'] = $content;
+  }
+  return $result;
+}
+
+/**
+ * Parse A-spot versions parameter.
+ *
+ * @return array
+ */
+function usanetwork_aspot_get_adobe_ab_versions_of_slides($versions) {
+  $versions_arr = explode('s', $versions);
+  $versions_result = array();
+  foreach ($versions_arr as $version) {
+    $version_arr =  explode('v', $version);
+    if (!empty($version_arr[0]) && !empty($version_arr[1])) {
+      // $version[0] is index of slide. $version[1] is version.
+      $versions_result[$version_arr[0] - 1] = $version_arr[1];
+    }
+  }
+  return $versions_result;
 }
 
 function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
@@ -878,14 +949,26 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
   return theme('usanetwork_aspot_carousel_slide', $theme_array);
 }
 
-function usanetwork_aspot_tvshow_render($show_node) {
+function usanetwork_aspot_tvshow_render($show_node, $aspot_version = NULL) {
   $aspot_field = field_get_items('node', $show_node, 'field_usa_tv_a_spot');
 
   if (!empty($aspot_field) && is_array($aspot_field)) {
     foreach ($aspot_field as $aspot) {
       if (!empty($aspot['target_id'])) {
         $aspot_node = node_load($aspot['target_id']);
-
+        $get_other_version = FALSE;
+        if ($aspot_version) {
+          if (usanetwork_core_api_check_field($aspot_node, 'field_a_spot', 'node')) {
+            $get_other_version = TURE;
+          }
+        }
+        if ($get_other_version) {
+          $aspot_wrapper = entity_metadata_wrapper('node', $aspot_node);
+          $version_delta = usanetwork_aspot_get_delta_letter_by_version($aspot_version) - 1;
+          if (isset($aspot_wrapper->field_a_spot[$version_delta])) {
+            $aspot_node = $aspot_wrapper->field_a_spot[$version_delta]->value();
+          }
+        }
         if ($aspot_node) {
           return usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node);
         }
@@ -1087,7 +1170,7 @@ function _usanetwork_aspot_get_draggable_cta_buttons($aspot_gi_cta_elements, $dr
   return $cta_buttons_theme_data;
 }
 
-function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
+function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node, $slides_versions_arr = array()) {
   $found_nodes = array();
 
   if (empty($homepage_node->field_usa_hp_arefs)) {
@@ -1096,11 +1179,25 @@ function _usanetwork_aspot_get_homepage_aspot_nodes($homepage_node) {
   $arefs = field_get_items('node', $homepage_node, 'field_usa_hp_arefs');
 
   if (!empty($arefs)) {
-    foreach ($arefs as $aref) {
+    foreach ($arefs as $delta => $aref) {
       $show_node = NULL;
 
       if (empty($aref['entity'])) {
         $aref['entity'] = node_load($aref['target_id']);
+        $get_other_version = FALSE;
+        if (isset($slides_versions_arr[$delta])) {
+          if (usanetwork_core_api_check_field($aref['entity'], 'field_a_spot', 'node')) {
+            $get_other_version = TURE;
+          }
+        }
+        if ($get_other_version) {
+          $aspot_wrapper = entity_metadata_wrapper('node', $aref['entity']);
+          $version = $slides_versions_arr[$delta];
+          $version_delta = usanetwork_aspot_get_delta_letter_by_version($version) - 1;
+          if (isset($aspot_wrapper->field_a_spot[$version_delta])) {
+            $aref['entity'] = $aspot_wrapper->field_a_spot[$version_delta]->value();
+          }
+        }
       }
 
       if ($aref['entity']) {
@@ -1390,6 +1487,34 @@ function _usanetwork_aspot_get_show_nid($node) {
   return NULL;
 }
 
+function usanetwork_aspot_get_versions_array() {
+  return $versions = array(
+    0 => 'a',
+    1 => 'b',
+    2 => 'c',
+    3 => 'd',
+    4 => 'e',
+    5 => 'f',
+    6 => 'g',
+    7 => 'h',
+  );
+}
+
+function usanetwork_aspot_get_version_letter_by_delta($delta) {
+  $versions = usanetwork_aspot_get_versions_array();
+  if ($versions[$delta]) {
+    return $versions[$delta];
+  }
+  return NULL;
+}
+
+function usanetwork_aspot_get_delta_letter_by_version($version) {
+  $versions = array_flip(usanetwork_aspot_get_versions_array());
+  if ($versions[$version]) {
+    return $versions[$version];
+  }
+  return NULL;
+}
 /**
  * Accepts next data in query:
  * array(

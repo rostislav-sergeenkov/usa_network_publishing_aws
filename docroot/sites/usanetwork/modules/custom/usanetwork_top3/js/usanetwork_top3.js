@@ -1,5 +1,7 @@
 (function ($) {
 
+  $(document).ready(function () {
+
     var body = document.body,
         dropArea = document.getElementById( 'drop-area' ),
         //dropAreaPreview = document.getElementById( 'share-block-preview' ),
@@ -963,7 +965,6 @@
 
     };
 
-  $(document).ready(function () {
     // create player block
     playerService.createPlayer();
     top3Usanetwork.init();

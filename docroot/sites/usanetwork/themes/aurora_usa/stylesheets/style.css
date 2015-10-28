@@ -30273,6 +30273,7 @@ body.blog .view-display-id-blog_content .views-row {
   position: relative;
   text-align: center;
   text-transform: uppercase;
+  visibility: hidden;
   width: 11.83588vw;
 }
 @media (min-width: 1901px) {
@@ -30699,10 +30700,7 @@ body.blog .view-display-id-blog_content .views-row {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 1;
-}
-#block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .close-button {
-  display: block;
+  z-index: 101;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .share-block-preview-back {
   height: 100%;
@@ -30714,24 +30712,19 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .share-block-preview-wrapper {
   height: 100%;
-  padding-top: 11.36244vw;
+  padding-top: 8.1536vw;
   position: relative;
   width: 100%;
   z-index: 1;
 }
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .share-block-preview-wrapper {
-    padding-top: 216px;
-  }
-}
-@media (max-width: 1280px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .share-block-preview-wrapper {
-    padding-top: 11.5vw;
+    padding-top: 155px;
   }
 }
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .share-block-preview-wrapper {
-    padding-top: 16.14258vw;
+    padding-top: 11.58545vw;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .preview-item {
@@ -30844,18 +30837,52 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .last-text-line {
+  background: white;
+  color: black;
+  cursor: pointer;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 2.52499vw;
+  line-height: 4.20831vw;
+  margin: 0 auto;
   text-align: center;
+  text-transform: uppercase;
+  width: 65%;
 }
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .last-text-line {
     font-size: 48px;
+    line-height: 80px;
   }
 }
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .last-text-line {
     font-size: 3.58789vw;
+    line-height: 5.97949vw;
+  }
+}
+#block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .share-preview-close {
+  color: white;
+  cursor: pointer;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 2.52499vw;
+  line-height: 4.20831vw;
+  margin: 1.05208vw auto 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 25%;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .share-preview-close {
+    font-size: 48px;
+    line-height: 80px;
+    margin: 20px auto 0;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .share-preview-close {
+    font-size: 3.58789vw;
+    line-height: 5.97949vw;
+    margin: 1.49414vw auto 0;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #share-block-preview .preview-items-block {
@@ -31095,7 +31122,7 @@ body.blog .view-display-id-blog_content .views-row {
   text-align: center;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 101;
 }
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .container-message {
@@ -31192,7 +31219,7 @@ body.blog .view-display-id-blog_content .views-row {
   text-indent: -9000px;
   visibility: visible;
   width: 12.73014vw;
-  z-index: 500000;
+  z-index: 101;
 }
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .slide-item-grab {
@@ -31227,7 +31254,7 @@ body.blog .view-display-id-blog_content .views-row {
   border-radius: 5px;
   overflow: hidden;
   position: absolute;
-  z-index: 500000;
+  z-index: 101;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .preview-item-grab:hover {
   cursor: move;
@@ -31286,7 +31313,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .drop-area.show {
   bottom: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .drop-area.not-allowed {
   bottom: -500px;
@@ -31896,6 +31923,10 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .touch #drag-icon-block:after {
   content: 'drag';
+}
+
+.touch .desktop-only {
+  display: none;
 }
 
 #admin-menu {

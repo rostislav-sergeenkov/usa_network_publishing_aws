@@ -1120,3 +1120,12 @@ function usanetwork_core_update_7178() {
     module_enable(array('usanetwork_dtm'));
   }
 }
+
+/**
+ * Enables advagg module.
+ */
+function usanetwork_core_update_7179() {
+  if (!module_exists('advagg')) {
+    module_enable(array('advagg'));
+  }
+}

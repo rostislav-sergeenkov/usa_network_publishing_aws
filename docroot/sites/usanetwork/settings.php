@@ -160,6 +160,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['cache_default_class'] = 'MemCacheDrupal';
     $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
     $conf['cache_class_cache_page'] = 'DrupalFakeCache';
+
+    //Acquia purge settings
+    $conf['acquia_hosting_site_info'] = array('fake');
     
     # Add in stampede protection
     $conf['memcache_stampede_protection'] = TRUE;
@@ -230,6 +233,9 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['memcache_stampede_protection'] = TRUE;
     # Move semaphore out of the database and into memory for performance purposes
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
+
+    //Acquia purge settings
+    $conf['acquia_hosting_site_info'] = array('fake');
 
     //Acquia Search settings
     $conf["acquia_identifier"] = "AUWZ-71210";

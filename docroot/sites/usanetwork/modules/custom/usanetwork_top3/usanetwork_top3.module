@@ -223,7 +223,6 @@ function _usanetwork_top3_main_block() {
           'fid' => $fid,
           'video' => !empty($video) ? $video : NULL,
           'video_link' => !empty($video_link) ? $video_link : NULL,
-          'advert_block' => isset($advert) ? $advert : NULL,
         );
       }
     }
@@ -243,11 +242,15 @@ function _usanetwork_top3_main_block() {
       'nid' => $node->nid,
       'top3_title' => $node->title,
       'player' => $player,
+      'advert_block' => isset($advert) ? $advert : NULL,
     );
     return theme('usanetwork_top3_main_block', $theme_variables);
   }
 }
 
+/*
+ * Helper function for getting information about galleru item by fid
+ */
 function _usanetwork_top3_get_title_and_image($node, $shared_file) {
   $db_select = db_select('field_data_field_slides_content', 'slides_content');
   $db_select->condition('slides_content.entity_id', $node->nid);
@@ -279,6 +282,7 @@ function _usanetwork_top3_get_title_and_image($node, $shared_file) {
  */
 function usanetwork_top3_preprocess_block(&$vars) {
   if ($vars['block']->delta == 'usanetwork_top3_main_block') {
+    //add background for block
     $node = menu_get_object('node');
     if (!empty($node)) {
       $node_wrapper = entity_metadata_wrapper('node', $node);
@@ -288,6 +292,7 @@ function usanetwork_top3_preprocess_block(&$vars) {
         $vars['attributes_array']['style'][] = 'background: url(' . $background . ') repeat';
       }
 
+      //add class for shared display
       $query_params = drupal_get_query_parameters();
       if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
         $vars['classes_array'][] = 'shared-screen';
@@ -297,7 +302,7 @@ function usanetwork_top3_preprocess_block(&$vars) {
 }
 
 /*
- * Callbacl for ajax call
+ * Callback for ajax call
  */
 function _usanetwork_top3_create_url() {
   if (!empty($_POST['galleryNid']) && !empty($_POST['firstFid']) && !empty($_POST['secondFid']) && !empty($_POST['thirdFid']) && !empty($_POST['imageSrc'])) {
@@ -307,7 +312,6 @@ function _usanetwork_top3_create_url() {
     $is_writable = file_prepare_directory($new_folder, FILE_CREATE_DIRECTORY);
 
     if ($is_writable) {
-//      $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data));
       preg_match('/data:image\/([^;]*);base64,(.*)/', $data, $matches);
       $filename = 'image' . $_POST['firstFid'] . $_POST['secondFid'] . $_POST['thirdFid'];
       $path_name = 'public://top3_shared/' . $filename . '.' . $matches[1];

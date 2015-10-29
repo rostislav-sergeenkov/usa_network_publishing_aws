@@ -1,5 +1,21 @@
 <?php
-
+/*
+ * @file
+ * Template for main gallery view
+ *
+ * Available variables:
+ *  $slides: slides foe displaying
+ *    $slides['fid'] - file's of file
+ *    $slides['image'] - src for displayed image
+ *    $slides['title'] - gallery's item title
+ *    $slides['video'] - src image for video
+ *    $slides['video_link'] - video link
+ *  $logo: src for logo image in correct format
+ *  $nid: Node nid
+ *  $top3_title: Gallery's title
+ *  $player: Player's path
+ *  $advert_block: Rendered advertise block
+ */
 ?>
 <div id="top3-slider-wrapper">
   <div id="slider-player" data-player-src="<?php print $player; ?>"></div>

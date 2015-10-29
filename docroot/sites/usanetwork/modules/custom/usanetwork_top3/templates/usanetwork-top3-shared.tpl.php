@@ -22,8 +22,16 @@
   </div>
   <div class="chosen-items-block show-color">
     <div class="chosen-items-inner">
-      <div class="chosen-items-block-wrapper">
-        <div class="first show-color show-font">
+      <div class="chosen-player">
+        <div class="img-wrapper">
+          <img src="<?php print $slides[0]['image']; ?>">
+        </div>
+        <?php if (isset($slides[0]['title'])): ?>
+          <div class="title"><?php print $slides[0]['title']; ?></div>
+        <?php endif; ?>
+      </div>
+      <div id="chosen-items-block-wrapper" class="chosen-items-block-wrapper">
+        <div class="chosen-item-thumb first show-color show-font">
           <div class="img-wrapper">
             <img src="<?php print $slides[0]['image']; ?>">
           </div>
@@ -31,23 +39,21 @@
             <div class="title"><?php print $slides[0]['title']; ?></div>
           <?php endif; ?>
         </div>
-        <div class="img-wrap">
-          <div class="second show-color show-font">
-            <div class="img-wrapper">
-              <img src="<?php print $slides[1]['image']; ?>">
-            </div>
-            <?php if (isset($slides[1]['title'])): ?>
-              <div class="title"><?php print $slides[1]['title']; ?></div>
-            <?php endif; ?>
+        <div class="chosen-item-thumb second show-color show-font">
+          <div class="img-wrapper">
+            <img src="<?php print $slides[1]['image']; ?>">
           </div>
-          <div class="third show-color show-font">
-            <div class="img-wrapper">
-              <img src="<?php print $slides[2]['image']; ?>">
-            </div>
-            <?php if (isset($slides[2]['title'])): ?>
-              <div class="title"><?php print $slides[2]['title']; ?></div>
-            <?php endif; ?>
+          <?php if (isset($slides[1]['title'])): ?>
+            <div class="title"><?php print $slides[1]['title']; ?></div>
+          <?php endif; ?>
+        </div>
+        <div class="chosen-item-thumb third show-color show-font">
+          <div class="img-wrapper">
+            <img src="<?php print $slides[2]['image']; ?>">
           </div>
+          <?php if (isset($slides[2]['title'])): ?>
+            <div class="title"><?php print $slides[2]['title']; ?></div>
+          <?php endif; ?>
         </div>
       </div>
       <div class="node-wrapper advert">

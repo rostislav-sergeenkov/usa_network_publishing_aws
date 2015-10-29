@@ -718,12 +718,9 @@
                       var shareBlock = $('#share-block'),
                           shareImageBlock = $('#share-image-block'),
                           imgShare = $('#share-img');
-                      shareBlock.css({
-                        visibility: 'visible',
-                        zIndex:'1'
-                      });
+                      $('#top3-slider-wrapper').addClass('share-open');
                       shareImageBlock.show();
-                      $('#gigya-share-top3').before('<div class="load-more-loader"></div>');
+                      $('#gigya-share-top3').before('<div class="loader-wrapper"><div class="load-more-loader"></div></div>');
                       setTimeout(function(){
                         html2canvas(shareImageBlock, {
                           onrendered: function(canvas) {
@@ -770,11 +767,11 @@
                                 if (typeof Drupal.gigya.showSharebar == 'function') {
                                   Drupal.gigya.showSharebar(sharebar);
                                 }
-                                $('.load-more-loader').remove();
+                                $('.loader-wrapper').remove();
                               },
                               error: function () {
                                 console.info('error');
-                                $('.load-more-loader').remove();
+                                $('.loader-wrapper').remove();
                               }
                             });
                           }

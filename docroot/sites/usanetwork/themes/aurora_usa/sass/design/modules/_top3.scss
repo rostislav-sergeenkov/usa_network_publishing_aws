@@ -207,9 +207,6 @@
     @include breakpoint($bp-768-width) {
       padding-top: get-vw(108px, 480);
     }
-    @include breakpoint($bp-640-width) {
-      padding-bottom: calc(26.25vw + 250px);
-    }
   }
   // player iframe
   #slider-player {
@@ -270,14 +267,42 @@
     @include breakpoint($bp-480-width) {
       height: 52.8vw;
     }
+    &.share-open {
+      @include breakpoint($bp-768-width) {
+        height: 85.5vw;
+      }
+      ~ .right-sidebar {
+        @include breakpoint($bp-768-width) {
+          padding-top: 85.5vw;
+        }
+      }
+      #share-block {
+        visibility: visible;
+        z-index: 1;
+      }
+    }
   }
   #slider-container {
     height: 100%;
     width: 100%;
-    .load-more-loader {
-      margin-top: -16px;
-      top: 50%;
-      z-index: 2;
+    .loader-wrapper {
+      height: get-vw(130px, 1901);
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        height: 130px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(95px, 1024);
+      }
+      @include breakpoint($bp-768-width) {
+        height: get-vw(86.52px, 480);
+      }
+      .load-more-loader {
+        margin-top: -16px;
+        top: 50%;
+        z-index: 2;
+      }
     }
     // start
     .slide {
@@ -519,9 +544,6 @@
       @include breakpoint($bp-1024-width) {
         margin: 25px auto 0;
       }
-      @include breakpoint($bp-640-width) {
-        margin: 0 auto;
-      }
     }
   }
   .slick-slider {
@@ -552,9 +574,14 @@
       width: 339px;
     }
     @include breakpoint($bp-1024-width) {
-      height: get-vw(60px, 1024);
+      height: get-vw(45.9px, 1024);
       margin: get-vw(30.62px, 1024) auto get-vw(22.96px, 1024);
-      width: get-vw(339px, 1024);
+      width: get-vw(260px, 1024);
+    }
+    @include breakpoint($bp-768-width) {
+      height: get-vw(45.9px, 480);
+      margin: get-vw(30.62px, 480) auto get-vw(10px, 480);
+      width: get-vw(260px, 480);
     }
     .gig-button-container {
       display: inline-block;
@@ -572,6 +599,11 @@
         margin: 0 get-vw(25.26px, 1024) 0 0;
         width: get-vw(45.9px, 1024);
       }
+      @include breakpoint($bp-768-width) {
+        height: get-vw(45.9px, 480);
+        margin: 0 get-vw(25.26px, 480) 0 0;
+        width: get-vw(45.9px, 480);
+      }
       &.gig-button-container-email {
         margin: 0;
       }
@@ -583,6 +615,9 @@
           }
           @include breakpoint($bp-1024-width) {
             font-size: get-vw(45.9px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(45.9px, 480);
           }
           &:before {
             color: white;
@@ -1016,11 +1051,15 @@
         font-size: get-vw(48px, 1901);
         line-height: 1;
         text-align: center;
+        text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
           font-size: 48px;
         }
         @include breakpoint($bp-1024-width) {
           font-size: get-vw(36.74px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(36.74px, 768);
         }
       }
     }
@@ -1040,6 +1079,10 @@
       @include breakpoint($bp-1024-width) {
         height: get-vw(346px, 1024);
       }
+      @include breakpoint($bp-768-width) {
+        margin: 0 auto;
+        width: 70%;
+      }
     }
     .first, .second, .third {
       color: black;
@@ -1057,6 +1100,10 @@
         @include breakpoint($bp-1024-width) {
           border-top-width: get-vw(84px, 1024);
           border-left-width: get-vw(84px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          border-top-width: get-vw(67px, 768);
+          border-left-width: get-vw(67px, 768);
         }
       }
       &:after {
@@ -1099,6 +1146,11 @@
       float: left;
       height: 100%;
       width: 66%;
+      @include breakpoint($bp-768-width) {
+        float: none;
+        height: get-vw(273.2px, 768);
+        width: 100%;
+      }
       &:before {
         border-top-width: get-vw(250px, 1901);
         border-left-width: get-vw(250px, 1901);
@@ -1109,6 +1161,10 @@
         @include breakpoint($bp-1024-width) {
           border-top-width: get-vw(191px, 1024);
           border-left-width: get-vw(191px, 1024);
+        }
+        @include breakpoint($bp-1024-width) {
+          border-top-width: get-vw(138px, 768);
+          border-left-width: get-vw(138px, 768);
         }
       }
       &:after {
@@ -1138,6 +1194,9 @@
         @include breakpoint($bp-1024-width) {
           font-size: get-vw(36.74px, 1024);
         }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(36.74px, 1024);
+        }
       }
     }
     .second, .third {
@@ -1149,6 +1208,10 @@
       @include breakpoint($bp-1024-width) {
         height: get-vw(168px, 1024);
       }
+      @include breakpoint($bp-768-width) {
+        height: get-vw(134px, 768);
+        width: 49%;
+      }
       .title {
         font-size: get-vw(24px, 1901);
         @include breakpoint($bp-min-1901-width) {
@@ -1157,25 +1220,43 @@
         @include breakpoint($bp-1024-width) {
           font-size: get-vw(18.37px, 1024);
         }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(18.37px, 1024);
+        }
       }
     }
     .second {
+      @include breakpoint($bp-768-width) {
+        float: left;
+      }
       &:after {
         content: '2';
       }
     }
     .third {
+      bottom: 0;
+      position: absolute;
       &:after {
         content: '3';
       }
-      bottom: 0;
-      position: absolute;
+      @include breakpoint($bp-768-width) {
+        bottom: auto;
+        float: right;
+        position: relative;
+      }
     }
     .img-wrap {
       float: right;
       height: 100%;
       position: relative;
       width: 32%;
+      @include breakpoint($bp-768-width) {
+        @include clear();
+        float: none;
+        height: auto;
+        margin-top: 2%;
+        width: 100%;
+      }
     }
   }
   #share-img {

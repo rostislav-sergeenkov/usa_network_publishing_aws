@@ -1,5 +1,16 @@
 <?php
-
+/*
+* @file
+* Template for main gallery view
+*
+* Available variables:
+*  $slides: slides foe displaying
+*    $slides['image'] - src for displayed image
+*    $slides['video'] - src image for video
+*  $logo: src for logo image in correct format
+*  $node_path: Path to current node
+*  $top3_title: Gallery's title
+*/
 ?>
 <div id="shared-container">
   <div class="choose-top3-img">

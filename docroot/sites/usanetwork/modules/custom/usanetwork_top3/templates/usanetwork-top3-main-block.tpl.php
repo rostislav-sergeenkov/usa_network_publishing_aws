@@ -83,9 +83,11 @@
     <div id="drag-icon-block">
     </div>
     <div id="share-block-preview">
-      <div class="share-block-preview-back show-color"></div>
       <div class="share-block-preview-wrapper">
-        <div class="first-text-line"><span class="desktop-only"><?php print t('CLICK AND '); ?></span><?php print t('DRAG THE THUMBNAILS OVER A DIFFERENT BOX TO CHANGE THE ORDER'); ?></div>
+        <div class="preview-buttons">
+          <div id="share-preview-close" class="share-preview-close preview-button"><span><?php print t("Wait I'not finished"); ?></span><br><?php print t('Change selections'); ?></div>
+          <div id="share-button" class="show-color preview-button"><span><?php print t("Yup! These are the best"); ?></span><br><?php print t('Create my top3 link'); ?></div>
+        </div>
         <div class="preview-items-block">
           <div class="first preview-item show-color show-font" id="preview-one" data-id="one">
 
@@ -97,11 +99,14 @@
 
           </div>
         </div>
-        <div class="last-text-line" id="preview-share-button"><?php print t('Generate your custom share link'); ?></div>
-        <div id="share-preview-close" class="share-preview-close show-color"><?php print t('Go back'); ?></div>
       </div>
     </div>
     <div id="share-block" class="show-color">
+      <div class="share-block-gigya-container">
+        <div class="top-text"><?php print t('Share your top 3 ') . $top3_title . t(' now!'); ?></div>
+        <div id="gigya-share-top3"></div>
+      </div>
+
       <div class="share-block-wrapper">
         <div class="first show-color show-font">
 
@@ -144,8 +149,6 @@
       class="bottom-choose-top3"><?php print t('& share them with your friends'); ?></div>
   </div>
 
-  <div id="share-button" class="show-color"><?php print t('Share'); ?></div>
-  <div id="gigya-share-top3"></div>
   <div class="node-wrapper advert">
     <div class="advertisement">
       <div id="topbox">

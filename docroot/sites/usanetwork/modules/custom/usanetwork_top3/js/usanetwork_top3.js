@@ -4,7 +4,6 @@
 
     var body = document.body,
         dropArea = document.getElementById( 'drop-area' ),
-        //dropAreaPreview = document.getElementById( 'share-block-preview' ),
         droppableArr = [],
         dropAreaTimeout,
         top3target = $('.drop-area__item'),
@@ -49,23 +48,21 @@
       $('#info').show();
     }
     function previewOpen() {
-      $('#share-button').css('visibility','hidden');
       $('#info').hide();
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
-      playerService.hidePlayButton();
+      playButton.addClass('hide');
       $('.drag-group').hide();
       $('#drag-icon-block').hide();
       $('#share-block-preview').show();
     }
     function previewClose() {
-      $('#share-button').css('visibility','visible');
       $('#share-block-preview').hide();
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
-      playerService.showPlayButton();
+      playButton.removeClass('hide');
       $('.drag-group').show();
       $('#drag-icon-block').show();
       $('#info').show();
@@ -701,17 +698,9 @@
                   classie.add( body, 'selectionComplete' );
                   //highlight share btn
                   $('#share-button').once('share-button',function () {
-                    $('#share-button, #preview-share-button').addClass('ready').click(function(){
+                    $('#share-button').click(function(){
                       console.info('share-click');
-                      $('#share-button').hide();
                       $('#share-block-preview').hide();
-                      $('#info').hide();
-                      $('.control-button').hide();
-                      $('#counter').hide();
-                      slideTitle.hide();
-                      //$('.play-button').hide();
-                      playerService.hidePlayButton();
-                      $('.drag-group').hide();
                       $('#share-block img').remove();
                       $('<div id="share-image-block" class="show-color">' +
                           '<div class="share-image-block-wrapper">' +
@@ -729,12 +718,9 @@
                       var shareBlock = $('#share-block'),
                           shareImageBlock = $('#share-image-block'),
                           imgShare = $('#share-img');
-                      shareBlock.css({
-                        visibility: 'visible',
-                        zIndex:'1'
-                      });
+                      $('#top3-slider-wrapper').addClass('share-open');
                       shareImageBlock.show();
-                      $('#slider-container .slider-wrapper').before('<div class="load-more-loader"></div>');
+                      $('#gigya-share-top3').before('<div class="loader-wrapper"><div class="load-more-loader"></div></div>');
                       setTimeout(function(){
                         html2canvas(shareImageBlock, {
                           onrendered: function(canvas) {
@@ -781,11 +767,11 @@
                                 if (typeof Drupal.gigya.showSharebar == 'function') {
                                   Drupal.gigya.showSharebar(sharebar);
                                 }
-                                $('.load-more-loader').remove();
+                                $('.loader-wrapper').remove();
                               },
                               error: function () {
                                 console.info('error');
-                                $('.load-more-loader').remove();
+                                $('.loader-wrapper').remove();
                               }
                             });
                           }
@@ -804,14 +790,15 @@
                       update: function(event, ui) {
                         var finish_item = $('.drop-area__item').index($(ui.item));
                         changeTwoItems(start_item, finish_item, $('.preview-item'));
+                        previewOpen();
                       },
                       items: ".drop-area__item"
                     });
                     $('.drag-group').disableSelection();
                     $('#drag-icon-block').remove();
                     previewOpen();
-                    top3Usanetwork.previewDroppables();
-                    top3Usanetwork.previewDraggable();
+                    //top3Usanetwork.previewDroppables();
+                    //top3Usanetwork.previewDraggable();
                   });
 
                   setTimeout(function(){

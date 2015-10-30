@@ -32,30 +32,18 @@
         <?php endif; ?>
       </div>
       <div id="chosen-items-block-wrapper" class="chosen-items-block-wrapper">
-        <div class="chosen-item-thumb first show-color show-font active">
+        <?php foreach ($slides as $key => $slide) : ?>
+        <div class="chosen-item-thumb first show-color show-font<?php print ($key == 0) ?  ' active' : '' ?>"
+             data-src="<?php print !empty($slide['video']) ? $slide['video'] : ''; ?>"
+             data-src-link="<?php print !empty($slide['video_link']) ? $slide['video_link'] : ''; ?>">
           <div class="img-wrapper">
-            <img src="<?php print $slides[0]['image']; ?>">
+            <img src="<?php print $slide['image']; ?>">
           </div>
-          <?php if (isset($slides[0]['title'])): ?>
-            <div class="title"><?php print $slides[0]['title']; ?></div>
+          <?php if (isset($slide['title'])): ?>
+            <div class="title"><?php print $slide['title']; ?></div>
           <?php endif; ?>
         </div>
-        <div class="chosen-item-thumb second show-color show-font">
-          <div class="img-wrapper">
-            <img src="<?php print $slides[1]['image']; ?>">
-          </div>
-          <?php if (isset($slides[1]['title'])): ?>
-            <div class="title"><?php print $slides[1]['title']; ?></div>
-          <?php endif; ?>
-        </div>
-        <div class="chosen-item-thumb third show-color show-font">
-          <div class="img-wrapper">
-            <img src="<?php print $slides[2]['image']; ?>">
-          </div>
-          <?php if (isset($slides[2]['title'])): ?>
-            <div class="title"><?php print $slides[2]['title']; ?></div>
-          <?php endif; ?>
-        </div>
+        <?php endforeach; ?>
       </div>
       <div class="node-wrapper advert">
         <div class="advertisement">

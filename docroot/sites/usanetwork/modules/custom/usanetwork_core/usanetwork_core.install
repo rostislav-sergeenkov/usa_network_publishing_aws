@@ -1169,5 +1169,7 @@ function usanetwork_core_update_7180() {
     field_group_group_export_delete($group, FALSE);
   }
 
-  taxonomy_vocabulary_delete('object_type');
+  $voc = taxonomy_vocabulary_machine_name_load('object_type');
+  taxonomy_vocabulary_delete($voc->vid);
+
 }

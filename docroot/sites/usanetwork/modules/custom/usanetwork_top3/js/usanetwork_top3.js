@@ -171,6 +171,7 @@
         function _onReleaseEnd(pdkEvent) {
           playerService.mediaPlayStatus = false;
           // hide player
+          console.info('onReleaseEnd');
           playerService.hidePlayer();
         }
       },
@@ -182,6 +183,7 @@
         $pdk.controller.pause(true);
       },
       setPlayer: function () {
+        console.info('set player');
         if(first_state) {
           var activeSlide = $('#slider-container .slick-active'),
               srcLink = activeSlide.find('.video-data').data('src-link'),
@@ -203,12 +205,14 @@
           $pdk.controller.setReleaseURL(srcLink, true);
 
           neighborBlock.addClass('inactive');
+          console.info('set');
           videoBlock.velocity("fadeIn", {
             duration: 200
           });
         }
       },
       loadPlayer: function () {
+        console.info('load player');
         if(first_state) {
           var activeSlide = $('#slider-container .slick-active'),
               srcLink = activeSlide.find('.video-data').data('src-link'),
@@ -236,6 +240,7 @@
         }
       },
       hidePlayer: function (el) {
+        console.info('hide player');
         if(first_state) {
           var activeSlide = $('#slider-container .slick-active'),
               neighborBlock = activeSlide.find('.slide-content-inner'),
@@ -255,6 +260,7 @@
             $pdk.controller.endCurrentRelease();
 
             // make image block active
+            console.info('hide button remove inact');
             neighborBlock.removeClass('inactive');
             videoBlock.css({
               opacity: 0
@@ -268,7 +274,7 @@
         } else {
           var neighborBlock = $('#chosen-player .img-wrapper');
           if (playerService.playerStatus) {
-
+            console.info('hide play');
             //change player status
             playerService.playerStatus = false;
 
@@ -276,6 +282,7 @@
             $pdk.controller.endCurrentRelease();
 
             // make image block active
+            console.info('hide thumb remove inact');
             neighborBlock.removeClass('inactive');
             videoBlock.css({
               opacity: 0
@@ -358,10 +365,35 @@
           //}
         });
         $('#chosen-player .img-wrapper').on('click', function () {
-          if (isMobileDevice) {
-            playerService.loadPlayer();
-          } else {
-            playerService.setPlayer();
+          if (!$(this).hasClass('inactive')){
+            if (isMobileDevice) {
+              playerService.loadPlayer();
+            } else {
+              playerService.setPlayer();
+            }
+          }
+        });
+
+        $('.chosen-item-thumb').on('click', function () {
+          if(!$(this).hasClass('active')) {
+            $('.chosen-item-thumb').removeClass('active');
+            $(this).addClass('active');
+            if (playerService.playerStatus) {
+              //change player status
+              var srcLink = $(this).data('src-link');
+              $pdk.controller.clearCurrentRelease();
+              if (isMobileDevice) {
+                $pdk.controller.loadReleaseURL(srcLink, true);
+              } else {
+                $pdk.controller.setReleaseURL(srcLink, true);
+              }
+            } else {
+              if (isMobileDevice) {
+                playerService.loadPlayer();
+              } else {
+                playerService.setPlayer();
+              }
+            }
           }
         });
 

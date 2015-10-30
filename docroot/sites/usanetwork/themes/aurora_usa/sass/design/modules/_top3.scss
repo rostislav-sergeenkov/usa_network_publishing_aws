@@ -1837,6 +1837,7 @@
           }
           &.active {
             border: 2px solid white;
+            cursor: default;
           }
           &:before {
             @include cssRightTriangle(get-vw(91px, 1280), white, top, right);

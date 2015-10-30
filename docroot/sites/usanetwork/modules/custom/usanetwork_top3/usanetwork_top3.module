@@ -155,6 +155,8 @@ function _usanetwork_top3_main_block() {
     $advert = render($advert_block['content']);
   }
 
+  $player = _usanetwork_mpx_video_get_player_src(array('parent_account' => '1', 'player_id' => 'top3_usa'), 'player');
+
   $query_params = drupal_get_query_parameters();
   if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
     if (isset($query_params['shared']) && isset($query_params['node'])) {
@@ -180,6 +182,7 @@ function _usanetwork_top3_main_block() {
       'slides' => $slides,
       'logo' => isset($logo) ? $logo : NULL,
       'node_path' => url('node/' . $node->nid),
+      'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
     );
 
@@ -226,8 +229,6 @@ function _usanetwork_top3_main_block() {
         );
       }
     }
-
-    $player = _usanetwork_mpx_video_get_player_src(array('parent_account' => '1', 'player_id' => 'top3_usa'), 'player');
 
     if (!empty($node->body)){
       $top3_description = strip_tags($node_wrapper->body->value->value());

@@ -318,6 +318,26 @@
           //  }
           //}
         });
+        $('#chosen-player .img-wrapper').on('click', function () {
+
+          playerService.setPlayer();
+          $(this).hide();
+          videoBlock.addClass('show-player');
+
+          //if (!playBtn.hasClass('inactive')) {
+          //  playBtn.addClass('inactive play');
+          //  // show player
+          //  playerService.loadPlayer();
+          //  $('.slider-wrapper').hide();
+          //
+          //} else if(playBtn.data('player-status') === 'start') {
+          //  if (playBtn.hasClass('play')) {
+          //    playerService.pausePlayer();
+          //  } else if (!playBtn.hasClass('play')){
+          //    playerService.playPlayer();
+          //  }
+          //}
+        });
 
         /*$("#loading").fadeIn();
 

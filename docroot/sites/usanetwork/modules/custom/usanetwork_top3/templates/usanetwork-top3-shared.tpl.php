@@ -22,7 +22,8 @@
   </div>
   <div class="chosen-items-block show-color">
     <div class="chosen-items-inner">
-      <div class="chosen-player">
+      <div id="chosen-player" class="chosen-player">
+        <div id="slider-player" data-player-src="<?php print $player; ?>"></div>
         <div class="img-wrapper">
           <img src="<?php print $slides[0]['image']; ?>">
         </div>
@@ -31,7 +32,7 @@
         <?php endif; ?>
       </div>
       <div id="chosen-items-block-wrapper" class="chosen-items-block-wrapper">
-        <div class="chosen-item-thumb first show-color show-font">
+        <div class="chosen-item-thumb first show-color show-font active">
           <div class="img-wrapper">
             <img src="<?php print $slides[0]['image']; ?>">
           </div>

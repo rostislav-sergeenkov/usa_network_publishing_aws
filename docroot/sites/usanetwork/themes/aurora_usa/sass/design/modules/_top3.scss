@@ -208,7 +208,6 @@
       padding-top: get-vw(108px, 480);
     }
   }
-  // player iframe
   #slider-player {
     opacity: 0;
     left: 0;
@@ -217,6 +216,9 @@
     &, iframe {
       height: 100%;
       width: 100%;
+    }
+    &.show-player {
+      opacity: 1;
     }
   }
   // play button
@@ -1735,7 +1737,9 @@
           width: get-vw(690px, 768);
         }
         .img-wrapper {
+          cursor: pointer;
           height: 100%;
+          position: relative;
           width: 100%;
           @include breakpoint($between-769-1024) {
             height: 388.125px;
@@ -1829,6 +1833,9 @@
           }
           @include breakpoint($bp-768-width) {
             height: get-vw(124.2px, 768);
+          }
+          &.active {
+            border: 2px solid white;
           }
           &:before {
             @include cssRightTriangle(get-vw(91px, 1280), white, top, right);

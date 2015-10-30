@@ -165,6 +165,14 @@ function _usanetwork_top3_main_block() {
       $slides = array();
       foreach ($shared_files as $shared_file) {
         list($title, $image) = _usanetwork_top3_get_title_and_image($node, $shared_file);
+        if ($shared_file->filemime == 'video/mpx') {
+          $video = _usanetwork_mpx_video_get_player_src(array(
+            'file' => $shared_file,
+            'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
+            'player_id' => 'top3_usa',
+          ));
+          $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $shared_file,), 'link');
+        }
         if (empty($image)) {
           $image_url = _usanetwork_mpx_video_get_image_path($shared_file);
         }
@@ -174,7 +182,8 @@ function _usanetwork_top3_main_block() {
         $slides[] = array(
           'title' => !empty($title) ? $title : NULL,
           'image' => !empty($image_url) ? image_style_url('2880x1620', $image_url) : NULL,
-//          'video' => isset($video) ? $video : NULL,
+          'video' => isset($video) ? $video : NULL,
+          'video_link' => isset($video_link) ? $video_link : NULL,
         );
       }
     }

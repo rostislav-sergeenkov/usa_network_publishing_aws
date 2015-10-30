@@ -209,10 +209,17 @@
         }
       },
       loadPlayer: function () {
-        var activeSlide = $('#slider-container .slick-active'),
-            srcLink = activeSlide.find('.video-data').data('src-link'),
-            src = activeSlide.find('.video-data').data('src'),
-            neighborBlock = activeSlide.find('.slide-content-inner');
+        if(first_state) {
+          var activeSlide = $('#slider-container .slick-active'),
+              srcLink = activeSlide.find('.video-data').data('src-link'),
+              src = activeSlide.find('.video-data').data('src'),
+              neighborBlock = activeSlide.find('.slide-content-inner');
+        } else {
+          var activeThumb = $('#chosen-items-block-wrapper .chosen-item-thumb.active'),
+              srcLink = activeThumb.data('src-link'),
+              src = activeThumb.data('src'),
+              neighborBlock = $('#chosen-player .img-wrapper');
+        }
 
         if (videoBlock.hasClass('active')) {
 
@@ -229,34 +236,53 @@
         }
       },
       hidePlayer: function (el) {
-        var activeSlide = $('#slider-container .slick-active'),
-            neighborBlock = activeSlide.find('.slide-content-inner'),
-            playButton = $('#play-button');
+        if(first_state) {
+          var activeSlide = $('#slider-container .slick-active'),
+              neighborBlock = activeSlide.find('.slide-content-inner'),
+              playButton = $('#play-button');
 
-        if (playerService.hideSliderWrapper) {
-          playerService.hideSliderWrapper = false;
-          $('#slider-container .slider-wrapper').show();
+          if (playerService.hideSliderWrapper) {
+            playerService.hideSliderWrapper = false;
+            $('#slider-container .slider-wrapper').show();
+          }
+
+          if (playerService.playerStatus) {
+
+            //change player status
+            playerService.playerStatus = false;
+
+            // stop video
+            $pdk.controller.endCurrentRelease();
+
+            // make image block active
+            neighborBlock.removeClass('inactive');
+            videoBlock.css({
+              opacity: 0
+            });
+
+            // reset play button
+            playButton
+                .removeAttr('data-player-status')
+                .removeClass('inactive play');
+          }
+        } else {
+          var neighborBlock = $('#chosen-player .img-wrapper');
+          if (playerService.playerStatus) {
+
+            //change player status
+            playerService.playerStatus = false;
+
+            // stop video
+            $pdk.controller.endCurrentRelease();
+
+            // make image block active
+            neighborBlock.removeClass('inactive');
+            videoBlock.css({
+              opacity: 0
+            });
+          }
         }
 
-        if (playerService.playerStatus) {
-
-          //change player status
-          playerService.playerStatus = false;
-
-          // stop video
-          $pdk.controller.endCurrentRelease();
-
-          // make image block active
-          neighborBlock.removeClass('inactive');
-          videoBlock.css({
-            opacity: 0
-          });
-
-          // reset play button
-          playButton
-              .removeAttr('data-player-status')
-              .removeClass('inactive play');
-        }
       },
       resetPlayer: function () {
         if (playerService.mediaLoadStatus) {
@@ -291,11 +317,12 @@
     var top3Usanetwork = {
       init : function(config){
 
+        var isMobileDevice = usa_deviceInfo.mobileDevice;
         // add click on play button in slide
         $('#play-button').on('click', function () {
 
-          var playBtn = $(this),
-              isMobileDevice = usa_deviceInfo.mobileDevice;
+          var playBtn = $(this);
+
 
           if (!playBtn.hasClass('inactive')) {
             // added class and change status button
@@ -331,22 +358,11 @@
           //}
         });
         $('#chosen-player .img-wrapper').on('click', function () {
-          if (!$(this).hasClass('inactive')) {
+          if (isMobileDevice) {
+            playerService.loadPlayer();
+          } else {
             playerService.setPlayer();
           }
-          //if (!playBtn.hasClass('inactive')) {
-          //  playBtn.addClass('inactive play');
-          //  // show player
-          //  playerService.loadPlayer();
-          //  $('.slider-wrapper').hide();
-          //
-          //} else if(playBtn.data('player-status') === 'start') {
-          //  if (playBtn.hasClass('play')) {
-          //    playerService.pausePlayer();
-          //  } else if (!playBtn.hasClass('play')){
-          //    playerService.playPlayer();
-          //  }
-          //}
         });
 
         /*$("#loading").fadeIn();

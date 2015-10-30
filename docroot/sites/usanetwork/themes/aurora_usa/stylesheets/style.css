@@ -31713,7 +31713,7 @@ body.blog .view-display-id-blog_content .views-row {
   width: 100%;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .chosen-items-block .chosen-player .img-wrapper.inactive {
-  opacity: 0;
+  display: none;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .chosen-items-block .chosen-player .title {
   color: white;

@@ -2,6 +2,11 @@
 
   $(document).ready(function () {
 
+    var first_state = true;
+    if ($('#block-usanetwork-top3-usanetwork-top3-main-block').hasClass('shared-screen')) {
+      first_state = false;
+    }
+
     var body = document.body,
         dropArea = document.getElementById( 'drop-area' ),
         droppableArr = [],
@@ -177,10 +182,17 @@
         $pdk.controller.pause(true);
       },
       setPlayer: function () {
-        var activeSlide = $('#slider-container .slick-active'),
-            srcLink = activeSlide.find('.video-data').data('src-link'),
-            src = activeSlide.find('.video-data').data('src'),
-            neighborBlock = activeSlide.find('.slide-content-inner');
+        if(first_state) {
+          var activeSlide = $('#slider-container .slick-active'),
+              srcLink = activeSlide.find('.video-data').data('src-link'),
+              src = activeSlide.find('.video-data').data('src'),
+              neighborBlock = activeSlide.find('.slide-content-inner');
+        } else {
+          var activeThumb = $('#chosen-items-block-wrapper .chosen-item-thumb.active'),
+              srcLink = activeThumb.find('.video-data').data('src-link'),
+              src = activeThumb.find('.video-data').data('src'),
+              neighborBlock = $('#chosen-player .img-wrapper');
+        }
 
         if (videoBlock.hasClass('active')) {
 
@@ -321,8 +333,7 @@
         $('#chosen-player .img-wrapper').on('click', function () {
 
           playerService.setPlayer();
-          $(this).hide();
-          videoBlock.addClass('show-player');
+
 
           //if (!playBtn.hasClass('inactive')) {
           //  playBtn.addClass('inactive play');

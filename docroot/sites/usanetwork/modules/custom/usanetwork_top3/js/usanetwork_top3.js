@@ -189,8 +189,8 @@
               neighborBlock = activeSlide.find('.slide-content-inner');
         } else {
           var activeThumb = $('#chosen-items-block-wrapper .chosen-item-thumb.active'),
-              srcLink = activeThumb.find('.video-data').data('src-link'),
-              src = activeThumb.find('.video-data').data('src'),
+              srcLink = activeThumb.data('src-link'),
+              src = activeThumb.data('src'),
               neighborBlock = $('#chosen-player .img-wrapper');
         }
 
@@ -331,10 +331,9 @@
           //}
         });
         $('#chosen-player .img-wrapper').on('click', function () {
-
-          playerService.setPlayer();
-
-
+          if (!$(this).hasClass('inactive')) {
+            playerService.setPlayer();
+          }
           //if (!playBtn.hasClass('inactive')) {
           //  playBtn.addClass('inactive play');
           //  // show player

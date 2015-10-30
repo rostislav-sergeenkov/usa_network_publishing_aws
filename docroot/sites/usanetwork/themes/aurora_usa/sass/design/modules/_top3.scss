@@ -1079,6 +1079,7 @@
         height: get-vw(346px, 1024);
       }
       @include breakpoint($bp-768-width) {
+        height: auto;
         margin: 0 auto;
         width: 70%;
       }
@@ -1887,6 +1888,22 @@
               width: get-vw(54.45px, 768);
             }
           }
+          &:nth-child(1) {
+            &:after {
+              content: '1';
+            }
+          }
+          &:nth-child(2) {
+            &:after {
+              content: '2';
+            }
+          }
+          &:nth-child(3) {
+            margin-right: 0;
+            &:after {
+              content: '3';
+            }
+          }
           .img-wrapper {
             height: 100%;
             width: 100%;
@@ -1894,22 +1911,6 @@
               height: 100%;
               width: 100%;
             }
-          }
-        }
-        .first {
-          &:after {
-            content: '1';
-          }
-        }
-        .second {
-          &:after {
-            content: '2';
-          }
-        }
-        .third {
-          margin-right: 0;
-          &:after {
-            content: '3';
           }
         }
       }

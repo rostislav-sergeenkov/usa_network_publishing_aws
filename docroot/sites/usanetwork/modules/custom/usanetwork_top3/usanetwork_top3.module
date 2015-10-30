@@ -179,12 +179,20 @@ function _usanetwork_top3_main_block() {
         else {
           $image_url = file_load($image)->uri;
         }
+        $title = !empty($title) ? $title : NULL;
+        $image = !empty($image_url) ? image_style_url('2880x1620', $image_url) : NULL;
         $slides[] = array(
-          'title' => !empty($title) ? $title : NULL,
-          'image' => !empty($image_url) ? image_style_url('2880x1620', $image_url) : NULL,
+          'title' => $title,
+          'image' => $image,
           'video' => isset($video) ? $video : NULL,
           'video_link' => isset($video_link) ? $video_link : NULL,
         );
+        if (!isset($active_element) && (isset($video))) {
+          $active_element = array(
+            'title' => $title,
+            'image' => $image,
+          );
+        }
       }
     }
     $theme_variables = array(
@@ -193,6 +201,7 @@ function _usanetwork_top3_main_block() {
       'node_path' => url('node/' . $node->nid),
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
+      'active_element' => $active_element,
     );
 
     return theme('usanetwork_top3_shared', $theme_variables);

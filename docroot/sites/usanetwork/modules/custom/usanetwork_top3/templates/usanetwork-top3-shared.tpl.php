@@ -25,10 +25,10 @@
       <div id="chosen-player" class="chosen-player">
         <div id="slider-player" data-player-src="<?php print $player; ?>"></div>
         <div class="img-wrapper">
-          <img src="<?php print $slides[0]['image']; ?>">
+          <img src="<?php print $active_element['image']; ?>">
         </div>
-        <?php if (isset($slides[0]['title'])): ?>
-          <div class="title"><?php print $slides[0]['title']; ?></div>
+        <?php if (!empty($active_element['title'])): ?>
+          <div class="title"><?php print $active_element['title']; ?></div>
         <?php endif; ?>
       </div>
       <div id="chosen-items-block-wrapper" class="chosen-items-block-wrapper">
@@ -39,7 +39,7 @@
           <div class="img-wrapper">
             <img src="<?php print $slide['image']; ?>">
           </div>
-          <?php if (isset($slide['title'])): ?>
+          <?php if (!empty($slide['title'])): ?>
             <div class="title"><?php print $slide['title']; ?></div>
           <?php endif; ?>
         </div>

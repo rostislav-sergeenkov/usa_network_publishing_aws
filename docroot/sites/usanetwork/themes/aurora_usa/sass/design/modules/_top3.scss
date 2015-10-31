@@ -213,6 +213,9 @@
     left: 0;
     position: absolute;
     top: 0;
+    &.show-up {
+      z-index: 1;
+    }
     &, iframe {
       height: 100%;
       width: 100%;
@@ -1748,9 +1751,6 @@
           img {
             height: 100%;
             width: 100%;
-          }
-          &.inactive {
-            display: none;
           }
         }
         .title {

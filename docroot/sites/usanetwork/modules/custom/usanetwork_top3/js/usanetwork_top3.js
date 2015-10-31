@@ -8,7 +8,7 @@
     }
 
     var body = document.body,
-        dropArea = document.getElementById( 'drop-area' ),
+        dropArea = document.getElementById('drop-area'),
         droppableArr = [],
         dropAreaTimeout,
         top3target = $('.drop-area__item'),
@@ -25,7 +25,7 @@
         sliderContainer = $('#slider-container'),
         sliderWrapper = sliderContainer.find('.slider-wrapper'),
         currentSlideNum = sliderContainer.find('#counter .current-slide'),
-        totalSlidesNum= sliderContainer.find('#counter .total-slides'),
+        totalSlidesNum = sliderContainer.find('#counter .total-slides'),
         slide = sliderContainer.find('.slide'),
         slideTitle = slide.find('.title'),
         nextArrow = sliderContainer.find('.next'),
@@ -43,6 +43,7 @@
       $('.drag-group').hide();
       $('#info-block').show();
     }
+
     function infoClose() {
       $('#info-block').hide();
       $('.control-button').show();
@@ -52,6 +53,7 @@
       $('.drag-group').show();
       $('#info').show();
     }
+
     function previewOpen() {
       $('#info').hide();
       $('.control-button').hide();
@@ -62,6 +64,7 @@
       $('#drag-icon-block').hide();
       $('#share-block-preview').show();
     }
+
     function previewClose() {
       $('#share-block-preview').hide();
       $('.control-button').show();
@@ -74,14 +77,14 @@
     }
 
     function changeTwoItems(first, second, target) {
-      if(Math.abs(second - first) == 1) {
+      if (Math.abs(second - first) == 1) {
         if (second - first > 0) {
           target.eq(second).insertBefore(target.eq(first));
         } else {
           target.eq(first).insertBefore(target.eq(second));
         }
       }
-      if(Math.abs(second - first) == 2) {
+      if (Math.abs(second - first) == 2) {
         if (second - first > 0) {
           target.eq(first).insertAfter(target.eq(second));
         } else {
@@ -90,17 +93,17 @@
       }
     }
 
-    $('#info').click(function(){
+    $('#info').click(function () {
       infoOpen();
     });
-    $('#info-close, #start-button').click(function(){
+    $('#info-close, #start-button').click(function () {
       infoClose();
-      $('#start-button').once(function(){
+      $('#start-button').once(function () {
         $('#start-button').remove();
         top3Usanetwork.carousel();
       });
     });
-    $('#share-preview-close').click(function(){
+    $('#share-preview-close').click(function () {
       previewClose();
     });
 
@@ -111,9 +114,10 @@
       mediaLoadStatus: false, // default value
       mediaPlayStatus: false, // default value
       hideSliderWrapper: false, // default value
+      clickOnThumb: false, // default value
 
       createPlayer: function () {
-            var src = videoBlock.data('player-src'),
+        var src = videoBlock.data('player-src'),
             frame, slide;
 
         if (src == undefined || src == '') {
@@ -148,6 +152,12 @@
         function _onMediaStart(pdkEvent) {
           playerService.mediaLoadStatus = false;
           playerService.mediaPlayStatus = true;
+
+          if (playerService.clickOnThumb) {
+            playerService.clickOnThumb = false;
+            console.info('click thumb = ' + playerService.clickOnThumb);
+          }
+
           // change status play button
           playButton
               .addClass('play')
@@ -172,7 +182,11 @@
           playerService.mediaPlayStatus = false;
           // hide player
           console.info('onReleaseEnd');
-          playerService.hidePlayer();
+
+          if (playerService.clickOnThumb == false) {
+            console.info('click thumb = ' + playerService.clickOnThumb);
+            playerService.hidePlayer();
+          }
         }
       },
       playPlayer: function () {
@@ -184,16 +198,19 @@
       },
       setPlayer: function () {
         console.info('set player');
-        if(first_state) {
-          var activeSlide = $('#slider-container .slick-active'),
-              srcLink = activeSlide.find('.video-data').data('src-link'),
-              src = activeSlide.find('.video-data').data('src'),
-              neighborBlock = activeSlide.find('.slide-content-inner');
+
+        var activeSlide, activeThumb, srcLink, src, neighborBlock;
+
+        if (first_state) {
+          activeSlide = $('#slider-container .slick-active');
+          srcLink = activeSlide.find('.video-data').data('src-link');
+          src = activeSlide.find('.video-data').data('src');
+          neighborBlock = activeSlide.find('.slide-content-inner');
         } else {
-          var activeThumb = $('#chosen-items-block-wrapper .chosen-item-thumb.active'),
-              srcLink = activeThumb.data('src-link'),
-              src = activeThumb.data('src'),
-              neighborBlock = $('#chosen-player .img-wrapper');
+          activeThumb = $('#chosen-items-block-wrapper .chosen-item-thumb.active');
+          srcLink = activeThumb.data('src-link');
+          src = activeThumb.data('src');
+          neighborBlock = $('#chosen-player .img-wrapper');
         }
 
         if (videoBlock.hasClass('active')) {
@@ -213,16 +230,18 @@
       },
       loadPlayer: function () {
         console.info('load player');
-        if(first_state) {
-          var activeSlide = $('#slider-container .slick-active'),
-              srcLink = activeSlide.find('.video-data').data('src-link'),
-              src = activeSlide.find('.video-data').data('src'),
-              neighborBlock = activeSlide.find('.slide-content-inner');
+        var activeSlide, activeThumb, srcLink, src, neighborBlock;
+
+        if (first_state) {
+          activeSlide = $('#slider-container .slick-active');
+          srcLink = activeSlide.find('.video-data').data('src-link');
+          src = activeSlide.find('.video-data').data('src');
+          neighborBlock = activeSlide.find('.slide-content-inner');
         } else {
-          var activeThumb = $('#chosen-items-block-wrapper .chosen-item-thumb.active'),
-              srcLink = activeThumb.data('src-link'),
-              src = activeThumb.data('src'),
-              neighborBlock = $('#chosen-player .img-wrapper');
+          activeThumb = $('#chosen-items-block-wrapper .chosen-item-thumb.active');
+          srcLink = activeThumb.data('src-link');
+          src = activeThumb.data('src');
+          neighborBlock = $('#chosen-player .img-wrapper');
         }
 
         if (videoBlock.hasClass('active')) {
@@ -241,7 +260,7 @@
       },
       hidePlayer: function (el) {
         console.info('hide player');
-        if(first_state) {
+        if (first_state) {
           var activeSlide = $('#slider-container .slick-active'),
               neighborBlock = activeSlide.find('.slide-content-inner'),
               playButton = $('#play-button');
@@ -277,6 +296,10 @@
             console.info('hide play');
             //change player status
             playerService.playerStatus = false;
+
+            if ($('#slider-player').hasClass('show-up')) {
+              $('#slider-player').removeClass('show-up');
+            }
 
             // stop video
             $pdk.controller.endCurrentRelease();
@@ -322,7 +345,7 @@
     // end
 
     var top3Usanetwork = {
-      init : function(config){
+      init: function (config) {
 
         var isMobileDevice = usa_deviceInfo.mobileDevice;
         // add click on play button in slide
@@ -342,10 +365,10 @@
             } else {
               playerService.setPlayer();
             }
-          } else if(playBtn.data('player-status') === 'start') {
+          } else if (playBtn.data('player-status') === 'start') {
             if (playBtn.hasClass('play')) {
               playerService.pausePlayer();
-            } else if (!playBtn.hasClass('play')){
+            } else if (!playBtn.hasClass('play')) {
               playerService.playPlayer();
             }
           }
@@ -365,7 +388,10 @@
           //}
         });
         $('#chosen-player .img-wrapper').on('click', function () {
-          if (!$(this).hasClass('inactive')){
+          if (!$(this).hasClass('inactive')) {
+
+            $('#slider-player').addClass('show-up');
+
             if (isMobileDevice) {
               playerService.loadPlayer();
             } else {
@@ -375,25 +401,38 @@
         });
 
         $('.chosen-item-thumb').on('click', function () {
-          if(!$(this).hasClass('active')) {
+          if (!$(this).hasClass('active')) {
+            // set status clickOnThumb
+            playerService.clickOnThumb = true;
+
             $('.chosen-item-thumb').removeClass('active');
             $(this).addClass('active');
-            if (playerService.playerStatus) {
-              //change player status
-              var srcLink = $(this).data('src-link');
-              $pdk.controller.clearCurrentRelease();
-              if (isMobileDevice) {
-                $pdk.controller.loadReleaseURL(srcLink, true);
-              } else {
-                $pdk.controller.setReleaseURL(srcLink, true);
-              }
-            } else {
-              if (isMobileDevice) {
-                playerService.loadPlayer();
-              } else {
-                playerService.setPlayer();
-              }
+
+            if (!$('#slider-player').hasClass('show-up')) {
+              $('#slider-player').addClass('show-up');
             }
+
+            if (isMobileDevice) {
+              playerService.loadPlayer();
+            } else {
+              playerService.setPlayer();
+            }
+            //if (playerService.playerStatus) {
+            //  //change player status
+            //  var srcLink = $(this).data('src-link');
+            //  $pdk.controller.clearCurrentRelease();
+            //  if (isMobileDevice) {
+            //    $pdk.controller.loadReleaseURL(srcLink, true);
+            //  } else {
+            //    $pdk.controller.setReleaseURL(srcLink, true);
+            //  }
+            //} else {
+            //  if (isMobileDevice) {
+            //    playerService.loadPlayer();
+            //  } else {
+            //    playerService.setPlayer();
+            //  }
+            //}
           }
         });
 
@@ -424,14 +463,14 @@
         //this.gotoCanvas();
 
 
-        setTimeout(function(){
+        setTimeout(function () {
           top3Usanetwork.droppables();
           top3Usanetwork.draggable();
           //top3Telemundo.videoPlay();
-        },1000);
+        }, 1000);
 
       },
-      carousel : function(){
+      carousel: function () {
 
         sliderWrapper
             .on('init', function (slick) {
@@ -454,14 +493,14 @@
               swipe: false,
               speed: 300
             })
-            .on('afterChange', function(event, slick, currentSlide){
+            .on('afterChange', function (event, slick, currentSlide) {
               playerService.showPlayButton();
               currentSlideNum.text(currentSlide + 1);
               if ($('body').hasClass('node-type-top3-gallery')) {
                 Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
               }
             })
-            .on('beforeChange', function(event, slick, currentSlide, nextSlide){
+            .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
               if (playerService.playerStatus) {
                 // hide player
                 playerService.hidePlayer();
@@ -469,36 +508,36 @@
             });
 
       },
-      droppables : function(){
+      droppables: function () {
 
         console.log('droppables initilized');
 
         // initialize droppables
-        [].slice.call( document.querySelectorAll( '#drop-area .drop-area__item' )).forEach( function( el ) {
-          droppableArr.push( new Droppable( el, {
+        [].slice.call(document.querySelectorAll('#drop-area .drop-area__item')).forEach(function (el) {
+          droppableArr.push(new Droppable(el, {
 
-            onDrop : function( instance, draggableEl ) {
+            onDrop: function (instance, draggableEl) {
               $('.drop-area__item').removeClass('ui-sortable-handle');
               var cleanUp = draggableEl;
-              topItem=$(draggableEl).find('.slide-content-inner');
+              topItem = $(draggableEl).find('.slide-content-inner');
 
               instanceDrop = instance.el.id;
 
               // show checkmark inside the droppabe element
-              classie.add( instance.el, 'drop-feedback' );
+              classie.add(instance.el, 'drop-feedback');
 
               clearInterval(dropZone2);
-              dropZone2 = setInterval(function(){
+              dropZone2 = setInterval(function () {
                 //check drop zone: full or not
-                top3target.each(function() {
+                top3target.each(function () {
                   elementDropped = $(this).hasClass('drop-feedback');
-                  if(elementDropped == true){
+                  if (elementDropped == true) {
                     topItem.find('.title').removeAttr('style');
                     switch (instanceDrop) {
 
                       case ins0:
 
-                        if($.trim(slot0.html())){
+                        if ($.trim(slot0.html())) {
 
                           var carouselTarget = $('#one').find('.slide-content-inner').attr('data-slide-id');
 
@@ -509,7 +548,7 @@
                         } else {
 
                           sliderWrapper.slick('slickNext');
-                          $('#one').css('opacity',1);
+                          $('#one').css('opacity', 1);
                           slot0.html(topItem.clone());
                           preview0.html(topItem.clone());
 
@@ -519,7 +558,7 @@
 
                       case ins1:
 
-                        if($.trim(slot1.html())){
+                        if ($.trim(slot1.html())) {
 
                           var carouselTarget = $('#two').find('.slide-content-inner').attr('data-slide-id');
 
@@ -530,7 +569,7 @@
                         } else {
 
                           sliderWrapper.slick('slickNext');
-                          $('#two').css('opacity',1);
+                          $('#two').css('opacity', 1);
                           slot1.html(topItem.clone());
                           preview1.html(topItem.clone());
 
@@ -540,7 +579,7 @@
 
                       case ins2:
 
-                        if($.trim(slot2.html())){
+                        if ($.trim(slot2.html())) {
 
                           var carouselTarget = $('#three').find('.slide-content-inner').attr('data-slide-id');
 
@@ -550,137 +589,139 @@
 
                         } else {
                           sliderWrapper.slick('slickNext');
-                          $('#three').css('opacity',1);
+                          $('#three').css('opacity', 1);
                           slot2.html(topItem.clone());
                           preview2.html(topItem.clone());
                         }
 
                         break;
                     }
-                    if($('#share-block-preview').hasClass('share-block-preview-processed')){
+                    if ($('#share-block-preview').hasClass('share-block-preview-processed')) {
                       previewOpen();
                     }
                   }
                 });
-              },900);
+              }, 900);
 
-              $(draggableEl).css('visibility','hidden');
-              setTimeout(function(){
-                $(draggableEl).css('visibility','visible');
-                $(draggableEl).attr("disabled","disabled");
-              },1700);
+              $(draggableEl).css('visibility', 'hidden');
+              setTimeout(function () {
+                $(draggableEl).css('visibility', 'visible');
+                $(draggableEl).attr("disabled", "disabled");
+              }, 1700);
 
-              clearTimeout( instance.checkmarkTimeout );
-              instance.checkmarkTimeout = setTimeout( function() {
-                classie.remove( instance.el, 'drop-feedback' );
+              clearTimeout(instance.checkmarkTimeout);
+              instance.checkmarkTimeout = setTimeout(function () {
+                classie.remove(instance.el, 'drop-feedback');
 
-              }, 1000 );
+              }, 1000);
 
             }
-          } ) );
-        } );
+          }));
+        });
       },
 
-      draggable : function(){
+      draggable: function () {
 
         console.log('draggable initilized');
 
         //simulation mouse controlls to resize drag contex
         var mouse_button = false;
         var IE_version = getInternetExplorerVersion();
+
         function get_offset(element, direction, touch) {
           var demensions_coefficient = 10.58;
-          if(direction == 'left') {
-            if(touch) {
-              return element.originalEvent.touches[0].clientX- sliderContainer.offset()['left'] - sliderContainer.height()/demensions_coefficient;
+          if (direction == 'left') {
+            if (touch) {
+              return element.originalEvent.touches[0].clientX - sliderContainer.offset()['left'] - sliderContainer.height() / demensions_coefficient;
             } else {
-              return element.originalEvent.clientX - sliderContainer.offset()['left'] - sliderContainer.height()/demensions_coefficient;
+              return element.originalEvent.clientX - sliderContainer.offset()['left'] - sliderContainer.height() / demensions_coefficient;
             }
           }
-          if(direction == 'top') {
-            if(touch) {
-              return element.originalEvent.touches[0].clientY - (sliderContainer.offset().top - $(window).scrollTop()) - sliderContainer.width()/demensions_coefficient;
+          if (direction == 'top') {
+            if (touch) {
+              return element.originalEvent.touches[0].clientY - (sliderContainer.offset().top - $(window).scrollTop()) - sliderContainer.width() / demensions_coefficient;
             } else {
-              return element.originalEvent.clientY - (sliderContainer.offset().top - $(window).scrollTop()) - sliderContainer.width()/demensions_coefficient;
+              return element.originalEvent.clientY - (sliderContainer.offset().top - $(window).scrollTop()) - sliderContainer.width() / demensions_coefficient;
             }
           }
         }
+
         switch (IE_version) {
 
           case 11:
-            $('.slide-content').on('pointerdown', function(el){
+            $('.slide-content').on('pointerdown', function (el) {
               mouse_button = true;
               $(el.currentTarget).addClass('slide-item-grab').css({
-                'margin-top': get_offset(el, 'top', false)+'px',
-                'margin-left': get_offset(el, 'left', false)+'px'
+                'margin-top': get_offset(el, 'top', false) + 'px',
+                'margin-left': get_offset(el, 'left', false) + 'px'
               });
             });
 
             break;
 
           case 10:
-            $('.slide-content').on('MSPointerDown', function(el){
+            $('.slide-content').on('MSPointerDown', function (el) {
               mouse_button = true;
               $(el.currentTarget).addClass('slide-item-grab').css({
-                'margin-top': get_offset(el, 'top', false)+'px',
-                'margin-left': get_offset(el, 'left', false)+'px'
+                'margin-top': get_offset(el, 'top', false) + 'px',
+                'margin-left': get_offset(el, 'left', false) + 'px'
               });
             });
 
             break;
 
         }
-        $('.slide-content').on('mousedown', function(el){
+        $('.slide-content').on('mousedown', function (el) {
           mouse_button = true;
           $(el.currentTarget).addClass('slide-item-grab').css({
-            'margin-top': get_offset(el, 'top', false)+'px',
-            'margin-left': get_offset(el, 'left', false)+'px'
+            'margin-top': get_offset(el, 'top', false) + 'px',
+            'margin-left': get_offset(el, 'left', false) + 'px'
           });
         });
-        $('.slide-content').on('mouseup', function(){
+        $('.slide-content').on('mouseup', function () {
           mouse_button = false;
           $('.slide-content').css({
             'margin': '0'
           }).removeClass('slide-item-grab');
         });
         /*$('.slide-content').on('mouseout', function(){
-          if (mouse_button) {
-            mouse_button = false;
-            $('.slide-content').css("margin", 0).removeClass('slide-item-grab');
-          }
-        });
-        $('.slide-content').on('mouseover', function(){
-          if (mouse_button) {
-            mouse_button = false;
-            $('.slide-content').css("margin", 0).removeClass('slide-item-grab');
-          }
-        });*/
+         if (mouse_button) {
+         mouse_button = false;
+         $('.slide-content').css("margin", 0).removeClass('slide-item-grab');
+         }
+         });
+         $('.slide-content').on('mouseover', function(){
+         if (mouse_button) {
+         mouse_button = false;
+         $('.slide-content').css("margin", 0).removeClass('slide-item-grab');
+         }
+         });*/
 
         //mobile draging
-        $('.slide-content').on('touchstart', function(el){
+        $('.slide-content').on('touchstart', function (el) {
           $(el.currentTarget).addClass('slide-item-grab').css({
-            'margin-top': get_offset(el, 'top', true)+'px',
-            'margin-left': get_offset(el, 'left', true)+'px'
+            'margin-top': get_offset(el, 'top', true) + 'px',
+            'margin-left': get_offset(el, 'left', true) + 'px'
           });
         });
 
         /*$('.slide-content').on('touchend', function(){
-          $('.slide-content').css({
-            'margin': '0'
-          }).removeClass('slide-item-grab');
-        });*/
+         $('.slide-content').css({
+         'margin': '0'
+         }).removeClass('slide-item-grab');
+         });*/
 
         // initialize draggable(s)
-        [].slice.call(document.querySelectorAll( '.slider-wrapper .slide-content' )).forEach( function( el ) {
+        [].slice.call(document.querySelectorAll('.slider-wrapper .slide-content')).forEach(function (el) {
 
-          new Draggable( el, droppableArr, {
+          new Draggable(el, droppableArr, {
 
-            draggabilly : { containment: sliderContainer },
+            draggabilly: {containment: sliderContainer},
 
-            onStart : function() {
+            onStart: function () {
 
               // check player status on drag start
-              if (playerService.mediaLoadStatus ) {
+              if (playerService.mediaLoadStatus) {
                 playerService.resetPlayer();
               } else if (playerService.mediaPlayStatus) {
                 playerService.pausePlayer();
@@ -703,38 +744,38 @@
 
 
               // add class 'drag-active' to body
-              classie.add( body, 'drag-active' );
+              classie.add(body, 'drag-active');
 
               // clear timeout: dropAreaTimeout (toggle drop area)
-              clearTimeout( dropAreaTimeout );
+              clearTimeout(dropAreaTimeout);
 
               // show dropArea
-              classie.add( dropArea, 'show' );
+              classie.add(dropArea, 'show');
 
             },
 
-            onDrag : function() {
+            onDrag: function () {
 
-              if($('.container-message').hasClass('not-allowed')){
-                classie.add( dropArea, 'not-allowed' );
+              if ($('.container-message').hasClass('not-allowed')) {
+                classie.add(dropArea, 'not-allowed');
               }
 
               inAction = true;
               dragEnd = false;
-              if(inAction){
-                classie.add( el , 'slide-item-grab');
+              if (inAction) {
+                classie.add(el, 'slide-item-grab');
               }
             },
 
-            onEnd : function( wasDropped ) {
+            onEnd: function (wasDropped) {
 
               //if element is not dropped please resize
-              setTimeout(function(){
+              setTimeout(function () {
                 $(el).css({
                   'margin': '0'
                 });
-                classie.remove( el , 'slide-item-grab');
-              },500);
+                classie.remove(el, 'slide-item-grab');
+              }, 500);
 
               function convertCanvasToImage(canvas) {
                 var ctx = canvas.getContext('2d');
@@ -746,7 +787,7 @@
                 return image;
               }
 
-              var afterDropFn = function() {
+              var afterDropFn = function () {
 
                 clearInterval(dropZone2);
 
@@ -754,29 +795,29 @@
                 $('.container-message').fadeOut(500).removeClass('not-allowed');
 
                 // hide dropArea
-                classie.remove( dropArea, 'not-allowed' );
-                classie.remove( dropArea, 'show' );
+                classie.remove(dropArea, 'not-allowed');
+                classie.remove(dropArea, 'show');
 
                 // remove class 'drag-active' from body
-                classie.remove( body, 'drag-active' );
+                classie.remove(body, 'drag-active');
 
                 // check if top3 element are empty or full
-                function isEmpty( el ){
+                function isEmpty(el) {
                   return !$.trim(el.html());
                 }
 
-                if(isEmpty(slot0) || isEmpty(slot1) || isEmpty(slot2)){
+                if (isEmpty(slot0) || isEmpty(slot1) || isEmpty(slot2)) {
 
                   // hide dropArea
-                  classie.remove( dropArea, 'show' );
+                  classie.remove(dropArea, 'show');
 
                 }
-                else{
+                else {
 
-                  classie.add( body, 'selectionComplete' );
+                  classie.add(body, 'selectionComplete');
                   //highlight share btn
-                  $('#share-button').once('share-button',function () {
-                    $('#share-button').click(function(){
+                  $('#share-button').once('share-button', function () {
+                    $('#share-button').click(function () {
                       console.info('share-click');
                       $('#share-block-preview').hide();
                       $('#share-block img').remove();
@@ -799,9 +840,9 @@
                       $('#top3-slider-wrapper').addClass('share-open');
                       shareImageBlock.show();
                       $('#gigya-share-top3').before('<div class="loader-wrapper"><div class="load-more-loader"></div></div>');
-                      setTimeout(function(){
+                      setTimeout(function () {
                         html2canvas(shareImageBlock, {
-                          onrendered: function(canvas) {
+                          onrendered: function (canvas) {
                             console.info('canvas-render');
                             shareImageBlock.remove();
                             imgShare.append(convertCanvasToImage(canvas));
@@ -854,18 +895,18 @@
                             });
                           }
                         });
-                      },1000);
+                      }, 1000);
 
                     });
                   });
 
-                  $('#share-block-preview').once('share-block-preview',function () {
+                  $('#share-block-preview').once('share-block-preview', function () {
                     $('.drag-group').sortable({
-                      start: function(event, ui) {
+                      start: function (event, ui) {
                         start_item = $('.drop-area__item').index($(ui.item));
                       },
                       //observe the update event...
-                      update: function(event, ui) {
+                      update: function (event, ui) {
                         var finish_item = $('.drop-area__item').index($(ui.item));
                         changeTwoItems(start_item, finish_item, $('.preview-item'));
                         previewOpen();
@@ -879,79 +920,79 @@
                     //top3Usanetwork.previewDraggable();
                   });
 
-                  setTimeout(function(){
-                    classie.add( dropArea, 'show' );
-                  },1000);
+                  setTimeout(function () {
+                    classie.add(dropArea, 'show');
+                  }, 1000);
 
 
                 }
               };
 
-              if( !wasDropped ) {
+              if (!wasDropped) {
                 afterDropFn();
               }
               else {
                 // after some time hide drop area and remove class 'drag-active' from body
-                clearTimeout( dropAreaTimeout );
-                dropAreaTimeout = setTimeout( afterDropFn, 1000 );
+                clearTimeout(dropAreaTimeout);
+                dropAreaTimeout = setTimeout(afterDropFn, 1000);
               }
             }
-          } );
-        } );
+          });
+        });
       },
 
-      previewDroppables : function(){
+      previewDroppables: function () {
 
         console.log('previewDroppables initilized');
 
         // initialize droppables
-        [].slice.call( document.querySelectorAll( '#share-block-preview .preview-item' )).forEach( function( el ) {
-          droppableArr.push( new Droppable( el, {
+        [].slice.call(document.querySelectorAll('#share-block-preview .preview-item')).forEach(function (el) {
+          droppableArr.push(new Droppable(el, {
 
-            onDrop : function( instance, draggableEl ) {
+            onDrop: function (instance, draggableEl) {
               console.info('drop');
               instanceDrop = instance.el.id;
               instanceDrag = $(draggableEl).attr('id');
 
-              if(instanceDrop!=instanceDrag){
+              if (instanceDrop != instanceDrag) {
                 var dragId = $(draggableEl).attr('data-id');
                 var dropId = $(instance.el).attr('data-id');
                 var tempItem = $(draggableEl).html();
                 $(draggableEl).html($(instance.el).html());
                 $(instance.el).html(tempItem);
-                var tempDropItem = $('#'+dragId).html();
-                $('#'+dragId).html($('#'+dropId).html());
-                $('#'+dropId).html(tempDropItem);
+                var tempDropItem = $('#' + dragId).html();
+                $('#' + dragId).html($('#' + dropId).html());
+                $('#' + dropId).html(tempDropItem);
               }
 
             }
-          } ) );
-        } );
+          }));
+        });
       },
 
-      previewDraggable : function(){
+      previewDraggable: function () {
 
         console.log('previewDraggable initilized');
 
         //simulation mouse controlls to resize drag contex
         var mouse_button = false;
         $('.preview-item')
-            .mousedown(function(el){
+            .mousedown(function (el) {
               mouse_button = true;
               $(el.currentTarget).addClass('preview-item-grab');
             })
-            .mouseup(function(){
+            .mouseup(function () {
               mouse_button = false;
               $('.preview-item').removeClass('preview-item-grab');
 
             })
-            .mouseout(function(){
+            .mouseout(function () {
               if (mouse_button) {
                 mouse_button = false;
                 $('.preview-item').removeClass('preview-item-grab');
               }
             })
-            .mouseover(function(){
+            .mouseover(function () {
               if (mouse_button) {
                 mouse_button = false;
                 $('.preview-item').removeClass('preview-item-grab');
@@ -959,73 +1000,73 @@
             });
 
         //mobile draging
-        $('.preview-item').on('touchstart', function(el){
+        $('.preview-item').on('touchstart', function (el) {
           $(el.currentTarget).addClass('preview-item-grab');
         });
 
-        $('.preview-item').on('touchend', function(){
+        $('.preview-item').on('touchend', function () {
           $('.preview-item').removeClass('preview-item-grab');
         });
 
         // initialize draggable(s)
-        [].slice.call(document.querySelectorAll( '#share-block-preview .preview-item' )).forEach( function( el ) {
+        [].slice.call(document.querySelectorAll('#share-block-preview .preview-item')).forEach(function (el) {
 
-          new Draggable( el, droppableArr, {
+          new Draggable(el, droppableArr, {
 
-            draggabilly : { containment: $('#share-block-preview .preview-items-block') },
+            draggabilly: {containment: $('#share-block-preview .preview-items-block')},
 
-            onStart : function() {
+            onStart: function () {
 
               // add class 'drag-active' to body
-              classie.add( body, 'drag-active' );
+              classie.add(body, 'drag-active');
 
               // clear timeout: dropAreaTimeout (toggle drop area)
-              clearTimeout( dropAreaTimeout );
+              clearTimeout(dropAreaTimeout);
 
             },
 
-            onDrag : function() {
+            onDrag: function () {
 
 
               inAction = true;
               dragEnd = false;
-              if(inAction){
-                classie.add( el , 'preview-item-grab');
+              if (inAction) {
+                classie.add(el, 'preview-item-grab');
               }
             },
 
-            onEnd : function( wasDropped ) {
+            onEnd: function (wasDropped) {
 
               //if element is not dropped please resize
-              setTimeout(function(){
-                classie.remove( el , 'preview-item-grab');
-              },500);
+              setTimeout(function () {
+                classie.remove(el, 'preview-item-grab');
+              }, 500);
 
-              var afterDropFn = function() {
+              var afterDropFn = function () {
 
                 clearInterval(dropZone2);
 
                 // remove class 'drag-active' from body
-                classie.remove( body, 'drag-active' );
+                classie.remove(body, 'drag-active');
 
                 // check if top3 element are empty or full
-                function isEmpty( el ){
+                function isEmpty(el) {
                   return !$.trim(el.html());
                 }
 
               };
 
-              if( !wasDropped ) {
+              if (!wasDropped) {
                 afterDropFn();
               }
               else {
                 // after some time hide drop area and remove class 'drag-active' from body
-                clearTimeout( dropAreaTimeout );
-                dropAreaTimeout = setTimeout( afterDropFn, 1000 );
+                clearTimeout(dropAreaTimeout);
+                dropAreaTimeout = setTimeout(afterDropFn, 1000);
               }
             }
-          } );
-        } );
+          });
+        });
       }
 
     };

@@ -189,7 +189,6 @@ function _usanetwork_top3_main_block() {
           'image' => $image,
           'video' => isset($video) ? $video : NULL,
           'video_link' => isset($video_link) ? $video_link : NULL,
-          'isset_video' => isset($isset_video) ? $isset_video : NULL,
         );
       }
     }

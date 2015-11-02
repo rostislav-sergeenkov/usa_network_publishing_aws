@@ -166,12 +166,15 @@ function _usanetwork_top3_main_block() {
       foreach ($shared_files as $shared_file) {
         list($title, $image) = _usanetwork_top3_get_title_and_image($node, $shared_file);
         if ($shared_file->filemime == 'video/mpx') {
+          $isset_video = TRUE;
           $video = _usanetwork_mpx_video_get_player_src(array(
             'file' => $shared_file,
             'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
             'player_id' => 'top3_usa',
           ));
           $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $shared_file,), 'link');
+        } else {
+          $video = $video_link = NULL;
         }
         if (empty($image)) {
           $image_url = _usanetwork_mpx_video_get_image_path($shared_file);
@@ -187,12 +190,6 @@ function _usanetwork_top3_main_block() {
           'video' => isset($video) ? $video : NULL,
           'video_link' => isset($video_link) ? $video_link : NULL,
         );
-        if (!isset($active_element) && (isset($video))) {
-          $active_element = array(
-            'title' => $title,
-            'image' => $image,
-          );
-        }
       }
     }
     $theme_variables = array(
@@ -201,7 +198,7 @@ function _usanetwork_top3_main_block() {
       'node_path' => url('node/' . $node->nid),
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
-      'active_element' => $active_element,
+      'isset_video' => isset($isset_video) ? $isset_video : NULL,
     );
 
     return theme('usanetwork_top3_shared', $theme_variables);

@@ -70,11 +70,34 @@ function usanetwork_top3_theme($existing, $type, $theme, $path) {
   $themes = array(
     'usanetwork_top3_main_block' => array(
       'variables' => array(
+        'slides' => array(
+          'fid'        => NULL,
+          'image'      => NULL,
+          'title'      => NULL,
+          'video'      => NULL,
+          'video_link' => NULL,
+        ),
+        'logo'         => NULL,
+        'nid'          => NULL,
+        'top3_title'   => NULL,
+        'player'       => NULL,
+        'advert_block' => NULL,
       ),
       'template' => 'templates/usanetwork-top3-main-block',
     ),
-    'usanetwork_top3_shared'=> array(
+    'usanetwork_top3_shared' => array(
       'variables' => array(
+        'slides' => array(
+          'image'      => NULL,
+          'title'      => NULL,
+          'video'      => NULL,
+          'video_link' => NULL,
+        ),
+        'logo'         => NULL,
+        'node_path'    => NULL,
+        'player'       => NULL,
+        'advert_block' => NULL,
+        'isset_video'  => NULL,
       ),
       'template' => 'templates/usanetwork-top3-shared',
     ),
@@ -172,8 +195,9 @@ function _usanetwork_top3_main_block() {
             'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
             'player_id' => 'top3_usa',
           ));
-          $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $shared_file,), 'link');
-        } else {
+          $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $shared_file), 'link');
+        }
+        else {
           $video = $video_link = NULL;
         }
         if (empty($image)) {
@@ -212,7 +236,8 @@ function _usanetwork_top3_main_block() {
         if ((empty($slide_image)) && (empty($slide_video))) {
           continue;
         }
-        if ((!empty($slide_video)) && (($slide_video->mpx_video_data['status'] !== "1") || ($slide_video->type !== 'mpx_video_1'))) {
+        if ((!empty($slide_video)) &&
+          (($slide_video->mpx_video_data['status'] !== "1") || ($slide_video->type !== 'mpx_video_1'))) {
           continue;
         }
         if (empty($slide_image)) {
@@ -228,7 +253,7 @@ function _usanetwork_top3_main_block() {
             'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
             'player_id' => 'top3_usa',
           ));
-          $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $slide_video,), 'link');
+          $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $slide_video), 'link');
         }
         else {
           $fid = $slide_image['fid'];
@@ -245,12 +270,16 @@ function _usanetwork_top3_main_block() {
       }
     }
 
-    if (!empty($node->body)){
+    if (!empty($node->body)) {
       $top3_description = strip_tags($node_wrapper->body->value->value());
     }
 
     $top3_description = isset($top3_description) ? $top3_description : '';
-    drupal_add_js(array('top3_settings' => array('top3_title' => $node->title, 'top3_description' => $top3_description)), 'setting');
+    drupal_add_js(array(
+      'top3_settings' => array(
+        'top3_title' => $node->title,
+        'top3_description' => $top3_description)),
+      'setting');
 
     $theme_variables = array(
       'slides' => $slides,
@@ -276,7 +305,8 @@ function _usanetwork_top3_get_title_and_image($node, $shared_file) {
     $db_select->condition('top3_video.field_top3_video_target_id', $shared_file->fid);
     $db_select->leftJoin('field_data_field_top3_image', 'top3_image', 'top3_image.entity_id=slides_content.field_slides_content_value');
     $db_select->addField('top3_image', 'field_top3_image_fid', 'slide_image');
-  } else {
+  }
+  else {
     $db_select->leftJoin('field_data_field_top3_image', 'top3_image', 'top3_image.entity_id=slides_content.field_slides_content_value');
     $db_select->condition('top3_image.field_top3_image_fid', $shared_file->fid);
     $db_select->addField('top3_image', 'field_top3_image_fid', 'slide_image');
@@ -286,8 +316,10 @@ function _usanetwork_top3_get_title_and_image($node, $shared_file) {
   $result = $db_select->execute()->fetchObject();
 
   if ($result) {
-    return array(isset($result->slide_title) ? $result->slide_title : NULL, isset($result->slide_image) ? $result->slide_image : NULL);
-  } else {
+    return array(isset($result->slide_title) ? $result->slide_title : NULL,
+      isset($result->slide_image) ? $result->slide_image : NULL);
+  }
+  else {
     return NULL;
   }
 }
@@ -295,10 +327,12 @@ function _usanetwork_top3_get_title_and_image($node, $shared_file) {
 
 /*
  * Implements hook_preprocess_block
+ *
+ * Added attribute and class to block
  */
 function usanetwork_top3_preprocess_block(&$vars) {
   if ($vars['block']->delta == 'usanetwork_top3_main_block') {
-    //add background for block
+    // Add background for block.
     $node = menu_get_object('node');
     if (!empty($node)) {
       $node_wrapper = entity_metadata_wrapper('node', $node);
@@ -308,7 +342,7 @@ function usanetwork_top3_preprocess_block(&$vars) {
         $vars['attributes_array']['style'][] = 'background: url(' . $background . ') repeat';
       }
 
-      //add class for shared display
+      // Add class for shared display.
       $query_params = drupal_get_query_parameters();
       if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
         $vars['classes_array'][] = 'shared-screen';
@@ -321,9 +355,10 @@ function usanetwork_top3_preprocess_block(&$vars) {
  * Callback for ajax call
  */
 function _usanetwork_top3_create_url() {
-  if (!empty($_POST['galleryNid']) && !empty($_POST['firstFid']) && !empty($_POST['secondFid']) && !empty($_POST['thirdFid']) && !empty($_POST['imageSrc'])) {
-    $data = $_POST['imageSrc'];
+  if (!empty($_POST['galleryNid']) && !empty($_POST['firstFid']) &&
+      !empty($_POST['secondFid']) && !empty($_POST['thirdFid']) && !empty($_POST['imageSrc'])) {
 
+    $data = $_POST['imageSrc'];
     $new_folder = 'public://top3_shared/';
     $is_writable = file_prepare_directory($new_folder, FILE_CREATE_DIRECTORY);
 
@@ -338,7 +373,11 @@ function _usanetwork_top3_create_url() {
       }
     }
 
-    $url = url('node/' . $_POST['galleryNid'], array('query' => array('shared' => $_POST['firstFid'] . '|' . $_POST['secondFid'] . '|' . $_POST['thirdFid'], 'node' => $_POST['galleryNid'])));
+    $url = url('node/' . $_POST['galleryNid'], array(
+      'query' => array(
+        'shared' => $_POST['firstFid'] . '|' . $_POST['secondFid'] . '|' . $_POST['thirdFid'],
+        'node' => $_POST['galleryNid'])
+    ));
     return drupal_json_output(array('url' => $url, 'image_url' => $image_url));
   }
 }

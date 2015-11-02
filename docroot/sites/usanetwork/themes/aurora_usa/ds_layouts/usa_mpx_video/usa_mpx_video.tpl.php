@@ -88,7 +88,6 @@
                   player-element="#pdk-player"
                   player-type="mpx">
               </watchwith>
-              <script type="application/javascript" src="http://snowbird.watchwith.com/~chihiro/WD-71/wwLoader.js"></script>
             </div>
           <?php endif; ?>
         </div>

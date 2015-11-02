@@ -373,19 +373,6 @@
             }
           }
 
-          //if (!playBtn.hasClass('inactive')) {
-          //  playBtn.addClass('inactive play');
-          //  // show player
-          //  playerService.loadPlayer();
-          //  $('.slider-wrapper').hide();
-          //
-          //} else if(playBtn.data('player-status') === 'start') {
-          //  if (playBtn.hasClass('play')) {
-          //    playerService.pausePlayer();
-          //  } else if (!playBtn.hasClass('play')){
-          //    playerService.playPlayer();
-          //  }
-          //}
         });
         $('#chosen-player .img-wrapper').on('click', function () {
           if (!$(this).hasClass('inactive')) {
@@ -402,21 +389,27 @@
 
         $('.chosen-item-thumb').on('click', function () {
           if (!$(this).hasClass('active')) {
-            // set status clickOnThumb
-            playerService.clickOnThumb = true;
 
             $('.chosen-item-thumb').removeClass('active');
             $(this).addClass('active');
+            var thumbImageSrc = $(this).find('.img-wrapper img').attr('src');
+            $('#chosen-player .img-wrapper img').attr('src', thumbImageSrc);
+            if(!$(this).hasClass('no-video')){
+              // set status clickOnThumb
+              playerService.clickOnThumb = true;
+              if (!$('#slider-player').hasClass('show-up')) {
+                $('#slider-player').addClass('show-up');
+              }
 
-            if (!$('#slider-player').hasClass('show-up')) {
-              $('#slider-player').addClass('show-up');
-            }
-
-            if (isMobileDevice) {
-              playerService.loadPlayer();
+              if (isMobileDevice) {
+                playerService.loadPlayer();
+              } else {
+                playerService.setPlayer();
+              }
             } else {
-              playerService.setPlayer();
+              
             }
+
             //if (playerService.playerStatus) {
             //  //change player status
             //  var srcLink = $(this).data('src-link');

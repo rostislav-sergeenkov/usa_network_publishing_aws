@@ -6,10 +6,14 @@
 * Available variables:
 *  $slides: slides foe displaying
 *    $slides['image'] - src for displayed image
+*    $slides['title'] - gallery's item title
 *    $slides['video'] - src image for video
+*    $slides['video_link'] - video link
 *  $logo: src for logo image in correct format
 *  $node_path: Path to current node
-*  $top3_title: Gallery's title
+*  $player: Player's path
+*  $advert_block: Rendered advertise block
+*  $isset_video: Check if video element exists
 */
 ?>
 <div id="shared-container" class="<?php print (!empty($isset_video)) ? 'set-video' : ''; ?>">

@@ -164,9 +164,9 @@ function _usanetwork_top3_main_block() {
       $shared_files = file_load_multiple($shared_fids);
       $slides = array();
       foreach ($shared_files as $shared_file) {
-        $active = FALSE;
         list($title, $image) = _usanetwork_top3_get_title_and_image($node, $shared_file);
         if ($shared_file->filemime == 'video/mpx') {
+          $isset_video = TRUE;
           $video = _usanetwork_mpx_video_get_player_src(array(
             'file' => $shared_file,
             'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
@@ -194,7 +194,7 @@ function _usanetwork_top3_main_block() {
           'image' => $image,
           'video' => isset($video) ? $video : NULL,
           'video_link' => isset($video_link) ? $video_link : NULL,
-          'active' => $active,
+          'isset_video' => isset($isset_video) ? $isset_video : NULL,
         );
       }
     }
@@ -204,7 +204,7 @@ function _usanetwork_top3_main_block() {
       'node_path' => url('node/' . $node->nid),
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
-      'active_element' => $active_element,
+      'isset_video' => isset($isset_video) ? $isset_video : NULL,
     );
 
     return theme('usanetwork_top3_shared', $theme_variables);

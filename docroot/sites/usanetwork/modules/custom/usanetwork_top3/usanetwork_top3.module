@@ -164,6 +164,7 @@ function _usanetwork_top3_main_block() {
       $shared_files = file_load_multiple($shared_fids);
       $slides = array();
       foreach ($shared_files as $shared_file) {
+        $active = FALSE;
         list($title, $image) = _usanetwork_top3_get_title_and_image($node, $shared_file);
         if ($shared_file->filemime == 'video/mpx') {
           $video = _usanetwork_mpx_video_get_player_src(array(
@@ -181,18 +182,20 @@ function _usanetwork_top3_main_block() {
         }
         $title = !empty($title) ? $title : NULL;
         $image = !empty($image_url) ? image_style_url('2880x1620', $image_url) : NULL;
-        $slides[] = array(
-          'title' => $title,
-          'image' => $image,
-          'video' => isset($video) ? $video : NULL,
-          'video_link' => isset($video_link) ? $video_link : NULL,
-        );
         if (!isset($active_element) && (isset($video))) {
           $active_element = array(
             'title' => $title,
             'image' => $image,
           );
+          $active = TRUE;
         }
+        $slides[] = array(
+          'title' => $title,
+          'image' => $image,
+          'video' => isset($video) ? $video : NULL,
+          'video_link' => isset($video_link) ? $video_link : NULL,
+          'active' => $active,
+        );
       }
     }
     $theme_variables = array(

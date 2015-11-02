@@ -33,7 +33,7 @@
       </div>
       <div id="chosen-items-block-wrapper" class="chosen-items-block-wrapper">
         <?php foreach ($slides as $key => $slide) : ?>
-        <div class="chosen-item-thumb show-color show-font<?php print ($key == 0) ?  ' active' : '' ?>"
+        <div class="chosen-item-thumb show-color show-font<?php print (!empty($slide['active'])) ?  ' active' : '' ?>"
              data-src="<?php print !empty($slide['video']) ? $slide['video'] : ''; ?>"
              data-src-link="<?php print !empty($slide['video_link']) ? $slide['video_link'] : ''; ?>">
           <div class="img-wrapper">

@@ -173,6 +173,8 @@ function _usanetwork_top3_main_block() {
             'player_id' => 'top3_usa',
           ));
           $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $shared_file,), 'link');
+        } else {
+          $video = $video_link = NULL;
         }
         if (empty($image)) {
           $image_url = _usanetwork_mpx_video_get_image_path($shared_file);
@@ -182,13 +184,6 @@ function _usanetwork_top3_main_block() {
         }
         $title = !empty($title) ? $title : NULL;
         $image = !empty($image_url) ? image_style_url('2880x1620', $image_url) : NULL;
-        if (!isset($active_element) && (isset($video))) {
-          $active_element = array(
-            'title' => $title,
-            'image' => $image,
-          );
-          $active = TRUE;
-        }
         $slides[] = array(
           'title' => $title,
           'image' => $image,

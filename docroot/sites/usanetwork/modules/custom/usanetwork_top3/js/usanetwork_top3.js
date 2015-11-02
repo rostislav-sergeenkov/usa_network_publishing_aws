@@ -190,7 +190,6 @@
         }
       },
       playPlayer: function () {
-        $pdk.controller.clickPlayButton();
         $pdk.controller.pause();
       },
       pausePlayer: function () {
@@ -374,7 +373,7 @@
           }
 
         });
-        $('#chosen-player .img-wrapper').on('click', function () {
+        $('.set-video #chosen-player .img-wrapper').on('click', function () {
           if (!$(this).hasClass('inactive')) {
 
             $('#slider-player').addClass('show-up');
@@ -393,7 +392,9 @@
             $('.chosen-item-thumb').removeClass('active');
             $(this).addClass('active');
             var thumbImageSrc = $(this).find('.img-wrapper img').attr('src');
+            var thumbTitle = $(this).find('.title').html();
             $('#chosen-player .img-wrapper img').attr('src', thumbImageSrc);
+            $('#chosen-player .title').html(thumbTitle);
             if(!$(this).hasClass('no-video')){
               // set status clickOnThumb
               playerService.clickOnThumb = true;
@@ -407,60 +408,19 @@
                 playerService.setPlayer();
               }
             } else {
-              
+              if (playerService.playerStatus) {
+                playerService.hidePlayer();
+              }
             }
-
-            //if (playerService.playerStatus) {
-            //  //change player status
-            //  var srcLink = $(this).data('src-link');
-            //  $pdk.controller.clearCurrentRelease();
-            //  if (isMobileDevice) {
-            //    $pdk.controller.loadReleaseURL(srcLink, true);
-            //  } else {
-            //    $pdk.controller.setReleaseURL(srcLink, true);
-            //  }
-            //} else {
-            //  if (isMobileDevice) {
-            //    playerService.loadPlayer();
-            //  } else {
-            //    playerService.setPlayer();
-            //  }
-            //}
           }
         });
 
-        /*$("#loading").fadeIn();
-
-         // load UI only when everything is loaded
-         $(window).on('load', function() {
-         $("#loading").fadeOut();
-         setTimeout(function(){
-         $(".content").css('visibility','visible');
-         },500);
-         });
-
-         htmlCount = ['<span>01</span>/'+countItems+''].join();
-         countContainer.append(htmlCount);
-
-         //substitute mousedown event for exact same result as touchstart
-         $.fn.tclick = function (onclick) {
-         this.bind("touchstart", function (e) { onclick.call(this, e); e.stopPropagation(); e.preventDefault(); });
-         this.bind("click", function (e) { onclick.call(this, e); });
-         return this;
-         };*/
-
-        /*this.tourCheck();
-         this.createCookie("initload",'1',1000);
-         this.dataCall();*/
-        //this.carousel();
-        //this.gotoCanvas();
-
-
-        setTimeout(function () {
-          top3Usanetwork.droppables();
-          top3Usanetwork.draggable();
-          //top3Telemundo.videoPlay();
-        }, 1000);
+        if (first_state) {
+          setTimeout(function () {
+            top3Usanetwork.droppables();
+            top3Usanetwork.draggable();
+          }, 1000);
+        }
 
       },
       carousel: function () {
@@ -1065,7 +1025,14 @@
     };
 
     // create player block
-    playerService.createPlayer();
+    if(first_state) {
+      playerService.createPlayer();
+    } else {
+      if ($('#shared-container').hasClass('set-video')) {
+        playerService.createPlayer();
+      }
+    }
+
     top3Usanetwork.init();
     Drupal.behaviors.mpsAdvert.mpsLoadAd('#topbox', 'topbox');
 

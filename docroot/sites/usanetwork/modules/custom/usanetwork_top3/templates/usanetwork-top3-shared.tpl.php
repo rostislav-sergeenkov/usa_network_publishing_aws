@@ -12,7 +12,7 @@
 *  $top3_title: Gallery's title
 */
 ?>
-<div id="shared-container" class="<?php print (!empty($isset_video)) ? " set-video" : ""; ?>">
+<div id="shared-container" class="<?php print (!empty($isset_video)) ? 'set-video' : ''; ?>">
   <div class="choose-top3-img">
     <div class="top-choose-top3"><div class="first-line"><?php print t('I Chose'); ?></div><?php print t('my top'); ?><span><?php print t('3'); ?></span></div>
     <?php if (!empty($logo)) : ?>
@@ -23,7 +23,9 @@
   <div class="chosen-items-block show-color">
     <div class="chosen-items-inner">
       <div id="chosen-player" class="chosen-player">
-        <div id="slider-player" data-player-src="<?php print $player; ?>" ></div>
+        <?php if (!empty($isset_video)): ?>
+          <div id="slider-player" data-player-src="<?php print $player; ?>" ></div>
+        <?php endif; ?>
         <div class="img-wrapper">
           <img src="<?php print $slides[0]['image']; ?>">
         </div>
@@ -33,9 +35,9 @@
       </div>
       <div id="chosen-items-block-wrapper" class="chosen-items-block-wrapper">
         <?php foreach ($slides as $key => $slide) : ?>
-        <div class="chosen-item-thumb show-color show-font<?php print ($key == 0) ?  ' active' : '' ?>"
-             data-src="<?php print !empty($slide['video']) ? $slide['video'] : ''; ?>"
-             data-src-link="<?php print !empty($slide['video_link']) ? $slide['video_link'] : ''; ?>">
+        <div class="chosen-item-thumb show-color show-font<?php print ($key == 0) ?  ' active' : '' ?><?php print (empty($slide['video']) && empty($slide['video_link'])) ? ' no-video' : ''; ?>"
+             <?php print !empty($slide['video']) ? 'data-src="'.$slide['video'].'"' : ''; ?>
+             <?php print !empty($slide['video_link']) ?  'data-src-link="'.$slide['video_link'].'"' : ''; ?>>
           <div class="img-wrapper">
             <img src="<?php print $slide['image']; ?>">
           </div>

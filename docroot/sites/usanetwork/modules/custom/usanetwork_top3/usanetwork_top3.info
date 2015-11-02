@@ -23,6 +23,7 @@ dependencies[] = text
 dependencies[] = usanetwork_field_formatters
 dependencies[] = usanetwork_gigya
 dependencies[] = usanetwork_menu
+dependencies[] = usanetwork_mpx_video
 dependencies[] = usanetwork_opengraph
 dependencies[] = usanetwork_promo
 dependencies[] = usanetwork_seo

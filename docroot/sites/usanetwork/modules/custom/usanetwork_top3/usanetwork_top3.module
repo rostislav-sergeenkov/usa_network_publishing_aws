@@ -183,7 +183,7 @@ function _usanetwork_top3_main_block() {
           $image_url = file_load($image)->uri;
         }
         $title = !empty($title) ? $title : NULL;
-        $image = !empty($image_url) ? image_style_url('2880x1620', $image_url) : NULL;
+        $image = !empty($image_url) ? image_style_url('1280x720', $image_url) : NULL;
         $slides[] = array(
           'title' => $title,
           'image' => $image,

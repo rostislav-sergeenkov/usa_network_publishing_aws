@@ -93,7 +93,7 @@ function usanetwork_menu_menu_default_menu_links() {
   // Exported menu link: main-menu_shop:http://www.nbcuniversalstore.com/?v=usa&ecid=PRF-NBC-103357&pa=PRF-NBC-103357
   $menu_links['main-menu_shop:http://www.nbcuniversalstore.com/?v=usa&ecid=PRF-NBC-103357&pa=PRF-NBC-103357'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'http://www.nbcuniversalstore.com/?v=usa',
+    'link_path' => 'http://www.nbcuniversalstore.com/?v=usa&ecid=PRF-NBC-103357&pa=PRF-NBC-103357',
     'router_path' => '',
     'link_title' => 'Shop',
     'options' => array(

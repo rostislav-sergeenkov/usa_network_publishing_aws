@@ -100,7 +100,7 @@ function usanetwork_menu_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_shop:http://www.nbcuniversalstore.com/?v=usa',
+      'identifier' => 'main-menu_shop:http://www.nbcuniversalstore.com/?v=usa&ecid=PRF-NBC-103357&pa=PRF-NBC-103357',
     ),
     'module' => 'menu',
     'hidden' => 0,

@@ -58,6 +58,7 @@ features[ds_layout_settings][] = file|mpx_video_2|vid_teaser_show_episode
 features[ds_layout_settings][] = file|mpx_video_2|vid_teaser_show_general
 features[ds_view_modes][] = vid_teaser_front
 features[features_api][] = api:2
+features[features_overrides][] = views_view.content_files.display|mpx_files_page|display_options|filters|field_show_target_id
 features[field_base][] = field_mpx_duration
 features[field_base][] = field_mpx_entitlement
 features[field_base][] = field_mpx_episode_number

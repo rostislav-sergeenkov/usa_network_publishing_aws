@@ -17,7 +17,7 @@
  *  $advert_block: Rendered advertise block
  */
 ?>
-<div id="top3-slider-wrapper">
+<div id="top3-slider-wrapper" data-block-name="top 3">
   <div id="slider-player" data-player-src="<?php print $player; ?>"></div>
   <div id="play-button" class="round-button"></div>
   <div id="slider-container" data-nid="<?php print $nid; ?>">

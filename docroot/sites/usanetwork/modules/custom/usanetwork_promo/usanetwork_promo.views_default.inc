@@ -330,6 +330,7 @@ function usanetwork_promo_views_default_views() {
   );
   $handler->display->display_options['row_options']['separator'] = ': ';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+
   /* Display: No Related To Show */
   $handler = $view->new_display('entityreference', 'No Related To Show', 'entityreference_2');
   $handler->display->display_options['defaults']['title'] = FALSE;

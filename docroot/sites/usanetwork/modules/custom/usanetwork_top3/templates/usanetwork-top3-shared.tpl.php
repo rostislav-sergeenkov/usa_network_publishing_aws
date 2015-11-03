@@ -30,7 +30,7 @@
         <?php if (!empty($isset_video)): ?>
           <div id="slider-player" data-player-src="<?php print $player; ?>" ></div>
         <?php endif; ?>
-        <div class="img-wrapper">
+        <div class="img-wrapper<?php print (empty($slides[0]['video']) && empty($slides[0]['video_link'])) ? ' no-video' : ''; ?>">
           <img src="<?php print $slides[0]['image']; ?>">
         </div>
         <?php if (!empty($slides[0]['title'])): ?>

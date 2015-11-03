@@ -1748,6 +1748,9 @@
           @include breakpoint($bp-768-width) {
             height: get-vw(388.125px, 768);
           }
+          &.no-video {
+            cursor: default;
+          }
           img {
             height: 100%;
             width: 100%;

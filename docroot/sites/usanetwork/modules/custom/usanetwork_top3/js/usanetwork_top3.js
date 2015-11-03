@@ -374,7 +374,7 @@
 
         });
         $('.set-video #chosen-player .img-wrapper').on('click', function () {
-          if (!$(this).hasClass('inactive')) {
+          if (!$(this).hasClass('inactive') && !$(this).hasClass('no-video')) {
 
             $('#slider-player').addClass('show-up');
 
@@ -395,21 +395,26 @@
             var thumbTitle = $(this).find('.title').html();
             $('#chosen-player .img-wrapper img').attr('src', thumbImageSrc);
             $('#chosen-player .title').html(thumbTitle);
-            if(!$(this).hasClass('no-video')){
+            if($(this).hasClass('no-video')){
+              if(!$('#chosen-player .img-wrapper').hasClass('no-video')) {
+                $('#chosen-player .img-wrapper').addClass('no-video');
+              }
+              if (playerService.playerStatus) {
+                playerService.hidePlayer();
+              }
+            } else {
+              if($('#chosen-player .img-wrapper').hasClass('no-video')) {
+                $('#chosen-player .img-wrapper').removeClass('no-video');
+              }
               // set status clickOnThumb
               playerService.clickOnThumb = true;
               if (!$('#slider-player').hasClass('show-up')) {
                 $('#slider-player').addClass('show-up');
               }
-
               if (isMobileDevice) {
                 playerService.loadPlayer();
               } else {
                 playerService.setPlayer();
-              }
-            } else {
-              if (playerService.playerStatus) {
-                playerService.hidePlayer();
               }
             }
           }

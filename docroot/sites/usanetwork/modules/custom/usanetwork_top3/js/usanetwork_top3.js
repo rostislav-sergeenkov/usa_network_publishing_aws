@@ -135,7 +135,7 @@
     $('#share-preview-close').click(function () {
       previewClose();
       if (Drupal.behaviors.omniture_tracking != 'undefined') {
-        Drupal.behaviors.omniture_tracking.top3.change(at_params);
+        Drupal.behaviors.omniture_tracking.top3.itemSelected(at_params);
       }
     });
 
@@ -516,6 +516,11 @@
                 top3target.each(function () {
                   elementDropped = $(this).hasClass('drop-feedback');
                   if (elementDropped == true) {
+
+                    if (Drupal.behaviors.omniture_tracking != 'undefined') {
+                      Drupal.behaviors.omniture_tracking.top3.itemSelected(at_params);
+                    }
+
                     switch (instanceDrop) {
 
                       case ins0:
@@ -581,9 +586,6 @@
                     }
                     if ($('#share-block-preview').hasClass('share-block-preview-processed')) {
                       previewOpen();
-                    }
-                    if (Drupal.behaviors.omniture_tracking != 'undefined') {
-                      Drupal.behaviors.omniture_tracking.top3.share(at_params);
                     }
                   }
                 });

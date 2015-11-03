@@ -75,6 +75,7 @@ function aurora_usa_preprocess_html(&$vars) {
       'quiz',
       'timeline_gallery',
       'consumpt_post',
+      'top3_gallery',
     );
     if (in_array($entity->type, $consumptionator_node_types)) {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');

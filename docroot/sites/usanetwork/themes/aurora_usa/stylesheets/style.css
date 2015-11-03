@@ -29636,7 +29636,7 @@ body.blog .view-display-id-blog_content .views-row {
   left: 0;
   padding: 0 2.5%;
   position: absolute;
-  top: 0px;
+  top: 0;
   z-index: 0;
 }
 .admin-menu #share-image-block {
@@ -29655,12 +29655,8 @@ body.blog .view-display-id-blog_content .views-row {
   position: relative;
 }
 #share-image-block .first:before, #share-image-block .second:before, #share-image-block .third:before {
-  content: "";
   display: block;
-  width: 0;
-  height: 0;
-  border-top: solid 110px white;
-  border-left: solid 110px transparent;
+  content: '';
   position: absolute;
   right: 0;
   top: 0;
@@ -29706,8 +29702,10 @@ body.blog .view-display-id-blog_content .views-row {
   width: 66%;
 }
 #share-image-block .first:before {
-  border-top-width: 250px;
-  border-left-width: 250px;
+  background: url(../images/thumb-big.png) no-repeat;
+  background-size: 100% 100%;
+  height: 258px;
+  width: 258px;
 }
 #share-image-block .first:after {
   content: '1';
@@ -29722,6 +29720,12 @@ body.blog .view-display-id-blog_content .views-row {
 #share-image-block .second, #share-image-block .third {
   height: 219px;
   width: 100%;
+}
+#share-image-block .second:before, #share-image-block .third:before {
+  background: url(../images/thumb-small.png) no-repeat;
+  background-size: 100% 100%;
+  height: 123px;
+  width: 123px;
 }
 #share-image-block .second .title, #share-image-block .third .title {
   font-size: 24px;

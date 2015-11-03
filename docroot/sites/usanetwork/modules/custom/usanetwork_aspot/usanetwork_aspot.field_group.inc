@@ -13,6 +13,33 @@ function usanetwork_aspot_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_a_spot_versions|node|usanetwork_aspot|form';
+  $field_group->group_name = 'group_a_spot_versions';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'usanetwork_aspot';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'A-spot versions',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_a_spot',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-a-spot-versions field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_a_spot_versions|node|usanetwork_aspot|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_animated_intro|node|usanetwork_aspot|form';
   $field_group->group_name = 'group_animated_intro';
   $field_group->entity_type = 'node';
@@ -138,7 +165,7 @@ function usanetwork_aspot_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Desktop',
-    'weight' => '56',
+    'weight' => '14',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -163,7 +190,7 @@ function usanetwork_aspot_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Mobile',
-    'weight' => '55',
+    'weight' => '13',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(

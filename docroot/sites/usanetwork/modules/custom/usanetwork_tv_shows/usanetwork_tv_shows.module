@@ -3715,7 +3715,10 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
   $desktop_image = $mobile_image = '';
   $target_url = '<front>';
 
-  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
+  if (!empty($data->promo_link)) {
+    $target_url = url($data->promo_link);
+  }
+  elseif (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
       'file',
       'node'
     ))

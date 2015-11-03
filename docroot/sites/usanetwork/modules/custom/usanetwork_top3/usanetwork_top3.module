@@ -6,6 +6,8 @@
 
 include_once 'usanetwork_top3.features.inc';
 
+define('USA_TOP3_DELIMITER', '-');
+
 /**
  * Implements hook_menu().
  */
@@ -193,7 +195,7 @@ function _usanetwork_top3_main_block() {
   $query_params = drupal_get_query_parameters();
   if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
     if (isset($query_params['shared']) && isset($query_params['node'])) {
-      $shared_fids = explode('|', $query_params['shared']);
+      $shared_fids = explode(USA_TOP3_DELIMITER, $query_params['shared']);
       $shared_files = file_load_multiple($shared_fids);
       $slides = array();
       foreach ($shared_files as $shared_file) {
@@ -374,7 +376,7 @@ function _usanetwork_top3_create_url() {
 
     $url = url('node/' . $_POST['galleryNid'], array(
       'query' => array(
-        'shared' => $_POST['firstFid'] . '|' . $_POST['secondFid'] . '|' . $_POST['thirdFid'],
+        'shared' => $_POST['firstFid'] . USA_TOP3_DELIMITER . $_POST['secondFid'] . USA_TOP3_DELIMITER . $_POST['thirdFid'],
         'node' => $_POST['galleryNid'])
     ));
     return drupal_json_output(array('url' => $url, 'image_url' => $image_url));

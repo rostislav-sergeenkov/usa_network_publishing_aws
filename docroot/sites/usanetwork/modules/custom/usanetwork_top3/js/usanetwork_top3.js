@@ -42,8 +42,7 @@
 
       var headerNavBar = $('.header-nav-bar'),
           show = headerNavBar.find('.show-name').text().trim().split(' '),
-          block = top3_SliderContainer.data('block-name').trim(),
-          blockName = block.charAt(0).toUpperCase() + block.substr(1),
+          blockName = 'Top 3',
           page = Drupal.settings.top3_settings.top3_title.split(' '),
           pageName = '',
           showName = '';

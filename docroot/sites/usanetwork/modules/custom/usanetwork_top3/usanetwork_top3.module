@@ -35,7 +35,6 @@ function usanetwork_top3_block_info() {
  */
 function usanetwork_top3_block_view($delta) {
   $block = array();
-  //The $delta parameter tells us which block is being requested.
   switch ($delta) {
     case 'usanetwork_top3_main_block':
       $block['subject'] = '';
@@ -379,5 +378,31 @@ function _usanetwork_top3_create_url() {
         'node' => $_POST['galleryNid'])
     ));
     return drupal_json_output(array('url' => $url, 'image_url' => $image_url));
+  }
+}
+
+/**
+ * Alter sitecatalyst variables.
+ */
+function usanetwork_top3_usa_omniture_alter(&$omniture_variables, $context) {
+  if ($context['entity']) {
+    $entity = $context['entity'];
+    if ($entity->type == 'top3_gallery') {
+      $entity_type = $context['entity_type'];
+      $show = _usanetwork_get_field_item($entity_type, $entity, 'field_show', 'entity');
+      $show_name = !empty($show) ? $show->title : '';
+      $top3_omniture_variables = array(
+        'AdobeTracking.contentGroup' =>	'Reality',
+        'AdobeTracking.contentType' => 'Features',
+        'AdobeTracking.division' => 'Cable',
+        'AdobeTracking.businessUnit' => 'USA Network',
+        'AdobeTracking.showSite' => $show_name,
+        'AdobeTracking.showSiteFeature' => $show_name  . ' : Top 3',
+        'AdobeTracking.showSiteFeatureII' => $show_name . ' : Top 3 : ' . $entity->title,
+        'AdobeTracking.pageName' => $show_name . ' : Top 3 : ' . $entity->title . ' : Start',
+        'AdobeTracking.siteVersion' => 'New Site',
+      );
+      $omniture_variables = array_merge($omniture_variables, $top3_omniture_variables);
+    }
   }
 }

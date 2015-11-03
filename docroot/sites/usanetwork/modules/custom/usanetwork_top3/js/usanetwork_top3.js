@@ -480,7 +480,6 @@
                 top3target.each(function () {
                   elementDropped = $(this).hasClass('drop-feedback');
                   if (elementDropped == true) {
-                    topItem.find('.title').removeAttr('style');
                     switch (instanceDrop) {
 
                       case ins0:

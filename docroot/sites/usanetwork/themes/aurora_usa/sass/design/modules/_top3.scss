@@ -971,7 +971,7 @@
         margin-right: 0;
       }
       .title {
-        display: none;
+        display: none!important;
       }
     }
     img {
@@ -1591,7 +1591,7 @@
         }
       }
       .title {
-        display: none;
+        display: none!important;
       }
     }
   }

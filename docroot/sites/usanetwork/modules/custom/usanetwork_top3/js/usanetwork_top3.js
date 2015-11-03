@@ -42,8 +42,7 @@
 
       var headerNavBar = $('.header-nav-bar'),
           show = headerNavBar.find('.show-name').text().trim().split(' '),
-          block = top3_SliderContainer.data('block-name').trim(),
-          blockName = block.charAt(0).toUpperCase() + block.substr(1),
+          blockName = 'Top 3',
           page = Drupal.settings.top3_settings.top3_title.split(' '),
           pageName = '',
           showName = '';
@@ -57,6 +56,7 @@
       }
 
       return {
+        'endButtons' : '',
         'nodeType': blockName,
         'pageName': pageName,
         'showName': showName
@@ -135,7 +135,8 @@
     $('#share-preview-close').click(function () {
       previewClose();
       if (Drupal.behaviors.omniture_tracking != 'undefined') {
-        Drupal.behaviors.omniture_tracking.top3.itemSelected(at_params);
+        at_params.endButtons = 'Change Selections Button';
+        Drupal.behaviors.omniture_tracking.top3.endButton(at_params);
       }
     });
 
@@ -800,6 +801,10 @@
                   $('#share-button').once('share-button', function () {
                     $('#share-button').click(function () {
                       console.info('share-click');
+                      if (Drupal.behaviors.omniture_tracking != 'undefined') {
+                        at_params.endButtons = 'Create My Top3 Link Button';
+                        Drupal.behaviors.omniture_tracking.top3.endButton(at_params);
+                      }
                       $('#share-block-preview').hide();
                       $('#share-block img').remove();
                       $('<div id="share-image-block" class="show-color">' +

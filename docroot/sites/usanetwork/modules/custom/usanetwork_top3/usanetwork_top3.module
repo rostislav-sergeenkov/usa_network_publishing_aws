@@ -139,14 +139,14 @@ function usanetwork_top3_image_default_styles() {
         ),
         'weight' => 0,
       ),
-        array(
-          'name' => 'image_scale_and_crop',
-          'data' => array(
-            'width' => 1280,
-            'height' => 720,
-          ),
-          'weight' => 1,
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1280,
+          'height' => 720,
         ),
+        'weight' => 1,
+      ),
     ),
   );
 
@@ -392,15 +392,15 @@ function usanetwork_top3_usa_omniture_alter(&$omniture_variables, $context) {
       $show = _usanetwork_get_field_item($entity_type, $entity, 'field_show', 'entity');
       $show_name = !empty($show) ? $show->title : '';
       $top3_omniture_variables = array(
-        'AdobeTracking.contentGroup' =>	'Reality',
-        'AdobeTracking.contentType' => 'Features',
-        'AdobeTracking.division' => 'Cable',
-        'AdobeTracking.businessUnit' => 'USA Network',
-        'AdobeTracking.showSite' => $show_name,
-        'AdobeTracking.showSiteFeature' => $show_name  . ' : Top 3',
+        'AdobeTracking.contentGroup' =>      'Reality',
+        'AdobeTracking.contentType' =>       'Features',
+        'AdobeTracking.division' =>          'Cable',
+        'AdobeTracking.businessUnit' =>      'USA Network',
+        'AdobeTracking.showSite' =>          $show_name,
+        'AdobeTracking.showSiteFeature' =>   $show_name  . ' : Top 3',
         'AdobeTracking.showSiteFeatureII' => $show_name . ' : Top 3 : ' . $entity->title,
-        'AdobeTracking.pageName' => $show_name . ' : Top 3 : ' . $entity->title . ' : Start',
-        'AdobeTracking.siteVersion' => 'New Site',
+        'AdobeTracking.pageName' =>          $show_name . ' : Top 3 : ' . $entity->title . ' : Start',
+        'AdobeTracking.siteVersion' =>       'New Site',
       );
       $omniture_variables = array_merge($omniture_variables, $top3_omniture_variables);
     }

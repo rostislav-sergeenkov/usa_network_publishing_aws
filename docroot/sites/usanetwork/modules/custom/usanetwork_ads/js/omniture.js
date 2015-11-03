@@ -33,8 +33,9 @@
         AdobeTracking.clickedPageItem = at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName + ': Clip Selected';
         _satellite.track('pageItemClicked');
       },
-      change: function (at_params) {
-        AdobeTracking.clickedPageItem = at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName + ': Change Selections Button';
+      endButton: function (at_params) {
+        console.info(at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName + ': ' + at_params.endButtons);
+        AdobeTracking.clickedPageItem = at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName + ': ' + at_params.endButtons;
         _satellite.track('pageItemClicked');
       },
       share: function (at_params) {

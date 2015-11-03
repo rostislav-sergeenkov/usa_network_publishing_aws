@@ -141,8 +141,7 @@
     color: white;
     cursor: pointer;
     height: get-vw(53px, 1901);
-    line-height: get-vw(47px, 1901);
-    //line-height: calc(2.788vw - 6px);
+    line-height: get-vw(53px, 1901);
     position: absolute;
     text-shadow: 1px 1px 0.5em $aspot-shadow;
     top: get-vw(40px, 1901);
@@ -151,42 +150,52 @@
     @include breakpoint($bp-min-1901-width) {
       box-shadow: 1px 1px 15px $aspot-shadow;
       height: 53px;
-      line-height: 47px;
+      line-height: 53px;
       top: 40px;
       width: 53px;
     }
     @include breakpoint($bp-1024-width) {
       box-shadow: 1px 1px get-vw(11.48px, 1024) $aspot-shadow;
       height: get-vw(40.5px, 1024);
-      line-height: get-vw(34.5625px, 1024);
-      //line-height: calc(3.962vw - 6px);
+      line-height: get-vw(40.5px, 1024);
       top: get-vw(30.6px, 1024);
       width: get-vw(40.5px, 1024);
     }
     @include breakpoint($bp-768-width) {
       border-width: 2px;
-      line-height: get-vw(26.375px, 768);
-      //line-height: calc(3.955vw - 4px);
     }
     @include breakpoint($bp-480-width) {
       border-width: 1px;
-      line-height: get-vw(18.984px, 480);
-      //line-height: calc(3.955vw - 2px);
     }
     &:before {
+      box-sizing: border-box;
       display: block;
       font-family: "ico-font";
       font-size: get-vw(40px, 1901);
-      height: 100%;
-      position: relative;
+      height: get-vw(53px, 1901);
+      left: -3px;
+      position: absolute;
       text-align: center;
       text-shadow: 1px 1px 0.5em $aspot-shadow;
-      width: 100%;
+      top: -3px;
+      width: get-vw(53px, 1901);
       @include breakpoint($bp-min-1901-width) {
         font-size: 40px;
+        height: 53px;
+        width: 53px;
       }
       @include breakpoint($bp-1024-width) {
         font-size: get-vw(30.6px, 1024);
+        height: get-vw(40.5px, 1024);
+        width: get-vw(40.5px, 1024);
+      }
+      @include breakpoint($bp-768-width) {
+        left: -2px;
+        top: -2px;
+      }
+      @include breakpoint($bp-480-width) {
+        left: -1px;
+        top: -1px;
       }
     }
   }
@@ -962,7 +971,7 @@
         margin-right: 0;
       }
       .title {
-        display: none;
+        display: none!important;
       }
     }
     img {
@@ -1582,7 +1591,7 @@
         }
       }
       .title {
-        display: none;
+        display: none!important;
       }
     }
   }
@@ -1737,6 +1746,14 @@
           margin: 0 auto get-vw(30px, 768);
           width: get-vw(690px, 768);
         }
+        #slider-player {
+          @include breakpoint($between-769-1024) {
+            height: 388.125px;
+          }
+          @include breakpoint($bp-768-width) {
+            height: get-vw(388.125px, 768);
+          }
+        }
         .img-wrapper {
           cursor: pointer;
           height: 100%;
@@ -1748,8 +1765,80 @@
           @include breakpoint($bp-768-width) {
             height: get-vw(388.125px, 768);
           }
+          &:before {
+            color: white;
+            content: '\e627';
+            display: block;
+            font-family: "ico-font";
+            font-size: get-vw(80px, 1280);
+            height: get-vw(108px, 1280);
+            left: 50%;
+            line-height: get-vw(108px, 1280);
+            margin: get-vw(-54px, 1280) 0 0 get-vw(-54px, 1280);
+            position: absolute;
+            text-align: center;
+            text-shadow: 1px 1px 0.5em $aspot-shadow;
+            top: 50%;
+            width: get-vw(108px, 1280);
+            @include breakpoint($bp-min-1281-width) {
+              font-size: 80px;
+              line-height: 108px;
+              height: 108px;
+              margin: -54px 0 0 -54px;
+              width: 108px;
+            }
+            @include breakpoint($between-769-1024) {
+              font-size: 64px;
+              line-height: 86.48px;
+              height: 86.48px;
+              margin: -43.24px 0 0 -43.24px;
+              width: 86.48px;
+            }
+            @include breakpoint($bp-768-width) {
+              font-size: get-vw(64px, 768);
+              height: get-vw(86.48px, 768);
+              line-height: get-vw(86.48px, 768);
+              margin: get-vw(-43.24px, 768) 0 0 get-vw(-43.24px, 768);
+              width: get-vw(86.48px, 768);
+            }
+          }
+          &:after {
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 1px 1px get-vw(15px, 1280) $aspot-shadow;
+            box-sizing: border-box;
+            content: '';
+            display: block;
+            height: get-vw(108px, 1280);
+            left: 50%;
+            margin: get-vw(-54px, 1280) 0 0 get-vw(-54px, 1280);
+            position: absolute;
+            top: 50%;
+            width: get-vw(108px, 1280);
+            @include breakpoint($bp-min-1281-width) {
+              box-shadow: 1px 1px 15px $aspot-shadow;
+              height: 108px;
+              margin: -54px 0 0 -54px;
+              width: 108px;
+            }
+            @include breakpoint($between-769-1024) {
+              box-shadow: 1px 1px 12px $aspot-shadow;
+              height: 86.48px;
+              margin: -43.24px 0 0 -43.24px;
+              width: 86.48px;
+            }
+            @include breakpoint($bp-768-width) {
+              box-shadow: 1px 1px get-vw(12px, 768) $aspot-shadow;
+              height: get-vw(86.48px, 768);
+              margin: get-vw(-43.24px, 768) 0 0 get-vw(-43.24px, 768);
+              width: get-vw(86.48px, 768);
+            }
+          }
           &.no-video {
             cursor: default;
+            &:before, &:after {
+              display: none;
+            }
           }
           img {
             height: 100%;
@@ -1842,6 +1931,13 @@
             border: 2px solid white;
             cursor: default;
           }
+          &.no-video {
+            .img-wrapper {
+              &:before, &:after {
+                display: none;
+              }
+            }
+          }
           &:before {
             @include cssRightTriangle(get-vw(91px, 1280), white, top, right);
             position: absolute;
@@ -1910,7 +2006,81 @@
           }
           .img-wrapper {
             height: 100%;
+            position: relative;
             width: 100%;
+            &:before {
+              color: white;
+              content: '\e627';
+              display: block;
+              font-family: "ico-font";
+              font-size: get-vw(30px, 1280);
+              height: get-vw(40px, 1280);
+              left: 50%;
+              line-height: get-vw(40px, 1280);
+              margin: get-vw(-20px, 1280) 0 0 get-vw(-20px, 1280);
+              position: absolute;
+              text-align: center;
+              text-shadow: 1px 1px 0.5em $aspot-shadow;
+              top: 50%;
+              width: get-vw(40px, 1280);
+              @include breakpoint($bp-min-1281-width) {
+                font-size: 30px;
+                line-height: 40px;
+                height: 40px;
+                margin: -20px 0 0 -20px;
+                width: 40px;
+              }
+              @include breakpoint($between-769-1024) {
+                font-size: 24px;
+                line-height: 32px;
+                height: 32px;
+                margin: -16px 0 0 -16px;
+                width: 32px;
+              }
+              @include breakpoint($bp-768-width) {
+                font-size: get-vw(24px, 768);
+                height: get-vw(32px, 768);
+                line-height: get-vw(32px, 768);
+                margin: get-vw(-16px, 768) 0 0 get-vw(-16px, 768);
+                width: get-vw(32px, 768);
+              }
+            }
+            &:after {
+              border: 3px solid white;
+              border-radius: 50%;
+              box-shadow: 1px 1px get-vw(15px, 1280) $aspot-shadow;
+              box-sizing: border-box;
+              content: '';
+              display: block;
+              height: get-vw(40px, 1280);
+              left: 50%;
+              margin: get-vw(-20px, 1280) 0 0 get-vw(-20px, 1280);
+              position: absolute;
+              top: 50%;
+              width: get-vw(40px, 1280);
+              @include breakpoint($bp-min-1281-width) {
+                box-shadow: 1px 1px 15px $aspot-shadow;
+                height: 40px;
+                margin: -20px 0 0 -20px;
+                width: 40px;
+              }
+              @include breakpoint($between-769-1024) {
+                box-shadow: 1px 1px 12px $aspot-shadow;
+                height: 32px;
+                margin: -16px 0 0 -16px;
+                width: 32px;
+              }
+              @include breakpoint($bp-768-width) {
+                border-width: 2px;
+                box-shadow: 1px 1px get-vw(12px, 768) $aspot-shadow;
+                height: get-vw(32px, 768);
+                margin: get-vw(-16px, 768) 0 0 get-vw(-16px, 768);
+                width: get-vw(32px, 768);
+              }
+              @include breakpoint($bp-480-width) {
+                border-width: 1px;
+              }
+            }
             img {
               height: 100%;
               width: 100%;
@@ -1919,7 +2089,6 @@
         }
       }
       .advert {
-        background: grey;
         height: 250px;
         position: absolute;
         right: 0;

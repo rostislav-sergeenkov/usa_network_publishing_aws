@@ -33,9 +33,7 @@
         <div class="img-wrapper<?php print (empty($slides[0]['video']) && empty($slides[0]['video_link'])) ? ' no-video' : ''; ?>">
           <img src="<?php print $slides[0]['image']; ?>">
         </div>
-        <?php if (!empty($slides[0]['title'])): ?>
-          <div class="title"><?php print $slides[0]['title']; ?></div>
-        <?php endif; ?>
+        <div class="title"><?php print (!empty($slides[0]['title']))? $slides[0]['title']: ''; ?></div>
       </div>
       <div id="chosen-items-block-wrapper" class="chosen-items-block-wrapper">
         <?php foreach ($slides as $key => $slide) : ?>

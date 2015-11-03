@@ -10,6 +10,77 @@
 function usanetwork_aspot_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-usanetwork_aspot-field_a_spot'
+  $field_instances['node-usanetwork_aspot-field_a_spot'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 71,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_a_spot',
+    'label' => 'A-spot',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 74,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_aspot-field_animated_a_spot'
   $field_instances['node-usanetwork_aspot-field_animated_a_spot'] = array(
     'bundle' => 'usanetwork_aspot',
@@ -59,6 +130,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'This is an Animated A-Spot',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -119,6 +192,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Enabled A-spot gallery items',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -175,6 +250,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Enabled A-spot gallery items',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -238,6 +315,8 @@ function usanetwork_aspot_field_default_field_instances() {
         'target' => 'default',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -305,6 +384,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -374,6 +455,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Draggable elements data',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -443,6 +526,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -512,6 +597,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Title prefix',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -581,6 +668,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Preview background offset',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'max' => '',
       'min' => '',
       'prefix' => '',
@@ -650,6 +739,8 @@ function usanetwork_aspot_field_default_field_instances() {
         'target' => 'default',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -717,6 +808,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -787,6 +880,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Draggable elements data',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -857,6 +952,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -927,6 +1024,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Title prefix',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1000,6 +1099,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -1072,6 +1173,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1139,6 +1242,8 @@ function usanetwork_aspot_field_default_field_instances() {
     'label' => 'Text line 1 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1219,8 +1324,10 @@ Suggested max dimensions 380px x 80px<br/>
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
-      'file_directory' => '',
+      'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png',
       'focus' => 0,
       'focus_lock_ratio' => 0,
@@ -1294,6 +1401,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Mobile Text line 1 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1367,6 +1476,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Tablet Landscape Text line 1 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1440,6 +1551,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Tablet Portrait Text line 1 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1509,6 +1622,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Title text line 1',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1591,6 +1706,8 @@ Suggested max dimensions 380px x 80px<br/>
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1658,6 +1775,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Text line 2 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1731,6 +1850,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Mobile Text line 2 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1804,6 +1925,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Tablet Landscape Text line 2 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1877,6 +2000,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Tablet Portrait Text line 2 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1946,6 +2071,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Title text line 2',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2028,6 +2155,8 @@ Suggested max dimensions 380px x 80px<br/>
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2095,6 +2224,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Text line 3 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2168,6 +2299,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Mobile Text line 3 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2241,6 +2374,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Tablet Landscape Text line 3 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2314,6 +2449,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Tablet Portrait Text line 3 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2383,6 +2520,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Title text line 3',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2454,6 +2593,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Episodic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2514,6 +2655,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Mobile Text line 2',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2581,6 +2724,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'MP4 Video URL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2654,6 +2799,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -2717,6 +2864,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Target',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2779,6 +2928,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Text Line 1 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2840,8 +2991,10 @@ Suggested max dimensions 380px x 80px<br/>
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
-      'file_directory' => '',
+      'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png',
       'focus' => 0,
       'focus_lock_ratio' => 0,
@@ -2915,6 +3068,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Text Line 2 Font Size',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2983,6 +3138,8 @@ Suggested max dimensions 380px x 80px<br/>
     'required' => 1,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => 'aspot_desktop',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3079,6 +3236,8 @@ Suggested max dimensions 380px x 80px<br/>
         'target' => 'default',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -3163,6 +3322,8 @@ Suggested max dimensions 380px x 80px<br/>
     'required' => 1,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => 'aspot_mobile',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3259,6 +3420,8 @@ Suggested max dimensions 380px x 80px<br/>
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => 'aspot_tablet',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3346,6 +3509,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Title text line 1',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3416,6 +3581,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Text line 2',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3486,6 +3653,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Text line 3',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3556,6 +3725,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3629,6 +3800,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Text color hex value',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3699,6 +3872,8 @@ Suggested max dimensions 380px x 80px<br/>
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3790,6 +3965,8 @@ Suggested max dimensions 380px x 80px<br/>
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3878,6 +4055,8 @@ Suggested max dimensions 380px x 80px<br/>
     'label' => 'Webm Video URL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3905,6 +4084,7 @@ Suggested max dimensions 380px x 80px<br/>
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('A-spot');
   t('Call to Action Text');
   t('Call to Action Type');
   t('Call to action');

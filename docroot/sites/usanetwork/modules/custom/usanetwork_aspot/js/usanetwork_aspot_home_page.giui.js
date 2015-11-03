@@ -1,6 +1,6 @@
 (function ($) {
   Drupal.behaviors.usanetwork_aspot_home_page_giui = {
-    attach: function (context, settings) {
+    init: function (context, settings) {
 
       var aspotHomeSlide = $('#block-usanetwork-aspot-usanetwork-aspot-carousel .slide'),
           aspotShowSlide = $('#main-slider .slide .slide-content'),
@@ -90,6 +90,11 @@
           }
         }, 50, "home A-spot draggable elements");
       });
+    },
+    attach: function (context, settings) {
+      if ($('body').hasClass('node-type-movie')) {
+        Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+      }
     }
   };
 }(jQuery));

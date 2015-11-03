@@ -178,6 +178,12 @@ function usanetwork_tv_shows_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = array(
         '#markup' => _usanetwork_tv_shows_aspot_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/aspot-block.js',
+            drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
+          ),
+        ),
       );
       break;
 
@@ -1606,7 +1612,7 @@ function _usanetwork_tv_shows_aspot_block() {
     $alternative_title_field = field_get_items('node', $show_node, 'field_tvs_lea_block_title');
 
     $theme_variables['episodes_block_title'] = t('Latest full episodes');
-    $theme_variables['show'] = usanetwork_aspot_tvshow_render($show_node);
+    $theme_variables['show'] = '<div id="ajax_aspot_show">' . usanetwork_aspot_tvshow_render($show_node) . '</div>';
 
     $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
 

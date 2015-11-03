@@ -22,6 +22,7 @@
         preview1 = $('#preview-two'),
         preview2 = $('#preview-three'),
         dropZone2,
+        top3_SliderContainer = $('#top3-slider-wrapper'),
         sliderContainer = $('#slider-container'),
         sliderWrapper = sliderContainer.find('.slider-wrapper'),
         currentSlideNum = sliderContainer.find('#counter .current-slide'),
@@ -33,6 +34,34 @@
         playButton = $('#play-button'),
         videoBlock = $('#slider-player'),
         start_item = '';
+
+    // omniture params
+    var at_params = adobeTackingParam();
+
+    function adobeTackingParam() {
+
+      var headerNavBar = $('.header-nav-bar'),
+          show = headerNavBar.find('.show-name').text().trim().split(' '),
+          block = top3_SliderContainer.data('block-name').trim(),
+          blockName = block.charAt(0).toUpperCase() + block.substr(1),
+          page = Drupal.settings.top3_settings.top3_title.split(' '),
+          pageName = '',
+          showName = '';
+
+      for (var i = 0; i < page.length; i++) {
+        pageName += page[i].charAt(0).toUpperCase() + page[i].substr(1) + ' ';
+      }
+
+      for (var k = 0; k < show.length; k++) {
+        showName += show[k].charAt(0).toUpperCase() + show[k].substr(1) + ' ';
+      }
+
+      return {
+        'nodeType': blockName,
+        'pageName': pageName,
+        'showName': showName
+      };
+    }
 
     function infoOpen() {
       $('#info').hide();
@@ -105,6 +134,9 @@
     });
     $('#share-preview-close').click(function () {
       previewClose();
+      if (Drupal.behaviors.omniture_tracking != 'undefined') {
+        Drupal.behaviors.omniture_tracking.top3.itemSelected(at_params);
+      }
     });
 
     // player service
@@ -453,6 +485,10 @@
                 // hide player
                 playerService.hidePlayer();
               }
+
+              if (Drupal.behaviors.omniture_tracking != 'undefined') {
+                Drupal.behaviors.omniture_tracking.top3.changeSlide(at_params, currentSlide + 1);
+              }
             });
 
       },
@@ -480,6 +516,11 @@
                 top3target.each(function () {
                   elementDropped = $(this).hasClass('drop-feedback');
                   if (elementDropped == true) {
+
+                    if (Drupal.behaviors.omniture_tracking != 'undefined') {
+                      Drupal.behaviors.omniture_tracking.top3.itemSelected(at_params);
+                    }
+
                     switch (instanceDrop) {
 
                       case ins0:
@@ -832,6 +873,9 @@
                                 };
                                 if (typeof Drupal.gigya.showSharebar == 'function') {
                                   Drupal.gigya.showSharebar(sharebar);
+                                  if (Drupal.behaviors.omniture_tracking != 'undefined') {
+                                    Drupal.behaviors.omniture_tracking.top3.share(at_params);
+                                  }
                                 }
                                 $('.loader-wrapper').remove();
                               },

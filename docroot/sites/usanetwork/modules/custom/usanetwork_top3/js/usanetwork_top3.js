@@ -155,7 +155,6 @@
 
           if (playerService.clickOnThumb) {
             playerService.clickOnThumb = false;
-            console.info('click thumb = ' + playerService.clickOnThumb);
           }
 
           // change status play button
@@ -181,10 +180,8 @@
         function _onReleaseEnd(pdkEvent) {
           playerService.mediaPlayStatus = false;
           // hide player
-          console.info('onReleaseEnd');
 
           if (playerService.clickOnThumb == false) {
-            console.info('click thumb = ' + playerService.clickOnThumb);
             playerService.hidePlayer();
           }
         }
@@ -196,7 +193,6 @@
         $pdk.controller.pause(true);
       },
       setPlayer: function () {
-        console.info('set player');
 
         var activeSlide, activeThumb, srcLink, src, neighborBlock;
 
@@ -221,14 +217,12 @@
           $pdk.controller.setReleaseURL(srcLink, true);
 
           neighborBlock.addClass('inactive');
-          console.info('set');
           videoBlock.velocity("fadeIn", {
             duration: 200
           });
         }
       },
       loadPlayer: function () {
-        console.info('load player');
         var activeSlide, activeThumb, srcLink, src, neighborBlock;
 
         if (first_state) {
@@ -258,7 +252,6 @@
         }
       },
       hidePlayer: function (el) {
-        console.info('hide player');
         if (first_state) {
           var activeSlide = $('#slider-container .slick-active'),
               neighborBlock = activeSlide.find('.slide-content-inner'),
@@ -278,7 +271,6 @@
             $pdk.controller.endCurrentRelease();
 
             // make image block active
-            console.info('hide button remove inact');
             neighborBlock.removeClass('inactive');
             videoBlock.css({
               opacity: 0
@@ -292,7 +284,6 @@
         } else {
           var neighborBlock = $('#chosen-player .img-wrapper');
           if (playerService.playerStatus) {
-            console.info('hide play');
             //change player status
             playerService.playerStatus = false;
 
@@ -304,7 +295,6 @@
             $pdk.controller.endCurrentRelease();
 
             // make image block active
-            console.info('hide thumb remove inact');
             neighborBlock.removeClass('inactive');
             videoBlock.css({
               opacity: 0
@@ -908,7 +898,6 @@
           droppableArr.push(new Droppable(el, {
 
             onDrop: function (instance, draggableEl) {
-              console.info('drop');
               instanceDrop = instance.el.id;
               instanceDrag = $(draggableEl).attr('id');
 

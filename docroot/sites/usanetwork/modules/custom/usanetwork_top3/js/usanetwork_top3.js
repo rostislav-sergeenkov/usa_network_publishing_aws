@@ -811,10 +811,10 @@
                       $('#share-block img').remove();
                       $('<div id="share-image-block" class="show-color">' +
                           '<div class="share-image-block-wrapper">' +
-                          ' <div class="first show-color show-font"><div class="thumb-image"></div></div> ' +
+                          ' <div class="first show-color show-font"></div> ' +
                           '<div class="img-wrap"> ' +
-                          '<div class="second show-color show-font"><div class="thumb-image"></div></div> ' +
-                          '<div class="third show-color show-font"><div class="thumb-image"></div></div>' +
+                          '<div class="second show-color show-font"></div> ' +
+                          '<div class="third show-color show-font"></div>' +
                           ' </div>' +
                           ' </div>' +
                           ' </div>').insertBefore('#block-usanetwork-top3-usanetwork-top3-main-block');

@@ -670,7 +670,7 @@ function _usanetwork_person_render_cast_crew_block() {
       $theme_variables['persons'][] = array(
         'name' => !empty($person_node->title) ? $person_node->title : '',
         'role' => strtolower($person_role) != 'blank' ? $person_role : '',
-        'image' => !empty($image) ? image_style_url('420x420', $image['uri']) : '',
+        'image' => !empty($image) ? theme('image_style', array('style_name' => '420x420', 'path' => $image['uri'])) : '',
         'url' => url('node/' . $person_node->nid),
       );
     }

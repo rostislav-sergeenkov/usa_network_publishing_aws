@@ -366,7 +366,7 @@ function _usanetwork_top3_create_url() {
     if ($is_writable) {
       preg_match('/data:image\/([^;]*);base64,(.*)/', $data, $matches);
       $filename = 'image' . $_POST['firstFid'] . $_POST['secondFid'] . $_POST['thirdFid'];
-      $path_name = 'public://top3_shared/' . $filename . '.' . $matches[1];
+      $path_name = $new_folder . $filename . '.' . $matches[1];
       $data = base64_decode($matches[2]);
       $image_uri = file_unmanaged_save_data($data, $path_name, FILE_EXISTS_REPLACE);
       if ($image_uri) {

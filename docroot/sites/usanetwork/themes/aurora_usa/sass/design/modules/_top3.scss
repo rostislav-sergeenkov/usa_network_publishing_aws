@@ -400,6 +400,11 @@
         margin-top: get-vw(-40.5px, 1024);
         width: get-vw(30.6px, 1024);
       }
+      @include breakpoint($bp-480-width) {
+        height: 37px;
+        margin-top: -18.5px;
+        width: 14.34px;
+      }
       &:before {
         display: block;
         font-family: "ico-font";
@@ -415,6 +420,10 @@
         @include breakpoint($bp-1024-width) {
           font-size: get-vw(30.625px, 1024);
           line-height: get-vw(81px, 1024);
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 14.34px;
+          line-height: 37px;
         }
       }
     }

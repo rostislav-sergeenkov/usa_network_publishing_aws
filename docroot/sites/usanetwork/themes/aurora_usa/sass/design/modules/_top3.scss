@@ -5,7 +5,7 @@
   left: 0;
   padding: 0 2.5%;
   position: absolute;
-  top: 0px;
+  top: 0;
   z-index: 0;
   .admin-menu & {
     top: 30px;
@@ -22,7 +22,8 @@
     color: black;
     position: relative;
     &:before {
-      @include cssRightTriangle(110px, white, top, right);
+      display: block;
+      content: '';
       position: absolute;
       right: 0;
       top: 0;
@@ -68,8 +69,10 @@
     height: 100%;
     width: 66%;
     &:before {
-      border-top-width: 250px;
-      border-left-width: 250px;
+      background: url(../images/thumb-big.png) no-repeat;
+      background-size: 100% 100%;
+      height: 258px;
+      width: 258px;
     }
     &:after {
       content: '1';
@@ -85,6 +88,12 @@
   .second, .third {
     height: 219px;
     width: 100%;
+    &:before {
+      background: url(../images/thumb-small.png) no-repeat;
+      background-size: 100% 100%;
+      height: 123px;
+      width: 123px;
+    }
     .title {
       font-size: 24px;
     }
@@ -233,26 +242,48 @@
   // play button
   #play-button {
     display: none;
-    left: get-vw(40px, 1901);
+    height: get-vw(92px, 1901);
+    line-height: get-vw(92px, 1901);
+    left: 50%;
+    margin: get-vw(-46px, 1901) 0 0 get-vw(-46px, 1901);
+    top: 50%;
+    width: get-vw(92px, 1901);
     @include breakpoint($bp-min-1901-width) {
-      left: 40px;
+      height: 92px;
+      line-height: 92px;
+      margin: -46px 0 0 -46px;
+      width: 92px;
     }
     @include breakpoint($bp-1024-width) {
-      left: get-vw(30.6px, 1024);
+      height: get-vw(70.4px, 1024);
+      line-height: get-vw(70.4px, 1024);
+      margin: get-vw(-35.2px, 1024) 0 0 get-vw(-35.2px, 1024);
+      width: get-vw(70.4px, 1024);
     }
     &:before {
       content: '\e627';
-    }
-    &.play {
-      &:before {
-        content: '\e626';
+      font-size: get-vw(53px, 1901);
+      height: get-vw(92px, 1901);
+      width: get-vw(92px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        height: 92px;
+        font-size: 53px;
+        width: 92px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(70.4px, 1024);
+        font-size: get-vw(40.56px, 1024);
+        width: get-vw(70.4px, 1024);
       }
     }
     &.inactive {
       display: none;
     }
-    &.hide {
-      display: none!important;
+    &.show {
+      display: block;
+    }
+    &.popup-hide {
+      display: none;
     }
   }
   #top3-slider-wrapper {
@@ -335,18 +366,18 @@
       color: white;
       display: none;
       font-size: get-vw(28px, 1901);
-      left: get-vw(110px, 1901);
+      left: get-vw(40px, 1901);
       position: absolute;
       text-shadow: 1px 1px 0.5em $aspot-shadow;
       top: get-vw(30px, 1901);
       @include breakpoint($bp-min-1901-width) {
         font-size: 28px;
-        left: 110px;
+        left: 40px;
         top: 30px;
       }
       @include breakpoint($bp-1024-width) {
         font-size: get-vw(21.43px, 1024);
-        left: get-vw(84.19px, 1024);
+        left: get-vw(30.61px, 1024);
         top: get-vw(22.96px, 1024);
       }
     }
@@ -1346,17 +1377,17 @@
       color: white;
       font-family: $avalon-demi;
       font-size: get-vw(32px, 1901);
-      left: get-vw(110px, 1901);
+      left: get-vw(40px, 1901);
       position: absolute;
       top: get-vw(70px, 1901);
       @include breakpoint($bp-min-1901-width) {
         font-size: 32px;
-        left: 110px;
+        left: 40px;
         top: 70px;
       }
       @include breakpoint($bp-1024-width) {
         font-size: get-vw(24.49px, 1024);
-        left: get-vw(84.19px, 1024);
+        left: get-vw(30.61px, 1024);
         top: get-vw(53.58px, 1024);
       }
     }

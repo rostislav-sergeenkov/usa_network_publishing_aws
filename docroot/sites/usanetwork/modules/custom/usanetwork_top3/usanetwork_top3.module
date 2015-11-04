@@ -6,6 +6,8 @@
 
 include_once 'usanetwork_top3.features.inc';
 
+define('USA_TOP3_DELIMITER', '-');
+
 /**
  * Implements hook_menu().
  */
@@ -35,7 +37,6 @@ function usanetwork_top3_block_info() {
  */
 function usanetwork_top3_block_view($delta) {
   $block = array();
-  //The $delta parameter tells us which block is being requested.
   switch ($delta) {
     case 'usanetwork_top3_main_block':
       $block['subject'] = '';
@@ -140,14 +141,14 @@ function usanetwork_top3_image_default_styles() {
         ),
         'weight' => 0,
       ),
-        array(
-          'name' => 'image_scale_and_crop',
-          'data' => array(
-            'width' => 1280,
-            'height' => 720,
-          ),
-          'weight' => 1,
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1280,
+          'height' => 720,
         ),
+        'weight' => 1,
+      ),
     ),
   );
 
@@ -180,10 +181,21 @@ function _usanetwork_top3_main_block() {
 
   $player = _usanetwork_mpx_video_get_player_src(array('parent_account' => '1', 'player_id' => 'top3_usa'), 'player');
 
+  if (!empty($node->body)) {
+    $top3_description = strip_tags($node_wrapper->body->value->value());
+  }
+
+  $top3_description = isset($top3_description) ? $top3_description : '';
+  drupal_add_js(array(
+    'top3_settings' => array(
+      'top3_title' => $node->title,
+      'top3_description' => $top3_description)),
+    'setting');
+
   $query_params = drupal_get_query_parameters();
   if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
     if (isset($query_params['shared']) && isset($query_params['node'])) {
-      $shared_fids = explode('|', $query_params['shared']);
+      $shared_fids = explode(USA_TOP3_DELIMITER, $query_params['shared']);
       $shared_files = file_load_multiple($shared_fids);
       $slides = array();
       foreach ($shared_files as $shared_file) {
@@ -269,17 +281,6 @@ function _usanetwork_top3_main_block() {
         );
       }
     }
-
-    if (!empty($node->body)) {
-      $top3_description = strip_tags($node_wrapper->body->value->value());
-    }
-
-    $top3_description = isset($top3_description) ? $top3_description : '';
-    drupal_add_js(array(
-      'top3_settings' => array(
-        'top3_title' => $node->title,
-        'top3_description' => $top3_description)),
-      'setting');
 
     $theme_variables = array(
       'slides' => $slides,
@@ -375,9 +376,35 @@ function _usanetwork_top3_create_url() {
 
     $url = url('node/' . $_POST['galleryNid'], array(
       'query' => array(
-        'shared' => $_POST['firstFid'] . '|' . $_POST['secondFid'] . '|' . $_POST['thirdFid'],
+        'shared' => $_POST['firstFid'] . USA_TOP3_DELIMITER . $_POST['secondFid'] . USA_TOP3_DELIMITER . $_POST['thirdFid'],
         'node' => $_POST['galleryNid'])
     ));
     return drupal_json_output(array('url' => $url, 'image_url' => $image_url));
+  }
+}
+
+/**
+ * Alter sitecatalyst variables.
+ */
+function usanetwork_top3_usa_omniture_alter(&$omniture_variables, $context) {
+  if ($context['entity']) {
+    $entity = $context['entity'];
+    if ($entity->type == 'top3_gallery') {
+      $entity_type = $context['entity_type'];
+      $show = _usanetwork_get_field_item($entity_type, $entity, 'field_show', 'entity');
+      $show_name = !empty($show) ? $show->title : '';
+      $top3_omniture_variables = array(
+        'AdobeTracking.contentGroup' =>      'Reality',
+        'AdobeTracking.contentType' =>       'Features',
+        'AdobeTracking.division' =>          'Cable',
+        'AdobeTracking.businessUnit' =>      'USA Network',
+        'AdobeTracking.showSite' =>          $show_name,
+        'AdobeTracking.showSiteFeature' =>   $show_name  . ' : Top 3',
+        'AdobeTracking.showSiteFeatureII' => $show_name . ' : Top 3 : ' . $entity->title,
+        'AdobeTracking.pageName' =>          $show_name . ' : Top 3 : ' . $entity->title . ' : Start',
+        'AdobeTracking.siteVersion' =>       'New Site',
+      );
+      $omniture_variables = array_merge($omniture_variables, $top3_omniture_variables);
+    }
   }
 }

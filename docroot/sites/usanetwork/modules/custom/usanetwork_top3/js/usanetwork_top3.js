@@ -68,7 +68,7 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
-      playerService.hidePlayButton();
+      playButton.removeClass('show');
       $('.drag-group').hide();
       $('#info-block').show();
     }
@@ -78,7 +78,7 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
-      playerService.showPlayButton();
+      playButton.addClass('show');
       $('.drag-group').show();
       $('#info').show();
     }
@@ -88,7 +88,7 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
-      playButton.addClass('hide');
+      playButton.addClass('popup-hide');
       $('.drag-group').hide();
       $('#drag-icon-block').hide();
       $('#share-block-preview').show();
@@ -99,7 +99,7 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
-      playButton.removeClass('hide');
+      playButton.removeClass('popup-hide');
       $('.drag-group').show();
       $('#drag-icon-block').show();
       $('#info').show();
@@ -190,19 +190,13 @@
             playerService.clickOnThumb = false;
           }
 
-          // change status play button
-          playButton
-              .addClass('play')
-              .attr('data-player-status', 'start');
         }
 
         function _onMediaPause(pdkEvent) {
-          playButton.removeClass('play');
           playerService.mediaPlayStatus = false;
         }
 
         function _onMediaUnpause(pdkEvent) {
-          playButton.addClass('play');
           playerService.mediaPlayStatus = true;
         }
 
@@ -224,6 +218,9 @@
       },
       pausePlayer: function () {
         $pdk.controller.pause(true);
+        if(playButton.hasClass('inactive') && !usa_deviceInfo.mobileDevice){
+          playButton.addClass('show');
+        }
       },
       setPlayer: function () {
 
@@ -310,9 +307,7 @@
             });
 
             // reset play button
-            playButton
-                .removeAttr('data-player-status')
-                .removeClass('inactive play');
+            playButton.removeClass('inactive');
           }
         } else {
           var neighborBlock = $('#chosen-player .img-wrapper');
@@ -355,13 +350,14 @@
         }
 
         if (srcLink != undefined) {
-          playButton.show();
+          if(!playButton.hasClass('show')){
+            playButton.addClass('show');
+          }
         } else {
-          playButton.hide();
+          if(playButton.hasClass('show')){
+            playButton.removeClass('show');
+          }
         }
-      },
-      hidePlayButton: function () {
-        playButton.hide();
       }
     };
     // end
@@ -378,7 +374,7 @@
 
           if (!playBtn.hasClass('inactive')) {
             // added class and change status button
-            playBtn.addClass('inactive');
+            playBtn.addClass('inactive').removeClass('show');
             // show player
             if (isMobileDevice) {
               playerService.loadPlayer();
@@ -387,12 +383,9 @@
             } else {
               playerService.setPlayer();
             }
-          } else if (playBtn.data('player-status') === 'start') {
-            if (playBtn.hasClass('play')) {
-              playerService.pausePlayer();
-            } else if (!playBtn.hasClass('play')) {
-              playerService.playPlayer();
-            }
+          } else {
+            playerService.playPlayer();
+            playBtn.removeClass('show');
           }
 
         });
@@ -897,7 +890,7 @@
                             });
                           }
                         });
-                      }, 1000);
+                      }, 1500);
 
                     });
                   });

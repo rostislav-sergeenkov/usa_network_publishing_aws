@@ -78,7 +78,7 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
-      playButton.addClass('show');
+      playerService.showPlayButton();
       $('.drag-group').show();
       $('#info').show();
     }
@@ -307,7 +307,7 @@
             });
 
             // reset play button
-            playButton.removeClass('inactive');
+            playButton.removeClass('inactive').addClass('show');
           }
         } else {
           var neighborBlock = $('#chosen-player .img-wrapper');

@@ -34,7 +34,6 @@
         _satellite.track('pageItemClicked');
       },
       endButton: function (at_params) {
-        console.info(at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName + ': ' + at_params.endButtons);
         AdobeTracking.clickedPageItem = at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName + ': ' + at_params.endButtons;
         _satellite.track('pageItemClicked');
       },
@@ -49,7 +48,7 @@
                   socialNetworkName = socialNetwork.charAt(0).toUpperCase() + socialNetwork.substr(1);
 
               AdobeTracking.socialNetwork = socialNetworkName;
-              AdobeTracking.itemShared = at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.showName;
+              AdobeTracking.itemShared = at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName;
               _satellite.track('socialShare');
             }
           });

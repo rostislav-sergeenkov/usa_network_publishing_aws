@@ -462,6 +462,10 @@
               totalSlidesNum.text(slide.length);
               //infoOpen();
 
+              if (Drupal.behaviors.omniture_tracking != 'undefined') {
+                Drupal.behaviors.omniture_tracking.top3.changeSlide(at_params, firstSlide);
+              }
+
             })
             .slick({
               autoplay: false,
@@ -475,20 +479,22 @@
               speed: 300
             })
             .on('afterChange', function (event, slick, currentSlide) {
+
               playerService.showPlayButton();
               currentSlideNum.text(currentSlide + 1);
               if ($('body').hasClass('node-type-top3-gallery')) {
                 Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
               }
-            })
-            .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-              if (playerService.playerStatus) {
-                // hide player
-                playerService.hidePlayer();
-              }
 
               if (Drupal.behaviors.omniture_tracking != 'undefined') {
                 Drupal.behaviors.omniture_tracking.top3.changeSlide(at_params, currentSlide + 1);
+              }
+            })
+            .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+
+              if (playerService.playerStatus) {
+                // hide player
+                playerService.hidePlayer();
               }
             });
 

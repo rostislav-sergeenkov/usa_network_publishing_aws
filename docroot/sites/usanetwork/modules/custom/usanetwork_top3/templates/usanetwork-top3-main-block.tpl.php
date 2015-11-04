@@ -85,7 +85,7 @@
     <div id="share-block-preview">
       <div class="share-block-preview-wrapper">
         <div class="preview-buttons">
-          <div id="share-preview-close" class="share-preview-close preview-button"><span><?php print t("Wait I'not finished"); ?></span><br><?php print t('Change selections'); ?></div>
+          <div id="share-preview-close" class="share-preview-close preview-button"><span><?php print t("Wait I'm not finished"); ?></span><br><?php print t('Change selections'); ?></div>
           <div id="share-button" class="show-color preview-button"><span><?php print t("Yup! These are the best"); ?></span><br><?php print t('Create my top3 link'); ?></div>
         </div>
         <div class="preview-items-block">

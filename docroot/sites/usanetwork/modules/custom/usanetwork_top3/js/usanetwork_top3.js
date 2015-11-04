@@ -68,7 +68,7 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
-      playerService.hidePlayButton();
+      playButton.removeClass('show');
       $('.drag-group').hide();
       $('#info-block').show();
     }
@@ -88,7 +88,7 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
-      playButton.addClass('hide');
+      playButton.addClass('popup-hide');
       $('.drag-group').hide();
       $('#drag-icon-block').hide();
       $('#share-block-preview').show();
@@ -99,7 +99,7 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
-      playButton.removeClass('hide');
+      playButton.removeClass('popup-hide');
       $('.drag-group').show();
       $('#drag-icon-block').show();
       $('#info').show();
@@ -190,19 +190,13 @@
             playerService.clickOnThumb = false;
           }
 
-          // change status play button
-          playButton
-              .addClass('play')
-              .attr('data-player-status', 'start');
         }
 
         function _onMediaPause(pdkEvent) {
-          playButton.removeClass('play');
           playerService.mediaPlayStatus = false;
         }
 
         function _onMediaUnpause(pdkEvent) {
-          playButton.addClass('play');
           playerService.mediaPlayStatus = true;
         }
 
@@ -224,6 +218,9 @@
       },
       pausePlayer: function () {
         $pdk.controller.pause(true);
+        if(playButton.hasClass('inactive') && !usa_deviceInfo.mobileDevice){
+          playButton.addClass('show');
+        }
       },
       setPlayer: function () {
 
@@ -292,7 +289,9 @@
 
           if (playerService.hideSliderWrapper) {
             playerService.hideSliderWrapper = false;
-            $('#slider-container .slider-wrapper').show();
+            $('#slider-container .slider-wrapper').css({
+              'visibility': 'visible'
+            });
           }
 
           if (playerService.playerStatus) {
@@ -310,9 +309,7 @@
             });
 
             // reset play button
-            playButton
-                .removeAttr('data-player-status')
-                .removeClass('inactive play');
+            playButton.removeClass('inactive').addClass('show');
           }
         } else {
           var neighborBlock = $('#chosen-player .img-wrapper');
@@ -355,13 +352,14 @@
         }
 
         if (srcLink != undefined) {
-          playButton.show();
+          if(!playButton.hasClass('show')){
+            playButton.addClass('show');
+          }
         } else {
-          playButton.hide();
+          if(playButton.hasClass('show')){
+            playButton.removeClass('show');
+          }
         }
-      },
-      hidePlayButton: function () {
-        playButton.hide();
       }
     };
     // end
@@ -378,21 +376,20 @@
 
           if (!playBtn.hasClass('inactive')) {
             // added class and change status button
-            playBtn.addClass('inactive');
+            playBtn.addClass('inactive').removeClass('show');
             // show player
             if (isMobileDevice) {
               playerService.loadPlayer();
               playerService.hideSliderWrapper = true;
-              $('#slider-container .slider-wrapper').hide();
+              $('#slider-container .slider-wrapper').css({
+                'visibility': 'hidden'
+              });
             } else {
               playerService.setPlayer();
             }
-          } else if (playBtn.data('player-status') === 'start') {
-            if (playBtn.hasClass('play')) {
-              playerService.pausePlayer();
-            } else if (!playBtn.hasClass('play')) {
-              playerService.playPlayer();
-            }
+          } else {
+            playerService.playPlayer();
+            playBtn.removeClass('show');
           }
 
         });
@@ -462,6 +459,10 @@
               totalSlidesNum.text(slide.length);
               //infoOpen();
 
+              if (Drupal.behaviors.omniture_tracking != 'undefined') {
+                Drupal.behaviors.omniture_tracking.top3.changeSlide(at_params, firstSlide);
+              }
+
             })
             .slick({
               autoplay: false,
@@ -475,20 +476,22 @@
               speed: 300
             })
             .on('afterChange', function (event, slick, currentSlide) {
+
               playerService.showPlayButton();
               currentSlideNum.text(currentSlide + 1);
               if ($('body').hasClass('node-type-top3-gallery')) {
                 Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
               }
-            })
-            .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-              if (playerService.playerStatus) {
-                // hide player
-                playerService.hidePlayer();
-              }
 
               if (Drupal.behaviors.omniture_tracking != 'undefined') {
                 Drupal.behaviors.omniture_tracking.top3.changeSlide(at_params, currentSlide + 1);
+              }
+            })
+            .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+
+              if (playerService.playerStatus) {
+                // hide player
+                playerService.hidePlayer();
               }
             });
 

@@ -289,7 +289,9 @@
 
           if (playerService.hideSliderWrapper) {
             playerService.hideSliderWrapper = false;
-            $('#slider-container .slider-wrapper').show();
+            $('#slider-container .slider-wrapper').css({
+              'visibility': 'visible'
+            });
           }
 
           if (playerService.playerStatus) {
@@ -379,7 +381,9 @@
             if (isMobileDevice) {
               playerService.loadPlayer();
               playerService.hideSliderWrapper = true;
-              $('#slider-container .slider-wrapper').hide();
+              $('#slider-container .slider-wrapper').css({
+                'visibility': 'hidden'
+              });
             } else {
               playerService.setPlayer();
             }

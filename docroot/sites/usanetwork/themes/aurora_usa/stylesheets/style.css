@@ -30094,6 +30094,13 @@ body.blog .view-display-id-blog_content .views-row {
     width: 2.98828vw;
   }
 }
+@media (max-width: 480px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .control-button {
+    height: 37px;
+    margin-top: -18.5px;
+    width: 14.34px;
+  }
+}
 #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .control-button:before {
   display: block;
   font-family: "ico-font";
@@ -30113,6 +30120,12 @@ body.blog .view-display-id-blog_content .views-row {
   #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .control-button:before {
     font-size: 2.99072vw;
     line-height: 7.91016vw;
+  }
+}
+@media (max-width: 480px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .control-button:before {
+    font-size: 14.34px;
+    line-height: 37px;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #slider-container .next.control-button {

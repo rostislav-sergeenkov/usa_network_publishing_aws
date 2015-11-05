@@ -12315,6 +12315,54 @@ footer h2 {
     width: 100%;
   }
 }
+@media (min-width: 1025px) {
+  .consum-sidebar.sticky-sidebar {
+    height: calc(100vh - 7.12195vw);
+    position: fixed !important;
+    right: 0;
+    top: 7.12195vw;
+  }
+  .consum-sidebar.sticky-sidebar .advert {
+    height: 250px;
+    padding: 0;
+  }
+  .consum-sidebar.sticky-sidebar .items-block {
+    height: calc(100% - 250px) !important;
+    top: 0;
+  }
+  .consum-sidebar.sticky-sidebar .more-items {
+    bottom: auto !important;
+    margin-top: -45px;
+  }
+}
+@media (min-width: 1281px) {
+  .consum-sidebar.sticky-sidebar .more-items {
+    margin-top: -40px;
+  }
+}
+@media (min-width: 1901px) {
+  .consum-sidebar.sticky-sidebar {
+    height: calc(100vh - 135px);
+    top: 135px;
+  }
+  .consum-sidebar.sticky-sidebar .more-items {
+    margin-top: -70px;
+  }
+}
+@media (min-width: 2500px) {
+  .consum-sidebar.sticky-sidebar {
+    left: calc(1867.5px + (100% - 2500px)/2);
+    right: auto;
+    width: 628px;
+  }
+}
+@media (min-width: 1025px) {
+  .consum-sidebar.sticky-sidebar.related-visible {
+    bottom: 0;
+    position: absolute !important;
+    top: auto;
+  }
+}
 .consum-sidebar .advert {
   width: 100%;
 }
@@ -14362,6 +14410,7 @@ footer h2 {
   width: 300px;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
+  clear: none;
   float: right;
   position: relative;
   width: 48%;
@@ -15056,6 +15105,13 @@ footer h2 {
   .consumptionator-episode-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img, .consumptionator-post-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img {
     max-width: 75px;
     width: 75px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .consumptionator-episode-main-block .consum-sidebar .advert {
+    height: 250px;
+    padding: 0;
   }
 }
 
@@ -18995,6 +19051,7 @@ footer h2 {
 .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description,
 .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description,
 .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description {
+  clear: none;
   color: #000000;
   float: left;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
@@ -22455,6 +22512,7 @@ html[xmlns] .slides {
   font-size: 16px;
 }
 .featured-asset .description {
+  clear: none;
   float: right;
 }
 .featured-asset .description p:first-child {
@@ -22603,6 +22661,7 @@ html[xmlns] .slides {
   }
 }
 .featured-asset .sidecarSection:not(.ng-hide) ~ .description {
+  clear: none;
   float: left;
   overflow: hidden;
 }

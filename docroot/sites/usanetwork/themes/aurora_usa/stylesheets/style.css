@@ -29955,6 +29955,9 @@ body.blog .view-display-id-blog_content .views-row {
 #block-usanetwork-top3-usanetwork-top3-main-block #play-button.show {
   display: block;
 }
+#block-usanetwork-top3-usanetwork-top3-main-block #play-button.info-hide {
+  display: none;
+}
 #block-usanetwork-top3-usanetwork-top3-main-block #play-button.popup-hide {
   display: none;
 }

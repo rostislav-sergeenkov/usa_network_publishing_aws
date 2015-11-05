@@ -31,6 +31,8 @@
         } else {
           if (typeof AdobeTracking.showSite !== 'undefined') {
             umbelParameter1 = AdobeTracking.showSite;
+          } else {
+            umbelParameter1 = "";
           }
         }
 
@@ -43,6 +45,8 @@
         } else {
           if (typeof AdobeTracking.showSiteFeature !== 'undefined') {
             umbelParameter2 = AdobeTracking.showSiteFeature;
+          } else {
+            umbelParameter2 = "";
           }
         }
 
@@ -55,6 +59,8 @@
         } else {
           if (typeof AdobeTracking.pageName !== 'undefined') {
             umbelParameter3 = AdobeTracking.pageName;
+          } else {
+            umbelParameter3 = "";
           }
         }
 

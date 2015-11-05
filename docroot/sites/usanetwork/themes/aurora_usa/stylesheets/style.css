@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -14410,6 +14410,7 @@ footer h2 {
   width: 300px;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .description {
+  clear: none;
   float: right;
   position: relative;
   width: 48%;
@@ -19050,6 +19051,7 @@ footer h2 {
 .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .description, .block-usanetwork-person-usanetwork-person-cast-lmb-block .movie-info-description .description,
 .block-usanetwork-movie-usanetwork-lmb-block .cast-and-info-description .description,
 .block-usanetwork-movie-usanetwork-lmb-block .movie-info-description .description {
+  clear: none;
   color: #000000;
   float: left;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
@@ -22510,6 +22512,7 @@ html[xmlns] .slides {
   font-size: 16px;
 }
 .featured-asset .description {
+  clear: none;
   float: right;
 }
 .featured-asset .description p:first-child {
@@ -22658,6 +22661,7 @@ html[xmlns] .slides {
   }
 }
 .featured-asset .sidecarSection:not(.ng-hide) ~ .description {
+  clear: none;
   float: left;
   overflow: hidden;
 }

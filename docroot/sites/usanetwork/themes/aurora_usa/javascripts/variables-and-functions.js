@@ -53,6 +53,21 @@ var waitForFinalEvent = (function () {
 
 // end
 
+// get param url
+// example $.urlParam(name, url);
+// name = string
+// url = default window.location.href
+$.urlParam = function(name, url){
+  var url = url || window.location.href,
+  results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url);
+  if (results==null){
+    return null;
+  }
+  else{
+    return results[1] || 0;
+  }
+};
+
 
 function getInternetExplorerVersion()
 {

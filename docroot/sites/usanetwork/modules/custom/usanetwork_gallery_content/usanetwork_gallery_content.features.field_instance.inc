@@ -93,6 +93,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Body',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => TRUE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -182,6 +184,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -272,6 +276,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Categories',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -355,6 +361,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Collection',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -448,6 +456,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -553,8 +563,10 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Cover Item',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
-      'file_directory' => '',
+      'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'user_register_form' => FALSE,
@@ -665,6 +677,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Enable Nitro',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -752,6 +766,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Episode',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -842,6 +858,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Gallery type',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -850,91 +868,6 @@ function usanetwork_gallery_content_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => 22,
-    ),
-  );
-
-  // Exported field_instance: 'node-media_gallery-field_ideamelt_action_type'
-  $field_instances['node-media_gallery-field_ideamelt_action_type'] = array(
-    'bundle' => 'media_gallery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'admin_reference_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'block_cover_title_lg' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_ideamelt_action_type',
-    'label' => 'IdeaMelt action type',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 11,
     ),
   );
 
@@ -1023,8 +956,10 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Media Items',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
-      'file_directory' => '',
+      'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'user_register_form' => FALSE,
@@ -1134,6 +1069,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Multiple shows',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1219,6 +1156,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Nitro action name',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1319,6 +1258,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Related Person',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -1413,6 +1354,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1532,6 +1475,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Season',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -1541,97 +1486,6 @@ function usanetwork_gallery_content_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-media_gallery-field_send_ideamelt_notification'
-  $field_instances['node-media_gallery-field_send_ideamelt_notification'] = array(
-    'bundle' => 'media_gallery',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'admin_reference_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'block_cover_title_lg' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_send_ideamelt_notification',
-    'label' => 'Send IdeaMelt Notification',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 10,
     ),
   );
 
@@ -1709,6 +1563,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'H1',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1808,6 +1664,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Page Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1910,6 +1768,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -1996,6 +1856,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'Short Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2088,6 +1950,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'label' => 'OG Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2188,6 +2052,8 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => 'og_image',
       'file_extensions' => 'png gif jpg jpeg',
@@ -2240,7 +2106,6 @@ function usanetwork_gallery_content_field_default_field_instances() {
   t('Episode');
   t('Gallery type');
   t('H1');
-  t('IdeaMelt action type');
   t('Maximum 150 characters recommended, OK to exceed for search results and indexing but most relevant information should be listed first.');
   t('Media Items');
   t('Multiple shows');
@@ -2251,7 +2116,6 @@ function usanetwork_gallery_content_field_default_field_instances() {
   t('Promo Image Override');
   t('Related Person');
   t('Season');
-  t('Send IdeaMelt Notification');
   t('Short Description');
   t('Show');
   t('Tags');

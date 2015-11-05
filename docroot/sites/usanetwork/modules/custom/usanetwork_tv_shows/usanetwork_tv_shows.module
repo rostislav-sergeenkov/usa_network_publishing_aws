@@ -178,6 +178,12 @@ function usanetwork_tv_shows_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = array(
         '#markup' => _usanetwork_tv_shows_aspot_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/aspot-block.js',
+            drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
+          ),
+        ),
       );
       break;
 
@@ -1606,7 +1612,7 @@ function _usanetwork_tv_shows_aspot_block() {
     $alternative_title_field = field_get_items('node', $show_node, 'field_tvs_lea_block_title');
 
     $theme_variables['episodes_block_title'] = t('Latest full episodes');
-    $theme_variables['show'] = usanetwork_aspot_tvshow_render($show_node);
+    $theme_variables['show'] = '<div id="ajax_aspot_show">' . usanetwork_aspot_tvshow_render($show_node) . '</div>';
 
     $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
 
@@ -1826,7 +1832,8 @@ function _usanetwork_tv_shows_get_content_image_url($node) {
 }
 
 function _usanetwork_tv_shows_submenu() {
-  $show = menu_get_object();
+  $curent_content = menu_get_object();
+  $show = $curent_content;
   if (!empty($show) && $show->type != 'tv_show') {
     $show = usanetwork_core_api_get_tv_content_node($show);
   }
@@ -1897,9 +1904,13 @@ function _usanetwork_tv_shows_submenu() {
       }
     }
   }
+  $title_tag = 'h1';
+  if (arg(2) == 'photos' || arg(2) == 'videos' || 'post' == $curent_content->type) {
+    $title_tag = 'h2';
+  }
   $show_title = array(
     '#type' => 'html_tag',
-    '#tag' => (arg(2) == 'photos' || arg(2) == 'videos') ? 'h2' : 'h1',
+    '#tag' => $title_tag,
     '#attributes' => array('class' => 'title'),
     '#value' => l($show_title, 'node/' . $show->nid),
   );
@@ -3704,7 +3715,10 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
   $desktop_image = $mobile_image = '';
   $target_url = '<front>';
 
-  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
+  if (!empty($data->promo_link)) {
+    $target_url = url($data->promo_link);
+  }
+  elseif (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
       'file',
       'node'
     ))

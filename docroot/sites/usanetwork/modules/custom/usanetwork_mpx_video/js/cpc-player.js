@@ -80,6 +80,7 @@
 
   function onProgramChanged(event) {
     console.log("[Basic Linear MVPD] ProgramChange id: "+event.data.programId+", title:"+event.data.title+", description:"+event.data.description);
+    Drupal.behaviors.usanetwork_menu_live_video_header.init();
   }
 
 

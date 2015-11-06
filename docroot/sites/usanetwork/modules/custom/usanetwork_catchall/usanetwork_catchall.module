@@ -7,6 +7,21 @@
 include_once 'usanetwork_catchall.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function usanetwork_catchall_menu() {
+  $items = array();
+
+  $items['ajax/catchall_create_url'] = array(
+    'page callback' => '_usanetwork_catchall_create_url',
+    'page arguments' => array(),
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_preprocess_HOOK().
  */
 function usanetwork_catchall_preprocess_html(&$vars) {
@@ -78,4 +93,28 @@ function _usanetwork_catchall_related_content() {
     }
   }
   return '';
+}
+
+/*
+ * Callback for ajax call
+ */
+function _usanetwork_catchall_create_url() {
+  if (!empty($_POST['nodeId']) && !empty($_POST['imgStr']) && !empty($_POST['imageSrc'])) {
+    $data = $_POST['imageSrc'];
+    $new_folder = 'public://libs/' . $_POST['nodeId'] . '/';
+    $is_writable = file_prepare_directory($new_folder, FILE_CREATE_DIRECTORY);
+
+    if ($is_writable) {
+      preg_match('/data:image\/([^;]*);base64,(.*)/', $data, $matches);
+      $filename = 'image' . $_POST['imgStr'];
+      $path_name = $new_folder . $filename . '.' . $matches[1];
+      $data = base64_decode($matches[2]);
+      $image_uri = file_unmanaged_save_data($data, $path_name, FILE_EXISTS_REPLACE);
+      if ($image_uri) {
+        $image_url = file_create_url($image_uri);
+      }
+    }
+
+    return drupal_json_output(array('image_url' => $image_url));
+  }
 }

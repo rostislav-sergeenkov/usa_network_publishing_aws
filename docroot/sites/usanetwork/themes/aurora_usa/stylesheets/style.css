@@ -51,7 +51,7 @@ em, address, cite, q, dfn, i {
   font-style: italic;
 }
 
-h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
+h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .node.node-post .field-name-title h2 {
   font-weight: bold;
 }
 
@@ -644,7 +644,7 @@ body, #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h
   font-size: 18px;
 }
 
-h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h2 {
+h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .node.node-post .field-name-title h2 {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
 
@@ -28800,14 +28800,15 @@ body.blog .view-display-id-blog_content .views-row {
   text-transform: uppercase;
   color: #0ab6e8;
 }
-.node.node-post .field-name-title h2 {
+.node.node-post .field-name-title h1, .node.node-post .field-name-title h2 {
+  color: black;
   font-size: 37px;
   line-height: initial;
   text-transform: uppercase;
   margin: 15px 0;
 }
 @media (max-width: 769px) {
-  .node.node-post .field-name-title h2 {
+  .node.node-post .field-name-title h1, .node.node-post .field-name-title h2 {
     font-size: 27px;
   }
 }
@@ -29078,19 +29079,19 @@ body.blog .view-display-id-blog_content .views-row {
   border-bottom: 1px solid #d0d0d0;
 }
 
-.node.node-post.node-teaser .field-name-title h2 a {
+.node.node-post.node-teaser .field-name-title h1 a, .node.node-post.node-teaser .field-name-title h2 a {
   color: #1f1f1f;
 }
-.node.node-post.node-teaser .field-name-title h2 a:visited {
+.node.node-post.node-teaser .field-name-title h1 a:visited, .node.node-post.node-teaser .field-name-title h2 a:visited {
   color: #1f1f1f;
 }
-.node.node-post.node-teaser .field-name-title h2 a:focus {
+.node.node-post.node-teaser .field-name-title h1 a:focus, .node.node-post.node-teaser .field-name-title h2 a:focus {
   color: #1f1f1f;
 }
-.node.node-post.node-teaser .field-name-title h2 a:hover {
+.node.node-post.node-teaser .field-name-title h1 a:hover, .node.node-post.node-teaser .field-name-title h2 a:hover {
   color: #499ad2;
 }
-.node.node-post.node-teaser .field-name-title h2 a:active {
+.node.node-post.node-teaser .field-name-title h1 a:active, .node.node-post.node-teaser .field-name-title h2 a:active {
   color: #1f1f1f;
 }
 .node.node-post .field-name-post-date {

@@ -43,6 +43,7 @@
     $cpc = NBCUniCPC.load("videoplayer", NBCUniCPC.Account.USA, contentInitObj, parameters);
     $cpc.addEventListener(NBCUniCPC.Event.INSTREAM_DATA, onInStreamData);
     $cpc.addEventListener(NBCUniCPC.Event.BLACKOUT_STATUS, onBlackoutStatus);
+    $cpc.addEventListener(NBCUniCPC.Event.PROGRAM_CHANGED, onProgramChanged);
 
     $("#videoplayer").css("border", 0);
   }
@@ -75,6 +76,10 @@
 
     //use jQuery to replace contents with custom slate HTML
     $("#videoplayer").parent('.video-player-wrapper').html(customSlateContent);
+  }
+
+  function onProgramChanged(event) {
+    Drupal.behaviors.usanetwork_menu_live_video_header.init();
   }
 
 

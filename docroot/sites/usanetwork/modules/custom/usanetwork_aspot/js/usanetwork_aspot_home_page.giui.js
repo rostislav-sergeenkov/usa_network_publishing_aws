@@ -28,7 +28,8 @@
                   styleDesktop = $(this).attr('data-style-desktop'),
                   styleMobile = $(this).attr('data-style-mobile'),
                   elWidth, maxWidth, betweenWidth, myArr = [];
-              if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
+
+              if (window.innerWidth < window_size_mobile_641 || usa_deviceInfo.smartphone) {
                 self.attr('style', styleMobile);
               } else {
                 if (window.innerWidth >= window_size_mobile_641) {
@@ -79,6 +80,8 @@
           }
         });
       }
+
+
 
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){

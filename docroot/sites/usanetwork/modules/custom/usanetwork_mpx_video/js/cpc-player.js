@@ -25,7 +25,7 @@
 
   function initLivePlayer($cookies) {
 
-    if($cookies.nbcu_user_settings) {
+    if ($cookies.nbcu_user_settings) {
       var nbcu_user_settings = JSON.parse($cookies.nbcu_user_settings),
           mvpdId = nbcu_user_settings.selectedProvider;
     }
@@ -79,7 +79,20 @@
   }
 
   function onProgramChanged(event) {
+    // send ajax
     Drupal.behaviors.usanetwork_menu_live_video_header.init();
+
+    $.ajax({
+      success: function () {
+        // omniture track
+        if (typeof s_gi != 'undefined') {
+          void (s.t());
+        }
+      }
+    });
+
+    // Refresh mps ad
+    Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
   }
 
 

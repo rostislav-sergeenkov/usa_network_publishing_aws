@@ -8359,6 +8359,7 @@ header .tve-help-link.signIn .inlineLoader {
   }
 }
 .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta .description, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta .description, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta .description {
+  clear: none;
   font-size: 1.26829vw;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: 1.4;

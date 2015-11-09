@@ -10,8 +10,6 @@
         url: Drupal.settings.basePath + 'ajax/render-live-video-header/' + timezoneOffset,
         success: function(message) {
 
-          console.info('ajax success');
-
           var headerBlock = $("#block-usanetwork-menu-usanetwork-menu-consumptionator .content");
 
           if (typeof message.on_now_vars != 'undefined') {

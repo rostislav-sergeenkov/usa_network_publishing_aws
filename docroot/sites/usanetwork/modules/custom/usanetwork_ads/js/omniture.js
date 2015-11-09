@@ -187,8 +187,6 @@
       s.linkTrackVars = 'events,eVar65';
       s.linkTrackEvents = s.events = 'event65';
       s.eVar65 = 'Schedule Page : Reminder : ' + showName;
-
-      console.info(s.eVar65);
       s.tl(this, 'o', 'Schedule Page Click');
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },

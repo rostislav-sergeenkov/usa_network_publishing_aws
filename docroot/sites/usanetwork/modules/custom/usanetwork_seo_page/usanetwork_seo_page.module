@@ -153,7 +153,7 @@ function usanetwork_seo_page_validate(&$form, &$form_state) {
       $cta_type = $value['field_cta_type'][$lang][0]['value'];
       $cta_url = $value['field_cta_url'][$lang][0]['value'];
       $cta_text = $value['field_cta_text'][$lang][0]['value'];
-      $cta_image = $value['field_cta_image'][$lang][0]['value'];
+      $cta_image = $value['field_cta_image'][$lang][0];
       if($value['field_cta_type'][$lang][0]['value'] == NULL && ($value['field_cta_url'][$lang][0]['value'] || $value['field_cta_text'][$lang][0]['value'] || $value['field_cta_image'][$lang][0]['value'])) {
 
       }

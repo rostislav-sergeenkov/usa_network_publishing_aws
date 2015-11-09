@@ -131,6 +131,12 @@ function _usanetwork_umbel_variables($settings) {
               $settings['usa_umbel_param_2'] = "Episode Guide";
               break;
           }
+        } elseif ($tv_show_field = _usanetwork_get_field_item('node', $current_menu_object, 'field_multiple_show', 'target_id')) {
+          $settings = array(
+            'usa_umbel_param_1' => "Multiple Gallery",
+            'usa_umbel_param_2' => "Photo Gallery",
+            'usa_umbel_param_3' => $current_menu_object->title,
+          );
         }
       }
     }

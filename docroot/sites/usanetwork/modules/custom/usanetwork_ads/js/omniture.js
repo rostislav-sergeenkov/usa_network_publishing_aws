@@ -23,6 +23,39 @@
 
     //----------- redesign ---------------
 
+    // top 3
+    top3: {
+      changeSlide: function (at_params, slideIndex) {
+        AdobeTracking.pageName = at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName + ': Clip ' + slideIndex;
+        _satellite.track('virtPageTrack');
+      },
+      itemSelected: function (at_params) {
+        AdobeTracking.clickedPageItem = at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName + ': Clip Selected';
+        _satellite.track('pageItemClicked');
+      },
+      endButton: function (at_params) {
+        AdobeTracking.clickedPageItem = at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName + ': ' + at_params.endButtons;
+        _satellite.track('pageItemClicked');
+      },
+      share: function (at_params) {
+        // Click on share
+        $('#gigya-share-top3 .gig-button').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+
+              var selfId = $(this).attr('id'),
+                  socialNetwork = gigya.services.socialize.plugins.reactions.instances['gigya-share-top3'].buttonInstances[selfId].id,
+                  socialNetworkName = socialNetwork.charAt(0).toUpperCase() + socialNetwork.substr(1);
+
+              AdobeTracking.socialNetwork = socialNetworkName;
+              AdobeTracking.itemShared = at_params.showName + ': ' + at_params.nodeType + ' : ' + at_params.pageName;
+              _satellite.track('socialShare');
+            }
+          });
+        });
+      }
+    },
+
     // main menu elem click
     mainMenuTabs: function (elem) {
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {

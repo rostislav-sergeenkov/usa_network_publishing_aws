@@ -88,6 +88,63 @@ function usanetwork_promo_views_default_views() {
   );
   $handler->display->display_options['row_options']['separator'] = ': ';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+
+  /* Display: Associated video short */
+  $handler = $view->new_display('entityreference', 'Associated video short', 'associated_video_short');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'entityreference_style';
+  $handler->display->display_options['style_options']['search_fields'] = array(
+    'filename' => 'filename',
+    'field_display_title' => 0,
+    'account' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: File: Name */
+  $handler->display->display_options['fields']['filename']['id'] = 'filename';
+  $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filename']['field'] = 'filename';
+  $handler->display->display_options['fields']['filename']['label'] = '';
+  $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['filename']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['filename']['link_to_file'] = FALSE;
+  /* Field: thePlatform MPX Video: thePlatform MPX Video Status */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'mpx_video';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['label'] = 'Video Status';
+  /* Field: thePlatform MPX Video: thePlatform MPX Video Expiration Date (Sunset) */
+  $handler->display->display_options['fields']['expiration_date']['id'] = 'expiration_date';
+  $handler->display->display_options['fields']['expiration_date']['table'] = 'mpx_video';
+  $handler->display->display_options['fields']['expiration_date']['field'] = 'expiration_date';
+  $handler->display->display_options['fields']['expiration_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['expiration_date']['date_format'] = 'html5_tools_iso8601';
+  $handler->display->display_options['fields']['expiration_date']['second_date_format'] = 'html5_tools_iso8601';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: File: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'mpx_video_1' => 'mpx_video_1',
+  );
+  /* Filter criterion: thePlatform MPX Video: thePlatform MPX Video Expiration Date (Sunset) */
+  $handler->display->display_options['filters']['expiration_date']['id'] = 'expiration_date';
+  $handler->display->display_options['filters']['expiration_date']['table'] = 'mpx_video';
+  $handler->display->display_options['filters']['expiration_date']['field'] = 'expiration_date';
+  $handler->display->display_options['filters']['expiration_date']['operator'] = '>';
+  $handler->display->display_options['filters']['expiration_date']['value']['value'] = '+1 second';
+  $handler->display->display_options['filters']['expiration_date']['value']['type'] = 'offset';
   $export['associated_video_entityreference_autocomplete'] = $view;
 
   $view = new view();
@@ -273,6 +330,7 @@ function usanetwork_promo_views_default_views() {
   );
   $handler->display->display_options['row_options']['separator'] = ': ';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+
   /* Display: No Related To Show */
   $handler = $view->new_display('entityreference', 'No Related To Show', 'entityreference_2');
   $handler->display->display_options['defaults']['title'] = FALSE;

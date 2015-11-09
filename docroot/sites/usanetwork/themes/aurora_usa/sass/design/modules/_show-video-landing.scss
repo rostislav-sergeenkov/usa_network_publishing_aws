@@ -465,6 +465,23 @@
             @include breakpoint($bp-min-769-width) {
               margin-bottom: 0;
             }
+            &:nth-last-child(1) {
+              clear: none;
+              float: right;
+              @include breakpoint($between-769-1024) {
+                float: left;
+                height: 26.2vw;
+                width: 66.4%;
+                > div {
+                  margin-bottom: 0;
+                  width: 49.4%;
+                }
+              }
+              @include breakpoint($bp-768-width) {
+                float: none;
+                margin-bottom: 0;
+              }
+            }
           }
           &:nth-child(5) {
             @include breakpoint($bp-min-1025-width) {

@@ -27958,6 +27958,30 @@ yx-axis
   content: '\e61b';
 }
 
+@media (max-width: 1024px) {
+  .page-movies .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-show {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .page-movies .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title {
+    display: block;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .page-movies .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .page-movies .schedule-wrapper .schedule-table ul li .schedule-item .visible-block .episode-info .episode-title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
 #block-usanetwork-menu-usanetwork-menu-aspot-ot .spinner {
   display: block;
   margin: 0 auto;

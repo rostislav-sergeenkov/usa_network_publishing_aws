@@ -238,6 +238,7 @@
         }
         > div {
           margin-right: 0.5%;
+          margin-top: 1%;
           position: relative;
           display: inline-block;
           width: 49%;
@@ -245,9 +246,6 @@
           -moz-box-sizing: border-box;
           box-sizing: border-box;
           text-align: left;
-          &:last-child {
-            margin-right: 0;
-          }
           @include breakpoint($bp-1024-width) {
             &:after {
               content: "\e608";
@@ -262,6 +260,15 @@
               line-height: 1;
               z-index: 3;
             }
+          }
+          @include breakpoint($bp-768-width) {
+            margin-top: 1.5%;
+          }
+          &:nth-child(1), &:nth-child(2) {
+            margin-top: 0;
+          }
+          &:nth-child(2n) {
+            margin-right: 0;
           }
           &:not(.full-episode-button) {
             background: $show-info-block;

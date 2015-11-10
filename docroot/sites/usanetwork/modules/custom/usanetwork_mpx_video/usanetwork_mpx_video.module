@@ -1633,7 +1633,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       if ($file->filename == 'eps1.0_hellofriend.mov') {
         $vars['watchwith'] = TRUE;
-        drupal_add_js('http://snowbird.watchwith.com/~chihiro/WD-71/wwLoader.js', array('type' => 'external', 'group' => JS_LIBRARY));
+        drupal_add_js('http://snowbird.watchwith.com/~chihiro/WD-71/wwLoader.js', array('type' => 'external', 'group' => JS_LIBRARY - 5));
       }
     }
   }

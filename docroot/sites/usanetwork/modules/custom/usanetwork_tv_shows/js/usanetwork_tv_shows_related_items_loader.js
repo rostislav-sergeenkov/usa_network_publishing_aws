@@ -8,17 +8,13 @@
             offset_info_block =  $('.episode-info-main-block').offset()['top'] - $(window).scrollTop();
         if (!episode_sidebar.hasClass('sticky-sidebar')) {
           episode_sidebar.css({
-            //height: "calc(100vh - "+offset_info_block+"px)"
             height: window.innerHeight - offset_info_block+"px"
           })
         }
         if ($(window).scrollTop() == 0) {
-          console.info($('.episode-info-main-block').offset()['top']);
           setTimeout(function() {
-            console.info($('.episode-info-main-block').offset()['top']);
             offset_info_block =  $('.episode-info-main-block').offset()['top'];
             episode_sidebar.css({
-              //height: "calc(100vh - "+offset_info_block+"px)"
               height: window.innerHeight - offset_info_block+"px"
             })
           }, 50);

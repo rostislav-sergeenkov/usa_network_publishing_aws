@@ -863,7 +863,7 @@ function usanetwork_home_get_homepage($types = array(), $day = NULL) {
   }
 
   if ($day === NULL) {
-    if (arg(1) && user_access('access administration menu')) {
+    if (arg(1) && user_access('access administration menu') && arg(0) != 'ajax') {
       $day = check_plain(strtolower(arg(1)));
     }
     else {

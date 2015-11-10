@@ -680,93 +680,95 @@ var homeAspot, showAspot;
     },
     attach: function (context, settings) {
 
-      var homePrefixId = '',
-          showPrefiksId = 't',
-          homeDraggeblePrefix = '',
-          showDraggeblePrefix = 'tv_show',
-          homePage = 'Homepage',
-          showPage = 'TV Show',
-          homeUi = $('#edit-group_usa_aspot_ui'),
-          showUi = $('#edit-group_usa_tv_aspot_ui');
+      $(document.body).once(function () {
+        var homePrefixId = '',
+            showPrefiksId = 't',
+            homeDraggeblePrefix = '',
+            showDraggeblePrefix = 'tv_show',
+            homePage = 'Homepage',
+            showPage = 'TV Show',
+            homeUi = $('#edit-group_usa_aspot_ui'),
+            showUi = $('#edit-group_usa_tv_aspot_ui');
 
-      // init aspot
-      homeAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(homePrefixId, homeUi, showUi, homeDraggeblePrefix, homePage);
-      showAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(showPrefiksId, showUi, homeUi, showDraggeblePrefix, showPage);
+        // init aspot
+        homeAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(homePrefixId, homeUi, showUi, homeDraggeblePrefix, homePage);
+        showAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(showPrefiksId, showUi, homeUi, showDraggeblePrefix, showPage);
 
-      $('#usanetwork-aspot-node-form').submit(function () {
+        $('#usanetwork-aspot-node-form').submit(function () {
 
-        var headTextarea = $('#edit-field-aspot-gi-draggable-data-und-0-value'),
-            headInput = $('input[name="aspot_draggable_items_data"]').eq(0),
-            homeUiPositions = homeUi.find('#aspot_draggable_items_data').text(),
-            showUiPositions = showUi.find('#tv_show-aspot_draggable_items_data').text(),
-            aspot_elements = Drupal.settings.giui_settings.aspot_elements,
-            tvs_aspot_elements = Drupal.settings.giui_settings.tvs_aspot_elements,
-            homeUiPositionsVal, showUiPositionsVal;
+          var headTextarea = $('#edit-field-aspot-gi-draggable-data-und-0-value'),
+              headInput = $('input[name="aspot_draggable_items_data"]').eq(0),
+              homeUiPositions = homeUi.find('#aspot_draggable_items_data').text(),
+              showUiPositions = showUi.find('#tv_show-aspot_draggable_items_data').text(),
+              aspot_elements = Drupal.settings.giui_settings.aspot_elements,
+              tvs_aspot_elements = Drupal.settings.giui_settings.tvs_aspot_elements,
+              homeUiPositionsVal, showUiPositionsVal;
 
-        if ((homeUiPositions == '') && (showUiPositions == '')) {
-          headInput.val(headTextarea.text());
-        } else {
-
-          if (homeUiPositions != '') {
-            homeUiPositionsVal = JSON.parse(homeUiPositions);
+          if ((homeUiPositions == '') && (showUiPositions == '')) {
+            headInput.val(headTextarea.text());
           } else {
-            homeUiPositionsVal = getParams(aspot_elements);
-          }
 
-          if (showUiPositions != '') {
-            showUiPositionsVal = JSON.parse(showUiPositions);
-          } else {
-            showUiPositionsVal = getParams(tvs_aspot_elements);
-          }
-
-          var myData = {
-            data: {
-              aspot_elements: homeUiPositionsVal,
-              tvs_aspot_elements: showUiPositionsVal
+            if (homeUiPositions != '') {
+              homeUiPositionsVal = JSON.parse(homeUiPositions);
+            } else {
+              homeUiPositionsVal = getParams(aspot_elements);
             }
-          };
-          headInput.val(JSON.stringify(myData));
-        }
-      });
 
-      function getParams(obj) {
-
-        var dataPosition = {};
-
-        $.each(obj, function (index, itemElem) {
-
-          var name = itemElem.dataRel;
-
-          if (name === 'aspot_offset_percent') {
-            dataPosition[name] = {
-              "shiftPercent": itemElem.shiftPercent
+            if (showUiPositions != '') {
+              showUiPositionsVal = JSON.parse(showUiPositions);
+            } else {
+              showUiPositionsVal = getParams(tvs_aspot_elements);
             }
-          } else {
-            dataPosition[name] = {
-              "elementId": itemElem.elementId,
-              "dataRel": itemElem.dataRel,
-              "display": itemElem.display,
-              "left": itemElem.left,
-              "top": itemElem.top,
-              'width': itemElem.width,
-              "leftM": itemElem.leftM,
-              "topM": itemElem.topM,
-              'widthM': itemElem.widthM,
-              "percentX": itemElem.percentX,
-              "percentY": itemElem.percentY,
-              "percentMX": itemElem.percentMX,
-              "percentMY": itemElem.percentMY,
-              "invertX": itemElem.invertX,
-              "invertY": itemElem.invertY,
-              "invertMX": itemElem.invertMX,
-              "invertMY": itemElem.invertMY
-            }
+
+            var myData = {
+              data: {
+                aspot_elements: homeUiPositionsVal,
+                tvs_aspot_elements: showUiPositionsVal
+              }
+            };
+            headInput.val(JSON.stringify(myData));
           }
-
         });
 
-        return dataPosition;
-      }
+        function getParams(obj) {
+
+          var dataPosition = {};
+
+          $.each(obj, function (index, itemElem) {
+
+            var name = itemElem.dataRel;
+
+            if (name === 'aspot_offset_percent') {
+              dataPosition[name] = {
+                "shiftPercent": itemElem.shiftPercent
+              }
+            } else {
+              dataPosition[name] = {
+                "elementId": itemElem.elementId,
+                "dataRel": itemElem.dataRel,
+                "display": itemElem.display,
+                "left": itemElem.left,
+                "top": itemElem.top,
+                'width': itemElem.width,
+                "leftM": itemElem.leftM,
+                "topM": itemElem.topM,
+                'widthM': itemElem.widthM,
+                "percentX": itemElem.percentX,
+                "percentY": itemElem.percentY,
+                "percentMX": itemElem.percentMX,
+                "percentMY": itemElem.percentMY,
+                "invertX": itemElem.invertX,
+                "invertY": itemElem.invertY,
+                "invertMX": itemElem.invertMX,
+                "invertMY": itemElem.invertMY
+              }
+            }
+
+          });
+
+          return dataPosition;
+        }
+      });
     }
   };
 }(jQuery));

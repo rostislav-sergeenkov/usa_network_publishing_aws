@@ -392,6 +392,7 @@ function usanetwork_context_context_default_contexts() {
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
+        'top3_gallery' => 'top3_gallery',
         'tv_episode' => 'tv_episode',
         'tv_season' => 'tv_season',
         'tv_show' => 'tv_show',
@@ -651,11 +652,12 @@ function usanetwork_context_context_default_contexts() {
     'node' => array(
       'values' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'person' => 'person',
-        'consumpt_post' => 'consumpt_post',
         'quiz' => 'quiz',
         'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
         'tv_episode' => 'tv_episode',
         'usanetwork_microsite' => 'usanetwork_microsite',
       ),

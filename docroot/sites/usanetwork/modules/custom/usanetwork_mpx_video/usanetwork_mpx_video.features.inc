@@ -30,6 +30,37 @@ function usanetwork_mpx_video_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_views_default_views_alter().
+ */
+function usanetwork_mpx_video_views_default_views_alter(&$data) {
+  if (isset($data['content_files'])) {
+    $data['content_files']->display['mpx_files_page']->display_options['filters']['field_show_target_id'] = array(
+      'id' => 'field_show_target_id',
+      'table' => 'field_data_field_show',
+      'field' => 'field_show_target_id',
+      'group' => 1,
+      'exposed' => TRUE,
+      'expose' => array(
+        'operator_id' => 'field_show_target_id_op',
+        'label' => 'Show',
+        'operator' => 'field_show_target_id_op',
+        'identifier' => 'field_show_target_id',
+        'remember_roles' => array(
+          2 => 2,
+          1 => 0,
+          11 => 0,
+          16 => 0,
+          21 => 0,
+          26 => 0,
+          31 => 0,
+          36 => 0,
+        ),
+      ),
+    ); /* WAS: '' */
+  }
+}
+
+/**
  * Implements hook_default_queues_type().
  */
 function usanetwork_mpx_video_default_queues_type() {

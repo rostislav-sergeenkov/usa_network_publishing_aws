@@ -245,18 +245,9 @@
 
 body:not(.blog) {
   .field-type-gigya-sharebar,
-  &.node-type-timeline-gallery .timeline-gigya-share {
+  &.node-type-timeline-gallery .timeline-gigya-share,
+  &.node-type-top3-gallery {
     .gig-button-container {
-      &.gig-button-container-facebook {
-        td {
-          > div {
-            &:before {
-              content: "\e602";
-              color: $consum-carousel-text;
-            }
-          }
-        }
-      }
       td {
         > div {
           background-image: none !important;
@@ -316,6 +307,16 @@ body:not(.blog) {
           > div {
             &:before {
               content: "\e606";
+              color: $consum-carousel-text;
+            }
+          }
+        }
+      }
+      &.gig-button-container-email {
+        td {
+          > div {
+            &:before {
+              content: "\e625";
               color: $consum-carousel-text;
             }
           }

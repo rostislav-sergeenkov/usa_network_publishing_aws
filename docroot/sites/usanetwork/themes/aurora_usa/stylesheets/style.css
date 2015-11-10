@@ -12364,7 +12364,7 @@ footer h2 {
     top: auto !important;
   }
 }
-.consum-sidebar.sticky-sidebar:not(.related-visible) {
+.consum-sidebar:not(.related-visible) {
   max-height: none !important;
 }
 .consum-sidebar .advert {

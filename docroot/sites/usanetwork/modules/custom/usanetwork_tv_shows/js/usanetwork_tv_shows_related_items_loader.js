@@ -8,13 +8,21 @@
             offset_info_block =  $('.episode-info-main-block').offset()['top'] - $(window).scrollTop();
         if (!episode_sidebar.hasClass('sticky-sidebar')) {
           episode_sidebar.css({
-            height: "calc(100vh - "+offset_info_block+"px)"
+            //height: "calc(100vh - "+offset_info_block+"px)"
+            height: window.innerHeight - offset_info_block+"px"
           })
         }
         if ($(window).scrollTop() == 0) {
-          episode_sidebar.css({
-            height: "calc(100vh - "+offset_info_block+"px)"
-          })
+          console.info($('.episode-info-main-block').offset()['top']);
+          setTimeout(function() {
+            console.info($('.episode-info-main-block').offset()['top']);
+            offset_info_block =  $('.episode-info-main-block').offset()['top'];
+            episode_sidebar.css({
+              //height: "calc(100vh - "+offset_info_block+"px)"
+              height: window.innerHeight - offset_info_block+"px"
+            })
+          }, 50);
+
         }
         if (episode_sidebar.hasClass('related-visible') && $('.gallery-recap-block').length > 0 ) {
           var bottom_distance = window.innerHeight - ($('.consum-sidebar').offset()['top'] - $(window).scrollTop() + $('.consum-sidebar').height());
@@ -183,6 +191,8 @@
           }
         }
       });
+
+      Drupal.behaviors.usanetwork_tv_shows_related_items_loader.rightRailPosition();
 
       $(window).on("scroll", function() {
         var scroll_top = $(window).scrollTop(),

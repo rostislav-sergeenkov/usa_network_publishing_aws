@@ -80,9 +80,9 @@
         top: auto!important;
       }
     }
-    &:not(.related-visible) {
-      max-height: none!important;
-    }
+  }
+  &:not(.related-visible) {
+    max-height: none!important;
   }
   .advert {
     width: 100%;

@@ -7,7 +7,6 @@
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  will-change: transform, opacity;
   .show-carousel {
     > ul {
       > li {
@@ -26,6 +25,10 @@
         }
         .desktop {
           img {
+            -moz-opacity:1;
+            filter: alpha(opacity=100);
+            -khtml-opacity: 1;
+            opacity: 1;
             -webkit-transition: all 0.5s ease-out 0.3s;
             -moz-transition: all 0.5s ease-out 0.3s;
             -o-transition: all 0.5s ease-out 0.3s;

@@ -230,7 +230,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['cache_class_cache_page'] = 'DrupalFakeCache';
     
     # Add in stampede protection
-    $conf['memcache_stampede_protection'] = TRUE;
+    $conf['memcache_stampede_protection'] = false;
     # Move semaphore out of the database and into memory for performance purposes
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
 

@@ -6,9 +6,9 @@
       if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
         img.attr({src: mobileImgUrl});
       } else {
-        if (window.innerWidth >= window_size_tablet) {
+        if (window.matchMedia("(min-width: " + window_size_tablet_1024 + "px)").matches) {
           img.attr({src: desktopImgUrl});
-        } else if (window.innerWidth < window_size_tablet){
+        } else if (window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches){
           img.attr({src: mobileImgUrl});
         }
       }

@@ -29,52 +29,48 @@
                   styleMobile = $(this).attr('data-style-mobile'),
                   elWidth, maxWidth, betweenWidth, myArr = [];
 
-              if (window.innerWidth < window_size_mobile_641 || usa_deviceInfo.smartphone) {
-                self.attr('style', styleMobile);
-              } else {
-                if (window.innerWidth >= window_size_mobile_641) {
+              if (window.matchMedia("(min-width: " + window_size_mobile_640 + "px)").matches) {
 
-                  self.attr('style', styleDesktop);
+                self.attr('style', styleDesktop);
 
-                  elWidth = self.data('width');
+                elWidth = self.data('width');
 
-                  // create attributes data width for bp 2500 & 640-768
-                  if(!self.data('max-width')) {
-                    if (elWidth === 'auto') {
-                      self.attr('data-max-width', elWidth);
-                    } else {
-                      maxWidth = (elWidth / 100 * 2500) + 'px';
-                      self.attr('data-max-width', maxWidth);
-                    }
+                // create attributes data width for bp 2500 & 640-768
+                if(!self.data('max-width')) {
+                  if (elWidth === 'auto') {
+                    self.attr('data-max-width', elWidth);
+                  } else {
+                    maxWidth = (elWidth / 100 * 2500) + 'px';
+                    self.attr('data-max-width', maxWidth);
                   }
-
-                  if($('body').hasClass('usa-tv-show')) {
-                    if(!self.data('between-width')) {
-                      if (elWidth === 'auto') {
-                        self.attr('data-between-width', elWidth);
-                      } else {
-                        betweenWidth = elWidth + 'vw';
-                        self.attr('data-between-width', betweenWidth);
-                      }
-                    }
-
-                    // change width on tv-show page
-                    if(window.innerWidth >= window_size_mobile_641 && window.innerWidth <= window_size_tablet_portrait) {
-                      self.css('width', self.data('between-width'));
-                    }
-
-                    if(window.innerWidth >= window_size_tablet_portrait && window.innerWidth <= window_size_desktop_max_width) {
-                      self.css('width', self.data('width') + '%');
-                    }
-                  }
-
-                  if(window.innerWidth >= window_size_desktop_max_width) {
-                    self.css('width', self.data('max-width'));
-                  }
-
-                } else if (window.innerWidth < window_size_mobile_641){
-                  self.attr('style', styleMobile);
                 }
+
+                if($('body').hasClass('usa-tv-show')) {
+                  if(!self.data('between-width')) {
+                    if (elWidth === 'auto') {
+                      self.attr('data-between-width', elWidth);
+                    } else {
+                      betweenWidth = elWidth + 'vw';
+                      self.attr('data-between-width', betweenWidth);
+                    }
+                  }
+
+                  // change width on tv-show page
+                  if(window.matchMedia("(min-width: " + window_size_mobile_640 + "px)").matches && window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
+                    self.css('width', self.data('between-width'));
+                  }
+
+                  if(window.matchMedia("(min-width: " + window_size_tablet_portrait_768 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_max_width_2500 + "px)").matches) {
+                    self.css('width', self.data('width') + '%');
+                  }
+                }
+
+                if(window.matchMedia("(min-width: " + window_size_desktop_max_width_2500 + "px)").matches) {
+                  self.css('width', self.data('max-width'));
+                }
+
+              } else if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
+                self.attr('style', styleMobile);
               }
             });
           }

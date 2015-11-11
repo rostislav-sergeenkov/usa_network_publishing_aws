@@ -166,6 +166,31 @@ function usanetwork_core_create_menu_items() {
 }
 
 /**
+ * Implements hook_theme_registry_alter().
+ */
+function usanetwork_core_theme_registry_alter(&$theme_registry) {
+  variable_set('lazyloader_enabled_temp', variable_get('lazyloader_enabled', LAZYLOADER_ENABLED));
+  variable_set('lazyloader_enabled', FALSE);
+  $theme_registry['image']['function'] = 'usanetwork_core_image';
+  return $theme_registry;
+}
+
+function usanetwork_core_image($variables) {
+  if (strpos($variables['path'], 'sites/usanetwork/modules') === FALSE && strpos($variables['path'], 'sites/usanetwork/themes') === FALSE) {
+    variable_set('lazyloader_enabled', variable_get('lazyloader_enabled_temp', LAZYLOADER_ENABLED));
+    $image = lazyloader_image($variables);
+  }
+  else {
+    $image = theme_image($variables);
+  }
+  return $image;
+}
+
+function usanetwork_core_exit() {
+  variable_set('lazyloader_enabled', variable_get('lazyloader_enabled_temp', LAZYLOADER_ENABLED));
+}
+
+/**
  * Helper function. Upserts taxonomy vocabularies and terms.
  * is Upsert a word?
  *

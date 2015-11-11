@@ -233,6 +233,64 @@ var homeAspot, showAspot;
         }
       });
 
+      // set position aspot-draggable-element
+      $(document).click(function(event) {
+        if ($(event.target).closest(".aspot-draggable-element").length > 0) {
+          var _self = $(event.target).closest(".aspot-draggable-element");
+
+          resetDraggableElement();
+          changePositionDraggableElement(_self);
+          _self.addClass('active');
+        } else {
+          if ($(".aspot-draggable-element").hasClass('active')) {
+            resetDraggableElement();
+          }
+        }
+      });
+
+      function resetDraggableElement() {
+        $('.aspot-draggable-element').removeClass('active');
+        $(document).unbind('keydown');
+      }
+
+      function changePositionDraggableElement(el) {
+        $(document).keydown(function(event){
+          event.preventDefault();
+          switch (event.keyCode) {
+            case 37: // left
+              setPositionDraggableElement(el, 'left', -1);
+              break;
+            case 38: // top
+              setPositionDraggableElement(el, 'top', -1);
+              break;
+            case 39: // right
+              setPositionDraggableElement(el, 'left', 1);
+              break;
+            case 40: // bottom
+              setPositionDraggableElement(el, 'top', 1);
+              break;
+            case 27: // ESC
+              resetDraggableElement();
+              break;
+            default :
+              break;
+          }
+        });
+      }
+
+      function setPositionDraggableElement(el, direction, step) {
+
+        var currentPosition = parseInt(el.css(direction)) + step;
+
+        if (currentPosition < 0) {
+          currentPosition = 0
+        }
+
+        el.css(direction, currentPosition +  'px');
+        usanetwork_aspot_giui_fill_draggable_items_input();
+      }
+
+
       /**
        * Enables draggable element (connection of checkbox and element visibility).
        */

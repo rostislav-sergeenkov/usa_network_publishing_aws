@@ -119,6 +119,7 @@
               }
               @include breakpoint($bp-768-width) {
                 padding-top: 2px;
+                width: 100%;
               }
               span {
                 display: table-cell;

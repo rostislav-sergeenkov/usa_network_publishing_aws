@@ -740,7 +740,7 @@ var homeAspot, showAspot;
 
       $(document.body).once(function () {
         var homePrefixId = '',
-            showPrefiksId = 't',
+            showPrefixId = 't',
             homeDraggeblePrefix = '',
             showDraggeblePrefix = 'tv_show',
             homePage = 'Homepage',
@@ -750,7 +750,7 @@ var homeAspot, showAspot;
 
         // init aspot
         homeAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(homePrefixId, homeUi, showUi, homeDraggeblePrefix, homePage);
-        showAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(showPrefiksId, showUi, homeUi, showDraggeblePrefix, showPage);
+        showAspot = Drupal.behaviors.usanetwork_aspot_giui.initAspot(showPrefixId, showUi, homeUi, showDraggeblePrefix, showPage);
 
         $('#usanetwork-aspot-node-form').submit(function () {
 

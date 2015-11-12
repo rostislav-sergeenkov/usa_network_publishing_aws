@@ -157,7 +157,7 @@
         //name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text().trim();
         //item_name = 'Show : ' + name;
 
-        item_name = 'Live On Now';
+        item_name = 'Live Watch Now';
 
       } else if ($self.hasClass('up-next-link')) {
 

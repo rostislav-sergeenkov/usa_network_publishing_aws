@@ -13611,6 +13611,9 @@ footer h2 {
   height: 100%;
   width: 100%;
 }
+.consumptionator-page .video-block .player-wrapper .lazyloader-icon, .page-videos-live .video-block .player-wrapper .lazyloader-icon {
+  display: none;
+}
 .consumptionator-page .video-block .player-wrapper .tve-help, .page-videos-live .video-block .player-wrapper .tve-help {
   background-color: #161616;
   border: 1px solid #4b4b4b;

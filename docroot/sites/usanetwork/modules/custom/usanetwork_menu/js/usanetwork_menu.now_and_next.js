@@ -23,6 +23,10 @@
               if (typeof trackingObject != 'undefined') {
                 trackingObject.attach(context, settings);
               }
+              
+              $('.on-now-panel img').each(function() {
+                $(this).attr('src', $(this).data('src')).removeAttr('data-src');
+              });
             }
 
             window.seeit_remind_plugin.init();

@@ -728,7 +728,7 @@ function _usanetwork_blocks_social_carousel_block_content() {
             'url' => $promo_link,
             'promo_title' => $promo_data['promo_title'],
             'topic' => $promo_data['topic'],
-            'image_url' => image_style_url('390x390', $promo_image_url),
+            'image' => theme('image_style', array('style_name' => '390x390', 'path' => $promo_image_url)),
             'color_class' => $promo_data['show_class'],
             'icon_type' => $promo_data['icon_type'],
             'icon_text' => $promo_data['cta'],

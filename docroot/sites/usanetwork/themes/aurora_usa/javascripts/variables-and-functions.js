@@ -122,6 +122,24 @@ $(document).ready(function(){
     }
   });
 
+  $('#block-usanetwork-episodes-usanetwork-episode-rel-content').viewportChecker({
+    classToAdd: 'visible',
+    offset: 0,
+    repeat: true,
+
+    callbackFunction: function(elem, action){
+      if(elem.hasClass('visible')){
+        if(!$('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').hasClass('related-visible')){
+          $('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').addClass('related-visible');
+        }
+      } else {
+        if($('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').hasClass('related-visible')){
+          $('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').removeClass('related-visible');
+        }
+      }
+    }
+  });
+
 });
 
 // detect browser

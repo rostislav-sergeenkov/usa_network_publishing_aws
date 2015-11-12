@@ -438,25 +438,5 @@ function usanetwork_social_settings_form() {
     '#description' => t('Ex: http://m.usanetwork.com/sync/?ww=Q3FJIIQJ2AA&show=usa&layout=mobile&partner=usamobile'),
   );
 
-  // IDEAMELT SETTINGS
-  $form['ideamelt'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('IdeaMelt Settings'),
-    '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-  );
-
-  $form['ideamelt']['usanetwork_social_enable_ideamelt'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Enable IdeaMelt Notifications'),
-    '#default_value' => variable_get('usanetwork_social_enable_ideamelt', 0),
-  );
-
-  $form['ideamelt']['usanetwork_social_ideamelt_api_key'] = array(
-    '#type' => 'textfield',
-    '#title' => t('IdeaMelt API Key'),
-    '#default_value' => variable_get('usanetwork_social_ideamelt_api_key', ''),
-  );
-
   return system_settings_form($form);
 }

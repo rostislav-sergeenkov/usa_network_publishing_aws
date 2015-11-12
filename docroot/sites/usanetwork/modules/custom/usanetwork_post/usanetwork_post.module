@@ -373,6 +373,18 @@ function usanetwork_post_preprocess_node(&$vars) {
 }
 
 /**
+ * Implements hook_node_view().
+ */
+function usanetwork_post_node_view($node, $view_mode, $langcode) {
+  if ('post' == $node->type && 'full' == $view_mode) {
+    if (usanetwork_core_api_check_field($node, 'field_seo_h1')) {
+      $seo_h1 = field_get_items('node', $node, 'field_seo_h1');
+      $node->title = $seo_h1[0]['value'];
+    }
+  }
+}
+
+/**
  * Returns the set of valid root terms for a blog field.
  *
  * @param $field

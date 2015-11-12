@@ -1084,6 +1084,7 @@
     }
   }
   .description {
+    clear: none;
     float: right;
     p:first-child {
       margin-top: 0;
@@ -1207,6 +1208,7 @@
       }
     }
     & ~ .description {
+      clear: none;
       float: left;
       overflow: hidden;
       .field {

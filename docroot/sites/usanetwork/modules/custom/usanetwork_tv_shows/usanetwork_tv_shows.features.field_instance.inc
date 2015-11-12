@@ -46,6 +46,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'target' => 'default',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -111,6 +113,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'target' => 'user',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -165,6 +169,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Featured Items',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'handler' => 'default',
       'user_register_form' => FALSE,
     ),
@@ -204,6 +210,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -294,6 +302,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Synopsis',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 1,
       'exclude_cv' => FALSE,
       'text_processing' => 1,
@@ -372,6 +382,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -453,6 +465,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Enable Nitro',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -528,6 +542,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Episode #',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -540,79 +556,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_episode-field_ideamelt_action_type'
-  $field_instances['node-tv_episode-field_ideamelt_action_type'] = array(
-    'bundle' => 'tv_episode',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'microsite_output' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_ideamelt_action_type',
-    'label' => 'IdeaMelt action type',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 10,
     ),
   );
 
@@ -678,6 +621,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Nitro action name',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -762,6 +707,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Air Dates',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -841,6 +788,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -950,6 +899,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Season',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -959,85 +910,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_episode-field_send_ideamelt_notification'
-  $field_instances['node-tv_episode-field_send_ideamelt_notification'] = array(
-    'bundle' => 'tv_episode',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'microsite_output' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_send_ideamelt_notification',
-    'label' => 'Send IdeaMelt Notification',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 9,
     ),
   );
 
@@ -1103,6 +975,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'H1',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1190,6 +1064,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Page Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1271,6 +1147,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Short Synopsis',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1360,6 +1238,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -1437,6 +1317,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Cover Media',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1533,6 +1415,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Episode Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -1604,6 +1488,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Preview Episode',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1685,6 +1571,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Episode thumbnail',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => 'episode/microsite/thumbnail',
       'file_extensions' => 'jpg jpeg png gif',
@@ -1765,6 +1653,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'OG Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1857,6 +1747,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => 'og_image',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1944,6 +1836,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Synopsis',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 1,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -2011,6 +1905,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Air Date',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -2078,6 +1974,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Season #',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2138,6 +2036,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2199,6 +2099,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Cover Media',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -2305,6 +2207,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Synopsis',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 1,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -2387,6 +2291,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -2495,6 +2401,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'About Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2583,6 +2491,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'About YMAL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2676,6 +2586,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Secondary',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2750,6 +2662,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Alternative content',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'handler' => 'default',
       'user_register_form' => FALSE,
     ),
@@ -2834,6 +2748,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -2943,6 +2859,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 0,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -3028,6 +2946,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3139,6 +3059,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3249,6 +3171,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Video',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3335,6 +3259,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3476,6 +3402,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'CHILDREN',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -3594,6 +3522,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'CHILDRENOF',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -3712,6 +3642,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Echo Query Template',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -3830,6 +3762,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'FEED',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -3949,6 +3883,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'IDENTITYMANAGERURL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -4067,6 +4003,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'ITEMSPERPAGE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -4185,6 +4123,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'MARKERS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -4303,6 +4243,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SAFEHTML',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -4421,6 +4363,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SHOW',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -4539,6 +4483,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SORTORDER',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -4657,6 +4603,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SOURCE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -4775,6 +4723,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'STATE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -4894,6 +4844,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SUBMITTARGETURL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -5012,6 +4964,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'TAGS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -5107,6 +5061,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Checkbox Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -5198,6 +5154,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Comment Prefix',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -5289,6 +5247,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -5380,6 +5340,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Echo Marker',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -5476,6 +5438,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'End Time',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -5567,6 +5531,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Legal Copy',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -5663,6 +5629,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Start Time',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -5754,6 +5722,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -5844,6 +5814,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -5925,6 +5897,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Current Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -6008,6 +5982,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Disable Uppercase',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -6095,6 +6071,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Display Title',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6186,6 +6164,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'CHILDREN',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6277,6 +6257,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'CHILDRENOF',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6368,6 +6350,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Echo Query Template',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6459,6 +6443,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'FEED',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6550,6 +6536,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'ITEMSPERPAGE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6641,6 +6629,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'MARKERS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6732,6 +6722,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SAFEHTML',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6823,6 +6815,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SHOW',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -6914,6 +6908,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SORTORDER',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -7005,6 +7001,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SOURCE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -7096,6 +7094,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'STATE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -7187,6 +7187,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'TAGS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -7278,6 +7280,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Floodlight Category',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -7372,6 +7376,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Floodlight Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -7466,6 +7472,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -7557,6 +7565,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Sticker Name',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -7652,6 +7662,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Hide from cast carousel',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -7738,6 +7750,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Hide from social follow block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -7824,6 +7838,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Twitter Page',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -7906,6 +7922,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'CHILDREN',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -7997,6 +8015,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'CHILDRENOF',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -8088,6 +8108,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Echo Query Template',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -8179,6 +8201,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'FEED',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -8270,6 +8294,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'ITEMSPERPAGE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -8361,6 +8387,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'MARKERS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -8452,6 +8480,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SAFEHTML',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -8543,6 +8573,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SHOW',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -8634,6 +8666,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SORTORDER',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -8725,6 +8759,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SOURCE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -8816,6 +8852,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'STATE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -8907,6 +8945,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'TAGS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -9000,6 +9040,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Promo',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -9083,6 +9125,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'IMDB URL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -9168,6 +9212,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show ID',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -9266,6 +9312,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -9381,6 +9429,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show alias used to generate automatic paths',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -9472,6 +9522,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Pinterest URL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -9562,6 +9614,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Primary',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -9636,6 +9690,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'See It Url',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -9729,6 +9785,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'H1',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -9822,6 +9880,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Page Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -9910,6 +9970,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Series ID',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -9998,6 +10060,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Blog Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -10124,6 +10188,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Chat with Fans Page',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -10211,6 +10277,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Chat with Fans Post Comment',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -10298,6 +10366,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Chatter to Tv',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -10374,6 +10444,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Main Block Content',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'handler' => 'default',
       'user_register_form' => FALSE,
     ),
@@ -10459,6 +10531,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Facebook Page',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -10545,6 +10619,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Getglue',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -10631,6 +10707,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Instagram Page',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -10724,6 +10802,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'show_links',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -10809,6 +10889,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Newsletter',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -10895,6 +10977,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Pinterest Page',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -10971,6 +11055,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Main Block Content',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'handler' => 'default',
       'user_register_form' => FALSE,
     ),
@@ -11056,6 +11142,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Sync',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -11142,6 +11230,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Social Buzz',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -11255,6 +11345,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Twitter Page',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -11331,6 +11423,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Main Block Content',
     'required' => FALSE,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'handler' => 'default',
       'user_register_form' => FALSE,
     ),
@@ -11411,6 +11505,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Shows Property',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -11500,6 +11596,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Enable social',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -11593,6 +11691,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -11696,6 +11796,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SpredFast Space ID',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -11794,6 +11896,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Desktop / Tablet URL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -11889,6 +11993,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Mobile URL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -11984,6 +12090,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Syndicated',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -12073,6 +12181,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Base URL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -12164,6 +12274,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Path',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -12259,6 +12371,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'URL Params',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -12351,6 +12465,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Cover Media',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -12462,6 +12578,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -12557,6 +12675,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show Marquee',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -12640,6 +12760,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'About Show Card',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -12730,6 +12852,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Best Of Blocks',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -12813,6 +12937,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -12926,6 +13052,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Block title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -13022,6 +13150,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Promoted items',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -13104,6 +13234,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Promoted content',
     'required' => FALSE,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'handler' => 'default',
       'user_register_form' => FALSE,
     ),
@@ -13182,6 +13314,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show content feed on TV Show page',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -13265,6 +13399,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Show content feed on Consumptionator page',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -13377,6 +13513,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'CHILDREN',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -13495,6 +13633,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'CHILDRENOF',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -13613,6 +13753,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Echo Query Template',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -13731,6 +13873,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'FEED',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -13849,6 +13993,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'ITEMSPERPAGE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -13967,6 +14113,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'MARKERS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -14085,6 +14233,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SAFEHTML',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -14203,6 +14353,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SHOW',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -14321,6 +14473,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SORTORDER',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -14439,6 +14593,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'SOURCE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -14557,6 +14713,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'STATE',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -14675,6 +14833,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'TAGS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -14776,6 +14936,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -14876,6 +15038,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'target' => 'default',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -14975,6 +15139,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'target' => 'default',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -15076,6 +15242,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -15178,6 +15346,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -15280,6 +15450,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -15380,6 +15552,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'target' => 'default',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -15472,6 +15646,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Lyris List ID',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -15564,6 +15740,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'OG Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -15662,6 +15840,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => 'og_image',
       'file_extensions' => 'png gif jpg jpeg',
@@ -15783,6 +15963,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'A Spot',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -15887,6 +16069,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -16008,6 +16192,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Featured',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -16100,6 +16286,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Featured Video Promos',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -16183,6 +16371,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Related show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -16272,6 +16462,8 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'label' => 'Tune-in Display Date',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -16370,7 +16562,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('IDENTITYMANAGERURL');
   t('IMDB URL');
   t('ITEMSPERPAGE');
-  t('IdeaMelt action type');
   t('Instagram page');
   t('Legal Copy');
   t('Limited to 20 characters or less. This displays in the show header.');
@@ -16408,7 +16599,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Second Image');
   t('Secondary');
   t('See It Url');
-  t('Send IdeaMelt Notification');
   t('Series ID');
   t('Short Synopsis');
   t('Show');

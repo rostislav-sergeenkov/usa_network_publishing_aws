@@ -1137,6 +1137,9 @@ function usanetwork_core_update_7180() {
   if (!module_exists('advagg')) {
     module_enable(array('advagg'));
   }
+  if (!module_exists('advagg_bundler')) {
+    module_enable(array('advagg_bundler'));
+  }
 }
 
 /**
@@ -1181,4 +1184,11 @@ function usanetwork_core_update_7181() {
   $voc = taxonomy_vocabulary_machine_name_load('object_type');
   taxonomy_vocabulary_delete($voc->vid);
 
+}
+
+/**
+ * Delete Shop Link.
+ */
+function usanetwork_core_update_7182() {
+  menu_link_delete(NULL, 'http://www.nbcuniversalstore.com/?v=usa');
 }

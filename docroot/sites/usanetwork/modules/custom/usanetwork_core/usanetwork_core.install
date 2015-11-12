@@ -1185,3 +1185,10 @@ function usanetwork_core_update_7181() {
   taxonomy_vocabulary_delete($voc->vid);
 
 }
+
+/**
+ * Delete Shop Link.
+ */
+function usanetwork_core_update_7182() {
+  menu_link_delete(NULL, 'http://www.nbcuniversalstore.com/?v=usa');
+}

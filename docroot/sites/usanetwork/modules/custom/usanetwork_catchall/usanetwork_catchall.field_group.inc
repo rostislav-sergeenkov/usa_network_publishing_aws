@@ -104,36 +104,6 @@ function usanetwork_catchall_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_catchall_ideamelt|node|catchall_page|form';
-  $field_group->group_name = 'group_catchall_ideamelt';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'catchall_page';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'USA IdeaMelt',
-    'weight' => '9',
-    'children' => array(
-      0 => 'field_ideamelt_action_type',
-      1 => 'field_ideamelt_object_type',
-      2 => 'field_send_ideamelt_notification',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'label' => 'USA IdeaMelt',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'closed',
-    ),
-  );
-  $export['group_catchall_ideamelt|node|catchall_page|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_catchall_media|node|catchall_page|form';
   $field_group->group_name = 'group_catchall_media';
   $field_group->entity_type = 'node';

@@ -157,7 +157,7 @@
         //name = $self.closest('.schedule-item-wrap').find('.episode-show-wrapper').text().trim();
         //item_name = 'Show : ' + name;
 
-        item_name = 'On Now';
+        item_name = 'Live Watch Now';
 
       } else if ($self.hasClass('up-next-link')) {
 
@@ -180,6 +180,14 @@
       }
 
       s.tl(this, 'o', 'Schedule Bar Click', null, s.goToUrl);
+      s.manageVars("clearVars", s.linkTrackVars, 1);
+    },
+
+    schedulePage: function (showName) {
+      s.linkTrackVars = 'events,eVar65';
+      s.linkTrackEvents = s.events = 'event65';
+      s.eVar65 = 'Schedule Page : Reminder : ' + showName;
+      s.tl(this, 'o', 'Schedule Page Click');
       s.manageVars("clearVars", s.linkTrackVars, 1);
     },
 
@@ -855,7 +863,7 @@
         });
 
         $(window).load(function () {
-          //Click on ON NOW / TONIGHT items
+          // Click on ON NOW / TONIGHT items
           $('#block-usanetwork-menu-usanetwork-menu-aspot-ot a').once('omniture-tracking', function () {
             $(this).on('click', function (e) {
               if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
@@ -867,6 +875,23 @@
                 Drupal.behaviors.omniture_tracking.scheduleBar($(this));
               }
             });
+          });
+        });
+
+        // schedule page click on reminder
+        $('.page-schedule .schedule-wrapper a.seeit-reminder').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
+
+              var showName = $(this).parents('.visible-block').find('.episode-show').text().trim();
+
+              Drupal.behaviors.omniture_tracking.schedulePage(showName);
+            }
           });
         });
 
@@ -899,6 +924,9 @@
 
         // Quizzes omniture tracking. Track answer Question
         $('.usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').once('omniture-tracking', function () {
+
+          var NumQuestions = $('.usanetwork-quiz-questions .usanetwork-quiz-question').length;
+
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if (!$(this).hasClass('answered')) {
@@ -921,6 +949,11 @@
                 s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
                 s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion + ' : Answer : ' + quizQuestionValue;
                 s.tl(this, 'o', 'Poll/Question Answered');
+
+                if (NumQuestions === $quizQuestion.index() + 1) {
+                  s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Result';
+                }
+
                 s.manageVars('clearVars', s.linkTrackVars, 1);
               }
             }
@@ -944,6 +977,7 @@
               s.linkTrackVars = 'events,eVar65,prop65';
               s.linkTrackEvents = s.events = 'event65';
               s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
+              console.info(s.pageName);
               s.tl(this, 'o', 'Restart');
               s.manageVars('clearVars', s.linkTrackVars, 1);
             }

@@ -428,3 +428,13 @@
     }
   }
 }
+.consumptionator-episode-main-block {
+  .consum-sidebar {
+    .advert {
+      @include breakpoint($bp-min-1025-width) {
+        height: 250px;
+        padding: 0;
+      }
+    }
+  }
+}

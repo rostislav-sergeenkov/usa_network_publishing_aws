@@ -28,8 +28,8 @@
           <li<?php if (!empty($promo['class'])): print ' class="' . $promo['class'] . '"'; endif;?>>
             <div class="node node-usanetwork-promo social-promo">
               <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
-                <?php if (!empty($promo['image_url'])): ?>
-                  <div class="asset-img"><img src="<?php print $promo['image_url']; ?>" alt=""></div>
+                <?php if (!empty($promo['image'])): ?>
+                  <div class="asset-img"><?php print $promo['image']; ?></div>
                 <?php endif; ?>
                 <div class="meta-wrapper show-color-border <?php print !empty($promo['color_class']) ? $promo['color_class'] : ''; ?>">
                   <div class="meta">

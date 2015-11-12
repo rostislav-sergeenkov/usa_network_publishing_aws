@@ -37,6 +37,50 @@
     height: auto;
     width: 100%;
   }
+  &.sticky-sidebar {
+    @include breakpoint($bp-min-1025-width) {
+      height: calc(100vh - 7.12195vw);
+      position: fixed!important;
+      right: 0;
+      top: get-vw(73px, 1025);
+      .advert {
+        height: 250px;
+        padding: 0;
+      }
+      .items-block {
+        height: calc(100% - 250px)!important;
+        top: 0;
+      }
+      .more-items {
+        bottom: auto!important;
+        margin-top: -45px;
+      }
+    }
+    @include breakpoint($bp-min-1281-width) {
+      .more-items {
+        margin-top: -40px;
+      }
+    }
+    @include breakpoint($bp-min-1901-width) {
+      height: calc(100vh - 135px);
+      top: 135px;
+      .more-items {
+        margin-top: -70px;
+      }
+    }
+    @include breakpoint($bp-min-2500-width) {
+      left: calc(1867.5px + (100% - 2500px)/2);
+      right: auto;
+      width: 628px;
+    }
+    &.related-visible {
+      @include breakpoint($bp-min-1025-width) {
+        bottom: 0;
+        position: absolute!important;
+        top: auto;
+      }
+    }
+  }
   .advert {
     width: 100%;
     @include breakpoint($bp-min-1281-width) {

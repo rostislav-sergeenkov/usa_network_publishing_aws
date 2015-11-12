@@ -1137,6 +1137,9 @@ function usanetwork_core_update_7180() {
   if (!module_exists('advagg')) {
     module_enable(array('advagg'));
   }
+  if (!module_exists('advagg_bundler')) {
+    module_enable(array('advagg_bundler'));
+  }
 }
 
 /**

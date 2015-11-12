@@ -12321,10 +12321,10 @@ footer h2 {
 }
 @media (min-width: 1025px) {
   .consum-sidebar.sticky-sidebar {
-    height: calc(100vh - 7.12195vw);
+    height: calc(100vh - 7.12195vw) !important;
     position: fixed !important;
     right: 0;
-    top: 7.12195vw;
+    top: 7.12195vw !important;
   }
   .consum-sidebar.sticky-sidebar .advert {
     height: 250px;
@@ -12346,8 +12346,8 @@ footer h2 {
 }
 @media (min-width: 1901px) {
   .consum-sidebar.sticky-sidebar {
-    height: calc(100vh - 135px);
-    top: 135px;
+    height: calc(100vh - 135px) !important;
+    top: 135px !important;
   }
   .consum-sidebar.sticky-sidebar .more-items {
     margin-top: -70px;
@@ -12364,8 +12364,11 @@ footer h2 {
   .consum-sidebar.sticky-sidebar.related-visible {
     bottom: 0;
     position: absolute !important;
-    top: auto;
+    top: auto !important;
   }
+}
+.consum-sidebar:not(.related-visible) {
+  max-height: none !important;
 }
 .consum-sidebar .advert {
   width: 100%;
@@ -15115,6 +15118,20 @@ footer h2 {
   }
 }
 
+@media (min-width: 1025px) {
+  .consumptionator-episode-main-block .consum-sidebar {
+    float: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+@media (min-width: 1025px) {
+  .consumptionator-episode-main-block .consum-sidebar .items-block {
+    height: calc(100% - 250px) !important;
+    top: 0;
+  }
+}
 @media (min-width: 1025px) {
   .consumptionator-episode-main-block .consum-sidebar .advert {
     height: 250px;
@@ -18450,6 +18467,7 @@ footer h2 {
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div {
+  margin-top: 1%;
   margin-right: 0.5%;
   margin-top: 1%;
   position: relative;

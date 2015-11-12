@@ -7374,6 +7374,9 @@ header .tve-help-link.signOut ul.tve-header-links li.first {
     width: 100%;
   }
 }
+header .tve-help-link.signOut ul.tve-header-links li.first .lazyloader-icon {
+  display: none;
+}
 header .tve-help-link.signOut .providerLogo {
   box-sizing: border-box;
   display: block;

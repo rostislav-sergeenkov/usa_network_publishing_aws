@@ -1,9 +1,12 @@
 (function (ng, $) {
 
+  var counter = 0;
+
   $(document).ready(function () {
     if (!ng) {
       return;
     }
+
 
     var $injector = ng.element(document).injector();
 
@@ -79,8 +82,6 @@
   }
 
   function onProgramChanged(event) {
-
-    var counter = 0;
 
     if (counter === 0) {
       counter = counter + 1;

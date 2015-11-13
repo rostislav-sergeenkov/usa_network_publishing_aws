@@ -1,9 +1,12 @@
 (function (ng, $) {
 
+  var counter = 0;
+
   $(document).ready(function () {
     if (!ng) {
       return;
     }
+
 
     var $injector = ng.element(document).injector();
 
@@ -79,20 +82,26 @@
   }
 
   function onProgramChanged(event) {
-    // send ajax
-    Drupal.behaviors.usanetwork_menu_live_video_header.init();
 
-    $.ajax({
-      success: function () {
-        // omniture track
-        if (typeof s_gi != 'undefined') {
-          void (s.t());
+    if (counter === 0) {
+      counter = counter + 1;
+    } else {
+      // send ajax
+      Drupal.behaviors.usanetwork_menu_live_video_header.init();
+
+      $.ajax({
+        success: function () {
+          // omniture track
+          if (typeof s_gi != 'undefined') {
+            void (s.t());
+          }
         }
-      }
-    });
+      });
 
-    // Refresh mps ad
-    Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+      // Refresh mps ad
+      Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+    }
+
   }
 
 

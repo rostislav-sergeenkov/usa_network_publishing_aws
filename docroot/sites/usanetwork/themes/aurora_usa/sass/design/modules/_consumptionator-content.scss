@@ -39,10 +39,10 @@
   }
   &.sticky-sidebar {
     @include breakpoint($bp-min-1025-width) {
-      height: calc(100vh - 7.12195vw);
+      height: calc(100vh - 7.12195vw)!important;
       position: fixed!important;
       right: 0;
-      top: get-vw(73px, 1025);
+      top: get-vw(73px, 1025)!important;
       .advert {
         height: 250px;
         padding: 0;
@@ -62,8 +62,8 @@
       }
     }
     @include breakpoint($bp-min-1901-width) {
-      height: calc(100vh - 135px);
-      top: 135px;
+      height: calc(100vh - 135px)!important;
+      top: 135px!important;
       .more-items {
         margin-top: -70px;
       }
@@ -77,9 +77,12 @@
       @include breakpoint($bp-min-1025-width) {
         bottom: 0;
         position: absolute!important;
-        top: auto;
+        top: auto!important;
       }
     }
+  }
+  &:not(.related-visible) {
+    max-height: none!important;
   }
   .advert {
     width: 100%;

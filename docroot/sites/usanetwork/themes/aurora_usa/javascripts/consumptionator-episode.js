@@ -3,7 +3,6 @@
   Drupal.behaviors.usanetwork_consumptionator_episode = {
     rightRailPosition: function(){
       if (window.matchMedia("(min-width: 1025px)").matches) {
-        console.info('test');
         var episode_sidebar = $('.consumptionator-episode-main-block .consum-sidebar'),
             offset_info_block =  $('.episode-info-main-block').offset()['top'] - $(window).scrollTop();
         if (!episode_sidebar.hasClass('sticky-sidebar')) {

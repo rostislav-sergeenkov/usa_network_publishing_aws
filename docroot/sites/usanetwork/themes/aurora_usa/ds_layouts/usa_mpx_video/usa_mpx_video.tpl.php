@@ -75,7 +75,6 @@
                 'form' => 'html'
               ),
               'accepted' => TRUE,
-              'watchwith' => $watchwith,
             ));
             ?>
           <?php endif; ?>

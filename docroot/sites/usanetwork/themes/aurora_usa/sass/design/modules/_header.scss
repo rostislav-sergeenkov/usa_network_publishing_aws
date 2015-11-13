@@ -1307,6 +1307,7 @@ header {
               }
             }
             .description {
+              clear: none;
               color: #ffffff;
               font-family: $avalon-book;
               font-size: get-vw(13px, 1025);

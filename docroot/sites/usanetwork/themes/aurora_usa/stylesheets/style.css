@@ -6969,6 +6969,7 @@ header .tab-item.schedule-tab .on-now-panel .node .meta .caption {
   }
 }
 header .tab-item.schedule-tab .on-now-panel .node .meta .description {
+  clear: none;
   color: #ffffff;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 1.26829vw;

@@ -11320,30 +11320,36 @@ footer h2 {
 .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
   color: #ffffff;
   display: block;
-  height: 38px;
-  margin-top: -19px;
+  height: 48px;
+  margin-top: -24px;
   position: absolute;
   top: 90%;
-  width: 38px;
+  width: 48px;
   z-index: 55;
 }
 @media (min-width: 1901px) {
   .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
-    margin-top: -22px;
-    height: 44px;
-    width: 44px;
+    margin-top: -27px;
+    height: 54px;
+    width: 54px;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
     margin-top: 0;
-    top: calc(56.25vw + 57px);
+    top: calc(56.25vw + 48.5px);
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
+    top: calc(56.25vw + 26px);
   }
 }
 @media (max-width: 480px) {
   .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
-    height: 30px;
-    width: 30px;
+    height: 38px;
+    top: calc(56.25vw + 36px);
+    width: 38px;
   }
 }
 .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:hover, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:hover, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:hover, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:hover {
@@ -11358,7 +11364,7 @@ footer h2 {
 .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after {
   display: block;
   font-family: "ico-font";
-  font-size: 38px;
+  font-size: 48px;
   line-height: normal;
   position: absolute;
   right: 0;
@@ -11366,12 +11372,12 @@ footer h2 {
 }
 @media (min-width: 1901px) {
   .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after {
-    font-size: 44px;
+    font-size: 54px;
   }
 }
 @media (max-width: 480px) {
   .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a:after {
-    font-size: 30px;
+    font-size: 38px;
   }
 }
 .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev {
@@ -11394,7 +11400,7 @@ footer h2 {
   }
 }
 .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev:after, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev:after, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev:after, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-prev:after {
-  content: "\e607";
+  content: "\e628";
 }
 .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next {
   right: 55px;
@@ -11415,7 +11421,7 @@ footer h2 {
   }
 }
 .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next:after, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next:after, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next:after, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a.bx-next:after {
-  content: "\e608";
+  content: "\e629";
 }
 
 @media (max-width: 768px) {

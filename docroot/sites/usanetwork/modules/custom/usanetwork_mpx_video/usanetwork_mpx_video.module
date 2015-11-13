@@ -1825,9 +1825,6 @@ function theme_usanetwork_mpx_video($variables) {
       'id' => 'pdk-player',
       'data-src' => url($player_source, $player_parameters),
     );
-    if ($variables['watchwith'] == TRUE) {
-      $iframe_tag['element']['#attributes']['onload'] = '$pdk.bind(this); $pdk.controller._iframeOnload();';
-    }
   } else {
     $iframe_tag['element']['#attributes'] = array(
       'src' => url($player_source, $player_parameters),

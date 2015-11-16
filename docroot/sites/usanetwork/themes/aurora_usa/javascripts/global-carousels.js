@@ -385,7 +385,7 @@
       var width = desktop_show_open_width;
       var item_width = current_item.width();
 
-      if (window.innerWidth >= window_size_desktop_large) {
+      if (window.matchMedia("(min-width: " + window_size_desktop_large_1900 + "px)").matches) {
 
         var browserName = browserDetect(),
             widthDiff = window.innerWidth - $(window).innerWidth();
@@ -399,10 +399,10 @@
         }
       }
 
-      if (window.innerWidth < window_size_desktop) {
+      if (window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches) {
         width = window.innerWidth - 2 * show_carousel_margin + item_width;
       }
-      if (window.innerWidth < window_size_mobile) {
+      if (window.matchMedia("(max-width: " + window_size_mobile_480 + "px)").matches) {
         var scrollWidth = window.innerWidth - document.body.clientWidth;
         width = width + scrollWidth;
       }

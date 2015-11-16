@@ -2,7 +2,7 @@
   Drupal.behaviors.full_episodes = {
     attach: function (context, settings) {
 
-      if ($('body').hasClass('page-videos') && window.innerWidth < window_size_mobile) {
+      if ($('body').hasClass('page-videos') && window.matchMedia("(max-width: " + window_size_mobile_480 + "px)").matches) {
         $('.carousel-right').addClass('carousel-left').removeClass('carousel-right').removeAttr('dir');
       }
 
@@ -24,7 +24,7 @@
 
       $('.page-videos .carousel-wrapper .carousel-description-item .title')
           .click(function (e) {
-            if(window.innerWidth < window_size_mobile) {
+            if(window.matchMedia("(max-width: " + window_size_mobile_480 + "px)").matches) {
               if (!$(this).closest('.carousel-block').hasClass('active')) {
                 $('.full-episodes-page .carousel-wrapper .carousel-block').removeClass('active');
                 $(this).closest('.carousel-block').addClass('active');
@@ -37,7 +37,7 @@
 
       $(window).bind('resize', function () {
         if ($('.carousel-block-left').hasClass('active')) {
-          if (window.innerWidth >= window_size_mobile) {
+          if (window.matchMedia("(min-width: " + window_size_mobile_480 + "px)").matches) {
             $('.carousel-block-left.active .carousel-left').each(function () {
               var $container = $(this);
 

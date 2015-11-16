@@ -2,7 +2,7 @@
   Drupal.behaviors.featured_carousel = {
     attach: function (context) {
 
-      if (window.innerWidth < window_size_tablet_portrait){
+      if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches){
         $('.featured-carousel').addClass('destroy');
         $('.featured-carousel > ul > li:gt(1)').addClass('hidden');
       }
@@ -14,7 +14,7 @@
 
       $(window).bind('resize', function () {
 
-        if (window.innerWidth >= window_size_tablet_portrait){
+        if (window.matchMedia("(min-width: " + window_size_tablet_portrait_768 + "px)").matches){
           if ($('.featured-carousel').hasClass('destroy')) {
             $('.featured-carousel').removeClass('destroy');
             $('.featured-carousel > ul > li').removeClass('hidden');

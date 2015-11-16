@@ -280,6 +280,7 @@
                 margin-left: 0;
               }
               .description {
+                clear: none;
                 font-size: get-vw(13px, 1025);
                 font-family: $avalon-medium;
                 line-height: 1.4;

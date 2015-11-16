@@ -6,10 +6,7 @@
 function usanetwork_catchall_collection_install() {
   $fields = array(
     'field_enable_nitro' => false,
-    'field_ideamelt_action_type' => false,
-    'field_ideamelt_object_type' => false,
     'field_nitro_action_name' => false,
-    'field_send_ideamelt_notification' => false,
     'field_show' => true,
     'field_usa_catchall_fixedwidth' => false,
     'field_usa_catchall_html' => false,

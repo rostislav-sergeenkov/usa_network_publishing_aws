@@ -28,7 +28,7 @@
                 </div>
               </div>
               <?php if (!empty($person['image'])): ?>
-                <div class="asset-img"><img src="<?php print $person['image']; ?>" alt=""/></div>
+                <div class="asset-img"><?php print $person['image']; ?></div>
               <?php endif; ?>
             </a>
           </div>

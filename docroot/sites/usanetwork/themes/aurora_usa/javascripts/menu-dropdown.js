@@ -11,11 +11,15 @@
       function switchState() {
         $body.toggleClass('sub-menu-is-sticky');
         subMenuSelector.toggleClass('sticky-shows-submenu');
-          if($body.hasClass('sub-menu-is-sticky')) {
-            $body.css('margin-top', header_submenu_h);
-          } else {
-            $body.css('margin-top', 0);
-          }
+        $('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').toggleClass('sticky-sidebar');
+        if ($('body').hasClass('node-type-tv-episode')) {
+          Drupal.behaviors.usanetwork_consumptionator_episode.rightRailPosition();
+        }
+        if($body.hasClass('sub-menu-is-sticky')) {
+          $body.css('margin-top', header_submenu_h);
+        } else {
+          $body.css('margin-top', 0);
+        }
       }
 
       if($(window).width() >= window_size_tablet_portrait) {

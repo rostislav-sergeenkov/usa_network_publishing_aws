@@ -428,3 +428,25 @@
     }
   }
 }
+.consumptionator-episode-main-block {
+  .consum-sidebar {
+    @include breakpoint($bp-min-1025-width) {
+      float: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .items-block {
+      @include breakpoint($bp-min-1025-width) {
+        height: calc(100% - 250px)!important;
+        top: 0;
+      }
+    }
+    .advert {
+      @include breakpoint($bp-min-1025-width) {
+        height: 250px;
+        padding: 0;
+      }
+    }
+  }
+}

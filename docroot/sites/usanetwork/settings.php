@@ -102,6 +102,10 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "0";
 
+    //Acquia purge settings
+    $conf['acquia_hosting_site_info'] = array('fake');
+    
+
     // Turn on display PHP errors
     error_reporting(E_ALL);
     ini_set('display_errors', TRUE);
@@ -139,6 +143,10 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
     $conf["apachesolr_path"] = "/solr/AUWZ-71210";
     $conf['apachesolr_read_only'] = "0";
+
+    //Acquia purge settings
+    $conf['acquia_hosting_site_info'] = array('fake');
+    
     break;
 
   case 'qa':

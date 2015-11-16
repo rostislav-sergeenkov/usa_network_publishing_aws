@@ -22,6 +22,7 @@
   line-height: 0;
   margin-bottom: 30px;
   position: relative;
+  overflow: hidden;
   height: 560px;
   width: 640px;
 }
@@ -30,6 +31,7 @@
   line-height: 0;
   margin-bottom: 30px;
   position: relative;
+  overflow: hidden;
   height: 560px;
   width: 1280px;
 }
@@ -53,6 +55,9 @@
   /*margin: 0;*/
   /*padding: 3px;*/
   /*top: 0;*/
+}
+.aspot-draggable-element.active {
+  outline: 1px dashed #f00;
 }
 .aspot-draggable-element p {
   margin: 0;

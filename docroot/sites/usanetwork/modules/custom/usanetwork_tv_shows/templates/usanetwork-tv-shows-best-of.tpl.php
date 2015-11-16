@@ -28,7 +28,7 @@
               </div>
             </div>
           </div>
-          <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+          <div class="asset-img" data-alt="" data-class="tile-img">
             <?php if (!empty($promo['image']['mobile'])): ?>
               <div data-src="<?php print $promo['image']['mobile']; ?>"></div>
             <?php endif; ?>
@@ -65,7 +65,7 @@
                   </div>
                 </div>
               </div>
-              <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+              <div class="asset-img" data-alt="" data-class="tile-img">
                 <?php if (!empty($promo['image']['mobile'])): ?>
                   <div data-src="<?php print $promo['image']['mobile']; ?>"></div>
                 <?php endif; ?>

@@ -8202,6 +8202,7 @@ header .tve-help-link.signIn .inlineLoader {
 @media (max-width: 768px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
     padding-top: 2px;
+    width: 100%;
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span {
@@ -29190,6 +29191,7 @@ body.blog .view-display-id-blog_content .views-row {
   letter-spacing: 3px;
 }
 .node-catchall-seo-page .group-left {
+  color: black;
   float: left;
   position: relative;
   margin-right: 7px;

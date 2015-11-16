@@ -532,3 +532,13 @@
     }
   }
 }
+#block-usanetwork-taboola-usanetwork-taboola-video {
+  background: black;
+  @include clear();
+  padding: 40px 16px 0;
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-480-width) {
+    padding: 40px 10px;
+  }
+}

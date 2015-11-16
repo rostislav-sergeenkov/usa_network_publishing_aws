@@ -14182,6 +14182,23 @@ footer h2 {
   }
 }
 
+#block-usanetwork-taboola-usanetwork-taboola-video {
+  background: black;
+  padding: 40px 16px 0;
+  position: relative;
+  width: 100%;
+}
+#block-usanetwork-taboola-usanetwork-taboola-video:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 480px) {
+  #block-usanetwork-taboola-usanetwork-taboola-video {
+    padding: 40px 10px;
+  }
+}
+
 .consumptionator-characters-main-block {
   overflow: hidden;
   position: relative;

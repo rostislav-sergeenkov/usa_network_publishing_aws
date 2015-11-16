@@ -1194,7 +1194,7 @@ function usanetwork_core_update_7182() {
 }
 
 /**
- * Delete Shop Link.
+ * Enable Usanetwork Taboola Module.
  */
 function usanetwork_core_update_7183() {
   if (!module_exists('usanetwork_taboola')) {

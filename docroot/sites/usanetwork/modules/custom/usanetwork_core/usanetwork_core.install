@@ -1192,3 +1192,12 @@ function usanetwork_core_update_7181() {
 function usanetwork_core_update_7182() {
   menu_link_delete(NULL, 'http://www.nbcuniversalstore.com/?v=usa');
 }
+
+/**
+ * Delete Shop Link.
+ */
+function usanetwork_core_update_7183() {
+  if (!module_exists('usanetwork_taboola')) {
+    module_enable(array('usanetwork_taboola'));
+  }
+}

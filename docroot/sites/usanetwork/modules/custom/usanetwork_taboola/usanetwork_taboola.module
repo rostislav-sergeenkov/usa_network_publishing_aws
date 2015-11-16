@@ -11,6 +11,7 @@ function usanetwork_taboola_block_info()
 {
   $blocks['usanetwork_taboola_video'] = array(
     'info' => t('Usanetwork Taboola Video'),
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   return $blocks;

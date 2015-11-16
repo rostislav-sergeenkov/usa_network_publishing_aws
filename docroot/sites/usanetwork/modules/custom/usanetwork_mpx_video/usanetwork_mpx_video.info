@@ -22,6 +22,7 @@ dependencies[] = usanetwork_ds
 dependencies[] = usanetwork_gigya
 dependencies[] = usanetwork_movie_relation
 dependencies[] = usanetwork_promo
+dependencies[] = usanetwork_taboola
 dependencies[] = usanetwork_tv_shows
 dependencies[] = usanetwork_widget
 dependencies[] = views

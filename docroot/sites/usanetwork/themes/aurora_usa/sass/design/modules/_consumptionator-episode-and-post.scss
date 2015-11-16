@@ -325,8 +325,10 @@
             margin-bottom: 0;
           }
         }
+        iframe {
+          max-width: 100%;
+        }
         .lines-quotation {
-
           @include breakpoint($bp-768-width) {
             padding: 22px 15px;
           }

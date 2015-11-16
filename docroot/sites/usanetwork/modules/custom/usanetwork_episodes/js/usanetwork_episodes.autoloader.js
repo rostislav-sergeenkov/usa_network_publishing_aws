@@ -39,18 +39,6 @@
               window.picturefill();
             }
 
-            $('#block-usanetwork-episodes-usa-landing-tvep-list-block .open-description').unbind('click');
-            $('#block-usanetwork-episodes-usa-landing-tvep-list-block .open-description').each( function(){
-              $(this).click(function(){
-                var current_item = $(this).closest('.episode-landing-list-item');
-                if(current_item.hasClass('active')){
-                  current_item.removeClass('active');
-                } else {
-                  current_item.addClass('active');
-                }
-              });
-            });
-
             if (Drupal.settings.newSeasonNumber != 1) {
               $('.ajax-load-block .load-more-link a').removeClass('disabled');
             } else {
@@ -65,15 +53,16 @@
       }
     },
     attach: function (context, settings) {
-      $('#block-usanetwork-episodes-usa-landing-tvep-list-block .open-description').each( function(){
-        $(this).click(function(){
-          var current_item = $(this).closest('.episode-landing-list-item');
+      $('#block-usanetwork-episodes-usa-landing-tvep-list-block').click( function(e){
+        var target = $(e.target);
+        if(target.hasClass('open-description')){
+          var current_item = target.closest('.episode-landing-list-item');
           if(current_item.hasClass('active')){
             current_item.removeClass('active');
           } else {
             current_item.addClass('active');
           }
-        });
+        }
       });
     }
   }

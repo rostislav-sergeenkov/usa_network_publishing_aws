@@ -4,6 +4,71 @@ var homeAspot, showAspot;
 
   Drupal.behaviors.usanetwork_aspot_giui = {
 
+    defaultFontSettings: {
+      stepUpDown: 1,
+      defaultStepPosition: 6, // min value 0 || max value 12
+      homePage: {
+        mobile: {
+          title_prefix: {
+            default_font_size: '',
+            step: 1
+          },
+          title: {
+            default_font_size: '',
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: '',
+            step: 1.5
+          }
+        },
+        desktop: {
+          title_prefix: {
+            default_font_size: '',
+            step: 1
+          },
+          title: {
+            default_font_size: '',
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: '',
+            step: 1.5
+          }
+        }
+      },
+      showPage: {
+        mobile: {
+          title_prefix: {
+            default_font_size: '',
+            step: 1
+          },
+          title: {
+            default_font_size: '',
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: '',
+            step: 1.5
+          }
+        },
+        desktop: {
+          title_prefix: {
+            default_font_size: '',
+            step: 1
+          },
+          title: {
+            default_font_size: '',
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: '',
+            step: 1.5
+          }
+        }
+      }
+    },
+
     defaultSettings: {
       aspot_elements: {
         title_prefix: {
@@ -126,7 +191,8 @@ var homeAspot, showAspot;
           aspotElementsCheckboxes = $('#edit-field-aspot-enabled-' + prefix + 'gi-und input.form-checkbox'),
           nameOffset = '<h2>Peek-ahead strip</h2>',
           draggableElements = [],
-          defaultSettings = Drupal.behaviors.usanetwork_aspot_giui.defaultSettings;
+          defaultSettings = Drupal.behaviors.usanetwork_aspot_giui.defaultSettings,
+          defaultFontSize;
 
       var bg_offset_value, bg_offset_image_url, bg_offset_image_url_mobile, aspot_elements;
 
@@ -137,11 +203,13 @@ var homeAspot, showAspot;
         bg_offset_value = Drupal.settings.giui_settings.desktop.bg_offset_value;
         bg_offset_image_url = Drupal.settings.giui_settings.desktop.bg_offset_image_url;
         bg_offset_image_url_mobile = Drupal.settings.giui_settings.mobile.bg_offset_image_url;
+        defaultFontSize = Drupal.behaviors.usanetwork_aspot_giui.defaultFontSettings.homePage;
       } else if (prefix === 't') {
         aspot_elements = Drupal.settings.giui_settings.tvs_aspot_elements;
         bg_offset_value = Drupal.settings.giui_settings.tvs_desktop.bg_offset_value;
         bg_offset_image_url = Drupal.settings.giui_settings.tvs_desktop.bg_offset_image_url;
         bg_offset_image_url_mobile = Drupal.settings.giui_settings.tvs_mobile.bg_offset_image_url;
+        defaultFontSize = Drupal.behaviors.usanetwork_aspot_giui.defaultFontSettings.showPage;
       }
 
       var giImage = ($('<img>', {
@@ -234,7 +302,7 @@ var homeAspot, showAspot;
       });
 
       // set position aspot-draggable-element
-      $(document).click(function(event) {
+      $(document).click(function (event) {
         if ($(event.target).closest(".aspot-draggable-element").length > 0) {
           var _self = $(event.target).closest(".aspot-draggable-element");
 
@@ -254,7 +322,7 @@ var homeAspot, showAspot;
       }
 
       function changePositionDraggableElement(el) {
-        $(document).keydown(function(event){
+        $(document).keydown(function (event) {
           event.preventDefault();
           switch (event.keyCode) {
             case 37: // left
@@ -286,7 +354,7 @@ var homeAspot, showAspot;
           currentPosition = 0
         }
 
-        el.css(direction, currentPosition +  'px');
+        el.css(direction, currentPosition + 'px');
         usanetwork_aspot_giui_fill_draggable_items_input();
       }
 
@@ -346,6 +414,13 @@ var homeAspot, showAspot;
           //var fieldWidthM = Math.abs(mobileItemElement .css('width').replace('px', '')).toFixed(2);
           var fieldWidth = itemElement.innerWidth();
           var fieldWidthM = mobileItemElement.innerWidth();
+          var itemDataRel = itemElement.data('rel'),
+              editFontWrapperMobile = carouselElementPreviewingBlockMobile.siblings('.edit-font-wrapper'),
+              editFontWrapper = carouselElementPreviewingBlock.siblings('.edit-font-wrapper'),
+              editFontFieldMobile = editFontWrapperMobile.find('.edit-field-size').filter('[data-field-name=' + itemDataRel + ']'),
+              editFontField = editFontWrapper.find('.edit-field-size').filter('[data-field-name=' + itemDataRel + ']'),
+              fieldFontSize = editFontField.find('.field-font-size'),
+              fieldFontSizeMobile = editFontFieldMobile.find('.field-font-size');
 
           //desktop
           var mapCX = Math.round(carouselElementPreviewingBlock.width() / 2);
@@ -357,6 +432,8 @@ var homeAspot, showAspot;
           var widthPercent = (parseInt(itemElement.css('left')) / carouselElementPreviewingBlock.width() * 100).toFixed(1);
           var heightPercent = (parseInt(itemElement.css('top')) / carouselElementPreviewingBlock.height() * 100).toFixed(1);
           var fieldWidthPercent = (fieldWidth / carouselElementPreviewingBlock.width() * 100).toFixed(1);
+          var fieldFontSizeNum = parseFloat(fieldFontSize.text());
+          var fieldStepCounter= parseFloat(fieldFontSize.data('step-counter'));
 
           if (widthPercent < 0) {
             widthPercent = 0;
@@ -374,6 +451,9 @@ var homeAspot, showAspot;
           var widthPercent_m = Math.round(parseInt(mobileItemElement.css('left')) / carouselElementPreviewingBlockMobile.width() * 100).toFixed(1);
           var heightPercent_m = Math.round(parseInt(mobileItemElement.css('top')) / carouselElementPreviewingBlockMobile.height() * 100).toFixed(1);
           var fieldWidthPercentM = (fieldWidthM / carouselElementPreviewingBlockMobile.width() * 100).toFixed(1);
+          var fieldFontSizeNumM = parseFloat(fieldFontSizeMobile.text());
+          var fieldStepCounterM = parseFloat(fieldFontSizeMobile.data('step-counter'));
+
 
           if (widthPercent_m < 0) {
             widthPercent_m = 0;
@@ -391,9 +471,13 @@ var homeAspot, showAspot;
             'elementId': itemElement.attr('id'),
             'dataRel': itemElement.data('rel'),
             'display': itemElement.css('display'),
+            'stepCounter': fieldStepCounter,
+            'fontSize': fieldFontSizeNum,
             'left': itemElement.css('left'),
             'top': itemElement.css('top'),
             'width': fieldWidthPercent,
+            'stepCounterM': fieldStepCounterM,
+            'fontSizeM': fieldFontSizeNumM,
             'leftM': mobileItemElement.css('left'),
             'topM': mobileItemElement.css('top'),
             'widthM': fieldWidthPercentM,
@@ -465,10 +549,28 @@ var homeAspot, showAspot;
         // add title for draggable aria
         carouselElementPreviewingBlock
             .before('<h2>' + pageName + ' Desktop Version</h2>')
-            .after('<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>');
+            .after('<div class="buttons-wrapper">' +
+            '<div class="button" data-button="position">Reset to Default</div>' +
+            '<div class="button" data-button="align">Align lefts to Title</div></div>' +
+            '<div class="edit-font-wrapper">' +
+            '<h2>Change font size</h2>' +
+            '<div class="edit-field-size" data-field-name="title_prefix">Title prefix <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.desktop.title_prefix.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
+            '<div class="edit-field-size" data-field-name="title">Title <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.desktop.title.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
+            '<div class="edit-field-size" data-field-name="aspot_description">Description <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.desktop.aspot_description.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
+            '</div>'
+        );
+
         carouselElementPreviewingBlockMobile
             .before('<h2>' + pageName + ' Mobile Version</h2>')
-            .after('<div class="buttons-wrapper"><div class="button" data-button="position">Reset to Default</div><div class="button" data-button="align">Align lefts to Title</div></div>'
+            .after('<div class="buttons-wrapper">' +
+            '<div class="button" data-button="position">Reset to Default</div>' +
+            '<div class="button" data-button="align">Align lefts to Title</div></div>' +
+            '<div class="edit-font-wrapper">' +
+            '<h2>Change font size</h2>' +
+            '<div class="edit-field-size" data-field-name="title_prefix">Title prefix <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.mobile.title_prefix.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
+            '<div class="edit-field-size" data-field-name="title">Title <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.mobile.title.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
+            '<div class="edit-field-size" data-field-name="aspot_description">Description <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.mobile.aspot_description.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
+            '</div>'
         );
 
         var draggableElementsData = Object.keys(aspot_elements);
@@ -494,6 +596,11 @@ var homeAspot, showAspot;
             draggableElement = $('#' + draggableElementId);
           }
 
+          if (aspot_elements[itemElement].fontSize) {
+            draggableElement.css({
+              'fontSize': aspot_elements[itemElement].fontSize
+            });
+          }
           if (aspot_elements[itemElement].left) {
             draggableElement.css({
               'left': aspot_elements[itemElement].left
@@ -523,7 +630,56 @@ var homeAspot, showAspot;
           else {
             usanetwork_aspot_giui_disable_element(itemElement);
           }
-        })
+        });
+
+        // set default font size
+        setDefaultFontSize(PreviewingBlockWrapper, 'desktop');
+        setDefaultFontSize(PreviewingBlockWrapperMobile, 'mobile');
+      }
+
+      function setDefaultFontSize(mainBlock, version) {
+
+        var fieldSizes = mainBlock.find('.edit-field-size'),
+            defaultStepPosition = Drupal.behaviors.usanetwork_aspot_giui.defaultFontSettings.defaultStepPosition,
+            currentFontSize, currentStep;
+
+        fieldSizes.each(function (index, itemEl) {
+
+          var _self = $(this),
+              fieldName = $(this).data('field-name'),
+              fieldDrag = mainBlock.find('.aspot-draggable-element').filter('[data-rel=' + fieldName + ']'),
+              fieldFontSize = parseFloat(fieldDrag.css('fontSize'));
+
+          // set default font size for each field
+          defaultFontSize[version][fieldName].default_font_size = fieldFontSize;
+
+          if (version === 'desktop') {
+            currentFontSize = aspot_elements[fieldName].fontSize;
+            currentStep = aspot_elements[fieldName].stepCounter;
+          } else if (version === 'mobile') {
+            currentFontSize = aspot_elements[fieldName].fontSizeM;
+            currentStep = aspot_elements[fieldName].stepCounterM;
+          }
+
+          if (currentFontSize !== fieldFontSize && typeof currentFontSize !== 'undefined') {
+            fieldFontSize = currentFontSize;
+          }
+
+          if (defaultStepPosition !== currentStep && typeof currentFontSize !== 'undefined') {
+            defaultStepPosition = currentStep;
+          }
+
+          console.info('defaultStepPosition ' + defaultStepPosition);
+          console.info('fieldFontSize ' + fieldFontSize);
+
+          var fontSizeBlock = _self.find('.field-font-size');
+
+          fontSizeBlock.attr('data-default-font-size', fieldFontSize);
+          fontSizeBlock.attr('data-step-counter', defaultStepPosition);
+          fontSizeBlock.text(fieldFontSize + 'px');
+
+          fieldDrag.css('fontSize', fieldFontSize);
+        });
       }
 
       /**
@@ -540,6 +696,11 @@ var homeAspot, showAspot;
         var currentId = draggableElementMobile.attr('id');
         draggableElementMobile.attr('id', 'mobile-' + currentId).addClass('mobile');
         carouselElementPreviewingBlockMobile.append(draggableElementMobile);
+        if (aspot_elements[itemElement].fontSizeM) {
+          draggableElementMobile.css({
+            'fontSize': aspot_elements[itemElement].fontSizeM
+          });
+        }
         if (aspot_elements[itemElement].leftM) {
           draggableElementMobile.css({
             'left': aspot_elements[itemElement].leftM
@@ -731,6 +892,54 @@ var homeAspot, showAspot;
         }
 
       });
+
+      // default settings for draggable elements on cklick
+      carouselElementPreviewingContainer.on('click', '.edit-field-size', function (e) {
+
+        var activeItem = $(e.target),
+            activeItemParent = $(e.currentTarget),
+            activeItemName = activeItemParent.data('field-name'),
+            draggableArea = activeItemParent.parent('.edit-font-wrapper').siblings('.draggable-area'),
+            currentField = draggableArea.find('.aspot-draggable-element').filter('[data-rel=' + activeItemName + ']'),
+            fontStepUpDown = Drupal.behaviors.usanetwork_aspot_giui.defaultFontSettings.stepUpDown,
+            fieldFontSize = activeItemParent.find('.field-font-size'),
+            fontSizeStep = parseFloat(fieldFontSize.attr('data-font-size-step')),
+            stepCounterNum = parseFloat(fieldFontSize.attr('data-step-counter')),
+            currentFontSize = parseFloat(fieldFontSize.text()),
+            newCounter, newFontSize;
+
+
+        if (activeItem.hasClass('increase-font')) {
+          if (stepCounterNum < 12) {
+            newCounter = stepCounterNum + fontStepUpDown;
+            newFontSize = mathNewFontSize(currentFontSize, fontSizeStep);
+            // update step counter
+            fieldFontSize.attr('data-step-counter', newCounter);
+            // update value font size
+            fieldFontSize.text(newFontSize + 'px');
+            // update field font size
+            currentField.css('fontSize', newFontSize + 'px');
+          }
+        } else if (activeItem.hasClass('decrease-font')) {
+          if (stepCounterNum > 0) {
+            newCounter = stepCounterNum - fontStepUpDown;
+            newFontSize = mathNewFontSize(currentFontSize, -fontSizeStep);
+            // update step counter
+            fieldFontSize.attr('data-step-counter', newCounter);
+            // update value font size
+            fieldFontSize.text(newFontSize + 'px');
+            // update field font size
+            currentField.css('fontSize', newFontSize + 'px');
+          }
+        }
+
+        usanetwork_aspot_giui_fill_draggable_items_input();
+      });
+
+      function mathNewFontSize(currentFontSize, fontSizeStep) {
+        return (currentFontSize * 100 + fontSizeStep * 100) / 100;
+      }
+
 
       return {
         setPosition: usanetwork_aspot_giui_fill_draggable_items_input

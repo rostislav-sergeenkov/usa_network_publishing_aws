@@ -433,7 +433,9 @@ var homeAspot, showAspot;
           var heightPercent = (parseInt(itemElement.css('top')) / carouselElementPreviewingBlock.height() * 100).toFixed(1);
           var fieldWidthPercent = (fieldWidth / carouselElementPreviewingBlock.width() * 100).toFixed(1);
           var fieldFontSizeNum = parseFloat(fieldFontSize.text());
-          var fieldStepCounter= parseFloat(fieldFontSize.data('step-counter'));
+          var fieldStepCounter = parseFloat(fieldFontSize.attr('data-step-counter'));
+
+          console.info(fieldFontSizeNum, fieldStepCounter);
 
           if (widthPercent < 0) {
             widthPercent = 0;
@@ -452,8 +454,9 @@ var homeAspot, showAspot;
           var heightPercent_m = Math.round(parseInt(mobileItemElement.css('top')) / carouselElementPreviewingBlockMobile.height() * 100).toFixed(1);
           var fieldWidthPercentM = (fieldWidthM / carouselElementPreviewingBlockMobile.width() * 100).toFixed(1);
           var fieldFontSizeNumM = parseFloat(fieldFontSizeMobile.text());
-          var fieldStepCounterM = parseFloat(fieldFontSizeMobile.data('step-counter'));
+          var fieldStepCounterM = parseFloat(fieldFontSizeMobile.attr('data-step-counter'));
 
+          console.info(fieldFontSizeNumM, fieldStepCounterM);
 
           if (widthPercent_m < 0) {
             widthPercent_m = 0;
@@ -596,11 +599,6 @@ var homeAspot, showAspot;
             draggableElement = $('#' + draggableElementId);
           }
 
-          if (aspot_elements[itemElement].fontSize) {
-            draggableElement.css({
-              'fontSize': aspot_elements[itemElement].fontSize
-            });
-          }
           if (aspot_elements[itemElement].left) {
             draggableElement.css({
               'left': aspot_elements[itemElement].left
@@ -632,7 +630,7 @@ var homeAspot, showAspot;
           }
         });
 
-        // set default font size
+        // set font size
         setDefaultFontSize(PreviewingBlockWrapper, 'desktop');
         setDefaultFontSize(PreviewingBlockWrapperMobile, 'mobile');
       }
@@ -648,10 +646,14 @@ var homeAspot, showAspot;
           var _self = $(this),
               fieldName = $(this).data('field-name'),
               fieldDrag = mainBlock.find('.aspot-draggable-element').filter('[data-rel=' + fieldName + ']'),
-              fieldFontSize = parseFloat(fieldDrag.css('fontSize'));
+              fieldFontSize = parseFloat(fieldDrag.css('fontSize')),
+              fontSizeBlock = _self.find('.field-font-size');
+
+          console.info(fieldName);
 
           // set default font size for each field
           defaultFontSize[version][fieldName].default_font_size = fieldFontSize;
+          fontSizeBlock.attr('data-default-font-size', fieldFontSize);
 
           if (version === 'desktop') {
             currentFontSize = aspot_elements[fieldName].fontSize;
@@ -663,21 +665,16 @@ var homeAspot, showAspot;
 
           if (currentFontSize !== fieldFontSize && typeof currentFontSize !== 'undefined') {
             fieldFontSize = currentFontSize;
+            console.info(1)
           }
 
           if (defaultStepPosition !== currentStep && typeof currentFontSize !== 'undefined') {
             defaultStepPosition = currentStep;
+            console.info(2)
           }
 
-          console.info('defaultStepPosition ' + defaultStepPosition);
-          console.info('fieldFontSize ' + fieldFontSize);
-
-          var fontSizeBlock = _self.find('.field-font-size');
-
-          fontSizeBlock.attr('data-default-font-size', fieldFontSize);
           fontSizeBlock.attr('data-step-counter', defaultStepPosition);
           fontSizeBlock.text(fieldFontSize + 'px');
-
           fieldDrag.css('fontSize', fieldFontSize);
         });
       }
@@ -696,11 +693,6 @@ var homeAspot, showAspot;
         var currentId = draggableElementMobile.attr('id');
         draggableElementMobile.attr('id', 'mobile-' + currentId).addClass('mobile');
         carouselElementPreviewingBlockMobile.append(draggableElementMobile);
-        if (aspot_elements[itemElement].fontSizeM) {
-          draggableElementMobile.css({
-            'fontSize': aspot_elements[itemElement].fontSizeM
-          });
-        }
         if (aspot_elements[itemElement].leftM) {
           draggableElementMobile.css({
             'left': aspot_elements[itemElement].leftM

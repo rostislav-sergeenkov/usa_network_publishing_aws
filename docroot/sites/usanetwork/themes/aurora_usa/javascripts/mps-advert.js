@@ -85,7 +85,7 @@
           nameAd = 'topbox',
           selector = '#' + nameAd;
 
-      if(window.matchMedia("(min-width: " + window_size_tablet_1024 + "px)").matches) {
+      if(window.matchMedia("(min-width: " + window_size_tablet + "px)").matches) {
         sidebarAd.attr('id', nameAd);
         Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
       } else {
@@ -96,7 +96,7 @@
 
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
-          if(window.matchMedia("(min-width: " + window_size_tablet_1024 + "px)").matches && mainBlock.hasClass('mobile')) {
+          if(window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && mainBlock.hasClass('mobile')) {
 
             mainBlock.removeClass('mobile');
             sidebarAd.attr('id', nameAd);

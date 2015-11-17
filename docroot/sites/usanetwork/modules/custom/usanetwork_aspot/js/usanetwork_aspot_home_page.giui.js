@@ -29,7 +29,7 @@
                   styleMobile = $(this).attr('data-style-mobile'),
                   elWidth, maxWidth, betweenWidth, myArr = [];
 
-              if (window.matchMedia("(min-width: " + window_size_mobile_640 + "px)").matches) {
+              if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
 
                 self.attr('style', styleDesktop);
 
@@ -56,11 +56,11 @@
                   }
 
                   // change width on tv-show page
-                  if(window.matchMedia("(min-width: " + window_size_mobile_640 + "px)").matches && window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
+                  if(window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
                     self.css('width', self.data('between-width'));
                   }
 
-                  if(window.matchMedia("(min-width: " + window_size_tablet_portrait_768 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_max_width_2500 + "px)").matches) {
+                  if(window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_max_width_2500 + "px)").matches) {
                     self.css('width', self.data('width') + '%');
                   }
                 }

@@ -19,6 +19,15 @@
                 $('.episodes-list', '.aspot-and-episodes').addClass('shadow');
               }
             }
+          },
+          onScroll: function(){
+            var items = [];
+            var i = 0;
+            $(this).find('li').each(function(){
+              items[i] = this;
+              i++;
+            });
+            Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(items);
           }
         }
       });

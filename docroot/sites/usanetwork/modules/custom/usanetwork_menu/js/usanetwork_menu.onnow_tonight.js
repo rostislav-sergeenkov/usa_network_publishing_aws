@@ -64,7 +64,7 @@
       };
 
       $(window).bind('resize', function () {
-        if (window.matchMedia("(min-width: " + window_size_tablet_portrait_768 + "px)").matches) {
+        if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
           if ($('.schedule-carousel').hasClass('destroy')) {
             scheduleInit();
             $('.schedule-carousel').removeClass('destroy');

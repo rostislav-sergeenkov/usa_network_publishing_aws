@@ -9,7 +9,7 @@
 
       $(window).bind('resize', function () {
 
-        if (window.matchMedia("(min-width: " + window_size_tablet_portrait_768 + "px)").matches){
+        if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches){
           if ($('.social-carousel').hasClass('destroy')) {
             $('.social-carousel').removeClass('destroy');
             $('.social-carousel > ul > li').removeClass('hidden');

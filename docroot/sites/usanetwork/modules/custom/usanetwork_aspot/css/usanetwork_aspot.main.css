@@ -213,3 +213,32 @@
 #edit-group_usa_tv_aspot_ui .buttons-wrapper .button:hover{
   background: #a1a1a1;
 }
+
+/*
+  change field font size
+*/
+
+#edit-group_usa_aspot_ui .edit-font-wrapper .field-font-size,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .field-font-size {
+  background-color: #ffffff;
+  border: 1px solid #4d4d4d;
+  display: inline-block;
+  margin: 0 5px;
+  padding: 0 5px;
+}
+#edit-group_usa_aspot_ui .edit-font-wrapper .font-button,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .font-button {
+  /*background-color: #ffffff;*/
+  /*border-radius: 3px;*/
+  /*display: inline-block;*/
+  /*text-align: center;*/
+  /*width: 10px;*/
+}
+#edit-group_usa_aspot_ui .edit-font-wrapper .decrease-font,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .decrease-font {
+
+}
+#edit-group_usa_aspot_ui .edit-font-wrapper .increase-font,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .increase-font {
+
+}

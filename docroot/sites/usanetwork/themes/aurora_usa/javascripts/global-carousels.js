@@ -217,7 +217,12 @@
                   if (!$carousel.hasClass('stop')) {
                     Drupal.behaviors.global_carousels.swipeShowDescription($container);
                   }
-                })
+                });
+              })
+              .on('jcarousel:scrollend', function (event, carousel) {
+                setTimeout(function(){
+                  Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(carousel._items);
+                }, 500);
               })
               .on('jcarousel:reloadend', function (event, carousel) {
                 $carousel.find('a').click(function (e) {

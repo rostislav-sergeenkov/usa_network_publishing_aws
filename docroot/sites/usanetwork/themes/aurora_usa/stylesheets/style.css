@@ -26190,6 +26190,201 @@ yx-axis
   margin: 0;
   text-shadow: 1px 1px 0.5em #333333;
 }
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-0 {
+    font-size: 1.7625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-0 {
+    font-size: 0.63125vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-0 {
+    font-size: 15.78125px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-1 {
+    font-size: 1.91875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 {
+    font-size: 0.70938vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 {
+    font-size: 17.73438px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-2 {
+    font-size: 2.075vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 {
+    font-size: 0.7875vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 {
+    font-size: 19.6875px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-3 {
+    font-size: 2.23125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 {
+    font-size: 0.86563vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 {
+    font-size: 21.64063px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-4 {
+    font-size: 2.3875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 {
+    font-size: 0.94375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 {
+    font-size: 23.59375px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-5 {
+    font-size: 2.54375vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 {
+    font-size: 1.02187vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 {
+    font-size: 25.54688px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-6 {
+    font-size: 2.7vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 {
+    font-size: 1.1vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 {
+    font-size: 27.5px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-7 {
+    font-size: 2.85625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 {
+    font-size: 1.17812vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 {
+    font-size: 29.45313px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-8 {
+    font-size: 3.0125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 {
+    font-size: 1.25625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 {
+    font-size: 31.40625px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-9 {
+    font-size: 3.16875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 {
+    font-size: 1.33438vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 {
+    font-size: 33.35938px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-10 {
+    font-size: 3.325vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 {
+    font-size: 1.4125vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 {
+    font-size: 35.3125px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-11 {
+    font-size: 3.48125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 {
+    font-size: 1.49063vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 {
+    font-size: 37.26563px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-12 {
+    font-size: 3.6375vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 {
+    font-size: 1.56875vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 {
+    font-size: 39.21875px;
+  }
+}
 .usanetwork-aspot .meta-wrap .title {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -26208,6 +26403,201 @@ yx-axis
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title {
     font-size: 10.4vw;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-0 {
+    font-size: 6.65vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-0 {
+    font-size: 4.125vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-0 {
+    font-size: 103.125px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-1 {
+    font-size: 7.275vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-1 {
+    font-size: 4.4375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-1 {
+    font-size: 110.9375px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-2 {
+    font-size: 7.9vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-2 {
+    font-size: 4.75vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-2 {
+    font-size: 118.75px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-3 {
+    font-size: 8.525vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-3 {
+    font-size: 5.0625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-3 {
+    font-size: 126.5625px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-4 {
+    font-size: 9.15vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-4 {
+    font-size: 5.375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-4 {
+    font-size: 134.375px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-5 {
+    font-size: 9.775vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-5 {
+    font-size: 5.6875vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-5 {
+    font-size: 142.1875px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-6 {
+    font-size: 10.4vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-6 {
+    font-size: 6.0vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-6 {
+    font-size: 150px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-7 {
+    font-size: 11.025vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-7 {
+    font-size: 6.3125vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-7 {
+    font-size: 157.8125px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-8 {
+    font-size: 11.65vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-8 {
+    font-size: 6.625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-8 {
+    font-size: 165.625px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-9 {
+    font-size: 12.275vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-9 {
+    font-size: 6.9375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-9 {
+    font-size: 173.4375px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-10 {
+    font-size: 12.9vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-10 {
+    font-size: 7.25vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-10 {
+    font-size: 181.25px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-11 {
+    font-size: 13.525vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-11 {
+    font-size: 7.5625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-11 {
+    font-size: 189.0625px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .title.font-mobile-12 {
+    font-size: 14.15vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-12 {
+    font-size: 7.875vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .title.font-desktop-12 {
+    font-size: 196.875px;
   }
 }
 .usanetwork-aspot .meta-wrap .title p {
@@ -26232,6 +26622,201 @@ yx-axis
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description {
     font-size: 3.125vw;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-0 {
+    font-size: 1.71875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-0 {
+    font-size: 1.17188vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-0 {
+    font-size: 29.29688px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-1 {
+    font-size: 1.95313vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 {
+    font-size: 1.28906vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 {
+    font-size: 32.22656px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-2 {
+    font-size: 2.1875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 {
+    font-size: 1.40625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 {
+    font-size: 35.15625px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-3 {
+    font-size: 2.42188vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 {
+    font-size: 1.52344vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 {
+    font-size: 38.08594px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-4 {
+    font-size: 2.65625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 {
+    font-size: 1.64063vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 {
+    font-size: 41.01563px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-5 {
+    font-size: 2.89063vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 {
+    font-size: 1.75781vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 {
+    font-size: 43.94531px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-6 {
+    font-size: 3.125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 {
+    font-size: 1.875vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 {
+    font-size: 46.875px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-7 {
+    font-size: 3.35938vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 {
+    font-size: 1.99219vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 {
+    font-size: 49.80469px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-8 {
+    font-size: 3.59375vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 {
+    font-size: 2.10938vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 {
+    font-size: 52.73438px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-9 {
+    font-size: 3.82813vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 {
+    font-size: 2.22656vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 {
+    font-size: 55.66406px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-10 {
+    font-size: 4.0625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 {
+    font-size: 2.34375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 {
+    font-size: 58.59375px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-11 {
+    font-size: 4.29688vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 {
+    font-size: 2.46094vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 {
+    font-size: 61.52344px;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-12 {
+    font-size: 4.53125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 {
+    font-size: 2.57813vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 {
+    font-size: 64.45313px;
   }
 }
 .usanetwork-aspot .meta-wrap .aspot-description p {
@@ -26658,14 +27243,794 @@ yx-axis
     font-size: 1.414vw;
   }
 }
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-0 {
+    font-size: 1.7625vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-0 {
+    font-size: 0.63125vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-0 {
+    font-size: 0.81116vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-0 {
+    font-size: 15.78125px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-1 {
+    font-size: 1.91875vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
+    font-size: 0.70938vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
+    font-size: 0.91155vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
+    font-size: 17.73438px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-2 {
+    font-size: 2.075vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
+    font-size: 0.7875vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
+    font-size: 1.01194vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
+    font-size: 19.6875px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-3 {
+    font-size: 2.23125vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
+    font-size: 0.86563vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
+    font-size: 1.11233vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
+    font-size: 21.64063px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-4 {
+    font-size: 2.3875vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
+    font-size: 0.94375vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
+    font-size: 1.21272vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
+    font-size: 23.59375px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-5 {
+    font-size: 2.54375vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
+    font-size: 1.02187vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
+    font-size: 1.31311vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
+    font-size: 25.54688px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-6 {
+    font-size: 2.7vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
+    font-size: 1.1vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
+    font-size: 1.4135vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
+    font-size: 27.5px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-7 {
+    font-size: 2.85625vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
+    font-size: 1.17812vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
+    font-size: 1.51389vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
+    font-size: 29.45313px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-8 {
+    font-size: 3.0125vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
+    font-size: 1.25625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
+    font-size: 1.61428vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
+    font-size: 31.40625px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-9 {
+    font-size: 3.16875vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
+    font-size: 1.33438vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
+    font-size: 1.71467vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
+    font-size: 33.35938px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-10 {
+    font-size: 3.325vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
+    font-size: 1.4125vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
+    font-size: 1.81506vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
+    font-size: 35.3125px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-11 {
+    font-size: 3.48125vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
+    font-size: 1.49063vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
+    font-size: 1.91545vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
+    font-size: 37.26563px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-mobile-12 {
+    font-size: 3.6375vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
+    font-size: 1.56875vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
+    font-size: 2.01584vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
+    font-size: 39.21875px;
+  }
+}
 @media (min-width: 641px) and (max-width: 768px) {
   .aspot-and-episodes .show-aspot .meta-wrap .title {
     font-size: 7.712vw;
   }
 }
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-0 {
+    font-size: 6.65vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-0 {
+    font-size: 4.125vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-0 {
+    font-size: 5.30062vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-0 {
+    font-size: 103.125px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-1 {
+    font-size: 7.275vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-1 {
+    font-size: 4.4375vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-1 {
+    font-size: 5.70219vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-1 {
+    font-size: 110.9375px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-2 {
+    font-size: 7.9vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-2 {
+    font-size: 4.75vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-2 {
+    font-size: 6.10375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-2 {
+    font-size: 118.75px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-3 {
+    font-size: 8.525vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-3 {
+    font-size: 5.0625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-3 {
+    font-size: 6.50531vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-3 {
+    font-size: 126.5625px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-4 {
+    font-size: 9.15vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-4 {
+    font-size: 5.375vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-4 {
+    font-size: 6.90687vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-4 {
+    font-size: 134.375px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-5 {
+    font-size: 9.775vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-5 {
+    font-size: 5.6875vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-5 {
+    font-size: 7.30844vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-5 {
+    font-size: 142.1875px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-6 {
+    font-size: 10.4vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-6 {
+    font-size: 6.0vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-6 {
+    font-size: 7.71vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-6 {
+    font-size: 150px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-7 {
+    font-size: 11.025vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-7 {
+    font-size: 6.3125vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-7 {
+    font-size: 8.11156vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-7 {
+    font-size: 157.8125px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-8 {
+    font-size: 11.65vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-8 {
+    font-size: 6.625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-8 {
+    font-size: 8.51312vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-8 {
+    font-size: 165.625px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-9 {
+    font-size: 12.275vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-9 {
+    font-size: 6.9375vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-9 {
+    font-size: 8.91469vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-9 {
+    font-size: 173.4375px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-10 {
+    font-size: 12.9vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-10 {
+    font-size: 7.25vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-10 {
+    font-size: 9.31625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-10 {
+    font-size: 181.25px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-11 {
+    font-size: 13.525vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-11 {
+    font-size: 7.5625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-11 {
+    font-size: 9.71781vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-11 {
+    font-size: 189.0625px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-mobile-12 {
+    font-size: 14.15vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-12 {
+    font-size: 7.875vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-12 {
+    font-size: 10.11937vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .title.font-show-desktop-12 {
+    font-size: 196.875px;
+  }
+}
 @media (min-width: 641px) and (max-width: 768px) {
   .aspot-and-episodes .show-aspot .meta-wrap .aspot-description {
     font-size: 2.41016vw;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-0 {
+    font-size: 1.71875vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-0 {
+    font-size: 1.17188vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-0 {
+    font-size: 1.50586vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-0 {
+    font-size: 29.29688px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-1 {
+    font-size: 1.95313vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
+    font-size: 1.28906vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
+    font-size: 1.65645vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
+    font-size: 32.22656px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-2 {
+    font-size: 2.1875vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
+    font-size: 1.40625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
+    font-size: 1.80703vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
+    font-size: 35.15625px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-3 {
+    font-size: 2.42188vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
+    font-size: 1.52344vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
+    font-size: 1.95762vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
+    font-size: 38.08594px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-4 {
+    font-size: 2.65625vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
+    font-size: 1.64063vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
+    font-size: 2.1082vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
+    font-size: 41.01563px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-5 {
+    font-size: 2.89063vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
+    font-size: 1.75781vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
+    font-size: 2.25879vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
+    font-size: 43.94531px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-6 {
+    font-size: 3.125vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
+    font-size: 1.875vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
+    font-size: 2.40937vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
+    font-size: 46.875px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-7 {
+    font-size: 3.35938vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
+    font-size: 1.99219vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
+    font-size: 2.55996vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
+    font-size: 49.80469px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-8 {
+    font-size: 3.59375vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
+    font-size: 2.10938vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
+    font-size: 2.71055vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
+    font-size: 52.73438px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-9 {
+    font-size: 3.82813vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
+    font-size: 2.22656vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
+    font-size: 2.86113vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
+    font-size: 55.66406px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-10 {
+    font-size: 4.0625vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
+    font-size: 2.34375vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
+    font-size: 3.01172vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
+    font-size: 58.59375px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-11 {
+    font-size: 4.29688vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
+    font-size: 2.46094vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
+    font-size: 3.1623vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
+    font-size: 61.52344px;
+  }
+}
+@media (max-width: 640px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-mobile-12 {
+    font-size: 4.53125vw;
+  }
+}
+@media (min-width: 641px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
+    font-size: 2.57813vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
+    font-size: 3.31289vw;
+  }
+}
+@media (min-width: 2500px) {
+  .aspot-and-episodes .show-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
+    font-size: 64.45313px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {

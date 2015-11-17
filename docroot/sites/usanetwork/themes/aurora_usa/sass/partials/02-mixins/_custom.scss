@@ -106,14 +106,42 @@
   @return (($target-line-height * ($rows - 1) + $font-diff)/$vw-context)  * 1vw;
 }
 
-// example
-//.selector {
-//  font-size: get-vw(16px, 1025);
-//  or
-//  @include vw(72px);
-//}
+@mixin aspotFonts($step, $default-font-desktop, $default-font-mobile) {
+  @for $i from 0 to 13 {
+    &.font-mobile-#{$i} {
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw($default-font-mobile + $step*$i, 640);
+      }
+    }
+    &.font-desktop-#{$i} {
+      @include breakpoint($bp-min-641-width) {
+        font-size: get-vw($default-font-desktop + $step*$i, 1280);
+      }
+      @include breakpoint($bp-min-2500-width) {
+        font-size: ($default-font-desktop + $step*$i)*1.953125;
+      }
+    }
+  }
+}
 
-//@mixin vw($size, $bp-width) {
-//  font-size: get-vw($size, $bp-width);
-//}
+@mixin aspotShowFonts($step, $default-font-desktop, $default-font-mobile) {
+  @for $i from 0 to 13 {
+    &.font-show-mobile-#{$i} {
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw($default-font-mobile + $step*$i, 640);
+      }
+    }
+    &.font-show-desktop-#{$i} {
+      @include breakpoint($bp-min-641-width) {
+        font-size: get-vw($default-font-desktop + $step*$i, 1280);
+      }
+      @include breakpoint($between-641-768) {
+        font-size: get-vw(($default-font-desktop + $step*$i)*1.285, 1280);
+      }
+      @include breakpoint($bp-min-2500-width) {
+        font-size: ($default-font-desktop + $step*$i)*1.953125;
+      }
+    }
+  }
+}
 

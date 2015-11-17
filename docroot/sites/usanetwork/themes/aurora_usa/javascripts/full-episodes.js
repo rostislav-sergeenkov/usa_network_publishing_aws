@@ -37,7 +37,7 @@
 
       $(window).bind('resize', function () {
         if ($('.carousel-block-left').hasClass('active')) {
-          if (window.matchMedia("(min-width: " + window_size_mobile_480 + "px)").matches) {
+          if (window.matchMedia("(min-width: " + window_size_mobile + "px)").matches) {
             $('.carousel-block-left.active .carousel-left').each(function () {
               var $container = $(this);
 

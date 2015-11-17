@@ -175,7 +175,7 @@
           // remove loader
           $(aspotBlock).addClass('load');
 
-          if (window.matchMedia("(min-width: " + window_size_mobile_640 + "px)").matches) {
+          if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
             //show slide content (currentSlide, nextSlide)
             showElements(currentSlide, nextSlide);
           }
@@ -329,7 +329,7 @@
         changeLogoColor(currentIndex);
 
         // for resolutions more 640 px
-        if (window.matchMedia("(min-width: " + window_size_mobile_640 + "px)").matches) {
+        if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
 
           activeSlideContent = slide.eq(currentIndex).not('.slick-cloned').find('.slide-content');
           activeSlide = slide.eq(currentIndex);
@@ -364,7 +364,7 @@
       function hideElements(currentIndex, nextIndex) {
 
         // for resolutions more 640 px
-        if (window.matchMedia("(min-width: " + window_size_mobile_640 + "px)").matches) {
+        if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
 
           nextSlideImg = slide.eq(nextIndex).find('.asset-img img');
           nextSlideContent = slide.eq(nextIndex).find('.slide-content');

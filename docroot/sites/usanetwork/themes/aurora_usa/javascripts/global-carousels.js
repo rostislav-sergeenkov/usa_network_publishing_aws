@@ -390,7 +390,7 @@
       var width = desktop_show_open_width;
       var item_width = current_item.width();
 
-      if (window.matchMedia("(min-width: " + window_size_desktop_large_1900 + "px)").matches) {
+      if (window.matchMedia("(min-width: " + window_size_desktop_large + "px)").matches) {
 
         var browserName = browserDetect(),
             widthDiff = window.innerWidth - $(window).innerWidth();

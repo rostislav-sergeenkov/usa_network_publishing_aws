@@ -893,6 +893,10 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->title_prefix),
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title_prefix),
         'width' => $draggable_data->data->aspot_elements->title_prefix->width,
+        'fonts' => array(
+          'desktop' => !empty($draggable_data->data->aspot_elements->title_prefix->stepCounter) ? $draggable_data->data->aspot_elements->title_prefix->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->aspot_elements->title_prefix->stepCounterM) ? $draggable_data->data->aspot_elements->title_prefix->stepCounterM : NULL,
+        )
       )
       : FALSE,
     'show_title_style' => isset($draggable_data->data->aspot_elements->title)
@@ -900,6 +904,10 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->title),
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->title),
         'width' => $draggable_data->data->aspot_elements->title->width,
+        'fonts' => array(
+          'desktop' => !empty($draggable_data->data->aspot_elements->title->stepCounter) ? $draggable_data->data->aspot_elements->title->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->aspot_elements->title->stepCounterM) ? $draggable_data->data->aspot_elements->title->stepCounterM : NULL,
+        )
       )
       : FALSE,
     'show_description_style' => isset($draggable_data->data->aspot_elements->aspot_description)
@@ -907,6 +915,10 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->aspot_description),
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->aspot_description),
         'width' => $draggable_data->data->aspot_elements->aspot_description->width,
+        'fonts' => array(
+          'desktop' => !empty($draggable_data->data->aspot_elements->aspot_description->stepCounter) ? $draggable_data->data->aspot_elements->aspot_description->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->aspot_elements->aspot_description->stepCounterM) ? $draggable_data->data->aspot_elements->aspot_description->stepCounterM : NULL,
+        )
       )
       : FALSE,
     'social_meter_style' => isset($draggable_data->data->aspot_elements->social_meter)
@@ -1064,6 +1076,10 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->title_prefix),
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title_prefix),
         'width' => $draggable_data->data->tvs_aspot_elements->title_prefix->width,
+        'fonts' => array(
+          'desktop' => !empty($draggable_data->data->tvs_aspot_elements->title_prefix->stepCounter) ? $draggable_data->data->tvs_aspot_elements->title_prefix->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->tvs_aspot_elements->title_prefix->stepCounterM) ? $draggable_data->data->tvs_aspot_elements->title_prefix->stepCounterM : NULL,
+        )
       )
       : FALSE,
     'show_title_style' => isset($draggable_data->data->tvs_aspot_elements->title)
@@ -1071,6 +1087,10 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->title),
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title),
         'width' => $draggable_data->data->tvs_aspot_elements->title->width,
+        'fonts' => array(
+          'desktop' => !empty($draggable_data->data->tvs_aspot_elements->title->stepCounter) ? $draggable_data->data->tvs_aspot_elements->title->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->tvs_aspot_elements->title->stepCounterM) ? $draggable_data->data->tvs_aspot_elements->title->stepCounterM : NULL,
+        )
       )
       : FALSE,
     'show_description_style' => isset($draggable_data->data->tvs_aspot_elements->aspot_description)
@@ -1078,6 +1098,10 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->aspot_description),
         'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->aspot_description),
         'width' => $draggable_data->data->tvs_aspot_elements->aspot_description->width,
+        'fonts' => array(
+          'desktop' => !empty($draggable_data->data->tvs_aspot_elements->aspot_description->stepCounter) ? $draggable_data->data->tvs_aspot_elements->aspot_description->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->tvs_aspot_elements->aspot_description->stepCounterM) ? $draggable_data->data->tvs_aspot_elements->aspot_description->stepCounterM : NULL,
+        )
       )
       : FALSE,
     'social_meter_style' => isset($draggable_data->data->tvs_aspot_elements->social_meter)

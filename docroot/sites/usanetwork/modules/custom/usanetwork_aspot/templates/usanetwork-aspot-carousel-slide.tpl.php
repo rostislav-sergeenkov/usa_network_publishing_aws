@@ -38,17 +38,23 @@
       <div class="slide-content">
         <div class="meta-wrap">
           <div class="meta">
-            <div class="title_prefix aspot-draggable-element"
+            <div class="title_prefix aspot-draggable-element
+              <?php print (!empty($show_title_prefix_style['fonts']['desktop']) ? 'font-desktop-' . $show_title_prefix_style['fonts']['desktop'] : ''); ?>
+              <?php print (!empty($show_title_prefix_style['fonts']['mobile']) ? 'font-mobile-' . $show_title_prefix_style['fonts']['mobile'] : ''); ?>"
               <?php if (!empty($show_title_prefix_style['desktop'])): print ' data-style-desktop="' . $show_title_prefix_style['desktop'] . '" data-style-mobile="' . $show_title_prefix_style['mobile'] . '"'; endif; ?>
               <?php if (!empty($show_title_prefix_style['width'])): print ' data-width="' . $show_title_prefix_style['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
               <?php print $show_title_prefix; ?>
             </div>
-            <div class="title aspot-draggable-element"
+            <div class="title aspot-draggable-element
+              <?php print (!empty($show_title_style['fonts']['desktop']) ? 'font-desktop-' . $show_title_style['fonts']['desktop'] : ''); ?>
+              <?php print (!empty($show_title_style['fonts']['mobile']) ? 'font-mobile-' . $show_title_style['fonts']['mobile'] : ''); ?>"
               <?php if (!empty($show_title_style['desktop'])): print ' data-style-desktop="' . $show_title_style['desktop'] . '" data-style-mobile="' . $show_title_style['mobile'] . '"'; endif; ?>
               <?php if (!empty($show_title_style['width'])): print ' data-width="' . $show_title_style['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
               <?php print $show_title; ?>
             </div>
-            <div class="aspot-description aspot-draggable-element"
+            <div class="aspot-description aspot-draggable-element
+              <?php print (!empty($show_description_style['fonts']['desktop']) ? 'font-desktop-' . $show_description_style['fonts']['desktop'] : ''); ?>
+              <?php print (!empty($show_description_style['fonts']['mobile']) ? 'font-mobile-' . $show_description_style['fonts']['mobile'] : ''); ?>"
               <?php if (!empty($show_description_style['desktop'])): print ' data-style-desktop="' . $show_description_style['desktop'] . '" data-style-mobile="' . $show_description_style['mobile'] . '"'; endif; ?>
               <?php if (!empty($show_description_style['width'])): print ' data-width="' . $show_description_style['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
               <?php print $show_desc; ?>

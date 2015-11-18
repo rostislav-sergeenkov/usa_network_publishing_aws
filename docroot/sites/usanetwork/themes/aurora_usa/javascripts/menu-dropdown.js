@@ -22,7 +22,7 @@
         }
       }
 
-      if($(window).width() >= window_size_tablet_portrait) {
+      if(window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
         // check offsetTop value
         if (!subMenuSelector.hasClass('sticky-shows-submenu')) {
           if (Math.round(subMenuSelector.offset().top) !== offsetTop) {
@@ -338,7 +338,7 @@
             search_input_block.addClass('active');
             //usa_logo.addClass('active');
             menu.addClass('active');
-            if ($('body').hasClass('node-type-tv-show')) {
+            if ($('body').hasClass('node-type-tv-show') || $('body').hasClass('node-type-consumpt-blog')) {
               menu_link.addClass('show-color');
             }
             title_wrapper.toggle();
@@ -410,7 +410,7 @@
           showMenuMove();
 
           if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches && !tablet) {
-            if ($body.hasClass('page-home') || $body.hasClass('node-type-tv-show')) {
+            if ($body.hasClass('page-home') || $body.hasClass('node-type-tv-show') || $('body').hasClass('node-type-consumpt-blog')) {
               $('header .tab-item.active').removeClass('active').removeAttr('style');
               $(".tab .no-refresh.active").removeClass('active').attr('data-state', '');
             }
@@ -419,10 +419,10 @@
           }
 
           if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches && tablet) {
-            if ($body.hasClass('page-home') || $body.hasClass('node-type-tv-show')) {
+            if ($body.hasClass('page-home') || $body.hasClass('node-type-tv-show') || $('body').hasClass('node-type-consumpt-blog')) {
               if ($(".main-menu-open").hasClass('active')) {
-                $('.nav-bar-tabs .expanded.active').removeClass('active');
-                $('.nav-bar-tabs .expanded > a.active').removeClass('active');
+                $('.nav-bar-tabs .expanded:not(.header-show-menu).active').removeClass('active');
+                $('.nav-bar-tabs .expanded:not(.header-show-menu) > a.active').removeClass('active');
               }
             }
 

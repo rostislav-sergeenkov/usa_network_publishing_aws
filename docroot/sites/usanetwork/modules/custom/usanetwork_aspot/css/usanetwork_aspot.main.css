@@ -5,6 +5,13 @@
   background: #ccc;
 }
 
+#edit-group_usa_aspot_ui .wrapper-desktop,
+#edit-field-aspot-enabled-tgi .wrapper-desktop{
+  border-bottom: 1px solid #4d4d4d;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
 .draggable-background.desktop {
   border: solid #aaa 1px;
   display: block;
@@ -22,7 +29,7 @@
   line-height: 0;
   margin-bottom: 30px;
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
   height: 560px;
   width: 640px;
 }
@@ -31,7 +38,7 @@
   line-height: 0;
   margin-bottom: 30px;
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
   height: 560px;
   width: 1280px;
 }
@@ -179,8 +186,9 @@
 }
 #edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper,
 #edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
-  left: 850px;
-  top: 102%;
+  position: static;
+  /*left: 850px;*/
+  /*top: 102%;*/
 }
 #edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
   left: 650px;
@@ -217,6 +225,12 @@
 /*
   change field font size
 */
+#edit-group_usa_aspot_ui .wrapper-mobile .edit-font-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile .edit-font-wrapper {
+  left: 700px;
+  position: absolute;
+  top: 115px;
+}
 
 #edit-group_usa_aspot_ui .edit-font-wrapper .field-font-size,
 #edit-group_usa_tv_aspot_ui .edit-font-wrapper .field-font-size {
@@ -225,6 +239,14 @@
   display: inline-block;
   margin: 0 5px;
   padding: 0 5px;
+  text-align: center;
+  width: 60px;
+}
+
+#edit-group_usa_aspot_ui .edit-font-wrapper .name,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .name {
+  display: inline-block;
+  width: 85px;
 }
 #edit-group_usa_aspot_ui .edit-font-wrapper .font-button,
 #edit-group_usa_tv_aspot_ui .edit-font-wrapper .font-button {

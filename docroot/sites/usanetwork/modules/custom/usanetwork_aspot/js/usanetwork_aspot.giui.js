@@ -929,7 +929,7 @@ var homeAspot, showAspot;
       });
 
       function mathNewFontSize(currentFontSize, fontSizeStep) {
-        return (currentFontSize * 100 + fontSizeStep * 100) / 100;
+        return Math.round((currentFontSize * 100 + fontSizeStep * 100)) / 100;
       }
 
 

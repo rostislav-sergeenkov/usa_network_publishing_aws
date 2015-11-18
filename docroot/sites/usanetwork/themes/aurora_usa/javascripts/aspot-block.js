@@ -423,7 +423,7 @@
             paramsUrl = '',
             url;
 
-        if (_body.hasClass('front')) {
+        if (_body.hasClass('front') || _body.hasClass('home-preview-page')) {
 
           if (Object.keys(aspot_slide).length > 0) {
             for (var key in aspot_slide) {

@@ -11,12 +11,15 @@
       if($('body').hasClass('usa-tv-show')) {
         currentEl = aspotShowSlide;
         changeDraggableElementsPosition(aspotShowSlide);
-      } else if($('body').hasClass('page-home')) {
+      } else if($('body').hasClass('page-home') && !$('body').hasClass('home-preview-page')) {
         currentEl = aspotHomeSlide;
         changeDraggableElementsPosition(aspotHomeSlide);
       } else if($('body').hasClass('node-type-movie')) {
         currentEl = aspotMovieSlide;
         changeDraggableElementsPosition(aspotMovieSlide);
+      } else if($('body').hasClass('home-preview-page')) {
+        currentEl = aspotHomeSlide;
+        changeDraggableElementsPosition(aspotHomeSlide);
       } else if($('body').hasClass('node-type-usanetwork-aspot')) {
         changeDraggableElementsPosition($('#home_page_aspot_preview'));
         changeDraggableElementsPosition($('#show_aspot_preview'));
@@ -97,6 +100,8 @@
       if ($('body').hasClass('node-type-movie')) {
         Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
       } else if ($('body').hasClass('node-type-usanetwork-aspot')) {
+        Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+      } else if ($('body').hasClass('home-preview-page')) {
         Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
       }
     }

@@ -6,7 +6,7 @@ var homeAspot, showAspot;
 
     defaultFontSettings: {
       stepUpDown: 1,
-      defaultStepPosition: 6, // min value 0 || max value 12
+      defaultStepPosition: 7, // min value 1, max value 12
       homePage: {
         mobile: {
           title_prefix: {
@@ -902,7 +902,7 @@ var homeAspot, showAspot;
 
 
         if (activeItem.hasClass('increase-font')) {
-          if (stepCounterNum < 12) {
+          if (stepCounterNum < 13) {
             newCounter = stepCounterNum + fontStepUpDown;
             newFontSize = mathNewFontSize(currentFontSize, fontSizeStep);
             // update step counter
@@ -913,7 +913,7 @@ var homeAspot, showAspot;
             currentField.css('fontSize', newFontSize + 'px');
           }
         } else if (activeItem.hasClass('decrease-font')) {
-          if (stepCounterNum > 0) {
+          if (stepCounterNum > 1) {
             newCounter = stepCounterNum - fontStepUpDown;
             newFontSize = mathNewFontSize(currentFontSize, -fontSizeStep);
             // update step counter

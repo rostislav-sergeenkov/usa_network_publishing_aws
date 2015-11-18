@@ -422,6 +422,8 @@ var homeAspot, showAspot;
               fieldFontSize = editFontField.find('.field-font-size'),
               fieldFontSizeMobile = editFontFieldMobile.find('.field-font-size');
 
+          // console.info(itemDataRel);
+
           //desktop
           var mapCX = Math.round(carouselElementPreviewingBlock.width() / 2);
           var mapCY = Math.round(carouselElementPreviewingBlock.height() / 2);
@@ -435,7 +437,7 @@ var homeAspot, showAspot;
           var fieldFontSizeNum = parseFloat(fieldFontSize.text());
           var fieldStepCounter = parseFloat(fieldFontSize.attr('data-step-counter'));
 
-          console.info(fieldFontSizeNum, fieldStepCounter);
+          // console.info('desktop', 'fieldWidth:' + fieldWidthPercent, 'fieldFontSize: ' + fieldFontSizeNum, 'fieldStepCounter: ' + fieldStepCounter);
 
           if (widthPercent < 0) {
             widthPercent = 0;
@@ -456,7 +458,7 @@ var homeAspot, showAspot;
           var fieldFontSizeNumM = parseFloat(fieldFontSizeMobile.text());
           var fieldStepCounterM = parseFloat(fieldFontSizeMobile.attr('data-step-counter'));
 
-          console.info(fieldFontSizeNumM, fieldStepCounterM);
+          // console.info('mobile', 'fieldWidth:' + fieldWidthPercentM, 'fieldFontSize: ' + fieldFontSizeNumM, 'fieldStepCounter: ' + fieldStepCounterM);
 
           if (widthPercent_m < 0) {
             widthPercent_m = 0;
@@ -557,9 +559,9 @@ var homeAspot, showAspot;
             '<div class="button" data-button="align">Align lefts to Title</div></div>' +
             '<div class="edit-font-wrapper">' +
             '<h2>Change font size</h2>' +
-            '<div class="edit-field-size" data-field-name="title_prefix">Title prefix <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.desktop.title_prefix.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
-            '<div class="edit-field-size" data-field-name="title">Title <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.desktop.title.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
-            '<div class="edit-field-size" data-field-name="aspot_description">Description <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.desktop.aspot_description.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
+            '<div class="edit-field-size" data-field-name="title_prefix"><span class="name">Title prefix</span><button class="decrease-font font-button">-</button><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.desktop.title_prefix.step + '" data-step-counter=""></span><button class="increase-font font-button">+</button></div>' +
+            '<div class="edit-field-size" data-field-name="title"><span class="name">Title</span><button class="decrease-font font-button">-</button><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.desktop.title.step + '" data-step-counter=""></span><button class="increase-font font-button">+</button></div>' +
+            '<div class="edit-field-size" data-field-name="aspot_description"><span class="name">Description</span><button class="decrease-font font-button">-</button><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.desktop.aspot_description.step + '" data-step-counter=""></span><button class="increase-font font-button">+</button></div>' +
             '</div>'
         );
 
@@ -570,9 +572,9 @@ var homeAspot, showAspot;
             '<div class="button" data-button="align">Align lefts to Title</div></div>' +
             '<div class="edit-font-wrapper">' +
             '<h2>Change font size</h2>' +
-            '<div class="edit-field-size" data-field-name="title_prefix">Title prefix <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.mobile.title_prefix.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
-            '<div class="edit-field-size" data-field-name="title">Title <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.mobile.title.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
-            '<div class="edit-field-size" data-field-name="aspot_description">Description <span class="decrease-font font-button">-</span><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.mobile.aspot_description.step + '" data-step-counter=""></span><span class="increase-font font-button">+</span></div>' +
+            '<div class="edit-field-size" data-field-name="title_prefix"><span class="name">Title prefix</span><button class="decrease-font font-button">-</button><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.mobile.title_prefix.step + '" data-step-counter=""></span><button class="increase-font font-button">+</button></div>' +
+            '<div class="edit-field-size" data-field-name="title"><span class="name">Title</span><button class="decrease-font font-button">-</button><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.mobile.title.step + '" data-step-counter=""></span><button class="increase-font font-button">+</button></div>' +
+            '<div class="edit-field-size" data-field-name="aspot_description"><span class="name">Description</span><button class="decrease-font font-button">-</button><span class="field-font-size" data-default-font-size="" data-font-size-step="' + defaultFontSize.mobile.aspot_description.step + '" data-step-counter=""></span><button class="increase-font font-button">+</button></div>' +
             '</div>'
         );
 
@@ -649,8 +651,6 @@ var homeAspot, showAspot;
               fieldFontSize = parseFloat(fieldDrag.css('fontSize')),
               fontSizeBlock = _self.find('.field-font-size');
 
-          console.info(fieldName);
-
           // set default font size for each field
           defaultFontSize[version][fieldName].default_font_size = fieldFontSize;
           fontSizeBlock.attr('data-default-font-size', fieldFontSize);
@@ -665,12 +665,10 @@ var homeAspot, showAspot;
 
           if (currentFontSize !== fieldFontSize && typeof currentFontSize !== 'undefined') {
             fieldFontSize = currentFontSize;
-            console.info(1)
           }
 
           if (defaultStepPosition !== currentStep && typeof currentFontSize !== 'undefined') {
             defaultStepPosition = currentStep;
-            console.info(2)
           }
 
           fontSizeBlock.attr('data-step-counter', defaultStepPosition);
@@ -887,6 +885,8 @@ var homeAspot, showAspot;
 
       // default settings for draggable elements on cklick
       carouselElementPreviewingContainer.on('click', '.edit-field-size', function (e) {
+
+        e.preventDefault();
 
         var activeItem = $(e.target),
             activeItemParent = $(e.currentTarget),

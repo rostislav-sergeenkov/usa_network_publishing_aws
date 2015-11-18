@@ -5533,6 +5533,11 @@ header .show-title-wrapper {
     display: block;
   }
 }
+@media (max-width: 480px) {
+  header .show-title-wrapper {
+    max-height: 50px;
+  }
+}
 header .nav-bar-tabs {
   float: left;
   height: 100%;
@@ -16914,6 +16919,13 @@ footer h2 {
 .show-title-block h1 a, .show-title-block h2 a {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+}
+@media (max-width: 480px) {
+  .show-title-block h1 a, .show-title-block h2 a {
+    display: block;
+    line-height: 1.25;
+    max-height: 50px;
+  }
 }
 .show-title-block h1 a:hover, .show-title-block h2 a:hover {
   color: #ffffff;

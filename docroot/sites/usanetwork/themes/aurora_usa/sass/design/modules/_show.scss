@@ -1237,11 +1237,16 @@
     a {
       color: #ffffff;
       font-family: $avalon-medium;
+      @include breakpoint($bp-480-width) {
+        display: block;
+        line-height: 1.25;
+        max-height: 50px;
+      }
       &:hover {
         color: #ffffff;
       }
       &:focus {
-      outline: none;
+        outline: none;
       }
     }
   }

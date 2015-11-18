@@ -569,10 +569,11 @@ function _usanetwork_menu_main_menu_block() {
   $show = menu_get_object();
   if (isset($show->type) && $show->type == 'tv_show') {
     $items[] = array(
-      'data' => l($show->title, 'javascript:void(0)', array('fragment' => '', 'external' => true, 'attributes' => array('class' => array('show-color', 'show-border')))),
+      'data' => l($show->title, 'javascript:void(0)', array('fragment' => '', 'external' => true, 'attributes' => array('class' => array('show-color', 'show-border', 'active')))),
       'class' => array(
         'expanded',
         'header-show-menu',
+        'active',
       ),
     );
   }
@@ -582,10 +583,11 @@ function _usanetwork_menu_main_menu_block() {
     if (!empty($blog_show_id)) {
       $blog_show = node_load($blog_show_id);
       $items[] = array(
-        'data' => l($blog_show->title, 'javascript:void(0)', array('fragment' => '', 'external' => true, 'attributes' => array('class' => array('show-color', 'show-border')))),
+        'data' => l($blog_show->title, 'javascript:void(0)', array('fragment' => '', 'external' => true, 'attributes' => array('class' => array('show-color', 'show-border', 'active')))),
         'class' => array(
           'expanded',
           'header-show-menu',
+          'active',
         ),
       );
     }

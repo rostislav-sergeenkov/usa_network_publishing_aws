@@ -52,7 +52,8 @@
                   }
                 }
 
-                if($('body').hasClass('usa-tv-show')) {
+                if($('body').hasClass('usa-tv-show') || container.attr('id') === 'show_aspot_preview') {
+
                   if(!self.data('between-width')) {
                     if (elWidth === 'auto') {
                       self.attr('data-between-width', elWidth);

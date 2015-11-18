@@ -101,8 +101,6 @@
         Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
       } else if ($('body').hasClass('node-type-usanetwork-aspot')) {
         Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
-      } else if ($('body').hasClass('home-preview-page')) {
-        Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
       }
     }
   };

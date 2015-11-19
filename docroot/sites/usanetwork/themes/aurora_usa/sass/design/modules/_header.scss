@@ -358,7 +358,7 @@ header {
           }
         }
       }
-      a {
+      a, h1, h2 {
         background: $header-tab-back;
         border-left: 1px solid $header-tab-back;
         border-right: 1px solid $header-tab-back;

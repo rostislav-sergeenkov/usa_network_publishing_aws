@@ -21,10 +21,8 @@
       </div>
     <?php endif; ?>
     <div class="menu-item tab video-title info">
-      <h2>
-        <a class="no-refresh nolink" data-state>
-          <span><?php if (!empty($details['gallery_type'])): ?><?php print $details['gallery_type'] . ': '; ?><?php endif; ?><?php print $gallery_name; ?></span>
-        </a>
+      <h2 class="no-refresh nolink" data-state>
+        <span><?php if (!empty($details['gallery_type'])): ?><?php print $details['gallery_type'] . ': '; ?><?php endif; ?><?php print $gallery_name; ?></span>
       </h2>
     </div>
   </div>

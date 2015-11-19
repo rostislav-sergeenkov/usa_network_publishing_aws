@@ -271,6 +271,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
       array_unshift($gallery_field, reset($image_cover_field));
     }
 
+    $endcard_enabled = _usanetwork_get_field_item('node', $node, 'field_enable_nitro', 'value');
     $endcard_path = _usanetwork_get_field_item('node', $node, 'field_nitro_action_name', 'value');
 
     if (!empty($gallery_field) && is_array($gallery_field)) {
@@ -297,9 +298,11 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
           $slide_variables['info']['description'] = strip_tags($caption_field[0]['value'], '<a>');
         }
 
-        if ($gallery_file == (object) end($gallery_field)) {
-          if (!empty($endcard_path)) {
-            $slide_variables['endcard_path'] = $endcard_path;
+        if (!empty($endcard_enabled)) {
+          if ($gallery_file == (object)end($gallery_field)) {
+            if (!empty($endcard_path)) {
+              $slide_variables['endcard_path'] = $endcard_path;
+            }
           }
         }
 

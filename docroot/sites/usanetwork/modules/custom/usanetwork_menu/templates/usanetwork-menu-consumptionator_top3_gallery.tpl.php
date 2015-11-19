@@ -21,10 +21,8 @@
       </div>
     <?php endif; ?>
     <div class="menu-item tab video-title info">
-      <h2>
-        <a class="no-refresh nolink" data-state>
-          <span><?php print $title; ?></span>
-        </a>
+      <h2 class="no-refresh nolink" data-state>
+        <span><?php print $title; ?></span>
       </h2>
     </div>
   </div>

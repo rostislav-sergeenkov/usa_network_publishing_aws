@@ -19,10 +19,8 @@
       </a>
     </div>
     <div class="menu-item tab video-title info">
-      <h2>
-        <a class="no-refresh nolink" data-state>
-          <span><?php print t('Episode guide: '); ?><?php print $episode_name; ?></span>
-        </a>
+      <h2 class="no-refresh nolink" data-state>
+        <span><?php print t('Episode guide: '); ?><?php print $episode_name; ?></span>
       </h2>
     </div>
   </div>

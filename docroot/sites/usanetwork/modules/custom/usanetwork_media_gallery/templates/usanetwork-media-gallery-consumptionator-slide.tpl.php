@@ -12,10 +12,10 @@
     <?php if (!empty($image)): ?>
       <?php if (!empty($endcard_path)) : ?>
         <a href="<?php print $endcard_path; ?>">
-          <?php print $image; ?><?php endif; ?>
+          <?php print $image; ?>
         </a>
       <?php else : ?>
-        <?php if (!empty($image)): ?><?php print $image; ?>
+        <?php print $image; ?>
       <?php endif; ?>
     <?php endif; ?>
   </div>

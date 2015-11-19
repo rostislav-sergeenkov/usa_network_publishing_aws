@@ -456,37 +456,6 @@ function usanetwork_aspot_node_view($node, $view_mode, $langcode) {
 function usanetwork_aspot_image_default_styles() {
   $styles = array();
 
-  // Exported image style: Desktop 2500x1094.
-  $styles['2500x1094'] = array(
-    'name' => '2500x1094',
-    'label' => '2500x1094',
-    'effects' => array(
-      0 => array(
-        'name' => 'focal_point_scale_and_crop',
-        'data' => array(
-          'width' => 2500,
-          'height' => 1094,
-        ),
-        'weight' => 0,
-      ),
-      1 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 2500,
-          'height' => 1094,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
-
   // Exported image style: Tablet 1024px x 448px.
   $styles['1024x448'] = array(
     'name' => '1024x448',
@@ -543,68 +512,6 @@ function usanetwork_aspot_image_default_styles() {
         'data' => array(
           'width' => 2048,
           'height' => 896,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
-
-  // Exported image style: Mobile 640x640.
-  $styles['640x640'] = array(
-    'name' => '640x640',
-    'label' => '640x640',
-    'effects' => array(
-      0 => array(
-        'name' => 'focal_point_scale_and_crop',
-        'data' => array(
-          'width' => 640,
-          'height' => 640,
-        ),
-        'weight' => 0,
-      ),
-      1 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 640,
-          'height' => 640,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
-
-  // Exported image style: Mobile retina 1280x1280.
-  $styles['1280x1280'] = array(
-    'name' => '1280x1280',
-    'label' => '1280x1280',
-    'effects' => array(
-      0 => array(
-        'name' => 'focal_point_scale_and_crop',
-        'data' => array(
-          'width' => 1280,
-          'height' => 1280,
-        ),
-        'weight' => 0,
-      ),
-      1 => array(
-        'label' => 'Scale and crop',
-        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
-        'effect callback' => 'image_scale_and_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'image_resize_form',
-        'summary theme' => 'image_resize_summary',
-        'module' => 'image',
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 1280,
-          'height' => 1280,
         ),
         'weight' => 1,
       ),

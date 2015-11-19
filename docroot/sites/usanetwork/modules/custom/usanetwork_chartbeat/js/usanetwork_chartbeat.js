@@ -24,6 +24,9 @@
       _sf_async_config.type = AdobeTracking.contentType;
     }
   }
+
+  _sf_async_config.authors = _sf_async_config.type;
+
   /** CONFIGURATION END **/
   (function() {
     function loadChartbeat() {

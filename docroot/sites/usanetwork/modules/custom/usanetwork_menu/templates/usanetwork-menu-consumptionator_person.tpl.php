@@ -19,11 +19,9 @@
       </a>
     </div>
     <div class="menu-item tab video-title info">
-      <h2>
-        <a class="no-refresh nolink" data-state>
+        <h2 class="no-refresh nolink" data-state>
           <span><?php print t('Character bio');?>: <?php print $person_name; ?></span>
-        </a>
-      </h2>
+        </h2>
     </div>
   </div>
   <?php if (!empty($authbar)) : ?>

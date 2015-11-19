@@ -9,7 +9,15 @@
 ?>
 <div class="node node-gallery<?php if (!$gigya_id): ?> end-cart<?php endif; ?>">
   <div class="asset-img">
-    <?php if (!empty($image)): ?><?php print $image; ?><?php endif; ?>
+    <?php if (!empty($image)): ?>
+      <?php if (!empty($endcard_path)) : ?>
+        <a href="<?php print $endcard_path; ?>">
+          <?php print $image; ?><?php endif; ?>
+        </a>
+      <?php else : ?>
+        <?php if (!empty($image)): ?><?php print $image; ?>
+      <?php endif; ?>
+    <?php endif; ?>
   </div>
   <div class="slide-info">
     <div class="description">

@@ -227,7 +227,7 @@
             // HIDE SIGN TAB IF EXIST
             if ($('.page-videos .sign-in-link').length) {
               $('.page-videos .sign-in-link').removeClass('active');
-              $('.tab-item.log-in').slideUp(350).removeClass('active');
+              $('.tab-item.log-in').slideUp(animation_speed).removeClass('active');
             }
 
             // HIDE SEARCH BLOCK

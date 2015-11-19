@@ -45,6 +45,10 @@ function usanetwork_taboola_block_view($delta = '')
  * Taboola Block for Video Page
  */
 function _usanetwork_taboola_video_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
   drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header.js', array('type' => 'file', 'scope' => 'header'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_footer.js', array('type' => 'file', 'scope' => 'footer'));
 
@@ -68,6 +72,10 @@ function _usanetwork_taboola_video_block() {
  * Taboola Block for Megia Gallery Page
  */
 function _usanetwork_taboola_gallery_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
   drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header.js', array('type' => 'file', 'scope' => 'header'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_footer.js', array('type' => 'file', 'scope' => 'footer'));
 

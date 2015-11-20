@@ -54,11 +54,17 @@
  *       'scene_number' => scene number,
  *       'image_src' => image src,
  *       'description' => description,
+ *       'type' => file type ('image' or 'video'),
+ *       'video' => video src,
+ *       'video_link' => video link,
  *     ),
  *     'season_name' => season title,
  *     'episode_name' => episode_title,
  *   )
  *
+ * Video player variables:
+ * - $player' => player src.
+ * - $isset_video' => check existing video content.
  * @see template_preprocess_field()
  * @see theme_field()
  *

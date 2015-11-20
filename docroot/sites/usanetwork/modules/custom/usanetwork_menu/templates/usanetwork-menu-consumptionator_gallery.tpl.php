@@ -23,7 +23,9 @@
     <div class="menu-item tab video-title info">
       <h2>
         <a class="no-refresh nolink" data-state>
-          <span><?php if (!empty($details['gallery_type'])): ?><?php print $details['gallery_type'] . ': '; ?><?php endif; ?><?php print $gallery_name; ?></span>
+          <div class="table-wrapper">
+            <span><?php if (!empty($details['gallery_type'])): ?><?php print $details['gallery_type'] . ': '; ?><?php endif; ?><?php print $gallery_name; ?></span>
+          </div>
         </a>
       </h2>
     </div>

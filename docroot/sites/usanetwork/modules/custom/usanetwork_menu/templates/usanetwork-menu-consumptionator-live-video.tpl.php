@@ -23,7 +23,9 @@
     <div class="menu-item tab video-title info">
       <h1>
         <a class="no-refresh nolink" data-state>
-          <span><?php print t('Live: USA Live TV'); ?></span>
+          <div class="table-wrapper">
+            <span><?php print t('Live: USA Live TV'); ?></span>
+          </div>
         </a>
       </h1>
     </div>

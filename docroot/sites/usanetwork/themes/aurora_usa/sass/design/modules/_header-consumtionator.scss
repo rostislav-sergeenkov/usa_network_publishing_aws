@@ -135,22 +135,13 @@
               border-right: none;
               width: 50px;
             }
-            a, h1, h2 {
-              background: none;
-              border-left: 0;
-              border-right: 0;
-              color: #ffffff;
-              font-family: $avalon-medium;
+            a {
               padding-left: get-vw(71px, 1025);
               display: table;
               height: 100%;
-              letter-spacing: 0.5px;
               line-height: 1.2;
-              margin: 0 auto;
-              overflow: hidden;
               position: relative;
               text-align: left;
-              text-decoration: none;
               white-space: normal;
               @include breakpoint($bp-min-1025-width) {
                 padding-top: get-vw(4px, 1901);
@@ -167,12 +158,8 @@
                 padding: 0;
                 width: 50px;
               }
-              @include breakpoint($bp-640-width) {
-                font-size: 14px;
-              }
               span {
                 display: table-cell;
-                font-family: $avalon-medium;
                 vertical-align: middle;
                 @include breakpoint($bp-768-width) {
                   display: none;

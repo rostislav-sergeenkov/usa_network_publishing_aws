@@ -21,14 +21,16 @@
       </a>
     </div>
     <div class="menu-item tab video-title info">
-      <h2 class="no-refresh nolink" data-state>
-        <span>
-          <?php if ($episode['is_show_related']): ?>
-            <?php print $episode['video_type'];?>: <?php print $episode['title']; ?>
-          <?php else: ?>
-            <?php print $episode['title']; ?>
-          <?php endif; ?>
-        </span>
+      <h2>
+        <a class="no-refresh nolink" data-state>
+          <span>
+            <?php if ($episode['is_show_related']): ?>
+              <?php print $episode['video_type'];?>: <?php print $episode['title']; ?>
+            <?php else: ?>
+              <?php print $episode['title']; ?>
+            <?php endif; ?>
+          </span>
+        </a>
       </h2>
     </div>
     <?php if (!empty($sponsored)) : ?>

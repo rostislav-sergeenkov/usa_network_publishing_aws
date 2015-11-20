@@ -5792,7 +5792,7 @@ header .nav-bar-tabs {
   header .nav-bar-tabs .tab .item-list ul {
     margin: 0;
   }
-  header .nav-bar-tabs a, header .nav-bar-tabs h1, header .nav-bar-tabs h2 {
+  header .nav-bar-tabs a {
     background: #e1e1e1;
     border-left: 1px solid #e1e1e1;
     border-right: 1px solid #e1e1e1;
@@ -5809,34 +5809,34 @@ header .nav-bar-tabs {
     text-decoration: none;
     text-transform: uppercase;
   }
-  header .nav-bar-tabs a.active, header .nav-bar-tabs h1.active, header .nav-bar-tabs h2.active {
+  header .nav-bar-tabs a.active {
     background: #363435;
     color: #ffffff;
   }
-  header .nav-bar-tabs a.active:hover, header .nav-bar-tabs h1.active:hover, header .nav-bar-tabs h2.active:hover {
+  header .nav-bar-tabs a.active:hover {
     background: #363435;
   }
-  header .nav-bar-tabs a:hover, header .nav-bar-tabs h1:hover, header .nav-bar-tabs h2:hover {
+  header .nav-bar-tabs a:hover {
     background: darkgrey;
   }
-  header .nav-bar-tabs a:focus, header .nav-bar-tabs a:visited, header .nav-bar-tabs a:active, header .nav-bar-tabs h1:focus, header .nav-bar-tabs h1:visited, header .nav-bar-tabs h1:active, header .nav-bar-tabs h2:focus, header .nav-bar-tabs h2:visited, header .nav-bar-tabs h2:active {
+  header .nav-bar-tabs a:focus, header .nav-bar-tabs a:visited, header .nav-bar-tabs a:active {
     outline: none;
   }
 }
 @media (min-width: 769px) and (min-width: 1901px) {
-  header .nav-bar-tabs a, header .nav-bar-tabs h1, header .nav-bar-tabs h2 {
+  header .nav-bar-tabs a {
     font-size: 24px;
     line-height: 135px;
     padding: 0 89px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  header .nav-bar-tabs a, header .nav-bar-tabs h1, header .nav-bar-tabs h2 {
+  header .nav-bar-tabs a {
     font-size: 13px;
   }
 }
 @media (min-width: 769px) and (max-width: 768px) {
-  header .nav-bar-tabs a, header .nav-bar-tabs h1, header .nav-bar-tabs h2 {
+  header .nav-bar-tabs a {
     line-height: 50px;
     padding: 0 36px;
   }
@@ -8242,63 +8242,48 @@ header .tve-help-link.signIn .inlineLoader {
     width: 50px;
   }
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2 {
-  background: none;
-  border-left: 0;
-  border-right: 0;
-  color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
   padding-left: 6.92683vw;
   display: table;
   height: 100%;
-  letter-spacing: 0.5px;
   line-height: 1.2;
-  margin: 0 auto;
-  overflow: hidden;
   position: relative;
   text-align: left;
-  text-decoration: none;
   white-space: normal;
 }
 @media (min-width: 1025px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2 {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
     padding-top: 0.21042vw;
   }
 }
 @media (min-width: 1901px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2 {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
     padding-left: 132px;
     padding-top: 4px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2 {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
     padding-top: 0.34146vw;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2 {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
     overflow: hidden;
     padding: 0;
     width: 50px;
   }
 }
-@media (max-width: 640px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2 {
-    font-size: 14px;
-  }
-}
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1 span, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2 span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1 span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2 span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1 span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2 span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1 span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2 span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1 span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2 span {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a span {
   display: table-cell;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   vertical-align: middle;
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1 span, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2 span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1 span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2 span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1 span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2 span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1 span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2 span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1 span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2 span {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a span {
     display: none;
   }
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
   content: '\e61d';
   display: block;
   font-family: "ico-font";
@@ -8310,27 +8295,27 @@ header .tve-help-link.signIn .inlineLoader {
   top: 50%;
 }
 @media (min-width: 1901px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
     left: 42px;
     margin-top: -24px;
     font-size: 48px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2:before {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {
     left: 50%;
     font-size: 20px;
     margin-left: -10px;
     margin-top: -10px;
   }
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh:hover, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh:hover, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh:hover, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh:hover, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh:hover, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh:hover, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh:hover, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh:hover, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh:hover, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh:hover {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh:hover {
   background: #363636;
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh.active, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh.active, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh.active, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh.active, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh.active, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh.active, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh.active, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh.active, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh.active, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh.active {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active {
   background: #363435;
 }
-.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh.active:before, .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh.active:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh.active:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh.active:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh.active:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh.active:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh.active:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh.active:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h1.no-refresh.active:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info h2.no-refresh.active:before {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a.no-refresh.active:before {
   background-color: inherit;
 }
 @media (max-width: 768px) {

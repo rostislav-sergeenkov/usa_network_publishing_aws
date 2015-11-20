@@ -11490,6 +11490,12 @@ footer h2 {
     overflow: visible;
   }
 }
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .node-type-tv-episode .view-mode-inline_content .gallery-wrapper, .node-type-consumpt-post .view-mode-inline_content .gallery-wrapper {
+    height: calc((100vw - 395px) * 0.5625);
+    overflow: hidden;
+  }
+}
 
 .featured-block {
   background: #e9eaeb;
@@ -14739,7 +14745,7 @@ footer h2 {
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
-    padding: 38px 58px 76px 45px;
+    padding: 38px 43px 76px 32px;
   }
 }
 @media (max-width: 1024px) {

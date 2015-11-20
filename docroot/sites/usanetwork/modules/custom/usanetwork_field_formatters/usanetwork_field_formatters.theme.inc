@@ -42,7 +42,7 @@ function theme_flexslider_file_entity($vars) {
  * Default theme implementation for 'bxslide_file_entity'.
  */
 function theme_bxslide_file_entity($vars) {
-  drupal_add_js(path_to_theme() . '/javascripts/consumptionator-gallery.js');
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-gallery.js');
   $element = $vars['element']['#object'];
   $output = _usanetwork_media_gallery_consumptionator_gallery_slides_block($element);
   return $output;

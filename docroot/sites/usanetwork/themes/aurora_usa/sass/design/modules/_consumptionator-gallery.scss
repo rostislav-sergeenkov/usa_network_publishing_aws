@@ -574,4 +574,12 @@
       overflow: visible;
     }
   }
+  .view-mode-inline_content {
+    .gallery-wrapper {
+      @include breakpoint($between-1025-1280) {
+        height: calc((100vw - 395px) * 0.5625);
+        overflow: hidden;
+      }
+    }
+  }
 }

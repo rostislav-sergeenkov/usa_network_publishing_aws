@@ -259,7 +259,7 @@
 
   $(document).ready(function () {
     // bxslider-gallery slider initialization
-    if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post')) {
+    if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post') || $('.gallery-wrapper').parent().hasClass('view-mode-inline_content')) {
 
       if ($('#bxslider-gallery').length == 0) {
         return false;

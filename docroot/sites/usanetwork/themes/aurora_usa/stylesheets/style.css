@@ -8244,7 +8244,7 @@ header .tve-help-link.signIn .inlineLoader {
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
   padding-left: 6.92683vw;
-  display: table;
+  display: block;
   height: 100%;
   line-height: 1.2;
   position: relative;
@@ -8272,6 +8272,15 @@ header .tve-help-link.signIn .inlineLoader {
     overflow: hidden;
     padding: 0;
     width: 50px;
+  }
+}
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a .table-wrapper, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a .table-wrapper, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a .table-wrapper, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a .table-wrapper, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a .table-wrapper {
+  display: table;
+  height: 100%;
+}
+@media (max-width: 768px) {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a .table-wrapper, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a .table-wrapper, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a .table-wrapper, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a .table-wrapper, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a .table-wrapper {
+    display: none;
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a span {

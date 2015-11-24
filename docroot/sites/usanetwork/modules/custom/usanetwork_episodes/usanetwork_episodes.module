@@ -379,9 +379,10 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
   }
 
   $season_ids = _usanetwork_episodes_get_season_ids($tv_show_node->nid);
-  $query = drupal_get_query_parameters();
-  $filter_by_season = $single_season_number === NULL
-    ? (isset($query['season']) ? intval($query['season']) : 0)
+
+  $arg = arg(3);
+  $filter_by_season = (preg_match(('/^season-(\d+)$/'), $arg, $matches))
+    ? (isset($matches[1]) ? intval($matches[1]) : 0)
     : $single_season_number;
 
   $current_season_data_item = NULL;
@@ -454,7 +455,6 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
       );
 
       foreach ($season_ids as $item_index => $season_id) {
-        $filter_url_arguments = http_build_query(array('season' => $season_id->season_number));
         $active = $filter_by_season == $season_id->season_number
           ? TRUE
           : FALSE;
@@ -462,8 +462,8 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
         $theme_variables['filters'][$season_id->season_number] = array(
           'title' => $season_id->season_title,
           'value' => $season_id->season_number,
-          'url' => !empty($filter_url_arguments)
-            ? url('node/' . $tv_show_node->nid . '/episodes') . '?' . $filter_url_arguments
+          'url' => !empty($season_id->season_number)
+            ? url('node/' . $tv_show_node->nid . '/episodes/season-' . $season_id->season_number)
             : url('node/' . $tv_show_node->nid . '/episodes'),
           'active' => $active,
         );

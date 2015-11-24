@@ -811,6 +811,11 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
   );
   drupal_alter('usa_omniture', $omniture_variables, $context);
 
+//  if ($current_menu_object) {
+//    $custom_omniture_variables = _usanetwork_ads_get_entity_omniture_variables($current_menu_object, $entity_type);
+//    $omniture_variables = $custom_omniture_variables + $omniture_variables;
+//  }
+
   if ($omniture_variables) {
     return array('variables' => $omniture_variables);
   }

@@ -11224,7 +11224,7 @@ footer h2 {
   height: 100%;
   position: relative;
 }
-.consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper {
+.consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper {
   bottom: 120px;
   right: 50%;
   overflow: hidden;
@@ -11232,7 +11232,7 @@ footer h2 {
   z-index: 51;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper {
+  .consumptionator-page .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-type-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-type-tv-episode .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-type-consumpt-post .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper {
     bottom: auto;
     top: calc(56.25vw + 13px);
   }
@@ -11573,13 +11573,13 @@ footer h2 {
   }
 }
 @media (min-width: 641px) and (max-width: 1024px) {
-  .cast-and-info-description .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .movie-info-description .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper {
+  .cast-and-info-description .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .movie-info-description .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper {
     bottom: auto;
     top: calc((100vw - 340px) * 0.5625 + 13px);
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .cast-and-info-description .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .movie-info-description .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper {
+  .cast-and-info-description .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .movie-info-description .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper {
     top: calc((100vw - 340px) * 0.5625 + 18px);
   }
 }
@@ -11734,7 +11734,7 @@ footer h2 {
   font-size: 12px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-type-post .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper {
+.block-character-info-content .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-type-post .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper {
   bottom: auto;
   right: 50%;
   overflow: hidden;
@@ -11743,7 +11743,7 @@ footer h2 {
   z-index: 51;
 }
 @media (min-width: 2500px) {
-  .block-character-info-content .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper, .node-type-post .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls #bx-custom-pager-wrapper {
+  .block-character-info-content .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-type-post .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper {
     top: 491px;
   }
 }

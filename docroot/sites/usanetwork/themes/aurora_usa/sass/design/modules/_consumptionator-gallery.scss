@@ -333,7 +333,7 @@
       height: 100%;
       position: relative;
       .bx-controls {
-        #bx-custom-pager-wrapper {
+        .bx-custom-pager-wrapper {
           bottom: 120px;
           right: 50%;
           overflow: hidden;
@@ -676,7 +676,7 @@
       }
       .bx-wrapper {
         .bx-controls {
-          #bx-custom-pager-wrapper {
+          .bx-custom-pager-wrapper {
             @include breakpoint($between-641-1024) {
               bottom: auto;
               top: calc((100vw - 340px) * 0.5625 + 13px);
@@ -848,7 +848,7 @@
       }
       .bx-wrapper {
         .bx-controls {
-          #bx-custom-pager-wrapper {
+          .bx-custom-pager-wrapper {
             bottom: auto;
             right: 50%;
             overflow: hidden;

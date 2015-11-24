@@ -40,6 +40,11 @@ function usanetwork_field_formatters_field_formatter_info() {
         'optionset' => '',
       ),
     );
+    $custom_formatters['bxslide_file_entity'] = array(
+      'label' => t('BXSlider'),
+      'field types' => array('file'),
+      'description' => t('The formatter to display file entity in a BXSlider.'),
+    );
   }
 
   return $custom_formatters;
@@ -222,6 +227,11 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
         '#settings' => $display['settings'],
       );
       break;
+    case 'bxslide_file_entity':
+      $element = array(
+        '#theme' => 'bxslide_file_entity',
+      );
+      break;
   }
 
   return $element;
@@ -246,6 +256,11 @@ function usanetwork_field_formatters_theme() {
   $items['custom_css_ajax_formatter'] = array(
     //'render element' => 'element',
     'variables' => array('data' => NULL),
+    'file' => 'usanetwork_field_formatters.theme.inc',
+  );
+
+  $items['bxslide_file_entity'] = array(
+    'render element' => 'element',
     'file' => 'usanetwork_field_formatters.theme.inc',
   );
 

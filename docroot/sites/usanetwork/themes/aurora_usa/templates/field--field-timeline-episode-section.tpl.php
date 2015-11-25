@@ -88,6 +88,9 @@ $firstScene = true;
   <!-- BEGIN TIMELINE -->
   <div class="timelineFlat timelineFlatPortfolio tl3" data-share-title="<?php print $shareTitle; ?>" data-share-description="<?php print $shareDescription; ?>">
 
+    <div id="player-wrapper" data-player-src="<?php print $player; ?>"></div>
+    <div id="play-button" class="round-button"></div>
+
 <?php foreach($tg_items as $seasonNum => $season): ?>
   <?php foreach($season as $episodeNum => $episode): ?>
     <?php print '<!-- Season ' . $seasonNum . ' | Episode ' . $episodeNum . ': ' . $episode['episode_name'] . ' -->' . "\n"; ?>

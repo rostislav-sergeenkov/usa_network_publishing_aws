@@ -189,7 +189,6 @@
           if (playerService.clickOnThumb) {
             playerService.clickOnThumb = false;
           }
-
         }
 
         function _onMediaPause(pdkEvent) {

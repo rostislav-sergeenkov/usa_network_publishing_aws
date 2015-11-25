@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -17196,6 +17196,9 @@ footer h2 {
   }
 }
 
+.node-type-timeline-gallery #player-wrapper {
+  position: absolute;
+}
 .node-type-timeline-gallery .sharebar .field-type-gigya-sharebar {
   width: 100%;
   margin: 0;

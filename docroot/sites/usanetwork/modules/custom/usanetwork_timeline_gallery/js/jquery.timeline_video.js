@@ -136,17 +136,26 @@ Project demo: http://shindiristudio.com/timeline
     videoService: function() {
 
       // sets vars
-      var playerWrapper = $('#player-wrapper'),
+      var tlGallery = $('.tl3'),
+          playerWrapper = $('#player-wrapper'),
           playerWrapperSrc = playerWrapper.data('player-src'),
-          playButton = $('#play-button'),
-          idPlayer = 'pdk-player';
+          idPlayer = 'pdk-player',
+          isMobileDevice = usa_deviceInfo.mobileDevice,
+          playButton;
 
-      // timeline-item
+      // check on player-wrapper
+      if (playerWrapper.length < 1) {
+        console.info('player-wrapper not found');
+        return false;
+      }
 
-      console.info('pl 1');
+      console.info('player');
 
       // create player api
       var playerApi = {
+
+        statusVideoStart: false,
+
         // create iframe
         createPlayer: function () {
           console.info('createPlayer');
@@ -165,25 +174,26 @@ Project demo: http://shindiristudio.com/timeline
         setPositionPlayer: function () {
           console.info('setPositionPlayer');
 
-          var tlGallery = $('.tl3'),
-              tlItems = tlGallery.find('.timeline-items'),
-              activeSlideItem = tlGallery.find('.timeline-item.active'),
+          var activeSlideItem = tlGallery.find('.timeline-item.active'),
               activeSlideItemMarginLeft = parseFloat(activeSlideItem.css('marginLeft')),
               activeSlideItemPosition = activeSlideItem.position(),
-              activeSlideImg = activeSlideItem.find('.timeline-item-image img'),
+              activeSlideImg = activeSlideItem.find('.timeline-item-image'),
               activeSlideImgHeight = activeSlideImg.innerHeight(),
               activeSlideImgWidth = activeSlideImg.innerWidth(),
+          // player position top
               positionTop = activeSlideItemPosition.top,
+          // player position left
               positionLeft = activeSlideItemPosition.left + activeSlideItemMarginLeft;
 
-          console.info(activeSlideImgHeight, activeSlideImgWidth);
+          console.info(activeSlideItemPosition);
 
-
+          // set player css
           playerWrapper.css({
+            'height': activeSlideImgHeight + 'px',
+            'width': activeSlideImgWidth + 'px',
             'left': positionLeft + 'px',
             'top': positionTop + 'px'
           });
-
         },
 
         // add player listeners
@@ -197,56 +207,144 @@ Project demo: http://shindiristudio.com/timeline
           console.info('bindPlayer');
 
           $pdk.bind(idPlayer);
+
+          $pdk.controller.addEventListener('OnMediaLoadStart', _onMediaLoadStart);
+          $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+
+          function _onMediaLoadStart(pdkEvent) {
+            console.info('_onMediaLoadStart');
+            playerApi.statusVideoStart = true
+          }
+
+          function _onReleaseEnd(pdkEvent) {
+            console.info('playVideo');
+
+            if (playerApi.statusVideoStart) {
+              // change status
+              playerApi.statusVideoStart = false;
+              // hide player
+              playerApi.hidePlayer();
+            }
+          }
         },
 
         playVideo: function () {
-          $pdk.controller.pause();
+          console.info('playVideo');
+          $pdk.controller.clickPlayButton();
+          //$pdk.controller.pause(false);
         },
 
         pauseVideo: function () {
+          console.info('pauseVideo');
           $pdk.controller.pause(true);
         },
 
-        showPlayer: function () {
+        // change video in player
+        setRelease: function (srcLink) {
+          console.info('setRelease');
+          if (isMobileDevice) {
+            $pdk.controller.loadReleaseURL(srcLink, true);
+          } else {
+            $pdk.controller.setReleaseURL(srcLink, true);
+          }
+        },
 
+        // reload frame if setRelise fail
+        reloadFrame: function (srcLink) {
+          console.info('reloadFrame');
+          var player = playerWrapper.find(idPlayer);
+          // check on srcLink
+          if (srcLink != '' && typeof srcLink !== 'undefined') {
+            // change video in player
+            player.attr('src', srcLink);
+          }
+        },
 
+        showPlayer: function (videoData) {
+          console.info('showPlayer');
 
+          var src = videoData.data('src'),
+              srcLink = videoData.data('src-link');
+
+          // check on srcLink
+          if (srcLink != '' && typeof srcLink !== 'undefined') {
+            // change video in player
+            playerApi.setRelease(srcLink);
+          } else {
+            // reload frame if setRelise fail
+            playerApi.reloadFrame(src);
+          }
+
+          playerWrapper.css({
+            'display': 'block',
+            'zIndex': 1
+          });
         },
 
         hidePlayer: function () {
+          console.info('hidePlayer');
 
-          // stop video
-          $pdk.controller.endCurrentRelease();
+          if (playerApi.statusVideoStart) {
+            // change status
+            playerApi.statusVideoStart = false;
+            // stop video
+            $pdk.controller.endCurrentRelease();
+          }
 
+          playerWrapper.css({
+            'display': 'none',
+            'zIndex': 0
+          });
+
+          playerApi.showPlayButton();
         },
 
-        showPlayButton: function () {
-
+        showPlayButton: function (buttonEl) {
+          console.info('showPlayButton');
+          playButton = buttonEl || tlGallery.find('.timeline-item.active .play-button');
+          playButton
+              .attr('data-status', 'active')
+              .show();
         },
 
-        hidePlayButton: function () {
-
+        hidePlayButton: function (buttonEl) {
+          console.info('hidePlayButton');
+          playButton = buttonEl || tlGallery.find('.timeline-item.active .play-button');
+          playButton
+              .attr('data-status', 'inactive')
+              .hide();
         },
 
         init: function () {
+          console.info('init');
 
           playerApi.createPlayer();
           playerApi.setPositionPlayer();
-
         }
       };
+
+      // set event on play-button
+      tlGallery.on('click', '.play-button', function (e) {
+        console.info('click play-button');
+
+        var self = $(e.target),
+            videoDataBlock = self.closest('.timeline-item.active').find('.video-data');
+
+        playerApi.setPositionPlayer();
+        playerApi.hidePlayButton(self);
+        playerApi.showPlayer(videoDataBlock);
+      });
 
       $(window).on('resize', function () {
         waitForFinalEvent(function(){
           console.info('resize');
           // set player position
           playerApi.setPositionPlayer();
-        }, 10, "timeline gallery");
+        }, 1100, "timeline gallery"); // set timeout for resizes
 
       });
 
       return playerApi;
-
     },
 
     initializeTimeline: function() {
@@ -258,17 +356,22 @@ Project demo: http://shindiristudio.com/timeline
         closeText : ''
       });
 
+      // init playerApi
       var playerApi = Drupal.behaviors.timeline_gallery.videoService();
-      playerApi.init();
 
       $('.tl3').on('scrollStart.Timeline', function(e){
         //usa_debug('TIMELINE: start'); // start scroll
         //usa_debug(e);
+
+        var statusPlayButton = $('.timeline-items .timeline-item.active .play-button').attr('data-status');
+
+        if (statusPlayButton === 'inactive') {
+          // hide and reset player
+          playerApi.hidePlayer();
+        }
       });
 
       $('.tl3').on('scrollStop.Timeline', function(e){
-
-        playerApi.setPositionPlayer();
 
         //usa_debug('TIMELINE: end'); // end scroll
         //usa_debug(e);
@@ -276,10 +379,14 @@ Project demo: http://shindiristudio.com/timeline
         var $gigyaShareBar = $('.timeline-items .timeline-item.active .timeline-gigya-share'),
             shareBarId = $gigyaShareBar.attr('id'),
             previewImage = $gigyaShareBar.attr('data-share-picture');
+
         Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
       });
 
       $this.timeline('setWidthHeightMargin');
+
+      // create and init player
+      playerApi.init();
 
       var timeline_settings = $this.data('timeline').options;
       $this.find(timeline_settings.itemClass).find('img').on('dragstart', function(event) {

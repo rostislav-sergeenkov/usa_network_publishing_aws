@@ -75,53 +75,85 @@
 <?php
 $timelineCategories = array();
 $numberOfScenesPerEpisode = array();
-$firstScene = true;
+$firstScene = TRUE;
 ?>
 
 <section id="timeline-player-slideshow-area">
 
   <!-- Insert Slide Show -->
   <div class="timelineLoader">
-    <img src="<?php print $imageBaseUrl; ?>/timeline_gallery/loadingAnimation.gif" />
+    <img
+      src="<?php print $imageBaseUrl; ?>/timeline_gallery/loadingAnimation.gif"/>
   </div>
 
   <!-- BEGIN TIMELINE -->
-  <div class="timelineFlat timelineFlatPortfolio tl3" data-share-title="<?php print $shareTitle; ?>" data-share-description="<?php print $shareDescription; ?>">
+  <div class="timelineFlat timelineFlatPortfolio tl3"
+       data-share-title="<?php print $shareTitle; ?>"
+       data-share-description="<?php print $shareDescription; ?>">
 
-    <div id="player-wrapper" data-player-src="<?php print $player; ?>"></div>
-    <div id="play-button" class="round-button"></div>
+    <?php if (!empty($isset_video)): ?>
+      <div id="player-wrapper" data-player-src="<?php print $player; ?>"></div>
+    <?php endif; ?>
 
-<?php foreach($tg_items as $seasonNum => $season): ?>
-  <?php foreach($season as $episodeNum => $episode): ?>
-    <?php print '<!-- Season ' . $seasonNum . ' | Episode ' . $episodeNum . ': ' . $episode['episode_name'] . ' -->' . "\n"; ?>
-    <?php $timelineCategories[$seasonNum][$episodeNum] = 's' . $seasonNum . ' ep' . $episodeNum; ?>
-    <?php foreach($episode['scenes'] as $scene): ?>
-      <div class="timeline-item<?php if ($firstScene) print ' active'; ?>" data-id="<?php print ($scene['scene_number'] < 10) ? '0' . $scene['scene_number'] : $scene['scene_number']; ?>/<?php print ($episodeNum < 10) ? '0' . $episodeNum : $episodeNum; ?>/<?php print ($seasonNum < 10) ? '0' . $seasonNum : $seasonNum; ?>" data-season-num="<?php print $seasonNum; ?>" data-episode-num="<?php print $episodeNum; ?>" data-episode-name="<?php print $episode['episode_name']; ?>" data-description="Scene <?php print $scene['scene_number']; ?>" data-fid="<?php print $scene['fid']; ?>" data-imagesrc="<?php print $scene['image_src']; ?>">
-        <div class="timeline-item-image">
-          <img src="<?php print $scene['image_src']; ?>" alt="" class="slideshowimage"/>
-        </div>
-        <div class="timeline-item-details">
-          <h2><?php print '<span class="timeline-h2-season-num">S' . $seasonNum . '</span> <span class="timeline-h2-episode-num">Ep' . $episodeNum . '</span>'; ?> <span class="divider">|</span> <?php print '<span class="timeline-h2-episode-name">' . $episode['episode_name'] . '</span>'; ?> <span class="divider divider-two">|</span> <span class="timeline-h2-scene-num">Scene <?php print $scene['scene_number']; ?></span></h2>
-          <div class="timeline-item-text">
-            <?php print $scene['description']; ?>
+
+    <?php foreach ($tg_items as $seasonNum => $season): ?>
+      <?php foreach ($season as $episodeNum => $episode): ?>
+        <?php print '<!-- Season ' . $seasonNum . ' | Episode ' . $episodeNum . ': ' . $episode['episode_name'] . ' -->' . "\n"; ?>
+        <?php $timelineCategories[$seasonNum][$episodeNum] = 's' . $seasonNum . ' ep' . $episodeNum; ?>
+        <?php foreach ($episode['scenes'] as $scene): ?>
+          <div class="timeline-item<?php if ($firstScene) {
+            print ' active';
+          } ?>"
+               data-id="<?php print ($scene['scene_number'] < 10) ? '0' . $scene['scene_number'] : $scene['scene_number']; ?>/<?php print ($episodeNum < 10) ? '0' . $episodeNum : $episodeNum; ?>/<?php print ($seasonNum < 10) ? '0' . $seasonNum : $seasonNum; ?>"
+               data-season-num="<?php print $seasonNum; ?>"
+               data-episode-num="<?php print $episodeNum; ?>"
+               data-episode-name="<?php print $episode['episode_name']; ?>"
+               data-description="Scene <?php print $scene['scene_number']; ?>"
+               data-fid="<?php print $scene['fid']; ?>"
+               data-imagesrc="<?php print $scene['image_src']; ?>">
+            <div class="timeline-item-image">
+              <img src="<?php print $scene['image_src']; ?>" alt=""
+                   class="slideshowimage"/>
+              <?php if (!empty($scene['video'] && $scene['video_link'])): ?>
+                <div class="play-button" data-status="active"></div>
+              <?php endif; ?>
+            </div>
+            <div class="timeline-item-details">
+              <h2><?php print '<span class="timeline-h2-season-num">S' . $seasonNum . '</span> <span class="timeline-h2-episode-num">Ep' . $episodeNum . '</span>'; ?>
+                <span
+                  class="divider">|</span> <?php print '<span class="timeline-h2-episode-name">' . $episode['episode_name'] . '</span>'; ?>
+                <span class="divider divider-two">|</span> <span
+                  class="timeline-h2-scene-num">Scene <?php print $scene['scene_number']; ?></span>
+              </h2>
+              <div class="timeline-item-text">
+                <?php print $scene['description']; ?>
+              </div>
+              <div class="timeline-gigya-share-container">
+                <div class="timeline-gigya-share-title">Share:</div>
+                <div
+                  id="timeline-gigya-share-<?php print $scene['scene_number'] . '-' . $episodeNum . '-' . $seasonNum; ?>"
+                  class="timeline-gigya-share"
+                  data-share-picture="<?php print $scene['image_src']; ?>"></div>
+              </div>
+            </div>
+            <?php if (!empty($scene['video'] && $scene['video_link'])): ?>
+              <div class="video-data"
+                   data-src="<?php print $scene['video']; ?>"
+                   data-src-link="<?php print $scene['video_link']; ?>">
+              </div>
+            <?php endif; ?>
           </div>
-          <div class="timeline-gigya-share-container">
-            <div class="timeline-gigya-share-title">Share: </div>
-            <div id="timeline-gigya-share-<?php print $scene['scene_number'] . '-' . $episodeNum . '-' . $seasonNum; ?>" class="timeline-gigya-share" data-share-picture="<?php print $scene['image_src']; ?>"></div>
-          </div>
-        </div>
-      </div>
-      <?php $firstScene = false; ?>
-    <?php endforeach; // scene ?>
-    <?php $numberOfScenesPerEpisode[$seasonNum][$episodeNum] = count($episode['scenes']); ?>
-  <?php endforeach; // episode ?>
-<?php endforeach; // season ?>
+          <?php $firstScene = FALSE; ?>
+        <?php endforeach; // scene ?>
+        <?php $numberOfScenesPerEpisode[$seasonNum][$episodeNum] = count($episode['scenes']); ?>
+      <?php endforeach; // episode ?>
+    <?php endforeach; // season ?>
 
   </div>
   <!-- END TIMELINE -->
 
   <script>
-  var categories = <?php print json_encode($timelineCategories); ?>,
+    var categories = <?php print json_encode($timelineCategories); ?>,
       segments = <?php print json_encode($numberOfScenesPerEpisode); ?>;
   </script>
 </section>

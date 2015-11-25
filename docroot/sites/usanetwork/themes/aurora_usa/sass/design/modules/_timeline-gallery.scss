@@ -1,8 +1,4 @@
 .node-type-timeline-gallery {
-  #player-wrapper {
-    position: absolute;
-
-  }
   .sharebar {
     .field-type-gigya-sharebar {
       width: 100%;
@@ -22,6 +18,43 @@
   }
   .timelineFlat {
     .timeline-items {
+      // player wrapper
+      #player-wrapper {
+        position: absolute;
+        iframe {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      // play button
+      .play-button {
+        cursor: pointer;
+        height: 40px;
+        left: 50%;
+        line-height: 40px;
+        margin: -20px 0 0 -20px;
+        position: absolute;
+        top: 50%;
+        width: 40px;
+        z-index: 1;
+        &:before {
+          border: 2px solid #ffffff;
+          border-radius: 50%;
+          box-sizing: border-box;
+          content: '\e627';
+          font-family: $ico-font;
+          font-size: 40px;
+          text-shadow: 1px 1px 0.5em $aspot-shadow;
+          height: 40px;
+          width: 40px;
+        }
+      }
+      .video-data {
+        display: none;
+      }
+      .timeline-item-image {
+        position: relative;
+      }
       .timeline-item-details {
         @include breakpoint($bp-480-width) {
           padding: 20px 8px 10px 10px;

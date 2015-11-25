@@ -213,6 +213,7 @@ function usanetwork_schedule_pull() {
             'season_number' => !empty($program['plprogram$tvSeasonNumber'])
               ? $program['plprogram$tvSeasonNumber']
               : 0,
+            'dvs' => (!empty($data_item['nbcu$DVS'])) ? 1 : 0,
           );
 
           if (usanetwork_schedule_is_item_exists($record['guid'])) {

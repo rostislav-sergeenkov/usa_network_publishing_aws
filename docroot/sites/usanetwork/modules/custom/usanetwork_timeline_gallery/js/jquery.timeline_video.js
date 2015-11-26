@@ -41,6 +41,7 @@ Project demo: http://shindiristudio.com/timeline
 
     timelineTitle: null,
     timelineShareTitle: null,
+    windowsResizeTimer: 500, // first default value 500
 
     // Gigya share bar
     sendSocialShareOmniture: function($this) {
@@ -136,11 +137,13 @@ Project demo: http://shindiristudio.com/timeline
     videoService: function() {
 
       // sets vars
-      var tlGallery = $('.tl3'),
+      var _self = Drupal.behaviors.timeline_gallery,
+          tlGallery = $('.tl3'),
           playerWrapper = $('#player-wrapper'),
           playerWrapperSrc = playerWrapper.data('player-src'),
           idPlayer = 'pdk-player',
           isMobileDevice = usa_deviceInfo.mobileDevice,
+          resizeTimer = _self.windowsResizeTimer * 2 + _self.windowsResizeTimer / 10,
           playButton;
 
       // check on player-wrapper
@@ -149,14 +152,14 @@ Project demo: http://shindiristudio.com/timeline
         return false;
       }
 
-      console.info('player');
+      console.info('player-wrapper found');
 
       // create player api
       var playerApi = {
 
-        statusVideoStart: false,
+        statusVideoStart: false, // default value
 
-        // create iframe
+        // create player
         createPlayer: function () {
           console.info('createPlayer');
           if (!playerWrapper.hasClass('active')) {
@@ -171,6 +174,7 @@ Project demo: http://shindiristudio.com/timeline
           }
         },
 
+        // set positions, height and width for player
         setPositionPlayer: function () {
           console.info('setPositionPlayer');
 
@@ -178,14 +182,12 @@ Project demo: http://shindiristudio.com/timeline
               activeSlideItemMarginLeft = parseFloat(activeSlideItem.css('marginLeft')),
               activeSlideItemPosition = activeSlideItem.position(),
               activeSlideImg = activeSlideItem.find('.timeline-item-image'),
+              // player height and width
               activeSlideImgHeight = activeSlideImg.innerHeight(),
               activeSlideImgWidth = activeSlideImg.innerWidth(),
-          // player position top
+              // player positions top and left
               positionTop = activeSlideItemPosition.top,
-          // player position left
               positionLeft = activeSlideItemPosition.left + activeSlideItemMarginLeft;
-
-          console.info(activeSlideItemPosition);
 
           // set player css
           playerWrapper.css({
@@ -196,7 +198,7 @@ Project demo: http://shindiristudio.com/timeline
           });
         },
 
-        // add player listeners
+        // player bind and listeners
         bindPlayer: function () {
 
           // check on $pdk object
@@ -208,6 +210,7 @@ Project demo: http://shindiristudio.com/timeline
 
           $pdk.bind(idPlayer);
 
+          // add listners
           $pdk.controller.addEventListener('OnMediaLoadStart', _onMediaLoadStart);
           $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
 
@@ -217,7 +220,7 @@ Project demo: http://shindiristudio.com/timeline
           }
 
           function _onReleaseEnd(pdkEvent) {
-            console.info('playVideo');
+            console.info('onReleaseEnd');
 
             if (playerApi.statusVideoStart) {
               // change status
@@ -228,12 +231,14 @@ Project demo: http://shindiristudio.com/timeline
           }
         },
 
+        // start video
         playVideo: function () {
           console.info('playVideo');
           $pdk.controller.clickPlayButton();
           //$pdk.controller.pause(false);
         },
 
+        // pause video
         pauseVideo: function () {
           console.info('pauseVideo');
           $pdk.controller.pause(true);
@@ -249,7 +254,7 @@ Project demo: http://shindiristudio.com/timeline
           }
         },
 
-        // reload frame if setRelise fail
+        // reload frame if setRelease fail
         reloadFrame: function (srcLink) {
           console.info('reloadFrame');
           var player = playerWrapper.find(idPlayer);
@@ -260,6 +265,7 @@ Project demo: http://shindiristudio.com/timeline
           }
         },
 
+        // show player and start video
         showPlayer: function (videoData) {
           console.info('showPlayer');
 
@@ -281,7 +287,8 @@ Project demo: http://shindiristudio.com/timeline
           });
         },
 
-        hidePlayer: function () {
+        // hide player and finish video
+         hidePlayer: function () {
           console.info('hidePlayer');
 
           if (playerApi.statusVideoStart) {
@@ -299,6 +306,7 @@ Project demo: http://shindiristudio.com/timeline
           playerApi.showPlayButton();
         },
 
+        // show play button
         showPlayButton: function (buttonEl) {
           console.info('showPlayButton');
           playButton = buttonEl || tlGallery.find('.timeline-item.active .play-button');
@@ -307,6 +315,7 @@ Project demo: http://shindiristudio.com/timeline
               .show();
         },
 
+        // hide play button
         hidePlayButton: function (buttonEl) {
           console.info('hidePlayButton');
           playButton = buttonEl || tlGallery.find('.timeline-item.active .play-button');
@@ -315,6 +324,7 @@ Project demo: http://shindiristudio.com/timeline
               .hide();
         },
 
+        // init
         init: function () {
           console.info('init');
 
@@ -323,7 +333,7 @@ Project demo: http://shindiristudio.com/timeline
         }
       };
 
-      // set event on play-button
+      // set click on play-button
       tlGallery.on('click', '.play-button', function (e) {
         console.info('click play-button');
 
@@ -335,13 +345,13 @@ Project demo: http://shindiristudio.com/timeline
         playerApi.showPlayer(videoDataBlock);
       });
 
+      // set windows resize event
       $(window).on('resize', function () {
         waitForFinalEvent(function(){
-          console.info('resize');
+          console.info('resize', resizeTimer);
           // set player position
           playerApi.setPositionPlayer();
-        }, 1100, "timeline gallery"); // set timeout for resizes
-
+        }, resizeTimer, "timeline player gallery"); // timeout resize
       });
 
       return playerApi;
@@ -1404,14 +1414,15 @@ Project demo: http://shindiristudio.com/timeline
           windowResizeTimer = setTimeout(function(){
             setTimeout(function(){
               $this.timeline('setWidthHeightMargin');
-            }, 500);
+            }, self.windowsResizeTimer);
+
             var data = $this.data('timeline');
                 id = $this.find('.timeline-node.active:first').attr('href').substr(1);
 
             var dataId = data.items.eq(data.currentIndex).attr('data-id');
             var dataCount = data.items.eq(data.currentIndex).attr('data-count');
             $this.timeline('goTo', dataId);
-          }, 500);
+          }, self.windowsResizeTimer);
         });
       }
     }

@@ -1,6 +1,6 @@
-.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, .node-media-gallery {
+.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post {
   .gallery-block {
-    @include clear();
+    @include clear;
     margin: 0;
     overflow: hidden;
     padding: 0;
@@ -163,6 +163,9 @@
         background: $usa-logo-back;
         height: auto;
         position: relative;
+        @include breakpoint($bp-min-1025-width) {
+          height: 100% !important;
+        }
         .node {
           height: 100%;
           .asset-img {
@@ -332,8 +335,13 @@
     .bx-wrapper {
       height: 100%;
       position: relative;
+      .bx-viewport {
+        @include breakpoint($bp-min-1025-width) {
+          height: 100% !important;
+        }
+      }
       .bx-controls {
-        .bx-custom-pager-wrapper {
+        #bx-custom-pager-wrapper {
           bottom: 120px;
           right: 50%;
           overflow: hidden;
@@ -528,24 +536,6 @@
     }
   }
 }
-.consumptionator-page:not(.node-type-person), .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, body:not(.node-type-person):not(.blog) .node-media-gallery {
-  .gallery-wrapper {
-    .bxslider-gallery {
-      .slide {
-        @include breakpoint($bp-min-1025-width) {
-          height: 100% !important;
-        }
-      }
-    }
-    .bx-wrapper {
-      .bx-viewport {
-        @include breakpoint($bp-min-1025-width) {
-          height: 100% !important;
-        }
-      }
-    }
-  }
-}
 .node-type-media-gallery {
   header {
     .header-nav-bar {
@@ -563,7 +553,7 @@
     }
   }
 }
-.node-type-tv-episode, .node-type-consumpt-post, .node-media-gallery {
+.node-type-tv-episode, .node-type-consumpt-post {
   .gallery-wrapper {
     float: none;
     margin: 0;
@@ -582,430 +572,6 @@
     @include breakpoint($between-1025-1280) {
       height: calc((100vw - 150px) * 0.5625);
       overflow: visible;
-    }
-  }
-}
-.node-media-gallery {
-  &.view-mode-inline_content {
-    .gallery-wrapper {
-      @include breakpoint($between-1025-1280) {
-        height: calc((100vw - 395px) * 0.5625);
-        overflow: hidden;
-      }
-    }
-  }
-  .cast-and-info-description &, .movie-info-description & {
-    .gallery-wrapper {
-      @include breakpoint($bp-1024-width) {
-        height: auto;
-        width: 100%;
-      }
-      .share-bar {
-        @include breakpoint($between-641-1024) {
-          background: $gallery-description-back;
-          bottom: auto;
-          height: 90px;
-          padding-top: 10px;
-          position: relative;
-          right: auto;
-          width: 100%;
-        }
-        h3.field-label {
-          @include breakpoint($between-641-1024) {
-            text-align: center;
-          }
-        }
-        .field-name-field-gigya-share-bar {
-          table {
-            @include breakpoint($between-641-1024) {
-              margin: 0 auto;
-            }
-          }
-        }
-        .gig-button-container {
-          @include breakpoint($between-641-1024) {
-            margin-right: 20px;
-            padding: 0;
-            td > div {
-              font-size: 30px;
-            }
-          }
-        }
-      }
-      .bxslider-gallery {
-        .slide {
-          .node {
-            .asset-img {
-              @include breakpoint($between-641-1024) {
-                height: calc((100vw - 340px) * 0.5625) ;
-              }
-            }
-            .slide-info {
-              @include breakpoint($bp-1024-width) {
-                height: auto;
-                min-height: 100px;
-              }
-              @include breakpoint($between-641-768) {
-                padding: 0 50px;
-              }
-              .description {
-                @include breakpoint($bp-1024-width) {
-                  margin-top: 0px;
-                  padding: 30px 0 0;
-                  position: static;
-                  text-align: center;
-                }
-              }
-              .slider-counter {
-                @include breakpoint($bp-1024-width) {
-                  bottom: 5px;
-                  font-size: 11px;
-                  margin-top: 15px;
-                  padding-right: 0;
-                  position: static;
-                  text-align: center;
-                  white-space: normal;
-                  .slide-index {
-                    font-size: 12px;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      .bx-wrapper {
-        .bx-controls {
-          .bx-custom-pager-wrapper {
-            @include breakpoint($between-641-1024) {
-              bottom: auto;
-              top: calc((100vw - 340px) * 0.5625 + 13px);
-            }
-            @include breakpoint($between-641-768) {
-              top: calc((100vw - 340px) * 0.5625 + 18px);
-            }
-          }
-          .bx-controls-direction {
-            a {
-              @include breakpoint($between-769-1024) {
-                top: calc((100vw - 340px) * 0.5625 + 26px);
-              }
-              @include breakpoint($between-641-768) {
-                height: 38px;
-                top: calc((100vw - 340px) * 0.5625 + 36px);
-                width: 38px;
-              }
-              &:after {
-                @include breakpoint($between-641-768) {
-                  font-size: 38px;
-                }
-              }
-              &.bx-prev {
-                @include breakpoint($between-641-768) {
-                  left: 10px;
-                }
-              }
-              &.bx-next {
-                @include breakpoint($between-641-768) {
-                  right: 10px;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  .block-character-info-content &, .blog & {
-    .gallery-wrapper {
-      height: auto;
-      width: 100%;
-      .bx-wrapper {
-        .bx-viewport {
-          height: auto;
-        }
-      }
-      .share-bar {
-        background: $gallery-description-back;
-        bottom: auto;
-        display: block;
-        height: 90px;
-        padding-top: 10px;
-        position: relative;
-        margin-top: 0;
-        right: auto;
-        top: auto;
-        width: 100%;
-        z-index: 55;
-        h3.field-label {
-          font-size: 12px;
-          line-height: 18px;
-          text-align: center;
-        }
-        .field-name-field-gigya-share-bar {
-          float: none;
-          margin: 0 auto;
-          table {
-            margin: 0 auto;
-          }
-        }
-        .gig-button-container {
-          margin-right: 20px;
-          padding: 0;
-          td > div {
-            font-size: 30px;
-          }
-        }
-      }
-      .bxslider-gallery {
-        &.on-load {
-          .slide {
-            display: none;
-            &:first-child {
-              display: block;
-            }
-          }
-        }
-        .slide {
-          height: auto;
-          .node {
-            .asset-img {
-              float: none;
-              height: calc(35.856vw * 0.5625);
-              overflow: hidden;
-              text-align: center;
-              width: 100%;
-              @include breakpoint($bp-min-2500-width) {
-                height: 478px;
-              }
-              @include breakpoint($bp-1024-width) {
-                height: calc(56vw * 0.5625);
-              }
-              @include breakpoint($bp-640-width) {
-                height: calc(75vw * 0.5625);
-              }
-              img {
-                height: auto;
-              }
-            }
-            .slide-info {
-              background: $gallery-description-back;
-              box-sizing: border-box;
-              display: block;
-              background: rgba(0, 0, 0, 0.5);
-              bottom: 0;
-              left: 0;
-              height: auto;
-              min-height: 100px;
-              padding: 0 70px;
-              width: 100%;
-              position: relative;
-              @include breakpoint($bp-1600-width) {
-                padding: 0 50px;
-              }
-              .description {
-                color: $consup-gallery-description;
-                display: block;
-                font-size: 14px;
-                font-family: $avalon-medium;
-                height: auto;
-                line-height: 1.5;
-                left: 70px;
-                overflow: hidden;
-                margin-bottom: 0;
-                margin-top: 0;
-                padding: 30px 0 0;
-                position: static;
-                text-align: center;
-                text-overflow: ellipsis;
-                top: 15px;
-                width: 100%;
-                p {
-                  margin: 0;
-                }
-                a{
-                  color: #ffffff;
-                  &:hover {
-                    color: #ffffff;
-                    text-decoration: underline;
-                  }
-                }
-              }
-              .slider-counter {
-                bottom: 0;
-                color: $consum-carousel-text;
-                font-size: 11px;
-                font-family: $tex-gyreschola-italic;
-                left: 70px;
-                margin-top: 15px;
-                overflow: hidden;
-                position: static;
-                padding-right: 0;
-                text-align: center;
-                text-transform: uppercase;
-                width: 100%;
-                white-space: normal;
-                .slide-index {
-                  font-size: 12px;
-                  font-family: $avalon-medium;
-                }
-              }
-            }
-          }
-        }
-      }
-      .bx-wrapper {
-        .bx-controls {
-          .bx-custom-pager-wrapper {
-            bottom: auto;
-            right: 50%;
-            overflow: hidden;
-            position: absolute;
-            top: calc(35.856vw * 0.5625 + 13px);
-            z-index: 51;
-            @include breakpoint($bp-min-2500-width) {
-              top: 491px;
-            }
-            @include breakpoint($bp-1024-width) {
-              top: calc(56vw * 0.5625 + 13px);
-            }
-            @include breakpoint($bp-640-width) {
-              top: calc(75vw * 0.5625 + 13px);
-            }
-          }
-          .bx-custom-pager {
-            @include clear();
-            display: none;
-            height: auto;
-            left: 0;
-            margin-top: 0;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-            right: auto;
-            top: 0;
-            z-index: 51;
-            -webkit-transition: all 0.3s ease-in-out;
-            -moz-transition: all 0.3s ease-in-out;
-            -o-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-            &:hover {
-              width: auto;
-            }
-            .bx-pager-item {
-              float: left;
-              margin: 0 10px 0 0;
-              position: relative;
-              height: 10px;
-              width: 10px;
-              -webkit-transition: all 0.3s ease-in-out;
-              -moz-transition: all 0.3s ease-in-out;
-              -o-transition: all 0.3s ease-in-out;
-              transition: all 0.3s ease-in-out;
-              &:last-child {
-                margin-bottom: 0;
-              }
-              .bx-pager-link {
-                display: block;
-                margin-left: auto;
-                position: relative;
-                height: 10px;
-                width: 10px;
-                &:not(.active) {
-                  div {
-                    background: $consup-gallery-pager;
-                    border-radius: 50%;
-                    height: 100%;
-                    width: 100%;
-                  }
-                }
-                &:hover {
-                  img {
-                    display: none;
-                  }
-                }
-                &:focus {
-                  outline: none;
-                }
-                div {
-                  border-radius: 50%;
-                  height: 100%;
-                  width: 100%;
-                }
-                img {
-                  display: none;
-                }
-              }
-            }
-          }
-          .bx-controls-direction {
-            a {
-              color: #ffffff;
-              display: block;
-              height: 48px;
-              margin-top: 0;
-              position: absolute;
-              top: calc(35.856vw * 0.5625 + 26px);
-              width: 48px;
-              z-index: 55;
-              @include breakpoint($bp-min-2500-width) {
-                top: 504px;
-              }
-              @include breakpoint($bp-1024-width) {
-                top: calc(56vw * 0.5625 + 13px);
-              }
-              @include breakpoint($bp-640-width) {
-                top: calc(75vw * 0.5625 + 13px);
-              }
-              @include breakpoint($bp-480-width) {
-                height: 38px;
-                top: calc(75vw * 0.5625 + 36px);
-                width: 38px;
-              }
-              &:hover {
-                background: none;
-              }
-              &:focus {
-                outline: none;
-              }
-              &.disabled {
-                visibility: hidden;
-              }
-              &:after {
-                display: block;
-                font-family: "ico-font";
-                font-size: 48px;
-                line-height: normal;
-                position: absolute;
-                right: 0;
-                top: 0;
-                @include breakpoint($bp-480-width) {
-                  font-size: 38px;
-                }
-              }
-              &.bx-prev {
-                left: 15px;
-                right: auto;
-                @include breakpoint($bp-1600-width) {
-                  left: 5px;
-                }
-                &:after {
-                  content: "\e628";
-                }
-              }
-              &.bx-next {
-                right: 15px;
-                @include breakpoint($bp-1600-width) {
-                  right: 5px;
-                }
-                &:after {
-                  content: "\e629";
-                }
-              }
-            }
-          }
-        }
-      }
     }
   }
 }

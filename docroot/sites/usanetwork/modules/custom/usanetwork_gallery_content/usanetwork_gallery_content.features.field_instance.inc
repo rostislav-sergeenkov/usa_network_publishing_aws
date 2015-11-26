@@ -916,8 +916,13 @@ function usanetwork_gallery_content_field_default_field_instances() {
       'inline_content' => array(
         'label' => 'hidden',
         'module' => 'usanetwork_field_formatters',
-        'settings' => array(),
-        'type' => 'bxslide_file_entity',
+        'settings' => array(
+          'optionset' => 'gallery',
+          'thumbnail_path' => '',
+          'view_mode' => 'gallery_flexslider',
+          'view_mode_thumb' => '_empty',
+        ),
+        'type' => 'flexslider_file_entity',
         'weight' => 0,
       ),
       'page_collection_resources' => array(

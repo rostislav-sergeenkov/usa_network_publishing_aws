@@ -5,7 +5,7 @@
 ?>
 <div class="gallery-wrapper">
   <?php if (!empty($slides)): ?>
-    <div class="bxslider bxslider-gallery on-load">
+    <div id="bxslider-gallery" class="bxslider bxslider-gallery on-load">
     <?php foreach ($slides as $slide): ?>
       <div class="slide">
         <?php print $slide; ?>

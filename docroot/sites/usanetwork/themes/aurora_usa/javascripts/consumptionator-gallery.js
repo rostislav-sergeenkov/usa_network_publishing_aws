@@ -14,9 +14,11 @@
         var $currentImage = slide.find('.asset-img img'),
             url = window.location.href.split('#')[0],
             slideIndex;
-
+        if(galleryContainer.attr('data-id')){
+          var galleryId = galleryContainer.attr('data-id') + "-";
+        }
         if(indexSlide > 0 ) {
-          slideIndex = '#' + (indexSlide + 1);
+          slideIndex = '#' + galleryId + (indexSlide + 1);
         } else {
           slideIndex = '';
         }
@@ -279,19 +281,30 @@
 
 
       $(window).load(function () {
-        if($('.gallery-wrapper').length < 2 && $('.gallery-wrapper').length != 0) {
-          var hash = window.location.hash;
-          if (hash) {
-            $current = /\d+/.exec(hash)[0];
-            $current = (parseInt($current) || 1) - 1;
-
-            var slideCount = $('.gallery-wrapper .slide').last().index(),
-                pager = $('.gallery-wrapper .bx-custom-pager');
-
-            if ($current <= slideCount) {
-              gallery[0].goToSlide($current);
-              movePagerItems(pager);
-            }
+        var hash = window.location.hash;
+        if (hash) {
+          var params = (hash.substr(1)).split("-");
+          var slide, galleryId;
+          switch(params.length){
+            case 1:
+              slide = (parseInt(params[0]) || 1) - 1;
+              var slideCount = $('.gallery-wrapper .slide').last().index(),
+                  pager = $('.gallery-wrapper .bx-custom-pager');
+              if (slide <= slideCount) {
+                gallery[0].goToSlide(slide);
+                movePagerItems(pager);
+              }
+              break;
+            case 2:
+              slide = (parseInt(params[1]) || 1) - 1;
+              var slideCount = $('.gallery-wrapper[data-id="'+params[0]+'"] .slide').last().index(),
+                  pager = $('.gallery-wrapper[data-id="'+params[0]+'"] .bx-custom-pager');
+                var galleryIndex = $('.gallery-wrapper').index($('.gallery-wrapper[data-id="'+params[0]+'"]'));
+              if (slide <= slideCount) {
+                gallery[galleryIndex].goToSlide(slide);
+                movePagerItems(pager);
+              }
+              break;
           }
         }
       });

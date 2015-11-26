@@ -528,7 +528,7 @@
     }
   }
 }
-.consumptionator-page:not(.node-type-person), .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, body:not(.node-type-person):not(.node-type-post) .node-media-gallery {
+.consumptionator-page:not(.node-type-person), .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, body:not(.node-type-person):not(.blog) .node-media-gallery {
   .gallery-wrapper {
     .bxslider-gallery {
       .slide {
@@ -716,7 +716,7 @@
       }
     }
   }
-  .block-character-info-content &, .node-type-post & {
+  .block-character-info-content &, .blog & {
     .gallery-wrapper {
       height: auto;
       width: 100%;
@@ -743,6 +743,8 @@
           text-align: center;
         }
         .field-name-field-gigya-share-bar {
+          float: none;
+          margin: 0 auto;
           table {
             margin: 0 auto;
           }
@@ -775,6 +777,12 @@
               width: 100%;
               @include breakpoint($bp-min-2500-width) {
                 height: 478px;
+              }
+              @include breakpoint($bp-1024-width) {
+                height: calc(56vw * 0.5625);
+              }
+              @include breakpoint($bp-640-width) {
+                height: calc(75vw * 0.5625);
               }
               img {
                 height: auto;
@@ -858,6 +866,12 @@
             @include breakpoint($bp-min-2500-width) {
               top: 491px;
             }
+            @include breakpoint($bp-1024-width) {
+              top: calc(56vw * 0.5625 + 13px);
+            }
+            @include breakpoint($bp-640-width) {
+              top: calc(75vw * 0.5625 + 13px);
+            }
           }
           .bx-custom-pager {
             @include clear();
@@ -937,9 +951,15 @@
               @include breakpoint($bp-min-2500-width) {
                 top: 504px;
               }
+              @include breakpoint($bp-1024-width) {
+                top: calc(56vw * 0.5625 + 13px);
+              }
+              @include breakpoint($bp-640-width) {
+                top: calc(75vw * 0.5625 + 13px);
+              }
               @include breakpoint($bp-480-width) {
                 height: 38px;
-                top: calc(35.856vw * 0.5625 + 36px);
+                top: calc(75vw * 0.5625 + 36px);
                 width: 38px;
               }
               &:hover {

@@ -109,21 +109,21 @@
 
   function pagerItems(container) {
     var pager = container.find('.bx-custom-pager'),
-        pagerItem = container.find('.bx-pager-item'),
-        pagerItemLink = pager.find('.bx-pager-link'),
-        controlsButtons = container.find('.bx-controls-direction a');
+        controlContainer = container.find('.bx-controls');
     //make pager position
     pagerPosition(pager);
 
-    pagerItem.on('click', function (e) {
-      e.preventDefault();
-      //move pager items position
-      movePagerItems(pager, $(this));
-    });
-
-    controlsButtons.on('click', function () {
-      //move pager items position
-      movePagerItems(pager);
+    controlContainer.on('click', function (e) {
+      var target = $(e.target);
+      console.info(target);
+      if(target.closest('a').hasClass('bx-pager-link') || target.hasClass('bx-pager-link')){
+        e.preventDefault();
+        //move pager items position
+        movePagerItems(pager, target.closest('.bx-pager-item'));
+      }
+      if(target.hasClass('bx-prev') || target.hasClass('bx-next')){
+        movePagerItems(pager);
+      }
     });
 
     var index = container.find('.bx-custom-pager .bx-pager-link.active').data('slide-index');

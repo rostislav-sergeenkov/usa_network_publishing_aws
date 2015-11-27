@@ -115,7 +115,6 @@
 
     controlContainer.on('click', function (e) {
       var target = $(e.target);
-      console.info(target);
       if(target.closest('a').hasClass('bx-pager-link') || target.hasClass('bx-pager-link')){
         e.preventDefault();
         //move pager items position

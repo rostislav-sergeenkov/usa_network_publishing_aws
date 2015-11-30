@@ -41,3 +41,17 @@ function theme_flexslider_file_entity($vars) {
 function theme_custom_css_ajax_formatter($vars) {
   return '<style media="screen">' . $vars['data'] . '</style>';
 }
+
+function theme_custom_css_formatter($vars) {
+  $element = $vars['element'];
+
+  drupal_add_css($element['#data'],
+    array(
+      'group' => CSS_THEME,
+      'type' => 'inline',
+      'media' => 'screen',
+      'preprocess' => FALSE,
+      'weight' => '9999',
+    )
+  );
+}

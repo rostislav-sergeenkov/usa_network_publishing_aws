@@ -38,15 +38,6 @@ $conf['acquia_hosting_disable_sa_2014_005_fix'] = TRUE;
 // Next, include the environment-agnostic file owned by this project.
 //require_once dirname(__FILE__) . "/settings.site.php";
 
-if ($_ENV['AH_SITE_ENVIRONMENT'] == 'edit') {
-  $prod_include = '/var/www/site-php/nbcuusa/D7-nbcuusa-settings.inc';
-  if (file_exists($prod_include)) {
-    include($prod_include);
-  }
-  else {
-    // fallback behavior, e.g., a 404 page
-  }
-}
 
 // Next, determine the environment we're in.  Environment types (qa, acceptance,
 // stage and prod) are defined in project-config.yml.

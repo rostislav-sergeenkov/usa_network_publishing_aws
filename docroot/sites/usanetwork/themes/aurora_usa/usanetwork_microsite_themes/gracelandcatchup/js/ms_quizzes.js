@@ -74,6 +74,9 @@
 
       // Quizes omniture tracking. Track answer: 0 = incorrect, 1 = correct
       $('#microsite #quizzes .usanetwork-quiz-questions .usanetwork-quiz-question .answers .usanetwork-quiz-answer').once('omniture-tracking', function() {
+
+        var NumQuestions = $('#microsite #quizzes .usanetwork-quiz-questions .usanetwork-quiz-question').length;
+
         $(this).on('click', function(e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
             if (!$(this).hasClass('answered')) {
@@ -95,6 +98,11 @@
               s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
               s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion + ' : Answer : ' + quizQuestionValue;
               s.tl(this,'o','Poll/Question Answered');
+
+              if (NumQuestions === $quizQuestion.index() + 1) {
+                s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Result';
+              }
+
               s.manageVars('clearVars',s.linkTrackVars,1);
             }
           }

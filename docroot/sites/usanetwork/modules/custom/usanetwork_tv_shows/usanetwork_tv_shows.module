@@ -1832,7 +1832,8 @@ function _usanetwork_tv_shows_get_content_image_url($node) {
 }
 
 function _usanetwork_tv_shows_submenu() {
-  $show = menu_get_object();
+  $curent_content = menu_get_object();
+  $show = $curent_content;
   if (!empty($show) && $show->type != 'tv_show') {
     $show = usanetwork_core_api_get_tv_content_node($show);
   }
@@ -1889,8 +1890,16 @@ function _usanetwork_tv_shows_submenu() {
         $menu_item_url = $show_menu_item_main_link[0]['url'];
         $menu_item_url_query = (isset($show_menu_item_main_link[0]['query'])) ? $show_menu_item_main_link[0]['query'] : '';
         $menu_link_page = arg(1, $menu_item_url);
-        if (!empty($requested_page) && !empty($menu_link_page) && strcasecmp($requested_page, $menu_link_page) === 0) {
-          $classes[] = 'active';
+        $active_exceptions = array(
+          'blog'
+        );
+        if (!in_array($menu_link_page, $active_exceptions)) {
+          if (!empty($requested_page) && !empty($menu_link_page) && strcasecmp($requested_page, $menu_link_page) === 0) {
+            $classes[] = 'active';
+          }
+        }
+        else {
+          $menu_item_url = drupal_get_normal_path($menu_item_url);
         }
         $attributes = array('class' => $classes);
         if (!empty($show_menu_item_main_link[0]['attributes']['target'])) {
@@ -1903,9 +1912,13 @@ function _usanetwork_tv_shows_submenu() {
       }
     }
   }
+  $title_tag = 'h1';
+  if (arg(2) == 'photos' || arg(2) == 'videos' || 'post' == $curent_content->type) {
+    $title_tag = 'h2';
+  }
   $show_title = array(
     '#type' => 'html_tag',
-    '#tag' => (arg(2) == 'photos' || arg(2) == 'videos') ? 'h2' : 'h1',
+    '#tag' => $title_tag,
     '#attributes' => array('class' => 'title'),
     '#value' => l($show_title, 'node/' . $show->nid),
   );
@@ -1961,7 +1974,9 @@ function usanetwork_tv_shows_get_related_content($tv_show_node, $start_from = 0,
         'person',
         'quiz',
         'timeline_gallery',
-        'catchall_page'),
+        'catchall_page',
+        'top3_gallery',
+      ),
       'operator' => 'IN',
     ),
   );
@@ -2322,6 +2337,11 @@ function _usanetwork_tv_shows_related_content_block() {
     return '';
   }
 
+  drupal_add_js(array(
+    'usanetwork_tv_show_nid' => $tv_show_node->nid,
+    'usanetwork_tv_show_page_context' => 'showpage',
+  ), 'setting');
+
   if (empty($tv_show_node->field_tvs_show_latest_feed)) {
     return '';
   }
@@ -2337,10 +2357,6 @@ function _usanetwork_tv_shows_related_content_block() {
 
   if (!empty($related_content)) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
-    drupal_add_js(array(
-      'usanetwork_tv_show_nid' => $tv_show_node->nid,
-      'usanetwork_tv_show_page_context' => 'showpage',
-    ), 'setting');
 
     $load_more_link =  usanetwork_related_content_is_load_more_link($related_content, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
     $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, 0, 1, TRUE);
@@ -3710,7 +3726,10 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
   $desktop_image = $mobile_image = '';
   $target_url = '<front>';
 
-  if (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
+  if (!empty($data->promo_link)) {
+    $target_url = url($data->promo_link);
+  }
+  elseif (!empty($data->entity_type) && !empty($data->entity_id) && in_array($data->entity_type, array(
       'file',
       'node'
     ))

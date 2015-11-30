@@ -569,12 +569,28 @@ function _usanetwork_menu_main_menu_block() {
   $show = menu_get_object();
   if (isset($show->type) && $show->type == 'tv_show') {
     $items[] = array(
-      'data' => l($show->title, 'javascript:void(0)', array('fragment' => '', 'external' => true, 'attributes' => array('class' => array('show-color', 'show-border')))),
+      'data' => l($show->title, 'javascript:void(0)', array('fragment' => '', 'external' => true, 'attributes' => array('class' => array('show-color', 'show-border', 'active')))),
       'class' => array(
         'expanded',
         'header-show-menu',
+        'active',
       ),
     );
+  }
+
+  if ((isset($show->type) && $show->type == 'consumpt_blog')) {
+    $blog_show_id = _usanetwork_get_field_item('node', $show, 'field_show', 'target_id');
+    if (!empty($blog_show_id)) {
+      $blog_show = node_load($blog_show_id);
+      $items[] = array(
+        'data' => l($blog_show->title, 'javascript:void(0)', array('fragment' => '', 'external' => true, 'attributes' => array('class' => array('show-color', 'show-border', 'active')))),
+        'class' => array(
+          'expanded',
+          'header-show-menu',
+          'active',
+        ),
+      );
+    }
   }
 
   foreach ($menu_links as $item) {
@@ -790,7 +806,7 @@ function _usanetwork_menu_show_menu_now_and_next_block() {
   $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.now_and_next.js';
   $block_form['test'] = array(
     '#type' => 'item',
-    '#markup' => theme('image', $spinner_options),
+    '#markup' => theme_image($spinner_options),
   );
 
   return render($block_form);
@@ -1704,7 +1720,7 @@ function _usanetwork_menu_aspot_onnow_tonight_block() {
   $block_form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_menu') . '/js/usanetwork_menu.onnow_tonight.js';
   $block_form['test'] = array(
     '#type' => 'item',
-    '#markup' => theme('image', $spinner_options),
+    '#markup' => theme_image($spinner_options),
   );
 
   return render($block_form);

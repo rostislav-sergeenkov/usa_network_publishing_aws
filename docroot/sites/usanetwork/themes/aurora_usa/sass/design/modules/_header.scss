@@ -1307,6 +1307,7 @@ header {
               }
             }
             .description {
+              clear: none;
               color: #ffffff;
               font-family: $avalon-book;
               font-size: get-vw(13px, 1025);
@@ -1642,6 +1643,9 @@ header {
           @include breakpoint($bp-1024-width) {
             left: 0;
             width: 100%;
+          }
+          .lazyloader-icon {
+            display: none;
           }
         }
       }

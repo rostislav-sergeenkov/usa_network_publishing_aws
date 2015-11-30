@@ -48,6 +48,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Episode',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -97,6 +99,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Season',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -141,6 +145,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Timeline media item',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -161,15 +167,16 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
           'document' => 0,
           'image' => 'image',
           'mpx_player' => 0,
-          'mpx_video_1' => 0,
+          'mpx_video_1' => 'mpx_video_1',
           'mpx_video_2' => 0,
+          'mpx_video_6' => 0,
           'video' => 0,
         ),
         'browser_plugins' => array(
           'media_default--media_browser_1' => 'media_default--media_browser_1',
           'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-          'media_internet' => 'media_internet',
-          'pub_mpx_video' => 0,
+          'media_internet' => 0,
+          'pub_mpx_video' => 'pub_mpx_video',
           'theplatform_mpx_mpxmedia' => 0,
           'theplatform_mpx_mpxplayer' => 0,
           'upload' => 'upload',
@@ -265,6 +272,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Body',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => TRUE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -354,6 +363,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -444,6 +455,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -549,6 +562,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Cover Item',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -633,6 +648,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Explore Tag',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -713,6 +730,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Gigya Share Bar',
     'required' => FALSE,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -721,92 +740,6 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
       'settings' => array(),
       'type' => 'sharebar',
       'weight' => 32,
-    ),
-  );
-
-  // Exported field_instance: 'node-timeline_gallery-field_ideamelt_action_type'
-  $field_instances['node-timeline_gallery-field_ideamelt_action_type'] = array(
-    'bundle' => 'timeline_gallery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'admin_reference_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'block_cover_title_lg' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 19,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_ideamelt_action_type',
-    'label' => 'IdeaMelt action type',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 11,
     ),
   );
 
@@ -885,6 +818,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Call to Action Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -990,6 +925,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -1094,6 +1031,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1188,6 +1127,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1305,6 +1246,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1405,6 +1348,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1505,6 +1450,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1605,6 +1552,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1627,98 +1576,6 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance: 'node-timeline_gallery-field_send_ideamelt_notification'
-  $field_instances['node-timeline_gallery-field_send_ideamelt_notification'] = array(
-    'bundle' => 'timeline_gallery',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'admin_reference_preview' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'block_cover_title_lg' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 18,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_send_ideamelt_notification',
-    'label' => 'Send IdeaMelt Notification',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 10,
     ),
   );
 
@@ -1796,6 +1653,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'H1',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1896,6 +1755,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Page Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1972,6 +1833,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Sharing description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2048,6 +1911,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Sharing title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2153,6 +2018,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -2240,6 +2107,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Short Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2316,6 +2185,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Tmeline Episode',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2380,6 +2251,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'Custom CSS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2481,6 +2354,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'label' => 'OG Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2585,6 +2460,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => 'og_image',
       'file_extensions' => 'png gif jpg jpeg',
@@ -2640,14 +2517,12 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
   t('Explore Tag');
   t('Gigya Share Bar');
   t('H1');
-  t('IdeaMelt action type');
   t('Maximum 150 characters recommended, OK to exceed for search results and indexing but most relevant information should be listed first.');
   t('OG Description');
   t('OG Image');
   t('Page Title');
   t('Promo Image Override');
   t('Season');
-  t('Send IdeaMelt Notification');
   t('Sharing description');
   t('Sharing title');
   t('Short Description');

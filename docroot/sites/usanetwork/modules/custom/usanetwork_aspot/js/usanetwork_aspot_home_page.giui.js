@@ -28,57 +28,56 @@
                   styleDesktop = $(this).attr('data-style-desktop'),
                   styleMobile = $(this).attr('data-style-mobile'),
                   elWidth, maxWidth, betweenWidth, myArr = [];
-              if (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice) {
-                self.attr('style', styleMobile);
-              } else {
-                if (window.innerWidth >= window_size_mobile_641) {
 
-                  self.attr('style', styleDesktop);
+              if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
 
-                  elWidth = self.data('width');
+                self.attr('style', styleDesktop);
 
-                  // create attributes data width for bp 2500 & 640-768
-                  if(!self.data('max-width')) {
-                    if (elWidth === 'auto') {
-                      self.attr('data-max-width', elWidth);
-                    } else {
-                      maxWidth = (elWidth / 100 * 2500) + 'px';
-                      self.attr('data-max-width', maxWidth);
-                    }
+                elWidth = self.data('width');
+
+                // create attributes data width for bp 2500 & 640-768
+                if(!self.data('max-width')) {
+                  if (elWidth === 'auto') {
+                    self.attr('data-max-width', elWidth);
+                  } else {
+                    maxWidth = (elWidth / 100 * 2500) + 'px';
+                    self.attr('data-max-width', maxWidth);
                   }
-
-                  if($('body').hasClass('usa-tv-show')) {
-                    if(!self.data('between-width')) {
-                      if (elWidth === 'auto') {
-                        self.attr('data-between-width', elWidth);
-                      } else {
-                        betweenWidth = elWidth + 'vw';
-                        self.attr('data-between-width', betweenWidth);
-                      }
-                    }
-
-                    // change width on tv-show page
-                    if(window.innerWidth >= window_size_mobile_641 && window.innerWidth <= window_size_tablet_portrait) {
-                      self.css('width', self.data('between-width'));
-                    }
-
-                    if(window.innerWidth >= window_size_tablet_portrait && window.innerWidth <= window_size_desktop_max_width) {
-                      self.css('width', self.data('width') + '%');
-                    }
-                  }
-
-                  if(window.innerWidth >= window_size_desktop_max_width) {
-                    self.css('width', self.data('max-width'));
-                  }
-
-                } else if (window.innerWidth < window_size_mobile_641){
-                  self.attr('style', styleMobile);
                 }
+
+                if($('body').hasClass('usa-tv-show')) {
+                  if(!self.data('between-width')) {
+                    if (elWidth === 'auto') {
+                      self.attr('data-between-width', elWidth);
+                    } else {
+                      betweenWidth = elWidth + 'vw';
+                      self.attr('data-between-width', betweenWidth);
+                    }
+                  }
+
+                  // change width on tv-show page
+                  if(window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
+                    self.css('width', self.data('between-width'));
+                  }
+
+                  if(window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_max_width_2500 + "px)").matches) {
+                    self.css('width', self.data('width') + '%');
+                  }
+                }
+
+                if(window.matchMedia("(min-width: " + window_size_desktop_max_width_2500 + "px)").matches) {
+                  self.css('width', self.data('max-width'));
+                }
+
+              } else if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
+                self.attr('style', styleMobile);
               }
             });
           }
         });
       }
+
+
 
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
@@ -93,6 +92,8 @@
     },
     attach: function (context, settings) {
       if ($('body').hasClass('node-type-movie')) {
+        Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+      } else if ($('body').hasClass('node-type-usanetwork-aspot')) {
         Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
       }
     }

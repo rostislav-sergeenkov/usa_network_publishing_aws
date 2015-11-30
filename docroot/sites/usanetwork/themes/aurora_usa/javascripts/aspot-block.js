@@ -175,7 +175,7 @@
           // remove loader
           $(aspotBlock).addClass('load');
 
-          if (window.innerWidth >= window_size_mobile_641) {
+          if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
             //show slide content (currentSlide, nextSlide)
             showElements(currentSlide, nextSlide);
           }
@@ -329,7 +329,7 @@
         changeLogoColor(currentIndex);
 
         // for resolutions more 640 px
-        if (window.innerWidth >= window_size_mobile_641) {
+        if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
 
           activeSlideContent = slide.eq(currentIndex).not('.slick-cloned').find('.slide-content');
           activeSlide = slide.eq(currentIndex);
@@ -364,7 +364,7 @@
       function hideElements(currentIndex, nextIndex) {
 
         // for resolutions more 640 px
-        if (window.innerWidth >= window_size_mobile_641) {
+        if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
 
           nextSlideImg = slide.eq(nextIndex).find('.asset-img img');
           nextSlideContent = slide.eq(nextIndex).find('.slide-content');
@@ -425,8 +425,7 @@
 
         if (_body.hasClass('front')) {
 
-          if (typeof aspot_slide != "undefined") {
-
+          if (Object.keys(aspot_slide).length > 0) {
             for (var key in aspot_slide) {
               var num = key.replace('slide', ''),
                   ver = aspot_slide[key];
@@ -436,13 +435,11 @@
           }
 
           if (paramsUrl != '') {
-
             $('#ajax_aspot_slider').empty();
             // send ajax
             _self.getAspot(url);
 
           } else {
-
             // check and create images on page
             if (typeof window.picturefill != 'undefined') {
               window.picturefill();
@@ -455,17 +452,17 @@
 
         } else if (_body.hasClass('node-type-tv-show')) {
 
-          if (typeof aspot != "undefined") {
+          if (typeof aspot !== "undefined") {
             paramsUrl = aspot;
             url = 'ajax/usanetwork-aspot/get-aspot-show/' + settings.usanetwork_tv_show_nid + '/' + paramsUrl;
 
-          }
-          if (paramsUrl != '') {
-
-            $('#ajax_aspot_show').empty();
-            // send ajax
-            _self.getAspot(url);
-
+            if (paramsUrl != '' && typeof settings.usanetwork_tv_show_nid !== "undefined") {
+              $('#ajax_aspot_show').empty();
+              // send ajax
+              _self.getAspot(url);
+            } else {
+              Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+            }
           } else {
             Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
           }

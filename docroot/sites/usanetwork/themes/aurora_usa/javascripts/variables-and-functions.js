@@ -6,12 +6,25 @@ var window_size_tablet_portrait = 769;
 var window_size_tablet = 1025;
 var window_size_mobile = 481;
 var window_size_mobile_641 = 641;
-var show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
+//var show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
 var desktop_show_open_width = 1450;
 var desktop_show_open_width_large = 2164;
 var show_title_offset_desktop = 200;
 var show_title_offset_tablet = 160;
-var show_title_offset = (window.innerWidth < window_size_tablet)? 160: 200;
+//var show_title_offset = (window.innerWidth < window_size_tablet)? 160: 200;
+
+// New breakpoint vars for window.matchMedia
+// window.matchMedia("(min-width: " + 640 + "px)").matches = window.innerWidth > window_size_mobile_640
+// window.matchMedia("(max-width: " + 640 + "px)").matches = window.innerWidth <= window_size_mobile_640
+var window_size_desktop_max_width_2500 = 2500,
+    window_size_desktop_large_1900 = 1900,
+    window_size_desktop_1280 = 1280,
+    window_size_tablet_1024 = 1024,
+    window_size_tablet_portrait_768 = 768,
+    show_carousel_margin = (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) ? 40: 50,
+    window_size_mobile_640 = 640,
+    window_size_mobile_480 = 480,
+    show_title_offset = (window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches) ? 160: 200;
 
 var USAN = USAN || {};
 
@@ -99,7 +112,8 @@ function scrollToAnchorName(targetName) {
 
 $(window).bind('resize', function () {
 
-  show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
+  //show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
+  show_carousel_margin = (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches)? 40: 50;
 
 });
 

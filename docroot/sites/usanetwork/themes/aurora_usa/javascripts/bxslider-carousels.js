@@ -19,6 +19,15 @@
                 $('.episodes-list', '.aspot-and-episodes').addClass('shadow');
               }
             }
+          },
+          onScroll: function(){
+            var items = [];
+            var i = 0;
+            $(this).find('li').each(function(){
+              items[i] = this;
+              i++;
+            });
+            Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(items);
           }
         }
       });
@@ -41,12 +50,12 @@
             allowPageScroll: "vertical",
             threshold: 50,
             swipeRight: function () {
-              if(window.innerWidth >= window_size_mobile_641) {
+              if(window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
                 $(this).jcarousel('scroll', '-=3');
               }
             },
             swipeLeft: function () {
-              if(window.innerWidth >= window_size_mobile_641) {
+              if(window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
                 $(this).jcarousel('scroll', '+=3');
               }
             }
@@ -97,7 +106,7 @@
 
       $(window).bind('resize', function () {
         setTimeout(function() {
-          if (window.innerWidth >= window_size_mobile_641 && window.innerWidth < window_size_desktop && slideItem.length > 2){
+          if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches && slideItem.length > 2){
             $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
             $('.episodes-list-slider.horizontal a.more-button.close').removeClass('close').addClass('more');
             moreButton.css('display', 'none');
@@ -114,7 +123,7 @@
       });
 
       if (slideItem.length > number_of_items){
-        if (window.innerWidth < window_size_mobile_641){
+        if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
           $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
 
           // Show more-button

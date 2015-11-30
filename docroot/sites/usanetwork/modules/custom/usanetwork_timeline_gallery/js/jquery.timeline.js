@@ -199,6 +199,7 @@ Project demo: http://shindiristudio.com/timeline
           e.preventDefault();
           var currentId = $('.timeline-items .timeline-item.active').attr('data-id');
           Drupal.behaviors.timeline_gallery.setOmnitureData(currentId);
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
         });
       });
 
@@ -858,12 +859,12 @@ Project demo: http://shindiristudio.com/timeline
 */
             }
             else {
-    					if (typeof Drupal.behaviors.ms_global == 'object' && typeof Drupal.behaviors.ms_global.create728x90Ad == 'function') {
-    					  Drupal.behaviors.ms_global.create728x90Ad('timeline');
-    					}
-    					else {
-                usa_refreshBannerAd();
-              }
+              //if (typeof Drupal.behaviors.ms_global == 'object' && typeof Drupal.behaviors.ms_global.create728x90Ad == 'function') {
+    					 // Drupal.behaviors.ms_global.create728x90Ad('timeline');
+              //}
+              //else {
+              //  usa_refreshBannerAd();
+              //}
 
               data.iholder.stop(true).animate({marginLeft : data.margin}, speed+(speed/5)*(Math.abs(multiply)-1), easing, function(){
                 // Trigger ScrollStop event

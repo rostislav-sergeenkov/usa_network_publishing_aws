@@ -217,7 +217,12 @@
                   if (!$carousel.hasClass('stop')) {
                     Drupal.behaviors.global_carousels.swipeShowDescription($container);
                   }
-                })
+                });
+              })
+              .on('jcarousel:scrollend', function (event, carousel) {
+                setTimeout(function(){
+                  Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(carousel._items);
+                }, 500);
               })
               .on('jcarousel:reloadend', function (event, carousel) {
                 $carousel.find('a').click(function (e) {
@@ -385,7 +390,7 @@
       var width = desktop_show_open_width;
       var item_width = current_item.width();
 
-      if (window.innerWidth >= window_size_desktop_large) {
+      if (window.matchMedia("(min-width: " + window_size_desktop_large + "px)").matches) {
 
         var browserName = browserDetect(),
             widthDiff = window.innerWidth - $(window).innerWidth();
@@ -399,10 +404,10 @@
         }
       }
 
-      if (window.innerWidth < window_size_desktop) {
+      if (window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches) {
         width = window.innerWidth - 2 * show_carousel_margin + item_width;
       }
-      if (window.innerWidth < window_size_mobile) {
+      if (window.matchMedia("(max-width: " + window_size_mobile_480 + "px)").matches) {
         var scrollWidth = window.innerWidth - document.body.clientWidth;
         width = width + scrollWidth;
       }

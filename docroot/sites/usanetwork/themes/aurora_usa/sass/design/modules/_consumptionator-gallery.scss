@@ -452,24 +452,28 @@
           a {
             color: #ffffff;
             display: block;
-            height: 38px;
-            margin-top: -19px;
+            height: 48px;
+            margin-top: -24px;
             position: absolute;
             top: 90%;
-            width: 38px;
+            width: 48px;
             z-index: 55;
             @include breakpoint($bp-min-1901-width) {
-              margin-top: -22px;
-              height: 44px;
-              width: 44px;
+              margin-top: -27px;
+              height: 54px;
+              width: 54px;
             }
             @include breakpoint($bp-1024-width) {
               margin-top: 0;
-              top: calc(56.25vw + 57px);
+              top: calc(56.25vw + 48.5px);
+            }
+            @include breakpoint($bp-640-width) {
+              top: calc(56.25vw + 26px);
             }
             @include breakpoint($bp-480-width) {
-              height: 30px;
-              width: 30px;
+              height: 38px;
+              top: calc(56.25vw + 36px);
+              width: 38px;
             }
             &:hover {
               background: none;
@@ -483,16 +487,16 @@
             &:after {
               display: block;
               font-family: "ico-font";
-              font-size: 38px;
+              font-size: 48px;
               line-height: normal;
               position: absolute;
               right: 0;
               top: 0;
               @include breakpoint($bp-min-1901-width) {
-                font-size: 44px;
+                font-size: 54px;
               }
               @include breakpoint($bp-480-width) {
-                font-size: 30px;
+                font-size: 38px;
               }
             }
             &.bx-prev {
@@ -508,7 +512,7 @@
                 left: 10px;
               }
               &:after {
-                content: "\e607";
+                content: "\e628";
               }
             }
             &.bx-next {
@@ -523,7 +527,7 @@
                 right: 10px;
               }
               &:after {
-                content: "\e608";
+                content: "\e629";
               }
             }
           }

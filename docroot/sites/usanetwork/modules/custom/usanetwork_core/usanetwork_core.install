@@ -1129,3 +1129,75 @@ function usanetwork_core_update_7179() {
     module_enable(array('usanetwork_top3'));
   }
 }
+
+/**
+ * Enables advagg module.
+ */
+function usanetwork_core_update_7180() {
+  if (!module_exists('advagg')) {
+    module_enable(array('advagg'));
+  }
+  if (!module_exists('advagg_bundler')) {
+    module_enable(array('advagg_bundler'));
+  }
+}
+
+/**
+ * Implements hook_update_N().
+ * Delete ideamelt fields and field groups.
+ */
+function usanetwork_core_update_7181() {
+  $fields_to_delete = array(
+    'field_ideamelt_action_type',
+    'field_ideamelt_object_type',
+    'field_send_ideamelt_notification',
+  );
+  foreach ($fields_to_delete as $field_name) {
+    field_delete_field($field_name);
+    watchdog('usanetwork_core', 'Deleted the :field_name field from all content type instances.', array(':field_name' => $field_name));
+  }
+
+  /**
+   * The fields aren't really deleted until the purge function runs, ordinarily
+   * during cron.  Count the number of fields we need to purge, and add five in
+   * case a few other miscellaneous fields are in there somehow.
+   */
+  field_purge_batch(count($fields_to_delete) + 5);
+
+  ctools_include('export');
+  if ($group = field_group_load_field_group('group_catchall_ideamelt', 'node', 'catchall_page', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_gallery_ideamelt', 'node', 'media_gallery', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_page_ideamelt', 'node', 'usanetwork_static_page', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_gallery_ideamelt', 'node', 'timeline_gallery', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_episode_ideamelt', 'node', 'tv_episode', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  $voc = taxonomy_vocabulary_machine_name_load('object_type');
+  taxonomy_vocabulary_delete($voc->vid);
+
+}
+
+/**
+ * Delete Shop Link.
+ */
+function usanetwork_core_update_7182() {
+  menu_link_delete(NULL, 'http://www.nbcuniversalstore.com/?v=usa');
+}
+
+/**
+ * Enable Usanetwork Taboola Module.
+ */
+function usanetwork_core_update_7183() {
+  if (!module_exists('usanetwork_taboola')) {
+    module_enable(array('usanetwork_taboola'));
+  }
+}

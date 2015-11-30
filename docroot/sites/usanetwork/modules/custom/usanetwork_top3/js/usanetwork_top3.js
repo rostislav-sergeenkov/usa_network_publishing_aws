@@ -68,7 +68,7 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
-      playButton.removeClass('show');
+      playButton.addClass('info-hide');
       $('.drag-group').hide();
       $('#info-block').show();
     }
@@ -78,7 +78,7 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
-      playerService.showPlayButton();
+      playButton.removeClass('info-hide');
       $('.drag-group').show();
       $('#info').show();
     }
@@ -189,7 +189,6 @@
           if (playerService.clickOnThumb) {
             playerService.clickOnThumb = false;
           }
-
         }
 
         function _onMediaPause(pdkEvent) {

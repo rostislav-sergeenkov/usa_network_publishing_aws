@@ -46,12 +46,12 @@
       
       $(window).bind('resize', function () {
 
-        if( window.innerWidth >= window_size_tablet_portrait && !$('.transform-filter').hasClass('mCS_destroyed')) {
+        if( window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches && !$('.transform-filter').hasClass('mCS_destroyed')) {
           $('.transform-filter').each(function(){
             $(this).mCustomScrollbar('destroy');
           });
         }
-        if( window.innerWidth < window_size_tablet_portrait && $('.transform-filter').hasClass('mCS_destroyed')) {
+        if( window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches && $('.transform-filter').hasClass('mCS_destroyed')) {
           $('.transform-filter.mCS_destroyed').each(function(){
             $(this).mCustomScrollbar({
               axis: "y",

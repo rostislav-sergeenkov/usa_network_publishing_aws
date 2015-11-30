@@ -153,8 +153,9 @@ body {
       color: $blue;
     }
     .field-name-title {
-      h2 {
+      h1, h2 {
         @extend %bold;
+        color: black;
         font-size: 37px;
         line-height: initial;
         text-transform: uppercase;
@@ -409,7 +410,7 @@ body {
   &.node-post {
     &.node-teaser {
       .field-name-title {
-        h2 {
+        h1, h2 {
           a {
             @include link-colors($black, $blue-hampton, $black, $black, $black);
           }

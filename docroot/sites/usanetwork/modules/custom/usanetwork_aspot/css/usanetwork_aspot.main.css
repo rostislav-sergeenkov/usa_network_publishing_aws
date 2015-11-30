@@ -22,6 +22,7 @@
   line-height: 0;
   margin-bottom: 30px;
   position: relative;
+  overflow: hidden;
   height: 560px;
   width: 640px;
 }
@@ -30,6 +31,7 @@
   line-height: 0;
   margin-bottom: 30px;
   position: relative;
+  overflow: hidden;
   height: 560px;
   width: 1280px;
 }
@@ -53,6 +55,9 @@
   /*margin: 0;*/
   /*padding: 3px;*/
   /*top: 0;*/
+}
+.aspot-draggable-element.active {
+  outline: 1px dashed #f00;
 }
 .aspot-draggable-element p {
   margin: 0;
@@ -207,4 +212,33 @@
 #edit-group_usa_aspot_ui .buttons-wrapper .button:hover,
 #edit-group_usa_tv_aspot_ui .buttons-wrapper .button:hover{
   background: #a1a1a1;
+}
+
+/*
+  change field font size
+*/
+
+#edit-group_usa_aspot_ui .edit-font-wrapper .field-font-size,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .field-font-size {
+  background-color: #ffffff;
+  border: 1px solid #4d4d4d;
+  display: inline-block;
+  margin: 0 5px;
+  padding: 0 5px;
+}
+#edit-group_usa_aspot_ui .edit-font-wrapper .font-button,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .font-button {
+  /*background-color: #ffffff;*/
+  /*border-radius: 3px;*/
+  /*display: inline-block;*/
+  /*text-align: center;*/
+  /*width: 10px;*/
+}
+#edit-group_usa_aspot_ui .edit-font-wrapper .decrease-font,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .decrease-font {
+
+}
+#edit-group_usa_aspot_ui .edit-font-wrapper .increase-font,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .increase-font {
+
 }

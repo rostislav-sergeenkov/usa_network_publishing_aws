@@ -504,7 +504,7 @@
     height: 100%;
     position: absolute;
     top: 0px;
-    width: auto;
+    width: calc(100% - 270px);
     z-index: 1; //temp value
     @include breakpoint($bp-min-1901-width) {
       left: 434px;

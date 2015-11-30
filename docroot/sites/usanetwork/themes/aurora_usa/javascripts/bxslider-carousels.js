@@ -13,7 +13,7 @@
         callbacks: {
           onInit:function(){
             var activeItem = $('.slider-vertical li.slide-item .asset-img.active').closest('li');
-            if (activeItem) {
+            if (activeItem.length > 0) {
               setTimeout(function(){
                 $('.slider-vertical').mCustomScrollbar("scrollTo", activeItem);
               }, 500);

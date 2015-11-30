@@ -15959,7 +15959,7 @@ footer h2 {
   height: 100%;
   position: absolute;
   top: 0px;
-  width: auto;
+  width: calc(100% - 270px);
   z-index: 1;
 }
 @media (min-width: 1901px) {
@@ -22163,44 +22163,10 @@ html[xmlns] .slides {
   width: 252px;
 }
 .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file.tve-video-auth > a:after {
-  font-family: 'usanetwork';
-  speak: none;
-  -webkit-font-feature-settings: "liga","dlig";
-  -moz-font-feature-settings: "liga=1, dlig=1";
-  -moz-font-feature-settings: "liga","dlig";
-  -ms-font-feature-settings: "liga","dlig";
-  -o-font-feature-settings: "liga","dlig";
-  font-feature-settings: "liga","dlig";
-  text-rendering: optimizeLegibility;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  background: none;
-  display: block;
-  margin: 0;
-  position: absolute;
-  left: auto;
-  right: 3px;
-  top: 2px;
-  content: "\e002";
-  font-size: 25px;
-  color: white;
-  width: auto;
-  height: auto;
+  display: none;
 }
 .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file.tve-video-auth .asset-img:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border-top: solid 50px rgba(0, 0, 0, 0.5);
-  border-left: solid 50px transparent;
-  position: absolute;
-  right: 0;
-  top: 0;
+  display: none;
 }
 @media (min-width: 645px) and (max-width: 1275px) {
   .featured-asset .video-player-wrapper.inactive .suggest-videos-block .file {

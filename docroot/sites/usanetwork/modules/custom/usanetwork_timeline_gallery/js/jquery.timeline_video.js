@@ -41,7 +41,7 @@ Project demo: http://shindiristudio.com/timeline
 
     timelineTitle: null,
     timelineShareTitle: null,
-    windowsResizeTimer: 500, // first default value 500
+    windowsResizeTimer: 50, // default value 500
 
     // Gigya share bar
     sendSocialShareOmniture: function($this) {
@@ -143,14 +143,9 @@ Project demo: http://shindiristudio.com/timeline
           playerWrapperSrc = playerWrapper.data('player-src'),
           idPlayer = 'pdk-player',
           isMobileDevice = usa_deviceInfo.mobileDevice,
-          resizeTimer = _self.windowsResizeTimer * 2 + _self.windowsResizeTimer / 10,
+          //resizeTimer = _self.windowsResizeTimer * 2 + _self.windowsResizeTimer / 10,
+          resizeTimer = _self.windowsResizeTimer,
           playButton;
-
-      // check on player-wrapper
-      if (playerWrapper.length < 1) {
-        console.info('player-wrapper not found');
-        return false;
-      }
 
       console.info('player-wrapper found');
 
@@ -1408,21 +1403,28 @@ Project demo: http://shindiristudio.com/timeline
 
       // WINDOW RESIZING
       if (!$('html').hasClass('ie9')) {
-        var windowResizeTimer;
-        $(window).resize(function() {
-          windowResizeTimer = clearTimeout(windowResizeTimer);
-          windowResizeTimer = setTimeout(function(){
-            setTimeout(function(){
-              $this.timeline('setWidthHeightMargin');
-            }, self.windowsResizeTimer);
-
-            var data = $this.data('timeline');
-                id = $this.find('.timeline-node.active:first').attr('href').substr(1);
-
-            var dataId = data.items.eq(data.currentIndex).attr('data-id');
-            var dataCount = data.items.eq(data.currentIndex).attr('data-count');
-            $this.timeline('goTo', dataId);
-          }, self.windowsResizeTimer);
+        //var windowResizeTimer;
+        //$(window).resize(function() {
+        //  windowResizeTimer = clearTimeout(windowResizeTimer);
+        //  windowResizeTimer = setTimeout(function(){
+        //    //setTimeout(function(){
+        //    // $this.timeline('setWidthHeightMargin');
+        //    //}, self.windowsResizeTimer);
+        //
+        //    var data = $this.data('timeline');
+        //        id = $this.find('.timeline-node.active:first').attr('href').substr(1);
+        //
+        //    var dataId = data.items.eq(data.currentIndex).attr('data-id');
+        //    var dataCount = data.items.eq(data.currentIndex).attr('data-count');
+        //    $this.timeline('setWidthHeightMargin');
+        //    //$this.timeline('goTo', dataId);
+        //  }, self.windowsResizeTimer);
+        //});
+        $(window).on('resize', function () {
+          waitForFinalEvent(function(){
+            console.info('resize setWidthHeightMargin');
+            $this.timeline('setWidthHeightMargin');
+          }, self.windowsResizeTimer, "timeline gallery"); // timeout resize
         });
       }
     }

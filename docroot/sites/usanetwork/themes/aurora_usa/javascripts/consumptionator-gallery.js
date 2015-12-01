@@ -256,7 +256,7 @@
             if ($('body').hasClass('node-type-media-gallery')) {
               Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
             }
-            if ($('body').hasClass('node-type-tv-episode')) {
+            if ($('body').hasClass('node-type-tv-episode') ||  $('body').hasClass('node-type-consumpt-post')) {
               Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
               if (!$('.region-header').hasClass('sticky-shows-submenu')) {
                 Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);

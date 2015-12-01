@@ -298,6 +298,7 @@
         font-family: $avalon-book;
         font-size: 26px;
         line-height: 1.6em;
+        position: relative;
         @include breakpoint($bp-1280-width) {
           font-size: 17px;
         }
@@ -429,8 +430,6 @@
       }
     }
   }
-}
-.consumptionator-episode-main-block {
   .consum-sidebar {
     @include breakpoint($bp-min-1025-width) {
       float: none;
@@ -452,3 +451,4 @@
     }
   }
 }
+

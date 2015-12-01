@@ -3,32 +3,46 @@
   Drupal.behaviors.usanetwork_consumptionator_episode = {
     rightRailPosition: function(){
       if (window.matchMedia("(min-width: " + window_size_tablet + "px)").matches) {
-        var episode_sidebar = $('.consumptionator-episode-main-block .consum-sidebar'),
-            offset_info_block =  $('.episode-info-main-block').offset()['top'] - $(window).scrollTop();
-        if (!episode_sidebar.hasClass('sticky-sidebar')) {
-          episode_sidebar.css({
+        var sidebar = $('.consum-sidebar'),
+            offset_info_block =  $('.right-rail-line').offset()['top'] - $(window).scrollTop();
+        if (!sidebar.hasClass('sticky-sidebar')) {
+          sidebar.css({
             height: window.innerHeight - offset_info_block+"px"
           })
         }
         if ($(window).scrollTop() == 0) {
           setTimeout(function() {
-            offset_info_block =  $('.episode-info-main-block').offset()['top'];
-            episode_sidebar.css({
+            offset_info_block =  $('.right-rail-line').offset()['top'];
+            sidebar.css({
               height: window.innerHeight - offset_info_block+"px"
             })
           }, 50);
 
         }
-        if (episode_sidebar.hasClass('related-visible') && $('.gallery-recap-block').length > 0 ) {
-          var bottom_distance = window.innerHeight - ($('.consum-sidebar').offset()['top'] - $(window).scrollTop() + $('.consum-sidebar').height());
-          var current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height();
-          var min_height = $('.gallery-wrapper').height() + parseInt($('.gallery-recap-block').css("paddingBottom"));
-          if (current_max_height < min_height) {
-            current_max_height = min_height;
+        if (sidebar.hasClass('related-visible')) {
+          if ($('.gallery-recap-block').length > 0) {
+            var bottom_distance = window.innerHeight - ($('.consum-sidebar').offset()['top'] - $(window).scrollTop() + $('.consum-sidebar').height());
+            var current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height();
+            var min_height = $('.gallery-wrapper').height() + parseInt($('.gallery-recap-block').css("paddingBottom"));
+            if (current_max_height < min_height) {
+              current_max_height = min_height;
+            }
+            sidebar.css({
+              maxHeight: current_max_height+'px'
+            })
+          } else {
+            if ($('.right-rail-line .gallery-wrapper').length > 0){
+              var bottom_distance = window.innerHeight - ($('.consum-sidebar').offset()['top'] - $(window).scrollTop() + $('.consum-sidebar').height());
+              var current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height();
+              var min_height = $('.right-rail-line .node-media-gallery').parent().height() - $('.right-rail-line .node-media-gallery').last().position()['top'] + parseInt($('.right-rail-line > div').css("paddingBottom"));
+              if (current_max_height < min_height) {
+                current_max_height = min_height;
+              }
+              sidebar.css({
+                maxHeight: current_max_height+'px'
+              })
+            }
           }
-          episode_sidebar.css({
-            maxHeight: current_max_height+'px'
-          })
         }
       }
     },
@@ -41,19 +55,19 @@
        * %start_from - number of items that must be ignored from the beginning
        * %limit - number of items that must be pulled
        */
-      $('#block-usanetwork-episodes-usanetwork-episode-rel-content').viewportChecker({
+      $('.related-content-block').viewportChecker({
         classToAdd: 'visible',
         offset: 0,
         repeat: true,
 
         callbackFunction: function(elem, action){
           if(elem.hasClass('visible')){
-            if(!$('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').hasClass('related-visible')){
-              $('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').addClass('related-visible');
+            if(!$('.consum-sidebar').hasClass('related-visible')){
+              $('.consum-sidebar').addClass('related-visible');
             }
           } else {
-            if($('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').hasClass('related-visible')){
-              $('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').removeClass('related-visible');
+            if($('.consum-sidebar').hasClass('related-visible')){
+              $('.consum-sidebar').removeClass('related-visible');
             }
           }
         }

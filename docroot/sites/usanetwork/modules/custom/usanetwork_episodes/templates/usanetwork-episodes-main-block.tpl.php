@@ -13,8 +13,8 @@
 * $gallery_rec - rendered gallery recap block
 */
 ?>
-<div class="consumptionator-episode-main-block">
-  <div class="episode-info-main-block">
+<div class="consumptionator-episode-main-block ">
+  <div class="episode-info-main-block right-rail-line">
     <div class="episode-info-block show-border">
       <div class="episode-info-header">
         <div class="episode-title-block">

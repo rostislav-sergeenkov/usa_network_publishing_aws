@@ -193,15 +193,8 @@ function usanetwork_field_formatters_field_formatter_view($entity_type, $entity,
     case 'custom_css':
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
-          '#data' => drupal_add_css(
-            $item['value'],
-            array(
-              'group' => CSS_THEME,
-              'type' => 'inline',
-              'media' => 'screen',
-              'preprocess' => FALSE,
-              'weight' => '9999',
-            )),
+          '#theme' => 'custom_css_formatter',
+          '#data' => $item['value'],
         );
       }
       break;
@@ -260,6 +253,11 @@ function usanetwork_field_formatters_theme() {
   );
 
   $items['bxslide_file_entity'] = array(
+    'render element' => 'element',
+    'file' => 'usanetwork_field_formatters.theme.inc',
+  );
+
+  $items['custom_css_formatter'] = array(
     'render element' => 'element',
     'file' => 'usanetwork_field_formatters.theme.inc',
   );

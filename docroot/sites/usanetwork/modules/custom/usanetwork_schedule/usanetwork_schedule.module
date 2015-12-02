@@ -267,7 +267,7 @@ function usanetwork_schedule_is_item_exists($guid) {
 /**
  * Pulls schedule items that are running in TIME.
  */
-function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC') {
+function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC', $show_title = NULL) {
   $query = db_select('usanetwork_schedule', 's');
   $query->fields('s', array());
   $query->condition('s.start_time', $time, '<=');
@@ -276,7 +276,7 @@ function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC') {
   $query->range(0, $limit);
 
   $result = $query->execute()->fetchAll();
-  _usanetwork_schedule_fill_schedule_show_nids($result);
+  _usanetwork_schedule_fill_schedule_show_nids($result, $show_title);
 
   return $result;
 }
@@ -321,7 +321,7 @@ function _usanetwork_schedule_get_show_node_info_by_title($title) {
  *
  * @param $data - result for wrapping that returns from usanetwork_schedule_pull_by_timerange().
  */
-function _usanetwork_schedule_fill_schedule_show_nids(&$data) {
+function _usanetwork_schedule_fill_schedule_show_nids(&$data, $show_title = NULL) {
   if (empty($data)) {
     return;
   }
@@ -339,6 +339,9 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data) {
         $show_node = node_load($show_result->nid);
         if (!empty($show_node)) {
           $schedule_item->title = _usanetwork_core_get_right_case_title($show_node, $schedule_item->title);
+          if ($show_title == 'show_title') {
+            $schedule_item->show_title = $show_node->title;
+          }
         }
         $schedule_item->nid = $show_result->nid;
         continue;
@@ -395,10 +398,10 @@ function _usanetwork_schedule_find_node($title) {
 /**
  * Pulls current item from schedule.
  */
-function usanetwork_schedule_pull_on_now_item($time_correlation = 0) {
+function usanetwork_schedule_pull_on_now_item($time_correlation = 0, $show_title = NULL) {
   $time = REQUEST_TIME + $time_correlation;
 
-  return usanetwork_schedule_pull_by_time($time, 1, 'DESC');
+  return usanetwork_schedule_pull_by_time($time, 1, 'DESC', $show_title);
 }
 
 /**

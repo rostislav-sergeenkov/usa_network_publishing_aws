@@ -11,7 +11,7 @@
   <div class="asset-img">
     <?php if (!empty($image)): ?>
       <?php if (!empty($endcard_path)) : ?>
-        <a href="<?php print $endcard_path; ?>">
+        <a href="<?php print $endcard_path; ?>" <?php (!empty($target_blank)) ? print "target=\"_blank\"": ''; ?>>
           <?php print $image; ?>
         </a>
       <?php else : ?>

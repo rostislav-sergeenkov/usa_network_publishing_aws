@@ -301,6 +301,11 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
         if (!empty($endcard_enabled)) {
           if ($gallery_file == (object)end($gallery_field)) {
             if (!empty($endcard_path)) {
+              if (preg_match('/(http:\/\/|https:\/\/)(.*)/', $endcard_path)) {
+                $slide_variables['target_blank'] = TRUE;
+              } else {
+                $slide_variables['target_blank'] = FALSE;
+              }
               $slide_variables['endcard_path'] = $endcard_path;
             }
           }
@@ -312,6 +317,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
     return theme('usanetwork_media_gallery_consumptionator_slides', array(
       'slides' => $slides,
+      'gallery_id' => $node->nid,
       'sharebar' => !empty($sharebar) ? render($sharebar) : NULL,
     ));
   }

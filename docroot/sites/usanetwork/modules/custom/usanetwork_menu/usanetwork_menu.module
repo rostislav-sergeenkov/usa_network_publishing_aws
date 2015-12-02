@@ -1588,7 +1588,7 @@ function _usanetwork_menu_static_page_header_block() {
 }
 
 function _usanetwork_menu_render_live_video_header_ajax($offset) {
-  $on_now_item = usanetwork_schedule_pull_on_now_item($offset);
+  $on_now_item = usanetwork_schedule_pull_on_now_item($offset, 'show_title');
   if (!empty($on_now_item)) {
     $image_url = NULL;
 

@@ -64,7 +64,7 @@
     @include breakpoint($bp-480-width) {
       padding: 20px 24px;
     }
-    .description {
+    > .description {
       clear: none;
       color: #000000;
       float: left;

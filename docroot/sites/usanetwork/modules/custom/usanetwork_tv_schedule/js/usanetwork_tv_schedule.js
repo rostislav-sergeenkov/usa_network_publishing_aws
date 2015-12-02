@@ -182,23 +182,6 @@
       on_now_text = escape(decodeURI(on_now_text));
       next_up_text = escape(decodeURI(next_up_text));
 
-
-      if (!$('body').hasClass('on-now-js-processed')) {
-
-        $.ajax({url: "/usa-on-now-panel-js/" + on_now_default_show_nid + "/" + next_up_default_show_nid + "?ajax=1&on_now=" + on_now_text}).done(function (data) {
-          $('#on-now-panel-tab').html(data);
-        });
-
-        $.ajax({url: "/usa-on-now-panel-js/" + on_now_default_show_nid + "/" + next_up_default_show_nid + "?ajax=1&next_up=" + next_up_text}).done(function (data) {
-          if (data == '&nbsp;') {
-            $('li.up-next.tab-2').hide();
-          } else {
-            $('#up-next-panel-tab').html(data);
-          }
-        });
-
-        $('body').addClass('on-now-js-processed');
-      }
       $('#block-usanetwork-tv-schedule-usa-on-now-block .content').html(on_now_show);
 
       $(window).load(function () {

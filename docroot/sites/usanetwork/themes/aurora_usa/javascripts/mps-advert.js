@@ -85,7 +85,7 @@
           nameAd = 'topbox',
           selector = '#' + nameAd;
 
-      if(window.innerWidth >= window_size_tablet) {
+      if(window.matchMedia("(min-width: " + window_size_tablet + "px)").matches) {
         sidebarAd.attr('id', nameAd);
         Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
       } else {
@@ -96,7 +96,7 @@
 
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
-          if(window.innerWidth >= window_size_tablet && mainBlock.hasClass('mobile')) {
+          if(window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && mainBlock.hasClass('mobile')) {
 
             mainBlock.removeClass('mobile');
             sidebarAd.attr('id', nameAd);
@@ -105,7 +105,7 @@
             Drupal.behaviors.mpsAdvert.mpsMakeRequest();
             Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
 
-          } else if(window.innerWidth < window_size_tablet && !mainBlock.hasClass('mobile')){
+          } else if(window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches && !mainBlock.hasClass('mobile')){
 
             mainBlock.addClass('mobile');
             infoBlockAd.attr('id', nameAd);

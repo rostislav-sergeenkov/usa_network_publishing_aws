@@ -34,18 +34,6 @@
               window.picturefill();
             }
 
-            $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .open-description').unbind('click');
-            $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .open-description').each( function(){
-              $(this).click(function(){
-                var current_item = $(this).closest('.episode-landing-list-item');
-                if(current_item.hasClass('active')){
-                  current_item.removeClass('active');
-                } else {
-                  current_item.addClass('active');
-                }
-              });
-            });
-
             if (data.overlimited == false) {
               $('.ajax-load-block .load-more-link a').removeClass('disabled');
             } else {
@@ -60,15 +48,16 @@
       }
     },
     attach: function (context, settings) {
-      $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .open-description').each( function(){
-        $(this).click(function(){
-          var current_item = $(this).closest('.episode-landing-list-item');
+      $('#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block').click( function(e){
+        var target = $(e.target);
+        if(target.hasClass('open-description')){
+          var current_item = target.closest('.episode-landing-list-item');
           if(current_item.hasClass('active')){
             current_item.removeClass('active');
           } else {
             current_item.addClass('active');
           }
-        });
+        }
       });
     }
   }

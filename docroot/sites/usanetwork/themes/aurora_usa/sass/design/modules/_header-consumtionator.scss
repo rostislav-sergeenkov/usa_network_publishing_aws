@@ -119,6 +119,7 @@
               }
               @include breakpoint($bp-768-width) {
                 padding-top: 2px;
+                width: 100%;
               }
               span {
                 display: table-cell;
@@ -136,7 +137,7 @@
             }
             a {
               padding-left: get-vw(71px, 1025);
-              display: table;
+              display: block;
               height: 100%;
               line-height: 1.2;
               position: relative;
@@ -156,6 +157,13 @@
                 overflow: hidden;
                 padding: 0;
                 width: 50px;
+              }
+              .table-wrapper {
+                display: table;
+                height: 100%;
+                @include breakpoint($bp-768-width) {
+                  display: none;
+                }
               }
               span {
                 display: table-cell;

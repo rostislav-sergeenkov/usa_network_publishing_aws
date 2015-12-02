@@ -674,7 +674,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_enable_nitro',
-    'label' => 'Enable Nitro',
+    'label' => 'Set last gallery item as end card',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -1153,7 +1153,7 @@ function usanetwork_gallery_content_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_nitro_action_name',
-    'label' => 'Nitro action name',
+    'label' => 'End card click URL',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -2102,20 +2102,20 @@ function usanetwork_gallery_content_field_default_field_instances() {
   t('Categories');
   t('Collection');
   t('Cover Item');
-  t('Enable Nitro');
+  t('End card click URL');
   t('Episode');
   t('Gallery type');
   t('H1');
   t('Maximum 150 characters recommended, OK to exceed for search results and indexing but most relevant information should be listed first.');
   t('Media Items');
   t('Multiple shows');
-  t('Nitro action name');
   t('OG Description');
   t('OG Image');
   t('Page Title');
   t('Promo Image Override');
   t('Related Person');
   t('Season');
+  t('Set last gallery item as end card');
   t('Short Description');
   t('Show');
   t('Tags');

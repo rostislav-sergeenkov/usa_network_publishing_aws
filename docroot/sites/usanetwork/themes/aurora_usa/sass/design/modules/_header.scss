@@ -135,6 +135,9 @@ header {
       display: block;
 
     }
+    @include breakpoint($bp-480-width) {
+      max-height: 50px;
+    }
   }
   .nav-bar-tabs {
     float: left;

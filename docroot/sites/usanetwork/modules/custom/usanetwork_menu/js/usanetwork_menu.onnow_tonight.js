@@ -64,7 +64,7 @@
       };
 
       $(window).bind('resize', function () {
-        if (window.innerWidth >= window_size_tablet_portrait) {
+        if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
           if ($('.schedule-carousel').hasClass('destroy')) {
             scheduleInit();
             $('.schedule-carousel').removeClass('destroy');
@@ -81,7 +81,7 @@
       });
 
       $(window).load(function () {
-        if (window.innerWidth < window_size_tablet_portrait) {
+        if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
           $('.schedule-carousel').addClass('destroy');
         } else {
           scheduleInit();

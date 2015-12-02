@@ -23,7 +23,9 @@
     <div class="menu-item tab video-title info">
       <h2>
         <a class="no-refresh nolink" data-state>
-          <span><?php print $title; ?></span>
+          <div class="table-wrapper">
+            <span><?php print $title; ?></span>
+          </div>
         </a>
       </h2>
     </div>

@@ -133,6 +133,10 @@
         text-shadow: 1px 1px 0.5em $aspot-shadow;
       }
     }
+    .title_prefix {
+      @include aspotFonts(1px, 8.08px, 11.28px);
+      @include aspotShowFonts(1px, 8.08px, 11.28px);
+    }
     .title {
       color: #ffffff;
       font-family: $avalon-medium;
@@ -148,6 +152,8 @@
       @include breakpoint($bp-640-width) {
         font-size: 10.4vw;
       }
+      @include aspotFonts(4px, 52.8px, 42.56px);
+      @include aspotShowFonts(4px, 52.8px, 42.56px);
       p {
         margin: 0;
         text-shadow: 1px 1px 0.5em $aspot-shadow;
@@ -168,6 +174,8 @@
       @include breakpoint($bp-640-width) {
         font-size: 3.125vw;
       }
+      @include aspotFonts(1.5px, 15px, 11px);
+      @include aspotShowFonts(1.5px, 15px, 11px);
       p {
         margin: 0;
         text-shadow: 1px 1px 0.5em $aspot-shadow;

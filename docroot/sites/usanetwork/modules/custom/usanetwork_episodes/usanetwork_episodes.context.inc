@@ -20,6 +20,7 @@ function usanetwork_episodes_context_default_contexts() {
     'path' => array(
       'values' => array(
         'node/*/episodes' => 'node/*/episodes',
+        'node/*/episodes/*' => 'node/*/episodes/*',
       ),
     ),
   );

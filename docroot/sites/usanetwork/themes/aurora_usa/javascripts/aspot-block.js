@@ -175,7 +175,7 @@
           // remove loader
           $(aspotBlock).addClass('load');
 
-          if (window.innerWidth >= window_size_mobile_641) {
+          if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
             //show slide content (currentSlide, nextSlide)
             showElements(currentSlide, nextSlide);
           }
@@ -329,7 +329,7 @@
         changeLogoColor(currentIndex);
 
         // for resolutions more 640 px
-        if (window.innerWidth >= window_size_mobile_641) {
+        if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
 
           activeSlideContent = slide.eq(currentIndex).not('.slick-cloned').find('.slide-content');
           activeSlide = slide.eq(currentIndex);
@@ -364,7 +364,7 @@
       function hideElements(currentIndex, nextIndex) {
 
         // for resolutions more 640 px
-        if (window.innerWidth >= window_size_mobile_641) {
+        if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
 
           nextSlideImg = slide.eq(nextIndex).find('.asset-img img');
           nextSlideContent = slide.eq(nextIndex).find('.slide-content');
@@ -423,7 +423,7 @@
             paramsUrl = '',
             url;
 
-        if (_body.hasClass('front')) {
+        if (_body.hasClass('front') || _body.hasClass('home-preview-page')) {
 
           if (Object.keys(aspot_slide).length > 0) {
             for (var key in aspot_slide) {

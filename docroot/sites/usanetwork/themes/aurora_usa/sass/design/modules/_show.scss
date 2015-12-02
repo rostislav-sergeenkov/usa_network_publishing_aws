@@ -504,7 +504,7 @@
     height: 100%;
     position: absolute;
     top: 0px;
-    width: auto;
+    width: calc(100% - 270px);
     z-index: 1; //temp value
     @include breakpoint($bp-min-1901-width) {
       left: 434px;
@@ -1048,7 +1048,6 @@
             margin-top: get-vw(16px, 1024);
           }
           @include breakpoint($bp-768-width) {
-            display: -webkit-box;
             font-size: get-vw(14px, 768);
             height: get-row-height(20px, 14px, 5, 768);
             line-height: get-vw(20px, 768);
@@ -1056,15 +1055,24 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: normal;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 5;
+            @supports (-webkit-line-clamp: 5)  {
+              display: -webkit-box;
+              -webkit-line-clamp: 5;
+              -webkit-box-orient: vertical;
+              height: auto;
+            }
+
           }
           @include breakpoint($bp-480-width) {
             font-size: 8px;
             height: 21px;
             line-height: 11px;
             margin-top: 0px;
-            -webkit-line-clamp: 2;
+            @supports (-webkit-line-clamp: 2)  {
+              -webkit-line-clamp: 2;
+              height: auto;
+            }
+
           }
         }
         .show-link {

@@ -22,6 +22,7 @@
         } else {
           slideIndex = '';
         }
+
         $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
           if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
             var url = window.location.href.split('#')[0];
@@ -40,7 +41,7 @@
   function pagerPosition(pager) {
     var pagerItem = pager.find('.bx-pager-item'),
         itemLength = pagerItem.length;
-    if (window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && !$('body').hasClass('node-type-person') && !$('body').hasClass('blog')) {
+    if (window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && !$('body').hasClass('node-type-person') && !$('body').hasClass('node-type-post')) {
       var itemHeight = pagerItem.height();
 
       if (itemLength >= 10) {
@@ -51,7 +52,7 @@
 
       pager.css('margin-top', - (pager.innerHeight() / 2) + 'px');
     }
-    if (window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches || $('body').hasClass('node-type-person') || $('body').hasClass('blog')) {
+    if (window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches || $('body').hasClass('node-type-person') || $('body').hasClass('node-type-post')) {
 
       pager.wrap('<div class="bx-custom-pager-wrapper"></div>');
 
@@ -83,7 +84,7 @@
       pagerItemLinkActiveIndex = pager.find('.bx-pager-link.active').data('slide-index');
     }
 
-    if (window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && !$('body').hasClass('node-type-person') && !$('body').hasClass('blog')) {
+    if (window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && !$('body').hasClass('node-type-person') && !$('body').hasClass('node-type-post')) {
       var itemHeight = pagerItemLink.innerHeight();
       if (itemLength >= 10) {
         if (pagerItemLinkActiveIndex > 3) {
@@ -94,7 +95,7 @@
         }
       }
     }
-    if (window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches || $('body').hasClass('node-type-person') || $('body').hasClass('blog')) {
+    if (window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches || $('body').hasClass('node-type-person') || $('body').hasClass('node-type-post')) {
       var itemWidth = pagerItem.innerWidth();
       if (itemLength >= 10) {
         if (pagerItemLinkActiveIndex > 3) {
@@ -269,11 +270,11 @@
             slide = currentGallery.find('.slide').eq(0);
         gigyaSharebar(galleryContainer, slide, index);
 
-        if(window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches || $('body').hasClass('node-type-person') || $('body').hasClass('blog')) {
+        if(window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches || $('body').hasClass('node-type-person') || $('body').hasClass('node-type-post')) {
           currentGallery.addClass('mobile');
         }
 
-        if(window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && !$('body').hasClass('node-type-person') && !$('body').hasClass('blog')) {
+        if(window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && !$('body').hasClass('node-type-person') && !$('body').hasClass('node-type-post')) {
           initMouseWhell(gallery[i]);
         }
       });
@@ -310,12 +311,13 @@
 
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
-          $('.gallery-wrapper').each(function(i, el){
+          var i = 0;
+          $('.gallery-wrapper').each(function(){
             var galleryContainer = $(this);
             var pagerItemLinkActiveIndex = galleryContainer.find('.bx-pager-link.active').data('slide-index');
             var currentGallery = galleryContainer.find('.bxslider-gallery');
 
-            if(window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches || $('body').hasClass('node-type-person') || $('body').hasClass('blog')) {
+            if(window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches || $('body').hasClass('node-type-person') || $('body').hasClass('node-type-post')) {
               if(!currentGallery.hasClass('mobile')){
                 currentGallery.addClass('mobile');
                 gallery[i].reloadSlider();
@@ -324,7 +326,7 @@
                 movePagerItems(galleryContainer.find('.bx-custom-pager'));
               }
             }
-            if(window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && !$('body').hasClass('node-type-person') && !$('body').hasClass('blog')) {
+            if(window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && !$('body').hasClass('node-type-person') && !$('body').hasClass('node-type-post')) {
               if(currentGallery.hasClass('mobile')){
                 currentGallery.removeClass('mobile');
                 gallery[i].reloadSlider();
@@ -335,6 +337,7 @@
                 }, 1000);
               }
             }
+            i++;
           });
 
         }, 0, "consumptionator gallery");

@@ -3,7 +3,7 @@
  * $slides - array of pre-rendered slides
  */
 ?>
-<div class="gallery-wrapper">
+<div class="gallery-wrapper" data-id="<?php print $gallery_id; ?>">
   <?php if (!empty($slides)): ?>
     <div class="bxslider bxslider-gallery on-load">
     <?php foreach ($slides as $slide): ?>

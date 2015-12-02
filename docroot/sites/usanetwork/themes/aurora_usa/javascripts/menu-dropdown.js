@@ -11,8 +11,8 @@
       function switchState() {
         $body.toggleClass('sub-menu-is-sticky');
         subMenuSelector.toggleClass('sticky-shows-submenu');
-        $('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').toggleClass('sticky-sidebar');
-        if ($('body').hasClass('node-type-tv-episode')) {
+        if ($('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post')) {
+          $('.consum-sidebar').toggleClass('sticky-sidebar');
           Drupal.behaviors.usanetwork_consumptionator_episode.rightRailPosition();
         }
         if($body.hasClass('sub-menu-is-sticky')) {

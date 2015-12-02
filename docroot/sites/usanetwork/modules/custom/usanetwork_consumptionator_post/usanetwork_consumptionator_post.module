@@ -644,7 +644,7 @@ function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables
         }
       }
       if (preg_match("/^node\/([\%\d])\/(blog)$/", $context['menu_item']['path'], $matches)) {
-        $omniture_variables = array(
+        $blog_omniture_variables = array(
           's.prop2' => $content_group,
           's.prop3' => t('Blog'),
           's.prop4' => t('!show_name : !blog_name', array(
@@ -655,6 +655,8 @@ function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables
             '!show_name' => $context['entity']->title
           )),
         );
+
+        $omniture_variables = array_merge($omniture_variables, $blog_omniture_variables);
       }
     }
   }
@@ -671,7 +673,7 @@ function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables
           $content_group = $variable['value'];
         }
       }
-      $omniture_variables = array(
+      $post_omniture_variables = array(
         's.prop2' => $content_group,
         's.prop3' => t('Blog'),
         's.prop4' => t('!show_name : !blog_name', array(
@@ -687,6 +689,7 @@ function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables
           '!show_name' => $show->title
         )),
       );
+      $omniture_variables = array_merge($omniture_variables, $post_omniture_variables);
     }
   }
 }

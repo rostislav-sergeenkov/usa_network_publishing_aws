@@ -80,7 +80,7 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'USA Nitro',
+    'label' => 'Gallery End Card',
     'weight' => '5',
     'children' => array(
       0 => 'field_enable_nitro',
@@ -88,12 +88,13 @@ function usanetwork_gallery_content_field_group_info() {
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Gallery End Card',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $export['group_media_gallery_nitro|node|media_gallery|form'] = $field_group;

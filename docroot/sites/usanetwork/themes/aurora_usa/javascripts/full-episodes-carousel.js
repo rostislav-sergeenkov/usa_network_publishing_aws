@@ -2,14 +2,14 @@
   Drupal.behaviors.full_episodes_carousel = {
     attach: function (context) {
       var hide_elements = ($('.full-episodes-carousel').hasClass('carousel_1_rows'))? 3: 1;
-      if (window.innerWidth < window_size_tablet_portrait){
+      if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches){
         $('.full-episodes-carousel').addClass('destroy');
         $('.full-episodes-carousel > ul > li:gt('+ hide_elements +')').addClass('hidden');
       }
 
       $(window).bind('resize', function () {
 
-        if (window.innerWidth >= window_size_tablet_portrait){
+        if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches){
           if ($('.full-episodes-carousel').hasClass('destroy')) {
             $('.full-episodes-carousel').removeClass('destroy');
             $('.full-episodes-carousel > ul > li').removeClass('hidden');

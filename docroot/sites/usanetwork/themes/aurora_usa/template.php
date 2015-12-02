@@ -65,6 +65,9 @@ function aurora_usa_preprocess_html(&$vars) {
   if (arg(0) == 'videos' && arg(1) == 'live') {
     $vars['classes_array'][] = drupal_html_class('consumptionator-page');
   }
+  if (arg(0) == 'home' && arg(1) != NULL) {
+    $vars['classes_array'][] = drupal_html_class('home-preview-page');
+  }
   drupal_add_library('system', 'drupal.ajax');
   if ($entity = menu_get_object()) {
     $consumptionator_node_types = array(
@@ -161,6 +164,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
   drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
   drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
+  drupal_add_js($theme_path . '/javascripts/lazy-load-custom.js');
 
   $icomoon_ie_fix = array(
     '#tag' => 'script',

@@ -6,6 +6,7 @@ dependencies[] = features
 dependencies[] = field_group
 dependencies[] = file
 dependencies[] = image
+dependencies[] = media_multiselect
 dependencies[] = strongarm
 dependencies[] = text
 dependencies[] = usanetwork_page_collection

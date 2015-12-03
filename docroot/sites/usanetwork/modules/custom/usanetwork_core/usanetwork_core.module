@@ -194,7 +194,7 @@ function usanetwork_core_multiselect_validate(&$form, &$form_state) {
   foreach ($values['multiselect_fields'] as $field_name) {
     foreach ($values[$field_name][$values['language']] as $delta => $file_values) {
       $file = file_load($file_values['fid']);
-      if (!empty($file) && !usanetwork_core_api_check_field($file, 'field_file_image_alt_text', 'file')) {
+      if (!empty($file) && !usanetwork_core_api_check_field($file, 'field_file_image_alt_text', 'file') && $file->type == 'image') {
         $field = &$form[$field_name][$values['language']][$delta];
         $field['#attributes']['class'][] = 'error';
         form_set_error($field_name . '][' . $values['language'] . '][' . $delta, t('Image %filename does not have alt attribute.', array('%filename' => $file->filename)));

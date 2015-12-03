@@ -109,22 +109,9 @@
   }
 
   function pagerItems(container) {
-    var pager = container.find('.bx-custom-pager'),
-        controlContainer = container.find('.bx-controls');
+    var pager = container.find('.bx-custom-pager');
     //make pager position
     pagerPosition(pager);
-
-    controlContainer.on('click', function (e) {
-      var target = $(e.target);
-      if(target.closest('a').hasClass('bx-pager-link') || target.hasClass('bx-pager-link')){
-        e.preventDefault();
-        //move pager items position
-        movePagerItems(pager, target.closest('.bx-pager-item'));
-      }
-      if(target.hasClass('bx-prev') || target.hasClass('bx-next')){
-        movePagerItems(pager);
-      }
-    });
 
     var index = container.find('.bx-custom-pager .bx-pager-link.active').data('slide-index');
 
@@ -162,11 +149,9 @@
 
   function initMouseWhell(elem) {
     elem.mousewheel(function (event, delta, deltaX, deltaY) {
-      var pager = elem.closest('.gallery-wrapper').find('.bx-custom-pager');
 
       if (delta > 0) {
         elem.goToPrevSlide();
-        movePagerItems(pager);
         if (elem.getCurrentSlide() != 0) {
           event.stopPropagation();
           event.preventDefault();
@@ -174,7 +159,6 @@
       }
       if (deltaY < 0) {
         elem.goToNextSlide();
-        movePagerItems(pager);
         if (elem.getCurrentSlide() + 1 < elem.getSlideCount()) {
           event.stopPropagation();
           event.preventDefault();
@@ -250,10 +234,10 @@
           },
           onSlideAfter: function ($slideElement, oldIndex, newIndex) {
             var index = galleryContainer.find('.bx-custom-pager .bx-pager-link.active').data('slide-index'),
-                slide = slideElem.eq(index).addClass('active');
-
+                slide = slideElem.eq(index).addClass('active'),
+                pager = galleryContainer.find('.bx-custom-pager');
             gigyaSharebar(galleryContainer, slide, index);
-
+            movePagerItems(pager);
             if ($('body').hasClass('node-type-media-gallery')) {
               Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
             }
@@ -288,21 +272,17 @@
           switch(params.length){
             case 1:
               slide = (parseInt(params[0]) || 1) - 1;
-              var slideCount = $('.gallery-wrapper .slide').last().index(),
-                  pager = $('.gallery-wrapper .bx-custom-pager');
+              var slideCount = $('.gallery-wrapper .slide').last().index();
               if (slide <= slideCount) {
                 gallery[0].goToSlide(slide);
-                movePagerItems(pager);
               }
               break;
             case 2:
               slide = (parseInt(params[1]) || 1) - 1;
-              var slideCount = $('.gallery-wrapper[data-id="'+params[0]+'"] .slide').last().index(),
-                  pager = $('.gallery-wrapper[data-id="'+params[0]+'"] .bx-custom-pager');
+              var slideCount = $('.gallery-wrapper[data-id="'+params[0]+'"] .slide').last().index();
                 var galleryIndex = $('.gallery-wrapper').index($('.gallery-wrapper[data-id="'+params[0]+'"]'));
               if (slide <= slideCount) {
                 gallery[galleryIndex].goToSlide(slide);
-                movePagerItems(pager);
               }
               break;
           }

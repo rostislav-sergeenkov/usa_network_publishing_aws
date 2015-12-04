@@ -728,10 +728,10 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
           $('#video-container').addClass('active');
           var urlParts = self.parseUrl(window.location.href); // history.state['path']);
           if (urlParts['section'] == 'videos' && urlParts['item']) {
-            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, null, true);
+            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, null, true);
           }
           else {
-            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('false', null, null, true);
+            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(false, null, null, true);
           }
         }
 

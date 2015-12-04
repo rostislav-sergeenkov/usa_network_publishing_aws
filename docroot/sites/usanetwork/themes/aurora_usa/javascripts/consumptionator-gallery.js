@@ -11,7 +11,6 @@
         if ($currentDescription.trim() == '' && $('meta[property="og:description"]').length > 0) {
           $currentDescription = $('meta[property="og:description"]').attr('content');
         }
-        console.info($currentDescription);
         var $currentImage = slide.find('.asset-img img'),
             url = window.location.href.split('#')[0],
             slideIndex;

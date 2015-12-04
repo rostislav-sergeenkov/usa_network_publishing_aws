@@ -1285,7 +1285,8 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
       $image = $entity_wrapper->field_tv_cover_media->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
-      (!empty($node->body) ? $entity_wrapper->body->value->value() : '');
+      (!empty($node->body) ? $entity_wrapper->body->value()['value'] : '');
+    $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
     if (!empty($node->field_season)) {
       $season = $entity_wrapper->field_season->value();
       if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {

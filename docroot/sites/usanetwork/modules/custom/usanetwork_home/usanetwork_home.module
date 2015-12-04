@@ -1636,12 +1636,11 @@ function _usanetwork_home_create_homepage_shows_queue() {
 }
 
 /**
- * Implements hook_views_pre_render().
+ * Implements hook_views_post_execute().
  * Reorder Home Pages by week's days
  */
-function usanetwork_home_views_pre_render(&$view) {
+function usanetwork_home_views_post_execute(&$view) {
   if ('usa_home' == $view->name && 'page' == $view->current_display) {
-    $view->result = array_reverse($view->result);
 
     function compareWeekDays($a, $b) {
       $first = date('N', strtotime($a->node_title));

@@ -253,6 +253,7 @@
           font-family: $avalon-book;
           font-size: 26px;
           line-height: 1.6em;
+          position: relative;
           @include breakpoint($bp-1280-width) {
             font-size: 17px;
           }
@@ -282,9 +283,17 @@
           }
         }
         .description-item {
-          display: none;
+          display: block;
+          left: 0;
+          position: absolute;
+          z-index: -1;
+          visibility: hidden;
+          top: 0;
+          width: 100%;
           &.active {
-            display: block;
+            position: relative;
+            visibility: visible;
+            z-index: 1;
           }
         }
       }

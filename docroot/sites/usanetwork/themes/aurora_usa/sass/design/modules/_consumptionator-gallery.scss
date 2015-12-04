@@ -113,6 +113,9 @@
         @include breakpoint($bp-640-width) {
           margin-right: 20px;
           padding: 0;
+          &.gig-button-container-share {
+            margin-right: 0;
+          }
           td > div {
             font-size: 30px;
           }
@@ -626,6 +629,9 @@
           @include breakpoint($between-641-1024) {
             margin-right: 20px;
             padding: 0;
+            &.gig-button-container-share {
+              margin-right: 0;
+            }
             td > div {
               font-size: 30px;
             }
@@ -743,6 +749,11 @@
           text-align: center;
         }
         .field-name-field-gigya-share-bar {
+          float: none;
+          margin: 0 auto;
+          &:before {
+            display: none;
+          }
           table {
             margin: 0 auto;
           }
@@ -750,6 +761,9 @@
         .gig-button-container {
           margin-right: 20px;
           padding: 0;
+          &.gig-button-container-share {
+            margin-right: 0;
+          }
           td > div {
             font-size: 30px;
           }
@@ -926,7 +940,7 @@
           }
           .bx-controls-direction {
             a {
-              color: #ffffff;
+              color: #ffffff!important;
               display: block;
               height: 48px;
               margin-top: 0;

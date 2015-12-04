@@ -11020,6 +11020,9 @@ footer h2 {
     margin-right: 20px;
     padding: 0;
   }
+  .consumptionator-page .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share {
+    margin-right: 0;
+  }
   .consumptionator-page .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container td > div, .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div {
     font-size: 30px;
   }
@@ -11566,6 +11569,9 @@ footer h2 {
     margin-right: 20px;
     padding: 0;
   }
+  .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share {
+    margin-right: 0;
+  }
   .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div {
     font-size: 30px;
   }
@@ -11671,12 +11677,22 @@ footer h2 {
   line-height: 18px;
   text-align: center;
 }
+.block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-post .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar {
+  float: none;
+  margin: 0 auto;
+}
+.block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar:before, .node-type-post .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar:before {
+  display: none;
+}
 .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-post .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table {
   margin: 0 auto;
 }
 .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container, .node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container {
   margin-right: 20px;
   padding: 0;
+}
+.block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share {
+  margin-right: 0;
 }
 .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div {
   font-size: 30px;
@@ -11849,7 +11865,7 @@ footer h2 {
   display: none;
 }
 .block-character-info-content .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-post .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
-  color: #ffffff;
+  color: white !important;
   display: block;
   height: 48px;
   margin-top: 0;
@@ -14994,6 +15010,7 @@ footer h2 {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 26px;
   line-height: 1.6em;
+  position: relative;
 }
 @media (max-width: 1280px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content > .description .description-items {
@@ -15037,10 +15054,18 @@ footer h2 {
   }
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content > .description .description-item {
-  display: none;
+  display: block;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+  visibility: hidden;
+  top: 0;
+  width: 100%;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content > .description .description-item.active {
-  display: block;
+  position: relative;
+  visibility: visible;
+  z-index: 1;
 }
 
 .consumptionator-episode-main-block, .consumptionator-post-main-block {

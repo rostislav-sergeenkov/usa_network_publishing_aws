@@ -8,7 +8,7 @@
       var $sharebar = slider.find('.field-name-field-gigya-share-bar > div');
       if ($sharebar.length > 0) {
         var $currentDescription = slide.find('.slide-info .description').text();
-        if ($currentDescription == '' && $('meta[property="og:description"]').length > 0) {
+        if ($currentDescription.trim() == '' && $('meta[property="og:description"]').length > 0) {
           $currentDescription = $('meta[property="og:description"]').attr('content');
         }
         var $currentImage = slide.find('.asset-img img'),

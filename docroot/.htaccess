@@ -222,6 +222,8 @@ RedirectMatch 301 ^/series/toughenough/?.*$ http://www.usanetwork.com/wwetoughen
   </IfModule>
 
   <IfModule mod_headers.c>
+    # Adding Access-Control-Allow-Origin from outside of docroot
+    Header set Access-Control-Allow-Origin *
     # Do not use etags for cache validation.
     Header unset ETag
     # Serve correct content type.

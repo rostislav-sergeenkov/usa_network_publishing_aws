@@ -284,9 +284,7 @@
               if (slide <= slideCount) {
                 gallery[galleryIndex].goToSlide(slide);
               }
-                console.info($('[data-tab="actor-bio"] .gallery-wrapper[data-id="'+params[0]+'"]'));
               if ($('body').hasClass('node-type-person') && $('[data-tab="actor-bio"] .gallery-wrapper[data-id="'+params[0]+'"]').length > 0){
-                console.info('test');
                 $('[data-tab$="-bio"]').removeClass('active');
                 $('[data-tab="actor-bio"]').addClass('active');
               }

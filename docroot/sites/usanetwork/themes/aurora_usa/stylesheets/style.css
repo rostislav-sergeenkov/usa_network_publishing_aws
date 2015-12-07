@@ -11718,6 +11718,11 @@ footer h2 {
     height: 478px;
   }
 }
+@media (max-width: 640px) {
+  .block-character-info-content .node-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .asset-img, .node-type-post .node-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .asset-img {
+    height: calc((100vw - 72px) * 0.5625);
+  }
+}
 .block-character-info-content .node-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .asset-img img, .node-type-post .node-media-gallery .gallery-wrapper .bxslider-gallery .slide .node .asset-img img {
   height: auto;
 }
@@ -11797,6 +11802,11 @@ footer h2 {
 @media (min-width: 2500px) {
   .block-character-info-content .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-type-post .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper {
     top: 491px;
+  }
+}
+@media (max-width: 640px) {
+  .block-character-info-content .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper, .node-type-post .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager-wrapper {
+    top: calc((100vw - 72px) * 0.5625 + 13px);
   }
 }
 .block-character-info-content .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager, .node-type-post .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager {
@@ -11879,10 +11889,15 @@ footer h2 {
     top: 504px;
   }
 }
+@media (max-width: 640px) {
+  .block-character-info-content .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-post .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
+    top: calc((100vw - 72px) * 0.5625 + 36px);
+  }
+}
 @media (max-width: 480px) {
   .block-character-info-content .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a, .node-type-post .node-media-gallery .gallery-wrapper .bx-wrapper .bx-controls .bx-controls-direction a {
     height: 38px;
-    top: calc(35.856vw * 0.5625 + 36px);
+    top: calc((100vw - 72px) * 0.5625 + 36px);
     width: 38px;
   }
 }

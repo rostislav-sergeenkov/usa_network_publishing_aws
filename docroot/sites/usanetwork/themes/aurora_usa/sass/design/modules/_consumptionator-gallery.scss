@@ -790,6 +790,9 @@
               @include breakpoint($bp-min-2500-width) {
                 height: 478px;
               }
+              @include breakpoint($bp-640-width) {
+                height: calc((100vw - 72px) * 0.5625);
+              }
               img {
                 height: auto;
               }
@@ -872,6 +875,9 @@
             @include breakpoint($bp-min-2500-width) {
               top: 491px;
             }
+            @include breakpoint($bp-640-width) {
+              top: calc((100vw - 72px) * 0.5625 + 13px);
+            }
           }
           .bx-custom-pager {
             @include clear();
@@ -951,9 +957,12 @@
               @include breakpoint($bp-min-2500-width) {
                 top: 504px;
               }
+              @include breakpoint($bp-640-width) {
+                top: calc((100vw - 72px) * 0.5625 + 36px);
+              }
               @include breakpoint($bp-480-width) {
                 height: 38px;
-                top: calc(35.856vw * 0.5625 + 36px);
+                top: calc((100vw - 72px) * 0.5625 + 36px);
                 width: 38px;
               }
               &:hover {

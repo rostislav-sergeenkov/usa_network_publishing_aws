@@ -790,7 +790,7 @@
               @include breakpoint($bp-min-2500-width) {
                 height: 478px;
               }
-              @include breakpoint($bp-640-width) {
+              @include breakpoint($bp-768-width) {
                 height: calc((100vw - 72px) * 0.5625);
               }
               img {
@@ -875,7 +875,7 @@
             @include breakpoint($bp-min-2500-width) {
               top: 491px;
             }
-            @include breakpoint($bp-640-width) {
+            @include breakpoint($bp-768-width) {
               top: calc((100vw - 72px) * 0.5625 + 13px);
             }
           }
@@ -957,7 +957,7 @@
               @include breakpoint($bp-min-2500-width) {
                 top: 504px;
               }
-              @include breakpoint($bp-640-width) {
+              @include breakpoint($bp-768-width) {
                 top: calc((100vw - 72px) * 0.5625 + 36px);
               }
               @include breakpoint($bp-480-width) {
@@ -1004,6 +1004,46 @@
                 &:after {
                   content: "\e629";
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .block-character-info-content & {
+    .gallery-wrapper {
+      .bxslider-gallery {
+        .slide {
+          .node {
+            .asset-img {
+              @include breakpoint($between-769-1024) {
+                height: calc((100vw - 48px)* 0.56 * 0.5625);
+              }
+              @include breakpoint($between-641-768) {
+                height: calc((100vw - 358px) * 0.5625);
+              }
+            }
+          }
+        }
+      }
+      .bx-wrapper {
+        .bx-controls {
+          .bx-custom-pager-wrapper {
+            @include breakpoint($between-769-1024) {
+              top: calc((100vw - 48px)* 0.56 * 0.5625 + 13px);
+            }
+            @include breakpoint($between-641-768) {
+              top: calc((100vw - 358px) * 0.5625 + 13px);
+            }
+          }
+          .bx-controls-direction {
+            a {
+              @include breakpoint($between-769-1024) {
+                top: calc((100vw - 48px)* 0.56 * 0.5625 + 26px);
+              }
+              @include breakpoint($between-641-768) {
+                top: calc((100vw - 358px) * 0.5625 + 26px);
               }
             }
           }

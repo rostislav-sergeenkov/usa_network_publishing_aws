@@ -23,6 +23,7 @@ foreach ($multisites as $sitename => $domain) {
   $sites['qa.' . $domain] = $sitename;
   $sites['edit.' . $domain] = $sitename;
   $sites[$sitename] = $sitename;
+  $sites['apps.nbcuni.com'] = 'usanetwork';
 
   // $domain may have been empty; if so, do not add it.
   if (!empty($domain)) {

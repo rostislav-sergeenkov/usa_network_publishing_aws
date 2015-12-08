@@ -4,15 +4,22 @@
 
       var aspotHomeSlide = $('#block-usanetwork-aspot-usanetwork-aspot-carousel .slide'),
           aspotShowSlide = $('#main-slider .slide .slide-content'),
-          aspotMovieSlide = $('#block-usanetwork-movie-usanetwork-movie-main-block .slide .slide-content');
+          aspotMovieSlide = $('#block-usanetwork-movie-usanetwork-movie-main-block .slide .slide-content'),
+          currentEl;
 
       // init add style for Aspot druggeble elements
       if($('body').hasClass('usa-tv-show')) {
+        currentEl = aspotShowSlide;
         changeDraggableElementsPosition(aspotShowSlide);
-      } else if($('body').hasClass('page-home')) {
+      } else if($('body').hasClass('page-home') && !$('body').hasClass('home-preview-page')) {
+        currentEl = aspotHomeSlide;
         changeDraggableElementsPosition(aspotHomeSlide);
       } else if($('body').hasClass('node-type-movie')) {
+        currentEl = aspotMovieSlide;
         changeDraggableElementsPosition(aspotMovieSlide);
+      } else if($('body').hasClass('home-preview-page')) {
+        currentEl = aspotHomeSlide;
+        changeDraggableElementsPosition(aspotHomeSlide);
       } else if($('body').hasClass('node-type-usanetwork-aspot')) {
         changeDraggableElementsPosition($('#home_page_aspot_preview'));
         changeDraggableElementsPosition($('#show_aspot_preview'));
@@ -45,7 +52,8 @@
                   }
                 }
 
-                if($('body').hasClass('usa-tv-show')) {
+                if($('body').hasClass('usa-tv-show') || container.attr('id') === 'show_aspot_preview') {
+
                   if(!self.data('between-width')) {
                     if (elWidth === 'auto') {
                       self.attr('data-between-width', elWidth);
@@ -77,15 +85,14 @@
         });
       }
 
-
-
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
           // init add style for Aspot druggeble elements
-          if(!$('body').hasClass('usa-tv-show')) {
-            changeDraggableElementsPosition(aspotHomeSlide);
+          if ($('body').hasClass('node-type-usanetwork-aspot')) {
+            changeDraggableElementsPosition($('#home_page_aspot_preview'));
+            changeDraggableElementsPosition($('#show_aspot_preview'));
           } else {
-            changeDraggableElementsPosition(aspotShowSlide);
+            changeDraggableElementsPosition(currentEl);
           }
         }, 50, "home A-spot draggable elements");
       });

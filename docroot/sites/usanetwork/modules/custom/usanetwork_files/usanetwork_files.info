@@ -2,7 +2,6 @@ name = USA Network Files
 description = Shared File settings for USA Network, replaces pub_files
 core = 7.x
 package = USA Network
-php = 5.2.4
 version = 7.x-1.0
 project = usanetwork_files
 dependencies[] = ctools

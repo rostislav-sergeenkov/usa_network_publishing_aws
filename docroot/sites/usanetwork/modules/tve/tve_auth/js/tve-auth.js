@@ -100,28 +100,33 @@
         tveModal.openLoginModal();
       };
 
-      authService.promise.then(function() {
-        var isAuthN = authService.isAuthN(),
-            idxSession = authService.getIdxSession(),
-            isIdxLoginDisplayed = $.cookie(tveConfig.IS_IDX_LOGIN_DISPLAYED),
-            showIdxLogin = !helper.storage.get(tveConfig.DONT_SHOW_IDX_LOGIN_KEY);
+      authService.promise
+          .then(function() {
+            var isAuthN = authService.isAuthN(),
+                idxSession = authService.getIdxSession(),
+                isIdxLoginDisplayed = $.cookie(tveConfig.IS_IDX_LOGIN_DISPLAYED),
+                showIdxLogin = !helper.storage.get(tveConfig.DONT_SHOW_IDX_LOGIN_KEY);
 
-        global.currentProvider = authService.getSelectedProvider();
-        global.isAuthChecked = true;
-        global.isAuthN = isAuthN;
-        global.gettingStarted = helper.storage.get(tveConfig.GETTING_STARTED_KEY);
+            global.currentProvider = authService.getSelectedProvider();
+            global.isAuthChecked = true;
+            global.isAuthN = isAuthN;
+            global.gettingStarted = helper.storage.get(tveConfig.GETTING_STARTED_KEY);
 
-        $scope.$on('idxSignedIn', function(e, user) {
-          if (global.gettingStarted) {
-            tveModal.openLoginModal();
-          }
-        });
+            $scope.$on('idxSignedIn', function (e, user) {
+              if (global.gettingStarted) {
+                tveModal.openLoginModal();
+              }
+            });
 
-        if (isAuthN && idx.isEnabled && !global.isLoggedInIdx && showIdxLogin && isIdxLoginDisplayed != '1') {
-          tveModal.openLoginModal();
-          $.cookie(tveConfig.IS_IDX_LOGIN_DISPLAYED, '1', { path: '/' });
-        }
-      });
+            if (isAuthN && idx.isEnabled && !global.isLoggedInIdx && showIdxLogin && isIdxLoginDisplayed != '1') {
+              tveModal.openLoginModal();
+              $.cookie(tveConfig.IS_IDX_LOGIN_DISPLAYED, '1', {path: '/'});
+            }
+          })
+          .catch(function () {
+            console.info('auth catch ' + authService);
+            global.isAuthChecked = true;
+          });
 
       if (previewStep) {
         switch (previewStep) {

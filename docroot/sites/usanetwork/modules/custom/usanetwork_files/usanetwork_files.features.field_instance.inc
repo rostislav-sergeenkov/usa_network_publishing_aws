@@ -69,6 +69,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -124,6 +130,8 @@ function usanetwork_files_field_default_field_instances() {
     'label' => 'Caption',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 0,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -197,6 +205,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 6,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -251,6 +265,8 @@ function usanetwork_files_field_default_field_instances() {
     'label' => 'Copyright',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -322,6 +338,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 5,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -376,6 +398,8 @@ function usanetwork_files_field_default_field_instances() {
     'label' => 'Credit',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -393,6 +417,8 @@ function usanetwork_files_field_default_field_instances() {
   // Exported field_instance: 'file-image-field_file_image_alt_text'
   $field_instances['file-image-field_file_image_alt_text'] = array(
     'bundle' => 'image',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -441,6 +467,12 @@ function usanetwork_files_field_default_field_instances() {
         'weight' => 0,
       ),
       'gallery_flexslider' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -498,16 +530,30 @@ function usanetwork_files_field_default_field_instances() {
     'entity_type' => 'file',
     'field_name' => 'field_file_image_alt_text',
     'label' => 'Alt Text',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
+      'wysiwyg_override' => 0,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
         'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
       'weight' => -9,
@@ -570,6 +616,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 1,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -624,6 +676,8 @@ function usanetwork_files_field_default_field_instances() {
     'label' => 'Title Text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -695,6 +749,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 3,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -749,6 +809,8 @@ function usanetwork_files_field_default_field_instances() {
     'label' => 'Keywords',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -826,6 +888,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -881,6 +949,8 @@ function usanetwork_files_field_default_field_instances() {
     'label' => 'Media categories',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -949,6 +1019,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 7,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1003,6 +1079,8 @@ function usanetwork_files_field_default_field_instances() {
     'label' => 'Media Tags',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1074,6 +1152,12 @@ function usanetwork_files_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 4,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'media_link' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1128,6 +1212,8 @@ function usanetwork_files_field_default_field_instances() {
     'label' => 'Source',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),

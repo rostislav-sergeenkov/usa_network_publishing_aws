@@ -56,6 +56,10 @@ DirectoryIndex index.php index.html index.htm
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
+  <IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+  </IfModule>
+
   # Alternative robots.txt file on non-www domains.
   RewriteCond %{HTTP_HOST} !^www\. [NC]
   RewriteCond %{HTTP_HOST} !^usanetwork\.com$ [NC]
@@ -221,6 +225,7 @@ RedirectMatch 301 ^/series/toughenough/?.*$ http://www.usanetwork.com/wwetoughen
     ExpiresDefault A31449600
   </IfModule>
 
+  
   <IfModule mod_headers.c>
     # Do not use etags for cache validation.
     Header unset ETag

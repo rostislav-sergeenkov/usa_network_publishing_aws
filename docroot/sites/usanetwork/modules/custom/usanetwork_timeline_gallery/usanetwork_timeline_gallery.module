@@ -24,6 +24,7 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
       $scene_namber = 1;
       foreach ($fc_tg_item['field_timeline_media_item']['#items'] as $media_item) {
         $idx = $scene_namber - 1;
+        $description = '';
         $scenes[$idx] = array(
           'fid' => $media_item['fid'],
           'scene_number' => $scene_namber,

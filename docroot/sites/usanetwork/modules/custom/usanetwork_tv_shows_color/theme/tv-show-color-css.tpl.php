@@ -55,4 +55,10 @@
 .show-<?php print $node_code; ?> .usanetwork-quiz .answer-image img:hover {
   border-color: <?php print $primary_color_code; ?> !important;
 }
+.show-<?php print $node_code; ?> .timeline-node-desc {
+  background: <?php print $primary_color_code; ?> !important;
+}
+.show-<?php print $node_code; ?> .timeline-node-desc:after {
+  border-top-color: <?php print $primary_color_code; ?> !important;
+}
 

@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -17721,6 +17721,43 @@ footer h2 {
   .cast-and-crew-block .section-title {
     margin-bottom: 50px;
   }
+}
+
+.page-node-microsite .timelineFlat .timeline-items .timeline-item-image, .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-image {
+  position: relative;
+}
+.page-node-microsite .timelineFlat .timeline-items #player-wrapper, .node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper {
+  display: none;
+  position: absolute;
+}
+.page-node-microsite .timelineFlat .timeline-items #player-wrapper iframe, .node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper iframe {
+  height: 100%;
+  width: 100%;
+}
+.page-node-microsite .timelineFlat .timeline-items .play-button, .node-type-timeline-gallery .timelineFlat .timeline-items .play-button {
+  cursor: pointer;
+  height: 40px;
+  left: 50%;
+  line-height: 40px;
+  margin: -20px 0 0 -20px;
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  z-index: 1;
+}
+.page-node-microsite .timelineFlat .timeline-items .play-button:before, .node-type-timeline-gallery .timelineFlat .timeline-items .play-button:before {
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: '\e627';
+  font-family: "ico-font";
+  font-size: 40px;
+  text-shadow: 1px 1px 0.5em #333333;
+  height: 40px;
+  width: 40px;
+}
+.page-node-microsite .timelineFlat .timeline-items .video-data, .node-type-timeline-gallery .timelineFlat .timeline-items .video-data {
+  display: none;
 }
 
 .node-type-timeline-gallery .sharebar .field-type-gigya-sharebar {

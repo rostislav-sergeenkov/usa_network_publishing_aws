@@ -24,16 +24,14 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
       $scene_namber = 1;
       foreach ($fc_tg_item['field_timeline_media_item']['#items'] as $media_item) {
         $idx = $scene_namber - 1;
-        $scenes[$idx] = array(
-          'fid' => $media_item['fid'],
-          'scene_number' => $scene_namber,
-        );
         if ($media_item['type'] == 'image') {
           if (!empty($media_item['field_caption'][LANGUAGE_NONE])) {
             $description = current($media_item['field_caption'][LANGUAGE_NONE]);
             $description = !empty($description['value']) ? $description['value'] : NULL;
           }
-          $scenes[$idx] += array(
+          $scenes[$idx] = array(
+            'fid' => $media_item['fid'],
+            'scene_number' => $scene_namber,
             'type' => 'image',
             'image_src' => image_style_url('timeline_gallery_image', $media_item['uri']),
             'description' => $description,
@@ -56,7 +54,9 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
             'player_id' => 'top3_usa',
           ));
           $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $video_file), 'link');
-          $scenes[$idx] += array(
+          $scenes[$idx] = array(
+            'fid' => $media_item['fid'],
+            'scene_number' => $scene_namber,
             'type' => 'video',
             'image_src' => image_style_url('timeline_gallery_image', $image_url),
             'description' => $description,

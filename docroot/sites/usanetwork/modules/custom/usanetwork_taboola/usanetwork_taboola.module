@@ -13,6 +13,10 @@ function usanetwork_taboola_block_info()
     'info' => t('Usanetwork Taboola Video'),
     'cache' => DRUPAL_NO_CACHE,
   );
+  $blocks['usanetwork_taboola_gallery'] = array(
+    'info' => t('Usanetwork Taboola Gallery'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
 
   return $blocks;
 }
@@ -29,11 +33,22 @@ function usanetwork_taboola_block_view($delta = '')
       $block['subject'] = t('');
       $block['content'] = _usanetwork_taboola_video_block();
       break;
+    case 'usanetwork_taboola_gallery':
+      $block['subject'] = t('');
+      $block['content'] = _usanetwork_taboola_gallery_block();
+      break;
   }
   return $block;
 }
 
+/*
+ * Taboola Block for Video Page
+ */
 function _usanetwork_taboola_video_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
   drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header.js', array('type' => 'file', 'scope' => 'header'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_footer.js', array('type' => 'file', 'scope' => 'footer'));
 
@@ -44,6 +59,33 @@ function _usanetwork_taboola_video_block() {
     mode: \'thumbnails-a\',
     container: \'taboola-below-player-thumbnails\',
     placement: \'Below Player Thumbnails\',
+    target_type: \'mix\'
+  });
+</script>';
+
+  $variables = array('output' => $output);
+
+  return theme('usanetwork_taboola', $variables);
+}
+
+/*
+ * Taboola Block for Megia Gallery Page
+ */
+function _usanetwork_taboola_gallery_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header.js', array('type' => 'file', 'scope' => 'header'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_footer.js', array('type' => 'file', 'scope' => 'footer'));
+
+  $output = '<div id="taboola-below-gallery-thumbnails"></div>
+<script type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({
+    mode: \'thumbnails-a\',
+    container: \'taboola-below-gallery-thumbnails\',
+    placement: \'Below Gallery Thumbnails\',
     target_type: \'mix\'
   });
 </script>';

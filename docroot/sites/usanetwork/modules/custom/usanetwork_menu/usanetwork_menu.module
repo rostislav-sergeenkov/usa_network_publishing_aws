@@ -471,19 +471,6 @@ function usanetwork_menu_theme() {
 function usanetwork_menu_image_default_styles() {
   $styles = array();
 
-  $styles['episode_preview_temp'] = array(
-    'effects' => array(
-      array(
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 143,
-          'height' => 81,
-        ),
-        'weight' => 0,
-      ),
-    ),
-  );
-
   $styles['339x68'] = array(
     'effects' => array(
       array(
@@ -1298,7 +1285,8 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
       $image = $entity_wrapper->field_tv_cover_media->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
-      (!empty($node->body) ? $entity_wrapper->body->value->value() : '');
+      (!empty($node->body) ? $entity_wrapper->body->value()['value'] : '');
+    $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
     if (!empty($node->field_season)) {
       $season = $entity_wrapper->field_season->value();
       if ($season_num_items = field_get_items('node', $season, 'field_season_id')) {
@@ -1387,6 +1375,8 @@ function _usanetwork_menu_consumptionator_block_quiz($node) {
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->body) ? $entity_wrapper->body->value->value() : '');
+//    $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description)
+    $description = preg_replace('/<iframe.*?>(.*)<\/iframe>/', '', $description);
     $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
     $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
     $field = $tv_content_fields[$tv_content_node->type];
@@ -1601,7 +1591,7 @@ function _usanetwork_menu_static_page_header_block() {
 }
 
 function _usanetwork_menu_render_live_video_header_ajax($offset) {
-  $on_now_item = usanetwork_schedule_pull_on_now_item($offset);
+  $on_now_item = usanetwork_schedule_pull_on_now_item($offset, 'show_title');
   if (!empty($on_now_item)) {
     $image_url = NULL;
 

@@ -9,6 +9,7 @@ body {
       .panel-col-first {
         width: 645px;
         @include breakpoint($bp-menu-narrow) {
+          max-width: 100%;
           width: 100%;
         }
         .inside {

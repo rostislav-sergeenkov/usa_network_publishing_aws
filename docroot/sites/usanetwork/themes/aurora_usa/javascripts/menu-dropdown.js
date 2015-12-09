@@ -11,8 +11,8 @@
       function switchState() {
         $body.toggleClass('sub-menu-is-sticky');
         subMenuSelector.toggleClass('sticky-shows-submenu');
-        $('#block-usanetwork-episodes-usanetwork-episodes-main-block .consum-sidebar').toggleClass('sticky-sidebar');
-        if ($('body').hasClass('node-type-tv-episode')) {
+        if ($('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post')) {
+          $('.consum-sidebar').toggleClass('sticky-sidebar');
           Drupal.behaviors.usanetwork_consumptionator_episode.rightRailPosition();
         }
         if($body.hasClass('sub-menu-is-sticky')) {
@@ -227,7 +227,7 @@
             // HIDE SIGN TAB IF EXIST
             if ($('.page-videos .sign-in-link').length) {
               $('.page-videos .sign-in-link').removeClass('active');
-              $('.tab-item.log-in').slideUp(350).removeClass('active');
+              $('.tab-item.log-in').slideUp(animation_speed).removeClass('active');
             }
 
             // HIDE SEARCH BLOCK

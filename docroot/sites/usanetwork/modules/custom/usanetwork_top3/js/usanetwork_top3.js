@@ -456,7 +456,8 @@
 
               currentSlideNum.text(firstSlide);
               totalSlidesNum.text(slide.length);
-              //infoOpen();
+
+              playerService.showPlayButton();
 
               if (Drupal.behaviors.omniture_tracking != 'undefined') {
                 Drupal.behaviors.omniture_tracking.top3.changeSlide(at_params, firstSlide);

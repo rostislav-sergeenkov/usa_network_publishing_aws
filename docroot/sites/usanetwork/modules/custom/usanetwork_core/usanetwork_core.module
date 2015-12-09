@@ -165,6 +165,44 @@ function usanetwork_core_create_menu_items() {
   }
 }
 
+function usanetwork_core_form_alter(&$form, &$form_state, $form_id) {
+  if (strpos($form_id, '_node_form') !== FALSE) {
+    if ($field_names = usanetwork_core_is_media_multiselect_field($form)) {
+      $form['multiselect_fields'] = array(
+        '#type' => 'hidden',
+        '#value' => $field_names,
+      );
+      $form['#validate'][] = 'usanetwork_core_multiselect_validate';
+    }
+  }
+}
+
+function usanetwork_core_is_media_multiselect_field($form) {
+  $names = array();
+  foreach ($form as $name => $param) {
+    if (strpos($name, 'field') !== FALSE) {
+      if (isset($param[LANGUAGE_NONE]['#theme']) && $param[LANGUAGE_NONE]['#theme'] == 'media_widget_multiple') {
+        $names[] = $name;
+      }
+    }
+  }
+  return $names;
+}
+
+function usanetwork_core_multiselect_validate(&$form, &$form_state) {
+  $values = $form_state['values'];
+  foreach ($values['multiselect_fields'] as $field_name) {
+    foreach ($values[$field_name][$values['language']] as $delta => $file_values) {
+      $file = file_load($file_values['fid']);
+      if (!empty($file) && !usanetwork_core_api_check_field($file, 'field_file_image_alt_text', 'file') && $file->type == 'image') {
+        $field = &$form[$field_name][$values['language']][$delta];
+        $field['#attributes']['class'][] = 'error';
+        form_set_error($field_name . '][' . $values['language'] . '][' . $delta, t('Image %filename does not have alt attribute.', array('%filename' => $file->filename)));
+      }
+    }
+  }
+}
+
 /**
  * Helper function. Upserts taxonomy vocabularies and terms.
  * is Upsert a word?

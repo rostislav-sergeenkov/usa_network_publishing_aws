@@ -13,22 +13,8 @@ function usanetwork_search_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'acquia_search_derived_key_salt';
-  $strongarm->value = '35ca8413f24dd5d175321b87c65fbd9b';
-  $export['acquia_search_derived_key_salt'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'acquia_search_version';
-  $strongarm->value = '7.x-2.14';
-  $export['acquia_search_version'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'apachesolr_default_environment';
-  $strongarm->value = 'acquia_search_server_1';
+  $strongarm->value = 'aws_solr_search';
   $export['apachesolr_default_environment'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -102,13 +88,6 @@ function usanetwork_search_strongarm() {
   $strongarm->name = 'apachesolr_last_optimize';
   $strongarm->value = 1377184501;
   $export['apachesolr_last_optimize'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'apachesolr_search_default_search_page';
-  $strongarm->value = 'core_search';
-  $export['apachesolr_search_default_search_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

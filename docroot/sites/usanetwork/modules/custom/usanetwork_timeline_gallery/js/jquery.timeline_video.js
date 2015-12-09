@@ -630,6 +630,9 @@ Project demo: http://shindiristudio.com/timeline
 
           // SWIPE bind
           if (timeline_settings.swipeOn) {
+
+            var swipeWrap = $this.find('.timeline-items-wrapper');
+
             $items.find('*').each(function(){
               $(this).css({'-webkit-touch-callout': 'none',
                     '-webkit-user-select': 'none',
@@ -639,11 +642,13 @@ Project demo: http://shindiristudio.com/timeline
                     'user-select': 'none'});
             });
 
-            $this.bind('touchstart', function(e) {
+            //$this.bind('touchstart', function(e) {
+            swipeWrap.bind('touchstart', function(e) {
               $this.timeline('touchStart', e);
             });
 
-            $this.find(timeline_settings.itemClass).mousedown(function(e) {
+            //$this.find(timeline_settings.itemClass).mousedown(function(e) {
+            swipeWrap.find(timeline_settings.itemClass).mousedown(function(e) {
               $this.timeline('mouseDown', e.pageX);
             });
 

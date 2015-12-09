@@ -80,10 +80,10 @@ function theme_usanetwork_entityreference_field_multiple_value_form($variables) 
       else {
         if (preg_match("/.+\((\d+)\)/", $element[$key]['target_id']['#value'], $matches)) {
           $value = $matches[1];
-          $link = l('edit', 'node/' . $value . '/edit', array('attributes' => array('target' => '_blank')));
+          $link = l(t('edit'), 'node/' . $value . '/edit', array('attributes' => array('target' => '_blank')));
         }
         else {
-          $link = l('edit', '');
+          $link = t('edit');
         }
         $element[$key]['usanetwork_entityreference_edit_link'] = array(
           '#type' => 'item',
@@ -156,10 +156,10 @@ function theme_usanetwork_entityreference_field_single_value_form($variables) {
     foreach (element_children($element) as $key) {
       if (preg_match("/.+\((\d+)\)/", $element[$key]['target_id']['#value'], $matches)) {
         $value = $matches[1];
-        $link = l('edit', 'node/' . $value . '/edit', array('attributes' => array('target' => '_blank')));
+        $link = l(t('edit'), 'node/' . $value . '/edit', array('attributes' => array('target' => '_blank')));
       }
       else {
-        $link = l('edit', '');
+        $link = t('edit');
       }
       $element[$key]['usanetwork_entityreference_edit_link'] = array(
         '#type' => 'item',

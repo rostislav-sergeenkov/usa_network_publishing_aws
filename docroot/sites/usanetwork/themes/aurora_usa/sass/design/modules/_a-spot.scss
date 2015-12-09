@@ -135,6 +135,7 @@
     }
     .title_prefix {
       @include aspotFonts(1px, 8.08px, 11.28px);
+      @include aspotShowFonts(1px, 8.08px, 11.28px);
     }
     .title {
       color: #ffffff;
@@ -152,6 +153,7 @@
         font-size: 10.4vw;
       }
       @include aspotFonts(4px, 52.8px, 42.56px);
+      @include aspotShowFonts(4px, 52.8px, 42.56px);
       p {
         margin: 0;
         text-shadow: 1px 1px 0.5em $aspot-shadow;
@@ -173,6 +175,7 @@
         font-size: 3.125vw;
       }
       @include aspotFonts(1.5px, 15px, 11px);
+      @include aspotShowFonts(1.5px, 15px, 11px);
       p {
         margin: 0;
         text-shadow: 1px 1px 0.5em $aspot-shadow;
@@ -520,20 +523,15 @@
           font-size: get-vw(35.35px, 2500);
         }
       }
-      .title_prefix {
-        @include aspotShowFonts(1px, 8.08px, 11.28px);
-      }
       .title {
         @include breakpoint($between-641-768) {
           font-size: get-vw(192.8px, 2500);
         }
-        @include aspotShowFonts(4px, 52.8px, 42.56px);
       }
       .aspot-description {
         @include breakpoint($between-641-768) {
           font-size: get-vw(30.85px, 1280);
         }
-        @include aspotShowFonts(1.5px, 15px, 11px);
       }
       .cta-link {
         &.cta_button_0 {

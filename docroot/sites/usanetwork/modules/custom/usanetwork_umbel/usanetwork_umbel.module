@@ -126,6 +126,15 @@ function _usanetwork_umbel_variables($settings) {
               break;
             case 'catchall_page':
               $settings['usa_umbel_param_2'] = "Games";
+              $custom_omniture_variables = _usanetwork_ads_get_entity_omniture_variables($current_menu_object, 'node');
+              $migrated_vars = _usanetwork_dtm_migrate_vars($custom_omniture_variables);
+
+              if (isset($migrated_vars['AdobeTracking.contentType']) && ($migrated_vars['AdobeTracking.contentType'] == 'Features')) {
+                $promo_call_to_action = _usanetwork_get_field_item('node', $current_menu_object, 'field_call_to_action_type' , 'taxonomy_term');
+                if ($promo_call_to_action->name == 'gallery') {
+                  $settings['usa_umbel_param_2'] = "Photo Gallery";
+                }
+              }
               break;
             case 'tv_episode':
               $settings['usa_umbel_param_2'] = "Episode Guide";

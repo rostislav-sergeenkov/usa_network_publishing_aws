@@ -53,11 +53,6 @@ function usanetwork_home_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
-  $blocks['usanetwork_home_bspot_cspot'] = array(
-    'info' => t('Homepage: BC Spot'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
   $blocks['usanetwork_home_featured_promos'] = array(
     'info' => t('Homepage: Featured-Themed Carousel'),
     'cache' => DRUPAL_NO_CACHE,
@@ -85,10 +80,6 @@ function usanetwork_home_block_view($delta = '') {
       );
       break;
 
-    case 'usanetwork_home_bspot_cspot':
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_home_bspot_cspot();
-      break;
 
     case 'usanetwork_home_featured_promos':
       $block['subject'] = '';
@@ -522,64 +513,6 @@ function _usanetwork_home_featured_carousel() {
   }
 
   return '';
-}
-
-/**
- * Function for rendering BC spots
- */
-function _usanetwork_home_bspot_cspot() {
-  $content = array();
-
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-
-  if ($homepage) {
-    $homepage_node = usanetwork_home_get_homepage_node($homepage);
-    foreach (array('bspot' => 'field_usa_hp_brefs', 'cspot' => 'field_usa_hp_crefs') as $spot => $field_name) {
-      $spot_reference = field_get_items('node', $homepage_node, $field_name);
-      if (!$spot_reference) {
-        continue;
-      }
-      if (isset($spot_reference[0]['target_id']) && $promo = node_load($spot_reference[0]['target_id'])) {
-        $promo_data = _usanetwork_promo_featured_content($promo);
-
-        if ($promo_data === FALSE) {
-          continue;
-        }
-        if ($promo_data['season_number'] && $promo_data['episode_number']) {
-          $additional = t('S@season_num episode @episode_num', array(
-            '@season_num' => $promo_data['season_number']['value'],
-            '@episode_num' => $promo_data['episode_number']['value']
-              )
-          );
-        }
-
-        if (isset($promo_data['image_url_wide'])) {
-          $responsive_image = array(
-            'desktop' => image_style_url('bc833x469', $promo_data['image_url_wide']),
-            'desktop_retina' => image_style_url('bc1666x938', $promo_data['image_url_wide']),
-            'mobile' => image_style_url('bc480x270', $promo_data['image_url_wide']),
-            'mobile_retina' => image_style_url('bc960x540', $promo_data['image_url_wide']),
-          );
-        }
-
-        $spots_vars = array(
-          'spot_class' => $spot,
-          'show_code' => isset($promo_data['show_class']) ? $promo_data['show_class']
-                : NULL,
-          'url' => isset($promo_data['url']) ? $promo_data['url'] : NULL,
-          'spot_image' => isset($promo_data['image_url_wide']) ? $responsive_image : NULL,
-          'icon_type' => $promo_data['icon_type'] ? $promo_data['icon_type'] : NULL,
-          'title' => isset($promo_data['title']) ? $promo_data['title'] : NULL,
-          'caption' => $promo_data['caption'],
-          'additional' => isset($additional) ? $additional : '',
-          'time' => $promo_data['time'],
-        );
-        $spots[] = theme('usanetwork_home_bcspots', $spots_vars);
-      }
-    }
-
-    return implode(PHP_EOL, $spots);
-  }
 }
 
 /**
@@ -1700,4 +1633,29 @@ function _usanetwork_home_create_homepage_shows_queue() {
   $shows_queue->save();
 
   return $shows_queue;
+}
+
+/**
+ * Implements hook_views_post_execute().
+ * Reorder Home Pages by week's days
+ */
+function usanetwork_home_views_post_execute(&$view) {
+  if ('usa_home' == $view->name && 'page' == $view->current_display) {
+
+    function compareWeekDays($a, $b) {
+      $first = date('N', strtotime($a->node_title));
+      $second = date('N', strtotime($b->node_title));
+
+      if ($first > $second) {
+        return 1;
+      }
+      elseif ($first < $second) {
+        return -1;
+      }
+
+      return 0;
+    }
+
+    usort($view->result, "compareWeekDays");
+  }
 }

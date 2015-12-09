@@ -98,6 +98,13 @@ function usanetwork_schedule_schema() {
           'type' => 'int',
           'unsigned' => TRUE,
         ),
+        'dvs' => array(
+          'description' => 'Accessibility field',
+          'type' => 'int',
+          'not null' => TRUE,
+          'unsigned' => TRUE,
+          'default' => 0,
+        ),
       ),
       'unique keys' => array(
         'guid' => array('guid'),
@@ -160,4 +167,11 @@ function usanetwork_schedule_update_7127() {
     file_usage_add($file, 'user', 'user', $user->uid);
     variable_set('usanetwork_schedule_episode_image_fid', $file->fid);
   }
+}
+
+/**
+ * Add new field to usanetwork_schedule table for saving Accessibility parameter
+ */
+function usanetwork_schedule_update_7128() {
+  db_add_field('usanetwork_schedule', 'dvs', array('type' => 'int', 'not null' => TRUE, 'default' => 0, 'description' => 'Accessibility field'));
 }

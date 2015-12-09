@@ -76,6 +76,10 @@ node/add/*
 node/*/edit
 media/*/edit
 media/*/edit/ajax
+media/ajax
+media/ajax/*
+media/browser
+media/browser/*
 file/*/edit';
   $export['lazyloader_paths'] = $strongarm;
 

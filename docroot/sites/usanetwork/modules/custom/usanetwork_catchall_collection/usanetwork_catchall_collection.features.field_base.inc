@@ -19,14 +19,6 @@ function usanetwork_catchall_collection_field_default_field_bases() {
       0 => 'node',
     ),
     'field_name' => 'field_usa_pc_afterall_content',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -48,14 +40,6 @@ function usanetwork_catchall_collection_field_default_field_bases() {
       0 => 'node',
     ),
     'field_name' => 'field_usa_pc_css',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -81,14 +65,6 @@ function usanetwork_catchall_collection_field_default_field_bases() {
       0 => 'node',
     ),
     'field_name' => 'field_usa_pc_css_inline',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -108,14 +84,6 @@ function usanetwork_catchall_collection_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_usa_pc_file_folder',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -137,14 +105,6 @@ function usanetwork_catchall_collection_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_usa_pc_files',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -168,14 +128,6 @@ function usanetwork_catchall_collection_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_usa_pc_images',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -200,14 +152,6 @@ function usanetwork_catchall_collection_field_default_field_bases() {
       0 => 'node',
     ),
     'field_name' => 'field_usa_pc_javascript',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -233,14 +177,6 @@ function usanetwork_catchall_collection_field_default_field_bases() {
       0 => 'node',
     ),
     'field_name' => 'field_usa_pc_javascript_inline',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -262,14 +198,6 @@ function usanetwork_catchall_collection_field_default_field_bases() {
       0 => 'node',
     ),
     'field_name' => 'field_usa_pc_overall_content',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',

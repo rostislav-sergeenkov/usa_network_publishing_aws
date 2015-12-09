@@ -337,7 +337,8 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_splash(&$vars) {
 
   // add splash screen variables
   if (!isset($vars['description'])) {
-    $vars['description'] = _usanetwork_quiz_get_field_item_value($node, 'body', 'value');
+    $element = field_view_field('node', $node, 'body');
+    $vars['description'] = render($element);
   }
   if (!isset($vars['splash_image'])) {
     $splash_image = _usanetwork_quiz_get_field_item_value($node, 'field_quiz_splash_image', 'uri');

@@ -40,7 +40,7 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
         }
         elseif ($media_item['type'] == 'mpx_video_1') {
           $video_file = file_load($media_item['fid']);
-          if ($video_file->mpx_video_data['status'] != FILE_PUBLISHED) {
+          if ($video_file->mpx_video_data['expiration_date'] && $video_file->mpx_video_data['expiration_date'] < REQUEST_TIME) {
             continue;
           }
           $isset_video = TRUE;

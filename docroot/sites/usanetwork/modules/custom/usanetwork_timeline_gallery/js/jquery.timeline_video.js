@@ -438,11 +438,11 @@ Project demo: http://shindiristudio.com/timeline
         });
       });
 
-      // Timeline omniture tracking. Track scene changes via season 1 or 2 buttons
+      // Timeline omniture tracking. Track scene changes via next and prev seasons buttons
       $('.node-timeline-gallery .timeline-line #timeline-line-full-left, .node-timeline-gallery .timeline-line #timeline-line-full-right').once('omniture-tracking', function() {
         $(this).on('click', function(e) {
           e.preventDefault();
-          var currentId = ($(this).attr('id') == 'timeline-line-full-left') ? $('.timeline-item:first').attr('data-id') : Drupal.behaviors.timeline_gallery.get1stSceneLastSeason();
+          var currentId = $('.timeline-node.active').attr('href').split('#')[1];
           Drupal.behaviors.timeline_gallery.setOmnitureData(currentId);
         });
       });
@@ -465,15 +465,40 @@ Project demo: http://shindiristudio.com/timeline
       // hide previous button
       $('.timeline-left').animate({'opacity': 0}, 500).delay(1).css('display', 'none');
     }, // end initializeTimeline
-
-    get1stSceneLastSeason: function() {
-      var categoryKeys = Object.keys(categories),
-          lastSeason = categoryKeys[(categoryKeys.length - 1)],
-          lastSeasonEpisodes = categories[lastSeason],
-          lastSeasonFirstEpisode = Object.keys(lastSeasonEpisodes)[0],
-          lastSeasonText = (lastSeason < 10) ? '0' + lastSeason : lastSeason,
-          lastSeasonEpisodeText = (lastSeasonFirstEpisode < 10) ? '0' + lastSeasonFirstEpisode : lastSeasonFirstEpisode;
-      return '01/' + lastSeasonEpisodeText + '/' + lastSeasonText;
+    getElement: function(direction) {
+      var currentLink = $('.timeline-node.active').attr('href').split('#')[1],
+          currentSeason = currentLink.split('/')[2],
+          firstSeason = $('.timeline-node').first().attr('href').split('/')[2],
+          lastSeason = $('.timeline-node').last().attr('href').split('/')[2],
+          nextSeason = '00';
+      if (direction == 'next') {
+        if (currentSeason == lastSeason) {
+          return currentLink;
+        }
+        nextSeason = +currentSeason + 1;
+        nextSeason = (nextSeason < 10) ? '0' + nextSeason : nextSeason;
+        while($('.timeline-node[href$="/'+nextSeason+'"]').length == 0) {
+          nextSeason = +nextSeason + 1;
+          nextSeason = (nextSeason < 10) ? '0' + nextSeason : nextSeason;
+        }
+      }
+      if (direction == 'prev') {
+        if (currentSeason == firstSeason) {
+          return currentLink;
+        }
+        nextSeason = +currentSeason - 1;
+        nextSeason = (nextSeason < 10) ? '0' + nextSeason : nextSeason;
+        while($('.timeline-node[href$="/'+nextSeason+'"]').length == 0) {
+          nextSeason = +nextSeason - 1;
+          nextSeason = (nextSeason < 10) ? '0' + nextSeason : nextSeason;
+        }
+      }
+      if ($('.timeline-node[href$="/'+nextSeason+'"]').length > 0) {
+        var nextItem = $('.timeline-node[href$="/'+nextSeason+'"]').eq(0).attr('href').split('#')[1];
+        return nextItem;
+      } else {
+        return currentLink;
+      }
     },
 
     attach: function (context, settings) {
@@ -1236,8 +1261,8 @@ Project demo: http://shindiristudio.com/timeline
           // Make wrapper elements
           if (data.options.yearsOn && Object.keys(yearsArr).length > 1) {
           html = '\n' +
-    '		<div id="timeline-line-full-left"><span class="title show-color show-font">Season ' + Object.keys(yearsArr)[0] + '</span><span class="arrow"></span>' +
-    '</div><div id="timeline-line-left"></div><div id="timeline-line-right"></div><div id="timeline-line-full-right"><span class="arrow"></span><span class="title show-color show-font">Season ' + Object.keys(yearsArr)[(Object.keys(yearsArr).length - 1)] + '</span></div>\n' +
+    '		<div id="timeline-line-full-left"><span class="title show-color show-font">Previous Season</span><span class="arrow"></span>' +
+    '</div><div id="timeline-line-left"></div><div id="timeline-line-right"></div><div id="timeline-line-full-right"><span class="arrow"></span><span class="title show-color show-font">Next Season</span></div>\n' +
     '		<div class="timeline-holder">\n' +
     '			<div class="timeline-wrapper">\n';
           }
@@ -1358,16 +1383,18 @@ Project demo: http://shindiristudio.com/timeline
 
           // Bind goTo function to REW click event
           $(this).find('#timeline-line-full-left').on('click', function(e){
+            var nextElement = Drupal.behaviors.timeline_gallery.getElement('prev');
             $this.find('.timeline-node').removeClass('active');
-            $this.timeline('goTo', $('.timeline-item:first').attr('data-id'));
-            $(this).find('.timeline-node:first').addClass('active');
+            $this.timeline('goTo', nextElement);
+            $('.timeline-node[href="#'+nextElement+'"]').addClass('active');
           });
 
           // Bind goTo function to FFWD click event
           $(this).find('#timeline-line-full-right').on('click', function(e){
+            var nextElement = Drupal.behaviors.timeline_gallery.getElement('next');
             $this.find('.timeline-node').removeClass('active');
-            $this.timeline('goTo', Drupal.behaviors.timeline_gallery.get1stSceneLastSeason());
-            $(this).find('.timeline-node:last').addClass('active');
+            $this.timeline('goTo', nextElement);
+            $('.timeline-node[href="#'+nextElement+'"]').addClass('active');
           });
 
           // Gigya share buttons

@@ -443,7 +443,7 @@
             }
 
             if (($(window).scrollTop() - Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt) > 100) {
-              if (!$('.tab-item').hasClass('mCustomScrollbar') && window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches && !$('body').hasClass('consumptionator-page')) {
+              if (!$('.tab-item').hasClass('mCustomScrollbar') && window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
                 $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
                 $('.tab-item.active').slideUp(350).removeClass('active');
                 Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt = null;

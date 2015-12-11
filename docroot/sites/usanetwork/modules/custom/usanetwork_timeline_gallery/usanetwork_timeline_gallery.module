@@ -37,6 +37,7 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
             'image_src' => image_style_url('timeline_gallery_image', $media_item['uri']),
             'description' => $description,
           );
+          $scene_namber++;
         }
         elseif ($media_item['type'] == 'mpx_video_1') {
           $video_file = file_load($media_item['fid']);
@@ -64,8 +65,8 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
             'video' => !empty($video) ? $video : NULL,
             'video_link' => !empty($video_link) ? $video_link : NULL,
           );
+          $scene_namber++;
         }
-        $scene_namber++;
       }
       $season_num = $season_node_wrapper->field_season_id->value();
       $episode_num = $episode_node_wrapper->field_episode_number->value();

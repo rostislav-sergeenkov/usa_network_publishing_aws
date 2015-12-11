@@ -1,28 +1,5 @@
 .page-node-microsite , .node-type-timeline-gallery {
   .timelineFlat {
-    #timeline-line-full-left {
-      @include breakpoint($bp-min-1141-width) {
-        left: -243px;
-        width: 210px;
-      }
-      .title {
-        @include breakpoint($bp-min-1141-width) {
-          font-size: 19px;
-          width: 170px;
-        }
-      }
-    }
-    #timeline-line-full-right {
-      @include breakpoint($bp-min-1141-width) {
-        right: -195px;
-        width: 156px;
-      }
-      .title {
-        @include breakpoint($bp-min-1141-width) {
-          font-size: 19px;
-        }
-      }
-    }
     .timeline-items {
       .timeline-item-image {
         position: relative;
@@ -91,26 +68,7 @@
           padding: 20px 8px 10px 10px;
         }
         h2 {
-          width: 98%;
           padding: 0 20px;
-          @include breakpoint($bp-1280-width) {
-            font-size: 12px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 10px;
-          }
-          @include breakpoint($bp-768-width) {
-            font-size: 12px;
-            text-align: left;
-            left: 10px;
-            right: auto;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            .divider {
-              margin: 0;
-            }
-          }
         }
         .timeline-item-text {
           font-family: $avalon-book;

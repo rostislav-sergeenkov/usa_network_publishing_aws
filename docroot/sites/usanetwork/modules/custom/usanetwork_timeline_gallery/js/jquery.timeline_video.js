@@ -1273,7 +1273,7 @@ Project demo: http://shindiristudio.com/timeline
     '			<div class="timeline-wrapper">\n';
           }
 
-          // Prepare for loop, every view has 2 months, we show both if first has nodes in it
+          // Prepare for loop, every view has 1 episode
           if (!data.options.categories) {
             html +=
             '<div class="timeline-view" data-id="'+cnt+'">\n'+
@@ -1285,52 +1285,25 @@ Project demo: http://shindiristudio.com/timeline
             '</div>';
           }
           else {
-            var firstMonth = true,
-                cnt = 0;
+            var cnt = 0;
             for (var yr in yearsArr) {
               for (var mnth in yearsArr[yr]) {
-                if (firstMonth) {
-                  firstMonth = !firstMonth;
-                  html +=
-                '<div class="timeline-view" data-id="'+cnt+'"><span class="vert-end-line"></span>\n'+
-        '					<div class="timeline-m">\n'+
-        '						<h4 class="timeline-month">'+(data.options.yearsOn ? 's' + yr + ' ' : '') + 'ep' + mnth + (data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
+                html +=
+              '<div class="timeline-view" data-id="'+cnt+'"><span class="vert-end-line"></span>\n'+
+      '					<div class="timeline-m">\n'+
+      '						<h4 class="timeline-month">'+(data.options.yearsOn ? 's' + yr + ' ' : '') + 'ep' + mnth + (data.options.yearsOn ? '<span class="timeline-month-year"></span>' : '' )+'</h4>\n';
 
-                  // Fill with nodes
-                  for (dy in yearsArr[yr][mnth]) {
-                    html+= nodes[yearsArr[yr][mnth][dy]];
-                  }
-                  html +=
-        '					</div> <!-- KRAJ PRVOG -->\n';
+                // Fill with nodes
+                for (dy in yearsArr[yr][mnth]) {
+                  html+= nodes[yearsArr[yr][mnth][dy]];
                 }
-                else {
-                  firstMonth = !firstMonth;
-                  html +=
-        '					<div class="timeline-m right">\n'+
-        '						<h4 class="timeline-month">' + (data.options.yearsOn ? 's' + yr + ' ' : '') + 'ep' + mnth + (data.options.yearsOn ? '<span class="timeline-month-year"> </span>' : '' )+'</h4>\n';
-
-                  // Fill with nodes
-                  for (dy in yearsArr[yr][mnth]) {
-                    html+= nodes[yearsArr[yr][mnth][dy]];
-                  }
-                  html +=
-        '					</div><!-- KRAJ DRUGOG -->\n'+
-        '					<div class="clear"></div>\n'+
-        '				<span class="vert-end-line right"></span></div>';
-                  cnt++;
-                }
+                html +=
+      '					</div> <!-- KRAJ PRVOG -->\n' +
+                '					<div class="clear"></div>\n'+
+                '				<span class="vert-end-line right"></span></div>';
+                cnt++;
               } // for mnth
             } // for yr
-
-            if (!firstMonth) {
-              html +=
-      '					<div class="timeline-m right">\n'+
-      '						<h4 class="timeline-month"></h4>\n'+
-      '					</div>\n'+
-      '					<div class="clear"></div>\n'+
-      '				<span class="vert-end-line right"></span></div>';
-              cnt++;
-            }
           } // if - else
 
           html +=	'\n' +

@@ -13721,6 +13721,48 @@ footer h2 {
   }
 }
 
+.consumptionator-video-page header {
+  height: calc(120px + 7.10153vw);
+}
+@media (min-width: 1901px) {
+  .consumptionator-video-page header {
+    height: 255px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-video-page header {
+    height: auto;
+  }
+}
+.consumptionator-video-page #head-leaderboard {
+  max-height: 110px;
+}
+@media (min-width: 769px) {
+  .consumptionator-video-page.page-full-video.admin-menu {
+    margin-top: 0px !important;
+  }
+}
+.consumptionator-video-page.page-full-video header {
+  height: 7.10153vw;
+}
+@media (min-width: 1901px) {
+  .consumptionator-video-page.page-full-video header {
+    height: 135px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-video-page.page-full-video header {
+    height: auto;
+  }
+}
+@media (min-width: 769px) {
+  .consumptionator-video-page.page-full-video header .region-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+  }
+}
 .consumptionator-video-page .video-block .consum-sidebar .advert {
   display: none;
 }

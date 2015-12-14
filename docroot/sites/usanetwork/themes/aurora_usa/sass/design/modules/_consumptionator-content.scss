@@ -778,6 +778,80 @@
     }
   }
 }
+.consumptionator-video-page {
+  header {
+    height: calc(120px + 7.10153vw);
+    @include breakpoint($bp-min-1901-width) {
+      height: 255px;
+    }
+    @include breakpoint($bp-768-width) {
+      height: auto;
+    }
+  }
+  #head-leaderboard {
+    max-height: 110px;
+  }
+  &.page-full-video {
+    &.admin-menu {
+      @include breakpoint($bp-min-769-width) {
+        margin-top: 0px!important;
+      }
+    }
+    header {
+      height: get-vw(135px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        height: 135px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: auto;
+      }
+      .region-header {
+        @include breakpoint($bp-min-769-width) {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 999;
+        }
+      }
+    }
+  }
+  .video-block {
+    .consum-sidebar {
+      .advert {
+        display: none;
+      }
+      .items-block {
+        @include breakpoint($bp-min-1281-width) {
+          bottom: 40px;
+          height: calc(100% - 85px);
+          position: absolute;
+        }
+        @include breakpoint($bp-min-1901-width) {
+          bottom: 70px;
+          height: calc(100% - 140px);
+        }
+      }
+      .download-app {
+        @include breakpoint($between-1025-1280) {
+          bottom: 0;
+          height: 290px;
+          position: absolute;
+          right: 0;
+          width: 320px;
+        }
+        @include breakpoint($bp-1024-width) {
+          width: 100%;
+        }
+      }
+      .episodes-list-slider.vertical {
+        height: calc(100% - 45px);
+        @include breakpoint($bp-min-1901-width) {
+          height: calc(100% - 70px);
+        }
+      }
+    }
+  }
+}
 .consumptionator-characters-main-block, .consumptionator-episode-main-block, .consumptionator-quiz-main-block, .consumptionator-post-main-block {
   .consum-sidebar {
     @include breakpoint($between-1025-1280) {

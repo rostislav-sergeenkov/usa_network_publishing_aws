@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -13718,6 +13718,87 @@ footer h2 {
 @media (min-width: 1025px) and (max-width: 1280px) {
   #block-usanetwork-media-gallery-usa-gallery-consumptionator-main .consum-sidebar .more-items, .consumptionator-video-page .video-block .consum-sidebar .more-items {
     background: none !important;
+  }
+}
+
+.consumptionator-video-page header {
+  height: calc(120px + 7.10153vw);
+}
+@media (min-width: 1901px) {
+  .consumptionator-video-page header {
+    height: 255px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-video-page header {
+    height: auto;
+  }
+}
+.consumptionator-video-page #head-leaderboard {
+  max-height: 110px;
+}
+@media (min-width: 769px) {
+  .consumptionator-video-page.page-full-video.admin-menu {
+    margin-top: 0px !important;
+  }
+}
+.consumptionator-video-page.page-full-video header {
+  height: 7.10153vw;
+}
+@media (min-width: 1901px) {
+  .consumptionator-video-page.page-full-video header {
+    height: 135px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-video-page.page-full-video header {
+    height: auto;
+  }
+}
+@media (min-width: 769px) {
+  .consumptionator-video-page.page-full-video header .region-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+  }
+}
+.consumptionator-video-page .video-block .consum-sidebar .advert {
+  display: none;
+}
+@media (min-width: 1281px) {
+  .consumptionator-video-page .video-block .consum-sidebar .items-block {
+    bottom: 40px;
+    height: calc(100% - 85px);
+    position: absolute;
+  }
+}
+@media (min-width: 1901px) {
+  .consumptionator-video-page .video-block .consum-sidebar .items-block {
+    bottom: 70px;
+    height: calc(100% - 140px);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-video-page .video-block .consum-sidebar .download-app {
+    bottom: 0;
+    height: 290px;
+    position: absolute;
+    right: 0;
+    width: 320px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-video-page .video-block .consum-sidebar .download-app {
+    width: 100%;
+  }
+}
+.consumptionator-video-page .video-block .consum-sidebar .episodes-list-slider.vertical {
+  height: calc(100% - 45px);
+}
+@media (min-width: 1901px) {
+  .consumptionator-video-page .video-block .consum-sidebar .episodes-list-slider.vertical {
+    height: calc(100% - 70px);
   }
 }
 

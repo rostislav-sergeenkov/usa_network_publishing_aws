@@ -1630,6 +1630,12 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         ));
         $vars['video_inactive'] = $video;
       }
+
+      $interactive = _usanetwork_get_field_item('file', $file, 'field_mpx_interactive', 'value');
+      if (!empty($interactive)) {
+        $vars['watchwith'] = TRUE;
+        drupal_add_js('http://snowbird.watchwith.com/~chihiro/WD-71/wwLoader.js', array('type' => 'external', 'group' => JS_LIBRARY - 5));
+      }
     }
   }
   // Fill H1 tag.

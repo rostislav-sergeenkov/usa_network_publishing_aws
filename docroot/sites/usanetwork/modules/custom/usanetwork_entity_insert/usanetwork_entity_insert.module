@@ -117,6 +117,10 @@ function usanetwork_entity_insert_tokens($type, $tokens, array $data = array(), 
         if (in_array($entity_type, array_keys($enabled)) && in_array($view_mode, array_keys(_usanetwork_entity_insert_view_modes($name)))) {
           $entity = entity_load_single($entity_type, $entity_id);
           if ($entity) {
+            if ($entity->status == NODE_NOT_PUBLISHED) {
+              $replacements[$original] = '';
+              continue;
+            }
             $rendered_entity = entity_view($entity_type, array($entity), $view_mode);
             if ($rendered_entity) {
               $rendered_entity = reset($rendered_entity);

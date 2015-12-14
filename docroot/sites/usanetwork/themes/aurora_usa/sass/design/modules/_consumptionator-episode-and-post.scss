@@ -91,7 +91,7 @@
       border-bottom: 2px solid;
       padding: 45px 93px 90px 70px;
       @include breakpoint($bp-1280-width) {
-        padding: 38px 58px 76px 45px;
+        padding: 38px 43px 76px 32px;
       }
       @include breakpoint($bp-1024-width) {
         padding: 53px 11.8% 90px;
@@ -298,6 +298,7 @@
         font-family: $avalon-book;
         font-size: 26px;
         line-height: 1.6em;
+        position: relative;
         @include breakpoint($bp-1280-width) {
           font-size: 17px;
         }
@@ -429,8 +430,6 @@
       }
     }
   }
-}
-.consumptionator-episode-main-block {
   .consum-sidebar {
     @include breakpoint($bp-min-1025-width) {
       float: none;
@@ -452,3 +451,4 @@
     }
   }
 }
+

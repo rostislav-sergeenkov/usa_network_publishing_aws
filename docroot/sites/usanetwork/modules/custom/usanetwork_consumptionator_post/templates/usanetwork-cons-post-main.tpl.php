@@ -14,7 +14,7 @@
  */
 ?>
 <div class="consumptionator-post-main-block">
-  <div class="post-info-main-block">
+  <div class="post-info-main-block right-rail-line">
     <div class="post-info-block show-border">
       <div class="post-info-header">
         <div class="post-title-block">

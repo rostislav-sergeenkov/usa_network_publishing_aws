@@ -733,128 +733,140 @@ function _usanetwork_tv_schedule_get_show_node_by_sch_item($item) {
 /**
  * Accessibility page menu callback
  */
-function usanetwork_tv_schedule_accessibility($is_accessibility_page = FALSE) {
-  date_default_timezone_set('America/New_York');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.js');
+function usanetwork_tv_schedule_accessibility() {
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_schedule') . '/js/usanetwork_tv_schedule.filter.js');
 
-  $output = '';
-  $query_params = drupal_get_query_parameters();
-  $orginal_tz = date_default_timezone_get();
+  if (isset($parameters)) {
+    $query_params = $parameters;
+  } else {
+    $query_params = drupal_get_query_parameters();
+  }
+
   date_default_timezone_set('America/New_York');
-  $et_time = floatval(date('U'));
+
+  $filter_show_nid = !empty($query_params['show_nid']) ? check_plain($query_params['show_nid']) : NULL;
+  $filter_show_time = !empty($query_params['show_time']) ? check_plain($query_params['show_time']) : NULL;
   $filter_day = !empty($query_params['sdate']) ? check_plain($query_params['sdate']) : NULL;
+
+  $selected_schedule = !empty($query_params['guid']) ? _usanetwork_tv_schedule_get_schedule_by_guid($query_params['guid']) : NULL;
+  if (!empty($selected_schedule)) {
+    $filter_day = $selected_schedule->start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60);
+  }
   $time_stamp = (!empty($filter_day) && empty($filter_show_nid)) ? $filter_day : time();
   $sday = date('d', $time_stamp);
   $smonth = date('m', $time_stamp);
   $syear = date('Y', $time_stamp);
-
   $string_date = $syear . '_' . $smonth . '_' . $sday;
+  $current_day_end_time = mktime(USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR, 0, 0, $smonth, $sday +1, $syear);
+  $tv_schedule = usanetwork_tv_schedule_fetch_schedule($string_date, false);
+  $next_day_flag = NULL;
+  $schedule_rows = array();
 
-  $tv_schedule = usanetwork_tv_schedule_fetch_old_schedule($string_date);
+  $shows_filter = array();
+  if (!empty($tv_schedule)) {
+    foreach ($tv_schedule as $tv_schedule_item) {
+      if ($tv_schedule_item->dvs == "0") {
+        continue;
+      }
+      $show_name = ($tv_schedule_item->program_type == 'movie') ?  t('USA MOVIE') : $tv_schedule_item->show_title;
+      $episode_title = $tv_schedule_item->title;
+      $rating = $tv_schedule_item->rating_type;
+      $theme_row_variables = array();
+      $filter_show_node = NULL;
+      _usanetwork_tv_schedule_correct_show_title($show_name);
 
-  if (empty($tv_schedule)) {
-    date_default_timezone_set($orginal_tz);
-    drupal_not_found();
-    return;
+      $start_time = $tv_schedule_item->start_time;
+
+      if (!empty($filter_show_time) && !empty($start_time)) {
+        // Featured time filters
+        if ($filter_show_time == 'primetime') {
+          $primetime_start = strtotime('today ' . USANETWORK_TV_SCHEDULE_PRIMETIME_START_HOUR . ':00');
+          $primetime_end = strtotime('today ' . USANETWORK_TV_SCHEDULE_PRIMETIME_END_HOUR . ':59');
+
+          if ($start_time < $primetime_start || $start_time > $primetime_end) {
+            continue;
+          }
+        }
+      }
+      $show_nid = NULL;
+      $movie_nid = NULL;
+      $show_title_aliases = _usanetwork_schedule_get_show_alias_names();
+      if (isset($show_title_aliases[$show_name])) {
+        $show_name = $show_title_aliases[$show_name];
+      }
+      $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'tv_show');
+      if (empty($show_nid) && $tv_schedule_item->program_type == 'movie') {
+        $movie_nid = _usanetwork_tv_schedule_get_nid_by_title($episode_title, 'movie');
+      }
+      if (empty($show_nid)) {
+        $show_nid = _usanetwork_tv_schedule_get_nid_by_title($show_name, 'catchall_page');
+      }
+      if (empty($show_nid)) {
+        $show_nid = _usanetwork_tv_schedule_find_show_by_title($show_name);
+      }
+      $show_node = !empty($show_nid) ? node_load($show_nid) : NULL;
+      $movie_node = !empty($movie_nid) ? node_load($movie_nid) : NULL;
+      if (!empty($show_node)) {
+        $show_name = $show_node->title;
+        $shows_filter[$show_nid] = $show_name;
+      }
+      if (!empty($filter_show_nid) && $filter_show_nid != $show_nid) {
+        continue;
+      }
+      if ($start_time >= $current_day_end_time && empty($filter_show_nid)) {
+        continue;
+      }
+      $show_name = ($tv_schedule_item->program_type == 'movie') ? t('USA MOVIE') : $tv_schedule_item->show_title;
+      if (empty($show_node)) {
+        $theme_row_variables['episode_show'] = $show_name;
+        $theme_row_variables['episode_description'] = !empty($tv_schedule_item->program_description) ? $tv_schedule_item->program_description : '';
+        $theme_row_variables['time'] = date('g:i', $start_time);
+        $theme_row_variables['day_part'] = date('A', $start_time);
+        $theme_row_variables['link_class'] = (!empty($query_params['guid']) && $query_params['guid'] === $tv_schedule_item->guid) ? 'active' : NULL;
+        $schedule_rows[$start_time] = theme('usanetwork_tv_schedule_table_element', $theme_row_variables);
+        continue;
+      }
+      $tv_episode = _usanetwork_tv_schedule_get_episode($episode_title, $show_nid);
+
+      $show_color = NULL;
+      if ($show_node) {
+        if ($show_node->type == 'tv_show') {
+          $show_color = usanetwork_tv_shows_color_show_css_class($show_node);
+        } elseif (!empty($movie_node)) {
+          $show_color = usanetwork_tv_shows_color_movie_css_class($movie_node);
+        }
+      }
+      $episode_title = !empty($tv_episode) ? $tv_episode->title : $episode_title;
+      if (!empty($show_node)) {
+        $episode_title = _usanetwork_core_get_right_case_title($show_node, $episode_title);
+      }
+      $theme_row_variables = array(
+        'link_class' => (!empty($selected_schedule->guid) && $selected_schedule->guid === $tv_schedule_item->guid) ? 'active' : NULL,
+        'show_class' => !empty($show_color) ? $show_color : '',
+        'time' => date('g:i', $start_time),
+        'day_part' => date('A', $start_time),
+        'episode_show' => l($show_name, !empty($movie_node) ? url('node/' . $movie_nid) : url('node/' . $show_nid)),
+        'episode_title' => l($episode_title, !empty($tv_episode) ? url('file/' . $tv_episode->fid) : ''),
+        'rating' => $rating,
+      );
+
+      $schedule_rows[$start_time] = '';
+      $schedule_rows[$start_time] .= theme('usanetwork_tv_schedule_acc_table_row', $theme_row_variables);
+    }
   }
 
-  $rows = array();
 
-  foreach ($tv_schedule as $item) {
-    $show_node = new stdClass();
+  $accessiability_text = variable_get('usanetwork_tv_schedule_accessibility_text');
 
-    $classes = array();
-    $start_time = (array) $item->StartTime;
-    $end_time = (array) $item->EndTime;
-    $program = (array) $item->ProgramName;
-    $episode = (array) $item->TitleName;
-    $rating = (array) $item->Rating;
-    $cur_date = (array) $item->ScheduleDate;
-    $cal_date = (array) $item->CalendarScheduleDate;
-    $day_part = (array) $item->Daypart;
-    $audio_desc = (array) $item->AudioDesc;
+  $theme_variables = array(
+    'accessibility_text' => !empty($accessiability_text['value'])
+      ? $accessiability_text['value']
+      : '',
+    'schedule_rows' => $schedule_rows,
+    'navigation' => _usanetwork_tv_schedule_get_acc_week_navigation(),
+  );
 
-    if ($audio_desc[0] == 'N') {
-      continue;
-    }
-
-    $show_time = strtotime($cal_date[0] .' '. $end_time[0]);
-    $classes[] = ($et_time >= $show_time) ? 'off-air' : 'on-air';
-    $classes[] = strtolower($day_part[0]);
-
-    $show = trim(preg_replace('/\(.*\)/', '', $program[0]));
-    $nid = _usanetwork_tv_schedule_get_nid_by_title($show, 'tv_show');
-    $show_node = node_load($nid);
-    $episode_title = check_plain($episode[0]);
-    if (!empty($show_node)) {
-      $episode_title = _usanetwork_core_get_right_case_title($show_node, $episode_title);
-    }
-    $episode_suffix = trim($episode_title) != '' ? '<span class="episode-suffix"> - ' . $episode_title . '</span>' : '';
-    $episode_show = '';
-
-    if (empty($nid)) {
-      if (strtoupper($show) == 'USA MOVIE') {
-        $episode_show = l(check_plain($program[0]) . $episode_suffix, 'movies', array('html' => true));
-      }
-      elseif (strtoupper($show) == 'NHL PLAYOFFS') {
-        $episode_show = l(check_plain($program[0]) . $episode_suffix, 'http://www.usanetwork.com/nhl-2015-stanley-cup-playoffs', array('html' => true));
-      }
-      else {
-        $episode_show = check_plain($program[0]) . $episode_suffix;
-      }
-    } else {
-      $path = drupal_get_path_alias('node/'.$nid);
-      $episode_show = l(check_plain($program[0]) . $episode_suffix, $path, array('html' => true));
-    }
-
-    $episode_file = entity_load('file', FALSE, array(
-      'filename' => $episode_title,
-      'filemime' => 'video/mpx',
-    ));
-
-    if (!empty($episode_file)) {
-      $episode_file = reset($episode_file);
-      $episode_title = l($episode_title, 'file/' . $episode_file->fid);
-    }
-
-    $full_time = preg_replace('/:[0-9][0-9] /', ' ', $start_time[0]);
-    $time = ''; $day_part = ''; $matches = array();
-
-    if (preg_match("/(\d{1,2}\:\d{2})\s+(am|pm)/i", $full_time, $matches)) {
-      $time = $matches[1];
-      $day_part = $matches[2];
-    }
-
-    $row_variables = array(
-      'show_nid' => $nid,
-      'show_class' => usanetwork_tv_shows_color_show_css_class($nid),
-      'time' => !empty($time) ? $time : $full_time,
-      'day_part' => !empty($day_part) ? $day_part : '',
-      'episode_show' => $episode_show,
-      'episode_title' => $episode_title,
-      'rating' => $rating[0],
-    );
-
-    $rows[] = theme('usanetwork_tv_schedule_acc_table_row', $row_variables);
-  }
-
-  if (!empty($rows)) {
-    $accessiability_text = variable_get('usanetwork_tv_schedule_accessibility_text');
-
-    $theme_variables = array(
-      'accessibility_text' => !empty($accessiability_text['value'])
-        ? $accessiability_text['value']
-        : '',
-      'schedule_rows' => $rows,
-      'navigation' => _usanetwork_tv_schedule_get_acc_week_navigation(),
-    );
-
-    return theme('usanetwork_tv_schedule_acc_table', $theme_variables);
-  }
-
-  date_default_timezone_set($orginal_tz);
-
-  return $output;
+  return theme('usanetwork_tv_schedule_acc_table', $theme_variables);
 }
 
 function _usanetwork_tv_schedule_get_schedule_item_image($schedule_item) {

@@ -1634,3 +1634,28 @@ function _usanetwork_home_create_homepage_shows_queue() {
 
   return $shows_queue;
 }
+
+/**
+ * Implements hook_views_post_execute().
+ * Reorder Home Pages by week's days
+ */
+function usanetwork_home_views_post_execute(&$view) {
+  if ('usa_home' == $view->name && 'page' == $view->current_display) {
+
+    function compareWeekDays($a, $b) {
+      $first = date('N', strtotime($a->node_title));
+      $second = date('N', strtotime($b->node_title));
+
+      if ($first > $second) {
+        return 1;
+      }
+      elseif ($first < $second) {
+        return -1;
+      }
+
+      return 0;
+    }
+
+    usort($view->result, "compareWeekDays");
+  }
+}

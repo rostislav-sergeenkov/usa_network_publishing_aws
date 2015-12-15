@@ -13747,6 +13747,16 @@ footer h2 {
     z-index: 999;
   }
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  .consumptionator-video-page.page-full-video header.sign-in {
+    height: calc(7.10153vw + 35px);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .consumptionator-video-page.page-full-video header.sign-in ~ .usa-wrap {
+    margin-top: 0;
+  }
+}
 .consumptionator-video-page .video-block .consum-sidebar .advert {
   display: none;
 }

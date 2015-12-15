@@ -13721,27 +13721,6 @@ footer h2 {
   }
 }
 
-.consumptionator-video-page.sub-menu-is-sticky header {
-  height: 0;
-}
-@media (max-width: 768px) {
-  .consumptionator-video-page.sub-menu-is-sticky header {
-    height: auto;
-  }
-}
-.consumptionator-video-page.sub-menu-is-sticky .usa-wrap {
-  margin-top: 7.10153vw;
-}
-@media (min-width: 1901px) {
-  .consumptionator-video-page.sub-menu-is-sticky .usa-wrap {
-    margin-top: 135px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-video-page.sub-menu-is-sticky .usa-wrap {
-    margin-top: 0;
-  }
-}
 @media (min-width: 769px) {
   .consumptionator-video-page.page-full-video.admin-menu {
     margin-top: 0px !important;

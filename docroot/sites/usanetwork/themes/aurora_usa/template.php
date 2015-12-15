@@ -122,9 +122,13 @@ function aurora_usa_preprocess_html(&$vars) {
         $vars['classes_array'][] = 'movie-consumptionator';
       }
     }
-    $full_video = _usanetwork_get_field_item('file', $entity, 'field_mpx_entitlement', 'value');
-    if (!empty($full_video) && ($full_video == 'auth')) {
+    $auth_video = _usanetwork_get_field_item('file', $entity, 'field_mpx_entitlement', 'value');
+    if (!empty($auth_video) && ($auth_video == 'auth')) {
       $vars['classes_array'][] = 'page-auth-video';
+    }
+    $full_video = _usanetwork_get_field_item('file', $entity, 'field_mpx_full_episode', 'value');
+    if (!empty($full_video) && ($full_video == '1')) {
+      $vars['classes_array'][] = 'page-full-video';
     }
   }
   $status = drupal_get_http_header("status");

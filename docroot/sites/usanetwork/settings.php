@@ -38,21 +38,6 @@ $conf['acquia_hosting_disable_sa_2014_005_fix'] = TRUE;
 // Next, include the environment-agnostic file owned by this project.
 //require_once dirname(__FILE__) . "/settings.site.php";
 
-if ($_ENV['AH_SITE_ENVIRONMENT'] == 'edit') {
-  $prod_include = '/var/www/site-php/nbcuusa/D7-nbcuusa-settings.inc';
-  if (file_exists($prod_include)) {
-    include($prod_include);
-  }
-  else {
-    // fallback behavior, e.g., a 404 page
-  }
-}
-elseif (file_exists('/var/www/site-php/usanetwork')) {
-  require('/var/www/site-php/usanetwork/usanetwork-settings.inc');
-} 
-elseif (file_exists('/var/www/site-php/nbcuusa')) {
-  require('/var/www/site-php/nbcuusa/nbcuusa-settings.inc');
-} 
 
 // Next, determine the environment we're in.  Environment types (qa, acceptance,
 // stage and prod) are defined in project-config.yml.
@@ -78,6 +63,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     break;
 
   case 'dev':
+
+    require_once('/var/www/site-php/usadev/usadev-settings.inc');
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'DEV SERVER';
     $conf['environment_indicator_overwritten_color'] = '#0000CC';
@@ -86,8 +73,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
-    $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'dev/sites/default/files-private';
-
+    $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
+    $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     // Memchache settings
     $conf['cache_backends'][] = './includes/cache-install.inc';
     $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';
@@ -104,7 +91,11 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf["acquia_identifier"] = "AUWZ-71210";
     $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
     $conf["apachesolr_path"] = "/solr/AUWZ-71210";
-    $conf['apachesolr_read_only'] = "1";
+    $conf['apachesolr_read_only'] = "0";
+
+    //Acquia purge settings
+    $conf['acquia_hosting_site_info'] = array('fake');
+    
 
     // Turn on display PHP errors
     error_reporting(E_ALL);
@@ -114,6 +105,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
   case 'test':
   case 'stage':
+
+    require_once('/var/www/site-php/usastg/usastg-settings.inc');
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'STAGE SERVER';
     $conf['environment_indicator_overwritten_color'] = '#990099';
@@ -122,8 +115,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
-    $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . 'stg/sites/default/files-private';
-
+    $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
+    $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     // Memchache settings
     $conf['cache_backends'][] = './includes/cache-install.inc';
     $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';
@@ -140,6 +133,41 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf["acquia_identifier"] = "AUWZ-71210";
     $conf["acquia_key"] = "13ed230a08a0cd2d159a768f1781258a";
     $conf["apachesolr_path"] = "/solr/AUWZ-71210";
+    $conf['apachesolr_read_only'] = "0";
+
+    //Acquia purge settings
+    $conf['acquia_hosting_site_info'] = array('fake');
+    
+    break;
+
+  case 'qa':
+
+    require_once('/var/www/site-php/usaqa/usaqa-settings.inc');
+    // Envronment indicator settings.
+    $conf['environment_indicator_overwritten_name'] = 'QA SERVER';
+    $conf['environment_indicator_overwritten_color'] = '#0000CC';
+    $conf['environment_indicator_overwritten_position'] = 'top';
+    $conf['environment_indicator_overwritten_fixed'] = FALSE;
+
+    // File path settings. Acquia automatically figures our the public and tmp
+    // file paths, however we have to set the private path manually.
+    $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
+    $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
+    // Memchache settings
+    $conf['cache_backends'][] = './includes/cache-install.inc';
+    $conf['cache_backends'][] = './profiles/publisher/modules/contrib/memcache/memcache.inc';
+    $conf['cache_default_class'] = 'MemCacheDrupal';
+    $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+    $conf['cache_class_cache_page'] = 'DrupalFakeCache';
+
+    //Acquia purge settings
+    $conf['acquia_hosting_site_info'] = array('fake');
+    
+    # Add in stampede protection
+    $conf['memcache_stampede_protection'] = TRUE;
+    # Move semaphore out of the database and into memory for performance purposes
+    $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
+
     $conf['apachesolr_read_only'] = "0";
     break;
 
@@ -180,6 +208,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
   case 'prod':
   case 'edit':
+
+    require_once('/var/www/site-php/usa/usa-settings.inc');
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'LIVE';
     $conf['environment_indicator_overwritten_color'] = '#990000';
@@ -188,8 +218,8 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
-    $conf['file_private_path'] = '/mnt/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/default/files-private';
-    $conf['plupload_temporary_uri'] = $conf['file_private_path'] . '/tmp';
+    $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
+    $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
 
     // Memchache settings
     $conf['cache_backends'][] = './includes/cache-install.inc';
@@ -199,9 +229,12 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['cache_class_cache_page'] = 'DrupalFakeCache';
     
     # Add in stampede protection
-    $conf['memcache_stampede_protection'] = TRUE;
+    $conf['memcache_stampede_protection'] = false;
     # Move semaphore out of the database and into memory for performance purposes
     $conf['lock_inc'] = './profiles/publisher/modules/contrib/memcache/memcache-lock.inc';
+
+    //Acquia purge settings
+    $conf['acquia_hosting_site_info'] = array('fake');
 
     //Acquia Search settings
     $conf["acquia_identifier"] = "AUWZ-71210";

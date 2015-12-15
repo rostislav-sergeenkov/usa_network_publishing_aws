@@ -25,10 +25,11 @@
       if(window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
         // check offsetTop value
         if (!subMenuSelector.hasClass('sticky-shows-submenu')) {
-          if (Math.round(subMenuSelector.offset().top) !== offsetTop) {
-            offsetTop = Math.round(subMenuSelector.offset().top);
+          if (Math.round(subMenuSelector.offset()['top']) !== offsetTop) {
+            offsetTop = Math.round(subMenuSelector.offset()['top']);
           }
         }
+        console.info($(window).scrollTop(), offsetTop, Math.round($('.region-header').offset()['top']));
         if ($(window).scrollTop() >= offsetTop) {
           return !subMenuSelector.hasClass('sticky-shows-submenu') ? switchState() : false;
         } else {
@@ -47,18 +48,18 @@
 
       if (!$('.fixed-position').length) {
         // check offsetTop value
-        if (Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1) !== offsetTop) {
-          offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1);
+        if (Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1) !== offsetTop) {
+          offsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1);
         }
         // check on class sticky-shows-submenu
         if ($submenu.hasClass('sticky-shows-submenu')) {
-          offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1 - header_submenu_h)
+          offsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1 - header_submenu_h)
         }
       } else {
         // check on class sticky-shows-submenu
-        if (Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1) !== offsetTop) {
+        if (Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1) !== offsetTop) {
           if ($submenu.hasClass('sticky-shows-submenu') && $('.fixed-position').length) {
-            offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1)
+            offsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1)
           }
           if ($('.fixed-position').css('top') !== header_submenu_h) {
             $('.fixed-position').css('top', header_submenu_h)
@@ -151,13 +152,13 @@
         if($('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu', $submenu).length) {
           $submenu = $('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu', $submenu);
         }
-        submenuOffsetTop = Math.round($submenu.offset().top);
+        submenuOffsetTop = Math.round($submenu.offset()['top']);
       } else {
         $submenu = null;
       }
 
       if($submenu.length && $userMenu.length) {
-        var upperMenuOffsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1);
+        var upperMenuOffsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1);
       }
 
       $(document.body).once('window-events', function () {

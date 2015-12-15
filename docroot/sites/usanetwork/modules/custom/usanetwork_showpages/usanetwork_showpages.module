@@ -754,7 +754,7 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {
-            $head_title = t("@title | Timeline Galllery | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
+            $head_title = t("@title | Timeline Gallery | @tv_content_name | USA Network", array('@tv_content_name' => $tv_content->title, '@title' => $node->title));
           }
           break;
         // QUIZ SHOW_NAME - TITLE | SITE_TITLE

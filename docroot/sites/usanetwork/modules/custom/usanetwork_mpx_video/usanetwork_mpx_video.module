@@ -1052,7 +1052,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 function _usa_auth_prepare_menu_items() {
   $menu_items = array();
 
-  $image = theme('image', array(
+  $image = theme_image(array(
     'attributes' => array(
       'data-ng-src' => "{{global.currentProvider.mvpd_color}}",
     ),

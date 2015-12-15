@@ -85,6 +85,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -192,6 +194,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Gigya Share Bar',
     'required' => FALSE,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
       'wysiwyg_override' => 1,
     ),
@@ -281,6 +285,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Movie',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -398,6 +404,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'MPX Media Air Date',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -505,6 +513,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'MPX Media Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -605,6 +615,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Duration',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -712,6 +724,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Entitlement',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -821,6 +835,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Episode Number',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -928,6 +944,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'External Advertiser ID',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1035,6 +1053,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Full Episode',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1139,6 +1159,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1177,7 +1199,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 33,
+      'weight' => 24,
     ),
   );
 
@@ -1256,6 +1278,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'MPX Image Value',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1278,7 +1302,106 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 27,
+    ),
+  );
+
+  // Exported field_instance: 'file-mpx_video_1-field_mpx_interactive'
+  $field_instances['file-mpx_video_1-field_mpx_interactive'] = array(
+    'bundle' => 'mpx_video_1',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 108,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_thumbnail' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_mpx_interactive',
+    'label' => 'Interactive',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 44,
     ),
   );
 
@@ -1361,6 +1484,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Language',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1368,7 +1493,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 58,
+      'weight' => 43,
     ),
   );
 
@@ -1455,6 +1580,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Season Number',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1568,6 +1695,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'MPX Media Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1664,6 +1793,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1787,6 +1918,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'H1 Override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1894,6 +2027,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Page Title Override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2030,6 +2165,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
       'wysiwyg_override' => 1,
     ),
@@ -2125,6 +2262,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'USA Video Term',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
       'wysiwyg_override' => 1,
     ),
@@ -2216,6 +2355,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2323,6 +2464,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Gigya Share Bar',
     'required' => FALSE,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
       'wysiwyg_override' => 1,
     ),
@@ -2331,7 +2474,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'gigya',
       'settings' => array(),
       'type' => 'sharebar',
-      'weight' => 22,
+      'weight' => 16,
     ),
   );
 
@@ -2423,7 +2566,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 10,
     ),
   );
 
@@ -2526,6 +2669,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'MPX Media Air Date',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -2548,7 +2693,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 16,
+      'weight' => 12,
     ),
   );
 
@@ -2633,6 +2778,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'MPX Media Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2647,7 +2794,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 21,
+      'weight' => 15,
     ),
   );
 
@@ -2734,6 +2881,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Duration',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2841,6 +2990,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Entitlement',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2863,7 +3014,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 9,
     ),
   );
 
@@ -2951,6 +3102,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Episode Number',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2973,7 +3126,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -3058,6 +3211,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'External Advertiser ID',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3165,6 +3320,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Full Episode',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3187,7 +3344,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -3269,6 +3426,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3307,7 +3466,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 40,
+      'weight' => 27,
     ),
   );
 
@@ -3386,6 +3545,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'MPX Image Value',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3408,7 +3569,106 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 41,
+      'weight' => 30,
+    ),
+  );
+
+  // Exported field_instance: 'file-mpx_video_2-field_mpx_interactive'
+  $field_instances['file-mpx_video_2-field_mpx_interactive'] = array(
+    'bundle' => 'mpx_video_2',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 96,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_thumbnail' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_front' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_episode' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vid_teaser_show_general' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_mpx_interactive',
+    'label' => 'Interactive',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 44,
     ),
   );
 
@@ -3491,6 +3751,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Language',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3498,7 +3760,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 42,
+      'weight' => 33,
     ),
   );
 
@@ -3586,6 +3848,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Season Number',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3608,7 +3872,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -3699,6 +3963,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'MPX Media Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -3713,7 +3979,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 11,
     ),
   );
 
@@ -3795,6 +4061,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3918,6 +4186,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'H1 Override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -4025,6 +4295,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Page Title Override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -4146,6 +4418,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
       'wysiwyg_override' => 1,
     ),
@@ -4154,7 +4428,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 17,
+      'weight' => 13,
     ),
   );
 
@@ -4241,6 +4515,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'USA Video Term',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
       'wysiwyg_override' => 1,
     ),
@@ -4253,7 +4529,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 19,
+      'weight' => 14,
     ),
   );
 
@@ -4286,6 +4562,8 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'label' => 'Queue items',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -4311,6 +4589,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
   t('Full Episode');
   t('Gigya Share Bar');
   t('H1 Override');
+  t('Interactive');
   t('Language');
   t('MPX Image');
   t('MPX Image Value');

@@ -26,6 +26,7 @@
 
     $('header #block-usanetwork-menu-usanetwork-menu-consumptionator').addClass('sign-enable');
     $('header .header-nav-bar').addClass('tve-sign');
+    $('header').addClass('sign-in');
 
     if($('header .tve-help-link.signIn').hasClass('no-auth')) {
       $('header .tve-help-link.signIn').removeClass('no-auth');

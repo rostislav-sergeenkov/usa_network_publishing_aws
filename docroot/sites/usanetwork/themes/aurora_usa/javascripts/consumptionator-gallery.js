@@ -17,7 +17,7 @@
         if(galleryContainer.attr('data-id')){
           var galleryId = galleryContainer.attr('data-id') + "-";
         }
-        if(indexSlide > 0 ) {
+        if(indexSlide > 0 || galleryContainer.closest('.description-item[data-tab="actor-bio"]').length > 0) {
           slideIndex = '#' + galleryId + (indexSlide + 1);
         } else {
           slideIndex = '';
@@ -283,6 +283,10 @@
                 var galleryIndex = $('.gallery-wrapper').index($('.gallery-wrapper[data-id="'+params[0]+'"]'));
               if (slide <= slideCount) {
                 gallery[galleryIndex].goToSlide(slide);
+              }
+              if ($('body').hasClass('node-type-person') && $('[data-tab="actor-bio"] .gallery-wrapper[data-id="'+params[0]+'"]').length > 0){
+                $('[data-tab$="-bio"]').removeClass('active');
+                $('[data-tab="actor-bio"]').addClass('active');
               }
               break;
           }

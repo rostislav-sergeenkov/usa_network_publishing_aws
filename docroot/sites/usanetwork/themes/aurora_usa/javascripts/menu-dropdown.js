@@ -179,6 +179,7 @@
         if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
           tablet = true;
         }
+
         //temporary code for hiding provider
         if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
           Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();

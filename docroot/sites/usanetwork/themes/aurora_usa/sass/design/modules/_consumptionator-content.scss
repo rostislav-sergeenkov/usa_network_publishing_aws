@@ -802,6 +802,18 @@
         z-index: 999;
       }
     }
+    header {
+      &.sign-in {
+        @include breakpoint($between-769-1024) {
+          height: calc(7.10153vw + 35px);
+        }
+        ~ .usa-wrap {
+          @include breakpoint($between-769-1024) {
+            margin-top: 0;
+          }
+        }
+      }
+    }
   }
   .video-block {
     .consum-sidebar {

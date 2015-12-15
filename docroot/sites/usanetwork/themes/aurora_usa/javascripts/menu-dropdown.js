@@ -29,7 +29,6 @@
             offsetTop = Math.round(subMenuSelector.offset()['top']);
           }
         }
-        console.info($(window).scrollTop(), offsetTop, Math.round($('.region-header').offset()['top']));
         if ($(window).scrollTop() >= offsetTop) {
           return !subMenuSelector.hasClass('sticky-shows-submenu') ? switchState() : false;
         } else {
@@ -138,6 +137,19 @@
       }
     },
 
+    hideProvider: function() {
+      var provider = $('.tve-header-links .first');
+      if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
+        provider.hide();
+      } else {
+        if ($(window).scrollTop() > 20) {
+          provider.hide();
+        } else {
+          provider.show();
+        }
+      }
+    },
+
     startScrollAt: null,
 
     attach: function(context){
@@ -166,6 +178,10 @@
 
         if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
           tablet = true;
+        }
+        //temporary code for hiding provider
+        if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
+          Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
         }
 
         Drupal.behaviors.usanetwork_menu_dropdown.tabItemScroll();
@@ -402,6 +418,10 @@
           clearTimeout(timer_id);
           timer_id = setTimeout(function() {
             _self.stickyHeader(submenuOffsetTop, $submenu);
+            //temporary code for hiding provider
+            if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
+              Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
+            }
             if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
               _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
             }
@@ -434,6 +454,10 @@
 
         $(window).on('scroll', function (e) {
           _self.stickyHeader(submenuOffsetTop, $submenu);
+          //temporary code for hiding provider
+          if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
+            Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
+          }
           if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
             _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }

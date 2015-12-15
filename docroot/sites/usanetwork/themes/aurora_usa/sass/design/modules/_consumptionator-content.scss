@@ -779,23 +779,6 @@
   }
 }
 .consumptionator-video-page {
-  &.sub-menu-is-sticky {
-    header {
-      height: 0;
-      @include breakpoint($bp-768-width) {
-        height: auto;
-      }
-    }
-    .usa-wrap {
-      margin-top: get-vw(135px, 1901);
-      @include breakpoint($bp-min-1901-width) {
-        margin-top: 135px;
-      }
-      @include breakpoint($bp-768-width) {
-        margin-top: 0;
-      }
-    }
-  }
   &.page-full-video {
     &.admin-menu {
       @include breakpoint($bp-min-769-width) {

@@ -1634,7 +1634,8 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $interactive = _usanetwork_get_field_item('file', $file, 'field_mpx_interactive', 'value');
       if (!empty($interactive)) {
         $vars['watchwith'] = TRUE;
-        drupal_add_js('http://snowbird.watchwith.com/~chihiro/WD-71/wwLoader.js', array('type' => 'external', 'group' => JS_LIBRARY - 5));
+        drupal_add_js('http://apps.watchwith.com/wng-usa/dev/wng-usa-boot.js', array('type' => 'external', 'group' => JS_LIBRARY - 5));
+        drupal_add_css('http://apps.watchwith.com/wng-usa/dev/watchwith.css', array('type' => 'external'));
       }
     }
   }

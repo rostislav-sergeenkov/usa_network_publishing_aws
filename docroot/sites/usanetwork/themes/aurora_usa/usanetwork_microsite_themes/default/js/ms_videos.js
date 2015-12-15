@@ -214,8 +214,25 @@ usa_debug('ad_728x90: ', ad_728x90);
         videoContainer.find('.video-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-no-auth-player-wrapper').addClass('active-player').show();
       }
+      function checkAjaxUrl() {
 
-      Drupal.behaviors.ms_videos.micrositeGetVideo(url, initialPageLoad);
+        var urlArr = url.split('/'),
+            urlArrLength = urlArr.length - 1,
+            i = 0,
+            status = true;
+
+        for (i; i < urlArrLength; urlArrLength -= 1) {
+          if (urlArr[urlArrLength] === 'undefined') {
+            status = false;
+            break;
+          }
+        }
+        return status;
+      }
+
+      if (checkAjaxUrl()) {
+        Drupal.behaviors.ms_videos.micrositeGetVideo(url, initialPageLoad);
+      }
     },
 
     // SetPausePlayer
@@ -282,12 +299,12 @@ usa_debug('ad_728x90: ', ad_728x90);
         }
         Drupal.behaviors.ms_global.changeTitle(itemTitle, anchorSection, basePageName);
         Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
-        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, elem);
+        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', elem);
         Drupal.behaviors.ms_global.scrollToTop();
       }
       else {
         Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
-        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, elem);
+        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', elem);
       }
     },
 

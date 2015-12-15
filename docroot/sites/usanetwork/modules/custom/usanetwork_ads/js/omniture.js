@@ -13,9 +13,9 @@
     },
 
     goToUrl: function (elem) {
-      if(elem.attr('target') == '_blank') {
+      if(elem.attr('href').indexOf('enhanced') + 1) {
 
-      } else if (elem.attr('href').indexOf('enhanced') + 1) {
+      } else if (elem.attr('target') == '_blank') {
 
       }
       else {

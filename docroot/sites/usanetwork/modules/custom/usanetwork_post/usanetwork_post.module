@@ -10,6 +10,22 @@ include_once 'usanetwork_post.field.inc';
 define('USANETWORK_FIELD_BLOG', 'field_blog');
 
 /**
+ * Implements hook_init().
+ */
+function usanetwork_post_init() {
+  $args = arg();
+  if ($args[0] != 'taxonomy' || $args[1] != 'term') {
+    return;
+  }
+  $term = taxonomy_term_load($args[2]);
+  if (isset($term->vocabulary_machine_name) && $term->vocabulary_machine_name == 'blog') {
+    if (count($args) > 3) {
+      drupal_not_found();
+    }
+  }
+}
+
+/**
  * Implements hook_block_info().
  */
 function usanetwork_post_block_info() {

@@ -14,12 +14,12 @@
       Drupal.usanetwork_video_endcard.GetAnchors(data)[2] + '"]').addClass('active');
     },
     'OnCountdownEnd': function(data) {
-      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, data);
+      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, data);
       Drupal.behaviors.ms_global.changeUrl(Drupal.usanetwork_video_endcard.GetAnchors(data)[0], Drupal.usanetwork_video_endcard.GetAnchors(data)[1]);
       Drupal.usanetwork_video_endcard.SelectActiveThumb(data);
     },
     'OnYmalitemnewClick': function(data) {
-      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer(true, null, data);
+      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, data);
       Drupal.behaviors.ms_global.changeUrl(Drupal.usanetwork_video_endcard.GetAnchors(data)[0], Drupal.usanetwork_video_endcard.GetAnchors(data)[1]);
       Drupal.usanetwork_video_endcard.SelectActiveThumb(data);
     }

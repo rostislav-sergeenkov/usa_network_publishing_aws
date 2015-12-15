@@ -14,7 +14,11 @@
 
     goToUrl: function (elem) {
       if(elem.attr('target') == '_blank') {
-      } else {
+
+      } else if (elem.attr('href').indexOf('enhanced') + 1) {
+
+      }
+      else {
         setTimeout(function () {
           window.location = elem.attr('href');
         }, 500);
@@ -330,7 +334,7 @@
       s.tl(this, 'o', name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
-    aspotClick: function ($self, pageName, name, slideName) {
+    /*aspotClick: function ($self, pageName, name, slideName) {
 
       if ($self.hasClass('next-button')) {
         s.linkTrackVars = 'events,eVar55,eVar33';
@@ -355,7 +359,7 @@
 
       s.tl(this, 'o', pageName + ' ' + name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
-    },
+    },*/
 
     globalPromoClick: function (self) {
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {

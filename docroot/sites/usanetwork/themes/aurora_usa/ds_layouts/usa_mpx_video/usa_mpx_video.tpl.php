@@ -136,7 +136,6 @@
         </div>
       </div>
     <?php else: ?>
-      </div>
       <div class="download-app">
         <div class="download-app-wrapper">
           <div class="image-block"></div>

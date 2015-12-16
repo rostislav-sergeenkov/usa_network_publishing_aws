@@ -13721,30 +13721,6 @@ footer h2 {
   }
 }
 
-.consumptionator-video-page #head-leaderboard {
-  max-height: 110px;
-}
-.consumptionator-video-page.sub-menu-is-sticky header {
-  height: 0;
-}
-@media (max-width: 768px) {
-  .consumptionator-video-page.sub-menu-is-sticky header {
-    height: auto;
-  }
-}
-.consumptionator-video-page.sub-menu-is-sticky .usa-wrap {
-  margin-top: 7.10153vw;
-}
-@media (min-width: 1901px) {
-  .consumptionator-video-page.sub-menu-is-sticky .usa-wrap {
-    margin-top: 135px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-video-page.sub-menu-is-sticky .usa-wrap {
-    margin-top: 0;
-  }
-}
 @media (min-width: 769px) {
   .consumptionator-video-page.page-full-video.admin-menu {
     margin-top: 0px !important;
@@ -13769,6 +13745,16 @@ footer h2 {
     top: 0;
     width: 100%;
     z-index: 999;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .consumptionator-video-page.page-full-video header.sign-in {
+    height: calc(7.10153vw + 35px);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .consumptionator-video-page.page-full-video header.sign-in ~ .usa-wrap {
+    margin-top: 0;
   }
 }
 .consumptionator-video-page .video-block .consum-sidebar .advert {
@@ -17870,32 +17856,7 @@ footer h2 {
   }
 }
 .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 {
-  width: 98%;
   padding: 0 20px;
-}
-@media (max-width: 1280px) {
-  .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 {
-    font-size: 12px;
-  }
-}
-@media (max-width: 1024px) {
-  .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 {
-    font-size: 10px;
-  }
-}
-@media (max-width: 768px) {
-  .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 {
-    font-size: 12px;
-    text-align: left;
-    left: 10px;
-    right: auto;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 .divider {
-    margin: 0;
-  }
 }
 .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;

@@ -47,15 +47,24 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
       return;
     }
 
+    // According issues with copying of nodes
+    // variable $actual_entity was included.
+    if (empty($entity->nid) && isset($entity->state_flow)) {
+      $actual_entity = $entity->state_flow->object;
+    }
+    else {
+      $actual_entity = $entity;
+    }
+
     list($entity_id, ,$bundle) = entity_extract_ids($entity_type, $entity);
     $form_state['entity'] = $entity;
     $form_state['entity_type'] = $entity_type;
     $form_state['entity_id'] = $entity_id;
     $form_state['bundle'] = $bundle;
 
-    $defaults = _usanetwork_ads_entity_settings($entity, $entity_type);
+    $defaults = _usanetwork_ads_entity_settings($actual_entity, $entity_type);
     if (!empty($defaults) && !isset($defaults['is_sponsored'])) {
-      $defaults['is_sponsored'] = _usanetwork_ads_is_entity_sponsored($entity, $entity_type);
+      $defaults['is_sponsored'] = _usanetwork_ads_is_entity_sponsored($actual_entity, $entity_type);
     }
 
     $form['usanetwork_ads'] = array(

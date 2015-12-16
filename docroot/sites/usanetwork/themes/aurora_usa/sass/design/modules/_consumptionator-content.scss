@@ -779,26 +779,6 @@
   }
 }
 .consumptionator-video-page {
-  #head-leaderboard {
-    max-height: 110px;
-  }
-  &.sub-menu-is-sticky {
-    header {
-      height: 0;
-      @include breakpoint($bp-768-width) {
-        height: auto;
-      }
-    }
-    .usa-wrap {
-      margin-top: get-vw(135px, 1901);
-      @include breakpoint($bp-min-1901-width) {
-        margin-top: 135px;
-      }
-      @include breakpoint($bp-768-width) {
-        margin-top: 0;
-      }
-    }
-  }
   &.page-full-video {
     &.admin-menu {
       @include breakpoint($bp-min-769-width) {
@@ -820,6 +800,18 @@
         top: 0;
         width: 100%;
         z-index: 999;
+      }
+    }
+    header {
+      &.sign-in {
+        @include breakpoint($between-769-1024) {
+          height: calc(7.10153vw + 35px);
+        }
+        ~ .usa-wrap {
+          @include breakpoint($between-769-1024) {
+            margin-top: 0;
+          }
+        }
       }
     }
   }

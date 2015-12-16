@@ -1052,7 +1052,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 function _usa_auth_prepare_menu_items() {
   $menu_items = array();
 
-  $image = theme('image', array(
+  $image = theme_image(array(
     'attributes' => array(
       'data-ng-src' => "{{global.currentProvider.mvpd_color}}",
     ),
@@ -1633,8 +1633,13 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       $interactive = _usanetwork_get_field_item('file', $file, 'field_mpx_interactive', 'value');
       if (!empty($interactive)) {
-        $vars['watchwith'] = TRUE;
-        drupal_add_js('http://snowbird.watchwith.com/~chihiro/WD-71/wwLoader.js', array('type' => 'external', 'group' => JS_LIBRARY - 5));
+        $ww_airing_id = _usanetwork_get_field_item('file', $file, 'field_ww_airing_id', 'value');
+        if (!empty($ww_airing_id)) {
+          $vars['watchwith'] = TRUE;
+          $vars['ww_airing_id'] = $ww_airing_id;
+          drupal_add_js('http://apps.watchwith.com/wng-usa/dev/wng-usa-boot.js', array('type' => 'external', 'group' => JS_LIBRARY - 5));
+          drupal_add_css('http://apps.watchwith.com/wng-usa/dev/watchwith.css', array('type' => 'external'));
+        }
       }
     }
   }

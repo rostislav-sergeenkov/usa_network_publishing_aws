@@ -79,11 +79,11 @@
             ?>
           <?php endif; ?>
           <?php print $video; ?>
-          <?php if (!empty($watchwith)) : ?>
+          <?php if (!empty($watchwith) && !empty($ww_airing_id)) : ?>
             <div ng-non-bindable>
               <div id="wwRootContainer">
                 <watchwith
-                    airing-id="d9d9aaed-bb7e-4ba7-becd-018336a66b14"
+                    airing-id="<?php print $ww_airing_id; ?>"
                     access-key="N2D8AUM7NVZ"
                     player-element="#pdk-player"
                     player-type="mpx">

@@ -334,32 +334,6 @@
       s.tl(this, 'o', name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
-    /*aspotClick: function ($self, pageName, name, slideName) {
-
-      if ($self.hasClass('next-button')) {
-        s.linkTrackVars = 'events,eVar55,eVar33';
-        s.linkTrackEvents = s.events = 'event51';
-        s.eVar33 = name;
-        s.eVar55 = pageName;
-      } else {
-        s.linkTrackVars = 'events,eVar55,eVar33,eVar35';
-        s.linkTrackEvents = s.events = 'event51';
-        s.eVar33 = slideName;
-        s.eVar35 = name;
-        s.eVar55 = pageName;
-      }
-
-      if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
-        s.goToUrl = function () {
-          setTimeout(function () {
-            window.location = $self.attr('href');
-          }, 500);
-        };
-      }
-
-      s.tl(this, 'o', pageName + ' ' + name + ' Click', null, s.goToUrl);
-      s.manageVars('clearVars', s.linkTrackVars, 1);
-    },*/
 
     globalPromoClick: function (self) {
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {

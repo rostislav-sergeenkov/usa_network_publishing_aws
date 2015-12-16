@@ -8172,12 +8172,17 @@ header .tve-help-link.signIn .inlineLoader {
 }
 @media (min-width: 769px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name, .page-videos-live header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name, .node-type-person header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name {
-    max-width: calc((100% - 282px)*0.3);
+    max-width: calc((100% - 282px)*0.35);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name a, .node-type-person header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.show-name a {
+    padding: 0 2.29492vw;
   }
 }
 @media (min-width: 769px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.info, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.info, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.info, .node-type-person header .header-nav-bar .nav-bar-tabs.sponsored-enable .menu-item.info {
-    max-width: calc((100% - 282px)*0.7);
+    max-width: calc((100% - 282px)*0.65);
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item {
@@ -12931,36 +12936,6 @@ footer h2 {
   height: 250px;
   margin: 0 auto;
   width: 300px;
-}
-@media (min-width: 1281px) {
-  .consum-sidebar .advert.full-video {
-    height: 23.4vw;
-    padding: calc((23.4vw - 60px) / 2) 0;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consum-sidebar .advert.full-video {
-    position: relative;
-  }
-}
-@media (max-width: 1024px) {
-  .consum-sidebar .advert.full-video {
-    height: 250px;
-    padding: calc((250px - 60px) / 2) 0;
-  }
-}
-.consum-sidebar .advert.full-video .advertisement {
-  height: 60px;
-  overflow: hidden;
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consum-sidebar .advert.full-video .advertisement {
-    position: absolute;
-    margin-left: -150px;
-    margin-top: -30px;
-    left: 50%;
-    top: 50%;
-  }
 }
 .consum-sidebar .items-block {
   position: relative;

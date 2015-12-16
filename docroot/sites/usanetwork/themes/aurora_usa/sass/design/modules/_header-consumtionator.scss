@@ -45,12 +45,17 @@
           .menu-item {
             &.show-name {
               @include breakpoint($bp-min-769-width) {
-                max-width: calc((100% - 282px)*0.3);
+                max-width: calc((100% - 282px)*0.35);
+              }
+              a {
+                @include breakpoint($between-769-1024) {
+                  padding: 0 get-vw(23.5px, 1024);
+                }
               }
             }
             &.info {
               @include breakpoint($bp-min-769-width) {
-                max-width: calc((100% - 282px)*0.7);
+                max-width: calc((100% - 282px)*0.65);
               }
             }
           }

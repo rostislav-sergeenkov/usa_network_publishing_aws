@@ -25,12 +25,13 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
       foreach ($fc_tg_item['field_timeline_media_item']['#items'] as $media_item) {
         $idx = $scene_namber - 1;
         $description = '';
+        $alt = '';
         if ($media_item['type'] == 'image') {
           if (!empty($media_item['field_caption'][LANGUAGE_NONE])) {
             $description = current($media_item['field_caption'][LANGUAGE_NONE]);
             $description = !empty($description['value']) ? $description['value'] : NULL;
           }
-          if (!empty($media_item['field_caption'][LANGUAGE_NONE])) {
+          if (!empty($media_item['field_file_image_alt_text'][LANGUAGE_NONE])) {
             $alt = current($media_item['field_file_image_alt_text'][LANGUAGE_NONE]);
             $alt = !empty($alt['value']) ? $alt['value'] : NULL;
           }

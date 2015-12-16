@@ -30,11 +30,21 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
             $description = current($media_item['field_caption'][LANGUAGE_NONE]);
             $description = !empty($description['value']) ? $description['value'] : NULL;
           }
+          if (!empty($media_item['field_caption'][LANGUAGE_NONE])) {
+            $alt = current($media_item['field_file_image_alt_text'][LANGUAGE_NONE]);
+            $alt = !empty($alt['value']) ? $alt['value'] : NULL;
+          }
+          $image_src = image_style_url('timeline_gallery_image', $media_item['uri']);
           $scenes[$idx] = array(
             'fid' => $media_item['fid'],
             'scene_number' => $scene_namber,
             'type' => 'image',
-            'image_src' => image_style_url('timeline_gallery_image', $media_item['uri']),
+            'image_src' => $image_src,
+            'image' => theme('image', array(
+              'path' => $image_src,
+              'attributes' => array('class' => 'slideshowimage'),
+              'alt' => $alt,
+            )),
             'description' => $description,
           );
           $scene_namber++;
@@ -56,11 +66,16 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
             'player_id' => 'top3_usa',
           ));
           $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $video_file), 'link');
+          $image_src = image_style_url('timeline_gallery_image', $image_url);
           $scenes[$idx] = array(
             'fid' => $media_item['fid'],
             'scene_number' => $scene_namber,
             'type' => 'video',
-            'image_src' => image_style_url('timeline_gallery_image', $image_url),
+            'image_src' => $image_src,
+            'image' => theme('image', array(
+              'path' => $image_src,
+              'attributes' => array('class' => 'slideshowimage'),
+            )),
             'description' => $description,
             'video' => !empty($video) ? $video : NULL,
             'video_link' => !empty($video_link) ? $video_link : NULL,

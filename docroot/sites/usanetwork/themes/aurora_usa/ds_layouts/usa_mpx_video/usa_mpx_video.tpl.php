@@ -84,7 +84,7 @@
               <div id="wwRootContainer">
                 <watchwith
                     airing-id="<?php print $ww_airing_id; ?>"
-                    access-key="N2D8AUM7NVZ"
+                    access-key="SBSXJZHX4R5"
                     player-element="#pdk-player"
                     player-type="mpx">
                 </watchwith>

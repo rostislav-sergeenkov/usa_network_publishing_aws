@@ -542,7 +542,6 @@
       },
 
       saveDraggableItemsData: function () {
-        console.info('save data');
         var elementsMeta = {},
             bgPreviewingBlock = $('#' + bgPreviewingBlockId);
 

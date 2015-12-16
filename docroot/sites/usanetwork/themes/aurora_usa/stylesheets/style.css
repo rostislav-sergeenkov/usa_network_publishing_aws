@@ -8343,6 +8343,7 @@ header .tve-help-link.signIn .inlineLoader {
   margin-top: -1.26249vw;
   position: absolute;
   top: 50%;
+  width: auto;
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a:before, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a:before {

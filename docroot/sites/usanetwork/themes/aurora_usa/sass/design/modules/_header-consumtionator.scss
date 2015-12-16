@@ -187,6 +187,7 @@
                 margin-top: get-vw(-24px, 1901);
                 position: absolute;
                 top: 50%;
+                width: auto;
                 @include breakpoint($bp-min-1901-width) {
                   left: 42px;
                   margin-top: -24px;

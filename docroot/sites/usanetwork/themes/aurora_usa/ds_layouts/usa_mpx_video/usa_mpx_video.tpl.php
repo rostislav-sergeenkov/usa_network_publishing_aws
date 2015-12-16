@@ -136,7 +136,6 @@
         </div>
       </div>
     <?php else: ?>
-      <div class="node-wrapper advert <?php ($full_episode) ? print 'full-video' : print ''; ?>">
       </div>
       <div class="download-app">
         <div class="download-app-wrapper">

@@ -271,3 +271,7 @@
 .wrapper-desktop .reset-font {
   margin-left: 20px;
 }
+.wrapper-mobile h2,
+.wrapper-desktop h2 {
+  text-transform: capitalize;
+}

@@ -14,7 +14,8 @@
         isShowBgOffset, bgPreviewingBlock, bgPreviewingBlock_tpl, bgPreviewingBlockId, bgPreviewingBlockTitle_tpl, desktopImg_tpl, mobileImg_tpl, desktopImgId, mobileImgId,
         PreviewBlockWrapper_tpl, PreviewBlockWrapperMobile_tpl, PreviewBlockWrapperTitle_tpl, PreviewBlockWrapperMobileTitle_tpl, PreviewBlockWrapperId,
         PreviewBlockWrapperMobileId, defaultFontSize, defaultElemPosition, aspotDraggableItemsData, aspotDraggableItemsDataId, aspotDraggableItemsData_tpl,
-        timeOutDataSave, PreviewBlock, PreviewBlockMobile, PreviewBlockWrapper, PreviewBlockWrapperMobile;
+        timeOutDataSave, PreviewBlock, PreviewBlockMobile, PreviewBlockWrapper, PreviewBlockWrapperMobile,
+        ctaButtonClass;
 
     // default params value
     defaultParams = {
@@ -36,7 +37,7 @@
     defaultFontSize = allParams.defaultFontSize;
     defaultElemPosition = allParams.defaultElemPosition;
     draggableElements = [];
-    draggableElementsMobile = [];
+    //draggableElementsMobile = [];
 
     // generate Ids
     PreviewBlockWrapperId = 'preview-' + pageName + '-wrapper';
@@ -47,6 +48,7 @@
     draggableAreaDesktopId = 'edit-field-aspot-enabled-' + pageName + '-preview';
     draggableAreaDesktopMobileId = 'edit-field-aspot-enabled-' + pageName + '-preview-mobile';
     aspotDraggableItemsDataId = pageName + '-aspot_draggable_items_data';
+    ctaButtonClass = 'aspot-draggable-cta-button';
 
     // templates
     aspotDraggableItemsData_tpl = $('<div>', {
@@ -178,6 +180,7 @@
             .backgroundDraggable({
               axis: "x",
               done: function () {
+                sericeApi.saveDraggableItemsData();
                 var value = offsetContainer.css('backgroundPosition').split(' ');
                 inputNum.val(value[0].replace('px', ''));
               }
@@ -195,6 +198,8 @@
           offsetContainer.css({
             'background-position': $(this).val() + 'px 0px'
           });
+
+          sericeApi.saveDraggableItemsData();
         });
       },
 
@@ -203,7 +208,6 @@
             .prepend(bgPreviewingBlock_tpl)
             .prepend(bgPreviewingBlockTitle_tpl);
 
-        bgPreviewingBlock = $('#' + bgPreviewingBlockId);
         sericeApi.addBgOffsetDraggable();
       },
 
@@ -213,22 +217,32 @@
         PreviewBlockWrapper = $('#' + PreviewBlockWrapperId);
         PreviewBlockWrapperMobile = $('#' + PreviewBlockWrapperMobileId);
 
+        // At the beginning when it's debugging some deprecated elements could presents in view. All the
+        // deprecated elements must be removed. This function only for early stage of development but can
+        // be featured for future.
+        draggableElementsData = sericeApi.removeDeprecatedDraggableElements(draggableElementsData);
+
         $.each(draggableElementsData, function (index, itemElement) {
           var draggableElementId = 'aspot-draggable-' + pageName + '-' + itemElement,
               draggableElementMobileId = 'mobile-aspot-draggable-' + pageName + '-' + itemElement,
               draggableElement, draggableElementMobile,
               elParams = {
                 id: draggableElementId,
-                class: 'aspot-draggable-element',
+                class: 'aspot-draggable-element ',
                 dataRel: itemElement,
                 value: aspot_elements[itemElement].value
               },
               elParamsMob = {
                 id: draggableElementMobileId,
-                class: 'aspot-draggable-element mobile',
+                class: 'aspot-draggable-element mobile ',
                 dataRel: itemElement,
                 value: aspot_elements[itemElement].value
               }, options;
+
+          if (sericeApi.checkIsCTA_element(itemElement)) {
+            elParams.class += ctaButtonClass;
+            elParamsMob.class += ctaButtonClass;
+          }
 
           PreviewBlock.append(createDraggableElement(elParams));
           PreviewBlockMobile.append(createDraggableElement(elParamsMob));
@@ -253,6 +267,28 @@
         sericeApi.enableDraggableElem();
       },
 
+      /**
+       * Detects if the element name is CTA button related.
+       */
+      checkIsCTA_element: function (inputElementName) {
+        return (inputElementName.indexOf('cta_button_') != -1) ? true : false;
+      },
+
+      /**
+       * Removed deprecated element from deaggable elements array. Function exists only at early stage of development,
+       * but could be featured in future.
+       */
+      removeDeprecatedDraggableElements: function (draggableElementsData) {
+        var deprecatedElements = ['cta_button'];
+        $.each(deprecatedElements, function (index, elementItem) {
+          var deprecatedElementIndex = draggableElementsData.indexOf(elementItem);
+          if (deprecatedElementIndex != -1) {
+            draggableElementsData.splice(deprecatedElementIndex, 1);
+          }
+        });
+        return draggableElementsData;
+      },
+
       enableDraggableElem: function () {
         var draggableOptions = {
           grid: [1, 1],
@@ -262,18 +298,16 @@
           cursor: "move",
           zIndex: 100,
           stop: function () {
-            //usanetwork_aspot_giui_fill_draggable_items_input();
-            //usanetwork_aspot_giui_lock_ajax_form_submits();
+            sericeApi.saveDraggableItemsData();
           }
         };
         mainBlock.find('.aspot-draggable-element')
             .draggable(draggableOptions)
             .css("position", "absolute");
-        mainBlock.find('[data-rel=title_prefix]').resizable({
+        mainBlock.find('[data-rel=title_prefix], [data-rel=title], [data-rel=aspot_description]').resizable({
           containment: "parent",
           stop: function () {
-            //usanetwork_aspot_giui_fill_draggable_items_input();
-            //usanetwork_aspot_giui_lock_ajax_form_submits();
+            sericeApi.saveDraggableItemsData();
           }
         });
       },
@@ -290,12 +324,28 @@
       },
 
       onOffDraggableElem: function (inputElementName, elem) {
-        var targetCheckboxElement = elem || aspotElemCheckboxes.filter('[value=' + inputElementName + ']'),
-            currentElements = mainBlock.find('.aspot-draggable-element[data-rel=' + inputElementName + ']');
-        if (targetCheckboxElement.is(':checked')) {
-          currentElements.show();
+
+        var pattern = /cta_button/, targetCheckboxElement, currentElements,
+            ctaButtonCheckboxElement, ctaButtonElements;
+
+        if (pattern.exec(inputElementName) != null) {
+          ctaButtonCheckboxElement = aspotElemCheckboxes.filter('[value=cta_button]');
+          ctaButtonElements = mainBlock.find('.' + ctaButtonClass);
+
+          if (ctaButtonCheckboxElement.is(':checked')) {
+            ctaButtonElements.show();
+          } else {
+            ctaButtonElements.hide();
+          }
         } else {
-          currentElements.hide();
+          targetCheckboxElement = elem || aspotElemCheckboxes.filter('[value=' + inputElementName + ']');
+          currentElements = mainBlock.find('.aspot-draggable-element[data-rel=' + inputElementName + ']');
+
+          if (targetCheckboxElement.is(':checked')) {
+            currentElements.show();
+          } else {
+            currentElements.hide();
+          }
         }
       },
 
@@ -321,7 +371,7 @@
         }
         if (aspot_elements[itemElement].top) {
           draggableElement.css({
-            'top': aspot_elements[itemElement].top
+            'top': aspot_elements[itemElement].top === 'auto' ? 0 : aspot_elements[itemElement].top
           });
         }
         if (aspot_elements[itemElement].width) {
@@ -343,7 +393,7 @@
         }
         if (aspot_elements[itemElement].topM) {
           draggableElementMobile.css({
-            'top': aspot_elements[itemElement].topM
+            'top': aspot_elements[itemElement].topM === 'auto' ? 0 : aspot_elements[itemElement].topM
           });
         }
         if (aspot_elements[itemElement].widthM) {
@@ -416,6 +466,8 @@
             })
           }
         });
+
+        sericeApi.saveDraggableItemsData();
       },
 
       setAlignToTitle: function (container) {
@@ -442,6 +494,8 @@
             })
           }
         });
+
+        sericeApi.saveDraggableItemsData();
       },
 
       setPositionDraggableElement: function (el, direction, step) {
@@ -451,11 +505,15 @@
           currentPosition = 0
         }
         el.css(direction, currentPosition + 'px');
+
+        sericeApi.saveDraggableItemsData();
       },
 
       resetDraggableElement: function () {
         $('.aspot-draggable-element').removeClass('active');
         $(document).unbind('keydown');
+
+        sericeApi.saveDraggableItemsData();
       },
 
       changePositionDraggableElement: function (el) {
@@ -484,7 +542,9 @@
       },
 
       saveDraggableItemsData: function () {
-        var elementsMeta = {};
+        console.info('save data');
+        var elementsMeta = {},
+            bgPreviewingBlock = $('#' + bgPreviewingBlockId);
 
         $.each(draggableElements, function (index, itemElement) {
 
@@ -566,6 +626,11 @@
         aspotDraggableItemsData.empty().text(JSON.stringify(elementsMeta));
       },
 
+      convert_px_to_vw: function (target, bp) {
+        var $vw_context = bp * 0.01;
+        return target / $vw_context + 'vw';
+      },
+
       saveDataHelper: function (options) {
 
         // PreviewBlock, PreviewBlockMobile
@@ -595,7 +660,7 @@
           percentY = 0;
         }
 
-        if (item.hasClass('aspot-draggable-cta-button')) {
+        if (item.hasClass(ctaButtonClass)) {
           fieldWidthPercent = 'auto';
         }
 
@@ -624,6 +689,10 @@
         }
       },
 
+      mathNewFontSize: function (currentFontSize, fontSizeStep) {
+        return Math.round((currentFontSize * 100 + fontSizeStep * 100)) / 100;
+      },
+
       init: function () {
         if (isShowBgOffset) {
           sericeApi.createBgOffset();
@@ -636,6 +705,7 @@
 
     // set event
 
+    // click for on || off changePositionDraggableElement
     $(document).click(function (event) {
 
       // set position aspot-draggable-element
@@ -648,16 +718,6 @@
         if ($(".aspot-draggable-element").hasClass('active')) {
           sericeApi.resetDraggableElement();
         }
-      }
-
-      // save all params aspot-draggable-element in aspotDraggableItemsData
-      if (mainBlock.css('display') === 'block') {
-        sericeApi.saveDraggableItemsData();
-        //clearTimeout(timeOutDataSave);
-        //timeOutDataSave = setTimeout(function () {
-        //  console.info('timeOutDataSave');
-        //  sericeApi.saveDraggableItemsData();
-        //}, 200);
       }
     });
 
@@ -682,7 +742,7 @@
           if (activeItem.hasClass('increase-font')) {
             if (stepCounterNum < 13) {
               newCounter = stepCounterNum + fontStepUpDown;
-              newFontSize = mathNewFontSize(currentFontSize, fontSizeStep);
+              newFontSize = sericeApi.mathNewFontSize(currentFontSize, fontSizeStep);
 
               fieldFontSize
                   .text(newFontSize + 'px') // update value font size
@@ -694,7 +754,7 @@
           } else if (activeItem.hasClass('decrease-font')) {
             if (stepCounterNum > 1) {
               newCounter = stepCounterNum - fontStepUpDown;
-              newFontSize = mathNewFontSize(currentFontSize, -fontSizeStep);
+              newFontSize = sericeApi.mathNewFontSize(currentFontSize, -fontSizeStep);
 
               fieldFontSize
                   .text(newFontSize + 'px') // update value font size
@@ -711,6 +771,8 @@
             // update field font size
             currentField.css('fontSize', defaultFontSize + 'px');
           }
+
+          sericeApi.saveDraggableItemsData();
         })
         // default settings for draggable elements on cklick
         .on('click', '.buttons-wrapper .button', function (e) {
@@ -738,15 +800,6 @@
       var self = $(this);
       sericeApi.onOffDraggableElem(self.val(), self);
     });
-
-    // helper functions
-    function mathNewFontSize(currentFontSize, fontSizeStep) {
-      return Math.round((currentFontSize * 100 + fontSizeStep * 100)) / 100;
-    }
-
-    //function readParamsDraggableElem() {
-    //
-    //}
 
     // init service api
     sericeApi.init();
@@ -964,8 +1017,6 @@
         homeAspot = adminAspotService(homeOptions);
         showAspot = adminAspotService(showOptions);
 
-        console.info(homeAspot.aspotDraggableItemsDataId);
-
         $('#usanetwork-aspot-node-form').submit(function () {
 
           var headTextarea = $('#edit-field-aspot-gi-draggable-data-und-0-value'),
@@ -983,14 +1034,12 @@
             if (homeUiPositions != '') {
               homeUiPositionsVal = JSON.parse(homeUiPositions);
             } else {
-              //homeUiPositionsVal = getParams(aspot_elements);
               homeUiPositionsVal = aspot_elements;
             }
 
             if (showUiPositions != '') {
               showUiPositionsVal = JSON.parse(showUiPositions);
             } else {
-              //showUiPositionsVal = getParams(tvs_aspot_elements);
               showUiPositionsVal = tvs_aspot_elements;
             }
 
@@ -1001,52 +1050,9 @@
               }
             };
 
-            console.info(myData);
             headInput.val(JSON.stringify(myData));
           }
         });
-
-        function getParams(obj) {
-
-          var dataPosition = {};
-
-          $.each(obj, function (index, itemElem) {
-
-            var name = itemElem.dataRel;
-
-            if (name === 'aspot_offset_percent') {
-              dataPosition[name] = {
-                "shiftPercent": itemElem.shiftPercent
-              }
-            } else {
-              dataPosition[name] = {
-                // main
-                elementId: itemElem.elementId,
-                dataRel: itemElem.dataRel,
-                display: itemElem.display,
-                // desktop
-                left: itemElem.left,
-                top: itemElem.top,
-                stepCounter: itemElem.stepCounter,
-                fontSize: itemElem.fontSize,
-                percentX: itemElem.percentX,
-                percentY: itemElem.percentY,
-                width: itemElem.width,
-                // mobile
-                leftM: itemElem.leftM,
-                topM: itemElem.topM,
-                stepCounterM: itemElem.stepCounter,
-                fontSizeM: itemElem.fontSize,
-                percentMX: itemElem.percentMX,
-                percentMY: itemElem.percentMY,
-                widthM: itemElem.widthM
-              }
-            }
-
-          });
-
-          return dataPosition;
-        }
       });
     }
   }

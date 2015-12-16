@@ -16,6 +16,7 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
     global $base_url;
     $tg_items = array();
     $isset_video = NULL;
+    $scenes_count = 0;
     foreach ($vars['items'] as $item) {
       $fc_tg_item = reset($item['entity']['field_collection_item']);
       $season_node_wrapper = entity_metadata_wrapper('node', $fc_tg_item['field_season']['#items'][0]['entity']);
@@ -26,6 +27,11 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
         $idx = $scene_namber - 1;
         $description = '';
         $alt = '';
+        $image_classes = array();
+        $image_classes[] = 'slideshowimage';
+        if ($scenes_count > 1) {
+          $image_classes[] = 'nolazyload';
+        }
         if ($media_item['type'] == 'image') {
           if (!empty($media_item['field_caption'][LANGUAGE_NONE])) {
             $description = current($media_item['field_caption'][LANGUAGE_NONE]);
@@ -43,11 +49,12 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
             'image_src' => $image_src,
             'image' => theme('image', array(
               'path' => $image_src,
-              'attributes' => array('class' => 'slideshowimage'),
+              'attributes' => array('class' => $image_classes),
               'alt' => $alt,
             )),
             'description' => $description,
           );
+          $scenes_count++;
           $scene_namber++;
         }
         elseif ($media_item['type'] == 'mpx_video_1') {
@@ -75,12 +82,13 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
             'image_src' => $image_src,
             'image' => theme('image', array(
               'path' => $image_src,
-              'attributes' => array('class' => 'slideshowimage'),
+              'attributes' => array('class' => $image_classes),
             )),
             'description' => $description,
             'video' => !empty($video) ? $video : NULL,
             'video_link' => !empty($video_link) ? $video_link : NULL,
           );
+          $scenes_count++;
           $scene_namber++;
         }
       }
@@ -153,6 +161,28 @@ function usanetwork_timeline_gallery_block_view($delta = '') {
   }
 
   return $block;
+}
+
+function usanetwork_timeline_gallery_page_alter(&$page) {
+  if (_lazy_loader_enabled()) {
+    $distance = trim(variable_get('lazyloader_distance', LAZYLOADER_DISTANCE));
+    $icon = _lazyloader_icon_path();
+    $lazyloader_init = <<<Script
+      (function ($) {
+        Drupal.behaviors.lazyloader = {
+          attach: function (context, settings) {
+            $("img[data-src]:not(.nolazyload)").lazyloader({distance: {$distance}, icon: "{$icon}" });
+          }
+        };
+      }(jQuery));
+Script;
+
+    $page['page_bottom']['lazyload']['#attached']['js'][0] = array(
+      'data' => $lazyloader_init,
+      'type' => 'inline',
+      'scope' => 'footer',
+    );
+  }
 }
 
 /**

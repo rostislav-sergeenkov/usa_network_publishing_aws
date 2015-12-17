@@ -17469,7 +17469,10 @@ footer h2 {
   .show-title-block h1, .show-title-block h2 {
     font-size: 14px;
     line-height: 50px;
-    margin: 0 20px 0 20px;
+    margin: 0;
+    text-align: left;
+    text-indent: 20px;
+    width: 100%;
   }
 }
 @media (max-width: 480px) {
@@ -17477,8 +17480,7 @@ footer h2 {
     display: table-cell;
     float: none;
     line-height: 1;
-    padding-left: 10px;
-    text-align: left;
+    text-indent: 10px;
     vertical-align: middle;
   }
 }
@@ -17486,11 +17488,19 @@ footer h2 {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .show-title-block h1 a, .show-title-block h2 a {
     display: block;
+    padding: 0 20px;
+    text-indent: 0;
+  }
+}
+@media (max-width: 480px) {
+  .show-title-block h1 a, .show-title-block h2 a {
     line-height: 1.25;
     max-height: 50px;
+    padding: 0 10px;
+    text-indent: 0;
   }
 }
 .show-title-block h1 a:hover, .show-title-block h2 a:hover {

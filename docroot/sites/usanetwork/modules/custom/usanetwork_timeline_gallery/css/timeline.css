@@ -453,6 +453,15 @@ ul, li {
   float: left;
   overflow: hidden;
 }
+.timelineFlat .timeline-item .timeline-item-image .nolazyload {
+	 height: 100%;
+	 width: 100%;
+ }
+.timelineFlat .timeline-item .timeline-item-image .lazyloader-icon {
+	left: 50%;
+	margin: -12px 0 0 -12px;
+	top: 50%;
+}
 .timelineFlat .timeline-item .timeline-item-details {
 	color: #FFF;
 	z-index: 2;

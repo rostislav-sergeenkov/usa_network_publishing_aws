@@ -72,7 +72,7 @@
         dataType: 'json',
         success: function (data) {
           $('.ajax-load-block .load-more-link').before(data.rendered);
-          //$('#load-more-loader-js').remove();
+          $('#load-more-loader-js').remove();
 
           Drupal.behaviors.mpsAdvert.ajaxLoadBlock();
 

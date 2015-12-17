@@ -519,7 +519,6 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
     $theme_variables['season_number'] = $current_season_data_item->season_number;
   }
 
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/spin.min.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_episodes') . '/js/usanetwork_episodes.autoloader.js');
 

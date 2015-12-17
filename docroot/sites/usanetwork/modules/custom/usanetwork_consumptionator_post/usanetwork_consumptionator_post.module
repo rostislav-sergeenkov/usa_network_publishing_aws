@@ -426,7 +426,6 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
     }
   }
 
-  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/spin.min.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator_post') . '/js/usanetwork_blog_posts.autoloader.js');
 

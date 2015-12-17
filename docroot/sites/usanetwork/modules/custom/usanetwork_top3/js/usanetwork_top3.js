@@ -386,7 +386,6 @@
                 //'visibility': 'hidden'
                 display: 'none'
               });
-              console.info(isMobileDevice);
             } else {
               playerService.setPlayer();
             }

@@ -1232,23 +1232,31 @@
     @include breakpoint($bp-768-width) {
       font-size: 14px;
       line-height: 50px;
-      margin: 0 20px 0 20px;
+      margin: 0;
+      text-align: left;
+      text-indent: 20px;
+      width: 100%;
     }
     @include breakpoint($bp-480-width) {
       display: table-cell;
       float: none;
       line-height: 1;
-      padding-left: 10px;
-      text-align: left;
+      text-indent: 10px;
       vertical-align: middle;
     }
     a {
       color: #ffffff;
       font-family: $avalon-medium;
-      @include breakpoint($bp-480-width) {
+      @include breakpoint($bp-768-width) {
         display: block;
+        padding: 0 20px;
+        text-indent: 0;
+      }
+      @include breakpoint($bp-480-width) {
         line-height: 1.25;
         max-height: 50px;
+        padding: 0 10px;
+        text-indent: 0;
       }
       &:hover {
         color: #ffffff;

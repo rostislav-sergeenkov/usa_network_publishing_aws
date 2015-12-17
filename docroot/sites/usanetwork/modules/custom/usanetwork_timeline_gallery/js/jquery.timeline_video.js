@@ -500,6 +500,22 @@ Project demo: http://shindiristudio.com/timeline
         return currentLink;
       }
     },
+    timelineLazyLoad: function() {
+      var items = [],
+          active_item = $('.timeline-item.active');
+      if(active_item.find('.slideshowimage').hasClass('nolazyload')) {
+        items.push(active_item);
+      }
+      if(!$('.timeline-item').last().hasClass('active')) {
+        var next_item = $('.timeline-item.active').next('.timeline-item');
+        if(next_item.find('.slideshowimage').hasClass('nolazyload')) {
+          items.push(next_item);
+        }
+      }
+      if(items.length > 0) {
+        Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(items);
+      }
+    },
 
     attach: function (context, settings) {
 
@@ -1115,7 +1131,9 @@ Project demo: http://shindiristudio.com/timeline
             }
 
             if (multiply == 0 || ignoreMultiply == true) {
-              data.iholder.stop(true).animate({marginLeft : data.margin}, speed+(speed/5)*(Math.abs(multiply)-1), easing);
+              data.iholder.stop(true).animate({marginLeft : data.margin}, speed+(speed/5)*(Math.abs(multiply)-1), easing, function(){
+                Drupal.behaviors.timeline_gallery.timelineLazyLoad();
+              });
 /*
               data.iholder.stop(true).animate({marginLeft : data.margin}, speed+(speed/5)*(Math.abs(multiply)-1), easing, function() {
                 // Trigger ScrollStopIgnore event - this is for events that didn't really move on to the next/previous item
@@ -1134,6 +1152,7 @@ Project demo: http://shindiristudio.com/timeline
               data.iholder.stop(true).animate({marginLeft : data.margin}, speed+(speed/5)*(Math.abs(multiply)-1), easing, function(){
                 // Trigger ScrollStop event
                 $this.trigger('scrollStop.Timeline');
+                Drupal.behaviors.timeline_gallery.timelineLazyLoad();
               });
             }
 

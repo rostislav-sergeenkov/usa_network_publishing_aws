@@ -289,7 +289,8 @@
           if (playerService.hideSliderWrapper) {
             playerService.hideSliderWrapper = false;
             $('#slider-container .slider-wrapper').css({
-              'visibility': 'visible'
+              //'visibility': 'visible',
+              display: 'block'
             });
           }
 
@@ -378,11 +379,14 @@
             playBtn.addClass('inactive').removeClass('show');
             // show player
             if (isMobileDevice) {
+              console.info(isMobileDevice);
               playerService.loadPlayer();
               playerService.hideSliderWrapper = true;
               $('#slider-container .slider-wrapper').css({
-                'visibility': 'hidden'
+                //'visibility': 'hidden'
+                display: 'none'
               });
+              console.info(isMobileDevice);
             } else {
               playerService.setPlayer();
             }

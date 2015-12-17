@@ -216,3 +216,27 @@ function usanetwork_mpx_video_full_episode_videos_form_delete($video_id) {
   drupal_set_message('Video element has been deleted');
   drupal_goto('admin/usanetwork/full-episode-page');
 }
+
+/*
+ * Form for saving USA Network custom WatchWith settings
+ */
+function _usanetwork_mpx_watchwith_admin_form ($form, &$form_state) {
+  $form['usanetwork_ww_access_key'] = array(
+    '#title' => t('Access Key'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get('usanetwork_ww_access_key', 'SBSXJZHX4R5'),
+  );
+  $form['usanetwork_ww_js_file'] = array(
+    '#title' => t('WatchWith path to JS file'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get('usanetwork_ww_js_file', 'http://apps.watchwith.com/wng-usa/dev/wng-usa-boot.js'),
+  );
+  $form['usanetwork_ww_css_file'] = array(
+    '#title' => t('WatchWith path to CSS file'),
+    '#type' => 'textfield',
+    '#default_value' => variable_get('usanetwork_ww_css_file', 'http://apps.watchwith.com/wng-usa/dev/watchwith.css'),
+  );
+
+
+  return system_settings_form($form);
+}

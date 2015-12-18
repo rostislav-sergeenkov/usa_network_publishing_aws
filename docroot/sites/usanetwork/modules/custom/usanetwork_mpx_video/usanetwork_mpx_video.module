@@ -773,14 +773,14 @@ function usanetwork_mpx_video_file_presave($file) {
         }
       }
 
-//      if (!isset($field_mpx_image_title) || ($field_mpx_image_title != $filename)) {
+      if (!isset($field_mpx_image_title) || ($field_mpx_image_title != $filename)) {
         $image = file_get_contents($field_mpx_image_value['value']);
         $usa_video_image_dir = 'public://usa_video_image';
         if (file_prepare_directory($usa_video_image_dir, FILE_CREATE_DIRECTORY)) {
           $save_image = file_save_data($image, $usa_video_image_dir . '/' . $filename, FILE_EXISTS_REPLACE);
           $file->field_mpx_image = array(LANGUAGE_NONE => array('0' => (array)$save_image));
         }
-//      }
+      }
     }
   }
 

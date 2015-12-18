@@ -223,8 +223,10 @@
           Drupal.behaviors.consumptionator_video.initPlayerBind();
 
           // init watchwith
-          wwLoader.bootstrap();
-          console.info('init wwLoader.bootstrap()');
+          if (typeof wwLoader !== 'undefined') {
+            wwLoader.bootstrap();
+            console.info('init wwLoader.bootstrap()');
+          }
         }
       }
     }

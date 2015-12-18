@@ -8,7 +8,7 @@
 <div class="tve-help-link signOut" data-ng-if="global.isAuthN">
   <?php print $authbar; ?>
 </div>
-<div class="tve-help-link signIn no-auth">
+<div class="tve-help-link signIn no-auth" data-usa-tve-help-link>
   <a href="javascript:void(0)" class="loginButton clean"
      data-ng-if="!global.isAuthN"
      data-ng-click="openLoginWindow()" data-ng-cloak="">

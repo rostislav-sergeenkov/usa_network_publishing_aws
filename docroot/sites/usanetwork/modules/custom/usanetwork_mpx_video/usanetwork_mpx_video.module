@@ -1655,6 +1655,13 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
           drupal_add_css($css_file, array('type' => 'external'));
         }
       }
+      if ($full_episode['value'] == '1') {
+        $params = drupal_get_query_parameters();
+        if (isset($params['t'])) {
+          drupal_add_js(array('videoSetTime' => $params['t']), 'setting');
+//          drupal_add_js();
+        }
+      }
     }
   }
   // Fill H1 tag.

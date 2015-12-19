@@ -3,8 +3,8 @@
   'use strict';
 
   ng.module('tve.directives')
-      .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx', 'usaVideoSettings',
-        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx, usaVideoSettings) {
+      .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx',
+        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx) {
           return {
             compile: function(tElement, tAttrs, transclude) {
               return function link(scope, element, attrs) {
@@ -18,6 +18,9 @@
                     mpxId = !isLive && rowId && rowId.split('/').pop(),
                     resuming = false,
                     usaVideoSettingsRun = false,
+                // if url contain param ?t=300
+                // Drupal.settings.videoSetTime = 300
+                    position = Drupal.settings.videoSetTime, // seconds
                     currentAsset, previouslyWatched, lastSave;
 
                 scope.showCompanionAdd = false;
@@ -116,7 +119,7 @@
                   else {
 
                     if (!usaVideoSettingsRun) {
-                      usaVideoSettingsRun = usaVideoSettings.seekToPosition();
+                      usaVideoSettingsRun = seekToPosition();
                     }
 
                     if($('.dart-tag').length) {
@@ -138,6 +141,13 @@
                       duration: videoData.mediaLength
                     };
                   }
+                }
+
+                function seekToPosition() {
+                  if (position) {
+                    $pdk.controller.seekToPosition(position * 1000); // convert to milliseconds
+                  }
+                  return true;
                 }
 
                 function _onMediaPlaying(e) {

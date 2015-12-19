@@ -3,8 +3,8 @@
   'use strict';
 
   ng.module('tve.directives')
-      .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx',
-        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx) {
+      .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx', 'usaVideoSettings',
+        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx, usaVideoSettings) {
           return {
             compile: function(tElement, tAttrs, transclude) {
               return function link(scope, element, attrs) {
@@ -17,6 +17,7 @@
                     rowId = attrs['mpxId'],
                     mpxId = !isLive && rowId && rowId.split('/').pop(),
                     resuming = false,
+                    usaVideoSettingsRun = false,
                     currentAsset, previouslyWatched, lastSave;
 
                 scope.showCompanionAdd = false;
@@ -113,6 +114,11 @@
                     // Functionality for ad playing event
                   }
                   else {
+
+                    if (!usaVideoSettingsRun) {
+                      usaVideoSettingsRun = usaVideoSettings.seekToPosition();
+                    }
+
                     if($('.dart-tag').length) {
                       scope.$apply(function() {
                         scope.isFreeWheelReq = true;

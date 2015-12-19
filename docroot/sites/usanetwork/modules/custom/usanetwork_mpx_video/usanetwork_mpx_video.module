@@ -1659,7 +1659,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         $params = drupal_get_query_parameters();
         if (isset($params['t'])) {
           drupal_add_js(array('videoSetTime' => $params['t']), 'setting');
-//          drupal_add_js();
+          drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/usaVideoSettings.js', array('scope' => 'footer', 'weight' => -1,));
         }
       }
     }

@@ -167,7 +167,7 @@ $(document).ready(function () {
     }
   });
 
-  $('a[href$="enhanced"]').click(function (e) {
+  $(document).on('click', 'a[href$="enhanced"]', function(e){
     e.preventDefault();
     var parced_src = customParseURL(unescape($(this).attr('href')));
     if (parced_src.params.mobile_url && (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice)) {

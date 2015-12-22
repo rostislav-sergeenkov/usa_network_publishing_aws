@@ -23,16 +23,20 @@
           slideIndex = '';
         }
 
-        $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-          if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
-            var url = window.location.href.split('#')[0];
-            sharebar.gigyaSharebar.ua.linkBack = url + slideIndex;
-            sharebar.gigyaSharebar.ua.imageBhev = 'url';
-            sharebar.gigyaSharebar.ua.imageUrl = $currentImage.attr('data-src-share') ? $currentImage.attr('data-src-share') : $currentImage.attr('src');
-            sharebar.gigyaSharebar.ua.description = $currentDescription;
-            Drupal.gigya.showSharebar(sharebar);
-          }
-        });
+        if ($('body').hasClass('page-node-microsite')) {
+
+        } else {
+          $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+            if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
+              var url = window.location.href.split('#')[0];
+              sharebar.gigyaSharebar.ua.linkBack = url + slideIndex;
+              sharebar.gigyaSharebar.ua.imageBhev = 'url';
+              sharebar.gigyaSharebar.ua.imageUrl = $currentImage.attr('data-src-share') ? $currentImage.attr('data-src-share') : $currentImage.attr('src');
+              sharebar.gigyaSharebar.ua.description = $currentDescription;
+              Drupal.gigya.showSharebar(sharebar);
+            }
+          });
+        }
       }
     }
   }

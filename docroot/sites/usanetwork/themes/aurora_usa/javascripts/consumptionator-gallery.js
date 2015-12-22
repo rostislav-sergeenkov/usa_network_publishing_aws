@@ -24,7 +24,7 @@
         }
 
         if ($('body').hasClass('page-node-microsite')) {
-          return
+          return;
         } else {
           $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
             if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {

@@ -391,8 +391,8 @@ function usanetwork_imagestyles_image_default_styles() {
       2 => array(
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
-          'width' => 1920,
-          'height' => 1080,
+          'width' => 1340,
+          'height' => 754,
           'focal_point_advanced' => array(
             'shift_x' => '',
             'shift_y' => '',
@@ -410,8 +410,8 @@ function usanetwork_imagestyles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 1920,
-          'height' => 1080,
+          'width' => 1340,
+          'height' => 754,
         ),
         'weight' => 1,
       ),

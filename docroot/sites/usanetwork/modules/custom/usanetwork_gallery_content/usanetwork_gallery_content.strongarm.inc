@@ -152,6 +152,9 @@ function usanetwork_gallery_content_strongarm() {
       'promo_teaser_large' => array(
         'custom_settings' => FALSE,
       ),
+      'microsite_output' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

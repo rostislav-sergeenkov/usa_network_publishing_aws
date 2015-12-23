@@ -112,8 +112,7 @@ $firstScene = TRUE;
                data-fid="<?php print $scene['fid']; ?>"
                data-imagesrc="<?php print $scene['image_src']; ?>">
             <div class="timeline-item-image">
-              <img src="<?php print $scene['image_src']; ?>" alt=""
-                   class="slideshowimage"/>
+              <?php print $scene['image']; ?>
               <?php if (!empty($scene['video'] && $scene['video_link'])): ?>
                 <div class="play-button" data-status="active"></div>
               <?php endif; ?>

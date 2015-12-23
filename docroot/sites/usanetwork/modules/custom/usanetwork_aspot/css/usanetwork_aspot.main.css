@@ -23,6 +23,8 @@
 }
 .draggable-area img{
   margin: 0;
+  height: 100%;
+  width: 100%;
 }
 .draggable-area.mobile{
   display: block;
@@ -61,7 +63,8 @@
   outline: 1px solid #ffffff;
   /*margin: 0;*/
   /*padding: 3px;*/
-  /*top: 0;*/
+  left: 0;
+  top: 0;
 }
 .aspot-draggable-element.active {
   outline: 1px dashed #f00;
@@ -229,7 +232,7 @@
 #edit-group_usa_tv_aspot_ui .wrapper-mobile .edit-font-wrapper {
   left: 700px;
   position: absolute;
-  top: 115px;
+  top: 155px;
 }
 
 #edit-group_usa_aspot_ui .edit-font-wrapper .field-font-size,
@@ -263,4 +266,12 @@
 #edit-group_usa_aspot_ui .edit-font-wrapper .increase-font,
 #edit-group_usa_tv_aspot_ui .edit-font-wrapper .increase-font {
 
+}
+.wrapper-mobile .reset-font,
+.wrapper-desktop .reset-font {
+  margin-left: 20px;
+}
+.wrapper-mobile h2,
+.wrapper-desktop h2 {
+  text-transform: capitalize;
 }

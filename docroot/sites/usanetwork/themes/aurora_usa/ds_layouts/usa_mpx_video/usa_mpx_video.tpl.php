@@ -79,6 +79,18 @@
             ?>
           <?php endif; ?>
           <?php print $video; ?>
+          <?php if (!empty($watchwith) && !empty($ww_airing_id)) : ?>
+            <div ng-non-bindable>
+              <div id="wwRootContainer">
+                <watchwith
+                    airing-id="<?php print $ww_airing_id; ?>"
+                    access-key="<?php print variable_get('usanetwork_ww_access_key', 'SBSXJZHX4R5'); ?>"
+                    player-element="#pdk-player"
+                    player-type="mpx">
+                </watchwith>
+              </div>
+            </div>
+          <?php endif; ?>
         </div>
       <?php
       else: ?>
@@ -124,15 +136,6 @@
         </div>
       </div>
     <?php else: ?>
-      <div class="node-wrapper advert <?php ($full_episode) ? print 'full-video' : print ''; ?>">
-        <div class="advertisement">
-          <?php if ($full_episode) : ?>
-            <div id="ad_300x60_1"></div>
-          <?php else : ?>
-            <div id="ad_300x250_1"></div>
-          <?php endif; ?>
-        </div>
-      </div>
       <div class="download-app">
         <div class="download-app-wrapper">
           <div class="image-block"></div>

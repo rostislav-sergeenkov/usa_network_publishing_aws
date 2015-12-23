@@ -111,30 +111,6 @@
       margin: 0 auto;
       width: 300px;
     }
-    &.full-video {
-      @include breakpoint($bp-min-1281-width) {
-        height: 23.4vw;
-        padding: calc((23.4vw - 60px) / 2) 0;
-      }
-      @include breakpoint($between-1025-1280) {
-        position: relative;
-      }
-      @include breakpoint($bp-1024-width) {
-        height: 250px;
-        padding: calc((250px - 60px) / 2) 0;
-      }
-      .advertisement {
-        height: 60px;
-        overflow: hidden;
-        @include breakpoint($between-1025-1280) {
-          position: absolute;
-          margin-left: -150px;
-          margin-top: -30px;
-          left: 50%;
-          top: 50%;
-        }
-      }
-    }
   }
   .items-block {
     position: relative;
@@ -774,6 +750,80 @@
     .more-items {
       @include breakpoint($between-1025-1280) {
         background: none!important;
+      }
+    }
+  }
+}
+.consumptionator-video-page {
+  &.page-full-video {
+    &.admin-menu {
+      @include breakpoint($bp-min-769-width) {
+        margin-top: 0px!important;
+      }
+    }
+    .usa-wrap {
+      margin-top: get-vw(135px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        margin-top: 135px;
+      }
+      @include breakpoint($bp-768-width) {
+        margin-top: 0;
+      }
+    }
+    .region-header {
+      @include breakpoint($bp-min-769-width) {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+      }
+    }
+    header {
+      &.sign-in {
+        @include breakpoint($between-769-1024) {
+          height: calc(7.10153vw + 35px);
+        }
+        ~ .usa-wrap {
+          @include breakpoint($between-769-1024) {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+  .video-block {
+    .consum-sidebar {
+      .advert {
+        display: none;
+      }
+      .items-block {
+        @include breakpoint($bp-min-1281-width) {
+          bottom: 40px;
+          height: calc(100% - 85px);
+          position: absolute;
+        }
+        @include breakpoint($bp-min-1901-width) {
+          bottom: 70px;
+          height: calc(100% - 140px);
+        }
+      }
+      .download-app {
+        @include breakpoint($between-1025-1280) {
+          bottom: 0;
+          height: 290px;
+          position: absolute;
+          right: 0;
+          width: 320px;
+        }
+        @include breakpoint($bp-1024-width) {
+          width: 100%;
+        }
+      }
+      .episodes-list-slider.vertical {
+        height: calc(100% - 45px);
+        @include breakpoint($bp-min-1901-width) {
+          height: calc(100% - 70px);
+        }
       }
     }
   }

@@ -221,6 +221,12 @@
         if (!$('body').hasClass('page-videos-live') && !$('body').hasClass('page-node-microsite')) {
           Drupal.behaviors.consumptionator_video.changeSrcFullVideos(selected.MVPD);
           Drupal.behaviors.consumptionator_video.initPlayerBind();
+
+          // init watchwith
+          if (typeof wwLoader !== 'undefined') {
+            wwLoader.bootstrap();
+            console.info('init wwLoader.bootstrap()');
+          }
         }
       }
     }

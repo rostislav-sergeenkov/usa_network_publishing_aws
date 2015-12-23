@@ -110,17 +110,7 @@ ul, li {
 	margin-top: 25px;
 	height: 30px;
 	border-left: 1px solid transparent;
-	border-right: 1px solid #101010;
-	width: 50%;
-	position: absolute;
-	top: 0;
-}
-
-/* month on the right side - has left set at 459 so border would overlap border from first element (to evade duplicated borders) */
-.timelineFlat .timeline-m.right {
-	left: 50%;
-	border-left: 1px solid transparent;
-	border-right: 1px solid transparent;
+	width: 100%;
 	position: absolute;
 	top: 0;
 }
@@ -426,8 +416,10 @@ ul, li {
 	position: relative;
 }
 .timelineFlat .timeline-item h2 span {
-  display: inline;
+  display: inline-block;
+	height: auto;
   margin: 0;
+	vertical-align: middle;
 }
 .timelineFlat .timeline-item span {
 	display: block;
@@ -461,6 +453,15 @@ ul, li {
   float: left;
   overflow: hidden;
 }
+.timelineFlat .timeline-item .timeline-item-image .nolazyload {
+	 height: 100%;
+	 width: 100%;
+ }
+.timelineFlat .timeline-item .timeline-item-image .lazyloader-icon {
+	left: 50%;
+	margin: -12px 0 0 -12px;
+	top: 50%;
+}
 .timelineFlat .timeline-item .timeline-item-details {
 	color: #FFF;
 	z-index: 2;
@@ -482,13 +483,20 @@ ul, li {
 	line-height: 1.2;
 	color: #FFE476;
 	text-align: right;
-	width: 430px;
+	width: 98%;
 	text-transform: uppercase;
+}
+.timelineFlat .timeline-item .timeline-item-details h2 .timeline-h2-episode-name {
+	max-width: calc(100% - 160px);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .timelineFlat .timeline-item .timeline-item-details h2 .divider {
   display: inline;
   margin: 0 5px;
   height: auto;
+	vertical-align: top;
 }
 .timelineFlat .timeline-item .timeline-item-text {
   font-size: 1.125em;
@@ -695,6 +703,31 @@ ul, li {
 }
 
 /* -------------- START MEDIA QUERIES ------------- */
+@media (min-width: 1141px) {
+	.timelineFlat #timeline-line-full-left {
+		left: -243px;
+		width: 210px;
+	}
+	.timelineFlat #timeline-line-full-left .title {
+		font-size: 19px;
+		width: 170px;
+	}
+	.timelineFlat #timeline-line-full-right {
+		right: -195px;
+		width: 156px;
+	}
+	.timelineFlat #timeline-line-full-right .title {
+		font-size: 19px;
+	}
+}
+@media (max-width: 1280px) {
+	.timelineFlat .timeline-item .timeline-item-details h2 {
+		font-size: 12px;
+	}
+	.timelineFlat .timeline-item .timeline-item-details h2 .timeline-h2-episode-name {
+		max-width: calc(100% - 140px);
+	}
+}
 @media (max-width: 1140px) {
   .timelineFlat #timeline-line-full-left {
     left: -78px;
@@ -710,7 +743,14 @@ ul, li {
     font-size: 1em;
   }
 }
-
+@media (max-width: 1024px) {
+	.timelineFlat .timeline-item .timeline-item-details h2 {
+		font-size: 10px;
+	}
+	.timelineFlat .timeline-item .timeline-item-details h2 .timeline-h2-episode-name {
+		max-width: calc(100% - 120px);
+	}
+}
 @media (max-width: 920px) {
   .timelineFlat.timelineFlatPortfolio .timeline-item,
   .timelineFlat.timelineFlatPortfolio .timeline-item-open {
@@ -724,8 +764,16 @@ ul, li {
     margin-top: 12px;
     font-size: 1.125em;
   }
+	.timelineFlat .timeline-item .timeline-item-details h2 {
+		font-size: 12px;
+	}
+	.timelineFlat .timeline-item .timeline-item-details h2 .timeline-h2-episode-name {
+		max-width: calc(100% - 130px);
+	}
+	.timelineFlat .timeline-item .timeline-item-details h2 .divider {
+		margin: 0;
+	}
 }
-
 @media (max-width: 400px) {
   .timelineFlat #timeline-line-left {
     left: -24px;

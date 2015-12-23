@@ -1,37 +1,30 @@
+;
 (function (ng, $) {
+  'use strict';
 
-  $(window).load(function () {
-    if (!ng) {
-      return;
-    }
+  ng.module('tve.directives')
+      .directive('usaTveHelpLink', ['$cookies', 'tveModal', 'authService',
+        function ($cookies, tveModal, authService) {
+          return {
+            link: function($scope, $element, $attrs) {
+              authService.promise.then(function() {
+                if (authService.isAuthN()) {
+                  initHeader();
+                }
+              });
 
-    var $injector = ng.element(document).injector();
+              function initHeader() {
 
-    $injector.invoke(['$cookies', 'tveConfig', 'tveModal', 'authService', function ($cookies, tveConfig, tveModal, authService) {
+                $('header #block-usanetwork-menu-usanetwork-menu-consumptionator').addClass('sign-enable');
+                $('header .header-nav-bar').addClass('tve-sign');
+                $('header').addClass('sign-in');
 
-      if ($cookies['nbcu_ap_loginpending']) {
-        initHeader();
-        //authService.promise.then(function () {});
-      }
-
-      if (authService.isAuthN()) {
-        initHeader();
-      }
-
-    }]);
-
-  });
-
-  function initHeader() {
-
-    $('header #block-usanetwork-menu-usanetwork-menu-consumptionator').addClass('sign-enable');
-    $('header .header-nav-bar').addClass('tve-sign');
-
-    if($('header .tve-help-link.signIn').hasClass('no-auth')) {
-      $('header .tve-help-link.signIn').removeClass('no-auth');
-      $('header .tve-help-link.signIn .loginButton').remove();
-    }
-
-  }
-
+                if($element.hasClass('no-auth')) {
+                  $('header .tve-help-link.signIn').removeClass('no-auth');
+                }
+              }
+            }
+          };
+        }
+      ]);
 })(angular, jQuery);

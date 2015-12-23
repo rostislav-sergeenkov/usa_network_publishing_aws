@@ -28,6 +28,7 @@ body {
         }
       }
       .panel-col-last {
+        max-width: 100%;
         width: 300px;
         @include breakpoint($bp-menu-narrow) {
           width: 610px;

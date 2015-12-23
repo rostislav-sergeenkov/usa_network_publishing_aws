@@ -11,14 +11,17 @@
       if (nodeNid > 0) {
 
         var serviceUrl = '/ajax/usanetwork-blog-posts/get-related/' + nodeNid + '/' + offset;
-        $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
+        $('.ajax-load-block .load-more-link a').after('<div id="load-more-loader-js"></div>');
+
+        addSpinJs('load-more-loader-js');
+
         $.ajax({
           type: 'GET',
           url: serviceUrl,
           dataType: 'json',
           success: function (data) {
             $('.ajax-load-block .load-more-link').before(data.rendered);
-            $('.ajax-load-block .load-more-link .load-more-loader').remove();
+            $('#load-more-loader-js').remove();
 
             Drupal.behaviors.mpsAdvert.ajaxLoadBlock();
 

@@ -41,7 +41,7 @@
           (((windowRight >= imageLeft) && (windowLeft <= imageLeft)) || ((windowRight >= imageRight) && (windowLeft <= imageRight)));
     },
     loadImage: function(image){
-      image.hide().attr('src', image.data('src')).removeAttr('data-src');
+      image.hide().attr('src', image.data('src')).removeAttr('data-src').removeClass('nolazyload');
       image.load(function() {
         image.siblings('img.lazyloader-icon').remove();
       });

@@ -25,8 +25,8 @@
       if(window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
         // check offsetTop value
         if (!subMenuSelector.hasClass('sticky-shows-submenu')) {
-          if (Math.round(subMenuSelector.offset().top) !== offsetTop) {
-            offsetTop = Math.round(subMenuSelector.offset().top);
+          if (Math.round(subMenuSelector.offset()['top']) !== offsetTop) {
+            offsetTop = Math.round(subMenuSelector.offset()['top']);
           }
         }
         if ($(window).scrollTop() >= offsetTop) {
@@ -47,18 +47,18 @@
 
       if (!$('.fixed-position').length) {
         // check offsetTop value
-        if (Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1) !== offsetTop) {
-          offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1);
+        if (Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1) !== offsetTop) {
+          offsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1);
         }
         // check on class sticky-shows-submenu
         if ($submenu.hasClass('sticky-shows-submenu')) {
-          offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1 - header_submenu_h)
+          offsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1 - header_submenu_h)
         }
       } else {
         // check on class sticky-shows-submenu
-        if (Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1) !== offsetTop) {
+        if (Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1) !== offsetTop) {
           if ($submenu.hasClass('sticky-shows-submenu') && $('.fixed-position').length) {
-            offsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1)
+            offsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1)
           }
           if ($('.fixed-position').css('top') !== header_submenu_h) {
             $('.fixed-position').css('top', header_submenu_h)
@@ -137,6 +137,19 @@
       }
     },
 
+    hideProvider: function() {
+      var provider = $('.tve-header-links .first');
+      if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
+        provider.hide();
+      } else {
+        if ($(window).scrollTop() > 20) {
+          provider.hide();
+        } else {
+          provider.show();
+        }
+      }
+    },
+
     startScrollAt: null,
 
     attach: function(context){
@@ -151,13 +164,13 @@
         if($('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu', $submenu).length) {
           $submenu = $('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu', $submenu);
         }
-        submenuOffsetTop = Math.round($submenu.offset().top);
+        submenuOffsetTop = Math.round($submenu.offset()['top']);
       } else {
         $submenu = null;
       }
 
       if($submenu.length && $userMenu.length) {
-        var upperMenuOffsetTop = Math.round($userMenu.offset().top - $submenu.outerHeight(true) - 1);
+        var upperMenuOffsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1);
       }
 
       $(document.body).once('window-events', function () {
@@ -165,6 +178,11 @@
 
         if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
           tablet = true;
+        }
+
+        //temporary code for hiding provider
+        if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
+          Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
         }
 
         Drupal.behaviors.usanetwork_menu_dropdown.tabItemScroll();
@@ -401,6 +419,10 @@
           clearTimeout(timer_id);
           timer_id = setTimeout(function() {
             _self.stickyHeader(submenuOffsetTop, $submenu);
+            //temporary code for hiding provider
+            if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
+              Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
+            }
             if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
               _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
             }
@@ -433,6 +455,10 @@
 
         $(window).on('scroll', function (e) {
           _self.stickyHeader(submenuOffsetTop, $submenu);
+          //temporary code for hiding provider
+          if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
+            Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
+          }
           if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
             _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
@@ -443,7 +469,7 @@
             }
 
             if (($(window).scrollTop() - Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt) > 100) {
-              if (!$('.tab-item').hasClass('mCustomScrollbar') && window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches && !$('body').hasClass('consumptionator-page')) {
+              if (!$('.tab-item').hasClass('mCustomScrollbar') && window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
                 $('.nav-bar-tabs .tab a.active').removeClass('active').attr('data-state', '');
                 $('.tab-item.active').slideUp(350).removeClass('active');
                 Drupal.behaviors.usanetwork_menu_dropdown.startScrollAt = null;

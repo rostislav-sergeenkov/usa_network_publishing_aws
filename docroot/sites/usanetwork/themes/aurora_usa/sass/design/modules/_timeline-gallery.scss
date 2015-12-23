@@ -68,26 +68,7 @@
           padding: 20px 8px 10px 10px;
         }
         h2 {
-          width: 98%;
           padding: 0 20px;
-          @include breakpoint($bp-1280-width) {
-            font-size: 12px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 10px;
-          }
-          @include breakpoint($bp-768-width) {
-            font-size: 12px;
-            text-align: left;
-            left: 10px;
-            right: auto;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            .divider {
-              margin: 0;
-            }
-          }
         }
         .timeline-item-text {
           font-family: $avalon-book;

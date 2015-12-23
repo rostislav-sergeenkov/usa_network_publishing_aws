@@ -289,7 +289,8 @@
           if (playerService.hideSliderWrapper) {
             playerService.hideSliderWrapper = false;
             $('#slider-container .slider-wrapper').css({
-              'visibility': 'visible'
+              //'visibility': 'visible',
+              display: 'block'
             });
           }
 
@@ -378,10 +379,12 @@
             playBtn.addClass('inactive').removeClass('show');
             // show player
             if (isMobileDevice) {
+              console.info(isMobileDevice);
               playerService.loadPlayer();
               playerService.hideSliderWrapper = true;
               $('#slider-container .slider-wrapper').css({
-                'visibility': 'hidden'
+                //'visibility': 'hidden'
+                display: 'none'
               });
             } else {
               playerService.setPlayer();
@@ -729,7 +732,6 @@
 
               for (var i = 0; i < matchArray.length; i++) {
                 if (matchArray[i] == matchId) {
-                  console.log('not allowed');
                   $('.container-message').fadeIn(400).addClass('not-allowed');
                 }
               }
@@ -775,7 +777,6 @@
                 image.height = ctx['canvas'].height;
                 image.width = ctx['canvas'].width;
                 image.src = ctx['canvas'].toDataURL("image/jpeg", "1.0");
-                console.info('CanvasToImageFinish');
                 return image;
               }
 
@@ -810,7 +811,6 @@
                   //highlight share btn
                   $('#share-button').once('share-button', function () {
                     $('#share-button').click(function () {
-                      console.info('share-click');
                       if (Drupal.behaviors.omniture_tracking != 'undefined') {
                         at_params.endButtons = 'Create My Top3 Link Button';
                         Drupal.behaviors.omniture_tracking.top3.endButton(at_params);
@@ -839,10 +839,8 @@
                       setTimeout(function () {
                         html2canvas(shareImageBlock, {
                           onrendered: function (canvas) {
-                            console.info('canvas-render');
                             shareImageBlock.remove();
                             imgShare.append(convertCanvasToImage(canvas));
-                            console.info('image-render');
                             var galleryNid = $('#slider-container').attr('data-nid'),
                                 firstFid = $('#share-block .first .slide-content-inner').attr('data-fid'),
                                 secondFid = $('#share-block .second .slide-content-inner').attr('data-fid'),
@@ -915,8 +913,6 @@
                     $('.drag-group').disableSelection();
                     $('#drag-icon-block').remove();
                     previewOpen();
-                    //top3Usanetwork.previewDroppables();
-                    //top3Usanetwork.previewDraggable();
                   });
 
                   setTimeout(function () {
@@ -938,135 +934,7 @@
             }
           });
         });
-      },
-
-      previewDroppables: function () {
-
-        console.log('previewDroppables initilized');
-
-        // initialize droppables
-        [].slice.call(document.querySelectorAll('#share-block-preview .preview-item')).forEach(function (el) {
-          droppableArr.push(new Droppable(el, {
-
-            onDrop: function (instance, draggableEl) {
-              instanceDrop = instance.el.id;
-              instanceDrag = $(draggableEl).attr('id');
-
-              if (instanceDrop != instanceDrag) {
-                var dragId = $(draggableEl).attr('data-id');
-                var dropId = $(instance.el).attr('data-id');
-                var tempItem = $(draggableEl).html();
-                $(draggableEl).html($(instance.el).html());
-                $(instance.el).html(tempItem);
-                var tempDropItem = $('#' + dragId).html();
-                $('#' + dragId).html($('#' + dropId).html());
-                $('#' + dropId).html(tempDropItem);
-              }
-
-            }
-          }));
-        });
-      },
-
-      previewDraggable: function () {
-
-        console.log('previewDraggable initilized');
-
-        //simulation mouse controlls to resize drag contex
-        var mouse_button = false;
-        $('.preview-item')
-            .mousedown(function (el) {
-              mouse_button = true;
-              $(el.currentTarget).addClass('preview-item-grab');
-            })
-            .mouseup(function () {
-              mouse_button = false;
-              $('.preview-item').removeClass('preview-item-grab');
-
-            })
-            .mouseout(function () {
-              if (mouse_button) {
-                mouse_button = false;
-                $('.preview-item').removeClass('preview-item-grab');
-              }
-            })
-            .mouseover(function () {
-              if (mouse_button) {
-                mouse_button = false;
-                $('.preview-item').removeClass('preview-item-grab');
-              }
-            });
-
-        //mobile draging
-        $('.preview-item').on('touchstart', function (el) {
-          $(el.currentTarget).addClass('preview-item-grab');
-        });
-
-        $('.preview-item').on('touchend', function () {
-          $('.preview-item').removeClass('preview-item-grab');
-        });
-
-        // initialize draggable(s)
-        [].slice.call(document.querySelectorAll('#share-block-preview .preview-item')).forEach(function (el) {
-
-          new Draggable(el, droppableArr, {
-
-            draggabilly: {containment: $('#share-block-preview .preview-items-block')},
-
-            onStart: function () {
-
-              // add class 'drag-active' to body
-              classie.add(body, 'drag-active');
-
-              // clear timeout: dropAreaTimeout (toggle drop area)
-              clearTimeout(dropAreaTimeout);
-
-            },
-
-            onDrag: function () {
-
-
-              inAction = true;
-              dragEnd = false;
-              if (inAction) {
-                classie.add(el, 'preview-item-grab');
-              }
-            },
-
-            onEnd: function (wasDropped) {
-
-              //if element is not dropped please resize
-              setTimeout(function () {
-                classie.remove(el, 'preview-item-grab');
-              }, 500);
-
-              var afterDropFn = function () {
-
-                clearInterval(dropZone2);
-
-                // remove class 'drag-active' from body
-                classie.remove(body, 'drag-active');
-
-                // check if top3 element are empty or full
-                function isEmpty(el) {
-                  return !$.trim(el.html());
-                }
-
-              };
-
-              if (!wasDropped) {
-                afterDropFn();
-              }
-              else {
-                // after some time hide drop area and remove class 'drag-active' from body
-                clearTimeout(dropAreaTimeout);
-                dropAreaTimeout = setTimeout(afterDropFn, 1000);
-              }
-            }
-          });
-        });
       }
-
     };
 
     // create player block

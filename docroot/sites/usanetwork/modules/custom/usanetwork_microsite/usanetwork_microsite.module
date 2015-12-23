@@ -827,7 +827,7 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper, $node) {
  */
 function usanetwork_microsite_get_rendered_gallery($node) {
   $node_wrapper = entity_metadata_wrapper('node', $node);
-  $gallery_view = node_view($node, 'inline_content');
+  $gallery_view = node_view($node, 'microsite_output');
   $body_value = NULL;
   if (!empty($node->body)) {
     $body_value = $node_wrapper->body->value();

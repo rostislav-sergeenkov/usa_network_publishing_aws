@@ -219,6 +219,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
         //'http://pdk.theplatform.com/pdk/tpPdkController.js',
 //      $mpx_video_path . '/js/usanetwork_mpx_video_ajax.js',
 //      $site_theme_path . '/javascripts/jquery.carouFredSel.min.js',
+      $default_theme_path . '/js/lazyLoad.js',
       $site_theme_path . '/js/microsite_global.js',
       $module_path . '/js/jquery.bxslider.min.js',
       $site_theme_path . '/js/microsite_flexslider.js',

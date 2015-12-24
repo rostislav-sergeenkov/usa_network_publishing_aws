@@ -94,6 +94,7 @@
       if ($slideSelector.find('li').length <= 1) {
         $touch = false;
       }
+      Drupal.behaviors.ms_lazyLoad.initImgShow($slideSelector.find('img'));
       $slideSelector
         .parent().append('<div class="description-block"></div>');
       $slideSelector
@@ -179,7 +180,6 @@
             titleHtml = '<h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;
             activeGalleryMeta.html(titleHtml);
           }
-
           activeGallery.find('.center-wrapper').html(data.rendered);
           Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();
           galleryNavItems.removeClass('active');

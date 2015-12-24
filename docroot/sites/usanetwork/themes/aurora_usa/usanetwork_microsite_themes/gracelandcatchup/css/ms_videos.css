@@ -267,12 +267,12 @@
   width: 100px;
   z-index: 1;
 }
-#video-container.play .active-player .custom-play {
-  display: none;
-}
-#video-container.pause .active-player .custom-play {
-  display: block;
-}
+/*#video-container.play .active-player .custom-play {*/
+  /*display: none;*/
+/*}*/
+/*#video-container.pause .active-player .custom-play {*/
+  /*display: block;*/
+/*}*/
 /* corrected player style */
 .video-auth-player-wrapper {
   display: none;

@@ -91,7 +91,6 @@
                 $carousel.find('a').click(function (e) {
                   e.preventDefault();
                 });
-
                 $container.swipe({
                   excludedElements: "button, input, select, textarea, .noSwipe",
                   allowPageScroll: "vertical",
@@ -350,7 +349,7 @@
             })
             .on('jcarouselcontrol:inactive', function () {
               $(this).addClass('inactive');
-            })
+            });
 
         $(first).jcarouselControl({
           target: '-=' + Drupal.behaviors.global_carousels.swipeItems($carousel)

@@ -1030,18 +1030,14 @@
           } else {
 
             if (homeUiPositions != '') {
-              console.info(1, homeUiPositions);
               homeUiPositionsVal = JSON.parse(homeUiPositions);
             } else {
-              console.info(2);
               homeUiPositionsVal = aspot_elements;
             }
 
             if (showUiPositions != '') {
-              console.info(11, showUiPositions);
               showUiPositionsVal = JSON.parse(showUiPositions);
             } else {
-              console.info(22);
               showUiPositionsVal = tvs_aspot_elements;
             }
 
@@ -1053,8 +1049,6 @@
             };
 
             headInput.val(JSON.stringify(myData));
-            console.debug(headInput.val());
-            console.debug(myData);
           }
         });
       });

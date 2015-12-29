@@ -706,14 +706,7 @@
 
     // click for on || off changePositionDraggableElement
     $(document).click(function (event) {
-
-      // set position aspot-draggable-element
-      if ($(event.target).closest(".aspot-draggable-element").length > 0) {
-        var _self = $(event.target).closest(".aspot-draggable-element");
-        sericeApi.resetDraggableElement();
-        sericeApi.changePositionDraggableElement(_self);
-        _self.addClass('active');
-      } else {
+      if ($(event.target).closest(".aspot-draggable-element").length < 1) {
         if ($(".aspot-draggable-element").hasClass('active')) {
           sericeApi.resetDraggableElement();
         }
@@ -722,7 +715,13 @@
 
     // event on mainBlock click
     mainBlock
-    // change aspot elements font size
+        .on('click', '.aspot-draggable-element', function (e) {
+          var _self = $(event.target).closest(".aspot-draggable-element");
+          sericeApi.resetDraggableElement();
+          sericeApi.changePositionDraggableElement(_self);
+          _self.addClass('active');
+        })
+        // change aspot elements font size
         .on('click', '.edit-field-size', function (e) {
           e.preventDefault();
 
@@ -1031,14 +1030,18 @@
           } else {
 
             if (homeUiPositions != '') {
+              console.info(1, homeUiPositions);
               homeUiPositionsVal = JSON.parse(homeUiPositions);
             } else {
+              console.info(2);
               homeUiPositionsVal = aspot_elements;
             }
 
             if (showUiPositions != '') {
+              console.info(11, showUiPositions);
               showUiPositionsVal = JSON.parse(showUiPositions);
             } else {
+              console.info(22);
               showUiPositionsVal = tvs_aspot_elements;
             }
 
@@ -1050,6 +1053,8 @@
             };
 
             headInput.val(JSON.stringify(myData));
+            console.debug(headInput.val());
+            console.debug(myData);
           }
         });
       });

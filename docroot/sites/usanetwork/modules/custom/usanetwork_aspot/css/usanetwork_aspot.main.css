@@ -172,8 +172,8 @@
 }
 #edit-field-aspot-gi-draggable-data,
 #edit-field-aspot-tgi-draggable-data {
-  display: none;
-  visibility: hidden;
+  /*display: none;*/
+  /*visibility: hidden;*/
 }
 /* custom buttons*/
 #edit-group_usa_aspot_ui .wrapper-mobile,

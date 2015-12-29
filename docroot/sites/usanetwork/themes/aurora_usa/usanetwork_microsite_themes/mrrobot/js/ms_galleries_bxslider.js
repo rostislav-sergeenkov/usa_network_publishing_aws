@@ -128,7 +128,7 @@
         offsetDirection = (direction == 'down') ? 1 : -1,
         offsetAmount = 10 * offsetDirection,
         galleriesTop = document.getElementById('galleries').offsetTop + offsetAmount;
-      $('body').animate({'scrollTop': galleriesTop}, 1000, 'jswing');
+      $('html, body').animate({'scrollTop': galleriesTop}, 1000, 'jswing');
 
       Drupal.behaviors.micrositeGalleriesBxSliders.showHideLoader();
 
@@ -313,14 +313,14 @@
             self = this;
 
         var slideCount = 0;
-        $('#galleries ul.slides li').each(function(){
-          if (!$(this).hasClass('clone')) {
-            var imageSrc = $(this).find('img').attr('src');
-            $('#galleries .bxslider').append('<li data-slide-index="' + slideCount + '"><img src="' + imageSrc + '" /></li>');
-            $('#galleries #bx-pager').append('<a data-slide-index="' + slideCount + '" href=""><img src="' + imageSrc + '" /></a>');
-            slideCount++;
-          }
-        });
+        //$('#galleries ul.slides li').each(function(){
+        //  if (!$(this).hasClass('clone')) {
+        //    var imageSrc = $(this).find('img').attr('src');
+        //    $('#galleries .bxslider').append('<li data-slide-index="' + slideCount + '"><img src="' + imageSrc + '" /></li>');
+        //    $('#galleries #bx-pager').append('<a data-slide-index="' + slideCount + '" href=""><img src="' + imageSrc + '" /></a>');
+        //    slideCount++;
+        //  }
+        //});
 
         var wwidth = $(window).width(),
             slideWidth = parseInt(wwidth * 0.18), // 200,
@@ -333,6 +333,16 @@
         }
 
         $(window).load(function(){
+
+          $('#galleries ul.slides li').each(function(){
+            if (!$(this).hasClass('clone')) {
+              var imageSrc = $(this).find('img').attr('src');
+              $('#galleries .bxslider').append('<li data-slide-index="' + slideCount + '"><img src="' + imageSrc + '" /></li>');
+              $('#galleries #bx-pager').append('<a data-slide-index="' + slideCount + '" href=""><img src="' + imageSrc + '" /></a>');
+              slideCount++;
+            }
+          });
+
           // initialize viewport/large slider
           $('.bxslider').bxSlider({
             pagerCustom: '#bx-pager',

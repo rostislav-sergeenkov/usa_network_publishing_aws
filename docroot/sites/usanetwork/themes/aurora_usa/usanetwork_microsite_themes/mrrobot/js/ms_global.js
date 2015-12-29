@@ -550,7 +550,7 @@ usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
 //      if (anchor == 'quizzes') nextSectionTop = nextSectionTop + 10;
 
 usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ') -- nextSectionTop: ' + nextSectionTop);
-      $('body').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
+      $('html, body').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
         $('.section').removeClass('active');
         $(nextSection).addClass('active');
 

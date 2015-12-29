@@ -16,14 +16,17 @@
 
         var serviceUrl = '/ajax/usanetwork-tv-show-episodes/get-related/' + showNid + '/' + Drupal.settings.newSeasonNumber;
 
-        $('.ajax-load-block .load-more-link a').after('<div class="load-more-loader"></div>');
+        $('.ajax-load-block .load-more-link a').after('<div id="load-more-loader-js"></div>');
+
+        addSpinJs('load-more-loader-js');
+
         $.ajax({
           type: 'GET',
           url: serviceUrl,
           dataType: 'json',
           success: function (data) {
             $('.ajax-load-block .load-more-link').before(data.rendered);
-            $('.ajax-load-block .load-more-link .load-more-loader').remove();
+            $('#load-more-loader-js').remove();
 
             Drupal.behaviors.mpsAdvert.ajaxLoadBlock();
 

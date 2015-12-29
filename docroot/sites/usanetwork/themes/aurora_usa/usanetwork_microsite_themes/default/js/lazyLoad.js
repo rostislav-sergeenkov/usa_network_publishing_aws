@@ -1,21 +1,7 @@
 (function ($) {
-  Drupal.behaviors.lazy_load_custom = {
-    attach: function (context, settings) {
-      $('.best-of-block').viewportChecker({
-        classToAdd: 'visible',
-        offset: 0,
-        repeat: false,
+  Drupal.behaviors.ms_lazyLoad = {
 
-        callbackFunction: function(elem, action){
-          elem.find('.asset-img').each(function(){
-            $(this).attr('data-picture', '');
-          });
-          if (typeof window.picturefill != 'undefined') {
-            window.picturefill();
-          }
-        }
-      });
-    },
+    // lazyload checker
     windowView: function (image){
       // window variables
       var $window = $(window);
@@ -40,32 +26,33 @@
       return (((windowBottom >= imageTop) && (windowTop <= imageTop)) || ((windowBottom >= imageBottom) && (windowTop <= imageBottom))) &&
           (((windowRight >= imageLeft) && (windowLeft <= imageLeft)) || ((windowRight >= imageRight) && (windowLeft <= imageRight)));
     },
+
     loadImage: function(image){
-      image.hide().attr('src', image.data('src')).removeAttr('data-src').removeClass('nolazyload');
+      image.hide().attr('src', image.data('src')).removeAttr('data-src');
       image.load(function() {
         image.siblings('img.lazyloader-icon').remove();
       });
     },
-    galleryLazyLoadScroll: function (items) {
 
-      $.each(items, function (i, carousel_item) {
-
-        var images = $(carousel_item).find('img[data-src]');
-
-        $.each(images, function (index, img_item) {
-
-          var image = $(img_item),
-              imageHeight = image.height(), imageWidth = image.width(),
-              iconTop = Math.round(imageHeight/2), iconLeft = Math.round(imageWidth/2), iconFactor = Math.round(image.siblings('img.lazyloader-icon').height()/2);
+    initImgShow: function(items) {
+      console.info('initImgShow');
+      var lazyloaderItems = items || $('img.lazyloader-icon');
+      $.each(lazyloaderItems, function (index, item) {
+        var image = $(item).parent().find('img[data-src]');
+        if(image.attr('data-src')){
+          var imageHeight = image.height(),
+              imageWidth = image.width(),
+              iconTop = Math.round(imageHeight/2),
+              iconLeft = Math.round(imageWidth/2),
+              iconFactor = Math.round(image.siblings('img.lazyloader-icon').height()/2);
 
           image.siblings('img.lazyloader-icon').css({ top: iconTop - iconFactor, left: iconLeft - iconFactor });
-
-          if (Drupal.behaviors.lazy_load_custom.windowView(image)) {
-            Drupal.behaviors.lazy_load_custom.loadImage(image);
+          if (Drupal.behaviors.ms_lazyLoad.windowView(image)) {
+            Drupal.behaviors.ms_lazyLoad.loadImage(image);
             image.fadeIn('slow');
           }
-        });
+        }
       });
     }
   };
-}(jQuery));
+})(jQuery);

@@ -706,7 +706,14 @@
 
     // click for on || off changePositionDraggableElement
     $(document).click(function (event) {
-      if ($(event.target).closest(".aspot-draggable-element").length < 1) {
+
+      // set position aspot-draggable-element
+      if ($(event.target).closest(".aspot-draggable-element").length > 0) {
+        var _self = $(event.target).closest(".aspot-draggable-element");
+        sericeApi.resetDraggableElement();
+        sericeApi.changePositionDraggableElement(_self);
+        _self.addClass('active');
+      } else {
         if ($(".aspot-draggable-element").hasClass('active')) {
           sericeApi.resetDraggableElement();
         }
@@ -715,13 +722,7 @@
 
     // event on mainBlock click
     mainBlock
-        .on('click', '.aspot-draggable-element', function (e) {
-          var _self = $(event.target).closest(".aspot-draggable-element");
-          sericeApi.resetDraggableElement();
-          sericeApi.changePositionDraggableElement(_self);
-          _self.addClass('active');
-        })
-        // change aspot elements font size
+    // change aspot elements font size
         .on('click', '.edit-field-size', function (e) {
           e.preventDefault();
 

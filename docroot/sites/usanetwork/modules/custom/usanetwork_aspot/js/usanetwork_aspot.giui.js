@@ -78,7 +78,7 @@
     });
 
     mobileImg_tpl = $('<img>', {
-      id: pageName + 'gi-image',
+      id: mobileImgId,
       style: 'max-width: 100%; height: auto;',
       src: allParams.bg_offset_image_url_mobile
     });
@@ -509,8 +509,8 @@
         sericeApi.saveDraggableItemsData();
       },
 
-      resetDraggableElement: function () {
-        $('.aspot-draggable-element').removeClass('active');
+      resetDraggableElement: function (activeElem) {
+        activeElem.removeClass('active');
         $(document).unbind('keydown');
 
         sericeApi.saveDraggableItemsData();
@@ -533,7 +533,8 @@
               sericeApi.setPositionDraggableElement(el, 'top', 1);
               break;
             case 27: // ESC
-              sericeApi.resetDraggableElement();
+              var aspotDragElemActive = mainBlock.find(".aspot-draggable-element.active");
+              sericeApi.resetDraggableElement(aspotDragElemActive);
               break;
             default :
               break;
@@ -544,6 +545,8 @@
       saveDraggableItemsData: function () {
         var elementsMeta = {},
             bgPreviewingBlock = $('#' + bgPreviewingBlockId);
+
+        usa_debug('save data ' + pageName);
 
         $.each(draggableElements, function (index, itemElement) {
 
@@ -706,23 +709,27 @@
 
     // click for on || off changePositionDraggableElement
     $(document).click(function (event) {
+      if ($(event.target).closest(".aspot-draggable-element.active").length < 1) {
+        var aspotDragElemActive = mainBlock.find(".aspot-draggable-element.active");
 
-      // set position aspot-draggable-element
-      if ($(event.target).closest(".aspot-draggable-element").length > 0) {
-        var _self = $(event.target).closest(".aspot-draggable-element");
-        sericeApi.resetDraggableElement();
-        sericeApi.changePositionDraggableElement(_self);
-        _self.addClass('active');
-      } else {
-        if ($(".aspot-draggable-element").hasClass('active')) {
-          sericeApi.resetDraggableElement();
+        if (aspotDragElemActive.length > 0) {
+          sericeApi.resetDraggableElement(aspotDragElemActive);
         }
       }
     });
 
     // event on mainBlock click
     mainBlock
-    // change aspot elements font size
+        .on('click', '.aspot-draggable-element', function (e) {
+
+          var aspotDragElemActive = mainBlock.find(".aspot-draggable-element.active"),
+              _self = $(event.target).closest(".aspot-draggable-element");
+
+          sericeApi.resetDraggableElement(aspotDragElemActive);
+          sericeApi.changePositionDraggableElement(_self);
+          _self.addClass('active');
+        })
+        // change aspot elements font size
         .on('click', '.edit-field-size', function (e) {
           e.preventDefault();
 

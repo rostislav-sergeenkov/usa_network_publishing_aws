@@ -241,6 +241,7 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $module_path . '/js/jquery.waypoints.min.js', // checks for element scrolled into view
       $module_path . '/js/waypoints_shortcuts/inview.min.js', // part of waypoints for checking for element scrolled into view
       $default_theme_path . '/js/ms_gigya.js',
+      $default_theme_path . '/js/lazyLoad.js',
       $site_theme_path . '/js/ms_site.js',
       $site_theme_path . '/js/ms_global.js',
       $site_theme_path . '/js/ms_videos.js',

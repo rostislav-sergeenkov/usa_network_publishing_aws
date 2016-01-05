@@ -1248,8 +1248,9 @@ function _usanetwork_home_shows_queue_block() {
         }
 
         $slide = array(
-          'class' => $slide_index . ' ' . $slide_li_class,
+          'class' => $slide_li_class,
           'content' => _usanetwork_home_shows_queue_get_slide_content($show_node_wrapper),
+          'data_attr' => $slide_index,
         );
 
         $theme_variables['slides'][] = $slide;

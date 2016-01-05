@@ -23,7 +23,7 @@
     <div class="show-carousel carousel carousel-left start" data-carousel-id="1">
       <ul class="slides">
         <?php foreach ($slides as $slide): ?>
-          <li<?php if (!empty($slide['class'])): print ' class="' . $slide['class'] . '"'; endif;?>>
+          <li data-slide-id="<?php print $slide['data_attr']; ?>" <?php (!empty($slide['class'])) ? print 'class="' . $slide['class'] . '"' : ''; ?>>
             <?php if (!empty($slide['content'])): ?>
               <?php print $slide['content']; ?>
             <?php endif; ?>

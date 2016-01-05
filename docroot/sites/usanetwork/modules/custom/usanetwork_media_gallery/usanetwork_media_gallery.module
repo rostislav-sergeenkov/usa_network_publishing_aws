@@ -248,6 +248,29 @@ function _usanetwork_media_gallery_consumptionator_gallery_block() {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_media_gallery_image_default_styles() {
+  $styles = array();
+
+  $styles['usanetwork_media_gallery_image'] = array(
+    'label' => t('Usanetwork Media Gallery image'),
+    'effects' => array(
+      0 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 1868,
+          'height' => 1094,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Renders main gallery on MediaGallery page.
  */
 function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = NULL) {
@@ -280,17 +303,34 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
           $gallery_file = (object) $gallery_file;
         }
 
-        $slide_variables = array(
-          'image' => theme_image(array(
-            'path' => $gallery_file->uri,
-            'attributes' => array(),
-          )),
-          'info' => array(
-            'description' => '',
-            'gallery_name' => $node->title,
-            'photo_name' => $gallery_file->filename,
-          ),
-        );
+        $info = image_get_info($gallery_file->uri);
+
+        if (!empty($info) && ($info['width'] > 1868 || $info['height'] > 1094)) {
+          $slide_variables = array(
+            'image' => theme_image_style(array(
+              'path' => $gallery_file->uri,
+              'style_name' => 'usanetwork_media_gallery_image',
+              'attributes' => array(),
+            )),
+            'info' => array(
+              'description' => '',
+              'gallery_name' => $node->title,
+              'photo_name' => $gallery_file->filename,
+            ),
+          );
+        } else {
+          $slide_variables = array(
+            'image' => theme_image(array(
+              'path' => $gallery_file->uri,
+              'attributes' => array(),
+            )),
+            'info' => array(
+              'description' => '',
+              'gallery_name' => $node->title,
+              'photo_name' => $gallery_file->filename,
+            ),
+          );
+        }
 
         $caption_field = field_get_items('file', $gallery_file, 'field_caption');
 

@@ -28,18 +28,12 @@
 
       if(!block.hasClass('advert-enable')) {
         // block - parent element ".slides li .node-usanetwork-promo"
-        var showCarouselItem = '.show-carousel .slides li.',
+        var showCarouselItem = '.show-carousel .slides li.slide-',
             fileId = block.data('mpspath'),
             itemParent = block.closest('li'),
-            itemParentClass;
+            itemParentClass = itemParent.data('slide-id');
 
-        if(itemParent.hasClass('first')) {
-          itemParentClass = 0;
-        } else {
-          itemParentClass = itemParent.attr('class');
-        }
-
-        Drupal.behaviors.mpsSponsorShip.execShowCard(showCarouselItem  + itemParentClass + ' .show-info-block-wrapper', showCarouselItem + itemParentClass + ' .advert .showcardad',  fileId);
+        Drupal.behaviors.mpsSponsorShip.execShowCard(showCarouselItem + itemParentClass + ' .show-info-block-wrapper', showCarouselItem + itemParentClass + ' .advert .showcardad',  fileId);
 
         block.addClass('advert-enable');
       }

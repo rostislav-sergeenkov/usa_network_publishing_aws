@@ -378,6 +378,14 @@
           }
         }
 
+        // Show Explore Page
+        if (body.hasClass('page-node-explore')) {
+          page_name = 'Show Explore Page ';
+          if ($self.closest('.explore-landing-page-container').length > 0) {
+            name = page_name + 'Landing Main Block';
+          }
+        }
+
         // Show videos page
         if (body.hasClass('page-node-videos')) {
           page_name = 'Show Videos Page ';

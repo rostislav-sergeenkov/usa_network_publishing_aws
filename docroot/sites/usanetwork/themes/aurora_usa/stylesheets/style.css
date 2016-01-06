@@ -11988,11 +11988,13 @@ footer h2 {
 }
 
 .featured-block {
-  background: #e9eaeb;
   overflow: hidden;
   padding: 40px 0;
   position: relative;
   width: 100%;
+}
+.featured-block:not(.visible) {
+  background: #dcddde !important;
 }
 @media (max-width: 768px) {
   .featured-block .carousel.start {

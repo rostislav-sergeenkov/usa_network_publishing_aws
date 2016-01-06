@@ -15,6 +15,12 @@
           }
         }
       });
+
+      $('.featured-block').viewportChecker({
+        classToAdd: 'visible',
+        offset: 0,
+        repeat: false
+      });
     },
     windowView: function (image){
       // window variables

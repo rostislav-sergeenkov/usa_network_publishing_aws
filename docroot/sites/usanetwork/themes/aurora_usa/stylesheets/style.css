@@ -1754,6 +1754,9 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   height: 100%;
   width: 100%;
 }
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file:before {
+  display: none !important;
+}
 .full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth > a:after, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file.tve-video-auth > a:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file.tve-video-auth > a:after {
   font-family: 'usanetwork';
   speak: none;
@@ -11985,11 +11988,13 @@ footer h2 {
 }
 
 .featured-block {
-  background: #e9eaeb;
   overflow: hidden;
   padding: 40px 0;
   position: relative;
   width: 100%;
+}
+.featured-block:not(.visible) {
+  background: #dcddde !important;
 }
 @media (max-width: 768px) {
   .featured-block .carousel.start {
@@ -29968,6 +29973,11 @@ yx-axis
   }
 }
 
+@media (max-width: 768px) {
+  #block-usanetwork-menu-usanetwork-menu-aspot-ot {
+    display: none;
+  }
+}
 #block-usanetwork-menu-usanetwork-menu-aspot-ot .spinner {
   display: block;
   margin: 0 auto;

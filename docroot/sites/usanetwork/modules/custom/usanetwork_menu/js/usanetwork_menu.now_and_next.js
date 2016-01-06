@@ -1,7 +1,14 @@
 (function($) {
   Drupal.behaviors.usanetwork_menu_now_and_next = {
     attach: function (context, settings) {
-      usanetworkMenuGetNNBlockInfo();
+
+      if (usa_deviceInfo.mobileDevice) {
+        if (!usa_deviceInfo.smartphone) {
+          usanetworkMenuGetNNBlockInfo();
+        }
+      } else {
+        usanetworkMenuGetNNBlockInfo();
+      }
 
       function usanetworkMenuGetNNBlockInfo() {
         var periods = 'now,next';

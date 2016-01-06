@@ -885,6 +885,9 @@
       }
     }
     &.file {
+      &:before {
+        display: none!important;
+      }
       &.tve-video-auth {
         & > a {
           &:after{

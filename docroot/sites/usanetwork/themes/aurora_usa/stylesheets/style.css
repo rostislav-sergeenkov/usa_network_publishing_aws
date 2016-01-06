@@ -1754,6 +1754,9 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   height: 100%;
   width: 100%;
 }
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file:before {
+  display: none !important;
+}
 .full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth > a:after, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file.tve-video-auth > a:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file.tve-video-auth > a:after {
   font-family: 'usanetwork';
   speak: none;

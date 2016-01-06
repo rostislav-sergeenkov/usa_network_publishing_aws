@@ -381,8 +381,11 @@
         // Show Explore Page
         if (body.hasClass('page-node-explore')) {
           page_name = 'Show Explore Page ';
-          if ($self.closest('.explore-landing-page-container').length > 0) {
+          if ($self.closest('.show-explore-landing-main-block').length > 0) {
             name = page_name + 'Landing Main Block';
+          }
+          if ($self.closest('.explore-landing-page-container').length > 0) {
+            name = page_name + 'All Items Block';
           }
         }
 

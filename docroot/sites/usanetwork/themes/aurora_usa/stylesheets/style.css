@@ -29968,6 +29968,11 @@ yx-axis
   }
 }
 
+@media (max-width: 768px) {
+  #block-usanetwork-menu-usanetwork-menu-aspot-ot {
+    display: none;
+  }
+}
 #block-usanetwork-menu-usanetwork-menu-aspot-ot .spinner {
   display: block;
   margin: 0 auto;

@@ -2,7 +2,13 @@
   Drupal.behaviors.usanetwork_menu_onnow_tonight = {
     attach: function (context, settings) {
 
-      usanetworkMenuGetOTBlockInfo();
+      if (usa_deviceInfo.mobileDevice) {
+        if (!usa_deviceInfo.smartphone) {
+          usanetworkMenuGetOTBlockInfo();
+        }
+      } else {
+        usanetworkMenuGetOTBlockInfo();
+      }
 
       function usanetworkMenuGetOTBlockInfo() {
         var timezoneOffset = usanetwork_menu_get_user_timezone_offset();

@@ -427,7 +427,7 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
       'show_class' => $show_color,
       'url' => url('file/' . $episode->fid),
       'title' => $show->title,
-      'caption' => t('@season_info !episode_title', array('!episode_title' => _usanetwork_core_get_video_title($episode), '@season_info' => $season_info)),
+      'additional' => t('@season_info !episode_title', array('!episode_title' => _usanetwork_core_get_video_title($episode), '@season_info' => $season_info)),
       'image' => $video_image,
       'icon' => usanetwork_core_api_get_media_icon('file', $episode->fid),
     );
@@ -1730,6 +1730,9 @@ function _usanetwork_mpx_video_render_inactive_images($file) {
 
   $episode_season = _usanetwork_get_field_item('file', $file, 'field_mpx_season_number', 'value');
   $episode_number = _usanetwork_get_field_item('file', $file, 'field_mpx_episode_number', 'value');
+  $caption = _usanetwork_get_field_item('file', $file, 'field_promo_violator_name', 'value');
+  $title = _usanetwork_get_field_item('file', $file, 'field_promo_title', 'value');
+  $additional = _usanetwork_get_field_item('file', $file, 'field_promo_long_description', 'value');
 
   if (!empty($file->field_promo_image_override)) {
     $file_image_url = _usanetwork_get_field_item('file', $file, 'field_promo_image_override', 'uri');
@@ -1755,8 +1758,9 @@ function _usanetwork_mpx_video_render_inactive_images($file) {
   $episode_element = array(
     'show_class' => 'file',
     'url' => url('file/' . $file->fid),
-    'title' => t('!episode_title', array('!episode_title' => _usanetwork_core_get_video_title($file))),
-    'caption' => $season_info,
+    'caption' => !empty($caption) ? $caption : $season_info,
+    'title' => !empty($title) ? $title : t('!episode_title', array('!episode_title' => _usanetwork_core_get_video_title($file))),
+    'additional' => !empty($additional) ? $additional : NULL,
     'image' => $video_image,
     'icon' => usanetwork_core_api_get_media_icon('file', $file->fid),
   );
@@ -2577,6 +2581,7 @@ function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
         'url' => NULL,
         'caption' => NULL,
         'title' => NULL,
+        'additional' => NULL,
         'image' => NULL,
       ),
       'template' => 'templates/usanetwork-mpx-video-home-full-episode-item',

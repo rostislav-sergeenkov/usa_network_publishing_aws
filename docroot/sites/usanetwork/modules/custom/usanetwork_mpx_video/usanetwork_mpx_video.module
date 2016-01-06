@@ -1755,8 +1755,8 @@ function _usanetwork_mpx_video_render_inactive_images($file) {
   $episode_element = array(
     'show_class' => 'file',
     'url' => url('file/' . $file->fid),
-    'title' => $season_info,
-    'caption' => t('!episode_title', array('!episode_title' => _usanetwork_core_get_video_title($file))),
+    'title' => t('!episode_title', array('!episode_title' => _usanetwork_core_get_video_title($file))),
+    'caption' => $season_info,
     'image' => $video_image,
     'icon' => usanetwork_core_api_get_media_icon('file', $file->fid),
   );

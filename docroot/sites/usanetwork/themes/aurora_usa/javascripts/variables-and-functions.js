@@ -213,8 +213,17 @@ function browserDetect() {
 }
 
 // Add Spin JS
-// itemId - string
-function addSpinJs(itemId) {
+// itemId - string, spinner block id
+// bodyClass - string, body class
+// color - set spinner color, default color #000000
+function addSpinJs(itemId, bodyClass, color) {
+
+  var currentColor = '#000000';
+
+  if ($('body').hasClass(bodyClass)) {
+    currentColor = color;
+  }
+
   var opts = {
     lines: 13, // The number of lines to draw
     length: 0, // The length of each line
@@ -225,7 +234,7 @@ function addSpinJs(itemId) {
     corners: 1, // Corner roundness (0..1)
     rotate: 0, // The rotation offset
     direction: 1, // 1: clockwise, -1: counterclockwise
-    color: '#000', // #rgb or #rrggbb or array of colors
+    color: currentColor, // #rgb or #rrggbb or array of colors
     speed: 1.3, // Rounds per second
     trail: 100, // Afterglow percentage
     shadow: false, // Whether to render a shadow

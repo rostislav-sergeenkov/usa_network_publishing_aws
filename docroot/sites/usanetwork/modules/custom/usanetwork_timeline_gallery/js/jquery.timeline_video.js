@@ -386,6 +386,8 @@ Project demo: http://shindiristudio.com/timeline
             previewImage = $gigyaShareBar.attr('data-share-picture');
 
         Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
+        // refresh Ad topBanner
+        Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
       });
 
       $this.timeline('setWidthHeightMargin');
@@ -434,7 +436,7 @@ Project demo: http://shindiristudio.com/timeline
           e.preventDefault();
           var currentId = $('.timeline-items .timeline-item.active').attr('data-id');
           Drupal.behaviors.timeline_gallery.setOmnitureData(currentId);
-          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+          //Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
         });
       });
 

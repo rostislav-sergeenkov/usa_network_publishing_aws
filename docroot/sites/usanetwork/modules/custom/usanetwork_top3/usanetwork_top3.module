@@ -175,7 +175,7 @@ function _usanetwork_top3_main_block() {
   if (!empty($logo_right_image)) {
     $logo_right = image_style_url('logo_right', $logo_right_image['uri']);
   }
-  $logo_top_image = $node_wrapper->field_logo->value();
+  $logo_top_image = $node_wrapper->field_logo_top->value();
   if (!empty($logo_top_image)) {
     $logo_top = image_style_url('logo_top', $logo_top_image['uri']);
   }

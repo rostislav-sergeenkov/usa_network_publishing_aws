@@ -217,13 +217,13 @@
     position: relative;
     width: 100%;
     @include breakpoint($bp-1280-width) {
-      padding-top: get-vw(126px, 1024);
+      padding-top: 156px;
     }
     @include breakpoint($bp-1024-width) {
       padding-bottom: 300px;
     }
     @include breakpoint($bp-768-width) {
-      padding-top: get-vw(108px, 480);
+      padding-top: get-vw(156px, 1024);
     }
   }
   #slider-player {
@@ -490,7 +490,7 @@
     }
     .choose-top3-img {
       height: auto;
-      margin: 0 auto;
+      margin: 10px auto 0;
       position: relative;
       text-transform: uppercase;
       width: get-vw(350px, 1901);
@@ -498,90 +498,27 @@
         width: 350px;
       }
       @include breakpoint($bp-1600-width) {
+        margin: get-vw(10px, 1901) auto 0;
         width: get-vw(325px, 1600);
       }
       @include breakpoint($bp-1280-width) {
-        bottom: calc(100% + 2.88vw);
+        bottom: calc(100% + 33px);
+        margin: 0;
+        max-height: 90px;
         position: absolute;
         text-align: center;
         width: 100%;
       }
       @include breakpoint($bp-768-width) {
-        bottom: calc(100% + 1vw);
-      }
-      .top-choose-top3 {
-        font-family: $avalon-xlight;
-        font-size: get-vw(45px, 1901);
-        text-align: right;
-        @include breakpoint($bp-min-1901-width) {
-          font-size: 45px;
-        }
-        @include breakpoint($bp-1280-width) {
-          display: inline-block;
-          font-size: get-vw(31px, 1024);
-          width: get-vw(236px, 1024);
-        }
-        @include breakpoint($bp-768-width) {
-          font-size: get-vw(23px, 480);
-          width: get-vw(180px, 480);
-        }
-        .first-line {
-          line-height: 1.1;
-          text-align: left;
-          @include breakpoint($bp-1280-width) {
-            line-height: 1;
-          }
-        }
-        span {
-          font-size: get-vw(90px, 1901);
-          line-height: 0.1;
-          vertical-align: baseline;
-          @include breakpoint($bp-min-1901-width) {
-            font-size: 90px;
-          }
-          @include breakpoint($bp-1280-width) {
-            font-size: get-vw(62px, 1024);
-            vertical-align: top;
-          }
-          @include breakpoint($bp-768-width) {
-            font-size: get-vw(46px, 480);
-          }
-        }
+        bottom: calc(100% + 2.148vw);
+        max-height: get-vw(90px, 768);
       }
       img {
-        margin-top: get-vw(-10px, 1901);
         width: 100%;
-        @include breakpoint($bp-min-1901-width) {
-          margin-top: -10px;
-        }
         @include breakpoint($bp-1280-width) {
           display: inline-block;
           margin: 0;
-          width: get-vw(260px, 1024);
-        }
-        @include breakpoint($bp-768-width) {
-          width: get-vw(190px, 480);
-        }
-      }
-      .bottom-choose-top3 {
-        font-family: $avalon-book;
-        font-size: get-vw(22px, 1901);
-        line-height: 1.7;
-        text-align: center;
-        @include breakpoint($bp-min-1901-width) {
-          font-size: 22px;
-        }
-        @include breakpoint($bp-1600-width) {
-          font-size: get-vw(20px, 1600);
-        }
-        @include breakpoint($bp-1280-width) {
-          display: inline-block;
-          font-size: get-vw(20px, 1024);
-        }
-        @include breakpoint($bp-768-width) {
-          display: block;
-          font-size: get-vw(14px, 480);
-          width: 100%;
+          width: auto;
         }
       }
     }
@@ -1651,67 +1588,31 @@
     transform: scale3d(1,1,1);
   }
   #shared-container {
-    padding: get-vw(80px, 1901) 0 get-vw(227px, 1901);
+    padding: 80px 0 get-vw(227px, 1901);
     @include breakpoint($bp-min-1901-width) {
       padding: 80px 0 227px;
     }
     @include breakpoint($bp-1024-width) {
-      padding: get-vw(80px, 768) 0 300px;
+      padding: get-vw(80px, 1024) 0 300px;
     }
     .choose-top3-img {
       height: auto;
-      margin: 0 auto get-vw(60px, 1901);
+      margin: 0 auto 80px;
       position: relative;
       text-align: center;
       text-transform: uppercase;
       width: 100%;
-      @include breakpoint($bp-min-1901-width) {
-        margin: 0 auto 60px;
-      }
-      .top-choose-top3 {
-        display: inline-block;
-        font-family: $avalon-xlight;
-        font-size: get-vw(45px, 1901);
-        margin-right: get-vw(30px, 1901);
-        text-align: right;
-        width: get-vw(317px, 1901);
-        @include breakpoint($bp-min-1901-width) {
-          font-size: 45px;
-          margin-right: 30px;
-          width: 317px;
-        }
-        @include breakpoint($bp-1024-width) {
-          font-size: get-vw(43px, 768);
-          margin-right: get-vw(30px, 768);
-          width: get-vw(300px, 768);
-        }
-        .first-line {
-          line-height: 1.2;
-          text-align: left;
-        }
-        span {
-          font-size: get-vw(90px, 1901);
-          line-height: 0.1;
-          vertical-align: top;
-          @include breakpoint($bp-min-1901-width) {
-            font-size: 90px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: get-vw(86px, 768);
-          }
-        }
+      @include breakpoint($bp-1024-width) {
+        margin: 0 auto get-vw(80px, 1024);
       }
       img {
         display: inline-block;
-        margin-right: get-vw(30px, 1901);
-        width: get-vw(370px, 1901);
-        @include breakpoint($bp-min-1901-width) {
-          margin-right: 30px;
-          width: 370px;
-        }
+        margin-right: 25px;
+        width: auto;
         @include breakpoint($bp-1024-width) {
-          margin-right: 0;
-          width: get-vw(360px, 768);
+          margin-right: get-vw(25px, 1024);
+          max-height: get-vw(90px, 1024);
+          max-width: calc(100% - 28vw);
         }
       }
       .choose-top3-button {
@@ -1720,23 +1621,16 @@
         cursor: pointer;
         display: inline-block;
         font-family: $avalon-medium;
-        font-size: get-vw(22px, 1901);
-        line-height: get-vw(67px, 1901);
+        font-size: 22px;
+        line-height: 67px;
         text-align: center;
         text-transform: uppercase;
         vertical-align: bottom;
-        width: get-vw(275px, 1901);
-        @include breakpoint($bp-min-1901-width) {
-          font-size: 22px;
-          line-height: 67px;
-          width: 275px;
-        }
+        width: 250px;
         @include breakpoint($bp-1024-width) {
-          display: block;
-          font-size: get-vw(21px, 768);
-          line-height: get-vw(67px, 768);
-          margin: get-vw(45px, 768) auto 0;
-          width: get-vw(262px, 768);
+          font-size: get-vw(22px, 1024);
+          line-height: get-vw(67px, 1024);
+          width: get-vw(250px, 1024);
         }
       }
     }

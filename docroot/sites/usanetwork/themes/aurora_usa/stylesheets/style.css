@@ -1816,36 +1816,36 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     height: 36%;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
   font-size: 0.68385vw;
   line-height: 1.05208vw;
 }
 @media (min-width: 1901px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 0.78125vw;
     line-height: 1.40625vw;
   }
 }
 @media (max-width: 1024px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 0.97656vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 1.17188vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 640px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 1.40625vw;
     line-height: 2.10938vw;
   }
@@ -2040,6 +2040,52 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (max-width: 480px) {
   .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title {
     font-size: 13px;
+  }
+}
+.full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.75px;
+}
+.full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+  font-size: 11px;
+  font-family: "texgyrescholaitalic", Times, serif;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+    font-size: 8px;
+    line-height: 14px;
+  }
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+    font-size: 1.71875vw;
+    line-height: 2;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+    font-size: 9.5px;
   }
 }
 .full-episodes-block.carousel-block .carousel ul li .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon {
@@ -14482,7 +14528,7 @@ footer h2 {
     margin-bottom: 10px;
     width: inherit;
     height: inherit;
-    display: none;
+    display: none !important;
   }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img > img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img > img {

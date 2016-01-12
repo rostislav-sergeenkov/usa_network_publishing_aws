@@ -138,15 +138,33 @@
 <div class="right-sidebar">
 
   <div class="choose-top3-img">
-    <div class="top-choose-top3">
-      <div
-        class="first-line"><?php print t('Choose'); ?></div><?php print t(' your top '); ?>
-      <span>3</span></div>
     <?php if (!empty($logo)) : ?>
       <img src="<?php print $logo; ?>" alt="">
     <?php endif; ?>
-    <div
-      class="bottom-choose-top3"><?php print t('& share them with your friends'); ?></div>
+
+    <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+      <?php if (!empty($show_poster['mobile'])): ?>
+        <div data-src="<?php print $show_poster['mobile']; ?>"></div>
+      <?php endif; ?>
+      <?php if (!empty($show_poster['mobile_retina'])): ?>
+        <div data-media="(min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['mobile_retina']; ?>"></div>
+      <?php endif; ?>
+      <?php if (!empty($show_poster['tablet'])): ?>
+        <div data-media="(min-width: 641px)" data-src="<?php print $show_poster['tablet']; ?>"></div>
+      <?php endif; ?>
+      <?php if (!empty($show_poster['tablet_retina'])): ?>
+        <div data-media="(min-width: 641px) and (min-device-pixel-ratio: 2.0)" data-src="<?php print $show_poster['tablet_retina']; ?>"></div>
+      <?php endif; ?>
+      <?php if (!empty($show_poster['desktop'])): ?>
+        <div data-media="(min-width: 1025px)" data-src="<?php print $show_poster['desktop']; ?>"></div>
+        <!--[if (IE 8) & (!IEMobile)]>
+        <div data-src="<?php print $show_poster['desktop']; ?>"></div>
+        <![endif]-->
+      <?php endif; ?>
+      <?php if (!empty($show_poster['desktop'])): ?>
+        <noscript><img src="<?php print $show_poster['desktop']; ?>" width="2880" height="1260" alt="" title="" /></noscript>
+      <?php endif; ?>
+    </div>
   </div>
 
   <div class="node-wrapper advert">

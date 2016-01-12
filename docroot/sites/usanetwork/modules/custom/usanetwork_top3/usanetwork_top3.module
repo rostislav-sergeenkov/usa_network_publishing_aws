@@ -174,10 +174,12 @@ function _usanetwork_top3_main_block() {
   $logo_right_image = $node_wrapper->field_logo->value();
   if (!empty($logo_right_image)) {
     $logo_right = image_style_url('logo_right', $logo_right_image['uri']);
+    $logo_right_alt = $logo_right_image['alt'];
   }
   $logo_top_image = $node_wrapper->field_logo_top->value();
   if (!empty($logo_top_image)) {
     $logo_top = image_style_url('logo_top', $logo_top_image['uri']);
+    $logo_top_alt = $logo_top_image['alt'];
   }
 
   $advert_block = module_invoke('mps', 'block_view', 'topbox');
@@ -237,6 +239,7 @@ function _usanetwork_top3_main_block() {
     $theme_variables = array(
       'slides' => $slides,
       'logo_top' => isset($logo_top) ? $logo_top : NULL,
+      'logo_top_alt' => !empty($logo_top_alt) ? $logo_top_alt : NULL,
       'node_path' => url('node/' . $node->nid),
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
@@ -291,7 +294,9 @@ function _usanetwork_top3_main_block() {
     $theme_variables = array(
       'slides' => $slides,
       'logo_right' => isset($logo_right) ? $logo_right : NULL,
+      'logo_right_alt' => !empty($logo_right_alt) ? $logo_right_alt : NULL,
       'logo_top' => isset($logo_top) ? $logo_top : (isset($logo_right) ? $logo_right : NULL),
+      'logo_top_alt' => !empty($logo_top_alt) ? $logo_top_alt : (!empty($logo_right_alt) ? $logo_right_alt : NULL),
       'nid' => $node->nid,
       'top3_title' => $node->title,
       'player' => $player,

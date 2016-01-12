@@ -19,7 +19,7 @@
 <div id="shared-container" class="<?php print (!empty($isset_video)) ? 'set-video' : ''; ?>">
   <div class="choose-top3-img">
     <?php if (!empty($logo_top)): ?>
-      <img src="<?php print $logo_top; ?>" alt="" title="" />
+      <img src="<?php print $logo_top; ?>" alt="<?php print $logo_top_alt; ?>" title="" />
     <?php endif; ?>
     <a href="<?php print $node_path; ?>" class="choose-top3-button show-color"><?php print t('create your own'); ?></a>
   </div>

@@ -191,9 +191,10 @@ function usanetwork_top3_field_group_info() {
     'label' => 'USA Custom',
     'weight' => '3',
     'children' => array(
-      0 => 'field_show',
+      0 => 'field_background',
       1 => 'field_logo',
-      2 => 'field_background',
+      2 => 'field_show',
+      3 => 'field_logo_top',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

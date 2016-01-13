@@ -9,7 +9,7 @@ if (!isset($drush_major_version)) {
 $aliases['dev'] = array(
   'root' => '/var/www/html/usadev/docroot',
   'ac-site' => 'usanetwork',
-  'uri' => 'usadev.apps.nbcuni.com',
+  'uri' => 'dev.usanetwork.com',
   'path-aliases' => array(
     '%drush-script' => 'drush' . $drush_major_version,
   )
@@ -19,7 +19,7 @@ $aliases['dev'] = array(
 $aliases['stage'] = array(
   'root' => '/var/www/html/usastg/docroot',
   'ac-site' => 'usanetwork',
-  'uri' => 'usastg.apps.nbcuni.com',
+  'uri' => 'stage.usanetwork.com',
   'path-aliases' => array(
     '%drush-script' => 'drush' . $drush_major_version,
   )
@@ -29,7 +29,7 @@ $aliases['stage'] = array(
 $aliases['qa'] = array(
   'root' => '/var/www/html/usaqa/docroot',
   'ac-site' => 'usanetwork',
-  'uri' => 'usaqa.apps.nbcuni.com',
+  'uri' => 'qa.usanetwork.com',
   'path-aliases' => array(
     '%drush-script' => 'drush' . $drush_major_version,
   )
@@ -39,7 +39,7 @@ $aliases['qa'] = array(
 $aliases['prod'] = array(
   'root' => '/var/www/html/usa/docroot',
   'ac-site' => 'usanetwork',
-  'uri' => 'usanetwork.apps.nbcuni.com',
+  'uri' => 'www.usanetwork.com',
   'path-aliases' => array(
     '%drush-script' => 'drush' . $drush_major_version,
   )

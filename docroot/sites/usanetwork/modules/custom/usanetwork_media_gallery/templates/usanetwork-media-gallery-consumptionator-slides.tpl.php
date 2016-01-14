@@ -1,6 +1,9 @@
 <?php
 /**
  * $slides - array of pre-rendered slides
+ * $sharebar - gigya sharebar
+ * $interstitial_ad_enabled - iterstatial ad enabled (1 - Yes, 0 - No)
+ * $interstitial_ad_frequency - quantity of slides before ad
  */
 ?>
 <div class="gallery-wrapper" data-id="<?php print $gallery_id; ?>">
@@ -17,3 +20,7 @@
     </div>
   <?php endif; ?>
 </div>
+
+<?php if (!empty($interstitial_ad_enabled) && !empty($interstitial_ad_frequency)): ?>
+  <?php print $interstitial_ad_frequency ?>
+<?php endif; ?>

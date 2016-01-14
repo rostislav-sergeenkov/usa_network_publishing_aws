@@ -137,6 +137,8 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
       'variables' => array(
         'sharebar' => NULL,
         'slides' => array(),
+        'interstitial_ad_enabled' => NULL,
+        'interstitial_ad_frequency' => NULL,
       ),
       'path' => $path . '/templates',
       'template' => 'usanetwork-media-gallery-consumptionator-slides',
@@ -354,10 +356,14 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
       }
     }
 
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+
     return theme('usanetwork_media_gallery_consumptionator_slides', array(
       'slides' => $slides,
       'gallery_id' => $node->nid,
       'sharebar' => !empty($sharebar) ? render($sharebar) : NULL,
+      'interstitial_ad_enabled' => usanetwork_core_api_check_field($node, 'field_interstitial_ad_enabled') ? $node_wrapper->field_interstitial_ad_enabled->value() : NULL,
+      'interstitial_ad_frequency' => usanetwork_core_api_check_field($node, 'field_interstitial_ad_frequency') ? $node_wrapper->field_interstitial_ad_frequency->value() : NULL,
     ));
   }
 

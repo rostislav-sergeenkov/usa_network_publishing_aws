@@ -389,6 +389,10 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
   $items = array();
   $block_items = '';
   $i = 0;
+  $show_more = true;
+  if (count($carousel_episodes) <= 4) {
+    $show_more = false;
+  }
 
   foreach ($carousel_episodes as $episode) {
     $episode_wrapper = entity_metadata_wrapper('file', $episode);
@@ -439,6 +443,10 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
     $i++;
   }
 
+  if ($block_items != ''){
+    $items[] = $block_items;
+  }
+
   if (!empty($items)) {
     $episodes_number = $i;
     $carousel = array(
@@ -447,6 +455,7 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
       'additional_text' => t('@episodes_number All New', array('@episodes_number' => $episodes_number)),
       'link' => l('View All', 'videos'),
       'carousel_items' => $items,
+      'show_more' => $show_more
     );
     $output .= theme('usanetwork_mpx_video_home_full_episodes_carousel', $carousel);
   }

@@ -1,4 +1,7 @@
 #block-usanetwork-menu-usanetwork-menu-aspot-ot {
+  @include breakpoint($bp-768-width) {
+    display: none;
+  }
   .spinner {
     display: block;
     margin: 0 auto;

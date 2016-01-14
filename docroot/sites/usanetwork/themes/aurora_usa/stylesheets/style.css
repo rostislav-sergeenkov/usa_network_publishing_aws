@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -1754,6 +1754,9 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   height: 100%;
   width: 100%;
 }
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file:before {
+  display: none !important;
+}
 .full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth > a:after, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file.tve-video-auth > a:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file.tve-video-auth > a:after {
   font-family: 'usanetwork';
   speak: none;
@@ -1813,36 +1816,36 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     height: 36%;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
   font-size: 0.68385vw;
   line-height: 1.05208vw;
 }
 @media (min-width: 1901px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 0.78125vw;
     line-height: 1.40625vw;
   }
 }
 @media (max-width: 1024px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 0.97656vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 1.17188vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 640px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 1.40625vw;
     line-height: 2.10938vw;
   }
@@ -2037,6 +2040,52 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (max-width: 480px) {
   .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title {
     font-size: 13px;
+  }
+}
+.full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.75px;
+}
+.full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+  font-size: 11px;
+  font-family: "texgyrescholaitalic", Times, serif;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+    font-size: 8px;
+    line-height: 14px;
+  }
+}
+@media (min-width: 1601px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+    font-size: 1.71875vw;
+    line-height: 2;
+  }
+}
+@media (max-width: 480px) {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+    font-size: 9.5px;
   }
 }
 .full-episodes-block.carousel-block .carousel ul li .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon {
@@ -11985,11 +12034,13 @@ footer h2 {
 }
 
 .featured-block {
-  background: #e9eaeb;
   overflow: hidden;
   padding: 40px 0;
   position: relative;
   width: 100%;
+}
+.featured-block:not(.visible) {
+  background: #dcddde !important;
 }
 @media (max-width: 768px) {
   .featured-block .carousel.start {
@@ -14477,7 +14528,7 @@ footer h2 {
     margin-bottom: 10px;
     width: inherit;
     height: inherit;
-    display: none;
+    display: none !important;
   }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img > img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img > img {
@@ -29968,6 +30019,11 @@ yx-axis
   }
 }
 
+@media (max-width: 768px) {
+  #block-usanetwork-menu-usanetwork-menu-aspot-ot {
+    display: none;
+  }
+}
 #block-usanetwork-menu-usanetwork-menu-aspot-ot .spinner {
   display: block;
   margin: 0 auto;
@@ -31961,7 +32017,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 1280px) {
   #block-usanetwork-top3-usanetwork-top3-main-block > .content {
-    padding-top: 12.30469vw;
+    padding-top: 156px;
   }
 }
 @media (max-width: 1024px) {
@@ -31971,7 +32027,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 768px) {
   #block-usanetwork-top3-usanetwork-top3-main-block > .content {
-    padding-top: 22.5vw;
+    padding-top: 15.23438vw;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #slider-player {
@@ -32279,7 +32335,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img {
   height: auto;
-  margin: 0 auto;
+  margin: 10px auto 0;
   position: relative;
   text-transform: uppercase;
   width: 18.41136vw;
@@ -32291,12 +32347,15 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 1600px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img {
+    margin: 0.52604vw auto 0;
     width: 20.3125vw;
   }
 }
 @media (max-width: 1280px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img {
-    bottom: calc(100% + 2.88vw);
+    bottom: calc(100% + 33px);
+    margin: 0;
+    max-height: 90px;
     position: absolute;
     text-align: center;
     width: 100%;
@@ -32304,110 +32363,18 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 768px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img {
-    bottom: calc(100% + 1vw);
-  }
-}
-#block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .top-choose-top3 {
-  font-family: "avalonextra_light", Helvetica, Arial, sans-serif;
-  font-size: 2.36718vw;
-  text-align: right;
-}
-@media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .top-choose-top3 {
-    font-size: 45px;
-  }
-}
-@media (max-width: 1280px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .top-choose-top3 {
-    display: inline-block;
-    font-size: 3.02734vw;
-    width: 23.04688vw;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .top-choose-top3 {
-    font-size: 4.79167vw;
-    width: 37.5vw;
-  }
-}
-#block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .top-choose-top3 .first-line {
-  line-height: 1.1;
-  text-align: left;
-}
-@media (max-width: 1280px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .top-choose-top3 .first-line {
-    line-height: 1;
-  }
-}
-#block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .top-choose-top3 span {
-  font-size: 4.73435vw;
-  line-height: 0.1;
-  vertical-align: baseline;
-}
-@media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .top-choose-top3 span {
-    font-size: 90px;
-  }
-}
-@media (max-width: 1280px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .top-choose-top3 span {
-    font-size: 6.05469vw;
-    vertical-align: top;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .top-choose-top3 span {
-    font-size: 9.58333vw;
+    bottom: calc(100% + 2.148vw);
+    max-height: 11.71875vw;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img img {
-  margin-top: -0.52604vw;
   width: 100%;
-}
-@media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img img {
-    margin-top: -10px;
-  }
 }
 @media (max-width: 1280px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img img {
     display: inline-block;
     margin: 0;
-    width: 25.39063vw;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img img {
-    width: 39.58333vw;
-  }
-}
-#block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .bottom-choose-top3 {
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 1.15729vw;
-  line-height: 1.7;
-  text-align: center;
-}
-@media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .bottom-choose-top3 {
-    font-size: 22px;
-  }
-}
-@media (max-width: 1600px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .bottom-choose-top3 {
-    font-size: 1.25vw;
-  }
-}
-@media (max-width: 1280px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .bottom-choose-top3 {
-    display: inline-block;
-    font-size: 1.95313vw;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img .bottom-choose-top3 {
-    display: block;
-    font-size: 2.91667vw;
-    width: 100%;
+    width: auto;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .advert {
@@ -33664,7 +33631,7 @@ body.blog .view-display-id-blog_content .views-row {
   transform: scale3d(1, 1, 1);
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #shared-container {
-  padding: 4.20831vw 0 11.94108vw;
+  padding: 80px 0 11.94108vw;
 }
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #shared-container {
@@ -33673,78 +33640,32 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #shared-container {
-    padding: 10.41667vw 0 300px;
+    padding: 7.8125vw 0 300px;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img {
   height: auto;
-  margin: 0 auto 3.15623vw;
+  margin: 0 auto 80px;
   position: relative;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
 }
-@media (min-width: 1901px) {
+@media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img {
-    margin: 0 auto 60px;
-  }
-}
-#block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img .top-choose-top3 {
-  display: inline-block;
-  font-family: "avalonextra_light", Helvetica, Arial, sans-serif;
-  font-size: 2.36718vw;
-  margin-right: 1.57812vw;
-  text-align: right;
-  width: 16.67543vw;
-}
-@media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img .top-choose-top3 {
-    font-size: 45px;
-    margin-right: 30px;
-    width: 317px;
-  }
-}
-@media (max-width: 1024px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img .top-choose-top3 {
-    font-size: 5.59896vw;
-    margin-right: 3.90625vw;
-    width: 39.0625vw;
-  }
-}
-#block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img .top-choose-top3 .first-line {
-  line-height: 1.2;
-  text-align: left;
-}
-#block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img .top-choose-top3 span {
-  font-size: 4.73435vw;
-  line-height: 0.1;
-  vertical-align: top;
-}
-@media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img .top-choose-top3 span {
-    font-size: 90px;
-  }
-}
-@media (max-width: 1024px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img .top-choose-top3 span {
-    font-size: 11.19792vw;
+    margin: 0 auto 7.8125vw;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img img {
   display: inline-block;
-  margin-right: 1.57812vw;
-  width: 19.46344vw;
-}
-@media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img img {
-    margin-right: 30px;
-    width: 370px;
-  }
+  margin-right: 25px;
+  width: auto;
 }
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img img {
-    margin-right: 0;
-    width: 46.875vw;
+    margin-right: 2.44141vw;
+    max-height: 8.78906vw;
+    max-width: calc(100% - 28vw);
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img .choose-top3-button {
@@ -33753,27 +33674,18 @@ body.blog .view-display-id-blog_content .views-row {
   cursor: pointer;
   display: inline-block;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.15729vw;
-  line-height: 3.52446vw;
+  font-size: 22px;
+  line-height: 67px;
   text-align: center;
   text-transform: uppercase;
   vertical-align: bottom;
-  width: 14.46607vw;
-}
-@media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img .choose-top3-button {
-    font-size: 22px;
-    line-height: 67px;
-    width: 275px;
-  }
+  width: 250px;
 }
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .choose-top3-img .choose-top3-button {
-    display: block;
-    font-size: 2.73438vw;
-    line-height: 8.72396vw;
-    margin: 5.85938vw auto 0;
-    width: 34.11458vw;
+    font-size: 2.14844vw;
+    line-height: 6.54297vw;
+    width: 24.41406vw;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #shared-container .chosen-items-block {

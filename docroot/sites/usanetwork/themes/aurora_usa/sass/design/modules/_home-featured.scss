@@ -1,9 +1,11 @@
 .featured-block {
-  background: $poll-back;
   overflow: hidden;
   padding: 40px 0;
   position: relative;
   width: 100%;
+  &:not(.visible) {
+    background: $footer-links!important;
+  }
   .carousel {
     @include breakpoint($bp-768-width) {
       &.start {

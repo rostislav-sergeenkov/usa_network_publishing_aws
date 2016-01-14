@@ -17,7 +17,7 @@
 
       $('#character-info #' + person).animate({ 'opacity': 1 }, 500, function(){
         //usa_debug('========= showCharacterInfo: anchorFull: ' + anchorFull);
-        $('body').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function(){
+        $('html, body').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function(){
           if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
             Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
             Drupal.behaviors.ms_global.setOmnitureData('characters', personName);

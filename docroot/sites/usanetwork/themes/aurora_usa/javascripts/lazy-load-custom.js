@@ -15,6 +15,12 @@
           }
         }
       });
+
+      $('.featured-block').viewportChecker({
+        classToAdd: 'visible',
+        offset: 0,
+        repeat: false
+      });
     },
     windowView: function (image){
       // window variables
@@ -47,17 +53,24 @@
       });
     },
     galleryLazyLoadScroll: function (items) {
+
       $.each(items, function (i, carousel_item) {
-        var image = $(carousel_item).find('img[data-src]');
-        if(image.attr('data-src')){
-          var imageHeight = image.height(), imageWidth = image.width();
-          var iconTop = Math.round(imageHeight/2), iconLeft = Math.round(imageWidth/2), iconFactor = Math.round(image.siblings('img.lazyloader-icon').height()/2);
+
+        var images = $(carousel_item).find('img[data-src]');
+
+        $.each(images, function (index, img_item) {
+
+          var image = $(img_item),
+              imageHeight = image.height(), imageWidth = image.width(),
+              iconTop = Math.round(imageHeight/2), iconLeft = Math.round(imageWidth/2), iconFactor = Math.round(image.siblings('img.lazyloader-icon').height()/2);
+
           image.siblings('img.lazyloader-icon').css({ top: iconTop - iconFactor, left: iconLeft - iconFactor });
+
           if (Drupal.behaviors.lazy_load_custom.windowView(image)) {
             Drupal.behaviors.lazy_load_custom.loadImage(image);
             image.fadeIn('slow');
           }
-        }
+        });
       });
     }
   };

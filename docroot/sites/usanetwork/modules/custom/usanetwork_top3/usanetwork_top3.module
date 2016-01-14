@@ -171,16 +171,6 @@ function _usanetwork_top3_main_block() {
   }
 
   $node_wrapper = entity_metadata_wrapper('node', $node);
-  $logo_right_image = $node_wrapper->field_logo->value();
-  if (!empty($logo_right_image)) {
-    $logo_right = image_style_url('logo_right', $logo_right_image['uri']);
-    $logo_right_alt = $logo_right_image['alt'];
-  }
-  $logo_top_image = $node_wrapper->field_logo_top->value();
-  if (!empty($logo_top_image)) {
-    $logo_top = image_style_url('logo_top', $logo_top_image['uri']);
-    $logo_top_alt = $logo_top_image['alt'];
-  }
 
   $advert_block = module_invoke('mps', 'block_view', 'topbox');
   if (!empty($advert_block['content'])) {
@@ -203,6 +193,11 @@ function _usanetwork_top3_main_block() {
   $query_params = drupal_get_query_parameters();
   if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
     if (isset($query_params['shared']) && isset($query_params['node'])) {
+      $logo_top_view_image = $node_wrapper->field_logo_top_view->value();
+      if (!empty($logo_top_view_image)) {
+        $logo_top_view = image_style_url('logo_top', $logo_top_view_image['uri']);
+        $logo_top_view_alt = $logo_top_view_image['alt'];
+      }
       $shared_fids = explode(USA_TOP3_DELIMITER, $query_params['shared']);
       $shared_files = file_load_multiple($shared_fids);
       $slides = array();
@@ -238,8 +233,8 @@ function _usanetwork_top3_main_block() {
     }
     $theme_variables = array(
       'slides' => $slides,
-      'logo_top' => isset($logo_top) ? $logo_top : NULL,
-      'logo_top_alt' => !empty($logo_top_alt) ? $logo_top_alt : NULL,
+      'logo_top' => isset($logo_top_view) ? $logo_top_view : NULL,
+      'logo_top_alt' => !empty($logo_top_view_alt) ? $logo_top_view_alt : NULL,
       'node_path' => url('node/' . $node->nid),
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
@@ -249,6 +244,16 @@ function _usanetwork_top3_main_block() {
     return theme('usanetwork_top3_shared', $theme_variables);
   }
   else {
+    $logo_right_image = $node_wrapper->field_logo->value();
+    if (!empty($logo_right_image)) {
+      $logo_right = image_style_url('logo_right', $logo_right_image['uri']);
+      $logo_right_alt = $logo_right_image['alt'];
+    }
+    $logo_top_image = $node_wrapper->field_logo_top->value();
+    if (!empty($logo_top_image)) {
+      $logo_top = image_style_url('logo_top', $logo_top_image['uri']);
+      $logo_top_alt = $logo_top_image['alt'];
+    }
     $slides = array();
     if (!empty($node->field_slides_content)) {
       foreach ($node_wrapper->field_slides_content->getIterator() as $delta => $slide_item) {

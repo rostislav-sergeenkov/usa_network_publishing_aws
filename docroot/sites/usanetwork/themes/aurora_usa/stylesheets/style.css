@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -12944,13 +12944,13 @@ footer h2 {
   }
 }
 @media (min-width: 1025px) {
-  .consum-sidebar.sticky-sidebar.related-visible {
+  .consum-sidebar.sticky-sidebar.related-visible, .consum-sidebar.sticky-sidebar.social-visible {
     bottom: 0;
     position: absolute !important;
     top: auto !important;
   }
 }
-.consum-sidebar:not(.related-visible) {
+.consum-sidebar:not(.related-visible):not(.social-visible) {
   max-height: none !important;
 }
 .consum-sidebar .advert {
@@ -13834,7 +13834,8 @@ footer h2 {
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .consum-sidebar, .consumptionator-episode-main-block .consum-sidebar, .consumptionator-quiz-main-block .consum-sidebar, .consumptionator-post-main-block .consum-sidebar {
     float: none;
-    height: auto;
+    height: auto !important;
+    max-height: none !important;
     padding: 0;
     position: relative;
     width: 100%;

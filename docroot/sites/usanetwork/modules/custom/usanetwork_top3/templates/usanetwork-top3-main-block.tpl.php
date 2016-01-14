@@ -137,7 +137,7 @@
 </div>
 <div class="right-sidebar">
   <div class="choose-top3-img">
-    <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+    <div class="asset-img" data-picture data-alt="<?php print $logo_right; ?>" data-class="tile-img">
       <?php if (!empty($logo_top)): ?>
         <div data-src="<?php print $logo_top; ?>"></div>
       <?php endif; ?>

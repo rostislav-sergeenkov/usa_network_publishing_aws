@@ -13,6 +13,35 @@ function usanetwork_top3_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_creating_top3|node|top3_gallery|form';
+  $field_group->group_name = 'group_creating_top3';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'top3_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_usa_custom';
+  $field_group->data = array(
+    'label' => 'Creating a top3 ("Choose Your")',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_logo',
+      1 => 'field_logo_top',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Creating a top3 ("Choose Your")',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_creating_top3|node|top3_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_gallery_additional|node|top3_gallery|form';
   $field_group->group_name = 'group_gallery_additional';
   $field_group->entity_type = 'node';
@@ -192,9 +221,9 @@ function usanetwork_top3_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_background',
-      1 => 'field_logo',
-      2 => 'field_show',
-      3 => 'field_logo_top',
+      1 => 'field_show',
+      2 => 'group_creating_top3',
+      3 => 'group_viewing_top3',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -236,6 +265,34 @@ function usanetwork_top3_field_group_info() {
     ),
   );
   $export['group_usa_og_fields|node|top3_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_viewing_top3|node|top3_gallery|form';
+  $field_group->group_name = 'group_viewing_top3';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'top3_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_usa_custom';
+  $field_group->data = array(
+    'label' => 'Viewing a top3 ("I Chose My")',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_logo_top_view',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Viewing a top3 ("I Chose My")',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_viewing_top3|node|top3_gallery|form'] = $field_group;
 
   return $export;
 }

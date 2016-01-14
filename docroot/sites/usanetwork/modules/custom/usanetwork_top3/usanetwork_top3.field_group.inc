@@ -283,12 +283,13 @@ function usanetwork_top3_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Viewing a top3 ("I Chose My")',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-viewing-top3 field-group-fieldset',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_viewing_top3|node|top3_gallery|form'] = $field_group;

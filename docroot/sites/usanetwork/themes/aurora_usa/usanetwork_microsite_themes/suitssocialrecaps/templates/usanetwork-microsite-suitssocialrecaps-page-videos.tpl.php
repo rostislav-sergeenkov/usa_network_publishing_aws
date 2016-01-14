@@ -84,7 +84,7 @@ $time = time();
             </div>
           </div>
           <div class="video-player video-player-wrapper" data-ng-show="global.isAuthN">
-            <div class="custom-play"></div>
+            <div id="custom-play" class="custom-play"></div>
             <div
                 class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
             </div>
@@ -101,7 +101,7 @@ $time = time();
         </div>
         <div class="video-no-auth-player-wrapper">
           <div class="video-player no-auth">
-            <div class="custom-play"></div>
+            <div id="custom-play" class="custom-play"></div>
             <div
                 class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
               <iframe class="base-iframe"></iframe>

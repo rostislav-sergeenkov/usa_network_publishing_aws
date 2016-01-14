@@ -136,17 +136,18 @@
   </div>
 </div>
 <div class="right-sidebar">
-
   <div class="choose-top3-img">
-    <div class="top-choose-top3">
-      <div
-        class="first-line"><?php print t('Choose'); ?></div><?php print t(' your top '); ?>
-      <span>3</span></div>
-    <?php if (!empty($logo)) : ?>
-      <img src="<?php print $logo; ?>" alt="">
-    <?php endif; ?>
-    <div
-      class="bottom-choose-top3"><?php print t('& share them with your friends'); ?></div>
+    <div class="asset-img" data-picture data-alt="<?php print $logo_right; ?>" data-class="tile-img">
+      <?php if (!empty($logo_top)): ?>
+        <div data-src="<?php print $logo_top; ?>"></div>
+      <?php endif; ?>
+      <?php if (!empty($logo_right)): ?>
+        <div data-media="(min-width: 1281px)" data-src="<?php print $logo_right; ?>"></div>
+      <?php endif; ?>
+      <?php if (!empty($logo_top)): ?>
+        <noscript><img src="<?php print $logo_top; ?>" alt="" title="" /></noscript>
+      <?php endif; ?>
+    </div>
   </div>
 
   <div class="node-wrapper advert">

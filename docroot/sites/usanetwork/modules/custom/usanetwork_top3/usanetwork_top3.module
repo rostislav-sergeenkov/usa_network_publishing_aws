@@ -111,21 +111,23 @@ function usanetwork_top3_theme($existing, $type, $theme, $path) {
  */
 function usanetwork_top3_image_default_styles() {
   $styles = array();
-  $styles['369x84'] = array(
+  $styles['logo_right'] = array(
     'effects' => array(
       array(
-        'name' => 'focal_point_scale_and_crop',
+        'name' => 'image_scale',
         'data' => array(
-          'width' => 369,
-          'height' => 84,
+          'width' => 350,
         ),
-        'weight' => 0,
+        'weight' => 1,
       ),
+    ),
+  );
+  $styles['logo_top'] = array(
+    'effects' => array(
       array(
-        'name' => 'image_scale_and_crop',
+        'name' => 'image_scale',
         'data' => array(
-          'width' => 369,
-          'height' => 84,
+          'height' => 90,
         ),
         'weight' => 1,
       ),
@@ -169,10 +171,6 @@ function _usanetwork_top3_main_block() {
   }
 
   $node_wrapper = entity_metadata_wrapper('node', $node);
-  $logo_image = $node_wrapper->field_logo->value();
-  if (!empty($logo_image)) {
-    $logo = image_style_url('369x84', $logo_image['uri']);
-  }
 
   $advert_block = module_invoke('mps', 'block_view', 'topbox');
   if (!empty($advert_block['content'])) {
@@ -195,6 +193,11 @@ function _usanetwork_top3_main_block() {
   $query_params = drupal_get_query_parameters();
   if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
     if (isset($query_params['shared']) && isset($query_params['node'])) {
+      $logo_top_view_image = $node_wrapper->field_logo_top_view->value();
+      if (!empty($logo_top_view_image)) {
+        $logo_top_view = image_style_url('logo_top', $logo_top_view_image['uri']);
+        $logo_top_view_alt = $logo_top_view_image['alt'];
+      }
       $shared_fids = explode(USA_TOP3_DELIMITER, $query_params['shared']);
       $shared_files = file_load_multiple($shared_fids);
       $slides = array();
@@ -230,7 +233,8 @@ function _usanetwork_top3_main_block() {
     }
     $theme_variables = array(
       'slides' => $slides,
-      'logo' => isset($logo) ? $logo : NULL,
+      'logo_top' => isset($logo_top_view) ? $logo_top_view : NULL,
+      'logo_top_alt' => !empty($logo_top_view_alt) ? $logo_top_view_alt : NULL,
       'node_path' => url('node/' . $node->nid),
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
@@ -240,6 +244,16 @@ function _usanetwork_top3_main_block() {
     return theme('usanetwork_top3_shared', $theme_variables);
   }
   else {
+    $logo_right_image = $node_wrapper->field_logo->value();
+    if (!empty($logo_right_image)) {
+      $logo_right = image_style_url('logo_right', $logo_right_image['uri']);
+      $logo_right_alt = $logo_right_image['alt'];
+    }
+    $logo_top_image = $node_wrapper->field_logo_top->value();
+    if (!empty($logo_top_image)) {
+      $logo_top = image_style_url('logo_top', $logo_top_image['uri']);
+      $logo_top_alt = $logo_top_image['alt'];
+    }
     $slides = array();
     if (!empty($node->field_slides_content)) {
       foreach ($node_wrapper->field_slides_content->getIterator() as $delta => $slide_item) {
@@ -284,7 +298,10 @@ function _usanetwork_top3_main_block() {
 
     $theme_variables = array(
       'slides' => $slides,
-      'logo' => isset($logo) ? $logo : NULL,
+      'logo_right' => isset($logo_right) ? $logo_right : NULL,
+      'logo_right_alt' => !empty($logo_right_alt) ? $logo_right_alt : NULL,
+      'logo_top' => isset($logo_top) ? $logo_top : (isset($logo_right) ? $logo_right : NULL),
+      'logo_top_alt' => !empty($logo_top_alt) ? $logo_top_alt : (!empty($logo_right_alt) ? $logo_right_alt : NULL),
       'nid' => $node->nid,
       'top3_title' => $node->title,
       'player' => $player,

@@ -38,8 +38,6 @@
           $('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest').velocity("scroll", { duration: 1000, easing: "linear" });
         }
       });
-
-
     }
   };
 

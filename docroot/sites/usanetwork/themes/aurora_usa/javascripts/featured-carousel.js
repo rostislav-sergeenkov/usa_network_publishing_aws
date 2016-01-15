@@ -43,7 +43,6 @@
           $('#block-usanetwork-blocks-usanetwork-featured-carousel').velocity("scroll", { duration: 1000, easing: "linear" });
         }
       });
-
     }
   };
 

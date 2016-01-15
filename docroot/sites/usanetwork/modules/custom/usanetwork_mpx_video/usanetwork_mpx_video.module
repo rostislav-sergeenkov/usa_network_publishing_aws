@@ -1700,8 +1700,11 @@ function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_ite
 
   foreach ($media_files as $file) {
     $full_episode = $media_item['field_data']['field_mpx_full_episode'];
+    $keywords = $media_item['keywords'];
+    $keywords_array = explode(',', $keywords);
     if (((basename($account->account_id) == USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 1)) ||
-        ((basename($account->account_id) != USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 0))) {
+        ((basename($account->account_id) != USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 0)) ||
+        (($full_episode === 0) && in_array('YouTubeOnly', $keywords_array))) {
       db_update('mpx_video')
           ->fields(array('status' => 0))
           ->condition('fid', $file->fid)

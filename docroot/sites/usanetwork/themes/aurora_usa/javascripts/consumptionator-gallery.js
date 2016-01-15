@@ -152,7 +152,6 @@
 
   function initMouseWhell(elem) {
     elem.mousewheel(function (event, delta, deltaX, deltaY) {
-
       if (delta > 0) {
         elem.goToPrevSlide();
         if (elem.getCurrentSlide() != 0) {
@@ -170,6 +169,34 @@
     });
   }
 
+  // gallery advert
+  function showGalleryAd(adWrap, adBlock, adNext) {
+    var adTimer;
+    adWrap.velocity("fadeIn", {
+      duration: 200,
+      easing: "linear",
+      complete: function (element) {
+        $(element).addClass('active');
+
+        adTimer = setTimeout(function () {
+          adNext.show();
+        }, 3000);
+      }
+    });
+  }
+
+  function hideGalleryAd(adWrap, adBlock, adNext) {
+    adWrap.velocity("fadeOut", {
+      duration: 100,
+      easing: "linear",
+      complete: function (element) {
+        $(element).removeClass('active');
+        adBlock.empty();
+        adNext.hide();
+      }
+    })
+  }
+
   $(document).ready(function () {
     // bxslider-gallery slider initialization
     if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post') || $('.gallery-wrapper').parent().hasClass('view-mode-inline_content')) {
@@ -178,80 +205,99 @@
       }
       gallery = [];
       $('.gallery-wrapper').each(function (i, el) {
-        var galleryContainer = $(this);
-        var currentGallery = galleryContainer.find('.bxslider-gallery');
-        var slideElem = currentGallery.find('.slide');
-        var options = {
-          auto: false,
-          buildPager: function (slideIndex) {
+        var galleryContainer = $(this),
+            currentGallery = galleryContainer.find('.bxslider-gallery'),
+            slideElem = currentGallery.find('.slide'),
+            advertWrap = galleryContainer.find('.advert-wrap'),
+            advertBlock = advertWrap.find('.advert-block'),
+            advertNext = advertWrap.find('.advert-next'),
+            adSlidesCount = parseInt(advertWrap.data('slides-counter'), 10),
+            advertCounter = 0,
+            options = {
+              auto: false,
+              buildPager: function (slideIndex) {
 
-            var slide = slideElem,
-                slideLength = slide.length,
-                src = $(slide).eq(slideIndex).find('.asset-img img').attr('src'),
-                counter = $(slide).eq(slideIndex).find('.slider-counter'),
-                slideIndexBlock = $(slide).eq(slideIndex).find('.slider-counter .slide-index');
-            if (slideIndexBlock.text() == '') {
-              slideIndexBlock.text((slideIndex + 1) + ' of ' + slideLength);
-            }
-            switch (slideIndex) {
-              default:
-                return '<div class="show-color"></div><img src="' + src + '">';
-            }
-          },
-          controls: true,
-          infiniteLoop: false,
-          hideControlOnEnd: true,
-          mode: 'fade',
-          nextText: '',
-          prevText: '',
-          adaptiveHeight: true,
-          adaptiveHeightSpeed: 200,
-          speed: 600,
-          onSliderLoad: function () {
-            setTimeout(function () {
-              pagerItems(galleryContainer);
-            }, 200);
-          },
-          onSlideBefore: function ($slideElement, oldIndex, newIndex) {
-            slideElem.removeClass('active');
+                var slide = slideElem,
+                    slideLength = slide.length,
+                    src = $(slide).eq(slideIndex).find('.asset-img img').attr('src'),
+                    counter = $(slide).eq(slideIndex).find('.slider-counter'),
+                    slideIndexBlock = $(slide).eq(slideIndex).find('.slider-counter .slide-index');
+                if (slideIndexBlock.text() == '') {
+                  slideIndexBlock.text((slideIndex + 1) + ' of ' + slideLength);
+                }
+                switch (slideIndex) {
+                  default:
+                    return '<div class="show-color"></div><img src="' + src + '">';
+                }
+              },
+              controls: true,
+              infiniteLoop: false,
+              hideControlOnEnd: true,
+              mode: 'fade',
+              nextText: '',
+              prevText: '',
+              adaptiveHeight: true,
+              adaptiveHeightSpeed: 200,
+              speed: 600,
+              preloadImages: 'all',
+              responsive: true,
+              onSliderLoad: function () {
+                setTimeout(function () {
+                  pagerItems(galleryContainer);
+                }, 200);
+              },
+              onSlideBefore: function ($slideElement, oldIndex, newIndex) {
+                slideElem.removeClass('active');
 
-            //var name = $('.gallery-wrapper .slide .gallery-name').eq(0).text();
-            //Drupal.behaviors.omniture_tracking.newPageView(name);
+                // advert counter up +1
+                advertCounter += 1;
 
-            if (typeof s_gi != 'undefined') {
+                // if advertCounter = slidesCount fire show gallery advert
+                if (advertWrap.length > 0 && advertCounter === adSlidesCount) {
 
-              if ($('body').hasClass('node-type-tv-episode')) {
-                if (Drupal.settings.umbel_settings !== undefined) {
-                  var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
-                      pageName = Drupal.settings.umbel_settings.usa_umbel_param_2;
+                  // reset advert counter
+                  advertCounter = 0;
+                  // show gallery ad
+                  showGalleryAd(advertWrap, advertBlock, advertNext);
                 }
 
-                s.linkTrackVars = 'events,prop3,prop4,prop5';
-                s.prop3 = 'Gallery';
-                s.prop4 = showName.trim() + ' : ' + pageName.trim();
-                s.prop5 = 'Episodic Gallery';
-              }
+                //var name = $('.gallery-wrapper .slide .gallery-name').eq(0).text();
+                //Drupal.behaviors.omniture_tracking.newPageView(name);
 
-              void (s.t());
-            }
-          },
-          onSlideAfter: function ($slideElement, oldIndex, newIndex) {
-            var index = galleryContainer.find('.bx-custom-pager .bx-pager-link.active').data('slide-index'),
-                slide = slideElem.eq(index).addClass('active'),
-                pager = galleryContainer.find('.bx-custom-pager');
-            gigyaSharebar(galleryContainer, slide, index);
-            movePagerItems(pager);
-            if ($('body').hasClass('node-type-media-gallery')) {
-              Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
-            }
-            if ($('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post')) {
-              Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
-              if (!$('.region-header').hasClass('sticky-shows-submenu')) {
-                Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+                if (typeof s_gi != 'undefined') {
+
+                  if ($('body').hasClass('node-type-tv-episode')) {
+                    if (Drupal.settings.umbel_settings !== undefined) {
+                      var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
+                          pageName = Drupal.settings.umbel_settings.usa_umbel_param_2;
+                    }
+
+                    s.linkTrackVars = 'events,prop3,prop4,prop5';
+                    s.prop3 = 'Gallery';
+                    s.prop4 = showName.trim() + ' : ' + pageName.trim();
+                    s.prop5 = 'Episodic Gallery';
+                  }
+
+                  void (s.t());
+                }
+              },
+              onSlideAfter: function ($slideElement, oldIndex, newIndex) {
+                var index = galleryContainer.find('.bx-custom-pager .bx-pager-link.active').data('slide-index'),
+                    slide = slideElem.eq(index).addClass('active'),
+                    pager = galleryContainer.find('.bx-custom-pager');
+                gigyaSharebar(galleryContainer, slide, index);
+                movePagerItems(pager);
+                if ($('body').hasClass('node-type-media-gallery')) {
+                  Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+                }
+                if ($('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post')) {
+                  Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
+                  if (!$('.region-header').hasClass('sticky-shows-submenu')) {
+                    Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+                  }
+                }
               }
-            }
-          }
-        };
+            };
         gallery[i] = USAN.gallery.init(currentGallery, options);
         var index = 0,
             slide = currentGallery.find('.slide').eq(0);
@@ -264,8 +310,12 @@
         if (window.matchMedia("(min-width: " + window_size_tablet + "px)").matches && !$('body').hasClass('node-type-person') && !$('body').hasClass('node-type-post')) {
           initMouseWhell(gallery[i]);
         }
-      });
 
+        // hide gallery ad
+        advertNext.on('click', function () {
+          hideGalleryAd(advertWrap, advertBlock, advertNext);
+        });
+      });
 
       $(window).load(function () {
         var hash = window.location.hash;
@@ -306,6 +356,7 @@
 
             if (window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches || $('body').hasClass('node-type-person') || $('body').hasClass('node-type-post')) {
               if (!currentGallery.hasClass('mobile')) {
+                console.info('mobile');
                 currentGallery.addClass('mobile');
                 gallery[i].reloadSlider();
                 gallery[i].goToSlide(pagerItemLinkActiveIndex);

@@ -150,6 +150,39 @@
         display: block;
       }
     }
+    // gallery advert
+    .advert-wrap {
+      display: none;
+      &.active {
+        background-color: $gallery-description-back;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 56;
+      }
+      .advert-block {
+        background-image: url("../images/galleryAd.jpeg");
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+      }
+      .advert-next {
+        //background-color: $black;
+        background-color: #0ab6e8;
+        cursor: pointer;
+        display: none;
+        height: 100px;
+        right: 0;
+        position: absolute;
+        bottom: 0;
+        text-transform: uppercase;
+        width: 100px;
+      }
+    }
     .bxslider-gallery {
       height: 100%;
       &.on-load {

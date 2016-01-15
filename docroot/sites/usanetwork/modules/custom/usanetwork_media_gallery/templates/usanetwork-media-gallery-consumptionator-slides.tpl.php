@@ -18,9 +18,13 @@
     <div class="share-bar">
       <?php print $sharebar; ?>
     </div>
+    <?php if (!empty($interstitial_ad_enabled) && !empty($interstitial_ad_frequency)): ?>
+      <div class="advert-wrap" data-slides-counter="<?php print $interstitial_ad_frequency ?>">
+        <div class="advert-block"></div>
+        <div class="advert-next">
+          continue
+        </div>
+      </div>
+    <?php endif; ?>
   <?php endif; ?>
 </div>
-
-<?php if (!empty($interstitial_ad_enabled) && !empty($interstitial_ad_frequency)): ?>
-  <?php print $interstitial_ad_frequency ?>
-<?php endif; ?>

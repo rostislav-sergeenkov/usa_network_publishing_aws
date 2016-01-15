@@ -11098,6 +11098,37 @@ footer h2 {
 .consumptionator-page .gallery-wrapper:hover .share-bar, .node-type-media-gallery .gallery-wrapper:hover .share-bar, .node-type-tv-episode .gallery-wrapper:hover .share-bar, .node-type-consumpt-post .gallery-wrapper:hover .share-bar, .node-media-gallery .gallery-wrapper:hover .share-bar {
   display: block;
 }
+.consumptionator-page .gallery-wrapper .advert-wrap, .node-type-media-gallery .gallery-wrapper .advert-wrap, .node-type-tv-episode .gallery-wrapper .advert-wrap, .node-type-consumpt-post .gallery-wrapper .advert-wrap, .node-media-gallery .gallery-wrapper .advert-wrap {
+  display: none;
+}
+.consumptionator-page .gallery-wrapper .advert-wrap.active, .node-type-media-gallery .gallery-wrapper .advert-wrap.active, .node-type-tv-episode .gallery-wrapper .advert-wrap.active, .node-type-consumpt-post .gallery-wrapper .advert-wrap.active, .node-media-gallery .gallery-wrapper .advert-wrap.active {
+  background-color: #1f1f1f;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 56;
+}
+.consumptionator-page .gallery-wrapper .advert-wrap .advert-block, .node-type-media-gallery .gallery-wrapper .advert-wrap .advert-block, .node-type-tv-episode .gallery-wrapper .advert-wrap .advert-block, .node-type-consumpt-post .gallery-wrapper .advert-wrap .advert-block, .node-media-gallery .gallery-wrapper .advert-wrap .advert-block {
+  background-image: url("../images/galleryAd.jpeg");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+.consumptionator-page .gallery-wrapper .advert-wrap .advert-next, .node-type-media-gallery .gallery-wrapper .advert-wrap .advert-next, .node-type-tv-episode .gallery-wrapper .advert-wrap .advert-next, .node-type-consumpt-post .gallery-wrapper .advert-wrap .advert-next, .node-media-gallery .gallery-wrapper .advert-wrap .advert-next {
+  background-color: #0ab6e8;
+  cursor: pointer;
+  display: none;
+  height: 100px;
+  right: 0;
+  position: absolute;
+  bottom: 0;
+  text-transform: uppercase;
+  width: 100px;
+}
 .consumptionator-page .gallery-wrapper .bxslider-gallery, .node-type-media-gallery .gallery-wrapper .bxslider-gallery, .node-type-tv-episode .gallery-wrapper .bxslider-gallery, .node-type-consumpt-post .gallery-wrapper .bxslider-gallery, .node-media-gallery .gallery-wrapper .bxslider-gallery {
   height: 100%;
 }

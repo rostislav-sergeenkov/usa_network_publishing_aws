@@ -25,6 +25,14 @@ function usanetwork_taxonomy_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'explore_tags' => array(
+      'name' => 'Explore Tags',
+      'machine_name' => 'explore_tags',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'genre' => array(
       'name' => 'Genre',
       'machine_name' => 'genre',
@@ -44,14 +52,6 @@ function usanetwork_taxonomy_taxonomy_default_vocabularies() {
     'media_tags' => array(
       'name' => 'Media Tags',
       'machine_name' => 'media_tags',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-    ),
-    'explore_tags' => array(
-      'name' => 'Explore Tags',
-      'machine_name' => 'explore_tags',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',

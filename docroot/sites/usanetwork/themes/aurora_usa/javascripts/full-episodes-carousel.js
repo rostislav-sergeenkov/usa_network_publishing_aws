@@ -35,8 +35,11 @@
         } else {
           $('.full-episodes-carousel > ul > li:gt('+ hide_elements +')').addClass('hidden');
           $(this).removeClass('close').addClass('more');
+          $('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest').velocity("scroll", { duration: 1000, easing: "linear" });
         }
       });
+
+
     }
   };
 

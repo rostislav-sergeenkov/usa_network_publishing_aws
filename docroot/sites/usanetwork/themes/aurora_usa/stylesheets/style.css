@@ -29982,6 +29982,9 @@ yx-axis
   position: absolute;
   top: 5px;
 }
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .description {
+  clear: none;
+}
 .schedule-wrapper .schedule-table ul li.active {
   background-color: #757575;
   color: #ffffff;

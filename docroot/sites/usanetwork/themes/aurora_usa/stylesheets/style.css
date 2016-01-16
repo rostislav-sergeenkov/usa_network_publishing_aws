@@ -30871,6 +30871,11 @@ body.blog .view-display-id-blog_content .views-row {
   margin-bottom: 30px;
   padding-bottom: 10px;
 }
+@media (max-width: 989px) {
+  body.blog:not(.show-chrisleyknowsbest) .center-wrapper {
+    padding: 0 10px;
+  }
+}
 
 .node.node-post {
   font-size: 16px;

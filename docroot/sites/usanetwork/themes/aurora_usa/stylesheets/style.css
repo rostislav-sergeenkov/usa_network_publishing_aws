@@ -29396,7 +29396,7 @@ yx-axis
   overflow: hidden;
   display: block;
   width: auto;
-  margin: 0;
+  margin: 0 50px;
 }
 .schedule-wrapper .schedule-navigation ul {
   vertical-align: middle;
@@ -29418,6 +29418,7 @@ yx-axis
   height: 123px;
   display: block;
   float: left;
+  width: calc((100vw - 100px) / 7);
 }
 @media (max-width: 1280px) {
   .schedule-wrapper .schedule-navigation ul li {
@@ -29433,11 +29434,19 @@ yx-axis
   border-left: 1px solid #e9eaeb;
 }
 @media (max-width: 768px) {
+  .schedule-wrapper .schedule-navigation ul li {
+    width: calc((100vw - 100px) / 5);
+  }
   .schedule-wrapper .schedule-navigation ul li:first-child {
     border-left: 0 solid #ffffff;
   }
   .schedule-wrapper .schedule-navigation ul li:last-child {
     border-right: 0 solid #ffffff;
+  }
+}
+@media (max-width: 320px) {
+  .schedule-wrapper .schedule-navigation ul li {
+    width: calc((100vw - 100px) / 3);
   }
 }
 .schedule-wrapper .schedule-navigation ul li:hover, .schedule-wrapper .schedule-navigation ul li.active {
@@ -30008,6 +30017,9 @@ yx-axis
   right: 0;
   position: absolute;
   top: 5px;
+}
+.schedule-wrapper .schedule-table ul li .schedule-item .hidden-block .node a .meta .description {
+  clear: none;
 }
 .schedule-wrapper .schedule-table ul li.active {
   background-color: #757575;

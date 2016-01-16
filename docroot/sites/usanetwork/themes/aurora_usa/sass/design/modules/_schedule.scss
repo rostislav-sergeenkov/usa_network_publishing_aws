@@ -188,7 +188,7 @@
     overflow: hidden;
     display: block;
     width: auto;
-    margin: 0;
+    margin: 0 50px;
     ul {
       vertical-align: middle;
       border-top: 1px solid #ffffff;
@@ -204,6 +204,7 @@
         height: 123px;
         display: block;
         float: left;
+        width: calc((100vw - 100px) / 7);
         @include breakpoint($bp-1280-width) {
           height: 82px;
         }
@@ -214,12 +215,16 @@
           border-left: 1px solid $poll-back;
         }
         @include breakpoint($bp-768-width) {
+          width: calc((100vw - 100px) / 5);
           &:first-child {
             border-left: 0 solid #ffffff;
           }
           &:last-child {
             border-right: 0 solid #ffffff;
           }
+        }
+        @include breakpoint($bp-320-width) {
+          width: calc((100vw - 100px) / 3);
         }
         &:hover, &.active {
           background-color: $gray-med-darker;
@@ -683,6 +688,9 @@
                       position: absolute;
                       top: 5px;
                     }
+                  }
+                  .description {
+                    clear: none;
                   }
                 }
               }

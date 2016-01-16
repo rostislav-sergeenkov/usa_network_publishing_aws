@@ -20,7 +20,7 @@
     </div>
     <?php if (!empty($interstitial_ad_enabled) && !empty($interstitial_ad_frequency)): ?>
       <div class="advert-wrap" data-slides-counter="<?php print $interstitial_ad_frequency ?>">
-        <div class="advert-block"></div>
+        <div id="gallery-ad-block" class="advert-block"></div>
         <div class="advert-next">
           continue
         </div>

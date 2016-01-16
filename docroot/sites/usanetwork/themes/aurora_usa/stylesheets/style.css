@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -11111,10 +11111,6 @@ footer h2 {
   z-index: 56;
 }
 .consumptionator-page .gallery-wrapper .advert-wrap .advert-block, .node-type-media-gallery .gallery-wrapper .advert-wrap .advert-block, .node-type-tv-episode .gallery-wrapper .advert-wrap .advert-block, .node-type-consumpt-post .gallery-wrapper .advert-wrap .advert-block, .node-media-gallery .gallery-wrapper .advert-wrap .advert-block {
-  background-image: url("../images/galleryAd.jpeg");
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
   height: 100%;
   width: 100%;
 }

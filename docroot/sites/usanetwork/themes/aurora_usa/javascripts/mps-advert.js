@@ -7,7 +7,8 @@
         topbanner: 'topbanner',
         midbanner: 'midbanner',
         topbox: 'topbox',
-        showcardad: 'showcardad'
+        showcardad: 'showcardad',
+        galleryadrepeat: 'galleryadrepeat'
     },
 
     // MPS events
@@ -21,6 +22,10 @@
       var removeslot =  nameAd;
       mps._remove('#' + mps.adslots[removeslot]);
       delete(gpt[mps.advars[removeslot]]);
+    },
+
+    mpsInsertInterstitial: function (selector) {
+      mps.usa.insertInterstitial(selector);
     },
 
     mpsRefreshAd: function (nameAd) {

@@ -171,18 +171,26 @@
 
   // gallery advert
   function showGalleryAd(adWrap, adBlock, adNext) {
-    var adTimer;
-    adWrap.velocity("fadeIn", {
-      duration: 200,
-      easing: "linear",
-      complete: function (element) {
-        $(element).addClass('active');
 
-        adTimer = setTimeout(function () {
-          adNext.show();
-        }, 3000);
+    var adBlockId = adBlock.attr('id'),
+        nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.galleryadrepeat;
+
+
+    Drupal.behaviors.mpsAdvert.mpsInsertInterstitial('#' + adBlockId);
+
+    mps.adviewCallback = function(eo){
+      console.info('adviewCallback', eo);
+      if(eo._mps._slot.indexOf(nameAd) === 0) {
+        adWrap.velocity("fadeIn", {
+          duration: 200,
+          easing: "linear",
+          complete: function (element) {
+            $(element).addClass('active');
+            adNext.show();
+          }
+        });
       }
-    });
+    };
   }
 
   function hideGalleryAd(adWrap, adBlock, adNext) {
@@ -254,7 +262,7 @@
 
                 // if advertCounter = slidesCount fire show gallery advert
                 if (advertWrap.length > 0 && advertCounter === adSlidesCount) {
-
+                  console.info('init show galleryadrepeat');
                   // reset advert counter
                   advertCounter = 0;
                   // show gallery ad

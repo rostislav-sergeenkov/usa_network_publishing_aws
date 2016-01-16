@@ -955,10 +955,7 @@ function usanetwork_tv_shows_query_alter($query) {
             }
           }
           $query->innerJoin('mpx_video', 'mpx_video', 'mpx_video.fid = file_managed.fid');
-          $db_or = db_or();
-          $db_or->condition('mpx_video.status', 0, '<>');
-          $db_or->condition('mpx_video.airdate', REQUEST_TIME, '>=');
-          $query->condition($db_or);
+          $query->condition('mpx_video.expiration_date', REQUEST_TIME, '>=');
         }
       }
     }

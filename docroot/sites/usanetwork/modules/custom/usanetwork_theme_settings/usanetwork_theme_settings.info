@@ -6,4 +6,5 @@ dependencies[] = ctools
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:1
+features[variable][] = media_wysiwyg_wysiwyg_browser_plugins
 features[variable][] = theme_settings

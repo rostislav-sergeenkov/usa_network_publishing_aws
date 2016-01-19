@@ -20404,7 +20404,7 @@ html[xmlns] .slides {
   color: white;
   width: 35px;
   height: 80px;
-  margin: -16px 0 0;
+  margin: 0;
   display: block;
   position: absolute;
   top: 40%;

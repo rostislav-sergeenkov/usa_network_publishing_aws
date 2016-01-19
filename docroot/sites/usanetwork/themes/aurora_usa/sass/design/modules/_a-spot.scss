@@ -285,12 +285,12 @@
     }
   }
   .social_meter {
-    width: 18vw;
+    width: 18vw !important;
     @include breakpoint($bp-min-2500-width) {
-      width: 450px;
+      width: 450px !important;
     }
     @include breakpoint($bp-640-width) {
-      width: 33vw;
+      width: 33vw !important;
     }
     .row-1 {
       padding: 1.5625vw 1.5625vw 1.5625vw 6.5vw;
@@ -362,6 +362,7 @@
       .hashtag {
         font-family: $avalon-medium;
         font-size: 1.875vw;
+        word-break: break-word;
         @include breakpoint($bp-min-2500-width) {
           font-size: 46.875px;
         }

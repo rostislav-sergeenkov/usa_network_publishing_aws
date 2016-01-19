@@ -28379,16 +28379,16 @@ yx-axis
   }
 }
 .usanetwork-aspot .social_meter {
-  width: 18vw;
+  width: 18vw !important;
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .social_meter {
-    width: 450px;
+    width: 450px !important;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .social_meter {
-    width: 33vw;
+    width: 33vw !important;
   }
 }
 .usanetwork-aspot .social_meter .row-1 {
@@ -28484,6 +28484,7 @@ yx-axis
 .usanetwork-aspot .social_meter .row-1 .hashtag {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.875vw;
+  word-break: break-word;
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .social_meter .row-1 .hashtag {

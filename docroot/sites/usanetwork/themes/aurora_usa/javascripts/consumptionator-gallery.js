@@ -221,10 +221,10 @@
             advertNext = advertWrap.find('.advert-next'),
             adSlidesCount = parseInt(advertWrap.data('slides-counter'), 10),
             advertCounter = 0,
+            showColorPager = ($('body[class*=" show-"]').length > 0)? ' class="show-color"': '',
             options = {
               auto: false,
               buildPager: function (slideIndex) {
-
                 var slide = slideElem,
                     slideLength = slide.length,
                     src = $(slide).eq(slideIndex).find('.asset-img img').attr('src'),
@@ -235,7 +235,7 @@
                 }
                 switch (slideIndex) {
                   default:
-                    return '<div class="show-color"></div><img src="' + src + '">';
+                    return '<div'+showColorPager+'></div><img src="' + src + '">';
                 }
               },
               controls: true,

@@ -175,11 +175,10 @@
     var adBlockId = adBlock.attr('id'),
         nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.galleryadrepeat;
 
-
     Drupal.behaviors.mpsAdvert.mpsInsertInterstitial('#' + adBlockId);
 
     mps.adviewCallback = function(eo){
-      console.info('adviewCallback', eo);
+      console.info('adviewCallback', eo._mps._slot, eo);
       if(eo._mps._slot.indexOf(nameAd) === 0) {
         adWrap.velocity("fadeIn", {
           duration: 200,
@@ -262,7 +261,7 @@
 
                 // if advertCounter = slidesCount fire show gallery advert
                 if (advertWrap.length > 0 && advertCounter === adSlidesCount) {
-                  console.info('init show galleryadrepeat');
+                  console.info('init call maps.usa.insertInterstitial');
                   // reset advert counter
                   advertCounter = 0;
                   // show gallery ad

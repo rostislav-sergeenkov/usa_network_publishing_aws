@@ -22,7 +22,7 @@
       <h2>
         <a class="no-refresh nolink" data-state>
           <div class="table-wrapper">
-            <span><?php print t('Blog Post');?>: <?php print $post_name; ?></span>
+            <span><?php print $post_name; ?></span>
           </div>
         </a>
       </h2>

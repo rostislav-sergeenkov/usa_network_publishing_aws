@@ -1,5 +1,14 @@
 // new usa end card
 [data-show-end-card="true"] {
+
+  .video-player-wrapper {
+    &:hover {
+      .endcard_block img {
+        opacity: 1 !important;
+      }
+    }
+  }
+
   // end card
   .player {
 
@@ -43,7 +52,7 @@
       width: get-vw(68px, 1901);
       z-index: 1;
       &:before {
-        content: '\e623';
+        content: '\e62b';
         display: block;
         font-family: $ico-font;
         font-size: get-vw(30px, 1901);
@@ -228,7 +237,7 @@
         margin-bottom: 0;
         @include background-image(linear-gradient(#a8a8a8, #929292));
         &:before {
-          content: '\e622';
+          content: '\e62a';
         }
         .button-text {
           border-left: 1px solid #a8a8a8;
@@ -251,7 +260,7 @@
         width: calc(100% - 31px);
         &:before {
           display: block;
-          content: '\e624';
+          content: '\e62c';
           color: #ffffff;
           font-family: "ico-font";
           font-weight: normal;

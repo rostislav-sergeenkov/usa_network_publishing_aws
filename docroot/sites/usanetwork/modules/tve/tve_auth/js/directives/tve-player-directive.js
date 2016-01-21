@@ -30,12 +30,11 @@
                 //}, 0);
 
                 // create public method _bindPlayerEvents
-                // 1. player_Id - important, default id='pdk-player'
+                // 1. player_Id - default value id='pdk-player'
                 // 2. dataObj - used only for reinit end card
                 // you need prepare new dataApi with your params
                 // docroot/sites/usanetwork/modules/custom/usanetwork_tve_video/js/usa_config_tve_auth2/usa-tve-endcard.js
                 $pdk.bindPlayerEvents = _bindPlayerEvents;
-
 
                 // clear $pdk.controllers.listeners
                 $pdk.clearlisteners = function () {
@@ -49,9 +48,13 @@
                  * Bind Player Events
                  * @private
                  */
-                function _bindPlayerEvents(data) {
+                function _bindPlayerEvents(player_Id, dataObj) {
+
+                  var data = dataObj || {},
+                      playerId = player_Id || tveConfig.PLAYER_ID;
+
                   //rebind $pdk each time directive is loaded
-                  $pdk.bind(tveConfig.PLAYER_ID);
+                  $pdk.bind(playerId);
 
                   $pdk.controller.addEventListener('auth_token_failed', _authzFailure);
                   $pdk.controller.addEventListener('auth_success', _authSuccess);
@@ -77,7 +80,6 @@
 
                   // init end card service
                   if (isShowEndCard) {
-                    console.info('isShowEndCard: ' + isShowEndCard);
                     usaEndCardService.init(data);
                   }
                 }
@@ -132,8 +134,10 @@
 
                   if (baseClip && pdkEvent.data.baseClip.isAd) {
                     // Functionality for ad playing event
+                    updateStatusAd(pdkEvent.data.baseClip.isAd);
                   }
                   else {
+                    updateStatusAd(pdkEvent.data.baseClip.isAd);
                     if($('.dart-tag').length) {
                       scope.$apply(function() {
                         scope.isFreeWheelReq = true;
@@ -153,6 +157,16 @@
                       duration: videoData.mediaLength
                     };
                   }
+                }
+
+                // update status
+                // newStatus = true || false
+
+                // callback for update statusAd
+                function updateStatusAd(newStatus) {
+                  scope.$apply(function () {
+                    $rootScope.statusAd = newStatus;
+                  });
                 }
 
                 function _onMediaPlaying(e) {

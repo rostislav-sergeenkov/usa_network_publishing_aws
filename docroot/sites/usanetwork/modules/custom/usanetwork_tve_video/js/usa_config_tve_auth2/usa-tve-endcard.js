@@ -19,9 +19,8 @@
               endCardBlocks = ng.element('[data-end-card="usaEndCard"]'),
               episodeShare = ng.element('#episode-share'),
               replayButton = ng.element('.reload-button'),
-          // breakpoint value for showing end card
-          // 30 seconds before the end, used milliseconds
-              bpTimeShowEndCard = 30000,
+          // breakpoint value for showing end card used milliseconds
+              bpTimeShowEndCard = parseInt(playerWrapper.data('end-card-time')),
           // redirect timeout for Up Next Episode
               timeoutEndCard = 30000,
               bpMobileEndCard = 480,
@@ -237,7 +236,7 @@
                 var episodeUpNextUrl = episodeUpNext.data('next-url'),
                     nextUrl = window.location.origin + episodeUpNextUrl;
 
-                //window.location.replace(nextUrl); //todo remove commnt
+                window.location.replace(nextUrl);
               }, timeoutEndCard);
             },
 

@@ -369,12 +369,13 @@ function usanetwork_get_endcard_variables($file) {
     }
     $file_wrapper = entity_metadata_wrapper('file', $related_file);
     $uri = entity_uri('file', $related_file);
+    $duration = usanetwork_core_api_check_field($related_file, 'field_mpx_duration', 'file') ? gmdate('H:i:s', $file_wrapper->field_mpx_duration->value()) : NULL;
     $item = array(
       'url' => url($uri['path']),
       'title' => $related_file->filename,
       'season' => !empty($related_file->field_mpx_season_number) ? $file_wrapper->field_mpx_season_number->value() : NULL,
       'episode' => !empty($related_file->field_mpx_episode_number) ? $file_wrapper->field_mpx_episode_number->value() : NULL,
-      'duration' => !empty($related_file->field_mpx_duration) ? gmdate('H:i:s', $file_wrapper->field_mpx_duration->value()) : NULL,
+      'duration' => !empty($duration) ? $duration : NULL,
       'images' => array(
         'thumbnail' => !empty($overriden_image_tumbnail) ? $overriden_image_tumbnail : $related_file->mpx_video_data['thumbnail_url'],
         'desktop_image' => !empty($desktop_image) ? $desktop_image :NULL,
@@ -382,6 +383,7 @@ function usanetwork_get_endcard_variables($file) {
       ),
     );
     $items[] = $item;
+    return $items;
   }
-  return $items;
+  return NULL;
 }

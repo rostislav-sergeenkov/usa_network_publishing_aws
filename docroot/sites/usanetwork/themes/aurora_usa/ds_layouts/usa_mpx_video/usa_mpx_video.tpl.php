@@ -84,7 +84,83 @@
             ));
             ?>
           <?php endif; ?>
-          <?php print $video; ?>
+          <div data-usa-tve-player="pdk-player"
+               class="pdk-player-wrap">
+            <?php print $video; ?>
+          </div>
+          <!--  start endcart  -->
+          <div class="close endcard_block" data-end-card="usaEndCard"
+               data-ng-click="hideShowCard()"></div>
+          <div class="reload-button endcard_top" data-end-card="usaEndCard"
+               data-ng-click="replayVideo()">
+            <div class="replay-title">replay</div>
+            <div
+              class="episode-title"><?php print $next_video['title']; ?></div>
+          </div>
+          <div id="episode-up-next" class="endcard_block endcard_topRight"
+               data-end-card="usaEndCard"
+               data-next-url="<?php print $next_video['url']; ?>">
+            <h3>up next...</h3>
+            <div class="node node-usanetwork-promo">
+              <a href="<?php print $next_video['url']; ?>" class="link">
+                <div class="asset-img">
+                  <img
+                    src="<?php print $next_video['images']['thumbnail']; ?>"
+                    class="img" alt="">
+                </div>
+                <div class="meta-wrapper">
+                  <div class="meta-wrapper-inner">
+                    <div class="meta">
+                      <div class="additional">S<span
+                          class="season"><?php print $next_video['season']; ?></span>
+                        EP<span
+                          class="episode"><?php print $next_video['episode']; ?></span>:
+                      </div>
+                      <div
+                        class="title"><?php print $next_video['title']; ?></div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div id="episode-share" class="endcard_block endcard_bottomLeft"
+               data-end-card="usaEndCard">
+            <h3>share this episode</h3>
+          </div>
+          <div id="episode-related" class="endcard_block endcard_bottomRight"
+               data-end-card="usaEndCard">
+            <h3>related video clips</h3>
+
+            <div id="player-episodes-list" class="player-episodes-list">
+              <ul class="related-slider">
+                <?php foreach ($endcard as $eitem) { ?>
+                  <li class="slide-item">
+                    <div class="node node-usanetwork-promo">
+                      <a href="<?php print $eitem['url']; ?>">
+                        <div class="asset-img">
+                          <img
+                            src="<?php print $eitem['images']['thumbnail']; ?>"
+                            alt="">
+                        </div>
+                        <div class="meta-wrapper">
+                          <div class="meta-wrapper-inner">
+                            <div class="meta">
+                              <div
+                                class="title"><?php print $eitem['title']; ?></div>
+                              <div
+                                class="additional"><?php print $eitem['duration']; ?></div>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                <?php } ?>
+              </ul>
+            </div>
+          </div>
+          <!--  end endcart -->
           <?php if (!empty($watchwith) && !empty($ww_airing_id)) : ?>
             <div ng-non-bindable>
               <div id="wwRootContainer">
@@ -96,79 +172,6 @@
                 </watchwith>
               </div>
             </div>
-            <!--  start endcart        -->
-            <div class="close endcard_block" data-end-card="usaEndCard"
-                 data-ng-click="hideShowCard()"></div>
-            <div class="reload-button endcard_top" data-end-card="usaEndCard"
-                 data-ng-click="replayVideo()">
-              <div class="replay-title">replay</div>
-              <div
-                class="episode-title"><?php print $next_video['title']; ?></div>
-            </div>
-            <div id="episode-up-next" class="endcard_block endcard_topRight"
-                 data-end-card="usaEndCard"
-                 data-next-url="<?php print $next_video['url']; ?>">
-              <h3>up next...</h3>
-              <div class="node node-usanetwork-promo">
-                <a href="<?php print $next_video['url']; ?>" class="link">
-                  <div class="asset-img">
-                    <img
-                      src="<?php print $next_video['images']['thumbnail']; ?>"
-                      class="img" alt="">
-                  </div>
-                  <div class="meta-wrapper">
-                    <div class="meta-wrapper-inner">
-                      <div class="meta">
-                        <div class="additional">S<span
-                            class="season"><?php print $next_video['season']; ?></span>
-                          EP<span
-                            class="episode"><?php print $next_video['episode']; ?></span>:
-                        </div>
-                        <div
-                          class="title"><?php print $next_video['title']; ?></div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div id="episode-share" class="endcard_block endcard_bottomLeft"
-                 data-end-card="usaEndCard">
-              <h3>share this episode</h3>
-            </div>
-            <div id="episode-related" class="endcard_block endcard_bottomRight"
-                 data-end-card="usaEndCard">
-              <h3>related video clips</h3>
-
-              <div id="player-episodes-list" class="player-episodes-list">
-                <ul class="related-slider">
-                  <?php foreach ($endcard as $eitem) { ?>
-                    <li class="slide-item">
-                      <div class="node node-usanetwork-promo">
-                        <a href="<?php print $eitem['url']; ?>">
-                          <div class="asset-img">
-                            <img
-                              src="<?php print $eitem['images']['thumbnail']; ?>"
-                              alt="">
-                          </div>
-                          <div class="meta-wrapper">
-                            <div class="meta-wrapper-inner">
-                              <div class="meta">
-                                <div
-                                  class="title"><?php print $eitem['title']; ?></div>
-                                <div
-                                  class="additional"><?php print $eitem['duration']; ?></div>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-                  <?php } ?>
-                </ul>
-              </div>
-            </div>
-            <!--  end endcart        -->
           <?php endif; ?>
         </div>
         <?php

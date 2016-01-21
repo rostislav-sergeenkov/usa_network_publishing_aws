@@ -19,7 +19,7 @@
               endCardBlocks = ng.element('[data-end-card="usaEndCard"]'),
               episodeShare = ng.element('#episode-share'),
               replayButton = ng.element('.reload-button'),
-          // breakpoint value for showing end car
+          // breakpoint value for showing end card
           // 30 seconds before the end, used milliseconds
               bpTimeShowEndCard = 30000,
           // redirect timeout for Up Next Episode
@@ -71,8 +71,6 @@
             // add $pdk.controller listeners
             addPDKEventListeners: function () {
 
-              console.info('addPDKEventListeners');
-
               $pdk.controller.addEventListener('OnReleaseStart', _onReleaseStart);
               $pdk.controller.addEventListener('OnMediaPlaying', _onMediaPlaying);
               $pdk.controller.addEventListener('OnMediaSeek', _onMediaSeek);
@@ -109,8 +107,6 @@
                * @private
                */
               function _onMediaPlaying(pdkEvent) {
-
-                console.info('_onMediaPlaying');
 
                 var playingCurrentTimeAggregate = pdkEvent.data.currentTimeAggregate,
                     playingDurationAggregate = pdkEvent.data.durationAggregate,
@@ -170,8 +166,6 @@
                * @private
                */
               function _onMediaSeek(pdkEvent) {
-
-                console.info('_onMediaSeek');
 
                 var seekDurationAggregate = pdkEvent.data.end.durationAggregate,
                     seekCurrentTimeAggregate = pdkEvent.data.end.currentTimeAggregate,
@@ -243,14 +237,12 @@
                 var episodeUpNextUrl = episodeUpNext.data('next-url'),
                     nextUrl = window.location.origin + episodeUpNextUrl;
 
-                //window.location.replace(nextUrl);
+                //window.location.replace(nextUrl); //todo remove commnt
               }, timeoutEndCard);
             },
 
             // share bar
             initGigyaSharebar: function (data) {
-
-              console.info('initGigyaSharebar');
 
               if (typeof Drupal.gigya != 'undefined') {
                 if (episodeShare.length > 0) {
@@ -382,7 +374,6 @@
                     delay: 100,
                     duration: 500,
                     complete: function (elements) {
-                      console.info('anime');
                       statusShowEndCard = true;
                       statusProcessed = false;
                     }
@@ -450,9 +441,6 @@
 
             // Init all vertical carousels
             initRelatedSlider: function () {
-
-              console.info('initRelatedSlider');
-
               episodesRelatedSlider.mCustomScrollbar({
                 axis: "y",
                 autoHideScrollbar: false,
@@ -564,8 +552,6 @@
 
           return {
             init: function (data) {
-
-              console.info('init end card');
 
               data = data || {};
 

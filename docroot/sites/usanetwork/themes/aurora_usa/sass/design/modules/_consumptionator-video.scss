@@ -491,9 +491,13 @@
             }
           }
         }
-        iframe {
+        .pdk-player-wrap {
           height: 100%;
           width: 100%;
+        }
+        iframe {
+          height: 100%!important;
+          width: 100%!important;
         }
       }
     }

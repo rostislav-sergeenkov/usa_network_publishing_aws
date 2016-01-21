@@ -1611,16 +1611,6 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');
       }
 
-      if ($season_number_field = field_get_items('file', $file, 'field_mpx_season_number')) {
-        $season_number = reset($season_number_field);
-        $vars['season_number'] = $season_number['value'];
-      }
-
-      if ($episode_number_field = field_get_items('file', $file, 'field_mpx_full_episode')) {
-        $episode_number = reset($episode_number_field);
-        $vars['episode_number'] = $episode_number['value'];
-      }
-
       $image_path = _usanetwork_mpx_video_get_image_path($file);
 
       $image = theme_image(array(
@@ -1656,6 +1646,29 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         }
       }
       $vars['endcard'] = usanetwork_get_endcard_variables($file);
+
+      $endcard_timing = _usanetwork_get_field_item('file', $file, 'field_endcard_timing', 'value');
+      if (empty($endcard_timing)) {
+        if ($full_episode) {
+          $enabled = TRUE;
+          $time = variable_get('usanetwork_endcard_global_time', 30);
+        } else {
+          $enabled = FALSE;
+          $time = NULL;
+        }
+      } else if ($endcard_timing == "disable") {
+        $enabled = FALSE;
+        $time = NULL;
+      } else if ($endcard_timing == "enable") {
+        $enabled = TRUE;
+        $time = variable_get('usanetwork_endcard_global_time', 30);
+      } else {
+        $enabled = TRUE;
+        $endcard_custom_time = _usanetwork_get_field_item('file', $file, 'field_custom_time', 'value');
+        $time = (!empty($endcard_custom_time)) ? $endcard_custom_time : NULL;
+      }
+      $vars['endcard_enabled'] = $enabled;
+      $vars['endcard_time'] = (!empty($time)) ? ($time * 1000) : NULL;
     }
   }
   // Fill H1 tag.
@@ -2908,4 +2921,34 @@ function _usanetwork_mpx_video_get_image_path($file){
     }
   }
   return $image_path;
+}
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+  $form['endcard'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Endcard settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['endcard']['usanetwork_endcard_global_time'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Endcard Global Time'),
+    '#description' => t('Time provided in seconds'),
+    '#default_value' => variable_get('usanetwork_endcard_global_time', 30),
+  );
+}
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_mpx_video_form_file_entity_edit_alter(&$form, &$form_state, $form_id) {
+  $form['field_custom_time']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_endcard_timing[und]"]' => array('value' => 'enable_custom'),
+    ),
+  );
 }

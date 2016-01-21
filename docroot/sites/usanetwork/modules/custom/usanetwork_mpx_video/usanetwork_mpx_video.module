@@ -1655,6 +1655,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
           drupal_add_css($css_file, array('type' => 'external'));
         }
       }
+      $vars['endcard'] = usanetwork_get_endcard_variables($file);
     }
   }
   // Fill H1 tag.

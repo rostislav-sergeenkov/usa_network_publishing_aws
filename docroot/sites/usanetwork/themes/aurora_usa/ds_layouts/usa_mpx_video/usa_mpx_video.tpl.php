@@ -2,7 +2,8 @@
 <div class="video-block"
      data-tve-player
      data-usa-tve-player-container
-     data-show-end-card="true">
+     data-show-end-card="<?php print $enabled; ?>"
+     data-end-card-time="<?php print $endcard_time; ?>">
   <div class="player-wrapper">
     <div class="node usanetwork-aspot player">
       <?php if (!empty($video_inactive)): ?>

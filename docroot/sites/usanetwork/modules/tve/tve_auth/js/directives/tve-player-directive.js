@@ -78,10 +78,8 @@
                     $pdk.controller.clickPlayButton(true);
                   });
 
-                  console.info('isShowEndCard ' + isShowEndCard);
                   // init end card service
                   if (isShowEndCard) {
-                    console.info('isShowEndCard ' + isShowEndCard);
                     usaEndCardService.init(data);
                   }
                 }

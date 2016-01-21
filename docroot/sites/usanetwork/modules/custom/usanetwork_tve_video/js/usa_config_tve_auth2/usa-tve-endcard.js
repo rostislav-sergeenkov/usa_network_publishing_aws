@@ -236,7 +236,7 @@
                 var episodeUpNextUrl = episodeUpNext.data('next-url'),
                     nextUrl = window.location.origin + episodeUpNextUrl;
 
-                window.location.replace(nextUrl); //todo remove commnt
+                window.location.replace(nextUrl);
               }, timeoutEndCard);
             },
 

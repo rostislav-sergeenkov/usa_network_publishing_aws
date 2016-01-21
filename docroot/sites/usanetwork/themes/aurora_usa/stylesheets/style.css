@@ -29656,6 +29656,9 @@ yx-axis
 .schedule-wrapper .schedule-table ul li.date-separate .date-shcedule {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
 }
+.schedule-wrapper .schedule-table ul li.date-separate + li.active {
+  border-top: 1px solid #dbdcdd;
+}
 .schedule-wrapper .schedule-table ul li {
   float: none;
   margin: 0;
@@ -30041,6 +30044,9 @@ yx-axis
 }
 .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description:before {
   content: '\e61b';
+}
+.schedule-wrapper .schedule-table ul li.active + li.date-separate {
+  border-top: 1px solid #dbdcdd;
 }
 
 @media (max-width: 1024px) {

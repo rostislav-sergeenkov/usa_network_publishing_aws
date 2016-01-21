@@ -2,6 +2,10 @@
 (function (ng, $) {
   'use strict';
 
+  if (!(ng = window.angular)) {
+    return;
+  }
+
   ng.module('tve.directives')
       .directive('usaTveHelpLink', ['$cookies', 'tveModal', 'authService',
         function ($cookies, tveModal, authService) {

@@ -3,8 +3,8 @@
   'use strict';
 
   ng.module('tve.directives')
-      .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx',
-        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx) {
+      .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx', 'usaEndCardService',
+        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx, usaEndCardService) {
           return {
             compile: function(tElement, tAttrs, transclude) {
               return function link(scope, element, attrs) {
@@ -15,6 +15,7 @@
 
                 var isLive = helper.toBoolean(attrs['live']),
                     rowId = attrs['mpxId'],
+                    isShowEndCard = attrs['showEndCard'] === 'true' ? true : false,
                     mpxId = !isLive && rowId && rowId.split('/').pop(),
                     resuming = false,
                     currentAsset, previouslyWatched, lastSave;
@@ -28,13 +29,27 @@
                 //  _bindPlayerEvents();
                 //}, 0);
 
-                window.$pdk.bindPlayerEvents = _bindPlayerEvents;
+                // create public method _bindPlayerEvents
+                // 1. player_Id - important, default id='pdk-player'
+                // 2. dataObj - used only for reinit end card
+                // you need prepare new dataApi with your params
+                // docroot/sites/usanetwork/modules/custom/usanetwork_tve_video/js/usa_config_tve_auth2/usa-tve-endcard.js
+                $pdk.bindPlayerEvents = _bindPlayerEvents;
+
+
+                // clear $pdk.controllers.listeners
+                $pdk.clearlisteners = function () {
+                  $pdk.controller.listenerId = 0;
+                  for (var key in $pdk.controller.listeners) {
+                    delete $pdk.controller.listeners[key];
+                  }
+                };
 
                 /**
                  * Bind Player Events
                  * @private
                  */
-                function _bindPlayerEvents() {
+                function _bindPlayerEvents(data) {
                   //rebind $pdk each time directive is loaded
                   $pdk.bind(tveConfig.PLAYER_ID);
 
@@ -59,6 +74,12 @@
                   $pdk.controller.addEventListener('OnLoadRelease', function() {
                     $pdk.controller.clickPlayButton(true);
                   });
+
+                  // init end card service
+                  if (isShowEndCard) {
+                    console.info('isShowEndCard: ' + isShowEndCard);
+                    usaEndCardService.init(data);
+                  }
                 }
 
                 function _showPicker() {

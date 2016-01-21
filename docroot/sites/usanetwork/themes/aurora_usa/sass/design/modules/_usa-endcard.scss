@@ -1,0 +1,468 @@
+// new usa end card
+[data-show-end-card="true"] {
+  // end card
+  .player {
+
+    // hide end card
+    .endcard_block {
+      display: none;
+      position: absolute;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    h3 {
+      color: #ffffff;
+      font-family: $avalon-book;
+      font-size: get-vw(28px, 1901);
+      letter-spacing: 0.5px;
+      line-height: 1;
+      margin: 0;
+      padding: get-vw(20px, 1901);
+      text-transform: uppercase;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 28px;
+        padding: 20px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(20.44px, 1024);
+        padding: get-vw(14.6px, 1024);
+      }
+      @include breakpoint($bp-640-width) {
+        font-size: 12.775px;
+        padding: 9.125px;
+      }
+    }
+
+    .close {
+      cursor: pointer;
+      background-color: $usa-endcard-dark;
+      right: 0;
+      height: get-vw(68px, 1901);
+      top: 0;
+      width: get-vw(68px, 1901);
+      z-index: 1;
+      &:before {
+        content: '\e623';
+        display: block;
+        font-family: $ico-font;
+        font-size: get-vw(30px, 1901);
+        line-height: get-vw(30px, 1901);
+        color: #ffffff;
+        margin: get-vw(-15px, 1901) 0 0 get-vw(-15px, 1901);
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        width: get-vw(30px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 30px;
+          line-height: 30px;
+          margin: -15px 0 0 -15px;
+          width: 30px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(21.9px, 1024);
+          line-height: get-vw(21.9px, 1024);
+          margin: get-vw(-10.95px, 1024) 0 0 get-vw(-10.95px, 1024);
+          width: get-vw(21.9px, 1024);
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: 13.6875px;
+          line-height: 13.6875px;
+          margin: -6.84375px 0 0 -6.84375px;
+          width: 13.6875px;
+        }
+      }
+      &:hover {
+        background-color: #212121;
+      }
+      @include breakpoint($bp-min-1901-width) {
+        height: 68px;
+        width: 68px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(49.64px, 1024);
+        width: get-vw(49.64px, 1024);
+      }
+      @include breakpoint($bp-640-width) {
+        height: 31px;
+        width: 31px;
+      }
+    }
+
+    .pdk-player-wrap {
+      &.show-end-card{
+        @include breakpoint($bp-480-width) {
+          display: none;
+        }
+      }
+    }
+
+    // share button
+    .episode-share-bar-wrap {
+      display: table;
+      height: calc(100% - 68px);
+      width: 100%;
+      @include breakpoint($bp-480-width) {
+        display: block;
+      }
+    }
+
+    .episode-share-bar {
+      display: table-cell;
+      vertical-align: middle;
+      @include breakpoint($bp-480-width) {
+        display: block;
+      }
+
+      table {
+        margin: 0 auto;
+        max-width: 250px;
+        min-width: 150px;
+        width: 100%;
+        @include breakpoint($bp-1900-width) {
+          width: 220px;
+        }
+        @include breakpoint($bp-768-width) {
+          width: 150px;
+        }
+        @include breakpoint($bp-480-width) {
+          width: 31px;
+        }
+      }
+
+      .gig-button-container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      .usa-share-button {
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        padding: 5px 0 5px 50px;
+        position: relative;
+        @include breakpoint($bp-1900-width) {
+          margin-bottom: 15px;
+        }
+        @include breakpoint($bp-768-width) {
+          margin-bottom: 10px;
+          padding: 2px 0 2px 30px;
+        }
+        @include breakpoint($bp-480-width) {
+          border-radius: 0;
+          margin-bottom: 0;
+          padding: 0;
+        }
+        &:before {
+          color: #ffffff;
+          display: block;
+          font-family: "ico-font";
+          font-weight: normal;
+          font-size: 24px;
+          line-height: 55px;
+          left: 0;
+          text-align: center;
+          position: absolute;
+          top: 0;
+          width: 50px;
+          @include breakpoint($bp-1900-width) {
+            font-size: 18px;
+            line-height: 45px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: 14px;
+            line-height: 25px;
+            width: 30px;
+          }
+          @include breakpoint($bp-480-width) {
+            position: static;
+            line-height: 31px;
+            width: 31px;
+          }
+        }
+        .button-text {
+          color: #ffffff;
+          font-family: $avalon-book;
+          font-size: 20px;
+          line-height: 45px;
+          text-align: center;
+          @include breakpoint($bp-1900-width) {
+            font-size: 16px;
+            line-height: 35px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: 12px;
+            line-height: 20px;
+          }
+          @include breakpoint($bp-480-width) {
+            display: none;
+          }
+        }
+      }
+
+      .Facebook {
+        border-bottom: 1px solid #163492;
+        @include background-image(linear-gradient(#547fce, #3159b0));
+        &:before {
+          content: '\e618';
+        }
+        .button-text {
+          border-left: 1px solid #547fce;
+        }
+      }
+      .Twitter {
+        border-bottom: 1px solid #1e88cf;
+        @include background-image(linear-gradient(#5bc1f1, #40aee0));
+        &:before {
+          content: '\e619';
+        }
+        .button-text {
+          border-left: 1px solid #5bc1f1;
+        }
+      }
+      .Share {
+        border-bottom: 1px solid #707070;
+        margin-bottom: 0;
+        @include background-image(linear-gradient(#a8a8a8, #929292));
+        &:before {
+          content: '\e622';
+        }
+        .button-text {
+          border-left: 1px solid #a8a8a8;
+        }
+      }
+    }
+
+    // reload button
+    .reload-button {
+      display: none;
+      @include breakpoint($bp-480-width) {
+        border-bottom: 1px solid #676767;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: none;
+        background: #333333;
+        height: 31px;
+        margin-right: 31px;
+        padding-left: 31px;
+        width: calc(100% - 31px);
+        &:before {
+          display: block;
+          content: '\e624';
+          color: #ffffff;
+          font-family: "ico-font";
+          font-weight: normal;
+          font-size: 20px;
+          line-height: 31px;
+          left: 0;
+          text-align: center;
+          position: absolute;
+          top: 0;
+          width: 31px;
+        }
+      }
+      .replay-title {
+        font-family: $avalon-book;
+        font-size: 12px;
+        line-height: 15px;
+        margin-left: 5px;
+        text-transform: capitalize;
+      }
+      .episode-title {
+        font-family: $avalon-book;
+        font-size: 12px;
+        line-height: 15px;
+        margin-left: 5px;
+      }
+    }
+
+    // episode-up-next
+    .endcard_topRight {
+      background-color: $aspot-shadow;
+      right: 0;
+      height: 50%;
+      top: 0;
+      width: 55%;
+      @include breakpoint($bp-480-width) {
+        left: 0;
+        height: calc(100% - 31px);
+        right: auto;
+        top: 31px;
+        width: 50%;
+      }
+      .node-usanetwork-promo {
+        margin: 0 auto;
+        width: 100%;
+        a {
+          color: #ffffff;
+          .asset-img {
+            margin: 0 auto get-vw(25px, 1901);
+            min-width: 80px;
+            max-width: 409px;
+            width: 46.3%;
+            @include breakpoint($bp-min-1901-width) {
+              margin: 0 auto 25px;
+            }
+            @include breakpoint($bp-1024-width) {
+              margin: 0 auto get-vw(18.25px, 1901);
+            }
+            @include breakpoint($bp-640-width) {
+              margin: 0 auto 11.4px;
+            }
+          }
+          img {
+            height: 100%;
+            width: 100%;
+          }
+        }
+        .meta {
+          font-size: get-vw(18px, 1901);
+          margin: 0 auto;
+          text-align: center;
+          width: 70%;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 18px;
+          }
+          @include breakpoint($bp-1024-width) {
+            font-size: get-vw(13.14px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: 9.86px;
+          }
+        }
+        .additional, .title {
+          display: inline-block;
+        }
+      }
+    }
+
+    // episode-share
+    .endcard_bottomLeft{
+      background-color: $aspot-shadow;
+      left: 0;
+      height: 50%;
+      bottom: 0;
+      width: 45%;
+      @include breakpoint($bp-480-width) {
+        height: calc(100% - 31px);
+        left: auto;
+        right: 0;
+        width: 31px;
+      }
+      h3 {
+        @include breakpoint($bp-480-width) {
+          display: none;
+        }
+      }
+    }
+
+    // episode-related
+    .endcard_bottomRight {
+      background-color: $usa-endcard-dark;
+      right: 0;
+      height: 50%;
+      bottom: 0;
+      width: 55%;
+      @include breakpoint($bp-480-width) {
+        bottom: auto;
+        height: calc(100% - 31px);
+        right: 31px;
+        top: 31px;
+        width: calc(50% - 31px);
+      }
+      .player-episodes-list {
+        margin: 0 auto;
+        height: calc(100% - 6.73vw);
+        width: 85%;
+        @include breakpoint($bp-min-1901-width) {
+          height: calc(100% - 128px);
+        }
+        @include breakpoint($bp-1024-width) {
+          height: calc(100% - 9.127vw);
+        }
+        @include breakpoint($bp-640-width) {
+          height: calc(100% - 58.4px);
+        }
+        @include breakpoint($bp-480-width) {
+          width: 90%;
+        }
+        li {
+          @include clear();
+          margin-bottom: get-vw(18px, 1901);
+          text-align: left;
+          @include breakpoint($bp-min-1901-width) {
+            margin-bottom: 18px;
+          }
+          @include breakpoint($bp-1024-width) {
+            margin-bottom: get-vw(13.14px, 1024);
+          }
+          @include breakpoint($bp-640-width) {
+            margin-bottom: 8.2px;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+          .asset-img {
+            display: inline-block;
+            margin-right: get-vw(20px, 1901);
+            width: get-vw(175px, 1901);
+            @include breakpoint($bp-min-1901-width) {
+              margin-right: 20px;
+              width: 175px;
+            }
+            @include breakpoint($bp-1024-width) {
+              margin-right: get-vw(14.6px, 1024);
+              width: get-vw(127.78px, 1024);
+            }
+            @include breakpoint($bp-640-width) {
+              margin-right: 9.125px;
+              width: 80px;
+            }
+            @include breakpoint($bp-480-width) {
+              display: block;
+              margin-right: 0;
+            }
+          }
+          .meta-wrapper {
+            color: white;
+            font-family: $avalon-medium;
+            font-size: get-vw(20px, 1901);
+            display: inline-block;
+            vertical-align: top;
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 20px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: get-vw(14.6px, 1024);
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 9.125px;
+            }
+            @include breakpoint($bp-480-width) {
+              display: block;
+              width: calc(100% - 16px);
+            }
+            .title {
+              margin: get-vw(5px, 1901) 0 get-vw(8px, 1901);
+              @include breakpoint($bp-min-1901-width) {
+                margin: 5px 0 8px;
+              }
+              @include breakpoint($bp-1024-width) {
+                margin: get-vw(3.65px, 1024) 0 get-vw(5.84px, 1024);
+              }
+              @include breakpoint($bp-640-width) {
+                margin: 2.28125px 0 3.65px;
+              }
+            }
+          }
+        }
+      }
+      .related-slider {
+        height: 100%;
+      }
+    }
+  }
+}

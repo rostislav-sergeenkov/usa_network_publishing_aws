@@ -1,4 +1,8 @@
-<div class="video-block" data-tve-player>
+<?php $next_video = array_shift($endcard) ?>
+<div class="video-block"
+     data-tve-player
+     data-usa-tve-player-container
+     data-show-end-card="true">
   <div class="player-wrapper">
     <div class="node usanetwork-aspot player">
       <?php if (!empty($video_inactive)): ?>
@@ -57,14 +61,16 @@
                   alt=""/>
               <?php endif; ?>
               <div class="sign-in-wrapper">
-                <span class="sign-in-button"><?php print t('sign in and watch'); ?></span>
+                <span
+                  class="sign-in-button"><?php print t('sign in and watch'); ?></span>
               </div>
             </a>
           </div>
         </div>
         <div class="video-player-wrapper" data-ng-show="global.isAuthN">
           <?php if ($is_live): ?>
-            <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+            <iframe allowfullscreen="" id="videoplayer" width="100%"
+                    height="100%" frameborder="0"></iframe>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
             <?php
@@ -83,20 +89,94 @@
             <div ng-non-bindable>
               <div id="wwRootContainer">
                 <watchwith
-                    airing-id="<?php print $ww_airing_id; ?>"
-                    access-key="<?php print variable_get('usanetwork_ww_access_key', 'SBSXJZHX4R5'); ?>"
-                    player-element="#pdk-player"
-                    player-type="mpx">
+                  airing-id="<?php print $ww_airing_id; ?>"
+                  access-key="<?php print variable_get('usanetwork_ww_access_key', 'SBSXJZHX4R5'); ?>"
+                  player-element="#pdk-player"
+                  player-type="mpx">
                 </watchwith>
               </div>
             </div>
+            <!--  start endcart        -->
+            <div class="close endcard_block" data-end-card="usaEndCard"
+                 data-ng-click="hideShowCard()"></div>
+            <div class="reload-button endcard_top" data-end-card="usaEndCard"
+                 data-ng-click="replayVideo()">
+              <div class="replay-title">replay</div>
+              <div
+                class="episode-title"><?php print $next_video['title']; ?></div>
+            </div>
+            <div id="episode-up-next" class="endcard_block endcard_topRight"
+                 data-end-card="usaEndCard"
+                 data-next-url="<?php print $next_video['url']; ?>">
+              <h3>up next...</h3>
+              <div class="node node-usanetwork-promo">
+                <a href="<?php print $next_video['url']; ?>" class="link">
+                  <div class="asset-img">
+                    <img
+                      src="<?php print $next_video['images']['thumbnail']; ?>"
+                      class="img" alt="">
+                  </div>
+                  <div class="meta-wrapper">
+                    <div class="meta-wrapper-inner">
+                      <div class="meta">
+                        <div class="additional">S<span
+                            class="season"><?php print $next_video['season']; ?></span>
+                          EP<span
+                            class="episode"><?php print $next_video['episode']; ?></span>:
+                        </div>
+                        <div
+                          class="title"><?php print $next_video['title']; ?></div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div id="episode-share" class="endcard_block endcard_bottomLeft"
+                 data-end-card="usaEndCard">
+              <h3>share this episode</h3>
+            </div>
+            <div id="episode-related" class="endcard_block endcard_bottomRight"
+                 data-end-card="usaEndCard">
+              <h3>related video clips</h3>
+
+              <div id="player-episodes-list" class="player-episodes-list">
+                <ul class="related-slider">
+                  <?php foreach ($endcard as $eitem) { ?>
+                    <li class="slide-item">
+                      <div class="node node-usanetwork-promo">
+                        <a href="<?php print $eitem['url']; ?>">
+                          <div class="asset-img">
+                            <img
+                              src="<?php print $eitem['images']['thumbnail']; ?>"
+                              alt="">
+                          </div>
+                          <div class="meta-wrapper">
+                            <div class="meta-wrapper-inner">
+                              <div class="meta">
+                                <div
+                                  class="title"><?php print $eitem['title']; ?></div>
+                                <div
+                                  class="additional"><?php print $eitem['duration']; ?></div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                  <?php } ?>
+                </ul>
+              </div>
+            </div>
+            <!--  end endcart        -->
           <?php endif; ?>
         </div>
-      <?php
+        <?php
       else: ?>
         <div class="video-player-wrapper">
           <?php if ($is_live): ?>
-            <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+            <iframe allowfullscreen="" id="videoplayer" width="100%"
+                    height="100%" frameborder="0"></iframe>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
             <?php
@@ -127,7 +207,8 @@
       <div class="download-app">
         <div class="download-app-wrapper">
           <div class="image-block"></div>
-          <div class="text-block"><?php print t('Get USA NOW to watch full episodes from any device.'); ?></div>
+          <div
+            class="text-block"><?php print t('Get USA NOW to watch full episodes from any device.'); ?></div>
           <div class="download-button show-color">
             <a href="/app" target="_self">
               <?php print t('Download the app'); ?>
@@ -139,7 +220,8 @@
       <div class="download-app">
         <div class="download-app-wrapper">
           <div class="image-block"></div>
-          <div class="text-block"><?php print t('Get USA NOW to watch full episodes from any device.'); ?></div>
+          <div
+            class="text-block"><?php print t('Get USA NOW to watch full episodes from any device.'); ?></div>
           <div class="download-button show-color">
             <a href="/app" target="_self">
               <?php print t('Download the app'); ?>
@@ -147,7 +229,7 @@
           </div>
         </div>
       </div>
-        <?php if (!empty($clips_block)): print $clips_block; endif;?>
+      <?php if (!empty($clips_block)): print $clips_block; endif; ?>
     <?php endif; ?>
   </div>
 </div>

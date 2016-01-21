@@ -14766,8 +14766,8 @@ footer h2 {
   }
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper iframe, .page-videos-live .video-block .player-wrapper .video-player-wrapper iframe {
-  height: 100% !important;
-  width: 100% !important;
+  height: 100%;
+  width: 100%;
 }
 .consumptionator-page .video-block #player, .page-videos-live .video-block #player {
   height: 100%;
@@ -34277,6 +34277,565 @@ body.blog .view-display-id-blog_content .views-row {
 
 .touch .desktop-only {
   display: none;
+}
+
+[data-show-end-card="true"] .player .endcard_block {
+  display: none;
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+}
+[data-show-end-card="true"] .player h3 {
+  color: #ffffff;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 1.47291vw;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  margin: 0;
+  padding: 1.05208vw;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="true"] .player h3 {
+    font-size: 28px;
+    padding: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="true"] .player h3 {
+    font-size: 1.99609vw;
+    padding: 1.42578vw;
+  }
+}
+@media (max-width: 640px) {
+  [data-show-end-card="true"] .player h3 {
+    font-size: 12.775px;
+    padding: 9.125px;
+  }
+}
+[data-show-end-card="true"] .player .close {
+  cursor: pointer;
+  background-color: #2b2b2b;
+  right: 0;
+  height: 3.57706vw;
+  top: 0;
+  width: 3.57706vw;
+  z-index: 1;
+}
+[data-show-end-card="true"] .player .close:before {
+  content: '\e623';
+  display: block;
+  font-family: "ico-font";
+  font-size: 1.57812vw;
+  line-height: 1.57812vw;
+  color: #ffffff;
+  margin: -0.78906vw 0 0 -0.78906vw;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 1.57812vw;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="true"] .player .close:before {
+    font-size: 30px;
+    line-height: 30px;
+    margin: -15px 0 0 -15px;
+    width: 30px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="true"] .player .close:before {
+    font-size: 2.13867vw;
+    line-height: 2.13867vw;
+    margin: -1.06934vw 0 0 -1.06934vw;
+    width: 2.13867vw;
+  }
+}
+@media (max-width: 640px) {
+  [data-show-end-card="true"] .player .close:before {
+    font-size: 13.6875px;
+    line-height: 13.6875px;
+    margin: -6.84375px 0 0 -6.84375px;
+    width: 13.6875px;
+  }
+}
+[data-show-end-card="true"] .player .close:hover {
+  background-color: #212121;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="true"] .player .close {
+    height: 68px;
+    width: 68px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="true"] .player .close {
+    height: 4.84766vw;
+    width: 4.84766vw;
+  }
+}
+@media (max-width: 640px) {
+  [data-show-end-card="true"] .player .close {
+    height: 31px;
+    width: 31px;
+  }
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .pdk-player-wrap.show-end-card {
+    display: none;
+  }
+}
+[data-show-end-card="true"] .player .episode-share-bar-wrap {
+  display: table;
+  height: calc(100% - 68px);
+  width: 100%;
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .episode-share-bar-wrap {
+    display: block;
+  }
+}
+[data-show-end-card="true"] .player .episode-share-bar {
+  display: table-cell;
+  vertical-align: middle;
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .episode-share-bar {
+    display: block;
+  }
+}
+[data-show-end-card="true"] .player .episode-share-bar table {
+  margin: 0 auto;
+  max-width: 250px;
+  min-width: 150px;
+  width: 100%;
+}
+@media (max-width: 1900px) {
+  [data-show-end-card="true"] .player .episode-share-bar table {
+    width: 220px;
+  }
+}
+@media (max-width: 768px) {
+  [data-show-end-card="true"] .player .episode-share-bar table {
+    width: 150px;
+  }
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .episode-share-bar table {
+    width: 31px;
+  }
+}
+[data-show-end-card="true"] .player .episode-share-bar .gig-button-container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+[data-show-end-card="true"] .player .episode-share-bar .usa-share-button {
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 5px 0 5px 50px;
+  position: relative;
+}
+@media (max-width: 1900px) {
+  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button {
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 768px) {
+  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button {
+    margin-bottom: 10px;
+    padding: 2px 0 2px 30px;
+  }
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button {
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 0;
+  }
+}
+[data-show-end-card="true"] .player .episode-share-bar .usa-share-button:before {
+  color: #ffffff;
+  display: block;
+  font-family: "ico-font";
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 55px;
+  left: 0;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  width: 50px;
+}
+@media (max-width: 1900px) {
+  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button:before {
+    font-size: 18px;
+    line-height: 45px;
+  }
+}
+@media (max-width: 768px) {
+  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button:before {
+    font-size: 14px;
+    line-height: 25px;
+    width: 30px;
+  }
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button:before {
+    position: static;
+    line-height: 31px;
+    width: 31px;
+  }
+}
+[data-show-end-card="true"] .player .episode-share-bar .usa-share-button .button-text {
+  color: #ffffff;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 45px;
+  text-align: center;
+}
+@media (max-width: 1900px) {
+  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button .button-text {
+    font-size: 16px;
+    line-height: 35px;
+  }
+}
+@media (max-width: 768px) {
+  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button .button-text {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button .button-text {
+    display: none;
+  }
+}
+[data-show-end-card="true"] .player .episode-share-bar .Facebook {
+  border-bottom: 1px solid #163492;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #547fce), color-stop(100%, #3159b0));
+  background-image: -webkit-linear-gradient(#547fce, #3159b0);
+  background-image: -moz-linear-gradient(#547fce, #3159b0);
+  background-image: -o-linear-gradient(#547fce, #3159b0);
+  background-image: linear-gradient(#547fce, #3159b0);
+}
+[data-show-end-card="true"] .player .episode-share-bar .Facebook:before {
+  content: '\e618';
+}
+[data-show-end-card="true"] .player .episode-share-bar .Facebook .button-text {
+  border-left: 1px solid #547fce;
+}
+[data-show-end-card="true"] .player .episode-share-bar .Twitter {
+  border-bottom: 1px solid #1e88cf;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5bc1f1), color-stop(100%, #40aee0));
+  background-image: -webkit-linear-gradient(#5bc1f1, #40aee0);
+  background-image: -moz-linear-gradient(#5bc1f1, #40aee0);
+  background-image: -o-linear-gradient(#5bc1f1, #40aee0);
+  background-image: linear-gradient(#5bc1f1, #40aee0);
+}
+[data-show-end-card="true"] .player .episode-share-bar .Twitter:before {
+  content: '\e619';
+}
+[data-show-end-card="true"] .player .episode-share-bar .Twitter .button-text {
+  border-left: 1px solid #5bc1f1;
+}
+[data-show-end-card="true"] .player .episode-share-bar .Share {
+  border-bottom: 1px solid #707070;
+  margin-bottom: 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a8a8a8), color-stop(100%, #929292));
+  background-image: -webkit-linear-gradient(#a8a8a8, #929292);
+  background-image: -moz-linear-gradient(#a8a8a8, #929292);
+  background-image: -o-linear-gradient(#a8a8a8, #929292);
+  background-image: linear-gradient(#a8a8a8, #929292);
+}
+[data-show-end-card="true"] .player .episode-share-bar .Share:before {
+  content: '\e622';
+}
+[data-show-end-card="true"] .player .episode-share-bar .Share .button-text {
+  border-left: 1px solid #a8a8a8;
+}
+[data-show-end-card="true"] .player .reload-button {
+  display: none;
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .reload-button {
+    border-bottom: 1px solid #676767;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: none;
+    background: #333333;
+    height: 31px;
+    margin-right: 31px;
+    padding-left: 31px;
+    width: calc(100% - 31px);
+  }
+  [data-show-end-card="true"] .player .reload-button:before {
+    display: block;
+    content: '\e624';
+    color: #ffffff;
+    font-family: "ico-font";
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 31px;
+    left: 0;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    width: 31px;
+  }
+}
+[data-show-end-card="true"] .player .reload-button .replay-title {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  margin-left: 5px;
+  text-transform: capitalize;
+}
+[data-show-end-card="true"] .player .reload-button .episode-title {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  margin-left: 5px;
+}
+[data-show-end-card="true"] .player .endcard_topRight {
+  background-color: #333333;
+  right: 0;
+  height: 50%;
+  top: 0;
+  width: 55%;
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .endcard_topRight {
+    left: 0;
+    height: calc(100% - 31px);
+    right: auto;
+    top: 31px;
+    width: 50%;
+  }
+}
+[data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo {
+  margin: 0 auto;
+  width: 100%;
+}
+[data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo a {
+  color: #ffffff;
+}
+[data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo a .asset-img {
+  margin: 0 auto 1.3151vw;
+  min-width: 80px;
+  max-width: 409px;
+  width: 46.3%;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo a .asset-img {
+    margin: 0 auto 25px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo a .asset-img {
+    margin: 0 auto 0.96002vw;
+  }
+}
+@media (max-width: 640px) {
+  [data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo a .asset-img {
+    margin: 0 auto 11.4px;
+  }
+}
+[data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo a img {
+  height: 100%;
+  width: 100%;
+}
+[data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo .meta {
+  font-size: 0.94687vw;
+  margin: 0 auto;
+  text-align: center;
+  width: 70%;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo .meta {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo .meta {
+    font-size: 1.2832vw;
+  }
+}
+@media (max-width: 768px) {
+  [data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo .meta {
+    font-size: 9.86px;
+  }
+}
+[data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo .additional, [data-show-end-card="true"] .player .endcard_topRight .node-usanetwork-promo .title {
+  display: inline-block;
+}
+[data-show-end-card="true"] .player .endcard_bottomLeft {
+  background-color: #333333;
+  left: 0;
+  height: 50%;
+  bottom: 0;
+  width: 45%;
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .endcard_bottomLeft {
+    height: calc(100% - 31px);
+    left: auto;
+    right: 0;
+    width: 31px;
+  }
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .endcard_bottomLeft h3 {
+    display: none;
+  }
+}
+[data-show-end-card="true"] .player .endcard_bottomRight {
+  background-color: #2b2b2b;
+  right: 0;
+  height: 50%;
+  bottom: 0;
+  width: 55%;
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight {
+    bottom: auto;
+    height: calc(100% - 31px);
+    right: 31px;
+    top: 31px;
+    width: calc(50% - 31px);
+  }
+}
+[data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list {
+  margin: 0 auto;
+  height: calc(100% - 6.73vw);
+  width: 85%;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list {
+    height: calc(100% - 128px);
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list {
+    height: calc(100% - 9.127vw);
+  }
+}
+@media (max-width: 640px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list {
+    height: calc(100% - 58.4px);
+  }
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list {
+    width: 90%;
+  }
+}
+[data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li {
+  margin-bottom: 0.94687vw;
+  text-align: left;
+}
+[data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li {
+    margin-bottom: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li {
+    margin-bottom: 1.2832vw;
+  }
+}
+@media (max-width: 640px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li {
+    margin-bottom: 8.2px;
+  }
+}
+[data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li:last-child {
+  margin-bottom: 0;
+}
+[data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .asset-img {
+  display: inline-block;
+  margin-right: 1.05208vw;
+  width: 9.20568vw;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .asset-img {
+    margin-right: 20px;
+    width: 175px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .asset-img {
+    margin-right: 1.42578vw;
+    width: 12.47852vw;
+  }
+}
+@media (max-width: 640px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .asset-img {
+    margin-right: 9.125px;
+    width: 80px;
+  }
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .asset-img {
+    display: block;
+    margin-right: 0;
+  }
+}
+[data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
+  color: white;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 1.05208vw;
+  display: inline-block;
+  vertical-align: top;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
+    font-size: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
+    font-size: 1.42578vw;
+  }
+}
+@media (max-width: 640px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
+    font-size: 9.125px;
+  }
+}
+@media (max-width: 480px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
+    display: block;
+    width: calc(100% - 16px);
+  }
+}
+[data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper .title {
+  margin: 0.26302vw 0 0.42083vw;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper .title {
+    margin: 5px 0 8px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper .title {
+    margin: 0.35645vw 0 0.57031vw;
+  }
+}
+@media (max-width: 640px) {
+  [data-show-end-card="true"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper .title {
+    margin: 2.28125px 0 3.65px;
+  }
+}
+[data-show-end-card="true"] .player .endcard_bottomRight .related-slider {
+  height: 100%;
 }
 
 #admin-menu {

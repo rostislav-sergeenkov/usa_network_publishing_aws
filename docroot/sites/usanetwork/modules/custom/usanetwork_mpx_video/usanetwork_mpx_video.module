@@ -1647,6 +1647,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       }
       $vars['endcard'] = usanetwork_get_endcard_variables($file);
 
+      $enabled = FALSE;
       $endcard_timing = _usanetwork_get_field_item('file', $file, 'field_endcard_timing', 'value');
       if (empty($endcard_timing)) {
         if ($full_episode) {

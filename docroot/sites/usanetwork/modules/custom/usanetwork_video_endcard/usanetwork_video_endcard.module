@@ -1,7 +1,8 @@
 <?php
 
 define('USANETWORK_VIDEO_ENDCARD_RELATED_COUNT', 3);
-define('USANETWORK_VIDEO_ENDCARD_RELATED_VIDEO_COUNT', 4);
+define('USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT', 1);
+define('USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT', 10);
 
 /**
  * Implements hook_init().
@@ -334,6 +335,8 @@ function _usanetwork_video_endcard_get_term_depth($tid, $limit = 10) {
 }
 
 function usanetwork_get_endcard_variables($file) {
+  $related_files = array();
+
   // check if it's full episode
   $full_episode = reset(field_get_items('file', $file, 'field_mpx_full_episode'));
   if ($full_episode) {
@@ -346,7 +349,13 @@ function usanetwork_get_endcard_variables($file) {
     $filter_category = FALSE;
   }
 
-  $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_VIDEO_COUNT);
+  // We can add else statement for related files of short video.
+  if ($full_episode) {
+    $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT);
+    $related_clip_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT);
+    $related_files = array_merge($related_files, $related_clip_files);
+  }
+
   foreach ($related_files as $related_file) {
     $overriden_image_tumbnail = NULL;
     $desktop_image = NULL;

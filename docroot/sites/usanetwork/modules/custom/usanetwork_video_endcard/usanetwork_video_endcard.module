@@ -7,9 +7,9 @@ define('USANETWORK_VIDEO_ENDCARD_RELATED_VIDEO_COUNT', 4);
  * Implements hook_init().
  */
 function usanetwork_video_endcard_init() {
-  drupal_add_js(drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js', array(
-    'every_page' => true
-  ));
+//  drupal_add_js(drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js', array(
+//    'every_page' => true
+//  ));
 }
 
 /**

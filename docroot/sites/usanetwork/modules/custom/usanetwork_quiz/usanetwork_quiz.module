@@ -171,6 +171,28 @@ function usanetwork_quiz_field_extra_fields() {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_quiz_image_default_styles() {
+  $styles = array();
+
+  $styles['usanetwork_quiz_question_image'] = array(
+    'label' => t('Usanetwork Quiz question image'),
+    'effects' => array(
+      0 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 920
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_view().
  */
 function usanetwork_quiz_node_view($node, $view_mode, $langcode) {
@@ -427,7 +449,7 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_question(&$vars) {
     if (in_array($vars['type'], array('image', 'image_text'))) {
       $image = _usanetwork_quiz_get_field_item_value($question, 'field_quiz_question_image', 'uri', 0, 'field_collection_item');
       if (!empty($image)) {
-        $vars['image'] = theme('image', array('path' => $image));
+        $vars['image'] = theme('image_style', array('path' => $image, 'style_name' => 'usanetwork_quiz_question_image'));
       }
     }
     if (in_array($vars['type'], array('video', 'video_text'))) {

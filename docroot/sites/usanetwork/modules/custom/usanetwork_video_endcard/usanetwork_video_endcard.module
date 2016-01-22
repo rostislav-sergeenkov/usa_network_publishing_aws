@@ -383,6 +383,8 @@ function usanetwork_get_endcard_variables($file) {
       ),
     );
     $items[] = $item;
+  }
+  if (!empty($items)) {
     return $items;
   }
   return NULL;

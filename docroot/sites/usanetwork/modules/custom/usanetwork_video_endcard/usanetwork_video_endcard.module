@@ -8,9 +8,15 @@ define('USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT', 10);
  * Implements hook_init().
  */
 function usanetwork_video_endcard_init() {
-  drupal_add_js(drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js', array(
-    'every_page' => true
-  ));
+  $file = menu_get_object('file');
+  if ($file) {
+    $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode' , 'value');
+    if ($full_episode == '0') {
+      drupal_add_js(drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js', array(
+        'every_page' => true
+      ));
+    }
+  }
 }
 
 /**

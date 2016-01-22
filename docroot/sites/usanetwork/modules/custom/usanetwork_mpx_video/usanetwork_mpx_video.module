@@ -1650,7 +1650,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $enabled = FALSE;
       $endcard_timing = _usanetwork_get_field_item('file', $file, 'field_endcard_timing', 'value');
       if (empty($endcard_timing)) {
-        if ($full_episode) {
+        if ($full_episode['value'] == '1') {
           $enabled = TRUE;
           $time = variable_get('usanetwork_endcard_global_time', 30);
         } else {

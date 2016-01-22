@@ -133,6 +133,9 @@
         @include breakpoint($bp-1900-width) {
           width: 220px;
         }
+        @include breakpoint($between-1025-1280) {
+          width: 150px;
+        }
         @include breakpoint($bp-768-width) {
           width: 150px;
         }
@@ -155,6 +158,10 @@
         position: relative;
         @include breakpoint($bp-1900-width) {
           margin-bottom: 15px;
+        }
+        @include breakpoint($between-1025-1280) {
+          margin-bottom: 10px;
+          padding: 2px 0 2px 30px;
         }
         @include breakpoint($bp-768-width) {
           margin-bottom: 10px;
@@ -181,6 +188,11 @@
             font-size: 18px;
             line-height: 45px;
           }
+          @include breakpoint($between-1025-1280) {
+            font-size: 14px;
+            line-height: 25px;
+            width: 30px;
+          }
           @include breakpoint($bp-768-width) {
             font-size: 14px;
             line-height: 25px;
@@ -201,6 +213,10 @@
           @include breakpoint($bp-1900-width) {
             font-size: 16px;
             line-height: 35px;
+          }
+          @include breakpoint($between-1025-1280) {
+            font-size: 12px;
+            line-height: 20px;
           }
           @include breakpoint($bp-768-width) {
             font-size: 12px;

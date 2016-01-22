@@ -2375,7 +2375,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Time is provided in seconds',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -4908,6 +4908,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
   t('Queue items');
   t('Season Number');
   t('Show');
+  t('Time is provided in seconds');
   t('USA Video Term');
   t('WatchWith Airing ID');
 

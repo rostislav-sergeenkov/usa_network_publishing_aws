@@ -1009,7 +1009,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => '3LNQL1y4puoNX_iIGQCWiQ8OoIlXh5pG',
+      'guid' => 'BnULDNhXAWATIG1K6On5t5n4OBaKluHV',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1017,7 +1017,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'fNnIQoWWBOLtNrvBtA68WgJ8TRRKY_eN',
+      'guid' => '_wUbB7H98ZZDHb0xvgO2KzvkxP96DXFk',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -2938,7 +2938,7 @@ function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form
   $form['endcard']['usanetwork_endcard_global_time'] = array(
     '#type' => 'textfield',
     '#title' => t('Endcard Global Time'),
-    '#description' => t('Time provided in seconds'),
+    '#description' => t('Time is provided in seconds'),
     '#default_value' => variable_get('usanetwork_endcard_global_time', 30),
   );
 }

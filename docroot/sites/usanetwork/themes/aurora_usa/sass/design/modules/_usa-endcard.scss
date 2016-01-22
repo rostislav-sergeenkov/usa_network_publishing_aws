@@ -1,5 +1,5 @@
 // new usa end card
-[data-show-end-card="true"] {
+[data-show-end-card="1"] {
 
   .video-player-wrapper {
     &:hover {
@@ -339,7 +339,7 @@
             }
           }
           img {
-            height: 100%;
+            height: auto;
             width: 100%;
           }
         }

@@ -15,7 +15,7 @@
 
                 var isLive = helper.toBoolean(attrs['live']),
                     rowId = attrs['mpxId'],
-                    isShowEndCard = attrs['showEndCard'] === 'true' ? true : false,
+                    isShowEndCard = attrs['showEndCard'] === '1' ? true : false,
                     mpxId = !isLive && rowId && rowId.split('/').pop(),
                     resuming = false,
                     currentAsset, previouslyWatched, lastSave;

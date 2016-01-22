@@ -47,7 +47,7 @@
                     <?php endif; ?>
                   </div>
                   <?php if (!empty($promo['cta'])): ?>
-                    <div class="meta-button show-color tertiary <?php print !empty($promo['color_class']) ? $promo['color_class'] : 'no-show'; ?>"><?php print $promo['cta']; ?></div>
+                    <div class="meta-button show-color <?php print !empty($promo['color_class']) ? $promo['color_class'] : 'no-show'; ?>"><?php print $promo['cta']; ?></div>
                   <?php endif; ?>
                 </div>
                 <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'video-icon'; ?>"></div>

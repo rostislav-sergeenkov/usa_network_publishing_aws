@@ -3905,15 +3905,16 @@ ul.menu li {
 }
 
 .person-quotation {
+  border: 1px solid #e9eaeb;
+  clear: both;
+  display: block;
   font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 30px;
+  line-height: 1.5em;
+  margin: 54px 0 54px;
+  padding: 35px 55px;
   position: relative;
   text-align: center;
-  font-size: 30px;
-  padding: 35px 55px;
-  margin: 54px 0 54px;
-  border: 1px solid #e9eaeb;
-  display: block;
-  clear: both;
 }
 @media (max-width: 1280px) {
   .person-quotation {
@@ -29655,6 +29656,9 @@ yx-axis
 .schedule-wrapper .schedule-table ul li.date-separate .date-shcedule {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
 }
+.schedule-wrapper .schedule-table ul li.date-separate + li.active {
+  border-top: 1px solid #dbdcdd;
+}
 .schedule-wrapper .schedule-table ul li {
   float: none;
   margin: 0;
@@ -30040,6 +30044,9 @@ yx-axis
 }
 .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description:before {
   content: '\e61b';
+}
+.schedule-wrapper .schedule-table ul li.active + li.date-separate {
+  border-top: 1px solid #dbdcdd;
 }
 
 @media (max-width: 1024px) {

@@ -1464,9 +1464,8 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         }
       }
 
-      $file_field = field_get_items('file', $file, 'field_mpx_full_episode');
-      $full_episode = reset($file_field);
-      $vars['full_episode'] = $full_episode ? ($full_episode['value'] == '1' ? TRUE : FALSE) : FALSE;
+      $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
+      $vars['full_episode'] = ($full_episode == '1') ? TRUE : FALSE;
 
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
@@ -1647,29 +1646,52 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       }
       $vars['endcard'] = usanetwork_get_endcard_variables($file);
 
-      $enabled = FALSE;
+      if ($show) {
+        $show_endcard_timing = _usanetwork_get_field_item('node', $show, 'field_endcard_timing', 'value');
+        $show_endcard_custom_time = _usanetwork_get_field_item('node', $show, 'field_custom_time', 'value');
+      } else {
+        $show_endcard_timing = NULL;
+        $show_endcard_custom_time = NULL;
+      }
+
       $endcard_timing = _usanetwork_get_field_item('file', $file, 'field_endcard_timing', 'value');
-      if (empty($endcard_timing)) {
-        if ($full_episode['value'] == '1') {
-          $enabled = TRUE;
-          $time = variable_get('usanetwork_endcard_global_time', 30);
+      $endcard_custom_time = _usanetwork_get_field_item('file', $file, 'field_custom_time', 'value');
+
+      if ($full_episode == '1') {
+        if (empty($endcard_timing)) {
+          if (empty($show_endcard_timing)) {
+            $enabled = TRUE;
+            $time = variable_get('usanetwork_endcard_global_time', 30);
+          } else if ($show_endcard_timing == "disable") {
+            $enabled = FALSE;
+            $time = NULL;
+          } else if ($show_endcard_timing == "enable") {
+            $enabled = TRUE;
+            $time = variable_get('usanetwork_endcard_global_time', 30);
+          } else {
+            $enabled = TRUE;
+            $time = (!empty($show_endcard_custom_time)) ? $show_endcard_custom_time : variable_get('usanetwork_endcard_global_time', 30);
+          }
         } else {
-          $enabled = FALSE;
-          $time = NULL;
+          if ($endcard_timing == "disable") {
+            $enabled = FALSE;
+            $time = NULL;
+          } else if ($endcard_timing == "enable") {
+            $enabled = TRUE;
+            $time = variable_get('usanetwork_endcard_global_time', 30);
+          } else {
+            $enabled = TRUE;
+            $time = (!empty($endcard_custom_time)) ? $endcard_custom_time : variable_get('usanetwork_endcard_global_time', 30);
+          }
         }
-      } else if ($endcard_timing == "disable") {
+      } else {
         $enabled = FALSE;
         $time = NULL;
-      } else if ($endcard_timing == "enable") {
-        $enabled = TRUE;
-        $time = variable_get('usanetwork_endcard_global_time', 30);
-      } else {
-        $enabled = TRUE;
-        $endcard_custom_time = _usanetwork_get_field_item('file', $file, 'field_custom_time', 'value');
-        $time = (!empty($endcard_custom_time)) ? $endcard_custom_time : NULL;
       }
+
       $vars['endcard_enabled'] = $enabled;
       $vars['endcard_time'] = (!empty($time)) ? ($time * 1000) : NULL;
+
     }
   }
   // Fill H1 tag.
@@ -2944,12 +2966,15 @@ function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form
 }
 
 /**
- *  Implements hook_form_FORM_ID_alter().
+ *  Implements hook_form_FORM_alter().
  */
-function usanetwork_mpx_video_form_file_entity_edit_alter(&$form, &$form_state, $form_id) {
-  $form['field_custom_time']['#states'] = array(
-    'visible' => array(
-      ':input[name="field_endcard_timing[und]"]' => array('value' => 'enable_custom'),
-    ),
-  );
+function usanetwork_mpx_video_form_alter(&$form, &$form_state, $form_id) {
+
+  if (in_array($form_id, array('file_entity_edit', 'tv_show_node_form'))) {
+    $form['field_custom_time']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_endcard_timing[und]"]' => array('value' => 'enable_custom'),
+      ),
+    );
+  }
 }

@@ -313,7 +313,7 @@
                 var episodeUpNextUrl = episodeUpNext.data('next-url'),
                     nextUrl = window.location.origin + episodeUpNextUrl;
 
-                //window.location.replace(nextUrl);
+                window.location.replace(nextUrl);
               }, timeoutEndCard);
             },
 

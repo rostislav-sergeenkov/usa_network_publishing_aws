@@ -264,43 +264,79 @@
     // reload button
     .reload-button {
       display: none;
-      @include breakpoint($bp-480-width) {
-        border-bottom: 1px solid #676767;
-        box-sizing: border-box;
-        cursor: pointer;
-        display: none;
-        background: #333333;
-        height: 31px;
-        margin-right: 31px;
-        padding-left: 31px;
-        width: calc(100% - 31px);
-        &:before {
-          display: block;
-          content: '\e62c';
-          color: #ffffff;
-          font-family: "ico-font";
-          font-weight: normal;
-          font-size: 20px;
-          line-height: 31px;
-          left: 0;
-          text-align: center;
-          position: absolute;
-          top: 0;
-          width: 31px;
-        }
+      box-sizing: border-box;
+      cursor: pointer;
+      background-color: rgba(51,51,51,0.3);
+      height: 50%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 45%;
+      &:hover {
+        background-color: rgba(51,51,51,0.4);
+      }
+      &:before {
+        display: block;
+        content: '\e62c';
+        color: #ffffff;
+        font-family: $ico-font;
+        font-weight: normal;
+        font-size: 50px;
+        line-height: 50px;
+        margin: -33px 0 0 -25px;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 50px;
       }
       .replay-title {
         font-family: $avalon-book;
-        font-size: 12px;
-        line-height: 15px;
-        margin-left: 5px;
+        font-size: 16px;
+        line-height: 16px;
+        left: 0;
+        position: absolute;
+        top: calc(50% + 25px);
+        text-align: center;
         text-transform: capitalize;
+        width: 100%;
       }
       .episode-title {
-        font-family: $avalon-book;
-        font-size: 12px;
-        line-height: 15px;
-        margin-left: 5px;
+        display: none;
+      }
+      @include breakpoint($bp-480-width) {
+        border-bottom: 1px solid #676767;
+        background-color: #333333;
+        height: 31px;
+        margin-right: 31px;
+        padding-left: 31px;
+        position: relative;
+        width: calc(100% - 31px);
+        &:hover {
+          background-color: #333333;
+        }
+        &:before {
+          font-size: 20px;
+          line-height: 31px;
+          left: 0;
+          margin: 0;
+          top: 0;
+          width: 31px;
+        }
+        .replay-title {
+          font-size: 12px;
+          line-height: 15px;
+          padding-left: 5px;
+          position: static;
+          text-align: left;
+        }
+        .episode-title {
+          display: block;
+          font-family: $avalon-book;
+          font-size: 12px;
+          line-height: 15px;
+          padding-left: 5px;
+        }
       }
     }
 

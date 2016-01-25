@@ -93,7 +93,7 @@
           <?php if (!empty($endcard_enabled)) : ?>
             <div class="close endcard_block" data-end-card="usaEndCard"
                  data-ng-click="hideShowCard()"></div>
-            <div class="reload-button endcard_top" data-end-card="usaEndCard"
+            <div class="reload-button endcard_top" data-replay="usa-replay"
                  data-ng-click="replayVideo()">
               <div class="replay-title">replay</div>
               <div

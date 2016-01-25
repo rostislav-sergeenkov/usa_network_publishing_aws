@@ -18,7 +18,7 @@
               player = ng.element('[data-usa-tve-player="pdk-player"]'),
               endCardBlocks = ng.element('[data-end-card="usaEndCard"]'),
               episodeShare = ng.element('#episode-share'),
-              replayButton = ng.element('.reload-button'),
+              replayButton = ng.element('[data-replay="usa-replay"]'),
           // breakpoint value for showing end card used milliseconds
               bpTimeShowEndCard = parseInt(playerWrapper.data('end-card-time')),
           // redirect timeout for Up Next Episode
@@ -31,20 +31,24 @@
               statusProcessed = false,
               statusShowEndCard = false,
               statusHidePlayer = false,
+              statusEndRelease = false,
               isMobile = helper.device.isMobile,
               locationHref = window.location.href,
               shareBarWrapClass = 'episode-share-bar-wrap',
               shareBarInnerId = 'episode-share-bar',
               shareBarCounter = 0,
-              timeoutUpNext, dataApi;
+              easingAnimate = 'linear',
+              fadeIn = 'fadeIn',
+              fadeOut = 'fadeOut',
+              timeoutUpNext, dataApi, dataAnimate;
 
           // check $pdk object
           if (!($pdk = window.$pdk)) {
             return;
           }
 
+          // default app value
           dataApi = {
-            // default value
             reInit: false, // true || false
             addPDKEventListeners: false, // true || false, use only for reinit if all PDK Event Listeners was delete
             sharebarParams: {
@@ -63,6 +67,70 @@
             },
             relatedSlider: '', // template string '<div class="demo">demo</div>'
             replayEpisodeTitle: '' // string, active episode title
+          };
+
+          // settings for blocks animation, used milliseconds
+          dataAnimate = {
+            hide: {
+              mobile: {
+                player: {
+                  delay: 100,
+                  duration: 500
+                },
+                endCardBlocks: {
+                  delay: 0,
+                  duration: 350
+                },
+                replayButton: {
+                  delay: 0,
+                  duration: 350
+                }
+              },
+              desktop: {
+                player: {
+                  delay: 0,
+                  duration: 500
+                },
+                endCardBlocks: {
+                  delay: 0,
+                  duration: 350
+                },
+                replayButton: {
+                  delay: 0,
+                  duration: 0
+                }
+              }
+            },
+            show: {
+              mobile: {
+                player: {
+                  delay: 0,
+                  duration: 350
+                },
+                endCardBlocks: {
+                  delay: 100,
+                  duration: 500
+                },
+                replayButton: {
+                  delay: 100,
+                  duration: 500
+                }
+              },
+              desktop: {
+                player: {
+                  delay: 0,
+                  duration: 1000
+                },
+                endCardBlocks: {
+                  delay: 100,
+                  duration: 500
+                },
+                replayButton: {
+                  delay: 100,
+                  duration: 500
+                }
+              }
+            }
           };
 
           USAEndCardAPI = {
@@ -206,6 +274,10 @@
                 // reset value on default
                 statusClickOnCloseEndCard = false;
 
+                if (!isMobile && !USAEndCardAPI.checkWindowWidth() && !$rootScope.statusAd) {
+                  statusEndRelease = true;
+                }
+
                 // check scope.statusShowEndCard
                 // if status = false will fired callback
                 if (!statusShowEndCard && !$rootScope.statusAd) {
@@ -215,7 +287,12 @@
                   // show end card
                   // true params for mobile end card
                   USAEndCardAPI.showEndCard(USAEndCardAPI.timeoutUpNext);
-                } else if(statusShowEndCard && !$rootScope.statusAd) {
+                } else if (statusShowEndCard && !$rootScope.statusAd) {
+
+                  if (!isMobile && !USAEndCardAPI.checkWindowWidth()) {
+                    USAEndCardAPI.initAnimateElem(replayButton, fadeIn, dataAnimate.show.desktop.endCardBlocks);
+                  }
+
                   USAEndCardAPI.timeoutUpNext();
                 }
               }
@@ -230,7 +307,7 @@
             },
 
             // redirect to next episode
-            timeoutUpNext: function() {
+            timeoutUpNext: function () {
               // start timer up next episode
               timeoutUpNext = $timeout(function () {
                 var episodeUpNextUrl = episodeUpNext.data('next-url'),
@@ -252,13 +329,12 @@
                       description = shareObj.description,
                       imageUrl = shareObj.imageUrl,
                       providers = shareObj.shareButtons,
-                      shareBarTemplate = $('<div class="' + shareBarWrapClass + '"><div id="' + shareBarInnerId + '-' + shareBarCounter +'" class="' + shareBarInnerId +'"></div></div>'),
+                      shareBarTemplate = $('<div class="' + shareBarWrapClass + '"><div id="' + shareBarInnerId + '-' + shareBarCounter + '" class="' + shareBarInnerId + '"></div></div>'),
                       sharebarParams;
 
                   if (description == '' && $('meta[property="og:description"]').length > 0) {
                     description = $('meta[property="og:description"]').attr('content');
                   }
-
 
                   // create blocks
                   episodeShare.append(shareBarTemplate);
@@ -287,13 +363,13 @@
                   };
 
                   Drupal.gigya.showSharebar(sharebarParams);
+
                   // replace default value share on Other providers
                   episodeShare.find('.usa-share-button.Share .button-text').text('Other providers');
                   shareBarCounter += 1;
                 }
               }
             },
-
 
             // callback on click close end card
             closeEndCard: function () {
@@ -315,22 +391,81 @@
 
             // hide end card
             hideEndCard: function (isReleaseEnd) {
+
+              var paramWH;
+              statusProcessed = true;
+
+              // mobile version
               if (USAEndCardAPI.checkWindowWidth()) {
                 if (isReleaseEnd) {
-                  USAEndCardAPI.initHideEndCardMobile();
+                  USAEndCardAPI.initAnimateElem(replayButton, fadeOut, dataAnimate.hide.mobile.replayButton);
+                  USAEndCardAPI.initAnimateElem(endCardBlocks, fadeOut, dataAnimate.hide.mobile.endCardBlocks, function () {
+                    player.css({
+                      height: '100%',
+                      width: '100%'
+                    });
+                  });
+                  USAEndCardAPI.initAnimateElem(player, fadeIn, dataAnimate.hide.mobile.player, function () {
+                    statusShowEndCard = false;
+                    statusProcessed = false;
+                  });
                 }
-              } else {
-                USAEndCardAPI.initHideEndCard();
+              } else { // desktop version
+
+                paramWH = {
+                  height: '100%',
+                  width: '100%'
+                };
+
+                if (statusEndRelease) {
+                  USAEndCardAPI.initAnimateElem(replayButton, fadeOut, dataAnimate.hide.desktop.replayButton);
+                }
+                USAEndCardAPI.initAnimateElem(endCardBlocks, fadeOut, dataAnimate.hide.desktop.endCardBlocks);
+                USAEndCardAPI.initAnimateElemWH(player, paramWH, dataAnimate.hide.desktop.player, function() {
+                  statusShowEndCard = false;
+                  statusProcessed = false;
+                  statusEndRelease = false;
+                });
               }
             },
 
             // show end card
             showEndCard: function (callback) {
 
+              var paramWH;
+              statusProcessed = true;
+
+              // mobile version
               if (USAEndCardAPI.checkWindowWidth()) {
-                USAEndCardAPI.initShowEndCardMobile();
-              } else {
-                USAEndCardAPI.initShowEndCard();
+
+                player.css({
+                  height: '100%',
+                  width: '100%'
+                });
+
+                USAEndCardAPI.initAnimateElem(player, fadeOut, dataAnimate.show.mobile.player);
+                USAEndCardAPI.initAnimateElem(replayButton, fadeIn, dataAnimate.show.mobile.replayButton);
+                USAEndCardAPI.initAnimateElem(endCardBlocks, fadeIn, dataAnimate.show.mobile.endCardBlocks, function () {
+                  statusShowEndCard = true;
+                  statusProcessed = false;
+                  statusHidePlayer = true;
+                });
+
+              } else { // desktop version
+
+                paramWH = {
+                  height: '-=50%',
+                  width: '-=55%'
+                };
+
+                USAEndCardAPI.initAnimateElemWH(player, paramWH, dataAnimate.show.desktop.player);
+                USAEndCardAPI.initAnimateElem(endCardBlocks, fadeIn, dataAnimate.show.desktop.endCardBlocks, function() {
+                  statusShowEndCard = true;
+                  statusProcessed = false;
+                });
+                if (statusEndRelease) {
+                  USAEndCardAPI.initAnimateElem(replayButton, fadeIn, dataAnimate.show.desktop.replayButton)
+                }
               }
 
               if (typeof callback === "function") {
@@ -338,104 +473,35 @@
               }
             },
 
-            // init hide end card
-            initHideEndCard: function () {
-              statusProcessed = true;
-              endCardBlocks.velocity("fadeOut", {
-                duration: 350,
-                easing: "linear",
-                complete: function (elements) {
-                  player.velocity({
-                    height: '100%',
-                    width: '100%'
-                  }, {
-                    duration: 500,
-                    easing: "linear",
-                    complete: function (elements) {
-                      statusShowEndCard = false;
-                      statusProcessed = false;
-                    }
-                  });
+            // init animation element
+            initAnimateElem: function (elem, typeAnimate, params, callback) {
+              $(elem).velocity(typeAnimate, {
+                delay: params.delay,
+                duration: params.duration,
+                easing: easingAnimate,
+                complete: function (el) {
+                  if (typeof callback === "function") {
+                    callback();
+                  }
                 }
               });
             },
 
-            // init show end card
-            initShowEndCard: function () {
-              player.velocity({
-                height: '-=50%',
-                width: '-=55%'
-              }, {
-                duration: 1000,
-                easing: "linear",
-                complete: function (elements) {
-                  endCardBlocks.velocity("fadeIn", {
-                    delay: 100,
-                    duration: 500,
-                    complete: function (elements) {
-                      statusShowEndCard = true;
-                      statusProcessed = false;
-                    }
-                  });
+            // init animation player
+            initAnimateElemWH: function (elem, paramWH, params, callback) {
+              $(elem).velocity({
+                height: paramWH.height,
+                width: paramWH.width
+              },{
+                delay: params.delay,
+                duration: params.duration,
+                easing: easingAnimate,
+                complete: function (elem) {
+                  if (typeof callback === "function") {
+                    callback();
+                  }
                 }
               });
-            },
-
-            // init hide end card mobile version
-            initHideEndCardMobile: function () {
-              statusProcessed = true;
-              replayButton.velocity("fadeOut", {
-                duration: 350,
-                easing: "linear"
-              });
-              endCardBlocks.velocity("fadeOut", {
-                duration: 350,
-                easing: "linear",
-                complete: function (elements) {
-                  player
-                      .css({
-                        height: '100%',
-                        width: '100%'
-                      })
-                      .velocity("fadeIn", {
-                        delay: 100,
-                        duration: 500,
-                        complete: function (elements) {
-                          statusShowEndCard = false;
-                          statusProcessed = false;
-
-                        }
-                      });
-                }
-              });
-            },
-
-            // init show end card mobile version
-            initShowEndCardMobile: function () {
-              player
-                  .css({
-                    height: '100%',
-                    width: '100%'
-                  })
-                  .velocity("fadeOut", {
-                    duration: 350,
-                    easing: "linear",
-                    complete: function (elements) {
-                      endCardBlocks.velocity("fadeIn", {
-                        delay: 100,
-                        duration: 500,
-                        complete: function (elements) {
-                          statusShowEndCard = true;
-                          statusProcessed = false;
-                          statusHidePlayer = true;
-                        }
-                      });
-                      replayButton.velocity("fadeIn", {
-                        delay: 100,
-                        duration: 500
-                      });
-                    }
-                  });
             },
 
             // Init all vertical carousels
@@ -457,25 +523,20 @@
             },
 
             // reInit functionality
-            destroyGigyaSharebar: function() {
+            destroyGigyaSharebar: function () {
               episodeShare.find('.' + shareBarWrapClass).remove();
             },
 
             updateUpNextEpisode: function (data) {
-              var dataUpNext = data.upNextEpisode,
-                  linkUrl = dataUpNext.linkUrl,
-                  imgSrcThumbnail = dataUpNext.imgSrcThumbnail,
-                  season = dataUpNext.season,
-                  episode = dataUpNext.episode,
-                  title = dataUpNext.title;
+              var dataUpNext = data.upNextEpisode;
 
               // run update
               episodeUpNext
-                  .find('.link').attr('href', linkUrl).end()
-                  .find('.img').attr('src', imgSrcThumbnail).end()
-                  .find('.season').text(season).end()
-                  .find('.episode').text(episode).end()
-                  .find('.title').text(title).end();
+                  .find('.link').attr('href', dataUpNext.linkUrl).end()
+                  .find('.img').attr('src', dataUpNext.imgSrcThumbnail).end()
+                  .find('.season').text(dataUpNext.season).end()
+                  .find('.episode').text(dataUpNext.episode).end()
+                  .find('.title').text(dataUpNext.title).end();
             },
 
             updateRelatedSlider: function (data) {
@@ -498,6 +559,16 @@
             }
           };
 
+          // promise.then success
+          function promiseSuccess(data) {
+            return data;
+          }
+
+          // promise.then error
+          function promiseError() {
+            console.log('end-card service error');
+          }
+
           function initEndCard(data) {
             USAEndCardAPI.addPDKEventListeners();
             USAEndCardAPI.initRelatedSlider();
@@ -516,16 +587,6 @@
             }
             USAEndCardAPI.initRelatedSlider();
             USAEndCardAPI.initGigyaSharebar(data);
-          }
-
-          // promise.then success
-          function promiseSuccess(data) {
-            return data;
-          }
-
-          // promise.then error
-          function promiseError() {
-            console.log('end-card service error');
           }
 
           // add window resize

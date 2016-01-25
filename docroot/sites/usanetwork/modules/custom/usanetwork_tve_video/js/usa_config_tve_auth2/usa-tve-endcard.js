@@ -420,11 +420,12 @@
                 if (statusEndRelease) {
                   USAEndCardAPI.initAnimateElem(replayButton, fadeOut, dataAnimate.hide.desktop.replayButton);
                 }
-                USAEndCardAPI.initAnimateElem(endCardBlocks, fadeOut, dataAnimate.hide.desktop.endCardBlocks);
-                USAEndCardAPI.initAnimateElemWH(player, paramWH, dataAnimate.hide.desktop.player, function() {
-                  statusShowEndCard = false;
-                  statusProcessed = false;
-                  statusEndRelease = false;
+                USAEndCardAPI.initAnimateElem(endCardBlocks, fadeOut, dataAnimate.hide.desktop.endCardBlocks, function () {
+                  USAEndCardAPI.initAnimateElemWH(player, paramWH, dataAnimate.hide.desktop.player, function() {
+                    statusShowEndCard = false;
+                    statusProcessed = false;
+                    statusEndRelease = false;
+                  });
                 });
               }
             },
@@ -458,14 +459,15 @@
                   width: '-=55%'
                 };
 
-                USAEndCardAPI.initAnimateElemWH(player, paramWH, dataAnimate.show.desktop.player);
-                USAEndCardAPI.initAnimateElem(endCardBlocks, fadeIn, dataAnimate.show.desktop.endCardBlocks, function() {
-                  statusShowEndCard = true;
-                  statusProcessed = false;
+                USAEndCardAPI.initAnimateElemWH(player, paramWH, dataAnimate.show.desktop.player, function () {
+                  if (statusEndRelease) {
+                    USAEndCardAPI.initAnimateElem(replayButton, fadeIn, dataAnimate.show.desktop.replayButton)
+                  }
+                  USAEndCardAPI.initAnimateElem(endCardBlocks, fadeIn, dataAnimate.show.desktop.endCardBlocks, function() {
+                    statusShowEndCard = true;
+                    statusProcessed = false;
+                  });
                 });
-                if (statusEndRelease) {
-                  USAEndCardAPI.initAnimateElem(replayButton, fadeIn, dataAnimate.show.desktop.replayButton)
-                }
               }
 
               if (typeof callback === "function") {

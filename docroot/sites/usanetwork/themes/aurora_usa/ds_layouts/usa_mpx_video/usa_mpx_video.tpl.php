@@ -97,7 +97,7 @@
                  data-ng-click="replayVideo()">
               <div class="replay-title">replay</div>
               <div
-                class="episode-title"><?php print $next_video['title']; ?></div>
+                class="episode-title"><?php print $filename ?></div>
             </div>
             <div id="episode-up-next" class="endcard_block endcard_topRight"
                  data-end-card="usaEndCard"

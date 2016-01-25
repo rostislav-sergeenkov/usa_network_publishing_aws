@@ -2970,10 +2970,11 @@ function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form
  */
 function usanetwork_mpx_video_form_alter(&$form, &$form_state, $form_id) {
 
-  if (in_array($form_id, array('file_entity_edit', 'tv_show_node_form')))
-  $form['field_custom_time']['#states'] = array(
-    'visible' => array(
-      ':input[name="field_endcard_timing[und]"]' => array('value' => 'enable_custom'),
-    ),
-  );
+  if (in_array($form_id, array('file_entity_edit', 'tv_show_node_form'))) {
+    $form['field_custom_time']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_endcard_timing[und]"]' => array('value' => 'enable_custom'),
+      ),
+    );
+  }
 }

@@ -34,6 +34,10 @@ function usanetwork_social_meter_field_default_field_bases() {
         'post' => 'post',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'consumpt_post' => 'consumpt_post',
+        'consumpt_blog' => 'consumpt_blog',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
       ),
       'entity_type_ids' => array(
         'file' => 'file',

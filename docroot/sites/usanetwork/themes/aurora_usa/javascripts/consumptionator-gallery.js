@@ -175,7 +175,6 @@
     var adBlockId = adBlock.attr('id'),
         nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.galleryadrepeat;
 
-
     Drupal.behaviors.mpsAdvert.mpsInsertInterstitial('#' + adBlockId);
 
     adWrap.velocity("fadeIn", {
@@ -222,10 +221,10 @@
             advertNext = advertWrap.find('.advert-next'),
             adSlidesCount = parseInt(advertWrap.data('slides-counter'), 10),
             advertCounter = 0,
+            showColorPager = ($('body[class*=" show-"]').length > 0)? ' class="show-color"': '',
             options = {
               auto: false,
               buildPager: function (slideIndex) {
-
                 var slide = slideElem,
                     slideLength = slide.length,
                     src = $(slide).eq(slideIndex).find('.asset-img img').attr('src'),
@@ -236,7 +235,7 @@
                 }
                 switch (slideIndex) {
                   default:
-                    return '<div class="show-color"></div><img src="' + src + '">';
+                    return '<div'+showColorPager+'></div><img src="' + src + '">';
                 }
               },
               controls: true,
@@ -263,7 +262,7 @@
 
                 // if advertCounter = slidesCount fire show gallery advert
                 if (advertWrap.length > 0 && advertCounter === adSlidesCount) {
-                  console.info('init show galleryadrepeat');
+                  console.info('init call maps.usa.insertInterstitial');
                   // reset advert counter
                   advertCounter = 0;
                   // show gallery ad

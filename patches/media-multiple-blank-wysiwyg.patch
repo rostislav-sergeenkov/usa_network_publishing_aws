@@ -1,0 +1,29 @@
+From e0540a102e70a063cee17aee0cef5054fb5998a9 Mon Sep 17 00:00:00 2001
+From: Dan Braghis <zerolab@354424.no-reply.drupal.org>
+Date: Tue, 19 May 2015 22:35:20 +0100
+Subject: [PATCH] Issue #2317519 by z3cka, zerolab: Fix blank WYSIWYG editors
+ with multiple items inserted
+
+---
+ modules/media_wysiwyg/js/media_wysiwyg.filter.js | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/modules/media_wysiwyg/js/media_wysiwyg.filter.js b/modules/media_wysiwyg/js/media_wysiwyg.filter.js
+index efccd59..d75cd02 100644
+--- a/modules/media_wysiwyg/js/media_wysiwyg.filter.js
++++ b/modules/media_wysiwyg/js/media_wysiwyg.filter.js
+@@ -44,6 +44,12 @@
+           if (!media && media_definition.fid) {
+             Drupal.media.filter.ensureSourceMap();
+             var source = Drupal.settings.mediaSourceMap[media_definition.fid];
++
++            // Skip unknown items.
++            if (!source) {
++              continue;
++            }
++
+             media = document.createElement(source.tagName);
+             media.src = source.src;
+             media.innerHTML = source.innerHTML;
+2.3.7
+

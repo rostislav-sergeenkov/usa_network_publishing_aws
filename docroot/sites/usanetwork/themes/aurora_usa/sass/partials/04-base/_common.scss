@@ -311,15 +311,16 @@ address {
 }
 
 .person-quotation {
+  border: 1px solid $poll-back;
+  clear: both;
+  display: block;
   font-family: $tex-gyreschola-italic;
+  font-size: 30px;
+  line-height: 1.5em;
+  margin: 54px 0 54px;
+  padding: 35px 55px;
   position: relative;
   text-align: center;
-  font-size: 30px;
-  padding: 35px 55px;
-  margin: 54px 0 54px;
-  border: 1px solid $poll-back;
-  display: block;
-  clear: both;
   @include breakpoint($bp-1280-width) {
     padding: 25px 39px 25px 44px;
     margin: 35px 0 35px;

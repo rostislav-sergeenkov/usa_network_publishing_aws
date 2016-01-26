@@ -400,6 +400,9 @@
         .date-shcedule {
           font-family: $avalon-book;
         }
+        & + li.active {
+          border-top: 1px solid $footer-promo-links;
+        }
       }
       li {
         float: none;
@@ -716,6 +719,9 @@
                 }
               }
             }
+          }
+          & + li.date-separate {
+            border-top: 1px solid $footer-promo-links;
           }
         }
       }

@@ -17,6 +17,10 @@
                     rowId = attrs['mpxId'],
                     mpxId = !isLive && rowId && rowId.split('/').pop(),
                     resuming = false,
+                    usaVideoSettingsRun = false,
+                // if url contain param ?t=300
+                // Drupal.settings.videoSetTime = 300
+                    position = Drupal.settings.videoSetTime, // seconds
                     currentAsset, previouslyWatched, lastSave;
 
                 scope.showCompanionAdd = false;
@@ -113,6 +117,11 @@
                     // Functionality for ad playing event
                   }
                   else {
+
+                    if (!usaVideoSettingsRun) {
+                      usaVideoSettingsRun = seekToPosition();
+                    }
+
                     if($('.dart-tag').length) {
                       scope.$apply(function() {
                         scope.isFreeWheelReq = true;
@@ -132,6 +141,13 @@
                       duration: videoData.mediaLength
                     };
                   }
+                }
+
+                function seekToPosition() {
+                  if (position) {
+                    $pdk.controller.seekToPosition(position * 1000); // convert to milliseconds
+                  }
+                  return true;
                 }
 
                 function _onMediaPlaying(e) {

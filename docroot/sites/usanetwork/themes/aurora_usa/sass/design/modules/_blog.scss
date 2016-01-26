@@ -139,6 +139,13 @@ body {
         padding-bottom: 10px;
       }
     }
+    &:not(.show-chrisleyknowsbest) {
+      .center-wrapper {
+        @include breakpoint($bp-blog-tablet) {
+          padding: 0 10px;
+        }
+      }
+    }
   }
 }
 

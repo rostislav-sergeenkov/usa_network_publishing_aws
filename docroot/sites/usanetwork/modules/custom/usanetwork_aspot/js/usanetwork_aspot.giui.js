@@ -375,6 +375,9 @@
           });
         }
         if (aspot_elements[itemElement].width) {
+          if (draggableElement.data('rel') === 'social_meter') {
+            return;
+          }
           draggableElement.css({
             'width': aspot_elements[itemElement].width + '%'
           });
@@ -397,6 +400,9 @@
           });
         }
         if (aspot_elements[itemElement].widthM) {
+          if (draggableElement.data('rel') === 'social_meter') {
+            return;
+          }
           draggableElementMobile.css({
             'width': aspot_elements[itemElement].widthM + '%'
           });
@@ -664,6 +670,10 @@
 
         if (item.hasClass(ctaButtonClass)) {
           fieldWidthPercent = 'auto';
+        }
+
+        if (item.data('rel') === 'social_meter') {
+          fieldWidthPercent = '';
         }
 
         if (version === 'desktop') {

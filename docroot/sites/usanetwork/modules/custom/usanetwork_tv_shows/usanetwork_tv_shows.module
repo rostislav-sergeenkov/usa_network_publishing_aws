@@ -955,10 +955,7 @@ function usanetwork_tv_shows_query_alter($query) {
             }
           }
           $query->innerJoin('mpx_video', 'mpx_video', 'mpx_video.fid = file_managed.fid');
-          $db_or = db_or();
-          $db_or->condition('mpx_video.status', 0, '<>');
-          $db_or->condition('mpx_video.airdate', REQUEST_TIME, '>=');
-          $query->condition($db_or);
+          $query->condition('mpx_video.expiration_date', REQUEST_TIME, '>=');
         }
       }
     }
@@ -3909,7 +3906,7 @@ function _usanetwork_tv_shows_cache_rebuild_related_content($tv_show_node, $node
 function _usanetwork_tv_shows_cache_rebuild_related_content_all($tv_show_node) {
   _usanetwork_tv_shows_cache_rebuild_related_show_content($tv_show_node);
   _usanetwork_tv_shows_cache_rebuild_related_video_content($tv_show_node);
-  $node_types = array('media_gallery', 'quiz', 'person', 'tv_episode', 'catchall_page', 'timeline_gallery', 'post');
+  $node_types = array('media_gallery', 'quiz', 'person', 'tv_episode', 'catchall_page', 'timeline_gallery', 'post', 'consumpt_post', 'catchall_page');
   foreach($node_types as $node_type) {
     _usanetwork_tv_shows_cache_rebuild_related_content($tv_show_node, $node_type);
   }

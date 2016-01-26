@@ -412,20 +412,20 @@
                 // reset value on default
                 statusClickOnCloseEndCard = false;
 
-                if (!isMobile && !USAEndCardAPI.checkWindowWidth() && !$rootScope.statusAd) {
+                if (!isMobile && !USAEndCardAPI.checkWindowWidth()) {
                   statusEndRelease = true;
                 }
 
                 // check scope.statusShowEndCard
                 // if status = false will fired callback
-                if (!statusShowEndCard && !$rootScope.statusAd) {
+                if (!statusShowEndCard) {
 
                   statusProcessed = true;
 
                   // show end card
                   // true params for mobile end card
                   USAEndCardAPI.showEndCard(USAEndCardAPI.timeoutUpNext);
-                } else if (statusShowEndCard && !$rootScope.statusAd) {
+                } else if (statusShowEndCard) {
 
                   if (!isMobile && !USAEndCardAPI.checkWindowWidth()) {
                     USAEndCardAPI.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.endCardBlocks);

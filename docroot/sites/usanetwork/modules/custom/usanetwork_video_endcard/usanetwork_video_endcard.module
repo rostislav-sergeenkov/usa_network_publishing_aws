@@ -179,8 +179,10 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
 
         if ($full_episode) {
           $query->innerJoin('field_data_field_mpx_episode_number', 'ep', 'fd.entity_id = ep.entity_id');
+          $query->innerJoin('field_data_field_mpx_season_number', 'sn', 'fd.entity_id = sn.entity_id');
           // +0 for sorting numerically varchar field.
-          $query->orderBy('ep.field_mpx_episode_number_value+0', 'ASC')
+          $query->orderBy('sn.field_mpx_season_number_value+0', 'ASC')
+            ->orderBy('ep.field_mpx_episode_number_value+0', 'ASC')
             ->orderBy('v.airdate', 'ASC')
             ->orderBy('v.created', 'ASC');
         }

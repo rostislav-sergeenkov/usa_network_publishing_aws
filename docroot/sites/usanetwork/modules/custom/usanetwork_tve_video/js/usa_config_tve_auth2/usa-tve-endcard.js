@@ -556,7 +556,7 @@
 
                 // can be insert AdobeTracking
 
-                // window.location.replace(nextUrl);
+                window.location.replace(nextUrl);
               }, timeoutEndCard);
             },
 

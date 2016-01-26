@@ -177,17 +177,18 @@
 
     Drupal.behaviors.mpsAdvert.mpsInsertInterstitial('#' + adBlockId);
 
+    adWrap.velocity("fadeIn", {
+      duration: 200,
+      easing: "linear",
+      complete: function (element) {
+        $(element).addClass('active');
+      }
+    });
+
     mps.adviewCallback = function(eo){
-      console.info('adviewCallback', eo._mps._slot, eo);
+      console.info('adviewCallback',eo._mps._slot);
       if(eo._mps._slot.indexOf(nameAd) === 0) {
-        adWrap.velocity("fadeIn", {
-          duration: 200,
-          easing: "linear",
-          complete: function (element) {
-            $(element).addClass('active');
-            adNext.show();
-          }
-        });
+        adNext.show();
       }
     };
   }

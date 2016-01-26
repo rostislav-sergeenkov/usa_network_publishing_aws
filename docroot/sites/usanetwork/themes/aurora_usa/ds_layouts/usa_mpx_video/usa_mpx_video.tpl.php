@@ -2,6 +2,8 @@
 <div class="video-block"
      data-tve-player
      data-usa-tve-player-container
+     data-show-title="<?php print $show_title ?>"
+     data-video-title="<?php print $filename ?>"
      data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
      data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>">
   <div class="player-wrapper">
@@ -97,14 +99,15 @@
                  data-ng-click="replayVideo()">
               <div class="replay-title">replay</div>
               <div
-                class="episode-title"><?php print $next_video['title']; ?></div>
+                class="episode-title"><?php print $filename ?></div>
             </div>
             <div id="episode-up-next" class="endcard_block endcard_topRight"
+                 data-upnext-name="up next"
                  data-end-card="usaEndCard"
                  data-next-url="<?php print $next_video['url']; ?>">
               <h3>up next...</h3>
-              <div class="node node-usanetwork-promo">
-                <a href="<?php print $next_video['url']; ?>" class="link">
+              <div class="node">
+                <a href="<?php print $next_video['url']; ?>" class="link link-up-next">
                   <div class="asset-img">
                     <img
                       src="<?php print $next_video['images']['thumbnail']; ?>"
@@ -131,6 +134,7 @@
               <h3>share this episode</h3>
             </div>
             <div id="episode-related" class="endcard_block endcard_bottomRight"
+                 data-related-name="related clip"
                  data-end-card="usaEndCard">
               <h3>related video clips</h3>
 
@@ -138,8 +142,8 @@
                 <ul class="related-slider">
                   <?php foreach ($endcard as $eitem) { ?>
                     <li class="slide-item">
-                      <div class="node node-usanetwork-promo">
-                        <a href="<?php print $eitem['url']; ?>">
+                      <div class="node">
+                        <a href="<?php print $eitem['url']; ?>" class="link link-related-clip">
                           <div class="asset-img">
                             <img
                               src="<?php print $eitem['images']['thumbnail']; ?>"

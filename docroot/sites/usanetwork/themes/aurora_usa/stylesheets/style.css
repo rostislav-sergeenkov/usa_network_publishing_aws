@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -34424,7 +34424,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  [data-show-end-card="true"] .player .episode-share-bar table {
+  [data-show-end-card="1"] .player .episode-share-bar table {
     width: 150px;
   }
 }
@@ -34456,7 +34456,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button {
+  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button {
     margin-bottom: 10px;
     padding: 2px 0 2px 30px;
   }
@@ -34494,7 +34494,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button:before {
+  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button:before {
     font-size: 14px;
     line-height: 25px;
     width: 30px;
@@ -34528,7 +34528,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  [data-show-end-card="true"] .player .episode-share-bar .usa-share-button .button-text {
+  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button .button-text {
     font-size: 12px;
     line-height: 20px;
   }
@@ -34682,60 +34682,60 @@ body.blog .view-display-id-blog_content .views-row {
     width: 50%;
   }
 }
-[data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo {
+[data-show-end-card="1"] .player .endcard_topRight .node {
   margin: 0 auto;
   width: 100%;
 }
-[data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo a {
+[data-show-end-card="1"] .player .endcard_topRight .node a {
   color: #ffffff;
 }
-[data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo a .asset-img {
+[data-show-end-card="1"] .player .endcard_topRight .node a .asset-img {
   margin: 0 auto 1.3151vw;
   min-width: 80px;
   max-width: 409px;
   width: 46.3%;
 }
 @media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo a .asset-img {
+  [data-show-end-card="1"] .player .endcard_topRight .node a .asset-img {
     margin: 0 auto 25px;
   }
 }
 @media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo a .asset-img {
+  [data-show-end-card="1"] .player .endcard_topRight .node a .asset-img {
     margin: 0 auto 0.96002vw;
   }
 }
 @media (max-width: 640px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo a .asset-img {
+  [data-show-end-card="1"] .player .endcard_topRight .node a .asset-img {
     margin: 0 auto 11.4px;
   }
 }
-[data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo a img {
+[data-show-end-card="1"] .player .endcard_topRight .node a img {
   height: auto;
   width: 100%;
 }
-[data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo .meta {
+[data-show-end-card="1"] .player .endcard_topRight .node .meta {
   font-size: 0.94687vw;
   margin: 0 auto;
   text-align: center;
   width: 70%;
 }
 @media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo .meta {
+  [data-show-end-card="1"] .player .endcard_topRight .node .meta {
     font-size: 18px;
   }
 }
 @media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo .meta {
+  [data-show-end-card="1"] .player .endcard_topRight .node .meta {
     font-size: 1.2832vw;
   }
 }
 @media (max-width: 768px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo .meta {
+  [data-show-end-card="1"] .player .endcard_topRight .node .meta {
     font-size: 9.86px;
   }
 }
-[data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo .additional, [data-show-end-card="1"] .player .endcard_topRight .node-usanetwork-promo .title {
+[data-show-end-card="1"] .player .endcard_topRight .node .additional, [data-show-end-card="1"] .player .endcard_topRight .node .title {
   display: inline-block;
 }
 [data-show-end-card="1"] .player .endcard_bottomLeft {

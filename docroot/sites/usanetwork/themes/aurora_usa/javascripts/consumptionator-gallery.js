@@ -170,12 +170,16 @@
   }
 
   // gallery advert
-  function showGalleryAd(adWrap, adBlock, adNext) {
+  function showGalleryAd(adWrap, adBlock, adNext, refresh) {
 
     var adBlockId = adBlock.attr('id'),
         nameAd = Drupal.behaviors.mpsAdvert.mpsNameAD.galleryadrepeat;
 
-    Drupal.behaviors.mpsAdvert.mpsInsertInterstitial('#' + adBlockId);
+    if (refresh) {
+      Drupal.behaviors.mpsAdvert.mpsRefreshAd(nameAd);
+    } else {
+      Drupal.behaviors.mpsAdvert.mpsInsertInterstitial('#' + adBlockId);
+    }
 
     adWrap.velocity("fadeIn", {
       duration: 200,
@@ -198,7 +202,7 @@
       easing: "linear",
       complete: function (element) {
         $(element).removeClass('active');
-        adBlock.empty();
+        //adBlock.empty();
         adNext.hide();
       }
     })
@@ -220,6 +224,7 @@
             advertNext = advertWrap.find('.advert-next'),
             adSlidesCount = parseInt(advertWrap.data('slides-counter'), 10),
             advertCounter = 0,
+            refreshAD = false;
             showColorPager = ($('body[class*=" show-"]').length > 0)? ' class="show-color"': '',
             options = {
               auto: false,
@@ -264,7 +269,8 @@
                   // reset advert counter
                   advertCounter = 0;
                   // show gallery ad
-                  showGalleryAd(advertWrap, advertBlock, advertNext);
+                  showGalleryAd(advertWrap, advertBlock, advertNext, refreshAD);
+                  refreshAD = true;
                 }
 
                 //var name = $('.gallery-wrapper .slide .gallery-name').eq(0).text();

@@ -89,6 +89,7 @@
           <?php endif; ?>
           <div data-usa-tve-player="pdk-player"
                class="pdk-player-wrap"
+               data-episode-pid="<?php print $file_pid; ?>"
                data-next-url="<?php print $next_video['url']; ?>">
             <?php print $video; ?>
           </div>
@@ -100,7 +101,7 @@
                  data-ng-click="replayVideo()">
               <div class="replay-title">replay</div>
               <div
-                class="episode-title"><?php print $filename ?></div>
+                class="episode-title"><?php print $filename; ?></div>
             </div>
             <div id="episode-up-next" class="endcard_block endcard_topRight"
                  data-next-name="up next"

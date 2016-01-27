@@ -1692,6 +1692,9 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $vars['endcard_enabled'] = $enabled;
       $vars['endcard_time'] = (!empty($time)) ? ($time * 1000) : NULL;
 
+      $file_pid = _usanetwork_get_field_item('file', $file, 'field_mpx_main_released_file_pid', 'value');
+      $vars['file_pid'] = !empty($file_pid) ? $file_pid : 0;
+
     }
   }
   // Fill H1 tag.

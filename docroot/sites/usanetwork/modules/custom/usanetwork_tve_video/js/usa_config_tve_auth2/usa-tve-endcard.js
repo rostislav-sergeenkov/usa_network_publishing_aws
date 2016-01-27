@@ -226,14 +226,15 @@
 
           // elem data value
           showTitle = playerWrapperEl.data('show-title');
-          episodeTitle = playerWrapperEl.data('video-title');
+          episodeTitle = playerWrapperEl.data('episode-title');
           relatedClipTitle = episodesRelatedClipEl.data('related-name');
-          upNextTitle = episodeUpNextEl.data('upnext-name');
+          upNextTitle = episodeUpNextEl.data('next-name');
 
           // timing values
           bpTimeShowEndCard = parseInt(playerWrapperEl.data('end-card-time'));// time for showing end card used milliseconds
           bpMobileEndCard = 480; // breakpoint for styles
-          timeoutEndCard = 30000; // redirect timeout for Up Next Episode
+          //timeoutEndCard = 30000; // redirect timeout for Up Next Episode
+          timeoutEndCard = 0; // redirect timeout for Up Next Episode
 
           // default values
           statusClickOnCloseEndCard = false;
@@ -410,8 +411,6 @@
                */
               function _onReleaseEnd(pdkEvent) {
 
-                console.info('_onReleaseEnd');
-
                 // check status end card processed
                 if (statusProcessed) {
                   return false;
@@ -435,9 +434,9 @@
                   USAEndCardAPI.showEndCard(USAEndCardAPI.timeoutUpNext);
                 } else if (statusShowEndCard) {
 
-                  if (!isMobile && !USAEndCardAPI.checkWindowWidth()) {
-                    usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.endCardBlocks);
-                  }
+                  //if (!isMobile && !USAEndCardAPI.checkWindowWidth()) {
+                    //usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.endCardBlocks);
+                  //}
 
                   USAEndCardAPI.timeoutUpNext();
                 }
@@ -602,7 +601,8 @@
                 };
 
                 if (statusEndRelease) {
-                  usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeOut, dataAnimate.hide.desktop.replayButton);
+                  replayBtnEl.hide();
+                  //usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeOut, dataAnimate.hide.desktop.replayButton);
                 }
                 usaEndCardAnimate.initAnimateElem(endCardEls, fadeOut, dataAnimate.hide.desktop.endCardBlocks, function () {
                   usaEndCardAnimate.initAnimateElemWH(playerEl, paramWH, dataAnimate.hide.desktop.player, function () {
@@ -647,7 +647,7 @@
 
                 usaEndCardAnimate.initAnimateElemWH(playerEl, paramWH, dataAnimate.show.desktop.player, function () {
                   if (statusEndRelease) {
-                    usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.replayButton)
+                    //usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.replayButton)
                   }
                   usaEndCardAnimate.initAnimateElem(endCardEls, fadeIn, dataAnimate.show.desktop.endCardBlocks, function () {
                     statusShowEndCard = true;

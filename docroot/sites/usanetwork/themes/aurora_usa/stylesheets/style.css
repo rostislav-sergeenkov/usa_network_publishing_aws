@@ -34638,7 +34638,7 @@ body.blog .view-display-id-blog_content .views-row {
     margin-right: 31px;
     padding-left: 31px;
     position: relative;
-    width: calc(100% - 31px);
+    width: 100%;
   }
   [data-show-end-card="1"] .player .reload-button:hover {
     background-color: #333333;
@@ -34686,6 +34686,14 @@ body.blog .view-display-id-blog_content .views-row {
   margin: 0 auto;
   width: 100%;
 }
+[data-show-end-card="1"] .player .endcard_topRight .node .meta-wrapper-inner {
+  text-align: center;
+}
+[data-show-end-card="1"] .player .endcard_topRight .node .meta-wrapper-inner:after {
+  clear: both;
+  content: '';
+  display: table;
+}
 [data-show-end-card="1"] .player .endcard_topRight .node a {
   color: #ffffff;
 }
@@ -34714,11 +34722,46 @@ body.blog .view-display-id-blog_content .views-row {
   height: auto;
   width: 100%;
 }
+[data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
+  display: inline-block;
+  height: 1.94634vw;
+  line-height: 1.94634vw;
+  margin-right: 0.78906vw;
+  position: relative;
+  vertical-align: middle;
+  width: 1.94634vw;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
+    height: 37px;
+    line-height: 37px;
+    margin-right: 15px;
+    width: 37px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
+    height: 2.53906vw;
+    line-height: 2.53906vw;
+    margin-right: 1.07422vw;
+    width: 2.53906vw;
+  }
+}
+@media (max-width: 768px) {
+  [data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
+    height: 20px;
+    line-height: 20px;
+    margin-right: 8.25px;
+    width: 20px;
+  }
+}
 [data-show-end-card="1"] .player .endcard_topRight .node .meta {
+  display: inline-block;
   font-size: 0.94687vw;
-  margin: 0 auto;
+  margin: 0;
+  max-width: 70%;
   text-align: center;
-  width: 70%;
+  vertical-align: middle;
 }
 @media (min-width: 1901px) {
   [data-show-end-card="1"] .player .endcard_topRight .node .meta {

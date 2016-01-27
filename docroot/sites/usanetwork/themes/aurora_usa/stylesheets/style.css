@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -34638,7 +34638,7 @@ body.blog .view-display-id-blog_content .views-row {
     margin-right: 31px;
     padding-left: 31px;
     position: relative;
-    width: calc(100% - 31px);
+    width: 100%;
   }
   [data-show-end-card="1"] .player .reload-button:hover {
     background-color: #333333;
@@ -34686,6 +34686,14 @@ body.blog .view-display-id-blog_content .views-row {
   margin: 0 auto;
   width: 100%;
 }
+[data-show-end-card="1"] .player .endcard_topRight .node .meta-wrapper-inner {
+  text-align: center;
+}
+[data-show-end-card="1"] .player .endcard_topRight .node .meta-wrapper-inner:after {
+  clear: both;
+  content: '';
+  display: table;
+}
 [data-show-end-card="1"] .player .endcard_topRight .node a {
   color: #ffffff;
 }
@@ -34714,11 +34722,46 @@ body.blog .view-display-id-blog_content .views-row {
   height: auto;
   width: 100%;
 }
+[data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
+  display: inline-block;
+  height: 1.94634vw;
+  line-height: 1.94634vw;
+  margin-right: 0.78906vw;
+  position: relative;
+  vertical-align: middle;
+  width: 1.94634vw;
+}
+@media (min-width: 1901px) {
+  [data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
+    height: 37px;
+    line-height: 37px;
+    margin-right: 15px;
+    width: 37px;
+  }
+}
+@media (max-width: 1024px) {
+  [data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
+    height: 2.53906vw;
+    line-height: 2.53906vw;
+    margin-right: 1.07422vw;
+    width: 2.53906vw;
+  }
+}
+@media (max-width: 768px) {
+  [data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
+    height: 20px;
+    line-height: 20px;
+    margin-right: 8.25px;
+    width: 20px;
+  }
+}
 [data-show-end-card="1"] .player .endcard_topRight .node .meta {
+  display: inline-block;
   font-size: 0.94687vw;
-  margin: 0 auto;
+  margin: 0;
+  max-width: 70%;
   text-align: center;
-  width: 70%;
+  vertical-align: middle;
 }
 @media (min-width: 1901px) {
   [data-show-end-card="1"] .player .endcard_topRight .node .meta {
@@ -34860,27 +34903,31 @@ body.blog .view-display-id-blog_content .views-row {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.05208vw;
   display: inline-block;
+  max-width: calc(100% - 11.5vw);
   vertical-align: top;
 }
 @media (min-width: 1901px) {
   [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
     font-size: 20px;
+    max-width: calc(100% - 210px);
   }
 }
 @media (max-width: 1024px) {
   [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
     font-size: 1.42578vw;
+    max-width: calc(100% - 15.5vw);
   }
 }
 @media (max-width: 640px) {
   [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
     font-size: 9.125px;
+    max-width: calc(100% - 100px);
   }
 }
 @media (max-width: 480px) {
   [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
     display: block;
-    width: calc(100% - 16px);
+    max-width: calc(100% - 10px);
   }
 }
 [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper .title {

@@ -205,8 +205,8 @@
               episodeShareEl, replayBtnEl, showTitle, episodeTitle, upNextTitle, relatedClipTitle,
               statusClickOnCloseEndCard, statusPlayerFullScreen, statusProcessed, statusShowEndCard, statusHidePlayer, statusEndRelease,
               bpTimeShowEndCard, bpMobileEndCard, timeoutEndCard, shareBarCounter,
-              dataAnimate, fadeIn, fadeOut, shareBarWrapClass, shareBarInnerId,
-              USAEndCardAPI, paramsData, timeoutUpNext, reInitApi;
+              dataAnimate, fadeIn, fadeOut, shareBarWrapClass, shareBarInnerId, linkToloadUrl,
+              episodePID, USAEndCardAPI, paramsData, timeoutUpNext, reInitApi;
 
           // systems
           $window = ng.element(window);
@@ -229,6 +229,7 @@
           episodeTitle = playerWrapperEl.data('episode-title');
           relatedClipTitle = episodesRelatedClipEl.data('related-name');
           upNextTitle = episodeUpNextEl.data('next-name');
+          episodePID = playerEl.data('episode-pid');
 
           // timing values
           bpTimeShowEndCard = parseInt(playerWrapperEl.data('end-card-time'));// time for showing end card used milliseconds
@@ -248,6 +249,7 @@
           shareBarCounter = 0;
           fadeIn = 'fadeIn';
           fadeOut = 'fadeOut';
+          linkToloadUrl = '//link.theplatform.com/s/OyMl-B/';
 
           // default app params
           paramsData = {
@@ -268,6 +270,7 @@
               title: '' // string
             },
             relatedSlider: '', // template string '<div class="demo">demo</div>'
+            episodePID: episodePID,
             showTitle: showTitle, // string, active show title
             reloadEpisodeTitle: episodeTitle // string, active episode title
           };
@@ -283,6 +286,24 @@
               $pdk.controller.addEventListener('OnMediaSeek', _onMediaSeek);
               $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
               $pdk.controller.addEventListener('OnShowFullScreen', _onShowFullScreen);
+              $pdk.controller.addEventListener('OnLoadReleaseUrl', _onLoadReleaseUrl);
+
+              /*
+               * On Release Start
+               * @private
+               */
+              function _onLoadReleaseUrl(pdkEvent) {
+
+                var dataPID = pdkEvent.data.pid;
+
+                if (statusEndRelease) {
+                  if (dataPID !== episodePID) {
+                    var srcLink = linkToloadUrl + episodePID;
+                    $pdk.controller.resetPlayer('pdk-player');
+                    $pdk.controller.loadReleaseURL(srcLink, true);
+                  }
+                }
+              }
 
               /*
                * On Release Start

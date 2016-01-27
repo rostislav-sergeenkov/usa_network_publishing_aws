@@ -3,8 +3,8 @@
   'use strict';
 
   ng.module('tve.directives')
-      .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx', 'usaEndCardService',
-        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx, usaEndCardService) {
+      .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx', 'usaEndCardService', 'usaEndCardAT',
+        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx, usaEndCardService, usaEndCardAT) {
           return {
             compile: function(tElement, tAttrs, transclude) {
               return function link(scope, element, attrs) {
@@ -16,6 +16,8 @@
                 var isLive = helper.toBoolean(attrs['live']),
                     rowId = attrs['mpxId'],
                     isShowEndCard = attrs['showEndCard'] === '1' ? true : false,
+                    dataNextUrl = $(element).find('[data-usa-tve-player="pdk-player"]').data('next-url'),
+                    isNextUrl = dataNextUrl != '' ? true : false,
                     mpxId = !isLive && rowId && rowId.split('/').pop(),
                     resuming = false,
                     currentAsset, previouslyWatched, lastSave;
@@ -81,7 +83,27 @@
                   // init end card service
                   if (isShowEndCard) {
                     usaEndCardService.init(data);
+                  } else if (isNextUrl) {
+                    $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
                   }
+                }
+
+                /*
+                 * On Release Start
+                 * @private
+                 */
+                function _onReleaseEnd(pdkEvent) {
+
+                  var nextUrl = window.location.origin + dataNextUrl;
+
+                  // AdobeTracking
+                  usaEndCardAT.callAdobeTracking({
+                    showTitle: attrs['showTitle'],
+                    episodeTitle: attrs['episodeTitle'],
+                    endCardEvent: 'Auto-Play Next'
+                  });
+
+                  window.location.replace(nextUrl);
                 }
 
                 function _showPicker() {

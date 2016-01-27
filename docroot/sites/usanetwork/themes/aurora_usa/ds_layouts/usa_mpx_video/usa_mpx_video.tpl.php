@@ -3,7 +3,7 @@
      data-tve-player
      data-usa-tve-player-container
      data-show-title="<?php print $show_title ?>"
-     data-video-title="<?php print $filename ?>"
+     data-episode-title="<?php print $filename ?>"
      data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
      data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>">
   <div class="player-wrapper">
@@ -88,13 +88,14 @@
             ?>
           <?php endif; ?>
           <div data-usa-tve-player="pdk-player"
-               class="pdk-player-wrap">
+               class="pdk-player-wrap"
+               data-next-url="<?php print $next_video['url']; ?>">
             <?php print $video; ?>
           </div>
           <!--  start endcart  -->
           <?php if (!empty($endcard_enabled)) : ?>
-            <div class="close endcard_block" data-end-card="usaEndCard"
-                 data-ng-click="hideShowCard()"></div>
+<!--            <div class="close endcard_block" data-end-card="usaEndCard"-->
+<!--                 data-ng-click="hideShowCard()"></div>-->
             <div class="reload-button endcard_top" data-replay="usa-replay"
                  data-ng-click="replayVideo()">
               <div class="replay-title">replay</div>
@@ -102,7 +103,7 @@
                 class="episode-title"><?php print $filename ?></div>
             </div>
             <div id="episode-up-next" class="endcard_block endcard_topRight"
-                 data-upnext-name="up next"
+                 data-next-name="up next"
                  data-end-card="usaEndCard"
                  data-next-url="<?php print $next_video['url']; ?>">
               <h3>up next...</h3>

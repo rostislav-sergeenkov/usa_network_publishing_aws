@@ -126,6 +126,7 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
     case 'quiz': return 'quiz-icon-default';
     case 'person': return 'cast-crew-icon-default';
     case 'tv_episode': return 'episode-info-icon-default';
+    case 'consumpt_post': return 'episode-info-icon-default';
   }
 
   return 'full-video-icon-default';

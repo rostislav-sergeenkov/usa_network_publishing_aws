@@ -492,19 +492,23 @@
             font-family: $avalon-medium;
             font-size: get-vw(20px, 1901);
             display: inline-block;
+            max-width: calc(100% - 11.5vw);
             vertical-align: top;
             @include breakpoint($bp-min-1901-width) {
               font-size: 20px;
+              max-width: calc(100% - 210px);
             }
             @include breakpoint($bp-1024-width) {
               font-size: get-vw(14.6px, 1024);
+              max-width: calc(100% - 15.5vw);
             }
             @include breakpoint($bp-640-width) {
               font-size: 9.125px;
+              max-width: calc(100% - 100px);
             }
             @include breakpoint($bp-480-width) {
               display: block;
-              width: calc(100% - 16px);
+              max-width: calc(100% - 10px);
             }
             .title {
               margin: get-vw(5px, 1901) 0 get-vw(8px, 1901);

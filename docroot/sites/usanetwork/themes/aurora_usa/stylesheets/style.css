@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -34860,27 +34860,31 @@ body.blog .view-display-id-blog_content .views-row {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.05208vw;
   display: inline-block;
+  max-width: calc(100% - 11.5vw);
   vertical-align: top;
 }
 @media (min-width: 1901px) {
   [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
     font-size: 20px;
+    max-width: calc(100% - 210px);
   }
 }
 @media (max-width: 1024px) {
   [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
     font-size: 1.42578vw;
+    max-width: calc(100% - 15.5vw);
   }
 }
 @media (max-width: 640px) {
   [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
     font-size: 9.125px;
+    max-width: calc(100% - 100px);
   }
 }
 @media (max-width: 480px) {
   [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
     display: block;
-    width: calc(100% - 16px);
+    max-width: calc(100% - 10px);
   }
 }
 [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper .title {

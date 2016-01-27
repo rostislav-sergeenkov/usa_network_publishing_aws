@@ -11100,6 +11100,7 @@ footer h2 {
 }
 .consumptionator-page .gallery-wrapper .advert-wrap, .node-type-media-gallery .gallery-wrapper .advert-wrap, .node-type-tv-episode .gallery-wrapper .advert-wrap, .node-type-consumpt-post .gallery-wrapper .advert-wrap, .node-media-gallery .gallery-wrapper .advert-wrap {
   display: none;
+  overflow: hidden;
 }
 .consumptionator-page .gallery-wrapper .advert-wrap.active, .node-type-media-gallery .gallery-wrapper .advert-wrap.active, .node-type-tv-episode .gallery-wrapper .advert-wrap.active, .node-type-consumpt-post .gallery-wrapper .advert-wrap.active, .node-media-gallery .gallery-wrapper .advert-wrap.active {
   background-color: #1f1f1f;

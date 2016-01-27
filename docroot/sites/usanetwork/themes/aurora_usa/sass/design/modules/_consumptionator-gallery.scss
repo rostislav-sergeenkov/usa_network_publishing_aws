@@ -153,6 +153,7 @@
     // gallery advert
     .advert-wrap {
       display: none;
+      overflow: hidden;
       &.active {
         background-color: $gallery-description-back;
         height: 100%;

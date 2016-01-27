@@ -128,7 +128,7 @@
                 newValue += atArr[i].charAt(0).toUpperCase() + atArr[i].substr(1) + ' ';
               }
 
-              return newValue.trim();
+              return newValue;
             },
 
             // Gigya share bar
@@ -142,7 +142,7 @@
                 socialNetwork = gigya.services.socialize.plugins.reactions.instances[shareBarId].buttonInstances[shareBtnId].id;
                 socialNetworkName = serviceApi.callAtValFormat(socialNetwork);
 
-                AdobeTracking.socialNetwork = socialNetworkName;
+                AdobeTracking.socialNetwork = socialNetworkName.trim();
                 AdobeTracking.itemShared = episodeTitle;
                 _satellite.track('socialShare');
               }
@@ -186,7 +186,7 @@
                 }
 
                 // call _satellite.track
-                AdobeTracking.clickedPageItem = atVal;
+                AdobeTracking.clickedPageItem = atVal.trim();
                 _satellite.track('pageItemClicked');
               }
             }
@@ -356,6 +356,12 @@
                   // if statusPlayerFullScreen = false, delay = 0;
                   // else delay = 1000
                   timeoutID = $timeout(function () {
+
+                    // AdobeTracking
+                    usaEndCardAT.callAdobeTracking({
+                      endCardTitle: 'Credit Squeeze'
+                    });
+
                     // show end card
                     USAEndCardAPI.showEndCard();
                   }, delayEndCart);
@@ -404,6 +410,8 @@
                */
               function _onReleaseEnd(pdkEvent) {
 
+                console.info('_onReleaseEnd');
+
                 // check status end card processed
                 if (statusProcessed) {
                   return false;
@@ -428,7 +436,7 @@
                 } else if (statusShowEndCard) {
 
                   if (!isMobile && !USAEndCardAPI.checkWindowWidth()) {
-                    USAEndCardAPI.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.endCardBlocks);
+                    usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.endCardBlocks);
                   }
 
                   USAEndCardAPI.timeoutUpNext();
@@ -554,7 +562,12 @@
                 var episodeUpNextUrl = episodeUpNextEl.data('next-url'),
                     nextUrl = window.location.origin + episodeUpNextUrl;
 
-                // can be insert AdobeTracking
+                // AdobeTracking
+                usaEndCardAT.callAdobeTracking({
+                  showTitle: showTitle,
+                  episodeTitle: episodeTitle,
+                  endCardEvent: 'Auto-Play Next'
+                });
 
                 window.location.replace(nextUrl);
               }, timeoutEndCard);
@@ -698,6 +711,7 @@
 
                   var link = $(e.currentTarget);
 
+                  // AdobeTracking
                   if (link.hasClass('link-up-next')) {
                     usaEndCardAT.callAdobeTracking({
                       showTitle: showTitle,

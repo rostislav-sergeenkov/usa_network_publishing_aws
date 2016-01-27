@@ -1,15 +1,22 @@
 <?php
 
 define('USANETWORK_VIDEO_ENDCARD_RELATED_COUNT', 3);
-define('USANETWORK_VIDEO_ENDCARD_RELATED_VIDEO_COUNT', 4);
+define('USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT', 1);
+define('USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT', 10);
 
 /**
  * Implements hook_init().
  */
 function usanetwork_video_endcard_init() {
-  drupal_add_js(drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js', array(
-    'every_page' => true
-  ));
+  $file = menu_get_object('file');
+  if ($file) {
+    $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode' , 'value');
+    if ($full_episode == '0') {
+      drupal_add_js(drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js', array(
+        'every_page' => true
+      ));
+    }
+  }
 }
 
 /**
@@ -172,8 +179,10 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
 
         if ($full_episode) {
           $query->innerJoin('field_data_field_mpx_episode_number', 'ep', 'fd.entity_id = ep.entity_id');
+          $query->innerJoin('field_data_field_mpx_season_number', 'sn', 'fd.entity_id = sn.entity_id');
           // +0 for sorting numerically varchar field.
-          $query->orderBy('ep.field_mpx_episode_number_value+0', 'ASC')
+          $query->orderBy('sn.field_mpx_season_number_value+0', 'ASC')
+            ->orderBy('ep.field_mpx_episode_number_value+0', 'ASC')
             ->orderBy('v.airdate', 'ASC')
             ->orderBy('v.created', 'ASC');
         }
@@ -334,6 +343,8 @@ function _usanetwork_video_endcard_get_term_depth($tid, $limit = 10) {
 }
 
 function usanetwork_get_endcard_variables($file) {
+  $related_files = array();
+
   // check if it's full episode
   $full_episode = reset(field_get_items('file', $file, 'field_mpx_full_episode'));
   if ($full_episode) {
@@ -346,7 +357,13 @@ function usanetwork_get_endcard_variables($file) {
     $filter_category = FALSE;
   }
 
-  $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_VIDEO_COUNT);
+  // We can add else statement for related files of short video.
+  if ($full_episode) {
+    $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT);
+    $related_clip_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT);
+    $related_files = array_merge($related_files, $related_clip_files);
+  }
+
   foreach ($related_files as $related_file) {
     $overriden_image_tumbnail = NULL;
     $desktop_image = NULL;
@@ -369,13 +386,13 @@ function usanetwork_get_endcard_variables($file) {
     }
     $file_wrapper = entity_metadata_wrapper('file', $related_file);
     $uri = entity_uri('file', $related_file);
-    $duration = usanetwork_core_api_check_field($related_file, 'field_mpx_duration', 'file') ? gmdate('H:i:s', $file_wrapper->field_mpx_duration->value()) : NULL;
+    $duration = usanetwork_core_api_check_field($related_file, 'field_mpx_duration', 'file') ? $file_wrapper->field_mpx_duration->value() : NULL;
     $item = array(
       'url' => url($uri['path']),
       'title' => $related_file->filename,
       'season' => !empty($related_file->field_mpx_season_number) ? $file_wrapper->field_mpx_season_number->value() : NULL,
       'episode' => !empty($related_file->field_mpx_episode_number) ? $file_wrapper->field_mpx_episode_number->value() : NULL,
-      'duration' => !empty($duration) ? $duration : NULL,
+      'duration' => !empty($duration) ? gmdate('H:i:s', $duration) : NULL,
       'images' => array(
         'thumbnail' => !empty($overriden_image_tumbnail) ? $overriden_image_tumbnail : $related_file->mpx_video_data['thumbnail_url'],
         'desktop_image' => !empty($desktop_image) ? $desktop_image :NULL,
@@ -383,6 +400,8 @@ function usanetwork_get_endcard_variables($file) {
       ),
     );
     $items[] = $item;
+  }
+  if (!empty($items)) {
     return $items;
   }
   return NULL;

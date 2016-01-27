@@ -2375,7 +2375,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Time is provided in seconds',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2478,11 +2478,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'bundle' => 'mpx_video_2',
     'custom_add_another' => '',
     'custom_remove' => '',
-    'default_value' => array(
-      0 => array(
-        'value' => 'enable',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -2552,7 +2548,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_endcard_timing',
     'label' => 'Endcard Timing',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
@@ -4908,6 +4904,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
   t('Queue items');
   t('Season Number');
   t('Show');
+  t('Time is provided in seconds');
   t('USA Video Term');
   t('WatchWith Airing ID');
 

@@ -186,7 +186,6 @@
     });
 
     mps.adviewCallback = function(eo){
-      console.info('adviewCallback',eo._mps._slot);
       if(eo._mps._slot.indexOf(nameAd) === 0) {
         adNext.show();
       }
@@ -262,7 +261,6 @@
 
                 // if advertCounter = slidesCount fire show gallery advert
                 if (advertWrap.length > 0 && advertCounter === adSlidesCount) {
-                  console.info('init call maps.usa.insertInterstitial');
                   // reset advert counter
                   advertCounter = 0;
                   // show gallery ad

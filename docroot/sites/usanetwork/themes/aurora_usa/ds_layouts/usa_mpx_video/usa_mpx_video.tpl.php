@@ -116,6 +116,7 @@
                   </div>
                   <div class="meta-wrapper">
                     <div class="meta-wrapper-inner">
+                      <div class="meta-icon full-video-icon-default"></div>
                       <div class="meta">
                         <div class="additional">S<span
                             class="season"><?php print $next_video['season']; ?></span>

@@ -101,6 +101,8 @@
     }
 
     .pdk-player-wrap {
+      width: 100%;
+      height: 100%;
       &.show-end-card{
         @include breakpoint($bp-480-width) {
           display: none;

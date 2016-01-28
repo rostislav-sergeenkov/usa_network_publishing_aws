@@ -811,15 +811,37 @@ function usanetwork_ads_sitecatalyst_variables($page_variables) {
   );
   drupal_alter('usa_omniture', $omniture_variables, $context);
 
-//  if ($current_menu_object) {
-//    $custom_omniture_variables = _usanetwork_ads_get_entity_omniture_variables($current_menu_object, $entity_type);
-//    $omniture_variables = $custom_omniture_variables + $omniture_variables;
-//  }
+  if ($current_menu_object) {
+    $custom_omniture_variables = usanetwork_ads_get_detailed_variables($context);
+    if (!empty($custom_omniture_variables)) {
+      $omniture_variables = array_merge(_usanetwork_dtm_migrate_vars($omniture_variables), _usanetwork_dtm_migrate_vars($custom_omniture_variables));
+    }
+  }
 
   if ($omniture_variables) {
     return array('variables' => $omniture_variables);
   }
   else {
+    return array();
+  }
+}
+
+/*
+ * Helped function to get detailed ominute settings
+ */
+function usanetwork_ads_get_detailed_variables($context) {
+  $site_metric_settings = variable_get('usanetwork_ads_site_metric_settings', array());
+  $custom_variables = $site_metric_settings[$context['entity_type']];
+  if ($context['entity_type'] == 'node'){
+    $custom_entity_variables = $custom_variables[$context['entity']->type][$context['entity']->nid];
+  } else if ($context['entity_type'] == 'file'){
+    $custom_entity_variables = $custom_variables[$context['entity']->type][$context['entity']->fid];
+  }
+
+  if (!empty($custom_entity_variables)) {
+    $custom_omniture_variables = _usanetwork_ads_get_omniture_variables($custom_entity_variables['omniture']['variables']);
+    return $custom_omniture_variables;
+  } else {
     return array();
   }
 }

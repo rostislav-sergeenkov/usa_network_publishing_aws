@@ -88,7 +88,7 @@
             <div data-usa-tve-player="pdk-player"
                  class="pdk-player-wrap"
                  data-episode-pid="<?php print $file_pid; ?>"
-                 data-next-url="<?php print $next_video_url; ?>">
+                 data-next-episode-url="<?php print $next_video_url; ?>">
               <?php print $video; ?>
             </div>
             <!--  start endcart  -->
@@ -132,7 +132,7 @@
               <div data-usa-tve-player="pdk-player"
                    class="pdk-player-wrap"
                    data-episode-pid="<?php print $file_pid; ?>"
-                   data-next-url="<?php print $next_video_url; ?>">
+                   data-next-episode-url="<?php print $next_video_url; ?>">
                 <?php print $video; ?>
               </div>
               <!--  start endcart  -->

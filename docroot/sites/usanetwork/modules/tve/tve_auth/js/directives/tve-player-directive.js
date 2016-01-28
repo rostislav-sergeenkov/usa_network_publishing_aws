@@ -3,8 +3,10 @@
   'use strict';
 
   ng.module('tve.directives')
-      .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx', 'usaEndCardService', 'usaEndCardAT',
-        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx, usaEndCardService, usaEndCardAT) {
+      .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx',
+        'usaEndCardService', 'usaEndCardHelper',
+        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx,
+                 usaEndCardService, usaEndCardHelper) {
           return {
             compile: function(tElement, tAttrs, transclude) {
               return function link(scope, element, attrs) {
@@ -15,12 +17,17 @@
 
                 var isLive = helper.toBoolean(attrs['live']),
                     rowId = attrs['mpxId'],
-                    isShowEndCard = attrs['showEndCard'] === '1' ? true : false,
-                    dataNextUrl = $(element).find('[data-usa-tve-player="pdk-player"]').data('next-url'),
-                    isNextUrl = dataNextUrl != '' ? true : false,
                     mpxId = !isLive && rowId && rowId.split('/').pop(),
                     resuming = false,
-                    currentAsset, previouslyWatched, lastSave;
+                    currentAsset, previouslyWatched, lastSave,
+                    // usa vars
+                    isShowEndCard = attrs['showEndCard'] === '1' ? true : false,
+                    usaTvePlayer = $(element).find('[data-usa-tve-player="pdk-player"]'),
+                    episodeUpNextUrl = usaTvePlayer.data('next-episode-url'),
+                    episodePID = usaTvePlayer.data('episode-pid'),
+                    isNextUrl = episodeUpNextUrl != '' ? true : false,
+                    usaLoadReleaseUrl = false,
+                    usaReleaseEnd = false;
 
                 scope.showCompanionAdd = false;
                 scope.isDartReq = true;
@@ -94,16 +101,17 @@
                  */
                 function _onReleaseEnd(pdkEvent) {
 
-                  var nextUrl = window.location.origin + dataNextUrl;
+                  if (!isShowEndCard && isNextUrl) {
+                    usaReleaseEnd = true;
+                  }
 
-                  // AdobeTracking
-                  usaEndCardAT.callAdobeTracking({
+                  // redirect to next episode
+                  usaEndCardHelper.timeoutUpNext({
+                    episodeUpNextUrl: episodeUpNextUrl,
                     showTitle: attrs['showTitle'],
                     episodeTitle: attrs['episodeTitle'],
-                    endCardEvent: 'Auto-Play Next'
+                    timeUpNext: 0
                   });
-
-                  window.location.replace(nextUrl);
                 }
 
                 function _showPicker() {
@@ -113,7 +121,7 @@
                   });
                 }
 
-                function _init() {
+                function _init(pdkEvent) {
                   if (!isLive && $rootScope.global.isLoggedInIdx) {
                     idx.promise.then(function() {
                       var assetInfo = idx.wasWatchedEarlier(mpxId);
@@ -137,9 +145,13 @@
                         $pdk.controller.clickPlayButton(true);
                       }
                     });
-                  }
-                  else {
+                  } else {
                     //$pdk.controller.clickPlayButton(true);
+                  }
+
+                  // call usaLoadReleaseUrl
+                  if (!isShowEndCard && !usaLoadReleaseUrl && usaReleaseEnd) {
+                    usaLoadReleaseUrl = usaEndCardHelper.playerApi.usaLoadReleaseUrl(pdkEvent.data.pid, episodePID);
                   }
                 }
 

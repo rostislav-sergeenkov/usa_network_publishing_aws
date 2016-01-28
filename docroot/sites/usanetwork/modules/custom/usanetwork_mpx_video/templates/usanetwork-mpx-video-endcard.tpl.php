@@ -10,8 +10,7 @@
 </div>
 <div id="episode-up-next" class="endcard_block endcard_topRight"
      data-next-name="up next"
-     data-end-card="usaEndCard"
-     data-next-url="<?php print $next_video['url']; ?>">
+     data-end-card="usaEndCard">
   <h3><?php print t('up next...');?></h3>
   <div class="node">
     <a href="<?php print $next_video['url']; ?>" class="link link-up-next">

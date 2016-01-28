@@ -1646,7 +1646,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       }
       $endcard = usanetwork_get_endcard_variables($file);
       $next_video = (!empty($endcard)) ? array_shift($endcard) : NULL;
-      $vars['next_video_url'] = $next_video;
+      $vars['next_video_url'] = $next_video['url'];
 
       if ($show) {
         $show_endcard_timing = _usanetwork_get_field_item('node', $show, 'field_endcard_timing', 'value');

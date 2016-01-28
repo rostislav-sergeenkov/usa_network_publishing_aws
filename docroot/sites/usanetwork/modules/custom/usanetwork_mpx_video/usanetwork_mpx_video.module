@@ -1657,8 +1657,13 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $endcard_timing = _usanetwork_get_field_item('file', $file, 'field_endcard_timing', 'value');
       $endcard_custom_time = _usanetwork_get_field_item('file', $file, 'field_custom_time', 'value');
 
+      $file_movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
+
       if ($full_episode == '1') {
-        if (empty($endcard_timing)) {
+        if (!empty($file_movie)) {
+          $enabled = FALSE;
+          $time = NULL;
+        } else if (empty($endcard_timing)) {
           if (empty($show_endcard_timing)) {
             $enabled = TRUE;
             $time = variable_get('usanetwork_endcard_global_time', 30);

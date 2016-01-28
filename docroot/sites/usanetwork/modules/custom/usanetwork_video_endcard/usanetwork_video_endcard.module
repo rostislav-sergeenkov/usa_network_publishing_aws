@@ -177,7 +177,10 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
         $query->condition('fe.entity_type', 'file', '=')
           ->condition('fe.field_mpx_full_episode_value', $full_episode ? '1' : '0', '=');
 
-        if ($full_episode) {
+        if (usanetwork_core_api_check_field($file, 'field_movie', 'file')) {
+          $query->orderBy('v.title', 'ASC');
+        }
+        elseif ($full_episode) {
           $query->innerJoin('field_data_field_mpx_episode_number', 'ep', 'fd.entity_id = ep.entity_id');
           $query->innerJoin('field_data_field_mpx_season_number', 'sn', 'fd.entity_id = sn.entity_id');
           // +0 for sorting numerically varchar field.
@@ -358,7 +361,10 @@ function usanetwork_get_endcard_variables($file) {
   }
 
   // We can add else statement for related files of short video.
-  if ($full_episode) {
+  if (usanetwork_core_api_check_field($file, 'field_movie', 'file')) {
+    $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT);
+  }
+  elseif ($full_episode) {
     $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT);
     $related_clip_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT);
     $related_files = array_merge($related_files, $related_clip_files);

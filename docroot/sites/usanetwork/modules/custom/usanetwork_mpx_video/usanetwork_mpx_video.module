@@ -1644,7 +1644,9 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
           drupal_add_css($css_file, array('type' => 'external'));
         }
       }
-      $vars['endcard'] = usanetwork_get_endcard_variables($file);
+      $endcard = usanetwork_get_endcard_variables($file);
+      $next_video = (!empty($endcard)) ? array_shift($endcard) : NULL;
+      $vars['next_video_url'] = $next_video;
 
       if ($show) {
         $show_endcard_timing = _usanetwork_get_field_item('node', $show, 'field_endcard_timing', 'value');
@@ -1694,8 +1696,17 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         $time = NULL;
       }
 
+      $variables = array(
+        'filename' => $file->title,
+        'next_video' => $next_video,
+        'endcard' => $endcard,
+      );
+
+      $endcard_template = theme('usanetwork_mpx_video_endcard', $variables);
+
       $vars['endcard_enabled'] = $enabled;
       $vars['endcard_time'] = (!empty($time)) ? ($time * 1000) : NULL;
+      $vars['endcard_template'] = $endcard_template;
 
       $file_pid = _usanetwork_get_field_item('file', $file, 'field_mpx_main_released_file_pid', 'value');
       $vars['file_pid'] = !empty($file_pid) ? $file_pid : 0;
@@ -2653,6 +2664,14 @@ function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
         'full_episode' => NULL,
       ),
       'template' => 'templates/usanetwork-mpx-video-full-video-advert',
+    ),
+    'usanetwork_mpx_video_endcard' => array(
+      'variables' => array(
+        'filename' => NULL,
+        'next_video' => NULL,
+        'endcard' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-endcard',
     ),
   );
   return $themes;

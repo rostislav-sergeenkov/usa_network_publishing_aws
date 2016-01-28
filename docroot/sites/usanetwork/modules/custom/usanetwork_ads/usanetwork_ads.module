@@ -839,7 +839,12 @@ function usanetwork_ads_get_detailed_variables($context) {
   }
 
   if (!empty($custom_entity_variables)) {
-    $custom_omniture_variables = _usanetwork_ads_get_omniture_variables($custom_entity_variables['omniture']['variables']);
+    if ((!empty($custom_entity_variables['default']) && $custom_entity_variables['default'] == '1') ||
+      (!empty($custom_entity_variables['omniture']['disable']) && $custom_entity_variables['omniture']['disable'])) {
+      $custom_omniture_variables = array();
+    } else {
+      $custom_omniture_variables = _usanetwork_ads_get_omniture_variables($custom_entity_variables['omniture']['variables']);
+    }
     return $custom_omniture_variables;
   } else {
     return array();

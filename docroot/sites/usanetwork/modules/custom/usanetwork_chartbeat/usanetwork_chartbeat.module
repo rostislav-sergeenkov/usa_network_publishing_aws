@@ -30,7 +30,7 @@ function usanetwork_chartbeat_page_alter(&$page) {
 }
 
 /**
- * Implements hook_usa_dart_alter().
+ * Helper function for getting parameters
  */
 function _usanetwork_chartbeat_set_variables($menu_object) {
   if ($menu_object) {
@@ -50,7 +50,6 @@ function _usanetwork_chartbeat_set_variables($menu_object) {
       $type = 'timeline-gallery';
     }
   }
-
 
   return array('type' => (isset($type)) ? $type : NULL);
 }

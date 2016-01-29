@@ -148,6 +148,13 @@
               }
             },
 
+            callVideoBreakPoint: function () {
+              if (AdobeTracking !== "undefined" && _satellite.track !== "undefined") {
+                AdobeTracking.videoBreakPoint = "Credit Squeeze";
+                _satellite.track("setVideoBreakPoint");
+              }
+            },
+
             // AdobeTracking.clickPageItem
             callAdobeTracking: function (atParams, atName) {
 
@@ -460,9 +467,7 @@
                   timeoutID = $timeout(function () {
 
                     // AdobeTracking
-                    usaEndCardAT.callAdobeTracking({
-                      endCardTitle: 'Credit Squeeze'
-                    }, 'setVideoBreakPoint');
+                    usaEndCardAT.callVideoBreakPoint();
 
                     // show end card
                     USAEndCardAPI.showEndCard();

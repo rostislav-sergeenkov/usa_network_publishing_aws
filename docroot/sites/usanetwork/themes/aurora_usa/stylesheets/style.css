@@ -11111,12 +11111,12 @@ footer h2 {
   width: 100%;
   z-index: 56;
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .consumptionator-page .gallery-wrapper .advert-wrap.active, .node-type-media-gallery .gallery-wrapper .advert-wrap.active, .node-type-tv-episode .gallery-wrapper .advert-wrap.active, .node-type-consumpt-post .gallery-wrapper .advert-wrap.active, .node-media-gallery .gallery-wrapper .advert-wrap.active {
     position: relative;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .consumptionator-page .gallery-wrapper .advert-wrap.active ~ .bx-wrapper, .consumptionator-page .gallery-wrapper .advert-wrap.active ~ .share-bar, .node-type-media-gallery .gallery-wrapper .advert-wrap.active ~ .bx-wrapper, .node-type-media-gallery .gallery-wrapper .advert-wrap.active ~ .share-bar, .node-type-tv-episode .gallery-wrapper .advert-wrap.active ~ .bx-wrapper, .node-type-tv-episode .gallery-wrapper .advert-wrap.active ~ .share-bar, .node-type-consumpt-post .gallery-wrapper .advert-wrap.active ~ .bx-wrapper, .node-type-consumpt-post .gallery-wrapper .advert-wrap.active ~ .share-bar, .node-media-gallery .gallery-wrapper .advert-wrap.active ~ .bx-wrapper, .node-media-gallery .gallery-wrapper .advert-wrap.active ~ .share-bar {
     display: none;
   }
@@ -11125,7 +11125,7 @@ footer h2 {
   height: 100%;
   width: 100%;
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .consumptionator-page .gallery-wrapper .advert-wrap .advert-block, .node-type-media-gallery .gallery-wrapper .advert-wrap .advert-block, .node-type-tv-episode .gallery-wrapper .advert-wrap .advert-block, .node-type-consumpt-post .gallery-wrapper .advert-wrap .advert-block, .node-media-gallery .gallery-wrapper .advert-wrap .advert-block {
     margin-bottom: 60px;
   }
@@ -11153,7 +11153,7 @@ footer h2 {
     width: 8.55469vw;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .consumptionator-page .gallery-wrapper .advert-wrap .advert-next, .node-type-media-gallery .gallery-wrapper .advert-wrap .advert-next, .node-type-tv-episode .gallery-wrapper .advert-wrap .advert-next, .node-type-consumpt-post .gallery-wrapper .advert-wrap .advert-next, .node-media-gallery .gallery-wrapper .advert-wrap .advert-next {
     background-color: #4e4e4e;
     height: 60px;
@@ -11187,7 +11187,7 @@ footer h2 {
     margin-top: -1.31836vw;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .consumptionator-page .gallery-wrapper .advert-wrap .advert-next:after, .node-type-media-gallery .gallery-wrapper .advert-wrap .advert-next:after, .node-type-tv-episode .gallery-wrapper .advert-wrap .advert-next:after, .node-type-consumpt-post .gallery-wrapper .advert-wrap .advert-next:after, .node-media-gallery .gallery-wrapper .advert-wrap .advert-next:after {
     font-size: 40px;
     left: auto;
@@ -11220,7 +11220,7 @@ footer h2 {
     font-size: 0.99609vw;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .consumptionator-page .gallery-wrapper .advert-wrap .advert-next span, .node-type-media-gallery .gallery-wrapper .advert-wrap .advert-next span, .node-type-tv-episode .gallery-wrapper .advert-wrap .advert-next span, .node-type-consumpt-post .gallery-wrapper .advert-wrap .advert-next span, .node-media-gallery .gallery-wrapper .advert-wrap .advert-next span {
     background: #3e3e3e;
     bottom: auto;

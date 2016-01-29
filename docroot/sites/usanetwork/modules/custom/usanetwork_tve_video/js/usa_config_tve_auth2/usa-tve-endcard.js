@@ -149,13 +149,15 @@
             },
 
             // AdobeTracking.clickPageItem
-            callAdobeTracking: function (atParams) {
+            callAdobeTracking: function (atParams, atName) {
 
               if (AdobeTracking !== "undefined" && _satellite.track !== "undefined") {
 
                 var separator = ': ',
                     atVal = '',
                     params, key;
+
+                atName = atName || 'pageItemClicked';
 
                 // create AdobeTracking params
                 params = {
@@ -187,7 +189,7 @@
 
                 // call _satellite.track
                 AdobeTracking.clickedPageItem = atVal.trim();
-                _satellite.track('pageItemClicked');
+                _satellite.track(atName);
               }
             }
           };
@@ -242,7 +244,7 @@
                 });
 
                 if (nextUrl !== undefined && nextUrl !== '') {
-                  window.location = url;
+                  //window.location = url;
                 }
               }, options.timeUpNext);
 
@@ -460,7 +462,7 @@
                     // AdobeTracking
                     usaEndCardAT.callAdobeTracking({
                       endCardTitle: 'Credit Squeeze'
-                    });
+                    }, 'setVideoBreakPoint');
 
                     // show end card
                     USAEndCardAPI.showEndCard();

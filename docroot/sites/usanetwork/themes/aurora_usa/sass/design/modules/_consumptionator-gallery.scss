@@ -151,7 +151,7 @@
       }
     }
     // gallery advert
-    .advert-wrap {
+    .interstitial-wrap {
       display: none;
       overflow: hidden;
       &.active {
@@ -171,14 +171,14 @@
           }
         }
       }
-      .advert-block {
+      .interstitial-block {
         height: 100%;
         width: 100%;
         @include breakpoint($bp-768-width) {
           margin-bottom: 60px;
         }
       }
-      .advert-next {
+      .interstitial-next {
         //background-color: $black;
         background-color: $consum-also-back;
         cursor: pointer;

@@ -111,7 +111,11 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
       $form['usanetwork_ads']['#attributes']['class'][] = 'required-fields';
     }
     $variables =& $form['usanetwork_ads']['variables']['omniture']['variables'];
-    foreach ($mandatory as $variable_name) {
+    $existed_variables = array_keys(_usanetwork_ads_get_omniture_variables($defaults['omniture']['variables']));
+    foreach ($mandatory as $variable_name => $variable_name_value) {
+      if (in_array($variable_name, $existed_variables)) {
+        continue;
+      }
       $element_delta = NULL;
       foreach (element_children($variables) as $delta) {
         if ($delta !== 'add_more' && $variables[$delta]['key']['#default_value'] == $variable_name) {
@@ -124,7 +128,7 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
         $add_more = $variables['add_more'];
         unset($variables['add_more']);
         $variables[] = _usanetwork_ads_omniture_variable_elements(array(
-          'key' => $variable_name,
+          'key' => $variable_name, 'value' => $variable_name_value,
         ));
         $element_delta = key($variables);
         $variables['add_more'] = $add_more;
@@ -239,6 +243,7 @@ function usanetwork_ads_form_entity_form_submit($form, &$form_state) {
     if (module_exists('usanetwork_dtm')) {
       foreach ($entity_settings['omniture']['variables'] as $item) {
         if ($item['key'] !== '_none') {
+          $item['value'] = _usanetwork_ads_replace_tokens($item['value'], $entity, $entity_type);
           $variables[] = $item;
         }
       }
@@ -256,6 +261,24 @@ function usanetwork_ads_form_entity_form_submit($form, &$form_state) {
   variable_set('usanetwork_ads_site_metric_settings', $settings);
 }
 
+/**
+ * .
+ */
+function _usanetwork_ads_replace_tokens($value, $entity, $entity_type) {
+  if ($entity_type == "node") {
+    if ($entity->type == "consumpt_post") {
+      if (strpos($value, USANETWORK_ADS_POST_SHOW_NAME) !== FALSE) {
+        $show_field = _usanetwork_get_field_item($entity_type, $entity, 'field_show', 'target_id');
+        $show = node_load($show_field);
+        $search = array(USANETWORK_ADS_POST_SHOW_NAME, USANETWORK_ADS_POST_TITLE);
+        $replace = array($show->title, $entity->title);
+        $value = str_replace($search, $replace, $value);
+      }
+    }
+  }
+
+  return $value;
+}
 /**
  * Bundle save submit callback
  * Saves settings

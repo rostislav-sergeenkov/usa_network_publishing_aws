@@ -16,11 +16,40 @@ function usanetwork_chartbeat_page_alter(&$page) {
     } else {
       $domain = $_SERVER['SERVER_NAME'];
     }
-    drupal_add_js(array('chartbeat_domain' => $domain), 'setting');
+
+    $menu_object = _usanetwork_menu_get_object();
+    $chartbeat_settings = _usanetwork_chartbeat_set_variables($menu_object);
+
+    drupal_add_js(array('chartbeat_domain' => $domain, 'chartbeat_type' => $chartbeat_settings['type']), 'setting');
 
     $page['page_bottom']['chartbeat']['#attached']['js'][drupal_get_path('module', 'usanetwork_chartbeat') . '/js/usanetwork_chartbeat.js'] =  array(
       'type' => 'file',
       'scope' => 'footer',
     );
   }
+}
+
+/**
+ * Helper function for getting parameters
+ */
+function _usanetwork_chartbeat_set_variables($menu_object) {
+  if ($menu_object) {
+    if (in_array($menu_object->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+      $full_episode = _usanetwork_get_field_item('node', $menu_object, 'field_mpx_full_episode', 'value');
+      $show = _usanetwork_get_field_item('node', $menu_object, 'field_show', 'target_id');
+      if ($full_episode == '1') {
+        if (!empty($show)) {
+          $type = 'video long-form';
+        } else {
+          $type = 'video movies';
+        }
+      } else {
+        $type = 'video short-form';
+      }
+    } else if ($menu_object->type == 'timeline_gallery') {
+      $type = 'timeline-gallery';
+    }
+  }
+
+  return array('type' => (isset($type)) ? $type : NULL);
 }

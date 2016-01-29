@@ -181,6 +181,11 @@
       Drupal.behaviors.mpsAdvert.mpsInsertInterstitial('#' + adBlockId);
     }
 
+    var showNextTimeout = setTimeout(function () {
+      adNext.show();
+      console.info('timeoutNextShow');
+    }, 5000);
+
     adWrap.velocity("fadeIn", {
       duration: 200,
       easing: "linear",
@@ -192,6 +197,7 @@
     mps.adviewCallback = function(eo){
       if(eo._mps._slot.indexOf(nameAd) === 0) {
         adNext.show();
+        clearInterval(showNextTimeout);
       }
     };
   }
@@ -224,7 +230,7 @@
             advertNext = advertWrap.find('.advert-next'),
             adSlidesCount = parseInt(advertWrap.data('slides-counter'), 10),
             advertCounter = 0,
-            refreshAD = false;
+            refreshAD = false,
             showColorPager = ($('body[class*=" show-"]').length > 0)? ' class="show-color"': '',
             options = {
               auto: false,
@@ -240,7 +246,7 @@
                 }
                 switch (slideIndex) {
                   default:
-                    return '<div class="show-color"></div><img src="' + src + '">';
+                    return '<div'+showColorPager+'></div><img src="' + src + '">';
                 }
               },
               controls: true,

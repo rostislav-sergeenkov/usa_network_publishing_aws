@@ -162,11 +162,11 @@
         top: 0;
         width: 100%;
         z-index: 56;
-        @include breakpoint($bp-640-width) {
+        @include breakpoint($bp-768-width) {
           position: relative;
         }
         & ~ .bx-wrapper, & ~ .share-bar {
-          @include breakpoint($bp-640-width) {
+          @include breakpoint($bp-768-width) {
             display: none;
           }
         }
@@ -174,7 +174,7 @@
       .advert-block {
         height: 100%;
         width: 100%;
-        @include breakpoint($bp-640-width) {
+        @include breakpoint($bp-768-width) {
           margin-bottom: 60px;
         }
       }
@@ -197,7 +197,7 @@
           height: get-vw(87.6px, 1024);
           width: get-vw(87.6px, 1024);
         }
-        @include breakpoint($bp-640-width) {
+        @include breakpoint($bp-768-width) {
           background-color: $continue-gallery-back;
           height: 60px;
           width: 100%;
@@ -224,7 +224,7 @@
             margin-left: get-vw(-13.5px, 1024);
             margin-top: get-vw(-13.5px, 1024);
           }
-          @include breakpoint($bp-640-width) {
+          @include breakpoint($bp-768-width) {
             font-size: 40px;
             left: auto;
             margin-left: 0;
@@ -251,7 +251,7 @@
             bottom: get-vw(11px, 1024);
             font-size: get-vw(10.2px, 1024);
           }
-          @include breakpoint($bp-640-width) {
+          @include breakpoint($bp-768-width) {
             background: $consum-carousel-odd;
             bottom: auto;
             height: 100%;

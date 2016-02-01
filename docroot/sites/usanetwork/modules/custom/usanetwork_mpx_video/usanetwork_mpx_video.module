@@ -1697,7 +1697,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       }
 
       $variables = array(
-        'filename' => $file->title,
+        'filename' => $file->filename,
         'next_video' => $next_video,
         'endcard' => $endcard,
       );

@@ -7,6 +7,9 @@
 include_once 'usanetwork_ads.features.inc';
 include_once 'usanetwork_ads.pages.inc';
 
+define('USANETWORK_ADS_POST_SHOW_NAME', '[usa_post_show_name]');
+define('USANETWORK_ADS_POST_TITLE', '[usa_post_title]');
+
 /**
  * Implements hook_init().
  */
@@ -1065,7 +1068,14 @@ function _usanetwork_ads_mandatory_omniture_variables($entity_type = NULL, $bund
     case 'node':
       switch ($bundle) {
         case 'tv_show':
-          $vars += array('s.prop2', 's.prop3', 's.prop4', 's.prop10');
+          $vars += array('s.prop2' => '', 's.prop3' => '', 's.prop4' => '', 's.prop10' => '');
+          break;
+        case 'consumpt_post':
+          $vars += array(
+            's.prop4' => USANETWORK_ADS_POST_SHOW_NAME . ' Blog',
+            's.pageName' => USANETWORK_ADS_POST_SHOW_NAME . ' : ' . USANETWORK_ADS_POST_SHOW_NAME . ' Blog : ' . USANETWORK_ADS_POST_TITLE,
+            's.prop3' => 'Blog'
+          );
           break;
       }
       break;

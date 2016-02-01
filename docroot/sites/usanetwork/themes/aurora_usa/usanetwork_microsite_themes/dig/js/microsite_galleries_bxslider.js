@@ -95,11 +95,13 @@
         $touch = false;
       }
       Drupal.behaviors.ms_lazyLoad.initImgShow($slideSelector.find('img'));
-      $slideSelector
-        .parent().append('<div class="description-block"></div>');
+      if ($slideSelector.parent().find('.description-block').length == 0) {
+        $slideSelector
+            .parent().append('<div class="description-block"></div>');
+      }
       $slideSelector
         .flexslider({
-          animation: "slide",
+          //animation: "slide",
           useCSS: true,
           touch: $touch,
           smoothHeight: false,
@@ -359,6 +361,10 @@
               $('#microsite #galleries #character-galleries').animate({ 'opacity': 1 }, 1000, 'jswing');
             }
           });
+        }
+
+        if ($('#microsite #galleries .flexslider').length > 0) {
+          Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();
         }
 
         self.setActiveGalleryNav();

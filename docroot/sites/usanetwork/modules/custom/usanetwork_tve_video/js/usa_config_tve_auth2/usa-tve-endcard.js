@@ -11,6 +11,7 @@
 
           // settings for blocks animation, used milliseconds
           var timeAnim = {
+            safari: 150,
             hide: {
               mobile: {
                 player: {
@@ -228,12 +229,12 @@
             },
 
             /*  redirect to next episode
-                options = {
-                 episodeUpNextUrl: episodeUpNextUrl,
-                 showTitle: showTitle,
-                 episodeTitle: episodeTitle,
-                 timeUpNext: timeUpNext
-                }
+             options = {
+             episodeUpNextUrl: episodeUpNextUrl,
+             showTitle: showTitle,
+             episodeTitle: episodeTitle,
+             timeUpNext: timeUpNext
+             }
              */
             timeoutUpNext: function (options) {
 
@@ -281,7 +282,7 @@
       .factory('usaEndCardService', ['$rootScope', '$timeout', 'helper', 'usaEndCardAnimate', 'usaEndCardAT', 'usaEndCardHelper',
         function ($rootScope, $timeout, helper, usaEndCardAnimate, usaEndCardAT, usaEndCardHelper) {
 
-          var $window, isMobile,
+          var $window, isMobile, isSafari,
               playerWrapperEl, playerEl, endCardEls, episodeUpNextEl, episodesRelatedClipEl,
               episodesRelatedListEl, episodesRelatedSliderEl,
               episodeShareEl, replayBtnEl, showTitle, episodeTitle, upNextTitle, relatedClipTitle,
@@ -295,6 +296,7 @@
           // systems
           $window = ng.element(window);
           isMobile = helper.device.isMobile;
+          isSafari = $pdk.isSafari;
 
           // usa services
           dataAnimate = usaEndCardAnimate.timeAnim;
@@ -542,7 +544,7 @@
                 } else if (statusShowEndCard) {
 
                   //if (!isMobile && !usaHelper.checkWindowWidth(bpMobileEndCard)) {
-                    //usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.endCardBlocks);
+                  //usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.endCardBlocks);
                   //}
 
                   // redirect to next episode
@@ -678,17 +680,36 @@
                   width: '100%'
                 };
 
-                if (statusEndRelease) {
-                  replayBtnEl.hide();
-                  //usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeOut, dataAnimate.hide.desktop.replayButton);
-                }
-                usaEndCardAnimate.initAnimateElem(endCardEls, fadeOut, dataAnimate.hide.desktop.endCardBlocks, function () {
-                  usaEndCardAnimate.initAnimateElemWH(playerEl, paramWH, dataAnimate.hide.desktop.player, function () {
-                    statusShowEndCard = false;
-                    statusProcessed = false;
-                    statusEndRelease = false;
+                if (isSafari) {
+
+                  usaEndCardAnimate.initAnimateElem(playerEl, fadeOut, dataAnimate.safari, function () {
+                    playerEl.css({
+                      height: '100%',
+                      width: '100%'
+                    });
                   });
-                });
+                  usaEndCardAnimate.initAnimateElem(endCardEls, fadeOut, dataAnimate.safari, function () {
+                    usaEndCardAnimate.initAnimateElem(playerEl, fadeIn, dataAnimate.safari, function () {
+                      statusShowEndCard = false;
+                      statusProcessed = false;
+                      statusEndRelease = false;
+                    });
+                  });
+
+                } else {
+
+                  if (statusEndRelease) {
+                    replayBtnEl.hide();
+                    //usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeOut, dataAnimate.hide.desktop.replayButton);
+                  }
+                  usaEndCardAnimate.initAnimateElem(endCardEls, fadeOut, dataAnimate.hide.desktop.endCardBlocks, function () {
+                    usaEndCardAnimate.initAnimateElemWH(playerEl, paramWH, dataAnimate.hide.desktop.player, function () {
+                      statusShowEndCard = false;
+                      statusProcessed = false;
+                      statusEndRelease = false;
+                    });
+                  });
+                }
               }
             },
 
@@ -723,15 +744,33 @@
                   width: '-=55%'
                 };
 
-                usaEndCardAnimate.initAnimateElemWH(playerEl, paramWH, dataAnimate.show.desktop.player, function () {
-                  if (statusEndRelease) {
-                    //usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.replayButton)
-                  }
-                  usaEndCardAnimate.initAnimateElem(endCardEls, fadeIn, dataAnimate.show.desktop.endCardBlocks, function () {
-                    statusShowEndCard = true;
-                    statusProcessed = false;
+                if (isSafari) {
+
+                  usaEndCardAnimate.initAnimateElem(playerEl, fadeOut, dataAnimate.safari, function () {
+                    playerEl.css({
+                      height: '50%',
+                      width: '45%'
+                    });
+
+                    usaEndCardAnimate.initAnimateElem(playerEl, fadeIn, dataAnimate.safari);
+                    usaEndCardAnimate.initAnimateElem(endCardEls, fadeIn, dataAnimate.safari, function () {
+                      statusShowEndCard = true;
+                      statusProcessed = false;
+                    });
                   });
-                });
+
+                } else {
+
+                  usaEndCardAnimate.initAnimateElemWH(playerEl, paramWH, dataAnimate.show.desktop.player, function () {
+                    if (statusEndRelease) {
+                      //usaEndCardAnimate.initAnimateElem(replayBtnEl, fadeIn, dataAnimate.show.desktop.replayButton)
+                    }
+                    usaEndCardAnimate.initAnimateElem(endCardEls, fadeIn, dataAnimate.show.desktop.endCardBlocks, function () {
+                      statusShowEndCard = true;
+                      statusProcessed = false;
+                    });
+                  });
+                }
               }
 
               if (typeof callback === "function") {
@@ -790,7 +829,7 @@
 
             // playerWrapper events
             $(playerWrapperEl)
-                // share bar events
+            // share bar events
                 .on('click', '.usa-share-button', function (e) {
                   var shareBtn = $(e.currentTarget);
                   usaEndCardAT.callShareTracking(episodeShareEl, shareBtn, episodeTitle);
@@ -822,6 +861,7 @@
             $window.bind('resize', function () {
               if (!usaHelper.checkWindowWidth(bpMobileEndCard) && statusShowEndCard && statusHidePlayer) {
                 statusHidePlayer = false;
+                replayBtnEl.css('display', 'none');
                 playerEl.css({
                   display: 'block',
                   opacity: 1,
@@ -830,6 +870,7 @@
                 });
               } else if (usaHelper.checkWindowWidth(bpMobileEndCard) && statusShowEndCard && !statusHidePlayer) {
                 statusHidePlayer = true;
+                replayBtnEl.css('display', 'block');
                 playerEl.css({
                   display: 'none',
                   opacity: 0,

@@ -7,32 +7,61 @@
         topbanner: 'topbanner',
         midbanner: 'midbanner',
         topbox: 'topbox',
-        showcardad: 'showcardad'
+        showcardad: 'showcardad',
+        galleryadrepeat: 'galleryadrepeat'
     },
 
     // MPS events
     // selector = 'body' || '#selector' || '.selector'
 
     mpsLoadAd: function (selector, nameAd) {
-      mps.insertAd(mps._select(selector), nameAd);
+      if (typeof mps.insertAd === "function") {
+        mps.insertAd(mps._select(selector), nameAd);
+      } else {
+        usa_debug('mps.insertAd error');
+      }
     },
 
     mpsRemoveAd: function (nameAd) {
-      var removeslot =  nameAd;
-      mps._remove('#' + mps.adslots[removeslot]);
-      delete(gpt[mps.advars[removeslot]]);
+      if (typeof mps._remove === "function") {
+        mps._remove('#' + mps.adslots[nameAd]);
+        delete(gpt[mps.advars[nameAd]]);
+      } else {
+        usa_debug('mps._remove error');
+      }
+    },
+
+    mpsInsertInterstitial: function (selector) {
+      if (typeof mps.usa.insertInterstitial === "function") {
+        usa_debug('mps.usa.insertInterstitial init');
+        mps.usa.insertInterstitial(selector);
+      } else {
+        usa_debug('mps.usa.insertInterstitial error');
+      }
     },
 
     mpsRefreshAd: function (nameAd) {
-      mps.refreshAds(nameAd);
+      if (typeof mps.refreshAds === "function") {
+        mps.refreshAds(nameAd);
+      } else {
+        usa_debug('mps.refreshAds error');
+      }
     },
 
     mpsMakeRequest: function () {
-      mps.makeRequest('more');
+      if (typeof mps.makeRequest === "function") {
+        mps.makeRequest('more');
+      } else {
+        usa_debug('mps.makeRequest error');
+      }
     },
 
     mpsResponsive: function () {
-      mps.responsiveApply();
+      if (typeof mps.responsiveApply === "function") {
+        mps.responsiveApply();
+      } else {
+        usa_debug('mps.responsiveApply error');
+      }
     },
     //--------------------------------------//
 

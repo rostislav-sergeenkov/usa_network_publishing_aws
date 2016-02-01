@@ -489,12 +489,12 @@ function usanetwork_movie_schedule_get_data($title) {
   $result = $query->execute()->fetchAssoc();
   $date = '';
   if (!empty($result)) {
-    $date .= date('l F j', $result['start_time']);
-    $dt = new DateTime(date('Y-m-d h:i:s A',  $result['start_time']), new DateTimeZone('America/New_York'));
-    $time_ny = $dt->format('g');
-    $dt->setTimezone(new DateTimeZone('America/Chicago'));
-    $time_central = $dt->format('g');
-    $date .= ' ' . $time_ny . '/' . $time_central . 'c';
+    $date .= date('l F j g:iA', $result['start_time']);
+//    $dt = new DateTime(date('Y-m-d h:i:s A',  $result['start_time']), new DateTimeZone('America/New_York'));
+//    $time_ny = $dt->format('g');
+//    $dt->setTimezone(new DateTimeZone('America/Chicago'));
+//    $time_central = $dt->format('g');
+//    $date .= ' ' . $time_ny . '/' . $time_central . 'c';
   }
   return $date;
 }

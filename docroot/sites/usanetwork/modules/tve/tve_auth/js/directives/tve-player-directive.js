@@ -4,7 +4,9 @@
 
   ng.module('tve.directives')
       .directive('tvePlayer', ['$timeout', '$http', '$rootScope', 'authService', 'tveConfig', 'tveModal', 'helper', 'idx',
-        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx) {
+        'usaEndCardService', 'usaEndCardHelper',
+        function($timeout, $http, $rootScope, authService, tveConfig, tveModal, helper, idx,
+                 usaEndCardService, usaEndCardHelper) {
           return {
             compile: function(tElement, tAttrs, transclude) {
               return function link(scope, element, attrs) {
@@ -21,7 +23,15 @@
                 // if url contain param ?t=300
                 // Drupal.settings.videoSetTime = 300
                     position = Drupal.settings.videoSetTime, // seconds
-                    currentAsset, previouslyWatched, lastSave;
+                    currentAsset, previouslyWatched, lastSave,
+                    // usa vars
+                    isShowEndCard = attrs['showEndCard'] === '1' ? true : false,
+                    usaTvePlayer = $(element).find('[data-usa-tve-player="pdk-player"]'),
+                    episodeUpNextUrl = usaTvePlayer.data('next-episode-url'),
+                    episodePID = usaTvePlayer.data('episode-pid'),
+                    isNextUrl = episodeUpNextUrl != '' ? true : false,
+                    usaLoadReleaseUrl = false,
+                    usaReleaseEnd = false;
 
                 scope.showCompanionAdd = false;
                 scope.isDartReq = true;
@@ -32,15 +42,32 @@
                 //  _bindPlayerEvents();
                 //}, 0);
 
-                window.$pdk.bindPlayerEvents = _bindPlayerEvents;
+                // create public method _bindPlayerEvents
+                // 1. player_Id - default value id='pdk-player'
+                // 2. dataObj - used only for reinit end card
+                // you need prepare new dataApi with your params
+                // docroot/sites/usanetwork/modules/custom/usanetwork_tve_video/js/usa_config_tve_auth2/usa-tve-endcard.js
+                $pdk.bindPlayerEvents = _bindPlayerEvents;
+
+                // clear $pdk.controllers.listeners
+                $pdk.clearlisteners = function () {
+                  $pdk.controller.listenerId = 0;
+                  for (var key in $pdk.controller.listeners) {
+                    delete $pdk.controller.listeners[key];
+                  }
+                };
 
                 /**
                  * Bind Player Events
                  * @private
                  */
-                function _bindPlayerEvents() {
+                function _bindPlayerEvents(player_Id, dataObj) {
+
+                  var data = dataObj || {},
+                      playerId = player_Id || tveConfig.PLAYER_ID;
+
                   //rebind $pdk each time directive is loaded
-                  $pdk.bind(tveConfig.PLAYER_ID);
+                  $pdk.bind(playerId);
 
                   $pdk.controller.addEventListener('auth_token_failed', _authzFailure);
                   $pdk.controller.addEventListener('auth_success', _authSuccess);
@@ -63,6 +90,32 @@
                   $pdk.controller.addEventListener('OnLoadRelease', function() {
                     $pdk.controller.clickPlayButton(true);
                   });
+
+                  // init end card service
+                  if (isShowEndCard) {
+                    usaEndCardService.init(data);
+                  } else if (isNextUrl) {
+                    $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+                  }
+                }
+
+                /*
+                 * On Release Start
+                 * @private
+                 */
+                function _onReleaseEnd(pdkEvent) {
+
+                  if (!isShowEndCard && isNextUrl) {
+                    usaReleaseEnd = true;
+                  }
+
+                  // redirect to next episode
+                  usaEndCardHelper.timeoutUpNext({
+                    episodeUpNextUrl: episodeUpNextUrl,
+                    showTitle: attrs['showTitle'],
+                    episodeTitle: attrs['episodeTitle'],
+                    timeUpNext: 0
+                  });
                 }
 
                 function _showPicker() {
@@ -72,7 +125,7 @@
                   });
                 }
 
-                function _init() {
+                function _init(pdkEvent) {
                   if (!isLive && $rootScope.global.isLoggedInIdx) {
                     idx.promise.then(function() {
                       var assetInfo = idx.wasWatchedEarlier(mpxId);
@@ -96,9 +149,13 @@
                         $pdk.controller.clickPlayButton(true);
                       }
                     });
-                  }
-                  else {
+                  } else {
                     //$pdk.controller.clickPlayButton(true);
+                  }
+
+                  // call usaLoadReleaseUrl
+                  if (!isShowEndCard && !usaLoadReleaseUrl && usaReleaseEnd) {
+                    usaLoadReleaseUrl = usaEndCardHelper.playerApi.usaLoadReleaseUrl(pdkEvent.data.pid, episodePID);
                   }
                 }
 
@@ -115,13 +172,9 @@
 
                   if (baseClip && pdkEvent.data.baseClip.isAd) {
                     // Functionality for ad playing event
+                    updateStatusAd(pdkEvent.data.baseClip.isAd);
                   }
                   else {
-
-                    if (!usaVideoSettingsRun) {
-                      usaVideoSettingsRun = seekToPosition();
-                    }
-
                     if($('.dart-tag').length) {
                       scope.$apply(function() {
                         scope.isFreeWheelReq = true;
@@ -141,13 +194,6 @@
                       duration: videoData.mediaLength
                     };
                   }
-                }
-
-                function seekToPosition() {
-                  if (position) {
-                    $pdk.controller.seekToPosition(position * 1000); // convert to milliseconds
-                  }
-                  return true;
                 }
 
                 function _onMediaPlaying(e) {

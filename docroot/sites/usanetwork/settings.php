@@ -145,7 +145,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     require_once('/var/www/site-php/usaqa/usaqa-settings.inc');
     // Envronment indicator settings.
     $conf['environment_indicator_overwritten_name'] = 'QA SERVER';
-    $conf['environment_indicator_overwritten_color'] = '#0000CC';
+    $conf['environment_indicator_overwritten_color'] = '#009933';
     $conf['environment_indicator_overwritten_position'] = 'top';
     $conf['environment_indicator_overwritten_fixed'] = FALSE;
 

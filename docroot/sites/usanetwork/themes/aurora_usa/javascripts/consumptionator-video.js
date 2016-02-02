@@ -8,7 +8,9 @@
         delete $pdk.controller.listeners[key];
       }
       $pdk.bindPlayerEvents();
-      $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
+      if (typeof Drupal.usanetwork_video_endcard !== "undefined" && typeof Drupal.usanetwork_video_endcard.OnCountdownEnd === "function") {
+        $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
+      }
     },
 
     /**

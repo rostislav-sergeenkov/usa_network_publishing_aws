@@ -50,7 +50,7 @@
               pauseOnHover: true,
               animation: 'slide',
               controlNav: true,
-              //directionNav: false,
+              directionNav: false,
               touch: $touch
             });
         $showSlideshow = $('#show-main-slider');

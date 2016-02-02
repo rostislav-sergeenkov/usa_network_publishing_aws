@@ -10,6 +10,53 @@
 function usanetwork_mpx_video_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_custom_time'
+  $field_bases['field_custom_time'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_custom_time',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 60,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_endcard_timing'
+  $field_bases['field_endcard_timing'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_endcard_timing',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'disable' => 'Disabled',
+        'enable' => 'Enabled (default timing)',
+        'enable_custom' => 'Enabled (custom timing)',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_mpx_duration'
   $field_bases['field_mpx_duration'] = array(
     'active' => 1,

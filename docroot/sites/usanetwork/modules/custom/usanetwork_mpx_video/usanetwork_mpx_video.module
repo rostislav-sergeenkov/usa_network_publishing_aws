@@ -1018,7 +1018,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => '3LNQL1y4puoNX_iIGQCWiQ8OoIlXh5pG',
+      'guid' => 'BnULDNhXAWATIG1K6On5t5n4OBaKluHV',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1026,7 +1026,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'fNnIQoWWBOLtNrvBtA68WgJ8TRRKY_eN',
+      'guid' => '_wUbB7H98ZZDHb0xvgO2KzvkxP96DXFk',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1473,9 +1473,8 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         }
       }
 
-      $file_field = field_get_items('file', $file, 'field_mpx_full_episode');
-      $full_episode = reset($file_field);
-      $vars['full_episode'] = $full_episode ? ($full_episode['value'] == '1' ? TRUE : FALSE) : FALSE;
+      $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
+      $vars['full_episode'] = ($full_episode == '1') ? TRUE : FALSE;
 
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
       $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
@@ -1620,16 +1619,6 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');
       }
 
-      if ($season_number_field = field_get_items('file', $file, 'field_mpx_season_number')) {
-        $season_number = reset($season_number_field);
-        $vars['season_number'] = $season_number['value'];
-      }
-
-      if ($episode_number_field = field_get_items('file', $file, 'field_mpx_full_episode')) {
-        $episode_number = reset($episode_number_field);
-        $vars['episode_number'] = $episode_number['value'];
-      }
-
       $image_path = _usanetwork_mpx_video_get_image_path($file);
 
       $image = theme_image(array(
@@ -1670,6 +1659,73 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
           drupal_add_js(array('videoSetTime' => $params['t']), 'setting');
         }
       }
+      $endcard = usanetwork_get_endcard_variables($file);
+      $next_video = (!empty($endcard)) ? array_shift($endcard) : NULL;
+      $vars['next_video_url'] = $next_video['url'];
+
+      if ($show) {
+        $show_endcard_timing = _usanetwork_get_field_item('node', $show, 'field_endcard_timing', 'value');
+        $show_endcard_custom_time = _usanetwork_get_field_item('node', $show, 'field_custom_time', 'value');
+      } else {
+        $show_endcard_timing = NULL;
+        $show_endcard_custom_time = NULL;
+      }
+
+      $endcard_timing = _usanetwork_get_field_item('file', $file, 'field_endcard_timing', 'value');
+      $endcard_custom_time = _usanetwork_get_field_item('file', $file, 'field_custom_time', 'value');
+
+      $file_movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
+
+      if ($full_episode == '1') {
+        if (!empty($file_movie)) {
+          $enabled = FALSE;
+          $time = NULL;
+        } else if (empty($endcard_timing)) {
+          if (empty($show_endcard_timing)) {
+            $enabled = TRUE;
+            $time = variable_get('usanetwork_endcard_global_time', 30);
+          } else if ($show_endcard_timing == "disable") {
+            $enabled = FALSE;
+            $time = NULL;
+          } else if ($show_endcard_timing == "enable") {
+            $enabled = TRUE;
+            $time = variable_get('usanetwork_endcard_global_time', 30);
+          } else {
+            $enabled = TRUE;
+            $time = (!empty($show_endcard_custom_time)) ? $show_endcard_custom_time : variable_get('usanetwork_endcard_global_time', 30);
+          }
+        } else {
+          if ($endcard_timing == "disable") {
+            $enabled = FALSE;
+            $time = NULL;
+          } else if ($endcard_timing == "enable") {
+            $enabled = TRUE;
+            $time = variable_get('usanetwork_endcard_global_time', 30);
+          } else {
+            $enabled = TRUE;
+            $time = (!empty($endcard_custom_time)) ? $endcard_custom_time : variable_get('usanetwork_endcard_global_time', 30);
+          }
+        }
+      } else {
+        $enabled = FALSE;
+        $time = NULL;
+      }
+
+      $variables = array(
+        'filename' => $file->filename,
+        'next_video' => $next_video,
+        'endcard' => $endcard,
+      );
+
+      $endcard_template = theme('usanetwork_mpx_video_endcard', $variables);
+
+      $vars['endcard_enabled'] = $enabled;
+      $vars['endcard_time'] = (!empty($time)) ? ($time * 1000) : NULL;
+      $vars['endcard_template'] = $endcard_template;
+
+      $file_pid = _usanetwork_get_field_item('file', $file, 'field_mpx_main_released_file_pid', 'value');
+      $vars['file_pid'] = !empty($file_pid) ? $file_pid : 0;
+
     }
   }
   // Fill H1 tag.
@@ -2627,6 +2683,14 @@ function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-mpx-video-full-video-advert',
     ),
+    'usanetwork_mpx_video_endcard' => array(
+      'variables' => array(
+        'filename' => NULL,
+        'next_video' => NULL,
+        'endcard' => NULL,
+      ),
+      'template' => 'templates/usanetwork-mpx-video-endcard',
+    ),
   );
   return $themes;
 }
@@ -2925,4 +2989,37 @@ function _usanetwork_mpx_video_get_image_path($file){
     }
   }
   return $image_path;
+}
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+  $form['endcard'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Endcard settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['endcard']['usanetwork_endcard_global_time'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Endcard Global Time'),
+    '#description' => t('Time is provided in seconds'),
+    '#default_value' => variable_get('usanetwork_endcard_global_time', 30),
+  );
+}
+
+/**
+ *  Implements hook_form_FORM_alter().
+ */
+function usanetwork_mpx_video_form_alter(&$form, &$form_state, $form_id) {
+
+  if (in_array($form_id, array('file_entity_edit', 'tv_show_node_form'))) {
+    $form['field_custom_time']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_endcard_timing[und]"]' => array('value' => 'enable_custom'),
+      ),
+    );
+  }
 }

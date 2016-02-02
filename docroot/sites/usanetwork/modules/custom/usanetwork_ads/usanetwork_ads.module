@@ -1097,6 +1097,20 @@ function _usanetwork_ads_mandatory_omniture_variables($entity_type = NULL, $bund
         case 'tv_show':
           $vars += array('s.prop2' => '', 's.prop3' => '', 's.prop4' => '', 's.prop10' => '');
           break;
+      }
+      break;
+  }
+  return $vars;
+}
+
+/**
+ * Returns a list of default omniture variables.
+ */
+function _usanetwork_ads_default_omniture_variables_settings($entity_type = NULL, $bundle = NULL) {
+  $vars = array();
+  switch ($entity_type) {
+    case 'node':
+      switch ($bundle) {
         case 'consumpt_post':
           $vars += array(
             's.prop4' => USANETWORK_ADS_POST_SHOW_NAME . ' Blog',

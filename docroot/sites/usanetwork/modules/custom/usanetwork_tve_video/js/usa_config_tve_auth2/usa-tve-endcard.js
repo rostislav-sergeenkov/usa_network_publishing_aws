@@ -244,12 +244,14 @@
                 var nextUrl = options.episodeUpNextUrl,
                     url = window.location.origin + nextUrl;
 
-                // AdobeTracking
-                usaEndCardAT.callAdobeTracking({
-                  showTitle: options.showTitle,
-                  episodeTitle: options.episodeTitle,
-                  endCardEvent: 'Auto-Play Next'
-                });
+                if (!$(document.body).hasClass('movie-consumptionator')) {
+                  // AdobeTracking
+                  usaEndCardAT.callAdobeTracking({
+                    showTitle: options.showTitle,
+                    episodeTitle: options.episodeTitle,
+                    endCardEvent: 'Auto-Play Next'
+                  });
+                }
 
                 if (nextUrl !== undefined && nextUrl !== '') {
                   window.location = url;

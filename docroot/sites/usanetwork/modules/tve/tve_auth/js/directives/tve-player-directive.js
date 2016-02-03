@@ -179,6 +179,13 @@
                     updateStatusAd(pdkEvent.data.baseClip.isAd);
                   }
                   else {
+
+                    updateStatusAd(pdkEvent.data.baseClip.isAd);
+
+                    if (!usaVideoSettingsRun) {
+                      usaVideoSettingsRun = seekToPosition();
+                    }
+
                     if($('.dart-tag').length) {
                       scope.$apply(function() {
                         scope.isFreeWheelReq = true;
@@ -198,6 +205,23 @@
                       duration: videoData.mediaLength
                     };
                   }
+                }
+
+                function seekToPosition() {
+                  if (position) {
+                    $pdk.controller.seekToPosition(position * 1000); // convert to milliseconds
+                  }
+                  return true;
+                }
+
+                // update status
+                // newStatus = true || false
+
+                // callback for update statusAd
+                function updateStatusAd(newStatus) {
+                  scope.$apply(function () {
+                    $rootScope.statusAd = newStatus;
+                  });
                 }
 
                 function _onMediaPlaying(e) {

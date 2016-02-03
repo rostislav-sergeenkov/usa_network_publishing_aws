@@ -1677,7 +1677,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $file_movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
 
       if ($full_episode == '1') {
-        if (!empty($file_movie)) {
+        if (!empty($file_movie) || (empty($show))) {
           $enabled = FALSE;
           $time = NULL;
         } else if (empty($endcard_timing)) {

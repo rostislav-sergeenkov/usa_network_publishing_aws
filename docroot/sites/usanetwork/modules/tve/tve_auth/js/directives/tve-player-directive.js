@@ -29,9 +29,13 @@
                     usaTvePlayer = $(element).find('[data-usa-tve-player="pdk-player"]'),
                     episodeUpNextUrl = usaTvePlayer.data('next-episode-url'),
                     episodePID = usaTvePlayer.data('episode-pid'),
-                    isNextUrl = episodeUpNextUrl != '' ? true : false,
+                    isNextUrl = false,
                     usaLoadReleaseUrl = false,
                     usaReleaseEnd = false;
+
+                if (usaTvePlayer.length > 0) {
+                  isNextUrl = episodeUpNextUrl != '' ? true : false;
+                }
 
                 scope.showCompanionAdd = false;
                 scope.isDartReq = true;

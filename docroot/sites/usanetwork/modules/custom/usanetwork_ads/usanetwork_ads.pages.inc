@@ -110,6 +110,16 @@ function usanetwork_ads_form_alter(&$form, &$form_state, $form_id) {
       $form['usanetwork_ads']['default']['#default_value'] = 0;
       $form['usanetwork_ads']['#attributes']['class'][] = 'required-fields';
     }
+    if (empty($entity->title)) {
+      if (!empty($mandatory)) {
+        $mandatory = array_merge($mandatory, _usanetwork_ads_default_omniture_variables_settings($entity_type, $bundle));
+      } else {
+        $mandatory = _usanetwork_ads_default_omniture_variables_settings($entity_type, $bundle);
+        if (!empty($mandatory)) {
+          $form['usanetwork_ads']['default']['#default_value'] = 0;
+        }
+      }
+    }
     $variables =& $form['usanetwork_ads']['variables']['omniture']['variables'];
     $existed_variables = array_keys(_usanetwork_ads_get_omniture_variables($defaults['omniture']['variables']));
     foreach ($mandatory as $variable_name => $variable_name_value) {

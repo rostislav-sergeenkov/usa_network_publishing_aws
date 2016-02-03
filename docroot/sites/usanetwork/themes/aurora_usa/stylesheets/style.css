@@ -11099,6 +11099,143 @@ footer h2 {
 .consumptionator-page .gallery-wrapper:hover .share-bar, .node-type-media-gallery .gallery-wrapper:hover .share-bar, .node-type-tv-episode .gallery-wrapper:hover .share-bar, .node-type-consumpt-post .gallery-wrapper:hover .share-bar, .node-media-gallery .gallery-wrapper:hover .share-bar {
   display: block;
 }
+.consumptionator-page .gallery-wrapper .interstitial-wrap, .node-type-media-gallery .gallery-wrapper .interstitial-wrap, .node-type-tv-episode .gallery-wrapper .interstitial-wrap, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap, .node-media-gallery .gallery-wrapper .interstitial-wrap {
+  display: none;
+  overflow: hidden;
+}
+.consumptionator-page .gallery-wrapper .interstitial-wrap.active, .node-type-media-gallery .gallery-wrapper .interstitial-wrap.active, .node-type-tv-episode .gallery-wrapper .interstitial-wrap.active, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap.active, .node-media-gallery .gallery-wrapper .interstitial-wrap.active {
+  background-color: #1f1f1f;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 56;
+}
+@media (max-width: 768px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap.active, .node-type-media-gallery .gallery-wrapper .interstitial-wrap.active, .node-type-tv-episode .gallery-wrapper .interstitial-wrap.active, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap.active, .node-media-gallery .gallery-wrapper .interstitial-wrap.active {
+    position: relative;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap.active ~ .bx-wrapper, .consumptionator-page .gallery-wrapper .interstitial-wrap.active ~ .share-bar, .node-type-media-gallery .gallery-wrapper .interstitial-wrap.active ~ .bx-wrapper, .node-type-media-gallery .gallery-wrapper .interstitial-wrap.active ~ .share-bar, .node-type-tv-episode .gallery-wrapper .interstitial-wrap.active ~ .bx-wrapper, .node-type-tv-episode .gallery-wrapper .interstitial-wrap.active ~ .share-bar, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap.active ~ .bx-wrapper, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap.active ~ .share-bar, .node-media-gallery .gallery-wrapper .interstitial-wrap.active ~ .bx-wrapper, .node-media-gallery .gallery-wrapper .interstitial-wrap.active ~ .share-bar {
+    display: none;
+  }
+}
+.consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-block, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-block, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-block, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-block, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-block {
+  height: 100%;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-block, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-block, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-block, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-block, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-block {
+    margin-bottom: 60px;
+  }
+}
+.consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next {
+  background-color: #181818;
+  cursor: pointer;
+  display: none;
+  height: 6.31247vw;
+  right: 0;
+  position: absolute;
+  bottom: 0;
+  text-transform: uppercase;
+  width: 6.31247vw;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next {
+    height: 120px;
+    width: 120px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next {
+    height: 8.55469vw;
+    width: 8.55469vw;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next {
+    background-color: #4e4e4e;
+    height: 60px;
+    width: 100%;
+  }
+}
+.consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next:after {
+  color: #ffffff;
+  content: "\e629";
+  display: block;
+  font-family: "ico-font";
+  font-size: 1.95122vw;
+  line-height: 1;
+  left: 50%;
+  margin-left: -0.97561vw;
+  margin-top: -0.97561vw;
+  position: absolute;
+  top: 40%;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next:after {
+    font-size: 37.1px;
+    margin-left: -18.55px;
+    margin-top: -18.55px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next:after {
+    font-size: 2.63672vw;
+    margin-left: -1.31836vw;
+    margin-top: -1.31836vw;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next:after, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next:after {
+    font-size: 40px;
+    left: auto;
+    margin-left: 0;
+    margin-top: -20px;
+    margin-right: 10px;
+    top: 50%;
+    right: 0;
+  }
+}
+.consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next span {
+  bottom: 0.78906vw;
+  display: block;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 0.73645vw;
+  line-height: 1;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next span {
+    bottom: 15px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next span {
+    bottom: 1.07422vw;
+    font-size: 0.99609vw;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-page .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-tv-episode .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-type-consumpt-post .gallery-wrapper .interstitial-wrap .interstitial-next span, .node-media-gallery .gallery-wrapper .interstitial-wrap .interstitial-next span {
+    background: #3e3e3e;
+    bottom: auto;
+    height: 100%;
+    font-size: 20px;
+    left: 0;
+    letter-spacing: 0.5px;
+    line-height: 60px;
+    padding-right: 20px;
+    text-align: right;
+    top: 0;
+    width: calc(100% - 60px);
+  }
+}
 .consumptionator-page .gallery-wrapper .slick-track, .node-type-media-gallery .gallery-wrapper .slick-track, .node-type-tv-episode .gallery-wrapper .slick-track, .node-type-consumpt-post .gallery-wrapper .slick-track, .node-media-gallery .gallery-wrapper .slick-track {
   height: 100% !important;
 }
@@ -11333,7 +11470,6 @@ footer h2 {
 }
 @media (min-width: 1025px) {
   .consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap {
-    display: none;
     right: 0;
     overflow: hidden;
     padding: 15px 0;
@@ -11421,6 +11557,10 @@ footer h2 {
 }
 .consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus {
   outline: none;
+}
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner {
+  height: 100%;
+  width: 100%;
 }
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li {

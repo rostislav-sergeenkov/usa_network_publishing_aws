@@ -110,6 +110,24 @@ function usanetwork_files_strongarm() {
       'gallery_flexslider' => array(
         'custom_settings' => TRUE,
       ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_general' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_episode' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_show_general' => array(
+        'custom_settings' => FALSE,
+      ),
+      'vid_teaser_front' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

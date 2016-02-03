@@ -37,9 +37,8 @@ function usanetwork_files_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'entityreference_live_preview' => array(
@@ -175,9 +174,8 @@ function usanetwork_files_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 6,
       ),
       'entityreference_live_preview' => array(
@@ -308,9 +306,8 @@ function usanetwork_files_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 5,
       ),
       'entityreference_live_preview' => array(
@@ -445,7 +442,7 @@ function usanetwork_files_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'entityreference_live_preview' => array(
         'label' => 'above',
@@ -589,7 +586,7 @@ function usanetwork_files_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 9,
       ),
       'entityreference_live_preview' => array(
         'label' => 'hidden',
@@ -719,9 +716,8 @@ function usanetwork_files_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'entityreference_live_preview' => array(
@@ -852,10 +848,9 @@ function usanetwork_files_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 0,
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'entityreference_live_preview' => array(
         'label' => 'above',
@@ -989,9 +984,8 @@ function usanetwork_files_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'entityreference_live_preview' => array(
@@ -1122,9 +1116,8 @@ function usanetwork_files_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'entityreference_live_preview' => array(

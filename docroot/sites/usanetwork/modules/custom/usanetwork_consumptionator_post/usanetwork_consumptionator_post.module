@@ -214,8 +214,11 @@ function _usanetwork_consumptionator_post_main_block() {
     }
     $creating_date = !empty($node->field_promo_created_ovts) ? $node_wrapper->field_promo_created_ovts->value() : $node->created;
     $navigation_links = _usanetwork_consumptionator_post_get_post_nav_links($node);
-    if (!empty($node->field_post_cover)) {
-      $image = $node_wrapper->field_post_cover->value();
+    $show_cover = $node_wrapper->field_post_cover_toggle->value();
+    if (!empty($show_cover)) {
+      if (!empty($node->field_post_cover)) {
+        $image = $node_wrapper->field_post_cover->value();
+      }
     }
     $body = !empty($node->body) ? $node_wrapper->body->value->value() : '';
     $blog_nid = !empty($node->field_consumptionator_blog) ? $node_wrapper->field_consumptionator_blog->nid->value() : NULL;
@@ -414,7 +417,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
           : NULL,
         'desktop_image_url' => image_style_url('677x381', $cover_uri),
         'title' => $post_data->title,
-        'description' => $post_data->description,
+        'description' => check_markup($post_data->description, 'wysiwyg_mini'),
         'post_date' => !empty($post_data->created)
           ? gmdate('m/d/Y', $post_data->created)
           : NULL,

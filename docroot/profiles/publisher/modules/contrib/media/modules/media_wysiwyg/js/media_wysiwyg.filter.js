@@ -44,6 +44,12 @@
           if (!media && media_definition.fid) {
             Drupal.media.filter.ensureSourceMap();
             var source = Drupal.settings.mediaSourceMap[media_definition.fid];
+
+            // Skip unknown items.
+            if (!source) {
+              continue;
+            }
+
             media = document.createElement(source.tagName);
             media.src = source.src;
           }
@@ -70,7 +76,7 @@
       Drupal.media.filter.ensure_tagmap();
 
       // Rewrite the tagmap in case any of the macros have changed.
-      Drupal.settings.tagmap = {};
+      //Drupal.settings.tagmap = {};
 
       // Wrap the content to be able to use replaceWith() and html().
       content = $('<div>').append(content);

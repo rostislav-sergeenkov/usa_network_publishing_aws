@@ -1006,7 +1006,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'weight' => 11,
     ),
   );
 
@@ -1272,7 +1272,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_select',
-      'weight' => -3,
+      'weight' => 7,
     ),
   );
 
@@ -1784,7 +1784,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 2,
+      'weight' => 12,
     ),
   );
 
@@ -1854,7 +1854,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         ),
       ),
       'type' => 'options_onoff',
-      'weight' => 3,
+      'weight' => 13,
     ),
   );
 
@@ -1929,7 +1929,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => -1,
+      'weight' => 9,
     ),
   );
 
@@ -2676,7 +2676,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => -4,
+      'weight' => 6,
     ),
   );
 
@@ -2821,7 +2821,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => -2,
+      'weight' => 8,
     ),
   );
 
@@ -2897,7 +2897,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 0,
+      'weight' => 10,
     ),
   );
 

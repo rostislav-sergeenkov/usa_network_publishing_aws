@@ -19,15 +19,23 @@
                     rowId = attrs['mpxId'],
                     mpxId = !isLive && rowId && rowId.split('/').pop(),
                     resuming = false,
+                    usaVideoSettingsRun = false,
+                // if url contain param ?t=300
+                // Drupal.settings.videoSetTime = 300
+                    position = Drupal.settings.videoSetTime, // seconds
                     currentAsset, previouslyWatched, lastSave,
                     // usa vars
                     isShowEndCard = attrs['showEndCard'] === '1' ? true : false,
                     usaTvePlayer = $(element).find('[data-usa-tve-player="pdk-player"]'),
                     episodeUpNextUrl = usaTvePlayer.data('next-episode-url'),
                     episodePID = usaTvePlayer.data('episode-pid'),
-                    isNextUrl = episodeUpNextUrl != '' ? true : false,
+                    isNextUrl = false,
                     usaLoadReleaseUrl = false,
                     usaReleaseEnd = false;
+
+                if (usaTvePlayer.length > 0) {
+                  isNextUrl = episodeUpNextUrl != '' ? true : false;
+                }
 
                 scope.showCompanionAdd = false;
                 scope.isDartReq = true;
@@ -171,7 +179,13 @@
                     updateStatusAd(pdkEvent.data.baseClip.isAd);
                   }
                   else {
+
                     updateStatusAd(pdkEvent.data.baseClip.isAd);
+
+                    if (!usaVideoSettingsRun) {
+                      usaVideoSettingsRun = seekToPosition();
+                    }
+
                     if($('.dart-tag').length) {
                       scope.$apply(function() {
                         scope.isFreeWheelReq = true;
@@ -191,6 +205,13 @@
                       duration: videoData.mediaLength
                     };
                   }
+                }
+
+                function seekToPosition() {
+                  if (position) {
+                    $pdk.controller.seekToPosition(position * 1000); // convert to milliseconds
+                  }
+                  return true;
                 }
 
                 // update status

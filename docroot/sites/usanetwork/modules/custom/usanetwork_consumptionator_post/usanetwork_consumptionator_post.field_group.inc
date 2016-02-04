@@ -117,7 +117,7 @@ function usanetwork_consumptionator_post_field_group_info() {
   $field_group->parent_name = 'group_basic_information';
   $field_group->data = array(
     'label' => 'Displaying Author',
-    'weight' => '4',
+    'weight' => '14',
     'children' => array(
       0 => 'field_blog_display_author',
       1 => 'field_override_display_author',

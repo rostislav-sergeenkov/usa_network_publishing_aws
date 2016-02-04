@@ -425,7 +425,7 @@ function _usanetwork_promo_file_get_promo_lines($file, $no_video_type = NULL) {
       $result['description'] .= !empty($category) ? $category : t('Clip');
     }
     if (!empty($episode_season) && !empty($episode_number)) {
-      $result['description'] .= ' ' . t('S@season EP@episode', array('@season' => $episode_season, '@episode_number' => $episode_number));
+      $result['description'] .= ' ' . t('S@season EP@episode', array('@season' => $episode_season, '@episode' => $episode_number));
     }
   }
   return $result;

@@ -189,7 +189,7 @@ function usanetwork_files_file_entity_set_up(&$form, &$form_state) {
  */
 function usanetwork_files_after_build_wysiwyg_config($form, &$form_state) {
   // Switch to wysiwyg mini text format.
-  $form['field_caption'][LANGUAGE_NONE][0]['format']['format']['#value'] = 'wysiwyg_mini';
+  $form['field_caption'][LANGUAGE_NONE][0]['format']['format']['#value'] = 'plain_text';
   $form['field_caption'][LANGUAGE_NONE][0]['format']['help']['#access'] = FALSE;
   $form['field_caption'][LANGUAGE_NONE][0]['format']['guidelines']['#access'] = FALSE;
   return $form;

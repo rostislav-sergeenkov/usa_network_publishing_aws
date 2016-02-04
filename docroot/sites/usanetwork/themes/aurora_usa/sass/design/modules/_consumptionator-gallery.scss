@@ -519,7 +519,7 @@
               width: 15px;
               &:not(.active) {
                 div {
-                  background: $consup-gallery-pager;
+                  background: $consup-gallery-pager!important;
                   border-radius: 50%;
                   height: 100%;
                   width: 100%;
@@ -553,6 +553,9 @@
                 border-radius: 50%;
                 height: 100%;
                 width: 100%;
+                &:not(.show-color) {
+                  background: white;
+                }
               }
               img {
                 display: none;
@@ -1054,6 +1057,9 @@
                   border-radius: 50%;
                   height: 100%;
                   width: 100%;
+                  &:not(.show-color) {
+                    background: white;
+                  }
                 }
                 img {
                   display: none;

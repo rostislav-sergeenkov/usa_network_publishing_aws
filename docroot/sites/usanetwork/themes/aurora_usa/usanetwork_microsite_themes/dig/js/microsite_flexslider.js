@@ -5,44 +5,54 @@
 
       $('#aspot-video-container').hide();
 
-/* DV COMMMENTED THIS ON JAN 15, 2015
- * Because a-spot videos are not generating Omniture calls, we must show
- * the trailer in the video section for launch!
- * I've made changes to the a-spot in the CMS and have
- * added code to the microsite_global.js file to make this happen.
- * You don't need to make any code changes for this!
-      $('#show-aspot-microsite .aspot-link').click(function (e) {
-        e.preventDefault();
-      });
-      $('.aspot-trailer .aspot-link').click(function (e) {
-        if (typeof aspotVideoEnabled != 'undefined' && aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
-          $('#show-aspot-microsite').css('opacity', 0);
-          var showAspotVideoDone = 0;
-          showAspotVideoShow(showAspotVideoDone);
-          showAspotVideoPauseFlexslider();
-        }
-      });
-*/
+      /* DV COMMMENTED THIS ON JAN 15, 2015
+       * Because a-spot videos are not generating Omniture calls, we must show
+       * the trailer in the video section for launch!
+       * I've made changes to the a-spot in the CMS and have
+       * added code to the microsite_global.js file to make this happen.
+       * You don't need to make any code changes for this!
+       $('#show-aspot-microsite .aspot-link').click(function (e) {
+       e.preventDefault();
+       });
+       $('.aspot-trailer .aspot-link').click(function (e) {
+       if (typeof aspotVideoEnabled != 'undefined' && aspotVideoEnabled && !usa_deviceInfo.smartphone && !usa_deviceInfo.mobileDevice) {
+       $('#show-aspot-microsite').css('opacity', 0);
+       var showAspotVideoDone = 0;
+       showAspotVideoShow(showAspotVideoDone);
+       showAspotVideoPauseFlexslider();
+       }
+       });
+       */
 
       $('body').once('micrositeFlexslider', function () {
+
+        var $slideshow = $('.microsite-section-container #show-aspot-microsite'),
+            autoScroll = parseInt($slideshow.data('autoscroll')),
+            slideShowSpeed = parseInt($slideshow.data('slide-speed'));
+
         $slideshow_selector = $('.microsite-section-container #show-aspot-microsite ul');
         $touch = true;
-        if ($slideshow_selector.find('li').length <= 1){
+
+        if ($slideshow_selector.find('li').length <= 1) {
           $touch = false;
         }
+
+        console.info(autoScroll === 1 ? true : false);
+        console.info(slideShowSpeed != '' ? slideShowSpeed : 7000);
+
         $slideshow_selector
-          .addClass('slides')
-          .wrap('<div id="show-main-slider" class="flexslider a-spot"></div>')
-          .parent()
-          .flexslider({
-            slideshow: true,
-            slideshowSpeed: 7000,
-            pauseOnHover: true,
-            animation: 'slide',
-            controlNav: true,
-            directionNav: false,
-            touch: $touch
-          });
+            .addClass('slides')
+            .wrap('<div id="show-main-slider" class="flexslider a-spot"></div>')
+            .parent()
+            .flexslider({
+              slideshow: autoScroll === 1 ? true : false,
+              slideshowSpeed: slideShowSpeed != '' ? slideShowSpeed : 7000,
+              pauseOnHover: true,
+              animation: 'slide',
+              controlNav: true,
+              directionNav: false,
+              touch: $touch
+            });
         $showSlideshow = $('#show-main-slider');
       });
 

@@ -133,6 +133,46 @@ function usanetwork_microsite_theme() {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_microsite_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: For microsite characters 940px x 529px.
+  $styles['940x529'] = array(
+    'name' => '940x529',
+    'label' => '940x529',
+    'effects' => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 940,
+          'height' => 529,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 940,
+          'height' => 529,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_permission().
  * UNUSED now.
  */
@@ -527,6 +567,9 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
     _usanetwork_microsite_add_intro_data_to_js($section_wrapper->field_usa_tv_a_spot);
   }
 
+  $theme_variables['autoscroll'] = $section_wrapper->field_usa_autoscroll->value();
+  $theme_variables['slide_speed'] =  $section_wrapper->field_usa_slide_speed->value();
+
   $featured_promo_first_view_mode = (!empty($section_object->field_usa_tv_promo_large) && $section_object->field_usa_tv_promo_large['und'][0]['value'] == 1) ? 'promo_teaser_large' : '';
   if (!empty($section_object->field_usa_tv_promo)) {
     $theme_variables['featured'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_promo, 'promo_teaser', $featured_promo_first_view_mode);
@@ -619,7 +662,8 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
       $image_field = $person_node_wrapper->field_person_ms_background->value();
       $background_img = file_create_url($image_field['uri']);
       $image_field = $person_node_wrapper->field_person_cover_photo->value();
-      $person_cover_image_url =  file_create_url($image_field['uri']);
+      $person_cover_image_url =  image_style_url('940x529', $image_field['uri']);
+      $person_cover_image =  theme('image_style', array('path' => $image_field['uri'], 'style_name' => '940x529'));
       $image_field = $person_node_wrapper->field_usa_character_thumb->value();
       $person_preview_image_url =  image_style_url('media_thumbnail', $image_field['uri']);
 
@@ -662,6 +706,7 @@ function _usanetwork_microsite_render_page_characters($section_wrapper, $node) {
         'quotes' => _usanetwork_microsite_get_quotations($person_node_wrapper->field_quotation),
         'status' => $status,
         'background_url' => $background_img,
+        'cover_image' => $person_cover_image,
         'cover_image_url' => $person_cover_image_url,
         'preview_image_url' => $person_preview_image_url,
         'social' => $social_links,

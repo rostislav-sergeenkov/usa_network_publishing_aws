@@ -389,6 +389,10 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
   $items = array();
   $block_items = '';
   $i = 0;
+  $show_more = true;
+  if (count($carousel_episodes) <= 4) {
+    $show_more = false;
+  }
 
   foreach ($carousel_episodes as $episode) {
     $episode_wrapper = entity_metadata_wrapper('file', $episode);
@@ -439,6 +443,10 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
     $i++;
   }
 
+  if ($block_items != ''){
+    $items[] = $block_items;
+  }
+
   if (!empty($items)) {
     $episodes_number = $i;
     $carousel = array(
@@ -447,6 +455,7 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
       'additional_text' => t('@episodes_number All New', array('@episodes_number' => $episodes_number)),
       'link' => l('View All', 'videos'),
       'carousel_items' => $items,
+      'show_more' => $show_more
     );
     $output .= theme('usanetwork_mpx_video_home_full_episodes_carousel', $carousel);
   }
@@ -1644,6 +1653,12 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
           drupal_add_css($css_file, array('type' => 'external'));
         }
       }
+      if ($full_episode['value'] == '1') {
+        $params = drupal_get_query_parameters();
+        if (isset($params['t'])) {
+          drupal_add_js(array('videoSetTime' => $params['t']), 'setting');
+        }
+      }
       $endcard = usanetwork_get_endcard_variables($file);
       $next_video = (!empty($endcard)) ? array_shift($endcard) : NULL;
       $vars['next_video_url'] = $next_video['url'];
@@ -1662,7 +1677,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $file_movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
 
       if ($full_episode == '1') {
-        if (!empty($file_movie)) {
+        if (!empty($file_movie) || (empty($show))) {
           $enabled = FALSE;
           $time = NULL;
         } else if (empty($endcard_timing)) {
@@ -1747,8 +1762,11 @@ function usanetwork_mpx_video_media_theplatform_mpx_import_media($op, $media_ite
 
   foreach ($media_files as $file) {
     $full_episode = $media_item['field_data']['field_mpx_full_episode'];
+    $keywords = $media_item['keywords'];
+    $keywords_array = explode(',', $keywords);
     if (((basename($account->account_id) == USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 1)) ||
-        ((basename($account->account_id) != USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 0))) {
+        ((basename($account->account_id) != USA_MPX_VIDEO_USA_ACCOUNT_ID) && ($full_episode === 0)) ||
+        (($full_episode === 0) && in_array('YouTubeOnly', $keywords_array))) {
       db_update('mpx_video')
           ->fields(array('status' => 0))
           ->condition('fid', $file->fid)

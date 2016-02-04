@@ -66,6 +66,7 @@ features[file_display][] = image__entityreference_live_preview__file_field_file_
 features[file_display][] = image__entityreference_live_preview__file_field_file_url_plain
 features[file_display][] = image__entityreference_live_preview__file_field_media_large_icon
 features[file_display][] = image__entityreference_live_preview__file_image
+features[file_display][] = image__full__file_field_image
 features[file_display][] = image__full__file_image
 features[file_display][] = image__gallery_flexslider__file_field_file_default
 features[file_display][] = image__gallery_flexslider__file_field_file_rendered

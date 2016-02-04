@@ -28,7 +28,7 @@ function usanetwork_theme_settings_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'media_wysiwyg_wysiwyg_default_view_mode';
-  $strongarm->value = 'default';
+  $strongarm->value = 'full';
   $export['media_wysiwyg_wysiwyg_default_view_mode'] = $strongarm;
 
 

@@ -1,7 +1,7 @@
 (function($) {
   Drupal.behaviors.microsite_gallery_carousel = {
     updateGigyaSharebarOmniture: function($slider, initialPageLoad) {
-      initialPageLoad = initialPageLoad || 0;
+      initialPageLoad = initialPageLoad || false;
       if (typeof Drupal.gigya != 'undefined') {
         var slider = $slider.data('flexslider');
         currentSlide = slider.currentSlide + 1;
@@ -34,7 +34,7 @@
           Drupal.gigya.showSharebar(sharebar);
 
           // omniture
-          if (!initialPageLoad) {
+          if (initialPageLoad) {
             var siteName = Drupal.settings.microsites_settings.title,
                 basePath = Drupal.settings.microsites_settings.base_path,
                 basePageName = siteName + ' | USA Network';

@@ -1458,9 +1458,9 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
     else {
       $vars['show_css_class'] = 'show-default';
     }
-    if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
 
-      drupal_add_js(path_to_theme('aurora_usa').'/javascripts/consumptionator-video.js');
+    if (isset($vars['view_mode']) && $vars['view_mode'] == 'inline_content') {
+
       // inline content
       if (isset($vars['elements']['#embedded']) && $vars['elements']['#embedded'] == TRUE) {
         if (isset($vars['content']['file'])) {
@@ -1472,6 +1472,11 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
           $vars['content']['file']['#file']->embedded_autoplay = TRUE;
         }
       }
+    }
+
+    if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
+
+      drupal_add_js(path_to_theme('aurora_usa').'/javascripts/consumptionator-video.js');
 
       $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
       $vars['full_episode'] = ($full_episode == '1') ? TRUE : FALSE;

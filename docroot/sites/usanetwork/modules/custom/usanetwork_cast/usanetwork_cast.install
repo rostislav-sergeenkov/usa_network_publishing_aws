@@ -1,9 +1,0 @@
-<?php
-/**
- * Delete Person Page variant of panel.
- */
-function usanetwork_cast_update_7100() {
-  ctools_include('export');
-  $page = ctools_export_crud_load('page_manager_handlers', 'node_view_panel_context_5');
-  ctools_export_crud_delete('page_manager_handlers', $page);
-}

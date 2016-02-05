@@ -28,7 +28,7 @@ function usanetwork_imagestyles_strongarm() {
     'respondxl' => 1339.84375,
     'respondxl2' => 2344.7265625,
     'respondxl3' => 4103.271484375,
-    'respondxl4' => 7180.72509765625,
+    'respondxl4' => 7180.7250976562,
   );
   $export['borealis_responsive_builds'] = $strongarm;
 

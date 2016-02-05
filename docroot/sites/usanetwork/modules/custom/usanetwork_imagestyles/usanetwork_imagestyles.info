@@ -1,6 +1,7 @@
 name = usanetwork_imagestyles
 core = 7.x
 package = USA Network
+php = 5.2.4
 version = 7.x-1.0.3
 project = usanetwork_imagestyles
 dependencies[] = borealis
@@ -14,6 +15,7 @@ features[image][] = 1245x709
 features[image][] = 1400_wide
 features[image][] = 2490x1418
 features[image][] = 300x169_video
+features[image][] = 300x250
 features[image][] = 600x500
 features[image][] = 615x350
 features[image][] = block_cover_title_lg

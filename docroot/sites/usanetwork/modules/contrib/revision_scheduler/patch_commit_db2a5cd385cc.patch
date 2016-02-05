@@ -1,0 +1,18 @@
+diff --git a/modules/contrib/revision_scheduler/revision_scheduler.module b/modules/contrib/revision_scheduler/revision_scheduler.module
+index dd9e197a4460012371be9cd45f1a49a49f19152e..610e43745c6909a6d8c07c43375ed7c8a15275a8 100644
+--- a/modules/contrib/revision_scheduler/revision_scheduler.module
++++ b/modules/contrib/revision_scheduler/revision_scheduler.module
+@@ -454,13 +454,6 @@ function revision_scheduler_entity_revision_operation_get_options($entity_type,
+   $options = array();
+   $operations = revision_scheduler_entity_revision_operation_get_info($entity_type);
+ 
+-  foreach ($operations as $key => $operation) {
+-    if (!revision_scheduler_operation_access($operation, $entity_type, $entity, $account)) {
+-      unset($operations[$key]);
+-    }
+-  }
+-
+-  //$operations = array_filter($operations, 'revision_scheduler_operation_access');
+   foreach ($operations as $operation => $info) {
+     $options[$operation] = $info['label'];
+   }

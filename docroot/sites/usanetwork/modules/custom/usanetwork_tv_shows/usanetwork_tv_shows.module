@@ -1644,6 +1644,8 @@ function _usanetwork_tv_shows_aspot_block() {
 //      $episodes_fids = array_merge($episodes_fids, array_keys($query_result));
 //    }
 
+    $has_not_full_episodes = FALSE;
+
     if (!empty($alternative_episodes)) {
       foreach ($alternative_episodes as $alternative_episode_content) {
         $entity_type = $alternative_episode_content->entity_type;
@@ -1664,14 +1666,21 @@ function _usanetwork_tv_shows_aspot_block() {
             $promo_data = _usanetwork_promo_pull_entity_promo_details($alternative_episode_content, $entity_wrapper, $entity_type);
             if ($entity_type == 'node') {
               $own_promo_lines = _usanetwork_promo_node_get_promo_lines($alternative_episode_content);
+              $has_not_full_episodes = TRUE;
             }
             else {
               $own_promo_lines = _usanetwork_promo_file_get_promo_lines($alternative_episode_content);
-              //Sponsored MPS
-              $field_sponsored = _usanetwork_get_field_item($entity_type, $alternative_episode_content, 'field_sponsored', 'value');
-              if ($field_sponsored == '1') {
-                $sponsored = TRUE;
-                $file_id = '/file/' . $alternative_episode_content->fid;
+
+              $field_full_episode = _usanetwork_get_field_item($entity_type, $alternative_episode_content, 'field_mpx_full_episode', 'value');
+              if ($field_full_episode !== '1') {
+                $has_not_full_episodes = TRUE;
+              } else {
+                //Sponsored MPS
+                $field_sponsored = _usanetwork_get_field_item($entity_type, $alternative_episode_content, 'field_sponsored', 'value');
+                if ($field_sponsored == '1') {
+                  $sponsored = TRUE;
+                  $file_id = '/file/' . $alternative_episode_content->fid;
+                }
               }
             }
             if (!empty($alternative_episode_content->field_promo_link)) {
@@ -1737,8 +1746,9 @@ function _usanetwork_tv_shows_aspot_block() {
         $theme_variables['episodes'][] = $episode_theme_variables;
       }
     }
-    $theme_variables['sponsored'] = isset($sponsored) ? $sponsored : FALSE;
-    $theme_variables['file_path'] = isset($file_id) ? $file_id : FALSE;
+
+    $theme_variables['sponsored'] = (isset($sponsored) && !($has_not_full_episodes)) ? $sponsored : FALSE;
+    $theme_variables['file_path'] = (isset($file_id) && !($has_not_full_episodes)) ? $file_id : FALSE;
   }
 
   if (!empty($theme_variables)) {

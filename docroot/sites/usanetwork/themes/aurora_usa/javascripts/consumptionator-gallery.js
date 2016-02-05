@@ -1,4 +1,4 @@
-// http://kenwheeler.github.io/slick/
+//
 // init gallery
 // $('el').usaGallery({
 //
@@ -6,6 +6,7 @@
 //
 //    gallery: {
 //      slick config
+//      http://kenwheeler.github.io/slick/
 //    }
 // });
 // dependency:
@@ -72,6 +73,9 @@
         interstitialBlock: '.interstitial-block',
         interstitialNext: '.interstitial-next',
 
+        // interstitial params
+        interstitialInitPages: ['all'], // default all, body classes for init interstitial ["node-type-media-gallery", "node-type-consumpt-post", "node-type-tv-episode"]
+
         // params
         slideCounterSeparator: ' of ',
         pagerPositionBp: 1024,
@@ -80,6 +84,7 @@
 
         // init components
         initCheckLocationHash: true,
+        initAdobeTracking: true,
         initSlidesCounter: true,
         initMouseWhell: true,
         initResize: true,
@@ -100,11 +105,8 @@
           cssEase: 'linear',
           swipe: usa_deviceInfo.mobileDevice,
           // nav
-          prevArrow: $(element).find('.slide-prev'),
-          nextArrow: $(element).find('.slide-next'),
           dots: true,
           dotsClass: 'gallery-pager',
-          appendDots: $(element).find('.gallery-pager-wrap'),
           customPaging: _.createCustomPaging
         }
       };
@@ -122,12 +124,24 @@
       _.$interstitialBlock = $(element).find(_.options.interstitialBlock);
       _.$interstitialNext = $(element).find(_.options.interstitialNext);
       _.$shareBar = $(element).find(_.options.shareBar);
+      _.$prevArrow = $(element).find(_.options.prevArrow);
+      _.$nextArrow = $(element).find(_.options.nextArrow);
+      _.$appendDots = $(element).find(_.options.galleryPagerWrap.selector);
 
       // data attributes value
       _.data = {
         galleryId: _.$galleryWrap.data('id'),
         interstitialSlideCounter: _.$interstitialWrap.data('slides-counter')
       };
+
+      // check status Interstitial Ad
+      _.options.initInterstitial = _.insertInterstitial.checkBodyClass(_);
+
+      // update gallery params
+      _.options.gallery.initialSlide = _.checkLocationHashParams(_);
+      _.options.gallery.prevArrow = _.$prevArrow;
+      _.options.gallery.nextArrow = _.$nextArrow;
+      _.options.gallery.appendDots = _.$galleryPagerWrap;
 
       // init app
       _.init(_.options.init);
@@ -140,6 +154,8 @@
   //=============================
   // additional functionality
   //=============================
+
+  // AdobeTracking
   usaGallery.prototype.callAdobeTracking = function () {
     if (typeof s_gi != 'undefined') {
 
@@ -161,6 +177,23 @@
 
   // mps advert
   usaGallery.prototype.insertInterstitial = {
+
+    checkBodyClass: function (_this) {
+
+      var _ = _this,
+          $body = _.$body,
+          adWrapLength = _.$interstitialWrap.length,
+          arrInitPages = _.options.interstitialInitPages;
+
+      if (arrInitPages[0] === 'all' && adWrapLength > 0) {
+        return true;
+      }
+
+      return arrInitPages.some(function (className) {
+        return $body.hasClass(className.trim()) && adWrapLength > 0;
+      });
+    },
+
     showInterstitial: function (_this, refresh) {
 
       var _ = _this,
@@ -216,6 +249,7 @@
     }
   };
 
+  // gigyaSharebar
   usaGallery.prototype.gigyaSharebar = function (currentSlide) {
 
     if (typeof Drupal.gigya != 'undefined') {
@@ -280,9 +314,9 @@
 
     var $slide = $(slick.$slides[index].innerHTML),
         img = $slide.find('img')[0].outerHTML,
-        showColorPager = ($('body[class*=" show-"]').length > 0) ? 'show-color': '';
+        showColorPager = ($('body[class*=" show-"]').length > 0) ? 'show-color' : '';
 
-    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + ' main-color"></div>' + img + '</div>';
+    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + ' base-dot-color"></div>' + img + '</div>';
   };
 
   usaGallery.prototype.createSlidesCounter = function (slick) {
@@ -439,9 +473,9 @@
     return window.matchMedia('(max-width: ' + bp + 'px)').matches;
   };
 
-  usaGallery.prototype.checkLocationHashParams = function () {
+  usaGallery.prototype.checkLocationHashParams = function (_this) {
 
-    var _ = this,
+    var _ = _this,
         $body = _.$body,
         $gallerySlides = _.$gallerySlides,
         galleryId = _.data.galleryId,
@@ -449,10 +483,11 @@
         urlHash = window.location.hash,
         params = (urlHash.substr(1)).split("-"),
         paramsLength = params.length,
-        initialSlide = false,
+        initialSlide = _.options.gallery.initialSlide, // default value
+        initCheckLocationHash = _.options.initCheckLocationHash,
         paramGalleryId, paramSlide;
 
-    if (urlHash) {
+    if (urlHash && initCheckLocationHash) {
 
       switch (paramsLength) {
 
@@ -473,14 +508,15 @@
             $('[data-tab="actor-bio"]').addClass('active');
           }
           break;
+
         default:
-          usa_debug('error: window.location.hash');
+          initialSlide = _.options.gallery.initialSlide;
           break;
       }
     }
 
     if (initialSlide > slidesCount) {
-      initialSlide = false;
+      initialSlide = 0;
     }
 
     return initialSlide;
@@ -553,11 +589,12 @@
     var _ = _this,
         element = _.$galleryWrap;
 
-    // add elements
+    if (!_.options.gallery.dots) {
+      return;
+    }
+
     _.$galleryPager = $(element).find(_.options.galleryPager.selector);
     _.$pagerItems = $(_.$galleryPager).find(_.options.pagerDots.selector);
-
-    // add params
     _.options.pagerDots.length = _.$pagerItems.length;
 
     return _;
@@ -567,11 +604,12 @@
 
     var _ = this,
         $gallery = _.$gallery,
+        initInterstitial = _.options.initInterstitial,
+        initAdobeTracking = _.options.initAdobeTracking,
         initSlidesCounter = _.options.initSlidesCounter,
         initMouseWhell = _.options.initMouseWhell,
         initResize = _.options.initResize,
         initialSlide = _.options.gallery.initialSlide,
-        adWrap = _.$galleryPagerWrap,
         adSlidesCount = _.data.interstitialSlideCounter,
         adCounter = 0,
         refreshAD = false;
@@ -581,10 +619,10 @@
 
           $gallery.addClass('ready');
 
-          _.updateGalleryElem(_);
-          _.createPagerPosition(_);
-          _.setPagerPosition(_);
-          _.movePagerItems(_, initialSlide);
+            _.updateGalleryElem(_);
+            _.createPagerPosition(_);
+            _.setPagerPosition(_);
+            _.movePagerItems(_, initialSlide);
 
           if (initSlidesCounter) {
             _.createSlidesCounter(slick);
@@ -598,19 +636,23 @@
         })
         .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
-          // advert counter up +1
-          adCounter += 1;
-
-          // if advertCounter = slidesCount fire show gallery advert
-          if (adWrap.length > 0 && adCounter === adSlidesCount) {
-            // reset advert counter
-            adCounter = 0;
-            // show gallery ad
-            _.insertInterstitial.showInterstitial(_, refreshAD);
-            refreshAD = true;
+          // Interstitial
+          if (initInterstitial) {
+            // advert counter up +1
+            adCounter += 1;
+            // if advertCounter = slidesCount fire show gallery advert
+            if (adCounter === adSlidesCount) {
+              // reset advert counter
+              adCounter = 0;
+              // show gallery ad
+              _.insertInterstitial.showInterstitial(_, refreshAD);
+              refreshAD = true;
+            }
           }
 
-          _.callAdobeTracking();
+          if (initAdobeTracking) {
+            _.callAdobeTracking();
+          }
         })
         .on('afterChange', function (event, slick, currentSlide) {
 
@@ -638,25 +680,13 @@
   //=============================
   usaGallery.prototype.init = function (creation) {
 
-    var _ = this,
-        galleryOptions = _.options.gallery,
-        initCheckLocationHash = _.options.initCheckLocationHash,
-        initialSlide;
+    var _ = this;
 
-    if (creation && !$(_.$gallery).hasClass('gallery-initialized')) {
-
-      if (initCheckLocationHash) {
-
-        initialSlide = _.checkLocationHashParams();
-
-        if (initialSlide != false && $.isNumeric(initialSlide)) {
-          galleryOptions.initialSlide = initialSlide;
-        }
-      }
+    if (creation && !_.$gallery.hasClass('gallery-initialized')) {
 
       _.addSlickEventsCallBacks();
       _.$gallery
-          .slick(galleryOptions)
+          .slick(_.options.gallery)
           .addClass('gallery-initialized');
     }
   };
@@ -694,8 +724,9 @@
       }
 
       var gallery = [];
+
       $('.gallery-wrapper').each(function (i, el) {
-        var currentGallery = $(el).usaGallery();
+        $(el).usaGallery();
       });
     }
   });

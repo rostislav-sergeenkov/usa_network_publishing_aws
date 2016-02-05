@@ -1,4 +1,135 @@
+
+body:not(.node-type-person, .node-type-post) {
+  .slick-list,
+  .slick-track {
+    @include breakpoint($bp-min-1025-width) {
+      height: 100% !important;
+    }
+  }
+}
+
+.gallery-wrapper {
+  // gallery advert
+  .interstitial-wrap {
+    display: none;
+    overflow: hidden;
+    &.active {
+      background-color: $gallery-description-back;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 56;
+      @include breakpoint($bp-768-width) {
+        position: relative;
+      }
+      & ~ .bx-wrapper, & ~ .share-bar {
+        @include breakpoint($bp-768-width) {
+          display: none;
+        }
+      }
+    }
+    .interstitial-block {
+      height: 100%;
+      width: 100%;
+      @include breakpoint($bp-768-width) {
+        margin-bottom: 60px;
+      }
+    }
+    .interstitial-next {
+      background-color: $consum-also-back;
+      cursor: pointer;
+      display: none;
+      height: get-vw(120px, 1901);
+      right: 0;
+      position: absolute;
+      bottom: 0;
+      text-transform: uppercase;
+      width: get-vw(120px, 1901);
+      @include breakpoint($bp-min-1901-width) {
+        height: 120px;
+        width: 120px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(87.6px, 1024);
+        width: get-vw(87.6px, 1024);
+      }
+      @include breakpoint($bp-768-width) {
+        background-color: $continue-gallery-back;
+        height: 60px;
+        width: 100%;
+      }
+      &:after {
+        color: #ffffff;
+        content: "\e629";
+        display: block;
+        font-family: $ico-font;
+        font-size: get-vw(20px, 1025);
+        line-height: 1;
+        left: 50%;
+        margin-left: get-vw(-10px, 1025);
+        margin-top: get-vw(-10px, 1025);
+        position: absolute;
+        top: 40%;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 37.1px;
+          margin-left: -18.55px;
+          margin-top: -18.55px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(27px, 1024);
+          margin-left: get-vw(-13.5px, 1024);
+          margin-top: get-vw(-13.5px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: 40px;
+          left: auto;
+          margin-left: 0;
+          margin-top: -20px;
+          margin-right: 10px;
+          top: 50%;
+          right: 0;
+        }
+      }
+      span {
+        bottom: get-vw(15px, 1901);
+        color: #ffffff;
+        display: block;
+        font-family: $avalon-medium;
+        font-size: get-vw(14px, 1901);
+        line-height: 1;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        @include breakpoint($bp-min-1901-width) {
+          bottom: 15px;
+          font-size: 14px;
+        }
+        @include breakpoint($bp-1024-width) {
+          bottom: get-vw(11px, 1024);
+          font-size: get-vw(10.2px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          background: $consum-carousel-odd;
+          bottom: auto;
+          height: 100%;
+          font-size: 20px;
+          left: 0;
+          letter-spacing: 0.5px;
+          line-height: 60px;
+          padding-right: 20px;
+          text-align: right;
+          top: 0;
+          width: calc(100% - 60px);
+        }
+      }
+    }
+  }
+}
+
 .consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, .node-media-gallery {
+
   .gallery-block {
     @include clear();
     margin: 0;
@@ -141,130 +272,6 @@
       }
       .share-bar {
         display: block;
-      }
-    }
-
-    // gallery advert
-    .interstitial-wrap {
-      display: none;
-      overflow: hidden;
-      &.active {
-        background-color: $gallery-description-back;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 56;
-        @include breakpoint($bp-768-width) {
-          position: relative;
-        }
-        & ~ .bx-wrapper, & ~ .share-bar {
-          @include breakpoint($bp-768-width) {
-            display: none;
-          }
-        }
-      }
-      .interstitial-block {
-        height: 100%;
-        width: 100%;
-        @include breakpoint($bp-768-width) {
-          margin-bottom: 60px;
-        }
-      }
-      .interstitial-next {
-        background-color: $consum-also-back;
-        cursor: pointer;
-        display: none;
-        height: get-vw(120px, 1901);
-        right: 0;
-        position: absolute;
-        bottom: 0;
-        text-transform: uppercase;
-        width: get-vw(120px, 1901);
-        @include breakpoint($bp-min-1901-width) {
-          height: 120px;
-          width: 120px;
-        }
-        @include breakpoint($bp-1024-width) {
-          height: get-vw(87.6px, 1024);
-          width: get-vw(87.6px, 1024);
-        }
-        @include breakpoint($bp-768-width) {
-          background-color: $continue-gallery-back;
-          height: 60px;
-          width: 100%;
-        }
-        &:after {
-          color: #ffffff;
-          content: "\e629";
-          display: block;
-          font-family: $ico-font;
-          font-size: get-vw(20px, 1025);
-          line-height: 1;
-          left: 50%;
-          margin-left: get-vw(-10px, 1025);
-          margin-top: get-vw(-10px, 1025);
-          position: absolute;
-          top: 40%;
-          @include breakpoint($bp-min-1901-width) {
-            font-size: 37.1px;
-            margin-left: -18.55px;
-            margin-top: -18.55px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: get-vw(27px, 1024);
-            margin-left: get-vw(-13.5px, 1024);
-            margin-top: get-vw(-13.5px, 1024);
-          }
-          @include breakpoint($bp-768-width) {
-            font-size: 40px;
-            left: auto;
-            margin-left: 0;
-            margin-top: -20px;
-            margin-right: 10px;
-            top: 50%;
-            right: 0;
-          }
-        }
-        span {
-          bottom: get-vw(15px, 1901);
-          display: block;
-          font-family: $avalon-medium;
-          font-size: get-vw(14px, 1901);
-          line-height: 1;
-          position: absolute;
-          text-align: center;
-          width: 100%;
-          @include breakpoint($bp-min-1901-width) {
-            bottom: 15px;
-            font-size: 14px;
-          }
-          @include breakpoint($bp-1024-width) {
-            bottom: get-vw(11px, 1024);
-            font-size: get-vw(10.2px, 1024);
-          }
-          @include breakpoint($bp-768-width) {
-            background: $consum-carousel-odd;
-            bottom: auto;
-            height: 100%;
-            font-size: 20px;
-            left: 0;
-            letter-spacing: 0.5px;
-            line-height: 60px;
-            padding-right: 20px;
-            text-align: right;
-            top: 0;
-            width: calc(100% - 60px);
-          }
-        }
-      }
-    }
-
-    .slick-track,
-    .slick-list {
-      @include breakpoint($bp-min-1025-width) {
-        height: 100% !important;
       }
     }
 
@@ -527,7 +534,7 @@
             margin-bottom: 0;
           }
           &:not(.slick-active) {
-            .main-color {
+            .base-dot-color {
               background: $consup-gallery-pager !important;
               border-radius: 50%;
               height: 100%;
@@ -562,7 +569,7 @@
               }
             }
           }
-          .main-color {
+          .base-dot-color {
             border-radius: 50%;
             height: 100%;
             width: 100%;
@@ -670,6 +677,11 @@
 .consumptionator-page:not(.node-type-person), .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, body:not(.node-type-person):not(.node-type-post) .node-media-gallery {
   .gallery-wrapper {
     .gallery-list {
+      &.ready {
+        .slide {
+          display: block;
+        }
+      }
       .slide {
         @include breakpoint($bp-min-1025-width) {
           height: 100% !important;
@@ -778,6 +790,11 @@
         }
       }
       .gallery-list {
+        &.ready {
+          .slide {
+            display: block;
+          }
+        }
         .slide {
           .node {
             .asset-img {
@@ -897,10 +914,11 @@
           }
         }
       }
+
       .gallery-list {
         &.ready {
           .slide {
-            display: none;
+            display: block;
           }
         }
         .slide {
@@ -993,9 +1011,11 @@
       }
       .gallery-pager-wrap {
         bottom: auto;
+        display: block;
         right: 50%;
         overflow: hidden;
         position: absolute;
+        margin-top: 0;
         top: calc(35.856vw * 0.5625 + 13px);
         z-index: 51;
         @include breakpoint($bp-min-2500-width) {
@@ -1038,20 +1058,20 @@
           &:last-child {
             margin-bottom: 0;
           }
+          &:not(.slick-active) {
+            .base-dot-color {
+              background: $consup-gallery-pager !important;
+              border-radius: 50%;
+              height: 100%;
+              width: 100%;
+            }
+          }
           .pager-item-inner {
             display: block;
             margin-left: auto;
             position: relative;
             height: 10px;
             width: 10px;
-            &:not(.slick-active) {
-              div {
-                background: $consup-gallery-pager;
-                border-radius: 50%;
-                height: 100%;
-                width: 100%;
-              }
-            }
             &:hover {
               img {
                 display: none;
@@ -1140,6 +1160,11 @@
   .block-character-info-content & {
     .gallery-wrapper {
       .gallery-list {
+        &.ready {
+          .slide {
+            display: block;
+          }
+        }
         .slide {
           .node {
             .asset-img {

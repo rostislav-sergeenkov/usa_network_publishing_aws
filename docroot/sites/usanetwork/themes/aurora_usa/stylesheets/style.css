@@ -12044,7 +12044,7 @@ footer h2 {
     top: calc((100vw - 72px) * 0.5625 + 13px);
   }
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager {
   display: none;
   height: auto;
   left: 0;
@@ -12060,15 +12060,15 @@ footer h2 {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager:after, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager:after {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager:after {
   clear: both;
   content: '';
   display: table;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager:hover, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager:hover {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager:hover, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager:hover {
   width: auto;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden], .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li {
   border: none;
   float: left;
   margin: 0 10px 0 0;
@@ -12080,37 +12080,37 @@ footer h2 {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden]:last-child, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden]:last-child {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child {
   margin-bottom: 0;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden]:not(.slick-active) .base-dot-color, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden]:not(.slick-active) .base-dot-color {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color {
   background: #919b99 !important;
   border-radius: 50%;
   height: 100%;
   width: 100%;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner {
   display: block;
   margin-left: auto;
   position: relative;
   height: 10px;
   width: 10px;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner:hover img, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner:hover img {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner:hover img, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner:hover img {
   display: none;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner:focus, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner:focus {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner:focus, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner:focus {
   outline: none;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner div, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner div {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner div, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner div {
   border-radius: 50%;
   height: 100%;
   width: 100%;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner div:not(.show-color), .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner div:not(.show-color) {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner div:not(.show-color), .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner div:not(.show-color) {
   background: white;
 }
-.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner img, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager li[aria-hidden] .pager-item-inner img {
+.block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner img, .node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner img {
   display: none;
 }
 .block-character-info-content .node-media-gallery .gallery-wrapper .slide-control, .node-type-post .node-media-gallery .gallery-wrapper .slide-control {

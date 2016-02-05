@@ -1024,72 +1024,73 @@ body:not(.node-type-person, .node-type-post) {
         @include breakpoint($bp-768-width) {
           top: calc((100vw - 72px) * 0.5625 + 13px);
         }
-      }
-      .gallery-pager {
-        @include clear();
-        display: none;
-        height: auto;
-        left: 0;
-        margin-top: 0;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        right: auto;
-        top: 0;
-        z-index: 51;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-        &:hover {
-          width: auto;
-        }
-        li[aria-hidden] {
-          border: none;
-          float: left;
-          margin: 0 10px 0 0;
-          position: relative;
-          height: 10px;
-          width: 10px;
+
+        .gallery-pager {
+          @include clear();
+          display: none;
+          height: auto;
+          left: 0;
+          margin-top: 0;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          right: auto;
+          top: 0;
+          z-index: 51;
           -webkit-transition: all 0.3s ease-in-out;
           -moz-transition: all 0.3s ease-in-out;
           -o-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
-          &:last-child {
-            margin-bottom: 0;
+          &:hover {
+            width: auto;
           }
-          &:not(.slick-active) {
-            .base-dot-color {
-              background: $consup-gallery-pager !important;
-              border-radius: 50%;
-              height: 100%;
-              width: 100%;
-            }
-          }
-          .pager-item-inner {
-            display: block;
-            margin-left: auto;
+          li {
+            border: none;
+            float: left;
+            margin: 0 10px 0 0;
             position: relative;
             height: 10px;
             width: 10px;
-            &:hover {
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            &:last-child {
+              margin-bottom: 0;
+            }
+            &:not(.slick-active) {
+              .base-dot-color {
+                background: $consup-gallery-pager !important;
+                border-radius: 50%;
+                height: 100%;
+                width: 100%;
+              }
+            }
+            .pager-item-inner {
+              display: block;
+              margin-left: auto;
+              position: relative;
+              height: 10px;
+              width: 10px;
+              &:hover {
+                img {
+                  display: none;
+                }
+              }
+              &:focus {
+                outline: none;
+              }
+              div {
+                border-radius: 50%;
+                height: 100%;
+                width: 100%;
+                &:not(.show-color) {
+                  background: white;
+                }
+              }
               img {
                 display: none;
               }
-            }
-            &:focus {
-              outline: none;
-            }
-            div {
-              border-radius: 50%;
-              height: 100%;
-              width: 100%;
-              &:not(.show-color) {
-                background: white;
-              }
-            }
-            img {
-              display: none;
             }
           }
         }

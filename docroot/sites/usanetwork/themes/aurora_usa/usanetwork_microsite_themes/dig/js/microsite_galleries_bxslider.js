@@ -87,7 +87,8 @@
       $('#galleries .galleries-bxslider li[data-node-id="' + activeGalleryNid + '"]').addClass('active');
     },
 
-    initCarousel: function(callback) {
+    initCarousel: function(omnitureCall, callback) {
+      omnitureCall = omnitureCall || false;
       callback = callback || null;
       $slideSelector = $('.microsite-gallery .flexslider');
       $touch = true;
@@ -111,7 +112,7 @@
           start: function() {
             Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryHeight();
             var $slider = $slideSelector;
-            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider, 1);
+            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider, omnitureCall);
             var current_gallery = $slider.closest('.microsite-gallery');
             var current_description = current_gallery.find('.flex-active-slide .field-name-field-caption').html();
             if (current_description) {
@@ -124,7 +125,7 @@
           },
           after: function() {
             var $slider = $slideSelector;
-            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
+            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider, true);
             Drupal.behaviors.microsite_gallery_carousel.refreshBannerAd();
             Drupal.behaviors.microsite_gallery_carousel.changeGalleryDescription($slider.closest('.microsite-gallery'));
             Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
@@ -183,7 +184,7 @@
             activeGalleryMeta.html(titleHtml);
           }
           activeGallery.find('.center-wrapper').html(data.rendered);
-          Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel();
+          Drupal.behaviors.micrositeGalleriesBxSliders.initCarousel(true);
           galleryNavItems.removeClass('active');
           $('#galleries .galleries-bxslider li[data-node-id="' + nid + '"]').addClass('active');
           setTimeout(function(){

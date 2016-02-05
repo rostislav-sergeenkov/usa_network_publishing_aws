@@ -2312,6 +2312,12 @@ function usanetwork_promo_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2416,6 +2422,12 @@ function usanetwork_promo_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2527,6 +2539,12 @@ function usanetwork_promo_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2615,6 +2633,12 @@ function usanetwork_promo_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2722,6 +2746,12 @@ function usanetwork_promo_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2824,6 +2854,12 @@ function usanetwork_promo_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'microsite_output' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2921,6 +2957,12 @@ function usanetwork_promo_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'microsite_output' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7002,7 +7044,6 @@ function usanetwork_promo_field_default_field_instances() {
   t('Associated video');
   t('Call to Action Text');
   t('Call to Action Type');
-  t('Created date override');
   t('Created date override');
   t('Description');
   t('Enable this checkbox if you want to exclude this content from "Related content" block of TV Show and Consumptionator pages.');

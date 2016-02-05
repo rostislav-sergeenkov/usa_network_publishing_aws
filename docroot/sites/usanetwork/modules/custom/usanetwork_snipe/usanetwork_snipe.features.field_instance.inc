@@ -29,18 +29,6 @@ function usanetwork_snipe_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 3,
       ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -54,8 +42,6 @@ function usanetwork_snipe_field_default_field_instances() {
     'label' => 'Display Date & Time',
     'required' => 0,
     'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -101,18 +87,6 @@ function usanetwork_snipe_field_default_field_instances() {
         'type' => 'number_integer',
         'weight' => 4,
       ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -126,8 +100,6 @@ function usanetwork_snipe_field_default_field_instances() {
     'label' => 'Display Length',
     'required' => 0,
     'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
       'max' => '',
       'min' => '',
       'prefix' => '',
@@ -157,18 +129,6 @@ function usanetwork_snipe_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 1,
       ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -182,8 +142,6 @@ function usanetwork_snipe_field_default_field_instances() {
     'label' => 'Snipe HTML',
     'required' => 1,
     'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -219,18 +177,6 @@ function usanetwork_snipe_field_default_field_instances() {
         'type' => 'file_default',
         'weight' => 5,
       ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -244,8 +190,6 @@ function usanetwork_snipe_field_default_field_instances() {
     'label' => 'Support Files',
     'required' => 0,
     'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg otf mp3 htf pdf',

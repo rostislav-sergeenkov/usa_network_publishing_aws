@@ -17,6 +17,7 @@ function usanetwork_gigya_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_gigya_share_bar',
+    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'gigya',

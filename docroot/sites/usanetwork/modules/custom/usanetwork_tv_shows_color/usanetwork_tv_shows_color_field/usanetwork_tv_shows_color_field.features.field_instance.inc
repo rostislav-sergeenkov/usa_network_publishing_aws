@@ -79,8 +79,6 @@ Showpage: full width color bar with show name/social icons, Explore bar, Aspot b
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
-      'custom_add_another' => '',
-      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -138,18 +136,6 @@ Showpage: full width color bar with show name/social icons, Explore bar, Aspot b
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -165,8 +151,6 @@ Showpage: full width color bar with show name/social icons, Explore bar, Aspot b
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
-      'custom_add_another' => '',
-      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -224,18 +208,6 @@ Showpage: full width color bar with show name/social icons, Explore bar, Aspot b
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -251,8 +223,6 @@ Showpage: full width color bar with show name/social icons, Explore bar, Aspot b
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
-      'custom_add_another' => '',
-      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(

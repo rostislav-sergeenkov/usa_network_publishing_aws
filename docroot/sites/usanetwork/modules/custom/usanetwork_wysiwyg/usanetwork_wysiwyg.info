@@ -6,6 +6,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = filter
 dependencies[] = media
+dependencies[] = media_wysiwyg
 dependencies[] = strongarm
 dependencies[] = token_filter
 dependencies[] = usanetwork_entity_insert

@@ -24,6 +24,18 @@ function usanetwork_promo_iframe_field_default_field_instances() {
         'type' => 'link_plain',
         'weight' => 12,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'promo_teaser' => array(
         'label' => 'hidden',
         'module' => 'link',
@@ -51,6 +63,7 @@ function usanetwork_promo_iframe_field_default_field_instances() {
     'label' => 'iframe src link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -58,6 +71,8 @@ function usanetwork_promo_iframe_field_default_field_instances() {
         'target' => 'default',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -69,6 +84,7 @@ function usanetwork_promo_iframe_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -103,6 +119,18 @@ function usanetwork_promo_iframe_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 11,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'promo_teaser' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -128,6 +156,8 @@ function usanetwork_promo_iframe_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(

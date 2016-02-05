@@ -111,7 +111,7 @@
           start: function() {
             Drupal.behaviors.micrositeGalleriesBxSliders.setActiveGalleryHeight();
             var $slider = $slideSelector;
-            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider);
+            Drupal.behaviors.microsite_gallery_carousel.updateGigyaSharebarOmniture($slider, 1);
             var current_gallery = $slider.closest('.microsite-gallery');
             var current_description = current_gallery.find('.flex-active-slide .field-name-field-caption').html();
             if (current_description) {

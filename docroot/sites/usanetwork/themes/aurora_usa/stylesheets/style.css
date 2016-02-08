@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -5308,203 +5308,203 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 }
 
 .icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev, .icons-arrow-prev, .icons-close_welcome_popup, .tveModal .modalHeader .closeButton, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after, .icons-sync-now-small, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
-  background: url('../images/icons-s063d43a0ab.png') no-repeat;
+  background: url('../images/icons-s4b131226d7.png') no-repeat;
 }
 
 .icons-arrow-next-hover-v2 {
-  background-position: 0 -1177px;
+  background-position: 0 -657px;
 }
 
 .icons-arrow-next-v2, .ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next {
-  background-position: 0 -1455px;
+  background-position: 0 -989px;
 }
 
 .icons-arrow-next {
-  background-position: 0 -1573px;
+  background-position: 0 -2724px;
 }
 
 .icons-arrow-prev-hover-v2 {
-  background-position: 0 -1257px;
+  background-position: 0 -777px;
 }
 
 .icons-arrow-prev-v2, .ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev {
-  background-position: 0 -1909px;
+  background-position: 0 -909px;
 }
 
 .icons-arrow-prev {
-  background-position: 0 -1688px;
+  background-position: 0 -2801px;
 }
 
 .icons-close_welcome_popup, .tveModal.loginModal .modalHeader .closeButton, .tveModal .modalHeader .closeButton {
-  background-position: 0 -2399px;
+  background-position: 0 -737px;
 }
 
 .icons-facebook-hover-v6, .ie9 .icons-social a.usasocial-fb:hover, .ie8 .icons-social a.usasocial-fb:hover {
-  background-position: 0 -2795px;
+  background-position: 0 -2159px;
 }
 
 .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb {
-  background-position: 0 -2643px;
+  background-position: 0 -2211px;
 }
 
 .icons-facebook {
-  background-position: 0 -1125px;
+  background-position: 0 -1341px;
 }
 
 .icons-follow-facebook-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-fb:hover, .ie8 .social-follow-block .icons-social .usasocial-fb:hover {
-  background-position: 0 -1650px;
+  background-position: 0 -2319px;
 }
 
 .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb {
-  background-position: 0 -2027px;
+  background-position: 0 -2357px;
 }
 
 .icons-follow-facebook-v3 {
-  background-position: 0 -2257px;
+  background-position: 0 -2655px;
 }
 
 .icons-follow-facebook {
-  background-position: 0 -846px;
+  background-position: 0 -1974px;
 }
 
 .icons-follow-twitter-hover-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter:hover, .ie8 .icons-social a.person-twitter.usasocial-twitter:hover, .ie9 .social-follow-block .icons-social .usasocial-twitter:hover, .ie8 .social-follow-block .icons-social .usasocial-twitter:hover {
-  background-position: 0 -665px;
+  background-position: 0 -1069px;
 }
 
 .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter {
-  background-position: 0 -808px;
+  background-position: 0 -1107px;
 }
 
 .icons-follow-twitter-v3 {
-  background-position: 0 -1871px;
+  background-position: 0 -1846px;
 }
 
 .icons-follow-twitter {
-  background-position: 0 -556px;
+  background-position: 0 -416px;
 }
 
 .icons-gray-arrow-left {
-  background-position: 0 -1765px;
+  background-position: 0 -2486px;
 }
 
 .icons-gray-arrow-right {
-  background-position: 0 -1818px;
+  background-position: 0 -2395px;
 }
 
 .icons-ico-close-tray-mobi {
-  background-position: 0 -2143px;
+  background-position: 0 -2577px;
 }
 
 .icons-ico-close-tray-tablet {
-  background-position: 0 -2103px;
+  background-position: 0 -2615px;
 }
 
 .icons-line-arrow-gray, #utilities .breadcrumb .separator {
-  background-position: 0 -445px;
+  background-position: 0 -2263px;
 }
 
 .icons-logo-usa-mobi {
-  background-position: 0 -703px;
+  background-position: 0 -609px;
 }
 
 .icons-logo-usa-tablet {
-  background-position: 0 -611px;
+  background-position: 0 -555px;
 }
 
 .icons-on_now {
-  background-position: 0 -2695px;
+  background-position: 0 -1445px;
 }
 
 .icons-on_now_blue {
-  background-position: 0 -2595px;
+  background-position: 0 -1493px;
 }
 
 .icons-pinterest-hover-v2, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover, .ie9 .social-follow-block .icons-social .usasocial-pinterest:hover, .ie8 .social-follow-block .icons-social .usasocial-pinterest:hover {
-  background-position: 0 -1535px;
+  background-position: 0 -2069px;
 }
 
 .icons-pinterest-hover-v3 {
-  background-position: 0 -1989px;
+  background-position: 0 -1581px;
 }
 
 .icons-pinterest-hover-v4 {
-  background-position: 0 -1377px;
+  background-position: 0 -1301px;
 }
 
 .icons-pinterest-hover-v6 {
-  background-position: 0 -2491px;
+  background-position: 0 -1145px;
 }
 
 .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
-  background-position: 0 -1417px;
+  background-position: 0 -1936px;
 }
 
 .icons-pinterest-v4 {
-  background-position: 0 -1337px;
+  background-position: 0 -1541px;
 }
 
 .icons-pinterest-v5 {
-  background-position: 0 -2065px;
+  background-position: 0 -2031px;
 }
 
 .icons-pinterest-v6 {
-  background-position: 0 -2439px;
+  background-position: 0 -1393px;
 }
 
 .icons-pinterest {
-  background-position: 0 0;
+  background-position: 0 -277px;
 }
 .icons-pinterest:hover, .icons-pinterest.pinterest_hover, .icons-pinterest.pinterest-hover {
-  background-position: 0 -84px;
+  background-position: 0 -193px;
 }
 
 .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after,
 .ie8 .usa-secondary-menu .shows > li.first > span:hover:after {
-  background-position: 0 -2847px;
+  background-position: 0 -2693px;
 }
 
 .icons-sync-now-small {
-  background-position: 0 -376px;
+  background-position: 0 -124px;
 }
 
 .icons-sync-now {
-  background-position: 0 -252px;
+  background-position: 0 0;
 }
 
 .icons-tumblr-hover-v2, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover, .ie9 .social-follow-block .icons-social .usasocial-tumblr:hover, .ie8 .social-follow-block .icons-social .usasocial-tumblr:hover {
-  background-position: 0 -2219px;
+  background-position: 0 -2448px;
 }
 
 .icons-tumblr-hover-v3 {
-  background-position: 0 -2743px;
+  background-position: 0 -1884px;
 }
 
 .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
-  background-position: 0 -2181px;
+  background-position: 0 -2539px;
 }
 
 .icons-tumblr-v3 {
-  background-position: 0 -2543px;
+  background-position: 0 -2107px;
 }
 
 .icons-tumblr {
-  background-position: 0 -1073px;
+  background-position: 0 -1249px;
 }
 
 .icons-twitter-hover-v4 {
-  background-position: 0 -2347px;
+  background-position: 0 -857px;
 }
 
 .icons-twitter-v4 {
-  background-position: 0 -2295px;
+  background-position: 0 -1197px;
 }
 
 .icons-twitter {
-  background-position: 0 -168px;
+  background-position: 0 -471px;
 }
 
 .icons-watch-alt {
-  background-position: 0 -903px;
+  background-position: 0 -1619px;
 }
 
 .seoh1 {
@@ -15828,6 +15828,18 @@ footer h2 {
     font-size: 18px;
     color: #545454;
   }
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description h2, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description h2, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description h2, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description h2, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description h2, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description h2, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description h2, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description h2, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description h2, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description h2, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description h2, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description h2, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description h2, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description h2, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description h2, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description h2 {
+  font-size: 1.5em;
+  margin: 0.2em 0;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description h3, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description h3, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description h3, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description h3, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description h3, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description h3, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description h3, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description h3, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description h3, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description h3, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description h3, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description h3 {
+  font-size: 1.3em;
+  margin: 0;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description h4, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description h4, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description h4, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description h4, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description h4, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description h4, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description h4, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description h4, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description h4, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description h4, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description h4, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description h4, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description h4, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description h4, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description h4, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description h4 {
+  font-size: 1em;
+  margin: 0;
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description p:first-child, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description p:first-child, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description p:first-child, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description p:first-child, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description p:first-child, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description p:first-child, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description p:first-child, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description p:first-child, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description p:first-child, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description p:first-child, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description p:first-child, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description p:first-child, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description p:first-child, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description p:first-child, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description p:first-child, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description p:first-child {
   margin-top: 0;

@@ -142,10 +142,10 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
-        'tv_episode' => 'tv_episode',
-        'usanetwork_promo' => 'usanetwork_promo',
         'timeline_gallery' => 'timeline_gallery',
         'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -535,10 +535,10 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
-        'tv_episode' => 'tv_episode',
-        'usanetwork_promo' => 'usanetwork_promo',
         'timeline_gallery' => 'timeline_gallery',
         'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -1368,11 +1368,11 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
         'tv_episode' => 'tv_episode',
         'tv_season' => 'tv_season',
         'usanetwork_static_page' => 'usanetwork_static_page',
-        'timeline_gallery' => 'timeline_gallery',
-        'top3_gallery' => 'top3_gallery',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -1381,6 +1381,82 @@ function usanetwork_tv_shows_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'usanetwork_dynamic_entity_reference',
+  );
+
+  // Exported field_base: 'field_livetv_enable'
+  $field_bases['field_livetv_enable'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_livetv_enable',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_livetv_related'
+  $field_bases['field_livetv_related'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_livetv_related',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'usanetwork_dynamic_entity_reference',
+    'settings' => array(
+      'entity_bundles' => array(
+        'media_gallery' => 'media_gallery',
+      ),
+      'entity_type_ids' => array(
+        'node' => 'node',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'usanetwork_dynamic_entity_reference',
+  );
+
+  // Exported field_base: 'field_livetv_right_rail'
+  $field_bases['field_livetv_right_rail'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_livetv_right_rail',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'disabled' => 'Disabled',
+        'latest_feed' => 'Latest Feed',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_logo'
@@ -1798,10 +1874,10 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
-        'tv_episode' => 'tv_episode',
-        'usanetwork_promo' => 'usanetwork_promo',
         'timeline_gallery' => 'timeline_gallery',
         'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -1959,10 +2035,10 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
-        'tv_episode' => 'tv_episode',
-        'usanetwork_promo' => 'usanetwork_promo',
         'timeline_gallery' => 'timeline_gallery',
         'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -1998,10 +2074,10 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
-        'tv_episode' => 'tv_episode',
-        'usanetwork_promo' => 'usanetwork_promo',
         'timeline_gallery' => 'timeline_gallery',
         'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -2336,10 +2412,10 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
-        'tv_episode' => 'tv_episode',
-        'usanetwork_promo' => 'usanetwork_promo',
         'timeline_gallery' => 'timeline_gallery',
         'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
       ),
       'entity_type_ids' => array(
         'file' => 'file',

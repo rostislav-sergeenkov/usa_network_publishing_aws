@@ -616,9 +616,9 @@ function webform_get_submissions($filters = array(), $header = NULL, $pager_coun
   // Build the list of SIDs that need to be retrieved.
   else {
     $pager_query = db_select('webform_submissions', 'ws')
-          // Ensure only one row per submission is returned. Could be more than one if
-          // sorting on a column that uses multiple rows for its data.
-          ->distinct()
+      // Ensure only one row per submission is returned. Could be more than one if
+      // sorting on a column that uses multiple rows for its data.
+      ->distinct()
       ->addTag('webform_get_submissions_sids')
       ->fields('ws', array('sid', 'nid', 'submitted', 'remote_addr', 'uid', 'is_draft'));
     foreach ($filters as $column => $value) {
@@ -652,17 +652,17 @@ function webform_get_submissions($filters = array(), $header = NULL, $pager_coun
         if (!isset($sort['sort']) || !in_array($sort['sort'], array('asc', 'desc'), TRUE)) {
           $sort['sort'] = '';
         }
-      $pager_query->leftJoin('webform_component', 'wc', 'ws.nid = wc.nid AND wc.name = :form_key', array('form_key' => $sort['order']));
-      $pager_query->leftJoin('webform_submitted_data', 'wsd', 'wc.nid = wsd.nid AND ws.sid = wsd.sid AND wc.cid = wsd.cid');
-      $pager_query->orderBy('wsd.data', $sort['sort']);
-      $pager_query->orderBy('sid', 'ASC');
-    }
-    // Sort by metadata column.
-    else {
-              // Extending the query instantiates a new query object.
-              $pager_query = $pager_query->extend('TableSort');
-              $pager_query->orderByHeader($header);
-            }
+        $pager_query->leftJoin('webform_component', 'wc', 'ws.nid = wc.nid AND wc.name = :form_key', array('form_key' => $sort['order']));
+        $pager_query->leftJoin('webform_submitted_data', 'wsd', 'wc.nid = wsd.nid AND ws.sid = wsd.sid AND wc.cid = wsd.cid');
+        $pager_query->orderBy('wsd.data', $sort['sort']);
+        $pager_query->orderBy('sid', 'ASC');
+      }
+      // Sort by metadata column.
+      else {
+        // Extending the query instantiates a new query object.
+        $pager_query = $pager_query->extend('TableSort');
+        $pager_query->orderByHeader($header);
+      }
     }
     else {
       $pager_query->orderBy('sid', 'ASC');

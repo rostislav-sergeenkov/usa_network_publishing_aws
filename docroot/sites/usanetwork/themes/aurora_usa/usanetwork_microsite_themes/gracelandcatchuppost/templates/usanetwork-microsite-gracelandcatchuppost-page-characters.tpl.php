@@ -45,8 +45,8 @@
       <li id="nav-<?php if(!empty($person['id'])) print $person['id']; ?>" class="" data-id="<?php if(!empty($person['id'])) print $person['id']; ?>">
         <div class="character-nav-link"></div>
         <div class="tooltip">
-          <?php if(!empty($person['cover_image_url'])): ?>
-          <img src="<?php if(!empty($person['cover_image_url'])) print $person['cover_image_url']; ?>">
+          <?php if(!empty($person['cover_image'])): ?>
+            <?php print $person['cover_image']; ?>
           <?php endif; ?>
           <div class="caption">
             <div>

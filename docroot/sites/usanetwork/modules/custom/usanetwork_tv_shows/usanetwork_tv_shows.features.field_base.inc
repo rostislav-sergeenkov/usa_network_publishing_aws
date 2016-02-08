@@ -144,6 +144,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -535,6 +537,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -1367,6 +1371,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'tv_episode' => 'tv_episode',
         'tv_season' => 'tv_season',
         'usanetwork_static_page' => 'usanetwork_static_page',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -1794,6 +1800,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -1953,6 +1961,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -1990,6 +2000,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -2326,6 +2338,8 @@ function usanetwork_tv_shows_field_default_field_bases() {
         'quiz' => 'quiz',
         'tv_episode' => 'tv_episode',
         'usanetwork_promo' => 'usanetwork_promo',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
       ),
       'entity_type_ids' => array(
         'file' => 'file',

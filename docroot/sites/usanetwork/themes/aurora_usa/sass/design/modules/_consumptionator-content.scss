@@ -73,7 +73,7 @@
       right: auto;
       width: 628px;
     }
-    &.related-visible {
+    &.related-visible, &.social-visible {
       @include breakpoint($bp-min-1025-width) {
         bottom: 0;
         position: absolute!important;
@@ -81,7 +81,7 @@
       }
     }
   }
-  &:not(.related-visible) {
+  &:not(.related-visible):not(.social-visible) {
     max-height: none!important;
   }
   .advert {
@@ -838,7 +838,8 @@
     }
     @include breakpoint($bp-1024-width) {
       float: none;
-      height: auto;
+      height: auto!important;
+      max-height: none!important;
       padding: 0;
       position: relative;
       width: 100%;

@@ -222,6 +222,19 @@ function usanetwork_dynamic_entity_reference_get_referenceable_entities($instanc
   $target_bundles = _usanetwork_dynamic_entity_reference_filter_bundles($target_type, $target_bundles);
 
   $query = usanetwork_dynamic_entity_reference_build_entity_query($target_type, $target_bundles, $match, $match_operator);
+  if (isset($instance_info['bundle_name']) && $instance_info['bundle_name'] == 'tv_show' && !empty($instance_info['entity_id'])) {
+    $entity_conditions = array(
+      'node' => 'n.nid',
+      'file' => 'f.fid',
+      'taxonomy_term' => 'ttd.tid',
+    );
+    $query->leftJoin('field_data_field_show', 'fs', 'fs.entity_id = ' . $entity_conditions[$target_type]);
+    $query->leftJoin('field_data_field_multiple_show', 'fms', 'fms.entity_id = ' . $entity_conditions[$target_type]);
+    $query->condition(db_or()
+      ->condition('fs.field_show_target_id', $instance_info['entity_id'], '=')
+      ->condition('fms.field_multiple_show_target_id', $instance_info['entity_id'], '=')
+    );
+  }
   $query->range(0, $limit);
   $result = $query->execute()->fetchAll();
 

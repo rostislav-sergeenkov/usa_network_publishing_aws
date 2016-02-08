@@ -248,9 +248,10 @@ $bp-grid-show-4: $bp-show-very-large-width;
 $bp-grid-show-2-fence: $bp-grid-show-2 ($bp-grid-show-3 - 1);
 $bp-grid-show-3-fence: $bp-grid-show-3 ($bp-grid-show-4 - 1);
 
-// blog
+// old blog
 $bp-blog-mobile: max-width 639px;
 $bp-blog-mobile-landscape: 639px 769px;
+$bp-blog-tablet: max-width 989px;
 
 // catchall seo page
 $bp-catchall-seo-1: max-width 1014px;

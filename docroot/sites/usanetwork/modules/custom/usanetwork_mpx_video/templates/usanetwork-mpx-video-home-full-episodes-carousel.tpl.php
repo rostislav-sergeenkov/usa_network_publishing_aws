@@ -17,8 +17,10 @@
     <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
     <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
   </div>
-  <a href="javascript:void(0)" class="more-button more">
-    <span class="more-text"><?php print t('More full episodes'); ?></span>
-    <span class="close-text"><?php print t('Close'); ?></span>
-  </a>
+  <?php if($show_more): ?>
+    <a href="javascript:void(0)" class="more-button more">
+      <span class="more-text"><?php print t('More full episodes'); ?></span>
+      <span class="close-text"><?php print t('Close'); ?></span>
+    </a>
+  <?php endif; ?>
 </div>

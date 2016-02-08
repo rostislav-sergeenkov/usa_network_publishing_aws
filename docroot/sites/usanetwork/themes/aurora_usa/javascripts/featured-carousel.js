@@ -40,9 +40,9 @@
         } else {
           $('.featured-carousel > ul > li:gt(1)').addClass('hidden');
           $(this).removeClass('close').addClass('more');
+          $('#block-usanetwork-blocks-usanetwork-featured-carousel').velocity("scroll", { duration: 1000, easing: "linear" });
         }
       });
-
     }
   };
 

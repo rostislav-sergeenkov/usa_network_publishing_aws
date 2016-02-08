@@ -4065,6 +4065,17 @@ ul.menu li {
   }
 }
 
+#recaptcha_privacy {
+  margin-top: -8px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 100%;
+}
+#recaptcha_privacy a {
+  font-size: 8px;
+}
+
 img {
   height: auto;
   vertical-align: text-bottom;

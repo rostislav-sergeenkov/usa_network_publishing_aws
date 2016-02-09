@@ -21,21 +21,20 @@ body:not(.node-type-person, .node-type-post) {
       top: 0;
       width: 100%;
       z-index: 56;
-      @include breakpoint($bp-768-width) {
-        position: relative;
-      }
-      & ~ .bx-wrapper, & ~ .share-bar {
+      & ~ div:not(.gallery-list) {
         @include breakpoint($bp-768-width) {
-          display: none;
+          display: none!important;
+        }
+      }
+      & ~ .gallery-list {
+        @include breakpoint($bp-768-width) {
+          visibility: hidden;
         }
       }
     }
     .interstitial-block {
       height: 100%;
       width: 100%;
-      @include breakpoint($bp-768-width) {
-        margin-bottom: 60px;
-      }
     }
     .interstitial-next {
       background-color: $consum-also-back;

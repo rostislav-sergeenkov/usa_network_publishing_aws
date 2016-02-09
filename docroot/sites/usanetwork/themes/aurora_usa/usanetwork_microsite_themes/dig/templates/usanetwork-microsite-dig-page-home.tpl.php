@@ -21,7 +21,10 @@
       <?php if (!empty($aspots)): ?>
       <div class="panel-panel panel-one panel-row first-row a-spot-panel tiles">
         <div id="main-slider">
-          <div id="show-aspot-microsite" class="microsite-carousel panel-pane pane-entity-field pane-node-field-usa-tv-a-spot">
+          <div id="show-aspot-microsite"
+               class="microsite-carousel panel-pane pane-entity-field pane-node-field-usa-tv-a-spot"
+               data-autoscroll="<?php print $autoscroll; ?>"
+               data-slide-speed="<?php print $slide_speed; ?>">
             <div class="pane-content">
               <ul>
                 <?php foreach ($aspots as $aspot): ?>

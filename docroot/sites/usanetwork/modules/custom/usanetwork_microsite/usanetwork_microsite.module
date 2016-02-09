@@ -567,6 +567,9 @@ function _usanetwork_microsite_render_page_home($section_wrapper, $node) {
     _usanetwork_microsite_add_intro_data_to_js($section_wrapper->field_usa_tv_a_spot);
   }
 
+  $theme_variables['autoscroll'] = $section_wrapper->field_usa_autoscroll->value();
+  $theme_variables['slide_speed'] =  $section_wrapper->field_usa_slide_speed->value();
+
   $featured_promo_first_view_mode = (!empty($section_object->field_usa_tv_promo_large) && $section_object->field_usa_tv_promo_large['und'][0]['value'] == 1) ? 'promo_teaser_large' : '';
   if (!empty($section_object->field_usa_tv_promo)) {
     $theme_variables['featured'] = _usanetwork_microsite_theme_render_multiple_node_items($section_wrapper->field_usa_tv_promo, 'promo_teaser', $featured_promo_first_view_mode);

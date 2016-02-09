@@ -8,9 +8,9 @@
 ?>
 <div class="gallery-wrapper" data-id="<?php print $gallery_id; ?>">
   <?php if (!empty($interstitial_ad_enabled) && !empty($interstitial_ad_frequency)): ?>
-    <div class="advert-wrap" data-slides-counter="<?php print $interstitial_ad_frequency ?>">
-      <div id="gallery-ad-block" class="advert-block" data-scalemps="1"></div>
-      <div class="advert-next">
+    <div class="interstitial-wrap" data-slides-counter="<?php print $interstitial_ad_frequency ?>">
+      <div id="gallery-interstitial-block" class="interstitial-block" data-scalemps="1"></div>
+      <div class="interstitial-next">
         <span><?php print t('continue'); ?></span>
       </div>
     </div>

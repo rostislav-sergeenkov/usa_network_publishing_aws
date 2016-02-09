@@ -181,6 +181,11 @@
       Drupal.behaviors.mpsAdvert.mpsInsertInterstitial('#' + adBlockId);
     }
 
+    var showNextTimeout = setTimeout(function () {
+      adNext.show();
+      console.info('timeoutNextShow');
+    }, 5000);
+
     adWrap.velocity("fadeIn", {
       duration: 200,
       easing: "linear",
@@ -192,6 +197,7 @@
     mps.adviewCallback = function(eo){
       if(eo._mps._slot.indexOf(nameAd) === 0) {
         adNext.show();
+        clearInterval(showNextTimeout);
       }
     };
   }
@@ -219,16 +225,17 @@
         var galleryContainer = $(this),
             currentGallery = galleryContainer.find('.bxslider-gallery'),
             slideElem = currentGallery.find('.slide'),
-            advertWrap = galleryContainer.find('.advert-wrap'),
-            advertBlock = advertWrap.find('.advert-block'),
-            advertNext = advertWrap.find('.advert-next'),
+            advertWrap = galleryContainer.find('.interstitial-wrap'),
+            advertBlock = advertWrap.find('.interstitial-block'),
+            advertNext = advertWrap.find('.interstitial-next'),
             adSlidesCount = parseInt(advertWrap.data('slides-counter'), 10),
             advertCounter = 0,
-            refreshAD = false;
+            refreshAD = false,
             showColorPager = ($('body[class*=" show-"]').length > 0)? ' class="show-color"': '',
             options = {
               auto: false,
               buildPager: function (slideIndex) {
+
                 var slide = slideElem,
                     slideLength = slide.length,
                     src = $(slide).eq(slideIndex).find('.asset-img img').attr('src'),

@@ -1,7 +1,7 @@
 name = Full Bleed Promo
 core = 7.x
+version = "7.x-1.0.1"
 package = USA Network
-version = 7.x-1.0.1
 project = usanetwork_full_bleed_promo
 dependencies[] = ctools
 dependencies[] = features

@@ -1,10 +1,8 @@
 <?php
 /**
  * @file
- * Code for the usanetwork wysiwyg feature.
+ * Drupal needs this blank file.
  */
-
-include_once 'usanetwork_wysiwyg.features.inc';
 
 /**
  *  Implements hook_wysiwyg_plugin().

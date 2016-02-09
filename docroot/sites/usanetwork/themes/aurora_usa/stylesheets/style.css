@@ -16439,8 +16439,11 @@ footer h2 {
     width: 56vw;
   }
 }
-.shows-block .carousel ul li.active .show-info-block {
+.shows-block .carousel ul li.active .show-info-block .show-link {
   display: block;
+}
+.shows-block .carousel ul li.active .show-info-block .show-info-block-wrapper > div {
+  visibility: visible;
 }
 .shows-block .carousel ul li.active a.close-button {
   display: block;
@@ -16731,7 +16734,7 @@ footer h2 {
 }
 .shows-block .show-info-block {
   background: #bbb7b7;
-  display: none;
+  display: block;
   left: 270px;
   height: 100%;
   position: absolute;
@@ -16741,9 +16744,9 @@ footer h2 {
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block {
-    left: 434px;
+    left: 453px;
     min-width: 1730px;
-    width: calc(100% - 434px);
+    width: calc(100% - 453px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -16761,17 +16764,13 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block {
-    left: calc(56vw - 15px);
+    left: 56vw;
     min-width: 240px;
     width: calc(100% - 56vw - 15px);
   }
 }
-@media (max-width: 480px) {
-  .shows-block .show-info-block {
-    width: calc(100% - 56vw);
-  }
-}
 .shows-block .show-info-block .show-link {
+  display: none;
   right: 40px;
   position: absolute;
   top: 25px;
@@ -16971,6 +16970,9 @@ footer h2 {
   .shows-block .show-info-block .show-info-block-wrapper {
     padding: 70px 15px 20px;
   }
+}
+.shows-block .show-info-block .show-info-block-wrapper > div {
+  visibility: hidden;
 }
 .shows-block .show-info-block .show-top-info {
   margin-right: 130px;

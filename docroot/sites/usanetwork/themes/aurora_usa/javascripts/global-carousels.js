@@ -418,12 +418,16 @@
       }
 
       carousel.velocity({ left: left }, 500, 'linear');
-      current_item.velocity({ width: width }, 500, 'easeInCubic');
+      current_item.velocity({ width: width }, {
+        duration: 500,
+        easing: 'easeInCubic',
+        progress: function(elements, complete, remaining, start, tweenValue) {
+          if (complete * 100 >= 60 && !current_item.hasClass('active')) {
+            current_item.addClass('active');
+          }
+        }
+      });
 
-      //carousel.animate({left: left}, 500);
-      //current_item.animate({width: width}, 500, 'easeInCubic');
-
-      current_item.addClass('active');
       current_item_show_open_link.addClass('active');
       current_item_node.addClass('open');
       current_item.find('.show-open').css('max-width', item_width);
@@ -436,34 +440,28 @@
 
       Drupal.behaviors.omniture_tracking.showCardClick(current_item_node);
 
-      //if(window.innerWidth >= window_size_tablet_portrait ) {
-      //  if (current_item_node.data('mpspath') && !current_item_node.hasClass('ad-enable')) {
-      //    current_item_node.addClass('ad-enable');
-      //    Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
-      //  } else {
-      //    Drupal.behaviors.mpsAdvert.homeShowsQueueInsertAd(current_item_node);
-      //  }
-      //}
-
-      /*current_item.find('.show-open').bind('click', function() {
-        Drupal.behaviors.global_carousels.showClose(current_item);
-      });*/
     },
     showClose: function (item) {
       var carousel = item.closest('ul');
       var current_item_node = item.find('.node').eq(0);
       var left = parseInt(item.attr('data-left'));
       var item_width = parseInt(item.attr('data-width'));
-      carousel.animate({left: left}, 500);
-      item.animate({width: item_width}, 500, 'easeOutQuint', function(){
-        item.removeAttr('style');
-        item.find('.show-open').removeAttr('style');
-        carousel.trigger('show:close');
+      current_item_node.removeClass('open');
+      carousel.animate({left: left}, 500, 'easeOutQuint');
+      item.velocity({ width: item_width }, {
+        duration: 500,
+        easing: 'easeOutQuint',
+        progress: function(elements, complete, remaining, start, tweenValue) {
+          if (complete * 100 >= 10 && item.hasClass('active')) {
+            item.removeClass('active');
+          }
+          if (complete * 100 == 100) {
+            item.removeAttr('style');
+            item.find('.show-open').removeAttr('style');
+            carousel.trigger('show:close');
+          }
+        }
       });
-      setTimeout(function () {
-        item.removeClass('active');
-        current_item_node.removeClass('open');
-      }, 300);
       item.find('.social-icons').hide();
       item.removeAttr('data-left');
       item.removeAttr('data-width');

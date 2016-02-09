@@ -52,22 +52,26 @@ section .section-title-block > h2 {
   content: '';
   display: table;
 }
-@supports (display: flex) {
-  .section-title-block {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-  }
-  section .section-title-block > h2 {
-    align-self: flex-start;
-    float: none;
-    margin: 0!important;
-  }
-  .section-description {
-    align-self: center;
-    float: none;
-    margin: 0!important;
-  }
+
+body:not(.ie9) .section-title-block {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+body:not(.ie9) section .section-title-block > h2 {
+  -ms-flex-item-align: start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  float: none;
+  margin: 0!important;
+}
+body:not(.ie9) .section-description {
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+  align-self: center;
+  float: none;
+  margin: 0!important;
 }
 
 /* HOME */

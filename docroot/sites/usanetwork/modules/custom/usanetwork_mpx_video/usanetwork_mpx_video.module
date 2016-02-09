@@ -652,6 +652,7 @@ function usanetwork_mpx_video_live() {
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/sign_in_out.js', array('scope' => 'footer', 'weight' => -1,));
   drupal_add_js('//client-cloudpath.nbcuni.com/current/api/NBCUniCPC.min.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/cpc-player.js', array('scope' => 'footer'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_video_live') . '/js/usanetwork_video_live.dynamic_content.js');
   return '';
 }
 
@@ -1484,6 +1485,13 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
           $vars['live_advert'] = render($advert_block['content']);
         } else {
           $vars['live_advert'] = NULL;
+        }
+
+        $right_rail_block = module_invoke('usanetwork_video_live', 'block_view', 'usanetwork_video_live_right_rail');
+        if (!empty($right_rail_block['content'])) {
+          $vars['live_right_rail'] = render($right_rail_block['content']);
+        } else {
+          $vars['live_right_rail'] = NULL;
         }
       }
 

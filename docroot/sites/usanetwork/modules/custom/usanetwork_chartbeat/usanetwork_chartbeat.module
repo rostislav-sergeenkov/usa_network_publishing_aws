@@ -35,8 +35,8 @@ function usanetwork_chartbeat_page_alter(&$page) {
 function _usanetwork_chartbeat_set_variables($menu_object) {
   if ($menu_object) {
     if (in_array($menu_object->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
-      $full_episode = _usanetwork_get_field_item('node', $menu_object, 'field_mpx_full_episode', 'value');
-      $show = _usanetwork_get_field_item('node', $menu_object, 'field_show', 'target_id');
+      $full_episode = _usanetwork_get_field_item('file', $menu_object, 'field_mpx_full_episode', 'value');
+      $show = _usanetwork_get_field_item('file', $menu_object, 'field_show', 'target_id');
       if ($full_episode == '1') {
         if (!empty($show)) {
           $type = 'video long-form';

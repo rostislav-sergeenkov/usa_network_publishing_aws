@@ -1938,7 +1938,7 @@ function usanetwork_menu_shows_landing_main_form_submit($form, &$form_state) {
 /**
  *  Implements hook_form_FORM_ID_alter().
  */
-function usanetwork_mpx_video_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+function usanetwork_menu_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
   $header_full_episodes_shows = variable_get('header_full_episodes_shows', array());
   $header_movies = variable_get('header_movies', array());
 

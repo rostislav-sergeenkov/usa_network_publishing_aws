@@ -20,6 +20,13 @@ function usanetwork_video_live_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['ajax/render-video-live-related/%'] = array(
+    'title' => 'Video Live Right Rail',
+    'page callback' => '_usanetwork_video_live_related_ajax',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
 
   return $items;
 }
@@ -33,10 +40,10 @@ function usanetwork_video_live_block_info() {
     'info' => t('Video Live: Right Rail block'),
     'cache' => DRUPAL_NO_CACHE,
   );
-//  $blocks['usanetwork_video_live_related'] = array(
-//    'info' => t('Video Live: Related Content block'),
-//    'cache' => DRUPAL_NO_CACHE,
-//  );
+  $blocks['usanetwork_video_live_related'] = array(
+    'info' => t('Video Live: Related Content block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -50,9 +57,10 @@ function usanetwork_video_live_block_view($delta) {
       $block['subject'] = '';
       $block['content'] = _usanetwork_video_live_right_rail_block();
       break;
-//    case 'usanetwork_video_live_related':
-//      $block['subject'] = '';
-//      $block['content'] = _usanetwork_video_live_related_block();
+    case 'usanetwork_video_live_related':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_video_live_related_block();
+      break;
   }
   return $block;
 }
@@ -121,7 +129,7 @@ function _usanetwork_video_live_right_rail_ajax($offset) {
             'promos' => $promos,
           );
 
-          $right_rail_response = theme('usanetwork_video_live_right_rail', $theme_variables);;
+          $right_rail_response = theme('usanetwork_video_live_right_rail', $theme_variables);
           return drupal_json_output(array(
             'rendered' => $right_rail_response));
         }
@@ -130,6 +138,50 @@ function _usanetwork_video_live_right_rail_ajax($offset) {
   }
 }
 
+/**
+ * Video Live: Related Content block
+ */
+function _usanetwork_video_live_related_block() {
+  return '';
+}
+
+
+/**
+ * Live Video: Related Content Ajax Response
+ */
+function _usanetwork_video_live_related_ajax($offset) {
+  $on_now_item = usanetwork_schedule_pull_on_now_item($offset, 'show_title');
+  if (!empty($on_now_item)) {
+
+    if (is_array($on_now_item)) {
+      $on_now_item = reset($on_now_item);
+    }
+
+    if (isset($on_now_item->nid)) {
+      $tv_show = node_load($on_now_item->nid);
+    }
+
+    if (isset($tv_show)) {
+
+      $dynamic_content = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_enable', 'value');
+
+      if ($dynamic_content == 1) {
+
+        $related_gallery_id = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_related', 'target_id');
+
+        if (!empty($related_gallery_id)) {
+
+          $related_gallery = node_load($related_gallery_id);
+
+          $gallery_response = _usanetwork_media_gallery_consumptionator_gallery_slides_block($related_gallery);
+
+          return drupal_json_output(array(
+            'rendered' => $gallery_response));
+        }
+      }
+    }
+  }
+}
 
 /*
  * Implements hook_theme

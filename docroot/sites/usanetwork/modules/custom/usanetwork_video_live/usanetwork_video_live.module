@@ -1,0 +1,147 @@
+<?php
+
+/**
+ * @file
+ * Code for the usanetwork_video_live.
+ */
+
+define('USANETWORK_VIDEO_LIVE_RIGHT_RAIL_NUMBER_ELIMENTS', 20);
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_video_live_menu() {
+  $items = array();
+
+  $items['ajax/render-video-live-right-rail/%'] = array(
+    'title' => 'Video Live Right Rail',
+    'page callback' => '_usanetwork_video_live_right_rail_ajax',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function usanetwork_video_live_block_info() {
+  $blocks = array();
+  $blocks['usanetwork_video_live_right_rail'] = array(
+    'info' => t('Video Live: Right Rail block'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+//  $blocks['usanetwork_video_live_related'] = array(
+//    'info' => t('Video Live: Related Content block'),
+//    'cache' => DRUPAL_NO_CACHE,
+//  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function usanetwork_video_live_block_view($delta) {
+  $block = array();
+  switch ($delta) {
+    case 'usanetwork_video_live_right_rail':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_video_live_right_rail_block();
+      break;
+//    case 'usanetwork_video_live_related':
+//      $block['subject'] = '';
+//      $block['content'] = _usanetwork_video_live_related_block();
+  }
+  return $block;
+}
+
+/**
+ * Video Live: Right Rail block
+ */
+function _usanetwork_video_live_right_rail_block() {
+  return '';
+}
+
+/**
+ * Live Video: Right Rail Ajax Response
+ */
+function _usanetwork_video_live_right_rail_ajax($offset) {
+  $on_now_item = usanetwork_schedule_pull_on_now_item($offset, 'show_title');
+  if (!empty($on_now_item)) {
+
+    if (is_array($on_now_item)) {
+      $on_now_item = reset($on_now_item);
+    }
+
+    if (isset($on_now_item->nid)) {
+      $tv_show = node_load($on_now_item->nid);
+    }
+
+    if (isset($tv_show)) {
+
+      $dynamic_content = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_enable', 'value');
+
+      if ($dynamic_content == 1) {
+
+        $enable_right_rail = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_right_rail', 'value');
+
+        if ($enable_right_rail == 'latest_feed') {
+
+          $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show, 0, USANETWORK_VIDEO_LIVE_RIGHT_RAIL_NUMBER_ELIMENTS);
+
+          $promos = array();
+
+          if (!empty($related_content)) {
+
+            foreach ($related_content as $content_item) {
+
+              $url =  $content_item->entity_type . '/' . $content_item->entity_id;
+              $title = $content_item->promo_title;
+              $description = $content_item->promo_description;
+              $icon_type = $content_item->media_icon;
+              $image_url = image_style_url('111x74', $content_item->raw_image_uri);
+              $image_url_large = image_style_url('full_episodes_633x356', $content_item->raw_image_uri);
+
+              $promos[] = array(
+                'url' => $url,
+                'image_url' => $image_url,
+                'image_url_large' => $image_url_large,
+                'title' => $title,
+                'description' => $description,
+                'icon_type' => $icon_type,
+              );
+
+            }
+          }
+
+          $theme_variables = array(
+            'block_title' => t('Latest') . ' ' . $tv_show->title,
+            'promos' => $promos,
+          );
+
+          $right_rail_response = theme('usanetwork_video_live_right_rail', $theme_variables);;
+          return drupal_json_output(array(
+            'rendered' => $right_rail_response));
+        }
+      }
+    }
+  }
+}
+
+
+/*
+ * Implements hook_theme
+ */
+function usanetwork_video_live_theme($existing, $type, $theme, $path) {
+  $themes = array(
+    'usanetwork_video_live_right_rail' => array(
+      'variables' => array(
+        'promos' => array(),
+      ),
+      'template' => 'templates/usanetwork-video-live-right-rail',
+    ),
+  );
+  return $themes;
+}

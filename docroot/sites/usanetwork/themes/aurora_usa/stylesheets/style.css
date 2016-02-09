@@ -10954,13 +10954,25 @@ footer h2 {
   z-index: 56;
 }
 @media (max-width: 768px) {
+  .gallery-wrapper .interstitial-wrap.active {
+    position: relative;
+  }
+}
+@media (max-width: 768px) {
   .gallery-wrapper .interstitial-wrap.active ~ div:not(.gallery-list) {
     display: none !important;
   }
 }
 @media (max-width: 768px) {
   .gallery-wrapper .interstitial-wrap.active ~ .gallery-list {
+    position: absolute;
     visibility: hidden;
+    width: 100vw;
+  }
+}
+@media (max-width: 768px) {
+  .gallery-wrapper .interstitial-wrap.active .interstitial-block {
+    margin-bottom: 60px;
   }
 }
 .gallery-wrapper .interstitial-wrap .interstitial-block {

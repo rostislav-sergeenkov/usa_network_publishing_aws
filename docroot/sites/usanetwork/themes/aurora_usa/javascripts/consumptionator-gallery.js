@@ -214,9 +214,9 @@
       }, 5000);
 
       adWrap.velocity("fadeIn", {
-        duration: 200,
+        duration: 500,
         easing: "linear",
-        complete: function (element) {
+        begin: function (element) {
           $(element).addClass('active');
         }
       });

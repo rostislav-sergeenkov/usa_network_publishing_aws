@@ -1,6 +1,6 @@
 (function($) {
-  Drupal.behaviors.usanetwork_video_live_right_rail = {
-    init: function () {
+  Drupal.behaviors.usanetwork_video_live = {
+    right_rail: function () {
       var timezoneOffset = usanetwork_menu_get_user_timezone_offset();
 
       $.ajax({
@@ -19,10 +19,29 @@
         }
       });
     },
+    related_content: function () {
+      var timezoneOffset = usanetwork_menu_get_user_timezone_offset();
+
+      $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        url: Drupal.settings.basePath + 'ajax/render-video-live-related/' + timezoneOffset,
+        success: function(data) {
+
+          if (typeof data.rendered != 'undefined') {
+            $('.consum-related').before(data.rendered);
+          }
+
+        },
+        error: function () {
+          console.info('error');
+        }
+      });
+    },
     attach: function (context, settings) {
       $('body').once(function () {
-        Drupal.behaviors.usanetwork_video_live_right_rail.init();
-        //Drupal.behaviors.usanetwork_video_live_related_content.init();
+        Drupal.behaviors.usanetwork_video_live.right_rail();
+        Drupal.behaviors.usanetwork_video_live.related_content();
       })
     }
   };

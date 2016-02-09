@@ -192,4 +192,9 @@
       <?php if (!empty($clips_block)): print $clips_block; endif; ?>
     <?php endif; ?>
   </div>
+  <?php if ($is_live): ?>
+    <div class="consum-related">
+      <?php print $live_related; ?>
+    </div>
+  <?php endif; ?>
 </div>

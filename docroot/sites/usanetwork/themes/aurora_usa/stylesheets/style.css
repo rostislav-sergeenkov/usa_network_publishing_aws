@@ -10965,23 +10965,18 @@ footer h2 {
   z-index: 56;
 }
 @media (max-width: 768px) {
-  .gallery-wrapper .interstitial-wrap.active {
-    position: relative;
+  .gallery-wrapper .interstitial-wrap.active ~ div:not(.gallery-list) {
+    display: none !important;
   }
 }
 @media (max-width: 768px) {
-  .gallery-wrapper .interstitial-wrap.active ~ .bx-wrapper, .gallery-wrapper .interstitial-wrap.active ~ .share-bar {
-    display: none;
+  .gallery-wrapper .interstitial-wrap.active ~ .gallery-list {
+    visibility: hidden;
   }
 }
 .gallery-wrapper .interstitial-wrap .interstitial-block {
   height: 100%;
   width: 100%;
-}
-@media (max-width: 768px) {
-  .gallery-wrapper .interstitial-wrap .interstitial-block {
-    margin-bottom: 60px;
-  }
 }
 .gallery-wrapper .interstitial-wrap .interstitial-next {
   background-color: #181818;

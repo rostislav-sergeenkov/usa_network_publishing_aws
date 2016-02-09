@@ -21,6 +21,9 @@ body:not(.node-type-person, .node-type-post) {
       top: 0;
       width: 100%;
       z-index: 56;
+      @include breakpoint($bp-768-width) {
+        position: relative;
+      }
       & ~ div:not(.gallery-list) {
         @include breakpoint($bp-768-width) {
           display: none!important;
@@ -28,7 +31,14 @@ body:not(.node-type-person, .node-type-post) {
       }
       & ~ .gallery-list {
         @include breakpoint($bp-768-width) {
+          position: absolute;
           visibility: hidden;
+          width: 100vw;
+        }
+      }
+      .interstitial-block {
+        @include breakpoint($bp-768-width) {
+          margin-bottom: 60px;
         }
       }
     }

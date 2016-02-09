@@ -47,9 +47,3 @@ function usanetwork_episodes_update_7101() {
   // THEN, in case of field type change, revert the feature
   features_revert(array('usanetwork_episodes' => array('field')));
 }
-
-function usanetwork_episodes_update_7102() {
-  ctools_include('export');
-  $page = ctools_export_crud_load('page_manager_handlers', 'node_view_panel_context_3');
-  ctools_export_crud_delete('page_manager_handlers', $page);
-}

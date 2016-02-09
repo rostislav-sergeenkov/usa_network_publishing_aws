@@ -3,6 +3,9 @@
     right_rail: function () {
       var timezoneOffset = usanetwork_menu_get_user_timezone_offset(),
           videoBlock = $('.video-block');
+  Drupal.behaviors.usanetwork_video_live_right_rail = {
+    init: function () {
+      var timezoneOffset = usanetwork_menu_get_user_timezone_offset();
 
       $.ajax({
         type: 'POST',
@@ -63,6 +66,13 @@
           $('h2.section-title').remove();
           $('.gallery-wrapper').remove();
           videoBlock.removeClass('show-gallery');
+          if (typeof data.rendered != 'undefined') {
+            $('.right-rail').before(data.rendered);
+          }
+
+        },
+        error: function () {
+          console.info('error');
         }
       });
     },
@@ -70,6 +80,8 @@
       $('body').once(function () {
         Drupal.behaviors.usanetwork_video_live.right_rail();
         Drupal.behaviors.usanetwork_video_live.related_content();
+        Drupal.behaviors.usanetwork_video_live_right_rail.init();
+        //Drupal.behaviors.usanetwork_video_live_related_content.init();
       })
     }
   };

@@ -13,7 +13,7 @@
         <?php foreach($promos as $promo):?>
           <li class="slide-item">
             <div class="node node-usanetwork-promo">
-              <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
+              <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>" target="_blank">
                 <?php if (!empty($promo['image_url'])): ?>
                   <div class="asset-img"><img src="<?php print $promo['image_url'];?>" alt=""></div>
                 <?php endif; ?>
@@ -40,7 +40,7 @@
         <?php foreach($promos as $promo):?>
           <li class="slide-item">
             <div class="node node-usanetwork-promo aspot-carousel-promo">
-              <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
+              <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>" target="_blank">
                 <div class="meta-wrapper">
                   <div class="meta-back"></div>
                   <div class="meta-wrapper-inner">
@@ -69,4 +69,7 @@
       </div>
     </div>
   <?php endif; ?>
+</div>
+<div class="more-items more-clips show-color">
+  <?php if (!empty($more_items_url)): print $more_items_url; endif;?>
 </div>

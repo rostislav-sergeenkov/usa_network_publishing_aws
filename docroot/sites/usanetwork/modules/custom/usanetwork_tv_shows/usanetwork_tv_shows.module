@@ -1130,6 +1130,8 @@ function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, 
     }
   }
 
+  unset($form['field_livetv_right_rail']['und']['#options']['_none']);
+
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows.js';
 }
 

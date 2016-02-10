@@ -73,3 +73,6 @@
 <div class="more-items more-clips show-color">
   <?php if (!empty($more_items_url)): print $more_items_url; endif;?>
 </div>
+<div class="more-items more-clips show-color">
+  <?php if (!empty($more_items_url)): print $more_items_url; endif;?>
+</div>

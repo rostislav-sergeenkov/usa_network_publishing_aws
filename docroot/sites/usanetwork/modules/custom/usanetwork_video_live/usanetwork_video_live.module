@@ -127,6 +127,7 @@ function _usanetwork_video_live_right_rail_ajax($offset) {
           $theme_variables = array(
             'block_title' => t('Latest') . ' ' . $tv_show->title,
             'promos' => $promos,
+            'more_items_url' => l(t('View more @show_title', array('@show_title' => $tv_show->title)), 'node/' . $tv_show->nid),
           );
 
           $right_rail_response = theme('usanetwork_video_live_right_rail', $theme_variables);

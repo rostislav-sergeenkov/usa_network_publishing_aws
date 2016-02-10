@@ -9643,7 +9643,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_livetv_right_rail',
     'label' => 'Right Rail',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',

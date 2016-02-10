@@ -111,8 +111,8 @@
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.carousel-wrapper .carousel-block'), style.light_stacked);
         }
 
-        // page-file
-        if (body.hasClass('page-file')) {
+        // consumptionators pages
+        if (body.hasClass('consumptionator-page')) {
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .nav-bar-tabs'), style.dark);
         }
       });

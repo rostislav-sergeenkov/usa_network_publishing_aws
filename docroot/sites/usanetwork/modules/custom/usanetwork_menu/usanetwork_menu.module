@@ -1188,6 +1188,14 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
         }
       }
     }
+    //Sponsored MPS
+    if (!empty($node->field_sponsored)) {
+      $field_sponsored = $entity_wrapper->field_sponsored->value();
+      if ($field_sponsored == '1') {
+        $sponsored = TRUE;
+        $node_path = '/node/' . $node->nid;
+      }
+    }
     $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
     if (!empty($advert_block['content'])) {
       $authbar = render($advert_block['content']);
@@ -1229,6 +1237,8 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
             'episode_number' => !empty($episode_num) ? $episode_num : '',
           ) : NULL,
       ),
+      'sponsored' => isset($sponsored) ? $sponsored : FALSE,
+      'node_path' => isset($node_path) ? $node_path : FALSE,
     );
     return theme('usanetwork_menu_consumptionator_gallery', $theme_variables);
   }

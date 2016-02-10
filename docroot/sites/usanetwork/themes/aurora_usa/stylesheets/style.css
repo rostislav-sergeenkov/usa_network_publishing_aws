@@ -4588,7 +4588,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   max-width: 970px;
 }
 
-.page-file header .header-nav-bar .nav-bar-tabs .sponsored {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .sponsored {
   display: table;
   float: left;
   height: 7.12195vw;
@@ -4596,18 +4596,18 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   width: 282px;
 }
 @media (min-width: 1901px) {
-  .page-file header .header-nav-bar .nav-bar-tabs .sponsored {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .sponsored {
     height: 135px;
   }
 }
 @media (max-width: 768px) {
-  .page-file header .header-nav-bar .nav-bar-tabs .sponsored {
+  .consumptionator-page header .header-nav-bar .nav-bar-tabs .sponsored {
     float: none;
     height: 50px;
     margin: 0 auto;
   }
 }
-.page-file header .header-nav-bar .nav-bar-tabs .sponsored .mps-slot {
+.consumptionator-page header .header-nav-bar .nav-bar-tabs .sponsored .mps-slot {
   display: table-cell;
   vertical-align: middle;
 }

@@ -32,32 +32,6 @@ function usanetwork_video_live_menu() {
 }
 
 /**
- * Implements hook_block_info().
- */
-function usanetwork_video_live_block_info() {
-  $blocks = array();
-  $blocks['usanetwork_video_live_related'] = array(
-    'info' => t('Video Live: Related Content block'),
-    'cache' => DRUPAL_NO_CACHE,
-  );
-  return $blocks;
-}
-
-/**
- * Implements hook_block_view().
- */
-function usanetwork_video_live_block_view($delta) {
-  $block = array();
-  switch ($delta) {
-    case 'usanetwork_video_live_related':
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_video_live_related_block();
-      break;
-  }
-  return $block;
-}
-
-/**
  * Live Video: Right Rail Ajax Response
  */
 function _usanetwork_video_live_right_rail_ajax($offset) {
@@ -117,14 +91,6 @@ function _usanetwork_video_live_right_rail_ajax($offset) {
     }
   }
 }
-
-/**
- * Video Live: Related Content block
- */
-function _usanetwork_video_live_related_block() {
-  return '';
-}
-
 
 /**
  * Live Video: Related Content Ajax Response

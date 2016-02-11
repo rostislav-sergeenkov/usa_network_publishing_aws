@@ -169,8 +169,10 @@
       @include breakpoint($bp-1280-width) {
         text-overflow: ellipsis;
         overflow: hidden;
-        width: calc(100% - 200px);
         white-space: nowrap;
+      }
+      @include breakpoint($between-641-1280) {
+        width: calc(100% - 260px);
       }
       @include breakpoint($bp-640-width) {
         font-size: 30px;
@@ -488,9 +490,12 @@
       font-size: 15px;
       letter-spacing: 1px;
       line-height: 40px;
-      padding-left: 25px;
+      overflow: hidden;
+      padding: 0 25px;
       text-decoration: none;
+      text-overflow: ellipsis;
       text-transform: uppercase;
+      white-space: nowrap;
       @include breakpoint($bp-min-1901-width) {
         font-size: 23px;
         line-height: 70px;

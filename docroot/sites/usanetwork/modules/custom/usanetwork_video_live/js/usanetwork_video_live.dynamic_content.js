@@ -16,6 +16,9 @@
             $('.consum-sidebar .download-app').after(data.rendered);
             Drupal.behaviors.bxslider_carousels.initVSliders();
             Drupal.behaviors.bxslider_carousels.initHSliders();
+          } else {
+            $('.consum-sidebar .items-block').remove();
+            videoBlock.addClass('show-app');
           }
         },
         error: function () {

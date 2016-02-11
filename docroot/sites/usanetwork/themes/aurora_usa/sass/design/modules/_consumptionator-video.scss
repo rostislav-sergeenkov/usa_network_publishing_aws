@@ -524,7 +524,7 @@
     .consum-sidebar {
       .download-app {
         display: none;
-        @include breakpoint($between-769-1024) {
+        @include breakpoint($bp-1024-width) {
           display: table;
         }
       }
@@ -577,6 +577,20 @@
         @include breakpoint($between-1025-1280) {
           width: 320px;
         }
+        .more-items {
+          @include breakpoint($between-1025-1280) {
+            bottom: 0;
+            left: 0;
+            right: auto;
+            top: auto;
+            width: 100%;
+          }
+          a {
+            @include breakpoint($between-1025-1280) {
+              padding: 0 25px;
+            }
+          }
+        }
         .items-block {
           @include breakpoint($between-1025-1280) {
             position: relative;
@@ -615,6 +629,7 @@
         }
         @include breakpoint($bp-1024-width) {
           clear: both;
+          padding-top: 40px;
         }
       }
       .gallery-wrapper {

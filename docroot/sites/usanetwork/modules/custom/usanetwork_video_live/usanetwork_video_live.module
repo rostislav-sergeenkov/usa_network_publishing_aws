@@ -36,10 +36,6 @@ function usanetwork_video_live_menu() {
  */
 function usanetwork_video_live_block_info() {
   $blocks = array();
-  $blocks['usanetwork_video_live_right_rail'] = array(
-    'info' => t('Video Live: Right Rail block'),
-    'cache' => DRUPAL_NO_CACHE,
-  );
   $blocks['usanetwork_video_live_related'] = array(
     'info' => t('Video Live: Related Content block'),
     'cache' => DRUPAL_NO_CACHE,
@@ -53,23 +49,12 @@ function usanetwork_video_live_block_info() {
 function usanetwork_video_live_block_view($delta) {
   $block = array();
   switch ($delta) {
-    case 'usanetwork_video_live_right_rail':
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_video_live_right_rail_block();
-      break;
     case 'usanetwork_video_live_related':
       $block['subject'] = '';
       $block['content'] = _usanetwork_video_live_related_block();
       break;
   }
   return $block;
-}
-
-/**
- * Video Live: Right Rail block
- */
-function _usanetwork_video_live_right_rail_block() {
-  return '';
 }
 
 /**

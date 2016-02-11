@@ -1489,11 +1489,11 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
           $vars['live_advert'] = NULL;
         }
 
-        $right_rail_block = module_invoke('usanetwork_video_live', 'block_view', 'usanetwork_video_live_right_rail');
+        $right_rail_block = module_invoke('usanetwork_video_live', 'block_view', 'usanetwork_video_live_related');
         if (!empty($right_rail_block['content'])) {
-          $vars['live_right_rail'] = render($right_rail_block['content']);
+          $vars['live_related'] = render($right_rail_block['content']);
         } else {
-          $vars['live_right_rail'] = NULL;
+          $vars['live_related'] = NULL;
         }
       }
 

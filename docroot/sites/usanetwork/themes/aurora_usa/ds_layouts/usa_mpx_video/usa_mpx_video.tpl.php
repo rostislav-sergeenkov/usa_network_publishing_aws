@@ -1,8 +1,8 @@
 <div class="video-block"
      data-tve-player
      data-usa-tve-player-container
-     data-show-title="<?php print $show_title ?>"
-     data-episode-title="<?php print $filename ?>"
+     data-show-title="<?php print (!empty($show_title)) ? $show_title : ''; ?>"
+     data-episode-title="<?php print $filename; ?>"
      data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
      data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>">
   <div class="player-wrapper">

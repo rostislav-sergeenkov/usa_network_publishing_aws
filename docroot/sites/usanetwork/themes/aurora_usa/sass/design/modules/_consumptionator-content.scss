@@ -171,7 +171,10 @@
         overflow: hidden;
         white-space: nowrap;
       }
-      @include breakpoint($between-641-1280) {
+      @include breakpoint($between-769-1280) {
+        width: calc(100% - 300px);
+      }
+      @include breakpoint($between-641-768) {
         width: calc(100% - 260px);
       }
       @include breakpoint($bp-640-width) {
@@ -474,8 +477,14 @@
       top: 100%;
       width: auto;
     }
-    @include breakpoint($bp-1024-width) {
+    @include breakpoint($between-641-1024) {
+      display: table;
+      height: 60px;
       top: 270px;
+      width: 290px;
+    }
+    @include breakpoint($between-641-768) {
+      width: 250px;
     }
     @include breakpoint($bp-640-width) {
       position: relative;
@@ -508,8 +517,16 @@
           text-decoration: underline;
         }
       }
-      @include breakpoint($bp-1024-width) {
-        line-height: 60px;
+      @include breakpoint($between-641-1024) {
+        display: table-cell;
+        line-height: 1.2;
+        max-width: 290px;
+        text-align: right;
+        white-space: normal;
+        vertical-align: middle;
+      }
+      @include breakpoint($between-641-768) {
+        max-width: 250px;
       }
       @include breakpoint($bp-640-width) {
         font-size: 23px;

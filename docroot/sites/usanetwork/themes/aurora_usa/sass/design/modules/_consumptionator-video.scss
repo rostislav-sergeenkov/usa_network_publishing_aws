@@ -536,11 +536,44 @@
           position: relative;
         }
       }
+      .episodes-list-slider {
+        &.horizontal {
+          .slider-horizontal {
+            @include breakpoint($bp-640-width) {
+              top: 0!important;
+            }
+          }
+        }
+      }
     }
     &:not(.show-app) {
       .consum-sidebar {
         .items-block {
           height: calc(100% - 250px);
+        }
+      }
+      &:not(.show-gallery) {
+        .player-wrapper {
+          @include breakpoint($between-1025-1280) {
+            margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
+          }
+        }
+        .consum-sidebar {
+          .items-block {
+            @include breakpoint($between-1025-1280) {
+              height: auto;
+            }
+          }
+          .download-app {
+            @include breakpoint($between-1025-1280) {
+              display: table;
+            }
+          }
+          .more-items {
+            @include breakpoint($between-1025-1280) {
+              background: none!important;
+            }
+          }
         }
       }
     }
@@ -552,6 +585,14 @@
       }
     }
     &.show-gallery {
+      &.show-app {
+        .consum-sidebar {
+          @include breakpoint($bp-min-1025-width) {
+            height: 45vw;
+            max-height: 1125px!important;
+          }
+        }
+      }
       @include breakpoint($bp-min-1025-width) {
         height: auto;
         max-height: none;

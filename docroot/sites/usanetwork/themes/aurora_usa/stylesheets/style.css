@@ -13264,7 +13264,12 @@ footer h2 {
     white-space: nowrap;
   }
 }
-@media (min-width: 641px) and (max-width: 1280px) {
+@media (min-width: 769px) and (max-width: 1280px) {
+  .consum-sidebar .items-block-title h2 {
+    width: calc(100% - 300px);
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
   .consum-sidebar .items-block-title h2 {
     width: calc(100% - 260px);
   }
@@ -13602,9 +13607,17 @@ footer h2 {
     width: auto;
   }
 }
-@media (max-width: 1024px) {
+@media (min-width: 641px) and (max-width: 1024px) {
   .consum-sidebar .more-items {
+    display: table;
+    height: 60px;
     top: 270px;
+    width: 290px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .consum-sidebar .more-items {
+    width: 250px;
   }
 }
 @media (max-width: 640px) {
@@ -13645,9 +13658,19 @@ footer h2 {
     text-decoration: underline;
   }
 }
-@media (max-width: 1024px) {
+@media (min-width: 641px) and (max-width: 1024px) {
   .consum-sidebar .more-items a {
-    line-height: 60px;
+    display: table-cell;
+    line-height: 1.2;
+    max-width: 290px;
+    text-align: right;
+    white-space: normal;
+    vertical-align: middle;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .consum-sidebar .more-items a {
+    max-width: 250px;
   }
 }
 @media (max-width: 640px) {
@@ -15012,11 +15035,42 @@ footer h2 {
     position: relative;
   }
 }
+@media (max-width: 640px) {
+  .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .slider-horizontal {
+    top: 0 !important;
+  }
+}
 .page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
   height: calc(100% - 250px);
 }
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .player-wrapper {
+    margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .items-block {
+    height: auto;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .download-app {
+    display: table;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .more-items {
+    background: none !important;
+  }
+}
 .page-videos-live .video-block.show-app .consum-sidebar .download-app {
   display: table;
+}
+@media (min-width: 1025px) {
+  .page-videos-live .video-block.show-gallery.show-app .consum-sidebar {
+    height: 45vw;
+    max-height: 1125px !important;
+  }
 }
 @media (min-width: 1025px) {
   .page-videos-live .video-block.show-gallery {

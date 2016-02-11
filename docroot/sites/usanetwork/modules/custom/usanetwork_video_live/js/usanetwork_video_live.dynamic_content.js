@@ -9,21 +9,26 @@
         dataType: 'JSON',
         url: Drupal.settings.basePath + 'ajax/render-video-live-right-rail/' + timezoneOffset,
         success: function(data) {
-          console.info(data);
           if ( data != null && typeof data != 'undefined') {
             $('.consum-sidebar .items-block').remove();
             videoBlock.removeClass('show-app');
             $('.consum-sidebar .download-app').after(data.rendered);
             Drupal.behaviors.bxslider_carousels.initVSliders();
             Drupal.behaviors.bxslider_carousels.initHSliders();
+            Drupal.behaviors.bxslider_carousels.slideItem = $('.episodes-list-slider.horizontal .slide-item');
+            if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
+              $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt(4)').addClass('hidden');
+            }
           } else {
             $('.consum-sidebar .items-block').remove();
+            $('.consum-sidebar .more-items').remove();
             videoBlock.addClass('show-app');
           }
         },
         error: function () {
           console.info('error');
           $('.consum-sidebar .items-block').remove();
+          $('.consum-sidebar .more-items').remove();
           videoBlock.addClass('show-app');
         }
       });
@@ -37,7 +42,6 @@
         dataType: 'JSON',
         url: Drupal.settings.basePath + 'ajax/render-video-live-related/' + timezoneOffset,
         success: function(data) {
-
           if (data != null && typeof data != 'undefined') {
             $('.consum-sidebar .gallery-wrapper').remove();
             if(!videoBlock.hasClass('show-gallery')) {
@@ -48,8 +52,11 @@
             window.onload = function() {
               $('.gallery-wrapper').usaGallery();
             };
+          } else {
+            $('h2.section-title').remove();
+            $('.gallery-wrapper').remove();
+            videoBlock.removeClass('show-gallery');
           }
-
         },
         error: function () {
           console.info('error');

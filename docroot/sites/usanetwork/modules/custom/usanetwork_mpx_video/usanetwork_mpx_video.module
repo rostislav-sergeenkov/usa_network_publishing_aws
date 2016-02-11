@@ -1493,13 +1493,6 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         } else {
           $vars['live_advert'] = NULL;
         }
-
-        $right_rail_block = module_invoke('usanetwork_video_live', 'block_view', 'usanetwork_video_live_related');
-        if (!empty($right_rail_block['content'])) {
-          $vars['live_related'] = render($right_rail_block['content']);
-        } else {
-          $vars['live_related'] = NULL;
-        }
       }
 
       //twitter card

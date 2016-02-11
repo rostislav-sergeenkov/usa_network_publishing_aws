@@ -157,13 +157,6 @@
           </div>
         <?php endif; ?>
       </div>
-      <div class="node-wrapper right-rail">
-        <?php if ($live_right_rail): ?>
-          <div class="right-rail">
-            <?php print $live_right_rail; ?>
-          </div>
-        <?php endif; ?>
-      </div>
       <div class="download-app">
         <div class="download-app-wrapper">
           <div class="image-block"></div>

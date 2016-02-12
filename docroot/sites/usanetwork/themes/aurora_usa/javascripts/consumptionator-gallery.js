@@ -259,7 +259,7 @@
           $gallery = _.$gallery,
           $sharebar = _.$shareBar,
           $slide = $gallery.find('.slick-active'),
-          description = $slide.find('.slide-info .description').text(),
+          description = $slide.find('.slide-info .description').text().trim(),
           imageUrl = $slide.find('.asset-img img'),
           link_back = window.location.href.split('#')[0],
           slideIndex;

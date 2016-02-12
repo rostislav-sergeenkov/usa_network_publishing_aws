@@ -59,7 +59,7 @@ function _usanetwork_video_live_right_rail_ajax($offset) {
 
           if (!empty($related_content)) {
             foreach ($related_content as $content_item) {
-              $url =  $content_item->entity_type . '/' . $content_item->entity_id;
+              $url = '/' . $content_item->entity_type . '/' . $content_item->entity_id;
               $title = $content_item->promo_title;
               $description = $content_item->promo_description;
               $icon_type = $content_item->media_icon;

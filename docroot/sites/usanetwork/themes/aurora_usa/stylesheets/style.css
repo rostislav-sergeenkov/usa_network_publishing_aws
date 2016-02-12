@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -15044,6 +15044,142 @@ footer h2 {
   .page-videos-live .video-block .consum-sidebar .advert {
     height: 250px !important;
     position: relative;
+  }
+}
+@media (max-width: 640px) {
+  .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .slider-horizontal {
+    top: 0 !important;
+  }
+}
+.page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
+  height: calc(100% - 250px);
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .player-wrapper {
+    margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .items-block {
+    height: auto;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .download-app {
+    display: table;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .more-items {
+    background: none !important;
+  }
+}
+.page-videos-live .video-block.show-app .consum-sidebar .download-app {
+  display: table;
+}
+@media (min-width: 1025px) {
+  .page-videos-live .video-block.show-gallery.show-app .consum-sidebar {
+    height: 45vw;
+    max-height: 1125px !important;
+  }
+}
+@media (min-width: 1025px) {
+  .page-videos-live .video-block.show-gallery {
+    height: auto;
+    max-height: none;
+  }
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block.show-gallery .player-wrapper {
+    height: 42.01875vw;
+    max-height: 1093.75px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block.show-gallery .player-wrapper {
+    height: calc((100vw - 320px)*0.5625);
+  }
+}
+@media (min-width: 1025px) {
+  .page-videos-live .video-block.show-gallery .consum-sidebar {
+    float: right;
+    height: 70vw;
+    max-height: 1750px !important;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block.show-gallery .consum-sidebar {
+    width: 320px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block.show-gallery .consum-sidebar .more-items {
+    bottom: 0;
+    left: 0;
+    right: auto;
+    top: auto;
+    width: 100%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block.show-gallery .consum-sidebar .more-items a {
+    padding: 0 25px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block.show-gallery .consum-sidebar .items-block {
+    position: relative;
+    right: auto;
+    top: auto;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block.show-gallery .consum-sidebar .items-block-title h2 {
+    width: 100%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block.show-gallery .consum-sidebar .episodes-list-slider.vertical {
+    display: block;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block.show-gallery .consum-sidebar .episodes-list-slider.horizontal {
+    display: none;
+  }
+}
+.page-videos-live .video-block.show-gallery .section-title {
+  margin-top: 40px;
+}
+@media (min-width: 1025px) {
+  .page-videos-live .video-block.show-gallery .section-title {
+    float: left;
+    width: 74.7%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block.show-gallery .section-title {
+    width: calc(100% - 320px);
+  }
+}
+@media (max-width: 1024px) {
+  .page-videos-live .video-block.show-gallery .section-title {
+    clear: both;
+    padding-top: 40px;
+  }
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block.show-gallery .gallery-wrapper {
+    height: 42.01875vw;
+    max-height: 1093.75px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block.show-gallery .gallery-wrapper {
+    height: calc((100vw - 320px)*0.5625);
   }
 }
 @media (max-width: 640px) {

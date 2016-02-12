@@ -63,6 +63,13 @@
           $('h2.section-title').remove();
           $('.gallery-wrapper').remove();
           videoBlock.removeClass('show-gallery');
+          if (typeof data.rendered != 'undefined') {
+            $('.right-rail').before(data.rendered);
+          }
+
+        },
+        error: function () {
+          console.info('error');
         }
       });
     },

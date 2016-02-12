@@ -30,11 +30,11 @@
           <?php print $sharebar; ?>
         </div>
       </div>
-      <div class="post-info-image">
-        <?php if (!empty($image_desktop)): ?>
+      <?php if (!empty($image_desktop)): ?>
+        <div class="post-info-image">
           <div class="asset-img"><img src="<?php print $image_desktop; ?>" alt="" title="<?php print $title; ?>" /></div>
-        <?php endif; ?>
-      </div>
+        </div>
+      <?php endif; ?>
       <div class="node-wrapper advert">
         <div class="advertisement">
           <div class="topbox"></div>

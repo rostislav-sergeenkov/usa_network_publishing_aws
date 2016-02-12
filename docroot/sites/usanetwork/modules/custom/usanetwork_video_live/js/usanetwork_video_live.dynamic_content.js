@@ -77,8 +77,6 @@
       $('body').once(function () {
         Drupal.behaviors.usanetwork_video_live.right_rail();
         Drupal.behaviors.usanetwork_video_live.related_content();
-        Drupal.behaviors.usanetwork_video_live_right_rail.init();
-        //Drupal.behaviors.usanetwork_video_live_related_content.init();
       })
     }
   };

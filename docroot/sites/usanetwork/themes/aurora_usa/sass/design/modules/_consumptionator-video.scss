@@ -550,6 +550,9 @@
       .consum-sidebar {
         .items-block {
           height: calc(100% - 250px);
+          @include breakpoint($bp-1024-width) {
+            height: auto;
+          }
         }
       }
       &:not(.show-gallery) {

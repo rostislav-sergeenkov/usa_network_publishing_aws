@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -15042,6 +15042,11 @@ footer h2 {
 }
 .page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
   height: calc(100% - 250px);
+}
+@media (max-width: 1024px) {
+  .page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
+    height: auto;
+  }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live .video-block:not(.show-app):not(.show-gallery) .player-wrapper {

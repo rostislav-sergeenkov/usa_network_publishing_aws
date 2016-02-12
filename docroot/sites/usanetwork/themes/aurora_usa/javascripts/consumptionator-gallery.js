@@ -131,6 +131,7 @@
       // data attributes value
       _.data = {
         galleryId: _.$galleryWrap.data('id'),
+        gallerySharingPath: _.$galleryWrap.data('path'),
         interstitialSlideCounter: _.$interstitialWrap.data('slides-counter')
       };
 
@@ -256,12 +257,13 @@
 
       var _ = this,
           galleryId = _.data.galleryId,
+          gallerySharingPath = _.data.gallerySharingPath,
           $gallery = _.$gallery,
           $sharebar = _.$shareBar,
           $slide = $gallery.find('.slick-active'),
-          description = $slide.find('.slide-info .description').text(),
+          description = $slide.find('.slide-info .description').text().trim(),
           imageUrl = $slide.find('.asset-img img'),
-          link_back = window.location.href.split('#')[0],
+          link_back = (_.data.gallerySharingPath == '')? window.location.href.split('#')[0]: _.data.gallerySharingPath,
           slideIndex;
 
       if ($sharebar.length > 0) {
@@ -622,6 +624,7 @@
             _.updateGalleryElem(_);
             _.createPagerPosition(_);
             _.setPagerPosition(_);
+            _.gigyaSharebar(initialSlide);
             _.movePagerItems(_, initialSlide);
 
           if (initSlidesCounter) {

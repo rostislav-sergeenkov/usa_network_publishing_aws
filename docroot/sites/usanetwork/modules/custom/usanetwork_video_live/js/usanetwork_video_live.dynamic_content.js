@@ -3,9 +3,6 @@
     right_rail: function () {
       var timezoneOffset = usanetwork_menu_get_user_timezone_offset(),
           videoBlock = $('.video-block');
-  Drupal.behaviors.usanetwork_video_live_right_rail = {
-    init: function () {
-      var timezoneOffset = usanetwork_menu_get_user_timezone_offset();
 
       $.ajax({
         type: 'POST',

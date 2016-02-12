@@ -624,6 +624,7 @@
             _.updateGalleryElem(_);
             _.createPagerPosition(_);
             _.setPagerPosition(_);
+            _.gigyaSharebar(initialSlide);
             _.movePagerItems(_, initialSlide);
 
           if (initSlidesCounter) {

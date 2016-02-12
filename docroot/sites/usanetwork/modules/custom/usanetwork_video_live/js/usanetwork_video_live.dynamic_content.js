@@ -66,10 +66,6 @@
           if (typeof data.rendered != 'undefined') {
             $('.right-rail').before(data.rendered);
           }
-
-        },
-        error: function () {
-          console.info('error');
         }
       });
     },

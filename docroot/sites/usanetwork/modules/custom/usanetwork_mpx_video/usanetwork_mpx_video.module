@@ -652,6 +652,9 @@ function usanetwork_mpx_video_live() {
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/sign_in_out.js', array('scope' => 'footer', 'weight' => -1,));
   drupal_add_js('//client-cloudpath.nbcuni.com/current/api/NBCUniCPC.min.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/cpc-player.js', array('scope' => 'footer'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_video_live') . '/js/usanetwork_video_live.dynamic_content.js');
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/slick.min.js');
+  drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-gallery.js');
   return '';
 }
 
@@ -1436,31 +1439,8 @@ function usanetwork_mpx_video_preprocess_pub_mpx_video(&$vars) {
 function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
   if (in_array($file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
-    $show = NULL;
-    $clips_block = module_invoke('usanetwork_mpx_video', 'block_view', 'usa_mpx_video_clips');
-    if (!empty($clips_block['content'])) {
-      $vars['clips_block'] = render($clips_block['content']);
-    }
 
-    $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
-    $vars['lock_video'] = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
-
-    $field_show = field_get_items('file', $file, 'field_show');
-    if ($field_show && $field_show = reset($field_show)) {
-      if (isset($field_show['entity'])) {
-        $show = $field_show['entity'];
-      }
-    }
-    if ($show) {
-      $vars['show_title'] = $show->title;
-      $vars['show_css_class'] = usanetwork_tv_shows_color_show_css_class($show);
-    }
-    else {
-      $vars['show_css_class'] = 'show-default';
-    }
-    if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
-
-      drupal_add_js(path_to_theme('aurora_usa').'/javascripts/consumptionator-video.js');
+    if (isset($vars['view_mode']) && $vars['view_mode'] == 'inline_content') {
       // inline content
       if (isset($vars['elements']['#embedded']) && $vars['elements']['#embedded'] == TRUE) {
         if (isset($vars['content']['file'])) {
@@ -1471,6 +1451,34 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         if (isset($vars['content']['file'])) {
           $vars['content']['file']['#file']->embedded_autoplay = TRUE;
         }
+      }
+    }
+
+    if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
+      drupal_add_js(path_to_theme('aurora_usa').'/javascripts/consumptionator-video.js');
+
+      $clips_block = module_invoke('usanetwork_mpx_video', 'block_view', 'usa_mpx_video_clips');
+      if (!empty($clips_block['content'])) {
+        $vars['clips_block'] = render($clips_block['content']);
+      }
+
+      $show = NULL;
+
+      $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
+      $vars['lock_video'] = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
+
+      $field_show = field_get_items('file', $file, 'field_show');
+      if ($field_show && $field_show = reset($field_show)) {
+        if (isset($field_show['entity'])) {
+          $show = $field_show['entity'];
+        }
+      }
+      if ($show) {
+        $vars['show_title'] = $show->title;
+        $vars['show_css_class'] = usanetwork_tv_shows_color_show_css_class($show);
+      }
+      else {
+        $vars['show_css_class'] = 'show-default';
       }
 
       $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
@@ -1653,7 +1661,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
           drupal_add_css($css_file, array('type' => 'external'));
         }
       }
-      if ($full_episode['value'] == '1') {
+      if ($full_episode == '1') {
         $params = drupal_get_query_parameters();
         if (isset($params['t'])) {
           drupal_add_js(array('videoSetTime' => $params['t']), 'setting');

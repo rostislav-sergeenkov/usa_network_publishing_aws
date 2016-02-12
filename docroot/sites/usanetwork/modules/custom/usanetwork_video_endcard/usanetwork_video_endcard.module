@@ -349,10 +349,8 @@ function usanetwork_get_endcard_variables($file) {
   $related_files = array();
 
   // check if it's full episode
-  $full_episode = reset(field_get_items('file', $file, 'field_mpx_full_episode'));
-  if ($full_episode) {
-    $full_episode = ($full_episode['value'] == '1') ? TRUE : FALSE;
-  }
+  $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
+  $full_episode = ($full_episode == '1') ? TRUE : FALSE;
 
   // check if it's video page or global page
   $filter_category = TRUE;

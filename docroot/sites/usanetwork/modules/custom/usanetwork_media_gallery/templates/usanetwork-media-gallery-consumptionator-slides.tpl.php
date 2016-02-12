@@ -6,7 +6,7 @@
  * $interstitial_ad_frequency - quantity of slides before ad
  */
 ?>
-<div class="gallery-wrapper" data-id="<?php print $gallery_id; ?>">
+<div class="gallery-wrapper" data-id="<?php print $gallery_id; ?>" data-path="<?php print $gallery_path; ?>">
   <?php if (!empty($interstitial_ad_enabled) && !empty($interstitial_ad_frequency)): ?>
     <div class="interstitial-wrap" data-slides-counter="<?php print $interstitial_ad_frequency ?>">
       <div id="gallery-interstitial-block" class="interstitial-block" data-scalemps="1"></div>

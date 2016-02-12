@@ -15043,6 +15043,11 @@ footer h2 {
 .page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
   height: calc(100% - 250px);
 }
+@media (max-width: 1024px) {
+  .page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
+    height: auto;
+  }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live .video-block:not(.show-app):not(.show-gallery) .player-wrapper {
     margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);

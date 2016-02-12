@@ -11,6 +11,7 @@
         success: function(data) {
           if ( data != null && typeof data != 'undefined') {
             $('.consum-sidebar .items-block').remove();
+            $('.consum-sidebar .more-items').remove();
             videoBlock.removeClass('show-app');
             $('.consum-sidebar .download-app').after(data.rendered);
             Drupal.behaviors.bxslider_carousels.initVSliders();
@@ -43,15 +44,14 @@
         url: Drupal.settings.basePath + 'ajax/render-video-live-related/' + timezoneOffset,
         success: function(data) {
           if (data != null && typeof data != 'undefined') {
-            $('.consum-sidebar .gallery-wrapper').remove();
+            $('h2.section-title').remove();
+            $('.gallery-wrapper').remove();
             if(!videoBlock.hasClass('show-gallery')) {
               videoBlock.addClass('show-gallery');
             }
             $('.consum-sidebar').after(data.rendered);
             $('.consum-sidebar').after('<h2 class="section-title"><span class="section-title-wrapper show-border secondary">Related content</span></h2>');
-            window.onload = function() {
-              $('.gallery-wrapper').usaGallery();
-            };
+            $('.gallery-wrapper').usaGallery();
           } else {
             $('h2.section-title').remove();
             $('.gallery-wrapper').remove();

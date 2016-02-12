@@ -53,12 +53,6 @@ function usanetwork_gigya_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'microsite_output' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'page_collection_resources' => array(
         'label' => 'above',
         'settings' => array(),
@@ -90,8 +84,6 @@ function usanetwork_gigya_field_default_field_instances() {
     'label' => 'Gigya Share Bar',
     'required' => FALSE,
     'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -185,8 +177,6 @@ function usanetwork_gigya_field_default_field_instances() {
     'label' => 'Gigya Share Bar',
     'required' => FALSE,
     'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(

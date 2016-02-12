@@ -31,14 +31,19 @@
 $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/mrrobot';
 ?>
 
-<?php if (!empty($section_title)): ?>
-  <!-- section title -->
-  <h2 class="content"><?php print $section_title; ?></h2>
-<?php endif; ?>
+<?php if (!empty($section_title) || !empty($description)): ?>
+  <div class="section-title-block">
+    <?php if (!empty($section_title)): ?>
+      <!-- section title -->
+      <h2 class="content"><?php print $section_title; ?></h2>
+    <?php endif; ?>
 
-<?php if (!empty($description)): ?>
-  <!-- section description -->
-  <div class="section-description"><?php print $description; ?></div>
+    <?php if (!empty($description)): ?>
+      <div class="section-description">
+        <?php print $description; ?>
+      </div>
+    <?php endif; ?>
+  </div>
 <?php endif; ?>
 
 <div id="characters-container">

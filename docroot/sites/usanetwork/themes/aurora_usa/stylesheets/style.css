@@ -4581,12 +4581,16 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   display: table;
   float: left;
   height: 7.12195vw;
+  max-height: 7.12195vw;
+  max-width: 282px;
+  overflow: hidden;
   text-align: center;
   width: 282px;
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .sponsored {
     height: 135px;
+    max-height: 135px;
   }
 }
 @media (max-width: 768px) {
@@ -4594,6 +4598,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
     float: none;
     height: 50px;
     margin: 0 auto;
+    max-height: 50px;
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .sponsored .mps-slot {

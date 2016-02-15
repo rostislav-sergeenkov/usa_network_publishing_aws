@@ -624,7 +624,9 @@
             _.updateGalleryElem(_);
             _.createPagerPosition(_);
             _.setPagerPosition(_);
-            _.gigyaSharebar(initialSlide);
+            if($('body').hasClass('page-videos-live')){
+              _.gigyaSharebar(initialSlide);
+            }
             _.movePagerItems(_, initialSlide);
 
           if (initSlidesCounter) {

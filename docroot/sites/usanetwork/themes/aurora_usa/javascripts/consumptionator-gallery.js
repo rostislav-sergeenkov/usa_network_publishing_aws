@@ -173,8 +173,8 @@
       }
 
       if ($('body').hasClass('page-videos-live')) {
-        var showName = (Drupal.behaviors.usanetwork_video_live.showName != '')? Drupal.behaviors.usanetwork_video_live.showName : $('.nav-bar-tabs .show-name span').text().trim(),
-            pageName = (Drupal.behaviors.usanetwork_video_live.pageName != '')? Drupal.behaviors.usanetwork_video_live.pageName : $('.nav-bar-tabs .info span').text().trim();
+        var showName = Drupal.behaviors.usanetwork_video_live.showName.trim(),
+            pageName = Drupal.behaviors.usanetwork_video_live.pageName.trim();
         if(showName != '' && pageName != '') {
           s.prop5 = showName + ' : ' + s.prop10 + ' : ' + pageName;
         }

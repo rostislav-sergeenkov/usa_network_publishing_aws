@@ -165,11 +165,19 @@
           var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
               pageName = Drupal.settings.umbel_settings.usa_umbel_param_2;
         }
-
+        console.info(Drupal.settings.umbel_settings, showName, pageName);
         s.linkTrackVars = 'events,prop3,prop4,prop5';
         s.prop3 = 'Gallery';
         s.prop4 = showName.trim() + ' : ' + pageName.trim();
         s.prop5 = 'Episodic Gallery';
+      }
+
+      if ($('body').hasClass('page-videos-live')) {
+        var showName = (Drupal.behaviors.usanetwork_video_live.showName != '')? Drupal.behaviors.usanetwork_video_live.showName : $('.nav-bar-tabs .show-name span').text().trim(),
+            pageName = (Drupal.behaviors.usanetwork_video_live.pageName != '')? Drupal.behaviors.usanetwork_video_live.pageName : $('.nav-bar-tabs .info span').text().trim();
+        if(showName != '' && pageName != '') {
+          s.prop5 = showName + ' : ' + s.prop10 + ' : ' + pageName;
+        }
       }
 
       void (s.t());

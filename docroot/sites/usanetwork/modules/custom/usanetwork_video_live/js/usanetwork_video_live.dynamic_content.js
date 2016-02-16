@@ -1,5 +1,7 @@
 (function($) {
   Drupal.behaviors.usanetwork_video_live = {
+    showName: '',
+    pageName: '',
     right_rail: function () {
       var timezoneOffset = usanetwork_menu_get_user_timezone_offset(),
           videoBlock = $('.video-block');
@@ -51,10 +53,18 @@
             }
             $('.consum-sidebar').after(data.rendered);
             $('.consum-sidebar').after('<h2 class="section-title"><span class="section-title-wrapper show-border secondary">Related content</span></h2>');
+            if(data.showName != null && typeof data.showName != 'undefined') {
+              Drupal.behaviors.usanetwork_video_live.showName = data.showName;
+            }
+            if(data.pageName != null && typeof data.pageName != 'undefined') {
+              Drupal.behaviors.usanetwork_video_live.pageName = data.pageName;
+            }
             $('.gallery-wrapper').usaGallery();
           } else {
             $('h2.section-title').remove();
             $('.gallery-wrapper').remove();
+            Drupal.behaviors.usanetwork_video_live.showName = '';
+            Drupal.behaviors.usanetwork_video_live.pageName = '';
             videoBlock.removeClass('show-gallery');
           }
         },
@@ -62,6 +72,8 @@
           console.info('error');
           $('h2.section-title').remove();
           $('.gallery-wrapper').remove();
+          Drupal.behaviors.usanetwork_video_live.showName = '';
+          Drupal.behaviors.usanetwork_video_live.pageName = '';
           videoBlock.removeClass('show-gallery');
         }
       });

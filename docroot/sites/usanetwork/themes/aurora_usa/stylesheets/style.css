@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -4592,12 +4592,16 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   display: table;
   float: left;
   height: 7.12195vw;
+  max-height: 7.12195vw;
+  max-width: 282px;
+  overflow: hidden;
   text-align: center;
   width: 282px;
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .sponsored {
     height: 135px;
+    max-height: 135px;
   }
 }
 @media (max-width: 768px) {
@@ -4605,6 +4609,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
     float: none;
     height: 50px;
     margin: 0 auto;
+    max-height: 50px;
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .sponsored .mps-slot {
@@ -15053,6 +15058,11 @@ footer h2 {
 }
 .page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
   height: calc(100% - 250px);
+}
+@media (max-width: 1024px) {
+  .page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
+    height: auto;
+  }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live .video-block:not(.show-app):not(.show-gallery) .player-wrapper {

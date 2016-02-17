@@ -131,6 +131,7 @@
       // data attributes value
       _.data = {
         galleryId: _.$galleryWrap.data('id'),
+        gallerySharingPath: _.$galleryWrap.data('path'),
         interstitialSlideCounter: _.$interstitialWrap.data('slides-counter')
       };
 
@@ -164,11 +165,19 @@
           var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
               pageName = Drupal.settings.umbel_settings.usa_umbel_param_2;
         }
-
         s.linkTrackVars = 'events,prop3,prop4,prop5';
         s.prop3 = 'Gallery';
         s.prop4 = showName.trim() + ' : ' + pageName.trim();
         s.prop5 = 'Episodic Gallery';
+      }
+
+      if ($('body').hasClass('page-videos-live')) {
+        var showName = Drupal.behaviors.usanetwork_video_live.showName.trim(),
+            galleryName = Drupal.behaviors.usanetwork_video_live.galleryName.trim();
+        if(showName != '' && galleryName != '') {
+          s.prop4 = showName + ' : ' + 'Photo Gallery';
+          s.prop5 = showName + ' : ' + 'Gallery' + ' : ' + galleryName;
+        }
       }
 
       void (s.t());
@@ -256,12 +265,13 @@
 
       var _ = this,
           galleryId = _.data.galleryId,
+          gallerySharingPath = _.data.gallerySharingPath,
           $gallery = _.$gallery,
           $sharebar = _.$shareBar,
           $slide = $gallery.find('.slick-active'),
-          description = $slide.find('.slide-info .description').text(),
+          description = $slide.find('.slide-info .description').text().trim(),
           imageUrl = $slide.find('.asset-img img'),
-          link_back = window.location.href.split('#')[0],
+          link_back = (_.data.gallerySharingPath == '')? window.location.href.split('#')[0]: _.data.gallerySharingPath,
           slideIndex;
 
       if ($sharebar.length > 0) {
@@ -314,9 +324,9 @@
 
     var $slide = $(slick.$slides[index].innerHTML),
         img = $slide.find('img')[0].outerHTML,
-        showColorPager = ($('body[class*=" show-"]').length > 0) ? 'show-color' : '';
+        showColorPager = ($('body[class*=" show-"]').length > 0 || $('body').hasClass('page-videos-live')) ? 'show-color ' : '';
 
-    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + ' base-dot-color"></div>' + img + '</div>';
+    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div>' + img + '</div>';
   };
 
   usaGallery.prototype.createSlidesCounter = function (slick) {
@@ -622,6 +632,9 @@
             _.updateGalleryElem(_);
             _.createPagerPosition(_);
             _.setPagerPosition(_);
+            if($('body').hasClass('page-videos-live')){
+              _.gigyaSharebar(initialSlide);
+            }
             _.movePagerItems(_, initialSlide);
 
           if (initSlidesCounter) {

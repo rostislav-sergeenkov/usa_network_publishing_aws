@@ -115,10 +115,13 @@ function _usanetwork_video_live_related_ajax($offset) {
 
         if (!empty($related_gallery_id)) {
           $related_gallery = node_load($related_gallery_id);
-          $gallery_response = _usanetwork_media_gallery_consumptionator_gallery_slides_block($related_gallery);
+          $gallery_response = _usanetwork_media_gallery_consumptionator_gallery_slides_block($related_gallery, TRUE);
 
           return drupal_json_output(array(
-            'rendered' => $gallery_response));
+            'rendered' => $gallery_response,
+            'showName' => !empty($tv_show->title) ? $tv_show->title : '',
+            'galleryName' => !empty($related_gallery->title) ? $related_gallery->title : '',
+          ));
         }
       }
     }

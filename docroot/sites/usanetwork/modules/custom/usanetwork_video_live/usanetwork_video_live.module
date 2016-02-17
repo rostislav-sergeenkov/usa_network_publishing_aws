@@ -120,7 +120,7 @@ function _usanetwork_video_live_related_ajax($offset) {
           return drupal_json_output(array(
             'rendered' => $gallery_response,
             'showName' => !empty($tv_show->title) ? $tv_show->title : '',
-            'pageName' => !empty($on_now_item->title) ? $on_now_item->title : '',
+            'galleryName' => !empty($related_gallery->title) ? $related_gallery->title : '',
           ));
         }
       }

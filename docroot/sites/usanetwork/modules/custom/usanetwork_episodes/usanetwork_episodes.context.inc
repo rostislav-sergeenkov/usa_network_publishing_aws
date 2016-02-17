@@ -42,7 +42,6 @@ function usanetwork_episodes_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Show Episodes Landing Page');
   t('shows');
-
   $export['episodes_landing'] = $context;
 
   $context = new stdClass();
@@ -91,7 +90,6 @@ function usanetwork_episodes_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('TV Episode page');
   t('node');
-
   $export['tv_episode'] = $context;
 
   return $export;

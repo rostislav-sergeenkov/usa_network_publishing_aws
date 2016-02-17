@@ -24,16 +24,16 @@ if (file_exists(DRUPAL_ROOT . '/core/includes/bootstrap.inc')) {
   $module_dir = DRUPAL_ROOT . '/core/modules';
 }
 
+require_once($include_dir . '/bootstrap.inc');
+
 $includes = array(
-  $include_dir . '/bootstrap.inc',
   $include_dir . '/common.inc',
   $include_dir . '/database.inc',
   $include_dir . '/schema.inc',
   $include_dir . '/actions.inc',
   $include_dir . '/entity.inc',
-  $module_dir . '/entity/entity.module',
-  $module_dir . '/entity/entity.controller.inc',
-  $module_dir . '/system/system.module',
+  $module_dir  . '/system/system.module',
+  $include_dir . '/database/database.inc',
   $include_dir . '/database/query.inc',
   $include_dir . '/database/select.inc',
   $include_dir . '/registry.inc',
@@ -69,6 +69,8 @@ if (function_exists('registry_rebuild')) { // == D7
 elseif (!function_exists('cache_clear_all')) { // D8+
   // TODO
   // http://api.drupal.org/api/drupal/namespace/Drupal!Core!Lock/8
+  $includes[] = $module_dir . '/entity/entity.module';
+  $includes[] = $module_dir . '/entity/entity.controller.inc';
 }
 // In Drupal 6 the configured lock.inc is already loaded during
 // DRUSH_BOOTSTRAP_DRUPAL_DATABASE
@@ -77,6 +79,15 @@ foreach ($includes as $include) {
   if (file_exists($include)) {
     require_once($include);
   }
+}
+
+if (!function_exists('module_list')) {
+  print "ERROR! Registry Rebuild requires a working Drupal site to operate on.<br/>\n";
+  print "Please run this script from the correct Drupal site directory,<br/>\n";
+  print "or specify Drupal root path on command line, for example:<br/>\n";
+  print "php registry_rebuild.php --root=/path/to/drupal/root<br/>\n";
+  print "BYE!<br/>\n";
+  exit;
 }
 
 print "Bootstrapping to DRUPAL_BOOTSTRAP_SESSION<br/>\n";
@@ -89,6 +100,11 @@ registry_rebuild_rebuild();
  * If unable to discover it, fail and exit.
  */
 function define_drupal_root() {
+  $args = getopt(NULL, array('root::'));
+  if (!empty($args['root'])) {
+    return $args['root'];
+  }
+
   // This is the smallest number of directories to go up: from /sites/all/modules/registry_rebuild.
   $parent_count = 4;
   // 8 seems reasonably far to go looking up.
@@ -199,6 +215,7 @@ function registry_rebuild_rebuild() {
  * by default in the PHP script variant.
  */
 function registry_rebuild_cc_all() {
+  module_invoke_all('pre_flush_all_caches');
   if (function_exists('cache_clear_all')) {
     cache_clear_all('*', 'cache', TRUE);
     cache_clear_all('*', 'cache_form', TRUE);
@@ -207,6 +224,8 @@ function registry_rebuild_cc_all() {
     cache('cache')->deleteAll();
     cache('cache_form')->deleteAll();
   }
+
+  module_invoke_all('pre_flush_all_caches');
 
   if (function_exists('module_rebuild_cache')) { // D5-D6
     module_list(TRUE, FALSE);

@@ -275,7 +275,7 @@ function usanetwork_media_gallery_image_default_styles() {
 /**
  * Renders main gallery on MediaGallery page.
  */
-function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = NULL) {
+function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = NULL, $is_on_live = FALSE) {
   if (path_is_admin(current_path())) {
     return '';
   }
@@ -284,6 +284,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
   }
 
   if (isset($node->type) && $node->type == 'media_gallery') {
+    global $base_url;
     $slides = array();
     if (isset($node->field_gigya_share_bar)) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
@@ -361,6 +362,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
     return theme('usanetwork_media_gallery_consumptionator_slides', array(
       'slides' => $slides,
       'gallery_id' => $node->nid,
+      'gallery_path' => ($is_on_live) ? $base_url . '/node/' . $node->nid : '',
       'sharebar' => !empty($sharebar) ? render($sharebar) : NULL,
       'interstitial_ad_enabled' => usanetwork_core_api_check_field($node, 'field_interstitial_ad_enabled') ? $node_wrapper->field_interstitial_ad_enabled->value() : NULL,
       'interstitial_ad_frequency' => usanetwork_core_api_check_field($node, 'field_interstitial_ad_frequency') ? $node_wrapper->field_interstitial_ad_frequency->value() : NULL,

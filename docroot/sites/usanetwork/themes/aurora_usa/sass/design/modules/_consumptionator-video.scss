@@ -523,7 +523,10 @@
     margin-bottom: 0;
     .consum-sidebar {
       .download-app {
-        display: table;
+        display: none;
+        @include breakpoint($bp-1024-width) {
+          display: table;
+        }
       }
       .advert {
         height: auto;
@@ -531,6 +534,155 @@
         @include breakpoint($bp-min-1025-width) {
           height: 250px !important;
           position: relative;
+        }
+      }
+      .episodes-list-slider {
+        &.horizontal {
+          .slider-horizontal {
+            @include breakpoint($bp-640-width) {
+              top: 0!important;
+            }
+          }
+        }
+      }
+    }
+    &:not(.show-app) {
+      .consum-sidebar {
+        .items-block {
+          height: calc(100% - 250px);
+          @include breakpoint($bp-1024-width) {
+            height: auto;
+          }
+        }
+      }
+      &:not(.show-gallery) {
+        .player-wrapper {
+          @include breakpoint($between-1025-1280) {
+            margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
+          }
+        }
+        .consum-sidebar {
+          .items-block {
+            @include breakpoint($between-1025-1280) {
+              height: auto;
+            }
+          }
+          .download-app {
+            @include breakpoint($between-1025-1280) {
+              display: table;
+            }
+          }
+          .more-items {
+            @include breakpoint($between-1025-1280) {
+              background: none!important;
+            }
+          }
+        }
+      }
+    }
+    &.show-app {
+      .consum-sidebar {
+        .download-app {
+          display: table;
+        }
+      }
+    }
+    &.show-gallery {
+      &.show-app {
+        .consum-sidebar {
+          @include breakpoint($bp-min-1025-width) {
+            height: 45vw;
+            max-height: 1125px!important;
+          }
+        }
+      }
+      @include breakpoint($bp-min-1025-width) {
+        height: auto;
+        max-height: none;
+      }
+      .player-wrapper {
+        @include breakpoint($bp-min-1281-width) {
+          height: 42.01875vw;
+          max-height: 1093.75px;
+        }
+        @include breakpoint($between-1025-1280) {
+          height: calc((100vw - 320px)*0.5625);
+        }
+      }
+      .consum-sidebar {
+        @include breakpoint($bp-min-1025-width) {
+          float: right;
+          height: 70vw;
+          max-height: 1750px!important;
+          overflow: hidden;
+          padding: 0;
+          position: relative;
+        }
+        @include breakpoint($between-1025-1280) {
+          width: 320px;
+        }
+        .more-items {
+          @include breakpoint($between-1025-1280) {
+            bottom: 0;
+            left: 0;
+            right: auto;
+            top: auto;
+            width: 100%;
+          }
+          a {
+            @include breakpoint($between-1025-1280) {
+              padding: 0 25px;
+            }
+          }
+        }
+        .items-block {
+          @include breakpoint($between-1025-1280) {
+            position: relative;
+            right: auto;
+            top: auto;
+          }
+        }
+        .items-block-title {
+          h2 {
+            @include breakpoint($between-1025-1280) {
+              width: 100%;
+            }
+          }
+        }
+        .episodes-list-slider {
+          &.vertical {
+            @include breakpoint($between-1025-1280) {
+              display: block;
+            }
+          }
+          &.horizontal {
+            @include breakpoint($between-1025-1280) {
+              display: none;
+            }
+          }
+        }
+      }
+      .section-title {
+        margin-top: 40px;
+        @include breakpoint($bp-min-1025-width) {
+          float: left;
+          width: 74.7%;
+        }
+        @include breakpoint($between-1025-1280) {
+          width: calc(100% - 320px);
+        }
+        @include breakpoint($bp-1024-width) {
+          clear: both;
+          padding-top: 40px;
+        }
+      }
+      .gallery-wrapper {
+        @include breakpoint($bp-min-1281-width) {
+          height: 42.01875vw;
+          max-height: 1093.75px;
+        }
+        @include breakpoint($between-1025-1280) {
+          height: calc((100vw - 320px)*0.5625);
         }
       }
     }

@@ -76,6 +76,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Biography',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 1,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -154,6 +156,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Actor Bio',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 0,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -235,6 +239,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -312,6 +318,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Different Legal Name?',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -391,6 +399,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Enable Nitro',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -466,6 +476,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Gigya Share Bar',
     'required' => FALSE,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -543,6 +555,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Hide from cast carousel',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -622,6 +636,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Hide from social follow block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -698,6 +714,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'IMDB URL',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -776,6 +794,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Legal Name: First Name',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -852,6 +872,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Legal Name: Last Name',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -928,6 +950,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Legal Name: Middle Name',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1004,6 +1028,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Legal Name: Prefix',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1080,6 +1106,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Legal Name: Suffix',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1156,6 +1184,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Movie',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1229,6 +1259,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Nitro action name',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1312,6 +1344,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Birth Date',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -1396,6 +1430,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Birth Location',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1468,6 +1504,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Cover Photo',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1572,6 +1610,8 @@ function usanetwork_person_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -1660,6 +1700,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Person: First Name',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1736,6 +1778,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Person: Last Name',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1812,6 +1856,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Person: Middle Name',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1887,6 +1933,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Background image',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => 'person/microsite/background',
       'file_extensions' => 'jpg jpeg png gif',
@@ -1966,6 +2014,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Character bio',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 0,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -2047,6 +2097,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Person: Prefix',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2123,6 +2175,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Person: Suffix',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2199,6 +2253,8 @@ function usanetwork_person_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -2303,6 +2359,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Quotation',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2378,6 +2436,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Role',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -2452,6 +2512,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'H1',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2539,6 +2601,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Page Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2630,6 +2694,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -2708,6 +2774,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Actor Full Name',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'linkit' => array(
         'button_text' => 'Search',
@@ -2798,6 +2866,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'Person Profile Thumbnail',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -2904,6 +2974,8 @@ function usanetwork_person_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -2999,6 +3071,8 @@ function usanetwork_person_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -3094,6 +3168,8 @@ function usanetwork_person_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -3189,6 +3265,8 @@ function usanetwork_person_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -3275,6 +3353,8 @@ function usanetwork_person_field_default_field_instances() {
     'label' => 'OG Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3363,6 +3443,8 @@ function usanetwork_person_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => 'og_image',
       'file_extensions' => 'png gif jpg jpeg',

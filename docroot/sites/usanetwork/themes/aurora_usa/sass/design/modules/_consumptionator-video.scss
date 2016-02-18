@@ -612,8 +612,6 @@
       .consum-sidebar {
         @include breakpoint($bp-min-1025-width) {
           float: right;
-          height: 70vw;
-          max-height: 1750px!important;
           overflow: hidden;
           padding: 0;
           position: relative;

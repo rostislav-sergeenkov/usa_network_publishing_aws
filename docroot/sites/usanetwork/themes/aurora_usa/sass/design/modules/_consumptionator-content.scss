@@ -34,7 +34,7 @@
     width: 100%;
   }
   @include breakpoint($bp-1024-width) {
-    height: auto;
+    height: auto!important;
     width: 100%;
   }
   &.sticky-sidebar {
@@ -73,7 +73,7 @@
       right: auto;
       width: 628px;
     }
-    &.related-visible, &.social-visible {
+    &.related-visible, &.social-visible, &.footer-visible {
       @include breakpoint($bp-min-1025-width) {
         bottom: 0;
         position: absolute!important;
@@ -81,7 +81,7 @@
       }
     }
   }
-  &:not(.related-visible):not(.social-visible) {
+  &:not(.related-visible):not(.social-visible):not(.footer-visible) {
     max-height: none!important;
   }
   .advert {
@@ -860,7 +860,6 @@
     }
     @include breakpoint($bp-1024-width) {
       float: none;
-      height: auto!important;
       max-height: none!important;
       padding: 0;
       position: relative;

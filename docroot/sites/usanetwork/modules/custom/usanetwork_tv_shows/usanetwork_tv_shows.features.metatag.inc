@@ -17,11 +17,25 @@ function usanetwork_tv_shows_metatag_export_default() {
       'description' => array(
         'value' => '[node:field_usa_og_description]',
       ),
+      'robots' => array(
+        'value' => array(
+          'index' => 0,
+          'follow' => 0,
+          'noindex' => 0,
+          'nofollow' => 0,
+          'noarchive' => 0,
+          'nosnippet' => 0,
+          'noodp' => 0,
+          'noydir' => 0,
+          'noimageindex' => 0,
+          'notranslate' => 0,
+        ),
+      ),
       'og:title' => array(
         'value' => '[node:field-show:title] | [node:title]',
       ),
       'og:description' => array(
-        'value' => '[node:body]',
+        'value' => '[node:field_usa_og_description]',
       ),
       'og:image' => array(
         'value' => '[node:field_tv_cover_media]',

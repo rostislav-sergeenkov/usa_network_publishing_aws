@@ -210,3 +210,16 @@ function usanetwork_tve_video_auth_menu() {
   );
   return theme('usanetwork_tve_video_auth_menu', $theme_variables);
 }
+
+
+/**
+ * Process variables for file_entity.
+ */
+function usanetwork_tve_video_preprocess_file_entity(&$vars) {
+  $file = $vars['file'];
+  if (in_array($file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+    if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
+      drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-endcard.js', array('scope' => 'footer', 'weight' => -1));
+    }
+  }
+}

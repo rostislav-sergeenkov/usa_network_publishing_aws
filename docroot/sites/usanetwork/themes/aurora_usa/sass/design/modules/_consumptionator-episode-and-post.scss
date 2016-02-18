@@ -313,6 +313,18 @@
           font-size: 18px;
           color: $poll-color;
         }
+        h2 {
+          font-size: 1.5em;
+          margin: 0.2em 0
+        }
+        h3 {
+          font-size: 1.3em;
+          margin: 0;
+        }
+        h4 {
+          font-size: 1em;
+          margin: 0;
+        }
         p {
           &:first-child {
             margin-top: 0;

@@ -27,7 +27,7 @@
   max-width: 970px;
 }
 
-.page-file {
+.consumptionator-page {
   header {
     .header-nav-bar {
       .nav-bar-tabs {
@@ -35,15 +35,20 @@
           display: table;
           float: left;
           height: get-vw(73px, 1025);
+          max-height: get-vw(73px, 1025);
+          max-width: 282px;
+          overflow: hidden;
           text-align: center;
           width: 282px;
           @include breakpoint($bp-min-1901-width) {
             height: 135px;
+            max-height: 135px;
           }
           @include breakpoint($bp-768-width) {
             float: none;
             height: 50px;
             margin: 0 auto;
+            max-height: 50px;
           }
           .mps-slot {
             display: table-cell;

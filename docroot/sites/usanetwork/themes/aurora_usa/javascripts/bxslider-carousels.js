@@ -3,6 +3,7 @@
     // Arrays for vertical and horizontal bxSlider objects
     harray: [],
 
+    slideItem:  $('.episodes-list-slider.horizontal .slide-item'),
     // Init all vertical carousels
     initVSliders: function() {
       $('.slider-vertical').mCustomScrollbar({
@@ -101,8 +102,7 @@
 
     attach: function (context, settings) {
 
-      var slideItem =  $('.episodes-list-slider.horizontal .slide-item'),
-          moreButton = $('.episodes-list-slider.horizontal a.more-button');
+      var moreButton = $('.episodes-list-slider.horizontal a.more-button');
 
       //number of visible items for different pages for width screen less than 640px
       var number_of_items = ($('body').hasClass('consumptionator-page'))? 5 : 3;
@@ -114,7 +114,7 @@
 
       $(window).bind('resize', function () {
         setTimeout(function() {
-          if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches && slideItem.length > 2){
+          if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches && Drupal.behaviors.bxslider_carousels.slideItem.length > 2){
             $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
             $('.episodes-list-slider.horizontal a.more-button.close').removeClass('close').addClass('more');
             moreButton.css('display', 'none');
@@ -130,7 +130,7 @@
         }, 0);
       });
 
-      if (slideItem.length > number_of_items){
+      if (Drupal.behaviors.bxslider_carousels.slideItem.length > number_of_items){
         if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
           $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
 

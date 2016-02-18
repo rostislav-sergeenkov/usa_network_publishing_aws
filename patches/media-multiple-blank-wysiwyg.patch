@@ -1,8 +1,4 @@
 From e0540a102e70a063cee17aee0cef5054fb5998a9 Mon Sep 17 00:00:00 2001
-From: Dan Braghis <zerolab@354424.no-reply.drupal.org>
-Date: Tue, 19 May 2015 22:35:20 +0100
-Subject: [PATCH] Issue #2317519 by z3cka, zerolab: Fix blank WYSIWYG editors
- with multiple items inserted
 
 ---
  modules/media_wysiwyg/js/media_wysiwyg.filter.js | 10 +++++++---
@@ -25,5 +21,13 @@ index efccd59..d75cd02 100644
              media = document.createElement(source.tagName);
              media.src = source.src;
              media.innerHTML = source.innerHTML;
-2.3.7
+@@ -70,7 +76,7 @@
+       Drupal.media.filter.ensure_tagmap();
+ 
+       // Rewrite the tagmap in case any of the macros have changed.
+-      Drupal.settings.tagmap = {};
++      //Drupal.settings.tagmap = {};
+ 
+       // Wrap the content to be able to use replaceWith() and html().
+       content = $('<div>').append(content);
 

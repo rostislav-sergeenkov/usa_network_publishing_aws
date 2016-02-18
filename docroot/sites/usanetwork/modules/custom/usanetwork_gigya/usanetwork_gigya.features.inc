@@ -21,17 +21,9 @@ function usanetwork_gigya_image_default_styles() {
 
   // Exported image style: share.
   $styles['share'] = array(
-    'name' => 'share',
     'label' => 'share',
     'effects' => array(
       1 => array(
-        'label' => 'Change file format',
-        'help' => 'Choose to save the image as a different filetype.',
-        'effect callback' => 'coloractions_convert_image',
-        'dimensions passthrough' => TRUE,
-        'form callback' => 'coloractions_convert_form',
-        'summary theme' => 'coloractions_convert_summary',
-        'module' => 'imagecache_coloractions',
         'name' => 'coloractions_convert',
         'data' => array(
           'format' => 'image/jpeg',
@@ -40,13 +32,6 @@ function usanetwork_gigya_image_default_styles() {
         'weight' => 1,
       ),
       3 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
-        'effect callback' => 'image_scale_effect',
-        'dimensions callback' => 'image_scale_dimensions',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
           'width' => 1400,

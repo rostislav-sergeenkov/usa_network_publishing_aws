@@ -12,7 +12,7 @@
 ?>
 <div class="header-nav-bar">
   <div class="usa-logo show-color hover-avail"><a class="logo" href="<?php print $main_url; ?>"></a></div>
-  <div class="nav-bar-tabs">
+  <div class="nav-bar-tabs<?php print (!empty($sponsored))? ' sponsored-enable': '';?>">
     <?php if ($is_multilple == FALSE && $is_show_related == TRUE):  ?>
       <div class="menu-item show-color hover-avail show-name">
         <a href="<?php print $show_url; ?>">
@@ -29,6 +29,9 @@
         </a>
       </h2>
     </div>
+    <?php if (!empty($sponsored)) : ?>
+      <div class="sponsored" data-mpspath="<?php print $node_path; ?>" data-scalemps="1"></div>
+    <?php endif; ?>
   </div>
   <?php if (!empty($authbar)) : ?>
     <?php print $authbar; ?>

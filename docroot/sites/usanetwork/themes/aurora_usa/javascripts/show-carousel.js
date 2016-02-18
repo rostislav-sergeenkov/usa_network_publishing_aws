@@ -16,8 +16,9 @@
         // Click to close button when show-info-block open
         $('.close-button').click(function() {
           var item = $(this).closest('li');
-
-          Drupal.behaviors.global_carousels.showClose(item);
+          if(item.find('.node').hasClass('open')) {
+            Drupal.behaviors.global_carousels.showClose(item);
+          }
         });
 
         // Click to link when show-info-block open

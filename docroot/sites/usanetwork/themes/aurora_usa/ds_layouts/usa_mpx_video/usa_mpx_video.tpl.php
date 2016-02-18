@@ -1,5 +1,11 @@
-<div class="video-block" data-tve-player>
-  <div class="player-wrapper">
+<div class="video-block"
+     data-tve-player
+     data-usa-tve-player-container
+     data-show-title="<?php print (!empty($show_title)) ? $show_title : ''; ?>"
+     data-episode-title="<?php print $filename; ?>"
+     data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
+     data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>">
+  <div class="player-wrapper<?php print ($is_live)? ' right-rail-line': ''; ?>">
     <div class="node usanetwork-aspot player">
       <?php if (!empty($video_inactive)): ?>
         <div class="video-player-wrapper inactive">
@@ -57,14 +63,16 @@
                   alt=""/>
               <?php endif; ?>
               <div class="sign-in-wrapper">
-                <span class="sign-in-button"><?php print t('sign in and watch'); ?></span>
+                <span
+                  class="sign-in-button"><?php print t('sign in and watch'); ?></span>
               </div>
             </a>
           </div>
         </div>
         <div class="video-player-wrapper" data-ng-show="global.isAuthN">
           <?php if ($is_live): ?>
-            <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+            <iframe allowfullscreen="" id="videoplayer" width="100%"
+                    height="100%" frameborder="0"></iframe>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
             <?php
@@ -77,26 +85,37 @@
               'accepted' => TRUE,
             ));
             ?>
+            <div data-usa-tve-player="pdk-player"
+                 class="pdk-player-wrap"
+                 data-episode-pid="<?php print $file_pid; ?>"
+                 data-next-episode-url="<?php print $next_video_url; ?>">
+              <?php print $video; ?>
+            </div>
+            <!--  start endcart  -->
+            <?php if (!empty($endcard_enabled)) : ?>
+              <?php print $endcard_template; ?>
+            <?php endif; ?>
+            <!--  end endcart -->
           <?php endif; ?>
-          <?php print $video; ?>
           <?php if (!empty($watchwith) && !empty($ww_airing_id)) : ?>
             <div ng-non-bindable>
               <div id="wwRootContainer">
                 <watchwith
-                    airing-id="<?php print $ww_airing_id; ?>"
-                    access-key="<?php print variable_get('usanetwork_ww_access_key', 'SBSXJZHX4R5'); ?>"
-                    player-element="#pdk-player"
-                    player-type="mpx">
+                  airing-id="<?php print $ww_airing_id; ?>"
+                  access-key="<?php print variable_get('usanetwork_ww_access_key', 'SBSXJZHX4R5'); ?>"
+                  player-element="#pdk-player"
+                  player-type="mpx">
                 </watchwith>
               </div>
             </div>
           <?php endif; ?>
         </div>
-      <?php
+        <?php
       else: ?>
         <div class="video-player-wrapper">
           <?php if ($is_live): ?>
-            <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+            <iframe allowfullscreen="" id="videoplayer" width="100%"
+                    height="100%" frameborder="0"></iframe>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
             <?php
@@ -109,8 +128,22 @@
               'accepted' => TRUE,
             ));
             ?>
+            <?php if ($full_episode) : ?>
+              <div data-usa-tve-player="pdk-player"
+                   class="pdk-player-wrap"
+                   data-episode-pid="<?php print $file_pid; ?>"
+                   data-next-episode-url="<?php print $next_video_url; ?>">
+                <?php print $video; ?>
+              </div>
+              <!--  start endcart  -->
+              <?php if (!empty($endcard_enabled)) : ?>
+                <?php print $endcard_template; ?>
+              <?php endif; ?>
+              <!--  end endcart -->
+            <?php else: ?>
+              <?php print $video; ?>
+            <?php endif;?>
           <?php endif; ?>
-          <?php print $video; ?>
         </div>
       <?php endif; ?>
     </div>
@@ -127,7 +160,8 @@
       <div class="download-app">
         <div class="download-app-wrapper">
           <div class="image-block"></div>
-          <div class="text-block"><?php print t('Get USA NOW to watch full episodes from any device.'); ?></div>
+          <div
+            class="text-block"><?php print t('Get USA NOW to watch full episodes from any device.'); ?></div>
           <div class="download-button show-color">
             <a href="/app" target="_self">
               <?php print t('Download the app'); ?>
@@ -139,7 +173,8 @@
       <div class="download-app">
         <div class="download-app-wrapper">
           <div class="image-block"></div>
-          <div class="text-block"><?php print t('Get USA NOW to watch full episodes from any device.'); ?></div>
+          <div
+            class="text-block"><?php print t('Get USA NOW to watch full episodes from any device.'); ?></div>
           <div class="download-button show-color">
             <a href="/app" target="_self">
               <?php print t('Download the app'); ?>
@@ -147,7 +182,7 @@
           </div>
         </div>
       </div>
-        <?php if (!empty($clips_block)): print $clips_block; endif;?>
+      <?php if (!empty($clips_block)): print $clips_block; endif; ?>
     <?php endif; ?>
   </div>
 </div>

@@ -136,7 +136,7 @@ function usanetwork_consumptionator_post_block_info() {
  */
 function usanetwork_consumptionator_post_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'consumpt_post') {
-    $node->content['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-episode.js';
+    $node->content['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-right-rail.js';
   }
 }
 
@@ -417,7 +417,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
           : NULL,
         'desktop_image_url' => image_style_url('677x381', $cover_uri),
         'title' => $post_data->title,
-        'description' => $post_data->description,
+        'description' => check_markup($post_data->description, 'wysiwyg_mini'),
         'post_date' => !empty($post_data->created)
           ? gmdate('m/d/Y', $post_data->created)
           : NULL,

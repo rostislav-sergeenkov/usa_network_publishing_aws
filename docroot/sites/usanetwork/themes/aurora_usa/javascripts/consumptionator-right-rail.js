@@ -1,7 +1,12 @@
 (function($) {
 
-  Drupal.behaviors.usanetwork_consumptionator_episode = {
+  Drupal.behaviors.consumptionator_right_rail = {
     rightRailPosition: function(){
+      if($('body').hasClass('page-videos-live')){
+        if(!$('.video-block').hasClass('show-gallery')){
+          return false;
+        }
+      }
       if (window.matchMedia("(min-width: " + window_size_tablet + "px)").matches) {
         var sidebar = $('.consum-sidebar'),
             offset_info_block =  $('.right-rail-line').offset()['top'] - $(window).scrollTop();
@@ -19,7 +24,7 @@
           }, 50);
 
         }
-        if (sidebar.hasClass('related-visible') || sidebar.hasClass('social-visible')) {
+        if (sidebar.hasClass('related-visible') || sidebar.hasClass('social-visible') || sidebar.hasClass('footer-visible')) {
           if ($('.gallery-recap-block').length > 0) {
             var bottom_distance = window.innerHeight - ($('.consum-sidebar').offset()['top'] - $(window).scrollTop() + $('.consum-sidebar').height());
             var current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height();
@@ -35,6 +40,21 @@
               var bottom_distance = window.innerHeight - ($('.consum-sidebar').offset()['top'] - $(window).scrollTop() + $('.consum-sidebar').height());
               var current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height();
               var min_height = $('.right-rail-line .node-media-gallery').parent().height() - $('.right-rail-line .node-media-gallery').last().position()['top'] + parseInt($('.right-rail-line > div').css("paddingBottom"));
+              if (current_max_height < min_height) {
+                current_max_height = min_height;
+              }
+              sidebar.css({
+                maxHeight: current_max_height+'px'
+              })
+            }
+            if ($('.video-block').hasClass('show-gallery')) {
+              var bottom_distance = window.innerHeight - ($('.gallery-wrapper').offset()['top'] - $(window).scrollTop() + $('.gallery-wrapper').height());
+              var current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height();
+              if ($('.gallery-wrapper').height() > right_rail_min_height_livepage) {
+                var min_height = $('.gallery-wrapper').height();
+              } else {
+                var min_height = right_rail_min_height_livepage;
+              }
               if (current_max_height < min_height) {
                 current_max_height = min_height;
               }
@@ -90,14 +110,35 @@
           }
         }
       });
+      if($('body').hasClass('page-videos-live')) {
+        $('#footer').viewportChecker({
+          classToAdd: 'visible',
+          offset: 0,
+          repeat: true,
 
-      Drupal.behaviors.usanetwork_consumptionator_episode.rightRailPosition();
+          callbackFunction: function(elem, action){
+            if($('.video-block').hasClass('show-gallery')){
+              if(elem.hasClass('visible')){
+                if(!$('.consum-sidebar').hasClass('footer-visible')){
+                  $('.consum-sidebar').addClass('footer-visible');
+                }
+              } else {
+                if($('.consum-sidebar').hasClass('footer-visible')){
+                  $('.consum-sidebar').removeClass('footer-visible');
+                }
+              }
+            }
+          }
+        });
+      }
+
+      Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
 
       $(window).on("scroll", function() {
-        Drupal.behaviors.usanetwork_consumptionator_episode.rightRailPosition();
+        Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
       });
       $(window).on("resize", function() {
-        Drupal.behaviors.usanetwork_consumptionator_episode.rightRailPosition();
+        Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
       });
     }
   }

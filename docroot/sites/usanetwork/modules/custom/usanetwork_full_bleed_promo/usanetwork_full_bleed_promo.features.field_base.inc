@@ -79,6 +79,8 @@ function usanetwork_full_bleed_promo_field_default_field_bases() {
       'entity_bundles' => array(
         'blog' => 'blog',
         'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',

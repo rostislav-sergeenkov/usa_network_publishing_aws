@@ -2,6 +2,13 @@
   var counter = 0;
 
   Drupal.behaviors.usanetwork_tv_shows_related_items_loader = {
+    ajaxRelatedError: function() {
+      console.info('error');
+      $('#load-more-loader-js').remove();
+      if(!$('.ajax-load-block').hasClass('infinity-finished')) {
+        $('.ajax-load-block .load-more-link a').removeClass('disabled');
+      }
+    },
     getItems: function(eventClick) {
       var limit = $('.ajax-load-block').data('show-items-limit') || 5;
       var nid = Drupal.settings.usanetwork_tv_show_nid || $('.ajax-load-block').data('show-nid') || Drupal.settings.usanetwork_movie_nid || 0;
@@ -108,7 +115,7 @@
           //}
         },
         error: function () {
-          console.info('error');
+          Drupal.behaviors.usanetwork_tv_shows_related_items_loader.ajaxRelatedError();
         }
       });
     },

@@ -231,7 +231,14 @@
         }
         &.active {
           .show-info-block {
-            display: block;
+            .show-link {
+              display: block;
+            }
+            .show-info-block-wrapper {
+              & > div {
+                visibility: visible;
+              }
+            }
           }
           a {
             &.close-button {
@@ -499,7 +506,7 @@
   }
   .show-info-block {
     background: $show-info-block;
-    display: none;
+    display: block;
     left: 270px;
     height: 100%;
     position: absolute;
@@ -507,9 +514,9 @@
     width: calc(100% - 270px);
     z-index: 1; //temp value
     @include breakpoint($bp-min-1901-width) {
-      left: 434px;
+      left: 453px;
       min-width: 1730px;
-      width: calc(100% - 434px);
+      width: calc(100% - 453px);
     }
     @include breakpoint($between-1025-1280) {
       min-width: 670px;
@@ -521,14 +528,12 @@
       width: calc(100% - #{$show-carousel-item-width-less-1024});
     }
     @include breakpoint($bp-768-width) {
-      left: calc(56vw - 15px);
+      left: 56vw;
       min-width: 240px;
       width: calc(100% - 56vw - 15px);
     }
-    @include breakpoint($bp-480-width) {
-      width: calc(100% - 56vw);
-    }
     .show-link {
+      display: none;
       right: 40px;
       position: absolute;
       top: 25px;
@@ -615,6 +620,9 @@
       }
       @include breakpoint($bp-480-width) {
         padding: 70px 15px 20px;
+      }
+      & > div {
+        visibility: hidden;
       }
     }
 

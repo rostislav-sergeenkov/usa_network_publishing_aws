@@ -1,9 +1,6 @@
 (function ($) {
   Drupal.behaviors.bxslider_carousels = {
-    // Arrays for vertical and horizontal bxSlider objects
-    harray: [],
 
-    slideItem:  $('.episodes-list-slider.horizontal .slide-item'),
     // Init all vertical carousels
     initVSliders: function() {
       $('.slider-vertical').mCustomScrollbar({
@@ -102,36 +99,22 @@
 
     attach: function (context, settings) {
 
-      var moreButton = $('.episodes-list-slider.horizontal a.more-button');
+      var moreButton = $('.episodes-list-slider.horizontal a.more-button'),
+          slideItemLength = $('.episodes-list-slider.horizontal .slide-item').length;
 
       //number of visible items for different pages for width screen less than 640px
       var number_of_items = ($('body').hasClass('consumptionator-page'))? 5 : 3;
 
-      Drupal.behaviors.bxslider_carousels.initHSliders();
-
       // init right rail carousel
       Drupal.behaviors.bxslider_carousels.initVSliders();
 
-      $(window).bind('resize', function () {
-        setTimeout(function() {
-          if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches && Drupal.behaviors.bxslider_carousels.slideItem.length > 2){
-            $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
-            $('.episodes-list-slider.horizontal a.more-button.close').removeClass('close').addClass('more');
-            moreButton.css('display', 'none');
-          } else {
-            $(Drupal.behaviors.bxslider_carousels.harray).each(function() {
-              this.destroySlider();
-            });
-            Drupal.behaviors.bxslider_carousels.harray = [];
+      if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches && slideItemLength > 2){
+        Drupal.behaviors.bxslider_carousels.initHSliders();
+      }
 
-            $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
-            moreButton.css('display', 'block');
-          }
-        }, 0);
-      });
-
-      if (Drupal.behaviors.bxslider_carousels.slideItem.length > number_of_items){
+      if (slideItemLength > number_of_items){
         if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
+          $('.episodes-list-slider.horizontal').addClass('destroy');
           $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
 
           // Show more-button
@@ -151,6 +134,32 @@
           }
         });
       }
+
+      $(window).bind('resize', function () {
+        setTimeout(function() {
+          var slideItemLength = $('.episodes-list-slider.horizontal .slide-item').length;
+          if (slideItemLength > 2) {
+            if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches){
+              if($('.episodes-list-slider.horizontal').hasClass('destroy')){
+                $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
+                $('.episodes-list-slider.horizontal a.more-button.close').removeClass('close').addClass('more');
+                moreButton.css('display', 'none');
+                Drupal.behaviors.bxslider_carousels.initHSliders();
+                $('.episodes-list-slider.horizontal').removeClass('destroy');
+              }
+            } else {
+              if(!$('.episodes-list-slider.horizontal').hasClass('destroy')){
+                $('.episodes-list-slider.horizontal').jcarousel('destroy').addClass('destroy');
+                $('.episodes-list-slider.horizontal li').removeAttr('style');
+
+                $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
+                moreButton.css('display', 'block');
+              }
+            }
+          }
+        }, 0);
+      });
+
     }
   };
 }(jQuery));

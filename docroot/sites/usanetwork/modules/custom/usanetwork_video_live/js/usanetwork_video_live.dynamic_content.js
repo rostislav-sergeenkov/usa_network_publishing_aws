@@ -20,10 +20,14 @@
             videoBlock.removeClass('show-app');
             $('.consum-sidebar .download-app').after(data.rendered);
             Drupal.behaviors.bxslider_carousels.initVSliders();
-            Drupal.behaviors.bxslider_carousels.initHSliders();
-            Drupal.behaviors.bxslider_carousels.slideItem = $('.episodes-list-slider.horizontal .slide-item');
-            if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
-              $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt(4)').addClass('hidden');
+            var slideItemLength = $('.episodes-list-slider.horizontal .slide-item').length;
+            if(slideItemLength > 2) {
+              if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
+                $('.episodes-list-slider.horizontal').addClass('destroy');
+                $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt(4)').addClass('hidden');
+              } else {
+                Drupal.behaviors.bxslider_carousels.initHSliders();
+              }
             }
           } else {
             $('.consum-sidebar .items-block').remove();

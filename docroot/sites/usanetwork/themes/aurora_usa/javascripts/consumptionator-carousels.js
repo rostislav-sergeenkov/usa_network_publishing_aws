@@ -1,5 +1,5 @@
 (function ($) {
-  Drupal.behaviors.bxslider_carousels = {
+  Drupal.behaviors.consumptionator_carousels = {
 
     // Init all vertical carousels
     initVSliders: function() {
@@ -105,10 +105,10 @@
       var number_of_items = ($('body').hasClass('consumptionator-page'))? 5 : 3;
 
       // init right rail carousel
-      Drupal.behaviors.bxslider_carousels.initVSliders();
+      Drupal.behaviors.consumptionator_carousels.initVSliders();
 
       if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches && slideItemLength > 3){
-        Drupal.behaviors.bxslider_carousels.initHSliders();
+        Drupal.behaviors.consumptionator_carousels.initHSliders();
       }
 
       if (slideItemLength > number_of_items){
@@ -130,6 +130,7 @@
           } else {
             $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
             $(this).removeClass('close').addClass('more');
+            $('.episodes-list-slider.horizontal').velocity("scroll", { duration: 1000, easing: "linear" });
           }
         });
       } else {
@@ -145,7 +146,7 @@
                 $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
                 $('.episodes-list-slider.horizontal a.more-button.close').removeClass('close').addClass('more');
                 moreButton.css('display', 'none');
-                Drupal.behaviors.bxslider_carousels.initHSliders();
+                Drupal.behaviors.consumptionator_carousels.initHSliders();
                 $('.episodes-list-slider.horizontal').removeClass('destroy');
               }
             } else {

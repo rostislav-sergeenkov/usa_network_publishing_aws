@@ -20,7 +20,7 @@
             videoBlock.removeClass('show-app');
             $('.consum-sidebar .download-app').after(data.rendered);
 
-            Drupal.behaviors.bxslider_carousels.initVSliders();
+            Drupal.behaviors.consumptionator_carousels.initVSliders();
 
             var slideItemLength = $('.episodes-list-slider.horizontal .slide-item').length;
             if(slideItemLength > 3) {
@@ -28,7 +28,7 @@
                 $('.episodes-list-slider.horizontal').addClass('destroy');
                 $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt(4)').addClass('hidden');
               } else {
-                Drupal.behaviors.bxslider_carousels.initHSliders();
+                Drupal.behaviors.consumptionator_carousels.initHSliders();
               }
             }
           } else {

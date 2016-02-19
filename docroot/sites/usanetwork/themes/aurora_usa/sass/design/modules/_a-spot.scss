@@ -482,7 +482,7 @@
     }
     @include breakpoint($bp-640-width) {
       float: none;
-      height: auto;
+      height: 87.5vw;
       width: 100%;
     }
     #ajax_aspot_show {

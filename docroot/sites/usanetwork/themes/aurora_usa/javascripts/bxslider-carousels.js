@@ -101,19 +101,18 @@
 
       var moreButton = $('.episodes-list-slider.horizontal a.more-button'),
           slideItemLength = $('.episodes-list-slider.horizontal .slide-item').length;
-
       //number of visible items for different pages for width screen less than 640px
       var number_of_items = ($('body').hasClass('consumptionator-page'))? 5 : 3;
 
       // init right rail carousel
       Drupal.behaviors.bxslider_carousels.initVSliders();
 
-      if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches && slideItemLength > 2){
+      if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches && slideItemLength > 3){
         Drupal.behaviors.bxslider_carousels.initHSliders();
       }
 
       if (slideItemLength > number_of_items){
-        if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
+        if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches || window.matchMedia("(min-width: " + window_size_desktop + "px)").matches){
           $('.episodes-list-slider.horizontal').addClass('destroy');
           $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
 
@@ -133,12 +132,14 @@
             $(this).removeClass('close').addClass('more');
           }
         });
+      } else {
+        $('.episodes-list-slider.horizontal').addClass('destroy');
       }
 
       $(window).bind('resize', function () {
         setTimeout(function() {
           var slideItemLength = $('.episodes-list-slider.horizontal .slide-item').length;
-          if (slideItemLength > 2) {
+          if (slideItemLength > 3) {
             if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches){
               if($('.episodes-list-slider.horizontal').hasClass('destroy')){
                 $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
@@ -150,6 +151,7 @@
             } else {
               if(!$('.episodes-list-slider.horizontal').hasClass('destroy')){
                 $('.episodes-list-slider.horizontal').jcarousel('destroy').addClass('destroy');
+                $('.episodes-list-slider.horizontal ul').removeAttr('style');
                 $('.episodes-list-slider.horizontal li').removeAttr('style');
 
                 $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');

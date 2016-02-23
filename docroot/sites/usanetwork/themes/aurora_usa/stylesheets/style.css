@@ -27164,7 +27164,14 @@ yx-axis
   line-height: 0;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+  height: 43.75vw;
+  max-height: 1094px;
   width: 100%;
+}
+@media (max-width: 640px) {
+  #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+    height: 87.5vw;
+  }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
   position: relative;

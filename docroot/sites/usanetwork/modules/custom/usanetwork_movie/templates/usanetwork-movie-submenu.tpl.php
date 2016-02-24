@@ -17,11 +17,13 @@
       <?php endif; ?>
     </div>
     <div class="show-menu-tab">
-      <ul class="show-menu menu">
-        <?php foreach ($show_menu_tab_items as $show_menu_tab_item): ?>
-          <li><?php print $show_menu_tab_item['main_link']; ?></li>
-        <?php endforeach; ?>
-      </ul>
+      <?php if (!empty($show_menu_tab_items)): ?>
+        <ul class="show-menu menu">
+          <?php foreach ($show_menu_tab_items as $show_menu_tab_item): ?>
+            <li><?php print $show_menu_tab_item['main_link']; ?></li>
+          <?php endforeach; ?>
+        </ul>
+      <?php endif; ?>
     </div>
   </div>
 </div>

@@ -4081,6 +4081,13 @@ ul.menu li {
   font-size: 8px;
 }
 
+.no-menu a {
+  cursor: default !important;
+}
+.no-menu a:before, .no-menu a:after {
+  display: none !important;
+}
+
 img {
   height: auto;
   vertical-align: text-bottom;

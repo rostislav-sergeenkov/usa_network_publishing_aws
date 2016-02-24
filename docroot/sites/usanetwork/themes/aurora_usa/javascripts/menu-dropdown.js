@@ -386,7 +386,12 @@
         };
 
         showTitleMove();
-        showMenuMove();
+        if($('.show-menu').length > 0) {
+          showMenuMove();
+        } else {
+          $('.header-show-menu').addClass('no-menu');
+          $('.header-show-menu a').removeClass('active');
+        }
 
         //HotFix: Remove dropdown option from tab "Shop"
         $(".tab .no-refresh").each(function(){
@@ -429,7 +434,9 @@
           }, 300);
 
           showTitleMove();
-          showMenuMove();
+          if($('.show-menu').length > 0) {
+            showMenuMove();
+          }
 
           if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches && !tablet) {
             if ($body.hasClass('page-home') || $body.hasClass('node-type-tv-show') || $('body').hasClass('node-type-consumpt-blog')) {

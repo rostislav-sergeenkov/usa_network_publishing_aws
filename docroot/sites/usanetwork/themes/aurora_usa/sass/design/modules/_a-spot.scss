@@ -82,7 +82,12 @@
   }
   .asset-img {
     img {
+      height: 43.75vw;
+      max-height: 1094px;
       width: 100%;
+      @include breakpoint($bp-640-width) {
+        height: 87.5vw;
+      }
     }
   }
   .slide {

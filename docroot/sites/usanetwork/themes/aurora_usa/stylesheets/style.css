@@ -4081,6 +4081,13 @@ ul.menu li {
   font-size: 8px;
 }
 
+.no-menu a {
+  cursor: default !important;
+}
+.no-menu a:before, .no-menu a:after {
+  display: none !important;
+}
+
 img {
   height: auto;
   vertical-align: text-bottom;
@@ -16027,7 +16034,7 @@ footer h2 {
   font-size: 1.5em;
   margin: 0.2em 0;
 }
-.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description h3, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description h3, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description h3, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description h3, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description h3, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description h3, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description h3, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description h3, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description h3, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description h3, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description h3, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description h3 {
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description h3:not(.field-label) {
   font-size: 1.3em;
   margin: 0;
 }
@@ -27157,7 +27164,14 @@ yx-axis
   line-height: 0;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+  height: 43.75vw;
+  max-height: 1094px;
   width: 100%;
+}
+@media (max-width: 640px) {
+  #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+    height: 87.5vw;
+  }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
   position: relative;

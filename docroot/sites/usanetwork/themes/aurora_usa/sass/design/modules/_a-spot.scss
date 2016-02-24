@@ -642,12 +642,6 @@
     }
 
     @extend %aspot-carousel-promo;
-    .bx-wrapper {
-      height: 100% !important;
-    }
-    .bx-viewport {
-      height: 100% !important;
-    }
     .episodes-list-slider.vertical {
       height: 90%;
       position: relative;
@@ -687,37 +681,34 @@
       }
       .horizontal-controls {
         display: none;
-        a {
+        .slide-control {
+          cursor: pointer;
           display: block;
           position: absolute;
-          top: 0px;
+          top: 0;
           height: 100%;
           z-index: 9;
           background: rgba(255, 255, 255, 0.6);
-          &.jcarousel-control-prev {
+          width: 60px;
+          &.slide-prev {
             left: 0;
-            width: 60px;
-            &.inactive {
-              display: none;
-            }
             &:after {
               content: "\e607";
             }
           }
-          &.jcarousel-control-next {
+          &.slide-next {
             right: 0;
-            width: 60px;
-            &.inactive {
-              display: none;
-            }
             &:after {
               content: "\e608";
             }
           }
+          &.slick-disabled {
+            display: none !important;
+          }
           &:after {
             color: #545454;
             display: block;
-            font-family: "ico-font";
+            font-family: $ico-font;
             font-size: 32px;
             left: 50%;
             margin-left: -16px;
@@ -734,23 +725,22 @@
       @include breakpoint($bp-min-769-width) {
         display: none;
       }
-      ul {
-        width: 20000em;
+      .slider-horizontal  {
+        overflow: hidden;
         position: relative;
-        @include clear;
-        @include breakpoint($bp-640-width) {
+        @include breakpoint($between-641-768) {
+          height: 18.5625vw;
           width: 100%;
         }
-        li {
+        @include clear;
+        .slide-item {
+          box-sizing: border-box;
           float: left;
           margin-right: 2px;
           margin-bottom: 0;
           height: 100%;
           position: relative;
-          width: 33vw;
-          @include breakpoint($bp-min-641-width) {
-            max-width: 33.3vw;
-          }
+          width: 33%;
           @include breakpoint($between-641-768) {
             height: 18.5625vw;
             .meta-icon {
@@ -772,10 +762,14 @@
               margin-bottom: 0;
             }
           }
+          .aspot-carousel-promo {
+            height: 100%;
+          }
         }
       }
-      a.more-button {
+      .more-button {
         background-color: $poll-back;
+        cursor: pointer;
         color: $poll-color;
         display: none;
         font-family: $tex-gyreschola-italic;

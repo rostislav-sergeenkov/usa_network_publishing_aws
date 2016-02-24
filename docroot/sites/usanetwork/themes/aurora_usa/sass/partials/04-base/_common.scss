@@ -452,5 +452,14 @@ address {
   }
 }
 
+.no-menu {
+  a {
+    cursor: default!important;
+    &:before, &:after {
+      display: none!important;
+    }
+  }
+}
+
 
 

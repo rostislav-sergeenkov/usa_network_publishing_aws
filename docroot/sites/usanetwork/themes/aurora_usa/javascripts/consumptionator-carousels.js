@@ -1,23 +1,292 @@
 (function ($) {
-  Drupal.behaviors.consumptionator_carousels = {
+  'use strict';
 
+  var usaCarousel = window.usaCarousel || {};
+
+  usaCarousel = (function () {
+
+    function usaCarousel(element, settings) {
+
+      var _ = this;
+
+      // info about usaCarousel App
+      _.info = {
+        project: 'usanetwork.com',
+        slick: '1.5.5',
+        ver: '0.1.0'
+      };
+
+      _.defaults = {
+
+        destroySliderBp: 640,
+        resizeTimeOut: 50,
+        numberSlidesNoInit: 3,
+        number_of_mobile_items: ($(document.body).hasClass('consumptionator-page')) ? 5 : 3,
+
+        // elements classes
+        carousel: 'slider-horizontal',
+        prevArrow: 'slide-prev',
+        nextArrow: 'slide-next',
+        controlArrow: 'slide-control',
+        moreButton: 'more-button',
+        slides: 'slide-item',
+
+        // slider config
+        slider: {
+          autoplay: false,
+          infinite: false,
+          speed: 400,
+          initialSlide: 0,
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      };
+
+      // create global options
+      _.options = $.extend(true, _.defaults, settings);
+
+      // elements
+      _.$body = $(document.body);
+      _.$carouselWrap = $(element);
+      _.$carousel = $(element).find('.' + _.options.carousel);
+      _.$slides = $(element).find('.' + _.options.slides);
+      _.$prevArrow = $(element).find('.' + _.options.prevArrow);
+      _.$nextArrow = $(element).find('.' + _.options.nextArrow);
+      _.$moreButton = $(element).find('.' + _.options.moreButton);
+
+      // data attributes value
+      _.data = {
+        blockName: $(element).data('block-name')
+      };
+
+      // update params
+      _.options.numberSlides = _.$slides.length;
+      _.options.moreButtonLength = _.$moreButton.length;
+      _.options.slider.slide = '.' + _.options.slideClass;
+      _.options.slider.prevArrow = _.$prevArrow;
+      _.options.slider.nextArrow = _.$nextArrow;
+      _.options.destroySlider = _.checkMaxWindowWidth(_.options.destroySliderBp);
+      _.options.initCarousel = false;
+      _.options.initMoreBtn = false;
+      _.options.showMoreBtn = false;
+
+      // init app
+      _.init(true);
+    }
+
+    return usaCarousel;
+
+  }());
+
+  //============
+  // helper
+  //============
+
+  usaCarousel.prototype.checkMinWindowWidth = function (bp) {
+    return window.matchMedia('(min-width: ' + bp + 'px)').matches;
+  };
+
+  usaCarousel.prototype.checkMaxWindowWidth = function (bp) {
+    return window.matchMedia('(max-width: ' + bp + 'px)').matches;
+  };
+
+  usaCarousel.prototype.resize = function () {
+
+    var _ = this,
+        destroySliderBp = _.options.destroySliderBp,
+        resizeTime = _.options.resizeTimeOut,
+        resizeTimeOut;
+
+    $(window).on('resize', function () {
+
+      var destroySlider = false,
+          initCarousel = _.options.initCarousel;
+
+      _.options.destroySlider = _.checkMaxWindowWidth(destroySliderBp);
+      destroySlider = _.options.destroySlider;
+
+      clearTimeout(resizeTimeOut);
+
+      resizeTimeOut = setTimeout(function () {
+
+        // update more button
+        if (_.options.initMoreBtn) {
+          if (destroySlider && !_.options.showMoreBtn) {
+            _.showMoreBtn();
+          } else if (!destroySlider && _.options.showMoreBtn) {
+            _.hideMoreBtn();
+          }
+        }
+
+        // update carousel
+        if (destroySlider && initCarousel) { // less 640px
+          _.destroyCarousel();
+        } else if (!destroySlider && !initCarousel) { // more 640px
+          _.initCarousel();
+        }
+
+      }, resizeTime);
+    });
+  };
+
+  //============
+  // more button
+  //============
+  usaCarousel.prototype.initMoreBtn = function () {
+
+    var _ = this;
+
+    if (_.options.moreButtonLength > 0) {
+
+      _.options.initMoreBtn = true;
+      _.addMoreBtnClick();
+
+      if (_.options.destroySlider) {
+        _.showMoreBtn();
+      }
+    }
+  };
+
+  usaCarousel.prototype.addMoreBtnClick = function () {
+
+    var _ = this,
+        $carouselWrap = _.$carouselWrap,
+        $slides = _.$slides,
+        $moreButton = _.$moreButton,
+        number_of_items = _.options.number_of_mobile_items;
+
+    $moreButton.once(function () {
+
+      var self = $(this);
+
+      self.on('click', function () {
+        if (self.hasClass('more')) {
+          $slides.removeClass('hidden');
+          self.removeClass('more').addClass('close');
+        } else {
+          $slides.filter(':gt(' + (number_of_items - 1) + ')').addClass('hidden');
+          self.removeClass('close').addClass('more');
+          $carouselWrap.velocity("scroll", {duration: 1000, easing: "linear"});
+        }
+      });
+    });
+  };
+
+  usaCarousel.prototype.showMoreBtn = function () {
+
+    var _ = this,
+        $carouselWrap = _.$carouselWrap,
+        $slides = _.$slides,
+        $moreButton = _.$moreButton,
+        number_of_items = _.options.number_of_mobile_items;
+
+    if (!$carouselWrap.hasClass('no-hidden-items')) {
+      $slides.filter(':gt(' + (number_of_items - 1) + ')').addClass('hidden');
+      $moreButton.show();
+      _.options.showMoreBtn = true;
+    }
+  };
+
+  usaCarousel.prototype.hideMoreBtn = function () {
+
+    var _ = this,
+        $slides = _.$slides,
+        $moreButton = _.$moreButton;
+
+    $slides.removeClass('hidden');
+    $moreButton
+        .hide()
+        .removeClass('close')
+        .addClass('more');
+
+    _.options.showMoreBtn = false;
+  };
+
+  //============
+  // carousel
+  //============
+
+  usaCarousel.prototype.destroyCarousel = function () {
+    var _ = this,
+        $carousel = _.$carousel,
+        initCarousel = _.options.initCarousel;
+
+    if (initCarousel) {
+      _.options.initCarousel = false;
+      $carousel.slick('unslick');
+    }
+  };
+
+  usaCarousel.prototype.initCarousel = function () {
+
+    var _ = this,
+        $carousel = _.$carousel,
+        destroySlider = _.options.destroySlider,
+        numberSlides = _.options.numberSlides,
+        numberSlidesNoInit = _.options.numberSlidesNoInit,
+        initCarousel = _.options.initCarousel;
+
+    if (!destroySlider && !initCarousel && numberSlides > numberSlidesNoInit) {
+      _.options.initCarousel = true;
+      $carousel.slick(_.options.slider);
+    }
+  };
+
+  //============
+  // init app
+  //============
+
+  usaCarousel.prototype.init = function (creation) {
+
+    var _ = this;
+
+    if (!_.options.initApp == true) {
+      _.options.initApp = creation;
+      _.initMoreBtn();
+      _.initCarousel();
+      _.resize();
+    }
+  };
+
+
+  //==================================
+  // create jQuery method usaCarousel
+  //==================================
+  $.fn.usaCarousel = function () {
+    var _ = this,
+        opt = arguments[0],
+        args = Array.prototype.slice.call(arguments, 1),
+        l = _.length,
+        i,
+        ret;
+    for (i = 0; i < l; i++) {
+      if (typeof opt == 'object' || typeof opt == 'undefined')
+        _[i].usaCarousel = new usaCarousel(_[i], opt);
+      else
+        ret = _[i].usaCarousel[opt].apply(_[i].usaCarousel, args);
+      if (typeof ret != 'undefined') return ret;
+    }
+    return _;
+  };
+
+  Drupal.behaviors.consumptionator_carousels = {
     // Init all vertical carousels
-    initVSliders: function() {
-      $('.slider-vertical').mCustomScrollbar({
-        axis:"y",
+    initVSliders: function () {
+      $('.episodes-list-slider.vertical .slider-vertical').mCustomScrollbar({
+        axis: "y",
         autoHideScrollbar: true,
         scrollInertia: 0,
         scrollbarPosition: "inside",
         callbacks: {
-          onInit:function(){
+          onInit: function () {
             var activeItem = $('.slider-vertical li.slide-item .asset-img.active').closest('li');
             if (activeItem.length > 0) {
-              setTimeout(function(){
+              setTimeout(function () {
                 $('.slider-vertical').mCustomScrollbar("scrollTo", activeItem);
               }, 500);
             }
           },
-          whileScrolling: function(){
+          whileScrolling: function () {
             if (this.mcs.topPct >= 97) {
               $('.episodes-list', '.aspot-and-episodes').removeClass('shadow');
             } else {
@@ -26,10 +295,10 @@
               }
             }
           },
-          onScroll: function(){
+          onScroll: function () {
             var items = [];
             var i = 0;
-            $(this).find('li').each(function(){
+            $(this).find('li').each(function () {
               items[i] = this;
               i++;
             });
@@ -38,131 +307,18 @@
         }
       });
     },
-
-    // Init all horizontal carousels
-    initHSliders: function() {
-      $('.episodes-list-slider.horizontal')
-        .on('jcarousel:create jcarousel:reload', function () {
-          var $carousel = $(this),
-            width = $carousel.innerWidth();
-
-          if (width > window_size_mobile_641) {
-            width = width / 3;
-          }
-
-          $carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-        }).swipe({
-            excludedElements: "button, input, select, textarea, .noSwipe",
-            allowPageScroll: "vertical",
-            threshold: 50,
-            swipeRight: function () {
-              if(window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
-                $(this).jcarousel('scroll', '-=3');
-              }
-            },
-            swipeLeft: function () {
-              if(window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches) {
-                $(this).jcarousel('scroll', '+=3');
-              }
-            }
-          })
-        .jcarousel({
-          animation: {
-            duration: 500,
-            easing: 'linear'
-          },
-          rtl: false
-        });
-
-      $('.episodes-list-slider.horizontal .horizontal-controls .jcarousel-control-prev')
-        .on('jcarouselcontrol:active', function () {
-          $(this).removeClass('inactive');
-        })
-        .on('jcarouselcontrol:inactive', function () {
-          $(this).addClass('inactive');
-        })
-        .jcarouselControl({
-          target: '-=1'
-        });
-
-      $('.episodes-list-slider.horizontal .horizontal-controls .jcarousel-control-next')
-        .on('jcarouselcontrol:active', function () {
-          $(this).removeClass('inactive');
-        })
-        .on('jcarouselcontrol:inactive', function () {
-          $(this).addClass('inactive');
-        })
-        .jcarouselControl({
-          target: '+=1'
-        });
-    },
-
     attach: function (context, settings) {
 
-      var moreButton = $('.episodes-list-slider.horizontal a.more-button'),
-          slideItemLength = $('.episodes-list-slider.horizontal .slide-item').length;
-      //number of visible items for different pages for width screen less than 640px
-      var number_of_items = ($('body').hasClass('consumptionator-page'))? 5 : 3;
+      $(document.body).once(function () {
 
-      // init right rail carousel
-      Drupal.behaviors.consumptionator_carousels.initVSliders();
+        // init right rail carousel
+        Drupal.behaviors.consumptionator_carousels.initVSliders();
 
-      if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches && slideItemLength > 3){
-        Drupal.behaviors.consumptionator_carousels.initHSliders();
-      }
+        // init episodes-list-slider horizontal
+        $('.episodes-list-slider.horizontal').usaCarousel();
 
-      if (slideItemLength > number_of_items){
-        if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches || window.matchMedia("(min-width: " + window_size_desktop + "px)").matches){
-          $('.episodes-list-slider.horizontal').addClass('destroy');
-          $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
-
-          // Show more-button
-          moreButton.css('display', 'block');
-        }
-
-        // Show carousel more-button click
-        moreButton.click(function(e) {
-          e.preventDefault();
-
-          if ($(this).hasClass('more')) {
-            $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
-            $(this).removeClass('more').addClass('close');
-          } else {
-            $('.episodes-list-slider.horizontal > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
-            $(this).removeClass('close').addClass('more');
-            $('.episodes-list-slider.horizontal').velocity("scroll", { duration: 1000, easing: "linear" });
-          }
-        });
-      } else {
-        $('.episodes-list-slider.horizontal').addClass('destroy');
-      }
-
-      $(window).bind('resize', function () {
-        setTimeout(function() {
-          var slideItemLength = $('.episodes-list-slider.horizontal .slide-item').length;
-          if (slideItemLength > 3) {
-            if (window.matchMedia("(min-width: " + window_size_mobile_641 + "px)").matches && window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches){
-              if($('.episodes-list-slider.horizontal').hasClass('destroy')){
-                $('.episodes-list-slider.horizontal > ul > li').removeClass('hidden');
-                $('.episodes-list-slider.horizontal a.more-button.close').removeClass('close').addClass('more');
-                moreButton.css('display', 'none');
-                Drupal.behaviors.consumptionator_carousels.initHSliders();
-                $('.episodes-list-slider.horizontal').removeClass('destroy');
-              }
-            } else {
-              if(!$('.episodes-list-slider.horizontal').hasClass('destroy')){
-                $('.episodes-list-slider.horizontal').jcarousel('destroy').addClass('destroy');
-                $('.episodes-list-slider.horizontal ul').removeAttr('style');
-                $('.episodes-list-slider.horizontal li').removeAttr('style');
-
-                $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt('+ (number_of_items - 1) +')').addClass('hidden');
-                moreButton.css('display', 'block');
-              }
-            }
-          }
-        }, 0);
       });
-
     }
   };
-}(jQuery));
+
+})(jQuery);

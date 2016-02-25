@@ -70,6 +70,8 @@
       _.options.initMoreBtn = false;
       _.options.showMoreBtn = false;
 
+      console.info(_);
+
       // init app
       _.init(true);
     }
@@ -94,6 +96,9 @@
 
     var _ = this,
         destroySliderBp = _.options.destroySliderBp,
+        $carouselWrap = _.$carouselWrap,
+        $slides = _.$slides,
+        number_of_items = _.options.number_of_mobile_items,
         resizeTime = _.options.resizeTimeOut,
         resizeTimeOut;
 
@@ -116,6 +121,14 @@
           } else if (!destroySlider && _.options.showMoreBtn) {
             _.hideMoreBtn();
           }
+        } else {
+          if (!destroySlider) {
+            $slides.removeClass('hidden');
+          } else if(destroySlider) {
+            if (!$carouselWrap.hasClass('no-hidden-items')) {
+              $slides.filter(':gt(' + (number_of_items - 1) + ')').addClass('hidden');
+            }
+          }
         }
 
         // update carousel
@@ -134,7 +147,10 @@
   //============
   usaCarousel.prototype.initMoreBtn = function () {
 
-    var _ = this;
+    var _ = this,
+        $carouselWrap = _.$carouselWrap,
+        $slides = _.$slides,
+        number_of_items = _.options.number_of_mobile_items;
 
     if (_.options.moreButtonLength > 0) {
 
@@ -143,6 +159,10 @@
 
       if (_.options.destroySlider) {
         _.showMoreBtn();
+      }
+    } else {
+      if (_.options.destroySlider && !$carouselWrap.hasClass('no-hidden-items')) {
+        $slides.filter(':gt(' + (number_of_items - 1) + ')').addClass('hidden');
       }
     }
   };

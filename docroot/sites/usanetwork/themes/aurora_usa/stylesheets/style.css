@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -14126,7 +14126,6 @@ footer h2 {
   }
 }
 .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul {
-  width: 20000em;
   position: relative;
 }
 @media (max-width: 640px) {

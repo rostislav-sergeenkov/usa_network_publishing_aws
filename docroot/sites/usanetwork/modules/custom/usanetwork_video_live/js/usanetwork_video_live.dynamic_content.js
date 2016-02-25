@@ -23,7 +23,7 @@
             Drupal.behaviors.consumptionator_carousels.initVSliders();
 
             $('.episodes-list-slider.horizontal').usaCarousel();
-            
+
           } else {
             $('.consum-sidebar .items-block').remove();
             $('.consum-sidebar .more-items').remove();

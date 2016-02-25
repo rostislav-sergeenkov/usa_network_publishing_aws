@@ -70,8 +70,6 @@
       _.options.initMoreBtn = false;
       _.options.showMoreBtn = false;
 
-      console.info(_);
-
       // init app
       _.init(true);
     }

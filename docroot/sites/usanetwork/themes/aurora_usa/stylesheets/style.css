@@ -4088,6 +4088,10 @@ ul.menu li {
   display: none !important;
 }
 
+.episodes-list-slider.horizontal .slick-list, .episodes-list-slider.horizontal .slick-track {
+  height: 100%;
+}
+
 img {
   height: auto;
   vertical-align: text-bottom;

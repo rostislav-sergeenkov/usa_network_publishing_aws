@@ -22,15 +22,8 @@
 
             Drupal.behaviors.consumptionator_carousels.initVSliders();
 
-            var slideItemLength = $('.episodes-list-slider.horizontal .slide-item').length;
-            if(slideItemLength > 3) {
-              if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
-                $('.episodes-list-slider.horizontal').addClass('destroy');
-                $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt(4)').addClass('hidden');
-              } else {
-                Drupal.behaviors.consumptionator_carousels.initHSliders();
-              }
-            }
+            $('.episodes-list-slider.horizontal').usaCarousel();
+
           } else {
             $('.consum-sidebar .items-block').remove();
             $('.consum-sidebar .more-items').remove();

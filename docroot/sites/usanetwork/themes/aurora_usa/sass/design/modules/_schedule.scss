@@ -189,42 +189,56 @@
     display: block;
     width: auto;
     margin: 0 50px;
-    ul {
+    ul.slider {
+      box-sizing: border-box;
       vertical-align: middle;
       border-top: 1px solid #ffffff;
       @include clear;
-      width: 20000em;
+      overflow: hidden;
       position: relative;
       display: block;
       list-style: none;
       margin: 0;
       padding: 0;
+      height: 124px;
+      @include breakpoint($bp-1280-width) {
+        height: 83px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: 67px;
+      }
+      &:not(.slick-initialized) {
+        li {
+          width: calc(100% / 7);
+          @include breakpoint($bp-768-width) {
+            width: calc(100% / 5);
+          }
+          @include breakpoint($bp-320-width) {
+            width: calc(100%  / 3);
+          }
+        }
+      }
       li {
-        border-right: 1px solid $poll-back;
-        height: 123px;
+        //box-sizing: border-box;
         display: block;
         float: left;
-        width: calc((100vw - 100px) / 7);
-        @include breakpoint($bp-1280-width) {
-          height: 82px;
-        }
-        @include breakpoint($bp-1024-width) {
-          height: 66px;
-        }
+        height: 100%;
         &:first-child {
-          border-left: 1px solid $poll-back;
+          a {
+            border-left: 1px solid $poll-back;
+          }
         }
         @include breakpoint($bp-768-width) {
-          width: calc((100vw - 100px) / 5);
           &:first-child {
-            border-left: 0 solid #ffffff;
+            a {
+              border-left: 0 solid #ffffff;
+            }
           }
           &:last-child {
-            border-right: 0 solid #ffffff;
+            a {
+              border-right: 0 solid #ffffff;
+            }
           }
-        }
-        @include breakpoint($bp-320-width) {
-          width: calc((100vw - 100px) / 3);
         }
         &:hover, &.active {
           background-color: $gray-med-darker;
@@ -233,12 +247,20 @@
           }
         }
         a {
+          box-sizing: border-box;
+          border-right: 1px solid $poll-back;
           color: $header-tab-back;
           display: block;
-          height: 100%;
           padding-top: 13px;
           text-decoration: none;
           text-align: center;
+          height: 124px;
+          @include breakpoint($bp-1280-width) {
+            height: 83px;
+          }
+          @include breakpoint($bp-1024-width) {
+            height: 67px;
+          }
           span {
             display: block;
             &.week-day {
@@ -281,6 +303,7 @@
     }
   }
   .schedule-navigation-controls {
+    box-sizing: border-box;
     position: absolute;
     background-color: $gray-med-darker;
     top: 0;
@@ -307,12 +330,12 @@
       position: absolute;
       top: 50%;
     }
-    &.jcarousel-control-prev {
+    &.slide-prev {
       left: 0;
       border-right: 1px solid #ffffff;
       &:after {content: '\e607';}
     }
-    &.jcarousel-control-next {
+    &.slide-next {
       right: 0;
       border-left: 1px solid #ffffff;
       &:after {content: '\e608';}
@@ -342,41 +365,6 @@
       margin: 0;
       padding: 0;
       max-height: 770px;
-    }
-    .jcarousel-control-next {
-      display: block;
-      height: 19px;
-      line-height: 19px;
-      margin-left: -9.5px;
-      overflow: hidden;
-      position: absolute;
-      left: 50%;
-      top: 0;
-      &:before {
-        content: "\e60a";
-        color: $poll-color;
-        font-family: $ico-font;
-        font-size: 32px;
-        display: block;
-      }
-    }
-    .jcarousel-control-prev {
-      display: block;
-      height: 19px;
-      line-height: 19px;
-      margin-left: -9.5px;
-      overflow: hidden;
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      text-decoration: none;
-      &:before {
-        content: "\e609";
-        color: $poll-color;
-        font-family: $ico-font;
-        font-size: 32px;
-        display: block;
-      }
     }
     ul {
       width: 100%;

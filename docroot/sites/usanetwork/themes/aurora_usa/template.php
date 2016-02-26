@@ -167,7 +167,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/jquery.jcarousel.min.js');
   drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
   drupal_add_js($theme_path . '/javascripts/slick.min.js');
-  drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
   drupal_add_js($theme_path . '/javascripts/consumptionator-carousels.js');
   drupal_add_js($theme_path . '/javascripts/lazy-load-custom.js');
   drupal_add_js($theme_path . '/javascripts/spin.min.js');

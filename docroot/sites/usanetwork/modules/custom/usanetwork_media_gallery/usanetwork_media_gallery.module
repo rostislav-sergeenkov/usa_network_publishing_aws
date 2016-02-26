@@ -269,6 +269,20 @@ function usanetwork_media_gallery_image_default_styles() {
     ),
   );
 
+  $styles['usanetwork_media_gallery_image_preview'] = array(
+    'label' => t('Usanetwork Media Gallery image'),
+    'effects' => array(
+      0 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 85,
+          'height' => 48,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
   return $styles;
 }
 
@@ -311,8 +325,11 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
         if (!empty($info) && ($info['width'] > 1868 || $info['height'] > 1094)) {
           $slide_variables = array(
             'image' => theme_image(array(
-              'path' => image_style_url('usanetwork_media_gallery_image', $gallery_file->uri),
-              'attributes' => array(),
+              //'path' => image_style_url('usanetwork_media_gallery_image', $gallery_file->uri),
+              'attributes' => array(
+                'data-lazy' => file_create_url(image_style_url('usanetwork_media_gallery_image', $gallery_file->uri)),
+                'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $gallery_file->uri)),
+              ),
             )),
             'info' => array(
               'description' => '',
@@ -323,8 +340,11 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
         } else {
           $slide_variables = array(
             'image' => theme_image(array(
-              'path' => $gallery_file->uri,
-              'attributes' => array(),
+              //'path' => $gallery_file->uri,
+              'attributes' => array(
+                'data-lazy' => file_create_url($gallery_file->uri),
+                'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $gallery_file->uri)),
+              ),
             )),
             'info' => array(
               'description' => '',

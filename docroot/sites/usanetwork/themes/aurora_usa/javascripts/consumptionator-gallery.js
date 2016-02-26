@@ -98,6 +98,7 @@
           autoplay: false,
           infinite: false,
           speed: 400,
+          lazyLoad: 'ondemand',
           initialSlide: 0,
           slidesToShow: 1,
           adaptiveHeight: true,
@@ -323,10 +324,10 @@
   usaGallery.prototype.createCustomPaging = function (slick, index) {
 
     var $slide = $(slick.$slides[index].innerHTML),
-        img = $slide.find('img')[0].outerHTML,
+        imgPreviewUrl = $($slide.find('img')[0]).data('preview'),
         showColorPager = ($('body[class*=" show-"]').length > 0 || $('body').hasClass('page-videos-live')) ? 'show-color ' : '';
 
-    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div>' + img + '</div>';
+    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div><img src="' + imgPreviewUrl + '" alt=""></div>';
   };
 
   usaGallery.prototype.createSlidesCounter = function (slick) {

@@ -15156,6 +15156,7 @@ footer h2 {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live .video-block.show-gallery .consum-sidebar .episodes-list-slider.vertical {
     display: block;
+    height: calc(100% - 90px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {

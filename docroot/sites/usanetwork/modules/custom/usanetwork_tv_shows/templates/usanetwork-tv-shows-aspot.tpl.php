@@ -86,12 +86,14 @@
           <div class="slide-next slide-control slick-disabled"></div>
           <div class="slide-prev slide-control slick-disabled"></div>
         </div>
-        <div class="more-button-wrapper">
-          <div class="more-button more">
-            <span class="more-text"><?php print t('Load More'); ?></span>
-            <span class="close-text"><?php print t('Close'); ?></span>
+        <?php if($show_more_button): ?>
+          <div class="more-button-wrapper">
+            <div class="more-button more">
+              <span class="more-text"><?php print t('Load More'); ?></span>
+              <span class="close-text"><?php print t('Close'); ?></span>
+            </div>
           </div>
-        </div>
+        <?php endif; ?>
       </div>
     </div>
   <?php endif; ?>

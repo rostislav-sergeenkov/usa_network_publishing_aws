@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -4086,6 +4086,10 @@ ul.menu li {
 }
 .no-menu a:before, .no-menu a:after {
   display: none !important;
+}
+
+.episodes-list-slider.horizontal .slick-list, .episodes-list-slider.horizontal .slick-track {
+  height: 100%;
 }
 
 img {
@@ -14126,7 +14130,6 @@ footer h2 {
   }
 }
 .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul {
-  width: 20000em;
   position: relative;
 }
 @media (max-width: 640px) {

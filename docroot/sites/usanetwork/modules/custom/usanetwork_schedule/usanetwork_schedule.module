@@ -158,25 +158,49 @@ function usanetwork_schedule_pull() {
 
       if ($start_time) {
         if ($start_time >= $schedule_limit_from && $start_time < $schedule_limit_to) {
-          $item_rating = !empty($data_item['pllisting$contentRatings'][0])
-            ? ((array) $data_item['pllisting$contentRatings'][0])
+          $item_rating = !empty($data_item['pllisting$contentRatings'])
+            ? ((array) $data_item['pllisting$contentRatings'])
             : array();
           $program = (array) $data_item['pllisting$program'];
-          $program_rating = (isset($program['plprogram$ratings'][0])
-            ? (array) $program['plprogram$ratings'][0]
+          $program_rating = (isset($program['plprogram$ratings'])
+            ? (array) $program['plprogram$ratings']
             : array());
+
+          if (!empty($item_rating)) {
+            foreach ($item_rating as $item) {
+              if (!empty($program['plprogram$programType']) && ($program['plprogram$programType'] == 'movie')) {
+                if ($item->{'pllisting$scheme'} == 'urn:v-chip') {
+                  $item_rating_scheme = !empty($item->{'pllisting$scheme'}) ? $item->{'pllisting$scheme'} : '';
+                  $item_rating_type = !empty($item->{'pllisting$rating'}) ? $item->{'pllisting$rating'} : '';
+                }
+              } else {
+                $item_rating_scheme = !empty($item->{'pllisting$scheme'}) ? $item->{'pllisting$scheme'} : '';
+                $item_rating_type = !empty($item->{'pllisting$rating'}) ? $item->{'pllisting$rating'} : '';
+              }
+            }
+          }
+
+          if (!empty($program_rating)) {
+            foreach ($program_rating as $program_item) {
+              if (!empty($program['plprogram$programType']) && ($program['plprogram$programType'] == 'movie')) {
+                if ($program_item->{'plprogram$scheme'} == 'urn:v-chip') {
+                  $program_item_rating_scheme = !empty($program_item->{'plprogram$scheme'}) ? $program_item->{'plprogram$scheme'} : '';
+                  $program_item_rating_type = !empty($program_item->{'plprogram$rating'}) ? $program_item->{'plprogram$rating'} : '';
+                }
+              } else {
+                $program_item_rating_scheme = !empty($program_item->{'plprogram$scheme'}) ? $program_item->{'plprogram$scheme'} : '';
+                $program_item_rating_type = !empty($program_item->{'plprogram$rating'}) ? $program_item->{'plprogram$rating'} : '';
+              }
+            }
+          }
 
           $record = array(
             'guid' => $data_item['guid'],
             'airing_type' => !empty($data_item['pllisting$airingType'])
               ? $data_item['pllisting$airingType']
               : '',
-            'rating_scheme' => !empty($item_rating['pllisting$scheme'])
-              ? $item_rating['pllisting$scheme']
-              : '',
-            'rating_type' => !empty($item_rating['pllisting$rating'])
-              ? $item_rating['pllisting$rating']
-              : '',
+            'rating_scheme' => isset($item_rating_scheme) ? $item_rating_scheme : '',
+            'rating_type' => isset($item_rating_type) ? $item_rating_type : '',
             'start_time' => $start_time,
             'end_time' => !empty($data_item['pllisting$endTime'])
               ? ($data_item['pllisting$endTime'] / 1000)
@@ -195,12 +219,8 @@ function usanetwork_schedule_pull() {
             'program_type' => !empty($program['plprogram$programType'])
               ? $program['plprogram$programType']
               : '',
-            'program_rating_scheme' => !empty($program_rating['plprogram$scheme'])
-              ? $program_rating['plprogram$scheme']
-              : '',
-            'program_rating_type' => !empty($program_rating['plprogram$rating'])
-              ? $program_rating['plprogram$rating']
-              : '',
+            'program_rating_scheme' => isset($program_item_rating_scheme) ? $program_item_rating_scheme : '',
+            'program_rating_type' => isset($program_item_rating_type) ? $program_item_rating_type : '',
             'program_secondary_title' => !empty($program['plprogram$secondaryTitle'])
               ? $program['plprogram$secondaryTitle']
               : '',

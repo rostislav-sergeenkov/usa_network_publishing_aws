@@ -168,12 +168,7 @@ function usanetwork_schedule_pull() {
 
           if (!empty($item_rating)) {
             foreach ($item_rating as $item) {
-              if (!empty($program['plprogram$programType']) && ($program['plprogram$programType'] == 'movie')) {
-                if ($item->{'pllisting$scheme'} == 'urn:v-chip') {
-                  $item_rating_scheme = !empty($item->{'pllisting$scheme'}) ? $item->{'pllisting$scheme'} : '';
-                  $item_rating_type = !empty($item->{'pllisting$rating'}) ? $item->{'pllisting$rating'} : '';
-                }
-              } else {
+              if ($item->{'pllisting$scheme'} == 'urn:v-chip') {
                 $item_rating_scheme = !empty($item->{'pllisting$scheme'}) ? $item->{'pllisting$scheme'} : '';
                 $item_rating_type = !empty($item->{'pllisting$rating'}) ? $item->{'pllisting$rating'} : '';
               }
@@ -182,12 +177,7 @@ function usanetwork_schedule_pull() {
 
           if (!empty($program_rating)) {
             foreach ($program_rating as $program_item) {
-              if (!empty($program['plprogram$programType']) && ($program['plprogram$programType'] == 'movie')) {
-                if ($program_item->{'plprogram$scheme'} == 'urn:v-chip') {
-                  $program_item_rating_scheme = !empty($program_item->{'plprogram$scheme'}) ? $program_item->{'plprogram$scheme'} : '';
-                  $program_item_rating_type = !empty($program_item->{'plprogram$rating'}) ? $program_item->{'plprogram$rating'} : '';
-                }
-              } else {
+              if ($program_item->{'plprogram$scheme'} == 'urn:v-chip') {
                 $program_item_rating_scheme = !empty($program_item->{'plprogram$scheme'}) ? $program_item->{'plprogram$scheme'} : '';
                 $program_item_rating_type = !empty($program_item->{'plprogram$rating'}) ? $program_item->{'plprogram$rating'} : '';
               }

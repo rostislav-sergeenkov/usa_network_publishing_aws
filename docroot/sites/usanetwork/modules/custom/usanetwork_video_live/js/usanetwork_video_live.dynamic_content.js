@@ -19,12 +19,11 @@
             $('.consum-sidebar .more-items').remove();
             videoBlock.removeClass('show-app');
             $('.consum-sidebar .download-app').after(data.rendered);
-            Drupal.behaviors.bxslider_carousels.initVSliders();
-            Drupal.behaviors.bxslider_carousels.initHSliders();
-            Drupal.behaviors.bxslider_carousels.slideItem = $('.episodes-list-slider.horizontal .slide-item');
-            if (window.matchMedia("(max-width: " + window_size_mobile_640 + "px)").matches){
-              $('.episodes-list-slider.horizontal:not(.no-hidden-items) > ul > li:gt(4)').addClass('hidden');
-            }
+
+            Drupal.behaviors.consumptionator_carousels.initVSliders();
+
+            $('.episodes-list-slider.horizontal').usaCarousel();
+
           } else {
             $('.consum-sidebar .items-block').remove();
             $('.consum-sidebar .more-items').remove();
@@ -56,13 +55,16 @@
             }
             $('.consum-sidebar').after(data.rendered);
             $('.consum-sidebar').after('<h2 class="section-title"><span class="section-title-wrapper show-border secondary">Related content</span></h2>');
+
             if (data.showName != null && typeof data.showName != 'undefined') {
               Drupal.behaviors.usanetwork_video_live.showName = data.showName;
             }
             if (data.galleryName != null && typeof data.galleryName != 'undefined') {
               Drupal.behaviors.usanetwork_video_live.galleryName = data.galleryName;
             }
+
             $('.gallery-wrapper').usaGallery();
+
             if ($('body').hasClass('sub-menu-is-sticky') && !$('.consum-sidebar').hasClass('sticky-sidebar')) {
               $('.consum-sidebar').addClass('sticky-sidebar');
             }

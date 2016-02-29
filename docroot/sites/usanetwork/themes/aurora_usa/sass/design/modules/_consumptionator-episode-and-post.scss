@@ -317,7 +317,7 @@
           font-size: 1.5em;
           margin: 0.2em 0
         }
-        h3 {
+        h3:not(.field-label) {
           font-size: 1.3em;
           margin: 0;
         }

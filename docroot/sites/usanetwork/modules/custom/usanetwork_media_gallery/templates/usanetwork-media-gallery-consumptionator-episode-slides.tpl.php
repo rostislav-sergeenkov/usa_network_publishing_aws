@@ -31,7 +31,7 @@
     </div>
     <?php if (!empty($slides_vertical) && !empty($slides_horizontal)): ?>
       <?php if (!empty($slides_vertical)): ?>
-        <div class="episodes-list-slider vertical<?php print empty($link) ? ' no-all-link' : ''; ?>" data-mode="vertical">
+        <div class="episodes-list-slider vertical<?php print empty($link) ? ' no-all-link' : ''; ?>">
           <ul class="slider-vertical">
             <?php foreach ($slides_vertical as $slide_vertical): ?>
               <li class="slide-item">
@@ -42,7 +42,7 @@
         </div>
       <?php endif; ?>
       <?php if (!empty($slides_horizontal)): ?>
-        <div class="episodes-list-slider horizontal" data-mode="horizontal" data-block-name="Right Rail Carousel">
+        <div class="episodes-list-slider horizontal" data-block-name="Right Rail Carousel">
           <ul class="slider-horizontal">
             <?php foreach ($slides_horizontal as $slide_horizontal): ?>
               <li class="slide-item">
@@ -51,8 +51,8 @@
             <?php endforeach; ?>
           </ul>
           <div class="horizontal-controls">
-            <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
-            <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
+            <div class="slide-next slide-control slick-disabled"></div>
+            <div class="slide-prev slide-control slick-disabled"></div>
           </div>
         </div>
       <?php endif; ?>

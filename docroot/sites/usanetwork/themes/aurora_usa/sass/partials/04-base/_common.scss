@@ -452,5 +452,21 @@ address {
   }
 }
 
+.no-menu {
+  a {
+    cursor: default!important;
+    &:before, &:after {
+      display: none!important;
+    }
+  }
+}
+
+.episodes-list-slider.horizontal {
+  .slick-list, .slick-track {
+    height: 100%;
+  }
+}
+
+
 
 

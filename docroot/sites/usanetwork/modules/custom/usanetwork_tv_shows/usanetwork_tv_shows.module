@@ -1751,6 +1751,7 @@ function _usanetwork_tv_shows_aspot_block() {
 
     $theme_variables['sponsored'] = (isset($sponsored) && !($has_not_full_episodes)) ? $sponsored : FALSE;
     $theme_variables['file_path'] = (isset($file_id) && !($has_not_full_episodes)) ? $file_id : FALSE;
+    $theme_variables['show_more_button'] = (count($theme_variables['episodes']) > 3) ? TRUE: FALSE;
   }
 
   if (!empty($theme_variables)) {

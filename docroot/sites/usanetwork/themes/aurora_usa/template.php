@@ -166,8 +166,8 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/jquery.touchSwipe.min.js');
   drupal_add_js($theme_path . '/javascripts/jquery.jcarousel.min.js');
   drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
-  drupal_add_js($theme_path . '/javascripts/jquery.bxslider.js');
-  drupal_add_js($theme_path . '/javascripts/bxslider-carousels.js');
+  drupal_add_js($theme_path . '/javascripts/slick.min.js');
+  drupal_add_js($theme_path . '/javascripts/consumptionator-carousels.js');
   drupal_add_js($theme_path . '/javascripts/lazy-load-custom.js');
   drupal_add_js($theme_path . '/javascripts/spin.min.js');
 
@@ -186,15 +186,12 @@ function aurora_usa_preprocess_page(&$vars) {
     $vars['page']['catchall_seo_title'] = $node->title;
   }
   if ($node && $node->type == "media_gallery") {
-    drupal_add_js($theme_path . '/javascripts/slick.min.js');
     drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
   }
   if(!empty($node) && $node->type == 'tv_episode') {
-    drupal_add_js($theme_path . '/javascripts/slick.min.js');
     drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
   }
   if(!empty($node) && $node->type == 'consumpt_post') {
-    drupal_add_js($theme_path . '/javascripts/slick.min.js');
     drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
   }
   // add ios touch icon

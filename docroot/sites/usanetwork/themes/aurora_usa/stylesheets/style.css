@@ -1570,6 +1570,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   position: relative;
   width: 100%;
 }
+@media (max-width: 640px) {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper-inner, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper-inner {
+    max-width: 640px;
+  }
+}
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta {
   display: table-cell;
   max-width: 100px;
@@ -4074,6 +4079,17 @@ ul.menu li {
 }
 #recaptcha_privacy a {
   font-size: 8px;
+}
+
+.no-menu a {
+  cursor: default !important;
+}
+.no-menu a:before, .no-menu a:after {
+  display: none !important;
+}
+
+.episodes-list-slider.horizontal .slick-list, .episodes-list-slider.horizontal .slick-track {
+  height: 100%;
 }
 
 img {
@@ -13447,35 +13463,32 @@ footer h2 {
 .consum-sidebar .episodes-list-slider.horizontal .horizontal-controls {
   display: none;
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a {
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control {
+  cursor: pointer;
   display: block;
   position: absolute;
-  top: 0px;
+  top: 0;
   height: 100%;
   z-index: 9;
   background: rgba(255, 255, 255, 0.6);
-}
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev {
-  left: 0;
   width: 60px;
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev.inactive {
-  display: none;
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-prev {
+  left: 0;
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev:after {
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-prev:after {
   content: "\e607";
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next {
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-next {
   right: 0;
-  width: 60px;
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next.inactive {
-  display: none;
-}
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next:after {
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-next:after {
   content: "\e608";
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a:after {
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control.slick-disabled {
+  display: none !important;
+}
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control:after {
   color: #545454;
   display: block;
   font-family: "ico-font";
@@ -13497,21 +13510,17 @@ footer h2 {
     height: auto;
   }
 }
-.consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
-  position: relative;
-}
-.consum-sidebar .episodes-list-slider.horizontal ul, .consum-sidebar .episodes-list-slider.horizontal .bx-viewport, .consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
-  width: 20000em;
+.consum-sidebar .episodes-list-slider.horizontal ul {
   position: relative;
   height: auto !important;
 }
 @media (min-width: 641px) {
-  .consum-sidebar .episodes-list-slider.horizontal ul, .consum-sidebar .episodes-list-slider.horizontal .bx-viewport, .consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
+  .consum-sidebar .episodes-list-slider.horizontal ul {
     height: 100% !important;
   }
 }
 @media (max-width: 640px) {
-  .consum-sidebar .episodes-list-slider.horizontal ul, .consum-sidebar .episodes-list-slider.horizontal .bx-viewport, .consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
+  .consum-sidebar .episodes-list-slider.horizontal ul {
     width: 100%;
   }
 }
@@ -13520,7 +13529,7 @@ footer h2 {
   margin-right: 2px;
   position: relative;
   height: 100%;
-  width: 33vw;
+  width: 33%;
 }
 @media (min-width: 641px) {
   .consum-sidebar .episodes-list-slider.horizontal li {
@@ -14121,7 +14130,6 @@ footer h2 {
   }
 }
 .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul {
-  width: 20000em;
   position: relative;
 }
 @media (max-width: 640px) {
@@ -15151,142 +15159,7 @@ footer h2 {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live .video-block.show-gallery .consum-sidebar .episodes-list-slider.vertical {
     display: block;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .episodes-list-slider.horizontal {
-    display: none;
-  }
-}
-.page-videos-live .video-block.show-gallery .section-title {
-  margin-top: 40px;
-}
-@media (min-width: 1025px) {
-  .page-videos-live .video-block.show-gallery .section-title {
-    float: left;
-    width: 74.7%;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .section-title {
-    width: calc(100% - 320px);
-  }
-}
-@media (max-width: 1024px) {
-  .page-videos-live .video-block.show-gallery .section-title {
-    clear: both;
-    padding-top: 40px;
-  }
-}
-@media (min-width: 1281px) {
-  .page-videos-live .video-block.show-gallery .gallery-wrapper {
-    height: 42.01875vw;
-    max-height: 1093.75px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .gallery-wrapper {
-    height: calc((100vw - 320px)*0.5625);
-  }
-}
-@media (max-width: 640px) {
-  .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .slider-horizontal {
-    top: 0 !important;
-  }
-}
-.page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
-  height: calc(100% - 250px);
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .player-wrapper {
-    margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .items-block {
-    height: auto;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .download-app {
-    display: table;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .more-items {
-    background: none !important;
-  }
-}
-.page-videos-live .video-block.show-app .consum-sidebar .download-app {
-  display: table;
-}
-@media (min-width: 1025px) {
-  .page-videos-live .video-block.show-gallery.show-app .consum-sidebar {
-    height: 45vw;
-    max-height: 1125px !important;
-  }
-}
-@media (min-width: 1025px) {
-  .page-videos-live .video-block.show-gallery {
-    height: auto;
-    max-height: none;
-  }
-}
-@media (min-width: 1281px) {
-  .page-videos-live .video-block.show-gallery .player-wrapper {
-    height: 42.01875vw;
-    max-height: 1093.75px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .player-wrapper {
-    height: calc((100vw - 320px)*0.5625);
-  }
-}
-@media (min-width: 1025px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar {
-    float: right;
-    height: 70vw;
-    max-height: 1750px !important;
-    overflow: hidden;
-    padding: 0;
-    position: relative;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar {
-    width: 320px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .more-items {
-    bottom: 0;
-    left: 0;
-    right: auto;
-    top: auto;
-    width: 100%;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .more-items a {
-    padding: 0 25px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .items-block {
-    position: relative;
-    right: auto;
-    top: auto;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .items-block-title h2 {
-    width: 100%;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .episodes-list-slider.vertical {
-    display: block;
+    height: calc(100% - 90px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -16165,7 +16038,7 @@ footer h2 {
   font-size: 1.5em;
   margin: 0.2em 0;
 }
-.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description h3, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description h3, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description h3, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description h3, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description h3, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description h3, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description h3, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description h3, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description h3, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description h3, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description h3, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description h3, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description h3 {
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description h3:not(.field-label) {
   font-size: 1.3em;
   margin: 0;
 }
@@ -27295,7 +27168,14 @@ yx-axis
   line-height: 0;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+  height: 43.75vw;
+  max-height: 1094px;
   width: 100%;
+}
+@media (max-width: 640px) {
+  #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+    height: 87.5vw;
+  }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
   position: relative;
@@ -29138,7 +29018,7 @@ yx-axis
 @media (max-width: 640px) {
   .aspot-and-episodes .show-aspot {
     float: none;
-    height: auto;
+    height: 87.5vw;
     width: 100%;
   }
 }
@@ -29306,12 +29186,6 @@ yx-axis
     line-height: 24px;
   }
 }
-.aspot-and-episodes .episodes-list .bx-wrapper {
-  height: 100% !important;
-}
-.aspot-and-episodes .episodes-list .bx-viewport {
-  height: 100% !important;
-}
 .aspot-and-episodes .episodes-list .episodes-list-slider.vertical {
   height: 90%;
   position: relative;
@@ -29359,35 +29233,32 @@ yx-axis
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls {
   display: none;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control {
+  cursor: pointer;
   display: block;
   position: absolute;
-  top: 0px;
+  top: 0;
   height: 100%;
   z-index: 9;
   background: rgba(255, 255, 255, 0.6);
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev {
-  left: 0;
   width: 60px;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev.inactive {
-  display: none;
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-prev {
+  left: 0;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev:after {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-prev:after {
   content: "\e607";
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-next {
   right: 0;
-  width: 60px;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next.inactive {
-  display: none;
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next:after {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-next:after {
   content: "\e608";
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a:after {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control.slick-disabled {
+  display: none !important;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control:after {
   color: #545454;
   display: block;
   font-family: "ico-font";
@@ -29409,60 +29280,61 @@ yx-axis
     display: none;
   }
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul {
-  width: 20000em;
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal {
+  overflow: hidden;
   position: relative;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul:after {
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal {
+    height: 18.5625vw;
+    width: 100%;
+  }
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal:after {
   clear: both;
   content: '';
   display: table;
 }
-@media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul {
-    width: 100%;
-  }
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item {
+  box-sizing: border-box;
   float: left;
   margin-right: 2px;
   margin-bottom: 0;
   height: 100%;
   position: relative;
-  width: 33vw;
-}
-@media (min-width: 641px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
-    max-width: 33.3vw;
-  }
+  width: 33%;
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item {
     height: 18.5625vw;
   }
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li .meta-icon {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li .meta-icon ~ .meta {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
 @media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item {
     float: none;
     margin: 0 0 2px 0;
     height: 56.25vw;
     overflow: hidden;
     width: 100%;
   }
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li:last-child {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item:last-child {
     margin-bottom: 0;
   }
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item .aspot-carousel-promo {
+  height: 100%;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button {
   background-color: #e9eaeb;
+  cursor: pointer;
   color: #545454;
   display: none;
   font-family: "texgyrescholaitalic", Times, serif;
@@ -29475,20 +29347,20 @@ yx-axis
   width: 100%;
 }
 @media (max-width: 480px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button {
     line-height: 80px;
   }
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.close .more-text {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button.close .more-text {
   display: none;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.close .close-text {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button.close .close-text {
   display: block;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.more .more-text {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button.more .more-text {
   display: block;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.more .close-text {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button.more .close-text {
   display: none;
 }
 .aspot-and-episodes .episodes-list .advertisement {

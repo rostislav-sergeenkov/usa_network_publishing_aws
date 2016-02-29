@@ -726,6 +726,9 @@
       display: table;
       position: relative;
       width: 100%;
+      @include breakpoint($bp-640-width) {
+        max-width: 640px;
+      }
     }
     .meta {
       display: table-cell;

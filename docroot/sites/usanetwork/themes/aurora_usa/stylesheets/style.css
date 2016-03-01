@@ -1570,6 +1570,11 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   position: relative;
   width: 100%;
 }
+@media (max-width: 640px) {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-wrapper-inner, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-wrapper-inner {
+    max-width: 640px;
+  }
+}
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta {
   display: table-cell;
   max-width: 100px;
@@ -4065,6 +4070,28 @@ ul.menu li {
   }
 }
 
+#recaptcha_privacy {
+  margin-top: -8px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 100%;
+}
+#recaptcha_privacy a {
+  font-size: 8px;
+}
+
+.no-menu a {
+  cursor: default !important;
+}
+.no-menu a:before, .no-menu a:after {
+  display: none !important;
+}
+
+.episodes-list-slider.horizontal .slick-list, .episodes-list-slider.horizontal .slick-track {
+  height: 100%;
+}
+
 img {
   height: auto;
   vertical-align: text-bottom;
@@ -5313,203 +5340,203 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 }
 
 .icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev, .icons-arrow-prev, .icons-close_welcome_popup, .tveModal .modalHeader .closeButton, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after, .icons-sync-now-small, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
-  background: url('../images/icons-s063d43a0ab.png') no-repeat;
+  background: url('../images/icons-s4b131226d7.png') no-repeat;
 }
 
 .icons-arrow-next-hover-v2 {
-  background-position: 0 -1177px;
+  background-position: 0 -657px;
 }
 
 .icons-arrow-next-v2, .ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next {
-  background-position: 0 -1455px;
+  background-position: 0 -989px;
 }
 
 .icons-arrow-next {
-  background-position: 0 -1573px;
+  background-position: 0 -2724px;
 }
 
 .icons-arrow-prev-hover-v2 {
-  background-position: 0 -1257px;
+  background-position: 0 -777px;
 }
 
 .icons-arrow-prev-v2, .ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev {
-  background-position: 0 -1909px;
+  background-position: 0 -909px;
 }
 
 .icons-arrow-prev {
-  background-position: 0 -1688px;
+  background-position: 0 -2801px;
 }
 
 .icons-close_welcome_popup, .tveModal.loginModal .modalHeader .closeButton, .tveModal .modalHeader .closeButton {
-  background-position: 0 -2399px;
+  background-position: 0 -737px;
 }
 
 .icons-facebook-hover-v6, .ie9 .icons-social a.usasocial-fb:hover, .ie8 .icons-social a.usasocial-fb:hover {
-  background-position: 0 -2795px;
+  background-position: 0 -2159px;
 }
 
 .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb {
-  background-position: 0 -2643px;
+  background-position: 0 -2211px;
 }
 
 .icons-facebook {
-  background-position: 0 -1125px;
+  background-position: 0 -1341px;
 }
 
 .icons-follow-facebook-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-fb:hover, .ie8 .social-follow-block .icons-social .usasocial-fb:hover {
-  background-position: 0 -1650px;
+  background-position: 0 -2319px;
 }
 
 .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb {
-  background-position: 0 -2027px;
+  background-position: 0 -2357px;
 }
 
 .icons-follow-facebook-v3 {
-  background-position: 0 -2257px;
+  background-position: 0 -2655px;
 }
 
 .icons-follow-facebook {
-  background-position: 0 -846px;
+  background-position: 0 -1974px;
 }
 
 .icons-follow-twitter-hover-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter:hover, .ie8 .icons-social a.person-twitter.usasocial-twitter:hover, .ie9 .social-follow-block .icons-social .usasocial-twitter:hover, .ie8 .social-follow-block .icons-social .usasocial-twitter:hover {
-  background-position: 0 -665px;
+  background-position: 0 -1069px;
 }
 
 .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter {
-  background-position: 0 -808px;
+  background-position: 0 -1107px;
 }
 
 .icons-follow-twitter-v3 {
-  background-position: 0 -1871px;
+  background-position: 0 -1846px;
 }
 
 .icons-follow-twitter {
-  background-position: 0 -556px;
+  background-position: 0 -416px;
 }
 
 .icons-gray-arrow-left {
-  background-position: 0 -1765px;
+  background-position: 0 -2486px;
 }
 
 .icons-gray-arrow-right {
-  background-position: 0 -1818px;
+  background-position: 0 -2395px;
 }
 
 .icons-ico-close-tray-mobi {
-  background-position: 0 -2143px;
+  background-position: 0 -2577px;
 }
 
 .icons-ico-close-tray-tablet {
-  background-position: 0 -2103px;
+  background-position: 0 -2615px;
 }
 
 .icons-line-arrow-gray, #utilities .breadcrumb .separator {
-  background-position: 0 -445px;
+  background-position: 0 -2263px;
 }
 
 .icons-logo-usa-mobi {
-  background-position: 0 -703px;
+  background-position: 0 -609px;
 }
 
 .icons-logo-usa-tablet {
-  background-position: 0 -611px;
+  background-position: 0 -555px;
 }
 
 .icons-on_now {
-  background-position: 0 -2695px;
+  background-position: 0 -1445px;
 }
 
 .icons-on_now_blue {
-  background-position: 0 -2595px;
+  background-position: 0 -1493px;
 }
 
 .icons-pinterest-hover-v2, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover, .ie9 .social-follow-block .icons-social .usasocial-pinterest:hover, .ie8 .social-follow-block .icons-social .usasocial-pinterest:hover {
-  background-position: 0 -1535px;
+  background-position: 0 -2069px;
 }
 
 .icons-pinterest-hover-v3 {
-  background-position: 0 -1989px;
+  background-position: 0 -1581px;
 }
 
 .icons-pinterest-hover-v4 {
-  background-position: 0 -1377px;
+  background-position: 0 -1301px;
 }
 
 .icons-pinterest-hover-v6 {
-  background-position: 0 -2491px;
+  background-position: 0 -1145px;
 }
 
 .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
-  background-position: 0 -1417px;
+  background-position: 0 -1936px;
 }
 
 .icons-pinterest-v4 {
-  background-position: 0 -1337px;
+  background-position: 0 -1541px;
 }
 
 .icons-pinterest-v5 {
-  background-position: 0 -2065px;
+  background-position: 0 -2031px;
 }
 
 .icons-pinterest-v6 {
-  background-position: 0 -2439px;
+  background-position: 0 -1393px;
 }
 
 .icons-pinterest {
-  background-position: 0 0;
+  background-position: 0 -277px;
 }
 .icons-pinterest:hover, .icons-pinterest.pinterest_hover, .icons-pinterest.pinterest-hover {
-  background-position: 0 -84px;
+  background-position: 0 -193px;
 }
 
 .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after,
 .ie8 .usa-secondary-menu .shows > li.first > span:hover:after {
-  background-position: 0 -2847px;
+  background-position: 0 -2693px;
 }
 
 .icons-sync-now-small {
-  background-position: 0 -376px;
+  background-position: 0 -124px;
 }
 
 .icons-sync-now {
-  background-position: 0 -252px;
+  background-position: 0 0;
 }
 
 .icons-tumblr-hover-v2, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover, .ie9 .social-follow-block .icons-social .usasocial-tumblr:hover, .ie8 .social-follow-block .icons-social .usasocial-tumblr:hover {
-  background-position: 0 -2219px;
+  background-position: 0 -2448px;
 }
 
 .icons-tumblr-hover-v3 {
-  background-position: 0 -2743px;
+  background-position: 0 -1884px;
 }
 
 .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
-  background-position: 0 -2181px;
+  background-position: 0 -2539px;
 }
 
 .icons-tumblr-v3 {
-  background-position: 0 -2543px;
+  background-position: 0 -2107px;
 }
 
 .icons-tumblr {
-  background-position: 0 -1073px;
+  background-position: 0 -1249px;
 }
 
 .icons-twitter-hover-v4 {
-  background-position: 0 -2347px;
+  background-position: 0 -857px;
 }
 
 .icons-twitter-v4 {
-  background-position: 0 -2295px;
+  background-position: 0 -1197px;
 }
 
 .icons-twitter {
-  background-position: 0 -168px;
+  background-position: 0 -471px;
 }
 
 .icons-watch-alt {
-  background-position: 0 -903px;
+  background-position: 0 -1619px;
 }
 
 .seoh1 {
@@ -13097,7 +13124,7 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .consum-sidebar {
-    height: auto;
+    height: auto !important;
     width: 100%;
   }
 }
@@ -13143,13 +13170,13 @@ footer h2 {
   }
 }
 @media (min-width: 1025px) {
-  .consum-sidebar.sticky-sidebar.related-visible, .consum-sidebar.sticky-sidebar.social-visible {
+  .consum-sidebar.sticky-sidebar.related-visible, .consum-sidebar.sticky-sidebar.social-visible, .consum-sidebar.sticky-sidebar.footer-visible {
     bottom: 0;
     position: absolute !important;
     top: auto !important;
   }
 }
-.consum-sidebar:not(.related-visible):not(.social-visible) {
+.consum-sidebar:not(.related-visible):not(.social-visible):not(.footer-visible) {
   max-height: none !important;
 }
 .consum-sidebar .advert {
@@ -13436,35 +13463,32 @@ footer h2 {
 .consum-sidebar .episodes-list-slider.horizontal .horizontal-controls {
   display: none;
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a {
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control {
+  cursor: pointer;
   display: block;
   position: absolute;
-  top: 0px;
+  top: 0;
   height: 100%;
   z-index: 9;
   background: rgba(255, 255, 255, 0.6);
-}
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev {
-  left: 0;
   width: 60px;
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev.inactive {
-  display: none;
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-prev {
+  left: 0;
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev:after {
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-prev:after {
   content: "\e607";
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next {
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-next {
   right: 0;
-  width: 60px;
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next.inactive {
-  display: none;
-}
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next:after {
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-next:after {
   content: "\e608";
 }
-.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls a:after {
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control.slick-disabled {
+  display: none !important;
+}
+.consum-sidebar .episodes-list-slider.horizontal .horizontal-controls .slide-control:after {
   color: #545454;
   display: block;
   font-family: "ico-font";
@@ -13486,21 +13510,17 @@ footer h2 {
     height: auto;
   }
 }
-.consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
-  position: relative;
-}
-.consum-sidebar .episodes-list-slider.horizontal ul, .consum-sidebar .episodes-list-slider.horizontal .bx-viewport, .consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
-  width: 20000em;
+.consum-sidebar .episodes-list-slider.horizontal ul {
   position: relative;
   height: auto !important;
 }
 @media (min-width: 641px) {
-  .consum-sidebar .episodes-list-slider.horizontal ul, .consum-sidebar .episodes-list-slider.horizontal .bx-viewport, .consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
+  .consum-sidebar .episodes-list-slider.horizontal ul {
     height: 100% !important;
   }
 }
 @media (max-width: 640px) {
-  .consum-sidebar .episodes-list-slider.horizontal ul, .consum-sidebar .episodes-list-slider.horizontal .bx-viewport, .consum-sidebar .episodes-list-slider.horizontal .bx-wrapper {
+  .consum-sidebar .episodes-list-slider.horizontal ul {
     width: 100%;
   }
 }
@@ -13509,7 +13529,7 @@ footer h2 {
   margin-right: 2px;
   position: relative;
   height: 100%;
-  width: 33vw;
+  width: 33%;
 }
 @media (min-width: 641px) {
   .consum-sidebar .episodes-list-slider.horizontal li {
@@ -14063,7 +14083,6 @@ footer h2 {
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .consum-sidebar, .consumptionator-episode-main-block .consum-sidebar, .consumptionator-quiz-main-block .consum-sidebar, .consumptionator-post-main-block .consum-sidebar {
     float: none;
-    height: auto !important;
     max-height: none !important;
     padding: 0;
     position: relative;
@@ -14111,7 +14130,6 @@ footer h2 {
   }
 }
 .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal ul {
-  width: 20000em;
   position: relative;
 }
 @media (max-width: 640px) {
@@ -15102,8 +15120,6 @@ footer h2 {
 @media (min-width: 1025px) {
   .page-videos-live .video-block.show-gallery .consum-sidebar {
     float: right;
-    height: 70vw;
-    max-height: 1750px !important;
     overflow: hidden;
     padding: 0;
     position: relative;
@@ -15143,6 +15159,7 @@ footer h2 {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live .video-block.show-gallery .consum-sidebar .episodes-list-slider.vertical {
     display: block;
+    height: calc(100% - 90px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -16017,6 +16034,18 @@ footer h2 {
     color: #545454;
   }
 }
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description h2, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description h2, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description h2, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description h2, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description h2, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description h2, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description h2, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description h2, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description h2, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description h2, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description h2, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description h2, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description h2, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description h2, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description h2, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description h2 {
+  font-size: 1.5em;
+  margin: 0.2em 0;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description h3:not(.field-label), .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description h3:not(.field-label) {
+  font-size: 1.3em;
+  margin: 0;
+}
+.consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description h4, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description h4, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description h4, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description h4, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description h4, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description h4, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description h4, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description h4, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description h4, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description h4, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description h4, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description h4, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description h4, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description h4, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description h4, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description h4 {
+  font-size: 1em;
+  margin: 0;
+}
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description p:first-child, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description p:first-child, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description p:first-child, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description p:first-child, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description p:first-child, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description p:first-child, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description p:first-child, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description p:first-child, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description p:first-child, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description p:first-child, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description p:first-child, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description p:first-child, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description p:first-child, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description p:first-child, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description p:first-child, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description p:first-child {
   margin-top: 0;
 }
@@ -16604,8 +16633,11 @@ footer h2 {
     width: 56vw;
   }
 }
-.shows-block .carousel ul li.active .show-info-block {
+.shows-block .carousel ul li.active .show-info-block .show-link {
   display: block;
+}
+.shows-block .carousel ul li.active .show-info-block .show-info-block-wrapper > div {
+  visibility: visible;
 }
 .shows-block .carousel ul li.active a.close-button {
   display: block;
@@ -16896,7 +16928,7 @@ footer h2 {
 }
 .shows-block .show-info-block {
   background: #bbb7b7;
-  display: none;
+  display: block;
   left: 270px;
   height: 100%;
   position: absolute;
@@ -16906,9 +16938,9 @@ footer h2 {
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block {
-    left: 434px;
+    left: 453px;
     min-width: 1730px;
-    width: calc(100% - 434px);
+    width: calc(100% - 453px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -16926,17 +16958,13 @@ footer h2 {
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block {
-    left: calc(56vw - 15px);
+    left: 56vw;
     min-width: 240px;
     width: calc(100% - 56vw - 15px);
   }
 }
-@media (max-width: 480px) {
-  .shows-block .show-info-block {
-    width: calc(100% - 56vw);
-  }
-}
 .shows-block .show-info-block .show-link {
+  display: none;
   right: 40px;
   position: absolute;
   top: 25px;
@@ -17136,6 +17164,9 @@ footer h2 {
   .shows-block .show-info-block .show-info-block-wrapper {
     padding: 70px 15px 20px;
   }
+}
+.shows-block .show-info-block .show-info-block-wrapper > div {
+  visibility: hidden;
 }
 .shows-block .show-info-block .show-top-info {
   margin-right: 130px;
@@ -27137,7 +27168,14 @@ yx-axis
   line-height: 0;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+  height: 43.75vw;
+  max-height: 1094px;
   width: 100%;
+}
+@media (max-width: 640px) {
+  #block-usanetwork-aspot-usanetwork-aspot-carousel .asset-img img {
+    height: 87.5vw;
+  }
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel .slide {
   position: relative;
@@ -28980,7 +29018,7 @@ yx-axis
 @media (max-width: 640px) {
   .aspot-and-episodes .show-aspot {
     float: none;
-    height: auto;
+    height: 87.5vw;
     width: 100%;
   }
 }
@@ -29148,12 +29186,6 @@ yx-axis
     line-height: 24px;
   }
 }
-.aspot-and-episodes .episodes-list .bx-wrapper {
-  height: 100% !important;
-}
-.aspot-and-episodes .episodes-list .bx-viewport {
-  height: 100% !important;
-}
 .aspot-and-episodes .episodes-list .episodes-list-slider.vertical {
   height: 90%;
   position: relative;
@@ -29201,35 +29233,32 @@ yx-axis
 .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls {
   display: none;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control {
+  cursor: pointer;
   display: block;
   position: absolute;
-  top: 0px;
+  top: 0;
   height: 100%;
   z-index: 9;
   background: rgba(255, 255, 255, 0.6);
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev {
-  left: 0;
   width: 60px;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev.inactive {
-  display: none;
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-prev {
+  left: 0;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-prev:after {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-prev:after {
   content: "\e607";
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-next {
   right: 0;
-  width: 60px;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next.inactive {
-  display: none;
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a.jcarousel-control-next:after {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control.slide-next:after {
   content: "\e608";
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls a:after {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control.slick-disabled {
+  display: none !important;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .horizontal-controls .slide-control:after {
   color: #545454;
   display: block;
   font-family: "ico-font";
@@ -29251,60 +29280,61 @@ yx-axis
     display: none;
   }
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul {
-  width: 20000em;
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal {
+  overflow: hidden;
   position: relative;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul:after {
+@media (min-width: 641px) and (max-width: 768px) {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal {
+    height: 18.5625vw;
+    width: 100%;
+  }
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal:after {
   clear: both;
   content: '';
   display: table;
 }
-@media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul {
-    width: 100%;
-  }
-}
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item {
+  box-sizing: border-box;
   float: left;
   margin-right: 2px;
   margin-bottom: 0;
   height: 100%;
   position: relative;
-  width: 33vw;
-}
-@media (min-width: 641px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
-    max-width: 33.3vw;
-  }
+  width: 33%;
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item {
     height: 18.5625vw;
   }
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li .meta-icon {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li .meta-icon ~ .meta {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
 @media (max-width: 640px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item {
     float: none;
     margin: 0 0 2px 0;
     height: 56.25vw;
     overflow: hidden;
     width: 100%;
   }
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal ul li:last-child {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item:last-child {
     margin-bottom: 0;
   }
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .slider-horizontal .slide-item .aspot-carousel-promo {
+  height: 100%;
+}
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button {
   background-color: #e9eaeb;
+  cursor: pointer;
   color: #545454;
   display: none;
   font-family: "texgyrescholaitalic", Times, serif;
@@ -29317,20 +29347,20 @@ yx-axis
   width: 100%;
 }
 @media (max-width: 480px) {
-  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button {
+  .aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button {
     line-height: 80px;
   }
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.close .more-text {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button.close .more-text {
   display: none;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.close .close-text {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button.close .close-text {
   display: block;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.more .more-text {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button.more .more-text {
   display: block;
 }
-.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal a.more-button.more .close-text {
+.aspot-and-episodes .episodes-list .episodes-list-slider.horizontal .more-button.more .close-text {
   display: none;
 }
 .aspot-and-episodes .episodes-list .advertisement {

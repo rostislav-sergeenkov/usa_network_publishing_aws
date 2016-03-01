@@ -34,7 +34,7 @@
     width: 100%;
   }
   @include breakpoint($bp-1024-width) {
-    height: auto;
+    height: auto!important;
     width: 100%;
   }
   &.sticky-sidebar {
@@ -73,7 +73,7 @@
       right: auto;
       width: 628px;
     }
-    &.related-visible, &.social-visible {
+    &.related-visible, &.social-visible, &.footer-visible {
       @include breakpoint($bp-min-1025-width) {
         bottom: 0;
         position: absolute!important;
@@ -81,7 +81,7 @@
       }
     }
   }
-  &:not(.related-visible):not(.social-visible) {
+  &:not(.related-visible):not(.social-visible):not(.footer-visible) {
     max-height: none!important;
   }
   .advert {
@@ -314,37 +314,34 @@
       }
       .horizontal-controls {
         display: none;
-        a {
+        .slide-control {
+          cursor: pointer;
           display: block;
           position: absolute;
-          top: 0px;
+          top: 0;
           height: 100%;
           z-index: 9;
-          background: rgba(255,255,255,0.6);
-          &.jcarousel-control-prev {
+          background: rgba(255, 255, 255, 0.6);
+          width: 60px;
+          &.slide-prev {
             left: 0;
-            width: 60px;
-            &.inactive {
-              display: none;
-            }
             &:after {
               content: "\e607";
             }
           }
-          &.jcarousel-control-next {
+          &.slide-next {
             right: 0;
-            width: 60px;
-            &.inactive {
-              display: none;
-            }
             &:after {
               content: "\e608";
             }
           }
+          &.slick-disabled {
+            display: none !important;
+          }
           &:after {
             color: #545454;
             display: block;
-            font-family: "ico-font";
+            font-family: $ico-font;
             font-size: 32px;
             left: 50%;
             margin-left: -16px;
@@ -361,11 +358,7 @@
       @include breakpoint($bp-640-width) {
         height: auto;
       }
-      .bx-wrapper {
-        position: relative;
-      }
-      ul, .bx-viewport, .bx-wrapper {
-        width: 20000em;
+      ul {
         position: relative;
         height: auto!important;
         @include breakpoint($bp-min-641-width) {
@@ -380,7 +373,7 @@
         margin-right: 2px;
         position: relative;
         height: 100%;
-        width: 33vw;
+        width: 33%;
         @extend %aspot-carousel-promo;
         @include breakpoint($bp-min-641-width) {
           max-width: 33.3vw;
@@ -860,7 +853,6 @@
     }
     @include breakpoint($bp-1024-width) {
       float: none;
-      height: auto!important;
       max-height: none!important;
       padding: 0;
       position: relative;
@@ -898,7 +890,6 @@
             display: none;
           }
           ul {
-            width: 20000em;
             position: relative;
             @include breakpoint($bp-640-width) {
               width: 100%;

@@ -12,7 +12,7 @@
     <h2><?php print t('Season ').$season_number.t(' episode guides')?></h2>
   </div>
   <?php if (!empty($episodes['vertical'])): ?>
-    <div class="episodes-list-slider vertical" data-mode="vertical">
+    <div class="episodes-list-slider vertical">
       <ul class="slider-vertical">
         <?php foreach ($episodes['vertical'] as $item_v): ?>
           <?php print $item_v; ?>
@@ -21,19 +21,19 @@
     </div>
   <?php endif; ?>
   <?php if (!empty($episodes['horizontal'])): ?>
-    <div class="episodes-list-slider horizontal no-hidden-items" data-mode="horizontal" data-block-name="Right Rail Carousel">
+    <div class="episodes-list-slider horizontal no-hidden-items" data-block-name="Right Rail Carousel">
       <ul class="slider-horizontal">
         <?php foreach ($episodes['horizontal'] as $item_h): ?>
           <?php print $item_h; ?>
         <?php endforeach; ?>
       </ul>
       <div class="horizontal-controls">
-        <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
-        <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
+        <div class="slide-next slide-control slick-disabled"></div>
+        <div class="slide-prev slide-control slick-disabled"></div>
       </div>
     </div>
   <?php endif; ?>
 </div>
 <div class="more-items more-episodes show-color">
-  <a href="<?php print $all_episodes_link; ?>"> View All episodes</a>
+  <a href="<?php print $all_episodes_link; ?>"><?php print t('View All episodes'); ?></a>
 </div>

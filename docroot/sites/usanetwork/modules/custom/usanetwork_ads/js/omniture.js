@@ -639,7 +639,7 @@
         });
 
         // Click promo item
-        $('a.jcarousel-controls').once('omniture-tracking', function () {
+        $('.episodes-list-slider.horizontal .slide-control, a.jcarousel-controls').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {
@@ -652,9 +652,9 @@
                   target = $(this),
                   pageName, blockName, nameNav, fullName;
 
-              if (target.hasClass('jcarousel-control-prev')) {
+              if (target.hasClass('jcarousel-control-prev') || target.hasClass('slide-prev')) {
                 nameNav = 'Carousel Back';
-              } else if (target.hasClass('jcarousel-control-next')) {
+              } else if (target.hasClass('jcarousel-control-next') || target.hasClass('slide-next')) {
                 nameNav = 'Carousel Next';
               }
 

@@ -5,7 +5,7 @@
      data-episode-title="<?php print $filename; ?>"
      data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
      data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>">
-  <div class="player-wrapper">
+  <div class="player-wrapper<?php print ($is_live)? ' right-rail-line': ''; ?>">
     <div class="node usanetwork-aspot player">
       <?php if (!empty($video_inactive)): ?>
         <div class="video-player-wrapper inactive">

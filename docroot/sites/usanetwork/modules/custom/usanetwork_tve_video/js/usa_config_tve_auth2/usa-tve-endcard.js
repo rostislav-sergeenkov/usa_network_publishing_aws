@@ -295,6 +295,10 @@
               episodePID, USAEndCardAPI, paramsData, timeoutUpNext, reInitApi,
               usaHelper;
 
+          if (window.hasOwnProperty('$pdk') == false) {
+            return;
+          }
+
           // systems
           $window = ng.element(window);
           isMobile = helper.device.isMobile;

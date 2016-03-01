@@ -30,7 +30,7 @@ body.page-node-microsite {
   background-color: transparent;
   padding: 0;
 }
-section > h2 {
+section .section-title-block > h2 {
   background-repeat: no-repeat;
   background-size: contain;
   clear: none;
@@ -51,6 +51,27 @@ section > h2 {
   clear: both;
   content: '';
   display: table;
+}
+
+body:not(.ie9) .section-title-block {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+body:not(.ie9) section .section-title-block > h2 {
+  -ms-flex-item-align: start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  float: none;
+  margin: 0!important;
+}
+body:not(.ie9) .section-description {
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+  align-self: center;
+  float: none;
+  margin: 0!important;
 }
 
 /* HOME */
@@ -177,7 +198,7 @@ section > h2 {
 }
 
 /* TIMELINE GALLERIES */
-#timeline section > h2 {
+#timeline section .section-title-block > h2 {
   background-image: url('../images/bts_sectitle.png');
   height: 111px;
   margin-left: calc(50% - 333px);
@@ -245,7 +266,7 @@ section > h2 {
 #characters-container {
   padding-top: 92px;
 }
-#characters section > h2 {
+#characters section .section-title-block > h2 {
   background-image: url('../images/character_sectitle.png');
 /*  background-image: url('../images/meetthecast_sectitle.png'); */
   height: 79px;
@@ -306,7 +327,7 @@ section > h2 {
 #quizzes article.node-quiz {
   font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
 }
-#quizzes section > h2 {
+#quizzes section .section-title-block > h2 {
   background-image: url('../images/trivia_sectitle.png');
   height: 71px;
   margin-left: calc(50% - 287px);
@@ -340,12 +361,12 @@ section > h2 {
   .section-description {
     width: 324px;
   }
-  #timeline section > h2 {
+  #timeline section .section-title-block > h2 {
     height: 94px;
     margin-left: calc(50% - 298.5px);
     width: 263px;
   }
-  #characters section > h2 {
+  #characters section .section-title-block > h2 {
     height: 66px;
     margin-left: calc(50% - 313.5px);
     width: 293px;
@@ -353,7 +374,7 @@ section > h2 {
   #characters-container {
     padding-top: 86px;
   }
-  #quizzes section > h2 {
+  #quizzes section .section-title-block > h2 {
     height: 65px;
     margin-left: calc(50% - 267.5px);
     width: 201px;
@@ -384,12 +405,12 @@ section > h2 {
     margin: 0px auto 20px;
     width: 172px;
   }
-  #timeline section > h2 {
+  #timeline section .section-title-block > h2 {
     height: 43px;
     margin-left: calc(50% - 156px);
     width: 120px;
   }
-  #characters section > h2 {
+  #characters section .section-title-block > h2 {
     height: 27px;
     margin-left: calc(50% - 156px);
     width: 120px;
@@ -397,7 +418,7 @@ section > h2 {
   #characters-container {
     padding-top: 62px;
   }
-  #quizzes section > h2 {
+  #quizzes section .section-title-block > h2 {
     height: 39px;
     margin-left: calc(50% - 156px);
     width: 120px;

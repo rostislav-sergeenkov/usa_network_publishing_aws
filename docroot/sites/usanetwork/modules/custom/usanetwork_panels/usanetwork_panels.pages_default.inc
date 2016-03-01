@@ -117,103 +117,107 @@ function usanetwork_panels_default_page_manager_handlers() {
   );
   $display->cache = array();
   $display->title = '';
+  $display->uuid = '7d274154-90dc-44ed-89b0-f3255e4b221d';
   $display->content = array();
   $display->panels = array();
-  $pane = new stdClass();
-  $pane->pid = 'new-1';
-  $pane->panel = 'four';
-  $pane->type = 'block';
-  $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_fbp';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 0;
-  $pane->locks = array();
-  $display->content['new-1'] = $pane;
-  $display->panels['four'][0] = 'new-1';
-  $pane = new stdClass();
-  $pane->pid = 'new-2';
-  $pane->panel = 'one';
-  $pane->type = 'block';
-  $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_aspot';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
-    'formatter' => 'usanetwork_tv_shows_display_entity_view',
-    'formatter_settings' => array(
-      'view_mode_large' => 'promo_teaser_large',
-    ),
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 0;
-  $pane->locks = array();
-  $display->content['new-2'] = $pane;
-  $display->panels['one'][0] = 'new-2';
-  $pane = new stdClass();
-  $pane->pid = 'new-3';
-  $pane->panel = 'two';
-  $pane->type = 'block';
-  $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_best_of';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 0;
-  $pane->locks = array();
-  $display->content['new-3'] = $pane;
-  $display->panels['two'][0] = 'new-3';
-  $pane = new stdClass();
-  $pane->pid = 'new-4';
-  $pane->panel = 'two';
-  $pane->type = 'block';
-  $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_related';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 1;
-  $pane->locks = array();
-  $display->content['new-4'] = $pane;
-  $display->panels['two'][1] = 'new-4';
+    $pane = new stdClass();
+    $pane->pid = 'new-aa1be29c-1189-4762-9156-4421257c0a58';
+    $pane->panel = 'four';
+    $pane->type = 'block';
+    $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_fbp';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'aa1be29c-1189-4762-9156-4421257c0a58';
+    $display->content['new-aa1be29c-1189-4762-9156-4421257c0a58'] = $pane;
+    $display->panels['four'][0] = 'new-aa1be29c-1189-4762-9156-4421257c0a58';
+    $pane = new stdClass();
+    $pane->pid = 'new-62dc2c1a-3f4a-4388-a282-532451441599';
+    $pane->panel = 'one';
+    $pane->type = 'block';
+    $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_aspot';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+      'formatter' => 'usanetwork_tv_shows_display_entity_view',
+      'formatter_settings' => array(
+        'view_mode_large' => 'promo_teaser_large',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '62dc2c1a-3f4a-4388-a282-532451441599';
+    $display->content['new-62dc2c1a-3f4a-4388-a282-532451441599'] = $pane;
+    $display->panels['one'][0] = 'new-62dc2c1a-3f4a-4388-a282-532451441599';
+    $pane = new stdClass();
+    $pane->pid = 'new-2a679cc1-d25a-4599-86bd-c1475730f64f';
+    $pane->panel = 'two';
+    $pane->type = 'block';
+    $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_best_of';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '2a679cc1-d25a-4599-86bd-c1475730f64f';
+    $display->content['new-2a679cc1-d25a-4599-86bd-c1475730f64f'] = $pane;
+    $display->panels['two'][0] = 'new-2a679cc1-d25a-4599-86bd-c1475730f64f';
+    $pane = new stdClass();
+    $pane->pid = 'new-17d2fcf0-5a04-4919-bb2b-75d6fbf41ee9';
+    $pane->panel = 'two';
+    $pane->type = 'block';
+    $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_related';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '17d2fcf0-5a04-4919-bb2b-75d6fbf41ee9';
+    $display->content['new-17d2fcf0-5a04-4919-bb2b-75d6fbf41ee9'] = $pane;
+    $display->panels['two'][1] = 'new-17d2fcf0-5a04-4919-bb2b-75d6fbf41ee9';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
-
   $export['node_view_panel_context_2'] = $handler;
 
   return $export;

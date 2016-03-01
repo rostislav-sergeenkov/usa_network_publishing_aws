@@ -29,6 +29,7 @@
                     usaTvePlayer = $(element).find('[data-usa-tve-player="pdk-player"]'),
                     episodeUpNextUrl = usaTvePlayer.data('next-episode-url'),
                     episodePID = usaTvePlayer.data('episode-pid'),
+                    isAdStart = false,
                     isNextUrl = false,
                     usaLoadReleaseUrl = false,
                     usaReleaseEnd = false;
@@ -113,6 +114,13 @@
                     usaReleaseEnd = true;
                   }
 
+                  if (isAdStart) {
+                    usa_debug('ad_end');
+                    isAdStart = false;
+                    AdobeTracking.videoBreakPoint = "Ads Off";
+                    _satellite.track('setVideoBreakPoint');
+                  }
+
                   // redirect to next episode
                   usaEndCardHelper.timeoutUpNext({
                     episodeUpNextUrl: episodeUpNextUrl,
@@ -167,6 +175,7 @@
                  * Media Start event callback so that we can show the metadata section
                  */
                 function _onMediaStart(pdkEvent) {
+
                   var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
 
                   if (!baseClip.isAd && resuming) {
@@ -176,11 +185,26 @@
 
                   if (baseClip && pdkEvent.data.baseClip.isAd) {
                     // Functionality for ad playing event
+
                     updateStatusAd(pdkEvent.data.baseClip.isAd);
+
+                    if (isAdStart == false) {
+                      usa_debug('ad_start');
+                      isAdStart = pdkEvent.data.baseClip.isAd;
+                      AdobeTracking.videoBreakPoint = "Ads On";
+                      _satellite.track('setVideoBreakPoint');
+                    }
                   }
                   else {
 
                     updateStatusAd(pdkEvent.data.baseClip.isAd);
+
+                    if (isAdStart) {
+                      usa_debug('ad_end');
+                      isAdStart = pdkEvent.data.baseClip.isAd;
+                      AdobeTracking.videoBreakPoint = "Ads Off";
+                      _satellite.track('setVideoBreakPoint');
+                    }
 
                     if (!usaVideoSettingsRun) {
                       usaVideoSettingsRun = seekToPosition();

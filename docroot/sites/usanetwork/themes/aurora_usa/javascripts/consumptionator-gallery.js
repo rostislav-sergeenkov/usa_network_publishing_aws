@@ -74,8 +74,8 @@
         interstitialNext: '.interstitial-next',
 
         // interstitial params
-        interstitialInitPages: ['all'], // default all, body classes for init interstitial ["node-type-media-gallery", "node-type-consumpt-post", "node-type-tv-episode"]
-
+        //interstitialInitPages: ['all'], //default all, body classes for init interstitial ["node-type-media-gallery", "node-type-consumpt-post", "node-type-tv-episode"]
+        interstitialInitPages: ["node-type-media-gallery", "node-type-tv-episode"],
         // params
         slideCounterSeparator: ' of ',
         pagerPositionBp: 1024,
@@ -98,6 +98,7 @@
           autoplay: false,
           infinite: false,
           speed: 400,
+          lazyLoad: 'ondemand',
           initialSlide: 0,
           slidesToShow: 1,
           adaptiveHeight: true,
@@ -306,7 +307,7 @@
               var url = window.location.href.split('#')[0];
               sharebar.gigyaSharebar.ua.linkBack = link_back + slideIndex;
               sharebar.gigyaSharebar.ua.imageBhev = 'url';
-              sharebar.gigyaSharebar.ua.imageUrl = imageUrl.attr('data-src-share') ? imageUrl.attr('data-src-share') : imageUrl.attr('src');
+              sharebar.gigyaSharebar.ua.imageUrl = imageUrl.attr('src') ? imageUrl.attr('src') : imageUrl.attr('data-lazy');
               sharebar.gigyaSharebar.ua.description = description;
               Drupal.gigya.showSharebar(sharebar);
             }
@@ -323,10 +324,10 @@
   usaGallery.prototype.createCustomPaging = function (slick, index) {
 
     var $slide = $(slick.$slides[index].innerHTML),
-        img = $slide.find('img')[0].outerHTML,
+        imgPreviewUrl = $($slide.find('img')[0]).data('preview'),
         showColorPager = ($('body[class*=" show-"]').length > 0 || $('body').hasClass('page-videos-live')) ? 'show-color ' : '';
 
-    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div>' + img + '</div>';
+    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div><img src="' + imgPreviewUrl + '" alt=""></div>';
   };
 
   usaGallery.prototype.createSlidesCounter = function (slick) {
@@ -632,9 +633,7 @@
             _.updateGalleryElem(_);
             _.createPagerPosition(_);
             _.setPagerPosition(_);
-            if($('body').hasClass('page-videos-live')){
-              _.gigyaSharebar(initialSlide);
-            }
+            _.gigyaSharebar(initialSlide);
             _.movePagerItems(_, initialSlide);
 
           if (initSlidesCounter) {

@@ -21,7 +21,7 @@
           <?php endif; ?>
         </div>
       <?php endif; ?>
-      <div class="episodes-list-slider vertical" data-mode="vertical">
+      <div class="episodes-list-slider vertical">
         <ul class="slider-vertical">
           <?php foreach ($episodes as $episode): ?>
             <li class="slide-item">
@@ -52,7 +52,7 @@
           <?php endforeach; ?>
         </ul>
       </div>
-      <div class="episodes-list-slider horizontal show-border" data-mode="horizontal" data-block-name="Right Rail Carousel">
+      <div class="episodes-list-slider horizontal show-border" data-block-name="Right Rail Carousel">
         <ul class="slider-horizontal">
           <?php foreach ($episodes as $episode): ?>
             <li class="slide-item">
@@ -83,15 +83,17 @@
           <?php endforeach; ?>
         </ul>
         <div class="horizontal-controls">
-          <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
-          <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
+          <div class="slide-next slide-control slick-disabled"></div>
+          <div class="slide-prev slide-control slick-disabled"></div>
         </div>
-        <div class="more-button-wrapper">
-          <a href="javascript:void(o)" class="more-button more">
-            <span class="more-text"><?php print t('Load More'); ?></span>
-            <span class="close-text"><?php print t('Close'); ?></span>
-          </a>
-        </div>
+        <?php if($show_more_button): ?>
+          <div class="more-button-wrapper">
+            <div class="more-button more">
+              <span class="more-text"><?php print t('Load More'); ?></span>
+              <span class="close-text"><?php print t('Close'); ?></span>
+            </div>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
   <?php endif; ?>

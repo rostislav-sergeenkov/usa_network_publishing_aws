@@ -20,7 +20,7 @@
   float: left;
   margin-top: 40px;
 }
-#galleries section > h2 {
+#galleries section .section-title-block > h2 {
   background-image: url('../images/donotdisturb_btn.png');
   height: 82px;
   margin-left: calc(50% - 286px);
@@ -530,7 +530,7 @@
 }
 
 @media (max-width: 920px) {
-  #galleries section > h2 {
+  #galleries section .section-title-block > h2 {
     height: 76px;
     margin-left: calc(50% - 268px);
     width: 202px;
@@ -615,7 +615,7 @@
     float: none;
     margin: 0 auto 30px;
   }
-  #galleries section > h2 {
+  #galleries section .section-title-block > h2 {
     height: 45px;
     margin-left: calc(50% - 156px);
     width: 120px;

@@ -45,7 +45,7 @@
             }
           },
           error: function () {
-            console.info('error');
+            Drupal.behaviors.usanetwork_tv_shows_related_items_loader.ajaxRelatedError();
           }
         });
       }

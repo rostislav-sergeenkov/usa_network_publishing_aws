@@ -11,9 +11,9 @@
       function switchState() {
         $body.toggleClass('sub-menu-is-sticky');
         subMenuSelector.toggleClass('sticky-shows-submenu');
-        if ($('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post')) {
+        if ($('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post') || ($('body').hasClass('page-videos-live') && $('.video-block').hasClass('show-gallery'))) {
           $('.consum-sidebar').toggleClass('sticky-sidebar');
-          Drupal.behaviors.usanetwork_consumptionator_episode.rightRailPosition();
+          Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
         }
         if($body.hasClass('sub-menu-is-sticky')) {
           $body.css('margin-top', header_submenu_h);
@@ -386,7 +386,12 @@
         };
 
         showTitleMove();
-        showMenuMove();
+        if($('.show-menu').length > 0) {
+          showMenuMove();
+        } else {
+          $('.header-show-menu').addClass('no-menu');
+          $('.header-show-menu a').removeClass('active');
+        }
 
         //HotFix: Remove dropdown option from tab "Shop"
         $(".tab .no-refresh").each(function(){
@@ -429,7 +434,9 @@
           }, 300);
 
           showTitleMove();
-          showMenuMove();
+          if($('.show-menu').length > 0) {
+            showMenuMove();
+          }
 
           if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches && !tablet) {
             if ($body.hasClass('page-home') || $body.hasClass('node-type-tv-show') || $('body').hasClass('node-type-consumpt-blog')) {

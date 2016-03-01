@@ -66,6 +66,7 @@ function usanetwork_wysiwyg_wysiwyg_default_profiles() {
       'convert_fonts_to_spans' => 1,
       'remove_linebreaks' => 0,
       'apply_source_formatting' => 1,
+      'theme_advanced_blockformats' => 'p,address,pre,h2,h3,h4,div',
       'paste_auto_cleanup_on_paste' => 1,
       'block_formats' => 'h1,h2,h3,h4,h5,h6',
       'css_setting' => 'theme',

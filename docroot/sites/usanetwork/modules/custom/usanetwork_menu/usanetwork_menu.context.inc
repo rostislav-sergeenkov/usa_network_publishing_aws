@@ -20,6 +20,7 @@ function usanetwork_menu_context_default_contexts() {
     'node' => array(
       'values' => array(
         'usanetwork_static_page' => 'usanetwork_static_page',
+        'webform' => 'webform',
       ),
       'options' => array(
         'node_form' => '1',

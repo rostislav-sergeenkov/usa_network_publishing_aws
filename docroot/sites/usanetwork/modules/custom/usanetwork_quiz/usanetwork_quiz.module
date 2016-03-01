@@ -595,7 +595,9 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_result(&$vars) {
       $vars['share_text'] = strip_tags($vars['text']);
     }
     $share_image = _usanetwork_quiz_get_field_item_value($result, 'field_quiz_result_share_image', 'uri', 0, 'field_collection_item');
-    $vars['share_image'] = file_create_url($share_image);
+    if (!empty($share_image)) {
+      $vars['share_image'] = file_create_url($share_image);
+    }
   }
 
   // template suggestions

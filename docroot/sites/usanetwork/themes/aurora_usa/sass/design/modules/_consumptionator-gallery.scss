@@ -1,5 +1,5 @@
 
-body:not(.node-type-person, .node-type-post) {
+body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
   .slick-list,
   .slick-track {
     @include breakpoint($bp-min-1025-width) {
@@ -683,7 +683,7 @@ body:not(.node-type-person, .node-type-post) {
   }
 }
 
-.consumptionator-page:not(.node-type-person), .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, body:not(.node-type-person):not(.node-type-post) .node-media-gallery {
+.consumptionator-page:not(.node-type-person), .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery {
   .gallery-wrapper {
     .gallery-list {
       &.ready {
@@ -881,7 +881,7 @@ body:not(.node-type-person, .node-type-post) {
       }
     }
   }
-  .block-character-info-content &, .node-type-post & {
+  .block-character-info-content &, .node-type-post &, .node-type-catchall-seo-page & {
     .gallery-wrapper {
       height: auto;
       width: 100%;
@@ -1202,6 +1202,36 @@ body:not(.node-type-person, .node-type-post) {
         }
         @include breakpoint($between-641-768) {
           top: calc((100vw - 358px) * 0.5625 + 26px);
+        }
+      }
+    }
+  }
+  .node-type-catchall-seo-page & {
+    .gallery-wrapper {
+      .gallery-list {
+        &.ready {
+          .slide {
+            display: block;
+          }
+        }
+        .slide {
+          .node {
+            .asset-img {
+              @include breakpoint($between-769-1024) {
+                height: calc((100vw - 20px) * 0.5625);
+              }
+            }
+          }
+        }
+      }
+      .gallery-pager-wrap {
+        @include breakpoint($between-769-1024) {
+          top: calc((100vw - 20px) * 0.5625 + 13px);
+        }
+      }
+      .slide-control {
+        @include breakpoint($between-769-1024) {
+          top: calc((100vw - 20px) * 0.5625 + 26px);
         }
       }
     }

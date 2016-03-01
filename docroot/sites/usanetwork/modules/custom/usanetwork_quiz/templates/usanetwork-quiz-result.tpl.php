@@ -1,5 +1,5 @@
 <?php if (!empty($result) && $result): ?>
-  <div class="<?php print !empty($classes) ? $classes : ''; ?>"<?php print !empty($attributes) ? $attributes : ''; ?> range_from=<?php print $range['from']; ?> range_to=<?php print $range['to']; ?><?php print !$visible ? ' style="display: none;"' : ''; ?><?php (!empty($share_image)) ? print ' attr-share-image="' . $share_image . '"' : ''; ?>>
+  <div class="<?php print !empty($classes) ? $classes : ''; ?>"<?php print !empty($attributes) ? $attributes : ''; ?> range_from=<?php print $range['from']; ?> range_to=<?php print $range['to']; ?><?php print !$visible ? ' style="display: none;"' : ''; ?><?php (!empty($share_image)) ? print ' data-share-image="' . $share_image . '"' : ''; ?>>
     <?php if (!empty($image)): ?>
       <div class="result-image">
         <?php print $image; ?>

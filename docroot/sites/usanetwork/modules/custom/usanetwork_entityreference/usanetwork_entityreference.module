@@ -80,7 +80,11 @@ function theme_usanetwork_entityreference_field_multiple_value_form($variables) 
       else {
         if (preg_match("/.+\((\d+)\)/", $element[$key]['target_id']['#value'], $matches)) {
           $value = $matches[1];
-          $link = l(t('edit'), 'node/' . $value . '/edit', array('attributes' => array('target' => '_blank')));
+          if (isset($element[$key]['target_type']['#value']) && ($element[$key]['target_type']['#value'] == 'file')) {
+            $link = l(t('edit'), 'file/' . $value . '/edit', array('attributes' => array('target' => '_blank')));
+          } else {
+            $link = l(t('edit'), 'node/' . $value . '/edit', array('attributes' => array('target' => '_blank')));
+          }
         }
         else {
           $link = t('edit');

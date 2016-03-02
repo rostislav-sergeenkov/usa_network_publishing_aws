@@ -2,11 +2,12 @@
   .full-bleed-wrapper {
     @include clear();
     margin: 0 auto;
-    position: relative;
     min-height: 250px;
     //  max-height: 500px;
     max-width: 1650px;
     min-width: 300px;
+    overflow: hidden;
+    position: relative;
     @include breakpoint($bp-768-width) {
       @include clear;
     }

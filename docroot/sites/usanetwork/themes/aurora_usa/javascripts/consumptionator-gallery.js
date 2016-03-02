@@ -394,7 +394,7 @@
     }
 
     // vertical version
-    if (!statusBp && !$('body').hasClass('node-type-person') && !$('body').hasClass('node-type-post')) {
+    if (!statusBp && !$('body').hasClass('node-type-person') && !$('body').hasClass('node-type-post') && !$('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginRight: '',
         marginTop: pagerWrapStyles.desktop.marginTop,
@@ -408,7 +408,7 @@
     }
 
     // horizontal version
-    if (statusBp || $('body').hasClass('node-type-person') || $('body').hasClass('node-type-post')) {
+    if (statusBp || $('body').hasClass('node-type-person') || $('body').hasClass('node-type-post') || $('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginTop: '',
         marginRight: pagerWrapStyles.mobile.marginRight,

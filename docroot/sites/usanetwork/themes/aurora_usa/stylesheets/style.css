@@ -28729,6 +28729,7 @@ yx-axis
 }
 .usanetwork-aspot .meta-wrap .cta-link:not(.cta_button_0) a {
   background: none !important;
+  text-shadow: 1px 1px 0.5em #333333;
 }
 .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
   padding: 1.4vw 4.5vw 1.4vw 3.5vw;
@@ -31775,6 +31776,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #full-bleed-promo.full-bleed-enable .block-content > a {
   display: block;
+  overflow: hidden;
 }
 #full-bleed-promo.full-bleed-enable .block-content .sponsored {
   margin-right: 330px;

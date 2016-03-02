@@ -21,7 +21,7 @@ function usanetwork_gallery_content_metatag_export_default() {
         'value' => '[node:title] Photos | [node:body]',
       ),
       'og:image' => array(
-        'value' => '[node:field_cover_item]',
+        'value' => '[node:field_usa_og_image], [node:field_cover_item]',
       ),
     ),
   );

@@ -281,7 +281,7 @@
 
       $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
         if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
-          var image = $result.find('.result-image img').attr('src');
+          var image = $result.attr('data-share-image') || $result.find('.result-image img').attr('src');
           if (image) {
             sharebar.gigyaSharebar.ua.imageBhev = 'url';
             sharebar.gigyaSharebar.ua.imageUrl = image;

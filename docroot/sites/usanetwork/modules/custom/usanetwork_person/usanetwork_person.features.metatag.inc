@@ -35,7 +35,7 @@ function usanetwork_person_metatag_export_default() {
         'value' => '[node:field_usa_og_description]',
       ),
       'og:image' => array(
-        'value' => '[node:field_person_cover_photo]',
+        'value' => '[node:field_usa_og_image], [node:field_person_cover_photo]',
       ),
     ),
   );

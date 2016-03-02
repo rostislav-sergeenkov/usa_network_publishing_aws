@@ -423,6 +423,7 @@ function usanetwork_context_context_default_contexts() {
         'node/*/blog/*' => 'node/*/blog/*',
         'movies' => 'movies',
         'home/*' => 'home/*',
+        'feedback' => 'feedback',
       ),
     ),
     'taxonomy_term' => array(

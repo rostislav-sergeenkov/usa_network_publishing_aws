@@ -432,7 +432,6 @@
 
                 var playingCurrentTimeAggregate = pdkEvent.data.currentTimeAggregate,
                     playingDurationAggregate = pdkEvent.data.durationAggregate,
-                    delayEndCart = 0,
                     windowWidth = usaHelper.checkWindowWidth(bpMobileEndCard),
                     timeToStartEndCard, timeoutID;
 
@@ -460,26 +459,29 @@
                     // change FullScreen status
                     statusPlayerFullScreen = false;
 
-                    // set delay for end card
-                    delayEndCart = 1000;
-
                     // switch off ShowFullScreen
                     $pdk.controller.showFullScreen(statusPlayerFullScreen);
-                  }
 
-                  // Stop the pending timeout
-                  $timeout.cancel(timeoutID);
+                    playerEl.css({
+                      height: '50%',
+                      width: '45%'
+                    });
 
-                  // if statusPlayerFullScreen = false, delay = 0;
-                  // else delay = 1000
-                  timeoutID = $timeout(function () {
+                    endCardEls.show(0, function () {
+                      $(this).css('opacity', 1);
+                    });
+
+                    statusShowEndCard = true;
+                    statusProcessed = false;
+
+                  } else {
 
                     // AdobeTracking
                     usaEndCardAT.callVideoBreakPoint();
 
                     // show end card
                     USAEndCardAPI.showEndCard();
-                  }, delayEndCart);
+                  }
                 } else {
                   if (windowWidth && statusShowEndCard) {
                     USAEndCardAPI.hideEndCard(true);

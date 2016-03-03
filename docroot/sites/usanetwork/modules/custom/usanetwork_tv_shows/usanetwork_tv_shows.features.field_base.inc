@@ -1425,6 +1425,7 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'settings' => array(
       'entity_bundles' => array(
         'media_gallery' => 'media_gallery',
+        'quiz' => 'quiz',
       ),
       'entity_type_ids' => array(
         'node' => 'node',

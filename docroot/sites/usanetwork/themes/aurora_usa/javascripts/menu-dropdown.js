@@ -388,9 +388,6 @@
         showTitleMove();
         if($('.show-menu').length > 0) {
           showMenuMove();
-        } else {
-          $('.header-show-menu').addClass('no-menu');
-          $('.header-show-menu a').removeClass('active');
         }
 
         //HotFix: Remove dropdown option from tab "Shop"

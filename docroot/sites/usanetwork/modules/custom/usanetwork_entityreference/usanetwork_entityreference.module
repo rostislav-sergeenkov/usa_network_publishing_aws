@@ -4,10 +4,12 @@
  * Implementation of hook_field_attach_form().
  */
 function usanetwork_entityreference_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode = NULL, $options = array()) {
-  if (($entity_type == 'node') && (($entity->type == 'usa_homepage') || ($entity->type == 'tv_show') || ($entity->type == 'movie'))) {
-    if (($entity->type == 'usa_homepage') || ($entity->type == 'tv_show')) {
+  if ((($entity_type == 'node') && (($entity->type == 'usa_homepage') || ($entity->type == 'tv_show') || ($entity->type == 'movie'))) ||
+      ($entity_type == 'field_collection_item')) {
+    if ((isset($entity->type) && (($entity->type == 'usa_homepage') || ($entity->type == 'tv_show'))) || ($entity_type == 'field_collection_item')) {
       foreach (array('field_usa_hp_arefs', 'field_usa_hp_brefs', 'field_usa_hp_crefs', 'field_hp_promos',
-          'field_usa_tv_a_spot', 'field_usa_tv_promo', 'field_usa_tv_promo_vids', 'field_hp_nav_img_more', 'field_alternative_content') as $changed_field) {
+          'field_usa_tv_a_spot', 'field_usa_tv_promo', 'field_usa_tv_promo_vids', 'field_hp_nav_img_more',
+          'field_alternative_content', 'field_collection_best_of_items') as $changed_field) {
         //Redefine theme for multiple value
         if (isset($form[$changed_field])) {
           $form[$changed_field][$form[$changed_field]['#language']]['#theme'] = 'usanetwork_entityreference_field_multiple_value_form';
@@ -18,7 +20,7 @@ function usanetwork_entityreference_field_attach_form($entity_type, $entity, &$f
       }
     }
 
-    if ($entity->type == 'movie') {
+    if (isset($entity->type) && ($entity->type == 'movie')) {
       if (isset($form['field_aspot_image'])) {
         $form['field_aspot_image'][$form['field_aspot_image']['#language']]['#theme'] = 'usanetwork_entityreference_field_single_value_form';
         $form['field_aspot_image'][$form['field_aspot_image']['#language']][0]['target_id']['#attributes'] = array('class' => array('field-usanetwork-entityreference-autocomplete-single'));

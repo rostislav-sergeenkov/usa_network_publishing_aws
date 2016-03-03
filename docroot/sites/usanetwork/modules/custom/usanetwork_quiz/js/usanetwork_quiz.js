@@ -298,6 +298,7 @@
     initQuizzes: function(quizes) {
       for (nid in quizes) {
         var quiz_setting = quizes[nid];
+        console.info(quiz_setting);
         var $container = $(quiz_setting.container);
         $container.once('usanetwork-quiz', function() {
           var func = 'usaQuiz' + quiz_setting['quizType'].charAt(0).toUpperCase() + quiz_setting['quizType'].slice(1);

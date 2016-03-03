@@ -111,16 +111,21 @@ function _usanetwork_video_live_related_ajax($offset) {
       $dynamic_content = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_enable', 'value');
 
       if ($dynamic_content == 1) {
-        $related_gallery_id = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_related', 'target_id');
+        $related_cotent_id = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_related', 'target_id');
 
-        if (!empty($related_gallery_id)) {
-          $related_gallery = node_load($related_gallery_id);
-          $gallery_response = _usanetwork_media_gallery_consumptionator_gallery_slides_block($related_gallery, TRUE);
+        if (!empty($related_cotent_id)) {
+          $related_content = node_load($related_cotent_id);
+          if ($related_content->type == 'media_gallery') {
+            $related_content_response = _usanetwork_media_gallery_consumptionator_gallery_slides_block($related_content, TRUE);
+          } else {
+            $quiz_node_view = node_view($related_content, 'microsite_output');
+            $related_content_response = drupal_render($quiz_node_view);
+          }
 
           return drupal_json_output(array(
-            'rendered' => $gallery_response,
+            'rendered' => $related_content_response,
             'showName' => !empty($tv_show->title) ? $tv_show->title : '',
-            'galleryName' => !empty($related_gallery->title) ? $related_gallery->title : '',
+            'galleryName' => !empty($related_content_response->title) ? $related_content_response->title : '',
           ));
         }
       }

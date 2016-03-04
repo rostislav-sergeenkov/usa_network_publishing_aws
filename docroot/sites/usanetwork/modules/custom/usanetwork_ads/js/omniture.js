@@ -80,7 +80,7 @@
 
         s.linkTrackVars = 'events,eVar63';
         s.linkTrackEvents = s.events = 'event63';
-        s.eVar63 = menu_name;
+        s.eVar63 = menu_name.trim();
 
         if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
           s.goToUrl = function () {

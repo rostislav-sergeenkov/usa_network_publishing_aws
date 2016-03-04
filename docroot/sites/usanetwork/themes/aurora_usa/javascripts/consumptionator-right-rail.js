@@ -47,7 +47,7 @@
                 maxHeight: current_max_height+'px'
               })
             }
-            if ($('.video-block').hasClass('show-related')) {
+            if ($('.video-block').hasClass('show-related') && $('.gallery-wrapper').length > 0) {
               var bottom_distance = window.innerHeight - ($('.gallery-wrapper').offset()['top'] - $(window).scrollTop() + $('.gallery-wrapper').height());
               var current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height();
               if ($('.gallery-wrapper').height() > right_rail_min_height_livepage) {

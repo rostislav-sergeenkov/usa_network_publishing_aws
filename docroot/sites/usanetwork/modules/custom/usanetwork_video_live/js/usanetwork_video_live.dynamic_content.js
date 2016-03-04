@@ -2,6 +2,47 @@
   Drupal.behaviors.usanetwork_video_live = {
     showName: '',
     contentName: '',
+    // gigyaSharebar
+    initGigyaSharebar: function (data) {
+
+      if (typeof Drupal.gigya != 'undefined') {
+
+        var $gallery = _.$gallery,
+            $sharebar = $('.field-name-field-gigya-share-bar > div'),
+            description = data.description.trim(),
+            container = $(data.container),
+            image = container.find('.image img'),
+            imageUrl = image.attr('data-src')? image.attr('data-src'): image.attr('src'),
+            link_back = (_.data.gallerySharingPath == '')? window.location.href.split('#')[0]: _.data.gallerySharingPath;
+
+        if ($sharebar.length > 0) {
+
+          if (link_back == '' && $('meta[property="og:url"]').length > 0) {
+            link_back = $('meta[property="og:url"]').attr('content');
+          }
+
+          if (description == '' && $('meta[property="og:description"]').length > 0) {
+            description = $('meta[property="og:description"]').attr('content');
+          }
+
+          if (imageUrl == '' && $('meta[property="og:image"]').length > 0) {
+            imageUrl = $('meta[property="og:image"]').attr('content');
+          }
+
+
+          $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+            if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
+              var url = window.location.href.split('#')[0];
+              sharebar.gigyaSharebar.ua.linkBack = link_back;
+              sharebar.gigyaSharebar.ua.imageBhev = 'url';
+              sharebar.gigyaSharebar.ua.imageUrl = imageUrl.attr('src') ? imageUrl.attr('src') : imageUrl.attr('data-lazy');
+              sharebar.gigyaSharebar.ua.description = description;
+              Drupal.gigya.showSharebar(sharebar);
+            }
+          });
+        }
+      }
+    },
     refreshQuizOmniture: function() {
 
       function ucfirst(string){
@@ -148,6 +189,7 @@
 
             $('h2.section-title').remove();
             $('.gallery-wrapper').remove();
+            $('.styles-quiz').remove();
             $('.video-block > article').remove();
             if (!videoBlock.hasClass('show-related')) {
               videoBlock.addClass('show-related');
@@ -155,25 +197,25 @@
             $('.consum-sidebar').after(data.rendered);
             $('.consum-sidebar').after('<h2 class="section-title"><span class="section-title-wrapper show-border secondary">Related content</span></h2>');
 
-            if (data.showName != null && typeof data.showName != 'undefined') {
-              Drupal.behaviors.usanetwork_video_live.showName = data.showName;
-            }
-            if (data.contentName != null && typeof data.contentName != 'undefined') {
-              Drupal.behaviors.usanetwork_video_live.contentName = data.contentName;
-            }
-
             if (data.variables) {
               Drupal.settings.usanetwork_quiz = {};
               Drupal.settings.usanetwork_quiz[data.variables.nid] = {
-                "container":"#usanetwork-quiz-" + data.variables.nid,
-                "quizType":data.variables.quiz_type,
-                "calculationMethod":data.variables.calc_method,
-                "quizShow":data.showName,
-                "quizTitle":data.contentName
+                container: "#usanetwork-quiz-" + data.variables.nid,
+                quizType: data.variables.quiz_type,
+                calculationMethod: data.variables.calc_method,
+                quizShow: data.showName,
+                quizTitle: data.contentName
               };
               Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
+              Drupal.behaviors.usanetwork_video_live.initGigyaSharebar(data.variables);
               Drupal.behaviors.usanetwork_video_live.refreshQuizOmniture();
             } else {
+              if (data.showName != null && typeof data.showName != 'undefined') {
+                Drupal.behaviors.usanetwork_video_live.showName = data.showName;
+              }
+              if (data.contentName != null && typeof data.contentName != 'undefined') {
+                Drupal.behaviors.usanetwork_video_live.contentName = data.contentName;
+              }
               $('.gallery-wrapper').usaGallery();
             }
 
@@ -187,6 +229,7 @@
           } else {
             $('h2.section-title').remove();
             $('.gallery-wrapper').remove();
+            $('.styles-quiz').remove();
             $('.video-block > article').remove();
             Drupal.behaviors.usanetwork_video_live.showName = '';
             Drupal.behaviors.usanetwork_video_live.contentName = '';
@@ -198,6 +241,7 @@
           console.info('error');
           $('h2.section-title').remove();
           $('.gallery-wrapper').remove();
+          $('.styles-quiz').remove();
           $('.video-block > article').remove();
           Drupal.behaviors.usanetwork_video_live.showName = '';
           Drupal.behaviors.usanetwork_video_live.contentName = '';

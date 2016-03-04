@@ -117,15 +117,24 @@ function _usanetwork_video_live_related_ajax($offset) {
           $related_content = node_load($related_cotent_id);
           if ($related_content->type == 'media_gallery') {
             $related_content_response = _usanetwork_media_gallery_consumptionator_gallery_slides_block($related_content, TRUE);
+            $related_content_variables = array();
           } else {
+            $quiz_wrapper = entity_metadata_wrapper('node', $related_content);
             $quiz_node_view = node_view($related_content, 'microsite_output');
             $related_content_response = drupal_render($quiz_node_view);
+
+            $related_content_variables = array(
+              'nid'=> $quiz_wrapper->nid->value(),
+              'quiz_type' => $quiz_wrapper->field_quiz_type->value(),
+              'calc_method' => $quiz_wrapper->field_quiz_calculation->value(),
+            );
           }
 
           return drupal_json_output(array(
             'rendered' => $related_content_response,
             'showName' => !empty($tv_show->title) ? $tv_show->title : '',
-            'galleryName' => !empty($related_content_response->title) ? $related_content_response->title : '',
+            'contentName' => !empty($related_content_response->title) ? $related_content_response->title : '',
+            'variables' => $related_content_variables,
           ));
         }
       }

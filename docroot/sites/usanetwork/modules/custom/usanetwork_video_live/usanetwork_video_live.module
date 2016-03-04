@@ -121,7 +121,15 @@ function _usanetwork_video_live_related_ajax($offset) {
           } else {
             $quiz_wrapper = entity_metadata_wrapper('node', $related_content);
             $quiz_node_view = node_view($related_content, 'microsite_output');
-            $related_content_response = drupal_render($quiz_node_view);
+            $related_content_quiz = drupal_render($quiz_node_view);
+            $quiz_theme = $quiz_wrapper->field_quiz_theme->value();
+            $color = _usanetwork_quiz_color_css($related_content, $quiz_theme);
+
+            $theme_variables = array(
+              'content' => $related_content_quiz,
+              'color_css' => $color,
+            );
+            $related_content_response = theme('usanetwork_video_live_quiz', $theme_variables);
 
             $related_content_variables = array(
               'nid'=> $quiz_wrapper->nid->value(),
@@ -133,7 +141,7 @@ function _usanetwork_video_live_related_ajax($offset) {
           return drupal_json_output(array(
             'rendered' => $related_content_response,
             'showName' => !empty($tv_show->title) ? $tv_show->title : '',
-            'contentName' => !empty($related_content_response->title) ? $related_content_response->title : '',
+            'contentName' => !empty($related_content->title) ? $related_content->title : '',
             'variables' => $related_content_variables,
           ));
         }
@@ -149,9 +157,18 @@ function usanetwork_video_live_theme($existing, $type, $theme, $path) {
   $themes = array(
     'usanetwork_video_live_right_rail' => array(
       'variables' => array(
+        'block_title' => NULL,
         'promos' => array(),
+        'more_items_url' => NULL,
       ),
       'template' => 'templates/usanetwork-video-live-right-rail',
+    ),
+    'usanetwork_video_live_quiz' => array(
+      'variables' => array(
+        'content' => NULL,
+        'color_css' => NULL,
+      ),
+      'template' => 'templates/usanetwork-video-live-quiz',
     ),
   );
   return $themes;

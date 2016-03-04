@@ -74,8 +74,8 @@
         interstitialNext: '.interstitial-next',
 
         // interstitial params
-        interstitialInitPages: ['all'], // default all, body classes for init interstitial ["node-type-media-gallery", "node-type-consumpt-post", "node-type-tv-episode"]
-
+        //interstitialInitPages: ['all'], //default all, body classes for init interstitial ["node-type-media-gallery", "node-type-consumpt-post", "node-type-tv-episode"]
+        interstitialInitPages: ["node-type-media-gallery", "node-type-tv-episode"],
         // params
         slideCounterSeparator: ' of ',
         pagerPositionBp: 1024,
@@ -307,7 +307,7 @@
               var url = window.location.href.split('#')[0];
               sharebar.gigyaSharebar.ua.linkBack = link_back + slideIndex;
               sharebar.gigyaSharebar.ua.imageBhev = 'url';
-              sharebar.gigyaSharebar.ua.imageUrl = imageUrl.attr('data-src-share') ? imageUrl.attr('data-src-share') : imageUrl.attr('src');
+              sharebar.gigyaSharebar.ua.imageUrl = imageUrl.attr('src') ? imageUrl.attr('src') : imageUrl.attr('data-lazy');
               sharebar.gigyaSharebar.ua.description = description;
               Drupal.gigya.showSharebar(sharebar);
             }
@@ -394,7 +394,7 @@
     }
 
     // vertical version
-    if (!statusBp && !$('body').hasClass('node-type-person') && !$('body').hasClass('node-type-post')) {
+    if (!statusBp && !$('body').hasClass('node-type-person') && !$('body').hasClass('node-type-post') && !$('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginRight: '',
         marginTop: pagerWrapStyles.desktop.marginTop,
@@ -408,7 +408,7 @@
     }
 
     // horizontal version
-    if (statusBp || $('body').hasClass('node-type-person') || $('body').hasClass('node-type-post')) {
+    if (statusBp || $('body').hasClass('node-type-person') || $('body').hasClass('node-type-post') || $('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginTop: '',
         marginRight: pagerWrapStyles.mobile.marginRight,

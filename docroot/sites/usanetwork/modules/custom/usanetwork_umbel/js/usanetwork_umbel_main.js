@@ -5,6 +5,12 @@
   Drupal.behaviors.usanetwork_umbel = {
     attach: function (context, settings) {
       $('body').once(function () {
+
+        umbel_env = Drupal.settings.umbel_env;
+        if (umbel_env == '0') {
+          window._umbel_test_mode = true;
+        }
+
         umbelCode = Drupal.settings.umbel_code;
         umbelSettings = Drupal.settings.umbel_settings;
 

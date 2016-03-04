@@ -233,6 +233,7 @@
       &:not(.cta_button_0) {
         a {
           background: none !important;
+          text-shadow: 1px 1px 0.5em $aspot-shadow;
         }
       }
       &.cta_button_0 {

@@ -3,7 +3,7 @@
   Drupal.behaviors.consumptionator_right_rail = {
     rightRailPosition: function(){
       if($('body').hasClass('page-videos-live')){
-        if(!$('.video-block').hasClass('show-gallery')){
+        if(!$('.video-block').hasClass('show-related')){
           return false;
         }
       }
@@ -47,7 +47,7 @@
                 maxHeight: current_max_height+'px'
               })
             }
-            if ($('.video-block').hasClass('show-gallery')) {
+            if ($('.video-block').hasClass('show-related')) {
               var bottom_distance = window.innerHeight - ($('.gallery-wrapper').offset()['top'] - $(window).scrollTop() + $('.gallery-wrapper').height());
               var current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height();
               if ($('.gallery-wrapper').height() > right_rail_min_height_livepage) {
@@ -117,7 +117,7 @@
           repeat: true,
 
           callbackFunction: function(elem, action){
-            if($('.video-block').hasClass('show-gallery')){
+            if($('.video-block').hasClass('show-related')){
               if(elem.hasClass('visible')){
                 if(!$('.consum-sidebar').hasClass('footer-visible')){
                   $('.consum-sidebar').addClass('footer-visible');

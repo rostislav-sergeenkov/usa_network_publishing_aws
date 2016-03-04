@@ -47,11 +47,12 @@
         dataType: 'JSON',
         url: Drupal.settings.basePath + 'ajax/render-video-live-related/' + timezoneOffset,
         success: function(data) {
+          console.info(data);
           if (data != null && typeof data != 'undefined') {
             $('h2.section-title').remove();
             $('.gallery-wrapper').remove();
-            if (!videoBlock.hasClass('show-gallery')) {
-              videoBlock.addClass('show-gallery');
+            if (!videoBlock.hasClass('show-related')) {
+              videoBlock.addClass('show-related');
             }
             $('.consum-sidebar').after(data.rendered);
             $('.consum-sidebar').after('<h2 class="section-title"><span class="section-title-wrapper show-border secondary">Related content</span></h2>');
@@ -59,8 +60,8 @@
             if (data.showName != null && typeof data.showName != 'undefined') {
               Drupal.behaviors.usanetwork_video_live.showName = data.showName;
             }
-            if (data.galleryName != null && typeof data.galleryName != 'undefined') {
-              Drupal.behaviors.usanetwork_video_live.galleryName = data.galleryName;
+            if (data.contentName != null && typeof data.contentName != 'undefined') {
+              Drupal.behaviors.usanetwork_video_live.contentName = data.contentName;
             }
 
             $('.gallery-wrapper').usaGallery();
@@ -73,8 +74,8 @@
             $('h2.section-title').remove();
             $('.gallery-wrapper').remove();
             Drupal.behaviors.usanetwork_video_live.showName = '';
-            Drupal.behaviors.usanetwork_video_live.galleryName = '';
-            videoBlock.removeClass('show-gallery');
+            Drupal.behaviors.usanetwork_video_live.contentName = '';
+            videoBlock.removeClass('show-related');
             Drupal.behaviors.usanetwork_video_live.reset_right_rail();
           }
         },
@@ -83,8 +84,8 @@
           $('h2.section-title').remove();
           $('.gallery-wrapper').remove();
           Drupal.behaviors.usanetwork_video_live.showName = '';
-          Drupal.behaviors.usanetwork_video_live.galleryName = '';
-          videoBlock.removeClass('show-gallery');
+          Drupal.behaviors.usanetwork_video_live.contentName = '';
+          videoBlock.removeClass('show-related');
           Drupal.behaviors.usanetwork_video_live.reset_right_rail();
         }
       });

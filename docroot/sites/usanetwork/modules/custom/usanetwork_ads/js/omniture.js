@@ -949,7 +949,7 @@
           });
         });
 
-        // Quizes omniture tracking. Track restart button
+        // Quizzes omniture tracking. Track restart button
         $('.usanetwork-quiz-results input[type="button"]').once('omniture-tracking', function () {
           $(this).bindFirst('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {

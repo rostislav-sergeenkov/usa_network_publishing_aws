@@ -174,7 +174,7 @@
 
       if ($('body').hasClass('page-videos-live')) {
         var showName = Drupal.behaviors.usanetwork_video_live.showName.trim(),
-            galleryName = Drupal.behaviors.usanetwork_video_live.galleryName.trim();
+            galleryName = Drupal.behaviors.usanetwork_video_live.contentName.trim();
         if(showName != '' && galleryName != '') {
           s.prop4 = showName + ' : ' + 'Photo Gallery';
           s.prop5 = showName + ' : ' + 'Gallery' + ' : ' + galleryName;

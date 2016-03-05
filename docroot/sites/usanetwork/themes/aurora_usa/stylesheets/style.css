@@ -15095,22 +15095,22 @@ footer h2 {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .player-wrapper {
+  .page-videos-live .video-block:not(.show-app):not(.show-related) .player-wrapper {
     margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .items-block {
+  .page-videos-live .video-block:not(.show-app):not(.show-related) .consum-sidebar .items-block {
     height: auto;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .download-app {
+  .page-videos-live .video-block:not(.show-app):not(.show-related) .consum-sidebar .download-app {
     display: table;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-gallery) .consum-sidebar .more-items {
+  .page-videos-live .video-block:not(.show-app):not(.show-related) .consum-sidebar .more-items {
     background: none !important;
   }
 }
@@ -15118,30 +15118,30 @@ footer h2 {
   display: table;
 }
 @media (min-width: 1025px) {
-  .page-videos-live .video-block.show-gallery.show-app .consum-sidebar {
+  .page-videos-live .video-block.show-related.show-app .consum-sidebar {
     height: 45vw;
     max-height: 1125px !important;
   }
 }
 @media (min-width: 1025px) {
-  .page-videos-live .video-block.show-gallery {
+  .page-videos-live .video-block.show-related {
     height: auto;
     max-height: none;
   }
 }
 @media (min-width: 1281px) {
-  .page-videos-live .video-block.show-gallery .player-wrapper {
+  .page-videos-live .video-block.show-related .player-wrapper {
     height: 42.01875vw;
     max-height: 1093.75px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .player-wrapper {
+  .page-videos-live .video-block.show-related .player-wrapper {
     height: calc((100vw - 320px)*0.5625);
   }
 }
 @media (min-width: 1025px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar {
+  .page-videos-live .video-block.show-related .consum-sidebar {
     float: right;
     overflow: hidden;
     padding: 0;
@@ -15149,12 +15149,12 @@ footer h2 {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar {
+  .page-videos-live .video-block.show-related .consum-sidebar {
     width: 320px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .more-items {
+  .page-videos-live .video-block.show-related .consum-sidebar .more-items {
     bottom: 0;
     left: 0;
     right: auto;
@@ -15163,61 +15163,61 @@ footer h2 {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .more-items a {
+  .page-videos-live .video-block.show-related .consum-sidebar .more-items a {
     padding: 0 25px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .items-block {
+  .page-videos-live .video-block.show-related .consum-sidebar .items-block {
     position: relative;
     right: auto;
     top: auto;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .items-block-title h2 {
+  .page-videos-live .video-block.show-related .consum-sidebar .items-block-title h2 {
     width: 100%;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .episodes-list-slider.vertical {
+  .page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.vertical {
     display: block;
     height: calc(100% - 90px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .consum-sidebar .episodes-list-slider.horizontal {
+  .page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.horizontal {
     display: none;
   }
 }
-.page-videos-live .video-block.show-gallery .section-title {
+.page-videos-live .video-block.show-related .section-title {
   margin-top: 40px;
 }
 @media (min-width: 1025px) {
-  .page-videos-live .video-block.show-gallery .section-title {
+  .page-videos-live .video-block.show-related .section-title {
     float: left;
     width: 74.7%;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .section-title {
+  .page-videos-live .video-block.show-related .section-title {
     width: calc(100% - 320px);
   }
 }
 @media (max-width: 1024px) {
-  .page-videos-live .video-block.show-gallery .section-title {
+  .page-videos-live .video-block.show-related .section-title {
     clear: both;
     padding-top: 40px;
   }
 }
 @media (min-width: 1281px) {
-  .page-videos-live .video-block.show-gallery .gallery-wrapper {
+  .page-videos-live .video-block.show-related .gallery-wrapper {
     height: 42.01875vw;
     max-height: 1093.75px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-gallery .gallery-wrapper {
+  .page-videos-live .video-block.show-related .gallery-wrapper {
     height: calc((100vw - 320px)*0.5625);
   }
 }
@@ -16211,17 +16211,7 @@ footer h2 {
   }
 }
 
-.consumptionator-quiz-main-block {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-.consumptionator-quiz-main-block:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-.consumptionator-quiz-main-block article.node-quiz {
+.consumptionator-quiz-main-block article.node-quiz, .page-videos-live article.node-quiz {
   float: left;
   position: relative;
   width: 74.7%;
@@ -16233,12 +16223,12 @@ footer h2 {
   overflow: hidden;
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-quiz-main-block article.node-quiz {
+  .consumptionator-quiz-main-block article.node-quiz, .page-videos-live article.node-quiz {
     width: calc(100% - 320px);
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-quiz-main-block article.node-quiz {
+  .consumptionator-quiz-main-block article.node-quiz, .page-videos-live article.node-quiz {
     border-bottom: 2px solid;
     float: none;
     padding: 0;
@@ -16247,117 +16237,128 @@ footer h2 {
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-quiz-main-block article.node-quiz {
+  .consumptionator-quiz-main-block article.node-quiz, .page-videos-live article.node-quiz {
     border-bottom: 8px solid;
   }
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz, .page-videos-live article.node-quiz .usanetwork-quiz {
   max-width: 1000px;
 }
 @media (max-width: 1280px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz, .page-videos-live article.node-quiz .usanetwork-quiz {
     width: auto;
   }
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button, .page-videos-live article.node-quiz .usanetwork-quiz .entry-button {
   margin: 50px 0;
 }
 @media (max-width: 640px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button, .page-videos-live article.node-quiz .usanetwork-quiz .entry-button {
     font-size: 3.4375vw;
     margin: 7.8125vw 0;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button, .page-videos-live article.node-quiz .usanetwork-quiz .entry-button {
     font-size: 16.5px;
     margin: 37.6px 0;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .repeat-button {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .repeat-button, .page-videos-live article.node-quiz .usanetwork-quiz .repeat-button {
     font-size: 3.4375vw;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .repeat-button {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .repeat-button, .page-videos-live article.node-quiz .usanetwork-quiz .repeat-button {
     font-size: 16.5px;
   }
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap, .page-videos-live article.node-quiz .usanetwork-quiz .content-wrap {
   padding: 40px;
 }
 @media (max-width: 640px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap, .page-videos-live article.node-quiz .usanetwork-quiz .content-wrap {
     padding: 20px;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap, .page-videos-live article.node-quiz .usanetwork-quiz .content-wrap {
     padding: 10px;
   }
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .center {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .center, .page-videos-live article.node-quiz .usanetwork-quiz .content-wrap .center {
   margin-right: 0;
   width: 100%;
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar, .page-videos-live article.node-quiz .usanetwork-quiz .content-wrap .sidebar {
   margin-top: 20px;
 }
 @media (max-width: 480px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar, .page-videos-live article.node-quiz .usanetwork-quiz .content-wrap .sidebar {
     margin-top: 10px;
   }
 }
 @media (min-width: 1281px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar .ad-container {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar .ad-container, .page-videos-live article.node-quiz .usanetwork-quiz .content-wrap .sidebar .ad-container {
     display: none;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar .ad-container {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap .sidebar .ad-container, .page-videos-live article.node-quiz .usanetwork-quiz .content-wrap .sidebar .ad-container {
     display: none;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-questions.questions .page-note {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-questions.questions .page-note, .page-videos-live article.node-quiz .usanetwork-quiz-questions.questions .page-note {
     font-size: 2.5vw;
   }
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-question .question-title {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-question .question-title, .page-videos-live article.node-quiz .usanetwork-quiz-question .question-title {
   text-align: center;
 }
 @media (max-width: 640px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-question .question-title {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-question .question-title, .page-videos-live article.node-quiz .usanetwork-quiz-question .question-title {
     font-size: 4.0625vw;
   }
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer, .page-videos-live article.node-quiz .usanetwork-quiz-answer {
   width: 49%;
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n + 1) {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n + 1), .page-videos-live article.node-quiz .usanetwork-quiz-answer:nth-child(2n + 1) {
   clear: left;
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n) {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n), .page-videos-live article.node-quiz .usanetwork-quiz-answer:nth-child(2n) {
   clear: right;
   float: right;
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n):after {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer:nth-child(2n):after, .page-videos-live article.node-quiz .usanetwork-quiz-answer:nth-child(2n):after {
   clear: both;
   content: '';
   display: table;
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .inner {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .inner, .page-videos-live article.node-quiz .usanetwork-quiz-answer .inner {
   max-width: 320px;
 }
-.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {
+.consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title, .page-videos-live article.node-quiz .usanetwork-quiz-answer .answer-title {
   padding: 5px;
   width: 320px;
 }
 @media (max-width: 640px) {
-  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {
+  .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title, .page-videos-live article.node-quiz .usanetwork-quiz-answer .answer-title {
     font-size: 2.8125vw;
   }
+}
+
+.consumptionator-quiz-main-block {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.consumptionator-quiz-main-block:after {
+  clear: both;
+  content: '';
+  display: table;
 }
 @media (min-width: 1025px) {
   .consumptionator-quiz-main-block .consum-sidebar .items-block {

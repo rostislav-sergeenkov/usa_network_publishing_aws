@@ -51,6 +51,7 @@
         $video_player.attr('src', $video_player.attr('data-src'));
       }
       quiz.settings.onShowQuestion(e, $question);
+
     });
     $(quiz).on('onHideQuestion', function(e, $question) {
       var $video_player = $question.find('.question-video iframe');
@@ -296,6 +297,7 @@
     },
 
     initQuizzes: function(quizes) {
+      var $livePage = ($('body').hasClass('page-videos-live'))? true: false;
       for (nid in quizes) {
         var quiz_setting = quizes[nid];
         var $container = $(quiz_setting.container);
@@ -321,6 +323,10 @@
                 if (typeof usa_refreshBannerAd != 'undefined') {
                   usa_refreshBannerAd();
                 }
+                if($livePage) {
+                  var offset = -1*$('.nav-bar-tabs').height();
+                  $('article.node-quiz').velocity("scroll", { duration: 500, easing: "linear", offset: offset });
+                }
               },
               onBeforeResult: function(e, $result) {
                 Drupal.behaviors.usanetwork_quiz.refreshSharebar($result, '.container', '.field-name-field-gigya-share-bar > div');
@@ -329,6 +335,10 @@
                 Drupal.behaviors.usanetwork_quiz.moveAds(this.container);
                 if (typeof usa_refreshBannerAd != 'undefined') {
                   usa_refreshBannerAd();
+                }
+                if($livePage) {
+                  var offset = -1*$('.nav-bar-tabs').height();
+                  $('article.node-quiz').velocity("scroll", { duration: 500, easing: "linear", offset: offset });
                 }
               }
             }]);

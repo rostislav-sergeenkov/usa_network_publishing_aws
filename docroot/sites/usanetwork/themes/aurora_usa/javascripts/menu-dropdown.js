@@ -11,7 +11,7 @@
       function switchState() {
         $body.toggleClass('sub-menu-is-sticky');
         subMenuSelector.toggleClass('sticky-shows-submenu');
-        if ($('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post') || ($('body').hasClass('page-videos-live') && $('.video-block').hasClass('show-gallery'))) {
+        if ($('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post') || ($('body').hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
           $('.consum-sidebar').toggleClass('sticky-sidebar');
           Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
         }

@@ -1,8 +1,4 @@
-.consumptionator-quiz-main-block {
-  @include clear();
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+.consumptionator-quiz-main-block, .page-videos-live {
   article.node-quiz {
     float: left;
     position: relative;
@@ -117,6 +113,13 @@
       }
     }
   }
+
+}
+.consumptionator-quiz-main-block {
+  @include clear();
+  overflow: hidden;
+  position: relative;
+  width: 100%;
   .consum-sidebar {
     .items-block {
       @include breakpoint($bp-min-1025-width) {

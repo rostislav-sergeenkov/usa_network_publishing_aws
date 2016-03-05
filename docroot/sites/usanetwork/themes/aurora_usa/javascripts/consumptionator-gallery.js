@@ -174,7 +174,7 @@
 
       if ($('body').hasClass('page-videos-live')) {
         var showName = Drupal.behaviors.usanetwork_video_live.showName.trim(),
-            galleryName = Drupal.behaviors.usanetwork_video_live.galleryName.trim();
+            galleryName = Drupal.behaviors.usanetwork_video_live.contentName.trim();
         if(showName != '' && galleryName != '') {
           s.prop4 = showName + ' : ' + 'Photo Gallery';
           s.prop5 = showName + ' : ' + 'Gallery' + ' : ' + galleryName;
@@ -271,7 +271,8 @@
           $sharebar = _.$shareBar,
           $slide = $gallery.find('.slick-active'),
           description = $slide.find('.slide-info .description').text().trim(),
-          imageUrl = $slide.find('.asset-img img'),
+          image = $slide.find('.asset-img img'),
+          imageUrl = image.attr('src') ? image.attr('src'): image.attr('data-lazy'),
           link_back = (_.data.gallerySharingPath == '')? window.location.href.split('#')[0]: _.data.gallerySharingPath,
           slideIndex;
 
@@ -304,10 +305,9 @@
         } else {
           $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
             if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
-              var url = window.location.href.split('#')[0];
               sharebar.gigyaSharebar.ua.linkBack = link_back + slideIndex;
               sharebar.gigyaSharebar.ua.imageBhev = 'url';
-              sharebar.gigyaSharebar.ua.imageUrl = imageUrl.attr('src') ? imageUrl.attr('src') : imageUrl.attr('data-lazy');
+              sharebar.gigyaSharebar.ua.imageUrl = imageUrl;
               sharebar.gigyaSharebar.ua.description = description;
               Drupal.gigya.showSharebar(sharebar);
             }

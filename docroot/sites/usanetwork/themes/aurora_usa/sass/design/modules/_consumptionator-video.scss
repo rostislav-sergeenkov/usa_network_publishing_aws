@@ -555,7 +555,7 @@
           }
         }
       }
-      &:not(.show-gallery) {
+      &:not(.show-related) {
         .player-wrapper {
           @include breakpoint($between-1025-1280) {
             margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
@@ -587,7 +587,7 @@
         }
       }
     }
-    &.show-gallery {
+    &.show-related {
       &.show-app {
         .consum-sidebar {
           @include breakpoint($bp-min-1025-width) {

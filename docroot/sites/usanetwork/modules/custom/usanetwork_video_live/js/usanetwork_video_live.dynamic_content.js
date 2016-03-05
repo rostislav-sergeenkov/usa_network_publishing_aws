@@ -7,14 +7,13 @@
 
       if (typeof Drupal.gigya != 'undefined') {
 
-        var $gallery = _.$gallery,
-            $sharebar = $('.field-name-field-gigya-share-bar > div'),
-            description = data.description.trim(),
-            container = $(data.container),
+        var description = data.description.trim(),
+            container = $("#usanetwork-quiz-" + data.nid),
+            $sharebar = container.find('.field-name-field-gigya-share-bar > div'),
             image = container.find('.image img'),
             imageUrl = image.attr('data-src')? image.attr('data-src'): image.attr('src'),
-            link_back = (_.data.gallerySharingPath == '')? window.location.href.split('#')[0]: _.data.gallerySharingPath;
-
+            title = data.title,
+            link_back = data.quiz_link;
         if ($sharebar.length > 0) {
 
           if (link_back == '' && $('meta[property="og:url"]').length > 0) {
@@ -29,17 +28,45 @@
             imageUrl = $('meta[property="og:image"]').attr('content');
           }
 
+          var newSharebarObj = [];
 
-          $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-            if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
-              var url = window.location.href.split('#')[0];
-              sharebar.gigyaSharebar.ua.linkBack = link_back;
-              sharebar.gigyaSharebar.ua.imageBhev = 'url';
-              sharebar.gigyaSharebar.ua.imageUrl = imageUrl.attr('src') ? imageUrl.attr('src') : imageUrl.attr('data-lazy');
-              sharebar.gigyaSharebar.ua.description = description;
-              Drupal.gigya.showSharebar(sharebar);
+          for (var i = 1; i <= $sharebar.length; i++) {
+            if (i == 1) {
+              var containerID = 'gigya-share';
+            } else {
+              var containerID = 'gigya-share--' + i;
             }
-          });
+            newSharebarObj.push({
+              gigyaSharebar: {
+                ua: {
+                  linkBack: link_back,
+                  title: title,
+                  description: description,
+                  imageBhev: "url",
+                  imageUrl: imageUrl
+                },
+                shareButtons: "facebook, twitter, tumblr, pinterest, share",
+                shortURLs: "never",
+                containerID: containerID,
+                showCounts: "none",
+                layout: "horizontal",
+                iconsOnly: true
+              }
+            });
+          }
+
+          Drupal.settings.gigyaSharebars = [];
+          Drupal.settings.gigyaSharebars = newSharebarObj;
+
+
+          if (typeof gigya !== 'undefined') {
+            if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
+              $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+                if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+              });
+            }
+          }
+
         }
       }
     },
@@ -48,6 +75,14 @@
       function ucfirst(string){
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
+
+      var quizes = Drupal.settings.usanetwork_quiz;
+      var quiz_setting = quizes[nid];
+      var quizShow = quiz_setting['quizShow'],
+          quizTitle = quiz_setting['quizTitle'];
+
+      s.prop4 = quizShow + ' : ' + 'Quiz';
+      s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
 
       // Quizzes omniture tracking. Track show Question
       $('.usanetwork-quiz-questions .usanetwork-quiz-question').once('omniture-tracking', function () {
@@ -65,9 +100,11 @@
               var quizQuestionTitle = $(this).find('.question-title').text();
               var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
 
-              s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
+              s.pageName = 'USA Live TV';
               s.linkTrackVars = 'events,prop58,eVar58';
               s.linkTrackEvents = s.events = 'event88';
+              s.prop4 = quizShow + ' : ' + 'Quiz';
+              s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
               s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
               s.tl(this, 'o', 'Poll/Question Shown');
               s.manageVars('clearVars', s.linkTrackVars, 1);
@@ -97,9 +134,11 @@
               var quizQuestionValue = $(this).attr('value');
               var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
 
-              s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
+              s.pageName = 'USA Live TV';
               s.linkTrackVars = 'events,prop58,eVar58';
               s.linkTrackEvents = s.events = 'event89';
+              s.prop4 = quizShow + ' : ' + 'Quiz';
+              s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
               s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
               s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion + ' : Answer : ' + quizQuestionValue;
               s.tl(this, 'o', 'Poll/Question Answered');
@@ -127,9 +166,11 @@
                 quizTitle = quiz_setting['quizTitle'],
                 quizType = quiz_setting['quizType'];
 
-            s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType);
+            s.pageName = 'USA Live TV';
             s.linkTrackVars = 'events,eVar65,prop65';
             s.linkTrackEvents = s.events = 'event65';
+            s.prop4 = quizShow + ' : ' + 'Quiz';
+            s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
             s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
             console.info(s.pageName);
             s.tl(this, 'o', 'Restart');
@@ -184,7 +225,7 @@
         dataType: 'JSON',
         url: Drupal.settings.basePath + 'ajax/render-video-live-related/' + timezoneOffset,
         success: function(data) {
-          console.info(data);
+
           if (data != null && typeof data != 'undefined') {
 
             $('h2.section-title').remove();
@@ -197,7 +238,7 @@
             $('.consum-sidebar').after(data.rendered);
             $('.consum-sidebar').after('<h2 class="section-title"><span class="section-title-wrapper show-border secondary">Related content</span></h2>');
 
-            if (data.variables) {
+            if (data.variables != null && data.variables != '') {
               Drupal.settings.usanetwork_quiz = {};
               Drupal.settings.usanetwork_quiz[data.variables.nid] = {
                 container: "#usanetwork-quiz-" + data.variables.nid,
@@ -206,6 +247,7 @@
                 quizShow: data.showName,
                 quizTitle: data.contentName
               };
+              data.variables.title = data.contentName;
               Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
               Drupal.behaviors.usanetwork_video_live.initGigyaSharebar(data.variables);
               Drupal.behaviors.usanetwork_video_live.refreshQuizOmniture();

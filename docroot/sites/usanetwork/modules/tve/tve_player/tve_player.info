@@ -1,0 +1,9 @@
+name = TVE Player
+core = 7.x
+package = NBCU TVE
+version = 7.x-1.2
+
+dependencies[] = pub_ads
+dependencies[] = pub_mpx
+
+configure = admin/tve/mpx/player

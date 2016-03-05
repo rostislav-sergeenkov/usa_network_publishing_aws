@@ -1,0 +1,326 @@
+<?php
+
+/**
+ * @file
+ * Main file for the TVE Player module.
+ */
+
+/**
+ * TVE Player constants.
+ */
+define('TVE_PLAYER_CONTAINER_DIRECTIVE', 'data-tve-player-container');
+define('TVE_PLAYER_DIRECTIVE', 'data-tve-player');
+
+/**
+ * Implements hook_menu().
+ */
+function tve_player_menu() {
+  $items = array();
+  $items['admin/tve/mpx/player'] = array(
+    'title' => 'Player & Ads Configuration',
+    'description' => 'Configure player layout, Freewheel Ads',
+    'access arguments' => array('administer tve player'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tve_player_settings_form'),
+    'file' => 'tve_player.admin.inc',
+    'weight' => 2,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tve_player_permission() {
+  return array(
+    'administer tve player' => array(
+      'title' => t('Administer TVE Player'),
+      'description' => t('Administer TVE Player.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function tve_player_page_alter(&$page) {
+  if (path_is_admin(current_path())) {
+    return;
+  }
+
+  drupal_add_js(
+    array(
+      'tve_player' => tve_player_get_config(),
+    ),
+    'setting'
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tve_player_theme($existing, $type, $theme, $path) {
+  return array(
+    'tve_player_fw_companion_ad' => array(
+      'file' => 'tve_player.theme.inc',
+      'variables' => array(
+        'width' => NULL,
+        'height' => NULL
+      ),
+    ),
+    'tve_player_mpx_video' => array(
+      'file' => 'tve_player.theme.inc',
+      'variables' => array(
+        'file' => NULL,
+        'player_id' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+      ),
+    ),
+    'tve_player_mpx_video_live' => array(
+      'file' => 'tve_player.theme.inc',
+      'variables' => array(
+        'file' => NULL,
+        'player_id' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+      ),
+    ),
+    'tve_player_mpx_video_live_cloudpath' => array(
+      'file' => 'tve_player.theme.inc',
+      'variables' => array(
+        'file' => NULL,
+        'player_id' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function tve_player_preprocess_node(&$variables) {
+  $node = $variables['node'];
+
+  switch ($node->type) {
+    case 'tv_episode':
+      $config = tve_player_get_config();
+      $size = isset($config['vod']['size']) ? $config['vod']['size'] : '';
+
+      $available_sizes = _tve_player_get_player_size_options();
+      if (!array_key_exists($size, $available_sizes)) {
+        $size = '';
+      }
+
+      $variables['tve_player_size'] = $size;
+      $variables['tve_player_container_directive'] = _tve_player_get_player_template_config(
+        'player_container_directive',
+        TVE_PLAYER_CONTAINER_DIRECTIVE
+      );
+
+      break;
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function tve_widget_live_preprocess_block(&$vars) {
+  if ('tve_widget' == $vars['block']->module
+    && in_array($vars['block']->delta, array('live', 'live_cloudpath'))
+  ) {
+    $vars['tve_player_container_directive'] = _tve_player_get_player_template_config(
+      'player_container_directive',
+      TVE_PLAYER_CONTAINER_DIRECTIVE
+    );
+  }
+}
+
+/**
+ * Returns player configurations.
+ *
+ * @param bool $use_default
+ *
+ * @return array
+ */
+function tve_player_get_config($use_default = FALSE) {
+  return variable_get(
+    'tve_player_ad_config',
+    $use_default ? tve_player_get_config_default() : array()
+  );
+}
+
+/**
+ * Returns default player configurations.
+ *
+ * @return array
+ */
+function tve_player_get_config_default() {
+  return array(
+    'global' => array(
+      'cpc_location' => 'http://client-cloudpath.nbcuni.com/current/api/NBCUniCPC.min.js',
+      'cpc_account' => '',
+    ),
+    'vod' => array(
+      'size' => '',
+      'lb_ad_status' => 0,
+      'leaderboard_ad_dimension' => '',
+      'dart_visibility' => 'dart-ad-anon',
+      'cmp_ad_status' => 0,
+      'companion_ad_dimension' => '',
+      'custom_player_parameters' => '',
+    ),
+    'live' => array(
+      'lb_ad_status' => 0,
+      'leaderboard_ad_dimension' => '',
+      'dart_visibility' => 'dart-ad-anon',
+      'cmp_ad_status' => 0,
+      'companion_ad_dimension' => '',
+      'custom_player_parameters' => '',
+    ),
+  );
+}
+
+/**
+ * Adds extra advertisement/other custom parameters to player rendering.
+ *
+ * @param array $variables
+ * @param string $type
+ */
+function _tve_player_add_custom_player_variables(&$variables, $type) {
+  $mvpd_id = '';
+  $custom_ad_parameters = array();
+  if (isset($_COOKIE['nbcu_user_settings'])
+    && is_string($_COOKIE['nbcu_user_settings'])
+  ) {
+    // Gets the logged in user mvpd provider and passes it to player for freewheel ads.
+    $cookie_value = (array) drupal_json_decode($_COOKIE['nbcu_user_settings']);
+
+    // Validate variable.
+    if ($cookie_value) {
+      $mvpd_id = isset($cookie_value['selectedProvider']) ?
+        $cookie_value['selectedProvider'] :
+        '';
+    }
+  }
+
+  $config = tve_player_get_config();
+  if (!empty($config[$type]['custom_player_ad_parameters'])) {
+    parse_str($config[$type]['custom_player_ad_parameters'], $custom_ad_parameters);
+  }
+
+  $variables['pub_mpx_player_parameters'] = array(
+    'mbr' => 'true',
+  );
+
+  if (!empty($mvpd_id)) {
+    $variables['pub_mpx_player_parameters']['MVPDid'] = $mvpd_id;
+  }
+
+  $variables['pub_mpx_player_parameters'] = array_merge(
+    $variables['pub_mpx_player_parameters'],
+    $custom_ad_parameters
+  );
+}
+
+/**
+ * Returns the ad markup based on ad and player type.
+ *
+ * Possible values for player_type is [vod, live].
+ *
+ * @param string $ad_type
+ * @param string $player_type
+ *
+ * @return string
+ */
+function tve_player_get_ads_markup($ad_type, $player_type) {
+  $config = tve_player_get_config();
+  if (empty($config[$player_type])) {
+    return '';
+  }
+
+  $config = $config[$player_type];
+
+  switch ($ad_type) {
+    case 'leaderboard':
+      if (isset($config['lb_ad_status'])
+        && isset($config['leaderboard_ad_dimension'])
+        && $config['lb_ad_status']
+      ) {
+        $leaderboard_ad_dimension = explode('x', $config['leaderboard_ad_dimension']);
+        $variables = array(
+          'width' => isset($leaderboard_ad_dimension[0]) ? $leaderboard_ad_dimension[0] : '',
+          'height' => isset($leaderboard_ad_dimension[1]) ? $leaderboard_ad_dimension[1] : '',
+        );
+
+        return theme('tve_player_fw_companion_ad', $variables);
+      }
+
+      break;
+
+    case 'companion':
+      if (isset($config['cmp_ad_status'])
+        && isset($config['companion_ad_dimension'])
+        && $config['cmp_ad_status']
+      ) {
+        $companion_ad_dimension = explode('x', $config['companion_ad_dimension']);
+        $variables = array(
+          'width' => isset($companion_ad_dimension[0]) ? $companion_ad_dimension[0] : '',
+          'height' => isset($companion_ad_dimension[1]) ? $companion_ad_dimension[1] : '',
+        );
+
+        return theme('tve_player_fw_companion_ad', $variables);
+      }
+
+      break;
+  }
+
+  return '';
+}
+
+/**
+ * Logs the received error message and outputs standard error message.
+ *
+ * @param string $message
+ *
+ * @return string
+ */
+function _tve_player_error($message) {
+  watchdog('TVE Player', $message, array(), WATCHDOG_ERROR);
+  return t('An unexpected error occured. Player cannot be displayed. Sorry for the inconvenience.');
+}
+
+/**
+ * Returns options for player size select.
+ *
+ * @return array
+ */
+function _tve_player_get_player_size_options() {
+  $options = array(
+    'defaultPlayer' => t('Default'),
+    'largerPlayer' => t('Large player'),
+  );
+
+  $options += module_invoke_all('tve_player_size');
+
+  return $options;
+}
+
+/**
+ * Returns the player template config values.
+ *
+ * @param string $key
+ * @param mixed $default
+ *
+ * @return string
+ */
+function _tve_player_get_player_template_config($key, $default = NULL) {
+  $tve_player_config = variable_get('tve_player_template_config', array());
+
+  return !empty($tve_player_config[$key]) ?
+    $tve_player_config[$key] :
+    $default;
+}

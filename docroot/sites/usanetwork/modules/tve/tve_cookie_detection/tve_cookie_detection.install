@@ -1,0 +1,39 @@
+<?php
+/**
+ * @file
+ * Contains install and requirement functions for TVE Cookie Detection module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function tve_cookie_detection_uninstall() {
+  variable_del('tve_cookie_detection_domain');
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function tve_cookie_detection_requirements($phase) {
+  $t = get_t();
+  if ('runtime' == $phase) {
+    $domain = variable_get('tve_cookie_detection_domain');
+
+    if (!$domain) {
+      $requirements['tve_cookie_detection_domain'] = array(
+        'title' => $t('TVE Cookies Detection'),
+        'value' => t('Not configured'),
+        'severity' => REQUIREMENT_ERROR,
+      );
+    }
+    else {
+      $requirements['tve_cookie_detection_domain'] = array(
+        'title' => $t('TVE Cookies Detection'),
+        'value' => t('Alternative domain is %domain', array('%domain' => $domain)),
+        'severity' => REQUIREMENT_OK,
+      );
+    }
+
+    return $requirements;
+  }
+}

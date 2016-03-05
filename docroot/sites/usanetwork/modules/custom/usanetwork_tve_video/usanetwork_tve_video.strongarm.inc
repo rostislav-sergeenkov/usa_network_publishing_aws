@@ -34,243 +34,413 @@ function usanetwork_tve_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_adobe_pass_body_text';
+  $strongarm->name = 'tve_auth2_cookies';
   $strongarm->value = array(
-    'value' => '<p>Oops! Looks like you need to upgrade your Flash Player.</p>
-<p><a href="http://get.adobe.com/flashplayer/" target="_blank">Download the latest version</a>&nbsp;and try again.</p>',
-    'format' => 'wysiwyg_full_html',
+    'header' => 'COOKIES MUST BE ENABLED TO USE THIS SITE HERE’S HOW TO DO IT:',
+    'desktop_ie' => array(
+      'body' => array(
+        'value' => '1. Open Internet Explorer by clicking the Start button Picture of the Start button, and then clicking Internet Explorer.
+2. Click the Tools button, and then click Internet Options.
+3. Click the Privacy tab, and then, under Settings, move the slider to the top to block all cookies or to the bottom to allow all cookies, and then click OK.
+4. Reload the page',
+        'format' => 'plain_text',
+      ),
+    ),
+    'desktop_safari' => array(
+      'body' => array(
+        'value' => '1. Click on the "Cog" icon in Safari.
+2. Safari cookies - Tools>Preferences
+3. Click Preferences...
+4. Change to the Security tab.
+5. Safari cookies - Security / Allow cookies
+6. Select "Only from sites I visit" or "Always".
+7. Reload the page',
+        'format' => 'plain_text',
+      ),
+    ),
+    'desktop_chrome' => array(
+      'body' => array(
+        'value' => '1. Select the Chrome menu icon from the top right of your browser; the icon looks like three horizontal bars
+2. Select Settings
+3. At the bottom of the page select Show advanced settings
+4. Scroll down to the Privacy section and select Content settings
+5. Select "Allow local data to be set (recommended)"
+6. Uncheck the box for “Block third-party cookies and site data”
+7. Select Done to save
+8. Reload the page',
+        'format' => 'plain_text',
+      ),
+    ),
+    'desktop_ff' => array(
+      'body' => array(
+        'value' => '1. Click the menu button and choose Options.
+2. Select the Privacy panel.
+3. Set Firefox will: to Use custom settings for history. 
+4. Check mark Accept cookies from sites to enable Cookies.
+5. Reload the page',
+        'format' => 'plain_text',
+      ),
+    ),
+    'desktop_other' => array(
+      'body' => array(
+        'value' => 'Cookies must be enabled to use this site',
+        'format' => 'plain_text',
+      ),
+    ),
+    'mobile_safari' => array(
+      'body' => array(
+        'value' => 'Cookies must be enabled to use this site',
+        'format' => 'plain_text',
+      ),
+    ),
+    'mobile_chrome' => array(
+      'body' => array(
+        'value' => 'Cookies must be enabled to use this site',
+        'format' => 'plain_text',
+      ),
+    ),
+    'mobile_other' => array(
+      'body' => array(
+        'value' => 'Cookies must be enabled to use this site',
+        'format' => 'plain_text',
+      ),
+    ),
   );
-  $export['tve_auth_adobe_pass_body_text'] = $strongarm;
+  $export['tve_auth2_cookies'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_adobe_pass_header_title';
-  $strongarm->value = 'Sorry there is a problem';
-  $export['tve_auth_adobe_pass_header_title'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_draft_login_window_1';
+  $strongarm->name = 'tve_auth2_draft_additional';
   $strongarm->value = array(
-    'image' => array(
-      'fid' => 0,
+    'behavior' => 'none',
+    'error_configs' => array(
+      'general' => array(
+        'title' => 'Sorry! There\'s a problem.',
+        'description' => array(
+          'value' => 'Sorry about that! We seem to be experiencing a technical issue right now. Please try again later.',
+          'format' => 'plain_text',
+        ),
+      ),
+      'flash' => array(
+        'title' => 'Sorry! Your device isn\'t currently configured to play our videos.',
+        'description' => array(
+          'value' => 'To watch USA Live or Video Full Episodes:
+Adobe Flash is required to play our videos.You can get it at <a href="http://www.adobe.com/" title="adobe.com" target="_blank">adobe.com</a>.
+On an iPad or iPhone, you need to to download our USA apps.
+An app is not available for Android at this time.',
+          'format' => 'plain_text',
+        ),
+      ),
+      'adobepass' => array(
+        'title' => 'Sorry! There\'s a problem.',
+        'description' => array(
+          'value' => 'Sorry about that! The login is not available now. Please try again later.',
+          'format' => 'plain_text',
+        ),
+      ),
+      'macsafari' => array(
+        'title' => 'Sorry! There\'s a problem with your flash version.',
+        'description' => array(
+          'value' => 'Please update to the latest flash version.',
+          'format' => 'plain_text',
+        ),
+      ),
+      'private_browsing' => array(
+        'title' => 'You are in Private Browsing Mode.',
+        'description' => array(
+          'value' => 'We noticed you are attempting to use our site in a private or incognito browsing mode which interferes with cookies.  To utilize this site you must be in a normal browser mode with cookies enabled.',
+          'format' => 'plain_text',
+        ),
+      ),
     ),
-    'left_block_text' => array(
-      'value' => '<h1>Select your TV provider</h1>
-<h2>Here\'s what you\'ll get:</h2>
-<ul class="bullet-list">
-<li><span>Your favorite USA shows the day after they air</span></li>
-<li><span>A cinematic experience across your devices</span></li>
-</ul>',
-      'format' => 'wysiwyg_basic',
-    ),
-    'right_block_header_text' => array(
-      'value' => '<h2>Select your provider and sign in</h2>',
-      'format' => 'wysiwyg_basic',
-    ),
-    'footer_text' => 'Do not see your provider?',
-    'footer_link_text' => 'Search by zip',
-    'preview' => 'Preview "Login window step 1"',
   );
-  $export['tve_auth_draft_login_window_1'] = $strongarm;
+  $export['tve_auth2_draft_additional'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_draft_welcome_modal';
+  $strongarm->name = 'tve_auth2_draft_login_window';
   $strongarm->value = array(
-    'variant' => 'none',
+    'text_line_1' => array(
+      'text' => 'Watch USA Network Shows and movies from anywhere',
+    ),
+    'text_line_2' => array(
+      'text' => array(
+        'value' => 'Select your TV provider:',
+        'format' => 'plain_text',
+      ),
+    ),
+    'text_line_3' => array(
+      'text' => 'or find your provider below & login',
+    ),
+    'text_line_4' => array(
+      'text' => 'Need help? Visit our FAQs',
+      'zendesk_url' => FALSE,
+      'url' => 'http://www.usanetwork.com/help-faq',
+    ),
+    'text_line_5' => array(
+      'text' => 'NBCUniversal does not collect any of your account information',
+    ),
+    'preview' => 'Preview "Login Modal Window"',
   );
-  $export['tve_auth_draft_welcome_modal'] = $strongarm;
+  $export['tve_auth2_draft_login_window'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_draft_welcome_window';
+  $strongarm->name = 'tve_auth2_draft_third_party_cookies';
   $strongarm->value = array(
-    'title' => 'Welcome to USA Now',
-    'more_details_link_text' => 'More Details Please',
-    'block_1_image' => array(
-      'fid' => 0,
+    'header' => '',
+    'desktop_ie' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
     ),
-    'block_1_text' => array(
-      'value' => '<h2 class="sub-head">Select your TV provider</h2>
-<p class="feature-copy">Verify your provider to watch your favorite shows the day after they air.</p>',
-      'format' => 'wysiwyg_basic',
+    'desktop_safari' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
     ),
-    'block_2_image' => array(
-      'fid' => 0,
+    'desktop_chrome' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
     ),
-    'block_2_text' => array(
-      'value' => '<h2 class="sub-head">Watch TV anywhere</h2>
-<p class="feature-copy"><span class="hideOnMobile">Watch on all your devices, anywhere life takes you.</span></p>',
-      'format' => 'wysiwyg_basic',
+    'desktop_ff' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
     ),
-    'block_3_image' => array(
-      'fid' => 0,
+    'desktop_other' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
     ),
-    'block_3_text' => array(
-      'value' => '',
-      'format' => 'wysiwyg_basic',
+    'mobile_safari' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
     ),
-    'start_button_text' => 'Get Started',
-    'big_image' => array(
-      'fid' => 0,
+    'mobile_chrome' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
     ),
-    'footer_text' => 'Skip this step,',
-    'footer_link_text' => 'I just want to browse.',
-    'preview' => 'Preview "Welcome window"',
+    'mobile_other' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
   );
-  $export['tve_auth_draft_welcome_window'] = $strongarm;
+  $export['tve_auth2_draft_third_party_cookies'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_flash_body_text';
+  $strongarm->name = 'tve_auth2_draft_welcome_window';
   $strongarm->value = array(
-    'value' => '<p>Oops! Looks like you need to upgrade your Flash Player.</p>
-<p><a href="http://get.adobe.com/flashplayer/" target="_blank">Download the latest version</a>&nbsp;and try again.</p>',
-    'format' => 'wysiwyg_full_html',
+    'brand_logo' => array(
+      'fid' => 0,
+    ),
+    'text_top' => array(
+      'text' => '',
+      'style' => '',
+    ),
+    'text_center' => array(
+      'text' => '',
+      'style' => '',
+    ),
+    'text_bottom' => array(
+      'text' => '',
+      'style' => '',
+    ),
+    'buttons' => array(
+      'yes_title' => '',
+      'yes_description' => '',
+      'no_title' => '',
+      'no_description' => '',
+      'no_url' => '',
+      'no_url_target' => 0,
+    ),
+    'preview' => 'Preview "Welcome Modal Window"',
   );
-  $export['tve_auth_flash_body_text'] = $strongarm;
+  $export['tve_auth2_draft_welcome_window'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_flash_header_title';
-  $strongarm->value = 'Sorry there is a problem';
-  $export['tve_auth_flash_header_title'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_generic_section_body_text';
+  $strongarm->name = 'tve_auth2_published_additional';
   $strongarm->value = array(
-    'value' => '<p>Oops! Looks like you need to upgrade your Flash Player.</p>
-<p><a href="http://get.adobe.com/flashplayer/" target="_blank">Download the latest version</a> and try again.</p>',
-    'format' => 'wysiwyg_full_html',
+    'behavior' => 'none',
+    'error_configs' => array(
+      'general' => array(
+        'title' => 'Sorry! There\'s a problem.',
+        'description' => array(
+          'value' => 'Sorry about that! We seem to be experiencing a technical issue right now. Please try again later.',
+          'format' => 'plain_text',
+        ),
+      ),
+      'flash' => array(
+        'title' => 'Sorry! Your device isn\'t currently configured to play our videos.',
+        'description' => array(
+          'value' => 'To watch USA Live or Video Full Episodes:
+Adobe Flash is required to play our videos.You can get it at <a href="http://www.adobe.com/" title="adobe.com" target="_blank">adobe.com</a>.
+On an iPad or iPhone, you need to to download our USA apps.
+An app is not available for Android at this time.',
+          'format' => 'plain_text',
+        ),
+      ),
+      'adobepass' => array(
+        'title' => 'Sorry! There\'s a problem.',
+        'description' => array(
+          'value' => 'Sorry about that! The login is not available now. Please try again later.',
+          'format' => 'plain_text',
+        ),
+      ),
+      'macsafari' => array(
+        'title' => 'Sorry! There\'s a problem with your flash version.',
+        'description' => array(
+          'value' => 'Please update to the latest flash version.',
+          'format' => 'plain_text',
+        ),
+      ),
+      'private_browsing' => array(
+        'title' => 'You are in Private Browsing Mode.',
+        'description' => array(
+          'value' => 'We noticed you are attempting to use our site in a private or incognito browsing mode which interferes with cookies.  To utilize this site you must be in a normal browser mode with cookies enabled.',
+          'format' => 'plain_text',
+        ),
+      ),
+    ),
   );
-  $export['tve_auth_generic_section_body_text'] = $strongarm;
+  $export['tve_auth2_published_additional'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_generic_section_header_title';
-  $strongarm->value = 'Sorry there is a problem';
-  $export['tve_auth_generic_section_header_title'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_published_login_window_1';
+  $strongarm->name = 'tve_auth2_published_login_window';
   $strongarm->value = array(
-    'image' => array(
-      'fid' => 0,
+    'text_line_1' => array(
+      'text' => 'Watch USA Network Shows and movies from anywhere',
     ),
-    'left_block_text' => array(
-      'value' => '<h1>Select your TV provider</h1>
-<h2>Here\'s what you\'ll get:</h2>
-<ul class="bullet-list">
-<li><span>Your favorite USA shows the day after they air</span></li>
-<li><span>A cinematic experience across your devices</span></li>
-</ul>',
-      'format' => 'wysiwyg_basic',
+    'text_line_2' => array(
+      'text' => array(
+        'value' => 'Select your TV provider:',
+        'format' => 'plain_text',
+      ),
     ),
-    'right_block_header_text' => array(
-      'value' => '<h2>Select your provider and sign in</h2>',
-      'format' => 'wysiwyg_basic',
+    'text_line_3' => array(
+      'text' => 'or find your provider below & login',
     ),
-    'footer_text' => 'Do not see your provider?',
-    'footer_link_text' => 'Search by zip',
-    'preview' => 'Preview "Login window step 1"',
+    'text_line_4' => array(
+      'text' => 'Need help? Visit our FAQs',
+      'zendesk_url' => FALSE,
+      'url' => 'http://www.usanetwork.com/help-faq',
+    ),
+    'text_line_5' => array(
+      'text' => 'NBCUniversal does not collect any of your account information',
+    ),
+    'preview' => 'Preview "Login Modal Window"',
   );
-  $export['tve_auth_published_login_window_1'] = $strongarm;
+  $export['tve_auth2_published_login_window'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_published_welcome_modal';
+  $strongarm->name = 'tve_auth2_published_third_party_cookies';
   $strongarm->value = array(
-    'variant' => 'none',
+    'header' => '',
+    'desktop_ie' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'desktop_safari' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'desktop_chrome' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'desktop_ff' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'desktop_other' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'mobile_safari' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'mobile_chrome' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
+    'mobile_other' => array(
+      'body' => array(
+        'value' => '',
+        'format' => 'plain_text',
+      ),
+    ),
   );
-  $export['tve_auth_published_welcome_modal'] = $strongarm;
+  $export['tve_auth2_published_third_party_cookies'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tve_auth_published_welcome_window';
+  $strongarm->name = 'tve_auth2_published_welcome_window';
   $strongarm->value = array(
-    'title' => 'Welcome to USA Now',
-    'more_details_link_text' => 'More Details Please',
-    'block_1_image' => array(
+    'brand_logo' => array(
       'fid' => 0,
     ),
-    'block_1_text' => array(
-      'value' => '<h2 class="sub-head">Select your TV provider</h2>
-<p class="feature-copy">Verify your provider to watch your favorite shows the day after they air.</p>',
-      'format' => 'wysiwyg_basic',
+    'text_top' => array(
+      'text' => '',
+      'style' => '',
     ),
-    'block_2_image' => array(
-      'fid' => 0,
+    'text_center' => array(
+      'text' => '',
+      'style' => '',
     ),
-    'block_2_text' => array(
-      'value' => '<h2 class="sub-head">Watch TV anywhere</h2>
-<p class="feature-copy"><span class="hideOnMobile">Watch on all your devices, anywhere life takes you.</span></p>',
-      'format' => 'wysiwyg_basic',
+    'text_bottom' => array(
+      'text' => '',
+      'style' => '',
     ),
-    'block_3_image' => array(
-      'fid' => 0,
+    'buttons' => array(
+      'yes_title' => '',
+      'yes_description' => '',
+      'no_title' => '',
+      'no_description' => '',
+      'no_url' => '',
+      'no_url_target' => 0,
     ),
-    'block_3_text' => array(
-      'value' => '',
-      'format' => 'wysiwyg_basic',
-    ),
-    'start_button_text' => 'Get Started',
-    'big_image' => array(
-      'fid' => 0,
-    ),
-    'footer_text' => 'Skip this step,',
-    'footer_link_text' => 'I just want to browse.',
-    'preview' => 'Preview "Welcome window"',
+    'preview' => 'Preview "Welcome Modal Window"',
   );
-  $export['tve_auth_published_welcome_window'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'tve_k2_api_url';
-  $strongarm->value = 'http://nbcutve.viewerlink.tv/';
-  $export['tve_k2_api_url'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'tve_k2_brand_id';
-  $strongarm->value = 'usa';
-  $export['tve_k2_brand_id'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'tve_k2_client_id';
-  $strongarm->value = 'NBCUTV';
-  $export['tve_k2_client_id'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'tve_mvpd_brand_id';
-  $strongarm->value = 'usa';
-  $export['tve_mvpd_brand_id'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'tve_mvpd_instance';
-  $strongarm->value = 'prod';
-  $export['tve_mvpd_instance'] = $strongarm;
+  $export['tve_auth2_published_welcome_window'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

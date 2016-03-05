@@ -1201,3 +1201,24 @@ function usanetwork_core_update_7183() {
     module_enable(array('usanetwork_video_live'));
   }
 }
+
+/**
+ * Changes for Auth2.
+ */
+function usanetwork_core_update_7184() {
+  if (module_exists('tve_k2')) {
+    module_disable(array('tve_k2'));
+  }
+  if (module_exists('tve_auth')) {
+    module_disable(array('tve_auth'));
+  }
+  if (!module_exists('tve_auth2')) {
+    module_enable(array('tve_auth2'));
+  }
+  if (!module_exists('tve_player')) {
+    module_enable(array('tve_player'));
+  }
+  if (!module_exists('tve_auth2_cookies')) {
+    module_enable(array('tve_auth2_cookies'));
+  }
+}

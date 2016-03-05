@@ -1,0 +1,169 @@
+<?php
+
+/**
+ * @file
+ * tve_auth2_cookies module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function tve_auth2_cookies_menu() {
+  $items['admin/tve/editor/cookies'] = array(
+    'title' => 'Cookie detection',
+    'description' => 'TVE Cookie detection configs.',
+    'access arguments' => array('administer tve'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_tve_auth2_cookies_admin_form'),
+    'file' => 'tve_auth2_cookies.admin.inc',
+    'weight' => 10,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_tve_auth2_settings_form_alter().
+ */
+function tve_auth2_cookies_tve_auth2_settings_form_alter(&$form, $defaults) {
+  // Modal window with help tips about 3rd party cookies support.
+  $form['third_party_cookies'] = array(
+    '#title' => t('Modal Window: Third party cookies help'),
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#weight' => 1,
+    '#tree' => TRUE,
+  );
+  $form['third_party_cookies']['header'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Header'),
+    '#default_value' => $defaults['third_party_cookies']['header'],
+  );
+  foreach (_tve_auth2_cookies_get_browser_list() as $browser => $label) {
+    $form['third_party_cookies'][$browser]['body'] = array(
+      '#title' => t('Body for %browser', array('%browser' => $label)),
+      '#type' => 'text_format',
+      '#format' => (isset($defaults['third_party_cookies'][$browser]['body']['format'])) ?
+        $defaults['third_party_cookies'][$browser]['body']['format'] : TVE_AUTH2_WISYWYG_FORMAT,
+      '#rows' => 5,
+      '#default_value' => $defaults['third_party_cookies'][$browser]['body']['value'],
+      '#description' => t('Message will be shown to a visitor with a client where third party cookies are disabled. May contain tips/instructions how to enable 3rd party cookies support.',
+        array('%browser' => $label)),
+    );
+  }
+}
+
+/**
+ * Implements hook_tve_auth2_default_variables_alter().
+ */
+function tve_auth2_cookies_tve_auth2_default_variables_alter(&$variables) {
+  $variables['third_party_cookies'] = _tve_auth2_cookies_get_default_variables();
+}
+
+/**
+ * Returns the list of supported web browsers.
+ *
+ * @return array
+ */
+function _tve_auth2_cookies_get_browser_list() {
+  return array(
+    'desktop_ie' => format_string('@platform: @browser', array('@platform' => t('Desktop'), '@browser' => 'Internet Explorer')),
+    'desktop_safari' => format_string('@platform: @browser', array('@platform' => t('Desktop'), '@browser' => 'Safari')),
+    'desktop_chrome' => format_string('@platform: @browser', array('@platform' => t('Desktop'), '@browser' => 'Chrome')),
+    'desktop_ff' => format_string('@platform: @browser', array('@platform' => t('Desktop'), '@browser' => 'Firefox')),
+    'desktop_other' => format_string('@platform: @browser', array('@platform' => t('Desktop'), '@browser' => t('Other Browser'))),
+    'mobile_safari' => format_string('@platform: @browser', array('@platform' => t('Mobile'), '@browser' => 'Safari')),
+    'mobile_chrome' => format_string('@platform: @browser', array('@platform' => t('Mobile'), '@browser' => 'Chrome')),
+    'mobile_other' => format_string('@platform: @browser', array('@platform' => t('Mobile'), '@browser' => 'Other Browser')),
+  );
+}
+
+/**
+ * Returns array of default (factory) tve auth2 cookies settings.
+ *
+ * @return array
+ */
+function _tve_auth2_cookies_get_default_variables() {
+  $defaults = array(
+    'header' => '',
+  );
+  foreach (_tve_auth2_cookies_get_browser_list() as $browser => $label) {
+    $defaults[$browser]['body'] = array(
+      'value' => '',
+      'format' => TVE_AUTH2_WISYWYG_FORMAT,
+    );
+  }
+
+  return $defaults;
+}
+
+/**
+ * Retrieves and processes copies for Cookie modal window.
+ *
+ * @param string $var_name
+ *
+ * @return array
+ */
+function _tve_auth2_cookies_modal_settings($var_name) {
+  $configs = variable_get($var_name, _tve_auth2_cookies_get_default_variables());
+  $header = isset($configs['header']) ? filter_xss($configs['header']) : '';
+  $body = array();
+
+  foreach (_tve_auth2_cookies_get_browser_list() as $browser => $label) {
+    $body[$browser] = '';
+    if (isset($configs[$browser]['body']['value'])) {
+      $body[$browser] = check_markup(
+        $configs[$browser]['body']['value'],
+        $configs[$browser]['body']['format'],
+        '',
+        TRUE
+      );
+    }
+  }
+
+  return array(
+    'header' => $header,
+    'body' => $body,
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tve_auth2_cookies_theme($existing, $type, $theme, $path) {
+  return array(
+     'tve_auth2_3rd_party_cookies' => array(
+       'template' => 'theme/modal-3rd_party_cookies',
+       'variables' => array(
+         'header' => '',
+         'body' => array(),
+       )
+     ),
+    'tve_auth2_cookies' => array(
+      'template' => 'theme/modal-cookies',
+      'variables' => array(
+        'header' => '',
+        'body' => array(),
+      )
+    ),
+  );
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function tve_auth2_cookies_page_alter(&$page) {
+  // Attach modal window (Cookie detection helper message).
+  $page['page_bottom']['tve_auth2_cookies'] = array(
+    '#markup' => theme('tve_auth2_cookies', _tve_auth2_cookies_modal_settings('tve_auth2_cookies')),
+  );
+
+  // Attach modal window (3rd party Cookie detection helper message).
+  $page['page_bottom']['tve_auth2_3rd_party_cookies'] = array(
+    '#markup' => theme('tve_auth2_3rd_party_cookies', _tve_auth2_cookies_modal_settings('tve_auth2_published_third_party_cookies')),
+  );
+
+  // Attach JavaScript library.
+  drupal_add_library('tve_cookie_detection', 'tve-3rd-party-cookies-detection');
+}

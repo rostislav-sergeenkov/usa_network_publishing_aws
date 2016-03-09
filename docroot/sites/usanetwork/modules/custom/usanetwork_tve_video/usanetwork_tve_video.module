@@ -304,15 +304,15 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
   $account_mpx_url_array = explode('/', $account_mpx_url);
   $account_mpx_id = end($account_mpx_url_array);
 
-  $released_file_pid = NULL;
-  if (!empty($file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'])) {
-    $released_file_pid = $file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'];
+  $mpx_guid = NULL;
+  if (!empty($file->field_mpx_guid[LANGUAGE_NONE][0]['value'])) {
+    $mpx_guid = $file->field_mpx_guid[LANGUAGE_NONE][0]['value'];
   }
-  elseif (!empty($file->field_mpx_main_released_file_pid[0]['value'])) {
-    $released_file_pid = $file->field_mpx_main_released_file_pid[0]['value'];
+  elseif (!empty($file->field_mpx_guid[0]['value'])) {
+    $mpx_guid = $file->field_mpx_guid[0]['value'];
   }
 
-  if (!$released_file_pid) {
+  if (!$mpx_guid) {
     return _tve_player_error('Could not render player: Released file pid not found.');
   }
 
@@ -320,7 +320,7 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
   $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_pid;
 
   if (!_tve_player_get_player_template_config('use_set_release_url', FALSE)) {
-    $player_source .= '/select/media/guid/' . $account_mpx_id . '/'. $released_file_pid;
+    $player_source .= '/select/media/guid/' . $account_mpx_id . '/'. $mpx_guid;
   }
 
   $player_tag = array(

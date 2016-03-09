@@ -1462,8 +1462,11 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       $show = NULL;
 
-      $field_mpx_entitlement = field_get_items('file', $file, 'field_mpx_entitlement');
-      $vars['lock_video'] = ($field_mpx_entitlement[0]['safe_value'] === 'auth') ? TRUE : FALSE;
+      $field_mpx_entitlement = _usanetwork_get_field_item('file', $file, 'field_mpx_entitlement', 'safe_value');
+      if ($field_mpx_entitlement) {
+        $vars['lock_video'] = ($field_mpx_entitlement === 'auth') ? TRUE : FALSE;
+        $vars['entitlement'] = $field_mpx_entitlement;
+      }
 
       $field_show = field_get_items('file', $file, 'field_show');
       if ($field_show && $field_show = reset($field_show)) {
@@ -1491,6 +1494,16 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         } else {
           $vars['live_advert'] = NULL;
         }
+      }
+
+      $field_mpx_guid = _usanetwork_get_field_item('file', $file, 'field_mpx_guid', 'value');
+      if ($field_mpx_guid) {
+        $vars['mpx_guid'] = $field_mpx_guid;
+      }
+
+      $field_episode_rating = _usanetwork_get_field_item('file', $file, 'field_mpx_vchip_rating', 'value');
+      if ($field_episode_rating) {
+        $vars['episode_rating'] = $field_episode_rating;
       }
 
       $video = array(

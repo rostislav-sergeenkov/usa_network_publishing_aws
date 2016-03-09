@@ -16218,8 +16218,6 @@ footer h2 {
   background: #ffffff;
   color: #000000;
   padding: 0;
-  padding-bottom: 10000px;
-  margin-bottom: -10000px;
   overflow: hidden;
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -16359,6 +16357,10 @@ footer h2 {
   clear: both;
   content: '';
   display: table;
+}
+.consumptionator-quiz-main-block article.node-quiz {
+  padding-bottom: 10000px;
+  margin-bottom: -10000px;
 }
 @media (min-width: 1025px) {
   .consumptionator-quiz-main-block .consum-sidebar .items-block {

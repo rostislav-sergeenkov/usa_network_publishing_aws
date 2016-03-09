@@ -105,6 +105,14 @@ function usanetwork_consumptionator_post_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/consumptionator_blog/autocomplete'] = array(
+    'title' => 'Select content',
+    'page callback' => 'usanetwork_consumptionator_post_blogs_autocomplete',
+    'access arguments' => array('administer nodes'),
+    'delivery callback' => 'drupal_deliver_html_page',
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -805,4 +813,24 @@ function usanetwork_consumptionator_post_node_update($node) {
     module_load_include('inc', 'pathauto');
     pathauto_create_alias('usanetwork_consumptionator_post', 'insert', 'node/'. $node->nid, array('node' => $node), $node->type); // Language is optional
   }
+}
+
+function usanetwork_consumptionator_post_blogs_autocomplete($title) {
+  $query = db_select('node', 'n');
+  $query->fields('n',array('nid','title'));
+  $query->condition('n.title', '%' . $title . '%' ,'LIKE');
+  $query->condition('n.type', 'consumpt_blog' ,'=');
+  $query->condition('n.status', '1');
+  $query->range(0, 10);
+  $result = $query->execute()->fetchAll();
+
+  $output = array();
+  if (!empty($result) && is_array($result)) {
+    foreach($result as $row) {
+      $row->title = check_plain($row->title);
+      $key = $row->title . ' [node:' . $row->nid . ']';
+      $output[$key] = $row->title;
+    }
+  }
+  drupal_json_output($output);
 }

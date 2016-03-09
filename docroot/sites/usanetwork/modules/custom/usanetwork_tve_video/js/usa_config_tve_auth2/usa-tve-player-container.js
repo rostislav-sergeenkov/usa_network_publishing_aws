@@ -35,7 +35,6 @@
                 authService.promise.then(init);
 
                 function init(status) {
-                  console.info(config.src);
                   // passing iframe url as trusted to the template
                   scope.src = $sce.trustAsResourceUrl(config.src + '?' + getQueryParams(status.isAuthenticated && status.mvpdId));
                 }
@@ -56,8 +55,6 @@
                       autoPlay: true
                     };
                   }
-
-                  console.info(params.autoPlay);
 
                   ng.forEach(SRC_PARAMS, function(param, i) {
                     if (param.attrName in config) {
@@ -127,7 +124,7 @@
               scope.isEntitled = isEntitlement;
               scope.isMobile = helper.device.isMobile;
               scope.showCompanionAdd = false;
-              scope.statusLoadReleaseUrl = false;
+              scope.statusPlayerLoaded = false;
               scope.statusSetToken = false;
 
               scope.user = {
@@ -161,7 +158,7 @@
               // wait when load release
               usaPlayerService.promise.then(function (data) {
                 if (isEntitlement === 'auth') {
-                  if (scope.statusLoadReleaseUrl && scope.statusSetToken) {
+                  if (scope.statusPlayerLoaded && scope.statusSetToken) {
                     $pdk.controller.clickPlayButton();
                   }
                 }
@@ -237,8 +234,6 @@
 
                 var data = dataObj || {};
 
-                console.info(player_Id);
-
                 //rebind $pdk each time directive is loaded
                 $pdk.bind(player_Id);
 
@@ -249,7 +244,7 @@
                 }
                 $pdk.controller.addEventListener('companion_ad', _companionAd);
                 $pdk.controller.addEventListener('OnShowProviderPicker', _showPicker);
-                $pdk.controller.addEventListener('OnLoadReleaseUrl', _onLoadReleaseUrl);
+                $pdk.controller.addEventListener('OnPlayerLoaded', _onPlayerLoaded);
                 $pdk.controller.addEventListener('OnMediaStart', _onMediaStart);
 
                 // init end card service
@@ -279,6 +274,21 @@
               };
 
               /**
+               * On Player Loaded
+               * @private
+               */
+              function _onPlayerLoaded(pdkEvent) {
+                if (scope.statusSetToken && !scope.statusPlayerLoaded) {
+                  // change status for autoplay
+                  scope.$apply(function () {
+                    scope.statusPlayerLoaded = true;
+                  });
+                  usaPlayerService.resolve('auth success done and load release url finish');
+                }
+              }
+
+
+              /**
                * Callback for authz Success
                * @private
                */
@@ -292,7 +302,7 @@
                 if (isEntitlement === 'auth') {
                   $pdk.controller.setToken(encodedToken, 'authToken');
                   // check on loadReleaseUrl
-                  if (scope.statusLoadReleaseUrl) {
+                  if (scope.statusPlayerLoaded) {
                     usaPlayerService.resolve('auth success done');
                   }
                 }
@@ -465,20 +475,6 @@
               }
 
               /**
-               * On Load Release Url
-               * @private
-               */
-              function _onLoadReleaseUrl(pdkEvent) {
-                if (scope.statusSetToken && !scope.statusLoadReleaseUrl) {
-                  // change status for autoplay
-                  scope.$apply(function () {
-                    scope.statusLoadReleaseUrl = true;
-                  });
-                  usaPlayerService.resolve('auth success done and load release url finish');
-                }
-              }
-
-              /**
                * Media Start event callback so that we can show the metadata section
                */
               function _onMediaStart(pdkEvent) {
@@ -501,7 +497,6 @@
 
                   if ($('.dart-tag').length) {
                     scope.$apply(function () {
-                      console.info('dart-tag');
                       $rootScope.isFreeWheelReq = true;
                       $rootScope.isDartReq = false;
                     });

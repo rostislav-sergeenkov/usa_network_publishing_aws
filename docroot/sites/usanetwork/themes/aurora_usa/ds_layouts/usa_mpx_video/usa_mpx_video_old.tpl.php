@@ -1,16 +1,11 @@
-<?php $next_video = array_shift($endcard) ?>
-<div class="video-block">
-  <div class="player-wrapper"
-       data-usa-tve-player-container
-       data-entitlement="<?php print $entitlement; ?>"
-       data-is-live="<?php print $is_live; ?>"
-       data-show-title="<?php print (!empty($show_title)) ? $show_title : ''; ?>"
-       data-episode-title="<?php print $filename; ?>"
-       data-mpx-guid="<?php print $mpx_guid; ?>"
-       data-episode-rating="<?php print $episode_rating; ?>"
-       data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
-       data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>"
-       data-ng-class="{'no-mobile-device': !isMobile}">
+<div class="video-block"
+     data-tve-player
+     data-usa-tve-player-container
+     data-show-title="<?php print (!empty($show_title)) ? $show_title : ''; ?>"
+     data-episode-title="<?php print $filename; ?>"
+     data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
+     data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>">
+  <div class="player-wrapper<?php print ($is_live)? ' right-rail-line': ''; ?>">
     <div class="node usanetwork-aspot player">
       <?php if (!empty($video_inactive)): ?>
         <div class="video-player-wrapper inactive">
@@ -28,27 +23,23 @@
           </div>
           <div class="tve-download-link">
             <a
-              href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher">
-              <img
+              href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img
                 src="/sites/usanetwork/themes/aurora_usa/images/googleplay.png"
-                alt=""/>
-            </a>
-            <a href="http://www.usanetwork.com/usanow">
-              <img src="/sites/usanetwork/themes/aurora_usa/images/usanow.png"
-                   alt=""/>
-            </a>
-            <a href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8">
-              <img src="/sites/usanetwork/themes/aurora_usa/images/appstore.png"
-                   alt=""/>
-            </a>
+                alt=""/></a>
+            <a href="http://www.usanetwork.com/usanow"><img
+                src="/sites/usanetwork/themes/aurora_usa/images/usanow.png"
+                alt=""/></a>
+            <a
+              href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8"><img
+                src="/sites/usanetwork/themes/aurora_usa/images/appstore.png"
+                alt=""/></a>
           </div>
-          <div class="tve-close">
-            <img src="/sites/usanetwork/themes/aurora_usa/images/close.png"
-                 alt=""/>
-            Close
+          <div class="tve-close"><img
+              src="/sites/usanetwork/themes/aurora_usa/images/close.png"
+              alt=""/>Close
           </div>
         </div>
-        <div class="video-player-wrapper" data-ng-if="!user.isAuthenticated">
+        <div class="video-player-wrapper" data-ng-if="!global.isAuthN">
           <div class="locked-msg">
             <?php if ($is_live): ?>
               <span
@@ -59,8 +50,9 @@
             <?php endif; ?>
           </div>
           <div id="player">
-            <a href="javascript:void(0)" class="loginButton"
-               data-ng-click="openLoginWindow()">
+            <a href="javascript:void(0)" class="loginButton clean"
+               data-ng-if="!global.isAuthN"
+               data-ng-click="openLoginWindow()" data-ng-cloak="">
               <?php if (!$is_live): ?>
                 <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
                 print drupal_render($image);
@@ -71,21 +63,34 @@
                   alt=""/>
               <?php endif; ?>
               <div class="sign-in-wrapper">
-                <span class="sign-in-button">
-                  <?php print t('sign in and watch'); ?>
-                </span>
+                <span
+                  class="sign-in-button"><?php print t('sign in and watch'); ?></span>
               </div>
             </a>
           </div>
         </div>
-        <div class="video-player-wrapper" data-ng-show="user.isAuthenticated">
+        <div class="video-player-wrapper" data-ng-show="global.isAuthN">
           <?php if ($is_live): ?>
             <iframe allowfullscreen="" id="videoplayer" width="100%"
-                    data-usa-player-is-live height="100%"
-                    frameborder="0"></iframe>
+                    height="100%" frameborder="0"></iframe>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
-            <?php print render($video); ?>
+            <?php
+            $video = theme('pub_mpx_video', array(
+              'file' => $file,
+              'pub_mpx_player_parameters' => array(
+                'autoPlay' => 'true',
+                'form' => 'html'
+              ),
+              'accepted' => TRUE,
+            ));
+            ?>
+            <div data-usa-tve-player="pdk-player"
+                 class="pdk-player-wrap"
+                 data-episode-pid="<?php print $file_pid; ?>"
+                 data-next-episode-url="<?php print $next_video_url; ?>">
+              <?php print $video; ?>
+            </div>
             <!--  start endcart  -->
             <?php if (!empty($endcard_enabled)) : ?>
               <?php print $endcard_template; ?>
@@ -110,16 +115,34 @@
         <div class="video-player-wrapper">
           <?php if ($is_live): ?>
             <iframe allowfullscreen="" id="videoplayer" width="100%"
-                    data-usa-player-is-live height="100%"
-                    frameborder="0"></iframe>
+                    height="100%" frameborder="0"></iframe>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
-          <?php print render($video); ?>
-            <!--  start endcart  -->
-            <?php if (!empty($endcard_enabled)) : ?>
-              <?php print $endcard_template; ?>
-            <?php endif; ?>
-            <!--  end endcart -->
+            <?php
+            $video = theme('pub_mpx_video', array(
+              'file' => $file,
+              'pub_mpx_player_parameters' => array(
+                'autoPlay' => 'true',
+                'form' => 'html'
+              ),
+              'accepted' => TRUE,
+            ));
+            ?>
+            <?php if ($full_episode) : ?>
+              <div data-usa-tve-player="pdk-player"
+                   class="pdk-player-wrap"
+                   data-episode-pid="<?php print $file_pid; ?>"
+                   data-next-episode-url="<?php print $next_video_url; ?>">
+                <?php print $video; ?>
+              </div>
+              <!--  start endcart  -->
+              <?php if (!empty($endcard_enabled)) : ?>
+                <?php print $endcard_template; ?>
+              <?php endif; ?>
+              <!--  end endcart -->
+            <?php else: ?>
+              <?php print $video; ?>
+            <?php endif;?>
           <?php endif; ?>
         </div>
       <?php endif; ?>

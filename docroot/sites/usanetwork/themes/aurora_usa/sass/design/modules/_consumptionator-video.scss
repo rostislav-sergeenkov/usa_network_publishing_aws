@@ -40,9 +40,7 @@
         height: 100%;
         width: 100%;
       }
-      .lazyloader-icon {
-        display: none;
-      }
+
       /*old css code*/
       .tve-help {
         background-color: $black-dark;
@@ -186,12 +184,12 @@
         position: relative;
         width: 100%;
         &:hover {
-          cursor: pointer;
+          //cursor: pointer;
           .locked-msg,
           .sign-in-wrapper {
             display: block;
           }
-          img {
+          #player img {
             opacity: .2;
             transition: opacity 0.3s ease-in-out;
           }
@@ -300,7 +298,7 @@
               margin-bottom: 10px;
               width: inherit;
               height: inherit;
-              display: none!important;
+              display: none;
             }
             & > img {
               height: 100%;

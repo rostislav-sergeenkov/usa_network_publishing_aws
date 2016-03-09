@@ -4,30 +4,30 @@
    * Add an extra function to the Drupal ajax object
    * which allows us to trigger an ajax response
    */
-  Drupal.ajax.prototype.usanetwork_mpx_video_ajax = function(element) {
-    var ajax = this;
-
-    // Do not perform another ajax command if one is already in progress.
-    if (ajax.ajaxing) {
-      return false;
-    }
-
-    try {
-      $.ajax(ajax.options).done(function() {
-        var $link = $(element);
-        // remove active class from elements
-        $link.parents('ul').children('li').removeClass('active');
-        // add active class for current link
-        $link.parents('li').addClass('active');
-      });
-    }
-    catch (err) {
-      alert('An error occurred while attempting to process ' + ajax.options.url);
-      return false;
-    }
-
-    return false;
-  };
+  //Drupal.ajax.prototype.usanetwork_mpx_video_ajax = function(element) {
+  //  var ajax = this;
+  //
+  //  // Do not perform another ajax command if one is already in progress.
+  //  if (ajax.ajaxing) {
+  //    return false;
+  //  }
+  //
+  //  try {
+  //    $.ajax(ajax.options).done(function() {
+  //      var $link = $(element);
+  //      // remove active class from elements
+  //      $link.parents('ul').children('li').removeClass('active');
+  //      // add active class for current link
+  //      $link.parents('li').addClass('active');
+  //    });
+  //  }
+  //  catch (err) {
+  //    alert('An error occurred while attempting to process ' + ajax.options.url);
+  //    return false;
+  //  }
+  //
+  //  return false;
+  //};
 
   /**
    * Add behavior attached to links

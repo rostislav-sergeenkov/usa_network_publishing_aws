@@ -300,6 +300,10 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
     return _tve_player_error('Could not render player: Invalid MPX account.');
   }
 
+  $account_mpx_url = $mpx_account->account_id;
+  $account_mpx_url_array = explode('/', $account_mpx_url);
+  $account_mpx_id = end($account_mpx_url_array);
+
   $released_file_pid = NULL;
   if (!empty($file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'])) {
     $released_file_pid = $file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'];
@@ -312,11 +316,11 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
     return _tve_player_error('Could not render player: Released file pid not found.');
   }
 
-  $released_url = '//link.theplatform.com/s/' . $mpx_account_pid . '/' . $released_file_pid;
+//  $released_url = '//link.theplatform.com/s/' . $mpx_account_pid . '/' . $released_file_pid;
   $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_pid;
 
   if (!_tve_player_get_player_template_config('use_set_release_url', FALSE)) {
-    $player_source .= '/embed/select/' . $released_file_pid;
+    $player_source .= '/select/media/guid/' . $account_mpx_id . '/'. $released_file_pid;
   }
 
   $player_tag = array(

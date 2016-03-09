@@ -57,20 +57,23 @@
       $.each(items, function (i, carousel_item) {
 
         var images = $(carousel_item).find('img[data-src]');
+        Drupal.behaviors.lazy_load_custom.lazyLoadImages(images);
 
-        $.each(images, function (index, img_item) {
+      });
+    },
+    lazyLoadImages: function (items) {
+      $.each(items, function (index, img_item) {
 
-          var image = $(img_item),
-              imageHeight = image.height(), imageWidth = image.width(),
-              iconTop = Math.round(imageHeight/2), iconLeft = Math.round(imageWidth/2), iconFactor = Math.round(image.siblings('img.lazyloader-icon').height()/2);
+        var image = $(img_item),
+            imageHeight = image.height(), imageWidth = image.width(),
+            iconTop = Math.round(imageHeight/2), iconLeft = Math.round(imageWidth/2), iconFactor = Math.round(image.siblings('img.lazyloader-icon').height()/2);
 
-          image.siblings('img.lazyloader-icon').css({ top: iconTop - iconFactor, left: iconLeft - iconFactor });
+        image.siblings('img.lazyloader-icon').css({ top: iconTop - iconFactor, left: iconLeft - iconFactor });
 
-          if (Drupal.behaviors.lazy_load_custom.windowView(image)) {
-            Drupal.behaviors.lazy_load_custom.loadImage(image);
-            image.fadeIn('slow');
-          }
-        });
+        if (Drupal.behaviors.lazy_load_custom.windowView(image)) {
+          Drupal.behaviors.lazy_load_custom.loadImage(image);
+          image.fadeIn('slow');
+        }
       });
     }
   };

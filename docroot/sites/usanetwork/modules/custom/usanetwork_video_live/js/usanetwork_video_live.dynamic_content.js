@@ -3,6 +3,11 @@
     showName: '',
     contentName: '',
     // gigyaSharebar
+    lazyLoadImages: function() {
+      var items = $('.usanetwork-quiz').find('img[data-src]');
+      console.info(items);
+      Drupal.behaviors.lazy_load_custom.lazyLoadImages(items);
+    },
     initGigyaSharebar: function (data) {
 
       if (typeof Drupal.gigya != 'undefined') {
@@ -251,6 +256,7 @@
               Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
               Drupal.behaviors.usanetwork_video_live.initGigyaSharebar(data.variables);
               Drupal.behaviors.usanetwork_video_live.refreshQuizOmniture();
+              Drupal.behaviors.usanetwork_video_live.lazyLoadImages();
             } else {
               if (data.showName != null && typeof data.showName != 'undefined') {
                 Drupal.behaviors.usanetwork_video_live.showName = data.showName;

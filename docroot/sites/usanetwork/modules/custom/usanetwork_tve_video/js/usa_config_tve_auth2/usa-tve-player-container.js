@@ -158,7 +158,7 @@
               // wait when load release
               usaPlayerService.promise.then(function (data) {
                 if (isEntitlement === 'auth') {
-                  if (scope.statusPlayerLoaded&& scope.statusSetToken) {
+                  if (scope.statusPlayerLoaded && scope.statusSetToken) {
                     $pdk.controller.clickPlayButton();
                   }
                 }

@@ -6,9 +6,21 @@
 
 include_once 'usanetwork_tve_video.features.inc';
 
+/**
+ * Implements hook_theme_registry_alter().
+ */
 function usanetwork_tve_video_theme_registry_alter(&$theme_registry) {
   if (isset($theme_registry['tve_auth_welcome_window'])) {
     $theme_registry['tve_auth_welcome_window']['template'] = drupal_get_path('module', 'usanetwork_tve_video').'/templates/tve_auth_welcome_window';
+  }
+  if (isset($theme_registry['tve_auth2_login_window'])) {
+    $theme_registry['tve_auth2_login_window']['template'] = drupal_get_path('module', 'usanetwork_tve_video').'/templates/usa_tve_auth2_login_window';
+  }
+  if (isset($theme_registry['tve_auth2_errors_window'])) {
+    $theme_registry['tve_auth2_errors_window']['template'] = drupal_get_path('module', 'usanetwork_tve_video').'/templates/usa_tve_auth2_errors_window';
+  }
+  if (isset($theme_registry['tve_auth2_welcome_window'])) {
+    $theme_registry['tve_auth2_welcome_window']['template'] = drupal_get_path('module', 'usanetwork_tve_video').'/templates/usa_tve_auth2_welcome_window';
   }
 }
 
@@ -21,6 +33,7 @@ function usanetwork_tve_video_preprocess_pub_mpx_video(&$variables, $hook) {
 
 /**
  * Implements hook_preprocess_HOOK().
+ * Deprecated
  */
 function usanetwork_tve_video_preprocess_usanetwork_tve_live_video(&$variables, $hook) {
   usanetwork_tve_video_add_custom_player_variables($variables, 'live');
@@ -58,6 +71,7 @@ function usanetwork_tve_video_add_custom_player_variables(&$variables, $type = '
  */
 function usanetwork_tve_video_theme($existing, $type, $theme, $path) {
   return array(
+    //Deprecated
     'usanetwork_tve_live_video' => array(
       'variables' => array(
         'file' => NULL,
@@ -66,15 +80,28 @@ function usanetwork_tve_video_theme($existing, $type, $theme, $path) {
         'height' => NULL,
       ),
     ),
-    'usanetwork_tve_video_auth_menu' => array(
-      'variables' => array(),
-      'template' => 'templates/usanetwork-tve-video-auth-menu',
+    'usanetwork_tve_player_mpx_video' => array(
+      'variables' => array(
+        'file' => NULL,
+        'player_id' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+      ),
+    ),
+    'usanetwork_tve_login_menu' => array(
+      'variables' => array(
+      ),
+      'template' => 'templates/usanetwork-tve-login-menu',
+    ),
+    'usa_tve_auth2_login_modal_status' => array(
+      'template' => 'templates/usa_tve_auth2_login_modal_status',
     ),
   );
 }
 
 /**
  * Theme function to render live video.
+ * Deprecated
  */
 function theme_usanetwork_tve_live_video($variables) {
 
@@ -164,8 +191,28 @@ function usanetwork_tve_video_page_alter(&$page) {
     if (isset($page['page_bottom']['tve_auth'])) {
       unset($page['page_bottom']['tve_auth']);
     }
+  } else {
+    // Attach hidden modal windows to the bottom of the page.
+    $usa_modal_windows_html = theme('usa_tve_auth2_login_modal_status');
+    $page['page_bottom']['usanetwork_tve_video_modal_windows'] = array(
+        '#markup' => $usa_modal_windows_html,
+    );
   }
 }
+
+/**
+ * Implements hook_library_alter().
+ * Remove TVE js and css that don't work for usa
+ */
+function usanetwork_tve_video_library_alter(&$libraries, $module) {
+  if ($module == 'tve_auth2') {
+    if (isset($libraries['tve_auth2'])) {
+      unset($libraries['tve_auth2']['js'][libraries_get_path('tve') . '/dist/auth/tve-auth' . _tve_auth2_js_extension()]);
+      unset($libraries['tve_auth2']['css']);
+    }
+  }
+}
+
 
 /**
  * Implements hook_block_info().
@@ -197,20 +244,8 @@ function usanetwork_tve_video_block_view($delta = '') {
  * Realization of usanetwork_tve_video_auth_menu block
  */
 function usanetwork_tve_video_auth_menu() {
-  $menu_items = _usa_auth_prepare_menu_items();
-  $auth_links = array(
-    '#theme' => 'item_list',
-    '#items' => $menu_items,
-    '#attributes' => array('class' => array('tve-header-links', 'inline')),
-    '#prefix' => '<div class="links-wrapper">',
-    '#suffix' => '</div>',
-  );
-  $theme_variables = array(
-    'authbar' => drupal_render($auth_links),
-  );
-  return theme('usanetwork_tve_video_auth_menu', $theme_variables);
+  return theme('usanetwork_tve_login_menu');
 }
-
 
 /**
  * Process variables for file_entity.
@@ -219,7 +254,111 @@ function usanetwork_tve_video_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
   if (in_array($file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
     if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
-      drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-endcard.js', array('scope' => 'footer', 'weight' => -1));
+      drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-auth2.js', array('scope' => 'footer', 'weight' => -2));
+      drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-custom-services.js', array('scope' => 'footer', 'weight' => 0));
+      drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-endcard.js', array('scope' => 'footer', 'weight' => 1));
+      drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-login-button.js', array('scope' => 'footer', 'weight' => 2));
+      drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-logout-button.js', array('scope' => 'footer', 'weight' => 3));
+      drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-player-container.js', array('scope' => 'footer', 'weight' => 4));
     }
   }
+}
+
+/*
+ * Theme for player
+ */
+function theme_usanetwork_tve_player_mpx_video($variables) {
+  _tve_player_add_custom_player_variables($variables, 'vod');
+
+  $file = (object) $variables['file'];
+  if (!isset($file->fid)) {
+    return _tve_player_error('Could not render player: Invalid file object.');
+  }
+
+  $mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+  $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($mpx_account->default_player);
+
+  $player = pub_mpx_player_data_load($file);
+  $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
+    (!empty($player['pid']) ? $player['pid'] : $mpx_account_default_player['pid']);
+
+  $player = _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_id);
+
+  $player_pid = !empty($player['pid']) ? $player['pid'] : NULL;
+  if (!$player_pid) {
+    return _tve_player_error('Could not render player: Invalid player PID.');
+  }
+
+  $mpx_account_id = !empty($player['parent_account']) ? $player['parent_account'] : NULL;
+  if (!$mpx_account_id) {
+    return _tve_player_error('Could not render player: No MPX account id found.');
+  }
+
+  $mpx_account = _media_theplatform_mpx_get_account_data($mpx_account_id);
+  $mpx_account_pid = isset($mpx_account->account_pid) ? $mpx_account->account_pid : NULL;
+  if (!$mpx_account_pid) {
+    return _tve_player_error('Could not render player: Invalid MPX account.');
+  }
+
+  $released_file_pid = NULL;
+  if (!empty($file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'])) {
+    $released_file_pid = $file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'];
+  }
+  elseif (!empty($file->field_mpx_main_released_file_pid[0]['value'])) {
+    $released_file_pid = $file->field_mpx_main_released_file_pid[0]['value'];
+  }
+
+  if (!$released_file_pid) {
+    return _tve_player_error('Could not render player: Released file pid not found.');
+  }
+
+  $released_url = '//link.theplatform.com/s/' . $mpx_account_pid . '/' . $released_file_pid;
+  $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_pid;
+
+  if (!_tve_player_get_player_template_config('use_set_release_url', FALSE)) {
+    $player_source .= '/embed/select/' . $released_file_pid;
+  }
+
+  $player_tag = array(
+    'element' => array(
+      '#tag' => 'div',
+      '#value' => '',
+      '#attributes' => array(
+        'data-usa-tve-player'=> "pdk-player",
+        'data-src' => url($player_source, array('external' => TRUE)),
+        'data-id' => 'pdk-player',
+        'data-mbr' => 'true',
+        'class' => 'pdk-player-wrap',
+      ),
+    ),
+  );
+
+  // Normal flow.
+  $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
+
+  drupal_add_js($pdk_controller_url, 'external');
+
+  return theme('html_tag', $player_tag);
+}
+
+/*
+ * Helper function Returns associative array of mpx_player data for given player pid.
+ */
+function _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_pid) {
+  return db_query('SELECT * FROM {mpx_player} WHERE pid = :player_pid',
+    array(':player_pid' => $player_pid))->fetchAssoc();
+}
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_tve_video_menu() {
+  $items['admin/usanetwork/tve-stage-settings'] = array(
+    'title' => t('TVE Stage Settings'),
+    'description' => t('Apply settings for stage server'),
+    'page callback' => 'usanetwork_tve_video_stage_settings',
+    'access arguments' => array('administer usanetwork'),
+    'file' =>  'usanetwork_tve_video.admin.inc',
+  );
+  return $items;
 }

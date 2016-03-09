@@ -3,7 +3,7 @@
   'use strict';
 
   // customs USA EndCard services
-  ng.module('tve.services')
+  ng.module('tve.auth.services')
 
       // animation service
       .factory('usaEndCardAnimate', [

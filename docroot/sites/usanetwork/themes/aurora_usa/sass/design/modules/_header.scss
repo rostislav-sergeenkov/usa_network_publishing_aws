@@ -11,47 +11,6 @@ header {
   h2 {
     margin: 0;
   }
-  .region-header {
-    &:not(.sticky-shows-submenu) {
-      .block-usanetwork-menu {
-        &.sign-enable {
-          @include breakpoint($between-769-1024) {
-            .tab-content {
-              top: calc(100% - 35px);
-            }
-          }
-        }
-      }
-    }
-    &.sticky-shows-submenu {
-      .block-usanetwork-menu {
-        .header-nav-bar {
-          margin-bottom: 0;
-        }
-        .tve-help-link.signOut {
-          .tve-header-links {
-            .first {
-              display: none;
-            }
-          }
-        }
-      }
-    }
-      .block-usanetwork-menu {
-      &.open {
-        @include breakpoint($between-769-1024) {
-          background: $header-tab-back-new;
-          .tve-help-link.signOut {
-            .tve-header-links {
-              .first {
-                display: none;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
   .header-nav-bar {
     @include clear();
     background-color: $header-tab-back;
@@ -64,17 +23,6 @@ header {
     @include breakpoint($bp-768-width) {
       background: $footer-links;
       height: auto;
-    }
-    &.tve-sign {
-      .tve-help-link {
-        &.signOut {
-          ul.tve-header-links {
-            li.first {
-              display: block;
-            }
-          }
-        }
-      }
     }
     .no-refresh {
       outline: none;
@@ -172,7 +120,7 @@ header {
             }
             > a {
               &:before {
-                border: 1px solid #ffffff!important;
+                border: 1px solid #ffffff !important;
                 border-radius: 50%;
                 display: block;
                 content: '';
@@ -1518,7 +1466,7 @@ header {
               text-overflow: ellipsis;
               white-space: nowrap;
               @include breakpoint($bp-min-1901-width) {
-               max-width: 371px;
+                max-width: 371px;
               }
               @include breakpoint($bp-1024-width) {
                 max-width: none;
@@ -1737,6 +1685,7 @@ header {
     }
   }
 }
+
 //.consumptionator-page,
 .search-show {
   header {

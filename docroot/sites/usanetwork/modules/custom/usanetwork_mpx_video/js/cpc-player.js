@@ -2,29 +2,45 @@
 
   var counter = 0;
 
-  $(document).ready(function () {
-    if (!ng) {
-      return;
-    }
+  // functionality for cpc live player
+  ng.module('tve.auth.directives')
+      .directive('usaPlayerIsLive', [
+        '$rootScope',
+        'authService', '$cookies',
+        function ($rootScope, authService, $cookies) {
 
+          'use strict';
 
-    var $injector = ng.element(document).injector();
+          return {
+            scope: true,
+            compile: function (element, attrs, transclude) {
+              return function (scope, $element, $attrs) {
 
-    $injector.invoke(['$cookies', 'tveConfig', 'tveModal', 'authService', function ($cookies, tveConfig, tveModal, authService) {
+                var user = {
+                  isAuthenticated: authService.isAuthenticated() // check status
+                };
 
-      if ($cookies['nbcu_ap_loginpending']) {
-        authService.promise.then(function () {
-          initLivePlayer($cookies);
-        });
-      }
+                // create global scope obj
+                $rootScope.user = user;
 
-      if (authService.isAuthN()) {
-        initLivePlayer($cookies);
-      }
+                // Open login modal window on thumbnail click
+                //referencing openLoginModal function to the current scope
+                $rootScope.openLoginWindow = authService.openLoginModal;
 
-    }]);
+                authService.promise.then(function () {
 
-  });
+                  // check Authenticated and delete thumbnail if Authenticated = true
+                  user.isAuthenticated = authService.isAuthenticated();
+
+                  if (authService.isAuthenticated()) {
+                    initLivePlayer($cookies);
+                  }
+                });
+              };
+            }
+          };
+        }
+      ]);
 
   function initLivePlayer($cookies) {
 

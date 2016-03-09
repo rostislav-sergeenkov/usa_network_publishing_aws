@@ -1477,9 +1477,9 @@ function _usanetwork_menu_consumptionator_block_video($file) {
   if (!empty($file)) {
 
 
-    $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
-    if (!empty($advert_block['content'])) {
-      $authbar = render($advert_block['content']);
+    $auth_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
+    if (!empty($auth_block['content'])) {
+      $authbar = render($auth_block['content']);
     }
 
     $file_wrapper = entity_metadata_wrapper('file', $file);
@@ -1503,8 +1503,8 @@ function _usanetwork_menu_consumptionator_block_video($file) {
     $field = $tv_content_fields[$tv_content_node->type];
     $is_show_related = ($tv_content_node->type == 'tv_show') ? TRUE : FALSE;
     $theme_variables = array(
-      'sharebar' => '',//usanetwork_menu_render_sharebar($file, 'file', t('Share this video'), $file_wrapper->name->value(), $description),
-      'authbar' => /*!empty($authbar) ? ($authbar) : */'',
+      'sharebar' => usanetwork_menu_render_sharebar($file, 'file', t('Share this video'), $file_wrapper->name->value(), $description),
+      'authbar' => !empty($authbar) ? ($authbar) : '',
       'main_url' => url('<front>'),
       'show_url' => $is_show_related
           ? (!empty($file->{$field})

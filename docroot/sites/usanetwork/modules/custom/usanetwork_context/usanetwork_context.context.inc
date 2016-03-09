@@ -416,6 +416,7 @@ function usanetwork_context_context_default_contexts() {
         'videos' => 'videos',
         '*/photos' => '*/photos',
         '*/episodes' => '*/episodes',
+        '*/episodes/*' => '*/episodes/*',
         '*/cast' => '*/cast',
         '*/videos' => '*/videos',
         'shows' => 'shows',

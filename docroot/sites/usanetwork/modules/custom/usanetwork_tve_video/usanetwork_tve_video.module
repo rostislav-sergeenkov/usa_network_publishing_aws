@@ -328,12 +328,9 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
       '#tag' => 'iframe',
       '#value' => '',
       '#attributes' => array(
-        'data-usa-tve-player'=> "pdk-player",
-        'data-src' => url($player_source, array('external' => TRUE)),
-        'src' => url($player_source, array('external' => TRUE, 'query' => array('autoPlay' => 'True'))),
-        'data-id' => 'pdk-player',
-        'data-mbr' => 'true',
-        'class' => 'pdk-player-wrap',
+        'src' => url($player_source, array('external' => TRUE, 'query' => array('autoPlay' => 'false'))),
+        'id' => 'pdk-player',
+        'frameborder' => '0',
       ),
     ),
   );

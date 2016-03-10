@@ -11,6 +11,8 @@ define('USANETWORK_MICROSITE_USA_PLAYER_QA', 'microsites_usa_player_endcard_qa')
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER_QA', 'microsite_usa_vod_noauth_qa');
 define('USANETWORK_MICROSITE_AUTH_PLAYER_QA', 'microsite_usa_vod_qa');
 
+define('USANETWORK_MICROSITE_RVPLAYER', 'xcsFUdx9TV1_');
+
 define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
 define('USANETWORK_MICROSITE_QUIZ_NODE_TYPE', 'quiz');
 define('USANETWORK_MICROSITE_GALLERY_NODE_TYPE', 'media_gallery');
@@ -461,8 +463,14 @@ function _usanetwork_microsite_include_default_js() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.1.3.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.compatibility.js');
 //  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_global.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_angular.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite-tve-player-directive.js', array('scope' => 'footer', 'weight' => -1));
+//  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_angular.js');
+
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-auth2.js', array('scope' => 'footer', 'weight' => -2));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-custom-services.js', array('scope' => 'footer', 'weight' => 0));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-endcard.js', array('scope' => 'footer', 'weight' => 1));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-login-button.js', array('scope' => 'footer', 'weight' => 2));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-logout-button.js', array('scope' => 'footer', 'weight' => 3));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-player-container.js', array('scope' => 'footer', 'weight' => 4));
 }
 
 /**
@@ -1358,11 +1366,16 @@ function _usanetwork_microsite_define_videoplayer($file) {
       $player_id = USANETWORK_MICROSITE_USA_PLAYER;
     }
   } else {
+//    $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
+    $pdk_controller_url = "http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js";
+
+    drupal_add_js($pdk_controller_url, 'external');
+
     if ($full_episode) {
       if ($auth_episode) {
-        $player_id = USANETWORK_MICROSITE_AUTH_PLAYER_QA;
+        $player_id = USANETWORK_MICROSITE_RVPLAYER;
       } else {
-        $player_id = USANETWORK_MICROSITE_NOAUTH_PLAYER_QA;
+        $player_id = USANETWORK_MICROSITE_RVPLAYER;
       }
     } else {
       $player_id = USANETWORK_MICROSITE_USA_PLAYER_QA;

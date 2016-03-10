@@ -1,4 +1,3 @@
-<?php $next_video = array_shift($endcard) ?>
 <div class="video-block">
   <div class="player-wrapper"
        data-usa-tve-player-container
@@ -63,7 +62,7 @@
                data-ng-click="openLoginWindow()">
               <?php if (!$is_live): ?>
                 <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
-                print drupal_render($image);
+                  print theme_image(array('path' => image_style_url($image['#style_name'], $image['#path'])));
                 ?>
               <?php else: ?>
                 <img
@@ -83,7 +82,6 @@
             <iframe allowfullscreen="" id="videoplayer" width="100%"
                     data-usa-player-is-live height="100%"
                     frameborder="0"></iframe>
-            <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
             <div class="pdk-player-wrap" data-usa-tve-player="pdk-player">
               <?php print render($video); ?>

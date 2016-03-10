@@ -63,7 +63,7 @@
                data-ng-click="openLoginWindow()">
               <?php if (!$is_live): ?>
                 <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
-                print drupal_render($image);
+                  print theme_image(array('path' => image_style_url($image['#style_name'], $image['#path'])));
                 ?>
               <?php else: ?>
                 <img

@@ -254,7 +254,7 @@
                 }
 
                 if (nextUrl !== undefined && nextUrl !== '') {
-                  window.location = url;
+                  //window.location = url;
                 }
               }, options.timeUpNext);
 

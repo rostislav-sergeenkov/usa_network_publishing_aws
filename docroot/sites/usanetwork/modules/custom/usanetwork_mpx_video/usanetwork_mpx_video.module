@@ -1506,12 +1506,11 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         $vars['episode_rating'] = $field_episode_rating;
       }
 
-      $video = array(
-        '#theme' => 'usanetwork_tve_player_mpx_video',
-        '#file' => $file,
-        '#pub_mpx_player_parameters' => array('autoPlay' => 'true'),
+      $variables = array(
+        'file' => $file,
+        'pub_mpx_player_parameters' => array('autoPlay' => ($field_mpx_entitlement === 'auth') ? 'false' : 'true'),
       );
-      $vars['video'] = $video;
+      $vars['video'] = theme('usanetwork_tve_player_mpx_video', $variables);
 
       //twitter card
       if (!$full_episode) {

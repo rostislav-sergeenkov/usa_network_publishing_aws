@@ -1353,30 +1353,16 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
  */
 function _usanetwork_microsite_define_videoplayer($file) {
   $full_episode = _usanetwork_microsite_define_full_episode($file);
-  $auth_episode = _usanetwork_microsite_define_auth($file);
 
   if (_usanetwork_widget_get_environment() == 'prod') {
     if ($full_episode) {
-      if ($auth_episode) {
-        $player_id = USANETWORK_MICROSITE_AUTH_PLAYER;
-      } else {
-        $player_id = USANETWORK_MICROSITE_NOAUTH_PLAYER;
-      }
+      $player_id = NULL;
     } else {
       $player_id = USANETWORK_MICROSITE_USA_PLAYER;
     }
   } else {
-//    $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
-    $pdk_controller_url = "http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js";
-
-    drupal_add_js($pdk_controller_url, 'external');
-
     if ($full_episode) {
-      if ($auth_episode) {
-        $player_id = USANETWORK_MICROSITE_RVPLAYER;
-      } else {
-        $player_id = USANETWORK_MICROSITE_RVPLAYER;
-      }
+      $player_id = NULL;
     } else {
       $player_id = USANETWORK_MICROSITE_USA_PLAYER_QA;
     }

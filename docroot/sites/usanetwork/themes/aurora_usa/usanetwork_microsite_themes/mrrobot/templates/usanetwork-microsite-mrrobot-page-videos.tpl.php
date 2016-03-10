@@ -47,8 +47,8 @@
 
 <div class="full-pane clearfix">
   <div class="left-pane">
-    <div id="video-container" data-video-url="<?php print $in_player['url']; ?>">
-      <div class="video-container-ajaxed" data-tve-player>
+    <div id="video-container" data-usa-tve-player-container data-entitlement data-video-url="<?php print $in_player['url']; ?>">
+      <div class="video-container-ajaxed">
         <div class="video-auth-player-wrapper file-video-mpx video usa-video featured-asset premium-asset">
           <div class="tve-help">
             <div class="tve-msg">
@@ -67,36 +67,48 @@
             </div>
             <div class="tve-close"><img src="/sites/usanetwork/themes/aurora_usa/images/close.png" alt=""/>Close</div>
           </div>
-          <div class="video-player-wrapper" data-ng-if="!global.isAuthN">
+          <div class="video-player-wrapper" data-ng-if="!user.isAuthenticated">
             <div class="locked-msg">
               <span
                   class="first-line"><?php print t('Please sign in with your TV provider to unlock this episode.'); ?></span>
             </div>
             <div id="player">
-              <a href="javascript:void(0)" class="loginButton clean" data-ng-if="!global.isAuthN"
-                 data-ng-click="openLoginWindow()" data-ng-cloak="">
+              <a href="javascript:void(0)" class="loginButton" data-ng-click="openLoginWindow()">
               </a>
             </div>
           </div>
-          <div class="video-player video-player-wrapper" data-ng-show="global.isAuthN">
-            <div id="custom-play" class="custom-play"></div>
+          <div class="video-player video-player-wrapper" data-ng-show="user.isAuthenticated">
+            <div class="custom-play"></div>
             <div
                 class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
             </div>
           </div>
           <div class="tve-help-link signIn">
-            <div class="tve-help-sign" data-tve-sign-in-button="" data-ng-if="!global.isAuthN">
+            <div class="tve-help-sign" data-tve-sign-in-button data-ng-show="!user.isAuthenticated">
               <img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" alt=""/>
               Why do I have to sign in?
             </div>
           </div>
-          <div class="tve-help-link signOut not-live" data-ng-if="global.isAuthN">
-            <?php print drupal_render($in_player['links']); ?>
+          <div class="tve-help-link signOut">
+            <div class="item-list">
+              <ul class="tve-header-links inline">
+                <li class="first">
+                  <div class="tveLoginButton" data-usa-tve-login-button></div>
+                </li>
+                <li class="last">
+                  <ul class="item-list" data-ng-if="user.isAuthenticated">
+                    <li class="item actionLink" >
+                      <div class="tveLogoutButton" data-usa-tve-logout-button></div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="video-no-auth-player-wrapper">
           <div class="video-player no-auth">
-            <div id="custom-play" class="custom-play"></div>
+            <div class="custom-play"></div>
             <div
                 class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
               <iframe class="base-iframe"></iframe>

@@ -85,7 +85,9 @@
                     frameborder="0"></iframe>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
-            <?php print render($video); ?>
+            <div class="pdk-player-wrap" data-usa-tve-player="pdk-player">
+              <?php print render($video); ?>
+            </div>
             <!--  start endcart  -->
             <?php if (!empty($endcard_enabled)) : ?>
               <?php print $endcard_template; ?>
@@ -114,7 +116,9 @@
                     frameborder="0"></iframe>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
-          <?php print render($video); ?>
+            <div class="pdk-player-wrap" data-usa-tve-player="pdk-player">
+              <?php print render($video); ?>
+            </div>
             <!--  start endcart  -->
             <?php if (!empty($endcard_enabled)) : ?>
               <?php print $endcard_template; ?>

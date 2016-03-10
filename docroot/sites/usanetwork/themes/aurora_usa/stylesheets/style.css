@@ -15634,6 +15634,26 @@ footer h2 {
   visibility: visible;
   z-index: 1;
 }
+@media (min-width: 1025px) {
+  .consumptionator-characters-main-block .consum-sidebar {
+    float: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+@media (min-width: 1025px) {
+  .consumptionator-characters-main-block .consum-sidebar .items-block {
+    height: calc(100% - 250px) !important;
+    top: 0;
+  }
+}
+@media (min-width: 1025px) {
+  .consumptionator-characters-main-block .consum-sidebar .advert {
+    height: 250px;
+    padding: 0;
+  }
+}
 
 .consumptionator-episode-main-block, .consumptionator-post-main-block {
   overflow: hidden;

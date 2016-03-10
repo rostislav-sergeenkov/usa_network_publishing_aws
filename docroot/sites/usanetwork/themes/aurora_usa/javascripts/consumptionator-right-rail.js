@@ -40,6 +40,9 @@
             var bottom_distance = window.innerHeight - ($('.consum-sidebar').offset()['top'] - $(window).scrollTop() + $('.consum-sidebar').height());
             var current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height();
             var min_height = $('.right-rail-line .node-media-gallery').parent().height() - $('.right-rail-line .node-media-gallery').last().position()['top'] + parseInt($('.right-rail-line > div').css("paddingBottom"));
+            if (min_height < right_rail_min_height) {
+              min_height = right_rail_min_height;
+            }
             if (current_max_height < min_height) {
               current_max_height = min_height;
             }
@@ -54,10 +57,10 @@
             }
             var bottom_distance = window.innerHeight - (relatedContent.offset()['top'] - $(window).scrollTop() + relatedContent.height());
             var current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height();
-            if (relatedContent.height() > right_rail_min_height_livepage) {
+            if (relatedContent.height() > right_rail_min_height) {
               var min_height = relatedContent.height();
             } else {
-              var min_height = right_rail_min_height_livepage;
+              var min_height = right_rail_min_height;
             }
             if (current_max_height < min_height) {
               current_max_height = min_height;

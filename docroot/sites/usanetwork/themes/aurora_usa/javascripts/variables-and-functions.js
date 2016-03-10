@@ -12,7 +12,7 @@ var desktop_show_open_width_large = 2164;
 var show_title_offset_desktop = 200;
 var show_title_offset_tablet = 160;
 //var show_title_offset = (window.innerWidth < window_size_tablet)? 160: 200;
-var right_rail_min_height_livepage = 490;
+var right_rail_min_height = 490;
 // New breakpoint vars for window.matchMedia
 // window.matchMedia("(min-width: " + 640 + "px)").matches = window.innerWidth > window_size_mobile_640
 // window.matchMedia("(max-width: " + 640 + "px)").matches = window.innerWidth <= window_size_mobile_640

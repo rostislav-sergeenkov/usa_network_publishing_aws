@@ -3,6 +3,76 @@
   'use strict';
 
   ng.module('tve.auth.directives')
+      .directive('usaTvePlayer', [
+        '$rootScope',
+        '$sce', 'authService',
+        function ($rootScope, $sce, authService) {
+          return {
+            replace: false,
+            // apply client side iframe rendering to reduce cache problem for dynamic url
+            template: '<iframe data-ng-src="{{src}}" src="about:blank" id="{{id}}" allowfullscreen="" frameborder="0"></iframe>',
+            // directive describe below
+            require: '^usaTvePlayerContainer',
+            scope: true,
+            compile: function(tElement, tAttr) {
+              var config = tAttr;
+
+              return function(scope, element, attr, controller) {
+                var SRC_PARAMS = [{
+                      attrName: 'mbr',
+                      key: 'mbr'
+                    },
+                      {
+                        attrName: 'fwSiteSection',
+                        key: 'FWsiteSection'
+                      }],
+                    MVPD_ID_KEY = 'MVPDid',
+                    params;
+
+                scope.id = config.id;
+
+                authService.promise.then(init);
+
+                function init(status) {
+                  // passing iframe url as trusted to the template
+                  scope.src = $sce.trustAsResourceUrl(config.src + '?' + getQueryParams(status.isAuthenticated && status.mvpdId));
+                }
+
+                /**
+                 * Returns url params string for player source
+                 *
+                 * @param {boolean|string} mvpdId MVPD id string for the authenticated users and false for non.
+                 * @returns {string} query params string
+                 */
+                function getQueryParams(mvpdId) {
+                  if (scope.isEntitled === 'auth') {
+                    params = {
+                      autoPlay: false
+                    };
+                  } else {
+                    params = {
+                      autoPlay: true
+                    };
+                  }
+
+                  ng.forEach(SRC_PARAMS, function(param, i) {
+                    if (param.attrName in config) {
+                      params[param.key] = config[param.attrName];
+                    }
+                  });
+
+                  if (mvpdId) {
+                    params[MVPD_ID_KEY] = mvpdId;
+                  }
+
+                  return $.param(params);
+                }
+              };
+            }
+          };
+        }
+      ])
+
       .directive('usaTvePlayerContainer', [
         '$rootScope',
         'authService', 'tveAuthConfig', 'tveConfig', 'helper', 'tveModal', '$timeout', '$http', '$sce', '$cookies', 'usaPlayerService', 'usaEndCardService',
@@ -76,14 +146,12 @@
                     if (status.isAuthenticated && isEntitlement === 'auth') {
                       initiateAuthorization();
                     }
-                    //setTimeout(function () {
-                    //  _bindPlayerEvents(playerId);
-                    //}, 0);
+                    setTimeout(function () {
+                      _bindPlayerEvents(playerId);
+                    }, 0);
                   }
                 }
               });
-
-              _bindPlayerEvents(playerId);
 
               // wait when load release
               usaPlayerService.promise.then(function (data) {
@@ -208,13 +276,13 @@
                * @private
                */
               function _onPlayerLoaded(pdkEvent) {
-                if (!scope.statusPlayerLoaded) {
+
+                scope.$apply(function () {
+                  scope.statusPlayerLoaded = true;
+                });
+
+                if (scope.statusSetToken) {
                   // change status for autoplay
-                  scope.$apply(function () {
-                    scope.statusPlayerLoaded = true;
-                  });
-                }
-                if (scope.statusSetToken && scope.statusPlayerLoaded) {
                   usaPlayerService.resolve('auth success done and load release url finish');
                 }
               }

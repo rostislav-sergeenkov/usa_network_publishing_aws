@@ -14452,6 +14452,38 @@ footer h2 {
   position: relative;
 }
 
+.gallery-recap-block {
+  background: #f3f3f3;
+  padding: 40px 35px 104px;
+}
+@media (min-width: 1901px) {
+  .gallery-recap-block {
+    padding: 40px 55px 104px;
+  }
+}
+@media (max-width: 1280px) {
+  .gallery-recap-block {
+    border-bottom: 2px solid;
+    padding: 30px 25px 90px;
+  }
+}
+@media (max-width: 1024px) {
+  .gallery-recap-block {
+    padding: 40px 24px 90px;
+  }
+}
+@media (max-width: 640px) {
+  .gallery-recap-block {
+    border-bottom: 12px solid;
+    padding: 40px 0 75px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .gallery-recap-block .gallery-wrapper {
+    height: calc((100vw - 370px) * 0.5625);
+  }
+}
+
 .consumptionator-page .video-block, .page-videos-live .video-block {
   margin: 0;
   overflow: hidden;
@@ -16158,56 +16190,6 @@ footer h2 {
 @media (max-width: 640px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .node-wrapper.advert, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .node-wrapper.advert, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .node-wrapper.advert, .consumptionator-episode-main-block .post-info-main-block .post-info-block .node-wrapper.advert, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .node-wrapper.advert, .consumptionator-post-main-block .episode-info-main-block .post-info-block .node-wrapper.advert, .consumptionator-post-main-block .post-info-main-block .episode-info-block .node-wrapper.advert, .consumptionator-post-main-block .post-info-main-block .post-info-block .node-wrapper.advert {
     display: none;
-  }
-}
-.consumptionator-episode-main-block .gallery-recap-block, .consumptionator-post-main-block .gallery-recap-block {
-  background: #f3f3f3;
-  padding: 40px 35px 104px;
-}
-@media (min-width: 1901px) {
-  .consumptionator-episode-main-block .gallery-recap-block, .consumptionator-post-main-block .gallery-recap-block {
-    padding: 40px 55px 104px;
-  }
-}
-@media (max-width: 1280px) {
-  .consumptionator-episode-main-block .gallery-recap-block, .consumptionator-post-main-block .gallery-recap-block {
-    border-bottom: 2px solid;
-    padding: 30px 25px 90px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-episode-main-block .gallery-recap-block, .consumptionator-post-main-block .gallery-recap-block {
-    padding: 40px 24px 90px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-episode-main-block .gallery-recap-block, .consumptionator-post-main-block .gallery-recap-block {
-    border-bottom: 12px solid;
-    padding: 40px 0 75px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-episode-main-block .gallery-recap-block .gallery-wrapper, .consumptionator-post-main-block .gallery-recap-block .gallery-wrapper {
-    height: calc((100vw - 370px) * 0.5625);
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-episode-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item, .consumptionator-post-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item {
-    height: 13px;
-    margin: 0px 15px 13px auto;
-    width: 13px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-episode-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a, .consumptionator-post-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a {
-    height: 13px;
-    width: 13px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-episode-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img, .consumptionator-post-main-block .gallery-recap-block .gallery-wrapper .bx-wrapper .bx-controls .bx-custom-pager .bx-pager-item a img {
-    max-width: 75px;
-    width: 75px;
   }
 }
 @media (min-width: 1025px) {

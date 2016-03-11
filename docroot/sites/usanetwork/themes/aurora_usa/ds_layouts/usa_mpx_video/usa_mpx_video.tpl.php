@@ -83,9 +83,7 @@
                     data-usa-player-is-live height="100%"
                     frameborder="0"></iframe>
           <?php else: ?>
-            <div class="pdk-player-wrap" data-usa-tve-player="pdk-player">
-              <?php print render($video); ?>
-            </div>
+            <?php print render($video); ?>
             <!--  start endcart  -->
             <?php if (!empty($endcard_enabled)) : ?>
               <?php print $endcard_template; ?>
@@ -114,9 +112,7 @@
                     frameborder="0"></iframe>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
-            <div class="pdk-player-wrap" data-usa-tve-player="pdk-player">
-              <?php print render($video); ?>
-            </div>
+            <?php print render($video); ?>
             <!--  start endcart  -->
             <?php if (!empty($endcard_enabled)) : ?>
               <?php print $endcard_template; ?>

@@ -1020,7 +1020,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
+      'guid' => 'BnULDNhXAWATIG1K6On5t5n4OBaKluHV',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1028,7 +1028,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
+      'guid' => '_wUbB7H98ZZDHb0xvgO2KzvkxP96DXFk',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -2030,11 +2030,6 @@ function theme_usanetwork_mpx_video($variables) {
   if (!empty($variables['height'])) {
     $iframe_tag['element']['#attributes']['height'] = $variables['height'];
   }
-
-  // Normal flow.
-  $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
-
-  drupal_add_js($pdk_controller_url, 'external');
 
   return theme('html_tag', $iframe_tag);
 }

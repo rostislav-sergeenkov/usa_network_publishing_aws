@@ -263,13 +263,6 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
 
   $player_source .= '/select/media/guid/' . $account_mpx_id . '/'. $mpx_guid;
 
-  $player_parameters = array(
-    'query' => (isset($variables['pub_mpx_player_parameters'])
-      ? $variables['pub_mpx_player_parameters']
-      : array()),
-    'external' => TRUE,
-  );
-
   $player_tag = array(
     'element' => array(
       '#tag' => 'div',

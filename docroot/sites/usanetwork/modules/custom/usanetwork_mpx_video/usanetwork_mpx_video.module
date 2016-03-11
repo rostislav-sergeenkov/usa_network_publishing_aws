@@ -1076,10 +1076,10 @@ function _usa_auth_prepare_menu_items() {
   $menu_items = array();
 
   $image = theme_image(array(
-    'attributes' => array(
-      'data-ng-src' => "{{global.currentProvider.mvpd_color}}",
-    ),
-      )
+      'attributes' => array(
+        'data-ng-src' => "{{global.currentProvider.mvpd_color}}",
+      ),
+    )
   );
 
   $menu_items[] = l($image, '', array(
@@ -1506,11 +1506,11 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         $vars['episode_rating'] = $field_episode_rating;
       }
 
-      $video = array(
-        '#theme' => 'usanetwork_tve_player_mpx_video',
-        '#file' => $file,
+      $variables = array(
+        'file' => $file,
+        'pub_mpx_player_parameters' => array('autoPlay' => ($field_mpx_entitlement === 'auth') ? 'false' : 'true'),
       );
-      $vars['video'] = $video;
+      $vars['video'] = theme('usanetwork_tve_player_mpx_video', $variables);
 
       //twitter card
       if (!$full_episode) {
@@ -2031,6 +2031,11 @@ function theme_usanetwork_mpx_video($variables) {
   if (!empty($variables['height'])) {
     $iframe_tag['element']['#attributes']['height'] = $variables['height'];
   }
+
+  // Normal flow.
+  $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
+
+  drupal_add_js($pdk_controller_url, 'external');
 
   return theme('html_tag', $iframe_tag);
 }

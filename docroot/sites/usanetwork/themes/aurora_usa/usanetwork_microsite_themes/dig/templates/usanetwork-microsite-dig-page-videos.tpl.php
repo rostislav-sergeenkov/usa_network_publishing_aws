@@ -8,7 +8,7 @@
 ?>
 <div class="ad_728x90 ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos"></div>
 <div class="full-pane">
-  <div id="video-container" data-usa-tve-player-container data-entitlement data-video-url="<?php print $in_player['url']; ?>">
+  <div id="video-container" data-usa-tve-player-container data-entitlement data-video-url="">
     <div class="video-container-ajaxed">
       <div class="video-auth-player-wrapper file-video-mpx video usa-video featured-asset premium-asset">
         <div class="tve-help">

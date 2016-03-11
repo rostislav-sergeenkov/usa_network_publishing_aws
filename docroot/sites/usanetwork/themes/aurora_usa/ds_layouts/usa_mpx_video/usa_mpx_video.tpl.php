@@ -7,6 +7,8 @@
        data-episode-title="<?php print $filename; ?>"
        data-mpx-guid="<?php print $mpx_guid; ?>"
        data-episode-rating="<?php print $episode_rating; ?>"
+       data-episode-pid="<?php print $file_pid; ?>"
+       data-next-episode-url="<?php print $next_video_url; ?>"
        data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
        data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>"
        data-ng-class="{'no-mobile-device': !isMobile}">

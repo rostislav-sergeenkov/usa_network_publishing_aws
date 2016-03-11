@@ -89,7 +89,8 @@
             link: function (scope, element, attr) {
 
               var body, playerContainer, tveAnalytics, userStatus, isLive, isShowEndCard,
-                  isEntitlement, isMicrosite, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken;
+                  isEntitlement, isMicrosite, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
+                  usaReleaseEnd, nextReleaseUrl, positionTime, usaVideoSettingsRun;
 
               // set vars value
               body = ng.element('body');
@@ -104,6 +105,11 @@
               playerId = tveConfig.PLAYER_ID;
               isMicrosite = body.hasClass('page-node-microsite') ? true : false;
               tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop};
+
+              usaReleaseEnd = false;
+              nextReleaseUrl = attr['nextReleaseUrl'];
+              usaVideoSettingsRun = false;
+              positionTime = Drupal.settings.videoSetTime; // seconds
 
               // stop & retun if livePlayer = 1 (true);
               if (isLive) {
@@ -246,12 +252,15 @@
                 $pdk.controller.addEventListener('OnMediaStart', _onMediaStart);
 
                 // init end card service
-                //if (isShowEndCard) {
-                //  usaEndCardService.init(data);
-                //}
+                if (isShowEndCard) {
+                  usaEndCardService.init(data);
+                } else if (nextReleaseUrl != '') {
+                  $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+                }
 
                 //$pdk.controller.addEventListener('OnMediaPause', _onMediaPause);
                 //$pdk.controller.addEventListener('OnMediaUnpause', _onMediaUnpause);
+                //$pdk.controller.addEventListener('OnReleaseError', _onReleaseError);
               }
 
 
@@ -270,6 +279,33 @@
                   delete $pdk.controller.listeners[key];
                 }
               };
+
+              /*
+               * On Release Start
+               * @private
+               */
+              function _onReleaseEnd(pdkEvent) {
+
+                if (!isShowEndCard && nextReleaseUrl != '') {
+                  usaReleaseEnd = true;
+                }
+
+                if ($rootScope.statusAd) {
+                  usa_debug('ad_end');
+                  // change status ad on false
+                  updateStatusAd(false);
+                  AdobeTracking.videoBreakPoint = "Ads Off";
+                  _satellite.track('setVideoBreakPoint');
+                }
+
+                // redirect to next episode
+                usaEndCardHelper.timeoutUpNext({
+                  episodeUpNextUrl: nextReleaseUrl,
+                  showTitle: attrs['showTitle'],
+                  episodeTitle: attrs['episodeTitle'],
+                  timeUpNext: 0
+                });
+              }
 
               /**
                * On Player Loaded
@@ -491,6 +527,10 @@
                   // change status ad on false
                   updateStatusAd(false);
 
+                  if (!usaVideoSettingsRun) {
+                    usaVideoSettingsRun = seekToPosition();
+                  }
+
                   // create attr when ad start
                   playerContainer.removeAttr('data-ad-start');
 
@@ -504,6 +544,13 @@
                     scope.showCompanionAdd = false;
                   });
                 }
+              }
+
+              function seekToPosition() {
+                if (positionTime) {
+                  $pdk.controller.seekToPosition(positionTime * 1000); // convert to milliseconds
+                }
+                return true;
               }
 
               // update status

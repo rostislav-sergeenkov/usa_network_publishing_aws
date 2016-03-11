@@ -80,7 +80,7 @@
 
         s.linkTrackVars = 'events,eVar63';
         s.linkTrackEvents = s.events = 'event63';
-        s.eVar63 = menu_name;
+        s.eVar63 = menu_name.trim();
 
         if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
           s.goToUrl = function () {
@@ -743,14 +743,11 @@
                 itemName = $self.closest('.node-usanetwork-promo').find('.title').text().trim();
 
                 if ($self.hasClass('live-icon')) {
-                  console.info(1);
                   sub_menu_name = $self.text().trim();
                 } else if ($self.data('name') === 'description' || $self.data('name') === 'reminder') {
-                  console.info(2);
                   name = $self.data('name');
                   sub_menu_name = paneTitle + ' : ' + name.charAt(0).toUpperCase() + name.substr(1) + ' : ' + itemName;
                 } else {
-                  console.info(3);
                   sub_menu_name = $self.text();
                 }
 
@@ -949,7 +946,7 @@
           });
         });
 
-        // Quizes omniture tracking. Track restart button
+        // Quizzes omniture tracking. Track restart button
         $('.usanetwork-quiz-results input[type="button"]').once('omniture-tracking', function () {
           $(this).bindFirst('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {

@@ -212,7 +212,9 @@ function _tve_player_add_custom_player_variables(&$variables, $type) {
     parse_str($config[$type]['custom_player_ad_parameters'], $custom_ad_parameters);
   }
 
-  $variables['pub_mpx_player_parameters']['mbr'] = 'true';
+  $variables['pub_mpx_player_parameters'] = array(
+    'mbr' => 'true',
+  );
 
   if (!empty($mvpd_id)) {
     $variables['pub_mpx_player_parameters']['MVPDid'] = $mvpd_id;

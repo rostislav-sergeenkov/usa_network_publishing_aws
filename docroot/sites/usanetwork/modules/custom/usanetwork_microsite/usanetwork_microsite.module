@@ -1354,21 +1354,38 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
 function _usanetwork_microsite_define_videoplayer($file) {
   $full_episode = _usanetwork_microsite_define_full_episode($file);
 
+  $file_mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+  $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($file_mpx_account->default_player);
+
+  $player = pub_mpx_player_data_load($file);
+  $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
+    (!empty($player['pid']) ? $player['pid'] : $mpx_account_default_player['pid']);
+
+  $player = _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_id);
+
+  $player_pid = !empty($player['pid']) ? $player['pid'] : NULL;
+
+  $mpx_account_id = !empty($player['parent_account']) ? $player['parent_account'] : NULL;
+
+  $mpx_account = _media_theplatform_mpx_get_account_data($mpx_account_id);
+  $mpx_account_pid = isset($mpx_account->account_pid) ? $mpx_account->account_pid : NULL;
+
+  // Normal flow.
+  $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
+
+  drupal_add_js($pdk_controller_url, 'external');
+
   if (_usanetwork_widget_get_environment() == 'prod') {
-    if ($full_episode) {
-      $player_id = NULL;
-    } else {
-      $player_id = USANETWORK_MICROSITE_USA_PLAYER;
+    if (!$full_episode) {
+      $player_pid = USANETWORK_MICROSITE_USA_PLAYER;
     }
   } else {
-    if ($full_episode) {
-      $player_id = NULL;
-    } else {
-      $player_id = USANETWORK_MICROSITE_USA_PLAYER_QA;
+    if (!$full_episode) {
+      $player_pid = USANETWORK_MICROSITE_USA_PLAYER_QA;
     }
   }
 
-  return $player_id;
+  return $player_pid;
 }
 
 /**

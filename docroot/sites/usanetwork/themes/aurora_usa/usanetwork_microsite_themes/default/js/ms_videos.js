@@ -548,7 +548,7 @@ usa_debug('ad_728x90: ', ad_728x90);
       });
 
       // tve help messaging click
-      $tve_toggler = $('.tve-help-link');
+      $tve_toggler = $('.tve-help-link.help-link');
       $tve_toggler.click(function () {
         if ($('.tve-help-link').hasClass('selected')) {
           $('.tve-help-link').removeClass('selected');

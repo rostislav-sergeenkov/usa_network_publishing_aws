@@ -47,7 +47,7 @@
               class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
           </div>
         </div>
-        <div class="tve-help-link signIn">
+        <div class="tve-help-link help-link">
           <div class="tve-help-sign" data-tve-sign-in-button data-ng-show="!user.isAuthenticated">
             <img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" alt=""/>
             Why do I have to sign in?

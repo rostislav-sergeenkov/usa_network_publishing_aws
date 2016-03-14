@@ -1445,7 +1445,7 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
   $auth_episode = _usanetwork_microsite_define_auth($file);
   $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
   if ($auth_episode) {
-    $renderable_image = theme('image', array('path' =>$image['#path']));
+    $renderable_image = theme_image(array('path' =>$image['#path']));
   }
 
   $preview_image = file_create_url($image['#path']);

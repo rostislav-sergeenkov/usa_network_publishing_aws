@@ -3188,7 +3188,7 @@ function pub_mpx_get_player_id_by_guid($guid, $account = NULL) {
       ->fields('p')
       ->condition('guid', $guid, '=');
     if ($account) {
-      $query->condition('parent_account', $account->id, '=');
+//      $query->condition('parent_account', $account->id, '=');
     }
     $player = $query->execute()
       ->fetchAssoc();

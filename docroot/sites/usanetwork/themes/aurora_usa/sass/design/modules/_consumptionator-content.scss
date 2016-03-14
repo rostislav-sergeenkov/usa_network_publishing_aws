@@ -1171,3 +1171,27 @@
     position: relative;
   }
 }
+
+.gallery-recap-block {
+  background: $consup-gallery-bg;
+  padding: 40px 35px 104px;
+  @include breakpoint($bp-min-1901-width) {
+    padding: 40px 55px 104px;
+  }
+  @include breakpoint($bp-1280-width) {
+    border-bottom: 2px solid;
+    padding: 30px 25px 90px;
+  }
+  @include breakpoint($bp-1024-width) {
+    padding: 40px 24px 90px;
+  }
+  @include breakpoint($bp-640-width) {
+    border-bottom: 12px solid;
+    padding: 40px 0 75px;
+  }
+  .gallery-wrapper {
+    @include breakpoint($between-1025-1280) {
+      height: calc((100vw - 370px) * 0.5625);
+    }
+  }
+}

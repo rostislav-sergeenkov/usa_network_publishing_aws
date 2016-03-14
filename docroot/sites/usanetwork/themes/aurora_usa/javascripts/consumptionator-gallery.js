@@ -674,7 +674,7 @@
           if (_.$body.hasClass('node-type-media-gallery')) {
             Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
           }
-          if (_.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post')) {
+          if (_.$body.hasClass('node-type-person') || _.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post') || (_.$body.hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
             Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
             if (!$('.region-header').hasClass('sticky-shows-submenu')) {
               Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);

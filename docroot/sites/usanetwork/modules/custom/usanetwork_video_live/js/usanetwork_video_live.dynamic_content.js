@@ -84,10 +84,14 @@
       var quizes = Drupal.settings.usanetwork_quiz;
       var quiz_setting = quizes[nid];
       var quizShow = quiz_setting['quizShow'],
+          quizShowType = quiz_setting['quizShowType'],
           quizTitle = quiz_setting['quizTitle'];
 
+      s.prop2 = quizShowType;
+      s.prop3 = 'Quiz';
       s.prop4 = quizShow + ' : ' + 'Quiz';
       s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
+      s.prop10 = quizShow;
 
       // Quizzes omniture tracking. Track show Question
       $('.usanetwork-quiz-questions .usanetwork-quiz-question').once('omniture-tracking', function () {
@@ -98,6 +102,7 @@
               var quizes = Drupal.settings.usanetwork_quiz;
               var quiz_setting = quizes[nid];
               var quizShow = quiz_setting['quizShow'],
+                  quizShowType = quiz_setting['quizShowType'],
                   quizTitle = quiz_setting['quizTitle'],
                   quizType = quiz_setting['quizType'];
 
@@ -106,10 +111,13 @@
               var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
 
               s.pageName = 'USA Live TV';
-              s.linkTrackVars = 'events,prop58,eVar58';
+              s.linkTrackVars = 'events,prop3,prop4,prop5,prop10,prop58,eVar58';
               s.linkTrackEvents = s.events = 'event88';
+              s.prop2 = quizShowType;
+              s.prop3 = 'Quiz';
               s.prop4 = quizShow + ' : ' + 'Quiz';
               s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
+              s.prop10 = quizShow;
               s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
               s.tl(this, 'o', 'Poll/Question Shown');
               s.manageVars('clearVars', s.linkTrackVars, 1);
@@ -130,6 +138,7 @@
               var quizes = Drupal.settings.usanetwork_quiz;
               var quiz_setting = quizes[nid];
               var quizShow = quiz_setting['quizShow'],
+                  quizShowType = quiz_setting['quizShowType'],
                   quizTitle = quiz_setting['quizTitle'],
                   quizType = quiz_setting['quizType'];
 
@@ -140,10 +149,13 @@
               var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
 
               s.pageName = 'USA Live TV';
-              s.linkTrackVars = 'events,prop58,eVar58';
+              s.linkTrackVars = 'events,prop3,prop4,prop5,prop10,prop58,eVar58';
               s.linkTrackEvents = s.events = 'event89';
+              s.prop2 = quizShowType;
+              s.prop3 = 'Quiz';
               s.prop4 = quizShow + ' : ' + 'Quiz';
               s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
+              s.prop10 = quizShow;
               s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
               s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion + ' : Answer : ' + quizQuestionValue;
               s.tl(this, 'o', 'Poll/Question Answered');
@@ -168,14 +180,18 @@
             var quizes = Drupal.settings.usanetwork_quiz;
             var quiz_setting = quizes[nid];
             var quizShow = quiz_setting['quizShow'],
+                quizShowType = quiz_setting['quizShowType'],
                 quizTitle = quiz_setting['quizTitle'],
                 quizType = quiz_setting['quizType'];
 
             s.pageName = 'USA Live TV';
-            s.linkTrackVars = 'events,eVar65,prop65';
+            s.linkTrackVars = 'events,prop3,prop4,prop5,prop10,eVar65,prop65';
             s.linkTrackEvents = s.events = 'event65';
+            s.prop2 = quizShowType;
+            s.prop3 = 'Quiz';
             s.prop4 = quizShow + ' : ' + 'Quiz';
             s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
+            s.prop10 = quizShow;
             s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
             console.info(s.pageName);
             s.tl(this, 'o', 'Restart');
@@ -230,7 +246,6 @@
         dataType: 'JSON',
         url: Drupal.settings.basePath + 'ajax/render-video-live-related/' + timezoneOffset,
         success: function(data) {
-
           if (data != null && typeof data != 'undefined') {
 
             $('h2.section-title').remove();
@@ -250,7 +265,8 @@
                 quizType: data.variables.quiz_type,
                 calculationMethod: data.variables.calc_method,
                 quizShow: data.showName,
-                quizTitle: data.contentName
+                quizTitle: data.contentName,
+                quizShowType: data.showType
               };
               data.variables.title = data.contentName;
               Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);

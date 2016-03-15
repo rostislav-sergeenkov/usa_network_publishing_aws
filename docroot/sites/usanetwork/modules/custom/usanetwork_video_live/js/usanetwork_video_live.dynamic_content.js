@@ -80,18 +80,6 @@
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
 
-      var quizes = Drupal.settings.usanetwork_quiz;
-      var quiz_setting = quizes[nid];
-      var quizShow = quiz_setting['quizShow'],
-          quizShowType = quiz_setting['quizShowType'],
-          quizTitle = quiz_setting['quizTitle'];
-
-      s.prop2 = quizShowType;
-      s.prop3 = 'Quiz';
-      s.prop4 = quizShow + ' : ' + 'Quiz';
-      s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
-      s.prop10 = quizShow;
-
       // Quizzes omniture tracking. Track show Question
       $('.usanetwork-quiz-questions .usanetwork-quiz-question').once('omniture-tracking', function () {
         $(this).on('show', function (e) {
@@ -264,8 +252,9 @@
                 quizType: data.variables.quiz_type,
                 calculationMethod: data.variables.calc_method,
                 quizShow: data.showName,
-                quizTitle: data.contentName,
-                quizShowType: data.showType
+                quizShowType: data.showType != null ? data.showType: "Other",
+                quizTitle: data.contentName
+                
               };
               data.variables.title = data.contentName;
               Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);

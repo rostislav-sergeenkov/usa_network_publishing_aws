@@ -323,10 +323,10 @@
                 if (typeof usa_refreshBannerAd != 'undefined') {
                   usa_refreshBannerAd();
                 }
-                if($livePage) {
+                /*if($livePage) {
                   var offset = -1*$('.nav-bar-tabs').height();
                   $('article.node-quiz').velocity("scroll", { duration: 500, easing: "linear", offset: offset });
-                }
+                }*/
               },
               onBeforeResult: function(e, $result) {
                 Drupal.behaviors.usanetwork_quiz.refreshSharebar($result, '.container', '.field-name-field-gigya-share-bar > div');
@@ -336,10 +336,10 @@
                 if (typeof usa_refreshBannerAd != 'undefined') {
                   usa_refreshBannerAd();
                 }
-                if($livePage) {
+                /*if($livePage) {
                   var offset = -1*$('.nav-bar-tabs').height();
                   $('article.node-quiz').velocity("scroll", { duration: 500, easing: "linear", offset: offset });
-                }
+                }*/
               }
             }]);
           }

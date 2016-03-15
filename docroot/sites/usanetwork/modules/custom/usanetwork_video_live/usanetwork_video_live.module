@@ -115,6 +115,9 @@ function _usanetwork_video_live_related_ajax($offset) {
 
         if (!empty($related_cotent_id)) {
           $related_content = node_load($related_cotent_id);
+          if ($related_content->status == NODE_NOT_PUBLISHED) {
+            return NULL;
+          }
           if ($related_content->type == 'media_gallery') {
             $related_content_response = _usanetwork_media_gallery_consumptionator_gallery_slides_block($related_content, TRUE);
             $related_content_variables = array();
@@ -144,9 +147,12 @@ function _usanetwork_video_live_related_ajax($offset) {
             );
           }
 
+          $omniture_variables = _usanetwork_ads_get_entity_omniture_variables($related_content, 'node');
+          
           return drupal_json_output(array(
             'rendered' => $related_content_response,
             'showName' => !empty($tv_show->title) ? $tv_show->title : '',
+            'showType' => !empty($omniture_variables['s.prop2']) ? $omniture_variables['s.prop2'] : NULL,
             'contentName' => !empty($related_content->title) ? $related_content->title : '',
             'variables' => $related_content_variables,
           ));

@@ -1,7 +1,7 @@
 <?php
 
-define(VOX_BLOG_FEED_MRROBOT_ATOM, 'http://www.theverge.com/rss/partner/usa-network-mr-robot/index.xml');
-define(MR_ROBOT_SHOW_ID, 56156);
+define('VOX_BLOG_FEED_MRROBOT_ATOM', 'http://www.theverge.com/rss/partner/usa-network-mr-robot/index.xml');
+define('MR_ROBOT_SHOW_ID', 56156);
 
 /**
  * Migration class Vox blog feed.
@@ -59,7 +59,7 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
     $this->source = new MigrateSourceMultiItems($items_class, $fields);
     $this->destination = new MigrateDestinationNode('consumpt_post');
 
-    $blog = variable_get('vox_blog_migrate_mrrobot_nid', NULL);
+    $blog = variable_get('blog_migrate_mrrobot_nid', NULL);
     $blog_nid = NULL;
     if (preg_match("/^(.+)\[node:(\d+)\]$/", $blog, $matches)) {
       $blog_nid = $matches[2];

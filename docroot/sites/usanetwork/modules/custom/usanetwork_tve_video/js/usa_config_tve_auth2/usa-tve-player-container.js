@@ -257,7 +257,8 @@
                 //rebind $pdk each time directive is loaded
 
                 $pdk.bind(player_Id);
-                //$pdk.controller.setIFrame(player_Id);
+                //$pdk.bind(player_Id, true);
+                //$pdk.controller.setIFrame(player_Id, true);
 
 
                 // default listeners for player

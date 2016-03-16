@@ -4,7 +4,7 @@
  * USA Video configuration form.
  */
 function usanetwork_mpx_video_admin($form, &$form_state) {
-  $form['#tree'] = TRUE;
+//  $form['#tree'] = TRUE;
   $form['sync'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
@@ -28,14 +28,35 @@ function usanetwork_mpx_video_admin($form, &$form_state) {
     '#limit_validation_errors' => array(),
   );
 
-  return $form;
+  $form['player_url'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#title' => t('Player URL Settings'),
+    '#description' => t('Set up Player URL Settings.'),
+  );
+
+  $form['player_url']['usanetwork_player_url_pdk'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Pdk'),
+    '#description' => t('Player URL Parameter &pdk='),
+    '#default_value' => variable_get('usanetwork_player_url_pdk', ''),
+  );
+
+  $form['player_url']['usanetwork_player_url_logLevel'] = array(
+    '#type' => 'textfield',
+    '#title' => t('logLevel'),
+    '#description' => t('Player URL Parameter &logLevel='),
+    '#default_value' => variable_get('usanetwork_player_url_logLevel', ''),
+  );
+
+  return system_settings_form($form);
 }
 
 /**
  * Submit callback for Sync Now button.
  */
 function usanetwork_mpx_video_sync_submit($form, &$form_state) {
-  $types = array_filter($form_state['input']['sync']['types']);
+  $types = array_filter($form_state['input']['types']);
   if (!empty($types)) {
     $batch = usanetwork_mpx_video_sync_batch($types);
     batch_set($batch);

@@ -111,6 +111,9 @@
         quiz.score = 0;
         quizHandler.answers = {};
         $questions.hide();
+        if($('body').hasClass('page-videos-live')) {
+          Drupal.behaviors.usanetwork_video_live.refreshQuizOmniture();
+        }
         $questions.first().show();
         $containers.filter(':visible').fadeOut(quiz.settings.animationSpeed, function() {
           $questions_container.fadeIn(quiz.settings.animationSpeed, function() {

@@ -1352,38 +1352,13 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
  * Helper function for define correct video player
  */
 function _usanetwork_microsite_define_videoplayer($file) {
-  $full_episode = _usanetwork_microsite_define_full_episode($file);
+  $player_info = _usanetwork_tve_video_get_player_information($file);
+  $mpx_account_pid = $player_info['mpx_account_pid'];
+  $player_pid = $player_info['player_pid'];
 
-  $file_mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
-  $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($file_mpx_account->default_player);
-
-  $player = pub_mpx_player_data_load($file);
-  $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
-    (!empty($player['pid']) ? $player['pid'] : $mpx_account_default_player['pid']);
-
-  $player = _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_id);
-
-  $player_pid = !empty($player['pid']) ? $player['pid'] : NULL;
-
-  $mpx_account_id = !empty($player['parent_account']) ? $player['parent_account'] : NULL;
-
-  $mpx_account = _media_theplatform_mpx_get_account_data($mpx_account_id);
-  $mpx_account_pid = isset($mpx_account->account_pid) ? $mpx_account->account_pid : NULL;
-
-  // Normal flow.
   $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
 
   drupal_add_js($pdk_controller_url, 'external');
-
-  if (_usanetwork_widget_get_environment() == 'prod') {
-    if (!$full_episode) {
-      $player_pid = USANETWORK_MICROSITE_USA_PLAYER;
-    }
-  } else {
-    if (!$full_episode) {
-      $player_pid = USANETWORK_MICROSITE_USA_PLAYER_QA;
-    }
-  }
 
   return $player_pid;
 }
@@ -1433,12 +1408,9 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
   }
 
   //set video player
-  $player_id = _usanetwork_microsite_define_videoplayer($file);
-  $video = theme('pub_mpx_video', array(
+  $video = theme('usanetwork_tve_player_microsite', array(
     'file' => $file,
-    'pub_mpx_player_parameters' => array('autoPlay' => $autoplay, 'form' => 'html', 'nid' => $node->nid, 'filter' => $filter),
-    'player_id' => $player_id,
-    'pub_mpx_player_url' => $base_url . '/' . $microsite_theme_name . '/videos/' . _usanetwork_microsite_get_suggested_video_url($file),
+    'pub_mpx_player_parameters' => array('autoPlay' => $autoplay, 'filter' => $filter),
   ));
 
   //set image for not logged in user

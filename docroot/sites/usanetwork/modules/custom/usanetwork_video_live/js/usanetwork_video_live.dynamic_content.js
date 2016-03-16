@@ -74,6 +74,21 @@
         }
       }
     },
+    setDefaultProps: function() {
+      var quizes = Drupal.settings.usanetwork_quiz;
+      var quiz_setting = quizes[nid];
+      var quizShow = quiz_setting['quizShow'],
+          quizShowType = quiz_setting['quizShowType'],
+          quizTitle = quiz_setting['quizTitle'],
+          quizType = quiz_setting['quizType'];
+
+      s.pageName = 'USA Live TV';
+      s.prop2 = quizShowType;
+      s.prop3 = 'Quiz';
+      s.prop4 = quizShow + ' : ' + 'Quiz';
+      s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
+      s.prop10 = quizShow;
+    },
     refreshQuizOmniture: function() {
 
       function ucfirst(string){
@@ -108,6 +123,8 @@
               s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
               s.tl(this, 'o', 'Poll/Question Shown');
               s.manageVars('clearVars', s.linkTrackVars, 1);
+
+              Drupal.behaviors.usanetwork_video_live.setDefaultProps();
             }
           }
         });
@@ -152,6 +169,8 @@
               }
 
               s.manageVars('clearVars', s.linkTrackVars, 1);
+
+              Drupal.behaviors.usanetwork_video_live.setDefaultProps();
             }
           }
         });
@@ -183,6 +202,8 @@
             console.info(s.pageName);
             s.tl(this, 'o', 'Restart');
             s.manageVars('clearVars', s.linkTrackVars, 1);
+
+            Drupal.behaviors.usanetwork_video_live.setDefaultProps();
           }
         });
       });
@@ -254,12 +275,15 @@
                 quizShow: data.showName,
                 quizShowType: data.showType != null ? data.showType: "Other",
                 quizTitle: data.contentName
-                
+
               };
               data.variables.title = data.contentName;
               Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
+              if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+                Drupal.behaviors.usanetwork_video_live.setDefaultProps();
+                void (s.t());
+              }
               Drupal.behaviors.usanetwork_video_live.initGigyaSharebar(data.variables);
-              Drupal.behaviors.usanetwork_video_live.refreshQuizOmniture();
               Drupal.behaviors.usanetwork_video_live.lazyLoadImages();
             } else {
               if (data.showName != null && typeof data.showName != 'undefined') {

@@ -98,7 +98,7 @@
                 <watchwith
                   airing-id="<?php print $ww_airing_id; ?>"
                   access-key="<?php print variable_get('usanetwork_ww_access_key', 'SBSXJZHX4R5'); ?>"
-                  player-element="#pdk-player"
+                  player-element="#player"
                   player-type="mpx">
                 </watchwith>
               </div>

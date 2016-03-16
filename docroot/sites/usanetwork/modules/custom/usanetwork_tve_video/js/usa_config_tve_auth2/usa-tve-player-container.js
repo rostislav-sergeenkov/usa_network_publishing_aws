@@ -67,7 +67,7 @@
                   }
 
                   ng.forEach(SRC_PARAMS, function (param, i) {
-                    if (config[param.attrName] != '') {
+                    if (param.attrName in config) {
                       params[param.key] = config[param.attrName];
                     }
                   });

@@ -279,10 +279,6 @@
               };
               data.variables.title = data.contentName;
               Drupal.behaviors.usanetwork_quiz.initQuizzes(Drupal.settings.usanetwork_quiz);
-              if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-                Drupal.behaviors.usanetwork_video_live.setDefaultProps();
-                void (s.t());
-              }
               Drupal.behaviors.usanetwork_video_live.initGigyaSharebar(data.variables);
               Drupal.behaviors.usanetwork_video_live.lazyLoadImages();
             } else {

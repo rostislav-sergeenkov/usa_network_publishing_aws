@@ -53,7 +53,7 @@ function usanetwork_mpx_video_menu() {
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_mpx_video.admin.inc',
   );
-  
+
   // admin area
   $items['admin/usanetwork/full-episode-page'] = array(
     'title' => 'Full Episode Page settings',

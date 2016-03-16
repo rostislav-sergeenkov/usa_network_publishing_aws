@@ -10,14 +10,15 @@
           return {
             replace: false,
             // apply client side iframe rendering to reduce cache problem for dynamic url
-            template: '<iframe data-ng-src="{{src}}" src="about:blank" id="{{id}}" allowfullscreen="" frameborder="0"></iframe>',
+            template: '<iframe data-ng-src="{{src}}" src="about:blank" id="{{id}}" '  +
+            'allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" frameborder="0"></iframe>',
             // directive describe below
             require: '^usaTvePlayerContainer',
             scope: true,
-            compile: function(tElement, tAttr) {
+            compile: function (tElement, tAttr) {
               var config = tAttr;
 
-              return function(scope, element, attr, controller) {
+              return function (scope, element, attr, controller) {
                 var SRC_PARAMS = [{
                       attrName: 'mbr',
                       key: 'mbr'
@@ -25,11 +26,21 @@
                       {
                         attrName: 'fwSiteSection',
                         key: 'FWsiteSection'
+                      },
+                      {
+                        attrName: 'pdk',
+                        key: 'pdk'
+                      },
+                      {
+                        attrName: 'loglevel',
+                        key: 'loglevel'
                       }],
                     MVPD_ID_KEY = 'MVPDid',
                     params;
 
                 scope.id = config.id;
+
+                controller.playerId(attr['id']);
 
                 authService.promise.then(init);
 
@@ -55,8 +66,8 @@
                     };
                   }
 
-                  ng.forEach(SRC_PARAMS, function(param, i) {
-                    if (param.attrName in config) {
+                  ng.forEach(SRC_PARAMS, function (param, i) {
+                    if (config[param.attrName] != '') {
                       params[param.key] = config[param.attrName];
                     }
                   });
@@ -85,6 +96,9 @@
               this.isEntitled = function () {
                 return $scope.isEntitled;
               };
+              this.playerId = function (playerId) {
+                return $scope.playerId = playerId;
+              };
             }],
             link: function (scope, element, attr) {
 
@@ -102,9 +116,9 @@
               mpxGuid = attr['mpxGuid'];
               isEntitlement = attr['entitlement'];
               isShowEndCard = parseInt(attr['showEndCard']) === 1 ? true : false;
-              playerId = tveConfig.PLAYER_ID;
               isMicrosite = body.hasClass('page-node-microsite') ? true : false;
               tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop};
+              playerId = scope.playerId;
 
               usaReleaseEnd = false;
               nextReleaseUrl = attr['nextReleaseUrl'];
@@ -239,7 +253,11 @@
                 var data = dataObj || {};
 
                 //rebind $pdk each time directive is loaded
+
                 $pdk.bind(player_Id);
+                //$pdk.bind(player_Id, true);
+                //$pdk.controller.setIFrame(player_Id, true);
+
 
                 // default listeners for player
                 if (isEntitlement !== 'auth') {

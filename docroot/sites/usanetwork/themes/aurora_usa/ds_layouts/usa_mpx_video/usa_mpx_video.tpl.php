@@ -59,7 +59,7 @@
                 class="first-line"><?php print t('sign in with your TV provider to watch full episodes.'); ?></span>
             <?php endif; ?>
           </div>
-          <div id="player">
+          <div id="player-login">
             <a href="javascript:void(0)" class="loginButton"
                data-ng-click="openLoginWindow()">
               <?php if (!$is_live): ?>

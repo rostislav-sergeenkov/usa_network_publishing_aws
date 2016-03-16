@@ -457,6 +457,7 @@
           text-align: center;
           top: 40%;
           width: 90%;
+          z-index: 2;
           .first-line {
             display: block;
             font-size: 26px;
@@ -499,10 +500,11 @@
         }
       }
     }
-    #player {
+    #player-login {
       height: 100%;
       position: relative;
       width: 100%;
+      z-index: 1;
       .borealis {
         height: 100%;
       }

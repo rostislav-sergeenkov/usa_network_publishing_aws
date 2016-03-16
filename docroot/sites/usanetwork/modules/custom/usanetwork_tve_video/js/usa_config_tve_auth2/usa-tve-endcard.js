@@ -246,7 +246,7 @@
       .factory('usaEndCardService', ['$rootScope', '$timeout', 'helper', 'usaEndCardAnimate', 'usaEndCardAT', 'usaEndCardHelper',
         function ($rootScope, $timeout, helper, usaEndCardAnimate, usaEndCardAT, usaEndCardHelper) {
 
-          var $window, isMobile, isSafari,
+          var $window, isMobile,
               playerWrapperEl, playerEl, endCardEls, episodeUpNextEl, episodesRelatedClipEl,
               episodesRelatedListEl, episodesRelatedSliderEl,
               episodeShareEl, replayBtnEl, showTitle, episodeTitle, upNextTitle, relatedClipTitle,
@@ -271,7 +271,7 @@
 
           // elements
           playerWrapperEl = ng.element('[data-usa-tve-player-container]');
-          playerEl = ng.element('[data-usa-tve-player="pdk-player"]');
+          playerEl = ng.element('[data-usa-tve-player="player"]');
           endCardEls = ng.element('[data-end-card="usaEndCard"]');
           episodeShareEl = ng.element('#episode-share');
           episodeUpNextEl = ng.element('#episode-up-next');

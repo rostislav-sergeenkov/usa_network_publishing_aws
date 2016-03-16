@@ -14902,6 +14902,7 @@ footer h2 {
   text-align: center;
   top: 40%;
   width: 90%;
+  z-index: 2;
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
   display: block;
@@ -14954,15 +14955,16 @@ footer h2 {
   height: 100% !important;
   width: 100% !important;
 }
-.consumptionator-page .video-block #player, .page-videos-live .video-block #player {
+.consumptionator-page .video-block #player-login, .page-videos-live .video-block #player-login {
   height: 100%;
   position: relative;
   width: 100%;
+  z-index: 1;
 }
-.consumptionator-page .video-block #player .borealis, .page-videos-live .video-block #player .borealis {
+.consumptionator-page .video-block #player-login .borealis, .page-videos-live .video-block #player-login .borealis {
   height: 100%;
 }
-.consumptionator-page .video-block #player img, .page-videos-live .video-block #player img {
+.consumptionator-page .video-block #player-login img, .page-videos-live .video-block #player-login img {
   height: 100%;
   width: 100%;
 }

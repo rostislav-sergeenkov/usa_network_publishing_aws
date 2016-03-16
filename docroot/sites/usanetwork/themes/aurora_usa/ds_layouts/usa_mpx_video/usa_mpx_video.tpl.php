@@ -105,8 +105,7 @@
             </div>
           <?php endif; ?>
         </div>
-        <?php
-      else: ?>
+      <?php else: ?>
         <div class="video-player-wrapper">
           <?php if ($is_live): ?>
             <iframe allowfullscreen="" id="videoplayer" width="100%"

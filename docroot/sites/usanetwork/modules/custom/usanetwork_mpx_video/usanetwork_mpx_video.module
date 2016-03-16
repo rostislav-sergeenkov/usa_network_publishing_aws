@@ -1010,7 +1010,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
       'fields' => array(
         'fullEpisode' => FALSE,
       ),
-      'guid' => 'IL8ttlnlvUPBYk8K8u9GjhYnnzZ37c8P',
+      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
     );
 
    //for prod

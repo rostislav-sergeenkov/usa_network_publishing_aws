@@ -89,5 +89,36 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
     $current_row->shirt_description = $shirt_description . '.';
   }
 
+  public function complete($entity, stdClass $row) {
+    $settings = variable_get('usanetwork_ads_site_metric_settings', array());
+    $entity_wrapper = entity_metadata_wrapper('node', $entity);
+    $show = $entity_wrapper->field_show->value();
+    $show_name = $show->title;
+    $settings['node']['consumpt_post'][$entity->nid] = array(
+      'is_sponsored' => -1,
+      'sect' => '',
+      'sub' => '',
+      'sub2' => '',
+      'omniture' => array(
+        'variables' => array(
+          array(
+            'key' => 's.prop3',
+            'value' => 'Blog',
+          ),
+          array(
+            'key' => 's.prop4',
+            'value' => $show_name . ' Blog',
+          ),
+          array(
+            'key' => 's.pageName',
+            'value' => $show_name . ' : ' . $show_name . ' Blog : ' . $entity->title,
+          ),
+          'default' => NULL,
+        ),
+        'disable' => NULL,
+      ),
+    );
+    variable_set('usanetwork_ads_site_metric_settings', $settings);
+  }
 }
 

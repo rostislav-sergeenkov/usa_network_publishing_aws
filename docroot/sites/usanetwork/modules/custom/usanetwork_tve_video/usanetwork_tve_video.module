@@ -263,8 +263,7 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
 
   $player_source .= '/select/media/guid/' . $account_mpx_id . '/'. $mpx_guid;
 
-  $pdk_version = variable_get('usanetwork_player_url_pdk', '');
-  $log_level = variable_get('usanetwork_player_url_logLevel', '');
+
 
   $player_tag = array(
     'element' => array(
@@ -276,11 +275,18 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
         'data-id' => 'pdk-player',
         'data-mbr' => 'true',
         'class' => 'pdk-player-wrap',
-        'data-pdk' => !empty($pdk_version) ? $pdk_version : '',
-        'data-logLevel' => !empty($log_level) ? $log_level : '',
       ),
     ),
   );
+
+  $pdk_version = variable_get('usanetwork_player_url_pdk', '');
+  $log_level = variable_get('usanetwork_player_url_logLevel', '');
+  if (!empty($pdk_version)) {
+    $player_tag['element']['#attributes']['data-pdk'] = $pdk_version;
+  }
+  if (!empty($log_level)) {
+    $player_tag['element']['#attributes']['data-logLevel'] = $log_level;
+  }
 
   // Normal flow.
   if (!empty($pdk_version)) {

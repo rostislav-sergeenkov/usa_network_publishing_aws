@@ -1454,6 +1454,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
     }
 
     if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
+      $params = drupal_get_query_parameters();
 
       $clips_block = module_invoke('usanetwork_mpx_video', 'block_view', 'usa_mpx_video_clips');
       if (!empty($clips_block['content'])) {
@@ -1509,6 +1510,12 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $variables = array(
         'file' => $file,
       );
+      if (isset($params['pdk'])) {
+        $variables['attribute_parameters']['pdk'] = $params['pdk'];
+      }
+      if (isset($params['logLevel'])) {
+        $variables['attribute_parameters']['logLevel'] = $params['logLevel'];
+      }
       $vars['video'] = theme('usanetwork_tve_player_mpx_video', $variables);
 
       //twitter card
@@ -1678,7 +1685,6 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         }
       }
       if ($full_episode == '1') {
-        $params = drupal_get_query_parameters();
         if (isset($params['t'])) {
           drupal_add_js(array('videoSetTime' => $params['t']), 'setting');
         }

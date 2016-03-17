@@ -107,7 +107,7 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
           ),
           array(
             'key' => 's.prop4',
-            'value' => $show_name . ' Blog',
+            'value' => $show_name . ' : ' . $show_name . ' Blog',
           ),
           array(
             'key' => 's.pageName',

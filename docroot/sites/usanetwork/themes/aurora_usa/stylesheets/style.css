@@ -14965,7 +14965,9 @@ footer h2 {
 }
 .consumptionator-page .video-block #player-login, .page-videos-live .video-block #player-login {
   height: 100%;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   z-index: 1;
 }
@@ -15053,6 +15055,9 @@ footer h2 {
     height: auto;
     max-height: none;
   }
+}
+.page-videos-live .video-block.show-gallery .player-wrapper {
+  float: left;
 }
 @media (min-width: 1281px) {
   .page-videos-live .video-block.show-gallery .player-wrapper {

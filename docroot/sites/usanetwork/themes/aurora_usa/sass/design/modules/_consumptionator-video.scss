@@ -524,7 +524,9 @@
     }
     #player-login {
       height: 100%;
-      position: relative;
+      position: absolute;
+      left: 0;
+      top: 0;
       width: 100%;
       z-index: 1;
       .borealis {
@@ -629,6 +631,7 @@
         max-height: none;
       }
       .player-wrapper {
+        float: left;
         @include breakpoint($bp-min-1281-width) {
           height: 42.01875vw;
           max-height: 1093.75px;

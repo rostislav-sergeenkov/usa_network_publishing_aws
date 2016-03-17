@@ -294,6 +294,8 @@ function usanetwork_movie_form_movie_node_form_alter(&$form, &$form_state, $form
       break;
     }
   }
+
+  unset($form['field_livetv_right_rail']['und']['#options']['_none']);
 }
 
 function usanetwork_movie_submenu() {

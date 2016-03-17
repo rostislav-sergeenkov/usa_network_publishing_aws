@@ -9,6 +9,7 @@
       float: none;
       height: 100%;
       position: absolute;
+      left: auto;
       right: 0;
       top: 0;
     }
@@ -645,6 +646,7 @@
       }
       .consum-sidebar {
         @include breakpoint($bp-min-1025-width) {
+          left: auto;
           float: right;
           overflow: hidden;
           padding: 0;

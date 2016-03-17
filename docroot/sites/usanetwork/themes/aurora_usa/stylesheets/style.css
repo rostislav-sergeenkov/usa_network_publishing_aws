@@ -14378,6 +14378,7 @@ footer h2 {
     float: none;
     height: 100%;
     position: absolute;
+    left: auto;
     right: 0;
     top: 0;
   }
@@ -15073,6 +15074,7 @@ footer h2 {
 }
 @media (min-width: 1025px) {
   .page-videos-live .video-block.show-gallery .consum-sidebar {
+    left: auto;
     float: right;
     overflow: hidden;
     padding: 0;

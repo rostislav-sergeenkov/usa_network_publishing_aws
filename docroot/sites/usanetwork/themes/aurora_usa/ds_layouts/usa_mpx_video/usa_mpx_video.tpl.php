@@ -1,5 +1,5 @@
 <div class="video-block">
-  <div class="player-wrapper"
+  <div class="player-wrapper <?php print ($is_live)? ' right-rail-line': ''; ?>"
        data-usa-tve-player-container
        data-entitlement="<?php print $entitlement; ?>"
        data-is-live="<?php print $is_live; ?>"

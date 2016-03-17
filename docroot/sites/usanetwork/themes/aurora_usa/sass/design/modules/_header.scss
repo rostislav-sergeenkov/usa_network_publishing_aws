@@ -1,8 +1,69 @@
 header {
   @include clear();
+  background-color: $poll-back;
   min-width: 300px;
   position: relative;
   width: 100%;
+  body.front & {
+    .header-nav-bar {
+      -webkit-transition: all 0.5s ease-out 0s;
+      -moz-transition: all 0.5s ease-out 0s;
+      -o-transition: all 0.5s ease-out 0s;
+      transition: all 0.5s ease-out 0s;
+    }
+    .usa-logo {
+      -webkit-transition: all 0.5s ease-out 0s;
+      -moz-transition: all 0.5s ease-out 0s;
+      -o-transition: all 0.5s ease-out 0s;
+      transition: all 0.5s ease-out 0s;
+    }
+    .nav-bar-tabs {
+      @include breakpoint($bp-min-769-width) {
+        a {
+          -webkit-transition: all 0.5s ease-out 0s;
+          -moz-transition: all 0.5s ease-out 0s;
+          -o-transition: all 0.5s ease-out 0s;
+          transition: all 0.5s ease-out 0s;
+        }
+      }
+    }
+  }
+  &.sticky-shows-submenu {
+    .header-nav-bar {
+      height: get-vw(48.7px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        height: 90px;
+      }
+    }
+    .usa-logo {
+      background: none!important;
+      width: get-vw(67px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        width: 123px;
+      }
+      a {
+        background-image: url('../images/usa_logo_small_menu.png');
+        background-size: 70%;
+      }
+    }
+    .nav-bar-tabs {
+      @include breakpoint($bp-min-769-width) {
+        a {
+          font-size: get-vw(9px, 1025);
+          line-height: get-vw(48.7px, 1025);
+          padding: 0 get-vw(32px, 1025);
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 16.7px;
+            line-height: 90px;
+            padding: 0 59.3px;
+          }
+          @include breakpoint($bp-1024-width) {
+            font-size: 9px;
+          }
+        }
+      }
+    }
+  }
   ul, li, ol {
     list-style: none;
     margin: 0;

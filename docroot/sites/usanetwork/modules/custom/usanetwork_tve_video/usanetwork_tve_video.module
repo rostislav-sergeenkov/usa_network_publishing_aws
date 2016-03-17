@@ -310,6 +310,13 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
     $player_tag['element']['#attributes']['data-logLevel'] = $log_level;
   }
 
+  if (!empty($variables['attribute_parameters']['pdk'])) {
+    $player_tag['element']['#attributes']['data-pdk'] = $variables['attribute_parameters']['pdk'];
+  }
+  if (!empty($variables['attribute_parameters']['logLevel'])) {
+    $player_tag['element']['#attributes']['data-logLevel'] = $variables['attribute_parameters']['logLevel'];
+  }
+
   // Normal flow.
 //  if (!empty($pdk_version)) {
 //    $pdk_controller_url = "http://pdk.theplatform.com/{$pdk_version}/pdk/tpPdkController.js";
@@ -366,15 +373,6 @@ function theme_usanetwork_tve_player_microsite($variables) {
     'oallowfullscreen' => "",
     'msallowfullscreen' => "",
   );
-
-  $pdk_version = variable_get('usanetwork_player_url_pdk', '');
-  $log_level = variable_get('usanetwork_player_url_logLevel', '');
-  if (!empty($pdk_version)) {
-    $player_tag['element']['#attributes']['data-pdk'] = $pdk_version;
-  }
-  if (!empty($log_level)) {
-    $player_tag['element']['#attributes']['data-logLevel'] = $log_level;
-  }
 
   return theme('html_tag', $iframe_tag);
 }

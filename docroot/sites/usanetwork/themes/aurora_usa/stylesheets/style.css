@@ -14370,6 +14370,9 @@ footer h2 {
   position: relative;
 }
 
+.consumptionator-video-page .player-wrapper {
+  float: none !important;
+}
 @media (min-width: 1281px) {
   .consumptionator-video-page .consum-sidebar {
     float: none;
@@ -14410,6 +14413,7 @@ footer h2 {
   }
 }
 .consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
+  float: left;
   height: 100%;
   position: relative;
   width: 74.7%;
@@ -15055,9 +15059,6 @@ footer h2 {
     height: auto;
     max-height: none;
   }
-}
-.page-videos-live .video-block.show-gallery .player-wrapper {
-  float: left;
 }
 @media (min-width: 1281px) {
   .page-videos-live .video-block.show-gallery .player-wrapper {

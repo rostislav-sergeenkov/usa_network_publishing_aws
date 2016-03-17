@@ -1,5 +1,9 @@
 .consumptionator-video-page {
 
+  .player-wrapper {
+    float: none !important;
+  }
+
   .consum-sidebar {
     @include breakpoint($bp-min-1281-width) {
       float: none;
@@ -34,7 +38,7 @@
       height: auto;
     }
     .player-wrapper {
-      //float: left;
+      float: left;
       height: 100%;
       position: relative;
       width: 74.7%;
@@ -631,7 +635,6 @@
         max-height: none;
       }
       .player-wrapper {
-        float: left;
         @include breakpoint($bp-min-1281-width) {
           height: 42.01875vw;
           max-height: 1093.75px;

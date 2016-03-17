@@ -71,6 +71,12 @@ function usanetwork_tve_video_theme($existing, $type, $theme, $path) {
         'height' => NULL,
       ),
     ),
+    'usanetwork_tve_player_microsite' => array(
+      'variables' => array(
+        'file' => NULL,
+        'player_id' => NULL,
+      ),
+    ),
     'usanetwork_tve_login_menu' => array(
       'variables' => array(
       ),
@@ -207,13 +213,13 @@ function usanetwork_tve_video_preprocess_file_entity(&$vars) {
   }
 }
 
-/*
- * Theme for player
+/**
+ * Creating source for Rationalized Player
+ *
+ * @param $file
+ * @return string
  */
-function theme_usanetwork_tve_player_mpx_video($variables) {
-  _tve_player_add_custom_player_variables($variables, 'vod');
-
-  $file = (object) $variables['file'];
+function _usanetwork_tve_video_get_player_information($file) {
   if (!isset($file->fid)) {
     return _tve_player_error('Could not render player: Invalid file object.');
   }
@@ -263,6 +269,25 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
 
   $player_source .= '/select/media/guid/' . $account_mpx_id . '/'. $mpx_guid;
 
+  return array(
+    'player_source' => $player_source,
+    'mpx_account_pid' => $mpx_account_pid,
+    'player_pid' => $player_pid,
+  );
+}
+
+/*
+ * Theme for player
+ */
+function theme_usanetwork_tve_player_mpx_video($variables) {
+  _tve_player_add_custom_player_variables($variables, 'vod');
+
+  $file = (object) $variables['file'];
+
+  $player_info = _usanetwork_tve_video_get_player_information($file);
+  $player_source = $player_info['player_source'];
+  $mpx_account_pid = $player_info['mpx_account_pid'];
+
   $player_tag = array(
     'element' => array(
       '#tag' => 'div',
@@ -285,17 +310,71 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
     $player_tag['element']['#attributes']['data-logLevel'] = $log_level;
   }
 
-  // Normal flow.
-  if (!empty($pdk_version)) {
-    $pdk_controller_url = "http://pdk.theplatform.com/{$pdk_version}/pdk/tpPdkController.js";
-  } else {
-    $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
+  if (!empty($variables['attribute_parameters']['pdk'])) {
+    $player_tag['element']['#attributes']['data-pdk'] = $variables['attribute_parameters']['pdk'];
   }
+  if (!empty($variables['attribute_parameters']['logLevel'])) {
+    $player_tag['element']['#attributes']['data-logLevel'] = $variables['attribute_parameters']['logLevel'];
+  }
+
+  // Normal flow.
+//  if (!empty($pdk_version)) {
+//    $pdk_controller_url = "http://pdk.theplatform.com/{$pdk_version}/pdk/tpPdkController.js";
+//  } else {
+    $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
+//  }
 
 
   drupal_add_js($pdk_controller_url, 'external');
 
   return theme('html_tag', $player_tag);
+}
+
+
+/*
+ * Theme for player on microsites
+ */
+function theme_usanetwork_tve_player_microsite($variables) {
+  _tve_player_add_custom_player_variables($variables, 'vod');
+
+  $file = (object) $variables['file'];
+  $player_info = _usanetwork_tve_video_get_player_information($file);
+  $player_source = $player_info['player_source'];
+
+  $query_parameters = (isset($variables['pub_mpx_player_parameters'])
+    ? $variables['pub_mpx_player_parameters']
+    : array());
+
+  $pdk_version = variable_get('usanetwork_player_url_pdk', '');
+  $log_level = variable_get('usanetwork_player_url_logLevel', '');
+  if (!empty($pdk_version)) {
+    $query_parameters['pdk'] = $pdk_version;
+  }
+  if (!empty($log_level)) {
+    $query_parameters['logLevel'] = $log_level;
+  }
+
+  $player_parameters = array(
+    'query' => $query_parameters,
+    'external' => TRUE,
+  );
+
+  $iframe_tag = array();
+  $iframe_tag['element']['#tag'] = 'iframe';
+  $iframe_tag['element']['#value'] = 'Your browser does not support iframes.';
+  $iframe_tag['element']['#attributes'] = array(
+    'src' => url($player_source, $player_parameters),
+    'frameborder' => 0,
+    'allowfullscreen' => '',
+    'id' => 'player',
+    'onload' => '$pdk.bind(this, true); $pdk.controller.setIFrame(this, true);',
+    'webkitallowfullscreen' => "",
+    'mozallowfullscreen' => "",
+    'oallowfullscreen' => "",
+    'msallowfullscreen' => "",
+  );
+
+  return theme('html_tag', $iframe_tag);
 }
 
 /*

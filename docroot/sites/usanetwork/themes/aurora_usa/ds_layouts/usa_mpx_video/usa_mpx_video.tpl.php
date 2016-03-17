@@ -92,21 +92,8 @@
             <?php endif; ?>
             <!--  end endcart -->
           <?php endif; ?>
-          <?php if (!empty($watchwith) && !empty($ww_airing_id)) : ?>
-            <div ng-non-bindable>
-              <div id="wwRootContainer">
-                <watchwith
-                  airing-id="<?php print $ww_airing_id; ?>"
-                  access-key="<?php print variable_get('usanetwork_ww_access_key', 'SBSXJZHX4R5'); ?>"
-                  player-element="#player"
-                  player-type="mpx">
-                </watchwith>
-              </div>
-            </div>
-          <?php endif; ?>
         </div>
-        <?php
-      else: ?>
+      <?php else: ?>
         <div class="video-player-wrapper">
           <?php if ($is_live): ?>
             <iframe allowfullscreen="" id="videoplayer" width="100%"

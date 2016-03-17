@@ -13057,6 +13057,8 @@ footer h2 {
     height: 100%;
     overflow: visible;
     padding-left: calc(100% - 320px);
+    left: 0;
+    top: 0;
     position: absolute;
     width: 100%;
   }
@@ -14368,6 +14370,16 @@ footer h2 {
   position: relative;
 }
 
+@media (min-width: 1281px) {
+  .consumptionator-video-page .consum-sidebar {
+    float: none;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
 .consumptionator-page .video-block, .page-videos-live .video-block {
   margin: 0;
   overflow: hidden;
@@ -14382,15 +14394,12 @@ footer h2 {
 }
 @media (min-width: 1281px) {
   .consumptionator-page .video-block, .page-videos-live .video-block {
-    height: 42.01875vw;
-    max-height: 1093.75px;
     max-width: 2500px;
     margin: 0 auto;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-page .video-block, .page-videos-live .video-block {
-    height: calc((100vw - 320px)*0.5625);
     margin-bottom: calc((100vw - 4px)/48*9 + 45px);
     overflow: visible;
   }
@@ -14401,7 +14410,6 @@ footer h2 {
   }
 }
 .consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
-  float: left;
   height: 100%;
   position: relative;
   width: 74.7%;
@@ -14416,13 +14424,7 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
-    height: 56.25vw;
     width: 100%;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
-    height: 50vw;
   }
 }
 .consumptionator-page .video-block .player-wrapper > .node, .page-videos-live .video-block .player-wrapper > .node {
@@ -14590,7 +14592,8 @@ footer h2 {
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper {
   line-height: 1;
-  height: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
   position: relative;
   width: 100%;
 }
@@ -14602,6 +14605,11 @@ footer h2 {
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover #player img, .page-videos-live .video-block .player-wrapper .video-player-wrapper:hover #player img {
   opacity: .2;
   transition: opacity 0.3s ease-in-out;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper .pdk-player-wrap, .page-videos-live .video-block .player-wrapper .video-player-wrapper .pdk-player-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper {
   display: none;
@@ -14974,6 +14982,11 @@ footer h2 {
 }
 .page-videos-live .video-block {
   margin-bottom: 0;
+}
+.page-videos-live .video-block #videoplayer {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 .page-videos-live .video-block .consum-sidebar .download-app {
   display: none;

@@ -1,3 +1,16 @@
+.consumptionator-video-page {
+
+  .consum-sidebar {
+    @include breakpoint($bp-min-1281-width) {
+      float: none;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}
+
 .consumptionator-page, .page-videos-live {
   .video-block {
     @include clear;
@@ -7,13 +20,13 @@
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
-      height: 42.01875vw;
-      max-height: 1093.75px;
+      //height: 42.01875vw;
+      //max-height: 1093.75px;
       max-width: 2500px;
       margin: 0 auto;
     }
     @include breakpoint($between-1025-1280) {
-      height: calc((100vw - 320px)*0.5625);
+      //height: calc((100vw - 320px)*0.5625);
       margin-bottom: calc((100vw - 4px)/48*9 + 45px);
       overflow: visible;
     }
@@ -21,7 +34,7 @@
       height: auto;
     }
     .player-wrapper {
-      float: left;
+      //float: left;
       height: 100%;
       position: relative;
       width: 74.7%;
@@ -30,11 +43,11 @@
         z-index: 1;
       }
       @include breakpoint($bp-1024-width) {
-        height: 56.25vw;
+        //height: 56.25vw;
         width: 100%;
       }
       @include breakpoint($bp-480-width) {
-        height: 50vw;
+        //height: 50vw;
       }
       > .node {
         height: 100%;
@@ -180,7 +193,9 @@
       /*old css end*/
       .video-player-wrapper {
         line-height: 1;
-        height: 100%;
+        //height: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
         position: relative;
         width: 100%;
         &:hover {
@@ -194,6 +209,13 @@
             transition: opacity 0.3s ease-in-out;
           }
         }
+
+        .pdk-player-wrap {
+          position: absolute;
+          left:0;
+          top:0;
+        }
+
         .sign-in-wrapper {
           display: none;
           left: 0;
@@ -521,6 +543,12 @@
   }
   .video-block {
     margin-bottom: 0;
+
+    #videoplayer {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
     .consum-sidebar {
       .download-app {
         display: none;

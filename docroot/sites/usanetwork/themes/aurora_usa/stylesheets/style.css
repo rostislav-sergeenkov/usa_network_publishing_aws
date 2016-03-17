@@ -5549,7 +5549,6 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 }
 
 header {
-  background-color: #e9eaeb;
   min-width: 300px;
   position: relative;
   width: 100%;
@@ -5558,6 +5557,9 @@ header:after {
   clear: both;
   content: '';
   display: table;
+}
+body.front header {
+  background-color: #e9eaeb;
 }
 body.front header .header-nav-bar {
   -webkit-transition: all 0.5s ease-out 0s;

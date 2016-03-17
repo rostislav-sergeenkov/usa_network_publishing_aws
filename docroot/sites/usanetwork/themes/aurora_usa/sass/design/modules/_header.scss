@@ -1,10 +1,10 @@
 header {
   @include clear();
-  background-color: $poll-back;
   min-width: 300px;
   position: relative;
   width: 100%;
   body.front & {
+    background-color: $poll-back;
     .header-nav-bar {
       -webkit-transition: all 0.5s ease-out 0s;
       -moz-transition: all 0.5s ease-out 0s;

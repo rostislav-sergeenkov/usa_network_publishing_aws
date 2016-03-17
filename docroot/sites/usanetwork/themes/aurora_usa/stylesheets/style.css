@@ -5599,8 +5599,7 @@ header.sticky-shows-submenu .usa-logo {
   }
 }
 header.sticky-shows-submenu .usa-logo a {
-  background-image: url("../images/usa_logo_small_menu.png");
-  background-size: 70%;
+  background-image: url("../images/usa-logo-small-menu.png");
 }
 @media (min-width: 769px) {
   header.sticky-shows-submenu .nav-bar-tabs a {

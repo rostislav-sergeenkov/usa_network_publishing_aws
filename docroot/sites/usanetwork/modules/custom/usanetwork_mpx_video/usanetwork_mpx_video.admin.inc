@@ -252,12 +252,6 @@ function _usanetwork_mpx_watchwith_admin_form ($form, &$form_state) {
     '#type' => 'textfield',
     '#default_value' => variable_get('usanetwork_ww_js_file', 'http://apps.watchwith.com/wng-usa/dev/wng-usa-boot.js'),
   );
-  $form['usanetwork_ww_css_file'] = array(
-    '#title' => t('WatchWith path to CSS file'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('usanetwork_ww_css_file', 'http://apps.watchwith.com/wng-usa/dev/watchwith.css'),
-  );
-
 
   return system_settings_form($form);
 }

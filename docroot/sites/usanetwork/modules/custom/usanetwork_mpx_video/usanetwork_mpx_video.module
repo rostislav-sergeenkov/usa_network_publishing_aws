@@ -1674,10 +1674,8 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       $interactive = _usanetwork_get_field_item('file', $file, 'field_mpx_interactive', 'value');
       if (!empty($interactive)) {
-        if (!empty($ww_airing_id)) {
-          $js_file = variable_get('usanetwork_ww_js_file', 'http://apps.watchwith.com/wng-usa/dev/wng-usa-boot.js');
-          drupal_add_js($js_file, array('type' => 'external', 'group' => JS_LIBRARY - 5));
-        }
+        $js_file = variable_get('usanetwork_ww_js_file', 'http://apps.watchwith.com/wng-usa/dev/wng-usa-boot.js');
+        drupal_add_js($js_file, array('type' => 'external', 'group' => JS_LIBRARY - 5));
       }
       if ($full_episode == '1') {
         if (isset($params['t'])) {

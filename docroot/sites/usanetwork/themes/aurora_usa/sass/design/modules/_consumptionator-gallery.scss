@@ -137,7 +137,7 @@ body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
   }
 }
 
-.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, .node-media-gallery {
+.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .gallery-recap-block, .node-type-consumpt-post, .node-media-gallery {
 
   .gallery-block {
     @include clear();
@@ -683,7 +683,7 @@ body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
   }
 }
 
-.consumptionator-page:not(.node-type-person), .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery {
+.consumptionator-page:not(.node-type-person), .node-type-media-gallery, .node-type-tv-episode, .gallery-recap-block, .node-type-consumpt-post, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery {
   .gallery-wrapper {
     .gallery-list {
       &.ready {
@@ -725,7 +725,7 @@ body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
   }
 }
 
-.node-type-tv-episode, .node-type-consumpt-post, .node-media-gallery {
+.node-type-tv-episode, .node-type-consumpt-post, .node-media-gallery, .gallery-recap-block {
   .gallery-wrapper {
     float: none;
     margin: 0;

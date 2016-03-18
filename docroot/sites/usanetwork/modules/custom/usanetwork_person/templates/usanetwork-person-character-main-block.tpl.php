@@ -59,11 +59,6 @@
         </div>
       </div>
     </div>
-    <?php if (!empty($gallery_rec)): ?>
-      <div class="gallery-recap-block show-border">
-        <?php print $gallery_rec; ?>
-      </div>
-    <?php endif; ?>
     <?php if (!empty($social_block)) : ?>
       <div class="block-character-social-content">
         <?php print $social_block; ?>

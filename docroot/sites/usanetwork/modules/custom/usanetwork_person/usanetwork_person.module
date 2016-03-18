@@ -403,9 +403,6 @@ function _usanetwork_person_characters_main_block() {
     'social_block' => render($social_block['content']),
   );
 
-  $block = module_invoke('usanetwork_episodes', 'block_view', 'usanetwork_episodes_gallery_rec');
-  $theme_variables['gallery_rec'] = render($block['content']);
-
   return theme('usanetwork_person_character_main_block', $theme_variables);
 }
 

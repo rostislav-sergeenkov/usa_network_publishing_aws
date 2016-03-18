@@ -185,13 +185,7 @@ function aurora_usa_preprocess_page(&$vars) {
   if ($node && $node->type == "catchall_seo_page" && !$node->field_show) {
     $vars['page']['catchall_seo_title'] = $node->title;
   }
-  if ($node && $node->type == "media_gallery") {
-    drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
-  }
-  if(!empty($node) && $node->type == 'tv_episode') {
-    drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
-  }
-  if(!empty($node) && $node->type == 'consumpt_post') {
+  if (!empty($node) && in_array($node->type, array('media_gallery', 'tv_episode', 'consumpt_post'))) {
     drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
   }
   // add ios touch icon

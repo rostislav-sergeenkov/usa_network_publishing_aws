@@ -168,7 +168,7 @@ footer {
       padding: 37.1px 83.475px;
     }
     ul {
-      max-width: calc(100% - 7.9vw);
+      max-width: calc(100% - #{get-vw(150px, 1901)});
       @include breakpoint($bp-min-1901-width) {
         max-width: calc(100% - 150px);
       }
@@ -229,7 +229,7 @@ footer {
       color: $footer-links;
       float: none;
       font-size: get-vw(11px, 1025);
-      max-width: calc(100% - 7.9vw);
+      max-width: calc(100% - #{get-vw(150px, 1901)});
       padding-top: get-vw(4px, 1025);
       text-transform: uppercase;
       @include breakpoint($bp-min-1901-width) {

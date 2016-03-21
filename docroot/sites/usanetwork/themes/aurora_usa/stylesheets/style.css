@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -1326,7 +1326,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
-  height: calc(100% - 6.25vw);
+  height: calc(100% - 6.25026vw);
 }
 @media (min-width: 1901px) {
   .social-block.carousel-block .carousel ul li .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
@@ -1696,7 +1696,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
-  padding-left: calc(8% + 2.52vw);
+  padding-left: calc(8% + 2.52499vw);
 }
 @media (min-width: 1901px) {
   .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta-icon ~ .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta-icon ~ .meta {
@@ -1940,7 +1940,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
-  padding-left: calc(8% + 2.52vw);
+  padding-left: calc(8% + 2.52499vw);
 }
 @media (min-width: 1901px) {
   .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
@@ -1954,7 +1954,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 }
 @media (max-width: 1024px) {
   .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
-    padding-left: calc(8% + 3.32vw);
+    padding-left: calc(8% + 3.32031vw);
   }
 }
 @media (max-width: 768px) {
@@ -2327,7 +2327,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta {
-    padding-left: calc(8% + 3.9vw);
+    padding-left: calc(8% + 3.90625vw);
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
@@ -2430,7 +2430,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li:nth-child(2) .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta {
-    padding-left: calc(8% + 3.9vw);
+    padding-left: calc(8% + 3.90625vw);
   }
 }
 @media (max-width: 768px) {
@@ -2601,7 +2601,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
-  padding-left: calc(8% + 2.52vw);
+  padding-left: calc(8% + 2.52499vw);
 }
 @media (min-width: 1901px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
@@ -2615,7 +2615,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 }
 @media (max-width: 768px) {
   .five-promo-item-block ul li:nth-child(2) .three-line-video .meta-icon ~ .meta, .five-promo-item-block ul li .last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
-    padding-left: calc(8% + 5.417vw);
+    padding-left: calc(8% + 5.41667vw);
   }
 }
 @media (max-width: 480px) {
@@ -2831,7 +2831,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
-  padding-left: calc(8% + 4.2vw);
+  padding-left: calc(8% + 4.20831vw);
 }
 @media (min-width: 1901px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
@@ -3079,7 +3079,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 .show-latest-block ul li .show-latest-promo .meta-icon ~ .meta, .related-content-block ul li .show-latest-promo .meta-icon ~ .meta {
-  padding-left: calc(8% + 4.2vw);
+  padding-left: calc(8% + 4.20831vw);
 }
 @media (min-width: 1901px) {
   .show-latest-block ul li .show-latest-promo .meta-icon ~ .meta, .related-content-block ul li .show-latest-promo .meta-icon ~ .meta {
@@ -3088,7 +3088,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 }
 @media (max-width: 768px) {
   .show-latest-block ul li .show-latest-promo .meta-icon ~ .meta, .related-content-block ul li .show-latest-promo .meta-icon ~ .meta {
-    padding-left: calc(8% + 5.417vw);
+    padding-left: calc(8% + 5.41667vw);
   }
 }
 @media (max-width: 480px) {
@@ -10749,7 +10749,7 @@ footer .legal-and-social {
   }
 }
 footer .legal-and-social ul {
-  max-width: calc(100% - 7.9vw);
+  max-width: calc(100% - 7.89058vw);
 }
 @media (min-width: 1901px) {
   footer .legal-and-social ul {
@@ -10845,7 +10845,7 @@ footer .legal-and-social .copyright {
   color: #dcddde;
   float: none;
   font-size: 1.07317vw;
-  max-width: calc(100% - 7.9vw);
+  max-width: calc(100% - 7.89058vw);
   padding-top: 0.39024vw;
   text-transform: uppercase;
 }
@@ -13216,10 +13216,10 @@ footer h2 {
 }
 @media (min-width: 1025px) {
   .consum-sidebar.sticky-sidebar {
-    height: calc(100vh - 7.12195vw) !important;
+    height: calc(100vh - 7.10153vw) !important;
     position: fixed !important;
     right: 0;
-    top: 7.12195vw !important;
+    top: 7.10153vw !important;
   }
   .consum-sidebar.sticky-sidebar .advert {
     height: 250px;
@@ -13274,6 +13274,12 @@ footer h2 {
     padding: calc((23.4vw - 250px)/2) 0;
   }
 }
+@media (min-width: 2500px) {
+  .consum-sidebar .advert {
+    height: 585px;
+    padding: 167.5px 0;
+  }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consum-sidebar .advert {
     height: 250px;
@@ -13308,6 +13314,11 @@ footer h2 {
 @media (min-width: 1281px) {
   .consum-sidebar .items-block {
     height: calc(100% - 23.4vw);
+  }
+}
+@media (min-width: 2500px) {
+  .consum-sidebar .items-block {
+    height: calc(100% - 585px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -30897,7 +30908,7 @@ yx-axis
   }
 }
 .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
-  width: calc(100% - 15.6vw);
+  width: calc(100% - 15.62336vw);
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
@@ -32890,7 +32901,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 768px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .choose-top3-img {
-    bottom: calc(100% + 2.148vw);
+    bottom: calc(100% + 2.14844vw);
     max-height: 11.71875vw;
   }
 }
@@ -35346,7 +35357,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list {
   margin: 0 auto;
-  height: calc(100% - 6.73vw);
+  height: calc(100% - 6.7333vw);
   width: 85%;
 }
 @media (min-width: 1901px) {

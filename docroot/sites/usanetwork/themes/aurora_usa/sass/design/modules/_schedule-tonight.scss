@@ -295,7 +295,7 @@
             }
           }
           .episode-info {
-            width: calc(100% - 15.6vw);
+            width: calc(100% - #{get-vw(297px, 1901)});
             @include breakpoint($bp-min-1901-width) {
               width: calc(100% - 297px);
             }

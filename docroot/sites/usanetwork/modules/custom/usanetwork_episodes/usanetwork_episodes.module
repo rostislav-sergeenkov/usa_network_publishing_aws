@@ -229,7 +229,7 @@ function _usanetwork_episodes_gallery_recap() {
       return theme('usanetwork_episodes_gallery_rec', $theme_variables);
     }
   } elseif (!empty($episode_node->type) && $episode_node->type == 'person') {
-//    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-gallery.js');
+    drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-gallery.js');
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', 'media_gallery')

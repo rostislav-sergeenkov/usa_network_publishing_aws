@@ -203,6 +203,7 @@ function usanetwork_tve_video_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
   if (in_array($file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
     if (isset($vars['view_mode']) && $vars['view_mode'] == 'full') {
+      drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-share-config.js', array('scope' => 'header'));
       drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-auth2.js', array('scope' => 'footer', 'weight' => -2));
       drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-custom-services.js', array('scope' => 'footer', 'weight' => 0));
       drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-endcard.js', array('scope' => 'footer', 'weight' => 1));

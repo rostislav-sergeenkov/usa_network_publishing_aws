@@ -104,7 +104,7 @@
 
               var body, playerContainer, tveAnalytics, userStatus, isLive, isShowEndCard,
                   isEntitlement, isMicrosite, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
-                  usaReleaseEnd, nextReleaseUrl, positionTime, usaVideoSettingsRun;
+                  nextReleaseUrl, positionTime, usaVideoSettingsRun;
 
               // set vars value
               body = ng.element('body');
@@ -120,7 +120,6 @@
               tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop};
               playerId = scope.playerId;
 
-              usaReleaseEnd = false;
               nextReleaseUrl = attr['nextReleaseUrl'];
               usaVideoSettingsRun = false;
               positionTime = Drupal.settings.videoSetTime; // seconds
@@ -230,7 +229,6 @@
                       '</channel>',
                       '</rss>'
                     ].join('');
-
                 tve.adobePass.getAuthorization(resource, function (status, response) {
                   if (status) {
                     encodedToken = encodeURIComponent(response.token);
@@ -238,8 +236,7 @@
                     _authSuccess();
                   }
                   else {
-                    //_authzFailure(response);
-                    _authzFailure();
+                    _authzFailure(response);
                   }
                 });
               }
@@ -253,11 +250,7 @@
                 var data = dataObj || {};
 
                 //rebind $pdk each time directive is loaded
-
                 $pdk.bind(player_Id);
-                //$pdk.bind(player_Id, true);
-                //$pdk.controller.setIFrame(player_Id, true);
-
 
                 // default listeners for player
                 if (isEntitlement !== 'auth') {
@@ -289,7 +282,6 @@
               // docroot/sites/usanetwork/modules/custom/usanetwork_tve_video/js/usa_config_tve_auth2/usa-tve-endcard.js
               $pdk.bindPlayerEvents = _bindPlayerEvents;
 
-
               // clear $pdk.controllers.listeners
               $pdk.clearlisteners = function () {
                 $pdk.controller.listenerId = 0;
@@ -305,24 +297,22 @@
               function _onReleaseEnd(pdkEvent) {
 
                 if (!isShowEndCard && nextReleaseUrl != '') {
-                  usaReleaseEnd = true;
-                }
+                  if ($rootScope.statusAd) {
+                    usa_debug('ad_end');
+                    // change status ad on false
+                    updateStatusAd(false);
+                    AdobeTracking.videoBreakPoint = "Ads Off";
+                    _satellite.track('setVideoBreakPoint');
+                  }
 
-                if ($rootScope.statusAd) {
-                  usa_debug('ad_end');
-                  // change status ad on false
-                  updateStatusAd(false);
-                  AdobeTracking.videoBreakPoint = "Ads Off";
-                  _satellite.track('setVideoBreakPoint');
+                  // redirect to next episode
+                  usaEndCardHelper.timeoutUpNext({
+                    episodeUpNextUrl: nextReleaseUrl,
+                    showTitle: attrs['showTitle'],
+                    episodeTitle: attrs['episodeTitle'],
+                    timeUpNext: 0
+                  });
                 }
-
-                // redirect to next episode
-                usaEndCardHelper.timeoutUpNext({
-                  episodeUpNextUrl: nextReleaseUrl,
-                  showTitle: attrs['showTitle'],
-                  episodeTitle: attrs['episodeTitle'],
-                  timeUpNext: 0
-                });
               }
 
               /**
@@ -363,65 +353,68 @@
               }
 
               /**
-               * Callback for authz Failure
+               * Callback for authzFailure
                * @private
                */
-              function _authzFailure(pdkEvent) {
-                var errorCode = pdkEvent.data.message,
-                    customAuthzMessage = _getMVPDAuthzErrorMessage(errorCode);
+              function _authzFailure(response) {
 
-                scope.$apply(function () {
-                  $('#' + tveConfig.PLAYER_ID).remove();
-                  scope.message = customAuthzMessage || $.trim(pdkEvent.data.reasonid) || _getDefaultAuthzErrorMessage(errorCode);
-                  scope.isAuthZError = true;
+                var errorCode, errorDetails;
+
+                if (response.requestErrorCode) {
+                  errorCode = response.requestErrorCode;
+                  errorDetails = response.requestErrorDetails;
+                } else if (response.data.message) {
+                  errorCode = response.data.message;
+                  errorDetails = response.data.reasonid;
+                }
+
+                // Hides the player loading gif and displays the error message.
+                scope.isPlayerLoading = false;
+
+                authService.getSelectedProvider()
+                    .then(function(providerInfo) {
+                      showError(providerInfo);
+                    }, function() {
+                      showError(null)
+                    });
+
+                tveAnalytics.authzTrack(false, {
+                  mvpd_id: userStatus.mvpdId
                 });
 
-                tveAnalytics.authzTrack(false, authService.getSelectedProvider());
-              }
+                function showError(providerInfo) {
+                  $('#' + tveConfig.PLAYER_ID).remove();
 
-              /**
-               * Gets Error Message for the mvpd/error code configured in MVPD Service
-               * @private
-               */
-              function _getMVPDAuthzErrorMessage(errorCode) {
-                var selectedProvider = authService.getSelectedProvider(),
-                    errorMessage = '';
+                  scope.isAuthZError = true;
 
-                switch (errorCode) {
-                  case 'User not Authorized Error' :
-                    errorMessage = selectedProvider.authorized_err;
-                    break;
-                  case 'Generic Authorization Error' :
-                    errorMessage = selectedProvider.generic_err;
-                    break;
-                  case 'Internal Authorization Error' :
-                    errorMessage = selectedProvider.internal_err;
-                    break;
+                  scope.message =
+                      (providerInfo && _getAuthzErrorMessage(errorCode, providerInfo)) ||
+                      $.trim(errorDetails) ||
+                      _getAuthzErrorMessage(errorCode, Drupal.settings.adobePass.errorMessages);
+
+                  scope.$apply();
                 }
-                return errorMessage;
               }
 
               /**
-               * Gets Error Message for the mvpd/error code configured in MVPD Service
+               * Gets Error Message for the mvpd/error code
                * @private
                */
-              function _getDefaultAuthzErrorMessage(errorCode) {
-                var messages = Drupal.settings.auth,
-                    errorMessage;
+              function _getAuthzErrorMessage(errorCode, messages) {
+                var errorMessage = '';
 
-                switch (errorCode) {
-                  case 'User not Authorized Error' :
-                    errorMessage = messages.adobePassAuthorizedErrMsg;
-                    break;
-                  case 'Generic Authorization Error' :
-                    errorMessage = messages.adobePassGenericErrMsg;
-                    break;
-                  case 'Internal Authorization Error' :
-                    errorMessage = messages.adobePassInternalErrMsg;
-                    break;
-                  default:
-                    errorMessage = '';
-                    break;
+                if (messages) {
+                  switch (errorCode) {
+                    case 'User not Authorized Error' :
+                      errorMessage = messages.authorized_err;
+                      break;
+                    case 'Generic Authorization Error' :
+                      errorMessage = messages.generic_err;
+                      break;
+                    case 'Internal Authorization Error' :
+                      errorMessage = messages.internal_err;
+                      break;
+                  }
                 }
 
                 return errorMessage;
@@ -434,7 +427,6 @@
               function _companionAd(pdkEvent) {
                 var targetId = pdkEvent.data.holderId,
                     targetElem = document.getElementById(targetId);
-
                 if (targetElem) {
                   // override FW default ad tag as it's not the correct format and we're not sure how to set this correctly
                   // e.g. http://ad.doubleclick.net/adj/nbcu.usa/mrm_default;sect=default;site=usa;!category=usa;!category=videoplayer;sz=300x250;pos=7;tile=7;ord=5182

@@ -28,6 +28,7 @@ dependencies[] = text
 dependencies[] = usanetwork_catchall
 dependencies[] = usanetwork_field_formatters
 dependencies[] = usanetwork_gallery_content
+dependencies[] = usanetwork_mpx_video
 dependencies[] = usanetwork_taxonomy
 dependencies[] = usanetwork_tv_shows
 features[ctools][] = ds:ds:1

@@ -21,6 +21,7 @@ define("USA_MPX_VIDEO_FULL_VIDEO", "Full Episodes");
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 define('USA_MPX_ACCOUNT_NAME', 'NBCU USA Network');
 define('USA_MPX_IMAGE_SIZE', '1080');
+define('USA_GLOBAL_PLAYER_ID', 'xcsFUdx9TV1_');
 
 /**
  * Implementation of hook_menu().
@@ -2042,29 +2043,52 @@ function theme_usanetwork_mpx_video($variables) {
  *    - link
  */
 function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video') {
-  $file = (object) $variables['file'];
+  if (!empty($variables['file'])) {
+    $file = (object) $variables['file'];
+    $file_mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
+    $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($file_mpx_account->default_player);
 
-  $mpx_account = _media_theplatform_mpx_get_account_data($variables['parent_account'] ? $variables['parent_account'] : $file->mpx_video_data['parent_account']);
-  $mpx_account_pid = $mpx_account->account_pid;
-  $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($mpx_account->default_player);
-
-  $mpx_player_data = pub_mpx_player_data_load($file);
-  $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
-    (!empty($mpx_player_data['pid']) ? $mpx_player_data['pid'] : $mpx_account_default_player['pid']);
-
-  $released_file_pid = NULL;
-  if (!empty($file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'])) {
-    $released_file_pid = $file->field_mpx_main_released_file_pid[LANGUAGE_NONE][0]['value'];
+    $player = pub_mpx_player_data_load($file);
   }
-  elseif (!empty($file->field_mpx_main_released_file_pid[0]['value'])) {
-    $released_file_pid = $file->field_mpx_main_released_file_pid[0]['value'];
+
+  $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
+    (!empty($player['pid']) ? $player['pid'] : $mpx_account_default_player['pid']);
+
+  $player = _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_id);
+
+  $player_pid = !empty($player['pid']) ? $player['pid'] : NULL;
+  if (!$player_pid) {
+    return _tve_player_error('Could not render player: Invalid player PID.');
+  }
+
+  $mpx_account_id = !empty($player['parent_account']) ? $player['parent_account'] : NULL;
+  if (!$mpx_account_id) {
+    return _tve_player_error('Could not render player: No MPX account id found.');
+  }
+
+  $mpx_account = _media_theplatform_mpx_get_account_data($mpx_account_id);
+  $mpx_account_pid = isset($mpx_account->account_pid) ? $mpx_account->account_pid : NULL;
+  if (!$mpx_account_pid) {
+    return _tve_player_error('Could not render player: Invalid MPX account.');
+  }
+
+  $account_mpx_url = $file_mpx_account->account_id;
+  $account_mpx_url_array = explode('/', $account_mpx_url);
+  $account_mpx_id = end($account_mpx_url_array);
+
+  $mpx_guid = NULL;
+  if (!empty($file->field_mpx_guid[LANGUAGE_NONE][0]['value'])) {
+    $mpx_guid = $file->field_mpx_guid[LANGUAGE_NONE][0]['value'];
+  }
+  elseif (!empty($file->field_mpx_guid[0]['value'])) {
+    $mpx_guid = $file->field_mpx_guid[0]['value'];
   }
 
   if ($return_type == 'video') {
-    if ((!isset($file->fid)) || (!$released_file_pid) || !$mpx_account_pid || !$player_id) {
+    if ((!isset($file->fid)) || (!$mpx_guid) || !$mpx_account_pid || !$player_id) {
       return '';
     }
-    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/select/' . $released_file_pid;
+    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
     $player_parameters = array(
         'query' => (isset($variables['pub_mpx_player_parameters'])
             ? $variables['pub_mpx_player_parameters']
@@ -2081,10 +2105,10 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     return url($player_source);
   }
   elseif ($return_type == 'link') {
-    if ((!isset($file->fid)) || (!$released_file_pid) || !$mpx_account_pid) {
+    if ((!isset($file->fid)) || (!$mpx_guid) || !$mpx_account_pid) {
       return '';
     }
-    $player_source = '//link.theplatform.com/s/' . $mpx_account_pid . '/' . $released_file_pid;
+    $player_source = '//link.theplatform.com/s/' . $file_mpx_account->account_pid . '/media/guid/' . $account_mpx_id .'/'. $mpx_guid;
     return url($player_source);
   }
 }

@@ -247,10 +247,18 @@
                */
               function _bindPlayerEvents(player_Id, dataObj) {
 
+                console.info('bind');
+
                 var data = dataObj || {};
 
                 //rebind $pdk each time directive is loaded
                 $pdk.bind(player_Id);
+
+                // init watchwith
+                if (typeof wwLoader !== 'undefined') {
+                  wwLoader.bootstrap();
+                  console.info('init wwLoader.bootstrap()');
+                }
 
                 // default listeners for player
                 if (isEntitlement !== 'auth') {

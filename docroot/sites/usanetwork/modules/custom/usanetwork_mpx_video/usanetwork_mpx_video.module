@@ -653,6 +653,8 @@ function usanetwork_mpx_video_live() {
   drupal_add_js('//client-cloudpath.nbcuni.com/current/api/NBCUniCPC.min.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/cpc-player.js', array('scope' => 'footer'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_video_live') . '/js/usanetwork_video_live.dynamic_content.js');
+  drupal_add_css(drupal_get_path('module', 'usanetwork_quiz') . '/css/usanetwork_quiz.css');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.js');
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-gallery.js');
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-right-rail.js');
   return '';
@@ -757,6 +759,16 @@ function usanetwork_mpx_video_file_presave($file) {
       if (isset($node->nid)) {
         $file->field_movie[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
         $movie = $node->title;
+      }
+    }
+
+    if (!isset($show) && !isset($movie)) {
+      if ((count($categories) == 3) && ($categories[0] == 'Series') && ($categories[1] == 'Movies On USA') && ($categories[2] !== 'Clips')) {
+        $node = _usanetwork_mpx_video_node_load_by_title($categories[2], 'movie');
+        if (isset($node->nid)) {
+          $file->field_movie[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
+          $movie = $node->title;
+        }
       }
     }
   }

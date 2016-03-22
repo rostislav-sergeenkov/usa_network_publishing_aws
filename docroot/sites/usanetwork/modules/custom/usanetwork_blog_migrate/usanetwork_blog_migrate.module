@@ -1,0 +1,84 @@
+<?php
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_blog_migrate_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+  $form['blog_migrate_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Blog migrate settings'),
+    '#description' => t('Display settings of feed migration process'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['blog_migrate_settings']['blog_migrate_general_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('General blog migrate settings'),
+    '#description' => t('General settiongs for all blogs feeds and shows.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['blog_migrate_settings']['blog_migrate_general_settings']['blog_migrate_frequency'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Frequency of import. In minutes.'),
+    '#description' => t('.'),
+    '#default_value' => variable_get('blog_migrate_frequency', 60),
+  );
+
+  $form['blog_migrate_settings']['blog_migrate_mrrobot_nid'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mr. Robot blog.'),
+    '#description' => t('Blog of Mr. Robot show that will use for migrate blog posts.'),
+    '#default_value' => variable_get('blog_migrate_mrrobot_nid', NULL),
+    '#autocomplete_path' => 'ajax/consumptionator_blog/autocomplete',
+  );
+
+  $form['#validate'][] = 'usanetwork_blog_migrate_settings_form_validate';
+}
+
+function usanetwork_blog_migrate_settings_form_validate($form, &$form_state) {
+  if (!is_numeric($form_state['values']['blog_migrate_frequency'])) {
+    form_set_error('blog_migrate_frequency', 'Migrate export frequency should be number.');
+  }
+}
+
+/**
+ * Implements hook_init().
+ */
+function usanetwork_blog_migrate_init() {
+  module_load_include('inc', 'usanetwork_blog_migrate', 'vox_blog_migrate');
+}
+
+/**
+ * Implements hook_cron().
+ */
+function usanetwork_blog_migrate_cron() {
+  // If the minimum lifetime hasn't been passed, skip.
+  $lifetime = REQUEST_TIME - variable_get('usanetwork_blog_migrate_last', 0);
+  if ($lifetime < variable_get('blog_migrate_frequency', 60) * 60) {
+    return;
+  }
+  variable_set('usanetwork_blog_migrate_last', REQUEST_TIME);
+
+  $machine_names = array('usanetwork_vox_blog');
+
+  foreach ($machine_names as $machine_name) {
+    // Log that we're starting this update.
+    watchdog('usanetwork_migrate', 'Starting @migration migration update.',
+        array('@migration' => $machine_name), WATCHDOG_NOTICE);
+    drupal_set_message(t('USANETWORK MIGRATE:  Starting @migration migration update.',
+        array('@migration' => $machine_name)));
+    $migration = Migration::getInstance($machine_name);
+    // Prepare to Update the contents/data
+    $migration->prepareUpdate();
+    // Trigger the migration
+    $result = $migration->processImport();
+    // Log that we've completed this update.
+    watchdog('usanetwork_migrate', 'Completed @migration migration update.',
+        array('@migration' => $machine_name), WATCHDOG_NOTICE);
+    drupal_set_message(t('USANETWORK MIGRATE:  Completed @migration migration update.',
+        array('@migration' => $machine_name)));
+  }
+}

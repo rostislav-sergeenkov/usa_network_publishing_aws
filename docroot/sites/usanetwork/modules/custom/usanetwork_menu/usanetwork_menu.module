@@ -554,29 +554,51 @@ function _usanetwork_menu_main_menu_block() {
 
   //menu element for mobile menu on Show Page
   $show = menu_get_object();
-  if (isset($show->type) && $show->type == 'tv_show') {
-    $items[] = array(
-      'data' => l($show->title, 'javascript:void(0)', array('fragment' => '', 'external' => true, 'attributes' => array('class' => array('show-color', 'show-border', 'active')))),
-      'class' => array(
-        'expanded',
-        'header-show-menu',
-        'active',
-      ),
-    );
-  }
-
-  if ((isset($show->type) && $show->type == 'consumpt_blog')) {
-    $blog_show_id = _usanetwork_get_field_item('node', $show, 'field_show', 'target_id');
-    if (!empty($blog_show_id)) {
-      $blog_show = node_load($blog_show_id);
+  if(usanetwork_core_api_check_field($show, 'field_show_links')) {
+    if (isset($show->type) && $show->type == 'tv_show') {
       $items[] = array(
-        'data' => l($blog_show->title, 'javascript:void(0)', array('fragment' => '', 'external' => true, 'attributes' => array('class' => array('show-color', 'show-border', 'active')))),
+        'data' => l($show->title, 'javascript:void(0)', array(
+          'fragment' => '',
+          'external' => TRUE,
+          'attributes' => array(
+            'class' => array(
+              'show-color',
+              'show-border',
+              'active'
+            )
+          )
+        )),
         'class' => array(
           'expanded',
           'header-show-menu',
           'active',
         ),
       );
+    }
+
+    if ((isset($show->type) && $show->type == 'consumpt_blog')) {
+      $blog_show_id = _usanetwork_get_field_item('node', $show, 'field_show', 'target_id');
+      if (!empty($blog_show_id)) {
+        $blog_show = node_load($blog_show_id);
+        $items[] = array(
+          'data' => l($blog_show->title, 'javascript:void(0)', array(
+            'fragment' => '',
+            'external' => TRUE,
+            'attributes' => array(
+              'class' => array(
+                'show-color',
+                'show-border',
+                'active'
+              )
+            )
+          )),
+          'class' => array(
+            'expanded',
+            'header-show-menu',
+            'active',
+          ),
+        );
+      }
     }
   }
 

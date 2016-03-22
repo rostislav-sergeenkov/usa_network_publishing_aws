@@ -1,21 +1,26 @@
 <div class="video-block">
-  <div class="player-wrapper <?php print ($is_live)? ' right-rail-line': ''; ?>"
-       data-usa-tve-player-container
-       data-entitlement="<?php print $entitlement; ?>"
-       data-is-live="<?php print $is_live; ?>"
-       data-show-title="<?php print (!empty($show_title)) ? $show_title : ''; ?>"
-       data-episode-title="<?php print $filename; ?>"
-       data-mpx-guid="<?php print $mpx_guid; ?>"
-       data-episode-rating="<?php print $episode_rating; ?>"
-       data-episode-pid="<?php print $file_pid; ?>"
-       data-next-episode-url="<?php print $next_video_url; ?>"
-       data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
-       data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>"
-       data-ng-class="{'no-mobile-device': !isMobile}">
+  <div
+    class="player-wrapper <?php print ($is_live) ? ' right-rail-line' : ''; ?>"
+    data-usa-tve-player-container
+    data-entitlement="<?php print $entitlement; ?>"
+    data-is-live="<?php print $is_live; ?>"
+    data-show-title="<?php print (!empty($show_title)) ? $show_title : ''; ?>"
+    data-episode-title="<?php print $filename; ?>"
+    data-mpx-guid="<?php print $mpx_guid; ?>"
+    data-episode-rating="<?php print $episode_rating; ?>"
+    data-episode-pid="<?php print $file_pid; ?>"
+    data-next-episode-url="<?php print $next_video_url; ?>"
+    data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
+    data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>"
+    data-ng-class="{'no-mobile-device': !isMobile}">
     <div class="node usanetwork-aspot player">
       <?php if (!empty($video_inactive)): ?>
         <div class="video-player-wrapper inactive">
-          <?php print $video_inactive; ?>
+          <div class="inner-wrap">
+            <div class="inner">
+            <?php print $video_inactive; ?>
+              </div>
+          </div>
         </div>
       <?php elseif ($lock_video): ?>
         <div class="tve-help">
@@ -49,7 +54,7 @@
             Close
           </div>
         </div>
-        <div class="video-player-wrapper" data-ng-if="!user.isAuthenticated">
+        <div class="video-player-wrapper section-auth" data-ng-if="!user.isAuthenticated">
           <div class="locked-msg">
             <?php if ($is_live): ?>
               <span
@@ -64,7 +69,7 @@
                data-ng-click="openLoginWindow()">
               <?php if (!$is_live): ?>
                 <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
-                  print theme_image(array('path' => image_style_url($image['#style_name'], $image['#path'])));
+                print theme_image(array('path' => image_style_url($image['#style_name'], $image['#path'])));
                 ?>
               <?php else: ?>
                 <img
@@ -79,7 +84,7 @@
             </a>
           </div>
         </div>
-        <div class="video-player-wrapper" data-ng-show="user.isAuthenticated">
+        <div class="video-player-wrapper section-player" data-ng-class="{'show-section': user.isAuthenticated}" data-ng-show="user.isAuthenticated">
           <?php if ($is_live): ?>
             <iframe allowfullscreen="" id="videoplayer" width="100%"
                     data-usa-player-is-live height="100%"

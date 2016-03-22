@@ -648,33 +648,33 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
 
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .five-promo-item-block ul li.first .meta, .five-promo-item-block ul li:nth-child(2) .meta, .five-promo-item-block ul li .last .meta, .show-latest-block ul li .meta, .consum-sidebar .episodes-list-slider.vertical li .meta, .related-content-block ul li .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .landing-page-container .landing-items-blocks ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .five-promo-item-block ul li.first .meta, .five-promo-item-block ul li:nth-child(2) .meta, .five-promo-item-block ul li .last .meta, .show-latest-block ul li .meta, .consum-sidebar .episodes-list-slider.vertical li .meta, .related-content-block ul li .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .landing-page-container .landing-items-blocks ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta {
   direction: ltr;
   color: #ffffff;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li.first .meta .caption, .five-promo-item-block ul li:nth-child(2) .meta .caption, .five-promo-item-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li:nth-child(2) .meta .title, .five-promo-item-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li:nth-child(2) .meta .additional, .five-promo-item-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .five-promo-item-block ul li.first .meta .description, .five-promo-item-block ul li:nth-child(2) .meta .description, .five-promo-item-block ul li .last .meta .description, .show-latest-block ul li .meta .description, .consum-sidebar .episodes-list-slider.vertical li .meta .description, .related-content-block ul li .meta .description, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .description, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .landing-page-container .landing-items-blocks ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .five-promo-item-block ul li.first .meta .show-title, .five-promo-item-block ul li:nth-child(2) .meta .show-title, .five-promo-item-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, .consum-sidebar .episodes-list-slider.vertical li .meta .show-title, .related-content-block ul li .meta .show-title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .show-title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .landing-page-container .landing-items-blocks ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .topic, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .five-promo-item-block ul li.first .meta .topic, .five-promo-item-block ul li:nth-child(2) .meta .topic, .five-promo-item-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, .consum-sidebar .episodes-list-slider.vertical li .meta .topic, .related-content-block ul li .meta .topic, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .topic, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .landing-page-container .landing-items-blocks ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li.first .meta .caption, .five-promo-item-block ul li:nth-child(2) .meta .caption, .five-promo-item-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li:nth-child(2) .meta .title, .five-promo-item-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li:nth-child(2) .meta .additional, .five-promo-item-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .five-promo-item-block ul li.first .meta .description, .five-promo-item-block ul li:nth-child(2) .meta .description, .five-promo-item-block ul li .last .meta .description, .show-latest-block ul li .meta .description, .consum-sidebar .episodes-list-slider.vertical li .meta .description, .related-content-block ul li .meta .description, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .description, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .landing-page-container .landing-items-blocks ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .five-promo-item-block ul li.first .meta .show-title, .five-promo-item-block ul li:nth-child(2) .meta .show-title, .five-promo-item-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, .consum-sidebar .episodes-list-slider.vertical li .meta .show-title, .related-content-block ul li .meta .show-title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .show-title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .landing-page-container .landing-items-blocks ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .topic, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .five-promo-item-block ul li.first .meta .topic, .five-promo-item-block ul li:nth-child(2) .meta .topic, .five-promo-item-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, .consum-sidebar .episodes-list-slider.vertical li .meta .topic, .related-content-block ul li .meta .topic, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .topic, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .landing-page-container .landing-items-blocks ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic {
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li.first .meta .caption, .five-promo-item-block ul li:nth-child(2) .meta .caption, .five-promo-item-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li.first .meta .caption, .five-promo-item-block ul li:nth-child(2) .meta .caption, .five-promo-item-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption {
   font-size: 13px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   letter-spacing: 0.75px;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li:nth-child(2) .meta .title, .five-promo-item-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li:nth-child(2) .meta .title, .five-promo-item-block ul li .last .meta .title, .show-latest-block ul li .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title {
   font-size: 16px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li:nth-child(2) .meta .additional, .five-promo-item-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li:nth-child(2) .meta .additional, .five-promo-item-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional {
   font-size: 11px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional span, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .five-promo-item-block ul li.first .meta .additional span, .five-promo-item-block ul li:nth-child(2) .meta .additional span, .five-promo-item-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, .consum-sidebar .episodes-list-slider.vertical li .meta .additional span, .related-content-block ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .landing-page-container .landing-items-blocks ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional span, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .five-promo-item-block ul li.first .meta .additional span, .five-promo-item-block ul li:nth-child(2) .meta .additional span, .five-promo-item-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, .consum-sidebar .episodes-list-slider.vertical li .meta .additional span, .related-content-block ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .landing-page-container .landing-items-blocks ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
@@ -1736,33 +1736,33 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 
-.full-episodes-block.carousel-block .carousel ul li .video-promo:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo:before {
+.full-episodes-block.carousel-block .carousel ul li .video-promo:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before {
   bottom: 0;
   height: 81px;
   top: auto;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo:before {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before {
     height: 87px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo:before {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before {
     height: 32.4%;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo .asset-img {
+.full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img {
   height: 100%;
   width: 100%;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img img, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo .asset-img img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo .asset-img img {
+.full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img img, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img img {
   height: 100%;
   width: 100%;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file:before {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file:before, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file:before {
   display: none !important;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth > a:after, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file.tve-video-auth > a:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file.tve-video-auth > a:after {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth > a:after, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth > a:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth > a:after {
   font-family: 'usanetwork';
   speak: none;
   -webkit-font-feature-settings: "liga","dlig";
@@ -1791,7 +1791,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   width: auto;
   height: auto;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth .asset-img:after, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file.tve-video-auth .asset-img:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file.tve-video-auth .asset-img:after {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth .asset-img:after, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth .asset-img:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth .asset-img:after {
   content: "";
   display: block;
   width: 0;
@@ -1802,156 +1802,156 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   right: 0;
   top: 0;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .asset-img img, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .asset-img img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .asset-img img {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .asset-img img, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .asset-img img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .asset-img img {
   height: auto;
   width: 100%;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-wrapper {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper {
     height: 4.28vw;
   }
 }
 @media (min-width: 2500px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-wrapper {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper {
     height: 103px;
   }
 }
 @media (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-wrapper {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper {
     height: 36%;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
   font-size: 0.68385vw;
   line-height: 1.05208vw;
 }
 @media (min-width: 1901px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 0.78125vw;
     line-height: 1.40625vw;
   }
 }
 @media (max-width: 1024px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 0.97656vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 1.17188vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 640px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 1.40625vw;
     line-height: 2.10938vw;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
   font-size: 0.94687vw;
   line-height: 1.05208vw;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title .field-item, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title .field-item, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title .field-item {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title .field-item, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title .field-item, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title .field-item {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 @media (min-width: 1901px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
     font-size: 18px;
     line-height: 20px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
     font-size: 1.09375vw;
     line-height: 1.40625vw;
   }
 }
 @media (max-width: 1024px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
     font-size: 1.36719vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
     font-size: 1.69271vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 640px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
     font-size: 2.03125vw;
     line-height: 2.10938vw;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
   left: 4%;
   height: 2.52499vw;
   margin-top: -1.26249vw;
   width: 2.52499vw;
 }
 @media (min-width: 1901px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
     height: 48px;
     margin-top: -24px;
     width: 48px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
     height: 2.65625vw;
     margin-top: -1.32813vw;
     width: 2.65625vw;
   }
 }
 @media (max-width: 1024px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
     height: 3.32031vw;
     margin-top: -1.66016vw;
     width: 3.32031vw;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
     height: 4.6875vw;
     margin-top: -2.34375vw;
     width: 4.6875vw;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
   padding-left: calc(8% + 2.52vw);
 }
 @media (min-width: 1901px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
     padding-left: calc(8% + 48px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
     padding-left: calc(8% + 2.65625vw);
   }
 }
 @media (max-width: 1024px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
     padding-left: calc(8% + 3.32vw);
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
     padding-left: calc(8% + 4.6875vw);
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-wrapper {
+.full-episodes-block.carousel-block .carousel ul li .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper {
   background: none;
   bottom: 0;
   height: 81px;
@@ -1960,22 +1960,22 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   z-index: 1;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-wrapper {
+  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper {
     height: 87px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-wrapper {
+  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper {
     height: 32.4%;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta-wrapper-inner, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-wrapper-inner, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-wrapper-inner {
+.full-episodes-block.carousel-block .carousel ul li .meta-wrapper-inner, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper-inner, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper-inner {
   height: 100%;
   display: table;
   position: relative;
   width: 100%;
 }
-.full-episodes-block.carousel-block .carousel ul li .meta-back, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-back, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-back {
+.full-episodes-block.carousel-block .carousel ul li .meta-back, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-back, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-back {
   background: #323232;
   bottom: 0;
   height: 100%;
@@ -1983,121 +1983,121 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   position: absolute;
   width: 100%;
 }
-.full-episodes-block.carousel-block .carousel ul li .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta {
+.full-episodes-block.carousel-block .carousel ul li .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta {
   padding-left: 4%;
 }
-.full-episodes-block.carousel-block .carousel ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption {
+.full-episodes-block.carousel-block .carousel ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
   font-size: 11px;
 }
-.full-episodes-block.carousel-block .carousel ul li .meta .caption span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption span {
+.full-episodes-block.carousel-block .carousel ul li .meta .caption span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   line-height: 18px;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
     font-size: 10px;
     line-height: 16px;
   }
 }
 @media (max-width: 480px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
     font-size: 8px;
     line-height: 14px;
   }
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
     font-size: 1.71875vw;
     line-height: 2;
   }
 }
 @media (max-width: 480px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
     font-size: 9.5px;
   }
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title {
     font-size: 18px;
     line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title {
     font-size: 2.5vw;
     line-height: 1.4;
   }
 }
 @media (max-width: 480px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title {
     font-size: 13px;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+.full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 11px;
   letter-spacing: 0.75px;
 }
-.full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+.full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   line-height: 18px;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
     font-size: 10px;
     line-height: 16px;
   }
 }
 @media (max-width: 480px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
     font-size: 8px;
     line-height: 14px;
   }
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
     font-size: 1.71875vw;
     line-height: 2;
   }
 }
 @media (max-width: 480px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
     font-size: 9.5px;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon {
+.full-episodes-block.carousel-block .carousel ul li .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
   left: 4%;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
     height: 47px;
     left: 20px;
     margin-top: -24px;
@@ -2105,22 +2105,22 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
     height: 6.25vw;
     margin-top: -3.125vw;
     width: 6.25vw;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta {
+.full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
   padding-left: 60px;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
     padding-left: 80px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
     padding-left: calc(8% + 6.25vw);
   }
 }
@@ -13057,8 +13057,6 @@ footer h2 {
     height: 100%;
     overflow: visible;
     padding-left: calc(100% - 320px);
-    left: 0;
-    top: 0;
     position: absolute;
     width: 100%;
   }
@@ -14370,13 +14368,21 @@ footer h2 {
   position: relative;
 }
 
-.consumptionator-video-page .player-wrapper {
+.consumptionator-video-page .video-block .player-wrapper {
   float: none !important;
 }
 @media (min-width: 1281px) {
-  .consumptionator-video-page .consum-sidebar {
+  .consumptionator-video-page .video-block .consum-sidebar {
     float: none;
     height: 100%;
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 0;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-video-page .video-block .consum-sidebar {
     position: absolute;
     left: auto;
     right: 0;
@@ -14398,13 +14404,14 @@ footer h2 {
 }
 @media (min-width: 1281px) {
   .consumptionator-page .video-block, .page-videos-live .video-block {
+    max-height: 1093.75px;
     max-width: 2500px;
     margin: 0 auto;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-page .video-block, .page-videos-live .video-block {
-    margin-bottom: calc((100vw - 4px)/48*9 + 45px);
+    margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
     overflow: visible;
   }
 }
@@ -14602,6 +14609,9 @@ footer h2 {
   position: relative;
   width: 100%;
 }
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player:not(.show-section), .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player:not(.show-section) {
+  display: none;
+}
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover .locked-msg,
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover .sign-in-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper:hover .locked-msg,
 .page-videos-live .video-block .player-wrapper .video-player-wrapper:hover .sign-in-wrapper {
@@ -14681,88 +14691,98 @@ footer h2 {
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive:hover img {
   opacity: 1;
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap {
   background: #3D3D3D;
   padding: 20px;
+  height: 100%;
+  position: absolute;
+  width: 100%;
 }
 @media (max-width: 768px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap {
+    padding: 0;
+  }
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner {
+  height: 100%;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner {
     background: transparent;
     height: auto;
     margin: 0 auto;
     max-width: 660px;
-    padding: 0;
-    width: 100%;
   }
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
   float: left;
   margin-bottom: 30px;
   width: 32vw;
   height: 18vw;
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
     margin-bottom: 15px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
     margin-bottom: 40px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
     margin-bottom: 20px;
     margin-top: 20px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
     margin-bottom: 10px;
     width: inherit;
     height: inherit;
-    display: none;
+    display: none !important;
   }
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img > img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img > img {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img {
   height: 100%;
   width: 100%;
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img > img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive > .asset-img > img {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img {
     display: none;
   }
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .expired-text {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
   float: left;
   font-size: 24px;
   margin-left: 50px;
   margin-top: 65px;
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .expired-text {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
     margin-left: 20px;
     margin-top: 53px;
     font-size: 20px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .expired-text {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
     margin-left: 40px;
     margin-top: 53px;
     font-size: 20px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .expired-text {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
     margin-left: 10px;
     margin-top: 65px;
     font-size: 14px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .expired-text {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
     color: #9AE0EB;
     float: none;
     font-size: 18px;
@@ -14771,34 +14791,34 @@ footer h2 {
     text-align: center;
   }
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
   clear: both;
   font-size: 20px;
   margin-bottom: 24px;
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
     margin-bottom: 10px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
     margin-bottom: 24px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-text {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
     font-size: 16px;
     margin-bottom: 10px;
     margin-top: 10px;
     text-align: center;
   }
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block {
   text-align: center;
   width: 100%;
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
   display: inline-block;
   height: 16.4vw;
   margin-right: 20px;
@@ -14808,52 +14828,52 @@ footer h2 {
   width: 30%;
 }
 @media (min-width: 2500px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
     height: 410px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
     height: 14vw;
     margin-right: 12px;
     width: calc(30% - 30px);
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
     height: 20vw;
-    width: calc(30%  - 40px);
+    width: calc(30% - 40px);
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
     height: 23vw;
     width: 30%;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
     height: 29.8vw;
     margin-right: 0;
     width: 34vw;
   }
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file:last-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file:last-child {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child {
     display: none;
   }
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file:first-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file:first-child {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:first-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:first-child {
     margin-right: 1.5%;
   }
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file:last-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file:last-child {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child {
   margin-right: 0;
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file > a, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .file > a {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file > a, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file > a {
   display: block;
   height: 100%;
   position: relative;
   width: 100%;
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta {
   display: table-cell;
   max-width: 100px;
   overflow: hidden;
@@ -14863,48 +14883,48 @@ footer h2 {
   vertical-align: middle;
   width: 100%;
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
   left: 4%;
   margin-top: -19px;
   position: absolute;
   top: 50%;
 }
 @media (min-width: 1601px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
     height: 47px;
     margin-top: -24px;
     width: 47px;
   }
 }
 @media (min-width: 641px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
 }
-.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta {
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
   padding-left: calc(8% + 37px);
 }
 @media (min-width: 1601px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
     padding-left: calc(8% + 47px);
   }
 }
 @media (min-width: 641px) and (max-width: 1280px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .suggest-videos-block .meta-icon ~ .meta {
+  .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
@@ -15069,7 +15089,7 @@ footer h2 {
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live .video-block.show-gallery .player-wrapper {
-    height: calc((100vw - 320px)*0.5625);
+    height: calc((100vw - 320px) * 0.5625);
   }
 }
 @media (min-width: 1025px) {
@@ -15151,7 +15171,7 @@ footer h2 {
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live .video-block.show-gallery .gallery-wrapper {
-    height: calc((100vw - 320px)*0.5625);
+    height: calc((100vw - 320px) * 0.5625);
   }
 }
 

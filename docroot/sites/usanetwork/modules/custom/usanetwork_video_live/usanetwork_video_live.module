@@ -45,6 +45,9 @@ function _usanetwork_video_live_right_rail_ajax($offset) {
     if (isset($on_now_item->nid)) {
       $tv_show = node_load($on_now_item->nid);
     }
+    if (isset($on_now_item->mid)) {
+      $tv_show = node_load($on_now_item->mid);
+    }
 
     if (isset($tv_show)) {
       $dynamic_content = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_enable', 'value');
@@ -105,6 +108,9 @@ function _usanetwork_video_live_related_ajax($offset) {
 
     if (isset($on_now_item->nid)) {
       $tv_show = node_load($on_now_item->nid);
+    }
+    if (isset($on_now_item->mid)) {
+      $tv_show = node_load($on_now_item->mid);
     }
 
     if (isset($tv_show)) {

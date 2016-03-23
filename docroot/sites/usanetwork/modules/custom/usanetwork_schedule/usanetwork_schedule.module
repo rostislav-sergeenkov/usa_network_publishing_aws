@@ -355,6 +355,8 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data, $show_title = NULL
         $schedule_item->nid = $show_nid;
         continue;
       }
+    } else {
+      $schedule_item->mid = _usanetwork_tv_schedule_get_nid_by_title($schedule_item->show_title, 'movie');
     }
   }
 }

@@ -111,6 +111,9 @@
         quiz.score = 0;
         quizHandler.answers = {};
         $questions.hide();
+        if($('body').hasClass('page-videos-live')) {
+          Drupal.behaviors.usanetwork_video_live.refreshQuizOmniture();
+        }
         $questions.first().show();
         $containers.filter(':visible').fadeOut(quiz.settings.animationSpeed, function() {
           $questions_container.fadeIn(quiz.settings.animationSpeed, function() {
@@ -323,10 +326,10 @@
                 if (typeof usa_refreshBannerAd != 'undefined') {
                   usa_refreshBannerAd();
                 }
-                if($livePage) {
+                /*if($livePage) {
                   var offset = -1*$('.nav-bar-tabs').height();
                   $('article.node-quiz').velocity("scroll", { duration: 500, easing: "linear", offset: offset });
-                }
+                }*/
               },
               onBeforeResult: function(e, $result) {
                 Drupal.behaviors.usanetwork_quiz.refreshSharebar($result, '.container', '.field-name-field-gigya-share-bar > div');
@@ -336,10 +339,10 @@
                 if (typeof usa_refreshBannerAd != 'undefined') {
                   usa_refreshBannerAd();
                 }
-                if($livePage) {
+                /*if($livePage) {
                   var offset = -1*$('.nav-bar-tabs').height();
                   $('article.node-quiz').velocity("scroll", { duration: 500, easing: "linear", offset: offset });
-                }
+                }*/
               }
             }]);
           }

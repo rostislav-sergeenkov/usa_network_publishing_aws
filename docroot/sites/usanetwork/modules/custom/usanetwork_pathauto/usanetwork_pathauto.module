@@ -28,24 +28,24 @@ function usanetwork_pathauto_pathauto_alias_alter(&$alias, array &$context) {
       }
     }
   }
-  if ($context['module'] == 'node' && $context['type'] == 'consumpt_post') {
-    $node = $context['data']['node'];
-    if (!empty($node->field_consumptionator_blog)) {
-      $field_consumptionator_blog = field_get_items('node', $node, 'field_consumptionator_blog');
-      if (!empty($field_consumptionator_blog)) {
-        module_load_include('inc', 'pathauto', 'pathauto');
-        $pattern = '[node:field_show]/blog/[node:field_consumptionator_blog]/[node:title]';
-        $new_alias = token_replace($pattern, $context['data'], array(
-          'sanitize' => FALSE,
-          'clear' => TRUE,
-          'callback' => 'pathauto_clean_token_values',
-          'language' => (object) array('language' => $context['language']),
-          'pathauto' => TRUE,
-        ));
-        if (!empty($new_alias)) {
-          $alias = pathauto_clean_alias($new_alias);
-        }
-      }
-    }
-  }
+//  if ($context['module'] == 'node' && $context['type'] == 'consumpt_post') {
+//    $node = $context['data']['node'];
+//    if (!empty($node->field_consumptionator_blog)) {
+//      $field_consumptionator_blog = field_get_items('node', $node, 'field_consumptionator_blog');
+//      if (!empty($field_consumptionator_blog)) {
+//        module_load_include('inc', 'pathauto', 'pathauto');
+//        $pattern = '[node:field_show]/blog/[node:field_consumptionator_blog]/[node:title]';
+//        $new_alias = token_replace($pattern, $context['data'], array(
+//          'sanitize' => FALSE,
+//          'clear' => TRUE,
+//          'callback' => 'pathauto_clean_token_values',
+//          'language' => (object) array('language' => $context['language']),
+//          'pathauto' => TRUE,
+//        ));
+//        if (!empty($new_alias)) {
+//          $alias = pathauto_clean_alias($new_alias);
+//        }
+//      }
+//    }
+//  }
 }

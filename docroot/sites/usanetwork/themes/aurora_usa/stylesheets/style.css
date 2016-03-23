@@ -1642,6 +1642,32 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     line-height: 4.6875vw;
   }
 }
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title:only-child {
+  font-size: 1.21951vw;
+  line-height: 1.31707vw;
+  margin-right: 0.7122vw;
+}
+@media (min-width: 1901px) {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title:only-child {
+    font-size: 23.2px;
+    line-height: 25px;
+    margin-right: 13.54px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title:only-child {
+    font-size: 1.875vw;
+    line-height: 2.1875vw;
+    margin-right: 0;
+  }
+}
+@media (max-width: 640px) {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title:only-child {
+    font-size: 3.75vw;
+    line-height: 4.0625vw;
+    margin-right: 0;
+  }
+}
 .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 0.84166vw;

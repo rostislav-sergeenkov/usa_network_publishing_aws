@@ -447,7 +447,7 @@ function _usanetwork_promo_node_get_promo_lines($node) {
   switch($node->type) {
     case 'person':
       $result['title'] = !empty($node->field_usa_actor_name) ? $node_wrapper->field_usa_actor_name->value() : $node->title;
-      $result['description'] = t('Bio');
+//      $result['description'] = t('Bio');
       break;
     case 'media_gallery':
       if (!empty($node->field_episode)) {
@@ -476,28 +476,28 @@ function _usanetwork_promo_node_get_promo_lines($node) {
       else {
         $result['title'] = $title;
       }
-      $result['description'] = empty($gallery_type) ? t('Gallery ') : $gallery_type . ' ';
-      $result['description'] .= (!empty($node->field_media_items)
-          ? ((!empty($node->field_cover_item))
-            ? count($node->field_media_items[$lang]) + 1
-            : count($node->field_media_items[$lang]))
-          : 0) . ' ' . t('Photos');
+//      $result['description'] = empty($gallery_type) ? t('Gallery ') : $gallery_type . ' ';
+//      $result['description'] .= (!empty($node->field_media_items)
+//          ? ((!empty($node->field_cover_item))
+//            ? count($node->field_media_items[$lang]) + 1
+//            : count($node->field_media_items[$lang]))
+//          : 0) . ' ' . t('Photos');
       break;
     case 'quiz':
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
-      $result['description'] = t('Quiz');
+//      $result['description'] = t('Quiz');
       break;
     case 'post':
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
-      $result['description'] = t('Blog post');
+//      $result['description'] = t('Blog post');
       break;
     case 'consumpt_post':
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
-      $result['description'] = t('Blog post');
+//      $result['description'] = t('Blog post');
       break;
     case 'timeline_gallery':
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;
-      $result['description'] = t('Timeline Gallery');
+//      $result['description'] = t('Timeline Gallery');
       break;
     case 'tv_episode':
       $result['title'] = _usanetwork_core_get_node_title($node);
@@ -508,7 +508,7 @@ function _usanetwork_promo_node_get_promo_lines($node) {
         $season_id = $season_id['value'];
       }
       $episode = !empty($node->field_episode_number) ? $node_wrapper->field_episode_number->value(): NULL;
-      $result['description'] = t('Episode Guide S@season Ep@episode_number', array('@season' => $season_id, '@episode_number' => $episode));
+//      $result['description'] = t('Episode Guide S@season Ep@episode_number', array('@season' => $season_id, '@episode_number' => $episode));
       break;
     default:
       $result['title'] = !empty($node->title) ? $node_wrapper->title->value() : NULL;

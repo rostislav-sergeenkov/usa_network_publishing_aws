@@ -2725,7 +2725,14 @@ function _usa_mpx_video_clips_render() {
     $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
     if (!empty($tv_content_node)) {
       $language = _usanetwork_get_field_item('file', $file, 'field_mpx_language', 'value');
-      $related_videos = _usanetwork_mpx_video_get_related_videos_for_show($tv_content_node, $language);
+      $category = NULL;
+      if ($tv_content_node->type == 'movie') {
+        $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
+        if ($full_episode == 0) {
+          $category = 'movie_short';
+        }
+      }
+      $related_videos = _usanetwork_mpx_video_get_related_videos_for_show($tv_content_node, $language, $category);
       if (!empty($related_videos)) {
        $filter = usanetwork_mpx_video_get_video_category($file);
        foreach ($related_videos as $related_video) {
@@ -2764,7 +2771,9 @@ function _usa_mpx_video_clips_render() {
              : t('Movies'),
            'more_items_url' => ($tv_content_node->type == 'tv_show')
              ? l(t('View all videos'), 'node/' . $tv_content_node->nid . '/videos')
-             : l(t('View all movies'), 'movies'),
+             : ($category == 'movie_short')
+               ? l(t('View more @movie_title',  array('@movie_title' => $tv_content_node->title)), 'node/' . $tv_content_node->nid)
+               : l(t('View all movies'), 'movies'),
          );
          return theme('usanetwork_mpx_video_clips', $theme_variables);
        }
@@ -2778,7 +2787,7 @@ function _usa_mpx_video_clips_render() {
 /**
  * Returns list of related video files id.
  */
-function _usanetwork_mpx_video_get_related_videos_for_show($tv_content_node, $language) {
+function _usanetwork_mpx_video_get_related_videos_for_show($tv_content_node, $language, $category = NULL) {
   if (!empty($tv_content_node)) {
     if ($tv_content_node->type == 'tv_show') {
       $cache_name = 'mpx_video_videos_' . $tv_content_node->nid;
@@ -2805,6 +2814,9 @@ function _usanetwork_mpx_video_get_related_videos_for_show($tv_content_node, $la
     if ($tv_content_node->type == 'tv_show') {
       $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = fm.fid');
       $query->condition('fs.field_show_target_id', $tv_content_node->nid, '=');
+    } elseif ($category == 'movie_short') {
+      $query->innerJoin('field_data_field_movie', 'fdfm', 'fdfm.entity_id = fm.fid');
+      $query->condition('fdfm.field_movie_target_id', $tv_content_node->nid, '=');
     } else {
       $query->innerJoin('field_data_field_movie', 'fdfm', 'fdfm.entity_id = fm.fid');
       $query->condition('mfe.field_mpx_full_episode_value', '1');

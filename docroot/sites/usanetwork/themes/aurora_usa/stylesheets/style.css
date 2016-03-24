@@ -20881,6 +20881,7 @@ footer h2 {
   position: relative;
 }
 .page-node-microsite .timelineFlat .timeline-items #player-wrapper, .node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper {
+  background-color: #000000;
   display: none;
   position: absolute;
 }

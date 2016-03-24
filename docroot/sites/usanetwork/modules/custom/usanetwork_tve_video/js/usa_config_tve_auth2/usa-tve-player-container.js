@@ -104,7 +104,7 @@
 
               var body, playerContainer, tveAnalytics, userStatus, isLive, isShowEndCard,
                   isEntitlement, isMicrosite, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
-                  nextReleaseUrl, positionTime, usaVideoSettingsRun;
+                  isAdStart, nextReleaseUrl, positionTime, usaVideoSettingsRun;
 
               // set vars value
               body = ng.element('body');
@@ -120,6 +120,7 @@
               tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop};
               playerId = scope.playerId;
 
+              isAdStart = false;
               nextReleaseUrl = attr['nextReleaseUrl'];
               usaVideoSettingsRun = false;
               positionTime = Drupal.settings.videoSetTime; // seconds
@@ -298,6 +299,55 @@
                 }
               };
 
+              /**
+               * Media Start event callback so that we can show the metadata section
+               */
+              function _onMediaStart(pdkEvent) {
+
+                var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
+
+                if (baseClip && baseClip.isAd) {
+                  // Functionality for ad playing event
+
+                  // create attr when ad start
+                  playerContainer.attr('data-ad-start', 'true');
+                  // change status ad on true
+                  updateStatusAd(true);
+
+                  if (isAdStart == false) {
+                    isAdStart = pdkEvent.data.baseClip.isAd;
+                    AdobeTracking.videoBreakPoint = "Ads On";
+                    _satellite.track('setVideoBreakPoint');
+                  }
+                } else {
+                  // change status ad on false
+                  updateStatusAd(false);
+
+                  if (isAdStart) {
+                    isAdStart = pdkEvent.data.baseClip.isAd;
+                    AdobeTracking.videoBreakPoint = "Ads Off";
+                    _satellite.track('setVideoBreakPoint');
+                  }
+
+                  if (!usaVideoSettingsRun) {
+                    usaVideoSettingsRun = seekToPosition();
+                  }
+
+                  // create attr when ad start
+                  playerContainer.removeAttr('data-ad-start');
+
+                  if ($('.dart-tag').length) {
+                    scope.$apply(function () {
+                      $rootScope.isFreeWheelReq = true;
+                      $rootScope.isDartReq = false;
+                    });
+                  }
+                  scope.$apply(function () {
+                    scope.showCompanionAdd = false;
+                  });
+                }
+              }
+
               /*
                * On Release Start
                * @private
@@ -305,10 +355,10 @@
               function _onReleaseEnd(pdkEvent) {
 
                 if (!isShowEndCard && nextReleaseUrl != '') {
-                  if ($rootScope.statusAd) {
-                    usa_debug('ad_end');
+
+                  if (isAdStart) {
                     // change status ad on false
-                    updateStatusAd(false);
+                    isAdStart = false;
                     AdobeTracking.videoBreakPoint = "Ads Off";
                     _satellite.track('setVideoBreakPoint');
                   }
@@ -525,43 +575,6 @@
                   $.cookie('nbcu_user_settings', '', {expires: -1, path: '/'});
                   tveModal.openLoginModal();
                 });
-              }
-
-              /**
-               * Media Start event callback so that we can show the metadata section
-               */
-              function _onMediaStart(pdkEvent) {
-
-                var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
-
-                if (baseClip && baseClip.isAd) {
-                  // Functionality for ad playing event
-
-                  // create attr when ad start
-                  playerContainer.attr('data-ad-start', 'true');
-                  // change status ad on true
-                  updateStatusAd(true);
-                } else {
-                  // change status ad on false
-                  updateStatusAd(false);
-
-                  if (!usaVideoSettingsRun) {
-                    usaVideoSettingsRun = seekToPosition();
-                  }
-
-                  // create attr when ad start
-                  playerContainer.removeAttr('data-ad-start');
-
-                  if ($('.dart-tag').length) {
-                    scope.$apply(function () {
-                      $rootScope.isFreeWheelReq = true;
-                      $rootScope.isDartReq = false;
-                    });
-                  }
-                  scope.$apply(function () {
-                    scope.showCompanionAdd = false;
-                  });
-                }
               }
 
               function seekToPosition() {

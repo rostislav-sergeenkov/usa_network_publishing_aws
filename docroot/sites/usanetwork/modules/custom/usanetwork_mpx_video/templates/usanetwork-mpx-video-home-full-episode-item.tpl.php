@@ -5,13 +5,13 @@
       <div class="meta-wrapper-inner">
         <div class="meta-icon <?php (!empty($icon)) ? print $icon : 'video-icon'; ?>"></div>
         <div class="meta">
-          <?php if (!empty($caption)) : ?>
+          <?php if (!empty($caption)): ?>
             <div class="caption"><?php print $caption; ?></div>
           <?php endif; ?>
-          <?php if (!empty($title)) : ?>
+          <?php if (!empty($title)): ?>
             <div class="title"><?php print $title; ?></div>
           <?php endif; ?>
-          <?php if (!empty($additional)) : ?>
+          <?php if (!empty($additional)): ?>
             <div class="additional"><?php print $additional; ?></div>
           <?php endif; ?>
         </div>

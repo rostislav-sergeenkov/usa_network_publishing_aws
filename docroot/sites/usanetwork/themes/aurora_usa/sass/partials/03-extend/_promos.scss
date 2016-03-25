@@ -86,7 +86,7 @@
         }
         ~ .caption, ~ .title, ~ .additional {
           @include breakpoint($bp-768-width) {
-            padding-left: calc(8% + 7.1875vw);
+            padding-left: calc(8% + #{get-vw(46px, 640)});
           }
           @include breakpoint($bp-480-width) {
             padding-left: calc(8% + 34.5px);
@@ -222,7 +222,7 @@
           padding-left: calc(8% + 62px);
         }
         @include breakpoint($bp-768-width) {
-          padding-left: calc(8% + 7.1875vw);
+          padding-left: calc(8% + #{get-vw(46px, 640)});
         }
       }
     }
@@ -524,7 +524,7 @@
           padding: get-vw(45px, 640) 14.8% 0;
         }
         .meta {
-          height: calc(100% - 6.25vw);
+          height: calc(100% - #{get-vw(118.8175px, 1901)});
           @include breakpoint($bp-min-1901-width) {
             height: calc(100% - 118.8175px);
           }
@@ -532,7 +532,7 @@
             height: calc(100% - 48px);
           }
           @include breakpoint($bp-640-width) {
-            height: calc(100% - 12.5vw);
+            height: calc(100% - #{get-vw(80px, 640)});
           }
         }
         .topic {
@@ -835,15 +835,15 @@
         width: get-vw(48px, 640);
       }
       ~ .meta {
-        padding-left: calc(8% + 2.52vw);
+        padding-left: calc(8% + #{get-vw(48px, 1901)});
         @include breakpoint($bp-min-1901-width) {
           padding-left: calc(8% + 48px);
         }
         @include breakpoint($between-641-768) {
-          padding-left: calc(8% + 4.6875vw);
+          padding-left: calc(8% + #{get-vw(36px, 768)});
         }
         @include breakpoint($bp-640-width) {
-          padding-left: calc(8% + 7.5vw);
+          padding-left: calc(8% + #{get-vw(48px, 640)});
         }
       }
     }
@@ -879,7 +879,7 @@
         }
         ~ .meta {
           @include breakpoint($between-769-1280) {
-            padding-left: calc(8% + 3.75vw);
+            padding-left: calc(8% + #{get-vw(48px, 1280)});
           }
         }
       }
@@ -1055,18 +1055,18 @@
           width: get-vw(30px, 640);
         }
         ~ .meta {
-          padding-left: calc(8% + 2.52vw);
+          padding-left: calc(8% + #{get-vw(48px, 1901)});
           @include breakpoint($bp-min-1901-width) {
             padding-left: calc(8% + 48px);
           }
           @include breakpoint($between-1025-1280) {
-            padding-left: calc(8% + 2.65625vw);
+            padding-left: calc(8% + #{get-vw(34px, 1280)});
           }
           @include breakpoint($bp-1024-width) {
-            padding-left: calc(8% + 3.32vw);
+            padding-left: calc(8% + #{get-vw(34px, 1024)});
           }
           @include breakpoint($bp-768-width) {
-            padding-left: calc(8% + 4.6875vw);
+            padding-left: calc(8% + #{get-vw(36px, 768)});
           }
         }
       }
@@ -1201,7 +1201,7 @@
         padding-left: 80px;
       }
       @include breakpoint($bp-768-width) {
-        padding-left: calc(8% + 6.25vw);
+        padding-left: calc(8% + #{get-vw(48px, 768)});
       }
     }
   }
@@ -1372,7 +1372,7 @@
         }
         ~ .meta {
           @include breakpoint($between-769-1024) {
-            padding-left: calc(8% + 3.9vw);
+            padding-left: calc(8% + #{get-vw(30px, 768)});
           }
         }
       }
@@ -1459,10 +1459,10 @@
         }
         ~ .meta {
           @include breakpoint($between-1025-1280) {
-            padding-left: calc(8% + 3.9vw);
+            padding-left: calc(8% + #{get-vw(30px, 768)});
           }
           @include breakpoint($bp-768-width) {
-            padding-left: calc(8% + 7.5vw);
+            padding-left: calc(8% + #{get-vw(36px, 480)});
           }
           @include breakpoint($bp-480-width) {
             padding-left: calc(8% + 36px);
@@ -1593,7 +1593,7 @@
         width: 26px;
       }
       ~ .meta {
-        padding-left: calc(8% + 2.52vw);
+        padding-left: calc(8% + #{get-vw(48px, 1901)});
         @include breakpoint($bp-min-1901-width) {
           padding-left: calc(8% + 48px);
         }
@@ -1601,7 +1601,7 @@
           padding-left: calc(8% + 26px);
         }
         @include breakpoint($bp-768-width) {
-          padding-left: calc(8% + 5.417vw);
+          padding-left: calc(8% + #{get-vw(26px, 480)});
         }
         @include breakpoint($bp-480-width) {
           padding-left: calc(8% + 26px);
@@ -1774,7 +1774,7 @@
         width: 36px;
       }
       ~ .meta {
-        padding-left: calc(8% + 4.2vw);
+        padding-left: calc(8% + #{get-vw(80px, 1901)});
         @include breakpoint($bp-min-1901-width) {
           padding-left: calc(8% + 80px);
         }
@@ -1782,7 +1782,7 @@
           padding-left: calc(8% + 42px);
         }
         @include breakpoint($bp-768-width) {
-          padding-left: calc(8% + 7.5vw);
+          padding-left: calc(8% + #{get-vw(36px, 480)});
         }
         @include breakpoint($bp-480-width) {
           padding-left: calc(8% + 36px);
@@ -1855,7 +1855,7 @@
         }
         ~ .meta {
           @include breakpoint($bp-640-width) {
-            padding-left: calc(8% + 7.5vw);
+            padding-left: calc(8% + #{get-vw(36px, 480)});
           }
           @include breakpoint($bp-480-width) {
             padding-left: calc(8% + 36px);
@@ -1977,12 +1977,12 @@
         width: 26px;
       }
       ~ .meta {
-        padding-left: calc(8% + 4.2vw);
+        padding-left: calc(8% + #{get-vw(80px, 1901)});
         @include breakpoint($bp-min-1901-width) {
           padding-left: calc(8% + 80px);
         }
         @include breakpoint($bp-768-width) {
-          padding-left: calc(8% + 5.417vw);
+          padding-left: calc(8% + #{get-vw(26px, 480)});
         }
         @include breakpoint($bp-480-width) {
           padding-left: calc(8% + 26px);
@@ -2197,16 +2197,16 @@
           }
           ~ .meta {
             @include breakpoint($bp-min-1281-width) {
-              padding-left: calc(8% + 2.96875vw);
+              padding-left: calc(8% + #{get-vw(38px, 1280)});
             }
             @include breakpoint($bp-min-1901-width) {
               padding-left: calc(8% + 56px);
             }
             @include breakpoint($between-769-1280) {
-              padding-left: calc(8% + 3.90625vw);
+              padding-left: calc(8% + #{get-vw(30px, 768)});
             }
             @include breakpoint($bp-768-width) {
-              padding-left: calc(8% + 6.25vw);
+              padding-left: calc(8% + #{get-vw(30px, 480)});
             }
           }
         }

@@ -39,10 +39,10 @@
   }
   &.sticky-sidebar {
     @include breakpoint($bp-min-1025-width) {
-      height: calc(100vh - 7.12195vw)!important;
+      height: calc(100vh - #{get-vw(135px, 1901)})!important;
       position: fixed!important;
       right: 0;
-      top: get-vw(73px, 1025)!important;
+      top: get-vw(135px, 1901)!important;
       .advert {
         height: 250px;
         padding: 0;
@@ -87,8 +87,12 @@
   .advert {
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
-      height: 23.4vw;
-      padding: calc((23.4vw - 250px)/2) 0;
+      height: get-vw(585px, 2500);
+      padding: calc((#{get-vw(585px, 2500)} - 250px)/2) 0;
+    }
+    @include breakpoint($bp-min-2500-width) {
+      height: 585px;
+      padding: 167.5px 0;
     }
     @include breakpoint($between-1025-1280) {
       height: 250px;
@@ -116,7 +120,10 @@
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
-      height: calc(100% - 23.4vw);
+      height: calc(100% - #{get-vw(585px, 2500)});
+    }
+    @include breakpoint($bp-min-2500-width) {
+      height: calc(100% - 585px);
     }
     @include breakpoint($between-1025-1280) {
       height: auto;
@@ -126,7 +133,7 @@
       width: 100%;
     }
     @include breakpoint($bp-1024-width) {
-      height: calc(100% - 23.4vw);
+      height: calc(100% - #{get-vw(585px, 2500)});
     }
   }
   .items-block-title {
@@ -796,7 +803,7 @@
     header {
       &.sign-in {
         @include breakpoint($between-769-1024) {
-          height: calc(7.10153vw + 35px);
+          height: calc(#{get-vw(135px, 1901)} + 35px);
         }
         ~ .usa-wrap {
           @include breakpoint($between-769-1024) {

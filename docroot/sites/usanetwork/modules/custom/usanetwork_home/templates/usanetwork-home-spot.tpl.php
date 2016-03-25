@@ -38,9 +38,15 @@
             <div class="meta-icon <?php print $icon_type; ?>"></div>
           <?php endif; ?>
           <div class="meta">
-            <div class="caption"><?php print $caption; ?></div>
-            <div class="title"><?php print $title; ?></div>
-            <div class="additional"><span><?php print $additional; ?></span> <?php print $time; ?></div>
+            <?php if (!empty($caption)): ?>
+              <div class="caption"><?php print $caption; ?></div>
+            <?php endif; ?>
+            <?php if (!empty($title)): ?>
+              <div class="title"><?php print $title; ?></div>
+            <?php endif; ?>
+            <?php if (!empty($additional)): ?>
+              <div class="additional"><span><?php print $additional; ?></span> <?php print $time; ?></div>
+            <?php endif; ?>
             <div class="interset-indicator">
               <div class="indicator"></div>
               <div class="indicator-text"></div>

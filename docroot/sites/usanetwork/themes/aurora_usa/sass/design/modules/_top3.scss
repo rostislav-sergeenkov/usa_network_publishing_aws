@@ -476,7 +476,7 @@
   .right-sidebar {
     float: left;
     position: relative;
-    width: calc(100% - 67.33298vw);
+    width: calc(100% - #{get-vw(1280px, 1901)});
     @include breakpoint($bp-min-1901-width) {
       width: calc(100% - 1280px);
     }
@@ -509,7 +509,7 @@
         width: 100%;
       }
       @include breakpoint($bp-768-width) {
-        bottom: calc(100% + 2.148vw);
+        bottom: calc(100% + #{get-vw(16.5px, 768)});
         max-height: get-vw(90px, 768);
       }
       img {
@@ -529,7 +529,7 @@
         margin-top: 147px;
       }
       @include breakpoint($bp-1280-width) {
-        margin-left: calc(67.33298vw + (32.66702vw - 320px)/2) ;
+        margin-left: calc(#{get-vw(1280px, 1901)} + (#{get-vw(621px, 1901)} - 320px)/2) ;
       }
       @include breakpoint($bp-1024-width) {
         margin: 25px auto 0;

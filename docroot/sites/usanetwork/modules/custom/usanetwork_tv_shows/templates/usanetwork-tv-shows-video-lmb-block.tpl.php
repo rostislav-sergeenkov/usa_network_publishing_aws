@@ -56,9 +56,15 @@
                 <div class="meta-wrapper-inner">
                   <div class="meta-icon <?php print (!empty($promo['icon_type']))? $promo['icon_type']: ''; ?>"></div>
                   <div class="meta">
-                    <div class="caption"><?php print (!empty($promo['caption']))? $promo['caption']: ''; ?></div>
-                    <div class="title"><?php print (!empty($promo['title']))? $promo['title']: ''; ?></div>
-                    <div class="additional"><?php print (!empty($promo['description']))? $promo['description']: ''; ?></div>
+                    <?php if (!empty($promo['caption'])): ?>
+                      <div class="caption"><?php print $promo['caption']; ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($promo['title'])): ?>
+                      <div class="title"><?php print $promo['title']; ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($promo['description'])): ?>
+                      <div class="additional"><?php print $promo['description']; ?></div>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>

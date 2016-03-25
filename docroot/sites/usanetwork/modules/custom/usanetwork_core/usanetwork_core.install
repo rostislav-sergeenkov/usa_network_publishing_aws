@@ -1210,3 +1210,12 @@ function usanetwork_core_update_7184() {
     module_enable(array('usanetwork_blog_migrate'));
   }
 }
+
+/**
+ * Enables AdvAgg Modifier module.
+ */
+function usanetwork_core_update_7185() {
+  if (!module_exists('advagg_mod')) {
+    module_enable(array('advagg_mod'));
+  }
+}

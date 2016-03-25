@@ -21,7 +21,7 @@ function usanetwork_movie_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_movie_external_links',
       1 => 'field_movie_primary_genre',
@@ -54,7 +54,7 @@ function usanetwork_movie_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Cast/Crew',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -79,7 +79,7 @@ function usanetwork_movie_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Movie color',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_usa_tv_show_color',
       1 => 'field_usa_tv_show_color_second',
@@ -97,6 +97,35 @@ function usanetwork_movie_field_group_info() {
     ),
   );
   $export['group_colors|node|movie|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_livetv|node|movie|form';
+  $field_group->group_name = 'group_livetv';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'movie';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'LiveTV Settings',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_livetv_enable',
+      1 => 'field_livetv_related',
+      2 => 'field_livetv_right_rail',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-livetv field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_livetv|node|movie|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -171,7 +200,7 @@ function usanetwork_movie_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Custom',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_movie_latest_feed',
       1 => 'field_movies_latest_lnd_feed',

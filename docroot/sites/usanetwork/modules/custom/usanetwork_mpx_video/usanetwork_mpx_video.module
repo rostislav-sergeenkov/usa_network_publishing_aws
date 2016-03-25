@@ -761,6 +761,16 @@ function usanetwork_mpx_video_file_presave($file) {
         $movie = $node->title;
       }
     }
+
+    if (!isset($show) && !isset($movie)) {
+      if ((count($categories) == 3) && ($categories[0] == 'Series') && ($categories[1] == 'Movies On USA') && ($categories[2] !== 'Clips')) {
+        $node = _usanetwork_mpx_video_node_load_by_title($categories[2], 'movie');
+        if (isset($node->nid)) {
+          $file->field_movie[LANGUAGE_NONE]['0']['target_id'] = $node->nid;
+          $movie = $node->title;
+        }
+      }
+    }
   }
 
   $unique_saved_category = array_unique($saved_category);

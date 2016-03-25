@@ -1,7 +1,7 @@
 <?php
 
-define(VOX_BLOG_FEED_MRROBOT_ATOM, 'http://www.theverge.com/rss/partner/usa-network-mr-robot/index.xml');
-define(MR_ROBOT_SHOW_ID, 56156);
+define('VOX_BLOG_FEED_MRROBOT_ATOM', 'http://www.theverge.com/rss/partner/usa-network-mr-robot/index.xml');
+define('MR_ROBOT_SHOW_ID', 56156);
 
 /**
  * Migration class Vox blog feed.
@@ -59,7 +59,7 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
     $this->source = new MigrateSourceMultiItems($items_class, $fields);
     $this->destination = new MigrateDestinationNode('consumpt_post');
 
-    $blog = variable_get('vox_blog_migrate_mrrobot_nid', NULL);
+    $blog = variable_get('blog_migrate_mrrobot_nid', NULL);
     $blog_nid = NULL;
     if (preg_match("/^(.+)\[node:(\d+)\]$/", $blog, $matches)) {
       $blog_nid = $matches[2];
@@ -89,5 +89,36 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
     $current_row->shirt_description = $shirt_description . '.';
   }
 
+  public function complete($entity, stdClass $row) {
+    $settings = variable_get('usanetwork_ads_site_metric_settings', array());
+    $entity_wrapper = entity_metadata_wrapper('node', $entity);
+    $show = $entity_wrapper->field_show->value();
+    $show_name = $show->title;
+    $settings['node']['consumpt_post'][$entity->nid] = array(
+      'is_sponsored' => -1,
+      'sect' => '',
+      'sub' => '',
+      'sub2' => '',
+      'omniture' => array(
+        'variables' => array(
+          array(
+            'key' => 's.prop3',
+            'value' => 'Blog',
+          ),
+          array(
+            'key' => 's.prop4',
+            'value' => $show_name . ' : ' . $show_name . ' Blog',
+          ),
+          array(
+            'key' => 's.pageName',
+            'value' => $show_name . ' : ' . $show_name . ' Blog : ' . $entity->title,
+          ),
+          'default' => NULL,
+        ),
+        'disable' => NULL,
+      ),
+    );
+    variable_set('usanetwork_ads_site_metric_settings', $settings);
+  }
 }
 

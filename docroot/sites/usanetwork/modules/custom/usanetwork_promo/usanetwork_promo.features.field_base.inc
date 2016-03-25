@@ -147,7 +147,7 @@ function usanetwork_promo_field_default_field_bases() {
       ),
       'timezone_db' => 'UTC',
       'todate' => '',
-      'tz_handling' => 'utc',
+      'tz_handling' => 'site',
     ),
     'translatable' => 0,
     'type' => 'datestamp',

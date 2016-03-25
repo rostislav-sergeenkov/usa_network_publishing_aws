@@ -248,16 +248,17 @@
                */
               function _bindPlayerEvents(player_Id, dataObj) {
 
+                console.info('bind');
+
                 var data = dataObj || {};
 
                 //rebind $pdk each time directive is loaded
                 $pdk.bind(player_Id);
-                console.log('bind');
 
                 // init watchwith
                 if (typeof wwLoader !== 'undefined') {
                   wwLoader.bootstrap();
-                  console.log('init wwLoader.bootstrap()');
+                  console.info('init wwLoader.bootstrap()');
                 }
 
                 // default listeners for player
@@ -269,10 +270,6 @@
                 $pdk.controller.addEventListener('OnShowProviderPicker', _showPicker);
                 $pdk.controller.addEventListener('OnPlayerLoaded', _onPlayerLoaded);
                 $pdk.controller.addEventListener('OnMediaStart', _onMediaStart);
-
-                $pdk.controller.addEventListener('OnSetToken', function (e) {
-                  console.log('OnSetToken');
-                });
 
                 // init end card service
                 if (isShowEndCard) {
@@ -405,8 +402,6 @@
 
                 if (isEntitlement === 'auth') {
                   $pdk.controller.setToken(encodedToken, 'authToken');
-                  console.log('setToken');
-
                   // check on loadReleaseUrl
                   if (scope.statusPlayerLoaded) {
                     usaPlayerService.resolve('auth success done');

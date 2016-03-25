@@ -5,8 +5,12 @@
         <div class="meta-wrapper-inner">
           <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
           <div class="meta">
-            <div class="title"><?php print $video_title; ?></div>
-            <div class="additional"><span><?php print $video_additional; ?></span></div>
+            <?php if (!empty($video_title)): ?>
+              <div class="title"><?php print $video_title; ?></div>
+            <?php endif; ?>
+            <?php if (!empty($video_additional)): ?>
+              <div class="additional"><?php print $video_additional; ?></div>
+            <?php endif; ?>
           </div>
         </div>
       </div>

@@ -22,12 +22,21 @@
         <div class="meta-wrapper-inner">
           <div class="meta-icon full-video-icon-default"></div>
           <div class="meta">
-            <div class="additional"><?php print t('S'); ?><span
-                class="season"><?php print $next_video['season']; ?></span>
-              <?php print t('EP'); ?>
-              <span class="episode"><?php print $next_video['episode']; ?></span>:
-            </div>
-            <div class="title"><?php print $next_video['title']; ?></div>
+            <?php if (!empty($next_video['season']) || !empty($next_video['episode'])): ?>
+              <div class="additional">
+                <?php if (!empty($next_video['season'])): ?>
+                  <?php print t('S'); ?>
+                  <span class="season"><?php print $next_video['season']; ?></span>
+                <?php endif; ?>
+                <?php if (!empty($next_video['episode'])): ?>
+                  <?php print t('EP'); ?>
+                  <span class="episode"><?php print $next_video['episode']; ?></span>:
+                <?php endif; ?>
+              </div>
+            <?php endif; ?>
+            <?php if (!empty($next_video['title'])): ?>
+              <div class="title"><?php print $next_video['title']; ?></div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -56,8 +65,12 @@
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">
                   <div class="meta">
-                    <div class="title"><?php print $eitem['title']; ?></div>
-                    <div class="additional"><?php print $eitem['duration']; ?></div>
+                    <?php if (!empty($eitem['title'])): ?>
+                      <div class="title"><?php print $eitem['title']; ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($eitem['duration'])): ?>
+                      <div class="additional"><?php print $eitem['duration']; ?></div>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>

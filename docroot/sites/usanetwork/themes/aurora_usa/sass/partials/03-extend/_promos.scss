@@ -84,6 +84,13 @@
           position: absolute;
           width: 34.5px;
         }
+        + div:last-child {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          height: auto;
+          white-space: normal;
+        }
         ~ .caption, ~ .title, ~ .additional {
           @include breakpoint($bp-768-width) {
             padding-left: calc(8% + #{get-vw(46px, 640)});

@@ -791,6 +791,13 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     width: 34.5px;
   }
 }
+.featured-block .carousel ul li .featured-large .meta .meta-icon + div:last-child {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: auto;
+  white-space: normal;
+}
 @media (max-width: 768px) {
   .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .caption, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .title, .featured-block .carousel ul li .featured-large .meta .meta-icon ~ .additional {
     padding-left: calc(8% + 7.1875vw);

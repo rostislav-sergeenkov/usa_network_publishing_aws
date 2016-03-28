@@ -110,3 +110,210 @@ function usanetwork_taboola_theme($existing, $type, $theme, $path)
     ),
   );
 }
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function usanetwork_taboola_preprocess_node(&$vars) {
+  $node = $vars['node'];
+
+  if (!empty($node)) {
+    if ($node->type == 'media_gallery') {
+      $gallery_type = _usanetwork_get_field_item('node', $node, 'field_gallery_type', 'value');
+      $show = _usanetwork_get_field_item('node', $node, 'field_show', 'entity');
+      if ($gallery_type == 'Episodic Gallery') {
+        $season_node = _usanetwork_get_field_item('node', $node, 'field_season', 'entity');
+        $season = _usanetwork_get_field_item('node', $season_node, 'field_season_id', 'value');
+        $episode_node = _usanetwork_get_field_item('node', $node, 'field_episode', 'entity');
+        $episode = _usanetwork_get_field_item('node', $episode_node, 'field_episode_number', 'value');
+        $tag_taboola = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'syndication-promo-text',
+            'content' => t('View @show_name Photos from S@season Ep@episode: "@title"',
+              array('@show_name' => $show->title, '@season' => $season, '@episode' => $episode, '@title' => $node->title)),
+          ),
+        );
+        drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+      }
+      elseif ($gallery_type == 'Character Gallery') {
+        $character = _usanetwork_get_field_item('node', $node, 'field_person', 'entity');
+        $first_name = _usanetwork_get_field_item('node', $character, 'field_person_first_name', 'value');
+        $last_name = _usanetwork_get_field_item('node', $character, 'field_person_last_name', 'value');
+        $actor = _usanetwork_get_field_item('node', $character, 'field_usa_actor_name', 'value');
+        $tag_taboola = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'syndication-promo-text',
+            'content' => t('View Photos of @actor, who plays @character on @show_name',
+              array('@show_name' => $show->title, '@actor' => $actor, '@character' => $first_name . ' ' . $last_name)),
+          ),
+        );
+        drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+      }
+      elseif ($gallery_type == 'GIF Gallery') {
+        $tag_taboola = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'syndication-promo-text',
+            'content' => t('View @show_name GIFS: @title',
+              array('@show_name' => $show->title, '@title' => $node->title)),
+          ),
+        );
+        drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+      }
+      else {
+        $tag_taboola = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'syndication-promo-text',
+            'content' => t('View @show_name Photos: @title',
+              array('@show_name' => $show->title, '@title' => $node->title)),
+          ),
+        );
+        drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+      }
+    }
+    elseif ($node->type == 'tv_episode') {
+      $show = _usanetwork_get_field_item('node', $node, 'field_show', 'entity');
+      $season_node = _usanetwork_get_field_item('node', $node, 'field_season', 'entity');
+      $season = _usanetwork_get_field_item('node', $season_node, 'field_season_id', 'value');
+      $episode = _usanetwork_get_field_item('node', $node, 'field_episode_number', 'value');
+      $tag_taboola = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'syndication-promo-text',
+          'content' => t('Read the Episode Recap of @show_name S@season Ep@episode: "@title"',
+            array('@show_name' => $show->title, '@season' => $season, '@episode' => $episode, '@title' => $node->title)),
+        ),
+      );
+      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+    }
+    elseif ($node->type == 'person') {
+      $show = _usanetwork_get_field_item('node', $node, 'field_show', 'entity');
+      $first_name = _usanetwork_get_field_item('node', $node, 'field_person_first_name', 'value');
+      $last_name = _usanetwork_get_field_item('node', $node, 'field_person_last_name', 'value');
+      $actor = _usanetwork_get_field_item('node', $node, 'field_usa_actor_name', 'value');
+      $tag_taboola = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'syndication-promo-text',
+          'content' => t('Read all about @actor who plays @character in @show_name',
+            array('@show_name' => $show->title, '@actor' => $actor, '@character' => $first_name . ' ' . $last_name)),
+        ),
+      );
+      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+    }
+    elseif ($node->type == 'consumpt_post') {
+      $tag_taboola = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'syndication-promo-text',
+          'content' => t('@title',
+            array('@title' => $node->title)),
+        ),
+      );
+      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+    }
+    elseif ($node->type == 'timeline_gallery') {
+      $tag_taboola = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'syndication-promo-text',
+          'content' => t('View the Interactive Timeline: @title',
+            array('@title' => $node->title)),
+        ),
+      );
+      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+    }
+    elseif ($node->type == 'top3_gallery') {
+      $tag_taboola = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'syndication-promo-text',
+          'content' => t('Choose your Top-3 Favorite @title',
+            array('@title' => $node->title)),
+        ),
+      );
+      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+    }
+    elseif ($node->type == 'quiz') {
+      $tag_taboola = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'syndication-promo-text',
+          'content' => t('Take the Quiz: @title',
+            array('@title' => $node->title)),
+        ),
+      );
+      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_file_entity().
+ */
+function usanetwork_taboola_preprocess_file_entity(&$vars) {
+  $file = $vars['file'];
+  $show = _usanetwork_get_field_item('file', $file, 'field_show', 'entity');
+  $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
+  if ($full_episode === '0') {
+    if (!empty($show)) {
+      $filter = usanetwork_mpx_video_get_video_category($file);
+      $tag_taboola = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'syndication-promo-text',
+          'content' => t('Watch @show_name @category: "@title"',
+            array(
+              '@show_name' => $show->title,
+              '@category' => (!empty($filter)) ? $filter : 'Clips',
+              '@title' => $file->filename
+            )),
+        ),
+      );
+      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+    }
+  } else {
+    if (!empty($show)) {
+      $season = _usanetwork_get_field_item('file', $file, 'field_mpx_season_number', 'value');
+      $episode = _usanetwork_get_field_item('file', $file, 'field_mpx_episode_number', 'value');
+      $tag_taboola = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'syndication-promo-text',
+          'content' => t('Watch @show_name Full Episode S@season Ep@episode: "@title"',
+            array('@show_name' => $show->title, '@season' => $season, '@episode' => $episode, '@title' => $file->filename)),
+        ),
+      );
+      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+    } else {
+      $movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
+      if (!empty($movie)) {
+        $tag_taboola = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'syndication-promo-text',
+            'content' => t('Watch Movie "@movie"',
+              array('@movie' => $file->filename)),
+          ),
+        );
+      }
+      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+    }
+  }
+}

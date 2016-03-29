@@ -15406,6 +15406,17 @@ footer h2 {
     border-bottom: 8px solid;
   }
 }
+.consumptionator-characters-main-block .character-info-block.social-enable .gallery-recap-block {
+  border: none;
+}
+.consumptionator-characters-main-block .character-info-block.gallery-enable:not(.social-enable) {
+  border-bottom: none;
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block.gallery-enable:not(.social-enable) {
+    padding-bottom: 0;
+  }
+}
 .consumptionator-characters-main-block .character-info-block .block-character-info-header {
   margin-bottom: 30px;
   padding: 0 38px 0 58px;

@@ -233,6 +233,7 @@ function _usanetwork_episodes_gallery_recap() {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', 'media_gallery')
+      ->propertyCondition('status', NODE_PUBLISHED)
       ->fieldCondition('field_person', 'target_id', $episode_node->nid, '=');
     $result = $query->execute();
     if (isset($result['node'])) {

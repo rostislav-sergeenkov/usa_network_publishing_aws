@@ -112,6 +112,37 @@ function usanetwork_taboola_theme($existing, $type, $theme, $path)
 }
 
 /**
+ *  Implements hook_image_default_styles().
+ */
+function usanetwork_taboola_image_default_styles() {
+  $styles = array();
+
+  $styles['taboola'] = array(
+    'label' => t('Taboola thumbnail'),
+    'effects' => array(
+      0 => array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 344,
+          'height' => 287,
+        ),
+        'weight' => 0,
+      ),
+      1 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 344,
+          'height' => 287,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_preprocess_node().
  */
 function usanetwork_taboola_preprocess_node(&$vars) {
@@ -258,6 +289,19 @@ function usanetwork_taboola_preprocess_node(&$vars) {
       );
       drupal_add_html_head($tag_taboola, 'syndication-promo-text');
     }
+
+    $image_uri = usanetwork_core_api_get_content_image('node', $node, 'main', 1, TRUE);
+    $image = image_style_url('taboola', $image_uri);
+
+    $tag_taboola_image = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'syndication-promo-image',
+        'content' => $image,
+      ),
+    );
+    drupal_add_html_head($tag_taboola_image, 'syndication-promo-image');
   }
 }
 
@@ -286,7 +330,8 @@ function usanetwork_taboola_preprocess_file_entity(&$vars) {
       );
       drupal_add_html_head($tag_taboola, 'syndication-promo-text');
     }
-  } else {
+  }
+  else {
     if (!empty($show)) {
       $season = _usanetwork_get_field_item('file', $file, 'field_mpx_season_number', 'value');
       $episode = _usanetwork_get_field_item('file', $file, 'field_mpx_episode_number', 'value');
@@ -300,7 +345,8 @@ function usanetwork_taboola_preprocess_file_entity(&$vars) {
         ),
       );
       drupal_add_html_head($tag_taboola, 'syndication-promo-text');
-    } else {
+    }
+    else {
       $movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
       if (!empty($movie)) {
         $tag_taboola = array(
@@ -312,8 +358,21 @@ function usanetwork_taboola_preprocess_file_entity(&$vars) {
               array('@movie' => $file->filename)),
           ),
         );
+        drupal_add_html_head($tag_taboola, 'syndication-promo-text');
       }
-      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
     }
   }
+
+  $image_uri = usanetwork_core_api_get_content_image('file', $file);
+  $image = image_style_url('taboola', $image_uri);
+
+  $tag_taboola_image = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'syndication-promo-image',
+      'content' => $image,
+    ),
+  );
+  drupal_add_html_head($tag_taboola_image, 'syndication-promo-image');
 }

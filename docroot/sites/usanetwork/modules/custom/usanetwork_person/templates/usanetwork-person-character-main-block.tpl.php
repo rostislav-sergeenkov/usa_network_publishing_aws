@@ -4,7 +4,7 @@
  */
 ?>
 <div class="consumptionator-characters-main-block">
-  <div class="character-info-block right-rail-line show-border">
+  <div class="character-info-block right-rail-line show-border<?php print (!empty($gallery_rec))? ' gallery-enable': ''; ?><?php print (!empty($social_block))? ' social-enable': ''; ?>">
     <div class="block-character-info-header">
       <div class="block-character-info-header-left">
         <?php if (!empty($character_full_name)): ?>

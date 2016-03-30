@@ -252,6 +252,7 @@
 
                 //rebind $pdk each time directive is loaded
                 $pdk.bind(player_Id);
+                // $pdk.controller._iframeOnload();
                 console.log('bind');
 
                 // init watchwith
@@ -272,6 +273,15 @@
 
                 $pdk.controller.addEventListener('OnSetToken', function (e) {
                   console.log('OnSetToken');
+                });
+
+                $pdk.controller.addEventListener("OnShareControlInvoked", function (e) {
+                  console.log("OnShareControlInvoked");
+                });
+
+                $pdk.controller.addEventListener("OnShareOptionInvoked", function (e) {
+                  console.log("OnShareOptionInvoked");
+                  console.log(e.data);
                 });
 
                 // init end card service

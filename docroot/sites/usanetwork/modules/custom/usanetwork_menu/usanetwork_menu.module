@@ -2082,10 +2082,10 @@ function _usanetwork_menu_movies_block() {
       if (!empty($movie_node) && $movie_node->type == 'movie') {
         if ($movie_node->status) {
           $movie_file_data = _usanetwork_movie_has_full_episode($movie_node);
-          $movie_file = file_load($movie_file_data->fid);
-          if (!$movie_file) {
+          if (!$movie_file_data) {
             continue;
           }
+          $movie_file = file_load($movie_file_data->fid);
           $video_image_path = _usanetwork_mpx_video_get_image_path($movie_file);
           $video_image = theme('image_style', array(
             'path' => $video_image_path,

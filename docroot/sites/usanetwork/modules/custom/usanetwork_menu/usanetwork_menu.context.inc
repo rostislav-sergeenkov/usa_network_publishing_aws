@@ -30,6 +30,7 @@ function usanetwork_menu_context_default_contexts() {
       'values' => array(
         'schedule' => 'schedule',
         'videos' => 'videos',
+        'news' => 'news',
       ),
     ),
   );

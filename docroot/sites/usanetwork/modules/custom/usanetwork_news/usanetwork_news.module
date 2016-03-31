@@ -67,6 +67,10 @@ function usanetwork_news_landing_post() {
 
   $posts_data = $result;
 
+  $theme_variables = array(
+    'news_page' => TRUE,
+  );
+
   if (!empty($posts_data)) {
     pager_default_initialize($result_count, $num_per_page);
     foreach ($posts_data as $post_data_index => $post_data) {

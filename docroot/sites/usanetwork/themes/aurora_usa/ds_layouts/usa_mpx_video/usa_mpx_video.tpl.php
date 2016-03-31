@@ -12,6 +12,7 @@
     data-next-episode-url="<?php print $next_video_url; ?>"
     data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
     data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>"
+    data-is-full-episode ="<?php print $full_episode ?>"
     data-ng-class="{'no-mobile-device': !isMobile}">
     <div class="node usanetwork-aspot player">
       <?php if (!empty($video_inactive)): ?>

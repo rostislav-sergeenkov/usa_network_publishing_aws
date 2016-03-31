@@ -8768,11 +8768,31 @@ header .tve-help-link.signIn .inlineLoader {
 }
 @media (max-width: 480px) {
   .consumptionator-video-page header .header-nav-bar .nav-bar-tabs, .page-videos-live header .header-nav-bar .nav-bar-tabs {
-    max-width: calc(100% - 50px);
+    max-width: calc(100% - 100px);
   }
 }
 .consumptionator-video-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info {
   border-right: none;
+}
+@media (max-width: 768px) {
+  .consumptionator-video-page header .header-nav-bar #usa-tve-help-link.signIn ~ .nav-bar-tabs, .page-videos-live header .header-nav-bar #usa-tve-help-link.signIn ~ .nav-bar-tabs {
+    max-width: calc(100% - 125px);
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-video-page header .header-nav-bar #usa-tve-help-link.signIn ~ .nav-bar-tabs, .page-videos-live header .header-nav-bar #usa-tve-help-link.signIn ~ .nav-bar-tabs {
+    max-width: calc(100% - 100px);
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-video-page header .header-nav-bar #usa-tve-help-link.signOut ~ .nav-bar-tabs, .page-videos-live header .header-nav-bar #usa-tve-help-link.signOut ~ .nav-bar-tabs {
+    max-width: calc(100% - 200px);
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-video-page header .header-nav-bar #usa-tve-help-link.signOut ~ .nav-bar-tabs, .page-videos-live header .header-nav-bar #usa-tve-help-link.signOut ~ .nav-bar-tabs {
+    max-width: calc(100% - 175px);
+  }
 }
 
 @media (min-width: 769px) {
@@ -17639,14 +17659,22 @@ footer h2 {
     right: -342px;
   }
 }
-@media (max-width: 768px) {
-  #usa-tve-help-link {
-    display: none !important;
-  }
+#usa-tve-help-link img {
+  opacity: 0;
+  -webkit-transition: opacity 0.4s ease-in;
+  -moz-transition: opacity 0.4s ease-in;
+  -o-transition: opacity 0.4s ease-in;
+  transition: opacity 0.4s ease-in;
 }
 #usa-tve-help-link.signIn {
   float: right;
   position: relative;
+}
+@media (max-width: 768px) {
+  #usa-tve-help-link.signIn .links-wrapper {
+    height: 50px;
+    width: 50px;
+  }
 }
 #usa-tve-help-link.signIn .usaTveLogin {
   border-left: 1px solid #363636;
@@ -17673,6 +17701,12 @@ footer h2 {
     width: 342px;
   }
 }
+@media (max-width: 768px) {
+  #usa-tve-help-link.signOut .links-wrapper {
+    height: 50px;
+    width: 125px;
+  }
+}
 #usa-tve-help-link.signOut .usaTveLogin {
   float: left;
   position: relative;
@@ -17681,6 +17715,11 @@ footer h2 {
 @media (min-width: 1901px) {
   #usa-tve-help-link.signOut .usaTveLogin {
     width: 207px;
+  }
+}
+@media (max-width: 768px) {
+  #usa-tve-help-link.signOut .usaTveLogin {
+    width: 75px;
   }
 }
 #usa-tve-help-link.signOut .usaTveLogin:before {
@@ -17704,8 +17743,16 @@ footer h2 {
     padding-right: 10px;
   }
 }
+#usa-tve-help-link.signOut .usaTveLogin a img {
+  opacity: 1;
+}
 #usa-tve-help-link.signOut .usaTveLogout {
   display: block;
+}
+@media (max-width: 768px) {
+  #usa-tve-help-link.signOut .usaTveLogout {
+    width: 50px;
+  }
 }
 #usa-tve-help-link a {
   color: #ffffff;
@@ -17751,6 +17798,13 @@ footer h2 {
     font-size: 48px;
     margin-left: -24px;
     margin-top: -24px;
+  }
+}
+@media (max-width: 768px) {
+  #usa-tve-help-link .login-icon:before {
+    font-size: 16px;
+    margin-left: -8px;
+    margin-top: -8px;
   }
 }
 #usa-tve-help-link .usaTveLogin {
@@ -17800,6 +17854,11 @@ footer h2 {
 #usa-tve-help-link .usaTveLogout .login-icon:before {
   top: 45%;
 }
+@media (max-width: 768px) {
+  #usa-tve-help-link .usaTveLogout .login-icon:before {
+    margin-top: -10px;
+  }
+}
 #usa-tve-help-link .usaTveLogout .usaTveLogoutButton {
   display: block;
   height: 100%;
@@ -17827,6 +17886,13 @@ footer h2 {
     font-size: 10px;
     line-height: 10px;
     top: calc(45% + 14px);
+  }
+}
+@media (max-width: 768px) {
+  #usa-tve-help-link .usaTveLogout .sign-out-text {
+    font-size: 9px;
+    line-height: 9px;
+    top: calc(45% + 10px);
   }
 }
 

@@ -467,10 +467,28 @@
           max-width: calc(100% - 75px);
         }
         @include breakpoint($bp-480-width) {
-          max-width: calc(100% - 50px);
+          max-width: calc(100% - 100px);
         }
         .menu-item.info {
           border-right: none;
+        }
+      }
+
+      #usa-tve-help-link.signIn ~ .nav-bar-tabs {
+        @include breakpoint($bp-768-width) {
+          max-width: calc(100% - 125px);
+        }
+        @include breakpoint($bp-480-width) {
+          max-width: calc(100% - 100px);
+        }
+      }
+
+      #usa-tve-help-link.signOut ~ .nav-bar-tabs {
+        @include breakpoint($bp-768-width) {
+          max-width: calc(100% - 200px);
+        }
+        @include breakpoint($bp-480-width) {
+          max-width: calc(100% - 175px);
         }
       }
     }

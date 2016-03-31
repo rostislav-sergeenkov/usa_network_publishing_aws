@@ -187,19 +187,22 @@ function _usanetwork_consumptionator_post_related_content_block() {
       $tv_show_node = node_load($show_field[0]['target_id']);
 
       $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_show_node);
-      if (!empty($related_content)) {
-        $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content);
+    }
+    else {
+      $related_content = usanetwork_news_get_all_related_content_for_consumpt_page($content);
+    }
+    if (!empty($related_content)) {
+      $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content);
 
-        $load_more_link = &drupal_static('load_more_link');
-        $load_more_link = TRUE;
-        return theme('usanetwork_tv_show_consumptionator_related_items_container', array(
-          'related_items_block' => $block_of_items,
-          'load_more_link' => $load_more_link,
-          'show_nid' => $tv_show_node->nid,
-          'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
-          'node_nid' => $content->nid,
-        ));
-      }
+      $load_more_link = &drupal_static('load_more_link');
+      $load_more_link = TRUE;
+      return theme('usanetwork_tv_show_consumptionator_related_items_container', array(
+        'related_items_block' => $block_of_items,
+        'load_more_link' => $load_more_link,
+        'show_nid' => $tv_show_node->nid,
+        'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
+        'node_nid' => $content->nid,
+      ));
     }
   }
 }
@@ -240,7 +243,7 @@ function _usanetwork_consumptionator_post_main_block() {
       'body' => $body,
       'rendered_carousel' => !empty($node->field_show)
           ? _usanetwork_consumptionator_post_posts_carousel($node_wrapper->field_show->nid->value(), $blog_nid, $node->nid)
-          : '',
+          : _usanetwork_consumptionator_post_posts_carousel(NULL, $blog_nid, $node->nid),
       'source' => !empty($node->field_post_source) ? $node_wrapper->field_post_source->value() : '',
       'gallery_rec' => !empty($node->field_gallery_recap)
           ? _usanetwork_consumptionator_post_gallery_recap
@@ -259,14 +262,12 @@ function _usanetwork_consumptionator_post_main_block() {
  * Renders posts carousel for blog.
 */
 function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = NULL, $post_id = NULL) {
-
+  $query = db_select('node', 'node');
+  $query->fields('node', array('nid'));
+  $query->condition('node.type', 'consumpt_post');
+  $query->condition('node.status', NODE_PUBLISHED);
   if (is_numeric($show_id)) {
-
-    $query = db_select('node', 'node');
-    $query->fields('node', array('nid'));
-    $query->condition('node.type', 'consumpt_post');
-    $query->condition('node.status', NODE_PUBLISHED);
-    $query->innerJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
+    $query->leftJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
     $query->condition('field_show.field_show_target_id', $show_id);
     if (!empty($blog_nid)) {
       $query->join('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=node.nid');
@@ -276,47 +277,52 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
       $query->leftJoin('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=node.nid');
       $query->isNull('field_consumptionator_blog.field_consumptionator_blog_target_id');
     }
-    $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
-    $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
-    $query->orderBy('sorted_time', 'DESC');
-    $result = $query->execute()->fetchAllKeyed();
-    if (isset($result)) {
-      $posts = entity_load('node', array_keys($result));
-      $rendered_items = array();
-      foreach ($posts as $post) {
-        if (!empty($post->field_post_cover)) {
-          $image = field_get_items('node', $post, 'field_post_cover');
-          $image = reset($image);
-        }
-        elseif (!empty($post->field_promo_image_override)) {
-          $image = field_get_items('node', $post, 'field_promo_image_override');
-          $image = reset($image);
-        }
-        if (!empty($post->field_promo_created_ovts)) {
-          $created_ovts = field_get_items('node', $post, 'field_promo_created_ovts');
-          $created_ovts = reset($created_ovts);
-          $created_ovts = $created_ovts['value'];
-        }
-        else {
-          $created_ovts = $post->created;
-        }
-        $episode_variables = array(
-          'title' => !empty($post->title) ? $post->title : '',
-          'additional' => t('Posted on @date', array('@date' =>date('n/j/y', $created_ovts))),
-          'url' => url('node/' . $post->nid),
-          'active' => ($post_id == $post->nid) ? TRUE : FALSE,
-          'icon_type' => usanetwork_core_api_get_media_icon('node', $post->nid),
-        );
-        $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
-        $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-        $rendered_items['horizontal'][] = theme('usanetwork_cons_post_carousel_item_h', $episode_variables);
-        $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-        $rendered_items['vertical'][] = theme('usanetwork_cons_post_carousel_item_v', $episode_variables);
+  }
+  $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
+  $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
+  $query->orderBy('sorted_time', 'DESC');
+  if (empty($show_id)) {
+    $query->range(0, 20);
+  }
+  $result = $query->execute()->fetchAllKeyed();
+  if (isset($result)) {
+    $posts = entity_load('node', array_keys($result));
+    $rendered_items = array();
+    foreach ($posts as $post) {
+      if (!empty($post->field_post_cover)) {
+        $image = field_get_items('node', $post, 'field_post_cover');
+        $image = reset($image);
       }
-      $advert_block = module_invoke('mps', 'block_view', 'topbox');
-      if (!empty($advert_block['content'])) {
-        $advert = render($advert_block['content']);
+      elseif (!empty($post->field_promo_image_override)) {
+        $image = field_get_items('node', $post, 'field_promo_image_override');
+        $image = reset($image);
       }
+      if (!empty($post->field_promo_created_ovts)) {
+        $created_ovts = field_get_items('node', $post, 'field_promo_created_ovts');
+        $created_ovts = reset($created_ovts);
+        $created_ovts = $created_ovts['value'];
+      }
+      else {
+        $created_ovts = $post->created;
+      }
+      $episode_variables = array(
+        'title' => !empty($post->title) ? $post->title : '',
+        'additional' => t('Posted on @date', array('@date' =>date('n/j/y', $created_ovts))),
+        'url' => url('node/' . $post->nid),
+        'active' => ($post_id == $post->nid) ? TRUE : FALSE,
+        'icon_type' => usanetwork_core_api_get_media_icon('node', $post->nid),
+      );
+      $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
+      $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
+      $rendered_items['horizontal'][] = theme('usanetwork_cons_post_carousel_item_h', $episode_variables);
+      $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
+      $rendered_items['vertical'][] = theme('usanetwork_cons_post_carousel_item_v', $episode_variables);
+    }
+    $advert_block = module_invoke('mps', 'block_view', 'topbox');
+    if (!empty($advert_block['content'])) {
+      $advert = render($advert_block['content']);
+    }
+    if (is_numeric($show_id)) {
       $show_node = node_load($show_id);
       if (!empty($blog_nid)) {
         $blog_node = node_load($blog_nid);
@@ -327,18 +333,25 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
       }
       if ($show_blog_title) {
         module_load_include('inc', 'pathauto', 'pathauto');
-        $blog_url = '/' .pathauto_cleanstring($show_blog_title);
-      } else {
+        $blog_url = '/' . pathauto_cleanstring($show_blog_title);
+      }
+      else {
         $blog_url = '';
       }
-      $theme_variables = array(
-        'posts' => !empty($rendered_items) ? $rendered_items : array(),
-        'advert_block' => isset($advert) ? $advert : NULL,
-        'block_title' => !empty($show_blog_title) ? $show_blog_title : t('@show_name blog', array('@show_name' => $show_node->title)),
-        'posts_landing_link' => l('View all posts', 'node/' . $show_id . '/blog' . $blog_url),
-      );
-      return theme('usanetwork_cons_post_carousel', $theme_variables);
     }
+    $theme_variables = array(
+      'posts' => !empty($rendered_items) ? $rendered_items : array(),
+      'advert_block' => isset($advert) ? $advert : NULL,
+      'block_title' => (is_numeric($show_id))
+        ? (!empty($show_blog_title)
+          ? $show_blog_title
+          : t('@show_name blog', array('@show_name' => $show_node->title)))
+        : t('Latest News'),
+      'posts_landing_link' => (is_numeric($show_id))
+        ? l(t('View all posts'), 'node/' . $show_id . '/blog' . $blog_url)
+        : l(t('View all news'), 'news'),
+    );
+    return theme('usanetwork_cons_post_carousel', $theme_variables);
   }
   return '';
 }

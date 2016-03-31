@@ -15,12 +15,12 @@
       var node_nid = $('.ajax-load-block').data('node-nid') || 0;
       var file_fid = $('.ajax-load-block').data('file-fid') || 0;
       var number_ul = $('.ajax-load-block > ul').length;
-      var negativeOffset = Drupal.settings.usanetwork_tv_show_offset || Drupal.settings.usanetwork_movie_offset || 0;
+      var negativeOffset = Drupal.settings.usanetwork_tv_show_offset || Drupal.settings.usanetwork_movie_offset || Drupal.settings.usanetwork_all_consumpt_post_offset || 0;
       var start_from = limit*number_ul + negativeOffset;
       var service_name = '';
       var additional_arguments = '';
       var click = eventClick || '';
-      var page_context = Drupal.settings.usanetwork_tv_show_page_context || Drupal.settings.usanetwork_movie_page_context;
+      var page_context = Drupal.settings.usanetwork_tv_show_page_context || Drupal.settings.usanetwork_movie_page_context || Drupal.settings.usanetwork_all_consumpt_post_page_context;
       if (typeof page_context != 'undefined') {
         switch (page_context) {
           case 'consumptionator':
@@ -69,6 +69,7 @@
       else {
         var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ nid +'/'+ start_from +'/'+ limit + additional_arguments;
       }
+      //var url = Drupal.settings.basePath + 'ajax/news/get-related/'+ start_from +'/'+ limit + additional_arguments;
       $('.ajax-load-block .load-more-link a').after('<div id="load-more-loader-js"></div>');
 
       addSpinJs('load-more-loader-js', 'consumptionator-page', '#ffffff');

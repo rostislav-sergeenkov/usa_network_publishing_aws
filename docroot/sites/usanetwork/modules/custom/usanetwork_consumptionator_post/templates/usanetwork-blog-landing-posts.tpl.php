@@ -7,7 +7,7 @@
   <div class="midbanner" id="show-blog-landing-<?php print $ad_id; ?>"></div>
 <?php endif; ?>
 <?php if (!empty($news_page)) : ?>
-  <div id="block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block">
+  <div id="block-usanetwork-news-landing">
 <?php endif; ?>
 <?php if (!empty($ajax_load)) : ?>
   <div class="landing-list-items-all blog-landing-list-items ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished' : '' ;?>" data-node-nid="<?php print (!empty($node_nid)) ? $node_id : ''; ?>">

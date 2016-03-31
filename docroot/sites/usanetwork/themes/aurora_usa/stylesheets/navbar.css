@@ -24,16 +24,16 @@
   background: #525252;
 }
 
-.page-movies .show-color, .node-type-movie .show-color, .movie-consumptionator .show-color {
+.page-movies .show-color, .node-type-movie .show-color, .movie-consumptionator .show-color, .page-news .show-color {
   background: #3d415b;
 }
-.page-movies .show-color.secondary, .node-type-movie .show-color.secondary, .movie-consumptionator .show-color.secondary {
+.page-movies .show-color.secondary, .node-type-movie .show-color.secondary, .movie-consumptionator .show-color.secondary, .page-news .show-color.secondary {
   background: #434664;
 }
-.page-movies .show-color.hover-avail:hover, .page-movies .show-color.tertiary:hover, .node-type-movie .show-color.hover-avail:hover, .node-type-movie .show-color.tertiary:hover, .movie-consumptionator .show-color.hover-avail:hover, .movie-consumptionator .show-color.tertiary:hover {
+.page-movies .show-color.hover-avail:hover, .page-movies .show-color.tertiary:hover, .node-type-movie .show-color.hover-avail:hover, .node-type-movie .show-color.tertiary:hover, .movie-consumptionator .show-color.hover-avail:hover, .movie-consumptionator .show-color.tertiary:hover, .page-news .show-color.hover-avail:hover, .page-news .show-color.tertiary:hover {
   background: #33374e;
 }
-.page-movies .show-border, .node-type-movie .show-border, .movie-consumptionator .show-border {
+.page-movies .show-border, .node-type-movie .show-border, .movie-consumptionator .show-border, .page-news .show-border {
   border-color: #3d415b;
 }
 

@@ -19,14 +19,27 @@
   @include breakpoint($bp-min-1901-width) {
     right: -342px;
   }
-
   @include breakpoint($bp-768-width) {
-    display: none !important;
+    //right: 0;
+  }
+
+  img {
+    opacity: 0;
+    -webkit-transition: opacity 0.4s ease-in;
+    -moz-transition: opacity 0.4s ease-in;
+    -o-transition: opacity 0.4s ease-in;
+    transition: opacity 0.4s ease-in;
   }
 
   &.signIn{
     float: right;
     position: relative;
+    .links-wrapper {
+      @include breakpoint($bp-768-width) {
+        height: 50px;
+        width: 50px;
+      }
+    }
     .usaTveLogin {
       border-left: 1px solid $consup-border;
     }
@@ -50,6 +63,10 @@
       @include breakpoint($bp-min-1901-width) {
         width: 342px;
       }
+      @include breakpoint($bp-768-width) {
+        height: 50px;
+        width: 125px;
+      }
     }
     .usaTveLogin {
       float: left;
@@ -57,6 +74,9 @@
       width: get-vw(172px, 1025) - get-vw(73px, 1025);
       @include breakpoint($bp-min-1901-width) {
         width: 207px;
+      }
+      @include breakpoint($bp-768-width) {
+        width: 75px;
       }
       &:before{
         content: '';
@@ -76,10 +96,16 @@
           padding-left: 10px;
           padding-right: 10px;
         }
+        img {
+          opacity: 1;
+        }
       }
     }
     .usaTveLogout {
       display: block;
+      @include breakpoint($bp-768-width) {
+        width: 50px;
+      }
     }
   }
 
@@ -124,6 +150,13 @@
         font-size: 48px;
         margin-left: -24px;
         margin-top: -24px;
+      }
+    }
+    @include breakpoint($bp-768-width) {
+      &:before {
+        font-size: 16px;
+        margin-left: -8px;
+        margin-top: -8px;
       }
     }
   }
@@ -173,6 +206,9 @@
     .login-icon {
       &:before{
         top: 45%;
+        @include breakpoint($bp-768-width) {
+          margin-top: -10px;
+        }
       }
     }
     .usaTveLogoutButton {
@@ -180,7 +216,6 @@
       height: 100%;
       width: 100%;
     }
-
     .sign-out-text {
       display: block;
       font-size: get-vw(10px, 1025);
@@ -199,6 +234,11 @@
         font-size: 10px;
         line-height: 10px;
         top: calc(45% + 14px);
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: 9px;
+        line-height: 9px;
+        top: calc(45% + 10px);
       }
     }
   }

@@ -33,6 +33,8 @@
                   isCookiesEnabled = helper.cookiesEnabled(),
                   isMobile = helper.device.isMobile;
 
+              console.info(isMobile);
+
               scope.isAuthenticated = authService.isAuthenticated();
               scope.login = authService.openLoginModal;
               scope.verificationInProgress = verificationInProgress;
@@ -47,7 +49,7 @@
               else if (!verificationInProgress) {
                 addLoginListener();
                 // show tve help links
-                usaCustomAnimation.showTveHelpLinkUsa(300, 'signIn');
+                usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
               }
 
               // tracking verification cookie to show loading state
@@ -56,7 +58,7 @@
 
                 if (authService.isFirstVisit()) {
                   // show tve help links
-                  usaCustomAnimation.showTveHelpLinkUsa(300, 'signIn');
+                  usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
                 }
 
                 if (!!$cookies[tveAuthConfig.cookies.VERIFICATION]) {
@@ -139,7 +141,7 @@
                     modal.key.close();
                     if (!statusIsAuth) {
                       // show tve help links
-                      usaCustomAnimation.showTveHelpLinkUsa(300, 'signIn');
+                      usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
                     }
                   }, 3000);
                 }

@@ -382,6 +382,9 @@ header {
         @include breakpoint($bp-1024-width) {
           font-size: 13px;
         }
+        @include breakpoint($between-769-1024) {
+          padding: 0 get-vw(30px, 768);
+        }
         @include breakpoint($bp-768-width) {
           line-height: 50px;
           padding: 0 36px;

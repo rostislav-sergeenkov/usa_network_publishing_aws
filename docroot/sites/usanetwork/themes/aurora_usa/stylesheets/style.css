@@ -6093,6 +6093,11 @@ header .nav-bar-tabs {
     font-size: 13px;
   }
 }
+@media (min-width: 769px) and (min-width: 769px) and (max-width: 1024px) {
+  header .nav-bar-tabs a {
+    padding: 0 3.90625vw;
+  }
+}
 @media (min-width: 769px) and (max-width: 768px) {
   header .nav-bar-tabs a {
     line-height: 50px;
@@ -19584,6 +19589,14 @@ footer h2 {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .title, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .title, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .title {
     font-size: 20px;
   }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .title a, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .title a, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .title a {
+  color: #545454;
+  outline: none;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .title a:hover, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .title a:active, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .title a:hover, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .title a:active, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .title a:hover, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .title a:active {
+  color: #545454;
+  opacity: 0.7;
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .image-block, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .image-block {
   position: absolute;

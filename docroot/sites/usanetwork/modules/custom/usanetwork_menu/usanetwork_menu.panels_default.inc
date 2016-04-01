@@ -288,7 +288,10 @@ function usanetwork_menu_default_panels_mini() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'latest-news',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();

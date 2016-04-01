@@ -56,6 +56,9 @@
           case 'moviepage':
             service_name = 'usanetwork-movie';
             break;
+          case 'consumptionator_news':
+            service_name = 'news';
+            break;
           default:
             service_name = 'usanetwork-tv-shows';
             break;
@@ -69,7 +72,6 @@
       else {
         var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ nid +'/'+ start_from +'/'+ limit + additional_arguments;
       }
-      //var url = Drupal.settings.basePath + 'ajax/news/get-related/'+ start_from +'/'+ limit + additional_arguments;
       $('.ajax-load-block .load-more-link a').after('<div id="load-more-loader-js"></div>');
 
       addSpinJs('load-more-loader-js', 'consumptionator-page', '#ffffff');
@@ -79,6 +81,8 @@
         url: url,
         dataType: 'json',
         success: function (data) {
+          console.info(data);
+          console.info(data.rendered);
           $('.ajax-load-block .load-more-link').before(data.rendered);
           $('#load-more-loader-js').remove();
 

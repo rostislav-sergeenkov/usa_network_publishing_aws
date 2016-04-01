@@ -350,21 +350,23 @@ function _usanetwork_news_pull_related_nodes($start_from = 0, $limit = 0, $direc
  * @param $show_nid
  */
 function usanetwork_news_get_related_content_ajax($start_from, $limit) {
-  $related_content = _usanetwork_news_cache_get_limited_related_content(NULL, 0, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
-
-  if (!empty($related_content)) {
-    $block_of_items = _usanetwork_tv_shows_render_related_content_items_block($related_content, FALSE, FALSE, $start_from, $limit, FALSE);
-
-    $related_html = theme('usanetwork_tv_shows_related_items_container', array(
-      'related_items_block' => $block_of_items,
-      'load_more_link' => TRUE,
-      'items_pre_page_limit' => USA_CONS_TV_SHOW_RELATED_ITEMS_ON_PAGE,
-    ));
-  }
-
-  $output = array(
-    'html' => $related_html,
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'overlimited' => TRUE,
+    'rendered' => '',
   );
 
-  return drupal_json_output($output);
+  $related_content = _usanetwork_news_cache_get_limited_related_content(NULL, $start_from, $limit + 1);
+
+  if (!empty($related_content)) {
+    if (count($related_content) > $limit) {
+      $response['overlimited'] = FALSE;
+      $related_content = array_slice($related_content, 0, $limit);
+    }
+    $response['rendered'] = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
+    $response['total'] = count($related_content);
+    $response['found'] = TRUE;
+  }
+  return drupal_json_output($response);
 }

@@ -18,7 +18,9 @@
   <div class="episode-landing-list-item-inner">
     <div class="episode-landing-info-block">
       <div class="open-description"></div>
-      <div class="title"><?php print $title; ?></div>
+      <div class="title"><a href="
+        <?php print $blog_url; ?>"><?php print $title; ?></a>
+      </div>
       <?php if (!empty($post_date)): ?>
         <div class="posted-date">
           <?php print t('Posted on') . ' ' . $post_date; ?>
@@ -26,7 +28,9 @@
       <?php endif; ?>
       <div class="image-block">
         <div class="asset-img">
-          <img src="<?php print $desktop_image_url; ?>" alt=""/>
+          <a href="<?php print $blog_url; ?>">
+            <img src="<?php print $desktop_image_url; ?>" alt=""/>
+          </a>
         </div>
       </div>
       <?php if (!empty($tags)): ?>

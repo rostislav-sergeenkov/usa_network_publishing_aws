@@ -957,7 +957,7 @@ header {
         }
       }
     }
-    &.full-episode-tab, &.movies-tab {
+    &.full-episode-tab, &.movies-tab, &.news-tab {
       padding: get-vw(24px, 1025) get-vw(30px, 1025) get-vw(50px, 1025);
       @include breakpoint($bp-min-1901-width) {
         padding: 48px 53px 96px;
@@ -965,7 +965,7 @@ header {
       @include breakpoint($bp-1024-width) {
         padding: 24px 30px 50px;
       }
-      .full-episode-tab-wrapper, .movies-tab-wrapper {
+      .full-episode-tab-wrapper, .movies-tab-wrapper, .news-tab-wrapper {
         @include clear;
         margin: 0 auto;
         max-width: 1779px;
@@ -993,8 +993,8 @@ header {
           padding-top: 26px;
         }
       }
-      .latest-full-episodes, .latest-movies {
-        .full-episodes-list, .movies-list {
+      .latest-full-episodes, .latest-movies, .latest-news {
+        .full-episodes-list, .movies-list, .news-list {
           width: 100%;
           @include clear;
         }

@@ -151,22 +151,70 @@ $continue-gallery-back : #4e4e4e;
     }
   }
 }
-.page-movies, .node-type-movie, .movie-consumptionator, .page-news {
+.page-movies, .node-type-movie, .movie-consumptionator, .page-news, body:not([class*=" show-"]).node-type-consumpt-post {
   .show-color {
     background: $usa-movie-back;
     &.secondary {
       background: $usa-movie-secondary-back;
+      &:before {
+        background: $usa-movie-tertiary-back;
+      }
+    }
+    &.tertiary {
+      background: $usa-movie-tertiary-back;
+      &:before {
+        background: $usa-movie-secondary-back;
+      }
     }
     &.hover-avail, &.tertiary {
       &:hover {
         background: $usa-movie-tertiary-back;
       }
     }
+    &.show-font {
+      color: $usa-movie-back!important;
+    }
   }
   .show-border {
-    border-color: $usa-movie-back;
+    border-color: $usa-movie-back!important;
+    &:before, &:after {
+      border-color: $usa-movie-back!important;
+    }
+    &.secondary {
+      border-color: $usa-movie-secondary-back!important;
+      &:before, &:after {
+        border-color: $usa-movie-secondary-back!important;
+      }
+    }
+    &.tertiary {
+      border-color: $usa-movie-tertiary-back!important;
+      &:before, &:after {
+        border-color: $usa-movie-tertiary-back!important;
+      }
+    }
+  }
+  .show-color-border, .asset-img.show {
+    &:before {
+      background: $usa-movie-back!important;
+    }
+  }
+  .item-hover {
+    &:hover {
+      background: $usa-movie-back;
+    }
+  }
+  .icons-block {
+    a {
+      color: $usa-movie-back!important;
+    }
+  }
+  .person-quotation {
+    &:before, &:after {
+      color: $usa-movie-back!important;
+    }
   }
 }
+
 
 
 

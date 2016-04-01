@@ -81,8 +81,6 @@
         url: url,
         dataType: 'json',
         success: function (data) {
-          console.info(data);
-          console.info(data.rendered);
           $('.ajax-load-block .load-more-link').before(data.rendered);
           $('#load-more-loader-js').remove();
 

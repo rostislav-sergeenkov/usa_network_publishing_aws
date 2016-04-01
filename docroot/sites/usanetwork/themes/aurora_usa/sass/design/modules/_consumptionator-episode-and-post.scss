@@ -150,10 +150,10 @@
             }
             @include breakpoint($bp-1024-width) {
               font-size: 12px;
+              line-height: 3em;
             }
             @include breakpoint($bp-768-width) {
               font-size: 13px;
-              line-height: 3em;
             }
             .episode {
               font-family: $tex-gyreschola-italic;

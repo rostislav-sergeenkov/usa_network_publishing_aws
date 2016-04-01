@@ -307,8 +307,11 @@
               padding: 5px 0 5px calc(5% + 5px);
             }
             @include breakpoint($bp-768-width) {
-              padding: 8px 25px 8px 10px;
+              padding: 10px 25px 10px 10px;
               font-size: 10px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 14px;
             }
             .font-icon {
               background: #ffffff;
@@ -609,7 +612,7 @@
             width: 150px;
           }
           a {
-            padding: 20px 0 20px calc(14% + 2px);
+            padding: 15px 0 15px calc(14% + 2px);
             @include breakpoint($bp-1280-width) {
               padding: 10px 0 10px calc(14% + 2px);
             }
@@ -617,7 +620,7 @@
               padding: 5px 0 5px calc(14% + 2px);
             }
             @include breakpoint($bp-640-width) {
-              padding: 5px 0 5px calc(12% + 2px);
+              padding: 10px 0 10px calc(12% + 2px);
             }
           }
           &:after {

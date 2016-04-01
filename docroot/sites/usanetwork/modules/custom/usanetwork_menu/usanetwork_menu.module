@@ -110,6 +110,11 @@ function usanetwork_menu_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_menu_sm_news'] = array(
+    'info' => t('Homepage Menu: News'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   $blocks['usanetwork_menu_sm_menu'] = array(
     'info' => t('Usanetwork Menu: Menu block'),
     'cache' => DRUPAL_NO_CACHE,
@@ -186,6 +191,11 @@ function usanetwork_menu_block_view($delta = '') {
     case 'usanetwork_menu_sm_movies':
       $block['subject'] = '';
       $block['content'] = _usanetwork_menu_movies_block();
+      break;
+
+    case 'usanetwork_menu_sm_news':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_menu_news_block();
       break;
 
     case 'usanetwork_menu_sm_menu':
@@ -304,6 +314,16 @@ function usanetwork_menu_theme() {
         ),
       ),
       'template' => 'templates/usanetwork-menu-movies',
+    ),
+    'usanetwork_menu_news' => array(
+      'variables' => array(
+        'items' => array(
+          'title' => NULL,
+          'url' => NULL,
+          'image' => NULL,
+        ),
+      ),
+      'template' => 'templates/usanetwork-menu-news',
     ),
     'usanetwork_menu_aspot_onnow_tonight' => array(
       'variables' => array(
@@ -1447,7 +1467,7 @@ function _usanetwork_menu_consumptionator_block_consumpt_post($node) {
       (!empty($node->field_summary) ? $entity_wrapper->field_summary->value->value() : '');
     $theme_variables = array(
       'main_url' => url('<front>'),
-      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
+      'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : url('news'),
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : 'News',
       'post_name' => !empty($node->title) ? $node->title : '',
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
@@ -2108,4 +2128,31 @@ function _usanetwork_menu_movies_block() {
   );
 
   return theme('usanetwork_menu_movies', $theme_variables);
+}
+
+function _usanetwork_menu_news_block() {
+  $result = _usanetwork_consumptionator_post_get_posts(NULL, NULL, $limit = 3);
+
+  if (!empty($result)) {
+    $posts = entity_load('node', array_keys($result));
+    foreach ($posts as $post) {
+      $post_image_path = usanetwork_core_api_get_content_image('node', $post, 'main', $limit = 1, TRUE);
+      $post_image = theme('image_style', array(
+        'path' => $post_image_path,
+        'style_name' => 'full_episodes_633x356',
+      ));
+      $items_variables = array(
+        'url' => url('node/' . $post->nid),
+        'title' => $post->title,
+        'image' => $post_image,
+      );
+      $items[] = $items_variables;
+    }
+  }
+
+  $theme_variables = array(
+    'items' => $items,
+  );
+
+  return theme('usanetwork_menu_news', $theme_variables);
 }

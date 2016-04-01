@@ -259,9 +259,9 @@ function _usanetwork_consumptionator_post_main_block() {
 }
 
 /*
- * Renders posts carousel for blog.
-*/
-function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = NULL, $post_id = NULL) {
+ * Get latest posts
+ */
+function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 20) {
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
   $query->condition('node.type', 'consumpt_post');
@@ -281,10 +281,19 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
   $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
   $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
   $query->orderBy('sorted_time', 'DESC');
-  if (empty($show_id)) {
-    $query->range(0, 20);
-  }
+  $query->range(0, $limit);
+
   $result = $query->execute()->fetchAllKeyed();
+
+  return $result;
+}
+
+
+/*
+ * Renders posts carousel for blog.
+*/
+function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = NULL, $post_id = NULL) {
+  $result =  _usanetwork_consumptionator_post_get_posts($show_id, $blog_nid);
   if (isset($result)) {
     $posts = entity_load('node', array_keys($result));
     $rendered_items = array();

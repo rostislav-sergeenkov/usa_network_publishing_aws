@@ -368,7 +368,6 @@ function theme_usanetwork_tve_player_microsite($variables) {
     'frameborder' => 0,
     'allowfullscreen' => '',
     'id' => 'player',
-    'onload' => '$pdk.bind(this, true); $pdk.controller.setIFrame(this, true);',
     'webkitallowfullscreen' => "",
     'mozallowfullscreen' => "",
     'oallowfullscreen' => "",

@@ -1428,11 +1428,17 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
   $video_desc = array_merge($video_desc, _usanetwork_microsite_set_status_and_h1_variables($file, $section_wrapper));
   $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
 
+  $mpx_guid = _usanetwork_get_field_item('file', $file, 'field_mpx_guid', 'value');
+  $episode_rating = _usanetwork_get_field_item('file', $file, 'field_mpx_vchip_rating', 'value');
+
   $result = array(
     'default_image' => isset($renderable_image) ? $renderable_image : '',
     'player' => $video,
     'description_template' => theme($theme_registry_name, $video_desc),
     'preview_image' => $preview_image,
+    'episode-title' => $file->filename,
+    'mpx-guid' => (!empty($mpx_guid)) ? $mpx_guid : NULL,
+    'episode-rating' => (!empty($episode_rating)) ? $episode_rating : NULL,
   );
   drupal_json_output($result);
   exit();

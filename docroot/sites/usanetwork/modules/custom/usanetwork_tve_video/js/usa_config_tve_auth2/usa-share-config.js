@@ -1,15 +1,30 @@
 function share_config(clip) {
 
-  console.log('start: share_config');
+  console.info('start: share_config');
+
+  var pageUrl = window.location.href,
+      $playerContainer = document.querySelector('[data-usa-tve-player-container]'),
+      $playerWrap = document.querySelector('[data-usa-tve-player="player"]'),
+      videoSrc =  $playerWrap.getAttribute('data-src'),
+      isAuth = $playerContainer.getAttribute('data-entitlement') === 'auth' ? true : false,
+      isFullEpisode = parseInt($playerContainer.getAttribute('data-is-full-episode')) === 1 ? true : false,
+      shareEmbed;
+
+  if (isFullEpisode) {
+    shareEmbed = false;
+  } else {
+    shareEmbed = true;
+  }
 
   return {
     "shareLinkVisible": true,
     "shareLinkParam": "permalink",
-    "shareEmbedVisible": false,
-    "shareEmbedBaseUrl": "http://foo/bar",
-    "shareEmbedString": '<param name="permalink" value="http://www.nbc.com/late-night-with-seth-meyers/video/billy-eichner-julie-klausner-joel-edgerton-vintage-trouble/2882599"/>',
+    "shareEmbedVisible": shareEmbed,
+    "shareEmbedBaseUrl": pageUrl,
+    "shareEmbedString": '<iframe src="' + videoSrc + '" frameBorder="0" seamless="seamless" allowFullScreen></iframe>',
     "shareFacebookVisible": true,
-    "shareFacebookLink": "http://foo/bar",
+    "shareFacebookLink": pageUrl,
+    "shareTwitterVisible": true,
     "shareGoogle+Visible": true
   };
 }

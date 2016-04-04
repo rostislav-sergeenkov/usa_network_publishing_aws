@@ -33,8 +33,6 @@
                   isCookiesEnabled = helper.cookiesEnabled(),
                   isMobile = helper.device.isMobile;
 
-              console.info(isMobile);
-
               scope.isAuthenticated = authService.isAuthenticated();
               scope.login = authService.openLoginModal;
               scope.verificationInProgress = verificationInProgress;

@@ -36,13 +36,20 @@
                         key: 'loglevel'
                       }],
                     MVPD_ID_KEY = 'MVPDid',
-                    params;
+                    params,
+                    frame = $(element).find('iframe').eq(0);
 
                 scope.id = config.id;
 
                 controller.playerId(attr['id']);
 
                 authService.promise.then(init);
+
+                frame.bind('load', function(evt) {
+                  console.info('iframe load event');
+                  $pdk.bind(this, true);
+                  $pdk.controller.setIFrame(this, true);
+                });
 
                 function init(status) {
                   // passing iframe url as trusted to the template
@@ -272,16 +279,16 @@
                 $pdk.controller.addEventListener('OnMediaStart', _onMediaStart);
 
                 $pdk.controller.addEventListener('OnSetToken', function (e) {
-                  console.log('OnSetToken');
+                  console.info('OnSetToken');
                 });
 
                 $pdk.controller.addEventListener("OnShareControlInvoked", function (e) {
-                  console.log("OnShareControlInvoked");
+                  console.info("OnShareControlInvoked");
                 });
 
                 $pdk.controller.addEventListener("OnShareOptionInvoked", function (e) {
-                  console.log("OnShareOptionInvoked");
-                  console.log(e.data);
+                  console.info("OnShareOptionInvoked");
+                  console.info(e.data);
                 });
 
                 // init end card service

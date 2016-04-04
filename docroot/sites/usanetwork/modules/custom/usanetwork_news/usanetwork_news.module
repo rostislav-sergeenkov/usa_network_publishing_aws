@@ -10,7 +10,7 @@
 function usanetwork_news_menu() {
 
   $items['news'] = array(
-    'title' => t('Latest on USA'),
+    'title' => t('USA Network News'),
     'page callback' => 'usanetwork_news_landing_post',
     'access arguments' => array('access content'),
   );
@@ -101,10 +101,14 @@ function usanetwork_news_landing_post() {
       );
       $theme_variables['items'][] = theme('usanetwork_blog_landing_posts_list_item', $theme_item_variables);
     }
+
+    $header = theme('usanetwork_menu_static_page_header', array(
+      'title' => t('Latest On USA'),
+    ));
   }
 
   return !empty($theme_variables['items'])
-    ? theme('usanetwork_blog_landing_posts', $theme_variables) . theme('pager')
+    ? $header . theme('usanetwork_blog_landing_posts', $theme_variables) . theme('pager')
     : '';
 }
 

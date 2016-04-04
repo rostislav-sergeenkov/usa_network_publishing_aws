@@ -1,0 +1,30 @@
+/* GALLERIES */
+#galleries {
+  max-width: 1920px;
+  max-height: 1080px;
+  background-color: transparent;
+  background-image: url(/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_photos_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.microsite-gallery {
+  position: relative;
+  width: 88%;
+  top: 0;
+  left: 0;
+  margin-left: 6%;
+}
+#gallery-loader {
+  display: none;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  margin-left: calc(50% - 16px);
+}
+.flexslider .slides li img {
+  width: 100%;
+  padding-top: 56.25%;
+}

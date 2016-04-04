@@ -1,0 +1,292 @@
+#microsite {
+  background-image: none;
+}
+
+/* HOME SECTION */
+#home a,
+#home a:link,
+#home a:visited {
+  color: #FAEFDE;
+}
+#home a:hover,
+#home a:active {
+  color: #E3D9D1;
+}
+
+#microsite #home .ad-leaderboard {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  margin: 40px 0 0;
+  overflow: visible;
+}
+#home {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/RP_Farewell_desktop_v6_top_final.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FAEFDE;
+  width: 100%;
+  height: 1000px;
+  padding: 0;
+  margin-bottom: 0;
+  color: #55452A;
+  text-align: center;
+  position: relative;
+  top: 5px; /* Needed for the home waypoint to trigger! */
+}
+#home.section {
+  padding-top: 1000px;
+}
+#home-wrapper {
+  width: 100%;
+}
+#home #home-content-container {
+  position: absolute;
+  top: 135px;
+  left: 0;
+  width: 100%;
+}
+#home #home-content-container > div {
+  margin: 0 auto 1.5%;
+}
+#home #home-logo {
+  margin-top: 21.3% !important;
+  margin-bottom: 20px !important;
+  width: 53%;
+}
+#home #home-logo h1,
+#home #home-logo h2 {
+  height: 0;
+  text-indent: -9999px;
+  margin: 0;
+}
+#home #home-sponsored.camry2015 {
+  width: 24%;
+}
+#home #home-sponsored.camry {
+  width: 20%;
+}
+#home #home-sponsored.corolla {
+  width: 21%;
+}
+#home #home-tunein,
+#home #home-description {
+  width: 100%;
+  font-size: 1.375em;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1%;
+}
+
+/* countdown */
+#home #home-countdown {
+  position: absolute;
+  top: 60%;
+  left: 0;
+  margin-left: calc(50% - 225px) !important;
+  width: 450px;
+}
+#home #home-countdown .circle {
+  display: table;
+  height: 96px;
+  max-height: none;
+  max-width: none;
+  padding-top: 0;
+  width: 96px;
+}
+#home #home-countdown .counter-container {
+  display: table-cell;
+  left: 0;
+  position: relative;
+  top: 0;
+  vertical-align: middle;
+  width: 100%;
+}
+#home #home-countdown .numbers {
+  font-size: 2em;
+  margin-bottom: 6%;
+}
+#home #home-countdown .title {
+  font-size: 1em;
+}
+#home #home-countdown .line {
+  width: 60%;
+}
+#caption {
+  color: #FAEFDE;
+}
+#until {
+  color: #FAEFDE;
+}
+
+/* navigation */
+#home #home-content-container #home-nav {
+  height: auto;
+  margin-bottom: 4%;
+  width: 80%;
+}
+#home #home-nav li {
+  display: inline-block;
+  margin: 0 2% 4%;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+.home-button-text {
+  color: #FFF;
+  font-size: 1em;
+  line-height: 1.3;
+}
+
+/* leaderboard */
+#microsite #home .ad-leaderboard {
+  margin-top: 0;
+}
+
+/* USA logo */
+#home #home-usa-logo {
+  position: absolute;
+  bottom: 16px;
+  left: 10px;
+  width: 45px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Next button */
+#microsite div.scroll {
+  position: absolute;
+  bottom: 5px;
+  left: 100%;
+  margin: 0 0 0 calc(-50% - 24px);
+  width: 48px;
+  cursor: pointer;
+  padding: 0;
+}
+#microsite .scroll div {
+  text-align: center;
+  line-height: 18px;
+  width: 48px;
+  font-size: 14px;
+  padding-top: 3px;
+  background-color: #fff;
+  color: #000;
+}
+#microsite .scroll img {
+  width: 14px;
+  height: 25px;
+  margin: 0 auto;
+}
+
+
+/* ************** BEGIN MEDIA QUERIES ************* */
+@media (max-width: 1024px) {
+  #home {
+    height: auto;
+  }
+  #home.section {
+    background-position: center top;
+    padding-top: calc(90vw + 170px);
+  }
+  #home-wrapper {
+    padding-top: 0;
+  }
+  #home #home-logo {
+    margin-bottom: 25vw!important;
+    width: 40%;
+  }
+  #home #home-sponsored {
+    width: 50%;
+    min-width: 200px;
+  }
+  #home #home-tunein,
+  #home #home-description {
+    font-size: 2.15vw!important;
+  }
+  #home #home-countdown {
+    width: 50%;
+  }
+  #home #home-countdown .circle {
+    height: 8vw;
+    width: 8vw;
+  }
+  #home #home-countdown .numbers {
+    font-size: 3.125vw!important;
+  }
+  #home #home-countdown .title {
+    font-size: 1.5625vw!important;
+  }
+  .home-button-text {
+    font-size: 1.5625vw!important;
+  }
+  #home #home-content-container {
+    top: calc(5vw + 90px);
+  }
+  #home #home-content-container #home-nav {
+    width: 628px;
+  }
+  #home #home-nav li {
+    width: 29.3%;
+    margin: 0 2% 6%;
+  }
+}
+
+@media (max-width: 640px) {
+  #home.section {
+    padding-top: calc(128vw + 90px);
+  }
+  #home #home-logo {
+    margin-bottom: 38vw!important;
+  }
+  #home #home-countdown .circle {
+    height: 56px;
+    width: 56px;
+  }
+  #home #home-countdown .numbers {
+    font-size: 20px!important;
+  }
+  #home #home-countdown .title {
+    font-size: 10px!important;
+  }
+  .home-button-text {
+    font-size: 10px!important;
+  }
+  #home #home-content-container #home-nav {
+    width: 304px;
+  }
+  #home #home-nav li {
+    width: 46%;
+    margin: 0 2% 4vw;
+  }
+  #home #home-usa-logo {
+    width: 38px;
+    height: auto;
+  }
+  #home #home-nav li:nth-child(3n + 1) {
+    clear: none;
+  }
+  #home #home-nav li:nth-child(2n + 1) {
+    clear: left;
+  }
+}
+@media (max-width: 500px) {
+  #home.section {
+    padding-top: calc(204vw + 90px);
+  }
+  #home #home-logo {
+    width: 48%;
+    margin-top: 20%!important;
+    margin-bottom: 47vw!important;
+  }
+  #home #home-countdown {
+    width: 65%;
+  }
+  #home #home-tunein,
+  #home #home-description {
+    font-size: 10px!important;
+  }
+}
+

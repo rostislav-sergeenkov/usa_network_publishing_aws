@@ -1,0 +1,413 @@
+/* GENERAL */
+html {
+  color: #000;
+  background-color: #FAEFDE;
+}
+body.page-node-microsite {
+  background-color: #FAEFDE !important;
+  font-family: source-code-pro, Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+}
+a,
+a:link,
+a:visited {
+  color: #55452A;
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  color: #30251A;
+  text-decoration: underline;
+}
+
+/* MAIN STRUCTURE */
+.page-node-microsite .usa-wrap {
+  background-color: #FAEFDE;
+  top: -5px;
+  margin: 0 auto;
+}
+
+/* SECTIONS CONTAINERS */
+.section:nth-child(even) {
+  background-color: transparent;
+}
+.section:nth-child(even) {
+  background-color: transparent;
+}
+.section {
+  background-color: #FFF;
+  padding: 80px 0 60px;
+}
+#videos {
+  background-color: #FAEFDE;
+}
+section .section-title-block > h2 {
+  background-repeat: no-repeat;
+  background-size: contain;
+  clear: none;
+  color: #55452A;
+  float: left;
+  margin: 0 10px 0 0;
+  text-transform: none;
+}
+body:not(.ie9) .section-title-block {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+body:not(.ie9) section .section-title-block > h2 {
+  -ms-flex-item-align: start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  float: none;
+  margin: 0!important;
+}
+.section-description,
+body:not(.ie9) .section-description {
+  color: #55452A;
+  margin: 36px auto 28px !important;
+  text-align: center;
+  width: 80%;
+}
+.section-description:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+/* HOME */
+#home.section {
+  color: #55452A;
+  background-color: #FAEFDE;
+}
+#home #home-tunein {
+}
+#home #home-content-container #home-description {
+  line-height: 1;
+}
+#home #home-tunein {
+  text-transform: none;
+}
+
+/* COUNTDOWN TIMER */
+.numbers,
+.title {
+  font-family: inherit;
+}
+.circle {
+  background-color: transparent;
+  border: 4px solid #55452A;
+}
+
+/* SITE NAV */
+#site-nav {
+  max-height: 60px !important;
+  color: #55452A;
+  background-color: #FAEFDE;
+  box-shadow: 0 1px 6px #55452A;
+  overflow: visible !important;
+  z-index: 10000;
+}
+#site-nav-left {
+  position: relative;
+  top: 3px;
+  left: 9px;
+  width: 206px;
+  height: 80px;
+}
+/*
+#site-nav-left:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 206px;
+  height: 80px;
+  background-image: url(/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_farewell_logo_small.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+*/
+#site-nav #site-nav-top {
+  display: none;
+}
+#site-nav #site-nav-center {
+  position: absolute;
+  top: 12px;
+  left: 100%;
+  margin: 0 auto;
+  width: 80%;
+  line-height: 1;
+  margin-left: -90%;
+}
+#site-nav li {
+  padding: 10px 18px 0;
+}
+#site-nav a,
+#site-nav a:link,
+#site-nav a:visited {
+  color: #55452A;
+  text-transform: uppercase;
+}
+#site-nav a:hover,
+#site-nav a:active,
+#site-nav li.active a {
+  color: #30251A;
+}
+/* mobile */
+#site-nav-links-mobile ul#site-nav-links-list-mobile {
+  width: 180px;
+}
+#site-nav-links-mobile li {
+  font-size: 1em;
+  height: auto;
+  width: 180px;
+}
+#site-nav-mobile li.internal a:hover,
+#site-nav-mobile li.internal a:active,
+#site-nav-mobile li.internal.active a {
+  color: #55452A;
+}
+#site-nav-right {
+  position: absolute;
+  top: 18px;
+  right: 9px;
+  width: 60px;
+  height: 26px;
+}
+
+
+/* VIDEOS */
+#videos .header {
+  background-image: none;
+}
+#microsite .full-pane #video-container h1,
+#microsite .full-pane #video-container h3 {
+  color: #FFF;
+}
+#microsite .full-pane #video-container .video-description {
+  color: #FFF;
+  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+}
+/* sub-nav */
+#video-filter li.filter-child-item {
+  background-color: #FAEFDE;
+  color: #55452A;
+  border-bottom: 1px solid #444;
+  text-align: left;
+  padding: 8px 0 8px 12px;
+}
+#video-filter li.filter-child-item:hover,
+#video-filter li.filter-child-item.active {
+  background-color: #444;
+  color: #FFF;
+}
+#video-filter li.filter-item:hover,
+#video-filter li.filter-item.active {
+  background-color: red;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item {
+  background-color: #333;
+  text-transform: none;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item:hover,
+#microsite .block-usanetwork-mpx-video li.grid-item.active {
+  background-color: red;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item {
+  height: 74px;
+}
+#videos .msm-episode-title {
+  margin-left: 26px;
+}
+.featured-asset.file-video-mpx .locked-msg {
+  color: #FFF;
+  line-height: 1;
+}
+.featured-asset .tve-help .tve-download,
+.featured-asset .tve-help .tve-msg {
+  color: #FFF;
+}
+#microsite .featured-asset .tve-help .tve-download-link {
+  max-width: 339px;
+}
+
+
+/* TIMELINE GALLERIES */
+body:not(.ie9) .section-title-block {
+  display: block;
+}
+.timelineFlat.timelineFlatPortfolio.tl3 {
+  background-color: #FFF;
+}
+.timeline-items-wrapper {
+  background-color: #FAEFDE;
+}
+#timeline section .section-description {
+  margin-top: 0px;
+}
+.node-timeline-gallery .content {
+  background-color: #FAEFDE;
+  color: #55452A;
+}
+.page-node-microsite .timelineFlat .timeline-items .timeline-item-image,
+.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-image {
+  background-color: #FAEFDE;
+}
+.timelineFlat .timeline-item .timeline-item-text {
+  color: #55452A;
+}
+.timelineFlat #timeline-line-full-left .arrow:before,
+.timelineFlat #timeline-line-full-right .arrow:before {
+  color: limegreen;
+}
+.timelineFlat .timeline-items {
+  background-color: #FAEFDE;
+}
+.timelineFlat .timeline-item h2 span {
+  color: #55452A;
+}
+.timelineFlat .timeline-item h2 span.divider.divider-two,
+.timelineFlat .timeline-item h2 span.timeline-h2-scene-num {
+  display: none;
+}
+.timelineFlat h4.timeline-month {
+  color: #FFF;
+}
+.timelineFlat .timeline-item .timeline-item-details {
+  color: #55452A;
+  background-color: #FFF;
+}
+.timelineFlat #timeline-line-full-left,
+.timelineFlat #timeline-line-full-right {
+  display: none;
+}
+.timelineFlat .timeline-right,
+.timelineFlat .timeline-right:hover:active,
+.timelineFlat .timeline-left,
+.timelineFlat .timeline-left:hover:active {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.timelineFlat #timeline-line-left:before,
+.timelineFlat #timeline-line-right:before {
+  color: #000;
+}
+.timelineFlat a.timeline-node:after:hover {
+  color: limegreen;
+}
+.timelineFlat a.timeline-node.active {
+  color: #000;
+}
+.timelineFlat a.timeline-node.active:after {
+  border: 2px solid transparent;
+  background: #55452A;
+}
+.timelineFlat .timeline-node-desc {
+  color: #55452A;
+  background-color: #FAEFDE;
+}
+.timelineFlat .timeline-node-desc:after {
+  border-top: 5px solid #FAEFDE;
+}
+.timelineFlat .timeline-item.active:before {
+  background-color: #55452A;
+}
+.timelineFlat .timeline-item.active:after {
+  border-top: 5px solid #55452A;
+}
+
+
+/* SOCIAL */
+#farewell-social.section {
+  width: 100%;
+  height: 100%;
+  background-color: #FAEFDE;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_social_bg.jpg');
+  background-repeat: no-repeat;
+}
+#farewell-social-content {
+  width: 80%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+#farewell-social-content iframe {
+  max-height: 80%;
+  overflow: hidden;
+}
+
+
+/* FOOTER */
+#microsite footer {
+  background-color: #55452A;
+  color: #FFF;
+}
+#microsite footer li a:visited, #microsite footer li a:focus {
+  color: #FFF;
+}
+#microsite footer li a {
+  color: #FFF;
+}
+
+
+/* BEGIN MEDIA QUERIES */
+@media (max-width: 1280px) {
+  #site-nav li {
+    font-size: 0.875em;
+    padding: 10px 12px 0;
+  }
+}
+@media (max-width: 1024px) {
+  #site-nav li {
+    font-size: 0.75em;
+    padding: 10px 10px 0;
+  }
+}
+@media (max-width: 920px) {
+  .section-description {
+    width: 324px;
+  }
+  #timeline section .section-title-block > h2 {
+    height: 94px;
+    margin-left: calc(50% - 298.5px);
+    width: 263px;
+  }
+}
+@media (max-width: 873px) {
+  #site-nav {
+    overflow: visible;
+  }
+  #site-nav:hover {
+    overflow: visible!important;
+  }
+  #site-nav li {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 722px) {
+  .featured-asset .tve-help .tve-download,
+  .featured-asset .tve-help .tve-msg {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-description {
+    font-size: 0.75em;
+    margin: 0px auto 20px;
+    width: 172px;
+  }
+  #timeline section .section-title-block > h2 {
+    height: 43px;
+    margin-left: calc(50% - 156px);
+    width: 120px;
+  }
+}
+
+/* BEGIN MOBILE DEVICE QUERIES */
+@media (max-device-width: 736px) {
+  #microsite #home .ad-leaderboard {
+    margin-left: calc(-50% - 150px);
+  }
+}

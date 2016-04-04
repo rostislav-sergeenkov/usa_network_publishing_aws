@@ -1445,6 +1445,14 @@ function _usanetwork_menu_consumptionator_block_consumpt_post($node) {
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->field_summary) ? $entity_wrapper->field_summary->value->value() : '');
+
+    //Sponsored MPS
+    if (!empty($node->field_sponsored)) {
+      $field_sponsored = $entity_wrapper->field_sponsored->value();
+      if ($field_sponsored == '1') {
+        $sponseored_node_path = '/node/' . $node->nid;
+      }
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
@@ -1456,6 +1464,7 @@ function _usanetwork_menu_consumptionator_block_consumpt_post($node) {
         'description' => $description,
         'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share this post'), $node->title, $description),
       ),
+      'sponseored_node_path' => isset($sponseored_node_path) ? $sponseored_node_path : NULL,
     );
     return theme('usanetwork_menu_consumptionator_post', $theme_variables);
   }

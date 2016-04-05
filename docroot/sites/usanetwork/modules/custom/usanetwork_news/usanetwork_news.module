@@ -28,7 +28,6 @@ function usanetwork_news_menu() {
  * Global News Page
  */
 function usanetwork_news_landing_post() {
-  drupal_add_js(drupal_get_path('module', 'usanetwork_news') . '/js/usanetwork_news.js');
 
   $page = pager_find_page();
   $num_per_page = 20;

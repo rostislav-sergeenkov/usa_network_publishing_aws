@@ -101,7 +101,7 @@
           top: 50%;
         }
       }
-      .series {
+      .series, .show-name {
         font-size: 22.5px;
         line-height: 1em;
         @include breakpoint($bp-1280-width) {
@@ -661,6 +661,78 @@
       }
       &:before, &:after {
         background-color: $poll-back;
+      }
+    }
+  }
+}
+#block-usanetwork-news-landing {
+  .episode-landing-list-item {
+    @include breakpoint($bp-480-width) {
+      padding: 25px 10px;
+    }
+    .episode-landing-info-block {
+      .show-name {
+        @include breakpoint($bp-640-width) {
+          color: $header-tab-button-back;
+          font-family: $avalon-medium;
+          font-size: get-vw(18px, 640);
+          letter-spacing: 0.5px;
+          line-height: 1.3;
+          text-transform: uppercase;
+          width: 100%;
+        }
+      }
+    }
+    &:not(.active) {
+      .episode-landing-info-block {
+        .show-name {
+          @include breakpoint($bp-640-width) {
+            float: right;
+            width: 60%;
+          }
+        }
+        .title {
+          @include breakpoint($bp-640-width) {
+            float: right;
+            font-size: get-vw(24px, 640);
+            line-height: 1.5;
+            text-transform: none;
+            width: 60%;
+          }
+        }
+        .image-block {
+          @include breakpoint($bp-640-width) {
+            display: block;
+            width: 35%;
+          }
+        }
+      }
+    }
+    &.active {
+      .episode-landing-info-block {
+        .show-name {
+          @include breakpoint($bp-640-width) {
+            margin-bottom: 0;
+          }
+        }
+        .title {
+
+        }
+        .image-block {
+          @include breakpoint($bp-640-width) {
+
+          }
+        }
+        .description {
+          @include breakpoint($bp-640-width) {
+            display: none;
+          }
+        }
+      }
+      .buttons-bar {
+        @include breakpoint($bp-640-width) {
+          display: none;
+        }
       }
     }
   }

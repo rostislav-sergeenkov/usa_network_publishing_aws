@@ -33,17 +33,13 @@
     },
 
     // player init bind
-    micrositePlayerBind: function () {
-      for (key in $pdk.controller.listeners) {
-        delete $pdk.controller.listeners[key];
-      }
-      $pdk.bindPlayerEvents();
-      $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
-      tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
+    micrositePlayerBind: function (isAuth) {
+      USAN.playerAPI.clearlisteners();
+      USAN.playerAPI.bindPlayerEvents('player');
     },
 
     //ajax request
-    micrositeGetVideo: function (url, initialPageLoad) {
+    micrositeGetVideo: function (url, initialPageLoad, isAuth) {
       initialPageLoad = initialPageLoad || 0;
       var videoContainer = $('#video-container'),
           playerWrap = videoContainer.find('.video-player .file-video-mpx'),
@@ -75,7 +71,7 @@
 
         playerDesc.html(description);
 
-        Drupal.behaviors.ms_videos.micrositePlayerBind();
+        Drupal.behaviors.ms_videos.micrositePlayerBind(isAuth);
         Drupal.behaviors.ms_videos.setVideoHeight();
 
 //usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
@@ -111,6 +107,7 @@
           ad_300x60_1 = $('#videos #ad_300x60_1'), // full episode video
           ad_300x250 = $('#videos #ad_300x250'), // not displayed 300x250
           ad_300x250_1 = $('#videos #ad_300x250_1'), // displayed 300x250
+          isAuth = false,
           filter,
           url,
           msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
@@ -181,6 +178,7 @@
       Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
 
       if ($('#thumbnail-list .item-list ul li.thumbnail.active > div').hasClass('tve-video-auth')) {
+        isAuth = true;
         videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
       }
@@ -206,7 +204,7 @@
       }
 
       if (checkAjaxUrl()) {
-        Drupal.behaviors.ms_videos.micrositeGetVideo(url, initialPageLoad);
+        Drupal.behaviors.ms_videos.micrositeGetVideo(url, initialPageLoad, isAuth);
       }
     },
 
@@ -365,7 +363,6 @@ usa_debug('getThumbnailList() -- $this: ', $(this));
               $thumbnails.bind('click', function (e) {
                 e.preventDefault();
                 var elem = $(this);
-                tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
                 Drupal.behaviors.ms_videos.clickThumbnail(elem, true);
               });
               Drupal.behaviors.ms_videos.setActiveThumbnail();

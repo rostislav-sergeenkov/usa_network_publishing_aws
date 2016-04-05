@@ -419,16 +419,17 @@
       return {'section': activeSection, 'item': activeItem};
     },
     //player init bind
-    micrositePlayerBind: function () {
-      for (key in $pdk.controller.listeners) {
-        delete $pdk.controller.listeners[key];
+    micrositePlayerBind: function (isAuth, options) {
+
+      if (isAuth) {
+        // USAN.playerAPI.initiateAuthorization(options);
       }
-      $pdk.bindPlayerEvents();
-      $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
-      tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
+
+      USAN.playerAPI.clearlisteners();
+      USAN.playerAPI.bindPlayerEvents('player');
     },
     //ajax request
-    micrositeGetVideo: function (url) {
+    micrositeGetVideo: function (url, isAuth) {
 
       var videoContainer = $('#video-container'),
           playerWrap = videoContainer.find('.video-player .file-video-mpx'),
@@ -458,7 +459,11 @@
 
           playerDesc.html(description);
 
-          Drupal.behaviors.microsite_scroll.micrositePlayerBind();
+          Drupal.behaviors.microsite_scroll.micrositePlayerBind(isAuth, {
+            episodeRating: data['episode-rating'],
+            episodeTitle: data['episode-title'],
+            mpxGuid: data['mpx-guid']
+          });
 
         },
         error: function () {
@@ -488,6 +493,7 @@
           ad_300x60_1 = $('#videos #ad_300x60_1'),
           ad_300x250 = $('#videos #ad_300x250'),
           ad_300x250_1 = $('#videos #ad_300x250_1'),
+          isAuth = false,
           filter, url;
 
 
@@ -542,6 +548,7 @@
       Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
 
       if ($('#thumbnail-list .item-list ul li.thumbnail.active > div').hasClass('tve-video-auth')) {
+        isAuth = true;
         videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
       } else {
@@ -565,7 +572,7 @@
       }
 
       if (checkAjaxUrl()) {
-        Drupal.behaviors.microsite_scroll.micrositeGetVideo(url);
+        Drupal.behaviors.microsite_scroll.micrositeGetVideo(url, isAuth);
       }
     },
     // SetPausePlayer
@@ -783,7 +790,6 @@
           thumbnail.bind('click', function (e) {
             e.preventDefault();
             var elem = $(this);
-            tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
             Drupal.behaviors.microsite_scroll.micrositeClickThumbnail(elem);
           });
         },
@@ -1198,7 +1204,6 @@
             Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem);
           }
         }
-        tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
       });
 
 

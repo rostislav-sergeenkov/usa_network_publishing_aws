@@ -210,7 +210,6 @@
         $thumbnails.bind('click', function (e) {
           e.preventDefault();
           var elem = $(this);
-          tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
           Drupal.behaviors.ms_videos.clickThumbnail(elem, autoplay);
         });
 

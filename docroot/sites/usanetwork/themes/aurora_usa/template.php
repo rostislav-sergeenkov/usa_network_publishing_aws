@@ -169,6 +169,9 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/consumptionator-carousels.js');
   drupal_add_js($theme_path . '/javascripts/lazy-load-custom.js');
   drupal_add_js($theme_path . '/javascripts/spin.min.js');
+  drupal_add_js('var USAN = USAN || {};',
+    array('type' => 'inline', 'scope' => 'header', 'weight' => -100)
+  );
 
   $icomoon_ie_fix = array(
     '#tag' => 'script',

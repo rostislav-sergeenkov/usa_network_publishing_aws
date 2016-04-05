@@ -10,7 +10,7 @@
           return {
             replace: false,
             // apply client side iframe rendering to reduce cache problem for dynamic url
-            template: '<iframe data-ng-src="{{src}}" src="about:blank" id="{{id}}" '  +
+            template: '<iframe data-ng-src="{{src}}" src="about:blank" id="{{id}}" ' +
             'allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" frameborder="0"></iframe>',
             // directive describe below
             require: '^usaTvePlayerContainer',
@@ -45,7 +45,7 @@
 
                 authService.promise.then(init);
 
-                frame.bind('load', function(evt) {
+                frame.bind('load', function (evt) {
                   console.info('iframe load event');
                   $pdk.bind(this, true);
                   $pdk.controller.setIFrame(this, true);
@@ -137,10 +137,6 @@
                 return;
               }
 
-              // check $pdk object
-              if (!($pdk = window.$pdk)) {
-                return;
-              }
 
               // show dart
               $rootScope.isDartReq = true;
@@ -151,6 +147,9 @@
               scope.showCompanionAdd = false;
               scope.statusPlayerLoaded = false;
               scope.statusSetToken = false;
+              scope.isPlayerStart = false;
+              scope.isPlayerPlay = false;
+              scope.isPlayerPause = false;
 
               scope.user = {
                 isAuthenticated: authService.isAuthenticated()
@@ -253,26 +252,23 @@
                * Bind Player Events
                * @private
                */
-              function _bindPlayerEvents(player_Id, dataObj) {
+              function _bindPlayerEvents(playerID, dataObj) {
 
                 var data = dataObj || {};
 
-                //rebind $pdk each time directive is loaded
-                $pdk.bind(player_Id);
-                // $pdk.controller._iframeOnload();
-                console.log('bind');
+                console.info('bind');
+
+                $pdk.bind(playerID);
 
                 // init watchwith
                 if (typeof wwLoader !== 'undefined') {
                   wwLoader.bootstrap();
-                  console.log('init wwLoader.bootstrap()');
+                  console.info('init wwLoader.bootstrap()');
                 }
 
                 // default listeners for player
-                if (isEntitlement !== 'auth') {
-                  $pdk.controller.addEventListener('auth_success', _authSuccess);
-                  $pdk.controller.addEventListener('auth_token_failed', _authzFailure);
-                }
+                $pdk.controller.addEventListener('auth_success', _authSuccess);
+                $pdk.controller.addEventListener('auth_token_failed', _authzFailure);
                 $pdk.controller.addEventListener('companion_ad', _companionAd);
                 $pdk.controller.addEventListener('OnShowProviderPicker', _showPicker);
                 $pdk.controller.addEventListener('OnPlayerLoaded', _onPlayerLoaded);
@@ -298,31 +294,67 @@
                   $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
                 }
 
-                //$pdk.controller.addEventListener('OnMediaPause', _onMediaPause);
-                //$pdk.controller.addEventListener('OnMediaUnpause', _onMediaUnpause);
+                // microsites
+                $pdk.controller.addEventListener('OnMediaPause', _onMediaPause);
+                $pdk.controller.addEventListener('OnMediaUnpause', _onMediaUnpause);
+                $pdk.controller.addEventListener('OnReleaseStart', _onReleaseStart);
+
                 //$pdk.controller.addEventListener('OnReleaseError', _onReleaseError);
               }
 
+              USAN.playerAPI = {
+                // create public method _bindPlayerEvents
+                // 1. player_Id - important, default id='player'
+                // 2. dataObj - used only for reinit end card
+                // you need prepare new dataApi with your params
+                // docroot/sites/usanetwork/modules/custom/usanetwork_tve_video/js/usa_config_tve_auth2/usa-tve-endcard.js
+                bindPlayerEvents: _bindPlayerEvents,
 
-              // create public method _bindPlayerEvents
-              // 1. player_Id - important, default id='pdk-player'
-              // 2. dataObj - used only for reinit end card
-              // you need prepare new dataApi with your params
-              // docroot/sites/usanetwork/modules/custom/usanetwork_tve_video/js/usa_config_tve_auth2/usa-tve-endcard.js
-              $pdk.bindPlayerEvents = _bindPlayerEvents;
-
-              // clear $pdk.controllers.listeners
-              $pdk.clearlisteners = function () {
-                $pdk.controller.listenerId = 0;
-                for (var key in $pdk.controller.listeners) {
-                  delete $pdk.controller.listeners[key];
+                // clear $pdk.controllers.listeners
+                clearlisteners: function () {
+                  $pdk.controller.listenerId = 0;
+                  for (var key in $pdk.controller.listeners) {
+                    delete $pdk.controller.listeners[key];
+                  }
                 }
               };
+
+
+              function _onMediaUnpause() {
+                if (scope.isPlayerPause) {
+                  scope.isPlayerPause = false;
+                }
+
+                scope.isPlayerPlay = true;
+              }
+
+              function _onMediaPause() {
+                if (scope.isPlayerPlay) {
+                  scope.isPlayerPlay = false;
+                }
+                scope.isPlayerPause = true;
+              }
+
+              function _onReleaseStart() {
+
+                scope.isPlayerStart = true;
+                scope.isPlayerPlay = true;
+                scope.isPlayerPause = false;
+
+                if (typeof Drupal.behaviors.microsite_scroll == 'object' && typeof Drupal.behaviors.microsite_scroll.micrositeAdAdded == 'function') {
+                  Drupal.behaviors.microsite_scroll.micrositeAdAdded();
+                } else if (typeof Drupal.behaviors.ms_videos == 'object' && typeof Drupal.behaviors.ms_videos.adAdded == 'function') {
+                  Drupal.behaviors.ms_videos.adAdded();
+                }
+              }
+
 
               /**
                * Media Start event callback so that we can show the metadata section
                */
               function _onMediaStart(pdkEvent) {
+
+                console.debug('_onMediaStart');
 
                 var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
 
@@ -452,9 +484,9 @@
                 scope.isPlayerLoading = false;
 
                 authService.getSelectedProvider()
-                    .then(function(providerInfo) {
+                    .then(function (providerInfo) {
                       showError(providerInfo);
-                    }, function() {
+                    }, function () {
                       showError(null)
                     });
 

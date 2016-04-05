@@ -1,11 +1,47 @@
+/* SCROLLBARS */
+/* IE scrollbars */
+body{
+  scrollbar-base-color: #55452A;
+  scrollbar-face-color: #FAEFDE;
+  scrollbar-3dlight-color: #FAEFDE;
+  scrollbar-highlight-color: #FAEFDE;
+  scrollbar-track-color: #55452A;
+  scrollbar-arrow-color: #55452A;
+  scrollbar-shadow-color: #222;
+  scrollbar-dark-shadow-color: #55452A;
+}
+/* Webkit scrollbars - Safari, Chrome */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #55452A;
+  border-left: 0 solid transparent;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #FAEFDE;
+  background: rgba(250,239,222,0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(250,239,222,0.8);
+}
+
+
 /* GENERAL */
 html {
-  color: #000;
-  background-color: #FAEFDE;
+  color: #30251A;
+  background-color: #EFEFEF;
 }
 body.page-node-microsite {
-  background-color: #FAEFDE !important;
-  font-family: source-code-pro, Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  background-color: #EFEFEF !important;
+  font-family: "avalonregular", sans-serif;
 }
 a,
 a:link,
@@ -25,83 +61,17 @@ a:active {
   top: -5px;
   margin: 0 auto;
 }
-
-/* SECTIONS CONTAINERS */
-.section:nth-child(even) {
-  background-color: transparent;
-}
-.section:nth-child(even) {
-  background-color: transparent;
-}
-.section {
-  background-color: #FFF;
-  padding: 80px 0 60px;
-}
-#videos {
-  background-color: #FAEFDE;
-}
-section .section-title-block > h2 {
-  background-repeat: no-repeat;
-  background-size: contain;
-  clear: none;
-  color: #55452A;
-  float: left;
-  margin: 0 10px 0 0;
-  text-transform: none;
-}
-body:not(.ie9) .section-title-block {
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-body:not(.ie9) section .section-title-block > h2 {
-  -ms-flex-item-align: start;
-  -webkit-align-self: flex-start;
-  align-self: flex-start;
-  float: none;
-  margin: 0!important;
-}
-.section-description,
-body:not(.ie9) .section-description {
-  color: #55452A;
-  margin: 36px auto 28px !important;
-  text-align: center;
-  width: 80%;
-}
-.section-description:after {
-  clear: both;
-  content: '';
-  display: table;
+#microsite .ad-leaderboard {
+  margin: 18px auto;
 }
 
-/* HOME */
-#home.section {
-  color: #55452A;
-  background-color: #FAEFDE;
-}
-#home #home-tunein {
-}
-#home #home-content-container #home-description {
-  line-height: 1;
-}
-#home #home-tunein {
-  text-transform: none;
-}
-
-/* COUNTDOWN TIMER */
-.numbers,
-.title {
-  font-family: inherit;
-}
-.circle {
-  background-color: transparent;
-  border: 4px solid #55452A;
-}
 
 /* SITE NAV */
 #site-nav {
-  max-height: 60px !important;
+  position: fixed;
+  top: -60px;
+  left: 0;
+  max-height: 0;
   color: #55452A;
   background-color: #FAEFDE;
   box-shadow: 0 1px 6px #55452A;
@@ -115,20 +85,6 @@ body:not(.ie9) .section-description {
   width: 206px;
   height: 80px;
 }
-/*
-#site-nav-left:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 206px;
-  height: 80px;
-  background-image: url(/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_farewell_logo_small.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-*/
 #site-nav #site-nav-top {
   display: none;
 }
@@ -178,45 +134,95 @@ body:not(.ie9) .section-description {
 }
 
 
+
+/* SECTIONS CONTAINERS */
+.section:nth-child(even) {
+  background-color: transparent;
+}
+.section:nth-child(even) {
+  background-color: transparent;
+}
+.section {
+  background-color: #FFF;
+  padding: 80px 0 60px;
+}
+#videos {
+  padding-top: 60%;
+  background-color: #FAEFDE;
+}
+#videos-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+section .section-title-block {
+  margin: 18px 0 30px;
+}
+#videos .section-title-block {
+  margin-bottom: 0;
+}
+section .section-title-block > h2 {
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: #55452A;
+  margin: 0 auto;
+}
+section .section-title-block > h2 span {
+  display: none;
+}
+.section-description {
+  color: #55452A;
+  margin: 0 auto !important;
+  text-align: center;
+  width: 80%;
+}
+
+
 /* VIDEOS */
+#videos .section-title-block > h2 {
+  width: 525px;
+  height: 88px;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_videos.png');
+}
 #videos .header {
   background-image: none;
 }
 #microsite .full-pane #video-container h1,
 #microsite .full-pane #video-container h3 {
-  color: #FFF;
+  color: #55452A;
 }
 #microsite .full-pane #video-container .video-description {
-  color: #FFF;
-  font-family: "avalonmedium", "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  color: #55452A;
 }
 /* sub-nav */
 #video-filter li.filter-child-item {
-  background-color: #FAEFDE;
+  background-color: #9BCEEE;
   color: #55452A;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #55452A;
   text-align: left;
   padding: 8px 0 8px 12px;
 }
 #video-filter li.filter-child-item:hover,
 #video-filter li.filter-child-item.active {
-  background-color: #444;
-  color: #FFF;
+  background-color: #55452A;
+  color: #FAEFDE;
 }
 #video-filter li.filter-item:hover,
 #video-filter li.filter-item.active {
-  background-color: red;
+  background-color: transparent;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item {
-  background-color: #333;
+  background-color: #transparent;
   text-transform: none;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item:hover,
 #microsite .block-usanetwork-mpx-video li.grid-item.active {
-  background-color: red;
+  background-color: #55452A;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item {
-  height: 74px;
+  height: 96px;
 }
 #videos .msm-episode-title {
   margin-left: 26px;
@@ -235,8 +241,13 @@ body:not(.ie9) .section-description {
 
 
 /* TIMELINE GALLERIES */
-body:not(.ie9) .section-title-block {
-  display: block;
+#timeline {
+  background-color: #FFF;
+}
+#timeline .section-title-block > h2 {
+  width: 525px;
+  height: 88px;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_timeline.png');
 }
 .timelineFlat.timelineFlatPortfolio.tl3 {
   background-color: #FFF;
@@ -319,34 +330,58 @@ body:not(.ie9) .section-title-block {
 
 
 /* SOCIAL */
-#farewell-social.section {
+#social.section {
+  position: relative;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  padding-top: 56.25%;
   background-color: #FAEFDE;
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_social_bg.jpg');
   background-repeat: no-repeat;
+  box-sizing: border-box;
 }
-#farewell-social-content {
+#social .section-title-block > h2 {
+  width: 525px;
+  height: 88px;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_social.png');
+}
+#social-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#spredfast-social-content {
   width: 80%;
+  height: 100%;
   max-width: 1300px;
   margin: 0 auto;
-}
-#farewell-social-content iframe {
-  max-height: 80%;
   overflow: hidden;
+}
+#spredfast-social-content .mr-space {
+  max-height: calc(100% - 154px - 126px);
+  overflow: hidden;
+}
+#microsite #social .ad-leaderboard {
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 364px);
+  top: initial;
 }
 
 
 /* FOOTER */
 #microsite footer {
-  background-color: #55452A;
-  color: #FFF;
+  background-color: #FFF;
+  color: #55452A;
 }
 #microsite footer li a:visited, #microsite footer li a:focus {
-  color: #FFF;
+  color: #55452A;
 }
 #microsite footer li a {
-  color: #FFF;
+  color: #55452A;
 }
 
 

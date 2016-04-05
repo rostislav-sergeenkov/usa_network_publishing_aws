@@ -25,9 +25,9 @@
   background-image: none !important;
   display: block;
   font-family: "ico-font";
-  font-size: 24px;
-  width: 24px !important;
-  height: 24px !important;
+  font-size: 3.6em;
+  width: 36px !important;
+  height: 36px !important;
   background-image: url("../images/social_chatter_icons.png");
   background-repeat: none;
 }

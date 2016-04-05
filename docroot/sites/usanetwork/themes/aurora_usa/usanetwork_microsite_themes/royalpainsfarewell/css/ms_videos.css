@@ -8,6 +8,7 @@
 #videos .right-pane {
   float: left;
   width: 300px;
+  height: 100%;
   margin-left: 20px;
 }
 #videos section h2 {
@@ -67,7 +68,7 @@
 
 
 #microsite .video-player-desc {
-  width: calc(100% - 164px);
+  width: calc(100% - 206px);
   float: left;
 }
 #microsite .video-title {
@@ -81,16 +82,12 @@
   color: #e5ce96;
 }
 #microsite #video-gigya-share-container {
-  width: 144px;
+  width: 196px;
   float: right;
-  margin: 6px 0 0;
+  margin: 18px 0 0;
 }
 #microsite #video-gigya-share-title {
-  color: #777;
-  text-transform: uppercase;
-  text-align: left;
-  padding: 0 0 8px 4px;
-  font-size: 14px;
+  display: none;
 }
 
 /* begin authenticated video key icon display */
@@ -174,15 +171,17 @@
 #microsite #videos .gig-bar-container .gig-button-container.gig-button-container-tumblr td > div:before,
 #microsite #videos .gig-bar-container .gig-button-container.gig-button-container-pinterest td > div:before,
 #microsite #videos .gig-bar-container .gig-button-container.gig-button-container-share td > div:before {
-  color: #777;
+  color: #9BCEEE;
 }
 
 /* VIDEO THUMBNAILS */
 #microsite .block-usanetwork-mpx-video {
   margin: 0;
   width: 100%;
+  height: 100%;
   font-size: 0.875em;
   color: #FFF;
+  overflow-y: auto;
 }
 #microsite .block-usanetwork-mpx-video:after {
   clear: both;
@@ -196,7 +195,8 @@
   margin: 0 3% 3% 0;
   width: 47%;
   overflow: hidden;
-  background-color: #000;
+  background-color: #55452A;
+  border: 3px solid #55452A;
   display: table;
   cursor: pointer;
   text-transform: uppercase;
@@ -209,11 +209,12 @@
 }
 #microsite .block-usanetwork-mpx-video li.grid-item:hover,
 #microsite .block-usanetwork-mpx-video li.grid-item.active {
-  background-color: #484848;
+  border: 3px solid #9BCEEE;
 }
 #microsite .block-usanetwork-mpx-video li.grid-item .file {
   border: 0;
   padding: 0 8px;
+  color: #FAEFDE;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
@@ -404,13 +405,14 @@
   font-size: 1.125em;
   line-height: 1.125em;
   height: 38px;
-  color: #FFF;
+  color: #55452A;
   text-transform: uppercase;
+  text-decoration: none;
   position: relative;
   top: 0;
   left: 0;
   cursor: pointer;
-  background-color: #333;
+  background-color: transparent;
   display: table;
 }
 #video-filter li.filter-item p {
@@ -422,7 +424,7 @@
 }
 #video-filter li.filter-item:hover,
 #video-filter li.filter-item.active {
-  background-color: #484848;
+  text-decoration: underline;
 }
 #video-filter li.filter-item .item-list {
   display: none;
@@ -477,9 +479,10 @@
 
 /* full pane */
 #microsite #videos .full-pane {
+  height: calc(98% - 161px - 126px);
   margin-top: 20px;
+  box-sizing: border-box;
 }
-
 #mobileVideoModal {
   z-index: 10500;
 }

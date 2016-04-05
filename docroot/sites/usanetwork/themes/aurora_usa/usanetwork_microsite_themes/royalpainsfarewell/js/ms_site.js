@@ -26,7 +26,8 @@
           $videoTitle = $('#videos h2');
       if ($siteNav.css('opacity') == 0) {
         //usa_debug('showSiteNav()');
-        $siteNav.css({'opacity': 1}).animate({'max-height': '60px'}, 700, function(){
+//        $siteNav.css({'opacity': 1}).animate({'max-height': '60px'}, 700, function(){
+        $siteNav.css({'opacity': 1, 'max-height': '60px'}).animate({'top': '0'}, 700, function(){
           if (window.innerWidth < 874) {
             $siteNav.css({'overflow': 'visible'}); // to allow hamburger hover state to work
           }
@@ -42,8 +43,9 @@
       if ($siteNav.css('opacity') == 1) {
         usa_debug('hideSiteNav()');
         $homeUsaLogo.animate({'opacity': 1}, 700);
-        $siteNav.css({'overflow': 'hidden'}).animate({'max-height': '0'}, 700, function(){
-          $siteNav.css({'opacity': 0});
+//        $siteNav.css({'overflow': 'hidden'}).animate({'max-height': '0'}, 700, function(){
+        $siteNav.animate({'top': '-60px'}, 700, function(){
+          $siteNav.css({'opacity': 0, 'max-height': 0});
         });
       }
     },
@@ -119,13 +121,22 @@
           setSiteNavPositionTimer,
           self = this;
 
-
       var homeSectionHeight,
           siteNavTimer,
           siteNavPositionTimer,
           scrollTimer,
           allAdsLoaded = false,
           scrollDirection;
+
+      jQuery('#timeline .section-title-block > h2').html('<span>Timeline</span>');
+
+      $('.slides').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear'
+      });
 
 //      self.setPersonRole();
 
@@ -157,6 +168,7 @@
 
       // SCROLLING
       $(window).on('scroll', function() {
+/*
         if (typeof siteNavPositionTimer == 'undefined') {
           siteNavPositionTimer = setTimeout(function(){
             var position = (window.pageYOffset >= homeSectionHeight) ? 'fixed' : 'relative';
@@ -164,7 +176,7 @@
             siteNavPositionTimer = clearTimeout(siteNavPositionTimer);
           }, 15);
         }
-
+*/
         if (!$('html').hasClass('ie9') && typeof siteNavTimer == 'undefined') {
           siteNavTimer = setTimeout(function(){
             self.setSiteNav();

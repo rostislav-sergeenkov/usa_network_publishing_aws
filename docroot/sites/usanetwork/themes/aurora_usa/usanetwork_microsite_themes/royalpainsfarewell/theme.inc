@@ -225,7 +225,9 @@ function usanetwork_microsite_royalpainsfarewell_get_theme_includes() {
 
   return array(
     'css' => array(
-      $module_path . '/css/jquery.bxslider.css',
+//      $module_path . '/css/jquery.bxslider.css',
+      $site_theme_path . '/js/slick/slick.css',
+      $site_theme_path . '/js/slick/slick-theme.css',
       $site_theme_path . '/css/fonts.css',
       $default_theme_path . '/css/ms_styles.css',
       $default_theme_path . '/css/site_nav.css',
@@ -244,7 +246,10 @@ function usanetwork_microsite_royalpainsfarewell_get_theme_includes() {
     'js' => array(
 //      'http://' . $apps_usa_host . '/royalpainsfarewell/catchup/msmVideosByEpisode.js',
 //      'http://' . $apps_usa_host . '/royalpainsfarewell/catchup/dndLandscapeImages.js',
-      $module_path . '/js/jquery.bxslider.min.js',
+//      $module_path . '/js/jquery.bxslider.min.js',
+      $site_theme_path . '/js/slick/slick.min.js',
+//      $theme_path . '/javascripts/consumptionator-carousels.js',
+//      $theme_path . '/javascripts/consumptionator-gallery.js',
       $module_path . '/js/jquery.waypoints.min.js', // checks for element scrolled into view
       $module_path . '/js/waypoints_shortcuts/inview.min.js', // part of waypoints for checking for element scrolled into view
       $default_theme_path . '/js/ms_gigya.js',

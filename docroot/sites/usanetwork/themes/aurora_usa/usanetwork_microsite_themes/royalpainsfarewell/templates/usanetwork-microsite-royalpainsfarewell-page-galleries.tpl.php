@@ -135,7 +135,7 @@
   <div class="section-title-block">
     <?php if (!empty($gallery['title'])): ?>
       <!-- section title -->
-      <h2 class="content"><?php print $gallery['title']; ?></h2>
+      <h2 class="content"><span><?php print $gallery['title']; ?></span></h2>
     <?php endif; ?>
 
     <?php if (!empty($description)): ?>
@@ -147,7 +147,7 @@
 <?php endif; ?>
 
 <?php if (!empty($gallery_title)): ?>
-  <div id="timeline-title"><?php print $gallery_title; ?></div>
+  <div id="gallery-title"><?php print $gallery_title; ?></div>
 <?php endif; ?>
 
 <?php if (!empty($gallery['gallery_nid']) && !empty($gallery['rendered'])): ?>

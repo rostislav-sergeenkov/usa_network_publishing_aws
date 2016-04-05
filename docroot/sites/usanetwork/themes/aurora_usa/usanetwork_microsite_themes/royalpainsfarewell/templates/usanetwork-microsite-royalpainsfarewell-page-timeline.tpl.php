@@ -14,7 +14,7 @@
   <div class="section-title-block">
     <?php if (!empty($section_title)): ?>
       <!-- section title -->
-      <h2 class="content"><?php print $section_title; ?></h2>
+      <h2 class="content"><span><?php print $section_title; ?></span></h2>
     <?php endif; ?>
 
     <?php if (!empty($description)): ?>

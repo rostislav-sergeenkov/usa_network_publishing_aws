@@ -3,16 +3,33 @@
 }
 
 /* HOME SECTION */
-#home a,
-#home a:link,
-#home a:visited {
-  color: #FAEFDE;
+#home.section {
+  position: relative;
+  top: 5px; /* Needed for the home waypoint to trigger! */
+  width: 100%;
+  padding: 56.25% 0 0;
+  margin-bottom: 0;
+  color: #55452A;
+  text-align: center;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/RP_Farewell_desktop_v6_top_final.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FAEFDE;
 }
-#home a:hover,
-#home a:active {
-  color: #E3D9D1;
+#home #home-content-container #home-description {
+  line-height: 1;
 }
-
+#home #home-tunein {
+  text-transform: none;
+}
+#home-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 #microsite #home .ad-leaderboard {
   display: block;
   position: absolute;
@@ -23,31 +40,10 @@
   margin: 40px 0 0;
   overflow: visible;
 }
-#home {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/RP_Farewell_desktop_v6_top_final.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #FAEFDE;
-  width: 100%;
-  height: 1000px;
-  padding: 0;
-  margin-bottom: 0;
-  color: #55452A;
-  text-align: center;
-  position: relative;
-  top: 5px; /* Needed for the home waypoint to trigger! */
-}
-#home.section {
-  padding-top: 1000px;
-}
 #home-wrapper {
   width: 100%;
 }
 #home #home-content-container {
-  position: absolute;
-  top: 135px;
-  left: 0;
   width: 100%;
 }
 #home #home-content-container > div {
@@ -122,8 +118,25 @@
 #until {
   color: #FAEFDE;
 }
+.numbers,
+.title {
+  font-family: inherit;
+}
+#home .circle {
+  background-color: transparent;
+  border: 4px solid #55452A;
+}
 
 /* navigation */
+#home a,
+#home a:link,
+#home a:visited {
+  color: #FAEFDE;
+}
+#home a:hover,
+#home a:active {
+  color: #E3D9D1;
+}
 #home #home-content-container #home-nav {
   height: auto;
   margin-bottom: 4%;

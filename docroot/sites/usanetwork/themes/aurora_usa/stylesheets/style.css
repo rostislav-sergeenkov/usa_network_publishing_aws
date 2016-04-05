@@ -15849,6 +15849,11 @@ footer h2 {
     padding: 56.25vw 0 0;
   }
 }
+@media (max-width: 640px) {
+  .consumptionator-episode-main-block .episode-info-main-block.no-cover-image, .consumptionator-episode-main-block .post-info-main-block.no-cover-image, .consumptionator-post-main-block .episode-info-main-block.no-cover-image, .consumptionator-post-main-block .post-info-main-block.no-cover-image {
+    padding: 0;
+  }
+}
 .consumptionator-episode-main-block .episode-info-main-block .episode-change-link, .consumptionator-episode-main-block .post-info-main-block .episode-change-link, .consumptionator-post-main-block .episode-info-main-block .episode-change-link, .consumptionator-post-main-block .post-info-main-block .episode-change-link {
   bottom: 39px;
   color: #1e1e1e;

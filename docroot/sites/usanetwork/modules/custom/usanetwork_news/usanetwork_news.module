@@ -24,22 +24,36 @@ function usanetwork_news_menu() {
   return $items;
 }
 
+
 /**
  * Global News Page
  */
 function usanetwork_news_landing_post() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_news') . '/js/usanetwork_news.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+  drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator_post') . '/js/usanetwork_blog_posts.autoloader.js');
 
-  $page = pager_find_page();
-  $num_per_page = 20;
 
-  $cache_name = 'blog_global_page_' . $page;
-  $cache_name_count = 'blog_global_page_count';
+  $header = theme('usanetwork_menu_static_page_header', array(
+    'title' => t('Latest On USA'),
+  ));
+
+  $news_items = usanetwork_news_landing_get_posts();
+
+  return $header . $news_items;
+}
+
+
+/**
+ * Global News Posts
+ */
+function usanetwork_news_landing_get_posts($offset = 0, $show_ad = FALSE, $ajax_load = FALSE, $ajax = FALSE, $count = FALSE) {
+  $cache_name = 'blog_news_page_' . $offset;
   $cache = cache_get($cache_name);
+  $cache_name_count = 'blog_global_page_count';
   $cache_count = cache_get($cache_name_count);
 
   if (empty($cache)) {
-    $offset = $num_per_page * $page;
     $query = db_select('node', 'cp');
     $query->fields('cp', array('nid', 'title'));
     $query->leftJoin('field_data_body', 'body_field', 'body_field.entity_id=cp.nid');
@@ -49,6 +63,9 @@ function usanetwork_news_landing_post() {
     $query->leftJoin('field_data_field_post_cover', 'post_cover', 'post_cover.entity_id=cp.nid');
     $query->addField('post_cover', 'field_post_cover_fid', 'post_cover_fid');
     $query->leftJoin('field_data_field_promo_created_ovts', 'post_covts', 'post_covts.entity_id=cp.nid');
+    $query->leftJoin('field_data_field_show', 'show_field', 'show_field.entity_id=cp.nid');
+    $query->leftJoin('node', 'n', 'show_field.field_show_target_id=n.nid');
+    $query->addField('n', 'title', 'show_title');
     $query->addExpression('IF(post_covts.field_promo_created_ovts_value is NULL, cp.created, post_covts.field_promo_created_ovts_value)', 'sorted_time');
     $query->condition('cp.type', 'consumpt_post');
     $query->condition('cp.status', NODE_PUBLISHED);
@@ -58,7 +75,7 @@ function usanetwork_news_landing_post() {
     $count_query = $clone_db_query->countQuery();
     $result_count = $count_query->execute()->fetchField();
 
-    $query->range($offset, $num_per_page);
+    $query->range($offset * USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS, USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS);
     $result = $query->execute()->fetchAll();
 
     if ($result) {
@@ -74,46 +91,54 @@ function usanetwork_news_landing_post() {
     $result_count = $cache_count->data;
   }
 
-  $posts_data = $result;
+  if ($count) {
+    return $result_count;
+  }
+  else {
+    $posts_data = $result;
 
-  $theme_variables = array(
-    'news_page' => TRUE,
-  );
+    $theme_variables = array(
+      'items' => array(),
+      'ad' => $show_ad,
+      'ad_id' => $offset,
+      'title' => NULL,
+      'ajax_load' => $ajax_load,
+      'load_more_link' => !$ajax_load,
+      'news_page' => ($ajax) ? FALSE : TRUE,
+    );
 
-  if (!empty($posts_data)) {
-    pager_default_initialize($result_count, $num_per_page);
-    foreach ($posts_data as $post_data_index => $post_data) {
-      $cover_file = entity_load('file', array($post_data->post_cover_fid));
-      if (!empty($cover_file)) {
-        $cover_file = reset($cover_file);
-        $cover_uri = $cover_file->uri;
+    if (!empty($posts_data)) {
+      foreach ($posts_data as $post_data_index => $post_data) {
+        $cover_file = entity_load('file', array($post_data->post_cover_fid));
+        if (!empty($cover_file)) {
+          $cover_file = reset($cover_file);
+          $cover_uri = $cover_file->uri;
+        }
+        $theme_item_variables = array(
+          'blog_url' => isset($post_data->nid)
+            ? url('node/' . $post_data->nid)
+            : NULL,
+          'desktop_image_url' => image_style_url('677x381', $cover_uri),
+          'title' => $post_data->title,
+          'description' => check_markup($post_data->description, 'wysiwyg_mini'),
+          'post_date' => !empty($post_data->created)
+            ? gmdate('m/d/Y', $post_data->created)
+            : NULL,
+          'active' => (!$ajax_load && $post_data_index == 0) ? TRUE : FALSE,
+          'news_post' => TRUE,
+          'show_title' => $post_data->show_title,
+        );
+        $theme_variables['items'][] = theme('usanetwork_blog_landing_posts_list_item', $theme_item_variables);
       }
-      $theme_item_variables = array(
-        'blog_url' => isset($post_data->nid)
-          ? url('node/' . $post_data->nid)
-          : NULL,
-        'desktop_image_url' => image_style_url('677x381', $cover_uri),
-        'title' => $post_data->title,
-        'description' => check_markup($post_data->description, 'wysiwyg_mini'),
-        'post_date' => !empty($post_data->created)
-          ? gmdate('m/d/Y', $post_data->created)
-          : NULL,
-      );
-      $theme_variables['items'][] = theme('usanetwork_blog_landing_posts_list_item', $theme_item_variables);
     }
 
-    $header = theme('usanetwork_menu_static_page_header', array(
-      'title' => t('Latest On USA'),
-    ));
+    return !empty($theme_variables['items'])
+      ? theme('usanetwork_blog_landing_posts', $theme_variables) : '';
   }
-
-  return !empty($theme_variables['items'])
-    ? $header . theme('usanetwork_blog_landing_posts', $theme_variables) . theme('pager')
-    : '';
 }
 
 /*
- *
+ * Get Related content
  */
 function usanetwork_news_get_all_related_content_for_consumpt_page($consumpt_node) {
   $related_content = _usanetwork_news_cache_get_limited_related_content($consumpt_node, 0, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);

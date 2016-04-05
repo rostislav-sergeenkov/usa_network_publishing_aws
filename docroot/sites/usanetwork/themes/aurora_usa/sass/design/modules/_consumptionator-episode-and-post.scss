@@ -22,6 +22,11 @@
     @include breakpoint($bp-640-width) {
       padding: 56.25vw 0 0;
     }
+    &.no-cover-image {
+      @include breakpoint($bp-640-width) {
+        padding: 0;
+      }
+    }
     .episode-change-link {
       bottom: 39px;
       color: $change-episode-color;

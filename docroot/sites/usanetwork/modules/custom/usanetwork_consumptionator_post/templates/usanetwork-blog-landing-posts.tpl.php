@@ -9,11 +9,11 @@
 <?php if (!empty($news_page)) : ?>
   <div id="block-usanetwork-news-landing">
 <?php endif; ?>
-<?php if (!empty($ajax_load)) : ?>
-  <div class="landing-list-items-all blog-landing-list-items ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished' : '' ;?>" data-node-nid="<?php print (!empty($node_nid)) ? $node_id : ''; ?>">
+<?php if (!$ajax_load) : ?>
+  <div class="landing-list-items-all blog-landing-list-items ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished' : '' ;?>" data-node-nid="<?php print (!empty($node_nid)) ? $node_nid : ''; ?>">
 <?php endif; ?>
 <div class="landing-list-items-one-item blog-landing-list-items-one-item">
-  <?php if (!empty($ajax_load)) : ?>
+  <?php if ((!$ajax_load) && (!empty($node_nid))) : ?>
     <div class="upper-bar">
       <div class="title">
         <h2><?php print $title; ?></h2>
@@ -43,7 +43,7 @@
   <div class="load-more-link"><a href="javascript:void(0)" class="more-posts"><?php print t('Load more'); ?></a>
   </div>
 <?php endif; ?>
-<?php if (!empty($ajax_load)) : ?>
+<?php if (!$ajax_load) : ?>
   </div>
 <?php endif; ?>
 <?php if (!empty($news_page)) : ?>

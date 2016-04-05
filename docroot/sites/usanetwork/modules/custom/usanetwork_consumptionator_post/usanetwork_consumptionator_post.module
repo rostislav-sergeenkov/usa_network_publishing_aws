@@ -104,6 +104,13 @@ function usanetwork_consumptionator_post_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['ajax/usanetwork-blog-posts/get-related/news/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_consumptionator_post_blog_get_posts_ajax',
+    'page arguments' => array(3, 4),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
 
   $items['ajax/consumptionator_blog/autocomplete'] = array(
     'title' => 'Select content',
@@ -423,7 +430,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
   $theme_variables = array(
     'items' => array(),
     'ad' => $show_ad,
-    'ad_id' => intval($offset / USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS),
+    'ad_id' => $offset,
     'title' => NULL,
     'node_nid' => $node->nid,
     'ajax_load' => $ajax_load,
@@ -573,32 +580,43 @@ function _usanetwork_consumptionator_post_get_season_episodes_description($resul
 }
 
 function usanetwork_consumptionator_post_blog_get_posts_ajax($node, $offset) {
-  $response = array(
-    'found' => FALSE,
-    'total' => 0,
-    'overlimited' => FALSE,
-    'rendered' => '',
-  );
-  switch ($node->type) {
-    case 'tv_show':
-      $show_id = $node->nid;
-      $blog_id = NULL;
-      break;
-    case 'consumpt_blog':
-      if (empty($node->field_show)) {
+  if (is_object($node)) {
+    $response = array(
+      'found' => FALSE,
+      'total' => 0,
+      'overlimited' => FALSE,
+      'rendered' => '',
+    );
+    switch ($node->type) {
+      case 'tv_show':
+        $show_id = $node->nid;
+        $blog_id = NULL;
+        break;
+      case 'consumpt_blog':
+        if (empty($node->field_show)) {
+          return '';
+        }
+        $show_field = field_get_items('node', $node, 'field_show');
+        $show_field = reset($show_field);
+        $show_id = $show_field['target_id'];
+        $blog_id = $node->nid;
+        break;
+      default:
         return '';
-      }
-      $show_field = field_get_items('node', $node, 'field_show');
-      $show_field = reset($show_field);
-      $show_id = $show_field['target_id'];
-      $blog_id = $node->nid;
-      break;
-    default:
-      return '';
+    }
+    $count = _usanetwork_consumptionator_post_get_posts_count($show_id, $blog_id);
+    $block = _usanetwork_consumptionator_post_get_blog_posts_list_block($node, $offset, TRUE, TRUE);
   }
-  $count = _usanetwork_consumptionator_post_get_posts_count($show_id, $blog_id);
-  $block = _usanetwork_consumptionator_post_get_blog_posts_list_block($node, $offset, TRUE, TRUE);
-
+  else {
+    $response = array(
+      'found' => FALSE,
+      'total' => 0,
+      'overlimited' => FALSE,
+      'rendered' => '',
+    );
+    $count = usanetwork_news_landing_get_posts($offset, TRUE, TRUE, TRUE, TRUE);
+    $block = usanetwork_news_landing_get_posts($offset, TRUE, TRUE, TRUE);
+  }
   $response['found'] = TRUE;
   $response['rendered'] = $block;
   $response['total'] = !empty($block) ? 1 : 0;

@@ -19580,29 +19580,29 @@ footer h2 {
     width: 31px;
   }
 }
-#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .show-name, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .show-name, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .show-name {
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .series {
   font-size: 22.5px;
   line-height: 1em;
 }
 @media (max-width: 1280px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .show-name, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .show-name, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .show-name {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .series {
     font-size: 15px;
   }
 }
 @media (max-width: 1024px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .show-name, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .show-name, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .show-name {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .series {
     font-size: 12px;
   }
 }
 @media (max-width: 640px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .show-name, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .show-name, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .show-name {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .series {
     font-size: 14px;
     margin-bottom: 5px;
     width: calc(100% - 40px);
   }
 }
 @media (max-width: 480px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .show-name, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .show-name, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .show-name {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series, #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .series {
     font-size: 12px;
   }
 }
@@ -20288,28 +20288,49 @@ footer h2 {
     padding: 25px 10px;
   }
 }
+#block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .show-name {
+  color: #8b8b8c;
+  font-size: 30px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  width: 100%;
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .show-name {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .show-name {
+    font-size: 16px;
+  }
+}
 @media (max-width: 640px) {
   #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .show-name {
-    color: #8b8b8c;
-    font-family: "avalonmedium", Helvetica, Arial, sans-serif;
     font-size: 2.8125vw;
-    letter-spacing: 0.5px;
-    line-height: 1.3;
-    text-transform: uppercase;
-    width: 100%;
+  }
+}
+#block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .title {
+  margin-top: 0;
+}
+@media (max-width: 640px) {
+  #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .title {
+    font-size: 3.75vw;
   }
 }
 @media (max-width: 640px) {
   #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .show-name {
     float: right;
+    line-height: 1.4;
+    margin-bottom: 5px;
     width: 60%;
   }
 }
 @media (max-width: 640px) {
   #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .title {
     float: right;
-    font-size: 3.75vw;
-    line-height: 1.5;
     text-transform: none;
     width: 60%;
   }
@@ -20321,8 +20342,10 @@ footer h2 {
   }
 }
 @media (max-width: 640px) {
-  #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .show-name {
-    margin-bottom: 0;
+  #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .title {
+    margin-bottom: 5px;
+    line-height: 1.3;
+    width: 100%;
   }
 }
 @media (max-width: 640px) {

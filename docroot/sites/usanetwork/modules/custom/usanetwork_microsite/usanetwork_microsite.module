@@ -208,21 +208,6 @@ function usanetwork_microsite_js_alter(&$javascript) {
     if(!usanetwork_microsite_process_setting_data('display_global_nav', 'bool')) {
       unset($javascript[libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js']);
     }
-    unset($javascript[drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js']);
-  }
-}
-
-/**
- * Implements hook_library_alter().
- *
- * Remove tve-player-directive.js from page
- */
-function usanetwork_microsite_library_alter(&$libraries, $module) {
-  $node = menu_get_object();
-  if(!empty($node) && $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
-    if ($module == 'tve_auth') {
-      unset($libraries['tve_auth']['js'][drupal_get_path('module', 'tve_auth') . '/js/directives/tve-player-directive.js']);
-    }
   }
 }
 
@@ -462,9 +447,8 @@ function _usanetwork_microsite_include_default_css() {
 function _usanetwork_microsite_include_default_js() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.1.3.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.compatibility.js');
-//  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_global.js');
-//  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_angular.js');
 
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-share-config.js', array('scope' => 'header'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-auth2.js', array('scope' => 'footer', 'weight' => -2));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-custom-services.js', array('scope' => 'footer', 'weight' => 0));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-endcard.js', array('scope' => 'footer', 'weight' => 1));

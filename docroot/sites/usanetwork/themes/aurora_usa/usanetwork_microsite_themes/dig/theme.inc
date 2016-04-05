@@ -225,7 +225,6 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $site_theme_path . '/js/microsite_galleries_bxslider.js',
 //      $site_theme_path . '/js/microsite_quizzes.js',
       $default_theme_path . '/js/ms_quizzes.js',
-      $module_path . '/js/usanetwork_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
       drupal_get_path('module', 'usanetwork_quiz') . '/js/usanetwork_quiz.js',
       drupal_get_path('module', 'usanetwork_gallery_content') . '/js/usanetwork_gallery_content.js',

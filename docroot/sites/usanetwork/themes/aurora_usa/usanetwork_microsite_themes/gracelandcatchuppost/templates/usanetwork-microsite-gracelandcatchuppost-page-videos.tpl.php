@@ -43,7 +43,11 @@
 
 <div class="full-pane clearfix">
   <div class="left-pane">
-    <div id="video-container" data-usa-tve-player-container data-entitlement data-video-url="<?php print $in_player['url']; ?>">
+    <div id="video-container" 
+         data-usa-tve-player-container 
+         data-entitlement 
+         data-video-url="<?php print $in_player['url']; ?>"
+         data-ng-class="{'start': isPlayerStart,'play': isPlayerPlay, 'pause': isPlayerPause}">
       <div class="video-container-ajaxed">
         <div class="video-auth-player-wrapper file-video-mpx video usa-video featured-asset premium-asset">
           <div class="tve-help">

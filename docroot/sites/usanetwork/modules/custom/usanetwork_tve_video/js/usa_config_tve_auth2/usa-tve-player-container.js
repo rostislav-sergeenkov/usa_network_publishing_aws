@@ -170,6 +170,8 @@
               scope.isPlayerStart = false;
               scope.isPlayerPlay = false;
               scope.isPlayerPause = false;
+              scope.playerThumbnail = true;
+              scope.removePlayerhumbnail = false;
 
               scope.user = {
                 isAuthenticated: authService.isAuthenticated()
@@ -206,6 +208,7 @@
 
               // wait when load release
               usaPlayerService.promise.then(function (data) {
+                console.info('usaPlayerService.promise');
                 if (isEntitlement === 'auth') {
                   if (scope.statusPlayerLoaded && scope.statusSetToken) {
                     $pdk.controller.clickPlayButton();
@@ -322,7 +325,7 @@
                 $pdk.controller.addEventListener('OnMediaUnpause', _onMediaUnpause);
                 $pdk.controller.addEventListener('OnReleaseStart', _onReleaseStart);
 
-                //$pdk.controller.addEventListener('OnReleaseError', _onReleaseError);
+                $pdk.controller.addEventListener('OnReleaseError', _onReleaseError);
               }
 
               USAN.playerAPI = {
@@ -342,6 +345,23 @@
                 }
               };
 
+              function hidePlayerThumbnail() {
+                if (scope.playerThumbnail) {
+                  scope.playerThumbnail = false;
+                  $timeout(function () {
+                    scope.removePlayerThumbnail = true;
+                  }, 500);
+                }
+              }
+
+              function _onReleaseError() {
+
+                console.info('_onReleaseError');
+
+                if (scope.playerThumbnail) {
+                  hidePlayerThumbnail();
+                }
+              }
 
               function _onMediaUnpause() {
                 if (scope.isPlayerPause) {
@@ -360,9 +380,15 @@
 
               function _onReleaseStart() {
 
+                console.info('onReleaseStart');
+
                 scope.isPlayerStart = true;
                 scope.isPlayerPlay = true;
                 scope.isPlayerPause = false;
+
+                if (scope.playerThumbnail) {
+                  hidePlayerThumbnail();
+                }
 
                 if (typeof Drupal.behaviors.microsite_scroll == 'object' && typeof Drupal.behaviors.microsite_scroll.micrositeAdAdded == 'function') {
                   Drupal.behaviors.microsite_scroll.micrositeAdAdded();
@@ -377,7 +403,7 @@
                */
               function _onMediaStart(pdkEvent) {
 
-                console.debug('_onMediaStart');
+                console.info('_onMediaStart');
 
                 var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
 

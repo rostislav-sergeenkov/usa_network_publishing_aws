@@ -54,6 +54,18 @@
             Close
           </div>
         </div>
+        <div class="player-thumbnail" data-ng-class="{'hide-section': !playerThumbnail}" data-ng-if="!removePlayerThumbnail">
+          <div class="video-loading" data-ng-class="{'show-spinner': user.isAuthenticated}"></div>
+          <?php if (!$is_live): ?>
+            <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
+            print theme_image(array('path' => image_style_url($image['#style_name'], $image['#path'])));
+            ?>
+          <?php else: ?>
+            <img
+              src="<?php print '/' . path_to_theme() . '/images/usa_liveTV.jpg'; ?>"
+              alt=""/>
+          <?php endif; ?>
+        </div>
         <div class="video-player-wrapper section-auth" data-ng-if="!user.isAuthenticated">
           <div class="locked-msg">
             <?php if ($is_live): ?>
@@ -67,15 +79,6 @@
           <div id="player-login">
             <a href="javascript:void(0)" class="loginButton"
                data-ng-click="openLoginWindow()">
-              <?php if (!$is_live): ?>
-                <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
-                print theme_image(array('path' => image_style_url($image['#style_name'], $image['#path'])));
-                ?>
-              <?php else: ?>
-                <img
-                  src="<?php print '/' . path_to_theme() . '/images/usa_liveTV.jpg'; ?>"
-                  alt=""/>
-              <?php endif; ?>
               <div class="sign-in-wrapper">
                 <span class="sign-in-button">
                   <?php print t('sign in and watch'); ?>
@@ -84,7 +87,7 @@
             </a>
           </div>
         </div>
-        <div class="video-player-wrapper section-player" data-ng-class="{'show-section': user.isAuthenticated}" data-ng-show="user.isAuthenticated">
+        <div class="video-player-wrapper section-player" data-ng-class="{'show-section': !playerThumbnail}">
           <?php if ($is_live): ?>
             <iframe allowfullscreen="" id="videoplayer" width="100%"
                     data-usa-player-is-live height="100%"
@@ -99,7 +102,7 @@
           <?php endif; ?>
         </div>
       <?php else: ?>
-        <div class="video-player-wrapper">
+        <div class="video-player-wrapper section-player show-section">
           <?php if ($is_live): ?>
             <iframe allowfullscreen="" id="videoplayer" width="100%"
                     data-usa-player-is-live height="100%"

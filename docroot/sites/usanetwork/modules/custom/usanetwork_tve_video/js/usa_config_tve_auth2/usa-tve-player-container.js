@@ -16,6 +16,7 @@
             require: '^usaTvePlayerContainer',
             scope: true,
             compile: function (tElement, tAttr) {
+
               var config = tAttr;
 
               return function (scope, element, attr, controller) {
@@ -37,18 +38,26 @@
                       }],
                     MVPD_ID_KEY = 'MVPDid',
                     params,
+                    statusPromise = false,
                     frame = $(element).find('iframe').eq(0);
 
                 scope.id = config.id;
 
                 controller.playerId(attr['id']);
 
-                authService.promise.then(init);
+                authService.promise.then(function (status) {
+                  statusPromise = true;
+                  init(status);
+                });
 
                 frame.bind('load', function (evt) {
                   console.info('iframe load event');
-                  controller.initiateAuthorization();
-                  controller._bindPlayerEvents();
+
+                  if (statusPromise) {
+                    console.info('iframe load src');
+                    controller.initiateAuthorization();
+                    controller._bindPlayerEvents();
+                  }
                 });
 
                 function init(status) {
@@ -173,6 +182,8 @@
 
               authService.promise.then(function (status) {
                 userStatus = status;
+
+                console.info('promise');
 
                 if (scope.showPlayer = showPlayer()) {
 

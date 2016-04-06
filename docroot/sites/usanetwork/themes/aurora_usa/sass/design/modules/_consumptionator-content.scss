@@ -814,12 +814,12 @@
       .items-block {
         @include breakpoint($bp-min-1281-width) {
           bottom: 40px;
-          height: calc(100% - 85px);
+          height: calc(100% - 42px);
           position: absolute;
         }
         @include breakpoint($bp-min-1901-width) {
           bottom: 70px;
-          height: calc(100% - 140px);
+          height: calc(100% - 72px);
         }
       }
       .download-app {

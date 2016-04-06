@@ -6,8 +6,8 @@
   ng.module('tve.auth.directives')
       .directive('usaPlayerIsLive', [
         '$rootScope',
-        'authService', '$cookies',
-        function ($rootScope, authService, $cookies) {
+        'authService', '$cookies', '$timeout',
+        function ($rootScope, authService, $cookies, $timeout) {
 
           'use strict';
 
@@ -22,6 +22,8 @@
 
                 // create global scope obj
                 $rootScope.user = user;
+                $rootScope.playerThumbnail = true;
+                $rootScope.removePlayerThumbnail = false;
 
                 // Open login modal window on thumbnail click
                 //referencing openLoginModal function to the current scope
@@ -33,6 +35,12 @@
                   user.isAuthenticated = authService.isAuthenticated();
 
                   if (authService.isAuthenticated()) {
+
+                    $rootScope.playerThumbnail = false;
+                    $timeout(function () {
+                      $rootScope.removePlayerThumbnail = true;
+                    }, 500);
+
                     initLivePlayer($cookies);
                   }
                 });

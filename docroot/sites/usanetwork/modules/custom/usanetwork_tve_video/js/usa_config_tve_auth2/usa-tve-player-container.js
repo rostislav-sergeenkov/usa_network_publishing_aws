@@ -10,7 +10,7 @@
           return {
             replace: false,
             // apply client side iframe rendering to reduce cache problem for dynamic url
-            template: '<iframe data-ng-src="{{src}}" src="about:blank" id="{{id}}" ' +
+            template: '<iframe data-ng-src="{{src}}" src="about:blank" id="{{id}}" onload="$pdk.bind(this, true); $pdk.controller.setIFrame(this, true);"' +
             'allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" frameborder="0"></iframe>',
             // directive describe below
             require: '^usaTvePlayerContainer',
@@ -47,8 +47,8 @@
 
                 frame.bind('load', function (evt) {
                   console.info('iframe load event');
-                  $pdk.bind(this, true);
-                  $pdk.controller.setIFrame(this, true);
+                  controller.initiateAuthorization();
+                  controller._bindPlayerEvents();
                 });
 
                 function init(status) {
@@ -100,6 +100,14 @@
           return {
             scope: true,
             controller: ['$scope', function ($scope) {
+              this.initiateAuthorization = function () {
+                console.info('initiateAuthorization');
+                $scope.initiateAuthorization();
+              };
+              this._bindPlayerEvents = function () {
+                console.info('_bindPlayerEvents');
+                $scope._bindPlayerEvents();
+              };
               this.isEntitled = function () {
                 return $scope.isEntitled;
               };
@@ -137,7 +145,8 @@
                 return;
               }
 
-
+              
+              
               // show dart
               $rootScope.isDartReq = true;
               $rootScope.statusAd = false;
@@ -159,6 +168,9 @@
               // referencing openLoginModal function to the current scope 
               scope.openLoginWindow = authService.openLoginModal;
 
+              scope.initiateAuthorization = initiateAuthorization;
+              scope._bindPlayerEvents = _bindPlayerEvents;
+
               authService.promise.then(function (status) {
                 userStatus = status;
 
@@ -170,10 +182,10 @@
                   if (!isMicrosite) {
                     // auth video
                     if (status.isAuthenticated && isEntitlement === 'auth') {
-                      initiateAuthorization();
+                      //initiateAuthorization();
                     }
                     setTimeout(function () {
-                      _bindPlayerEvents(playerId);
+                      // _bindPlayerEvents(playerId);
                     }, 0);
                   }
                 }
@@ -256,9 +268,11 @@
 
                 var data = dataObj || {};
 
+                $pdk.controller.setToken(encodedToken, 'authToken');
+
                 console.info('bind');
 
-                $pdk.bind(playerID);
+                // $pdk.bind(playerID);
 
                 // init watchwith
                 if (typeof wwLoader !== 'undefined') {

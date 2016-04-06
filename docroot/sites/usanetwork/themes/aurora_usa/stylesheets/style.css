@@ -20187,6 +20187,9 @@ footer h2 {
   }
 }
 
+#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-one-item, #block-usanetwork-news-landing .landing-list-items-one-item {
+  border-top: 0;
+}
 @media (min-width: 641px) and (max-width: 768px) {
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item, #block-usanetwork-news-landing .episode-landing-list-item {
     min-height: 31vw;

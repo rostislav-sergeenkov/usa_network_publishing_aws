@@ -29,10 +29,8 @@ function usanetwork_news_menu() {
  * Global News Page
  */
 function usanetwork_news_landing_post() {
-  drupal_add_js(drupal_get_path('module', 'usanetwork_news') . '/js/usanetwork_news.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator_post') . '/js/usanetwork_blog_posts.autoloader.js');
-
 
   $header = theme('usanetwork_menu_static_page_header', array(
     'title' => t('Latest On USA'),

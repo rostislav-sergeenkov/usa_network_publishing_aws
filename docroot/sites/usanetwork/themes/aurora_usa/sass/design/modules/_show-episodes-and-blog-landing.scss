@@ -665,5 +665,84 @@
     }
   }
 }
+#block-usanetwork-news-landing {
+  .episode-landing-list-item {
+    @include breakpoint($bp-480-width) {
+      padding: 25px 10px;
+    }
+    .episode-landing-info-block {
+      .show-name {
+        color: $header-tab-button-back;
+        font-size: 30px;
+        font-family: $avalon-medium;
+        letter-spacing: 0.5px;
+        line-height: 1.3;
+        text-transform: uppercase;
+        width: 100%;
+        @include breakpoint($bp-1280-width) {
+          font-size: 18px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: 16px;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: get-vw(18px, 640);
+        }
+      }
+      .title {
+        margin-top: 0;
+        @include breakpoint($bp-640-width) {
+          font-size: get-vw(24px, 640);
+        }
+      }
+    }
+    &:not(.active) {
+      .episode-landing-info-block {
+        .show-name {
+          @include breakpoint($bp-640-width) {
+            float: right;
+            line-height: 1.4;
+            margin-bottom: 5px;
+            width: 60%;
+          }
+        }
+        .title {
+          @include breakpoint($bp-640-width) {
+            float: right;
+            text-transform: none;
+            width: 60%;
+          }
+        }
+        .image-block {
+          @include breakpoint($bp-640-width) {
+            display: block;
+            width: 35%;
+          }
+        }
+      }
+    }
+    &.active {
+      .episode-landing-info-block {
+        .title {
+          @include breakpoint($bp-640-width) {
+            margin-bottom: 5px;
+            line-height: 1.3;
+            width: 100%;
+          }
+        }
+        .description {
+          @include breakpoint($bp-640-width) {
+            display: none;
+          }
+        }
+      }
+      .buttons-bar {
+        @include breakpoint($bp-640-width) {
+          display: none;
+        }
+      }
+    }
+  }
+}
 
 

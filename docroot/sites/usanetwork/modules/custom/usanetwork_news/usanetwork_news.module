@@ -33,6 +33,14 @@ function usanetwork_news_landing_post() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_consumptionator_post') . '/js/usanetwork_blog_posts.autoloader.js');
 
+  $element = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'description',
+      'content' => t('The latest on USA Network\'s series and stars, including celebrity news and updates on your favorite shows. We\'ve got you covered with exclusive interviews, photos, videos, and contests!'),
+    ),
+  );
+  drupal_add_html_head($element, 'description');
 
   $header = theme('usanetwork_menu_static_page_header', array(
     'title' => t('Latest On USA'),
@@ -134,6 +142,29 @@ function usanetwork_news_landing_get_posts($offset = 0, $show_ad = FALSE, $ajax_
 
     return !empty($theme_variables['items'])
       ? theme('usanetwork_blog_landing_posts', $theme_variables) : '';
+  }
+}
+
+function usanetwork_news_usa_omniture_alter(&$omniture_variables, $context) {
+  if ($context['entity_type'] == 'node') {
+    if ($context['entity']->type == 'consumpt_post') {
+      $show_field = _usanetwork_get_field_item($context['entity_type'], $context['entity'], 'field_show', 'target_id');
+      if (empty($show_field)) {
+        $video_variables['s.prop10'] = 'News';
+        $video_variables['s.prop2'] = 'News';
+      }
+    }
+  }
+  elseif ($context['menu_item']['path'] == 'news') {
+    $video_variables['s.prop2'] = 'News';
+    $video_variables['s.prop3'] = 'News';
+    $video_variables['s.prop4'] = 'News : Home';
+    $video_variables['s.pageName'] = 'News : News Home';
+    $video_variables['s.prop10'] = 'News';
+  }
+
+  if (!empty($video_variables)) {
+    $omniture_variables = array_merge($omniture_variables, $video_variables);
   }
 }
 

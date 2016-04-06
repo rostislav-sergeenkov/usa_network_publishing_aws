@@ -154,7 +154,9 @@
                 return;
               }
 
-              
+              if (!($pdk = window.$pdk)) {
+                return;
+              }
               
               // show dart
               $rootScope.isDartReq = true;
@@ -278,10 +280,6 @@
               function _bindPlayerEvents(playerID, dataObj) {
 
                 var data = dataObj || {};
-
-                $pdk.controller.setToken(encodedToken, 'authToken');
-
-                console.info('bind');
 
                 // $pdk.bind(playerID);
 

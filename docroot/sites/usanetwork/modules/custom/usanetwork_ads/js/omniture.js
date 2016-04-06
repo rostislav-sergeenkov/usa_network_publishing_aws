@@ -130,7 +130,6 @@
           s.tl(this, 'o', 'Infinite Scroll Auto Load');
           s.manageVars("clearVars", s.linkTrackVars, 1);
         }
-        void (s.t());
       }
     },
 

@@ -581,6 +581,9 @@
   }
 }
 #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block, #block-usanetwork-news-landing {
+  .landing-list-items-one-item {
+    border-top: 0;
+  }
   .episode-landing-list-item {
     @include breakpoint($between-641-768) {
       min-height: 31vw;

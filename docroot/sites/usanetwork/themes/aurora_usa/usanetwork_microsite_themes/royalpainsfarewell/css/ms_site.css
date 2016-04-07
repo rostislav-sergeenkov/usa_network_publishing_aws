@@ -43,6 +43,9 @@ body.page-node-microsite {
   background-color: #EFEFEF !important;
   font-family: "avalonregular", sans-serif;
 }
+#microsite #sections {
+  background-color: #CCC;
+}
 a,
 a:link,
 a:visited {
@@ -80,7 +83,7 @@ a:active {
 }
 #site-nav-left {
   position: relative;
-  top: 3px;
+  top: 5px;
   left: 9px;
   width: 206px;
   height: 80px;
@@ -91,11 +94,10 @@ a:active {
 #site-nav #site-nav-center {
   position: absolute;
   top: 12px;
-  left: 100%;
-  margin: 0 auto;
-  width: 80%;
+  left: 215px;
+  margin: 0;
+  width: calc(100% - 430px);
   line-height: 1;
-  margin-left: -90%;
 }
 #site-nav li {
   padding: 10px 18px 0;
@@ -213,6 +215,7 @@ section .section-title-block > h2 span {
 #video-filter li.filter-item.active {
   background-color: transparent;
 }
+/*
 #microsite .block-usanetwork-mpx-video li.grid-item {
   background-color: #transparent;
   text-transform: none;
@@ -227,6 +230,7 @@ section .section-title-block > h2 span {
 #videos .msm-episode-title {
   margin-left: 26px;
 }
+*/
 .featured-asset.file-video-mpx .locked-msg {
   color: #FFF;
   line-height: 1;

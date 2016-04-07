@@ -45,18 +45,15 @@ endif;
             <ul id="site-nav-links-list">
               <?php if (!empty($sections)): ?>
                 <?php foreach ($sections as $sectionNav): ?>
-                  <?php if ($sectionNav['type'] != 'home'): ?>
+                  <?php if ($sectionNav['type'] != 'home' && $sectionNav['type'] != 'games'): ?>
                   <li id="nav-<?php print $sectionNav['type']; ?>" class="internal <?php print $sectionNav['type']; ?><?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
                     <?php print html_entity_decode($sectionNav['link']); ?>
                   </li>
                   <?php endif; ?>
 
-                  <?php if ($sectionNav['type'] == 'timeline'): // add best of the hamptons and social nav ?>
-                  <li id="nav-must-see-moments" class="external" target="_blank">
-                    <a href="http://www.usanetwork.com/royalpains/best-of-the-hamptons">Best of the Hamptons</a>
-                  </li>
-                  <li id="nav-social" class="internal social" data-menuanchor="social">
-                    <a href="#" data-menuitem="5" class="scroll-link">Social</a>
+                  <?php if ($sectionNav['type'] == 'timeline'): // add social nav ?>
+                  <li id="nav-social" class="internal social<?php print ('social' == $current_section) ? ' active' : '' ?>" data-menuanchor="social">
+                    <a href="#" data-menuitem="4" class="scroll-link">Social</a>
                   </li>
                   <?php endif; ?>
                 <?php endforeach; ?>
@@ -81,7 +78,7 @@ endif;
           <ul id="site-nav-links-list-mobile">
             <?php if (!empty($sections)): ?>
               <?php foreach ($sections as $sectionNav): ?>
-                <?php if ($sectionNav['type'] != 'home'): ?>
+                <?php if ($sectionNav['type'] != 'home' && $sectionNav['type'] != 'games'): ?>
                 <li id="mobile-nav-<?php print $sectionNav['type']; ?>" class="internal mobile <?php print $sectionNav['type']; ?><?php print ($sectionNav['type'] == $current_section) ? ' active' : '' ?>" data-menuanchor="<?php print $sectionNav['type']; ?>">
                   <?php print $sectionNav['link']; ?>
                 </li>
@@ -92,6 +89,11 @@ endif;
                   <a href="#" data-menuitem="2" class="scroll-link">must see moments</a>
                 </li>
                 <?php endif; */ ?>
+                <?php if ($sectionNav['type'] == 'timeline'): // add social nav ?>
+                <li id="mobile-nav-social" class="internal mobile social<?php print ('social' == $current_section) ? ' active' : '' ?>" data-menuanchor="social">
+                  <a href="#" data-menuitem="4" class="scroll-link">Social</a>
+                </li>
+                <?php endif; ?>
               <?php endforeach; ?>
             <?php endif; ?>
             <li id="site-nav-show-site-link"><a href="http://www.usanetwork.com/royalpains" target="_blank">Visit Show Site</a></li>

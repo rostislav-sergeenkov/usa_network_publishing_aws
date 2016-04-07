@@ -658,6 +658,111 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
       }
     },
 
+    // GALLERIES
+    galleryIsLoading: false,
+    showHideLoader: function() {
+      var activeGallery = $('#galleries .microsite-gallery'),
+          gLoader = $('#galleries #gallery-loader'),
+          gHeight = activeGallery.find('.flex-viewport').height();
+
+      gLoader.height(gHeight);
+
+      if (Drupal.behaviors.ms_global.galleryIsLoading) {
+        // show spinner
+        gLoader.show().animate({'opacity': 1}, 1000);
+      } else {
+        // hide spinner
+        gLoader.animate({'opacity': 0}, 1000).delay(1000).hide();
+      }
+    },
+
+    showGallery: function($activeGallery) {
+      $activeGallery.animate({'opacity': 1}, 1000, function(){
+        Drupal.behaviors.ms_global.showHideLoader();
+      });
+    },
+
+    switchGallery: function(nid, callback) {
+      callback = callback || null;
+
+      Drupal.behaviors.ms_global.galleryIsLoading = true;
+      Drupal.behaviors.ms_global.showHideLoader();
+
+      // Make ajax call to '/ajax/get-gallery/' + nid
+      var newGallery = $.ajax({
+        url: '/ajax/get-gallery/' + nid,
+        type: 'GET',
+        dataType: 'json'
+      })
+      .done(function(data, textStatus, jqXHR){
+        var activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
+            activeGallery = $('#galleries .microsite-gallery'),
+            activeGalleryHeight = activeGallery.height(),
+            galleryNavItems = $('#galleries-list li'),
+            shareBarHtml = '<div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden"><div id="gigya-share"></div></div>';
+
+          activeGallery.animate({'opacity': 0}, 1000, function(){
+
+          if (data.h1.length > 0 && data.title.length > 0) {
+            titleHtml = '<h2 class="seo-h1">' + data.h1 + '</h2><h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;
+            activeGalleryMeta.html(titleHtml);
+          } else if (data.title.length > 0) {
+            titleHtml = '<h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;
+            activeGalleryMeta.html(titleHtml);
+          }
+          activeGallery.find('.center-wrapper').html(data.rendered);
+          //Drupal.behaviors.ms_global.initCarousel(true);
+          galleryNavItems.removeClass('active');
+          $('#galleries-list li[data-node-id="' + nid + '"]').addClass('active');
+          setTimeout(function(){
+            Drupal.behaviors.ms_global.showGallery(activeGallery);
+            Drupal.behaviors.ms_global.galleryIsLoading = false;
+            if (callback !== null) callback();
+          }, 1000);
+        });
+      })
+      .fail(function(jqXHR, textStatus, errorThrown){
+        //usa_debug('********************\najax fail: ');
+        //usa_debug(errorThrown);
+      })
+    },
+
+    changeGalleryHandler: function(e) {
+      var anchorFull = this.href,
+          anchorPathParts = Drupal.behaviors.ms_global.getUrlPath(anchorFull),
+          $navItems = $('#galleries #galleries-list li a');
+
+      // Unbind click while selected gallery loading
+      $navItems.unbind('click').bind('click', function(e) {
+        e.preventDefault();
+      });
+
+      // if this is an internal microsite url
+      // prevent the default action
+      // and show the correct microsite item without a page reload
+      if (anchorPathParts[0] == 'royalpains' && anchorPathParts[1] == 'farewell') {
+        e.preventDefault();
+
+        // if this is IE9, reload the correct page
+        if ($('html.ie9').length > 0) {
+          window.location.href = anchorFull;
+          return false;
+        }
+
+        // scroll to top of galleries section
+        $('#microsite #galleries').animate({ scrollTop: 0 }, 1000);
+
+        // switch gallery
+        var nid = $(this).parent().attr('data-node-id'),
+            activeGalleryNavItem = nid;
+        Drupal.behaviors.ms_global.switchGallery(nid, function() {
+          $navItems.bind('click', Drupal.behaviors.ms_global.changeGalleryHandler);
+        });
+
+        history.pushState({"state": anchorFull}, anchorFull, anchorFull);
+      }
+    },
+
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
       if (!$('html').hasClass('ie9')) {
@@ -684,6 +789,9 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
       // Turn off the popstate/hashchange tve-core.js event listeners
       $(window).off('popstate');
       $(window).off('hashchange');
+
+      // initialize gallery nav clicks
+      $('#galleries #galleries-list li a').bind('click', self.changeGalleryHandler);
 
 /*
       if (!$('html').hasClass('ie9')) {
@@ -752,6 +860,7 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
               $('#site-nav-links li').addClass('disabled');
             }
 
+/*
             // if clicked must see moments
             if (anchor == 'videos' || anchor == 'must-see-moments') {
               switch(anchor) {
@@ -764,8 +873,9 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
               }
             }
             else {
+*/
               Drupal.behaviors.ms_global.sectionScroll(anchor);
-            }
+//            }
           });
 
           // initialize site nav logo click

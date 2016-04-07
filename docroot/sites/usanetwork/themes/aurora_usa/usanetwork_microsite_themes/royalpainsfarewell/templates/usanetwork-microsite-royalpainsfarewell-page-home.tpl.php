@@ -87,7 +87,7 @@ endif;
           </ul>
         </div><!-- #counter -->
         <div id="caption">*Time is EST and CST</div>
-        <div id="until">UNTIL THE PREMIERE<br>MAY 18 9/8C</div>
+        <div id="until">UNTIL THE PREMIERE<br>WEDNESDAY, MAY 18 10/9C</div>
       </div><!-- #countHolder -->
     </div><!-- end countdown timer -->
 <?php endif; ?>

@@ -149,9 +149,11 @@
       </div>
     </div>
     <?php endif; ?>
+<? /* ?>
     <div id="ad_300x60_1"></div>
     <div id="ad_300x250_1"></div>
+<? */ ?>
   </div>
 </div>
 
-<div id="ms-videos-leaderboard-ad" class="midbanner ad-leaderboard ad_728x90"></div>
+<? /* ?><div id="ms-videos-leaderboard-ad" class="midbanner ad-leaderboard ad_728x90"></div><? */ ?>

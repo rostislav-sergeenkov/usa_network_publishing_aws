@@ -175,6 +175,7 @@
 }
 
 /* VIDEO THUMBNAILS */
+/*
 #microsite .block-usanetwork-mpx-video {
   margin: 0;
   width: 100%;
@@ -242,8 +243,10 @@
 #microsite .expandable-container .expandable-toggle-wrap {
   display: none;
 }
+*/
 /* END VIDEO THUMBNAILS */
 
+/*
 #microsite .block-usanetwork-mpx-video li.grid-item.ad {
   background-color: #1F1F1F;
   position: relative;
@@ -261,6 +264,7 @@
 #microsite #video-container .video-player {
   position: relative;
 }
+*/
 #video-container .active-player .custom-play {
   background-image: url("../images/icons/playOverlay.png");
   background-repeat: no-repeat;
@@ -487,6 +491,65 @@
   z-index: 10500;
 }
 
+
+/* right pane */
+#video-item-list-wrapper li {
+  display: inline-block;
+  width: 31.3%;
+  margin: 1% 1% 1% 0;
+  color: #55452A;
+}
+#video-item-list-wrapper li:nth-child(3n) {
+  margin-right: 0;
+}
+.video-nav-img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border: 0 solid transparent;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+#video-item-list-wrapper li.active .video-nav-img {
+  padding-bottom: calc(56.25% - 6px);
+  border: 3px solid #9BCEEE;
+}
+.video-nav-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+#video-item-list-wrapper .field-name-field-mpx-title {
+  height: 3.3em;
+  font-family: "avalonregular", sans-serif !important;
+  font-size: 0.8em !important;
+  line-height: 1.2 !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#video-item-list-wrapper .field-name-field-mpx-title h4 {
+  font-family: "avalonregular", sans-serif !important;
+  font-size: 0.8em !important;
+  line-height: 1.2 !important;
+  margin: 0;
+}
+/*
+#video-item-list-wrapper .field-name-field-mpx-title .gallery-h1 {
+  display: none;
+}
+*/
+#video-item-list-wrapper a,
+#video-item-list-wrapper a:link,
+#video-item-list-wrapper a:visited,
+#video-item-list-wrapper a:hover,
+#video-item-list-wrapper a:active {
+  color: #55452A;
+  text-decoration: none;
+}
 
 /* BEGIN MEDIA BREAKPOINTS */
 @media (min-width: 1780px) {

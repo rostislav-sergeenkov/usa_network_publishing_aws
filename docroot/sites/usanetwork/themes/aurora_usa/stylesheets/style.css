@@ -14700,6 +14700,20 @@ footer h2 {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .player-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .player-error {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  width: 100%;
+}
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth {
   position: absolute;
   left: 0;

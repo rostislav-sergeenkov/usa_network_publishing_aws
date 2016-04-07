@@ -1208,10 +1208,13 @@ header {
               width: 100%;
               .title {
                 font-family: $avalon-medium;
-                font-size: get-vw(22px, 1901);
+                font-size: get-vw(27px, 1901);
                 line-height: 1.5;
                 @include breakpoint($bp-min-1901-width) {
-                  font-size: 22px;
+                  font-size: 27px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: get-vw(19.5px, 1025);
                 }
               }
             }

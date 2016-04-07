@@ -695,7 +695,12 @@
       .title {
         margin-top: 0;
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(24px, 640);
+          font-size: get-vw(25px, 640);
+        }
+      }
+      .posted-date {
+        @include breakpoint($bp-640-width) {
+          display: none;
         }
       }
     }

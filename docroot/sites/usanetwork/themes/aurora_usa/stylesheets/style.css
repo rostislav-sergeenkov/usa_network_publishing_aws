@@ -7120,12 +7120,17 @@ header .tab-item.news-tab .latest-news .header-news-promo a .meta-wrapper {
 }
 header .tab-item.news-tab .latest-news .header-news-promo a .meta-wrapper .title {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.15729vw;
+  font-size: 1.42031vw;
   line-height: 1.5;
 }
 @media (min-width: 1901px) {
   header .tab-item.news-tab .latest-news .header-news-promo a .meta-wrapper .title {
-    font-size: 22px;
+    font-size: 27px;
+  }
+}
+@media (max-width: 1024px) {
+  header .tab-item.news-tab .latest-news .header-news-promo a .meta-wrapper .title {
+    font-size: 1.90244vw;
   }
 }
 header .tab-item.schedule-tab {
@@ -20320,7 +20325,12 @@ footer h2 {
 }
 @media (max-width: 640px) {
   #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .title {
-    font-size: 3.75vw;
+    font-size: 3.90625vw;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .posted-date {
+    display: none;
   }
 }
 @media (max-width: 640px) {

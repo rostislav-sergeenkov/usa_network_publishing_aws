@@ -1123,18 +1123,20 @@ function usanetwork_mpx_video_page_alter(&$page) {
 
   $file = menu_get_object('file');
   if (!empty($file)) {
-    $show_id = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id');
-    if (!empty($show_id)) {
-      $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
-      if ($full_episode === '1') {
-        $google_watch_variables = _usanetwork_get_google_watch_variables($file);
-        $header = '<script type=\'application/ld+json\'>' . drupal_json_encode($google_watch_variables) . '</script>';
-        $page['page_top']['google_watch'] = array(
-          'footer' => array(
-            '#type' => 'markup',
-            '#markup' => $header,
-          ),
-        );
+    if ($file->mpx_video_data['status'] == FILE_PUBLISHED) {
+      $show_id = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id');
+      if (!empty($show_id)) {
+        $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
+        if ($full_episode === '1') {
+          $google_watch_variables = _usanetwork_get_google_watch_variables($file);
+          $header = '<script type=\'application/ld+json\'>' . drupal_json_encode($google_watch_variables) . '</script>';
+          $page['page_top']['google_watch'] = array(
+            'footer' => array(
+              '#type' => 'markup',
+              '#markup' => $header,
+            ),
+          );
+        }
       }
     }
   }

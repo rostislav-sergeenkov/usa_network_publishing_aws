@@ -47,7 +47,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => -44,
     'customized' => 1,
   );
   // Exported menu link: main-menu_movies:movies
@@ -68,6 +68,26 @@ function usanetwork_menu_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -48,
+    'customized' => 1,
+  );
+  // Exported menu link: main-menu_news:news
+  $menu_links['main-menu_news:news'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'news',
+    'router_path' => 'news',
+    'link_title' => 'News',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_news:news',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: main-menu_schedule:schedule
@@ -107,7 +127,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: main-menu_shows:<nolink>
@@ -135,6 +155,7 @@ function usanetwork_menu_menu_default_menu_links() {
   t('Full episodes');
   t('Home');
   t('Movies');
+  t('News');
   t('Schedule');
   t('Shop');
   t('Shows');

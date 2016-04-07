@@ -19,6 +19,11 @@
     @include breakpoint($bp-640-width) {
       padding: 56.25vw 0 0;
     }
+    &.no-cover-image {
+      @include breakpoint($bp-640-width) {
+        padding: 0;
+      }
+    }
     .episode-change-link {
       bottom: 39px;
       color: $change-episode-color;
@@ -114,8 +119,9 @@
         .episode-title-block, .post-title-block {
           float: left;
           width: 70%;
-          @include breakpoint($bp-768-width) {
-            width: 60%;
+          @include breakpoint($bp-1024-width) {
+            float: none;
+            width: 100%;
           }
           @include breakpoint($bp-480-width) {
             float: none;
@@ -146,10 +152,10 @@
             }
             @include breakpoint($bp-1024-width) {
               font-size: 12px;
+              line-height: 3em;
             }
             @include breakpoint($bp-768-width) {
               font-size: 13px;
-              line-height: 3em;
             }
             .episode {
               font-family: $tex-gyreschola-italic;
@@ -186,10 +192,8 @@
             width: 16%;
           }
           @include breakpoint($bp-1024-width) {
-            width: 22%;
-          }
-          @include breakpoint($bp-768-width) {
-            width: 36%;
+            float: none;
+            width: 100%;
           }
           h3 {
             font-family: $avalon-book;
@@ -202,19 +206,28 @@
               margin: -8px 0 14px 0;
             }
             @include breakpoint ($bp-1024-width) {
-              font-size: 15px;
-            }
-            @include breakpoint ($bp-768-width) {
-              font-size: 18px;
-            }
-            @include breakpoint ($bp-320-width) {
-              text-align: left;
-              line-height: 2em;
+              display: none;
             }
           }
           .field-type-gigya-sharebar {
             margin-bottom: 0;
             float: right;
+            @include breakpoint ($bp-1024-width) {
+              float: left;
+            }
+            .gig-button-container {
+              @include breakpoint ($bp-1024-width) {
+                height: 32px;
+                margin: 5px 10px 0 0;
+                padding: 0;
+                width: 32px;
+              }
+              td {
+                > div {
+                  font-size: 32px!important;
+                }
+              }
+            }
           }
           .episode-button {
             width: 230px;

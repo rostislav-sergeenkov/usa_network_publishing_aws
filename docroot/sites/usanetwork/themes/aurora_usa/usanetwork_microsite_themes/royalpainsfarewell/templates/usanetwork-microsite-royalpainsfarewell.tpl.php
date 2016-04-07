@@ -136,7 +136,7 @@ endif;
               </div>
 
               <div id="spredfast-social-content">
-                <div class="mr-space" id="mr-space_royalpains-farewell-social-space" data-space-id="usa-network/royalpains-farewell-social-space" style="min-height: 500px;"></div>
+                <div class="mr-space" id="mr-space_royalpains-farewell-social-space" data-space-id="usa-network/royalpains-farewell-social-space" style="height: 100%; min-height: 500px;"></div>
                 <script>!function(a,b,c,d,e,f,g,h,i,j,k){h=a[d]=a[d]||{},h.ui=h.ui||[],i=a[e]=a[e]||{},i[f]||(j=b.getElementsByTagName(c)[0],k=b.createElement(c),k.src="//platform.massrelevance.com/js/massrel.js",j.parentNode.insertBefore(k,j),i[f]=function(){h.ui.push([].slice.call(arguments))}),i[f]("load",{el:b.getElementById(g)})}(window,document,"script","massrel","spredfast","exp","mr-space_royalpains-farewell-social-space");</script>
               </div>
 

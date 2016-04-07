@@ -45,7 +45,7 @@
   </div>
 <?php endif; ?>
 
-<div class="full-pane clearfix">
+<div class="full-pane">
   <div class="left-pane">
     <div id="video-container" data-video-url="<?php print $in_player['url']; ?>">
       <div class="video-container-ajaxed" data-tve-player>

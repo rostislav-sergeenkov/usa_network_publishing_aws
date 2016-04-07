@@ -1,0 +1,452 @@
+/* SCROLLBARS */
+/* IE scrollbars */
+body{
+  scrollbar-base-color: #55452A;
+  scrollbar-face-color: #FAEFDE;
+  scrollbar-3dlight-color: #FAEFDE;
+  scrollbar-highlight-color: #FAEFDE;
+  scrollbar-track-color: #55452A;
+  scrollbar-arrow-color: #55452A;
+  scrollbar-shadow-color: #222;
+  scrollbar-dark-shadow-color: #55452A;
+}
+/* Webkit scrollbars - Safari, Chrome */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #55452A;
+  border-left: 0 solid transparent;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #FAEFDE;
+  background: rgba(250,239,222,0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(250,239,222,0.8);
+}
+
+
+/* GENERAL */
+html {
+  color: #30251A;
+  background-color: #EFEFEF;
+}
+body.page-node-microsite {
+  background-color: #EFEFEF !important;
+  font-family: "avalonregular", sans-serif;
+}
+#microsite #sections {
+  background-color: #CCC;
+}
+a,
+a:link,
+a:visited {
+  color: #55452A;
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  color: #30251A;
+  text-decoration: underline;
+}
+
+/* MAIN STRUCTURE */
+.page-node-microsite .usa-wrap {
+  background-color: #FAEFDE;
+  top: -5px;
+  margin: 0 auto;
+}
+#microsite .ad-leaderboard {
+  margin: 18px auto;
+}
+
+
+/* SITE NAV */
+#site-nav {
+  position: fixed;
+  top: -60px;
+  left: 0;
+  max-height: 0;
+  color: #55452A;
+  background-color: #FAEFDE;
+  box-shadow: 0 1px 6px #55452A;
+  overflow: visible !important;
+  z-index: 10000;
+}
+#site-nav-left {
+  position: relative;
+  top: 5px;
+  left: 9px;
+  width: 206px;
+  height: 80px;
+}
+#site-nav #site-nav-top {
+  display: none;
+}
+#site-nav #site-nav-center {
+  position: absolute;
+  top: 12px;
+  left: 215px;
+  margin: 0;
+  width: calc(100% - 430px);
+  line-height: 1;
+}
+#site-nav li {
+  padding: 10px 18px 0;
+}
+#site-nav a,
+#site-nav a:link,
+#site-nav a:visited {
+  color: #55452A;
+  text-transform: uppercase;
+}
+#site-nav a:hover,
+#site-nav a:active,
+#site-nav li.active a {
+  color: #30251A;
+}
+/* mobile */
+#site-nav-links-mobile ul#site-nav-links-list-mobile {
+  width: 180px;
+}
+#site-nav-links-mobile li {
+  font-size: 1em;
+  height: auto;
+  width: 180px;
+}
+#site-nav-mobile li.internal a:hover,
+#site-nav-mobile li.internal a:active,
+#site-nav-mobile li.internal.active a {
+  color: #55452A;
+}
+#site-nav-right {
+  position: absolute;
+  top: 18px;
+  right: 9px;
+  width: 60px;
+  height: 26px;
+}
+
+
+
+/* SECTIONS CONTAINERS */
+.section:nth-child(even) {
+  background-color: transparent;
+}
+.section:nth-child(even) {
+  background-color: transparent;
+}
+.section {
+  background-color: #FFF;
+  padding: 80px 0 60px;
+}
+#videos {
+  padding-top: 60%;
+  background-color: #FAEFDE;
+}
+#videos-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+section .section-title-block {
+  margin: 18px 0 30px;
+}
+#videos .section-title-block {
+  margin-bottom: 0;
+}
+section .section-title-block > h2 {
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: #55452A;
+  margin: 0 auto;
+}
+section .section-title-block > h2 span {
+  display: none;
+}
+.section-description {
+  color: #55452A;
+  margin: 0 auto !important;
+  text-align: center;
+  width: 80%;
+}
+
+
+/* VIDEOS */
+#videos .section-title-block > h2 {
+  width: 525px;
+  height: 88px;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_videos.png');
+}
+#videos .header {
+  background-image: none;
+}
+#microsite .full-pane #video-container h1,
+#microsite .full-pane #video-container h3 {
+  color: #55452A;
+}
+#microsite .full-pane #video-container .video-description {
+  color: #55452A;
+}
+/* sub-nav */
+#video-filter li.filter-child-item {
+  background-color: #9BCEEE;
+  color: #55452A;
+  border-bottom: 1px solid #55452A;
+  text-align: left;
+  padding: 8px 0 8px 12px;
+}
+#video-filter li.filter-child-item:hover,
+#video-filter li.filter-child-item.active {
+  background-color: #55452A;
+  color: #FAEFDE;
+}
+#video-filter li.filter-item:hover,
+#video-filter li.filter-item.active {
+  background-color: transparent;
+}
+/*
+#microsite .block-usanetwork-mpx-video li.grid-item {
+  background-color: #transparent;
+  text-transform: none;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item:hover,
+#microsite .block-usanetwork-mpx-video li.grid-item.active {
+  background-color: #55452A;
+}
+#microsite .block-usanetwork-mpx-video li.grid-item {
+  height: 96px;
+}
+#videos .msm-episode-title {
+  margin-left: 26px;
+}
+*/
+.featured-asset.file-video-mpx .locked-msg {
+  color: #FFF;
+  line-height: 1;
+}
+.featured-asset .tve-help .tve-download,
+.featured-asset .tve-help .tve-msg {
+  color: #FFF;
+}
+#microsite .featured-asset .tve-help .tve-download-link {
+  max-width: 339px;
+}
+
+
+/* TIMELINE GALLERIES */
+#timeline {
+  background-color: #FFF;
+}
+#timeline .section-title-block > h2 {
+  width: 525px;
+  height: 88px;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_timeline.png');
+}
+.timelineFlat.timelineFlatPortfolio.tl3 {
+  background-color: #FFF;
+}
+.timeline-items-wrapper {
+  background-color: #FAEFDE;
+}
+#timeline section .section-description {
+  margin-top: 0px;
+}
+.node-timeline-gallery .content {
+  background-color: #FAEFDE;
+  color: #55452A;
+}
+.page-node-microsite .timelineFlat .timeline-items .timeline-item-image,
+.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-image {
+  background-color: #FAEFDE;
+}
+.timelineFlat .timeline-item .timeline-item-text {
+  color: #55452A;
+}
+.timelineFlat #timeline-line-full-left .arrow:before,
+.timelineFlat #timeline-line-full-right .arrow:before {
+  color: limegreen;
+}
+.timelineFlat .timeline-items {
+  background-color: #FAEFDE;
+}
+.timelineFlat .timeline-item h2 span {
+  color: #55452A;
+}
+.timelineFlat .timeline-item h2 span.divider.divider-two,
+.timelineFlat .timeline-item h2 span.timeline-h2-scene-num {
+  display: none;
+}
+.timelineFlat h4.timeline-month {
+  color: #FFF;
+}
+.timelineFlat .timeline-item .timeline-item-details {
+  color: #55452A;
+  background-color: #FFF;
+}
+.timelineFlat #timeline-line-full-left,
+.timelineFlat #timeline-line-full-right {
+  display: none;
+}
+.timelineFlat .timeline-right,
+.timelineFlat .timeline-right:hover:active,
+.timelineFlat .timeline-left,
+.timelineFlat .timeline-left:hover:active {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.timelineFlat #timeline-line-left:before,
+.timelineFlat #timeline-line-right:before {
+  color: #000;
+}
+.timelineFlat a.timeline-node:after:hover {
+  color: limegreen;
+}
+.timelineFlat a.timeline-node.active {
+  color: #000;
+}
+.timelineFlat a.timeline-node.active:after {
+  border: 2px solid transparent;
+  background: #55452A;
+}
+.timelineFlat .timeline-node-desc {
+  color: #55452A;
+  background-color: #FAEFDE;
+}
+.timelineFlat .timeline-node-desc:after {
+  border-top: 5px solid #FAEFDE;
+}
+.timelineFlat .timeline-item.active:before {
+  background-color: #55452A;
+}
+.timelineFlat .timeline-item.active:after {
+  border-top: 5px solid #55452A;
+}
+
+
+/* SOCIAL */
+#social.section {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 56.25%;
+  background-color: #FAEFDE;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_social_bg.jpg');
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+}
+#social .section-title-block > h2 {
+  width: 525px;
+  height: 88px;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_social.png');
+}
+#social-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#spredfast-social-content {
+  width: 80%;
+  height: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#spredfast-social-content .mr-space {
+  max-height: calc(100% - 154px - 126px);
+  overflow: hidden;
+}
+#microsite #social .ad-leaderboard {
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 364px);
+  top: initial;
+}
+
+
+/* FOOTER */
+#microsite footer {
+  background-color: #FFF;
+  color: #55452A;
+}
+#microsite footer li a:visited, #microsite footer li a:focus {
+  color: #55452A;
+}
+#microsite footer li a {
+  color: #55452A;
+}
+
+
+/* BEGIN MEDIA QUERIES */
+@media (max-width: 1280px) {
+  #site-nav li {
+    font-size: 0.875em;
+    padding: 10px 12px 0;
+  }
+}
+@media (max-width: 1024px) {
+  #site-nav li {
+    font-size: 0.75em;
+    padding: 10px 10px 0;
+  }
+}
+@media (max-width: 920px) {
+  .section-description {
+    width: 324px;
+  }
+  #timeline section .section-title-block > h2 {
+    height: 94px;
+    margin-left: calc(50% - 298.5px);
+    width: 263px;
+  }
+}
+@media (max-width: 873px) {
+  #site-nav {
+    overflow: visible;
+  }
+  #site-nav:hover {
+    overflow: visible!important;
+  }
+  #site-nav li {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 722px) {
+  .featured-asset .tve-help .tve-download,
+  .featured-asset .tve-help .tve-msg {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-description {
+    font-size: 0.75em;
+    margin: 0px auto 20px;
+    width: 172px;
+  }
+  #timeline section .section-title-block > h2 {
+    height: 43px;
+    margin-left: calc(50% - 156px);
+    width: 120px;
+  }
+}
+
+/* BEGIN MOBILE DEVICE QUERIES */
+@media (max-device-width: 736px) {
+  #microsite #home .ad-leaderboard {
+    margin-left: calc(-50% - 150px);
+  }
+}

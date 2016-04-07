@@ -442,6 +442,9 @@ header {
         @include breakpoint($bp-1024-width) {
           font-size: 13px;
         }
+        @include breakpoint($between-769-1024) {
+          padding: 0 get-vw(30px, 768);
+        }
         @include breakpoint($bp-768-width) {
           line-height: 50px;
           padding: 0 36px;
@@ -1014,7 +1017,7 @@ header {
         }
       }
     }
-    &.full-episode-tab, &.movies-tab {
+    &.full-episode-tab, &.movies-tab, &.news-tab {
       padding: get-vw(24px, 1025) get-vw(30px, 1025) get-vw(50px, 1025);
       @include breakpoint($bp-min-1901-width) {
         padding: 48px 53px 96px;
@@ -1022,7 +1025,7 @@ header {
       @include breakpoint($bp-1024-width) {
         padding: 24px 30px 50px;
       }
-      .full-episode-tab-wrapper, .movies-tab-wrapper {
+      .full-episode-tab-wrapper, .movies-tab-wrapper, .news-tab-wrapper {
         @include clear;
         margin: 0 auto;
         max-width: 1779px;
@@ -1050,8 +1053,8 @@ header {
           padding-top: 26px;
         }
       }
-      .latest-full-episodes, .latest-movies {
-        .full-episodes-list, .movies-list {
+      .latest-full-episodes, .latest-movies, .latest-news {
+        .full-episodes-list, .movies-list, .news-list {
           width: 100%;
           @include clear;
         }
@@ -1073,160 +1076,205 @@ header {
           @include breakpoint($bp-min-1901-width) {
             height: 322.7px;
           }
-          &:not(.sponsored-enable) {
-            a {
-              &:hover {
-                .meta-wrapper {
-                  .meta {
-                    display: block;
-                    margin-top: get-vw(-22px, 1025);
-                    max-width: none;
-                    position: absolute;
-                    top: 50%;
-                    @include breakpoint($bp-1024-width) {
-                      margin-top: -22px;
+          &:not(.header-news-promo) {
+            &:not(.sponsored-enable) {
+              a {
+                &:hover {
+                  .meta-wrapper {
+                    .meta {
+                      display: block;
+                      margin-top: get-vw(-22px, 1025);
+                      max-width: none;
+                      position: absolute;
+                      top: 50%;
+                      @include breakpoint($bp-1024-width) {
+                        margin-top: -22px;
+                      }
+                      @include breakpoint($bp-min-1901-width) {
+                        margin-top: -40.5px;
+                      }
                     }
+                  }
+                }
+              }
+            }
+            a {
+              color: #ffffff;
+              display: block;
+              height: 100%;
+              text-decoration: none;
+              text-transform: uppercase;
+              width: 100%;
+              &:hover {
+                .asset-img {
+                  opacity: 1;
+                }
+                .meta-wrapper {
+                  z-index: 2;
+                  .meta {
+                    .meta-icon {
+                      display: block;
+                    }
+                    .sponsored {
+                      display: block;
+                    }
+                    .additional {
+                      display: block;
+                    }
+                    .title {
+                      text-shadow: 1px 1px 0.5em $aspot-shadow;
+                    }
+                  }
+                }
+              }
+              .asset-img {
+                background: $header-full-episodes-back;
+                height: 100%;
+                overflow: hidden;
+                opacity: 0.3;
+                width: 100%;
+                img {
+                  height: 100%;
+                  width: 100%;
+                }
+              }
+              .meta-wrapper-inner {
+                display: table;
+                height: 100%;
+                width: 100%;
+              }
+              .meta-wrapper {
+                height: 100%;
+                position: absolute;
+                width: 100%;
+                .meta {
+                  display: table-cell;
+                  max-width: 100px;
+                  overflow: hidden;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  vertical-align: middle;
+                  white-space: nowrap;
+                  width: 100%;
+                  .meta-icon {
+                    display: none;
+                    height: get-vw(81px, 1901);
+                    margin: 0 auto get-vw(5px, 1025);
+                    position: relative;
+                    width: get-vw(81px, 1901);
                     @include breakpoint($bp-min-1901-width) {
-                      margin-top: -40.5px;
+                      height: 81px;
+                      margin-bottom: 9.3px;
+                      width: 81px;
+                    }
+                    &.movie-play-icon {
+                      border: 2px solid white;
+                      border-radius: 50%;
+                      height: get-vw(53px, 1901);
+                      width: get-vw(53px, 1901);
+                      @include breakpoint($bp-min-1901-width) {
+                        height: 53px;
+                        width: 53px;
+                      }
+                      &:before {
+                        content: "\e627";
+                        display: block;
+                        font-family: $ico-font;
+                        font-size: get-vw(30px, 1901);
+                        line-height: get-vw(53px, 1901);
+                        @include breakpoint($bp-min-1901-width) {
+                          font-size: 30px;
+                          line-height: 53px;
+                        }
+                      }
+                    }
+                  }
+                  .title {
+                    font-family: $avalon-medium;
+                    font-size: get-vw(42px, 1901);
+                    letter-spacing: 1px;
+                    line-height: 1.3;
+                    white-space: normal;
+                    @include breakpoint($bp-min-1901-width) {
+                      font-size: 42px;
+                    }
+                  }
+                  .logo {
+                    height: get-vw(37px, 1025);
+                    line-height: 1;
+                    margin: 0 auto get-vw(5px, 1025);
+                    position: relative;
+                    width: get-vw(183px, 1025);
+                    @include breakpoint($bp-min-1901-width) {
+                      height: 68px;
+                      margin-bottom: 9.3px;
+                      width: 339px;
+                    }
+                    img {
+                      height: 100%;
+                      width: 100%;
+                    }
+                  }
+                  .sponsored {
+                    display: none;
+                    margin: 0 auto get-vw(5px, 1025);
+                    @include breakpoint($bp-min-1901-width) {
+                      margin-bottom: 9.3px;
+                    }
+                  }
+                  .additional {
+                    display: none;
+                    font-family: $tex-gyreschola-italic;
+                    font-size: get-vw(11px, 1025);
+                    letter-spacing: 1px;
+                    line-height: 1.3;
+                    @include breakpoint($bp-min-1901-width) {
+                      font-size: 21px;
                     }
                   }
                 }
               }
             }
           }
+        }
+      }
+    }
+    &.news-tab {
+      .latest-news {
+        .header-news-promo {
+          height: auto;
           a {
             color: #ffffff;
             display: block;
-            height: 100%;
+            height: auto;
             text-decoration: none;
-            text-transform: uppercase;
             width: 100%;
-            &:hover {
-              .asset-img {
-                opacity: 1;
-              }
-              .meta-wrapper {
-                z-index: 2;
-                .meta {
-                  .meta-icon {
-                    display: block;
-                  }
-                  .sponsored {
-                    display: block;
-                  }
-                  .additional {
-                    display: block;
-                  }
-                  .title {
-                    text-shadow: 1px 1px 0.5em $aspot-shadow;
-                  }
-                }
-              }
-            }
             .asset-img {
               background: $header-full-episodes-back;
-              height: 100%;
+              height: get-vw(174px, 1025);
               overflow: hidden;
-              opacity: 0.3;
               width: 100%;
+              @include breakpoint($bp-min-1901-width) {
+                height: 322.7px;
+              }
               img {
                 height: 100%;
                 width: 100%;
               }
             }
-            .meta-wrapper-inner {
-              display: table;
-              height: 100%;
-              width: 100%;
-            }
             .meta-wrapper {
-              height: 100%;
-              position: absolute;
+              height: auto;
+              position: relative;
               width: 100%;
-              .meta {
-                display: table-cell;
-                max-width: 100px;
-                overflow: hidden;
-                text-align: center;
-                text-overflow: ellipsis;
-                vertical-align: middle;
-                white-space: nowrap;
-                width: 100%;
-                .meta-icon {
-                  display: none;
-                  height: get-vw(81px, 1901);
-                  margin: 0 auto get-vw(5px, 1025);
-                  position: relative;
-                  width: get-vw(81px, 1901);
-                  @include breakpoint($bp-min-1901-width) {
-                    height: 81px;
-                    margin-bottom: 9.3px;
-                    width: 81px;
-                  }
-                  &.movie-play-icon {
-                    border: 2px solid white;
-                    border-radius: 50%;
-                    height: get-vw(53px, 1901);
-                    width: get-vw(53px, 1901);
-                    @include breakpoint($bp-min-1901-width) {
-                      height: 53px;
-                      width: 53px;
-                    }
-                    &:before {
-                      content: "\e627";
-                      display: block;
-                      font-family: $ico-font;
-                      font-size: get-vw(30px, 1901);
-                      line-height: get-vw(53px, 1901);
-                      @include breakpoint($bp-min-1901-width) {
-                        font-size: 30px;
-                        line-height: 53px;
-                      }
-                    }
-                  }
+              .title {
+                font-family: $avalon-medium;
+                font-size: get-vw(27px, 1901);
+                line-height: 1.5;
+                @include breakpoint($bp-min-1901-width) {
+                  font-size: 27px;
                 }
-                .title {
-                  font-family: $avalon-medium;
-                  font-size: get-vw(42px, 1901);
-                  letter-spacing: 1px;
-                  line-height: 1.3;
-                  white-space: normal;
-                  @include breakpoint($bp-min-1901-width) {
-                    font-size: 42px;
-                  }
-                }
-                .logo {
-                  height: get-vw(37px, 1025);
-                  line-height: 1;
-                  margin: 0 auto get-vw(5px, 1025);
-                  position: relative;
-                  width: get-vw(183px, 1025);
-                  @include breakpoint($bp-min-1901-width) {
-                    height: 68px;
-                    margin-bottom: 9.3px;
-                    width: 339px;
-                  }
-                  img {
-                    height: 100%;
-                    width: 100%;
-                  }
-                }
-                .sponsored {
-                  display: none;
-                  margin: 0 auto get-vw(5px, 1025);
-                  @include breakpoint($bp-min-1901-width) {
-                    margin-bottom: 9.3px;
-                  }
-                }
-                .additional {
-                  display: none;
-                  font-family: $tex-gyreschola-italic;
-                  font-size: get-vw(11px, 1025);
-                  letter-spacing: 1px;
-                  line-height: 1.3;
-                  @include breakpoint($bp-min-1901-width) {
-                    font-size: 21px;
-                  }
+                @include breakpoint($bp-1024-width) {
+                  font-size: get-vw(19.5px, 1025);
                 }
               }
             }

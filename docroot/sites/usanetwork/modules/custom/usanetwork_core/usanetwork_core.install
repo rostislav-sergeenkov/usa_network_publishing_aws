@@ -1219,3 +1219,12 @@ function usanetwork_core_update_7185() {
     module_enable(array('advagg_mod'));
   }
 }
+
+/**
+ * Enables USANetwork News module.
+ */
+function usanetwork_core_update_7186() {
+  if (!module_exists('usanetwork_news')) {
+    module_enable(array('usanetwork_news'));
+  }
+}

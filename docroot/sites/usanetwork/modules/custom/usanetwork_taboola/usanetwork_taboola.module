@@ -123,16 +123,16 @@ function usanetwork_taboola_image_default_styles() {
       0 => array(
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
-          'width' => 344,
-          'height' => 287,
+          'width' => 640,
+          'height' => 534,
         ),
         'weight' => 0,
       ),
       1 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 344,
-          'height' => 287,
+          'width' => 640,
+          'height' => 534,
         ),
         'weight' => 0,
       ),

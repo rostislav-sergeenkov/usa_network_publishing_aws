@@ -425,6 +425,7 @@ function usanetwork_context_context_default_contexts() {
         'movies' => 'movies',
         'home/*' => 'home/*',
         'feedback' => 'feedback',
+        'news' => 'news',
       ),
     ),
     'taxonomy_term' => array(

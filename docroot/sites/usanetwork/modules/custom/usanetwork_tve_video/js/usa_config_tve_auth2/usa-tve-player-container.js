@@ -10,7 +10,7 @@
           return {
             replace: false,
             // apply client side iframe rendering to reduce cache problem for dynamic url
-            template: '<iframe data-ng-src="{{src}}" src="about:blank" id="{{id}}" onload="$pdk.bind(this, true); $pdk.controller.setIFrame(this, true);"' +
+            template: '<iframe data-ng-src="{{src}}" src="about:blank" id="{{id}}" ' +
             'allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" frameborder="0"></iframe>',
             // directive describe below
             require: '^usaTvePlayerContainer',
@@ -43,10 +43,13 @@
 
                 scope.id = config.id;
 
+                controller.playerWrap(element);
                 controller.playerId(attr['id']);
 
                 authService.promise.then(function (status) {
+
                   statusPromise = true;
+
                   init(status);
                 });
 
@@ -55,6 +58,8 @@
 
                   if (statusPromise) {
                     console.info('iframe load src');
+                    $pdk.bind(this, true);
+                    $pdk.controller.setIFrame(this, true);
                     controller.initiateAuthorization();
                     controller._bindPlayerEvents();
                   }
@@ -120,6 +125,9 @@
               this.isEntitled = function () {
                 return $scope.isEntitled;
               };
+              this.playerWrap = function (elem) {
+                return $scope.playerWrap = elem;
+              };
               this.playerId = function (playerId) {
                 return $scope.playerId = playerId;
               };
@@ -127,7 +135,7 @@
             link: function (scope, element, attr) {
 
               var body, playerContainer, tveAnalytics, userStatus, isLive, isShowEndCard,
-                  isEntitlement, isMicrosite, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
+                  isEntitlement, isMicrosite, playerWrap, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
                   isAdStart, nextReleaseUrl, positionTime, usaVideoSettingsRun;
 
               // set vars value
@@ -142,6 +150,7 @@
               isShowEndCard = parseInt(attr['showEndCard']) === 1 ? true : false;
               isMicrosite = body.hasClass('page-node-microsite') ? true : false;
               tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop};
+              playerWrap = scope.playerWrap;
               playerId = scope.playerId;
 
               isAdStart = false;
@@ -157,7 +166,7 @@
               if (!($pdk = window.$pdk)) {
                 return;
               }
-              
+
               // show dart
               $rootScope.isDartReq = true;
               $rootScope.statusAd = false;
@@ -200,7 +209,7 @@
                       //initiateAuthorization();
                     }
                     setTimeout(function () {
-                      // _bindPlayerEvents(playerId);
+                      //_bindPlayerEvents(playerId);
                     }, 0);
                   }
                 }
@@ -519,7 +528,7 @@
                */
               function _authzFailure(response) {
 
-                var errorCode, errorDetails;
+                var errorCode, errorDetails, errorBlock;
 
                 if (response.requestErrorCode) {
                   errorCode = response.requestErrorCode;
@@ -544,7 +553,6 @@
                 });
 
                 function showError(providerInfo) {
-                  $('#' + tveConfig.PLAYER_ID).remove();
 
                   scope.isAuthZError = true;
 
@@ -554,6 +562,17 @@
                       _getAuthzErrorMessage(errorCode, Drupal.settings.adobePass.errorMessages);
 
                   scope.$apply();
+
+                  errorBlock = $('<div>', {
+                    class: 'player-error',
+                    text: scope.message
+                  });
+
+                  $(playerWrap).html(errorBlock);
+
+                  if (scope.playerThumbnail) {
+                    hidePlayerThumbnail();
+                  }
                 }
               }
 

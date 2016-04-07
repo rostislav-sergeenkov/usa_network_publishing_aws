@@ -112,6 +112,38 @@
       });
     },
 
+    assignGalleryFilterClasses: function(callback) {
+      callback = callback || null;
+      Drupal.behaviors.ms_global.loadJSON('http://assets.usanetwork.com/royalpains/farewell/gallery-filter-list.json', function(response){
+usa_debug('assignGalleryFilterClasses() -- response: ', response);
+          var filters = JSON.parse(response)[0],
+              $galleryNavList = jQuery('#galleries-list');
+usa_debug('filters: ', filters);
+          for (filter in filters) {
+            usa_debug('filter: ' + filter);
+            var nids = filters[filter];
+            for (key in nids) {
+              usa_debug('key: ' + key);
+              var nid = nids[key];
+              $galleryNavList.find('li[data-node-id=' + nid + ']').addClass(filter);
+            }
+          }
+          if (typeof callback == 'function') callback();
+      });
+    },
+
+    setGalleryFilter: function(filter) {
+      var $galleryNavList = jQuery('#galleries-list'),
+          $galleryFilterList = jQuery('#galleries-filter');
+      $galleryNavList.animate({'opacity': 0}, 500, function(){
+        $galleryFilterList.find('li').removeClass('active');
+        $galleryFilterList.find('li[data-filter-class=' + filter + ']').addClass('active');
+        $(this).find('li').addClass('hide');
+        $(this).find('li.' + filter).removeClass('hide');
+        $(this).animate({'opacity': 1}, 500);
+      });
+    },
+
     // ATTACH
     attach: function (context, settings) {
       // set defaults
@@ -138,6 +170,17 @@
         cssEase: 'linear'
       });
 
+/*
+      self.assignGalleryFilterClasses(function(){
+        self.setGalleryFilter('hankmed-highlights');
+
+        // initialize gallery filter clicks
+        jQuery('#galleries-filter li').click(function(){
+          var filter = $(this).attr('data-filter-class');
+          self.setGalleryFilter(filter);
+        });
+      });
+*/
 //      self.setPersonRole();
 
       setTimeout(function(){

@@ -157,19 +157,19 @@
       </div>
       <div class="item-list">
         <ul class="filter-menu">
-          <li class="filter-item active first" data-filter-name="Hankmed Highlights" data_filter_class="hankmed-highlights">
+          <li class="filter-item active first" data-filter-name="Hankmed Highlights" data-filter-class="hankmed-highlights">
             <p>Hankmed Highlights</p>
           </li>
-          <li class="filter-item" data-filter-name="Fashion" data_filter_class="fashion">
+          <li class="filter-item" data-filter-name="Fashion" data-filter-class="fashion">
             <p>Fashion</p>
           </li>
-          <li class="filter-item" data-filter-name="Guest Stars" data_filter_class="guest-stars">
+          <li class="filter-item" data-filter-name="Guest Stars" data-filter-class="guest-stars">
             <p>Guest Stars</p>
           </li>
-          <li class="filter-item" data-filter-name="Hanks Hacks" data_filter_class="hanks-hacks">
+          <li class="filter-item" data-filter-name="Hanks Hacks" data-filter-class="hanks-hacks">
             <p>Hanks Hacks</p>
           </li>
-          <li class="filter-item last" data-filter-name="Hamptons" data_filter_class="hamptons">
+          <li class="filter-item last" data-filter-name="Hamptons" data-filter-class="hamptons">
             <p>Hamptons</p>
           </li>
         </ul>
@@ -188,9 +188,9 @@
       <?php if (!empty($episodic_galleries)): ?>
       <?php foreach ($episodic_galleries as $ep_gallery): ?>
         <?php if (!empty($ep_gallery['url']) && !empty($ep_gallery['gallery_nid']) && !empty($ep_gallery['title']) && !empty($ep_gallery['cover_img'])): ?>
-        <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>" class="<?php if ($gallery['gallery_nid'] == $ep_gallery['gallery_nid']) print 'active'; ?>">
+        <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>" class="hide<?php if ($gallery['gallery_nid'] == $ep_gallery['gallery_nid']) print ' active'; ?>">
           <a href="<?php print $microsite_url; ?>/galleries/<?php print $ep_gallery['url']; ?>">
-            <div class="gallery-nav-img"><img src="<?php print str_replace('surf', 'www', str_replace('files/public/', 'files/', $ep_gallery['cover_img'])); ?>" alt="<?php print $ep_gallery['title']; ?>">
+            <div class="gallery-nav-img"><img src="<?php print str_replace(['surf', 'local'], 'www', str_replace('files/public/', 'files/', $ep_gallery['cover_img'])); ?>" alt="<?php print $ep_gallery['title']; ?>">
             </div>
             <div class="gallery-title">
               <div><?php print $ep_gallery['title']; ?></div>
@@ -212,7 +212,7 @@
         <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>" class="<?php if ($gallery['gallery_nid'] == $char_gallery['gallery_nid']) print 'active'; ?>">
           <a href="<?php print $microsite_url; ?>/galleries/<?php print $char_gallery['url']; ?>">
             <div class="gallery-nav-img">
-              <img src="<?php print str_replace('surf', 'www', str_replace('files/public/', 'files/', $char_gallery['cover_img'])); ?>" alt="<?php print $char_gallery['title']; ?>">
+              <img src="<?php print str_replace(['surf', 'local'], 'www', str_replace('files/public/', 'files/', $char_gallery['cover_img'])); ?>" alt="<?php print $char_gallery['title']; ?>">
             </div>
             <div class="gallery-title">
               <div><?php print $char_gallery['title']; ?></div>

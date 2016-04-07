@@ -1,11 +1,7 @@
-#microsite {
-  background-image: none;
-}
-
 /* HOME SECTION */
 #home.section {
   position: relative;
-  top: 5px; /* Needed for the home waypoint to trigger! */
+  top: 2px; /* Needed for the home waypoint to trigger! */
   width: 100%;
   padding: 56.25% 0 0;
   margin-bottom: 0;
@@ -60,22 +56,12 @@
   text-indent: -9999px;
   margin: 0;
 }
-#home #home-sponsored.camry2015 {
-  width: 24%;
-}
-#home #home-sponsored.camry {
-  width: 20%;
-}
-#home #home-sponsored.corolla {
-  width: 21%;
+#home #home-sponsored {
+  display: none;
 }
 #home #home-tunein,
 #home #home-description {
-  width: 100%;
-  font-size: 1.375em;
-  text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 1%;
+  display: none;
 }
 
 /* countdown */
@@ -139,13 +125,14 @@
 }
 #home #home-content-container #home-nav {
   height: auto;
-  margin-bottom: 4%;
+  margin-bottom: 0;
   width: 80%;
 }
 #home #home-nav li {
   display: inline-block;
   margin: 0 2% 4%;
-  font-size: 22px;
+  font-size: 2.25em;
+  line-height: 1.2;
   text-transform: uppercase;
 }
 .home-button-text {
@@ -201,7 +188,6 @@
     height: auto;
   }
   #home.section {
-    background-position: center top;
     padding-top: calc(90vw + 170px);
   }
   #home-wrapper {

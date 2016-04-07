@@ -406,8 +406,8 @@
   width: 49.3%;
   margin: 1% 1% 0 0;
   padding: 0;
-  font-size: 1.125em;
-  line-height: 1.125em;
+  font-size: 1.625em;
+  line-height: 1.2;
   height: 38px;
   color: #55452A;
   text-transform: uppercase;
@@ -493,6 +493,10 @@
 
 
 /* right pane */
+#video-item-list-wrapper ul {
+  max-height: 622px;
+  overflow-y: auto;
+}
 #video-item-list-wrapper li {
   display: inline-block;
   width: 31.3%;
@@ -533,7 +537,7 @@
 }
 #video-item-list-wrapper .field-name-field-mpx-title h4 {
   font-family: "avalonregular", sans-serif !important;
-  font-size: 0.8em !important;
+  font-size: 1em !important;
   line-height: 1.2 !important;
   margin: 0;
 }

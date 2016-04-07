@@ -39,6 +39,19 @@
       return {'section': activeSection, 'category': activeCategory, 'item': activeItem};
     },
 
+    loadJSON: function(file, callback) {
+      var xobj = new XMLHttpRequest();
+          xobj.overrideMimeType("application/json");
+      xobj.open('GET', file, true);
+      xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+          // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+          callback(xobj.responseText);
+        }
+      };
+      xobj.send(null);
+    },
+
     getActiveVideoFilter: function() {
       return $('#video-filter li.filter-item.active').attr('data_filter_class');
     },
@@ -420,6 +433,7 @@ usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
     },
 
     create728x90Ad: function (section) {
+//      usa_debug('create728x90Ad(' + section + ')');
       if (!section) {
         section = $('#sections .section.active').attr('id') || 'home';
       }
@@ -437,7 +451,7 @@ usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
       }
 
       if ($ad.length != 1) {
-        usa_debug('ERROR: More or less than one 728x90 ad detected');
+        usa_debug('ERROR ' + section + ': More or less than one 728x90 ad detected');
         return false;
       }
 
@@ -445,7 +459,7 @@ usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
         // do nothing
       }
       else {
-        usa_debug('create728x90Ad(' + section + ')');
+        usa_debug('create728x90Ad(' + section + ') -- type: ' + type);
         $ad.addClass('loading');
 
         // check to see if there is an ad already there
@@ -464,9 +478,11 @@ usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
         $ad.removeClass('loading');
       }
 
+/*
       if (section == 'galleries') {
         Drupal.behaviors.ms_global.create300x250Ad(section);
       }
+*/
     },
 
     // SECTIONS

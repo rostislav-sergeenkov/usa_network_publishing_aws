@@ -706,35 +706,41 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
 
       // Make ajax call to '/ajax/get-gallery/' + nid
       var newGallery = $.ajax({
-        url: '/ajax/get-gallery/' + nid,
+        url: '/ajax/get-gallery/' + nid + '/' + Drupal.settings.microsites_settings.nid,
         type: 'GET',
         dataType: 'json'
       })
       .done(function(data, textStatus, jqXHR){
-        var activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
-            activeGallery = $('#galleries .microsite-gallery'),
-            activeGalleryHeight = activeGallery.height(),
-            galleryNavItems = $('#galleries-list li'),
+usa_debug('switchGallery(' + nid + ') -- data: ', data);
+        var // activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
+            $activeGallery = $('#galleries .microsite-gallery .gallery-wrapper'),
+//            activeGalleryHeight = $activeGallery.height(),
+            $galleryNavList = $('#galleries #galleries-nav-list'),
             shareBarHtml = '<div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden"><div id="gigya-share"></div></div>';
 
-          activeGallery.animate({'opacity': 0}, 1000, function(){
+        $activeGallery.animate({'opacity': 0}, 1000, function(){
 
           if (data.h1.length > 0 && data.title.length > 0) {
             titleHtml = '<h2 class="seo-h1">' + data.h1 + '</h2><h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;
-            activeGalleryMeta.html(titleHtml);
+            //activeGalleryMeta.html(titleHtml);
           } else if (data.title.length > 0) {
             titleHtml = '<h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;
-            activeGalleryMeta.html(titleHtml);
+            //activeGalleryMeta.html(titleHtml);
           }
-          activeGallery.find('.center-wrapper').html(data.rendered);
+          // $activeGallery.find('.center-wrapper').html(data.rendered);
           //Drupal.behaviors.ms_global.initCarousel(true);
-          galleryNavItems.removeClass('active');
-          $('#galleries-list li[data-node-id="' + nid + '"]').addClass('active');
+          $galleryNavList.find('li').removeClass('active');
+          $galleryNavList.find('li[data-node-id="' + nid + '"]').addClass('active');
+
+          // initialize gallery
+          $activeGallery.parent().html(data.rendered);
           setTimeout(function(){
-            Drupal.behaviors.ms_global.showGallery(activeGallery);
+            $activeGallery.usaGallery();
+            Drupal.behaviors.ms_site.galleryLazyLoad();
+            Drupal.behaviors.ms_global.showGallery($activeGallery);
             Drupal.behaviors.ms_global.galleryIsLoading = false;
             if (callback !== null) callback();
-          }, 1000);
+          }, 2000);
         });
       })
       .fail(function(jqXHR, textStatus, errorThrown){
@@ -746,7 +752,7 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
     changeGalleryHandler: function(e) {
       var anchorFull = this.href,
           anchorPathParts = Drupal.behaviors.ms_global.getUrlPath(anchorFull),
-          $navItems = $('#galleries #galleries-list li a');
+          $navItems = $('#galleries #galleries-nav-list li a');
 
       // Unbind click while selected gallery loading
       $navItems.unbind('click').bind('click', function(e) {
@@ -807,7 +813,7 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
       $(window).off('hashchange');
 
       // initialize gallery nav clicks
-      $('#galleries #galleries-list li a').bind('click', self.changeGalleryHandler);
+      $('#galleries #galleries-nav-list li a').bind('click', self.changeGalleryHandler);
 
 /*
       if (!$('html').hasClass('ie9')) {

@@ -117,7 +117,7 @@
       Drupal.behaviors.ms_global.loadJSON('http://assets.usanetwork.com/royalpains/farewell/gallery-filter-list.json', function(response){
 usa_debug('assignGalleryFilterClasses() -- response: ', response);
           var filters = JSON.parse(response)[0],
-              $galleryNavList = jQuery('#galleries-list');
+              $galleryNavList = jQuery('#galleries-nav-list');
 usa_debug('filters: ', filters);
           for (filter in filters) {
             usa_debug('filter: ' + filter);
@@ -133,7 +133,7 @@ usa_debug('filters: ', filters);
     },
 
     setGalleryFilter: function(filter) {
-      var $galleryNavList = jQuery('#galleries-list'),
+      var $galleryNavList = jQuery('#galleries-nav-list'),
           $galleryFilterList = jQuery('#galleries-filter');
       $galleryNavList.animate({'opacity': 0}, 500, function(){
         $galleryFilterList.find('li').removeClass('active');
@@ -141,6 +141,16 @@ usa_debug('filters: ', filters);
         $(this).find('li').addClass('hide');
         $(this).find('li.' + filter).removeClass('hide');
         $(this).animate({'opacity': 1}, 500);
+      });
+    },
+
+    galleryLazyLoad: function() {
+      var $galleryList = jQuery('#galleries .gallery-list'),
+          $galleryListItems = $galleryList.find('.slide');
+      $galleryListItems.each(function(){
+        var $img = $(this).find('img'),
+            dataLazy = $img.attr('data-lazy');
+        $img.attr('src', dataLazy);
       });
     },
 
@@ -162,6 +172,7 @@ usa_debug('filters: ', filters);
 
       jQuery('#timeline .section-title-block > h2').html('<span>Timeline</span>');
 
+/*
       $('.slides').slick({
         dots: true,
         infinite: true,
@@ -169,8 +180,9 @@ usa_debug('filters: ', filters);
         fade: true,
         cssEase: 'linear'
       });
-
-/*
+*/
+      self.galleryLazyLoad();
+      jQuery('.gallery-wrapper').usaGallery();
       self.assignGalleryFilterClasses(function(){
         self.setGalleryFilter('hankmed-highlights');
 
@@ -180,7 +192,7 @@ usa_debug('filters: ', filters);
           self.setGalleryFilter(filter);
         });
       });
-*/
+
 //      self.setPersonRole();
 
       setTimeout(function(){

@@ -772,6 +772,26 @@
           font-size: get-vw(24px, 640);
           line-height: get-vw(30px, 640);
         }
+        &:only-child {
+          font-size: get-vw(12.5px, 1025);
+          line-height: get-vw(13.5px, 1025);
+          margin-right: get-vw(7.3px, 1025);
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 23.2px;
+            line-height: 25px;
+            margin-right: 13.54px;
+          }
+          @include breakpoint($between-641-768) {
+            font-size: get-vw(12px, 640);
+            line-height: get-vw(14px, 640);
+            margin-right: 0;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: get-vw(24px, 640);
+            line-height: get-vw(26px, 640);
+            margin-right: 0;
+          }
+        }
       }
       .additional {
         font-family: $tex-gyreschola-italic;

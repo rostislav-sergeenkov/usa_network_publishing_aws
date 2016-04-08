@@ -42,6 +42,11 @@
         <?php print $content['reg_tab_schedule']; ?>
       </div>
     </div>
+    <div class="tab-item news-tab">
+      <div class="news-tab-wrapper tab-item-wrapper">
+        <?php print $content['reg_tab_news']; ?>
+      </div>
+    </div>
     <div class="tab-item user-profile-tab">
       <?php print $content['reg_tab_user_profile']; ?>
     </div>

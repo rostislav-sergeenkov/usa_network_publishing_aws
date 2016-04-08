@@ -119,6 +119,15 @@ function usanetwork_tve_video_js_alter(&$javascript) {
     if (isset($javascript[$tve_analytics_js_path])) {
       unset($javascript[$tve_analytics_js_path]);
     }
+    $drupal_settings = $javascript['settings']['data'];
+    foreach ($drupal_settings as $key => $value) {
+      if (array_key_exists('tve_mvpd', $value)) {
+        unset($javascript['settings']['data'][$key]);
+      }
+      if (array_key_exists('tve_auth', $value)) {
+        unset($javascript['settings']['data'][$key]);
+      }
+    }
   }
 }
 

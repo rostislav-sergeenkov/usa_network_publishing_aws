@@ -14,7 +14,9 @@
       <div class="meta-wrapper-inner">
         <div class="meta-icon gallery-icon"></div>
         <div class="meta">
-          <div class="title"><?php print (!empty($title))? $title: ''; ?></div>
+          <?php if (!empty($title)): ?>
+            <div class="title"><?php print $title; ?></div>
+          <?php endif; ?>
           <?php if (!empty($description)): ?>
             <div class="additional"><?php print $description; ?></div>
           <?php endif; ?>

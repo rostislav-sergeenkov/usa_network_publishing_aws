@@ -21,7 +21,7 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -63,7 +63,7 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -77,7 +77,7 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -127,7 +127,7 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -140,10 +140,9 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => NULL,
         'settings' => array(),
-        'type' => 'usanetwork_dynamic_entity_reference_label',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
@@ -162,7 +161,7 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
       'module' => 'usanetwork_dynamic_entity_reference',
       'settings' => array(),
       'type' => 'usanetwork_dynamic_entity_reference_default',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -176,7 +175,7 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -226,13 +225,56 @@ function usanetwork_full_bleed_promo_field_default_field_instances() {
         ),
       ),
       'type' => 'media_generic',
-      'weight' => 2,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_full_bleed_promo-field_usa_tv_show_color'
+  $field_instances['node-usanetwork_full_bleed_promo-field_usa_tv_show_color'] = array(
+    'bundle' => 'usanetwork_full_bleed_promo',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_usa_tv_show_color',
+    'label' => 'Custom Background Color',
+    'required' => 0,
+    'settings' => array(
+      'colorfield_colorpicker_type' => 'farbtastic',
+      'colorfield_enable_colorpicker' => TRUE,
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'colorfield',
+      'settings' => array(
+        'colorfield_options' => array(
+          'colorfield_colorpicker_type' => 'minicolors',
+          'colorfield_enable_colorpicker' => 1,
+        ),
+      ),
+      'type' => 'colorfield_unified_textfield',
+      'weight' => 7,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Call to action link');
+  t('Custom Background Color');
   t('Desktop image');
   t('Linked Content');
   t('Minimum 1350w x 530h');

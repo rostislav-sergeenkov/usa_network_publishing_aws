@@ -161,6 +161,9 @@ function usanetwork_microsite_strongarm() {
         'xmlsitemap' => array(
           'weight' => '8',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

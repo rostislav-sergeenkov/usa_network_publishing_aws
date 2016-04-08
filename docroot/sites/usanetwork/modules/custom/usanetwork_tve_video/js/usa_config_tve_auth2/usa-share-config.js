@@ -18,13 +18,13 @@ function share_config(clip) {
 
   return {
     "shareLinkVisible": true,
-    "shareLinkParam": "permalink",
+    "shareLinkUrl": pageUrl,
     "shareEmbedVisible": shareEmbed,
     "shareEmbedBaseUrl": pageUrl,
     "shareEmbedString": '<iframe src="' + videoSrc + '" frameBorder="0" seamless="seamless" allowFullScreen></iframe>',
     "shareFacebookVisible": true,
     "shareFacebookLink": pageUrl,
     "shareTwitterVisible": true,
-    "shareGoogle+Visible": true
+    "shareGooglePlusVisible": true
   };
 }

@@ -29,7 +29,12 @@ function usanetwork_umbel_page_alter(&$page) {
     $usa_umbel_parameters = array();
     $usa_umbel_parameters = _usanetwork_umbel_variables($usa_umbel_parameters);
     $usanetwork_umbel_tracking_code = variable_get('usanetwork_umbel_tracking_code', 'iwgdlxrtqfiiortz');
-    drupal_add_js(array('umbel_code' => $usanetwork_umbel_tracking_code, 'umbel_settings' => $usa_umbel_parameters),'setting');
+
+    $is_production = (_usanetwork_widget_get_environment() == 'prod') ? '1' : '0';
+
+    drupal_add_js(array('umbel_code' => $usanetwork_umbel_tracking_code,
+      'umbel_settings' => $usa_umbel_parameters,
+      'umbel_env' => $is_production),'setting');
 
     $page['page_bottom']['umbel']['#attached']['js'][drupal_get_path('module', 'usanetwork_umbel') . '/js/usanetwork_umbel_main.js'] =  array(
       'type' => 'file',

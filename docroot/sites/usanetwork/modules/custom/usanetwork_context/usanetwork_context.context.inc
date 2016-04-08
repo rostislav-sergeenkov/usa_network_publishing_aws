@@ -416,6 +416,7 @@ function usanetwork_context_context_default_contexts() {
         'videos' => 'videos',
         '*/photos' => '*/photos',
         '*/episodes' => '*/episodes',
+        '*/episodes/*' => '*/episodes/*',
         '*/cast' => '*/cast',
         '*/videos' => '*/videos',
         'shows' => 'shows',
@@ -423,6 +424,8 @@ function usanetwork_context_context_default_contexts() {
         'node/*/blog/*' => 'node/*/blog/*',
         'movies' => 'movies',
         'home/*' => 'home/*',
+        'feedback' => 'feedback',
+        'news' => 'news',
       ),
     ),
     'taxonomy_term' => array(

@@ -2448,6 +2448,8 @@ function _usanetwork_tv_shows_render_fbp_block() {
         }
       }
 
+      $full_bleed_background = _usanetwork_get_field_item('node', $promo_node, 'field_usa_tv_show_color', 'rgb');
+
       if (isset($sponsored)) {
         $theme_variables = array(
           'advert_block' => isset($advert) ? $advert : NULL,
@@ -2459,6 +2461,7 @@ function _usanetwork_tv_shows_render_fbp_block() {
           'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
             ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
             : NULL,
+          'background' => !empty($full_bleed_background) ? $full_bleed_background : NULL,
         );
       } else {
         $theme_variables = array(
@@ -2472,6 +2475,7 @@ function _usanetwork_tv_shows_render_fbp_block() {
           'mobile_url' => !empty($promo_node->field_usa_fbp_mobile_image)
             ? $show_wrapper->field_hp_full_bleed_promo->field_usa_fbp_mobile_image->file->url->value()
             : NULL,
+          'background' => !empty($full_bleed_background) ? $full_bleed_background : NULL,
         );
       }
       return theme('usanetwork_fbp_block', $theme_variables);

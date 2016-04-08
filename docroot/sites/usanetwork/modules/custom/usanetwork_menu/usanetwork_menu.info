@@ -29,6 +29,7 @@ features[menu_custom][] = menu-also-on-usa
 features[menu_links][] = main-menu_full-episodes:videos
 features[menu_links][] = main-menu_home:<front>
 features[menu_links][] = main-menu_movies:movies
+features[menu_links][] = main-menu_news:news
 features[menu_links][] = main-menu_schedule:schedule
 features[menu_links][] = main-menu_shop:http://www.nbcuniversalstore.com/?v=usa&ecid=PRF-NBC-103357&pa=PRF-NBC-103357
 features[menu_links][] = main-menu_shows:<nolink>

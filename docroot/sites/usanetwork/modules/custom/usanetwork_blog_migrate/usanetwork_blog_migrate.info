@@ -1,0 +1,8 @@
+name = USA Network Blog Migrate
+core = 7.x
+package = USA Network
+
+dependencies[] = "migrate"
+
+# files that contain the Migrate classes
+files[] = vox_blog_migrate.inc

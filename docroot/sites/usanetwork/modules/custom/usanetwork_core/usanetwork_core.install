@@ -1203,9 +1203,36 @@ function usanetwork_core_update_7183() {
 }
 
 /**
- * Changes for Auth2.
+ * Install usanetwork_blog_migrate module.
  */
 function usanetwork_core_update_7184() {
+  if (!module_exists('usanetwork_blog_migrate')) {
+    module_enable(array('usanetwork_blog_migrate'));
+  }
+}
+
+/**
+ * Enables AdvAgg Modifier module.
+ */
+function usanetwork_core_update_7185() {
+  if (!module_exists('advagg_mod')) {
+    module_enable(array('advagg_mod'));
+  }
+}
+
+/**
+ * Enables USANetwork News module.
+ */
+function usanetwork_core_update_7186() {
+  if (!module_exists('usanetwork_news')) {
+    module_enable(array('usanetwork_news'));
+  }
+}
+
+/**
+ * Changes for Auth2.
+ */
+function usanetwork_core_update_7187() {
   if (module_exists('tve_k2')) {
     module_disable(array('tve_k2'));
   }

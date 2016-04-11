@@ -1,6 +1,6 @@
 /* GALLERIES */
 #galleries {
-  background-image: url(/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_photos_bg.jpg);
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_photos_bg.jpg');
 }
 #galleries .section-title-block > h2 {
   width: 525px;
@@ -53,8 +53,7 @@
 }
 #galleries-filter li.filter-item {
   float: left;
-  width: 19.2%;
-  margin: 1% 1% 0 0;
+  margin: 1% 8.4% 0 0;
   padding: 0;
   font-size: 1.625em;
   line-height: 1.2;
@@ -212,7 +211,7 @@
   height: auto;
 }
 #galleries-nav-list .gallery-title {
-  height: 3.3em;
+  height: 3.5em;
   font-size: 1em;
   line-height: 1.2;
   overflow: hidden;

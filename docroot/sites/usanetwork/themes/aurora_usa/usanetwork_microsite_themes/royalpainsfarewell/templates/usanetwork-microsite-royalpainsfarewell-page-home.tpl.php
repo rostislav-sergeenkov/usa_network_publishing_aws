@@ -27,15 +27,7 @@ endif;
 ?>
 
 <div id="home-wrapper" class="clearfix">
-  <div id="head-leaderboard" class="ad-leaderboard">
-    <div class="region region-leaderboard">
-      <div id="block-mps-topbanner" class="block block-mps">
-        <div class="content">
-          <div id="topbanner"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="head-leaderboard" class="topbanner ad-leaderboard"></div>
 
   <div id="home-content-container">
     <div id="home-logo"><img src="<?php print $themePath; ?>/images/rp_farewell_logo_main.png" alt="Royal Pains Farewell logo" />

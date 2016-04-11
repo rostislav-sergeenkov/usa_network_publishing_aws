@@ -29,6 +29,10 @@ body.page-node-microsite {
   margin: 0;
   background-color: transparent;
 }
+#microsite .ad-leaderboard {
+  width: initial;
+  height: initial;
+}
 a,
 a:link,
 a:visited {
@@ -44,7 +48,7 @@ a:active {
 /* MAIN STRUCTURE */
 .page-node-microsite .usa-wrap {
   background-color: transparent;
-  top: -5px;
+  top: -9px;
   margin: 0 auto;
 }
 #microsite .ad-leaderboard {
@@ -98,6 +102,7 @@ body {
   background-color: #FAEFDE;
   box-shadow: 0 1px 6px #55452A;
   overflow: visible !important;
+  opacity: 0;
   z-index: 10000;
 }
 #site-nav-left {
@@ -171,6 +176,9 @@ body {
   background-color: #FAEFDE;
   background-repeat: no-repeat;
   background-position: center top;
+  background-size: cover;
+  color: #55452A;
+  text-align: center;
   overflow-y: auto;
   box-sizing: border-box;
 }
@@ -181,7 +189,7 @@ body {
   width: 100%;
   height: 100%;
   max-height: 1078px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 /*
 #videos {
@@ -421,12 +429,6 @@ footer {
 #spredfast-social-content .mr-space iframe {
   height: 100% !important;
 }
-#microsite #social .ad-leaderboard {
-  position: absolute;
-  bottom: 0;
-  left: calc(50% - 364px);
-  top: initial;
-}
 
 
 /* FOOTER */
@@ -446,6 +448,9 @@ footer {
 @media (max-width: 1920px) {
   #sections > .section:not(#site-nav) {
     padding: 56.25% 0 0;
+  }
+  #microsite #sections #videos {
+    padding: 61% 0 0;
   }
 }
 @media (max-width: 1280px) {

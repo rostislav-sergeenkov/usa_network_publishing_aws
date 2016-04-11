@@ -1,16 +1,28 @@
 .tve-help-sign img {
   width: 16px;
 }
+
+
+/* video section structure */
+#microsite #videos .full-pane {
+  width: 80vw;
+  height: calc(100% - 161px - 126px);
+  margin-top: 20px;
+  box-sizing: border-box;
+}
 #videos .left-pane {
   float: left;
-  width: calc(100% - 320px);
+  width: calc(80vw - 320px);
+  overflow: hidden;
 }
 #videos .right-pane {
   float: left;
   width: 300px;
-  height: 100%;
   margin-left: 20px;
+  overflow: hidden;
 }
+
+
 #videos section h2 {
   background-image: url('../images/watch_sectitle.png');
   height: 78px;
@@ -33,6 +45,9 @@
 #microsite .featured-asset .tve-help-link img {
   width: auto;
   height: 16px;
+  background-color: #55452A;
+  border: 4px solid #55452A;
+  box-sizing: content-box;
 }
 #microsite .featured-asset .tve-help .tve-download-link {
   max-width: 326px;
@@ -68,8 +83,9 @@
 
 
 #microsite .video-player-desc {
-  width: calc(100% - 206px);
   float: left;
+  width: calc(100% - 206px);
+  text-align: left;
 }
 #microsite .video-title {
   font-size: 2em;
@@ -280,12 +296,6 @@
   width: 100px;
   z-index: 1;
 }
-/*#video-container.play .active-player .custom-play {*/
-  /*display: none;*/
-/*}*/
-/*#video-container.pause .active-player .custom-play {*/
-  /*display: block;*/
-/*}*/
 /* corrected player style */
 .video-auth-player-wrapper {
   display: none;
@@ -297,13 +307,15 @@
   margin: 0;
 }
 .video-auth-player-wrapper.featured-asset .tve-help-link {
-  color: #ffffff;
+  color: #55452A;
 }
 .video-auth-player-wrapper.featured-asset .loginButton img {
   width: 100%;
 }
 .video-auth-player-wrapper.featured-asset .tve-help-link.signOut {
   position: static;
+  width: 100%;
+  text-align: left;
 }
 #microsite .video-auth-player-wrapper.featured-asset .tve-help-link.signOut .tve-header-links > li {
   margin: 0;
@@ -312,11 +324,15 @@
   display: inline-block;
   margin-left: 10px;
   padding: 0 0 0 12px;
-  border-left: 1px solid #ffffff;
+  border-left: 1px solid #55452A;
   line-height: 10px;
 }
-.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a {
-  color: #ffffff;
+.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a,
+.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:link,
+.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:visited,
+.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:hover,
+.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:active {
+  color: #55452A;
 }
 .video-auth-player-wrapper.featured-asset .tve-close {
   cursor: pointer;
@@ -364,7 +380,7 @@
   position: relative;
   float: left;
   width: 100%;
-  height: 56.26%;
+  height: calc((80vw - 320px) * 0.5625);
   margin-right: 0;
   margin-bottom: 4px;
 }
@@ -403,7 +419,7 @@
 }
 #video-filter li.filter-item {
   float: left;
-  width: 49.3%;
+  width: 31.3%;
   margin: 1% 1% 0 0;
   padding: 0;
   font-size: 1.625em;
@@ -481,12 +497,7 @@
   margin: 0;
 }
 
-/* full pane */
-#microsite #videos .full-pane {
-  height: calc(98% - 161px - 126px);
-  margin-top: 20px;
-  box-sizing: border-box;
-}
+
 #mobileVideoModal {
   z-index: 10500;
 }
@@ -495,6 +506,7 @@
 /* right pane */
 #video-item-list-wrapper ul {
   max-height: 622px;
+  text-align: left;
   overflow-y: auto;
 }
 #video-item-list-wrapper li {
@@ -505,6 +517,10 @@
 }
 #video-item-list-wrapper li:nth-child(3n) {
   margin-right: 0;
+}
+#videos .block-usanetwork-mpx-video .view .file,
+#videos #block-views-usa-mpx-video-fullepisodes-live .view .file {
+  border: 0 solid transparent;
 }
 .video-nav-img {
   position: relative;
@@ -528,14 +544,17 @@
   height: auto;
 }
 #video-item-list-wrapper .field-name-field-mpx-title {
-  height: 3.3em;
+  height: 3.5em;
   font-family: "avalonregular", sans-serif !important;
-  font-size: 0.8em !important;
+  font-size: 1em !important;
   line-height: 1.2 !important;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 #video-item-list-wrapper .field-name-field-mpx-title h4 {
+  color: #55452A;
+  text-align: left;
+  text-transform: none;
   font-family: "avalonregular", sans-serif !important;
   font-size: 1em !important;
   line-height: 1.2 !important;
@@ -546,6 +565,21 @@
   display: none;
 }
 */
+/* get rid of "key" icon */
+#videos .block-usanetwork-mpx-video .view .file.tve-video-auth > a:after,
+#videos #block-views-usa-mpx-video-fullepisodes-live .view .file.tve-video-auth > a:after {
+  display: none;
+}
+/* get rid of grey "key" icon background */
+#videos .block-usanetwork-mpx-video .view .file.tve-video-auth .asset-img:after,
+#videos #block-views-usa-mpx-video-fullepisodes-live .view .file.tve-video-auth .asset-img:after {
+  display: none;
+}
+/* get rid of play button */
+#videos .full-video-icon-default {
+  display: none;
+  background-image: none;
+}
 #video-item-list-wrapper a,
 #video-item-list-wrapper a:link,
 #video-item-list-wrapper a:visited,

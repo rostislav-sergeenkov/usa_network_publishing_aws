@@ -114,7 +114,9 @@ usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
         Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.setOmnitureData(sectionId);
-        Drupal.behaviors.ms_global.create728x90Ad(sectionId);
+        //Drupal.behaviors.ms_global.create728x90Ad(sectionId);
+        //Drupal.behaviors.ms_global.refreshMPS728x90Ad(sectionId);
+        if (sectionId != 'videos') Drupal.behaviors.ms_global.refreshAds(sectionId);
       }
     },
 
@@ -364,6 +366,7 @@ usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
     },
 
     // 300x250 -- not for video companion ads!!
+/*
     create300x250Ad: function (section) {
       var $ad = $('.dart-name-300x250_ifr_reload_' + section);
       var $ad220x60 = $('.dart-name-220x60_ifr_reload_' + section);
@@ -410,10 +413,43 @@ usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
       }
     },
 
+*/
+    loadAds: function(selector, adslot) {
+      usa_debug('loadAds(' + selector + ', ' + adslot + ')');
+      if (typeof mps != 'undefined' && typeof mps.insertAd == 'function') {
+        mps.insertAd(selector, adslot);
+      }
+      else {
+        setTimeout(function(){
+          loadAds(selector, adslot);
+        }, 500);
+      }
+    },
+
+    refreshAds: function(section) {
+      if (typeof mps != 'undefined' && typeof mps.refreshAds == 'function') {
+        usa_debug('refreshAds(' + section + ') SUCCESS');
+        var selector = '#' + section + ' .ad-leaderboard',
+            $ad = $(selector),
+            adslot = (section == 'home') ? 'topbanner' : 'midbanner';
+        if ($ad.html() != '' && $ad.find('iframe').length > 0) {
+          mps.refreshAds(adslot);
+        }
+        else {
+          Drupal.behaviors.ms_global.loadAds(selector, adslot);
+        }
+      }
+      else {
+        usa_debug('refreshAds(' + section + ') NOT READY YET');
+        setTimeout(refreshAds(section), 1000);
+      }
+    },
+
     // createAds
     // there is a race condition if we try to create both the 728x90
     // and the 300x250 at about the same time, so we create the 728x90
     // first and then create the 300x250
+/*
     initMPS728x90Ad: function(target, type) {
 usa_debug('========== initMPS728x90Ad(' + target + ', ' + type + ')');
       Drupal.behaviors.mpsAdvert.mpsLoadAd(target, type);
@@ -421,17 +457,19 @@ usa_debug('========== initMPS728x90Ad(' + target + ', ' + type + ')');
 
     refreshMPS728x90Ad: function(target, type) {
 usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
-      var type = type || 'midbanner';
-      if ($(target + ' .mps-slot').length < 1 && $(target + ' iframe').length < 1) {
+      var type = type || (target == 'home') ? 'topbanner' : 'midbanner',
+          targetId = $('#' + target + ' .ad-leaderboard').attr('id');
+      if ($('#' + targetId + '.mps-slot').length < 1 && $('#' + targetId + 'iframe').length < 1) {
         setTimeout(function(){
-          Drupal.behaviors.ms_global.initMPS728x90Ad(target, type);
+          Drupal.behaviors.ms_global.initMPS728x90Ad(targetId, type);
         }, 1000);
       }
       else {
         mps.refreshAds(type);
       }
     },
-
+*/
+/*
     create728x90Ad: function (section) {
 //      usa_debug('create728x90Ad(' + section + ')');
       if (!section) {
@@ -478,12 +516,11 @@ usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
         $ad.removeClass('loading');
       }
 
-/*
       if (section == 'galleries') {
         Drupal.behaviors.ms_global.create300x250Ad(section);
       }
-*/
     },
+*/
 
     // SECTIONS
     setActiveMenuItem: function(anchor) {
@@ -905,11 +942,12 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
             Drupal.behaviors.ms_global.sectionScroll('home');
           });
 
+/*
           // initialize home next button click
           $('#home .scroll').on('click', function(){
             Drupal.behaviors.ms_global.sectionScroll('videos');
           });
-
+*/
           self.setSectionIdsArray();
 
           // initialize the waypoints
@@ -926,7 +964,10 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
         }, 2000);
         // END TIME OUT
 
-        self.create728x90Ad();
+        //self.create728x90Ad();
+        //self.refreshMPS728x90Ad(urlParts['section']);
+//        self.refreshAds('#head-leaderboard', 'topbanner');
+        if (urlParts['section'] != 'videos') self.refreshAds(urlParts['section']);
       });
 
     }

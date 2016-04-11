@@ -52,16 +52,18 @@
 
     setSiteNav: function() {
 //      var wPath = window.location.pathname,
-      var homeAdInView = (Drupal.behaviors.ms_global.isScrolledIntoView('.dart-name-728x90_ifr_reload_home')) ? true : false,
-          homeLogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-logo')) ? true : false,
-          homeTuneInInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-tunein')) ? true : false,
-          homeNavFirstInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:first')) ? true : false,
-          homeNavLastInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:last')) ? true : false,
+      var homeNavInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav')) ? true : false;
+          //homeAdInView = (Drupal.behaviors.ms_global.isScrolledIntoView('.dart-name-728x90_ifr_reload_home')) ? true : false,
+          //homeLogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-logo')) ? true : false,
+          //homeTuneInInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-tunein')) ? true : false,
+          //homeNavFirstInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:first')) ? true : false,
+          //homeNavLastInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:last')) ? true : false,
 //          homeFinalePacketImageInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#finale-packet-image')) ? true : false,
-          homeUSALogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-usa-logo')) ? true : false;
+          //homeUSALogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-usa-logo')) ? true : false;
       //usa_debug('setSiteNav()');
 //      if (wPath == '/mrrobot/catchup' || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeFinalePacketImageInView || homeUSALogoInView) {
-      if (homeAdInView || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeUSALogoInView) {
+//      if (homeAdInView || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeUSALogoInView) {
+      if (homeNavInView) {
         Drupal.behaviors.ms_site.hideSiteNav();
       }
       else {
@@ -144,6 +146,7 @@ usa_debug('filters: ', filters);
       });
     },
 
+/*
     galleryLazyLoad: function() {
       var $galleryList = jQuery('#galleries .gallery-list'),
           $galleryListItems = $galleryList.find('.slide');
@@ -153,6 +156,7 @@ usa_debug('filters: ', filters);
         $img.attr('src', dataLazy);
       });
     },
+*/
 
     // ATTACH
     attach: function (context, settings) {
@@ -163,7 +167,7 @@ usa_debug('filters: ', filters);
           setSiteNavPositionTimer,
           self = this;
 
-      var homeSectionHeight,
+      var //homeSectionHeight,
           siteNavTimer,
           siteNavPositionTimer,
           scrollTimer,
@@ -196,7 +200,7 @@ usa_debug('filters: ', filters);
 //      self.setPersonRole();
 
       setTimeout(function(){
-        homeSectionHeight = self.getHeightHomeSection();
+        //homeSectionHeight = self.getHeightHomeSection();
 
         // put video filter text in <p>
         // this is to allow vertical alignment of single and multiple row text
@@ -248,9 +252,10 @@ usa_debug('filters: ', filters);
             allAdsLoaded = true;
             $('#microsite .section').each(function(){
               var sectionId = $(this).attr('id');
-              if (sectionId != 'site-nav') {
+              if (sectionId != 'site-nav' && sectionId != 'videos') {
                 if ($('#' + sectionId + ' .ad-leaderboard').html() == '') {
                   allAdsLoaded = false;
+/*
                   if (sectionId == 'videos') {
                     var $activeVideoThumb = $('#thumbnail-list .item-list ul li.thumbnail.active'),
                         dataFullEpisode = $activeVideoThumb.attr('data-full-episode');
@@ -260,10 +265,11 @@ usa_debug('filters: ', filters);
                     }
                   }
                   else {
+*/
                     if (Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard')) {
                       Drupal.behaviors.ms_global.create728x90Ad(sectionId);
                     }
-                  }
+//                  }
                 }
               }
             });

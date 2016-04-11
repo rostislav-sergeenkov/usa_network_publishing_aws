@@ -760,7 +760,7 @@
     }
   }
 }
-#block-usanetwork-media-gallery-usa-gallery-consumptionator-main, .consumptionator-video-page .video-block {
+#block-usanetwork-media-gallery-usa-gallery-consumptionator-main {
   .consum-sidebar {
     .more-items {
       @include breakpoint($between-1025-1280) {
@@ -802,42 +802,6 @@
           @include breakpoint($between-769-1024) {
             margin-top: 0;
           }
-        }
-      }
-    }
-  }
-  .video-block {
-    .consum-sidebar {
-      .advert {
-        display: none;
-      }
-      .items-block {
-        @include breakpoint($bp-min-1281-width) {
-          bottom: 40px;
-          height: calc(100% - 42px);
-          position: absolute;
-        }
-        @include breakpoint($bp-min-1901-width) {
-          bottom: 70px;
-          height: calc(100% - 72px);
-        }
-      }
-      .download-app {
-        @include breakpoint($between-1025-1280) {
-          bottom: 0;
-          height: 290px;
-          position: absolute;
-          right: 0;
-          width: 320px;
-        }
-        @include breakpoint($bp-1024-width) {
-          width: 100%;
-        }
-      }
-      .episodes-list-slider.vertical {
-        height: calc(100% - 45px);
-        @include breakpoint($bp-min-1901-width) {
-          height: calc(100% - 70px);
         }
       }
     }

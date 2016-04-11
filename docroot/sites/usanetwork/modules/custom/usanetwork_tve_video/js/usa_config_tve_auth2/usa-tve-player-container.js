@@ -295,12 +295,6 @@
 
                 // $pdk.bind(playerID);
 
-                // init watchwith
-                if (typeof wwLoader !== 'undefined') {
-                  wwLoader.bootstrap();
-                  console.info('init wwLoader.bootstrap()');
-                }
-
                 // default listeners for player
                 $pdk.controller.addEventListener('auth_success', _authSuccess);
                 $pdk.controller.addEventListener('auth_token_failed', _authzFailure);
@@ -335,6 +329,12 @@
                 $pdk.controller.addEventListener('OnReleaseStart', _onReleaseStart);
 
                 $pdk.controller.addEventListener('OnReleaseError', _onReleaseError);
+
+                // init watchwith
+                if (typeof wwLoader !== 'undefined') {
+                  wwLoader.bootstrap();
+                  console.info('init wwLoader.bootstrap()');
+                }
               }
 
               USAN.playerAPI = {

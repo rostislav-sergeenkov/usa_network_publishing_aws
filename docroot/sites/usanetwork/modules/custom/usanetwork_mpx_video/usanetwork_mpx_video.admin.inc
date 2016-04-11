@@ -247,10 +247,10 @@ function _usanetwork_mpx_watchwith_admin_form ($form, &$form_state) {
     '#type' => 'textfield',
     '#default_value' => variable_get('usanetwork_ww_access_key', 'SBSXJZHX4R5'),
   );
-  $form['usanetwork_ww_js_file'] = array(
+  $form['usanetwork_wwr_js_file'] = array(
     '#title' => t('WatchWith path to JS file'),
     '#type' => 'textfield',
-    '#default_value' => variable_get('usanetwork_ww_js_file', 'http://apps.watchwith.com/wng-usa/dev/wng-usa-boot.js'),
+    '#default_value' => variable_get('usanetwork_wwr_js_file', 'http://apps.watchwith.com/wng-usa/dev/wng-usa-boot.js'),
   );
 
   return system_settings_form($form);

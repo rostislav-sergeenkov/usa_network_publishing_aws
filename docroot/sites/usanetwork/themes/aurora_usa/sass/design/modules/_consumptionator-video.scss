@@ -8,26 +8,82 @@
 }
 
 .consumptionator-video-page {
-
   .video-block {
     .player-wrapper {
       float: none !important;
     }
-
     .consum-sidebar {
-      @include breakpoint($bp-min-1281-width) {
+      @include breakpoint($bp-min-1025-width) {
         float: none;
         height: 100%;
         position: absolute;
         left: auto;
+        padding: 0;
         right: 0;
         top: 0;
       }
       @include breakpoint($between-1025-1280) {
-        position: absolute;
-        left: auto;
-        right: 0;
-        top: 0;
+        width: 320px;
+      }
+      .advert {
+        display: none;
+      }
+      .episodes-list-slider.horizontal {
+        @include breakpoint($between-1025-1280) {
+          display: none;
+        }
+      }
+      .episodes-list-slider.vertical {
+        height: calc(100% - 45px);
+        @include breakpoint($bp-min-1901-width) {
+          height: calc(100% - 70px);
+        }
+        @include breakpoint($between-1025-1280) {
+          display: block;
+        }
+      }
+      .items-block {
+        @include breakpoint($between-1025-1280) {
+          bottom: 45px;
+          height: calc(100% - 47px);
+          position: absolute;
+          top: auto;
+        }
+        @include breakpoint($bp-min-1281-width) {
+          bottom: 40px;
+          height: calc(100% - 42px);
+          position: absolute;
+          top: auto;
+        }
+        @include breakpoint($bp-min-1901-width) {
+          bottom: 70px;
+          height: calc(100% - 72px);
+        }
+      }
+      .items-block-title {
+        h2 {
+          @include breakpoint($between-1025-1280) {
+            width: 100%;
+          }
+        }
+      }
+      .more-items {
+        @include breakpoint($between-1025-1280) {
+          bottom: 0;
+          display: block;
+          position: absolute;
+          left: 0;
+          top: auto;
+          width: 100%;
+        }
+        @include breakpoint($between-641-1024) {
+          top: 0;
+        }
+        a {
+          @include breakpoint($between-1025-1280) {
+            padding-left: 25px;
+          }
+        }
       }
     }
   }
@@ -46,11 +102,6 @@
       max-height: 1093.75px;
       max-width: 2500px;
       margin: 0 auto;
-    }
-    @include breakpoint($between-1025-1280) {
-      //height: calc((100vw - 320px)*0.5625);
-      margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
-      overflow: visible;
     }
     @include breakpoint($bp-1024-width) {
       height: auto;
@@ -670,7 +721,13 @@
   }
   .video-block {
     margin-bottom: 0;
-
+    @include breakpoint($bp-min-1281-width) {
+      height: 42.01875vw;
+    }
+    @include breakpoint($between-1025-1280) {
+      height: calc((100vw - 320px)*0.5625);
+      overflow: visible;
+    }
     #videoplayer {
       position: absolute;
       left: 0;
@@ -711,6 +768,9 @@
         }
       }
       &:not(.show-related) {
+        @include breakpoint($between-1025-1280) {
+          margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
+        }
         .player-wrapper {
           @include breakpoint($between-1025-1280) {
             margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);

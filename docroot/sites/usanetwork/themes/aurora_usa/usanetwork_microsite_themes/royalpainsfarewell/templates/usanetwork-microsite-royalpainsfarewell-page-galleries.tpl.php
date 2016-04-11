@@ -73,7 +73,6 @@
   <div class="microsite-gallery gallery-block full-pane" data-node-id="<?php if (!empty($gallery['gallery_nid'])) print $gallery['gallery_nid']; ?>">
     <div class="left-pane">
       <?php print $gallery['rendered']; ?>
-      <div class="description-block"></div>
     </div>
     <div class="right-pane">
       <ul id="galleries-nav-list">
@@ -121,8 +120,8 @@
       <?php endif; ?>
       </ul>
     </div>
+    <div id="gallery-loader" title="loading animation"></div>
   </div>
-  <div id="gallery-loader"><img src="/sites/usanetwork/themes/aurora_usa/images/ajax-loader.gif" alt="loading animation"></div>
 <?php endif; ?>
 
 <div id="ms-galleries-leaderboard-ad" class="midbanner ad-leaderboard ad_728x90"></div>

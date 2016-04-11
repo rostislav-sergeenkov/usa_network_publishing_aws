@@ -735,8 +735,8 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
           // initialize gallery
           $activeGallery.parent().html(data.rendered);
           setTimeout(function(){
-            $activeGallery.usaGallery();
-            Drupal.behaviors.ms_site.galleryLazyLoad();
+            $('#galleries .microsite-gallery .gallery-wrapper').usaGallery();
+            //Drupal.behaviors.ms_site.galleryLazyLoad();
             Drupal.behaviors.ms_global.showGallery($activeGallery);
             Drupal.behaviors.ms_global.galleryIsLoading = false;
             if (callback !== null) callback();

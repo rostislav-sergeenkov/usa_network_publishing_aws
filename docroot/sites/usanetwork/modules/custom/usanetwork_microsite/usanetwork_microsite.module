@@ -863,20 +863,8 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper, $node) {
         continue;
       }
 
-      // If gallery should be get by ajax call, only wrapper will be provided to html.
-      if ($gallery_post_loading) {
-        $theme_variables['gallery'] = theme('html_tag', array(
-          'element' => array(
-            '#tag' => 'div',
-            '#attributes' => array(
-              'class' => 'gallery-ajax-wrapper',
-            ),
-          ),
-        ));
-      }
-      else {
-        $theme_variables['gallery'] = usanetwork_microsite_get_rendered_gallery($current_gallery_node, $node);
-      }
+      $theme_variables['gallery'] = usanetwork_microsite_get_rendered_gallery($current_gallery_node, $node, $gallery_post_loading);
+
 
       break;
     }
@@ -909,7 +897,7 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper, $node) {
  * @param null $microsite_node
  * @return array
  */
-function usanetwork_microsite_get_rendered_gallery($node, $microsite_node = NULL) {
+function usanetwork_microsite_get_rendered_gallery($node, $microsite_node = NULL, $gallery_post_loading = FALSE) {
   $node_wrapper = entity_metadata_wrapper('node', $node);
   $use_new_gallery = FALSE;
 
@@ -917,7 +905,19 @@ function usanetwork_microsite_get_rendered_gallery($node, $microsite_node = NULL
     $microsite_node_wrapper = entity_metadata_wrapper('node', $microsite_node);
     $use_new_gallery = usanetwork_core_api_check_field($microsite_node, 'field_ms_use_new_gallery') ? $microsite_node_wrapper->field_ms_use_new_gallery->value() : FALSE;
   }
-  if ($use_new_gallery) {
+  // If gallery should be get by ajax call, only wrapper will be provided to html.
+  if ($gallery_post_loading) {
+    $rendered =         $theme_variables['gallery'] = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#attributes' => array(
+          'class' => 'gallery-wrapper',
+        ),
+        '#value' => '',
+      ),
+    ));
+  }
+  elseif ($use_new_gallery) {
     $rendered = _usanetwork_media_gallery_consumptionator_gallery_slides_block($node, TRUE);
   }
   else {

@@ -301,7 +301,43 @@
         }
 
         if ($('body').hasClass('page-node-microsite')) {
-          return;
+          var newSharebarObj = [];
+
+          for (var i = 1; i <= $sharebar.length; i++) {
+            if (i == 1) {
+              var containerID = 'gigya-share';
+            } else {
+              var containerID = 'gigya-share--' + i;
+            }
+            newSharebarObj.push({
+              gigyaSharebar: {
+                ua: {
+                  linkBack: link_back,
+                  description: description,
+                  imageBhev: "url",
+                  imageUrl: imageUrl
+                },
+                shareButtons: "facebook, twitter, tumblr, pinterest, share",
+                shortURLs: "never",
+                containerID: containerID,
+                showCounts: "none",
+                layout: "horizontal",
+                iconsOnly: true
+              }
+            });
+          }
+
+          Drupal.settings.gigyaSharebars = [];
+          Drupal.settings.gigyaSharebars = newSharebarObj;
+
+
+          if (typeof gigya !== 'undefined') {
+            if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
+              $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+                if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+              });
+            }
+          }
         } else {
           $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
             if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {

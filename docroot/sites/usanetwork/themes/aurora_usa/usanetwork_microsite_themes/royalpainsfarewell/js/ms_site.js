@@ -181,7 +181,7 @@ usa_debug('filters: ', filters);
         cssEase: 'linear'
       });
 */
-      self.galleryLazyLoad();
+      //self.galleryLazyLoad();
       jQuery('.gallery-wrapper').usaGallery();
       self.assignGalleryFilterClasses(function(){
         self.setGalleryFilter('hankmed-highlights');

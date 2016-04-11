@@ -365,55 +365,6 @@ usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
       $(adContainer + ' iframe').attr('src', $(adContainer + ' iframe').attr('src'));
     },
 
-    // 300x250 -- not for video companion ads!!
-/*
-    create300x250Ad: function (section) {
-      var $ad = $('.dart-name-300x250_ifr_reload_' + section);
-      var $ad220x60 = $('.dart-name-220x60_ifr_reload_' + section);
-
-      if ($ad.hasClass('loading')) {
-        // do nothing
-      }
-      else {
-        $ad.addClass('loading');
-        $ad220x60.addClass('loading');
-
-        //usa_debug('create300x250Ad(' + section + ')');
-        if (section != 'videos' && section != 'home') {
-          // check to see if there's already an ad
-          if ($('.dart-name-300x250_ifr_reload_' + section + ' iframe').length) {
-            adBlock = '.dart-name-300x250_ifr_reload_' + section;
-            Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
-          }
-          else if ($('.dart-name-220x60_ifr_reload_' + section + ' iframe').length) {
-            adBlock = '.dart-name-220x60_ifr_reload_' + section;
-            Drupal.behaviors.ms_global.usa_refreshMicrositeAdsBySection(adBlock);
-          }
-          else {
-            iframeQueue = [];
-            Drupal.DART.tag('{"machinename":"300x250_ifr_reload_' + section + '","name":"300x250 script","pos":"7","sz":"300x250","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adi"},"key_vals":[]},"table":"dart_tags","type":"Overridden","export_type":3,"disabled":false,"export_module":"usanetwork_ads","key_vals":{"pos":[{"val":"7","eval":false}],"sz":[{"val":"300x250","eval":false}],"site":[{"val":"usa","eval":0}],"sect":[{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1}],"sub":[{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"sub2":[{"val":"Drupal.settings.USA.DART.values.sub2 || \u0027\u0027","eval":1}],"genre":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"daypart":[{"val":"Drupal.settings.USA.DART.values.genre || \u0027\u0027","eval":1}],"!c":[{"val":"usa","eval":0},{"val":"Drupal.settings.USA.DART.values.sect || \u0027\u0027","eval":1},{"val":"Drupal.settings.USA.DART.values.sub || \u0027\u0027","eval":1}],"tandomad":[{"val":"eTandomAd","eval":1}],"\u003Cnone\u003E":[{"val":"top.__nbcudigitaladops_dtparams || \u0027\u0027","eval":1}],"tile":[{"val":"tile++","eval":true}],"ord":[{"val":"ord","eval":true}]},"prefix":"nbcu","site":"usa","zone":"default","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/nbcu.usa\/default;pos=7;sz=300x250;site=usa;!c=usa;tile=25;ord=' + ord + '?","href":"http:\/\/ad.doubleclick.net\/jump\/nbcu.usa\/default;pos=7;sz=300x250;site=usa;!c=usa;tile=25;ord=' + ord + '?"}}');
-            // write iframe ad units to page
-            if (iframeQueue.length) {
-              for (var i = 0, iframeQueueLength = iframeQueue.length; i < iframeQueueLength; i++) {
-                // 300x250 second
-                if (iframeQueue[i].tag.indexOf('300x250') != '-1') {
-                  $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
-                }
-                // 220x60 last
-                if (iframeQueue[i].tag.indexOf('220x60') != '-1') {
-                  $('.dart-name-' + iframeQueue[i].tag).html(iframeQueue[i].html);
-                }
-              }
-            }
-          }
-        }
-
-        $ad.removeClass('loading');
-        $ad220x60.removeClass('loading');
-      }
-    },
-
-*/
     loadAds: function(selector, adslot) {
       usa_debug('loadAds(' + selector + ', ' + adslot + ')');
       if (typeof mps != 'undefined' && typeof mps.insertAd == 'function') {
@@ -444,83 +395,6 @@ usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
         setTimeout(refreshAds(section), 1000);
       }
     },
-
-    // createAds
-    // there is a race condition if we try to create both the 728x90
-    // and the 300x250 at about the same time, so we create the 728x90
-    // first and then create the 300x250
-/*
-    initMPS728x90Ad: function(target, type) {
-usa_debug('========== initMPS728x90Ad(' + target + ', ' + type + ')');
-      Drupal.behaviors.mpsAdvert.mpsLoadAd(target, type);
-    },
-
-    refreshMPS728x90Ad: function(target, type) {
-usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
-      var type = type || (target == 'home') ? 'topbanner' : 'midbanner',
-          targetId = $('#' + target + ' .ad-leaderboard').attr('id');
-      if ($('#' + targetId + '.mps-slot').length < 1 && $('#' + targetId + 'iframe').length < 1) {
-        setTimeout(function(){
-          Drupal.behaviors.ms_global.initMPS728x90Ad(targetId, type);
-        }, 1000);
-      }
-      else {
-        mps.refreshAds(type);
-      }
-    },
-*/
-/*
-    create728x90Ad: function (section) {
-//      usa_debug('create728x90Ad(' + section + ')');
-      if (!section) {
-        section = $('#sections .section.active').attr('id') || 'home';
-      }
-
-      var target = '#' + section + ' #ms-' + section + '-leaderboard-ad';
-      if ($(target).length <= 0 && $('#' + section + ' .ad-leaderboard').length > 0) {
-        target = '#' + section + ' .ad-leaderboard';
-      }
-
-      var $ad = $(target),
-          $iframe = $ad.find('iframe'),
-          type = 'midbanner';
-      if ($ad.hasClass('topbanner')) {
-        type = 'topbanner';
-      }
-
-      if ($ad.length != 1) {
-        usa_debug('ERROR ' + section + ': More or less than one 728x90 ad detected');
-        return false;
-      }
-
-      if ($ad.hasClass('loading')) {
-        // do nothing
-      }
-      else {
-        usa_debug('create728x90Ad(' + section + ') -- type: ' + type);
-        $ad.addClass('loading');
-
-        // check to see if there is an ad already there
-        if ($ad.find('.mps-slot').length > 1 || $iframe.length > 1) {
-          Drupal.behaviors.mpsAdvert.mpsRemoveAd(type);
-          Drupal.behaviors.ms_global.initMPS728x90Ad(target, type);
-        }
-        else if ($ad.find('.mps-slot').length == 1 || $iframe.length == 1) {
-          Drupal.behaviors.ms_global.refreshMPS728x90Ad(target, type);
-        }
-        // if no 728x90 ad in this section yet, create it
-        else {
-          Drupal.behaviors.ms_global.initMPS728x90Ad(target, type);
-        }
-
-        $ad.removeClass('loading');
-      }
-
-      if (section == 'galleries') {
-        Drupal.behaviors.ms_global.create300x250Ad(section);
-      }
-    },
-*/
 
     // SECTIONS
     setActiveMenuItem: function(anchor) {
@@ -571,6 +445,7 @@ usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
       // open or load item content, if needed
       if (item != '') {
         switch(anchor) {
+/*
           case 'characters':
             Drupal.behaviors.ms_characters.showCharacterInfo(item);
             break;
@@ -578,6 +453,7 @@ usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
             var quizNodeId = $('#microsite #quizzes #quizzes-nav-list a[href="' + basePath + '/quizzes/' + item + '"]').parent().attr('data-node-id');
             Drupal.behaviors.ms_quizzes.switchQuizzes(quizNodeId);
             break;
+*/
         }
       }
 
@@ -598,7 +474,7 @@ usa_debug('========== refreshMPS728x90Ad(' + target + ', ' + type + ')');
 
       // now scroll to the next section
       var nextSectionElem = document.getElementById(anchor),
-          offsetAmount = 10, // (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
+          offsetAmount = -60, // (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
           nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0;
 //      if (anchor == 'quizzes') nextSectionTop = nextSectionTop + 10;
 

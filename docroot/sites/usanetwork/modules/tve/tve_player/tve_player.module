@@ -220,7 +220,7 @@ function _tve_player_add_custom_player_variables(&$variables, $type) {
     $variables['pub_mpx_player_parameters']['MVPDid'] = $mvpd_id;
   }
 
-  if (!isset($variables['pub_mpx_player_parameters'])) {
+  if (isset($variables['pub_mpx_player_parameters'])) {
     $variables['pub_mpx_player_parameters'] = array_merge(
       $variables['pub_mpx_player_parameters'],
       $custom_ad_parameters

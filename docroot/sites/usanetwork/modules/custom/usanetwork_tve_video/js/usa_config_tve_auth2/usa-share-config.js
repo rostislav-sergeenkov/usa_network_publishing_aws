@@ -3,9 +3,7 @@ function share_config(clip) {
   console.info('start: share_conf');
 
   var pageUrl = (window.location != window.parent.location) ? document.referrer : document.location,
-      $playerContainer = document.querySelector('[data-usa-tve-player-container]'),
       $playerWrap = document.querySelector('[data-usa-tve-player="player"]'),
-      isAuth = clip.baseClip.contentCustomData.entitlement == "free" ? false : true,
       isFullEpisode = clip.baseClip.contentCustomData.fullEpisode == "true" ? true : false,
       videoSrc =  $playerWrap.getAttribute('data-src') + '?ec=f',
       shareEmbed;

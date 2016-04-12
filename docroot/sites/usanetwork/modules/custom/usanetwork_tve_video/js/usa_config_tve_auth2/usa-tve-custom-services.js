@@ -5,6 +5,25 @@
   // customs USA services
   ng.module('tve.auth.services')
 
+      .factory('usaMicrositesService', [
+        function () {
+          
+          var body = $(document.body),
+              ms_player = {};
+          
+          ms_player.isMicrosite = body.hasClass('page-node-microsite') ? true : false;
+          ms_player.isVideoFirstRun = true;
+          ms_player.adAdded = function () {
+            if (typeof Drupal.behaviors.microsite_scroll == 'object' && typeof Drupal.behaviors.microsite_scroll.micrositeAdAdded == 'function') {
+              Drupal.behaviors.microsite_scroll.micrositeAdAdded();
+            } else if (typeof Drupal.behaviors.ms_videos == 'object' && typeof Drupal.behaviors.ms_videos.adAdded == 'function') {
+              Drupal.behaviors.ms_videos.adAdded();
+            }
+          };
+
+          return ms_player;
+        }])
+
       .factory('usaCustomAnimation', [
         function () {
 
@@ -38,32 +57,6 @@
               };
 
           return animateAPI;
-        }])
-
-      .factory('usaPlayerService', ['$q',
-        function ($q) {
-
-          var playerDefer = $q.defer(),
-              serviceApi = {
-                promise: playerDefer.promise.then(promiseSuccess, promiseError),
-                resolve: function (data) {
-                  playerDefer.resolve(data);
-                },
-                reject: function (reason) {
-                  playerDefer.reject(reason);
-                }
-              };
-
-          // promise.then success
-          function promiseSuccess(dataObj) {
-            return dataObj;
-          }
-
-          // promise.then error
-          function promiseError() {
-            console.log('player service error');
-          }
-
-          return serviceApi;
         }]);
+  
 })(angular, jQuery, tve, this);

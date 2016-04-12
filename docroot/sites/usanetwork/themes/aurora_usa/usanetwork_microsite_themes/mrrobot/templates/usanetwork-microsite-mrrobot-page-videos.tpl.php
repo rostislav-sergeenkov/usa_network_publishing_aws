@@ -71,20 +71,30 @@
             </div>
             <div class="tve-close"><img src="/sites/usanetwork/themes/aurora_usa/images/close.png" alt=""/>Close</div>
           </div>
-          <div class="video-player-wrapper" data-ng-if="!user.isAuthenticated">
-            <div class="locked-msg">
-              <span
-                  class="first-line"><?php print t('Please sign in with your TV provider to unlock this episode.'); ?></span>
+          <div class="video-player-wrapper section-auth"
+               data-ng-if="!removePlayerThumbnail">
+            <div class="player-thumbnail"
+                 data-ng-class="{'hide-section': !playerThumbnail}">
+              <div class="video-loading"
+                   data-ng-class="{'show-spinner': user.isAuthenticated}"></div>
+              <div class="video-image"></div>
             </div>
-            <div id="player">
-              <a href="javascript:void(0)" class="loginButton" data-ng-click="openLoginWindow()">
-              </a>
+            <div class="auth-msg-wrap" data-ng-if="!user.isAuthenticated">
+              <div class="locked-msg">
+            <span
+              class="first-line"><?php print t('Please sign in with your TV provider to unlock this episode.'); ?></span>
+              </div>
+              <div id="player">
+                <a href="javascript:void(0)" class="loginButton"
+                   data-ng-click="openLoginWindow()">
+                </a>
+              </div>
             </div>
           </div>
-          <div class="video-player video-player-wrapper" data-ng-show="user.isAuthenticated">
-            <div class="custom-play"></div>
+          <div class="video-player video-player-wrapper section-player"
+               data-ng-class="{'show-section': !playerThumbnail}">
             <div
-                class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
+              class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
             </div>
           </div>
           <div class="tve-help-link help-link">

@@ -1,13 +1,11 @@
 function share_config(clip) {
 
-  console.info('start: share_config');
+  console.info('start: share_conf');
 
-  var pageUrl = window.location.href,
-      $playerContainer = document.querySelector('[data-usa-tve-player-container]'),
+  var pageUrl = (window.location != window.parent.location) ? document.referrer : document.location,
       $playerWrap = document.querySelector('[data-usa-tve-player="player"]'),
-      videoSrc =  $playerWrap.getAttribute('data-src'),
-      isAuth = $playerContainer.getAttribute('data-entitlement') === 'auth' ? true : false,
-      isFullEpisode = parseInt($playerContainer.getAttribute('data-is-full-episode')) === 1 ? true : false,
+      isFullEpisode = clip.baseClip.contentCustomData.fullEpisode == "true" ? true : false,
+      videoSrc =  $playerWrap.getAttribute('data-src') + '?ec=f',
       shareEmbed;
 
   if (isFullEpisode) {
@@ -21,7 +19,7 @@ function share_config(clip) {
     "shareLinkUrl": pageUrl,
     "shareEmbedVisible": shareEmbed,
     "shareEmbedBaseUrl": pageUrl,
-    "shareEmbedString": '<iframe src="' + videoSrc + '" frameBorder="0" seamless="seamless" allowFullScreen></iframe>',
+    "shareEmbedString": '<iframe src="' + videoSrc + '" width="480" height="270" frameBorder="0" seamless="seamless" allowFullScreen></iframe>',
     "shareFacebookVisible": true,
     "shareFacebookLink": pageUrl,
     "shareTwitterVisible": true,

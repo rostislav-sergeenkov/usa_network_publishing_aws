@@ -21,14 +21,6 @@
 
               return function (scope, element, attr, controller) {
                 var SRC_PARAMS = [{
-                      attrName: 'mbr',
-                      key: 'mbr'
-                    },
-                      {
-                        attrName: 'fwSiteSection',
-                        key: 'FWsiteSection'
-                      },
-                      {
                         attrName: 'pdk',
                         key: 'pdk'
                       },
@@ -58,16 +50,25 @@
 
                   if (statusPromise) {
                     console.info('iframe load src');
+
                     $pdk.bind(this, true);
                     $pdk.controller.setIFrame(this, true);
-                    controller.initiateAuthorization();
+
                     controller._bindPlayerEvents();
+
+                    if (scope.isEntitled) {
+                      controller.initiateAuthorization();
+                    }
                   }
                 });
 
                 function init(status) {
                   // passing iframe url as trusted to the template
-                  scope.src = $sce.trustAsResourceUrl(config.src + '?' + getQueryParams(status.isAuthenticated && status.mvpdId));
+                  if (scope.isFullEpisode) {
+                    scope.src = $sce.trustAsResourceUrl(config.src + '?ec=f&' + getQueryParams(status.isAuthenticated && status.mvpdId));
+                  } else {
+                    scope.src = $sce.trustAsResourceUrl(config.src + '?' + getQueryParams(status.isAuthenticated && status.mvpdId));
+                  }
                 }
 
                 /**
@@ -77,7 +78,7 @@
                  * @returns {string} query params string
                  */
                 function getQueryParams(mvpdId) {
-                  if (scope.isEntitled === 'auth') {
+                  if (scope.isEntitled) {
                     params = {
                       autoPlay: false
                     };
@@ -115,15 +116,10 @@
             scope: true,
             controller: ['$scope', function ($scope) {
               this.initiateAuthorization = function () {
-                console.info('initiateAuthorization');
                 $scope.initiateAuthorization();
               };
               this._bindPlayerEvents = function () {
-                console.info('_bindPlayerEvents');
                 $scope._bindPlayerEvents();
-              };
-              this.isEntitled = function () {
-                return $scope.isEntitled;
               };
               this.playerWrap = function (elem) {
                 return $scope.playerWrap = elem;
@@ -135,21 +131,22 @@
             link: function (scope, element, attr) {
 
               var body, playerContainer, tveAnalytics, userStatus, isLive, isShowEndCard,
-                  isEntitlement, isMicrosite, playerWrap, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
+                  isFullEpisode, isEntitlement, isMicrosite, playerWrap, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
                   isAdStart, nextReleaseUrl, positionTime, usaVideoSettingsRun;
 
               // set vars value
               body = ng.element('body');
               playerContainer = element;
-              isLive = attr['isLive'] === '1' ? true : false;
               encodedToken = null;
               episodeRating = attr['episodeRating'];
               episodeTitle = attr['episodeTitle'];
               mpxGuid = attr['mpxGuid'];
-              isEntitlement = attr['entitlement'];
+              tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop};
+              isLive = parseInt(attr['isLive']) === 1 ? true : false;
+              isEntitlement = attr['entitlement'] === 'auth' ? true : false;
+              isFullEpisode = parseInt(attr['isFullEpisode']) === 1 ? true : false;
               isShowEndCard = parseInt(attr['showEndCard']) === 1 ? true : false;
               isMicrosite = body.hasClass('page-node-microsite') ? true : false;
-              tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop};
               playerWrap = scope.playerWrap;
               playerId = scope.playerId;
 
@@ -171,6 +168,7 @@
               $rootScope.isDartReq = true;
               $rootScope.statusAd = false;
 
+              scope.isFullEpisode = isFullEpisode;
               scope.isEntitled = isEntitlement;
               scope.isMobile = helper.device.isMobile;
               scope.showCompanionAdd = false;
@@ -181,7 +179,6 @@
               scope.isPlayerPause = false;
               scope.playerThumbnail = true;
               scope.removePlayerhumbnail = false;
-
               scope.user = {
                 isAuthenticated: authService.isAuthenticated()
               };
@@ -205,7 +202,7 @@
 
                   if (!isMicrosite) {
                     // auth video
-                    if (status.isAuthenticated && isEntitlement === 'auth') {
+                    if (status.isAuthenticated && isEntitlement) {
                       //initiateAuthorization();
                     }
                     setTimeout(function () {
@@ -218,7 +215,7 @@
               // wait when load release
               usaPlayerService.promise.then(function (data) {
                 console.info('usaPlayerService.promise');
-                if (isEntitlement === 'auth') {
+                if (isEntitlement) {
                   if (scope.statusPlayerLoaded && scope.statusSetToken) {
                     $pdk.controller.clickPlayButton();
                   }
@@ -242,7 +239,7 @@
                * @returns {boolean}
                */
               function showPlayer() {
-                if (isEntitlement === 'auth') {
+                if (isEntitlement) {
                   if (Drupal.settings.tve_cookie_detection != undefined) {
                     return !scope.isMobile && authService.isAuthenticated() && Drupal.settings.tve_cookie_detection.status;
                   }
@@ -510,7 +507,7 @@
                   scope.statusSetToken = true;
                 });
 
-                if (isEntitlement === 'auth') {
+                if (isEntitlement) {
                   $pdk.controller.setToken(encodedToken, 'authToken');
                   console.log('setToken');
 

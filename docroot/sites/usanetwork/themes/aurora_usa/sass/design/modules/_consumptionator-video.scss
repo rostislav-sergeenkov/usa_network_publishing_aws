@@ -274,63 +274,6 @@
         }
       }
 
-      .player-thumbnail {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 1;
-        &.hide-section {
-          opacity: 0;
-          transition: opacity 0.5s ease-in-out;
-        }
-        img {
-          opacity: 1;
-          height: 100%;
-          width: 100%;
-        }
-
-        .video-loading {
-
-          margin: -20px 0 0 -20px;
-          display: none;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          height: 40px;
-          width: 40px;
-
-          -moz-animation: video-spinner 1s infinite linear;
-          -webkit-animation: video-spinner 1s infinite linear;
-          animation: video-spinner 1s infinite linear;
-
-          &.show-spinner {
-            display: block;
-          }
-
-          &:before {
-            color: #ffffff;
-            content: "\e62d";
-            display: block;
-            font-family: $ico-font;
-            font-size: 40px;
-            speak: none;
-            font-style: normal;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            line-height: 1;
-            height: 100%;
-            width: 100%;
-
-            /* Better Font Rendering =========== */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-          }
-        }
-      }
-
       /*old css end*/
       .video-player-wrapper {
         line-height: 1;
@@ -366,7 +309,69 @@
           top: 0;
           height: 100%;
           width: 100%;
-          z-index: 2;
+          z-index: 1;
+          .auth-msg-wrap {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 2;
+          }
+          .player-thumbnail {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+            &.hide-section {
+              opacity: 0;
+              transition: opacity 0.5s ease-in-out;
+            }
+            img {
+              opacity: 1;
+              height: 100%;
+              width: 100%;
+            }
+            .video-loading {
+              margin: -20px 0 0 -20px;
+              display: none;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              height: 40px;
+              width: 40px;
+
+              -moz-animation: video-spinner 1s infinite linear;
+              -webkit-animation: video-spinner 1s infinite linear;
+              animation: video-spinner 1s infinite linear;
+
+              &.show-spinner {
+                display: block;
+              }
+
+              &:before {
+                color: #ffffff;
+                content: "\e62d";
+                display: block;
+                font-family: $ico-font;
+                font-size: 40px;
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                height: 100%;
+                width: 100%;
+
+                /* Better Font Rendering =========== */
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+              }
+            }
+          }
         }
         &:hover {
           //cursor: pointer;

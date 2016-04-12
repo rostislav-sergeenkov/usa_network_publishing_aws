@@ -109,11 +109,11 @@
       .directive('usaTvePlayerContainer', [
         '$rootScope',
         'authService', 'tveAuthConfig', 'tveConfig', 'helper', 'tveModal', '$timeout', '$http', '$sce', '$cookies',
-        'usaPlayerService', 'usaEndCardService', 'usaEndCardHelper',
+        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService',
 
         function ($rootScope,
                   authService, tveAuthConfig, tveConfig, helper, tveModal, $timeout, $http, $sce, $cookies,
-                  usaPlayerService, usaEndCardService, usaEndCardHelper) {
+                  usaEndCardService, usaEndCardHelper, usaMicrositesService) {
           return {
             scope: true,
             controller: ['$scope', function ($scope) {

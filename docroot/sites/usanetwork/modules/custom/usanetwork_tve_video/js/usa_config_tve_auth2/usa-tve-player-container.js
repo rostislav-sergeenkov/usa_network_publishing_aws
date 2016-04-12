@@ -368,7 +368,7 @@
               function  initAutoPlay() {
 
                 if (isMicrosite) {
-                  if (usaMicrositesService.isVideoFirstRun) {
+                  if (usaMicrositesService.isVideoFirstRun && scope.statusSetToken) {
                     hidePlayerThumbnail();
                   }
                   if (isEntitlement && !usaMicrositesService.isVideoFirstRun) {

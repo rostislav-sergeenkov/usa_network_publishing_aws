@@ -109,9 +109,11 @@
       .directive('usaTvePlayerContainer', [
         '$rootScope',
         'authService', 'tveAuthConfig', 'tveConfig', 'helper', 'tveModal', '$timeout', '$http', '$sce', '$cookies',
-        'usaPlayerService', 'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService',
+        'usaPlayerService', 'usaEndCardService', 'usaEndCardHelper',
+
         function ($rootScope,
-                  authService, tveAuthConfig, tveConfig, helper, tveModal, $timeout, $http, $sce, $cookies, usaPlayerService, usaEndCardService, usaEndCardHelper, usaMicrositesService) {
+                  authService, tveAuthConfig, tveConfig, helper, tveModal, $timeout, $http, $sce, $cookies,
+                  usaPlayerService, usaEndCardService, usaEndCardHelper) {
           return {
             scope: true,
             controller: ['$scope', function ($scope) {
@@ -504,8 +506,8 @@
                   // redirect to next episode
                   usaEndCardHelper.timeoutUpNext({
                     episodeUpNextUrl: nextReleaseUrl,
-                    showTitle: attrs['showTitle'],
-                    episodeTitle: attrs['episodeTitle'],
+                    showTitle: attr['showTitle'],
+                    episodeTitle: attr['episodeTitle'],
                     timeUpNext: 0
                   });
                 }

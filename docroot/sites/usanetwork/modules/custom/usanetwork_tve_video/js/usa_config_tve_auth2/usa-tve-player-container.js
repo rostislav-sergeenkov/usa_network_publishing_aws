@@ -478,8 +478,8 @@
                   // redirect to next episode
                   usaEndCardHelper.timeoutUpNext({
                     episodeUpNextUrl: nextReleaseUrl,
-                    showTitle: attrs['showTitle'],
-                    episodeTitle: attrs['episodeTitle'],
+                    showTitle: attr['showTitle'],
+                    episodeTitle: attr['episodeTitle'],
                     timeUpNext: 0
                   });
                 }

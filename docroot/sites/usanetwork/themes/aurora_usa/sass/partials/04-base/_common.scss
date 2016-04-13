@@ -37,8 +37,14 @@ body {
   width: 100%;
   /*-webkit-font-smoothing: antialiased;*/
   &.video-fullscreen {
+    overflow-y: hidden!important;
     &.admin-menu {
       margin-top: 0!important;
+    }
+    &.node-type-timeline-gallery {
+      #player-wrapper {
+        z-index: 10000!important;
+      }
     }
     #sections ~ div {
       display: none!important;

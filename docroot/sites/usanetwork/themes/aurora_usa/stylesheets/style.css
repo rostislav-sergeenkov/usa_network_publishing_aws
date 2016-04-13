@@ -3734,8 +3734,14 @@ body {
   width: 100%;
   /*-webkit-font-smoothing: antialiased;*/
 }
+body.video-fullscreen {
+  overflow-y: hidden !important;
+}
 body.video-fullscreen.admin-menu {
   margin-top: 0 !important;
+}
+body.video-fullscreen.node-type-timeline-gallery #player-wrapper {
+  z-index: 10000 !important;
 }
 body.video-fullscreen #sections ~ div {
   display: none !important;

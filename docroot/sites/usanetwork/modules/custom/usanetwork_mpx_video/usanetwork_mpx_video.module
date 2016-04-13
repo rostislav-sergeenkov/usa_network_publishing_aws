@@ -1840,7 +1840,7 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
     );
   }
 
-  return json_encode($endcard_parameters);
+  return $endcard_parameters;
 }
 
 /**

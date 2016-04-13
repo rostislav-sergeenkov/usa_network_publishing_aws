@@ -134,7 +134,7 @@
 
               var body, playerContainer, tveAnalytics, userStatus, isLive, isShowEndCard,
                   isFullEpisode, isEntitlement, isMicrosite, playerWrap, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
-                  isAdStart, nextReleaseUrl, positionTime, usaVideoSettingsRun;
+                  isAdStart, nextReleaseUrl, positionTime, usaVideoSettingsRun, endCardMetaData;
 
               // set vars value
               body = ng.element('body');
@@ -151,6 +151,7 @@
               isMicrosite = usaMicrositesService.isMicrosite;
               playerWrap = scope.playerWrap;
               playerId = scope.playerId;
+              endCardMetaData = Drupal.settings.short_endcard;
 
               isAdStart = false;
               nextReleaseUrl = attr['nextReleaseUrl'];
@@ -328,6 +329,8 @@
                 } else if (nextReleaseUrl != '') {
                   $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
                 }
+
+                $pdk.controller.dispatchEvent("OnEndCardMetadata", endCardMetaData);
 
                 // init watchwith
                 if (typeof wwLoader !== 'undefined') {

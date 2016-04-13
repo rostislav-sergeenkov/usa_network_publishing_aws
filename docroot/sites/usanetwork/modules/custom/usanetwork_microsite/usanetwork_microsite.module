@@ -1393,7 +1393,7 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
   //set video player
   $video = theme('usanetwork_tve_player_microsite', array(
     'file' => $file,
-    'pub_mpx_player_parameters' => array('autoPlay' => $autoplay, 'MVPDid' => $mvpdid, 'filter' => $filter),
+    'pub_mpx_player_parameters' => array('ec' => 'f', 'autoPlay' => $autoplay, 'MVPDid' => $mvpdid, 'filter' => $filter),
   ));
 
   //set image for not logged in user

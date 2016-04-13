@@ -6,9 +6,9 @@ module_load_include('install', 'usanetwork_mpx_video', 'usanetwork_mpx_video');
  */
 function usanetwork_tve_video_stage_settings() {
   //set TVE development setting
-  variable_set('tve_adobe_pass_accessenabler_loc', 'http://entitlement.auth-staging.adobe.com/entitlement/AccessEnablerDebug.swf');
-  variable_set('tve_mvpd_instance', 'stage');
-  variable_set('tve_mvpd_service', 'http://mvpd-admin.nbcuni.com/mvpd/service');
+//  variable_set('tve_adobe_pass_accessenabler_loc', 'http://entitlement.auth-staging.adobe.com/entitlement/AccessEnablerDebug.swf');
+//  variable_set('tve_mvpd_instance', 'stage');
+//  variable_set('tve_mvpd_service', 'http://mvpd-admin.nbcuni.com/mvpd/service');
   
   $mpx_accounts = array(
     '3' => array(

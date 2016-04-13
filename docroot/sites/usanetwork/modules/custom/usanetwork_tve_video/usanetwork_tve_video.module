@@ -397,13 +397,13 @@ function _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_pid) {
 /**
  * Implements hook_menu().
  */
-function usanetwork_tve_video_menu() {
-  $items['admin/usanetwork/tve-stage-settings'] = array(
-    'title' => t('TVE Stage Settings'),
-    'description' => t('Apply settings for stage server'),
-    'page callback' => 'usanetwork_tve_video_stage_settings',
-    'access arguments' => array('administer usanetwork'),
-    'file' =>  'usanetwork_tve_video.admin.inc',
-  );
-  return $items;
-}
+//function usanetwork_tve_video_menu() {
+//  $items['admin/usanetwork/tve-stage-settings'] = array(
+//    'title' => t('TVE Stage Settings'),
+//    'description' => t('Apply settings for stage server'),
+//    'page callback' => 'usanetwork_tve_video_stage_settings',
+//    'access arguments' => array('administer usanetwork'),
+//    'file' =>  'usanetwork_tve_video.admin.inc',
+//  );
+//  return $items;
+//}

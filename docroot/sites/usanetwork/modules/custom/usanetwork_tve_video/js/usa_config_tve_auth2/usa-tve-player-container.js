@@ -203,10 +203,21 @@
                   scope.user.isAuthenticated = status.isAuthenticated;
 
                   if (isMicrosite) {
-                    _bindPlayerEvents();
-                    // auth video
-                    if (status.isAuthenticated && isEntitlement) {
-                      initiateAuthorization();
+                    console.info('promise isMicrosite');
+
+                    usaMicrositesService.isAuthServicePromiseThen = true;
+
+                    if (usaMicrositesService.isInitPlayer) {
+
+                      console.info('promise isMicrosite Init Player');
+
+                      isEntitlement = USAN.ms_player.options.isAuth;
+                      playerWrap = USAN.ms_player.options.playerWrap;
+                      episodeTitle = USAN.ms_player.options.episodeTitle;
+                      mpxGuid = USAN.ms_player.options.mpxGuid;
+                      episodeRating = USAN.ms_player.options.episodeRating;
+
+                      USAN.ms_player.setPlayerEvents();
                     }
                   }
                 }
@@ -327,7 +338,33 @@
 
               USAN.ms_player = {
 
+                clearPlayerEvents: function () {
+                  $pdk.controller.listenerId = 0;
+                  for (var key in $pdk.controller.listeners) {
+                    delete $pdk.controller.listeners[key];
+                  }
+                },
+
+                setPlayerEvents: function () {
+                  _bindPlayerEvents();
+                  if (isEntitlement && authService.isAuthenticated()) {
+                    initiateAuthorization();
+                  }
+                },
+
                 init: function (options) {
+
+                  console.info('USAN.ms_player init');
+
+                  usaMicrositesService.isInitPlayer = true;
+
+                  USAN.ms_player.options = {
+                    isAuth: options.isAuth,
+                    playerWrap: options.playerWrap,
+                    episodeTitle: options.episodeTitle,
+                    mpxGuid: options.mpxGuid,
+                    episodeRating: options.episodeRating
+                  };
 
                   isEntitlement = options.isAuth;
                   playerWrap = options.playerWrap;
@@ -335,10 +372,17 @@
                   mpxGuid = options.mpxGuid;
                   episodeRating = options.episodeRating;
 
-                  $(playerWrap).find('iframe').eq(0).bind('load', function () {
+                  $(options.playerWrap).find('iframe').eq(0).bind('load', function () {
+
+                    console.info('ms iframe load');
 
                     $pdk.bind(this, true);
                     $pdk.controller.setIFrame(this, true);
+
+                    if (usaMicrositesService.isVideoFirstRun && usaMicrositesService.isAuthServicePromiseThen) {
+                      console.info('ms iframe load !scope.statusPlayerLoaded');
+                      USAN.ms_player.setPlayerEvents();
+                    }
 
                     if (scope.statusPlayerLoaded) {
 
@@ -348,27 +392,17 @@
                         scope.statusPlayerLoaded = false;
                       });
 
-                      usaMicrositesService.isVideoFirstRun = false;
-
-                      $pdk.controller.listenerId = 0;
-                      for (var key in $pdk.controller.listeners) {
-                        delete $pdk.controller.listeners[key];
-                      }
-
-                      _bindPlayerEvents();
-
-                      if (isEntitlement && authService.isAuthenticated()) {
-                        initiateAuthorization();
-                      }
+                      USAN.ms_player.clearPlayerEvents();
+                      USAN.ms_player.setPlayerEvents();
                     }
                   });
                 }
               };
 
-              function  initAutoPlay() {
+              function initAutoPlay() {
 
                 if (isMicrosite) {
-                  if (usaMicrositesService.isVideoFirstRun && scope.statusSetToken) {
+                  if (scope.statusSetToken) {
                     hidePlayerThumbnail();
                   }
                   if (isEntitlement && !usaMicrositesService.isVideoFirstRun) {
@@ -518,7 +552,10 @@
                * @private
                */
               function _onPlayerLoaded(pdkEvent) {
-                
+
+                console.info('_onPlayerLoaded');
+                usaMicrositesService.isVideoFirstRun = false;
+
                 scope.$apply(function () {
                   scope.statusPlayerLoaded = true;
                 });

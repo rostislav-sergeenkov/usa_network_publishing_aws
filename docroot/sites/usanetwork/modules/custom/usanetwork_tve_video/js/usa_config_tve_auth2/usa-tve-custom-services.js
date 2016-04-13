@@ -13,6 +13,8 @@
           
           ms_player.isMicrosite = body.hasClass('page-node-microsite') ? true : false;
           ms_player.isVideoFirstRun = true;
+          ms_player.isInitPlayer = false;
+          ms_player.isAuthServicePromiseThen = false;
           ms_player.adAdded = function () {
             if (typeof Drupal.behaviors.microsite_scroll == 'object' && typeof Drupal.behaviors.microsite_scroll.micrositeAdAdded == 'function') {
               Drupal.behaviors.microsite_scroll.micrositeAdAdded();

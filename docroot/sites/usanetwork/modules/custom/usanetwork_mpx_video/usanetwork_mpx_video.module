@@ -1533,6 +1533,10 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       //twitter card
       if (!$full_episode) {
+
+        $endcard_parameters = _usanetwork_mpx_video_get_short_endcard_parameters($file, $show);
+        drupal_add_js(array('short_endcard' => $endcard_parameters), 'setting');
+
         //twitter card
         $tag_card = array(
           '#type' => 'html_tag',
@@ -1764,6 +1768,79 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
   $title = _pub_mpx_get_default_mpx_values('field_mpx_title', $file, 0, 'value');
   $h1 = _pub_mpx_get_default_mpx_values('field_seo_h1', $file, 0, 'value');
   $vars['h1'] = !empty($h1) ? $h1 : $title;
+}
+
+/**
+ * Returns json with EndCard configuration
+ *
+ * @param $file, $show
+ */
+function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL) {
+  $endcard_parameters = array();
+
+  $image_uri = _usanetwork_mpx_video_get_image_path($file);
+  $image = image_style_url('full_episodes_633x356', $image_uri);
+
+  $endcard_parameters['currentVideo'] = array(
+    'videoLabel' => (!empty($show)) ? $show->title : '',
+    'videoTitle' => $file->filename,
+    'image' => $image,
+  );
+
+  $endcard_parameters['countdown'] = array(
+    'seconds' => 15,
+    'label' => 'PLAYING IN',
+    'unitsLabel' => 's',
+    'allowPause' => TRUE,
+  );
+
+  $endcard_parameters['shareControl'] = 'card';
+
+  $related_clips = _usanetwork_video_endcard_pick_related_items($file, FALSE, TRUE, 6);
+  $next_video = (!empty($related_clips)) ? array_shift($related_clips) : NULL;
+
+  //Next Clip
+  if (!empty($next_video)) {
+    $endcard_parameters['playlists'] = array();
+
+    $next_clip = array();
+    $filter = usanetwork_mpx_video_get_video_category($next_video);
+    $image_next_uri = _usanetwork_mpx_video_get_image_path($next_video);
+    $image_next = image_style_url('full_episodes_633x356', $image_next_uri);
+
+    $next_clip[] = array(
+      'videoLabel' => !empty($filter) ? $filter : t('Clip'), //TODO
+      'videoTitle' => $next_video->filename,
+      'thumbnail' => $image_next,
+    );
+
+    $endcard_parameters['playlists'][] = array(
+      'playlistLabel' => t('Next Clip'),
+      'videos' => $next_clip
+    );
+  }
+
+  //More Clips
+  if (!empty($related_clips)) {
+    $more_clips = array();
+    foreach ($related_clips as $clip) {
+      $clip_filter = usanetwork_mpx_video_get_video_category($clip);
+      $image_clip_uri = _usanetwork_mpx_video_get_image_path($clip);
+      $image_clip = image_style_url('full_episodes_633x356', $image_clip_uri);
+      $more_clips[] = array(
+        'videoLabel' => !empty($clip_filter) ? $clip_filter : t('Clip'), //TODO
+        'videoTitle' => $clip->filename,
+        'thumbnail' => $image_clip,
+      );
+    }
+
+    $endcard_parameters['playlists'][] = array(
+      'playlistLabel' => t('More Clips'),
+      'videos' => $more_clips
+    );
+  }
+
+  return json_encode($endcard_parameters);
 }
 
 /**

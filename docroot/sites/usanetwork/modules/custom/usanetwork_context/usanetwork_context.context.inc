@@ -756,6 +756,7 @@ function usanetwork_context_context_default_contexts() {
     'path' => array(
       'values' => array(
         'node/*/videos' => 'node/*/videos',
+        '~node/*/*/videos' => '~node/*/*/videos',
       ),
     ),
   );

@@ -105,6 +105,31 @@ function usanetwork_microsite_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_ms_gallery_thumbnail_style'
+  $field_bases['field_ms_gallery_thumbnail_style'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ms_gallery_thumbnail_style',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'microsite_gallery_preview_16_9' => '16:9',
+        '300x250' => '300x250',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_ms_media_gallery'
   $field_bases['field_ms_media_gallery'] = array(
     'active' => 1,

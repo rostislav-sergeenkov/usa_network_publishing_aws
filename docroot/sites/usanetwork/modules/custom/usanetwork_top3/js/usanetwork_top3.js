@@ -181,6 +181,7 @@
         $pdk.controller.addEventListener('OnMediaUnpause', _onMediaUnpause);
         $pdk.controller.addEventListener('OnMediaLoadStart', _onMediaLoadStart);
         $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+        $pdk.controller.addEventListener('OnShowFullScreen', _onShowFullScreen);
 
         function _onMediaStart(pdkEvent) {
           playerService.mediaLoadStatus = false;
@@ -209,6 +210,17 @@
 
           if (playerService.clickOnThumb == false) {
             playerService.hidePlayer();
+          }
+        }
+
+        /*
+         * On Show Full Screen
+         */
+        function _onShowFullScreen(pdkEvent) {
+          if (pdkEvent.data) {
+            $(body).addClass('video-fullscreen');
+          } else {
+            $(body).removeClass('video-fullscreen');
           }
         }
       },

@@ -177,6 +177,27 @@ function usanetwork_microsite_image_default_styles() {
     ),
   );
 
+  $styles['microsite_gallery_preview_16_9'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 800,
+          'height' => 450,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 800,
+          'height' => 450,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   return $styles;
 }
 
@@ -876,13 +897,13 @@ function _usanetwork_microsite_render_page_galleries($section_wrapper, $node) {
     $theme_variables = array_merge($theme_variables, _usanetwork_microsite_set_status_and_h1_variables($current_gallery_node, $section_wrapper));
 
     $gallery_types = array('Episodic Gallery');
-    $theme_variables['episodic_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
+    $theme_variables['episodic_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types, $node);
     $gallery_types = array(
       'Character Gallery',
       'GIF Gallery',
       '0',
     );
-    $theme_variables['character_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types);
+    $theme_variables['character_galleries'] = _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types, $node);
     $theme_variables['microsite_url'] = url('node/' . $node->nid . '/microsite');
   }
 
@@ -946,13 +967,21 @@ function usanetwork_microsite_get_rendered_gallery($node, $microsite_node = NULL
  * @param $gallery_nodes
  * @param array $gallery_types
  */
-function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types = array()) {
+function _usanetwork_microsite_render_gallery_navigation($gallery_nodes, $gallery_types = array(), $microsite_node) {
   $items = array();
   foreach($gallery_nodes as $node) {
     $node_wrapper = entity_metadata_wrapper('node', $node);
+    $microsite_node_wrapper = entity_metadata_wrapper('node', $microsite_node);
     $gallery_type = $node_wrapper->field_gallery_type->value();
     $image_field = $node_wrapper->field_cover_item->value();
-    $gallery_preview_image =  image_style_url('300x250', $image_field['uri']);
+
+    if (!usanetwork_core_api_check_field($microsite_node, 'field_ms_gallery_thumbnail_style')) {
+      $gallery_preview_image =  image_style_url('300x250', $image_field['uri']);
+    }
+    else {
+      $gallery_preview_image =  image_style_url($microsite_node_wrapper->field_ms_gallery_thumbnail_style->value(), $image_field['uri']);
+    }
+
     if($node->status == 1 && in_array($gallery_type, $gallery_types, true) !== false) {
       $title = $node->title;
       $cover_img = $gallery_preview_image;

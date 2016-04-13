@@ -1456,6 +1456,60 @@ function usanetwork_microsite_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_microsite-field_ms_gallery_thumbnail_style'
+  $field_instances['node-usanetwork_microsite-field_ms_gallery_thumbnail_style'] = array(
+    'bundle' => 'usanetwork_microsite',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 16,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_ms_gallery_thumbnail_style',
+    'label' => 'Gallery thumbnail style',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 34,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_microsite-field_ms_section'
   $field_instances['node-usanetwork_microsite-field_ms_section'] = array(
     'bundle' => 'usanetwork_microsite',
@@ -2408,6 +2462,7 @@ function usanetwork_microsite_field_default_field_instances() {
   t('Episode');
   t('Facebook page');
   t('Featured');
+  t('Galley thumbnail style');
   t('H1');
   t('Instagram Page');
   t('Large first promo');

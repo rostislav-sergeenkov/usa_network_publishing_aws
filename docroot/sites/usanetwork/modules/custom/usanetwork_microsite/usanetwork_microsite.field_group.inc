@@ -23,8 +23,9 @@ function usanetwork_microsite_field_group_info() {
     'label' => 'Galleries',
     'weight' => '33',
     'children' => array(
-      0 => 'field_ms_use_new_gallery',
-      1 => 'field_ms_gallery_post_loading',
+      0 => 'field_ms_gallery_post_loading',
+      1 => 'field_ms_use_new_gallery',
+      2 => 'field_ms_gallery_thumbnail_style',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

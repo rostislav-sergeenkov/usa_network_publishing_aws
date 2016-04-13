@@ -1812,6 +1812,9 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
       'videoLabel' => !empty($filter) ? $filter : t('Clip'), //TODO
       'videoTitle' => $next_video->filename,
       'thumbnail' => $image_next,
+      'data' => array(
+        'pageLink' => url('file/' . $next_video->fid),
+      ),
     );
 
     $endcard_parameters['playlists'][] = array(
@@ -1833,6 +1836,9 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
         'videoLabel' => !empty($clip_filter) ? $clip_filter : t('Clip'), //TODO
         'videoTitle' => $clip->filename,
         'thumbnail' => $image_clip,
+        'data' => array(
+          'pageLink' => url('file/' . $clip->fid),
+        ),
       );
     }
 

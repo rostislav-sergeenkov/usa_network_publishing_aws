@@ -1796,7 +1796,7 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
 
   $endcard_parameters['shareControl'] = 'card';
 
-  $related_clips = _usanetwork_video_endcard_pick_related_items($file, FALSE, TRUE, 6);
+  $related_clips = _usanetwork_video_endcard_pick_related_items($file, FALSE, FALSE, 6);
   $next_video = (!empty($related_clips)) ? array_shift($related_clips) : NULL;
 
   //Next Clip

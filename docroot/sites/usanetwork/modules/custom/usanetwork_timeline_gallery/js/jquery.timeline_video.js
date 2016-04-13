@@ -147,8 +147,6 @@ Project demo: http://shindiristudio.com/timeline
           resizeTimer = _self.windowsResizeTimer,
           playButton;
 
-      console.info('player-wrapper found');
-
       // create player api
       var playerApi = {
 
@@ -156,7 +154,6 @@ Project demo: http://shindiristudio.com/timeline
 
         // create player
         createPlayer: function () {
-          console.info('createPlayer');
           if (!playerWrapper.hasClass('active')) {
             var frame = "<iframe src=" + playerWrapperSrc + " id='" + idPlayer + "' allowfullscreen='' width='100%' height='100%' frameborder='0'></iframe>";
 
@@ -171,7 +168,6 @@ Project demo: http://shindiristudio.com/timeline
 
         // set positions, height and width for player
         setPositionPlayer: function () {
-          console.info('setPositionPlayer');
 
           var activeSlideItem = tlGallery.find('.timeline-item.active'),
               activeSlideItemMarginLeft = parseFloat(activeSlideItem.css('marginLeft')),
@@ -201,8 +197,6 @@ Project demo: http://shindiristudio.com/timeline
             return;
           }
 
-          console.info('bindPlayer');
-
           $pdk.bind(idPlayer);
 
           // add listners
@@ -210,13 +204,10 @@ Project demo: http://shindiristudio.com/timeline
           $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
 
           function _onMediaLoadStart(pdkEvent) {
-            console.info('_onMediaLoadStart');
             playerApi.statusVideoStart = true
           }
 
           function _onReleaseEnd(pdkEvent) {
-            console.info('onReleaseEnd');
-
             if (playerApi.statusVideoStart) {
               // change status
               playerApi.statusVideoStart = false;
@@ -228,20 +219,17 @@ Project demo: http://shindiristudio.com/timeline
 
         // start video
         playVideo: function () {
-          console.info('playVideo');
           $pdk.controller.clickPlayButton();
           //$pdk.controller.pause(false);
         },
 
         // pause video
         pauseVideo: function () {
-          console.info('pauseVideo');
           $pdk.controller.pause(true);
         },
 
         // change video in player
         setRelease: function (srcLink) {
-          console.info('setRelease');
           if (isMobileDevice) {
             $pdk.controller.loadReleaseURL(srcLink, true);
           } else {
@@ -251,7 +239,6 @@ Project demo: http://shindiristudio.com/timeline
 
         // reload frame if setRelease fail
         reloadFrame: function (srcLink) {
-          console.info('reloadFrame');
           var player = playerWrapper.find(idPlayer);
           // check on srcLink
           if (srcLink != '' && typeof srcLink !== 'undefined') {
@@ -262,7 +249,6 @@ Project demo: http://shindiristudio.com/timeline
 
         // show player and start video
         showPlayer: function (videoData) {
-          console.info('showPlayer');
 
           var src = videoData.data('src'),
               srcLink = videoData.data('src-link');
@@ -284,7 +270,6 @@ Project demo: http://shindiristudio.com/timeline
 
         // hide player and finish video
          hidePlayer: function () {
-          console.info('hidePlayer');
 
           if (playerApi.statusVideoStart) {
             // change status
@@ -321,10 +306,10 @@ Project demo: http://shindiristudio.com/timeline
 
         // init
         init: function () {
-          console.info('init');
-
-          playerApi.createPlayer();
-          playerApi.setPositionPlayer();
+          if (playerWrapper.length > 0) {
+            playerApi.createPlayer();
+            playerApi.setPositionPlayer();
+          }
         }
       };
 

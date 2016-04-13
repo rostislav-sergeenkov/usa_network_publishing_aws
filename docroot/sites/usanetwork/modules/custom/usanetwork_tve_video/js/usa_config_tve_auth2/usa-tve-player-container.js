@@ -21,9 +21,9 @@
 
               return function (scope, element, attr, controller) {
                 var SRC_PARAMS = [{
-                        attrName: 'pdk',
-                        key: 'pdk'
-                      },
+                      attrName: 'pdk',
+                      key: 'pdk'
+                    },
                       {
                         attrName: 'loglevel',
                         key: 'loglevel'
@@ -109,11 +109,11 @@
       .directive('usaTvePlayerContainer', [
         '$rootScope',
         'authService', 'tveAuthConfig', 'tveConfig', 'helper', 'tveModal', '$timeout', '$http', '$sce', '$cookies',
-        'usaPlayerService', 'usaEndCardService', 'usaEndCardHelper',
+        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService',
 
         function ($rootScope,
                   authService, tveAuthConfig, tveConfig, helper, tveModal, $timeout, $http, $sce, $cookies,
-                  usaPlayerService, usaEndCardService, usaEndCardHelper) {
+                  usaEndCardService, usaEndCardHelper, usaMicrositesService) {
           return {
             scope: true,
             controller: ['$scope', function ($scope) {
@@ -148,7 +148,7 @@
               isEntitlement = attr['entitlement'] === 'auth' ? true : false;
               isFullEpisode = parseInt(attr['isFullEpisode']) === 1 ? true : false;
               isShowEndCard = parseInt(attr['showEndCard']) === 1 ? true : false;
-              isMicrosite = body.hasClass('page-node-microsite') ? true : false;
+              isMicrosite = usaMicrositesService.isMicrosite;
               playerWrap = scope.playerWrap;
               playerId = scope.playerId;
 
@@ -193,33 +193,21 @@
               scope._bindPlayerEvents = _bindPlayerEvents;
 
               authService.promise.then(function (status) {
+
                 userStatus = status;
 
                 console.info('promise');
 
                 if (scope.showPlayer = showPlayer()) {
-
                   // check Authenticated and delete thumbnail if Authenticated = true
                   scope.user.isAuthenticated = status.isAuthenticated;
 
-                  if (!isMicrosite) {
+                  if (isMicrosite) {
+                    _bindPlayerEvents();
                     // auth video
                     if (status.isAuthenticated && isEntitlement) {
-                      //initiateAuthorization();
+                      initiateAuthorization();
                     }
-                    setTimeout(function () {
-                      //_bindPlayerEvents(playerId);
-                    }, 0);
-                  }
-                }
-              });
-
-              // wait when load release
-              usaPlayerService.promise.then(function (data) {
-                console.info('usaPlayerService.promise');
-                if (isEntitlement) {
-                  if (scope.statusPlayerLoaded && scope.statusSetToken) {
-                    $pdk.controller.clickPlayButton();
                   }
                 }
               });
@@ -288,11 +276,7 @@
                * Bind Player Events
                * @private
                */
-              function _bindPlayerEvents(playerID, dataObj) {
-
-                var data = dataObj || {};
-
-                // $pdk.bind(playerID);
+              function _bindPlayerEvents() {
 
                 // default listeners for player
                 $pdk.controller.addEventListener('auth_success', _authSuccess);
@@ -301,9 +285,21 @@
                 $pdk.controller.addEventListener('OnShowProviderPicker', _showPicker);
                 $pdk.controller.addEventListener('OnPlayerLoaded', _onPlayerLoaded);
                 $pdk.controller.addEventListener('OnMediaStart', _onMediaStart);
+                $pdk.controller.addEventListener('OnMediaPause', _onMediaPause);
+                $pdk.controller.addEventListener('OnMediaUnpause', _onMediaUnpause);
+                $pdk.controller.addEventListener('OnReleaseStart', _onReleaseStart);
+                $pdk.controller.addEventListener('OnReleaseError', _onReleaseError);
+                $pdk.controller.addEventListener('OnShowFullScreen', _onShowFullScreen);
 
                 $pdk.controller.addEventListener('OnSetToken', function (e) {
                   console.info('OnSetToken');
+
+                  // change status
+                  scope.$apply(function () {
+                    scope.statusSetToken = true;
+                  });
+
+                  initAutoPlay();
                 });
 
                 $pdk.controller.addEventListener("OnShareControlInvoked", function (e) {
@@ -317,17 +313,10 @@
 
                 // init end card service
                 if (isShowEndCard) {
-                  usaEndCardService.init(data);
+                  usaEndCardService.init();
                 } else if (nextReleaseUrl != '') {
                   $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
                 }
-
-                // microsites
-                $pdk.controller.addEventListener('OnMediaPause', _onMediaPause);
-                $pdk.controller.addEventListener('OnMediaUnpause', _onMediaUnpause);
-                $pdk.controller.addEventListener('OnReleaseStart', _onReleaseStart);
-
-                $pdk.controller.addEventListener('OnReleaseError', _onReleaseError);
 
                 // init watchwith
                 if (typeof wwLoader !== 'undefined') {
@@ -336,22 +325,63 @@
                 }
               }
 
-              USAN.playerAPI = {
-                // create public method _bindPlayerEvents
-                // 1. player_Id - important, default id='player'
-                // 2. dataObj - used only for reinit end card
-                // you need prepare new dataApi with your params
-                // docroot/sites/usanetwork/modules/custom/usanetwork_tve_video/js/usa_config_tve_auth2/usa-tve-endcard.js
-                bindPlayerEvents: _bindPlayerEvents,
+              USAN.ms_player = {
 
-                // clear $pdk.controllers.listeners
-                clearlisteners: function () {
-                  $pdk.controller.listenerId = 0;
-                  for (var key in $pdk.controller.listeners) {
-                    delete $pdk.controller.listeners[key];
-                  }
+                init: function (options) {
+
+                  isEntitlement = options.isAuth;
+                  playerWrap = options.playerWrap;
+                  episodeTitle = options.episodeTitle;
+                  mpxGuid = options.mpxGuid;
+                  episodeRating = options.episodeRating;
+
+                  $(playerWrap).find('iframe').eq(0).bind('load', function () {
+
+                    $pdk.bind(this, true);
+                    $pdk.controller.setIFrame(this, true);
+
+                    if (scope.statusPlayerLoaded) {
+
+                      // change status
+                      scope.$apply(function () {
+                        scope.statusSetToken = false;
+                        scope.statusPlayerLoaded = false;
+                      });
+
+                      usaMicrositesService.isVideoFirstRun = false;
+
+                      $pdk.controller.listenerId = 0;
+                      for (var key in $pdk.controller.listeners) {
+                        delete $pdk.controller.listeners[key];
+                      }
+
+                      _bindPlayerEvents();
+
+                      if (isEntitlement && authService.isAuthenticated()) {
+                        initiateAuthorization();
+                      }
+                    }
+                  });
                 }
               };
+
+              function  initAutoPlay() {
+
+                if (isMicrosite) {
+                  if (usaMicrositesService.isVideoFirstRun && scope.statusSetToken) {
+                    hidePlayerThumbnail();
+                  }
+                  if (isEntitlement && !usaMicrositesService.isVideoFirstRun) {
+                    if (scope.statusPlayerLoaded && scope.statusSetToken) {
+                      $pdk.controller.clickPlayButton();
+                    }
+                  }
+                } else {
+                  if (scope.statusPlayerLoaded && scope.statusSetToken) {
+                    $pdk.controller.clickPlayButton();
+                  }
+                }
+              }
 
               function hidePlayerThumbnail() {
                 if (scope.playerThumbnail) {
@@ -362,10 +392,18 @@
                 }
               }
 
+              /*
+               * On Show Full Screen
+               */
+              function _onShowFullScreen(pdkEvent) {
+                if (pdkEvent.data) {
+                  $(body).addClass('video-fullscreen');
+                } else {
+                  $(body).removeClass('video-fullscreen');
+                }
+              }
+
               function _onReleaseError() {
-
-                console.info('_onReleaseError');
-
                 if (scope.playerThumbnail) {
                   hidePlayerThumbnail();
                 }
@@ -388,8 +426,6 @@
 
               function _onReleaseStart() {
 
-                console.info('onReleaseStart');
-
                 scope.isPlayerStart = true;
                 scope.isPlayerPlay = true;
                 scope.isPlayerPause = false;
@@ -398,20 +434,15 @@
                   hidePlayerThumbnail();
                 }
 
-                if (typeof Drupal.behaviors.microsite_scroll == 'object' && typeof Drupal.behaviors.microsite_scroll.micrositeAdAdded == 'function') {
-                  Drupal.behaviors.microsite_scroll.micrositeAdAdded();
-                } else if (typeof Drupal.behaviors.ms_videos == 'object' && typeof Drupal.behaviors.ms_videos.adAdded == 'function') {
-                  Drupal.behaviors.ms_videos.adAdded();
+                if (isMicrosite) {
+                  usaMicrositesService.adAdded();
                 }
               }
-
 
               /**
                * Media Start event callback so that we can show the metadata section
                */
               function _onMediaStart(pdkEvent) {
-
-                console.info('_onMediaStart');
 
                 var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
 
@@ -487,15 +518,12 @@
                * @private
                */
               function _onPlayerLoaded(pdkEvent) {
-
+                
                 scope.$apply(function () {
                   scope.statusPlayerLoaded = true;
                 });
 
-                if (scope.statusSetToken) {
-                  // change status for autoplay
-                  usaPlayerService.resolve('auth success done and load release url finish');
-                }
+                initAutoPlay();
               }
 
               /**
@@ -503,21 +531,7 @@
                * @private
                */
               function _authSuccess() {
-
-                // change status
-                scope.$apply(function () {
-                  scope.statusSetToken = true;
-                });
-
-                if (isEntitlement) {
-                  $pdk.controller.setToken(encodedToken, 'authToken');
-                  console.log('setToken');
-
-                  // check on loadReleaseUrl
-                  if (scope.statusPlayerLoaded) {
-                    usaPlayerService.resolve('auth success done');
-                  }
-                }
+                $pdk.controller.setToken(encodedToken, 'authToken');
                 tveAnalytics.authzTrack(true, authService.getSelectedProvider());
               }
 

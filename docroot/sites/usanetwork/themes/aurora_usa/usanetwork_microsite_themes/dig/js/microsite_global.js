@@ -419,23 +419,19 @@
       return {'section': activeSection, 'item': activeItem};
     },
     //player init bind
-    micrositePlayerBind: function (isAuth, options) {
-
-      if (isAuth) {
-        // USAN.playerAPI.initiateAuthorization(options);
-      }
-
-      USAN.playerAPI.clearlisteners();
-      USAN.playerAPI.bindPlayerEvents('player');
+    micrositePlayerBind: function (options) {
+      USAN.ms_player.init(options);
     },
     //ajax request
     micrositeGetVideo: function (url, isAuth) {
 
       var videoContainer = $('#video-container'),
-          playerWrap = videoContainer.find('.video-player .file-video-mpx'),
+          playerThumbnail = videoContainer.find('.video-image'),
+          playerWrapSelector = '.file-video-mpx',
           playerDesc = videoContainer.find('.video-player-desc'),
           playerAuth = videoContainer.find('.video-auth-player-wrapper'),
-          playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper');
+          playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper'),
+          playerWrap;
 
       $.ajax({
         type: 'GET',
@@ -448,23 +444,27 @@
               player = data.player;
 
           if (playerAuth.hasClass('active-player')) {
-            playerNoAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
-            playerAuth.find('#player .loginButton').html(image);
-            playerAuth.find(playerWrap).html(player);
+            playerWrap = playerAuth.find(playerWrapSelector);
+            playerNoAuth.find(playerWrapSelector).html('<iframe class="base-iframe"></iframe>');
+            playerThumbnail.html(image);
+            playerWrap.html(player);
           }
           if (playerNoAuth.hasClass('active-player')) {
-            playerAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
-            playerNoAuth.find(playerWrap).html(player);
+            playerWrap = playerNoAuth.find(playerWrapSelector);
+            playerAuth.find(playerWrapSelector).html('<iframe class="base-iframe"></iframe>');
+            playerWrap.html(player);
           }
 
+          playerWrap.find('iframe').eq(0).off('load');
           playerDesc.html(description);
 
-          Drupal.behaviors.microsite_scroll.micrositePlayerBind(isAuth, {
+          Drupal.behaviors.microsite_scroll.micrositePlayerBind({
+            isAuth: isAuth,
+            playerWrap: playerWrap,
             episodeRating: data['episode-rating'],
             episodeTitle: data['episode-title'],
             mpxGuid: data['mpx-guid']
           });
-
         },
         error: function () {
           console.info('error');
@@ -495,18 +495,10 @@
           ad_300x250_1 = $('#videos #ad_300x250_1'),
           isAuth = false,
           filter, url;
-
-
+      
       if (data) {
         dataPlayerId = data.data.player_id;
         dataFid = data.data.fid;
-      }
-
-      if ($('#video-filter').length) {
-        filter = $('#video-filter .filter-item.active').text();
-        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + filter;
-      } else {
-        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay;
       }
 
       if (videoContainer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
@@ -549,12 +541,21 @@
 
       if ($('#thumbnail-list .item-list ul li.thumbnail.active > div').hasClass('tve-video-auth')) {
         isAuth = true;
+        autoplay = false;
         videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
       } else {
         videoContainer.find('.video-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-no-auth-player-wrapper').addClass('active-player').show();
       }
+
+      if ($('#video-filter').length) {
+        filter = $('#video-filter .filter-item.active').text();
+        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + tve.adobePass.currentProvider + '/' + filter;
+      } else {
+        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + tve.adobePass.currentProvider;
+      }
+
       function checkAjaxUrl() {
 
         var urlArr = url.split('/'),

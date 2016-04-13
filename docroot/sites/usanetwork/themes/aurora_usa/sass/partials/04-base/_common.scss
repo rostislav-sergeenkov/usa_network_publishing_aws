@@ -36,6 +36,20 @@ body {
   margin: 0 auto;
   width: 100%;
   /*-webkit-font-smoothing: antialiased;*/
+  &.video-fullscreen {
+    &.admin-menu {
+      margin-top: 0!important;
+    }
+    #sections ~ div {
+      display: none!important;
+    }
+    #admin-menu {
+      display: none!important;
+    }
+    header {
+      display: none!important;
+    }
+  }
 }
 
 .usa-wrap {

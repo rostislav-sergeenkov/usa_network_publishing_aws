@@ -27,6 +27,7 @@ endif;
 ?>
 
 <div id="home-wrapper" class="clearfix">
+  <div id="home-empty"></div><!-- placeholder to prevent sticky nav appearing at short window heights -->
   <div id="head-leaderboard" class="topbanner ad-leaderboard"></div>
 
   <div id="home-content-container">

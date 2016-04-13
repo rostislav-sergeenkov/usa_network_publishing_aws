@@ -3,8 +3,6 @@
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_photos_bg.jpg');
 }
 #galleries .section-title-block > h2 {
-  width: 525px;
-  height: 88px;
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_galleries.png');
 }
 #gallery-loader {
@@ -32,20 +30,6 @@
 }
 
 
-/* gallery structure */
-/*
-#galleries .left-pane {
-  float: left;
-  width: calc(100% - 320px);
-}
-#galleries .right-pane {
-  float: left;
-  width: 300px;
-  height: 100%;
-  margin-left: 20px;
-}
-*/
-
 /* gallery filters */
 #galleries .filter-wrapper {
   margin: 0 auto;
@@ -68,7 +52,7 @@
   float: left;
   margin: 1% 8.4% 0 0;
   padding: 0;
-  font-size: 1.625em;
+  font-size: 26px;
   line-height: 1.2;
   height: 38px;
   color: #55452A;
@@ -156,40 +140,6 @@
 }
 
 
-@media (max-width: 1900px) {
-  .node-type-usanetwork-microsite #galleries .gallery-block {
-    width: 80vw;
-    height: calc((80vw - 320px) * .5625);
-  }
-  .node-type-usanetwork-microsite #galleries .gallery-wrapper {
-    width: calc(80vw - 320px);
-    height: calc((80vw - 320px) * .5625);
-  }
-}
-
-@media (max-width: 1174px) {
-  .node-type-usanetwork-microsite #galleries .gallery-block {
-    width: 80vw;
-    height: initial;
-  }
-  .node-type-usanetwork-microsite #galleries .gallery-wrapper {
-    width: 80vw;
-    height: calc(80vw * .5625);
-  }
-  #galleries .right-pane {
-    width: 80vw;
-    margin-left: 0;
-  }
-  #galleries-nav-list li:nth-child(3n) {
-    margin-right: 1%;
-  }
-}
-
-
-
-
-
-
 /* right pane */
 #galleries-nav-list li {
   display: inline-block;
@@ -225,7 +175,7 @@
 }
 #galleries-nav-list .gallery-title {
   height: 3.5em;
-  font-size: 1em;
+  font-size: 16px;
   line-height: 1.2;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -240,4 +190,81 @@
 #galleries-nav-list a:active {
   color: #55452A;
   text-decoration: none;
+}
+
+
+@media (max-width: 1900px) {
+  .node-type-usanetwork-microsite #galleries .gallery-block {
+    width: 80vw;
+    height: calc((80vw - 320px) * 0.5625);
+  }
+  .node-type-usanetwork-microsite #galleries .gallery-wrapper {
+    width: calc(80vw - 320px);
+    height: calc((80vw - 320px) * 0.5625);
+  }
+}
+
+@media (max-width: 1174px) {
+  .node-type-usanetwork-microsite #galleries .gallery-block {
+    width: 80vw;
+    height: initial;
+  }
+  #gallery-loader,
+  .node-type-usanetwork-microsite #microsite #galleries .gallery-wrapper {
+    width: 80vw;
+    height: initial;
+  }
+  .node-type-usanetwork-microsite #microsite .gallery-wrapper .gallery-list .slide .node .asset-img {
+    height: calc(80vw * 0.5625);
+  }
+  .node-type-usanetwork-microsite #microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
+    text-align: left;
+  }
+  .node-type-usanetwork-microsite #microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
+    text-align: left;
+  }
+  .node-type-usanetwork-microsite #microsite .gallery-wrapper .gallery-pager-wrap {
+    top: calc((80vw * 0.5625) + 13px);
+  }
+  .node-type-usanetwork-microsite #microsite .gallery-wrapper .slide-control {
+    top: calc((80vw * 0.5625) + 48.5px);
+  }
+  #galleries .right-pane {
+    width: 80vw;
+    margin-left: 0;
+  }
+  #galleries-nav-list li {
+    width: 18.7%;
+  }
+  #galleries-nav-list li:nth-child(3n) {
+    margin-right: 1%;
+  }
+  #galleries-nav-list li:nth-child(5n) {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 1072px) {
+  #galleries-filter li.filter-item {
+    margin: 1% 5.1% 0 0;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 800px) {
+  #galleries-nav-list li {
+    width: 18%;
+  }
+}
+
+@media (max-width: 700px) {
+  #galleries-nav-list li {
+    width: 31%;
+  }
+  #galleries-nav-list li:nth-child(3n) {
+    margin-right: 0;
+  }
+  #galleries-nav-list li:nth-child(5n) {
+    margin-right: 1%;
+  }
 }

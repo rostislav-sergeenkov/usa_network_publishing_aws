@@ -22,13 +22,21 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100% !important;
   height: 90px;
   margin: 18px 0 0;
   overflow: visible;
 }
 #home-wrapper {
   width: 100%;
+}
+#home-empty {
+  position: absolute;
+  top: 175px;
+  left: 0;
+  width: 50%;
+  height: 10%;
+  margin: 0 auto;
 }
 #home #home-content-container {
   width: 100%;
@@ -38,7 +46,7 @@
 }
 #home #home-logo {
   margin-top: 21.3% !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 20px;
   width: 53%;
 }
 #home #home-logo h1,
@@ -80,17 +88,21 @@
   width: 100%;
 }
 #home #home-countdown #counter .numbers {
-  font-size: 2em;
+  font-size: 32px;
   margin-bottom: 6%;
 }
 #home #home-countdown #counter .title {
-  font-size: 1em;
+  font-size: 16px;
 }
 #home #home-countdown #counter .line {
   width: 60%;
 }
 #countHolder #caption {
   color: #FAEFDE;
+  font-family: "avalonregular", sans-serif;
+  font-size: 10px;
+  line-height: 3;
+  width: initial;
 }
 #until {
   color: #FAEFDE;
@@ -100,6 +112,8 @@
   font-family: inherit;
 }
 #home #counter .circle {
+  min-width: initial;
+  min-height: initial;
   background-color: transparent;
   border: 4px solid #55452A;
 }
@@ -122,13 +136,13 @@
 #home #home-nav li {
   display: inline-block;
   margin: 0 2%;
-  font-size: 2.25em;
+  font-size: 36px;
   line-height: 1.2;
   text-transform: uppercase;
 }
 .home-button-text {
   color: #FFF;
-  font-size: 1em;
+  font-size: 16px;
   line-height: 1.3;
 }
 
@@ -170,6 +184,46 @@
 
 
 /* ************** BEGIN MEDIA QUERIES ************* */
+@media (max-width: 1900px) {
+  #home #home-content-container {
+    top: calc(5vw + 90px);
+  }
+  #home #home-logo {
+    margin-bottom: 9vw !important;
+    width: 40%;
+  }
+  #home #home-countdown {
+    top: 57%;
+    width: 23.684210vw;
+    margin-left: calc(50% - 11.84210vw) !important;
+  }
+  #home #home-countdown #counter .circle {
+    width: 5.0526316vw;
+    height: 5.0526316vw;
+    border: 0.21053vw solid #55452A;
+  }
+  #home #home-countdown #counter .numbers {
+    font-size: 2vw;
+    line-height: 1;
+    margin-bottom: 0.6vw;
+  }
+  #home #home-countdown #counter .title {
+    font-size: 1vw;
+    line-height: 1;
+  }
+  #home #home-countdown #until {
+    font-size: 1.5625vw;
+    line-height: 1.2;
+  }
+  #home #home-nav {
+    width: 80%;
+  }
+  #home #home-nav li {
+    margin: 0 2%;
+    font-size: 1.894737vw;
+  }
+}
+
 @media (max-width: 1024px) {
   #home {
     height: auto;
@@ -181,42 +235,35 @@
     padding-top: 0;
   }
   #home #home-logo {
-    margin-bottom: 25vw!important;
-    width: 40%;
-  }
-  #home #home-sponsored {
-    width: 50%;
-    min-width: 200px;
-  }
-  #home #home-tunein,
-  #home #home-description {
-    font-size: 2.15vw!important;
+    width: 45%;
+    margin-top: 28.3% !important;
   }
   #home #home-countdown {
-    width: 50%;
+    top: 57%;
+    width: 36%;
+    margin-left: 32% !important;
   }
   #home #home-countdown #counter .circle {
-    height: 8vw;
-    width: 8vw;
+    width: 48px;
+    height: 48px;
+    border: 2px solid #55452A;
   }
   #home #home-countdown #counter .numbers {
-    font-size: 3.125vw!important;
+    font-size: 18px;
+    margin-bottom: 0;
   }
   #home #home-countdown #counter .title {
-    font-size: 1.5625vw!important;
-  }
-  .home-button-text {
-    font-size: 1.5625vw!important;
-  }
-  #home #home-content-container {
-    top: calc(5vw + 90px);
-  }
-  #home #home-content-container #home-nav {
-    width: 628px;
+    font-size: 8px;
+    line-height: 1.8;
   }
   #home #home-nav li {
-    width: 29.3%;
-    margin: 0 2% 6%;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 775px) {
+  #countHolder #caption {
+    font-size: 8px;
   }
 }
 
@@ -225,54 +272,55 @@
     padding-top: calc(128vw + 90px);
   }
   #home #home-logo {
-    margin-bottom: 38vw!important;
+    margin-top: 31.3% !important;
+    margin-bottom: 15vw !important;
+  }
+  #home #home-countdown {
+    top: 54%;
+    width: 36%;
+    margin-left: 32% !important;
   }
   #home #home-countdown #counter .circle {
-    height: 56px;
-    width: 56px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #55452A;
   }
   #home #home-countdown #counter .numbers {
-    font-size: 20px!important;
+    font-size: 12px;
   }
   #home #home-countdown #counter .title {
-    font-size: 10px!important;
-  }
-  .home-button-text {
-    font-size: 10px!important;
-  }
-  #home #home-content-container #home-nav {
-    width: 304px;
+    font-size: 6px;
   }
   #home #home-nav li {
-    width: 46%;
-    margin: 0 2% 4vw;
+    width: 20%;
   }
   #home #home-usa-logo {
     width: 38px;
     height: auto;
   }
-  #home #home-nav li:nth-child(3n + 1) {
-    clear: none;
-  }
-  #home #home-nav li:nth-child(2n + 1) {
-    clear: left;
-  }
 }
+
 @media (max-width: 500px) {
-  #home.section {
-    padding-top: calc(204vw + 90px);
-  }
+
+}
+
+@media (max-width: 380px) {
   #home #home-logo {
-    width: 48%;
-    margin-top: 20%!important;
-    margin-bottom: 47vw!important;
+    width: 86%;
+    margin-top: 49.3% !important;
+    margin-bottom: 14vw !important;
   }
   #home #home-countdown {
-    width: 65%;
+    top: 57%;
+    width: 52%;
+    margin-left: 24% !important;
   }
-  #home #home-tunein,
-  #home #home-description {
-    font-size: 10px!important;
+  #home #home-nav li {
+    width: 18%;
+    font-size: 11px;
+  }
+  #home #home-usa-logo {
+    width: 30px;
   }
 }
 

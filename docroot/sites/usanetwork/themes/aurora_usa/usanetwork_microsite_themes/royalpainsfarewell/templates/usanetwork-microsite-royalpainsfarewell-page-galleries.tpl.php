@@ -81,7 +81,7 @@
         <?php if (!empty($ep_gallery['url']) && !empty($ep_gallery['gallery_nid']) && !empty($ep_gallery['title']) && !empty($ep_gallery['cover_img'])): ?>
         <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>" class="hide<?php if ($gallery['gallery_nid'] == $ep_gallery['gallery_nid']) print ' active'; ?>">
           <a href="<?php print $microsite_url; ?>/galleries/<?php print $ep_gallery['url']; ?>">
-            <div class="gallery-nav-img"><img src="<?php print str_replace(['surf', 'local'], 'www', str_replace('files/public/', 'files/', $ep_gallery['cover_img'])); ?>" alt="<?php print $ep_gallery['title']; ?>">
+            <div class="gallery-nav-img"><img src="<?php print $ep_gallery['cover_img']; ?>" alt="<?php print $ep_gallery['title']; ?>">
             </div>
             <div class="gallery-title">
               <div><?php print $ep_gallery['title']; ?></div>
@@ -103,7 +103,7 @@
         <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>" class="<?php if ($gallery['gallery_nid'] == $char_gallery['gallery_nid']) print 'active'; ?>">
           <a href="<?php print $microsite_url; ?>/galleries/<?php print $char_gallery['url']; ?>">
             <div class="gallery-nav-img">
-              <img src="<?php print str_replace(['surf', 'local'], 'www', str_replace('files/public/', 'files/', $char_gallery['cover_img'])); ?>" alt="<?php print $char_gallery['title']; ?>">
+              <img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>">
             </div>
             <div class="gallery-title">
               <div><?php print $char_gallery['title']; ?></div>

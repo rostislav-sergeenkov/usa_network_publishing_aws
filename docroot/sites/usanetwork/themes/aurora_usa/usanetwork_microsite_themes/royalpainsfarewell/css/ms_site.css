@@ -29,10 +29,6 @@ body.page-node-microsite {
   margin: 0;
   background-color: transparent;
 }
-#microsite .ad-leaderboard {
-  width: initial;
-  height: initial;
-}
 a,
 a:link,
 a:visited {
@@ -52,7 +48,13 @@ a:active {
   margin: 0 auto;
 }
 #microsite .ad-leaderboard {
+  width: 100% !important;
+  height: initial;
   margin: 18px auto;
+}
+#microsite .ad-leaderboard iframe {
+  display: block;
+  margin: 0 auto;
 }
 
 
@@ -118,9 +120,10 @@ body {
 #site-nav #site-nav-center {
   position: absolute;
   top: 12px;
-  left: 215px;
-  margin: 0;
+  left: 0;
   width: calc(100% - 430px);
+  max-width: initial;
+  margin: 0 0 0 calc(50% - ((100% - 430px) / 2));
   line-height: 1;
 }
 #site-nav li {
@@ -130,7 +133,7 @@ body {
 #site-nav a:link,
 #site-nav a:visited {
   color: #55452A;
-  font-size: 1.5em; /* 24px */
+  font-size: 24px;
   text-transform: uppercase;
 }
 #site-nav a:hover,
@@ -139,18 +142,33 @@ body {
   color: #30251A;
 }
 /* mobile */
+#site-nav-mobile {
+  top: 27px;
+  bottom: initial;
+}
 #site-nav-links-mobile ul#site-nav-links-list-mobile {
   width: 180px;
 }
 #site-nav-links-mobile li {
-  font-size: 1em;
+  font-size: 16px;
   height: auto;
   width: 180px;
+  background-color: rgba(250,239,222,0.94);
+  color: #55452A;
 }
 #site-nav-mobile li.internal a:hover,
 #site-nav-mobile li.internal a:active,
 #site-nav-mobile li.internal.active a {
   color: #55452A;
+}
+#site-nav a,
+#site-nav a:link,
+#site-nav a:visited,
+#site-nav a:hover,
+#site-nav a:active {
+  color: #55452A !important;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 #site-nav-right {
   position: absolute;
@@ -191,19 +209,6 @@ body {
   max-height: 1078px;
   overflow: hidden;
 }
-/*
-#videos {
-  padding-top: 60%;
-  background-color: #FAEFDE;
-}
-#videos-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-*/
 section .section-title-block {
   margin: 18px 0 30px;
 }
@@ -211,17 +216,19 @@ section .section-title-block {
   margin-bottom: 0;
 }
 section .section-title-block > h2 {
+  width: 525px;
+  height: 88px;
+  margin: 0 auto;
   background-repeat: no-repeat;
   background-size: contain;
   color: #55452A;
-  margin: 0 auto;
 }
 section .section-title-block > h2 span {
   display: none;
 }
 .section-description {
   font-family: sans-serif;
-  font-size: 1.375em; /* 22px */
+  font-size: 22px;
   line-height: 1.2;
   color: #55452A;
   margin: 0 auto !important;
@@ -236,8 +243,6 @@ footer {
 
 /* VIDEOS */
 #videos .section-title-block > h2 {
-  width: 525px;
-  height: 88px;
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_videos.png');
 }
 #videos .header {
@@ -247,13 +252,13 @@ footer {
 #microsite .full-pane #video-container h3 {
   color: #55452A;
   font-family: "avalonmedium", sans-serif;
-  font-size: 1.875em;
+  font-size: 30px;
   line-height: 1.2;
 }
 #microsite .full-pane #video-container .video-description {
   color: #55452A;
   font-family: "avalonmedium", sans-serif;
-  font-size: 1.125em;
+  font-size: 18px;
   line-height: 1.2;
 }
 /* sub-nav */
@@ -273,22 +278,6 @@ footer {
 #video-filter li.filter-item.active {
   background-color: transparent;
 }
-/*
-#microsite .block-usanetwork-mpx-video li.grid-item {
-  background-color: #transparent;
-  text-transform: none;
-}
-#microsite .block-usanetwork-mpx-video li.grid-item:hover,
-#microsite .block-usanetwork-mpx-video li.grid-item.active {
-  background-color: #55452A;
-}
-#microsite .block-usanetwork-mpx-video li.grid-item {
-  height: 96px;
-}
-#videos .msm-episode-title {
-  margin-left: 26px;
-}
-*/
 .featured-asset.file-video-mpx .locked-msg {
   color: #FFF;
   line-height: 1;
@@ -307,8 +296,6 @@ footer {
   background-color: #FFF;
 }
 #timeline .section-title-block > h2 {
-  width: 525px;
-  height: 88px;
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_timeline.png');
 }
 #timeline article {
@@ -403,19 +390,8 @@ footer {
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_social_bg.jpg');
 }
 #social .section-title-block > h2 {
-  width: 525px;
-  height: 88px;
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_social.png');
 }
-/*
-#social-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-*/
 #spredfast-social-content {
   width: 80%;
   height: calc(100% - 144px - 126px);
@@ -453,37 +429,67 @@ footer {
     padding: 61% 0 0;
   }
 }
+
 @media (max-width: 1280px) {
   #site-nav li {
-    font-size: 0.875em;
+    font-size: 14px;
     padding: 10px 12px 0;
   }
 }
+
+@media (max-width: 1174px) {
+  #microsite #sections .section:not(#site-nav) {
+    padding: 0;
+    height: initial;
+    max-height: initial;
+  }
+  #microsite #sections .section:not(#site-nav) > section {
+    position: relative;
+    height: initial;
+    max-height: initial;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 1072px) {
+  section .section-title-block > h2 {
+    width: 335px;
+    height: 56.2px;
+    margin-left: calc(50% - 167.5px);
+  }
+  .section-description {
+    width: 60%;
+    font-size: 18px;
+  }
+  #microsite .full-pane #video-container h1, #microsite .full-pane #video-container h3 {
+    font-size: 24px;
+  }
+  #microsite .full-pane #video-container .video-description {
+    font-size: 16px;
+  }
+  #microsite .gig-bar-container .gig-button-container td > div, #microsite .gig-bar-container .gig-button-container td > div:hover, #microsite .field-type-gigya-sharebar .gig-button-container td > div, #microsite .field-type-gigya-sharebar .gig-button-container td > div:hover {
+    font-size: 24px;
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
 @media (max-width: 1024px) {
   #site-nav li {
-    font-size: 0.75em;
+    font-size: 12px;
     padding: 10px 10px 0;
   }
 }
-@media (max-width: 920px) {
-  .section-description {
-    width: 324px;
-  }
-  #timeline section .section-title-block > h2 {
-    height: 94px;
-    margin-left: calc(50% - 298.5px);
-    width: 263px;
-  }
-}
+
 @media (max-width: 873px) {
   #site-nav {
     overflow: visible;
   }
   #site-nav:hover {
-    overflow: visible!important;
+    overflow: visible !important;
   }
   #site-nav li {
-    font-size: 1em;
+    font-size: 16px;
   }
 }
 
@@ -496,14 +502,7 @@ footer {
 
 @media (max-width: 640px) {
   .section-description {
-    font-size: 0.75em;
-    margin: 0px auto 20px;
-    width: 172px;
-  }
-  #timeline section .section-title-block > h2 {
-    height: 43px;
-    margin-left: calc(50% - 156px);
-    width: 120px;
+    font-size: 12px;
   }
 }
 

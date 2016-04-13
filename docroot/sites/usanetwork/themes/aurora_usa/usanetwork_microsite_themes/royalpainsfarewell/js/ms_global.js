@@ -698,6 +698,52 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
       }
     },
 
+    updateVideoToShowOnPageLoad: function(callback){
+      var $activeVideoFilter = $('#videos .filter-menu li.active'),
+          activeVideoFilterName = $activeVideoFilter.attr('data_filter_class');
+      if ($('#thumbnail-list .item-list ul li.thumbnail').length) {
+        usa_debug('updateVideoToShowOnPageLoad() -- activeVideoFilterName: ' + activeVideoFilterName);
+        $('#thumbnail-list .item-list ul li.thumbnail:first').addClass('active');
+
+        if (typeof callback == 'function') callback();
+      }
+      else {
+        setTimeout(function(){
+          Drupal.behaviors.ms_global.updateVideoToShowOnPageLoad();
+        }, 500);
+      }
+    },
+
+    moveFullEpisodesFilterLast: function(callback){
+      var $videoFilterList = $('#videos .filter-menu'),
+          firstFilterName = $videoFilterList.find('li:first').attr('data_filter_class'),
+          isFirstFilterFullEpisodes = (firstFilterName == 'full-episodes') ? true : false,
+          numFilters = $videoFilterList.find('li').length,
+          isVideoItemInUrl = (Drupal.behaviors.ms_global.parseUrl()['item'] != '') ? true : false;
+
+      usa_debug('moveFullEpisodesFilterLast() -- numFilters: ' + numFilters + ', isVideoItemInUrl: ' + isVideoItemInUrl);
+      if (isFirstFilterFullEpisodes) {
+        var $firstFilter = $videoFilterList.find('li:first'),
+            $lastFilter = $videoFilterList.find('li:last');
+        $('#videos .filter-menu li').removeClass('first last');
+        $lastFilter.after($firstFilter);
+        $videoFilterList.find('li:eq(0)').addClass('first');
+        $videoFilterList.find('li:eq(' + (numFilters - 1) + ')').addClass('last');
+
+        if (!isVideoItemInUrl) {
+          var $videoThumbnails = $('#thumbnail-list .item-list ul li.thumbnail');
+
+          $('#videos .filter-menu li').removeClass('active');
+//          $videoThumbnails.removeClass('active');
+          $videoThumbnails.remove();
+          $videoFilterList.find('li:first').click();
+
+          Drupal.behaviors.ms_global.updateVideoToShowOnPageLoad(callback);
+//          if (typeof callback == 'function') callback();
+        }
+      }
+    },
+
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
       if (!$('html').hasClass('ie9')) {
@@ -768,14 +814,18 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
         if ($('#videos').length > 0) {
           Drupal.behaviors.ms_videos.setVideoHeight();
 
-          $('#video-container').addClass('active');
-          var urlParts = self.parseUrl(window.location.href); // history.state['path']);
-          if (urlParts['section'] == 'videos' && urlParts['item']) {
-            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, null, true);
-          }
-          else {
-            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('false', null, null, true);
-          }
+          self.moveFullEpisodesFilterLast(function(){
+            setTimeout(function(){
+              $('#video-container').addClass('active');
+              var urlParts = self.parseUrl(window.location.href); // history.state['path']);
+              if (urlParts['section'] == 'videos' && urlParts['item']) {
+                Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, null, true);
+              }
+              else {
+                Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('false', null, null, true);
+              }
+            }, 1000);
+          });
         }
 
         // TIME OUT

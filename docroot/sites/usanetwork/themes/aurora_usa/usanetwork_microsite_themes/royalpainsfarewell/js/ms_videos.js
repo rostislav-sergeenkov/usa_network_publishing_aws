@@ -165,6 +165,7 @@
           ad_728x90.attr('id', 'ms-videos-leaderboard-ad').empty();
         }
 
+/*
         setTimeout(function(){
           if (msGlobalExists && !Drupal.behaviors.ms_global.globalInitialPageLoad) Drupal.behaviors.ms_global.create728x90Ad('videos');
         }, 1500);
@@ -176,6 +177,7 @@
         if ($('#videos').find(ad_300x250_1)) {
           ad_300x250_1.closest('li.ad').show();
         }
+*/
       }
 
       Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
@@ -190,7 +192,6 @@
       }
 
       function checkAjaxUrl() {
-
         var urlArr = url.split('/'),
             urlArrLength = urlArr.length - 1,
             i = 0,

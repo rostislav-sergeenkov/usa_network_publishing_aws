@@ -52,9 +52,11 @@
 
     setSiteNav: function() {
 //      var wPath = window.location.pathname,
-      var homeNavInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav')) ? true : false;
-          //homeAdInView = (Drupal.behaviors.ms_global.isScrolledIntoView('.dart-name-728x90_ifr_reload_home')) ? true : false,
-          //homeLogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-logo')) ? true : false,
+      var homeNavInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav')) ? true : false,
+          homeAdInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#head-leaderboard')) ? true : false,
+          homeEmptyInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-empty')) ? true : false,
+          homeLogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-logo')) ? true : false,
+          homeCountdownInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#countHolder')) ? true : false;
           //homeTuneInInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-tunein')) ? true : false,
           //homeNavFirstInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:first')) ? true : false,
           //homeNavLastInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:last')) ? true : false,
@@ -63,7 +65,7 @@
       //usa_debug('setSiteNav()');
 //      if (wPath == '/mrrobot/catchup' || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeFinalePacketImageInView || homeUSALogoInView) {
 //      if (homeAdInView || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeUSALogoInView) {
-      if (homeNavInView) {
+      if (homeNavInView || homeLogoInView || homeCountdownInView || homeEmptyInView || homeAdInView) {
         Drupal.behaviors.ms_site.hideSiteNav();
       }
       else {

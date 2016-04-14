@@ -806,6 +806,16 @@
       }
     }
   }
+  &:not(.page-full-video) {
+    #topbanner {
+      @include breakpoint($bp-min-641-width) {
+        margin: 5px auto;
+      }
+    }
+    .companionContainer {
+      margin: 0 auto;
+    }
+  }
 }
 .consumptionator-characters-main-block, .consumptionator-episode-main-block, .consumptionator-quiz-main-block, .consumptionator-post-main-block {
   .consum-sidebar {

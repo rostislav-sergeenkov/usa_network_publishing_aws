@@ -3743,6 +3743,9 @@ body.video-fullscreen.admin-menu {
 body.video-fullscreen.node-type-timeline-gallery #player-wrapper {
   z-index: 10000 !important;
 }
+body.video-fullscreen #chosen-player ~ div {
+  display: none !important;
+}
 body.video-fullscreen #sections ~ div {
   display: none !important;
 }
@@ -14221,6 +14224,14 @@ footer h2 {
   .consumptionator-video-page.page-full-video header.sign-in ~ .usa-wrap {
     margin-top: 0;
   }
+}
+@media (min-width: 641px) {
+  .consumptionator-video-page:not(.page-full-video) #topbanner {
+    margin: 5px auto;
+  }
+}
+.consumptionator-video-page:not(.page-full-video) .companionContainer {
+  margin: 0 auto;
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {

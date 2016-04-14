@@ -1838,8 +1838,8 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
     width: 1245px;
   }
   #microsite section .file-video-mpx.view-mode-inline_content iframe {
-    width: 1000px !important;
-    height: 559px !important;
+    width: 1000px;
+    height: 559px;
   }
   #video-container .featured-asset .video-player-wrapper {
     width: 1000px;

@@ -3746,6 +3746,9 @@ body.video-fullscreen.node-type-timeline-gallery #player-wrapper {
 body.video-fullscreen #sections ~ div {
   display: none !important;
 }
+body.video-fullscreen #sections > .section:not(#videos) {
+  z-index: -1;
+}
 body.video-fullscreen #admin-menu {
   display: none !important;
 }

@@ -82,7 +82,6 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_includes() {
       $default_theme_path . '/js/ms_gigya.js',
       $site_theme_path . '/js/ms_global.js',
       $default_theme_path . '/js/ms_videos.js',
-      $default_theme_path . '/js/ms_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
   );

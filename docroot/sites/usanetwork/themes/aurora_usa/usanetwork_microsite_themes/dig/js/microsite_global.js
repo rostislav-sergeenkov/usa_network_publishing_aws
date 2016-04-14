@@ -424,7 +424,6 @@
         delete $pdk.controller.listeners[key];
       }
       $pdk.bindPlayerEvents();
-      $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
       tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
     },
     //ajax request
@@ -783,7 +782,6 @@ usa_debug(' ====== if videoContainer...');
           thumbnail.bind('click', function (e) {
             e.preventDefault();
             var elem = $(this);
-            tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
             Drupal.behaviors.microsite_scroll.micrositeClickThumbnail(elem);
           });
         },
@@ -1198,7 +1196,6 @@ usa_debug(' ====== if videoContainer...');
             Drupal.behaviors.microsite_scroll.micrositeSectionScroll(anchor, anchorItem);
           }
         }
-        tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
       });
 
 

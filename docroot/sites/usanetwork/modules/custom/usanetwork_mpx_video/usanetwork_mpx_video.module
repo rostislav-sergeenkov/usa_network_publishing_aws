@@ -1810,7 +1810,7 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
     $image_next = image_style_url('full_episodes_633x356', $image_next_uri);
 
     $next_clip[] = array(
-      'videoLabel' => !empty($filter) ? $filter : t('Clip'), //TODO
+      'videoLabel' => !empty($filter) ? $filter : t('Clip'),
       'videoTitle' => $next_video->filename,
       'thumbnail' => $image_next,
       'data' => array(
@@ -1825,7 +1825,7 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
   }
 
   //More Clips
-  $related_clips = _usanetwork_mpx_video_get_latest_videos($file, $show, FALSE, 5);
+  $related_clips = _usanetwork_mpx_video_get_latest_videos($show, FALSE, 10, array($file->fid, $next_video->fid));
   if (!empty($related_clips)) {
     $more_clips = array();
     foreach ($related_clips as $value) {
@@ -1834,7 +1834,7 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
       $image_clip_uri = _usanetwork_mpx_video_get_image_path($clip);
       $image_clip = image_style_url('full_episodes_633x356', $image_clip_uri);
       $more_clips[] = array(
-        'videoLabel' => !empty($clip_filter) ? $clip_filter : t('Clip'), //TODO
+        'videoLabel' => !empty($clip_filter) ? $clip_filter : t('Clip'),
         'videoTitle' => $clip->filename,
         'thumbnail' => $image_clip,
         'data' => array(
@@ -1852,11 +1852,13 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
   return $endcard_parameters;
 }
 
-function _usanetwork_mpx_video_get_latest_videos($file, $show = NULL, $full_episode = TRUE, $count = NULL) {
+function _usanetwork_mpx_video_get_latest_videos($show = NULL, $full_episode = TRUE, $count = NULL, $excludes = array()) {
   $query = db_select('mpx_video', 'mpx');
   $query->fields('mpx', array('fid'));
   $query->condition('mpx.status', 1);
-  $query->condition('mpx.fid', $file->fid, '<>');
+  if (!empty($excludes)) {
+    $query->condition('mpx.fid', $excludes, 'NOT IN');
+  }
   $query->innerJoin('field_data_field_mpx_full_episode', 'mfe', 'mfe.entity_id = mpx.fid');
   $query->condition('mfe.field_mpx_full_episode_value', $full_episode ? '1' : '0', '=');
   $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = mpx.fid');

@@ -176,7 +176,7 @@ function _usanetwork_top3_main_block() {
     $advert = render($advert_block['content']);
   }
 
-  $player = _usanetwork_mpx_video_get_player_src(array('player_id' => USA_GLOBAL_PLAYER_ID), 'player');
+  $player = _usanetwork_mpx_video_get_player_src(array('player_id' => USA_GLOBAL_PLAYER_ID, 'pub_mpx_player_parameters' => array('excludeSharing' => 'true')), 'player');
 
   if (!empty($node->body)) {
     $top3_description = strip_tags($node_wrapper->body->value->value());

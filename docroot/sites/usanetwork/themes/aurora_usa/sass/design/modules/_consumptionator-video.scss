@@ -288,6 +288,24 @@
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
           }
+          .geo-error {
+            background-image: url("../images/geo-error.jpeg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            a {
+              display: block;
+              font-size: 0;
+              line-height: 0;
+              height: 100%;
+              width: 100%;
+            }
+          }
           .flash-error {
             background-image: url("../images/flash-error.jpeg");
             background-position: center center;

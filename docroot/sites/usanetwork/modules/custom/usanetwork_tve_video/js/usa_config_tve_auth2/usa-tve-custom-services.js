@@ -5,16 +5,22 @@
   // customs USA services
   ng.module('tve.auth.services')
 
-      .factory('usaFlashError', [
-        '$rootScope',
-        function ($rootScope) {
+      .factory('usaPlayerError', [
+        '$rootScope', 'usaMicrositesService',
+        function ($rootScope, usaMicrositesService) {
 
-          var flashError = '<div class="flash-error"><a href="//get.adobe.com/flashplayer/" target="_blank"></a></div>';
+          var geoError = '<div class="geo-error"><a href="/" target="_blank"></a></div>',
+              flashError = '<div class="flash-error"><a href="//get.adobe.com/flashplayer/" target="_blank"></a></div>';
 
           return {
-            init: function () {
-              var playerContainer = $($rootScope.playerWrap);
-              playerContainer.html(flashError);
+            initGeoRestrictionError: function () {
+              console.info('initGeoRestrictionError');
+              $($rootScope.playerWrap).html(geoError);
+              this.hidePlayerThumbnail();
+            },
+            initFlashError: function () {
+              console.info('initFlashError');
+              $($rootScope.playerWrap).html(flashError);
               this.hidePlayerThumbnail();
             }
           };

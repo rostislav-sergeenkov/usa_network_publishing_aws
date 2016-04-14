@@ -79,7 +79,7 @@
       <?php if (!empty($episodic_galleries)): ?>
       <?php foreach ($episodic_galleries as $ep_gallery): ?>
         <?php if (!empty($ep_gallery['url']) && !empty($ep_gallery['gallery_nid']) && !empty($ep_gallery['title']) && !empty($ep_gallery['cover_img'])): ?>
-        <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>" class="hide<?php if ($gallery['gallery_nid'] == $ep_gallery['gallery_nid']) print ' active'; ?>">
+        <li data-node-id="<?php print $ep_gallery['gallery_nid']; ?>" data-gallery-url="<?php print $ep_gallery['url']; ?>" data-filter-class="" class="hide<?php if ($gallery['gallery_nid'] == $ep_gallery['gallery_nid']) print ' active'; ?>">
           <a href="<?php print $microsite_url; ?>/galleries/<?php print $ep_gallery['url']; ?>">
             <div class="gallery-nav-img"><img src="<?php print $ep_gallery['cover_img']; ?>" alt="<?php print $ep_gallery['title']; ?>">
             </div>
@@ -100,7 +100,7 @@
       <?php if (!empty($character_galleries)): ?>
       <?php foreach ($character_galleries as $char_gallery): ?>
         <?php if (!empty($char_gallery['url']) && !empty($char_gallery['gallery_nid']) && !empty($char_gallery['title']) && !empty($char_gallery['cover_img'])): ?>
-        <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>" class="<?php if ($gallery['gallery_nid'] == $char_gallery['gallery_nid']) print 'active'; ?>">
+        <li data-node-id="<?php print $char_gallery['gallery_nid']; ?>" data-gallery-url="<?php print $char_gallery['url']; ?>" data-filter-class="" class="<?php if ($gallery['gallery_nid'] == $char_gallery['gallery_nid']) print 'active'; ?>">
           <a href="<?php print $microsite_url; ?>/galleries/<?php print $char_gallery['url']; ?>">
             <div class="gallery-nav-img">
               <img src="<?php print $char_gallery['cover_img']; ?>" alt="<?php print $char_gallery['title']; ?>">

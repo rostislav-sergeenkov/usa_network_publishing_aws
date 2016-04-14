@@ -698,43 +698,32 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
       }
     },
 
-    updateVideoToShowOnPageLoad: function(callback){
-      var $activeVideoFilter = $('#videos .filter-menu li.active'),
-          activeVideoFilterName = $activeVideoFilter.attr('data_filter_class');
-      if ($('#thumbnail-list .item-list ul li.thumbnail').length) {
-        usa_debug('updateVideoToShowOnPageLoad() -- activeVideoFilterName: ' + activeVideoFilterName);
-        $('#thumbnail-list .item-list ul li.thumbnail:first').addClass('active');
-
-        if (typeof callback == 'function') callback();
-      }
-      else {
-        setTimeout(function(){
-          Drupal.behaviors.ms_global.updateVideoToShowOnPageLoad();
-        }, 500);
-      }
-    },
-
+/*
     moveFullEpisodesFilterLast: function(callback){
       var $videoFilterList = $('#videos .filter-menu'),
-          firstFilterName = $videoFilterList.find('li:first').attr('data_filter_class'),
-          isFirstFilterFullEpisodes = (firstFilterName == 'full-episodes') ? true : false,
-          numFilters = $videoFilterList.find('li').length,
-          isVideoItemInUrl = (Drupal.behaviors.ms_global.parseUrl()['item'] != '') ? true : false;
+          fullEpsFilterClassName = 'full-episodes',
+          $fullEpsFilter = $videoFilterList.find('li[data_filter_class=' + fullEpsFilterClassName + ']');
 
-      usa_debug('moveFullEpisodesFilterLast() -- numFilters: ' + numFilters + ', isVideoItemInUrl: ' + isVideoItemInUrl);
-      if (isFirstFilterFullEpisodes) {
-        var $firstFilter = $videoFilterList.find('li:first'),
+      // if there is a full episode video filter,
+      // move it so it's last
+      if ($fullEpsFilter.length) {
+        var numFilters = $videoFilterList.find('li').length,
+            isVideoItemInUrl = (Drupal.behaviors.ms_global.parseUrl()['item'] != '') ? true : false,
             $lastFilter = $videoFilterList.find('li:last');
-        $('#videos .filter-menu li').removeClass('first last');
-        $lastFilter.after($firstFilter);
+
+        usa_debug('moveFullEpisodesFilterLast() -- numFilters: ' + numFilters + ', isVideoItemInUrl: ' + isVideoItemInUrl);
+
+        $videoFilterList.find('li').removeClass('first last');
+        $lastFilter.after($fullEpsFilter);
         $videoFilterList.find('li:eq(0)').addClass('first');
         $videoFilterList.find('li:eq(' + (numFilters - 1) + ')').addClass('last');
 
+        // if no video is specified in the url,
+        // load the first video listed in the first video filter
         if (!isVideoItemInUrl) {
           var $videoThumbnails = $('#thumbnail-list .item-list ul li.thumbnail');
 
-          $('#videos .filter-menu li').removeClass('active');
-//          $videoThumbnails.removeClass('active');
+          $videoFilterList.find('li').removeClass('active');
           $videoThumbnails.remove();
           $videoFilterList.find('li:first').click();
 
@@ -742,6 +731,13 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
 //          if (typeof callback == 'function') callback();
         }
       }
+    },
+*/
+    showVideoSection() {
+      $('#video-loader').animate({'opacity': 0}, 500, function(){
+        $(this).css('display', 'none');
+        $('#microsite #videos .full-pane, #microsite #videos .filter-wrapper').animate({'opacity': 1}, 500);
+      });
     },
 
     attach: function (context, settings) {
@@ -814,18 +810,28 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
         if ($('#videos').length > 0) {
           Drupal.behaviors.ms_videos.setVideoHeight();
 
-          self.moveFullEpisodesFilterLast(function(){
-            setTimeout(function(){
+          // put video filter text in <p>
+          // this is to allow vertical alignment of single and multiple row text
+          Drupal.behaviors.ms_videos.placeVideoFiltersInParagraphs();
+
+//          self.moveFullEpisodesFilterLast(function(){
+//            setTimeout(function(){
               $('#video-container').addClass('active');
               var urlParts = self.parseUrl(window.location.href); // history.state['path']);
               if (urlParts['section'] == 'videos' && urlParts['item']) {
-                Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, null, true);
+                Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, null, true, self.showVideoSection);
+//                self.moveFullEpisodesFilterLast();
+                  // designers want video filters in a certain order
+                  Drupal.behaviors.ms_videos.setVideoFilterOrder();
               }
               else {
-                Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('false', null, null, true);
+//                self.moveFullEpisodesFilterLast(function(){
+                Drupal.behaviors.ms_videos.setVideoFilterOrder(true, function(){
+                  Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('false', null, null, true, self.showVideoSection);
+                });
               }
-            }, 1000);
-          });
+//            }, 1000);
+//          });
         }
 
         // TIME OUT

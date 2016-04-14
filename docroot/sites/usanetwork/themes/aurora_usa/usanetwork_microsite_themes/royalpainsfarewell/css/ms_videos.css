@@ -7,8 +7,9 @@
 #microsite #videos .full-pane {
   width: 80vw;
   height: calc(100% - 161px - 126px);
-  margin-top: 20px;
+  margin-top: 6px;
   box-sizing: border-box;
+  opacity: 0;
 }
 #videos .left-pane {
   float: left;
@@ -186,6 +187,7 @@
 }
 
 /* VIDEO CONTAINER */
+/*
 #video-container .active-player .custom-play {
   background-image: url("../images/icons/playOverlay.png");
   background-repeat: no-repeat;
@@ -201,6 +203,7 @@
   width: 100px;
   z-index: 1;
 }
+*/
 /* corrected player style */
 .video-auth-player-wrapper {
   display: none;
@@ -310,6 +313,7 @@
   margin: 0 auto;
   width: 80%;
   max-width: 1300px;
+  opacity: 0;
 }
 #video-filter {
   width: 100%;
@@ -326,11 +330,11 @@
 #video-filter li.filter-item {
   float: left;
   width: 31.3%;
-  margin: 1% 1% 0 0;
+  margin: 1% 1% 1% 0;
   padding: 0;
   font-size: 26px;
   line-height: 1.2;
-  height: 38px;
+  height: initial;
   color: #55452A;
   text-transform: uppercase;
   text-decoration: none;
@@ -344,10 +348,15 @@
 #video-filter li.filter-item p {
   display: table-cell;
   vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
+/*
 #microsite #video-filter li.filter-item:nth-child(even) {
   margin-right: 0;
 }
+*/
 #video-filter li.filter-item:hover,
 #video-filter li.filter-item.active {
   text-decoration: underline;
@@ -495,6 +504,29 @@
   text-decoration: none;
 }
 
+/* LOADER */
+#video-loader {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 80vw;
+  height: 60vw;
+  margin: 0 0 0 10vw;
+}
+#video-loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/images/ajax-loader.gif');
+  background-repeat: no-repeat;
+  background-size: 36px 36px;
+  background-position: center;
+  opacity: 1;
+}
+
 /* BEGIN MEDIA BREAKPOINTS */
 @media (min-width: 1780px) {
   #microsite #videos .expandable-toggle-wrap {
@@ -631,7 +663,9 @@
 
 @media (max-width: 1072px) {
   #video-filter li.filter-item {
-    font-size: 20px;
+    font-size: 14px;
+    width: initial;
+    margin-right: 7%;
   }
 }
 

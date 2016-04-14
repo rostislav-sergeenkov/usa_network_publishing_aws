@@ -51,7 +51,7 @@ endif;
                   </li>
                   <?php endif; ?>
 
-                  <?php if ($sectionNav['type'] == 'timeline'): // add social nav ?>
+                  <?php if ($sectionNav['type'] == 'timeline' && array_key_exists('games', $sections)): // add social nav ?>
                   <li id="nav-social" class="internal social<?php print ('social' == $current_section) ? ' active' : '' ?>" data-menuanchor="social">
                     <a href="#" data-menuitem="4" class="scroll-link">Social</a>
                   </li>
@@ -84,12 +84,7 @@ endif;
                 </li>
                 <?php endif; ?>
 
-                <?php /* if ($sectionNav['type'] == 'videos'): // add must see moments nav ?>
-                <li id="mobile-nav-must-see-moments" class="internal mobile must-see-moments<?php print ('must-see-moments' == $current_section) ? ' active' : '' ?>" data-menuanchor="must-see-moments">
-                  <a href="#" data-menuitem="2" class="scroll-link">must see moments</a>
-                </li>
-                <?php endif; */ ?>
-                <?php if ($sectionNav['type'] == 'timeline'): // add social nav ?>
+                <?php if ($sectionNav['type'] == 'timeline' && array_key_exists('games', $sections)): // add social nav ?>
                 <li id="mobile-nav-social" class="internal mobile social<?php print ('social' == $current_section) ? ' active' : '' ?>" data-menuanchor="social">
                   <a href="#" data-menuitem="4" class="scroll-link">Social</a>
                 </li>
@@ -121,7 +116,7 @@ endif;
             <?php endif; ?>
           </section>
         </div>
-        <?php if ($section['type'] == 'timeline'): ?>
+        <?php if ($section['type'] == 'timeline' && array_key_exists('games', $sections)): ?>
           <div id="social" class="section">
             <a name="social"></a>
             <section id="social-content" class="clearfix fadein fadein-1s fadein-delay-1s">

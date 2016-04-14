@@ -42,6 +42,82 @@
       tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
     },
 
+    updateVideoToShowOnPageLoad: function(callback){
+      var $activeVideoFilter = $('#videos .filter-menu li.active'),
+          activeVideoFilterName = $activeVideoFilter.attr('data_filter_class'),
+          $thumbnailList = $('#thumbnail-list .item-list ul');
+      if ($thumbnailList.find('li.thumbnail').length) {
+        usa_debug('updateVideoToShowOnPageLoad() -- activeVideoFilterName: ' + activeVideoFilterName);
+        $thumbnailList.find('li.thumbnail:first').addClass('active');
+
+        if (typeof callback == 'function') callback();
+      }
+      else {
+        setTimeout(function(){
+          Drupal.behaviors.ms_videos.updateVideoToShowOnPageLoad(callback);
+        }, 500);
+      }
+    },
+
+    setVideoFilterOrder: function(switchInitialVideo, callback) {
+      var desiredVideoFilterOrder = ['cast-interviews', 'season-recaps', 'favorite-moments', 'behind-the-scenes', 'full-episodes'];
+      switchInitialVideo = switchInitialVideo || false;
+
+      usa_debug('setVideoFilterOrder(' + switchInitialVideo + ')');
+
+      var mylist = $('#videos ul.filter-menu');
+      var listitems = mylist.children('li').get();
+      function reinitializeClicks() {
+        // initialize video filter sub-item clicks
+        $('#video-filter .filter-child-item').click(function () {
+          Drupal.behaviors.ms_videos.processSubMenuClick($(this));
+        });
+      }
+      function setLastClass() {
+        mylist.find('.last').removeClass('last');
+        mylist.find('li:last').addClass('last');
+        reinitializeClicks();
+      }
+      listitems.sort(function(a, b) {
+        //usa_debug('setVideoFilterOrder listitems.sort(a, b)');
+        //usa_debug(a);
+        //usa_debug(b);
+        var aFilterClass = $(a).attr('data_filter_class'),
+            bFilterClass = $(b).attr('data_filter_class'),
+            aPos = desiredVideoFilterOrder.indexOf(aFilterClass),
+            bPos = desiredVideoFilterOrder.indexOf(bFilterClass);
+        //usa_debug('setVideoFilterOrder() aPos: ' + aPos + ', bPos: ' + bPos);
+        return (aPos > bPos) ? 1 : -1;
+      })
+      var listitemsCount = 0;
+      var listitemsNum = listitems.length;
+      $.each(listitems, function(idx, itm) {
+        mylist.append(itm);
+        listitemsCount++;
+        if (listitemsCount == listitemsNum) setLastClass();
+      });
+
+      if (switchInitialVideo) {
+        var $videoFilterList = $('#videos .filter-menu'),
+            $videoThumbnails = $('#thumbnail-list .item-list ul li.thumbnail');
+
+        $videoFilterList.find('li').removeClass('active');
+        $videoThumbnails.remove();
+        $videoFilterList.find('li:first').click();
+
+        Drupal.behaviors.ms_videos.updateVideoToShowOnPageLoad(callback);
+      }
+
+      if (typeof callback == 'function') callback();
+    },
+
+    placeVideoFiltersInParagraphs: function() {
+      $('#videos #video-filter ul.filter-menu li').each(function(){
+        var html = $(this).html();
+        $(this).html('<p>' + html + '</p>');
+      });
+    },
+
     //ajax request
     micrositeGetVideo: function (url, initialPageLoad) {
       initialPageLoad = initialPageLoad || 0;
@@ -97,7 +173,7 @@
     },
 
     // set video player on click thumbnail
-    micrositeSetVideoPlayer: function (autoplay, selector, data, initialPageLoad) {
+    micrositeSetVideoPlayer: function (autoplay, selector, data, initialPageLoad, callback) {
       initialPageLoad = initialPageLoad || 0;
       var autoplay = autoplay || false,
           selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active',
@@ -114,6 +190,8 @@
           filter,
           url,
           msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
+
+      usa_debug('micrositeSetVideoPlayer(' + autoplay + ', ' + selector + ', ' + data + ', ' + initialPageLoad + ')');
 
       // if there is no '#videos .ad_728x90' element,
       // but there is an '.ad-leaderboard' element,
@@ -209,6 +287,8 @@
       if (checkAjaxUrl()) {
         Drupal.behaviors.ms_videos.micrositeGetVideo(url, initialPageLoad);
       }
+
+      if (typeof callback == 'function') setTimeout(callback, 2000);
     },
 
     // SetPausePlayer

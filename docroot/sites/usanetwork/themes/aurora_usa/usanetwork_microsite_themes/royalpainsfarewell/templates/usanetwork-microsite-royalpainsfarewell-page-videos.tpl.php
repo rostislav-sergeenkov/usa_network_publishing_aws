@@ -156,4 +156,5 @@
   </div>
 </div>
 
+<div id="video-loader"></div>
 <? /* ?><div id="ms-videos-leaderboard-ad" class="midbanner ad-leaderboard ad_728x90"></div><? */ ?>

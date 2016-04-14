@@ -46,6 +46,11 @@ body {
         z-index: 10000!important;
       }
     }
+    #chosen-player {
+      & ~ div {
+        display: none!important;
+      }
+    }
     #sections {
       & ~ div {
         display: none!important;

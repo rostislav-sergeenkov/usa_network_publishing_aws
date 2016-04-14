@@ -797,8 +797,6 @@
                 console.info('checkFlashVersion');
                 usaPlayerError.initFlashError();
               }
-              console.info('checkFlashVersion');
-              usaPlayerError.initFlashError();
             }
 
             // // checking the existence of swfobject plugin and getting Flash version

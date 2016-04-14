@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -14912,6 +14912,24 @@ footer h2 {
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player.show-section, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player.show-section {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .geo-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .geo-error {
+  background-image: url("../images/geo-error.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .geo-error a, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .geo-error a {
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  height: 100%;
+  width: 100%;
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .flash-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .flash-error {
   background-image: url("../images/flash-error.jpeg");

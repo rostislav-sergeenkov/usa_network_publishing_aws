@@ -110,11 +110,11 @@
       .directive('usaTvePlayerContainer', [
         '$rootScope',
         'authService', 'tveAuthConfig', 'tveConfig', 'helper', 'tveModal', '$timeout', '$http', '$sce', '$cookies',
-        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService', 'usaFlashError',
+        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService', 'usaPlayerError',
 
         function ($rootScope,
                   authService, tveAuthConfig, tveConfig, helper, tveModal, $timeout, $http, $sce, $cookies,
-                  usaEndCardService, usaEndCardHelper, usaMicrositesService, usaFlashError) {
+                  usaEndCardService, usaEndCardHelper, usaMicrositesService, usaPlayerError) {
           return {
             scope: true,
             controller: ['$scope', function ($scope) {
@@ -163,7 +163,7 @@
                 return;
               }
 
-              usaFlashError.hidePlayerThumbnail = hidePlayerThumbnail;
+              usaPlayerError.hidePlayerThumbnail = hidePlayerThumbnail;
 
               // show dart
               $rootScope.isDartReq = true;
@@ -290,7 +290,7 @@
 
                 // default listeners for player
                 $pdk.controller.addEventListener('auth_success', _authSuccess);
-                $pdk.controller.addEventListener('auth_token_failed', _authzFailure);
+                // $pdk.controller.addEventListener('auth_token_failed', _authzFailure);
                 $pdk.controller.addEventListener('companion_ad', _companionAd);
                 $pdk.controller.addEventListener('OnShowProviderPicker', _showPicker);
                 $pdk.controller.addEventListener('OnPlayerLoaded', _onPlayerLoaded);
@@ -310,15 +310,6 @@
                   });
 
                   initAutoPlay();
-                });
-
-                $pdk.controller.addEventListener("OnShareControlInvoked", function (e) {
-                  console.info("OnShareControlInvoked");
-                });
-
-                $pdk.controller.addEventListener("OnShareOptionInvoked", function (e) {
-                  console.info("OnShareOptionInvoked");
-                  console.info(e.data);
                 });
 
                 // end card events
@@ -421,6 +412,7 @@
 
                 if (isMicrosite) {
                   if (scope.statusSetToken) {
+                    console.info('initAutoPlay mc');
                     hidePlayerThumbnail();
                   }
                   if (isEntitlement && !usaMicrositesService.isVideoFirstRun) {
@@ -456,9 +448,13 @@
               }
 
               function _onReleaseError(pdkEvent) {
-                console.info('_onReleaseError', pdkEvent);
-                if (scope.playerThumbnail) {
-                  hidePlayerThumbnail();
+                console.info('_onReleaseError');
+                if (pdkEvent.data.exception == "GeoLocationBlocked") {
+                  usaPlayerError.initGeoRestrictionError();
+                } else {
+                  if (scope.playerThumbnail) {
+                    hidePlayerThumbnail();
+                  }
                 }
               }
 

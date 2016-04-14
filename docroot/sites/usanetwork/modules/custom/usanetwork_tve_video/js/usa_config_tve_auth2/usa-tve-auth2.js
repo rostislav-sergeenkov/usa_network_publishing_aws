@@ -102,6 +102,10 @@
             lastPathArg: lastPathArg,
             deviceTypes: deviceTypes,
 
+            isHTML5 : {
+              videoautoplay: modernizr.videoautoplay
+            },
+
             device: {
               touch: modernizr.touch,
               isSurface: isWinSurface,
@@ -732,8 +736,8 @@
       ])
       .run([
         '$rootScope',
-        'tveErrorHandler', 'helper', 'tveAuthConfig', 'authService', 'tveModal',
-        function($rootScope, tveErrorHandler, helper, tveAuthConfig, authService, tveModal) {
+        'tveErrorHandler', 'helper', 'tveAuthConfig', 'authService', 'tveModal', 'usaFlashError',
+        function($rootScope, tveErrorHandler, helper, tveAuthConfig, authService, tveModal, usaFlashError) {
           var YEAR_DAYS = 365,
               MS_IN_HOUR = 3600000,
               previewStep = helper.getURLParameter('preview_step'),
@@ -785,12 +789,20 @@
             }
 
             var swfobject = window['swfobject'],
-                version = tveAuthConfig.MIN_FLASH_VERSION;
+                version = tveAuthConfig.MIN_FLASH_VERSION,
+                isFullEpisode = $rootScope.isFullEpisode;
 
-            // checking the existence of swfobject plugin and getting Flash version
             if (swfobject && !swfobject.hasFlashPlayerVersion(version)) {
-              tveErrorHandler.showErrorMessage(tveErrorHandler.errors.FLASH);
+              if (isFullEpisode) {
+                console.info('checkFlashVersion');
+                usaFlashError.init();
+              }
             }
+
+            // // checking the existence of swfobject plugin and getting Flash version
+            // if (swfobject && !swfobject.hasFlashPlayerVersion(version)) {
+            //   tveErrorHandler.showErrorMessage(tveErrorHandler.errors.FLASH);
+            // }
           }
 
           function trackFirstVisit() {

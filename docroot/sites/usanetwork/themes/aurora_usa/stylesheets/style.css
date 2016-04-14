@@ -14881,6 +14881,24 @@ footer h2 {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .flash-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .flash-error {
+  background-image: url("../images/flash-error.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .flash-error a, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .flash-error a {
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  height: 100%;
+  width: 100%;
+}
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .player-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .player-error {
   position: absolute;
   left: 50%;

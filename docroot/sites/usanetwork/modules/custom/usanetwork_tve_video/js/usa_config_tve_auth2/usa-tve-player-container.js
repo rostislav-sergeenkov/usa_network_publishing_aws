@@ -33,10 +33,11 @@
                     statusPromise = false,
                     frame = $(element).find('iframe').eq(0);
 
+                $rootScope.playerWrap = element;
+                $rootScope.playerId = attr['id'];
+                
                 scope.id = config.id;
-
-                controller.playerWrap(element);
-                controller.playerId(attr['id']);
+                
 
                 authService.promise.then(function (status) {
 
@@ -109,11 +110,11 @@
       .directive('usaTvePlayerContainer', [
         '$rootScope',
         'authService', 'tveAuthConfig', 'tveConfig', 'helper', 'tveModal', '$timeout', '$http', '$sce', '$cookies',
-        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService',
+        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService', 'usaFlashError',
 
         function ($rootScope,
                   authService, tveAuthConfig, tveConfig, helper, tveModal, $timeout, $http, $sce, $cookies,
-                  usaEndCardService, usaEndCardHelper, usaMicrositesService) {
+                  usaEndCardService, usaEndCardHelper, usaMicrositesService, usaFlashError) {
           return {
             scope: true,
             controller: ['$scope', function ($scope) {
@@ -122,12 +123,6 @@
               };
               this._bindPlayerEvents = function () {
                 $scope._bindPlayerEvents();
-              };
-              this.playerWrap = function (elem) {
-                return $scope.playerWrap = elem;
-              };
-              this.playerId = function (playerId) {
-                return $scope.playerId = playerId;
               };
             }],
             link: function (scope, element, attr) {
@@ -149,14 +144,15 @@
               isFullEpisode = parseInt(attr['isFullEpisode']) === 1 ? true : false;
               isShowEndCard = parseInt(attr['showEndCard']) === 1 ? true : false;
               isMicrosite = usaMicrositesService.isMicrosite;
-              playerWrap = scope.playerWrap;
-              playerId = scope.playerId;
               endCardMetaData = Drupal.settings.short_endcard;
 
               isAdStart = false;
               nextReleaseUrl = attr['nextReleaseUrl'];
               usaVideoSettingsRun = false;
               positionTime = Drupal.settings.videoSetTime; // seconds
+
+              playerWrap = $rootScope.playerWrap;
+              playerId = $rootScope.playerId;
 
               // stop & retun if livePlayer = 1 (true);
               if (isLive) {
@@ -167,11 +163,13 @@
                 return;
               }
 
+              usaFlashError.hidePlayerThumbnail = hidePlayerThumbnail;
+
               // show dart
               $rootScope.isDartReq = true;
               $rootScope.statusAd = false;
-
-              scope.isFullEpisode = isFullEpisode;
+              $rootScope.isFullEpisode = isFullEpisode;
+              
               scope.isEntitled = isEntitlement;
               scope.isMobile = helper.device.isMobile;
               scope.showCompanionAdd = false;

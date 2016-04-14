@@ -1752,10 +1752,10 @@ function setupModuleLoader(window) {
 /* global
     angularModule: true,
     version: true,
-    
+
     $LocaleProvider,
     $CompileProvider,
-    
+
     htmlAnchorDirective,
     inputDirective,
     inputDirective,
@@ -3297,7 +3297,7 @@ function annotate(fn) {
  *
  *   - `Object`: then it should have a `$get` method. The `$get` method will be invoked using
  *     {@link AUTO.$injector#invoke $injector.invoke()} when an instance needs to be created.
- *   - `Constructor`: a new instance of the provider will be created using                     
+ *   - `Constructor`: a new instance of the provider will be created using
  *     {@link AUTO.$injector#instantiate $injector.instantiate()}, then treated as `object`.
  *
  * @returns {Object} registered provider instance
@@ -3427,9 +3427,9 @@ function annotate(fn) {
  *   var Ping = function($http) {
  *     this.$http = $http;
  *   };
- * 
+ *
  *   Ping.$inject = ['$http'];
- *   
+ *
  *   Ping.prototype.send = function() {
  *     return this.$http.get('/ping');
  *   };
@@ -3762,7 +3762,7 @@ function createInjector(modulesToLoad) {
  *
  * It also watches the `$location.hash()` and scrolls whenever it changes to match any anchor.
  * This can be disabled by calling `$anchorScrollProvider.disableAutoScrolling()`.
- * 
+ *
  * @example
    <example>
      <file name="index.html">
@@ -3777,7 +3777,7 @@ function createInjector(modulesToLoad) {
            // set the location.hash to the id of
            // the element you wish to scroll to.
            $location.hash('bottom');
-           
+
            // call $anchorScroll()
            $anchorScroll();
          }
@@ -3865,7 +3865,7 @@ var $animateMinErr = minErr('$animate');
  */
 var $AnimateProvider = ['$provide', function($provide) {
 
-  
+
   this.$$selectors = {};
 
 
@@ -4006,7 +4006,7 @@ var $AnimateProvider = ['$provide', function($provide) {
        * @description Moves the position of the provided element within the DOM to be placed
        * either after the `after` element or inside of the `parent` element. Once complete, the
        * done() callback will be fired (if provided).
-       * 
+       *
        * @param {jQuery/jqLite element} element the element which will be moved around within the
        *   DOM
        * @param {jQuery/jqLite element} parent the parent element where the element will be
@@ -4494,9 +4494,9 @@ function $BrowserProvider(){
  *
  * @description
  * Factory that constructs cache objects and gives access to them.
- * 
+ *
  * <pre>
- * 
+ *
  *  var cache = $cacheFactory('cacheId');
  *  expect($cacheFactory.get('cacheId')).toBe(cache);
  *  expect($cacheFactory.get('noSuchCacheId')).not.toBeDefined();
@@ -4505,8 +4505,8 @@ function $BrowserProvider(){
  *  cache.put("another key", "another value");
  *
  *  // We've specified no options on creation
- *  expect(cache.info()).toEqual({id: 'cacheId', size: 2}); 
- * 
+ *  expect(cache.info()).toEqual({id: 'cacheId', size: 2});
+ *
  * </pre>
  *
  *
@@ -4689,7 +4689,7 @@ function $CacheFactoryProvider() {
  * The first time a template is used, it is loaded in the template cache for quick retrieval. You
  * can load templates directly into the cache in a `script` tag, or by consuming the
  * `$templateCache` service directly.
- * 
+ *
  * Adding via the `script` tag:
  * <pre>
  * <html ng-app>
@@ -4701,29 +4701,29 @@ function $CacheFactoryProvider() {
  *   ...
  * </html>
  * </pre>
- * 
+ *
  * **Note:** the `script` tag containing the template does not need to be included in the `head` of
  * the document, but it must be below the `ng-app` definition.
- * 
+ *
  * Adding via the $templateCache service:
- * 
+ *
  * <pre>
  * var myApp = angular.module('myApp', []);
  * myApp.run(function($templateCache) {
  *   $templateCache.put('templateId.html', 'This is the content of the template');
  * });
  * </pre>
- * 
+ *
  * To retrieve the template later, simply use it in your HTML:
  * <pre>
  * <div ng-include=" 'templateId.html' "></div>
  * </pre>
- * 
+ *
  * or get it via Javascript:
  * <pre>
  * $templateCache.get('templateId.html')
  * </pre>
- * 
+ *
  * See {@link ng.$cacheFactory $cacheFactory}.
  *
  */
@@ -6888,12 +6888,12 @@ function $DocumentProvider(){
  * Any uncaught exception in angular expressions is delegated to this service.
  * The default implementation simply delegates to `$log.error` which logs it into
  * the browser console.
- * 
+ *
  * In unit tests, if `angular-mocks.js` is loaded, this service is overridden by
  * {@link ngMock.$exceptionHandler mock $exceptionHandler} which aids in testing.
  *
  * ## Example:
- * 
+ *
  * <pre>
  *   angular.module('exceptionOverride', []).factory('$exceptionHandler', function () {
  *     return function (exception, cause) {
@@ -6902,7 +6902,7 @@ function $DocumentProvider(){
  *     };
  *   });
  * </pre>
- * 
+ *
  * This example will override the normal action of `$exceptionHandler`, to make angular
  * exceptions fail hard when they happen, instead of just logging to the console.
  *
@@ -8071,7 +8071,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
           // WebKit added support for the json responseType value on 09/03/2013
           // https://bugs.webkit.org/show_bug.cgi?id=73648. Versions of Safari prior to 7 are
           // known to throw when setting the value "json" as the response type. Other older
-          // browsers implementing the responseType 
+          // browsers implementing the responseType
           //
           // The json response type can be ignored if not supported, because JSON payloads are
           // parsed on the client-side regardless.
@@ -9357,7 +9357,7 @@ function $LocationProvider(){
  * @description
  * Simple service for logging. Default implementation safely writes the message
  * into the browser's console (if present).
- * 
+ *
  * The main purpose of this service is to simplify debugging and troubleshooting.
  *
  * The default is to log `debug` messages. You can use
@@ -9394,7 +9394,7 @@ function $LocationProvider(){
 function $LogProvider(){
   var debug = true,
       self = this;
-  
+
   /**
    * @ngdoc property
    * @name ng.$logProvider#debugEnabled
@@ -9411,7 +9411,7 @@ function $LogProvider(){
       return debug;
     }
   };
-  
+
   this.$get = ['$window', function($window){
     return {
       /**
@@ -9453,12 +9453,12 @@ function $LogProvider(){
        * Write an error message
        */
       error: consoleLog('error'),
-      
+
       /**
        * @ngdoc method
        * @name ng.$log#debug
        * @methodOf ng.$log
-       * 
+       *
        * @description
        * Write a debug message
        */
@@ -10801,7 +10801,7 @@ function $ParseProvider() {
  * <pre>
  *   // for the purpose of this example let's assume that variables `$q`, `scope` and `okToGreet`
  *   // are available in the current lexical scope (they could have been injected or passed in).
- * 
+ *
  *   function asyncGreet(name) {
  *     var deferred = $q.defer();
  *
@@ -12916,7 +12916,7 @@ function $SceDelegateProvider() {
  * allowing only the files in a specific directory to do this.  Ensuring that the internal API
  * exposed by that code doesn't markup arbitrary values as safe then becomes a more manageable task.
  *
- * In the case of AngularJS' SCE service, one uses {@link ng.$sce#methods_trustAs $sce.trustAs} 
+ * In the case of AngularJS' SCE service, one uses {@link ng.$sce#methods_trustAs $sce.trustAs}
  * (and shorthand methods such as {@link ng.$sce#methods_trustAsHtml $sce.trustAsHtml}, etc.) to
  * obtain values that will be accepted by SCE / privileged contexts.
  *
@@ -13667,7 +13667,7 @@ function $TimeoutProvider() {
       *   will invoke `fn` within the {@link ng.$rootScope.Scope#methods_$apply $apply} block.
       * @returns {Promise} Promise that will be resolved when the timeout is reached. The value this
       *   promise will be resolved with is the return value of the `fn` function.
-      * 
+      *
       */
     function timeout(fn, delay, invokeApply) {
       var deferred = $q.defer(),
@@ -13901,7 +13901,7 @@ function $WindowProvider(){
  *
  * The filter function is registered with the `$injector` under the filter name suffix with
  * `Filter`.
- * 
+ *
  * <pre>
  *   it('should be the same instance', inject(
  *     function($filterProvider) {
@@ -13977,7 +13977,7 @@ function $FilterProvider($provide) {
   }];
 
   ////////////////////////////////////////
-  
+
   /* global
     currencyFilter: false,
     dateFilter: false,
@@ -14713,9 +14713,9 @@ var uppercaseFilter = valueFn(uppercase);
  * the value and sign (positive or negative) of `limit`.
  *
  * @param {Array|string} input Source array or string to be limited.
- * @param {string|number} limit The length of the returned array or string. If the `limit` number 
+ * @param {string|number} limit The length of the returned array or string. If the `limit` number
  *     is positive, `limit` number of items from the beginning of the source array/string are copied.
- *     If the number is negative, `limit` number  of items from the end of the source array/string 
+ *     If the number is negative, `limit` number  of items from the end of the source array/string
  *     are copied. The `limit` will be trimmed if it exceeds `array.length`
  * @returns {Array|string} A new sub-array or substring of length `limit` or less if input array
  *     had less than `limit` elements.
@@ -14774,7 +14774,7 @@ var uppercaseFilter = valueFn(uppercase);
 function limitToFilter(){
   return function(input, limit) {
     if (!isArray(input) && !isString(input)) return input;
-    
+
     limit = int(limit);
 
     if (isString(input)) {
@@ -15165,7 +15165,7 @@ var htmlAnchorDirective = valueFn({
     </doc:example>
  *
  * @element INPUT
- * @param {expression} ngDisabled If the {@link guide/expression expression} is truthy, 
+ * @param {expression} ngDisabled If the {@link guide/expression expression} is truthy,
  *     then special attribute "disabled" will be set on the element
  */
 
@@ -15200,7 +15200,7 @@ var htmlAnchorDirective = valueFn({
     </doc:example>
  *
  * @element INPUT
- * @param {expression} ngChecked If the {@link guide/expression expression} is truthy, 
+ * @param {expression} ngChecked If the {@link guide/expression expression} is truthy,
  *     then special attribute "checked" will be set on the element
  */
 
@@ -15235,7 +15235,7 @@ var htmlAnchorDirective = valueFn({
     </doc:example>
  *
  * @element INPUT
- * @param {expression} ngReadonly If the {@link guide/expression expression} is truthy, 
+ * @param {expression} ngReadonly If the {@link guide/expression expression} is truthy,
  *     then special attribute "readonly" will be set on the element
  */
 
@@ -15254,7 +15254,7 @@ var htmlAnchorDirective = valueFn({
  * The `ngSelected` directive solves this problem for the `selected` atttribute.
  * This complementary directive is not removed by the browser and so provides
  * a permanent reliable place to store the binding information.
- * 
+ *
  * @example
     <doc:example>
       <doc:source>
@@ -15274,7 +15274,7 @@ var htmlAnchorDirective = valueFn({
     </doc:example>
  *
  * @element OPTION
- * @param {expression} ngSelected If the {@link guide/expression expression} is truthy, 
+ * @param {expression} ngSelected If the {@link guide/expression expression} is truthy,
  *     then special attribute "selected" will be set on the element
  */
 
@@ -15310,7 +15310,7 @@ var htmlAnchorDirective = valueFn({
      </doc:example>
  *
  * @element DETAILS
- * @param {expression} ngOpen If the {@link guide/expression expression} is truthy, 
+ * @param {expression} ngOpen If the {@link guide/expression expression} is truthy,
  *     then special attribute "open" will be set on the element
  */
 
@@ -15396,7 +15396,7 @@ var nullFormCtrl = {
  *  - `pattern`
  *  - `required`
  *  - `url`
- * 
+ *
  * @description
  * `FormController` keeps track of all its controls and nested forms as well as state of them,
  * such as being valid/invalid or dirty/pristine.
@@ -16043,7 +16043,7 @@ var inputType = {
           var text = element(by.binding('text'));
           var valid = element(by.binding('myForm.input.$valid'));
           var input = element(by.model('text'));
-          
+
           it('should initialize to model', function() {
             expect(text.getText()).toContain('me@example.com');
             expect(valid.getText()).toContain('true');
@@ -16157,7 +16157,7 @@ var inputType = {
 
             expect(value1.getText()).toContain('true');
             expect(value2.getText()).toContain('YES');
-            
+
             element(by.model('value1')).click();
             element(by.model('value2')).click();
 
@@ -16772,7 +16772,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * You can override this for input directives whose concept of being empty is different to the
    * default. The `checkboxInputType` directive does this because in its case a value of `false`
    * implies empty.
-   * 
+   *
    * @param {*} value Reference to check.
    * @returns {boolean} True if `value` is empty.
    */
@@ -17403,14 +17403,14 @@ var ngBindTemplateDirective = ['$interpolate', function($interpolate) {
  *
  * @example
    Try it here: enter text in text box and watch the greeting change.
- 
+
    <example module="ngBindHtmlExample" deps="angular-sanitize.js">
      <file name="index.html">
        <div ng-controller="ngBindHtmlCtrl">
         <p ng-bind-html="myHTML"></p>
        </div>
      </file>
-     
+
      <file name="script.js">
        angular.module('ngBindHtmlExample', ['ngSanitize'])
 
@@ -19613,7 +19613,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
  * **Note:** Here is a list of values that ngShow will consider as a falsy value (case insensitive):<br />
  * "f" / "0" / "false" / "no" / "n" / "[]"
  * </div>
- * 
+ *
  * ## A note about animations with ngShow
  *
  * Animations in ngShow/ngHide work with the show and hide events that are triggered when the directive expression
@@ -19765,7 +19765,7 @@ var ngShowDirective = ['$animate', function($animate) {
  * </pre>
  *
  * Just remember to include the important flag so the CSS override will function.
- * 
+ *
  * <div class="alert alert-warning">
  * **Note:** Here is a list of values that ngHide will consider as a falsy value (case insensitive):<br />
  * "f" / "0" / "false" / "no" / "n" / "[]"
@@ -20170,7 +20170,7 @@ var ngTranscludeDirective = ngDirective({
        'Element: {0}',
        startingTag($element));
     }
-    
+
     $transclude(function(clone) {
       $element.empty();
       $element.append(clone);
@@ -22483,7 +22483,7 @@ angular.module('ngAnimate', ['ng'])
  *
  * # ngCookies
  *
- * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies. 
+ * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies.
  *
  * {@installModule cookies}
  *
@@ -23317,7 +23317,7 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
  * # ngTouch
  *
  * The `ngTouch` module provides touch events and other helpers for touch-enabled devices.
- * The implementation is based on jQuery Mobile touch event handling 
+ * The implementation is based on jQuery Mobile touch event handling
  * ([jquerymobile.com](http://jquerymobile.com/)).
  *
  * {@installModule touch}
@@ -24350,7 +24350,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 // This plugin is tested on the browsers below and has been found to work reliably on them. If you run
 // into a problem on one of the supported browsers then please visit the support section on the jScrollPane
 // website (http://jscrollpane.kelvinluck.com/) for more information on getting support. You are also
-// welcome to fork the project on GitHub if you can contribute a fix for a given issue. 
+// welcome to fork the project on GitHub if you can contribute a fix for a given issue.
 //
 // jQuery Versions - tested in 1.4.2+ - reported to work in 1.3.x
 // Browsers Tested - Firefox 3.6.8, Safari 5, Opera 10.6, Chrome 5.0, IE 6, 7, 8
@@ -24423,7 +24423,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 					paneHeight = elem.innerHeight();
 
 					elem.width(paneWidth);
-					
+
 					pane = $('<div class="jspPane" />').css('padding', originalPadding).append(elem.children());
 					container = $('<div class="jspContainer" />')
 						.css({
@@ -24434,7 +24434,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 
 					/*
 					// Move any margins from the first and last children up to the container so they can still
-					// collapse with neighbouring elements as they would before jScrollPane 
+					// collapse with neighbouring elements as they would before jScrollPane
 					firstChild = pane.find(':first-child');
 					lastChild = pane.find(':last-child');
 					elem.css(
@@ -24469,7 +24469,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 						return;
 					}
 					previousContentWidth = contentWidth;
-					
+
 					pane.css('width', '');
 					elem.width(paneWidth);
 
@@ -24524,14 +24524,14 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 					initFocusHandler();
 					initMousewheel();
 					initTouch();
-					
+
 					if (settings.enableKeyboardNavigation) {
 						initKeyboardNav();
 					}
 					if (settings.clickOnTrack) {
 						initClickOnTrack();
 					}
-					
+
 					observeHash();
 					if (settings.hijackInternalLinks) {
 						hijackInternalLinks();
@@ -24792,7 +24792,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 			function appendArrows(ele, p, a1, a2)
 			{
 				var p1 = "before", p2 = "after", aTemp;
-				
+
 				// Sniff for mac... Is there a better way to determine whether the arrows would naturally appear
 				// at the top or the bottom of the bar?
 				if (p == "os") {
@@ -24907,7 +24907,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 						}
 					);
 				}
-				
+
 				if (isScrollableH) {
 					horizontalTrack.bind(
 						'mousedown.jsp',
@@ -25024,7 +25024,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 					wasAtBottom = isAtBottom;
 					elem.trigger('jsp-arrow-change', [wasAtTop, wasAtBottom, wasAtLeft, wasAtRight]);
 				}
-				
+
 				updateVerticalArrows(isAtTop, isAtBottom);
 				pane.css('top', destTop);
 				elem.trigger('jsp-scroll-y', [-destTop, isAtTop, isAtBottom]).trigger('scroll');
@@ -25071,7 +25071,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 					wasAtRight = isAtRight;
 					elem.trigger('jsp-arrow-change', [wasAtTop, wasAtBottom, wasAtLeft, wasAtRight]);
 				}
-				
+
 				updateHorizontalArrows(isAtLeft, isAtRight);
 				pane.css('left', destLeft);
 				elem.trigger('jsp-scroll-x', [-destLeft, isAtLeft, isAtRight]).trigger('scroll');
@@ -25121,7 +25121,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 
 				container.scrollTop(0);
 				container.scrollLeft(0);
-				
+
 				// loop through parents adding the offset top of any elements that are relatively positioned between
 				// the focused element and the jspPane so we can get the true distance from the top
 				// of the focused element to the top of the scrollpane...
@@ -25145,7 +25145,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 				if (destY) {
 					scrollToY(destY, animate);
 				}
-				
+
 				viewportLeft = contentPositionX();
 	            maxVisibleEleLeft = viewportLeft + paneWidth;
 	            if (eleLeft < viewportLeft || stickToTop) { // element is to the left of viewport
@@ -25219,13 +25219,13 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 			{
 				pane.find(':input,a').unbind('focus.jsp');
 			}
-			
+
 			function initKeyboardNav()
 			{
 				var keyDown, elementHasScrolled, validParents = [];
 				isScrollableH && validParents.push(horizontalBar[0]);
 				isScrollableV && validParents.push(verticalBar[0]);
-				
+
 				// IE also focuses elements that don't have tabindex set.
 				pane.focus(
 					function()
@@ -25233,7 +25233,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 						elem.focus();
 					}
 				);
-				
+
 				elem.attr('tabindex', 0)
 					.unbind('keydown.jsp keypress.jsp')
 					.bind(
@@ -25278,7 +25278,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 							return !elementHasScrolled;
 						}
 					);
-				
+
 				if (settings.hideFocus) {
 					elem.css('outline', 'none');
 					if ('hideFocus' in container[0]){
@@ -25290,7 +25290,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 						elem.attr('hideFocus', false);
 					}
 				}
-				
+
 				function keyDownHandler()
 				{
 					var dX = horizontalDragPosition, dY = verticalDragPosition;
@@ -25320,7 +25320,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 					return elementHasScrolled;
 				}
 			}
-			
+
 			function removeKeyboardNav()
 			{
 				elem.attr('tabindex', '-1')
@@ -25432,7 +25432,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 					event.preventDefault();
 				});
 			}
-			
+
 			// Init touch on iPad, iPhone, iPod, Android
 			function initTouch()
 			{
@@ -25442,7 +25442,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 					touchStartY,
 					moved,
 					moving = false;
-  
+
 				container.unbind('touchstart.jsp touchmove.jsp touchend.jsp click.jsp-touchclick').bind(
 					'touchstart.jsp',
 					function(e)
@@ -25462,14 +25462,14 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 						if(!moving) {
 							return;
 						}
-						
+
 						var touchPos = ev.originalEvent.touches[0],
 							dX = horizontalDragPosition, dY = verticalDragPosition;
-						
+
 						jsp.scrollTo(startX + touchStartX - touchPos.pageX, startY + touchStartY - touchPos.pageY);
-						
+
 						moved = moved || Math.abs(touchStartX - touchPos.pageX) > 5 || Math.abs(touchStartY - touchPos.pageY) > 5;
-						
+
 						// return true if there was no movement so rest of screen can scroll
 						return dX == horizontalDragPosition && dY == verticalDragPosition;
 					}
@@ -25493,7 +25493,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 					}
 				);
 			}
-			
+
 			function destroy(){
 				var currentY = contentPositionY(),
 					currentX = contentPositionX();
@@ -25690,13 +25690,13 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 					}
 				}
 			);
-			
+
 			initialise(s);
 		}
 
 		// Pluginifying code...
 		settings = $.extend({}, $.fn.jScrollPane.defaults, settings);
-		
+
 		// Apply default speed
 		$.each(['arrowButtonSpeed', 'trackClickSpeed', 'keyboardSpeed'], function() {
 			settings[this] = settings[this] || settings.speed;
@@ -26178,7 +26178,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 // Copyright 2010-2013, Anthony Hand
 //
 // BETA NOTICE
-// Previous versions of the JavaScript code for MobileESP were 'regular' 
+// Previous versions of the JavaScript code for MobileESP were 'regular'
 // JavaScript. The strength of it was that it was really easy to code and use.
 // Unfortunately, regular JavaScript means that all variables and functions
 // are in the global namespace. There can be collisions with other code libraries
@@ -26193,7 +26193,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 //
 // File version 2013.10.27 (October 27, 2013)
 //	Updates:
-//	- Made minor update to the InitDeviceScan. Should check Tablet Tier first, then iPhone Tier, then Quick Mobile. 
+//	- Made minor update to the InitDeviceScan. Should check Tablet Tier first, then iPhone Tier, then Quick Mobile.
 //
 // File version 2013.08.01 (August 1, 2013)
 //	Updates:
@@ -26216,19 +26216,19 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 //	- Added detection support for the OpenWeb transcoding engine to DetectMobileQuick().
 //
 // File version 2012.07.22  (July 22, 2012)
-//	- Switched to an Object-Oriented programming model using the literal notation technique.  
-//	- NOTE: The literal notation technique allows only 1 instance of this object per web page.  
+//	- Switched to an Object-Oriented programming model using the literal notation technique.
+//	- NOTE: The literal notation technique allows only 1 instance of this object per web page.
 //	- Named the JavaScript object "MobileEsp" rather than the old "mDetect."
 //	- Applied many small tweaks and a few refactorings. The most notable ones are listed here...
 //	- Added a variable for Obigo, an embedded browser. Added a lookup for Obigo to DetectMobileQuick().
 //	- Added global variables for quick access to these very useful Boolean values:
 //		- isWebkit, isMobilePhone, isIphone, isAndroid, isAndroidPhone, isTierTablet, isTierIphone, isTierRichCss, isTierGenericMobile
-//	- Updated & simplified DetectSonyMylo(). Updated the variable mylocom2's value to handle both versions. 
-//	- Removed the variable qtembedded, which was only used in Mylo and unnecessary.  
-//	- Simplified OperaMobile().  
+//	- Updated & simplified DetectSonyMylo(). Updated the variable mylocom2's value to handle both versions.
+//	- Removed the variable qtembedded, which was only used in Mylo and unnecessary.
+//	- Simplified OperaMobile().
 //	- Reorganized DetectMobileQuick().
 //	- Moved the following from DetectMobileQuick() to DetectMobileLong():
-//		- DetectDangerHiptop(), DetectMaemoTablet(), DetectGarminNuvifone(), devicePda  
+//		- DetectDangerHiptop(), DetectMaemoTablet(), DetectGarminNuvifone(), devicePda
 //	- Added DetectBada(). Added it to DetectSmartphone & iPhone Tier, too.
 //	- Updated DetectSymbian() to support Opera Mobile 10.
 //	- Removed variable for OpenWeb. Removed its detection from DetectMobileQuick().
@@ -26237,15 +26237,15 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 //
 //
 // LICENSE INFORMATION
-// Licensed under the Apache License, Version 2.0 (the "License"); 
-// you may not use this file except in compliance with the License. 
-// You may obtain a copy of the License at 
-//        http://www.apache.org/licenses/LICENSE-2.0 
-// Unless required by applicable law or agreed to in writing, 
-// software distributed under the License is distributed on an 
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
-// either express or implied. See the License for the specific 
-// language governing permissions and limitations under the License. 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//        http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+// either express or implied. See the License for the specific
+// language governing permissions and limitations under the License.
 //
 //
 // ABOUT THIS PROJECT
@@ -26253,21 +26253,21 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
 //   Email: anthony.hand@gmail.com
 //   Web Site: http://www.mobileesp.com
 //   Source Files: http://code.google.com/p/mobileesp/
-//   
+//
 //   Versions of this code are available for:
 //      PHP, JavaScript, Java, ASP.NET (C#), Ruby and others
 //
 //
-// WARNING: 
-//   These JavaScript-based device detection features may ONLY work 
-//   for the newest generation of smartphones, such as the iPhone, 
+// WARNING:
+//   These JavaScript-based device detection features may ONLY work
+//   for the newest generation of smartphones, such as the iPhone,
 //   Android and Palm WebOS devices.
-//   These device detection features may NOT work for older smartphones 
-//   which had poor support for JavaScript, including 
-//   older BlackBerry, PalmOS, and Windows Mobile devices. 
-//   Additionally, because JavaScript support is extremely poor among 
+//   These device detection features may NOT work for older smartphones
+//   which had poor support for JavaScript, including
+//   older BlackBerry, PalmOS, and Windows Mobile devices.
+//   Additionally, because JavaScript support is extremely poor among
 //   'feature phones', these features may not work at all on such devices.
-//   For better results, consider using a server-based version of this code, 
+//   For better results, consider using a server-based version of this code,
 //   such as Java, APS.NET, PHP, or Ruby.
 //
 // *******************************************
@@ -26289,7 +26289,7 @@ var MobileEsp = {
 	isTierIphone : false, //Stores the result of DetectTierIphone()
 	isTierRichCss : false, //Stores the result of DetectTierRichCss()
 	isTierGenericMobile : false, //Stores the result of DetectTierOtherPhones()
-	
+
 	//INTERNALLY USED DETECTION STRING VARIABLES
 	engineWebKit : 'webkit',
 
@@ -26297,13 +26297,13 @@ var MobileEsp = {
 	deviceIpod : 'ipod',
 	deviceIpad : 'ipad',
 	deviceMacPpc : 'macintosh', //Used for disambiguation
-	
+
 	deviceAndroid : 'android',
 	deviceGoogleTV : 'googletv',
 	deviceHtcFlyer : 'htc_flyer', //HTC Flyer
-	
-	deviceWinPhone7 : 'windows phone os 7', 
-	deviceWinPhone8 : 'windows phone 8', 
+
+	deviceWinPhone7 : 'windows phone os 7',
+	deviceWinPhone8 : 'windows phone 8',
 	deviceWinMob : 'windows ce',
 	deviceWindows : 'windows',
 	deviceIeMob : 'iemobile',
@@ -26346,7 +26346,7 @@ var MobileEsp = {
 	//Initialize variables for mobile-specific content.
 	vndwap : 'vnd.wap',
 	wml : 'wml',
-	
+
 	//Initialize variables for random devices and mobile browsers.
 	//Some of these may not support JavaScript
 	deviceTablet : 'tablet',
@@ -26360,7 +26360,7 @@ var MobileEsp = {
 	deviceWii : 'wii',
 	deviceXbox : 'xbox',
 	deviceArchos : 'archos',
-	
+
 	engineOpera : 'opera', //Popular browser
 	engineNetfront : 'netfront', //Common embedded OS browser
 	engineUpBrowser : 'up.browser', //common on some phones
@@ -26369,57 +26369,57 @@ var MobileEsp = {
 	uplink : 'up.link',
 	engineTelecaQ : 'teleca q', //a modern feature phone browser
 	engineObigo : 'obigo', //W 10 is a modern feature phone browser
-	
+
 	devicePda : 'pda',
 	mini : 'mini',  //Some mobile browsers put 'mini' in their names
 	mobile : 'mobile', //Some mobile browsers put 'mobile' in their user agent strings
 	mobi : 'mobi', //Some mobile browsers put 'mobi' in their user agent strings
-	
+
 	//Use Maemo, Tablet, and Linux to test for Nokia's Internet Tablets.
 	maemo : 'maemo',
 	linux : 'linux',
 	mylocom2 : 'sony/com', // for Sony Mylo 1 and 2
-	
+
 	//In some UserAgents, the only clue is the manufacturer
 	manuSonyEricsson : 'sonyericsson',
 	manuericsson : 'ericsson',
 	manuSamsung1 : 'sec-sgh',
 	manuSony : 'sony',
 	manuHtc : 'htc',
-	
+
 	//In some UserAgents, the only clue is the operator
 	svcDocomo : 'docomo',
 	svcKddi : 'kddi',
 	svcVodafone : 'vodafone',
-	
+
 	//Disambiguation strings.
 	disUpdate : 'update', //pda vs. update
-	
+
 	//Holds the User Agent string value.
 	uagent : '',
-   
+
 	//Initializes key MobileEsp variables
 	InitDeviceScan : function() {
 		this.initCompleted = false;
-		
+
 		if (navigator && navigator.userAgent)
 			this.uagent = navigator.userAgent.toLowerCase();
-		
+
 		//Save these properties to speed processing
 		this.isWebkit = this.DetectWebkit();
 		this.isIphone = this.DetectIphone();
 		this.isAndroid = this.DetectAndroid();
 		this.isAndroidPhone = this.DetectAndroidPhone();
-		
+
 		//Generally, these tiers are the most useful for web development
 		this.isTierIphone = this.DetectTierIphone(); //Do first
 		this.isTierTablet = this.DetectTierTablet(); //Do second
 		this.isMobilePhone = this.DetectMobileQuick(); //Do third
-		
+
 		//Optional: Comment these out if you NEVER use them
 		this.isTierRichCss = this.DetectTierRichCss();
 		this.isTierGenericMobile = this.DetectTierOtherPhones();
-		
+
 		this.initCompleted = true;
 	},
 
@@ -26438,7 +26438,7 @@ var MobileEsp = {
 				if (this.DetectIpad() || this.DetectIpod())
 					return false;
 				//Yay! It's an iPhone!
-				else 
+				else
 					return true;
 			}
 		else
@@ -26457,7 +26457,7 @@ var MobileEsp = {
 	//**************************
 	// Detects if the current device is an iPhone or iPod Touch.
 	DetectIphoneOrIpod : function() {
-		//We repeat the searches here because some iPods 
+		//We repeat the searches here because some iPods
 		//  may report themselves as an iPhone, which is ok.
 		if (this.DetectIphone() || this.DetectIpod())
 			return true;
@@ -26492,7 +26492,7 @@ var MobileEsp = {
 	DetectAndroid : function() {
 		if (this.initCompleted || this.isAndroid)
 			return this.isAndroid;
-		
+
 		if ((this.uagent.search(this.deviceAndroid) > -1) || this.DetectGoogleTV())
 			return true;
 		//Special check for the HTC Flyer 7" tablet. It should report here.
@@ -26510,7 +26510,7 @@ var MobileEsp = {
 	DetectAndroidPhone : function() {
 		if (this.initCompleted || this.isAndroidPhone)
 			return this.isAndroidPhone;
-		
+
 		if (this.DetectAndroid() && (this.uagent.search(this.mobile) > -1))
 			return true;
 		//Special check for Android phones with Opera Mobile. They should report here.
@@ -26530,14 +26530,14 @@ var MobileEsp = {
 		//First, let's make sure we're on an Android device.
 		if (!this.DetectAndroid())
 			return false;
-		
+
 		//Special check for Opera Android Phones. They should NOT report here.
 		if (this.DetectOperaMobile())
 			return false;
 		//Special check for the HTC Flyer 7" tablet. It should NOT report here.
 		if (this.uagent.search(this.deviceHtcFlyer) > -1)
 			return false;
-			
+
 		//Otherwise, if it's Android and does NOT have 'mobile' in it, Google says it's a tablet.
 		if (this.uagent.search(this.mobile) > -1)
 			return false;
@@ -26569,7 +26569,7 @@ var MobileEsp = {
 	DetectWebkit : function() {
 		if (this.initCompleted || this.isWebkit)
 			return this.isWebkit;
-		
+
 		if (this.uagent.search(this.engineWebKit) > -1)
 			return true;
 		else
@@ -26579,7 +26579,7 @@ var MobileEsp = {
 
 	//WINDOWS MOBILE AND PHONE
 
-        // Detects if the current browser is EITHER a 
+        // Detects if the current browser is EITHER a
         // Windows Phone 7.x OR 8 device.
         DetectWindowsPhone : function() {
 		if (this.DetectWindowsPhone7() ||
@@ -26609,20 +26609,20 @@ var MobileEsp = {
 
 	//**************************
 	// Detects if the current browser is a Windows Mobile device.
-	// Excludes Windows Phone 7 and later devices. 
+	// Excludes Windows Phone 7 and later devices.
 	// Focuses on Windows Mobile 6.xx and earlier.
 	DetectWindowsMobile : function() {
 		if (this.DetectWindowsPhone())
 			return false;
 
-		//Most devices use 'Windows CE', but some report 'iemobile' 
-		//  and some older ones report as 'PIE' for Pocket IE. 
+		//Most devices use 'Windows CE', but some report 'iemobile'
+		//  and some older ones report as 'PIE' for Pocket IE.
 		if (this.uagent.search(this.deviceWinMob) > -1 ||
 			this.uagent.search(this.deviceIeMob) > -1 ||
 			this.uagent.search(this.enginePie) > -1)
 			return true;
 		//Test for Windows Mobile PPC but not old Macintosh PowerPC.
-		if ((this.uagent.search(this.devicePpc) > -1) && 
+		if ((this.uagent.search(this.devicePpc) > -1) &&
 			!(this.uagent.search(this.deviceMacPpc) > -1))
 			return true;
 		//Test for Windwos Mobile-based HTC devices.
@@ -26707,8 +26707,8 @@ var MobileEsp = {
 			return false;
 		if ((this.DetectBlackBerry()) &&
 			(this.DetectBlackBerryTouch() ||
-			this.uagent.search(this.deviceBBBold) > -1 || 
-			this.uagent.search(this.deviceBBTour) > -1 || 
+			this.uagent.search(this.deviceBBBold) > -1 ||
+			this.uagent.search(this.deviceBBTour) > -1 ||
 			this.uagent.search(this.deviceBBCurve) > -1))
 			return true;
 		else
@@ -26717,7 +26717,7 @@ var MobileEsp = {
 
 	//**************************
 	// Detects if the current browser is a BlackBerry device AND
-	//    has an older, less capable browser. 
+	//    has an older, less capable browser.
 	//    Examples: Pearl, 8800, Curve1.
 	DetectBlackBerryLow : function() {
 		if (this.DetectBlackBerry())
@@ -26740,7 +26740,7 @@ var MobileEsp = {
 	DetectS60OssBrowser : function() {
 		if (this.DetectWebkit())
 		{
-			if ((this.uagent.search(this.deviceS60) > -1 || 
+			if ((this.uagent.search(this.deviceS60) > -1 ||
 				this.uagent.search(this.deviceSymbian) > -1))
 				return true;
 			else
@@ -26748,11 +26748,11 @@ var MobileEsp = {
 		}
 		else
 			return false;
-	}, 
+	},
 
 	//**************************
 	// Detects if the current device is any Symbian OS-based device,
-	//   including older S60, Series 70, Series 80, Series 90, and UIQ, 
+	//   including older S60, Series 70, Series 80, Series 90, and UIQ,
 	//   or other browsers running on these devices.
 	DetectSymbianOS : function() {
 		if (this.uagent.search(this.deviceSymbian) > -1 ||
@@ -26777,7 +26777,7 @@ var MobileEsp = {
 		if (this.DetectPalmWebOS())
 			return false;
 
-		//Most devices nowadays report as 'Palm', 
+		//Most devices nowadays report as 'Palm',
 		//  but some older ones reported as Blazer or Xiino.
 		if (this.uagent.search(this.devicePalm) > -1 ||
 			this.uagent.search(this.engineBlazer) > -1 ||
@@ -26814,7 +26814,7 @@ var MobileEsp = {
 	//**************************
 	// Detects if the current browser is Opera Mobile or Mini.
 	// Note: Older embedded Opera on mobile devices didn't follow these naming conventions.
-	//   Like Archos media players, they will probably show up in DetectMobileQuick or -Long instead. 
+	//   Like Archos media players, they will probably show up in DetectMobileQuick or -Long instead.
 	DetectOperaMobile : function() {
 		if ((this.uagent.search(this.engineOpera) > -1) &&
 			((this.uagent.search(this.mini) > -1 ||
@@ -26825,7 +26825,7 @@ var MobileEsp = {
 	},
 
 	//**************************
-	// Detects if the current browser is Opera Mobile 
+	// Detects if the current browser is Opera Mobile
 	// running on an Android phone.
 	DetectOperaAndroidPhone : function () {
 		if ((this.uagent.search(this.engineOpera) > -1) &&
@@ -26837,7 +26837,7 @@ var MobileEsp = {
 	},
 
 	//**************************
-	// Detects if the current browser is Opera Mobile 
+	// Detects if the current browser is Opera Mobile
 	// running on an Android tablet.
 	DetectOperaAndroidTablet : function() {
 		if ((this.uagent.search(this.engineOpera) > -1) &&
@@ -26931,13 +26931,13 @@ var MobileEsp = {
 	},
 
 	//**************************
-	// Detects if the current device is on one of 
+	// Detects if the current device is on one of
 	// the Maemo-based Nokia Internet Tablets.
 	DetectMaemoTablet : function() {
 		if (this.uagent.search(this.maemo) > -1)
 			return true;
 		//For Nokia N810, must be Linux + Tablet, or else it could be something else.
-		if ((this.uagent.search(this.linux) > -1) 
+		if ((this.uagent.search(this.linux) > -1)
 			&& (this.uagent.search(this.deviceTablet) > -1)
 			&& !this.DetectWebOSTablet()
 			&& !this.DetectAndroid())
@@ -26959,7 +26959,7 @@ var MobileEsp = {
 	// Detects if the current device is an Internet-capable game console.
 	// Includes many handheld consoles.
 	DetectGameConsole : function() {
-		if (this.DetectSonyPlaystation() || 
+		if (this.DetectSonyPlaystation() ||
 			this.DetectNintendo() ||
 			this.DetectXbox())
 			return true;
@@ -26990,7 +26990,7 @@ var MobileEsp = {
 	//**************************
 	// Detects if the current device is a Nintendo game device.
 	DetectNintendo : function() {
-		if (this.uagent.search(this.deviceNintendo) > -1   || 
+		if (this.uagent.search(this.deviceNintendo) > -1   ||
 			this.uagent.search(this.deviceWii) > -1 ||
 			this.uagent.search(this.deviceNintendoDs) > -1)
 			return true;
@@ -27006,8 +27006,8 @@ var MobileEsp = {
 		else
 			return false;
 	},
-        
-        
+
+
 	//**************************
 	// Detects whether the device is a Brew-powered device.
 	//   Note: Limited to older Brew-powered feature phones.
@@ -27024,7 +27024,7 @@ var MobileEsp = {
 
 	//**************************
 	// Check to see whether the device is *any* 'smartphone'.
-	//   Note: It's better to use DetectTierIphone() for modern touchscreen devices. 
+	//   Note: It's better to use DetectTierIphone() for modern touchscreen devices.
 	DetectSmartphone : function() {
 		//Exclude duplicates from TierIphone
                 if (this.DetectTierIphone() ||
@@ -27034,7 +27034,7 @@ var MobileEsp = {
 			this.DetectBlackBerry() ||
 			this.DetectPalmOS())
 			return true;
-		
+
 		//Otherwise, return false.
 		return false;
 	},
@@ -27095,27 +27095,27 @@ var MobileEsp = {
 			return true;
 
 		if ((this.uagent.search(this.devicePda) > -1) &&
-			!(this.uagent.search(this.disUpdate) > -1)) 
+			!(this.uagent.search(this.disUpdate) > -1))
 			return true;
-		
+
 		//Detect for certain very old devices with stupid useragent strings.
 		if (this.uagent.search(this.manuSamsung1) > -1 ||
-			this.uagent.search(this.manuSonyEricsson) > -1 || 
+			this.uagent.search(this.manuSonyEricsson) > -1 ||
 			this.uagent.search(this.manuericsson) > -1)
 			return true;
-		
+
 		if ((this.uagent.search(this.svcDocomo) > -1) ||
 			(this.uagent.search(this.svcKddi) > -1) ||
 			(this.uagent.search(this.svcVodafone) > -1))
 			return true;
-		
+
 		return false;
 	},
 
 	//*****************************
 	// For Mobile Web Site Design
 	//*****************************
-	
+
 	//**************************
 	// The quick way to detect for a tier of devices.
 	//   This method detects for the new generation of
@@ -27124,7 +27124,7 @@ var MobileEsp = {
 	DetectTierTablet : function() {
 		if (this.initCompleted || this.isTierTablet)
 			return this.isTierTablet;
-		
+
 		if (this.DetectIpad() ||
 			this.DetectAndroidTablet() ||
 			this.DetectBlackBerryTablet() ||
@@ -27136,7 +27136,7 @@ var MobileEsp = {
 
 	//**************************
 	// The quick way to detect for a tier of devices.
-	//   This method detects for devices which can 
+	//   This method detects for devices which can
 	//   display iPhone-optimized web content.
 	//   Includes iPhone, iPod Touch, Android, Windows Phone 7 and 8, BB10, WebOS, Playstation Vita, etc.
 	DetectTierIphone : function() {
@@ -27156,15 +27156,15 @@ var MobileEsp = {
                //Note: BB10 phone is in the previous paragraph
 		if (this.DetectBlackBerryWebKit() && this.DetectBlackBerryTouch())
 			return true;
-		
+
 		else
 			return false;
 	},
 
 	//**************************
 	// The quick way to detect for a tier of devices.
-	//   This method detects for devices which are likely to be 
-	//   capable of viewing CSS content optimized for the iPhone, 
+	//   This method detects for devices which are likely to be
+	//   capable of viewing CSS content optimized for the iPhone,
 	//   but may not necessarily support JavaScript.
 	//   Excludes all iPhone Tier devices.
 	DetectTierRichCss : function() {
@@ -27176,22 +27176,22 @@ var MobileEsp = {
 			this.DetectKindle() ||
 			this.DetectTierTablet())
 			return false;
-		
+
 		//Exclude if not mobile
 		if (!this.DetectMobileQuick())
 			return false;
-				
+
 		//If it's a mobile webkit browser on any other device, it's probably OK.
 		if (this.DetectWebkit())
 			return true;
-		
+
 		//The following devices are also explicitly ok.
 		if (this.DetectS60OssBrowser() ||
 			this.DetectBlackBerryHigh() ||
 			this.DetectWindowsMobile() ||
 			(this.uagent.search(this.engineTelecaQ) > -1))
 			return true;
-		
+
 		else
 			return false;
 	},
@@ -27201,17 +27201,17 @@ var MobileEsp = {
 	//   This method detects for all other types of phones,
 	//   but excludes the iPhone and RichCSS Tier devices.
 	// NOTE: This method probably won't work due to poor
-	//  support for JavaScript among other devices. 
+	//  support for JavaScript among other devices.
 	DetectTierOtherPhones : function() {
 		if (this.initCompleted || this.isTierGenericMobile)
 			return this.isTierGenericMobile;
-		
+
 		//Exclude iPhone, Rich CSS and Tablet Tiers
 		if (this.DetectTierIphone() ||
 			this.DetectTierRichCss() ||
 			this.DetectTierTablet())
 			return false;
-		
+
 		//Otherwise, if it's mobile, it's OK
 		if (this.DetectMobileLong())
 			return true;

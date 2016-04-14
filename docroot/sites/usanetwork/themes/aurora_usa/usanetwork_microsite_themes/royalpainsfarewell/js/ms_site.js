@@ -3,6 +3,8 @@
  */
 (function ($) {
   Drupal.behaviors.ms_site = {
+    galleryFilters: {},
+
     getHeightHomeSection: function() {
       return $('#microsite #home').height();
     },
@@ -27,12 +29,12 @@
       if ($siteNav.css('opacity') == 0) {
         //usa_debug('showSiteNav()');
 //        $siteNav.css({'opacity': 1}).animate({'max-height': '60px'}, 700, function(){
-        $siteNav.css({'opacity': 1, 'max-height': '60px'}).animate({'top': '0'}, 700, function(){
+        $siteNav.css({'opacity': 1, 'max-height': '60px'}).animate({'top': '0'}, 500, function(){
           if (window.innerWidth < 874) {
             $siteNav.css({'overflow': 'visible'}); // to allow hamburger hover state to work
           }
         });
-        $homeUsaLogo.animate({'opacity': 0}, 700);
+        $homeUsaLogo.animate({'opacity': 0}, 500);
       }
     },
 
@@ -42,9 +44,9 @@
           $videoTitle = $('#videos h2');
       if ($siteNav.css('opacity') == 1) {
         usa_debug('hideSiteNav()');
-        $homeUsaLogo.animate({'opacity': 1}, 700);
+        $homeUsaLogo.animate({'opacity': 1}, 500);
 //        $siteNav.css({'overflow': 'hidden'}).animate({'max-height': '0'}, 700, function(){
-        $siteNav.animate({'top': '-60px'}, 700, function(){
+        $siteNav.animate({'top': '-60px'}, 500, function(){
           $siteNav.css({'opacity': 0, 'max-height': 0});
         });
       }
@@ -73,63 +75,53 @@
       }
     },
 
-    placeVideoFiltersInParagraphs: function() {
-      $('#videos #video-filter ul.filter-menu li').each(function(){
-        var html = $(this).html();
-        $(this).html('<p>' + html + '</p>');
-      });
+    getGalleryFilterClassNameByNodeId: function(nodeId) {
+      if (galleryFilters.length) {
+        for (filter in galleryFilters) {
+          usa_debug('getGalleryFilterClassNameByNodeId(' + nodeId + ') -- filter: ' + filter);
+          var nids = galleryFilters[filter];
+          for (key in nids) {
+            usa_debug('getGalleryFilterClassNameByNodeId(' + nodeId + ') -- key: ' + key);
+            var nid = nids[key];
+            if (nid == nodeId) return filter;
+          }
+        }
+      }
+      usa_debug('ERROR: getGalleryFilterClassNameByNodeId(' + nodeId + ') -- galleryFilters not set yet!');
+      return false;
     },
 
-    setVideoFilterOrder: function() {
-      var desiredVideoFilterOrder = ['full-episodes', 'must-see-moments', 'clips', 'behind-the-scenes'];
-//usa_debug('setVideoFilterOrder()');
-      var mylist = $('#videos ul.filter-menu');
-      var listitems = mylist.children('li').get();
-      function reinitializeClicks() {
-        // initialize video filter sub-item clicks
-        $('#video-filter .filter-child-item').click(function () {
-          Drupal.behaviors.ms_videos.processSubMenuClick($(this));
-        });
+    setActiveGalleryFilterFromUrl: function() {
+      var $galleryNavList = $('#galleries-nav-list'),
+          $galleryItem = $galleryNavList.find('li.active'),
+          activeGalleryFilter = $galleryItem.attr('data-filter-class');
+      usa_debug('setActiveGalleryFilterFromUrl() -- activeGalleryFilter: ' + activeGalleryFilter);
+//      if (galleryFilterClassName) {
+        //$galleryFilterList.find('li').removeClass('active');
+        //$galleryFilterList.find('li[data-class-name=' + galleryFilterClassName + ']').addClass('active').click();
+        Drupal.behaviors.ms_site.setGalleryFilter(activeGalleryFilter);
+/*
       }
-      function setLastClass() {
-        mylist.find('.last').removeClass('last');
-        mylist.find('li:last').addClass('last');
-        reinitializeClicks();
+      else {
+        usa_debug('ERROR: setActiveGalleryFilterFromUrl(' + item + ') -- galleryFilterClassName not set!');
       }
-      listitems.sort(function(a, b) {
-        //usa_debug('setVideoFilterOrder listitems.sort(a, b)');
-        //usa_debug(a);
-        //usa_debug(b);
-        var aFilterClass = $(a).attr('data_filter_class'),
-            bFilterClass = $(b).attr('data_filter_class'),
-            aPos = desiredVideoFilterOrder.indexOf(aFilterClass),
-            bPos = desiredVideoFilterOrder.indexOf(bFilterClass);
-        //usa_debug('setVideoFilterOrder() aPos: ' + aPos + ', bPos: ' + bPos);
-        return (aPos > bPos) ? 1 : -1;
-      })
-      var listitemsCount = 0;
-      var listitemsNum = listitems.length;
-      $.each(listitems, function(idx, itm) {
-        mylist.append(itm);
-        listitemsCount++;
-        if (listitemsCount == listitemsNum) setLastClass();
-      });
+*/
     },
 
     assignGalleryFilterClasses: function(callback) {
       callback = callback || null;
       Drupal.behaviors.ms_global.loadJSON('http://assets.usanetwork.com/royalpains/farewell/gallery-filter-list.json', function(response){
-usa_debug('assignGalleryFilterClasses() -- response: ', response);
-          var filters = JSON.parse(response)[0],
-              $galleryNavList = jQuery('#galleries-nav-list');
-usa_debug('filters: ', filters);
-          for (filter in filters) {
-            usa_debug('filter: ' + filter);
-            var nids = filters[filter];
+          usa_debug('assignGalleryFilterClasses() -- response: ', response);
+          galleryFilters = JSON.parse(response)[0];
+          var $galleryNavList = jQuery('#galleries-nav-list');
+          usa_debug('assignGalleryFilterClasses() -- galleryFilters: ', galleryFilters);
+          for (filter in galleryFilters) {
+            usa_debug('assignGalleryFilterClasses() -- filter: ' + filter);
+            var nids = galleryFilters[filter];
             for (key in nids) {
-              usa_debug('key: ' + key);
+              usa_debug('assignGalleryFilterClasses() -- key: ' + key);
               var nid = nids[key];
-              $galleryNavList.find('li[data-node-id=' + nid + ']').addClass(filter);
+              $galleryNavList.find('li[data-node-id=' + nid + ']').addClass(filter).attr('data-filter-class', filter);
             }
           }
           if (typeof callback == 'function') callback();
@@ -148,18 +140,6 @@ usa_debug('filters: ', filters);
       });
     },
 
-/*
-    galleryLazyLoad: function() {
-      var $galleryList = jQuery('#galleries .gallery-list'),
-          $galleryListItems = $galleryList.find('.slide');
-      $galleryListItems.each(function(){
-        var $img = $(this).find('img'),
-            dataLazy = $img.attr('data-lazy');
-        $img.attr('src', dataLazy);
-      });
-    },
-*/
-
     // ATTACH
     attach: function (context, settings) {
       // set defaults
@@ -167,6 +147,9 @@ usa_debug('filters: ', filters);
           basePath = Drupal.settings.microsites_settings.base_path,
           basePageName = siteName + ' | USA Network',
           setSiteNavPositionTimer,
+          urlParts = Drupal.behaviors.ms_global.parseUrl(),
+          item = urlParts['item'],
+          isGallerySpecificUrl = (urlParts['section'] == 'galleries' && item != '') ? true : false,
           self = this;
 
       var //homeSectionHeight,
@@ -176,21 +159,20 @@ usa_debug('filters: ', filters);
           allAdsLoaded = false,
           scrollDirection;
 
+      usa_debug('attach() -- urlParts: ', urlParts);
+
       jQuery('#timeline .section-title-block > h2').html('<span>Timeline</span>');
 
-/*
-      $('.slides').slick({
-        dots: true,
-        infinite: true,
-        speed: 500,
-        fade: true,
-        cssEase: 'linear'
-      });
-*/
-      //self.galleryLazyLoad();
       jQuery('.gallery-wrapper').usaGallery();
       self.assignGalleryFilterClasses(function(){
-        self.setGalleryFilter('hankmed-highlights');
+        // if the url specifies a single gallery,
+        // set the active gallery filter and thumbnail items
+        if (isGallerySpecificUrl) {
+          self.setActiveGalleryFilterFromUrl();
+        }
+        else {
+          self.setGalleryFilter('hankmed-highlights');
+        }
 
         // initialize gallery filter clicks
         jQuery('#galleries-filter li').click(function(){
@@ -203,14 +185,6 @@ usa_debug('filters: ', filters);
 
       setTimeout(function(){
         //homeSectionHeight = self.getHeightHomeSection();
-
-        // put video filter text in <p>
-        // this is to allow vertical alignment of single and multiple row text
-        self.placeVideoFiltersInParagraphs();
-
-        // designers want the Must See Moments video filter to be
-        // second in the list of filters
-        self.setVideoFilterOrder();
 
         if ($('html').hasClass('ie9')) {
           self.showSiteNav();

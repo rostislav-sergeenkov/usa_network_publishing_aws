@@ -50,11 +50,11 @@
 }
 #galleries-filter li.filter-item {
   float: left;
-  margin: 1% 8.4% 0 0;
+  margin: 1% 8.4% 1% 0;
   padding: 0;
   font-size: 26px;
   line-height: 1.2;
-  height: 38px;
+  height: initial;
   color: #55452A;
   text-transform: uppercase;
   text-decoration: none;
@@ -68,6 +68,9 @@
 #galleries-filter li.filter-item p {
   display: table-cell;
   vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
 #microsite #galleries-filter li.filter-item.last {
   margin-right: 0;
@@ -202,6 +205,9 @@
     width: calc(80vw - 320px);
     height: calc((80vw - 320px) * 0.5625);
   }
+  #galleries-filter li.filter-item {
+    font-size: 1.3684210vw;
+  }
 }
 
 @media (max-width: 1174px) {
@@ -246,7 +252,7 @@
 
 @media (max-width: 1072px) {
   #galleries-filter li.filter-item {
-    margin: 1% 5.1% 0 0;
+    margin: 1% 5.1% 1% 0;
     font-size: 16px;
   }
 }

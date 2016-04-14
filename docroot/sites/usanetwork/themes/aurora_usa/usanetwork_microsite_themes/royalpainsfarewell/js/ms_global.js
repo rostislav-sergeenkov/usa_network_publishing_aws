@@ -647,6 +647,7 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
 
           // initialize gallery
           $activeGallery.parent().html(data.rendered);
+          Drupal.settings.microsite_gallery_data = data;
           setTimeout(function(){
             $('#galleries .microsite-gallery .gallery-wrapper').usaGallery();
             //Drupal.behaviors.ms_site.galleryLazyLoad();

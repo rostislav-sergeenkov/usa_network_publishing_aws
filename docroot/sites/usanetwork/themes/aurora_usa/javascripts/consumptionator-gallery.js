@@ -282,7 +282,10 @@
           link_back = $('meta[property="og:url"]').attr('content');
         }
 
-        if (description == '' && $('meta[property="og:description"]').length > 0) {
+        if (description == '' && Drupal.settings.microsite_gallery_data.description.value !== '') {
+          description = Drupal.settings.microsite_gallery_data.description.value.replace(/(<([^>]+)>)/ig,"");
+        }
+        else if (description == '' && $('meta[property="og:description"]').length > 0) {
           description = $('meta[property="og:description"]').attr('content');
         }
 

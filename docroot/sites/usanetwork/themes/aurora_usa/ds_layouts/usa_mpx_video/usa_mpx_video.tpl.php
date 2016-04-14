@@ -108,7 +108,24 @@
           <?php endif; ?>
         </div>
       <?php else: ?>
-        <div class="video-player-wrapper section-player show-section">
+        <div class="video-player-wrapper section-auth"
+             data-ng-if="!removePlayerThumbnail">
+          <div class="player-thumbnail"
+               data-ng-class="{'hide-section': !playerThumbnail}">
+            <div class="video-loading show-spinner"></div>
+            <?php if (!$is_live): ?>
+              <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
+              print theme_image(array('path' => image_style_url($image['#style_name'], $image['#path'])));
+              ?>
+            <?php else: ?>
+              <img
+                src="<?php print '/' . path_to_theme() . '/images/usa_liveTV.jpg'; ?>"
+                alt=""/>
+            <?php endif; ?>
+          </div>
+        </div>
+        <div class="video-player-wrapper section-player"
+             data-ng-class="{'show-section': !playerThumbnail}">
           <?php if ($is_live): ?>
             <iframe allowfullscreen="" id="videoplayer" width="100%"
                     data-usa-player-is-live height="100%"

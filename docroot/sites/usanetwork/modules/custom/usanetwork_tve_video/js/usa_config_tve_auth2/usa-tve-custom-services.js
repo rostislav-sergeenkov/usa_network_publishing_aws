@@ -5,12 +5,27 @@
   // customs USA services
   ng.module('tve.auth.services')
 
+      .factory('usaFlashError', [
+        '$rootScope',
+        function ($rootScope) {
+
+          var flashError = '<div class="flash-error"><a href="//get.adobe.com/flashplayer/" target="_blank"></a></div>';
+
+          return {
+            init: function () {
+              var playerContainer = $($rootScope.playerWrap);
+              playerContainer.html(flashError);
+              this.hidePlayerThumbnail();
+            }
+          };
+        }])
+
       .factory('usaMicrositesService', [
         function () {
-          
+
           var body = $(document.body),
               ms_player = {};
-          
+
           ms_player.isMicrosite = body.hasClass('page-node-microsite') ? true : false;
           ms_player.isVideoFirstRun = true;
           ms_player.isInitPlayer = false;
@@ -60,5 +75,5 @@
 
           return animateAPI;
         }]);
-  
+
 })(angular, jQuery, tve, this);

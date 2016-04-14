@@ -1442,6 +1442,7 @@ function usanetwork_mpx_video_preprocess_pub_mpx_video(&$vars) {
     else {
       $vars['pub_mpx_player_parameters']['autoPlay'] = 'false';
     }
+    $vars['pub_mpx_player_parameters']['excludeSharing'] = 'true';
   }
 }
 
@@ -1796,8 +1797,8 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
 
   $endcard_parameters['shareControl'] = 'card';
 
-  $related_clips = _usanetwork_video_endcard_pick_related_items($file, FALSE, TRUE, 6);
-  $next_video = (!empty($related_clips)) ? array_shift($related_clips) : NULL;
+  $next_videos = _usanetwork_video_endcard_pick_related_items($file, FALSE, TRUE, 1);
+  $next_video = (!empty($next_videos)) ? array_shift($next_videos) : NULL;
 
   //Next Clip
   if (!empty($next_video)) {
@@ -1812,6 +1813,9 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
       'videoLabel' => !empty($filter) ? $filter : t('Clip'), //TODO
       'videoTitle' => $next_video->filename,
       'thumbnail' => $image_next,
+      'data' => array(
+        'pageLink' => url('file/' . $next_video->fid),
+      ),
     );
 
     $endcard_parameters['playlists'][] = array(
@@ -1821,9 +1825,11 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
   }
 
   //More Clips
+  $related_clips = _usanetwork_mpx_video_get_latest_videos($file, $show, FALSE, 5);
   if (!empty($related_clips)) {
     $more_clips = array();
-    foreach ($related_clips as $clip) {
+    foreach ($related_clips as $value) {
+      $clip = file_load($value->fid);
       $clip_filter = usanetwork_mpx_video_get_video_category($clip);
       $image_clip_uri = _usanetwork_mpx_video_get_image_path($clip);
       $image_clip = image_style_url('full_episodes_633x356', $image_clip_uri);
@@ -1831,6 +1837,9 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
         'videoLabel' => !empty($clip_filter) ? $clip_filter : t('Clip'), //TODO
         'videoTitle' => $clip->filename,
         'thumbnail' => $image_clip,
+        'data' => array(
+          'pageLink' => url('file/' . $clip->fid),
+        ),
       );
     }
 
@@ -1841,6 +1850,26 @@ function _usanetwork_mpx_video_get_short_endcard_parameters($file, $show = NULL)
   }
 
   return $endcard_parameters;
+}
+
+function _usanetwork_mpx_video_get_latest_videos($file, $show = NULL, $full_episode = TRUE, $count = NULL) {
+  $query = db_select('mpx_video', 'mpx');
+  $query->fields('mpx', array('fid'));
+  $query->condition('mpx.status', 1);
+  $query->condition('mpx.fid', $file->fid, '<>');
+  $query->innerJoin('field_data_field_mpx_full_episode', 'mfe', 'mfe.entity_id = mpx.fid');
+  $query->condition('mfe.field_mpx_full_episode_value', $full_episode ? '1' : '0', '=');
+  $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = mpx.fid');
+  if ($show) {
+    $query->condition('fs.field_show_target_id', $show->nid, '=');
+  }
+  $query->orderBy('mpx.airdate', 'DESC');
+  if ($count) {
+    $query->range(0, $count);
+  }
+  $result = $query->execute()->fetchAll();
+
+  return $result;
 }
 
 /**
@@ -2187,7 +2216,12 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
       return '';
     }
     $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
-    return url($player_source);
+    $player_parameters = array(
+      'query' => (isset($variables['pub_mpx_player_parameters'])
+        ? $variables['pub_mpx_player_parameters']
+        : array()),
+    );
+    return url($player_source, $player_parameters);
   }
   elseif ($return_type == 'link') {
     if ((!isset($file->fid)) || (!$mpx_guid) || !$mpx_account_pid) {

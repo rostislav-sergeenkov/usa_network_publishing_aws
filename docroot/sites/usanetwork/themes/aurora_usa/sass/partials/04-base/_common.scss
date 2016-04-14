@@ -46,8 +46,13 @@ body {
         z-index: 10000!important;
       }
     }
-    #sections ~ div {
-      display: none!important;
+    #sections {
+      & ~ div {
+        display: none!important;
+      }
+      > .section:not(#videos) {
+        z-index: -1;
+      }
     }
     #admin-menu {
       display: none!important;

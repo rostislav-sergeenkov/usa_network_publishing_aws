@@ -206,7 +206,7 @@ function _usanetwork_top3_main_block() {
           $isset_video = TRUE;
           $video = _usanetwork_mpx_video_get_player_src(array(
             'file' => $shared_file,
-            'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
+            'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'excludeSharing' => 'true'),
             'player_id' => USA_GLOBAL_PLAYER_ID,
           ));
           $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $shared_file), 'link');
@@ -275,7 +275,7 @@ function _usanetwork_top3_main_block() {
           $fid = $slide_video->fid;
           $video = _usanetwork_mpx_video_get_player_src(array(
             'file' => $slide_video,
-            'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
+            'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'excludeSharing' => 'true'),
             'player_id' => USA_GLOBAL_PLAYER_ID,
           ));
           $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $slide_video), 'link');

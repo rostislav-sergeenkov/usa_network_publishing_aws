@@ -202,6 +202,7 @@ Project demo: http://shindiristudio.com/timeline
           // add listners
           $pdk.controller.addEventListener('OnMediaLoadStart', _onMediaLoadStart);
           $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+          $pdk.controller.addEventListener('OnShowFullScreen', _onShowFullScreen);
 
           function _onMediaLoadStart(pdkEvent) {
             playerApi.statusVideoStart = true
@@ -213,6 +214,17 @@ Project demo: http://shindiristudio.com/timeline
               playerApi.statusVideoStart = false;
               // hide player
               playerApi.hidePlayer();
+            }
+          }
+
+          /*
+           * On Show Full Screen
+           */
+          function _onShowFullScreen(pdkEvent) {
+            if (pdkEvent.data) {
+              $('body').addClass('video-fullscreen');
+            } else {
+              $('body').removeClass('video-fullscreen');
             }
           }
         },

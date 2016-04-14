@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -3733,6 +3733,24 @@ body {
   margin: 0 auto;
   width: 100%;
   /*-webkit-font-smoothing: antialiased;*/
+}
+body.video-fullscreen {
+  overflow-y: hidden !important;
+}
+body.video-fullscreen.admin-menu {
+  margin-top: 0 !important;
+}
+body.video-fullscreen.node-type-timeline-gallery #player-wrapper {
+  z-index: 10000 !important;
+}
+body.video-fullscreen #sections ~ div {
+  display: none !important;
+}
+body.video-fullscreen #admin-menu {
+  display: none !important;
+}
+body.video-fullscreen header {
+  display: none !important;
 }
 
 .usa-wrap {

@@ -54,7 +54,6 @@
         delete $pdk.controller.listeners[key];
       }
       $pdk.bindPlayerEvents();
-      $pdk.controller.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
       tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
     },
 
@@ -345,7 +344,6 @@
             thumbnail.bind('click', function (e) {
               e.preventDefault();
               var elem = $(this);
-              tpController.addEventListener('OnEndcardCountdownEnd', Drupal.usanetwork_video_endcard.OnCountdownEnd);
               Drupal.behaviors.ms_videos.clickThumbnail(elem);
             });
             Drupal.behaviors.ms_videos.setActiveThumbnail();

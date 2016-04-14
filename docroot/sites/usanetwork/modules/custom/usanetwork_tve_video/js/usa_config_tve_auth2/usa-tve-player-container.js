@@ -79,15 +79,10 @@
                  * @returns {string} query params string
                  */
                 function getQueryParams(mvpdId) {
-                  if (scope.isEntitled) {
-                    params = {
-                      autoPlay: false
-                    };
-                  } else {
-                    params = {
-                      autoPlay: true
-                    };
-                  }
+
+                  params = {
+                    autoPlay: false
+                  };
 
                   ng.forEach(SRC_PARAMS, function (param, i) {
                     if (param.attrName in config) {
@@ -421,8 +416,14 @@
                     }
                   }
                 } else {
-                  if (scope.statusPlayerLoaded && scope.statusSetToken) {
-                    $pdk.controller.clickPlayButton();
+                  if (isEntitlement) {
+                    if (scope.statusPlayerLoaded && scope.statusSetToken) {
+                      $pdk.controller.clickPlayButton();
+                    }
+                  } else {
+                    if (scope.statusPlayerLoaded) {
+                      $pdk.controller.clickPlayButton();
+                    }
                   }
                 }
               }
@@ -448,7 +449,7 @@
               }
 
               function _onReleaseError(pdkEvent) {
-                console.info('_onReleaseError');
+                console.info('_onReleaseError', pdkEvent);
                 if (pdkEvent.data.exception == "GeoLocationBlocked") {
                   usaPlayerError.initGeoRestrictionError();
                 } else {
@@ -474,6 +475,7 @@
               }
 
               function _onReleaseStart() {
+                console.info('_onReleaseStart');
 
                 scope.isPlayerStart = true;
                 scope.isPlayerPlay = true;
@@ -492,6 +494,8 @@
                * Media Start event callback so that we can show the metadata section
                */
               function _onMediaStart(pdkEvent) {
+
+                console.info('_onMediaStart');
 
                 var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
 
@@ -568,7 +572,6 @@
                */
               function _onPlayerLoaded(pdkEvent) {
 
-                console.info('_onPlayerLoaded');
                 usaMicrositesService.isVideoFirstRun = false;
 
                 scope.$apply(function () {

@@ -321,14 +321,31 @@
                   console.info(e.data);
                 });
 
+                // end card events
+                $pdk.controller.dispatchEvent("OnEndCardMetadata", endCardMetaData);
+
+                $pdk.controller.addEventListener("OnEndCardCountdownComplete", function (e) {
+                  console.info("OnEndCardCountdownComplete");
+                  console.info(e.data);
+
+                  window.location = window.location.origin + e.data.data.pageLink;
+                });
+
+                $pdk.controller.addEventListener("OnPlaylistVideoSelected", function (e) {
+                // $pdk.controller.addEventListener("OnEndCardPlaylistVideoSelected", function (e) {
+                  console.info("OnPlaylistVideoSelected");
+                  console.info(e.data);
+
+                  window.location = window.location.origin + e.data.data.pageLink;
+                });
+
+
                 // init end card service
                 if (isShowEndCard) {
                   usaEndCardService.init();
                 } else if (nextReleaseUrl != '') {
                   $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
                 }
-
-                $pdk.controller.dispatchEvent("OnEndCardMetadata", endCardMetaData);
 
                 // init watchwith
                 if (typeof wwLoader !== 'undefined') {
@@ -438,7 +455,8 @@
                 }
               }
 
-              function _onReleaseError() {
+              function _onReleaseError(pdkEvent) {
+                console.info('_onReleaseError', pdkEvent);
                 if (scope.playerThumbnail) {
                   hidePlayerThumbnail();
                 }

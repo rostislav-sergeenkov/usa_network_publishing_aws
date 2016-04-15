@@ -423,13 +423,16 @@ footer {
 /* BEGIN MEDIA QUERIES */
 @media (max-width: 1920px) {
   #sections > .section:not(#site-nav) {
-    padding: 56.25% 0 0;
+    padding: 0;
+    height: initial;
   }
-  #microsite #sections #videos {
-    padding: 61% 0 0;
+  #sections > .section:not(#site-nav) > section {
+    position: static;
+    max-height: inherit;
   }
 }
 
+/*
 @media (max-width: 1280px) {
   #site-nav li {
     font-size: 14px;
@@ -505,6 +508,7 @@ footer {
     font-size: 12px;
   }
 }
+*/
 
 /* BEGIN MOBILE DEVICE QUERIES */
 @media (max-device-width: 736px) {

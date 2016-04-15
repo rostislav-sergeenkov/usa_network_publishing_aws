@@ -1,4 +1,7 @@
 /* HOME SECTION */
+.clearfix {
+  content: initial;
+}
 #microsite #sections #home.section {
   top: 0;
   margin-top: 10px; /* Needed for the home waypoint to trigger! */
@@ -30,6 +33,11 @@
 #home-wrapper {
   width: 100%;
 }
+#home-seo {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+}
 #home-empty {
   position: absolute;
   top: 175px;
@@ -45,8 +53,9 @@
   margin: 0 auto 1.5%;
 }
 #home #home-logo {
-  margin-top: 26.3% !important;
-  width: 45%;
+  margin-top: 500px !important;
+  margin-bottom: 0 !important;
+  width: 762px;
 }
 #home #home-logo h1,
 #home #home-logo h2 {
@@ -64,19 +73,19 @@
 
 /* countdown */
 #home #home-countdown {
-  position: absolute;
-  top: 67.5%;
+  position: relative;
+  top: -210px;
   left: 0;
-  margin-left: calc(50% - 310px) !important;
-  width: 620px;
+  margin-left: calc(50% - 306px) !important;
+  width: 612px;
 }
 #home #home-countdown #counter .circle {
   display: table;
-  height: 96px;
+  height: 106px;
   max-height: none;
   max-width: none;
   padding-top: 0;
-  width: 96px;
+  width: 106px;
 }
 #home #home-countdown .counter-container {
   display: table-cell;
@@ -87,14 +96,16 @@
   width: 100%;
 }
 #home #home-countdown #counter .numbers {
-  font-size: 32px;
-  margin-bottom: 6%;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 #home #home-countdown #counter .title {
-  font-size: 16px;
+  font-size: 19px;
+  margin-top: 4px;
 }
 #home #home-countdown #counter .line {
   width: 60%;
+  border-top: 1px solid #55452A;
 }
 #countHolder #caption {
   color: #FAEFDE;
@@ -105,6 +116,7 @@
 }
 #until {
   color: #FAEFDE;
+  font-size: 20px;
 }
 #counter .numbers,
 #counter .title {
@@ -128,14 +140,16 @@
   color: #E3D9D1;
 }
 #home #home-content-container #home-nav {
-  height: auto;
-  margin-bottom: 0;
+  position: absolute;
+  bottom: 86px;
+  left: 0;
+  margin: 0 0 0 10%;
   width: 80%;
 }
 #home #home-nav li {
   display: inline-block;
-  margin: 0 2%;
-  font-size: 36px;
+  margin: 0 54px;
+  font-size: 34px;
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -183,15 +197,20 @@
 
 
 /* ************** BEGIN MEDIA QUERIES ************* */
-@media (max-width: 1900px) {
-  #home #home-content-container {
-    top: calc(5vw + 90px);
-  }
-  #home #home-logo {
-    margin-bottom: 9vw !important;
-    width: 40%;
-  }
+@media (max-width: 1920px) {
 /*
+  #home #home-logo {
+    margin-top: 500px !important;
+    margin-bottom: 0 !important;
+    width: 762px;
+  }
+  #home #home-countdown {
+    position: relative;
+    top: -210px;
+    left: 0;
+    margin-left: calc(50% - 306px) !important;
+    width: 612px;
+  }
   #home #home-countdown {
     top: 57%;
     width: 23.684210vw;
@@ -225,6 +244,93 @@
 */
 }
 
+@media (max-width: 1186px) {
+  #home-empty {
+    top: 176px;
+  }
+  #home #home-logo {
+    margin-top: 300px !important;
+    width: 472px;
+  }
+  #home #home-countdown {
+    top: -132px;
+    margin-left: calc(50% - 218px) !important;
+    width: 436px;
+  }
+  #home #home-countdown #counter .circle {
+    width: 72px;
+    height: 72px;
+    border: 3px solid #55452A;
+  }
+  #home #home-countdown #counter .numbers {
+    font-size: 26px;
+    margin-bottom: 5px;
+  }
+  #home #home-countdown #counter .title {
+    font-size: 12px;
+    margin-top: 0px;
+  }
+  #until {
+    font-size: 14px;
+  }
+  #home #home-content-container #home-nav {
+    bottom: 66px;
+    width: 100%;
+    margin: 0;
+  }
+  #home #home-nav li {
+    font-size: 21px;
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 486px) {
+  #microsite #sections #home.section {
+    min-height: 568px;
+  }
+  #home-empty {
+    top: 116px;
+  }
+  #home #home-logo {
+    margin-top: 250px !important;
+    width: 300px;
+  }
+  #home #home-countdown {
+    top: -80px;
+    margin-left: calc(50% - 130px) !important;
+    width: 260px;
+  }
+  #home #home-countdown #counter .circle {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #55452A;
+  }
+  #home #home-countdown #counter .numbers {
+    font-size: 18px;
+    margin-bottom: 1px;
+  }
+  #home #home-countdown #counter .title {
+    font-size: 8px;
+    margin-top: 0px;
+  }
+  #countHolder #caption {
+    font-size: 7px;
+    line-height: 2.4;
+  }
+  #until {
+    font-size: 11px;
+    line-height: 1
+  }
+  #home #home-content-container #home-nav {
+    bottom: 50px;
+  }
+  #home #home-nav li {
+    font-size: 18px;
+    margin: 0 24px;
+  }
+}
+
+/*
 @media (max-width: 1024px) {
   #home {
     height: auto;
@@ -324,4 +430,4 @@
     width: 30px;
   }
 }
-
+*/

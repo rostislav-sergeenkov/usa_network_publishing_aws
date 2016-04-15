@@ -215,6 +215,8 @@
 
                       console.info('promise isMicrosite Init Player');
 
+                      usaMicrositesService.isVideoFirstRun = false;
+
                       isEntitlement = USAN.ms_player.options.isAuth;
                       playerWrap = USAN.ms_player.options.playerWrap;
                       episodeTitle = USAN.ms_player.options.episodeTitle;
@@ -394,6 +396,7 @@
 
                     if (usaMicrositesService.isVideoFirstRun && usaMicrositesService.isAuthServicePromiseThen) {
                       console.info('ms iframe load !scope.statusPlayerLoaded');
+                      usaMicrositesService.isVideoFirstRun = false;
                       USAN.ms_player.setPlayerEvents();
                     }
 
@@ -581,8 +584,6 @@
                * @private
                */
               function _onPlayerLoaded(pdkEvent) {
-
-                usaMicrositesService.isVideoFirstRun = false;
 
                 scope.$apply(function () {
                   scope.statusPlayerLoaded = true;

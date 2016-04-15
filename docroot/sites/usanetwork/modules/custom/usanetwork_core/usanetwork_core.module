@@ -165,42 +165,57 @@ function usanetwork_core_create_menu_items() {
   }
 }
 
-function usanetwork_core_form_alter(&$form, &$form_state, $form_id) {
-  if (strpos($form_id, '_node_form') !== FALSE) {
-    if ($field_names = usanetwork_core_is_media_multiselect_field($form)) {
-      $form['multiselect_fields'] = array(
-        '#type' => 'hidden',
-        '#value' => $field_names,
-      );
-      $form['#validate'][] = 'usanetwork_core_multiselect_validate';
+function usanetwork_core_node_presave($node) {
+  $fields = usanetwork_core_get_fields_by_widget('media_multiselect', 'node', $node->type);
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  foreach ($fields as $field) {
+    if (usanetwork_core_api_check_field($node, $field)) {
+      $files = $node_wrapper->$field->value();
+      foreach ($files as &$file) {
+        $file = file_load($file['fid']);
+      }
+      usanetwork_core_set_alt_for_files_list($files, $field, $node_wrapper);
     }
   }
 }
 
-function usanetwork_core_is_media_multiselect_field($form) {
-  $names = array();
-  foreach ($form as $name => $param) {
-    if (strpos($name, 'field') !== FALSE) {
-      if (isset($param[LANGUAGE_NONE]['#theme']) && $param[LANGUAGE_NONE]['#theme'] == 'media_widget_multiple') {
-        $names[] = $name;
+function usanetwork_core_set_alt_for_files_list($files, $field, $node_wrapper) {
+  $alt_text = '';
+  $file_wrappers = [];
+  foreach ($files as $file) {
+    $file_wrapper = entity_metadata_wrapper('file', $file);
+    $file_wrappers[] = $file_wrapper;
+    if (usanetwork_core_api_check_field($file, 'field_image_copy_alt_to_other', 'file')) {
+      if (usanetwork_core_api_check_field($file, 'field_file_image_alt_text', 'file')) {
+        $alt_text = $file_wrapper->field_file_image_alt_text->value();
       }
     }
   }
-  return $names;
+  if (empty($alt_text)) {
+    if (usanetwork_core_api_check_field($node_wrapper, 'field_show')) {
+      $alt_text = $node_wrapper->field_show->title->value();
+    }
+  }
+  if (!empty($alt_text)) {
+    foreach ($file_wrappers as $file_wrapper) {
+      $current_alt = $file_wrapper->field_file_image_alt_text->value();
+      if (empty($current_alt)) {
+        $file_wrapper->field_file_image_alt_text->set($alt_text);
+        $file_wrapper->save();
+      }
+    }
+  }
 }
 
-function usanetwork_core_multiselect_validate(&$form, &$form_state) {
-  $values = $form_state['values'];
-  foreach ($values['multiselect_fields'] as $field_name) {
-    foreach ($values[$field_name][$values['language']] as $delta => $file_values) {
-      $file = file_load($file_values['fid']);
-      if (!empty($file) && !usanetwork_core_api_check_field($file, 'field_file_image_alt_text', 'file') && $file->type == 'image') {
-        $field = &$form[$field_name][$values['language']][$delta];
-        $field['#attributes']['class'][] = 'error';
-        form_set_error($field_name . '][' . $values['language'] . '][' . $delta, t('Image %filename does not have alt attribute.', array('%filename' => $file->filename)));
-      }
+function usanetwork_core_get_fields_by_widget($widget_type, $entity_type = NULL, $bundle_name = NULL) {
+  $fields = [];
+  $field_instances = field_info_instances($entity_type, $bundle_name);
+  foreach ($field_instances as $field_name => $field_instance) {
+    if ($field_instance['widget']['type'] == $widget_type) {
+      $fields[] = $field_name;
     }
   }
+  return $fields;
 }
 
 /**

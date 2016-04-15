@@ -21406,7 +21406,7 @@ footer h2 {
 }
 .page-node-microsite .timelineFlat .timeline-items #player-wrapper, .node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper {
   background-color: #000000;
-  display: none;
+  visibility: hidden;
   position: absolute;
 }
 .page-node-microsite .timelineFlat .timeline-items #player-wrapper iframe, .node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper iframe {

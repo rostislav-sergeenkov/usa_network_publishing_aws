@@ -275,7 +275,7 @@ Project demo: http://shindiristudio.com/timeline
           }
 
           playerWrapper.css({
-            'display': 'block',
+            'visibility': 'visible',
             'zIndex': 1
           });
         },
@@ -291,7 +291,7 @@ Project demo: http://shindiristudio.com/timeline
           }
 
           playerWrapper.css({
-            'display': 'none',
+            'visibility': 'hidden',
             'zIndex': 0
           });
 

@@ -9,26 +9,12 @@
       return $('#microsite #home').height();
     },
 
-/*
-    setPersonRole: function() {
-      var person = {"rami-malek": {"role": "Elliot Alderson"},"christian-slater": {"role": "Mr. Robot"}},
-          $personList = $('#microsite #characters #character-nav ul');
-
-      $personList.find('li').each(function(){
-        var personId = $(this).attr('data-id');
-        if (typeof person[personId] != 'undefined') {
-          if (typeof person[personId]['role'] != 'undefined') $(this).find('.role').html(person[personId]['role']);
-        }
-      });
-    },
-*/
     showSiteNav: function() {
       var $siteNav = $('#site-nav'),
           $homeUsaLogo = $('#home-usa-logo'),
           $videoTitle = $('#videos h2');
       if ($siteNav.css('opacity') == 0) {
         //usa_debug('showSiteNav()');
-//        $siteNav.css({'opacity': 1}).animate({'max-height': '60px'}, 700, function(){
         $siteNav.css({'opacity': 1, 'max-height': '60px'}).animate({'top': '0'}, 500, function(){
           if (window.innerWidth < 874) {
             $siteNav.css({'overflow': 'visible'}); // to allow hamburger hover state to work
@@ -45,7 +31,6 @@
       if ($siteNav.css('opacity') == 1) {
         usa_debug('hideSiteNav()');
         $homeUsaLogo.animate({'opacity': 1}, 500);
-//        $siteNav.css({'overflow': 'hidden'}).animate({'max-height': '0'}, 700, function(){
         $siteNav.animate({'top': '-60px'}, 500, function(){
           $siteNav.css({'opacity': 0, 'max-height': 0});
         });
@@ -53,20 +38,12 @@
     },
 
     setSiteNav: function() {
-//      var wPath = window.location.pathname,
       var homeNavInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav')) ? true : false,
           homeAdInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#head-leaderboard')) ? true : false,
           homeEmptyInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-empty')) ? true : false,
           homeLogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-logo')) ? true : false,
           homeCountdownInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#countHolder')) ? true : false;
-          //homeTuneInInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-tunein')) ? true : false,
-          //homeNavFirstInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:first')) ? true : false,
-          //homeNavLastInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-nav li:last')) ? true : false,
-//          homeFinalePacketImageInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#finale-packet-image')) ? true : false,
-          //homeUSALogoInView = (Drupal.behaviors.ms_global.isScrolledIntoView('#home-usa-logo')) ? true : false;
-      //usa_debug('setSiteNav()');
-//      if (wPath == '/mrrobot/catchup' || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeFinalePacketImageInView || homeUSALogoInView) {
-//      if (homeAdInView || homeLogoInView || homeTuneInInView || homeNavFirstInView || homeNavLastInView || homeUSALogoInView) {
+
       if (homeNavInView || homeLogoInView || homeCountdownInView || homeEmptyInView || homeAdInView) {
         Drupal.behaviors.ms_site.hideSiteNav();
       }
@@ -96,16 +73,7 @@
           $galleryItem = $galleryNavList.find('li.active'),
           activeGalleryFilter = $galleryItem.attr('data-filter-class');
       usa_debug('setActiveGalleryFilterFromUrl() -- activeGalleryFilter: ' + activeGalleryFilter);
-//      if (galleryFilterClassName) {
-        //$galleryFilterList.find('li').removeClass('active');
-        //$galleryFilterList.find('li[data-class-name=' + galleryFilterClassName + ']').addClass('active').click();
         Drupal.behaviors.ms_site.setGalleryFilter(activeGalleryFilter);
-/*
-      }
-      else {
-        usa_debug('ERROR: setActiveGalleryFilterFromUrl(' + item + ') -- galleryFilterClassName not set!');
-      }
-*/
     },
 
     assignGalleryFilterClasses: function(callback) {
@@ -176,16 +144,25 @@
 
         // initialize gallery filter clicks
         jQuery('#galleries-filter li').click(function(){
-          var filter = $(this).attr('data-filter-class');
-          self.setGalleryFilter(filter);
+          if (!jQuery(this).hasClass('active')) {
+            var filter = $(this).attr('data-filter-class');
+            self.setGalleryFilter(filter);
+
+            // switch to 1st gallery in this filter
+            var $navItems = $('#galleries #galleries-nav-list li a'),
+                $filteredGalleryNavList = $('#galleries-nav-list li[data-filter-class=' + filter + ']');
+//                nextGalleryNodeId = $filteredGalleryNavList.eq(0).attr('data-node-id');
+            $filteredGalleryNavList.eq(0).find('a').click();
+/*
+            Drupal.behaviors.ms_global.switchGallery(nextGalleryNodeId, function(){
+              $navItems.bind('click', Drupal.behaviors.ms_global.changeGalleryHandler);
+            });
+*/
+          }
         });
       });
 
-//      self.setPersonRole();
-
       setTimeout(function(){
-        //homeSectionHeight = self.getHeightHomeSection();
-
         if ($('html').hasClass('ie9')) {
           self.showSiteNav();
         }
@@ -203,15 +180,6 @@
 
       // SCROLLING
       $(window).on('scroll', function() {
-/*
-        if (typeof siteNavPositionTimer == 'undefined') {
-          siteNavPositionTimer = setTimeout(function(){
-            var position = (window.pageYOffset >= homeSectionHeight) ? 'fixed' : 'relative';
-            $('#site-nav').css({'position': position});
-            siteNavPositionTimer = clearTimeout(siteNavPositionTimer);
-          }, 15);
-        }
-*/
         if (!$('html').hasClass('ie9') && typeof siteNavTimer == 'undefined') {
           siteNavTimer = setTimeout(function(){
             self.setSiteNav();
@@ -231,21 +199,9 @@
               if (sectionId != 'site-nav' && sectionId != 'videos') {
                 if ($('#' + sectionId + ' .ad-leaderboard').html() == '') {
                   allAdsLoaded = false;
-/*
-                  if (sectionId == 'videos') {
-                    var $activeVideoThumb = $('#thumbnail-list .item-list ul li.thumbnail.active'),
-                        dataFullEpisode = $activeVideoThumb.attr('data-full-episode');
-
-                    if (dataFullEpisode == 'false' && Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard')) {
-                      Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-                    }
+                  if (Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard')) {
+                    Drupal.behaviors.ms_global.refreshAds(sectionId);
                   }
-                  else {
-*/
-                    if (Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard')) {
-                      Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-                    }
-//                  }
                 }
               }
             });

@@ -77,7 +77,7 @@
       else {
         history.pushState({"path": basePath}, basePath, basePath);
       }
-usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
+      //usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
     },
 
     // toTitleCase
@@ -288,7 +288,7 @@ usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
         case 'timeline':
           contentType = 'Gallery';
           altContentType = 'Timeline';
-          contentName = $('#timeline #timeline-content > h1').text();
+          contentName = $('#timeline #timeline-content > h1 > div').text();
           if (!contentName) contentName = $('#timeline #timeline-content > h2').text();
           contentName = Drupal.behaviors.ms_global.toTitleCase(contentName);
           var $item = $('#microsite #timeline .timeline-items .timeline-item.active'),
@@ -298,33 +298,17 @@ usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
               itemScene = $item.attr('data-description');
           specificContentName = 'S' + itemSeason + ' E' + itemEpisode + ' ' + itemScene;
           break;
-        case 'quizzes':
-          contentType = 'Quiz';
-          if (!contentName) contentName = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h1').text();
-          if (!contentName) contentName = $('#microsite #quizzes .full-pane #viewport .active-quiz-title > h3.quiz-title').text();
-          break;
-        case 'characters':
-          contentType = 'Bio';
-          if (!contentName) contentName = $('#microsite #characters-content #character-info li.active > h3').text();
-          if (!contentName) contentName = $('#microsite #characters-content #character-info li.active > h1').text();
-          break;
-        case 'about':
-          break;
         case 'galleries':
           contentType = 'Gallery';
-          contentName = $('#galleries .microsite-gallery-meta h2.gallery-title').text();
-          if (contentName == '') omnitureTitle = $('#galleries .microsite-gallery-meta h1.gallery-title').text();
-          var $slider = $('#microsite #galleries .bx-viewport ul.bxslider'),
-              currentSlide = (parseInt($slider.find('li.active2').attr('data-slide-index')) + 1);
+          contentName = $('#galleries #galleries-nav-list li.active .gallery-title > div').text();
+          var $slider = $('#microsite #galleries .gallery-wrapper .slick-track'),
+              currentSlide = parseInt($slider.find('.slick-active').attr('data-slick-index') + 1);
           if (!currentSlide) currentSlide = 1;
           specificContentName = 'Photo ' + currentSlide;
           break;
-        case 'episodes':
-          contentType = 'Episode Guide';
-          if (!contentName) contentName = $('#microsite #episodes-content #episode-info li.active > h3.episode-title').text();
-          if (!contentName) contentName = $('#microsite #episodes-content #episode-info li.active > h1.episode-title').text();
-          break;
       }
+
+      usa_debug('setOmnitureData(' + anchor + ', ' + content + ') -- contentName: ' + contentName);
 
       // Build array of omniture "nodes" that make up the pageName
       // This array must have the nodes in the correct order:
@@ -434,27 +418,10 @@ usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
 
       // if this is IE9, reload the correct page
       if ($('html').hasClass('ie9')) {
-//usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ')');
-//        window.location.href = anchorFull.replace('/home', '');
         // if the window is scrolling, the page must be almost completely
         // loaded, so the initial page load is complete
         Drupal.behaviors.ms_global.globalInitialPageLoad = false;
         return false;
-      }
-
-      // open or load item content, if needed
-      if (item != '') {
-        switch(anchor) {
-/*
-          case 'characters':
-            Drupal.behaviors.ms_characters.showCharacterInfo(item);
-            break;
-          case 'quizzes':
-            var quizNodeId = $('#microsite #quizzes #quizzes-nav-list a[href="' + basePath + '/quizzes/' + item + '"]').parent().attr('data-node-id');
-            Drupal.behaviors.ms_quizzes.switchQuizzes(quizNodeId);
-            break;
-*/
-        }
       }
 
       // check to make sure we have all waypoints set
@@ -476,9 +443,9 @@ usa_debug('========== changeUrl(' + anchor + ', ' + anchorFull + ')');
       var nextSectionElem = document.getElementById(anchor),
           offsetAmount = -60, // (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
           nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0;
-//      if (anchor == 'quizzes') nextSectionTop = nextSectionTop + 10;
 
-usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ') -- nextSectionTop: ' + nextSectionTop);
+      //usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ') -- nextSectionTop: ' + nextSectionTop);
+
       $('html, body').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
         $('.section').removeClass('active');
         $(nextSection).addClass('active');
@@ -542,11 +509,12 @@ usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle +
     selectVideoFilter: function(anchor, filterClass){
       Drupal.behaviors.ms_global.sectionScroll('videos');
 
-      var filterClass = filterClass || 'must-see-moments',
+      var filterClass = filterClass || 'cast-interviews',
           $this = $('#video-filter li.filter-item[data_filter_class="' + filterClass + '"]'),
           $filterItems = $('#video-filter li.filter-item'),
           $filterMenu = $('#video-filter .filter-menu');
-usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $this);
+
+      usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $this);
 
       // set active nav
       Drupal.behaviors.ms_global.setActiveMenuItem('videos');
@@ -624,10 +592,9 @@ usa_debug('selectVideoFilter(' + anchor + ', ' + filterClass + '), $this: ', $th
         dataType: 'json'
       })
       .done(function(data, textStatus, jqXHR){
-usa_debug('switchGallery(' + nid + ') -- data: ', data);
+        usa_debug('switchGallery(' + nid + ') -- data: ', data);
         var // activeGalleryMeta = $('#galleries .microsite-gallery-meta'),
             $activeGallery = $('#galleries .microsite-gallery .gallery-wrapper'),
-//            activeGalleryHeight = $activeGallery.height(),
             $galleryNavList = $('#galleries #galleries-nav-list'),
             shareBarHtml = '<div class="field field-name-field-gigya-share-bar field-type-gigya-sharebar field-label-hidden"><div id="gigya-share"></div></div>';
 
@@ -635,13 +602,10 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
 
           if (data.h1.length > 0 && data.title.length > 0) {
             titleHtml = '<h2 class="seo-h1">' + data.h1 + '</h2><h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;
-            //activeGalleryMeta.html(titleHtml);
           } else if (data.title.length > 0) {
             titleHtml = '<h2 class="gallery-title">' + data.title + '</h2>' + shareBarHtml;
-            //activeGalleryMeta.html(titleHtml);
           }
-          // $activeGallery.find('.center-wrapper').html(data.rendered);
-          //Drupal.behaviors.ms_global.initCarousel(true);
+
           $galleryNavList.find('li').removeClass('active');
           $galleryNavList.find('li[data-node-id="' + nid + '"]').addClass('active');
 
@@ -652,6 +616,7 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
             $('#galleries .microsite-gallery .gallery-wrapper').usaGallery();
             //Drupal.behaviors.ms_site.galleryLazyLoad();
             Drupal.behaviors.ms_global.showGallery($activeGallery);
+            Drupal.behaviors.ms_global.setOmnitureData('galleries');
             Drupal.behaviors.ms_global.galleryIsLoading = false;
             if (callback !== null) callback();
           }, 2000);
@@ -699,41 +664,6 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
       }
     },
 
-/*
-    moveFullEpisodesFilterLast: function(callback){
-      var $videoFilterList = $('#videos .filter-menu'),
-          fullEpsFilterClassName = 'full-episodes',
-          $fullEpsFilter = $videoFilterList.find('li[data_filter_class=' + fullEpsFilterClassName + ']');
-
-      // if there is a full episode video filter,
-      // move it so it's last
-      if ($fullEpsFilter.length) {
-        var numFilters = $videoFilterList.find('li').length,
-            isVideoItemInUrl = (Drupal.behaviors.ms_global.parseUrl()['item'] != '') ? true : false,
-            $lastFilter = $videoFilterList.find('li:last');
-
-        usa_debug('moveFullEpisodesFilterLast() -- numFilters: ' + numFilters + ', isVideoItemInUrl: ' + isVideoItemInUrl);
-
-        $videoFilterList.find('li').removeClass('first last');
-        $lastFilter.after($fullEpsFilter);
-        $videoFilterList.find('li:eq(0)').addClass('first');
-        $videoFilterList.find('li:eq(' + (numFilters - 1) + ')').addClass('last');
-
-        // if no video is specified in the url,
-        // load the first video listed in the first video filter
-        if (!isVideoItemInUrl) {
-          var $videoThumbnails = $('#thumbnail-list .item-list ul li.thumbnail');
-
-          $videoFilterList.find('li').removeClass('active');
-          $videoThumbnails.remove();
-          $videoFilterList.find('li:first').click();
-
-          Drupal.behaviors.ms_global.updateVideoToShowOnPageLoad(callback);
-//          if (typeof callback == 'function') callback();
-        }
-      }
-    },
-*/
     showVideoSection() {
       $('#video-loader').animate({'opacity': 0}, 500, function(){
         $(this).css('display', 'none');
@@ -815,24 +745,19 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
           // this is to allow vertical alignment of single and multiple row text
           Drupal.behaviors.ms_videos.placeVideoFiltersInParagraphs();
 
-//          self.moveFullEpisodesFilterLast(function(){
-//            setTimeout(function(){
-              $('#video-container').addClass('active');
-              var urlParts = self.parseUrl(window.location.href); // history.state['path']);
-              if (urlParts['section'] == 'videos' && urlParts['item']) {
-                Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, null, true, self.showVideoSection);
-//                self.moveFullEpisodesFilterLast();
-                  // designers want video filters in a certain order
-                  Drupal.behaviors.ms_videos.setVideoFilterOrder();
-              }
-              else {
-//                self.moveFullEpisodesFilterLast(function(){
-                Drupal.behaviors.ms_videos.setVideoFilterOrder(true, function(){
-                  Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('false', null, null, true, self.showVideoSection);
-                });
-              }
-//            }, 1000);
-//          });
+          $('#video-container').addClass('active');
+          var urlParts = self.parseUrl(window.location.href); // history.state['path']);
+          if (urlParts['section'] == 'videos' && urlParts['item']) {
+            Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, null, true, self.showVideoSection);
+
+              // designers want video filters in a certain order
+              Drupal.behaviors.ms_videos.setVideoFilterOrder();
+          }
+          else {
+            Drupal.behaviors.ms_videos.setVideoFilterOrder(true, function(){
+              Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('false', null, null, true, self.showVideoSection);
+            });
+          }
         }
 
         // TIME OUT
@@ -852,22 +777,7 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
               $('#site-nav-links li').addClass('disabled');
             }
 
-/*
-            // if clicked must see moments
-            if (anchor == 'videos' || anchor == 'must-see-moments') {
-              switch(anchor) {
-                case 'videos':
-                  self.selectVideoFilter('videos', 'full-episodes');
-                  break;
-                case 'must-see-moments':
-                  self.selectVideoFilter('videos', 'must-see-moments');
-                  break;
-              }
-            }
-            else {
-*/
-              Drupal.behaviors.ms_global.sectionScroll(anchor);
-//            }
+            Drupal.behaviors.ms_global.sectionScroll(anchor);
           });
 
           // initialize site nav logo click
@@ -875,12 +785,6 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
             Drupal.behaviors.ms_global.sectionScroll('home');
           });
 
-/*
-          // initialize home next button click
-          $('#home .scroll').on('click', function(){
-            Drupal.behaviors.ms_global.sectionScroll('videos');
-          });
-*/
           self.setSectionIdsArray();
 
           // initialize the waypoints
@@ -897,12 +801,8 @@ usa_debug('switchGallery(' + nid + ') -- data: ', data);
         }, 2000);
         // END TIME OUT
 
-        //self.create728x90Ad();
-        //self.refreshMPS728x90Ad(urlParts['section']);
-//        self.refreshAds('#head-leaderboard', 'topbanner');
         if (urlParts['section'] != 'videos') self.refreshAds(urlParts['section']);
       });
-
     }
   }
 })(jQuery);

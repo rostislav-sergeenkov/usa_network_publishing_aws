@@ -192,6 +192,7 @@
     margin-bottom: 9vw !important;
     width: 40%;
   }
+/*
   #home #home-countdown {
     top: 57%;
     width: 23.684210vw;
@@ -222,6 +223,7 @@
     margin: 0 2%;
     font-size: 1.894737vw;
   }
+*/
 }
 
 @media (max-width: 1024px) {

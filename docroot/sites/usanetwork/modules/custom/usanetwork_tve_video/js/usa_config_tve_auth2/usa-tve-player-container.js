@@ -57,15 +57,19 @@
 
                     controller._bindPlayerEvents();
 
-                    if (scope.isEntitled) {
+                    if ($rootScope.isEntitled) {
                       controller.initiateAuthorization();
+                    }
+
+                    if (!$rootScope.isFullEpisode) {
+                      controller.hidePlayerThumbnail();
                     }
                   }
                 });
 
                 function init(status) {
                   // passing iframe url as trusted to the template
-                  if (scope.isFullEpisode) {
+                  if ($rootScope.isFullEpisode) {
                     scope.src = $sce.trustAsResourceUrl(config.src + '?ec=f&' + getQueryParams(status.isAuthenticated && status.mvpdId));
                   } else {
                     scope.src = $sce.trustAsResourceUrl(config.src + '?' + getQueryParams(status.isAuthenticated && status.mvpdId));
@@ -119,11 +123,15 @@
               this._bindPlayerEvents = function () {
                 $scope._bindPlayerEvents();
               };
+              this.hidePlayerThumbnail = function () {
+                $scope.hidePlayerThumbnail();
+              };
             }],
             link: function (scope, element, attr) {
 
               var body, playerContainer, tveAnalytics, userStatus, isLive, isShowEndCard,
-                  isFullEpisode, isEntitlement, isMicrosite, playerWrap, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
+                  isFullEpisode, isEntitlement, isMicrosite, isMobile,
+                  playerWrap, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
                   isAdStart, nextReleaseUrl, positionTime, usaVideoSettingsRun, endCardMetaData;
 
               // set vars value
@@ -134,6 +142,7 @@
               episodeTitle = attr['episodeTitle'];
               mpxGuid = attr['mpxGuid'];
               tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop};
+              isMobile = helper.device.isMobile;
               isLive = parseInt(attr['isLive']) === 1 ? true : false;
               isEntitlement = attr['entitlement'] === 'auth' ? true : false;
               isFullEpisode = parseInt(attr['isFullEpisode']) === 1 ? true : false;
@@ -164,9 +173,9 @@
               $rootScope.isDartReq = true;
               $rootScope.statusAd = false;
               $rootScope.isFullEpisode = isFullEpisode;
-              
-              scope.isEntitled = isEntitlement;
-              scope.isMobile = helper.device.isMobile;
+              $rootScope.isEntitled = isEntitlement;
+
+              scope.isMobile = isMobile;
               scope.showCompanionAdd = false;
               scope.statusPlayerLoaded = false;
               scope.statusSetToken = false;
@@ -185,6 +194,7 @@
 
               scope.initiateAuthorization = initiateAuthorization;
               scope._bindPlayerEvents = _bindPlayerEvents;
+              scope.hidePlayerThumbnail = hidePlayerThumbnail;
 
               authService.promise.then(function (status) {
 
@@ -236,13 +246,13 @@
               function showPlayer() {
                 if (isEntitlement) {
                   if (Drupal.settings.tve_cookie_detection != undefined) {
-                    return !scope.isMobile && authService.isAuthenticated() && Drupal.settings.tve_cookie_detection.status;
+                    return !isMobile && authService.isAuthenticated() && Drupal.settings.tve_cookie_detection.status;
                   }
                   else {
-                    return !scope.isMobile && authService.isAuthenticated();
+                    return !isMobile && authService.isAuthenticated();
                   }
                 } else if (isMicrosite) {
-                  return !scope.isMobile && authService.isAuthenticated();
+                  return !isMobile && authService.isAuthenticated();
                 } else {
                   //return !scope.isMobile;
                   return true;
@@ -317,9 +327,8 @@
                   window.location = window.location.origin + e.data.data.pageLink;
                 });
 
-                $pdk.controller.addEventListener("OnPlaylistVideoSelected", function (e) {
-                // $pdk.controller.addEventListener("OnEndCardPlaylistVideoSelected", function (e) {
-                  console.info("OnPlaylistVideoSelected");
+                $pdk.controller.addEventListener("OnEndCardPlaylistVideoSelected", function (e) {
+                  console.info("OnEndCardPlaylistVideoSelected");
                   console.info(e.data);
 
                   window.location = window.location.origin + e.data.data.pageLink;
@@ -421,7 +430,7 @@
                       $pdk.controller.clickPlayButton();
                     }
                   } else {
-                    if (scope.statusPlayerLoaded) {
+                    if (scope.statusPlayerLoaded && !isMobile) {
                       $pdk.controller.clickPlayButton();
                     }
                   }
@@ -429,6 +438,7 @@
               }
 
               function hidePlayerThumbnail() {
+                console.info('hidePlayerThumbnail');
                 if (scope.playerThumbnail) {
                   scope.playerThumbnail = false;
                   $timeout(function () {

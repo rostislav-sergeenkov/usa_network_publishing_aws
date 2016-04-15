@@ -14715,7 +14715,7 @@ footer h2 {
 }
 .consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
   float: left;
-  height: 100%;
+  height: auto;
   position: relative;
   width: 74.7%;
   /*old css code*/
@@ -14737,7 +14737,6 @@ footer h2 {
   transition: opacity 0.3s ease-in-out;
 }
 .consumptionator-page .video-block .player-wrapper > .node, .page-videos-live .video-block .player-wrapper > .node {
-  height: 100%;
   width: 100%;
 }
 .consumptionator-page .video-block .player-wrapper .tve-help, .page-videos-live .video-block .player-wrapper .tve-help {

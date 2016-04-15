@@ -38,7 +38,8 @@
         delete $pdk.controller.listeners[key];
       }
       $pdk.bindPlayerEvents();
-      tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
+//      tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
+      if (typeof Drupal.usanetwork_video_endcard != 'undefined' && Drupal.usanetwork_video_endcard.hasOwnProperty('OnYmalitemnewClick')) tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
     },
 
     updateVideoToShowOnPageLoad: function(callback){
@@ -241,20 +242,6 @@
         if (ad_728x90.length == 1 && ad_728x90.attr('id') == 'ad_728x90_1') {
           ad_728x90.attr('id', 'ms-videos-leaderboard-ad').empty();
         }
-
-/*
-        setTimeout(function(){
-          if (msGlobalExists && !Drupal.behaviors.ms_global.globalInitialPageLoad) Drupal.behaviors.ms_global.create728x90Ad('videos');
-        }, 1500);
-
-        if ($('#videos').find(ad_300x250)) {
-          ad_300x250.closest('li.ad').show();
-          ad_300x250.attr('id', 'ad_300x250_1');
-        }
-        if ($('#videos').find(ad_300x250_1)) {
-          ad_300x250_1.closest('li.ad').show();
-        }
-*/
       }
 
       Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
@@ -391,8 +378,8 @@
             $adBlock = $('#thumbnail-list .thumbnail.ad'),
             $itemList = $('#thumbnail-list .view-content .item-list ul');
 
-//usa_debug('========= getThumbnailList -- filterClass: ' + filterClass + '\n$itemList: ');
-//usa_debug($itemList);
+        //usa_debug('========= getThumbnailList -- filterClass: ' + filterClass + '\n$itemList: ');
+        //usa_debug($itemList);
         $itemList.animate({'opacity': 0}, 500, function(){
           if (filterClass != null) $('#thumbnail-list .view-content .item-list ul').attr('class', filterClass);
 
@@ -405,68 +392,59 @@
           // add wrapper around video thumbnail images
           $('#videos li.thumbnail img').wrap('<div class="video-nav-img"></div>');
 
-/*
-          // add css selectors for the must see moments (msm) videos
-          // and then display only the selected msm videos
-          if (filterClass == 'must-see-moments' || categoryName == 'Must See Moments') {
-            Drupal.behaviors.ms_site.addMSMVideoInfo(seasonNum, epNum);
-          }
-          else {
-*/
-            $(this).animate({'opacity': 1}, 500, function(){
-usa_debug('getThumbnailList() -- $this: ', $(this));
-              var $thumbnails = $('#thumbnail-list .thumbnail');
+          $(this).animate({'opacity': 1}, 500, function(){
+            //usa_debug('getThumbnailList() -- $this: ', $(this));
+            var $thumbnails = $('#thumbnail-list .thumbnail');
 
-              // lazy load images
-              $('#video-item-list-wrapper ul > li').each(function(){
-                var $this = $(this).find('img'),
-                    dataSrc = $this.attr('data-src');
-                usa_debug('dataSrc: ' + dataSrc);
-                $this.attr('src', dataSrc);
-              });
+            // lazy load images
+            $('#video-item-list-wrapper ul > li').each(function(){
+              var $this = $(this).find('img'),
+                  dataSrc = $this.attr('data-src');
+              //usa_debug('dataSrc: ' + dataSrc);
+              $this.attr('src', dataSrc);
+            });
 
-              if (!$thumbnails.hasClass('ad')) {
-                if ($thumbnails.eq(1)) {
-                  $thumbnails.eq(1).after($adBlock);
-                } else {
-                  $thumbnails.last().after($adBlock);
-                }
-                $adBlock.addClass('added').hide();
+            if (!$thumbnails.hasClass('ad')) {
+              if ($thumbnails.eq(1)) {
+                $thumbnails.eq(1).after($adBlock);
+              } else {
+                $thumbnails.last().after($adBlock);
               }
+              $adBlock.addClass('added').hide();
+            }
 
-              if (infoMore.toString() === 'false') {
-                if ($thumbnails.length < 11) {
-                  $('#thumbnail-list .expandable-toggle-wrap').removeClass('active');
-                  $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler');
-                }
-                else {
-                  $('#thumbnail-list .expandable-toggle-wrap li').addClass('less').text('close');
-                  $('#thumbnail-list .expandable-toggle-wrap').removeClass('active').addClass('spoiler');
-                  $('#thumbnail-list').addClass('expanded');
-                }
+            if (infoMore.toString() === 'false') {
+              if ($thumbnails.length < 11) {
+                $('#thumbnail-list .expandable-toggle-wrap').removeClass('active');
+                $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler');
               }
               else {
-                $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler').addClass('active');
-                $('#thumbnail-list').removeClass('expanded');
+                $('#thumbnail-list .expandable-toggle-wrap li').addClass('less').text('close');
+                $('#thumbnail-list .expandable-toggle-wrap').removeClass('active').addClass('spoiler');
+                $('#thumbnail-list').addClass('expanded');
               }
+            }
+            else {
+              $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler').addClass('active');
+              $('#thumbnail-list').removeClass('expanded');
+            }
 
-              if ($toggler) {
-                $toggler.removeClass('processed');
-              }
+            if ($toggler) {
+              $toggler.removeClass('processed');
+            }
 
-              $thumbnails.unbind('click');
-              $thumbnails.bind('click', function (e) {
-                e.preventDefault();
-                var elem = $(this);
-                Drupal.behaviors.ms_videos.clickThumbnail(elem, true);
-              });
-              Drupal.behaviors.ms_videos.setActiveThumbnail();
-              if (typeof Waypoint != 'undefined') {
-                //usa_debug('======== refreshing all waypoints');
-                Waypoint.refreshAll();
-              }
+            $thumbnails.unbind('click');
+            $thumbnails.bind('click', function (e) {
+              e.preventDefault();
+              var elem = $(this);
+              Drupal.behaviors.ms_videos.clickThumbnail(elem, true);
             });
-//          }
+            Drupal.behaviors.ms_videos.setActiveThumbnail();
+            if (typeof Waypoint != 'undefined') {
+              //usa_debug('======== refreshing all waypoints');
+              Waypoint.refreshAll();
+            }
+          });
         });
       })
       .fail(function(jqXHR, textStatus) {
@@ -500,20 +478,11 @@ usa_debug('getThumbnailList() -- $this: ', $(this));
             seasonNum = $this.attr('data-season-num'),
             epNum = $this.attr('data-episode-num'),
             url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + seasonNum;
-usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum: ' + seasonNum + ', epNum: ' + epNum);
+        usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum: ' + seasonNum + ', epNum: ' + epNum);
         $('#thumbnail-list .expandable-toggle li').text('more').removeClass('less').addClass('more');
         $('#thumbnail-list').removeClass('expanded');
 
-/*
-        // if user has already selected the must see moments (msm) filter
-        // then show the correct season and episode videos
-        if (categoryName == 'Must See Moments' && $('#videos ul.must-see-moments').length > 0) {
-          Drupal.behaviors.ms_site.showMSMVideosBySeasonNEpisode(seasonNum, epNum, false);
-        }
-        else {
-*/
-          Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName, filterClass, seasonNum, epNum, false);
-//        }
+        Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName, filterClass, seasonNum, epNum, false);
       }
 
       // remove 'hide' class from parent so that the next video filter hover works
@@ -683,31 +652,6 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
         $('.video-player-wrapper').find('.locked-msg').removeAttr('style');
         $('.featured-asset').removeClass('tve-overlay');
       });
-
-/*
-      //hot-fix for 1441 with hard-coded first season
-      var parseUrl = window.location.pathname.split('/');
-      var activeItem = (parseUrl.hasOwnProperty(4)) ? parseUrl[4] : '';
-      if(activeItem != '') {
-        var itemFid = $('#video-item-list-wrapper li[data-video-url="' +activeItem +'"]').attr('data-fid');
-        var itemEpisode = 1;
-        var findEpisode = false;
-        if (typeof msmVideosByEpisode != 'undefined' && msmVideosByEpisode.length > 1) {
-          for (var i in msmVideosByEpisode[1]) {
-            if(!findEpisode){
-              for (var j = 0; j < msmVideosByEpisode[1][i]['fids'].length; j++) {
-                if (msmVideosByEpisode[1][i]['fids'][j] == itemFid) {
-                  itemEpisode = i;
-                  findEpisode = true;
-                  break;
-                }
-              }
-            }
-          }
-        }
-        Drupal.behaviors.ms_site.addMSMVideoInfo(1, itemEpisode);
-      }
-*/
     }
   }
 })(jQuery);

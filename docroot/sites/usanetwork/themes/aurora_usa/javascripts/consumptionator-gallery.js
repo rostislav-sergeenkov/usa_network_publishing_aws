@@ -282,7 +282,7 @@
           link_back = $('meta[property="og:url"]').attr('content');
         }
 
-        if (description == '' && Drupal.settings.microsite_gallery_data.description.value !== '') {
+        if (description == '' && typeof Drupal.settings.microsite_gallery_data != 'undefined' && Drupal.settings.microsite_gallery_data.description.value !== '') {
           description = Drupal.settings.microsite_gallery_data.description.value.replace(/(<([^>]+)>)/ig,"");
         }
         else if (description == '' && $('meta[property="og:description"]').length > 0) {

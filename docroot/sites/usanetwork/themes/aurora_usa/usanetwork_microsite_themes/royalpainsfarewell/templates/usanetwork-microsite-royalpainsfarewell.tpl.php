@@ -63,13 +63,6 @@ endif;
         </div>
       </div>
       <div id="site-nav-right">
-<? /* ?>
-      <div id="site-nav-social">
-        <a class="facebook" href="http://www.facebook.com/royalpains" target="_blank"></a>
-        <a class="twitter" href="http://twitter.com/RoyalPains_USA" target="_blank"></a>
-      </div>
-      <div id="site-nav-show-site-link"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>/royalpains" target="_blank">Visit Show Site</a></div>
-<? */ ?>
         <a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/usa_logo.svg" alt="USA Network logo"></a>
       </div>
 

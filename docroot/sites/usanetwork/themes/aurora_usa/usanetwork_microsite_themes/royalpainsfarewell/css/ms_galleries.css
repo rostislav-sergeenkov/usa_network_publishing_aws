@@ -1,6 +1,6 @@
 /* GALLERIES */
 #galleries {
-  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_photos_bg.jpg');
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_photos_bg_new.jpg');
 }
 #galleries .section-title-block > h2 {
   background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_galleries.png');
@@ -45,12 +45,12 @@
   display: none;
 }
 #galleries-filter ul {
-  display: inline-block;
-  width: 100%;
+  display: block;
+  margin: 0 0 18px;
 }
 #galleries-filter li.filter-item {
-  float: left;
-  margin: 1% 8.4% 1% 0;
+  display: initial;
+  margin: 1% 6.4% 1% 0;
   padding: 0;
   font-size: 26px;
   line-height: 1.2;
@@ -63,7 +63,6 @@
   left: 0;
   cursor: pointer;
   background-color: transparent;
-  display: table;
 }
 #galleries-filter li.filter-item p {
   display: table-cell;
@@ -144,6 +143,9 @@
 
 
 /* right pane */
+#galleries-nav-list {
+  text-align: left;
+}
 #galleries-nav-list li {
   display: inline-block;
   width: 31.3%;

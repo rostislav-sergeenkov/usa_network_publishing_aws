@@ -24,6 +24,8 @@ $showCountdown = true;
 if ($timestamp > mktime(22, 0, 1, 5, 18, 2016)): // after May 18, 2016 10:00:01 PM ET, which is the start of the finale episode
   $showCountdown = false;
 endif;
+
+/*
 ?>
 
 <div id="home-wrapper" class="clearfix">
@@ -33,7 +35,7 @@ endif;
   <div id="home-content-container">
     <div id="home-logo"><img src="<?php print $themePath; ?>/images/rp_farewell_logo_main.png" alt="Royal Pains Farewell logo" />
       <?php // @TODO: DV -- DYNAMICALLY PULL IN THE h1 TAG AND SECTION STATUS ?>
-      <?php if ($_SERVER['REQUEST_URI'] == '/royalpainsfarewell/catchup'): ?>
+      <?php if ($_SERVER['REQUEST_URI'] == '/royalpains/farewell'): ?>
       <h1 class="seo-h1">Royal Pains Farewell</h1>
       <?php else: ?>
       <h2 class="seo-h1">Royal Pains Farewell</h2>
@@ -85,13 +87,14 @@ endif;
     </div><!-- end countdown timer -->
 <?php endif; ?>
 
-    <?php if (!empty($description)): ?>
-    <?php print $description; ?>
-    <?php endif; ?>
-
-    <?php // Insert the navigation HTML in the description field ?>
 
   </div>
 </div>
+<? */ ?>
 
-<div id="home-usa-logo"><a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/usa_logo.svg" alt="USA Network logo"></a></div>
+<?php if (!empty($description)): ?>
+<?php print $description; ?>
+<?php endif; ?>
+
+<?php // Insert the navigation HTML in the description field ?>
+

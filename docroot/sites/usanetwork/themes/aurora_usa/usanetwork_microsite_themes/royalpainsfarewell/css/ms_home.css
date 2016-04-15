@@ -45,9 +45,8 @@
   margin: 0 auto 1.5%;
 }
 #home #home-logo {
-  margin-top: 21.3% !important;
-  margin-bottom: 20px;
-  width: 53%;
+  margin-top: 26.3% !important;
+  width: 45%;
 }
 #home #home-logo h1,
 #home #home-logo h2 {
@@ -66,10 +65,10 @@
 /* countdown */
 #home #home-countdown {
   position: absolute;
-  top: 60%;
+  top: 67.5%;
   left: 0;
-  margin-left: calc(50% - 225px) !important;
-  width: 450px;
+  margin-left: calc(50% - 310px) !important;
+  width: 620px;
 }
 #home #home-countdown #counter .circle {
   display: table;

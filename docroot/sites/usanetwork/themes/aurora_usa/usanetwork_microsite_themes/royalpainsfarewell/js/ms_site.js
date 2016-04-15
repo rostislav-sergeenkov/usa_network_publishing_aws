@@ -129,6 +129,15 @@
 
       usa_debug('attach() -- urlParts: ', urlParts);
 
+      var wPath = window.location.path;
+      if (wPath == '/royalpains/farewell') {
+        jQuery('#home-seo').html('<h1 class="seo-h1">Royal Pains Farewell</h1>');
+      }
+      else {
+       jQuery('#home-seo').html('<h2 class="seo-h1">Royal Pains Farewell</h2>');
+      }
+
+
       jQuery('#timeline .section-title-block > h2').html('<span>Timeline</span>');
 
       jQuery('.gallery-wrapper').usaGallery();

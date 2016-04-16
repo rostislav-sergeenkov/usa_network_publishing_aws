@@ -158,7 +158,7 @@
   font-size: 24px;
   color: #000;
   line-height: 1;
-  text-transform: uppercase;
+  text-transform: none;
 }
 #microsite .full-pane #video-container h1.seo-h1,
 #microsite .full-pane #video-container h3.seo-h1 {

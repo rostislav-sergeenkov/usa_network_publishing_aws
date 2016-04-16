@@ -188,7 +188,6 @@ body {
   left: 0;
   width: 100%;
   max-width: 1920px;
-  max-height: 1078px;
   margin: 0 auto;
   padding: 1078px 0 0;
   background-color: #FAEFDE;
@@ -252,7 +251,7 @@ footer {
 #microsite .full-pane #video-container h3 {
   color: #55452A;
   font-family: "avalonmedium", sans-serif;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 1.2;
 }
 #microsite .full-pane #video-container .video-description {
@@ -426,6 +425,9 @@ footer {
     padding: 0;
     height: initial;
   }
+  #sections #videos.section {
+    padding: 0 0 50px;
+  }
   #sections > .section:not(#site-nav) > section {
     position: static;
     max-height: inherit;
@@ -451,29 +453,6 @@ footer {
     height: initial;
     max-height: initial;
     padding-bottom: 40px;
-  }
-}
-
-@media (max-width: 1072px) {
-  section .section-title-block > h2 {
-    width: 335px;
-    height: 56.2px;
-    margin-left: calc(50% - 167.5px);
-  }
-  .section-description {
-    width: 60%;
-    font-size: 18px;
-  }
-  #microsite .full-pane #video-container h1, #microsite .full-pane #video-container h3 {
-    font-size: 24px;
-  }
-  #microsite .full-pane #video-container .video-description {
-    font-size: 16px;
-  }
-  #microsite .gig-bar-container .gig-button-container td > div, #microsite .gig-bar-container .gig-button-container td > div:hover, #microsite .field-type-gigya-sharebar .gig-button-container td > div, #microsite .field-type-gigya-sharebar .gig-button-container td > div:hover {
-    font-size: 24px;
-    width: 24px !important;
-    height: 24px !important;
   }
 }
 
@@ -509,6 +488,30 @@ footer {
   }
 }
 */
+@media (max-width: 1072px) {
+  section .section-title-block > h2 {
+    width: 320px;
+    height: 54px;
+  }
+/*
+  .section-description {
+    width: 60%;
+    font-size: 18px;
+  }
+  #microsite .full-pane #video-container h1, #microsite .full-pane #video-container h3 {
+    font-size: 24px;
+  }
+  #microsite .full-pane #video-container .video-description {
+    font-size: 16px;
+  }
+  #microsite .gig-bar-container .gig-button-container td > div, #microsite .gig-bar-container .gig-button-container td > div:hover, #microsite .field-type-gigya-sharebar .gig-button-container td > div, #microsite .field-type-gigya-sharebar .gig-button-container td > div:hover {
+    font-size: 24px;
+    width: 24px !important;
+    height: 24px !important;
+  }
+*/
+}
+
 
 /* BEGIN MOBILE DEVICE QUERIES */
 @media (max-device-width: 736px) {

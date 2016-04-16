@@ -2666,7 +2666,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'galleries');
             if(!empty($node)) {
               $content_name = $node->title;
-              $specific_content_name = 'Photo 1';
+              $specific_content_name = ''; //'Photo 1';
               $umbel = $node->title;
             }
           }
@@ -2677,7 +2677,7 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               if (!empty($galleries_section_object->field_ms_media_gallery)) {
                 $node = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_ms_media_gallery);
                 $content_name = $node->title;
-                $specific_content_name = 'Photo 1';
+                $specific_content_name = ''; //'Photo 1';
                 $umbel = $node->title;
               }
             }

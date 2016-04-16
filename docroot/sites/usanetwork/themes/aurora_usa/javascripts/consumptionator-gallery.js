@@ -181,6 +181,17 @@
         }
       }
 
+      if ($('body').hasClass('page-node-microsite')) {
+        if (typeof Drupal.behaviors.ms_global == 'object' && Drupal.behaviors.ms_global.hasOwnProperty('setOmnitureData')) {
+          Drupal.behaviors.ms_global.setOmnitureData('galleries');
+          return;
+        }
+        else {
+          s.prop5 = s.prop4 + ' : Gallery : ' + $('.gallery-wrapper:first .gallery-name:first').text();
+          s.pageName = s.prop5;
+        }
+      }
+
       void (s.t());
     }
   };

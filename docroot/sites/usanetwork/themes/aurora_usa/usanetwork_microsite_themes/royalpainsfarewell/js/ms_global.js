@@ -255,10 +255,12 @@
         shareType = 'Pinterest';
       }
 
+      usa_debug('sendSocialShareOmniture(' + title + ') -- shareTitle: ' + shareTitle);
+
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
         s.linkTrackVars = 'events,eVar73,eVar74';
         s.linkTrackEvents = s.events = 'event41';
-        s.eVar73 = shareTitle;
+        s.eVar73 = shareTitle.trim();
         s.eVar74 = shareType;
         s.tl(this, 'o', 'Social Share');
         s.manageVars('clearVars', s.linkTrackVars, 1);
@@ -299,12 +301,16 @@
           specificContentName = 'S' + itemSeason + ' E' + itemEpisode + ' ' + itemScene;
           break;
         case 'galleries':
+          // DV: This is being called from /sites/usanetwork/themes/aurora_usa/javascripts/consumptionator-gallery.js, usaGallery.prototype.callAdobeTracking
           contentType = 'Gallery';
           contentName = $('#galleries #galleries-nav-list li.active .gallery-title > div').text();
+/* Commented for now as there seems to be a race condition where this call is made before the slide is updated
           var $slider = $('#microsite #galleries .gallery-wrapper .slick-track'),
-              currentSlide = parseInt($slider.find('.slick-active').attr('data-slick-index') + 1);
+              currentSlide = (parseInt($slider.find('.slick-active').attr('data-slick-index')) + 1);
+          usa_debug('setOmnitureData(' + anchor + ') -- currentSlide: ' + currentSlide);
           if (!currentSlide) currentSlide = 1;
           specificContentName = 'Photo ' + currentSlide;
+*/
           break;
       }
 
@@ -481,6 +487,10 @@
     resizeResponse: function() {
       var wwidth = window.innerWidth,
           $siteNav = $('#site-nav');
+
+      Drupal.behaviors.ms_videos.moveVideoFilters();
+      Drupal.behaviors.ms_global.moveGalleryFilters();
+
       if (wwidth < 874) {
         $siteNav.addClass('mobile');
       }
@@ -573,6 +583,19 @@
       }
     },
 
+    moveGalleryFilters: function() {
+      var wwidth = window.innerWidth,
+          $filters = $('#galleries .filter-wrapper')
+          $highPos = $('#galleries .full-pane'),
+          $lowPos = $('#galleries .right-pane');
+      if (wwidth < 1174) {
+        $lowPos.prepend($filters);
+      }
+      else {
+        $highPos.before($filters);
+      }
+    },
+
     showGallery: function($activeGallery) {
       $activeGallery.animate({'opacity': 1}, 1000, function(){
         Drupal.behaviors.ms_global.showHideLoader();
@@ -617,6 +640,14 @@
             //Drupal.behaviors.ms_site.galleryLazyLoad();
             Drupal.behaviors.ms_global.showGallery($activeGallery);
             Drupal.behaviors.ms_global.setOmnitureData('galleries');
+
+            // initialize Gigya share bar clicks
+            $('#galleries #gigya-share .gig-button-container td > div').unbind('click');
+            $('#galleries #gigya-share .gig-button-container td > div').bind('click', function(){
+              var title = $('#galleries .gallery-wrapper .gallery-name:first').text();
+              Drupal.behaviors.ms_global.sendSocialShareOmniture($(this), title);
+            });
+
             Drupal.behaviors.ms_global.galleryIsLoading = false;
             if (callback !== null) callback();
           }, 2000);
@@ -694,6 +725,8 @@
         $siteNav.removeClass('mobile');
       }
 
+      self.moveGalleryFilters();
+
       // Turn off the popstate/hashchange tve-core.js event listeners
       $(window).off('popstate');
       $(window).off('hashchange');
@@ -751,14 +784,21 @@
             Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, null, true, self.showVideoSection);
 
               // designers want video filters in a certain order
-              Drupal.behaviors.ms_videos.setVideoFilterOrder();
+              Drupal.behaviors.ms_videos.setVideoFilterOrder(Drupal.behaviors.ms_videos.moveVideoFilters);
           }
           else {
             Drupal.behaviors.ms_videos.setVideoFilterOrder(true, function(){
+              Drupal.behaviors.ms_videos.moveVideoFilters();
               Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('false', null, null, true, self.showVideoSection);
             });
           }
         }
+
+        // initialize gallery Gigya share bar clicks
+        $('#galleries #gigya-share .gig-button-container td > div').bind('click', function(){
+          var title = $('#galleries .gallery-wrapper .gallery-name:first').text();
+          Drupal.behaviors.ms_global.sendSocialShareOmniture($(this), title);
+        });
 
         // TIME OUT
         // we need to allow time for the page to load -- especially videos

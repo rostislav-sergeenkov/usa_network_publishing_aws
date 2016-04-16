@@ -118,6 +118,19 @@
       });
     },
 
+    moveVideoFilters: function() {
+      var wwidth = window.innerWidth,
+          $filters = $('#videos .filter-wrapper')
+          $highPos = $('#videos .full-pane'),
+          $lowPos = $('#videos .right-pane');
+      if (wwidth < 1174) {
+        $lowPos.prepend($filters);
+      }
+      else {
+        $highPos.before($filters);
+      }
+    },
+
     //ajax request
     micrositeGetVideo: function (url, initialPageLoad) {
       initialPageLoad = initialPageLoad || 0;

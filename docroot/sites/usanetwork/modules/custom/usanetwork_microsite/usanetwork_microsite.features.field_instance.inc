@@ -10,6 +10,48 @@
 function usanetwork_microsite_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'field_collection_item-field_ms_section-field_mc_default_video_filter'
+  $field_instances['field_collection_item-field_ms_section-field_mc_default_video_filter'] = array(
+    'bundle' => 'field_ms_section',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 34,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_mc_default_video_filter',
+    'label' => 'Default video filter',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 18,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_ms_section-field_ms_catchall_page'
   $field_instances['field_collection_item-field_ms_section-field_ms_catchall_page'] = array(
     'bundle' => 'field_ms_section',
@@ -2456,13 +2498,14 @@ function usanetwork_microsite_field_default_field_instances() {
   t('Background Image');
   t('Base Path');
   t('Catchall Page');
+  t('Default video filter');
   t('Description');
   t('Enabled');
   t('Enter quotations along with their source here.');
   t('Episode');
   t('Facebook page');
   t('Featured');
-  t('Galley thumbnail style');
+  t('Gallery thumbnail style');
   t('H1');
   t('Instagram Page');
   t('Large first promo');

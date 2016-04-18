@@ -3502,6 +3502,7 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
   $order_for_full_episodes = usanetwork_microsite_process_setting_data('videos_full_episode_sort_order', 'string', $node);
   $allowed_filters = _usanetwork_microsite_get_allowed_filters($node);
   $filters_tids = _usanetwork_microsite_get_filters_tids($allowed_filters);
+  $default_filter = _usanetwork_microsite_get_default_filter($node);
 
 // @TODO: Add ability to filter videos by language, such as filtering out Spanish sub-titled videos from Mr. Robot full episode videos
 //echo '<pre>show: ' . $show_id . '<br><br>filters_tids: ' . print_r($filters_tids, true) . '<br><br>USANETWORK_MICROSITE_FULL_VIDEO: ' . USANETWORK_MICROSITE_FULL_VIDEO . '<br><br>allowed_filters: ' . print_r($allowed_filters, true) . '</pre>';
@@ -3534,6 +3535,7 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     $query = db_select('mpx_video', 'mpx');
     $query->distinct();
     $query->fields('mpx', array('fid'));
+    $query->fields('fvt', array('field_usa_video_terms_target_id'));
     $query->innerJoin('file_managed', 'fm', 'mpx.fid = fm.fid');
     $query->innerJoin('field_data_field_mpx_full_episode', 'mfe', 'mfe.entity_id = fm.fid');
     $query->innerJoin('field_data_field_show', 'fs', 'fs.entity_id = fm.fid');
@@ -3563,10 +3565,25 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
 
     // EXECUTE QUERY
     $query_results = $query->execute()->fetchAll();
+    $is_default_filter = !empty($default_filter) && USANETWORK_MICROSITE_FULL_VIDEO != $default_filter;
     if (!empty($query_results)) {
       $files_array = array();
+      $default_files_array = array();
       foreach($query_results as $query_result) {
-        $files_array[] = $query_result->fid;
+        if ($is_default_filter) {
+          if ($query_result->field_usa_video_terms_target_id == $default_filter) {
+            $default_files_array[] = $query_result->fid;
+          }
+          else {
+            $files_array[] = $query_result->fid;
+          }
+        }
+        else {
+          $files_array[] = $query_result->fid;
+        }
+      }
+      if (!empty($default_files_array)) {
+        $files_array = array_merge($default_files_array, $files_array);
       }
       cache_set($cache_name, $files_array, 'cache', REQUEST_TIME + 60 * 60);
       return $files_array;
@@ -3589,6 +3606,15 @@ function _usanetwork_microsite_get_allowed_filters($node) {
   $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_type($node, 'videos');
   $allowed_filters = $section_wrapper->field_ms_video_filters->value();
   return $allowed_filters;
+}
+
+function _usanetwork_microsite_get_default_filter($node) {
+  $section_wrapper = _usanetwork_microsite_get_section_wrapper_by_type($node, 'videos');
+  $default_filter = NULL;
+  if (usanetwork_core_api_check_field($section_wrapper, 'field_mc_default_video_filter')) {
+    $default_filter = $section_wrapper->field_mc_default_video_filter->value();
+  }
+  return $default_filter;
 }
 
 function usanetwork_microsite_get_custom_js($node) {

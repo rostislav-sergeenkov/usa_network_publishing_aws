@@ -277,7 +277,7 @@ function usanetwork_files_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -6,
+      'weight' => -5,
     ),
   );
 
@@ -410,7 +410,7 @@ function usanetwork_files_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -7,
+      'weight' => -6,
     ),
   );
 
@@ -528,9 +528,10 @@ function usanetwork_files_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'file',
+    'fences_wrapper' => 'div',
     'field_name' => 'field_file_image_alt_text',
     'label' => 'Alt Text',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
       'custom_remove' => '',
@@ -688,7 +689,7 @@ function usanetwork_files_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -3,
+      'weight' => -2,
     ),
   );
 
@@ -821,7 +822,7 @@ function usanetwork_files_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -5,
+      'weight' => -4,
     ),
   );
 
@@ -958,7 +959,7 @@ function usanetwork_files_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => -3,
+      'weight' => -1,
     ),
   );
 
@@ -1091,7 +1092,7 @@ function usanetwork_files_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => -4,
+      'weight' => -3,
     ),
   );
 
@@ -1224,7 +1225,7 @@ function usanetwork_files_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -8,
+      'weight' => -7,
     ),
   );
 

@@ -41,22 +41,18 @@
                 authService.promise.then(function (status) {
                   statusPromise = true;
                   if ($rootScope.isFullEpisode) {
-                    console.info('init full video');
                     init(status);
                   }
                 });
 
                 usaVideoService.promise.then(function () {
                   if(!$rootScope.isFullEpisode) {
-                    console.info('init short video');
                     init();
                   }
                 });
 
                 frame.bind('load', function (evt) {
-
                   if (statusPromise || !scope.isFullEpisode) {
-                    console.info('iframe load src');
 
                     $pdk.bind(this, true);
                     $pdk.controller.setIFrame(this, true);
@@ -173,7 +169,6 @@
                 return;
               }
 
-              usaPlayerError.hidePlayerThumbnail = hidePlayerThumbnail;
               // show dart
               $rootScope.isDartReq = true;
               $rootScope.statusAd = false;
@@ -197,6 +192,8 @@
               // referencing openLoginModal function to the current scope 
               scope.openLoginWindow = authService.openLoginModal;
 
+              usaPlayerError.hidePlayerThumbnail = hidePlayerThumbnail;
+              
               scope.initiateAuthorization = initiateAuthorization;
               scope._bindPlayerEvents = _bindPlayerEvents;
               scope.hidePlayerThumbnail = hidePlayerThumbnail;
@@ -217,7 +214,7 @@
 
                     usaMicrositesService.isAuthServicePromiseThen = true;
 
-                    if (usaMicrositesService.isInitPlayer) {
+                    if (usaMicrositesService.isInitPlayer && !usaMicrositesService.defer.isResolve) {
                       usaMicrositesService.defer.resolve();
                     }
                   }
@@ -225,7 +222,7 @@
               });
 
               usaMicrositesService.defer.promise.then(function () {
-                if (!usaMicrositesService.defer.isResolve && usaMicrositesService.isAuthServicePromiseThen && usaMicrositesService.isVideoFirstRun) {
+                if (usaMicrositesService.isAuthServicePromiseThen && usaMicrositesService.isVideoFirstRun) {
 
                   usaMicrositesService.defer.isResolve = true;
                   isEntitlement = USAN.ms_player.options.isAuth;
@@ -318,8 +315,6 @@
                 $pdk.controller.addEventListener('OnShowFullScreen', _onShowFullScreen);
 
                 $pdk.controller.addEventListener('OnSetToken', function (e) {
-                  console.info('OnSetToken');
-
                   // change status
                   scope.$apply(function () {
                     scope.statusSetToken = true;
@@ -332,16 +327,10 @@
                 $pdk.controller.dispatchEvent("OnEndCardMetadata", endCardMetaData);
 
                 $pdk.controller.addEventListener("OnEndCardCountdownComplete", function (e) {
-                  console.info("OnEndCardCountdownComplete");
-                  console.info(e.data);
-
                   window.location = window.location.origin + e.data.data.pageLink;
                 });
 
                 $pdk.controller.addEventListener("OnEndCardPlaylistVideoSelected", function (e) {
-                  console.info("OnEndCardPlaylistVideoSelected");
-                  console.info(e.data);
-
                   window.location = window.location.origin + e.data.data.pageLink;
                 });
 
@@ -356,7 +345,7 @@
                 // init watchwith
                 if (typeof wwLoader !== 'undefined') {
                   wwLoader.bootstrap();
-                  console.info('init wwLoader.bootstrap()');
+                  usa_debug('init wwLoader.bootstrap()');
                 }
               }
 
@@ -396,13 +385,10 @@
 
                   $(options.playerWrap).find('iframe').eq(0).bind('load', function () {
 
-                    console.info('ms iframe load');
-
                     $pdk.bind(this, true);
                     $pdk.controller.setIFrame(this, true);
 
                     if (!usaMicrositesService.defer.isResolve && usaMicrositesService.isVideoFirstRun && usaMicrositesService.isAuthServicePromiseThen) {
-                      usaMicrositesService.defer.isResolve = true;
                       usaMicrositesService.defer.resolve();
                     }
 
@@ -457,7 +443,6 @@
               }
 
               function hidePlayerThumbnail() {
-                console.info('hidePlayerThumbnail');
                 if (scope.playerThumbnail) {
                   scope.playerThumbnail = false;
                   $timeout(function () {
@@ -478,7 +463,6 @@
               }
 
               function _onReleaseError(pdkEvent) {
-                console.info('_onReleaseError', pdkEvent);
                 if (pdkEvent.data.exception == "GeoLocationBlocked") {
                   usaPlayerError.initGeoRestrictionError();
                 } else {
@@ -504,7 +488,6 @@
               }
 
               function _onReleaseStart() {
-                console.info('_onReleaseStart');
 
                 scope.isPlayerStart = true;
                 scope.isPlayerPlay = true;
@@ -523,8 +506,6 @@
                * Media Start event callback so that we can show the metadata section
                */
               function _onMediaStart(pdkEvent) {
-
-                console.info('_onMediaStart');
 
                 var baseClip = pdkEvent && pdkEvent.data && pdkEvent.data.baseClip;
 
@@ -600,8 +581,6 @@
                * @private
                */
               function _onPlayerLoaded(pdkEvent) {
-
-                console.info('_onPlayerLoaded');
 
                 scope.$apply(function () {
                   scope.statusPlayerLoaded = true;

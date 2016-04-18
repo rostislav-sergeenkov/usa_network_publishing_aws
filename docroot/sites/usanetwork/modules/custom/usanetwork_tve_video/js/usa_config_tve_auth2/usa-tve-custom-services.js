@@ -28,20 +28,18 @@
         }])
 
       .factory('usaPlayerError', [
-        '$rootScope', 'usaMicrositesService',
-        function ($rootScope, usaMicrositesService) {
+        '$rootScope',
+        function ($rootScope) {
 
           var geoError = '<div class="geo-error"><a href="/" target="_blank"></a></div>',
               flashError = '<div class="flash-error"><a href="//get.adobe.com/flashplayer/" target="_blank"></a></div>';
 
           return {
             initGeoRestrictionError: function () {
-              console.info('initGeoRestrictionError');
               $($rootScope.playerWrap).html(geoError);
               this.hidePlayerThumbnail();
             },
             initFlashError: function () {
-              console.info('initFlashError');
               $($rootScope.playerWrap).html(flashError);
               this.hidePlayerThumbnail();
             }

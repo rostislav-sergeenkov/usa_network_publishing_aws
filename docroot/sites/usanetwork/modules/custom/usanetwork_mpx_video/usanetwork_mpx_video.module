@@ -2907,8 +2907,7 @@ function _usa_mpx_video_clips_render() {
            $related_video_file_wrapper = entity_metadata_wrapper('file', $related_video_file);
            $promo_data = _usanetwork_promo_file_get_promo_lines($related_video_file);
            if (!empty($related_video_file->field_promo_image_override)) {
-             $field_image_override = reset(field_get_items('file', $related_video_file, 'field_promo_image_override'));
-             $promo_image_url = $field_image_override['uri'];
+             $promo_image_url = _usanetwork_get_field_item('file', $related_video_file, 'field_promo_image_override', 'uri');
            }
            else {
              $promo_image_url = usanetwork_core_api_get_content_image('file', $related_video_file);

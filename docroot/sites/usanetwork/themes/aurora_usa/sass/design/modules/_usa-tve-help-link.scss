@@ -11,7 +11,8 @@
 #usa-tve-help-link {
   background: none;
   display: none;
-  right: get-vw(-172px, 1025);
+  right: 17vw;
+  //right: get-vw(-172px, 1025);
   height: 100%;
   position: absolute;
   top: 0;
@@ -59,7 +60,8 @@
     .links-wrapper {
       margin-right: 0;
       max-width: inherit;
-      width: get-vw(172px, 1025);
+      width: 17vw;
+      //width: get-vw(172px, 1025);
       @include breakpoint($bp-min-1901-width) {
         width: 342px;
       }
@@ -71,7 +73,8 @@
     .usaTveLogin {
       float: left;
       position: relative;
-      width: get-vw(172px, 1025) - get-vw(73px, 1025);
+      width: 9.87805vw;
+      //width: get-vw(172px, 1025) - get-vw(73px, 1025);
       @include breakpoint($bp-min-1901-width) {
         width: 207px;
       }
@@ -137,7 +140,8 @@
       content: '\e61e';
       display: block;
       font-family: $ico-font;
-      font-size: get-vw(25px, 1025);;
+      font-size: 2.4vw;
+      //font-size: get-vw(25px, 1025);
       left: 50%;
       line-height: 1;
       margin-left: get-vw(-25px, 1025) / 2;
@@ -218,8 +222,10 @@
     }
     .sign-out-text {
       display: block;
-      font-size: get-vw(10px, 1025);
-      line-height: get-vw(10px, 1025);
+      font-size: 0.75vw;
+      line-height: 0.3vw;
+      //font-size: get-vw(10px, 1025);
+      //line-height: get-vw(10px, 1025);
       position: absolute;
       text-align: center;
       text-transform: uppercase;
@@ -231,13 +237,11 @@
         top: calc(45% + 35px);
       }
       @include breakpoint($bp-1024-width) {
-        font-size: 10px;
-        line-height: 10px;
+        font-size: 8px;
+        line-height: 8px;
         top: calc(45% + 14px);
       }
       @include breakpoint($bp-768-width) {
-        font-size: 9px;
-        line-height: 9px;
         top: calc(45% + 10px);
       }
     }

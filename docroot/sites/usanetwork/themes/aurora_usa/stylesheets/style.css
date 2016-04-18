@@ -18057,7 +18057,7 @@ footer h2 {
 #usa-tve-help-link {
   background: none;
   display: none;
-  right: -16.78049vw;
+  right: 17vw;
   height: 100%;
   position: absolute;
   top: 0;
@@ -18102,7 +18102,7 @@ footer h2 {
 #usa-tve-help-link.signOut .links-wrapper {
   margin-right: 0;
   max-width: inherit;
-  width: 16.78049vw;
+  width: 17vw;
 }
 @media (min-width: 1901px) {
   #usa-tve-help-link.signOut .links-wrapper {
@@ -18118,7 +18118,7 @@ footer h2 {
 #usa-tve-help-link.signOut .usaTveLogin {
   float: left;
   position: relative;
-  width: 9.65854vw;
+  width: 9.87805vw;
 }
 @media (min-width: 1901px) {
   #usa-tve-help-link.signOut .usaTveLogin {
@@ -18193,7 +18193,7 @@ footer h2 {
   content: '\e61e';
   display: block;
   font-family: "ico-font";
-  font-size: 2.43902vw;
+  font-size: 2.4vw;
   left: 50%;
   line-height: 1;
   margin-left: -1.21951vw;
@@ -18274,8 +18274,8 @@ footer h2 {
 }
 #usa-tve-help-link .usaTveLogout .sign-out-text {
   display: block;
-  font-size: 0.97561vw;
-  line-height: 0.97561vw;
+  font-size: 0.75vw;
+  line-height: 0.3vw;
   position: absolute;
   text-align: center;
   text-transform: uppercase;
@@ -18291,15 +18291,13 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   #usa-tve-help-link .usaTveLogout .sign-out-text {
-    font-size: 10px;
-    line-height: 10px;
+    font-size: 8px;
+    line-height: 8px;
     top: calc(45% + 14px);
   }
 }
 @media (max-width: 768px) {
   #usa-tve-help-link .usaTveLogout .sign-out-text {
-    font-size: 9px;
-    line-height: 9px;
     top: calc(45% + 10px);
   }
 }

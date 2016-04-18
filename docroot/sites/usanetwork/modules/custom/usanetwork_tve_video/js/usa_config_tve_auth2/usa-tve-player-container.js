@@ -225,8 +225,9 @@
               });
 
               usaMicrositesService.defer.promise.then(function () {
-                if (usaMicrositesService.isAuthServicePromiseThen && usaMicrositesService.isVideoFirstRun) {
+                if (!usaMicrositesService.defer.isResolve && usaMicrositesService.isAuthServicePromiseThen && usaMicrositesService.isVideoFirstRun) {
 
+                  usaMicrositesService.defer.isResolve = true;
                   isEntitlement = USAN.ms_player.options.isAuth;
                   playerWrap = USAN.ms_player.options.playerWrap;
                   episodeTitle = USAN.ms_player.options.episodeTitle;
@@ -400,7 +401,8 @@
                     $pdk.bind(this, true);
                     $pdk.controller.setIFrame(this, true);
 
-                    if (usaMicrositesService.isVideoFirstRun && usaMicrositesService.isAuthServicePromiseThen) {
+                    if (!usaMicrositesService.defer.isResolve && usaMicrositesService.isVideoFirstRun && usaMicrositesService.isAuthServicePromiseThen) {
+                      usaMicrositesService.defer.isResolve = true;
                       usaMicrositesService.defer.resolve();
                     }
 

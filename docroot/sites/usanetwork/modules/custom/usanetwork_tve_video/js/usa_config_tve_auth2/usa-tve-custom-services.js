@@ -68,6 +68,7 @@
             }
           };
           ms_player.defer = {
+            isResolve: false,
             promise: ms_Defer.promise.then(function (res) {
               return res;
             }, function (res) {

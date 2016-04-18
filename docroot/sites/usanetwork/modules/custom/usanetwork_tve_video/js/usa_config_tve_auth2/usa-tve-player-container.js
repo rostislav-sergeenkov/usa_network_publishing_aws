@@ -5,8 +5,8 @@
   ng.module('tve.auth.directives')
       .directive('usaTvePlayer', [
         '$rootScope',
-        '$sce', 'authService',
-        function ($rootScope, $sce, authService) {
+        '$sce', 'authService', 'usaVideoService',
+        function ($rootScope, $sce, authService, usaVideoService) {
           return {
             replace: false,
             // apply client side iframe rendering to reduce cache problem for dynamic url
@@ -37,38 +37,44 @@
                 $rootScope.playerId = attr['id'];
                 
                 scope.id = config.id;
-                
 
                 authService.promise.then(function (status) {
-
                   statusPromise = true;
+                  if ($rootScope.isFullEpisode) {
+                    init(status);
+                  }
+                });
 
-                  init(status);
+                usaVideoService.promise.then(function () {
+                  if(!$rootScope.isFullEpisode) {
+                    init();
+                  }
                 });
 
                 frame.bind('load', function (evt) {
-                  console.info('iframe load event');
-
-                  if (statusPromise) {
-                    console.info('iframe load src');
+                  if (statusPromise || !scope.isFullEpisode) {
 
                     $pdk.bind(this, true);
                     $pdk.controller.setIFrame(this, true);
 
                     controller._bindPlayerEvents();
 
-                    if (scope.isEntitled) {
+                    if ($rootScope.isEntitled) {
                       controller.initiateAuthorization();
+                    }
+
+                    if (!$rootScope.isFullEpisode) {
+                      controller.hidePlayerThumbnail();
                     }
                   }
                 });
 
                 function init(status) {
                   // passing iframe url as trusted to the template
-                  if (scope.isFullEpisode) {
+                  if ($rootScope.isFullEpisode) {
                     scope.src = $sce.trustAsResourceUrl(config.src + '?ec=f&' + getQueryParams(status.isAuthenticated && status.mvpdId));
                   } else {
-                    scope.src = $sce.trustAsResourceUrl(config.src + '?' + getQueryParams(status.isAuthenticated && status.mvpdId));
+                    scope.src = $sce.trustAsResourceUrl(config.src + '?' + getQueryParams());
                   }
                 }
 
@@ -79,15 +85,10 @@
                  * @returns {string} query params string
                  */
                 function getQueryParams(mvpdId) {
-                  if (scope.isEntitled) {
-                    params = {
-                      autoPlay: false
-                    };
-                  } else {
-                    params = {
-                      autoPlay: true
-                    };
-                  }
+
+                  params = {
+                    autoPlay: false
+                  };
 
                   ng.forEach(SRC_PARAMS, function (param, i) {
                     if (param.attrName in config) {
@@ -110,11 +111,11 @@
       .directive('usaTvePlayerContainer', [
         '$rootScope',
         'authService', 'tveAuthConfig', 'tveConfig', 'helper', 'tveModal', '$timeout', '$http', '$sce', '$cookies',
-        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService', 'usaFlashError',
+        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService', 'usaPlayerError', 'usaVideoService',
 
         function ($rootScope,
                   authService, tveAuthConfig, tveConfig, helper, tveModal, $timeout, $http, $sce, $cookies,
-                  usaEndCardService, usaEndCardHelper, usaMicrositesService, usaFlashError) {
+                  usaEndCardService, usaEndCardHelper, usaMicrositesService, usaPlayerError, usaVideoService) {
           return {
             scope: true,
             controller: ['$scope', function ($scope) {
@@ -124,11 +125,15 @@
               this._bindPlayerEvents = function () {
                 $scope._bindPlayerEvents();
               };
+              this.hidePlayerThumbnail = function () {
+                $scope.hidePlayerThumbnail();
+              };
             }],
             link: function (scope, element, attr) {
 
               var body, playerContainer, tveAnalytics, userStatus, isLive, isShowEndCard,
-                  isFullEpisode, isEntitlement, isMicrosite, playerWrap, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
+                  isFullEpisode, isEntitlement, isMicrosite, isMobile,
+                  playerWrap, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
                   isAdStart, nextReleaseUrl, positionTime, usaVideoSettingsRun, endCardMetaData;
 
               // set vars value
@@ -139,6 +144,7 @@
               episodeTitle = attr['episodeTitle'];
               mpxGuid = attr['mpxGuid'];
               tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop};
+              isMobile = helper.device.isMobile;
               isLive = parseInt(attr['isLive']) === 1 ? true : false;
               isEntitlement = attr['entitlement'] === 'auth' ? true : false;
               isFullEpisode = parseInt(attr['isFullEpisode']) === 1 ? true : false;
@@ -163,15 +169,13 @@
                 return;
               }
 
-              usaFlashError.hidePlayerThumbnail = hidePlayerThumbnail;
-
               // show dart
               $rootScope.isDartReq = true;
               $rootScope.statusAd = false;
               $rootScope.isFullEpisode = isFullEpisode;
-              
-              scope.isEntitled = isEntitlement;
-              scope.isMobile = helper.device.isMobile;
+              $rootScope.isEntitled = isEntitlement;
+
+              scope.isMobile = isMobile;
               scope.showCompanionAdd = false;
               scope.statusPlayerLoaded = false;
               scope.statusSetToken = false;
@@ -188,37 +192,46 @@
               // referencing openLoginModal function to the current scope 
               scope.openLoginWindow = authService.openLoginModal;
 
+              usaPlayerError.hidePlayerThumbnail = hidePlayerThumbnail;
+              
               scope.initiateAuthorization = initiateAuthorization;
               scope._bindPlayerEvents = _bindPlayerEvents;
+              scope.hidePlayerThumbnail = hidePlayerThumbnail;
+
+              if (!isFullEpisode) {
+                usaVideoService.resolve();
+              }
 
               authService.promise.then(function (status) {
 
                 userStatus = status;
-
-                console.info('promise');
 
                 if (scope.showPlayer = showPlayer()) {
                   // check Authenticated and delete thumbnail if Authenticated = true
                   scope.user.isAuthenticated = status.isAuthenticated;
 
                   if (isMicrosite) {
-                    console.info('promise isMicrosite');
 
                     usaMicrositesService.isAuthServicePromiseThen = true;
 
-                    if (usaMicrositesService.isInitPlayer) {
-
-                      console.info('promise isMicrosite Init Player');
-
-                      isEntitlement = USAN.ms_player.options.isAuth;
-                      playerWrap = USAN.ms_player.options.playerWrap;
-                      episodeTitle = USAN.ms_player.options.episodeTitle;
-                      mpxGuid = USAN.ms_player.options.mpxGuid;
-                      episodeRating = USAN.ms_player.options.episodeRating;
-
-                      USAN.ms_player.setPlayerEvents();
+                    if (usaMicrositesService.isInitPlayer && !usaMicrositesService.defer.isResolve) {
+                      usaMicrositesService.defer.resolve();
                     }
                   }
+                }
+              });
+
+              usaMicrositesService.defer.promise.then(function () {
+                if (usaMicrositesService.isAuthServicePromiseThen && usaMicrositesService.isVideoFirstRun) {
+
+                  usaMicrositesService.defer.isResolve = true;
+                  isEntitlement = USAN.ms_player.options.isAuth;
+                  playerWrap = USAN.ms_player.options.playerWrap;
+                  episodeTitle = USAN.ms_player.options.episodeTitle;
+                  mpxGuid = USAN.ms_player.options.mpxGuid;
+                  episodeRating = USAN.ms_player.options.episodeRating;
+
+                  USAN.ms_player.setPlayerEvents();
                 }
               });
 
@@ -241,13 +254,13 @@
               function showPlayer() {
                 if (isEntitlement) {
                   if (Drupal.settings.tve_cookie_detection != undefined) {
-                    return !scope.isMobile && authService.isAuthenticated() && Drupal.settings.tve_cookie_detection.status;
+                    return !isMobile && authService.isAuthenticated() && Drupal.settings.tve_cookie_detection.status;
                   }
                   else {
-                    return !scope.isMobile && authService.isAuthenticated();
+                    return !isMobile && authService.isAuthenticated();
                   }
                 } else if (isMicrosite) {
-                  return !scope.isMobile && authService.isAuthenticated();
+                  return !isMobile && authService.isAuthenticated();
                 } else {
                   //return !scope.isMobile;
                   return true;
@@ -302,8 +315,6 @@
                 $pdk.controller.addEventListener('OnShowFullScreen', _onShowFullScreen);
 
                 $pdk.controller.addEventListener('OnSetToken', function (e) {
-                  console.info('OnSetToken');
-
                   // change status
                   scope.$apply(function () {
                     scope.statusSetToken = true;
@@ -312,30 +323,14 @@
                   initAutoPlay();
                 });
 
-                $pdk.controller.addEventListener("OnShareControlInvoked", function (e) {
-                  console.info("OnShareControlInvoked");
-                });
-
-                $pdk.controller.addEventListener("OnShareOptionInvoked", function (e) {
-                  console.info("OnShareOptionInvoked");
-                  console.info(e.data);
-                });
-
                 // end card events
                 $pdk.controller.dispatchEvent("OnEndCardMetadata", endCardMetaData);
 
                 $pdk.controller.addEventListener("OnEndCardCountdownComplete", function (e) {
-                  console.info("OnEndCardCountdownComplete");
-                  console.info(e.data);
-
                   window.location = window.location.origin + e.data.data.pageLink;
                 });
 
-                $pdk.controller.addEventListener("OnPlaylistVideoSelected", function (e) {
-                // $pdk.controller.addEventListener("OnEndCardPlaylistVideoSelected", function (e) {
-                  console.info("OnPlaylistVideoSelected");
-                  console.info(e.data);
-
+                $pdk.controller.addEventListener("OnEndCardPlaylistVideoSelected", function (e) {
                   window.location = window.location.origin + e.data.data.pageLink;
                 });
 
@@ -350,7 +345,7 @@
                 // init watchwith
                 if (typeof wwLoader !== 'undefined') {
                   wwLoader.bootstrap();
-                  console.info('init wwLoader.bootstrap()');
+                  usa_debug('init wwLoader.bootstrap()');
                 }
               }
 
@@ -372,8 +367,6 @@
 
                 init: function (options) {
 
-                  console.info('USAN.ms_player init');
-
                   usaMicrositesService.isInitPlayer = true;
 
                   USAN.ms_player.options = {
@@ -392,17 +385,25 @@
 
                   $(options.playerWrap).find('iframe').eq(0).bind('load', function () {
 
-                    console.info('ms iframe load');
-
                     $pdk.bind(this, true);
                     $pdk.controller.setIFrame(this, true);
 
-                    if (usaMicrositesService.isVideoFirstRun && usaMicrositesService.isAuthServicePromiseThen) {
-                      console.info('ms iframe load !scope.statusPlayerLoaded');
-                      USAN.ms_player.setPlayerEvents();
+                    if (!usaMicrositesService.defer.isResolve && usaMicrositesService.isVideoFirstRun && usaMicrositesService.isAuthServicePromiseThen) {
+                      usaMicrositesService.defer.resolve();
                     }
 
-                    if (scope.statusPlayerLoaded) {
+                    if (!options.isAuth) {
+                      // change status
+                      scope.$apply(function () {
+                        scope.statusPlayerLoaded = false;
+                      });
+
+                      USAN.ms_player.clearPlayerEvents();
+                      USAN.ms_player.setPlayerEvents();
+
+                    } else if (scope.statusPlayerLoaded && options.isAuth) {
+
+                      usaMicrositesService.isVideoFirstRun = false;
 
                       // change status
                       scope.$apply(function () {
@@ -429,8 +430,14 @@
                     }
                   }
                 } else {
-                  if (scope.statusPlayerLoaded && scope.statusSetToken) {
-                    $pdk.controller.clickPlayButton();
+                  if (isEntitlement) {
+                    if (scope.statusPlayerLoaded && scope.statusSetToken) {
+                      $pdk.controller.clickPlayButton();
+                    }
+                  } else {
+                    if (scope.statusPlayerLoaded && !isMobile) {
+                      $pdk.controller.clickPlayButton();
+                    }
                   }
                 }
               }
@@ -456,9 +463,12 @@
               }
 
               function _onReleaseError(pdkEvent) {
-                console.info('_onReleaseError', pdkEvent);
-                if (scope.playerThumbnail) {
-                  hidePlayerThumbnail();
+                if (pdkEvent.data.exception == "GeoLocationBlocked") {
+                  usaPlayerError.initGeoRestrictionError();
+                } else {
+                  if (scope.playerThumbnail) {
+                    hidePlayerThumbnail();
+                  }
                 }
               }
 
@@ -571,9 +581,6 @@
                * @private
                */
               function _onPlayerLoaded(pdkEvent) {
-
-                console.info('_onPlayerLoaded');
-                usaMicrositesService.isVideoFirstRun = false;
 
                 scope.$apply(function () {
                   scope.statusPlayerLoaded = true;

@@ -301,8 +301,8 @@
           if (playerService.hideSliderWrapper) {
             playerService.hideSliderWrapper = false;
             $('#slider-container .slider-wrapper').css({
-              //'visibility': 'visible',
-              display: 'block'
+              // display: 'block',
+              pointerEvents: 'auto'
             });
           }
 
@@ -395,8 +395,8 @@
               playerService.loadPlayer();
               playerService.hideSliderWrapper = true;
               $('#slider-container .slider-wrapper').css({
-                //'visibility': 'hidden'
-                display: 'none'
+                // display: 'none'
+                pointerEvents: 'none'
               });
             } else {
               playerService.setPlayer();

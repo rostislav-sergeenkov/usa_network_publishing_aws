@@ -26,6 +26,8 @@ var window_size_desktop_max_width_2500 = 2500,
     window_size_mobile_480 = 480,
     show_title_offset = (window.matchMedia("(max-width: " + window_size_tablet_1024 + "px)").matches) ? 160 : 200;
 
+var isIphone = navigator.userAgent.match(/iPhone/i) != null;
+
 // change priority for events
 $.fn.bindFirst = function (name, fn) {
   // bind as you normally would

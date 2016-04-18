@@ -736,8 +736,8 @@
       ])
       .run([
         '$rootScope',
-        'tveErrorHandler', 'helper', 'tveAuthConfig', 'authService', 'tveModal', 'usaFlashError',
-        function($rootScope, tveErrorHandler, helper, tveAuthConfig, authService, tveModal, usaFlashError) {
+        'tveErrorHandler', 'helper', 'tveAuthConfig', 'authService', 'tveModal', 'usaPlayerError',
+        function($rootScope, tveErrorHandler, helper, tveAuthConfig, authService, tveModal, usaPlayerError) {
           var YEAR_DAYS = 365,
               MS_IN_HOUR = 3600000,
               previewStep = helper.getURLParameter('preview_step'),
@@ -794,8 +794,7 @@
 
             if (swfobject && !swfobject.hasFlashPlayerVersion(version)) {
               if (isFullEpisode) {
-                console.info('checkFlashVersion');
-                usaFlashError.init();
+                usaPlayerError.initFlashError();
               }
             }
 

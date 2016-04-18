@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -14715,7 +14715,7 @@ footer h2 {
 }
 .consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
   float: left;
-  height: 100%;
+  height: auto;
   position: relative;
   width: 74.7%;
   /*old css code*/
@@ -14737,7 +14737,6 @@ footer h2 {
   transition: opacity 0.3s ease-in-out;
 }
 .consumptionator-page .video-block .player-wrapper > .node, .page-videos-live .video-block .player-wrapper > .node {
-  height: 100%;
   width: 100%;
 }
 .consumptionator-page .video-block .player-wrapper .tve-help, .page-videos-live .video-block .player-wrapper .tve-help {
@@ -14912,6 +14911,24 @@ footer h2 {
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player.show-section, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player.show-section {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .geo-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .geo-error {
+  background-image: url("../images/geo-error.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .geo-error a, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .geo-error a {
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  height: 100%;
+  width: 100%;
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .flash-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .flash-error {
   background-image: url("../images/flash-error.jpeg");
@@ -18040,7 +18057,7 @@ footer h2 {
 #usa-tve-help-link {
   background: none;
   display: none;
-  right: -16.78049vw;
+  right: 17vw;
   height: 100%;
   position: absolute;
   top: 0;
@@ -18085,7 +18102,7 @@ footer h2 {
 #usa-tve-help-link.signOut .links-wrapper {
   margin-right: 0;
   max-width: inherit;
-  width: 16.78049vw;
+  width: 17vw;
 }
 @media (min-width: 1901px) {
   #usa-tve-help-link.signOut .links-wrapper {
@@ -18101,7 +18118,7 @@ footer h2 {
 #usa-tve-help-link.signOut .usaTveLogin {
   float: left;
   position: relative;
-  width: 9.65854vw;
+  width: 9.87805vw;
 }
 @media (min-width: 1901px) {
   #usa-tve-help-link.signOut .usaTveLogin {
@@ -18176,7 +18193,7 @@ footer h2 {
   content: '\e61e';
   display: block;
   font-family: "ico-font";
-  font-size: 2.43902vw;
+  font-size: 2.4vw;
   left: 50%;
   line-height: 1;
   margin-left: -1.21951vw;
@@ -18257,8 +18274,8 @@ footer h2 {
 }
 #usa-tve-help-link .usaTveLogout .sign-out-text {
   display: block;
-  font-size: 0.97561vw;
-  line-height: 0.97561vw;
+  font-size: 0.75vw;
+  line-height: 0.3vw;
   position: absolute;
   text-align: center;
   text-transform: uppercase;
@@ -18274,15 +18291,13 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   #usa-tve-help-link .usaTveLogout .sign-out-text {
-    font-size: 10px;
-    line-height: 10px;
+    font-size: 8px;
+    line-height: 8px;
     top: calc(45% + 14px);
   }
 }
 @media (max-width: 768px) {
   #usa-tve-help-link .usaTveLogout .sign-out-text {
-    font-size: 9px;
-    line-height: 9px;
     top: calc(45% + 10px);
   }
 }
@@ -21389,7 +21404,7 @@ footer h2 {
 }
 .page-node-microsite .timelineFlat .timeline-items #player-wrapper, .node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper {
   background-color: #000000;
-  display: none;
+  visibility: hidden;
   position: absolute;
 }
 .page-node-microsite .timelineFlat .timeline-items #player-wrapper iframe, .node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper iframe {

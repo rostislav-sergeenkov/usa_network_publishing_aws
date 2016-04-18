@@ -98,7 +98,7 @@
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
-      //height: 42.01875vw;
+      //max-height: 42.01875vw;
       max-height: 1093.75px;
       max-width: 2500px;
       margin: 0 auto;
@@ -108,7 +108,7 @@
     }
     .player-wrapper {
       float: left;
-      height: 100%;
+      height: auto;
       position: relative;
       width: 74.7%;
       @include breakpoint($between-1025-1280) {
@@ -116,11 +116,11 @@
         z-index: 1;
       }
       @include breakpoint($bp-1024-width) {
-        //height: 56.25vw;
+        //max-height: 56.25vw;
         width: 100%;
       }
       @include breakpoint($bp-480-width) {
-        //height: 50vw;
+        //max-height: 50vw;
       }
 
       &:hover {
@@ -133,7 +133,7 @@
       }
 
       > .node {
-        height: 100%;
+        //height: 100%;
         width: 100%;
       }
 
@@ -287,6 +287,24 @@
           &.show-section {
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
+          }
+          .geo-error {
+            background-image: url("../images/geo-error.jpeg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            a {
+              display: block;
+              font-size: 0;
+              line-height: 0;
+              height: 100%;
+              width: 100%;
+            }
           }
           .flash-error {
             background-image: url("../images/flash-error.jpeg");

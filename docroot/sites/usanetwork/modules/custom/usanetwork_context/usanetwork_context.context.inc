@@ -699,14 +699,6 @@ function usanetwork_context_context_default_contexts() {
         'field_not_empty' => 1,
       ),
     ),
-    'node' => array(
-      'values' => array(
-        'tv_show' => 'tv_show',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
   );
   $context->reactions = array();
   $context->condition_mode = 0;

@@ -5,6 +5,28 @@
   // customs USA services
   ng.module('tve.auth.services')
 
+      .factory('usaVideoService', [
+        '$rootScope', '$q',
+        function ($rootScope, $q) {
+
+          var videoDefer = $q.defer(),
+              serviceAPI = {
+                promise: videoDefer.promise.then(function (res) {
+                  return res;
+                }, function (res) {
+                  return res;
+                }),
+                resolve: function (data) {
+                  videoDefer.resolve(data);
+                },
+                reject: function (reason) {
+                  videoDefer.reject(reason);
+                }
+              };
+
+          return serviceAPI;
+        }])
+
       .factory('usaPlayerError', [
         '$rootScope', 'usaMicrositesService',
         function ($rootScope, usaMicrositesService) {
@@ -27,10 +49,12 @@
         }])
 
       .factory('usaMicrositesService', [
-        function () {
+        '$rootScope', '$q',
+        function ($rootScope, $q) {
 
           var body = $(document.body),
-              ms_player = {};
+              ms_player = {},
+              ms_Defer = $q.defer();
 
           ms_player.isMicrosite = body.hasClass('page-node-microsite') ? true : false;
           ms_player.isVideoFirstRun = true;
@@ -41,6 +65,19 @@
               Drupal.behaviors.microsite_scroll.micrositeAdAdded();
             } else if (typeof Drupal.behaviors.ms_videos == 'object' && typeof Drupal.behaviors.ms_videos.adAdded == 'function') {
               Drupal.behaviors.ms_videos.adAdded();
+            }
+          };
+          ms_player.defer = {
+            promise: ms_Defer.promise.then(function (res) {
+              return res;
+            }, function (res) {
+              return res;
+            }),
+            resolve: function (data) {
+              ms_Defer.resolve(data);
+            },
+            reject: function (reason) {
+              ms_Defer.reject(reason);
             }
           };
 

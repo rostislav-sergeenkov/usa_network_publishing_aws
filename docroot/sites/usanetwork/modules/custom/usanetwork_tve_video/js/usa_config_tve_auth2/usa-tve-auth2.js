@@ -794,7 +794,6 @@
 
             if (swfobject && !swfobject.hasFlashPlayerVersion(version)) {
               if (isFullEpisode) {
-                console.info('checkFlashVersion');
                 usaPlayerError.initFlashError();
               }
             }

@@ -50,6 +50,7 @@ features[context][] = usa_nitro
 features[context][] = usanetwork_homepage
 features[context][] = usanetwork_sitewide
 features[context][] = usanetwork_sitewide_exclude
+features[context][] = usanetwork_sitewide_exclude_newdesign
 features[context][] = usanetwork_sitewide_file
 features[context][] = videos_landing
 features[ctools][] = context:context:3

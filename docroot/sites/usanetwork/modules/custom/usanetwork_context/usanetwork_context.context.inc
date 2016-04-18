@@ -13,45 +13,6 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'explore_landing';
-  $context->description = 'Show Explore Landing Page';
-  $context->tag = 'shows';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'node/*/explore' => 'node/*/explore',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'usanetwork_tv_shows-usanetwork_tv_shows_explore_lmb' => array(
-          'module' => 'usanetwork_tv_shows',
-          'delta' => 'usanetwork_tv_shows_explore_lmb',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
-        'usanetwork_tv_shows-usanetwork_tv_shows_explore_list' => array(
-          'module' => 'usanetwork_tv_shows',
-          'delta' => 'usanetwork_tv_shows_explore_list',
-          'region' => 'content',
-          'weight' => '-9',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Show Explore Landing Page');
-  t('show');
-  $export['explore_landing'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'consumpt_post_node';
   $context->description = '';
   $context->tag = 'node';
@@ -101,6 +62,45 @@ function usanetwork_context_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('node');
   $export['consumpt_post_node'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'explore_landing';
+  $context->description = 'Show Explore Landing Page';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'node/*/explore' => 'node/*/explore',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_lmb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_lmb',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_list' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_list',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Show Explore Landing Page');
+  t('shows');
+  $export['explore_landing'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -576,6 +576,7 @@ function usanetwork_context_context_default_contexts() {
     'context' => array(
       'values' => array(
         '~usanetwork_sitewide_exclude' => '~usanetwork_sitewide_exclude',
+        '~usanetwork_sitewide_exclude_newdesign' => '~usanetwork_sitewide_exclude_newdesign',
       ),
     ),
     'path' => array(
@@ -684,10 +685,49 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'usanetwork_sitewide_exclude_newdesign';
+  $context->description = '';
+  $context->tag = 'sitewide';
+  $context->conditions = array(
+    'entity_field' => array(
+      'values' => array(
+        'entity_type' => 'a:16:{s:4:"node";s:4:"node";s:10:"collection";i:0;s:7:"comment";i:0;s:21:"field_collection_item";i:0;s:6:"module";i:0;s:7:"program";i:0;s:6:"queues";i:0;s:11:"queues_type";i:0;s:8:"redirect";i:0;s:4:"file";i:0;s:13:"taxonomy_term";i:0;s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;s:25:"state_flow_history_entity";i:0;s:9:"menu_link";i:0;}',
+        'view_mode' => 'a:40:{s:4:"full";s:4:"full";s:14:"inline_content";i:0;s:13:"diff_standard";i:0;s:5:"token";i:0;s:5:"print";i:0;s:6:"teaser";i:0;s:3:"rss";i:0;s:12:"search_index";i:0;s:13:"search_result";i:0;s:16:"microsite_output";i:0;s:25:"page_collection_resources";i:0;s:16:"user_ref_preview";i:0;s:23:"admin_reference_preview";i:0;s:17:"block_cover_title";i:0;s:20:"block_cover_title_lg";i:0;s:14:"carousel_promo";i:0;s:13:"cast_carousel";i:0;s:13:"follow_social";i:0;s:21:"global_nav_block_more";i:0;s:22:"global_nav_block_shows";i:0;s:10:"home_promo";i:0;s:16:"home_promo_bspot";i:0;s:19:"microsite_thumbnail";i:0;s:12:"promo_teaser";i:0;s:18:"vid_teaser_episode";i:0;s:18:"vid_teaser_general";i:0;s:23:"vid_teaser_show_episode";i:0;s:23:"vid_teaser_show_general";i:0;s:18:"promo_teaser_large";i:0;s:7:"preview";i:0;s:28:"entityreference_live_preview";i:0;s:6:"figure";i:0;s:18:"gallery_flexslider";i:0;s:18:"person_cover_image";i:0;s:19:"search_result_files";i:0;s:10:"thumb_tiny";i:0;s:11:"cover_image";i:0;s:16:"vid_teaser_front";i:0;s:13:"usa_term_icon";i:0;s:18:"user_image_preview";i:0;}',
+        'field_name' => 'field_new_design',
+        'field_value' => '1',
+        'field_empty' => 0,
+        'field_not_empty' => 1,
+      ),
+    ),
+    'node' => array(
+      'values' => array(
+        'tv_show' => 'tv_show',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array();
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('sitewide');
+  $export['usanetwork_sitewide_exclude_newdesign'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'usanetwork_sitewide_file';
   $context->description = 'Footer, promo-links';
   $context->tag = 'sitewide';
   $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~usanetwork_sitewide_exclude_newdesign' => '~usanetwork_sitewide_exclude_newdesign',
+      ),
+    ),
     'node' => array(
       'values' => array(
         'catchall_page' => 'catchall_page',
@@ -700,11 +740,6 @@ function usanetwork_context_context_default_contexts() {
     'path' => array(
       'values' => array(
         'file/*' => 'file/*',
-      ),
-    ),
-    'sitewide' => array(
-      'values' => array(
-        1 => 1,
       ),
     ),
   );

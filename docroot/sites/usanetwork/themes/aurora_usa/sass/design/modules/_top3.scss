@@ -275,6 +275,21 @@
         width: get-vw(70.4px, 1024);
       }
     }
+    &:not(.info-hide){
+      & ~ #slider-container {
+        #drag-icon-block {
+          &.full-changed {
+            bottom: get-vw(180px, 1901);
+            @include breakpoint($bp-min-1901-width) {
+              bottom: 180px;
+            }
+            @include breakpoint($bp-1024-width) {
+              bottom: get-vw(137.76px, 1024);
+            }
+          }
+        }
+      }
+    }
     &.inactive {
       display: none;
       & + #cc-button.active {
@@ -2147,15 +2162,6 @@
     height: get-vw(45.92px, 1024);
     margin-left: get-vw(-22.96px, 1024);
     width: get-vw(45.92px, 1024);
-  }
-  &.full-changed {
-    bottom: get-vw(180px, 1901);
-    @include breakpoint($bp-min-1901-width) {
-      bottom: 180px;
-    }
-    @include breakpoint($bp-1024-width) {
-      bottom: get-vw(137.76px, 1024);
-    }
   }
   &:before {
     content: '\e622';

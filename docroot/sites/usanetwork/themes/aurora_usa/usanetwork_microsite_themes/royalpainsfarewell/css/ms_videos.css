@@ -417,26 +417,29 @@
 #videos .asset-img {
   display: block;
   position: relative;
+  width: 100%;
   padding-top: 56.25%;
-  overflow: hidden;
   box-sizing: border-box;
 }
 .video-nav-img {
-  position: absolute;
+  position: absolute !important;
   top: 0;
   left: 0;
   width: 100%;
+  padding-bottom: 56.25%;
   border: 3px solid transparent;
 }
 #video-item-list-wrapper li.active .video-nav-img {
   border: 3px solid #9BCEEE;
 }
 .video-nav-img img {
-  position: relative; /* absolute; */
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: auto;
+  height: 100% !important;
+}
+#videos #video-item-list-wrapper li.thumbnail .meta-wrapper {
+  padding: 3px 0 0 3px;
 }
 #video-item-list-wrapper .field-name-field-mpx-title {
   height: 3.5em;
@@ -663,5 +666,12 @@
   #video-item-list-wrapper li:nth-child(5n),
   #microsite .block-usanetwork-mpx-video .full-episodes li.grid-item:nth-child(5n) {
     margin-right: 1%;
+  }
+}
+
+@media (max-width: 750px) and (orientation: landscape) {
+  body #mobileVideoModal {
+    width: 64%;
+    margin-left: -32%;
   }
 }

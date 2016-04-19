@@ -37,7 +37,7 @@
       for (key in $pdk.controller.listeners) {
         delete $pdk.controller.listeners[key];
       }
-      $pdk.bindPlayerEvents();
+      if ($pdk.hasOwnProperty('bindPlayerEvents')) $pdk.bindPlayerEvents();
 //      tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
       if (typeof Drupal.usanetwork_video_endcard != 'undefined' && Drupal.usanetwork_video_endcard.hasOwnProperty('OnYmalitemnewClick')) tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
     },
@@ -167,12 +167,14 @@
         Drupal.behaviors.ms_videos.micrositePlayerBind();
         Drupal.behaviors.ms_videos.setVideoHeight();
 
-        var $nextVideo = document.getElementById('videos'),
-            nextTop = $nextVideo.offsetTop;
+        if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
+          var $nextVideo = document.getElementById('videos'),
+              nextTop = $nextVideo.offsetTop;
 
-        usa_debug('========= micrositeGetVideo() -- nextTop: ' + nextTop);
+          usa_debug('========= micrositeGetVideo() -- nextTop: ' + nextTop);
 
-        $('html, body').animate({'scrollTop': nextTop}, 1000, 'jswing');
+          $('html, body').animate({'scrollTop': nextTop}, 1000, 'jswing');
+        }
 
 //usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
         // initialize Gigya sharebar

@@ -51,9 +51,21 @@
         }
       };
       xobj.send(null);
-*/
+*//*
       $.getJSON(file, function(data){
         callback(data);
+      });
+*/
+      $.ajax({
+        url: file,
+        dataType: 'json'
+      })
+      .done(function(response) {
+        usa_debug('loadJSON(' + file + ') -- response: ', response);
+        callback(response);
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        usa_debug('loadJSON(' + file + ') -- textStatus: ' + textStatus + ', errorThrown: ' + errorThrown);
       });
     },
 

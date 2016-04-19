@@ -709,7 +709,7 @@
       }
     },
 
-    showVideoSection() {
+    showVideoSection: function() {
       $('#video-loader').animate({'opacity': 0}, 500, function(){
         $(this).css('display', 'none');
         $('#microsite #videos .full-pane, #microsite #videos .filter-wrapper').animate({'opacity': 1}, 500);

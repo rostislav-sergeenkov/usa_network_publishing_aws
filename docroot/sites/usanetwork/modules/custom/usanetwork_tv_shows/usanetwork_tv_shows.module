@@ -2511,10 +2511,10 @@ function _usanetwork_tv_shows_render_best_of_blocks() {
   $output_html = '';
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
   if (!empty($show_node)) {
-    $show_node_wrapper = entity_metadata_wrapper('node', $show_node);
     if (!empty($show_node->field_tvs_best_of)) {
-      $best_of_collections = $show_node_wrapper->field_tvs_best_of->value();
-      foreach($best_of_collections as $best_of_collection) {
+      $best_of_collection_items = field_get_items('node', $show_node, 'field_tvs_best_of');
+      foreach($best_of_collection_items as $best_of_collection_item) {
+        $best_of_collection = field_collection_field_get_entity($best_of_collection_item);
         if (!empty($best_of_collection->field_collection_best_of_items)) {
           $promo_items = field_get_items('field_collection_item', $best_of_collection, 'field_collection_best_of_items');
           if (!empty($best_of_collection->field_collection_best_of_title)) {

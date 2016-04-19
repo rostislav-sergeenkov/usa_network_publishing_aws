@@ -449,82 +449,12 @@ footer {
   }
 }
 
-/*
-@media (max-width: 1280px) {
-  #site-nav li {
-    font-size: 14px;
-    padding: 10px 12px 0;
-  }
-}
 
-@media (max-width: 1174px) {
-  #microsite #sections .section:not(#site-nav) {
-    padding: 0;
-    height: initial;
-    max-height: initial;
-  }
-  #microsite #sections .section:not(#site-nav) > section {
-    position: relative;
-    height: initial;
-    max-height: initial;
-    padding-bottom: 40px;
-  }
-}
-
-@media (max-width: 1024px) {
-  #site-nav li {
-    font-size: 12px;
-    padding: 10px 10px 0;
-  }
-}
-
-@media (max-width: 873px) {
-  #site-nav {
-    overflow: visible;
-  }
-  #site-nav:hover {
-    overflow: visible !important;
-  }
-  #site-nav li {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 722px) {
-  .featured-asset .tve-help .tve-download,
-  .featured-asset .tve-help .tve-msg {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 640px) {
-  .section-description {
-    font-size: 12px;
-  }
-}
-*/
 @media (max-width: 1072px) {
   section .section-title-block > h2 {
     width: 320px;
     height: 54px;
   }
-/*
-  .section-description {
-    width: 60%;
-    font-size: 18px;
-  }
-  #microsite .full-pane #video-container h1, #microsite .full-pane #video-container h3 {
-    font-size: 24px;
-  }
-  #microsite .full-pane #video-container .video-description {
-    font-size: 16px;
-  }
-  #microsite .gig-bar-container .gig-button-container td > div, #microsite .gig-bar-container .gig-button-container td > div:hover, #microsite .field-type-gigya-sharebar .gig-button-container td > div, #microsite .field-type-gigya-sharebar .gig-button-container td > div:hover {
-    font-size: 24px;
-    width: 24px !important;
-    height: 24px !important;
-  }
-*/
 }
 
 

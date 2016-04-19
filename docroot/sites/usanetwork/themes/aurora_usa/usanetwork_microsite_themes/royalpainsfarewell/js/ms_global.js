@@ -40,22 +40,6 @@
     },
 
     loadJSON: function(file, callback) {
-/*
-      var xobj = new XMLHttpRequest();
-      xobj.overrideMimeType("application/json");
-      xobj.open('GET', file, true);
-      xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-          // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-          callback(xobj.responseText);
-        }
-      };
-      xobj.send(null);
-*//*
-      $.getJSON(file, function(data){
-        callback(data);
-      });
-*/
       $.ajax({
         url: file,
         dataType: 'json'
@@ -82,12 +66,6 @@
         return false;
       }
 
-      /*if (anchor == 'videos') {
-        var activeVideoFilter = Drupal.behaviors.ms_global.getActiveVideoFilter();
-        anchorFull = (activeVideoFilter != '') ? anchorFull + '/' + activeVideoFilter : anchorFull;
-        history.pushState({"path": anchorFull}, anchorFull, anchorFull);
-      }
-      else */
       if (anchor != 'home') {
         history.pushState({"path": anchorFull}, anchorFull, anchorFull);
       }
@@ -115,7 +93,7 @@
           anchorFull = Drupal.settings.microsites_settings.base_path + '/' + sectionId;
 
       // pause video, if needed
-      if (sectionId != 'videos') {
+      if ($('#videos').length && sectionId != 'videos') {
         Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
       }
 
@@ -321,13 +299,6 @@
           // DV: This is being called from /sites/usanetwork/themes/aurora_usa/javascripts/consumptionator-gallery.js, usaGallery.prototype.callAdobeTracking
           contentType = 'Gallery';
           contentName = $('#galleries #galleries-nav-list li.active .gallery-title > div').text();
-/* Commented for now as there seems to be a race condition where this call is made before the slide is updated
-          var $slider = $('#microsite #galleries .gallery-wrapper .slick-track'),
-              currentSlide = (parseInt($slider.find('.slick-active').attr('data-slick-index')) + 1);
-          usa_debug('setOmnitureData(' + anchor + ') -- currentSlide: ' + currentSlide);
-          if (!currentSlide) currentSlide = 1;
-          specificContentName = 'Photo ' + currentSlide;
-*/
           break;
       }
 
@@ -385,29 +356,21 @@
     },
 
     refreshAds: function(section) {
-      //if (typeof mps != 'undefined' && typeof mps.refreshAds == 'function' && typeof mps.cloneAd == 'function') {
-        usa_debug('refreshAds(' + section + ') SUCCESS');
-        var selector = '#' + section + ' .ad-leaderboard',
-            $ad = $(selector),
-            adslot = (section == 'home') ? 'topbanner' : 'midbanner';
-        if ($ad.html() != '' && $ad.find('iframe').length > 0) {
-          mps.refreshAds(adslot);
-        }
-        else {
-          if (section != 'home') {
-            mps.cloneAd(selector, adslot);
-          }
-          else {
-            Drupal.behaviors.ms_global.loadAds(selector, adslot);
-          }
-        }
-/*
+      usa_debug('refreshAds(' + section + ') SUCCESS');
+      var selector = '#' + section + ' .ad-leaderboard',
+          $ad = $(selector),
+          adslot = (section == 'home') ? 'topbanner' : 'midbanner';
+      if ($ad.html() != '' && $ad.find('iframe').length > 0) {
+        mps.refreshAds(adslot);
       }
       else {
-        usa_debug('refreshAds(' + section + ') NOT READY YET');
-        setTimeout(refreshAds(section), 1000);
+        if (section != 'home') {
+          mps.cloneAd(selector, adslot);
+        }
+        else {
+          Drupal.behaviors.ms_global.loadAds(selector, adslot);
+        }
       }
-*/
     },
 
     // SECTIONS
@@ -489,12 +452,14 @@
           }
         }
         if (nextSectionId != 'videos') {
-          Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
-          if (videoContainer.attr('data-ad-start') == 'true') {
-            videoContainer.find('.active-player .custom-play').click(function () {
-              $pdk.controller.clickPlayButton(true);
-              $pdk.controller.pause(false);
-            });
+          if ($('#videos').length) {
+            Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
+            if (videoContainer.attr('data-ad-start') == 'true') {
+              videoContainer.find('.active-player .custom-play').click(function () {
+                $pdk.controller.clickPlayButton(true);
+                $pdk.controller.pause(false);
+              });
+            }
           }
         }
 
@@ -624,7 +589,7 @@
       var $nextGallery = document.getElementById('galleries'),
           nextTop = $nextGallery.offsetTop;
 
-      usa_debug('========= showGallery() -- nextTop: ' + nextTop);
+      //usa_debug('========= showGallery() -- nextTop: ' + nextTop);
 
       $('html, body').animate({'scrollTop': nextTop}, 1000, 'jswing', function () {
         $activeGallery.animate({'opacity': 1}, 1000, function(){
@@ -735,6 +700,7 @@
 
     attach: function (context, settings) {
       var startPathname = window.location.pathname;
+
       if (!$('html').hasClass('ie9')) {
         history.pushState({"state": startPathname}, startPathname, startPathname);
       }
@@ -743,7 +709,8 @@
       var siteName = Drupal.settings.microsites_settings.title,
           basePath = Drupal.settings.microsites_settings.base_path,
           basePageName = siteName + ' | USA Network',
-          self = this;
+          self = this,
+          urlParts = self.parseUrl(window.location.href);
 
       // set hover state for hamburger menu on mobile devices
       var wwidth = $(window).width(),
@@ -765,32 +732,6 @@
       // initialize gallery nav clicks
       $('#galleries #galleries-nav-list li a').bind('click', self.changeGalleryHandler);
 
-/*
-      if (!$('html').hasClass('ie9')) {
-        // Turn on browser history functionality -- for example, browser back button.
-        // Popped variable is used to detect initial (useless) popstate.
-        // If history.state exists, assume browser isn't going to fire initial popstate.
-        var popped = ('state' in window.history && window.history.state !== null),
-            initialURL = location.href;
-        $(window).on('popstate');
-        $(window).bind('popstate', function(event) {
-          // Ignore inital popstate that some browsers fire on page load
-          var initialPop = !popped && location.href == initialURL
-          popped = true;
-
-          if (initialPop) return;
-
-//usa_debug('============= onpopstate activated! new state: ');
-//usa_debug(history.state);
-          var urlParts = self.parseUrl(history.state['path']),
-
-              anchor = urlParts['section'],
-              item = urlParts['item'];
-          self.sectionScroll(anchor, item);
-        });
-      }
-*/
-
       // RESIZE
       // set resize and orientation change
       var resizeTimer;
@@ -810,13 +751,11 @@
           Drupal.behaviors.ms_videos.placeVideoFiltersInParagraphs();
 
           $('#video-container').addClass('active');
-          var urlParts = self.parseUrl(window.location.href); // history.state['path']);
           if (urlParts['section'] == 'videos' && urlParts['item']) {
             Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, null, true, self.showVideoSection);
 
-              // designers want video filters in a certain order
-              Drupal.behaviors.ms_videos.setVideoFilterOrder(false, Drupal.behaviors.ms_videos.moveVideoFilters);
-//            Drupal.behaviors.ms_videos.moveVideoFilters();
+            // designers want video filters in a certain order
+            Drupal.behaviors.ms_videos.setVideoFilterOrder(false, Drupal.behaviors.ms_videos.moveVideoFilters);
           }
           else {
             Drupal.behaviors.ms_videos.setVideoFilterOrder(false, function(){
@@ -866,7 +805,6 @@
           // This scroll is necessary -- even if we're loading the "homepage",
           // because we need to set globalInitialPageLoad to false, which
           // is done in sectionScroll
-          var urlParts = self.parseUrl();
           setTimeout(function(){
             self.sectionScroll(urlParts['section'], urlParts['item']);
           }, 2000);

@@ -459,9 +459,9 @@
     }
     .header-nav-bar {
       .nav-bar-tabs {
-        max-width: calc(100% - 29vw);
+        max-width: calc(100% - 27vw);
         @include breakpoint($bp-min-1901-width) {
-          max-width: calc(100% - 555px);
+          max-width: calc(100% - 510px);
         }
         @include breakpoint($bp-768-width) {
           max-width: calc(100% - 75px);

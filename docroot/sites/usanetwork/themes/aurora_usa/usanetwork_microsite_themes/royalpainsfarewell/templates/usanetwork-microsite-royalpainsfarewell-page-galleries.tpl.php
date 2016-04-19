@@ -75,7 +75,8 @@
       <?php print $gallery['rendered']; ?>
     </div>
     <div class="right-pane">
-      <ul id="galleries-nav-list">
+      <div id="galleries-nav-list">
+        <ul>
       <?php if (!empty($episodic_galleries)): ?>
       <?php foreach ($episodic_galleries as $ep_gallery): ?>
         <?php if (!empty($ep_gallery['url']) && !empty($ep_gallery['gallery_nid']) && !empty($ep_gallery['title']) && !empty($ep_gallery['cover_img'])): ?>
@@ -118,7 +119,8 @@
         <?php endif; ?>
       <?php endforeach; ?>
       <?php endif; ?>
-      </ul>
+        </ul>
+      </div>
     </div>
     <div id="gallery-loader" title="loading animation"></div>
   </div>

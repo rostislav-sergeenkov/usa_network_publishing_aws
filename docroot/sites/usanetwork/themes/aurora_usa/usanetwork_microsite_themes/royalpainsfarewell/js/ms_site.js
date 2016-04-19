@@ -79,17 +79,20 @@
     assignGalleryFilterClasses: function(callback) {
       callback = callback || null;
       Drupal.behaviors.ms_global.loadJSON('http://assets.usanetwork.com/royalpains/farewell/gallery-filter-list.json', function(response){
-          usa_debug('assignGalleryFilterClasses() -- response: ', response);
+          //usa_debug('assignGalleryFilterClasses() -- response: ', response);
           galleryFilters = JSON.parse(response)[0];
           var $galleryNavList = jQuery('#galleries-nav-list');
-          usa_debug('assignGalleryFilterClasses() -- galleryFilters: ', galleryFilters);
+          //usa_debug('assignGalleryFilterClasses() -- galleryFilters: ', galleryFilters);
           for (filter in galleryFilters) {
-            usa_debug('assignGalleryFilterClasses() -- filter: ' + filter);
+            //usa_debug('assignGalleryFilterClasses() -- filter: ' + filter);
             var nids = galleryFilters[filter];
             for (key in nids) {
-              usa_debug('assignGalleryFilterClasses() -- key: ' + key);
+              //usa_debug('assignGalleryFilterClasses() -- key: ' + key);
+              if ($('#galleries-nav-list ul.' + filter).length < 1) {
+                $('#galleries-nav-list').append('<ul class="' + filter + '"></ul>');
+              }
               var nid = nids[key];
-              $galleryNavList.find('li[data-node-id=' + nid + ']').addClass(filter).attr('data-filter-class', filter);
+              $('#galleries-nav-list ul.' + filter).append($galleryNavList.find('li[data-node-id=' + nid + ']').addClass(filter).attr('data-filter-class', filter));
             }
           }
           if (typeof callback == 'function') callback();
@@ -102,8 +105,8 @@
       $galleryNavList.animate({'opacity': 0}, 500, function(){
         $galleryFilterList.find('li').removeClass('active');
         $galleryFilterList.find('li[data-filter-class=' + filter + ']').addClass('active');
-        $(this).find('li').addClass('hide');
-        $(this).find('li.' + filter).removeClass('hide');
+        $(this).find('li').removeClass('show').addClass('hide');
+        $(this).find('li.' + filter).removeClass('hide').addClass('show');
         $(this).animate({'opacity': 1}, 500);
       });
     },

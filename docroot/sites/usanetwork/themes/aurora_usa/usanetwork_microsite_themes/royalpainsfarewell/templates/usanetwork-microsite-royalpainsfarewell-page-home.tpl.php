@@ -19,11 +19,13 @@
 // TO ALL TEMPLATE FILES
 $themePath = '/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell';
 date_default_timezone_set('America/New_York');
+/*
 $timestamp = time();
 $showCountdown = true;
 if ($timestamp > mktime(22, 0, 1, 5, 18, 2016)): // after May 18, 2016 10:00:01 PM ET, which is the start of the finale episode
   $showCountdown = false;
 endif;
+*/
 ?>
 
 <?php // Insert the home section HTML in the description field in the CMS ?>

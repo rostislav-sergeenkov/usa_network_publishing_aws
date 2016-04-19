@@ -109,7 +109,7 @@ function usanetwork_tv_shows_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
-  $blocks['usanetwork_tv_shows_new_design_menu'] = array(
+  $blocks['usanetwork_tv_shows_nd_menu'] = array(
     'info' => t('TV Show: New Design menu block'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
@@ -179,7 +179,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
       $block['content'] = _usanetwork_tv_shows_submenu();
       break;
 
-    case 'usanetwork_tv_shows_new_design_menu':
+    case 'usanetwork_tv_shows_nd_menu':
       $block['subject'] = '';
       $block['content'] = _usanetwork_tv_shows_new_design_menu();
       break;
@@ -1955,21 +1955,28 @@ function _usanetwork_tv_shows_new_design_menu() {
     return '';
   }
 
-  $display_title = _usanetwork_get_field_item('node', $show, 'field_display_title', 'safe_value');
-  if ($display_title) {
-    $show_title = $display_title;
-  }
-  else {
-    $show_title = $show->title;
+  $show_wrapper = entity_metadata_wrapper('node', $show);
+
+  if (!empty($show_wrapper->field_display_title)) {
+    $display_title = $show_wrapper->field_display_title->value();
+    if (!empty($display_title)) {
+      $show_title = $display_title;
+    }
+    else {
+      $show_title = $show->title;
+    }
   }
   $show_title = decode_entities($show_title);
-  $usa_tv_tune_in_date = _usanetwork_get_field_item('node', $show, 'field_usa_tv_tune_in_date', 'value');
+
+  if (!empty($show_wrapper->field_usa_tv_tune_in_date)) {
+    $usa_tv_tune_in_date = $show_wrapper->field_usa_tv_tune_in_date->value();
+  }
 
   $social_links = array();
   foreach (array('facebook', 'twitter', 'youtube', 'instagram') as $social_network) {
-    $social_bar_link_field = field_get_items('node', $show, 'field_usa_link_' . $social_network);
+    $social_bar_link_field = _usanetwork_get_field_item('node', $show, 'field_usa_link_' . $social_network, 'url');
     if ($social_bar_link_field) {
-      $social_links[] = l('', $social_bar_link_field[0]['url'], array(
+      $social_links[] = l('', $social_bar_link_field, array(
         'attributes' => array(
           'class' => $social_network,
           'data-name' => $social_network,
@@ -2016,6 +2023,15 @@ function _usanetwork_tv_shows_new_design_menu() {
       }
     }
   }
+
+  //Sponsored MPS
+  if (!empty($show_wrapper->field_sponsored)) {
+    $field_sponsored = $show_wrapper->field_sponsored->value();
+    if ($field_sponsored == '1') {
+      $sponsored_path = '/node/' . $show->nid;
+    }
+  }
+
   $title_tag = 'h1';
   $show_title = array(
     '#type' => 'html_tag',
@@ -2028,6 +2044,7 @@ function _usanetwork_tv_shows_new_design_menu() {
     'tune_in_date' => isset($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : NULL,
     'social_icons' => $social_links,
     'show_menu_tab_items' => $show_menus,
+    'sponsored_path' => isset($sponsored_path) ? $sponsored_path : NULL,
   ));
 }
 

@@ -32,6 +32,7 @@
         nextArrow = sliderContainer.find('.next'),
         prevArrow = sliderContainer.find('.prev'),
         playButton = $('#play-button'),
+        ccButton = $('#cc-button'),
         videoBlock = $('#slider-player'),
         start_item = '';
 
@@ -68,6 +69,7 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
+      ccButton.addClass('info-hide');
       playButton.addClass('info-hide');
       $('.drag-group').hide();
       $('#info-block').show();
@@ -78,6 +80,7 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
+      ccButton.removeClass('info-hide');
       playButton.removeClass('info-hide');
       $('.drag-group').show();
       $('#info').show();
@@ -88,6 +91,7 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
+      ccButton.addClass('popup-hide');
       playButton.addClass('popup-hide');
       $('.drag-group').hide();
       $('#drag-icon-block').hide();
@@ -99,6 +103,7 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
+      ccButton.removeClass('popup-hide');
       playButton.removeClass('popup-hide');
       $('.drag-group').show();
       $('#drag-icon-block').show();
@@ -322,6 +327,9 @@
 
             // reset play button
             playButton.removeClass('inactive').addClass('show');
+
+            // hide cc button
+            ccButton.addClass('show');
           }
         } else {
           var neighborBlock = $('#chosen-player .img-wrapper');
@@ -366,10 +374,12 @@
         if (srcLink != undefined) {
           if(!playButton.hasClass('show')){
             playButton.addClass('show');
+            ccButton.addClass('show');
           }
         } else {
           if(playButton.hasClass('show')){
             playButton.removeClass('show');
+            ccButton.removeClass('show');
           }
         }
       }
@@ -385,10 +395,10 @@
 
           var playBtn = $(this);
 
-
           if (!playBtn.hasClass('inactive')) {
             // added class and change status button
             playBtn.addClass('inactive').removeClass('show');
+
             // show player
             if (isMobileDevice) {
               console.info(isMobileDevice);
@@ -404,6 +414,18 @@
           } else {
             playerService.playPlayer();
             playBtn.removeClass('show');
+          }
+
+        });
+
+        ccButton.on('click', function () {
+
+          if(!$(this).hasClass('active')) {
+            $pdk.controller.setSubtitleLanguage("en");
+            $(this).addClass('active');
+          } else {
+            $pdk.controller.setSubtitleLanguage("");
+            $(this).removeClass('active');
           }
 
         });

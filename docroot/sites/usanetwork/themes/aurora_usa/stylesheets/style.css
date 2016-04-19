@@ -37252,11 +37252,11 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .drop-area.show {
-  bottom: 0;
+  bottom: 0 !important;
   z-index: 100;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .drop-area.not-allowed {
-  bottom: -500px;
+  bottom: -500px !important;
   z-index: 0;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block .drop-area > div {

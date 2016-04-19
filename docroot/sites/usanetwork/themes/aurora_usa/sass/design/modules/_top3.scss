@@ -1513,11 +1513,11 @@
       height: get-vw(104.06px, 1024);
     }
     &.show {
-      bottom: 0;
+      bottom: 0!important;
       z-index: 100;
     }
     &.not-allowed {
-      bottom: -500px;
+      bottom: -500px!important;
       z-index: 0;
     }
     & > div {

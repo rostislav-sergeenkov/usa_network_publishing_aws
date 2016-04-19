@@ -872,17 +872,20 @@
     color: grey;
     font-family: $avalon-demi;
     font-size: get-vw(24px, 1901);
+    line-height: get-vw(51px, 1901);
     right: get-vw(40px, 1901);
     text-align: center;
     text-transform: uppercase;
     top: calc(20px + #{get-vw(40px, 1901) + get-vw(53px, 1901)});
     @include breakpoint($bp-min-1901-width) {
       font-size: 24px;
+      line-height: 51px;
       right: 40px;
       top: calc(15px + (40px + 53px));
     }
     @include breakpoint($bp-1024-width) {
       font-size: get-vw(18.36px, 1024);
+      line-height: get-vw(39.015px, 1024);
       right: get-vw(30.6px, 1024);
       top: calc(10px + #{get-vw(30.6px, 1024) + get-vw(40.5px, 1024)});
     }
@@ -1512,6 +1515,10 @@
       bottom: get-vw(-52.03px, 1024);
       height: get-vw(104.06px, 1024);
     }
+    &.full-changed {
+      bottom: 0;
+      z-index: 100;
+    }
     &.show {
       bottom: 0!important;
       z-index: 100;
@@ -2140,6 +2147,15 @@
     height: get-vw(45.92px, 1024);
     margin-left: get-vw(-22.96px, 1024);
     width: get-vw(45.92px, 1024);
+  }
+  &.full-changed {
+    bottom: get-vw(180px, 1901);
+    @include breakpoint($bp-min-1901-width) {
+      bottom: 180px;
+    }
+    @include breakpoint($bp-1024-width) {
+      bottom: get-vw(137.76px, 1024);
+    }
   }
   &:before {
     content: '\e622';

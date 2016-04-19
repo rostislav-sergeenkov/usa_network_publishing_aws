@@ -60,7 +60,7 @@
     },
 
     setVideoFilterOrder: function(switchInitialVideo, callback) {
-      var desiredVideoFilterOrder = ['cast-interviews', 'season-recaps', 'favorite-moments', 'behind-the-scenes', 'full-episodes'];
+      var desiredVideoFilterOrder = ['cast-interviews', 'season-recaps', 'favorite-moments', 'backstage-access', 'full-episodes'];
       switchInitialVideo = switchInitialVideo || false;
 
       usa_debug('setVideoFilterOrder(' + switchInitialVideo + ')');
@@ -167,6 +167,13 @@
         Drupal.behaviors.ms_videos.micrositePlayerBind();
         Drupal.behaviors.ms_videos.setVideoHeight();
 
+        var $nextVideo = document.getElementById('videos'),
+            nextTop = $nextVideo.offsetTop;
+
+        usa_debug('========= micrositeGetVideo() -- nextTop: ' + nextTop);
+
+        $('html, body').animate({'scrollTop': nextTop}, 1000, 'jswing');
+
 //usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
         // initialize Gigya sharebar
         Drupal.behaviors.ms_videos.updateGigyaSharebar(initialPageLoad, preview_image);
@@ -234,6 +241,7 @@
       if (dataFullEpisode == 'true') {
         Drupal.behaviors.ms_videos.micrositeMobileModal();
 
+/*
         // full episode video, so show 300x60_1 and 728x90_1
         if (ad_300x250_1) {
           ad_300x250_1.closest('li.ad').hide();
@@ -242,19 +250,22 @@
         if (ad_728x90.length == 1 && ad_728x90.attr('id') != 'ad_728x90_1') {
           ad_728x90.attr('id', 'ad_728x90_1');
         }
+*/
 
         $('#videos .full-pane').addClass('full-desc');
-        ad_300x60_1.show();
+        //ad_300x60_1.show();
       }
       // else not full episode
       else {
         $('#videos .full-pane').removeClass('full-desc');
 
+/*
         // show only 300x250 and 728x90 ads
         ad_300x60_1.hide();
         if (ad_728x90.length == 1 && ad_728x90.attr('id') == 'ad_728x90_1') {
           ad_728x90.attr('id', 'ms-videos-leaderboard-ad').empty();
         }
+*/
       }
 
       Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
@@ -357,7 +368,7 @@
         Drupal.behaviors.ms_global.changeTitle(itemTitle, anchorSection, basePageName);
         Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
         Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', elem);
-        Drupal.behaviors.ms_global.scrollToTop();
+//        Drupal.behaviors.ms_global.scrollToTop();
       }
       else {
         Drupal.behaviors.ms_videos.micrositeSetPausePlayer();

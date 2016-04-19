@@ -454,7 +454,7 @@
 
       // now scroll to the next section
       var nextSectionElem = document.getElementById(anchor),
-          offsetAmount = -60, // (Drupal.behaviors.ms_global.globalInitialPageLoad) ? 0 : 10 * offsetDirection,
+          offsetAmount = -60,
           nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0;
 
       //usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ') -- nextSectionTop: ' + nextSectionTop);
@@ -604,8 +604,15 @@
     },
 
     showGallery: function($activeGallery) {
-      $activeGallery.animate({'opacity': 1}, 1000, function(){
-        Drupal.behaviors.ms_global.showHideLoader();
+      var $nextGallery = document.getElementById('galleries'),
+          nextTop = $nextGallery.offsetTop;
+
+      usa_debug('========= showGallery() -- nextTop: ' + nextTop);
+
+      $('html, body').animate({'scrollTop': nextTop}, 1000, 'jswing', function () {
+        $activeGallery.animate({'opacity': 1}, 1000, function(){
+          Drupal.behaviors.ms_global.showHideLoader();
+        });
       });
     },
 

@@ -35,7 +35,7 @@ function usanetwork_timeline_gallery_metatag_export_default() {
         'value' => '[node:title] Photos | [node:body]',
       ),
       'og:image' => array(
-        'value' => '[node:field_usa_og_image]',
+        'value' => '[node:field_usa_og_image],[node:field_cover_item]',
       ),
     ),
   );

@@ -80,7 +80,6 @@
       callback = callback || null;
       Drupal.behaviors.ms_global.loadJSON('http://assets.usanetwork.com/royalpains/farewell/gallery-filter-list.json', function(response){
           usa_debug('assignGalleryFilterClasses() -- response: ', response);
-//          galleryFilters = JSON.parse(response)[0];
           galleryFilters = response[0];
           usa_debug('assignGalleryFilterClasses() -- galleryFilters: ', galleryFilters);
           var $galleryNavList = jQuery('#galleries-nav-list');
@@ -141,40 +140,34 @@
        jQuery('#home-seo').html('<h2 class="seo-h1">Royal Pains Farewell</h2>');
       }
 
-
-      jQuery('#timeline .section-title-block > h2').html('<span>Timeline</span>');
-
-      self.assignGalleryFilterClasses(function(){
-        // if the url specifies a single gallery,
-        // set the active gallery filter and thumbnail items
-        if (isGallerySpecificUrl) {
-          self.setActiveGalleryFilterFromUrl();
-        }
-        else {
-          self.setGalleryFilter('hankmed-highlights');
-        }
-
-        jQuery('.gallery-wrapper').usaGallery();
-
-        // initialize gallery filter clicks
-        jQuery('#galleries-filter li').click(function(){
-          if (!jQuery(this).hasClass('active')) {
-            var filter = $(this).attr('data-filter-class');
-            self.setGalleryFilter(filter);
-
-            // switch to 1st gallery in this filter
-            var $navItems = $('#galleries #galleries-nav-list li a'),
-                $filteredGalleryNavList = $('#galleries-nav-list li[data-filter-class=' + filter + ']');
-//                nextGalleryNodeId = $filteredGalleryNavList.eq(0).attr('data-node-id');
-            $filteredGalleryNavList.eq(0).find('a').click();
-/*
-            Drupal.behaviors.ms_global.switchGallery(nextGalleryNodeId, function(){
-              $navItems.bind('click', Drupal.behaviors.ms_global.changeGalleryHandler);
-            });
-*/
+      // galleries
+      if ($('#galleries').length) {
+        self.assignGalleryFilterClasses(function(){
+          // if the url specifies a single gallery,
+          // set the active gallery filter and thumbnail items
+          if (isGallerySpecificUrl) {
+            self.setActiveGalleryFilterFromUrl();
           }
+          else {
+            self.setGalleryFilter('hankmed-highlights');
+          }
+
+          jQuery('.gallery-wrapper').usaGallery();
+
+          // initialize gallery filter clicks
+          jQuery('#galleries-filter li').click(function(){
+            if (!jQuery(this).hasClass('active')) {
+              var filter = $(this).attr('data-filter-class');
+              self.setGalleryFilter(filter);
+
+              // switch to 1st gallery in this filter
+              var $navItems = $('#galleries #galleries-nav-list li a'),
+                  $filteredGalleryNavList = $('#galleries-nav-list li[data-filter-class=' + filter + ']');
+              $filteredGalleryNavList.eq(0).find('a').click();
+            }
+          });
         });
-      });
+      }
 
       setTimeout(function(){
         if ($('html').hasClass('ie9')) {
@@ -185,12 +178,16 @@
         }
       }, 500);
 
-      // Remove 'Scene ' from line dot hover hints
-      setTimeout(function(){
-        $('.timeline-node .timeline-node-desc').each(function(){
-          $(this).text($(this).text().replace('Scene ', ''));
-        });
-      }, 3000);
+      // timeline
+      if ($('#timeline').length) {
+        $('#timeline .section-title-block > h2').html('<span>Timeline</span>');
+        // Remove 'Scene ' from line dot hover hints
+        setTimeout(function(){
+          $('.timeline-node .timeline-node-desc').each(function(){
+            $(this).text($(this).text().replace('Scene ', ''));
+          });
+        }, 3000);
+      }
 
       // SCROLLING
       $(window).on('scroll', function() {

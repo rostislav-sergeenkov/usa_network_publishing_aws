@@ -82,7 +82,7 @@
           usa_debug('assignGalleryFilterClasses() -- response: ', response);
 //          galleryFilters = JSON.parse(response)[0];
           galleryFilters = response[0];
-          //usa_debug('assignGalleryFilterClasses() -- galleryFilters: ', galleryFilters);
+          usa_debug('assignGalleryFilterClasses() -- galleryFilters: ', galleryFilters);
           var $galleryNavList = jQuery('#galleries-nav-list');
           for (filter in galleryFilters) {
             //usa_debug('assignGalleryFilterClasses() -- filter: ' + filter);

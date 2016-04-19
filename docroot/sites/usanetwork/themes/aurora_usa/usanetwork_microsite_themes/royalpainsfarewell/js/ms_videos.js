@@ -508,12 +508,14 @@
       // add wrapper around video thumbnail images
       $('#videos li.thumbnail img').wrap('<div class="video-nav-img"></div>');
 
+      // Uncomment below line to test varying numbers of video filters
+      // $('#videos #video-filter .filter-menu').append('<li class="filter-item" data-filter-name="Favorite Moments" data_filter_class="favorite-moments"><p>Favorite Moments</p></li><li class="filter-item" data-filter-name="Backstage Videos" data_filter_class="backstage-videos"><p>Backstage Videos</p></li><li class="filter-item" data-filter-name="Season Recaps" data_filter_class="season-recaps"><p>Season Recaps</p></li>');
+
       // video thumbnail clicks
       $('#thumbnail-list .item-list ul li.thumbnail').click(function (e) {
         e.preventDefault();
         var elem = $(this);
         self.clickThumbnail(elem, true);
-//        self.updateGigyaSharebar(0);
       });
 
       // filter click toggles

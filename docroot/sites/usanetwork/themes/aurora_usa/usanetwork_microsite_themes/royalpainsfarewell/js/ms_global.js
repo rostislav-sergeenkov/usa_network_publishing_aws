@@ -368,7 +368,7 @@
     },
 
     refreshAds: function(section) {
-      if (typeof mps != 'undefined' && typeof mps.refreshAds == 'function') {
+      //if (typeof mps != 'undefined' && typeof mps.refreshAds == 'function' && typeof mps.cloneAd == 'function') {
         usa_debug('refreshAds(' + section + ') SUCCESS');
         var selector = '#' + section + ' .ad-leaderboard',
             $ad = $(selector),
@@ -377,13 +377,20 @@
           mps.refreshAds(adslot);
         }
         else {
-          Drupal.behaviors.ms_global.loadAds(selector, adslot);
+          if (section != 'home') {
+            mps.cloneAd(selector, adslot);
+          }
+          else {
+            Drupal.behaviors.ms_global.loadAds(selector, adslot);
+          }
         }
+/*
       }
       else {
         usa_debug('refreshAds(' + section + ') NOT READY YET');
         setTimeout(refreshAds(section), 1000);
       }
+*/
     },
 
     // SECTIONS
@@ -784,10 +791,11 @@
             Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', null, null, true, self.showVideoSection);
 
               // designers want video filters in a certain order
-              Drupal.behaviors.ms_videos.setVideoFilterOrder(Drupal.behaviors.ms_videos.moveVideoFilters);
+              Drupal.behaviors.ms_videos.setVideoFilterOrder(false, Drupal.behaviors.ms_videos.moveVideoFilters);
+//            Drupal.behaviors.ms_videos.moveVideoFilters();
           }
           else {
-            Drupal.behaviors.ms_videos.setVideoFilterOrder(true, function(){
+            Drupal.behaviors.ms_videos.setVideoFilterOrder(false, function(){
               Drupal.behaviors.ms_videos.moveVideoFilters();
               Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('false', null, null, true, self.showVideoSection);
             });

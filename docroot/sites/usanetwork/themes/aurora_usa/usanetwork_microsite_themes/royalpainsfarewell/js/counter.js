@@ -140,13 +140,15 @@
 
     attach: function() {
 
-      var current="Wednesday 10/9C";	//-->enter what you want the script to display when the target date and time are reached, limit to 20 characters
-      var year = 2016;    //-->Enter the count down target date YEAR
-      var month = 5;      //-->Enter the count down target date MONTH
-      var day = 18;       //-->Enter the count down target date DAY
-      var hour = 22;      //-->Enter the count down target date HOUR (24 hour clock)
-      var minute = 0;     //-->Enter the count down target date MINUTE
-      var tz = -4;        //-->Offset for your timezone in hours from UTC (see http://wwp.greenwichmeantime.com/index.htm to find the timezone offset for your location)
+      var current="Wednesday 10/9C",	//-->enter what you want the script to display when the target date and time are reached, limit to 20 characters
+          year = 2016,    //-->Enter the count down target date YEAR
+          month = 5,      //-->Enter the count down target date MONTH
+          day = 18,       //-->Enter the count down target date DAY
+          hour = 22,      //-->Enter the count down target date HOUR (24 hour clock)
+          minute = 0,     //-->Enter the count down target date MINUTE
+          second = '00',
+          msec = '00',
+          tz = '-04';        //-->Offset for your timezone in hours from UTC (see http://wwp.greenwichmeantime.com/index.htm to find the timezone offset for the location)
 
 
       //----    DO NOT CHANGE THE CODE BELOW!    ----
@@ -162,9 +164,22 @@
         }
       }
 
-      // NEW CODE TO ALLOW COUNTDOWN RESET TO THE SAME TIME NEXT WEEK ON WEDNESDAY
       var currentDateTime = Date.parse('now'),
-          todayAtEventTime = Date.parse('today').set({hour: hour, minute: minute}),
+          showPremiereTimeET = new Date(montharray[(month - 1)] + ' ' + day + ', ' + year + ' ' + hour + ':' + minute + ':' + second + ' GMT' + tz + '00');
+
+      //console.log('currentDateTime: ' + currentDateTime + ', showPremiereTimeET: ' + showPremiereTimeET );
+
+      // if we've already counted down to the premiere,
+      // now countdown to the finale
+      if (currentDateTime > showPremiereTimeET) {
+        var month = 7,
+            day = 6,
+            minute = 1;
+        jQuery('#until').html('UNTIL THE ROYAL PAINS FINALE<br>JULY 6, 10/9C');
+      }
+
+      // NEW CODE TO ALLOW COUNTDOWN RESET TO THE SAME TIME NEXT WEEK ON WEDNESDAY
+      var todayAtEventTime = Date.parse('today').set({hour: hour, minute: minute}),
           wednesdayAtEventTime = Date.today().next().wednesday().set({hour: hour, minute: minute}),
           nextEventDate,
           zeroOnPageLoad=1,

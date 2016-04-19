@@ -18,6 +18,9 @@ body.page-node-microsite {
   font-style: normal !important;
   background-color: transparent;
 }
+body #mobileVideoModal {
+  top: 80px;
+}
 .usa-wrap {
   max-width: 100%;
 }
@@ -352,7 +355,19 @@ footer {
 .timelineFlat .timeline-right:hover:active,
 .timelineFlat .timeline-left,
 .timelineFlat .timeline-left:hover:active {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(259,232,222,0.7);
+}
+#timeline .timelineFlat .timeline-right {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext-black.svg');
+}
+#timeline .timelineFlat .timeline-left {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev-black.svg');
+}
+#timeline .timelineFlat .timeline-right:hover {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext-grey.svg');
+}
+#timeline .timelineFlat .timeline-left:hover {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev-grey.svg');
 }
 .timelineFlat #timeline-line-left:before,
 .timelineFlat #timeline-line-right:before {

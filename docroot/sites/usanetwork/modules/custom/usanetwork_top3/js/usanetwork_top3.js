@@ -34,6 +34,7 @@
         playButton = $('#play-button'),
         ccButton = $('#cc-button'),
         videoBlock = $('#slider-player'),
+        dragIconBlock = $('#drag-icon-block'),
         start_item = '';
 
     // omniture params
@@ -94,7 +95,7 @@
       ccButton.addClass('popup-hide');
       playButton.addClass('popup-hide');
       $('.drag-group').hide();
-      $('#drag-icon-block').hide();
+      dragIconBlock.hide();
       $('#share-block-preview').show();
     }
 
@@ -106,7 +107,7 @@
       ccButton.removeClass('popup-hide');
       playButton.removeClass('popup-hide');
       $('.drag-group').show();
-      $('#drag-icon-block').show();
+      dragIconBlock.show();
       $('#info').show();
     }
 
@@ -945,14 +946,14 @@
                       items: ".drop-area__item"
                     });
                     $('.drag-group').disableSelection();
-                    $('#drag-icon-block').remove();
+                    //$('#drag-icon-block').remove();
                     previewOpen();
                   });
 
                   setTimeout(function () {
-                    classie.add(dropArea, 'show');
+                    classie.add(dropArea, 'full-changed');
+                    dragIconBlock.addClass('full-changed');
                   }, 1000);
-
 
                 }
               };

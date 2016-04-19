@@ -136,75 +136,6 @@ function usanetwork_panels_default_page_manager_handlers() {
   $display->title = '';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass();
-    $pane->pid = 'new-1';
-    $pane->panel = 'one';
-    $pane->type = 'block';
-    $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_aspot';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'formatter' => 'usanetwork_tv_shows_display_entity_view',
-      'formatter_settings' => array(
-        'view_mode_large' => 'promo_teaser_large',
-      ),
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['one'][0] = 'new-1';
-    $pane = new stdClass();
-    $pane->pid = 'new-2';
-    $pane->panel = 'two';
-    $pane->type = 'block';
-    $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_best_of';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['two'][0] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'two';
-    $pane->type = 'block';
-    $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_related';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['two'][1] = 'new-3';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -337,7 +268,7 @@ function usanetwork_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-1';
     $pane->panel = 'four';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_fbp';
@@ -356,10 +287,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['four'][0] = 'new-4';
+    $display->content['new-1'] = $pane;
+    $display->panels['four'][0] = 'new-1';
     $pane = new stdClass();
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-2';
     $pane->panel = 'one';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_aspot';
@@ -381,10 +312,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['one'][0] = 'new-5';
+    $display->content['new-2'] = $pane;
+    $display->panels['one'][0] = 'new-2';
     $pane = new stdClass();
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-3';
     $pane->panel = 'two';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_best_of';
@@ -403,10 +334,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['two'][0] = 'new-6';
+    $display->content['new-3'] = $pane;
+    $display->panels['two'][0] = 'new-3';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-4';
     $pane->panel = 'two';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_related';
@@ -425,8 +356,8 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['two'][1] = 'new-7';
+    $display->content['new-4'] = $pane;
+    $display->panels['two'][1] = 'new-4';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

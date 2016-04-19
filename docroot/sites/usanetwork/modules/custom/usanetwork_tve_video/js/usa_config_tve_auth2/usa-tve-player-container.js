@@ -35,7 +35,7 @@
 
                 $rootScope.playerWrap = element;
                 $rootScope.playerId = attr['id'];
-                
+
                 scope.id = config.id;
 
                 authService.promise.then(function (status) {
@@ -46,7 +46,7 @@
                 });
 
                 usaVideoService.promise.then(function () {
-                  if(!$rootScope.isFullEpisode) {
+                  if (!$rootScope.isFullEpisode) {
                     init();
                   }
                 });
@@ -193,7 +193,7 @@
               scope.openLoginWindow = authService.openLoginModal;
 
               usaPlayerError.hidePlayerThumbnail = hidePlayerThumbnail;
-              
+
               scope.initiateAuthorization = initiateAuthorization;
               scope._bindPlayerEvents = _bindPlayerEvents;
               scope.hidePlayerThumbnail = hidePlayerThumbnail;
@@ -604,7 +604,9 @@
                */
               function _authzFailure(response) {
 
-                var errorCode, errorDetails, errorBlock;
+                var errorPattern = /(http(s)?:\/\/)?([\w\.]+)\.([a-z]{2,6}\.?)(\/[\w\.]*)*\/?/,
+                    errorParentalControl = /(P|parental\sC|control)/,
+                    errorCode, errorDetails, errorBlock, errorMessage;
 
                 if (response.requestErrorCode) {
                   errorCode = response.requestErrorCode;
@@ -632,16 +634,25 @@
 
                   scope.isAuthZError = true;
 
-                  scope.message =
+                  // scope.message
+                  errorMessage =
                       (providerInfo && _getAuthzErrorMessage(errorCode, providerInfo)) ||
                       $.trim(errorDetails) ||
                       _getAuthzErrorMessage(errorCode, Drupal.settings.adobePass.errorMessages);
 
-                  scope.$apply();
+                  // scope.$apply();
+
+                  if (errorParentalControl.test(errorMessage)) {
+                    if (errorPattern.test(errorMessage)) {
+                      errorMessage = errorMessage.replace(errorPattern, function (str) {
+                        return '<a href="' + str + '" target="_blank">' + str + '</a>';
+                      })
+                    }
+                  }
 
                   errorBlock = $('<div>', {
                     class: 'player-error',
-                    text: scope.message
+                    html: errorMessage
                   });
 
                   $(playerWrap).html(errorBlock);

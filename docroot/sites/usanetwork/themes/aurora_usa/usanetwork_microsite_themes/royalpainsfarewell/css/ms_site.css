@@ -355,7 +355,7 @@ footer {
 .timelineFlat .timeline-right:hover:active,
 .timelineFlat .timeline-left,
 .timelineFlat .timeline-left:hover:active {
-  background-color: rgba(259,232,222,0.7);
+  background-color: rgba(236,232,222,0.7);
 }
 #timeline .timelineFlat .timeline-right {
   background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext-black.svg');
@@ -411,6 +411,7 @@ footer {
   height: calc(100% - 144px - 126px);
   max-width: 1300px;
   margin: 0 auto;
+  border-bottom: 6px solid #9BCEEE;
   overflow: hidden;
 }
 #spredfast-social-content .mr-space {

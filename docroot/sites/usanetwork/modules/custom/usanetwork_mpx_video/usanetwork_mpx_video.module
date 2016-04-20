@@ -1538,7 +1538,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         '#tag' => 'meta',
         '#attributes' => array(
           'property' => 'og:image:width',
-          'content' => '1080',
+          'content' => '1920',
         ),
       );
       drupal_add_html_head($og_image_width, 'usanetwork_og:image:width');
@@ -1548,7 +1548,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         '#tag' => 'meta',
         '#attributes' => array(
           'property' => 'og:image:height',
-          'content' => '1920',
+          'content' => '1080',
         ),
       );
       drupal_add_html_head($og_image_height, 'usanetwork_og:image:height');

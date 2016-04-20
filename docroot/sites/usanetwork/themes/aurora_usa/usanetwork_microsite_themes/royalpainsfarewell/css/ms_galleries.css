@@ -209,6 +209,7 @@
   width: 31.3%;
   height: 108px;
   margin: 0 1% 2% 0;
+  vertical-align: top;
 }
 #galleries-nav-list li.hide {
   display: none;

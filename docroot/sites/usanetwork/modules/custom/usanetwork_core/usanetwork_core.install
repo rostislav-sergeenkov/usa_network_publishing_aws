@@ -1228,3 +1228,12 @@ function usanetwork_core_update_7186() {
     module_enable(array('usanetwork_news'));
   }
 }
+
+/**
+ * Enables Akamai madule.
+ */
+function usanetwork_core_update_7187() {
+  if (!module_exists('akamai')) {
+    module_enable(array('akamai'));
+  }
+}

@@ -487,13 +487,6 @@
         $siteNav.removeClass('mobile');
       }
 
-      if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice && wwidth < 748) {
-        $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
-      }
-      else {
-        $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
-      }
-
       if (typeof Waypoint != 'undefined') Waypoint.refreshAll();
 
       if ($('#videos').length > 0) Drupal.behaviors.ms_videos.setVideoHeight();
@@ -502,6 +495,8 @@
         Drupal.behaviors.ms_quizzes.reloadSliders();
         Drupal.behaviors.ms_quizzes.refresh300x250Ad();
       }
+
+      mps.responsiveApply();
     },
 
     // menu click to navigate to a specific video filter
@@ -811,7 +806,10 @@
         }, 2000);
         // END TIME OUT
 
-        if (urlParts['section'] != 'videos') self.refreshAds(urlParts['section']);
+        mps._ready(function(){
+          usa_debug('MPS READY');
+          if (urlParts['section'] != 'videos') self.refreshAds(urlParts['section']);
+        });
       });
     }
   }

@@ -3533,7 +3533,6 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
 
     // BUILD QUERY
     $query = db_select('mpx_video', 'mpx');
-    $query->distinct();
     $query->fields('mpx', array('fid'));
     $query->fields('fvt', array('field_usa_video_terms_target_id'));
     $query->innerJoin('file_managed', 'fm', 'mpx.fid = fm.fid');
@@ -3557,6 +3556,7 @@ function _usanetwork_microsite_get_related_videos_for_microsite($node) {
     }
     $query->condition($lang);
     $query->condition('fs.field_show_target_id', $show_id, '=');
+    $query->groupBy('mpx.fid');
     $query->orderBy('mfe.field_mpx_full_episode_value', 'DESC');
     $query->orderBy('cast(fsn.field_mpx_season_number_value as unsigned)', 'DESC');
     $query->orderBy('cast(fen.field_mpx_episode_number_value as unsigned)', $order_for_full_episodes);

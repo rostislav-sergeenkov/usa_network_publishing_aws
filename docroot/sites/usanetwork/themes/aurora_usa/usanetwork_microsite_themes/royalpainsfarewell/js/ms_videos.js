@@ -7,38 +7,22 @@
     // Gigya share bar
     updateGigyaSharebar: function(initialPageLoad, preview_image) {
       initialPageLoad = initialPageLoad || 0;
-      if (typeof Drupal.gigya != 'undefined') {
-        var sharebar = new Object(),
-            $videoInfoContainer = $('#videos #video-container .video-player-desc'),
-            caption = $videoInfoContainer.find('.video-description').text(),
-            shareTitle = $videoInfoContainer.find('.video-title').text(),
-            imageSrc = preview_image;
+      var sharebar = new Object(),
+          $videoInfoContainer = $('#videos #video-container .video-player-desc'),
+          caption = $videoInfoContainer.find('.video-description').text(),
+          shareTitle = $videoInfoContainer.find('.video-title').text(),
+          imageSrc = preview_image,
+          url = window.location.href;
 
-        sharebar.gigyaSharebar = {
-          containerID: "video-gigya-share",
-          iconsOnly: true,
-          layout: "horizontal",
-          shareButtons: "facebook, twitter, tumblr, pinterest, share",
-          shortURLs: "never",
-          showCounts: "none"
-        }
+      var settings = settings || {
+        containerId: 'video-gigya-share',
+        title: shareTitle,
+        description: caption,
+        imageSrc: imageSrc,
+        url: url
+      };
 
-        sharebar.gigyaSharebar.ua = {
-          description: caption,
-          imageBhev: "url",
-          imageUrl: imageSrc,
-          linkBack: url,
-          title: shareTitle
-        }
-        if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
-
-        // reset Gigya share bar clicks
-        var $shareButtons = $('#video-gigya-share .gig-share-button div');
-        $shareButtons.unbind('click');
-        $shareButtons.bind('click', function(){
-          Drupal.behaviors.ms_global.sendSocialShareOmniture($(this), shareTitle);
-        });
-      }
+      Drupal.behaviors.ms_gigya.updateGigyaSharebar(initialPageLoad, settings);
     },
 
     // setVideoHeight
@@ -53,8 +37,97 @@
       for (key in $pdk.controller.listeners) {
         delete $pdk.controller.listeners[key];
       }
-      $pdk.bindPlayerEvents();
-      tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
+      if ($pdk.hasOwnProperty('bindPlayerEvents')) $pdk.bindPlayerEvents();
+      if (typeof Drupal.usanetwork_video_endcard != 'undefined' && Drupal.usanetwork_video_endcard.hasOwnProperty('OnYmalitemnewClick')) tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
+    },
+
+    updateVideoToShowOnPageLoad: function(callback){
+      var $activeVideoFilter = $('#videos .filter-menu li.active'),
+          activeVideoFilterName = $activeVideoFilter.attr('data_filter_class'),
+          $thumbnailList = $('#thumbnail-list .item-list ul');
+      if ($thumbnailList.find('li.thumbnail').length) {
+        usa_debug('updateVideoToShowOnPageLoad() -- activeVideoFilterName: ' + activeVideoFilterName);
+        $thumbnailList.find('li.thumbnail:first').addClass('active');
+
+        if (typeof callback == 'function') callback();
+      }
+      else {
+        setTimeout(function(){
+          Drupal.behaviors.ms_videos.updateVideoToShowOnPageLoad(callback);
+        }, 500);
+      }
+    },
+
+    setVideoFilterOrder: function(switchInitialVideo, callback) {
+      var desiredVideoFilterOrder = ['cast-interviews', 'season-recaps', 'favorite-moments', 'backstage-access', 'full-episodes'];
+      switchInitialVideo = switchInitialVideo || false;
+
+      usa_debug('setVideoFilterOrder(' + switchInitialVideo + ')');
+
+      var mylist = $('#videos ul.filter-menu');
+      var listitems = mylist.children('li').get();
+      function reinitializeClicks() {
+        // initialize video filter sub-item clicks
+        $('#video-filter .filter-child-item').click(function () {
+          Drupal.behaviors.ms_videos.processSubMenuClick($(this));
+        });
+      }
+      function setLastClass() {
+        mylist.find('.last').removeClass('last');
+        mylist.find('li:last').addClass('last');
+        reinitializeClicks();
+      }
+      listitems.sort(function(a, b) {
+        //usa_debug('setVideoFilterOrder listitems.sort(a, b)');
+        //usa_debug(a);
+        //usa_debug(b);
+        var aFilterClass = $(a).attr('data_filter_class'),
+            bFilterClass = $(b).attr('data_filter_class'),
+            aPos = desiredVideoFilterOrder.indexOf(aFilterClass),
+            bPos = desiredVideoFilterOrder.indexOf(bFilterClass);
+        //usa_debug('setVideoFilterOrder() aPos: ' + aPos + ', bPos: ' + bPos);
+        return (aPos > bPos) ? 1 : -1;
+      })
+      var listitemsCount = 0;
+      var listitemsNum = listitems.length;
+      $.each(listitems, function(idx, itm) {
+        mylist.append(itm);
+        listitemsCount++;
+        if (listitemsCount == listitemsNum) setLastClass();
+      });
+
+      if (switchInitialVideo) {
+        var $videoFilterList = $('#videos .filter-menu'),
+            $videoThumbnails = $('#thumbnail-list .item-list ul li.thumbnail');
+
+        $videoFilterList.find('li').removeClass('active');
+        $videoThumbnails.remove();
+        $videoFilterList.find('li:first').click();
+
+        Drupal.behaviors.ms_videos.updateVideoToShowOnPageLoad(callback);
+      }
+
+      if (typeof callback == 'function') callback();
+    },
+
+    placeVideoFiltersInParagraphs: function() {
+      $('#videos #video-filter ul.filter-menu li').each(function(){
+        var html = $(this).html();
+        $(this).html('<p>' + html + '</p>');
+      });
+    },
+
+    moveVideoFilters: function() {
+      var wwidth = window.innerWidth,
+          $filters = $('#videos .filter-wrapper')
+          $highPos = $('#videos .full-pane'),
+          $lowPos = $('#videos .right-pane');
+      if (wwidth < 1174) {
+        $lowPos.prepend($filters);
+      }
+      else {
+        $highPos.before($filters);
+      }
     },
 
     //ajax request
@@ -64,7 +137,8 @@
           playerWrap = videoContainer.find('.video-player .file-video-mpx'),
           playerDesc = videoContainer.find('.video-player-desc'),
           playerAuth = videoContainer.find('.video-auth-player-wrapper'),
-          playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper');
+          playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper'),
+          msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
 
       $.ajax({
         type: 'GET',
@@ -92,9 +166,20 @@
         Drupal.behaviors.ms_videos.micrositePlayerBind();
         Drupal.behaviors.ms_videos.setVideoHeight();
 
+        if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
+          var $nextVideo = document.getElementById('videos'),
+              nextTop = $nextVideo.offsetTop;
+
+          usa_debug('========= micrositeGetVideo() -- nextTop: ' + nextTop);
+
+          $('html, body').animate({'scrollTop': nextTop}, 1000, 'jswing');
+        }
+
+        //usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
+
         // initialize Gigya sharebar
         Drupal.behaviors.ms_videos.updateGigyaSharebar(initialPageLoad, preview_image);
-        if (!initialPageLoad) Drupal.behaviors.ms_global.setOmnitureData('videos');
+        if (!initialPageLoad && msGlobalExists && typeof Drupal.behaviors.ms_global.setOmnitureData == 'function') Drupal.behaviors.ms_global.setOmnitureData('videos');
       })
       .fail(function(jqXHR, textStatus) {
         usa_debug('ajax call failed -- textStatus: ' + textStatus);
@@ -110,7 +195,7 @@
     },
 
     // set video player on click thumbnail
-    micrositeSetVideoPlayer: function (autoplay, selector, data, initialPageLoad) {
+    micrositeSetVideoPlayer: function (autoplay, selector, data, initialPageLoad, callback) {
       initialPageLoad = initialPageLoad || 0;
       var autoplay = autoplay || false,
           selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active',
@@ -120,19 +205,29 @@
           dataFid = activeVideoThumb.attr('data-fid'),
           dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
           ad_728x90 = $('#videos .ad_728x90'),
-          ad_728x90_1 = $('#videos .ad_728x90_1'),
-          ad_300x60_1 = $('#videos #ad_300x60_1'),
-          ad_300x250 = $('#videos #ad_300x250'),
-          ad_300x250_1 = $('#videos #ad_300x250_1'),
+          ad_728x90_1 = $('#videos .ad_728x90_1'), // full episode video displayed
+          ad_300x60_1 = $('#videos #ad_300x60_1'), // full episode video
+          ad_300x250 = $('#videos #ad_300x250'), // not displayed 300x250
+          ad_300x250_1 = $('#videos #ad_300x250_1'), // displayed 300x250
           filter,
-          url;
+          url,
+          msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
+
+      usa_debug('micrositeSetVideoPlayer(' + autoplay + ', ' + selector + ', ' + data + ', ' + initialPageLoad + ')');
+
+      // if there is no '#videos .ad_728x90' element,
+      // but there is an '.ad-leaderboard' element,
+      // use the .ad-leaderboard element for the video 728x90 ad
+      if (ad_728x90.length != 1 && $('#videos .ad-leaderboard').length == 1) ad_728x90 = $('.ad-leaderboard');
 
       if (data) {
         dataPlayerId = data.data.player_id;
         dataFid = data.data.fid;
       }
-//usa_debug('========= micrositeSetVideoPlayer(' + autoplay + ', ' + selector + ', ' + data + ', ' + initialPageLoad + ')\ndataFid: ' + dataFid);
-      if ($('#video-filter').length) {
+
+      //usa_debug('========= micrositeSetVideoPlayer(' + autoplay + ', ' + selector + ', ' + data + ', ' + initialPageLoad + ')\ndataFid: ' + dataFid);
+
+      if ($('#video-filter').length && $('#video-filter .filter-item.active').length) {
         filter = $('#video-filter .filter-item.active').attr('data-filter-name');
         url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + filter;
       }
@@ -144,36 +239,15 @@
         videoContainer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
       }
 
+      // handle ads, video description and mobile overlay modal
       if (dataFullEpisode == 'true') {
         Drupal.behaviors.ms_videos.micrositeMobileModal();
-        if (ad_300x250_1) {
-          ad_300x250_1.closest('li.ad').hide();
-          ad_300x250_1.attr('id', 'ad_300x250').empty();
-        }
-        if (ad_728x90.attr('id') != 'ad_728x90_1') {
-          ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
-        }
 
         $('#videos .full-pane').addClass('full-desc');
-        ad_300x60_1.show();
       }
-      else { // not full episode
+      // else not full episode
+      else {
         $('#videos .full-pane').removeClass('full-desc');
-        ad_300x60_1.hide();
-
-        if (ad_728x90.attr('id') == 'ad_728x90_1') {
-          ad_728x90.attr('class', '').attr('class', ad_728x90.attr('data-class')).removeAttr('data-class').attr('id', '').empty();
-        }
-        if ($('#videos').find(ad_300x250)) {
-          ad_300x250.closest('li.ad').show();
-          ad_300x250.attr('id', 'ad_300x250_1');
-        }
-        if ($('#videos').find(ad_300x250_1)) {
-          ad_300x250_1.closest('li.ad').show();
-        }
-        if (dataFullEpisode == 'false' && Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard')) {
-          Drupal.behaviors.ms_global.create728x90Ad();
-        }
       }
 
       Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
@@ -188,7 +262,6 @@
       }
 
       function checkAjaxUrl() {
-
         var urlArr = url.split('/'),
             urlArrLength = urlArr.length - 1,
             i = 0,
@@ -206,6 +279,8 @@
       if (checkAjaxUrl()) {
         Drupal.behaviors.ms_videos.micrositeGetVideo(url, initialPageLoad);
       }
+
+      if (typeof callback == 'function') setTimeout(callback, 2000);
     },
 
     // SetPausePlayer
@@ -233,9 +308,12 @@
     },
 
     // click Thumbnail
-    clickThumbnail: function (elem) {
+    clickThumbnail: function (elem, autoplay) {
       var refreshAdsOmniture = 0,
-          videoContainer = $('#video-container');
+          autoplay = autoplay || false,
+          videoContainer = $('#video-container'),
+          msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
+      //usa_debug('clickThumbnail(elem, ' + autoplay + ')');
 
       if (videoContainer.attr('data-video-url') != elem.attr('data-video-url')) {
         $('#thumbnail-list .item-list ul li.thumbnail').removeClass('active');
@@ -246,7 +324,7 @@
         if (!elem.hasClass('active')) {
           elem.addClass('active');
         }
-        Drupal.behaviors.ms_global.scrollToTop();
+        if (msGlobalExists) Drupal.behaviors.ms_global.scrollToTop();
         return false;
       }
 
@@ -265,25 +343,26 @@
         return false;
       }
 
-      if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
-        Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+      if (msGlobalExists) {
+        if (!Drupal.behaviors.ms_global.globalInitialPageLoad) {
+          Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
+        }
+        Drupal.behaviors.ms_global.changeTitle(itemTitle, anchorSection, basePageName);
+        Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
+        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', elem);
       }
-      Drupal.behaviors.ms_global.changeTitle(itemTitle, anchorSection, basePageName);
-      Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
-      Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', elem);
-      Drupal.behaviors.ms_global.scrollToTop();
-    },
-
-    // AD 300x250 with class ADDED
-    adAdded: function() {
-      if (($('#videos .video-no-auth-player-wrapper').hasClass('active-player')) && ($('#thumbnail-list .thumbnail.ad').hasClass('added'))) {
-        $('#thumbnail-list .thumbnail.ad').removeClass('added').show();
+      else {
+        Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
+        Drupal.behaviors.ms_videos.micrositeSetVideoPlayer('true', elem);
       }
     },
 
     // Get Thumbnail List
-    getThumbnailList: function (url, offset, $toggler, categoryName, filterClass) {
+    getThumbnailList: function (url, offset, $toggler, categoryName, filterClass, seasonNum, epNum, autoplay) {
       filterClass = filterClass || null;
+      seasonNum = seasonNum || null;
+      epNum = epNum || null;
+      autoplay = autoplay || false;
       $.ajax({
         type: 'GET',
         url: url,
@@ -294,11 +373,11 @@
 
         var videoList = data.videos,
             infoMore = data.info.more,
-            adBlock = $('#thumbnail-list .thumbnail.ad'),
+            $adBlock = $('#thumbnail-list .thumbnail.ad'),
             $itemList = $('#thumbnail-list .view-content .item-list ul');
 
-//usa_debug('========= getThumbnailList -- filterClass: ' + filterClass + '\n$itemList: ');
-//usa_debug($itemList);
+        //usa_debug('========= getThumbnailList -- filterClass: ' + filterClass + '\n$itemList: ');
+        //usa_debug($itemList);
         $itemList.animate({'opacity': 0}, 500, function(){
           if (filterClass != null) $('#thumbnail-list .view-content .item-list ul').attr('class', filterClass);
 
@@ -308,20 +387,32 @@
             $('#thumbnail-list .thumbnail').last().after(videoList);
           }
 
-          $(this).animate({'opacity': 1}, 500, function(){
-            var thumbnail = $('#thumbnail-list .thumbnail');
+          // add wrapper around video thumbnail images
+          $('#videos li.thumbnail img').wrap('<div class="video-nav-img"></div>');
 
-            if (!thumbnail.hasClass('ad')) {
-              if (thumbnail.eq(1)) {
-                thumbnail.eq(1).after(adBlock);
+          $(this).animate({'opacity': 1}, 500, function(){
+            //usa_debug('getThumbnailList() -- $this: ', $(this));
+            var $thumbnails = $('#thumbnail-list .thumbnail');
+
+            // lazy load images
+            $('#video-item-list-wrapper ul > li').each(function(){
+              var $this = $(this).find('img'),
+                  dataSrc = $this.attr('data-src');
+              //usa_debug('dataSrc: ' + dataSrc);
+              $this.attr('src', dataSrc);
+            });
+
+            if (!$thumbnails.hasClass('ad')) {
+              if ($thumbnails.eq(1)) {
+                $thumbnails.eq(1).after($adBlock);
               } else {
-                thumbnail.last().after(adBlock);
+                $thumbnails.last().after($adBlock);
               }
-              adBlock.addClass('added').hide();
+              $adBlock.addClass('added').hide();
             }
 
             if (infoMore.toString() === 'false') {
-              if (thumbnail.length < 11) {
+              if ($thumbnails.length < 11) {
                 $('#thumbnail-list .expandable-toggle-wrap').removeClass('active');
                 $('#thumbnail-list .expandable-toggle-wrap').removeClass('spoiler');
               }
@@ -340,11 +431,11 @@
               $toggler.removeClass('processed');
             }
 
-            thumbnail.unbind('click');
-            thumbnail.bind('click', function (e) {
+            $thumbnails.unbind('click');
+            $thumbnails.bind('click', function (e) {
               e.preventDefault();
               var elem = $(this);
-              Drupal.behaviors.ms_videos.clickThumbnail(elem);
+              Drupal.behaviors.ms_videos.clickThumbnail(elem, true);
             });
             Drupal.behaviors.ms_videos.setActiveThumbnail();
             if (typeof Waypoint != 'undefined') {
@@ -363,18 +454,53 @@
     setActiveThumbnail: function() {
       var currentVideoUrl = $('#video-container').attr('data-video-url');
         $('#thumbnail-list').find("li[data-video-url='" + currentVideoUrl + "']").addClass('active');
+    },
 
+    // processSubMenuClick
+    processSubMenuClick: function($this) {
+      var $filterChildItems = $('#video-filter .filter-child-item'),
+          $filterMenu = $('#video-filter .filter-menu');
+
+      if ($this.hasClass('active')) {
+        return false;
+      }
+      else {
+        $filterChildItems.removeClass('active');
+        $filterMenu.find('.filter-item').removeClass('active');
+        $this.addClass('active');
+        $this.parents('li.filter-item').addClass('active hide');
+
+        var categoryName = $('#video-filter .filter-item.active').attr('data-filter-name'),
+            filterClass = $('#video-filter .filter-item.active').attr('data_filter_class');
+            offset = 0,
+            seasonNum = $this.attr('data-season-num'),
+            epNum = $this.attr('data-episode-num'),
+            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + seasonNum;
+        usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum: ' + seasonNum + ', epNum: ' + epNum);
+        $('#thumbnail-list .expandable-toggle li').text('more').removeClass('less').addClass('more');
+        $('#thumbnail-list').removeClass('expanded');
+
+        Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName, filterClass, seasonNum, epNum, false);
+      }
+
+      // remove 'hide' class from parent so that the next video filter hover works
+      $this.parents('li.filter-item').removeClass('hide');
     },
 
     attach: function (context, settings) {
       var self = this;
 
+      // add wrapper around video thumbnail images
+      $('#videos li.thumbnail img').wrap('<div class="video-nav-img"></div>');
+
+      // Uncomment below line to test varying numbers of video filters
+      // $('#videos #video-filter .filter-menu').append('<li class="filter-item" data-filter-name="Favorite Moments" data_filter_class="favorite-moments"><p>Favorite Moments</p></li><li class="filter-item" data-filter-name="Backstage Videos" data_filter_class="backstage-videos"><p>Backstage Videos</p></li><li class="filter-item" data-filter-name="Season Recaps" data_filter_class="season-recaps"><p>Season Recaps</p></li>');
+
       // video thumbnail clicks
       $('#thumbnail-list .item-list ul li.thumbnail').click(function (e) {
         e.preventDefault();
         var elem = $(this);
-        self.clickThumbnail(elem);
-        self.updateGigyaSharebar(0);
+        self.clickThumbnail(elem, true);
       });
 
       // filter click toggles
@@ -388,7 +514,7 @@
         }
       });
 
-// @TODO: DV - DO WE NEED THE FOLLOWING?
+      // close video filter menus
       $('body').live('click', function (e) {
         if ($(e.target).parents().filter('#video-filter').length != 1){
           if ($('#video-filter .filter-label').hasClass('open')) {
@@ -400,15 +526,18 @@
 
       // video filter clicks
       $('#video-filter li.filter-item').click(function () {
-        var filterItem = $('#video-filter li.filter-item'),
-            filterMenu = $('#video-filter .filter-menu'),
-            filterClass = $(this).attr('data_filter_class');
+        var $filterItems = $('#video-filter li.filter-item'),
+            $filterMenu = $('#video-filter .filter-menu'),
+            filterClass = $(this).attr('data_filter_class'),
+            anchor = (filterClass == 'must-see-moments') ? 'must-see-moments' : 'videos';
 
         if ($(this).hasClass('active')) {
           return false;
         }
         else {
-          filterItem.removeClass('active');
+          Drupal.behaviors.ms_global.setActiveMenuItem(anchor);
+
+          $filterItems.removeClass('active');
           $(this).addClass('active');
           $('#video-filter .filter-child-item').removeClass('active');
 
@@ -420,10 +549,15 @@
             url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset;
           }
           else {
-            var season_num = childItems.last().attr('data-season-num');
-
-            childItems.last().addClass('active');
-            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;;
+            if (categoryName == 'Full episodes') {
+              var seasonNum = childItems.last().attr('data-season-num');
+              childItems.last().addClass('active');
+            }
+            else {
+              var seasonNum = childItems.first().attr('data-season-num');
+              childItems.first().addClass('active');
+            }
+            url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + seasonNum;
           }
 
           $('#thumbnail-list .expandable-toggle li').text('more');
@@ -434,33 +568,7 @@
         }
       });
 
-      // video filter sub-item clicks
-      $('#video-filter .filter-child-item').click(function () {
-        var filterItems = $('#video-filter .filter-child-item'),
-            filterMenu = $('#video-filter .filter-menu');
-
-        if ($(this).hasClass('active')) {
-          return false;
-        }
-        else {
-          filterItems.removeClass('active');
-          filterMenu.find('.filter-item').removeClass('active');
-          $(this).addClass('active');
-          $(this).parents('li.filter-item').addClass('active');
-
-          var categoryName = $('#video-filter .filter-item.active').attr('data-filter-name'),
-              offset = 0,
-              season_num = $(this).attr('data-season-num'),
-              url = Drupal.settings.basePath + 'ajax/microcite/get/videos/' + Drupal.settings.microsites_settings.nid + '/' + categoryName + '/' + offset + '/' + season_num;
-
-          $('#thumbnail-list .expandable-toggle li').text('more').removeClass('less').addClass('more');
-          $('#thumbnail-list').removeClass('expanded');
-
-          self.getThumbnailList(url, offset, null, categoryName);
-        }
-      });
-
-      // video items toggler
+      // video items more/less toggler
       var thumbnailList = $('#thumbnail-list');
       thumbnailList.each(function () {
         var $self = $(this),

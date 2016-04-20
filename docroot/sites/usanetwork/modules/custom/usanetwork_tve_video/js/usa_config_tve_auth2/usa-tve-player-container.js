@@ -74,7 +74,7 @@
                   if ($rootScope.isFullEpisode) {
                     scope.src = $sce.trustAsResourceUrl(config.src + '?ec=f&' + getQueryParams(status.isAuthenticated && status.mvpdId));
                   } else {
-                    scope.src = $sce.trustAsResourceUrl(config.src + '?' + getQueryParams());
+                    scope.src = $sce.trustAsResourceUrl(config.src + '?ec=f&' + getQueryParams());
                   }
                 }
 
@@ -134,7 +134,7 @@
               var body, playerContainer, tveAnalytics, userStatus, isLive, isShowEndCard,
                   isFullEpisode, isEntitlement, isMicrosite, isMobile,
                   playerWrap, playerId, episodeRating, episodeTitle, mpxGuid, encodedToken,
-                  isAdStart, nextReleaseUrl, positionTime, usaVideoSettingsRun, endCardMetaData;
+                  isAdStart, nextEpisodeUrl, positionTime, usaVideoSettingsRun, endCardMetaData;
 
               // set vars value
               body = ng.element('body');
@@ -150,10 +150,10 @@
               isFullEpisode = parseInt(attr['isFullEpisode']) === 1 ? true : false;
               isShowEndCard = parseInt(attr['showEndCard']) === 1 ? true : false;
               isMicrosite = usaMicrositesService.isMicrosite;
-              endCardMetaData = Drupal.settings.short_endcard;
+              // endCardMetaData = Drupal.settings.short_endcard;
 
               isAdStart = false;
-              nextReleaseUrl = attr['nextReleaseUrl'];
+              nextEpisodeUrl = attr['nextEpisodeUrl'];
               usaVideoSettingsRun = false;
               positionTime = Drupal.settings.videoSetTime; // seconds
 
@@ -324,21 +324,21 @@
                 });
 
                 // end card events
-                $pdk.controller.dispatchEvent("OnEndCardMetadata", endCardMetaData);
+                // $pdk.controller.dispatchEvent("OnEndCardMetadata", endCardMetaData);
 
-                $pdk.controller.addEventListener("OnEndCardCountdownComplete", function (e) {
-                  window.location = window.location.origin + e.data.data.pageLink;
-                });
-
-                $pdk.controller.addEventListener("OnEndCardPlaylistVideoSelected", function (e) {
-                  window.location = window.location.origin + e.data.data.pageLink;
-                });
+                // $pdk.controller.addEventListener("OnEndCardCountdownComplete", function (e) {
+                //   window.location = window.location.origin + e.data.data.pageLink;
+                // });
+                //
+                // $pdk.controller.addEventListener("OnEndCardPlaylistVideoSelected", function (e) {
+                //   window.location = window.location.origin + e.data.data.pageLink;
+                // });
 
 
                 // init end card service
                 if (isShowEndCard) {
                   usaEndCardService.init();
-                } else if (nextReleaseUrl != '') {
+                } else if (nextEpisodeUrl != '') {
                   $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
                 }
 
@@ -557,7 +557,7 @@
                */
               function _onReleaseEnd(pdkEvent) {
 
-                if (!isShowEndCard && nextReleaseUrl != '') {
+                if (!isShowEndCard && nextEpisodeUrl != '') {
 
                   if (isAdStart) {
                     // change status ad on false
@@ -568,7 +568,7 @@
 
                   // redirect to next episode
                   usaEndCardHelper.timeoutUpNext({
-                    episodeUpNextUrl: nextReleaseUrl,
+                    episodeUpNextUrl: nextEpisodeUrl,
                     showTitle: attr['showTitle'],
                     episodeTitle: attr['episodeTitle'],
                     timeUpNext: 0

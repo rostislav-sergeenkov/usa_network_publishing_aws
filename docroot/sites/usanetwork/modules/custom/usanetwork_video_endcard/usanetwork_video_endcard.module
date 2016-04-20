@@ -351,6 +351,8 @@ function usanetwork_get_endcard_variables($file) {
     $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT);
     $related_clip_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT);
     $related_files = array_merge($related_files, $related_clip_files);
+  } elseif (!$full_episode) {
+    $related_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, 1);
   }
 
   foreach ($related_files as $related_file) {

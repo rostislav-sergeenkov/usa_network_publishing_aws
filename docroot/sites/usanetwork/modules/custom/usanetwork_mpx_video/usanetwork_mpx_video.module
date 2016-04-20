@@ -1535,8 +1535,8 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       //twitter card
       if (!$full_episode) {
 
-        $endcard_parameters = _usanetwork_mpx_video_get_short_endcard_parameters($file, $show);
-        drupal_add_js(array('short_endcard' => $endcard_parameters), 'setting');
+//        $endcard_parameters = _usanetwork_mpx_video_get_short_endcard_parameters($file, $show);
+//        drupal_add_js(array('short_endcard' => $endcard_parameters), 'setting');
 
         //twitter card
         $tag_card = array(

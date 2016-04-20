@@ -412,5 +412,11 @@
   #galleries-nav-list li {
     width: 31%;
   }
+  #galleries-nav-list li.show:nth-of-type(3n) {
+    margin-right: 0;
+  }
+  #galleries-nav-list li.show:nth-of-type(5n) {
+    margin-right: 1%;
+  }
 }
 

@@ -631,6 +631,7 @@
             //Drupal.behaviors.ms_site.galleryLazyLoad();
             Drupal.behaviors.ms_global.showGallery($activeGallery);
             Drupal.behaviors.ms_global.setOmnitureData('galleries');
+            Drupal.behaviors.ms_global.refreshAds('galleries');
 
             // initialize Gigya share bar clicks
             $('#galleries #gigya-share .gig-button-container td > div').unbind('click');

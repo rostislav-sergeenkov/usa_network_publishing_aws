@@ -1,0 +1,467 @@
+/* GENERAL */
+html {
+  background-color: #CCC;
+}
+body.page-node-microsite {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #30251A;
+  font-family: "avalonregular", sans-serif;
+  font-size: 16px !important;
+  line-height: 18px !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  background-color: transparent;
+}
+body #mobileVideoModal {
+  top: 80px;
+}
+.usa-wrap {
+  max-width: 100%;
+}
+#microsite {
+  background-color: transparent;
+  background-image: none;
+}
+#microsite #sections {
+  margin: 0;
+  background-color: transparent;
+}
+a,
+a:link,
+a:visited {
+  color: #55452A;
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  color: #30251A;
+  text-decoration: underline;
+}
+
+/* MAIN STRUCTURE */
+.page-node-microsite .usa-wrap {
+  background-color: transparent;
+  top: -9px;
+  margin: 0 auto;
+}
+#microsite .ad-leaderboard {
+  width: 100% !important;
+  height: initial;
+  margin: 18px auto;
+}
+#microsite .ad-leaderboard iframe {
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* SCROLLBARS */
+/* IE scrollbars */
+body {
+  scrollbar-base-color: #55452A;
+  scrollbar-face-color: #FAEFDE;
+  scrollbar-3dlight-color: #FAEFDE;
+  scrollbar-highlight-color: #FAEFDE;
+  scrollbar-track-color: #55452A;
+  scrollbar-arrow-color: #55452A;
+  scrollbar-shadow-color: #222;
+  scrollbar-dark-shadow-color: #55452A;
+}
+/* Webkit scrollbars - Safari, Chrome */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #55452A;
+  border-left: 0 solid transparent;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #FAEFDE;
+  background: rgba(250,239,222,0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(250,239,222,0.8);
+}
+
+
+/* SITE NAV */
+#site-nav {
+  position: fixed;
+  top: -60px;
+  left: 0;
+  max-height: 0;
+  color: #55452A;
+  background-color: #FAEFDE;
+  box-shadow: 0 1px 6px #55452A;
+  overflow: visible !important;
+  opacity: 0;
+  z-index: 10000;
+}
+#site-nav-left {
+  position: relative;
+  top: 5px;
+  left: 9px;
+  width: 206px;
+  height: 80px;
+}
+#site-nav #site-nav-top {
+  display: none;
+}
+#site-nav #site-nav-center {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  width: calc(100% - 430px);
+  max-width: initial;
+  margin: 0 0 0 calc(50% - ((100% - 430px) / 2));
+  line-height: 1;
+}
+#site-nav li {
+  padding: 10px 18px 0;
+}
+#site-nav a,
+#site-nav a:link,
+#site-nav a:visited {
+  color: #55452A;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+#site-nav a:hover,
+#site-nav a:active,
+#site-nav li.active a {
+  color: #30251A;
+}
+/* mobile */
+#site-nav-mobile {
+  top: 27px;
+  bottom: initial;
+}
+#site-nav-links-mobile ul#site-nav-links-list-mobile {
+  width: 180px;
+}
+#site-nav-links-mobile li {
+  font-size: 16px;
+  height: auto;
+  width: 180px;
+  background-color: rgba(250,239,222,0.94);
+  color: #55452A;
+}
+#site-nav-mobile li.internal a:hover,
+#site-nav-mobile li.internal a:active,
+#site-nav-mobile li.internal.active a {
+  color: #55452A;
+}
+#site-nav a,
+#site-nav a:link,
+#site-nav a:visited,
+#site-nav a:hover,
+#site-nav a:active {
+  color: #55452A !important;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+#site-nav-right {
+  position: absolute;
+  top: 18px;
+  right: 9px;
+  width: 60px;
+  height: 26px;
+}
+
+
+
+/* SECTIONS CONTAINERS */
+#sections > .section:not(#site-nav) {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 1078px 0 0;
+  background-color: #FAEFDE;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  color: #55452A;
+  text-align: center;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+#sections > .section:not(#site-nav) > section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 1078px;
+  overflow: hidden;
+}
+section .section-title-block {
+  margin: 18px 0 30px;
+}
+#videos .section-title-block {
+  margin-bottom: 0;
+}
+section .section-title-block > h2 {
+  width: 525px;
+  height: 88px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: #55452A;
+}
+section .section-title-block > h2 span {
+  display: none;
+}
+.section-description {
+  font-family: sans-serif;
+  font-size: 22px;
+  line-height: 1.2;
+  color: #55452A;
+  margin: 0 auto !important;
+  text-align: center;
+  width: 80%;
+}
+footer {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+
+/* VIDEOS */
+#videos .section-title-block > h2 {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_videos.png');
+}
+#videos .header {
+  background-image: none;
+}
+#microsite .full-pane #video-container h1,
+#microsite .full-pane #video-container h3 {
+  color: #55452A;
+  font-family: "avalonmedium", sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+}
+#microsite .full-pane #video-container .video-description {
+  color: #55452A;
+  font-family: "avalonmedium", sans-serif;
+  font-size: 18px;
+  line-height: 1.2;
+}
+/* sub-nav */
+#video-filter li.filter-child-item {
+  background-color: #9BCEEE;
+  color: #55452A;
+  border-bottom: 1px solid #55452A;
+  text-align: left;
+  padding: 8px 0 8px 12px;
+}
+#video-filter li.filter-child-item:hover,
+#video-filter li.filter-child-item.active {
+  background-color: #55452A;
+  color: #FAEFDE;
+}
+#video-filter li.filter-item:hover,
+#video-filter li.filter-item.active {
+  background-color: transparent;
+}
+.featured-asset.file-video-mpx .locked-msg {
+  color: #FFF;
+  line-height: 1;
+}
+.featured-asset .tve-help .tve-download,
+.featured-asset .tve-help .tve-msg {
+  color: #FFF;
+}
+#microsite .featured-asset .tve-help .tve-download-link {
+  max-width: 339px;
+}
+
+
+/* TIMELINE GALLERIES */
+#sections #timeline.section {
+  background-color: #FFF;
+}
+#timeline .section-title-block > h2 {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_timeline.png');
+}
+#timeline article {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: calc(100% - 162px - 126px);
+}
+.timelineFlat.timelineFlatPortfolio.tl3 {
+  background-color: #FFF;
+}
+.timeline-items-wrapper {
+  background-color: #FAEFDE;
+}
+#timeline section .section-description {
+  margin-top: 0px;
+}
+.node-timeline-gallery .content {
+  background-color: #FAEFDE;
+  color: #55452A;
+}
+.page-node-microsite .timelineFlat .timeline-items .timeline-item-image,
+.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-image {
+  background-color: #FAEFDE;
+}
+.timelineFlat .timeline-item .timeline-item-text {
+  color: #55452A;
+}
+.timelineFlat #timeline-line-full-left .arrow:before,
+.timelineFlat #timeline-line-full-right .arrow:before {
+  color: limegreen;
+}
+.timelineFlat .timeline-items {
+  background-color: #FAEFDE;
+}
+.timelineFlat .timeline-item h2 span {
+  color: #55452A;
+}
+.timelineFlat .timeline-item h2 span.divider.divider-two,
+.timelineFlat .timeline-item h2 span.timeline-h2-scene-num {
+  display: none;
+}
+.timelineFlat h4.timeline-month {
+  color: #FFF;
+}
+.timelineFlat .timeline-item .timeline-item-details {
+  color: #55452A;
+  background-color: #FFF;
+}
+.timelineFlat #timeline-line-full-left,
+.timelineFlat #timeline-line-full-right {
+  display: none;
+}
+.timelineFlat .timeline-right,
+.timelineFlat .timeline-right:hover:active,
+.timelineFlat .timeline-left,
+.timelineFlat .timeline-left:hover:active {
+  background-color: rgba(236,232,222,0.7);
+}
+#timeline .timelineFlat .timeline-right {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext-black.svg');
+}
+#timeline .timelineFlat .timeline-left {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev-black.svg');
+}
+#timeline .timelineFlat .timeline-right:hover {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowNext-grey.svg');
+}
+#timeline .timelineFlat .timeline-left:hover {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/images/timeline_gallery/arrowPrev-grey.svg');
+}
+.timelineFlat #timeline-line-left:before,
+.timelineFlat #timeline-line-right:before {
+  color: #000;
+}
+.timelineFlat a.timeline-node:after:hover {
+  color: limegreen;
+}
+.timelineFlat a.timeline-node.active {
+  color: #000;
+}
+.timelineFlat a.timeline-node.active:after {
+  border: 2px solid transparent;
+  background: #55452A;
+}
+.timelineFlat .timeline-node-desc {
+  color: #55452A;
+  background-color: #FAEFDE;
+}
+.timelineFlat .timeline-node-desc:after {
+  border-top: 5px solid #FAEFDE;
+}
+.timelineFlat .timeline-item.active:before {
+  background-color: #55452A;
+}
+.timelineFlat .timeline-item.active:after {
+  border-top: 5px solid #55452A;
+}
+
+
+/* SOCIAL */
+#social.section {
+  background-color: #FAEFDE;
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/rp_social_bg2.jpg');
+}
+#social .section-title-block > h2 {
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/title_social.png');
+}
+#spredfast-social-content {
+  width: 80%;
+  height: calc(100% - 144px - 126px);
+  max-width: 1300px;
+  margin: 0 auto;
+  border-bottom: 6px solid #9BCEEE;
+  overflow: hidden;
+}
+#spredfast-social-content .mr-space {
+  overflow: hidden;
+}
+#spredfast-social-content .mr-space iframe {
+  height: 100% !important;
+}
+
+
+/* FOOTER */
+#microsite footer {
+  background-color: #FFF;
+  color: #55452A;
+}
+#microsite footer li a:visited, #microsite footer li a:focus {
+  color: #55452A;
+}
+#microsite footer li a {
+  color: #55452A;
+}
+
+
+/* BEGIN MEDIA QUERIES */
+@media (max-width: 1920px) {
+  #sections > .section:not(#site-nav) {
+    padding: 0;
+    height: initial;
+  }
+  #sections #videos.section {
+    padding: 0 0 50px;
+  }
+  #sections > .section:not(#site-nav) > section {
+    position: static;
+    max-height: inherit;
+  }
+}
+
+
+@media (max-width: 1072px) {
+  section .section-title-block > h2 {
+    width: 320px;
+    height: 54px;
+  }
+}
+
+
+/* BEGIN MOBILE DEVICE QUERIES */
+@media (max-device-width: 736px) {
+  #microsite #home .ad-leaderboard {
+    margin-left: calc(-50% - 150px);
+  }
+}

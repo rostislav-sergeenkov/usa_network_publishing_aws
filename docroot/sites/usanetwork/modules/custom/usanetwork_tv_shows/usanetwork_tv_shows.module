@@ -524,6 +524,15 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function usanetwork_tv_shows_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' && !empty($plugin)) {
+    return "plugins/$plugin";
+  }
+}
+
+/**
  * Implements hook_image_default_styles().
  */
 function usanetwork_tv_shows_image_default_styles() {

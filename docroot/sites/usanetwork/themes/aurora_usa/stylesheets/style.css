@@ -3871,7 +3871,7 @@ ul.menu li {
 }
 .load-more-link a {
   border-bottom: 2px solid #545454;
-  color: #545454;
+  color: #545454 !important;
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 16px;
   padding-bottom: 3px;
@@ -3888,7 +3888,7 @@ ul.menu li {
 }
 .related-content-block .load-more-link a {
   border-color: #ffffff;
-  color: #ffffff;
+  color: white !important;
 }
 
 .load-more-loader {
@@ -5996,6 +5996,9 @@ header .nav-bar-tabs {
     text-transform: uppercase;
     width: 100%;
   }
+  header .nav-bar-tabs ul > li a:hover, header .nav-bar-tabs ul > li a:active {
+    color: white;
+  }
   header .nav-bar-tabs ul > li a.log-on {
     background: darkgrey;
     padding-left: 60px;
@@ -6135,6 +6138,9 @@ header .nav-bar-tabs {
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
+  }
+  header .nav-bar-tabs a:hover, header .nav-bar-tabs a:active {
+    color: #666666;
   }
   header .nav-bar-tabs a.active {
     background: #363435;
@@ -11017,7 +11023,11 @@ footer .legal-and-social li a {
     font-size: 8.3px;
   }
 }
+footer .legal-and-social li a:active {
+  color: #dcddde;
+}
 footer .legal-and-social li a:hover {
+  color: #dcddde;
   text-decoration: underline;
 }
 footer .legal-and-social li a img {
@@ -11183,11 +11193,15 @@ footer .shows-menu ul a, footer .app-and-services-menu ul a {
     font-size: 10.5px;
   }
 }
-footer .shows-menu ul a span, footer .app-and-services-menu ul a span {
-  color: #9097a3;
+footer .shows-menu ul a:active, footer .app-and-services-menu ul a:active {
+  color: #dcddde;
 }
 footer .shows-menu ul a:hover, footer .app-and-services-menu ul a:hover {
+  color: #dcddde;
   text-decoration: underline;
+}
+footer .shows-menu ul a span, footer .app-and-services-menu ul a span {
+  color: #9097a3;
 }
 footer h2 {
   color: #dcddde;
@@ -14006,6 +14020,9 @@ footer h2 {
   .consum-sidebar .more-items a {
     line-height: 60px;
   }
+}
+.consum-sidebar .more-items a:hover, .consum-sidebar .more-items a:active {
+  color: white;
 }
 .consum-sidebar .more-items a:after {
   color: #ffffff;

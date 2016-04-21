@@ -539,6 +539,9 @@
       @include breakpoint($bp-480-width) {
         line-height: 60px;
       }
+      &:hover, &:active {
+        color: white;
+      }
       &:after {
         color: #ffffff;
         content: "\e608";

@@ -210,7 +210,11 @@ footer {
         @include breakpoint($bp-768-width) {
           font-size: 8.3px;
         }
+        &:active {
+          color: $footer-links;
+        }
         &:hover {
+          color: $footer-links;
           text-decoration: underline;
         }
         img {
@@ -352,11 +356,15 @@ footer {
         @include breakpoint($bp-1024-width) {
           font-size: 10.5px;
         }
-        span {
-          color: $footer-new-show;
+        &:active {
+          color: $footer-links;
         }
         &:hover {
+          color: $footer-links;
           text-decoration: underline;
+        }
+        span {
+          color: $footer-new-show;
         }
       }
     }

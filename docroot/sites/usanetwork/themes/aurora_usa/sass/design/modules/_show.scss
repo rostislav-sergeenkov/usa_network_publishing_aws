@@ -1382,7 +1382,72 @@
     }
   }
 }
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+  background: black;
+  padding: get-vw(16px, 1280) get-vw(16px, 1280) get-vw(21px, 1280) get-vw(16px, 1280);
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-min-2500-width) {
+    padding: 31.25px 31.25px 41.015625px 31.25px;
+  }
+  .top-menu-block {
+    @include clear();
+    position: relative;
+    .logo-block {
+      background: url('../images/logo-usa-and-theverge.png') no-repeat;
+      background-size: 100% 100%;
+      float: left;
+      height: get-vw(25px, 1280);
+      position: relative;
+      width: get-vw(245px, 1280);
+      @include breakpoint($bp-min-2500-width) {
+        height: 48.8px;
+        width: 478.5px;
+      }
+      a {
+        display: block;
+        height: 100%;
+        outline: none;
+      }
+      .logo {
+        float: left;
+        width: get-vw(57px, 1280);
+        @include breakpoint($bp-min-2500-width) {
+          width: 111.3px;
+        }
+      }
+      .second-logo {
+        float: right;
+        width: get-vw(145px, 1280);
+        @include breakpoint($bp-min-2500-width) {
+          width: 283.2px;
+        }
+      }
+    }
+    .title-block {
+      margin: 0 auto;
+      width: get-vw(348px, 1280);
+      @include breakpoint($bp-min-2500-width) {
+        width: 680px;
+      }
+    }
+    .sponsored {
+      float: right;
+      height: 20px;
+      width: 100px;
+    }
+    .menu-open-button {
+      display: none;
+      float: right;
+      @include breakpoint($bp-768-width) {
+        display: block;
+      }
+    }
+  }
+  .bottom-menu-block {
 
+  }
+}
 .show-menu-tab {
   float: left;
   height: 100%;

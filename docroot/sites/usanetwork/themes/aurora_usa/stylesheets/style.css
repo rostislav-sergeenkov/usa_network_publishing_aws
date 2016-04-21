@@ -18302,6 +18302,86 @@ footer h2 {
   display: none;
 }
 
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+  background: black;
+  padding: 1.25vw 1.25vw 1.64063vw 1.25vw;
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+    padding: 31.25px 31.25px 41.015625px 31.25px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block {
+  position: relative;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
+  background: url("../images/logo-usa-and-theverge.png") no-repeat;
+  background-size: 100% 100%;
+  float: left;
+  height: 1.95313vw;
+  position: relative;
+  width: 19.14063vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
+    height: 48.8px;
+    width: 478.5px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block a {
+  display: block;
+  height: 100%;
+  outline: none;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
+  float: left;
+  width: 4.45313vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
+    width: 111.3px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo {
+  float: right;
+  width: 11.32813vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo {
+    width: 283.2px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
+  margin: 0 auto;
+  width: 27.1875vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
+    width: 680px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
+  float: right;
+  height: 20px;
+  width: 100px;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
+  display: none;
+  float: right;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
+    display: block;
+  }
+}
+
 .show-menu-tab {
   float: left;
   height: 100%;

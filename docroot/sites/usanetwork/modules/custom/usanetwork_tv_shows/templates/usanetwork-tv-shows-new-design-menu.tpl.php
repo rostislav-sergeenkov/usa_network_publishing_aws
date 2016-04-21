@@ -3,7 +3,7 @@
     <a href="/" title="Home" rel="home" class="logo"></a>
     <a href="#" class="second-logo"></a>
   </div>
-  <div class="title-block">
+  <div class="title-block<?php print (!empty($show_class))?' '.$show_class: ''; ?>">
     <?php print $show_title; ?>
     <?php if (!empty($tune_in_date)): ?>
       <span><?php print $tune_in_date; ?></span>
@@ -25,7 +25,11 @@
     <?php endif; ?>
   </div>
   <div class="social-block">
-    <div class="hashtag"></div>
+    <?php if (!empty($hashtag)): ?>
+      <div class="hashtag">
+        <span><?php print $hashtag; ?></span>
+      </div>
+    <?php endif; ?>
     <div class="social-icons social-follow">
       <?php foreach ($social_icons as $social_link): ?>
         <?php print $social_link; ?>

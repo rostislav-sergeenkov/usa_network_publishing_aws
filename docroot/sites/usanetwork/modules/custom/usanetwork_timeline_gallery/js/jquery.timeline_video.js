@@ -386,8 +386,16 @@ Project demo: http://shindiristudio.com/timeline
             previewImage = $gigyaShareBar.attr('data-share-picture');
 
         Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
-        // refresh Ad topBanner
-        Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+
+        // Refresh Ad
+        if ($('body').hasClass('page-node-microsite')
+          && typeof Drupal.behaviors.ms_global != 'undefined'
+          && typeof Drupal.behaviors.ms_global.refreshAds == 'function') {
+          Drupal.behaviors.ms_global.refreshAds('timeline');
+        }
+        else {
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+        }
       });
 
       $this.timeline('setWidthHeightMargin');

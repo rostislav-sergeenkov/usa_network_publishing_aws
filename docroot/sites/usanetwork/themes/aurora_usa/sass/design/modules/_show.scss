@@ -1396,12 +1396,15 @@
     .logo-block {
       background: url('../images/logo-usa-and-theverge.png') no-repeat;
       background-size: 100% 100%;
-      float: left;
       height: get-vw(25px, 1280);
-      position: relative;
+      left: 0;
+      margin-top: get-vw(-12.5px, 1280);
+      position: absolute;
+      top: 50%;
       width: get-vw(245px, 1280);
       @include breakpoint($bp-min-2500-width) {
         height: 48.8px;
+        margin-top: get-vw(-24.4px, 1280);
         width: 478.5px;
       }
       a {
@@ -1426,15 +1429,54 @@
     }
     .title-block {
       margin: 0 auto;
-      width: get-vw(348px, 1280);
-      @include breakpoint($bp-min-2500-width) {
-        width: 680px;
+      position: relative;
+      .title {
+        margin: 0;
+        position: relative;
+        width: 100%;
+      }
+      a {
+        background-size: 100% 100%;
+        display: block;
+        height: 100%;
+        outline: none;
+        text-indent: -9999px;
+        width: 100%;
+      }
+      .tune-in {
+        font-size: get-vw(10px, 1024);
+        line-height: 1.5;
+        text-align: center;
+        width: 100%;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 24.4px;
+        }
+      }
+      &.show-mrrobot {
+        width: get-vw(348px, 1280);
+        @include breakpoint($bp-min-2500-width) {
+          width: 680px;
+        }
+        .title {
+          height: get-vw(54.52px, 1280);
+          @include breakpoint($bp-min-2500-width) {
+            height: 106.5px;
+          }
+        }
+        a {
+          background-image: url('../images/mr-robot-logo.png');
+        }
       }
     }
     .sponsored {
-      float: right;
-      height: 20px;
-      width: 100px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: get-vw(182px, 1280);
+      @include breakpoint($bp-min-2500-width) {
+        width: 355.5px;
+      }
     }
     .menu-open-button {
       display: none;
@@ -1445,7 +1487,11 @@
     }
   }
   .bottom-menu-block {
-
+    @include clear();
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    position: relative;
+    width: 100%;
   }
 }
 .show-menu-tab {

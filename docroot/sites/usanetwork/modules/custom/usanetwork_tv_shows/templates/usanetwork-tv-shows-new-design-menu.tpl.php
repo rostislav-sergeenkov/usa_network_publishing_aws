@@ -6,7 +6,7 @@
   <div class="title-block<?php print (!empty($show_class))?' '.$show_class: ''; ?>">
     <?php print $show_title; ?>
     <?php if (!empty($tune_in_date)): ?>
-      <span><?php print $tune_in_date; ?></span>
+      <div class="tune-in"><?php print $tune_in_date; ?></div>
     <?php endif; ?>
   </div>
   <?php if (!empty($sponsored_path)) : ?>

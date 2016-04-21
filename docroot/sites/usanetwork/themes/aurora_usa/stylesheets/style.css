@@ -18324,14 +18324,17 @@ footer h2 {
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
   background: url("../images/logo-usa-and-theverge.png") no-repeat;
   background-size: 100% 100%;
-  float: left;
   height: 1.95313vw;
-  position: relative;
+  left: 0;
+  margin-top: -0.97656vw;
+  position: absolute;
+  top: 50%;
   width: 19.14063vw;
 }
 @media (min-width: 2500px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
     height: 48.8px;
+    margin-top: -1.90625vw;
     width: 478.5px;
   }
 }
@@ -18360,17 +18363,62 @@ footer h2 {
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
   margin: 0 auto;
+  position: relative;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
+  margin: 0;
+  position: relative;
+  width: 100%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block a {
+  background-size: 100% 100%;
+  display: block;
+  height: 100%;
+  outline: none;
+  text-indent: -9999px;
+  width: 100%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
+  font-size: 0.97656vw;
+  line-height: 1.5;
+  text-align: center;
+  width: 100%;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
+    font-size: 24.4px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
   width: 27.1875vw;
 }
 @media (min-width: 2500px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
     width: 680px;
   }
 }
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
+  height: 4.25938vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
+    height: 106.5px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot a {
+  background-image: url("../images/mr-robot-logo.png");
+}
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
-  float: right;
-  height: 20px;
-  width: 100px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14.21875vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
+    width: 355.5px;
+  }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
   display: none;
@@ -18380,6 +18428,17 @@ footer h2 {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
     display: block;
   }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
+  border-bottom: 2px solid;
+  border-top: 2px solid;
+  position: relative;
+  width: 100%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block:after {
+  clear: both;
+  content: '';
+  display: table;
 }
 
 .show-menu-tab {

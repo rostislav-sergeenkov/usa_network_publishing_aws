@@ -315,6 +315,9 @@ header {
             text-decoration: none;
             text-transform: uppercase;
             width: 100%;
+            &:hover, &:active {
+              color: white;
+            }
             &.log-on {
               background: $header-tab-back-hover;
               padding-left: 60px;
@@ -448,6 +451,9 @@ header {
         @include breakpoint($bp-768-width) {
           line-height: 50px;
           padding: 0 36px;
+        }
+        &:hover, &:active {
+          color: $header-tab-text;
         }
         &.active {
           background: $header-tab-back-new;

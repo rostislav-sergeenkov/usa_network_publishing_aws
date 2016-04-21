@@ -21,7 +21,7 @@ define("USA_MPX_VIDEO_FULL_VIDEO", "Full Episodes");
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 define('USA_MPX_ACCOUNT_NAME', 'NBCU USA Network');
 define('USA_MPX_IMAGE_SIZE', '1080');
-define('USA_GLOBAL_PLAYER_ID', 'xcsFUdx9TV1_');
+define('USA_GLOBAL_PLAYER_ID', 'qRe1IXDE_V0F');
 
 /**
  * Implementation of hook_menu().
@@ -1023,7 +1023,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
       'fields' => array(
         'fullEpisode' => FALSE,
       ),
-      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
+      'guid' => 'CuIy2njPemkh_CDFtp3QpcMFZX5hivu2',
     );
 
    //for prod
@@ -1033,7 +1033,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
+      'guid' => 'CuIy2njPemkh_CDFtp3QpcMFZX5hivu2',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1041,7 +1041,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
+      'guid' => 'CuIy2njPemkh_CDFtp3QpcMFZX5hivu2',
     );
     $rulesets[] = array(
       'fields' => array(

@@ -1968,8 +1968,14 @@ function _usanetwork_tv_shows_new_design_menu() {
   }
   $show_title = decode_entities($show_title);
 
+  $show_class = usanetwork_tv_shows_color_show_css_class($show);
+
   if (!empty($show_wrapper->field_usa_tv_tune_in_date)) {
     $usa_tv_tune_in_date = $show_wrapper->field_usa_tv_tune_in_date->value();
+  }
+
+  if (!empty($show_wrapper->field_hashtag)) {
+    $hashtag = $show_wrapper->field_hashtag->value();
   }
 
   $social_links = array();
@@ -2041,6 +2047,8 @@ function _usanetwork_tv_shows_new_design_menu() {
   );
   return theme('usanetwork_tv_shows_new_design_menu', array(
     'show_title' => theme('html_tag', array('element' => $show_title)),
+    'show_class' => $show_class,
+    'hashtag' => isset($hashtag) ? $hashtag : NULL,
     'tune_in_date' => isset($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : NULL,
     'social_icons' => $social_links,
     'show_menu_tab_items' => $show_menus,

@@ -2,6 +2,7 @@
   <div>
     <a href="/" title="Home" rel="home" class="logo"></a>
     <div>The Verge</div>
+    <?php print $show_class; ?>
     <?php print $show_title; ?>
     <?php if (!empty($tune_in_date)): ?>
       <span><?php print $tune_in_date; ?></span>
@@ -11,6 +12,9 @@
     <?php endif; ?>
   </div>
   <div>
+    <?php if (!empty($hashtag)): ?>
+      <span><?php print $hashtag; ?></span>
+    <?php endif; ?>
     <div class="social-icons social-follow">
       <?php foreach ($social_icons as $social_link): ?>
         <?php print $social_link; ?>

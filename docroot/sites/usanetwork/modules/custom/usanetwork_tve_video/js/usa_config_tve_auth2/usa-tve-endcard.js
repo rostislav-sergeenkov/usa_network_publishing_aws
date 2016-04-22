@@ -204,7 +204,7 @@
               var callUpNext = $timeout(function () {
 
                 var nextUrl = options.episodeUpNextUrl,
-                    url = window.location.origin + nextUrl;
+                    url = window.location.protocol + '//' + window.location.hostname + nextUrl;
 
                 if (!$(document.body).hasClass('movie-consumptionator')) {
                   // AdobeTracking

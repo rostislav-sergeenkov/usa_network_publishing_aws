@@ -11,7 +11,7 @@ define('USANETWORK_MICROSITE_USA_PLAYER_QA', 'microsites_usa_player_endcard_qa')
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER_QA', 'microsite_usa_vod_noauth_qa');
 define('USANETWORK_MICROSITE_AUTH_PLAYER_QA', 'microsite_usa_vod_qa');
 
-define('USANETWORK_MICROSITE_RVPLAYER', 'xcsFUdx9TV1_');
+define('USANETWORK_MICROSITE_RVPLAYER', 'qRe1IXDE_V0F');
 
 define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
 define('USANETWORK_MICROSITE_QUIZ_NODE_TYPE', 'quiz');

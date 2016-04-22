@@ -165,22 +165,22 @@ function usanetwork_top3_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '10',
+          'weight' => '8',
           'metatags' => array(
             'weight' => '8',
           ),
         ),
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '11',
+          'weight' => '10',
         ),
         'xmlsitemap' => array(
-          'weight' => '12',
+          'weight' => '11',
         ),
         'locations' => array(
-          'weight' => '13',
+          'weight' => '12',
         ),
       ),
       'display' => array(),

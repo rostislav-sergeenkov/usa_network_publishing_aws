@@ -189,6 +189,14 @@ function _usanetwork_top3_main_block() {
       'top3_description' => $top3_description)),
     'setting');
 
+  //Sponsored MPS
+  if (!empty($node->field_sponsored)) {
+    $field_sponsored = $node_wrapper->field_sponsored->value();
+    if ($field_sponsored == '1') {
+      $sponsored_path = '/node/' . $node->nid;
+    }
+  }
+
   $query_params = drupal_get_query_parameters();
   if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
     if (isset($query_params['shared']) && isset($query_params['node'])) {
@@ -238,6 +246,7 @@ function _usanetwork_top3_main_block() {
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
       'isset_video' => isset($isset_video) ? $isset_video : NULL,
+      'sponsored_path' => isset($sponsored_path) ? $sponsored_path : NULL,
     );
 
     return theme('usanetwork_top3_shared', $theme_variables);
@@ -305,6 +314,7 @@ function _usanetwork_top3_main_block() {
       'top3_title' => $node->title,
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
+      'sponsored_path' => isset($sponsored_path) ? $sponsored_path : NULL,
     );
     return theme('usanetwork_top3_main_block', $theme_variables);
   }

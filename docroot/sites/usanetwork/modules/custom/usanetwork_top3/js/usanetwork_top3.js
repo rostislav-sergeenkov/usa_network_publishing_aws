@@ -328,6 +328,8 @@
 
             // reset play button
             playButton.removeClass('inactive').addClass('show');
+            ccButton.removeClass('active');
+            $pdk.controller.setSubtitleLanguage("");
 
             // hide cc button
             ccButton.addClass('show');

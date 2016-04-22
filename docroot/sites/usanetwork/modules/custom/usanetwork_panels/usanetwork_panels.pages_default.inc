@@ -27,7 +27,16 @@ function usanetwork_panels_default_page_manager_handlers() {
     'css_id' => '',
     'css' => '',
     'contexts' => array(),
-    'relationships' => array(),
+    'relationships' => array(
+      0 => array(
+        'identifier' => 'Content from Content (on Content: A Spot [field_usa_tv_a_spot])',
+        'keyword' => 'aspot_node',
+        'name' => 'entity_from_field:field_usa_tv_a_spot-node-node',
+        'delta' => '0',
+        'context' => 'argument_entity_id:node_1',
+        'id' => 1,
+      ),
+    ),
     'access' => array(
       'logic' => 'and',
       'plugins' => array(
@@ -136,6 +145,32 @@ function usanetwork_panels_default_page_manager_handlers() {
   $display->title = '';
   $display->content = array();
   $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-1';
+    $pane->panel = 'one';
+    $pane->type = 'new_design_aspot';
+    $pane->subtype = 'new_design_aspot';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_entity_id:node_1',
+        1 => 'relationship_entity_from_field:field_usa_tv_a_spot-node-node_1',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-1'] = $pane;
+    $display->panels['one'][0] = 'new-1';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -268,7 +303,7 @@ function usanetwork_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-1';
+    $pane->pid = 'new-2';
     $pane->panel = 'four';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_fbp';
@@ -287,10 +322,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['four'][0] = 'new-1';
+    $display->content['new-2'] = $pane;
+    $display->panels['four'][0] = 'new-2';
     $pane = new stdClass();
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-3';
     $pane->panel = 'one';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_aspot';
@@ -312,10 +347,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['one'][0] = 'new-2';
+    $display->content['new-3'] = $pane;
+    $display->panels['one'][0] = 'new-3';
     $pane = new stdClass();
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-4';
     $pane->panel = 'two';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_best_of';
@@ -334,10 +369,10 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['two'][0] = 'new-3';
+    $display->content['new-4'] = $pane;
+    $display->panels['two'][0] = 'new-4';
     $pane = new stdClass();
-    $pane->pid = 'new-4';
+    $pane->pid = 'new-5';
     $pane->panel = 'two';
     $pane->type = 'block';
     $pane->subtype = 'usanetwork_tv_shows-usanetwork_tv_shows_related';
@@ -356,8 +391,8 @@ function usanetwork_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['two'][1] = 'new-4';
+    $display->content['new-5'] = $pane;
+    $display->panels['two'][1] = 'new-5';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

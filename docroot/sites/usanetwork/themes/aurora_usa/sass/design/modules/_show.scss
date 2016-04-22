@@ -1382,7 +1382,118 @@
     }
   }
 }
-
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+  background: black;
+  padding: get-vw(16px, 1280) get-vw(16px, 1280) get-vw(21px, 1280) get-vw(16px, 1280);
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-min-2500-width) {
+    padding: 31.25px 31.25px 41.015625px 31.25px;
+  }
+  .top-menu-block {
+    @include clear();
+    position: relative;
+    .logo-block {
+      background: url('../images/logo-usa-and-theverge.png') no-repeat;
+      background-size: 100% 100%;
+      height: get-vw(25px, 1280);
+      left: 0;
+      margin-top: get-vw(-12.5px, 1280);
+      position: absolute;
+      top: 50%;
+      width: get-vw(245px, 1280);
+      @include breakpoint($bp-min-2500-width) {
+        height: 48.8px;
+        margin-top: get-vw(-24.4px, 1280);
+        width: 478.5px;
+      }
+      a {
+        display: block;
+        height: 100%;
+        outline: none;
+      }
+      .logo {
+        float: left;
+        width: get-vw(57px, 1280);
+        @include breakpoint($bp-min-2500-width) {
+          width: 111.3px;
+        }
+      }
+      .second-logo {
+        float: right;
+        width: get-vw(145px, 1280);
+        @include breakpoint($bp-min-2500-width) {
+          width: 283.2px;
+        }
+      }
+    }
+    .title-block {
+      margin: 0 auto;
+      position: relative;
+      .title {
+        margin: 0;
+        position: relative;
+        width: 100%;
+      }
+      a {
+        background-size: 100% 100%;
+        display: block;
+        height: 100%;
+        outline: none;
+        text-indent: -9999px;
+        width: 100%;
+      }
+      .tune-in {
+        font-size: get-vw(10px, 1024);
+        line-height: 1.5;
+        text-align: center;
+        width: 100%;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 24.4px;
+        }
+      }
+      &.show-mrrobot {
+        width: get-vw(348px, 1280);
+        @include breakpoint($bp-min-2500-width) {
+          width: 680px;
+        }
+        .title {
+          height: get-vw(54.52px, 1280);
+          @include breakpoint($bp-min-2500-width) {
+            height: 106.5px;
+          }
+        }
+        a {
+          background-image: url('../images/mr-robot-logo.png');
+        }
+      }
+    }
+    .sponsored {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: get-vw(182px, 1280);
+      @include breakpoint($bp-min-2500-width) {
+        width: 355.5px;
+      }
+    }
+    .menu-open-button {
+      display: none;
+      float: right;
+      @include breakpoint($bp-768-width) {
+        display: block;
+      }
+    }
+  }
+  .bottom-menu-block {
+    @include clear();
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    position: relative;
+    width: 100%;
+  }
+}
 .show-menu-tab {
   float: left;
   height: 100%;

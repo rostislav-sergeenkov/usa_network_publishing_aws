@@ -1,7 +1,11 @@
 <div class="top-menu-block show-border">
   <div class="logo-block">
     <a href="/" title="Home" rel="home" class="logo"></a>
-    <a href="#" class="second-logo"></a>
+    <?php if (!empty($service_logo)) : ?>
+      <a href="<?php print $service_link; ?>" class="second-logo">
+        <img src="<?php print $service_logo; ?>"/>
+      </a>
+    <?php endif; ?>
   </div>
   <div class="title-block<?php print (!empty($show_class))?' '.$show_class: ''; ?>">
     <?php print $show_title; ?>

@@ -27245,6 +27245,11 @@ html[xmlns] .slides {
   text-decoration: underline;
 }
 
+#microsite #video-container .tve-help .tve-help-inner {
+  height: 100%;
+  width: 100%;
+}
+
 .social-follow-block h2, #lyris h2, #usanetwork_social_chatter_title {
   margin: 0;
   text-align: center;

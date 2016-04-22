@@ -148,6 +148,9 @@
         <noscript><img src="<?php print $logo_top; ?>" alt="" title="" /></noscript>
       <?php endif; ?>
     </div>
+    <?php if (!empty($sponsored_path)) : ?>
+      <div class="sponsored" data-mpspath="<?php print $sponsored_path; ?>" data-scalemps="1"></div>
+    <?php endif; ?>
   </div>
 
   <div class="node-wrapper advert">

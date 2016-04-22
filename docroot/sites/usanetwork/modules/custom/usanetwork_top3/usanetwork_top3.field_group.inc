@@ -50,7 +50,7 @@ function usanetwork_top3_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Additional Information',
-    'weight' => '2',
+    'weight' => '1',
     'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -75,7 +75,7 @@ function usanetwork_top3_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Basic Information',
-    'weight' => '1',
+    'weight' => '0',
     'children' => array(
       0 => 'body',
       1 => 'field_slides_content',
@@ -104,7 +104,7 @@ function usanetwork_top3_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA IdeaMelt',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -129,7 +129,7 @@ function usanetwork_top3_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo Details',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'field_call_to_action_type',
       1 => 'field_promo_call_to_action_text',
@@ -164,7 +164,7 @@ function usanetwork_top3_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'SEO',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_seo_h1',
       1 => 'field_seo_page_title',
@@ -193,7 +193,7 @@ function usanetwork_top3_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Show relationships',
-    'weight' => '23',
+    'weight' => '13',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -210,6 +210,34 @@ function usanetwork_top3_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_sponsorship|node|top3_gallery|form';
+  $field_group->group_name = 'group_sponsorship';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'top3_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sponsorship',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_sponsored',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Sponsorship',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $export['group_sponsorship|node|top3_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_usa_custom|node|top3_gallery|form';
   $field_group->group_name = 'group_usa_custom';
   $field_group->entity_type = 'node';
@@ -218,7 +246,7 @@ function usanetwork_top3_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Custom',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_background',
       1 => 'field_show',
@@ -248,7 +276,7 @@ function usanetwork_top3_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_usa_og_image',
     ),

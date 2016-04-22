@@ -369,7 +369,7 @@
 #microsite .featured-asset .video-player-wrapper {
   overflow: hidden;
   position: relative;
-  float: left;
+  /*float: left;*/
   width: 100%;
   height: 0;
   padding-bottom: 56.26%;
@@ -410,9 +410,17 @@
   position: absolute;
   left: 0;
   top: 0;
-  height: 100%;
+  height: 0;
+  padding-bottom: 56.26%;
   width: 100%;
   z-index: 2;
+}
+#video-container .tve-help .tve-help-inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
 }
 #video-container .player-error {
   position: absolute;
@@ -627,11 +635,33 @@
   }
 }
 
+@media (min-width: 769px) {
+  #video-container .featured-asset .tve-help {
+    font-size: 16px;
+    line-height: 24px;
+    left: 0;
+  }
+  #video-container .featured-asset .tve-help .tve-msg {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  #video-container .featured-asset .tve-help .tve-download {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  #video-container .featured-asset.file-video-mpx .locked-msg {
+    top: 120px;
+  }
+  #video-container .featured-asset.file-video-mpx .locked-msg .first-line {
+    font-size: 20px;
+  }
+}
+
 @media (min-width: 1280px) {
   #video-container .featured-asset .tve-help {
     font-size: 20px;
     line-height: 30px;
-    height: 523px;
+    /*height: 523px;*/
     width: 100%;
   }
   #video-container .featured-asset .tve-help .tve-msg {
@@ -652,31 +682,9 @@
   }
 }
 
-@media (min-width: 1275px)
+@media (min-width: 1275px){
   .featured-asset .tve-help {
     width: 100%;
-  }
-}
-
-@media (min-width: 641px) {
-  #video-container .featured-asset .tve-help {
-    font-size: 16px;
-    line-height: 24px;
-    left: 0;
-  }
-  #video-container .featured-asset .tve-help .tve-msg {
-    font-size: 16px;
-    line-height: 24px;
-  }
-  #video-container .featured-asset .tve-help .tve-download {
-    font-size: 16px;
-    line-height: 24px;
-  }
-  #video-container .featured-asset.file-video-mpx .locked-msg {
-    top: 120px;
-  }
-  #video-container .featured-asset.file-video-mpx .locked-msg .first-line {
-    font-size: 20px;
   }
 }
 
@@ -719,13 +727,13 @@
   }
   #video-container .featured-asset .tve-help .tve-download-link {
     left: 0;
-    top: 14%
+    top: 14%;
   }
   #video-container .featured-asset .tve-help {
     font-size: 16px;
     line-height: 24px;
     width: 100%;
-    height: 346px;
+    /*height: 346px;*/
   }
 }
 
@@ -792,14 +800,14 @@
     left: 50%;
   }
   #video-container .featured-asset .tve-help .tve-msg {
-    top: 22%;
+    /*top: 22%;*/
   }
   #video-container .featured-asset .tve-help .tve-download {
-    top: 28%;
+    /*top: 28%;*/
   }
   #video-container .featured-asset .tve-help .tve-download-link {
     left: 0;
-    top: 30%;
+    /*top: 30%;*/
   }
   #video-container .featured-asset .tve-help .tve-close {
     font-size: 16px;

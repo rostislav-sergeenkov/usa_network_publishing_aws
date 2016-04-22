@@ -5,12 +5,17 @@
       var aspotHomeSlide = $('#block-usanetwork-aspot-usanetwork-aspot-carousel .slide'),
           aspotShowSlide = $('#main-slider .slide .slide-content'),
           aspotMovieSlide = $('#block-usanetwork-movie-usanetwork-movie-main-block .slide .slide-content'),
+          aspotShowSlideNewDesign = $('#aspot-usanetwork .slide .slide-content'),
           currentEl;
 
       // init add style for Aspot druggeble elements
       if($('body').hasClass('usa-tv-show')) {
-        currentEl = aspotShowSlide;
-        changeDraggableElementsPosition(aspotShowSlide);
+        if ($('#aspot-usanetwork').data("content-type") == "tv-show") {
+          currentEl = aspotShowSlideNewDesign;
+        } else {
+          currentEl = aspotShowSlide;
+        }
+        changeDraggableElementsPosition(currentEl);
       } else if($('body').hasClass('page-home') && !$('body').hasClass('home-preview-page')) {
         currentEl = aspotHomeSlide;
         changeDraggableElementsPosition(aspotHomeSlide);

@@ -12,7 +12,7 @@
   <?php if (!empty($sponsored_path)) : ?>
     <div class="sponsored" data-mpspath="<?php print $sponsored_path; ?>" data-scalemps="1"></div>
   <?php endif; ?>
-  <div class="menu-open-button"></div>
+  <div class="menu-open-button show-color show-font"></div>
 </div>
 <div class="bottom-menu-block show-border">
   <div class="show-menu-tab">
@@ -26,11 +26,11 @@
   </div>
   <div class="social-block">
     <?php if (!empty($hashtag)): ?>
-      <div class="hashtag">
+      <div class="hashtag show-color show-font">
         <span><?php print $hashtag; ?></span>
       </div>
     <?php endif; ?>
-    <div class="social-icons social-follow">
+    <div class="social-icons social-follow show-color show-font">
       <?php foreach ($social_icons as $social_link): ?>
         <?php print $social_link; ?>
       <?php endforeach; ?>

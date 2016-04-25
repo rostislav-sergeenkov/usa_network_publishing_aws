@@ -284,6 +284,7 @@
                       '</rss>'
                     ].join('');
                 tve.adobePass.getAuthorization(resource, function (status, response) {
+                  console.info('tve.adobePass.getAuthorization');
                   if (status) {
                     encodedToken = encodeURIComponent(response.token);
                     // If Adobe Pass getAuthorization status is true proceeds with playback.
@@ -595,7 +596,9 @@
                */
               function _authSuccess() {
                 $pdk.controller.setToken(encodedToken, 'authToken');
-                tveAnalytics.authzTrack(true, authService.getSelectedProvider());
+                tveAnalytics.authzTrack(true, {
+                  mvpd_id: userStatus.mvpdId
+                });
               }
 
               /**
@@ -640,7 +643,7 @@
                       $.trim(errorDetails) ||
                       _getAuthzErrorMessage(errorCode, Drupal.settings.adobePass.errorMessages);
 
-                  // scope.$apply();
+                  scope.$apply();
 
                   if (errorParentalControl.test(errorMessage)) {
                     if (errorPattern.test(errorMessage)) {

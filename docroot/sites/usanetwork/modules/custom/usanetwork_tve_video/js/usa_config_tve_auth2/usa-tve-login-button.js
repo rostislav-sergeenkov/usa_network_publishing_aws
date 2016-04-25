@@ -38,6 +38,9 @@
               scope.verificationInProgress = verificationInProgress;
               scope.text = text[verificationInProgress];
               $rootScope.isRetina = scope.isRetina = helper.isRetina;
+              $rootScope.user = {
+                isAuthenticated: scope.isAuthenticated
+              };
 
               if (scope.isAuthenticated) {
                 authService.getSelectedProvider().then(function (providerInfo) {
@@ -109,8 +112,8 @@
                   });
                 } else {
                   scope.isAuthenticated = status.isAuthenticated;
-                  $rootScope.isAuthenticated = scope.isAuthenticated;
-                  $rootScope.user.isAuthenticated = scope.isAuthenticated;
+                  $rootScope.isAuthenticated = status.isAuthenticated;
+                  $rootScope.user.isAuthenticated = status.isAuthenticated;
                   scope.currentProvider = null;
                   addLoginListener();
                   revertLoadingState(status.isAuthenticated);

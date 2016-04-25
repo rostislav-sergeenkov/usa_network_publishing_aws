@@ -135,7 +135,7 @@
 
   </div>
 </div>
-<div class="right-sidebar">
+<div class="right-sidebar<?php print (!empty($sponsored_path))? ' sponsored-enable' : ''; ?>">
   <div class="choose-top3-img">
     <div class="asset-img" data-picture data-alt="<?php print $logo_right; ?>" data-class="tile-img">
       <?php if (!empty($logo_top)): ?>

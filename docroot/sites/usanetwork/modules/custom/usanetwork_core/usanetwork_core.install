@@ -1230,7 +1230,7 @@ function usanetwork_core_update_7186() {
 }
 
 /**
- * Enables Akamai madule.
+ * Enables Akamai module.
  */
 function usanetwork_core_update_7187() {
   if (!module_exists('akamai')) {

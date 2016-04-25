@@ -27,10 +27,10 @@
           // Close main menu action
           var closeMenu = function () {
             menu_link.removeClass('active');
-            menu_container.addClass('active');
+            menu_container.removeClass('active');
           };
 
-          if (!menu_link.removeClass('active')) {
+          if (!menu_link.hasClass('active')) {
             openMenu();
           } else {
             closeMenu();

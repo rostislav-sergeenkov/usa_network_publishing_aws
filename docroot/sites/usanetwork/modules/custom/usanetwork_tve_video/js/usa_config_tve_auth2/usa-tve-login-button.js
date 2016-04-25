@@ -32,7 +32,7 @@
                   showUsaModal = false, // default value
                   isCookiesEnabled = helper.cookiesEnabled(),
                   isMobile = helper.device.isMobile;
-
+              
               scope.isAuthenticated = authService.isAuthenticated();
               scope.login = authService.openLoginModal;
               scope.verificationInProgress = verificationInProgress;
@@ -94,7 +94,8 @@
               authService.promise.then(function (status) {
                 element.off('click.login');
 
-                if (scope.isAuthenticated = status.isAuthenticated) {
+                if (status.isAuthenticated) {
+                  scope.isAuthenticated = status.isAuthenticated;
                   $rootScope.isAuthenticated = scope.isAuthenticated;
 
                   authService.mvpdService.getMvpd(status.mvpdId).then(function (providerInfo) {
@@ -106,12 +107,16 @@
 
                     revertLoadingState(status.isAuthenticated);
                   });
-                }
-                else {
+                } else {
+                  scope.isAuthenticated = status.isAuthenticated;
+                  $rootScope.isAuthenticated = scope.isAuthenticated;
+                  $rootScope.user.isAuthenticated = scope.isAuthenticated;
                   scope.currentProvider = null;
                   addLoginListener();
                   revertLoadingState(status.isAuthenticated);
                   scope.text = text[false];
+                  // show tve help links
+                  usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
                 }
                 function revertLoadingState(statusIsAuth) {
                   if (verificationInProgress) {

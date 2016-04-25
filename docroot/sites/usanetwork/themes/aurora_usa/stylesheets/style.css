@@ -14905,6 +14905,9 @@ footer h2 {
   position: relative;
   width: 100%;
 }
+.consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth + .consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth + .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player {
+  opacity: 0;
+}
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player {
   padding-bottom: 56.25%;
   opacity: 0;
@@ -15356,13 +15359,13 @@ footer h2 {
   line-height: 45px;
   text-transform: uppercase;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
     font-size: 20px;
     line-height: 36px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
     font-size: 15px;
     line-height: 26px;
@@ -18058,7 +18061,7 @@ footer h2 {
 #usa-tve-help-link {
   background: none;
   display: none;
-  right: 17vw;
+  right: -17vw;
   height: 100%;
   position: absolute;
   top: 0;

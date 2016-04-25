@@ -95,9 +95,9 @@
         <div class="video-player-wrapper section-player"
              data-ng-class="{'show-section': !playerThumbnail}">
           <?php if ($is_live): ?>
-            <iframe allowfullscreen="" id="videoplayer" width="100%"
-                    data-usa-player-is-live height="100%"
-                    frameborder="0"></iframe>
+            <div data-usa-player-is-live>
+              <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
           <?php else: ?>
             <?php print render($video); ?>
             <!--  start endcart  -->
@@ -127,9 +127,9 @@
         <div class="video-player-wrapper section-player"
              data-ng-class="{'show-section': !playerThumbnail}">
           <?php if ($is_live): ?>
-            <iframe allowfullscreen="" id="videoplayer" width="100%"
-                    data-usa-player-is-live height="100%"
-                    frameborder="0"></iframe>
+          <div data-usa-player-is-live>
+            <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
             <?php print render($video); ?>

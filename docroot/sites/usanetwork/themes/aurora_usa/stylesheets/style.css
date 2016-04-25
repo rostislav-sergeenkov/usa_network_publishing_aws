@@ -18364,6 +18364,7 @@ footer h2 {
   padding: 1.25vw 1.25vw 1.64063vw 1.25vw;
   position: relative;
   width: 100%;
+  z-index: 1;
 }
 @media (min-width: 2500px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
@@ -18378,6 +18379,11 @@ footer h2 {
 @media (max-width: 640px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
     padding: 0 0 3.75vw 0;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .bottom-menu-block {
+    display: block;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block {
@@ -18654,23 +18660,52 @@ footer h2 {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
     border: none;
     display: none;
+    height: auto;
+    position: absolute;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
   float: left;
   max-width: 80% !important;
 }
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
+    display: block;
+    float: none;
+    max-width: none !important;
+  }
+}
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
   height: 100%;
 }
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    height: auto;
+  }
+}
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li {
   height: 100%;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li {
+    background: #1c1c1c;
+    border-bottom: 1px solid #454545;
+    float: none;
+    height: 9.11458vw;
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li:last-child {
+    border-bottom: none;
+  }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li a {
   font-size: 0.97656vw;
   height: 100%;
   letter-spacing: 1px;
   line-height: 4.6875vw;
+  outline: none;
   padding: 0 2.26563vw;
 }
 @media (min-width: 2500px) {
@@ -18680,20 +18715,48 @@ footer h2 {
     padding: 0 56.64px;
   }
 }
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li a {
+    color: #c7c7c7;
+    font-size: 3.38542vw;
+    line-height: 9.11458vw;
+    padding: 0 5.20833vw;
+    text-align: left;
+    width: 100%;
+  }
+}
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {
   display: table;
   float: right;
   height: 100%;
   max-width: 20%;
+  position: relative;
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block:after {
   clear: both;
   content: '';
   display: table;
 }
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {
+    background: black;
+    display: block;
+    float: none;
+    height: 11.19792vw;
+    max-width: none;
+    text-align: center;
+    width: 100%;
+  }
+}
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block > div {
   display: table-cell;
   vertical-align: middle;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block > div {
+    display: inline-block;
+    height: 100%;
+  }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag {
   background: none;
@@ -18704,6 +18767,14 @@ footer h2 {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag {
     font-size: 25px;
     padding-right: 22.4px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag {
+    font-size: 2.99479vw;
+    line-height: 11.19792vw;
+    margin-right: 4.55729vw;
+    padding-right: 0;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag span {
@@ -18728,6 +18799,12 @@ footer h2 {
     margin-right: 23.4375px;
   }
 }
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a {
+    line-height: 11.19792vw;
+    margin-right: 3.25521vw;
+  }
+}
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:before {
   color: inherit;
   display: block;
@@ -18738,6 +18815,11 @@ footer h2 {
 @media (min-width: 2500px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:before {
     font-size: 39.1px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:before {
+    font-size: 5.20833vw;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:hover {

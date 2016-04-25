@@ -1974,7 +1974,7 @@ function _usanetwork_tv_shows_new_design_menu() {
 
   $show_wrapper = entity_metadata_wrapper('node', $show);
 
-  if (!empty($show_wrapper->field_service_logo)) {
+  if (!empty($show->field_service_logo)) {
     $service_logo_uri = $show_wrapper->field_service_logo->file->value()->uri;
     $service_logo = file_create_url($service_logo_uri);
     if (!empty($show_wrapper->field_service_link)) {

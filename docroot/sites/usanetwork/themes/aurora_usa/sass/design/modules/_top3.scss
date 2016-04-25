@@ -207,6 +207,16 @@
       }
     }
   }
+  &.sponsored-enable {
+    & > .content {
+      @include breakpoint($bp-1280-width) {
+        padding-top: calc(156px + 35px + 20px);
+      }
+      @include breakpoint($bp-768-width) {
+        padding-top: calc(#{get-vw(156px, 768)} + 35px + #{get-vw(15px, 768)});
+      }
+    }
+  }
   & > .content {
     @include clear();
     height: auto;
@@ -222,7 +232,7 @@
       padding-bottom: 300px;
     }
     @include breakpoint($bp-768-width) {
-      padding-top: get-vw(156px, 1024);
+      padding-top: get-vw(156px, 768);
     }
   }
   #slider-player {
@@ -487,6 +497,26 @@
     @include breakpoint($bp-1024-width) {
       padding-top: 53.8vw;
     }
+    &.sponsored-enable {
+      .advert {
+        @include breakpoint($bp-min-1281-width) {
+          margin: calc(#{get-vw(147px, 1901)} - 35px - #{get-vw(15px, 1280)}) auto 0;
+        }
+        @include breakpoint($bp-min-1901-width) {
+          margin-top: 89.7px;
+        }
+      }
+      .choose-top3-img {
+        @include breakpoint($bp-1280-width) {
+          bottom: calc(100% + 33px + (35px + 20px)/2);
+          max-height: calc(90px + 35px + 20px);
+        }
+        @include breakpoint($bp-768-width) {
+          bottom: calc(100% + #{get-vw(33px, 768)} + (35px + #{get-vw(15px, 768)})/2);
+          max-height: calc(#{get-vw(90px, 768)} + (35px + #{get-vw(15px, 768)}));
+        }
+      }
+    }
     .choose-top3-img {
       height: auto;
       margin: 10px auto 0;
@@ -521,6 +551,22 @@
         }
       }
     }
+    .sponsored {
+      height: 35px;
+      margin: get-vw(15px, 1280) auto 0;
+      max-height: 35px;
+      max-width: 100%;
+      width: 240px;
+      @include breakpoint($bp-min-1901-width) {
+        margin-top: 22.3px;
+      }
+      @include breakpoint($bp-1280-width) {
+        margin: 20px auto 0;
+      }
+      @include breakpoint($bp-768-width) {
+        margin: get-vw(15px, 768) auto 0;
+      }
+    }
     .advert {
       height: 250px;
       margin: get-vw(147px, 1901) auto 0;
@@ -530,6 +576,7 @@
       }
       @include breakpoint($bp-1280-width) {
         margin-left: calc(#{get-vw(1280px, 1901)} + (#{get-vw(621px, 1901)} - 320px)/2) ;
+        margin-top: 0;
       }
       @include breakpoint($bp-1024-width) {
         margin: 25px auto 0;
@@ -1630,6 +1677,16 @@
           font-size: get-vw(22px, 1024);
           line-height: get-vw(67px, 1024);
           width: get-vw(250px, 1024);
+        }
+      }
+      .sponsored {
+        height: 35px;
+        margin: get-vw(25px, 1280) auto 0;
+        max-height: 35px;
+        max-width: 100%;
+        width: 240px;
+        @include breakpoint($bp-min-1901-width) {
+          margin: 37.1px auto 0;
         }
       }
     }

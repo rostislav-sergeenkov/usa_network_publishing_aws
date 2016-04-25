@@ -195,13 +195,7 @@ function usanetwork_menu_block_view($delta = '') {
 
     case 'usanetwork_menu_sm_news':
       $block['subject'] = '';
-      $block['content'] = array(
-        '#markup' => _usanetwork_menu_render_show_menu_block(),
-        '#attached' => array(
-          'js' => array(
-          ),
-        ),
-      );
+      $block['content'] = _usanetwork_menu_news_block();
       break;
 
     case 'usanetwork_menu_sm_menu':

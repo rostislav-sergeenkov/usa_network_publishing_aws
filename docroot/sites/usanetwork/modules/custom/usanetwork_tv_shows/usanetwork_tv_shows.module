@@ -181,7 +181,15 @@ function usanetwork_tv_shows_block_view($delta = '') {
 
     case 'usanetwork_tv_shows_nd_menu':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_tv_shows_new_design_menu();
+      $block['content'] = array(
+        '#markup' => _usanetwork_tv_shows_new_design_menu(),
+        '#attached' => array(
+          'js' => array(
+//            path_to_theme('aurora_usa') . '/javascripts/aspot-block.js',
+//            drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
+          ),
+        ),
+      );
       break;
 
     case 'usanetwork_tv_shows_aspot':

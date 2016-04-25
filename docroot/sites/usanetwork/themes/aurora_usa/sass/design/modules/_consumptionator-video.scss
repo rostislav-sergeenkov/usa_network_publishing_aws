@@ -281,6 +281,9 @@
         height: 0;
         position: relative;
         width: 100%;
+        &.section-auth + &.section-player {
+          opacity: 0;
+        }
         &.section-player {
           padding-bottom: 56.25%;
           opacity: 0;
@@ -701,11 +704,11 @@
             font-size: 26px;
             line-height: 45px;
             text-transform: uppercase;
-            @include breakpoint($bp-1024-width) {
+            @include breakpoint($bp-1280-width) {
               font-size: 20px;
               line-height: 36px;
             }
-            @include breakpoint($bp-640-width) {
+            @include breakpoint($bp-768-width) {
               font-size: 15px;
               line-height: 26px;
             }

@@ -29,12 +29,14 @@
                 //referencing openLoginModal function to the current scope
                 $rootScope.openLoginWindow = authService.openLoginModal;
 
-                authService.promise.then(function () {
+                authService.promise.then(function (status) {
+
+                  console.info('cpc', scope);
 
                   // check Authenticated and delete thumbnail if Authenticated = true
-                  user.isAuthenticated = authService.isAuthenticated();
+                  user.isAuthenticated = status.isAuthenticated;
 
-                  if (authService.isAuthenticated()) {
+                  if (scope.isAuthenticated) {
 
                     $rootScope.playerThumbnail = false;
                     $timeout(function () {

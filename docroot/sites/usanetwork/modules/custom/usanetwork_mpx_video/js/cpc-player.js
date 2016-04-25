@@ -31,8 +31,6 @@
 
                 authService.promise.then(function (status) {
 
-                  console.info('cpc', scope);
-
                   // check Authenticated and delete thumbnail if Authenticated = true
                   user.isAuthenticated = status.isAuthenticated;
 
@@ -42,7 +40,8 @@
                     $timeout(function () {
                       $rootScope.removePlayerThumbnail = true;
                     }, 500);
-
+                    console.info('cpc');
+                    tveAnalytics.authzTrack(true, authService.getSelectedProvider());
                     initLivePlayer($cookies);
                   }
                 });

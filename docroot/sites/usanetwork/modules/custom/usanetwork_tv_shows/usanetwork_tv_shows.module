@@ -1998,16 +1998,16 @@ function _usanetwork_tv_shows_new_design_menu() {
 
   $show_wrapper = entity_metadata_wrapper('node', $show);
 
-  if (!empty($show_wrapper->field_service_logo)) {
+  if (!empty($show->field_service_logo)) {
     $service_logo_uri = $show_wrapper->field_service_logo->file->value()->uri;
     $service_logo = file_create_url($service_logo_uri);
-    if (!empty($show_wrapper->field_service_link)) {
+    if (!empty($show->field_service_link)) {
       $service_link_value = $show_wrapper->field_service_link->value();
       $service_link = $service_link_value['url'];
     }
   }
 
-  if (!empty($show_wrapper->field_display_title)) {
+  if (!empty($show->field_display_title)) {
     $display_title = $show_wrapper->field_display_title->value();
     if (!empty($display_title)) {
       $show_title = $display_title;
@@ -2020,11 +2020,11 @@ function _usanetwork_tv_shows_new_design_menu() {
 
   $show_class = usanetwork_tv_shows_color_show_css_class($show);
 
-  if (!empty($show_wrapper->field_usa_tv_tune_in_date)) {
+  if (!empty($show->field_usa_tv_tune_in_date)) {
     $usa_tv_tune_in_date = $show_wrapper->field_usa_tv_tune_in_date->value();
   }
 
-  if (!empty($show_wrapper->field_hashtag)) {
+  if (!empty($show->field_hashtag)) {
     $hashtag = $show_wrapper->field_hashtag->value();
   }
 
@@ -2081,7 +2081,7 @@ function _usanetwork_tv_shows_new_design_menu() {
   }
 
   //Sponsored MPS
-  if (!empty($show_wrapper->field_sponsored)) {
+  if (!empty($show->field_sponsored)) {
     $field_sponsored = $show_wrapper->field_sponsored->value();
     if ($field_sponsored == '1') {
       $sponsored_path = '/node/' . $show->nid;

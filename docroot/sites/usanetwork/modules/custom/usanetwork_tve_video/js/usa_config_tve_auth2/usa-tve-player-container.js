@@ -29,9 +29,9 @@
                         key: 'loglevel'
                       }],
                     MVPD_ID_KEY = 'MVPDid',
-                    params,
                     statusPromise = false,
-                    frame = $(element).find('iframe').eq(0);
+                    frame = $(element).find('iframe').eq(0),
+                    params, userStatus;
 
                 $rootScope.playerWrap = element;
                 $rootScope.playerId = attr['id'];
@@ -39,6 +39,7 @@
                 scope.id = config.id;
 
                 authService.promise.then(function (status) {
+                  userStatus = status;
                   statusPromise = true;
                   if ($rootScope.isFullEpisode) {
                     init(status);
@@ -51,7 +52,7 @@
                   }
                 });
 
-                frame.bind('load', function (evt) {
+                frame.bind('load', function () {
                   if (statusPromise || !scope.isFullEpisode) {
 
                     $pdk.bind(this, true);
@@ -59,7 +60,7 @@
 
                     controller._bindPlayerEvents();
 
-                    if ($rootScope.isEntitled) {
+                    if ($rootScope.isEntitled && userStatus.isAuthenticated) {
                       controller.initiateAuthorization();
                     }
 
@@ -183,7 +184,7 @@
               scope.isPlayerPlay = false;
               scope.isPlayerPause = false;
               scope.playerThumbnail = true;
-              scope.removePlayerhumbnail = false;
+              scope.removePlayerThumbnail = false;
               scope.user = {
                 isAuthenticated: authService.isAuthenticated()
               };
@@ -269,6 +270,7 @@
 
               // Callback for initiating the authorization request.
               function initiateAuthorization() {
+                console.info('initiateAuthorization');
                 var DEFAULT_RATING = 'TV-14',
                     adobePassResourceId = Drupal.settings.adobePass.adobePassResourceId,
                     resource = [
@@ -464,6 +466,7 @@
               }
 
               function _onReleaseError(pdkEvent) {
+                console.info('_onReleaseError');
                 if (pdkEvent.data.exception == "GeoLocationBlocked") {
                   usaPlayerError.initGeoRestrictionError();
                 } else {
@@ -489,17 +492,16 @@
               }
 
               function _onReleaseStart() {
-
                 scope.isPlayerStart = true;
                 scope.isPlayerPlay = true;
                 scope.isPlayerPause = false;
 
-                if (scope.playerThumbnail) {
-                  hidePlayerThumbnail();
-                }
-
                 if (isMicrosite) {
                   usaMicrositesService.adAdded();
+                } else {
+                  if (scope.playerThumbnail) {
+                    hidePlayerThumbnail();
+                  }
                 }
               }
 
@@ -661,6 +663,7 @@
                   $(playerWrap).html(errorBlock);
 
                   if (scope.playerThumbnail) {
+                    console.info('_authzFailure');
                     hidePlayerThumbnail();
                   }
                 }

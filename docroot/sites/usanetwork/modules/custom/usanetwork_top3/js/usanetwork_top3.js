@@ -328,8 +328,6 @@
 
             // reset play button
             playButton.removeClass('inactive').addClass('show');
-            ccButton.removeClass('active');
-            $pdk.controller.setSubtitleLanguage("");
 
             // hide cc button
             ccButton.addClass('show');
@@ -531,6 +529,8 @@
 
               if (playerService.playerStatus) {
                 // hide player
+                ccButton.removeClass('active');
+                $pdk.controller.setSubtitleLanguage("");
                 playerService.hidePlayer();
               }
             });

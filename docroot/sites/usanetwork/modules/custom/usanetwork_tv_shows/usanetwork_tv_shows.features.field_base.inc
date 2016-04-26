@@ -1691,6 +1691,71 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
+  // Exported field_base: 'field_relevant_content_modes'
+  $field_bases['field_relevant_content_modes'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_relevant_content_modes',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'latest' => 'Latest',
+        'most_propular' => 'Most Popular',
+        'manual' => 'Manual',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_relevant_manual_content'
+  $field_bases['field_relevant_manual_content'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_relevant_manual_content',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'usanetwork_dynamic_entity_reference',
+    'settings' => array(
+      'entity_bundles' => array(
+        'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
+        'media_gallery' => 'media_gallery',
+        'mpx_video_1' => 'mpx_video_1',
+        'mpx_video_2' => 'mpx_video_2',
+        'person' => 'person',
+        'post' => 'post',
+        'quiz' => 'quiz',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
+      ),
+      'entity_type_ids' => array(
+        'file' => 'file',
+        'node' => 'node',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'usanetwork_dynamic_entity_reference',
+  );
+
   // Exported field_base: 'field_season'
   $field_bases['field_season'] = array(
     'active' => 1,

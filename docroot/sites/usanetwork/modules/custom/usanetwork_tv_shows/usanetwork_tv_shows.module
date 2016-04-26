@@ -520,6 +520,25 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-tv-shows-consumptionator-related-ymal-item',
     ),
+    'new_design_relevant_content' => array(
+      'render element' => 'data',
+      'template' => 'plugins/templates/new-design-relevant-content',
+    ),
+    'new_design_relevant_content_item' => array(
+      'variables' => array(
+        'entity_id' => NULL,
+        'entity_type' => NULL,
+        'url' => NULL,
+        'title' => NULL,
+        'promo_title' => NULL,
+        'promo_description' => NULL,
+        'promo_violator' => NULL,
+        'type' => NULL,
+        'image_desktop' => NULL,
+        'image_mobile' => NULL,
+      ),
+      'template' => 'plugins/templates/new-design-relevant-content-item',
+    ),
   );
 }
 
@@ -1166,6 +1185,12 @@ function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, 
   unset($form['field_livetv_right_rail']['und']['#options']['_none']);
 
   $form['#attached']['js'][] = drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows.js';
+
+  $form['field_relevant_manual_content']['#states'] = array(
+    'visible' => array(
+      ':input[name="field_relevant_content_modes[und]"]' => array('value' => 'manual'),
+    )
+  );
 }
 
 /**

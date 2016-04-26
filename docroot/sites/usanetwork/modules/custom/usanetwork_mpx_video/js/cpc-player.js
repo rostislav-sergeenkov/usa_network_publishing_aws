@@ -16,8 +16,8 @@
             compile: function (element, attrs, transclude) {
               return function (scope, $element, $attrs) {
 
-                var tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop},
-                    user = {
+                // var tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop},
+                var user = {
                   isAuthenticated: authService.isAuthenticated() // check status
                 };
 
@@ -41,9 +41,9 @@
                     $timeout(function () {
                       $rootScope.removePlayerThumbnail = true;
                     }, 500);
-                    tveAnalytics.authzTrack(true, {
-                      mvpd_id: status.mvpdId
-                    });
+                    // tveAnalytics.authzTrack(true, {
+                    //   mvpd_id: status.mvpdId
+                    // });
                     initLivePlayer($cookies);
                   }
                 });

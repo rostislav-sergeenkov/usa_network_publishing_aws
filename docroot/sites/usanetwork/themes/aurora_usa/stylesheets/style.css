@@ -18359,6 +18359,412 @@ footer h2 {
   background: none;
 }
 
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+  background: black;
+  padding: 1.25vw 1.25vw 1.64063vw 1.25vw;
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+    padding: 31.25px 31.25px 41.015625px 31.25px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+    padding: 0 0 1.95313vw 0;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+    padding: 0 0 3.75vw 0;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block {
+  position: relative;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block {
+    border-bottom: 2px solid;
+    padding: 2.60417vw 3.64583vw 0 1.5625vw;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block {
+    border-bottom: 1px solid;
+    padding: 4.6875vw 4.6875vw 0 4.6875vw;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
+  background: url("../images/logo-usa-and-theverge.png") no-repeat;
+  background-size: 100% 100%;
+  height: 1.95313vw;
+  left: 0;
+  margin-top: -0.97656vw;
+  position: absolute;
+  top: 50%;
+  width: 19.14063vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
+    height: 48.8px;
+    margin-top: -1.90625vw;
+    width: 478.5px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
+    left: 1.5625vw;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
+    height: 3.90625vw;
+    left: 4.6875vw;
+    margin-top: 0;
+    top: 18.125vw;
+    width: 38.28125vw;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block a {
+  display: block;
+  height: 100%;
+  outline: none;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
+  float: left;
+  width: 4.45313vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
+    width: 111.3px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
+    width: 8.90625vw;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo {
+  float: right;
+  width: 11.32813vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo {
+    width: 283.2px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo {
+    width: 22.65625vw;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
+  margin: 0 auto;
+  position: relative;
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
+    margin: 0;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
+  margin: 0;
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
+    margin-bottom: 2.60417vw;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
+    margin-bottom: 4.6875vw;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block a {
+  background-size: 100% 100%;
+  display: block;
+  height: 100%;
+  outline: none;
+  text-indent: -9999px;
+  width: 100%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
+  font-size: 0.97656vw;
+  line-height: 2;
+  text-align: center;
+  width: 100%;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
+    font-size: 24.4px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
+    display: none;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
+  width: 27.1875vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
+    width: 680px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
+    width: 36.71875vw;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
+    width: 56.5625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot + .sponsored {
+    left: calc(50% + 18.35938vw + 2.60417vw);
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
+  height: 4.25938vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
+    height: 106.5px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
+    height: 6.25vw;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
+    height: 8.75vw;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot a {
+  background-image: url("../images/mr-robot-logo.png");
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14.21875vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
+    width: 355.5px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
+    max-width: 100px;
+    right: auto;
+    width: 100px;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
+    float: right;
+    height: 3.90625vw;
+    margin-bottom: 2.5vw;
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 45%;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
+  background: none;
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  top: 50%;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
+    display: block;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
+    height: 4.58333vw;
+    margin-top: -2.29167vw;
+    right: 3.38542vw;
+    width: 6.51042vw;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
+    height: 7.5vw;
+    margin-top: 0;
+    right: 4.6875vw;
+    top: 5.3125vw;
+    width: 10.625vw;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button:before {
+  color: inherit;
+  content: '\e62f';
+  display: block;
+  font-family: "ico-font";
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button:before {
+    font-size: 6.51042vw;
+    line-height: 4.58333vw;
+  }
+}
+@media (max-width: 640px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button:before {
+    font-size: 10.625vw;
+    line-height: 7.5vw;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
+  border-bottom: 2px solid;
+  border-top: 2px solid;
+  height: 4.6875vw;
+  position: relative;
+  width: 100%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
+    height: 117.2px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
+    border: none;
+    display: none;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
+  float: left;
+  max-width: 80% !important;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+  height: 100%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li {
+  height: 100%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li a {
+  font-size: 0.97656vw;
+  height: 100%;
+  letter-spacing: 1px;
+  line-height: 4.6875vw;
+  padding: 0 2.26563vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li a {
+    font-size: 24.4px;
+    line-height: 117.2px;
+    padding: 0 56.64px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {
+  display: table;
+  float: right;
+  height: 100%;
+  max-width: 20%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag {
+  background: none;
+  font-size: 1vw;
+  padding-right: 1.40625vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag {
+    font-size: 25px;
+    padding-right: 22.4px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag span {
+  letter-spacing: 1px;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons {
+  background: none;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a {
+  float: left;
+  color: inherit;
+  display: block;
+  line-height: 1;
+  margin-right: 0.9375vw;
+  opacity: 1;
+  outline: none;
+  position: relative;
+  vertical-align: middle;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a {
+    margin-right: 23.4375px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:before {
+  color: inherit;
+  display: block;
+  font-family: "ico-font";
+  font-weight: normal;
+  font-size: 1.5625vw;
+}
+@media (min-width: 2500px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:before {
+    font-size: 39.1px;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:hover {
+  opacity: 0.6;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.facebook:before {
+  content: '\e618';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.twitter:before {
+  content: '\e61a';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.tumblr:before {
+  content: '\e619';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.pinterest:before {
+  content: '\e617';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.youtube:before {
+  content: '\e630';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.instagram:before {
+  content: '\e621';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:nth-child(n + 5) {
+  display: none;
+}
+
 .section-title {
   margin: 0 0 40px;
   position: relative;

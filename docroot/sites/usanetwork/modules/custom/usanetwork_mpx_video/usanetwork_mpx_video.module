@@ -1713,7 +1713,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       $interactive = _usanetwork_get_field_item('file', $file, 'field_mpx_interactive', 'value');
       if (!empty($interactive)) {
-        $js_file = variable_get('usanetwork_wwr_js_file', 'http://apps.watchwith.com/wng-usa/dev/wng-usa-boot.js');
+        $js_file = variable_get('usanetwork_wwr_js_file', '//d243sour89mi5g.cloudfront.net/wng-usa/0.4.1/wng-usa-boot.js');
         drupal_add_js($js_file, array('type' => 'external', 'group' => JS_LIBRARY - 5));
       }
       if ($full_episode == '1') {

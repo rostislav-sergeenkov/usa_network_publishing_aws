@@ -26151,87 +26151,6 @@ html[xmlns] .slides {
 .featured-asset.file-video-mpx.tve-overlay .video-player-wrapper a:after {
   background-image: none;
 }
-.featured-asset.file-video-mpx .locked-msg {
-  left: 5px;
-  margin: 0 auto;
-  position: absolute;
-  text-align: center;
-  text-shadow: 1px 1px 5px black;
-  top: 40px;
-  z-index: 10;
-  text-shadow: 1px 1px 5px black;
-}
-.featured-asset.file-video-mpx .locked-msg .first-line {
-  display: block;
-  font-size: 12px;
-}
-.featured-asset.file-video-mpx .locked-msg .second-line {
-  display: block;
-  font-size: 10px;
-}
-@media (max-width: 644px) {
-  .featured-asset.file-video-mpx .locked-msg .first-line {
-    line-height: 1.2;
-  }
-  .featured-asset.file-video-mpx .locked-msg .second-line {
-    line-height: 1.2;
-  }
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .featured-asset.file-video-mpx .locked-msg {
-    top: 120px;
-    left: 50px;
-  }
-  .featured-asset.file-video-mpx .locked-msg .first-line {
-    font-size: 20px;
-  }
-  .featured-asset.file-video-mpx .locked-msg .second-line {
-    font-size: 14px;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .featured-asset.file-video-mpx .locked-msg {
-    top: 120px;
-    left: 50px;
-  }
-  .featured-asset.file-video-mpx .locked-msg .first-line {
-    font-size: 20px;
-  }
-  .featured-asset.file-video-mpx .locked-msg .second-line {
-    font-size: 14px;
-  }
-}
-@media (min-width: 1275px) {
-  .featured-asset.file-video-mpx .locked-msg {
-    top: 182px;
-    left: 110px;
-  }
-  .featured-asset.file-video-mpx .locked-msg .first-line {
-    font-size: 26px;
-    line-height: 45px;
-  }
-  .featured-asset.file-video-mpx .locked-msg .second-line {
-    font-size: 16px;
-  }
-}
-.featured-asset.file-video-mpx .video-player-wrapper.wrapper-live .locked-msg {
-  top: 55px;
-}
-@media (min-width: 645px) and (max-width: 959px) {
-  .featured-asset.file-video-mpx .video-player-wrapper.wrapper-live .locked-msg {
-    top: 135px;
-  }
-}
-@media (min-width: 960px) and (max-width: 1274px) {
-  .featured-asset.file-video-mpx .video-player-wrapper.wrapper-live .locked-msg {
-    top: 135px;
-  }
-}
-@media (min-width: 1275px) {
-  .featured-asset.file-video-mpx .video-player-wrapper.wrapper-live .locked-msg {
-    top: 200px;
-  }
-}
 .featured-asset .tve-help-link {
   color: #a3a3a3;
   cursor: pointer;
@@ -27248,6 +27167,61 @@ html[xmlns] .slides {
   text-decoration: underline;
 }
 
+#microsite #video-container:hover {
+  cursor: pointer;
+}
+#microsite #video-container:hover .locked-msg,
+#microsite #video-container:hover a:after {
+  display: block;
+}
+#microsite #video-container:hover .player-thumbnail img {
+  opacity: .2;
+  transition: opacity 0.3s ease-in-out;
+}
+#microsite #video-container .locked-msg {
+  left: 5%;
+  position: absolute;
+  text-shadow: 1px 1px 5px black;
+  text-align: center;
+  top: 35%;
+  width: 90%;
+  z-index: 2;
+}
+@media (max-width: 640px) {
+  #microsite #video-container .locked-msg {
+    top: 30%;
+  }
+}
+#microsite #video-container .locked-msg .first-line {
+  display: block;
+  font-size: 24px;
+  line-height: 45px;
+  text-transform: uppercase;
+}
+@media (max-width: 1900px) {
+  #microsite #video-container .locked-msg .first-line {
+    font-size: 20px;
+    line-height: 36px;
+  }
+}
+@media (max-width: 1280px) {
+  #microsite #video-container .locked-msg .first-line {
+    font-size: 18px;
+    line-height: 29px;
+  }
+}
+@media (max-width: 768px) {
+  #microsite #video-container .locked-msg .first-line {
+    font-size: 15px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 480px) {
+  #microsite #video-container .locked-msg .first-line {
+    font-size: 10px;
+    line-height: 18px;
+  }
+}
 #microsite #video-container .tve-help .tve-help-inner {
   height: 100%;
   width: 100%;

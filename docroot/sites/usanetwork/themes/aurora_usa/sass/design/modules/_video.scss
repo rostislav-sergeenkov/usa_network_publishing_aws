@@ -268,6 +268,7 @@
     }
   }
 }
+
 .block-usanetwork-mpx-video .view,
 #block-views-usa-mpx-video-fullepisodes-live .view {
   li {
@@ -286,7 +287,7 @@
       z-index: 1;
       display: block;
     }
-    &.tve-video-auth  {
+    &.tve-video-auth {
       > a:after {
         position: absolute;
         right: 3px;
@@ -320,7 +321,7 @@
         line-height: 1.15em;
       }
       @include breakpoint($bp-video-very-large-width) {
-        height:72px;
+        height: 72px;
         padding: 11px;
       }
     }
@@ -342,11 +343,11 @@
       }
       @include breakpoint($bp-video-very-large-width) {
         font-size: 16px;
-        white-space:normal;
+        white-space: normal;
       }
     }
     .caption {
-      color:#a7a6a6;
+      color: #a7a6a6;
       font-size: 11px;
       @include breakpoint($bp-video-medium-width) {
         font-size: 12px;
@@ -369,7 +370,7 @@
   }
 }
 
-.featured-asset  {
+.featured-asset {
   margin: 0 auto 0;
   position: relative;
   @include breakpoint($bp-video-low-range-width) {
@@ -393,11 +394,11 @@
         position: absolute;
         left: 50%;
         top: 55%;
-        width:296px;
-        height:39px;
-        margin-left:-148px;
+        width: 296px;
+        height: 39px;
+        margin-left: -148px;
         content: " ";
-        background:url('../images/sign_in_key.png') center top no-repeat;
+        background: url('../images/sign_in_key.png') center top no-repeat;
       }
       &.inactive {
         a:after {
@@ -416,83 +417,84 @@
     }
     .video-player-wrapper.wrapper-live a:after {
       top: 52%;
-      background:url('../images/sign_in_live_key.png') center top no-repeat;
+      background: url('../images/sign_in_live_key.png') center top no-repeat;
     }
     &.tve-overlay {
       .video-player-wrapper a:after {
         background-image: none;
       }
     }
-    .locked-msg {
-      left: 5px;
-      margin: 0 auto;
-      position: absolute;
-      text-align: center;
-      text-shadow: 1px 1px 5px black;
-      top: 40px;
-      z-index: 10;
-      .first-line {
-        display:block;
-        font-size:12px;
-      }
-      .second-line {
-        display:block;
-        font-size:10px;
-      }
-      @include text-shadow(1px 1px 5px $black-true);
-      @include breakpoint($bp-video-player-section) {
-        .first-line {
-          line-height: 1.2;
-        }
-        .second-line {
-          line-height: 1.2;
-        }
-      }
-      @include breakpoint($bp-video-mid-range4-width) {
-        top: 120px;
-        left: 50px;
-        .first-line {
-          font-size:20px;
-        }
-        .second-line {
-          font-size:14px;
-        }
-      }
-      @include breakpoint($bp-video-high-range-width) {
-        top: 120px;
-        left: 50px;
-        .first-line {
-          font-size:20px;
-        }
-        .second-line {
-          font-size:14px;
-        }
-      }
-      @include breakpoint($bp-video-very-large-width) {
-        top: 182px;
-        left: 110px;
-        .first-line {
-          font-size:26px;
-          line-height:45px;
-        }
-        .second-line {
-          font-size:16px;
-        }
-      }
-    }
-    .video-player-wrapper.wrapper-live .locked-msg {
-      top: 55px;
-      @include breakpoint($bp-video-mid-range4-width) {
-        top: 135px;
-      }
-      @include breakpoint($bp-video-high-range-width) {
-        top: 135px;
-      }
-      @include breakpoint($bp-video-very-large-width) {
-        top: 200px;
-      }
-    }
+    //.locked-msg {#
+    //  left: 5px;
+    //  margin: 0 auto;
+    //  position: absolute;
+    //  text-align: center;
+    //  text-shadow: 1px 1px 5px black;
+    //  top: 40px;
+    //  z-index: 10;
+    //  .first-line {
+    //    display:block;
+    //    font-size:12px;
+    //  }
+    //  .second-line {
+    //    display:block;
+    //    font-size:10px;
+    //  }
+    //  @include text-shadow(1px 1px 5px $black-true);
+    //  @include breakpoint($bp-video-player-section) {
+    //    .first-line {
+    //      line-height: 1.2;
+    //    }
+    //    .second-line {
+    //      line-height: 1.2;
+    //    }
+    //  }
+    //  @include breakpoint($bp-video-mid-range4-width) {
+    //    top: 120px;
+    //    left: 50px;
+    //    .first-line {
+    //      font-size:20px;
+    //    }
+    //    .second-line {
+    //      font-size:14px;
+    //    }
+    //  }
+    //  @include breakpoint($bp-video-high-range-width) {
+    //    top: 120px;
+    //    left: 50px;
+    //    .first-line {
+    //      font-size:20px;
+    //    }
+    //    .second-line {
+    //      font-size:14px;
+    //    }
+    //  }
+    //  @include breakpoint($bp-video-very-large-width) {
+    //    top: 182px;
+    //    left: 110px;
+    //    .first-line {
+    //      font-size:26px;
+    //      line-height:45px;
+    //    }
+    //    .second-line {
+    //      font-size:16px;
+    //    }
+    //  }
+    //}
+    //.video-player-wrapper.wrapper-live .locked-msg {
+    //  top: 55px;
+    //  @include breakpoint($bp-video-mid-range4-width) {
+    //    top: 135px;
+    //  }
+    //  @include breakpoint($bp-video-high-range-width) {
+    //    top: 135px;
+    //  }
+    //  @include breakpoint($bp-video-very-large-width) {
+    //    top: 200px;
+    //  }
+    //}
   }
+
   .tve-help-link {
     color: $gray-extra-light;
     cursor: pointer;
@@ -510,30 +512,30 @@
       text-align: left;
     }
     &.signOut {
-        position:absolute;
-        display:inline-block;
-        top: 119px;
-        right: 0;
-        @include breakpoint($bp-video-low-range-width) {
-          position: relative;
-          top: 0;
-          .item-list {
-            .first {
-              margin: 0 0 0.25em 0.75em;
-            }
+      position: absolute;
+      display: inline-block;
+      top: 119px;
+      right: 0;
+      @include breakpoint($bp-video-low-range-width) {
+        position: relative;
+        top: 0;
+        .item-list {
+          .first {
+            margin: 0 0 0.25em 0.75em;
           }
         }
-        @include breakpoint($bp-video-mid-range4-width) {
+      }
+      @include breakpoint($bp-video-mid-range4-width) {
         cursor: default;
         position: relative;
         top: 0px;
         width: 100%;
-          .item-list {
-            .first {
-                margin: 0 0 0.25em 0;
-            }
+        .item-list {
+          .first {
+            margin: 0 0 0.25em 0;
           }
         }
+      }
       &.not-live {
 
       }
@@ -543,22 +545,22 @@
       .item-list {
         li.last {
           line-height: 1.2;
-          margin:0;
+          margin: 0;
           vertical-align: middle;
         }
         ul.ng-scope {
-          display:inline-block;
-          margin-left:10px;
-          padding:0 0 0 12px;
-          border-left:1px solid #878785;
-          line-height:10px;
+          display: inline-block;
+          margin-left: 10px;
+          padding: 0 0 0 12px;
+          border-left: 1px solid #878785;
+          line-height: 10px;
           li {
-            margin:0 !important;
-            padding:0;
+            margin: 0 !important;
+            padding: 0;
             a {
-              color:#878785;
-              font-size:16px;
-              line-height:10px;
+              color: #878785;
+              font-size: 16px;
+              line-height: 10px;
               @include breakpoint($bp-video-player-section) {
                 font-size: 14px;
                 width: 300px;
@@ -577,8 +579,8 @@
       margin-left: 10px;
     }
     > img {
-     padding-right: 5px;
-     padding-bottom: 1px;
+      padding-right: 5px;
+      padding-bottom: 1px;
     }
   }
   .video-player-wrapper {
@@ -804,7 +806,7 @@
         height: 375px;
       }
     }
-    
+
     .no-touch & {
       .locked-msg,
       a:after {
@@ -860,30 +862,30 @@
       padding-top: 20px;
       position: relative;
       top: 82px;
-        @include breakpoint($bp-video-player-section) {
-          font-size: 11px;
-          line-height: 16px;
-          top: -6px
-        }
-        @include breakpoint($bp-video-very-large-width) {
-          font-size: 20px;
-          line-height: 30px;
-          top: 102px;
-        }
+      @include breakpoint($bp-video-player-section) {
+        font-size: 11px;
+        line-height: 16px;
+        top: -6px
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        font-size: 20px;
+        line-height: 30px;
+        top: 102px;
+      }
     }
     .tve-download-link {
       position: relative;
       top: 100px;
       left: -14px;
-        @include breakpoint($bp-video-player-section) {
-          left: -4px;
-          top: -3px;
-        }
-        @include breakpoint($bp-video-very-large-width) {
-          top: 120px;
-        }
+      @include breakpoint($bp-video-player-section) {
+        left: -4px;
+        top: -3px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        top: 120px;
+      }
       a:after {
-         content : "";
+        content: "";
       }
       a img {
         height: 35px;
@@ -894,22 +896,22 @@
       }
     }
     .arrow {
-       position : absolute;
-       right: 0;
+      position: absolute;
+      right: 0;
     }
     .tve-msg {
       position: relative;
       top: 52px;
-        @include breakpoint($bp-video-player-section) {
-          top: 14px;
-          font-size: 11px;
-          line-height: 16px;
-        }
-        @include breakpoint($bp-video-very-large-width) {
-          font-size: 20px;
-          line-height: 30px;
-          top: 82px;
-        }
+      @include breakpoint($bp-video-player-section) {
+        top: 14px;
+        font-size: 11px;
+        line-height: 16px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        font-size: 20px;
+        line-height: 30px;
+        top: 82px;
+      }
     }
 
     .tve-close {
@@ -919,12 +921,12 @@
       right: 10px;
       text-transform: uppercase;
       color: #0AB6E8;
-        @include breakpoint($bp-video-player-section) {
-          top: 3px;
-        }
-        @include breakpoint($bp-video-very-large-width) {
-          top: 250px;
-        }
+      @include breakpoint($bp-video-player-section) {
+        top: 3px;
+      }
+      @include breakpoint($bp-video-very-large-width) {
+        top: 250px;
+      }
       > img {
         padding-right: 5px;
         padding-bottom: 1px;
@@ -966,22 +968,22 @@
       top: 3px;
       right: 0px;
       z-index: 105;
-        @include breakpoint($bp-video-player-section) {
-          border-bottom: 14px solid #4b4b4b;
-          border-right: 14px solid transparent;
-          top: 156px;
-          left: 50%;
-          margin-left: -14px;
-        }
-        @include breakpoint($bp-video-mid-range4-width) {
-          border-bottom: 14px solid #4b4b4b;
-          border-right: 14px solid transparent;
-          top: 316px;
-          left: 16%;
+      @include breakpoint($bp-video-player-section) {
+        border-bottom: 14px solid #4b4b4b;
+        border-right: 14px solid transparent;
+        top: 156px;
+        left: 50%;
+        margin-left: -14px;
+      }
+      @include breakpoint($bp-video-mid-range4-width) {
+        border-bottom: 14px solid #4b4b4b;
+        border-right: 14px solid transparent;
+        top: 316px;
+        left: 16%;
 
-        }
       }
     }
+  }
   .meta {
     overflow: hidden;
   }
@@ -1027,14 +1029,14 @@
     .details {
       color: $gray-light;
     }
-    .details .episode-info div{
+    .details .episode-info div {
       display: inline-block;
     }
     .episode-title {
-      margin-top:10px;
+      margin-top: 10px;
       font-size: 24px;
       text-transform: none;
-      display:inline;
+      display: inline;
       @include breakpoint($bp-video-player-section) {
         display: block;
         font-size: 20px;
@@ -1079,7 +1081,7 @@
       width: 300px;
       overflow: hidden;
       p:last-child {
-      margin-bottom: 1.5em;
+        margin-bottom: 1.5em;
       }
     }
   }
@@ -1225,10 +1227,10 @@
     }
   }
 }
-.tve-overlay {
-  opacity : 1;
-}
 
+.tve-overlay {
+  opacity: 1;
+}
 
 .tveModal {
   &.k2Modal {
@@ -1239,10 +1241,10 @@
   }
   &.welcomeModal {
     .richContent {
-      min-height:321px;
+      min-height: 321px;
     }
-    .welcomeBgImage{
-      right:-2%;
+    .welcomeBgImage {
+      right: -2%;
     }
   }
   &.loginModal {
@@ -1277,59 +1279,59 @@
       @include box-sizing("content-box");
     }
     .modalFooter {
-      width:94% !important;
-      margin:0 auto;
-      padding:2%;
-      text-align:center;
+      width: 94% !important;
+      margin: 0 auto;
+      padding: 2%;
+      text-align: center;
       font-family: $bodytext-bold;
-      font-size:16px;
-      line-height:25px;
+      font-size: 16px;
+      line-height: 25px;
     }
     .modalContent {
-      margin:0 auto;
+      margin: 0 auto;
       min-height: 365px;
-      padding:2.7777% 2.3148%;
-      width:95.3703%;
+      padding: 2.7777% 2.3148%;
+      width: 95.3703%;
       .articles .features-wrapper {
-        overflow:hidden;
-        width:70%;
+        overflow: hidden;
+        width: 70%;
         article {
-          width:40%;
-          img{
-            display:block;
-            width:auto;
-            margin:0 auto;
+          width: 40%;
+          img {
+            display: block;
+            width: auto;
+            margin: 0 auto;
           }
         }
         .feature-group {
           @include pie-clearfix;
           .feature-img-wrap {
-            margin-bottom:10px;
+            margin-bottom: 10px;
           }
           .feature:first-child {
-            padding:0;
+            padding: 0;
           }
           .feature:nth-child(2) {
-            margin:0 3%;
-            padding:0 3%;
-            border-left:1px solid #d7d7d6;
+            margin: 0 3%;
+            padding: 0 3%;
+            border-left: 1px solid #d7d7d6;
           }
           h2 {
-            margin:0 0 3.6% 0;
+            margin: 0 0 3.6% 0;
             font-family: $bodytext-semi;
             font-size: 18px;
             line-height: 27px;
           }
           .feature-copy {
-            margin:0 0 10px 0;
-            font-family:$bodytext-semi;
-            font-size:13px;
-            line-height:20px;
+            margin: 0 0 10px 0;
+            font-family: $bodytext-semi;
+            font-size: 13px;
+            line-height: 20px;
           }
         }
       }
       .buttonBar {
-        margin-top:0px !important;
+        margin-top: 0px !important;
         button {
           font-family: $avalon-medium;
           font-size: 18px !important;
@@ -1338,8 +1340,8 @@
         .gettingStarted {
           display: inline-block;
           padding: 5px 20px;
-          border:0;
-          color:white;
+          border: 0;
+          color: white;
           font-family: $bodytext-bold;
           font-weight: 400;
           font-size: 18px;
@@ -1350,28 +1352,28 @@
       }
     }
     .modalHeader {
-      @include background-image(linear-gradient(top,#3b3b3b 1%,#3b3b3b 2%,#3b3b3b 60%,#1f1f1f 100%));
-      @include box-shadow(rgba(255,255,255,.2) 0 1px 1px inset);
-      width:98% !important;
-      margin:0 auto;
-      padding:0 !important;
+      @include background-image(linear-gradient(top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%));
+      @include box-shadow(rgba(255, 255, 255, .2) 0 1px 1px inset);
+      width: 98% !important;
+      margin: 0 auto;
+      padding: 0 !important;
       h1 {
-        margin:0;
-        font-family:$bodytext-bold;
-        line-height:32px;
-        letter-spacing:normal;
+        margin: 0;
+        font-family: $bodytext-bold;
+        line-height: 32px;
+        letter-spacing: normal;
       }
       .moreDetails {
-        font-family:$bodytext-reg;
-        font-size:12px;
-        line-height:26px;
+        font-family: $bodytext-reg;
+        font-size: 12px;
+        line-height: 26px;
       }
       .closeButton {
-        top:-12px;
-        right:-21px;
+        top: -12px;
+        right: -21px;
         @extend .icons-close_welcome_popup;
-        border-radius:0;
-        border:0;
+        border-radius: 0;
+        border: 0;
       }
     }
   }
@@ -1380,14 +1382,15 @@
 .tveModal {
   .modalHeader {
     .closeButton {
-      top:-10px;
-      right:-10px;
+      top: -10px;
+      right: -10px;
       @extend .icons-close_welcome_popup;
-      border-radius:0;
-      border:0;
+      border-radius: 0;
+      border: 0;
     }
   }
 }
+
 .tveModal.adobePassFrame {
   .modalContent {
     padding: 12px 0;
@@ -1397,11 +1400,12 @@
     }
   }
 }
+
 .errorModal {
-  .modalHeader h1{
+  .modalHeader h1 {
     margin: 0.67em 0 0;
   }
-  
+
   .modalContent {
     p {
       font-size: 15px;
@@ -1415,6 +1419,53 @@
 
 #microsite {
   #video-container {
+    &:hover {
+      cursor: pointer;
+      .locked-msg,
+      a:after {
+        display: block;
+      }
+      .player-thumbnail {
+        img {
+          opacity: .2;
+          transition: opacity 0.3s ease-in-out;
+        }
+      }
+    }
+    .locked-msg {
+      left: 5%;
+      position: absolute;
+      text-shadow: 1px 1px 5px black;
+      text-align: center;
+      top: 35%;
+      width: 90%;
+      z-index: 2;
+      @include breakpoint($bp-640-width) {
+        top: 30%;
+      }
+      .first-line {
+        display: block;
+        font-size: 24px;
+        line-height: 45px;
+        text-transform: uppercase;
+        @include breakpoint($bp-1900-width) {
+          font-size: 20px;
+          line-height: 36px;
+        }
+        @include breakpoint($bp-1280-width) {
+          font-size: 18px;
+          line-height: 29px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: 15px;
+          line-height: 26px;
+        }
+        @include breakpoint($bp-480-width) {
+          font-size: 10px;
+          line-height: 18px;
+        }
+      }
+    }
     .tve-help {
       .tve-help-inner {
         height: 100%;

@@ -45,7 +45,7 @@
   </div>
 <?php endif; ?>
 
-<div class="full-pane">
+<div class="full-pane clearfix">
   <div class="left-pane">
     <div id="video-container"
          data-usa-tve-player-container

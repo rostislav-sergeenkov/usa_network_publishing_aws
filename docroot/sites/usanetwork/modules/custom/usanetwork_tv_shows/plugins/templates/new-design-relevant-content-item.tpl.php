@@ -6,9 +6,8 @@
  *  - $entity_type
  *  - $url
  *  - $title
- *  - $promo_title
- *  - $promo_description
- *  - $promo_violator
+ *  - $description
+ *  - $violator
  *  - $type
  *  - $image_desktop
  *  - $image_mobile

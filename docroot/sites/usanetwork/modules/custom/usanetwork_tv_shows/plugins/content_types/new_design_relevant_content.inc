@@ -108,21 +108,25 @@ function new_design_relevant_content_get_manual_content($node, $conf) {
       }
       $entity_wrapper = entity_metadata_wrapper($relaevant_content_data['target_type'], $entity);
       $row_image_uri = usanetwork_core_api_get_content_image($relaevant_content_data['target_type'], $entity);
-      $title = '';
-      if (!empty($entity->title)) {
-        $title = $entity->title;
+
+      $promo_data = _usanetwork_promo_pull_entity_promo_details($entity, $entity_wrapper, $relaevant_content_data['target_type']);
+      if ($relaevant_content_data['target_type'] == 'node') {
+        $own_promo_lines = _usanetwork_promo_node_get_promo_lines($entity);
       }
-      elseif (!empty($entity->filename)) {
-        $title = $entity->filename;
+      else {
+        $own_promo_lines = _usanetwork_promo_file_get_promo_lines($entity);
       }
+      $title = !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
+        (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : '');
+      $description = !empty($promo_data['description']) ? $promo_data['description'] :
+        (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : '');
       $relaevant_content[] = array(
         'entity_id' => $relaevant_content_data['target_id'],
         'entity_type' => $relaevant_content_data['target_type'],
         'url' => url($relaevant_content_data['target_type'] . '/' . $relaevant_content_data['target_id']),
         'title' => $title,
-        'promo_title' => usanetwork_core_api_check_field($entity, 'field_promo_title') ? $entity_wrapper->field_promo_title->value() : '',
-        'promo_description' => usanetwork_core_api_check_field($entity, 'field_promo_long_description') ? $entity_wrapper->field_promo_long_description->value() : '',
-        'promo_violator' => usanetwork_core_api_check_field($entity, 'field_promo_violator_name') ? $entity_wrapper->field_promo_violator_name->value() : '',
+        'description' => $description,
+        'violator' => usanetwork_core_api_check_field($entity, 'field_promo_violator_name') ? $entity_wrapper->field_promo_violator_name->value() : '',
         'type' => $entity->type,
         'image_desktop' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
         'image_mobile' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),

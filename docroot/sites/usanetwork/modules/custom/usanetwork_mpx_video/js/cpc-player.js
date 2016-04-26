@@ -40,8 +40,6 @@
                     $timeout(function () {
                       $rootScope.removePlayerThumbnail = true;
                     }, 500);
-                    console.info('cpc');
-                    //tveAnalytics.authzTrack(true, authService.getSelectedProvider());
                     initLivePlayer($cookies);
                   }
                 });

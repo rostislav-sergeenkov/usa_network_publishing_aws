@@ -396,7 +396,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_additional_information';
   $field_group->data = array(
     'label' => 'Floodlight Tag',
-    'weight' => '79',
+    'weight' => '78',
     'children' => array(
       0 => 'field_floodlight_category',
       1 => 'field_floodlight_type',
@@ -612,6 +612,7 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_new_design',
       1 => 'group_service',
+      2 => 'group_relevant_content',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -683,6 +684,34 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_pinterest_settings|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_relevant_content|node|tv_show|form';
+  $field_group->group_name = 'group_relevant_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_new_design';
+  $field_group->data = array(
+    'label' => 'Relevant content view',
+    'weight' => '27',
+    'children' => array(
+      0 => 'field_relevant_content_modes',
+      1 => 'field_relevant_manual_content',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-relevant-content field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_relevant_content|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1062,14 +1091,11 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'tv_show';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_show_aspots';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'slideshow options',
     'weight' => '70',
-    'children' => array(
-      0 => 'field_usa_autoscroll',
-      1 => 'field_usa_slide_speed',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'slideshow options',
@@ -1098,19 +1124,18 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_hide_cast_carousel',
       1 => 'field_hide_social_follow',
-      2 => 'field_hashtag',
-      3 => 'group_chat_settings',
-      4 => 'group_chatter_to_tv_settings',
-      5 => 'group_fb_settings',
-      6 => 'group_getglue_settings',
-      7 => 'group_homepage_twitter_settings',
-      8 => 'group_instagram_settings',
-      9 => 'group_newsletter',
-      10 => 'group_pinterest_settings',
-      11 => 'group_sync_settings',
-      12 => 'group_trend',
-      13 => 'group_twitter_settings',
-      14 => 'group_usa_show_follow',
+      2 => 'group_chat_settings',
+      3 => 'group_chatter_to_tv_settings',
+      4 => 'group_fb_settings',
+      5 => 'group_getglue_settings',
+      6 => 'group_homepage_twitter_settings',
+      7 => 'group_instagram_settings',
+      8 => 'group_newsletter',
+      9 => 'group_pinterest_settings',
+      10 => 'group_sync_settings',
+      11 => 'group_trend',
+      12 => 'group_twitter_settings',
+      13 => 'group_usa_show_follow',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1400,12 +1425,12 @@ function usanetwork_tv_shows_field_group_info() {
       8 => 'field_about_ymal',
       9 => 'field_tvs_show_latest_lnd_feed',
       10 => 'field_see_it_url',
-      11 => 'group_about_area',
-      12 => 'group_latest_episodes_alt',
-      13 => 'group_show_aspots',
-      14 => 'group_tvs_best_of',
-      15 => 'group_usa_tv_promo_vids',
-      16 => 'group_usa_tv_promo',
+      11 => 'group_usa_tv_promo_vids',
+      12 => 'group_usa_tv_promo',
+      13 => 'group_about_area',
+      14 => 'group_latest_episodes_alt',
+      15 => 'group_show_aspots',
+      16 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

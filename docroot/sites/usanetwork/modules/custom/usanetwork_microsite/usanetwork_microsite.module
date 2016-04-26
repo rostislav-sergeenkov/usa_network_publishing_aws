@@ -1420,7 +1420,16 @@ function _usanetwork_microsite_define_videoplayer($file) {
   $mpx_account_pid = $player_info['mpx_account_pid'];
   $player_pid = $player_info['player_pid'];
 
-  $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
+//  $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
+  $environment = _usanetwork_widget_get_environment();
+  if ($environment == 'prod') {
+    $pdk_controller_url = "http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=5.6.6";
+  } elseif ($environment == 'stage') {
+    $pdk_controller_url = "http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js?pdk=5.6.6";
+  }
+  else {
+    $pdk_controller_url = "http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=5.6.6";
+  }
 
   drupal_add_js($pdk_controller_url, 'external');
 

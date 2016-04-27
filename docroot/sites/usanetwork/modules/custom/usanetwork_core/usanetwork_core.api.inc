@@ -352,3 +352,29 @@ function usanetwork_core_api_check_field($entity_object, $field_name, $entity_ty
 
   return FALSE;
 }
+
+/**
+ * Get content from dynamic field.
+ *
+ * @param $entity
+ * @param $field
+ */
+function usanetwork_core_api_get_dynamic_entity_reference_content($entity, $field) {
+  $content = array();
+  if (!empty($entity->$field)) {
+    $field = field_get_items('node', $entity, 'field_relevant_manual_content');
+    foreach ($field as $data) {
+      $dynamic_entity = entity_load($data['target_type'], array($data['target_id']));
+      if (is_array($dynamic_entity)) {
+        $dynamic_entity = reset($dynamic_entity);
+      }
+      $item = array(
+        'entity_type' => $data['target_type'],
+        'entity_id'   => $data['target_id'],
+        'entity'      => $dynamic_entity,
+      );
+      $content[] = $item;
+    }
+  }
+  return $content;
+}

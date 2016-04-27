@@ -1,5 +1,7 @@
 <?php
 /**
+ * BCD-Spot Item.
+ *
  * Item of relevant content.
  * Variables:
  *  - $entity_id

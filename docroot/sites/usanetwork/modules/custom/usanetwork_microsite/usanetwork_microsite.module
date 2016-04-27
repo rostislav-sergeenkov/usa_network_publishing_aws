@@ -1420,7 +1420,7 @@ function _usanetwork_microsite_define_videoplayer($file) {
   $mpx_account_pid = $player_info['mpx_account_pid'];
   $player_pid = $player_info['player_pid'];
 
-  $pdk_version = '5.6.6';
+  $pdk_version = '5.6.18';
   $pdk = variable_get('usanetwork_player_url_pdk', '');
   if (!empty($pdk)) {
     $pdk_version = $pdk;

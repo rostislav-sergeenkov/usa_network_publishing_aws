@@ -458,52 +458,37 @@
       z-index: 2;
     }
     .header-nav-bar {
-      &.tve-sign {
-        @include breakpoint($between-769-1024) {
-          margin-bottom: 35px;
-        }
-      }
       .nav-bar-tabs {
-        max-width: calc(100% - 17vw);
+        max-width: calc(100% - 27vw);
         @include breakpoint($bp-min-1901-width) {
-          max-width: calc(100% - 320px);
+          max-width: calc(100% - 510px);
         }
         @include breakpoint($bp-768-width) {
           max-width: calc(100% - 75px);
         }
         @include breakpoint($bp-480-width) {
-          max-width: calc(100% - 50px);
+          max-width: calc(100% - 100px);
         }
         .menu-item.info {
           border-right: none;
         }
       }
-      .tve-help-link {
-        background: none;
-        float: right;
-        display: block !important;
-        height: 100%;
+
+      #usa-tve-help-link.signIn ~ .nav-bar-tabs {
         @include breakpoint($bp-768-width) {
-          display: none !important;
+          max-width: calc(100% - 125px);
         }
-        a {
-          color: #ffffff;
+        @include breakpoint($bp-480-width) {
+          max-width: calc(100% - 100px);
         }
-        &.signOut {
-          &:hover {
-            background: $consup-border;
-          }
-          .links-wrapper {
-            border-left: 1px solid $consup-border;
-          }
+      }
+
+      #usa-tve-help-link.signOut ~ .nav-bar-tabs {
+        @include breakpoint($bp-768-width) {
+          max-width: calc(100% - 200px);
         }
-        &.signIn {
-          &.no-auth {
-            border-left: 1px solid $consup-border;
-            &:hover {
-              background: $consup-border;
-            }
-          }
+        @include breakpoint($bp-480-width) {
+          max-width: calc(100% - 175px);
         }
       }
     }
@@ -529,20 +514,20 @@
         margin-bottom: 35px;
         @include breakpoint($bp-768-width) {
           margin-bottom: 0;
-        }
-      }
-    }
-  }
-  .block-usanetwork-menu {
-    &.open {
-      @include breakpoint($bp-min-769-width) {
-        background: $bottom-footer-back;
-        .tve-help-link.signOut {
-          .tve-header-links {
-            .first {
-              display: none;
-            }
-          }
+  //      }
+  //    }
+  //  }
+  //}
+  //.block-usanetwork-menu {
+  //  &.open {
+  //    @include breakpoint($bp-min-769-width) {
+  //      background: $bottom-footer-back;
+  //      .tve-help-link.signOut {
+  //        .tve-header-links {
+  //          .first {
+  //            display: none;
+  //          }
+  //        }
         }
       }
     }

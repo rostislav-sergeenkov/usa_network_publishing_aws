@@ -2,29 +2,56 @@
 
   var counter = 0;
 
-  $(document).ready(function () {
-    if (!ng) {
-      return;
-    }
+  // functionality for cpc live player
+  ng.module('tve.auth.directives')
+      .directive('usaPlayerIsLive', [
+        '$rootScope',
+        'authService', '$cookies', '$timeout',
+        function ($rootScope, authService, $cookies, $timeout) {
 
+          'use strict';
 
-    var $injector = ng.element(document).injector();
+          return {
+            scope: true,
+            compile: function (element, attrs, transclude) {
+              return function (scope, $element, $attrs) {
 
-    $injector.invoke(['$cookies', 'tveConfig', 'tveModal', 'authService', function ($cookies, tveConfig, tveModal, authService) {
+                // var tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop},
+                var user = {
+                  isAuthenticated: authService.isAuthenticated() // check status
+                };
 
-      if ($cookies['nbcu_ap_loginpending']) {
-        authService.promise.then(function () {
-          initLivePlayer($cookies);
-        });
-      }
+                // create global scope obj
+                $rootScope.user = user;
+                $rootScope.playerThumbnail = true;
+                $rootScope.removePlayerThumbnail = false;
 
-      if (authService.isAuthN()) {
-        initLivePlayer($cookies);
-      }
+                // Open login modal window on thumbnail click
+                //referencing openLoginModal function to the current scope
+                $rootScope.openLoginWindow = authService.openLoginModal;
 
-    }]);
+                authService.promise.then(function (status) {
 
-  });
+                  // check Authenticated and delete thumbnail if Authenticated = true
+                  user.isAuthenticated = status.isAuthenticated;
+
+                  if (scope.isAuthenticated) {
+
+                    $rootScope.playerThumbnail = false;
+                    $timeout(function () {
+                      $rootScope.removePlayerThumbnail = true;
+                    }, 500);
+                    // tveAnalytics.authzTrack(true, {
+                    //   mvpd_id: status.mvpdId
+                    // });
+                    initLivePlayer($cookies);
+                  }
+                });
+              };
+            }
+          };
+        }
+      ]);
 
   function initLivePlayer($cookies) {
 

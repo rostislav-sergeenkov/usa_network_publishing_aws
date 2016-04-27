@@ -6,7 +6,8 @@
       }
       // player wrapper
       #player-wrapper {
-        display: none;
+        background-color: #000000;
+        visibility: hidden;
         position: absolute;
         iframe {
           height: 100%;

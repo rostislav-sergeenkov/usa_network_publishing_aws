@@ -63,6 +63,7 @@ function usanetwork_mpx_video_file_default_displays() {
     'controls' => 1,
     'autoplay' => 0,
     'loop' => 0,
+    'muted' => 0,
     'width' => '',
     'height' => '',
     'multiple_file_behavior' => 'tags',
@@ -120,7 +121,7 @@ function usanetwork_mpx_video_file_default_displays() {
   $file_display->status = TRUE;
   $file_display->settings = array(
     'pub_mpx_video_player_id' => array(
-      1 => '4Dl3P2Df_j5l',
+      1 => 'qRe1IXDE_V0F',
     ),
   );
   $export['mpx_video_1__inline_content__pub_mpx_video'] = $file_display;

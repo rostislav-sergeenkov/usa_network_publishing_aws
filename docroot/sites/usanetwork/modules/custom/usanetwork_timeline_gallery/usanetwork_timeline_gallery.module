@@ -70,8 +70,8 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
           $image_url = _usanetwork_mpx_video_get_image_path($video_file);
           $video = _usanetwork_mpx_video_get_player_src(array(
             'file' => $video_file,
-            'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
-            'player_id' => 'top3_usa',
+            'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'excludeSharing' => 'true'),
+            'player_id' => USA_GLOBAL_PLAYER_ID,
           ));
           $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $video_file), 'link');
           $image_src = image_style_url('timeline_gallery_image', $image_url);
@@ -111,7 +111,7 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
     $vars['baseUrl'] = $base_url;
     $vars['requestUrl'] = request_uri();
     $vars['imageBaseUrl'] = '/' . path_to_theme() . '/images';
-    $vars['player'] = _usanetwork_mpx_video_get_player_src(array('parent_account' => '1', 'player_id' => 'top3_usa'), 'player');
+    $vars['player'] = _usanetwork_mpx_video_get_player_src(array('player_id' => USA_GLOBAL_PLAYER_ID, 'pub_mpx_player_parameters' => array('excludeSharing' => 'true')), 'player');
     $vars['isset_video'] = $isset_video;
   }
 }

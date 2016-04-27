@@ -9,19 +9,19 @@
    */
   Drupal.behaviors.ms_global = {
     // change url address
-    changeUrl: function(anchor, anchorFull) {
+    changeUrl: function (anchor, anchorFull) {
       Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
     },
 
-    setOmnitureData: function(anchor, itemTitle) {
+    setOmnitureData: function (anchor, itemTitle) {
       Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
     },
 
-    create728x90Ad: function(section) {
+    create728x90Ad: function (section) {
       Drupal.behaviors.microsite_scroll.create728x90Ad(section);
     },
 
-    sendSocialShareOmniture: function($this, title) {
+    sendSocialShareOmniture: function ($this, title) {
       title = title || null;
       var $container = $this.parents('.gig-button-container'),
           shareType = 'Share',
@@ -48,7 +48,7 @@
         s.manageVars('clearVars', s.linkTrackVars, 1);
       }
     }
-  }
+  };
 
   Drupal.behaviors.microsite_scroll = {
 
@@ -70,8 +70,8 @@
           list = $('#microsite ' + listSelector),
           listId = list.attr('id'),
           listFound = (list.length > 0) ? 1 : 0,
-          numQuotes = list.find('li').length
-      kmax = numQuotes - 1,
+          numQuotes = list.find('li').length,
+          kmax = numQuotes - 1,
           k = 0,
           fadeDuration = 700,
           tweenDuration = 7000,
@@ -139,7 +139,7 @@
     },
 
     // change url address
-    micrositeChangeUrl: function(anchor, anchorFull) {
+    micrositeChangeUrl: function (anchor, anchorFull) {
       var basePath = Drupal.settings.microsites_settings.base_path;
 
       // if this is IE9, reload the correct page
@@ -251,7 +251,7 @@
     },
 
     //=========== Init one page scroll for microsite ===============//
-    micrositeSectionScroll: function(anchor, item, itemTitle) {
+    micrositeSectionScroll: function (anchor, item, itemTitle) {
       item = item || '';
       itemTitle = itemTitle || '';
       var basePath = Drupal.settings.microsites_settings.base_path,
@@ -350,57 +350,57 @@
       });
     },
 
-/*
-    //create mobile menu for microsite
-    micrositeCreateMobileMenu: function () {
-      var leftNav = $('#left-nav-links-list'),
-          leftNavItem = leftNav.find('li.internal'),
-          mobileMenu = $('#jPanelMenu-menu #tv-show-menu');
+    /*
+     //create mobile menu for microsite
+     micrositeCreateMobileMenu: function () {
+     var leftNav = $('#left-nav-links-list'),
+     leftNavItem = leftNav.find('li.internal'),
+     mobileMenu = $('#jPanelMenu-menu #tv-show-menu');
 
-      i = 0;
-      j = 0;
+     i = 0;
+     j = 0;
 
-      leftNavItem.each(function () {
-        if (i == 0) {
-          var attrHome = leftNavItem.eq(i).attr('data-menuanchor'),
-              attrHomeLink = leftNavItem.eq(i).find('a.scroll-link').attr('data-menuitem'),
-              mobileMenuTitle = mobileMenu.find('h2.menu-title'),
-              mobileMenuTitleLink = mobileMenu.find('h2.menu-title a.slide-panel-link');
+     leftNavItem.each(function () {
+     if (i == 0) {
+     var attrHome = leftNavItem.eq(i).attr('data-menuanchor'),
+     attrHomeLink = leftNavItem.eq(i).find('a.scroll-link').attr('data-menuitem'),
+     mobileMenuTitle = mobileMenu.find('h2.menu-title'),
+     mobileMenuTitleLink = mobileMenu.find('h2.menu-title a.slide-panel-link');
 
-          mobileMenuTitle.attr('data-menuanchor', attrHome);
-          mobileMenuTitle.addClass('internal');
-          mobileMenuTitleLink.addClass('scroll-link');
-          mobileMenuTitleLink.attr('href', '#');
-          mobileMenuTitleLink.attr('data-menuitem', attrHomeLink);
+     mobileMenuTitle.attr('data-menuanchor', attrHome);
+     mobileMenuTitle.addClass('internal');
+     mobileMenuTitleLink.addClass('scroll-link');
+     mobileMenuTitleLink.attr('href', '#');
+     mobileMenuTitleLink.attr('data-menuitem', attrHomeLink);
 
-          if (leftNavItem.eq(i).hasClass('active')) {
-            mobileMenuTitle.addClass('active');
-          }
-        }
-        if (i != 0) {
-          var attrSection = leftNavItem.eq(i).attr('data-menuanchor'),
-              attrSectionLink = leftNavItem.eq(i).find('a.scroll-link').attr('data-menuitem'),
-              mobileMenuList = mobileMenu.find('.item-list ul').eq(0),
-              mobileMenuListItem = mobileMenuList.find('li').eq(j),
-              mobileMenuListItemLink = mobileMenuListItem.find('a.slide-panel-link');
+     if (leftNavItem.eq(i).hasClass('active')) {
+     mobileMenuTitle.addClass('active');
+     }
+     }
+     if (i != 0) {
+     var attrSection = leftNavItem.eq(i).attr('data-menuanchor'),
+     attrSectionLink = leftNavItem.eq(i).find('a.scroll-link').attr('data-menuitem'),
+     mobileMenuList = mobileMenu.find('.item-list ul').eq(0),
+     mobileMenuListItem = mobileMenuList.find('li').eq(j),
+     mobileMenuListItemLink = mobileMenuListItem.find('a.slide-panel-link');
 
-          mobileMenuList.attr('id', 'ms-left-nav');
-          mobileMenuListItem.attr('data-menuanchor', attrSection);
-          mobileMenuListItem.addClass('internal');
-          mobileMenuListItemLink.addClass('scroll-link');
-          mobileMenuListItemLink.attr('href', '#');
-          mobileMenuListItemLink.attr('data-menuitem', attrSectionLink);
+     mobileMenuList.attr('id', 'ms-left-nav');
+     mobileMenuListItem.attr('data-menuanchor', attrSection);
+     mobileMenuListItem.addClass('internal');
+     mobileMenuListItemLink.addClass('scroll-link');
+     mobileMenuListItemLink.attr('href', '#');
+     mobileMenuListItemLink.attr('data-menuitem', attrSectionLink);
 
-          if (leftNavItem.eq(i).hasClass('active')) {
-            mobileMenuListItem.addClass('active');
-          }
+     if (leftNavItem.eq(i).hasClass('active')) {
+     mobileMenuListItem.addClass('active');
+     }
 
-          j = j + 1;
-        }
-        i = i + 1;
-      })
-    },
-*/
+     j = j + 1;
+     }
+     i = i + 1;
+     })
+     },
+     */
 
     // parseUrl
     micrositeParseUrl: function parseUrl() {
@@ -419,21 +419,19 @@
       return {'section': activeSection, 'item': activeItem};
     },
     //player init bind
-    micrositePlayerBind: function () {
-      for (key in $pdk.controller.listeners) {
-        delete $pdk.controller.listeners[key];
-      }
-      $pdk.bindPlayerEvents();
-      tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
+    micrositePlayerBind: function (options) {
+      USAN.ms_player.init(options);
     },
     //ajax request
-    micrositeGetVideo: function (url) {
+    micrositeGetVideo: function (url, isAuth) {
 
       var videoContainer = $('#video-container'),
-          playerWrap = videoContainer.find('.video-player .file-video-mpx'),
+          playerThumbnail = videoContainer.find('.video-image'),
+          playerWrapSelector = '.file-video-mpx',
           playerDesc = videoContainer.find('.video-player-desc'),
           playerAuth = videoContainer.find('.video-auth-player-wrapper'),
-          playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper');
+          playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper'),
+          playerWrap;
 
       $.ajax({
         type: 'GET',
@@ -446,19 +444,27 @@
               player = data.player;
 
           if (playerAuth.hasClass('active-player')) {
-            playerNoAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
-            playerAuth.find('#player .loginButton').html(image);
-            playerAuth.find(playerWrap).html(player);
+            playerWrap = playerAuth.find(playerWrapSelector);
+            playerNoAuth.find(playerWrapSelector).html('<iframe class="base-iframe"></iframe>');
+            playerThumbnail.html(image);
+            playerWrap.html(player);
           }
           if (playerNoAuth.hasClass('active-player')) {
-            playerAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
-            playerNoAuth.find(playerWrap).html(player);
+            playerWrap = playerNoAuth.find(playerWrapSelector);
+            playerAuth.find(playerWrapSelector).html('<iframe class="base-iframe"></iframe>');
+            playerWrap.html(player);
           }
 
+          playerWrap.find('iframe').eq(0).off('load');
           playerDesc.html(description);
 
-          Drupal.behaviors.microsite_scroll.micrositePlayerBind();
-
+          Drupal.behaviors.microsite_scroll.micrositePlayerBind({
+            isAuth: isAuth,
+            playerWrap: playerWrap,
+            episodeRating: data['episode-rating'],
+            episodeTitle: data['episode-title'],
+            mpxGuid: data['mpx-guid']
+          });
         },
         error: function () {
           console.info('error');
@@ -487,20 +493,12 @@
           ad_300x60_1 = $('#videos #ad_300x60_1'),
           ad_300x250 = $('#videos #ad_300x250'),
           ad_300x250_1 = $('#videos #ad_300x250_1'),
+          isAuth = false,
           filter, url;
-
-
-
+      
       if (data) {
         dataPlayerId = data.data.player_id;
         dataFid = data.data.fid;
-      }
-
-      if($('#video-filter').length){
-        filter = $('#video-filter .filter-item.active').text();
-        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + filter;
-      } else {
-        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay;
       }
 
       if (videoContainer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
@@ -542,12 +540,22 @@
       Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
 
       if ($('#thumbnail-list .item-list ul li.thumbnail.active > div').hasClass('tve-video-auth')) {
+        isAuth = true;
+        autoplay = false;
         videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
       } else {
         videoContainer.find('.video-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-no-auth-player-wrapper').addClass('active-player').show();
       }
+
+      if ($('#video-filter').length) {
+        filter = $('#video-filter .filter-item.active').text();
+        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + tve.adobePass.currentProvider + '/' + filter;
+      } else {
+        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + tve.adobePass.currentProvider;
+      }
+
       function checkAjaxUrl() {
 
         var urlArr = url.split('/'),
@@ -565,7 +573,7 @@
       }
 
       if (checkAjaxUrl()) {
-        Drupal.behaviors.microsite_scroll.micrositeGetVideo(url);
+        Drupal.behaviors.microsite_scroll.micrositeGetVideo(url, isAuth);
       }
     },
     // SetPausePlayer
@@ -578,7 +586,7 @@
       }
     },
     //scroll to top
-    micrositeScrollToTop: function() {
+    micrositeScrollToTop: function () {
       $('.section.active').animate({
         scrollTop: 0
       }, 2000);
@@ -679,8 +687,8 @@
     },
     //click Thumbnail
     micrositeClickThumbnail: function (elem) {
-usa_debug('=========== micrositeClickThumbnail(), elem: ');
-usa_debug(elem);
+      usa_debug('=========== micrositeClickThumbnail(), elem: ');
+      usa_debug(elem);
       var previewItem = $('#thumbnail-list .item-list ul li.thumbnail'),
           refreshAdsOmniture = 0,
           videoContainer = $('#video-container');
@@ -689,7 +697,7 @@ usa_debug(elem);
         previewItem.removeClass('active');
         elem.addClass('active');
         refreshAdsOmniture = 1;
-usa_debug(' ====== if videoContainer...');
+        usa_debug(' ====== if videoContainer...');
       } else {
         if (!elem.hasClass('active')) {
           elem.addClass('active');
@@ -748,7 +756,8 @@ usa_debug(' ====== if videoContainer...');
             $('#thumbnail-list .thumbnail').last().after(videoList);
           }
 
-          var thumbnail = $('#microsite #thumbnail-list .item-list ul li.thumbnail'); /* $('#thumbnail-list .thumbnail'); */
+          var thumbnail = $('#microsite #thumbnail-list .item-list ul li.thumbnail');
+          /* $('#thumbnail-list .thumbnail'); */
 
           if (!thumbnail.hasClass('ad')) {
             if (thumbnail.eq(1)) {
@@ -829,7 +838,7 @@ usa_debug(' ====== if videoContainer...');
     },
 
     attach: function (context, settings) {
-    //usa_debug('===== running attach in microsite_global.js');
+      //usa_debug('===== running attach in microsite_global.js');
       var startPathname = window.location.pathname;
 
       if (!$('html.ie9').length) {
@@ -855,7 +864,7 @@ usa_debug(' ====== if videoContainer...');
         }
       });
       $('body').live('click', function (e) {
-        if($(e.target).parents().filter('#video-filter').length != 1){
+        if ($(e.target).parents().filter('#video-filter').length != 1) {
           if ($('#video-filter .filter-label').hasClass('open')) {
             $('#video-filter .filter-label').removeClass('open');
             $('#video-filter .filter-menu').hide();
@@ -945,7 +954,7 @@ usa_debug(' ====== if videoContainer...');
       });
 
       // tve help messaging
-      $tve_toggler = $('.tve-help-link');
+      $tve_toggler = $('.tve-help-link.help-link');
       // $('.tve-help-link').click(function() {
       $tve_toggler.click(function () {
         if ($('.tve-help-link').hasClass('selected')) {
@@ -1027,7 +1036,7 @@ usa_debug(' ====== if videoContainer...');
       });
 
       // initialize hamburger menu sub-nav clicks
-      $('ul#mobile-nav-links-list li.sub-nav').click(function(){
+      $('ul#mobile-nav-links-list li.sub-nav').click(function () {
         $(this).toggleClass('active');
         $(this).find('ul').toggle(600);
       });
@@ -1249,7 +1258,7 @@ usa_debug(' ====== if videoContainer...');
       //  }
       //});
 
-      $('.section').on('scroll', function() {
+      $('.section').on('scroll', function () {
         Drupal.behaviors.ms_lazyLoad.initImgShow();
       });
 

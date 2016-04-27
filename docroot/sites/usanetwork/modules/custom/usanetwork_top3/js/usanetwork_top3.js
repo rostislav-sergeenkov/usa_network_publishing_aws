@@ -32,7 +32,9 @@
         nextArrow = sliderContainer.find('.next'),
         prevArrow = sliderContainer.find('.prev'),
         playButton = $('#play-button'),
+        ccButton = $('#cc-button'),
         videoBlock = $('#slider-player'),
+        dragIconBlock = $('#drag-icon-block'),
         start_item = '';
 
     // omniture params
@@ -68,6 +70,7 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
+      ccButton.addClass('info-hide');
       playButton.addClass('info-hide');
       $('.drag-group').hide();
       $('#info-block').show();
@@ -78,6 +81,7 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
+      ccButton.removeClass('info-hide');
       playButton.removeClass('info-hide');
       $('.drag-group').show();
       $('#info').show();
@@ -88,9 +92,10 @@
       $('.control-button').hide();
       $('#counter').hide();
       slideTitle.hide();
+      ccButton.addClass('popup-hide');
       playButton.addClass('popup-hide');
       $('.drag-group').hide();
-      $('#drag-icon-block').hide();
+      dragIconBlock.hide();
       $('#share-block-preview').show();
     }
 
@@ -99,9 +104,10 @@
       $('.control-button').show();
       $('#counter').show();
       slideTitle.show();
+      ccButton.removeClass('popup-hide');
       playButton.removeClass('popup-hide');
       $('.drag-group').show();
-      $('#drag-icon-block').show();
+      dragIconBlock.show();
       $('#info').show();
     }
 
@@ -181,6 +187,7 @@
         $pdk.controller.addEventListener('OnMediaUnpause', _onMediaUnpause);
         $pdk.controller.addEventListener('OnMediaLoadStart', _onMediaLoadStart);
         $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+        $pdk.controller.addEventListener('OnShowFullScreen', _onShowFullScreen);
 
         function _onMediaStart(pdkEvent) {
           playerService.mediaLoadStatus = false;
@@ -209,6 +216,17 @@
 
           if (playerService.clickOnThumb == false) {
             playerService.hidePlayer();
+          }
+        }
+
+        /*
+         * On Show Full Screen
+         */
+        function _onShowFullScreen(pdkEvent) {
+          if (pdkEvent.data) {
+            $(body).addClass('video-fullscreen');
+          } else {
+            $(body).removeClass('video-fullscreen');
           }
         }
       },
@@ -289,8 +307,8 @@
           if (playerService.hideSliderWrapper) {
             playerService.hideSliderWrapper = false;
             $('#slider-container .slider-wrapper').css({
-              //'visibility': 'visible',
-              display: 'block'
+              // display: 'block',
+              pointerEvents: 'auto'
             });
           }
 
@@ -310,6 +328,9 @@
 
             // reset play button
             playButton.removeClass('inactive').addClass('show');
+
+            // hide cc button
+            ccButton.addClass('show');
           }
         } else {
           var neighborBlock = $('#chosen-player .img-wrapper');
@@ -354,10 +375,12 @@
         if (srcLink != undefined) {
           if(!playButton.hasClass('show')){
             playButton.addClass('show');
+            ccButton.addClass('show');
           }
         } else {
           if(playButton.hasClass('show')){
             playButton.removeClass('show');
+            ccButton.removeClass('show');
           }
         }
       }
@@ -373,18 +396,18 @@
 
           var playBtn = $(this);
 
-
           if (!playBtn.hasClass('inactive')) {
             // added class and change status button
             playBtn.addClass('inactive').removeClass('show');
+
             // show player
             if (isMobileDevice) {
               console.info(isMobileDevice);
               playerService.loadPlayer();
               playerService.hideSliderWrapper = true;
               $('#slider-container .slider-wrapper').css({
-                //'visibility': 'hidden'
-                display: 'none'
+                // display: 'none'
+                pointerEvents: 'none'
               });
             } else {
               playerService.setPlayer();
@@ -392,6 +415,18 @@
           } else {
             playerService.playPlayer();
             playBtn.removeClass('show');
+          }
+
+        });
+
+        ccButton.on('click', function () {
+
+          if(!$(this).hasClass('active')) {
+            $pdk.controller.setSubtitleLanguage("en");
+            $(this).addClass('active');
+          } else {
+            $pdk.controller.setSubtitleLanguage("");
+            $(this).removeClass('active');
           }
 
         });
@@ -494,6 +529,8 @@
 
               if (playerService.playerStatus) {
                 // hide player
+                ccButton.removeClass('active');
+                $pdk.controller.setSubtitleLanguage("");
                 playerService.hidePlayer();
               }
             });
@@ -911,14 +948,14 @@
                       items: ".drop-area__item"
                     });
                     $('.drag-group').disableSelection();
-                    $('#drag-icon-block').remove();
+                    //$('#drag-icon-block').remove();
                     previewOpen();
                   });
 
                   setTimeout(function () {
-                    classie.add(dropArea, 'show');
+                    classie.add(dropArea, 'full-changed');
+                    dragIconBlock.addClass('full-changed');
                   }, 1000);
-
 
                 }
               };

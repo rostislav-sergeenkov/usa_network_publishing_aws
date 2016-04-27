@@ -18,6 +18,14 @@ body.page-node-microsite {
   font-style: normal !important;
   background-color: transparent;
 }
+body.video-fullscreen #home {
+  height: 0!important;
+  margin-top: 0!important;
+}
+body.video-fullscreen #videos {
+  height: 105vh!important;
+  width: 100%!important;
+}
 body #mobileVideoModal {
   top: 80px;
 }

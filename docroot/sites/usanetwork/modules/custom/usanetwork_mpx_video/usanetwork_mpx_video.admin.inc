@@ -4,7 +4,7 @@
  * USA Video configuration form.
  */
 function usanetwork_mpx_video_admin($form, &$form_state) {
-  $form['#tree'] = TRUE;
+//  $form['#tree'] = TRUE;
   $form['sync'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
@@ -28,14 +28,35 @@ function usanetwork_mpx_video_admin($form, &$form_state) {
     '#limit_validation_errors' => array(),
   );
 
-  return $form;
+  $form['player_url'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#title' => t('Player URL Settings'),
+    '#description' => t('Set up Player URL Settings.'),
+  );
+
+  $form['player_url']['usanetwork_player_url_pdk'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Pdk'),
+    '#description' => t('Player URL Parameter &pdk='),
+    '#default_value' => variable_get('usanetwork_player_url_pdk', ''),
+  );
+
+  $form['player_url']['usanetwork_player_url_logLevel'] = array(
+    '#type' => 'textfield',
+    '#title' => t('logLevel'),
+    '#description' => t('Player URL Parameter &logLevel='),
+    '#default_value' => variable_get('usanetwork_player_url_logLevel', ''),
+  );
+
+  return system_settings_form($form);
 }
 
 /**
  * Submit callback for Sync Now button.
  */
 function usanetwork_mpx_video_sync_submit($form, &$form_state) {
-  $types = array_filter($form_state['input']['sync']['types']);
+  $types = array_filter($form_state['input']['types']);
   if (!empty($types)) {
     $batch = usanetwork_mpx_video_sync_batch($types);
     batch_set($batch);
@@ -226,17 +247,11 @@ function _usanetwork_mpx_watchwith_admin_form ($form, &$form_state) {
     '#type' => 'textfield',
     '#default_value' => variable_get('usanetwork_ww_access_key', 'SBSXJZHX4R5'),
   );
-  $form['usanetwork_ww_js_file'] = array(
+  $form['usanetwork_wwr_js_file'] = array(
     '#title' => t('WatchWith path to JS file'),
     '#type' => 'textfield',
-    '#default_value' => variable_get('usanetwork_ww_js_file', 'http://apps.watchwith.com/wng-usa/dev/wng-usa-boot.js'),
+    '#default_value' => variable_get('usanetwork_wwr_js_file', '//d243sour89mi5g.cloudfront.net/wng-usa/0.4.1/wng-usa-boot.js'),
   );
-  $form['usanetwork_ww_css_file'] = array(
-    '#title' => t('WatchWith path to CSS file'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('usanetwork_ww_css_file', 'http://apps.watchwith.com/wng-usa/dev/watchwith.css'),
-  );
-
 
   return system_settings_form($form);
 }

@@ -11,6 +11,8 @@ define('USANETWORK_MICROSITE_USA_PLAYER_QA', 'microsites_usa_player_endcard_qa')
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER_QA', 'microsite_usa_vod_noauth_qa');
 define('USANETWORK_MICROSITE_AUTH_PLAYER_QA', 'microsite_usa_vod_qa');
 
+define('USANETWORK_MICROSITE_RVPLAYER', 'qRe1IXDE_V0F');
+
 define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
 define('USANETWORK_MICROSITE_QUIZ_NODE_TYPE', 'quiz');
 define('USANETWORK_MICROSITE_GALLERY_NODE_TYPE', 'media_gallery');
@@ -234,21 +236,6 @@ function usanetwork_microsite_js_alter(&$javascript) {
     $theme_path = drupal_get_path('theme', 'aurora_usa');
     if(!usanetwork_microsite_process_setting_data('display_global_nav', 'bool')) {
       unset($javascript[libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js']);
-    }
-    unset($javascript[drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js']);
-  }
-}
-
-/**
- * Implements hook_library_alter().
- *
- * Remove tve-player-directive.js from page
- */
-function usanetwork_microsite_library_alter(&$libraries, $module) {
-  $node = menu_get_object();
-  if(!empty($node) && $node->type == USANETWORK_MICROSITE_NODE_TYPE) {
-    if ($module == 'tve_auth') {
-      unset($libraries['tve_auth']['js'][drupal_get_path('module', 'tve_auth') . '/js/directives/tve-player-directive.js']);
     }
   }
 }
@@ -490,9 +477,13 @@ function _usanetwork_microsite_include_default_js($node) {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.1.3.js');
   drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/jquery.easing.compatibility.js');
-//  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_global.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite_angular.js');
-  drupal_add_js(drupal_get_path('module', 'usanetwork_microsite') . '/js/microsite-tve-player-directive.js', array('scope' => 'footer', 'weight' => -1));
+//  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-share-config.js', array('scope' => 'header'));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-auth2.js', array('scope' => 'footer', 'weight' => -2));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-custom-services.js', array('scope' => 'footer', 'weight' => 0));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-endcard.js', array('scope' => 'footer', 'weight' => 1));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-login-button.js', array('scope' => 'footer', 'weight' => 2));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-logout-button.js', array('scope' => 'footer', 'weight' => 3));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-player-container.js', array('scope' => 'footer', 'weight' => 4));
 
   $node_wrapper = entity_metadata_wrapper('node', $node);
   $use_new_gallery = usanetwork_core_api_check_field($node, 'field_ms_use_new_gallery') ? $node_wrapper->field_ms_use_new_gallery->value() : FALSE;
@@ -502,7 +493,6 @@ function _usanetwork_microsite_include_default_js($node) {
       drupal_add_js($theme_path . '/javascripts/consumptionator-gallery.js');
     }
   }
-
 }
 
 /**
@@ -1426,32 +1416,24 @@ function _usanetwork_microsite_render_page_videos($section_wrapper, $node) {
  * Helper function for define correct video player
  */
 function _usanetwork_microsite_define_videoplayer($file) {
-  $full_episode = _usanetwork_microsite_define_full_episode($file);
-  $auth_episode = _usanetwork_microsite_define_auth($file);
+  $player_info = _usanetwork_tve_video_get_player_information($file);
+  $mpx_account_pid = $player_info['mpx_account_pid'];
+  $player_pid = $player_info['player_pid'];
 
-  if (_usanetwork_widget_get_environment() == 'prod') {
-    if ($full_episode) {
-      if ($auth_episode) {
-        $player_id = USANETWORK_MICROSITE_AUTH_PLAYER;
-      } else {
-        $player_id = USANETWORK_MICROSITE_NOAUTH_PLAYER;
-      }
-    } else {
-      $player_id = USANETWORK_MICROSITE_USA_PLAYER;
-    }
-  } else {
-    if ($full_episode) {
-      if ($auth_episode) {
-        $player_id = USANETWORK_MICROSITE_AUTH_PLAYER_QA;
-      } else {
-        $player_id = USANETWORK_MICROSITE_NOAUTH_PLAYER_QA;
-      }
-    } else {
-      $player_id = USANETWORK_MICROSITE_USA_PLAYER_QA;
-    }
+//  $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
+  $environment = _usanetwork_widget_get_environment();
+  if ($environment == 'prod') {
+    $pdk_controller_url = "http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=5.6.6";
+  } elseif ($environment == 'stage') {
+    $pdk_controller_url = "http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js?pdk=5.6.6";
+  }
+  else {
+    $pdk_controller_url = "http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=5.6.6";
   }
 
-  return $player_id;
+  drupal_add_js($pdk_controller_url, 'external');
+
+  return $player_pid;
 }
 
 /**
@@ -1486,8 +1468,7 @@ function _usanetwork_microsite_set_variables_for_video_description($file) {
   );
 }
 
-function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay = 'false', $filter) {
-  global $base_url;
+function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay = 'false', $mvpdid = NULL, $filter) {
   $microsite_theme_name = _usanetwork_microsite_get_current_theme_name($node);
 
   if(!empty($fid)) {
@@ -1499,19 +1480,16 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
   }
 
   //set video player
-  $player_id = _usanetwork_microsite_define_videoplayer($file);
-  $video = theme('pub_mpx_video', array(
+  $video = theme('usanetwork_tve_player_microsite', array(
     'file' => $file,
-    'pub_mpx_player_parameters' => array('autoPlay' => $autoplay, 'form' => 'html', 'nid' => $node->nid, 'filter' => $filter),
-    'player_id' => $player_id,
-    'pub_mpx_player_url' => $base_url . '/' . $microsite_theme_name . '/videos/' . _usanetwork_microsite_get_suggested_video_url($file),
+    'pub_mpx_player_parameters' => array('ec' => 'f', 'excludeSharing' => 'true','autoPlay' => $autoplay, 'MVPDid' => $mvpdid, 'filter' => $filter),
   ));
 
   //set image for not logged in user
   $auth_episode = _usanetwork_microsite_define_auth($file);
   $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
   if ($auth_episode) {
-    $renderable_image = theme('image', array('path' =>$image['#path']));
+    $renderable_image = theme_image(array('path' =>$image['#path']));
   }
 
   $preview_image = file_create_url($image['#path']);
@@ -1522,11 +1500,17 @@ function usanetwork_microsite_get_video_in_player($node, $fid = NULL, $autoplay 
   $video_desc = array_merge($video_desc, _usanetwork_microsite_set_status_and_h1_variables($file, $section_wrapper));
   $theme_registry_name = 'usanetwork_microsite_' . $microsite_theme_name . '_video_desc';
 
+  $mpx_guid = _usanetwork_get_field_item('file', $file, 'field_mpx_guid', 'value');
+  $episode_rating = _usanetwork_get_field_item('file', $file, 'field_mpx_vchip_rating', 'value');
+
   $result = array(
     'default_image' => isset($renderable_image) ? $renderable_image : '',
     'player' => $video,
     'description_template' => theme($theme_registry_name, $video_desc),
     'preview_image' => $preview_image,
+    'episode-title' => $file->filename,
+    'mpx-guid' => (!empty($mpx_guid)) ? $mpx_guid : NULL,
+    'episode-rating' => (!empty($episode_rating)) ? $episode_rating : NULL,
   );
   drupal_json_output($result);
   exit();

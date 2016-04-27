@@ -33,23 +33,21 @@
     },
 
     // player init bind
-    micrositePlayerBind: function () {
-      for (key in $pdk.controller.listeners) {
-        delete $pdk.controller.listeners[key];
-      }
-      $pdk.bindPlayerEvents();
-      tpController.addEventListener('OnYmalitemnewClick', Drupal.usanetwork_video_endcard.OnYmalitemnewClick);
+    micrositePlayerBind: function (options) {
+      USAN.ms_player.init(options);
     },
 
     //ajax request
-    micrositeGetVideo: function (url, initialPageLoad) {
+    micrositeGetVideo: function (url, initialPageLoad, isAuth) {
       initialPageLoad = initialPageLoad || 0;
       var videoContainer = $('#video-container'),
-          playerWrap = videoContainer.find('.video-player .file-video-mpx'),
+          playerThumbnail = videoContainer.find('.video-image'),
+          playerWrapSelector = '.file-video-mpx',
           playerDesc = videoContainer.find('.video-player-desc'),
           playerAuth = videoContainer.find('.video-auth-player-wrapper'),
           playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper'),
-          msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
+          msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false,
+          playerWrap;
 
       $.ajax({
         type: 'GET',
@@ -63,18 +61,27 @@
             preview_image = data.preview_image;
 
         if (playerAuth.hasClass('active-player')) {
-          playerNoAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
-          playerAuth.find('#player .loginButton').html(image);
-          playerAuth.find(playerWrap).html(player);
+          playerWrap = playerAuth.find(playerWrapSelector);
+          playerNoAuth.find(playerWrapSelector).html('<iframe class="base-iframe"></iframe>');
+          playerThumbnail.html(image);
+          playerWrap.html(player);
         }
         if (playerNoAuth.hasClass('active-player')) {
-          playerAuth.find(playerWrap).html('<iframe class="base-iframe"></iframe>');
-          playerNoAuth.find(playerWrap).html(player);
+          playerWrap = playerNoAuth.find(playerWrapSelector);
+          playerAuth.find(playerWrapSelector).html('<iframe class="base-iframe"></iframe>');
+          playerWrap.html(player);
         }
 
+        playerWrap.find('iframe').eq(0).off('load');
         playerDesc.html(description);
 
-        Drupal.behaviors.ms_videos.micrositePlayerBind();
+        Drupal.behaviors.ms_videos.micrositePlayerBind({
+          isAuth: isAuth,
+          playerWrap: playerWrap,
+          episodeRating: data['episode-rating'],
+          episodeTitle: data['episode-title'],
+          mpxGuid: data['mpx-guid']
+        });
         Drupal.behaviors.ms_videos.setVideoHeight();
 
 //usa_debug('======= micrositeGetVideo(' + url + ', ' + initialPageLoad + ')');
@@ -110,6 +117,7 @@
           ad_300x60_1 = $('#videos #ad_300x60_1'), // full episode video
           ad_300x250 = $('#videos #ad_300x250'), // not displayed 300x250
           ad_300x250_1 = $('#videos #ad_300x250_1'), // displayed 300x250
+          isAuth = false,
           filter,
           url,
           msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
@@ -125,14 +133,6 @@
       }
 
       //usa_debug('========= micrositeSetVideoPlayer(' + autoplay + ', ' + selector + ', ' + data + ', ' + initialPageLoad + ')\ndataFid: ' + dataFid);
-
-      if ($('#video-filter').length && $('#video-filter .filter-item.active').length) {
-        filter = $('#video-filter .filter-item.active').attr('data-filter-name');
-        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + filter;
-      }
-      else {
-        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay;
-      }
 
       if (videoContainer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
         videoContainer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
@@ -180,12 +180,22 @@
       Drupal.behaviors.ms_videos.micrositeSetPausePlayer();
 
       if ($('#thumbnail-list .item-list ul li.thumbnail.active > div').hasClass('tve-video-auth')) {
+        isAuth = true;
+        autoplay = false;
         videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
       }
       else {
         videoContainer.find('.video-auth-player-wrapper').removeClass('active-player').hide();
         videoContainer.find('.video-no-auth-player-wrapper').addClass('active-player').show();
+      }
+
+      if ($('#video-filter').length && $('#video-filter .filter-item.active').length) {
+        filter = $('#video-filter .filter-item.active').attr('data-filter-name');
+        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + tve.adobePass.currentProvider + '/' + filter;
+      }
+      else {
+        url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + tve.adobePass.currentProvider;
       }
 
       function checkAjaxUrl() {
@@ -205,7 +215,7 @@
       }
 
       if (checkAjaxUrl()) {
-        Drupal.behaviors.ms_videos.micrositeGetVideo(url, initialPageLoad);
+        Drupal.behaviors.ms_videos.micrositeGetVideo(url, initialPageLoad, isAuth);
       }
     },
 
@@ -553,7 +563,7 @@ usa_debug('clicked child item with categoryName: ' + categoryName + ', seasonNum
       });
 
       // tve help messaging click
-      $tve_toggler = $('.tve-help-link');
+      $tve_toggler = $('.tve-help-link.help-link');
       $tve_toggler.click(function () {
         if ($('.tve-help-link').hasClass('selected')) {
           $('.tve-help-link').removeClass('selected');

@@ -213,12 +213,6 @@ function usanetwork_microsite_dig_get_theme_includes() {
       drupal_get_path('module', 'usanetwork_quiz') . '/css/usanetwork_quiz.css'
     ),
     'js' => array(
-        //'http://player.theplatform.com/pdk/OyMl-B/tpPdkController.js',
-        //'http://pdk.theplatform.com/current/pdk/tpPdkController.js',
-        //'http://pdk.theplatform.com/5.5.6/pdk/tpPdkController.js',
-        //'http://pdk.theplatform.com/pdk/tpPdkController.js',
-//      $mpx_video_path . '/js/usanetwork_mpx_video_ajax.js',
-//      $site_theme_path . '/javascripts/jquery.carouFredSel.min.js',
       $default_theme_path . '/js/lazyLoad.js',
       $site_theme_path . '/js/microsite_global.js',
       $module_path . '/js/jquery.bxslider.min.js',

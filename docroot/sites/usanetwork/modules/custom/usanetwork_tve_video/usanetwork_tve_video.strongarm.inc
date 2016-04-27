@@ -127,7 +127,7 @@ function usanetwork_tve_video_strongarm() {
         'description' => array(
           'value' => 'To watch USA Live or Video Full Episodes:
 Adobe Flash is required to play our videos. You can get it at <a href="http://get.adobe.com/flashplayer/" title="adobe.com" target="_blank">adobe.com</a>.
-On an iOS or Android device, you need to to download our USA NOW app.
+On an iOS or Android device, you need to download our USA NOW app.
 <a href="http://www.usanetwork.com/app">See the full list of our Apps available for download here.</a>',
           'format' => 'plain_text',
         ),
@@ -294,7 +294,7 @@ On an iOS or Android device, you need to to download our USA NOW app.
         'description' => array(
           'value' => 'To watch USA Live or Video Full Episodes:
 Adobe Flash is required to play our videos. You can get it at <a href="http://get.adobe.com/flashplayer/" title="adobe.com" target="_blank">adobe.com</a>.
-On an iOS or Android device, you need to to download our USA NOW app.
+On an iOS or Android device, you need to download our USA NOW app.
 <a href="http://www.usanetwork.com/app">See the full list of our Apps available for download here.</a>',
           'format' => 'plain_text',
         ),

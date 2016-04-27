@@ -311,32 +311,41 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
     ),
   );
 
-  $pdk_version = variable_get('usanetwork_player_url_pdk', '');
+  $pdk = variable_get('usanetwork_player_url_pdk', '');
   $log_level = variable_get('usanetwork_player_url_logLevel', '');
-  if (!empty($pdk_version)) {
-    $player_tag['element']['#attributes']['data-pdk'] = $pdk_version;
+  if (!empty($pdk)) {
+    $data_pdk = $pdk;
   }
   if (!empty($log_level)) {
-    $player_tag['element']['#attributes']['data-logLevel'] = $log_level;
+    $data_logLevel = $log_level;
   }
 
   if (!empty($variables['attribute_parameters']['pdk'])) {
-    $player_tag['element']['#attributes']['data-pdk'] = $variables['attribute_parameters']['pdk'];
+    $data_pdk = $variables['attribute_parameters']['pdk'];
   }
   if (!empty($variables['attribute_parameters']['logLevel'])) {
-    $player_tag['element']['#attributes']['data-logLevel'] = $variables['attribute_parameters']['logLevel'];
+    $data_logLevel = $variables['attribute_parameters']['logLevel'];
+  }
+
+  $pdk_version = '5.6.6';
+  if (isset($data_pdk)) {
+    $player_tag['element']['#attributes']['data-pdk'] = $data_pdk;
+    $pdk_version = $data_pdk;
+  }
+  if (isset($data_pdk)) {
+    $player_tag['element']['#attributes']['data-logLevel'] = $data_logLevel;
   }
 
   // Normal flow.
   //$pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
   $environment = _usanetwork_widget_get_environment();
   if ($environment == 'prod') {
-    $pdk_controller_url = "http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=5.6.6";
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
   } elseif ($environment == 'stage') {
-    $pdk_controller_url = "http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js?pdk=5.6.6";
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js?pdk=' . $pdk_version;
   }
   else {
-    $pdk_controller_url = "http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=5.6.6";
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
   }
 
   drupal_add_js($pdk_controller_url, 'external');

@@ -1,0 +1,249 @@
+//
+// status visible for #tve-help-link-usa
+//
+
+.consumptionator-video-page, .page-videos-live{
+  #usa-tve-help-link {
+    display: block;
+  }
+}
+
+#usa-tve-help-link {
+  background: none;
+  display: none;
+  right: -17vw;
+  //right: get-vw(-172px, 1025);
+  height: 100%;
+  position: absolute;
+  top: 0;
+
+  @include breakpoint($bp-min-1901-width) {
+    right: -342px;
+  }
+  @include breakpoint($bp-768-width) {
+    //right: 0;
+  }
+
+  img {
+    opacity: 0;
+    -webkit-transition: opacity 0.4s ease-in;
+    -moz-transition: opacity 0.4s ease-in;
+    -o-transition: opacity 0.4s ease-in;
+    transition: opacity 0.4s ease-in;
+  }
+
+  &.signIn{
+    float: right;
+    position: relative;
+    .links-wrapper {
+      @include breakpoint($bp-768-width) {
+        height: 50px;
+        width: 50px;
+      }
+    }
+    .usaTveLogin {
+      border-left: 1px solid $consup-border;
+    }
+    @include breakpoint($bp-min-1901-width) {
+      width: 135px;
+    }
+  }
+
+  &.signOut{
+    float: right;
+    position: relative;
+    .login-icon {
+      &:before {
+        top: 50%;
+      }
+    }
+    .links-wrapper {
+      margin-right: 0;
+      max-width: inherit;
+      width: 17vw;
+      //width: get-vw(172px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        width: 323px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: 50px;
+        width: 125px;
+      }
+    }
+    .usaTveLogin {
+      float: left;
+      position: relative;
+      width: 9.87805vw;
+      //width: get-vw(172px, 1025) - get-vw(73px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        width: 187px;
+      }
+      @include breakpoint($bp-768-width) {
+        width: 75px;
+      }
+      &:before{
+        content: '';
+        display: block;
+        border-left: 1px solid #ffffff;
+        position: absolute;
+        height: 72%;
+        left: 0;
+        top: 14%;
+      }
+      a {
+        line-height: 0;
+        font-size: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        @include breakpoint($bp-1024-width) {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        img {
+          opacity: 1;
+        }
+      }
+    }
+    .usaTveLogout {
+      display: block;
+      @include breakpoint($bp-768-width) {
+        width: 50px;
+      }
+    }
+  }
+
+  a {
+    color: #ffffff;
+    line-height: normal;
+    outline: none;
+    font-size: 16px;
+    @include breakpoint($bp-768-width) {
+      font-size: 14px;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .links-wrapper {
+    height: 100%;
+    margin-top: 0;
+    width: get-vw(73px, 1025);
+    @include breakpoint($bp-min-1901-width) {
+      width: 100%;
+    }
+  }
+
+  .login-icon {
+    cursor: pointer;
+    &:before{
+      content: '\e61e';
+      display: block;
+      font-family: $ico-font;
+      font-size: 2.4vw;
+      //font-size: get-vw(25px, 1025);
+      left: 50%;
+      line-height: 1;
+      margin-left: get-vw(-25px, 1025) / 2;
+      margin-top: get-vw(-25px, 1025) / 2;
+      position: absolute;
+      top: 50%;
+    }
+    @include breakpoint($bp-min-1901-width) {
+      &:before {
+        font-size: 45.6px;
+        margin-left: -22.8px;
+        margin-top: -22.8px;
+      }
+    }
+    @include breakpoint($bp-768-width) {
+      &:before {
+        font-size: 16px;
+        margin-left: -8px;
+        margin-top: -8px;
+      }
+    }
+  }
+
+  .usaTveLogin {
+    box-sizing: border-box;
+    display: table;
+    cursor: pointer;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    &:hover {
+      background: $consup-border;
+    }
+    a {
+      display: table-cell;
+      height: 100%;
+      text-align: center;
+      vertical-align: middle;
+      width: auto;
+    }
+    .sign-in {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    img{
+      width: 100%;
+    }
+  }
+
+  .usaTveLogout {
+    border-left: 1px solid $consup-border;
+    box-sizing: border-box;
+    display: none;
+    cursor: pointer;
+    float: left;
+    height: 100%;
+    position: relative;
+    width: get-vw(73px, 1025);
+    @include breakpoint($bp-min-1901-width) {
+      width: 135px;
+    }
+    &:hover {
+      background: $consup-border;
+    }
+    .login-icon {
+      &:before{
+        top: 45%;
+        @include breakpoint($bp-768-width) {
+          margin-top: -10px;
+        }
+      }
+    }
+    .usaTveLogoutButton {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .sign-out-text {
+      display: block;
+      font-size: 0.75vw;
+      line-height: 0.3vw;
+      //font-size: get-vw(10px, 1025);
+      //line-height: get-vw(10px, 1025);
+      position: absolute;
+      text-align: center;
+      text-transform: uppercase;
+      top: calc(45% + #{get-vw(25px, 1025) / 2 + get-vw(10px, 1025) / 2});
+      width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 14.25px;
+        line-height: 5.7px;
+        top: 93.3px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: 8px;
+        line-height: 8px;
+        top: calc(45% + 14px);
+      }
+      @include breakpoint($bp-768-width) {
+        top: calc(45% + 10px);
+      }
+    }
+  }
+}

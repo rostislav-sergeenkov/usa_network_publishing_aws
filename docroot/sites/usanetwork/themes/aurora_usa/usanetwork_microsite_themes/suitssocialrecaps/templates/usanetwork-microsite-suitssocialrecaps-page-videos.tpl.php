@@ -52,56 +52,100 @@ $time = time();
 
 <div class="full-pane clearfix">
   <div class="left-pane">
-    <div id="video-container" data-video-url="<?php print $in_player['url']; ?>">
-      <div class="video-container-ajaxed" data-tve-player>
-        <div class="video-auth-player-wrapper file-video-mpx video usa-video featured-asset premium-asset">
+    <div id="video-container"
+         data-usa-tve-player-container
+         data-entitlement
+         data-video-url=""
+         data-ng-class="{'start': isPlayerStart,'play': isPlayerPlay, 'pause': isPlayerPause}">
+      <div class="video-container-ajaxed">
+        <div
+          class="video-auth-player-wrapper file-video-mpx video usa-video featured-asset premium-asset">
           <div class="tve-help">
-            <div class="tve-msg">
-              By signing in with your TV provider you get access to full<br/>episodes the day after they air!
+            <div class="tve-help-inner">
+              <div class="tve-msg">By signing in with your TV provider you get
+                access to full<br/>episodes the day after
+                they
+                air!
+              </div>
+              <div class="tve-download">To unlock full episodes you can select an
+                episode to sign in<br/>- or -<br/>DOWNLOAD
+                THE
+                USA NOW APP
+              </div>
+              <div class="tve-download-link">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img
+                    src="/sites/usanetwork/themes/aurora_usa/images/googleplay.png"
+                    alt=""/></a>
+                <a href="http://www.usanetwork.com/usanow"><img
+                    src="/sites/usanetwork/themes/aurora_usa/images/usanow.png"
+                    alt=""/></a>
+                <a
+                  href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8"><img
+                    src="/sites/usanetwork/themes/aurora_usa/images/appstore.png"
+                    alt=""/></a>
+              </div>
+              <div class="tve-close"><img
+                  src="/sites/usanetwork/themes/aurora_usa/images/close.png"
+                  alt=""/>Close
+              </div>
             </div>
-            <div class="tve-download">
-              To unlock full episodes you can select an episode to sign in<br/>- or -<br/>DOWNLOAD THE USA NOW APP
-            </div>
-            <div class="tve-download-link">
-              <a class="google-play-icon" href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher"><img
-                    src="/sites/usanetwork/themes/aurora_usa/images/googleplay.png" alt=""/></a>
-              <a class="usanow-icon" href="http://www.usanetwork.com/usanow"><img
-                    src="/sites/usanetwork/themes/aurora_usa/images/usanow.png" alt=""/></a>
-              <a class="appstore-icon" href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8"><img
-                    src="/sites/usanetwork/themes/aurora_usa/images/appstore.png" alt=""/></a>
-            </div>
-            <div class="tve-close"><img src="/sites/usanetwork/themes/aurora_usa/images/close.png" alt=""/>Close</div>
           </div>
-          <div class="video-player-wrapper" data-ng-if="!global.isAuthN">
-            <div class="locked-msg">
-              <span
-                  class="first-line"><?php print t('Please sign in with your TV provider to unlock this episode.'); ?></span>
+          <div class="video-player-wrapper section-auth"
+               data-ng-if="!removePlayerThumbnail">
+            <div class="player-thumbnail"
+                 data-ng-class="{'hide-section': !playerThumbnail}">
+              <div class="video-loading"
+                   data-ng-class="{'show-spinner': user.isAuthenticated}"></div>
+              <div class="video-image"></div>
             </div>
-            <div id="player">
-              <a href="javascript:void(0)" class="loginButton clean" data-ng-if="!global.isAuthN"
-                 data-ng-click="openLoginWindow()" data-ng-cloak="">
-              </a>
+            <div class="auth-msg-wrap" data-ng-if="!user.isAuthenticated">
+              <div class="locked-msg">
+            <span
+              class="first-line"><?php print t('Please sign in with your TV provider to unlock this episode.'); ?></span>
+              </div>
+              <div id="player">
+                <a href="javascript:void(0)" class="loginButton"
+                   data-ng-click="openLoginWindow()">
+                </a>
+              </div>
             </div>
           </div>
-          <div class="video-player video-player-wrapper" data-ng-show="global.isAuthN">
-            <div id="custom-play" class="custom-play"></div>
+          <div class="video-player video-player-wrapper section-player"
+               data-ng-class="{'show-section': !playerThumbnail}">
             <div
-                class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
+              class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
             </div>
           </div>
-          <div class="tve-help-link signIn">
-            <div class="tve-help-sign" data-tve-sign-in-button="" data-ng-if="!global.isAuthN">
-              <img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png" alt=""/>
+          <div class="tve-help-link help-link">
+            <div class="tve-help-sign" data-tve-sign-in-button
+                 data-ng-show="!user.isAuthenticated">
+              <img src="/sites/usanetwork/themes/aurora_usa/images/info_blue.png"
+                   alt=""/>
               Why do I have to sign in?
             </div>
           </div>
-          <div class="tve-help-link signOut not-live" data-ng-if="global.isAuthN">
-            <?php print drupal_render($in_player['links']); ?>
+          <div class="tve-help-link signOut">
+            <div class="item-list">
+              <ul class="tve-header-links inline">
+                <li class="first">
+                  <div class="tveLoginButton" data-usa-tve-login-button></div>
+                </li>
+                <li class="last">
+                  <ul class="item-list" data-ng-if="user.isAuthenticated">
+                    <li class="item actionLink">
+                      <div class="tveLogoutButton"
+                           data-usa-tve-logout-button></div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="video-no-auth-player-wrapper">
           <div class="video-player no-auth">
-            <div id="custom-play" class="custom-play"></div>
+            <div class="custom-play"></div>
             <div
                 class="ds-1col file file-mpx-video-1 file-video-mpx view-mode-inline_content view-mode-inline_content clearfix ">
               <iframe class="base-iframe"></iframe>

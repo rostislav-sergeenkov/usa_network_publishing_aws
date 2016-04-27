@@ -1437,6 +1437,7 @@
   padding: get-vw(16px, 1280) get-vw(16px, 1280) get-vw(21px, 1280) get-vw(16px, 1280);
   position: relative;
   width: 100%;
+  z-index: 1;
   @include breakpoint($bp-min-2500-width) {
     padding: 31.25px 31.25px 41.015625px 31.25px;
   }
@@ -1445,6 +1446,13 @@
   }
   @include breakpoint($bp-640-width) {
     padding: 0 0 get-vw(24px, 640) 0;
+  }
+  &.active {
+    .bottom-menu-block {
+      @include breakpoint($bp-768-width) {
+        display: block;
+      }
+    }
   }
   .top-menu-block {
     @include clear();
@@ -1652,24 +1660,55 @@
     @include breakpoint($bp-768-width) {
       border: none;
       display: none;
+      height: auto;
+      position: absolute;
     }
     .show-menu-tab {
       float: left;
       max-width: 80%!important;
+      @include breakpoint($bp-768-width) {
+        display: block;
+        float: none;
+        max-width: none!important;
+      }
       .show-menu {
         height: 100%;
+        @include breakpoint($bp-768-width) {
+          height: auto;
+        }
         & > li {
           height: 100%;
+          @include breakpoint($bp-768-width) {
+            background: $header-full-episodes-back;
+            border-bottom: 1px solid $header-new-menu-item-border;
+            float: none;
+            height: get-vw(70px, 768);
+            width: 100%;
+          }
+          &:last-child {
+            @include breakpoint($bp-768-width) {
+              border-bottom: none;
+            }
+          }
           a {
             font-size: get-vw(10px, 1024);
             height: 100%;
             letter-spacing: 1px;
             line-height: get-vw(60px, 1280);
+            outline: none;
             padding: 0 get-vw(29px, 1280);
             @include breakpoint($bp-min-2500-width) {
               font-size: 24.4px;
               line-height: 117.2px;
               padding: 0 56.64px;
+            }
+            @include breakpoint($bp-768-width) {
+              color: $header-new-menu-item-color;
+              font-size: get-vw(26px, 768);
+              line-height: get-vw(70px, 768);
+              padding: 0 get-vw(40px, 768);
+              text-align: left;
+              width: 100%;
             }
           }
         }
@@ -1681,9 +1720,23 @@
       float: right;
       height: 100%;
       max-width: 20%;
+      position: relative;
+      @include breakpoint($bp-768-width) {
+        background: black;
+        display: block;
+        float: none;
+        height: get-vw(86px, 768);
+        max-width: none;
+        text-align: center;
+        width: 100%;
+      }
       > div {
         display: table-cell;
         vertical-align: middle;
+        @include breakpoint($bp-768-width) {
+          display: inline-block;
+          height: 100%;
+        }
       }
       .hashtag {
         background: none;
@@ -1692,6 +1745,12 @@
         @include breakpoint($bp-min-2500-width) {
           font-size: 25px;
           padding-right: 22.4px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(23px, 768);
+          line-height: get-vw(86px, 768);
+          margin-right: get-vw(35px, 768);
+          padding-right: 0;
         }
         span {
           letter-spacing: 1px;
@@ -1712,6 +1771,10 @@
           @include breakpoint($bp-min-2500-width) {
             margin-right: 23.4375px;
           }
+          @include breakpoint($bp-768-width) {
+            line-height: get-vw(86px, 768);
+            margin-right: get-vw(25px, 768);
+          }
           &:before {
             color: inherit;
             display: block;
@@ -1720,6 +1783,9 @@
             font-size: get-vw(20px, 1280);
             @include breakpoint($bp-min-2500-width) {
               font-size: 39.1px;
+            }
+            @include breakpoint($bp-768-width) {
+              font-size: get-vw(40px, 768);
             }
           }
           &:hover {

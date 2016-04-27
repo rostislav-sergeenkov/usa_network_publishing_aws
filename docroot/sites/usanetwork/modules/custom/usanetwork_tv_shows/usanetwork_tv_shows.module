@@ -546,6 +546,24 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'plugins/templates/new-design-relevant-content-item',
     ),
+    'new_design_bcd_spot' => array(
+      'render element' => 'data',
+      'template' => 'plugins/templates/new-design-bcd-spot',
+    ),
+    'new_design_bcd_spot_item' => array(
+      'variables' => array(
+        'entity_id' => NULL,
+        'entity_type' => NULL,
+        'url' => NULL,
+        'title' => NULL,
+        'description' => NULL,
+        'violator' => NULL,
+        'type' => NULL,
+        'image_desktop' => NULL,
+        'image_mobile' => NULL,
+      ),
+      'template' => 'plugins/templates/new-design-bcd-spot-item',
+    ),
   );
 }
 
@@ -3897,7 +3915,6 @@ function usanetwork_tv_show_consumptionator_render_related_content_items_block($
 
   return '';
 }
-
 
 /**
  * Renders default item.

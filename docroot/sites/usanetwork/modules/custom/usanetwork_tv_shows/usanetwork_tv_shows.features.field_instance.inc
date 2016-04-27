@@ -2796,6 +2796,85 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tv_show-field_bcd_spot'
+  $field_instances['node-tv_show-field_bcd_spot'] = array(
+    'bundle' => 'tv_show',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => NULL,
+        'settings' => array(),
+        'type' => 'usanetwork_dynamic_entity_reference_label',
+        'weight' => 214,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_bcd_spot',
+    'label' => 'BCD-Spot',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'handler' => 'default',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'usanetwork_dynamic_entity_reference',
+      'settings' => array(),
+      'type' => 'usanetwork_dynamic_entity_reference_default',
+      'weight' => 27,
+    ),
+  );
+
   // Exported field_instance: 'node-tv_show-field_cast_description'
   $field_instances['node-tv_show-field_cast_description'] = array(
     'bundle' => 'tv_show',
@@ -17477,6 +17556,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
 
 
 ');
+  t('BCD-Spot');
   t('Base URL');
   t('Best Of Blocks');
   t('Block title');

@@ -79,6 +79,33 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_bcd_spot|node|tv_show|form';
+  $field_group->group_name = 'group_bcd_spot';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_new_design';
+  $field_group->data = array(
+    'label' => 'BCD-Spot',
+    'weight' => '28',
+    'children' => array(
+      0 => 'field_bcd_spot',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-bcd-spot field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_bcd_spot|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_cast_main|node|tv_show|form';
   $field_group->group_name = 'group_cast_main';
   $field_group->entity_type = 'node';

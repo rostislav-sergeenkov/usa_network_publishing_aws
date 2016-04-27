@@ -46,7 +46,7 @@ function new_design_tv_show_bcd_spot_get_content($node) {
   $bcd_spot_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_relevant_manual_content');
   $bcd_spot_data = array();
   foreach ($bcd_spot_content as $item) {
-    $data_item = usanetwork_tv_shows_get_promo_content_variables($item);
+    $data_item = usanetwork_promo_get_promo_content_variables($item);
     $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
     $additional_data = array(
     'image_desktop' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),

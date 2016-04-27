@@ -81,15 +81,21 @@ function new_design_relevant_content_get_latest_content($node, $conf) {
   $latest_items = _usanetwork_tv_shows_cache_get_limited_related_show_content($node, 0, $conf['items_quantity']);
   $latest_content = array();
   foreach ($latest_items as $item) {
+    $type = '';
+    if (!empty($item->type)) {
+      $type = $item->type;
+    }
+    elseif (!empty($item->bundle)) {
+      $type = $item->bundle;
+    }
     $latest_content[] = array(
       'entity_id' => $item->entity_id,
       'entity_type' => $item->entity_type,
       'url' => url($item->entity_type . '/' . $item->entity_id),
-      'title' => $item->title,
-      'promo_title' => $item->promo_title,
-      'promo_description' => $item->promo_description,
-      'promo_violator' => $item->promo_violator,
-      'type' => $item->type,
+      'title' => $item->promo_title,
+      'description' => $item->promo_description,
+      'violator' => $item->promo_violator,
+      'type' => $type,
       'image_desktop' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $item->raw_image_uri))),
       'image_mobile' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $item->raw_image_uri))),
     );
@@ -98,40 +104,18 @@ function new_design_relevant_content_get_latest_content($node, $conf) {
 }
 
 function new_design_relevant_content_get_manual_content($node, $conf) {
-  $relaevant_content = array();
-  if (!empty($node->field_relevant_manual_content)) {
-    $relaevant_content_field = field_get_items('node', $node, 'field_relevant_manual_content');
-    foreach ($relaevant_content_field as $relaevant_content_data) {
-      $entity = entity_load($relaevant_content_data['target_type'], array($relaevant_content_data['target_id']));
-      if (is_array($entity)) {
-        $entity = reset($entity);
-      }
-      $entity_wrapper = entity_metadata_wrapper($relaevant_content_data['target_type'], $entity);
-      $row_image_uri = usanetwork_core_api_get_content_image($relaevant_content_data['target_type'], $entity);
-
-      $promo_data = _usanetwork_promo_pull_entity_promo_details($entity, $entity_wrapper, $relaevant_content_data['target_type']);
-      if ($relaevant_content_data['target_type'] == 'node') {
-        $own_promo_lines = _usanetwork_promo_node_get_promo_lines($entity);
-      }
-      else {
-        $own_promo_lines = _usanetwork_promo_file_get_promo_lines($entity);
-      }
-      $title = !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
-        (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : '');
-      $description = !empty($promo_data['description']) ? $promo_data['description'] :
-        (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : '');
-      $relaevant_content[] = array(
-        'entity_id' => $relaevant_content_data['target_id'],
-        'entity_type' => $relaevant_content_data['target_type'],
-        'url' => url($relaevant_content_data['target_type'] . '/' . $relaevant_content_data['target_id']),
-        'title' => $title,
-        'description' => $description,
-        'violator' => usanetwork_core_api_check_field($entity, 'field_promo_violator_name') ? $entity_wrapper->field_promo_violator_name->value() : '',
-        'type' => $entity->type,
-        'image_desktop' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
-        'image_mobile' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
-      );
-    }
+  $relevant_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_relevant_manual_content');
+  $relevant_data = array();
+  foreach ($relevant_content as $item) {
+    $data_item = usanetwork_promo_get_promo_content_variables($item);
+    $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
+    $additional_data = array(
+      'image_desktop' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
+      'image_mobile' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
+    );
+    $data_item = $data_item + $additional_data;
+    $relevant_data[] = $data_item;
   }
-  return $relaevant_content;
+
+  return $relevant_data;
 }

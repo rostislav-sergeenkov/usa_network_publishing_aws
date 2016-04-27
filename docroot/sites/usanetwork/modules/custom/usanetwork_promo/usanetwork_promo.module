@@ -60,6 +60,39 @@ function usanetwork_promo_media_theplatform_mpx_import_media($op, $media_item, $
 }
 
 /**
+ * Retrieve promo content variables for providing them to template.
+ *
+ * @param $entity_item
+ * @return array
+ * @throws \Exception
+ */
+function usanetwork_promo_get_promo_content_variables($entity_item) {
+  $entity = $entity_item['entity'];
+  $entity_wrapper = entity_metadata_wrapper($entity_item['entity_type'], $entity);
+  $promo_data = _usanetwork_promo_pull_entity_promo_details($entity, $entity_wrapper, $entity_item['entity_type']);
+  if ($entity_item['entity_type'] == 'node') {
+    $own_promo_lines = _usanetwork_promo_node_get_promo_lines($entity);
+  }
+  else {
+    $own_promo_lines = _usanetwork_promo_file_get_promo_lines($entity);
+  }
+  $title = !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
+    (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : '');
+  $description = !empty($promo_data['description']) ? $promo_data['description'] :
+    (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : '');
+
+  return array(
+    'entity_id' => $entity_item['entity_id'],
+    'entity_type' => $entity_item['entity_type'],
+    'url' => url($entity_item['entity_type'] . '/' . $entity_item['entity_id']),
+    'title' => $title,
+    'description' => $description,
+    'violator' => usanetwork_core_api_check_field($entity, 'field_promo_violator_name') ? $entity_wrapper->field_promo_violator_name->value() : '',
+    'type' => $entity->type,
+  );
+}
+
+/**
  * Helper for getting associated content for promo
  * @param type $promo - promo id or object
  * @return array with type of associated content and content

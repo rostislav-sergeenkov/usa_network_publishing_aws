@@ -18,9 +18,8 @@
 <div><?php print (!empty($entity_type) ? $entity_type : ''); ?></div>
 <div><?php print (!empty($url) ? $url : ''); ?></div>
 <div><?php print (!empty($title) ? $title : ''); ?></div>
-<div><?php print (!empty($promo_title) ? $promo_title : ''); ?></div>
-<div><?php print (!empty($promo_description) ? $promo_description : ''); ?></div>
-<div><?php print (!empty($promo_violator) ? $promo_violator : ''); ?></div>
+<div><?php print (!empty($description) ? $description : ''); ?></div>
+<div><?php print (!empty($violator) ? $violator : ''); ?></div>
 <div><?php print (!empty($type) ? $type : ''); ?></div>
 <div><?php print (!empty($image_desktop) ? $image_desktop : ''); ?></div>
 <div><?php print (!empty($image_mobile) ? $image_mobile : ''); ?></div>

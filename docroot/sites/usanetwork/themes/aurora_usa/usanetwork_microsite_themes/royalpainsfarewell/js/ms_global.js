@@ -338,6 +338,7 @@
     },
 
     // ADS
+/*
     usa_refreshMicrositeAdsBySection: function (adContainer) {
       usa_debug('usa_refreshMicrositeAdsBySection(' + adContainer + ')');
       $(adContainer + ' iframe').attr('src', $(adContainer + ' iframe').attr('src'));
@@ -370,6 +371,19 @@
         else {
           Drupal.behaviors.ms_global.loadAds(selector, adslot);
         }
+      }
+    },
+*/
+    refreshAds: function(section) {
+      var mpsslot = jQuery('#' + section + ' .mps-slot').data('mps-slot');
+      if (mpsslot) {
+        mps.refreshAds(mpsslot);
+        usa_debug('mps.refreshAds(' + section + ', ' + mpsslot + ')');
+      }
+      else {
+        var adslot = (section == 'home') ? 'topbanner' : 'midbanner';
+        mps.cloneAd(jQuery('#' + section + ' .ad-leaderboard'), adslot)
+        usa_debug('mps.cloneAds(' + section + ', ' + adslot + ')');
       }
     },
 

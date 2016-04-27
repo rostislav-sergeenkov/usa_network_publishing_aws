@@ -720,6 +720,10 @@
     width: 100%;
     height: calc(80vw * 0.5625);
   }
+  #microsite .file-video-mpx.view-mode-inline_content iframe,
+  #microsite .featured-asset .video-player-wrapper iframe {
+    height: calc(80vw * 0.5625);
+  }
   #microsite .video-player-desc {
     width: 100%;
   }

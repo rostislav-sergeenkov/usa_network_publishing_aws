@@ -1,0 +1,1640 @@
+.tveModalBx h1,
+.tveModalBx h2,
+.tveModalBx h3,
+.tveModalBx h4,
+.tveModalBx form,
+.tveModalBx select,
+.tveModalBx fieldset,
+.tveModalBx ul,
+.tveModalBx li,
+.tveModalBx div,
+.tveModalBx section,
+.tveModalBx button {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.tveModalBx button {
+  background: none;
+}
+
+.tveModalBx ul {
+  list-style: none;
+}
+
+.tveModalBx {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tveModalBackdrop {
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+.tveModal {
+  position: absolute;
+  z-index: 2001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%
+}
+
+.tveModal.fade {
+  opacity: 0;
+  top: -100%
+}
+
+.tveModal.in {
+  opacity: 1;
+  top: 0
+}
+
+.tveModal .modalHeader {
+  position: relative;
+  z-index: 5;
+  min-height: 20px
+}
+
+.tveModal .modalHeader li {
+  display: inline-block
+}
+
+.tveModal .modalHeader h1 {
+  color: #fff;
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 20px
+}
+
+@media (min-width: 721px) {
+  .tveModal .modalHeader h1 {
+    font-size: 26px
+  }
+}
+
+.tveModal .modalContent {
+  min-height: 300px;
+  padding: 3%
+}
+
+.tveModal .modalFooter {
+  padding: 15px 9px
+}
+
+.tveModal .closeButton {
+  top: 0;
+  right: 0
+}
+
+.tveModal .moreDetails {
+  display: none
+}
+
+@media (min-width: 721px) {
+  .tveModal {
+    position: fixed;
+    left: 50%;
+    width: 90%;
+    height: auto;
+    margin-left: -45%
+  }
+
+  .tveModal.in {
+    top: 40px
+  }
+
+  .tveModal .modalHeader {
+    margin: 0 1.3%
+  }
+
+  .tveModal .modalContent {
+    padding: 25px
+  }
+
+  .tveModal .modalFooter {
+    height: auto;
+    min-height: 20px;
+    margin: 0 1.3%
+  }
+
+  .tveModal .closeButton {
+    top: -20px;
+    right: -20px
+  }
+
+  .tveModal .moreDetails {
+    display: inline-block;
+    float: right
+  }
+
+  .tveModal.small {
+    width: 500px;
+    margin-left: -250px
+  }
+}
+
+@media (min-width: 1025px) {
+  .tveModal {
+    width: 960px;
+    margin-left: -480px
+  }
+}
+
+.surf-xdm {
+  left: 50% !important;
+  margin-left: -230px !important
+}
+
+.tveModalBx {
+  position: fixed;
+  z-index: 2000;
+  top: 80px;
+  left: 50%;
+  width: 600px;
+  margin-left: -300px;
+  line-height: 1.1;
+  text-align: center
+}
+
+.tveModalBx .tveDropdown {
+  display: inline-block;
+  width: 352px;
+  height: 36px;
+  text-align: left;
+  vertical-align: middle
+}
+
+.tveModalBx .tveDropdown:first-child {
+  margin-right: 11px
+}
+
+.tveModalBx .tveDropdown .head {
+  height: 34px
+}
+
+.tveModalBx .tveDropdown .head .arrowWrap {
+  height: 34px;
+  width: 32px
+}
+
+.tveModalBx .tveDropdown .head .arrowWrap .arrow {
+  margin-left: 9px;
+  margin-top: 15px
+}
+
+.tveModalBx .tveDropdown .menu {
+  top: 38px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .tveDropdown {
+    width: 347px;
+    height: 43px
+  }
+
+  .tveModalBx .tveDropdown:first-child {
+    margin-right: 17px
+  }
+
+  .tveModalBx .tveDropdown .head {
+    height: 41px
+  }
+
+  .tveModalBx .tveDropdown .head .headLabel {
+    padding-right: 45px
+  }
+
+  .tveModalBx .tveDropdown .head .arrowWrap {
+    height: 41px;
+    width: 43px
+  }
+
+  .tveModalBx .tveDropdown .head .arrowWrap .arrow {
+    margin-left: 14px;
+    margin-top: 18px
+  }
+
+  .tveModalBx .tveDropdown .menu {
+    top: 45px
+  }
+}
+
+.tveModalBx .brandLogo {
+  position: absolute;
+  z-index: 5;
+  left: 12px;
+  top: 19px;
+  max-width: 70px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx {
+    width: 794px;
+    margin-left: -397px
+  }
+
+  .tveModalBx .brandLogo {
+    left: 16px;
+    top: 27px;
+    max-width: 85px
+  }
+}
+
+.tveModalBx .closeButton {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: -12px;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin: -12px 0 0 -12px;
+  cursor: pointer;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDozODUzMzA0QzE5MjA2ODExODIyQUZGQzQ4NEFCOTY1MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1QzhBNTIwMEE4RkExMUUzQjdGMTg2MEU3QzQ2MDE5NiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1QzhBNTFGRkE4RkExMUUzQjdGMTg2MEU3QzQ2MDE5NiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQ0ODc1RUExNEYyMDY4MTE4MDgzRDExMDkyQjFFQThBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjM4NTMzMDRDMTkyMDY4MTE4MjJBRkZDNDg0QUI5NjUwIi8+IDwvcmRmOkRlc2NyaXB0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);
+  background-size: 100% 100%
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .closeButton {
+    right: -17px;
+    width: 34px;
+    height: 34px;
+    margin: -17px 0 0 -17px
+  }
+}
+
+.tveModalBx .headers {
+  margin-bottom: 12px
+}
+
+.tveModalBx .headers .prefixHeader {
+  margin-bottom: 7px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .headers .prefixHeader {
+    margin-bottom: 11px
+  }
+}
+
+.tveModalBx.welcomeModal .modalContent {
+  padding: 24px 20px 27px
+}
+
+.tveModalBx.welcomeModal .divider {
+  width: 408px;
+  height: 2px;
+  margin: 10px auto 20px
+}
+
+.tveModalBx.welcomeModal .buttonBar {
+  font-size: 0;
+  text-align: center
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.welcomeModal .modalContent {
+    padding: 30px 20px 35px
+  }
+
+  .tveModalBx.welcomeModal .divider {
+    width: 536px;
+    margin: 15px auto 26px
+  }
+}
+
+.tveModalBx.welcomeModal .modalButton {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  width: 232px;
+  height: 115px;
+  padding: 12px 12px 0
+}
+
+.tveModalBx.welcomeModal .modalButton + .modalButton {
+  margin-left: 47px
+}
+
+.tveModalBx.welcomeModal .modalButton b {
+  display: block;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis
+}
+
+.tveModalBx.welcomeModal .modalButton span {
+  display: block
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.welcomeModal .modalButton {
+    width: 306px;
+    height: 150px
+  }
+
+  .tveModalBx.welcomeModal .modalButton + .modalButton {
+    margin-left: 62px
+  }
+
+  .tveModalBx.welcomeModal .modalButton b {
+    margin-bottom: 12px
+  }
+}
+
+.tveModalBx.loginModal .headers .prefixHeader {
+  margin-bottom: 12px
+}
+
+.tveModalBx.loginModal .modalContent {
+  padding-top: 22px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .modalContent {
+    padding-top: 38px
+  }
+}
+
+.tveModalBx.loginModal .sectionLoader {
+  min-height: 137px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .sectionLoader {
+    min-height: 178px
+  }
+}
+
+.tveModalBx.loginModal .mvpdPicker {
+  position: relative;
+  z-index: 0;
+  margin: 0 15px 0 43px;
+  padding: 8px 0 11px
+}
+
+.tveModalBx.loginModal .mvpdPicker.sectionLoader {
+  margin-left: 0;
+  margin-right: 0
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .mvpdPicker {
+    margin: 0 18px 0 58px;
+    padding-top: 15px
+  }
+
+  .tveModalBx.loginModal .mvpdPicker.sectionLoader {
+    margin-left: 0;
+    margin-right: 0
+  }
+}
+
+.tveModalBx.loginModal .mvpdPicker .pickerRibbon {
+  position: absolute;
+  z-index: -1;
+  left: -61px;
+  top: 52px;
+  display: inline-block;
+  width: 94px;
+  height: 27px;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  padding-top: 10px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  box-shadow: 0 8px 16px -5px #0ab6e8;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg)
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .mvpdPicker .pickerRibbon {
+    left: -80px;
+    top: 72px;
+    width: 124px;
+    height: 35px;
+    padding-top: 13px
+  }
+}
+
+.tveModalBx.loginModal .mvpdPicker.sectionLoader .wrap {
+  display: none
+}
+
+.tveModalBx.loginModal .mvpdPicker ul.centered {
+  margin: 29px 0
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .mvpdPicker ul.centered {
+    margin: 38px 0
+  }
+}
+
+.tveModalBx.loginModal .mvpdPicker .mvpd {
+  height: 56px;
+  margin-bottom: 3px;
+  width: 14.28571%;
+  clear: right;
+  float: left;
+  padding-right: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.tveModalBx.loginModal .mvpdPicker .mvpd:nth-child(7n) {
+  width: 14.28571%;
+  clear: right;
+  float: right;
+  padding-right: 2px
+}
+
+.tveModalBx.loginModal .mvpdPicker .mvpd a {
+  display: block;
+  height: 100%;
+  text-align: center
+}
+
+.tveModalBx.loginModal .mvpdPicker .mvpd img {
+  max-width: 80%;
+  vertical-align: middle
+}
+
+.tveModalBx.loginModal .mvpdPicker .mvpd .aligner {
+  display: inline-block;
+  width: 0;
+  line-height: 56px;
+  color: transparent
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .mvpdPicker .mvpd {
+    height: 72px;
+    margin-bottom: 4px
+  }
+
+  .tveModalBx.loginModal .mvpdPicker .mvpd .aligner {
+    line-height: 72px
+  }
+}
+
+.tveModalBx.loginModal .divider {
+  position: relative;
+  margin: 6px 0px 7px
+}
+
+.tveModalBx.loginModal .divider .div-line:first-child {
+  padding-left: 34px;
+  padding-right: 20px
+}
+
+.tveModalBx.loginModal .divider .div-line:last-child {
+  padding-left: 20px;
+  padding-right: 34px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .divider {
+    margin: 10px 0px 6px
+  }
+
+  .tveModalBx.loginModal .divider .div-line:first-child {
+    padding-left: 48px
+  }
+
+  .tveModalBx.loginModal .divider .div-line:last-child {
+    padding-right: 48px
+  }
+}
+
+.tveModalBx.loginModal .providerForm {
+  margin-bottom: 22px;
+  padding-top: 10px
+}
+
+.tveModalBx.loginModal .providerForm .select {
+  width: 210px;
+  height: 33px;
+  margin-right: 8px;
+  padding: 8px 4px;
+  border: 1px solid #aeaeae;
+  border-radius: 2px;
+  vertical-align: middle
+}
+
+.tveModalBx.loginModal .providerForm .submitButton {
+  height: 36px;
+  padding: 0 29px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .providerForm {
+    margin-bottom: 30px;
+    padding-top: 17px
+  }
+
+  .tveModalBx.loginModal .providerForm .select {
+    height: 40px
+  }
+
+  .tveModalBx.loginModal .providerForm .submitButton {
+    height: 43px;
+    padding: 0 51px
+  }
+}
+
+.tveModalBx.loginModal .helperLink {
+  margin-bottom: 8px
+}
+
+.tveModalBx.loginModal footer {
+  padding: 10px 0 9px
+}
+
+.tveModal {
+  -webkit-transition: top 400ms ease-out, opacity 250ms linear;
+  -moz-transition: top 400ms ease-out, opacity 250ms linear;
+  -o-transition: top 400ms ease-out, opacity 250ms linear;
+  transition: top 400ms ease-out, opacity 250ms linear
+}
+
+.tveModal ol {
+  list-style-type: decimal;
+  list-style-position: inside
+}
+
+.tveModal em {
+  font-style: italic
+}
+
+.tveModal.adobePassFrame .modalContent {
+  background-image: none;
+  filter: none;
+  background-color: #fff
+}
+
+.tveModal .modalHeader {
+  position: relative;
+  z-index: 5;
+  background: #1f1f1f;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #3b3b3b), color-stop(2%, #3b3b3b), color-stop(60%, #3b3b3b), color-stop(100%, #1f1f1f));
+  background-image: -webkit-linear-gradient(center top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  background-image: -moz-linear-gradient(center top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  background-image: -o-linear-gradient(center top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  background-image: linear-gradient(center top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%);
+  background: -ms-linear-gradient(center top, #3b3b3b 1%, #3b3b3b 2%, #3b3b3b 60%, #1f1f1f 100%)
+}
+
+.tveModal .modalContent {
+  display: block;
+  color: #4f4f4f;
+  background: #fff;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #cfcfcf));
+  background-image: -webkit-linear-gradient(top, #ffffff 0%, #cfcfcf 100%);
+  background-image: -moz-linear-gradient(top, #ffffff 0%, #cfcfcf 100%);
+  background-image: -o-linear-gradient(top, #ffffff 0%, #cfcfcf 100%);
+  background-image: linear-gradient(top, #ffffff 0%, #cfcfcf 100%);
+  background: -ms-linear-gradient(top, #fff 0%, #cfcfcf 100%)
+}
+
+.tveModal .modalContent h3 {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 28px;
+  margin-bottom: 15px
+}
+
+.tveModal .modalContent p {
+  font-size: 13px;
+  margin-bottom: 15px
+}
+
+.tveModal .modalFooter {
+  color: #fff;
+  font-family: "Proxima N W01 Smbd", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  background: #3b3b3b;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #1f1f1f), color-stop(40%, #3b3b3b), color-stop(100%, #3b3b3b));
+  background-image: -webkit-linear-gradient(center top, #1f1f1f 1%, #3b3b3b 40%, #3b3b3b 100%);
+  background-image: -moz-linear-gradient(center top, #1f1f1f 1%, #3b3b3b 40%, #3b3b3b 100%);
+  background-image: -o-linear-gradient(center top, #1f1f1f 1%, #3b3b3b 40%, #3b3b3b 100%);
+  background-image: linear-gradient(center top, #1f1f1f 1%, #3b3b3b 40%, #3b3b3b 100%);
+  background: -ms-linear-gradient(center top, #1f1f1f 1%, #3b3b3b 40%, #3b3b3b 100%)
+}
+
+.tveModal .modalFooter .link {
+  font-size: 14px
+}
+
+.tveModal .modalFooter label {
+  cursor: pointer
+}
+
+.tveModal .closeButton {
+  position: absolute;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: url("../images/sprite/buttons/close-modal.png") no-repeat 50% 50%
+}
+
+.tveModal .richContent .mainHeading {
+  margin-bottom: 12px;
+  font-size: 20px
+}
+
+.tveModal .richContent .subHeading {
+  margin-bottom: 8px;
+  font-size: 18px
+}
+
+.tveModal .richContent .smallHeading {
+  font-size: 16px
+}
+
+.tveModal .richContent .paragraph {
+  font-size: 14px
+}
+
+.tveModal .richContent ul {
+  padding-top: 12px;
+  padding-left: 20px;
+  font-size: 14px
+}
+
+.tveModal .richContent ul li {
+  margin-bottom: 2%
+}
+
+@media (min-width: 721px) {
+  .tveModal .richContent .mainHeading {
+    font-size: 30px
+  }
+
+  .tveModal .richContent .subHeading {
+    font-size: 22px
+  }
+
+  .tveModal .richContent .smallHeading {
+    font-size: 18px
+  }
+
+  .tveModal .richContent .paragraph {
+    font-size: 16px
+  }
+
+  .tveModal .richContent ul {
+    font-size: 16px
+  }
+}
+
+.tveModal .moreDetails {
+  font-size: 12px
+}
+
+.tveModal .moreDetails:after {
+  content: '>'
+}
+
+.modal-backdrop {
+  -webkit-transition: opacity 250ms linear;
+  -moz-transition: opacity 250ms linear;
+  -o-transition: opacity 250ms linear;
+  transition: opacity 250ms linear;
+  background-color: rgba(0, 0, 0, 0.6)
+}
+
+.modal-backdrop.fade {
+  opacity: 0
+}
+
+.modal-backdrop.in {
+  opacity: 1
+}
+
+.tveModalBx {
+  opacity: 0;
+  -webkit-transition: opacity 500ms ease-out;
+  -moz-transition: opacity 500ms ease-out;
+  -o-transition: opacity 500ms ease-out;
+  transition: opacity 500ms ease-out;
+  box-shadow: 0px 2px 6px 1px rgba(0, 0, 0, 0.67)
+}
+
+.tveModalBx.adobePassFrame .modalContent {
+  background: #ffffff
+}
+
+.tveModalBx.in {
+  opacity: 1
+}
+
+.tveModalBx:before, .tveModalBx:after {
+  content: '';
+  display: block;
+  height: 11px;
+  margin: 0 1px;
+  background: #363636
+}
+
+.tveModalBx:after {
+  height: 10px;
+  border-top: 1px solid transparent
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx:before {
+    height: 15px
+  }
+
+  .tveModalBx:after {
+    height: 14px
+  }
+}
+
+.tveModalBx .modalContent {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #757575 transparent;
+  background-image: -ms-linear-gradient(#dedede 0%, #e5e5e5 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dedede), color-stop(100%, #e5e5e5));
+  background-image: -webkit-linear-gradient(top, #dedede 0%, #e5e5e5 100%);
+  background-image: -moz-linear-gradient(top, #dedede 0%, #e5e5e5 100%);
+  background-image: -o-linear-gradient(top, #dedede 0%, #e5e5e5 100%);
+  background-image: linear-gradient(top, #dedede 0%, #e5e5e5 100%)
+}
+
+.no-cssgradients .tveModalBx .modalContent {
+  background-color: #e5e5e5
+}
+
+.tveModalBx .headers {
+  line-height: 1.1
+}
+
+.tveModalBx .headers .regularHeading {
+  color: #373737;
+  font-family: "Proxima N W01 Smbd", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  text-shadow: 1px 1px 0 #fff;
+  text-transform: none
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .headers .regularHeading {
+    font-size: 26px
+  }
+}
+
+.tveModalBx .headers .defaultHeading {
+  color: #631d76;
+  font-family: "Proxima N W01 Smbd", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  text-shadow: 1px 1px 0 #fff;
+  text-transform: uppercase
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .headers .defaultHeading {
+    font-size: 42px
+  }
+}
+
+.tveModalBx .headers .primaryHeading {
+  color: #363636;
+  font-family: "Proxima N W01 Smbd", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 92px;
+  text-shadow: none;
+  text-transform: uppercase
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .headers .primaryHeading {
+    font-size: 122px
+  }
+}
+
+.tveModalBx .headers .hugeHeading {
+  color: #363636;
+  font-family: "Proxima N W01 Smbd", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 118px;
+  text-shadow: none;
+  text-transform: uppercase;
+  line-height: 1
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .headers .hugeHeading {
+    font-size: 154px
+  }
+}
+
+.tveModalBx.welcomeModal .divider {
+  height: 2px;
+  border-top: none;
+  background: #bfbfbf
+}
+
+.tveModalBx.welcomeModal .modalButton {
+  box-shadow: 0 12px 16px -8px rgba(2, 2, 2, 0.4);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background: #888
+}
+
+.tveModalBx.welcomeModal .modalButton:active {
+  position: relative;
+  top: 1px;
+  box-shadow: 0 10px 16px -8px rgba(2, 2, 2, 0.4)
+}
+
+.tveModalBx.welcomeModal .modalButton b {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 56px;
+  line-height: 1em;
+  text-transform: uppercase;
+  text-shadow: none
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.welcomeModal .modalButton b {
+    font-size: 74px
+  }
+}
+
+.tveModalBx.welcomeModal .modalButton span {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1em;
+  text-transform: none
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.welcomeModal .modalButton span {
+    font-size: 22px;
+    line-height: 1em
+  }
+}
+
+.tveModalBx.welcomeModal .modalButton.primaryModalButton {
+  background: #0ab6e8
+}
+
+.tveModalBx.loginModal .headers .mainHeader {
+  color: #373737;
+  font-family: "Proxima N W01 Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  text-shadow: 1px 1px 0 #fff;
+  text-transform: uppercase
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .headers .mainHeader {
+    font-size: 30px
+  }
+}
+
+.tveModalBx.loginModal .headers .mainHeader .highlighted {
+  color: #f8981d
+}
+
+.tveModalBx.loginModal .mvpdPicker .pickerRibbon {
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #0ab6e8;
+  color: #fff;
+  font-family: "Proxima N W01 Smbd", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  text-shadow: none
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .mvpdPicker .pickerRibbon {
+    font-size: 12px
+  }
+}
+
+.tveModalBx.loginModal .mvpdPicker .mvpd a {
+  border: 1px solid #e0e0e0;
+  box-shadow: 5px 5px 6px -2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  background-color: #fff
+}
+
+@media (min-width: 768px) {
+  .tveModalBx.loginModal .mvpdPicker .mvpd a .mvpdTitle {
+    display: none;
+  }
+}
+
+.tveModalBx.loginModal .divider {
+  display: table;
+  width: 100%;
+  color: #4e4e4e;
+  font-family: "Proxima N W01 Smbd", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  text-shadow: none;
+  text-transform: none
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .divider {
+    font-size: 23px
+  }
+}
+
+.tveModalBx.loginModal .divider > div {
+  display: table-row
+}
+
+.tveModalBx.loginModal .divider h4 {
+  display: table-cell;
+  white-space: nowrap
+}
+
+.tveModalBx.loginModal .divider .div-line {
+  display: table-cell;
+  width: 50%;
+  vertical-align: middle
+}
+
+.tveModalBx.loginModal .divider .div-line div {
+  height: 2px;
+  background: #ababab;
+  width: 100%
+}
+
+.tveModalBx.loginModal .providerForm .select {
+  color: #000;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  background: #fff
+}
+
+.tveModalBx.loginModal .providerForm .select[disabled] {
+  color: gray
+}
+
+.tveModalBx.loginModal .providerForm .submitButton {
+  box-shadow: 0 15px 10px -8px rgba(0, 0, 0, 0.4);
+  font-family: "Proxima N W01 Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  vertical-align: middle;
+  background: #0ab6e8;
+  cursor: pointer
+}
+
+.tveModalBx.loginModal .providerForm .submitButton[disabled] {
+  box-shadow: none;
+  cursor: default;
+  background: #888
+}
+
+.tveModalBx.loginModal .providerForm .submitButton.active:active {
+  position: relative;
+  top: 1px;
+  box-shadow: none
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .providerForm .select {
+    font-size: 17px
+  }
+
+  .tveModalBx.loginModal .providerForm .submitButton {
+    font-size: 24px
+  }
+}
+
+.tveModalBx.loginModal .helperLink a {
+  border-bottom: 1px solid transparent;
+  cursor: default;
+  color: #0ab6e8;
+  font-family: "Proxima N W01 Smbd", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .helperLink a {
+    font-size: 18px
+  }
+}
+
+.tveModalBx.loginModal .helperLink a.link {
+  padding-bottom: 1px;
+  border-bottom-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  font-style: normal
+}
+
+.tveModalBx.loginModal .helperLink a.link:hover {
+  border-bottom-color: transparent
+}
+
+.tveModalBx.loginModal footer {
+  color: #000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal footer {
+    font-size: 12px
+  }
+}
+
+.tveModalBx .tveDropdown .head {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #191919
+}
+
+.tveModalBx .tveDropdown .menu .jspScrollable {
+  box-shadow: none
+}
+
+.tveModalBx .tveDropdown .menu .jspScrollable .jspPane {
+  box-shadow: none
+}
+
+.tveModalBx .tveDropdown .menu li a {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000
+}
+
+.tveModalBx .tveDropdown .menu li:hover a {
+  color: #fff;
+  background-color: #0ab6e8
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .tveDropdown .head {
+    line-height: 40px;
+    font-size: 18px
+  }
+
+  .tveModalBx .tveDropdown .menu li a {
+    font-size: 15px
+  }
+
+  .tveModalBx .tveDropdown .menu li:hover a {
+    color: #fff;
+    background-color: #0ab6e8
+  }
+}
+
+.tveModalBx {
+  top: 95px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx {
+    top: 84px;
+    width: 791px;
+    margin-left: -395px
+  }
+}
+
+.tveModalBx .brandLogo {
+  left: 10px;
+  top: 20px;
+  max-width: 75px;
+  max-height: 31px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .brandLogo {
+    left: 14px;
+    top: 29px;
+    max-width: 92px;
+    max-height: 38px
+  }
+}
+
+.tveModalBx.loginModal .headers {
+  margin-bottom: 0
+}
+
+.tveModalBx.loginModal .headers .prefixHeader {
+  padding-top: 11px;
+  margin-bottom: 5px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .headers .prefixHeader {
+    padding-top: 8px;
+    margin-bottom: 8px
+  }
+}
+
+.tveModalBx.loginModal .mvpdPicker {
+  padding-top: 15px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .mvpdPicker {
+    margin: 0 18px 0 56px
+  }
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .mvpdPicker .mvpd {
+    height: 74px
+  }
+}
+
+.tveModalBx.loginModal .mvpdPicker .pickerRibbon {
+  top: 58px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .mvpdPicker .pickerRibbon {
+    top: 72px
+  }
+}
+
+.tveModalBx.loginModal .divider {
+  margin: 12px 0px 12px
+}
+
+.tveModalBx.loginModal .divider .div-line:first-child {
+  padding-left: 19px;
+  padding-right: 20px
+}
+
+.tveModalBx.loginModal .divider .div-line:last-child {
+  padding-left: 20px;
+  padding-right: 19px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .divider {
+    margin: 13px 0px 12px
+  }
+
+  .tveModalBx.loginModal .divider .div-line:first-child {
+    padding-left: 46px
+  }
+
+  .tveModalBx.loginModal .divider .div-line:last-child {
+    padding-right: 46px
+  }
+}
+
+.tveModalBx.loginModal .tveDropdown {
+  width: 339px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .tveDropdown {
+    width: 352px
+  }
+}
+
+.tveModalBx.loginModal .providerForm {
+  padding-top: 14px;
+  margin-bottom: 21px
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx.loginModal .providerForm {
+    padding-top: 2px;
+    margin-bottom: 46px
+  }
+
+  .tveModalBx.loginModal .providerForm .submitButton {
+    height: 43px;
+    padding: 0 45px
+  }
+}
+
+.tveModalBx.loginModal .helperLink {
+  margin-bottom: 5px
+}
+
+.tveModalBx.loginModal footer {
+  padding: 0 0 10px
+}
+
+.tveModalBx .fullMvpd li:first-child {
+  border-top: 2px solid #6e6e6e;
+}
+
+.tveModalBx .fullMvpd {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .tveModalBx .fullMvpd {
+    display: none;
+  }
+}
+
+.tveModalBx.loginModal .providerForm fieldset {
+  background: none;
+}
+
+.tveDropdown {
+  position: relative;
+  z-index: 0;
+  padding: 1px;
+  background-image: -ms-linear-gradient(#cacaca 0%, #aeaeae 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cacaca), color-stop(100%, #aeaeae));
+  background-image: -webkit-linear-gradient(top, #cacaca 0%, #aeaeae 100%);
+  background-image: -moz-linear-gradient(top, #cacaca 0%, #aeaeae 100%);
+  background-image: -o-linear-gradient(top, #cacaca 0%, #aeaeae 100%);
+  background-image: linear-gradient(top, #cacaca 0%, #aeaeae 100%);
+  border-radius: 3px;
+  height: 34px
+}
+
+.no-cssgradients .tveDropdown {
+  background-color: #aeaeae
+}
+
+.tveDropdown:hover, .tveDropdown.opened {
+  background: #aeaeae
+}
+
+.tveDropdown:hover .head .arrowWrap .arrow, .tveDropdown.opened .head .arrowWrap .arrow {
+  border-color: #404040 transparent transparent transparent;
+  -webkit-box-shadow: 0 -1px 0 0 #272727;
+  -moz-box-shadow: 0 -1px 0 0 #272727;
+  box-shadow: 0 -1px 0 0 #272727
+}
+
+.tveDropdown.opened .head {
+  background: linear-gradient(#e7e7e7 0%, #ffffff 100%);
+  color: #191919
+}
+
+.tveDropdown.opened .head .arrowWrap {
+  background-image: -ms-linear-gradient(#dbdbdb 0%, #fcfcfc 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dbdbdb), color-stop(100%, #fcfcfc));
+  background-image: -webkit-linear-gradient(top, #dbdbdb 0%, #fcfcfc 100%);
+  background-image: -moz-linear-gradient(top, #dbdbdb 0%, #fcfcfc 100%);
+  background-image: -o-linear-gradient(top, #dbdbdb 0%, #fcfcfc 100%);
+  background-image: linear-gradient(top, #dbdbdb 0%, #fcfcfc 100%)
+}
+
+.no-cssgradients .tveDropdown.opened .head .arrowWrap {
+  background-color: #fcfcfc
+}
+
+.tveDropdown .head {
+  height: 32px;
+  line-height: 32px;
+  color: #6b6b6b;
+  font-family: "Syfy Medium Regular", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  border-top: 1px solid #ffffff;
+  border-radius: 3px;
+  display: inline-block;
+  width: 100%;
+  text-shadow: 0 1px 0 #ffffff;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f6f6f6), color-stop(100%, #fafafa));
+  background-image: -webkit-linear-gradient(#f6f6f6 0%, #fafafa 100%);
+  background-image: -moz-linear-gradient(#f6f6f6 0%, #fafafa 100%);
+  background-image: -o-linear-gradient(#f6f6f6 0%, #fafafa 100%);
+  background-image: linear-gradient(#f6f6f6 0%, #fafafa 100%)
+}
+
+.tveDropdown .head .headLabel {
+  display: inline-block;
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  padding: 0 46px 0 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis
+}
+
+.tveDropdown .head:hover {
+  color: #191919
+}
+
+.tveDropdown .head .arrowWrap {
+  float: right;
+  display: inline-block;
+  width: 31px;
+  height: 32px;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-radius: 0 3px 3px 0;
+  -webkit-box-shadow: -1px 0 0 0 #c9c9c9;
+  -moz-box-shadow: -1px 0 0 0 #c9c9c9;
+  box-shadow: -1px 0 0 0 #c9c9c9;
+  background-image: -ms-linear-gradient(#e9e9e9 0%, #dcdcdc 100%);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e9e9e9), color-stop(100%, #dcdcdc));
+  background-image: -webkit-linear-gradient(top, #e9e9e9 0%, #dcdcdc 100%);
+  background-image: -moz-linear-gradient(top, #e9e9e9 0%, #dcdcdc 100%);
+  background-image: -o-linear-gradient(top, #e9e9e9 0%, #dcdcdc 100%);
+  background-image: linear-gradient(top, #e9e9e9 0%, #dcdcdc 100%)
+}
+
+.no-cssgradients .tveDropdown .head .arrowWrap {
+  background-color: #dcdcdc
+}
+
+.tveDropdown .head .arrowWrap .arrow {
+  margin-left: 8px;
+  margin-top: 13px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 7px 7px 0 7px;
+  border-color: #7b7b7b transparent transparent transparent;
+  -webkit-box-shadow: 0 -1px 0 0 #4e4e4e;
+  -moz-box-shadow: 0 -1px 0 0 #4e4e4e;
+  box-shadow: 0 -1px 0 0 #4e4e4e
+}
+
+.tveDropdown .menu {
+  clear: both;
+  position: absolute;
+  z-index: 99;
+  top: 36px;
+  left: 0;
+  right: 0;
+  display: none;
+  padding: 6px 0px 6px 7px;
+  border: 1px solid #c3c3c3;
+  background-color: #ffffff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.71);
+  -moz-box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.71);
+  box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.71)
+}
+
+.tveDropdown .menu li a {
+  position: relative;
+  z-index: -1;
+  display: block;
+  padding: 5px 12px 4px 8px;
+  text-overflow: ellipsis;
+  color: #42145f;
+  font-family: "Syfy Medium Regular", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  text-decoration: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  margin-right: 6px
+}
+
+/*.tveDropdown .menu li.selected a {
+  color: #727272
+}*/
+
+/*.tveDropdown .menu li.selected:hover a {
+  color: #ffffff
+}*/
+
+.tveDropdown .menu li:hover {
+  cursor: pointer
+}
+
+.tveDropdown .menu li:hover a,
+.tveDropdown .menu li.selected a {
+  color: #ffffff;
+  background-color: #561c7a;
+}
+
+.tveDropdown .menu .jspScrollable {
+  -webkit-box-shadow: 0 -20px 18px -10px #ffffff inset;
+  -moz-box-shadow: 0 -20px 18px -10px #ffffff inset;
+  box-shadow: 0 -20px 18px -10px #ffffff inset
+}
+
+.tveDropdown .menu .jspScrollable li a {
+  margin-right: 11px
+}
+
+.tveDropdown.small {
+  text-align: center
+}
+
+.tveDropdown.small .head {
+  height: 30px;
+  padding: 5px;
+  font-size: 16px
+}
+
+.tveDropdown.small .menu {
+  top: 30px
+}
+
+.tveDropdown .jspContainer {
+  position: relative;
+  overflow: hidden
+}
+
+.tveDropdown .jspPane {
+  position: absolute
+}
+
+.tveDropdown .jspVerticalBar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 5px
+}
+
+.tveDropdown .jspTrack {
+  position: relative;
+  width: 14px;
+  padding: 0 3px;
+  background-color: #e8e8e8
+}
+
+.tveDropdown .jspCapTop {
+  background: #e8e8e8;
+  border-radius: 11px 11px 0 0;
+  height: 6px;
+  margin-bottom: -2px
+}
+
+.tveDropdown .jspCapBottom {
+  margin-top: -2px;
+  background: #e8e8e8;
+  border-radius: 0 0 11px 11px;
+  height: 6px
+}
+
+.tveDropdown .jspDrag {
+  position: relative;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  background-color: #b8b8b8;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -o-border-radius: 9px;
+  border-radius: 9px
+}
+
+.tveDropdown .jspHorizontalBar .jspTrack, .tveDropdown .jspHorizontalBar .jspDrag {
+  float: left;
+  height: 100%
+}
+
+@media (min-width: 721px) {
+  .tveDropdown {
+    margin-right: 28px
+  }
+
+  .tveDropdown:first-child {
+    margin-right: 27px
+  }
+}
+
+@media (min-width: 1025px) {
+  .tveDropdown {
+    width: 347px;
+    height: 43px
+  }
+
+  .tveDropdown:first-child {
+    margin-right: 17px
+  }
+
+  .tveDropdown .head {
+    height: 41px
+  }
+
+  .tveDropdown .head .headLabel {
+    top: -1px;
+    padding-right: 45px
+  }
+
+  .tveDropdown .head .arrowWrap {
+    height: 41px;
+    width: 43px
+  }
+
+  .tveDropdown .head .arrowWrap .arrow {
+    margin-left: 14px;
+    margin-top: 18px
+  }
+
+  .tveDropdown .menu {
+    top: 45px
+  }
+}
+
+.tveModalBx .tveDropdown .head {
+  font-family: "Helvetica Neue Roman", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #191919
+}
+
+.tveModalBx .tveDropdown .menu .jspScrollable {
+  box-shadow: none
+}
+
+.tveModalBx .tveDropdown .menu .jspScrollable .jspPane {
+  box-shadow: none
+}
+
+.tveModalBx .tveDropdown .menu li a {
+  font-family: "Helvetica Neue Roman", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.tveModalBx .tveDropdown .menu li.selected:hover a {
+  color: #ffffff
+}
+
+.tveModalBx .tveDropdown .menu li:hover a {
+  color: #ffffff;
+  background-color: #561c7a
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .tveDropdown .head {
+    line-height: 40px;
+    font-size: 18px
+  }
+
+  .tveModalBx .tveDropdown .menu li a {
+    font-size: 15px
+  }
+
+  .tveModalBx .tveDropdown .menu li:hover a {
+    color: #ffffff;
+    /*background-color: #561c7a*/
+  }
+
+  .tveModalBx .tveDropdown .menu li .highlight {
+    color: #ffffff;
+    /*background-color: #561c7a*/
+  }
+}
+
+.tveModalBx .tveMvpdDropdown .head .headLabel {
+  padding-left: 3px
+}
+
+.tveModalBx .tveMvpdDropdown .head .headLabel input {
+  width: 100%;
+  height: 32px;
+  padding: 0 0 0 12px;
+  font-size: 15px;
+  font-family: inherit;
+  background: none repeat scroll 0 0 transparent;
+  border: 0px solid;
+  outline: none;
+}
+
+@media (min-width: 1025px) {
+  .tveModalBx .tveMvpdDropdown .head .headLabel input {
+    height: 37px
+  }
+}

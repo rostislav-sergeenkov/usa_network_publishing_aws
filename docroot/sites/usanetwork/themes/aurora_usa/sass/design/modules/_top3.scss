@@ -275,8 +275,52 @@
         width: get-vw(70.4px, 1024);
       }
     }
+    &:not(.info-hide){
+      & ~ #slider-container {
+        #drag-icon-block {
+          &.full-changed {
+            bottom: get-vw(180px, 1901);
+            @include breakpoint($bp-min-1901-width) {
+              bottom: 180px;
+            }
+            @include breakpoint($bp-1024-width) {
+              bottom: get-vw(137.76px, 1024);
+            }
+          }
+        }
+      }
+    }
     &.inactive {
       display: none;
+      & + #cc-button.active {
+        & + #slider-container {
+          #drop-area {
+            bottom: get-vw(-120px, 1901);
+            @include breakpoint($bp-min-1901-width) {
+              bottom: -120px;
+            }
+            @include breakpoint($bp-1024-width) {
+              bottom: get-vw(-91.82px, 1024);
+            }
+          }
+        }
+      }
+      &:not(.info-hide){
+        & + #cc-button.active {
+          & + #slider-container {
+            #drag-icon-block {
+              bottom: get-vw(68px, 1901);
+              opacity: 0.3;
+              @include breakpoint($bp-min-1901-width) {
+                bottom: 68px;
+              }
+              @include breakpoint($bp-1024-width) {
+                bottom: get-vw(52.04px, 1024);
+              }
+            }
+          }
+        }
+      }
     }
     &.show {
       display: block;
@@ -836,6 +880,49 @@
     &:before {
       content: '\e623';
     }
+  }
+  #cc-button {
+    display: none;
+    border-color: grey;
+    color: grey;
+    font-family: $avalon-demi;
+    font-size: get-vw(24px, 1901);
+    line-height: get-vw(51px, 1901);
+    right: get-vw(40px, 1901);
+    text-align: center;
+    text-transform: uppercase;
+    top: calc(20px + #{get-vw(40px, 1901) + get-vw(53px, 1901)});
+    @include breakpoint($bp-min-1901-width) {
+      font-size: 24px;
+      line-height: 51px;
+      right: 40px;
+      top: calc(15px + (40px + 53px));
+    }
+    @include breakpoint($bp-1024-width) {
+      font-size: get-vw(18.36px, 1024);
+      line-height: get-vw(39.015px, 1024);
+      right: get-vw(30.6px, 1024);
+      top: calc(10px + #{get-vw(30.6px, 1024) + get-vw(40.5px, 1024)});
+    }
+    &.active {
+      border-color: white;
+      color: white;
+    }
+    &.inactive {
+      display: none;
+    }
+    &.show {
+      display: block;
+    }
+    &.info-hide {
+      display: none;
+    }
+    &.popup-hide {
+      display: none;
+    }
+    //&:before {
+    //  content: '\e623';
+    //}
   }
   .close-button {
     right: get-vw(40px, 1901);
@@ -1443,12 +1530,16 @@
       bottom: get-vw(-52.03px, 1024);
       height: get-vw(104.06px, 1024);
     }
-    &.show {
+    &.full-changed {
       bottom: 0;
       z-index: 100;
     }
+    &.show {
+      bottom: 0!important;
+      z-index: 100;
+    }
     &.not-allowed {
-      bottom: -500px;
+      bottom: -500px!important;
       z-index: 0;
     }
     & > div {
@@ -2056,6 +2147,10 @@
   pointer-events: none;
   position: absolute;
   width: get-vw(60px, 1901);
+  -moz-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+  -o-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+  -webkit-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+  transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
   @include breakpoint($bp-min-1901-width) {
     bottom: 120px;
     height: 60px;

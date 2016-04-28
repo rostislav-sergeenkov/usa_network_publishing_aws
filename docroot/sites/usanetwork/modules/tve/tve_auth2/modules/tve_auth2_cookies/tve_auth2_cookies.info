@@ -1,0 +1,8 @@
+name = TVE Auth 2: 3rd party cookies
+description = Extension module for the TVE Auth 2. Provides detection of 3rd party cookies support and guides a visitor how to enable if needed for specific browser/platform.
+core = 7.x
+package = NBCU TVE
+version = 7.x-1.0
+
+dependencies[] = tve_auth2
+#dependencies[] = tve_cookie_detection

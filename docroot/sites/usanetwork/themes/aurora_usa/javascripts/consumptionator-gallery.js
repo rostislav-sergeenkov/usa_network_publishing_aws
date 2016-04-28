@@ -181,6 +181,17 @@
         }
       }
 
+      if ($('body').hasClass('page-node-microsite')) {
+        if (typeof Drupal.behaviors.ms_global == 'object' && Drupal.behaviors.ms_global.hasOwnProperty('setOmnitureData')) {
+          Drupal.behaviors.ms_global.setOmnitureData('galleries');
+          return;
+        }
+        else {
+          s.prop5 = s.prop4 + ' : Gallery : ' + $('.gallery-wrapper:first .gallery-name:first').text();
+          s.pageName = s.prop5;
+        }
+      }
+
       void (s.t());
     }
   };
@@ -282,7 +293,10 @@
           link_back = $('meta[property="og:url"]').attr('content');
         }
 
-        if (description == '' && $('meta[property="og:description"]').length > 0) {
+        if (description == '' && typeof Drupal.settings.microsite_gallery_data != 'undefined' && Drupal.settings.microsite_gallery_data.description.value !== '') {
+          description = Drupal.settings.microsite_gallery_data.description.value.replace(/(<([^>]+)>)/ig,"");
+        }
+        else if (description == '' && $('meta[property="og:description"]').length > 0) {
           description = $('meta[property="og:description"]').attr('content');
         }
 
@@ -301,7 +315,43 @@
         }
 
         if ($('body').hasClass('page-node-microsite')) {
-          return;
+          var newSharebarObj = [];
+
+          for (var i = 1; i <= $sharebar.length; i++) {
+            if (i == 1) {
+              var containerID = 'gigya-share';
+            } else {
+              var containerID = 'gigya-share--' + i;
+            }
+            newSharebarObj.push({
+              gigyaSharebar: {
+                ua: {
+                  linkBack: link_back,
+                  description: description,
+                  imageBhev: "url",
+                  imageUrl: imageUrl
+                },
+                shareButtons: "facebook, twitter, tumblr, pinterest, share",
+                shortURLs: "never",
+                containerID: containerID,
+                showCounts: "none",
+                layout: "horizontal",
+                iconsOnly: true
+              }
+            });
+          }
+
+          Drupal.settings.gigyaSharebars = [];
+          Drupal.settings.gigyaSharebars = newSharebarObj;
+
+
+          if (typeof gigya !== 'undefined') {
+            if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
+              $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+                if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+              });
+            }
+          }
         } else {
           $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
             if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
@@ -340,7 +390,8 @@
     $($slides).each(function (index, el) {
 
       var $slideCounter = $(el).find(_.options.slideCounter),
-          slickIndex = parseInt(el.dataset.slickIndex) + 1;
+          //slickIndex = parseInt(el.dataset.slickIndex) + 1;
+          slickIndex = (el.hasOwnProperty('dataset') && el.dataset.hasOwnProperty('slickIndex')) ? parseInt(el.dataset.slickIndex) + 1 : 1;
 
       $slideCounter.text(slickIndex + separator + slideCount);
     });

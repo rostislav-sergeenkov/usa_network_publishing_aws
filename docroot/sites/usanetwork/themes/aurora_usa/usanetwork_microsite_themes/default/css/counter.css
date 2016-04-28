@@ -13,7 +13,7 @@
   margin: 0 6%;
   width: 21.333%;
 }
-.circle {
+#counter .circle {
   width: 100%;
   min-width: 56px;
   height: auto;
@@ -37,7 +37,7 @@
 .counter-container > div {
   text-align: center;
 }
-.numbers {
+#counter .numbers {
 	text-align: center;
 	font-family: "avalonregular", "proxima_nova_regular", Arial, Helvetica, sans-serif;
 	font-size: 150%;
@@ -46,13 +46,13 @@
 	font-weight: lighter;
   margin-bottom: 1%;
 }
-.line {
+#counter .line {
 	border-top: 1px solid #CCC;
 	width: 50%;
 	height: 1px;
 	margin: 1% auto;
 }
-.title {
+#counter .title {
   text-align: center;
   font-family: "avalonregular", "proxima_nova_regular", Arial, Helvetica, sans-serif;
 	text-transform: lowercase;
@@ -62,7 +62,7 @@
 	width: 100%;
 	display:block;
 }
-#caption {
+#countHolder #caption {
 	font-family: "proxima_nova_regular", Arial, Helvetica, sans-serif;
 	font-size: 8px;
 	color: #AAA;
@@ -74,10 +74,10 @@
 
 /* *********** MEDIA QUERIES START *********** */
 @media (max-width: 1255px) {
-  .numbers {
+  #counter .numbers {
     font-size: 125%;
   }
-  .title {
+  #counter .title {
     font-size: 65%;
   }
 }

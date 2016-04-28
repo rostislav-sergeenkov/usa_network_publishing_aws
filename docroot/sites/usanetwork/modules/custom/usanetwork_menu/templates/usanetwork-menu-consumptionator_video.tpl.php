@@ -14,6 +14,9 @@
 ?>
 <div class="header-nav-bar">
   <div class="usa-logo show-color hover-avail"><a class="logo" href="<?php print $main_url; ?>"></a></div>
+  <?php if (!empty($authbar)) : ?>
+    <?php print $authbar; ?>
+  <?php endif; ?>
   <div class="nav-bar-tabs<?php print (!empty($sponsored))? ' sponsored-enable': '';?>">
     <div class="menu-item show-color hover-avail show-name">
       <a href="<?php print $show_url; ?>">
@@ -39,9 +42,6 @@
       <div class="sponsored" data-mpspath="<?php print $file_path; ?>" data-scalemps="1"></div>
     <?php endif; ?>
   </div>
-  <?php if (!empty($authbar)) : ?>
-    <?php print $authbar; ?>
-  <?php endif; ?>
 </div>
 <div class="tab-content">
   <div class="tab-item info-tab">

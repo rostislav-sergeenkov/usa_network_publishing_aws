@@ -1,0 +1,29 @@
+Index: sites/usanetwork/libraries/tve/dist/tve-core.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- sites/usanetwork/libraries/tve/dist/tve-core.js	(revision d64c126c0f75d7252d8e2322044e61cd2e878961)
++++ sites/usanetwork/libraries/tve/dist/tve-core.js	(revision )
+@@ -25938,7 +25938,7 @@
+         };
+       }])
+ 
+-      .directive('modalWindow', ['$timeout', function($timeout) {
++      .directive('modalWindow', [function() {
+         return {
+           restrict: 'EA',
+           scope: {
+@@ -25949,11 +25949,7 @@
+           template: '<div class="tveModalWrap"><div class="fade {{ windowClass }}" ng-class="{in: animate}" ng-style="{\'z-index\': 1050 + index*10}" ng-transclude></div></div>',
+           link: function(scope, element, attrs) {
+             scope.windowClass = attrs.windowClass || '';
+-
+-            //trigger CSS transitions
+-            $timeout(function() {
+-              scope.animate = true;
++            scope.animate = true;
+-            });
+           }
+         };
+       }])

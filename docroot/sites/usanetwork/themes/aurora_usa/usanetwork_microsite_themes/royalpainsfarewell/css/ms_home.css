@@ -1,0 +1,284 @@
+/* HOME SECTION */
+.clearfix {
+  content: initial;
+}
+#microsite #sections #home.section {
+  top: 0;
+  margin-top: 10px; /* Needed for the home waypoint to trigger! */
+  background-image: url('/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/royalpainsfarewell/images/RP_Farewell_desktop_v6_top_final.jpg');
+}
+#home #home-content-container #home-description {
+  line-height: 1;
+}
+#home #home-tunein {
+  text-transform: none;
+}
+#home-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#microsite #home .ad-leaderboard {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 90px;
+  margin: 18px 0 0;
+  overflow: visible;
+}
+#home-wrapper {
+  width: 100%;
+}
+#home-seo {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+}
+#home-empty {
+  position: absolute;
+  top: 175px;
+  left: 0;
+  width: 50%;
+  height: 10%;
+  margin: 0 auto;
+}
+#home #home-content-container {
+  width: 100%;
+}
+#home #home-content-container > div {
+  margin: 0 auto 1.5%;
+}
+#home #home-logo {
+  margin-top: 500px !important;
+  margin-bottom: 0 !important;
+  width: 762px;
+}
+#home #home-logo h1,
+#home #home-logo h2 {
+  height: 0;
+  text-indent: -9999px;
+  margin: 0;
+}
+#home #home-sponsored {
+  display: none;
+}
+#home #home-tunein,
+#home #home-description {
+  display: none;
+}
+
+/* countdown */
+#home #home-countdown {
+  position: relative;
+  top: -210px;
+  left: 0;
+  margin-left: calc(50% - 306px) !important;
+  width: 612px;
+}
+#home #home-countdown #counter .circle {
+  display: table;
+  height: 106px;
+  max-height: none;
+  max-width: none;
+  padding-top: 0;
+  width: 106px;
+}
+#home #home-countdown .counter-container {
+  display: table-cell;
+  left: 0;
+  position: relative;
+  top: 0;
+  vertical-align: middle;
+  width: 100%;
+}
+#home #home-countdown #counter .numbers {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+#home #home-countdown #counter .title {
+  font-size: 19px;
+  margin-top: 4px;
+}
+#home #home-countdown #counter .line {
+  width: 60%;
+  border-top: 1px solid #55452A;
+}
+#countHolder #caption {
+  color: #FAEFDE;
+  font-family: "avalonregular", sans-serif;
+  font-size: 10px;
+  line-height: 3;
+  width: initial;
+}
+#until {
+  color: #FAEFDE;
+  font-size: 20px;
+}
+#counter .numbers,
+#counter .title {
+  font-family: inherit;
+}
+#home #counter .circle {
+  min-width: initial;
+  min-height: initial;
+  background-color: transparent;
+  border: 4px solid #55452A;
+}
+
+/* navigation */
+#home a,
+#home a:link,
+#home a:visited {
+  color: #FAEFDE;
+}
+#home a:hover,
+#home a:active {
+  color: #E3D9D1;
+}
+#home #home-content-container #home-nav {
+  position: absolute;
+  bottom: 86px;
+  left: 0;
+  margin: 0 0 0 10%;
+  width: 80%;
+}
+#home #home-nav li {
+  display: inline-block;
+  margin: 0 54px;
+  font-size: 34px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.home-button-text {
+  color: #FFF;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+
+/* USA logo */
+#home #home-usa-logo {
+  position: absolute;
+  bottom: 16px;
+  left: 10px;
+  width: 45px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Next button */
+#microsite div.scroll {
+  position: absolute;
+  bottom: 5px;
+  left: 100%;
+  margin: 0 0 0 calc(-50% - 24px);
+  width: 48px;
+  cursor: pointer;
+  padding: 0;
+}
+#microsite .scroll div {
+  text-align: center;
+  line-height: 18px;
+  width: 48px;
+  font-size: 14px;
+  padding-top: 3px;
+  background-color: #fff;
+  color: #000;
+}
+#microsite .scroll img {
+  width: 14px;
+  height: 25px;
+  margin: 0 auto;
+}
+
+
+/* ************** BEGIN MEDIA QUERIES ************* */
+@media (max-width: 1186px) {
+  #home-empty {
+    top: 176px;
+  }
+  #home #home-logo {
+    margin-top: 300px !important;
+    width: 472px;
+  }
+  #home #home-countdown {
+    top: -132px;
+    margin-left: calc(50% - 218px) !important;
+    width: 436px;
+  }
+  #home #home-countdown #counter .circle {
+    width: 72px;
+    height: 72px;
+    border: 3px solid #55452A;
+  }
+  #home #home-countdown #counter .numbers {
+    font-size: 26px;
+    margin-bottom: 5px;
+  }
+  #home #home-countdown #counter .title {
+    font-size: 12px;
+    margin-top: 0px;
+  }
+  #until {
+    font-size: 14px;
+  }
+  #home #home-content-container #home-nav {
+    bottom: 66px;
+    width: 100%;
+    margin: 0;
+  }
+  #home #home-nav li {
+    font-size: 21px;
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 486px) {
+  #microsite #sections #home.section {
+    min-height: 568px;
+  }
+  #home-empty {
+    top: 116px;
+  }
+  #home #home-logo {
+    margin-top: 250px !important;
+    width: 300px;
+  }
+  #home #home-countdown {
+    top: -80px;
+    margin-left: calc(50% - 130px) !important;
+    width: 260px;
+  }
+  #home #home-countdown #counter .circle {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #55452A;
+  }
+  #home #home-countdown #counter .numbers {
+    font-size: 18px;
+    margin-bottom: 1px;
+  }
+  #home #home-countdown #counter .title {
+    font-size: 8px;
+    margin-top: 0px;
+  }
+  #countHolder #caption {
+    font-size: 7px;
+    line-height: 2.4;
+  }
+  #until {
+    font-size: 11px;
+    line-height: 1
+  }
+  #home #home-content-container #home-nav {
+    bottom: 50px;
+  }
+  #home #home-nav li {
+    font-size: 18px;
+    margin: 0 24px;
+  }
+}

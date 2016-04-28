@@ -1,0 +1,86 @@
+<?php
+
+/**
+ * @file
+ * tve_cookie_detection module.
+ */
+
+define('TVE_COOKIE_DETECTION_FILE_STEP_1', 'tve-cookie-test-step1.js.php');
+define('TVE_COOKIE_DETECTION_FILE_STEP_2', 'tve-cookie-test-step2.js.php');
+
+/**
+ * Implements hook_menu().
+ */
+function tve_cookie_detection_menu() {
+  $items['admin/config/system/third-party-cookies-detection'] = array(
+    'title' => '3rd party cookies detection',
+    'description' => 'Configure the settings for third party cookies detection.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tve_cookie_detection_admin_settings_form'),
+    'access arguments' => array('administer tve cookies detection configuration'),
+    'file' => 'tve_cookie_detection.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tve_cookie_detection_permission() {
+  return array(
+    'administer tve cookies detection configuration' =>  array(
+      'title' => t('Administer TVE Cookie Detection'),
+      'description' => t('Configure 3rd party cookies detection module.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function tve_cookie_detection_page_alter(&$page) {
+  // Set default value of 'NULL' for
+  // 'Drupal.settings.tve_cookie_detection.status' variable.
+  // Value will be overridden by cookie detection JavaScript:
+  //   TRUE - if 3rd party cookies are supported;
+  //   FALSE - if 3rd party cookies are not supported (blocked);
+  //   NULL - if 3rd party cookies support check is failed.
+  $settings = array('tve_cookie_detection' => array('status' => NULL));
+  drupal_add_js($settings, 'setting');
+}
+
+/**
+ * Implements hook_library().
+ */
+function tve_cookie_detection_library() {
+  global $base_url;
+  $domain = check_url(variable_get('tve_cookie_detection_domain', $base_url));
+  if (!$domain) {
+    return;
+  }
+
+  $url_step_1 = $domain . '/' . drupal_get_path('module', 'tve_cookie_detection') . '/' . TVE_COOKIE_DETECTION_FILE_STEP_1;
+  $url_step_2 = $domain . '/' . drupal_get_path('module', 'tve_cookie_detection') . '/' . TVE_COOKIE_DETECTION_FILE_STEP_2;
+
+  $libraries['tve-3rd-party-cookies-detection'] = array(
+    'title' => '3rd party cookies detection',
+    'version' => '1.0',
+    'js' => array(
+      "var tve = (window.tve = window.tve || {}); tve.cookieDetection = {setCookieUrl : '{$url_step_1}', checkCookieUrl : '{$url_step_2}', tve_cookie_detection_status : true, tve_cookie_detection_completed : false};" => array(
+        'type' => 'inline',
+        'scope' => 'header',
+        'weight' => -100,
+        'group' => JS_LIBRARY,
+      ),
+      drupal_get_path('module', 'tve_cookie_detection') . '/tve_cookie_detection.js' => array(
+        'type' => 'file',
+        'scope' => 'header',
+        'weight' => -100,
+        'group' => JS_LIBRARY,
+      ),
+    ),
+  );
+
+  return $libraries;
+}

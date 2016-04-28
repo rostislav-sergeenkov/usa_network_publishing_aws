@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Global template of Dig theme
  *

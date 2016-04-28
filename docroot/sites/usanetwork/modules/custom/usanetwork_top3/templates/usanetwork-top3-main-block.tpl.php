@@ -20,6 +20,7 @@
 <div id="top3-slider-wrapper" data-block-name="top 3">
   <div id="slider-player" data-player-src="<?php print $player; ?>"></div>
   <div id="play-button" class="round-button"></div>
+  <div id="cc-button" class="round-button"><?php print t('cc'); ?></div>
   <div id="slider-container" data-nid="<?php print $nid; ?>">
     <div class="slider-wrapper">
       <?php foreach ($slides as $key => $slide) : ?>

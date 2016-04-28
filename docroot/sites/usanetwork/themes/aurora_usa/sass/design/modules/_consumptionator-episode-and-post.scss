@@ -326,6 +326,36 @@
           font-size: 18px;
           color: $poll-color;
         }
+        .file-video-mpx.view-mode-inline_content {
+          iframe {
+            display: block;
+            margin: 0 auto;
+            @include breakpoint($bp-1600-width) {
+              height: 432px;
+              width: 768px;
+            }
+            @include breakpoint($between-1025-1280) {
+              height: 342px;
+              width: 608px;
+            }
+            @include breakpoint($between-769-1024) {
+              height: 324px;
+              width: 576px;
+            }
+            @include breakpoint($between-641-768) {
+              height: 297px;
+              width: 528px;
+            }
+            @include breakpoint($bp-640-width) {
+              height: 225px;
+              width: 400px;
+            }
+            @include breakpoint($bp-480-width) {
+              height: 144px;
+              width: 256px;
+            }
+          }
+        }
         h2 {
           font-size: 1.5em;
           margin: 0.2em 0

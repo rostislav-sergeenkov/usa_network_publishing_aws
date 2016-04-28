@@ -5,21 +5,6 @@ define('USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT', 1);
 define('USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT', 10);
 
 /**
- * Implements hook_init().
- */
-function usanetwork_video_endcard_init() {
-  $file = menu_get_object('file');
-  if ($file) {
-    $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode' , 'value');
-    if ($full_episode == '0') {
-      drupal_add_js(drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js', array(
-        'every_page' => true
-      ));
-    }
-  }
-}
-
-/**
  * Implements hook_menu().
  */
 function usanetwork_video_endcard_menu() {
@@ -366,6 +351,8 @@ function usanetwork_get_endcard_variables($file) {
     $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT);
     $related_clip_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT);
     $related_files = array_merge($related_files, $related_clip_files);
+  } elseif (!$full_episode) {
+    $related_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, 1);
   }
 
   foreach ($related_files as $related_file) {

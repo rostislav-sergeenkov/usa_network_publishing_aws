@@ -35,13 +35,18 @@
     },
 
     iosRedirect: function() {
-      var usaDeepLinking = this;
 
-      var iframe = '<iframe ' +
-          'class="usa-app-detect" ' +
-          'style="display: none;" ' +
-          'src="' + this.settings.usa.deepLinking + '" />';
-      $('body', this.context).append(iframe);
+      window.location = this.settings.usa.deepLinking;
+      setTimeout(function() {
+        // Prevent from trying to load non-existing address.
+        window.stop();
+      }, 3000);
+
+      // var iframe = '<iframe ' +
+      //     'class="usa-app-detect" ' +
+      //     'style="display: none;" ' +
+      //     'src="' + this.settings.usa.deepLinking + '" />';
+      // $('body', this.context).append(iframe);
 
       return this;
     },

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -2012,7 +2012,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
-  padding-left: calc(8% + 2.52vw);
+  padding-left: calc(8% + 2.52499vw);
 }
 @media (min-width: 1901px) {
   .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
@@ -2026,7 +2026,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 }
 @media (max-width: 1024px) {
   .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
-    padding-left: calc(8% + 3.32vw);
+    padding-left: calc(8% + 3.32031vw);
   }
 }
 @media (max-width: 768px) {
@@ -11375,20 +11375,20 @@ footer h2 {
   }
 }
 
-.consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block {
+.consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .gallery-recap-block .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block, .node-type-usanetwork-microsite .gallery-block {
   margin: 0;
   overflow: hidden;
   padding: 0;
   position: relative;
   width: 100%;
 }
-.consumptionator-page .gallery-block:after, .node-type-media-gallery .gallery-block:after, .node-type-tv-episode .gallery-block:after, .node-type-consumpt-post .gallery-block:after, .node-media-gallery .gallery-block:after {
+.consumptionator-page .gallery-block:after, .node-type-media-gallery .gallery-block:after, .node-type-tv-episode .gallery-block:after, .gallery-recap-block .gallery-block:after, .node-type-consumpt-post .gallery-block:after, .node-media-gallery .gallery-block:after, .node-type-usanetwork-microsite .gallery-block:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (min-width: 1281px) {
-  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block {
+  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .gallery-recap-block .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block, .node-type-usanetwork-microsite .gallery-block {
     height: 42.01875vw;
     max-height: 1093.75px;
     max-width: 2500px;
@@ -11396,28 +11396,28 @@ footer h2 {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block {
+  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .gallery-recap-block .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block, .node-type-usanetwork-microsite .gallery-block {
     height: calc((100vw - 320px) * 0.5625);
     margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
     overflow: visible;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block {
+  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .gallery-recap-block .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block, .node-type-usanetwork-microsite .gallery-block {
     height: auto;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page .gallery-block .consum-sidebar .download-app, .node-type-media-gallery .gallery-block .consum-sidebar .download-app, .node-type-tv-episode .gallery-block .consum-sidebar .download-app, .node-type-consumpt-post .gallery-block .consum-sidebar .download-app, .node-media-gallery .gallery-block .consum-sidebar .download-app, .node-type-usanetwork-microsite .gallery-block .consum-sidebar .download-app {
+  .consumptionator-page .gallery-block .consum-sidebar .download-app, .node-type-media-gallery .gallery-block .consum-sidebar .download-app, .node-type-tv-episode .gallery-block .consum-sidebar .download-app, .gallery-recap-block .gallery-block .consum-sidebar .download-app, .node-type-consumpt-post .gallery-block .consum-sidebar .download-app, .node-media-gallery .gallery-block .consum-sidebar .download-app, .node-type-usanetwork-microsite .gallery-block .consum-sidebar .download-app {
     display: none;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-page .gallery-block .consum-sidebar .more-items, .node-type-media-gallery .gallery-block .consum-sidebar .more-items, .node-type-tv-episode .gallery-block .consum-sidebar .more-items, .node-type-consumpt-post .gallery-block .consum-sidebar .more-items, .node-media-gallery .gallery-block .consum-sidebar .more-items, .node-type-usanetwork-microsite .gallery-block .consum-sidebar .more-items {
+  .consumptionator-page .gallery-block .consum-sidebar .more-items, .node-type-media-gallery .gallery-block .consum-sidebar .more-items, .node-type-tv-episode .gallery-block .consum-sidebar .more-items, .gallery-recap-block .gallery-block .consum-sidebar .more-items, .node-type-consumpt-post .gallery-block .consum-sidebar .more-items, .node-media-gallery .gallery-block .consum-sidebar .more-items, .node-type-usanetwork-microsite .gallery-block .consum-sidebar .more-items {
     top: 0;
   }
 }
-.consumptionator-page .gallery-wrapper, .node-type-media-gallery .gallery-wrapper, .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
+.consumptionator-page .gallery-wrapper, .node-type-media-gallery .gallery-wrapper, .node-type-tv-episode .gallery-wrapper, .gallery-recap-block .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
   background: #1f1f1f;
   float: left;
   height: 100%;
@@ -11425,22 +11425,22 @@ footer h2 {
   width: 74.7%;
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .gallery-wrapper, .node-type-media-gallery .gallery-wrapper, .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
+  .consumptionator-page .gallery-wrapper, .node-type-media-gallery .gallery-wrapper, .node-type-tv-episode .gallery-wrapper, .gallery-recap-block .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
     width: calc(100% - 320px);
     z-index: 1;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper, .node-type-media-gallery .gallery-wrapper, .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
+  .consumptionator-page .gallery-wrapper, .node-type-media-gallery .gallery-wrapper, .node-type-tv-episode .gallery-wrapper, .gallery-recap-block .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
     height: auto;
     width: 100%;
   }
 }
-.consumptionator-page .gallery-wrapper > .node, .node-type-media-gallery .gallery-wrapper > .node, .node-type-tv-episode .gallery-wrapper > .node, .node-type-consumpt-post .gallery-wrapper > .node, .node-media-gallery .gallery-wrapper > .node, .node-type-usanetwork-microsite .gallery-wrapper > .node {
+.consumptionator-page .gallery-wrapper > .node, .node-type-media-gallery .gallery-wrapper > .node, .node-type-tv-episode .gallery-wrapper > .node, .gallery-recap-block .gallery-wrapper > .node, .node-type-consumpt-post .gallery-wrapper > .node, .node-media-gallery .gallery-wrapper > .node, .node-type-usanetwork-microsite .gallery-wrapper > .node {
   height: 100%;
   width: 100%;
 }
-.consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
+.consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .gallery-recap-block .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
   display: none;
   right: 150px;
   position: absolute;
@@ -11450,18 +11450,18 @@ footer h2 {
   z-index: 55;
 }
 @media (max-width: 1900px) {
-  .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
+  .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .gallery-recap-block .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
     right: 125px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
+  .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .gallery-recap-block .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
     right: 70px;
     width: 175px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
+  .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .gallery-recap-block .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
     bottom: 30px;
     display: block;
     margin-top: 0;
@@ -11470,12 +11470,12 @@ footer h2 {
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
+  .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .gallery-recap-block .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
     width: 150px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
+  .consumptionator-page .gallery-wrapper .share-bar, .node-type-media-gallery .gallery-wrapper .share-bar, .node-type-tv-episode .gallery-wrapper .share-bar, .gallery-recap-block .gallery-wrapper .share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar, .node-media-gallery .gallery-wrapper .share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar {
     background: #1f1f1f;
     bottom: auto;
     height: 90px;
@@ -11485,7 +11485,7 @@ footer h2 {
     width: 100%;
   }
 }
-.consumptionator-page .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label {
+.consumptionator-page .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .gallery-recap-block .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label {
   color: #d0d0d2;
   font-size: 14px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
@@ -11495,82 +11495,82 @@ footer h2 {
   text-transform: uppercase;
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label {
+  .consumptionator-page .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .gallery-recap-block .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label {
     font-size: 12px;
     line-height: 18px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label {
+  .consumptionator-page .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .gallery-recap-block .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label {
     text-align: center;
   }
 }
-.consumptionator-page .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-tv-episode .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .field-name-field-gigya-share-bar {
+.consumptionator-page .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-tv-episode .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .gallery-recap-block .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .field-name-field-gigya-share-bar {
   margin-bottom: 0;
 }
 @media (max-width: 640px) {
-  .consumptionator-page .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-tv-episode .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-consumpt-post .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table {
+  .consumptionator-page .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-tv-episode .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .gallery-recap-block .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-consumpt-post .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .field-name-field-gigya-share-bar table {
     margin: 0 auto;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .gallery-wrapper .share-bar .gig-button-container, .node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container, .node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container, .node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container, .node-media-gallery .gallery-wrapper .share-bar .gig-button-container, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container {
+  .consumptionator-page .gallery-wrapper .share-bar .gig-button-container, .node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container, .node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container, .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container, .node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container, .node-media-gallery .gallery-wrapper .share-bar .gig-button-container, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container {
     margin-right: 20px;
     padding: 0;
   }
-  .consumptionator-page .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share {
+  .consumptionator-page .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share {
     margin-right: 0;
   }
-  .consumptionator-page .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container td > div, .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container td > div {
+  .consumptionator-page .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container td > div, .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container td > div, .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container td > div {
     font-size: 30px;
   }
 }
-.consumptionator-page .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-tv-episode .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-consumpt-post .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-usanetwork-microsite .gallery-wrapper:hover .gallery-list .slide .slide-info {
+.consumptionator-page .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-tv-episode .gallery-wrapper:hover .gallery-list .slide .slide-info, .gallery-recap-block .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-consumpt-post .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-usanetwork-microsite .gallery-wrapper:hover .gallery-list .slide .slide-info {
   display: table !important;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-tv-episode .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-consumpt-post .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-usanetwork-microsite .gallery-wrapper:hover .gallery-list .slide .slide-info {
+  .consumptionator-page .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-tv-episode .gallery-wrapper:hover .gallery-list .slide .slide-info, .gallery-recap-block .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-consumpt-post .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, .node-type-usanetwork-microsite .gallery-wrapper:hover .gallery-list .slide .slide-info {
     display: block;
   }
 }
 @media (min-width: 1025px) {
-  .consumptionator-page .gallery-wrapper:hover .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper:hover .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper:hover .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper:hover .gallery-pager-wrap, .node-media-gallery .gallery-wrapper:hover .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper:hover .gallery-pager-wrap {
+  .consumptionator-page .gallery-wrapper:hover .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper:hover .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper:hover .gallery-pager-wrap, .gallery-recap-block .gallery-wrapper:hover .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper:hover .gallery-pager-wrap, .node-media-gallery .gallery-wrapper:hover .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper:hover .gallery-pager-wrap {
     display: block;
   }
 }
-.consumptionator-page .gallery-wrapper:hover .share-bar, .node-type-media-gallery .gallery-wrapper:hover .share-bar, .node-type-tv-episode .gallery-wrapper:hover .share-bar, .node-type-consumpt-post .gallery-wrapper:hover .share-bar, .node-media-gallery .gallery-wrapper:hover .share-bar, .node-type-usanetwork-microsite .gallery-wrapper:hover .share-bar {
+.consumptionator-page .gallery-wrapper:hover .share-bar, .node-type-media-gallery .gallery-wrapper:hover .share-bar, .node-type-tv-episode .gallery-wrapper:hover .share-bar, .gallery-recap-block .gallery-wrapper:hover .share-bar, .node-type-consumpt-post .gallery-wrapper:hover .share-bar, .node-media-gallery .gallery-wrapper:hover .share-bar, .node-type-usanetwork-microsite .gallery-wrapper:hover .share-bar {
   display: block;
 }
-.consumptionator-page .gallery-wrapper .gallery-list, .node-type-media-gallery .gallery-wrapper .gallery-list, .node-type-tv-episode .gallery-wrapper .gallery-list, .node-type-consumpt-post .gallery-wrapper .gallery-list, .node-media-gallery .gallery-wrapper .gallery-list, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list {
+.consumptionator-page .gallery-wrapper .gallery-list, .node-type-media-gallery .gallery-wrapper .gallery-list, .node-type-tv-episode .gallery-wrapper .gallery-list, .gallery-recap-block .gallery-wrapper .gallery-list, .node-type-consumpt-post .gallery-wrapper .gallery-list, .node-media-gallery .gallery-wrapper .gallery-list, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list {
   height: 100%;
 }
-.consumptionator-page .gallery-wrapper .gallery-list.ready .slide, .node-type-media-gallery .gallery-wrapper .gallery-list.ready .slide, .node-type-tv-episode .gallery-wrapper .gallery-list.ready .slide, .node-type-consumpt-post .gallery-wrapper .gallery-list.ready .slide, .node-media-gallery .gallery-wrapper .gallery-list.ready .slide, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list.ready .slide {
+.consumptionator-page .gallery-wrapper .gallery-list.ready .slide, .node-type-media-gallery .gallery-wrapper .gallery-list.ready .slide, .node-type-tv-episode .gallery-wrapper .gallery-list.ready .slide, .gallery-recap-block .gallery-wrapper .gallery-list.ready .slide, .node-type-consumpt-post .gallery-wrapper .gallery-list.ready .slide, .node-media-gallery .gallery-wrapper .gallery-list.ready .slide, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list.ready .slide {
   display: block;
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide, .node-type-media-gallery .gallery-wrapper .gallery-list .slide, .node-type-tv-episode .gallery-wrapper .gallery-list .slide, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide, .node-media-gallery .gallery-wrapper .gallery-list .slide, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide {
+.consumptionator-page .gallery-wrapper .gallery-list .slide, .node-type-media-gallery .gallery-wrapper .gallery-list .slide, .node-type-tv-episode .gallery-wrapper .gallery-list .slide, .gallery-recap-block .gallery-wrapper .gallery-list .slide, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide, .node-media-gallery .gallery-wrapper .gallery-list .slide, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide {
   background: #2c2c2c;
   display: none;
   height: 100%;
   position: relative;
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide:first-child, .node-type-media-gallery .gallery-wrapper .gallery-list .slide:first-child, .node-type-tv-episode .gallery-wrapper .gallery-list .slide:first-child, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide:first-child, .node-media-gallery .gallery-wrapper .gallery-list .slide:first-child, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide:first-child {
+.consumptionator-page .gallery-wrapper .gallery-list .slide:first-child, .node-type-media-gallery .gallery-wrapper .gallery-list .slide:first-child, .node-type-tv-episode .gallery-wrapper .gallery-list .slide:first-child, .gallery-recap-block .gallery-wrapper .gallery-list .slide:first-child, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide:first-child, .node-media-gallery .gallery-wrapper .gallery-list .slide:first-child, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide:first-child {
   display: block;
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node, .node-media-gallery .gallery-wrapper .gallery-list .slide .node, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node {
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node, .node-media-gallery .gallery-wrapper .gallery-list .slide .node, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node {
   height: 100%;
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img {
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img {
   height: 100%;
   position: relative;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img {
     height: 56.25vw;
     overflow: hidden;
     text-align: center;
   }
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img img {
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img img, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img img {
   bottom: 0;
   left: 0;
   right: 0;
@@ -11581,11 +11581,11 @@ footer h2 {
   max-width: 100%;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img img {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img img, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img img {
     height: auto;
   }
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
   box-sizing: border-box;
   display: none;
   background: rgba(0, 0, 0, 0.5);
@@ -11597,17 +11597,17 @@ footer h2 {
   position: absolute;
 }
 @media (max-width: 1900px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
     padding: 0 125px 0 45px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
     padding: 0 70px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
     background: #1f1f1f;
     display: block;
     height: auto;
@@ -11616,17 +11616,17 @@ footer h2 {
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
     height: auto;
     min-height: 100px;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
     padding: 0 50px;
   }
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
   color: #f3f3ec;
   display: block;
   font-size: 1.36585vw;
@@ -11643,24 +11643,24 @@ footer h2 {
   width: 100%;
 }
 @media (min-width: 1025px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
     display: table-cell;
   }
 }
 @media (min-width: 1901px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
     font-size: 26px;
   }
 }
 @media (max-width: 1900px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
     height: 44px;
     padding-right: 220px;
     top: 20px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
     height: 40px;
     left: 70px;
     padding-right: 190px;
@@ -11668,7 +11668,7 @@ footer h2 {
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
     font-size: 14px;
     height: auto;
     min-height: 145px;
@@ -11677,7 +11677,7 @@ footer h2 {
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
     margin-top: 0px;
     min-height: 70px;
     padding: 30px 0 0;
@@ -11685,17 +11685,17 @@ footer h2 {
     text-align: center;
   }
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description p {
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description p, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description p {
   margin: 0;
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description a {
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description a, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description a {
   color: #ffffff;
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover {
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description a:hover {
   color: #ffffff;
   text-decoration: underline;
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
   bottom: 5px;
   color: #afafaf;
   font-size: 25px;
@@ -11709,48 +11709,48 @@ footer h2 {
   width: 100%;
   white-space: nowrap;
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
   font-size: 27px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
 @media (max-width: 1900px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
     font-size: 13px;
     padding-right: 375px;
   }
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
     font-size: 14px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
     bottom: 0;
     font-size: 12px;
     left: 70px;
     padding-right: 320px;
   }
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
     font-size: 13px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
     bottom: 0;
     padding-right: 325px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
     bottom: 5px;
     font-size: 11px;
     padding-right: 240px;
   }
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
     font-size: 12px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
     margin-top: 15px;
     padding-right: 0;
     position: static;
@@ -11758,7 +11758,7 @@ footer h2 {
     white-space: normal;
   }
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap {
   bottom: 120px;
   right: 50%;
   overflow: hidden;
@@ -11766,13 +11766,13 @@ footer h2 {
   z-index: 51;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap {
     bottom: auto;
     top: calc(56.25vw + 13px);
   }
 }
 @media (min-width: 1025px) {
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap {
     display: none;
     right: 0;
     overflow: hidden;
@@ -11782,57 +11782,57 @@ footer h2 {
     top: 40%;
     z-index: 51;
   }
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap:hover, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap:hover, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap:hover, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap:hover, .node-media-gallery .gallery-wrapper .gallery-pager-wrap:hover, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap:hover {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap:hover, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap:hover, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap:hover, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap:hover, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap:hover, .node-media-gallery .gallery-wrapper .gallery-pager-wrap:hover, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap:hover {
     width: 130px;
   }
 }
 @media (min-width: 1025px) and (min-width: 1025px) {
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap {
     margin-top: -157.5px;
     height: 315px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap, .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap {
     padding: 0;
     right: auto;
     left: 0;
     top: 0;
   }
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap:after, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap:after, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap:after, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap:after, .node-media-gallery .gallery-wrapper .gallery-pager-wrap:after, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap:after {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap:after, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap:after, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap:after, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap:after, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap:after, .node-media-gallery .gallery-wrapper .gallery-pager-wrap:after, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap:after {
     clear: both;
     content: '';
     display: table;
   }
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap:hover, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap:hover, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap:hover, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap:hover, .node-media-gallery .gallery-wrapper .gallery-pager-wrap:hover, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap:hover {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap:hover, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap:hover, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap:hover, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap:hover, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap:hover, .node-media-gallery .gallery-wrapper .gallery-pager-wrap:hover, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap:hover {
     width: auto;
   }
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap ul, .consumptionator-page .gallery-wrapper .gallery-pager-wrap li, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap ul, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap li, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap ul, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap li, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap ul, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap li, .node-media-gallery .gallery-wrapper .gallery-pager-wrap ul, .node-media-gallery .gallery-wrapper .gallery-pager-wrap li, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap ul, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap li {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap ul, .consumptionator-page .gallery-wrapper .gallery-pager-wrap li, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap ul, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap li, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap ul, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap li, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap ul, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap li, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap ul, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap li, .node-media-gallery .gallery-wrapper .gallery-pager-wrap ul, .node-media-gallery .gallery-wrapper .gallery-pager-wrap li, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap ul, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager {
   position: static;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager:after {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager:after, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager {
     position: absolute;
     left: 0;
     top: 0;
   }
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li {
   cursor: pointer;
   margin: 0 15px 15px auto;
   position: relative;
@@ -11844,23 +11844,23 @@ footer h2 {
   transition: all 0.2s ease-in-out;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li {
     float: left;
     margin: 0 10px 0 0;
     height: 10px;
     width: 10px;
   }
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:last-child {
   margin-bottom: 0;
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:not(.slick-active) .base-dot-color {
   background: #919b99 !important;
   border-radius: 50%;
   height: 100%;
   width: 100%;
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img {
   display: block;
   left: -100px;
   margin-top: -24px;
@@ -11870,34 +11870,34 @@ footer h2 {
   max-width: 85px;
   z-index: 125;
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus {
   outline: none;
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li .pager-item-inner {
   height: 100%;
   width: 100%;
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li {
     height: 10px;
     width: 10px;
   }
-  .consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img {
+  .consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img {
     display: none;
   }
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color {
   border-radius: 50%;
   height: 100%;
   width: 100%;
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color) {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color), .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li .base-dot-color:not(.show-color) {
   background: white;
 }
-.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li img, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li img, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li img, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li img, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li img {
+.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li img, .node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li img, .node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li img, .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li img, .node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li img, .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li img {
   display: none;
 }
-.consumptionator-page .gallery-wrapper .slide-control, .node-type-media-gallery .gallery-wrapper .slide-control, .node-type-tv-episode .gallery-wrapper .slide-control, .node-type-consumpt-post .gallery-wrapper .slide-control, .node-media-gallery .gallery-wrapper .slide-control, .node-type-usanetwork-microsite .gallery-wrapper .slide-control {
+.consumptionator-page .gallery-wrapper .slide-control, .node-type-media-gallery .gallery-wrapper .slide-control, .node-type-tv-episode .gallery-wrapper .slide-control, .gallery-recap-block .gallery-wrapper .slide-control, .node-type-consumpt-post .gallery-wrapper .slide-control, .node-media-gallery .gallery-wrapper .slide-control, .node-type-usanetwork-microsite .gallery-wrapper .slide-control {
   color: #ffffff;
   cursor: pointer;
   display: none;
@@ -11909,40 +11909,40 @@ footer h2 {
   z-index: 55;
 }
 @media (min-width: 1901px) {
-  .consumptionator-page .gallery-wrapper .slide-control, .node-type-media-gallery .gallery-wrapper .slide-control, .node-type-tv-episode .gallery-wrapper .slide-control, .node-type-consumpt-post .gallery-wrapper .slide-control, .node-media-gallery .gallery-wrapper .slide-control, .node-type-usanetwork-microsite .gallery-wrapper .slide-control {
+  .consumptionator-page .gallery-wrapper .slide-control, .node-type-media-gallery .gallery-wrapper .slide-control, .node-type-tv-episode .gallery-wrapper .slide-control, .gallery-recap-block .gallery-wrapper .slide-control, .node-type-consumpt-post .gallery-wrapper .slide-control, .node-media-gallery .gallery-wrapper .slide-control, .node-type-usanetwork-microsite .gallery-wrapper .slide-control {
     margin-top: -27px;
     height: 54px;
     width: 54px;
   }
 }
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-wrapper .slide-control, .node-type-media-gallery .gallery-wrapper .slide-control, .node-type-tv-episode .gallery-wrapper .slide-control, .node-type-consumpt-post .gallery-wrapper .slide-control, .node-media-gallery .gallery-wrapper .slide-control, .node-type-usanetwork-microsite .gallery-wrapper .slide-control {
+  .consumptionator-page .gallery-wrapper .slide-control, .node-type-media-gallery .gallery-wrapper .slide-control, .node-type-tv-episode .gallery-wrapper .slide-control, .gallery-recap-block .gallery-wrapper .slide-control, .node-type-consumpt-post .gallery-wrapper .slide-control, .node-media-gallery .gallery-wrapper .slide-control, .node-type-usanetwork-microsite .gallery-wrapper .slide-control {
     margin-top: 0;
     top: calc(56.25vw + 48.5px);
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .gallery-wrapper .slide-control, .node-type-media-gallery .gallery-wrapper .slide-control, .node-type-tv-episode .gallery-wrapper .slide-control, .node-type-consumpt-post .gallery-wrapper .slide-control, .node-media-gallery .gallery-wrapper .slide-control, .node-type-usanetwork-microsite .gallery-wrapper .slide-control {
+  .consumptionator-page .gallery-wrapper .slide-control, .node-type-media-gallery .gallery-wrapper .slide-control, .node-type-tv-episode .gallery-wrapper .slide-control, .gallery-recap-block .gallery-wrapper .slide-control, .node-type-consumpt-post .gallery-wrapper .slide-control, .node-media-gallery .gallery-wrapper .slide-control, .node-type-usanetwork-microsite .gallery-wrapper .slide-control {
     top: calc(56.25vw + 26px);
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .gallery-wrapper .slide-control, .node-type-media-gallery .gallery-wrapper .slide-control, .node-type-tv-episode .gallery-wrapper .slide-control, .node-type-consumpt-post .gallery-wrapper .slide-control, .node-media-gallery .gallery-wrapper .slide-control, .node-type-usanetwork-microsite .gallery-wrapper .slide-control {
+  .consumptionator-page .gallery-wrapper .slide-control, .node-type-media-gallery .gallery-wrapper .slide-control, .node-type-tv-episode .gallery-wrapper .slide-control, .gallery-recap-block .gallery-wrapper .slide-control, .node-type-consumpt-post .gallery-wrapper .slide-control, .node-media-gallery .gallery-wrapper .slide-control, .node-type-usanetwork-microsite .gallery-wrapper .slide-control {
     height: 38px;
     top: calc(56.25vw + 36px);
     width: 38px;
   }
 }
-.consumptionator-page .gallery-wrapper .slide-control:hover, .node-type-media-gallery .gallery-wrapper .slide-control:hover, .node-type-tv-episode .gallery-wrapper .slide-control:hover, .node-type-consumpt-post .gallery-wrapper .slide-control:hover, .node-media-gallery .gallery-wrapper .slide-control:hover, .node-type-usanetwork-microsite .gallery-wrapper .slide-control:hover {
+.consumptionator-page .gallery-wrapper .slide-control:hover, .node-type-media-gallery .gallery-wrapper .slide-control:hover, .node-type-tv-episode .gallery-wrapper .slide-control:hover, .gallery-recap-block .gallery-wrapper .slide-control:hover, .node-type-consumpt-post .gallery-wrapper .slide-control:hover, .node-media-gallery .gallery-wrapper .slide-control:hover, .node-type-usanetwork-microsite .gallery-wrapper .slide-control:hover {
   background: none;
 }
-.consumptionator-page .gallery-wrapper .slide-control:focus, .node-type-media-gallery .gallery-wrapper .slide-control:focus, .node-type-tv-episode .gallery-wrapper .slide-control:focus, .node-type-consumpt-post .gallery-wrapper .slide-control:focus, .node-media-gallery .gallery-wrapper .slide-control:focus, .node-type-usanetwork-microsite .gallery-wrapper .slide-control:focus {
+.consumptionator-page .gallery-wrapper .slide-control:focus, .node-type-media-gallery .gallery-wrapper .slide-control:focus, .node-type-tv-episode .gallery-wrapper .slide-control:focus, .gallery-recap-block .gallery-wrapper .slide-control:focus, .node-type-consumpt-post .gallery-wrapper .slide-control:focus, .node-media-gallery .gallery-wrapper .slide-control:focus, .node-type-usanetwork-microsite .gallery-wrapper .slide-control:focus {
   outline: none;
 }
-.consumptionator-page .gallery-wrapper .slide-control.disabled, .node-type-media-gallery .gallery-wrapper .slide-control.disabled, .node-type-tv-episode .gallery-wrapper .slide-control.disabled, .node-type-consumpt-post .gallery-wrapper .slide-control.disabled, .node-media-gallery .gallery-wrapper .slide-control.disabled, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.disabled {
+.consumptionator-page .gallery-wrapper .slide-control.disabled, .node-type-media-gallery .gallery-wrapper .slide-control.disabled, .node-type-tv-episode .gallery-wrapper .slide-control.disabled, .gallery-recap-block .gallery-wrapper .slide-control.disabled, .node-type-consumpt-post .gallery-wrapper .slide-control.disabled, .node-media-gallery .gallery-wrapper .slide-control.disabled, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.disabled {
   visibility: hidden;
 }
-.consumptionator-page .gallery-wrapper .slide-control:after, .node-type-media-gallery .gallery-wrapper .slide-control:after, .node-type-tv-episode .gallery-wrapper .slide-control:after, .node-type-consumpt-post .gallery-wrapper .slide-control:after, .node-media-gallery .gallery-wrapper .slide-control:after, .node-type-usanetwork-microsite .gallery-wrapper .slide-control:after {
+.consumptionator-page .gallery-wrapper .slide-control:after, .node-type-media-gallery .gallery-wrapper .slide-control:after, .node-type-tv-episode .gallery-wrapper .slide-control:after, .gallery-recap-block .gallery-wrapper .slide-control:after, .node-type-consumpt-post .gallery-wrapper .slide-control:after, .node-media-gallery .gallery-wrapper .slide-control:after, .node-type-usanetwork-microsite .gallery-wrapper .slide-control:after {
   display: block;
   font-family: "ico-font";
   font-size: 48px;
@@ -11952,67 +11952,67 @@ footer h2 {
   top: 0;
 }
 @media (min-width: 1901px) {
-  .consumptionator-page .gallery-wrapper .slide-control:after, .node-type-media-gallery .gallery-wrapper .slide-control:after, .node-type-tv-episode .gallery-wrapper .slide-control:after, .node-type-consumpt-post .gallery-wrapper .slide-control:after, .node-media-gallery .gallery-wrapper .slide-control:after, .node-type-usanetwork-microsite .gallery-wrapper .slide-control:after {
+  .consumptionator-page .gallery-wrapper .slide-control:after, .node-type-media-gallery .gallery-wrapper .slide-control:after, .node-type-tv-episode .gallery-wrapper .slide-control:after, .gallery-recap-block .gallery-wrapper .slide-control:after, .node-type-consumpt-post .gallery-wrapper .slide-control:after, .node-media-gallery .gallery-wrapper .slide-control:after, .node-type-usanetwork-microsite .gallery-wrapper .slide-control:after {
     font-size: 54px;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .gallery-wrapper .slide-control:after, .node-type-media-gallery .gallery-wrapper .slide-control:after, .node-type-tv-episode .gallery-wrapper .slide-control:after, .node-type-consumpt-post .gallery-wrapper .slide-control:after, .node-media-gallery .gallery-wrapper .slide-control:after, .node-type-usanetwork-microsite .gallery-wrapper .slide-control:after {
+  .consumptionator-page .gallery-wrapper .slide-control:after, .node-type-media-gallery .gallery-wrapper .slide-control:after, .node-type-tv-episode .gallery-wrapper .slide-control:after, .gallery-recap-block .gallery-wrapper .slide-control:after, .node-type-consumpt-post .gallery-wrapper .slide-control:after, .node-media-gallery .gallery-wrapper .slide-control:after, .node-type-usanetwork-microsite .gallery-wrapper .slide-control:after {
     font-size: 38px;
   }
 }
-.consumptionator-page .gallery-wrapper .slide-control.slide-prev, .node-type-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-tv-episode .gallery-wrapper .slide-control.slide-prev, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-prev, .node-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-prev {
+.consumptionator-page .gallery-wrapper .slide-control.slide-prev, .node-type-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-tv-episode .gallery-wrapper .slide-control.slide-prev, .gallery-recap-block .gallery-wrapper .slide-control.slide-prev, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-prev, .node-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-prev {
   right: 105px;
 }
 @media (max-width: 1900px) {
-  .consumptionator-page .gallery-wrapper .slide-control.slide-prev, .node-type-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-tv-episode .gallery-wrapper .slide-control.slide-prev, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-prev, .node-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-prev {
+  .consumptionator-page .gallery-wrapper .slide-control.slide-prev, .node-type-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-tv-episode .gallery-wrapper .slide-control.slide-prev, .gallery-recap-block .gallery-wrapper .slide-control.slide-prev, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-prev, .node-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-prev {
     right: 90px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .gallery-wrapper .slide-control.slide-prev, .node-type-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-tv-episode .gallery-wrapper .slide-control.slide-prev, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-prev, .node-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-prev {
+  .consumptionator-page .gallery-wrapper .slide-control.slide-prev, .node-type-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-tv-episode .gallery-wrapper .slide-control.slide-prev, .gallery-recap-block .gallery-wrapper .slide-control.slide-prev, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-prev, .node-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-prev {
     left: 15px;
     right: auto;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .gallery-wrapper .slide-control.slide-prev, .node-type-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-tv-episode .gallery-wrapper .slide-control.slide-prev, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-prev, .node-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-prev {
+  .consumptionator-page .gallery-wrapper .slide-control.slide-prev, .node-type-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-tv-episode .gallery-wrapper .slide-control.slide-prev, .gallery-recap-block .gallery-wrapper .slide-control.slide-prev, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-prev, .node-media-gallery .gallery-wrapper .slide-control.slide-prev, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-prev {
     left: 10px;
   }
 }
-.consumptionator-page .gallery-wrapper .slide-control.slide-prev:after, .node-type-media-gallery .gallery-wrapper .slide-control.slide-prev:after, .node-type-tv-episode .gallery-wrapper .slide-control.slide-prev:after, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-prev:after, .node-media-gallery .gallery-wrapper .slide-control.slide-prev:after, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-prev:after {
+.consumptionator-page .gallery-wrapper .slide-control.slide-prev:after, .node-type-media-gallery .gallery-wrapper .slide-control.slide-prev:after, .node-type-tv-episode .gallery-wrapper .slide-control.slide-prev:after, .gallery-recap-block .gallery-wrapper .slide-control.slide-prev:after, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-prev:after, .node-media-gallery .gallery-wrapper .slide-control.slide-prev:after, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-prev:after {
   content: "\e628";
 }
-.consumptionator-page .gallery-wrapper .slide-control.slide-next, .node-type-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-tv-episode .gallery-wrapper .slide-control.slide-next, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-next, .node-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next {
+.consumptionator-page .gallery-wrapper .slide-control.slide-next, .node-type-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-tv-episode .gallery-wrapper .slide-control.slide-next, .gallery-recap-block .gallery-wrapper .slide-control.slide-next, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-next, .node-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next {
   right: 55px;
 }
 @media (max-width: 1900px) {
-  .consumptionator-page .gallery-wrapper .slide-control.slide-next, .node-type-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-tv-episode .gallery-wrapper .slide-control.slide-next, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-next, .node-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next {
+  .consumptionator-page .gallery-wrapper .slide-control.slide-next, .node-type-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-tv-episode .gallery-wrapper .slide-control.slide-next, .gallery-recap-block .gallery-wrapper .slide-control.slide-next, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-next, .node-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next {
     right: 40px;
   }
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .gallery-wrapper .slide-control.slide-next, .node-type-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-tv-episode .gallery-wrapper .slide-control.slide-next, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-next, .node-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next {
+  .consumptionator-page .gallery-wrapper .slide-control.slide-next, .node-type-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-tv-episode .gallery-wrapper .slide-control.slide-next, .gallery-recap-block .gallery-wrapper .slide-control.slide-next, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-next, .node-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next {
     right: 15px;
   }
 }
 @media (max-width: 480px) {
-  .consumptionator-page .gallery-wrapper .slide-control.slide-next, .node-type-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-tv-episode .gallery-wrapper .slide-control.slide-next, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-next, .node-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next {
+  .consumptionator-page .gallery-wrapper .slide-control.slide-next, .node-type-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-tv-episode .gallery-wrapper .slide-control.slide-next, .gallery-recap-block .gallery-wrapper .slide-control.slide-next, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-next, .node-media-gallery .gallery-wrapper .slide-control.slide-next, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next {
     right: 10px;
   }
 }
-.consumptionator-page .gallery-wrapper .slide-control.slide-next:after, .node-type-media-gallery .gallery-wrapper .slide-control.slide-next:after, .node-type-tv-episode .gallery-wrapper .slide-control.slide-next:after, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-next:after, .node-media-gallery .gallery-wrapper .slide-control.slide-next:after, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next:after {
+.consumptionator-page .gallery-wrapper .slide-control.slide-next:after, .node-type-media-gallery .gallery-wrapper .slide-control.slide-next:after, .node-type-tv-episode .gallery-wrapper .slide-control.slide-next:after, .gallery-recap-block .gallery-wrapper .slide-control.slide-next:after, .node-type-consumpt-post .gallery-wrapper .slide-control.slide-next:after, .node-media-gallery .gallery-wrapper .slide-control.slide-next:after, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next:after {
   content: "\e629";
 }
-.consumptionator-page .gallery-wrapper .slide-control.slick-disabled, .node-type-media-gallery .gallery-wrapper .slide-control.slick-disabled, .node-type-tv-episode .gallery-wrapper .slide-control.slick-disabled, .node-type-consumpt-post .gallery-wrapper .slide-control.slick-disabled, .node-media-gallery .gallery-wrapper .slide-control.slick-disabled {
+.consumptionator-page .gallery-wrapper .slide-control.slick-disabled, .node-type-media-gallery .gallery-wrapper .slide-control.slick-disabled, .node-type-tv-episode .gallery-wrapper .slide-control.slick-disabled, .gallery-recap-block .gallery-wrapper .slide-control.slick-disabled, .node-type-consumpt-post .gallery-wrapper .slide-control.slick-disabled, .node-media-gallery .gallery-wrapper .slide-control.slick-disabled, .node-type-usanetwork-microsite .gallery-wrapper .slide-control.slick-disabled {
   display: none !important;
 }
 
-.consumptionator-page:not(.node-type-person) .gallery-wrapper .gallery-list.ready .slide, .node-type-media-gallery .gallery-wrapper .gallery-list.ready .slide, .node-type-tv-episode .gallery-wrapper .gallery-list.ready .slide, .node-type-consumpt-post .gallery-wrapper .gallery-list.ready .slide, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list.ready .slide, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery .gallery-wrapper .gallery-list.ready .slide {
+.consumptionator-page:not(.node-type-person) .gallery-wrapper .gallery-list.ready .slide, .node-type-media-gallery .gallery-wrapper .gallery-list.ready .slide, .node-type-tv-episode .gallery-wrapper .gallery-list.ready .slide, .gallery-recap-block .gallery-wrapper .gallery-list.ready .slide, .node-type-consumpt-post .gallery-wrapper .gallery-list.ready .slide, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list.ready .slide, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery .gallery-wrapper .gallery-list.ready .slide {
   display: block;
 }
 @media (min-width: 1025px) {
-  .consumptionator-page:not(.node-type-person) .gallery-wrapper .gallery-list .slide, .node-type-media-gallery .gallery-wrapper .gallery-list .slide, .node-type-tv-episode .gallery-wrapper .gallery-list .slide, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery .gallery-wrapper .gallery-list .slide {
+  .consumptionator-page:not(.node-type-person) .gallery-wrapper .gallery-list .slide, .node-type-media-gallery .gallery-wrapper .gallery-list .slide, .node-type-tv-episode .gallery-wrapper .gallery-list .slide, .gallery-recap-block .gallery-wrapper .gallery-list .slide, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery .gallery-wrapper .gallery-list .slide {
     height: 100% !important;
   }
 }
@@ -12020,7 +12020,8 @@ footer h2 {
   .consumptionator-page:not(.node-type-person) .gallery-wrapper .slick-track,
   .consumptionator-page:not(.node-type-person) .gallery-wrapper .slick-list, .node-type-media-gallery .gallery-wrapper .slick-track,
   .node-type-media-gallery .gallery-wrapper .slick-list, .node-type-tv-episode .gallery-wrapper .slick-track,
-  .node-type-tv-episode .gallery-wrapper .slick-list, .node-type-consumpt-post .gallery-wrapper .slick-track,
+  .node-type-tv-episode .gallery-wrapper .slick-list, .gallery-recap-block .gallery-wrapper .slick-track,
+  .gallery-recap-block .gallery-wrapper .slick-list, .node-type-consumpt-post .gallery-wrapper .slick-track,
   .node-type-consumpt-post .gallery-wrapper .slick-list, .node-type-usanetwork-microsite .gallery-wrapper .slick-track,
   .node-type-usanetwork-microsite .gallery-wrapper .slick-list, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery .gallery-wrapper .slick-track,
   body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery .gallery-wrapper .slick-list {
@@ -12036,7 +12037,7 @@ footer h2 {
   }
 }
 
-.node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
+.node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .gallery-recap-block .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
   float: none;
   margin: 0;
   overflow: hidden;
@@ -12045,19 +12046,19 @@ footer h2 {
   width: 100%;
 }
 @media (min-width: 1901px) {
-  .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
+  .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .gallery-recap-block .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
     height: calc(42.01875vw - 110px);
     max-height: 1050px;
   }
 }
 @media (min-width: 1281px) {
-  .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
+  .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .gallery-recap-block .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
     height: calc(42.01875vw - 70px);
     max-height: 1050px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
+  .node-type-tv-episode .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .gallery-recap-block .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
     height: calc((100vw - 150px) * 0.5625);
     overflow: visible;
   }
@@ -14693,6 +14694,38 @@ footer h2 {
   position: relative;
 }
 
+.gallery-recap-block {
+  background: #f3f3f3;
+  padding: 40px 35px 104px;
+}
+@media (min-width: 1901px) {
+  .gallery-recap-block {
+    padding: 40px 55px 104px;
+  }
+}
+@media (max-width: 1280px) {
+  .gallery-recap-block {
+    border-bottom: 2px solid;
+    padding: 30px 25px 90px;
+  }
+}
+@media (max-width: 1024px) {
+  .gallery-recap-block {
+    padding: 40px 24px 90px;
+  }
+}
+@media (max-width: 640px) {
+  .gallery-recap-block {
+    border-bottom: 12px solid;
+    padding: 40px 0 75px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .gallery-recap-block .gallery-wrapper {
+    height: calc((100vw - 370px) * 0.5625);
+  }
+}
+
 @keyframes video-spinner {
   from {
     transform: rotate(0deg);
@@ -16248,7 +16281,7 @@ footer h2 {
 }
 [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list {
   margin: 0 auto;
-  height: calc(100% - 6.73vw);
+  height: calc(100% - 6.7333vw);
   width: 85%;
 }
 @media (min-width: 1901px) {
@@ -38192,679 +38225,6 @@ body.blog .view-display-id-blog_content .views-row {
 
 .touch .desktop-only {
   display: none;
-}
-
-[data-show-end-card="1"] .video-player-wrapper:hover .endcard_block img {
-  opacity: 1 !important;
-}
-[data-show-end-card="1"] .player .endcard_block {
-  display: none;
-  position: absolute;
-  opacity: 0;
-  overflow: hidden;
-}
-[data-show-end-card="1"] .player h3 {
-  color: #ffffff;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 1.47291vw;
-  letter-spacing: 0.5px;
-  line-height: 1;
-  margin: 0;
-  padding: 1.05208vw;
-  text-transform: uppercase;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player h3 {
-    font-size: 28px;
-    padding: 20px;
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player h3 {
-    font-size: 1.99609vw;
-    padding: 1.42578vw;
-  }
-}
-@media (max-width: 640px) {
-  [data-show-end-card="1"] .player h3 {
-    font-size: 12.775px;
-    padding: 9.125px;
-  }
-}
-[data-show-end-card="1"] .player .close {
-  cursor: pointer;
-  background-color: #2b2b2b;
-  right: 0;
-  height: 3.57706vw;
-  top: 0;
-  width: 3.57706vw;
-  z-index: 1;
-}
-[data-show-end-card="1"] .player .close:before {
-  content: '\e62b';
-  display: block;
-  font-family: "ico-font";
-  font-size: 1.57812vw;
-  line-height: 1.57812vw;
-  color: #ffffff;
-  margin: -0.78906vw 0 0 -0.78906vw;
-  left: 50%;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  width: 1.57812vw;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .close:before {
-    font-size: 30px;
-    line-height: 30px;
-    margin: -15px 0 0 -15px;
-    width: 30px;
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .close:before {
-    font-size: 2.13867vw;
-    line-height: 2.13867vw;
-    margin: -1.06934vw 0 0 -1.06934vw;
-    width: 2.13867vw;
-  }
-}
-@media (max-width: 640px) {
-  [data-show-end-card="1"] .player .close:before {
-    font-size: 13.6875px;
-    line-height: 13.6875px;
-    margin: -6.84375px 0 0 -6.84375px;
-    width: 13.6875px;
-  }
-}
-[data-show-end-card="1"] .player .close:hover {
-  background-color: #212121;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .close {
-    height: 68px;
-    width: 68px;
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .close {
-    height: 4.84766vw;
-    width: 4.84766vw;
-  }
-}
-@media (max-width: 640px) {
-  [data-show-end-card="1"] .player .close {
-    height: 31px;
-    width: 31px;
-  }
-}
-[data-show-end-card="1"] .player .pdk-player-wrap {
-  width: 100%;
-  height: 100%;
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .pdk-player-wrap.show-end-card {
-    display: none;
-  }
-}
-[data-show-end-card="1"] .player .episode-share-bar-wrap {
-  display: table;
-  height: calc(100% - 68px);
-  width: 100%;
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .episode-share-bar-wrap {
-    display: block;
-  }
-}
-[data-show-end-card="1"] .player .episode-share-bar {
-  display: table-cell;
-  vertical-align: middle;
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .episode-share-bar {
-    display: block;
-  }
-}
-[data-show-end-card="1"] .player .episode-share-bar table {
-  margin: 0 auto;
-  max-width: 250px;
-  min-width: 150px;
-  width: 100%;
-}
-@media (max-width: 1900px) {
-  [data-show-end-card="1"] .player .episode-share-bar table {
-    width: 220px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  [data-show-end-card="1"] .player .episode-share-bar table {
-    width: 150px;
-  }
-}
-@media (max-width: 768px) {
-  [data-show-end-card="1"] .player .episode-share-bar table {
-    width: 150px;
-  }
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .episode-share-bar table {
-    width: 31px;
-  }
-}
-[data-show-end-card="1"] .player .episode-share-bar .gig-button-container {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-[data-show-end-card="1"] .player .episode-share-bar .usa-share-button {
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  padding: 5px 0 5px 50px;
-  position: relative;
-}
-@media (max-width: 1900px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button {
-    margin-bottom: 15px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button {
-    margin-bottom: 10px;
-    padding: 2px 0 2px 30px;
-  }
-}
-@media (max-width: 768px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button {
-    margin-bottom: 10px;
-    padding: 2px 0 2px 30px;
-  }
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button {
-    border-radius: 0;
-    margin-bottom: 0;
-    padding: 0;
-  }
-}
-[data-show-end-card="1"] .player .episode-share-bar .usa-share-button:before {
-  color: #ffffff;
-  display: block;
-  font-family: "ico-font";
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 55px;
-  left: 0;
-  text-align: center;
-  position: absolute;
-  top: 0;
-  width: 50px;
-}
-@media (max-width: 1900px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button:before {
-    font-size: 18px;
-    line-height: 45px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button:before {
-    font-size: 14px;
-    line-height: 25px;
-    width: 30px;
-  }
-}
-@media (max-width: 768px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button:before {
-    font-size: 14px;
-    line-height: 25px;
-    width: 30px;
-  }
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button:before {
-    position: static;
-    line-height: 31px;
-    width: 31px;
-  }
-}
-[data-show-end-card="1"] .player .episode-share-bar .usa-share-button .button-text {
-  color: #ffffff;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  line-height: 45px;
-  text-align: center;
-}
-@media (max-width: 1900px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button .button-text {
-    font-size: 16px;
-    line-height: 35px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button .button-text {
-    font-size: 12px;
-    line-height: 20px;
-  }
-}
-@media (max-width: 768px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button .button-text {
-    font-size: 12px;
-    line-height: 20px;
-  }
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .episode-share-bar .usa-share-button .button-text {
-    display: none;
-  }
-}
-[data-show-end-card="1"] .player .episode-share-bar .Facebook {
-  border-bottom: 1px solid #163492;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #547fce), color-stop(100%, #3159b0));
-  background-image: -webkit-linear-gradient(#547fce, #3159b0);
-  background-image: -moz-linear-gradient(#547fce, #3159b0);
-  background-image: -o-linear-gradient(#547fce, #3159b0);
-  background-image: linear-gradient(#547fce, #3159b0);
-}
-[data-show-end-card="1"] .player .episode-share-bar .Facebook:before {
-  content: '\e618';
-}
-[data-show-end-card="1"] .player .episode-share-bar .Facebook .button-text {
-  border-left: 1px solid #547fce;
-}
-[data-show-end-card="1"] .player .episode-share-bar .Twitter {
-  border-bottom: 1px solid #1e88cf;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5bc1f1), color-stop(100%, #40aee0));
-  background-image: -webkit-linear-gradient(#5bc1f1, #40aee0);
-  background-image: -moz-linear-gradient(#5bc1f1, #40aee0);
-  background-image: -o-linear-gradient(#5bc1f1, #40aee0);
-  background-image: linear-gradient(#5bc1f1, #40aee0);
-}
-[data-show-end-card="1"] .player .episode-share-bar .Twitter:before {
-  content: '\e619';
-}
-[data-show-end-card="1"] .player .episode-share-bar .Twitter .button-text {
-  border-left: 1px solid #5bc1f1;
-}
-[data-show-end-card="1"] .player .episode-share-bar .Share {
-  border-bottom: 1px solid #707070;
-  margin-bottom: 0;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a8a8a8), color-stop(100%, #929292));
-  background-image: -webkit-linear-gradient(#a8a8a8, #929292);
-  background-image: -moz-linear-gradient(#a8a8a8, #929292);
-  background-image: -o-linear-gradient(#a8a8a8, #929292);
-  background-image: linear-gradient(#a8a8a8, #929292);
-}
-[data-show-end-card="1"] .player .episode-share-bar .Share:before {
-  content: '\e62a';
-}
-[data-show-end-card="1"] .player .episode-share-bar .Share .button-text {
-  border-left: 1px solid #a8a8a8;
-}
-[data-show-end-card="1"] .player .reload-button {
-  display: none;
-  box-sizing: border-box;
-  cursor: pointer;
-  background-color: rgba(51, 51, 51, 0.3);
-  height: 50%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 45%;
-}
-[data-show-end-card="1"] .player .reload-button:hover {
-  background-color: rgba(51, 51, 51, 0.4);
-}
-[data-show-end-card="1"] .player .reload-button:before {
-  display: block;
-  content: '\e62c';
-  color: #ffffff;
-  font-family: "ico-font";
-  font-weight: normal;
-  font-size: 50px;
-  line-height: 50px;
-  margin: -33px 0 0 -25px;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 50px;
-}
-[data-show-end-card="1"] .player .reload-button .replay-title {
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 16px;
-  left: 0;
-  position: absolute;
-  top: calc(50% + 25px);
-  text-align: center;
-  text-transform: capitalize;
-  width: 100%;
-}
-[data-show-end-card="1"] .player .reload-button .episode-title {
-  display: none;
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .reload-button {
-    border-bottom: 1px solid #676767;
-    background-color: #333333;
-    height: 31px;
-    margin-right: 31px;
-    padding-left: 31px;
-    position: relative;
-    width: 100%;
-  }
-  [data-show-end-card="1"] .player .reload-button:hover {
-    background-color: #333333;
-  }
-  [data-show-end-card="1"] .player .reload-button:before {
-    font-size: 20px;
-    line-height: 31px;
-    left: 0;
-    margin: 0;
-    top: 0;
-    width: 31px;
-  }
-  [data-show-end-card="1"] .player .reload-button .replay-title {
-    font-size: 12px;
-    line-height: 15px;
-    padding-left: 5px;
-    position: static;
-    text-align: left;
-  }
-  [data-show-end-card="1"] .player .reload-button .episode-title {
-    display: block;
-    font-family: "avalonregular", Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    line-height: 15px;
-    padding-left: 5px;
-  }
-}
-[data-show-end-card="1"] .player .endcard_topRight {
-  background-color: #333333;
-  right: 0;
-  height: 50%;
-  top: 0;
-  width: 55%;
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .endcard_topRight {
-    left: 0;
-    height: calc(100% - 31px);
-    right: auto;
-    top: 31px;
-    width: 50%;
-  }
-}
-[data-show-end-card="1"] .player .endcard_topRight .node {
-  margin: 0 auto;
-  width: 100%;
-}
-[data-show-end-card="1"] .player .endcard_topRight .node .meta-wrapper-inner {
-  text-align: center;
-}
-[data-show-end-card="1"] .player .endcard_topRight .node .meta-wrapper-inner:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-[data-show-end-card="1"] .player .endcard_topRight .node a {
-  color: #ffffff;
-}
-[data-show-end-card="1"] .player .endcard_topRight .node a .asset-img {
-  margin: 0 auto 1.3151vw;
-  min-width: 80px;
-  max-width: 409px;
-  width: 46.3%;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node a .asset-img {
-    margin: 0 auto 25px;
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node a .asset-img {
-    margin: 0 auto 0.96002vw;
-  }
-}
-@media (max-width: 640px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node a .asset-img {
-    margin: 0 auto 11.4px;
-  }
-}
-[data-show-end-card="1"] .player .endcard_topRight .node a img {
-  height: auto;
-  width: 100%;
-}
-[data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
-  display: inline-block;
-  height: 1.94634vw;
-  line-height: 1.94634vw;
-  margin-right: 0.78906vw;
-  position: relative;
-  vertical-align: middle;
-  width: 1.94634vw;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
-    height: 37px;
-    line-height: 37px;
-    margin-right: 15px;
-    width: 37px;
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
-    height: 2.53906vw;
-    line-height: 2.53906vw;
-    margin-right: 1.07422vw;
-    width: 2.53906vw;
-  }
-}
-@media (max-width: 768px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node .meta-icon {
-    height: 20px;
-    line-height: 20px;
-    margin-right: 8.25px;
-    width: 20px;
-  }
-}
-[data-show-end-card="1"] .player .endcard_topRight .node .meta {
-  display: inline-block;
-  font-size: 0.94687vw;
-  margin: 0;
-  max-width: 70%;
-  text-align: center;
-  vertical-align: middle;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node .meta {
-    font-size: 18px;
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node .meta {
-    font-size: 1.2832vw;
-  }
-}
-@media (max-width: 768px) {
-  [data-show-end-card="1"] .player .endcard_topRight .node .meta {
-    font-size: 9.86px;
-  }
-}
-[data-show-end-card="1"] .player .endcard_topRight .node .additional, [data-show-end-card="1"] .player .endcard_topRight .node .title {
-  display: inline-block;
-}
-[data-show-end-card="1"] .player .endcard_bottomLeft {
-  background-color: #333333;
-  left: 0;
-  height: 50%;
-  bottom: 0;
-  width: 45%;
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .endcard_bottomLeft {
-    height: calc(100% - 31px);
-    left: auto;
-    right: 0;
-    width: 31px;
-  }
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .endcard_bottomLeft h3 {
-    display: none;
-  }
-}
-[data-show-end-card="1"] .player .endcard_bottomRight {
-  background-color: #2b2b2b;
-  right: 0;
-  height: 50%;
-  bottom: 0;
-  width: 55%;
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight {
-    bottom: auto;
-    height: calc(100% - 31px);
-    right: 31px;
-    top: 31px;
-    width: calc(50% - 31px);
-  }
-}
-[data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list {
-  margin: 0 auto;
-  height: calc(100% - 6.7333vw);
-  width: 85%;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list {
-    height: calc(100% - 128px);
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list {
-    height: calc(100% - 9.127vw);
-  }
-}
-@media (max-width: 640px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list {
-    height: calc(100% - 58.4px);
-  }
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list {
-    width: 90%;
-  }
-}
-[data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li {
-  margin-bottom: 0.94687vw;
-  text-align: left;
-}
-[data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li {
-    margin-bottom: 18px;
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li {
-    margin-bottom: 1.2832vw;
-  }
-}
-@media (max-width: 640px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li {
-    margin-bottom: 8.2px;
-  }
-}
-[data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li:last-child {
-  margin-bottom: 0;
-}
-[data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .asset-img {
-  display: inline-block;
-  margin-right: 1.05208vw;
-  width: 9.20568vw;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .asset-img {
-    margin-right: 20px;
-    width: 175px;
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .asset-img {
-    margin-right: 1.42578vw;
-    width: 12.47852vw;
-  }
-}
-@media (max-width: 640px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .asset-img {
-    margin-right: 9.125px;
-    width: 80px;
-  }
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .asset-img {
-    display: block;
-    margin-right: 0;
-  }
-}
-[data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
-  color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.05208vw;
-  display: inline-block;
-  max-width: calc(100% - 11.5vw);
-  vertical-align: top;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
-    font-size: 20px;
-    max-width: calc(100% - 210px);
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
-    font-size: 1.42578vw;
-    max-width: calc(100% - 15.5vw);
-  }
-}
-@media (max-width: 640px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
-    font-size: 9.125px;
-    max-width: calc(100% - 100px);
-  }
-}
-@media (max-width: 480px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper {
-    display: block;
-    max-width: calc(100% - 10px);
-  }
-}
-[data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper .title {
-  margin: 0.26302vw 0 0.42083vw;
-}
-@media (min-width: 1901px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper .title {
-    margin: 5px 0 8px;
-  }
-}
-@media (max-width: 1024px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper .title {
-    margin: 0.35645vw 0 0.57031vw;
-  }
-}
-@media (max-width: 640px) {
-  [data-show-end-card="1"] .player .endcard_bottomRight .player-episodes-list li .meta-wrapper .title {
-    margin: 2.28125px 0 3.65px;
-  }
-}
-[data-show-end-card="1"] .player .endcard_bottomRight .related-slider {
-  height: 100%;
 }
 
 #admin-menu {

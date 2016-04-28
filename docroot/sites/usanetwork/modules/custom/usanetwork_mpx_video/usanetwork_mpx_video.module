@@ -136,6 +136,46 @@ function usanetwork_mpx_video_image_default_styles() {
       ),
     ),
   );
+  $styles['1868x1051'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 1868,
+          'height' => 1051,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1868,
+          'height' => 1051,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['945x532'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 945,
+          'height' => 532,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 945,
+          'height' => 532,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
   return $styles;
 }
 
@@ -1501,14 +1541,21 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $vars['full_episode'] = ($full_episode == '1') ? TRUE : FALSE;
 
       $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
-      $vars['is_live'] = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
-      if ($vars['is_live']) {
+      $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
+      $vars['is_live'] = $is_live;
+      if ($is_live) {
         $advert_block = module_invoke('mps', 'block_view', 'topbox');
         if (!empty($advert_block['content'])) {
           $vars['live_advert'] = render($advert_block['content']);
         } else {
           $vars['live_advert'] = NULL;
         }
+      }
+
+      if (!$is_live) {
+        $image_uri = _usanetwork_mpx_video_get_image_path($file);
+        $vars['image_desktop'] =  file_create_url(image_style_url('1868x1051', $image_uri));
+        $vars['image_mobile'] =  file_create_url(image_style_url('945x532', $image_uri));
       }
 
       $field_mpx_guid = _usanetwork_get_field_item('file', $file, 'field_mpx_guid', 'value');

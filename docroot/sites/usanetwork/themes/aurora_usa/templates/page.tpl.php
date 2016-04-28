@@ -74,7 +74,7 @@
  */
 ?>
 <?php if (!isset($ajax) || empty($ajax)): ?>
-  <header>
+  <header id="header">
     <span id="site-name">
       <?php print $site_name; ?>
     </span>
@@ -86,7 +86,8 @@
     <?php print render($page['header']); ?>
     <!-- /header -->
   </header>
-
+  <div id="header-spacer"></div>
+  
 <?php endif; ?>
 
 <div class="usa-wrap"><?php // this wrapper is intended for ad rails response please do not theme against it ?>

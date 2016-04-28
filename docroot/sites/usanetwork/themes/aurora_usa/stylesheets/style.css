@@ -18382,8 +18382,67 @@ footer h2 {
   }
 }
 @media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active {
+    padding: 0 0 1.95313vw 0;
+  }
+}
+@media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .bottom-menu-block {
     display: block;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block {
+    padding: 2.60417vw 3.64583vw 0 1.5625vw;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .logo-block {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block {
+    margin: 0 0 0 3.64583vw;
+    width: calc(100% - 9.375vw) !important;
+  }
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block.show-mrrobot .title {
+    height: 6.25vw;
+    width: 36.71875vw;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block.show-mrrobot .tune-in {
+    max-width: calc(100% - 45.57292vw);
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block .title {
+    float: left;
+    margin-bottom: 2.60417vw;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block .tune-in {
+    display: table;
+    float: left;
+    font-size: 2.73438vw;
+    line-height: 1.2;
+    margin-left: 5.20833vw;
+    vertical-align: middle;
+    width: auto;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .sponsored {
+    display: none;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block {
@@ -18619,6 +18678,21 @@ footer h2 {
     right: 4.6875vw;
     top: 5.3125vw;
     width: 10.625vw;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button.active {
+    height: 4.58333vw;
+    margin-top: -2.29167vw;
+    right: 3.38542vw;
+    width: 6.51042vw;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button.active:before {
+    content: '\e62e';
+    font-size: 6.51042vw;
+    line-height: 4.58333vw;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button:before {

@@ -1448,9 +1448,64 @@
     padding: 0 0 get-vw(24px, 640) 0;
   }
   &.active {
+    @include breakpoint($bp-768-width) {
+      padding: 0 0 get-vw(15px, 768) 0;
+    }
     .bottom-menu-block {
       @include breakpoint($bp-768-width) {
         display: block;
+      }
+    }
+    .top-menu-block {
+      @include breakpoint($bp-768-width) {
+        padding: get-vw(20px, 768) get-vw(28px, 768) 0 get-vw(12px, 768);
+      }
+      .logo-block {
+        @include breakpoint($bp-768-width) {
+          display: none;
+        }
+      }
+      .title-block {
+        @include breakpoint($bp-768-width) {
+          @include clear();
+          margin: 0 0 0 get-vw(28px, 768);
+          width: calc(100% - #{get-vw(72px, 768)})!important;
+        }
+        &.show-mrrobot {
+          .title {
+            @include breakpoint($bp-768-width) {
+              height: get-vw(48px, 768);
+              width: get-vw(282px, 768);
+            }
+          }
+          .tune-in {
+            @include breakpoint($bp-768-width) {
+              max-width: calc(100% - #{get-vw(350px, 768)});
+            }
+          }
+        }
+        .title {
+          @include breakpoint($bp-768-width) {
+            float: left;
+            margin-bottom: get-vw(20px, 768);
+          }
+        }
+        .tune-in {
+          @include breakpoint($bp-768-width) {
+            display: table;
+            float: left;
+            font-size: get-vw(21px, 768);
+            line-height: 1.2;
+            margin-left: get-vw(40px, 768);
+            vertical-align: middle;
+            width: auto;
+          }
+        }
+      }
+      .sponsored {
+        @include breakpoint($bp-768-width) {
+          display: none;
+        }
       }
     }
   }
@@ -1630,6 +1685,21 @@
         right: get-vw(30px, 640);
         top: get-vw(34px, 640);
         width: get-vw(68px, 640);
+      }
+      &.active {
+        @include breakpoint($bp-768-width) {
+          height: get-vw(35.2px, 768);
+          margin-top: get-vw(-17.6px, 768);
+          right: get-vw(26px, 768);
+          width: get-vw(50px, 768);
+        }
+        &:before {
+          @include breakpoint($bp-768-width) {
+            content: '\e62e';
+            font-size: get-vw(50px, 768);
+            line-height: get-vw(35.2px, 768);
+          }
+        }
       }
       &:before {
         color: inherit;

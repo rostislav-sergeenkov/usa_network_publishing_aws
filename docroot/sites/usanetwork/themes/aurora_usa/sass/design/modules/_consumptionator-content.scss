@@ -809,7 +809,8 @@
   &:not(.page-full-video) {
     #topbanner {
       @include breakpoint($bp-min-641-width) {
-        margin: 5px auto;
+        margin: 0 auto 10px;
+        top: 5px;
       }
     }
     .companionContainer {

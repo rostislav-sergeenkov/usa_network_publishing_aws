@@ -693,6 +693,129 @@ function usanetwork_files_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'file-image-field_image_copy_alt_to_other'
+  $field_instances['file-image-field_image_copy_alt_to_other'] = array(
+    'bundle' => 'image',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'block_cover_title_lg' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'cover_image' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 8,
+      ),
+      'entityreference_live_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'figure' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'gallery_flexslider' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'person_cover_image' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result_files' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'thumb_tiny' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'file',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_image_copy_alt_to_other',
+    'label' => 'Copy ALT text to all other photos',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => -8,
+    ),
+  );
+
   // Exported field_instance: 'file-image-field_keywords'
   $field_instances['file-image-field_keywords'] = array(
     'bundle' => 'image',
@@ -1233,6 +1356,7 @@ function usanetwork_files_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Alt Text');
   t('Caption');
+  t('Copy ALT text to all other photos');
   t('Copyright');
   t('Credit');
   t('Keywords');

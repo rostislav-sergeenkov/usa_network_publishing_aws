@@ -4735,14 +4735,17 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 }
 
 #topbanner {
-  margin: 10px auto;
+  margin: 0 auto 20px;
   overflow: hidden;
   text-align: center;
   max-width: 970px;
+  top: 10px;
+  position: relative;
 }
 @media (max-width: 640px) {
   #topbanner {
-    margin: 3px auto;
+    margin: 0 auto 6px;
+    top: 6px;
   }
 }
 
@@ -14228,7 +14231,8 @@ footer h2 {
 }
 @media (min-width: 641px) {
   .consumptionator-video-page:not(.page-full-video) #topbanner {
-    margin: 5px auto;
+    margin: 0 auto 10px;
+    top: 5px;
   }
 }
 .consumptionator-video-page:not(.page-full-video) .companionContainer {
@@ -21297,6 +21301,20 @@ footer h2 {
   background: none;
 }
 
+.show-new-design #header {
+  background-color: #e9eaeb;
+  overflow: visible;
+}
+.show-new-design #header.usa-sticky-header-initialized {
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 1;
+}
+.show-new-design #header-spacer {
+  display: none;
+}
+
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
   background: black;
   padding: 1.25vw 1.25vw 1.64063vw 1.25vw;
@@ -21320,13 +21338,13 @@ footer h2 {
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block {
     border-bottom: 1px solid;
     padding: 4.6875vw 4.6875vw 0 4.6875vw;
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block {
     height: 3.90625vw;
     left: 4.6875vw;
     margin-top: 0;
@@ -21335,37 +21353,37 @@ footer h2 {
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block .logo {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block .logo {
     width: 8.90625vw;
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block .second-logo {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block .second-logo {
     width: 22.65625vw;
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block {
     margin: 0;
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block .title {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block .title {
     margin-bottom: 4.6875vw;
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot {
     width: 56.5625vw;
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot .title {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot .title {
     height: 8.75vw;
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .sponsored {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .sponsored {
     float: right;
     height: 3.90625vw;
     margin-bottom: 2.5vw;
@@ -21377,7 +21395,7 @@ footer h2 {
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .menu-open-button {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .menu-open-button {
     height: 7.5vw;
     margin-top: 0;
     right: 4.6875vw;
@@ -21386,7 +21404,7 @@ footer h2 {
   }
 }
 @media (max-width: 640px) {
-  header:not(.new-sticky) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .menu-open-button:before {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .menu-open-button:before {
     font-size: 10.625vw;
     line-height: 7.5vw;
   }
@@ -21457,46 +21475,46 @@ footer h2 {
   }
 }
 @media (max-width: 768px) {
-  header.new-sticky #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) {
+  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) {
     background: #333333;
     padding: 0;
   }
 }
 @media (max-width: 768px) {
-  header.new-sticky #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block {
+  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block {
     border: none;
     padding: 1.17188vw 3.90625vw 1.17188vw 1.5625vw;
   }
 }
 @media (max-width: 768px) {
-  header.new-sticky #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block {
+  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block {
     height: 2.34375vw;
     margin-top: -1.17188vw;
     width: 21.22396vw;
   }
 }
 @media (max-width: 768px) {
-  header.new-sticky #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block .logo {
+  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block .logo {
     width: 5.07813vw;
   }
 }
 @media (max-width: 768px) {
-  header.new-sticky #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block .second-logo {
+  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block .second-logo {
     width: 12.5vw;
   }
 }
 @media (max-width: 768px) {
-  header.new-sticky #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot {
+  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot {
     width: 26.43229vw;
   }
 }
 @media (max-width: 768px) {
-  header.new-sticky #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot + .sponsored {
+  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot + .sponsored {
     left: calc(50% + 13.21615vw + 2.60417vw);
   }
 }
 @media (max-width: 768px) {
-  header.new-sticky #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block .title {
+  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block .title {
     height: 4.03646vw;
     margin-bottom: 0;
   }

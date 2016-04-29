@@ -1,11 +1,14 @@
 // advert
 #topbanner {
-  margin: 10px auto;
+  margin: 0 auto 20px;
   overflow: hidden;
   text-align: center;
   max-width: 970px;
+  top: 10px;
+  position: relative;
   @include breakpoint($bp-640-width) {
-    margin: 3px auto;
+    margin: 0 auto 6px;
+    top: 6px;
   }
 }
 .midbanner {

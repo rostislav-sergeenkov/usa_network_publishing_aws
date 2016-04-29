@@ -1,5 +1,8 @@
 (function ($) {
 
+  //=============================
+  // usaStickyHeader app
+  //=============================
   var usaStickyHeader = window.usaStickyHeader || {};
 
   usaStickyHeader = (function () {
@@ -11,83 +14,128 @@
       // default settings
       _.defaults = {
         // selectors
-        headerSpacer: '#header-spacer',
+        headerSpacerId: 'header-spacer',
+        stickyClass: 'usa-sticky-header', // string value
 
         // functionality
-        sticky: true
+        initStickyOffSetY: 50, // number value
+        sticky: true, // boolean
+        stickyMobile: true // boolean
       };
 
       // create global options
       _.options = $.extend(true, _.defaults, settings);
 
+      // set params
+      _.options.isMobileDevice = usa_deviceInfo.mobileDevice;
+      _.options.pageYOffset = window.pageYOffset;
+
       // elements
       _.$body = $(document.body);
       _.$header = $(element);
-      _.$headerSpacer = $(_.options.headerSpacer);
+      _.$headerSpacer = $('#' + _.options.headerSpacerId);
 
       // data attributes value
       _.data = {};
 
       // init app
-      _.init(true);
+      _.init(_.checkStickyOff());
     }
 
     return usaStickyHeader;
 
   }());
 
-  usaStickyHeader.prototype.setHeaderHeight = function () {
-    console.info('setHeaderHeight');
+  //=============================
+  // helpers
+  //=============================
+
+  usaStickyHeader.prototype.checkStickyOff = function () {
+    console.info('checkStickyOff');
+    var _ = this;
+
+    if (_.options.isMobileDevice) {
+      return _.options.stickyMobile;
+    } else {
+      return _.options.sticky;
+    }
+  };
+
+  //=============================
+  // main functionality
+  //=============================
+
+  usaStickyHeader.prototype.setHeaderSpacerHeight = function () {
+    console.info('setHeaderSpacerHeight');
 
     var _ = this,
         $header = _.$header,
         $headerSpacer = _.$headerSpacer;
 
-    $header.css({
-      position: 'fixed',
-      left: 0,
-      top: 0,
-      overflow: 'auto',
-      'z-index': 1
-    });
-
     $headerSpacer.css({
       display: 'block',
-      height: $header.innerHeight()
+      height: $header.outerHeight()
     });
+  };
+
+  usaStickyHeader.prototype.checkHeaderSpacer = function () {
+
+    console.info('createHeaderSpacer');
+
+    var _ = this,
+        $header = _.$header,
+        $headerSpacer = _.$headerSpacer,
+        headerSpacerId = _.options.headerSpacerId;
+
+    if ($($headerSpacer).length < 1) {
+      $($header).after($('<div>', {id: headerSpacerId}).hide());
+      _.$headerSpacer = $('#' + headerSpacerId);
+    }
+  };
+
+  usaStickyHeader.prototype.activateSticky = function () {
+
+    console.info('activateSticky');
+
+    var _ = this,
+        $header = _.$header,
+        $headerSpacer = _.$headerSpacer,
+        initStickyOffSetY = _.options.initStickyOffSetY,
+        pageYOffset = _.options.pageYOffset,
+        stickyClass = _.options.stickyClass.trim();
+
+    if (pageYOffset >= initStickyOffSetY) {
+      $header.addClass(stickyClass);
+    } else {
+      $header.removeClass(stickyClass);
+    }
+
+    _.setHeaderSpacerHeight();
   };
 
   usaStickyHeader.prototype.addEvents = function () {
     console.info('addEvents');
 
-    var _ = this,
-        $header = _.$header,
-        sticky = _.options.sticky;
+    var _ = this;
 
-    if (sticky) {
-      $(window)
-          .on('scroll', function (e) {
+    $(window)
+        .on('scroll', function (e) {
 
-            console.info('window scroll');
+          var $window = this;
+          _.options.pageYOffset = $window.pageYOffset;
 
-            var $window = this,
-                pageYOffset = $window.pageYOffset;
+          console.info('window scroll : ' + $window.pageYOffset);
 
-            if (pageYOffset >= 50) {
-              _.$header.addClass('usa-sticky-header');
-            } else {
-              _.$header.removeClass('usa-sticky-header');
-            }
-          })
-          .on('resize', function (e) {
+          _.activateSticky();
+        })
+        .on('resize', function (e) {
 
-            console.info('window resize');
+          var $window = this;
 
-            var $window = this;
-            _.setHeaderHeight();
+          console.info('window resize');
 
-          });
-    }
+          _.setHeaderSpacerHeight();
+        });
   };
 
   //=============================
@@ -101,9 +149,9 @@
 
     if (creation && !_.$header.hasClass('usa-sticky-header-initialized')) {
       _.$header.addClass('usa-sticky-header-initialized');
-     setTimeout( function () {
-       _.setHeaderHeight();
-     }, 3000);
+      _.checkHeaderSpacer();
+      _.setHeaderSpacerHeight();
+      _.activateSticky();
       _.addEvents();
     }
   };
@@ -137,6 +185,10 @@
       $('#header').usaStickyHeader();
     }
   });
+
+  //=============================
+  // end usaStickyHeader app
+  //=============================
 
   Drupal.behaviors.usanetwork_new_menu_dropdown = {
 

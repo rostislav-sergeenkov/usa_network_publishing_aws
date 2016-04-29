@@ -1432,12 +1432,31 @@
     }
   }
 }
+
+.show-new-design {
+  // #header
+  #header {
+    background-color: $poll-back;
+    overflow: visible;
+    &.usa-sticky-header-initialized {
+      left: 0;
+      top: 0;
+      position: fixed;
+      z-index: 1;
+    }
+  }
+  #header-spacer {
+    display: none;
+  }
+  // #header end
+}
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
   background: black;
   padding: get-vw(16px, 1280) get-vw(16px, 1280) get-vw(21px, 1280) get-vw(16px, 1280);
   position: relative;
   width: 100%;
   z-index: 1;
+
   @include breakpoint($bp-min-2500-width) {
     padding: 31.25px 31.25px 41.015625px 31.25px;
   }
@@ -1447,7 +1466,7 @@
   @include breakpoint($bp-640-width) {
     padding: 0 0 get-vw(24px, 640) 0;
   }
-  header:not(.new-sticky) &:not(.active) {
+  header:not(.usa-sticky-header) &:not(.active) {
     .top-menu-block {
       @include breakpoint($bp-640-width) {
         border-bottom: 1px solid;
@@ -1584,7 +1603,7 @@
       }
     }
   }
-  header.new-sticky &:not(.active) {
+  header.usa-sticky-header &:not(.active) {
     @include breakpoint($bp-768-width) {
       background: $aspot-shadow;
       padding: 0;

@@ -106,7 +106,7 @@
         <div class="video-player-wrapper section-player"
              data-ng-class="{'show-section': !playerThumbnail}">
           <?php if ($is_live): ?>
-            <div data-usa-player-is-live>
+            <div data-usa-player-is-live<?php !empty($live_pdk) ? print ' data-pdk="' . $live_pdk . '"' : ''; ?><?php !empty($live_logLevel) ? print ' data-logLevel="' . $live_logLevel . '"' : ''; ?>>
               <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
             </div>
           <?php else: ?>

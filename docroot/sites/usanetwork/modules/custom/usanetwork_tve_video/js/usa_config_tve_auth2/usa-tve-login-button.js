@@ -31,7 +31,8 @@
                   responsiveHeader = headerRight.length > 0,
                   showUsaModal = false, // default value
                   isCookiesEnabled = helper.cookiesEnabled(),
-                  isMobile = helper.device.isMobile;
+                  isMobile = helper.device.isMobile,
+                  showButton = false;
               
               scope.isAuthenticated = authService.isAuthenticated();
               scope.login = authService.openLoginModal;
@@ -50,7 +51,10 @@
               else if (!verificationInProgress) {
                 addLoginListener();
                 // show tve help links
-                usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
+                if (!showButton) {
+                  showButton = true;
+                  usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
+                }
               }
 
               // tracking verification cookie to show loading state
@@ -59,7 +63,10 @@
 
                 if (authService.isFirstVisit()) {
                   // show tve help links
-                  usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
+                  if (!showButton) {
+                    showButton = true;
+                    usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
+                  }
                 }
 
                 if (!!$cookies[tveAuthConfig.cookies.VERIFICATION]) {
@@ -119,7 +126,10 @@
                   revertLoadingState(status.isAuthenticated);
                   scope.text = text[false];
                   // show tve help links
-                  usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
+                  if (!showButton) {
+                    showButton = true;
+                    usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
+                  }
                 }
                 function revertLoadingState(statusIsAuth) {
                   if (verificationInProgress) {
@@ -147,7 +157,10 @@
                     modal.key.close();
                     if (!statusIsAuth) {
                       // show tve help links
-                      usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
+                      if (!showButton) {
+                        showButton = true;
+                        usaCustomAnimation.showTveHelpLinkUsa(500, 'signIn');
+                      }
                     }
                   }, 3000);
                 }

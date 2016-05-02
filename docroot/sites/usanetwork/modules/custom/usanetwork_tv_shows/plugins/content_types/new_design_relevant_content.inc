@@ -96,8 +96,8 @@ function new_design_relevant_content_get_latest_content($node, $conf) {
       'description' => $item->promo_description,
       'violator' => $item->promo_violator,
       'type' => $type,
-      'image_desktop' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $item->raw_image_uri))),
-      'image_mobile' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $item->raw_image_uri))),
+      'image_desktop' => image_style_url('154x131', $item->raw_image_uri),
+      'image_mobile' => image_style_url('284x187', $item->raw_image_uri),
     );
   }
   return $latest_content;

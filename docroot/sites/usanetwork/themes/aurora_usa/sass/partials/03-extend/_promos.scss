@@ -2214,5 +2214,128 @@
     }
   }
 }
+%usa-aspot-carousel-promo {
+  .usa-aspot-carousel-promo {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-768-width) {
+      height: auto;
+    }
+    a {
+      display: block;
+      height: 100%;
+      position: relative;
+      width: 100%;
+      padding: get-vw(12px, 1280) get-vw(10px, 1280);
+      @include breakpoint($bp-min-2500-width) {
+        padding: 23.4px 19.5px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: auto;
+        padding: 0;
+      }
+    }
+    .image-block {
+      left: get-vw(10px, 1280);
+      height: get-vw(67px, 1280);
+      margin-top: get-vw(-33.5px, 1280);
+      position: absolute;
+      top: 50%;
+      width: get-vw(79px, 1280);
+      @include breakpoint($bp-min-2500-width) {
+        height: 131px;
+        margin-top: -65.5px;
+        width: 154px;
+      }
+      @include breakpoint($bp-768-width) {
+        left: 0;
+        height: get-vw(156px, 640);
+        margin: 0;
+        position: relative;
+        top:0;
+        width: 100%;
+      }
+      .asset-img {
+        height: 100%;
+        position: relative;
+        width: 100%;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .meta-icon {
+        left: 50%;
+        height: get-vw(31px, 1280);
+        margin-left: get-vw(-15.5px, 1280);
+        margin-top: get-vw(-15.5px, 1280);
+        top: 50%;
+        width: get-vw(31px, 1280);
+        z-index: 1;
+        @include breakpoint($bp-min-2500-width) {
+          height: 60.5px;
+          margin-left: -30.25px;
+          margin-top: -30.25px;
+          width: 60.5px;
+        }
+        @include breakpoint($bp-768-width) {
+          height: get-vw(40px, 640);
+          margin-left: get-vw(-20px, 640);
+          margin-top: get-vw(-20px, 640);
+          width: get-vw(40px, 640);
+        }
+      }
+    }
+    .meta-wrapper {
+      height: 100%;
+      padding-left: get-vw(89px, 1280);
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-min-2500-width) {
+        padding-left: 173.5px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: auto;
+        padding: get-vw(15px, 640);
+      }
+    }
+    .meta-wrapper-inner {
+      display: table;
+      height: 100%;
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-768-width) {
+        display: block;
+        height: auto;
+      }
+      .meta {
+        display: table-cell;
+        vertical-align: middle;
+        @include breakpoint($bp-768-width) {
+          display: block;
+        }
+      }
+      .title {
+        color: white;
+        font-family: $avalon-book;
+        font-size: get-vw(14px, 1280);
+        letter-spacing: 1px;
+        line-height: 1.4;
+        margin-left: get-vw(5px, 1280);
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 27.3px;
+          margin-left: 9.8px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(20px, 640);
+          line-height: 1.2;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
 
 

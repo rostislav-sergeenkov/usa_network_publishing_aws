@@ -1,7 +1,7 @@
 <div class="panel-display panel-onecol-stacked clearfix">
   <div class="panel-wrapper">
     <?php if($content['one']) : ?>
-      <div class="panel-panel panel-one panel-row first-row aspot-and-episodes">
+      <div class="panel-panel panel-one panel-row first-row usa-show-aspot">
         <?php print $content['one']; ?>
       </div>
     <?php endif; ?>

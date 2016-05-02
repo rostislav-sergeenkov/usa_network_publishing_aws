@@ -1,0 +1,8 @@
+.usa-show-aspot {
+  padding: 0 get-vw(16px, 1280);
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-min-2500-width) {
+    padding: 0 31.25px;
+  }
+}

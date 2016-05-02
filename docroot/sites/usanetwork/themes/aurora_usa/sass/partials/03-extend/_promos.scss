@@ -2302,33 +2302,19 @@
       }
     }
     .meta-wrapper-inner {
+      display: table;
       height: 100%;
       position: relative;
       width: 100%;
       @include breakpoint($bp-768-width) {
+        display: block;
         height: auto;
       }
-      .caption {
-        display: block;
-        font-size: get-vw(12px, 1280);
-        line-height: 1;
-        width: auto;
-        @include breakpoint($bp-min-2500-width) {
-          font-size: 23.4px;
-        }
+      .meta {
+        display: table-cell;
+        vertical-align: middle;
         @include breakpoint($bp-768-width) {
-          display: none;
-        }
-        span {
-          color: white;
-          display: inline-block;
-          line-height: 1.5;
-          padding: 0 get-vw(5px, 1280);
-          text-transform: uppercase;
-          width: auto;
-          @include breakpoint($bp-min-2500-width) {
-            padding: 0 9.8px;
-          }
+          display: block;
         }
       }
       .title {

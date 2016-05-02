@@ -37,9 +37,6 @@
     <div class="meta-wrapper">
       <div class="meta-wrapper-inner">
         <div class="meta">
-          <?php if (!empty($violator)): ?>
-            <div class="caption"><span class="show-color"><?php print $violator; ?></span></div>
-          <?php endif; ?>
           <?php if (!empty($title)): ?>
             <div class="title"><?php print $title; ?></div>
           <?php endif; ?>

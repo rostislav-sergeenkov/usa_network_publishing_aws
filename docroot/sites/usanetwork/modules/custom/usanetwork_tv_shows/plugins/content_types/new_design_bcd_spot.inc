@@ -43,7 +43,7 @@ function new_design_tv_show_bcd_spot_content_type_edit_form($form, &$form_state)
 }
 
 function new_design_tv_show_bcd_spot_get_content($node) {
-  $bcd_spot_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_relevant_manual_content');
+  $bcd_spot_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_bcd_spot');
   $bcd_spot_data = array();
   foreach ($bcd_spot_content as $item) {
     $data_item = usanetwork_promo_get_promo_content_variables($item);

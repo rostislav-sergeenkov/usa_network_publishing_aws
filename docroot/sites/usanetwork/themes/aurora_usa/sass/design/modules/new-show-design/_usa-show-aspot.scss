@@ -1,8 +1,77 @@
 .usa-show-aspot {
+  @include clear();
+  background: $consum-also-back;
+  height: get-vw(523px, 1280);
   padding: 0 get-vw(16px, 1280);
   position: relative;
   width: 100%;
   @include breakpoint($bp-min-2500-width) {
+    height: 1021px;
     padding: 0 31.25px;
+  }
+  @include breakpoint($bp-768-width) {
+    padding: 0;
+  }
+  .pane-new-design-aspot {
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    width: 75.6%;
+    @include breakpoint($bp-768-width) {
+      float: none;
+      height: 56.25vw;
+      width: 100%;
+    }
+    .pane-content, #aspot-usanetwork, .slide {
+      height: 100%;
+      position: relative;
+      width: 100%;
+    }
+  }
+  .pane-new-design-relevant-content {
+    background: $right-rail-usa-show-back;
+    float: right;
+    height: 100%;
+    overflow: hidden;
+    width: 23%;
+    @include breakpoint($bp-min-769-width) {
+      background: #000000;
+      background: -moz-linear-gradient(top, #000000 0%, #121212 10%, #121212 90%, #000000 100%);
+      background: -webkit-linear-gradient(top, #000000 0%,#121212 10%,#121212 90%,#000000 100%);
+      background: linear-gradient(to bottom, #000000 0%,#121212 10%,#121212 90%,#000000 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 );
+    }
+    @include breakpoint($bp-768-width) {
+      padding: get-vw(24px, 640) 0;
+      width: 100%;
+    }
+    .pane-content {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+    ul {
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    li {
+      border-bottom: 1px solid $gray-dark;
+      height: 20%;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      @extend %usa-aspot-carousel-promo;
+      @include breakpoint($bp-768-width) {
+        border: none;
+        color: $right-rail-usa-show-color;
+        float: left;
+        height: auto;
+        margin-left: get-vw(24px, 640);
+        width: get-vw(237px, 640);
+      }
+    }
   }
 }

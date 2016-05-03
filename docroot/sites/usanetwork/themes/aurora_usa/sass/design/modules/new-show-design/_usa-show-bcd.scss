@@ -1,0 +1,51 @@
+.b-c-d-block {
+  @include clear();
+  background: $right-rail-usa-show-back;
+  position: relative;
+  width: 100%;
+  ul {
+    @include clear();
+    height: auto;
+    padding: get-vw(16px, 1280) get-vw(20px, 1280);
+    width: 100%;
+    @include breakpoint($bp-min-2500-width) {
+      padding: 31.25px 39.1px;
+    }
+    @include breakpoint($bp-768-width) {
+      padding: get-vw(32px, 640);
+    }
+  }
+  li {
+    display: block;
+    float: left;
+    height: calc(((100vw - 4*#{get-vw(16px, 1280)})/3)*0.5625);
+    margin-right: get-vw(16px, 1280);
+    overflow: hidden;
+    position: relative;
+    width: calc((100% - 2*#{get-vw(16px, 1280)})/3);
+    @include breakpoint($bp-min-2500-width) {
+      height: calc(((2500px - 4*31.25px)/3)*0.5625);
+      margin-right: 31.25px;
+      width: calc((100% - 2*31.25px)/3);
+    }
+    @include breakpoint($bp-768-width) {
+      height: auto;
+      margin-right: 0;
+      width: calc((100% - #{get-vw(18px, 640)})/2);
+    }
+    &:first-child {
+      @include breakpoint($bp-768-width) {
+        float: none;
+        margin-bottom: get-vw(55px, 640);
+        width: 100%;
+      }
+    }
+    &:nth-child(3) {
+      margin-right: 0;
+      @include breakpoint($bp-768-width) {
+        float: right;
+      }
+    }
+    @extend %usa-bcd-carousel-promo;
+  }
+}

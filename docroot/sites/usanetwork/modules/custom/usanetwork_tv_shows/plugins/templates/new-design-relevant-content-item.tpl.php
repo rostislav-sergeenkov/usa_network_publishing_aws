@@ -30,9 +30,6 @@
           <noscript><img src="<?php print $image_desktop; ?>" alt="" title="" /></noscript>
         <?php endif; ?>
       </div>
-      <?php if (!empty($icon)): ?>
-        <div class="meta-icon <?php print $icon; ?>"></div>
-      <?php endif; ?>
     </div>
     <div class="meta-wrapper">
       <div class="meta-wrapper-inner">

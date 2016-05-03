@@ -110,7 +110,6 @@ function aurora_usa_preprocess_html(&$vars) {
     if ($entity->filemime == 'video/mpx') {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
       $vars['classes_array'][] =  drupal_html_class('consumptionator-video-page');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/sign_in_out.js', array('scope' => 'footer', 'weight' => -1,));
     }
     $tv_content_node = usanetwork_core_api_get_tv_content_node($entity);
     if (!empty($tv_content_node)) {
@@ -170,6 +169,9 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/consumptionator-carousels.js');
   drupal_add_js($theme_path . '/javascripts/lazy-load-custom.js');
   drupal_add_js($theme_path . '/javascripts/spin.min.js');
+  drupal_add_js('var USAN = USAN || {};',
+    array('type' => 'inline', 'scope' => 'header', 'weight' => -100)
+  );
 
   $icomoon_ie_fix = array(
     '#tag' => 'script',

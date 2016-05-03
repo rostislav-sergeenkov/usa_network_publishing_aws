@@ -17,8 +17,15 @@
 <div class="episode-landing-list-item<?php if (!empty($active)): print ' active'; endif; ?>">
   <div class="episode-landing-list-item-inner">
     <div class="episode-landing-info-block">
-      <div class="open-description"></div>
-      <div class="title"><?php print $title; ?></div>
+      <?php if (empty($news_post)) : ?>
+        <div class="open-description"></div>
+      <?php endif; ?>
+      <?php if (!empty($show_title)) : ?>
+        <div class="show-name"><?php print $show_title; ?></div>
+      <?php endif; ?>
+      <div class="title"><a href="
+        <?php print $blog_url; ?>"><?php print $title; ?></a>
+      </div>
       <?php if (!empty($post_date)): ?>
         <div class="posted-date">
           <?php print t('Posted on') . ' ' . $post_date; ?>
@@ -26,7 +33,9 @@
       <?php endif; ?>
       <div class="image-block">
         <div class="asset-img">
-          <img src="<?php print $desktop_image_url; ?>" alt=""/>
+          <a href="<?php print $blog_url; ?>">
+            <img src="<?php print $desktop_image_url; ?>" alt=""/>
+          </a>
         </div>
       </div>
       <?php if (!empty($tags)): ?>

@@ -29,6 +29,19 @@
       padding: 56.25vw 0 0;
       border-bottom: 8px solid;
     }
+    &.social-enable {
+      .gallery-recap-block {
+        border: none;
+      }
+    }
+    &.gallery-enable {
+      &:not(.social-enable) {
+        border-bottom: none;
+        @include breakpoint($bp-1024-width) {
+          padding-bottom: 0;
+        }
+      }
+    }
     .block-character-info-header {
       @include clear();
       margin-bottom: 30px;

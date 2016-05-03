@@ -528,7 +528,7 @@ function usanetwork_top3_field_default_field_instances() {
       'module' => 'gigya',
       'settings' => array(),
       'type' => 'sharebar',
-      'weight' => 25,
+      'weight' => 14,
     ),
   );
 
@@ -1726,6 +1726,69 @@ function usanetwork_top3_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-top3_gallery-field_sponsored'
+  $field_instances['node-top3_gallery-field_sponsored'] = array(
+    'bundle' => 'top3_gallery',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 23,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_sponsored',
+    'label' => 'Sponsored',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance: 'node-top3_gallery-field_usa_og_description'
   $field_instances['node-top3_gallery-field_usa_og_description'] = array(
     'bundle' => 'top3_gallery',
@@ -1968,6 +2031,7 @@ function usanetwork_top3_field_default_field_instances() {
   t('Show');
   t('Show Name or Violator');
   t('Slides Content');
+  t('Sponsored');
   t('Title');
   t('Topic');
   t('Video');

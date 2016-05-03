@@ -155,7 +155,8 @@
     attach: function(context){
       var _self = this,
           $body = $('body'),
-          $submenu = ($body.hasClass('front'))? $('header'): $('.region-header'),
+          $submenu = $('.region-header'),
+          //$submenu = ($body.hasClass('front'))? $('header'): $('.region-header'),
           submenuOffsetTop = null,
           $userMenu = $('.upper-menu'),
           timer_id;

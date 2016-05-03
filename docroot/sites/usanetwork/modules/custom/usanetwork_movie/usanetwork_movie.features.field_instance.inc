@@ -21,7 +21,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 6,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -51,6 +51,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Synopsis',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 0,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -81,7 +83,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -108,6 +110,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'A-Spot Image',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -143,10 +147,9 @@ function usanetwork_movie_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 22,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -202,10 +205,9 @@ function usanetwork_movie_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => NULL,
         'settings' => array(),
-        'type' => 'usanetwork_dynamic_entity_reference_label',
-        'weight' => 23,
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -261,10 +263,9 @@ function usanetwork_movie_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 24,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -314,7 +315,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 7,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -341,6 +342,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Cover Media',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'description_field' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -392,7 +395,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 13,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -427,6 +430,8 @@ function usanetwork_movie_field_default_field_instances() {
         'target' => '_blank',
         'title' => '',
       ),
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display' => array(
         'url_cutoff' => 80,
       ),
@@ -468,7 +473,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 20,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -495,6 +500,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Movie content feed on Movie page',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -522,7 +529,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -549,6 +556,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Primary Genre',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -571,7 +580,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 9,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -598,6 +607,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Rating',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -619,7 +630,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 14,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -646,6 +657,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Release Year',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -679,7 +692,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 11,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -706,6 +719,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Secondary Genre',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -728,7 +743,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 12,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -755,6 +770,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -780,7 +797,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 8,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -807,6 +824,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Movie Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -833,7 +852,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 21,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -860,6 +879,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Movie content feed on Consumptionator page',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -887,7 +908,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -914,6 +935,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Time Override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -950,7 +973,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 4,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -977,6 +1000,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Promo Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1019,7 +1044,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 23,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -1070,6 +1095,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'H1',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1112,7 +1139,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 24,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -1163,6 +1190,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Page Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1199,7 +1228,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 15,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1226,6 +1255,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Short Synopsis',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1260,7 +1291,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 22,
       ),
       'follow_social' => array(
         'label' => 'above',
@@ -1312,6 +1343,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'OG Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1345,7 +1378,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 16,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1374,6 +1407,8 @@ function usanetwork_movie_field_default_field_instances() {
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1401,7 +1436,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 17,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1430,6 +1465,8 @@ function usanetwork_movie_field_default_field_instances() {
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1457,7 +1494,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 18,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1486,6 +1523,8 @@ function usanetwork_movie_field_default_field_instances() {
     'settings' => array(
       'colorfield_colorpicker_type' => 'farbtastic',
       'colorfield_enable_colorpicker' => TRUE,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1513,7 +1552,7 @@ function usanetwork_movie_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 19,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1540,6 +1579,8 @@ function usanetwork_movie_field_default_field_instances() {
     'label' => 'Tune-in Display Date',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,

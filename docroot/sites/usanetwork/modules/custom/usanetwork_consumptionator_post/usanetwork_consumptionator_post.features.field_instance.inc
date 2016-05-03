@@ -2667,7 +2667,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_show',
     'label' => 'Show',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),

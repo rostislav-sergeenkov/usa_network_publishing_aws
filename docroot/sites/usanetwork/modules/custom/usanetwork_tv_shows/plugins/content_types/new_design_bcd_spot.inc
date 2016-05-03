@@ -49,8 +49,8 @@ function new_design_tv_show_bcd_spot_get_content($node) {
     $data_item = usanetwork_promo_get_promo_content_variables($item);
     $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
     $additional_data = array(
-    'image_desktop' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
-    'image_mobile' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
+    'image_desktop' => image_style_url('791x445', $row_image_uri),
+    'image_mobile' => image_style_url('696x305', $row_image_uri),
     );
     $data_item = $data_item + $additional_data;
     $bcd_spot_data[] = $data_item;

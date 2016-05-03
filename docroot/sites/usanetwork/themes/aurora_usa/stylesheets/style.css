@@ -38912,6 +38912,46 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 
+.b-c-d-block {
+  background: #111111;
+  position: relative;
+  width: 100%;
+}
+.b-c-d-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.b-c-d-block ul {
+  height: auto;
+  padding: 1.25vw 1.5625vw;
+  width: 100%;
+}
+@media (min-width: 2500px) {
+  .b-c-d-block ul {
+    padding: 31.25px 39.1px;
+  }
+}
+.b-c-d-block li {
+  display: block;
+  float: left;
+  height: calc(((100vw - 4*1.25vw)/3)*0.5625);
+  margin-right: 1.25vw;
+  overflow: hidden;
+  position: relative;
+  width: calc((100% - 2*1.25vw)/3);
+}
+@media (min-width: 2500px) {
+  .b-c-d-block li {
+    height: calc(((2500px - 4*31.25px)/3)*0.5625);
+    margin-right: 31.25px;
+    width: calc((100% - 2*31.25px)/3);
+  }
+}
+.b-c-d-block li:last-child {
+  margin-right: 0;
+}
+
 #admin-menu {
   z-index: 100000;
 }

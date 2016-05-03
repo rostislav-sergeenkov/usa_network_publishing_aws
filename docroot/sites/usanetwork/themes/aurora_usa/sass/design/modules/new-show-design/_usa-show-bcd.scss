@@ -1,0 +1,31 @@
+.b-c-d-block {
+  @include clear();
+  background: $right-rail-usa-show-back;
+  position: relative;
+  width: 100%;
+  ul {
+    height: auto;
+    padding: get-vw(16px, 1280) get-vw(20px, 1280);
+    width: 100%;
+    @include breakpoint($bp-min-2500-width) {
+      padding: 31.25px 39.1px;
+    }
+  }
+  li {
+    display: block;
+    float: left;
+    height: calc(((100vw - 4*#{get-vw(16px, 1280)})/3)*0.5625);
+    margin-right: get-vw(16px, 1280);
+    overflow: hidden;
+    position: relative;
+    width: calc((100% - 2*#{get-vw(16px, 1280)})/3);
+    @include breakpoint($bp-min-2500-width) {
+      height: calc(((2500px - 4*31.25px)/3)*0.5625);
+      margin-right: 31.25px;
+      width: calc((100% - 2*31.25px)/3);
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

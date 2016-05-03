@@ -1,17 +1,17 @@
 <div class="panel-display panel-onecol-stacked clearfix">
   <div class="panel-wrapper">
     <?php if($content['one']) : ?>
-      <div class="panel-panel panel-one panel-row first-row aspot-and-episodes">
+      <div class="panel-panel panel-one panel-row first-row usa-show-aspot">
         <?php print $content['one']; ?>
       </div>
     <?php endif; ?>
     <?php if($content['two']) : ?>
-      <div class="panel-panel panel-two panel-row editors-block">
+      <div class="panel-panel panel-two panel-row b-c-d-block">
         <?php print $content['two']; ?>
       </div>
     <?php endif; ?>
     <?php if($content['three']) : ?>
-      <div class="panel-panel panel-three panel-row b-c-d-block">
+      <div class="panel-panel panel-three panel-row best-of-section">
         <?php print $content['three']; ?>
       </div>
     <?php endif; ?>

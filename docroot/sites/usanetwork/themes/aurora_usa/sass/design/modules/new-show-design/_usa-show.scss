@@ -1,0 +1,18 @@
+.show-new-design {
+  background: black;
+  // #header
+  #header {
+    background-color: black;
+    overflow: visible;
+    &.usa-sticky-header-initialized {
+      left: 0;
+      top: 0;
+      position: fixed;
+      z-index: 1;
+    }
+  }
+  #header-spacer {
+    display: none;
+  }
+  // #header end
+}

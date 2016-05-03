@@ -2773,7 +2773,7 @@ function _usa_mpx_video_clips_render() {
              ? l(t('View all videos'), 'node/' . $tv_content_node->nid . '/videos')
              : ($category == 'movie_short')
                ? l(t('View more @movie_title',  array('@movie_title' => $tv_content_node->title)), 'node/' . $tv_content_node->nid)
-               : l(t('View all movies'), 'movies'),
+               : l(t('View more movies'), 'movies'),
          );
          return theme('usanetwork_mpx_video_clips', $theme_variables);
        }

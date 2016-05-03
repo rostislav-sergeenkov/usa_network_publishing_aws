@@ -51,7 +51,7 @@
   //=============================
 
   usaStickyHeader.prototype.checkStickyOff = function () {
-    console.info('checkStickyOff');
+    
     var _ = this;
 
     if (_.options.isMobileDevice) {
@@ -66,7 +66,6 @@
   //=============================
 
   usaStickyHeader.prototype.setHeaderSpacerHeight = function () {
-    console.info('setHeaderSpacerHeight');
 
     var _ = this,
         $header = _.$header,
@@ -80,8 +79,6 @@
 
   usaStickyHeader.prototype.checkHeaderSpacer = function () {
 
-    console.info('createHeaderSpacer');
-
     var _ = this,
         $header = _.$header,
         $headerSpacer = _.$headerSpacer,
@@ -94,9 +91,7 @@
   };
 
   usaStickyHeader.prototype.activateSticky = function () {
-
-    console.info('activateSticky');
-
+    
     var _ = this,
         $header = _.$header,
         $headerSpacer = _.$headerSpacer,
@@ -114,7 +109,6 @@
   };
 
   usaStickyHeader.prototype.addEvents = function () {
-    console.info('addEvents');
 
     var _ = this;
 
@@ -123,17 +117,11 @@
 
           var $window = this;
           _.options.pageYOffset = $window.pageYOffset;
-
-          console.info('window scroll : ' + $window.pageYOffset);
-
           _.activateSticky();
         })
         .on('resize', function (e) {
 
           var $window = this;
-
-          console.info('window resize');
-
           _.setHeaderSpacerHeight();
         });
   };
@@ -142,8 +130,6 @@
   // Init usaGallery app
   //=============================
   usaStickyHeader.prototype.init = function (creation) {
-
-    console.info('usaStickyHeader init', this);
 
     var _ = this;
 
@@ -180,7 +166,6 @@
   // event document ready
   //================================
   $(document).ready(function () {
-    console.info('ready');
     if ($('body').hasClass('show-new-design')) {
       $('#header').usaStickyHeader();
     }
@@ -191,8 +176,7 @@
   //=============================
 
   Drupal.behaviors.usanetwork_new_menu_dropdown = {
-
-
+    
     attach: function (context) {
 
       var timer_id;

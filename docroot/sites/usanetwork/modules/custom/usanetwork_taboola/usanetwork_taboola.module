@@ -310,69 +310,76 @@ function usanetwork_taboola_preprocess_node(&$vars) {
  */
 function usanetwork_taboola_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
-  $show = _usanetwork_get_field_item('file', $file, 'field_show', 'entity');
-  $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
-  if ($full_episode === '0') {
-    if (!empty($show)) {
-      $filter = usanetwork_mpx_video_get_video_category($file);
-      $tag_taboola = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'syndication-promo-text',
-          'content' => t('Watch @show_name @category: "@title"',
-            array(
-              '@show_name' => $show->title,
-              '@category' => (!empty($filter)) ? $filter : 'Clips',
-              '@title' => $file->filename
-            )),
-        ),
-      );
-      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
-    }
-  }
-  else {
-    if (!empty($show)) {
-      $season = _usanetwork_get_field_item('file', $file, 'field_mpx_season_number', 'value');
-      $episode = _usanetwork_get_field_item('file', $file, 'field_mpx_episode_number', 'value');
-      $tag_taboola = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array(
-          'name' => 'syndication-promo-text',
-          'content' => t('Watch @show_name Full Episode S@season Ep@episode: "@title"',
-            array('@show_name' => $show->title, '@season' => $season, '@episode' => $episode, '@title' => $file->filename)),
-        ),
-      );
-      drupal_add_html_head($tag_taboola, 'syndication-promo-text');
-    }
-    else {
-      $movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
-      if (!empty($movie)) {
+  if (in_array($file->type,  _pub_mpx_get_mpx_account_video_file_types(TRUE)) && $vars['view_mode'] == 'full') {
+    $show = _usanetwork_get_field_item('file', $file, 'field_show', 'entity');
+    $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
+    if ($full_episode === '0') {
+      if (!empty($show)) {
+        $filter = usanetwork_mpx_video_get_video_category($file);
         $tag_taboola = array(
           '#type' => 'html_tag',
           '#tag' => 'meta',
           '#attributes' => array(
             'name' => 'syndication-promo-text',
-            'content' => t('Watch Movie "@movie"',
-              array('@movie' => $file->filename)),
+            'content' => t('Watch @show_name @category: "@title"',
+              array(
+                '@show_name' => $show->title,
+                '@category' => (!empty($filter)) ? $filter : 'Clips',
+                '@title' => $file->filename
+              )),
           ),
         );
         drupal_add_html_head($tag_taboola, 'syndication-promo-text');
       }
     }
+    else {
+      if (!empty($show)) {
+        $season = _usanetwork_get_field_item('file', $file, 'field_mpx_season_number', 'value');
+        $episode = _usanetwork_get_field_item('file', $file, 'field_mpx_episode_number', 'value');
+        $tag_taboola = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'syndication-promo-text',
+            'content' => t('Watch @show_name Full Episode S@season Ep@episode: "@title"',
+              array(
+                '@show_name' => $show->title,
+                '@season' => $season,
+                '@episode' => $episode,
+                '@title' => $file->filename
+              )),
+          ),
+        );
+        drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+      }
+      else {
+        $movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
+        if (!empty($movie)) {
+          $tag_taboola = array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+              'name' => 'syndication-promo-text',
+              'content' => t('Watch Movie "@movie"',
+                array('@movie' => $file->filename)),
+            ),
+          );
+          drupal_add_html_head($tag_taboola, 'syndication-promo-text');
+        }
+      }
+    }
+
+    $image_uri = usanetwork_core_api_get_content_image('file', $file);
+    $image = image_style_url('taboola', $image_uri);
+
+    $tag_taboola_image = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'syndication-promo-image',
+        'content' => $image,
+      ),
+    );
+    drupal_add_html_head($tag_taboola_image, 'syndication-promo-image');
   }
-
-  $image_uri = usanetwork_core_api_get_content_image('file', $file);
-  $image = image_style_url('taboola', $image_uri);
-
-  $tag_taboola_image = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'name' => 'syndication-promo-image',
-      'content' => $image,
-    ),
-  );
-  drupal_add_html_head($tag_taboola_image, 'syndication-promo-image');
 }

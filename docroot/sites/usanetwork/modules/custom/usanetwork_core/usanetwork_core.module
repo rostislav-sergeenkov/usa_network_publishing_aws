@@ -200,7 +200,6 @@ function usanetwork_core_set_alt_for_files_list($files, $node_wrapper) {
     if (usanetwork_core_api_check_field($file, 'field_image_copy_alt_to_other', 'file')) {
       if (usanetwork_core_api_check_field($file, 'field_file_image_alt_text', 'file')) {
         $alt_text = $file_wrapper->field_file_image_alt_text->value();
-        break;
       }
     }
   }

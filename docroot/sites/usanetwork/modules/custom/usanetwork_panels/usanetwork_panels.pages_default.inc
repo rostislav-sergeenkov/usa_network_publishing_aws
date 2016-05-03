@@ -71,7 +71,7 @@ function usanetwork_panels_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'usa_showlanding';
+  $display->layout = 'usa_new_showlanding';
   $display->layout_settings = array(
     'items' => array(
       'canvas' => array(

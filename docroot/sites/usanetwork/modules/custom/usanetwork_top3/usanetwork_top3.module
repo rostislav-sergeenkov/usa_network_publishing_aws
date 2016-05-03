@@ -193,7 +193,10 @@ function _usanetwork_top3_main_block() {
   if (!empty($node->field_sponsored)) {
     $field_sponsored = $node_wrapper->field_sponsored->value();
     if ($field_sponsored == '1') {
-      $sponsored_path = '/node/' . $node->nid;
+      $logo_advert_block = module_invoke('mps', 'block_view', 'topthreelogo');
+      if (!empty($logo_advert_block['content'])) {
+        $logo_advert = render($logo_advert_block['content']);
+      }
     }
   }
 
@@ -246,7 +249,7 @@ function _usanetwork_top3_main_block() {
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
       'isset_video' => isset($isset_video) ? $isset_video : NULL,
-      'sponsored_path' => isset($sponsored_path) ? $sponsored_path : NULL,
+      'logo_advert' => isset($logo_advert) ? $logo_advert : NULL,
     );
 
     return theme('usanetwork_top3_shared', $theme_variables);
@@ -314,7 +317,7 @@ function _usanetwork_top3_main_block() {
       'top3_title' => $node->title,
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
-      'sponsored_path' => isset($sponsored_path) ? $sponsored_path : NULL,
+      'logo_advert' => isset($logo_advert) ? $logo_advert : NULL,
     );
     return theme('usanetwork_top3_main_block', $theme_variables);
   }

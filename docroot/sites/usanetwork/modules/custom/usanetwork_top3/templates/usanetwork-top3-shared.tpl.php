@@ -22,8 +22,8 @@
       <img src="<?php print $logo_top; ?>" alt="<?php print $logo_top_alt; ?>" title="" />
     <?php endif; ?>
     <a href="<?php print $node_path; ?>" class="choose-top3-button show-color"><?php print t('create your own'); ?></a>
-    <?php if (!empty($sponsored_path)) : ?>
-      <div class="sponsored" data-mpspath="<?php print $sponsored_path; ?>" data-scalemps="1"></div>
+    <?php if (!empty($logo_advert)) : ?>
+      <?php print $logo_advert; ?>
     <?php endif; ?>
   </div>
   <div class="chosen-items-block show-color">

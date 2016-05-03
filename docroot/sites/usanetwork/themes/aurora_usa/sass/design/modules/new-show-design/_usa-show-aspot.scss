@@ -88,9 +88,6 @@
         height: auto;
         padding-left: get-vw(24px, 640);
         width: calc(#{get-vw(237px, 640) + get-vw(24px, 640)});
-        .usa-aspot-carousel-promo {
-          border: 1px solid white;
-        }
       }
       &:last-child {
         padding-right: get-vw(24px, 640);

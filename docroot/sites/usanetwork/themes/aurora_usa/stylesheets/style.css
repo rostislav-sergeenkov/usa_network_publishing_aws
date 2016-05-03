@@ -39123,10 +39123,12 @@ body.blog .view-display-id-blog_content .views-row {
     width: calc((100% - 2.8125vw)/2);
   }
 }
-.b-c-d-block li:first-child {
-  float: none;
-  margin-bottom: 8.59375vw;
-  width: 100%;
+@media (max-width: 768px) {
+  .b-c-d-block li:first-child {
+    float: none;
+    margin-bottom: 8.59375vw;
+    width: 100%;
+  }
 }
 .b-c-d-block li:nth-child(3) {
   margin-right: 0;

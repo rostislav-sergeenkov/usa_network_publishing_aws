@@ -34,9 +34,11 @@
       width: calc((100% - #{get-vw(18px, 640)})/2);
     }
     &:first-child {
-      float: none;
-      margin-bottom: get-vw(55px, 640);
-      width: 100%;
+      @include breakpoint($bp-768-width) {
+        float: none;
+        margin-bottom: get-vw(55px, 640);
+        width: 100%;
+      }
     }
     &:nth-child(3) {
       margin-right: 0;

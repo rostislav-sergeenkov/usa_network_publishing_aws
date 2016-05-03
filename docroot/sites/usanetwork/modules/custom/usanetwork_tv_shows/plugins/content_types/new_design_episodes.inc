@@ -32,12 +32,7 @@ function new_design_episodes_content_type_render($subtype, $conf, $args, $contex
   if (!usanetwork_core_api_check_field($node, 'field_relevant_content_modes') || $node_wrapper->field_relevant_content_modes->value() == 'latest') {
     $relevant_content = new_design_relevant_content_get_latest_content($node, $conf);
   }
-  elseif ($node_wrapper->field_relevant_content_modes->value() == 'most_popular') {
-    // Implement logic using ChartBeat APIs.
-  }
-  elseif ($node_wrapper->field_relevant_content_modes->value() == 'manual') {
-    $relevant_content = new_design_relevant_content_get_manual_content($node, $conf);
-  }
+
   foreach ($relevant_content as $item) {
     $theme_variables['items'][] = theme('new_design_relevant_content_item', $item);
   }
@@ -48,7 +43,7 @@ function new_design_episodes_content_type_render($subtype, $conf, $args, $contex
   return $block;
 }
 
-function new_design_relevant_content_content_type_edit_form($form, &$form_state) {
+function new_design_episodes_content_type_edit_form($form, &$form_state) {
   $conf = $form_state['conf'];
   $form['items_quantity'] = array(
     '#type' => 'textfield',
@@ -63,13 +58,13 @@ function new_design_relevant_content_content_type_edit_form($form, &$form_state)
   return $form;
 }
 
-function new_design_relevant_content_content_type_edit_form_validate($form, &$form_state) {
+function new_design_repisodes_content_type_edit_form_validate($form, &$form_state) {
   if (!is_numeric($form_state['values']['items_quantity'])) {
     form_set_error('items_quantity', t('Quantity should be a numeric."'));
   }
 }
 
-function new_design_relevant_content_content_type_edit_form_submit($form, &$form_state) {
+function new_design_episodes_content_type_edit_form_submit($form, &$form_state) {
   foreach (element_children($form) as $key) {
     if (!empty($form_state['values'][$key])) {
       $form_state['conf'][$key] = $form_state['values'][$key];
@@ -77,7 +72,7 @@ function new_design_relevant_content_content_type_edit_form_submit($form, &$form
   }
 }
 
-function new_design_relevant_content_get_latest_content($node, $conf) {
+function new_design_episodes_get_latest_content($node, $conf) {
   $latest_items = _usanetwork_tv_shows_cache_get_limited_related_show_content($node, 0, $conf['items_quantity']);
   $latest_content = array();
   foreach ($latest_items as $item) {
@@ -103,7 +98,7 @@ function new_design_relevant_content_get_latest_content($node, $conf) {
   return $latest_content;
 }
 
-function new_design_relevant_content_get_manual_content($node, $conf) {
+function new_design_episodes_get_manual_content($node, $conf) {
   $relevant_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_relevant_manual_content');
   $relevant_data = array();
   foreach ($relevant_content as $item) {

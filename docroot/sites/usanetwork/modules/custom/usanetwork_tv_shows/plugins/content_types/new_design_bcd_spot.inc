@@ -28,8 +28,12 @@ function new_design_tv_show_bcd_spot_content_type_render($subtype, $conf, $args,
   $block = new stdClass();
   $bcd_spot_data = new_design_tv_show_bcd_spot_get_content($node);
   $theme_variables = array();
-  foreach ($bcd_spot_data as $item) {
-    $theme_variables['items'][] = theme('new_design_bcd_spot_item', $item);
+  foreach ($bcd_spot_data as $index => $item) {
+    $positions = usanetwork_core_api_get_output_position($bcd_spot_data, $index);
+    $theme_variables['items'][] = array(
+      'html' => theme('new_design_bcd_spot_item', $item),
+      'position_classes' => implode(' ', $positions),
+    );
   }
   $block->content = array(
     '#theme' => 'new_design_bcd_spot',
@@ -45,12 +49,14 @@ function new_design_tv_show_bcd_spot_content_type_edit_form($form, &$form_state)
 function new_design_tv_show_bcd_spot_get_content($node) {
   $bcd_spot_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_bcd_spot');
   $bcd_spot_data = array();
-  foreach ($bcd_spot_content as $item) {
+  foreach ($bcd_spot_content as $index => $item) {
     $data_item = usanetwork_promo_get_promo_content_variables($item);
     $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
+    $positions = usanetwork_core_api_get_output_position($bcd_spot_content, $index);
     $additional_data = array(
-    'image_desktop' => image_style_url('791x445', $row_image_uri),
-    'image_mobile' => image_style_url('696x305', $row_image_uri),
+      'image_desktop' => image_style_url('791x445', $row_image_uri),
+      'image_mobile' => image_style_url('696x305', $row_image_uri),
+      'position' => current($positions),
     );
     $data_item = $data_item + $additional_data;
     $bcd_spot_data[] = $data_item;

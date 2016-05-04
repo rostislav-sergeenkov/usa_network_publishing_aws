@@ -13,6 +13,7 @@
  *  - $type
  *  - $image_desktop
  *  - $image_mobile
+ *  - $position
  */
 /*
 <?php print (!empty($entity_id) ? $entity_id : ''); ?>
@@ -20,7 +21,8 @@
 <?php print (!empty($description) ? $description : ''); ?>
 <?php print (!empty($type) ? $type : ''); ?></div>
 <?php print (!empty($image_desktop) ? $image_desktop : ''); ?>
-<?php print (!empty($image_mobile) ? $image_mobile : ''); ?>*/
+<?php print (!empty($image_mobile) ? $image_mobile : ''); ?>
+<?php print (!empty($position) ? $position : ''); ?>*/
 ?>
 <div class="node node-usanetwork-promo usa-bcd-carousel-promo">
   <a href="<?php print !empty($url) ? $url : '#'; ?>">

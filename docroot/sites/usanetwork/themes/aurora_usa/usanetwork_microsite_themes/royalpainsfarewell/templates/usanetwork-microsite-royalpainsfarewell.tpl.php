@@ -63,7 +63,7 @@ endif;
         </div>
       </div>
       <div id="site-nav-right">
-        <a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/usa_logo.svg" alt="USA Network logo"></a>
+        <a href="http://<?php print $_SERVER['HTTP_HOST']; ?>" target="_blank"><img src="<?php print $themePath; ?>/images/usa_logo.png" alt="USA Network logo"></a>
       </div>
 
       <div id="site-nav-mobile">

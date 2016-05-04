@@ -154,9 +154,13 @@ function usanetwork_taboola_preprocess_node(&$vars) {
       $show = _usanetwork_get_field_item('node', $node, 'field_show', 'entity');
       if ($gallery_type == 'Episodic Gallery') {
         $season_node = _usanetwork_get_field_item('node', $node, 'field_season', 'entity');
-        $season = _usanetwork_get_field_item('node', $season_node, 'field_season_id', 'value');
+        if (!empty($season_node)) {
+          $season = _usanetwork_get_field_item('node', $season_node, 'field_season_id', 'value');
+        }
         $episode_node = _usanetwork_get_field_item('node', $node, 'field_episode', 'entity');
-        $episode = _usanetwork_get_field_item('node', $episode_node, 'field_episode_number', 'value');
+        if (!empty($episode_node)) {
+          $episode = _usanetwork_get_field_item('node', $episode_node, 'field_episode_number', 'value');
+        }
         $tag_taboola = array(
           '#type' => 'html_tag',
           '#tag' => 'meta',

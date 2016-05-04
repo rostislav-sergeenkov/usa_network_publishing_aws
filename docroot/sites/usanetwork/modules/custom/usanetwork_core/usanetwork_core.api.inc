@@ -378,3 +378,26 @@ function usanetwork_core_api_get_dynamic_entity_reference_content($entity, $fiel
   }
   return $content;
 }
+
+/**
+ * Get output position for array index. Can be used as classes.
+ *
+ * @param $array
+ * @param $index
+ */
+function usanetwork_core_api_get_output_position($array, $index) {
+  $positions = array();
+  if ($index === 0) {
+    $positions[] = 'first';
+  }
+  if (($index % 2) === 0) {
+    $positions[] = 'even';
+  }
+  else {
+    $positions[] = 'odd';
+  }
+  if ($index + 1 == count($array)) {
+    $positions[] = 'last';
+  }
+  return $positions;
+}

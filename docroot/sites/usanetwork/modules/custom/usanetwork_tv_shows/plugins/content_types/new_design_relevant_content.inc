@@ -104,14 +104,14 @@ function new_design_relevant_content_get_latest_content($node, $conf) {
 }
 
 function new_design_relevant_content_get_manual_content($node, $conf) {
-  $relevant_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_relevant_manual_content');
+  $relevant_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_alternative_content');
   $relevant_data = array();
   foreach ($relevant_content as $item) {
     $data_item = usanetwork_promo_get_promo_content_variables($item);
     $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
     $additional_data = array(
-      'image_desktop' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
-      'image_mobile' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
+      'image_desktop' => image_style_url('154x131', $row_image_uri),
+      'image_mobile' => image_style_url('284x187', $row_image_uri),
     );
     $data_item = $data_item + $additional_data;
     $relevant_data[] = $data_item;

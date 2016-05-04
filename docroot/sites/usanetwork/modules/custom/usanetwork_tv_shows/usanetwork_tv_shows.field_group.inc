@@ -87,7 +87,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_new_design';
   $field_group->data = array(
     'label' => 'BCD-Spot',
-    'weight' => '28',
+    'weight' => '29',
     'children' => array(
       0 => 'field_bcd_spot',
     ),
@@ -638,8 +638,9 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '17',
     'children' => array(
       0 => 'field_new_design',
-      1 => 'group_service',
+      1 => 'group_bcd_spot',
       2 => 'group_relevant_content',
+      3 => 'group_service',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -723,7 +724,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_new_design';
   $field_group->data = array(
     'label' => 'Relevant content view',
-    'weight' => '27',
+    'weight' => '28',
     'children' => array(
       0 => 'field_relevant_content_modes',
       1 => 'field_relevant_manual_content',
@@ -900,8 +901,8 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Service',
     'weight' => '27',
     'children' => array(
-      0 => 'field_service_logo',
-      1 => 'field_service_link',
+      0 => 'field_service_link',
+      1 => 'field_service_logo',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -10,7 +10,7 @@ $plugin = array(
   'content_types' => array('new_design_episodes'),
   'render callback' => 'new_design_episodes_content_type_render',
   'required context' => new ctools_context_required(t('TV Show node'), 'node'),
-  'edit form' => 'new_design_repisodes_content_type_edit_form',
+  'edit form' => 'new_design_episodes_content_type_edit_form',
   'category' => array(t('New design'), -9),
 );
 
@@ -25,92 +25,66 @@ $plugin = array(
  */
 function new_design_episodes_content_type_render($subtype, $conf, $args, $context) {
   $node = $context->data;
-  $node_wrapper = entity_metadata_wrapper('node', $node);
   $block = new stdClass();
   $theme_variables = array();
-  $relevant_content = array();
-  if (!usanetwork_core_api_check_field($node, 'field_relevant_content_modes') || $node_wrapper->field_relevant_content_modes->value() == 'latest') {
-    $relevant_content = new_design_relevant_content_get_latest_content($node, $conf);
-  }
 
-  foreach ($relevant_content as $item) {
-    $theme_variables['items'][] = theme('new_design_relevant_content_item', $item);
+  $episodes = _usanetwork_tv_show_get_episodes_block($node);
+  if (!empty($episodes)) {
+
+    $theme_variables['first_block'] = array_shift($episodes);
+    foreach ($episodes as $item) {
+      $theme_variables['items'][] = theme('new_design_episodes_item', $item);
+    }
+
+    $block->content = array(
+      '#theme' => 'new_design_episodes',
+      '#content' => $theme_variables,
+    );
   }
-  $block->content = array(
-    '#theme' => 'new_design_relevant_content',
-    '#content' => $theme_variables,
-  );
   return $block;
 }
 
 function new_design_episodes_content_type_edit_form($form, &$form_state) {
-  $conf = $form_state['conf'];
-  $form['items_quantity'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Quantity of items'),
-    '#size' => 50,
-    '#description' => t('Quantity of items in block.'),
-    '#default_value' => !empty($conf['items_quantity']) ? $conf['items_quantity'] : '',
-    '#prefix' => '<div class="clear-block no-float">',
-    '#suffix' => '</div>',
-  );
-
   return $form;
 }
 
-function new_design_repisodes_content_type_edit_form_validate($form, &$form_state) {
-  if (!is_numeric($form_state['values']['items_quantity'])) {
-    form_set_error('items_quantity', t('Quantity should be a numeric."'));
-  }
-}
+function _usanetwork_tv_show_get_episodes_block($show) {
+  $show_nid = $show->nid;
+  $cache_name = 'tv_show_new_design_episodes_' . $show_nid;
 
-function new_design_episodes_content_type_edit_form_submit($form, &$form_state) {
-  foreach (element_children($form) as $key) {
-    if (!empty($form_state['values'][$key])) {
-      $form_state['conf'][$key] = $form_state['values'][$key];
+  $cache = cache_get($cache_name);
+
+  if (empty($cache)) {
+    $query = db_select('node', 'n');
+    $query->fields('n', array('nid', 'title'));
+    $query->condition('n.type', 'tv_episode')
+      ->condition('n.status', NODE_PUBLISHED);
+    $query->join('field_data_field_show', 'field_show', 'n.nid=field_show.entity_id');
+    $query->condition('field_show.field_show_target_id', $show_nid);
+    $query->join('field_data_field_season', 'field_season', 'n.nid=field_season.entity_id');
+    $query->join('node', 'node_season', 'field_season.field_season_target_id=node_season.nid');
+    $query->join('field_data_field_season_id', 'field_season_id', 'node_season.nid=field_season_id.entity_id');
+    $query->addField('field_season_id', 'field_season_id_value', 'season_id');
+    $query->join('field_data_field_episode_number', 'field_episode_number', 'n.nid=field_episode_number.entity_id');
+    $query->addField('field_episode_number', 'field_episode_number_value', 'episode_id');
+    $query->orderBy('season_id', 'ASC');
+    $query->orderBy('episode_id', 'ASC');
+
+    $result = $query->execute()->fetchAll();
+
+
+    foreach ($result as &$result_item) {
+      $episode_data = _usanetwork_episodes_get_episode_full_episode_data($show_nid, $result_item->season_id, $result_item->episode_id);
+
+      if (!empty($episode_data)) {
+        foreach ($episode_data as $key => $value) {
+          $result_item->{$key} = $value;
+        }
+      }
     }
-  }
-}
-
-function new_design_episodes_get_latest_content($node, $conf) {
-  $latest_items = _usanetwork_tv_shows_cache_get_limited_related_show_content($node, 0, $conf['items_quantity']);
-  $latest_content = array();
-  foreach ($latest_items as $item) {
-    $type = '';
-    if (!empty($item->type)) {
-      $type = $item->type;
-    }
-    elseif (!empty($item->bundle)) {
-      $type = $item->bundle;
-    }
-    $latest_content[] = array(
-      'entity_id' => $item->entity_id,
-      'entity_type' => $item->entity_type,
-      'url' => url($item->entity_type . '/' . $item->entity_id),
-      'title' => $item->promo_title,
-      'description' => $item->promo_description,
-      'violator' => $item->promo_violator,
-      'type' => $type,
-      'image_desktop' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $item->raw_image_uri))),
-      'image_mobile' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $item->raw_image_uri))),
-    );
-  }
-  return $latest_content;
-}
-
-function new_design_episodes_get_manual_content($node, $conf) {
-  $relevant_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_relevant_manual_content');
-  $relevant_data = array();
-  foreach ($relevant_content as $item) {
-    $data_item = usanetwork_promo_get_promo_content_variables($item);
-    $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
-    $additional_data = array(
-      'image_desktop' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
-      'image_mobile' => theme('image_style', array('style_name' => 'thumbnail', 'path' => image_style_url('thumbnail', $row_image_uri))),
-    );
-    $data_item = $data_item + $additional_data;
-    $relevant_data[] = $data_item;
+  } else {
+    $result = $cache->data;
   }
 
-  return $relevant_data;
+  return $result;
 }

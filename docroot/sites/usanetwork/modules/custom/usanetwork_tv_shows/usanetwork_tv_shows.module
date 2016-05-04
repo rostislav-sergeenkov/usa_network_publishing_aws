@@ -565,6 +565,16 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'plugins/templates/new-design-bcd-spot-item',
     ),
+    'new_design_episodes' => array(
+      'render element' => 'data',
+      'template' => 'plugins/templates/new-design-episodes',
+    ),
+    'new_design_episodes_item' => array(
+      'variables' => array(
+        //TODO: add items
+      ),
+      'template' => 'plugins/templates/new-design-episodes-item',
+    ),
   );
 }
 

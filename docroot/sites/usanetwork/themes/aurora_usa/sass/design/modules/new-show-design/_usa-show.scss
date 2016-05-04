@@ -15,4 +15,72 @@
     display: none;
   }
   // #header end
+  .usa-section-title {
+    border-bottom: 2px solid;
+    padding: get-vw(15px, 1280) 0;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-2500-width) {
+      padding: 29.3px 0;
+    }
+    @include breakpoint($bp-768-width) {
+      border-bottom: none;
+      padding: get-vw(48px, 640) 0;
+    }
+    &.show-border {
+      @include breakpoint($bp-768-width) {
+        border-top: 2px solid $gray-dark!important;
+      }
+    }
+    .title {
+      color: white;
+      font-family: $avalon-medium;
+      font-size: get-vw(24px, 1280);
+      letter-spacing: 1px;
+      line-height: 1;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      text-transform: uppercase;
+      @include breakpoint($bp-768-width) {
+        color: $header-tab-text;
+        font-size: get-vw(30px, 640);
+      }
+    }
+    .more {
+      bottom: get-vw(15px, 1280);
+      color: white;
+      display: block;
+      font-size: get-vw(16px, 1280);
+      letter-spacing: 0.5px;
+      line-height: 1;
+      padding-right: get-vw(16px, 1280);
+      position: absolute;
+      right: get-vw(16px, 1280);
+      text-transform: uppercase;
+      @include breakpoint($bp-min-2500-width) {
+        bottom: 29.3px;
+        font-size: 31.25px;
+        padding-right: 31.25px;
+        right: 31.25px;
+      }
+      @include breakpoint($bp-768-width) {
+        display: none;
+      }
+      &:before {
+        display: block;
+        content: '\e608';
+        font-family: $ico-font;
+        font-size: get-vw(12px, 1280);
+        line-height: get-vw(16px, 1280);
+        position: absolute;
+        right: 0;
+        top: 0;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 23.4px;
+          line-height: 31.25px;
+        }
+      }
+    }
+  }
 }

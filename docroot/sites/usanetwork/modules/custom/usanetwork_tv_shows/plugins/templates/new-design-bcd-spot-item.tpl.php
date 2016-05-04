@@ -14,11 +14,18 @@
  *  - $image_desktop
  *  - $image_mobile
  */
+/*
+<?php print (!empty($entity_id) ? $entity_id : ''); ?>
+<?php print (!empty($entity_type) ? $entity_type : ''); ?>
+<?php print (!empty($description) ? $description : ''); ?>
+<?php print (!empty($type) ? $type : ''); ?></div>
+<?php print (!empty($image_desktop) ? $image_desktop : ''); ?>
+<?php print (!empty($image_mobile) ? $image_mobile : ''); ?>*/
 ?>
 <div class="node node-usanetwork-promo usa-bcd-carousel-promo">
   <a href="<?php print !empty($url) ? $url : '#'; ?>">
     <div class="image-block">
-      <div class="asset-img" data-alt="" data-class="tile-img">
+      <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
         <?php if (!empty($image_mobile)): ?>
           <div data-src="<?php print $image_mobile; ?>"></div>
         <?php endif; ?>
@@ -47,9 +54,4 @@
     </div>
   </a>
 </div>
-<!--div><?php print (!empty($entity_id) ? $entity_id : ''); ?></div>
-<div><?php print (!empty($entity_type) ? $entity_type : ''); ?></div>
-<div><?php print (!empty($description) ? $description : ''); ?></div>
-<div><?php print (!empty($type) ? $type : ''); ?></div>
-<div><?php print (!empty($image_desktop) ? $image_desktop : ''); ?></div>
-<div><?php print (!empty($image_mobile) ? $image_mobile : ''); ?></div-->
+

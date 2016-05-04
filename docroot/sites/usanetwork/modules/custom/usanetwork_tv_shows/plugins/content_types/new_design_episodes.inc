@@ -28,18 +28,18 @@ function new_design_episodes_content_type_render($subtype, $conf, $args, $contex
   $block = new stdClass();
   $theme_variables = array();
 
-  $episodes = _usanetwork_tv_show_get_episodes_block($node);
-  if (!empty($episodes)) {
+  $field_show_episode_block = _usanetwork_get_field_item('node', $node, 'field_show_episode_block', 'value');
+  if ($field_show_episode_block == 1) {
+    $episodes = _usanetwork_tv_show_get_episodes_block($node);
+    if (!empty($episodes)) {
+      $theme_variables['first_block'] = $episodes['first_element'];
+      $theme_variables['carousel_items'] = $episodes['carousel_items'];
 
-    $theme_variables['first_block'] = array_shift($episodes);
-    foreach ($episodes as $item) {
-      $theme_variables['items'][] = theme('new_design_episodes_item', $item);
+      $block->content = array(
+        '#theme' => 'new_design_episodes',
+        '#content' => $theme_variables,
+      );
     }
-
-    $block->content = array(
-      '#theme' => 'new_design_episodes',
-      '#content' => $theme_variables,
-    );
   }
   return $block;
 }
@@ -49,6 +49,40 @@ function new_design_episodes_content_type_edit_form($form, &$form_state) {
 }
 
 function _usanetwork_tv_show_get_episodes_block($show) {
+  $first_element_array = array();
+  $carousel_items = array();
+  $episodes = _usanetwork_tv_show_get_episodes($show);
+  if (!empty($episodes)) {
+    $first_element = array_shift($episodes);
+    $first_element_array = array(
+      'title' => $first_element->title,
+      'image' => image_style_url('284x187', $first_element->episode_uri),
+      'season' => t('S@season', array('@season' => $first_element->season_id)),
+      'episode' => t('EP@episode', array('@episode' => $first_element->episode_id)),
+      'episode_link' => url('node/' . $first_element->nid),
+      'file_link' => url('file/' . $first_element->fid),
+    );
+    foreach ($episodes as $item) {
+      $theme_item = array(
+        'title' => $item->title,
+        'image' => image_style_url('154x131', $item->episode_uri),
+        'season' => t('S@season', array('@season' => $item->season_id)),
+        'episode' => t('EP@episode', array('@episode' => $item->episode_id)),
+        'episode_link' => url('node/' . $item->nid),
+        'file_link' => url('file/' . $item->fid),
+      );
+      $carousel_items[] = theme('new_design_episodes_item', $theme_item);
+    }
+  }
+
+  return array(
+    'first_element' => $first_element_array,
+    'carousel_items' => $carousel_items,
+  );
+}
+
+
+function _usanetwork_tv_show_get_episodes($show) {
   $show_nid = $show->nid;
   $cache_name = 'tv_show_new_design_episodes_' . $show_nid;
 
@@ -67,6 +101,9 @@ function _usanetwork_tv_show_get_episodes_block($show) {
     $query->addField('field_season_id', 'field_season_id_value', 'season_id');
     $query->join('field_data_field_episode_number', 'field_episode_number', 'n.nid=field_episode_number.entity_id');
     $query->addField('field_episode_number', 'field_episode_number_value', 'episode_id');
+    $query->join('field_data_field_tv_cover_media', 'field_tv_cover_media', 'n.nid=field_tv_cover_media.entity_id');
+    $query->join('file_managed', 'fm', 'fm.fid=field_tv_cover_media.field_tv_cover_media_fid');
+    $query->addField('fm', 'uri', 'episode_uri');
     $query->orderBy('season_id', 'ASC');
     $query->orderBy('episode_id', 'ASC');
 

@@ -3,10 +3,16 @@
  * Item of episodes.
  * Variables:
  *  - $entity_id
-
+ *  - $image
+ *  - $season
+ *  - $episode
+ *  - $episode_link
+ *  - $file_link
  */
 ?>
-<div></div><?php print (!empty($entity_id) ? $entity_id : ''); ?></div>
-<div><?php print (!empty($entity_type) ? $entity_type : ''); ?></div>
-<div><?php print (!empty($description) ? $description : ''); ?></div>
-<div><?php print (!empty($type) ? $type : ''); ?></div>
+<div></div><?php print (!empty($title) ? $title : ''); ?></div>
+<div><?php print (!empty($image) ? $image : ''); ?></div>
+<div><?php print (!empty($season) ? $season : ''); ?></div>
+<div><?php print (!empty($episode) ? $episode : ''); ?></div>
+<div><?php print (!empty($episode_link) ? $episode_link : ''); ?></div>
+<div><?php print (!empty($file_link) ? $file_link : ''); ?></div>

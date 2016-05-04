@@ -571,7 +571,12 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
     ),
     'new_design_episodes_item' => array(
       'variables' => array(
-        //TODO: add items
+        'title' => NULL,
+        'image' => NULL,
+        'season' => NULL,
+        'episode' => NULL,
+        'episode_link' => NULL,
+        'file_link' => NULL,
       ),
       'template' => 'plugins/templates/new-design-episodes-item',
     ),

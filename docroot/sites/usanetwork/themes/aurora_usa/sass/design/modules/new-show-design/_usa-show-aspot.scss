@@ -10,6 +10,7 @@
     padding: 0 31.25px;
   }
   @include breakpoint($bp-768-width) {
+    height: auto;
     padding: 0;
   }
   .pane-new-design-aspot {
@@ -51,26 +52,47 @@
       overflow: hidden;
       width: 100%;
     }
+    #relevant-content-carousel {
+      height: 100%;
+      width: 100%;
+
+      .mCSB_scrollTools {
+        width: 4px;
+      }
+    }
     ul {
       height: 100%;
       overflow: hidden;
       position: relative;
       width: 100%;
+      &.slick-initialized {
+        overflow: visible;
+        .slick-list {
+          overflow: visible;
+        }
+      }
     }
     li {
       border-bottom: 1px solid $gray-dark;
-      height: 20%;
+      height: calc(#{get-vw(523px, 1280) / 5});
       overflow: hidden;
       position: relative;
       width: 100%;
       @extend %usa-aspot-carousel-promo;
+      @include breakpoint($bp-min-2500-width) {
+        height: calc(1021px / 5);
+      }
       @include breakpoint($bp-768-width) {
         border: none;
         color: $right-rail-usa-show-color;
         float: left;
         height: auto;
-        margin-left: get-vw(24px, 640);
-        width: get-vw(237px, 640);
+        padding-left: get-vw(24px, 640);
+        width: calc(#{get-vw(237px, 640) + get-vw(24px, 640)});
+      }
+      &:last-child {
+        padding-right: get-vw(24px, 640);
+        width: calc(#{get-vw(237px, 640) + (get-vw(24px, 640) * 2)});
       }
     }
   }

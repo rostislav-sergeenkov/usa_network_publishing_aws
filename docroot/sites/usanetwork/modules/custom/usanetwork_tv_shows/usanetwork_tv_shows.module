@@ -185,7 +185,8 @@ function usanetwork_tv_shows_block_view($delta = '') {
         '#markup' => _usanetwork_tv_shows_new_design_menu(),
         '#attached' => array(
           'js' => array(
-            path_to_theme('aurora_usa') . '/javascripts/new-menu-dropdown.js',
+            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_menu-dropdown.js',
+            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_carousels.js',
 //            drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
           ),
         ),
@@ -838,6 +839,46 @@ function usanetwork_tv_shows_image_default_styles() {
         'data' => array(
           'width' => 284,
           'height' => 187,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['791x445'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 791,
+          'height' => 445,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 791,
+          'height' => 445,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['696x305'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 696,
+          'height' => 305,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 696,
+          'height' => 305,
         ),
         'weight' => 1,
       ),

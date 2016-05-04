@@ -716,9 +716,14 @@
           if (initAdobeTracking) {
             _.callAdobeTracking();
           }
+
+          if ($('body').hasClass('page-node-microsite')
+            && typeof Drupal.behaviors.ms_global == 'object'
+            && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
+              Drupal.behaviors.ms_global.refreshAds('galleries');
+          }
         })
         .on('afterChange', function (event, slick, currentSlide) {
-
           _.gigyaSharebar(currentSlide);
           _.movePagerItems(_, currentSlide);
 

@@ -13,6 +13,7 @@
  *  - $type
  *  - $image_desktop
  *  - $image_mobile
+ *  - $position
  */
 ?>
 <div class="node node-usanetwork-promo usa-bcd-carousel-promo">
@@ -52,4 +53,5 @@
 <div><?php print (!empty($description) ? $description : ''); ?></div>
 <div><?php print (!empty($type) ? $type : ''); ?></div>
 <div><?php print (!empty($image_desktop) ? $image_desktop : ''); ?></div>
-<div><?php print (!empty($image_mobile) ? $image_mobile : ''); ?></div-->
+<div><?php print (!empty($image_mobile) ? $image_mobile : ''); ?></div>
+<div><?php print (!empty($position) ? $position : ''); ?></div-->

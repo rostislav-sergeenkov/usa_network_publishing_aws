@@ -164,6 +164,11 @@ function usanetwork_tv_shows_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
+  $blocks['usanetwork_tv_shows_nd_footer'] = array(
+    'info' => t('Tv Shows: New Design Footer'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -257,6 +262,10 @@ function usanetwork_tv_shows_block_view($delta = '') {
     case 'usanetwork_tv_shows_explore_list':
       $block['subject'] = '';
       $block['content'] = _usanetwork_tv_shows_landing_page_explore_block();
+      break;
+    case 'usanetwork_tv_shows_nd_footer':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_tv_shows_nd_footer_block();
       break;
   }
 
@@ -580,6 +589,9 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'file_link' => NULL,
       ),
       'template' => 'plugins/templates/new-design-episodes-item',
+    ),
+    'usanetwork_tv_shows_nd_footer' => array(
+      'template' => 'templates/usanetwork-tv-shows-nd-footer',
     ),
   );
 }
@@ -4639,4 +4651,8 @@ function _usanetwork_tv_shows_explore_landing_related_content_ajax($show_node, $
   }
   $response['rendered'] = _usanetwork_tv_shows_landing_page_explore_items_block($items, $start_from, $lenght);
   return drupal_json_output($response);
+}
+
+function _usanetwork_tv_shows_nd_footer_block() {
+  return theme('usanetwork_tv_shows_nd_footer');
 }

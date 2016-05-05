@@ -18,9 +18,13 @@
           <div class="meta-wrapper">
             <div class="meta-icon video-icon"></div>
             <div class="meta">
-              <div class="caption"><?php print $featured_aspot['aspot_caption']; ?></div>
-              <div class="title"><?php print $featured_aspot['aspot_title']; ?></div>
-              <?php if ($featured_aspot['aspot_additional']) : ?>
+              <?php if (!empty($featured_aspot['aspot_caption'])): ?>
+                <div class="caption"><?php print $featured_aspot['aspot_caption']; ?></div>
+              <?php endif; ?>
+              <?php if (!empty($featured_aspot['aspot_title'])): ?>
+                <div class="title"><?php print $featured_aspot['aspot_title']; ?></div>
+              <?php endif; ?>
+              <?php if (!empty($featured_aspot['aspot_additional'])): ?>
                 <div class="additional"><span><?php print $featured_aspot['aspot_additional']; ?></span> <?php print $featured_aspot['aspot_duration']; ?></div>
               <?php endif; ?>
             </div>
@@ -37,9 +41,13 @@
                 <div class="meta-wrapper-inner">
                   <div class="meta-icon video-icon"></div>
                   <div class="meta">
-                    <div class="caption"><?php print $featured_element['video_caption']; ?></div>
-                    <div class="title"><?php print $featured_element['video_title']; ?></div>
-                    <?php if ($featured_element['video_additional']) : ?>
+                    <?php if (!empty($featured_element['video_caption'])): ?>
+                      <div class="caption"><?php print $featured_element['video_caption']; ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($featured_element['video_title'])): ?>
+                      <div class="title"><?php print $featured_element['video_title']; ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($featured_element['video_additional'])): ?>
                       <div class="additional"><span><?php print $featured_element['video_additional']; ?></span> <?php print $featured_element['video_duration']; ?></div>
                     <?php endif; ?>
                   </div>

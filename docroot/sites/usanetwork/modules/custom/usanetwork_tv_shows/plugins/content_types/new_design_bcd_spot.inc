@@ -54,7 +54,7 @@ function new_design_tv_show_bcd_spot_get_content($node) {
     $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
     $positions = usanetwork_core_api_get_output_position($bcd_spot_content, $index);
     $additional_data = array(
-      'image_desktop' => image_style_url('791x445', $row_image_uri),
+      'image_desktop' => image_style_url('507x285', $row_image_uri),
       'image_mobile' => image_style_url('696x305', $row_image_uri),
       'position' => current($positions),
     );

@@ -5,9 +5,9 @@
   padding: 0 get-vw(16px, 1280);
   position: relative;
   width: 100%;
-  @include breakpoint($bp-min-2500-width) {
-    height: 1021px;
-    padding: 0 31.25px;
+  @include breakpoint($bp-min-1601-width) {
+    height: 653.75px;
+    padding: 0 20px;
   }
   @include breakpoint($bp-768-width) {
     height: auto;
@@ -28,6 +28,11 @@
       position: relative;
       width: 100%;
     }
+    #aspot-usanetwork {
+      @include breakpoint($bp-768-width) {
+        border-bottom: 2px solid;
+      }
+    }
   }
   .pane-new-design-relevant-content {
     background: $right-rail-usa-show-back;
@@ -43,6 +48,7 @@
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 );
     }
     @include breakpoint($bp-768-width) {
+      height: auto;
       padding: get-vw(24px, 640) 0;
       width: 100%;
     }
@@ -51,11 +57,16 @@
       position: relative;
       overflow: hidden;
       width: 100%;
+      @include breakpoint($bp-768-width) {
+        height: auto;
+      }
     }
     #relevant-content-carousel {
       height: 100%;
       width: 100%;
-
+      @include breakpoint($bp-768-width) {
+        height: auto;
+      }
       .mCSB_scrollTools {
         width: 4px;
       }
@@ -65,6 +76,9 @@
       overflow: hidden;
       position: relative;
       width: 100%;
+      @include breakpoint($bp-768-width) {
+        height: auto;
+      }
       &.slick-initialized {
         overflow: visible;
         .slick-list {
@@ -79,8 +93,8 @@
       position: relative;
       width: 100%;
       @extend %usa-aspot-carousel-promo;
-      @include breakpoint($bp-min-2500-width) {
-        height: calc(1021px / 5);
+      @include breakpoint($bp-min-1601-width) {
+        height: calc(653.75px / 5);
       }
       @include breakpoint($bp-768-width) {
         border: none;

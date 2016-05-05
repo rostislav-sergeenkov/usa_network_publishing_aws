@@ -67,7 +67,7 @@ function _usanetwork_tv_show_get_episodes_block($show) {
     foreach ($episodes as $item) {
       $theme_item = array(
         'title' => $item->title,
-        'image' => image_style_url('154x131', $item->episode_uri),
+        'image' => image_style_url('99x84', $item->episode_uri),
         'season' => t('S@season', array('@season' => $item->season_id)),
         'episode' => t('EP@episode', array('@episode' => $item->episode_id)),
         'episode_link' => url('node/' . $item->nid),

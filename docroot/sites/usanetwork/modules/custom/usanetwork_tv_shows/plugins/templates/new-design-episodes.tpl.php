@@ -6,6 +6,8 @@
 <?php
   $main = $data['#content']['first_block'];
 ?>
+<?php print $data['#content']['title']; ?>
+<?php print $data['#content']['link']; ?>
 <ul>
   <li>
     <?php print $main['title']; ?>

@@ -4,8 +4,8 @@
   padding: 0 get-vw(16px, 1280);
   position: relative;
   width: 100%;
-  @include breakpoint($bp-min-2500-width) {
-    padding: 0 31.25px;
+  @include breakpoint($bp-min-1601-width) {
+    padding: 0 20px;
   }
   @include breakpoint($bp-768-width) {
     padding: get-vw(32px, 640);
@@ -13,8 +13,8 @@
   .best-of-content {
     padding: get-vw(12px, 1280) 0;
     position: relative;
-    @include breakpoint($bp-min-2500-width) {
-      padding: 23.4px 0;
+    @include breakpoint($bp-min-1601-width) {
+      padding: 15px 0;
     }
     @include breakpoint($bp-768-width) {
       padding: 0;
@@ -22,8 +22,8 @@
     &.best-of-3 {
       ul {
         height: calc(((100vw - 2*#{get-vw(16px, 1280)} - #{get-vw(12px, 1280)})/2)*1.016);
-        @include breakpoint($bp-min-2500-width) {
-          height: calc(((2500px - 2*31.25px - 23.4px)/2)*1.016);
+        @include breakpoint($bp-min-1601-width) {
+          height: calc(((1600px - 2*20px - 15px)/2)*1.016);
         }
         @include breakpoint($bp-768-width) {
           height: auto;
@@ -34,9 +34,9 @@
         height: 100%;
         margin-right: get-vw(12px, 1280);
         width: calc((((100% - #{get-vw(12px, 1280)})/2) - #{get-vw(12px, 1280)})/2);
-        @include breakpoint($bp-min-2500-width) {
-          margin-right: 23.4px;
-          width: calc((((100% - 23.4px)/2) - 23.4px)/2);
+        @include breakpoint($bp-min-1601-width) {
+          margin-right: 15px;
+          width: calc((((100% - 15px)/2) - 15px)/2);
         }
         @include breakpoint($bp-768-width) {
           height: auto;
@@ -52,8 +52,8 @@
         &:nth-child(3) {
           margin-right: 0;
           width: calc((100% - #{get-vw(12px, 1280)})/2);
-          @include breakpoint($bp-min-2500-width) {
-            width: calc((100% - 23.4px)/2);
+          @include breakpoint($bp-min-1601-width) {
+            width: calc((100% - 15px)/2);
           }
           @include breakpoint($bp-768-width) {
             float: none;

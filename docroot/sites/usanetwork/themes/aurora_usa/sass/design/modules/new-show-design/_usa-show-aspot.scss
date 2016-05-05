@@ -5,9 +5,9 @@
   padding: 0 get-vw(16px, 1280);
   position: relative;
   width: 100%;
-  @include breakpoint($bp-min-2500-width) {
-    height: 1021px;
-    padding: 0 31.25px;
+  @include breakpoint($bp-min-1601-width) {
+    height: 653.75px;
+    padding: 0 20px;
   }
   @include breakpoint($bp-768-width) {
     height: auto;
@@ -93,8 +93,8 @@
       position: relative;
       width: 100%;
       @extend %usa-aspot-carousel-promo;
-      @include breakpoint($bp-min-2500-width) {
-        height: calc(1021px / 5);
+      @include breakpoint($bp-min-1601-width) {
+        height: calc(653.75px / 5);
       }
       @include breakpoint($bp-768-width) {
         border: none;

@@ -24,23 +24,29 @@
 <?php print (!empty($image_mobile) ? $image_mobile : ''); ?>
 <?php print (!empty($position) ? $position : ''); ?>*/
 ?>
-<div class="node node-usanetwork-promo usa-bcd-carousel-promo">
+<div class="node node-usanetwork-promo usa-bcd-carousel-promo<?php print ($position == 'first')? ' big': ''; ?>">
   <a href="<?php print !empty($url) ? $url : '#'; ?>">
     <div class="image-block">
-      <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
-        <?php if (!empty($image_mobile)): ?>
-          <div data-src="<?php print $image_mobile; ?>"></div>
-        <?php endif; ?>
-        <?php if (!empty($image_desktop)): ?>
-          <div data-media="(min-width: 769px)" data-src="<?php print $image_desktop; ?>"></div>
-          <!--[if (IE 8) & (!IEMobile)]>
-          <div data-src="<?php print $image_desktop; ?>"></div>
-          <![endif]-->
-        <?php endif; ?>
-        <?php if (!empty($image_desktop)): ?>
-          <noscript><img src="<?php print $image_desktop; ?>" alt="" title="" /></noscript>
-        <?php endif; ?>
-      </div>
+      <?php if (($position == 'first')): ?>
+        <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
+          <?php if (!empty($image_mobile)): ?>
+            <div data-src="<?php print $image_mobile; ?>"></div>
+          <?php endif; ?>
+          <?php if (!empty($image_desktop)): ?>
+            <div data-media="(min-width: 769px)" data-src="<?php print $image_desktop; ?>"></div>
+            <!--[if (IE 8) & (!IEMobile)]>
+            <div data-src="<?php print $image_desktop; ?>"></div>
+            <![endif]-->
+          <?php endif; ?>
+          <?php if (!empty($image_desktop)): ?>
+            <noscript><img src="<?php print $image_desktop; ?>" alt="" title="" /></noscript>
+          <?php endif; ?>
+        </div>
+      <?php else: ?>
+        <div class="asset-img">
+          <img src="<?php print $image_desktop; ?>" alt="" title="" />
+        </div>
+      <?php endif; ?>
     </div>
     <div class="meta-wrapper">
       <div class="meta-wrapper-inner">

@@ -4,9 +4,8 @@
   position: relative;
   width: 100%;
   z-index: 1;
-
-  @include breakpoint($bp-min-2500-width) {
-    padding: 31.25px 31.25px 0 31.25px;
+  @include breakpoint($bp-min-1601-width) {
+    padding: 20px 20px 0 20px;
   }
   @include breakpoint($between-641-768) {
     padding: 0;
@@ -214,10 +213,10 @@
       position: absolute;
       top: 50%;
       width: get-vw(245px, 1280);
-      @include breakpoint($bp-min-2500-width) {
-        height: 48.8px;
-        margin-top: get-vw(-24.4px, 1280);
-        width: 478.5px;
+      @include breakpoint($bp-min-1601-width) {
+        height: 31.25px;
+        margin-top: -15.625px;
+        width: 306.25px;
       }
       @include breakpoint($bp-768-width) {
         left: get-vw(12px, 768);
@@ -230,15 +229,15 @@
       .logo {
         float: left;
         width: get-vw(57px, 1280);
-        @include breakpoint($bp-min-2500-width) {
-          width: 111.3px;
+        @include breakpoint($bp-min-1601-width) {
+          width: 71.25px;
         }
       }
       .second-logo {
         float: right;
         width: get-vw(145px, 1280);
-        @include breakpoint($bp-min-2500-width) {
-          width: 283.2px;
+        @include breakpoint($bp-min-1601-width) {
+          width: 181.25px;
         }
       }
     }
@@ -266,8 +265,8 @@
         line-height: 2;
         text-align: center;
         width: 100%;
-        @include breakpoint($bp-min-2500-width) {
-          font-size: 24.4px;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 15.625px;
         }
         @include breakpoint($bp-768-width) {
           display: none;
@@ -275,8 +274,8 @@
       }
       &.show-mrrobot {
         width: get-vw(348px, 1280);
-        @include breakpoint($bp-min-2500-width) {
-          width: 680px;
+        @include breakpoint($bp-min-1601-width) {
+          width: 435px;
         }
         @include breakpoint($between-641-768) {
           width: get-vw(282px, 768);
@@ -288,8 +287,8 @@
         }
         .title {
           height: get-vw(54.52px, 1280);
-          @include breakpoint($bp-min-2500-width) {
-            height: 106.5px;
+          @include breakpoint($bp-min-1601-width) {
+            height: 68.15px;
           }
           @include breakpoint($between-641-768) {
             height: get-vw(48px, 768);
@@ -306,8 +305,8 @@
       top: 0;
       right: 0;
       width: get-vw(182px, 1280);
-      @include breakpoint($bp-min-2500-width) {
-        width: 355.5px;
+      @include breakpoint($bp-min-1601-width) {
+        width: 227.5px;
       }
       @include breakpoint($bp-768-width) {
         max-width: 100px;
@@ -362,8 +361,8 @@
     height: get-vw(60px, 1280);
     position: relative;
     width: 100%;
-    @include breakpoint($bp-min-2500-width) {
-      height: 117.2px;
+    @include breakpoint($bp-min-1601-width) {
+      height: 75px;
     }
     @include breakpoint($bp-768-width) {
       border: none;
@@ -405,10 +404,10 @@
             line-height: get-vw(60px, 1280);
             outline: none;
             padding: 0 get-vw(29px, 1280);
-            @include breakpoint($bp-min-2500-width) {
-              font-size: 24.4px;
-              line-height: 117.2px;
-              padding: 0 56.64px;
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 15.625px;
+              line-height: 75px;
+              padding: 0 36.25px;
             }
             @include breakpoint($bp-768-width) {
               color: $header-new-menu-item-color;
@@ -450,9 +449,9 @@
         background: none;
         font-size: get-vw(12.8px, 1280);
         padding-right: get-vw(18px, 1280);
-        @include breakpoint($bp-min-2500-width) {
-          font-size: 25px;
-          padding-right: 22.4px;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 16px;
+          padding-right: 22.5px;
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(23px, 768);
@@ -476,8 +475,8 @@
           outline: none;
           position: relative;
           vertical-align: middle;
-          @include breakpoint($bp-min-2500-width) {
-            margin-right: 23.4375px;
+          @include breakpoint($bp-min-1601-width) {
+            margin-right: 15px;
           }
           @include breakpoint($bp-768-width) {
             line-height: get-vw(86px, 768);
@@ -489,8 +488,8 @@
             font-family: $ico-font;
             font-weight: normal;
             font-size: get-vw(20px, 1280);
-            @include breakpoint($bp-min-2500-width) {
-              font-size: 39.1px;
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 25px;
             }
             @include breakpoint($bp-768-width) {
               font-size: get-vw(40px, 768);

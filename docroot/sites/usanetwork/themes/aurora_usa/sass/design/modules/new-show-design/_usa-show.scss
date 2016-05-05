@@ -4,15 +4,28 @@
   #header {
     background-color: black;
     overflow: visible;
+    @include breakpoint($bp-min-1601-width) {
+      left: 50%;
+      margin-left: -800px;
+      width: 1600px;
+    }
     &.usa-sticky-header-initialized {
       left: 0;
       top: 0;
       position: fixed;
-      z-index: 1;
+      z-index: 10;
+      @include breakpoint($bp-min-1601-width) {
+        left: 50%;
+        margin-left: -800px;
+        width: 1600px;
+      }
     }
   }
   #header-spacer {
     display: none;
+  }
+  .usa-wrap {
+    max-width: 1600px;
   }
   // #header end
   .usa-section-title {
@@ -20,8 +33,8 @@
     padding: get-vw(15px, 1280) 0;
     position: relative;
     width: 100%;
-    @include breakpoint($bp-min-2500-width) {
-      padding: 29.3px 0;
+    @include breakpoint($bp-min-1601-width) {
+      padding: 18.75px 0;
     }
     @include breakpoint($bp-768-width) {
       border-bottom: none;
@@ -58,11 +71,11 @@
       position: absolute;
       right: get-vw(16px, 1280);
       text-transform: uppercase;
-      @include breakpoint($bp-min-2500-width) {
-        bottom: 29.3px;
-        font-size: 31.25px;
-        padding-right: 31.25px;
-        right: 31.25px;
+      @include breakpoint($bp-min-1601-width) {
+        bottom: 18.75px;
+        font-size: 20px;
+        padding-right: 20px;
+        right: 20px;
       }
       @include breakpoint($bp-768-width) {
         display: none;
@@ -76,9 +89,9 @@
         position: absolute;
         right: 0;
         top: 0;
-        @include breakpoint($bp-min-2500-width) {
-          font-size: 23.4px;
-          line-height: 31.25px;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 15px;
+          line-height: 20px;
         }
       }
     }

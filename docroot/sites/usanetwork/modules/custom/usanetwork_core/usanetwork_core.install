@@ -1249,3 +1249,12 @@ function usanetwork_core_update_7187() {
     module_enable(array('tve_auth2_cookies'));
   }
 }
+
+/**
+ * Enables Akamai module.
+ */
+function usanetwork_core_update_7188() {
+  if (!module_exists('akamai')) {
+    module_enable(array('akamai'));
+  }
+}

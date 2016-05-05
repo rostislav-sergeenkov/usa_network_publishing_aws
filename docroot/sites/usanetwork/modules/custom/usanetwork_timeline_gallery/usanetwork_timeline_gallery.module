@@ -108,6 +108,8 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
     $vars['shareTitle'] = !empty($node->field_share_title) ? $node_wrapper->field_share_title->value() : $node_wrapper->title->value();
     $vars['shareDescription'] = !empty($node->field_share_description) ? $node_wrapper->field_share_description->value() :
       (!empty($node->field_usa_og_description) ? $node_wrapper->field_usa_og_description->value() : '');
+    $vars['autoplayVideo'] = !empty($node->field_autoplay_video) ? $node_wrapper->field_autoplay_video->value() : '';
+    $vars['autoplayGallery'] = !empty($node->field_autoplay_gallery) ? $node_wrapper->field_autoplay_gallery->value() : '';
     $vars['baseUrl'] = $base_url;
     $vars['requestUrl'] = request_uri();
     $vars['imageBaseUrl'] = '/' . path_to_theme() . '/images';

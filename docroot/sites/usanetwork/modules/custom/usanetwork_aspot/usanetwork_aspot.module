@@ -875,21 +875,23 @@ function usanetwork_aspot_tvshow_render($show_node, $aspot_version = NULL) {
     foreach ($aspot_field as $aspot) {
       if (!empty($aspot['target_id'])) {
         $aspot_node = node_load($aspot['target_id']);
-        $get_other_version = FALSE;
-        if ($aspot_version) {
-          if (usanetwork_core_api_check_field($aspot_node, 'field_a_spot', 'node')) {
-            $get_other_version = TURE;
+        if ($aspot_node->status == NODE_PUBLISHED) {
+          $get_other_version = FALSE;
+          if ($aspot_version) {
+            if (usanetwork_core_api_check_field($aspot_node, 'field_a_spot', 'node')) {
+              $get_other_version = TURE;
+            }
           }
-        }
-        if ($get_other_version) {
-          $aspot_wrapper = entity_metadata_wrapper('node', $aspot_node);
-          $version_delta = usanetwork_aspot_get_delta_letter_by_version($aspot_version) - 1;
-          if (isset($aspot_wrapper->field_a_spot[$version_delta])) {
-            $aspot_node = $aspot_wrapper->field_a_spot[$version_delta]->value();
+          if ($get_other_version) {
+            $aspot_wrapper = entity_metadata_wrapper('node', $aspot_node);
+            $version_delta = usanetwork_aspot_get_delta_letter_by_version($aspot_version) - 1;
+            if (isset($aspot_wrapper->field_a_spot[$version_delta])) {
+              $aspot_node = $aspot_wrapper->field_a_spot[$version_delta]->value();
+            }
           }
-        }
-        if ($aspot_node) {
-          return usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node);
+          if ($aspot_node) {
+            return usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node);
+          }
         }
       }
     }

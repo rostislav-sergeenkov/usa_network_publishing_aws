@@ -247,6 +247,11 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
     $conf['acquia_purge_domains'] = array('www.usanetwork.com');
 
+    $conf['akamai_basepath'] = 'http://www.usanetwork.com';
+    $conf['akamai_username'] = 'usanetwork';
+    $conf['akamai_password'] = 'prgc1che';
+    $conf['akamai_domain'] = 'production';
+
     // www redirect
     default_site_request_handler();
 

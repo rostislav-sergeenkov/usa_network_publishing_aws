@@ -1,12 +1,11 @@
 #usa-to-top {
+  margin-left: auto;
+  position: relative;
   height: 40px;
   width: 40px;
-  position: relative;
-  right: 0;
-  bottom: 0;
 
   &:before {
-    content: '\e6xx'; //@todo add correct icon
+    content: 'top'; //@todo add correct icon
     color: #ffffff;
     display: block;
     font-family: $ico-font;

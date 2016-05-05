@@ -1,0 +1,21 @@
+#usa-to-top {
+  margin-left: auto;
+  position: relative;
+  height: 40px;
+  width: 40px;
+
+  &:before {
+    content: 'top'; //@todo add correct icon
+    color: #ffffff;
+    display: block;
+    font-family: $ico-font;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 1;
+    margin: -10px 0 0 -10px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+  }
+}
+

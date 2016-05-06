@@ -572,6 +572,7 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'type' => NULL,
         'image_desktop' => NULL,
         'image_mobile' => NULL,
+        'position' => NULL,
       ),
       'template' => 'plugins/templates/new-design-bcd-spot-item',
     ),
@@ -592,6 +593,24 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
     ),
     'usanetwork_tv_shows_nd_footer' => array(
       'template' => 'templates/usanetwork-tv-shows-nd-footer',
+    ),
+    'new_design_best_of_section' => array(
+      'render element' => 'data',
+      'template' => 'plugins/templates/new-design-best-of-section',
+    ),
+    'new_design_best_of_section_item' => array(
+      'variables' => array(
+        'entity_id' => NULL,
+        'entity_type' => NULL,
+        'url' => NULL,
+        'title' => NULL,
+        'description' => NULL,
+        'violator' => NULL,
+        'type' => NULL,
+        'image_desktop' => NULL,
+        'image_mobile' => NULL,
+      ),
+      'template' => 'plugins/templates/new-design-best-of-section-item',
     ),
   );
 }

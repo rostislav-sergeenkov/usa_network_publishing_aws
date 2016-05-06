@@ -67,6 +67,9 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
 
     $this->addFieldMapping('title', 'atom:title')->xpath('atom:title');
     $this->addFieldMapping('field_show')->defaultValue(MR_ROBOT_SHOW_ID);
+    if ($uid = variable_set('usanetwork_blog_migrate_the_verge_user_uid', FALSE)) {
+      $this->addFieldMapping('uid')->defaultValue($uid);
+    }
     $this->addFieldMapping('field_consumptionator_blog')->defaultValue($blog_nid);
     $this->addFieldMapping('body', 'atom:content')->xpath('atom:content');
     $this->addFieldMapping('body:format')->defaultValue('ds_code');

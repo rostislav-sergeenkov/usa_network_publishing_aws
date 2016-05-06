@@ -2287,6 +2287,36 @@
           width: get-vw(40px, 640);
         }
       }
+      .item-number-border, .item-number {
+        background: none;
+        height: get-vw(24px, 1280);
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: get-vw(24px, 1280);
+        @include breakpoint($bp-min-1601-width) {
+          height: 30px;
+          width: 30px;
+        }
+      }
+      .item-number-border {
+        &:before {
+          color: inherit;
+          @include cssRightTriangle(get-vw(24px, 1280), currentColor, top, left);
+          position: absolute;
+          right: 0;
+          top: 0;
+          z-index: 1;
+          @include breakpoint($bp-min-1601-width) {
+            border-top-width: 30px;
+            border-right-width: 30px;
+          }
+        }
+      }
+      .item-number {
+        color: white;
+        z-index: 1;
+      }
     }
     .meta-wrapper {
       height: 100%;

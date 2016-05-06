@@ -1,5 +1,5 @@
 .show-new-design {
-  background: black;
+  background: $consum-also-back;
   // #header
   #header {
     background-color: black;
@@ -60,7 +60,7 @@
         font-size: get-vw(30px, 640);
       }
     }
-    .more {
+    > a {
       bottom: get-vw(15px, 1280);
       color: white;
       display: block;

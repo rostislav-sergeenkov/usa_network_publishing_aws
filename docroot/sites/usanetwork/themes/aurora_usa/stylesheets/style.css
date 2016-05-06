@@ -3511,6 +3511,43 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     width: 6.25vw;
   }
 }
+.usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .image-block .item-number-border, .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .image-block .item-number {
+  background: none;
+  height: 1.875vw;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1.875vw;
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .image-block .item-number-border, .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .image-block .item-number {
+    height: 30px;
+    width: 30px;
+  }
+}
+.usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .image-block .item-number-border:before {
+  color: inherit;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: solid 1.875vw currentColor;
+  border-right: solid 1.875vw transparent;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .image-block .item-number-border:before {
+    border-top-width: 30px;
+    border-right-width: 30px;
+  }
+}
+.usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .image-block .item-number {
+  color: white;
+  z-index: 1;
+}
 .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .meta-wrapper {
   height: 100%;
   padding-left: 6.95313vw;
@@ -38619,7 +38656,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 .show-new-design {
-  background: black;
+  background: #181818;
 }
 .show-new-design #header {
   background-color: black;
@@ -38690,7 +38727,7 @@ body.blog .view-display-id-blog_content .views-row {
     font-size: 4.6875vw;
   }
 }
-.show-new-design .usa-section-title .more {
+.show-new-design .usa-section-title > a {
   bottom: 1.17188vw;
   color: white;
   display: block;
@@ -38703,7 +38740,7 @@ body.blog .view-display-id-blog_content .views-row {
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  .show-new-design .usa-section-title .more {
+  .show-new-design .usa-section-title > a {
     bottom: 18.75px;
     font-size: 20px;
     padding-right: 20px;
@@ -38711,11 +38748,11 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 @media (max-width: 768px) {
-  .show-new-design .usa-section-title .more {
+  .show-new-design .usa-section-title > a {
     display: none;
   }
 }
-.show-new-design .usa-section-title .more:before {
+.show-new-design .usa-section-title > a:before {
   display: block;
   content: '\e608';
   font-family: "ico-font";
@@ -38726,7 +38763,7 @@ body.blog .view-display-id-blog_content .views-row {
   top: 0;
 }
 @media (min-width: 1601px) {
-  .show-new-design .usa-section-title .more:before {
+  .show-new-design .usa-section-title > a:before {
     font-size: 15px;
     line-height: 20px;
   }
@@ -39349,6 +39386,15 @@ body.blog .view-display-id-blog_content .views-row {
   content: '';
   display: table;
 }
+@media (min-width: 769px) {
+  .usa-show-aspot {
+    background: #181818;
+    background: -moz-linear-gradient(top, black 0%, #181818 20%, #181818 80%, #111111 100%);
+    background: -webkit-linear-gradient(top, black 0%, #181818 20%, #181818 80%, #111111 100%);
+    background: linear-gradient(to bottom, #000000 0%, #181818 20%, #181818 80%, #111111 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#111111',GradientType=0 );
+  }
+}
 @media (min-width: 1601px) {
   .usa-show-aspot {
     height: 653.75px;
@@ -39469,9 +39515,11 @@ body.blog .view-display-id-blog_content .views-row {
     width: calc(40.78125vw);
   }
 }
-.usa-show-aspot .pane-new-design-relevant-content li:last-child {
-  padding-right: 3.75vw;
-  width: calc(44.53125vw);
+@media (max-width: 768px) {
+  .usa-show-aspot .pane-new-design-relevant-content li:last-child {
+    padding-right: 3.75vw;
+    width: calc(44.53125vw);
+  }
 }
 
 .b-c-d-block {
@@ -39648,6 +39696,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 #usa-to-top {
+  cursor: pointer;
   margin-left: auto;
   position: relative;
   height: 40px;
@@ -39665,6 +39714,87 @@ body.blog .view-display-id-blog_content .views-row {
   left: 50%;
   top: 50%;
   position: absolute;
+}
+
+.latest-episodes-block {
+  background: #181818;
+  padding: 1.25vw 0;
+  position: relative;
+  width: 100%;
+}
+.latest-episodes-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block {
+    padding: 20px 0;
+  }
+}
+.latest-episodes-block .episodes-wrapper {
+  height: calc((((100vw - 1.25vw*2)*2)/3)*0.5625);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.latest-episodes-block .episodes-wrapper:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .episodes-wrapper {
+    height: calc((((1600px - 20px*2)*2)/3)*0.5625);
+  }
+}
+.latest-episodes-block .main-episode {
+  float: left;
+  height: 100%;
+  position: relative;
+  width: calc((100%*2)/3);
+}
+.latest-episodes-block .main-episode > a {
+  display: block;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.latest-episodes-block .main-episode .image-block {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.latest-episodes-block .main-episode .image-block .asset-img {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.latest-episodes-block .main-episode .image-block .asset-img img {
+  height: 100%;
+  width: 100%;
+}
+.latest-episodes-block .main-episode .meta-wrapper {
+  bottom: 1.40625vw;
+  left: 1.40625vw;
+  max-height: calc(100% - 1.40625vw*2);
+  max-width: calc(100% - 1.40625vw*2);
+  overflow: hidden;
+  position: absolute;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .main-episode .meta-wrapper {
+    bottom: 22.5px;
+    left: 22.5px;
+    max-height: calc(100% - 22.5px*2);
+    max-width: calc(100% - 22.5px*2);
+  }
+}
+.latest-episodes-block .episodes-list {
+  float: left;
+  height: 100%;
+  position: relative;
+  width: calc(100%/3);
 }
 
 #admin-menu {

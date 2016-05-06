@@ -8,8 +8,8 @@
     height: auto;
     padding: get-vw(16px, 1280) get-vw(20px, 1280);
     width: 100%;
-    @include breakpoint($bp-min-2500-width) {
-      padding: 31.25px 39.1px;
+    @include breakpoint($bp-min-1601-width) {
+      padding: 20px 25px;
     }
     @include breakpoint($bp-768-width) {
       padding: get-vw(32px, 640);
@@ -23,10 +23,10 @@
     overflow: hidden;
     position: relative;
     width: calc((100% - 2*#{get-vw(16px, 1280)})/3);
-    @include breakpoint($bp-min-2500-width) {
-      height: calc(((2500px - 4*31.25px)/3)*0.5625);
-      margin-right: 31.25px;
-      width: calc((100% - 2*31.25px)/3);
+    @include breakpoint($bp-min-1601-width) {
+      height: calc(((1600px - 4*20px)/3)*0.5625);
+      margin-right: 20px;
+      width: calc((100% - 2*20px)/3);
     }
     @include breakpoint($bp-768-width) {
       height: auto;

@@ -450,7 +450,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_additional_information';
   $field_group->data = array(
     'label' => 'Floodlight Tag',
-    'weight' => '78',
+    'weight' => '80',
     'children' => array(
       0 => 'field_floodlight_category',
       1 => 'field_floodlight_type',
@@ -1481,12 +1481,12 @@ function usanetwork_tv_shows_field_group_info() {
       8 => 'field_about_ymal',
       9 => 'field_tvs_show_latest_lnd_feed',
       10 => 'field_see_it_url',
-      11 => 'group_usa_tv_promo_vids',
-      12 => 'group_usa_tv_promo',
-      13 => 'group_about_area',
-      14 => 'group_latest_episodes_alt',
-      15 => 'group_show_aspots',
-      16 => 'group_tvs_best_of',
+      11 => 'group_about_area',
+      12 => 'group_latest_episodes_alt',
+      13 => 'group_show_aspots',
+      14 => 'group_tvs_best_of',
+      15 => 'group_usa_tv_promo_vids',
+      16 => 'group_usa_tv_promo',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

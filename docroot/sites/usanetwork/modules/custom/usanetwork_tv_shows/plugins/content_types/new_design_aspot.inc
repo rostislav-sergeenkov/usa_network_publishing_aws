@@ -31,7 +31,7 @@ function new_design_tv_show_aspot_content_type_render($subtype, $conf, $args, $c
   $aspot_node = $context[1]->data;
   $block = new stdClass();
   $block->content = array(
-    '#markup' => '<div id="aspot-usanetwork" data-content-type="tv-show">' . usanetwork_aspot_render_tvshow_slide($aspot_node, $node) . '</div>',
+    '#markup' => '<div id="aspot-usanetwork" class="show-border" data-content-type="tv-show">' . usanetwork_aspot_render_tvshow_slide($aspot_node, $node) . '</div>',
     '#attached' => array(
       'js' => array(
         drupal_get_path('theme', 'aurora_usa') . '/javascripts/aspot-block.js'

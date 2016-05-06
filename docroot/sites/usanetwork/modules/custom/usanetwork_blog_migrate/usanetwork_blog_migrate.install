@@ -1,0 +1,24 @@
+<?php
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork blog migrate needs.
+ *
+ * @ingroup USA Network
+ */
+
+/**
+ * Create The Verge user.
+ */
+function usanetwork_blog_migrate_update_7100() {
+  $account = new stdClass;
+  $account->is_new = TRUE;
+  $account->name = 'The Verge';
+  $account->pass = 'dfgFGg4356Yg';
+  $account->mail = 'email@email.com';
+  $account->init = 'email@email.com';
+  $account->status = TRUE;
+  $account->roles = array(DRUPAL_AUTHENTICATED_RID => TRUE);
+  $account->timezone = variable_get('date_default_timezone', '');
+  $account = user_save($account);
+  variable_set('usanetwork_blog_migrate_the_verge_user_uid', $account->uid);
+}

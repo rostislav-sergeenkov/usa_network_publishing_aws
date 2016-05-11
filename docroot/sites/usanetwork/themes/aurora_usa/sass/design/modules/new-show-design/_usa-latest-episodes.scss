@@ -1,0 +1,66 @@
+.latest-episodes-block {
+  @include clear();
+  background: $consum-also-back;
+  padding: get-vw(16px, 1280) 0;
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-min-1601-width) {
+    padding: 20px 0;
+  }
+  .episodes-wrapper {
+    @include clear();
+    height: calc((((100vw - #{get-vw(16px, 1280)}*2)*2)/3)*0.5625);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-1601-width) {
+      height: calc((((1600px - 20px*2)*2)/3)*0.5625);
+    }
+  }
+  .main-episode {
+    float: left;
+    height: 100%;
+    position: relative;
+    width: calc((100%*2)/3);
+    > a {
+      display: block;
+      height: 100%;
+      position: relative;
+      width: 100%;
+    }
+    .image-block {
+      height: 100%;
+      position: relative;
+      width: 100%;
+      .asset-img {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    .meta-wrapper {
+      bottom: get-vw(18px, 1280);
+      left: get-vw(18px, 1280);
+      max-height: calc(100% - #{get-vw(18px, 1280)}*2);
+      max-width: calc(100% - #{get-vw(18px, 1280)}*2);
+      overflow: hidden;
+      position: absolute;
+      @include breakpoint($bp-min-1601-width) {
+        bottom: 22.5px;
+        left: 22.5px;
+        max-height: calc(100% - 22.5px*2);
+        max-width: calc(100% - 22.5px*2);
+      }
+    }
+  }
+  .episodes-list {
+    float: left;
+    height: 100%;
+    position: relative;
+    width: calc(100%/3);
+  }
+}

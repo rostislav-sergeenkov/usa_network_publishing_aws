@@ -78,14 +78,14 @@ function new_design_best_of_section_get_layout($layout) {
   switch ($layout) {
     case 'three_items_default' || 3:
       return array(
-        'class' => 'three_items_default',
+        'class' => 'three-items-default',
         'items' => array(
           array(
-            'desktop_type' => 'half_vertical',
+            'desktop_type' => 'half-vertical',
             'mobile_type' => 'quarter',
           ),
           array(
-            'desktop_type' => 'half_vertical',
+            'desktop_type' => 'half-vertical',
             'mobile_type' => 'quarter',
           ),
           array(
@@ -107,21 +107,21 @@ function new_design_best_of_section_get_layout($layout) {
 
 function new_design_best_of_section_get_styles_for_types() {
   return array(
-    'half_vertical' => array(
+    'half-vertical' => array(
+      'desktop' => '379x785',
       'mobile' => 'thumbnail',
-      'desktop' => 'thumbnail',
     ),
-    'half_horizontal' => array(
-      'mobile' => 'thumbnail',
+    'half-horizontal' => array(
       'desktop' => 'thumbnail',
+      'mobile' => 'thumbnail',
     ),
     'full' => array(
-      'mobile' => 'thumbnail',
-      'desktop' => 'thumbnail',
+      'desktop' => '773x785',
+      'mobile' => '675x303',
     ),
     'quarter' => array(
-      'mobile' => 'thumbnail',
       'desktop' => 'thumbnail',
+      'mobile' => '326x188',
     ),
   );
 }

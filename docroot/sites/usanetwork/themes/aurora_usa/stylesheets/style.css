@@ -4065,6 +4065,116 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo a {
+  display: block;
+  height: 100%;
+  outline: none;
+  position: relative;
+  width: 100%;
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block {
+  float: left;
+  height: 100%;
+  position: relative;
+  width: 11.875vw;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block {
+    width: 190px;
+  }
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .asset-img {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .asset-img img {
+  height: 100%;
+  width: 100%;
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper {
+  border-bottom: 1px solid #262626;
+  height: 100%;
+  overflow: hidden;
+  padding-left: 1.5625vw;
+  position: relative;
+  width: calc(100% - 11.875vw);
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper {
+    padding-left: 25px;
+    width: calc(100% - 190px);
+  }
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner {
+  display: table;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .meta {
+  display: table-cell;
+  vertical-align: middle;
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .caption {
+  color: #7c7c7c;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 0.9375vw;
+  line-height: 1.2;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .caption {
+    font-size: 15px;
+  }
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .title {
+  color: #cccccc;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 1.5625vw;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .title {
+    font-size: 25px;
+  }
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .additional {
+  background: none;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 0.9375vw;
+  line-height: 1.79688vw;
+  position: relative;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .additional {
+    font-size: 15px;
+    line-height: 28.75px;
+  }
+}
+.latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .additional:after {
+  color: inherit;
+  content: '\e608';
+  display: inline-block;
+  font-family: "ico-font";
+  font-size: 0.625vw;
+  line-height: 1.79688vw;
+  margin-left: 0.78125vw;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .additional:after {
+    font-size: 10px;
+    line-height: 28.75px;
+    margin-left: 12.5px;
+  }
+}
+
 .meta-icon {
   border-radius: 50%;
   display: block;
@@ -38804,6 +38914,69 @@ body.blog .view-display-id-blog_content .views-row {
     line-height: 20px;
   }
 }
+.show-new-design .view-more {
+  background-color: #282828;
+  padding: 1.875vw 0;
+  text-align: center;
+  width: 100%;
+}
+@media (min-width: 1601px) {
+  .show-new-design .view-more {
+    padding: 30px 0;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .view-more {
+    padding: 4.6875vw 0;
+  }
+}
+.show-new-design .view-more .view-more-link {
+  color: #ffffff;
+  display: inline-block;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 1.40625vw;
+  letter-spacing: 1px;
+  line-height: 1;
+  padding-right: 1.40625vw;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+@media (min-width: 1601px) {
+  .show-new-design .view-more .view-more-link {
+    font-size: 22.5px;
+    padding-right: 22.5px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .view-more .view-more-link {
+    font-size: 3.4375vw;
+    padding-right: 3.4375vw;
+  }
+}
+.show-new-design .view-more .view-more-link:before {
+  display: block;
+  content: '\e608';
+  font-family: "ico-font";
+  font-size: 1.09375vw;
+  line-height: 1.40625vw;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+@media (min-width: 1601px) {
+  .show-new-design .view-more .view-more-link:before {
+    font-size: 17.5px;
+    line-height: 22.5px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .view-more .view-more-link:before {
+    font-size: 2.8125vw;
+    line-height: 3.4375vw;
+  }
+}
 
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
   background: black;
@@ -39801,8 +39974,14 @@ body.blog .view-display-id-blog_content .views-row {
     padding: 20px 0;
   }
 }
+@media (max-width: 768px) {
+  .latest-episodes-block {
+    padding: 0 5vw;
+  }
+}
 .latest-episodes-block .episodes-wrapper {
   height: calc((((100vw - 1.25vw*2)*2)/3)*0.5625);
+  margin-top: 1.01563vw;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -39815,18 +39994,43 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1601px) {
   .latest-episodes-block .episodes-wrapper {
     height: calc((((1600px - 20px*2)*2)/3)*0.5625);
+    margin-top: 16.25px;
+  }
+}
+@media (max-width: 768px) {
+  .latest-episodes-block .episodes-wrapper {
+    height: auto;
+    margin-top: 0;
+    padding: 0 1.25vw;
+  }
+}
+.latest-episodes-block .episodes-wrapper .view-more {
+  display: none;
+  background: #181818;
+}
+@media (max-width: 768px) {
+  .latest-episodes-block .episodes-wrapper .view-more {
+    display: block;
   }
 }
 .latest-episodes-block .main-episode {
   float: left;
+  display: flex;
   height: 100%;
   position: relative;
   width: calc((100%*2)/3);
 }
+@media (max-width: 768px) {
+  .latest-episodes-block .main-episode {
+    height: calc((100vw - 6.25vw*2)*0.607);
+    float: none;
+    width: 100%;
+  }
+}
 .latest-episodes-block .main-episode > a {
   display: block;
   height: 100%;
-  position: relative;
+  position: absolute;
   width: 100%;
 }
 .latest-episodes-block .main-episode .image-block {
@@ -39844,19 +40048,75 @@ body.blog .view-display-id-blog_content .views-row {
   width: 100%;
 }
 .latest-episodes-block .main-episode .meta-wrapper {
-  bottom: 1.40625vw;
-  left: 1.40625vw;
-  max-height: calc(100% - 1.40625vw*2);
-  max-width: calc(100% - 1.40625vw*2);
-  overflow: hidden;
-  position: absolute;
+  margin: auto;
+  position: relative;
+}
+.latest-episodes-block .main-episode .meta {
+  text-align: center;
+}
+.latest-episodes-block .main-episode .meta .caption {
+  color: #a6a6a6;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 1.40625vw;
+  text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  .latest-episodes-block .main-episode .meta-wrapper {
-    bottom: 22.5px;
-    left: 22.5px;
-    max-height: calc(100% - 22.5px*2);
-    max-width: calc(100% - 22.5px*2);
+  .latest-episodes-block .main-episode .meta .caption {
+    font-size: 22.5px;
+  }
+}
+@media (max-width: 768px) {
+  .latest-episodes-block .main-episode .meta .caption {
+    font-size: 4.6875vw;
+  }
+}
+.latest-episodes-block .main-episode .meta .title {
+  color: white;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 2.34375vw;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .main-episode .meta .title {
+    font-size: 37.5px;
+  }
+}
+@media (max-width: 768px) {
+  .latest-episodes-block .main-episode .meta .title {
+    font-size: 7.5vw;
+  }
+}
+.latest-episodes-block .main-episode .meta .additional .additional-link {
+  background: none;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 1.09375vw;
+  margin-right: 1.79688vw;
+  outline: none;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .main-episode .meta .additional .additional-link {
+    font-size: 17.5px;
+    margin-right: 28.75px;
+  }
+}
+@media (max-width: 768px) {
+  .latest-episodes-block .main-episode .meta .additional .additional-link {
+    font-size: 3.4375vw;
+    line-height: 1.5;
+    margin-right: 0;
+  }
+}
+.latest-episodes-block .main-episode .meta .additional .additional-link:last-child {
+  margin-right: 0;
+}
+.latest-episodes-block .main-episode .meta .additional br {
+  display: none;
+}
+@media (max-width: 768px) {
+  .latest-episodes-block .main-episode .meta .additional br {
+    display: block;
   }
 }
 .latest-episodes-block .episodes-list {
@@ -39864,6 +40124,28 @@ body.blog .view-display-id-blog_content .views-row {
   height: 100%;
   position: relative;
   width: calc(100%/3);
+}
+@media (max-width: 768px) {
+  .latest-episodes-block .episodes-list {
+    display: none;
+  }
+}
+.latest-episodes-block .episodes-list ul {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.latest-episodes-block .episodes-list li {
+  background: #222221;
+  border-bottom: 1px solid #181818;
+  height: calc(((((100vw - 1.25vw*2)*2)/3)*0.5625)/5);
+  width: 100%;
+}
+@media (min-width: 1601px) {
+  .latest-episodes-block .episodes-list li {
+    height: calc(((((1600px - 20px*2)*2)/3)*0.5625)/5);
+  }
 }
 
 #admin-menu {

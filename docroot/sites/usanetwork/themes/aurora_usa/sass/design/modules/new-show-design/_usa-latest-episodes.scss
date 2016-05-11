@@ -7,25 +7,48 @@
   @include breakpoint($bp-min-1601-width) {
     padding: 20px 0;
   }
+  @include breakpoint($bp-768-width) {
+    padding: 0 get-vw(32px, 640);
+  }
   .episodes-wrapper {
     @include clear();
     height: calc((((100vw - #{get-vw(16px, 1280)}*2)*2)/3)*0.5625);
+    margin-top: get-vw(13px, 1280);
     overflow: hidden;
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1601-width) {
       height: calc((((1600px - 20px*2)*2)/3)*0.5625);
+      margin-top: 16.25px;
+    }
+    @include breakpoint($bp-768-width) {
+      height: auto;
+      margin-top: 0;
+      padding: 0 get-vw(8px, 640);
+    }
+    .view-more {
+      display: none;
+      background: $consum-also-back;
+      @include breakpoint($bp-768-width) {
+        display: block;
+      }
     }
   }
   .main-episode {
     float: left;
+    display: flex;
     height: 100%;
     position: relative;
     width: calc((100%*2)/3);
+    @include breakpoint($bp-768-width) {
+      height: calc((100vw - #{get-vw(40px, 640)}*2)*0.607);
+      float: none;
+      width: 100%;
+    }
     > a {
       display: block;
       height: 100%;
-      position: relative;
+      position: absolute;
       width: 100%;
     }
     .image-block {
@@ -43,17 +66,63 @@
       }
     }
     .meta-wrapper {
-      bottom: get-vw(18px, 1280);
-      left: get-vw(18px, 1280);
-      max-height: calc(100% - #{get-vw(18px, 1280)}*2);
-      max-width: calc(100% - #{get-vw(18px, 1280)}*2);
-      overflow: hidden;
-      position: absolute;
-      @include breakpoint($bp-min-1601-width) {
-        bottom: 22.5px;
-        left: 22.5px;
-        max-height: calc(100% - 22.5px*2);
-        max-width: calc(100% - 22.5px*2);
+      margin: auto;
+      position: relative;
+    }
+    .meta {
+      text-align: center;
+      .caption {
+        color: $usa-episodes-text;
+        font-family: $avalon-book;
+        font-size: get-vw(18px, 1280);
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 22.5px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(30px, 640);
+        }
+      }
+      .title {
+        color: white;
+        font-family: $avalon-medium;
+        font-size: get-vw(30px, 1280);
+        line-height: 1.1;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 37.5px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(48px, 640);
+        }
+      }
+      .additional {
+        .additional-link {
+          background: none;
+          font-family: $avalon-book;
+          font-size: get-vw(14px, 1280);
+          margin-right: get-vw(23px, 1280);
+          outline: none;
+          text-transform: uppercase;
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 17.5px;
+            margin-right: 28.75px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(22px, 640);
+            line-height: 1.5;
+            margin-right: 0;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+        br {
+          display: none;
+          @include breakpoint($bp-768-width) {
+            display: block;
+          }
+        }
       }
     }
   }
@@ -62,5 +131,24 @@
     height: 100%;
     position: relative;
     width: calc(100%/3);
+    @include breakpoint($bp-768-width) {
+      display: none;
+    }
+    ul {
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    li {
+      @extend %usa-episodes-carousel-promo;
+      background: $schedule-view-back;
+      border-bottom: 1px solid $consum-also-back;
+      height: calc(((((100vw - #{get-vw(16px, 1280)}*2)*2)/3)*0.5625)/5);
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        height: calc(((((1600px - 20px*2)*2)/3)*0.5625)/5);
+      }
+    }
   }
 }

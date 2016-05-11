@@ -17,7 +17,7 @@
 <?php print (!empty($file_link) ? $file_link : ''); ?>*/
 ?>
 <div class="node node-usanetwork-promo usa-episodes-carousel-promo">
-  <a class="changable-link" href="<?php print (!empty($file_link) ? $file_link : '#'); ?>" data-mobile-href="<?php print (!empty($episode_link) ? $episode_link : '#'); ?>">
+  <a href="<?php print (!empty($episode_link) ? $episode_link : '#'); ?>">
     <div class="image-block">
       <div class="asset-img">
         <img src="<?php print (!empty($image) ? $image : '#'); ?>" alt="">
@@ -32,6 +32,7 @@
           <?php if (!empty($title)): ?>
             <div class="title"><?php print $title; ?></div>
           <?php endif; ?>
+          <div class="additional show-color show-font"><?php print t('Read the recap');?></div>
         </div>
       </div>
     </div>

@@ -931,6 +931,86 @@ function usanetwork_tv_shows_image_default_styles() {
       ),
     ),
   );
+  $styles['379x785'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 379,
+          'height' => 785,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 379,
+          'height' => 785,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['326x188'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 326,
+          'height' => 188,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 326,
+          'height' => 188,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['773x785'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 773,
+          'height' => 785,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 773,
+          'height' => 785,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['675x303'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 675,
+          'height' => 303,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 675,
+          'height' => 303,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
   return $styles;
 }
 

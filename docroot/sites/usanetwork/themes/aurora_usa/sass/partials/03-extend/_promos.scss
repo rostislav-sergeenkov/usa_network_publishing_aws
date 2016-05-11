@@ -2287,6 +2287,62 @@
           width: get-vw(40px, 640);
         }
       }
+      .item-number-border, .item-number {
+        background: none;
+        left: 0;
+        position: absolute;
+        top: 0;
+      }
+      .item-number-border {
+        height: get-vw(24px, 1280);
+        width: get-vw(24px, 1280);
+        @include breakpoint($bp-min-1601-width) {
+          height: 30px;
+          width: 30px;
+        }
+        @include breakpoint($bp-768-width) {
+          height: get-vw(48px, 640);
+          width: get-vw(48px, 640);
+        }
+        &:before {
+          color: inherit;
+          @include cssRightTriangle(get-vw(24px, 1280), currentColor, top, left);
+          position: absolute;
+          right: 0;
+          top: 0;
+          z-index: 1;
+          @include breakpoint($bp-min-1601-width) {
+            border-top-width: 30px;
+            border-right-width: 30px;
+          }
+          @include breakpoint($bp-768-width) {
+            border-top-width: get-vw(48px, 640);
+            border-right-width: get-vw(48px, 640);
+          }
+        }
+      }
+      .item-number {
+        color: white;
+        font-family: $avalon-medium;
+        font-size: get-vw(12px, 1280);
+        height: get-vw(16px, 1280);
+        line-height: get-vw(16px, 1280);
+        text-align: center;
+        width: get-vw(16px, 1280);
+        z-index: 1;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 15px;
+          height: 20px;
+          line-height: 20px;
+          width: 20px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(24px, 640);
+          height: get-vw(32px, 640);
+          line-height: get-vw(32px, 640);
+          width: get-vw(32px, 640);
+        }
+      }
     }
     .meta-wrapper {
       height: 100%;
@@ -2476,7 +2532,7 @@
     @include breakpoint($bp-768-width) {
       height: auto;
     }
-    &.big {
+    &.mobile-full {
       @include breakpoint($bp-768-width) {
         .image-block {
           height: calc((100vw - 2*#{get-vw(32px, 640)})*0.4375);

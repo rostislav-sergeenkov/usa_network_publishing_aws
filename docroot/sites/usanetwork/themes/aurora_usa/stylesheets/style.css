@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -39665,6 +39665,35 @@ body.blog .view-display-id-blog_content .views-row {
   left: 50%;
   top: 50%;
   position: absolute;
+}
+
+@media (min-width: 1601px) {
+  .show-related-content-block {
+    padding: 0 20px;
+  }
+}
+.show-related-content-block .show-related-content-inner {
+  width: 100%;
+}
+.show-related-content-block .show-related-content-inner:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.show-related-content-block .inline-block {
+  float: left;
+}
+.show-related-content-block .inline-block .title-block {
+  border-bottom: 3px solid;
+}
+.show-related-content-block #top-five-videos {
+  width: calc(((100% - 2.5vw) - ((100% - 1.25vw)/2))/2);
+}
+.show-related-content-block #top-five-galleries {
+  width: calc(((100% - 2.5vw) - ((100% - 1.25vw)/2))/2);
+}
+.show-related-content-block #special-fuatures {
+  width: calc((100% - 1.25vw)/2);
 }
 
 #admin-menu {

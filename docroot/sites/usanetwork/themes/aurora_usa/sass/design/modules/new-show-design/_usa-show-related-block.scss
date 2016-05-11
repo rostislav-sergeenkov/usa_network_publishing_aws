@@ -1,0 +1,31 @@
+.show-related-content-block {
+
+  @include breakpoint($bp-min-1601-width) {
+    padding: 0 20px;
+  }
+
+  .show-related-content-inner {
+    @include clear;
+    width: 100%;
+  }
+
+  .inline-block {
+    float: left;
+
+    .title-block {
+      border-bottom: 3px solid;
+    }
+  }
+
+  #top-five-videos {
+    width: calc(((100% - #{get-vw(16px, 1280)*2}) - ((100% - #{get-vw(16px, 1280)})/2))/2);
+  }
+
+  #top-five-galleries {
+    width: calc(((100% - #{get-vw(16px, 1280)*2}) - ((100% - #{get-vw(16px, 1280)})/2))/2);
+  }
+
+  #special-fuatures {
+    width: calc((100% - #{get-vw(16px, 1280)})/2);
+  }
+}

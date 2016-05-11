@@ -12,6 +12,6 @@
     <li>
       <?php print $item ?>
     </li>
-  <?php endforeach; ?>l
+  <?php endforeach; ?>
 </ul>
 

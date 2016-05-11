@@ -317,5 +317,10 @@
   //================================
   $(document).ready(function () {
     $('#relevant-content-carousel').usaCarousels();
+    $('#episode-list').usaCarousels({
+      horizontal: {
+        mode: false
+      }
+    });
   });
 })(jQuery);

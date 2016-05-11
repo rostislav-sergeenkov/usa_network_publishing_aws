@@ -1011,6 +1011,66 @@ function usanetwork_tv_shows_image_default_styles() {
       ),
     ),
   );
+  $styles['190x116'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 190,
+          'height' => 116,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 190,
+          'height' => 116,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['1067x585'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 1067,
+          'height' => 585,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1067,
+          'height' => 585,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['655x408'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 655,
+          'height' => 408,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 655,
+          'height' => 408,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
   return $styles;
 }
 

@@ -224,6 +224,6 @@ function usanetwork_dtm_usa_omniture_alter(&$omniture_variables, $context) {
       'consumpt_post', 'media_gallery', 'movie', 'person', 'post', 'quiz',
       'usanetwork_static_page', 'timeline_gallery', 'top3_gallery', 'tv_episode', 'tv_show'))) {
     $dtm_omniture_variables['AdobeTracking.nodeID'] = $context['entity']->nid;
+    $omniture_variables = array_merge($omniture_variables, $dtm_omniture_variables);
   }
-  $omniture_variables = array_merge($omniture_variables, $dtm_omniture_variables);
 }

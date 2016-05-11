@@ -413,3 +413,18 @@ function _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_pid) {
 //  );
 //  return $items;
 //}
+
+
+/**
+ * Get Player Id depending on environment
+ */
+function _usanetwork_tve_video_get_player_id() {
+  $environment = _usanetwork_widget_get_environment();
+  if ($environment == 'stage') {
+    $usa_global_player_id = 'xcsFUdx9TV1_';
+  }
+  else {
+    $usa_global_player_id = 'qRe1IXDE_V0F';
+  }
+  return $usa_global_player_id;
+}

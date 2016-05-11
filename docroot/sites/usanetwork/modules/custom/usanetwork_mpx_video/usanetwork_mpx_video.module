@@ -21,7 +21,6 @@ define("USA_MPX_VIDEO_FULL_VIDEO", "Full Episodes");
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 define('USA_MPX_ACCOUNT_NAME', 'NBCU USA Network');
 define('USA_MPX_IMAGE_SIZE', '1080');
-define('USA_GLOBAL_PLAYER_ID', 'qRe1IXDE_V0F');
 
 /**
  * Implementation of hook_menu().
@@ -1059,19 +1058,48 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
  */
 function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
   $rulesets = array();
-  $rulesets[] = array(
+
+  $environment = _usanetwork_widget_get_environment();
+  if ($environment == 'stage') {
+    $rulesets[] = array(
+      'fields' => array(
+        'fullEpisode' => FALSE,
+      ),
+      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
+    );
+
+    //for prod
+    $rulesets[] = array(
+      'fields' => array(
+        'entitlement' => 'auth',
+        'fullEpisode' => '1',
+        'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
+      ),
+      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
+    );
+    $rulesets[] = array(
+      'fields' => array(
+        'entitlement' => 'free',
+//        'fullEpisode' => '1',
+        'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
+      ),
+      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
+    );
+
+  } else {
+    $rulesets[] = array(
       'fields' => array(
         'fullEpisode' => FALSE,
       ),
       'guid' => 'CuIy2njPemkh_CDFtp3QpcMFZX5hivu2',
     );
 
-   //for prod
+    //for prod
     $rulesets[] = array(
       'fields' => array(
         'entitlement' => 'auth',
         'fullEpisode' => '1',
-        'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
+        'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
       'guid' => 'CuIy2njPemkh_CDFtp3QpcMFZX5hivu2',
     );
@@ -1079,18 +1107,19 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
       'fields' => array(
         'entitlement' => 'free',
 //        'fullEpisode' => '1',
-        'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
+        'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
       'guid' => 'CuIy2njPemkh_CDFtp3QpcMFZX5hivu2',
     );
-    $rulesets[] = array(
-      'fields' => array(
-        'media$name' => 'Live',
-        'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_PROD_ACCOUNT,
-      ),
-      'guid' => 'eaVyQVIaegQArVW_QZ7kL7R072ZruGAq',
-    );
+  }
 
+  $rulesets[] = array(
+    'fields' => array(
+      'media$name' => 'Live',
+      'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
+    ),
+    'guid' => 'eaVyQVIaegQArVW_QZ7kL7R072ZruGAq',
+  );
 
     //for stage
     $rulesets[] = array(

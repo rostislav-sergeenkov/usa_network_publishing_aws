@@ -45,18 +45,48 @@
         border-top: 2px solid $gray-dark!important;
       }
     }
+    &.sponsored-enable {
+      padding: get-vw(30px, 1280) 0 calc(#{get-vw(17px, 1280)} + 29px);
+      @include breakpoint($bp-min-1601-width) {
+        padding: 37.5px 0 calc(21.25px + 29px);
+      }
+      @include breakpoint($bp-768-width) {
+        border-top: none;
+        border-bottom: 4px solid;
+        padding: get-vw(30px, 640) 0 calc(#{get-vw(20px, 640)} + 33px);
+      }
+      .title {
+        color: $tve-select;
+      }
+      .sponsored {
+        bottom: 0;
+        height: 29px;
+        left: 50%;
+        margin-left: -121px;
+        position: absolute;
+        width: 242px;
+        @include breakpoint($bp-768-width) {
+          height: 33px;
+          margin-left: -141px;
+          width: 282px;
+        }
+      }
+    }
     .title {
       color: white;
       font-family: $avalon-medium;
-      font-size: get-vw(24px, 1280);
+      font-size: get-vw(22px, 1280);
       letter-spacing: 1px;
       line-height: 1;
       margin: 0;
       padding: 0;
       text-align: center;
       text-transform: uppercase;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 27.5px;
+      }
       @include breakpoint($bp-768-width) {
-        color: $header-tab-text;
+        color: $usa-section-title-color;
         font-size: get-vw(30px, 640);
       }
     }

@@ -2845,5 +2845,115 @@
     }
   }
 }
+%usa-articles-promo {
+  .usa-articles-promo {
+    height: auto;
+    position: relative;
+    width: 100%;
+    a {
+      display: block;
+      height: auto;
+      outline: none;
+      position: relative;
+      width: 100%;
+    }
+    .image-block {
+      height: get-vw(201px, 1280);
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        height: 251.25px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: get-vw(314px, 640);
+      }
+      .asset-img {
+        height: 100%;
+        position: relative;
+        width: 100%;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    .meta-wrapper {
+      border-top: 2px solid;
+      height: auto;
+      margin-top: get-vw(10px, 1280);
+      max-height: get-vw(195px, 1280);
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        margin-top: 12.5px;
+      }
+      @include breakpoint($bp-768-width) {
+        border: none;
+        margin-top: get-vw(20px, 640);
+        max-height: none;/*need to fix*/
+      }
+    }
+    .meta-wrapper-inner {
+      height: 100%;
+      position: relative;
+      width: 100%;
+    }
+    .meta {
+      height: 100%;
+      position: relative;
+      width: 100%;
+      .title-and-additional {
+        padding: get-vw(10px, 1280) 0 get-vw(15px, 1280);
+        position: relative;
+        @include breakpoint($bp-min-1601-width) {
+          padding: 12.5px 0 18.75px;
+        }
+        @include breakpoint($bp-768-width) {
+          padding: 0 0 get-vw(10px, 640);
+        }
+      }
+      .title {
+        color: $source-link;
+        font-family: $avalon-book;
+        font-size: get-vw(24px, 1280);
+        line-height: 1.1;
+        margin: 0 0 get-vw(5px, 1280);
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 30px;
+          margin: 0 0 6.25px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(28px, 640);
+          margin: 0;
+        }
+      }
+      .additional {
+        color: $usa-articles-color;
+        font-family: $tex-gyreschola-italic;
+        font-size: get-vw(14px, 1280);
+        line-height: 1;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 17.5px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(16px, 640);
+        }
+      }
+      .caption {
+        color: $usa-articles-color;
+        font-family: $avalon-book;
+        font-size: get-vw(18px, 1280);
+        line-height: 1.2;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 22.5px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(24px, 640);
+        }
+      }
+    }
+  }
+}
 
 

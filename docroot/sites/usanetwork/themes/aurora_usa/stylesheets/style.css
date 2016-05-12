@@ -4223,6 +4223,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (min-width: 1601px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta-wrapper {
     margin-top: 12.5px;
+    max-height: 243.75px;
   }
 }
 @media (max-width: 768px) {
@@ -4297,6 +4298,22 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 1.40625vw;
   line-height: 1.2;
+  text-overflow: ellipsis;
+  text-transform: none;
+  white-space: normal;
+}
+@supports (-webkit-line-clamp: 4) {
+  .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
+    display: -webkit-box;
+    height: auto;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+  @media (max-width: 768px) {
+    .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
+      -webkit-line-clamp: 2 !important;
+    }
+}
 }
 @media (min-width: 1601px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
@@ -4306,6 +4323,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (max-width: 768px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
     font-size: 3.75vw;
+    max-height: 9vw !important;
   }
 }
 

@@ -2900,6 +2900,7 @@
       width: 100%;
       @include breakpoint($bp-min-1601-width) {
         margin-top: 12.5px;
+        max-height: 243.75px;
       }
       @include breakpoint($bp-768-width) {
         border: none;
@@ -2958,11 +2959,24 @@
         font-family: $avalon-book;
         font-size: get-vw(18px, 1280);
         line-height: 1.2;
+        text-overflow: ellipsis;
+        text-transform: none;
+        white-space: normal;
+        @supports (-webkit-line-clamp: 4) {
+          display: -webkit-box;
+          height: auto;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 4;
+          @include breakpoint($bp-768-width) {
+            -webkit-line-clamp: 2!important;
+          }
+        }
         @include breakpoint($bp-min-1601-width) {
           font-size: 22.5px;
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(24px, 640);
+          max-height: get-vw(57.6px, 640)!important;
         }
       }
     }

@@ -29,6 +29,6 @@
     <div class="panel-panel panel-six panel-row show-related-content-block">
       <?php print $content['six']; ?>
     </div>
+    <?php endif; ?>
   </div>
-  <?php endif; ?>
 </div>

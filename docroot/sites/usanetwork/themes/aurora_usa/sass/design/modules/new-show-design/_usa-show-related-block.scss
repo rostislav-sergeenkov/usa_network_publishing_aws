@@ -1,7 +1,13 @@
 .show-related-content-block {
 
+  background-color: $consum-also-back;
+  padding: get-vw(16px, 1280) get-vw(16px, 1280);
+
   @include breakpoint($bp-min-1601-width) {
-    padding: 0 20px;
+    padding: 20px;
+  }
+  @include breakpoint($bp-768-width) {
+    padding: 0;
   }
 
   .show-related-content-inner {
@@ -9,23 +15,225 @@
     width: 100%;
   }
 
-  .inline-block {
+  .line-block {
     float: left;
-
-    .title-block {
-      border-bottom: 3px solid;
+    width: calc((100% - #{get-vw(16px, 1280)}) / 2);
+    @include breakpoint($bp-min-1601-width) {
+      width: calc((100% - 20px) / 2);
+    }
+    @include breakpoint($bp-768-width) {
+      float: none;
+      width: 100%;
+    }
+    .slider-wrap {
+      box-sizing: border-box;
+      height: get-vw(380px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        height: 475px;
+      }
+    }
+    .slider-list {
+      @include clear;
+      width: 100%;
+    }
+    .line-block-inner {
+      height: 100%;
+      width: 100%;
     }
   }
 
-  #top-five-videos {
-    width: calc(((100% - #{get-vw(16px, 1280)*2}) - ((100% - #{get-vw(16px, 1280)})/2))/2);
+  .line-half-block {
+    margin-right: get-vw(16px, 1280);
+    width: calc(((100% - #{get-vw(16px, 1280)*2}) - ((100% - #{get-vw(16px, 1280)}) / 2)) / 2);
+    @include breakpoint($bp-min-1601-width) {
+      margin-right: 20px;
+      width: calc(((100% - (20px * 2)) - ((100% - 20px) / 2)) / 2);
+    }
+    @include breakpoint($bp-768-width) {
+      padding-top: get-vw(40px, 640);
+      margin-right: 0;
+      width: 100%;
+    }
   }
 
+  .title-block {
+    background-color: $tve-modalFooter;
+    border-bottom: 4px solid;
+    @include breakpoint($bp-768-width) {
+      background-color: $tve-modalBorder;
+    }
+    h2 {
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      padding-bottom: get-vw(19px, 1280);
+      padding-top: get-vw(22px, 1280);
+      font-family: $avalon-medium; //@todo add font "FiraSans Medium"
+      font-size: get-vw(18px, 1280);
+      letter-spacing: 1px;
+      line-height: 1;
+      text-align: center;
+      text-transform: uppercase;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 22.5px;
+        padding: 27.5px 0 23.75px;
+      }
+      @include breakpoint($bp-768-width) {
+        color: $tve-select;
+        padding-bottom: get-vw(27px, 640);
+        padding-top: get-vw(36px, 640);
+        font-family: $avalon-demi; //@todo add font "DIN Bold"
+        font-size: get-vw(28px, 640);
+      }
+    }
+  }
+
+  .view-more {
+    background-color: $tve-modalFooter;
+    padding: get-vw(24px, 1280) 0;
+    text-align: center;
+    @include breakpoint($bp-min-1601-width) {
+      padding: 30px 0;
+    }
+    @include breakpoint($bp-768-width) {
+      display: none;
+    }
+
+    .view-more-link {
+      color: #ffffff;
+      display: inline-block;
+      font-family: $avalon-book; //@todo add font "FiraSans Regular"
+      font-size: get-vw(18px, 1280);
+      letter-spacing: 1px;
+      line-height: 1;
+      padding-right: get-vw(18px, 1280);
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      vertical-align: middle;
+
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 22.5px;
+        padding-right: 22.5px;
+      }
+
+      &:before {
+        display: block;
+        content: '\e608';
+        font-family: $ico-font;
+        font-size: get-vw(14px, 1280);
+        line-height: get-vw(18px, 1280);
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 17.5px;
+          line-height: 22.5px;
+        }
+      }
+    }
+  }
+
+  #top-five-videos,
   #top-five-galleries {
-    width: calc(((100% - #{get-vw(16px, 1280)*2}) - ((100% - #{get-vw(16px, 1280)})/2))/2);
+    .line-block-inner {
+      @include breakpoint($bp-768-width) {
+        background-color: $tve-modalBorder;
+      }
+    }
+    .slider-wrap {
+      @include breakpoint($bp-768-width) {
+        overflow: hidden;
+        height: auto;
+        padding: get-vw(44px, 640) 0 get-vw(44px, 640) get-vw(14px, 640);
+      }
+    }
+    .slider-list {
+      overflow: visible;
+    }
+    .slick-slider {
+      .slick-list {
+        overflow: visible;
+      }
+    }
+    .slide {
+      background-color: #000000;
+      height: get-vw(76px, 1280);
+
+      &:nth-child(2n+1) {
+        background-color: $usa-top-five-block;
+        @include breakpoint($bp-768-width) {
+          background: none;
+        }
+      }
+      @include breakpoint($bp-min-1601-width) {
+        height: 95px;
+      }
+      @include breakpoint($bp-768-width) {
+        background: none;
+        float: left;
+        height: auto;
+        padding-left: get-vw(24px, 640);
+        width: get-vw(248px, 640);
+      }
+
+      @extend %usa-show-related-top-promo;
+    }
   }
 
   #special-fuatures {
-    width: calc((100% - #{get-vw(16px, 1280)})/2);
+    .title-block {
+      @include breakpoint($bp-768-width) {
+        display: none;
+      }
+    }
+    .slider-wrap {
+      background-color: $usa-special-block;
+      border-bottom: 2px solid $consum-also-back;
+
+      @include breakpoint($bp-768-width) {
+        background: none;
+        border: none;
+        height: auto;
+        padding: get-vw(56px, 640) get-vw(40px, 640) 0;
+      }
+    }
+    .slider-list {
+      height: 100%;
+    }
+    .slide {
+      float: left;
+      padding-bottom: get-vw(15px, 1280);
+      padding-top: get-vw(15px, 1280);
+      padding-left: get-vw(18px, 1280);
+      padding-right: get-vw(20px, 1280);
+      height: 100%;
+      width: 50%;
+      &:first-child {
+        padding-left: get-vw(20px, 1280);
+        padding-right: get-vw(18px, 1280);
+        @include breakpoint($bp-min-1601-width) {
+          padding-left: 22.5px;
+          padding-right: 25px;
+        }
+        @include breakpoint($bp-768-width) {
+          padding: 0;
+        }
+      }
+
+      @include breakpoint($bp-min-1601-width) {
+        padding: 18.75px 22.5px 18.75px 25px;
+      }
+
+      @include breakpoint($bp-768-width) {
+        float: none;
+        padding: 0;
+        width: 100%;
+      }
+
+      @extend %usa-show-related-special-promo;
+    }
   }
 }
+

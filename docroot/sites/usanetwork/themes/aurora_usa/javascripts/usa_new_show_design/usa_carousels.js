@@ -316,6 +316,19 @@
   // event document ready
   //================================
   $(document).ready(function () {
+
     $('#relevant-content-carousel').usaCarousels();
+
+    $('#top-five-videos').usaCarousels({
+      vertical: {
+        mode: false
+      }
+    });
+    
+    $('#top-five-galleries').usaCarousels({
+      vertical: {
+        mode: false
+      }
+    });
   });
 })(jQuery);

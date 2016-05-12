@@ -157,6 +157,7 @@
 
   }
 }
+
 %featured-small-promo {
   .featured-small {
     &:before {
@@ -275,6 +276,7 @@
     }
   }
 }
+
 %social-promo {
   .social-promo {
     .asset-img {
@@ -408,7 +410,7 @@
         text-overflow: ellipsis;
         text-transform: none;
         white-space: normal;
-        @supports (-webkit-line-clamp: 3)  {
+        @supports (-webkit-line-clamp: 3) {
           display: -webkit-box;
           height: auto;
           -webkit-box-orient: vertical;
@@ -425,7 +427,7 @@
           height: get-row-height(26.6px, 19px, 7, 768);
           line-height: 1.4;
           margin-top: get-vw(20px, 768);
-          @supports (-webkit-line-clamp: 7)  {
+          @supports (-webkit-line-clamp: 7) {
             -webkit-line-clamp: 7;
             height: auto;
           }
@@ -592,7 +594,7 @@
           height: get-row-height(31.5px, 21px, 7, 1901);
           margin-top: get-vw(17px, 1901);
           max-height: none;
-          @supports (-webkit-line-clamp: 7)  {
+          @supports (-webkit-line-clamp: 7) {
             -webkit-line-clamp: 7;
             height: auto;
           }
@@ -603,7 +605,7 @@
           @include breakpoint($between-769-1024) {
             font-size: get-vw(21px, 1901);
             height: get-row-height(31.5px, 21px, 6, 1901);
-            @supports (-webkit-line-clamp: 6)  {
+            @supports (-webkit-line-clamp: 6) {
               -webkit-line-clamp: 6;
               height: auto;
             }
@@ -611,7 +613,7 @@
           @include breakpoint($between-641-768) {
             font-size: get-vw(8.5px, 640);
             height: get-row-height(12.75px, 8.5px, 4, 640);
-            @supports (-webkit-line-clamp: 4)  {
+            @supports (-webkit-line-clamp: 4) {
               -webkit-line-clamp: 4;
               height: auto;
             }
@@ -619,7 +621,7 @@
           @include breakpoint($bp-640-width) {
             height: get-row-height(31.5px, 21px, 5, 640);
             font-size: get-vw(21px, 640);
-            @supports (-webkit-line-clamp: 5)  {
+            @supports (-webkit-line-clamp: 5) {
               -webkit-line-clamp: 5;
               height: auto;
             }
@@ -689,6 +691,7 @@
     }
   }
 }
+
 %aspot-carousel-promo {
   .aspot-carousel-promo {
     .asset-img {
@@ -886,6 +889,7 @@
     }
   }
 }
+
 %video-promo {
   .video-promo {
     &:before {
@@ -909,19 +913,19 @@
     }
     &.file {
       &:before {
-        display: none!important;
+        display: none !important;
       }
       &.tve-video-auth {
         & > a {
-          &:after{
+          &:after {
             font-family: 'usanetwork';
             speak: none;
-            -webkit-font-feature-settings: "liga","dlig";
+            -webkit-font-feature-settings: "liga", "dlig";
             -moz-font-feature-settings: "liga=1, dlig=1";
-            -moz-font-feature-settings: "liga","dlig";
-            -ms-font-feature-settings: "liga","dlig";
-            -o-font-feature-settings: "liga","dlig";
-            font-feature-settings: "liga","dlig";
+            -moz-font-feature-settings: "liga", "dlig";
+            -ms-font-feature-settings: "liga", "dlig";
+            -o-font-feature-settings: "liga", "dlig";
+            font-feature-settings: "liga", "dlig";
             text-rendering: optimizeLegibility;
             font-style: normal;
             font-weight: normal;
@@ -949,7 +953,7 @@
             display: block;
             width: 0;
             height: 0;
-            border-top: solid 50px rgba(0,0,0,0.5);
+            border-top: solid 50px rgba(0, 0, 0, 0.5);
             border-left: solid 50px transparent;
             position: absolute;
             right: 0;
@@ -1206,6 +1210,7 @@
     }
   }
 }
+
 %show-inner-promo {
   .show-inner {
     height: 100%;
@@ -1321,6 +1326,7 @@
     }
   }
 }
+
 %three-line-video-promo {
   .three-line-video {
     &.usanetwork-tv-shows-video-lmb, &.usanetwork-tv-shows-explore-lmb, &.usanetwork-tv-shows-landing-videos-item-small, &.usanetwork-tv-shows-photo-lmb, &.usanetwork-tv-shows-all-shows-lmb, &.usanetwork-movies-all-movies-lmb {
@@ -1391,10 +1397,10 @@
           height: 25%;
         }
         @include breakpoint($bp-640-width) {
-          height: 29%!important;
+          height: 29% !important;
         }
         @include breakpoint($bp-480-width) {
-          height: 33%!important;
+          height: 33% !important;
         }
       }
       .meta {
@@ -1610,6 +1616,7 @@
     }
   }
 }
+
 %three-line-video-promo-large {
   .three-line-video-large {
     &.watch-now {
@@ -1791,6 +1798,7 @@
     }
   }
 }
+
 %show-latest-promo {
   .show-latest-promo {
     .asset-img {
@@ -2001,6 +2009,7 @@
     }
   }
 }
+
 %cast-promo {
   .cast-promo {
     .meta-wrapper {
@@ -2061,6 +2070,7 @@
     }
   }
 }
+
 %all-shows-promo {
   .all-shows-promo {
     &.watch-now {
@@ -2214,6 +2224,7 @@
     }
   }
 }
+
 %usa-aspot-carousel-promo {
   .usa-aspot-carousel-promo {
     height: 100%;
@@ -2254,7 +2265,7 @@
         height: get-vw(156px, 640);
         margin: 0;
         position: relative;
-        top:0;
+        top: 0;
         width: 100%;
       }
       .asset-img {
@@ -2338,6 +2349,7 @@
     }
   }
 }
+
 %usa-bcd-carousel-promo {
   .usa-bcd-carousel-promo {
     height: 100%;
@@ -2349,7 +2361,7 @@
     &.big {
       @include breakpoint($bp-768-width) {
         .image-block {
-          height: calc((100vw - 2*#{get-vw(32px, 640)})*0.4375);
+          height: calc((100vw - 2 * #{get-vw(32px, 640)}) * 0.4375);
         }
       }
     }
@@ -2367,7 +2379,7 @@
       position: relative;
       width: 100%;
       @include breakpoint($bp-768-width) {
-        height: calc(((100vw - 2*#{get-vw(32px, 640)} - #{get-vw(18px, 640)})/2)*0.5625);
+        height: calc(((100vw - 2 * #{get-vw(32px, 640)} - #{get-vw(18px, 640)}) / 2) * 0.5625);
       }
       .asset-img {
         height: 100%;
@@ -2468,6 +2480,7 @@
     }
   }
 }
+
 %usa-best-of-promo {
   .usa-best-of-promo {
     height: 100%;
@@ -2479,7 +2492,7 @@
     &.big {
       @include breakpoint($bp-768-width) {
         .image-block {
-          height: calc((100vw - 2*#{get-vw(32px, 640)})*0.4375);
+          height: calc((100vw - 2 * #{get-vw(32px, 640)}) * 0.4375);
         }
       }
     }
@@ -2493,7 +2506,7 @@
       position: relative;
       width: 100%;
       @include breakpoint($bp-768-width) {
-        height: calc(((100vw - 2*#{get-vw(32px, 640)} - #{get-vw(18px, 640)})/2)*0.5625);
+        height: calc(((100vw - 2 * #{get-vw(32px, 640)} - #{get-vw(18px, 640)}) / 2) * 0.5625);
       }
       .asset-img {
         height: 100%;
@@ -2686,6 +2699,197 @@
             }
           }
         }
+      }
+    }
+  }
+}
+
+%usa-show-related-top-promo {
+  .usa-show-related-top-promo {
+
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    a {
+      display: block;
+      height: 100%;
+      position: relative;
+      width: 100%;
+      padding: get-vw(12px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        padding: 15px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: 0;
+      }
+    }
+
+    .image-block {
+      left: get-vw(12px, 1280);
+      margin-top: calc(#{get-vw(-49px, 1280) / 2});
+      position: absolute;
+      top: 50%;
+      height: get-vw(49px, 1280);
+      width: get-vw(74px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        left: 15px;
+        margin-top: calc(#{-61.25px} / 2);
+        height: 61.25px;
+        width: 92.5px;
+      }
+      @include breakpoint($bp-768-width) {
+        left: 0;
+        height: get-vw(164px, 640);
+        margin: 0;
+        position: relative;
+        top: 0;
+        width: 100%;
+      }
+      .asset-img {
+        height: 100%;
+        width: 100%;
+      }
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .meta-wrapper {
+      height: 100%;
+      padding-left: get-vw(88px, 1280);
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        padding-left: 110px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: auto;
+        padding: get-vw(17px, 640) get-vw(12px, 640) 0;
+      }
+    }
+    .meta-wrapper-inner {
+      display: table;
+      height: 100%;
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-768-width) {
+        display: block;
+      }
+    }
+    .meta {
+      display: table-cell;
+      vertical-align: middle;
+      @include breakpoint($bp-768-width) {
+        display: block;
+      }
+    }
+    .title {
+      color: $usa-related-title;
+      font-family: $avalon-medium; //@todo add font "OpenSans Semibold"
+      font-size: get-vw(15px, 1280);
+      letter-spacing: 1px;
+      line-height: 1.4;
+      text-transform: uppercase;
+      overflow: hidden;
+      white-space: nowrap;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 18.75px;
+      }
+      @include breakpoint($bp-768-width) {
+        //font-family: $avalon-demi; //@todo add font "ProximaNova Semibold"
+        font-size: get-vw(28px, 640);
+        white-space: normal;
+      }
+    }
+    .additional {
+      color: $usa-related-additional;
+      font-family: $tex-gyreschola-italic;
+      font-size: get-vw(11px, 1280);
+      line-height: calc(#{get-vw(15px, 1280)} * 1.4);
+      text-transform: uppercase;
+      overflow: hidden;
+      white-space: nowrap;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 13.75px;
+        line-height: calc(18.75px * 1.4);
+      }
+      @include breakpoint($bp-768-width) {
+        font-family: $tex-gyreschola-italic; //@todo add font "ProximaNova Semibold"
+        font-size: get-vw(14px, 640);
+        line-height: calc(#{get-vw(28px, 640)} * 1.4);
+        white-space: normal;
+      }
+    }
+  }
+}
+
+%usa-show-related-special-promo {
+  .usa-show-related-special-promo {
+    .image-block {
+      height: get-vw(185px, 1280);;
+      margin-bottom: get-vw(24px, 1280);
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        height: 231.25px;
+        margin-bottom: 30px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: get-vw(326px, 640);
+        margin-bottom: 0;
+      }
+      .asset-img {
+        height: 100%;
+        width: 100%;
+      }
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .meta-wrapper {
+      overflow: hidden;
+      @include breakpoint($bp-768-width) {
+        padding: get-vw(24px, 640) get-vw(14px, 640) get-vw(68px, 640);
+      }
+    }
+    .title {
+      color: $usa-related-title;
+      font-family: $avalon-medium; //@todo add font "FiraSans Medium"
+      font-size: get-vw(24px, 1280);
+      line-height: 1.3;
+      margin-bottom: get-vw(14px, 1280);
+      overflow: hidden;
+      white-space: nowrap;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 30px;
+        margin-bottom: 17.5px;
+      }
+      @include breakpoint($bp-768-width) {
+        color: $usa-related-title;
+        //font-family: $avalon-demi; //@todo add font "DIN Bold"
+        font-size: get-vw(28px, 640);
+        margin-bottom: 0;
+      }
+    }
+    .additional {
+      color: $usa-related-additional;
+      font-family: $avalon-medium; //@todo add font "OpenSans"
+      font-size: get-vw(18px, 1280);
+      line-height: 1.3;
+      height: calc(#{(get-vw(18px, 1280) * 1.3) * 4});
+      overflow: hidden;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 22.5px;
+        height: 117px;
+      }
+      @include breakpoint($bp-768-width) {
+        color: $usa-related-additional;
+        //font-family: $avalon-book; //@todo add font "ProximaNova Regular"
+        font-size: get-vw(24px, 640);
+        height: auto;
       }
     }
   }

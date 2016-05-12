@@ -36,6 +36,8 @@
           <noscript><img src="<?php print $image_desktop; ?>" alt="" title="" /></noscript>
         <?php endif; ?>
       </div>
+      <div class="item-number-border show-color show-font"></div>
+      <div class="item-number">1</div>
     </div>
     <div class="meta-wrapper">
       <div class="meta-wrapper-inner">

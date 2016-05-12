@@ -2298,6 +2298,62 @@
           width: get-vw(40px, 640);
         }
       }
+      .item-number-border, .item-number {
+        background: none;
+        left: 0;
+        position: absolute;
+        top: 0;
+      }
+      .item-number-border {
+        height: get-vw(24px, 1280);
+        width: get-vw(24px, 1280);
+        @include breakpoint($bp-min-1601-width) {
+          height: 30px;
+          width: 30px;
+        }
+        @include breakpoint($bp-768-width) {
+          height: get-vw(48px, 640);
+          width: get-vw(48px, 640);
+        }
+        &:before {
+          color: inherit;
+          @include cssRightTriangle(get-vw(24px, 1280), currentColor, top, left);
+          position: absolute;
+          right: 0;
+          top: 0;
+          z-index: 1;
+          @include breakpoint($bp-min-1601-width) {
+            border-top-width: 30px;
+            border-right-width: 30px;
+          }
+          @include breakpoint($bp-768-width) {
+            border-top-width: get-vw(48px, 640);
+            border-right-width: get-vw(48px, 640);
+          }
+        }
+      }
+      .item-number {
+        color: white;
+        font-family: $avalon-medium;
+        font-size: get-vw(12px, 1280);
+        height: get-vw(16px, 1280);
+        line-height: get-vw(16px, 1280);
+        text-align: center;
+        width: get-vw(16px, 1280);
+        z-index: 1;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 15px;
+          height: 20px;
+          line-height: 20px;
+          width: 20px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(24px, 640);
+          height: get-vw(32px, 640);
+          line-height: get-vw(32px, 640);
+          width: get-vw(32px, 640);
+        }
+      }
     }
     .meta-wrapper {
       height: 100%;
@@ -2489,7 +2545,7 @@
     @include breakpoint($bp-768-width) {
       height: auto;
     }
-    &.big {
+    &.mobile-full {
       @include breakpoint($bp-768-width) {
         .image-block {
           height: calc((100vw - 2 * #{get-vw(32px, 640)}) * 0.4375);
@@ -2697,6 +2753,105 @@
             @include breakpoint($bp-min-1601-width) {
               font-size: 20px;
             }
+          }
+        }
+      }
+    }
+  }
+}
+%usa-episodes-carousel-promo {
+  .usa-episodes-carousel-promo {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    a {
+      display: block;
+      height: 100%;
+      outline: none;
+      position: relative;
+      width: 100%;
+    }
+    .image-block {
+      float: left;
+      height: 100%;
+      position: relative;
+      width: get-vw(152px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        width: 190px;
+      }
+      .asset-img {
+        height: 100%;
+        position: relative;
+        width: 100%;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    .meta-wrapper {
+      border-bottom: 1px solid $bottom-footer-back-home;
+      height: 100%;
+      overflow: hidden;
+      padding-left: get-vw(20px, 1280);
+      position: relative;
+      width: calc(100% - #{get-vw(152px, 1280)});
+      @include breakpoint($bp-min-1601-width) {
+        padding-left: 25px;
+        width: calc(100% - 190px);
+      }
+    }
+    .meta-wrapper-inner {
+      display: table;
+      height: 100%;
+      position: relative;
+      width: 100%;
+      .meta {
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .caption {
+        color: $usa-episode-item-text;
+        font-family: $avalon-book;
+        font-size: get-vw(12px, 1280);
+        line-height: 1.2;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 15px;
+        }
+      }
+      .title {
+        color: $gray-sky;
+        font-family: $avalon-book;
+        font-size: get-vw(20px, 1280);
+        letter-spacing: 0.5px;
+        line-height: 1.3;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 25px;
+        }
+      }
+      .additional {
+        background: none;
+        font-family: $avalon-book;
+        font-size: get-vw(12px, 1280);
+        line-height: get-vw(23px, 1280);
+        position: relative;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 15px;
+          line-height: 28.75px;
+        }
+        &:after {
+          color: inherit;
+          content: '\e608';
+          display: inline-block;
+          font-family: $ico-font;
+          font-size: get-vw(8px, 1280);
+          line-height: get-vw(23px, 1280);
+          margin-left: get-vw(10px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 10px;
+            line-height: 28.75px;
+            margin-left: 12.5px;
           }
         }
       }

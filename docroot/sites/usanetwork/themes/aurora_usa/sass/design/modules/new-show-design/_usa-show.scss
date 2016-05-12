@@ -1,5 +1,5 @@
 .show-new-design {
-  background: black;
+  background: $consum-also-back;
   // #header
   #header {
     background-color: black;
@@ -60,7 +60,7 @@
         font-size: get-vw(30px, 640);
       }
     }
-    .more {
+    > a {
       bottom: get-vw(15px, 1280);
       color: white;
       display: block;
@@ -92,6 +92,57 @@
         @include breakpoint($bp-min-1601-width) {
           font-size: 15px;
           line-height: 20px;
+        }
+      }
+    }
+  }
+  .view-more {
+    background-color: $tve-modalFooter;
+    padding: get-vw(24px, 1280) 0;
+    text-align: center;
+    width: 100%;
+    @include breakpoint($bp-min-1601-width) {
+      padding: 30px 0;
+    }
+    @include breakpoint($bp-768-width) {
+      padding: get-vw(30px, 640) 0;
+    }
+    .view-more-link {
+      color: #ffffff;
+      display: inline-block;
+      font-family: $avalon-book; //@todo add font "FiraSans Regular"
+      font-size: get-vw(18px, 1280);
+      letter-spacing: 1px;
+      line-height: 1;
+      padding-right: get-vw(18px, 1280);
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      vertical-align: middle;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 22.5px;
+        padding-right: 22.5px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(22px, 640);
+        padding-right: get-vw(22px, 640);
+      }
+      &:before {
+        display: block;
+        content: '\e608';
+        font-family: $ico-font;
+        font-size: get-vw(14px, 1280);
+        line-height: get-vw(18px, 1280);
+        position: absolute;
+        right: 0;
+        top: 0;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 17.5px;
+          line-height: 22.5px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(18px, 640);
+          line-height: get-vw(22px, 640);
         }
       }
     }

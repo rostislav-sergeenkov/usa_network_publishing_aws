@@ -19,7 +19,7 @@
     @include breakpoint($bp-768-width) {
       padding: 0;
     }
-    &.best-of-3 {
+    &.three-items-default {
       ul {
         height: calc(((100vw - 2*#{get-vw(16px, 1280)} - #{get-vw(12px, 1280)})/2)*1.016);
         @include breakpoint($bp-min-1601-width) {

@@ -612,6 +612,10 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'plugins/templates/new-design-best-of-section-item',
     ),
+    'new_design_top_elements'=> array(
+      'render element' => 'data',
+      'template' => 'plugins/templates/new-design-top-elements',
+    ),
   );
 }
 

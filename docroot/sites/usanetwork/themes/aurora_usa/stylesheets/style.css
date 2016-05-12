@@ -40411,7 +40411,7 @@ body.blog .view-display-id-blog_content .views-row {
 
 .latest-episodes-block {
   background: #181818;
-  padding: 1.25vw 0;
+  padding: 1.25vw;
   position: relative;
   width: 100%;
 }
@@ -40422,7 +40422,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (min-width: 1601px) {
   .latest-episodes-block {
-    padding: 20px 0;
+    padding: 20px;
   }
 }
 @media (max-width: 768px) {
@@ -40597,6 +40597,9 @@ body.blog .view-display-id-blog_content .views-row {
   .latest-episodes-block .episodes-list li {
     height: calc(((((1600px - 20px*2)*2)/3)*0.5625)/5);
   }
+}
+.latest-episodes-block .episodes-list .mCSB_scrollTools {
+  width: 4px;
 }
 
 .articles-block {

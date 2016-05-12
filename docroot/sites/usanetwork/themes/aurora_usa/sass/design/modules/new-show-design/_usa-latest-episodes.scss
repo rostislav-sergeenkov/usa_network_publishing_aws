@@ -1,11 +1,11 @@
 .latest-episodes-block {
   @include clear();
   background: $consum-also-back;
-  padding: get-vw(16px, 1280) 0;
+  padding: get-vw(16px, 1280);
   position: relative;
   width: 100%;
   @include breakpoint($bp-min-1601-width) {
-    padding: 20px 0;
+    padding: 20px;
   }
   @include breakpoint($bp-768-width) {
     padding: 0 get-vw(32px, 640);
@@ -149,6 +149,9 @@
       @include breakpoint($bp-min-1601-width) {
         height: calc(((((1600px - 20px*2)*2)/3)*0.5625)/5);
       }
+    }
+    .mCSB_scrollTools {
+      width: 4px;
     }
   }
 }

@@ -1032,12 +1032,12 @@ function usanetwork_tv_shows_image_default_styles() {
       ),
     ),
   );
-  $styles['1067x585'] = array(
+  $styles['1040x585'] = array(
     'effects' => array(
       array(
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
-          'width' => 1067,
+          'width' => 1040,
           'height' => 585,
         ),
         'weight' => 0,
@@ -1045,7 +1045,7 @@ function usanetwork_tv_shows_image_default_styles() {
       array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 1067,
+          'width' => 1040,
           'height' => 585,
         ),
         'weight' => 1,

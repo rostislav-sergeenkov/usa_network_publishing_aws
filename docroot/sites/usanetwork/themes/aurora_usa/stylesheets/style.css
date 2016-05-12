@@ -40499,54 +40499,9 @@ body.blog .view-display-id-blog_content .views-row {
     font-size: 4.375vw;
   }
 }
-.show-related-content-block .view-more {
-  background-color: #282828;
-  padding: 1.875vw 0;
-  text-align: center;
-}
-@media (min-width: 1601px) {
-  .show-related-content-block .view-more {
-    padding: 30px 0;
-  }
-}
 @media (max-width: 768px) {
   .show-related-content-block .view-more {
     display: none;
-  }
-}
-.show-related-content-block .view-more .view-more-link {
-  color: #ffffff;
-  display: inline-block;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 1.40625vw;
-  letter-spacing: 1px;
-  line-height: 1;
-  padding-right: 1.40625vw;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  vertical-align: middle;
-}
-@media (min-width: 1601px) {
-  .show-related-content-block .view-more .view-more-link {
-    font-size: 22.5px;
-    padding-right: 22.5px;
-  }
-}
-.show-related-content-block .view-more .view-more-link:before {
-  display: block;
-  content: '\e608';
-  font-family: "ico-font";
-  font-size: 1.09375vw;
-  line-height: 1.40625vw;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-@media (min-width: 1601px) {
-  .show-related-content-block .view-more .view-more-link:before {
-    font-size: 17.5px;
-    line-height: 22.5px;
   }
 }
 @media (max-width: 768px) {

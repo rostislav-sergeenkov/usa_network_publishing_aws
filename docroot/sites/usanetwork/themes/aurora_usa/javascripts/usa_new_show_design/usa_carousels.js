@@ -316,6 +316,23 @@
   // event document ready
   //================================
   $(document).ready(function () {
+
     $('#relevant-content-carousel').usaCarousels();
+    $('#episode-list').usaCarousels({
+      horizontal: {
+        mode: false
+      }
+    });
+    $('#top-five-videos').usaCarousels({
+      vertical: {
+        mode: false
+      }
+    });
+
+    $('#top-five-galleries').usaCarousels({
+      vertical: {
+        mode: false
+      }
+    });
   });
 })(jQuery);

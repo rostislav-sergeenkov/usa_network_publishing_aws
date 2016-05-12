@@ -1,0 +1,80 @@
+.articles-block {
+  @include clear();
+  background: $consum-also-back;
+  padding: 0 get-vw(16px, 1280);
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-min-1601-width) {
+    padding: 0 20px;
+  }
+  @include breakpoint($bp-768-width) {
+    padding: 0;
+  }
+  .panel-pane {
+    background: $tve-modalFooter;
+    position: relative;
+    width: 100%;
+  }
+  .pane-content {
+    position: relative;
+    width: 100%;
+  }
+  .articles-wrapper {
+    padding: 0 get-vw(26px, 1280);
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-1601-width) {
+      padding: 0 32.5px;
+    }
+    @include breakpoint($bp-768-width) {
+      padding: 0;
+    }
+    .articles-content {
+      @include clear();
+      padding: get-vw(17px, 1280) 0 get-vw(25px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        padding: 21.25px 0 31.25px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: get-vw(20px, 640) get-vw(40px, 640);
+      }
+    }
+    ul {
+      position: relative;
+      width: 100%;
+    }
+    li {
+      float: left;
+      margin-right: get-vw(40px, 1280);
+      width: calc((100% - 3*#{get-vw(40px, 1280)})/4);
+      @include breakpoint($bp-min-1601-width) {
+        margin-right: 50px;
+        width: calc((100% - 3*50px)/4);
+      }
+      @include breakpoint($bp-768-width) {
+        float: none;
+        width: 100%;
+      }
+      &:first-child {
+        @include breakpoint($bp-768-width) {
+          margin-bottom: get-vw(40px, 640);
+        }
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      &:nth-child(n+3) {
+        @include breakpoint($bp-768-width) {
+          display: none;
+        }
+      }
+      @extend %usa-articles-promo;
+    }
+  }
+  .view-more {
+    border-top: 2px solid $consum-also-back;
+    @include breakpoint($bp-768-width) {
+      border-top: 5px solid $consum-also-back;
+    }
+  }
+}

@@ -21,9 +21,9 @@
       </div>
     <?php endif; ?>
     <?php if($content['five']) : ?>
-      <div class="panel-panel panel-five panel-row articles-block">
-        <?php print $content['five']; ?>
-      </div>
+    <div class="panel-panel panel-five panel-row articles-block">
+      <?php print $content['five']; ?>
+    </div>
     <?php endif; ?>
     <?php if($content['six']) : ?>
       <div class="panel-panel panel-six panel-row show-related-content-block">

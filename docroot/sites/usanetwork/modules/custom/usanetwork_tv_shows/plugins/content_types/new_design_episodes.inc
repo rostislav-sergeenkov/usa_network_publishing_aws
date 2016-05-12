@@ -58,16 +58,17 @@ function _usanetwork_tv_show_get_episodes_block($show) {
     $first_element = array_shift($episodes);
     $first_element_array = array(
       'title' => $first_element->title,
-      'image' => image_style_url('284x187', $first_element->episode_uri),
-      'season' => t('S@season', array('@season' => $first_element->season_id)),
-      'episode' => t('EP@episode', array('@episode' => $first_element->episode_id)),
+      'image_desktop' => image_style_url('1067x585', $first_element->episode_uri),
+      'image_mobile' => image_style_url('655x408', $first_element->episode_uri),
+      'season' => t('Season @season', array('@season' => $first_element->season_id)),
+      'episode' => t('Episode @episode', array('@episode' => $first_element->episode_id)),
       'episode_link' => url('node/' . $first_element->nid),
       'file_link' => isset($first_element->fid) ? url('file/' . $first_element->fid) : NULL,
     );
     foreach ($episodes as $item) {
       $theme_item = array(
         'title' => $item->title,
-        'image' => image_style_url('99x84', $item->episode_uri),
+        'image' => image_style_url('190x116', $item->episode_uri),
         'season' => t('S@season', array('@season' => $item->season_id)),
         'episode' => t('EP@episode', array('@episode' => $item->episode_id)),
         'episode_link' => url('node/' . $item->nid),

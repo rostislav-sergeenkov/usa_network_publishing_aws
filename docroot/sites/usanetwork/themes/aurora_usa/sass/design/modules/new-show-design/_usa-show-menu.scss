@@ -25,16 +25,17 @@
           left: get-vw(30px, 640);
           margin-top: 0;
           top: get-vw(116px, 640);
-          width: get-vw(245px, 640);
+        }
+        &.service-enable {
+          .logo {
+            @include breakpoint($bp-640-width) {
+              margin-right: get-vw(43px, 640);
+            }
+          }
         }
         .logo {
           @include breakpoint($bp-640-width) {
             width: get-vw(57px, 640);
-          }
-        }
-        .second-logo {
-          @include breakpoint($bp-640-width) {
-            width: get-vw(145px, 640);
           }
         }
       }
@@ -164,16 +165,15 @@
         @include breakpoint($bp-768-width) {
           height: get-vw(18px, 768);
           margin-top: get-vw(-9px, 768);
-          width: get-vw(163px, 768);
+        }
+        &.service-enable {
+          .logo {
+            margin-right: get-vw(29.42px, 768);
+          }
         }
         .logo {
           @include breakpoint($bp-768-width) {
             width: get-vw(39px, 768);
-          }
-        }
-        .second-logo {
-          @include breakpoint($bp-768-width) {
-            width: get-vw(96px, 768);
           }
         }
       }
@@ -205,18 +205,27 @@
       padding: get-vw(20px, 768) get-vw(28px, 768) 0 get-vw(12px, 768);
     }
     .logo-block {
-      background: url('../images/logo-usa-and-theverge.png') no-repeat;
-      background-size: 100% 100%;
+      background: url('../images/logo-usa-new-design.png') no-repeat;
+      background-size: auto 100%;
       height: get-vw(25px, 1280);
       left: 0;
       margin-top: get-vw(-12.5px, 1280);
       position: absolute;
       top: 50%;
-      width: get-vw(245px, 1280);
+      width: auto;
+      &.service-enable {
+        background: url('../images/logo-usa-new-design-plus.png') no-repeat;
+        background-size: auto 100%;
+        .logo {
+          margin-right: get-vw(43px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            margin-right: 53.75px;
+          }
+        }
+      }
       @include breakpoint($bp-min-1601-width) {
         height: 31.25px;
         margin-top: -15.625px;
-        width: 306.25px;
       }
       @include breakpoint($bp-768-width) {
         left: get-vw(12px, 768);
@@ -234,10 +243,15 @@
         }
       }
       .second-logo {
-        float: right;
-        width: get-vw(145px, 1280);
-        @include breakpoint($bp-min-1601-width) {
-          width: 181.25px;
+        float: left;
+        font-size: 1px;
+        line-height: 1;
+        position: relative;
+        width: auto;
+        img {
+          height: 100%;
+          line-height: 1;
+          width: auto;
         }
       }
     }

@@ -1,5 +1,5 @@
 <div class="top-menu-block show-border">
-  <div class="logo-block">
+  <div class="logo-block<?php print (!empty($service_link) && !empty($service_logo))? ' service-enable' : ''; ?>">
     <a href="/" title="Home" rel="home" class="logo"></a>
     <?php if (!empty($service_logo)) : ?>
       <a href="<?php print $service_link; ?>" class="second-logo">

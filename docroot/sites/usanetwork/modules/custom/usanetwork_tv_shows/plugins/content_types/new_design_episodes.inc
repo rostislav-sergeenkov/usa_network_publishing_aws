@@ -58,7 +58,7 @@ function _usanetwork_tv_show_get_episodes_block($show) {
     $first_element = array_shift($episodes);
     $first_element_array = array(
       'title' => $first_element->title,
-      'image_desktop' => image_style_url('1067x585', $first_element->episode_uri),
+      'image_desktop' => image_style_url('1040x585', $first_element->episode_uri),
       'image_mobile' => image_style_url('655x408', $first_element->episode_uri),
       'season' => t('Season @season', array('@season' => $first_element->season_id)),
       'episode' => t('Episode @episode', array('@episode' => $first_element->episode_id)),

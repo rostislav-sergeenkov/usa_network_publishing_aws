@@ -4882,5 +4882,7 @@ function _usanetwork_tv_shows_explore_landing_related_content_ajax($show_node, $
 }
 
 function _usanetwork_tv_shows_nd_footer_block() {
-  return theme('usanetwork_tv_shows_nd_footer');
+  $footer = theme('usanetwork_tv_shows_nd_footer');
+  $footer .= usanetwork_bottom_footer(FALSE);
+  return $footer;
 }

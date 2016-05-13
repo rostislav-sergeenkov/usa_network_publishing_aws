@@ -31,7 +31,7 @@ function new_design_featured_content_content_type_render($subtype, $conf, $args,
   if (!empty($elements)) {
     $theme_variables = array(
       'title' => t('Special Features'),
-      'more_link' => l(t('View more'), 'node/' . $node->nid . '/explore'),
+      'more_link' => l(t('View more'), 'node/' . $node->nid . '/explore', array('attributes' => array('class' => 'view-more-link'))),
       'elements' => $elements,
     );
 

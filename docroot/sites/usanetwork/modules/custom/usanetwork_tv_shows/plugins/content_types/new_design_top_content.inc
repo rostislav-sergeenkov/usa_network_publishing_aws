@@ -101,7 +101,7 @@ function _new_design_top_elements_settings($elemet) {
   switch ($elemet) {
     case'media_gallery':
       $setting['title'] = t('Galleries');
-      $setting['url'] = 'episodes';
+      $setting['url'] = 'photos';
       break;
     case 'short_episode':
       $setting['title'] = t('Videos');
@@ -131,14 +131,29 @@ function _new_design_get_top_elements($show, $type, $count) {
       $file_image = _usanetwork_mpx_video_get_image_path($file);
       $items[] = array(
         'title' => $element->filename,
-        'link' => url('fid/' . $element->fid),
+        'link' => url('file/' . $element->fid),
         'caption' => usanetwork_mpx_video_get_video_category($file),
-        'image' => image_style_url('284x187', $file_image),
-        'image_mobile' => image_style_url('284x187', $file_image),
+        'image' => image_style_url('111x74', $file_image),
+        'image_mobile' => image_style_url('269x197', $file_image),
       );
     }
   } else {
-
+    foreach ($elements as $element) {
+      $node = node_load($element->nid);
+      $caption  = (!empty($node->field_media_items)
+          ? ((!empty($node->field_cover_item))
+            ? count($node->field_media_items[$node->language]) + 1
+            : count($node->field_media_items[$node->language]))
+          : 0) . ' ' . t('Photos');
+      $node_image = usanetwork_core_api_get_content_image('node', $node, 'main', 1, TRUE);
+      $items[] = array(
+        'title' => $element->title,
+        'link' => url('node/' . $element->nid),
+        'caption' => $caption,
+        'image' => image_style_url('284x187', $node_image),
+        'image_mobile' => image_style_url('284x187', $node_image),
+      );
+    }
   }
 
   return $items;
@@ -164,95 +179,17 @@ function _new_design_get_top_elements_query($show, $type, $count) {
     $query->orderBy('mpx_video.airdate', 'DESC');
     $query->range(0, $count);
   } else {
-//    $query = db_select('node', 'n');
-//    $query->fields('n', array('nid', 'title'));
-//    $query->condition('n.type', 'tv_episode')
-//      ->condition('n.status', NODE_PUBLISHED);
-//    $query->join('field_data_field_show', 'field_show', 'n.nid=field_show.entity_id');
-//    $query->condition('field_show.field_show_target_id', $show->nid);
-//
-//    $query->orderBy('season_id', 'ASC');
-//    $query->orderBy('episode_id', 'ASC');
+    $query = db_select('node', 'n');
+    $query->fields('n', array('nid', 'title'));
+    $query->condition('n.type', $type)
+      ->condition('n.status', NODE_PUBLISHED);
+    $query->join('field_data_field_show', 'field_show', 'n.nid=field_show.entity_id');
+    $query->condition('field_show.field_show_target_id', $show->nid);
+    $query->orderBy('n.created', 'DESC');
+    $query->range(0, $count);
   }
   $result = $query->execute()->fetchAll();
 
   return $result;
 }
 
-//function _usanetwork_tv_show_get_episodes_block($show) {
-//  $first_element_array = array();
-//  $carousel_items = array();
-//  $episodes = _usanetwork_tv_show_get_episodes($show);
-//  if (!empty($episodes)) {
-//    $first_element = array_shift($episodes);
-//    $first_element_array = array(
-//      'title' => $first_element->title,
-//      'image' => image_style_url('284x187', $first_element->episode_uri),
-//      'season' => t('S@season', array('@season' => $first_element->season_id)),
-//      'episode' => t('EP@episode', array('@episode' => $first_element->episode_id)),
-//      'episode_link' => url('node/' . $first_element->nid),
-//      'file_link' => isset($first_element->fid) ? url('file/' . $first_element->fid) : NULL,
-//    );
-//    foreach ($episodes as $item) {
-//      $theme_item = array(
-//        'title' => $item->title,
-//        'image' => image_style_url('99x84', $item->episode_uri),
-//        'season' => t('S@season', array('@season' => $item->season_id)),
-//        'episode' => t('EP@episode', array('@episode' => $item->episode_id)),
-//        'episode_link' => url('node/' . $item->nid),
-//        'file_link' => isset($item->fid) ? url('file/' . $item->fid) : NULL,
-//      );
-//      $carousel_items[] = theme('new_design_episodes_item', $theme_item);
-//    }
-//  }
-//
-//  return array(
-//    'first_element' => $first_element_array,
-//    'carousel_items' => $carousel_items,
-//  );
-//}
-//
-//
-//function _usanetwork_tv_show_get_episodes($show) {
-//  $show_nid = $show->nid;
-//  $cache_name = 'tv_show_new_design_episodes_' . $show_nid;
-//
-//  $cache = cache_get($cache_name);
-//
-//  if (empty($cache)) {
-//    $query = db_select('node', 'n');
-//    $query->fields('n', array('nid', 'title'));
-//    $query->condition('n.type', 'tv_episode')
-//      ->condition('n.status', NODE_PUBLISHED);
-//    $query->join('field_data_field_show', 'field_show', 'n.nid=field_show.entity_id');
-//    $query->condition('field_show.field_show_target_id', $show_nid);
-//    $query->join('field_data_field_season', 'field_season', 'n.nid=field_season.entity_id');
-//    $query->join('node', 'node_season', 'field_season.field_season_target_id=node_season.nid');
-//    $query->join('field_data_field_season_id', 'field_season_id', 'node_season.nid=field_season_id.entity_id');
-//    $query->addField('field_season_id', 'field_season_id_value', 'season_id');
-//    $query->join('field_data_field_episode_number', 'field_episode_number', 'n.nid=field_episode_number.entity_id');
-//    $query->addField('field_episode_number', 'field_episode_number_value', 'episode_id');
-//    $query->join('field_data_field_tv_cover_media', 'field_tv_cover_media', 'n.nid=field_tv_cover_media.entity_id');
-//    $query->join('file_managed', 'fm', 'fm.fid=field_tv_cover_media.field_tv_cover_media_fid');
-//    $query->addField('fm', 'uri', 'episode_uri');
-//    $query->orderBy('season_id', 'ASC');
-//    $query->orderBy('episode_id', 'ASC');
-//
-//    $result = $query->execute()->fetchAll();
-//
-//
-//    foreach ($result as &$result_item) {
-//      $episode_data = _usanetwork_episodes_get_episode_full_episode_data($show_nid, $result_item->season_id, $result_item->episode_id);
-//
-//      if (!empty($episode_data)) {
-//        foreach ($episode_data as $key => $value) {
-//          $result_item->{$key} = $value;
-//        }
-//      }
-//    }
-//  } else {
-//    $result = $cache->data;
-//  }
-//
-//  return $result;
-//}

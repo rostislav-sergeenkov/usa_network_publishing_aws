@@ -16,22 +16,15 @@
       <?php foreach ($content['elements'] as $element) : ?>
         <li class="slide slide-item" style="">
           <div class="node node-usanetwork-promo usa-show-related-top-promo">
-            <a href="<?php print $content['link']; ?>" class="omniture-tracking-processed">
+            <a href="<?php print $element['link']; ?>" class="omniture-tracking-processed">
               <div class="image-block">
                 <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
-                  <div
-                    data-src="http://local.usanetwork.com/sites/usanetwork/files/public/styles/284x187/public/usa_video_image/160415_3020871_Knock_Knock.jpg?itok=TmTtkFmQ"></div>
-                  <div data-media="(min-width: 769px)"
-                       data-src="http://local.usanetwork.com/sites/usanetwork/files/public/styles/99x84/public/usa_video_image/160415_3020871_Knock_Knock.jpg?itok=ZdjqkFsJ"></div>
+                  <div data-src="<?php print $element['image_mobile']; ?>"></div>
+                  <div data-media="(min-width: 769px)" data-src="<?php print $element['image']; ?>"></div>
                   <!--[if (IE 8) & (!IEMobile)]>
-                  <div
-                    data-src="http://local.usanetwork.com/sites/usanetwork/files/public/styles/99x84/public/usa_video_image/160415_3020871_Knock_Knock.jpg?itok=ZdjqkFsJ"></div>
+                    <div data-src="<?php print $element['image']; ?>"></div>
                   <![endif]-->
-                  <noscript>&lt;img
-                    src="http://local.usanetwork.com/sites/usanetwork/files/public/styles/99x84/public/usa_video_image/160415_3020871_Knock_Knock.jpg?itok=ZdjqkFsJ"
-                    alt="" title="" /&gt;</noscript>
-                  <img alt="" class="tile-img mCS_img_loaded"
-                       src="http://local.usanetwork.com/sites/usanetwork/files/public/styles/99x84/public/usa_video_image/160415_3020871_Knock_Knock.jpg?itok=ZdjqkFsJ">
+                  <noscript><img src="<?php print $element['image']; ?>" alt="" title="" /></noscript>
                 </div>
               </div>
               <div class="meta-wrapper">

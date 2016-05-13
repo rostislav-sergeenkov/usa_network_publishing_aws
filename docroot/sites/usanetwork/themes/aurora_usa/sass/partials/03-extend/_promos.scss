@@ -2336,22 +2336,22 @@
         color: white;
         font-family: $avalon-medium;
         font-size: get-vw(12px, 1280);
-        height: get-vw(16px, 1280);
-        line-height: get-vw(16px, 1280);
+        height: get-vw(14px, 1280);
+        line-height: get-vw(14px, 1280);
         text-align: center;
-        width: get-vw(16px, 1280);
+        width: get-vw(14px, 1280);
         z-index: 1;
         @include breakpoint($bp-min-1601-width) {
           font-size: 15px;
-          height: 20px;
-          line-height: 20px;
-          width: 20px;
+          height: 17.5px;
+          line-height: 17.5px;
+          width: 17.5px;
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(24px, 640);
-          height: get-vw(32px, 640);
-          line-height: get-vw(32px, 640);
-          width: get-vw(32px, 640);
+          height: get-vw(28px, 640);
+          line-height: get-vw(28px, 640);
+          width: get-vw(28px, 640);
         }
       }
     }

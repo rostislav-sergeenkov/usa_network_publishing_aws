@@ -2,20 +2,416 @@
 
   'use strict';
 
-  function adminAspotService(options) {
+  var globalSettings, aspotSettings, usanetworkAspotNodeFormId, aspot_draggable_items_data_name,
+      homeMainBlockId, showMainBlockId, homePageName, showPageName, usaShowPageName,
+      homeAspot, homeOptions, showAspot, showOptions, usaShowAspot, usaShowOptions,
+      isInitHomeAspot, isInitShowAspot, isInitUsaShowAspot,
+      tvs_usaDesignStatus, usaMainBlockFlagClass, home_usaDesignCheckboxId, show_usaDesignCheckboxId;
+
+  // sets vars values
+  usanetworkAspotNodeFormId = 'usanetwork-aspot-node-form';
+  aspot_draggable_items_data_name = 'aspot_draggable_items_data';
+  homeMainBlockId = 'edit-group_usa_aspot_ui';
+  showMainBlockId = 'edit-group_usa_tv_aspot_ui';
+  homePageName = 'homepage';
+  showPageName = 'showpage';
+  usaShowPageName = 'new-showpage';
+  home_usaDesignCheckboxId = 'homepage-usa-design-checkbox';
+  show_usaDesignCheckboxId = 'showpage-usa-design-checkbox';
+  usaMainBlockFlagClass = 'usa-show-design';
+
+  // default value
+  tvs_usaDesignStatus = true;
+  isInitHomeAspot = false;
+  isInitShowAspot = false;
+  isInitUsaShowAspot = false;
+
+  // default aspots settings
+  aspotSettings = {
+    defaultFontSettings: {
+      stepUpDown: 1,
+      defaultStepPosition: 7, // min value 1, max value 12
+      homePage: {
+        mobile: {
+          title_prefix: {
+            default_font_size: 17.28,
+            step: 1
+          },
+          title: {
+            default_font_size: 66.56,
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: 20,
+            step: 1.5
+          }
+        },
+        desktop: {
+          title_prefix: {
+            default_font_size: 14.08,
+            step: 1
+          },
+          title: {
+            default_font_size: 76.8,
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: 24,
+            step: 1.5
+          }
+        }
+      },
+      showPage: {
+        mobile: {
+          title_prefix: {
+            default_font_size: 17.28,
+            step: 1
+          },
+          title: {
+            default_font_size: 66.56,
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: 20,
+            step: 1.5
+          }
+        },
+        desktop: {
+          title_prefix: {
+            default_font_size: 14.08,
+            step: 1
+          },
+          title: {
+            default_font_size: 76.8,
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: 24,
+            step: 1.5
+          }
+        }
+      }
+    },
+    defaultElemPosition: {
+      aspot_elements: {
+        title_prefix: {
+          dataRel: 'title_prefix',
+          alignLeft: 3,
+          alignLeftM: 3,
+          left: '78px',
+          top: '249px',
+          leftM: '37px',
+          topM: '254px'
+        },
+        title: {
+          dataRel: 'title',
+          alignLeft: 0,
+          alignLeftM: 0,
+          left: '75px',
+          top: '275px',
+          leftM: '34px',
+          topM: '281px'
+        },
+        aspot_description: {
+          dataRel: 'aspot_description',
+          alignLeft: 3,
+          alignLeftM: 3,
+          left: '78px',
+          top: '353px',
+          leftM: '37px',
+          topM: '353px'
+        },
+        cta_button_0: {
+          dataRel: 'cta_button_0',
+          alignLeft: 4,
+          alignLeftM: -1,
+          left: '79px',
+          top: '409px',
+          leftM: '36px',
+          topM: '402px'
+        },
+        cta_button_1: {
+          dataRel: 'cta_button_1',
+          alignLeft: 4,
+          alignLeftM: -1,
+          left: '79px',
+          top: '484px',
+          leftM: '36px',
+          topM: '462px'
+        },
+        cta_button_2: {
+          dataRel: 'cta_button_2',
+          alignLeft: 409,
+          alignLeftM: -1,
+          left: '335px',
+          top: '484px',
+          leftM: '36px',
+          topM: '505px'
+        }
+      },
+      tvs_aspot_elements: {
+        title_prefix: {
+          dataRel: 'title_prefix',
+          alignLeft: 3,
+          alignLeftM: 2,
+          left: '43px',
+          top: '268px',
+          leftM: '56px',
+          topM: '285px'
+        },
+        title: {
+          dataRel: 'title',
+          alignLeft: 0,
+          alignLeftM: 0,
+          left: '40px',
+          top: '291px',
+          leftM: '54px',
+          topM: '314px'
+        },
+        aspot_description: {
+          dataRel: 'aspot_description',
+          alignLeft: 6,
+          alignLeftM: 4,
+          left: '46px',
+          top: '364px',
+          leftM: '58px',
+          topM: '382px'
+        },
+        cta_button_0: {
+          dataRel: 'cta_button_0',
+          alignLeft: 5,
+          alignLeftM: 1,
+          left: '45px',
+          top: '416px',
+          leftM: '55px',
+          topM: '441px'
+        },
+        cta_button_1: {
+          dataRel: 'cta_button_1',
+          alignLeft: 5,
+          alignLeftM: 1,
+          left: '45px',
+          top: '485px',
+          leftM: '55px',
+          topM: '495px'
+        }
+      }
+    },
+    defaultUsaDesignElemPositions: {
+      usa_aspot_elements: {
+        title_prefix: {
+          dataRel: 'title_prefix',
+          alignLeft: 3,
+          alignLeftM: 3,
+          left: '78px',
+          top: '249px',
+          leftM: '37px',
+          topM: '254px'
+        },
+        title: {
+          dataRel: 'title',
+          alignLeft: 0,
+          alignLeftM: 0,
+          left: '75px',
+          top: '275px',
+          leftM: '34px',
+          topM: '281px'
+        },
+        aspot_description: {
+          dataRel: 'aspot_description',
+          alignLeft: 3,
+          alignLeftM: 3,
+          left: '78px',
+          top: '353px',
+          leftM: '37px',
+          topM: '353px'
+        },
+        cta_button_0: {
+          dataRel: 'cta_button_0',
+          alignLeft: 4,
+          alignLeftM: -1,
+          left: '79px',
+          top: '409px',
+          leftM: '36px',
+          topM: '402px'
+        },
+        cta_button_1: {
+          dataRel: 'cta_button_1',
+          alignLeft: 4,
+          alignLeftM: -1,
+          left: '79px',
+          top: '484px',
+          leftM: '36px',
+          topM: '462px'
+        },
+        cta_button_2: {
+          dataRel: 'cta_button_2',
+          alignLeft: 409,
+          alignLeftM: -1,
+          left: '335px',
+          top: '484px',
+          leftM: '36px',
+          topM: '505px'
+        }
+      }
+    }
+  };
+
+  Drupal.behaviors.usanetwork_aspot_giui = {
+    attach: function (context, settings) {
+      $(document.body).once(function () {
+
+        globalSettings = settings.giui_settings;
+        // tvs_usaDesignStatus = globalSettings.tvs_usa_design;
+
+        // new design drupal settings
+        globalSettings.tvs_usa_aspot_elements = globalSettings.tvs_aspot_elements;
+        globalSettings.tvs_usa_desktop = {
+          bg_offset_image_url: globalSettings.tvs_desktop.bg_offset_image_url,
+          bg_offset_value: globalSettings.tvs_desktop.bg_offset_value
+        };
+        globalSettings.tvs_usa_mobile = {
+          bg_offset_image_url: globalSettings.tvs_desktop.bg_offset_image_url
+        };
+        // end new design drupal settings
+
+        console.info(globalSettings);
+
+        // sets homeAspot options
+        homeOptions = {
+          aspotSettings: aspotSettings,
+          aspot_elements: globalSettings.aspot_elements,
+          bg_offset_value: globalSettings.desktop.bg_offset_value,
+          bg_offset_image_url: globalSettings.desktop.bg_offset_image_url,
+          bg_offset_image_url_mobile: globalSettings.mobile.bg_offset_image_url,
+          defaultFontSize: aspotSettings.defaultFontSettings.homePage,
+          defaultElemPosition: aspotSettings.defaultElemPosition.aspot_elements,
+          mainBlockId: homeMainBlockId,
+          pageName: homePageName,
+          showBgOffset: true, // false default value
+
+          // for home Aspot disabled new design
+          initUsaDesignCheckbox: false,
+          usaDesignCheckboxStatus: false,
+          usaDesignCheckboxId: home_usaDesignCheckboxId,
+          usaMainBlockClass: usaMainBlockFlagClass
+        };
+
+        // sets showAspot options
+        showOptions = {
+          aspotSettings: aspotSettings,
+          aspot_elements: globalSettings.tvs_aspot_elements,
+          bg_offset_value: globalSettings.tvs_desktop.bg_offset_value,
+          bg_offset_image_url: globalSettings.tvs_desktop.bg_offset_image_url,
+          bg_offset_image_url_mobile: globalSettings.tvs_mobile.bg_offset_image_url,
+          defaultFontSize: aspotSettings.defaultFontSettings.showPage,
+          defaultElemPosition: aspotSettings.defaultElemPosition.tvs_aspot_elements,
+          mainBlockId: showMainBlockId,
+          pageName: showPageName,
+          showBgOffset: false, // false default value
+          initUsaDesignCheckbox: true,
+          usaDesignCheckboxStatus: tvs_usaDesignStatus,
+          usaDesignCheckboxId: show_usaDesignCheckboxId,
+          usaMainBlockClass: usaMainBlockFlagClass
+        };
+
+        // sets usaShowAspot options (new design)
+        usaShowOptions = {
+          aspotSettings: aspotSettings,
+          aspot_elements: globalSettings.tvs_usa_aspot_elements,
+          bg_offset_value: globalSettings.tvs_usa_desktop.bg_offset_value,
+          bg_offset_image_url: globalSettings.tvs_usa_desktop.bg_offset_image_url,
+          bg_offset_image_url_mobile: globalSettings.tvs_usa_mobile.bg_offset_image_url,
+          defaultFontSize: aspotSettings.defaultFontSettings.showPage,
+          defaultElemPosition: aspotSettings.defaultUsaDesignElemPositions.usa_aspot_elements,
+          mainBlockId: showMainBlockId,
+          pageName: 'usa-showpage',
+          showBgOffset: false, // false default value
+          initUsaDesignCheckbox: true,
+          usaDesignCheckboxStatus: tvs_usaDesignStatus,
+          usaDesignCheckboxId: show_usaDesignCheckboxId,
+          usaMainBlockClass: usaMainBlockFlagClass
+        };
+
+        // init home Aspots
+        homeAspot = initAdminAspotService(homeOptions);
+        isInitHomeAspot = homeAspot.isInit;
+
+        // check status show new design and init show Aspots
+        if (tvs_usaDesignStatus) {
+          usaShowAspot = initAdminAspotService(usaShowOptions);
+          isInitUsaShowAspot = usaShowAspot.isInit;
+        } else {
+          showAspot = initAdminAspotService(showOptions);
+          isInitShowAspot = showAspot.isInit;
+        }
+
+        // addListnerUsaCheckbox
+        addListnerUsaCheckbox({
+          options: {
+            homeOptions: homeOptions,
+            showOptions: showOptions,
+            usaShowOptions: usaShowOptions
+          },
+          aspot: {
+            homeAspot: homeAspot,
+            showAspot: showAspot,
+            usaShowAspot: usaShowAspot
+          }
+        });
+      });
+    }
+  };
+
+  var addListnerUsaCheckbox = function (params) {
+
+    var showAspot = params.aspot.showAspot,
+        usaShowAspot = params.aspot.usaShowAspot,
+        showOptions = params.options.showOptions,
+        usaShowOptions = params.options.usaShowOptions;
+
+    $('body').bind('click', '#' + usaShowOptions.usaDesignCheckboxId, function (e) {
+
+      console.info('change');
+
+      var $checkBox = $(e.target),
+          isChecked = $checkBox.prop('checked');
+
+      if (typeof isChecked !== "undefined") {
+        // enable usaShowAspot || // enable showAspot
+        if (showAspot instanceof Object && isInitShowAspot && isChecked) {
+          showAspot.destroyAspot();
+          isInitShowAspot = false;
+          showAspot = '';
+          usaShowOptions.usaDesignCheckboxStatus = isChecked;
+          usaShowAspot = initAdminAspotService(usaShowOptions);
+          isInitUsaShowAspot = usaShowAspot.isInit;
+        } else if (usaShowAspot instanceof Object && isInitUsaShowAspot && !isChecked) {
+          usaShowAspot.destroyAspot();
+          isInitUsaShowAspot = false;
+          usaShowAspot = '';
+          showOptions.usaDesignCheckboxStatus = isChecked;
+          showAspot = initAdminAspotService(showOptions);
+          isInitShowAspot = showAspot.isInit;
+        }
+      }
+    });
+  };
+
+
+  // function work only with options
+  function initAdminAspotService(options) {
 
     // vars
-    var fontSettings = Drupal.behaviors.usanetwork_aspot_giui.defaultFontSettings,
-        fontStepUpDown = fontSettings.stepUpDown,
-        fontDefaultStepPosition = fontSettings.defaultStepPosition,
+    var fontSettings, fontStepUpDown, fontDefaultStepPosition,
         aspot_elements, draggableElementsData, draggableAreaDesktop_tpl, draggableAreaDesktopMobile_tpl,
-        draggableAreaDesktopId, draggableAreaDesktopMobileId, draggableElements, draggableElementsMobile,
+        draggableAreaDesktopId, draggableAreaDesktopMobileId, draggableElements,
         sericeApi, allParams, pageName, defaultParams, mainBlock, bgOffsetBlock, aspotPreviewBlock, aspotElemCheckboxes,
-        isShowBgOffset, bgPreviewingBlock, bgPreviewingBlock_tpl, bgPreviewingBlockId, bgPreviewingBlockTitle_tpl, desktopImg_tpl, mobileImg_tpl, desktopImgId, mobileImgId,
+        isShowBgOffset, bgPreviewingBlock_tpl, bgPreviewingBlockId, bgPreviewingBlockTitle_tpl, desktopImg_tpl, mobileImg_tpl, desktopImgId, mobileImgId,
         PreviewBlockWrapper_tpl, PreviewBlockWrapperMobile_tpl, PreviewBlockWrapperTitle_tpl, PreviewBlockWrapperMobileTitle_tpl, PreviewBlockWrapperId,
         PreviewBlockWrapperMobileId, defaultFontSize, defaultElemPosition, aspotDraggableItemsData, aspotDraggableItemsDataId, aspotDraggableItemsData_tpl,
-        timeOutDataSave, PreviewBlock, PreviewBlockMobile, PreviewBlockWrapper, PreviewBlockWrapperMobile,
-        ctaButtonClass;
+        PreviewBlock, PreviewBlockMobile, PreviewBlockWrapper, PreviewBlockWrapperMobile, ctaButtonClass,
+        usaDesignClass, usaDesignCheckbox_tpl, usaDesignCheckboxId, usaDesignCheckboxChecked, usaDesignCheckboxStatus, initUsaDesignCheckbox;
 
     // default params value
     defaultParams = {
@@ -32,10 +428,18 @@
     bgOffsetBlock = $('#edit-field-aspot-preview-bg-offset');
     aspotPreviewBlock = mainBlock.find('[id^=edit-field-aspot-enabled-].form-wrapper');
     aspotElemCheckboxes = aspotPreviewBlock.find('.form-checkboxes input.form-checkbox');
+    fontSettings = allParams.aspotSettings.defaultFontSettings;
+    fontStepUpDown = fontSettings.stepUpDown;
+    fontDefaultStepPosition = fontSettings.defaultStepPosition;
     pageName = allParams.pageName;
     isShowBgOffset = allParams.showBgOffset;
     defaultFontSize = allParams.defaultFontSize;
     defaultElemPosition = allParams.defaultElemPosition;
+    initUsaDesignCheckbox = allParams.initUsaDesignCheckbox;
+    usaDesignCheckboxId = allParams.usaDesignCheckboxId;
+    usaDesignCheckboxStatus = allParams.usaDesignCheckboxStatus;
+    usaDesignCheckboxChecked = usaDesignCheckboxStatus ? 'checked' : '';
+    usaDesignClass = allParams.usaMainBlockClass;
     draggableElements = [];
     //draggableElementsMobile = [];
 
@@ -110,6 +514,19 @@
       id: draggableAreaDesktopMobileId,
       class: "draggable-area mobile"
     });
+
+    usaDesignCheckbox_tpl = $('<div class="usa-design-select">' +
+        '<h2>Enable New Design</h2>' +
+        '<input type="checkbox" id="' + usaDesignCheckboxId + '" name="' + usaDesignCheckboxId + '" ' + usaDesignCheckboxChecked + '>' +
+        '<label>new design</label>' +
+        '</div>');
+
+    function resetElemWidth_tpl() {
+      return $('<div class="reset-wrapper">' +
+          '<h2>Reset Elements Width</h2>' +
+          '<div class="button" data-button="reset-width">Reset Width</div>' +
+          '</div>');
+    }
 
     function createDraggableElement(elParams) {
       return $('<div>', {
@@ -319,8 +736,18 @@
 
       createPreviewingBlocks: function () {
         aspotPreviewBlock
-            .prepend(PreviewBlockWrapper_tpl.append(PreviewBlockWrapperTitle_tpl, draggableAreaDesktop_tpl.append(desktopImg_tpl), addSetElempositionNav_tpl(), addFontSizeNav_tpl(defaultFontSize.desktop)))
-            .prepend(PreviewBlockWrapperMobile_tpl.append(PreviewBlockWrapperMobileTitle_tpl, draggableAreaDesktopMobile_tpl.append(mobileImg_tpl), addSetElempositionNav_tpl(), addFontSizeNav_tpl(defaultFontSize.mobile)));
+            .prepend(PreviewBlockWrapper_tpl.append(PreviewBlockWrapperTitle_tpl, draggableAreaDesktop_tpl.append(desktopImg_tpl), addSetElempositionNav_tpl(), addFontSizeNav_tpl(defaultFontSize.desktop), resetElemWidth_tpl()))
+            .prepend(PreviewBlockWrapperMobile_tpl.append(PreviewBlockWrapperMobileTitle_tpl, draggableAreaDesktopMobile_tpl.append(mobileImg_tpl), addSetElempositionNav_tpl(), addFontSizeNav_tpl(defaultFontSize.mobile), resetElemWidth_tpl()));
+
+        if (initUsaDesignCheckbox) {
+          aspotPreviewBlock.prepend(usaDesignCheckbox_tpl);
+        }
+
+        if (usaDesignCheckboxStatus) {
+          aspotPreviewBlock.addClass(usaDesignClass);
+        } else {
+          aspotPreviewBlock.removeClass(usaDesignClass);
+        }
       },
 
       onOffDraggableElem: function (inputElementName, elem) {
@@ -471,6 +898,17 @@
               top: defaultElemPosition[selfName].top
             })
           }
+        });
+
+        sericeApi.saveDraggableItemsData();
+      },
+
+      resetElemWidth: function (container) {
+
+        var elements = container.find('.aspot-draggable-element');
+
+        $.each(elements, function (index, itemElement) {
+          $(itemElement).css('width', 'auto');
         });
 
         sericeApi.saveDraggableItemsData();
@@ -705,6 +1143,13 @@
         return Math.round((currentFontSize * 100 + fontSizeStep * 100)) / 100;
       },
 
+      destroy: function () {
+        mainBlock.off('click');
+        $(PreviewBlockWrapper_tpl).remove();
+        $(PreviewBlockWrapperMobile_tpl).remove();
+        $(usaDesignCheckbox_tpl).remove();
+      },
+
       init: function () {
         if (isShowBgOffset) {
           sericeApi.createBgOffset();
@@ -790,7 +1235,7 @@
 
           sericeApi.saveDraggableItemsData();
         })
-        // default settings for draggable elements on cklick
+        // default settings for draggable elements on click
         .on('click', '.buttons-wrapper .button', function (e) {
           e.preventDefault();
 
@@ -809,6 +1254,24 @@
           } else if (self.data('button') === 'align') {
             sericeApi.setAlignToTitle(container);
           }
+        })
+        // reset width for draggable elements on click
+        .on('click', '.reset-wrapper .button', function (e) {
+          e.preventDefault();
+
+          var self = $(e.target),
+              container;
+
+          if (self.closest('.wrapper-mobile').length > 0) {
+            container = self.closest('.wrapper-mobile');
+          } else if (self.closest('.wrapper-desktop').length > 0) {
+            container = self.closest('.wrapper-desktop');
+          }
+
+          // check data attribute
+          if (self.data('button') === 'reset-width') {
+            sericeApi.resetElemWidth(container);
+          }
         });
 
     // event on change checkboxs
@@ -821,255 +1284,11 @@
     sericeApi.init();
 
     return {
-      aspotDraggableItemsDataId: aspotDraggableItemsDataId
+      isInit: true,
+      aspotDraggableItemsDataId: aspotDraggableItemsDataId,
+      destroyAspot: sericeApi.destroy
     };
   }
 
-  Drupal.behaviors.usanetwork_aspot_giui = {
-    defaultFontSettings: {
-      stepUpDown: 1,
-      defaultStepPosition: 7, // min value 1, max value 12
-      homePage: {
-        mobile: {
-          title_prefix: {
-            default_font_size: 17.28,
-            step: 1
-          },
-          title: {
-            default_font_size: 66.56,
-            step: 4
-          },
-          aspot_description: {
-            default_font_size: 20,
-            step: 1.5
-          }
-        },
-        desktop: {
-          title_prefix: {
-            default_font_size: 14.08,
-            step: 1
-          },
-          title: {
-            default_font_size: 76.8,
-            step: 4
-          },
-          aspot_description: {
-            default_font_size: 24,
-            step: 1.5
-          }
-        }
-      },
-      showPage: {
-        mobile: {
-          title_prefix: {
-            default_font_size: 17.28,
-            step: 1
-          },
-          title: {
-            default_font_size: 66.56,
-            step: 4
-          },
-          aspot_description: {
-            default_font_size: 20,
-            step: 1.5
-          }
-        },
-        desktop: {
-          title_prefix: {
-            default_font_size: 14.08,
-            step: 1
-          },
-          title: {
-            default_font_size: 76.8,
-            step: 4
-          },
-          aspot_description: {
-            default_font_size: 24,
-            step: 1.5
-          }
-        }
-      }
-    },
-    defaultElemPosition: {
-      aspot_elements: {
-        title_prefix: {
-          dataRel: 'title_prefix',
-          alignLeft: 3,
-          alignLeftM: 3,
-          left: '78px',
-          top: '249px',
-          leftM: '37px',
-          topM: '254px'
-        },
-        title: {
-          dataRel: 'title',
-          alignLeft: 0,
-          alignLeftM: 0,
-          left: '75px',
-          top: '275px',
-          leftM: '34px',
-          topM: '281px'
-        },
-        aspot_description: {
-          dataRel: 'aspot_description',
-          alignLeft: 3,
-          alignLeftM: 3,
-          left: '78px',
-          top: '353px',
-          leftM: '37px',
-          topM: '353px'
-        },
-        cta_button_0: {
-          dataRel: 'cta_button_0',
-          alignLeft: 4,
-          alignLeftM: -1,
-          left: '79px',
-          top: '409px',
-          leftM: '36px',
-          topM: '402px'
-        },
-        cta_button_1: {
-          dataRel: 'cta_button_1',
-          alignLeft: 4,
-          alignLeftM: -1,
-          left: '79px',
-          top: '484px',
-          leftM: '36px',
-          topM: '462px'
-        },
-        cta_button_2: {
-          dataRel: 'cta_button_2',
-          alignLeft: 409,
-          alignLeftM: -1,
-          left: '335px',
-          top: '484px',
-          leftM: '36px',
-          topM: '505px'
-        }
-      },
-      tvs_aspot_elements: {
-        title_prefix: {
-          dataRel: 'title_prefix',
-          alignLeft: 3,
-          alignLeftM: 2,
-          left: '43px',
-          top: '268px',
-          leftM: '56px',
-          topM: '285px'
-        },
-        title: {
-          dataRel: 'title',
-          alignLeft: 0,
-          alignLeftM: 0,
-          left: '40px',
-          top: '291px',
-          leftM: '54px',
-          topM: '314px'
-        },
-        aspot_description: {
-          dataRel: 'aspot_description',
-          alignLeft: 6,
-          alignLeftM: 4,
-          left: '46px',
-          top: '364px',
-          leftM: '58px',
-          topM: '382px'
-        },
-        cta_button_0: {
-          dataRel: 'cta_button_0',
-          alignLeft: 5,
-          alignLeftM: 1,
-          left: '45px',
-          top: '416px',
-          leftM: '55px',
-          topM: '441px'
-        },
-        cta_button_1: {
-          dataRel: 'cta_button_1',
-          alignLeft: 5,
-          alignLeftM: 1,
-          left: '45px',
-          top: '485px',
-          leftM: '55px',
-          topM: '495px'
-        }
-      }
-    },
-    attach: function (context, settings) {
-      $(document.body).once(function () {
 
-        var globalSettings = settings.giui_settings,
-            aspotSettings = Drupal.behaviors.usanetwork_aspot_giui,
-            aspot_draggable_items_data = $('#aspot_draggable_items_data'),
-            homeAspot, showAspot, homeOptions, showOptions;
-
-        // sets homeAspot options
-        homeOptions = {
-          aspot_elements: globalSettings.aspot_elements,
-          bg_offset_value: globalSettings.desktop.bg_offset_value,
-          bg_offset_image_url: globalSettings.desktop.bg_offset_image_url,
-          bg_offset_image_url_mobile: globalSettings.mobile.bg_offset_image_url,
-          defaultFontSize: aspotSettings.defaultFontSettings.homePage,
-          defaultElemPosition: aspotSettings.defaultElemPosition.aspot_elements,
-          mainBlockId: 'edit-group_usa_aspot_ui',
-          pageName: 'homepage',
-          showBgOffset: true // false default value
-        };
-
-        // sets homeAspot options
-        showOptions = {
-          aspot_elements: globalSettings.tvs_aspot_elements,
-          bg_offset_value: globalSettings.tvs_desktop.bg_offset_value,
-          bg_offset_image_url: globalSettings.tvs_desktop.bg_offset_image_url,
-          bg_offset_image_url_mobile: globalSettings.tvs_mobile.bg_offset_image_url,
-          defaultFontSize: aspotSettings.defaultFontSettings.showPage,
-          defaultElemPosition: aspotSettings.defaultElemPosition.tvs_aspot_elements,
-          mainBlockId: 'edit-group_usa_tv_aspot_ui',
-          pageName: 'showpage',
-          showBgOffset: false // false default value
-        };
-
-        // init Aspots
-        homeAspot = adminAspotService(homeOptions);
-        showAspot = adminAspotService(showOptions);
-
-        $('#usanetwork-aspot-node-form').submit(function () {
-
-          var headTextarea = $('#edit-field-aspot-gi-draggable-data-und-0-value'),
-              headInput = $('input[name="aspot_draggable_items_data"]').eq(0),
-              homeUiPositions = $('#' + homeAspot.aspotDraggableItemsDataId).text(),
-              showUiPositions = $('#' + showAspot.aspotDraggableItemsDataId).text(),
-              aspot_elements = globalSettings.aspot_elements,
-              tvs_aspot_elements = globalSettings.tvs_aspot_elements,
-              homeUiPositionsVal, showUiPositionsVal;
-
-          if ((homeUiPositions == '') && (showUiPositions == '')) {
-            headInput.val(headTextarea.text());
-          } else {
-
-            if (homeUiPositions != '') {
-              homeUiPositionsVal = JSON.parse(homeUiPositions);
-            } else {
-              homeUiPositionsVal = aspot_elements;
-            }
-
-            if (showUiPositions != '') {
-              showUiPositionsVal = JSON.parse(showUiPositions);
-            } else {
-              showUiPositionsVal = tvs_aspot_elements;
-            }
-
-            var myData = {
-              data: {
-                aspot_elements: homeUiPositionsVal,
-                tvs_aspot_elements: showUiPositionsVal
-              }
-            };
-
-            headInput.val(JSON.stringify(myData));
-          }
-        });
-      });
-    }
-  }
 }(jQuery));

@@ -1,15 +1,29 @@
 @import "fonts.css";
 
 #edit-group_usa_aspot_ui,
-#edit-field-aspot-enabled-tgi{
+#edit-group_usa_tv_aspot_ui {
   background: #ccc;
 }
 
 #edit-group_usa_aspot_ui .wrapper-desktop,
-#edit-field-aspot-enabled-tgi .wrapper-desktop{
+#edit-field-aspot-enabled-tgi .wrapper-desktop {
+  box-sizing: border-box;
   border-bottom: 1px solid #4d4d4d;
   margin-bottom: 10px;
   padding-bottom: 10px;
+}
+#edit-group_usa_aspot_ui .wrapper-mobile,
+#edit-field-aspot-enabled-tgi .wrapper-mobile {
+  box-sizing: border-box;
+  border-bottom: 1px solid #4d4d4d;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+#edit-group_usa_aspot_ui .wrapper-desktop:after,
+#edit-field-aspot-enabled-tgi .wrapper-desktop:after {
+  clear: both;
+  content: '';
+  display: table;
 }
 
 .draggable-background.desktop {
@@ -18,15 +32,18 @@
   height: 480px;
   width: 200px;
 }
+
 .draggable-area {
-  border: solid #aaa 1px;
+  outline: solid #aaa 1px;
 }
-.draggable-area img{
+
+.draggable-area img {
   margin: 0;
   height: 100%;
   width: 100%;
 }
-.draggable-area.mobile{
+
+.draggable-area.mobile {
   display: block;
   line-height: 0;
   margin-bottom: 30px;
@@ -35,6 +52,7 @@
   height: 560px;
   width: 640px;
 }
+
 .draggable-area.desktop {
   display: block;
   line-height: 0;
@@ -49,6 +67,7 @@
   height: 550px;
   width: 983px;
 }
+
 /* Draggable elements */
 
 /* default */
@@ -56,6 +75,7 @@
   /*background-color: rgba(200, 200, 200, 0.6);*/
   /*border-radius: 6px;*/
   /*border: solid 1px #666;*/
+  border: none;
   color: #ffffff;
   box-sizing: border-box;
   display: block;
@@ -66,9 +86,11 @@
   left: 0;
   top: 0;
 }
+
 .aspot-draggable-element.active {
   outline: 1px dashed #f00;
 }
+
 .aspot-draggable-element p {
   margin: 0;
 }
@@ -80,12 +102,14 @@
   text-transform: uppercase;
   text-shadow: 1px 1px 0.5em #333333;
 }
+
 .draggable-area.mobile div[data-rel="aspot_description"],
 .draggable-area.desktop div[data-rel="aspot_description"] {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   line-height: initial;
   text-shadow: 1px 1px 0.5em #333333;
 }
+
 .draggable-area.mobile div[data-rel="title_prefix"],
 .draggable-area.desktop div[data-rel="title_prefix"] {
   font-family: "texgyrescholaitalic", Times, serif;
@@ -93,10 +117,12 @@
   text-transform: uppercase;
   text-shadow: 1px 1px 0.5em #333333;
 }
+
 .draggable-area.mobile div[data-rel="social_meter"],
 .draggable-area.desktop div[data-rel="social_meter"] {
   background: #2c2c2c;
 }
+
 .draggable-area.mobile .aspot-draggable-cta-button,
 .draggable-area.desktop .aspot-draggable-cta-button {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -110,101 +136,164 @@
   line-height: 0.88;
   letter-spacing: 0.02em;
 }
+
 .draggable-area.mobile div[data-rel="aspot_description"] {
   font-size: 20px;
   letter-spacing: 0.05em;
   line-height: 1;
 }
+
 .draggable-area.mobile div[data-rel="title_prefix"] {
   font-size: 17.28px;
   line-height: 1;
   letter-spacing: 0.1em;
 }
+
 .draggable-area.mobile .aspot-draggable-cta-button {
   font-size: 17.28px;
   letter-spacing: 0.1em;
   line-height: 1.8;
   padding: 0 41.6px 0 0;
 }
+
 .draggable-area.mobile .aspot-draggable-cta-button[data-rel="cta_button_0"] {
   background: #2c2c2c;
   padding: 8.96px 41.6px 8.96px 22.4px;
 }
-.draggable-area.mobile div[data-rel="social_meter"]{
+
+.draggable-area.mobile div[data-rel="social_meter"] {
   font-size: 22px;
   height: auto;
   line-height: 26px;
   padding: 42px 18.24px 70.781px 76.27px;
   width: 212px;
 }
+
 /* desktop */
 .draggable-area.desktop div[data-rel="title"] {
   font-size: 76.8px;
   line-height: 0.88;
   letter-spacing: 0.02em;
 }
+
 .draggable-area.desktop div[data-rel="aspot_description"] {
   font-size: 24px;
   line-height: 1;
   letter-spacing: 0.05em;
 }
+
 .draggable-area.desktop div[data-rel="title_prefix"] {
   font-size: 14.08px;
   line-height: 1;
   letter-spacing: 0.1em;
 }
+
 .draggable-area.desktop .aspot-draggable-cta-button {
   font-size: 16px;
   letter-spacing: 0.1em;
   line-height: 1.8;
   padding: 0 57.6px 0 0;
 }
+
 .draggable-area.desktop .aspot-draggable-cta-button[data-rel="cta_button_0"] {
   background: #2c2c2c;
   padding: 17.92px 57.6px 17.92px 44.78px;
 }
-.draggable-area.desktop div[data-rel="social_meter"]{
+
+.draggable-area.desktop div[data-rel="social_meter"] {
   font-size: 24px;
   height: auto;
   line-height: 28.8px;
   padding: 46px 20px 75.797px 102.48px;
   width: 231px;
 }
+
 #edit-field-aspot-gi-draggable-data,
 #edit-field-aspot-tgi-draggable-data {
   display: none;
   visibility: hidden;
 }
+
+/* reset width button */
+#edit-group_usa_aspot_ui .reset-wrapper,
+#edit-group_usa_tv_aspot_ui .reset-wrapper{
+
+}
+#edit-group_usa_aspot_ui .wrapper-mobile .reset-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile .reset-wrapper {
+  position: absolute;
+  top: 340px;
+  left: 700px;
+}
+
+#edit-group_usa_aspot_ui .wrapper-desktop .reset-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .reset-wrapper{
+  float: left;
+  position: static;
+  padding-left: 20px;
+}
+
+#edit-group_usa_aspot_ui .reset-wrapper .button,
+#edit-group_usa_tv_aspot_ui .reset-wrapper .button{
+  background: #e4e4e4;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid #e4e4e4;
+  border-bottom: 1px solid #b4b4b4;
+  border-left-color: #d2d2d2;
+  border-right-color: #d2d2d2;
+  cursor: pointer;
+  padding: 4px 17px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  max-width: 150px;
+  text-align: center;
+}
+
+#edit-group_usa_aspot_ui .reset-wrapper .button:hover,
+#edit-group_usa_tv_aspot_ui .reset-wrapper .button:hover {
+  background: #a1a1a1;
+}
+
+
 /* custom buttons*/
 #edit-group_usa_aspot_ui .wrapper-mobile,
 #edit-group_usa_tv_aspot_ui .wrapper-mobile,
 #edit-group_usa_aspot_ui .wrapper-desktop,
-#edit-group_usa_tv_aspot_ui .wrapper-desktop{
+#edit-group_usa_tv_aspot_ui .wrapper-desktop {
   position: relative;
 }
+
 #edit-group_usa_aspot_ui .buttons-wrapper,
 #edit-group_usa_tv_aspot_ui .buttons-wrapper{
   position: absolute;
   top: 30px;
 }
+
 #edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper,
 #edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
+  float: left;
   position: static;
-  /*left: 850px;*/
-  /*top: 102%;*/
+  padding-right: 20px;
 }
-#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
-  left: 650px;
-}
+
 #edit-group_usa_aspot_ui .wrapper-mobile .buttons-wrapper,
-#edit-group_usa_tv_aspot_ui .wrapper-mobile .buttons-wrapper{
+#edit-group_usa_tv_aspot_ui .wrapper-mobile .buttons-wrapper {
   left: 700px;
 }
+
 #edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper .button,
-#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper .button{
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper .button {
   display: inline-block;
-  margin-right: 30px;
+  margin-right: 20px;
 }
+
+#edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper .button:last-child,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper .button:last-child {
+  margin-right: 0;
+}
+
 #edit-group_usa_aspot_ui .buttons-wrapper .button,
 #edit-group_usa_tv_aspot_ui .buttons-wrapper .button{
   background: #e4e4e4;
@@ -219,20 +308,33 @@
   padding: 4px 17px;
   margin-bottom: 1em;
   margin-right: 1em;
+  max-width: 150px;
+  text-align: center;
 }
+
 #edit-group_usa_aspot_ui .buttons-wrapper .button:hover,
-#edit-group_usa_tv_aspot_ui .buttons-wrapper .button:hover{
+#edit-group_usa_tv_aspot_ui .buttons-wrapper .button:hover {
   background: #a1a1a1;
 }
 
 /*
   change field font size
 */
+#edit-group_usa_aspot_ui .wrapper-desktop .edit-font-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .edit-font-wrapper {
+  float: left;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #808080;
+  padding: 0 20px;
+}
 #edit-group_usa_aspot_ui .wrapper-mobile .edit-font-wrapper,
 #edit-group_usa_tv_aspot_ui .wrapper-mobile .edit-font-wrapper {
+  border-bottom: 1px solid #808080;
+  border-top: 1px solid #808080;
+  padding: 20px 0;
   left: 700px;
   position: absolute;
-  top: 155px;
+  top: 170px;
 }
 
 #edit-group_usa_aspot_ui .edit-font-wrapper .field-font-size,
@@ -251,6 +353,7 @@
   display: inline-block;
   width: 85px;
 }
+
 #edit-group_usa_aspot_ui .edit-font-wrapper .font-button,
 #edit-group_usa_tv_aspot_ui .edit-font-wrapper .font-button {
   /*background-color: #ffffff;*/
@@ -259,19 +362,53 @@
   /*text-align: center;*/
   /*width: 10px;*/
 }
+
 #edit-group_usa_aspot_ui .edit-font-wrapper .decrease-font,
 #edit-group_usa_tv_aspot_ui .edit-font-wrapper .decrease-font {
 
 }
+
 #edit-group_usa_aspot_ui .edit-font-wrapper .increase-font,
 #edit-group_usa_tv_aspot_ui .edit-font-wrapper .increase-font {
 
 }
+
 .wrapper-mobile .reset-font,
 .wrapper-desktop .reset-font {
   margin-left: 20px;
 }
+
 .wrapper-mobile h2,
 .wrapper-desktop h2 {
   text-transform: capitalize;
 }
+
+/* usa-design-select */
+.usa-design-select {
+  border-bottom: 1px solid #808080;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.usa-design-select h2 {
+  text-transform: capitalize;
+}
+.usa-design-select input,
+.usa-design-select label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* USA New Design Mr. Robot */
+#edit-field-aspot-enabled-tgi.usa-show-design .draggable-area.mobile{
+  height: 360px;
+  width: 640px;
+}
+#edit-field-aspot-enabled-tgi.usa-show-design .draggable-area.desktop{
+  height: 524px;
+  width: 932px;
+}
+#edit-field-aspot-enabled-tgi.usa-show-design #preview-usa-showpage-wrapper-mobile{
+  height: 450px;
+}
+/* END USA New Design Mr. Robot */

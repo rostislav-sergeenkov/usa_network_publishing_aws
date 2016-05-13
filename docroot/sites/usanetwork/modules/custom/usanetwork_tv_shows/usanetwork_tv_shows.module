@@ -617,6 +617,10 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       'render element' => 'data',
       'template' => 'plugins/templates/new-design-top-elements',
     ),
+    'new_design_featured_elements'=> array(
+      'render element' => 'data',
+      'template' => 'plugins/templates/new-design-featured-elements',
+    ),
   );
 }
 
@@ -1091,6 +1095,46 @@ function usanetwork_tv_shows_image_default_styles() {
         'data' => array(
           'width' => 269,
           'height' => 197,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['338x232'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 338,
+          'height' => 232,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 338,
+          'height' => 232,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['657x392'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 657,
+          'height' => 392,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 657,
+          'height' => 392,
         ),
         'weight' => 1,
       ),

@@ -150,8 +150,8 @@ function _new_design_get_top_elements($show, $type, $count) {
         'title' => $element->title,
         'link' => url('node/' . $element->nid),
         'caption' => $caption,
-        'image' => image_style_url('284x187', $node_image),
-        'image_mobile' => image_style_url('284x187', $node_image),
+        'image' => image_style_url('111x74', $node_image),
+        'image_mobile' => image_style_url('269x197', $node_image),
       );
     }
   }

@@ -37,7 +37,11 @@
         <?php endif; ?>
       </div>
       <div class="item-number-border show-color show-font"></div>
-      <div class="item-number">1</div>
+      <div class="item-number">
+        <?php if (!empty($content_count)): ?>
+          <?php print $content_count; ?>
+        <?php endif; ?>
+      </div>
     </div>
     <div class="meta-wrapper">
       <div class="meta-wrapper-inner">

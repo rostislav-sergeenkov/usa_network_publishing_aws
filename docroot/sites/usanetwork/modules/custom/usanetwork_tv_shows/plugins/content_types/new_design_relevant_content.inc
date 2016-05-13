@@ -38,7 +38,10 @@ function new_design_relevant_content_content_type_render($subtype, $conf, $args,
   elseif ($node_wrapper->field_relevant_content_modes->value() == 'manual') {
     $relevant_content = new_design_relevant_content_get_manual_content($node, $conf);
   }
+  $content_count = 0;
   foreach ($relevant_content as $item) {
+    $content_count++;
+    $item['content_count'] = $content_count;
     $theme_variables['items'][] = theme('new_design_relevant_content_item', $item);
   }
   $block->content = array(

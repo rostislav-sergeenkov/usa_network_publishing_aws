@@ -197,61 +197,61 @@
         }
       }
     },
-    defaultUsaDesignElemPositions: {
-      usa_aspot_elements: {
+    defaultNewDesignElemPositions: {
+      nd_aspot_elements: {
         title_prefix: {
           dataRel: 'title_prefix',
           alignLeft: 3,
           alignLeftM: 3,
-          left: '78px',
-          top: '249px',
-          leftM: '37px',
-          topM: '254px'
+          left: '0px',
+          top: '0px',
+          leftM: '0px',
+          topM: '0px'
         },
         title: {
           dataRel: 'title',
           alignLeft: 0,
           alignLeftM: 0,
-          left: '75px',
-          top: '275px',
-          leftM: '34px',
-          topM: '281px'
+          left: '47px',
+          top: '253px',
+          leftM: '24px',
+          topM: '269px'
         },
         aspot_description: {
           dataRel: 'aspot_description',
           alignLeft: 3,
           alignLeftM: 3,
-          left: '78px',
-          top: '353px',
-          leftM: '37px',
-          topM: '353px'
+          left: '0px',
+          top: '0px',
+          leftM: '0px',
+          topM: '0px'
         },
         cta_button_0: {
           dataRel: 'cta_button_0',
           alignLeft: 4,
           alignLeftM: -1,
-          left: '79px',
-          top: '409px',
-          leftM: '36px',
-          topM: '402px'
+          left: '48px',
+          top: '358px',
+          leftM: '26px',
+          topM: '313px'
         },
         cta_button_1: {
           dataRel: 'cta_button_1',
           alignLeft: 4,
           alignLeftM: -1,
-          left: '79px',
-          top: '484px',
-          leftM: '36px',
-          topM: '462px'
+          left: '49px',
+          top: '425px',
+          leftM: '0px',
+          topM: '0px'
         },
         cta_button_2: {
           dataRel: 'cta_button_2',
           alignLeft: 409,
           alignLeftM: -1,
-          left: '335px',
-          top: '484px',
-          leftM: '36px',
-          topM: '505px'
+          left: '49px',
+          top: '455px',
+          leftM: '0px',
+          topM: '0px'
         }
       }
     }
@@ -323,9 +323,9 @@
           bg_offset_image_url: globalSettings.tvs_usa_desktop.bg_offset_image_url,
           bg_offset_image_url_mobile: globalSettings.tvs_usa_mobile.bg_offset_image_url,
           defaultFontSize: aspotSettings.defaultFontSettings.showPage,
-          defaultElemPosition: aspotSettings.defaultUsaDesignElemPositions.usa_aspot_elements,
+          defaultElemPosition: aspotSettings.defaultNewDesignElemPositions.nd_aspot_elements,
           mainBlockId: showMainBlockId,
-          pageName: 'usa-showpage',
+          pageName: 'new-design-showpage',
           showBgOffset: false, // false default value
           initUsaDesignCheckbox: true,
           usaDesignCheckboxStatus: tvs_usaDesignStatus,
@@ -372,8 +372,6 @@
 
     $('body').bind('click', '#' + usaShowOptions.usaDesignCheckboxId, function (e) {
 
-      console.info('change');
-
       var $checkBox = $(e.target),
           isChecked = $checkBox.prop('checked');
 
@@ -405,7 +403,7 @@
     // vars
     var fontSettings, fontStepUpDown, fontDefaultStepPosition,
         aspot_elements, draggableElementsData, draggableAreaDesktop_tpl, draggableAreaDesktopMobile_tpl,
-        draggableAreaDesktopId, draggableAreaDesktopMobileId, draggableElements,
+        draggableAreaDesktopId, draggableAreaDesktopMobileId, draggableElements, draggableElementsMobile,
         sericeApi, allParams, pageName, defaultParams, mainBlock, bgOffsetBlock, aspotPreviewBlock, aspotElemCheckboxes,
         isShowBgOffset, bgPreviewingBlock_tpl, bgPreviewingBlockId, bgPreviewingBlockTitle_tpl, desktopImg_tpl, mobileImg_tpl, desktopImgId, mobileImgId,
         PreviewBlockWrapper_tpl, PreviewBlockWrapperMobile_tpl, PreviewBlockWrapperTitle_tpl, PreviewBlockWrapperMobileTitle_tpl, PreviewBlockWrapperId,
@@ -441,7 +439,7 @@
     usaDesignCheckboxChecked = usaDesignCheckboxStatus ? 'checked' : '';
     usaDesignClass = allParams.usaMainBlockClass;
     draggableElements = [];
-    //draggableElementsMobile = [];
+    draggableElementsMobile = [];
 
     // generate Ids
     PreviewBlockWrapperId = 'preview-' + pageName + '-wrapper';
@@ -676,7 +674,7 @@
           };
 
           draggableElements.push(draggableElement);
-          //draggableElementsMobile.push(draggableElementMobile);
+          draggableElementsMobile.push(draggableElementMobile);
 
           sericeApi.setDraggableElemPosition(options);
         });
@@ -834,6 +832,7 @@
             'width': aspot_elements[itemElement].widthM + '%'
           });
         }
+
       },
 
       setFieldFontSizeValue: function (options) {
@@ -876,6 +875,8 @@
       },
 
       setDefaultPositions: function (container) {
+
+        console.info('setDefaultPositions');
 
         var elements = container.find('.aspot-draggable-element');
 
@@ -1143,6 +1144,18 @@
         return Math.round((currentFontSize * 100 + fontSizeStep * 100)) / 100;
       },
 
+      hideDraggableElem: function (elArr, relVal) {
+
+        $.each(elArr, function (i, el) {
+
+          var $elem = $(el);
+
+          if ($elem.hasClass('aspot-draggable-cta-button') && $elem.attr('data-rel') !== relVal) {
+            $elem.css('display', 'none');
+          }
+        })
+      },
+
       destroy: function () {
         mainBlock.off('click');
         $(PreviewBlockWrapper_tpl).remove();
@@ -1157,6 +1170,9 @@
         sericeApi.createDataSaveBlock();
         sericeApi.createPreviewingBlocks();
         sericeApi.createDraggableElem();
+        if (usaDesignCheckboxStatus) {
+          sericeApi.hideDraggableElem(draggableElementsMobile, 'cta_button_0');
+        }
       }
     };
 

@@ -2014,7 +2014,7 @@ function _usanetwork_tv_shows_aspot_block() {
       $theme_variables['episodes_block_title'] = check_plain($alternative_title_field[0]['value']);
     }
 
-    $theme_variables['show'] = '<div id="ajax_aspot_show">' . usanetwork_aspot_tvshow_render($show_node) . '</div>';
+    $theme_variables['show'] = '<div id="aspot-usanetwork" data-content-type="tv-show"><div id="ajax_aspot_show">' . usanetwork_aspot_tvshow_render($show_node) . '</div></div>';
 
     $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
 

@@ -343,56 +343,56 @@
             ndShowOptions: ndShowOptions
           }
         });
-      });
 
-      // node submit
-      $('#' + usanetworkAspotNodeFormId).submit(function () {
+        // node submit
+        $('#' + usanetworkAspotNodeFormId).submit(function () {
 
-        var headTextarea = $('#edit-field-aspot-gi-draggable-data-und-0-value'),
-            headInput = $('input[name="aspot_draggable_items_data"]').eq(0),
-            homeUiPositions = $('#' + homeOptions.aspot_draggable_items_data_name),
-            showUiPositions = $('#' + showOptions.aspot_draggable_items_data_name),
-            ndShowUiPositions = $('#' + ndShowOptions.aspot_draggable_items_data_name),
-            homeUiPositionsText = homeUiPositions.text(),
-            showUiPositionsText = showUiPositions.text(),
-            ndShowUiPositionsText = ndShowUiPositions.text(),
-            aspot_elements = globalSettings.aspot_elements,
-            tvs_aspot_elements = globalSettings.tvs_aspot_elements,
-            tvs_nd_aspot_elements = globalSettings.tvs_nd_aspot_elements,
-            homeUiPositionsVal, showUiPositionsVal, ndShowUiPositionsVal;
+          var headTextarea = $('#edit-field-aspot-gi-draggable-data-und-0-value'),
+              headInput = $('input[name="aspot_draggable_items_data"]').eq(0),
+              homeUiPositions = $('#' + homeOptions.aspot_draggable_items_data_name),
+              showUiPositions = $('#' + showOptions.aspot_draggable_items_data_name),
+              ndShowUiPositions = $('#' + ndShowOptions.aspot_draggable_items_data_name),
+              homeUiPositionsText = homeUiPositions.text(),
+              showUiPositionsText = showUiPositions.text(),
+              ndShowUiPositionsText = ndShowUiPositions.text(),
+              aspot_elements = globalSettings.aspot_elements,
+              tvs_aspot_elements = globalSettings.tvs_aspot_elements,
+              tvs_nd_aspot_elements = globalSettings.tvs_nd_aspot_elements,
+              homeUiPositionsVal, showUiPositionsVal, ndShowUiPositionsVal;
 
-        if ((homeUiPositionsText == '') && (showUiPositionsText == '') && (ndShowUiPositionsText == '')) {
-          headInput.val(headTextarea.text());
-        } else {
-
-          if (homeUiPositionsText != '' && isInitHomeAspot) {
-            homeUiPositionsVal = JSON.parse(homeUiPositionsText);
+          if ((homeUiPositionsText == '') && (showUiPositionsText == '') && (ndShowUiPositionsText == '')) {
+            headInput.val(headTextarea.text());
           } else {
-            homeUiPositionsVal = aspot_elements;
-          }
 
-          if (showUiPositions != '' && isInitShowAspot) {
-            showUiPositionsVal = JSON.parse(showUiPositionsText);
-          } else {
-            showUiPositionsVal = tvs_aspot_elements;
-          }
-
-          if (ndShowUiPositionsText != '' && isInitNdShowAspot) {
-            ndShowUiPositionsVal = JSON.parse(ndShowUiPositionsText);
-          } else {
-            ndShowUiPositionsVal = tvs_nd_aspot_elements;
-          }
-
-          var myData = {
-            data: {
-              aspot_elements: homeUiPositionsVal,
-              tvs_aspot_elements: showUiPositionsVal,
-              tvs_nd_aspot_elements: ndShowUiPositionsVal
+            if (homeUiPositionsText != '' && isInitHomeAspot) {
+              homeUiPositionsVal = JSON.parse(homeUiPositionsText);
+            } else {
+              homeUiPositionsVal = aspot_elements;
             }
-          };
 
-          headInput.val(JSON.stringify(myData));
-        }
+            if (showUiPositions != '' && isInitShowAspot) {
+              showUiPositionsVal = JSON.parse(showUiPositionsText);
+            } else {
+              showUiPositionsVal = tvs_aspot_elements;
+            }
+
+            if (ndShowUiPositionsText != '' && isInitNdShowAspot) {
+              ndShowUiPositionsVal = JSON.parse(ndShowUiPositionsText);
+            } else {
+              ndShowUiPositionsVal = tvs_nd_aspot_elements;
+            }
+
+            var myData = {
+              data: {
+                aspot_elements: homeUiPositionsVal,
+                tvs_aspot_elements: showUiPositionsVal,
+                tvs_nd_aspot_elements: ndShowUiPositionsVal
+              }
+            };
+
+            headInput.val(JSON.stringify(myData));
+          }
+        });
       });
     }
   };
@@ -441,7 +441,7 @@
         PreviewBlockWrapper_tpl, PreviewBlockWrapperMobile_tpl, PreviewBlockWrapperTitle_tpl, PreviewBlockWrapperMobileTitle_tpl, PreviewBlockWrapperId,
         PreviewBlockWrapperMobileId, defaultFontSize, defaultElemPosition, aspotDraggableItemsData, aspotDraggableItemsDataId, aspotDraggableItemsData_tpl,
         PreviewBlock, PreviewBlockMobile, PreviewBlockWrapper, PreviewBlockWrapperMobile, ctaButtonClass,
-        newDesignClass, ndDesignCheckboxId, ndDesignCheckboxChecked, ndDesignCheckboxStatus, initNewDesignCheckbox;
+        newDesignClass, ndDesignCheckboxStatus, initNewDesignCheckbox;
 
     // default params value
     defaultParams = {

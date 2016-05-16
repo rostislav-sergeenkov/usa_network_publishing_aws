@@ -6,7 +6,7 @@
 <?php
   $content = $data['#content'];
 ?>
-<div id="top-five-videos" class="line-block line-half-block">
+<div id="top-five-<?php print $content['type']; ?>" class="line-block line-half-block">
   <div class="line-block-inner">
     <div class="title-block show-border">
       <h2><?php print $content['title']; ?></h2>

@@ -33,6 +33,7 @@ function new_design_top_content_content_type_render($subtype, $conf, $args, $con
     $theme_variables = array(
       'title' => t('TOP') . ' ' . $conf['top_number'] . ' ' . $block_settings['title'],
       'more_link' => l(t('View more'), 'node/' . $node->nid . '/' . $block_settings['url'], array('attributes' => array('class' => 'view-more-link'))),
+      'type' => $block_settings['url'],
       'elements' => $elements,
     );
 

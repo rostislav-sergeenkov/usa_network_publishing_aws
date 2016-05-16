@@ -223,6 +223,7 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
   $form['#validate'][] = 'usanetwork_aspot_validate';
   $form['#submit'][] = 'usanetwork_aspot_submit_draggable_ui_items_submit';
   _usanetwork_aspot_versions_titles($form);
+  $form['field_new_design'][LANGUAGE_NONE]['#prefix'] = '<h2>' . t('Enable New Design') . '</h2>';
 }
 
 function _usanetwork_aspot_versions_titles(&$form) {

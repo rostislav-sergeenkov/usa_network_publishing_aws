@@ -359,7 +359,7 @@ function usanetwork_aspot_block_view($delta = '') {
     case 'usanetwork_aspot_carousel':
       $block['subject'] = '';
       $block['content'] = array(
-        '#markup' => '<div id="ajax_aspot_slider">' . _usanetwork_aspot_carousel_block() . '</div>',
+        '#markup' => '<div id="aspot-usanetwork" data-content-type="home"><div id="ajax_aspot_slider" class="my">' . _usanetwork_aspot_carousel_block() . '</div></div>',
         '#attached' => array(
           'js' => array(
             path_to_theme('aurora_usa') . '/javascripts/slick.min.js',
@@ -1584,7 +1584,7 @@ function ajax_aspot_draggable_ui_data_set() {
 }
 
 function theme_default_aspot_preview($node) {
-  $output = '<div id="default_aspot_preview">';
+  $output = '<div id="default_aspot_preview" class="aspot-usanetwork" data-content-type="default">';
   $output .= '<h2>' . t('Default version (In microsite) .') . '</h2>';
   $output .= $node['aspot_preview'];
   $output .= '</div>';
@@ -1592,7 +1592,7 @@ function theme_default_aspot_preview($node) {
 }
 
 function theme_home_page_aspot_preview($node) {
-  $output = '<div id="home_page_aspot_preview">';
+  $output = '<div id="home_page_aspot_preview" class="aspot-usanetwork" data-content-type="home">';
   $output .= '<h2>' . t('Homepage version.') . '</h2>';
   $output .= $node['aspot_preview'];
   $output .= '</div>';
@@ -1600,7 +1600,7 @@ function theme_home_page_aspot_preview($node) {
 }
 
 function theme_show_aspot_preview($node) {
-  $output = '<div id="show_aspot_preview">';
+  $output = '<div id="show_aspot_preview" class="aspot-usanetwork" data-content-type="tv-show">';
   $output .= '<h2>' . t('Show landing page version.') . '</h2>';
   $output .= $node['aspot_preview'];
   $output .= '</div>';

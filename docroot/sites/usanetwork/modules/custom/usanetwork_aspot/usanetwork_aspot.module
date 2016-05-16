@@ -129,12 +129,12 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'bg_offset_width' => 370,
       'bg_offset_height' => 500,
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
-        ? image_style_url('932x524', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('932x524_ndaspotd', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
         : '',
     ),
     'tvs_nd_mobile' => array(
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
-        ? image_style_url('640x360', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x360_ndaspotm', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
         : '',
     ),
     'tvs_nd_aspot_elements' => array(

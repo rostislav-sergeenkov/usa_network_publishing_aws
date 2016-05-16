@@ -26,7 +26,12 @@ $plugin = array(
 function new_design_best_of_section_content_type_render($subtype, $conf, $args, $context) {
   $node = $context->data;
   $block = new stdClass();
-  $best_of_data = new_design_best_of_section_get_content($node);
+  $best_of_data = new_design_best_of_section_get_content($node); 
+  
+  if (empty($best_of_data)){
+    return $block;
+  }
+  
   $theme_variables = array();
   foreach ($best_of_data as $item) {
     $theme_variables['items'][] = theme('new_design_best_of_section_item', $item);

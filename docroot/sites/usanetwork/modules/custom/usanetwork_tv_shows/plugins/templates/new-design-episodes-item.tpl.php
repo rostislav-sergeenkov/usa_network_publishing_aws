@@ -7,14 +7,12 @@
  *  - $season
  *  - $episode
  *  - $episode_link
- *  - $file_link
  */
 /*<?php print (!empty($title) ? $title : ''); ?>
 <?php print (!empty($image) ? $image : ''); ?>
 <?php print (!empty($season) ? $season : ''); ?>
 <?php print (!empty($episode) ? $episode : ''); ?>
-<?php print (!empty($episode_link) ? $episode_link : ''); ?>
-<?php print (!empty($file_link) ? $file_link : ''); ?>*/
+<?php print (!empty($episode_link) ? $episode_link : ''); ?>*/
 ?>
 <div class="node node-usanetwork-promo usa-episodes-carousel-promo">
   <a href="<?php print (!empty($episode_link) ? $episode_link : '#'); ?>">

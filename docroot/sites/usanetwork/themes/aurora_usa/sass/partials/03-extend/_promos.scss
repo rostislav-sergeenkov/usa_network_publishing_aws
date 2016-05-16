@@ -3075,10 +3075,9 @@
       font-family: $avalon-medium; //@todo add font "OpenSans Semibold"
       font-size: get-vw(15px, 1280);
       letter-spacing: 1px;
-      line-height: 1.4;
+      line-height: 1.3;
       text-transform: uppercase;
       overflow: hidden;
-      white-space: nowrap;
       @include breakpoint($bp-min-1601-width) {
         font-size: 18.75px;
       }
@@ -3092,18 +3091,18 @@
       color: $usa-related-additional;
       font-family: $tex-gyreschola-italic;
       font-size: get-vw(11px, 1280);
-      line-height: calc(#{get-vw(15px, 1280)} * 1.4);
+      line-height: calc(#{get-vw(15px, 1280)} * 1.3);
       text-transform: uppercase;
       overflow: hidden;
       white-space: nowrap;
       @include breakpoint($bp-min-1601-width) {
         font-size: 13.75px;
-        line-height: calc(18.75px * 1.4);
+        line-height: calc(18.75px * 1.3);
       }
       @include breakpoint($bp-768-width) {
         font-family: $tex-gyreschola-italic; //@todo add font "ProximaNova Semibold"
         font-size: get-vw(14px, 640);
-        line-height: calc(#{get-vw(28px, 640)} * 1.4);
+        line-height: calc(#{get-vw(14px, 640)} * 1.3);
         white-space: normal;
       }
     }
@@ -3147,7 +3146,6 @@
       line-height: 1.3;
       margin-bottom: get-vw(14px, 1280);
       overflow: hidden;
-      white-space: nowrap;
       @include breakpoint($bp-min-1601-width) {
         font-size: 30px;
         margin-bottom: 17.5px;
@@ -3164,7 +3162,7 @@
       font-family: $avalon-medium; //@todo add font "OpenSans"
       font-size: get-vw(18px, 1280);
       line-height: 1.3;
-      height: calc(#{(get-vw(18px, 1280) * 1.3) * 4});
+      //height: calc(#{(get-vw(18px, 1280) * 1.3) * 4});
       overflow: hidden;
       @include breakpoint($bp-min-1601-width) {
         font-size: 22.5px;

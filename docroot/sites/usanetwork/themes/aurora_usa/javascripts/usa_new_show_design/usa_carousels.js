@@ -329,7 +329,7 @@
       }
     });
 
-    $('#top-five-galleries').usaCarousels({
+    $('#top-five-photos').usaCarousels({
       vertical: {
         mode: false
       }

@@ -35,7 +35,7 @@ function new_design_episodes_content_type_render($subtype, $conf, $args, $contex
       $theme_variables['first_block'] = $episodes['first_element'];
       $theme_variables['carousel_items'] = $episodes['carousel_items'];
       $theme_variables['title'] = t('Episodes');
-      $theme_variables['link'] = l(t('View more'), 'node/' . $node->nid . '/episodes');
+      $theme_variables['link'] = l(t('View more'), 'node/' . $node->nid . '/episodes', array('attributes' => array('class' => 'view-more-link')));
 
       $block->content = array(
         '#theme' => 'new_design_episodes',
@@ -63,7 +63,6 @@ function _usanetwork_tv_show_get_episodes_block($show) {
       'season' => t('Season @season', array('@season' => $first_element->season_id)),
       'episode' => t('Episode @episode', array('@episode' => $first_element->episode_id)),
       'episode_link' => url('node/' . $first_element->nid),
-      'file_link' => isset($first_element->fid) ? url('file/' . $first_element->fid) : NULL,
     );
     foreach ($episodes as $item) {
       $theme_item = array(
@@ -72,7 +71,6 @@ function _usanetwork_tv_show_get_episodes_block($show) {
         'season' => t('S@season', array('@season' => $item->season_id)),
         'episode' => t('EP@episode', array('@episode' => $item->episode_id)),
         'episode_link' => url('node/' . $item->nid),
-        'file_link' => isset($item->fid) ? url('file/' . $item->fid) : NULL,
       );
       $carousel_items[] = theme('new_design_episodes_item', $theme_item);
     }

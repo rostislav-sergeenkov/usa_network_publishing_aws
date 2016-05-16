@@ -129,12 +129,12 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'bg_offset_width' => 370,
       'bg_offset_height' => 500,
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
-        ? image_style_url('932x524', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('932x524_ndaspotd', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
         : '',
     ),
     'tvs_nd_mobile' => array(
       'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
-        ? image_style_url('640x360', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x360_ndaspotm', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
         : '',
     ),
     'tvs_nd_aspot_elements' => array(
@@ -178,7 +178,7 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
         $previewing_settings['tvs_aspot_elements'][$element_name]['enabled'] = _usanetwork_aspot_is_ui_draggable_element_enabled($form_state['node']->field_aspot_enabled_tgi, $lang, $element_name);
       }
     }
-    if (!empty($draggable_items_data->data->tvs_ns_aspot_elements)) {
+    if (!empty($draggable_items_data->data->tvs_nd_aspot_elements)) {
       foreach ($draggable_items_data->data->tvs_nd_aspot_elements as $element_name => $element) {
         if ($element_name == 'undefined' || $element_name == 'data') {
           continue;
@@ -223,6 +223,7 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
   $form['#validate'][] = 'usanetwork_aspot_validate';
   $form['#submit'][] = 'usanetwork_aspot_submit_draggable_ui_items_submit';
   _usanetwork_aspot_versions_titles($form);
+  $form['field_new_design'][LANGUAGE_NONE]['#prefix'] = '<h2>' . t('Enable New Design') . '</h2>';
 }
 
 function _usanetwork_aspot_versions_titles(&$form) {
@@ -359,7 +360,7 @@ function usanetwork_aspot_block_view($delta = '') {
     case 'usanetwork_aspot_carousel':
       $block['subject'] = '';
       $block['content'] = array(
-        '#markup' => '<div id="ajax_aspot_slider">' . _usanetwork_aspot_carousel_block() . '</div>',
+        '#markup' => '<div id="aspot-usanetwork" data-content-type="home"><div id="ajax_aspot_slider"' . _usanetwork_aspot_carousel_block() . '</div></div>',
         '#attached' => array(
           'js' => array(
             path_to_theme('aurora_usa') . '/javascripts/slick.min.js',
@@ -1053,6 +1054,9 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
     }
   }
 
+  $new_design_disply = $aspot_node_wrapper->field_new_design->value();
+  $json_array_type = !empty($new_design_disply) ? 'tvs_nd_aspot_elements' : 'tvs_aspot_elements';
+
   $theme_array = array(
     'show_url' => !empty($aspot_node->field_usa_aspot_link)
       ? url($aspot_node_wrapper->field_usa_aspot_link->url->value())
@@ -1065,44 +1069,44 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
       'mobile' => image_style_url('640x560', $banner_images['mobile']),
       'desktop' => image_style_url('2880x1620', $banner_images['desktop']),
     ),
-    'show_title_prefix_style' => isset($draggable_data->data->tvs_aspot_elements->title_prefix)
+    'show_title_prefix_style' => isset($draggable_data->data->{$json_array_type}->title_prefix)
       ? array(
-        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->title_prefix),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title_prefix),
-        'width' => $draggable_data->data->tvs_aspot_elements->title_prefix->width,
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->{$json_array_type}->title_prefix),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->{$json_array_type}->title_prefix),
+        'width' => $draggable_data->data->{$json_array_type}->title_prefix->width,
         'fonts' => array(
-          'desktop' => !empty($draggable_data->data->tvs_aspot_elements->title_prefix->stepCounter) ? $draggable_data->data->tvs_aspot_elements->title_prefix->stepCounter : NULL,
-          'mobile' => !empty($draggable_data->data->tvs_aspot_elements->title_prefix->stepCounterM) ? $draggable_data->data->tvs_aspot_elements->title_prefix->stepCounterM : NULL,
+          'desktop' => !empty($draggable_data->data->{$json_array_type}->title_prefix->stepCounter) ? $draggable_data->data->{$json_array_type}->title_prefix->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->{$json_array_type}->title_prefix->stepCounterM) ? $draggable_data->data->{$json_array_type}->title_prefix->stepCounterM : NULL,
         )
       )
       : FALSE,
-    'show_title_style' => isset($draggable_data->data->tvs_aspot_elements->title)
+    'show_title_style' => isset($draggable_data->data->{$json_array_type}->title)
       ? array(
-        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->title),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->title),
-        'width' => $draggable_data->data->tvs_aspot_elements->title->width,
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->{$json_array_type}->title),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->{$json_array_type}->title),
+        'width' => $draggable_data->data->{$json_array_type}->title->width,
         'fonts' => array(
-          'desktop' => !empty($draggable_data->data->tvs_aspot_elements->title->stepCounter) ? $draggable_data->data->tvs_aspot_elements->title->stepCounter : NULL,
-          'mobile' => !empty($draggable_data->data->tvs_aspot_elements->title->stepCounterM) ? $draggable_data->data->tvs_aspot_elements->title->stepCounterM : NULL,
+          'desktop' => !empty($draggable_data->data->{$json_array_type}->title->stepCounter) ? $draggable_data->data->{$json_array_type}->title->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->{$json_array_type}->title->stepCounterM) ? $draggable_data->data->{$json_array_type}->title->stepCounterM : NULL,
         )
       )
       : FALSE,
-    'show_description_style' => isset($draggable_data->data->tvs_aspot_elements->aspot_description)
+    'show_description_style' => isset($draggable_data->data->{$json_array_type}->aspot_description)
       ? array(
-        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->aspot_description),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->aspot_description),
-        'width' => $draggable_data->data->tvs_aspot_elements->aspot_description->width,
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->{$json_array_type}->aspot_description),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->{$json_array_type}->aspot_description),
+        'width' => $draggable_data->data->{$json_array_type}->aspot_description->width,
         'fonts' => array(
-          'desktop' => !empty($draggable_data->data->tvs_aspot_elements->aspot_description->stepCounter) ? $draggable_data->data->tvs_aspot_elements->aspot_description->stepCounter : NULL,
-          'mobile' => !empty($draggable_data->data->tvs_aspot_elements->aspot_description->stepCounterM) ? $draggable_data->data->tvs_aspot_elements->aspot_description->stepCounterM : NULL,
+          'desktop' => !empty($draggable_data->data->{$json_array_type}->aspot_description->stepCounter) ? $draggable_data->data->{$json_array_type}->aspot_description->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->{$json_array_type}->aspot_description->stepCounterM) ? $draggable_data->data->{$json_array_type}->aspot_description->stepCounterM : NULL,
         )
       )
       : FALSE,
-    'social_meter_style' => isset($draggable_data->data->tvs_aspot_elements->social_meter)
+    'social_meter_style' => isset($draggable_data->data->{$json_array_type}->social_meter)
       ? array(
-        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->tvs_aspot_elements->social_meter),
-        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->tvs_aspot_elements->social_meter),
-        'width' => $draggable_data->data->tvs_aspot_elements->social_meter->width,
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->{$json_array_type}->social_meter),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->{$json_array_type}->social_meter),
+        'width' => $draggable_data->data->{$json_array_type}->social_meter->width,
       )
       : FALSE,
     'sponsored' => isset($sponsored) ? $sponsored : FALSE,
@@ -1119,7 +1123,7 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
 
   $theme_array['cta_buttons'] = array();
   if (!empty($draggable_data->data->aspot_elements) && !empty($aspot_node->field_aspot_gi_cta)) {
-    $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper->field_aspot_tgi_cta->value(), $draggable_data->data->tvs_aspot_elements);
+    $theme_array['cta_buttons'] = _usanetwork_aspot_get_draggable_cta_buttons($aspot_node_wrapper->field_aspot_tgi_cta->value(), $draggable_data->data->{$json_array_type});
   }
   $theme_array['show_title'] = !empty($value['value']) ? $value['value'] : $show_node->title;
 
@@ -1584,7 +1588,7 @@ function ajax_aspot_draggable_ui_data_set() {
 }
 
 function theme_default_aspot_preview($node) {
-  $output = '<div id="default_aspot_preview">';
+  $output = '<div id="default_aspot_preview" class="aspot-usanetwork" data-content-type="default">';
   $output .= '<h2>' . t('Default version (In microsite) .') . '</h2>';
   $output .= $node['aspot_preview'];
   $output .= '</div>';
@@ -1592,7 +1596,7 @@ function theme_default_aspot_preview($node) {
 }
 
 function theme_home_page_aspot_preview($node) {
-  $output = '<div id="home_page_aspot_preview">';
+  $output = '<div id="home_page_aspot_preview" class="aspot-usanetwork" data-content-type="home">';
   $output .= '<h2>' . t('Homepage version.') . '</h2>';
   $output .= $node['aspot_preview'];
   $output .= '</div>';
@@ -1600,7 +1604,7 @@ function theme_home_page_aspot_preview($node) {
 }
 
 function theme_show_aspot_preview($node) {
-  $output = '<div id="show_aspot_preview">';
+  $output = '<div id="show_aspot_preview" class="aspot-usanetwork" data-content-type="tv-show">';
   $output .= '<h2>' . t('Show landing page version.') . '</h2>';
   $output .= $node['aspot_preview'];
   $output .= '</div>';

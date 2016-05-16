@@ -416,7 +416,7 @@
           ndShowOptions.ndDesignCheckboxStatus = isChecked;
           ndShowAspot = initAdminAspotService(ndShowOptions);
           isInitNdShowAspot = ndShowAspot.isInit;
-        } else if (ndShowAspot instanceof Object && isInitUsaShowAspot && !isChecked) {
+        } else if (ndShowAspot instanceof Object && isInitNdShowAspot && !isChecked) {
           ndShowAspot.destroyAspot();
           isInitNdShowAspot = false;
           ndShowAspot = '';

@@ -68,7 +68,7 @@
             <?php endforeach; ?>
           </div>
         <?php endif; ?>
-        <?php if (!$item['bottom_link']): ?>
+        <?php if (!empty($item['bottom_link'])): ?>
           <a href="<?php print $item['bottom_link']['url']; ?>" class="more-link"><span class="show-color show-font arrow"></span><?php print $item['bottom_link']['title']; ?></a>
         <?php endif; ?>
       </div>

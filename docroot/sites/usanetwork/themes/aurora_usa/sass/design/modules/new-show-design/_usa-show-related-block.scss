@@ -89,7 +89,7 @@
     }
   }
   #top-five-videos,
-  #top-five-galleries {
+  #top-five-photos {
     .line-block-inner {
       @include breakpoint($bp-768-width) {
         background-color: $tve-modalBorder;

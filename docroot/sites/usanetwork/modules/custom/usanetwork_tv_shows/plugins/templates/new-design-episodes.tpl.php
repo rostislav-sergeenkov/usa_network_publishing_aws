@@ -56,7 +56,7 @@
     </ul>
   </div>
   <div class="view-more">
-    <a href="#" class="view-more-link"><?php print t('View more');?></a>
+    <?php print $data['#content']['link']; ?>
   </div>
 </div>
 

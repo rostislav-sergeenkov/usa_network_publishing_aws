@@ -384,9 +384,9 @@
 }
 
 /* usa-design-select */
-.usa-design-select {
-  border-bottom: 1px solid #808080;
-  padding-bottom: 20px;
+#edit-field-new-design {
+  border-bottom: 1px solid #4d4d4d;
+  padding-bottom: 10px;
   margin-bottom: 20px;
 }
 .usa-design-select h2 {
@@ -400,15 +400,15 @@
 }
 
 /* USA New Design Mr. Robot */
-#edit-field-aspot-enabled-tgi.usa-show-design .draggable-area.mobile{
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile{
   height: 360px;
   width: 640px;
 }
-#edit-field-aspot-enabled-tgi.usa-show-design .draggable-area.desktop{
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop{
   height: 524px;
   width: 932px;
 }
-#edit-field-aspot-enabled-tgi.usa-show-design #preview-usa-showpage-wrapper-mobile{
+#edit-field-aspot-enabled-tgi.show-new-design #preview-new-design-showpage-wrapper-mobile{
   height: 450px;
 }
 /* END USA New Design Mr. Robot */

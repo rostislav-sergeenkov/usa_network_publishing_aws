@@ -3,10 +3,10 @@
   'use strict';
 
   var globalSettings, aspotSettings, usanetworkAspotNodeFormId, aspot_draggable_items_data_name,
-      homeMainBlockId, showMainBlockId, homePageName, showPageName, usaShowPageName,
-      homeAspot, homeOptions, showAspot, showOptions, usaShowAspot, usaShowOptions,
-      isInitHomeAspot, isInitShowAspot, isInitUsaShowAspot,
-      tvs_usaDesignStatus, usaMainBlockFlagClass, home_usaDesignCheckboxId, show_usaDesignCheckboxId;
+      homeMainBlockId, showMainBlockId, homePageName, showPageName, ndShowPageName,
+      homeAspot, homeOptions, showAspot, showOptions, ndShowAspot, ndShowOptions,
+      isInitHomeAspot, isInitShowAspot, isInitNdShowAspot,
+      tvs_newDesignStatus, ndMainBlockFlagClass, ndDesignCheckboxId;
 
   // sets vars values
   usanetworkAspotNodeFormId = 'usanetwork-aspot-node-form';
@@ -15,16 +15,15 @@
   showMainBlockId = 'edit-group_usa_tv_aspot_ui';
   homePageName = 'homepage';
   showPageName = 'showpage';
-  usaShowPageName = 'new-showpage';
-  home_usaDesignCheckboxId = 'homepage-usa-design-checkbox';
-  show_usaDesignCheckboxId = 'showpage-usa-design-checkbox';
-  usaMainBlockFlagClass = 'usa-show-design';
+  ndShowPageName = 'new-design-showpage';
+  ndMainBlockFlagClass = 'show-new-design';
+  ndDesignCheckboxId = 'edit-field-new-design-und';
 
   // default value
-  tvs_usaDesignStatus = true;
+  tvs_newDesignStatus = false;
   isInitHomeAspot = false;
   isInitShowAspot = false;
-  isInitUsaShowAspot = false;
+  isInitNdShowAspot = false;
 
   // default aspots settings
   aspotSettings = {
@@ -262,23 +261,11 @@
       $(document.body).once(function () {
 
         globalSettings = settings.giui_settings;
-        // tvs_usaDesignStatus = globalSettings.tvs_usa_design;
-
-        // new design drupal settings
-        globalSettings.tvs_usa_aspot_elements = globalSettings.tvs_aspot_elements;
-        globalSettings.tvs_usa_desktop = {
-          bg_offset_image_url: globalSettings.tvs_desktop.bg_offset_image_url,
-          bg_offset_value: globalSettings.tvs_desktop.bg_offset_value
-        };
-        globalSettings.tvs_usa_mobile = {
-          bg_offset_image_url: globalSettings.tvs_desktop.bg_offset_image_url
-        };
-        // end new design drupal settings
-
-        console.info(globalSettings);
+        tvs_newDesignStatus = parseInt(globalSettings.new_design) === 1 ? true : false;
 
         // sets homeAspot options
         homeOptions = {
+          aspot_draggable_items_data_name: homePageName + aspot_draggable_items_data_name,
           aspotSettings: aspotSettings,
           aspot_elements: globalSettings.aspot_elements,
           bg_offset_value: globalSettings.desktop.bg_offset_value,
@@ -292,13 +279,14 @@
 
           // for home Aspot disabled new design
           initUsaDesignCheckbox: false,
-          usaDesignCheckboxStatus: false,
-          usaDesignCheckboxId: home_usaDesignCheckboxId,
-          usaMainBlockClass: usaMainBlockFlagClass
+          ndDesignCheckboxStatus: false,
+          ndMainBlockClass: ndMainBlockFlagClass,
+          ndDesignCheckboxId: ndDesignCheckboxId
         };
 
         // sets showAspot options
         showOptions = {
+          aspot_draggable_items_data_name: showPageName + aspot_draggable_items_data_name,
           aspotSettings: aspotSettings,
           aspot_elements: globalSettings.tvs_aspot_elements,
           bg_offset_value: globalSettings.tvs_desktop.bg_offset_value,
@@ -310,27 +298,28 @@
           pageName: showPageName,
           showBgOffset: false, // false default value
           initUsaDesignCheckbox: true,
-          usaDesignCheckboxStatus: tvs_usaDesignStatus,
-          usaDesignCheckboxId: show_usaDesignCheckboxId,
-          usaMainBlockClass: usaMainBlockFlagClass
+          ndDesignCheckboxStatus: tvs_newDesignStatus,
+          ndMainBlockClass: ndMainBlockFlagClass,
+          ndDesignCheckboxId: ndDesignCheckboxId
         };
 
         // sets usaShowAspot options (new design)
-        usaShowOptions = {
+        ndShowOptions = {
+          aspot_draggable_items_data_name: ndShowPageName + aspot_draggable_items_data_name,
           aspotSettings: aspotSettings,
-          aspot_elements: globalSettings.tvs_usa_aspot_elements,
-          bg_offset_value: globalSettings.tvs_usa_desktop.bg_offset_value,
-          bg_offset_image_url: globalSettings.tvs_usa_desktop.bg_offset_image_url,
-          bg_offset_image_url_mobile: globalSettings.tvs_usa_mobile.bg_offset_image_url,
+          aspot_elements: globalSettings.tvs_nd_aspot_elements,
+          bg_offset_value: globalSettings.tvs_nd_desktop.bg_offset_value,
+          bg_offset_image_url: globalSettings.tvs_nd_desktop.bg_offset_image_url,
+          bg_offset_image_url_mobile: globalSettings.tvs_nd_mobile.bg_offset_image_url,
           defaultFontSize: aspotSettings.defaultFontSettings.showPage,
           defaultElemPosition: aspotSettings.defaultNewDesignElemPositions.nd_aspot_elements,
           mainBlockId: showMainBlockId,
-          pageName: 'new-design-showpage',
+          pageName: ndShowPageName,
           showBgOffset: false, // false default value
           initUsaDesignCheckbox: true,
-          usaDesignCheckboxStatus: tvs_usaDesignStatus,
-          usaDesignCheckboxId: show_usaDesignCheckboxId,
-          usaMainBlockClass: usaMainBlockFlagClass
+          ndDesignCheckboxStatus: tvs_newDesignStatus,
+          ndMainBlockClass: ndMainBlockFlagClass,
+          ndDesignCheckboxId: ndDesignCheckboxId
         };
 
         // init home Aspots
@@ -338,9 +327,9 @@
         isInitHomeAspot = homeAspot.isInit;
 
         // check status show new design and init show Aspots
-        if (tvs_usaDesignStatus) {
-          usaShowAspot = initAdminAspotService(usaShowOptions);
-          isInitUsaShowAspot = usaShowAspot.isInit;
+        if (tvs_newDesignStatus) {
+          ndShowAspot = initAdminAspotService(ndShowOptions);
+          isInitNdShowAspot = ndShowAspot.isInit;
         } else {
           showAspot = initAdminAspotService(showOptions);
           isInitShowAspot = showAspot.isInit;
@@ -351,26 +340,69 @@
           options: {
             homeOptions: homeOptions,
             showOptions: showOptions,
-            usaShowOptions: usaShowOptions
-          },
-          aspot: {
-            homeAspot: homeAspot,
-            showAspot: showAspot,
-            usaShowAspot: usaShowAspot
+            ndShowOptions: ndShowOptions
           }
         });
+      });
+
+      // node submit
+      $('#' + usanetworkAspotNodeFormId).submit(function () {
+
+        var headTextarea = $('#edit-field-aspot-gi-draggable-data-und-0-value'),
+            headInput = $('input[name="aspot_draggable_items_data"]').eq(0),
+            homeUiPositions = $('#' + homeOptions.aspot_draggable_items_data_name),
+            showUiPositions = $('#' + showOptions.aspot_draggable_items_data_name),
+            ndShowUiPositions = $('#' + ndShowOptions.aspot_draggable_items_data_name),
+            homeUiPositionsText = homeUiPositions.text(),
+            showUiPositionsText = showUiPositions.text(),
+            ndShowUiPositionsText = ndShowUiPositions.text(),
+            aspot_elements = globalSettings.aspot_elements,
+            tvs_aspot_elements = globalSettings.tvs_aspot_elements,
+            tvs_nd_aspot_elements = globalSettings.tvs_nd_aspot_elements,
+            homeUiPositionsVal, showUiPositionsVal, ndShowUiPositionsVal;
+
+        if ((homeUiPositionsText == '') && (showUiPositionsText == '') && (ndShowUiPositionsText == '')) {
+          headInput.val(headTextarea.text());
+        } else {
+
+          if (homeUiPositionsText != '' && isInitHomeAspot) {
+            homeUiPositionsVal = JSON.parse(homeUiPositionsText);
+          } else {
+            homeUiPositionsVal = aspot_elements;
+          }
+
+          if (showUiPositions != '' && isInitShowAspot) {
+            showUiPositionsVal = JSON.parse(showUiPositionsText);
+          } else {
+            showUiPositionsVal = tvs_aspot_elements;
+          }
+
+          if (ndShowUiPositionsText != '' && isInitNdShowAspot) {
+            ndShowUiPositionsVal = JSON.parse(ndShowUiPositionsText);
+          } else {
+            ndShowUiPositionsVal = tvs_nd_aspot_elements;
+          }
+
+          var myData = {
+            data: {
+              aspot_elements: homeUiPositionsVal,
+              tvs_aspot_elements: showUiPositionsVal,
+              tvs_nd_aspot_elements: ndShowUiPositionsVal
+            }
+          };
+
+          headInput.val(JSON.stringify(myData));
+        }
       });
     }
   };
 
   var addListnerUsaCheckbox = function (params) {
 
-    var showAspot = params.aspot.showAspot,
-        usaShowAspot = params.aspot.usaShowAspot,
-        showOptions = params.options.showOptions,
-        usaShowOptions = params.options.usaShowOptions;
+    var showOptions = params.options.showOptions,
+        ndShowOptions = params.options.ndShowOptions;
 
-    $('body').bind('click', '#' + usaShowOptions.usaDesignCheckboxId, function (e) {
+    $('#' + ndShowOptions.ndDesignCheckboxId).bind('click', function (e) {
 
       var $checkBox = $(e.target),
           isChecked = $checkBox.prop('checked');
@@ -381,14 +413,14 @@
           showAspot.destroyAspot();
           isInitShowAspot = false;
           showAspot = '';
-          usaShowOptions.usaDesignCheckboxStatus = isChecked;
-          usaShowAspot = initAdminAspotService(usaShowOptions);
-          isInitUsaShowAspot = usaShowAspot.isInit;
-        } else if (usaShowAspot instanceof Object && isInitUsaShowAspot && !isChecked) {
-          usaShowAspot.destroyAspot();
-          isInitUsaShowAspot = false;
-          usaShowAspot = '';
-          showOptions.usaDesignCheckboxStatus = isChecked;
+          ndShowOptions.ndDesignCheckboxStatus = isChecked;
+          ndShowAspot = initAdminAspotService(ndShowOptions);
+          isInitNdShowAspot = ndShowAspot.isInit;
+        } else if (ndShowAspot instanceof Object && isInitUsaShowAspot && !isChecked) {
+          ndShowAspot.destroyAspot();
+          isInitNdShowAspot = false;
+          ndShowAspot = '';
+          showOptions.ndDesignCheckboxStatus = isChecked;
           showAspot = initAdminAspotService(showOptions);
           isInitShowAspot = showAspot.isInit;
         }
@@ -409,7 +441,7 @@
         PreviewBlockWrapper_tpl, PreviewBlockWrapperMobile_tpl, PreviewBlockWrapperTitle_tpl, PreviewBlockWrapperMobileTitle_tpl, PreviewBlockWrapperId,
         PreviewBlockWrapperMobileId, defaultFontSize, defaultElemPosition, aspotDraggableItemsData, aspotDraggableItemsDataId, aspotDraggableItemsData_tpl,
         PreviewBlock, PreviewBlockMobile, PreviewBlockWrapper, PreviewBlockWrapperMobile, ctaButtonClass,
-        usaDesignClass, usaDesignCheckbox_tpl, usaDesignCheckboxId, usaDesignCheckboxChecked, usaDesignCheckboxStatus, initUsaDesignCheckbox;
+        newDesignClass, ndDesignCheckboxId, ndDesignCheckboxChecked, ndDesignCheckboxStatus, initNewDesignCheckbox;
 
     // default params value
     defaultParams = {
@@ -433,11 +465,9 @@
     isShowBgOffset = allParams.showBgOffset;
     defaultFontSize = allParams.defaultFontSize;
     defaultElemPosition = allParams.defaultElemPosition;
-    initUsaDesignCheckbox = allParams.initUsaDesignCheckbox;
-    usaDesignCheckboxId = allParams.usaDesignCheckboxId;
-    usaDesignCheckboxStatus = allParams.usaDesignCheckboxStatus;
-    usaDesignCheckboxChecked = usaDesignCheckboxStatus ? 'checked' : '';
-    usaDesignClass = allParams.usaMainBlockClass;
+    initNewDesignCheckbox = allParams.initUsaDesignCheckbox;
+    ndDesignCheckboxStatus = allParams.ndDesignCheckboxStatus;
+    newDesignClass = allParams.ndMainBlockClass;
     draggableElements = [];
     draggableElementsMobile = [];
 
@@ -449,7 +479,7 @@
     bgPreviewingBlockId = pageName + '-edit-field-aspot-preview-bg-offset-preview';
     draggableAreaDesktopId = 'edit-field-aspot-enabled-' + pageName + '-preview';
     draggableAreaDesktopMobileId = 'edit-field-aspot-enabled-' + pageName + '-preview-mobile';
-    aspotDraggableItemsDataId = pageName + '-aspot_draggable_items_data';
+    aspotDraggableItemsDataId = allParams.aspot_draggable_items_data_name;
     ctaButtonClass = 'aspot-draggable-cta-button';
 
     // templates
@@ -512,12 +542,6 @@
       id: draggableAreaDesktopMobileId,
       class: "draggable-area mobile"
     });
-
-    usaDesignCheckbox_tpl = $('<div class="usa-design-select">' +
-        '<h2>Enable New Design</h2>' +
-        '<input type="checkbox" id="' + usaDesignCheckboxId + '" name="' + usaDesignCheckboxId + '" ' + usaDesignCheckboxChecked + '>' +
-        '<label>new design</label>' +
-        '</div>');
 
     function resetElemWidth_tpl() {
       return $('<div class="reset-wrapper">' +
@@ -737,14 +761,10 @@
             .prepend(PreviewBlockWrapper_tpl.append(PreviewBlockWrapperTitle_tpl, draggableAreaDesktop_tpl.append(desktopImg_tpl), addSetElempositionNav_tpl(), addFontSizeNav_tpl(defaultFontSize.desktop), resetElemWidth_tpl()))
             .prepend(PreviewBlockWrapperMobile_tpl.append(PreviewBlockWrapperMobileTitle_tpl, draggableAreaDesktopMobile_tpl.append(mobileImg_tpl), addSetElempositionNav_tpl(), addFontSizeNav_tpl(defaultFontSize.mobile), resetElemWidth_tpl()));
 
-        if (initUsaDesignCheckbox) {
-          aspotPreviewBlock.prepend(usaDesignCheckbox_tpl);
-        }
-
-        if (usaDesignCheckboxStatus) {
-          aspotPreviewBlock.addClass(usaDesignClass);
+        if (ndDesignCheckboxStatus) {
+          aspotPreviewBlock.addClass(newDesignClass);
         } else {
-          aspotPreviewBlock.removeClass(usaDesignClass);
+          aspotPreviewBlock.removeClass(newDesignClass);
         }
       },
 
@@ -1160,7 +1180,7 @@
         mainBlock.off('click');
         $(PreviewBlockWrapper_tpl).remove();
         $(PreviewBlockWrapperMobile_tpl).remove();
-        $(usaDesignCheckbox_tpl).remove();
+        $(aspotDraggableItemsData_tpl).remove();
       },
 
       init: function () {
@@ -1170,7 +1190,7 @@
         sericeApi.createDataSaveBlock();
         sericeApi.createPreviewingBlocks();
         sericeApi.createDraggableElem();
-        if (usaDesignCheckboxStatus) {
+        if (ndDesignCheckboxStatus) {
           sericeApi.hideDraggableElem(draggableElementsMobile, 'cta_button_0');
         }
       }
@@ -1294,6 +1314,9 @@
     aspotElemCheckboxes.change(function () {
       var self = $(this);
       sericeApi.onOffDraggableElem(self.val(), self);
+      if (ndDesignCheckboxStatus) {
+        sericeApi.hideDraggableElem(draggableElementsMobile, 'cta_button_0');
+      }
     });
 
     // init service api
@@ -1301,7 +1324,6 @@
 
     return {
       isInit: true,
-      aspotDraggableItemsDataId: aspotDraggableItemsDataId,
       destroyAspot: sericeApi.destroy
     };
   }

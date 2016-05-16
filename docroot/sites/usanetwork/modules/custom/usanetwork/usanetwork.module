@@ -460,7 +460,7 @@ function usanetwork_bottom_footer($suffix = TRUE) {
     'suffix' => ($suffix) ? array(
         variable_get('usanetwork_social_links', ''),
         '<div class="copyright">' . preg_replace('/(Y{4})/', date('Y'), variable_get('usanetwork_footer_message', '')) . '</div>',
-      ) : array(),
+      ) : array('<div class="copyright">' . preg_replace('/(Y{4})/', date('Y'), variable_get('usanetwork_footer_message', '')) . '</div>'),
       )
   );
 }

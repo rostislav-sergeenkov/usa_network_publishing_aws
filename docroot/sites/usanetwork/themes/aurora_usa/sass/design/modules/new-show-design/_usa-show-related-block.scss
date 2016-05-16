@@ -1,20 +1,18 @@
 .show-related-content-block {
-
+  @include clear();
   background-color: $consum-also-back;
   padding: get-vw(16px, 1280) get-vw(16px, 1280);
-
+  position: relative;
   @include breakpoint($bp-min-1601-width) {
     padding: 20px;
   }
   @include breakpoint($bp-768-width) {
     padding: 0;
   }
-
   .show-related-content-inner {
     @include clear;
     width: 100%;
   }
-
   .line-block {
     float: left;
     width: calc((100% - #{get-vw(16px, 1280)}) / 2);
@@ -41,7 +39,6 @@
       width: 100%;
     }
   }
-
   .line-half-block {
     margin-right: get-vw(16px, 1280);
     width: calc(((100% - #{get-vw(16px, 1280)*2}) - ((100% - #{get-vw(16px, 1280)}) / 2)) / 2);
@@ -55,7 +52,6 @@
       width: 100%;
     }
   }
-
   .title-block {
     background-color: $tve-modalFooter;
     border-bottom: 4px solid;
@@ -87,13 +83,11 @@
       }
     }
   }
-
   .view-more {
     @include breakpoint($bp-768-width) {
       display: none;
     }
   }
-
   #top-five-videos,
   #top-five-galleries {
     .line-block-inner {
@@ -136,11 +130,9 @@
         padding-left: get-vw(24px, 640);
         width: get-vw(248px, 640);
       }
-
       @extend %usa-show-related-top-promo;
     }
   }
-
   #special-fuatures {
     .title-block {
       @include breakpoint($bp-768-width) {
@@ -180,17 +172,14 @@
           padding: 0;
         }
       }
-
       @include breakpoint($bp-min-1601-width) {
         padding: 18.75px 22.5px 18.75px 25px;
       }
-
       @include breakpoint($bp-768-width) {
         float: none;
         padding: 0;
         width: 100%;
       }
-
       @extend %usa-show-related-special-promo;
     }
   }

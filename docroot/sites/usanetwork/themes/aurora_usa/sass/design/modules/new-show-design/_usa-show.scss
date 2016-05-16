@@ -177,4 +177,78 @@
       }
     }
   }
+  #footer {
+    background: $consum-also-back;
+    .usa-legal {
+      background: black;
+      padding: get-vw(16px, 1280) get-vw(23px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        padding: 20px 28.75px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: get-vw(16px, 640) get-vw(23px, 640);
+      }
+    }
+    .legal-menu {
+      li {
+        float: left;
+        line-height: 1;
+        font-size: get-vw(14px, 1280);
+        @include linksSeparator(get-vw(14px, 1280), get-vw(10px, 1280), get-vw(10px, 1280), $usa-footer-color);
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 17.5px;
+          @include linksSeparator(17.5px, 12.5px, 12.5px, $usa-footer-color);
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(14px, 640);
+          @include linksSeparator(get-vw(14px, 640), get-vw(10px, 640), get-vw(10px, 640), $usa-footer-color);
+        }
+        &:first-child {
+          padding-left: 0px;
+        }
+        &:last-child {
+          &:after {
+            display: none;
+          }
+        }
+        a {
+          color: $usa-footer-color;
+          font-family: $avalon-book;
+          font-size: get-vw(14px, 1280);
+          line-height: 1.5;
+          text-decoration: none;
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 17.5px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(14px, 640);
+          }
+          &:hover {
+            text-decoration: underline;
+          }
+          img {
+            height: get-vw(14px, 1280);
+            @include breakpoint($bp-min-1601-width) {
+              height: 17.5px;
+            }
+            @include breakpoint($bp-768-width) {
+              height: get-vw(14px, 640);
+            }
+          }
+        }
+      }
+    }
+    .copyright {
+      clear: both;
+      color: $usa-footer-color;
+      font-size: get-vw(12px, 1280);
+      line-height: 1.7;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 15px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(12px, 640);
+      }
+    }
+  }
 }

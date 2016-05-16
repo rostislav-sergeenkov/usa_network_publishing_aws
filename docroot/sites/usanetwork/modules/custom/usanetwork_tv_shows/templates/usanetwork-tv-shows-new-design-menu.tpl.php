@@ -15,6 +15,19 @@
   </div>
   <?php if (!empty($sponsored_path)) : ?>
     <div class="sponsored" data-mpspath="<?php print $sponsored_path; ?>" data-scalemps="1"></div>
+  <?php else : ?>
+    <div class="social-block">
+      <?php if (!empty($hashtag)): ?>
+        <div class="hashtag show-color show-font">
+          <span><?php print $hashtag; ?></span>
+        </div>
+      <?php endif; ?>
+      <div class="social-icons social-follow show-color show-font">
+        <?php foreach ($social_icons as $social_link): ?>
+          <?php print $social_link; ?>
+        <?php endforeach; ?>
+      </div>
+    </div>
   <?php endif; ?>
   <div class="menu-open-button show-color show-font"></div>
 </div>
@@ -28,17 +41,19 @@
       </ul>
     <?php endif; ?>
   </div>
-  <div class="social-block">
-    <?php if (!empty($hashtag)): ?>
-      <div class="hashtag show-color show-font">
-        <span><?php print $hashtag; ?></span>
+  <?php if (!empty($sponsored_path)) : ?>
+    <div class="social-block">
+      <?php if (!empty($hashtag)): ?>
+        <div class="hashtag show-color show-font">
+          <span><?php print $hashtag; ?></span>
+        </div>
+      <?php endif; ?>
+      <div class="social-icons social-follow show-color show-font">
+        <?php foreach ($social_icons as $social_link): ?>
+          <?php print $social_link; ?>
+        <?php endforeach; ?>
       </div>
-    <?php endif; ?>
-    <div class="social-icons social-follow show-color show-font">
-      <?php foreach ($social_icons as $social_link): ?>
-        <?php print $social_link; ?>
-      <?php endforeach; ?>
     </div>
-  </div>
+  <?php endif; ?>
 </div>
 

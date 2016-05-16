@@ -259,7 +259,7 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 68,
+      'weight' => 77,
     ),
   );
 
@@ -759,7 +759,7 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 73,
+      'weight' => 82,
     ),
   );
 
@@ -831,7 +831,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 72,
+      'weight' => 81,
     ),
   );
 
@@ -903,7 +903,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 71,
+      'weight' => 80,
     ),
   );
 
@@ -975,7 +975,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 70,
+      'weight' => 79,
     ),
   );
 
@@ -1047,7 +1047,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 69,
+      'weight' => 78,
     ),
   );
 
@@ -2751,6 +2751,75 @@ Suggested max dimensions 380px x 80px<br/>
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_aspot-field_new_design'
+  $field_instances['node-usanetwork_aspot-field_new_design'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 72,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_new_design',
+    'label' => 'New Design',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 76,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_aspot-field_show'
   $field_instances['node-usanetwork_aspot-field_show'] = array(
     'bundle' => 'usanetwork_aspot',
@@ -4118,6 +4187,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('Mobile Text line 3 Font Size');
   t('Mobile image');
   t('Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 640w x 560h.');
+  t('New Design');
   t('Optional image to display in place of the Title Text Line 1. <br/>
 Suggested max dimensions 380px x 80px<br/>
 * Title Text Line 1 will render as the alt text.');

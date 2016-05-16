@@ -61,6 +61,8 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
     $airdate = usanetwork_schedule_get_nearest_episode_airtime($show_nid);
   }
 
+  $new_design = _usanetwork_aspot_get_form_state_field_value($form_state, 'field_new_design', $lang, NULL);
+
   $draggable_items_data = _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_draggable_data', $lang, NULL);
   if (!empty($draggable_items_data)) {
     $draggable_items_data = json_decode($draggable_items_data);
@@ -121,7 +123,36 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
         'value' => t('Social Meter'),
       ),
     ),
+    //for New Design
+    'tvs_nd_desktop' => array(
+      'bg_offset_value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_preview_tbg_offset', $lang, 0),
+      'bg_offset_width' => 370,
+      'bg_offset_height' => 500,
+      'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
+        ? image_style_url('932x524', $form_state['node']->field_usa_tv_aspot_desktop[$lang][0]['uri'])
+        : '',
+    ),
+    'tvs_nd_mobile' => array(
+      'bg_offset_image_url' => !empty($form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
+        ? image_style_url('640x360', $form_state['node']->field_usa_tv_aspot_mobile[$lang][0]['uri'])
+        : '',
+    ),
+    'tvs_nd_aspot_elements' => array(
+      'title_prefix' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_tgi_title_prefix', $lang, t('Title prefix')),
+      ),
+      'title' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_tgi_title', $lang, $form_state['node']->title),
+      ),
+      'aspot_description' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_tgi_desc', $lang, t('Description')),
+      ),
+      'social_meter' => array(
+        'value' => t('Social Meter'),
+      ),
+    ),
     'airdate' => $airdate,
+    'new_design' => $new_design,
   );
 
   if (!empty($draggable_items_data->data)) {
@@ -147,6 +178,17 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
         $previewing_settings['tvs_aspot_elements'][$element_name]['enabled'] = _usanetwork_aspot_is_ui_draggable_element_enabled($form_state['node']->field_aspot_enabled_tgi, $lang, $element_name);
       }
     }
+    if (!empty($draggable_items_data->data->tvs_ns_aspot_elements)) {
+      foreach ($draggable_items_data->data->tvs_nd_aspot_elements as $element_name => $element) {
+        if ($element_name == 'undefined' || $element_name == 'data') {
+          continue;
+        }
+
+        $element->value = $previewing_settings['tvs_nd_aspot_elements'][$element_name]['value'];
+        $previewing_settings['tvs_nd_aspot_elements'][$element_name] = _usanetwork_aspot_fill_draggable_ui_settings_element($element);
+        $previewing_settings['tvs_nd_aspot_elements'][$element_name]['enabled'] = _usanetwork_aspot_is_ui_draggable_element_enabled($form_state['node']->field_aspot_enabled_tgi, $lang, $element_name);
+      }
+    }
   }
 
   if (_usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_state['node'], $lang)) {
@@ -155,6 +197,10 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
 
   if (_usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_state['node'], $lang)) {
     _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_state['node'], $lang, $previewing_settings['tvs_aspot_elements']);
+  }
+
+  if (_usanetwork_aspot_get_ui_draggable_cta_buttons_count($form_state['node'], $lang)) {
+    _usanetwork_aspot_fill_tvs_ui_draggable_cta_buttons($form_state['node'], $lang, $previewing_settings['tvs_nd_aspot_elements']);
   }
 
   // Adding states to form
@@ -596,6 +642,47 @@ function usanetwork_aspot_image_default_styles() {
         'data' => array(
           'width' => 1280,
           'height' => 1120,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  //New Design A-Spot
+  $styles['640x360_ndaspotm'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 640,
+          'height' => 360,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 640,
+          'height' => 360,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['932x524_ndaspotd'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 932,
+          'height' => 524,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 932,
+          'height' => 524,
         ),
         'weight' => 1,
       ),

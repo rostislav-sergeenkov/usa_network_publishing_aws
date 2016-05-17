@@ -122,18 +122,19 @@
         .episode-info-header, .post-info-header {
           @include clear();
           position: relative;
-          margin-bottom: 20px;
+          margin-bottom: 26px;
           @include breakpoint($bp-1280-width) {
-            margin-bottom: 34px;
+            margin-bottom: 40px;
           }
           @include breakpoint($bp-1024-width) {
-            margin-bottom: 17px;
+            margin-bottom: 16px;
           }
           .episode-title-block, .post-title-block {
             float: left;
             width: 70%;
             @include breakpoint($bp-1024-width) {
               float: none;
+              margin-bottom: 10px;
               width: 100%;
             }
             @include breakpoint($bp-480-width) {
@@ -141,34 +142,21 @@
               width: 100%;
             }
             .episode-title, .post-title {
+              color: black;
               font-family: $avalon-medium;
-              font-size: 54px;
+              font-size: 38px;
               line-height: 1.3;
-              @include breakpoint($bp-1280-width) {
-                font-size: 36px;
-                line-height: 1.1em;
-              }
-              @include breakpoint($bp-768-width) {
-                font-size: 37.8px;
-              }
-              @include breakpoint($bp-640-width) {
-                font-size: 36px;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 54px;
               }
             }
             .additional {
-              font-family: $avalon-book;
-              font-size: 19.5px;
               color: $consum-carousel-odd;
-              text-transform: uppercase;
-              @include breakpoint($bp-1280-width) {
-                font-size: 13px;
-              }
-              @include breakpoint($bp-1024-width) {
-                font-size: 12px;
-                line-height: 3em;
-              }
-              @include breakpoint($bp-768-width) {
-                font-size: 13px;
+              font-family: $avalon-book;
+              font-size: 12px;
+              line-height: 1.3;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 18px;
               }
               .episode {
                 font-family: $tex-gyreschola-italic;
@@ -197,30 +185,18 @@
             }
           }
           .share {
-            float: right;
-            width: 23%;
-            font-family: $avalon-book;
             color: $consum-carousel-text;
-            @include breakpoint($bp-1280-width) {
-              width: 16%;
-            }
+            float: right;
+            font-family: $avalon-book;
+            margin-top: 10px;
+            width: 30%;
             @include breakpoint($bp-1024-width) {
               float: none;
+              margin: 0;
               width: 100%;
             }
             h3 {
-              font-family: $avalon-book;
-              font-size: 22px;
-              text-align: right;
-              line-height: 1em;
-              margin: 0 0 14px 0;
-              @include breakpoint($bp-1280-width) {
-                font-size: 15px;
-                margin: -8px 0 14px 0;
-              }
-              @include breakpoint ($bp-1024-width) {
-                display: none;
-              }
+              display: none;
             }
             .field-type-gigya-sharebar {
               margin-bottom: 0;
@@ -319,22 +295,15 @@
         }
         .episode-info-description, .post-info-description {
           font-family: $avalon-book;
-          font-size: 26px;
-          line-height: 1.6em;
+          font-size: 20px;
+          line-height: 1.5em;
           position: relative;
-          @include breakpoint($bp-1280-width) {
-            font-size: 17px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 15px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 16px;
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 30px;
           }
           @include breakpoint($bp-640-width) {
-            width: 100%;
-            font-size: 18px;
             color: $poll-color;
+            width: 100%;
           }
           .file-video-mpx.view-mode-inline_content {
             iframe {

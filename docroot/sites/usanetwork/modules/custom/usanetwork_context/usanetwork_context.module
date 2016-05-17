@@ -5,3 +5,48 @@
  */
 
 include_once 'usanetwork_context.features.inc';
+
+/**
+ * Implements hook_context_plugins().
+ */
+function usanetwork_context_context_plugins() {
+  $plugins = array();
+  $plugins['usanetwork_context_new_design_show'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'usanetwork_context') . '/plugins',
+      'file' => 'usanetwork_context_new_design_show.inc',
+      'class' => 'usanetwork_context_new_design_show',
+      'parent' => 'context_condition',
+    ),
+  );
+  return $plugins;
+}
+
+/**
+ * Implements hook_context_registry().
+ *
+ */
+function usanetwork_context_context_registry() {
+  return array(
+    'conditions' => array(
+      'new_design_show' => array(
+        'title' => t('New design show'),
+        'description' => t('This condition works for all Landing pages.'),
+        'plugin' => 'usanetwork_context_new_design_show',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_init().
+ *
+ */
+function usanetwork_context_init() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+  if ($show_node) {
+    if ($plugin = context_get_plugin('condition', 'new_design_show')) {
+      $plugin->execute($show_node);
+    }
+  }
+}

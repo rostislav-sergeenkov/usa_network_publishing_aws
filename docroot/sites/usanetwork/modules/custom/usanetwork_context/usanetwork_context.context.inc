@@ -699,6 +699,11 @@ function usanetwork_context_context_default_contexts() {
         'field_not_empty' => 1,
       ),
     ),
+    'new_design_show' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(

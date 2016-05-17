@@ -13,11 +13,118 @@
   @include breakpoint($bp-640-width) {
     padding: 0;
   }
+  .social-block {
+    @include clear();
+    display: table;
+    height: 100%;
+    max-width: 20%;
+    > div {
+      display: table-cell;
+      vertical-align: middle;
+      @include breakpoint($bp-768-width) {
+        display: inline-block;
+        height: 100%;
+      }
+    }
+    .hashtag {
+      background: none;
+      font-size: get-vw(12.8px, 1280);
+      padding-right: get-vw(18px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 16px;
+        padding-right: 22.5px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(23px, 768);
+        line-height: get-vw(86px, 768);
+        margin-right: get-vw(35px, 768);
+        padding-right: 0;
+      }
+      span {
+        letter-spacing: 1px;
+      }
+    }
+    .social-icons {
+      background: none;
+      a {
+        float: left;
+        color: inherit;
+        display: block;
+        line-height: 1;
+        margin-right: get-vw(12px, 1280);
+        opacity: 1;
+        outline: none;
+        position: relative;
+        vertical-align: middle;
+        @include breakpoint($bp-min-1601-width) {
+          margin-right: 15px;
+        }
+        @include breakpoint($bp-768-width) {
+          line-height: get-vw(86px, 768);
+          margin-right: get-vw(25px, 768);
+        }
+        &:before {
+          color: inherit;
+          display: block;
+          font-family: $ico-font;
+          font-weight: normal;
+          font-size: get-vw(20px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 25px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(40px, 768);
+          }
+        }
+        &:hover {
+          opacity: 0.6;
+        }
+        &.facebook {
+          &:before {
+            content: '\e618';
+          }
+        }
+        &.twitter {
+          &:before {
+            content: '\e61a';
+          }
+        }
+        &.tumblr {
+          &:before {
+            content: '\e619';
+          }
+        }
+        &.pinterest {
+          &:before {
+            content: '\e617';
+          }
+        }
+        &.youtube {
+          &:before {
+            content: '\e630';
+          }
+        }
+        &.instagram {
+          &:before {
+            content: '\e621';
+          }
+        }
+        &:nth-child(n + 5) {
+          display: none;
+        }
+      }
+    }
+  }
   header:not(.usa-sticky-header) &:not(.active) {
     .top-menu-block {
       @include breakpoint($bp-640-width) {
         border-bottom: 1px solid;
         padding: get-vw(30px, 640) get-vw(30px, 640) 0 get-vw(30px, 640);
+      }
+      &.sponsored-disable {
+        @include breakpoint($bp-640-width) {
+          padding: get-vw(30px, 640) get-vw(30px, 640) get-vw(41px, 640) get-vw(30px, 640);
+        }
       }
       .logo-block {
         @include breakpoint($bp-640-width) {
@@ -221,6 +328,9 @@
           @include breakpoint($bp-min-1601-width) {
             margin-right: 53.75px;
           }
+          @include breakpoint($bp-768-width) {
+            margin-right: get-vw(31px, 768);
+          }
         }
       }
       @include breakpoint($bp-min-1601-width) {
@@ -229,6 +339,8 @@
       }
       @include breakpoint($bp-768-width) {
         left: get-vw(12px, 768);
+        height: get-vw(18px, 768);
+        margin-top: get-vw(-9px, 768);
       }
       a {
         display: block;
@@ -240,6 +352,9 @@
         width: get-vw(57px, 1280);
         @include breakpoint($bp-min-1601-width) {
           width: 71.25px;
+        }
+        @include breakpoint($bp-768-width) {
+          width: get-vw(43px, 768);
         }
       }
       .second-logo {
@@ -384,6 +499,19 @@
       height: auto;
       position: absolute;
     }
+    &.sponsored-disable {
+      .show-menu-tab {
+        max-width: 100%!important;
+      }
+      .social-block {
+        @include breakpoint($bp-min-769-width) {
+          bottom: 100%;
+          float: none;
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
     .show-menu-tab {
       float: left;
       max-width: 80%!important;
@@ -436,11 +564,7 @@
       }
     }
     .social-block {
-      @include clear();
-      display: table;
       float: right;
-      height: 100%;
-      max-width: 20%;
       position: relative;
       @include breakpoint($bp-768-width) {
         background: black;
@@ -450,102 +574,6 @@
         max-width: none;
         text-align: center;
         width: 100%;
-      }
-      > div {
-        display: table-cell;
-        vertical-align: middle;
-        @include breakpoint($bp-768-width) {
-          display: inline-block;
-          height: 100%;
-        }
-      }
-      .hashtag {
-        background: none;
-        font-size: get-vw(12.8px, 1280);
-        padding-right: get-vw(18px, 1280);
-        @include breakpoint($bp-min-1601-width) {
-          font-size: 16px;
-          padding-right: 22.5px;
-        }
-        @include breakpoint($bp-768-width) {
-          font-size: get-vw(23px, 768);
-          line-height: get-vw(86px, 768);
-          margin-right: get-vw(35px, 768);
-          padding-right: 0;
-        }
-        span {
-          letter-spacing: 1px;
-        }
-      }
-      .social-icons {
-        background: none;
-        a {
-          float: left;
-          color: inherit;
-          display: block;
-          line-height: 1;
-          margin-right: get-vw(12px, 1280);
-          opacity: 1;
-          outline: none;
-          position: relative;
-          vertical-align: middle;
-          @include breakpoint($bp-min-1601-width) {
-            margin-right: 15px;
-          }
-          @include breakpoint($bp-768-width) {
-            line-height: get-vw(86px, 768);
-            margin-right: get-vw(25px, 768);
-          }
-          &:before {
-            color: inherit;
-            display: block;
-            font-family: $ico-font;
-            font-weight: normal;
-            font-size: get-vw(20px, 1280);
-            @include breakpoint($bp-min-1601-width) {
-              font-size: 25px;
-            }
-            @include breakpoint($bp-768-width) {
-              font-size: get-vw(40px, 768);
-            }
-          }
-          &:hover {
-            opacity: 0.6;
-          }
-          &.facebook {
-            &:before {
-              content: '\e618';
-            }
-          }
-          &.twitter {
-            &:before {
-              content: '\e61a';
-            }
-          }
-          &.tumblr {
-            &:before {
-              content: '\e619';
-            }
-          }
-          &.pinterest {
-            &:before {
-              content: '\e617';
-            }
-          }
-          &.youtube {
-            &:before {
-              content: '\e630';
-            }
-          }
-          &.instagram {
-            &:before {
-              content: '\e621';
-            }
-          }
-          &:nth-child(n + 5) {
-            display: none;
-          }
-        }
       }
     }
   }

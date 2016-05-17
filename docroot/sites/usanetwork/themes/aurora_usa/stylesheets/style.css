@@ -39498,10 +39498,123 @@ body.blog .view-display-id-blog_content .views-row {
     padding: 0;
   }
 }
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block {
+  display: table;
+  height: 100%;
+  max-width: 20%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block > div {
+    display: inline-block;
+    height: 100%;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .hashtag {
+  background: none;
+  font-size: 1vw;
+  padding-right: 1.40625vw;
+}
+@media (min-width: 1601px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .hashtag {
+    font-size: 16px;
+    padding-right: 22.5px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .hashtag {
+    font-size: 2.99479vw;
+    line-height: 11.19792vw;
+    margin-right: 4.55729vw;
+    padding-right: 0;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .hashtag span {
+  letter-spacing: 1px;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons {
+  background: none;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a {
+  float: left;
+  color: inherit;
+  display: block;
+  line-height: 1;
+  margin-right: 0.9375vw;
+  opacity: 1;
+  outline: none;
+  position: relative;
+  vertical-align: middle;
+}
+@media (min-width: 1601px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a {
+    margin-right: 15px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a {
+    line-height: 11.19792vw;
+    margin-right: 3.25521vw;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:before {
+  color: inherit;
+  display: block;
+  font-family: "ico-font";
+  font-weight: normal;
+  font-size: 1.5625vw;
+}
+@media (min-width: 1601px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:before {
+    font-size: 25px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:before {
+    font-size: 5.20833vw;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:hover {
+  opacity: 0.6;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a.facebook:before {
+  content: '\e618';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a.twitter:before {
+  content: '\e61a';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a.tumblr:before {
+  content: '\e619';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a.pinterest:before {
+  content: '\e617';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a.youtube:before {
+  content: '\e630';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a.instagram:before {
+  content: '\e621';
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:nth-child(n + 5) {
+  display: none;
+}
 @media (max-width: 640px) {
   header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block {
     border-bottom: 1px solid;
     padding: 4.6875vw 4.6875vw 0 4.6875vw;
+  }
+}
+@media (max-width: 640px) {
+  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block.sponsored-disable {
+    padding: 4.6875vw 4.6875vw 6.40625vw 4.6875vw;
   }
 }
 @media (max-width: 640px) {
@@ -39712,6 +39825,11 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     margin-right: 53.75px;
   }
 }
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block.service-enable .logo {
+    margin-right: 4.03646vw;
+  }
+}
 @media (min-width: 1601px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
     height: 31.25px;
@@ -39721,6 +39839,8 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 @media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
     left: 1.5625vw;
+    height: 2.34375vw;
+    margin-top: -1.17188vw;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block a {
@@ -39735,6 +39855,11 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 @media (min-width: 1601px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
     width: 71.25px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
+    width: 5.59896vw;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo {
@@ -39908,6 +40033,17 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     position: absolute;
   }
 }
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block.sponsored-disable .show-menu-tab {
+  max-width: 100% !important;
+}
+@media (min-width: 769px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block.sponsored-disable .social-block {
+    bottom: 100%;
+    float: none;
+    position: absolute;
+    right: 0;
+  }
+}
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
   float: left;
   max-width: 80% !important;
@@ -39970,16 +40106,8 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {
-  display: table;
   float: right;
-  height: 100%;
-  max-width: 20%;
   position: relative;
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block:after {
-  clear: both;
-  content: '';
-  display: table;
 }
 @media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {
@@ -39991,104 +40119,6 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     text-align: center;
     width: 100%;
   }
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block > div {
-  display: table-cell;
-  vertical-align: middle;
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block > div {
-    display: inline-block;
-    height: 100%;
-  }
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag {
-  background: none;
-  font-size: 1vw;
-  padding-right: 1.40625vw;
-}
-@media (min-width: 1601px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag {
-    font-size: 16px;
-    padding-right: 22.5px;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag {
-    font-size: 2.99479vw;
-    line-height: 11.19792vw;
-    margin-right: 4.55729vw;
-    padding-right: 0;
-  }
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .hashtag span {
-  letter-spacing: 1px;
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons {
-  background: none;
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a {
-  float: left;
-  color: inherit;
-  display: block;
-  line-height: 1;
-  margin-right: 0.9375vw;
-  opacity: 1;
-  outline: none;
-  position: relative;
-  vertical-align: middle;
-}
-@media (min-width: 1601px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a {
-    margin-right: 15px;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a {
-    line-height: 11.19792vw;
-    margin-right: 3.25521vw;
-  }
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:before {
-  color: inherit;
-  display: block;
-  font-family: "ico-font";
-  font-weight: normal;
-  font-size: 1.5625vw;
-}
-@media (min-width: 1601px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:before {
-    font-size: 25px;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:before {
-    font-size: 5.20833vw;
-  }
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:hover {
-  opacity: 0.6;
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.facebook:before {
-  content: '\e618';
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.twitter:before {
-  content: '\e61a';
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.tumblr:before {
-  content: '\e619';
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.pinterest:before {
-  content: '\e617';
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.youtube:before {
-  content: '\e630';
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a.instagram:before {
-  content: '\e621';
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block .social-icons a:nth-child(n + 5) {
-  display: none;
 }
 
 .usa-show-aspot {

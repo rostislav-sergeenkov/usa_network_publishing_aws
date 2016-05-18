@@ -11,9 +11,32 @@
       &:first-child {
         border-top: 0;
       }
-      .title {
+      .upper-bar {
+        position: relative;
+        width: 100%;
         h2 {
           color: $usa-blog-item-title;
+          font-family: $avalon-demi;
+          font-size: get-vw(24px, 1280);
+          line-height: get-vw(90px, 1280);
+          margin: 0;
+          padding: 0 get-vw(32px, 1280);
+          text-transform: uppercase;
+          @include breakpoint ($bp-min-1601-width) {
+            font-size: 36px;
+            line-height: 135px;
+            padding: 0 40px;
+          }
+          @include breakpoint ($bp-1024-width) {
+            font-size: get-vw(24px, 1024);
+            line-height: get-vw(90px, 1024);
+            padding: 0 get-vw(33px, 1024);
+          }
+          @include breakpoint ($bp-640-width) {
+            font-size: get-vw(24px, 640);
+            line-height: get-vw(55px, 640);
+            padding: 0 get-vw(33px, 640);
+          }
         }
       }
     }
@@ -23,7 +46,7 @@
     .episode-landing-list-item {
       @include clear();
       box-sizing: border-box;
-      padding: get-vw(48px, 1280) get-vw(32px, 1280) get-vw(22px, 1280);
+      padding: get-vw(48px, 1280) get-vw(32px, 1280) get-vw(28px, 1280);
       border-top: 2px solid #ffffff;
       min-height: get-vw(325px, 1280);
       @include breakpoint ($bp-min-1601-width) {
@@ -32,11 +55,51 @@
       }
       @include breakpoint ($bp-1024-width) {
         min-height: get-vw(293px, 1024);
-        padding: get-vw(48px, 1024) get-vw(33px, 1024) get-vw(54px, 1024);
+        padding: get-vw(48px, 1024) get-vw(33px, 1024) get-vw(22px, 1024);
       }
       @include breakpoint ($bp-640-width) {
         min-height: 0;
         padding: get-vw(54px, 640) get-vw(33px, 640);
+      }
+      &:not(.active) {
+        .episode-landing-info-block {
+          .image-block, .airing-date, .expiration-date, .description, .tags {
+            @include breakpoint($bp-640-width) {
+              display: none;
+            }
+          }
+          .posted-date {
+            @include breakpoint($bp-640-width) {
+              margin-bottom: 0;
+            }
+          }
+        }
+        .buttons-bar {
+          @include breakpoint($bp-640-width) {
+            display: none;
+          }
+        }
+      }
+      &.active {
+        .episode-landing-info-block {
+          .open-description {
+            @include breakpoint($bp-640-width) {
+              @include sprite-background(episode-minus-icon);
+              margin-top: 0;
+              top: 6px;
+            }
+          }
+          .image-block, .airing-date, .expiration-date, .description, .tags {
+            @include breakpoint($bp-640-width) {
+              display: block;
+            }
+          }
+        }
+        .buttons-bar {
+          @include breakpoint($bp-640-width) {
+            display: block;
+          }
+        }
       }
       .episode-landing-list-item-inner {
         @include clear();
@@ -57,6 +120,18 @@
           float: none;
           width: 100%;
         }
+        .open-description {
+          display: none;
+          @include breakpoint($bp-640-width) {
+            @include sprite-background(episode-plus-icon);
+            cursor: pointer;
+            display: block;
+            margin-top: -15.5px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+          }
+        }
         .title {
           font-size: get-vw(24px, 1280);
           line-height: 1.3;
@@ -74,10 +149,10 @@
             margin-top: get-vw(12px, 1280);
           }
           @include breakpoint($bp-640-width) {
-            font-size: 24px;
+            font-size: get-vw(21px, 640);
             margin-top: 0;
             margin-bottom: get-vw(14px, 640);
-            width: 100%;
+            width: calc(100% - 40px);
           }
           a {
             color: $usa-blog-item-title;
@@ -89,7 +164,6 @@
           }
         }
         .image-block {
-          background: wheat; //@todo remove
           position: absolute;
           top: 0;
           right: 102%;
@@ -112,6 +186,8 @@
             width: 100%;
           }
         }
+        .airing-date,
+        .expiration-date,
         .posted-date {
           color: $usa-blog-item-title;
           font-family: $tex-gyreschola-italic;
@@ -123,11 +199,11 @@
             margin-bottom: 46px;
           }
           @include breakpoint($bp-1024-width) {
-            font-size: get-vw(18px, 1024);
+            font-size: get-vw(15px, 1024);
             margin-bottom: get-vw(25px, 1024);
           }
           @include breakpoint($bp-640-width) {
-            font-size: get-vw(18px, 640);
+            font-size: get-vw(15px, 640);
             margin-bottom: get-vw(26px, 640);
           }
         }
@@ -140,10 +216,10 @@
             font-size: 22.5px;
           }
           @include breakpoint($bp-1024-width) {
-            font-size: get-vw(12px, 1024);
+            font-size: get-vw(14px, 1024);
           }
           @include breakpoint($bp-640-width) {
-            font-size: get-vw(12px, 640);
+            font-size: get-vw(14px, 640);
             padding-right: 0;
           }
           p {

@@ -15,7 +15,13 @@
       _.defaults = {
         // selectors
         headerSpacerId: 'header-spacer',
-        stickyClass: 'usa-sticky-header', // string value
+        stickyHeaderClass: 'usa-sticky-header', // string value
+        stickySidebarClass: 'sticky-sidebar', // string value
+        consumSidebarClass: 'consum-sidebar', // string value
+
+        additionalMode: {
+          isRightRailPosition: false // default value
+        },
 
         // functionality
         initStickyOffSetY: 50, // number value
@@ -29,11 +35,13 @@
       // set params
       _.options.isMobileDevice = usa_deviceInfo.mobileDevice;
       _.options.pageYOffset = window.pageYOffset;
+      _.options.isStickyEnable = false;
 
       // elements
       _.$body = $(document.body);
       _.$header = $(element);
       _.$headerSpacer = $('#' + _.options.headerSpacerId);
+      _.$consumSidebar = $('.' + _.options.consumSidebarClass);
 
       // data attributes value
       _.data = {};
@@ -45,6 +53,27 @@
     return usaStickyHeader;
 
   }());
+
+  //=============================
+  // additional mode
+  //=============================
+  usaStickyHeader.prototype.initRightRailPosition = function () {
+
+    var _ = this,
+        $consumSidebar = _.$consumSidebar,
+        stickySidebarClass = _.options.stickySidebarClass,
+        isStickyEnable = _.options.isStickyEnable;
+
+    if (Drupal.behaviors.hasOwnProperty('consumptionator_right_rail')) {
+      if (isStickyEnable && !$($consumSidebar).hasClass(stickySidebarClass)) {
+        $($consumSidebar).addClass(stickySidebarClass);
+        Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
+      } else if (!isStickyEnable && $($consumSidebar).hasClass(stickySidebarClass)) {
+        $($consumSidebar).removeClass(stickySidebarClass);
+        Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
+      }
+    }
+  };
 
   //=============================
   // helpers
@@ -97,12 +126,18 @@
         $headerSpacer = _.$headerSpacer,
         initStickyOffSetY = _.options.initStickyOffSetY,
         pageYOffset = _.options.pageYOffset,
-        stickyClass = _.options.stickyClass.trim();
+        stickyHeaderClass = _.options.stickyHeaderClass.trim();
 
     if (pageYOffset >= initStickyOffSetY) {
-      $header.addClass(stickyClass);
+      if (!$header.hasClass(stickyHeaderClass)) {
+        _.options.isStickyEnable = true;
+        $header.addClass(stickyHeaderClass);
+      }
     } else {
-      $header.removeClass(stickyClass);
+      if ($header.hasClass(stickyHeaderClass)) {
+        _.options.isStickyEnable = false;
+        $header.removeClass(stickyHeaderClass);
+      }
     }
 
     _.setHeaderSpacerHeight();
@@ -110,7 +145,8 @@
 
   usaStickyHeader.prototype.addEvents = function () {
 
-    var _ = this;
+    var _ = this,
+        isRightRailPosition = _.options.additionalMode.isRightRailPosition;
 
     $(window)
         .on('scroll', function (e) {
@@ -118,6 +154,10 @@
           var $window = this;
           _.options.pageYOffset = $window.pageYOffset;
           _.activateSticky();
+
+          if (isRightRailPosition) {
+            _.initRightRailPosition();
+          }
         })
         .on('resize', function (e) {
 
@@ -131,13 +171,18 @@
   //=============================
   usaStickyHeader.prototype.init = function (creation) {
 
-    var _ = this;
+    var _ = this,
+        isRightRailPosition = _.options.additionalMode.isRightRailPosition;
+
 
     if (creation && !_.$header.hasClass('usa-sticky-header-initialized')) {
       _.$header.addClass('usa-sticky-header-initialized');
       _.checkHeaderSpacer();
       _.setHeaderSpacerHeight();
       _.activateSticky();
+      if (isRightRailPosition) {
+        _.initRightRailPosition();
+      }
       _.addEvents();
     }
   };
@@ -166,7 +211,13 @@
   // event document ready
   //================================
   $(document).ready(function () {
-    if ($('body').hasClass('show-new-design')) {
+    if ($('body').hasClass('show-new-design') && $('body').hasClass('consumptionator-page')) {
+      $('#header').usaStickyHeader({
+        additionalMode: {
+          isRightRailPosition: true
+        }
+      });
+    } else if ($('body').hasClass('show-new-design')) {
       $('#header').usaStickyHeader();
     }
   });

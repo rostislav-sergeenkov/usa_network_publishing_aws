@@ -1,4 +1,4 @@
-<div class="top-menu-block show-border">
+<div class="top-menu-block show-border<?php print (empty($sponsored_path))? ' sponsored-disable': '' ;?>">
   <div class="logo-block<?php print (!empty($service_link) && !empty($service_logo))? ' service-enable' : ''; ?>">
     <a href="/" title="Home" rel="home" class="logo"></a>
     <?php if (!empty($service_logo)) : ?>
@@ -15,23 +15,10 @@
   </div>
   <?php if (!empty($sponsored_path)) : ?>
     <div class="sponsored" data-mpspath="<?php print $sponsored_path; ?>" data-scalemps="1"></div>
-  <?php else : ?>
-    <div class="social-block">
-      <?php if (!empty($hashtag)): ?>
-        <div class="hashtag show-color show-font">
-          <span><?php print $hashtag; ?></span>
-        </div>
-      <?php endif; ?>
-      <div class="social-icons social-follow show-color show-font">
-        <?php foreach ($social_icons as $social_link): ?>
-          <?php print $social_link; ?>
-        <?php endforeach; ?>
-      </div>
-    </div>
   <?php endif; ?>
   <div class="menu-open-button show-color show-font"></div>
 </div>
-<div class="bottom-menu-block show-border">
+<div class="bottom-menu-block show-border<?php print (empty($sponsored_path))? ' sponsored-disable': '' ;?>">
   <div class="show-menu-tab">
     <?php if (!empty($show_menu_tab_items)): ?>
       <ul class="show-menu menu">
@@ -41,19 +28,17 @@
       </ul>
     <?php endif; ?>
   </div>
-  <?php if (!empty($sponsored_path)) : ?>
-    <div class="social-block">
-      <?php if (!empty($hashtag)): ?>
-        <div class="hashtag show-color show-font">
-          <span><?php print $hashtag; ?></span>
-        </div>
-      <?php endif; ?>
-      <div class="social-icons social-follow show-color show-font">
-        <?php foreach ($social_icons as $social_link): ?>
-          <?php print $social_link; ?>
-        <?php endforeach; ?>
+  <div class="social-block">
+    <?php if (!empty($hashtag)): ?>
+      <div class="hashtag show-color show-font">
+        <span><?php print $hashtag; ?></span>
       </div>
+    <?php endif; ?>
+    <div class="social-icons social-follow show-color show-font">
+      <?php foreach ($social_icons as $social_link): ?>
+        <?php print $social_link; ?>
+      <?php endforeach; ?>
     </div>
-  <?php endif; ?>
+  </div>
 </div>
 

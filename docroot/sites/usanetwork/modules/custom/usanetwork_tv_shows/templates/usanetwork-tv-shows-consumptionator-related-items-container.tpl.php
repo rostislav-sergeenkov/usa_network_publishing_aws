@@ -1,6 +1,6 @@
 <?php
 ?>
-<div class="ajax-load-block related-content-block show-border<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>"
+<div class="ajax-load-block related-content-block show-border<?php print (empty($load_more_link))? ' infinity-finished': '' ;?><?php !empty($new_design) ? print ' related-new-design' : ''; ?>"
     <?php if (!empty($show_nid)): print ' data-show-nid="' . $show_nid . '"'; endif;?>
     <?php if (!empty($items_pre_page_limit)): print ' data-show-items-limit="' . $items_pre_page_limit . '"'; endif; ?>
     <?php if (!empty($node_nid)): print ' data-node-nid="' . $node_nid . '"'; endif; ?>

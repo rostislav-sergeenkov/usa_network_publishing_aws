@@ -345,7 +345,6 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
       if (!empty($blog_nid)) {
         $blog_node = node_load($blog_nid);
         $show_blog_title = $blog_node->title;
-
       }
       else {
         $show_blog_title = _usanetwork_get_field_item('node', $show_node, 'field_show_blog_title', 'value');

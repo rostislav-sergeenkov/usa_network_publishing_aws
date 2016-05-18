@@ -1054,8 +1054,8 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
     }
   }
 
-  $new_design_disply = $aspot_node_wrapper->field_new_design->value();
-  $json_array_type = !empty($new_design_disply) ? 'tvs_nd_aspot_elements' : 'tvs_aspot_elements';
+  $new_design_display = $aspot_node_wrapper->field_new_design->value();
+  $json_array_type = !empty($new_design_display) ? 'tvs_nd_aspot_elements' : 'tvs_aspot_elements';
 
   $theme_array = array(
     'show_url' => !empty($aspot_node->field_usa_aspot_link)
@@ -1111,6 +1111,7 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
       : FALSE,
     'sponsored' => isset($sponsored) ? $sponsored : FALSE,
     'file_path' => isset($file_id) ? $file_id : FALSE,
+    'new_design' => $new_design_display,
   );
 
   if (!empty($aspot_node->field_aspot_tgi_title_prefix)) {

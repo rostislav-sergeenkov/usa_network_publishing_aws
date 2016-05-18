@@ -10,7 +10,10 @@
       width: 320px;
     }
     @include breakpoint($bp-1024-width) {
+      float: none;
       height: auto!important;
+      max-height: none!important;
+      padding: 0;
       width: 100%;
     }
     &.sticky-sidebar {
@@ -57,6 +60,7 @@
     .items-block {
       background: black;
       height: calc(100% - 250px);
+      padding: 0;
       position: relative;
       width: 100%;
       @include breakpoint($bp-1024-width) {
@@ -64,6 +68,7 @@
       }
     }
     .items-block-title {
+      background: none;
       height: 45px;
       line-height: 45px;
       padding-left: 20px;
@@ -89,7 +94,7 @@
       }
       h2 {
         background: none;
-        color: #ffffff;
+        color: inherit;
         font-family: $avalon-medium;
         font-size: 15px;
         margin: 0;
@@ -242,7 +247,7 @@
             }
           }
         }
-        @include breakpoint($bp-1280-width) {
+        @include breakpoint($bp-1024-width) {
           display: block;
         }
         @include breakpoint($bp-640-width) {
@@ -295,6 +300,7 @@
       }
     }
     .more-items {
+      border: 1px solid;
       display: block;
       position: absolute;
       bottom: 0;
@@ -327,7 +333,8 @@
         font-family: $avalon-medium;
         font-size: 15px;
         letter-spacing: 1px;
-        line-height: 45px;
+        line-height: 43px;
+        outline: none;
         overflow: hidden;
         padding: 0 25px;
         text-decoration: none;
@@ -371,6 +378,94 @@
           top: 50%;
           margin-top: -4px;
           right: 5px;
+        }
+      }
+    }
+  }
+  .consumptionator-post-main-block {
+    .consum-sidebar {
+      .items-block {
+        .episodes-list-slider {
+          &.horizontal {
+            @include breakpoint($bp-640-width) {
+              li {
+                background: $consum-carousel-even;
+                height: 75px;
+                position: relative;
+                width: 100%!important;
+                &:nth-child(odd) {
+                  background: $consum-carousel-odd;
+                }
+                &:nth-child(even) {
+                  background: $consum-carousel-even;
+                }
+                > div {
+                  height: 100%;
+                  width: 100%;
+                }
+                a {
+                  height: 100%;
+                  width: 100%;
+                }
+                .asset-img {
+                  height: 50px;
+                  left: 4%;
+                  margin-top: -25px;
+                  position: absolute;
+                  top: 50%;
+                  width: 75px;
+                  &.active {
+                    border-left: 7px solid;
+                  }
+                  img {
+                    height: 100%;
+                    width: 100%;
+                  }
+                  & ~ .meta-wrapper {
+                    .meta {
+                      padding-left: calc(8% + 75px);
+                    }
+                  }
+                }
+                .meta-wrapper {
+                  background: none;
+                  height: 100%;
+                  width: 100%;
+                  .meta-wrapper-inner {
+                    display: table;
+                    height: 100%;
+                    width: 100%;
+                  }
+                  .meta-icon {
+                    display: none;
+                  }
+                  .meta {
+                    color: $consum-carousel-text;
+                    padding-left: 4%;
+                    display: table-cell;
+                    max-width: 100px;
+                    vertical-align: middle;
+                    width: 100%;
+                    .caption {
+                      font-size: 10px;
+                      line-height: 13px;
+                    }
+                    .title {
+                      font-size: 15px;
+                      line-height: 18px;
+                      margin-bottom: 7px;
+                    }
+                    .additional {
+                      font-family: $tex-gyreschola-italic;
+                      font-size: 10px;
+                      line-height: 13px;
+                      text-transform: uppercase;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

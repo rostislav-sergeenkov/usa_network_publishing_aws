@@ -177,6 +177,99 @@
       }
     }
   }
+  .related-content-block {
+    @include clear();
+    background: #000000;
+    border-bottom: 2px solid;
+    margin-bottom: 100px;
+    padding: 40px 16px;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-640-width) {
+      padding: 40px 0px;
+    }
+    &.infinity-finished {
+      margin-bottom: 0;
+    }
+    ul {
+      @include clear();
+      margin: 0 auto;
+      padding: 0;
+      position: relative;
+      width: 100%;
+      li {
+        float: left;
+        height: 25.4vw;
+        margin-bottom: 1.47vw;
+        margin-right: 1.6%;
+        overflow: hidden;
+        position: relative;
+        width: 49.2%;
+        @include breakpoint($bp-min-641-width) {
+          &:nth-child(2n) {
+            margin-right: 0;
+          }
+          &:nth-child(n+5){
+            margin-bottom: 0;
+          }
+        }
+        @include breakpoint($bp-min-1601-width) {
+          height: 406px;
+          margin-bottom: 29px;
+        }
+        @include breakpoint($bp-640-width) {
+          height: auto;
+          margin-bottom: get-vw(20px, 640);
+          margin-right: 0;
+          padding: 0 get-vw(16px, 640);
+          width: 100%;
+          &:last-child, &.last {
+            margin-bottom: 0;
+          }
+          &.ymal-item {
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+            height: 115vw;
+            margin: 40px 0 0;
+            padding: 0;
+          }
+        }
+        @include breakpoint($bp-480-width) {
+          padding: 0 10px;
+        }
+        > div {
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+          width: 100%;
+          @include breakpoint($bp-640-width) {
+            height: auto;
+          }
+        }
+        @extend %social-promo;
+        @extend %usa-show-related-promo;
+      }
+    }
+    .related-ad {
+      background: $video-promo-back-gray;
+      height: 90px;
+      margin: 16px auto;
+      width: 728px;
+      @include breakpoint($bp-768-width) {
+        height: auto;
+        min-height: 50px;
+        max-height: 90px;
+        max-width: 728px;
+        width: 100%;
+      }
+      @include breakpoint($bp-640-width) {
+        height: 50px;
+        margin: 1.47vw auto;
+        max-width: 100%;
+        width: 300px;
+      }
+    }
+  }
   #footer {
     background: $consum-also-back;
     .usa-legal {

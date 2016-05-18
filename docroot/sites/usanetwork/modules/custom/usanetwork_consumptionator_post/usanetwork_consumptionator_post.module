@@ -194,6 +194,7 @@ function _usanetwork_consumptionator_post_related_content_block() {
       $tv_show_node = node_load($show_field[0]['target_id']);
 
       $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_show_node);
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
     }
     else {
       $related_content = usanetwork_news_get_all_related_content_for_consumpt_page($content);
@@ -209,6 +210,7 @@ function _usanetwork_consumptionator_post_related_content_block() {
         'show_nid' => (!empty($tv_show_node->nid)) ? $tv_show_node->nid : NULL,
         'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
         'node_nid' => $content->nid,
+        'new_design' => isset($is_new_design) ? $is_new_design : NULL,
       ));
     }
   }
@@ -343,10 +345,12 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
       if (!empty($blog_nid)) {
         $blog_node = node_load($blog_nid);
         $show_blog_title = $blog_node->title;
+
       }
       else {
         $show_blog_title = _usanetwork_get_field_item('node', $show_node, 'field_show_blog_title', 'value');
       }
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
       if ($show_blog_title) {
         module_load_include('inc', 'pathauto', 'pathauto');
         $blog_url = '/' . pathauto_cleanstring($show_blog_title);
@@ -366,6 +370,7 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
       'posts_landing_link' => (is_numeric($show_id))
         ? l(t('View all posts'), 'node/' . $show_id . '/blog' . $blog_url)
         : l(t('View all news'), 'news'),
+      'new_design' => isset($is_new_design) ? $is_new_design : NULL,
     );
     return theme('usanetwork_cons_post_carousel', $theme_variables);
   }

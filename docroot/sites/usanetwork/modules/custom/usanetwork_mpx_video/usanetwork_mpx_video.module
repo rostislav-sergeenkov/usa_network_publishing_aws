@@ -1128,7 +1128,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
-      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
+      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1136,7 +1136,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
-      'guid' => 'TwnmwsoSBed1_sA1e9mSrK8vT2BBVU_q',
+      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
     );
     $rulesets[] = array(
       'fields' => array(

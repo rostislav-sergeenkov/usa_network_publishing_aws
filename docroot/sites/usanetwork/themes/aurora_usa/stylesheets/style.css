@@ -31534,16 +31534,16 @@ yx-axis
   display: none;
 }
 
-.usanetwork-aspot .aspot-draggable-element {
+body:not(.show-new-design) .usanetwork-aspot .aspot-draggable-element {
   display: none;
 }
-.usanetwork-aspot .meta-wrap {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap {
   position: static;
 }
-.usanetwork-aspot .meta-wrap .aspot-draggable-element {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-draggable-element {
   box-sizing: border-box;
 }
-.usanetwork-aspot .meta-wrap .title_prefix, .usanetwork-aspot .meta-wrap .start {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix, body:not(.show-new-design) .usanetwork-aspot .meta-wrap .start {
   color: #ffffff;
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 1.1vw;
@@ -31553,475 +31553,475 @@ yx-axis
   text-shadow: 1px 1px 0.5em #333333;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix, .usanetwork-aspot .meta-wrap .start {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix, body:not(.show-new-design) .usanetwork-aspot .meta-wrap .start {
     font-size: 27.5px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix, .usanetwork-aspot .meta-wrap .start {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix, body:not(.show-new-design) .usanetwork-aspot .meta-wrap .start {
     font-size: 2.7vw;
   }
 }
-.usanetwork-aspot .meta-wrap .title_prefix p, .usanetwork-aspot .meta-wrap .start p {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix p, body:not(.show-new-design) .usanetwork-aspot .meta-wrap .start p {
   margin: 0;
   text-shadow: 1px 1px 0.5em #333333;
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-1 {
     font-size: 1.7625vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 {
     font-size: 0.63125vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 {
     font-size: 15.78125px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-2 {
     font-size: 1.91875vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 {
     font-size: 0.70938vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 {
     font-size: 17.73438px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-3 {
     font-size: 2.075vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 {
     font-size: 0.7875vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 {
     font-size: 19.6875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-4 {
     font-size: 2.23125vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 {
     font-size: 0.86563vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 {
     font-size: 21.64063px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-5 {
     font-size: 2.3875vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 {
     font-size: 0.94375vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 {
     font-size: 23.59375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-6 {
     font-size: 2.54375vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 {
     font-size: 1.02187vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 {
     font-size: 25.54688px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-7 {
     font-size: 2.7vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 {
     font-size: 1.1vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 {
     font-size: 27.5px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-8 {
     font-size: 2.85625vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 {
     font-size: 1.17812vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 {
     font-size: 29.45313px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-9 {
     font-size: 3.0125vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 {
     font-size: 1.25625vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 {
     font-size: 31.40625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-10 {
     font-size: 3.16875vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 {
     font-size: 1.33438vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 {
     font-size: 33.35938px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-11 {
     font-size: 3.325vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 {
     font-size: 1.4125vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 {
     font-size: 35.3125px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-12 {
     font-size: 3.48125vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 {
     font-size: 1.49063vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 {
     font-size: 37.26563px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-13 {
     font-size: 3.6375vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-13 {
     font-size: 1.56875vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-13 {
     font-size: 39.21875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-1 {
     font-size: 1.7625vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
     font-size: 0.63125vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
     font-size: 0.81116vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
     font-size: 15.78125px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-2 {
     font-size: 1.91875vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
     font-size: 0.70938vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
     font-size: 0.91155vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
     font-size: 17.73438px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-3 {
     font-size: 2.075vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
     font-size: 0.7875vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
     font-size: 1.01194vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
     font-size: 19.6875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-4 {
     font-size: 2.23125vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
     font-size: 0.86563vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
     font-size: 1.11233vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
     font-size: 21.64063px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-5 {
     font-size: 2.3875vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
     font-size: 0.94375vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
     font-size: 1.21272vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
     font-size: 23.59375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-6 {
     font-size: 2.54375vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
     font-size: 1.02187vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
     font-size: 1.31311vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
     font-size: 25.54688px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-7 {
     font-size: 2.7vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
     font-size: 1.1vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
     font-size: 1.4135vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
     font-size: 27.5px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-8 {
     font-size: 2.85625vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
     font-size: 1.17812vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
     font-size: 1.51389vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
     font-size: 29.45313px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-9 {
     font-size: 3.0125vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
     font-size: 1.25625vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
     font-size: 1.61428vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
     font-size: 31.40625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-10 {
     font-size: 3.16875vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
     font-size: 1.33438vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
     font-size: 1.71467vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
     font-size: 33.35938px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-11 {
     font-size: 3.325vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
     font-size: 1.4125vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
     font-size: 1.81506vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
     font-size: 35.3125px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-12 {
     font-size: 3.48125vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
     font-size: 1.49063vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
     font-size: 1.91545vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
     font-size: 37.26563px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-13 {
     font-size: 3.6375vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-13 {
     font-size: 1.56875vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-13 {
     font-size: 2.01584vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-13 {
     font-size: 39.21875px;
   }
 }
-.usanetwork-aspot .meta-wrap .title {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 6vw;
@@ -32032,475 +32032,475 @@ yx-axis
   text-transform: uppercase;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title {
     font-size: 150px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title {
     font-size: 10.4vw;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-1 {
     font-size: 6.65vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-1 {
     font-size: 4.125vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-1 {
     font-size: 103.125px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-2 {
     font-size: 7.275vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-2 {
     font-size: 4.4375vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-2 {
     font-size: 110.9375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-3 {
     font-size: 7.9vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-3 {
     font-size: 4.75vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-3 {
     font-size: 118.75px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-4 {
     font-size: 8.525vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-4 {
     font-size: 5.0625vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-4 {
     font-size: 126.5625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-5 {
     font-size: 9.15vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-5 {
     font-size: 5.375vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-5 {
     font-size: 134.375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-6 {
     font-size: 9.775vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-6 {
     font-size: 5.6875vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-6 {
     font-size: 142.1875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-7 {
     font-size: 10.4vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-7 {
     font-size: 6.0vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-7 {
     font-size: 150px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-8 {
     font-size: 11.025vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-8 {
     font-size: 6.3125vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-8 {
     font-size: 157.8125px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-9 {
     font-size: 11.65vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-9 {
     font-size: 6.625vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-9 {
     font-size: 165.625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-10 {
     font-size: 12.275vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-10 {
     font-size: 6.9375vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-10 {
     font-size: 173.4375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-11 {
     font-size: 12.9vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-11 {
     font-size: 7.25vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-11 {
     font-size: 181.25px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-12 {
     font-size: 13.525vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-12 {
     font-size: 7.5625vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-12 {
     font-size: 189.0625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-mobile-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-mobile-13 {
     font-size: 14.15vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-13 {
     font-size: 7.875vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-desktop-13 {
     font-size: 196.875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-1 {
     font-size: 6.65vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-1 {
     font-size: 4.125vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-1 {
     font-size: 5.30062vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-1 {
     font-size: 103.125px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-2 {
     font-size: 7.275vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-2 {
     font-size: 4.4375vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-2 {
     font-size: 5.70219vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-2 {
     font-size: 110.9375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-3 {
     font-size: 7.9vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-3 {
     font-size: 4.75vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-3 {
     font-size: 6.10375vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-3 {
     font-size: 118.75px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-4 {
     font-size: 8.525vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-4 {
     font-size: 5.0625vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-4 {
     font-size: 6.50531vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-4 {
     font-size: 126.5625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-5 {
     font-size: 9.15vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-5 {
     font-size: 5.375vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-5 {
     font-size: 6.90687vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-5 {
     font-size: 134.375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-6 {
     font-size: 9.775vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-6 {
     font-size: 5.6875vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-6 {
     font-size: 7.30844vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-6 {
     font-size: 142.1875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-7 {
     font-size: 10.4vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-7 {
     font-size: 6.0vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-7 {
     font-size: 7.71vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-7 {
     font-size: 150px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-8 {
     font-size: 11.025vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-8 {
     font-size: 6.3125vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-8 {
     font-size: 8.11156vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-8 {
     font-size: 157.8125px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-9 {
     font-size: 11.65vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-9 {
     font-size: 6.625vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-9 {
     font-size: 8.51312vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-9 {
     font-size: 165.625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-10 {
     font-size: 12.275vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-10 {
     font-size: 6.9375vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-10 {
     font-size: 8.91469vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-10 {
     font-size: 173.4375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-11 {
     font-size: 12.9vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-11 {
     font-size: 7.25vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-11 {
     font-size: 9.31625vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-11 {
     font-size: 181.25px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-12 {
     font-size: 13.525vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-12 {
     font-size: 7.5625vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-12 {
     font-size: 9.71781vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-12 {
     font-size: 189.0625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-mobile-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-mobile-13 {
     font-size: 14.15vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-13 {
     font-size: 7.875vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-13 {
     font-size: 10.11937vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .title.font-show-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title.font-show-desktop-13 {
     font-size: 196.875px;
   }
 }
-.usanetwork-aspot .meta-wrap .title p {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .title p {
   margin: 0;
   text-shadow: 1px 1px 0.5em #333333;
 }
-.usanetwork-aspot .meta-wrap .aspot-description {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.875vw;
@@ -32511,551 +32511,551 @@ yx-axis
   text-shadow: 1px 1px 0.5em #333333;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description {
     font-size: 46.875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description {
     font-size: 3.125vw;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-1 {
     font-size: 1.71875vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 {
     font-size: 1.17188vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 {
     font-size: 29.29688px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-2 {
     font-size: 1.95313vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 {
     font-size: 1.28906vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 {
     font-size: 32.22656px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-3 {
     font-size: 2.1875vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 {
     font-size: 1.40625vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 {
     font-size: 35.15625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-4 {
     font-size: 2.42188vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 {
     font-size: 1.52344vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 {
     font-size: 38.08594px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-5 {
     font-size: 2.65625vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 {
     font-size: 1.64063vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 {
     font-size: 41.01563px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-6 {
     font-size: 2.89063vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 {
     font-size: 1.75781vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 {
     font-size: 43.94531px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-7 {
     font-size: 3.125vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 {
     font-size: 1.875vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 {
     font-size: 46.875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-8 {
     font-size: 3.35938vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 {
     font-size: 1.99219vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 {
     font-size: 49.80469px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-9 {
     font-size: 3.59375vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 {
     font-size: 2.10938vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 {
     font-size: 52.73438px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-10 {
     font-size: 3.82813vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 {
     font-size: 2.22656vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 {
     font-size: 55.66406px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-11 {
     font-size: 4.0625vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 {
     font-size: 2.34375vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 {
     font-size: 58.59375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-12 {
     font-size: 4.29688vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 {
     font-size: 2.46094vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 {
     font-size: 61.52344px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-13 {
     font-size: 4.53125vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-13 {
     font-size: 2.57813vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-13 {
     font-size: 64.45313px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-1 {
     font-size: 1.71875vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
     font-size: 1.17188vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
     font-size: 1.50586vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
     font-size: 29.29688px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-2 {
     font-size: 1.95313vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
     font-size: 1.28906vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
     font-size: 1.65645vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
     font-size: 32.22656px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-3 {
     font-size: 2.1875vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
     font-size: 1.40625vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
     font-size: 1.80703vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
     font-size: 35.15625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-4 {
     font-size: 2.42188vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
     font-size: 1.52344vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
     font-size: 1.95762vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
     font-size: 38.08594px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-5 {
     font-size: 2.65625vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
     font-size: 1.64063vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
     font-size: 2.1082vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
     font-size: 41.01563px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-6 {
     font-size: 2.89063vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
     font-size: 1.75781vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
     font-size: 2.25879vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
     font-size: 43.94531px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-7 {
     font-size: 3.125vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
     font-size: 1.875vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
     font-size: 2.40937vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
     font-size: 46.875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-8 {
     font-size: 3.35938vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
     font-size: 1.99219vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
     font-size: 2.55996vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
     font-size: 49.80469px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-9 {
     font-size: 3.59375vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
     font-size: 2.10938vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
     font-size: 2.71055vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
     font-size: 52.73438px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-10 {
     font-size: 3.82813vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
     font-size: 2.22656vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
     font-size: 2.86113vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
     font-size: 55.66406px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-11 {
     font-size: 4.0625vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
     font-size: 2.34375vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
     font-size: 3.01172vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
     font-size: 58.59375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-12 {
     font-size: 4.29688vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
     font-size: 2.46094vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
     font-size: 3.1623vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
     font-size: 61.52344px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-13 {
     font-size: 4.53125vw;
   }
 }
 @media (min-width: 641px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-13 {
     font-size: 2.57813vw;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-13 {
     font-size: 3.31289vw !important;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-13 {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-13 {
     font-size: 64.45313px;
   }
 }
-.usanetwork-aspot .meta-wrap .aspot-description p {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .aspot-description p {
   margin: 0;
   text-shadow: 1px 1px 0.5em #333333;
 }
-.usanetwork-aspot .meta-wrap .show-timer {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .show-timer {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 35px;
   margin-bottom: 70px;
 }
 @media (min-width: 1601px) {
-  .usanetwork-aspot .meta-wrap .show-timer {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .show-timer {
     font-size: 60px;
   }
 }
 @media (max-width: 1024px) {
-  .usanetwork-aspot .meta-wrap .show-timer {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .show-timer {
     margin-bottom: 50px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .show-timer {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .show-timer {
     margin-bottom: 35px;
     font-size: 25px;
   }
 }
-.usanetwork-aspot .meta-wrap .show-timer .digit {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .show-timer .digit {
   float: left;
   text-align: center;
   width: 40px;
 }
 @media (min-width: 1601px) {
-  .usanetwork-aspot .meta-wrap .show-timer .digit {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .show-timer .digit {
     width: 60px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .show-timer .digit {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .show-timer .digit {
     width: 30px;
   }
 }
-.usanetwork-aspot .meta-wrap .show-timer .digit-separator {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .show-timer .digit-separator {
   float: left;
   font-size: 30px;
   line-height: 30px;
   padding: 0 5px;
 }
 @media (min-width: 1601px) {
-  .usanetwork-aspot .meta-wrap .show-timer .digit-separator {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .show-timer .digit-separator {
     font-size: 45px;
     line-height: 45px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .show-timer .digit-separator {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .show-timer .digit-separator {
     font-size: 22px;
     line-height: 22px;
     padding: 0 3px;
   }
 }
-.usanetwork-aspot .meta-wrap .cta-link {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link {
   position: relative;
 }
-.usanetwork-aspot .meta-wrap .cta-link:not(.cta_button_0) a {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link:not(.cta_button_0) a {
   background: none !important;
   text-shadow: 1px 1px 0.5em #333333;
 }
-.usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
   padding: 1.4vw 4.5vw 1.4vw 3.5vw;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
     padding: 35px 112.3px 35px 87.5px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
     padding: 1.4vw 6.5vw 1.4vw 3.5vw;
   }
 }
-.usanetwork-aspot .meta-wrap .cta-link a {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link a {
   color: #ffffff;
   display: block;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -33068,18 +33068,18 @@ yx-axis
   text-transform: uppercase;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .cta-link a {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link a {
     font-size: 31.74px;
     padding: 0 112.3px 0 0;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .cta-link a {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link a {
     font-size: 2.7vw;
     padding: 0 6.5vw 0 0;
   }
 }
-.usanetwork-aspot .meta-wrap .cta-link a:after {
+body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link a:after {
   color: #ffffff;
   content: "\e608";
   display: block;
@@ -33092,51 +33092,51 @@ yx-axis
   top: 50%;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .meta-wrap .cta-link a:after {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link a:after {
     font-size: 25px;
     margin-top: -12.5px;
     right: 60px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .meta-wrap .cta-link a:after {
+  body:not(.show-new-design) .usanetwork-aspot .meta-wrap .cta-link a:after {
     font-size: 1.6vw;
     margin-top: -0.8vw;
   }
 }
-.usanetwork-aspot .social_meter {
+body:not(.show-new-design) .usanetwork-aspot .social_meter {
   width: 18vw !important;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter {
     width: 450px !important;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter {
     width: 33vw !important;
   }
 }
-.usanetwork-aspot .social_meter .row-1 {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 {
   padding: 1.5625vw 1.5625vw 1.5625vw 6.5vw;
   position: relative;
 }
 @media (min-width: 1281px) {
-  .usanetwork-aspot .social_meter .row-1 {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 {
     padding: 1.5625vw 8vw 1.5625vw 1.5625vw;
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter .row-1 {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 {
     padding: 39.0625px 200px 39.0625px 39.0625px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter .row-1 {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 {
     padding: 2.865vw 2.865vw 2.865vw 11.9175vw;
   }
 }
-.usanetwork-aspot .social_meter .row-1:before {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1:before {
   border: solid 0.9375vw;
   border-color: inherit;
   border-right-color: transparent !important;
@@ -33150,79 +33150,79 @@ yx-axis
   width: 0;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter .row-1:before {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1:before {
     border: solid 23px;
     left: 48.825px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter .row-1:before {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1:before {
     border: solid 1.715625vw;
     left: 3.57vw;
   }
 }
-.usanetwork-aspot .social_meter .row-1 .block-quote-line {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .block-quote-line {
   line-height: 1.2;
   margin-bottom: 1vw;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter .row-1 .block-quote-line {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .block-quote-line {
     margin-bottom: 25px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter .row-1 .block-quote-line {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .block-quote-line {
     margin-bottom: 1.833vw;
   }
 }
-.usanetwork-aspot .social_meter .row-1 .block-quote-line:last-child {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .block-quote-line:last-child {
   margin-bottom: 0;
 }
-.usanetwork-aspot .social_meter .row-1 .upper-line {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .upper-line {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.875vw;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter .row-1 .upper-line {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .upper-line {
     font-size: 46.875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter .row-1 .upper-line {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .upper-line {
     font-size: 3.4375vw;
   }
 }
-.usanetwork-aspot .social_meter .row-1 .middle-line {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .middle-line {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 0.9375vw;
   text-transform: uppercase;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter .row-1 .middle-line {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .middle-line {
     font-size: 23.4375px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter .row-1 .middle-line {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .middle-line {
     font-size: 1.71875vw;
   }
 }
-.usanetwork-aspot .social_meter .row-1 .hashtag {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .hashtag {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.875vw;
   word-break: break-word;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter .row-1 .hashtag {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .hashtag {
     font-size: 46.875px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter .row-1 .hashtag {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .hashtag {
     font-size: 3.4375vw;
   }
 }
-.usanetwork-aspot .social_meter .row-1 .block-after-quote {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .block-after-quote {
   height: 100%;
   position: absolute;
   left: 0;
@@ -33230,7 +33230,7 @@ yx-axis
   width: 6.094vw;
 }
 @media (min-width: 1281px) {
-  .usanetwork-aspot .social_meter .row-1 .block-after-quote {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .block-after-quote {
     background-color: #303030;
     left: auto;
     right: 0;
@@ -33238,16 +33238,16 @@ yx-axis
   }
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter .row-1 .block-after-quote {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .block-after-quote {
     width: 195.3125px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter .row-1 .block-after-quote {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .block-after-quote {
     width: 11.17vw;
   }
 }
-.usanetwork-aspot .social_meter .row-1 .block-after-quote:after {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-1 .block-after-quote:after {
   background: url(../images/social-meter.png) no-repeat;
   background-size: 60%;
   background-position: 50% 50%;
@@ -33257,20 +33257,20 @@ yx-axis
   height: 100%;
   width: 100%;
 }
-.usanetwork-aspot .social_meter .row-2 {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 {
   margin-top: 2.34vw;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter .row-2 {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 {
     margin-top: 58.5px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter .row-2 {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 {
     margin-top: 4.2825vw;
   }
 }
-.usanetwork-aspot .social_meter .row-2 .social-meter-link {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 .social-meter-link {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.1vw;
@@ -33280,18 +33280,18 @@ yx-axis
   text-transform: uppercase;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter .row-2 .social-meter-link {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 .social-meter-link {
     font-size: 27.5px;
     padding-right: 30px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter .row-2 .social-meter-link {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 .social-meter-link {
     font-size: 2.015vw;
     padding-right: 2.2vw;
   }
 }
-.usanetwork-aspot .social_meter .row-2 .social-meter-link:after {
+body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 .social-meter-link:after {
   color: #ffffff;
   content: "\e608";
   display: block;
@@ -33304,13 +33304,13 @@ yx-axis
   top: 50%;
 }
 @media (min-width: 2500px) {
-  .usanetwork-aspot .social_meter .row-2 .social-meter-link:after {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 .social-meter-link:after {
     font-size: 25px;
     margin-top: -12.5px;
   }
 }
 @media (max-width: 640px) {
-  .usanetwork-aspot .social_meter .row-2 .social-meter-link:after {
+  body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 .social-meter-link:after {
     font-size: 1.6vw;
     margin-top: -0.8vw;
   }
@@ -40173,6 +40173,1598 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 @media (max-width: 768px) {
   .usa-show-aspot .pane-new-design-aspot #aspot-usanetwork {
     border-bottom: 2px solid;
+  }
+}
+.usa-show-aspot .usanetwork-aspot .aspot-draggable-element {
+  display: none;
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap {
+  position: static;
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-draggable-element {
+  box-sizing: border-box;
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix, .usa-show-aspot .usanetwork-aspot .meta-wrap .start {
+  color: #ffffff;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 1.1vw;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix, .usa-show-aspot .usanetwork-aspot .meta-wrap .start {
+    font-size: 17.6px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix, .usa-show-aspot .usanetwork-aspot .meta-wrap .start {
+    font-size: 2.7vw;
+  }
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix p, .usa-show-aspot .usanetwork-aspot .meta-wrap .start p {
+  margin: 0;
+  text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-1 {
+    font-size: 1.7625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 {
+    font-size: 0.63125vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 {
+    font-size: 15.78125px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-2 {
+    font-size: 1.91875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 {
+    font-size: 0.70938vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 {
+    font-size: 17.73438px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-3 {
+    font-size: 2.075vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 {
+    font-size: 0.7875vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 {
+    font-size: 19.6875px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-4 {
+    font-size: 2.23125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 {
+    font-size: 0.86563vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 {
+    font-size: 21.64063px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-5 {
+    font-size: 2.3875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 {
+    font-size: 0.94375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 {
+    font-size: 23.59375px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-6 {
+    font-size: 2.54375vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 {
+    font-size: 1.02187vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 {
+    font-size: 25.54688px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-7 {
+    font-size: 2.7vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 {
+    font-size: 1.1vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 {
+    font-size: 27.5px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-8 {
+    font-size: 2.85625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 {
+    font-size: 1.17812vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 {
+    font-size: 29.45313px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-9 {
+    font-size: 3.0125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 {
+    font-size: 1.25625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 {
+    font-size: 31.40625px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-10 {
+    font-size: 3.16875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 {
+    font-size: 1.33438vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 {
+    font-size: 33.35938px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-11 {
+    font-size: 3.325vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 {
+    font-size: 1.4125vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 {
+    font-size: 35.3125px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-12 {
+    font-size: 3.48125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 {
+    font-size: 1.49063vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 {
+    font-size: 37.26563px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-13 {
+    font-size: 3.6375vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-13 {
+    font-size: 1.56875vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-13 {
+    font-size: 39.21875px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-1 {
+    font-size: 1.7625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
+    font-size: 0.63125vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
+    font-size: 0.81116vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-1 {
+    font-size: 10.1px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-2 {
+    font-size: 1.91875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
+    font-size: 0.70938vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
+    font-size: 0.91155vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-2 {
+    font-size: 11.35px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-3 {
+    font-size: 2.075vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
+    font-size: 0.7875vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
+    font-size: 1.01194vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-3 {
+    font-size: 12.6px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-4 {
+    font-size: 2.23125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
+    font-size: 0.86563vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
+    font-size: 1.11233vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-4 {
+    font-size: 13.85px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-5 {
+    font-size: 2.3875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
+    font-size: 0.94375vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
+    font-size: 1.21272vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-5 {
+    font-size: 15.1px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-6 {
+    font-size: 2.54375vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
+    font-size: 1.02187vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
+    font-size: 1.31311vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-6 {
+    font-size: 16.35px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-7 {
+    font-size: 2.7vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
+    font-size: 1.1vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
+    font-size: 1.4135vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-7 {
+    font-size: 17.6px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-8 {
+    font-size: 2.85625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
+    font-size: 1.17812vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
+    font-size: 1.51389vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-8 {
+    font-size: 18.85px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-9 {
+    font-size: 3.0125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
+    font-size: 1.25625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
+    font-size: 1.61428vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-9 {
+    font-size: 20.1px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-10 {
+    font-size: 3.16875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
+    font-size: 1.33438vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
+    font-size: 1.71467vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-10 {
+    font-size: 21.35px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-11 {
+    font-size: 3.325vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
+    font-size: 1.4125vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
+    font-size: 1.81506vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-11 {
+    font-size: 22.6px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-12 {
+    font-size: 3.48125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
+    font-size: 1.49063vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
+    font-size: 1.91545vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-12 {
+    font-size: 23.85px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-mobile-13 {
+    font-size: 3.6375vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-13 {
+    font-size: 1.56875vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-13 {
+    font-size: 2.01584vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title_prefix.font-show-desktop-13 {
+    font-size: 25.1px;
+  }
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .title {
+  color: #ffffff;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 6vw;
+  letter-spacing: 0.1em;
+  line-height: 0.88;
+  margin: 0;
+  text-shadow: 0.05em 0.03em rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title {
+    font-size: 96px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title {
+    font-size: 10.4vw;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-1 {
+    font-size: 6.65vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-1 {
+    font-size: 4.125vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-1 {
+    font-size: 103.125px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-2 {
+    font-size: 7.275vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-2 {
+    font-size: 4.4375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-2 {
+    font-size: 110.9375px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-3 {
+    font-size: 7.9vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-3 {
+    font-size: 4.75vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-3 {
+    font-size: 118.75px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-4 {
+    font-size: 8.525vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-4 {
+    font-size: 5.0625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-4 {
+    font-size: 126.5625px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-5 {
+    font-size: 9.15vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-5 {
+    font-size: 5.375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-5 {
+    font-size: 134.375px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-6 {
+    font-size: 9.775vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-6 {
+    font-size: 5.6875vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-6 {
+    font-size: 142.1875px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-7 {
+    font-size: 10.4vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-7 {
+    font-size: 6.0vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-7 {
+    font-size: 150px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-8 {
+    font-size: 11.025vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-8 {
+    font-size: 6.3125vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-8 {
+    font-size: 157.8125px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-9 {
+    font-size: 11.65vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-9 {
+    font-size: 6.625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-9 {
+    font-size: 165.625px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-10 {
+    font-size: 12.275vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-10 {
+    font-size: 6.9375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-10 {
+    font-size: 173.4375px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-11 {
+    font-size: 12.9vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-11 {
+    font-size: 7.25vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-11 {
+    font-size: 181.25px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-12 {
+    font-size: 13.525vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-12 {
+    font-size: 7.5625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-12 {
+    font-size: 189.0625px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-mobile-13 {
+    font-size: 14.15vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-13 {
+    font-size: 7.875vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-desktop-13 {
+    font-size: 196.875px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-1 {
+    font-size: 6.65vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-1 {
+    font-size: 4.125vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-1 {
+    font-size: 5.30062vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-1 {
+    font-size: 66px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-2 {
+    font-size: 7.275vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-2 {
+    font-size: 4.4375vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-2 {
+    font-size: 5.70219vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-2 {
+    font-size: 71px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-3 {
+    font-size: 7.9vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-3 {
+    font-size: 4.75vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-3 {
+    font-size: 6.10375vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-3 {
+    font-size: 76px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-4 {
+    font-size: 8.525vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-4 {
+    font-size: 5.0625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-4 {
+    font-size: 6.50531vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-4 {
+    font-size: 81px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-5 {
+    font-size: 9.15vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-5 {
+    font-size: 5.375vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-5 {
+    font-size: 6.90687vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-5 {
+    font-size: 86px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-6 {
+    font-size: 9.775vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-6 {
+    font-size: 5.6875vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-6 {
+    font-size: 7.30844vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-6 {
+    font-size: 91px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-7 {
+    font-size: 10.4vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-7 {
+    font-size: 6.0vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-7 {
+    font-size: 7.71vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-7 {
+    font-size: 96px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-8 {
+    font-size: 11.025vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-8 {
+    font-size: 6.3125vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-8 {
+    font-size: 8.11156vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-8 {
+    font-size: 101px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-9 {
+    font-size: 11.65vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-9 {
+    font-size: 6.625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-9 {
+    font-size: 8.51312vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-9 {
+    font-size: 106px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-10 {
+    font-size: 12.275vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-10 {
+    font-size: 6.9375vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-10 {
+    font-size: 8.91469vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-10 {
+    font-size: 111px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-11 {
+    font-size: 12.9vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-11 {
+    font-size: 7.25vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-11 {
+    font-size: 9.31625vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-11 {
+    font-size: 116px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-12 {
+    font-size: 13.525vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-12 {
+    font-size: 7.5625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-12 {
+    font-size: 9.71781vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-12 {
+    font-size: 121px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-mobile-13 {
+    font-size: 14.15vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-13 {
+    font-size: 7.875vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-13 {
+    font-size: 10.11937vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .title.font-show-desktop-13 {
+    font-size: 126px;
+  }
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .title p {
+  margin: 0;
+  text-shadow: 0.05em 0.03em rgba(0, 0, 0, 0.5);
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description {
+  color: #ffffff;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 1.875vw;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin: 0;
+  text-transform: none;
+  text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description {
+    font-size: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description {
+    font-size: 3.125vw;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-1 {
+    font-size: 1.71875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 {
+    font-size: 1.17188vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 {
+    font-size: 29.29688px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-2 {
+    font-size: 1.95313vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 {
+    font-size: 1.28906vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 {
+    font-size: 32.22656px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-3 {
+    font-size: 2.1875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 {
+    font-size: 1.40625vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 {
+    font-size: 35.15625px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-4 {
+    font-size: 2.42188vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 {
+    font-size: 1.52344vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 {
+    font-size: 38.08594px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-5 {
+    font-size: 2.65625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 {
+    font-size: 1.64063vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 {
+    font-size: 41.01563px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-6 {
+    font-size: 2.89063vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 {
+    font-size: 1.75781vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 {
+    font-size: 43.94531px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-7 {
+    font-size: 3.125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 {
+    font-size: 1.875vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 {
+    font-size: 46.875px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-8 {
+    font-size: 3.35938vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 {
+    font-size: 1.99219vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 {
+    font-size: 49.80469px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-9 {
+    font-size: 3.59375vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 {
+    font-size: 2.10938vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 {
+    font-size: 52.73438px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-10 {
+    font-size: 3.82813vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 {
+    font-size: 2.22656vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 {
+    font-size: 55.66406px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-11 {
+    font-size: 4.0625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 {
+    font-size: 2.34375vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 {
+    font-size: 58.59375px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-12 {
+    font-size: 4.29688vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 {
+    font-size: 2.46094vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 {
+    font-size: 61.52344px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-13 {
+    font-size: 4.53125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-13 {
+    font-size: 2.57813vw;
+  }
+}
+@media (min-width: 2500px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-13 {
+    font-size: 64.45313px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-1 {
+    font-size: 1.71875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
+    font-size: 1.17188vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
+    font-size: 1.50586vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-1 {
+    font-size: 18.75px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-2 {
+    font-size: 1.95313vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
+    font-size: 1.28906vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
+    font-size: 1.65645vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-2 {
+    font-size: 20.625px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-3 {
+    font-size: 2.1875vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
+    font-size: 1.40625vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
+    font-size: 1.80703vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-3 {
+    font-size: 22.5px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-4 {
+    font-size: 2.42188vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
+    font-size: 1.52344vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
+    font-size: 1.95762vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-4 {
+    font-size: 24.375px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-5 {
+    font-size: 2.65625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
+    font-size: 1.64063vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
+    font-size: 2.1082vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-5 {
+    font-size: 26.25px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-6 {
+    font-size: 2.89063vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
+    font-size: 1.75781vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
+    font-size: 2.25879vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-6 {
+    font-size: 28.125px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-7 {
+    font-size: 3.125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
+    font-size: 1.875vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
+    font-size: 2.40937vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-7 {
+    font-size: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-8 {
+    font-size: 3.35938vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
+    font-size: 1.99219vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
+    font-size: 2.55996vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-8 {
+    font-size: 31.875px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-9 {
+    font-size: 3.59375vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
+    font-size: 2.10938vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
+    font-size: 2.71055vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-9 {
+    font-size: 33.75px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-10 {
+    font-size: 3.82813vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
+    font-size: 2.22656vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
+    font-size: 2.86113vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-10 {
+    font-size: 35.625px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-11 {
+    font-size: 4.0625vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
+    font-size: 2.34375vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
+    font-size: 3.01172vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-11 {
+    font-size: 37.5px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-12 {
+    font-size: 4.29688vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
+    font-size: 2.46094vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
+    font-size: 3.1623vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-12 {
+    font-size: 39.375px;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-mobile-13 {
+    font-size: 4.53125vw;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-13 {
+    font-size: 2.57813vw;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-13 {
+    font-size: 3.31289vw !important;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description.font-show-desktop-13 {
+    font-size: 41.25px;
+  }
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description p {
+  margin: 0;
+  text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link {
+  position: relative;
+  text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link:not(.cta_button_0) {
+    display: none !important;
+  }
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link:not(.cta_button_0) a {
+  background: none !important;
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
+  font-size: 1.79688vw;
+  padding: 0 2.10938vw 0 0;
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
+    font-size: 28.75px;
+    padding: 0 33.75px 0 0;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
+    font-size: 2.42188vw;
+    padding: 0 2.84505vw 0 0;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
+    font-size: 3.59375vw;
+    padding: 0 4.21875vw 0 0;
+  }
+}
+@media (min-width: 641px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:before {
+    border: 1px dotted currentColor;
+    bottom: -1.01563vw;
+    color: inherit;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    width: 40%;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:before {
+    bottom: -1.36719vw;
+  }
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:before {
+    bottom: -16.25px;
+  }
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:after {
+  color: inherit;
+  content: "\e608";
+  display: block;
+  font-family: "ico-font";
+  font-size: 1.40625vw;
+  line-height: 1;
+  position: absolute;
+  margin-top: -0.70313vw;
+  right: 0;
+  top: 50%;
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:after {
+    font-size: 22.5px;
+    margin-top: -11.25px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:after {
+    font-size: 1.90104vw;
+    margin-top: -0.95052vw;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:after {
+    font-size: 2.8125vw;
+    margin-top: -1.40625vw;
+  }
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a {
+  background: none;
+  color: #ffffff;
+  display: block;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 1.25vw;
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+  outline: none;
+  padding: 0 1.40625vw 0 0;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a {
+    font-size: 20px;
+    padding: 0 22.5px 0 0;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a {
+    font-size: 1.69271vw;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a {
+    font-size: 2.5vw;
+    padding: 0 2.8125vw 0 0;
+  }
+}
+.usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a span:after {
+  color: inherit;
+  content: "\e608";
+  display: block;
+  font-family: "ico-font";
+  font-size: 0.9375vw;
+  line-height: 1;
+  position: absolute;
+  margin-top: -0.46875vw;
+  right: 0;
+  top: 50%;
+}
+@media (min-width: 1601px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a span:after {
+    font-size: 15px;
+    margin-top: -7.5px;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a span:after {
+    font-size: 1.26302vw;
+    margin-top: -0.63151vw;
+  }
+}
+@media (max-width: 640px) {
+  .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a span:after {
+    font-size: 1.875vw;
+    margin-top: -0.9375vw;
   }
 }
 .usa-show-aspot .pane-new-design-relevant-content {

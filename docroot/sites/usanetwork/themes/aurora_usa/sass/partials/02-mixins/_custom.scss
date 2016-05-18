@@ -124,7 +124,7 @@
   }
 }
 
-@mixin aspotShowFonts($step, $default-font-desktop, $default-font-mobile) {
+@mixin aspotShowFonts($step, $default-font-desktop, $default-font-mobile, $new-design) {
   @for $i from 1 to 14 {
     &.font-show-mobile-#{$i} {
       @include breakpoint($bp-640-width) {
@@ -138,8 +138,15 @@
       @include breakpoint($between-641-768) {
         font-size: get-vw(($default-font-desktop + $step*($i - 1))*1.285, 1280)!important;
       }
-      @include breakpoint($bp-min-2500-width) {
-        font-size: ($default-font-desktop + $step*($i - 1))*1.953125;
+      @if ($new-design == false) {
+        @include breakpoint($bp-min-2500-width) {
+          font-size: ($default-font-desktop + $step*($i - 1))*1.953125;
+        }
+      }
+      @if ($new-design == true) {
+        @include breakpoint($bp-min-1601-width) {
+          font-size: ($default-font-desktop + $step*($i - 1))*1.25;
+        }
       }
     }
   }

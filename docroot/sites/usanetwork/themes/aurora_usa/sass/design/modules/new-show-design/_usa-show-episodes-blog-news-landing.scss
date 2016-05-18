@@ -32,6 +32,11 @@
             line-height: get-vw(90px, 1024);
             padding: 0 get-vw(33px, 1024);
           }
+          @include breakpoint ($bp-768-width) {
+            font-size: get-vw(24px, 768);
+            line-height: get-vw(55px, 768);
+            padding: 0 get-vw(33px, 768);
+          }
           @include breakpoint ($bp-640-width) {
             font-size: get-vw(24px, 640);
             line-height: get-vw(55px, 640);
@@ -56,6 +61,10 @@
       @include breakpoint ($bp-1024-width) {
         min-height: get-vw(293px, 1024);
         padding: get-vw(48px, 1024) get-vw(33px, 1024) get-vw(22px, 1024);
+      }
+      @include breakpoint ($bp-768-width) {
+        min-height: get-vw(294px, 768);
+        padding: get-vw(48px, 768) get-vw(33px, 768);
       }
       @include breakpoint ($bp-640-width) {
         min-height: 0;
@@ -116,6 +125,9 @@
         @include breakpoint($bp-1024-width) {
           width: calc(100% - #{get-vw(355px, 1024) + get-vw(12px, 1024)});
         }
+        @include breakpoint($bp-768-width) {
+          width: calc(100% - #{get-vw(349px, 768) + get-vw(7px, 768)});
+        }
         @include breakpoint($bp-640-width) {
           float: none;
           width: 100%;
@@ -148,6 +160,11 @@
             margin-bottom: get-vw(14px, 1024);
             margin-top: get-vw(12px, 1280);
           }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(21px, 768);
+            margin-bottom: get-vw(15px, 768);
+            margin-top: get-vw(6px, 768);
+          }
           @include breakpoint($bp-640-width) {
             font-size: get-vw(21px, 640);
             margin-top: 0;
@@ -177,6 +194,10 @@
             height: get-vw(200px, 1024);
             width: get-vw(355px, 1024);
           }
+          @include breakpoint ($bp-768-width) {
+            height: get-vw(169px, 768);
+            width: get-vw(349px, 768);
+          }
           @include breakpoint($bp-640-width) {
             margin-bottom: get-vw(25px, 640);
             position: relative;
@@ -201,6 +222,10 @@
           @include breakpoint($bp-1024-width) {
             font-size: get-vw(15px, 1024);
             margin-bottom: get-vw(25px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(15px, 768);
+            margin-bottom: get-vw(24px, 768);
           }
           @include breakpoint($bp-640-width) {
             font-size: get-vw(15px, 640);
@@ -242,6 +267,11 @@
           padding-top: get-vw(29px, 1024);
           width: calc(100% - #{get-vw(355px, 1024) + get-vw(12px, 1024)});
         }
+        @include breakpoint($bp-768-width) {
+          clear: both;
+          padding-top: get-vw(26px, 1024);
+          width: calc(100% - #{get-vw(349px, 768) + get-vw(7px, 768)});
+        }
         @include breakpoint($bp-640-width) {
           float: none;
           padding-top: get-vw(29px, 640);
@@ -274,9 +304,13 @@
                 font-size: get-vw(13.5px, 1024);
                 padding: get-vw(12px, 1024) get-vw(56px, 1024) get-vw(12px, 1024) get-vw(21px, 1024);
               }
+              @include breakpoint($bp-768-width) {
+                font-size: get-vw(12px, 768);
+                padding: get-vw(13px, 768) get-vw(56px, 768) get-vw(13px, 768) get-vw(23px, 768);
+              }
               @include breakpoint($bp-640-width) {
                 font-size: get-vw(12px, 640);
-                padding: get-vw(13px, 640) get-vw(56px, 640) get-vw(13px, 640) get-vw(20px, 640);
+                padding: get-vw(13px, 640) get-vw(54px, 640) get-vw(13px, 640) get-vw(20px, 640);
               }
               &:after {
                 content: "\e608";
@@ -298,6 +332,11 @@
                   font-size: get-vw(16px, 1024);
                   margin-top: calc(#{get-vw(-16px, 1024)}/2);
                   right: get-vw(19px, 1024);
+                }
+                @include breakpoint($bp-768-width) {
+                  font-size: get-vw(16px, 768);
+                  margin-top: calc(#{get-vw(-16px, 768)}/2);
+                  right: get-vw(19px, 768);
                 }
                 @include breakpoint($bp-640-width) {
                   font-size: get-vw(16px, 640);

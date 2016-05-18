@@ -66,7 +66,10 @@
                 <div <?php print 'class="cta_button_' . $counter . ' cta-link aspot-draggable-element"' ?>
                   <?php if (!empty($cta_button['style']['desktop'])): print 'data-style-desktop="' . $cta_button['style']['desktop'] . '" data-style-mobile="' . $cta_button['style']['mobile'] . '"'; endif; ?>
                   <?php if (!empty($cta_button['style']['width'])): print ' data-width="' . $cta_button['style']['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
-                  <a href="<?php print $cta_button['url']; ?>" class="cta-button-link show-color hover-avail" data-cta-link="CTA_LINK_<?php print $counter; ?>"><?php print $cta_button['text']; ?></a>
+                  <?php if (!empty($new_design)) : ?>
+                    <span class="show-color show-font"></span>
+                  <?php endif; ?>
+                  <a href="<?php print $cta_button['url']; ?>" class="cta-button-link show-color hover-avail<?php (!empty($new_design)) ? print ' show-font' : ''; ?>" data-cta-link="CTA_LINK_<?php print $counter; ?>"><?php print $cta_button['text']; ?></a>
                 </div>
                 <?php $counter++; ?>
               <?php endforeach; ?>

@@ -23,11 +23,18 @@
           <div class="meta-wrapper-inner">
             <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
             <div class="meta">
+              <?php if (!empty($new_design)) : ?>
+                <?php if (!empty($violator)): ?>
+                  <div class="violator"><?php print $violator; ?></div>
+                <?php endif; ?>
+              <?php endif; ?>
               <?php if (!empty($title)): ?>
                 <div class="title"><?php print $title; ?></div>
               <?php endif; ?>
-              <?php if (!empty($additional)): ?>
-                <div class="additional"><?php print $additional; ?></div>
+              <?php if (empty($new_design)) : ?>
+                <?php if (!empty($additional)): ?>
+                  <div class="additional"><?php print $additional; ?></div>
+                <?php endif; ?>
               <?php endif; ?>
             </div>
           </div>

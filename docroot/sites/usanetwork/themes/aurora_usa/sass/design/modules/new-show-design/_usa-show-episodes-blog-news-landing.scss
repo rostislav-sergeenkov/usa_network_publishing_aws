@@ -67,12 +67,12 @@
         padding: get-vw(48px, 768) get-vw(33px, 768);
       }
       @include breakpoint ($bp-640-width) {
-        min-height: 0;
+        min-height: get-vw(227px, 640);
         padding: get-vw(54px, 640) get-vw(33px, 640);
       }
       &:not(.active) {
         .episode-landing-info-block {
-          .image-block, .airing-date, .expiration-date, .description, .tags {
+          .airing-date, .expiration-date, .description, .tags {
             @include breakpoint($bp-640-width) {
               display: none;
             }
@@ -90,23 +90,41 @@
         }
       }
       &.active {
+
+        @include breakpoint ($bp-640-width) {
+          min-height: 0;
+        }
+
         .episode-landing-info-block {
-          .open-description {
+          @include breakpoint($bp-640-width) {
+            float: none;
+            width: 100%;
+          }
+          .image-block {
             @include breakpoint($bp-640-width) {
-              @include sprite-background(episode-minus-icon);
-              margin-top: 0;
-              top: 6px;
+              position: relative;
+              right: auto;
+              top: auto;
+              height: get-vw(324px, 640);
+              width: 100%;
             }
           }
-          .image-block, .airing-date, .expiration-date, .description, .tags {
+          .episode-landing-info-block {
+            .image-block, .airing-date, .expiration-date, .tags {
+              @include breakpoint($bp-640-width) {
+                display: block;
+              }
+            }
+          }
+          .description {
             @include breakpoint($bp-640-width) {
-              display: block;
+              display: none;
             }
           }
         }
         .buttons-bar {
           @include breakpoint($bp-640-width) {
-            display: block;
+            display: none;
           }
         }
       }
@@ -129,15 +147,14 @@
           width: calc(100% - #{get-vw(349px, 768) + get-vw(7px, 768)});
         }
         @include breakpoint($bp-640-width) {
-          float: none;
-          width: 100%;
+          width: calc(100% - #{get-vw(212px, 640) + get-vw(15px, 640)});
         }
         .open-description {
           display: none;
           @include breakpoint($bp-640-width) {
             @include sprite-background(episode-plus-icon);
             cursor: pointer;
-            display: block;
+            display: none;
             margin-top: -15.5px;
             position: absolute;
             right: 0;
@@ -199,12 +216,9 @@
             width: get-vw(349px, 768);
           }
           @include breakpoint($bp-640-width) {
-            margin-bottom: get-vw(25px, 640);
-            position: relative;
-            right: auto;
-            top: auto;
-            height: get-vw(324px, 640);
-            width: 100%;
+            margin-bottom: 0;
+            height: get-vw(119px, 640);
+            width: get-vw(212px, 640);
           }
         }
         .airing-date,

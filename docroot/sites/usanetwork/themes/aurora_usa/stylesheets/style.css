@@ -42157,12 +42157,12 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item {
-    min-height: 0;
+    min-height: 35.46875vw;
     padding: 8.4375vw 5.15625vw;
   }
 }
 @media (max-width: 640px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .description, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .tags, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .description, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .tags, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .description, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .tags {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .description, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .tags, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .description, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item:not(.active) .episode-landing-info-block .tags, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .description, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item:not(.active) .episode-landing-info-block .tags {
     display: none;
   }
 }
@@ -42177,35 +42177,38 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 @media (max-width: 640px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .open-description, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .open-description, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .open-description {
-    background-image: url('../images/sprites-sea8d049f41.png');
-    background-position: 0 -1146px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    display: block;
-    height: 31px;
-    width: 31px;
-    margin-top: 0;
-    top: 6px;
-  }
-}
-@media (max-width: 640px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 640px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 640px) and (min--moz-device-pixel-ratio: 2), (max-width: 640px) and (min-device-pixel-ratio: 2), (max-width: 640px) and (min-resolution: 144dppx) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .open-description, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .open-description, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .open-description {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -815px;
-    height: 31px;
-    width: 31px;
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active {
+    min-height: 0;
   }
 }
 @media (max-width: 640px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .description, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .tags, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .description, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .tags, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .description, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .tags {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block {
+    float: none;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .image-block {
+    position: relative;
+    right: auto;
+    top: auto;
+    height: 50.625vw;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .tags, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .tags, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .expiration-date, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .episode-landing-info-block .tags {
     display: block;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .description, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .description, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .episode-landing-info-block .description {
+    display: none;
   }
 }
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .buttons-bar, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .buttons-bar, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item.active .buttons-bar {
-    display: block;
+    display: none;
   }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-list-item-inner:after, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-list-item-inner:after, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-list-item-inner:after {
@@ -42237,8 +42240,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block {
-    float: none;
-    width: 100%;
+    width: calc(100% - 35.46875vw);
   }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .open-description, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .open-description, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .open-description {
@@ -42254,7 +42256,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     height: 31px;
     width: 31px;
     cursor: pointer;
-    display: block;
+    display: none;
     margin-top: -15.5px;
     position: absolute;
     right: 0;
@@ -42341,12 +42343,9 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .image-block, .show-new-design #block-usanetwork-news-landing .episode-landing-list-item .episode-landing-info-block .image-block {
-    margin-bottom: 3.90625vw;
-    position: relative;
-    right: auto;
-    top: auto;
-    height: 50.625vw;
-    width: 100%;
+    margin-bottom: 0;
+    height: 18.59375vw;
+    width: 33.125vw;
   }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .airing-date,

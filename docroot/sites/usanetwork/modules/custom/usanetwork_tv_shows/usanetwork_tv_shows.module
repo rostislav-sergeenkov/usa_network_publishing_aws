@@ -2325,8 +2325,10 @@ function _usanetwork_tv_shows_submenu() {
 }
 
 
-function _usanetwork_tv_shows_new_design_menu() {
-  $show = menu_get_object();
+function _usanetwork_tv_shows_new_design_menu($show = NULL) {
+  if (empty($show)) {
+    $show = menu_get_object();
+  }
   if (!empty($show) && $show->type != 'tv_show') {
     $show = usanetwork_core_api_get_tv_content_node($show);
   }
@@ -4885,4 +4887,23 @@ function _usanetwork_tv_shows_nd_footer_block() {
   $footer = theme('usanetwork_tv_shows_nd_footer');
   $footer .= '<div class="usa-legal">'.usanetwork_bottom_footer(FALSE).'</div>';
   return $footer;
+}
+
+/**
+ * Return if entity show is with new design.
+ */
+function _usanetwork_tv_shows_is_new_design_entity($entity_type, $entity, $return_show = FALSE) {
+  $is_new_design = $show = FALSE;
+  $show_id = _usanetwork_get_field_item($entity_type, $entity, 'field_show', 'target_id');
+  if ($show_id) {
+    $show = node_load($show_id);
+  }
+  if ($show) {
+    $is_new_design = _usanetwork_get_field_item('node', $show, 'field_new_design', 'value');
+  }
+  if ($return_show) {
+    return array('is_new_design' => $is_new_design, 'tv_show' => $show);
+  } else {
+    return $is_new_design;
+  }
 }

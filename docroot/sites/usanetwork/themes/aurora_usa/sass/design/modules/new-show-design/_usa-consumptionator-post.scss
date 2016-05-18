@@ -1,7 +1,4 @@
-.consumptionator-page, .node-type-tv-episode {
-
-}
-body:not(.show-new-design) {
+.show-new-design {
   .consumptionator-episode-main-block, .consumptionator-post-main-block {
     @include clear();
     overflow: hidden;
@@ -10,7 +7,7 @@ body:not(.show-new-design) {
     .episode-info-main-block, .post-info-main-block {
       float: left;
       position: relative;
-      width: 74.7%;
+      width: 75%;
       background: #ffffff;
       color: #000000;
       @include breakpoint($between-1025-1280) {
@@ -29,20 +26,28 @@ body:not(.show-new-design) {
         }
       }
       .episode-change-link {
-        bottom: 39px;
+        bottom: get-vw(25px, 1280);
         color: $change-episode-color;
         display: block;
         font-family: $avalon-book;
         font-size: 21px;
+        outline: none;
         position: absolute;
         text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          bottom: 38px;
+        }
         @include breakpoint($bp-1280-width) {
-          bottom: 34px;
-          font-size: 14px;
+          font-size: 15px;
+        }
+        @include breakpoint($bp-1024-width) {
+          bottom: get-vw(38px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          bottom: 36px;
-          font-size: 13px;
+          bottom: get-vw(36.5px, 768);
+        }
+        @include breakpoint($bp-640-width) {
+          bottom: get-vw(28px, 640);
         }
         &:after {
           color: $change-episode-color;
@@ -54,21 +59,23 @@ body:not(.show-new-design) {
           margin-top: -8px;
           line-height: 1;
           @include breakpoint($bp-1280-width) {
-            font-size: 11px;
-            margin-top: -6px;
+            font-size: 10px;
+            margin-top: -5px;
           }
         }
         &.previous {
-          left: 20px;
-          margin-left: 32px;
-          @include breakpoint($bp-min-1901-width) {
-            margin-left: 48px;
-          }
-          @include breakpoint($bp-1280-width) {
-            margin-left: 68px;
+          left: get-vw(75px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            left: 40px;
           }
           @include breakpoint($bp-1024-width) {
-            margin-left: 20px;
+            left: get-vw(30px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            left: get-vw(30px, 768);
+          }
+          @include breakpoint($bp-640-width) {
+            left: get-vw(30px, 640);
           }
           &:after {
             content: "\e607";
@@ -76,16 +83,18 @@ body:not(.show-new-design) {
           }
         }
         &.next {
-          right: 20px;
-          margin-right: 32px;
-          @include breakpoint($bp-min-1901-width) {
-            margin-right: 48px;
-          }
-          @include breakpoint($bp-1280-width) {
-            margin-right: 68px;
+          right: get-vw(75px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            right: 40px;
           }
           @include breakpoint($bp-1024-width) {
-            margin-right: 20px;
+            right: get-vw(30px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            right: get-vw(30px, 768);
+          }
+          @include breakpoint($bp-640-width) {
+            right: get-vw(30px, 640);
           }
           &:after {
             content: "\e608";
@@ -95,36 +104,37 @@ body:not(.show-new-design) {
       }
       .episode-info-block, .post-info-block {
         border-bottom: 2px solid;
-        padding: 45px 93px 90px 70px;
-        @include breakpoint($bp-1280-width) {
-          padding: 38px 43px 76px 32px;
+        padding: get-vw(37px, 1280) get-vw(46px, 1280) get-vw(74px, 1280) get-vw(32px, 1280);
+        @include breakpoint($bp-min-1601-width) {
+          padding: 50px 94px 100px 70px;
         }
         @include breakpoint($bp-1024-width) {
-          padding: 53px 11.8% 90px;
+          padding: get-vw(60px, 1024) get-vw(120px, 1024) get-vw(100px, 1024) get-vw(120px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          padding: 50px 6.7% 90px;
+          padding: get-vw(57px, 768) get-vw(50px, 768) get-vw(97px, 768) get-vw(50px, 768);
         }
         @include breakpoint($bp-640-width) {
           border-bottom: 0;
-          padding: 30px 6% 75px;
+          padding: get-vw(35px, 640) get-vw(40px, 640) get-vw(80px, 640);
         }
         @include clear();
         .episode-info-header, .post-info-header {
           @include clear();
           position: relative;
-          margin-bottom: 20px;
+          margin-bottom: 26px;
           @include breakpoint($bp-1280-width) {
-            margin-bottom: 34px;
+            margin-bottom: 40px;
           }
           @include breakpoint($bp-1024-width) {
-            margin-bottom: 17px;
+            margin-bottom: 16px;
           }
           .episode-title-block, .post-title-block {
             float: left;
             width: 70%;
             @include breakpoint($bp-1024-width) {
               float: none;
+              margin-bottom: 10px;
               width: 100%;
             }
             @include breakpoint($bp-480-width) {
@@ -132,34 +142,21 @@ body:not(.show-new-design) {
               width: 100%;
             }
             .episode-title, .post-title {
+              color: black;
               font-family: $avalon-medium;
-              font-size: 54px;
+              font-size: 38px;
               line-height: 1.3;
-              @include breakpoint($bp-1280-width) {
-                font-size: 36px;
-                line-height: 1.1em;
-              }
-              @include breakpoint($bp-768-width) {
-                font-size: 37.8px;
-              }
-              @include breakpoint($bp-640-width) {
-                font-size: 36px;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 54px;
               }
             }
             .additional {
-              font-family: $avalon-book;
-              font-size: 19.5px;
               color: $consum-carousel-odd;
-              text-transform: uppercase;
-              @include breakpoint($bp-1280-width) {
-                font-size: 13px;
-              }
-              @include breakpoint($bp-1024-width) {
-                font-size: 12px;
-                line-height: 3em;
-              }
-              @include breakpoint($bp-768-width) {
-                font-size: 13px;
+              font-family: $avalon-book;
+              font-size: 12px;
+              line-height: 1.3;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 18px;
               }
               .episode {
                 font-family: $tex-gyreschola-italic;
@@ -188,30 +185,18 @@ body:not(.show-new-design) {
             }
           }
           .share {
-            float: right;
-            width: 23%;
-            font-family: $avalon-book;
             color: $consum-carousel-text;
-            @include breakpoint($bp-1280-width) {
-              width: 16%;
-            }
+            float: right;
+            font-family: $avalon-book;
+            margin-top: 10px;
+            width: 30%;
             @include breakpoint($bp-1024-width) {
               float: none;
+              margin: 0;
               width: 100%;
             }
             h3 {
-              font-family: $avalon-book;
-              font-size: 22px;
-              text-align: right;
-              line-height: 1em;
-              margin: 0 0 14px 0;
-              @include breakpoint($bp-1280-width) {
-                font-size: 15px;
-                margin: -8px 0 14px 0;
-              }
-              @include breakpoint ($bp-1024-width) {
-                display: none;
-              }
+              display: none;
             }
             .field-type-gigya-sharebar {
               margin-bottom: 0;
@@ -310,22 +295,15 @@ body:not(.show-new-design) {
         }
         .episode-info-description, .post-info-description {
           font-family: $avalon-book;
-          font-size: 26px;
-          line-height: 1.6em;
+          font-size: 20px;
+          line-height: 1.5em;
           position: relative;
-          @include breakpoint($bp-1280-width) {
-            font-size: 17px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 15px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: 16px;
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 30px;
           }
           @include breakpoint($bp-640-width) {
-            width: 100%;
-            font-size: 18px;
             color: $poll-color;
+            width: 100%;
           }
           .file-video-mpx.view-mode-inline_content {
             iframe {
@@ -459,54 +437,7 @@ body:not(.show-new-design) {
         @include breakpoint($between-1025-1280) {
           height: calc((100vw - 370px) * 0.5625);
         }
-        .bx-wrapper {
-          .bx-controls {
-            .bx-custom-pager {
-              .bx-pager-item {
-                @include breakpoint($between-1025-1280) {
-                  height: 13px;
-                  margin: 0px 15px 13px auto;
-                  width: 13px;
-                }
-                a {
-                  @include breakpoint($between-1025-1280) {
-                    height: 13px;
-                    width: 13px;
-                  }
-                  img {
-                    @include breakpoint($between-1025-1280) {
-                      max-width: 75px;
-                      width: 75px;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    .consum-sidebar {
-      @include breakpoint($bp-min-1025-width) {
-        float: none;
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-      .items-block {
-        @include breakpoint($bp-min-1025-width) {
-          height: calc(100% - 250px)!important;
-          top: 0;
-        }
-      }
-      .advert {
-        @include breakpoint($bp-min-1025-width) {
-          height: 250px;
-          padding: 0;
-        }
       }
     }
   }
 }
-
-

@@ -7,6 +7,7 @@
     width: 100%;
     .landing-list-items-one-item {
       border-top: 2px solid #ffffff; //@todo add show-color border
+      overflow: auto;
       &:first-child {
         border-top: 0;
       }

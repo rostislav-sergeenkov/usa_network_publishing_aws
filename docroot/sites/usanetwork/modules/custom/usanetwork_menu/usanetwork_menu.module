@@ -1122,47 +1122,37 @@ function _usanetwork_menu_footer_apps_services() {
 function _usanetwork_menu_consumptionator_block() {
   if ($entity = menu_get_object('file')) {
     if (isset($entity->type) && (in_array($entity->type, _usanetwork_mpx_video_get_all_file_types()))) {
-      $is_new_design_show = _usanetwork_tv_shows_is_new_design_entity('file', $entity, TRUE);
-      if ($is_new_design_show['is_new_design']) {
-        return _usanetwork_tv_shows_new_design_menu($is_new_design_show['tv_show']);
-      } else {
-        return _usanetwork_menu_consumptionator_block_video($entity);
-      }
+      return _usanetwork_menu_consumptionator_block_video($entity);
     }
   }
   elseif ($entity = menu_get_object('node')) {
     if (isset($entity->type)) {
-      $is_new_design_show = _usanetwork_tv_shows_is_new_design_entity('node', $entity, TRUE);
-      if ($is_new_design_show['is_new_design']) {
-        return _usanetwork_tv_shows_new_design_menu($is_new_design_show['tv_show']);
-      } else {
-        if ($entity->type == 'catchall_page') {
-          return _usanetwork_menu_consumptionator_block_catchall($entity);
-        }
-        elseif ($entity->type == 'media_gallery') {
-          return _usanetwork_menu_consumptionator_block_gallery($entity);
-        }
-        elseif ($entity->type == 'person') {
-          return _usanetwork_menu_consumptionator_block_person($entity);
-        }
-        elseif ($entity->type == 'tv_episode') {
-          return _usanetwork_menu_consumptionator_episode_guide($entity);
-        }
-        elseif ($entity->type == 'timeline_gallery') {
-          return _usanetwork_menu_consumptionator_block_timeline_gallery($entity);
-        }
-        elseif ($entity->type == 'quiz') {
-          return _usanetwork_menu_consumptionator_block_quiz($entity);
-        }
-        elseif ($entity->type == 'consumpt_post') {
-          return _usanetwork_menu_consumptionator_block_consumpt_post($entity);
-        }
-        elseif ($entity->type == 'top3_gallery') {
-          return _usanetwork_menu_consumptionator_block_top3_gallery($entity);
-        }
-        elseif ($entity->type == 'usanetwork_microsite') {
-          return _usanetwork_menu_consumptionator_usanetwork_microsite($entity);
-        }
+      if ($entity->type == 'catchall_page') {
+        return _usanetwork_menu_consumptionator_block_catchall($entity);
+      }
+      elseif ($entity->type == 'media_gallery') {
+        return _usanetwork_menu_consumptionator_block_gallery($entity);
+      }
+      elseif ($entity->type == 'person') {
+        return _usanetwork_menu_consumptionator_block_person($entity);
+      }
+      elseif ($entity->type == 'tv_episode') {
+        return _usanetwork_menu_consumptionator_episode_guide($entity);
+      }
+      elseif ($entity->type == 'timeline_gallery') {
+        return _usanetwork_menu_consumptionator_block_timeline_gallery($entity);
+      }
+      elseif ($entity->type == 'quiz') {
+        return _usanetwork_menu_consumptionator_block_quiz($entity);
+      }
+      elseif ($entity->type == 'consumpt_post') {
+        return _usanetwork_menu_consumptionator_block_consumpt_post($entity);
+      }
+      elseif ($entity->type == 'top3_gallery') {
+        return _usanetwork_menu_consumptionator_block_top3_gallery($entity);
+      }
+      elseif ($entity->type == 'usanetwork_microsite') {
+        return _usanetwork_menu_consumptionator_usanetwork_microsite($entity);
       }
     }
   }

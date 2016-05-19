@@ -1,5 +1,4 @@
-.show-new-design {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu, #block-usanetwork-menu-usanetwork-menu-consumptionator {
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
     background: black;
     padding: get-vw(16px, 1280) get-vw(16px, 1280) 0 get-vw(16px, 1280);
     position: relative;
@@ -260,6 +259,12 @@
       }
     }
     header.usa-sticky-header &:not(.active) {
+      @include breakpoint($bp-min-769-width) {
+        padding-top: get-vw(8px, 1280);
+      }
+      @include breakpoint($bp-min-1601-width) {
+        padding-top: 10px;
+      }
       @include breakpoint($bp-768-width) {
         background: $aspot-shadow;
         padding: 0;
@@ -287,6 +292,12 @@
         }
         .title-block {
           &.show-mrrobot {
+            @include breakpoint($bp-min-769-width) {
+              width: get-vw(287px, 1600);
+            }
+            @include breakpoint($bp-min-1601-width) {
+              width: 287px;
+            }
             @include breakpoint($bp-768-width) {
               width: get-vw(203px, 768);
             }
@@ -297,6 +308,12 @@
             }
           }
           .title {
+            @include breakpoint($bp-min-769-width) {
+              height: get-vw(45px, 1600);
+            }
+            @include breakpoint($bp-min-1601-width) {
+              height: 45px;
+            }
             @include breakpoint($bp-768-width) {
               height: get-vw(31px, 768);
               margin-bottom: 0;
@@ -579,5 +596,25 @@
       }
     }
   }
+.show-new-design {
+  #head-leaderboard {
+    -webkit-transition: height 0.5s ease-out 0s;
+    -moz-transition: height 0.5s ease-out 0s;
+    -o-transition: height 0.5s ease-out 0s;
+    transition: height 0.5s ease-out 0s;
+    @include breakpoint($bp-min-769-width) {
+      height: 90px;
+    }
+  }
+  .usa-sticky-header {
+    #head-leaderboard {
+      @include breakpoint($bp-min-769-width) {
+        height: 0;
+        visibility: hidden;
+      }
+    }
+  }
 }
+
+
 

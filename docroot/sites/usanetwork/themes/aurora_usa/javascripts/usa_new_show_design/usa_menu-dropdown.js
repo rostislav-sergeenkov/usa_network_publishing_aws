@@ -268,7 +268,11 @@
         $(window).on('resize', function (e) {
           clearTimeout(timer_id);
           timer_id = setTimeout(function () {
-
+            if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
+              if ($(".menu-open-button").hasClass('active')) {
+                newMenuOpenHandler();
+              }
+            }
           }, 300);
         });
 

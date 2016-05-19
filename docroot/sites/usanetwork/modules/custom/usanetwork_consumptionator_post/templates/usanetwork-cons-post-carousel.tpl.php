@@ -32,7 +32,7 @@
     </div>
   <?php endif; ?>
 </div>
-<div class="more-items more-posts <?php !empty($new_design) ? print 'show-border' : 'show-color'; ?>">
+<div class="more-items more-posts <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
   <?php if (!empty($posts_landing_link)): ?>
     <?php print $posts_landing_link; ?>
   <?php endif; ?>

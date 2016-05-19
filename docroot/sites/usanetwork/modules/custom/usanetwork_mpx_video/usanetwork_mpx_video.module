@@ -1477,6 +1477,8 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       $show = NULL;
 
+      $file_wrapper = entity_metadata_wrapper('file', $file);
+
       $field_mpx_entitlement = _usanetwork_get_field_item('file', $file, 'field_mpx_entitlement', 'safe_value');
       if ($field_mpx_entitlement) {
         $vars['lock_video'] = ($field_mpx_entitlement === 'auth') ? TRUE : FALSE;
@@ -1784,6 +1786,30 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $vars['endcard_enabled'] = $enabled;
       $vars['endcard_time'] = (!empty($time)) ? ($time * 1000) : NULL;
       $vars['endcard_template'] = $endcard_template;
+
+      //new design changes
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show);
+      $vars['is_new_design'] = $is_new_design;
+      if ($is_new_design) {
+        $description = !empty($file->field_mpx_description)
+            ? $file_wrapper->field_mpx_description->value() : NULL;
+        $tve_login = usanetwork_tve_video_auth_menu();
+        $new_design_bar_vars = array(
+          'season_number' => !empty($file->field_mpx_season_number)
+            ? t('S') . $file_wrapper->field_mpx_season_number->value()
+            : NULL,
+          'episode_number' => !empty($file->field_mpx_episode_number)
+              ? t('Episode') . $file_wrapper->field_mpx_episode_number->value() : NULL,
+          'running_time' => !empty($file->field_mpx_duration)
+            ? gmdate('H:i:s', $file_wrapper->field_mpx_duration->value())
+            : NULL,
+          'sharebar' => usanetwork_menu_render_sharebar($file, 'file', t('Share this video'), $file_wrapper->name->value(), $description),
+          'title' => $file->filename,
+          'description' => $description,
+          'tve_login' => $tve_login,
+        );
+        $vars['new_design_bar'] = theme('usanetwork_mpx_video_new_design_bar', $new_design_bar_vars);
+      }
     }
   }
   // Fill H1 tag.
@@ -2904,6 +2930,10 @@ function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-mpx-video-endcard',
     ),
+    'usanetwork_mpx_video_new_design_bar' => array(
+      'variables' => array(),
+      'template' => 'templates/usanetwork-mpx-video-new-design-bar',
+    )
   );
   return $themes;
 }

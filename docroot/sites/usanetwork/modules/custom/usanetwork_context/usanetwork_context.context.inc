@@ -703,6 +703,12 @@ function usanetwork_context_context_default_contexts() {
         'consumpt_post' => 'consumpt_post',
       ),
     ),
+    'new_design_file' => array(
+      'values' => array(
+        'mpx_video_1' => 'mpx_video_1',
+        'mpx_video_2' => 'mpx_video_2',
+      ),
+    ),
     'new_design_show' => array(
       'values' => array(
         1 => 1,

@@ -1480,10 +1480,8 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $file_wrapper = entity_metadata_wrapper('file', $file);
 
       $field_mpx_entitlement = _usanetwork_get_field_item('file', $file, 'field_mpx_entitlement', 'safe_value');
-      if ($field_mpx_entitlement) {
-        $vars['lock_video'] = ($field_mpx_entitlement === 'auth') ? TRUE : FALSE;
-        $vars['entitlement'] = $field_mpx_entitlement;
-      }
+      $vars['lock_video'] = ($field_mpx_entitlement === 'auth') ? TRUE : FALSE;
+      $vars['entitlement'] = $field_mpx_entitlement;
 
       $field_show = field_get_items('file', $file, 'field_show');
       if ($field_show && $field_show = reset($field_show)) {

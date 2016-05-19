@@ -3632,7 +3632,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .image-block .item-number {
   color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 0.9375vw;
   height: 1.09375vw;
   line-height: 1.09375vw;
@@ -3697,7 +3697,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .meta-wrapper-inner .title {
   color: white;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.09375vw;
   letter-spacing: 1px;
   line-height: 1.4;
@@ -3810,10 +3810,12 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   display: block;
   font-size: 1.5625vw;
   line-height: 1;
+  margin-bottom: 1.5625vw;
 }
 @media (min-width: 1601px) {
   .b-c-d-block li .usa-bcd-carousel-promo .meta .caption {
     font-size: 25px;
+    margin-bottom: 25px;
   }
 }
 @media (max-width: 768px) {
@@ -3821,12 +3823,14 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
     bottom: 100%;
     font-size: 3.125vw;
     left: 0;
+    margin: 0;
     position: absolute;
   }
 }
 .b-c-d-block li .usa-bcd-carousel-promo .meta .caption span {
   color: white;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
+  letter-spacing: 0.5px;
   line-height: 1.5;
   padding: 0 0.54688vw;
   text-transform: uppercase;
@@ -3844,7 +3848,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .b-c-d-block li .usa-bcd-carousel-promo .meta .title {
   color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.875vw;
   line-height: 1.2;
   text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
@@ -3968,11 +3972,13 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   display: block;
   font-size: 1.5625vw;
   line-height: 1;
+  margin-bottom: 1.5625vw;
   text-align: left;
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta .caption {
     font-size: 25px;
+    margin-bottom: 25px;
   }
 }
 @media (max-width: 768px) {
@@ -3980,12 +3986,13 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
     bottom: 100%;
     font-size: 3.125vw;
     left: 0;
+    margin: 0;
     position: absolute;
   }
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta .caption span {
   color: white;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   line-height: 1.5;
   padding: 0 0.54688vw;
   text-transform: uppercase;
@@ -4003,7 +4010,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta .title {
   color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.875vw;
   line-height: 1.2;
   text-align: left;
@@ -4035,7 +4042,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 .best-of-section .best-of-content li .usa-best-of-promo .meta .additional .additional-link {
   color: white;
   display: inline-block;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.5625vw;
   line-height: 1.3;
   outline: none;
@@ -4093,6 +4100,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 .best-of-section .best-of-content li .usa-best-of-promo .meta .more-link {
   color: white;
   display: inline-block;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.25vw;
   margin-top: 3.20313vw;
   outline: none;
@@ -4201,7 +4209,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .caption {
   color: #7c7c7c;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 0.9375vw;
   line-height: 1.2;
 }
@@ -4212,7 +4220,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .title {
   color: #cccccc;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.5625vw;
   letter-spacing: 0.5px;
   line-height: 1.3;
@@ -4224,7 +4232,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .additional {
   background: none;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 0.9375vw;
   line-height: 1.79688vw;
   position: relative;
@@ -4338,7 +4346,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .articles-block .articles-wrapper li .usa-articles-promo .meta .title {
   color: #e5e5e5;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 1.875vw;
   line-height: 1.1;
   margin: 0 0 0.39063vw;
@@ -4373,7 +4381,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
   color: #cdcdcd;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "opensansregular", sans-serif;
   font-size: 1.40625vw;
   line-height: 1.2;
   text-overflow: ellipsis;
@@ -4518,7 +4526,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .title,
 .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .title {
   color: #e6e6e6;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "opensanssemibold", sans-serif;
   font-size: 1.17188vw;
   letter-spacing: 1px;
   line-height: 1.3;
@@ -4558,7 +4566,6 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 @media (max-width: 768px) {
   .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .additional,
   .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .additional {
-    font-family: "texgyrescholaitalic", Times, serif;
     font-size: 2.1875vw;
     line-height: calc(2.1875vw * 1.3);
     white-space: normal;
@@ -4601,7 +4608,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .show-related-content-block #special-fuatures .slide .usa-show-related-special-promo .title {
   color: #e6e6e6;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 1.875vw;
   line-height: 1.3;
   margin-bottom: 1.09375vw;
@@ -4622,7 +4629,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .show-related-content-block #special-fuatures .slide .usa-show-related-special-promo .additional {
   color: #cdcdcd;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "opensansregular", sans-serif;
   font-size: 1.40625vw;
   line-height: 1.3;
   overflow: hidden;
@@ -39424,9 +39431,9 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .usa-section-title .title {
   color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 1.71875vw;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   line-height: 1;
   margin: 0;
   padding: 0;
@@ -39448,6 +39455,7 @@ body.blog .view-display-id-blog_content .views-row {
   bottom: 1.17188vw;
   color: white;
   display: block;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.25vw;
   letter-spacing: 0.5px;
   line-height: 1;
@@ -39504,7 +39512,7 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design .view-more .view-more-link {
   color: #ffffff;
   display: inline-block;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.40625vw;
   letter-spacing: 1px;
   line-height: 1;
@@ -39817,6 +39825,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .hashtag {
   background: none;
+  font-family: "firasansregular", sans-serif;
   font-size: 1vw;
   padding-right: 1.40625vw;
 }
@@ -40224,7 +40233,9 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   width: 100%;
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
+  font-family: "firasanslight", sans-serif;
   font-size: 0.97656vw;
+  letter-spacing: 0.5px;
   line-height: 2;
   text-align: center;
   width: 100%;
@@ -40408,9 +40419,10 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li a {
+  font-family: "firasansregular", sans-serif;
   font-size: 0.97656vw;
   height: 100%;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   line-height: 4.6875vw;
   outline: none;
   padding: 0 2.26563vw;
@@ -41011,7 +41023,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .usa-show-aspot .usanetwork-aspot .meta-wrap .title {
   color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 6vw;
   letter-spacing: 0.1em;
   line-height: 0.88;
@@ -41490,7 +41502,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description {
   color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.875vw;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -42057,7 +42069,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   background: none;
   color: #ffffff;
   display: block;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.25vw;
   letter-spacing: 0.1em;
   line-height: 1.8;
@@ -42150,7 +42162,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .usa-show-aspot .pane-new-design-relevant-content .carousel-title-block {
   background: none;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.25vw;
   line-height: 3.28125vw;
   height: 3.28125vw;
@@ -42578,7 +42590,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .latest-episodes-block .main-episode .meta .caption {
   color: #a6a6a6;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.40625vw;
   text-transform: uppercase;
 }
@@ -42594,10 +42606,11 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .latest-episodes-block .main-episode .meta .title {
   color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 2.34375vw;
   line-height: 1.1;
   text-transform: uppercase;
+  word-break: break-word;
 }
 @media (min-width: 1601px) {
   .latest-episodes-block .main-episode .meta .title {
@@ -42611,7 +42624,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .latest-episodes-block .main-episode .meta .additional .additional-link {
   background: none;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.09375vw;
   margin-right: 1.79688vw;
   outline: none;
@@ -42875,7 +42888,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   padding: 0;
   padding-bottom: 1.48438vw;
   padding-top: 1.71875vw;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 1.40625vw;
   letter-spacing: 1px;
   line-height: 1;
@@ -42893,7 +42906,6 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     color: #8b8b8b;
     padding-bottom: 4.21875vw;
     padding-top: 5.625vw;
-    font-family: "avalonbold", Helvetica, Arial, sans-serif;
     font-size: 4.375vw;
   }
 }

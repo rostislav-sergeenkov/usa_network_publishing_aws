@@ -74,9 +74,9 @@
     }
     .title {
       color: white;
-      font-family: $avalon-medium;
+      font-family: $fira-sans-medium;
       font-size: get-vw(22px, 1280);
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       line-height: 1;
       margin: 0;
       padding: 0;
@@ -94,6 +94,7 @@
       bottom: get-vw(15px, 1280);
       color: white;
       display: block;
+      font-family: $fira-sans-regular;
       font-size: get-vw(16px, 1280);
       letter-spacing: 0.5px;
       line-height: 1;
@@ -140,7 +141,7 @@
     .view-more-link {
       color: #ffffff;
       display: inline-block;
-      font-family: $avalon-book; //@todo add font "FiraSans Regular"
+      font-family: $fira-sans-regular;
       font-size: get-vw(18px, 1280);
       letter-spacing: 1px;
       line-height: 1;

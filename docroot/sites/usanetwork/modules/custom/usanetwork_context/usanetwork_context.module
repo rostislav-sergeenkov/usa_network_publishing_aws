@@ -27,6 +27,14 @@ function usanetwork_context_context_plugins() {
       'parent' => 'context_condition',
     ),
   );
+  $plugins['usanetwork_context_new_design_file'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'usanetwork_context') . '/plugins',
+      'file' => 'usanetwork_context_new_design_file.inc',
+      'class' => 'usanetwork_context_new_design_file',
+      'parent' => 'context_condition',
+    ),
+  );
   return $plugins;
 }
 
@@ -46,6 +54,11 @@ function usanetwork_context_context_registry() {
       'title' => t('New design consumpt'),
       'description' => t('This condition works for selected Consumptionator pages.'),
       'plugin' => 'usanetwork_context_new_design_cons',
+    ),
+    'new_design_file' => array(
+      'title' => t('New design file'),
+      'description' => t('This condition works for selected File pages.'),
+      'plugin' => 'usanetwork_context_new_design_file',
     ),
   );
   return $registry;
@@ -70,5 +83,14 @@ function usanetwork_context_init() {
 function usanetwork_context_node_view($node, $view_mode, $langcode) {
   if ($plugin = context_get_plugin('condition', 'new_design_consumpt')) {
     $plugin->execute($node);
+  }
+}
+
+/**
+ * Implements hook_file_view().
+ */
+function usanetwork_context_file_view($file, $view_mode, $langcode) {
+  if ($plugin = context_get_plugin('condition', 'new_design_file')) {
+    $plugin->execute($file);
   }
 }

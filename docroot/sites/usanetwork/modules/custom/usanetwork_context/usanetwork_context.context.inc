@@ -576,7 +576,6 @@ function usanetwork_context_context_default_contexts() {
     'context' => array(
       'values' => array(
         '~usanetwork_sitewide_exclude' => '~usanetwork_sitewide_exclude',
-        '~usanetwork_sitewide_exclude_newdesign' => '~usanetwork_sitewide_exclude_newdesign',
       ),
     ),
     'path' => array(
@@ -699,6 +698,11 @@ function usanetwork_context_context_default_contexts() {
         'field_not_empty' => 1,
       ),
     ),
+    'new_design_consumpt' => array(
+      'values' => array(
+        'consumpt_post' => 'consumpt_post',
+      ),
+    ),
     'new_design_show' => array(
       'values' => array(
         1 => 1,
@@ -719,6 +723,40 @@ function usanetwork_context_context_default_contexts() {
           'delta' => 'usanetwork_tv_shows_nd_footer',
           'region' => 'footer',
           'weight' => '-10',
+        ),
+      ),
+    ),
+    'block_disable' => array(
+      'blocks' => array(
+        'usanetwork_blocks-usa_footer_promos' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_promos',
+          'region' => '-1',
+          'weight' => '0',
+        ),
+        'usanetwork_lyris-newsletter_subscription' => array(
+          'module' => 'usanetwork_lyris',
+          'delta' => 'newsletter_subscription',
+          'region' => '',
+          'weight' => '0',
+        ),
+        'usanetwork_menu-usanetwork_menu_sm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_sm_menu',
+          'region' => '-1',
+          'weight' => '0',
+        ),
+        'usanetwork_menu-usanetwork_menu_fm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_fm_menu',
+          'region' => '-1',
+          'weight' => '0',
+        ),
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => '-1',
+          'weight' => '0',
         ),
       ),
     ),

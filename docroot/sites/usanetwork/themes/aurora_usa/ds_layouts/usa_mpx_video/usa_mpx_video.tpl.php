@@ -105,6 +105,9 @@
               <?php print $endcard_template; ?>
             <?php endif; ?>
             <!--  end endcart -->
+            <?php if (!empty($is_new_design)) : ?>
+              <?php print $new_design_bar; ?>
+            <?php endif; ?>
           <?php endif; ?>
         </div>
       <?php else: ?>
@@ -138,6 +141,9 @@
               <?php print $endcard_template; ?>
             <?php endif; ?>
             <!--  end endcart -->
+            <?php if (!empty($is_new_design)) : ?>
+              <?php print $new_design_bar; ?>
+            <?php endif; ?>
           <?php endif; ?>
         </div>
       <?php endif; ?>

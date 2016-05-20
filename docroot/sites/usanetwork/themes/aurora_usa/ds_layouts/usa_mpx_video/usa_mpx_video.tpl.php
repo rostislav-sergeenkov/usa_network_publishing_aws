@@ -7,7 +7,7 @@
     data-show-title="<?php print (!empty($show_title)) ? $show_title : ''; ?>"
     data-episode-title="<?php print $filename; ?>"
     data-mpx-guid="<?php print $mpx_guid; ?>"
-    data-episode-rating="<?php print $episode_rating; ?>"
+    data-episode-rating="<?php (!empty($episode_rating)) ? print $episode_rating : NULL; ?>"
     data-next-episode-url="<?php print $next_video_url; ?>"
     data-show-end-card="<?php print !empty($endcard_enabled) ? '1' : '0'; ?>"
     data-end-card-time="<?php print !empty($endcard_time) ? $endcard_time : 'null'; ?>"

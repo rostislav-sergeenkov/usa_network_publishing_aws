@@ -74,9 +74,9 @@
     }
     .title {
       color: white;
-      font-family: $avalon-medium;
+      font-family: $fira-sans-medium;
       font-size: get-vw(22px, 1280);
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       line-height: 1;
       margin: 0;
       padding: 0;
@@ -84,6 +84,9 @@
       text-transform: uppercase;
       @include breakpoint($bp-min-1601-width) {
         font-size: 27.5px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 17px;
       }
       @include breakpoint($bp-768-width) {
         color: $usa-section-title-color;
@@ -94,7 +97,8 @@
       bottom: get-vw(15px, 1280);
       color: white;
       display: block;
-      font-size: get-vw(16px, 1280);
+      font-family: $fira-sans-regular;
+      font-size: get-vw(12.8px, 1280);
       letter-spacing: 0.5px;
       line-height: 1;
       padding-right: get-vw(16px, 1280);
@@ -103,9 +107,12 @@
       text-transform: uppercase;
       @include breakpoint($bp-min-1601-width) {
         bottom: 18.75px;
-        font-size: 20px;
+        font-size: 16px;
         padding-right: 20px;
         right: 20px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 11px;
       }
       @include breakpoint($bp-768-width) {
         display: none;
@@ -140,7 +147,7 @@
     .view-more-link {
       color: #ffffff;
       display: inline-block;
-      font-family: $avalon-book; //@todo add font "FiraSans Regular"
+      font-family: $fira-sans-regular;
       font-size: get-vw(18px, 1280);
       letter-spacing: 1px;
       line-height: 1;
@@ -306,7 +313,7 @@
         }
         a {
           color: $usa-footer-color;
-          font-family: $avalon-book;
+          font-family: $roboto-medium;
           font-size: get-vw(14px, 1280);
           line-height: 1.5;
           text-decoration: none;
@@ -334,6 +341,7 @@
     .copyright {
       clear: both;
       color: $usa-footer-color;
+      font-family: $roboto-light;
       font-size: get-vw(12px, 1280);
       line-height: 1.7;
       @include breakpoint($bp-min-1601-width) {

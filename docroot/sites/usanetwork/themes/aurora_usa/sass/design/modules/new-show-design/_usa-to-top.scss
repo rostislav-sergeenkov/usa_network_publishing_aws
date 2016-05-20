@@ -1,16 +1,13 @@
 #usa-to-top {
-
   cursor: pointer;
   margin-left: auto;
   position: relative;
   height: 37px;
   width: 37px;
-
   @include breakpoint($bp-768-width) {
     height: 66px;
     width: 66px;
   }
-
   &:before {
     @include sprite-background(back_to_top);
     content: ''; //@todo add correct icon

@@ -64,7 +64,7 @@
       padding: 0;
       padding-bottom: get-vw(19px, 1280);
       padding-top: get-vw(22px, 1280);
-      font-family: $avalon-medium; //@todo add font "FiraSans Medium"
+      font-family: $fira-sans-medium;
       font-size: get-vw(18px, 1280);
       letter-spacing: 1px;
       line-height: 1;
@@ -78,7 +78,6 @@
         color: $tve-select;
         padding-bottom: get-vw(27px, 640);
         padding-top: get-vw(36px, 640);
-        font-family: $avalon-demi; //@todo add font "DIN Bold"
         font-size: get-vw(28px, 640);
       }
     }

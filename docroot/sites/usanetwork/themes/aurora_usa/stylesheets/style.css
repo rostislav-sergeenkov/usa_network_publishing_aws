@@ -447,6 +447,78 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'firasansbold';
+  src: url("../fonts/firasans-bold-webfont.eot");
+  src: url("../fonts/firasans-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/firasans-bold-webfont.woff") format("woff"), url("../fonts/firasans-bold-webfont.ttf") format("truetype"), url("../fonts/firasans-bold-webfont.svg#firasansbold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'firasanslight';
+  src: url("../fonts/firasans-light-webfont.eot");
+  src: url("../fonts/firasans-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/firasans-light-webfont.woff") format("woff"), url("../fonts/firasans-light-webfont.ttf") format("truetype"), url("../fonts/firasans-light-webfont.svg#firasanslight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'firasansmedium';
+  src: url("../fonts/firasans-medium-webfont.eot");
+  src: url("../fonts/firasans-medium-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/firasans-medium-webfont.woff") format("woff"), url("../fonts/firasans-medium-webfont.ttf") format("truetype"), url("../fonts/firasans-medium-webfont.svg#firasansmedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'firasansregular';
+  src: url("../fonts/firasans-regular-webfont.eot");
+  src: url("../fonts/firasans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/firasans-regular-webfont.woff") format("woff"), url("../fonts/firasans-regular-webfont.ttf") format("truetype"), url("../fonts/firasans-regular-webfont.svg#firasansregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensansregular';
+  src: url("../fonts/opensans-regular-webfont.eot");
+  src: url("../fonts/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-regular-webfont.woff") format("woff"), url("../fonts/opensans-regular-webfont.ttf") format("truetype"), url("../fonts/opensans-regular-webfont.svg#opensansregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensanssemibold';
+  src: url("../fonts/opensans-semibold-webfont.eot");
+  src: url("../fonts/opensans-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-semibold-webfont.woff") format("woff"), url("../fonts/opensans-semibold-webfont.ttf") format("truetype"), url("../fonts/opensans-semibold-webfont.svg#opensanssemibold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotolight';
+  src: url("../fonts/roboto-light-webfont.eot");
+  src: url("../fonts/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-light-webfont.woff") format("woff"), url("../fonts/roboto-light-webfont.ttf") format("truetype"), url("../fonts/roboto-light-webfont.svg#robotolight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotomedium';
+  src: url("../fonts/roboto-medium-webfont.eot");
+  src: url("../fonts/roboto-medium-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-medium-webfont.woff") format("woff"), url("../fonts/roboto-medium-webfont.ttf") format("truetype"), url("../fonts/roboto-medium-webfont.svg#robotomedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ropasansregular';
+  src: url("../fonts/ropasans-regular-webfont.eot");
+  src: url("../fonts/ropasans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ropasans-regular-webfont.woff") format("woff"), url("../fonts/ropasans-regular-webfont.ttf") format("truetype"), url("../fonts/ropasans-regular-webfont.svg#ropasansregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* WARNING:	You are using ligatures for your icon font.
 			Ligatures are not supported in IE 9 (and older).
 			Use the Private Use Area encoding for best browser support.
@@ -3560,7 +3632,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .image-block .item-number {
   color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 0.9375vw;
   height: 1.09375vw;
   line-height: 1.09375vw;
@@ -3625,7 +3697,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .meta-wrapper-inner .title {
   color: white;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.09375vw;
   letter-spacing: 1px;
   line-height: 1.4;
@@ -3635,6 +3707,11 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .meta-wrapper-inner .title {
     font-size: 17.5px;
     margin-left: 6.25px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .meta-wrapper-inner .title {
+    font-size: 11px;
   }
 }
 @media (max-width: 768px) {
@@ -3736,25 +3813,34 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .b-c-d-block li .usa-bcd-carousel-promo .meta .caption {
   display: block;
-  font-size: 1.5625vw;
+  font-size: 1.17188vw;
   line-height: 1;
+  margin-bottom: 1.5625vw;
 }
 @media (min-width: 1601px) {
   .b-c-d-block li .usa-bcd-carousel-promo .meta .caption {
-    font-size: 25px;
+    font-size: 18.75px;
+    margin-bottom: 25px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .b-c-d-block li .usa-bcd-carousel-promo .meta .caption {
+    font-size: 12px;
   }
 }
 @media (max-width: 768px) {
   .b-c-d-block li .usa-bcd-carousel-promo .meta .caption {
     bottom: 100%;
-    font-size: 3.125vw;
+    font-size: 2.34375vw;
     left: 0;
+    margin: 0;
     position: absolute;
   }
 }
 .b-c-d-block li .usa-bcd-carousel-promo .meta .caption span {
   color: white;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
+  letter-spacing: 0.5px;
   line-height: 1.5;
   padding: 0 0.54688vw;
   text-transform: uppercase;
@@ -3772,35 +3858,45 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .b-c-d-block li .usa-bcd-carousel-promo .meta .title {
   color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.875vw;
+  font-family: "firasansregular", sans-serif;
+  font-size: 2.125vw;
   line-height: 1.2;
   text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
 }
 @media (min-width: 1601px) {
   .b-c-d-block li .usa-bcd-carousel-promo .meta .title {
-    font-size: 30px;
+    font-size: 34px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .b-c-d-block li .usa-bcd-carousel-promo .meta .title {
+    font-size: 21px;
   }
 }
 @media (max-width: 768px) {
   .b-c-d-block li .usa-bcd-carousel-promo .meta .title {
-    font-size: 3.75vw;
+    font-size: 4.25vw;
   }
 }
 .b-c-d-block li .usa-bcd-carousel-promo .meta .additional {
   color: white;
   font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 1.25vw;
+  font-size: 1vw;
   text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
 }
 @media (min-width: 1601px) {
   .b-c-d-block li .usa-bcd-carousel-promo .meta .additional {
-    font-size: 20px;
+    font-size: 16px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .b-c-d-block li .usa-bcd-carousel-promo .meta .additional {
+    font-size: 10px;
   }
 }
 @media (max-width: 768px) {
   .b-c-d-block li .usa-bcd-carousel-promo .meta .additional {
-    font-size: 2.5vw;
+    font-size: 2vw;
   }
 }
 
@@ -3894,26 +3990,34 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta .caption {
   display: block;
-  font-size: 1.5625vw;
+  font-size: 1.17188vw;
   line-height: 1;
+  margin-bottom: 1.5625vw;
   text-align: left;
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta .caption {
-    font-size: 25px;
+    font-size: 18.75px;
+    margin-bottom: 25px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .best-of-section .best-of-content li .usa-best-of-promo .meta .caption {
+    font-size: 12px;
   }
 }
 @media (max-width: 768px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta .caption {
     bottom: 100%;
-    font-size: 3.125vw;
+    font-size: 2.34375vw;
     left: 0;
+    margin: 0;
     position: absolute;
   }
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta .caption span {
   color: white;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   line-height: 1.5;
   padding: 0 0.54688vw;
   text-transform: uppercase;
@@ -3931,15 +4035,20 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta .title {
   color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.875vw;
+  font-family: "firasansregular", sans-serif;
+  font-size: 2.125vw;
   line-height: 1.2;
   text-align: left;
   text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta .title {
-    font-size: 30px;
+    font-size: 34px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .best-of-section .best-of-content li .usa-best-of-promo .meta .title {
+    font-size: 21px;
   }
 }
 @media (max-width: 768px) {
@@ -3963,8 +4072,8 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 .best-of-section .best-of-content li .usa-best-of-promo .meta .additional .additional-link {
   color: white;
   display: inline-block;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 1.5625vw;
+  font-family: "firasansregular", sans-serif;
+  font-size: 1.3125vw;
   line-height: 1.3;
   outline: none;
   text-transform: uppercase;
@@ -3972,7 +4081,12 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta .additional .additional-link {
-    font-size: 25px;
+    font-size: 21px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .best-of-section .best-of-content li .usa-best-of-promo .meta .additional .additional-link {
+    font-size: 14px;
   }
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta .additional .additional-link .arrow {
@@ -3990,13 +4104,13 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   content: '\e608';
   display: block;
   font-family: "ico-font";
-  font-size: 1.25vw;
+  font-size: 1.05469vw;
   line-height: 1;
   text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta .additional .additional-link .arrow:before {
-    font-size: 20px;
+    font-size: 16.875px;
   }
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta .additional .dots {
@@ -4021,7 +4135,8 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 .best-of-section .best-of-content li .usa-best-of-promo .meta .more-link {
   color: white;
   display: inline-block;
-  font-size: 1.25vw;
+  font-family: "firasansregular", sans-serif;
+  font-size: 1.125vw;
   margin-top: 3.20313vw;
   outline: none;
   position: relative;
@@ -4030,7 +4145,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta .more-link {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 51.25px;
   }
 }
@@ -4042,19 +4157,19 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 .best-of-section .best-of-content li .usa-best-of-promo .meta .more-link span {
   background: none;
   display: block;
-  height: 1.25vw;
+  height: 1.125vw;
   left: 50%;
-  margin-left: -0.625vw;
+  margin-left: -0.5625vw;
   position: absolute;
-  top: -3.20313vw;
-  width: 1.25vw;
+  top: -3.07812vw;
+  width: 1.125vw;
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta .more-link span {
-    height: 20px;
-    margin-left: -10px;
-    top: -51.25px;
-    width: 20px;
+    height: 18px;
+    margin-left: -9px;
+    top: -49.25px;
+    width: 18px;
   }
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta .more-link span:before {
@@ -4062,12 +4177,12 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   content: '\e609';
   display: block;
   font-family: "ico-font";
-  font-size: 1.25vw;
+  font-size: 1.125vw;
   line-height: 1;
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta .more-link span:before {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -4129,7 +4244,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .caption {
   color: #7c7c7c;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 0.9375vw;
   line-height: 1.2;
 }
@@ -4140,7 +4255,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .title {
   color: #cccccc;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.5625vw;
   letter-spacing: 0.5px;
   line-height: 1.3;
@@ -4152,7 +4267,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .additional {
   background: none;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 0.9375vw;
   line-height: 1.79688vw;
   position: relative;
@@ -4266,7 +4381,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .articles-block .articles-wrapper li .usa-articles-promo .meta .title {
   color: #e5e5e5;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 1.875vw;
   line-height: 1.1;
   margin: 0 0 0.39063vw;
@@ -4301,7 +4416,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
   color: #cdcdcd;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "opensansregular", sans-serif;
   font-size: 1.40625vw;
   line-height: 1.2;
   text-overflow: ellipsis;
@@ -4446,7 +4561,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .title,
 .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .title {
   color: #e6e6e6;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "opensanssemibold", sans-serif;
   font-size: 1.17188vw;
   letter-spacing: 1px;
   line-height: 1.3;
@@ -4486,7 +4601,6 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 @media (max-width: 768px) {
   .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .additional,
   .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .additional {
-    font-family: "texgyrescholaitalic", Times, serif;
     font-size: 2.1875vw;
     line-height: calc(2.1875vw * 1.3);
     white-space: normal;
@@ -4529,7 +4643,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .show-related-content-block #special-fuatures .slide .usa-show-related-special-promo .title {
   color: #e6e6e6;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 1.875vw;
   line-height: 1.3;
   margin-bottom: 1.09375vw;
@@ -4550,7 +4664,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
 }
 .show-related-content-block #special-fuatures .slide .usa-show-related-special-promo .additional {
   color: #cdcdcd;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "opensansregular", sans-serif;
   font-size: 1.40625vw;
   line-height: 1.3;
   overflow: hidden;
@@ -39351,9 +39465,9 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .usa-section-title .title {
   color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 1.71875vw;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   line-height: 1;
   margin: 0;
   padding: 0;
@@ -39363,6 +39477,11 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1601px) {
   .show-new-design .usa-section-title .title {
     font-size: 27.5px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .show-new-design .usa-section-title .title {
+    font-size: 17px;
   }
 }
 @media (max-width: 768px) {
@@ -39375,7 +39494,8 @@ body.blog .view-display-id-blog_content .views-row {
   bottom: 1.17188vw;
   color: white;
   display: block;
-  font-size: 1.25vw;
+  font-family: "firasansregular", sans-serif;
+  font-size: 1vw;
   letter-spacing: 0.5px;
   line-height: 1;
   padding-right: 1.25vw;
@@ -39386,9 +39506,14 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1601px) {
   .show-new-design .usa-section-title > a {
     bottom: 18.75px;
-    font-size: 20px;
+    font-size: 16px;
     padding-right: 20px;
     right: 20px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .show-new-design .usa-section-title > a {
+    font-size: 11px;
   }
 }
 @media (max-width: 768px) {
@@ -39431,7 +39556,7 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design .view-more .view-more-link {
   color: #ffffff;
   display: inline-block;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.40625vw;
   letter-spacing: 1px;
   line-height: 1;
@@ -39652,7 +39777,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design #footer .legal-menu li a {
   color: #bababa;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "robotomedium", sans-serif;
   font-size: 1.09375vw;
   line-height: 1.5;
   text-decoration: none;
@@ -39686,6 +39811,7 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design #footer .copyright {
   clear: both;
   color: #bababa;
+  font-family: "robotolight", sans-serif;
   font-size: 0.9375vw;
   line-height: 1.7;
 }
@@ -39744,6 +39870,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .hashtag {
   background: none;
+  font-family: "firasansregular", sans-serif;
   font-size: 1vw;
   padding-right: 1.40625vw;
 }
@@ -40151,14 +40278,22 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   width: 100%;
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
+  font-family: "firasansregular", sans-serif;
   font-size: 0.97656vw;
+  letter-spacing: 0.5px;
   line-height: 2;
   text-align: center;
+  text-transform: uppercase;
   width: 100%;
 }
 @media (min-width: 1601px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
     font-size: 15.625px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
+    font-size: 10px;
   }
 }
 @media (max-width: 768px) {
@@ -40335,9 +40470,10 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li a {
+  font-family: "firasansregular", sans-serif;
   font-size: 0.97656vw;
   height: 100%;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   line-height: 4.6875vw;
   outline: none;
   padding: 0 2.26563vw;
@@ -40938,7 +41074,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .usa-show-aspot .usanetwork-aspot .meta-wrap .title {
   color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 6vw;
   letter-spacing: 0.1em;
   line-height: 0.88;
@@ -41417,7 +41553,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description {
   color: #ffffff;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.875vw;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -41984,7 +42120,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   background: none;
   color: #ffffff;
   display: block;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.25vw;
   letter-spacing: 0.1em;
   line-height: 1.8;
@@ -42077,7 +42213,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .usa-show-aspot .pane-new-design-relevant-content .carousel-title-block {
   background: none;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.25vw;
   line-height: 3.28125vw;
   height: 3.28125vw;
@@ -42505,7 +42641,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .latest-episodes-block .main-episode .meta .caption {
   color: #a6a6a6;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.40625vw;
   text-transform: uppercase;
 }
@@ -42521,10 +42657,11 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .latest-episodes-block .main-episode .meta .title {
   color: white;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 2.34375vw;
   line-height: 1.1;
   text-transform: uppercase;
+  word-break: break-word;
 }
 @media (min-width: 1601px) {
   .latest-episodes-block .main-episode .meta .title {
@@ -42538,7 +42675,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .latest-episodes-block .main-episode .meta .additional .additional-link {
   background: none;
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-family: "firasansregular", sans-serif;
   font-size: 1.09375vw;
   margin-right: 1.79688vw;
   outline: none;
@@ -42802,7 +42939,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   padding: 0;
   padding-bottom: 1.48438vw;
   padding-top: 1.71875vw;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-family: "firasansmedium", sans-serif;
   font-size: 1.40625vw;
   letter-spacing: 1px;
   line-height: 1;
@@ -42820,7 +42957,6 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     color: #8b8b8b;
     padding-bottom: 4.21875vw;
     padding-top: 5.625vw;
-    font-family: "avalonbold", Helvetica, Arial, sans-serif;
     font-size: 4.375vw;
   }
 }

@@ -2334,7 +2334,7 @@
       }
       .item-number {
         color: white;
-        font-family: $avalon-medium;
+        font-family: $fira-sans-medium;
         font-size: get-vw(12px, 1280);
         height: get-vw(14px, 1280);
         line-height: get-vw(14px, 1280);
@@ -2387,7 +2387,7 @@
       }
       .title {
         color: white;
-        font-family: $avalon-book;
+        font-family: $fira-sans-regular;
         font-size: get-vw(14px, 1280);
         letter-spacing: 1px;
         line-height: 1.4;
@@ -2395,6 +2395,9 @@
         @include breakpoint($bp-min-1601-width) {
           font-size: 17.5px;
           margin-left: 6.25px;
+        }
+        @include breakpoint($between-769-1024) {
+          font-size: 11px;
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(20px, 640);
@@ -2484,20 +2487,27 @@
       }
       .caption {
         display: block;
-        font-size: get-vw(20px, 1280);
+        font-size: get-vw(15px, 1280);
         line-height: 1;
+        margin-bottom: get-vw(20px, 1280);
         @include breakpoint($bp-min-1601-width) {
-          font-size: 25px;
+          font-size: 18.75px;
+          margin-bottom: 25px;
+        }
+        @include breakpoint($between-769-1024) {
+          font-size: 12px;
         }
         @include breakpoint($bp-768-width) {
           bottom: 100%;
-          font-size: get-vw(20px, 640);
+          font-size: get-vw(15px, 640);
           left: 0;
+          margin: 0;
           position: absolute;
         }
         span {
           color: white;
-          font-family: $avalon-book;
+          font-family: $fira-sans-medium;
+          letter-spacing: 0.5px;
           line-height: 1.5;
           padding: 0 get-vw(7px, 1280);
           text-transform: uppercase;
@@ -2512,27 +2522,33 @@
       }
       .title {
         color: white;
-        font-family: $avalon-medium;
-        font-size: get-vw(24px, 1280);
+        font-family: $fira-sans-regular;
+        font-size: get-vw(27.2px, 1280);
         line-height: 1.2;
         text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
         @include breakpoint($bp-min-1601-width) {
-          font-size: 30px;
+          font-size: 34px;
+        }
+        @include breakpoint($between-769-1024) {
+          font-size: 21px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(24px, 640);
+          font-size: get-vw(27.2px, 640);
         }
       }
       .additional {
         color: white;
         font-family: $tex-gyreschola-italic;
-        font-size: get-vw(16px, 1280);
+        font-size: get-vw(12.8px, 1280);
         text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
         @include breakpoint($bp-min-1601-width) {
-          font-size: 20px;
+          font-size: 16px;
+        }
+        @include breakpoint($between-769-1024) {
+          font-size: 10px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(16px, 640);
+          font-size: get-vw(12.8px, 640);
         }
       }
     }
@@ -2618,21 +2634,27 @@
       }
       .caption {
         display: block;
-        font-size: get-vw(20px, 1280);
+        font-size: get-vw(15px, 1280);
         line-height: 1;
+        margin-bottom: get-vw(20px, 1280);
         text-align: left;
         @include breakpoint($bp-min-1601-width) {
-          font-size: 25px;
+          font-size: 18.75px;
+          margin-bottom: 25px;
+        }
+        @include breakpoint($between-769-1024) {
+          font-size: 12px;
         }
         @include breakpoint($bp-768-width) {
           bottom: 100%;
-          font-size: get-vw(20px, 640);
+          font-size: get-vw(15px, 640);
           left: 0;
+          margin: 0;
           position: absolute;
         }
         span {
           color: white;
-          font-family: $avalon-book;
+          font-family: $fira-sans-medium;
           line-height: 1.5;
           padding: 0 get-vw(7px, 1280);
           text-transform: uppercase;
@@ -2647,13 +2669,16 @@
       }
       .title {
         color: white;
-        font-family: $avalon-medium;
-        font-size: get-vw(24px, 1280);
+        font-family: $fira-sans-regular;
+        font-size: get-vw(27.2px, 1280);
         line-height: 1.2;
         text-align: left;
         text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
         @include breakpoint($bp-min-1601-width) {
-          font-size: 30px;
+          font-size: 34px;
+        }
+        @include breakpoint($between-769-1024) {
+          font-size: 21px;
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(24px, 640);
@@ -2670,14 +2695,17 @@
         .additional-link {
           color: white;
           display: inline-block;
-          font-family: $avalon-book;
-          font-size: get-vw(20px, 1280);
+          font-family: $fira-sans-regular;
+          font-size: get-vw(16.8px, 1280);
           line-height: 1.3;
           outline: none;
           text-transform: uppercase;
           text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
           @include breakpoint($bp-min-1601-width) {
-            font-size: 25px;
+            font-size: 21px;
+          }
+          @include breakpoint($between-769-1024) {
+            font-size: 14px;
           }
           .arrow {
             background: none;
@@ -2691,11 +2719,11 @@
               content: '\e608';
               display: block;
               font-family: $ico-font;
-              font-size: get-vw(16px, 1280);
+              font-size: get-vw(13.5px, 1280);
               line-height: 1;
               text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
               @include breakpoint($bp-min-1601-width) {
-                font-size: 20px;
+                font-size: 16.875px;
               }
             }
           }
@@ -2721,14 +2749,15 @@
       .more-link {
         color: white;
         display: inline-block;
-        font-size: get-vw(16px, 1280);
+        font-family: $fira-sans-regular;
+        font-size: get-vw(14.4px, 1280);
         margin-top: get-vw(41px, 1280);
         outline: none;
         position: relative;
         text-transform: uppercase;
         text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
         @include breakpoint($bp-min-1601-width) {
-          font-size: 20px;
+          font-size: 18px;
           margin-top: 51.25px;
         }
         @include breakpoint($bp-768-width) {
@@ -2737,27 +2766,27 @@
         span {
           background: none;
           display: block;
-          height: get-vw(16px, 1280);
+          height: get-vw(14.4px, 1280);
           left: 50%;
-          margin-left: get-vw(-8px, 1280);
+          margin-left: get-vw(-7.2px, 1280);
           position: absolute;
-          top: get-vw(-41px, 1280);
-          width: get-vw(16px, 1280);
+          top: get-vw(-39.4px, 1280);
+          width: get-vw(14.4px, 1280);
           @include breakpoint($bp-min-1601-width) {
-            height: 20px;
-            margin-left: -10px;
-            top: -51.25px;
-            width: 20px;
+            height: 18px;
+            margin-left: -9px;
+            top: -49.25px;
+            width: 18px;
           }
           &:before {
             color: inherit;
             content: '\e609';
             display: block;
             font-family: $ico-font;
-            font-size: get-vw(16px, 1280);
+            font-size: get-vw(14.4px, 1280);
             line-height: 1;
             @include breakpoint($bp-min-1601-width) {
-              font-size: 20px;
+              font-size: 18px;
             }
           }
         }
@@ -2818,7 +2847,7 @@
       }
       .caption {
         color: $usa-episode-item-text;
-        font-family: $avalon-book;
+        font-family: $fira-sans-regular;
         font-size: get-vw(12px, 1280);
         line-height: 1.2;
         @include breakpoint($bp-min-1601-width) {
@@ -2827,7 +2856,7 @@
       }
       .title {
         color: $gray-sky;
-        font-family: $avalon-book;
+        font-family: $fira-sans-regular;
         font-size: get-vw(20px, 1280);
         letter-spacing: 0.5px;
         line-height: 1.3;
@@ -2837,7 +2866,7 @@
       }
       .additional {
         background: none;
-        font-family: $avalon-book;
+        font-family: $fira-sans-regular;
         font-size: get-vw(12px, 1280);
         line-height: get-vw(23px, 1280);
         position: relative;
@@ -2935,7 +2964,7 @@
       }
       .title {
         color: $source-link;
-        font-family: $avalon-book;
+        font-family: $fira-sans-medium;
         font-size: get-vw(24px, 1280);
         line-height: 1.1;
         margin: 0 0 get-vw(5px, 1280);
@@ -2962,7 +2991,7 @@
       }
       .caption {
         color: $usa-articles-color;
-        font-family: $avalon-book;
+        font-family: $open-sans-regular;
         font-size: get-vw(18px, 1280);
         line-height: 1.2;
         text-overflow: ellipsis;
@@ -2991,11 +3020,9 @@
 
 %usa-show-related-top-promo {
   .usa-show-related-top-promo {
-
     height: 100%;
     position: relative;
     width: 100%;
-
     a {
       display: block;
       height: 100%;
@@ -3009,7 +3036,6 @@
         padding: 0;
       }
     }
-
     .image-block {
       left: get-vw(12px, 1280);
       margin-top: calc(#{get-vw(-49px, 1280) / 2});
@@ -3072,7 +3098,7 @@
     }
     .title {
       color: $usa-related-title;
-      font-family: $avalon-medium; //@todo add font "OpenSans Semibold"
+      font-family: $open-sans-semibold;
       font-size: get-vw(15px, 1280);
       letter-spacing: 1px;
       line-height: 1.3;
@@ -3082,7 +3108,6 @@
         font-size: 18.75px;
       }
       @include breakpoint($bp-768-width) {
-        //font-family: $avalon-demi; //@todo add font "ProximaNova Semibold"
         font-size: get-vw(28px, 640);
         white-space: normal;
       }
@@ -3100,7 +3125,6 @@
         line-height: calc(18.75px * 1.3);
       }
       @include breakpoint($bp-768-width) {
-        font-family: $tex-gyreschola-italic; //@todo add font "ProximaNova Semibold"
         font-size: get-vw(14px, 640);
         line-height: calc(#{get-vw(14px, 640)} * 1.3);
         white-space: normal;
@@ -3141,7 +3165,7 @@
     }
     .title {
       color: $usa-related-title;
-      font-family: $avalon-medium; //@todo add font "FiraSans Medium"
+      font-family: $fira-sans-medium;
       font-size: get-vw(24px, 1280);
       line-height: 1.3;
       margin-bottom: get-vw(14px, 1280);
@@ -3152,14 +3176,13 @@
       }
       @include breakpoint($bp-768-width) {
         color: $usa-related-title;
-        //font-family: $avalon-demi; //@todo add font "DIN Bold"
         font-size: get-vw(28px, 640);
         margin-bottom: 0;
       }
     }
     .additional {
       color: $usa-related-additional;
-      font-family: $avalon-medium; //@todo add font "OpenSans"
+      font-family: $open-sans-regular;
       font-size: get-vw(18px, 1280);
       line-height: 1.3;
       //height: calc(#{(get-vw(18px, 1280) * 1.3) * 4});
@@ -3170,7 +3193,6 @@
       }
       @include breakpoint($bp-768-width) {
         color: $usa-related-additional;
-        //font-family: $avalon-book; //@todo add font "ProximaNova Regular"
         font-size: get-vw(24px, 640);
         height: auto;
       }

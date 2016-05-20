@@ -1,0 +1,179 @@
+.show-new-design {
+  #usa-tve-help-link {
+    background: none;
+    right: -100%;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    .links-wrapper {
+      @include clear;
+      height: 100%;
+      width: 100%;
+    }
+
+    img {
+      opacity: 0;
+      -webkit-transition: opacity 0.4s ease-in;
+      -moz-transition: opacity 0.4s ease-in;
+      -o-transition: opacity 0.4s ease-in;
+      transition: opacity 0.4s ease-in;
+    }
+
+    .login-icon {
+      color: #ffffff;
+      cursor: pointer;
+      &:before {
+        color: #ffffff;
+        content: '\e61e';
+        display: block;
+        font-size: get-vw(20px, 1280);
+        font-family: $ico-font;
+        line-height: 1;
+        margin-left: calc(#{get-vw(-20px, 1280)}/2);
+        margin-top: calc(#{get-vw(-20px, 1280)}/2);
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 25px;
+          margin-left: calc(#{-25px}/2);
+          margin-top: calc(#{-25px}/2);
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(20px, 1024);
+          margin-left: calc(#{get-vw(-20px, 1024)}/2);
+          margin-top: calc(#{get-vw(-20px, 1024)}/2);
+        }
+      }
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    .usaTveLoginButton,
+    .usaTveLogoutButton {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+
+    .usaTveLogin,
+    .usaTveLogout {
+      border-left: 1px solid $consup-border;
+      box-sizing: border-box;
+      margin-left: auto;
+      position: relative;
+      height: 100%;
+      width: get-vw(53px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        width: 67px;
+      }
+      @include breakpoint($bp-1024-width) {
+        width: 43px;
+      }
+    }
+
+    &.signIn {
+      .usaTveLogin {
+        margin-left: auto;
+        .login-icon {
+          &:before {
+            font-size: get-vw(24px, 1280);
+            margin-left: calc(#{get-vw(-24px, 1280)}/2);
+            margin-top: calc(#{get-vw(-24px, 1280)}/2);
+            top: 50%;
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 30px;
+              margin-left: calc(#{-30px}/2);
+              margin-top: calc(#{-30px}/2);
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: 24px;
+              margin-left: calc(#{-24px}/2);
+              margin-top: calc(#{-24px}/2);
+            }
+          }
+        }
+      }
+      .usaTveLogout {
+        display: none;
+      }
+    }
+
+    &.signOut {
+      .usaTveLogout {
+        float: right;
+        margin-left: 0;
+        .login-icon {
+          &:before {
+            font-size: get-vw(20px, 1280);
+            margin-left: calc(#{get-vw(-20px, 1280)}/2);
+            margin-top: calc(#{get-vw(-20px, 1280)}/2);
+            top: 45%;
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 25px;
+              margin-left: calc(#{-25px}/2);
+              margin-top: calc(#{-25px}/2);
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: 20px;
+              margin-left: calc(#{-20px}/2);
+              margin-top: calc(#{-20px}/2);
+            }
+          }
+        }
+      }
+      .sign-out-text {
+        color: #ffffff;
+        font-size: get-vw(8px, 1280);
+        line-height: 1;
+        left: 0;
+        top: calc(45% + #{get-vw(20px, 1280)/2 + get-vw(8px, 1280)/2});
+        position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 12px;
+          top: calc(45% + (25px/2 + 11px/2));
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: 8px;
+          top: calc(45% + (20px/2) + (8px/2));
+        }
+      }
+      .usaTveLogin {
+        display: table;
+        float: left;
+        border-left: 0;
+        margin-left: 0;
+        padding-right: get-vw(20px, 1280);
+        height: get-vw(51px, 1280);
+        width: calc(100% - #{get-vw(53px, 1280)});
+        @include breakpoint($bp-min-1601-width) {
+          height: 64px;
+          padding-right: 20px;
+          width: calc(100% - 67px);
+        }
+        @include breakpoint($bp-1024-width) {
+          height: get-vw(41px, 1024);
+          padding-right: get-vw(15px, 1024);
+          width: calc(100% - 43px);
+        }
+        a {
+          display: table-cell;
+          height: 100%;
+          text-align: center;
+          vertical-align: middle;
+          width: auto;
+          img {
+            opacity: 1;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

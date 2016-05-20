@@ -85,6 +85,9 @@
       @include breakpoint($bp-min-1601-width) {
         font-size: 27.5px;
       }
+      @include breakpoint($between-769-1024) {
+        font-size: 17px;
+      }
       @include breakpoint($bp-768-width) {
         color: $usa-section-title-color;
         font-size: get-vw(30px, 640);
@@ -95,7 +98,7 @@
       color: white;
       display: block;
       font-family: $fira-sans-regular;
-      font-size: get-vw(16px, 1280);
+      font-size: get-vw(12.8px, 1280);
       letter-spacing: 0.5px;
       line-height: 1;
       padding-right: get-vw(16px, 1280);
@@ -104,9 +107,12 @@
       text-transform: uppercase;
       @include breakpoint($bp-min-1601-width) {
         bottom: 18.75px;
-        font-size: 20px;
+        font-size: 16px;
         padding-right: 20px;
         right: 20px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 11px;
       }
       @include breakpoint($bp-768-width) {
         display: none;
@@ -307,7 +313,7 @@
         }
         a {
           color: $usa-footer-color;
-          font-family: $avalon-book;
+          font-family: $roboto-medium;
           font-size: get-vw(14px, 1280);
           line-height: 1.5;
           text-decoration: none;
@@ -335,6 +341,7 @@
     .copyright {
       clear: both;
       color: $usa-footer-color;
+      font-family: $roboto-light;
       font-size: get-vw(12px, 1280);
       line-height: 1.7;
       @include breakpoint($bp-min-1601-width) {

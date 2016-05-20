@@ -96,7 +96,8 @@
              data-ng-class="{'show-section': !playerThumbnail}">
           <?php if ($is_live): ?>
             <div data-usa-player-is-live>
-              <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+              <iframe allowfullscreen="" id="videoplayer" width="100%"
+                      height="100%" frameborder="0"></iframe>
             </div>
           <?php else: ?>
             <?php print render($video); ?>
@@ -105,11 +106,15 @@
               <?php print $endcard_template; ?>
             <?php endif; ?>
             <!--  end endcart -->
-            <?php if (!empty($is_new_design)) : ?>
-              <?php print $new_design_bar; ?>
-            <?php endif; ?>
           <?php endif; ?>
         </div>
+        <!--  start new design  -->
+        <?php if (!empty($is_new_design)) : ?>
+          <div class="video-player-helper">
+            <?php print $new_design_bar; ?>
+          </div>
+        <?php endif; ?>
+        <!--  end new design  -->
       <?php else: ?>
         <div class="video-player-wrapper section-auth"
              data-ng-if="!removePlayerThumbnail">
@@ -130,8 +135,9 @@
         <div class="video-player-wrapper section-player"
              data-ng-class="{'show-section': !playerThumbnail}">
           <?php if ($is_live): ?>
-          <div data-usa-player-is-live>
-            <iframe allowfullscreen="" id="videoplayer" width="100%" height="100%" frameborder="0"></iframe>
+            <div data-usa-player-is-live>
+              <iframe allowfullscreen="" id="videoplayer" width="100%"
+                      height="100%" frameborder="0"></iframe>
             </div>
             <?php //$video = theme('usanetwork_tve_live_video', array('file' => $file)); ?>
           <?php else: ?>
@@ -141,11 +147,15 @@
               <?php print $endcard_template; ?>
             <?php endif; ?>
             <!--  end endcart -->
-            <?php if (!empty($is_new_design)) : ?>
-              <?php print $new_design_bar; ?>
-            <?php endif; ?>
           <?php endif; ?>
         </div>
+        <!--  start new design  -->
+        <?php if (!empty($is_new_design)) : ?>
+          <div class="video-player-helper">
+            <?php print $new_design_bar; ?>
+          </div>
+        <?php endif; ?>
+        <!--  end new design  -->
       <?php endif; ?>
     </div>
   </div>

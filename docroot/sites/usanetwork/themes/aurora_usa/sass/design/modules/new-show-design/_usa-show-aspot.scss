@@ -75,7 +75,7 @@
       }
       .title {
         color: #ffffff;
-        font-family: $avalon-medium;
+        font-family: $fira-sans-regular;
         font-size: get-vw(96px, 1600);
         letter-spacing: 0.1em;
         line-height: 0.88;
@@ -97,7 +97,7 @@
       }
       .aspot-description {
         color: #ffffff;
-        font-family: $avalon-medium;
+        font-family: $fira-sans-regular;
         font-size: get-vw(24px, 1280);
         letter-spacing: 0.05em;
         line-height: 1;
@@ -192,7 +192,7 @@
           background: none;
           color: #ffffff;
           display: block;
-          font-family: $avalon-medium;
+          font-family: $fira-sans-regular;
           font-size: get-vw(16px, 1280);
           letter-spacing: 0.1em;
           line-height: 1.8;
@@ -271,7 +271,7 @@
     }
     .carousel-title-block {
       background: none;
-      font-family: $avalon-medium;
+      font-family: $fira-sans-regular;
       font-size: get-vw(16px, 1280);
       line-height: get-vw(42px, 1280);
       height: get-vw(42px, 1280);

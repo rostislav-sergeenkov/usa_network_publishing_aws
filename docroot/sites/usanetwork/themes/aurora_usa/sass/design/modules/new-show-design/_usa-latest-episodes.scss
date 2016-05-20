@@ -73,7 +73,7 @@
       text-align: center;
       .caption {
         color: $usa-episodes-text;
-        font-family: $avalon-book;
+        font-family: $fira-sans-regular;
         font-size: get-vw(18px, 1280);
         text-transform: uppercase;
         @include breakpoint($bp-min-1601-width) {
@@ -85,10 +85,11 @@
       }
       .title {
         color: white;
-        font-family: $avalon-medium;
+        font-family: $fira-sans-medium;
         font-size: get-vw(30px, 1280);
         line-height: 1.1;
         text-transform: uppercase;
+        word-break: break-word;
         @include breakpoint($bp-min-1601-width) {
           font-size: 37.5px;
         }
@@ -99,7 +100,7 @@
       .additional {
         .additional-link {
           background: none;
-          font-family: $avalon-book;
+          font-family: $fira-sans-regular;
           font-size: get-vw(14px, 1280);
           margin-right: get-vw(23px, 1280);
           outline: none;

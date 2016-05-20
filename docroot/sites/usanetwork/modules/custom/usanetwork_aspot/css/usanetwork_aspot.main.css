@@ -408,6 +408,18 @@
   height: 524px;
   width: 932px;
 }
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile div[data-rel="title"],
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop div[data-rel="title"] {
+  font-family: "firasansregular", sans-serif;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile div[data-rel="aspot_description"],
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop div[data-rel="aspot_description"] {
+  font-family: "firasansregular", sans-serif;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile .aspot-draggable-cta-button,
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop .aspot-draggable-cta-button {
+  font-family: "firasansregular", sans-serif;
+}
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop div[data-rel="title"] {
   letter-spacing: 0.1em;
 }

@@ -28,6 +28,7 @@
       }
       .hashtag {
         background: none;
+        font-family: $fira-sans-regular;
         font-size: get-vw(12.8px, 1280);
         padding-right: get-vw(18px, 1280);
         @include breakpoint($bp-min-1601-width) {
@@ -408,12 +409,18 @@
           width: 100%;
         }
         .tune-in {
+          font-family: $fira-sans-regular;
           font-size: get-vw(10px, 1024);
+          letter-spacing: 0.5px;
           line-height: 2;
           text-align: center;
+          text-transform: uppercase;
           width: 100%;
           @include breakpoint($bp-min-1601-width) {
             font-size: 15.625px;
+          }
+          @include breakpoint($between-769-1024) {
+            font-size: 10px;
           }
           @include breakpoint($bp-768-width) {
             display: none;
@@ -558,9 +565,10 @@
               }
             }
             a {
+              font-family: $fira-sans-regular;
               font-size: get-vw(10px, 1024);
               height: 100%;
-              letter-spacing: 1px;
+              letter-spacing: 1.5px;
               line-height: get-vw(60px, 1280);
               outline: none;
               padding: 0 get-vw(29px, 1280);

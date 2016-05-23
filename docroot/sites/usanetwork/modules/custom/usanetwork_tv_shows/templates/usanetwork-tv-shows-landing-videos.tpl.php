@@ -4,18 +4,27 @@
  */
 ?>
 <div class="landing-page-container videos-landing-page-container">
+  <?php if (empty($is_new_design)) : ?>
   <h2 id="videos-landing-page-header" class="section-title">
     <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All videos'); ?></span>
   </h2>
+  <?php endif; ?>
   <div class="upper-menu">
+    <?php if (!empty($is_new_design)) : ?>
+      <?php if (!empty($tabs_description)): ?>
+        <div class="sorters-description show-color show-font">
+          <h1><?php print $tabs_description; ?></h1>
+        </div>
+      <?php endif; ?>
+    <?php endif; ?>
     <div class="all-items-filter item-filter">
       <?php if (!empty($video_filters)): ?>
         <div class="filter-label"><?php print !empty($video_filter_title) ? $video_filter_title : t('All videos'); ?></div>
         <ul class="filter-menu transform-filter">
           <?php foreach ($video_filters as $video_filter): ?>
             <li class="filter-item<?php if ($video_filter['active'] == TRUE): print ' active'; endif; ?>">
-              <a href="<?php print $video_filter['url']; ?>#videos-landing-page-header" data-type="<?php print $video_filter['tid']; ?>" class="no-ajax">
-                <span class="title"><?php print $video_filter['name']; ?></span> <span class="items-in">(<?php print $video_filter['items_count']; ?>)</span>
+              <a href="<?php print $video_filter['url']; ?>#videos-landing-page-header" data-type="<?php print $video_filter['tid']; ?>" class="no-ajax<?php print ($is_new_design) ? 'show-border' : '' ?>">
+                <span class="title"><?php print $video_filter['name']; ?></span> <span class="items-in<?php print ($is_new_design) ? 'show-color show-font' : '' ?>">(<?php print $video_filter['items_count']; ?>)</span>
               </a>
             </li>
           <?php endforeach; ?>
@@ -24,7 +33,12 @@
     </div>
     <div class="sorter-items item-filter">
       <?php if (!empty($video_sorters)): ?>
-        <div class="filter-label"><?php print !empty($video_sorter_title) ? $video_sorter_title : t('Newest'); ?></div>
+        <div class="filter-label">
+          <?php print !empty($video_sorter_title) ? $video_sorter_title : t('Newest'); ?>
+          <?php if (!empty($is_new_design)) : ?>
+            <span class="show-color show-font"></span>
+          <?php endif; ?>
+        </div>
         <ul class="filter-menu">
           <?php foreach ($video_sorters as $video_sorter): ?>
             <li class="filter-item sorter-item<?php if (!empty($video_sorter['order'])): print ' order-' . $video_sorter['order']; endif; ?><?php if ($video_sorter['active'] == TRUE): print ' active'; endif; ?>">
@@ -36,10 +50,12 @@
         </ul>
       <?php endif; ?>
     </div>
-    <?php if (!empty($tabs_description)): ?>
-      <div class="sorters-description">
-        <h1><?php print $tabs_description; ?></h1>
-      </div>
+    <?php if (empty($is_new_design)) : ?>
+      <?php if (!empty($tabs_description)): ?>
+        <div class="sorters-description">
+          <h1><?php print $tabs_description; ?></h1>
+        </div>
+      <?php endif; ?>
     <?php endif; ?>
   </div>
   <div class="landing-items-blocks video-items-blocks show-border ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>"

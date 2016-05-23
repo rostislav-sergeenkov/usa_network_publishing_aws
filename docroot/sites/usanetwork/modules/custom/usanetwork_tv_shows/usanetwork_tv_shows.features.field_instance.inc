@@ -2950,7 +2950,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'usanetwork_dynamic_entity_reference',
       'settings' => array(),
       'type' => 'usanetwork_dynamic_entity_reference_default',
-      'weight' => 156,
+      'weight' => 33,
     ),
   );
 
@@ -10932,7 +10932,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'urlwidget',
-      'weight' => 26,
+      'weight' => 27,
     ),
   );
 
@@ -11516,7 +11516,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         ),
       ),
       'type' => 'options_onoff',
-      'weight' => 30,
+      'weight' => 31,
     ),
   );
 
@@ -12205,6 +12205,93 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'settings' => array(),
       'type' => 'usanetwork_dynamic_entity_reference_default',
       'weight' => 143,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_show-field_show_service_logo'
+  $field_instances['node-tv_show-field_show_service_logo'] = array(
+    'bundle' => 'tv_show',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'block_cover_title' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 216,
+      ),
+      'follow_social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_show_service_logo',
+    'label' => 'Show service logo',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 26,
     ),
   );
 
@@ -17725,7 +17812,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('BCD-Spot');
   t('Base URL');
   t('Best Of Blocks');
-  
+  t('Best of items');
   t('Block title');
   t('Blog Title');
   t('CHILDREN');
@@ -17852,6 +17939,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Show alias used to generate automatic paths');
   t('Show content feed on Consumptionator page');
   t('Show content feed on TV Show page');
+  t('Show service logo');
   t('Shows Property');
   t('Social Logo');
   t('Special Features');

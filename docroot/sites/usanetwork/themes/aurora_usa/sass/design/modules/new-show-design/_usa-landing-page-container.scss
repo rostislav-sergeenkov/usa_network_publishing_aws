@@ -1,19 +1,22 @@
-body:not(.show-new-design) .landing-page-container {
-  background: $poll-back;
+.show-new-design .landing-page-container {
+  background: black;
   overflow: hidden;
   padding-top: 40px;
   position: relative;
   width: 100%;
   .upper-menu {
     @include clear();
-    padding: 0 30px;
-    background: $header-tab-back;
+    padding: 0 get-vw(16px, 1280) get-vw(12px, 1280);
+    background: black;
     -ms-transform: translateZ(0);
     -webkit-transform: translateZ(0);
     position: relative;
     transform: translateZ(0);
     z-index: 2;
-    @include breakpoint($bp-1280-width) {
+    @include breakpoint($bp-min-1601-width) {
+      padding: 0 20px 15px;
+    }
+    @include breakpoint($bp-768-width) {
       padding: 0 20px;
     }
     @include breakpoint($bp-640-width) {
@@ -32,45 +35,63 @@ body:not(.show-new-design) .landing-page-container {
     }
     .item-filter {
       .filter-label {
-        border: 1px solid $gray-light-gamma;
+        color: white;
         cursor: pointer;
-        font-size: 20px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        font-family: $avalon-medium;
-        line-height: 58px;
-        text-align: left;
+        font-family: $fira-sans-medium;
+        font-size: get-vw(18px, 1600);
+        letter-spacing: 0.5px;
+        line-height: 1.8;
         overflow: hidden;
+        padding-right: get-vw(40px, 1600);
         position: relative;
-        padding: 0 50px 0 20px;
-        color: $header-tab-text;
+        text-align: right;
         text-overflow: ellipsis;
         -o-text-overflow: ellipsis;
+        text-transform: capitalize;
         white-space: nowrap;
         width: 205px;
-        @include breakpoint($bp-1280-width) {
-          font-size: 16px;
-          line-height: 38px;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 18px;
+          padding-right: 40px;
         }
-        @include breakpoint($bp-1024-width) {
+        @include breakpoint($bp-768-width) {
+          border: 1px solid $gray-light-gamma;
+          color: $header-tab-text;
           font-size: 14px;
+          letter-spacing: 1px;
+          line-height: 38px;
+          padding: 0 50px 0 20px;
+          text-align: left;
         }
-        &:after {
-          content: "\e609";
-          color: $poll-color;
-          font-family: $ico-font;
-          font-size: 16px;
-          display: block;
-          position: absolute;
-          margin-right: -8px;
-          right: 25px;
-          top: 0;
-          z-index: 3;
+        span {
+          &:after {
+            content: "\e609";
+            color: $poll-color;
+            font-family: $ico-font;
+            font-size: 16px;
+            display: block;
+            position: absolute;
+            margin-right: -8px;
+            right: 25px;
+            top: 0;
+            z-index: 3;
+            @include breakpoint($bp-min-769-width) {
+              color: inherit;
+              font-size: get-vw(16px, 1600);
+              margin: 0;
+              right: get-vw(12px, 1600);
+            }
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 16px;
+              right: 12px;
+            }
+          }
         }
       }
       .filter-menu {
         li {
           span {
+            background: none;
             display: inline-block;
           }
         }
@@ -120,52 +141,42 @@ body:not(.show-new-design) .landing-page-container {
             z-index: 2;
           }
           li {
-            display: inline-block;
-            padding: 0;
-            border: 1px solid $gray-light-gamma;
             cursor: pointer;
-            margin-bottom: 1px;
-            margin-top: 20px;
-            margin-right: 30px;
+            display: inline-block;
+            margin: get-vw(20px, 1280) get-vw(45px,1280) 0 0;
+            padding: 0;
             &:last-child {
               margin-right: 0;
             }
-            @include breakpoint($bp-1280-width) {
-              margin-right: 20px;
-            }
-            @include breakpoint($bp-1024-width) {
-              margin-right: 8px;
+            @include breakpoint($bp-min-1601-width) {
+              margin: 25px 56.25px 0 0;
             }
             @include breakpoint($bp-768-width) {
-              margin-bottom: 0;
-              margin-top: 0;
+              margin: 0;
               overflow: hidden;
               position: relative;
               width: 100%;
-              border-width: 0;
             }
             a {
-              color: $header-tab-text;
+              color: white;
               display: block;
-              font-size: 20px;
-              font-family: $avalon-medium;
-              text-transform: uppercase;
-              line-height: 22px;
+              font-size: get-vw(18px, 1600);
+              font-family: $fira-sans-medium;
+              text-transform: capitalize;
+              letter-spacing: 0.5px;
+              line-height: 1.8;
+              outline: none;
               text-align: left;
-              padding: 18px 20px;
               text-decoration: none;
               width: 100%;
               &:hover,
               &:active {
-                background: $header-tab-back-hover;
-                color: #ffffff;
+                @include  breakpoint($bp-min-769-width) {
+                  border-bottom: 2px solid;
+                }
               }
-              @include breakpoint($bp-1280-width) {
-                padding: 8px 15px;
-                font-size: 16px;
-              }
-              @include breakpoint($bp-1024-width) {
-                font-size: 14px;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 18px;
               }
               @include  breakpoint($bp-768-width) {
                 color: #ffffff;
@@ -186,9 +197,9 @@ body:not(.show-new-design) .landing-page-container {
             }
             &.active {
               a {
-                background: $header-tab-back-hover;
-                color: #ffffff;
-                border-width: 0;
+                @include  breakpoint($bp-min-769-width) {
+                  border-bottom: 2px solid;
+                }
               }
               @include  breakpoint($bp-768-width) {
                 span {
@@ -202,8 +213,10 @@ body:not(.show-new-design) .landing-page-container {
           .filter-label {
             border-color: transparent;
             background: $footer-back;
-            &:after {
-              content: "\e60a";
+            span {
+              &:after {
+                content: "\e60a";
+              }
             }
           }
           .filter-menu {
@@ -214,11 +227,14 @@ body:not(.show-new-design) .landing-page-container {
       &.sorter-items {
         float: right;
         margin-bottom: 1px;
-        margin-top: 20px;
+        margin-top: get-vw(20px, 1280);
         position: relative;
         text-align: right;
         width: 160px;
         @include clear();
+        @include breakpoint($bp-min-1601-width) {
+          margin-top: 25px;
+        }
         @include breakpoint($bp-768-width) {
           margin-right: 5px;
           margin-top: 15px;
@@ -236,16 +252,19 @@ body:not(.show-new-design) .landing-page-container {
           }
         }
         .filter-menu {
-          background: $footer-back;
           top: 1px;
           display: none;
-          margin-top: 59px;
+          margin-top: get-vw(32.4px, 1600);
           max-height: 200px;
           overflow-y: auto;
           position: absolute;
           width: 100%;
           z-index: 2;
-          @include breakpoint($bp-1280-width) {
+          @include breakpoint($bp-min-1601-width) {
+            margin-top: 32.4px;
+          }
+          @include breakpoint($bp-768-width) {
+            background: $footer-back;
             margin-top: 39px;
           }
           li {
@@ -254,45 +273,48 @@ body:not(.show-new-design) .landing-page-container {
             width: 100%;
             &:hover, &.active {
               span {
-                color: $gray-dark-darker;
+                color: $header-tab-title;
               }
             }
             a {
               color: #ffffff;
               display: block;
-              font-size: 20px;
+              font-size: get-vw(18px, 1600);
               font-family: $avalon-medium;
               height: 100%;
               letter-spacing: 1px;
-              line-height: 32px;
-              text-align: left;
-              padding: 9px 20px;
+              line-height: 1.4;
+              text-align: right;
+              padding: get-vw(10px, 1600) get-vw(40px, 1600) get-vw(10px, 1600) get-vw(20px, 1600);
               text-decoration: none;
-              text-transform: uppercase;
+              text-transform: capitalize;
               width: 100%;
               &:hover, &.active {
-                color: $gray-dark-darker;
+                color: $header-tab-title;
               }
-              @include breakpoint($bp-1280-width) {
-                font-size: 16px;
-                line-height: 22px;
-              }
-              @include breakpoint($bp-1024-width) {
-                font-size: 14px;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 18px;
+                padding: 10px 40px 10px 20px;
               }
               @include  breakpoint($bp-768-width) {
                 font-size: 14px;
                 line-height: 14px;
+                padding: 9px 20px;
+                text-align: left;
               }
             }
           }
         }
         &.open {
           .filter-label {
-            border-color: transparent;
-            background: $footer-back;
-            &:after {
-              content: "\e60a";
+            @include  breakpoint($bp-768-width) {
+              border-color: transparent;
+              background: $footer-back;
+            }
+            span {
+              &:after {
+                content: "\e60a";
+              }
             }
           }
           .filter-menu {
@@ -303,23 +325,25 @@ body:not(.show-new-design) .landing-page-container {
     }
     .sorters-description {
       h1 {
-        color: $header-tab-text;
-        font-family: $avalon-medium;
-        width: 100%;
+        color: white;
+        font-family: $fira-sans-regular;
         margin: 0;
-        float: left;
-        line-height: 4em;
-        font-size: 18px;
-        letter-spacing: 1px;
-        @include breakpoint($bp-1280-width) {
-          font-size: 12px;
+        line-height: 1;
+        font-size: get-vw(18px, 1600);
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 18px;
         }
-        @include breakpoint($bp-640-width) {
-          display: none;
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(18px, 768);
         }
         strong {
-          font-family: $avalon-medium;
+          background: none;
+          font-family: $fira-sans-medium;
           font-weight: normal;
+          letter-spacing: 0.5px;
           text-transform: uppercase;
           &:last-child {
             text-transform: uppercase;

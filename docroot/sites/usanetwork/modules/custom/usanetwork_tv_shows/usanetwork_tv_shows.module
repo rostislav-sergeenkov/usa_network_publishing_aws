@@ -780,6 +780,26 @@ function usanetwork_tv_shows_image_default_styles() {
       ),
     ),
   );
+  $styles['591x243'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 591,
+          'height' => 243,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 591,
+          'height' => 243,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
   $styles['719x414'] = array(
     'effects' => array(
       array(
@@ -4212,7 +4232,7 @@ function usanetwork_tv_show_consumptionator_get_ymal_item($show_node) {
 /*
 * Renders block of items (default number of items in the block is 6)
  */
-function usanetwork_tv_show_consumptionator_render_related_content_items_block($data, $start_from = 0, $limit = 1) {
+function usanetwork_tv_show_consumptionator_render_related_content_items_block($data, $start_from = 0, $limit = 1, $is_new_design = FALSE) {
   if (!empty($data)) {
 
     $ad_id = intval($start_from / $limit);
@@ -4231,7 +4251,7 @@ function usanetwork_tv_show_consumptionator_render_related_content_items_block($
         );
       }
       else {
-        $theme_variables['related_items'][]['render'] = _usanetwork_tv_shows_consumptionator_render_related_content_item_default($data_item);
+        $theme_variables['related_items'][]['render'] = _usanetwork_tv_shows_consumptionator_render_related_content_item_default($data_item, $is_new_design);
       }
     }
 
@@ -4244,7 +4264,7 @@ function usanetwork_tv_show_consumptionator_render_related_content_items_block($
 /**
  * Renders default item.
  */
-function _usanetwork_tv_shows_consumptionator_render_related_content_item_default($data) {
+function _usanetwork_tv_shows_consumptionator_render_related_content_item_default($data, $is_new_design = FALSE) {
   $classes = array();
   $desktop_image = $mobile_image = '';
   $target_url = '<front>';
@@ -4262,7 +4282,11 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
 
   if (!empty($data->raw_image_uri)) {
     $desktop_image = image_style_url('921x488', $data->raw_image_uri);
-    $mobile_image = image_style_url('591x330', $data->raw_image_uri);
+    if ($is_new_design) {
+      $mobile_image = image_style_url('591x243', $data->raw_image_uri);
+    } else {
+      $mobile_image = image_style_url('591x330', $data->raw_image_uri);
+    }
   }
 
   if (!empty($data->sponsored)) {
@@ -4284,6 +4308,7 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
     'image_mobile' => $mobile_image,
     'media_icon' => $data->media_icon,
     'content_id' => isset($content_id) ? $content_id : FALSE,
+    'is_new_design' => $is_new_design,
   );
 
   return theme('usanetwork_tv_shows_consumptionator_related_item', $theme_variables);

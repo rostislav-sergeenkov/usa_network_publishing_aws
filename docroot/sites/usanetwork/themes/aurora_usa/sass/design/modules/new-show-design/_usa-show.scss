@@ -24,6 +24,14 @@
   #header-spacer {
     display: none;
   }
+  .pane-mps-midbanner {
+    padding-top: get-vw(33px, 1280);
+    text-align: center;
+    max-width: 100%;
+    @include breakpoint($bp-min-1601-width) {
+      padding-top: 41.25px;
+    }
+  }
   .usa-wrap {
     max-width: 1600px;
   }

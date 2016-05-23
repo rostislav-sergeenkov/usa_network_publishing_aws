@@ -39405,6 +39405,16 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design #header-spacer {
   display: none;
 }
+.show-new-design .pane-mps-midbanner {
+  padding-top: 2.57813vw;
+  text-align: center;
+  max-width: 100%;
+}
+@media (min-width: 1601px) {
+  .show-new-design .pane-mps-midbanner {
+    padding-top: 41.25px;
+  }
+}
 .show-new-design .usa-wrap {
   max-width: 1600px;
 }

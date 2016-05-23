@@ -39,7 +39,7 @@
       });
 
       $(document).click(function(e){
-        if (e.target.className != 'filter-label') {
+        if (e.target.className != 'filter-label' && e.target.parentElement.className != 'filter-label') {
           $('.item-filter.open').removeClass('open');
         }
       });

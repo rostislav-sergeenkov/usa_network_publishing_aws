@@ -2913,7 +2913,7 @@
         height: 251.25px;
       }
       @include breakpoint($bp-768-width) {
-        height: get-vw(314px, 640);
+        height: calc((100vw - 2*#{get-vw(40px, 640)})*0.5625);
       }
       .asset-img {
         height: 100%;
@@ -2975,6 +2975,13 @@
         @include breakpoint($bp-768-width) {
           font-size: get-vw(28px, 640);
           margin: 0;
+        }
+        a {
+          color: inherit;
+          outline: none;
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
       .additional {

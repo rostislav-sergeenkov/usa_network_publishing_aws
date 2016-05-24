@@ -719,7 +719,7 @@ body:not(.show-new-design) .consum-sidebar {
     }
   }
 }
-.consumptionator-video-page {
+body:not(.show-new-design) .consumptionator-video-page {
   &.page-full-video {
     &.admin-menu {
       @include breakpoint($bp-min-769-width) {

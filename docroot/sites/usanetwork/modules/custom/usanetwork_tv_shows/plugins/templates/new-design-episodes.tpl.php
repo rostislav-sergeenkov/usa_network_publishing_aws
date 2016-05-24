@@ -38,9 +38,9 @@
             <?php print $main['title']; ?>
           </div>
           <div class="additional">
-            <a href="#" class="additional-link show-color show-font">Amazon ></a><br>
-            <a href="#" class="additional-link show-color show-font">Itunes ></a><br>
-            <a href="#" class="additional-link show-color show-font">Hulu ></a>
+            <?php foreach ($data['#content']['links'] as $link): ?>
+              <a href="<?php print $link['url'] ?>" class="additional-link show-color show-font"><?php print $link['title'] ?> ></a><br>
+            <?php endforeach; ?>
           </div>
         </div>
       </div>

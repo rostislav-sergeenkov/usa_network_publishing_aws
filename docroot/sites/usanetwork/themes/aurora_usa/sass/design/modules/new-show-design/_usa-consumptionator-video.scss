@@ -117,15 +117,13 @@
         .usa-episode-share {
           display: inline-block;
           vertical-align: middle;
-          #gigya-share {
-            line-height: 1;
-          }
           .field-label {
             display: none;
           }
           .field-name-field-gigya-share-bar {
             margin: 0;
             padding: 0;
+            line-height: 1;
           }
           .field-type-gigya-sharebar {
             .gig-button-container {
@@ -143,38 +141,46 @@
               @include breakpoint($bp-640-width) {
                 padding-right: get-vw(10px, 640);
               }
+              & td > div {
+                font-size: 23px;
+                line-height: 1!important;
+                height: auto !important;
+                width: auto !important;
+              }
+
+              [id$='reaction0-facebook_img'] {
+                &:before {
+                  color: $usa-video-helper-facebook;
+                }
+              }
+              [id$='reaction1-twitter_img'] {
+                &:before {
+                  color: $usa-video-helper-twitter;
+                }
+              }
+              [id$='reaction2-tumblr_img'] {
+                &:before {
+                  color: $usa-video-helper-tumblr;
+                }
+              }
+              [id$='reaction3-pinterest_img'] {
+                &:before {
+                  color: $usa-video-helper-pinterest;
+                }
+              }
+              [id$='reaction4-share_img'] {
+                &:before {
+                  color: $poll-color;
+                }
+              }
+
             }
-            [id*='gigya-share-reaction'] {
-              font-size: 23px;
-              line-height: 1!important;
-              height: auto !important;
-              width: auto !important;
-            }
-          }
-          #gigya-share-reaction0-facebook_img {
-            &:before {
-              color: $usa-video-helper-facebook;
-            }
-          }
-          #gigya-share-reaction1-twitter_img {
-            &:before {
-              color: $usa-video-helper-twitter;
-            }
-          }
-          #gigya-share-reaction2-tumblr_img {
-            &:before {
-              color: $usa-video-helper-tumblr;
-            }
-          }
-          #gigya-share-reaction3-pinterest_img {
-            &:before {
-              color: $usa-video-helper-pinterest;
-            }
-          }
-          #gigya-share-reaction4-share_img {
-            &:before {
-              color: $poll-color;
-            }
+            //[id*='gigya-share-reaction'] {
+            //  font-size: 23px;
+            //  line-height: 1!important;
+            //  height: auto !important;
+            //  width: auto !important;
+            //}
           }
         }
         .usa-tve-login {
@@ -191,13 +197,12 @@
             width: 250px;
           }
           @include breakpoint($bp-1024-width) {
-            right: get-vw(-24px, 1024);
+            right: 0;
             top: get-vw(-5px, 1024);
             height: 42px;
             width: 160px;
           }
           @include breakpoint($bp-768-width) {
-            right: 0;
             top: 0;
           }
           @include breakpoint($bp-640-width) {

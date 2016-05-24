@@ -343,10 +343,11 @@
           }
         }
         &.section-auth {
-          position: absolute;
           left: 0;
           top: 0;
-          height: 100%;
+          position: absolute;
+          padding-bottom: 56.25%;
+          height: 0;
           width: 100%;
           z-index: 1;
           .auth-msg-wrap {

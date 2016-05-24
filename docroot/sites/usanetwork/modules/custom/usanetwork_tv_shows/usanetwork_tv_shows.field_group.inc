@@ -667,8 +667,8 @@ function usanetwork_tv_shows_field_group_info() {
       0 => 'field_new_design',
       1 => 'field_show_episode_block',
       2 => 'field_tvs_spec_features',
-      3 => 'field_best_of_items',
-      4 => 'group_bcd_spot',
+      3 => 'group_bcd_spot',
+      4 => 'group_best_of_section',
       5 => 'group_relevant_content',
       6 => 'group_service',
     ),
@@ -932,6 +932,7 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_service_link',
       1 => 'field_service_logo',
+      2 => 'field_show_service_logo',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

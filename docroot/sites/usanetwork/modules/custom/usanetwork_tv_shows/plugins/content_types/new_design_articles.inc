@@ -51,8 +51,8 @@ function new_design_articles_content_type_render($subtype, $conf, $args, $contex
   if ($author_uid > 0) {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node');
-    $query->propertyCondition('type', $conf['node_types']);
-    $query->fieldCondition('field_show', 'target_id', $node_show, '=');
+    $query->propertyCondition('type', 'consumpt_post');
+    $query->fieldCondition('field_show', 'target_id', $node_show->nid, '=');
     $query->propertyCondition('status', NODE_PUBLISHED);
 
     // Disable for tests.

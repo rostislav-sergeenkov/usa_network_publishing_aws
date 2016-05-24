@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -15629,25 +15629,25 @@ body:not(.show-new-design) .consum-sidebar .download-app .download-button:after 
 }
 
 @media (min-width: 769px) {
-  .consumptionator-video-page.page-full-video.admin-menu {
+  body:not(.show-new-design) .consumptionator-video-page.page-full-video.admin-menu {
     margin-top: 0px !important;
   }
 }
-.consumptionator-video-page.page-full-video .usa-wrap {
+body:not(.show-new-design) .consumptionator-video-page.page-full-video .usa-wrap {
   margin-top: 7.10153vw;
 }
 @media (min-width: 1901px) {
-  .consumptionator-video-page.page-full-video .usa-wrap {
+  body:not(.show-new-design) .consumptionator-video-page.page-full-video .usa-wrap {
     margin-top: 135px;
   }
 }
 @media (max-width: 768px) {
-  .consumptionator-video-page.page-full-video .usa-wrap {
+  body:not(.show-new-design) .consumptionator-video-page.page-full-video .usa-wrap {
     margin-top: 0;
   }
 }
 @media (min-width: 769px) {
-  .consumptionator-video-page.page-full-video .region-header {
+  body:not(.show-new-design) .consumptionator-video-page.page-full-video .region-header {
     position: fixed;
     top: 0;
     width: 100%;
@@ -15655,22 +15655,22 @@ body:not(.show-new-design) .consum-sidebar .download-app .download-button:after 
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .consumptionator-video-page.page-full-video header.sign-in {
+  body:not(.show-new-design) .consumptionator-video-page.page-full-video header.sign-in {
     height: calc(7.10153vw + 35px);
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .consumptionator-video-page.page-full-video header.sign-in ~ .usa-wrap {
+  body:not(.show-new-design) .consumptionator-video-page.page-full-video header.sign-in ~ .usa-wrap {
     margin-top: 0;
   }
 }
 @media (min-width: 641px) {
-  .consumptionator-video-page:not(.page-full-video) #topbanner {
+  body:not(.show-new-design) .consumptionator-video-page:not(.page-full-video) #topbanner {
     margin: 0 auto 10px;
     top: 5px;
   }
 }
-.consumptionator-video-page:not(.page-full-video) .companionContainer {
+body:not(.show-new-design) .consumptionator-video-page:not(.page-full-video) .companionContainer {
   margin: 0 auto;
 }
 

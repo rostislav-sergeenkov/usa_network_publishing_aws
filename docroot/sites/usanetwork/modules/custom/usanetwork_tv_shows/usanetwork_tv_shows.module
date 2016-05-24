@@ -621,6 +621,10 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       'render element' => 'data',
       'template' => 'plugins/templates/new-design-featured-elements',
     ),
+    'new_design_articles' => array(
+      'render element' => 'data',
+      'template' => 'plugins/templates/new-design-articles',
+    ),
   );
 }
 

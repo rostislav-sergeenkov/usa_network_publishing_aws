@@ -4320,7 +4320,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 @media (max-width: 768px) {
   .articles-block .articles-wrapper li .usa-articles-promo .image-block {
-    height: 49.0625vw;
+    height: calc((100vw - 2*6.25vw)*0.5625);
   }
 }
 .articles-block .articles-wrapper li .usa-articles-promo .image-block .asset-img {
@@ -4397,6 +4397,13 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
     font-size: 4.375vw;
     margin: 0;
   }
+}
+.articles-block .articles-wrapper li .usa-articles-promo .meta .title a {
+  color: inherit;
+  outline: none;
+}
+.articles-block .articles-wrapper li .usa-articles-promo .meta .title a:hover {
+  text-decoration: underline;
 }
 .articles-block .articles-wrapper li .usa-articles-promo .meta .additional {
   color: #cdcdcd;

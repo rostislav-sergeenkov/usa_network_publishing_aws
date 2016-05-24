@@ -23,7 +23,7 @@
                       <!--[if (IE 8) & (!IEMobile)]>
                       <div data-src="<?php print $item['image_desktop'] ?>"></div>
                       <![endif]-->
-                      <noscript>&amp;lt;img src="<?php print $item['image_desktop'] ?>" alt="" title="" /&amp;gt;</noscript>
+                      <noscript><img src="<?php print $item['image_desktop'] ?>" alt="" title="" /></noscript>
                     </div>
                   </div>
                 </a>

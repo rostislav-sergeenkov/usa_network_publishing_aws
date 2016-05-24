@@ -75,8 +75,8 @@ function new_design_articles_content_type_render($subtype, $conf, $args, $contex
 
         if (isset($entity_wrapper->field_post_cover)) {
           $image_data = $entity_wrapper->field_post_cover->value();
-          $out[$raw]['image_desktop'] = image_style_url('791x445', $image_data['uri']);
-          $out[$raw]['image_mobile'] = image_style_url('696x305', $image_data['uri']);
+          $out[$raw]['image_desktop'] = image_style_url('336x251', $image_data['uri']);
+          $out[$raw]['image_mobile'] = image_style_url('640x360_ndaspotm', $image_data['uri']);
         }
 
         if (isset($entity_wrapper->field_contributor)) {

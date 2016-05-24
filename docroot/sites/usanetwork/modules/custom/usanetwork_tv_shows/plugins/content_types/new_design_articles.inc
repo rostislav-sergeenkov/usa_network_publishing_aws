@@ -68,37 +68,37 @@ function new_design_articles_content_type_render($subtype, $conf, $args, $contex
         $entity_wrapper = entity_metadata_wrapper('node', $raw);
 
         if (isset($entity_wrapper->title)) {
-          $out[$raw]['title'] = l($entity_wrapper->title->value(), 'node/' . $entity_wrapper->nid->value(), array());
+          $out['items'][$raw]['title'] = l($entity_wrapper->title->value(), 'node/' . $entity_wrapper->nid->value(), array());
         }
 
-        $out[$raw]['link'] = drupal_get_path_alias('node/' . $entity_wrapper->nid->value());
+        $out['items'][$raw]['link'] = drupal_get_path_alias('node/' . $entity_wrapper->nid->value());
 
         if (isset($entity_wrapper->field_post_cover)) {
           $image_data = $entity_wrapper->field_post_cover->value();
           $out[$raw]['image_desktop'] = image_style_url('336x251', $image_data['uri']);
-          $out[$raw]['image_mobile'] = image_style_url('640x360_ndaspotm', $image_data['uri']);
+
         }
 
         if (isset($entity_wrapper->field_contributor)) {
           $author_name = $entity_wrapper->field_contributor->value();
-          $out[$raw]['author'] = $author_name->name;
+          $out['items'][$raw]['author'] = $author_name->name;
         }
 
         if (isset($entity_wrapper->created)) {
-          $out[$raw]['date'] = date('m/d/Y', $entity_wrapper->created->value());
+          $out['items'][$raw]['date'] = date('m/d/Y', $entity_wrapper->created->value());
         }
 
         if (isset($entity_wrapper->field_summary)) {
           $description = $entity_wrapper->field_summary->value();
-          $out[$raw]['description'] = strip_tags($description['value']);
+          $out['items'][$raw]['description'] = strip_tags($description['value']);
 
-          if ($out[$raw]['description'] == '') {
+          if ($out['items'][$raw]['description'] == '') {
             $description = $entity_wrapper->body->value->value();
 
             $temp = substr($description, 0, 250);
             $description = substr($temp, 0, strrpos($temp, ' '));
 
-            $out[$raw]['description'] = strip_tags($description);
+            $out['items'][$raw]['description'] = strip_tags($description);
           }
         }
       }

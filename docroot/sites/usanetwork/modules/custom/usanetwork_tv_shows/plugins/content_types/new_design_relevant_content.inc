@@ -113,7 +113,7 @@ function new_design_relevant_content_get_manual_content($node, $conf) {
     $data_item = usanetwork_promo_get_promo_content_variables($item);
     $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
     $additional_data = array(
-      'image_desktop' => image_style_url('154x131', $row_image_uri),
+      'image_desktop' => image_style_url('99x84', $row_image_uri),
       'image_mobile' => image_style_url('284x187', $row_image_uri),
     );
     $data_item = $data_item + $additional_data;

@@ -1,48 +1,30 @@
 .show-new-design {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block, #block-usanetwork-news-landing {
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
     @include clear();
     background-color: #000000;
     color: $poll-color;
     position: relative;
     width: 100%;
+    .blog-landing-list-items {
+      padding-top: get-vw(90px, 1280);
+      @include breakpoint ($bp-min-1601-width) {
+        padding-top: 135px;
+      }
+      @include breakpoint ($bp-1024-width) {
+        padding-top: get-vw(90px, 1024);
+      }
+      @include breakpoint ($bp-768-width) {
+        padding-top: get-vw(55px, 768);
+      }
+      @include breakpoint ($bp-640-width) {
+        padding-top: get-vw(55px, 640);
+      }
+    }
     .landing-list-items-one-item {
       border-top: 2px solid #ffffff; //@todo add show-color border
       overflow: auto;
       &:first-child {
         border-top: 0;
-      }
-      .upper-bar {
-        position: relative;
-        width: 100%;
-        h2 {
-          color: $usa-blog-item-title;
-          font-family: $avalon-demi;
-          font-size: get-vw(24px, 1280);
-          line-height: get-vw(90px, 1280);
-          margin: 0;
-          padding: 0 get-vw(32px, 1280);
-          text-transform: uppercase;
-          @include breakpoint ($bp-min-1601-width) {
-            font-size: 36px;
-            line-height: 135px;
-            padding: 0 40px;
-          }
-          @include breakpoint ($bp-1024-width) {
-            font-size: get-vw(24px, 1024);
-            line-height: get-vw(90px, 1024);
-            padding: 0 get-vw(33px, 1024);
-          }
-          @include breakpoint ($bp-768-width) {
-            font-size: get-vw(24px, 768);
-            line-height: get-vw(55px, 768);
-            padding: 0 get-vw(33px, 768);
-          }
-          @include breakpoint ($bp-640-width) {
-            font-size: get-vw(24px, 640);
-            line-height: get-vw(55px, 640);
-            padding: 0 get-vw(33px, 640);
-          }
-        }
       }
     }
     .list-items {

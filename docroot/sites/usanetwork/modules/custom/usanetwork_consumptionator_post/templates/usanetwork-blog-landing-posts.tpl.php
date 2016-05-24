@@ -15,9 +15,11 @@
 <div class="landing-list-items-one-item blog-landing-list-items-one-item">
   <?php if ((!$ajax_load) && (!empty($node_nid))) : ?>
     <div class="upper-bar">
-      <div class="title">
-        <h2><?php print $title; ?></h2>
-      </div>
+      <?php if (empty($is_new_design)) : ?>
+        <div class="title">
+          <h2><?php print $title; ?></h2>
+        </div>
+      <?php endif; ?>
       <?php if (!empty($filters)): ?>
         <div class="all-seasons-filter item-filter">
           <div class="filter-label"><?php print !empty($active_filter_title) ? $active_filter_title : t('All seasons'); ?></div>

@@ -158,8 +158,8 @@
           width: calc(100% - 67px);
         }
         @include breakpoint($bp-1024-width) {
-          height: get-vw(41px, 1024);
-          padding-right: get-vw(15px, 1024);
+          padding-right: 15px;
+          height: 100%;
           width: calc(100% - 43px);
         }
         a {

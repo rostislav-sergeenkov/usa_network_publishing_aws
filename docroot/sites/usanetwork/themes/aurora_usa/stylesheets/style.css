@@ -39524,6 +39524,7 @@ body.blog .view-display-id-blog_content .views-row {
   font-size: 1vw;
   letter-spacing: 0.5px;
   line-height: 1;
+  outline: none;
   padding-right: 1.25vw;
   position: absolute;
   right: 1.25vw;
@@ -39552,7 +39553,7 @@ body.blog .view-display-id-blog_content .views-row {
   content: '\e608';
   font-family: "ico-font";
   font-size: 0.9375vw;
-  line-height: 1.25vw;
+  line-height: 1;
   position: absolute;
   right: 0;
   top: 0;
@@ -39560,7 +39561,6 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1601px) {
   .show-new-design .usa-section-title > a:before {
     font-size: 15px;
-    line-height: 20px;
   }
 }
 .show-new-design .view-more {

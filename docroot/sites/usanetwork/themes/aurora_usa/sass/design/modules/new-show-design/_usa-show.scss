@@ -117,6 +117,7 @@
       font-size: get-vw(12.8px, 1280);
       letter-spacing: 0.5px;
       line-height: 1;
+      outline: none;
       padding-right: get-vw(16px, 1280);
       position: absolute;
       right: get-vw(16px, 1280);
@@ -138,13 +139,12 @@
         content: '\e608';
         font-family: $ico-font;
         font-size: get-vw(12px, 1280);
-        line-height: get-vw(16px, 1280);
+        line-height: 1;
         position: absolute;
         right: 0;
         top: 0;
         @include breakpoint($bp-min-1601-width) {
           font-size: 15px;
-          line-height: 20px;
         }
       }
     }

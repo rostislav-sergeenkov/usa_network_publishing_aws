@@ -439,6 +439,8 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
       return '';
   }
 
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
+
   $theme_variables = array(
     'items' => array(),
     'ad' => $show_ad,
@@ -447,6 +449,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
     'node_nid' => $node->nid,
     'ajax_load' => $ajax_load,
     'load_more_link' => !$ajax_load,
+    'is_new_design' => $is_new_design,
   );
 
   $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset);

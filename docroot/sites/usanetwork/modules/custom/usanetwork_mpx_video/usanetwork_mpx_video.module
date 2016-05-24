@@ -1797,7 +1797,8 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
             ? t('S') . $file_wrapper->field_mpx_season_number->value()
             : NULL,
           'episode_number' => !empty($file->field_mpx_episode_number)
-              ? t('Episode') . $file_wrapper->field_mpx_episode_number->value() : NULL,
+            ? t('Episode') . ' ' . $file_wrapper->field_mpx_episode_number->value()
+            : NULL,
           'running_time' => !empty($file->field_mpx_duration)
             ? gmdate('H:i:s', $file_wrapper->field_mpx_duration->value())
             : NULL,

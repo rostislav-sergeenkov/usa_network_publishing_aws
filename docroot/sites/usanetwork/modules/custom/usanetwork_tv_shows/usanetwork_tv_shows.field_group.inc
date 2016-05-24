@@ -117,6 +117,8 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '30',
     'children' => array(
       0 => 'field_best_of_items',
+      1 => 'field_best_of_section_link',
+      2 => 'field_best_of_section_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -402,6 +404,34 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_episodes_section|node|tv_show|form';
+  $field_group->group_name = 'group_episodes_section';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_new_design';
+  $field_group->data = array(
+    'label' => 'Episodes',
+    'weight' => '31',
+    'children' => array(
+      0 => 'field_show_episode_block',
+      1 => 'field_episodes_block_links',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-episodes-section field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_episodes_section|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_fb_settings|node|tv_show|form';
   $field_group->group_name = 'group_fb_settings';
   $field_group->entity_type = 'node';
@@ -665,12 +695,12 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '17',
     'children' => array(
       0 => 'field_new_design',
-      1 => 'field_show_episode_block',
-      2 => 'field_tvs_spec_features',
-      3 => 'group_bcd_spot',
-      4 => 'group_best_of_section',
-      5 => 'group_relevant_content',
-      6 => 'group_service',
+      1 => 'field_tvs_spec_features',
+      2 => 'group_bcd_spot',
+      3 => 'group_best_of_section',
+      4 => 'group_relevant_content',
+      5 => 'group_service',
+      6 => 'group_episodes_section',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1484,12 +1514,12 @@ function usanetwork_tv_shows_field_group_info() {
       8 => 'field_about_ymal',
       9 => 'field_tvs_show_latest_lnd_feed',
       10 => 'field_see_it_url',
-      11 => 'group_about_area',
-      12 => 'group_latest_episodes_alt',
-      13 => 'group_show_aspots',
-      14 => 'group_tvs_best_of',
-      15 => 'group_usa_tv_promo_vids',
-      16 => 'group_usa_tv_promo',
+      11 => 'group_usa_tv_promo_vids',
+      12 => 'group_usa_tv_promo',
+      13 => 'group_about_area',
+      14 => 'group_latest_episodes_alt',
+      15 => 'group_show_aspots',
+      16 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

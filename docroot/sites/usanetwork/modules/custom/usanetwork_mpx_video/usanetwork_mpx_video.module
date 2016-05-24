@@ -2949,48 +2949,50 @@ function _usa_mpx_video_clips_render() {
       $language = _usanetwork_get_field_item('file', $file, 'field_mpx_language', 'value');
       $related_videos = _usanetwork_mpx_video_get_related_videos_for_show($tv_content_node, $language);
       if (!empty($related_videos)) {
-       $filter = usanetwork_mpx_video_get_video_category($file);
-       foreach ($related_videos as $related_video) {
-         $related_video_file = file_load($related_video);
-         $published = !empty($related_video_file->mpx_video_data['status']) ? $related_video_file->mpx_video_data['status'] : NULL;
-         if ($published && usanetwork_mpx_video_get_video_category($related_video_file) === $filter) {
-           $related_video_file_wrapper = entity_metadata_wrapper('file', $related_video_file);
-           $promo_data = _usanetwork_promo_file_get_promo_lines($related_video_file);
-           if (!empty($related_video_file->field_promo_image_override)) {
-             $promo_image_url = _usanetwork_get_field_item('file', $related_video_file, 'field_promo_image_override', 'uri');
-           }
-           else {
-             $promo_image_url = usanetwork_core_api_get_content_image('file', $related_video_file);
-           }
-           $promo_link = url('file' . '/' . $related_video);
-           $promos[] = array(
-             'filename' => $related_video_file->filename,
-             'url' => $promo_link,
-             'image_url' => image_style_url('111x74', $promo_image_url),
-             'image_url_large' => image_style_url('full_episodes_633x356', $promo_image_url),
-             'caption' => !empty($promo_data['topic']) ? $promo_data['topic'] : '',
-             'title' => !empty($promo_data['title']) ? $promo_data['title'] : $related_video_file->filename,
-             'description' => !empty($promo_data['description']) ? $promo_data['description'] :
+        $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_content_node);
+        $filter = usanetwork_mpx_video_get_video_category($file);
+        foreach ($related_videos as $related_video) {
+          $related_video_file = file_load($related_video);
+          $published = !empty($related_video_file->mpx_video_data['status']) ? $related_video_file->mpx_video_data['status'] : NULL;
+          if ($published && usanetwork_mpx_video_get_video_category($related_video_file) === $filter) {
+            $related_video_file_wrapper = entity_metadata_wrapper('file', $related_video_file);
+            $promo_data = _usanetwork_promo_file_get_promo_lines($related_video_file);
+            if (!empty($related_video_file->field_promo_image_override)) {
+              $promo_image_url = _usanetwork_get_field_item('file', $related_video_file, 'field_promo_image_override', 'uri');
+            }
+            else {
+              $promo_image_url = usanetwork_core_api_get_content_image('file', $related_video_file);
+            }
+            $promo_link = url('file' . '/' . $related_video);
+            $promos[] = array(
+              'filename' => $related_video_file->filename,
+              'url' => $promo_link,
+              'image_url' => image_style_url('111x74', $promo_image_url),
+              'image_url_large' => image_style_url('full_episodes_633x356', $promo_image_url),
+//              'caption' => !empty($promo_data['topic']) ? $promo_data['topic'] : '',
+              'title' => !empty($promo_data['title']) ? $promo_data['title'] : $related_video_file->filename,
+              'description' => !empty($promo_data['description']) ? $promo_data['description'] :
                  (!empty($related_video_file->field_mpx_description) ? $related_video_file_wrapper->field_mpx_description->value() : ''),
-             'active' => ($related_video_file->fid === $file->fid) ? TRUE : FALSE,
-             'icon_type' => usanetwork_core_api_get_media_icon('file', $related_video_file->fid),
-           );
-         }
-       }
-       if (!empty($promos)) {
-         $theme_variables = array(
-           'promos' => $promos,
-           'video_type' => ($tv_content_node->type == 'tv_show')
-             ? (!empty($filter) ? $filter : t('Clips'))
-             : t('Movies'),
-           'more_items_url' => ($tv_content_node->type == 'tv_show')
-             ? l(t('View all videos'), 'node/' . $tv_content_node->nid . '/videos')
-             : l(t('View all movies'), 'movies'),
-         );
-         return theme('usanetwork_mpx_video_clips', $theme_variables);
-       }
-     }
-   }
+              'active' => ($related_video_file->fid === $file->fid) ? TRUE : FALSE,
+              'icon_type' => usanetwork_core_api_get_media_icon('file', $related_video_file->fid),
+            );
+          }
+        }
+        if (!empty($promos)) {
+          $theme_variables = array(
+            'promos' => $promos,
+            'video_type' => ($tv_content_node->type == 'tv_show')
+              ? (!empty($filter) ? $filter : t('Clips'))
+              : t('Movies'),
+            'more_items_url' => ($tv_content_node->type == 'tv_show')
+              ? l(t('View all videos'), 'node/' . $tv_content_node->nid . '/videos')
+              : l(t('View all movies'), 'movies'),
+            'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
+          );
+          return theme('usanetwork_mpx_video_clips', $theme_variables);
+        }
+      }
+    }
   }
   return '';
 }
@@ -3125,8 +3127,9 @@ function usanetwork_mpx_video_related_content_block() {
           'usanetwork_' . $node->type . '_offset' => !empty($you_may_also_like_item) ? -1 : 0,
         ), 'setting');
 
+        $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
         $function = 'usanetwork_' . $node->type . '_consumptionator_render_related_content_items_block';
-        $block_of_items = $function($related_content);
+        $block_of_items = $function($related_content, 0, 1, $is_new_design);
 
         $load_more_link =  usanetwork_related_content_is_load_more_link($related_content, USA_TV_SHOW_RELATED_ITEMS_ON_PAGE);
         return theme('usanetwork_' . $node->type . '_consumptionator_related_items_container', array(
@@ -3135,6 +3138,7 @@ function usanetwork_mpx_video_related_content_block() {
           'show_nid' => $node->nid,
           'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
           'file_fid' => $content->fid,
+          'new_design' => isset($is_new_design) ? $is_new_design : NULL,
         ));
       }
     }

@@ -5,16 +5,10 @@
 ?>
 <div class="usa-helper-top">
   <div class="usa-episode-info">
-    <span class="season-number">
-      <?php if (!empty($season_number)) : ?><?php print $season_number; ?><?php endif; ?>
-    </span>
-    <span class="episode-number">
-      <?php if (!empty($episode_number)) : ?><?php print $episode_number; ?><?php endif; ?>
-    </span>
+    <span class="season-number"><?php if (!empty($season_number)) : ?><?php print $season_number; ?><?php endif; ?></span>
+    <span class="episode-number"><?php if (!empty($episode_number)) : ?><?php print $episode_number; ?><?php endif; ?></span>
     <span class="delimiter"><i class="show-color"></i></span>
-    <span class="running-time">
-      <?php if (!empty($running_time)) : ?><?php print $running_time; ?><?php endif; ?>
-    </span>
+    <span class="running-time"><?php if (!empty($running_time)) : ?><?php print $running_time; ?><?php endif; ?></span>
   </div>
   <div class="usa-episode-share">
     <?php if (!empty($sharebar)) : ?><?php print $sharebar; ?><?php endif; ?>

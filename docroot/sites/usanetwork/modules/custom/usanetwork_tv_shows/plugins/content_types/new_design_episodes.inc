@@ -25,6 +25,7 @@ $plugin = array(
  */
 function new_design_episodes_content_type_render($subtype, $conf, $args, $context) {
   $node = $context->data;
+  $node_wrapper = entity_metadata_wrapper('node', $node);
   $block = new stdClass();
   $theme_variables = array();
 
@@ -36,7 +37,9 @@ function new_design_episodes_content_type_render($subtype, $conf, $args, $contex
       $theme_variables['carousel_items'] = $episodes['carousel_items'];
       $theme_variables['title'] = t('Episodes');
       $theme_variables['link'] = l(t('View more'), 'node/' . $node->nid . '/episodes', array('attributes' => array('class' => 'view-more-link')));
-
+      foreach ($node_wrapper->field_episodes_block_links->value() as $link) {
+        $theme_variables['links'][] = $link;
+      }
       $block->content = array(
         '#theme' => 'new_design_episodes',
         '#content' => $theme_variables,

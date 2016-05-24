@@ -105,7 +105,7 @@ function new_design_articles_content_type_render($subtype, $conf, $args, $contex
     }
   }
 
-  $out['view_more'] = drupal_get_path_alias('node/' . $node_show->nid . '/blog');
+  $out['view_more'] = url('node/' . $node_show->nid . '/blog');
 
   $block = new stdClass();
   $block->content = array(

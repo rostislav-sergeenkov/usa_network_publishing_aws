@@ -17,36 +17,110 @@
       @include breakpoint($bp-min-1601-width) {
         padding: 0 20px;
       }
-      @include breakpoint($bp-1024-width) {
+      @include breakpoint($bp-768-width) {
         height: auto;
       }
       .consum-sidebar {
-        float: none;
-        height: 100%;
-        position: absolute;
-        right: get-vw(16px, 1280);
-        top: 0;
-        width: calc(100% - 62.5vw - 2*#{get-vw(16px, 1280)} - #{get-vw(24px, 1280)});
+        @include breakpoint($bp-min-769-width) {
+          float: none;
+          height: 100%!important;
+          position: absolute;
+          right: get-vw(16px, 1280);
+          top: 0;
+          width: calc(100% - 62.5vw - 2*#{get-vw(16px, 1280)} - #{get-vw(24px, 1280)});
+        }
         @include breakpoint($bp-min-1601-width) {
           width: calc(100% - 1000px - 40px - 30px);
         }
-        @include breakpoint($bp-768-width) {
-          position: relative;
-          right: auto;
-          width: 100%;
-        }
         .items-block {
-          height: 100%;
+          @include breakpoint($bp-min-769-width) {
+            height: 100%;
+          }
+        }
+        .items-block-title {
+          @include breakpoint($bp-min-769-width) {
+            border-bottom: 0;
+            height: auto;
+            line-height: 1;
+            padding: get-vw(15px, 1280) get-vw(15px, 1280) 0 get-vw(15px, 1280);
+          }
+          @include breakpoint($bp-min-1601-width) {
+            padding: 18.75px 18.75px 0 18.75px;
+          }
+          h2 {
+            @include breakpoint($bp-min-769-width) {
+              font-size: get-vw(15px, 1280);
+              line-height: 1;
+              width: 100%;
+            }
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 18.75px;
+            }
+          }
+        }
+        .more-items {
+          @include breakpoint($between-769-1024) {
+            background: black!important;
+            bottom: 0;
+            display: block;
+            height: auto;
+            right: auto;
+            top: auto;
+            width: 100%;
+          }
+          a {
+            @include breakpoint($bp-min-769-width) {
+              display: block;
+              font-size: get-vw(15px, 1280);
+              line-height: get-vw(40px, 1280);
+              max-width: 100%;
+              padding: 0 get-vw(25px, 1280);
+              text-align: center;
+              text-decoration: none;
+            }
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 18.75px;
+              line-height: 50px;
+              padding: 0 31.25px;
+            }
+            &:after {
+              @include breakpoint($bp-min-769-width) {
+                display: inline-block;
+                font-size: get-vw(10px, 1280);
+                line-height: 1;
+                margin-left: get-vw(8px, 1280);
+                margin-top: get-vw(-5px, 1280);
+                position: relative;
+              }
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 12.5px;
+                margin-left: 10px;
+                margin-top: -6.25px;
+              }
+            }
+          }
         }
         .episodes-list-slider {
           &.horizontal {
-            @include breakpoint($between-769-1024) {
+            @include breakpoint($bp-min-769-width) {
               display: none;
             }
           }
           &.vertical {
-            @include breakpoint($between-769-1024) {
+            @include breakpoint($bp-min-769-width) {
               display: block;
+              height: calc(100% - #{get-vw(87.5px, 1600)} - 2px);
+            }
+            @include breakpoint($bp-min-1601-width) {
+              height: calc(100% - 87.5px - 2px);
+            }
+            li {
+              @include breakpoint($bp-min-769-width) {
+                height: get-vw(105px, 1280);
+              }
+              @include breakpoint($bp-min-1601-width) {
+                height: 131.25px;
+              }
             }
           }
         }

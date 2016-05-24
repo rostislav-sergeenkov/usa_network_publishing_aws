@@ -45338,42 +45338,126 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     padding: 0 20px;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .show-new-design.consumptionator-video-page .video-block {
     height: auto;
   }
 }
-.show-new-design.consumptionator-video-page .video-block .consum-sidebar {
-  float: none;
-  height: 100%;
-  position: absolute;
-  right: 1.25vw;
-  top: 0;
-  width: calc(100% - 62.5vw - 2*1.25vw - 1.875vw);
+@media (min-width: 769px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar {
+    float: none;
+    height: 100% !important;
+    position: absolute;
+    right: 1.25vw;
+    top: 0;
+    width: calc(100% - 62.5vw - 2*1.25vw - 1.875vw);
+  }
 }
 @media (min-width: 1601px) {
   .show-new-design.consumptionator-video-page .video-block .consum-sidebar {
     width: calc(100% - 1000px - 40px - 30px);
   }
 }
-@media (max-width: 768px) {
-  .show-new-design.consumptionator-video-page .video-block .consum-sidebar {
-    position: relative;
-    right: auto;
+@media (min-width: 769px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .items-block {
+    height: 100%;
+  }
+}
+@media (min-width: 769px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .items-block-title {
+    border-bottom: 0;
+    height: auto;
+    line-height: 1;
+    padding: 1.17188vw 1.17188vw 0 1.17188vw;
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .items-block-title {
+    padding: 18.75px 18.75px 0 18.75px;
+  }
+}
+@media (min-width: 769px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .items-block-title h2 {
+    font-size: 1.17188vw;
+    line-height: 1;
     width: 100%;
   }
 }
-.show-new-design.consumptionator-video-page .video-block .consum-sidebar .items-block {
-  height: 100%;
+@media (min-width: 1601px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .items-block-title h2 {
+    font-size: 18.75px;
+  }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .more-items {
+    background: black !important;
+    bottom: 0;
+    display: block;
+    height: auto;
+    right: auto;
+    top: auto;
+    width: 100%;
+  }
+}
+@media (min-width: 769px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .more-items a {
+    display: block;
+    font-size: 1.17188vw;
+    line-height: 3.125vw;
+    max-width: 100%;
+    padding: 0 1.95313vw;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .more-items a {
+    font-size: 18.75px;
+    line-height: 50px;
+    padding: 0 31.25px;
+  }
+}
+@media (min-width: 769px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .more-items a:after {
+    display: inline-block;
+    font-size: 0.78125vw;
+    line-height: 1;
+    margin-left: 0.625vw;
+    margin-top: -0.39063vw;
+    position: relative;
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .more-items a:after {
+    font-size: 12.5px;
+    margin-left: 10px;
+    margin-top: -6.25px;
+  }
+}
+@media (min-width: 769px) {
   .show-new-design.consumptionator-video-page .video-block .consum-sidebar .episodes-list-slider.horizontal {
     display: none;
   }
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) {
   .show-new-design.consumptionator-video-page .video-block .consum-sidebar .episodes-list-slider.vertical {
     display: block;
+    height: calc(100% - 5.46875vw - 2px);
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .episodes-list-slider.vertical {
+    height: calc(100% - 87.5px - 2px);
+  }
+}
+@media (min-width: 769px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .episodes-list-slider.vertical li {
+    height: 8.20313vw;
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design.consumptionator-video-page .video-block .consum-sidebar .episodes-list-slider.vertical li {
+    height: 131.25px;
   }
 }
 .show-new-design.consumptionator-video-page .video-block .player-wrapper {

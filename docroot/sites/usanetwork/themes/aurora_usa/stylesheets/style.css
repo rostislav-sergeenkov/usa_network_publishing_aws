@@ -39471,15 +39471,23 @@ body.blog .view-display-id-blog_content .views-row {
   height: 29px;
   left: 50%;
   margin-left: -121px;
+  padding: 4px;
   position: absolute;
+  text-align: center;
   width: 242px;
 }
 @media (max-width: 768px) {
   .show-new-design .usa-section-title.sponsored-enable .sponsored {
     height: 33px;
     margin-left: -141px;
+    padding: 6px;
     width: 282px;
   }
+}
+.show-new-design .usa-section-title.sponsored-enable .sponsored img {
+  display: inline;
+  max-height: 80%;
+  max-width: 90%;
 }
 .show-new-design .usa-section-title .title {
   color: white;

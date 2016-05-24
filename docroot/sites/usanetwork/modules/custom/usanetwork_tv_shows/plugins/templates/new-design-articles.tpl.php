@@ -8,7 +8,7 @@
     <div class="articles-wrapper">
       <div class="usa-section-title show-border sponsored-enable">
         <h2 class="title">Articles</h2>
-        <div class="sponsored show-color"><?php print $data['#content']['logo'] ?></div>
+        <div class="sponsored show-color"><img src="<?php print $data['#content']['logo'] ?>" alt="" /></div>
       </div>
       <div class="articles-content">
         <ul>

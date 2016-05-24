@@ -71,12 +71,20 @@
         height: 29px;
         left: 50%;
         margin-left: -121px;
+        padding: 4px;
         position: absolute;
+        text-align: center;
         width: 242px;
         @include breakpoint($bp-768-width) {
           height: 33px;
           margin-left: -141px;
+          padding: 6px;
           width: 282px;
+        }
+        img {
+          display: inline;
+          max-height: 80%;
+          max-width: 90%;
         }
       }
     }

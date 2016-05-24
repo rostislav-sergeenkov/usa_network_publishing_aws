@@ -4,7 +4,7 @@
  */
 ?>
 <div class="items-block clips-block">
-  <div class="items-block-title clips-block-title">
+  <div class="items-block-title clips-block-title<?php print !empty($new_design) ? ' show-color show-font' : ''; ?>">
     <h2><?php print !empty($video_type) ? $video_type : '';?></h2>
   </div>
   <?php if (!empty($promos) && is_array($promos)): ?>
@@ -20,11 +20,18 @@
                 <div class="meta-wrapper">
                   <div class="meta-wrapper-inner">
                     <div class="meta">
+                      <?php if (!empty($new_design)) : ?>
+                        <?php if (!empty($promo['description'])): ?>
+                          <div class="additional"><?php print $promo['description']; ?></div>
+                        <?php endif; ?>
+                      <?php endif; ?>
                       <?php if (!empty($promo['title'])): ?>
                         <div class="title"><?php print $promo['title']; ?></div>
                       <?php endif; ?>
-                      <?php if (!empty($promo['description'])): ?>
-                        <div class="additional"><?php print $promo['description']; ?></div>
+                      <?php if (empty($new_design)) : ?>
+                        <?php if (!empty($promo['description'])): ?>
+                          <div class="additional"><?php print $promo['description']; ?></div>
+                        <?php endif; ?>
                       <?php endif; ?>
                     </div>
                   </div>
@@ -46,11 +53,18 @@
                   <div class="meta-wrapper-inner">
                     <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'video-icon'; ?>"></div>
                     <div class="meta">
+                      <?php if (!empty($new_design)) : ?>
+                        <?php if (!empty($promo['description'])): ?>
+                          <div class="additional"><?php print $promo['description']; ?></div>
+                        <?php endif; ?>
+                      <?php endif; ?>
                       <?php if (!empty($promo['title'])): ?>
                         <div class="title"><?php print $promo['title']; ?></div>
                       <?php endif; ?>
-                      <?php if (!empty($promo['description'])): ?>
-                        <div class="additional"><?php print $promo['description']; ?></div>
+                      <?php if (empty($new_design)) : ?>
+                        <?php if (!empty($promo['description'])): ?>
+                          <div class="additional"><?php print $promo['description']; ?></div>
+                        <?php endif; ?>
                       <?php endif; ?>
                     </div>
                   </div>
@@ -70,6 +84,6 @@
     </div>
   <?php endif; ?>
 </div>
-<div class="more-items more-clips show-color">
+<div class="more-items more-clips <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
   <?php if (!empty($more_items_url)): print $more_items_url; endif;?>
 </div>

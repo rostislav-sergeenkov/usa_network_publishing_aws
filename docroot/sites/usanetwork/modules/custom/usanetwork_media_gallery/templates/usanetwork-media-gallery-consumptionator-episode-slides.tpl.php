@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="items-block galleries-thumbs-block">
-    <div class="items-block-title galleries-block-title">
+    <div class="items-block-title galleries-block-title<?php print !empty($new_design) ? ' show-color show-font' : ''; ?>">
       <?php if (!empty($block_title)): ?>
         <h2><?php print $block_title; ?></h2>
       <?php endif; ?>
@@ -60,7 +60,7 @@
   </div>
   <!-- change link to special photo page for show-->
   <?php if (!empty($link)): ?>
-    <div class="more-items more-photos show-color">
+    <div class="more-items more-photos <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
       <a href="<?php print $link; ?>"><?php print t('View all photos'); ?></a>
     </div>
   <?php endif; ?>

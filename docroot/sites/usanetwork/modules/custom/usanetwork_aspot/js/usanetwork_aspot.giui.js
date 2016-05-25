@@ -30,7 +30,8 @@
     draggableElementsData = Object.keys(aspot_elements);
     mainBlock = $('#' + allParams.mainBlockId);
     bgOffsetBlock = $('#edit-field-aspot-preview-bg-offset');
-    aspotPreviewBlock = mainBlock.find('[id^=edit-field-aspot-enabled-].form-wrapper');
+    // aspotPreviewBlock = mainBlock.find('[id^=edit-field-aspot-enabled-].form-wrapper');
+    aspotPreviewBlock = $('#' + allParams.aspotPreviewBlockId);
     aspotElemCheckboxes = aspotPreviewBlock.find('.form-checkboxes input.form-checkbox');
     pageName = allParams.pageName;
     isShowBgOffset = allParams.showBgOffset;
@@ -292,7 +293,7 @@
       enableDraggableElem: function () {
         var draggableOptions = {
           grid: [1, 1],
-          appendTo: '#edit-field-aspot-enabled-gi',
+          appendTo: '#' + allParams.aspotPreviewBlockId,
           containment: "parent",
           //snap: true,
           cursor: "move",
@@ -553,6 +554,10 @@
             bgPreviewingBlock = $('#' + bgPreviewingBlockId);
 
         usa_debug('save data ' + pageName);
+
+        if ($(mainBlock).css('display') == 'none') {
+          return;
+        }
 
         $.each(draggableElements, function (index, itemElement) {
 
@@ -1012,6 +1017,7 @@
           defaultFontSize: aspotSettings.defaultFontSettings.homePage,
           defaultElemPosition: aspotSettings.defaultElemPosition.aspot_elements,
           mainBlockId: 'edit-group_usa_aspot_ui',
+          aspotPreviewBlockId: 'edit-field-aspot-enabled-gi',
           pageName: 'homepage',
           showBgOffset: true // false default value
         };
@@ -1025,6 +1031,7 @@
           defaultFontSize: aspotSettings.defaultFontSettings.showPage,
           defaultElemPosition: aspotSettings.defaultElemPosition.tvs_aspot_elements,
           mainBlockId: 'edit-group_usa_tv_aspot_ui',
+          aspotPreviewBlockId: 'edit-field-aspot-enabled-tgi',
           pageName: 'showpage',
           showBgOffset: false // false default value
         };

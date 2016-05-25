@@ -1419,7 +1419,7 @@ function _usanetwork_microsite_define_videoplayer($file) {
   $player_pid = $player_info['player_pid'];
 
   $pdk_version = USA_TVE_PDK_VERSION;
-  $pdk = variable_get('usanetwork_player_url_pdk', '');
+  $pdk = variable_get('usanetwork_page_url_pdk', '');
   if (!empty($pdk)) {
     $pdk_version = $pdk;
   }

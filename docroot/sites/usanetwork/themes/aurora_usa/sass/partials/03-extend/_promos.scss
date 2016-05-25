@@ -1912,6 +1912,7 @@
       vertical-align: middle;
       width: 100%;
       .caption {
+        background: none;
         font-size: get-vw(22px, 1901);
         line-height: get-vw(30px, 1901);
         @include breakpoint($bp-min-1901-width) {
@@ -3304,5 +3305,72 @@
     }
   }
 }
+
+%usa-carousel-horizontal-promo {
+  .usa-carousel-horizontal-promo {
+    .asset-img {
+      height: 100%;
+      @include breakpoint($bp-768-width) {
+        max-width: 255px;
+      }
+      @include breakpoint($bp-640-width) {
+        max-width: 100%;
+        height: calc((100vw - 2*#{get-vw(40px, 640)})*0.5625);
+        width: 100%;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .meta-wrapper {
+      bottom: 0;
+      height: auto;
+      left: 0;
+      max-height: 100%;
+      overflow: hidden;
+      padding: get-vw(18px, 768) get-vw(20px, 768);
+      position: absolute;
+      width: 100%;
+      @include breakpoint($bp-640-width) {
+        bottom: auto;
+        left: auto;
+        padding: get-vw(15px, 640) get-vw(20px, 640) 0;
+        position: relative;
+      }
+    }
+    .meta-wrapper-inner {
+      height: 100%;
+      position: relative;
+      width: 100%;
+    }
+    .meta {
+      overflow: hidden;
+      width: 100%;
+      .additional {
+        color: $usa-episodes-text;
+        font-size: get-vw(16px, 768);
+        line-height: 1.3;
+        @include breakpoint($bp-640-width) {
+          font-size: get-vw(18px, 640);
+        }
+      }
+      .title {
+        color: white;
+        font-size: get-vw(16px, 768);
+        line-height: 1.3;
+        @include breakpoint($bp-640-width) {
+          font-size: get-vw(24px, 640);
+        }
+      }
+    }
+  }
+}
+
 
 

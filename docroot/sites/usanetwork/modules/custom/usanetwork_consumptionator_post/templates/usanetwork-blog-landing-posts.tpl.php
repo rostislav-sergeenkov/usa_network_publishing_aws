@@ -34,7 +34,7 @@
     </div>
   <?php endif; ?>
   <?php if (!empty($items)): ?>
-    <div class="list-items">
+    <div class="list-items<?php print (!empty($is_new_design)) ?  ' show-border' : ''; ?>">
       <?php foreach ($items as $item) : ?>
         <?php print $item; ?>
       <?php endforeach; ?>

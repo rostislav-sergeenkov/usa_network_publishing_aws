@@ -370,12 +370,14 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
       'posts' => !empty($rendered_items) ? $rendered_items : array(),
       'advert_block' => isset($advert) ? $advert : NULL,
       'block_title' => (is_numeric($show_id))
-        ? (!empty($show_blog_title)
-          ? $show_blog_title
-          : t('@show_name blog', array('@show_name' => $show_node->title)))
+        ? (($is_new_design)
+          ? t('Latest Articles')
+          : ((!empty($show_blog_title)
+            ? $show_blog_title
+            : t('@show_name blog', array('@show_name' => $show_node->title)))))
         : t('Latest News'),
       'posts_landing_link' => (is_numeric($show_id))
-        ? l(t('View all posts'), 'node/' . $show_id . '/blog' . $blog_url)
+        ? l((($is_new_design) ? t('View all Articles') : t('View all posts')), 'node/' . $show_id . '/blog' . $blog_url)
         : l(t('View all news'), 'news'),
       'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
     );

@@ -7,7 +7,7 @@
   }
 }
 
-.consumptionator-video-page {
+body:not(.show-new-design).consumptionator-video-page {
   .video-block {
     .player-wrapper {
       float: none !important;
@@ -89,7 +89,7 @@
   }
 }
 
-.consumptionator-page, .page-videos-live {
+body:not(.show-new-design).consumptionator-page, .page-videos-live {
   .video-block {
     @include clear;
     margin: 0;

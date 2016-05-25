@@ -4,7 +4,7 @@
  */
 ?>
 <div class="items-block clips-block">
-  <div class="items-block-title clips-block-title<?php print !empty($new_design) ? ' show-color show-font' : ''; ?>">
+  <div class="items-block-title clips-block-title<?php print !empty($new_design) ? ' show-color show-font show-border' : ''; ?>">
     <h2><?php print !empty($video_type) ? $video_type : '';?></h2>
   </div>
   <?php if (!empty($promos) && is_array($promos)): ?>
@@ -46,12 +46,19 @@
       <ul class="slider-horizontal">
         <?php foreach($promos as $promo):?>
           <li class="slide-item">
-            <div class="node node-usanetwork-promo aspot-carousel-promo<?php print ($promo['active'] == true) ? ' active show-border' : '';?>">
+            <div class="node node-usanetwork-promo <?php print (!empty($new_design)) ?  'usa-carousel-horizontal-promo' : 'aspot-carousel-promo'; ?><?php print ($promo['active'] == true) ? ' active show-border' : '';?>">
               <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
+                <?php if (!empty($promo['image_url_large'])): ?>
+                  <div class="asset-img"><img src="<?php print $promo['image_url_large'];?>" alt=""></div>
+                <?php endif; ?>
                 <div class="meta-wrapper">
-                  <div class="meta-back"></div>
+                  <?php if (empty($new_design)) : ?>
+                    <div class="meta-back"></div>
+                  <?php endif; ?>
                   <div class="meta-wrapper-inner">
-                    <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'video-icon'; ?>"></div>
+                    <?php if (empty($new_design)) : ?>
+                      <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'video-icon'; ?>"></div>
+                    <?php endif; ?>
                     <div class="meta">
                       <?php if (!empty($new_design)) : ?>
                         <?php if (!empty($promo['description'])): ?>
@@ -69,9 +76,6 @@
                     </div>
                   </div>
                 </div>
-                <?php if (!empty($promo['image_url_large'])): ?>
-                  <div class="asset-img"><img src="<?php print $promo['image_url_large'];?>" alt=""></div>
-                <?php endif; ?>
               </a>
             </div>
           </li>

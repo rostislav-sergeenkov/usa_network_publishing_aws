@@ -136,6 +136,26 @@ function usanetwork_mpx_video_image_default_styles() {
       ),
     ),
   );
+  $styles['145x80'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 145,
+          'height' => 80,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 145,
+          'height' => 80,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
   return $styles;
 }
 
@@ -2967,7 +2987,7 @@ function _usa_mpx_video_clips_render() {
             $promos[] = array(
               'filename' => $related_video_file->filename,
               'url' => $promo_link,
-              'image_url' => image_style_url('111x74', $promo_image_url),
+              'image_url' => (!empty($is_new_design)) ? image_style_url('145x80', $promo_image_url) : image_style_url('111x74', $promo_image_url),
               'image_url_large' => image_style_url('full_episodes_633x356', $promo_image_url),
 //              'caption' => !empty($promo_data['topic']) ? $promo_data['topic'] : '',
               'title' => !empty($promo_data['title']) ? $promo_data['title'] : $related_video_file->filename,
@@ -2985,7 +3005,7 @@ function _usa_mpx_video_clips_render() {
               ? (!empty($filter) ? $filter : t('Clips'))
               : t('Movies'),
             'more_items_url' => ($tv_content_node->type == 'tv_show')
-              ? l(t('View all videos'), 'node/' . $tv_content_node->nid . '/videos')
+              ? l(($is_new_design) ? t('View all videos <span class="show-color show-font"></span>') : t('View all videos'), 'node/' . $tv_content_node->nid . '/videos', array('html' => TRUE))
               : l(t('View all movies'), 'movies'),
             'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
           );

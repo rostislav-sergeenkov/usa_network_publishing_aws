@@ -413,6 +413,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       $show_nid = $node_wrapper->field_show->nid->value();
       $gallery_type = $node_wrapper->field_gallery_type->value();
       $gallery_field_season_id_value = _usanetwork_get_field_item('node', $node, 'field_season', 'target_id');
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_nid);
       if (!empty($gallery_field_season_id_value)) {
         $tv_season_node = node_load($gallery_field_season_id_value);
         $season_id = _usanetwork_get_field_item('node', $tv_season_node, 'field_season_id', 'value');
@@ -475,6 +476,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       'slides_horizontal' => !empty($rendered_items['slides_horizontal']) ? $rendered_items['slides_horizontal'] : '',
       'ad' => isset($advert) ? $advert : NULL,
       'link' => isset($show_nid) ? url('node/' . $show_nid . '/photos') : NULL,
+      'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
     ));
   }
 }
@@ -642,9 +644,11 @@ function _usanetwork_media_gallery_related_content_block() {
       }
       $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_content_node);
 
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_content_node);
+
       if (!empty($related_content)) {
         $function = 'usanetwork_media_gallery_output_' . $tv_content_node->type . '_related_content';
-        return $function($tv_content_node, $related_content, $content);
+        return $function($tv_content_node, $related_content, $content, $is_new_design);
       }
     }
   }
@@ -656,8 +660,8 @@ function _usanetwork_media_gallery_related_content_block() {
  * @param $related_content
  * @return string
  */
-function usanetwork_media_gallery_output_tv_show_related_content($tv_show_node, $related_content, $content) {
-  $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content);
+function usanetwork_media_gallery_output_tv_show_related_content($tv_show_node, $related_content, $content, $is_new_design) {
+  $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, 0, 1, $is_new_design);
   $load_more_link = &drupal_static('load_more_link');
   $load_more_link = TRUE;
   return theme('usanetwork_tv_show_consumptionator_related_items_container', array(

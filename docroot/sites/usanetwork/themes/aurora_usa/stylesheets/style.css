@@ -4852,6 +4852,11 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   position: relative;
   width: 100%;
 }
+@media (max-width: 640px) {
+  .show-new-design .consum-sidebar .episodes-list-slider.horizontal li .usa-carousel-horizontal-promo .meta-wrapper-inner {
+    height: auto;
+  }
+}
 .show-new-design .consum-sidebar .episodes-list-slider.horizontal li .usa-carousel-horizontal-promo .meta {
   overflow: hidden;
   width: 100%;

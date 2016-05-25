@@ -3348,6 +3348,9 @@
       height: 100%;
       position: relative;
       width: 100%;
+      @include breakpoint($bp-640-width) {
+        height: auto;
+      }
     }
     .meta {
       overflow: hidden;

@@ -4,6 +4,97 @@
     overflow: hidden;
     position: relative;
     width: 100%;
+    .consum-sidebar {
+      .items-block {
+        .episodes-list-slider {
+          &.horizontal {
+            @include breakpoint($bp-640-width) {
+              li {
+                background: $consum-carousel-even;
+                height: 75px;
+                position: relative;
+                width: 100%!important;
+                &:nth-child(odd) {
+                  background: $consum-carousel-odd;
+                }
+                &:nth-child(even) {
+                  background: $consum-carousel-even;
+                }
+                > div {
+                  height: 100%;
+                  width: 100%;
+                }
+                a {
+                  height: 100%;
+                  width: 100%;
+                }
+                .asset-img {
+                  height: 50px;
+                  left: 4%;
+                  margin-top: -25px;
+                  position: absolute;
+                  top: 50%;
+                  width: 75px;
+                  &.active {
+                    border-left: 7px solid;
+                  }
+                  img {
+                    height: 100%;
+                    width: 100%;
+                  }
+                  & ~ .meta-wrapper {
+                    .meta {
+                      padding-left: calc(8% + 75px);
+                    }
+                  }
+                }
+                .meta-wrapper {
+                  background: none;
+                  height: 100%;
+                  width: 100%;
+                  .meta-wrapper-inner {
+                    display: table;
+                    height: 100%;
+                    width: 100%;
+                  }
+                  .meta-icon {
+                    display: none;
+                  }
+                  .meta {
+                    color: $consum-carousel-text;
+                    padding-left: 4%;
+                    display: table-cell;
+                    max-width: 100px;
+                    vertical-align: middle;
+                    width: 100%;
+                    .caption {
+                      font-size: 10px;
+                      line-height: 13px;
+                    }
+                    .title {
+                      font-size: 15px;
+                      line-height: 18px;
+                      margin-bottom: 7px;
+                    }
+                    .additional {
+                      font-family: $tex-gyreschola-italic;
+                      font-size: 10px;
+                      line-height: 13px;
+                      text-transform: uppercase;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .more-items {
+        @include breakpoint($bp-640-width) {
+          border: 1px solid;
+        }
+      }
+    }
     .episode-info-main-block, .post-info-main-block {
       float: left;
       position: relative;
@@ -29,7 +120,7 @@
         bottom: get-vw(25px, 1280);
         color: $change-episode-color;
         display: block;
-        font-family: $avalon-book;
+        font-family: $fira-sans-regular;
         font-size: 21px;
         outline: none;
         position: absolute;
@@ -143,7 +234,7 @@
             }
             .episode-title, .post-title {
               color: black;
-              font-family: $avalon-medium;
+              font-family: $fira-sans-medium;
               font-size: 38px;
               line-height: 1.3;
               @include breakpoint($bp-min-1601-width) {
@@ -187,7 +278,7 @@
           .share {
             color: $consum-carousel-text;
             float: right;
-            font-family: $avalon-book;
+            font-family: $fira-sans-regular;
             margin-top: 10px;
             width: 30%;
             @include breakpoint($bp-1024-width) {
@@ -294,12 +385,12 @@
           }
         }
         .episode-info-description, .post-info-description {
-          font-family: $avalon-book;
+          font-family: $open-sans-regular;
           font-size: 20px;
           line-height: 1.5em;
           position: relative;
           @include breakpoint($bp-min-1601-width) {
-            font-size: 30px;
+            font-size: 26px;
           }
           @include breakpoint($bp-640-width) {
             color: $poll-color;

@@ -357,7 +357,6 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
       $rendered_items['vertical'][] = theme('usanetwork_cons_post_carousel_item_v', $episode_variables);
       $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
       $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-      $episode_variables['violator'] = !(empty($violator)) ? $violator : NULL;
       $rendered_items['horizontal'][] = theme('usanetwork_cons_post_carousel_item_h', $episode_variables);
     }
 

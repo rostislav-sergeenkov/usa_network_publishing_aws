@@ -1,7 +1,7 @@
 <?php
 ?>
 <li class="slide-item">
-  <div class="node node-usanetwork-promo aspot-carousel-promo <?php if (!empty($active)): print ' active show-border'; endif; ?>">
+  <div class="node node-usanetwork-promo <?php print (!empty($new_design)) ?  'usa-carousel-horizontal-promo' : 'aspot-carousel-promo'; ?><?php if (!empty($active)): print ' active show-border'; endif; ?>">
     <?php if (!empty($url)): ?>
       <a href="<?php print $url; ?>">
         <?php if (!empty($image)): ?>
@@ -19,15 +19,14 @@
           </div>
         <?php endif; ?>
         <div class="meta-wrapper">
-          <div class="meta-back"></div>
+          <?php if (empty($new_design)) : ?>
+            <div class="meta-back"></div>
+          <?php endif; ?>
           <div class="meta-wrapper-inner">
-            <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
+            <?php if (empty($new_design)) : ?>
+              <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
+            <?php endif; ?>
             <div class="meta">
-              <?php if (!empty($new_design)) : ?>
-                <?php if (!empty($violator)): ?>
-                  <div class="violator"><?php print $violator; ?></div>
-                <?php endif; ?>
-              <?php endif; ?>
               <?php if (!empty($title)): ?>
                 <div class="title"><?php print $title; ?></div>
               <?php endif; ?>

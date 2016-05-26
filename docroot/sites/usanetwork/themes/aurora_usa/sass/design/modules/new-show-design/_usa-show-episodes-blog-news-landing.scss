@@ -7,7 +7,9 @@
     position: relative;
     width: 100%;
     .blog-landing-list-items {
+      margin-bottom: 100px;
       padding-top: get-vw(90px, 1280);
+      position: relative;
       @include breakpoint ($bp-min-1601-width) {
         padding-top: 135px;
       }
@@ -22,11 +24,7 @@
       }
     }
     .landing-list-items-one-item {
-      border-top: 2px solid #ffffff; //@todo add show-color border
       overflow: auto;
-      &:first-child {
-        border-top: 0;
-      }
     }
     .list-items {
       border-bottom: 2px solid #ffffff;

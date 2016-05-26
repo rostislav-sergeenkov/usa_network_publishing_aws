@@ -3099,26 +3099,26 @@ function _usa_mpx_video_clips_render() {
                  (!empty($related_video_file->field_mpx_description) ? $related_video_file_wrapper->field_mpx_description->value() : ''),
              'active' => ($related_video_file->fid === $file->fid) ? TRUE : FALSE,
              'icon_type' => usanetwork_core_api_get_media_icon('file', $related_video_file->fid),
-           );
-         }
-       }
-       if (!empty($promos)) {
-         $theme_variables = array(
-           'promos' => $promos,
-           'video_type' => ($tv_content_node->type == 'tv_show')
-             ? (!empty($filter) ? $filter : t('Clips'))
-             : t('Movies'),
-           'more_items_url' => ($tv_content_node->type == 'tv_show')
-             ? l(($is_new_design) ? t('View all videos <span class="show-color show-font"></span>') : t('View all videos'), 'node/' . $tv_content_node->nid . '/videos', array('html' => TRUE))
-             : ($category == 'movie_short')
-               ? l(t('View more @movie_title',  array('@movie_title' => $tv_content_node->title)), 'node/' . $tv_content_node->nid)
-               : l(t('View more movies'), 'movies'),
-           'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
-         );
-         return theme('usanetwork_mpx_video_clips', $theme_variables);
-       }
-     }
-   }
+            );
+          }
+        }
+        if (!empty($promos)) {
+          $theme_variables = array(
+            'promos' => $promos,
+            'video_type' => ($tv_content_node->type == 'tv_show')
+              ? (!empty($filter) ? $filter : t('Clips'))
+              : t('Movies'),
+            'more_items_url' => ($tv_content_node->type == 'tv_show')
+              ? l(($is_new_design) ? t('View all videos <span class="show-color show-font"></span>') : t('View all videos'), 'node/' . $tv_content_node->nid . '/videos', array('html' => TRUE))
+              : (($category == 'movie_short')
+                ? l(t('View more @movie_title',  array('@movie_title' => $tv_content_node->title)), 'node/' . $tv_content_node->nid)
+                : l(t('View more movies'), 'movies')),
+            'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
+          );
+          return theme('usanetwork_mpx_video_clips', $theme_variables);
+        }
+      }
+    }
   }
   return '';
 }

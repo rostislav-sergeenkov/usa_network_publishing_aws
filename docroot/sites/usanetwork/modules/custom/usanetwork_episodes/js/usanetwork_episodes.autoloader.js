@@ -18,7 +18,7 @@
 
         $('.ajax-load-block .load-more-link a').after('<div id="load-more-loader-js"></div>');
 
-        addSpinJs('load-more-loader-js', 'consumptionator-page', '#ffffff');
+        addSpinJs('load-more-loader-js', 'show-new-design', '#ffffff');
 
         $.ajax({
           type: 'GET',

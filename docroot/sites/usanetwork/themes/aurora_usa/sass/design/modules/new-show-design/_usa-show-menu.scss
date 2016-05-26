@@ -565,6 +565,8 @@
               }
             }
             a {
+              color: white;
+              display: block;
               font-family: $fira-sans-regular;
               font-size: get-vw(10px, 1024);
               height: 100%;
@@ -572,6 +574,9 @@
               line-height: get-vw(60px, 1280);
               outline: none;
               padding: 0 get-vw(29px, 1280);
+              text-align: center;
+              text-decoration: none;
+              text-transform: uppercase;
               @include breakpoint($bp-min-1601-width) {
                 font-size: 15.625px;
                 line-height: 75px;

@@ -7,6 +7,10 @@
       first_state = false;
     }
 
+    if($('.right-sidebar').hasClass('sponsored-enable')) {
+      $('#block-usanetwork-top3-usanetwork-top3-main-block').addClass('sponsored-enable');
+    }
+
     var body = document.body,
         dropArea = document.getElementById('drop-area'),
         droppableArr = [],

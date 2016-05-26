@@ -11,8 +11,6 @@ define('USANETWORK_MICROSITE_USA_PLAYER_QA', 'microsites_usa_player_endcard_qa')
 define('USANETWORK_MICROSITE_NOAUTH_PLAYER_QA', 'microsite_usa_vod_noauth_qa');
 define('USANETWORK_MICROSITE_AUTH_PLAYER_QA', 'microsite_usa_vod_qa');
 
-define('USANETWORK_MICROSITE_RVPLAYER', 'qRe1IXDE_V0F');
-
 define('USANETWORK_MICROSITE_PERSON_NODE_TYPE', 'person');
 define('USANETWORK_MICROSITE_QUIZ_NODE_TYPE', 'quiz');
 define('USANETWORK_MICROSITE_GALLERY_NODE_TYPE', 'media_gallery');
@@ -1420,15 +1418,21 @@ function _usanetwork_microsite_define_videoplayer($file) {
   $mpx_account_pid = $player_info['mpx_account_pid'];
   $player_pid = $player_info['player_pid'];
 
+  $pdk_version = USA_TVE_PDK_VERSION;
+  $pdk = variable_get('usanetwork_page_url_pdk', '');
+  if (!empty($pdk)) {
+    $pdk_version = $pdk;
+  }
+
 //  $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
   $environment = _usanetwork_widget_get_environment();
   if ($environment == 'prod') {
-    $pdk_controller_url = "http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=5.6.6";
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
   } elseif ($environment == 'stage') {
-    $pdk_controller_url = "http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js?pdk=5.6.6";
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js?pdk=' . $pdk_version;
   }
   else {
-    $pdk_controller_url = "http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=5.6.6";
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
   }
 
   drupal_add_js($pdk_controller_url, 'external');

@@ -11,7 +11,7 @@
       function switchState() {
         $body.toggleClass('sub-menu-is-sticky');
         subMenuSelector.toggleClass('sticky-shows-submenu');
-        if ($('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post') || ($('body').hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
+        if ($('body').hasClass('node-type-person') || $('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post') || ($('body').hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
           $('.consum-sidebar').toggleClass('sticky-sidebar');
           Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
         }
@@ -156,6 +156,7 @@
       var _self = this,
           $body = $('body'),
           $submenu = $('.region-header'),
+          //$submenu = ($body.hasClass('front'))? $('header'): $('.region-header'),
           submenuOffsetTop = null,
           $userMenu = $('.upper-menu'),
           timer_id;

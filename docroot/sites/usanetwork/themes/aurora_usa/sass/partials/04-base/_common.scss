@@ -228,7 +228,7 @@ address {
   }
   a {
     border-bottom: 2px solid $poll-color;
-    color: $poll-color;
+    color: $poll-color!important;
     font-family: $tex-gyreschola-italic;
     font-size: 16px;
     padding-bottom: 3px;
@@ -244,7 +244,7 @@ address {
   .related-content-block & {
     a {
       border-color: #ffffff;
-      color: #ffffff;
+      color: #ffffff!important;
     }
   }
 }

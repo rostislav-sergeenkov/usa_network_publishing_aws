@@ -551,13 +551,12 @@ function _usanetwork_person_render_cast_recap_block() {
       $button_text = usanetwork_tv_shows_show_has_full_episodes($show_node->nid) ? t('Watch Full Episodes') : t('Watch More Video');
       $theme_variables = array(
         'title' => t('Series Recap'),
-        'video' => theme('pub_mpx_video', array(
+        'video' => theme('usanetwork_tve_player_mpx_video', array(
           'file' => $recap_video_file,
           'pub_mpx_player_parameters' => array(
             'autoPlay' => 'false',
-            'form' => 'html',
           ),
-          'player_id' => '4Dl3P2Df_j5l',
+//          'player_id' => '4Dl3P2Df_j5l',
         )),
         'video_title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
             (!empty($recap_video_file->field_mpx_title) ? $file_wrapper->field_mpx_title->value() : ''),

@@ -120,12 +120,7 @@
       .top-menu-block {
         @include breakpoint($bp-640-width) {
           border-bottom: 1px solid;
-          padding: get-vw(30px, 640) get-vw(30px, 640) 0 get-vw(30px, 640);
-        }
-        &.sponsored-disable {
-          @include breakpoint($bp-640-width) {
-            padding: get-vw(30px, 640) get-vw(30px, 640) get-vw(41px, 640) get-vw(30px, 640);
-          }
+          padding: get-vw(30px, 640) get-vw(30px, 640) get-vw(41px, 640) get-vw(30px, 640);
         }
         .logo-block {
           @include breakpoint($bp-640-width) {
@@ -385,6 +380,7 @@
           img {
             height: 100%;
             line-height: 1;
+            max-width: none;
             width: auto;
           }
         }
@@ -524,22 +520,9 @@
         height: auto;
         position: absolute;
       }
-      &.sponsored-disable {
-        .show-menu-tab {
-          max-width: 100%!important;
-        }
-        .social-block {
-          @include breakpoint($bp-min-769-width) {
-            bottom: 100%;
-            float: none;
-            position: absolute;
-            right: 0;
-          }
-        }
-      }
       .show-menu-tab {
         float: left;
-        max-width: 80%!important;
+        max-width: 100%!important;
         @include breakpoint($bp-768-width) {
           display: block;
           float: none;
@@ -565,6 +548,9 @@
               }
             }
             a {
+              background: none;
+              color: white;
+              display: block;
               font-family: $fira-sans-regular;
               font-size: get-vw(10px, 1024);
               height: 100%;
@@ -572,6 +558,9 @@
               line-height: get-vw(60px, 1280);
               outline: none;
               padding: 0 get-vw(29px, 1280);
+              text-align: center;
+              text-decoration: none;
+              text-transform: uppercase;
               @include breakpoint($bp-min-1601-width) {
                 font-size: 15.625px;
                 line-height: 75px;
@@ -585,13 +574,20 @@
                 text-align: left;
                 width: 100%;
               }
+              &:not(:hover):not(.active) {
+                color: white!important;
+              }
             }
           }
         }
       }
       .social-block {
-        float: right;
-        position: relative;
+        @include breakpoint($bp-min-769-width) {
+          bottom: 100%;
+          float: none;
+          position: absolute;
+          right: 0;
+        }
         @include breakpoint($bp-768-width) {
           background: black;
           display: block;

@@ -1,4 +1,4 @@
-<div class="top-menu-block show-border<?php print (empty($sponsored_path))? ' sponsored-disable': '' ;?>">
+<div class="top-menu-block show-border">
   <div class="logo-block<?php print (!empty($service_link) && !empty($service_logo))? ' service-enable' : ''; ?>">
     <a href="/" title="Home" rel="home" class="logo"></a>
     <?php if (!empty($service_logo)) : ?>
@@ -13,12 +13,9 @@
       <div class="tune-in"><?php print $tune_in_date; ?></div>
     <?php endif; ?>
   </div>
-  <?php if (!empty($sponsored_path)) : ?>
-    <div class="sponsored" data-mpspath="<?php print $sponsored_path; ?>" data-scalemps="1"></div>
-  <?php endif; ?>
   <div class="menu-open-button show-color show-font"></div>
 </div>
-<div class="bottom-menu-block show-border<?php print (empty($sponsored_path))? ' sponsored-disable': '' ;?>">
+<div class="bottom-menu-block show-border">
   <div class="show-menu-tab">
     <?php if (!empty($show_menu_tab_items)): ?>
       <ul class="show-menu menu">
@@ -41,4 +38,3 @@
     </div>
   </div>
 </div>
-

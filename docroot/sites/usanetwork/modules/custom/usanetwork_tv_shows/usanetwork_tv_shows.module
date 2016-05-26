@@ -4947,19 +4947,22 @@ function _usanetwork_tv_shows_nd_footer_block() {
  */
 function _usanetwork_tv_shows_is_new_design_entity($entity_type, $entity, $return_show = FALSE) {
   $is_new_design = $show = FALSE;
-  if (!is_object($entity)) {
-    $entity = node_load($entity);
-  }
-  if ($entity->type == 'tv_show') {
-    $show = $entity;
-  } else {
-    $show_id = _usanetwork_get_field_item($entity_type, $entity, 'field_show', 'target_id');
-    if ($show_id) {
-      $show = node_load($show_id);
+  if ($entity) {
+    if (!is_object($entity)) {
+      $entity = node_load($entity);
     }
-  }
-  if ($show) {
-    $is_new_design = _usanetwork_get_field_item('node', $show, 'field_new_design', 'value');
+    if ($entity->type == 'tv_show') {
+      $show = $entity;
+    }
+    else {
+      $show_id = _usanetwork_get_field_item($entity_type, $entity, 'field_show', 'target_id');
+      if ($show_id) {
+        $show = node_load($show_id);
+      }
+    }
+    if ($show) {
+      $is_new_design = _usanetwork_get_field_item('node', $show, 'field_new_design', 'value');
+    }
   }
   if ($return_show) {
     return array('is_new_design' => $is_new_design, 'tv_show' => $show);

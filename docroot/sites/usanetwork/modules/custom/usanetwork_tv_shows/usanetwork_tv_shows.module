@@ -2420,6 +2420,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
         $classes = array(
           'secondary',
           'show-color',
+          'show-font',
         );
         $menu_item_url = $show_menu_item_main_link[0]['url'];
         $menu_item_url_query = (isset($show_menu_item_main_link[0]['query'])) ? $show_menu_item_main_link[0]['query'] : '';
@@ -2447,14 +2448,6 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     }
   }
 
-  //Sponsored MPS
-  if (!empty($show->field_sponsored)) {
-    $field_sponsored = $show_wrapper->field_sponsored->value();
-    if ($field_sponsored == '1') {
-      $sponsored_path = '/node/' . $show->nid;
-    }
-  }
-
   $title_tag = 'h1';
   $show_title = array(
     '#type' => 'html_tag',
@@ -2471,7 +2464,6 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     'tune_in_date' => isset($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : NULL,
     'social_icons' => $social_links,
     'show_menu_tab_items' => $show_menus,
-    'sponsored_path' => isset($sponsored_path) ? $sponsored_path : NULL,
   ));
 }
 

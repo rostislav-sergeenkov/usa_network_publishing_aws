@@ -692,6 +692,9 @@ function usanetwork_context_context_default_contexts() {
     'new_design_consumpt' => array(
       'values' => array(
         'consumpt_post' => 'consumpt_post',
+        'media_gallery' => 'media_gallery',
+        'person' => 'person',
+        'tv_episode' => 'tv_episode',
       ),
     ),
     'new_design_file' => array(

@@ -371,6 +371,8 @@ function _usanetwork_person_characters_main_block() {
 
   $social_block = module_invoke('usanetwork_mpx_video', 'block_view', 'usanetwork_social_content');
 
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $person_node);
+
   $theme_variables = array(
     'sharebar' => !empty($sharebar) ? render($sharebar) : '',
     'character_full_name' => $person_node->title,
@@ -392,6 +394,7 @@ function _usanetwork_person_characters_main_block() {
     'show_tabs' => isset($show_tabs) ? $show_tabs : NULL,
     'cast_landing_link' => !empty($person_node->field_show) ? l(t('Go to cast & info'), 'node/' . $person_node_wrapper->field_show->nid->value() . '/cast') : '',
     'social_block' => render($social_block['content']),
+    'new_design' => $is_new_design,
   );
 
   return theme('usanetwork_person_character_main_block', $theme_variables);
@@ -416,6 +419,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
   );
 
   if (!empty($result)) {
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node_nid);
     foreach ($result as $result_item) {
       $person_node = node_load($result_item->entity_id);
       $role = NULL;
@@ -477,6 +481,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
       'block_title' => t('Cast & Crew'),
       'items_h' => $rendered_items['horizontal'],
       'items_v' => $rendered_items['vertical'],
+      'new_design' => $is_new_design,
     );
 
     return theme('usanetwork_person_character_carousel', $theme_variables);
@@ -579,10 +584,12 @@ function _usanetwork_person_characters_related_content_block() {
     return '';
   }
 
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $person_node);
+
   $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($person_node, $tv_content_node);
   if (!empty($related_content)) {
     $function = 'usanetwork_' . $tv_content_node->type . '_consumptionator_render_related_content_items_block';
-    $block_of_items = $function($related_content, 0, 1);
+    $block_of_items = $function($related_content, 0, 1, $is_new_design);
     $load_more_link = &drupal_static('load_more_link');
     $load_more_link = TRUE;
     return theme('usanetwork_' . $tv_content_node->type . '_consumptionator_related_items_container', array(

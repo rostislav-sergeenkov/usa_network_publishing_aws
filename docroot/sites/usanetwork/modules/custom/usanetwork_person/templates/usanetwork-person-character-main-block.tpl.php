@@ -76,7 +76,7 @@
       <?php print $rendered_carousel; ?>
     </div>
   <?php endif; ?>
-    <div class="more-items more-characters show-color">
+    <div class="more-items more-characters <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
       <?php if (!empty($cast_landing_link)): ?>
         <?php print $cast_landing_link; ?>
       <?php endif; ?>

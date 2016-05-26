@@ -136,7 +136,7 @@
 
   </div>
 </div>
-<div class="right-sidebar">
+<div class="right-sidebar<?php print (!empty($logo_advert))? ' sponsored-enable' : ''; ?>">
   <div class="choose-top3-img">
     <div class="asset-img" data-picture data-alt="<?php print $logo_right; ?>" data-class="tile-img">
       <?php if (!empty($logo_top)): ?>
@@ -149,6 +149,9 @@
         <noscript><img src="<?php print $logo_top; ?>" alt="" title="" /></noscript>
       <?php endif; ?>
     </div>
+    <?php if (!empty($logo_advert)) : ?>
+      <?php print $logo_advert; ?>
+    <?php endif; ?>
   </div>
 
   <div class="node-wrapper advert">

@@ -137,7 +137,7 @@ body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
   }
 }
 
-.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, .node-media-gallery, .node-type-usanetwork-microsite {
+.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .gallery-recap-block, .node-type-consumpt-post, .node-media-gallery, .node-type-usanetwork-microsite {
 
   .gallery-block {
     @include clear();
@@ -388,11 +388,13 @@ body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
               @include breakpoint($bp-1024-width) {
                 font-size: 14px;
                 height: auto;
+                min-height: 145px;
                 padding-right: 170px;
                 padding-top: 30px;
               }
               @include breakpoint($bp-640-width) {
                 margin-top: 0px;
+                min-height: 70px;
                 padding: 30px 0 0;
                 position: static;
                 text-align: center;
@@ -683,7 +685,7 @@ body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
   }
 }
 
-.consumptionator-page:not(.node-type-person), .node-type-media-gallery, .node-type-tv-episode, .node-type-consumpt-post, .node-type-usanetwork-microsite, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery {
+.consumptionator-page:not(.node-type-person), .node-type-media-gallery, .node-type-tv-episode, .gallery-recap-block, .node-type-consumpt-post, .node-type-usanetwork-microsite, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery {
   .gallery-wrapper {
     .gallery-list {
       &.ready {
@@ -725,7 +727,7 @@ body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
   }
 }
 
-.node-type-tv-episode, .node-type-consumpt-post, .node-media-gallery, .node-type-usanetwork-microsite {
+.node-type-tv-episode, .node-type-consumpt-post, .node-media-gallery, .gallery-recap-block, .node-type-usanetwork-microsite {
   .gallery-wrapper {
     float: none;
     margin: 0;
@@ -822,6 +824,7 @@ body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
               .description {
                 @include breakpoint($bp-1024-width) {
                   margin-top: 0px;
+                  min-height: 70px;
                   padding: 30px 0 0;
                   position: static;
                   text-align: center;
@@ -976,6 +979,7 @@ body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
                 line-height: 1.5;
                 left: 70px;
                 overflow: hidden;
+                min-height: 70px;
                 margin-bottom: 0;
                 margin-top: 0;
                 padding: 30px 0 0;

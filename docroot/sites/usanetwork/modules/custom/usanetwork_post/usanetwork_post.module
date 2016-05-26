@@ -19,7 +19,7 @@ function usanetwork_post_init() {
   }
   $term = taxonomy_term_load($args[2]);
   if (isset($term->vocabulary_machine_name) && $term->vocabulary_machine_name == 'blog') {
-    if (count($args) > 3) {
+    if (count($args) > 3 && $args[3] != 'edit') {
       drupal_not_found();
     }
   }

@@ -1,5 +1,4 @@
-
-body:not(.show-new-design):not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
+body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
   .slick-list,
   .slick-track {
     @include breakpoint($bp-min-1025-width) {
@@ -7,7 +6,8 @@ body:not(.show-new-design):not(.node-type-person, .node-type-post, .node-type-ca
     }
   }
 }
-body:not(.show-new-design) {
+
+.show-new-design {
   .gallery-wrapper {
     // gallery advert
     .interstitial-wrap {
@@ -138,8 +138,7 @@ body:not(.show-new-design) {
   }
 }
 
-
-body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).node-type-media-gallery, body:not(.show-new-design).node-type-tv-episode, body:not(.show-new-design) .gallery-recap-block, body:not(.show-new-design).node-type-consumpt-post, body:not(.show-new-design) .node-media-gallery, body:not(.show-new-design).node-type-usanetwork-microsite {
+.show-new-design.consumptionator-page, .show-new-design.node-type-media-gallery, .show-new-design.node-type-tv-episode, .show-new-design .gallery-recap-block, .show-new-design.node-type-consumpt-post, .show-new-design .node-media-gallery, .show-new-design.node-type-usanetwork-microsite {
 
   .gallery-block {
     @include clear();
@@ -149,28 +148,89 @@ body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).node
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
-      height: 42.01875vw;
-      max-height: 1093.75px;
-      max-width: 2500px;
+      height: calc(100vw*0.75*0.5625);
+      max-height: 675px;
+      max-width: 1600px;
       margin: 0 auto;
     }
+    @include breakpoint($bp-min-1601-width) {
+      height: 675px;
+    }
     @include breakpoint($between-1025-1280) {
-      height: calc((100vw - 320px) * 0.5625);
-      margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
-      overflow: visible;
+      height: calc((100vw - 300px) * 0.5625);
     }
     @include breakpoint($bp-1024-width) {
       height: auto;
     }
     .consum-sidebar {
-      .download-app {
-        @include breakpoint($bp-768-width) {
-          display: none;
+      @include breakpoint($between-1025-1280) {
+        width: 300px;
+      }
+      .items-block-title {
+        @include breakpoint($between-1025-1280) {
+          height: 35px;
+          line-height: 35px;
+          padding-left: 15px;
+        }
+        h2 {
+          @include breakpoint($between-1025-1280) {
+            font-size: 13px;
+          }
+        }
+      }
+      .episodes-list-slider {
+        &.vertical {
+          @include breakpoint($between-1025-1280) {
+            height: calc(100% - 70px);
+          }
+          li {
+            @include breakpoint($between-1025-1280) {
+              height: 50px;
+            }
+            .asset-img {
+              @include breakpoint($between-1025-1280) {
+                height: 37.5px;
+                left: 12px;
+                margin-top: -18.75px;
+                width: 50px;
+              }
+              & ~ .meta-wrapper {
+                .meta {
+                  @include breakpoint($between-1025-1280) {
+                    padding-left: 75px;
+                  }
+                }
+              }
+            }
+            .meta-wrapper {
+              .meta {
+                @include breakpoint($between-1025-1280) {
+                  padding-left: 12px;
+                }
+                .title {
+                  font-size: 12px;
+                  line-height: 15px;
+                }
+              }
+            }
+          }
         }
       }
       .more-items {
         @include breakpoint($between-641-768) {
           top: 0;
+        }
+        a {
+          @include breakpoint($between-1025-1280) {
+            font-size: 13px;
+            line-height: 33px;
+            padding: 0 20px;
+          }
+          &:after {
+            font-size: 8px;
+            line-height: 8px;
+            margin-top: -4px;
+          }
         }
       }
     }
@@ -181,7 +241,7 @@ body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).node
     float: left;
     height: 100%;
     position: relative;
-    width: 74.7%;
+    width: 75%;
     @include breakpoint($between-1025-1280) {
       width: calc(100% - 320px);
       z-index: 1;
@@ -685,10 +745,9 @@ body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).node
       }
     }
   }
-
 }
 
-body:not(.show-new-design).consumptionator-page:not(.node-type-person), body:not(.show-new-design).node-type-media-gallery, body:not(.show-new-design).node-type-tv-episode, body:not(.show-new-design) .gallery-recap-block, body:not(.show-new-design).node-type-consumpt-post, body:not(.show-new-design).node-type-usanetwork-microsite, body:not(.show-new-design):not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery {
+.show-new-design.consumptionator-page:not(.node-type-person), .show-new-design.node-type-media-gallery, .show-new-design.node-type-tv-episode, .show-new-design .gallery-recap-block, .show-new-design.node-type-consumpt-post, .show-new-design.node-type-usanetwork-microsite, body.show-new-design:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery {
   .gallery-wrapper {
     .gallery-list {
       &.ready {
@@ -712,7 +771,7 @@ body:not(.show-new-design).consumptionator-page:not(.node-type-person), body:not
   }
 }
 
-body:not(.show-new-design).node-type-media-gallery {
+.show-new-design.node-type-media-gallery {
   header {
     .header-nav-bar {
       .nav-bar-tabs {
@@ -730,7 +789,7 @@ body:not(.show-new-design).node-type-media-gallery {
   }
 }
 
-body:not(.show-new-design).node-type-tv-episode, body:not(.show-new-design).node-type-consumpt-post, body:not(.show-new-design) .node-media-gallery, body:not(.show-new-design) .gallery-recap-block, body:not(.show-new-design).node-type-usanetwork-microsite {
+.show-new-design.node-type-tv-episode, .show-new-design.node-type-consumpt-post, .show-new-design .node-media-gallery, .show-new-design .gallery-recap-block, .show-new-design.node-type-usanetwork-microsite {
   .gallery-wrapper {
     float: none;
     margin: 0;
@@ -753,7 +812,7 @@ body:not(.show-new-design).node-type-tv-episode, body:not(.show-new-design).node
   }
 }
 
-body:not(.show-new-design) {
+.show-new-design {
   .node-media-gallery {
     &.view-mode-inline_content {
       .gallery-wrapper {

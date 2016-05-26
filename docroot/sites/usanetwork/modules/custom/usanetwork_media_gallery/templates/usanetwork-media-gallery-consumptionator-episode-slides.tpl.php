@@ -12,17 +12,19 @@
     </div>
     <?php endif; ?>
   </div>
-  <div class="download-app">
-    <div class="download-app-wrapper">
-      <div class="image-block"></div>
-      <div class="text-block">Get USA NOW to watch full episodes from any device.</div>
-      <div class="download-button show-color">
-        <a href="/app" target="_self">
-          Download the app
-        </a>
+  <?php if(empty($new_design)) : ?>
+    <div class="download-app">
+      <div class="download-app-wrapper">
+        <div class="image-block"></div>
+        <div class="text-block">Get USA NOW to watch full episodes from any device.</div>
+        <div class="download-button show-color">
+          <a href="/app" target="_self">
+            Download the app
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+  <?php endif; ?>
   <div class="items-block galleries-thumbs-block">
     <div class="items-block-title galleries-block-title<?php print !empty($new_design) ? ' show-color show-font' : ''; ?>">
       <?php if (!empty($block_title)): ?>

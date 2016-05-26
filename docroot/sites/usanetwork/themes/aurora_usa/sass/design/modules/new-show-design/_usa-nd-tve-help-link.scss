@@ -90,6 +90,11 @@
               margin-top: calc(#{-30px}/2);
             }
             @include breakpoint($bp-1024-width) {
+              font-size: get-vw(24px, 1024);
+              margin-left: calc(#{get-vw(-24px, 1024)}/2);
+              margin-top: calc(#{get-vw(-24px, 1024)}/2);
+            }
+            @include breakpoint($bp-768-width) {
               font-size: 24px;
               margin-left: calc(#{-24px}/2);
               margin-top: calc(#{-24px}/2);
@@ -118,9 +123,16 @@
               margin-top: calc(#{-25px}/2);
             }
             @include breakpoint($bp-1024-width) {
+              font-size: get-vw(20px, 1024);
+              margin-left: calc(#{get-vw(-20px, 1024)}/2);
+              margin-top: calc(#{get-vw(-20px, 1024)}/2);
+              top: 43%;
+            }
+            @include breakpoint($bp-768-width) {
               font-size: 20px;
               margin-left: calc(#{-20px}/2);
               margin-top: calc(#{-20px}/2);
+              top: 43%;
             }
           }
         }
@@ -140,8 +152,12 @@
           top: calc(45% + (25px/2 + 11px/2));
         }
         @include breakpoint($bp-1024-width) {
+          font-size: get-vw(8px, 1024);
+          top: calc(43% + #{get-vw(20px, 1024)/2 + get-vw(8px, 1024)/2});
+        }
+        @include breakpoint($bp-768-width) {
           font-size: 8px;
-          top: calc(45% + (20px/2) + (8px/2));
+          top: calc(43% + (20px/2) + (8px/2));
         }
       }
       .usaTveLogin {
@@ -150,16 +166,17 @@
         border-left: 0;
         margin-left: 0;
         padding-right: get-vw(20px, 1280);
-        height: get-vw(51px, 1280);
         width: calc(100% - #{get-vw(53px, 1280)});
         @include breakpoint($bp-min-1601-width) {
-          height: 64px;
           padding-right: 20px;
           width: calc(100% - 67px);
         }
         @include breakpoint($bp-1024-width) {
+          padding-right: get-vw(15px, 1024);
+          width: calc(100% - 43px);
+        }
+        @include breakpoint($bp-768-width) {
           padding-right: 15px;
-          height: 100%;
           width: calc(100% - 43px);
         }
         a {

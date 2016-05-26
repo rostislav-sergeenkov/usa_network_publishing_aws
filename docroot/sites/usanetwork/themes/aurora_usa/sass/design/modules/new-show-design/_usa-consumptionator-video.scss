@@ -446,6 +446,7 @@
               top: 0;
               height: 100%;
               width: 100%;
+              z-index: 1;
               a {
                 display: block;
                 font-size: 0;
@@ -464,6 +465,7 @@
               top: 0;
               height: 100%;
               width: 100%;
+              z-index: 1;
               a {
                 display: block;
                 font-size: 0;
@@ -930,10 +932,11 @@
           }
           @include breakpoint($bp-1024-width) {
             margin-bottom: get-vw(15px, 1024);
-            padding-right: 170px;
+            padding-right: calc(#{get-vw(160px, 1024)} + 5px);
           }
           @include breakpoint($bp-768-width) {
             margin-bottom: get-vw(20px, 768);
+            padding-right: 165px;
           }
           @include breakpoint($bp-640-width) {
             margin-bottom: get-vw(25px, 640);
@@ -1034,10 +1037,10 @@
                 padding-right: 12px;
               }
               @include breakpoint($bp-1024-width) {
-                padding-right: get-vw(10px, 1024);
+                padding-right: get-vw(8px, 1024);
               }
               @include breakpoint($bp-768-width) {
-                padding-right: get-vw(10px, 768);
+                padding-right: get-vw(8px, 768);
               }
               @include breakpoint($bp-640-width) {
                 padding-right: get-vw(10px, 640);
@@ -1047,6 +1050,15 @@
                 line-height: 1!important;
                 height: auto !important;
                 width: auto !important;
+                @include breakpoint($bp-1024-width) {
+                  font-size: get-vw(20px, 1024);
+                }
+                @include breakpoint($bp-768-width) {
+                  font-size: get-vw(20px, 768);
+                }
+                @include breakpoint($bp-640-width) {
+                  font-size: get-vw(23px, 640);
+                }
               }
 
               [id$='reaction0-facebook_img'] {
@@ -1076,12 +1088,6 @@
               }
 
             }
-            //[id*='gigya-share-reaction'] {
-            //  font-size: 23px;
-            //  line-height: 1!important;
-            //  height: auto !important;
-            //  width: auto !important;
-            //}
           }
         }
         .usa-tve-login {
@@ -1098,13 +1104,18 @@
             width: 250px;
           }
           @include breakpoint($bp-1024-width) {
-            right: 0;
+            right: get-vw(-10px, 1024);
             top: get-vw(-5px, 1024);
-            height: 42px;
-            width: 160px;
+            height: get-vw(42px, 1024);
+            width: get-vw(160px, 1024);
+            //height: 42px;
+            //width: 160px;
           }
           @include breakpoint($bp-768-width) {
+            right: 0;
             top: 0;
+            height: 42px;
+            width: 160px;
           }
           @include breakpoint($bp-640-width) {
             display: none;

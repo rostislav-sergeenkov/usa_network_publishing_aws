@@ -48,7 +48,7 @@
     <div class="buttons-bar">
       <div class="buttons">
         <?php if (!empty($blog_url)): ?>
-          <div class="full-episode-button show-color hover-avail"><a href="<?php print $blog_url; ?>"><?php print t('Read the post'); ?></a></div>
+          <div class="full-episode-button show-color hover-avail"><a href="<?php print $blog_url; ?>"><?php print t('Read the post'); ?><?php if (!empty($new_design)) : ?><span></span><?php endif; ?></a></div>
         <?php endif; ?>
       </div>
     </div>

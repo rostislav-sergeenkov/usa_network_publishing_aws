@@ -39,10 +39,10 @@ body:not(.show-new-design) .consum-sidebar {
   }
   &.sticky-sidebar {
     @include breakpoint($bp-min-1025-width) {
-      height: calc(100vh - 7.12195vw)!important;
+      height: calc(100vh - #{get-vw(135px, 1901)})!important;
       position: fixed!important;
       right: 0;
-      top: get-vw(73px, 1025)!important;
+      top: get-vw(135px, 1901)!important;
       .advert {
         height: 250px;
         padding: 0;
@@ -87,8 +87,12 @@ body:not(.show-new-design) .consum-sidebar {
   .advert {
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
-      height: 23.4vw;
-      padding: calc((23.4vw - 250px)/2) 0;
+      height: get-vw(585px, 2500);
+      padding: calc((#{get-vw(585px, 2500)} - 250px)/2) 0;
+    }
+    @include breakpoint($bp-min-2500-width) {
+      height: 585px;
+      padding: 167.5px 0;
     }
     @include breakpoint($between-1025-1280) {
       height: 250px;
@@ -116,7 +120,10 @@ body:not(.show-new-design) .consum-sidebar {
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
-      height: calc(100% - 23.4vw);
+      height: calc(100% - #{get-vw(585px, 2500)});
+    }
+    @include breakpoint($bp-min-2500-width) {
+      height: calc(100% - 585px);
     }
     @include breakpoint($between-1025-1280) {
       height: auto;
@@ -126,7 +133,7 @@ body:not(.show-new-design) .consum-sidebar {
       width: 100%;
     }
     @include breakpoint($bp-1024-width) {
-      height: calc(100% - 23.4vw);
+      height: calc(100% - #{get-vw(585px, 2500)});
     }
   }
   .items-block-title {
@@ -482,6 +489,9 @@ body:not(.show-new-design) .consum-sidebar {
       @include breakpoint($bp-480-width) {
         line-height: 60px;
       }
+      &:hover, &:active {
+        color: white;
+      }
       &:after {
         color: #ffffff;
         content: "\e608";
@@ -719,7 +729,7 @@ body:not(.show-new-design) .consum-sidebar {
     }
   }
 }
-.consumptionator-video-page {
+body:not(.show-new-design) .consumptionator-video-page {
   &.page-full-video {
     &.admin-menu {
       @include breakpoint($bp-min-769-width) {
@@ -746,7 +756,7 @@ body:not(.show-new-design) .consum-sidebar {
     header {
       &.sign-in {
         @include breakpoint($between-769-1024) {
-          height: calc(7.10153vw + 35px);
+          height: calc(#{get-vw(135px, 1901)} + 35px);
         }
         ~ .usa-wrap {
           @include breakpoint($between-769-1024) {
@@ -1097,5 +1107,29 @@ body:not(.show-new-design) .related-content-block {
   }
   .advert, .ad-728x90 {
     position: relative;
+  }
+}
+
+.gallery-recap-block {
+  background: $consup-gallery-bg;
+  padding: 40px 35px 104px;
+  @include breakpoint($bp-min-1901-width) {
+    padding: 40px 55px 104px;
+  }
+  @include breakpoint($bp-1280-width) {
+    border-bottom: 2px solid;
+    padding: 30px 25px 90px;
+  }
+  @include breakpoint($bp-1024-width) {
+    padding: 40px 24px 90px;
+  }
+  @include breakpoint($bp-640-width) {
+    border-bottom: 12px solid;
+    padding: 40px 0 75px;
+  }
+  .gallery-wrapper {
+    @include breakpoint($between-1025-1280) {
+      height: calc((100vw - 370px) * 0.5625);
+    }
   }
 }

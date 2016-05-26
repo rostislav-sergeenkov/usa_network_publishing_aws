@@ -25,6 +25,7 @@ $plugin = array(
  */
 function new_design_best_of_section_content_type_render($subtype, $conf, $args, $context) {
   $node = $context->data;
+  $node_wrapper = entity_metadata_wrapper('node', $node);
   $block = new stdClass();
   $best_of_data = new_design_best_of_section_get_content($node); 
   
@@ -38,6 +39,22 @@ function new_design_best_of_section_content_type_render($subtype, $conf, $args, 
   }
   $layout_scheme = new_design_best_of_section_get_layout(count($best_of_data));
   $theme_variables['layout_scheme'] = $layout_scheme;
+
+  $theme_variables['title'] = t('Best of section');
+  if (usanetwork_core_api_check_field($node, 'field_best_of_section_title')) {
+    $theme_variables['title'] = $node_wrapper->field_best_of_section_title->value();
+  }
+
+  if (usanetwork_core_api_check_field($node, 'field_best_of_section_link')) {
+    $theme_variables['link'] = $node_wrapper->field_best_of_section_link->value();
+  }
+  else {
+    $theme_variables['link'] = array(
+      'title' => 'View more',
+      'url' => '#',
+    );
+  }
+
   $block->content = array(
     '#theme' => 'new_design_best_of_section',
     '#content' => $theme_variables,

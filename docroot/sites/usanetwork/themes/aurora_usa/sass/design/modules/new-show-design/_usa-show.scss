@@ -23,6 +23,7 @@
   }
   #header-spacer {
     display: none;
+    background-color: black;
   }
   .pane-mps-midbanner {
     padding-top: get-vw(33px, 1280);
@@ -71,12 +72,20 @@
         height: 29px;
         left: 50%;
         margin-left: -121px;
+        padding: 4px;
         position: absolute;
+        text-align: center;
         width: 242px;
         @include breakpoint($bp-768-width) {
           height: 33px;
           margin-left: -141px;
+          padding: 6px;
           width: 282px;
+        }
+        img {
+          display: inline;
+          max-height: 80%;
+          max-width: 90%;
         }
       }
     }
@@ -109,6 +118,7 @@
       font-size: get-vw(12.8px, 1280);
       letter-spacing: 0.5px;
       line-height: 1;
+      outline: none;
       padding-right: get-vw(16px, 1280);
       position: absolute;
       right: get-vw(16px, 1280);
@@ -130,13 +140,12 @@
         content: '\e608';
         font-family: $ico-font;
         font-size: get-vw(12px, 1280);
-        line-height: get-vw(16px, 1280);
+        line-height: 1;
         position: absolute;
         right: 0;
         top: 0;
         @include breakpoint($bp-min-1601-width) {
           font-size: 15px;
-          line-height: 20px;
         }
       }
     }

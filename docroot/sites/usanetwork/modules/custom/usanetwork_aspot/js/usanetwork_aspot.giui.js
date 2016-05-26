@@ -370,7 +370,7 @@
               homeUiPositionsVal = aspot_elements;
             }
 
-            if (showUiPositions != '' && isInitShowAspot) {
+            if (showUiPositionsText != '' && isInitShowAspot) {
               showUiPositionsVal = JSON.parse(showUiPositionsText);
             } else {
               showUiPositionsVal = tvs_aspot_elements;

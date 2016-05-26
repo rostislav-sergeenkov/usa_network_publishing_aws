@@ -95,7 +95,7 @@
       h2 {
         background: none;
         color: inherit;
-        font-family: $avalon-medium;
+        font-family: $fira-sans-medium;
         font-size: 15px;
         margin: 0;
         text-transform: uppercase;
@@ -188,6 +188,7 @@
               vertical-align: middle;
               width: 100%;
               .title {
+                font-family: $fira-sans-regular;
                 font-size: 15px;
                 line-height: 20px;
               }
@@ -199,7 +200,7 @@
         overflow: hidden;
         position: relative;
         display: none;
-        height: calc((100vw - 4px)/48*9);
+        height: calc((100vw - 12px)/48*9);
         width: 100%;
         &:hover .horizontal-controls {
           display: block;
@@ -217,7 +218,7 @@
             height: 100%;
             z-index: 9;
             background: rgba(255, 255, 255, 0.6);
-            width: 60px;
+            width: 40px;
             &.slide-prev {
               left: 0;
               &:after {
@@ -265,11 +266,11 @@
         }
         li {
           float: left;
-          margin-right: 2px;
+          margin-right: 6px;
           position: relative;
           height: 100%;
-          width: 33%;
-          @extend %aspot-carousel-promo;
+          width: calc((100% - 12px)/3);
+          @extend %usa-carousel-horizontal-promo;
           @include breakpoint($bp-min-641-width) {
             max-width: 33.3vw;
           }
@@ -307,6 +308,7 @@
       left: 0;
       width: 100%;
       @include breakpoint($bp-1024-width) {
+        border: none;
         bottom: auto;
         left: auto;
         right: 10px;
@@ -330,7 +332,7 @@
       & a {
         color: #ffffff;
         display: block;
-        font-family: $avalon-medium;
+        font-family: $fira-sans-regular;
         font-size: 15px;
         letter-spacing: 1px;
         line-height: 43px;

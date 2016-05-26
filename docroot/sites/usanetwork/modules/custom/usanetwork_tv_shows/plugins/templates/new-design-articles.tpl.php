@@ -8,7 +8,7 @@
     <div class="articles-wrapper">
       <div class="usa-section-title show-border sponsored-enable">
         <h2 class="title">Articles</h2>
-        <div class="sponsored show-color"><?php print $data['#content']['logo'] ?></div>
+        <div class="sponsored show-color"><img src="<?php print $data['#content']['logo'] ?>" alt="" /></div>
       </div>
       <div class="articles-content">
         <ul>
@@ -23,7 +23,7 @@
                       <!--[if (IE 8) & (!IEMobile)]>
                       <div data-src="<?php print $item['image_desktop'] ?>"></div>
                       <![endif]-->
-                      <noscript>&amp;lt;img src="<?php print $item['image_desktop'] ?>" alt="" title="" /&amp;gt;</noscript>
+                      <noscript><img src="<?php print $item['image_desktop'] ?>" alt="" title="" /></noscript>
                     </div>
                   </div>
                 </a>

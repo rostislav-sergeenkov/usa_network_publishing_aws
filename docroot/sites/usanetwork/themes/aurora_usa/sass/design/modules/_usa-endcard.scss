@@ -471,7 +471,7 @@
       }
       .player-episodes-list {
         margin: 0 auto;
-        height: calc(100% - 6.73vw);
+        height: calc(100% - #{get-vw(128px, 1901)});
         width: 85%;
         @include breakpoint($bp-min-1901-width) {
           height: calc(100% - 128px);

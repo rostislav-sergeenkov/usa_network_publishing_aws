@@ -52,7 +52,9 @@
         </div>
         <div class="meta">
           <div class="meta-info">
-            <div class="caption"><?php print $episode['video_type']; ?></div>
+            <?php if (!empty($episode['video_type'])): ?>
+              <div class="caption"><?php print $episode['video_type']; ?></div>
+            <?php endif; ?>
             <div class="title">
               <h1><?php print !empty($h1) ? $h1 : $episode['title']; ?></h1>
             </div>

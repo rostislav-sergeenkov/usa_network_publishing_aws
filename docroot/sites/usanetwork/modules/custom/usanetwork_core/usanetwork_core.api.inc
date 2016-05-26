@@ -246,6 +246,10 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'media_items' => 'field_media_items',
       'og_image' => 'field_usa_og_image',
     ),
+    'top3_gallery' => array(
+      'main' => 'field_promo_image_override',
+      'og_image' => 'field_usa_og_image',
+    ),
   );
 }
 

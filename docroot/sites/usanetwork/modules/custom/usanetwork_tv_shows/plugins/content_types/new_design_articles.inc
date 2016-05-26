@@ -75,8 +75,8 @@ function new_design_articles_content_type_render($subtype, $conf, $args, $contex
 
         if (isset($entity_wrapper->field_post_cover)) {
           $image_data = $entity_wrapper->field_post_cover->value();
-          $out['items'][$raw]['image_desktop'] = image_style_url('791x445', $image_data['uri']);
-          $out['items'][$raw]['image_mobile'] = image_style_url('696x305', $image_data['uri']);
+          $out['items'][$raw]['image_desktop'] = image_style_url('336x251', $image_data['uri']);
+
         }
 
         if (isset($entity_wrapper->field_contributor)) {
@@ -108,10 +108,12 @@ function new_design_articles_content_type_render($subtype, $conf, $args, $contex
   $out['view_more'] = url('node/' . $node_show->nid . '/blog');
 
   $block = new stdClass();
-  $block->content = array(
-    '#theme' => 'new_design_articles',
-    '#content' => array('logo' => $logo, 'articles' => $out),
-  );
+  if (!empty($out['items'])) {
+    $block->content = array(
+      '#theme' => 'new_design_articles',
+      '#content' => array('logo' => $logo, 'articles' => $out),
+    );
+  }
   return $block;
 }
 

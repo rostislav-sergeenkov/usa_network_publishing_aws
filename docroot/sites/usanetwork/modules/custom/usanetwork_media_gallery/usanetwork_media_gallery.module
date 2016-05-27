@@ -314,6 +314,8 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
     $endcard_enabled = _usanetwork_get_field_item('node', $node, 'field_enable_nitro', 'value');
     $endcard_path = _usanetwork_get_field_item('node', $node, 'field_nitro_action_name', 'value');
 
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node',$node);
+
     if (!empty($gallery_field) && is_array($gallery_field)) {
       foreach ($gallery_field as $gallery_file) {
         if (is_array($gallery_file)) {
@@ -322,7 +324,23 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
         $info = image_get_info($gallery_file->uri);
         $alt_text = _usanetwork_get_field_item('file', $gallery_file, 'field_file_image_alt_text', 'value');
-        if (!empty($info) && ($info['width'] > 1868 || $info['height'] > 1094)) {
+        if ($is_new_design) {
+          $slide_variables = array(
+            'image' => theme_image(array(
+              'path' => '',
+              'attributes' => array(
+                'data-lazy' => file_create_url(image_style_url('1280x720', $gallery_file->uri)),
+                'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $gallery_file->uri)),
+                'alt' => $alt_text,
+              ),
+            )),
+            'info' => array(
+              'description' => '',
+              'gallery_name' => $node->title,
+              'photo_name' => $gallery_file->filename,
+            ),
+          );
+        } elseif (!empty($info) && ($info['width'] > 1868 || $info['height'] > 1094)) {
           $slide_variables = array(
             'image' => theme_image(array(
               //'path' => image_style_url('usanetwork_media_gallery_image', $gallery_file->uri),

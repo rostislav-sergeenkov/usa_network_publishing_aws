@@ -468,6 +468,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
         'title' => $own_promo_lines['title'],
         'description' => !empty($own_promo_lines['description']) ? $own_promo_lines['description'] : NULL,
         'active' => ($gallery_item->nid == $node->nid) ? TRUE : FALSE,
+        'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
       );
 
       $rendered_items['slides_vertical'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide_vertical', $gallery_item_vertical);

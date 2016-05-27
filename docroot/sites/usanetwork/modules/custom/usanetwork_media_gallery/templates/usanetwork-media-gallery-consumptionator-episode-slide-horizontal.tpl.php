@@ -9,6 +9,9 @@
 ?>
 <div class="node node-usanetwork-promo aspot-carousel-promo<?php if (!empty($active)): print ' active show-border'; endif; ?>">
   <a href="<?php print (!empty($gallery_url))? $gallery_url: '#'; ?>">
+    <?php if (!empty($image_url)): ?>
+      <div class="asset-img"><img src="<?php print $image_url; ?>" alt="" title="<?php print $title; ?>" /></div>
+    <?php endif; ?>
     <div class="meta-wrapper">
       <div class="meta-back"></div>
       <div class="meta-wrapper-inner">
@@ -23,8 +26,5 @@
         </div>
       </div>
     </div>
-    <?php if (!empty($image_url)): ?>
-      <div class="asset-img"><img src="<?php print $image_url; ?>" alt="" title="<?php print $title; ?>" /></div>
-    <?php endif; ?>
   </a>
 </div>

@@ -26,7 +26,7 @@
     </div>
   <?php endif; ?>
   <div class="items-block galleries-thumbs-block">
-    <div class="items-block-title galleries-block-title<?php print !empty($new_design) ? ' show-color show-font' : ''; ?>">
+    <div class="items-block-title galleries-block-title<?php print !empty($new_design) ? ' show-color show-font show-border' : ''; ?>">
       <?php if (!empty($block_title)): ?>
         <h2><?php print $block_title; ?></h2>
       <?php endif; ?>
@@ -63,7 +63,7 @@
   <!-- change link to special photo page for show-->
   <?php if (!empty($link)): ?>
     <div class="more-items more-photos <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
-      <a href="<?php print $link; ?>"><?php print t('View all photos'); ?></a>
+      <a href="<?php print $link; ?>"><?php print t('View all photos'); ?><?php if (!empty($new_design)): ?><span class="show-color show-font"></span><?php endif; ?></a>
     </div>
   <?php endif; ?>
 </div>

@@ -167,14 +167,30 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         width: 300px;
       }
       .items-block-title {
+        @include breakpoint($bp-min-1025-width) {
+          border-color: $tonight-section-back!important;
+        }
         @include breakpoint($between-1025-1280) {
           height: 35px;
           line-height: 35px;
           padding-left: 15px;
         }
+        @include breakpoint($bp-640-width) {
+          border-top: none;
+          border-bottom: 1px solid;
+          color: white!important;
+          height: auto;
+          line-height: 1;
+          padding: 0;
+          text-align: center;
+        }
         h2 {
           @include breakpoint($between-1025-1280) {
             font-size: 13px;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: get-vw(25px, 640);
+            line-height: get-vw(85px, 640);
           }
         }
       }
@@ -215,10 +231,37 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
         }
+        &.horizontal {
+          li {
+            @include breakpoint($bp-640-width) {
+              height: auto;
+              padding: get-vw(40px, 640) get-vw(40px, 640) 0;
+            }
+            &:nth-child(n+4) {
+              @include breakpoint($bp-640-width) {
+                display: none;
+              }
+            }
+          }
+          .node {
+            &.active {
+              &:before {
+                @include breakpoint($bp-640-width) {
+                  height: calc((100vw - 2*#{get-vw(40px, 640)})*0.5625);
+                  width: 7px;
+                }
+              }
+            }
+          }
+        }
       }
       .more-items {
         @include breakpoint($between-641-768) {
           top: 0;
+        }
+        @include breakpoint($bp-640-width) {
+          background: black;
+          text-align: center;
         }
         a {
           @include breakpoint($between-1025-1280) {
@@ -226,10 +269,49 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             line-height: 33px;
             padding: 0 20px;
           }
+          @include breakpoint($bp-640-width) {
+            font-size: get-vw(30px, 640);
+            line-height: get-vw(100px, 640);
+            padding: 0;
+          }
           &:after {
-            font-size: 8px;
-            line-height: 8px;
-            margin-top: -4px;
+            display: none;
+          }
+          span {
+            background: none;
+            &:after {
+              display: block;
+              content: "\e608";
+              font-family: $ico-font;
+              font-size: 10px;
+              line-height: 10px;
+              margin-top: -5px;
+              position: absolute;
+              right: 5px;
+              top: 50%;
+              @include breakpoint($bp-min-1025-width) {
+                color: white!important;
+              }
+              @include breakpoint($between-1025-1280) {
+                font-size: 8px;
+                line-height: 8px;
+                margin-top: -4px;
+              }
+              @include breakpoint($bp-1024-width) {
+                display: inline-block;
+                font-size: 12px;
+                line-height: 1;
+                margin-left: 8px;
+                margin-top: -6px;
+                position: relative;
+                top: auto;
+                right: auto;
+              }
+              @include breakpoint($bp-640-width) {
+                font-size: get-vw(22px, 640);
+                margin-top: 0;
+              }
+            }
           }
         }
       }
@@ -243,7 +325,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
     position: relative;
     width: 75%;
     @include breakpoint($between-1025-1280) {
-      width: calc(100% - 320px);
+      width: calc(100% - 300px);
       z-index: 1;
     }
     @include breakpoint($bp-1024-width) {
@@ -367,22 +449,14 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             height: 100%;
             position: relative;
             @include breakpoint($bp-1024-width) {
-              height: 56.25vw;
-              overflow: hidden;
-              text-align: center;
+              padding-top: 56.25%;
             }
             img {
-              bottom: 0;
+              height: 100%;
               left: 0;
-              right: 0;
               top: 0;
-              margin: auto;
               position: absolute;
-              max-height: 100%;
-              max-width: 100%;
-              @include breakpoint($bp-1024-width) {
-                height: auto;
-              }
+              width: 100%;
             }
           }
           .slide-info {
@@ -537,8 +611,9 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
       position: absolute;
       z-index: 51;
       @include breakpoint($bp-1024-width) {
-        bottom: auto;
-        top: calc(56.25vw + 13px);
+        bottom: 0;
+        padding-top: calc(56.25% + 23px);
+        top: 0;
       }
       @include breakpoint($bp-min-1025-width) {
         display: none;
@@ -582,9 +657,9 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         -o-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
         @include breakpoint($bp-1024-width) {
+          bottom: 0;
           position: absolute;
           left: 0;
-          top: 0;
         }
         // pager item
         li {

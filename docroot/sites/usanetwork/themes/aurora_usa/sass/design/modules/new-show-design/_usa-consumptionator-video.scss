@@ -174,8 +174,10 @@
             .node {
               &.active {
                 &:before {
-                  height: calc((100vw - 2*#{get-vw(40px, 640)})*0.5625);
-                  width: 7px;
+                  @include breakpoint($bp-640-width) {
+                    height: calc((100vw - 2*#{get-vw(40px, 640)})*0.5625);
+                    width: 7px;
+                  }
                 }
               }
             }

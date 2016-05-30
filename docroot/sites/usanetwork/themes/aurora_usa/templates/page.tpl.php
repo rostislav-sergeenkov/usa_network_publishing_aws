@@ -75,16 +75,18 @@
 ?>
 <?php if (!isset($ajax) || empty($ajax)): ?>
   <header id="header">
-    <span id="site-name">
-      <?php print $site_name; ?>
-    </span>
-    <!-- leaderboard ad -->
-    <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
-    <!-- /leaderboard -->
-    <?php print render($page['personalization_trigger']); ?>
-    <!-- header -->
-    <?php print render($page['header']); ?>
-    <!-- /header -->
+    <div class="header-inner">
+      <span id="site-name">
+        <?php print $site_name; ?>
+      </span>
+      <!-- leaderboard ad -->
+      <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
+      <!-- /leaderboard -->
+      <?php print render($page['personalization_trigger']); ?>
+      <!-- header -->
+      <?php print render($page['header']); ?>
+      <!-- /header -->
+    </div>
   </header>
   <div id="header-spacer"></div>
   

@@ -35,6 +35,7 @@ dependencies[] = usanetwork_taxonomy
 dependencies[] = usanetwork_tv_shows
 dependencies[] = views
 features[context][] = cast_landing
+features[context][] = cast_landing_newdesign
 features[context][] = node_person
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1

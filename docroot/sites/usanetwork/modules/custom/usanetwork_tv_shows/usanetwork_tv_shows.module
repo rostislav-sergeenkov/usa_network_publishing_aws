@@ -2447,6 +2447,11 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     }
   }
 
+  $sign_up = module_invoke('usanetwork_lyris', 'block_view', 'newsletter_subscription');
+  if (!empty($sign_up['content'])) {
+    $sign_up_block = render($sign_up['content']);
+  };
+
   $show_menus = array();
   $promo_menu_links = field_get_items('node', $show, 'field_show_links');
   if ($promo_menu_links) {
@@ -2502,6 +2507,9 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     'tune_in_date' => isset($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : NULL,
     'social_icons' => $social_links,
     'show_menu_tab_items' => $show_menus,
+    'sign_up_title' => (t('EMAIL Sign UP')),
+    'sign_up_url' => 'javascript:usa_newsletterShowHide();',
+    'sign_up_block' => $sign_up_block,
   ));
 }
 

@@ -15,9 +15,9 @@
       <h2><?php print $title.t(' episodes'); ?></h2>
     </div>
     <?php if (!empty($filters)): ?>
-      <div class="all-seasons-filter item-filter">
+      <div class="all-seasons-filter item-filter<?php print (!empty($new_design))? ' show-border': ''; ?>">
         <div class="filter-label"><?php print !empty($active_filter_title) ? $active_filter_title : t('All seasons'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></div>
-        <ul class="filter-menu">
+        <ul class="filter-menu<?php print (!empty($new_design))? ' show-border': ''; ?>">
           <?php foreach($filters as $filter): ?>
             <li class="filter-item"><a href="<?php print $filter['url']; ?>" class="no-ajax <?php if ($filter['active'] == TRUE): print 'active'; endif; ?>"><?php print $filter['title']; ?></a></li>
           <?php endforeach; ?>

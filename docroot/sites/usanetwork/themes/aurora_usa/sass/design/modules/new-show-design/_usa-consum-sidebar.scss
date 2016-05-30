@@ -277,6 +277,7 @@
           @include breakpoint($bp-640-width) {
             float: none;
             height: 56.25vw;
+            margin-right: 0;
             width: 100%;
           }
         }

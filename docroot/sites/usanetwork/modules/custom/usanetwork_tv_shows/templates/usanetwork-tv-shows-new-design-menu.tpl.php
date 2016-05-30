@@ -1,6 +1,7 @@
 <div class="top-menu-block show-border">
   <div class="top-menu-block-inner">
-    <div class="logo-block<?php print (!empty($service_link) && !empty($service_logo))? ' service-enable' : ''; ?>">
+    <div
+      class="logo-block<?php print (!empty($service_link) && !empty($service_logo)) ? ' service-enable' : ''; ?>">
       <a href="/" title="Home" rel="home" class="logo"></a>
       <?php if (!empty($service_logo)) : ?>
         <a href="<?php print $service_link; ?>" class="second-logo">
@@ -8,7 +9,8 @@
         </a>
       <?php endif; ?>
     </div>
-    <div class="title-block<?php print (!empty($show_class))?' '.$show_class: ''; ?>">
+    <div
+      class="title-block<?php print (!empty($show_class)) ? ' ' . $show_class : ''; ?>">
       <?php print $show_title; ?>
       <?php if (!empty($tune_in_date)): ?>
         <div class="tune-in"><?php print $tune_in_date; ?></div>
@@ -25,6 +27,12 @@
           <?php foreach ($show_menu_tab_items as $show_menu_tab_item): ?>
             <li><?php print $show_menu_tab_item['main_link']; ?></li>
           <?php endforeach; ?>
+          <?php if (!empty($sign_up_block)) : ?>
+            <li>
+              <a href="<?php print $sign_up_url; ?>"
+                 class="secondary show-color show-font"><?php print $sign_up_title; ?></a>
+            </li>
+          <?php endif; ?>
         </ul>
       <?php endif; ?>
     </div>
@@ -42,3 +50,8 @@
     </div>
   </div>
 </div>
+<?php if (!empty($sign_up_block)) : ?>
+  <div id="block-usanetwork-lyris-newsletter-subscription">
+    <?php print $sign_up_block; ?>
+  </div>
+<?php endif; ?>

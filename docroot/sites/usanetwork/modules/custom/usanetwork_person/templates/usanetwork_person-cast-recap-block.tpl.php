@@ -23,7 +23,7 @@
       <?php endif; ?>
     </div>
     <?php if (!empty($button_url)): ?>
-      <div class="video-button show-color hover-avail">
+      <div class="video-button hover-avail <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
         <?php print $button_url; ?>
       </div>
     <?php endif; ?>

@@ -17,10 +17,14 @@
         </div>
       <?php endif; ?>
     <?php endif; ?>
-    <div class="all-items-filter item-filter">
+    <div class="all-items-filter item-filter<?php print (!empty($is_new_design))? ' show-border': ''; ?>">
       <?php if (!empty($video_filters)): ?>
-        <div class="filter-label"><?php print !empty($video_filter_title) ? $video_filter_title : t('All videos'); ?></div>
-        <ul class="filter-menu transform-filter">
+        <div class="filter-label"><?php print !empty($video_filter_title) ? $video_filter_title : t('All videos'); ?>
+          <?php if (!empty($is_new_design)) : ?>
+            <span class="show-color show-font"></span>
+          <?php endif; ?>
+        </div>
+        <ul class="filter-menu transform-filter<?php print (!empty($is_new_design))? ' show-border': ''; ?>">
           <?php foreach ($video_filters as $video_filter): ?>
             <li class="filter-item<?php if ($video_filter['active'] == TRUE): print ' active'; endif; ?>">
               <a href="<?php print $video_filter['url']; ?>#videos-landing-page-header" data-type="<?php print $video_filter['tid']; ?>" class="no-ajax<?php print ($is_new_design) ? ' show-border' : '' ?>">
@@ -31,7 +35,7 @@
         </ul>
       <?php endif; ?>
     </div>
-    <div class="sorter-items item-filter">
+    <div class="sorter-items item-filter<?php print (!empty($is_new_design))? ' show-border': ''; ?>">
       <?php if (!empty($video_sorters)): ?>
         <div class="filter-label">
           <?php print !empty($video_sorter_title) ? $video_sorter_title : t('Newest'); ?>
@@ -39,7 +43,7 @@
             <span class="show-color show-font"></span>
           <?php endif; ?>
         </div>
-        <ul class="filter-menu">
+        <ul class="filter-menu<?php print (!empty($is_new_design))? ' show-border': ''; ?>">
           <?php foreach ($video_sorters as $video_sorter): ?>
             <li class="filter-item sorter-item<?php if (!empty($video_sorter['order'])): print ' order-' . $video_sorter['order']; endif; ?><?php if ($video_sorter['active'] == TRUE): print ' active'; endif; ?>">
               <a href="<?php print $video_sorter['url']; ?>#videos-landing-page-header" data-type="<?php print $video_sorter['data_type']; ?>" class="no-ajax">

@@ -437,13 +437,13 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-tv-shows-landing-videos-items-block',
     ),    
-    'usanetwork_tv_shows_landing_videos_items_new_design_block' => array(
+    'usanetwork_tv_shows_landing_items_new_design_block' => array(
       'variables' => array(
         'ad' => NULL,
         'is_even' => NULL,
         'items' => array(),
       ),
-      'template' => 'templates/usanetwork-tv-shows-landing-videos-items-new-design-block',
+      'template' => 'templates/usanetwork-tv-shows-landing-items-new-design-block',
     ),
     'usanetwork_tv_shows_landing_videos_item_small' => array(
       'variables' => array(
@@ -3004,7 +3004,7 @@ function usanetwork_tv_shows_get_videos_landing_related_content_ajax($tv_show_no
     $videos_block['items'] = array_slice($videos_block['items'], 0, $limit);
     $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
     if ($is_new_design) {
-      $response['rendered'] = theme('usanetwork_tv_shows_landing_videos_items_new_design_block', $videos_block);
+      $response['rendered'] = theme('usanetwork_tv_shows_landing_items_new_design_block', $videos_block);
     }
     else {
       $response['rendered'] = theme('usanetwork_tv_shows_landing_videos_items_block', $videos_block);
@@ -3701,7 +3701,7 @@ function _usanetwork_tv_shows_landing_page_videos_new_design_block() {
         '!seasons_type' => $tag_seasons_type,
         '!show_name' => $tag_show_name,
       )),
-    'is_new_design' => $is_new_design,
+    'is_new_design' => $is_new_design ? TRUE : FALSE,
   ));
 
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
@@ -4045,7 +4045,7 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node,
   }
   $theme_variables = array(
     'ad' => $start_from == 0 ? FALSE : TRUE,
-    'ad_id' => $ad_id,
+    'ad_id' => 'advert-videos-landing-' . $ad_id,
     'is_even' => (($ad_id + 1) % 2 == 0) ? TRUE : FALSE,
     'items' => array(),
   );
@@ -4063,7 +4063,7 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node,
   }
   if ($render) {
     if ($is_new_design) {
-      return theme('usanetwork_tv_shows_landing_videos_items_new_design_block', $theme_variables);
+      return theme('usanetwork_tv_shows_landing_items_new_design_block', $theme_variables);
     }
     else {
       return theme('usanetwork_tv_shows_landing_videos_items_block', $theme_variables);
@@ -4075,12 +4075,84 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node,
 }
 
 function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $current_item_index, $is_even, $is_new_design) {
-  if (!$is_new_design) {
-    return _usanetwork_tv_shows_landing_page_vbget_videos_default_block_item($file, $current_item_index, $is_even);
+
+  $big_element_index = $is_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK - 1);
+  if ($is_new_design) {
+    $big_element_index = !$is_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK_NEW_DESIGN - 1);
+  }
+  if (!empty($file->field_promo_image_override)) {
+    $field_image_override = field_get_items('file', $file, 'field_promo_image_override');
+    $field_image_override = reset($field_image_override);
+    $image_url = $field_image_override['uri'];
   }
   else {
-    return  _usanetwork_tv_shows_landing_page_vbget_videos_new_design_block_item($file, $current_item_index, $is_even);
+    $image_url = _usanetwork_mpx_video_get_image_path($file);
   }
+
+  list($mobile_image, $desktop_image) = _usanetwork_tv_shows_landing_page_prepare_item_image($current_item_index, $image_url, $big_element_index, $is_new_design);
+  $own_promo_lines = _usanetwork_promo_pull_file_promo_details($file);
+  $icon_type = usanetwork_core_api_get_media_icon('file', $file->fid);
+
+  $theme_variables = array(
+    'classes' => NULL,
+    'custom_classes' => NULL,
+    'target_url' => url('file/' . $file->fid),
+    'media_icon' => !empty($icon_type) ? $icon_type : 'video-icon',
+    'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
+    'title' => !empty($own_promo_lines['promo_title'])
+      ? $own_promo_lines['promo_title']
+      : $file->filename,
+    'additional' => !empty($own_promo_lines['description'])
+      ? $own_promo_lines['description']
+      : '',
+    'image_mobile' => $mobile_image,
+    'image_desktop' => $desktop_image,
+    'is_new_design' => $is_new_design ? TRUE : FALSE,
+  );
+
+  $theme_name = ($current_item_index == $big_element_index)
+    ? 'usanetwork_tv_shows_landing_videos_item_big'
+    : 'usanetwork_tv_shows_landing_videos_item_small';
+
+  return theme($theme_name, $theme_variables);
+}
+
+/**
+ * Prepare an image for item of landing page.
+ *
+ * @param $current_item_index
+ * @param $image_url
+ * @param $big_element_index
+ * @return array
+ */
+function _usanetwork_tv_shows_landing_page_prepare_item_image($current_item_index, $image_url, $big_element_index, $is_new_design = FALSE) {
+  $mobile_image = '';
+  $desktop_image = '';
+  if (!empty($image_url)) {
+    if ($is_new_design) {
+      if ($current_item_index == $big_element_index) { // Big image
+        $mobile_image = image_style_url('719x414', $image_url);
+        $desktop_image = image_style_url('927x756', $image_url);
+        return array($mobile_image, $desktop_image);
+      }
+      else { // Small image
+        $desktop_image = image_style_url('456x372', $image_url);
+        return array($mobile_image, $desktop_image);
+      }
+    }
+    else {
+      if ($current_item_index == $big_element_index) { // Big image
+        $mobile_image = image_style_url('719x414', $image_url);
+        $desktop_image = image_style_url('927x756', $image_url);
+        return array($mobile_image, $desktop_image);
+      }
+      else { // Small image
+        $desktop_image = image_style_url('456x372', $image_url);
+        return array($mobile_image, $desktop_image);
+      }
+    }
+  }
+  return array($mobile_image, $desktop_image);
 }
 
 /**
@@ -4130,120 +4202,6 @@ function _usanetwork_tv_shows_landing_page_prepare_videos_data($show_node, $sele
 
   $result = array_splice($data, $start_from, $limit);
   return $result;
-}
-
-/**
- * Returns one item of block of videos page.
- * 
- * @param $file
- * @param $current_item_index
- * @param bool $is_item_even
- * @return mixed|string
- */
-function _usanetwork_tv_shows_landing_page_vbget_videos_default_block_item($file, $current_item_index, $is_item_even = FALSE) {
-  $big_element_index = $is_item_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK - 1);
-
-  if (!empty($file->field_promo_image_override)) {
-    $field_image_override = field_get_items('file', $file, 'field_promo_image_override');
-    $field_image_override = reset($field_image_override);
-    $image_url = $field_image_override['uri'];
-  }
-  else {
-    $image_url = _usanetwork_mpx_video_get_image_path($file);
-  }
-  $mobile_image = '';
-  $desktop_image = '';
-
-  if (!empty($image_url)) {
-    if ($current_item_index == $big_element_index) { // Big image
-      $mobile_image = image_style_url('719x414', $image_url);
-      $desktop_image = image_style_url('927x756', $image_url);
-    }
-    else { // Small image
-      $desktop_image = image_style_url('456x372', $image_url);
-    }
-  }
-  $own_promo_lines = _usanetwork_promo_pull_file_promo_details($file);
-  $icon_type = usanetwork_core_api_get_media_icon('file', $file->fid);
-
-  $theme_variables = array(
-    'classes' => NULL,
-    'custom_classes' => NULL,
-    'target_url' => url('file/' . $file->fid),
-    'media_icon' => !empty($icon_type) ? $icon_type : 'video-icon',
-    'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
-    'title' => !empty($own_promo_lines['promo_title'])
-      ? $own_promo_lines['promo_title']
-      : $file->filename,
-    'additional' => !empty($own_promo_lines['description'])
-      ? $own_promo_lines['description']
-      : '',
-    'image_mobile' => $mobile_image,
-    'image_desktop' => $desktop_image,
-  );
-
-  $theme_name = ($current_item_index == $big_element_index)
-    ? 'usanetwork_tv_shows_landing_videos_item_big'
-    : 'usanetwork_tv_shows_landing_videos_item_small';
-
-  return theme($theme_name, $theme_variables);
-}
-
-/**
- * Returns one item of block of videos page of new design.
- *
- * @param $file
- * @param $current_item_index
- * @param bool $is_item_even
- * @return mixed|string
- */
-function _usanetwork_tv_shows_landing_page_vbget_videos_new_design_block_item($file, $current_item_index, $is_item_even = FALSE) {
-  $big_element_index = !$is_item_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK_NEW_DESIGN - 1);
-
-  if (!empty($file->field_promo_image_override)) {
-    $field_image_override = field_get_items('file', $file, 'field_promo_image_override');
-    $field_image_override = reset($field_image_override);
-    $image_url = $field_image_override['uri'];
-  }
-  else {
-    $image_url = _usanetwork_mpx_video_get_image_path($file);
-  }
-  $mobile_image = '';
-  $desktop_image = '';
-
-  if (!empty($image_url)) {
-    if ($current_item_index == $big_element_index) { // Big image
-      $mobile_image = image_style_url('719x414', $image_url);
-      $desktop_image = image_style_url('927x756', $image_url);
-    }
-    else { // Small image
-      $desktop_image = image_style_url('456x372', $image_url);
-    }
-  }
-  $own_promo_lines = _usanetwork_promo_pull_file_promo_details($file);
-  $icon_type = usanetwork_core_api_get_media_icon('file', $file->fid);
-
-  $theme_variables = array(
-    'classes' => NULL,
-    'custom_classes' => NULL,
-    'target_url' => url('file/' . $file->fid),
-    'media_icon' => !empty($icon_type) ? $icon_type : 'video-icon',
-    'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
-    'title' => !empty($own_promo_lines['promo_title'])
-      ? $own_promo_lines['promo_title']
-      : $file->filename,
-    'additional' => !empty($own_promo_lines['description'])
-      ? $own_promo_lines['description']
-      : '',
-    'image_mobile' => $mobile_image,
-    'image_desktop' => $desktop_image,
-  );
-
-  $theme_name = ($current_item_index == $big_element_index)
-    ? 'usanetwork_tv_shows_landing_videos_item_big'
-    : 'usanetwork_tv_shows_landing_videos_item_small';
-
-  return theme($theme_name, $theme_variables);
 }
 
 /*

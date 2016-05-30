@@ -11,7 +11,7 @@
     <?php $i = 1; ?>
     <?php if ($is_even): ?>
       <?php foreach ($items as $item): ?>
-        <?php if ($i == 1): ?>
+        <?php if ($i == 1): ?>l
           <li class="block-item">
             <?php print $item; ?>
           </li>

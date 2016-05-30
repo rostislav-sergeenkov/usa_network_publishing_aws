@@ -408,6 +408,9 @@
     @include breakpoint($bp-min-1601-width) {
       padding: 0 20px 0;
     }
+    @include breakpoint($bp-768-width) {
+      padding: get-vw(40px, 768);
+    }
     &.infinity-finished {
       margin-bottom: 0;
     }
@@ -475,6 +478,9 @@
         height: calc(((1600px - 2*20px - 16px)/2)*0.8203125);
         max-width: 1560px;
       }
+      @include breakpoint($bp-768-width) {
+        height: auto;
+      }
       li {
         float: left;
         height: calc((100% - #{get-vw(16px, 1600)})/2);
@@ -488,9 +494,9 @@
           width: calc((((100% - 16px)/2) - 16px)/2);
         }
         @include breakpoint($bp-768-width) {
-          height: 37.96vw;
-          margin-bottom: 1.6vw;
-          width: 100%;
+          height: auto;
+          margin-right: 0;
+          width: calc((100% - #{get-vw(18px, 640)})/2);
         }
         @extend %usa-landing-container-promo;
       }
@@ -502,20 +508,34 @@
             @include breakpoint($bp-min-1601-width) {
               width: calc((100% - 16px)/2);
             }
+            @include breakpoint($bp-768-width) {
+              height: auto;
+              margin-bottom: get-vw(55px, 640);
+              width: 100%;
+            }
           }
           &:nth-child(2), &:nth-child(3) {
             margin-bottom: get-vw(16px, 1600);
             @include breakpoint($bp-min-1601-width) {
               margin-bottom: 16px;
             }
+            @include breakpoint($bp-768-width) {
+              margin-bottom: get-vw(55px, 640);
+            }
           }
           &:nth-child(3), &:nth-child(5) {
             margin-right: 0;
+            @include breakpoint($bp-768-width) {
+              float: right;
+            }
           }
         }
       }
       &.even {
         li {
+          @include breakpoint($bp-768-width) {
+            margin-bottom: get-vw(55px, 640);
+          }
           &:nth-child(5) {
             height: 100%;
             margin-right: 0;
@@ -526,15 +546,32 @@
             @include breakpoint($bp-min-1601-width) {
               width: calc((100% - 16px)/2);
             }
+            @include breakpoint($bp-768-width) {
+              height: auto;
+              margin-bottom: 0;
+              position: relative;
+              width: 100%;
+            }
           }
           &:nth-child(1), &:nth-child(2) {
             margin-bottom: get-vw(16px, 1600);
             @include breakpoint($bp-min-1601-width) {
               margin-bottom: 16px;
             }
+            @include breakpoint($bp-768-width) {
+              margin-bottom: get-vw(55px, 640);
+            }
           }
           &:nth-child(3) {
             clear: left;
+            @include breakpoint($bp-768-width) {
+              clear: none;
+            }
+          }
+          &:nth-child(2), &:nth-child(4) {
+            @include breakpoint($bp-768-width) {
+              float: right;
+            }
           }
         }
       }

@@ -2511,7 +2511,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     'tune_in_date' => isset($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : NULL,
     'social_icons' => $social_links,
     'show_menu_tab_items' => $show_menus,
-    'sign_up_block' => $sign_up_block,
+    'sign_up_block' => isset($sign_up_block) ? $sign_up_block : NULL,
   ));
 }
 

@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -40498,6 +40498,11 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     height: 2.8125vw;
   }
 }
+@media (min-width: 1601px) {
+  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block .title {
+    height: 45px;
+  }
+}
 @media (max-width: 768px) {
   header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block .title {
     height: 4.03646vw;
@@ -40861,15 +40866,15 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     height: 90px;
   }
 }
-@media (min-width: 769px) {
+@media (min-width: 1601px) {
   .show-new-design .usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
     padding-left: 0;
     padding-right: 0;
-    -webkit-transition: all 0.5s ease-out 0s;
-    -moz-transition: all 0.5s ease-out 0s;
-    -o-transition: all 0.5s ease-out 0s;
-    transition: all 0.5s ease-out 0s;
   }
+}
+.show-new-design .usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
 }
 @media (min-width: 769px) {
   .show-new-design .usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block-inner,

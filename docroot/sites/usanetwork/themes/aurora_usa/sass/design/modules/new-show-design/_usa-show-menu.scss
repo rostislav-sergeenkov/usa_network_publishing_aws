@@ -308,7 +308,7 @@
               height: get-vw(45px, 1600);
             }
             @include breakpoint($bp-min-1601-width) {
-              //height: 45px;
+              height: 45px;
             }
             @include breakpoint($bp-768-width) {
               height: get-vw(31px, 768);
@@ -612,31 +612,19 @@
   }
 .show-new-design {
   #head-leaderboard {
-    //-webkit-transition: height 0.5s ease-out 0s;
-    //-moz-transition: height 0.5s ease-out 0s;
-    //-o-transition: height 0.5s ease-out 0s;
-    //transition: height 0.5s ease-out 0s;
     @include breakpoint($bp-min-769-width) {
       height: 90px;
     }
   }
   .usa-sticky-header {
-    //#head-leaderboard {
-    //  @include breakpoint($bp-min-769-width) {
-    //    height: 0;
-    //    visibility: hidden;
-    //  }
-    //}
     #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
       @include breakpoint($bp-min-1601-width) {
         padding-left: 0;
         padding-right: 0;
       }
-      @include breakpoint($bp-min-769-width) {
-        -webkit-transition: all 0.5s ease-out 0s;
-        -moz-transition: all 0.5s ease-out 0s;
-        -o-transition: all 0.5s ease-out 0s;
-        transition: all 0.5s ease-out 0s;
+      .bottom-menu-block {
+        border-bottom: 1px solid;
+        border-top: 1px solid;
       }
       .top-menu-block-inner,
       .bottom-menu-block-inner {
@@ -648,6 +636,4 @@
     }
   }
 }
-
-
 

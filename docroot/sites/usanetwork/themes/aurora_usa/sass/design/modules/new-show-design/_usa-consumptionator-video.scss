@@ -170,6 +170,11 @@
                   display: none;
                 }
               }
+              .meta-wrapper {
+                @include breakpoint($bp-640-width) {
+                  padding: get-vw(15px, 640) get-vw(20px, 640) 0;
+                }
+              }
             }
             .node {
               &.active {

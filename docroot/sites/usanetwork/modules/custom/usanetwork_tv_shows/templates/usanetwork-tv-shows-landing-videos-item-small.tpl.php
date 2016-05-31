@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div class="node node-usanetwork-promo small <?php print (!empty($is_new_design))? 'usa-landing-container-promo': 'three-line-video-large'; ?><?php if (!empty($classes)): print ' ' . $classes; endif; ?><?php if (!empty($custom_classes)): print ' ' . $custom_classes; endif; ?>">
+<div class="node node-usanetwork-promo small <?php print ($is_new_design)? 'usa-landing-container-promo': 'three-line-video'; ?><?php if (!empty($classes)): print ' ' . $classes; endif; ?><?php if (!empty($custom_classes)): print ' ' . $custom_classes; endif; ?>">
   <?php if (!empty($target_url)): ?>
     <a href="<?php print $target_url; ?>">
       <div class="asset-img">
@@ -17,7 +17,7 @@
           <div class="meta">
             <?php if (!empty($caption)): ?>
               <div class="caption">
-                <?php if (!empty($is_new_design)): ?>
+                <?php if ($is_new_design): ?>
                   <span class="show-color"><?php print $caption; ?></span>
                 <?php else: ?>
                   <?php print $caption; ?>

@@ -4132,12 +4132,12 @@ function _usanetwork_tv_shows_landing_page_prepare_item_image($current_item_inde
   if (!empty($image_url)) {
     if ($is_new_design) {
       if ($current_item_index == $big_element_index) { // Big image
-        $mobile_image = image_style_url('719x414', $image_url);
+        $mobile_image = image_style_url('675x303', $image_url);
         $desktop_image = image_style_url('927x756', $image_url);
         return array($mobile_image, $desktop_image);
       }
       else { // Small image
-        $desktop_image = image_style_url('456x372', $image_url);
+        $desktop_image = image_style_url('507x285', $image_url);
         return array($mobile_image, $desktop_image);
       }
     }

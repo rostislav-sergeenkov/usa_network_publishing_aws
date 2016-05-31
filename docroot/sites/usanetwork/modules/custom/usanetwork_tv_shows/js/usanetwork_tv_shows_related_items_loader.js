@@ -73,8 +73,8 @@
         var url = Drupal.settings.basePath + 'ajax/' + service_name + '/get-related/'+ nid +'/'+ start_from +'/'+ limit + additional_arguments;
       }
       $('.ajax-load-block .load-more-link a').after('<div id="load-more-loader-js"></div>');
-
-      addSpinJs('load-more-loader-js', 'consumptionator-page', '#ffffff');
+      var bodyClass = ($('body').hasClass('show-new-design'))? 'show-new-design': 'consumptionator-page';
+      addSpinJs('load-more-loader-js', bodyClass, '#ffffff');
 
       $.ajax({
         type: 'GET',

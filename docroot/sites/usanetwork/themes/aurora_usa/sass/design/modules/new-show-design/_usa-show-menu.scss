@@ -319,11 +319,16 @@
       }
     }
     .top-menu-block {
-      @include clear();
-      position: relative;
       @include breakpoint($bp-768-width) {
         border-bottom: 2px solid;
         padding: get-vw(20px, 768) get-vw(28px, 768) 0 get-vw(12px, 768);
+      }
+      .top-menu-block-inner {
+        @include clear();
+        margin: 0 auto;
+        max-width: 1600px;
+        position: relative;
+        width: 100%;
       }
       .logo-block {
         background: url('../images/logo-usa-new-design.png') no-repeat;
@@ -505,11 +510,9 @@
       }
     }
     .bottom-menu-block {
-      @include clear();
       border-bottom: 2px solid;
       border-top: 2px solid;
       height: get-vw(60px, 1280);
-      position: relative;
       width: 100%;
       @include breakpoint($bp-min-1601-width) {
         height: 75px;
@@ -519,6 +522,13 @@
         display: none;
         height: auto;
         position: absolute;
+      }
+      .bottom-menu-block-inner {
+        @include clear();
+        margin: 0 auto;
+        max-width: 1600px;
+        position: relative;
+        width: 100%;
       }
       .show-menu-tab {
         float: left;
@@ -602,23 +612,28 @@
   }
 .show-new-design {
   #head-leaderboard {
-    -webkit-transition: height 0.5s ease-out 0s;
-    -moz-transition: height 0.5s ease-out 0s;
-    -o-transition: height 0.5s ease-out 0s;
-    transition: height 0.5s ease-out 0s;
     @include breakpoint($bp-min-769-width) {
       height: 90px;
     }
   }
   .usa-sticky-header {
-    #head-leaderboard {
-      @include breakpoint($bp-min-769-width) {
-        height: 0;
-        visibility: hidden;
+    #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+      @include breakpoint($bp-min-1601-width) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .bottom-menu-block {
+        border-bottom: 1px solid;
+        border-top: 1px solid;
+      }
+      .top-menu-block-inner,
+      .bottom-menu-block-inner {
+        @include breakpoint($bp-min-769-width) {
+          margin: 0 auto;
+          max-width: 1600px;
+        }
       }
     }
   }
 }
-
-
 

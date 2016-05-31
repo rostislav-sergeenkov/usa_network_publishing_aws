@@ -276,6 +276,7 @@ function _usanetwork_episodes_episodes_carousel() {
           $season_num_items = reset($season_num_items);
           $season_number = $season_num_items['value'];
         }
+        $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $episode_node);
         foreach ($episodes as $episode) {
           $own_promo_lines = _usanetwork_promo_node_get_promo_lines($episode);
           if (!empty($episode->field_tv_cover_media)) {
@@ -296,11 +297,12 @@ function _usanetwork_episodes_episodes_carousel() {
             'season_number' => !empty($season_number) ? $season_number : '',
             'icon_type' => usanetwork_core_api_get_media_icon('node', $episode->nid),
           );
-          $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
-          $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-          $rendered_items['horizontal'][] = theme('usanetwork_episodes_episodes_carousel_item_h', $episode_variables);
           $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
           $rendered_items['vertical'][] = theme('usanetwork_episodes_episodes_carousel_item_v', $episode_variables);
+          $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
+          $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
+          $episode_variables['new_design'] = $is_new_design;
+          $rendered_items['horizontal'][] = theme('usanetwork_episodes_episodes_carousel_item_h', $episode_variables);
         }
         if (!empty($season_node->field_show)) {
           $field_show_items = field_get_items('node', $season_node, 'field_show');
@@ -364,6 +366,7 @@ function _usanetwork_episodes_main_block() {
       $navigation_links = _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season->nid, $episode_num, $season_num);
     }
     $body = !empty($episode_node->body) ? $episode_node_wrapper->body->value->value() : '';
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_id);
     $theme_variables = array(
       'sharebar' => usanetwork_menu_render_sharebar($episode_node, 'node', t('Share'), $episode_node->title , $body),
       'episode_title' => $episode_node->title,
@@ -374,6 +377,7 @@ function _usanetwork_episodes_main_block() {
       'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
       'air_date_text' => !empty($episode_node->field_original_air_date) ? gmdate('F j, Y', $episode_node_wrapper->field_original_air_date->value->value()) : '',
       'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
+      'new_design' => $is_new_design,
     );
     $block = module_invoke('usanetwork_episodes', 'block_view', 'usanetwork_episodes_ep_carousel');
     $theme_variables['ep_carousel'] = render($block['content']);

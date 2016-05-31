@@ -27,12 +27,6 @@
           <?php foreach ($show_menu_tab_items as $show_menu_tab_item): ?>
             <li><?php print $show_menu_tab_item['main_link']; ?></li>
           <?php endforeach; ?>
-          <?php if (!empty($sign_up_block)) : ?>
-            <li>
-              <a href="<?php print $sign_up_url; ?>"
-                 class="secondary show-color show-font"><?php print $sign_up_title; ?></a>
-            </li>
-          <?php endif; ?>
         </ul>
       <?php endif; ?>
     </div>

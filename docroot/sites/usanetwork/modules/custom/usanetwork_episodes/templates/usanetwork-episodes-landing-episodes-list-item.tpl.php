@@ -51,7 +51,7 @@
       </div>
       <div class="links">
         <?php if (!empty($guide_url)): ?>
-          <a class="guide-url" href="<?php print $guide_url; ?>"><?php print t('Read the guide'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a>
+          <a class="guide-url" href="<?php print $guide_url; ?>"><?php print (!empty($new_design)) ? t('Read the recap') : t('Read the guide'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a>
         <?php endif; ?>
         <?php if (!empty($gallery_url)): ?>
           <a class="gallery-url" href="<?php print $gallery_url; ?>"><?php print t('View the gallery'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a>

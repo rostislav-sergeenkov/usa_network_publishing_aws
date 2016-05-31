@@ -443,22 +443,22 @@ function usanetwork_tv_shows_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '19',
-        ),
-        'metatags' => array(
-          'weight' => '18',
-        ),
-        'flag' => array(
           'weight' => '20',
         ),
-        'redirect' => array(
+        'metatags' => array(
+          'weight' => '19',
+        ),
+        'flag' => array(
           'weight' => '21',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '22',
         ),
-        'locations' => array(
+        'xmlsitemap' => array(
           'weight' => '23',
+        ),
+        'locations' => array(
+          'weight' => '24',
         ),
       ),
       'display' => array(),

@@ -5,6 +5,7 @@
  * Code for the usanetwork_tv_shows feature.
  */
 include_once 'usanetwork_tv_shows.features.inc';
+include_once 'usanetwork_tv_shows.admin.inc';
 
 define('USANETWORK_TV_SHOWS_FIELD_NAME', 'field_show');
 define('USANETWORK_TV_SHOWS_CAROUSEL_NUMBER', 3);
@@ -96,6 +97,21 @@ function usanetwork_tv_shows_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['admin/usanetwork/where_to_watch'] = array(
+    'title' => t('Where to watch settings'),
+    'page callback' => '_usanetwork_tv_shows_where2watch_settings',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_tv_shows.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  $items['admin/usanetwork/where_to_watch/%/delete'] = array(
+    'title' => t('Where to watch: Delete Provider'),
+    'page callback' => '_usanetwork_tv_shows_where2watch_table_delete',
+    'page arguments' => array(3),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_tv_shows.admin.inc',
+  );
   return $items;
 }
 
@@ -1615,6 +1631,16 @@ function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, 
       ':input[name="field_relevant_content_modes[und]"]' => array('value' => 'manual'),
     )
   );
+
+  $providers_name = _usanetwork_tv_show_where2watch_get_providers();
+  if (!empty($providers_name)) {
+    $providers_list = implode("\r\n", $providers_name);
+    foreach ($form['field_where2watch_providers'][$form_language] as $key => $element) {
+      if (is_numeric($key)) {
+        $form['field_where2watch_providers'][$form_language][$key]['#field']['widget']['settings']['default_titles'] = $providers_list;
+      }
+    }
+  }
 }
 
 /**

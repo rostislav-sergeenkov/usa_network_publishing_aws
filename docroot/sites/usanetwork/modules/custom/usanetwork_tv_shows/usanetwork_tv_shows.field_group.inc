@@ -698,9 +698,9 @@ function usanetwork_tv_shows_field_group_info() {
       1 => 'field_tvs_spec_features',
       2 => 'group_bcd_spot',
       3 => 'group_best_of_section',
-      4 => 'group_relevant_content',
-      5 => 'group_service',
-      6 => 'group_episodes_section',
+      4 => 'group_episodes_section',
+      5 => 'group_relevant_content',
+      6 => 'group_service',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1182,7 +1182,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'slideshow options',
-    'weight' => '70',
+    'weight' => '25',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1650,6 +1650,34 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_usa_show_follow|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_where_to_watch|node|tv_show|form';
+  $field_group->group_name = 'group_where_to_watch';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Where To Watch',
+    'weight' => '18',
+    'children' => array(
+      0 => 'field_where2watch_providers',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Where To Watch',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $export['group_where_to_watch|node|tv_show|form'] = $field_group;
 
   return $export;
 }

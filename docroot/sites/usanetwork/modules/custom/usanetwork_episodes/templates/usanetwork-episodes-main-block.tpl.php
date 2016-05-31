@@ -35,6 +35,10 @@
                 <?php endif; ?>
               </a>
             </div>
+          <?php elseif (!empty($new_design)): ?>
+            <div class="episode-button show-color">
+              <a href="#"><?php print t('Where to watch'); ?></a>
+            </div>
           <?php endif; ?>
         </div>
       </div>

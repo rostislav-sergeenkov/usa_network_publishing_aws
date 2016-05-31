@@ -237,6 +237,11 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               height: auto;
               padding: get-vw(40px, 640) get-vw(40px, 640) 0;
             }
+            .meta-wrapper {
+              @include breakpoint($bp-640-width) {
+                padding: get-vw(15px, 640) get-vw(20px, 640) 0;
+              }
+            }
             &:nth-child(n+4) {
               @include breakpoint($bp-640-width) {
                 display: none;

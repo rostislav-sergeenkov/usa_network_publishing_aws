@@ -28,8 +28,12 @@
         <div class="share">
           <?php print $sharebar; ?>
           <?php if (!empty($episode_video_link)): ?>
-            <div class="episode-button show-color">
-              <a href="<?php print $episode_video_link; ?>"><?php print t('Watch the episode'); ?></a>
+            <div class="episode-button <?php print ($new_design)? 'show-border': 'show-color'; ?>">
+              <a href="<?php print $episode_video_link; ?>"><?php print t('Watch the episode'); ?>
+                <?php if($new_design): ?>
+                  <span class="show-color show-font"></span>
+                <?php endif; ?>
+              </a>
             </div>
           <?php elseif (!empty($new_design)): ?>
             <div class="episode-button show-color">

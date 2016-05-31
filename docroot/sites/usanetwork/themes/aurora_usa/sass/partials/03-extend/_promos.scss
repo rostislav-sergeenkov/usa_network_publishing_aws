@@ -3347,7 +3347,7 @@
       @include breakpoint($bp-640-width) {
         bottom: auto;
         left: auto;
-        padding: get-vw(15px, 640) get-vw(20px, 640) 0;
+        padding: 0 get-vw(20px, 640) 0;
         position: relative;
       }
     }

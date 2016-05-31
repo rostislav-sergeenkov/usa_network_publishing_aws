@@ -3390,6 +3390,41 @@
       height: 100%;
       width: 100%;
     }
+    .meta-icon {
+      background-image: none;
+      border: 2px solid;
+      border-radius: 50%;
+      border-color: rgba(200,200,200,0.8);
+      box-sizing: content-box;
+      height: get-vw(70px, 1600);
+      line-height: get-vw(70px, 1600);
+      width: get-vw(70px, 1600);
+      @include breakpoint($bp-min-1601-width) {
+        height: 70px;
+        line-height: 70px;
+        width: 70px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: get-vw(70px, 768);
+        line-height: get-vw(70px, 768);
+        width: get-vw(70px, 768);
+      }
+      &:after {
+        color: rgba(200,200,200,0.8);
+        display: block;
+        content: '\e627';
+        font-family: $ico-font;
+        font-size: get-vw(55px, 1600);
+        position: relative;
+        text-align: center;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 55px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(55px, 768);
+        }
+      }
+    }
     .meta {
       .caption {
         display: block;
@@ -3461,11 +3496,16 @@
       }
       .meta-icon {
         left: 50%;
-        margin-left: -18.5px;
-        margin-top: calc(28.125% - 18.5px);
+        margin-left: get-vw(-37px, 1600);
+        margin-top: calc(28.125% - #{get-vw(37px, 1600)});
+        @include breakpoint($bp-min-1601-width) {
+          margin-left: -37px;
+          margin-top: calc(28.125% - 37px);
+        }
         @include breakpoint($bp-768-width) {
           bottom: 100%;
-          margin-bottom: calc(28.125% - 18.5px);
+          margin-bottom: calc(28.125% - #{get-vw(37px, 768)});
+          margin-left: get-vw(-37px, 768);
           margin-top: 0;
           top: auto
         }
@@ -3572,13 +3612,19 @@
       }
       .meta-icon {
         left: 50%;
-        margin-left: -18.5px;
-        margin-top: -18.5px;
+        margin-left: get-vw(-37px, 1600);
+        margin-top: get-vw(-37px, 1600);
         top: 50%;
+        @include breakpoint($bp-min-1601-width) {
+          margin-left: -37px;
+          margin-top: -37px;
+        }
         @include breakpoint($bp-768-width) {
           bottom: 100%;
-          margin-bottom: calc(21.875% - 18.5px);
-          top: auto
+          margin-bottom: calc(21.875% - #{get-vw(37px, 768)});
+          margin-left: get-vw(-37px, 768);
+          margin-top: auto;
+          top: auto;
         }
       }
       .meta {

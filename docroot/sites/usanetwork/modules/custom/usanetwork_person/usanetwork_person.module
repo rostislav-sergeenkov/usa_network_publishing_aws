@@ -213,6 +213,11 @@ function usanetwork_person_block_info() {
     'info' => t('Usanetwork person: Cast landing cast & crew'),
     'cache' => DRUPAL_NO_CACHE,
   );
+
+  $blocks['usanetwork_person_where2watch'] = array(
+    'info' => t('Usanetwork person: Cast landing Where To Watch'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -261,6 +266,11 @@ function usanetwork_person_block_view($delta = '') {
       $block['content'] = array(
         '#markup' => _usanetwork_person_render_cast_crew_block(),
       );
+      break;
+
+    case 'usanetwork_person_where2watch':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_person_render_where2watch_block();
       break;
   }
 
@@ -683,3 +693,8 @@ function usanetwork_person_usa_omniture_alter(&$omniture_variables, $context) {
     }
   }
 }
+
+function _usanetwork_person_render_where2watch_block() {
+
+}
+

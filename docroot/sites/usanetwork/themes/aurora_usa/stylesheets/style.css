@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -47552,7 +47552,21 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 @media (max-width: 768px) {
   .show-new-design .landing-page-container .landing-items-blocks ul.odd li:nth-child(3), .show-new-design .landing-page-container .landing-items-blocks ul.odd li:nth-child(5) {
-    float: right;
+    clear: right;
+  }
+}
+.show-new-design .landing-page-container .landing-items-blocks ul.odd li:nth-child(2), .show-new-design .landing-page-container .landing-items-blocks ul.odd li:nth-child(4) {
+  margin-right: 0.99375vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design .landing-page-container .landing-items-blocks ul.odd li:nth-child(2), .show-new-design .landing-page-container .landing-items-blocks ul.odd li:nth-child(4) {
+    margin-right: 15.9px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .landing-page-container .landing-items-blocks ul.odd li:nth-child(2), .show-new-design .landing-page-container .landing-items-blocks ul.odd li:nth-child(4) {
+    clear: left;
+    margin-right: 2.79687vw;
   }
 }
 @media (max-width: 768px) {
@@ -47602,9 +47616,23 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     clear: none;
   }
 }
+.show-new-design .landing-page-container .landing-items-blocks ul.even li:nth-child(1), .show-new-design .landing-page-container .landing-items-blocks ul.even li:nth-child(3) {
+  margin-right: 0.99375vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design .landing-page-container .landing-items-blocks ul.even li:nth-child(1), .show-new-design .landing-page-container .landing-items-blocks ul.even li:nth-child(3) {
+    margin-right: 15.9px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .landing-page-container .landing-items-blocks ul.even li:nth-child(1), .show-new-design .landing-page-container .landing-items-blocks ul.even li:nth-child(3) {
+    clear: left;
+    margin-right: 2.79687vw;
+  }
+}
 @media (max-width: 768px) {
   .show-new-design .landing-page-container .landing-items-blocks ul.even li:nth-child(2), .show-new-design .landing-page-container .landing-items-blocks ul.even li:nth-child(4) {
-    float: right;
+    clear: right;
   }
 }
 

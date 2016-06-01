@@ -56,7 +56,7 @@
             });
 
         // usa newsletter subscription
-        $('#usa-newsletter-subscription .close-form').on('click', function (e) {
+        $('#usa-newsletter-subscription').on('click', '.close-form', function (e) {
 
           var $menuSignUp = $('#header .menu-sign-up'),
               $formBlock = $('#usa-newsletter-subscription'),

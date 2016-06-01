@@ -691,9 +691,11 @@ function usanetwork_context_context_default_contexts() {
   $context->conditions = array(
     'new_design_consumpt' => array(
       'values' => array(
+        'catchall_page' => 'catchall_page',
         'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'person' => 'person',
+        'timeline_gallery' => 'timeline_gallery',
         'tv_episode' => 'tv_episode',
       ),
     ),

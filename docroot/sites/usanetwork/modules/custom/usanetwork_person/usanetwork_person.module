@@ -87,6 +87,11 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork_person-cast-recap-block',
     ),
+    'usanetwork_person_where2watch' => array(
+      'variables' => array(
+      ),
+      'template' => 'templates/usanetwork-person-where2watch',
+    )
   );
 }
 
@@ -213,6 +218,11 @@ function usanetwork_person_block_info() {
     'info' => t('Usanetwork person: Cast landing cast & crew'),
     'cache' => DRUPAL_NO_CACHE,
   );
+
+  $blocks['usanetwork_person_where2watch'] = array(
+    'info' => t('Usanetwork person: Cast landing Where To Watch'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -261,6 +271,11 @@ function usanetwork_person_block_view($delta = '') {
       $block['content'] = array(
         '#markup' => _usanetwork_person_render_cast_crew_block(),
       );
+      break;
+
+    case 'usanetwork_person_where2watch':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_person_render_where2watch_block();
       break;
   }
 
@@ -682,5 +697,78 @@ function usanetwork_person_usa_omniture_alter(&$omniture_variables, $context) {
         $omniture_variables['s.prop5'] = "Actor Bio";
       }
     }
+  }
+}
+
+/*
+ * Where to Watch Block
+ */
+function _usanetwork_person_render_where2watch_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $show_node = menu_get_object();
+
+  if (empty($show_node) || (!empty($show_node) && isset($show_node->type) && $show_node->type != 'tv_show')) {
+    return '';
+  }
+
+  $cache_name = 'tv_show_where2watch_' . $show_node->nid;
+
+  $cache = cache_get($cache_name);
+
+  if (empty($cache)) {
+
+    $query = db_select('file_managed', 'fm');
+    $query->fields('fm', array('fid'));
+    $query->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+    $query->join('mpx_video', 'mpx_video', 'fm.fid=mpx_video.fid');
+    $query->condition('mpx_video.status', FILE_PUBLISHED);
+    $query->join('field_data_field_show', 'field_show', 'fm.fid=field_show.entity_id');
+    $query->condition('field_show.field_show_target_id', $show_node->nid);
+    $query->join('field_data_field_mpx_full_episode', 'full_episode', 'fm.fid=full_episode.entity_id');
+    $query->condition('full_episode.field_mpx_full_episode_value', '1');
+    $query->range(0, 1);
+
+    $is_full_exist = $query->execute()->fetchAll();
+
+    if ($is_full_exist) {
+      $usa_now_path = url('node/' . $show_node->nid . '/episodes');
+    }
+
+    $providers_logo = variable_get('where2watch_providers', array());
+
+    $providers = field_get_items('node', $show_node, 'field_where2watch_providers');
+
+    $elements = array();
+
+    if (!empty($providers)) {
+      foreach ($providers as $provider) {
+        $logo_key = array_search($provider['title'], array_column($providers_logo, 'name'));
+        $image_fid = $providers_logo[$logo_key]['image'];
+        $image_file = file_load($image_fid);
+        $elements[] = array(
+          'url' => $provider['url'],
+          'image' => image_style_url('thumbnail', $image_file->uri),
+        );
+      }
+    }
+    cache_set($cache_name, $elements, 'cache', REQUEST_TIME + 60 * 60);
+  } else {
+    $elements = $cache->data;
+  }
+
+  if ($elements) {
+    $theme_vars = array(
+      'title' => t('Where to Watch'),
+      'description' => t('Mr. Robot is also available for streaming or purchase from the following providers and apps.'),
+      'usa_now_path' => isset($usa_now_path) ? $usa_now_path : NULL,
+      'elements' => $elements,
+    );
+
+    return theme('usanetwork_person_where2watch', $theme_vars);
+  } else {
+    return NULL;
   }
 }

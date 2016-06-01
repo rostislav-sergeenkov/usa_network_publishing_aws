@@ -18188,7 +18188,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
         'urls_search' => 'start',
       ),
       'type' => 'advanced_link',
-      'weight' => 160,
+      'weight' => 137,
     ),
   );
 

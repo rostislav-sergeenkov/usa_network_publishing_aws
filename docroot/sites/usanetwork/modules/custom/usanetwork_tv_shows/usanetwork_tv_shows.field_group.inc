@@ -1049,6 +1049,7 @@ function usanetwork_tv_shows_field_group_info() {
       0 => 'group_cast_main',
       1 => 'group_cast_recap',
       2 => 'group_social_meter',
+      3 => 'group_where_to_watch',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1659,14 +1660,14 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'tv_show';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_show_cast_landing';
   $field_group->data = array(
     'label' => 'Where To Watch',
-    'weight' => '18',
+    'weight' => '136',
     'children' => array(
       0 => 'field_where2watch_providers',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Where To Watch',
       'instance_settings' => array(
@@ -1674,7 +1675,7 @@ function usanetwork_tv_shows_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'closed',
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_where_to_watch|node|tv_show|form'] = $field_group;

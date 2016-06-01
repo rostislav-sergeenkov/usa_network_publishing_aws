@@ -123,6 +123,7 @@ function _usanetwork_tv_show_get_episodes($show) {
         }
       }
     }
+    cache_set($cache_name, $result, 'cache', REQUEST_TIME + 60 * 60);
   } else {
     $result = $cache->data;
   }

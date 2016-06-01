@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -12686,6 +12686,9 @@ footer .block-usanetwork-lyris {
   footer .block-usanetwork-lyris {
     padding: 9.3px 0;
   }
+}
+footer .block-usanetwork-lyris form .close-form {
+  display: none;
 }
 footer .block-usanetwork-lyris form > div {
   margin: 0 auto;
@@ -41219,6 +41222,264 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 
+#header .menu-sign-up.active-link {
+  background-color: #1e1e1e !important;
+}
+
+.usa-newsletter-subscription-wrap {
+  background-color: #1e1e1e;
+  height: auto;
+  left: 0;
+  top: calc(100% - 2px);
+  position: absolute;
+  min-width: 300px;
+  width: 100%;
+}
+
+#usa-newsletter-subscription {
+  border-bottom: 2px solid;
+  box-sizing: border-box;
+  display: none;
+  padding: 1.95313vw 0;
+  vertical-align: middle;
+}
+#usa-newsletter-subscription .ajax-progress .throbber {
+  display: none;
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper {
+  color: #cacaca;
+  font-family: "firasansregular", sans-serif;
+  font-size: 1.17188vw;
+  line-height: 3.125vw;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper input {
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .close-form {
+  display: inline-block;
+  border: 0;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1.5625vw;
+  font-family: "firasanslight", sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
+  line-height: 3.125vw;
+  height: 3.125vw;
+  margin-left: 3.125vw;
+  padding: 0 1.40625vw 0 1.5625vw;
+  position: relative;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .close-form {
+    font-size: 20px;
+    line-height: 40px;
+    height: 40px;
+    margin-left: 40px;
+    padding: 0 18px 0 20px;
+  }
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .close-form:after {
+  color: #ffffff;
+  content: "\e62e";
+  display: inline-block;
+  font-family: "ico-font";
+  font-size: 1.09375vw;
+  line-height: 3.125vw;
+  margin-left: 0.9375vw;
+  vertical-align: middle;
+}
+@media (min-width: 1601px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .close-form:after {
+    font-size: 14px;
+    line-height: 40px;
+    margin-left: 12px;
+  }
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .placeholder {
+  font-style: normal;
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper label {
+  display: inline-block;
+  margin-right: 1.95313vw;
+  vertical-align: middle;
+}
+@media (min-width: 1601px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper label {
+    margin-right: 25px;
+  }
+}
+@media (max-width: 1024px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper label {
+    margin-right: 1.46484vw;
+  }
+}
+@media (max-width: 768px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper label {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email {
+  border: 1px solid #484848;
+  display: inline-block;
+  margin: 0;
+  margin-right: 1.95313vw;
+  vertical-align: middle;
+}
+@media (min-width: 1601px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email {
+    margin-right: 25px;
+  }
+}
+@media (max-width: 1024px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email {
+    margin-right: 1.46484vw;
+  }
+}
+@media (max-width: 768px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email {
+    border: 0;
+  }
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email input {
+  color: #d0d0d0;
+  background: none;
+  box-sizing: border-box;
+  border: 1px solid #515151;
+  display: block;
+  font-family: "firasansregular", sans-serif;
+  font-size: 1.40625vw;
+  line-height: 3.125vw;
+  height: 3.125vw;
+  padding: 0 1.17188vw;
+  outline: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email input::-webkit-input-placeholder {
+  color: #d0d0d0;
+  text-transform: uppercase;
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email input::-moz-placeholder {
+  color: #d0d0d0;
+  text-transform: uppercase;
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email input:-moz-placeholder {
+  color: #d0d0d0;
+  text-transform: uppercase;
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email input:-ms-input-placeholder {
+  color: #d0d0d0;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email input {
+    font-size: 18px;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 15px;
+  }
+}
+@media (max-width: 1024px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email input {
+    font-size: 1.75781vw;
+    line-height: 2.92969vw;
+    padding: 0 1.46484vw;
+  }
+}
+@media (max-width: 768px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-item-email input {
+    font-size: 2.34375vw;
+    line-height: 3.90625vw;
+    padding: 0 1.95313vw;
+  }
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-submit-wrapper {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-submit-wrapper input {
+  border: 0;
+  color: #ffffff;
+  font-size: 1.5625vw;
+  font-family: "firasanslight", sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
+  line-height: 3.125vw;
+  height: 3.125vw;
+  padding: 0 1.40625vw 0 1.5625vw;
+  position: relative;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-submit-wrapper input {
+    font-size: 20px;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 18px 0 20px;
+  }
+}
+@media (max-width: 1024px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-submit-wrapper input {
+    font-size: 1.75781vw;
+    line-height: 2.92969vw;
+    padding: 0 1.46484vw;
+  }
+}
+@media (max-width: 768px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-submit-wrapper input {
+    font-size: 2.34375vw;
+    line-height: 3.90625vw;
+    padding: 0 1.95313vw;
+  }
+}
+#usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-submit-wrapper input:after {
+  color: #ffffff;
+  content: "\e608";
+  display: inline-block;
+  font-family: "ico-font";
+  font-size: 1.56098vw;
+  line-height: 3.125vw;
+  margin-left: 0.9375vw;
+  vertical-align: middle;
+}
+@media (min-width: 1601px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-submit-wrapper input:after {
+    line-height: 40px;
+    margin-left: 12px;
+  }
+}
+@media (max-width: 1024px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-submit-wrapper input:after {
+    font-size: 1.17188vw;
+    line-height: 2.92969vw;
+    margin-left: 1.17188vw;
+  }
+}
+@media (max-width: 768px) {
+  #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper .form-submit-wrapper input:after {
+    font-size: 1.5625vw;
+    line-height: 3.90625vw;
+    margin-left: 1.5625vw;
+  }
+}
+
 .usa-show-aspot {
   background: #181818;
   height: 40.85938vw;
@@ -43579,6 +43840,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-related-content-block .line-block .slider-wrap {
   box-sizing: border-box;
   height: 29.6875vw;
+  overflow: hidden;
 }
 @media (min-width: 1601px) {
   .show-related-content-block .line-block .slider-wrap {
@@ -43594,7 +43856,6 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   display: table;
 }
 .show-related-content-block .line-block .line-block-inner {
-  height: 100%;
   width: 100%;
 }
 .show-related-content-block .line-half-block {

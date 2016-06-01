@@ -137,5 +137,3 @@ features[variable][] = node_preview_person
 features[variable][] = node_submitted_person
 features[variable][] = representative_image_field_node_person
 features[views_view][] = cast_landing_crew
-features_exclude[dependencies][usanetwork_seo] = usanetwork_seo
-features_exclude[dependencies][usanetwork_promo] = usanetwork_promo

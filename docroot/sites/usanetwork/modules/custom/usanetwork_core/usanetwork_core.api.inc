@@ -372,12 +372,14 @@ function usanetwork_core_api_get_dynamic_entity_reference_content($entity, $fiel
       if (is_array($dynamic_entity)) {
         $dynamic_entity = reset($dynamic_entity);
       }
-      $item = array(
-        'entity_type' => $data['target_type'],
-        'entity_id'   => $data['target_id'],
-        'entity'      => $dynamic_entity,
-      );
-      $content[] = $item;
+      if (usanetwork_core_api_check_entity_publish($entity)) {
+        $item = array(
+          'entity_type' => $data['target_type'],
+          'entity_id' => $data['target_id'],
+          'entity' => $dynamic_entity,
+        );
+        $content[] = $item;
+      }
     }
   }
   return $content;

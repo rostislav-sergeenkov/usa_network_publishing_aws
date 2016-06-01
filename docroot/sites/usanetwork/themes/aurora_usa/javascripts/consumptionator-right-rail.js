@@ -10,6 +10,9 @@
       if (window.matchMedia("(min-width: " + window_size_tablet + "px)").matches) {
         var sidebar = $('.consum-sidebar'),
             offset_info_block =  $('.right-rail-line').offset()['top'] - $(window).scrollTop();
+            if (offset_info_block < 0) {
+              offset_info_block = 0;
+            }
         if (!sidebar.hasClass('sticky-sidebar')) {
           sidebar.css({
             height: window.innerHeight - offset_info_block+"px"
@@ -18,6 +21,9 @@
         if ($(window).scrollTop() == 0) {
           setTimeout(function() {
             offset_info_block =  $('.right-rail-line').offset()['top'];
+            if (offset_info_block < 0) {
+              offset_info_block = 0;
+            }
             sidebar.css({
               height: window.innerHeight - offset_info_block+"px"
             })

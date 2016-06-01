@@ -4791,6 +4791,9 @@ function _usanetwork_tv_shows_landing_page_explore_block() {
   if (empty($tv_show_node) || $tv_show_node->type != 'tv_show') {
     return '';
   }
+
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
+  $items_quantity = _usanetwork_tv_shows_landing_page_get_items_quantity($is_new_design);
   $params = _usanetwork_tv_shows_landing_page_explore_prepare_query_params();
   $item_tags = _usanetwork_tv_shows_landing_page_explore_get_tags($tv_show_node->nid, $params);
   if (empty($item_tags)) {
@@ -4798,14 +4801,14 @@ function _usanetwork_tv_shows_landing_page_explore_block() {
   }
   $sorters = _usanetwork_tv_shows_landing_page_explore_sorters($tv_show_node->nid, $params);
   $required_tag = isset($item_tags[$params['tag']]) ? $params['tag'] : NULL;
-  $items = _usanetwork_tv_shows_landing_page_explore_get_items($tv_show_node->nid, $required_tag, $params['sort_order'], 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK + 1);
+  $items = _usanetwork_tv_shows_landing_page_explore_get_items($tv_show_node->nid, $required_tag, $params['sort_order'], 0, $items_quantity + 1);
   $load_more = &drupal_static('load_more_link');
   $load_more = FALSE;
-  if (count($items) >= USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK) {
-    $items = array_slice($items, 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK);
+  if (count($items) >= $items_quantity) {
+    $items = array_slice($items, 0, $items_quantity);
     $load_more = TRUE;
   }
-  $items_block = _usanetwork_tv_shows_landing_page_explore_items_block($items, 0, USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK);
+  $items_block = _usanetwork_tv_shows_landing_page_explore_items_block($tv_show_node, $items, 0, $items_quantity);
   $key = !empty($params['tag']) ? $params['tag'] : USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY;
   $section_name = !empty($item_tags[$key]) ? $item_tags[$key]['name'] : USA_TV_SHOW_ALL_ITEMS_LABEL;
   $explore_filter_title = !empty($item_tags[$key]) ? $section_name . ' (' . $item_tags[$key]['items_count'] . ')' : t('All Items');
@@ -4820,7 +4823,7 @@ function _usanetwork_tv_shows_landing_page_explore_block() {
     'explore_sorter_title' => $explore_sorter_title,
     'explore_block' => $items_block,
     'show_nid' => $tv_show_node->nid,
-    'items_per_page_limit' => USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK,
+    'items_per_page_limit' => $items_quantity,
     'filter_tid' => ($required_tag === NULL) ? USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY : $required_tag,
     'sorting_order' => $params['sort_order'],
     'load_more_link' => $load_more,
@@ -4828,6 +4831,7 @@ function _usanetwork_tv_shows_landing_page_explore_block() {
       '!item_type_tag' => $item_type_tag,
       '!show_name' => $tag_show_name,
     )),
+    'is_new_design' => $is_new_design ? TRUE : FALSE,
   ));
 
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
@@ -4837,6 +4841,21 @@ function _usanetwork_tv_shows_landing_page_explore_block() {
   ), 'setting');
 
   return $result;
+}
+
+/**
+ * Get quantity of items for landing page.
+ *
+ * @param $is_new_design
+ * @return int
+ */
+function _usanetwork_tv_shows_landing_page_get_items_quantity($is_new_design) {
+  $items_quantity = USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK;
+  if ($is_new_design) {
+    $items_quantity = USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK_NEW_DESIGN;
+    return $items_quantity;
+  }
+  return $items_quantity;
 }
 
 /**
@@ -4954,7 +4973,7 @@ function _usanetwork_tv_shows_landing_page_explore_get_items($show_nid, $tag_id 
     $query->condition('field_explore_tag.field_explore_tag_tid', $tag_id);
   }
   $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = n.nid');
-  $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, n.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
+  $query->addExpression('MIN(IF(ovts.field_promo_created_ovts_value is NULL, n.created, ovts.field_promo_created_ovts_value))', 'sorted_time');
   $query->leftJoin('field_data_field_promo_exclude_from_related', 'promo_exclude_field', 'promo_exclude_field.entity_id=n.nid');
   $query->condition(
     db_or()
@@ -4986,12 +5005,12 @@ function _usanetwork_tv_shows_landing_page_explore_get_items($show_nid, $tag_id 
  * @param int $start_from
  * @param int $limit
  */
-function _usanetwork_tv_shows_landing_page_explore_items_block($items, $start_from = 0, $limit = USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK) {
-
+function _usanetwork_tv_shows_landing_page_explore_items_block($show_node, $items, $start_from = 0, $limit = USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK) {
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
   $ad_id = intval($start_from / $limit);
   $theme_variables = array(
     'ad' => $start_from == 0 ? FALSE : TRUE,
-    'ad_id' => $ad_id,
+    'ad_id' => 'advert-explore-landing-' . $ad_id,
     'is_even' => (($ad_id + 1) % 2 == 0) ? TRUE : FALSE,
     'items' => array(),
   );
@@ -5001,7 +5020,12 @@ function _usanetwork_tv_shows_landing_page_explore_items_block($items, $start_fr
     $theme_variables['items'][] = _usanetwork_tv_shows_landing_page_explore_items_block_item($item, $current_item_index, $theme_variables['is_even']);
     $current_item_index++;
   }
-  return theme('usanetwork_tv_shows_explore_items_block', $theme_variables);
+  if ($is_new_design) {
+    return theme('usanetwork_tv_shows_landing_items_new_design_block', $theme_variables);
+  }
+  else {
+    return theme('usanetwork_tv_shows_explore_items_block', $theme_variables);
+  }
 }
 
 /**
@@ -5013,8 +5037,12 @@ function _usanetwork_tv_shows_landing_page_explore_items_block($items, $start_fr
  * @return mixed|string
  */
 function _usanetwork_tv_shows_landing_page_explore_items_block_item($node, $current_item_index, $is_item_even = FALSE) {
-
-  $big_element_index = $is_item_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK - 1);
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
+  $items_quantity = _usanetwork_tv_shows_landing_page_get_items_quantity($is_new_design);
+  $big_element_index = $is_item_even ? 0 : ($items_quantity - 1);
+  if ($is_new_design) {
+    $big_element_index = !$is_item_even ? 0 : ($items_quantity - 1);
+  }
 
   if (!empty($node->field_promo_image_override)) {
     $field_image_override = field_get_items('node', $node, 'field_promo_image_override');
@@ -5024,18 +5052,8 @@ function _usanetwork_tv_shows_landing_page_explore_items_block_item($node, $curr
   else {
     $image_url = usanetwork_core_api_get_content_image('node', $node);
   }
-  $mobile_image = '';
-  $desktop_image = '';
-
-  if (!empty($image_url)) {
-    if ($current_item_index == $big_element_index) { // Big image
-      $mobile_image = image_style_url('719x414', $image_url);
-      $desktop_image = image_style_url('927x756', $image_url);
-    }
-    else { // Small image
-      $desktop_image = image_style_url('456x372', $image_url);
-    }
-  }
+  list($mobile_image, $desktop_image) = _usanetwork_tv_shows_landing_page_prepare_item_image($current_item_index, $image_url, $big_element_index, $is_new_design);
+  
   $own_promo_lines = _usanetwork_promo_pull_node_promo_details($node);
   $promo_link = NULL;
   if (!empty($node->field_promo_link)) {
@@ -5058,6 +5076,7 @@ function _usanetwork_tv_shows_landing_page_explore_items_block_item($node, $curr
         : '',
     'image_mobile' => $mobile_image,
     'image_desktop' => $desktop_image,
+    'is_new_design' => $is_new_design ? TRUE : FALSE,
   );
 
   $theme_name = ($current_item_index == $big_element_index)
@@ -5121,7 +5140,7 @@ function _usanetwork_tv_shows_explore_landing_related_content_ajax($show_node, $
   else {
     $response['overlimited'] = TRUE;
   }
-  $response['rendered'] = _usanetwork_tv_shows_landing_page_explore_items_block($items, $start_from, $lenght);
+  $response['rendered'] = _usanetwork_tv_shows_landing_page_explore_items_block($show_node, $items, $start_from, $lenght);
   return drupal_json_output($response);
 }
 

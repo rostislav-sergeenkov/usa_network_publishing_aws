@@ -619,9 +619,9 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
     ? $gallery_sorters[$params['sort_order']]['title']
     : t('Newest');
 
-  $tag_videos_type = ((!$is_new_design) ? '<strong class="photos-type">' : '<strong class="photos-type show-color show-font">') . $video_filter_title_short . '</strong>';
+  $tag_videos_type = '<strong class="photos-type">' . $video_filter_title_short . '</strong>';
   $tag_seasons_type = '<strong class="seasons-type">' . t('all seasons') . '</strong>';
-  $tag_show_name = ((!$is_new_design) ? '<strong class="show-name">' : '<strong class="show-name show-color show-font">'). $tv_show_node->title . '</strong>';
+  $tag_show_name = '<strong class="show-name">' . $tv_show_node->title . '</strong>';
 
   $result = theme('usanetwork_media_gallery_landing_photos', array(
     'block_title' => $section_name,
@@ -635,12 +635,7 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
     'filter_tid' => ($params['category'] === NULL) ? USA_GALLERY_ALL_GALLERIES : $params['category'],
     'sorting_order' => $params['sort_order'],
     'load_more_link' => $load_more,
-    'tabs_description' =>  ($is_new_design)
-      ? t('Showing !videos_type for !show_name', array(
-        '!videos_type' => $tag_videos_type,
-        '!show_name' => $tag_show_name,
-      ))
-      : t('Showing !videos_type from !seasons_type for !show_name', array(
+    'tabs_description' => t('Showing !videos_type from !seasons_type for !show_name', array(
       '!videos_type' => $tag_videos_type,
       '!seasons_type' => $tag_seasons_type,
       '!show_name' => $tag_show_name,

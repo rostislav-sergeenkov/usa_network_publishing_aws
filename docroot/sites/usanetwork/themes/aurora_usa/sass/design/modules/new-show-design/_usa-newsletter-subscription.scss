@@ -88,6 +88,9 @@
       @include breakpoint($bp-min-1601-width) {
         margin-right: 25px;
       }
+      @include breakpoint($bp-1024-width) {
+        margin-right: get-vw(15px, 1024);
+      }
       @include breakpoint($bp-768-width) {
         display: block;
         padding: 0;
@@ -103,18 +106,24 @@
       @include breakpoint($bp-min-1601-width) {
         margin-right: 25px;
       }
+      @include breakpoint($bp-1024-width) {
+        margin-right: get-vw(15px, 1024);
+      }
+      @include breakpoint($bp-768-width) {
+        border: 0;
+      }
       input {
         color:$beige;
         background: none;
         box-sizing: border-box;
         border: 1px solid $usa-sign-up-input-border;
         display: block;
-        font-size: get-vw(18px, 1280);
         font-family: $fira-sans-regular;
+        font-size: get-vw(18px, 1280);
         line-height: get-vw(40px, 1280);
         height: get-vw(40px, 1280);
-        outline: none;
         padding: 0 get-vw(15px, 1280);
+        outline: none;
         letter-spacing: 1px;
         text-transform: uppercase;
         overflow: hidden;
@@ -127,6 +136,16 @@
           line-height: 40px;
           height: 40px;
           padding: 0 15px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(18px, 1024);
+          line-height: get-vw(30px, 1024);
+          padding: 0 get-vw(15px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(18px, 768);
+          line-height: get-vw(30px, 768);
+          padding: 0 get-vw(15px, 768);
         }
       }
     }
@@ -152,6 +171,16 @@
           height: 40px;
           padding: 0 18px 0 20px;
         }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(18px, 1024);
+          line-height: get-vw(30px, 1024);
+          padding: 0 get-vw(15px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(18px, 768);
+          line-height: get-vw(30px, 768);
+          padding: 0 get-vw(15px, 768);
+        }
         &:after {
           color: #ffffff;
           content: "\e608";
@@ -164,6 +193,16 @@
           @include breakpoint($bp-min-1601-width) {
             line-height: 40px;
             margin-left: 12px;
+          }
+          @include breakpoint($bp-1024-width) {
+            font-size: get-vw(12px, 1024);
+            line-height: get-vw(30px, 1024);
+            margin-left: get-vw(12px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(12px, 768);
+            line-height: get-vw(30px, 768);
+            margin-left: get-vw(12px, 768);
           }
         }
       }

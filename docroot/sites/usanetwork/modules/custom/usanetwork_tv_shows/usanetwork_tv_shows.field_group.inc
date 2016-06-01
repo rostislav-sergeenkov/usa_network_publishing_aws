@@ -698,9 +698,9 @@ function usanetwork_tv_shows_field_group_info() {
       1 => 'field_tvs_spec_features',
       2 => 'group_bcd_spot',
       3 => 'group_best_of_section',
-      4 => 'group_episodes_section',
-      5 => 'group_relevant_content',
-      6 => 'group_service',
+      4 => 'group_relevant_content',
+      5 => 'group_service',
+      6 => 'group_episodes_section',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -787,6 +787,7 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '28',
     'children' => array(
       0 => 'field_relevant_content_modes',
+      1 => 'field_relevant_content_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1049,7 +1050,6 @@ function usanetwork_tv_shows_field_group_info() {
       0 => 'group_cast_main',
       1 => 'group_cast_recap',
       2 => 'group_social_meter',
-      3 => 'group_where_to_watch',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1183,7 +1183,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'slideshow options',
-    'weight' => '25',
+    'weight' => '70',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1515,12 +1515,12 @@ function usanetwork_tv_shows_field_group_info() {
       8 => 'field_about_ymal',
       9 => 'field_tvs_show_latest_lnd_feed',
       10 => 'field_see_it_url',
-      11 => 'group_usa_tv_promo_vids',
-      12 => 'group_usa_tv_promo',
-      13 => 'group_about_area',
-      14 => 'group_latest_episodes_alt',
-      15 => 'group_show_aspots',
-      16 => 'group_tvs_best_of',
+      11 => 'group_about_area',
+      12 => 'group_latest_episodes_alt',
+      13 => 'group_show_aspots',
+      14 => 'group_tvs_best_of',
+      15 => 'group_usa_tv_promo_vids',
+      16 => 'group_usa_tv_promo',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1660,13 +1660,11 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'tv_show';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_show_cast_landing';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Where To Watch',
     'weight' => '136',
-    'children' => array(
-      0 => 'field_where2watch_providers',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Where To Watch',

@@ -45,7 +45,9 @@
   </div>
 </div>
 <?php if (!empty($sign_up_block)) : ?>
-  <div id="block-usanetwork-lyris-newsletter-subscription">
-    <?php print $sign_up_block; ?>
+  <div class="usa-newsletter-subscription-wrap">
+    <div id="usa-newsletter-subscription" class="show-border">
+      <?php print $sign_up_block; ?>
+    </div>
   </div>
 <?php endif; ?>

@@ -4,28 +4,38 @@
  */
 ?>
 <div class="landing-page-container explore-landing-page-container">
-  <h2 id="explore-landing-page-header" class="section-title">
-    <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All items'); ?></span>
-  </h2>
+  <?php if (!$is_new_design) : ?>
+    <h2 id="explore-landing-page-header" class="section-title">
+      <span class="section-title-wrapper show-border secondary"><?php print !empty($block_title) ? $block_title : t('All items'); ?></span>
+    </h2>
+  <?php endif; ?>
   <div class="upper-menu">
-    <div class="all-items-filter item-filter">
+    <div class="all-items-filter item-filter<?php print ($is_new_design)? ' show-border': ''; ?>">
       <?php if (!empty($explore_filters)): ?>
-        <div class="filter-label"><?php print !empty($explore_filter_title) ? $explore_filter_title : t('All items'); ?></div>
-        <ul class="filter-menu transform-filter">
+        <div class="filter-label"><?php print !empty($explore_filter_title) ? $explore_filter_title : t('All items'); ?>
+          <?php if ($is_new_design) : ?>
+            <span class="show-color show-font"></span>
+          <?php endif; ?>
+        </div>
+        <ul class="filter-menu transform-filter<?php print ($is_new_design)? ' show-border': ''; ?>">
           <?php foreach ($explore_filters as $explore_filter): ?>
             <li class="filter-item<?php if ($explore_filter['active'] == TRUE): print ' active'; endif; ?>">
-              <a href="<?php print $explore_filter['url']; ?>#explore-landing-page-header"<?php if (isset($explore_filter['id'])):?> data-type="<?php print $explore_filter['id'];?>"<?php endif;?> class="no-ajax">
-                <span class="title"><?php print $explore_filter['name']; ?></span> <span class="items-in">(<?php print $explore_filter['items_count']; ?>)</span>
+              <a href="<?php print $explore_filter['url']; ?>#explore-landing-page-header"<?php if (isset($explore_filter['id'])):?> data-type="<?php print $explore_filter['id'];?>"<?php endif;?> class="no-ajax<?php print ($is_new_design) ? ' show-border' : '' ?>">
+                <span class="title"><?php print $explore_filter['name']; ?></span> <span class="items-in<?php print ($is_new_design) ? ' show-color show-font' : '' ?>">(<?php print $explore_filter['items_count']; ?>)</span>
               </a>
             </li>
           <?php endforeach; ?>
         </ul>
       <?php endif; ?>
     </div>
-    <div class="sorter-items item-filter">
+    <div class="sorter-items item-filter<?php print ($is_new_design)? ' show-border': ''; ?>">
       <?php if (!empty($explore_sorters)): ?>
-        <div class="filter-label"><?php print !empty($explore_sorter_title) ? $explore_sorter_title : t('Newest'); ?></div>
-        <ul class="filter-menu">
+        <div class="filter-label"><?php print !empty($explore_sorter_title) ? $explore_sorter_title : t('Newest'); ?>
+          <?php if ($is_new_design) : ?>
+            <span class="show-color show-font"></span>
+          <?php endif; ?>
+        </div>
+        <ul class="filter-menu<?php print ($is_new_design)? ' show-border': ''; ?>">
           <?php foreach ($explore_sorters as $explore_sorter): ?>
             <li class="filter-item sorter-item<?php if (!empty($explore_sorter['order'])): print ' order-' . $explore_sorter['order']; endif; ?><?php if ($explore_sorter['active'] == TRUE): print ' active'; endif; ?>">
               <a href="<?php print $explore_sorter['url']; ?>#explore-landing-page-header" data-type="<?php print $explore_sorter['data_type']; ?>" class="no-ajax">

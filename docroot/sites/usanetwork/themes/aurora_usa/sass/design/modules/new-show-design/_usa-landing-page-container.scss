@@ -526,7 +526,17 @@
           &:nth-child(3), &:nth-child(5) {
             margin-right: 0;
             @include breakpoint($bp-768-width) {
-              float: right;
+              clear: right;
+            }
+          }
+          &:nth-child(2), &:nth-child(4) {
+            margin-right: get-vw(15.9px, 1600);
+            @include breakpoint($bp-min-1601-width) {
+              margin-right: 15.9px;
+            }
+            @include breakpoint($bp-768-width) {
+              clear: left;
+              margin-right: get-vw(17.9px, 640);
             }
           }
         }
@@ -568,9 +578,19 @@
               clear: none;
             }
           }
+          &:nth-child(1), &:nth-child(3) {
+            margin-right: get-vw(15.9px, 1600);
+            @include breakpoint($bp-min-1601-width) {
+              margin-right: 15.9px;
+            }
+            @include breakpoint($bp-768-width) {
+              clear: left;
+              margin-right: get-vw(17.9px, 640);
+            }
+          }
           &:nth-child(2), &:nth-child(4) {
             @include breakpoint($bp-768-width) {
-              float: right;
+              clear: right;
             }
           }
         }

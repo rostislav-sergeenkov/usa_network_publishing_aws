@@ -46,10 +46,12 @@
         </ul>
       <?php endif; ?>
     </div>
-    <?php if (!empty($tabs_description)): ?>
-      <div class="sorters-description">
-        <h1><?php print $tabs_description; ?></h1>
-      </div>
+    <?php if (!$is_new_design) : ?>
+      <?php if (!empty($tabs_description)): ?>
+        <div class="sorters-description">
+          <h1><?php print $tabs_description; ?></h1>
+        </div>
+      <?php endif; ?>
     <?php endif; ?>
   </div>
   <div class="landing-items-blocks explore-items-blocks show-border ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished': '' ;?>"

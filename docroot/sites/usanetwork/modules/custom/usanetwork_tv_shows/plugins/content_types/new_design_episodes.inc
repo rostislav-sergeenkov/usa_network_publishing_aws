@@ -37,8 +37,10 @@ function new_design_episodes_content_type_render($subtype, $conf, $args, $contex
       $theme_variables['carousel_items'] = $episodes['carousel_items'];
       $theme_variables['title'] = t('Episodes');
       $theme_variables['link'] = l(t('View more'), 'node/' . $node->nid . '/episodes', array('attributes' => array('class' => 'view-more-link')));
-      foreach ($node_wrapper->field_episodes_block_links->value() as $link) {
-        $theme_variables['links'][] = $link;
+      if (!empty($node_wrapper->field_episodes_block_links->value())) {
+        foreach ($node_wrapper->field_episodes_block_links->value() as $link) {
+          $theme_variables['links'][] = $link;
+        }
       }
       $block->content = array(
         '#theme' => 'new_design_episodes',
@@ -108,8 +110,8 @@ function _usanetwork_tv_show_get_episodes($show) {
     $query->join('field_data_field_tv_cover_media', 'field_tv_cover_media', 'n.nid=field_tv_cover_media.entity_id');
     $query->join('file_managed', 'fm', 'fm.fid=field_tv_cover_media.field_tv_cover_media_fid');
     $query->addField('fm', 'uri', 'episode_uri');
-    $query->orderBy('season_id', 'ASC');
-    $query->orderBy('episode_id', 'ASC');
+    $query->orderBy('cast(season_id as unsigned)', 'ASC');
+    $query->orderBy('cast(episode_id as unsigned)', 'ASC');
 
     $result = $query->execute()->fetchAll();
 

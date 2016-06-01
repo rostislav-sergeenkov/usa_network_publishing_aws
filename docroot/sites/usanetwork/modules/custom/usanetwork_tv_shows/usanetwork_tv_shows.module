@@ -1140,6 +1140,26 @@ function usanetwork_tv_shows_image_default_styles() {
       ),
     ),
   );
+  $styles['655x378'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 655,
+          'height' => 378,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 655,
+          'height' => 378,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
   $styles['269x197'] = array(
     'effects' => array(
       array(

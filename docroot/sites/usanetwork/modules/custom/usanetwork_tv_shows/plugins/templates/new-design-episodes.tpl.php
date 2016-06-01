@@ -35,13 +35,19 @@
         <div class="meta">
           <div class="caption"><?php print $main['season']; ?>&nbsp<?php print $main['episode']; ?></div>
           <div class="title">
-            <?php print $main['title']; ?>
+            <?php if (!empty($data['#content']['links'])): ?>
+              <?php print t('Where to Watch'); ?>
+            <?php else: ?>
+              <?php print $main['title']; ?>
+            <?php endif;?>
           </div>
-          <div class="additional">
-            <?php foreach ($data['#content']['links'] as $link): ?>
-              <a href="<?php print $link['url'] ?>" class="additional-link show-color show-font"><?php print $link['title'] ?> ></a><br>
-            <?php endforeach; ?>
-          </div>
+          <?php if (!empty($data['#content']['links'])) : ?>
+            <div class="additional">
+              <?php foreach ($data['#content']['links'] as $link): ?>
+                <a href="<?php print $link['url'] ?>" class="additional-link show-color show-font"><?php print $link['title'] ?> ></a><br>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
     </div>

@@ -189,7 +189,7 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
   $result = usanetwork_lyris_assign_user_to_list($user, $show_property, 'newsletter');
   preg_match("/<TYPE>(.*?)<\/TYPE>/", $result, $matches);
   if($matches[1] == 'success') {
-    $form['newsletter']['#markup'] = t('Your email %title was successfully added to the list!', array('%title' => $form_state['values']['email']));
+    $form['newsletter']['#markup'] = t('Your email %title was successfully added to the list!', array('%title' => $form_state['values']['email'])) . '<div class="close-form show-color">close</div>';
     return $form['newsletter'];
   }
   else {

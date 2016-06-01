@@ -215,6 +215,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_script.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_header.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_menu-dropdown.js',
+            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_menu-dropdown.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_carousels.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_to-top.js',
 //            drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'

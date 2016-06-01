@@ -3347,7 +3347,7 @@
       @include breakpoint($bp-640-width) {
         bottom: auto;
         left: auto;
-        padding: get-vw(15px, 640) get-vw(20px, 640) 0;
+        padding: 0 get-vw(20px, 640) 0;
         position: relative;
       }
     }
@@ -3376,6 +3376,308 @@
         line-height: 1.3;
         @include breakpoint($bp-640-width) {
           font-size: get-vw(24px, 640);
+        }
+      }
+    }
+  }
+}
+%usa-landing-container-promo {
+  .usa-landing-container-promo {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    a {
+      height: 100%;
+      width: 100%;
+    }
+    .meta-icon {
+      background-image: none;
+      border: 2px solid;
+      border-radius: 50%;
+      border-color: rgba(200,200,200,0.8);
+      box-sizing: content-box;
+      height: get-vw(70px, 1600);
+      line-height: get-vw(70px, 1600);
+      width: get-vw(70px, 1600);
+      @include breakpoint($bp-min-1601-width) {
+        height: 70px;
+        line-height: 70px;
+        width: 70px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: get-vw(70px, 768);
+        line-height: get-vw(70px, 768);
+        width: get-vw(70px, 768);
+      }
+      &:after {
+        color: rgba(200,200,200,0.8);
+        display: block;
+        content: '\e627';
+        font-family: $ico-font;
+        font-size: get-vw(55px, 1600);
+        position: relative;
+        text-align: center;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 55px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(55px, 768);
+        }
+      }
+    }
+    .meta {
+      .caption {
+        display: block;
+        line-height: 1;
+        text-align: left;
+        span {
+          color: white;
+          font-family: $fira-sans-medium;
+          line-height: 1.5;
+          padding: 0 get-vw(7px, 1280);
+          text-transform: uppercase;
+          width: auto;
+          @include breakpoint($bp-min-1601-width) {
+            padding: 0 8.75px;
+          }
+          @include breakpoint($bp-768-width) {
+            padding: 0 get-vw(7px, 640);
+          }
+        }
+      }
+      .title {
+        color: white;
+        font-family: $fira-sans-regular;
+        line-height: 1.2;
+        text-align: left;
+        text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+      }
+      .additional {
+        color: white;
+        font-family: $tex-gyreschola-italic;
+        text-transform: uppercase;
+        text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+      }
+    }
+    &.small {
+      .asset-img {
+        height: auto;
+        padding-top: 56.25%;
+        position: relative;
+        width: 100%;
+        img {
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
+      }
+      .meta-wrapper {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        @include breakpoint($bp-768-width) {
+          height: auto;
+          left: auto;
+          position: relative;
+          top: auto;
+        }
+      }
+      .meta-wrapper-inner {
+        height: 100%;
+        position: relative;
+        width: 100%;
+        @include breakpoint($bp-768-width) {
+          height: auto;
+        }
+      }
+      .meta-icon {
+        left: 50%;
+        margin-left: get-vw(-37px, 1600);
+        margin-top: calc(28.125% - #{get-vw(37px, 1600)});
+        @include breakpoint($bp-min-1601-width) {
+          margin-left: -37px;
+          margin-top: calc(28.125% - 37px);
+        }
+        @include breakpoint($bp-768-width) {
+          bottom: 100%;
+          margin-bottom: calc(28.125% - #{get-vw(37px, 768)});
+          margin-left: get-vw(-37px, 768);
+          margin-top: 0;
+          top: auto
+        }
+      }
+      .meta {
+        left: 0;
+        margin-top: 56.25%;
+        padding: get-vw(10px, 1600);
+        position: absolute;
+        @include breakpoint($bp-min-1601-width) {
+          padding: 10px;
+        }
+        @include breakpoint($bp-768-width) {
+          left: auto;
+          margin-top: 0;
+          padding: get-vw(18px, 640) 0 0;
+          position: relative;
+        }
+        .caption {
+          bottom: 100%;
+          left: 0;
+          position: absolute;
+          font-size: get-vw(13px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 16.25px;
+          }
+          @include breakpoint($between-769-1024) {
+            font-size: 11px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(13px, 640);
+          }
+        }
+        title {
+          font-size: get-vw(25px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 31.25px;
+          }
+          @include breakpoint($between-769-1024) {
+            font-size: 20px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(21px, 640);
+          }
+        }
+        .additional {
+          font-size: get-vw(12px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 15px;
+          }
+          @include breakpoint($between-769-1024) {
+            font-size: 9.6px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(12px, 640);
+          }
+        }
+      }
+    }
+    &.big {
+      .asset-img {
+        height: 100%;
+        position: relative;
+        width: 100%;
+        @include breakpoint($bp-768-width) {
+          height: auto;
+          padding-top: 43.75%;
+        }
+        img {
+          height: 100%;
+          width: 100%;
+          @include breakpoint($bp-768-width) {
+            left: 0;
+            position: absolute;
+            top: 0;
+          }
+        }
+      }
+      .meta-wrapper {
+        height: 100%;
+        left: 0;
+        padding: get-vw(40px, 1600);
+        position: absolute;
+        top: 0;
+        width: 100%;
+        @include breakpoint($bp-min-1601-width) {
+          padding: 40px;
+        }
+        @include breakpoint($bp-768-width) {
+          height: auto;
+          left: auto;
+          padding: 0;
+          position: relative;
+          top: auto;
+        }
+      }
+      .meta-wrapper-inner {
+        height: 100%;
+        position: relative;
+        width: 100%;
+        @include breakpoint($bp-768-width) {
+          height: auto;
+        }
+      }
+      .meta-icon {
+        left: 50%;
+        margin-left: get-vw(-37px, 1600);
+        margin-top: get-vw(-37px, 1600);
+        top: 50%;
+        @include breakpoint($bp-min-1601-width) {
+          margin-left: -37px;
+          margin-top: -37px;
+        }
+        @include breakpoint($bp-768-width) {
+          bottom: 100%;
+          margin-bottom: calc(21.875% - #{get-vw(37px, 768)});
+          margin-left: get-vw(-37px, 768);
+          margin-top: auto;
+          top: auto;
+        }
+      }
+      .meta {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        @include breakpoint($bp-768-width) {
+          left: auto;
+          padding-top: get-vw(18px, 640);
+          position: relative;
+          top: auto;
+        }
+        .caption {
+          font-size: get-vw(15px, 1280);
+          margin-bottom: get-vw(20px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 18.75px;
+            margin-bottom: 25px;
+          }
+          @include breakpoint($between-769-1024) {
+            font-size: 12px;
+          }
+          @include breakpoint($bp-768-width) {
+            bottom: 100%;
+            font-size: get-vw(15px, 640);
+            left: 0;
+            margin: 0;
+            position: absolute;
+          }
+        }
+        .title {
+          font-size: get-vw(27.2px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 34px;
+          }
+          @include breakpoint($between-769-1024) {
+            font-size: 21px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(24px, 640);
+          }
+        }
+        .additional {
+          font-size: get-vw(13px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 16.25px;
+          }
+          @include breakpoint($between-769-1024) {
+            font-size: 10.4px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(13px, 640);
+          }
         }
       }
     }

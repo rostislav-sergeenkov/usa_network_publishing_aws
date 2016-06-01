@@ -197,6 +197,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
         '#attached' => array(
           'js' => array(
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_script.js',
+            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_header.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_menu-dropdown.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_carousels.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_to-top.js',
@@ -2465,6 +2466,9 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
           'show-color',
           'show-font',
         );
+        if (strtolower($show_menu_item_main_link[0]['title']) == 'email sign up') {
+          $classes[] = 'menu-sign-up';
+        }
         $menu_item_url = $show_menu_item_main_link[0]['url'];
         $menu_item_url_query = (isset($show_menu_item_main_link[0]['query'])) ? $show_menu_item_main_link[0]['query'] : '';
         $menu_link_page = arg(1, $menu_item_url);
@@ -2507,9 +2511,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     'tune_in_date' => isset($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : NULL,
     'social_icons' => $social_links,
     'show_menu_tab_items' => $show_menus,
-    'sign_up_title' => (t('EMAIL Sign UP')),
-    'sign_up_url' => 'javascript:usa_newsletterShowHide();',
-    'sign_up_block' => $sign_up_block,
+    'sign_up_block' => isset($sign_up_block) ? $sign_up_block : NULL,
   ));
 }
 
@@ -4131,12 +4133,12 @@ function _usanetwork_tv_shows_landing_page_prepare_item_image($current_item_inde
   if (!empty($image_url)) {
     if ($is_new_design) {
       if ($current_item_index == $big_element_index) { // Big image
-        $mobile_image = image_style_url('719x414', $image_url);
+        $mobile_image = image_style_url('675x303', $image_url);
         $desktop_image = image_style_url('927x756', $image_url);
         return array($mobile_image, $desktop_image);
       }
       else { // Small image
-        $desktop_image = image_style_url('456x372', $image_url);
+        $desktop_image = image_style_url('507x285', $image_url);
         return array($mobile_image, $desktop_image);
       }
     }

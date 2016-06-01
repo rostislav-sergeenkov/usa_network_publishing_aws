@@ -483,6 +483,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
           ? TRUE
           : FALSE,
         'icon_type' => usanetwork_core_api_get_media_icon('node', $person_node->nid),
+        'new_design' => $is_new_design,
       );
 
       $rendered_items['horizontal'][] = theme('usanetwork_person_character_carousel_item_h', $theme_item_horizontal_variables);

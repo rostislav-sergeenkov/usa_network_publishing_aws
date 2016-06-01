@@ -1,30 +1,5 @@
 .show-new-design {
   background: $consum-also-back;
-  // #header
-  #header {
-    background-color: black;
-    overflow: visible;
-    @include breakpoint($bp-min-1601-width) {
-      left: 50%;
-      margin-left: -800px;
-      width: 1600px;
-    }
-    &.usa-sticky-header-initialized {
-      left: 0;
-      top: 0;
-      position: fixed;
-      z-index: 10;
-      @include breakpoint($bp-min-1601-width) {
-        left: 50%;
-        margin-left: -800px;
-        width: 1600px;
-      }
-    }
-  }
-  #header-spacer {
-    display: none;
-    background-color: black;
-  }
   .pane-mps-midbanner {
     padding-top: get-vw(33px, 1280);
     text-align: center;
@@ -36,7 +11,6 @@
   .usa-wrap {
     max-width: 1600px;
   }
-  // #header end
   .usa-section-title {
     border-bottom: 2px solid;
     padding: get-vw(15px, 1280) 0;

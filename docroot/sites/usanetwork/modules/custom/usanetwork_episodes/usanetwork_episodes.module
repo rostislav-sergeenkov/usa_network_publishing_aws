@@ -374,6 +374,7 @@ function _usanetwork_episodes_main_block() {
       'season_number' => !empty($season_num) ? $season_num : '',
       'episode_number' => !empty($episode_num) ? $episode_num : '',
       'episode_video_link' => !empty($episode_link) ? $episode_link : NULL,
+      'where2watch_link' => url('node/'  .$show_id . '/cast'),
       'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
       'air_date_text' => !empty($episode_node->field_original_air_date) ? gmdate('F j, Y', $episode_node_wrapper->field_original_air_date->value->value()) : '',
       'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),

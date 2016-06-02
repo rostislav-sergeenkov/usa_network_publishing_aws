@@ -241,11 +241,32 @@
       }
     }
     .description-block {
+      font-family: $fira-sans-regular;
       font-size: get-vw(20px, 1600);
       margin-top: get-vw(50px, 1600);
       @include breakpoint($bp-min-1601-width) {
         font-size: 20px;
         margin-top: 50px;
+      }
+    }
+    .usa-providers {
+      position: relative;
+      text-align: center;
+      .providers-row {
+        border-bottom: 1px solid;
+        display: inline-block;
+        padding: get-vw(30px, 1600) 0;
+        position: relative;
+        text-align: center;
+        @include breakpoint($bp-min-1601-width) {
+          padding: 30px 0;
+        }
+        &:last-child {
+          border: none;
+        }
+      }
+      .provider {
+        display: inline-block;
       }
     }
   }
@@ -254,6 +275,7 @@
     background: black;
     overflow: hidden;
     position: relative;
+    text-align: center;
     width: 100%;
     .recap-video {
       @include clear();

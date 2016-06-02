@@ -16,17 +16,17 @@
       <?php $i = 1; ?>
       <?php if (!empty($usa_now_path)) : ?>
         <?php $i = 2; ?>
-        <div class="providers-row">
+        <div class="providers-row show-border">
           <div class="provider">
             <a href="<?php print $usa_now_path; ?>">USA Now</a>
           </div>
       <?php endif; ?>
       <?php foreach ($elements as $element) : ?>
         <?php if ($i == 1) : ?>
-          <div class="providers-row">
+          <div class="providers-row show-border">
         <?php endif; ?>
         <?php if ($i != 1 && ($i-1)%4 == 0) : ?>
-          <div class="providers-row">
+          <div class="providers-row show-border">
         <?php endif; ?>
         <div class="provider">
           <a href="<?php print $element['url']; ?>">

@@ -10,13 +10,6 @@
     </h2>
   <?php endif; ?>
   <div class="upper-menu">
-    <?php if ($is_new_design) : ?>
-      <?php if (!empty($tabs_description)): ?>
-        <div class="sorters-description">
-          <h1><?php print $tabs_description; ?></h1>
-        </div>
-      <?php endif; ?>
-    <?php endif; ?>
     <div class="all-items-filter item-filter<?php print ($is_new_design)? ' show-border': ''; ?>">
       <?php if (!empty($video_filters)): ?>
         <div class="filter-label"><?php print !empty($video_filter_title) ? $video_filter_title : t('All videos'); ?>

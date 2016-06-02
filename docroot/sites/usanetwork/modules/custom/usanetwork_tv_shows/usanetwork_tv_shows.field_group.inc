@@ -1660,11 +1660,13 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'tv_show';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_show_cast_landing';
   $field_group->data = array(
     'label' => 'Where To Watch',
     'weight' => '136',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_where2watch_providers',
+    ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Where To Watch',

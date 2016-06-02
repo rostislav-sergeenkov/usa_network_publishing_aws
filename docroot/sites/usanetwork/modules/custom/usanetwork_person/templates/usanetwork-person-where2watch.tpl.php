@@ -8,7 +8,7 @@
     <h2 class="title"><?php print !empty($title) ? $title : ''; ?></h2>
   </div>
   <div class="where-to-watch-inner">
-    <a href="/videos/live" class="live-link show-border">watch now on usanetwork.com<span class="show-color show-font"></span></a>
+    <a href="/videos/live" class="live-link show-border"><?php print t('watch now on usanetwork.com'); ?><span class="show-color show-font"></span></a>
     <div class="description-block">
       <?php print $description; ?>
     </div>

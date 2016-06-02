@@ -18,12 +18,16 @@
                 <a href="/<?php print $item['link'] ?>">
                   <div class="image-block">
                     <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
-                      <div data-src="<?php print $item['image_mobile'] ?>"></div>
-                      <div data-media="(min-width: 769px)" data-src="<?php print $item['image_desktop'] ?>"></div>
-                      <!--[if (IE 8) & (!IEMobile)]>
-                      <div data-src="<?php print $item['image_desktop'] ?>"></div>
-                      <![endif]-->
-                      <noscript><img src="<?php print $item['image_desktop'] ?>" alt="" title="" /></noscript>
+                      <?php if (!empty($item['image_mobile'])): ?>
+                        <div data-src="<?php print $item['image_mobile'] ?>"></div>
+                      <?php endif; ?>
+                      <?php if (!empty($item['image_desktop'])): ?>
+                        <div data-media="(min-width: 769px)" data-src="<?php print $item['image_desktop'] ?>"></div>
+                        <!--[if (IE 8) & (!IEMobile)]>
+                        <div data-src="<?php print $item['image_desktop'] ?>"></div>
+                        <![endif]-->
+                        <noscript><img src="<?php print $item['image_desktop'] ?>" alt="" title="" /></noscript>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </a>

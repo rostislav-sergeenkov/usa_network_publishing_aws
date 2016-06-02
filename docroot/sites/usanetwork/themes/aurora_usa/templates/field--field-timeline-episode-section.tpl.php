@@ -120,7 +120,7 @@ $firstScene = TRUE;
               <?php endif; ?>
             </div>
             <div class="timeline-item-details">
-              <h2><?php print '<span class="timeline-h2-season-num">S' . $seasonNum . '</span> <span class="timeline-h2-episode-num">Ep' . $episodeNum . '</span>'; ?>
+              <h2<?php if ($is_new_design): ?><?php print ' class="show-color show-font"'; ?><?php endif; ?>><?php print '<span class="timeline-h2-season-num">S' . $seasonNum . '</span> <span class="timeline-h2-episode-num">Ep' . $episodeNum . '</span>'; ?>
                 <span
                   class="divider">|</span> <?php print '<span class="timeline-h2-episode-name">' . $episode['episode_name'] . '</span>'; ?>
                 <span class="divider divider-two">|</span> <span

@@ -961,10 +961,10 @@ function _usanetwork_episodes_get_episode_related_content_block() {
           return '';
         }
       }
-      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
 
       $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_show_node);
       if (!empty($related_content)) {
+        $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
         $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, 0, 1, $is_new_design);
         $load_more_link = &drupal_static('load_more_link');
         $load_more_link = TRUE;

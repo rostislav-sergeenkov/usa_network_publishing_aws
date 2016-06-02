@@ -16,7 +16,7 @@
         <?php foreach ($content['elements'] as $element) : ?>
         <li class="slide slide-item" style="">
           <div class="node node-usanetwork-promo usa-show-related-special-promo">
-            <a href="<?php $element['url']; ?>" class="omniture-tracking-processed">
+            <a href="<?php print $element['url']; ?>" class="omniture-tracking-processed">
               <div class="image-block">
                 <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
                   <div data-src="<?php print $element['image_mobile']; ?>"></div>

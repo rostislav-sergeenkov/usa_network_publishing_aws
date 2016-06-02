@@ -1140,6 +1140,26 @@ function usanetwork_tv_shows_image_default_styles() {
       ),
     ),
   );
+  $styles['655x378'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 655,
+          'height' => 378,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 655,
+          'height' => 378,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
   $styles['269x197'] = array(
     'effects' => array(
       array(
@@ -1222,7 +1242,15 @@ function usanetwork_tv_shows_image_default_styles() {
   );
   return $styles;
 }
-
+function usanetwork_tv_shows_preprocess_field(&$vars) {
+  if ($vars['element']['#field_name'] == 'field_timeline_episode_section') {
+    $node = $vars['element']['#object'];
+    $node_wrapper = entity_metadata_wrapper('node', $node);
+    $tv_show_node = $node_wrapper->field_show->value();
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
+    $vars['is_new_design'] = $is_new_design ? TRUE : FALSE;
+  }
+}
 /**
  * Implements hook_form_FORM_ID_alter().
  * this is a straight rip from pub_tv old relations fields

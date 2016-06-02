@@ -19,11 +19,11 @@ function usanetwork_lyris_menu() {
     'access arguments' => array('administer usanetwork'),
     'file' => 'usanetwork_lyris.admin.inc',
   );
-  $items['email_sign_up'] = array(
-    'title' => t('USA EMAIL Sign UP'),
-    'page callback' => '_usanetwork_lyris_email_sign_up',
-    'access arguments' => array('access content'),
-  );
+//  $items['email_sign_up'] = array(
+//    'title' => t('USA EMAIL Sign UP'),
+//    'page callback' => '_usanetwork_lyris_email_sign_up',
+//    'access arguments' => array('access content'),
+//  );
   return $items;
 }
 

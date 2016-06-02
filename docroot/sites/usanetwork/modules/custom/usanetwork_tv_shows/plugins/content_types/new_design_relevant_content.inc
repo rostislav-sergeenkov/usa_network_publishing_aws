@@ -27,8 +27,10 @@ function new_design_relevant_content_content_type_render($subtype, $conf, $args,
   $node = $context->data;
   $node_wrapper = entity_metadata_wrapper('node', $node);
   $block = new stdClass();
-  $theme_variables = array();
   $relevant_content = array();
+  $theme_variables = array(
+    'title' => $node_wrapper->field_relevant_content_title->value(),
+  );
   if (!usanetwork_core_api_check_field($node, 'field_relevant_content_modes') || $node_wrapper->field_relevant_content_modes->value() == 'latest') {
     $relevant_content = new_design_relevant_content_get_latest_content($node, $conf);
   }

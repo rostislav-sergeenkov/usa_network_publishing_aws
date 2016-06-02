@@ -4,9 +4,9 @@
  */
 ?>
 <div class="cast-and-crew-block show-border">
-  <h2 class="section-title">
-    <span class="section-title-wrapper show-border secondary"><?php print !empty($title) ? $title : ''; ?></span>
-  </h2>
+  <div class="usa-section-title show-border">
+    <h2 class="title"><?php print !empty($title) ? $title : ''; ?></h2>
+  </div>
   <div>
     <?php print $description; ?>
   </div>

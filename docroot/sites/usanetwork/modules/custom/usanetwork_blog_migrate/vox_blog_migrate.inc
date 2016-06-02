@@ -1,6 +1,7 @@
 <?php
 
 define('VOX_BLOG_FEED_MRROBOT_ATOM', 'http://www.theverge.com/rss/partner/usa-network-mr-robot/index.xml');
+define('VOX_BLOG_FEED_VIOLATOR_TEXT', 'Featured From The Verge');
 define('MR_ROBOT_SHOW_ID', 56156);
 
 /**
@@ -79,6 +80,7 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_post_cover:destination_dir')->defaultValue($this->imgDestDir);
     $this->addFieldMapping('field_summary', 'shirt_description');
     $this->addFieldMapping('field_usa_og_description', 'shirt_description');
+    $this->addFieldMapping('field_promo_violator_name')->defaultValue(VOX_BLOG_FEED_VIOLATOR_TEXT);
 
     //@todo may be alt text
     //$this->addFieldMapping('field_post_cover:field_file_image_alt_text', 'media:credit')->xpath('./media:content/media:credit');

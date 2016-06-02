@@ -185,6 +185,27 @@ function usanetwork_person_image_default_styles() {
     ),
   );
 
+  $styles['1600x490'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 1600,
+          'height' => 490,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1600,
+          'height' => 490,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   return $styles;
 }
 
@@ -544,7 +565,7 @@ function _usanetwork_person_render_cast_lmb_block() {
     $theme_variables = array(
       'advert_block' => isset($advert) ? $advert : NULL,
       'head_image' => array(
-        'desktop' => !empty($head_image) ? image_style_url('2880x1260', $head_image['uri']) : '',
+        'desktop' => !empty($head_image) ? (($is_new_design) ? image_style_url('1600x490', $head_image['uri']) : image_style_url('2880x1260', $head_image['uri'])) : '',
         'mobile' => !empty($head_image_mobile) ? image_style_url('640x560', $head_image_mobile['uri']) : '',
       ),
       'second_image' => !empty($second_image) ? image_style_url('475x537', $second_image['uri']) : '',
@@ -658,6 +679,9 @@ function _usanetwork_person_render_cast_crew_block() {
     if (empty($person_nodes)) {
       return '';
     }
+    $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
+    $theme_variables['new_design'] = $is_new_design;
     foreach ($person_nodes as $person_node) {
       $person_node_wrapper = entity_metadata_wrapper('node', $person_node);
       if (!empty($person_node->field_usa_character_thumb)) {

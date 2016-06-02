@@ -192,4 +192,130 @@
       }
     }
   }
+  .where-to-watch {
+    @include clear();
+    background: black;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    .where-to-watch-inner {
+      @include clear();
+      padding: get-vw(30px, 1600) get-vw(45px, 1600);
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        padding: 30px 45px;
+      }
+    }
+    .live-link {
+      border: 1px solid;
+      color: white;
+      display: inline-block;
+      font-family: $fira-sans-regular;
+      font-size: get-vw(20px, 1600);
+      line-height: get-vw(56px, 1600);
+      padding: 0 get-vw(35px, 1600) 0;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 20px;
+        line-height: 56px;
+        padding: 0 35px 0;
+      }
+      span {
+        background: none;
+        &:after {
+          display: inline-block;
+          color: inherit;
+          content: "\e608";
+          font-family: $ico-font;
+          font-size: get-vw(14px, 1600);
+          margin-left: get-vw(15px, 1600);
+          position: relative;
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 14px;
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+    .description-block {
+      font-size: get-vw(20px, 1600);
+      margin-top: get-vw(50px, 1600);
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 20px;
+        margin-top: 50px;
+      }
+    }
+  }
+  .video-recap-block {
+    @include clear();
+    background: black;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    .recap-video {
+      @include clear();
+      padding: get-vw(30px, 1600) get-vw(45px, 1600);
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        padding: 30px 45px;
+      }
+      .recap-video-inner {
+        margin: 0 auto;
+        max-width: 930px;
+        position: relative;
+        width: 100%;
+        .recap-video-content {
+          padding-top: 56.25%;
+          position: relative;
+          width: 100%;
+          iframe {
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+          }
+        }
+
+      }
+    }
+    .video-button {
+      border: 1px solid;
+      color: white;
+      display: inline-block;
+      font-family: $fira-sans-regular;
+      font-size: get-vw(20px, 1600);
+      line-height: get-vw(56px, 1600);
+      outline: none;
+      padding: 0 get-vw(35px, 1600) 0;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 20px;
+        line-height: 56px;
+        padding: 0 35px 0;
+      }
+      span {
+        background: none;
+        &:after {
+          display: inline-block;
+          color: inherit;
+          content: "\e608";
+          font-family: $ico-font;
+          font-size: get-vw(14px, 1600);
+          margin-left: get-vw(15px, 1600);
+          position: relative;
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 14px;
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+  }
 }

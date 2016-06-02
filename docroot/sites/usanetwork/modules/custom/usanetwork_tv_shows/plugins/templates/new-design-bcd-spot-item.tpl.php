@@ -14,6 +14,7 @@
  *  - $image_desktop
  *  - $image_mobile
  *  - $position
+ *  - $blog_service
  */
 /*
 <?php print (!empty($entity_id) ? $entity_id : ''); ?>

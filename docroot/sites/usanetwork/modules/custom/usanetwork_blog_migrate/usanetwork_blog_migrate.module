@@ -82,3 +82,10 @@ function usanetwork_blog_migrate_cron() {
         array('@migration' => $machine_name)));
   }
 }
+
+function usanetwork_blog_migrate_get_post_service($node) {
+  if ('consumpt_post' == $node->type && variable_get('usanetwork_blog_migrate_the_verge_user_uid', FALSE) == $node->uid) {
+    return 'verge';
+  }
+  return FALSE;
+}

@@ -6,20 +6,26 @@
  */
 ?>
 
-<div class="video-recap-block">
-  <div class="usa-section-title show-border">
-    <h2 class="title"><?php print !empty($title) ? $title : ''; ?></h2>
+<div class="series-recap-block show-border">
+  <h2 class="section-title">
+    <span class="section-title-wrapper show-border secondary"><?php print !empty($title) ? $title : ''; ?></span>
+  </h2>
+  <div class="series-recap-video">
+    <?php print !empty($video) ? $video : ''; ?>
   </div>
-  <div class="recap-video">
-    <div class="recap-video-inner">
-      <div class="recap-video-content">
-        <?php print !empty($video) ? $video : ''; ?>
+  <div class="series-recap-video-info">
+    <div class="series-recap-video-meta">
+      <?php if (!empty($video_description)): ?>
+        <div class="video-description"><?php print $video_description; ?></div>
+      <?php endif; ?>
+      <?php if (!empty($video_title)): ?>
+        <div class="video-title"><?php print $video_title; ?></div>
+      <?php endif; ?>
+    </div>
+    <?php if (!empty($button_url)): ?>
+      <div class="video-button show-color hover-avail">
+        <?php print $button_url; ?>
       </div>
-    </div>
+    <?php endif; ?>
   </div>
-  <?php if (!empty($button_url)): ?>
-    <div class="video-button show-border">
-      <?php print $button_url; ?>
-    </div>
-  <?php endif; ?>
 </div>

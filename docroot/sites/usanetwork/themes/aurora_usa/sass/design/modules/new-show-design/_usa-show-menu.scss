@@ -630,12 +630,17 @@
 
       @include transition(all 0.4s linear 0);
 
+      .top-menu-block-inner .title-block .title {
+        margin: 0 auto;
+      }
+
       //.header-inner,
       #head-leaderboard,
       #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu,
       //.top-menu-block-inner,
       .top-menu-block-inner .title-block,
       .top-menu-block-inner .title-block .title,
+      .top-menu-block-inner .title-block .title a,
       //.bottom-menu-block,
       //.bottom-menu-block-inner,
       .bottom-menu-block .show-menu-tab .show-menu > li a {
@@ -653,6 +658,7 @@
 
       &.usa-slide-header {
         @include transition(all 0.2s linear 0);
+        background-color: #000000;
         #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
           @include breakpoint($bp-min-1601-width) {
             padding-left: 0;

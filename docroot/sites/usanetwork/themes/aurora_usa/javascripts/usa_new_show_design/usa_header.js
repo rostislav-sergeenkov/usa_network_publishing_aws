@@ -32,10 +32,11 @@
         stickyMobile: true, // boolean
         initStickyMobileBp: 768, // number
         headerInnerMaxWidth: 1600, // px or ''
-        durationHeaderAnim: 500,
-        easingHeaderAnim: 'linear',
-        scrollTopStepForSlideUp: 50, // number px
-        timeOutCssAnimate: 600 // number ms
+        durationHeaderAnimate: 200,
+        transitionEasing: 'linear',
+        minScrollLength: 10, // number px; used for on || off stickyHeaderClass
+        scrollDiffMin: 30, // number px
+        timeOutCssAnimate: 200 // number ms
       };
 
       // create global options
@@ -51,9 +52,9 @@
       _.options.isHeaderSticky = false;
       _.options.isSlideHeaderActive = false;
       _.options.isSlideUpHeaderSticky = false;
+      _.options.isSlideProcessing = false;
+      _.options.isScrollDiffMin = false;
       _.options.slideUpStartPositon = 0;
-
-      _.options.classAnimating = 'velocity-animating'; // class processing animation
 
       // elements
       _.$body = $(document.body);
@@ -87,14 +88,14 @@
     var _ = this,
         currentYOffset = _.options.pageYOffset;
 
-    if (currentYOffset > newYOffset ) {
+    if (currentYOffset > newYOffset) {
       _.options.scrollDirection = 'top';
-    } else if (currentYOffset < newYOffset ) {
+    } else if (currentYOffset < newYOffset) {
       _.options.scrollDirection = 'down';
     }
 
+    _.getSlideUpStatus();
     _.options.pageYOffset = newYOffset;
-
     console.info('getScrollDirection : ' + _.options.scrollDirection);
   };
 
@@ -121,6 +122,7 @@
 
     if ($header.hasClass(stickyHeaderClass)) {
       _.options.isHeaderSticky = false;
+      _.options.isSlideHeaderActive = false;
       $header.removeClass(stickyHeaderClass);
     }
   };
@@ -168,7 +170,7 @@
 
       if (_.options.headerSpacerHeight != _.options.headerHeight) {
         _.setHeaderSpacerHeight();
-      } else if (_.options.headerSpacerHeight == _.options.headerHeight) {
+      } else if (_.options.headerSpacerHeight === _.options.headerHeight) {
         clearTimeout(spacerTimeout);
       }
     }, _.options.timeOutCssAnimate);
@@ -187,49 +189,21 @@
     });
   };
 
-  usaStickyHeader.prototype.setHeaderPosition = function () {
-
-
-
-    var _ = this,
-        $header = _.$header;
-
-    $header.css('top', '-' + _.options.headerHeight + 'px');
-  };
-
-  usaStickyHeader.prototype.resetHeaderPosition = function () {
-
-    console.info('resetHeaderPosition');
-
-    var _ = this,
-        $header = _.$header;
-
-
-    if ($header.hasClass(_.options.classAnimating)) {
-      $header.velocity('finish');
-    }
-
-    $header.velocity({
-      top: 0
-    }, {
-      duration: _.options.durationHeaderAnim,
-      easing: _.options.easingHeaderAnim,
-      complete: function () {
-        console.info('resetHeaderPosition complete');
-        _.options.isSlideUpHeaderSticky = false;
-        _.options.isSlideHeaderActive = false;
-        _.removeStickyHeaderClass();
-        _.updateHeaderSpacerHeight();
-      }
-    });
-  };
-
   usaStickyHeader.prototype.resetHeader = function () {
 
     console.info('resetHeader');
 
-    var _ = this;
-    _.resetHeaderPosition();
+    var _ = this,
+        timer;
+
+    // reset position and slide Down StickyHeader
+    _.setHeaderPosition(0);
+    _.removeStickyHeaderClass();
+
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      _.updateHeaderSpacerHeight();
+    }, _.options.timeOutCssAnimate);
   };
 
   usaStickyHeader.prototype.checkHeaderPosition = function () {
@@ -238,27 +212,29 @@
 
     var _ = this;
 
-    if (_.options.pageYOffset < 1 && _.options.isHeaderSticky) {
+    if (_.options.pageYOffset < _.options.minScrollLength && _.options.isHeaderSticky) {
       _.resetHeader();
     }
   };
 
   usaStickyHeader.prototype.checkHeaderOffset = function () {
 
-    var _ = this;
+    var _ = this,
+        minScrollLength = _.options.minScrollLength;
 
     console.info('checkHeaderOffset', _.options.pageYOffset, _.options.isHeaderSticky);
 
-    if (_.options.pageYOffset > 10 && !_.options.isHeaderSticky) {
+    if (_.options.pageYOffset > minScrollLength && !_.options.isHeaderSticky) {
       _.addStickyHeaderClass();
-    } else if (_.options.pageYOffset < 10 && _.options.isHeaderSticky) {
-      _.resetHeader();
-    } else if (_.options.pageYOffset > _.options.headerHeight*2 && _.options.isHeaderSticky && !_.options.isSlideHeaderActive) {
       // slide Up StickyHeader
-      _.slideUpStickyHeader('-' + _.options.headerHeight  + 'px', function () {
-        _.options.isSlideHeaderActive = true;
-        _.checkHeaderPosition();
-      });
+      _.slideUpStickyHeader('-' + _.options.adBlockHeight, null);
+      window.scrollBy(0, _.options.adBlockHeight);
+    } else if (_.options.pageYOffset < minScrollLength && _.options.isHeaderSticky) {
+      _.resetHeader();
+    } else if (_.options.pageYOffset > _.options.headerHeight * 2 && _.options.isHeaderSticky && !_.options.isSlideHeaderActive) {
+      // slide Up StickyHeader
+      _.options.isSlideHeaderActive = true;
+      _.slideUpStickyHeader('-' + _.options.headerHeight, null);
     }
   };
 
@@ -267,59 +243,60 @@
     console.info('getSlideUpStatus');
     var _ = this;
 
-    if (_.options.slideUpStartPositon + _.options.scrollTopStepForSlideUp < _.options.pageYOffset) {
-      return true;
+    if (Math.abs(window.pageYOffset - _.options.pageYOffset) > _.options.scrollDiffMin) {
+      _.options.isScrollDiffMin = true;
     } else {
-      return false;
+      _.options.isScrollDiffMin = false;
     }
   };
 
   usaStickyHeader.prototype.slideUpStickyHeader = function (top, callback) {
 
     var _ = this,
-        $header = _.$header;
+        timer;
 
-    console.info('slideUpStickyHeader');
-    if (!$header.hasClass(_.options.classAnimating)) {
-      $header.velocity({
-        top: top
-      }, {
-        duration: _.options.durationHeaderAnim,
-        easing: _.options.easingHeaderAnim,
-        complete: function (elements) {
-          console.info('hideStickyHeaderDesktop complete');
-          _.options.isSlideUpHeaderSticky = true;
-          if (typeof callback == 'function') {
-            callback();
-          }
-        }
-      });
+    if (_.options.isSlideProcessing) {
+      return;
     }
+
+    _.options.isSlideProcessing = true;
+    _.setHeaderPosition(top);
+
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      _.options.isSlideUpHeaderSticky = true;
+      _.options.isSlideProcessing = false;
+      _.checkHeaderPosition();
+      if (typeof callback === 'function') {
+        callback();
+      }
+    }, _.options.durationHeaderAnimate);
   };
 
   usaStickyHeader.prototype.slideDownStickyHeader = function (top, callback) {
 
     var _ = this,
-        $header = _.$header;
+        timer;
 
-    console.info('slideDownStickyHeader');
-
-    if (!$header.hasClass(_.options.classAnimating)) {
-      $header.velocity({
-        top: top
-      }, {
-        duration: _.options.durationHeaderAnim,
-        easing: _.options.easingHeaderAnim,
-        complete: function (elements) {
-          console.info('slideDownStickyHeader complete');
-          _.options.isSlideUpHeaderSticky = false;
-          _.options.slideUpStartPositon = window.pageYOffset;
-          if (typeof callback == 'function') {
-            callback();
-          }
-        }
-      });
+    if (_.options.isSlideProcessing) {
+      return;
     }
+
+    _.options.isSlideProcessing = true;
+
+    _.setHeaderPosition(top);
+
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      _.options.isSlideUpHeaderSticky = false;
+      _.options.isSlideProcessing = false;
+      _.options.slideUpStartPositon = window.pageYOffset;
+      _.checkHeaderPosition();
+
+      if (typeof callback === 'function') {
+        callback();
+      }
+    }, _.options.durationHeaderAnimate);
   };
 
   usaStickyHeader.prototype.slideStickyHeader = function () {
@@ -329,19 +306,35 @@
     var _ = this;
 
     if (_.options.isHeaderSticky && _.options.isSlideHeaderActive) {
-      if (_.options.scrollDirection == 'down' && !_.options.isSlideUpHeaderSticky && _.getSlideUpStatus()) {
+      if (_.options.scrollDirection == 'down' && !_.options.isSlideUpHeaderSticky && _.options.isScrollDiffMin) {
+
         // slide Up StickyHeader
-        _.slideUpStickyHeader('-' + _.options.headerHeight  + 'px', function () {
-          _.checkHeaderPosition();
-        });
+        _.slideUpStickyHeader('-' + _.options.headerHeight, null);
+
       } else if (_.options.scrollDirection == 'top' && _.options.isSlideUpHeaderSticky) {
+
         // slide Down StickyHeader
-        _.slideDownStickyHeader('-' + _.options.adBlockHeight + 'px', function () {
-          _.checkHeaderPosition();
-        });
+        _.slideDownStickyHeader('-' + _.options.adBlockHeight, null);
       }
     }
   };
+
+  usaStickyHeader.prototype.setHeaderPosition = function (top) {
+    // top: - number || number
+    console.info('setHeaderPosition');
+
+    var _ = this,
+        $header = $(_.$header);
+
+    $header.css({
+      '-moz-transform': 'translateY(' + top + 'px)',
+      '-ms-transform': 'translateY(' + top + 'px)',
+      '-webkit-transform': 'translateY(' + top + 'px)',
+      '-o-transform': 'translateY(' + top + 'px)',
+      'transform': 'translateY(' + top + 'px)'
+    });
+  };
+
 
   //=============================
   // main functionality
@@ -349,32 +342,17 @@
   // add windows events
   usaStickyHeader.prototype.addEvents = function () {
 
-    var _ = this,
-        isMobileDevice = _.options.isMobileDevice,
-        timer;
+    var _ = this;
 
     $(window)
         .on('scroll', function (e) {
 
           console.info('onScroll : ' + window.pageYOffset);
 
-          var $window = this;
+          var $window = this,
+              newYOffset = $window.pageYOffset;
 
-          // if (isMobileDevice) {
-          //   if(timer !== null) {
-          //     clearTimeout(timer);
-          //   }
-          //   timer = setTimeout(function() {
-          //     _.getScrollDirection($window.pageYOffset);
-          //     _.updateOptionsVal();
-          //     _.checkHeaderOffset();
-          //     _.slideStickyHeader();
-          //   }, 150);
-          // } else {
-          //
-          // }
-          _.getScrollDirection($window.pageYOffset);
-          _.updateOptionsVal();
+          _.getScrollDirection(newYOffset);
           _.checkHeaderOffset();
           _.slideStickyHeader();
         })
@@ -388,7 +366,6 @@
           _.updateHeaderSpacerHeight();
         });
   };
-
 
   //=============================
   // Init usaGallery app

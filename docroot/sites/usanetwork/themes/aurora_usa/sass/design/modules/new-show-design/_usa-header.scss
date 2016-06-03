@@ -5,22 +5,24 @@
     .header-inner {
       background-color: black;
       margin: 0 auto;
-      max-width: 1600px;
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        width: 1600px;
+      }
     }
     &.usa-sticky-header-initialized {
       left: 0;
       top: 0;
-      position: absolute;
+      position: fixed;
       width: 100%;
       z-index: 100;
-      &.usa-sticky-header {
-        position: fixed;
-      }
     }
     &.usa-sticky-header {
       .header-inner {
-        max-width: inherit;
         width: 100%;
+        @include breakpoint($bp-min-1601-width) {
+          //max-width: 1600px;
+        }
       }
     }
   }

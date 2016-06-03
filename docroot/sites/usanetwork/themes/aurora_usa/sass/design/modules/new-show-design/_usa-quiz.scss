@@ -1,12 +1,21 @@
-body:not(.show-new-design) .consumptionator-quiz-main-block, .page-videos-live {
+.show-new-design .consumptionator-quiz-main-block {
+  @include clear();
+  overflow: hidden;
+  padding-bottom: 10000px;
+  margin-bottom: -10000px;
+  position: relative;
+  width: 100%;
+  .consum-sidebar {
+    background: black;
+  }
   article.node-quiz {
+    background: black;
+    color: white;
     float: left;
-    position: relative;
-    width: 74.7%;
-    background: #ffffff;
-    color: #000000;
-    padding: 0;
     overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 75%;
     @include breakpoint($between-1025-1280) {
       width: calc(100% - 320px);
     }
@@ -113,23 +122,4 @@ body:not(.show-new-design) .consumptionator-quiz-main-block, .page-videos-live {
   }
 
 }
-body:not(.show-new-design) .consumptionator-quiz-main-block {
-  @include clear();
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  article.node-quiz {
-    padding-bottom: 10000px;
-    margin-bottom: -10000px;
-  }
-  .consum-sidebar {
-    .items-block {
-      @include breakpoint($bp-min-1025-width) {
-        height: 245px;
-      }
-      @include breakpoint($bp-min-1901-width) {
-        height: 400px;
-      }
-    }
-  }
-}
+

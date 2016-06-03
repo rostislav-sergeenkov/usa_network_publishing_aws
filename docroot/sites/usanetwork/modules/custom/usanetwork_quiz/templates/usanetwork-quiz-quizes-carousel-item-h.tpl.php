@@ -1,7 +1,7 @@
 <?php
 ?>
 <li class="slide-item">
-  <div class="node node-usanetwork-promo aspot-carousel-promo <?php if (!empty($active)): print ' active show-border'; endif; ?>">
+  <div class="node node-usanetwork-promo <?php print ($new_design)? 'usa-carousel-horizontal-promo': 'aspot-carousel-promo'; ?><?php if (!empty($active)): print ' active show-border'; endif; ?>">
     <?php if (!empty($url)): ?>
       <a href="<?php print $url; ?>">
         <?php if (!empty($image)): ?>

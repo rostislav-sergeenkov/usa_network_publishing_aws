@@ -7,6 +7,95 @@
   width: 100%;
   .consum-sidebar {
     background: black;
+    .items-block {
+      .episodes-list-slider {
+        &.horizontal {
+          @include breakpoint($bp-640-width) {
+            li {
+              background: $consum-carousel-even;
+              height: 75px;
+              position: relative;
+              width: 100%!important;
+              &:nth-child(odd) {
+                background: $consum-carousel-odd;
+              }
+              &:nth-child(even) {
+                background: $consum-carousel-even;
+              }
+              > div {
+                height: 100%;
+                width: 100%;
+              }
+              a {
+                height: 100%;
+                width: 100%;
+              }
+              .asset-img {
+                height: 50px;
+                left: 4%;
+                margin-top: -25px;
+                position: absolute;
+                top: 50%;
+                width: 75px;
+                &.active {
+                  border-left: 7px solid;
+                }
+                img {
+                  height: 100%;
+                  width: 100%;
+                }
+                & ~ .meta-wrapper {
+                  .meta {
+                    padding-left: calc(8% + 75px);
+                  }
+                }
+              }
+              .meta-wrapper {
+                background: none;
+                height: 100%;
+                width: 100%;
+                .meta-wrapper-inner {
+                  display: table;
+                  height: 100%;
+                  width: 100%;
+                }
+                .meta-icon {
+                  display: none;
+                }
+                .meta {
+                  color: $consum-carousel-text;
+                  padding-left: 4%;
+                  display: table-cell;
+                  max-width: 100px;
+                  vertical-align: middle;
+                  width: 100%;
+                  .caption {
+                    font-size: 10px;
+                    line-height: 13px;
+                  }
+                  .title {
+                    font-size: 15px;
+                    line-height: 18px;
+                    margin-bottom: 7px;
+                  }
+                  .additional {
+                    font-family: $tex-gyreschola-italic;
+                    font-size: 10px;
+                    line-height: 13px;
+                    text-transform: uppercase;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .more-items {
+      @include breakpoint($bp-640-width) {
+        border: 1px solid;
+      }
+    }
   }
   article.node-quiz {
     background: black;
@@ -20,19 +109,57 @@
       width: calc(100% - 320px);
     }
     @include breakpoint($bp-1024-width) {
-      border-bottom: 2px solid;
+      border-bottom: none;
       float: none;
       padding: 0;
       margin-bottom: 0;
       width: 100%;
     }
-    @include breakpoint ($bp-640-width) {
-      border-bottom: 8px solid;
+    .sharebar {
+      .gig-button-container {
+        [id$='reaction0-facebook_img'] {
+          &:before {
+            color: $usa-video-helper-facebook;
+          }
+        }
+        [id$='reaction1-twitter_img'] {
+          &:before {
+            color: $usa-video-helper-twitter;
+          }
+        }
+        [id$='reaction2-tumblr_img'] {
+          &:before {
+            color: $usa-video-helper-tumblr;
+          }
+        }
+        [id$='reaction3-pinterest_img'] {
+          &:before {
+            color: $usa-video-helper-pinterest;
+          }
+        }
+        [id$='reaction4-share_img'] {
+          &:before {
+            color: $poll-color;
+          }
+        }
+      }
     }
     .usanetwork-quiz {
+      background: black;
+      color: white;
       max-width: 1000px;
       @include breakpoint($bp-1280-width) {
         width: auto;
+      }
+      h3 {
+        color: white;
+        font-family: $fira-sans-medium;
+      }
+      .field-type-text-with-summary {
+        font-family: $open-sans-regular;
+      }
+      [type="button"] {
+        font-family: $fira-sans-medium;
       }
       .entry-button {
         margin: 50px 0;
@@ -53,7 +180,21 @@
           font-size: 16.5px;
         }
       }
+      .score-container {
+        font-family: $fira-sans-regular;
+      }
+      .result-title {
+        font-family: $fira-sans-medium;
+      }
+      .result-description {
+        font-family: $open-sans-regular;
+      }
+      .page-note {
+        font-family: $fira-sans-regular;
+      }
       .content-wrap {
+        background: black;
+        color: white;
         padding: 40px;
         @include breakpoint ($bp-640-width) {
           padding: 20px;
@@ -92,6 +233,7 @@
     }
     .usanetwork-quiz-question {
       .question-title {
+        font-family: $fira-sans-medium;
         text-align: center;
         @include breakpoint ($bp-640-width) {
           font-size: get-vw(26px, 640);
@@ -112,6 +254,7 @@
         max-width: 320px;
       }
       .answer-title {
+        font-family: $fira-sans-medium;
         padding: 5px;
         width: 320px;
         @include breakpoint ($bp-640-width) {

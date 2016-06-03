@@ -19,9 +19,13 @@
           </div>
         <?php endif; ?>
         <div class="meta-wrapper">
-          <div class="meta-back"></div>
+          <?php if(!$new_design): ?>
+            <div class="meta-back"></div>
+          <?php endif; ?>
           <div class="meta-wrapper-inner">
-            <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
+            <?php if(!$new_design): ?>
+              <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
+            <?php endif; ?>
             <div class="meta">
               <?php if (!empty($title)): ?>
                 <div class="title"><?php print $title; ?></div>

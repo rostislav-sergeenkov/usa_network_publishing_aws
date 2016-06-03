@@ -991,8 +991,8 @@ function _usanetwork_quiz_quizes_carousel() {
           $rendered_items['vertical'][] = theme('usanetwork_quiz_quizes_carousel_item_v', $episode_variables);
           $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
           $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-          $episode_variables['new_design'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-          $rendered_items['horizontal'][] = !empty($is_new_design) ? $is_new_design : NULL;
+          $episode_variables['new_design'] = !empty($is_new_design) ? $is_new_design : NULL;
+          $rendered_items['horizontal'][] = theme('usanetwork_quiz_quizes_carousel_item_h', $episode_variables);
         }
         $advert_block = module_invoke('mps', 'block_view', 'topbox');
         if (!empty($advert_block['content'])) {

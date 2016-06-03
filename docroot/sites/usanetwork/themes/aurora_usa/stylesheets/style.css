@@ -5297,7 +5297,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
     padding: 15px 0;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .show-new-design .cast-and-crew-block .block-item .usa-cast-promo .meta-wrapper .meta-wrapper-inner .meta {
     padding: 1.5625vw 0;
   }
@@ -5316,7 +5316,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
     font-size: 27px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .show-new-design .cast-and-crew-block .block-item .usa-cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
     font-size: 2.8125vw;
   }
@@ -5332,7 +5332,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
     font-size: 18px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .show-new-design .cast-and-crew-block .block-item .usa-cast-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
     font-size: 1.875vw;
   }
@@ -40313,6 +40313,16 @@ body.blog .view-display-id-blog_content .views-row {
     font-size: 15px;
   }
 }
+@media (max-width: 768px) {
+  .show-new-design.page-node-cast .usa-section-title {
+    border-bottom: 2px solid;
+    border-top: none !important;
+    padding: 3.25521vw 0;
+  }
+}
+.show-new-design.page-node-cast .usa-section-title .title {
+  color: white;
+}
 .show-new-design .view-more {
   background-color: #282828;
   padding: 1.875vw 0;
@@ -47964,6 +47974,9 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 @media (max-width: 768px) {
+  .show-new-design .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description {
+    padding: 3.90625vw;
+  }
   .show-new-design .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description.no-image {
     min-height: 0;
   }
@@ -47974,7 +47987,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   float: left;
   font-family: "opensansregular", sans-serif;
   font-size: 18px;
-  line-height: 1.4;
+  line-height: 1.5;
   width: 60%;
 }
 @media (max-width: 1024px) {
@@ -47983,10 +47996,9 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     width: calc(100% - 340px);
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .show-new-design .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description > .description {
     width: 100%;
-    font-size: 12px;
   }
 }
 .show-new-design .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description > .description p {
@@ -48060,7 +48072,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   height: 250px;
   width: 300px;
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .show-new-design .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .advert {
     display: none;
   }
@@ -48075,11 +48087,6 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   width: 30%;
 }
 @media (max-width: 768px) {
-  .show-new-design .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
-    width: 41%;
-  }
-}
-@media (max-width: 640px) {
   .show-new-design .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-description .back-image {
     display: none;
   }
@@ -48109,6 +48116,11 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     padding: 30px 45px;
   }
 }
+@media (max-width: 768px) {
+  .show-new-design .cast-and-crew-block ul {
+    padding: 3.90625vw 1.95313vw;
+  }
+}
 .show-new-design .cast-and-crew-block .block-item {
   float: left;
   height: auto;
@@ -48117,7 +48129,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   width: 23.35%;
   margin-right: 2.2%;
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .show-new-design .cast-and-crew-block .block-item {
     margin-right: 2.6%;
     width: 48.7%;
@@ -48137,9 +48149,14 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     margin-top: 60px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .show-new-design .cast-and-crew-block .block-item:nth-child(n + 5) {
+    margin-top: 3.90625vw;
+  }
+}
+@media (max-width: 768px) {
   .show-new-design .cast-and-crew-block .block-item:nth-child(3), .show-new-design .cast-and-crew-block .block-item:nth-child(4) {
-    margin-top: 3.75vw;
+    margin-top: 3.90625vw;
   }
 }
 .show-new-design .where-to-watch {
@@ -48168,6 +48185,11 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     padding: 30px 45px;
   }
 }
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .where-to-watch-inner {
+    padding: 2.60417vw 3.90625vw;
+  }
+}
 .show-new-design .where-to-watch .live-link {
   border: 1px solid;
   color: white;
@@ -48185,6 +48207,11 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     font-size: 20px;
     line-height: 56px;
     padding: 0 35px 0;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .live-link {
+    display: none;
   }
 }
 .show-new-design .where-to-watch .live-link span {
@@ -48216,31 +48243,95 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     margin-top: 50px;
   }
 }
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .description-block {
+    font-size: 2.60417vw;
+    margin-top: 0;
+  }
+}
 .show-new-design .where-to-watch .usa-providers {
   position: relative;
   text-align: center;
 }
 .show-new-design .where-to-watch .usa-providers .providers-row {
-  border-bottom: 1px solid;
-  display: inline-block;
-  padding: 1.875vw 0;
+  display: block;
   position: relative;
   text-align: center;
 }
-@media (min-width: 1601px) {
-  .show-new-design .where-to-watch .usa-providers .providers-row {
-    padding: 30px 0;
-  }
-}
-.show-new-design .where-to-watch .usa-providers .providers-row:last-child {
+.show-new-design .where-to-watch .usa-providers .providers-row:last-child .providers-row-inner {
   border: none;
 }
-.show-new-design .where-to-watch .usa-providers .provider {
+.show-new-design .where-to-watch .usa-providers .providers-row-inner {
+  border-bottom: 1px solid;
   display: inline-block;
+  padding: 1.875vw 3.75vw;
+  position: relative;
+}
+.show-new-design .where-to-watch .usa-providers .providers-row-inner:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .usa-providers .providers-row-inner {
+    padding: 30px 60px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .usa-providers .providers-row-inner {
+    border: none;
+    padding: 0 2.60417vw;
+    width: 100%;
+  }
+}
+.show-new-design .where-to-watch .usa-providers .provider {
+  display: table;
+  float: left;
+  height: 3.75vw;
+  margin-right: 8.75vw;
+  position: relative;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .usa-providers .provider {
+    height: 60px;
+    margin-right: 140px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .usa-providers .provider {
+    height: 7.8125vw;
+    margin: 3.25521vw 0;
+    width: 50%;
+  }
+}
+.show-new-design .where-to-watch .usa-providers .provider:last-child {
+  margin-right: 0;
+}
+.show-new-design .where-to-watch .usa-providers .provider a {
+  display: table-cell;
+  height: auto;
+  outline: none;
+  position: relative;
+  vertical-align: middle;
+  width: auto;
+}
+.show-new-design .where-to-watch .usa-providers .provider a img {
+  max-height: 3.75vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .usa-providers .provider a img {
+    max-height: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .usa-providers .provider a img {
+    max-height: 7.8125vw;
+  }
 }
 .show-new-design .video-recap-block {
   background: black;
   overflow: hidden;
+  padding-bottom: 3.75vw;
   position: relative;
   text-align: center;
   width: 100%;
@@ -48249,6 +48340,16 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   clear: both;
   content: '';
   display: table;
+}
+@media (min-width: 1601px) {
+  .show-new-design .video-recap-block {
+    padding-bottom: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .video-recap-block {
+    padding-bottom: 2.60417vw;
+  }
 }
 .show-new-design .video-recap-block .recap-video {
   padding: 1.875vw 2.8125vw;
@@ -48263,6 +48364,11 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 @media (min-width: 1601px) {
   .show-new-design .video-recap-block .recap-video {
     padding: 30px 45px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .video-recap-block .recap-video {
+    padding: 2.60417vw;
   }
 }
 .show-new-design .video-recap-block .recap-video .recap-video-inner {
@@ -48303,6 +48409,13 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     padding: 0 35px 0;
   }
 }
+@media (max-width: 768px) {
+  .show-new-design .video-recap-block .video-button {
+    font-size: 2.60417vw;
+    line-height: 7.29167vw;
+    padding: 0 4.55729vw 0;
+  }
+}
 .show-new-design .video-recap-block .video-button span {
   background: none;
 }
@@ -48319,6 +48432,12 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   .show-new-design .video-recap-block .video-button span:after {
     font-size: 14px;
     margin-left: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .video-recap-block .video-button span:after {
+    font-size: 1.82292vw;
+    margin-left: 1.95313vw;
   }
 }
 

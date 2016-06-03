@@ -19,7 +19,7 @@
         <div class="providers-row">
           <div class="providers-row-inner show-border">
             <div class="provider">
-              <a href="<?php print $usa_now_path; ?>">USA Now</a>
+              <a href="<?php print $usa_now_path; ?>"><img src="/sites/usanetwork/themes/aurora_usa/images/usanow_new.png"></a>
             </div>
       <?php endif; ?>
       <?php foreach ($elements as $element) : ?>

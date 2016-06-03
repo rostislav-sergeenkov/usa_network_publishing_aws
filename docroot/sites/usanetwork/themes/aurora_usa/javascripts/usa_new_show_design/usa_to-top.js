@@ -23,15 +23,17 @@
 
       var target = $(e.target);
 
-      if($.fn.hasOwnProperty('velocity')) {
-        $htmlBody.velocity("scroll", {
-          duration: scrollDuration,
-          easing: scrollEasing,
-          offset: scrollOffset
-        });
-      } else {
-        $htmlBody.animate({ scrollTop: scrollOffset }, scrollDuration, scrollEasing);
-      }
+      $htmlBody.animate({ scrollTop: scrollOffset }, scrollDuration, scrollEasing);
+
+      // if($.fn.hasOwnProperty('velocity')) {
+      //   $htmlBody.velocity("scroll", {
+      //     duration: scrollDuration,
+      //     easing: scrollEasing,
+      //     offset: scrollOffset
+      //   });
+      // } else {
+      //   $htmlBody.animate({ scrollTop: scrollOffset }, scrollDuration, scrollEasing);
+      // }
     });
   }
 

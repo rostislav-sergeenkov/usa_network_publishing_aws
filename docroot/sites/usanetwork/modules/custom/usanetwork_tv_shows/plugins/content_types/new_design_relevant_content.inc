@@ -101,7 +101,7 @@ function new_design_relevant_content_get_latest_content($node, $conf) {
       $additional_items = _usanetwork_tv_shows_cache_get_limited_related_show_content($node, $conf['items_quantity'], $conf['items_quantity'] - $actual_count);
       $latest_items = array_merge($latest_items, $additional_items);
     }
-  } while ($actual_count < $conf['items_quantity'] || count($additional_items) == 0);
+  } while ($actual_count < $conf['items_quantity'] && count($additional_items) > 0);
 
   $latest_content = array();
   foreach ($latest_items as $item) {

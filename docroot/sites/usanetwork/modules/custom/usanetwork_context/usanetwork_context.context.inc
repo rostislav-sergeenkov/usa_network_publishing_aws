@@ -577,6 +577,7 @@ function usanetwork_context_context_default_contexts() {
     'context' => array(
       'values' => array(
         '~usanetwork_sitewide_exclude' => '~usanetwork_sitewide_exclude',
+        '~usanetwork_sitewide_exclude_newdesign' => '~usanetwork_sitewide_exclude_newdesign',
       ),
     ),
     'path' => array(

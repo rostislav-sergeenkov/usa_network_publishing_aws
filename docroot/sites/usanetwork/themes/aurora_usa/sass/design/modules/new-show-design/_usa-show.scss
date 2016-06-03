@@ -124,6 +124,18 @@
       }
     }
   }
+  &.page-node-cast {
+    .usa-section-title {
+      @include breakpoint($bp-768-width) {
+        border-bottom: 2px solid;
+        border-top: none!important;
+        padding: get-vw(25px, 768) 0;
+      }
+      .title {
+        color: white;
+      }
+    }
+  }
   .view-more {
     background-color: $tve-modalFooter;
     padding: get-vw(24px, 1280) 0;

@@ -84,6 +84,25 @@ function new_design_relevant_content_content_type_edit_form_submit($form, &$form
 
 function new_design_relevant_content_get_latest_content($node, $conf) {
   $latest_items = _usanetwork_tv_shows_cache_get_limited_related_show_content($node, 0, $conf['items_quantity']);
+  $bcd_spot_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_bcd_spot');
+
+  do  {
+    // Exclude bcd spot items.
+    foreach ($latest_items as $idx => $item) {
+      foreach ($bcd_spot_content as $bcd_spot_item) {
+        if ($item->entity_id == $bcd_spot_item['entity_id'] && $item->entity_type == $bcd_spot_item['entity_type']) {
+          unset($latest_items[$idx]);
+        }
+      }
+    }
+    // Fill gap of items.
+    $actual_count = count($latest_items);
+    if ($actual_count < $conf['items_quantity']) {
+      $additional_items = _usanetwork_tv_shows_cache_get_limited_related_show_content($node, $conf['items_quantity'], $conf['items_quantity'] - $actual_count);
+      $latest_items = array_merge($latest_items, $additional_items);
+    }
+  } while ($actual_count < $conf['items_quantity'] || count($additional_items) == 0);
+
   $latest_content = array();
   foreach ($latest_items as $item) {
     $type = '';
@@ -110,6 +129,15 @@ function new_design_relevant_content_get_latest_content($node, $conf) {
 
 function new_design_relevant_content_get_manual_content($node, $conf) {
   $relevant_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_alternative_content');
+  $bcd_spot_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_bcd_spot');
+  // Exclude bcd spot items.
+  foreach ($relevant_content as $idx => $item) {
+    foreach ($bcd_spot_content as $bcd_spot_item) {
+      if ($item['entity_id'] == $bcd_spot_item['entity_id'] && $item['entity_type'] == $bcd_spot_item['entity_type']) {
+        unset($relevant_content[$idx]);
+      }
+    }
+  }
   $relevant_data = array();
   foreach ($relevant_content as $item) {
     $data_item = usanetwork_promo_get_promo_content_variables($item);

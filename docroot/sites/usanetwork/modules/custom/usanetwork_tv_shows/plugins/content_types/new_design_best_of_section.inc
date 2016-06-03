@@ -48,12 +48,6 @@ function new_design_best_of_section_content_type_render($subtype, $conf, $args, 
   if (usanetwork_core_api_check_field($node, 'field_best_of_section_link')) {
     $theme_variables['link'] = $node_wrapper->field_best_of_section_link->value();
   }
-  else {
-    $theme_variables['link'] = array(
-      'title' => 'View more',
-      'url' => '#',
-    );
-  }
 
   $block->content = array(
     '#theme' => 'new_design_best_of_section',

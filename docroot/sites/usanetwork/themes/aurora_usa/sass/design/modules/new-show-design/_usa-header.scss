@@ -17,13 +17,13 @@
       width: 100%;
       z-index: 100;
     }
-    &.usa-sticky-header {
+    &.usa-slide-header {
       .header-inner {
         width: 100%;
-        @include breakpoint($bp-min-1601-width) {
-          //max-width: 1600px;
-        }
       }
+    }
+    &.usa-sticky-header {
+
     }
   }
   #header-spacer {

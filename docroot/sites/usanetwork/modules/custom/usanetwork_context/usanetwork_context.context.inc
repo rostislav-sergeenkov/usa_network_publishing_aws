@@ -695,6 +695,7 @@ function usanetwork_context_context_default_contexts() {
         'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'person' => 'person',
+        'quiz' => 'quiz',
         'timeline_gallery' => 'timeline_gallery',
         'tv_episode' => 'tv_episode',
       ),

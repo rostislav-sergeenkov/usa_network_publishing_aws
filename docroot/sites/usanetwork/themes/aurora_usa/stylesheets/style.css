@@ -48154,6 +48154,161 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     margin-top: 3.75vw;
   }
 }
+.show-new-design .where-to-watch {
+  background: black;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+.show-new-design .where-to-watch:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.show-new-design .where-to-watch .where-to-watch-inner {
+  padding: 1.875vw 2.8125vw;
+  width: 100%;
+}
+.show-new-design .where-to-watch .where-to-watch-inner:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .where-to-watch-inner {
+    padding: 30px 45px;
+  }
+}
+.show-new-design .where-to-watch .live-link {
+  border: 1px solid;
+  color: white;
+  display: inline-block;
+  font-family: "firasansregular", sans-serif;
+  font-size: 1.25vw;
+  line-height: 3.5vw;
+  padding: 0 2.1875vw 0;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .live-link {
+    font-size: 20px;
+    line-height: 56px;
+    padding: 0 35px 0;
+  }
+}
+.show-new-design .where-to-watch .live-link span {
+  background: none;
+}
+.show-new-design .where-to-watch .live-link span:after {
+  display: inline-block;
+  color: inherit;
+  content: "\e608";
+  font-family: "ico-font";
+  font-size: 0.875vw;
+  margin-left: 0.9375vw;
+  position: relative;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .live-link span:after {
+    font-size: 14px;
+    margin-left: 15px;
+  }
+}
+.show-new-design .where-to-watch .description-block {
+  font-size: 1.25vw;
+  margin-top: 3.125vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .description-block {
+    font-size: 20px;
+    margin-top: 50px;
+  }
+}
+.show-new-design .video-recap-block {
+  background: black;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.show-new-design .video-recap-block:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.show-new-design .video-recap-block .recap-video {
+  padding: 1.875vw 2.8125vw;
+  position: relative;
+  width: 100%;
+}
+.show-new-design .video-recap-block .recap-video:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1601px) {
+  .show-new-design .video-recap-block .recap-video {
+    padding: 30px 45px;
+  }
+}
+.show-new-design .video-recap-block .recap-video .recap-video-inner {
+  margin: 0 auto;
+  max-width: 930px;
+  position: relative;
+  width: 100%;
+}
+.show-new-design .video-recap-block .recap-video .recap-video-inner .recap-video-content {
+  padding-top: 56.25%;
+  position: relative;
+  width: 100%;
+}
+.show-new-design .video-recap-block .recap-video .recap-video-inner .recap-video-content iframe {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.show-new-design .video-recap-block .video-button {
+  border: 1px solid;
+  color: white;
+  display: inline-block;
+  font-family: "firasansregular", sans-serif;
+  font-size: 1.25vw;
+  line-height: 3.5vw;
+  outline: none;
+  padding: 0 2.1875vw 0;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .show-new-design .video-recap-block .video-button {
+    font-size: 20px;
+    line-height: 56px;
+    padding: 0 35px 0;
+  }
+}
+.show-new-design .video-recap-block .video-button span {
+  background: none;
+}
+.show-new-design .video-recap-block .video-button span:after {
+  display: inline-block;
+  color: inherit;
+  content: "\e608";
+  font-family: "ico-font";
+  font-size: 0.875vw;
+  margin-left: 0.9375vw;
+  position: relative;
+}
+@media (min-width: 1601px) {
+  .show-new-design .video-recap-block .video-button span:after {
+    font-size: 14px;
+    margin-left: 15px;
+  }
+}
 
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block,
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {

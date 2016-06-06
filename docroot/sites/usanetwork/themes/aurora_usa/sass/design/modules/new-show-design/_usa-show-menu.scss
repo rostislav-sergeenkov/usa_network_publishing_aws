@@ -525,6 +525,10 @@
     width: 100%;
     @include breakpoint($bp-min-1601-width) {
       height: 75px;
+
+
+
+
     }
     @include breakpoint($bp-768-width) {
       border: none;

@@ -39,6 +39,7 @@ dependencies[] = usanetwork_token
 dependencies[] = usanetwork_top3
 features[context][] = consumpt_post_node
 features[context][] = explore_landing
+features[context][] = explore_landing_newdesign
 features[context][] = quiz_node
 features[context][] = schedule_page
 features[context][] = show_banner

@@ -70,6 +70,11 @@ function usanetwork_context_context_default_contexts() {
   $context->description = 'Show Explore Landing Page';
   $context->tag = 'shows';
   $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~explore_landing_newdesign' => '~explore_landing_newdesign',
+      ),
+    ),
     'path' => array(
       'values' => array(
         'node/*/explore' => 'node/*/explore',
@@ -94,13 +99,63 @@ function usanetwork_context_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Show Explore Landing Page');
   t('shows');
   $export['explore_landing'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'explore_landing_newdesign';
+  $context->description = 'Show Explore Landing Page of New Design';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'new_design_show' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/*/explore' => 'node/*/explore',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_fb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_fb',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_lmb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_lmb',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_list' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_list',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Show Explore Landing Page of New Design');
+  t('shows');
+  $export['explore_landing_newdesign'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -903,6 +958,12 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_filters_vl' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_filters_vl',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'usanetwork_tv_shows-usanetwork_tv_shows_video_vl_nd' => array(
           'module' => 'usanetwork_tv_shows',
           'delta' => 'usanetwork_tv_shows_video_vl_nd',

@@ -295,13 +295,13 @@
       .title-block {
         &.show-mrrobot {
           @include breakpoint($bp-min-769-width) {
-            width: get-vw(287px, 1600);
+            //width: get-vw(287px, 1600);
           }
           @include breakpoint($bp-min-1601-width) {
-            width: 287px;
+            //width: 287px;
           }
           @include breakpoint($bp-768-width) {
-            width: get-vw(203px, 768);
+            //width: get-vw(203px, 768);
           }
           & + .sponsored {
             @include breakpoint($bp-768-width) {
@@ -309,15 +309,16 @@
             }
           }
         }
+        // sticky show logo height
         .title {
           @include breakpoint($bp-min-769-width) {
-            height: get-vw(45px, 1600);
+            //height: get-vw(45px, 1600);
           }
           @include breakpoint($bp-min-1601-width) {
-            height: 45px;
+            //height: 45px;
           }
           @include breakpoint($bp-768-width) {
-            height: get-vw(31px, 768);
+            //height: get-vw(31px, 768);
             margin-bottom: 0;
           }
         }
@@ -402,7 +403,7 @@
       margin: 0 auto;
       position: relative;
       .title {
-        margin: 0;
+        margin: 0 auto;
         position: relative;
         width: 100%;
         @include breakpoint($between-641-768) {
@@ -623,65 +624,67 @@
 // default transition duration 200ms
 .show-new-design {
   #header-spacer {
-    @include transition(all 0.2s ease-in-out 0);
+    @include transition(all 0.1s linear 0);
+    &.slide-spacer {
+      @include transition(all 0.4s linear 0);
+    }
   }
   #header {
     &.usa-sticky-header-initialized {
 
-      @include transition(all 0.4s linear 0);
-
-      .top-menu-block-inner .title-block .title {
-        margin: 0 auto;
-      }
-
-      //.header-inner,
-      #head-leaderboard,
-      #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu,
-      //.top-menu-block-inner,
-      .top-menu-block-inner .title-block,
-      .top-menu-block-inner .title-block .title,
-      .top-menu-block-inner .title-block .title a,
-      //.bottom-menu-block,
-      //.bottom-menu-block-inner,
+      // all time transition
       .bottom-menu-block .show-menu-tab .show-menu > li a {
         @include transition(all 0.4s linear 0);
       }
 
-      .top-menu-block-inner,
-      .bottom-menu-block-inner {
-        margin: 0 auto;
-        width: 100%;
-      }
-    }
-
-    &.usa-sticky-header {
-
       &.usa-slide-header {
         @include transition(all 0.2s linear 0);
-        background-color: #000000;
+        //& ,
+        //.header-inner {
+        //  @include transition(all 0.2s linear 0);
+        //}
+
+        //.header-inner,
+        //#head-leaderboard,
+        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu,
+        //.top-menu-block-inner,
+        //.top-menu-block-inner .title-block,
+        .top-menu-block-inner .title-block .title,
+        //.top-menu-block-inner .title-block .title a,
+        .bottom-menu-block,
+        .bottom-menu-block-inner,
+        .bottom-menu-block .show-menu-tab .show-menu > li a {
+          @include transition(all 0.4s linear 0);
+        }
+      }
+
+      &.usa-decrease-header {
+        .top-menu-block-inner .title-block .title {
+          @include transition(all 0.1s linear 0);
+        }
+      }
+
+      &.usa-sticky-header {
         #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
           @include breakpoint($bp-min-1601-width) {
             padding-left: 0;
             padding-right: 0;
           }
-        }
-      }
-
-      #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
-        .bottom-menu-block {
-          border-bottom: 1px solid;
-          border-top: 1px solid;
-          height: calc(#{get-vw(60px, 1280)}*0.7);
-          @include breakpoint($bp-min-1601-width) {
-            height: calc(75px*0.7);
-          }
-          .show-menu-tab .show-menu > li a {
-            line-height: calc(#{get-vw(60px, 1280)}*0.7);
+          .bottom-menu-block {
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+            height: calc(#{get-vw(60px, 1280)} * 0.7);
             @include breakpoint($bp-min-1601-width) {
-              line-height: calc(75px*0.7);
+              height: calc(75px * 0.7);
             }
-            @include breakpoint($bp-768-width) {
-              line-height: calc(#{get-vw(70px, 768)}*0.7);
+            .show-menu-tab .show-menu > li a {
+              line-height: calc(#{get-vw(60px, 1280)} * 0.7);
+              @include breakpoint($bp-min-1601-width) {
+                line-height: calc(75px * 0.7);
+              }
+              @include breakpoint($bp-768-width) {
+                line-height: calc(#{get-vw(70px, 768)} * 0.7);
+              }
             }
           }
         }
@@ -689,4 +692,3 @@
     }
   }
 }
-

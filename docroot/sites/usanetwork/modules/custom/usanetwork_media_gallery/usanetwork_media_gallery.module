@@ -67,6 +67,11 @@ function usanetwork_media_gallery_block_info() {
     'info' => 'Show gallery landing page: all galleries',
     'cache' => DRUPAL_NO_CACHE,
   );
+  
+  $blocks['usa_gallery_show_gallery_filters'] = array(
+    'info' => 'Show gallery landing page: filters',
+    'cache' => DRUPAL_NO_CACHE,
+  );
 
   $blocks['usa_gallery_show_gallery_lmb'] = array(
     'info' => 'Show gallery landing page: main block',
@@ -110,6 +115,11 @@ function usanetwork_media_gallery_block_view($delta = '') {
     case 'usa_gallery_show_gallery_all':
       $block['subject'] = '';
       $block['content'] = _usanetwork_media_gallery_landing_page_photos_block();
+      break;
+    
+    case 'usa_gallery_show_gallery_filters':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_media_gallery_landing_page_photos_filters_block();
       break;
   }
 
@@ -195,6 +205,13 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
         'photo_block' => NULL,
       ),
       'template' => 'templates/usanetwork-media-gallery-landing-photos',
+    ),
+    'usanetwork_media_gallery_landing_photos_filters' => array(
+      'variables' => array(
+        'photo_filters' => array(),
+        'photo_sorters' => array(),
+      ),
+      'template' => 'templates/usanetwork-media-gallery-landing-photos-filters',
     ),
     'usanetwork_media_gallery_landing_photos_items_block' => array(
       'variables' => array(
@@ -649,6 +666,39 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
     'usanetwork_tv_show_page_context' => 'photos-landing',
   ), 'setting');
 
+  return $result;
+}
+
+function _usanetwork_media_gallery_landing_page_photos_filters_block() {
+  $tv_show_node = menu_get_object();
+  if (empty($tv_show_node) || $tv_show_node->type != 'tv_show') {
+    return '';
+  }
+  $params = _usanetwork_media_gallery_photo_landing_prepare_query_params();
+  $gallery_types = _usanetwork_media_gallery_get_gallery_types($tv_show_node->nid, $params);
+  if (empty($gallery_types)) {
+    return '';
+  }
+  $gallery_sorters = _usanetwork_media_gallery_landing_page_sorters($tv_show_node->nid, $params);
+  $section_name = $params['category'] === NULL ? USA_GALLERY_ALL_GALLERIES_LABEL :
+    ($params['category'] === USA_GALLERY_OTHER_TYPE_MACHINE_NAME ? USA_GALLERY_OTHER_TYPE_LABEL : $params['category']);
+  $key = md5($params['category']);
+  $video_filter_title = ($params['category'] !== NULL)
+    ? $section_name . ' (' . $gallery_types[$key]['items_count'] . ')'
+    : t('All galleries');
+  $video_sorter_title = (isset($gallery_sorters[$params['sort_order']]))
+    ? $gallery_sorters[$params['sort_order']]['title']
+    : t('Newest');
+
+  $result = theme('usanetwork_media_gallery_landing_photos_filters', array(
+    'photo_filters' => $gallery_types,
+    'photo_filter_title' => $video_filter_title,
+    'photo_sorters' => $gallery_sorters,
+    'photo_sorter_title' => $video_sorter_title,
+    'show_nid' => $tv_show_node->nid,
+    'filter_tid' => ($params['category'] === NULL) ? USA_GALLERY_ALL_GALLERIES : $params['category'],
+    'sorting_order' => $params['sort_order'],
+  ));
   return $result;
 }
 

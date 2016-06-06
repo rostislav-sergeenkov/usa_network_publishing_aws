@@ -797,6 +797,7 @@ function _usanetwork_person_render_where2watch_block() {
       'title' => t('Where to Watch'),
       'description' => t('Mr. Robot is also available for streaming or purchase from the following providers and apps.'),
       'usa_now_path' => (!empty($is_full_exist)) ? url('node/' . $show_node->nid . '/episodes') : NULL,
+      'usa_now_image' => (!empty($is_full_exist)) ? '/' . path_to_theme() . '/images/usanow_new.png' : NULL,
       'elements' => $elements,
     );
 

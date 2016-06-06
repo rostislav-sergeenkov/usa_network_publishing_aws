@@ -46,6 +46,7 @@
       max-height: none!important;
     }
     .advert {
+      background: $consum-back;
       height: 250px;
       width: 100%;
       @include breakpoint($bp-1024-width) {

@@ -160,20 +160,19 @@
     console.info('resetHeader');
 
     var _ = this;
-
+    _.options.isHeaderSticky = false;
     // reset position and slide Down StickyHeader
+    _.setHeaderSpacerHeight(_.options.defaultHeaderHeight);
     _.removeHeaderClass(_.options.stickyHeaderClass, function () {
       _.options.isHeaderSticky = false;
     });
-    _.setHeaderPosition(0);
-    _.setHeaderSpacerHeight(_.options.defaultHeaderHeight);
+    _.$header.removeAttr('style');
+    _.$headerSpacer.removeClass(_.options.slideHeaderSpacerClass);
     _.resetShowLogo();
+    _.updateHeaderSpacerHeight();
     _.setTimeout(function () {
-      _.updateHeaderSpacerHeight();
-      _.removeHeaderClass(_.options.slideHeaderClass, function () {
-        _.options.isHeaderSlide = false;
-        _.$headerSpacer.removeClass(_.options.slideHeaderSpacerClass);
-      });
+      _.removeHeaderClass(_.options.slideHeaderClass, null);
+      _.options.isHeaderSlide = false;
     }, _.options.delayCssAnimate);
   };
 
@@ -280,7 +279,7 @@
 
     var _ = this;
 
-    if (_.options.pageYOffset < 0 && _.options.isHeaderSticky) {
+    if (_.options.pageYOffset < _.options.headerHeight && _.options.isHeaderSticky) {
       _.resetHeader();
     }
   };
@@ -313,8 +312,10 @@
         _.options.isHeaderSlide = true;
       }, _.options.delayCssAnimate);
 
-    } else if (_.options.pageYOffset < 1  && _.options.isHeaderSticky) {
-      _.resetHeader();
+    } else if (_.options.pageYOffset < _.options.headerHeight * 2  && _.options.isHeaderSticky) {
+      _.slideUpStickyHeader('-' + _.options.headerHeight, function () {
+        _.resetHeader();
+      });
     }
   };
 
@@ -444,7 +445,7 @@
           if (_.checkMatchWindowWidth('max', _.options.stickyMobileBp)) {
 
           } else {
-            if (!_.options.isMobileDevice) {
+            if (!_.options.isMobileDevice && $window.pageYOffset > 1) {
               _.resizeShowLogo();
             }
             _.checkHeaderOffset();

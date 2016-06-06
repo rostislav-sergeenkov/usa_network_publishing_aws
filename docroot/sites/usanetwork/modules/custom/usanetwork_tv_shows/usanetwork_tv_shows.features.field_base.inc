@@ -1997,6 +1997,27 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_series_recap_title'
+  $field_bases['field_series_recap_title'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_series_recap_title',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 100,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_service_link'
   $field_bases['field_service_link'] = array(
     'active' => 1,

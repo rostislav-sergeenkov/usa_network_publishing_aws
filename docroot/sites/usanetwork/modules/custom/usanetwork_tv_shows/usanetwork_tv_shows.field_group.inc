@@ -176,6 +176,7 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '134',
     'children' => array(
       0 => 'field_cast_recap_video',
+      1 => 'field_series_recap_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

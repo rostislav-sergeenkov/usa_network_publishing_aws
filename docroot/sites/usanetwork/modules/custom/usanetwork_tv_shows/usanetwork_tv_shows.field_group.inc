@@ -176,6 +176,7 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '134',
     'children' => array(
       0 => 'field_cast_recap_video',
+      1 => 'field_series_recap_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -698,9 +699,9 @@ function usanetwork_tv_shows_field_group_info() {
       1 => 'field_tvs_spec_features',
       2 => 'group_bcd_spot',
       3 => 'group_best_of_section',
-      4 => 'group_relevant_content',
-      5 => 'group_service',
-      6 => 'group_episodes_section',
+      4 => 'group_episodes_section',
+      5 => 'group_relevant_content',
+      6 => 'group_service',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1047,9 +1048,10 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Show Cast Landing Page',
     'weight' => '9',
     'children' => array(
-      0 => 'group_cast_main',
-      1 => 'group_cast_recap',
-      2 => 'group_social_meter',
+      0 => 'group_where_to_watch',
+      1 => 'group_cast_main',
+      2 => 'group_cast_recap',
+      3 => 'group_social_meter',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

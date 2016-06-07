@@ -891,3 +891,11 @@ function usanetwork_consumptionator_post_blogs_autocomplete($title) {
   }
   drupal_json_output($output);
 }
+
+function usanetwork_consumptionator_post_get_author($entity_type, $entity) {
+  $entity_wrapper = entity_metadata_wrapper($entity_type, $entity);
+  if (usanetwork_core_api_check_field($entity, 'field_author', $entity_type)) {
+    return $entity_wrapper->field_author->value();
+  }
+  return NULL;
+}

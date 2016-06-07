@@ -23,6 +23,7 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
       'atom:title' => t('Title'),
       'atom:content'  => t('Description'),
       'atom:published' => t('Published'),
+      'atom:name' => t('Author name'),
       'media:credit' => t('Alt text'),
       'media:thumbnail' => t('Media thumbnail'),
     );
@@ -86,16 +87,36 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
       $this->addFieldMapping('field_content_tags:source_type')
         ->defaultValue('tid');
     }
+    $this->addFieldMapping('field_author', 'author_tid');
+    $this->addFieldMapping('field_author:source_type')
+      ->defaultValue('tid');
     //@todo may be alt text
     //$this->addFieldMapping('field_post_cover:field_file_image_alt_text', 'media:credit')->xpath('./media:content/media:credit');
   }
 
   public function prepareRow($current_row) {
+    // Set short description.
     $description = $current_row->xml->content[0]->__toString();
     $shirt_description = htmlspecialchars_decode(strip_tags($description));
     $shirt_description = truncate_utf8(trim($shirt_description), 600, TRUE, FALSE, 5);
     $shirt_description = substr($shirt_description, 0, strrpos($shirt_description, '.'));
     $current_row->shirt_description = $shirt_description . '.';
+    // Set author tid.
+    $voc = taxonomy_vocabulary_machine_name_load(USANETWORK_BLOG_MIGRATE_AUTHORS_VOC);
+    $author_name = $description = $current_row->xml->author->name->__toString();
+    $term = taxonomy_get_term_by_name($author_name, USANETWORK_BLOG_MIGRATE_AUTHORS_VOC);
+    if (!empty($voc)) {
+      if (empty($term)) {
+        $term = new stdClass();
+        $term->name = $author_name;
+        $term->vid = $voc->vid;
+        taxonomy_term_save($term);
+      }
+      else {
+        $term = current($term);
+      }
+      $current_row->author_tid = $term->tid;
+    }
   }
 
   public function complete($entity, stdClass $row) {

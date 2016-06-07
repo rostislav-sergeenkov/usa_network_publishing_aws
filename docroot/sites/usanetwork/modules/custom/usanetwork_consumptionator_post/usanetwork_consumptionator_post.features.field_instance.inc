@@ -48,6 +48,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Body',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 0,
       'linkit' => array(
         'button_text' => 'Search',
@@ -110,6 +112,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -159,6 +163,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Gigya Share Bar',
     'required' => FALSE,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -207,6 +213,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -274,6 +282,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -328,6 +338,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -408,6 +420,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -471,6 +485,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -534,6 +550,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -597,6 +615,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -660,6 +680,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'H1 Override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -723,6 +745,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Page Title Override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -786,6 +810,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -835,6 +861,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'OG Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -898,6 +926,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -991,6 +1021,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Body',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'display_summary' => 0,
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -1007,6 +1039,75 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
       ),
       'type' => 'text_textarea_with_summary',
       'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-consumpt_post-field_author'
+  $field_instances['node-consumpt_post-field_author'] = array(
+    'bundle' => 'consumpt_post',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 44,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_author',
+    'label' => 'Author',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 14,
     ),
   );
 
@@ -1064,6 +1165,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Display Author',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1130,6 +1233,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Call to Action Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1189,6 +1294,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Collection',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1256,6 +1363,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Consumptionator Blog',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1326,6 +1435,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Tags',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1393,6 +1504,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Contributor',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1462,6 +1575,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Gallery Recap',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1532,6 +1647,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Block Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1607,6 +1724,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Gigya Share Bar',
     'required' => FALSE,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1672,6 +1791,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Override default value',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1742,6 +1863,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1842,6 +1965,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Show post cover',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1908,6 +2033,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Post Source',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1982,6 +2109,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Created date override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
@@ -2061,6 +2190,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Exclude from Related Content block',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2127,6 +2258,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -2219,6 +2352,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2294,6 +2429,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2369,6 +2506,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2444,6 +2583,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Show Name or Violator',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2519,6 +2660,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'H1 Override',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2594,6 +2737,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Page Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2669,6 +2814,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Show',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2734,6 +2881,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Sponsored',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2800,6 +2949,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Sub title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2876,6 +3027,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Short Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2952,6 +3105,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'Custom CSS',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3027,6 +3182,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'label' => 'OG Description',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -3102,6 +3259,8 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
@@ -3146,6 +3305,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Author');
   t('Block Title');
   t('Body');
   t('Call to Action Type');

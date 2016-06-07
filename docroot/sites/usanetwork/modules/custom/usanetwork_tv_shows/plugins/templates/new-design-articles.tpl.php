@@ -36,7 +36,11 @@
                     <div class="meta">
                       <div class="title-and-additional">
                         <div class="title"><?php print $item['title'] ?></div>
-                        <div class="additional">By <?php print $item['author'] ?> <?php print $item['date'] ?></div>
+                        <?php if ($item['author']): ?>
+                          <div class="additional">By <?php print $item['author'] ?> <?php print $item['date'] ?></div>
+                        <?php else: ?>
+                          <div class="additional"><?php print $item['date'] ?></div>
+                        <?php endif; ?>
                       </div>
                       <div class="caption"><?php print $item['description'] ?></div>
                     </div>

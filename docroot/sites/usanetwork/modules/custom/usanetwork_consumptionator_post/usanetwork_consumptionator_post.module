@@ -97,6 +97,14 @@ function usanetwork_consumptionator_post_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
+  $items['node/%node/tag/%'] = array(
+    'title' => 'Blog',
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_consumptionator_post_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
   $items['ajax/usanetwork-blog-posts/get-related/%node/%'] = array(
     'title' => 'Related content',
     'page callback' => 'usanetwork_consumptionator_post_blog_get_posts_ajax',
@@ -104,6 +112,15 @@ function usanetwork_consumptionator_post_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+
+  $items['ajax/usanetwork-blog-posts/get-related-tag/%node/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_consumptionator_post_blog_get_posts_ajax',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   $items['ajax/usanetwork-blog-posts/get-related/news/%'] = array(
     'title' => 'Related content',
     'page callback' => 'usanetwork_consumptionator_post_blog_get_posts_ajax',
@@ -342,9 +359,6 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
       else {
         $created_ovts = $post->created;
       }
-      if ($is_new_design) {
-        $violator = _usanetwork_get_field_item('node', $post, 'field_promo_violator_name', 'value');
-      }
       $episode_variables = array(
         'title' => !empty($post->title) ? $post->title : '',
         'additional' => t('Posted on @date', array('@date' =>date('n/j/y', $created_ovts))),
@@ -407,7 +421,7 @@ function usanetwork_consumptionator_post_blank_page() {
   return '';
 }
 
-function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL, $offset = 0, $show_ad = FALSE, $ajax_load = FALSE) {
+function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL, $offset = 0, $show_ad = FALSE, $ajax_load = FALSE, $tag_id = NULL) {
   if (path_is_admin(current_path())) {
     return '';
   }
@@ -425,6 +439,14 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
       $blog_id = NULL;
       $show_title = $node->title;
       $blog_title = usanetwork_consumptionator_post_get_blog_title($node);
+      if ($tag_id === NULL) {
+        $tag_name = arg(3);
+        if ($tag_name) {
+          $tags = taxonomy_get_term_by_name($tag_name, 'tags');
+          $tag = reset($tags);
+          $tag_id = !empty($tag) ? $tag->tid : NULL;
+        }
+      }
       break;
     case 'consumpt_blog':
       if (empty($node->field_show)) {
@@ -451,9 +473,10 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
     'ajax_load' => $ajax_load,
     'load_more_link' => !$ajax_load,
     'is_new_design' => $is_new_design,
+    'tag_tid' => $tag_id,
   );
 
-  $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset);
+  $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset, $tag_id);
 
   $theme_variables['title'] = $blog_title;
 
@@ -494,9 +517,13 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
     : '';
 }
 
-function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = NULL, $offset = 0) {
+function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = NULL, $offset = 0, $tag = NULL) {
   $cache_blog_id = !empty($blog_nid) ? $blog_nid : $show_nid;
-  $cache_name = 'blog_landing_page_' . $cache_blog_id . '_' . $offset;
+  if (!empty($tag)) {
+    $cache_name = 'blog_landing_page_' . $cache_blog_id . '_' . $offset . '_' . $tag;
+  } else {
+    $cache_name = 'blog_landing_page_' . $cache_blog_id . '_' . $offset;
+  }
   $cache = cache_get($cache_name);
   if (empty($cache)) {
     $query = db_select('node', 'cp');
@@ -524,6 +551,10 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = 
     else {
       $query->leftJoin('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=cp.nid');
       $query->isNull('field_consumptionator_blog.field_consumptionator_blog_target_id');
+    }
+    if (!empty($tag)) {
+      $query->leftJoin('field_data_field_content_tags', 'field_content_tags', 'field_content_tags.entity_id=cp.nid');
+      $query->condition('field_content_tags.field_content_tags_tid', $tag);
     }
     $query->groupBy('cp.nid');
     $query->addExpression("GROUP_CONCAT(term.name SEPARATOR ', ')", 'tags');
@@ -553,7 +584,7 @@ function usanetwork_consumptionator_post_get_blog_title($tv_show_node) {
   }
 }
 
-function _usanetwork_consumptionator_post_get_posts_count($show_nid, $blog_nid = NULL) {
+function _usanetwork_consumptionator_post_get_posts_count($show_nid, $blog_nid = NULL, $tag = NULL) {
   $query = db_select('node', 'cp');
   $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=cp.nid');
   $query->condition('cp.type', 'consumpt_post');
@@ -566,6 +597,10 @@ function _usanetwork_consumptionator_post_get_posts_count($show_nid, $blog_nid =
   else {
     $query->leftJoin('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=cp.nid');
     $query->isNull('field_consumptionator_blog.field_consumptionator_blog_target_id');
+  }
+  if (!empty($tag)) {
+    $query->leftJoin('field_data_field_content_tags', 'field_content_tags', 'field_content_tags.entity_id=cp.nid');
+    $query->condition('field_content_tags.field_content_tags_tid', $tag);
   }
   $query->addExpression("COUNT(*)", 'count');
   $result = $query->execute()->fetchObject();
@@ -596,7 +631,7 @@ function _usanetwork_consumptionator_post_get_season_episodes_description($resul
   return '';
 }
 
-function usanetwork_consumptionator_post_blog_get_posts_ajax($node, $offset) {
+function usanetwork_consumptionator_post_blog_get_posts_ajax($node, $offset, $tag = NULL) {
   if (is_object($node)) {
     $response = array(
       'found' => FALSE,
@@ -621,8 +656,8 @@ function usanetwork_consumptionator_post_blog_get_posts_ajax($node, $offset) {
       default:
         return '';
     }
-    $count = _usanetwork_consumptionator_post_get_posts_count($show_id, $blog_id);
-    $block = _usanetwork_consumptionator_post_get_blog_posts_list_block($node, $offset, TRUE, TRUE);
+    $count = _usanetwork_consumptionator_post_get_posts_count($show_id, $blog_id, $tag);
+    $block = _usanetwork_consumptionator_post_get_blog_posts_list_block($node, $offset, TRUE, TRUE, $tag);
   }
   else {
     $response = array(

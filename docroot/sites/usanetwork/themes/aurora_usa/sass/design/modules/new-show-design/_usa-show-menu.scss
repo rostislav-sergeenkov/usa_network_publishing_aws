@@ -15,38 +15,40 @@
   }
   .social-block {
     @include clear();
-    display: table;
-    height: 100%;
+    //display: table;
+    //height: 100%;
     max-width: 20%;
-    > div {
-      display: table-cell;
-      vertical-align: middle;
-      @include breakpoint($bp-768-width) {
-        display: inline-block;
-        height: 100%;
-      }
-    }
+    width: 100%;
     .hashtag {
       background: none;
+      box-sizing: border-box;
+      float: right;
       font-family: $fira-sans-regular;
       font-size: get-vw(12.8px, 1280);
+      line-height: get-vw(20px, 1280);
       padding-right: get-vw(18px, 1280);
       @include breakpoint($bp-min-1601-width) {
         font-size: 16px;
+        line-height: 25px;
         padding-right: 22.5px;
       }
       @include breakpoint($bp-768-width) {
         font-size: get-vw(23px, 768);
         line-height: get-vw(86px, 768);
-        margin-right: get-vw(35px, 768);
-        padding-right: 0;
+        padding-right: get-vw(35px, 768);
+        text-align: right;
+        width: 45%;
       }
       span {
         letter-spacing: 1px;
       }
     }
     .social-icons {
+      float: right;
       background: none;
+      @include breakpoint($bp-768-width) {
+        width: 55%;
+      }
       a {
         float: left;
         color: inherit;
@@ -61,8 +63,10 @@
           margin-right: 15px;
         }
         @include breakpoint($bp-768-width) {
-          line-height: get-vw(86px, 768);
           margin-right: get-vw(25px, 768);
+        }
+        &:last-child {
+          margin-right: 0;
         }
         &:before {
           color: inherit;
@@ -70,11 +74,13 @@
           font-family: $ico-font;
           font-weight: normal;
           font-size: get-vw(20px, 1280);
+          line-height: 1;
           @include breakpoint($bp-min-1601-width) {
             font-size: 25px;
           }
           @include breakpoint($bp-768-width) {
             font-size: get-vw(40px, 768);
+            line-height: get-vw(86px, 768);
           }
         }
         &:hover {
@@ -326,9 +332,6 @@
     }
   }
   .top-menu-block {
-    @include breakpoint($bp-768-width) {
-      border-bottom: 2px solid;
-    }
     .top-menu-block-inner {
       @include clear();
       margin: 0 auto;
@@ -527,7 +530,8 @@
       height: 75px;
     }
     @include breakpoint($bp-768-width) {
-      border: none;
+      border-bottom: 2px solid;
+      border-top: none;
       display: none;
       height: auto;
       position: absolute;
@@ -536,7 +540,6 @@
       @include clear();
       margin: 0 auto;
       max-width: 1600px;
-      position: relative;
       width: 100%;
     }
     .show-menu-tab {
@@ -601,11 +604,15 @@
       }
     }
     .social-block {
+      @include breakpoint($bp-min-1601-width) {
+        right: 20px;
+        top: calc((100% - 75px) / 2);
+      }
       @include breakpoint($bp-min-769-width) {
-        bottom: 100%;
         float: none;
+        right: get-vw(16px, 1280);
+        top: calc((100% - #{get-vw(60px, 1280)}) / 2);
         position: absolute;
-        right: 0;
       }
       @include breakpoint($bp-768-width) {
         background: black;
@@ -700,3 +707,4 @@
     }
   }
 }
+

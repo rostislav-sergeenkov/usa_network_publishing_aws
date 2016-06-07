@@ -522,6 +522,7 @@
     border-bottom: 2px solid;
     border-top: 2px solid;
     height: get-vw(60px, 1280);
+    overflow: hidden;
     width: 100%;
     @include breakpoint($bp-min-1601-width) {
       height: 75px;
@@ -630,26 +631,17 @@
   #header-spacer {
     @include transition(all 0.1s linear 0);
     &.slide-spacer {
-      @include transition(all 0.4s linear 0);
+      @include transition(all 0.2s linear 0);
     }
   }
   #header {
     &.usa-sticky-header-initialized {
 
-      // all time transition
-      .bottom-menu-block .show-menu-tab .show-menu > li a {
-        @include transition(all 0.4s linear 0);
-      }
-
+      // header added transition for elements
       &.usa-slide-header {
         @include transition(all 0.2s linear 0);
-        //& ,
-        //.header-inner {
-        //  @include transition(all 0.2s linear 0);
-        //}
-
         //.header-inner,
-        //#head-leaderboard,
+        #head-leaderboard,
         #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu,
         //.top-menu-block-inner,
         //.top-menu-block-inner .title-block,
@@ -658,17 +650,34 @@
         .bottom-menu-block,
         .bottom-menu-block-inner,
         .bottom-menu-block .show-menu-tab .show-menu > li a {
-          @include transition(all 0.4s linear 0);
+          @include transition(all 0.2s linear 0);
         }
       }
 
+      // header slide up -100%
+      &.usa-slide-up-header {
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+      }
+
+      // header decrease show logo
       &.usa-decrease-header {
         .top-menu-block-inner .title-block .title {
           @include transition(all 0.1s linear 0);
         }
       }
 
+      // header sticky style
       &.usa-sticky-header {
+        #head-leaderboard {
+          height: 0;
+          margin: 0;
+          padding: 0;
+          visibility: hidden;
+        }
         #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
           @include breakpoint($bp-min-1601-width) {
             padding-left: 0;

@@ -31,16 +31,16 @@
       <?php endif; ?>
     </div>
     <div class="social-block">
-      <?php if (!empty($hashtag)): ?>
-        <div class="hashtag show-color show-font">
-          <span><?php print $hashtag; ?></span>
-        </div>
-      <?php endif; ?>
       <div class="social-icons social-follow show-color show-font">
         <?php foreach ($social_icons as $social_link): ?>
           <?php print $social_link; ?>
         <?php endforeach; ?>
       </div>
+      <?php if (!empty($hashtag)): ?>
+        <div class="hashtag show-color show-font">
+          <span><?php print $hashtag; ?></span>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>

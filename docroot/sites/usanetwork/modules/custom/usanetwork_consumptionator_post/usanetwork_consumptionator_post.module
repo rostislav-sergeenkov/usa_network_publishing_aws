@@ -519,7 +519,11 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
 
 function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = NULL, $offset = 0, $tag = NULL) {
   $cache_blog_id = !empty($blog_nid) ? $blog_nid : $show_nid;
-  $cache_name = 'blog_landing_page_' . $cache_blog_id . '_' . $offset . '_' . $tag;
+  if (!empty($tag)) {
+    $cache_name = 'blog_landing_page_' . $cache_blog_id . '_' . $offset . '_' . $tag;
+  } else {
+    $cache_name = 'blog_landing_page_' . $cache_blog_id . '_' . $offset;
+  }
   $cache = cache_get($cache_name);
   if (empty($cache)) {
     $query = db_select('node', 'cp');

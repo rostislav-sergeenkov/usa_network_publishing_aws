@@ -10,7 +10,7 @@
   <div id="block-usanetwork-news-landing">
 <?php endif; ?>
 <?php if (!$ajax_load) : ?>
-  <div class="landing-list-items-all blog-landing-list-items ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished' : '' ;?>" data-node-nid="<?php print (!empty($node_nid)) ? $node_nid : ''; ?>">
+  <div class="landing-list-items-all blog-landing-list-items ajax-load-block<?php print (empty($load_more_link))? ' infinity-finished' : '' ;?>" data-node-nid="<?php print (!empty($node_nid)) ? $node_nid : ''; ?>" data-tag-tid="<?php print (!empty($tag_tid)) ? $tag_tid : ''; ?>">
 <?php endif; ?>
 <div class="landing-list-items-one-item blog-landing-list-items-one-item">
   <?php if ((!$ajax_load) && (!empty($node_nid))) : ?>

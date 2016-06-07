@@ -81,7 +81,11 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_summary', 'shirt_description');
     $this->addFieldMapping('field_usa_og_description', 'shirt_description');
     $this->addFieldMapping('field_promo_violator_name')->defaultValue(VOX_BLOG_FEED_VIOLATOR_TEXT);
-
+    if ($tid = variable_get('usanetwork_blog_migrate_the_verge_taxonomy_term_tid', FALSE)) {
+      $this->addFieldMapping('field_content_tags')->defaultValue($tid);
+      $this->addFieldMapping('field_content_tags:source_type')
+        ->defaultValue('tid');
+    }
     //@todo may be alt text
     //$this->addFieldMapping('field_post_cover:field_file_image_alt_text', 'media:credit')->xpath('./media:content/media:credit');
   }

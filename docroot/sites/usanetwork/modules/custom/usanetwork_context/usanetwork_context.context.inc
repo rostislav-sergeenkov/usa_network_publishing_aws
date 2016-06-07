@@ -88,7 +88,7 @@ function usanetwork_context_context_default_contexts() {
           'module' => 'usanetwork_tv_shows',
           'delta' => 'usanetwork_tv_shows_explore_lmb',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '0',
         ),
         'usanetwork_tv_shows-usanetwork_tv_shows_explore_list' => array(
           'module' => 'usanetwork_tv_shows',
@@ -962,7 +962,7 @@ function usanetwork_context_context_default_contexts() {
           'module' => 'usanetwork_tv_shows',
           'delta' => 'usanetwork_tv_shows_filters_vl',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '0',
         ),
         'usanetwork_tv_shows-usanetwork_tv_shows_video_vl_nd' => array(
           'module' => 'usanetwork_tv_shows',

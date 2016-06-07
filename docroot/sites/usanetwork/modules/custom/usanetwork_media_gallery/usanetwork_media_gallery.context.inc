@@ -79,7 +79,7 @@ function usanetwork_media_gallery_context_default_contexts() {
           'module' => 'usanetwork_media_gallery',
           'delta' => 'usa_gallery_show_gallery_filters',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '0',
         ),
         'usanetwork_media_gallery-usa_gallery_show_gallery_lmb' => array(
           'module' => 'usanetwork_media_gallery',

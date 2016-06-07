@@ -13,17 +13,15 @@
     &.usa-sticky-header-initialized {
       left: 0;
       top: 0;
-      position: fixed;
+      position: absolute;
       width: 100%;
       z-index: 100;
     }
-    &.usa-slide-header {
+    &.usa-sticky-header {
+      position: fixed;
       .header-inner {
         width: 100%;
       }
-    }
-    &.usa-sticky-header {
-
     }
   }
   #header-spacer {

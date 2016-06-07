@@ -20,25 +20,31 @@
       // default settings
       _.defaults = {
         // selectors
+        adBlockId: 'head-leaderboard',
         headerSpacerId: 'header-spacer',
         headerInnerClass: 'header-inner',
+        showLogoSel: '.top-menu-block-inner .title-block .title',
+        initStickyHeaderClass: 'usa-sticky-header-initialized',
+        decreaseHeaderClass: 'usa-decrease-header', // string
         stickyHeaderClass: 'usa-sticky-header', // string
         slideHeaderClass: 'usa-slide-header', // string
-        adBlockId: 'head-leaderboard',
-
+        slideUpHeaderClass: 'usa-slide-up-header', // string
+        slideHeaderSpacerClass: 'slide-spacer', // string
+        
         additionalMode: {},
 
         // functionality
         sticky: true, // boolean
         stickyMobile: true, // boolean
-        initStickyMobileBp: 768, // number
+        stickyMobileBp: 768, // number
         headerInnerMaxWidth: 1600, // px or ''
-        durationCssAnimate: 400, // ms; default css transition-duration
-        durationSlideAnimate: 200, // ms; slide css transition-duration
+        durationCssAnimate: 200, // ms; default css transition-duration
+        delayCssAnimate: 200, // number ms
         easing: 'linear',
-        minScrollLength: 10, // number px; used for on || off stickyHeaderClass
         scrollDiffMin: 20, // number px
-        defaultDelayCssAnimate: 400 // number ms
+        minShowLogoHeight: 41, // number px 
+        minShowLogoWidth: 261, // number px
+        minShowLogoDecrease: 0.6 // number % min height 60%
       };
 
       // create global options
@@ -48,15 +54,21 @@
       _.options.pageYOffset = window.pageYOffset;
       _.options.scrollDirection = ''; // string value 'top' or 'down'
       _.options.headerHeight = 0;
+      _.options.defaultHeaderHeight = 0;
       _.options.headerSpacerHeight = 0;
       _.options.adBlockHeight = 0;
       _.options.isMobileDevice = usa_deviceInfo.mobileDevice;
       _.options.isHeaderSticky = false;
-      _.options.isSlideHeaderActive = false;
+      _.options.isHeaderSlide = false;
       _.options.isSlideUpHeaderSticky = false;
       _.options.isSlideProcessing = false;
       _.options.isScrollDiffMin = false;
       _.options.slideUpStartPositon = 0;
+      _.options.showLogoHeight = 0;
+      _.options.showLogoWidth = 0;
+      _.options.calcMinShowLogoHeight = 0;
+      _.options.isResizeShowLogoProcessing = false;
+      _.options.isMobileBp = false;
 
       // elements
       _.$body = $(document.body);
@@ -64,6 +76,7 @@
       _.$headerInner = $(element).find('.' + _.options.headerInnerClass);
       _.$headerSpacer = $('#' + _.options.headerSpacerId);
       _.$adBlock = $('#' + _.options.adBlockId);
+      _.$showLogo = $(element).find(_.options.showLogoSel);
 
       // data attributes value
       _.data = {};
@@ -82,54 +95,32 @@
   };
 
   // add || remove class
-  usaStickyHeader.prototype.removeStickyHeaderClass = function () {
-    console.info('offStickyHeaderClass');
+  usaStickyHeader.prototype.addHeaderClass = function (className, callback) {
+    console.info('addHeaderClass : ' + className);
 
     var _ = this,
         $header = _.$header,
-        stickyHeaderClass = _.options.stickyHeaderClass.trim();
+        headerClass = className.trim();
 
-    if ($header.hasClass(stickyHeaderClass)) {
-      _.options.isHeaderSticky = false;
-      _.options.isSlideHeaderActive = false;
-      $header.removeClass(stickyHeaderClass);
+    if (!$header.hasClass(headerClass)) {
+      $header.addClass(headerClass);
+    }
+    if (typeof callback === 'function') {
+      callback();
     }
   };
-  usaStickyHeader.prototype.addStickyHeaderClass = function () {
-    console.info('onStickyHeaderClass');
+  usaStickyHeader.prototype.removeHeaderClass = function (className, callback) {
+    console.info('removeHeaderClass : ' + className);
 
     var _ = this,
         $header = _.$header,
-        stickyHeaderClass = _.options.stickyHeaderClass.trim();
+        headerClass = className.trim();
 
-    if (!$header.hasClass(stickyHeaderClass)) {
-      _.options.isHeaderSticky = true;
-      $header.addClass(stickyHeaderClass);
+    if ($header.hasClass(headerClass)) {
+      $header.removeClass(headerClass);
     }
-  };
-  usaStickyHeader.prototype.removeSlideHeaderClass = function () {
-    console.info('removeSlideHeaderClass');
-
-    var _ = this,
-        $header = _.$header,
-        slideHeaderClass = _.options.slideHeaderClass.trim();
-
-    if ($header.hasClass(slideHeaderClass)) {
-      _.options.isHeaderSticky = false;
-      _.options.isSlideHeaderActive = false;
-      $header.removeClass(slideHeaderClass);
-    }
-  };
-  usaStickyHeader.prototype.addSlideHeaderClass = function () {
-    console.info('addSlideHeaderClass');
-
-    var _ = this,
-        $header = _.$header,
-        slideHeaderClass = _.options.slideHeaderClass.trim();
-
-    if (!$header.hasClass(slideHeaderClass)) {
-      _.options.isHeaderSticky = true;
-      $header.addClass(slideHeaderClass);
+    if (typeof callback === 'function') {
+      callback();
     }
   };
 
@@ -172,18 +163,26 @@
 
     var _ = this;
 
-    // reset position and slide Down StickyHeader
-    _.setHeaderPosition(0);
-    _.removeSlideHeaderClass();
-    _.removeStickyHeaderClass();
-
+    _.options.isHeaderSticky = false;
+    _.setHeaderSpacerHeight(_.options.defaultHeaderHeight);
+    _.removeHeaderClass(_.options.stickyHeaderClass, function () {
+      _.options.isHeaderSticky = false;
+    });
+    _.removeHeaderClass(_.options.slideUpHeaderClass, null);
+    _.$header.removeAttr('style');
+    _.resetShowLogo();
     _.setTimeout(function () {
+      _.$headerSpacer.removeClass(_.options.slideHeaderSpacerClass);
+      _.removeHeaderClass(_.options.slideHeaderClass, null);
+      _.options.isHeaderSlide = false;
       _.updateHeaderSpacerHeight();
-    }, _.options.defaultDelayCssAnimate);
+    }, _.options.delayCssAnimate);
   };
 
   // slide header
-  usaStickyHeader.prototype.slideUpStickyHeader = function (top, callback) {
+  usaStickyHeader.prototype.slideUpStickyHeader = function (callback) {
+
+    console.info('slideUpStickyHeader');
 
     var _ = this;
 
@@ -192,7 +191,7 @@
     }
 
     _.options.isSlideProcessing = true;
-    _.setHeaderPosition(top);
+    _.addHeaderClass(_.options.slideUpHeaderClass, null);
     _.setTimeout(function () {
       _.options.isSlideUpHeaderSticky = true;
       _.options.isSlideProcessing = false;
@@ -200,9 +199,11 @@
       if (typeof callback === 'function') {
         callback();
       }
-    }, _.options.defaultDelayCssAnimate);
+    }, _.options.delayCssAnimate);
   };
-  usaStickyHeader.prototype.slideDownStickyHeader = function (top, callback) {
+  usaStickyHeader.prototype.slideDownStickyHeader = function (callback) {
+
+    console.info('slideDownStickyHeader');
 
     var _ = this;
 
@@ -211,7 +212,7 @@
     }
 
     _.options.isSlideProcessing = true;
-    _.setHeaderPosition(top);
+    _.removeHeaderClass(_.options.slideUpHeaderClass, null);
     _.setTimeout(function () {
       _.options.isSlideUpHeaderSticky = false;
       _.options.isSlideProcessing = false;
@@ -220,24 +221,26 @@
       if (typeof callback === 'function') {
         callback();
       }
-    }, _.options.defaultDelayCssAnimate);
+    }, _.options.delayCssAnimate);
   };
   usaStickyHeader.prototype.slideStickyHeader = function () {
 
     console.info('slideStickyHeader');
 
-    var _ = this;
+    var _ = this,
+        $header = _.$header;
 
-    if (_.options.isHeaderSticky && _.options.isSlideHeaderActive) {
-      if (_.options.scrollDirection == 'down' && !_.options.isSlideUpHeaderSticky && _.options.isScrollDiffMin) {
+    if (_.options.isHeaderSticky && _.options.isHeaderSlide) {
+
+      if (_.options.scrollDirection == 'down' && _.options.isScrollDiffMin && !_.options.isSlideUpHeaderSticky) {
 
         // slide Up StickyHeader
-        _.slideUpStickyHeader('-' + _.options.headerHeight, null);
+        _.slideUpStickyHeader(null);
 
       } else if (_.options.scrollDirection == 'top' && _.options.isSlideUpHeaderSticky) {
 
         // slide Down StickyHeader
-        _.slideDownStickyHeader('-' + _.options.adBlockHeight, null);
+        _.slideDownStickyHeader(null);
       }
     }
   };
@@ -257,63 +260,48 @@
 
   };
 
-  // header position
-  usaStickyHeader.prototype.setHeaderPosition = function (top) {
-    // top: - number || number
-    console.info('setHeaderPosition');
-
-    var _ = this,
-        $header = $(_.$header);
-
-    $header.css({
-      '-moz-transform': 'translateY(' + top + 'px)',
-      '-ms-transform': 'translateY(' + top + 'px)',
-      '-webkit-transform': 'translateY(' + top + 'px)',
-      '-o-transform': 'translateY(' + top + 'px)',
-      'transform': 'translateY(' + top + 'px)'
-    });
-  };
   usaStickyHeader.prototype.checkHeaderPosition = function () {
 
     console.info('checkHeaderPosition');
 
     var _ = this;
 
-    if (_.options.pageYOffset < _.options.minScrollLength && _.options.isHeaderSticky) {
+    if (_.options.pageYOffset < _.options.headerHeight && _.options.isHeaderSticky) {
       _.resetHeader();
     }
   };
   usaStickyHeader.prototype.checkHeaderOffset = function () {
 
     var _ = this,
-        minScrollLength = _.options.minScrollLength,
-        durationCssAnimate = _.options.durationCssAnimate;
+        $headerSpacer = _.$headerSpacer,
+        $showLogo = _.$showLogo;
 
-    console.info('checkHeaderOffset', _.options.pageYOffset, _.options.isHeaderSticky);
+    console.info('checkHeaderOffset');
 
-    if (_.options.pageYOffset > minScrollLength && !_.options.isHeaderSticky) {
-      _.addStickyHeaderClass();
+    if (_.options.pageYOffset > _.options.headerHeight && !_.options.isHeaderSticky) {
 
-      // slide up header
-      _.setTimeout(function () {
-        _.slideUpStickyHeader('-' + _.options.headerHeight, function () {
-          // callback after slide up
-          _.setTimeout(function () {
-            // add slide class header
-            _.addSlideHeaderClass();
-            // slide Down StickyHeader
-            _.slideDownStickyHeader('-' + _.options.adBlockHeight, null);
-          }, durationCssAnimate / 2);
-        });
-        _.scrollToTop(_.options.headerHeight, durationCssAnimate / 2, _.options.easing);
-      }, durationCssAnimate / 2);
+      $headerSpacer.addClass(_.options.slideHeaderSpacerClass);
 
-    } else if (_.options.pageYOffset < minScrollLength && _.options.isHeaderSticky) {
-      _.resetHeader();
-    } else if (_.options.pageYOffset > _.options.headerHeight * 2 && _.options.isHeaderSticky && !_.options.isSlideHeaderActive) {
-      // slide Up StickyHeader
-      _.options.isSlideHeaderActive = true;
+      $showLogo.css({
+        'height': _.options.minShowLogoHeight,
+        'width': _.options.minShowLogoWidth
+      });
+      
+      _.addHeaderClass(_.options.stickyHeaderClass, function () {
+        _.options.isHeaderSticky = true;
+      });
+
       _.slideUpStickyHeader('-' + _.options.headerHeight, null);
+
+      _.setTimeout(function () {
+        _.addHeaderClass(_.options.slideHeaderClass, null);
+        _.options.isHeaderSlide = true;
+      }, _.options.delayCssAnimate);
+
+    } else if (_.options.pageYOffset < _.options.headerHeight  && _.options.isHeaderSticky) {
+      _.slideUpStickyHeader(function () {
+        _.resetHeader();
+      });
     }
   };
 
@@ -336,33 +324,73 @@
 
     console.info('updateHeaderSpacerHeight');
 
-    var _ = this,
-        spacerTimeout;
+    var _ = this;
 
-    clearTimeout(spacerTimeout);
+    _.updateOptionsVal();
 
-    spacerTimeout = setInterval(function () {
-
-      _.updateOptionsVal();
-
-      if (_.options.headerSpacerHeight != _.options.headerHeight) {
-        _.setHeaderSpacerHeight();
-      } else if (_.options.headerSpacerHeight === _.options.headerHeight) {
-        clearTimeout(spacerTimeout);
-      }
-    }, _.options.timeOutCssAnimate);
+    if (_.options.headerSpacerHeight != _.options.headerHeight) {
+      _.setHeaderSpacerHeight(_.options.headerHeight);
+    }
   };
-  usaStickyHeader.prototype.setHeaderSpacerHeight = function () {
-
-    console.info('setHeaderSpacerHeight');
+  usaStickyHeader.prototype.setHeaderSpacerHeight = function (height) {
 
     var _ = this,
         $headerSpacer = _.$headerSpacer;
 
+    console.info('setHeaderSpacerHeight', _.options.headerHeight);
+
     $headerSpacer.css({
       display: 'block',
-      height: _.options.headerHeight + 'px'
+      height: height + 'px'
     });
+  };
+
+  // resize resizeShowLogo
+  usaStickyHeader.prototype.resetShowLogo = function () {
+    console.info('resetShowLogo');
+    var _ = this,
+        $showLogo = _.$showLogo;
+
+    _.removeHeaderClass(_.options.decreaseHeaderClass, function () {
+      _.$showLogo.removeAttr('style');
+      _.options.isResizeShowLogoProcessing = false;
+    });
+  };
+  usaStickyHeader.prototype.resizeShowLogo = function () {
+
+    console.info('resizeShowLogo');
+    var _ = this,
+        $showLogo = _.$showLogo,
+        $headerSpacer = _.$headerSpacer,
+        decreaseHeight = 0.005 * _.options.showLogoHeight * _.options.pageYOffset,
+        decreaseWidth = 0.005 * _.options.showLogoWidth * _.options.pageYOffset,
+        logoHeight = _.options.showLogoHeight - decreaseHeight,
+        logoWidth = _.options.showLogoWidth - decreaseWidth;
+
+    // _.options.scrollDirection == 'down' &&
+    if (!_.options.isHeaderSticky && !_.options.isHeaderSlide && logoHeight >= _.options.calcMinShowLogoHeight) {
+      _.addHeaderClass(_.options.decreaseHeaderClass, function () {
+        _.options.isResizeShowLogoProcessing = true;
+      });
+      $showLogo.css({
+        'height': logoHeight,
+        'width': logoWidth
+      });
+      $headerSpacer.css({
+        'height': _.options.headerSpacerHeight - decreaseHeight
+      })
+
+    } else {
+      _.removeHeaderClass(_.options.decreaseHeaderClass, function () {
+        _.options.isResizeShowLogoProcessing = false;
+      });
+    }
+  };
+
+  // save default value
+  usaStickyHeader.prototype.saveDefaultHeaderHeight = function () {
+    var _ = this;
+    _.options.defaultHeaderHeight = _.options.headerHeight;
   };
 
   // update value
@@ -371,13 +399,19 @@
     console.info('updateOptionsVal');
 
     var _ = this,
-        $header = _.$header,
-        $headerSpacer = _.$headerSpacer;
+        calcMinShowLogoHeight;
 
+    _.options.isMobileBp = _.checkMatchWindowWidth('max', _.options.stickyMobileBp);
     _.options.pageYOffset = window.pageYOffset;
     _.options.adBlockHeight = _.$adBlock.outerHeight();
-    _.options.headerHeight = $header.outerHeight();
-    _.options.headerSpacerHeight = $headerSpacer.outerHeight();
+    _.options.headerHeight = _.$header.outerHeight();
+    _.options.headerSpacerHeight = _.options.headerHeight;
+    _.options.minScrollLength = _.options.headerHeight / 2;
+    _.options.showLogoHeight = _.$showLogo.outerHeight();
+    _.options.showLogoWidth = _.$showLogo.outerWidth();
+
+    calcMinShowLogoHeight = _.options.showLogoHeight * _.options.minShowLogoDecrease;
+    _.options.calcMinShowLogoHeight = calcMinShowLogoHeight >= _.options.minShowLogoHeight ? calcMinShowLogoHeight : _.options.minShowLogoHeight;
   };
 
   // windows events
@@ -386,7 +420,7 @@
     var _ = this;
 
     $(window)
-        .on('scroll', function (e) {
+        .bind('scroll', function (e) {
 
           console.info('onScroll : ' + window.pageYOffset);
 
@@ -394,17 +428,25 @@
               newYOffset = $window.pageYOffset;
 
           _.getScrollDirection(newYOffset);
-          _.checkHeaderOffset();
-          _.slideStickyHeader();
+
+          if (_.options.isMobileBp) {
+
+          } else {
+            if (!_.options.isMobileDevice && $window.pageYOffset > 1) {
+              _.resizeShowLogo();
+            }
+            _.checkHeaderOffset();
+            _.slideStickyHeader();
+          }
         })
-        .on('resize', function (e) {
+        .bind('resize', function (e) {
 
           console.info('onResize');
 
           var $window = this;
 
           _.updateOptionsVal();
-          _.updateHeaderSpacerHeight();
+          _.setHeaderSpacerHeight(_.options.headerHeight);
         });
   };
 
@@ -412,13 +454,15 @@
   usaStickyHeader.prototype.init = function (creation) {
 
     console.info('usaStickyHeader init');
-    var _ = this;
+    var _ = this,
+        initStickyHeaderClass = _.options.initStickyHeaderClass;
 
-    if (creation && !_.$header.hasClass('usa-sticky-header-initialized')) {
-      _.$header.addClass('usa-sticky-header-initialized');
+    if (creation && !_.$header.hasClass(initStickyHeaderClass)) {
+      _.$header.addClass(initStickyHeaderClass);
       _.updateOptionsVal();
+      _.saveDefaultHeaderHeight();
       _.checkHeaderSpacer();
-      _.setHeaderSpacerHeight();
+      _.setHeaderSpacerHeight(_.options.headerHeight);
       _.checkHeaderOffset();
       _.addEvents();
     }

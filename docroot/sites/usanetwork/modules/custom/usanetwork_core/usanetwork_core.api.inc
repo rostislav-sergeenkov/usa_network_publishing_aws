@@ -372,7 +372,7 @@ function usanetwork_core_api_get_dynamic_entity_reference_content($entity, $fiel
       if (is_array($dynamic_entity)) {
         $dynamic_entity = reset($dynamic_entity);
       }
-      if (usanetwork_core_api_check_entity_publish($entity)) {
+      if (!empty($dynamic_entity) && usanetwork_core_api_check_entity_publish($dynamic_entity)) {
         $item = array(
           'entity_type' => $data['target_type'],
           'entity_id' => $data['target_id'],

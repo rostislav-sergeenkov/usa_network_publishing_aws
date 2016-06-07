@@ -1,5 +1,7 @@
 <?php
 
+define('USANETWORK_BLOG_MIGRATE_AUTHORS_VOC', 'authors');
+
 /**
  *  Implements hook_form_FORM_ID_alter().
  */

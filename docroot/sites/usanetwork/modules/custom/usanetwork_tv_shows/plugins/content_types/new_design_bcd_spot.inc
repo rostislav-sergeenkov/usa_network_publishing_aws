@@ -54,11 +54,17 @@ function new_design_tv_show_bcd_spot_get_content($node) {
     $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
     $positions = usanetwork_core_api_get_output_position($bcd_spot_content, $index);
     $blog_service = usanetwork_blog_migrate_get_post_service($item['entity']);
+    $author_term = usanetwork_consumptionator_post_get_author($item['entity_type'], $item['entity']);
+    $author_name = NULL;
+    if ($author_term) {
+      $author_name = $author_term->name;
+    }
     $additional_data = array(
       'image_desktop' => image_style_url('507x285', $row_image_uri),
       'image_mobile' => image_style_url('696x305', $row_image_uri),
       'position' => current($positions),
       'blog_service' => $blog_service,
+      'author' => $author_name,
     );
     $data_item = $data_item + $additional_data;
     $bcd_spot_data[] = $data_item;

@@ -80,9 +80,11 @@ function new_design_articles_content_type_render($subtype, $conf, $args, $contex
 
         }
 
-        if (isset($entity_wrapper->field_contributor)) {
-          $author_name = $entity_wrapper->field_contributor->value();
-          $out['items'][$raw]['author'] = $author_name->name;
+        $author_term = usanetwork_consumptionator_post_get_author('node', $entity_wrapper->value());
+        $author_name = NULL;
+        if ($author_term) {
+          $author_name = $author_term->name;
+          $out['items'][$raw]['author'] = $author_name;
         }
 
         if (isset($entity_wrapper->created)) {

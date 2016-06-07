@@ -26,8 +26,7 @@ function usanetwork_consumptionator_post_field_group_info() {
       0 => 'field_collection',
       1 => 'field_content_tags',
       2 => 'field_contributor',
-      3 => 'field_media_gallery',
-      4 => 'field_usa_css',
+      3 => 'field_usa_css',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -91,8 +90,9 @@ function usanetwork_consumptionator_post_field_group_info() {
       5 => 'field_sub_title',
       6 => 'field_summary',
       7 => 'field_consumptionator_blog',
-      8 => 'title',
-      9 => 'group_blog_displaying_author',
+      8 => 'field_author',
+      9 => 'title',
+      10 => 'group_blog_displaying_author',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -117,7 +117,7 @@ function usanetwork_consumptionator_post_field_group_info() {
   $field_group->parent_name = 'group_basic_information';
   $field_group->data = array(
     'label' => 'Displaying Author',
-    'weight' => '14',
+    'weight' => '15',
     'children' => array(
       0 => 'field_blog_display_author',
       1 => 'field_override_display_author',

@@ -58,6 +58,9 @@
           <?php if (!empty($title)): ?>
             <div class="title"><?php print $title; ?></div>
           <?php endif; ?>
+          <?php if (!empty($author)): ?>
+            <div class="author">By <?php print $author; ?></div>
+          <?php endif; ?>
         </div>
       </div>
     </div>

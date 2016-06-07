@@ -29,7 +29,7 @@ function usanetwork_blog_migrate_update_7100() {
 function usanetwork_blog_migrate_update_7101() {
   $voc = taxonomy_vocabulary_machine_name_load('tags');
   $term = new stdClass();
-  $term->name = 'The Verge';
+  $term->name = 'the verge';
   $term->vid = $voc->vid;
   taxonomy_term_save($term);
   variable_set('usanetwork_blog_migrate_the_verge_taxonomy_term_tid', $term->tid);

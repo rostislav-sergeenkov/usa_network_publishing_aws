@@ -180,7 +180,7 @@
   };
 
   // slide header
-  usaStickyHeader.prototype.slideUpStickyHeader = function (top, callback) {
+  usaStickyHeader.prototype.slideUpStickyHeader = function (callback) {
 
     console.info('slideUpStickyHeader');
 
@@ -201,7 +201,7 @@
       }
     }, _.options.delayCssAnimate);
   };
-  usaStickyHeader.prototype.slideDownStickyHeader = function (top, callback) {
+  usaStickyHeader.prototype.slideDownStickyHeader = function (callback) {
 
     console.info('slideDownStickyHeader');
 
@@ -235,12 +235,12 @@
       if (_.options.scrollDirection == 'down' && _.options.isScrollDiffMin && !_.options.isSlideUpHeaderSticky) {
 
         // slide Up StickyHeader
-        _.slideUpStickyHeader('-' + _.options.headerHeight, null);
+        _.slideUpStickyHeader(null);
 
       } else if (_.options.scrollDirection == 'top' && _.options.isSlideUpHeaderSticky) {
 
         // slide Down StickyHeader
-        _.slideDownStickyHeader('-' + _.options.adBlockHeight, null);
+        _.slideDownStickyHeader(null);
       }
     }
   };
@@ -299,7 +299,7 @@
       }, _.options.delayCssAnimate);
 
     } else if (_.options.pageYOffset < _.options.headerHeight  && _.options.isHeaderSticky) {
-      _.slideUpStickyHeader('-' + _.options.headerHeight, function () {
+      _.slideUpStickyHeader(function () {
         _.resetHeader();
       });
     }
@@ -327,7 +327,10 @@
     var _ = this;
 
     _.updateOptionsVal();
-    _.setHeaderSpacerHeight(_.options.headerHeight);
+
+    if (_.options.headerSpacerHeight != _.options.headerHeight) {
+      _.setHeaderSpacerHeight(_.options.headerHeight);
+    }
   };
   usaStickyHeader.prototype.setHeaderSpacerHeight = function (height) {
 
@@ -443,7 +446,7 @@
           var $window = this;
 
           _.updateOptionsVal();
-          _.updateHeaderSpacerHeight();
+          _.setHeaderSpacerHeight(_.options.headerHeight);
         });
   };
 

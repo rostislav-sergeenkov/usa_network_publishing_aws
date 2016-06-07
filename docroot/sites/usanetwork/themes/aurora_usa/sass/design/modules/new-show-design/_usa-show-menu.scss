@@ -522,14 +522,9 @@
     border-bottom: 2px solid;
     border-top: 2px solid;
     height: get-vw(60px, 1280);
-    overflow: hidden;
     width: 100%;
     @include breakpoint($bp-min-1601-width) {
       height: 75px;
-
-
-
-
     }
     @include breakpoint($bp-768-width) {
       border: none;
@@ -579,7 +574,7 @@
             font-size: get-vw(10px, 1024);
             height: 100%;
             letter-spacing: 1.5px;
-            line-height: get-vw(60px, 1280);
+            line-height: calc(#{get-vw(60px, 1280)} - 4px);
             outline: none;
             padding: 0 get-vw(29px, 1280);
             text-align: center;
@@ -587,13 +582,13 @@
             text-transform: uppercase;
             @include breakpoint($bp-min-1601-width) {
               font-size: 15.625px;
-              line-height: 75px;
+              line-height: 71px;
               padding: 0 36.25px;
             }
             @include breakpoint($bp-768-width) {
               color: $header-new-menu-item-color;
               font-size: get-vw(26px, 768);
-              line-height: get-vw(70px, 768);
+              line-height: calc(#{get-vw(70px, 768)} - 4px);
               padding: 0 get-vw(40px, 768);
               text-align: left;
               width: 100%;

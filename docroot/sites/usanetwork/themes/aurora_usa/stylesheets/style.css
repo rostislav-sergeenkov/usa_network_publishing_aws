@@ -448,35 +448,27 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 }
 
 @font-face {
-  font-family: 'firasansbold';
-  src: url("../fonts/firasans-bold-webfont.eot");
-  src: url("../fonts/firasans-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/firasans-bold-webfont.woff") format("woff"), url("../fonts/firasans-bold-webfont.ttf") format("truetype"), url("../fonts/firasans-bold-webfont.svg#firasansbold") format("svg");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'FiraSansRegular';
+  src: url("../fonts/FiraSansRegular.eot");
+  src: url("../fonts/FiraSansRegular.eot") format("embedded-opentype"), url("../fonts/FiraSansRegular.woff") format("woff"), url("../fonts/FiraSansRegular.ttf") format("truetype"), url("../fonts/FiraSansRegular.svg#FiraSansRegular") format("svg");
 }
 
 @font-face {
-  font-family: 'firasanslight';
-  src: url("../fonts/firasans-light-webfont.eot");
-  src: url("../fonts/firasans-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/firasans-light-webfont.woff") format("woff"), url("../fonts/firasans-light-webfont.ttf") format("truetype"), url("../fonts/firasans-light-webfont.svg#firasanslight") format("svg");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'FiraSansMedium';
+  src: url("../fonts/FiraSansMedium.eot");
+  src: url("../fonts/FiraSansMedium.eot") format("embedded-opentype"), url("../fonts/FiraSansMedium.woff") format("woff"), url("../fonts/FiraSansMedium.ttf") format("truetype"), url("../fonts/FiraSansMedium.svg#FiraSansMedium") format("svg");
 }
 
 @font-face {
-  font-family: 'firasansmedium';
-  src: url("../fonts/firasans-medium-webfont.eot");
-  src: url("../fonts/firasans-medium-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/firasans-medium-webfont.woff") format("woff"), url("../fonts/firasans-medium-webfont.ttf") format("truetype"), url("../fonts/firasans-medium-webfont.svg#firasansmedium") format("svg");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'FiraSansLight';
+  src: url("../fonts/FiraSansLight.eot");
+  src: url("../fonts/FiraSansLight.eot") format("embedded-opentype"), url("../fonts/FiraSansLight.woff") format("woff"), url("../fonts/FiraSansLight.ttf") format("truetype"), url("../fonts/FiraSansLight.svg#FiraSansLight") format("svg");
 }
 
 @font-face {
-  font-family: 'firasansregular';
-  src: url("../fonts/firasans-regular-webfont.eot");
-  src: url("../fonts/firasans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/firasans-regular-webfont.woff") format("woff"), url("../fonts/firasans-regular-webfont.ttf") format("truetype"), url("../fonts/firasans-regular-webfont.svg#firasansregular") format("svg");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'FiraSansBold';
+  src: url("../fonts/FiraSansBold.eot");
+  src: url("../fonts/FiraSansBold.eot") format("embedded-opentype"), url("../fonts/FiraSansBold.woff") format("woff"), url("../fonts/FiraSansBold.ttf") format("truetype"), url("../fonts/FiraSansBold.svg#FiraSansBold") format("svg");
 }
 
 @font-face {
@@ -3640,7 +3632,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .image-block .item-number {
   color: white;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 0.9375vw;
   height: 1.09375vw;
   line-height: 1.09375vw;
@@ -3705,7 +3697,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .meta-wrapper-inner .title {
   color: white;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.09375vw;
   letter-spacing: 1px;
   line-height: 1.4;
@@ -3847,7 +3839,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .b-c-d-block li .usa-bcd-carousel-promo .meta .caption span {
   color: white;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   letter-spacing: 0.5px;
   line-height: 1.5;
   padding: 0 0.54688vw;
@@ -3866,7 +3858,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .b-c-d-block li .usa-bcd-carousel-promo .meta .title {
   color: white;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 2.125vw;
   line-height: 1.2;
   text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
@@ -4025,7 +4017,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta .caption span {
   color: white;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   line-height: 1.5;
   padding: 0 0.54688vw;
   text-transform: uppercase;
@@ -4043,7 +4035,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta .title {
   color: white;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 2.125vw;
   line-height: 1.2;
   text-align: left;
@@ -4080,7 +4072,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 .best-of-section .best-of-content li .usa-best-of-promo .meta .additional .additional-link {
   color: white;
   display: inline-block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.3125vw;
   line-height: 1.3;
   outline: none;
@@ -4143,7 +4135,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 .best-of-section .best-of-content li .usa-best-of-promo .meta .more-link {
   color: white;
   display: inline-block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.125vw;
   margin-top: 3.20313vw;
   outline: none;
@@ -4252,7 +4244,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .caption {
   color: #7c7c7c;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 0.9375vw;
   line-height: 1.2;
 }
@@ -4263,7 +4255,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .title {
   color: #cccccc;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.5625vw;
   letter-spacing: 0.5px;
   line-height: 1.3;
@@ -4275,7 +4267,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .additional {
   background: none;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 0.9375vw;
   line-height: 1.79688vw;
   position: relative;
@@ -4389,7 +4381,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .articles-block .articles-wrapper li .usa-articles-promo .meta .title {
   color: #e5e5e5;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 1.875vw;
   line-height: 1.1;
   margin: 0 0 0.39063vw;
@@ -4658,7 +4650,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .show-related-content-block #special-fuatures .slide .usa-show-related-special-promo .title {
   color: #e6e6e6;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 1.875vw;
   line-height: 1.3;
   margin-bottom: 1.09375vw;
@@ -4948,7 +4940,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .show-new-design .landing-page-container .landing-items-blocks ul li .usa-landing-container-promo .meta .caption span {
   color: white;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   line-height: 1.5;
   padding: 0 0.54688vw;
   text-transform: uppercase;
@@ -4966,7 +4958,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .show-new-design .landing-page-container .landing-items-blocks ul li .usa-landing-container-promo .meta .title {
   color: white;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   line-height: 1.2;
   text-align: left;
   text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
@@ -5306,7 +5298,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   letter-spacing: 1px;
 }
 .show-new-design .cast-and-crew-block .block-item .usa-cast-promo .meta-wrapper .meta-wrapper-inner .meta .title {
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 1.6875vw;
   line-height: 1.3;
   text-transform: uppercase;
@@ -40245,7 +40237,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .usa-section-title .title {
   color: white;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 1.71875vw;
   letter-spacing: 2px;
   line-height: 1;
@@ -40274,7 +40266,7 @@ body.blog .view-display-id-blog_content .views-row {
   bottom: 1.17188vw;
   color: white;
   display: block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1vw;
   letter-spacing: 0.5px;
   line-height: 1;
@@ -40346,7 +40338,7 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design .view-more .view-more-link {
   color: #ffffff;
   display: inline-block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.40625vw;
   letter-spacing: 1px;
   line-height: 1;
@@ -40663,7 +40655,7 @@ body.blog .view-display-id-blog_content .views-row {
   background: none;
   box-sizing: border-box;
   float: right;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1vw;
   line-height: 1.5625vw;
   padding-right: 1.40625vw;
@@ -41060,7 +41052,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   width: 100%;
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 0.97656vw;
   letter-spacing: 0.5px;
   line-height: 2;
@@ -41249,7 +41241,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   background: none;
   color: white;
   display: block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 0.97656vw;
   height: 100%;
   letter-spacing: 1.5px;
@@ -41415,7 +41407,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 #usa-newsletter-subscription #newsletter_lyris_ajax_wrapper {
   color: #cacaca;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.17188vw;
   line-height: 3.125vw;
   letter-spacing: 1px;
@@ -41438,7 +41430,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   color: #ffffff;
   cursor: pointer;
   font-size: 1.5625vw;
-  font-family: "firasanslight", sans-serif;
+  font-family: "FiraSansLight", sans-serif;
   font-style: normal;
   letter-spacing: 1px;
   line-height: 3.125vw;
@@ -41528,7 +41520,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   box-sizing: border-box;
   border: 1px solid #515151;
   display: block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.40625vw;
   line-height: 3.125vw;
   height: 3.125vw;
@@ -41585,7 +41577,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   border: 0;
   color: #ffffff;
   font-size: 1.5625vw;
-  font-family: "firasanslight", sans-serif;
+  font-family: "FiraSansLight", sans-serif;
   font-style: normal;
   letter-spacing: 1px;
   line-height: 3.125vw;
@@ -42192,7 +42184,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .usa-show-aspot .usanetwork-aspot .meta-wrap .title {
   color: #ffffff;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 6vw;
   letter-spacing: 0.1em;
   line-height: 0.88;
@@ -42671,7 +42663,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .usa-show-aspot .usanetwork-aspot .meta-wrap .aspot-description {
   color: #ffffff;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.875vw;
   letter-spacing: 0.05em;
   line-height: 1;
@@ -43238,7 +43230,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   background: none;
   color: #ffffff;
   display: block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.25vw;
   letter-spacing: 0.1em;
   line-height: 1.8;
@@ -43331,7 +43323,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .usa-show-aspot .pane-new-design-relevant-content .carousel-title-block {
   background: none;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.25vw;
   line-height: 3.28125vw;
   height: 3.28125vw;
@@ -43759,7 +43751,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .latest-episodes-block .main-episode .meta .caption {
   color: #a6a6a6;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.40625vw;
   text-transform: uppercase;
 }
@@ -43775,7 +43767,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .latest-episodes-block .main-episode .meta .title {
   color: white;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 2.34375vw;
   line-height: 1.1;
   text-transform: uppercase;
@@ -43793,7 +43785,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .latest-episodes-block .main-episode .meta .additional .additional-link {
   background: none;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.09375vw;
   margin-right: 1.79688vw;
   outline: none;
@@ -44057,7 +44049,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   padding: 0;
   padding-bottom: 1.48438vw;
   padding-top: 1.71875vw;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 1.40625vw;
   letter-spacing: 1px;
   line-height: 1;
@@ -44310,7 +44302,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-new-design .consum-sidebar .items-block-title h2 {
   background: none;
   color: inherit;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 15px;
   margin: 0;
   text-transform: uppercase;
@@ -44419,7 +44411,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   width: 100%;
 }
 .show-new-design .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title {
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 15px;
   line-height: 20px;
 }
@@ -44579,7 +44571,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-new-design .consum-sidebar .more-items a {
   color: #ffffff;
   display: block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 15px;
   letter-spacing: 1px;
   line-height: 43px;
@@ -44769,7 +44761,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   bottom: 1.95313vw;
   color: #1e1e1e;
   display: block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 21px;
   outline: none;
   position: absolute;
@@ -44938,7 +44930,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .post-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .post-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .post-title-block .post-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .episode-title-block .post-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .post-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .post-title-block .post-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .episode-title-block .post-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .post-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .post-title-block .post-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .episode-title-block .post-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .post-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .post-title-block .post-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .episode-title-block .post-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .post-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .post-title-block .post-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .episode-title-block .post-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .post-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .post-title-block .post-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .episode-title-block .post-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .post-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .post-title-block .post-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .episode-title-block .post-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .post-title-block .episode-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .post-title-block .post-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .post-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .post-title-block .episode-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .post-title-block .post-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .episode-title-block .post-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .post-title-block .episode-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .post-title-block .post-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .episode-title-block .post-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .post-title-block .episode-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .post-title-block .post-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .episode-title-block .post-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .post-title-block .episode-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .post-title-block .post-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .episode-title-block .post-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .post-title-block .episode-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .post-title-block .post-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .episode-title-block .post-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .post-title-block .episode-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .post-title-block .post-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .episode-title-block .post-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .post-title-block .episode-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .post-title-block .post-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .episode-title-block .episode-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .episode-title-block .post-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .post-title-block .episode-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .post-title-block .post-title {
   color: black;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 38px;
   line-height: 1.3;
 }
@@ -44949,7 +44941,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .post-title-block .additional, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .episode-title-block .additional, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .post-title-block .additional, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .episode-title-block .additional, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .post-title-block .additional, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .episode-title-block .additional, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .post-title-block .additional, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .post-title-block .additional, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .episode-title-block .additional, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .post-title-block .additional, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .episode-title-block .additional, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .post-title-block .additional, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .episode-title-block .additional, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .post-title-block .additional, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .post-title-block .additional, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .episode-title-block .additional, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .post-title-block .additional, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .episode-title-block .additional, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .post-title-block .additional, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .episode-title-block .additional, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .post-title-block .additional, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .post-title-block .additional, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .episode-title-block .additional, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .post-title-block .additional, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .episode-title-block .additional, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .post-title-block .additional, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .episode-title-block .additional, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .post-title-block .additional {
   color: #3e3e3e;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 12px;
   line-height: 1.3;
 }
@@ -44965,7 +44957,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   content: '';
 }
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .post-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .episode-title-block .additional .tags-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .post-title-block .additional .tags-title {
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   margin-left: 1em;
   position: relative;
 }
@@ -44987,7 +44979,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .share, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .share, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .share, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .share, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .share, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .share, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .share, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .share, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .share, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .share, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .share, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .share, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .share, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .share, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .share {
   color: #afafaf;
   float: right;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   margin-top: 10px;
   width: 30%;
 }
@@ -45158,7 +45150,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .source, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .source, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .source, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .source, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .source, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .source, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .source, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .source, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .source, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .source, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .source, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .source, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .source, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .source, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .source, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .source {
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   color: #606060;
   letter-spacing: 2px;
   font-size: 16px;
@@ -45176,7 +45168,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description .source-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description .source-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description .source-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description .source-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description .source-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description .source-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description .source-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description .source-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description .source-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description .source-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description .source-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description .source-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description .source-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description .source-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description .source-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description .source-title {
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   color: #606060;
 }
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description a.source-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description a.source-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description a.source-title, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description a.source-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description a.source-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description a.source-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description a.source-title, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description a.source-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description a.source-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description a.source-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description a.source-title, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description a.source-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description a.source-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description a.source-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description a.source-title, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description a.source-title {
@@ -45369,7 +45361,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   bottom: 0.78906vw;
   color: #ffffff;
   display: block;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 0.73645vw;
   line-height: 1;
   position: absolute;
@@ -45670,7 +45662,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-new-design.consumptionator-page .gallery-wrapper .share-bar h3.field-label, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar h3.field-label, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .show-new-design .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label {
   color: #d0d0d2;
   font-size: 14px;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   line-height: 20px;
   margin-top: 0;
   margin-bottom: 15px;
@@ -45823,7 +45815,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   color: #f3f3ec;
   display: block;
   font-size: 1.36585vw;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   line-height: 1.5;
   left: 45px;
   overflow: hidden;
@@ -45904,7 +45896,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .show-new-design.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .show-new-design .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
   font-size: 27px;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
 }
 @media (max-width: 1600px) {
   .show-new-design.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .show-new-design .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
@@ -46425,7 +46417,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   color: #f3f3ec;
   display: block;
   font-size: 14px;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   height: auto;
   line-height: 1.5;
   left: 70px;
@@ -46467,7 +46459,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .show-new-design.node-type-post .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
   font-size: 12px;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
 }
 .show-new-design.node-type-post .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .gallery-pager-wrap {
   bottom: auto;
@@ -46792,7 +46784,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   width: 50%;
 }
 .show-new-design .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 38px;
   line-height: 1.3;
 }
@@ -46832,7 +46824,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   width: 45%;
 }
 .show-new-design .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 26px;
   color: #afafaf;
 }
@@ -46971,7 +46963,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-new-design .consumptionator-characters-main-block .character-info-block .block-character-info-content > .description ul li {
   width: 50%;
   display: inline-block;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 17.5px;
   line-height: 46px;
   text-align: center;
@@ -47133,7 +47125,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 span {
   color: inherit;
-  font-family: "firasansregular", sans-serif !important;
+  font-family: "FiraSansRegular", sans-serif !important;
 }
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details h2 .timeline-h2-episode-name {
   max-width: calc(100% - 90px);
@@ -47152,13 +47144,13 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   display: none;
 }
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text {
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 18px;
   line-height: 1.5;
   margin: 30px 0 30px;
 }
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text p, .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text span {
-  font-family: "firasansregular", sans-serif !important;
+  font-family: "FiraSansRegular", sans-serif !important;
 }
 @media (min-width: 1025px) {
   .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-item-text {
@@ -47180,7 +47172,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share-title {
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
 }
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share .gig-button-container td > div,
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share .gig-button-container td > div:hover {
@@ -47211,7 +47203,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   color: inherit;
 }
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-line a.timeline-node .timeline-node-desc {
-  font-family: "firasansregular", sans-serif !important;
+  font-family: "FiraSansRegular", sans-serif !important;
 }
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-line h4.timeline-month {
   color: white;
@@ -47366,13 +47358,13 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz h3 {
   color: white;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .field-type-text-with-summary {
   font-family: "opensansregular", sans-serif;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz [type="button"] {
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .entry-button {
   margin: 50px 0;
@@ -47400,16 +47392,16 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .score-container {
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .result-title {
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .result-description {
   font-family: "opensansregular", sans-serif;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .page-note {
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .content-wrap {
   background: black;
@@ -47454,7 +47446,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-question .question-title {
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   text-align: center;
 }
 @media (max-width: 640px) {
@@ -47481,7 +47473,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   max-width: 320px;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   padding: 5px;
   width: 320px;
 }
@@ -47580,7 +47572,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   background: black;
   color: white;
   cursor: pointer;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 1.125vw;
   letter-spacing: 0.5px;
   line-height: 3.125vw;
@@ -47738,7 +47730,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   color: white;
   display: block;
   font-size: 1.125vw;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   text-transform: capitalize;
   letter-spacing: 0.5px;
   line-height: 1.8;
@@ -47906,7 +47898,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .show-new-design .landing-page-container .upper-menu .sorters-description h1 {
   color: white;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   margin: 0;
   line-height: 1;
   font-size: 1.125vw;
@@ -47926,7 +47918,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 .show-new-design .landing-page-container .upper-menu .sorters-description h1 strong {
   background: none;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-weight: normal;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -48475,7 +48467,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   border: 1px solid;
   color: white;
   display: inline-block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.25vw;
   line-height: 3.5vw;
   padding: 0 2.1875vw 0;
@@ -48514,7 +48506,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   }
 }
 .show-new-design .where-to-watch .description-block {
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.25vw;
   margin-top: 3.125vw;
 }
@@ -48674,7 +48666,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   border: 1px solid;
   color: white;
   display: inline-block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.25vw;
   line-height: 3.5vw;
   outline: none;
@@ -48953,7 +48945,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .series,
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .series {
   color: #7c7c7c;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 1.5625vw;
   line-height: 1.3;
 }
@@ -48984,7 +48976,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .title,
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .title {
   color: #cccccc;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 1.875vw;
   line-height: 1.3;
   margin-top: 0.54688vw;
@@ -49223,7 +49215,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
   color: #ffffff;
   display: inline-block;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.17188vw;
   line-height: 1;
   padding: 1.32813vw 1.95313vw;
@@ -49335,7 +49327,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .links > a {
   display: block;
   color: #cecece;
-  font-family: "firasansregular", sans-serif;
+  font-family: "FiraSansRegular", sans-serif;
   font-size: 1.40625vw;
   position: relative;
   letter-spacing: 1px;
@@ -49475,7 +49467,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2 {
   box-sizing: border-box;
   color: #ffffff;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 2.34375vw;
   line-height: 5vw;
   margin: 0;
@@ -49628,7 +49620,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   background: black;
   color: white;
   cursor: pointer;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   font-size: 1.125vw;
   letter-spacing: 0.5px;
   line-height: 3.125vw;
@@ -49738,7 +49730,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   color: #ffffff;
   display: block;
   font-size: 1.125vw;
-  font-family: "firasansmedium", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
   height: 100%;
   letter-spacing: 1px;
   line-height: 3.125vw;

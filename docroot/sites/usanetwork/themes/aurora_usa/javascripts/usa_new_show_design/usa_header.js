@@ -24,9 +24,11 @@
         headerSpacerId: 'header-spacer',
         headerInnerClass: 'header-inner',
         showLogoSel: '.top-menu-block-inner .title-block .title',
+        initStickyHeaderClass: 'usa-sticky-header-initialized',
         decreaseHeaderClass: 'usa-decrease-header', // string
         stickyHeaderClass: 'usa-sticky-header', // string
         slideHeaderClass: 'usa-slide-header', // string
+        slideUpHeaderClass: 'usa-slide-up-header', // string
         slideHeaderSpacerClass: 'slide-spacer', // string
         
         additionalMode: {},
@@ -37,11 +39,10 @@
         stickyMobileBp: 768, // number
         headerInnerMaxWidth: 1600, // px or ''
         durationCssAnimate: 200, // ms; default css transition-duration
-        delayCssAnimate: 400, // number ms
+        delayCssAnimate: 200, // number ms
         easing: 'linear',
-        minScrollLength: 100, // number px; used for on || off stickyHeaderClass
         scrollDiffMin: 20, // number px
-        minShowLogoHeight: 41, // number px
+        minShowLogoHeight: 41, // number px 
         minShowLogoWidth: 261, // number px
         minShowLogoDecrease: 0.6 // number % min height 60%
       };
@@ -67,6 +68,7 @@
       _.options.showLogoWidth = 0;
       _.options.calcMinShowLogoHeight = 0;
       _.options.isResizeShowLogoProcessing = false;
+      _.options.isMobileBp = false;
 
       // elements
       _.$body = $(document.body);
@@ -160,19 +162,20 @@
     console.info('resetHeader');
 
     var _ = this;
+
     _.options.isHeaderSticky = false;
-    // reset position and slide Down StickyHeader
     _.setHeaderSpacerHeight(_.options.defaultHeaderHeight);
     _.removeHeaderClass(_.options.stickyHeaderClass, function () {
       _.options.isHeaderSticky = false;
     });
+    _.removeHeaderClass(_.options.slideUpHeaderClass, null);
     _.$header.removeAttr('style');
-    _.$headerSpacer.removeClass(_.options.slideHeaderSpacerClass);
     _.resetShowLogo();
-    _.updateHeaderSpacerHeight();
     _.setTimeout(function () {
+      _.$headerSpacer.removeClass(_.options.slideHeaderSpacerClass);
       _.removeHeaderClass(_.options.slideHeaderClass, null);
       _.options.isHeaderSlide = false;
+      _.updateHeaderSpacerHeight();
     }, _.options.delayCssAnimate);
   };
 
@@ -188,7 +191,7 @@
     }
 
     _.options.isSlideProcessing = true;
-    _.setHeaderPosition(top);
+    _.addHeaderClass(_.options.slideUpHeaderClass, null);
     _.setTimeout(function () {
       _.options.isSlideUpHeaderSticky = true;
       _.options.isSlideProcessing = false;
@@ -209,7 +212,7 @@
     }
 
     _.options.isSlideProcessing = true;
-    _.setHeaderPosition(top);
+    _.removeHeaderClass(_.options.slideUpHeaderClass, null);
     _.setTimeout(function () {
       _.options.isSlideUpHeaderSticky = false;
       _.options.isSlideProcessing = false;
@@ -257,22 +260,6 @@
 
   };
 
-  // header position
-  usaStickyHeader.prototype.setHeaderPosition = function (top) {
-    // top: - number || number
-    console.info('setHeaderPosition');
-
-    var _ = this,
-        $header = $(_.$header);
-
-    $header.css({
-      '-moz-transform': 'translateY(' + top + 'px)',
-      '-ms-transform': 'translateY(' + top + 'px)',
-      '-webkit-transform': 'translateY(' + top + 'px)',
-      '-o-transform': 'translateY(' + top + 'px)',
-      'transform': 'translateY(' + top + 'px)'
-    });
-  };
   usaStickyHeader.prototype.checkHeaderPosition = function () {
 
     console.info('checkHeaderPosition');
@@ -287,8 +274,7 @@
 
     var _ = this,
         $headerSpacer = _.$headerSpacer,
-        $showLogo = _.$showLogo,
-        minScrollLength = _.options.minScrollLength;
+        $showLogo = _.$showLogo;
 
     console.info('checkHeaderOffset');
 
@@ -312,7 +298,7 @@
         _.options.isHeaderSlide = true;
       }, _.options.delayCssAnimate);
 
-    } else if (_.options.pageYOffset < _.options.headerHeight * 2  && _.options.isHeaderSticky) {
+    } else if (_.options.pageYOffset < _.options.headerHeight  && _.options.isHeaderSticky) {
       _.slideUpStickyHeader('-' + _.options.headerHeight, function () {
         _.resetHeader();
       });
@@ -341,10 +327,7 @@
     var _ = this;
 
     _.updateOptionsVal();
-    
-    if (_.options.headerSpacerHeight != _.options.headerHeight) {
-      _.setHeaderSpacerHeight(_.options.headerHeight);
-    }
+    _.setHeaderSpacerHeight(_.options.headerHeight);
   };
   usaStickyHeader.prototype.setHeaderSpacerHeight = function (height) {
 
@@ -415,6 +398,7 @@
     var _ = this,
         calcMinShowLogoHeight;
 
+    _.options.isMobileBp = _.checkMatchWindowWidth('max', _.options.stickyMobileBp);
     _.options.pageYOffset = window.pageYOffset;
     _.options.adBlockHeight = _.$adBlock.outerHeight();
     _.options.headerHeight = _.$header.outerHeight();
@@ -433,7 +417,7 @@
     var _ = this;
 
     $(window)
-        .on('scroll', function (e) {
+        .bind('scroll', function (e) {
 
           console.info('onScroll : ' + window.pageYOffset);
 
@@ -442,7 +426,7 @@
 
           _.getScrollDirection(newYOffset);
 
-          if (_.checkMatchWindowWidth('max', _.options.stickyMobileBp)) {
+          if (_.options.isMobileBp) {
 
           } else {
             if (!_.options.isMobileDevice && $window.pageYOffset > 1) {
@@ -452,12 +436,12 @@
             _.slideStickyHeader();
           }
         })
-        .on('resize', function (e) {
+        .bind('resize', function (e) {
 
           console.info('onResize');
 
           var $window = this;
-          
+
           _.updateOptionsVal();
           _.updateHeaderSpacerHeight();
         });
@@ -467,10 +451,11 @@
   usaStickyHeader.prototype.init = function (creation) {
 
     console.info('usaStickyHeader init');
-    var _ = this;
+    var _ = this,
+        initStickyHeaderClass = _.options.initStickyHeaderClass;
 
-    if (creation && !_.$header.hasClass('usa-sticky-header-initialized')) {
-      _.$header.addClass('usa-sticky-header-initialized');
+    if (creation && !_.$header.hasClass(initStickyHeaderClass)) {
+      _.$header.addClass(initStickyHeaderClass);
       _.updateOptionsVal();
       _.saveDefaultHeaderHeight();
       _.checkHeaderSpacer();

@@ -142,3 +142,10 @@
   </footer>
   <!-- /FOOTER -->
 </div>
+<?php if ($page['footer_additional']) : ?>
+  <footer id="additional-footer" role="contentinfo" class="clearfix">
+    <div class="footer-inner">
+      <?php print render($page['footer_additional']); ?>
+    </div>
+  </footer>
+<?php endif;?>

@@ -19,6 +19,15 @@
     background: none;
     max-width: 1600px;
   }
+  #additional-footer {
+    background: #000000;
+    width: 100%;
+
+    .footer-inner {
+      margin: 0 auto;
+      max-width: 1600px;
+    }
+  }
   .usa-section-title {
     border-bottom: 2px solid;
     padding: get-vw(15px, 1280) 0;

@@ -40159,6 +40159,12 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design {
   background: #181818;
 }
+.show-new-design.usa-tv-show {
+  background: -moz-linear-gradient(top, black 0%, black 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);
+  background: -webkit-linear-gradient(top, black 0%, black 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);
+  background: linear-gradient(to bottom, #000000 0%, #000000 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#111111',GradientType=0 );
+}
 .show-new-design .pane-mps-midbanner {
   padding-top: 2.57813vw;
   text-align: center;
@@ -40170,6 +40176,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 .show-new-design .usa-wrap {
+  background: none;
   max-width: 1600px;
 }
 .show-new-design .usa-section-title {
@@ -42081,7 +42088,6 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 .usa-show-aspot {
-  background: #181818;
   height: 40.85938vw;
   padding: 0 1.25vw;
   position: relative;
@@ -42091,15 +42097,6 @@ body.blog .view-display-id-blog_content .views-row {
   clear: both;
   content: '';
   display: table;
-}
-@media (min-width: 769px) {
-  .usa-show-aspot {
-    background: #181818;
-    background: -moz-linear-gradient(top, black 0%, #181818 20%, #181818 80%, #111111 100%);
-    background: -webkit-linear-gradient(top, black 0%, #181818 20%, #181818 80%, #111111 100%);
-    background: linear-gradient(to bottom, #000000 0%, #181818 20%, #181818 80%, #111111 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#111111',GradientType=0 );
-  }
 }
 @media (min-width: 1601px) {
   .usa-show-aspot {

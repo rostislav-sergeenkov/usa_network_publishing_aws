@@ -1,5 +1,12 @@
 .show-new-design {
   background: $consum-also-back;
+  &.usa-tv-show,
+  &.consumptionator-video-page {
+    background: -moz-linear-gradient(top, #000000 0%,#000000 6.6%,#181818 9.7%,#181818 18.4%,#111111 21%);
+    background: -webkit-linear-gradient(top, #000000 0%,#000000 6.6%,#181818 9.7%,#181818 18.4%,#111111 21%);
+    background: linear-gradient(to bottom,#000000 0%,#000000 6.6%,#181818 9.7%,#181818 18.4%,#111111 21%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#111111',GradientType=0 );
+  }
   .pane-mps-midbanner {
     padding-top: get-vw(33px, 1280);
     text-align: center;
@@ -9,6 +16,7 @@
     }
   }
   .usa-wrap {
+    background: none;
     max-width: 1600px;
   }
   .usa-section-title {

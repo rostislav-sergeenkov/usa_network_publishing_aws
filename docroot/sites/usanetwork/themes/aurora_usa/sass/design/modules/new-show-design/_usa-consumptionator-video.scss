@@ -8,11 +8,11 @@
       position: relative;
       width: 100%;
       @include breakpoint($bp-min-769-width) {
-        background: $consum-also-back;
-        background: -moz-linear-gradient(top, #000000 0%, #181818 20%, #181818 80%, #111111 100%);
-        background: -webkit-linear-gradient(top, #000000 0%,#181818 20%,#181818 80%,#111111 100%);
-        background: linear-gradient(to bottom, #000000 0%,#181818 20%,#181818 80%,#111111 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#111111',GradientType=0 );
+        //background: $consum-also-back;
+        //background: -moz-linear-gradient(top, #000000 0%, #181818 20%, #181818 80%, #111111 100%);
+        //background: -webkit-linear-gradient(top, #000000 0%,#181818 20%,#181818 80%,#111111 100%);
+        //background: linear-gradient(to bottom, #000000 0%,#181818 20%,#181818 80%,#111111 100%);
+        //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#111111',GradientType=0 );
       }
       @include breakpoint($bp-min-1601-width) {
         padding: 0 20px;

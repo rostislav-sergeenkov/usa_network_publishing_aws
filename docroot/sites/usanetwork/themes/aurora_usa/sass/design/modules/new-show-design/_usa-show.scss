@@ -1,6 +1,7 @@
 .show-new-design {
   background: $consum-also-back;
-  &.usa-tv-show {
+  &.usa-tv-show,
+  &.consumptionator-video-page {
     background: -moz-linear-gradient(top, #000000 0%,#000000 6.6%,#181818 9.7%,#181818 18.4%,#111111 21%);
     background: -webkit-linear-gradient(top, #000000 0%,#000000 6.6%,#181818 9.7%,#181818 18.4%,#111111 21%);
     background: linear-gradient(to bottom,#000000 0%,#000000 6.6%,#181818 9.7%,#181818 18.4%,#111111 21%);

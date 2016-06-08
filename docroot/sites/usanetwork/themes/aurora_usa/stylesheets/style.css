@@ -40141,7 +40141,7 @@ body.blog .view-display-id-blog_content .views-row {
   top: 0;
   position: absolute;
   width: 100%;
-  z-index: 100;
+  z-index: 1000;
 }
 .show-new-design #header.usa-sticky-header {
   position: fixed;
@@ -40159,7 +40159,7 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design {
   background: #181818;
 }
-.show-new-design.usa-tv-show {
+.show-new-design.usa-tv-show, .show-new-design.consumptionator-video-page {
   background: -moz-linear-gradient(top, black 0%, black 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);
   background: -webkit-linear-gradient(top, black 0%, black 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);
   background: linear-gradient(to bottom, #000000 0%, #000000 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);
@@ -50089,15 +50089,6 @@ body.blog .view-display-id-blog_content .views-row {
   clear: both;
   content: '';
   display: table;
-}
-@media (min-width: 769px) {
-  .show-new-design.consumptionator-video-page .video-block {
-    background: #181818;
-    background: -moz-linear-gradient(top, black 0%, #181818 20%, #181818 80%, #111111 100%);
-    background: -webkit-linear-gradient(top, black 0%, #181818 20%, #181818 80%, #111111 100%);
-    background: linear-gradient(to bottom, #000000 0%, #181818 20%, #181818 80%, #111111 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#111111',GradientType=0 );
-  }
 }
 @media (min-width: 1601px) {
   .show-new-design.consumptionator-video-page .video-block {

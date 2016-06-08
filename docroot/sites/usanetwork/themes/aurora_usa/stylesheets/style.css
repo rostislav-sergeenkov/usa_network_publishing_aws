@@ -48460,7 +48460,7 @@ body.blog .view-display-id-blog_content .views-row {
   display: table;
 }
 .show-new-design .where-to-watch .where-to-watch-inner {
-  padding: 1.875vw 2.8125vw;
+  padding: 2.1875vw 2.8125vw;
   width: 100%;
 }
 .show-new-design .where-to-watch .where-to-watch-inner:after {
@@ -48470,12 +48470,134 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (min-width: 1601px) {
   .show-new-design .where-to-watch .where-to-watch-inner {
-    padding: 30px 45px;
+    padding: 35px 45px;
   }
 }
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .where-to-watch-inner {
     padding: 2.60417vw 3.90625vw;
+  }
+}
+.show-new-design .where-to-watch .where-to-watch-inner .first-line .description-block:first-child {
+  margin-top: 0;
+}
+.show-new-design .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner {
+  border: none;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider {
+    display: inline-block;
+    float: none;
+    text-align: center;
+    vertical-align: middle;
+    width: 45%;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider a {
+    display: inline;
+  }
+}
+.show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap {
+  margin-top: 15px;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap {
+    margin-top: 25px;
+  }
+}
+.show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
+  display: inline-block;
+  padding: 1.17188vw 2.34375vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
+    padding: 15px 40px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
+    padding: 1.46484vw 2.92969vw;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
+    padding: 1.95313vw 2.60417vw;
+  }
+}
+.show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button:first-child {
+  margin-right: 1.95313vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button:first-child {
+    margin-right: 35px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button:first-child {
+    margin-right: 2.44141vw;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button:first-child {
+    display: none;
+  }
+}
+.show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
+  color: #ffffff;
+  font-size: 1.5625vw;
+  font-family: "FiraSansMedium", sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
+  line-height: 1;
+  padding-top: 3px;
+  position: relative;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
+    font-size: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
+    font-size: 1.75781vw;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
+    font-size: 2.34375vw;
+  }
+}
+.show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
+  color: #ffffff;
+  content: "\e608";
+  display: inline-block;
+  font-family: "ico-font";
+  font-size: 1.17073vw;
+  line-height: 1;
+  margin-left: 0.9375vw;
+  vertical-align: middle;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
+    font-size: 14px;
+    margin-left: 12px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
+    font-size: 1.17188vw;
+    margin-left: 1.17188vw;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
+    font-size: 1.5625vw;
+    margin-left: 1.5625vw;
   }
 }
 .show-new-design .where-to-watch .live-link {
@@ -48534,7 +48656,7 @@ body.blog .view-display-id-blog_content .views-row {
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .description-block {
     font-size: 2.60417vw;
-    margin-top: 0;
+    margin-top: 50px;
   }
 }
 .show-new-design .where-to-watch .usa-providers {
@@ -48545,9 +48667,6 @@ body.blog .view-display-id-blog_content .views-row {
   display: block;
   position: relative;
   text-align: center;
-}
-.show-new-design .where-to-watch .usa-providers .providers-row:last-child .providers-row-inner {
-  border: none;
 }
 .show-new-design .where-to-watch .usa-providers .providers-row-inner {
   border-bottom: 1px solid;

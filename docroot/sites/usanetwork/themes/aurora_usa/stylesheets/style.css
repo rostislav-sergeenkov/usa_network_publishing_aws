@@ -45951,10 +45951,6 @@ body.blog .view-display-id-blog_content .views-row {
     padding-left: 12px;
   }
 }
-.show-new-design.consumptionator-page .gallery-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title, .show-new-design.node-type-media-gallery .gallery-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title, .show-new-design.node-type-tv-episode .gallery-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title, .show-new-design .gallery-recap-block .gallery-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title, .show-new-design.node-type-consumpt-post .gallery-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title, .show-new-design .node-media-gallery .gallery-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title, .show-new-design.node-type-usanetwork-microsite .gallery-block .consum-sidebar .episodes-list-slider.vertical li .meta-wrapper .meta .title {
-  font-size: 12px;
-  line-height: 15px;
-}
 @media (max-width: 640px) {
   .show-new-design.consumptionator-page .gallery-block .consum-sidebar .episodes-list-slider.horizontal li, .show-new-design.node-type-media-gallery .gallery-block .consum-sidebar .episodes-list-slider.horizontal li, .show-new-design.node-type-tv-episode .gallery-block .consum-sidebar .episodes-list-slider.horizontal li, .show-new-design .gallery-recap-block .gallery-block .consum-sidebar .episodes-list-slider.horizontal li, .show-new-design.node-type-consumpt-post .gallery-block .consum-sidebar .episodes-list-slider.horizontal li, .show-new-design .node-media-gallery .gallery-block .consum-sidebar .episodes-list-slider.horizontal li, .show-new-design.node-type-usanetwork-microsite .gallery-block .consum-sidebar .episodes-list-slider.horizontal li {
     height: auto;

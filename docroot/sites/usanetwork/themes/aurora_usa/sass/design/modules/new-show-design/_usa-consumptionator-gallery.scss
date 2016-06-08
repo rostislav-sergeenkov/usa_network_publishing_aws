@@ -223,10 +223,10 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 @include breakpoint($between-1025-1280) {
                   padding-left: 12px;
                 }
-                .title {
-                  font-size: 12px;
-                  line-height: 15px;
-                }
+                //.title {
+                //  font-size: 12px;
+                //  line-height: 15px;
+                //}
               }
             }
           }

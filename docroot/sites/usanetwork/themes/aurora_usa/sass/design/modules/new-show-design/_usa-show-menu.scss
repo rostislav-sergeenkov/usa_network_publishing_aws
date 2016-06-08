@@ -7,16 +7,39 @@
   @include breakpoint($bp-min-1601-width) {
     padding: 20px 20px 0 20px;
   }
-  @include breakpoint($between-641-768) {
+  @include breakpoint($bp-768-width) {
     padding: 0;
   }
-  @include breakpoint($bp-640-width) {
-    padding: 0;
+
+  &.active {
+    .top-menu-block {
+      .logo-block {
+        @include breakpoint($bp-768-width) {
+          margin-top: calc(#{get-vw(-17.5px, 768) + get-vw(-16px, 768)});
+        }
+      }
+      .title-block {
+        .tune-in {
+          @include breakpoint($bp-768-width) {
+            display: block;
+          }
+        }
+      }
+      .menu-open-button.active {
+        margin-top: calc(#{get-vw(-17.5px, 768) + get-vw(-16px, 768)});
+      }
+    }
+    .bottom-menu-block {
+      .bottom-menu-block-inner {
+        @include breakpoint($bp-768-width) {
+          display: block;
+        }
+      }
+    }
   }
+
   .social-block {
     @include clear();
-    //display: table;
-    //height: 100%;
     max-width: 20%;
     width: 100%;
     .hashtag {
@@ -122,215 +145,7 @@
       }
     }
   }
-  header:not(.usa-sticky-header) &:not(.active) {
-    .top-menu-block {
-      @include breakpoint($bp-640-width) {
-        padding: get-vw(30px, 640) get-vw(30px, 640) get-vw(41px, 640) get-vw(30px, 640);
-      }
-      .top-menu-block-inner {
-        @include breakpoint($bp-640-width) {
-          padding: get-vw(30px, 640) get-vw(30px, 640) get-vw(41px, 640) get-vw(30px, 640);
-        }
-      }
-      .logo-block {
-        @include breakpoint($bp-640-width) {
-          height: get-vw(25px, 640);
-          left: get-vw(30px, 640);
-          margin-top: 0;
-          top: get-vw(116px, 640);
-        }
-        &.service-enable {
-          .logo {
-            @include breakpoint($bp-640-width) {
-              margin-right: get-vw(43px, 640);
-            }
-          }
-        }
-        .logo {
-          @include breakpoint($bp-640-width) {
-            width: get-vw(57px, 640);
-          }
-        }
-      }
-      .title-block {
-        @include breakpoint($bp-640-width) {
-          margin: 0;
-        }
-        .title {
-          @include breakpoint($bp-640-width) {
-            margin-bottom: get-vw(30px, 640);
-          }
-        }
-        &.show-mrrobot {
-          @include breakpoint($bp-640-width) {
-            width: get-vw(362px, 640);
-          }
-          .title {
-            @include breakpoint($bp-640-width) {
-              height: get-vw(56px, 640);
-            }
-          }
-        }
-      }
-      .sponsored {
-        @include breakpoint($bp-640-width) {
-          float: right;
-          height: get-vw(25px, 640);
-          margin-bottom: get-vw(16px, 640);
-          max-width: none;
-          position: relative;
-          right: auto;
-          top: auto;
-          width: 45%;
-        }
-      }
-      .menu-open-button {
-        @include breakpoint($bp-640-width) {
-          height: get-vw(48px, 640);
-          margin-top: 0;
-          right: get-vw(30px, 640);
-          top: get-vw(34px, 640);
-          width: get-vw(68px, 640);
-        }
-        &:before {
-          @include breakpoint($bp-640-width) {
-            font-size: get-vw(68px, 640);
-            line-height: get-vw(48px, 640);
-          }
-        }
-      }
-    }
-  }
-  &.active {
-    @include breakpoint($bp-768-width) {
-      background: black !important;
-      padding: 0;
-    }
-    .bottom-menu-block {
-      @include breakpoint($bp-768-width) {
-        display: block;
-      }
-    }
-    .top-menu-block {
-      .top-menu-block-inner {
-        @include breakpoint($bp-768-width) {
-          padding: get-vw(20px, 768) get-vw(28px, 768) 0 get-vw(12px, 768);
-        }
-      }
-      .logo-block {
-        @include breakpoint($bp-768-width) {
-          display: none;
-        }
-      }
-      .title-block {
-        @include breakpoint($bp-768-width) {
-          @include clear();
-          margin: 0 0 0 get-vw(28px, 768);
-          width: calc(100% - #{get-vw(72px, 768)}) !important;
-        }
-        &.show-mrrobot {
-          .title {
-            @include breakpoint($bp-768-width) {
-              height: get-vw(48px, 768);
-              width: get-vw(282px, 768);
-            }
-          }
-          .tune-in {
-            @include breakpoint($bp-768-width) {
-              max-width: calc(100% - #{get-vw(350px, 768)});
-            }
-          }
-        }
-        .title {
-          @include breakpoint($bp-768-width) {
-            float: left;
-            margin-bottom: get-vw(20px, 768);
-          }
-        }
-        .tune-in {
-          @include breakpoint($bp-768-width) {
-            display: table;
-            float: left;
-            font-size: get-vw(21px, 768);
-            line-height: 1.2;
-            margin-left: get-vw(40px, 768);
-            vertical-align: middle;
-            width: auto;
-          }
-        }
-      }
-      .sponsored {
-        @include breakpoint($bp-768-width) {
-          display: none;
-        }
-      }
-    }
-  }
-  header.usa-sticky-header &:not(.active) {
-    @include breakpoint($bp-min-769-width) {
-      padding-top: get-vw(8px, 1280);
-    }
-    @include breakpoint($bp-min-1601-width) {
-      padding-top: 10px;
-    }
-    @include breakpoint($bp-768-width) {
-      background: $aspot-shadow;
-      padding: 0;
-    }
-    .top-menu-block {
-      @include breakpoint($bp-768-width) {
-        border: none;
-        padding: get-vw(9px, 768) get-vw(30px, 768) get-vw(9px, 768) get-vw(12px, 768);
-      }
-      .logo-block {
-        @include breakpoint($bp-768-width) {
-          height: get-vw(18px, 768);
-          margin-top: get-vw(-9px, 768);
-        }
-        &.service-enable {
-          .logo {
-            margin-right: get-vw(29.42px, 768);
-          }
-        }
-        .logo {
-          @include breakpoint($bp-768-width) {
-            width: get-vw(39px, 768);
-          }
-        }
-      }
-      .title-block {
-        &.show-mrrobot {
-          @include breakpoint($bp-min-769-width) {
-            //width: get-vw(287px, 1600);
-          }
-          @include breakpoint($bp-min-1601-width) {
-            //width: 287px;
-          }
-          @include breakpoint($bp-768-width) {
-            //width: get-vw(203px, 768);
-          }
-          & + .sponsored {
-            @include breakpoint($bp-768-width) {
-              left: calc(50% + #{get-vw(101.5px, 768)} + #{get-vw(20px, 768)});
-            }
-          }
-        }
-        // sticky show logo height
-        .title {
-          @include breakpoint($bp-min-769-width) {
-            //height: get-vw(45px, 1600);
-          }
-          @include breakpoint($bp-min-1601-width) {
-            //height: 45px;
-          }
-          @include breakpoint($bp-768-width) {
-            //height: get-vw(31px, 768);
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-  }
+
   .top-menu-block {
     .top-menu-block-inner {
       @include clear();
@@ -339,39 +154,30 @@
       position: relative;
       width: 100%;
       @include breakpoint($bp-768-width) {
-        padding: get-vw(20px, 768) get-vw(28px, 768) 0 get-vw(12px, 768);
+        padding: get-vw(30px, 768) 0 get-vw(33px, 768);
       }
     }
     .logo-block {
-      background: url('../images/logo-usa-new-design.png') no-repeat;
+      background: url('../images/usa-logo-big.png') no-repeat;
       background-size: auto 100%;
-      height: get-vw(25px, 1280);
+      height: get-vw(26px, 1280);
       left: 0;
-      margin-top: get-vw(-12.5px, 1280);
+      margin-top: get-vw(-13px, 1280);
       position: absolute;
       top: 50%;
       width: auto;
-      &.service-enable {
-        background: url('../images/logo-usa-new-design-plus.png') no-repeat;
-        background-size: auto 100%;
-        .logo {
-          margin-right: get-vw(43px, 1280);
-          @include breakpoint($bp-min-1601-width) {
-            margin-right: 53.75px;
-          }
-          @include breakpoint($bp-768-width) {
-            margin-right: get-vw(31px, 768);
-          }
-        }
-      }
       @include breakpoint($bp-min-1601-width) {
-        height: 31.25px;
-        margin-top: -15.625px;
+        height: 32px;
+        margin-top: -16px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: get-vw(21px, 1024);
+        margin-top: get-vw(-10.5px, 1024);
       }
       @include breakpoint($bp-768-width) {
-        left: get-vw(12px, 768);
-        height: get-vw(18px, 768);
-        margin-top: get-vw(-9px, 768);
+        left: get-vw(35px, 768);
+        height: get-vw(35px, 768);
+        margin-top: get-vw(-17.5px, 768);
       }
       a {
         display: block;
@@ -380,20 +186,27 @@
       }
       .logo {
         float: left;
-        width: get-vw(57px, 1280);
+        width: get-vw(56px, 1280);
         @include breakpoint($bp-min-1601-width) {
-          width: 71.25px;
+          width: 71px;
+        }
+        @include breakpoint($bp-1024-width) {
+          width: get-vw(46px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          width: get-vw(43px, 768);
+          width: get-vw(85px, 768);
         }
       }
       .second-logo {
+        display: none;
         float: left;
         font-size: 1px;
         line-height: 1;
         position: relative;
         width: auto;
+        @include breakpoint($bp-768-width) {
+          display: none;
+        }
         img {
           height: 100%;
           line-height: 1;
@@ -437,6 +250,9 @@
         }
         @include breakpoint($bp-768-width) {
           display: none;
+          margin-top: get-vw(10px, 768);
+          font-size: get-vw(16px, 768);
+          line-height: 1;
         }
       }
       &.show-mrrobot {
@@ -444,41 +260,21 @@
         @include breakpoint($bp-min-1601-width) {
           width: 435px;
         }
-        @include breakpoint($between-641-768) {
-          width: get-vw(282px, 768);
-        }
-        & + .sponsored {
-          @include breakpoint($between-641-768) {
-            left: calc(50% + #{get-vw(141px, 768)} + #{get-vw(20px, 768)});
-          }
+        @include breakpoint($bp-768-width) {
+          width: get-vw(372px, 768);
         }
         .title {
           height: get-vw(54.52px, 1280);
           @include breakpoint($bp-min-1601-width) {
             height: 68.15px;
           }
-          @include breakpoint($between-641-768) {
-            height: get-vw(48px, 768);
+          @include breakpoint($bp-768-width) {
+            height: get-vw(57px, 768);
           }
         }
         a {
           background-image: url('../images/mr-robot-logo.png');
         }
-      }
-    }
-    .sponsored {
-      height: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: get-vw(182px, 1280);
-      @include breakpoint($bp-min-1601-width) {
-        width: 227.5px;
-      }
-      @include breakpoint($bp-768-width) {
-        max-width: 100px;
-        right: auto;
-        width: 100px;
       }
     }
     .menu-open-button {
@@ -491,7 +287,7 @@
         display: block;
         height: get-vw(35.2px, 768);
         margin-top: get-vw(-17.6px, 768);
-        right: get-vw(26px, 768);
+        right: get-vw(35px, 768);
         width: get-vw(50px, 768);
       }
       &.active {
@@ -532,7 +328,6 @@
     @include breakpoint($bp-768-width) {
       border-bottom: 2px solid;
       border-top: none;
-      display: none;
       height: auto;
       position: absolute;
     }
@@ -541,6 +336,9 @@
       margin: 0 auto;
       max-width: 1600px;
       width: 100%;
+      @include breakpoint($bp-768-width) {
+        display: none;
+      }
     }
     .show-menu-tab {
       float: left;
@@ -609,7 +407,6 @@
         top: calc((100% - 75px) / 2);
       }
       @include breakpoint($bp-min-769-width) {
-        float: none;
         right: get-vw(16px, 1280);
         top: calc((100% - #{get-vw(60px, 1280)}) / 2);
         position: absolute;
@@ -624,6 +421,14 @@
         width: 100%;
       }
     }
+  }
+
+  // header
+  header:not(.usa-sticky-header) &:not(.active) {
+
+  }
+  header.usa-sticky-header &:not(.active) {
+
   }
 }
 
@@ -686,11 +491,17 @@
             padding-right: 0;
           }
           .bottom-menu-block {
-            border-bottom: 1px solid;
-            border-top: 1px solid;
-            height: calc(#{get-vw(60px, 1280)} * 0.7);
+            @include breakpoint($bp-min-769-width) {
+              border-bottom: 1px solid;
+              border-top: 1px solid;
+              height: calc(#{get-vw(60px, 1280)} * 0.7);
+            }
             @include breakpoint($bp-min-1601-width) {
               height: calc(75px * 0.7);
+            }
+            @include breakpoint($bp-768-width) {
+              border-bottom: 1px solid;
+              border-top: 0;
             }
             .show-menu-tab .show-menu > li a {
               line-height: calc(#{get-vw(60px, 1280)} * 0.7);
@@ -702,9 +513,16 @@
               }
             }
           }
+          .social-block {
+            right: get-vw(16px, 1280);
+            @include breakpoint($bp-min-1601-width) {
+              right: calc(50% - ((1600px / 2) - 20px)); // width 1600px / 2
+            }
+          }
         }
       }
     }
   }
 }
+
 

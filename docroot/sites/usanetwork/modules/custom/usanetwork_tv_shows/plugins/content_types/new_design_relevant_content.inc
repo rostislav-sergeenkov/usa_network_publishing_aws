@@ -118,7 +118,7 @@ function new_design_relevant_content_get_latest_content($node, $conf) {
       'url' => url($item->entity_type . '/' . $item->entity_id),
       'title' => $item->promo_title,
       'description' => $item->promo_description,
-      'violator' => $item->promo_violator,
+      'violator' => usanetwork_core_api_get_violator($item->entity_type, $item->entity_id),
       'type' => $type,
       'image_desktop' => image_style_url('99x84', $item->raw_image_uri),
       'image_mobile' => image_style_url('284x187', $item->raw_image_uri),

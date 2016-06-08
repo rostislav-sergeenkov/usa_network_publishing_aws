@@ -36,6 +36,11 @@
         }
       }
     }
+    .upper-menu {
+      @include breakpoint($bp-768-width) {
+        display: none;
+      }
+    }
   }
 
   .social-block {
@@ -222,9 +227,6 @@
         margin: 0 auto;
         position: relative;
         width: 100%;
-        @include breakpoint($between-641-768) {
-          margin-bottom: get-vw(20px, 768);
-        }
       }
       a {
         background-size: 100% 100%;
@@ -450,7 +452,7 @@
         //.header-inner,
         #head-leaderboard,
         #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu,
-        //.top-menu-block-inner,
+        .top-menu-block-inner,
         //.top-menu-block-inner .title-block,
         .top-menu-block-inner .title-block .title,
         //.top-menu-block-inner .title-block .title a,
@@ -489,6 +491,11 @@
           @include breakpoint($bp-min-1601-width) {
             padding-left: 0;
             padding-right: 0;
+          }
+          .top-menu-block-inner {
+            @include breakpoint($bp-768-width) {
+              padding: calc(#{get-vw(30px, 768)} * 0.7) 0;
+            }
           }
           .bottom-menu-block {
             @include breakpoint($bp-min-769-width) {

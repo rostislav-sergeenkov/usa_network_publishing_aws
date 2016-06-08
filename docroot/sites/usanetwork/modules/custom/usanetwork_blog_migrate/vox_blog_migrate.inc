@@ -1,6 +1,6 @@
 <?php
 
-define('VOX_BLOG_FEED_MRROBOT_ATOM', 'http://www.theverge.com/rss/partner/usa-network-mr-robot/index.xml');
+define('VOX_BLOG_FEED_MRROBOT_ATOM', 'http://www.theverge.com/rss/partner/mr-robot/index.xml');
 define('VOX_BLOG_FEED_VIOLATOR_TEXT', 'Featured From The Verge');
 define('MR_ROBOT_SHOW_ID', 56156);
 
@@ -11,6 +11,7 @@ define('MR_ROBOT_SHOW_ID', 56156);
 class USANetworkVoxBlogFeedMigration extends XMLMigration {
 
   public $imgDestDir;
+  private $authors_voc = NULL;
 
   /**
    * Sets up the migration.
@@ -102,14 +103,16 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
     $shirt_description = substr($shirt_description, 0, strrpos($shirt_description, '.'));
     $current_row->shirt_description = $shirt_description . '.';
     // Set author tid.
-    $voc = taxonomy_vocabulary_machine_name_load(USANETWORK_BLOG_MIGRATE_AUTHORS_VOC);
+    if (empty($this->authors_voc)) {
+      $this->authors_voc = taxonomy_vocabulary_machine_name_load(USANETWORK_BLOG_MIGRATE_AUTHORS_VOC);
+    }
     $author_name = $description = $current_row->xml->author->name->__toString();
     $term = taxonomy_get_term_by_name($author_name, USANETWORK_BLOG_MIGRATE_AUTHORS_VOC);
-    if (!empty($voc)) {
+    if (!empty($this->authors_voc)) {
       if (empty($term)) {
         $term = new stdClass();
         $term->name = $author_name;
-        $term->vid = $voc->vid;
+        $term->vid = $this->authors_voc->vid;
         taxonomy_term_save($term);
       }
       else {

@@ -27,6 +27,7 @@ function usanetwork_blog_migrate_update_7100() {
  * Create The Verge tags taxonomy term.
  */
 function usanetwork_blog_migrate_update_7101() {
+  features_revert_module('usanetwork_pathauto');
   $voc = taxonomy_vocabulary_machine_name_load('tags');
   $term = new stdClass();
   $term->name = 'the verge';

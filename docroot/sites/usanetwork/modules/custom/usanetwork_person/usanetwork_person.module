@@ -769,44 +769,70 @@ function _usanetwork_person_render_where2watch_block() {
 
     if (!empty($providers)) {
       foreach ($providers as $provider) {
-        $logo_key = array_search($provider['title'], array_column($providers_logo, 'name'));
-        $image_fid = $providers_logo[$logo_key]['image'];
-        $image_file = file_load($image_fid);
-        $elements[] = array(
+        $provider_info = array(
           'url' => $provider['url'],
-          'image' => image_style_url('thumbnail', $image_file->uri),
+          'image' => _where2watch_get_provider_image($provider, $providers_logo),
         );
+        if (_where2watch_is_provider_featuted($provider)) {
+          $featured_elements[] = $provider_info;
+        } else {
+          $elements[] = $provider_info;
+        }
       }
+
+      $query = db_select('file_managed', 'fm');
+      $query->fields('fm', array('fid'));
+      $query->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+      $query->join('mpx_video', 'mpx_video', 'fm.fid=mpx_video.fid');
+      $query->condition('mpx_video.status', FILE_PUBLISHED);
+      $query->join('field_data_field_show', 'field_show', 'fm.fid=field_show.entity_id');
+      $query->condition('field_show.field_show_target_id', $show_node->nid);
+      $query->join('field_data_field_mpx_full_episode', 'full_episode', 'fm.fid=full_episode.entity_id');
+      $query->condition('full_episode.field_mpx_full_episode_value', '1');
+      $query->range(0, 1);
+
+      $is_full_exists = $query->execute()->fetchAll();
+
+      $theme_vars = array(
+        'title' => t('Where to Watch'),
+        'is_full_exists' => $is_full_exists,
+        'usa_live_link' => l(t('Usanetwork.com'), 'node/' . $show_node->nid . '/episodes'),
+        'usa_now_path' => l(t('Usa Now App'), 'app'),
+        'featured_elements' => $featured_elements,
+        'description' => t('@show is also available for streaming or purchase from the following providers:', array('@show' => $show_node->title)),
+        'elements' => $elements,
+      );
     }
-    cache_set($cache_name, $elements, 'cache', REQUEST_TIME + 60 * 60);
+    cache_set($cache_name, $theme_vars, 'cache', REQUEST_TIME + 60 * 60);
   } else {
-    $elements = $cache->data;
+    $theme_vars = $cache->data;
   }
 
-  $query = db_select('file_managed', 'fm');
-  $query->fields('fm', array('fid'));
-  $query->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
-  $query->join('mpx_video', 'mpx_video', 'fm.fid=mpx_video.fid');
-  $query->condition('mpx_video.status', FILE_PUBLISHED);
-  $query->join('field_data_field_show', 'field_show', 'fm.fid=field_show.entity_id');
-  $query->condition('field_show.field_show_target_id', $show_node->nid);
-  $query->join('field_data_field_mpx_full_episode', 'full_episode', 'fm.fid=full_episode.entity_id');
-  $query->condition('full_episode.field_mpx_full_episode_value', '1');
-  $query->range(0, 1);
-
-  $is_full_exist = $query->execute()->fetchAll();
-
-  if ($elements) {
-    $theme_vars = array(
-      'title' => t('Where to Watch'),
-      'description' => t('Mr. Robot is also available for streaming or purchase from the following providers and apps.'),
-      'usa_now_path' => (!empty($is_full_exist)) ? url('node/' . $show_node->nid . '/episodes') : NULL,
-      'usa_now_image' => (!empty($is_full_exist)) ? '/' . path_to_theme() . '/images/usanow_new.png' : NULL,
-      'elements' => $elements,
-    );
-
+  if (!empty($theme_vars)) {
     return theme('usanetwork_person_where2watch', $theme_vars);
   } else {
     return NULL;
+  }
+}
+
+/*
+ * Helper function for getting images for provider
+ */
+function _where2watch_get_provider_image($provider, $providers_logo) {
+  $logo_key = array_search($provider['title'], array_column($providers_logo, 'name'));
+  $image_fid = $providers_logo[$logo_key]['image'];
+  $image_file = file_load($image_fid);
+  $image = file_create_url($image_file->uri);
+  return $image;
+}
+
+/*
+ * Helper fucniton for checking is provider featured
+ */
+function _where2watch_is_provider_featuted($provider) {
+  if ($provider['attributes']['target'] === '_blank') {
+    return TRUE;
+  } else {
+    return FALSE;
   }
 }

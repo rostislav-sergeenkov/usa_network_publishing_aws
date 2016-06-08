@@ -1705,6 +1705,24 @@ function usanetwork_tv_shows_form_tv_show_node_form_alter(&$form, &$form_state, 
   }
 }
 
+/*
+ * Implements hook_element_info_alter
+ */
+function usanetwork_tv_shows_element_info_alter(&$type) {
+  if (isset($type['advanced_link'])) {
+    $type['advanced_link']['#process'][] = '_usanetwork_tv_shows_advanced_link_field_process';
+  }
+}
+
+function _usanetwork_tv_shows_advanced_link_field_process($element, $form_state, $complete_form) {
+  switch ($element['#field_name']) {
+    case 'field_where2watch_providers':
+      $element['attributes']['target']['#title'] = t('Primary full streaming provider');
+      break;
+  }
+  return $element;
+}
+
 /**
  * Pulls nodes related with show content.
  *

@@ -98,7 +98,6 @@
       }
     }
     .form-item-email {
-      border: 1px solid $usa-sign-up-input-wrap-border;
       display: inline-block;
       margin: 0;
       margin-right: get-vw(25px, 1280);
@@ -109,14 +108,11 @@
       @include breakpoint($bp-1024-width) {
         margin-right: get-vw(15px, 1024);
       }
-      @include breakpoint($bp-768-width) {
-        border: 0;
-      }
       input {
         color:$beige;
         background: none;
         box-sizing: border-box;
-        border: 1px solid $usa-sign-up-input-border;
+        border: 2px solid $usa-sign-up-input-border;
         display: block;
         font-family: $fira-sans-regular;
         font-size: get-vw(18px, 1280);
@@ -143,6 +139,7 @@
           padding: 0 get-vw(15px, 1024);
         }
         @include breakpoint($bp-768-width) {
+          border: 1px solid $usa-sign-up-input-border;
           font-size: get-vw(18px, 768);
           line-height: get-vw(30px, 768);
           padding: 0 get-vw(15px, 768);
@@ -162,7 +159,7 @@
         letter-spacing: 1px;
         line-height: get-vw(40px, 1280);
         height: get-vw(40px, 1280);
-        padding: 0 get-vw(18px, 1280) 0 get-vw(20px, 1280);
+        padding: 3px get-vw(18px, 1280) 0 get-vw(20px, 1280);
         position: relative;
         text-transform: uppercase;
         @include breakpoint($bp-min-1601-width) {

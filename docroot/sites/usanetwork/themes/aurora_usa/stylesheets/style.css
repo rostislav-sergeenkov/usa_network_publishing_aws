@@ -45099,6 +45099,48 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 
+.show-new-design.consumptionator-page #block-usanetwork-mpx-video-usanetwork-social-content .social-block {
+  border-bottom: 0;
+}
+.show-new-design.consumptionator-page .section-title .section-title-wrapper {
+  border-bottom: 2px solid;
+  color: #ffffff;
+  display: block;
+  font-family: "FiraSansRegular", sans-serif;
+  font-size: 1.5625vw;
+  letter-spacing: 3px;
+  padding-bottom: 1.25vw;
+  text-align: center;
+  width: 100%;
+}
+@media (min-width: 1901px) {
+  .show-new-design.consumptionator-page .section-title .section-title-wrapper {
+    font-size: 28px;
+    padding-bottom: 20px;
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design.consumptionator-page .section-title .section-title-wrapper {
+    font-size: 28px;
+    padding-bottom: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design.consumptionator-page .section-title .section-title-wrapper {
+    font-size: 1.95313vw;
+    padding-bottom: 1.46484vw;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design.consumptionator-page .section-title .section-title-wrapper {
+    font-size: 2.60417vw;
+    padding-bottom: 1.95313vw;
+  }
+}
+.show-new-design.consumptionator-page .section-title .section-title-wrapper:before, .show-new-design.consumptionator-page .section-title .section-title-wrapper:after {
+  display: none;
+}
+
 .show-new-design .consumptionator-episode-main-block, .show-new-design .consumptionator-post-main-block {
   overflow: hidden;
   position: relative;

@@ -300,8 +300,13 @@
       width: 100%;
     }
   }
-  #footer {
-    background: $consum-also-back;
+  #additional-footer {
+    background: #000000;
+    width: 100%;
+    .footer-inner {
+      margin: 0 auto;
+      max-width: 1600px;
+    }
     .usa-legal {
       background: black;
       padding: get-vw(16px, 1280) get-vw(23px, 1280);

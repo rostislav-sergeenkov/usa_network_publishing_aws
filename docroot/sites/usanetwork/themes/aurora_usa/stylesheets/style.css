@@ -40542,29 +40542,34 @@ body.blog .view-display-id-blog_content .views-row {
   top: 0;
   width: 100%;
 }
-.show-new-design #footer {
-  background: #181818;
+.show-new-design #additional-footer {
+  background: #000000;
+  width: 100%;
 }
-.show-new-design #footer .usa-legal {
+.show-new-design #additional-footer .footer-inner {
+  margin: 0 auto;
+  max-width: 1600px;
+}
+.show-new-design #additional-footer .usa-legal {
   background: black;
   padding: 1.25vw 1.79688vw;
 }
 @media (min-width: 1601px) {
-  .show-new-design #footer .usa-legal {
+  .show-new-design #additional-footer .usa-legal {
     padding: 20px 28.75px;
   }
 }
 @media (max-width: 768px) {
-  .show-new-design #footer .usa-legal {
+  .show-new-design #additional-footer .usa-legal {
     padding: 2.5vw 3.59375vw;
   }
 }
-.show-new-design #footer .legal-menu li {
+.show-new-design #additional-footer .legal-menu li {
   float: left;
   line-height: 1;
   font-size: 1.09375vw;
 }
-.show-new-design #footer .legal-menu li:after {
+.show-new-design #additional-footer .legal-menu li:after {
   color: #bababa;
   content: "|";
   display: inline-block;
@@ -40573,10 +40578,10 @@ body.blog .view-display-id-blog_content .views-row {
   margin-right: 0.78125vw;
 }
 @media (min-width: 1601px) {
-  .show-new-design #footer .legal-menu li {
+  .show-new-design #additional-footer .legal-menu li {
     font-size: 17.5px;
   }
-  .show-new-design #footer .legal-menu li:after {
+  .show-new-design #additional-footer .legal-menu li:after {
     color: #bababa;
     content: "|";
     display: inline-block;
@@ -40586,10 +40591,10 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 @media (max-width: 768px) {
-  .show-new-design #footer .legal-menu li {
+  .show-new-design #additional-footer .legal-menu li {
     font-size: 2.1875vw;
   }
-  .show-new-design #footer .legal-menu li:after {
+  .show-new-design #additional-footer .legal-menu li:after {
     color: #bababa;
     content: "|";
     display: inline-block;
@@ -40598,13 +40603,13 @@ body.blog .view-display-id-blog_content .views-row {
     margin-right: 1.5625vw;
   }
 }
-.show-new-design #footer .legal-menu li:first-child {
+.show-new-design #additional-footer .legal-menu li:first-child {
   padding-left: 0px;
 }
-.show-new-design #footer .legal-menu li:last-child:after {
+.show-new-design #additional-footer .legal-menu li:last-child:after {
   display: none;
 }
-.show-new-design #footer .legal-menu li a {
+.show-new-design #additional-footer .legal-menu li a {
   color: #bababa;
   font-family: "robotomedium", sans-serif;
   font-size: 1.09375vw;
@@ -40612,32 +40617,32 @@ body.blog .view-display-id-blog_content .views-row {
   text-decoration: none;
 }
 @media (min-width: 1601px) {
-  .show-new-design #footer .legal-menu li a {
+  .show-new-design #additional-footer .legal-menu li a {
     font-size: 17.5px;
   }
 }
 @media (max-width: 768px) {
-  .show-new-design #footer .legal-menu li a {
+  .show-new-design #additional-footer .legal-menu li a {
     font-size: 2.1875vw;
   }
 }
-.show-new-design #footer .legal-menu li a:hover {
+.show-new-design #additional-footer .legal-menu li a:hover {
   text-decoration: underline;
 }
-.show-new-design #footer .legal-menu li a img {
+.show-new-design #additional-footer .legal-menu li a img {
   height: 1.09375vw;
 }
 @media (min-width: 1601px) {
-  .show-new-design #footer .legal-menu li a img {
+  .show-new-design #additional-footer .legal-menu li a img {
     height: 17.5px;
   }
 }
 @media (max-width: 768px) {
-  .show-new-design #footer .legal-menu li a img {
+  .show-new-design #additional-footer .legal-menu li a img {
     height: 2.1875vw;
   }
 }
-.show-new-design #footer .copyright {
+.show-new-design #additional-footer .copyright {
   clear: both;
   color: #bababa;
   font-family: "robotolight", sans-serif;
@@ -40645,12 +40650,12 @@ body.blog .view-display-id-blog_content .views-row {
   line-height: 1.7;
 }
 @media (min-width: 1601px) {
-  .show-new-design #footer .copyright {
+  .show-new-design #additional-footer .copyright {
     font-size: 15px;
   }
 }
 @media (max-width: 768px) {
-  .show-new-design #footer .copyright {
+  .show-new-design #additional-footer .copyright {
     font-size: 1.875vw;
   }
 }

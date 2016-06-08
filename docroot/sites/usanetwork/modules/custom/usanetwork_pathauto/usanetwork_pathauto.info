@@ -27,3 +27,4 @@ features[variable][] = pathauto_node_usanetwork_aspot_pattern
 features[variable][] = pathauto_node_usanetwork_promo_pattern
 features[variable][] = pathauto_node_usanetwork_static_page_pattern
 features[variable][] = pathauto_taxonomy_term_blog_pattern
+features[variable][] = pathauto_taxonomy_term_tags_pattern

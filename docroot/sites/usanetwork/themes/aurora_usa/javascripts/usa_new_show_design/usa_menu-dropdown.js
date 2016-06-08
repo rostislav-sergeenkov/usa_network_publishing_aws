@@ -53,6 +53,8 @@
             .on('scroll', function (e) {
               $('#usa-newsletter-subscription.active').hide().removeClass('active');
               $('#header .menu-sign-up.active-link').removeClass('active-link');
+              $('#header .block-usanetwork-tv-shows.active .menu-open-button.active').removeClass('active');
+              $('#header .block-usanetwork-tv-shows.active').removeClass('active');
             });
 
         // usa newsletter subscription

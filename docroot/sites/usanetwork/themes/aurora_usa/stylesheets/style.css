@@ -40632,14 +40632,27 @@ body.blog .view-display-id-blog_content .views-row {
     padding: 20px 20px 0 20px;
   }
 }
-@media (min-width: 641px) and (max-width: 768px) {
+@media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
     padding: 0;
   }
 }
-@media (max-width: 640px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
-    padding: 0;
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .logo-block {
+    margin-top: calc(-4.36198vw);
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block .tune-in {
+    display: block;
+  }
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .menu-open-button.active {
+  margin-top: calc(-4.36198vw);
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .bottom-menu-block .bottom-menu-block-inner {
+    display: block;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block {
@@ -40755,192 +40768,6 @@ body.blog .view-display-id-blog_content .views-row {
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:nth-child(n + 5) {
   display: none;
 }
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block {
-    padding: 4.6875vw 4.6875vw 6.40625vw 4.6875vw;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .top-menu-block-inner {
-    padding: 4.6875vw 4.6875vw 6.40625vw 4.6875vw;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block {
-    height: 3.90625vw;
-    left: 4.6875vw;
-    margin-top: 0;
-    top: 18.125vw;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block.service-enable .logo {
-    margin-right: 6.71875vw;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block .logo {
-    width: 8.90625vw;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block {
-    margin: 0;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block .title {
-    margin-bottom: 4.6875vw;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot {
-    width: 56.5625vw;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot .title {
-    height: 8.75vw;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .sponsored {
-    float: right;
-    height: 3.90625vw;
-    margin-bottom: 2.5vw;
-    max-width: none;
-    position: relative;
-    right: auto;
-    top: auto;
-    width: 45%;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .menu-open-button {
-    height: 7.5vw;
-    margin-top: 0;
-    right: 4.6875vw;
-    top: 5.3125vw;
-    width: 10.625vw;
-  }
-}
-@media (max-width: 640px) {
-  header:not(.usa-sticky-header) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .menu-open-button:before {
-    font-size: 10.625vw;
-    line-height: 7.5vw;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active {
-    background: black !important;
-    padding: 0;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .bottom-menu-block {
-    display: block;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .top-menu-block-inner {
-    padding: 2.60417vw 3.64583vw 0 1.5625vw;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .logo-block {
-    display: none;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block {
-    margin: 0 0 0 3.64583vw;
-    width: calc(100% - 9.375vw) !important;
-  }
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block:after {
-    clear: both;
-    content: '';
-    display: table;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block.show-mrrobot .title {
-    height: 6.25vw;
-    width: 36.71875vw;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block.show-mrrobot .tune-in {
-    max-width: calc(100% - 45.57292vw);
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block .title {
-    float: left;
-    margin-bottom: 2.60417vw;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block .tune-in {
-    display: table;
-    float: left;
-    font-size: 2.73438vw;
-    line-height: 1.2;
-    margin-left: 5.20833vw;
-    vertical-align: middle;
-    width: auto;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .sponsored {
-    display: none;
-  }
-}
-@media (min-width: 769px) {
-  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) {
-    padding-top: 0.625vw;
-  }
-}
-@media (min-width: 1601px) {
-  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) {
-    padding-top: 10px;
-  }
-}
-@media (max-width: 768px) {
-  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) {
-    background: #333333;
-    padding: 0;
-  }
-}
-@media (max-width: 768px) {
-  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block {
-    border: none;
-    padding: 1.17188vw 3.90625vw 1.17188vw 1.5625vw;
-  }
-}
-@media (max-width: 768px) {
-  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block {
-    height: 2.34375vw;
-    margin-top: -1.17188vw;
-  }
-}
-header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block.service-enable .logo {
-  margin-right: 3.83073vw;
-}
-@media (max-width: 768px) {
-  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .logo-block .logo {
-    width: 5.07813vw;
-  }
-}
-@media (max-width: 768px) {
-  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block.show-mrrobot + .sponsored {
-    left: calc(50% + 13.21615vw + 2.60417vw);
-  }
-}
-@media (max-width: 768px) {
-  header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:not(.active) .top-menu-block .title-block .title {
-    margin-bottom: 0;
-  }
-}
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .top-menu-block-inner {
   margin: 0 auto;
   max-width: 1600px;
@@ -40954,47 +40781,36 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 @media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .top-menu-block-inner {
-    padding: 2.60417vw 3.64583vw 0 1.5625vw;
+    padding: 3.90625vw 0 4.29688vw;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
-  background: url("../images/logo-usa-new-design.png") no-repeat;
+  background: url("../images/usa-logo-big.png") no-repeat;
   background-size: auto 100%;
-  height: 1.95313vw;
+  height: 2.03125vw;
   left: 0;
-  margin-top: -0.97656vw;
+  margin-top: -1.01563vw;
   position: absolute;
   top: 50%;
   width: auto;
 }
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block.service-enable {
-  background: url("../images/logo-usa-new-design-plus.png") no-repeat;
-  background-size: auto 100%;
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block.service-enable .logo {
-  margin-right: 3.35938vw;
-}
-@media (min-width: 1601px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block.service-enable .logo {
-    margin-right: 53.75px;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block.service-enable .logo {
-    margin-right: 4.03646vw;
-  }
-}
 @media (min-width: 1601px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
-    height: 31.25px;
-    margin-top: -15.625px;
+    height: 32px;
+    margin-top: -16px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
+    height: 2.05078vw;
+    margin-top: -1.02539vw;
   }
 }
 @media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
-    left: 1.5625vw;
-    height: 2.34375vw;
-    margin-top: -1.17188vw;
+    left: 4.55729vw;
+    height: 4.55729vw;
+    margin-top: -2.27865vw;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block a {
@@ -41004,24 +40820,35 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
   float: left;
-  width: 4.45313vw;
+  width: 4.375vw;
 }
 @media (min-width: 1601px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
-    width: 71.25px;
+    width: 71px;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
+    width: 4.49219vw;
   }
 }
 @media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
-    width: 5.59896vw;
+    width: 11.06771vw;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo {
+  display: none;
   float: left;
   font-size: 1px;
   line-height: 1;
   position: relative;
   width: auto;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo {
+    display: none;
+  }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo img {
   height: 100%;
@@ -41073,6 +40900,9 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 @media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
     display: none;
+    margin-top: 1.30208vw;
+    font-size: 2.08333vw;
+    line-height: 1;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
@@ -41083,14 +40913,9 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     width: 435px;
   }
 }
-@media (min-width: 641px) and (max-width: 768px) {
+@media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
-    width: 36.71875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot + .sponsored {
-    left: calc(50% + 18.35938vw + 2.60417vw);
+    width: 48.4375vw;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
@@ -41101,32 +40926,13 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     height: 68.15px;
   }
 }
-@media (min-width: 641px) and (max-width: 768px) {
+@media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
-    height: 6.25vw;
+    height: 7.42188vw;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot a {
   background-image: url("../images/mr-robot-logo.png");
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 14.21875vw;
-}
-@media (min-width: 1601px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
-    width: 227.5px;
-  }
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
-    max-width: 100px;
-    right: auto;
-    width: 100px;
-  }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
   background: none;
@@ -41140,7 +40946,7 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     display: block;
     height: 4.58333vw;
     margin-top: -2.29167vw;
-    right: 3.38542vw;
+    right: 4.55729vw;
     width: 6.51042vw;
   }
 }
@@ -41186,7 +40992,6 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
     border-bottom: 2px solid;
     border-top: none;
-    display: none;
     height: auto;
     position: absolute;
   }
@@ -41200,6 +41005,11 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
   clear: both;
   content: '';
   display: table;
+}
+@media (max-width: 768px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .bottom-menu-block-inner {
+    display: none;
+  }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
   float: left;
@@ -41280,7 +41090,6 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 }
 @media (min-width: 769px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {
-    float: none;
     right: 1.25vw;
     top: calc((100% - 4.6875vw) / 2);
     position: absolute;
@@ -41357,14 +41166,22 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
     padding-right: 0;
   }
 }
-.show-new-design #header.usa-sticky-header-initialized.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
-  border-bottom: 1px solid;
-  border-top: 1px solid;
-  height: calc(4.6875vw * 0.7);
+@media (min-width: 769px) {
+  .show-new-design #header.usa-sticky-header-initialized.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    height: calc(4.6875vw * 0.7);
+  }
 }
 @media (min-width: 1601px) {
   .show-new-design #header.usa-sticky-header-initialized.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
     height: calc(75px * 0.7);
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #header.usa-sticky-header-initialized.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
+    border-bottom: 1px solid;
+    border-top: 0;
   }
 }
 .show-new-design #header.usa-sticky-header-initialized.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li a {
@@ -41378,6 +41195,14 @@ header.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu:
 @media (max-width: 768px) {
   .show-new-design #header.usa-sticky-header-initialized.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu > li a {
     line-height: calc(9.11458vw * 0.7);
+  }
+}
+.show-new-design #header.usa-sticky-header-initialized.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block {
+  right: 1.25vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design #header.usa-sticky-header-initialized.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block {
+    right: calc(50% - ((1600px / 2) - 20px));
   }
 }
 

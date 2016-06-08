@@ -36,8 +36,6 @@
         // functionality
         sticky: true, // boolean
         stickyMobile: true, // boolean
-        stickyMobileBp: 768, // number
-        headerInnerMaxWidth: 1600, // px or ''
         durationCssAnimate: 200, // ms; default css transition-duration
         delayCssAnimate: 200, // number ms
         easing: 'linear',
@@ -227,8 +225,7 @@
 
     console.info('slideStickyHeader');
 
-    var _ = this,
-        $header = _.$header;
+    var _ = this;
 
     if (_.options.isHeaderSticky && _.options.isHeaderSlide) {
 
@@ -401,9 +398,7 @@
     var _ = this,
         calcMinShowLogoHeight;
 
-    _.options.isMobileBp = _.checkMatchWindowWidth('max', _.options.stickyMobileBp);
     _.options.pageYOffset = window.pageYOffset;
-    _.options.adBlockHeight = _.$adBlock.outerHeight();
     _.options.headerHeight = _.$header.outerHeight();
     _.options.headerSpacerHeight = _.options.headerHeight;
     _.options.minScrollLength = _.options.headerHeight / 2;
@@ -429,10 +424,11 @@
 
           _.getScrollDirection(newYOffset);
 
-          if (_.options.isMobileBp) {
-
+          if (_.options.isMobileDevice) {
+            _.checkHeaderOffset();
+            _.slideStickyHeader();
           } else {
-            if (!_.options.isMobileDevice && $window.pageYOffset > 1) {
+            if ($window.pageYOffset > 1) {
               _.resizeShowLogo();
             }
             _.checkHeaderOffset();

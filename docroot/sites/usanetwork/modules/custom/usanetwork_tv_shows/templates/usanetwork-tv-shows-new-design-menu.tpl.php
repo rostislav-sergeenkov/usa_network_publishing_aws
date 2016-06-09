@@ -29,7 +29,7 @@
               <?php if (!empty($show_menu_tab_item['sign_up'])): ?>
                 <div class="usa-newsletter-subscription-wrap">
                   <div id="usa-newsletter-subscription-mobile" class="show-border">
-                    <?php print $sign_up_block; ?>
+                    <?php print $sign_up_block_additional; ?>
                   </div>
                 </div>
               <?php endif; ?>

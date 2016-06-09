@@ -10,12 +10,13 @@
   background-color: $change-episode-color;
   height: auto;
   left: 0;
-  top: calc(100% - 2px);
+  top: calc(100% - 3px);
   position: absolute;
   min-width: 300px;
   width: 100%;
   @include breakpoint($bp-768-width) {
     background: black;
+    position: static;
   }
 }
 
@@ -36,7 +37,8 @@
   }
 }
 
-#usa-newsletter-subscription {
+#usa-newsletter-subscription-mobile,
+#usa-newsletter-subscription-desktop {
   @include clear;
   border-bottom: 2px solid;
   box-sizing: border-box;

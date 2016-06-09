@@ -353,17 +353,19 @@
       }
       .show-menu {
         height: 100%;
-        @include breakpoint($bp-768-width) {
-          height: auto;
-        }
         .show-menu-item {
           height: 100%;
           @include breakpoint($bp-768-width) {
             background: $header-full-episodes-back;
             border-bottom: 1px solid $header-new-menu-item-border;
             float: none;
-            //height: get-vw(70px, 768);
+            height: get-vw(70px, 768);
             width: 100%;
+          }
+          &.active-link {
+            @include breakpoint($bp-768-width) {
+              height: auto;
+            }
           }
           &:last-child {
             @include breakpoint($bp-768-width) {

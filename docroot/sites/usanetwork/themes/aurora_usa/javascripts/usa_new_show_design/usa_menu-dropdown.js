@@ -32,7 +32,8 @@
         showMenuSelector: '.show-menu', // string
         showMenuItemSelector: '.show-menu-item', // string
         menuOpenButtonSelector: '.menu-open-button',
-        signUpFormSelector: '#usa-newsletter-subscription',
+        signUpFormMobileSelector: '#usa-newsletter-subscription-mobile',
+        signUpFormDesktopSelector: '#usa-newsletter-subscription-desktop',
         signUpFormCloseButtonSelector: '.close-form',
         menuSignUplinkSelector: '.menu-sign-up',
         initAppClass: 'usa-show-menu-initialized',
@@ -41,7 +42,8 @@
         classActiveLink: 'active-link',
         classAnimating: 'velocity-animating',
         classShowMenuScrollEnd: 'show-menu-scroll-end',
-        resizeTimeOut: 50 // number ms
+        resizeTimeOut: 50, // number ms
+        durationSlideForm: 200 // number ms
       };
 
       // create global options
@@ -60,8 +62,11 @@
       _.$showMenu = _.$showMenuWrap.find(_.options.showMenuSelector);
       _.$showMenuItems = _.$showMenu.find(_.options.showMenuItemSelector);
       _.$menuOpenButton = _.$mainWrap.find(_.options.menuOpenButtonSelector);
-      _.$signUpForm = _.$mainWrap.find(_.options.signUpFormSelector);
+      _.$signUpFormMobile = _.$mainWrap.find(_.options.signUpFormMobileSelector);
+      _.$signUpFormDesktop = _.$mainWrap.find(_.options.signUpFormDesktopSelector);
       _.$menuSignUplink = _.$mainWrap.find(_.options.menuSignUplinkSelector);
+      _.$menuSignUplinkWrap = _.$menuSignUplink.closest('.show-menu-item');
+      _.$activeForm = _.$signUpFormDesktop;
 
       // init app
       _.init(true);
@@ -144,31 +149,35 @@
 
     var _ = this,
         $menuSignUplink = _.$menuSignUplink,
-        $signUpForm = _.$signUpForm,
+        $menuSignUplinkWrap = _.$menuSignUplinkWrap,
         classActiveLink = _.options.classActiveLink,
         classAnimating = _.options.classAnimating,
-        activeClass = _.options.activeClass;
-
-    if ($signUpForm.hasClass(classAnimating)) {
-      $signUpForm.velocity('finish');
+        activeClass = _.options.activeClass,
+        duration = _.options.durationSlideForm,
+        $form = _.$activeForm;
+    
+    if ($form.hasClass(classAnimating)) {
+      $form.velocity('finish');
     }
 
     if (_.options.isMenuSignUplinkActive) {
       _.options.isMenuSignUplinkActive = false;
-      $signUpForm.velocity('slideUp', {
-        duration: 200,
+      $form.velocity('slideUp', {
+        duration: duration,
         complete: function(elem) {
+          _.removeElemClass($menuSignUplinkWrap, classActiveLink, null);
           _.removeElemClass($menuSignUplink, classActiveLink, null);
-          _.removeElemClass($signUpForm, activeClass, null);
+          _.removeElemClass($form, activeClass, null);
         }
       });
     } else {
       _.options.isMenuSignUplinkActive = true;
+      _.addElemClass($menuSignUplinkWrap, classActiveLink, null);
       _.addElemClass($menuSignUplink, classActiveLink, null);
-      $signUpForm.velocity('slideDown', {
-        duration: 200,
+      $form.velocity('slideDown', {
+        duration: duration,
         complete: function(elem) {
-          _.addElemClass($signUpForm, activeClass, null);
+          _.addElemClass($form, activeClass, null);
         }
       });
     }
@@ -214,11 +223,34 @@
 
   };
 
+  usaShowMenu.prototype.resetForms = function () {
+
+    var _ = this,
+        $signUpFormMobile = _.$signUpFormMobile,
+        $signUpFormDesktop = _.$signUpFormDesktop;
+
+    $signUpFormMobile.removeAttr('style');
+    $signUpFormDesktop.removeAttr('style');
+  };
+
+  usaShowMenu.prototype.checkSignUpForm = function () {
+    
+    var _ = this,
+        $signUpFormMobile = _.$signUpFormMobile,
+        $signUpFormDesktop = _.$signUpFormDesktop;
+
+    if (_.options.isMobileBp) {
+      _.$activeForm = $signUpFormMobile;
+    } else {
+      _.$activeForm = $signUpFormDesktop;
+    }
+  };
+
   usaShowMenu.prototype.addEvents = function () {
 
     var _ = this,
         $menuOpenButton = _.$menuOpenButton,
-        $signUpForm = _.$signUpForm,
+        $signUpForm = _.$activeForm,
         $menuSignUplink = _.$menuSignUplink,
         resizeTimeOut = _.options.resizeTimeOut;
 
@@ -241,11 +273,13 @@
           _.setTimeout(function () {
 
             _.updateParamsValue();
+            _.checkSignUpForm();
 
             if (_.options.isMobileBp) {
 
               if (!_.options.isMenuCustomScrollActive) {
                 _.addShowMenuCustomScroll();
+                _.resetForms();
               }
 
             } else {
@@ -260,6 +294,7 @@
 
               if (_.options.isMenuCustomScrollActive) {
                 _.destroyShowMenuCustomScroll();
+                _.resetForms();
               }
             }
           }, resizeTimeOut);

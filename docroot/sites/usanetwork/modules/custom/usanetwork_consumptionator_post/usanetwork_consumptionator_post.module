@@ -487,22 +487,43 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
     'tag_tid' => $tag_id,
   );
 
+  $theme_variables['title'] = $blog_title;
+
   if ($is_new_design) {
     $post_tags = _usanetwork_posts_get_posts_tags($node->nid);
     if ($post_tags) {
-      //filter
+      if ($blog_title) {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $blog_url = '/' . pathauto_cleanstring($blog_title);
+      } else {
+        $blog_url = '';
+      }
+      $theme_variables['filters']['all'] = array(
+        'title' => t('All Articles'),
+        'url' => url('node/' . $node->nid . '/blog' . $blog_url),
+        'active' => (empty($tag_id)) ? TRUE : FALSE,
+      );
+      foreach ($post_tags as $post_tag) {
+        $taxonomy_path = drupal_get_path_alias('taxonomy/term/' . $post_tag->tag_tid);
+        $tag_title = t('Featured From @term_name', array('@term_name' => $post_tag->tag_name));
+        $theme_variables['filters'][$post_tag->tag_tid] = array(
+          'title' => $tag_title,
+          'url' => url('node/' . $node->nid . '/' . $taxonomy_path),
+          'active' => ($tag_id == $post_tag->tag_tid) ? TRUE : FALSE,
+        );
+        if ($tag_id == $post_tag->tag_tid) {
+          $theme_variables['title'] = $tag_title;
+          $theme_variables['active_filter_title'] = $theme_variables['title'];
+        }
+      }
     }
-    if ($tag_id) {
-      $theme_variables['active_filter_title'] = 'mrrobot/blog/tag/tge-verge';
-    } else {
-      $theme_variables['active_filter_title'] = 'all articles';
+    if (empty($tag_id)) {
+      $theme_variables['title'] = t('All Articles');
+      $theme_variables['active_filter_title'] = $theme_variables['title'];
     }
   }
 
   $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset, $tag_id);
-
-  $theme_variables['title'] = $blog_title;
-
   if (!empty($posts_data)) {
     foreach ($posts_data as $post_data_index => $post_data) {
       $cover_file = entity_load('file', array($post_data->post_cover_fid));
@@ -538,6 +559,25 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
   return !empty($theme_variables['items'])
     ? theme('usanetwork_blog_landing_posts', $theme_variables)
     : '';
+}
+
+/*
+ * Helper function for getting list of tags for posts by show
+ */
+function _usanetwork_posts_get_posts_tags($show_nid){
+  $query = db_select('node', 'n');
+  $query->condition('n.type', 'consumpt_post');
+  $query->condition('n.status', NODE_PUBLISHED);
+  $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=n.nid');
+  $query->condition('show_field.field_show_target_id', $show_nid);
+  $query->join('field_data_field_content_tags', 'tags_field', 'tags_field.entity_id=n.nid');
+  $query->addField('tags_field', 'field_content_tags_tid', 'tag_tid');
+  $query->leftJoin('taxonomy_term_data', 'term', 'term.tid=tags_field.field_content_tags_tid');
+  $query->addField('term', 'name', 'tag_name');
+  $query->groupBy('term.name');
+  $result = $query->execute()->fetchall();
+
+  return $result;
 }
 
 function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = NULL, $offset = 0, $tag = NULL) {
@@ -576,8 +616,7 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = 
       $query->isNull('field_consumptionator_blog.field_consumptionator_blog_target_id');
     }
     if (!empty($tag)) {
-      $query->leftJoin('field_data_field_content_tags', 'field_content_tags', 'field_content_tags.entity_id=cp.nid');
-      $query->condition('field_content_tags.field_content_tags_tid', $tag);
+      $query->condition('tags_field.field_content_tags_tid', $tag);
     }
     $query->groupBy('cp.nid');
     $query->addExpression("GROUP_CONCAT(term.name SEPARATOR ', ')", 'tags');

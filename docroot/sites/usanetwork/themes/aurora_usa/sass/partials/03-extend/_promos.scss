@@ -2527,6 +2527,16 @@
           @include breakpoint($bp-768-width) {
             padding: 0 get-vw(7px, 640);
           }
+          &.show-color {
+            display: inline-block;
+            padding-top: get-vw(3px, 1280);
+            @include breakpoint($bp-min-1601-width) {
+              padding-top: 3px;
+            }
+            @include breakpoint($bp-768-width) {
+              padding-top: get-vw(3px, 640);
+            }
+          }
         }
       }
       .title {

@@ -28,7 +28,7 @@
             <li class="show-menu-item"><?php print $show_menu_tab_item['main_link']; ?>
               <?php if (!empty($show_menu_tab_item['sign_up'])): ?>
                 <div class="usa-newsletter-subscription-wrap">
-                  <div id="usa-newsletter-subscription2" class="show-border">
+                  <div id="usa-newsletter-subscription-mobile" class="show-border">
                     <?php print $sign_up_block; ?>
                   </div>
                 </div>
@@ -54,7 +54,7 @@
 </div>
 <?php if (!empty($sign_up_block)) : ?>
   <div class="usa-newsletter-subscription-wrap">
-    <div id="usa-newsletter-subscription" class="show-border">
+    <div id="usa-newsletter-subscription-desktop" class="show-border">
       <?php print $sign_up_block; ?>
     </div>
   </div>

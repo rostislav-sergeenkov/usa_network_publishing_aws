@@ -40,7 +40,15 @@
     <div class="buttons-bar">
       <div class="buttons">
         <?php if (!empty($full_episode_url)): ?>
-          <div class="full-episode-button hover-avail <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch a full episode'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a></div>
+          <?php if (!empty($new_design)): ?>
+            <div class="full-episode-button hover-avail show-border"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch the full episode'); ?><span class="show-color show-font"></span></a></div>
+          <?php else: ?>
+            <div class="full-episode-button hover-avail show-color"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch a full episode'); ?></a></div>
+          <?php endif; ?>
+        <?php else: ?>
+          <?php if (!empty($new_design)): ?>
+            <div class="full-episode-button hover-avail show-border"><a href="<?php print $where2watch_link; ?>" target="_blank"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Where to watch'); ?><span class="show-color show-font"></span></a></div>
+          <?php endif; ?>
         <?php endif; ?>
         <?php if (!empty($second_full_episode_url)): ?>
           <div class="full-episode-button hover-avail <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>"><a href="<?php print $second_full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Con-Subtitulos'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a></div>

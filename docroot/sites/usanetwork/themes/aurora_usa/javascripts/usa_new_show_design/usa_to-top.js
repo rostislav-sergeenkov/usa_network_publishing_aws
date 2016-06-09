@@ -6,6 +6,8 @@
  
  */
 
+var USAN = USAN || {};
+
 (function ($) {
 
   //================================
@@ -19,11 +21,17 @@
         scrollOffset = 0,
         scrollDuration = 3000;
 
+    USAN.scrollToTop = false;
+
     $toTop.on('click', function (e) {
 
       var target = $(e.target);
-
-      $htmlBody.animate({ scrollTop: scrollOffset }, scrollDuration, scrollEasing);
+      
+      USAN.scrollToTop = true;
+      
+      $htmlBody.animate({ scrollTop: scrollOffset }, scrollDuration, scrollEasing, function () {
+        USAN.scrollToTop = false;
+      });
 
       // if($.fn.hasOwnProperty('velocity')) {
       //   $htmlBody.velocity("scroll", {

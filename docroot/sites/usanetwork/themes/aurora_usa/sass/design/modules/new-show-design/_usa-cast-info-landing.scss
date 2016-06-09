@@ -188,7 +188,7 @@
           margin-top: get-vw(30px, 768);
         }
       }
-      &:nth-child(3), &:nth-child(4){
+      &:nth-child(3), &:nth-child(4) {
         @include breakpoint ($bp-768-width) {
           margin-top: get-vw(30px, 768);
         }
@@ -204,13 +204,125 @@
     width: 100%;
     .where-to-watch-inner {
       @include clear();
-      padding: get-vw(30px, 1600) get-vw(45px, 1600);
+      padding: get-vw(35px, 1600) get-vw(45px, 1600);
       width: 100%;
       @include breakpoint($bp-min-1601-width) {
-        padding: 30px 45px;
+        padding: 35px 45px;
       }
       @include breakpoint($bp-768-width) {
         padding: get-vw(20px, 768) get-vw(30px, 768);
+      }
+
+      .first-line {
+        .description-block {
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+        .usa-providers {
+          .providers-row-inner {
+            border: none;
+            text-align: center;
+            .provider {
+              @include breakpoint($bp-768-width) {
+                display: inline-block;
+                float: none;
+                text-align: center;
+                vertical-align: middle;
+                width: 45%;
+              }
+              a {
+                @include breakpoint($bp-768-width) {
+                  display: inline;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .last-line {
+
+      }
+
+      .link-buttons-wrap {
+        margin-top: 15px;
+        text-align: center;
+        @include breakpoint($bp-768-width) {
+          margin-top: 25px;
+        }
+
+        .link-button {
+          display: inline-block;
+          padding: get-vw(15px, 1280) get-vw(30px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            padding: 15px 40px;
+          }
+          @include breakpoint($bp-1024-width) {
+            padding: get-vw(15px, 1024) get-vw(30px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            padding: get-vw(15px, 768) get-vw(20px, 768);
+          }
+          &:first-child {
+            margin-right: get-vw(25px, 1280);
+            @include breakpoint($bp-min-1601-width) {
+              margin-right: 35px;
+            }
+            @include breakpoint($bp-1024-width) {
+              margin-right: get-vw(25px, 1024);
+            }
+            @include breakpoint($bp-768-width) {
+              display: none;
+            }
+          }
+          &:last-child {
+
+          }
+          a {
+            color: #ffffff;
+            font-size: get-vw(20px, 1280);
+            font-family: $fira-sans-medium;
+            font-style: normal;
+            letter-spacing: 1px;
+            line-height: 1;
+            padding-top: 3px;
+            position: relative;
+            text-transform: uppercase;
+            vertical-align: middle;
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 20px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: get-vw(18px, 1024);
+            }
+            @include breakpoint($bp-768-width) {
+              font-size: get-vw(18px, 768);
+            }
+            &:after {
+              color: #ffffff;
+              content: "\e608";
+              display: inline-block;
+              font-family: $ico-font;
+              font-size: get-vw(12px, 1025);
+              line-height: 1;
+              margin-left: get-vw(12px, 1280);
+              vertical-align: middle;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 14px;
+                margin-left: 12px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: get-vw(12px, 1024);
+                margin-left: get-vw(12px, 1024);
+              }
+              @include breakpoint($bp-768-width) {
+                font-size: get-vw(12px, 768);
+                margin-left: get-vw(12px, 768);
+              }
+            }
+          }
+        }
       }
     }
     .live-link {
@@ -259,21 +371,18 @@
       }
       @include breakpoint($bp-768-width) {
         font-size: get-vw(20px, 768);
-        margin-top: 0;
+        margin-top: 50px;
       }
     }
+
     .usa-providers {
       position: relative;
       text-align: center;
+
       .providers-row {
         display: block;
         position: relative;
         text-align: center;
-        &:last-child {
-          .providers-row-inner {
-            border: none;
-          }
-        }
       }
       .providers-row-inner {
         @include clear();

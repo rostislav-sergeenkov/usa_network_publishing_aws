@@ -132,6 +132,68 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
   return 'full-video-icon-default';
 }
 
+function usanetwork_core_api_get_violator($entity_type, $entity_id) {
+  $entity = entity_load($entity_type, array($entity_id));
+
+  if (is_array($entity)) {
+    $entity = $entity[$entity_id];
+  }
+  $entity_wrapper = entity_metadata_wrapper($entity_type, $entity);
+
+  $violator = '';
+  if (usanetwork_core_api_check_field($entity, 'field_promo_violator_name', $entity_type)) {
+    $violator = $entity_wrapper->field_promo_violator_name->value();
+  }
+  else{
+    switch ($entity->type) {
+      case 'timeline_gallery':
+      case 'media_gallery':
+        $violator = 'Gallery';
+        break;
+      case 'mpx_video_1':
+        $categories_terms = $entity_wrapper->field_usa_video_terms->value();
+        if(!empty($categories_terms)) {
+          $deepest_term = end($categories_terms);
+          $violator = $deepest_term->name;
+        }
+        break;
+      case 'mpx_video_2':
+        $violator = 'Full Episode';
+        break;
+      case 'quiz':
+        $violator = 'Quiz';
+        break;
+      case 'person':
+        $violator = 'Cast';
+        break;
+      case 'tv_episode':
+        $violator = 'Recap';
+        break;
+      case 'consumpt_post' || 'post':
+        $violator = 'Article';
+        break;
+      case 'catchall_page' || 'usanetwork_promo':
+        $violator = 'Extras';
+        break;
+    }
+  }
+
+  $blog_service = usanetwork_blog_migrate_get_post_service($entity);
+  if ($blog_service == 'verge') {
+    $violator_tag = array(
+      'element' => array(
+        '#tag' => 'span',
+        '#attributes' => array(
+          'class' => 'violator_icon ' . $blog_service,
+        ),
+        '#value' => '',
+      ),
+    );
+    $violator = theme('html_tag', $violator_tag) . $violator;
+  }
+  return $violator;
+}
+
 /**
  * Returns an associated array of image field names of nodes.
  */
@@ -372,7 +434,7 @@ function usanetwork_core_api_get_dynamic_entity_reference_content($entity, $fiel
       if (is_array($dynamic_entity)) {
         $dynamic_entity = reset($dynamic_entity);
       }
-      if (!empty($dynamic_entity) && usanetwork_core_api_check_entity_publish($dynamic_entity)) {
+      if (!empty($dynamic_entity) && usanetwork_core_api_check_entity_publish($dynamic_entity, $data['target_type'])) {
         $item = array(
           'entity_type' => $data['target_type'],
           'entity_id' => $data['target_id'],

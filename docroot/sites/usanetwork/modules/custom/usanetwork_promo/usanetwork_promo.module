@@ -81,13 +81,19 @@ function usanetwork_promo_get_promo_content_variables($entity_item) {
   $description = !empty($promo_data['description']) ? $promo_data['description'] :
     (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : '');
 
+  $url = url($entity_item['entity_type'] . '/' . $entity_item['entity_id']);
+  if ($entity->type == 'usanetwork_promo') {
+    $url = $entity_wrapper->field_promo_link->value();
+    $url = $url['url'];
+  }
+
   return array(
     'entity_id' => $entity_item['entity_id'],
     'entity_type' => $entity_item['entity_type'],
-    'url' => url($entity_item['entity_type'] . '/' . $entity_item['entity_id']),
+    'url' => $url,
     'title' => $title,
     'description' => $description,
-    'violator' => usanetwork_core_api_check_field($entity, 'field_promo_violator_name') ? $entity_wrapper->field_promo_violator_name->value() : '',
+    'violator' => usanetwork_core_api_get_violator($entity_item['entity_type'], $entity_item['entity_id']),
     'type' => $entity->type,
   );
 }
@@ -367,6 +373,10 @@ function _usanetwork_promo_pull_node_promo_details($entity_object) {
         $promo_fields['description'] = !empty($promo_fields['description']) ? $promo_fields['description'] :
           (!empty($own_fields['description']) ? $own_fields['description'] : '');
       }
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $entity_object);
+      if ($is_new_design) {
+        $promo_fields['show_name'] = usanetwork_core_api_get_violator('node', $entity_object->nid);
+      }
       return $promo_fields;
     }
   }
@@ -387,6 +397,7 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
   if ($entity_object->mpx_video_data['status'] == FILE_PUBLISHED && $entity_object->published == FILE_PUBLISHED) {
     if (!empty($entity_object)) {
       $file_wrapper = entity_metadata_wrapper('file', $entity_object);
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('file', $entity_object);
       $promo_fields = _usanetwork_promo_pull_entity_promo_details($entity_object, $file_wrapper, 'file');
       if (!empty($promo_fields['promo_title'])) {
         $promo_fields['promo_title'] = _usanetwork_core_get_video_title($entity_object, $promo_fields['promo_title']);
@@ -397,8 +408,13 @@ function _usanetwork_promo_pull_file_promo_details($entity_object) {
           (!empty($own_fields['title']) ? $own_fields['title'] : '');
         $promo_fields['description'] = !empty($promo_fields['description']) ? $promo_fields['description'] :
           (!empty($own_fields['description']) ? $own_fields['description'] : '');
-        $promo_fields['topic'] = !empty($promo_fields['topic']) ? $promo_fields['topic'] :
-          (!empty($own_fields['topic']) ? $own_fields['topic'] : '');
+        if ($is_new_design) {
+          $promo_fields['topic'] = usanetwork_core_api_get_violator('file', $entity_object->fid);
+        }
+        else {
+          $promo_fields['topic'] = !empty($promo_fields['topic']) ? $promo_fields['topic'] :
+            (!empty($own_fields['topic']) ? $own_fields['topic'] : '');
+        }
         $promo_fields['show_name'] = !empty($promo_fields['show_name']) ? $promo_fields['show_name'] :
           (!empty($own_fields['topic']) ? $own_fields['topic'] : '');
       }

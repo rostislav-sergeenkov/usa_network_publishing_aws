@@ -241,11 +241,20 @@ function _usanetwork_consumptionator_post_main_block() {
   $node = menu_get_object('node');
   if (isset($node->type) && $node->type == 'consumpt_post') {
     $node_wrapper = entity_metadata_wrapper('node', $node);
+    $show_nid = $node_wrapper->field_show->nid->value();
     if (!empty($node->field_content_tags)) {
       $tags = $node_wrapper->field_content_tags->value();
       $tags_names = array();
-      foreach ($tags as $tag) {
-        $tags_names[] = $tag->name;
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
+      if ($is_new_design) {
+        foreach ($tags as $tag) {
+          $taxonomy_path = drupal_get_path_alias('taxonomy/term/' . $tag->tid);
+          $tags_names[] = l($tag->name, 'node/' . $show_nid . '/' . $taxonomy_path);
+        }
+      } else {
+        foreach ($tags as $tag) {
+          $tags_names[] = $tag->name;
+        }
       }
       $tags_names = implode(', ', $tags_names);
     }
@@ -268,7 +277,7 @@ function _usanetwork_consumptionator_post_main_block() {
       'tags' => !empty($tags_names) ? $tags_names : '',
       'body' => $body,
       'rendered_carousel' => !empty($node->field_show)
-          ? _usanetwork_consumptionator_post_posts_carousel($node_wrapper->field_show->nid->value(), $blog_nid, $node->nid)
+          ? _usanetwork_consumptionator_post_posts_carousel($show_nid, $blog_nid, $node->nid)
           : _usanetwork_consumptionator_post_posts_carousel(NULL, $blog_nid, $node->nid),
       'source' => !empty($node->field_post_source) ? $node_wrapper->field_post_source->value() : '',
       'gallery_rec' => !empty($node->field_gallery_recap)
@@ -441,9 +450,10 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
       $blog_title = usanetwork_consumptionator_post_get_blog_title($node);
       if ($tag_id === NULL) {
         $tag_name = arg(3);
-        if ($tag_name) {
-          $tags = taxonomy_get_term_by_name($tag_name, 'tags');
-          $tag = reset($tags);
+        if ($tag_name && (arg(2) == 'tag') ) {
+          $tag_alias = arg(2).'/'.arg(3);
+          $tag_path = drupal_get_normal_path($tag_alias);
+          $tag = menu_get_object('taxonomy_term', 2, $tag_path);
           $tag_id = !empty($tag) ? $tag->tid : NULL;
         }
       }
@@ -469,6 +479,7 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
     'ad' => $show_ad,
     'ad_id' => $offset,
     'title' => NULL,
+    'filters' => array(),
     'node_nid' => $node->nid,
     'ajax_load' => $ajax_load,
     'load_more_link' => !$ajax_load,
@@ -476,10 +487,43 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
     'tag_tid' => $tag_id,
   );
 
-  $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset, $tag_id);
-
   $theme_variables['title'] = $blog_title;
 
+  if ($is_new_design) {
+    $post_tags = _usanetwork_posts_get_posts_tags($node->nid);
+    if ($post_tags) {
+      if ($blog_title) {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $blog_url = '/' . pathauto_cleanstring($blog_title);
+      } else {
+        $blog_url = '';
+      }
+      $theme_variables['filters']['all'] = array(
+        'title' => t('All Articles'),
+        'url' => url('node/' . $node->nid . '/blog' . $blog_url),
+        'active' => (empty($tag_id)) ? TRUE : FALSE,
+      );
+      foreach ($post_tags as $post_tag) {
+        $taxonomy_path = drupal_get_path_alias('taxonomy/term/' . $post_tag->tag_tid);
+        $tag_title = t('Featured From @term_name', array('@term_name' => $post_tag->tag_name));
+        $theme_variables['filters'][$post_tag->tag_tid] = array(
+          'title' => $tag_title,
+          'url' => url('node/' . $node->nid . '/' . $taxonomy_path),
+          'active' => ($tag_id == $post_tag->tag_tid) ? TRUE : FALSE,
+        );
+        if ($tag_id == $post_tag->tag_tid) {
+          $theme_variables['title'] = $tag_title;
+          $theme_variables['active_filter_title'] = $theme_variables['title'];
+        }
+      }
+    }
+    if (empty($tag_id)) {
+      $theme_variables['title'] = t('All Articles');
+      $theme_variables['active_filter_title'] = $theme_variables['title'];
+    }
+  }
+
+  $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset, $tag_id);
   if (!empty($posts_data)) {
     foreach ($posts_data as $post_data_index => $post_data) {
       $cover_file = entity_load('file', array($post_data->post_cover_fid));
@@ -515,6 +559,25 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
   return !empty($theme_variables['items'])
     ? theme('usanetwork_blog_landing_posts', $theme_variables)
     : '';
+}
+
+/*
+ * Helper function for getting list of tags for posts by show
+ */
+function _usanetwork_posts_get_posts_tags($show_nid){
+  $query = db_select('node', 'n');
+  $query->condition('n.type', 'consumpt_post');
+  $query->condition('n.status', NODE_PUBLISHED);
+  $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=n.nid');
+  $query->condition('show_field.field_show_target_id', $show_nid);
+  $query->join('field_data_field_content_tags', 'tags_field', 'tags_field.entity_id=n.nid');
+  $query->addField('tags_field', 'field_content_tags_tid', 'tag_tid');
+  $query->leftJoin('taxonomy_term_data', 'term', 'term.tid=tags_field.field_content_tags_tid');
+  $query->addField('term', 'name', 'tag_name');
+  $query->groupBy('term.name');
+  $result = $query->execute()->fetchall();
+
+  return $result;
 }
 
 function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = NULL, $offset = 0, $tag = NULL) {
@@ -553,8 +616,7 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = 
       $query->isNull('field_consumptionator_blog.field_consumptionator_blog_target_id');
     }
     if (!empty($tag)) {
-      $query->leftJoin('field_data_field_content_tags', 'field_content_tags', 'field_content_tags.entity_id=cp.nid');
-      $query->condition('field_content_tags.field_content_tags_tid', $tag);
+      $query->condition('tags_field.field_content_tags_tid', $tag);
     }
     $query->groupBy('cp.nid');
     $query->addExpression("GROUP_CONCAT(term.name SEPARATOR ', ')", 'tags');

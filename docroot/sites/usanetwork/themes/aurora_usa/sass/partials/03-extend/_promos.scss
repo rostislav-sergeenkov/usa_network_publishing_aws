@@ -2346,6 +2346,7 @@
         font-size: get-vw(12px, 1280);
         height: get-vw(14px, 1280);
         line-height: get-vw(14px, 1280);
+        padding-top: 3px;
         text-align: center;
         width: get-vw(14px, 1280);
         z-index: 1;
@@ -2534,6 +2535,16 @@
           @include breakpoint($bp-768-width) {
             padding: 0 get-vw(7px, 640);
           }
+          &.show-color {
+            display: inline-block;
+            padding-top: get-vw(3px, 1280);
+            @include breakpoint($bp-min-1601-width) {
+              padding-top: 3px;
+            }
+            @include breakpoint($bp-768-width) {
+              padding-top: get-vw(3px, 640);
+            }
+          }
         }
       }
       .title {
@@ -2689,6 +2700,16 @@
           }
           @include breakpoint($bp-768-width) {
             padding: 0 get-vw(7px, 640);
+          }
+          &.show-color {
+            display: inline-block;
+            padding-top: get-vw(3px, 1280);
+            @include breakpoint($bp-min-1601-width) {
+              padding-top: 3px;
+            }
+            @include breakpoint($bp-768-width) {
+              padding-top: get-vw(3px, 640);
+            }
           }
         }
       }
@@ -3467,6 +3488,15 @@
           }
           @include breakpoint($bp-768-width) {
             padding: 0 get-vw(7px, 640);
+          }
+          &.show-color {
+            padding-top: get-vw(3px, 1280);
+            @include breakpoint($bp-min-1601-width) {
+              padding-top: 3px;
+            }
+            @include breakpoint($bp-768-width) {
+              padding-top: get-vw(3px, 640);
+            }
           }
         }
       }

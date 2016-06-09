@@ -5,12 +5,12 @@
   //=======================================
   function checkDescriptionLines() {
     if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
-      if($('.articles-block').length > 0) {
-        $('.title-and-additional').each(function(){
+      if ($('.articles-block').length > 0) {
+        $('.title-and-additional').each(function () {
           var captionHeight = parseFloat($(this).closest('.meta-wrapper').css('max-height')) - $(this).outerHeight();
           var captionLineHeight = parseFloat($(this).next().css('line-height'));
-          var lines = Math.floor(captionHeight/captionLineHeight);
-          $(this).next().attr('style', '-webkit-line-clamp:'+ lines +';max-height:'+ captionLineHeight*lines +'px;');
+          var lines = Math.floor(captionHeight / captionLineHeight);
+          $(this).next().attr('style', '-webkit-line-clamp:' + lines + ';max-height:' + captionLineHeight * lines + 'px;');
         });
       }
     }
@@ -28,10 +28,27 @@
     initUsaChangableLink();
     checkDescriptionLines();
   });
-  $(window).resize(function(){
+  $(window).resize(function () {
     setTimeout(function () {
       checkDescriptionLines();
     }, 50);
   });
 
+})(jQuery);
+
+(function ($) {
+
+  Drupal.behaviors.usaCustomService = {
+    attach: function (context, settings) {
+
+      var body = $('body');
+
+      body.once(function () {
+        // init mps block for usa-tv-show
+        // if (body.hasClass('show-new-design') && body.hasClass('usa-tv-show')) {
+          // Drupal.behaviors.mpsAdvert.mpsLoadAd($('#midbanner'), Drupal.behaviors.mpsAdvert.mpsNameAD.midbanner);
+        // }
+      })
+    }
+  };
 })(jQuery);

@@ -90,9 +90,8 @@ function usanetwork_consumptionator_post_field_group_info() {
       5 => 'field_sub_title',
       6 => 'field_summary',
       7 => 'field_consumptionator_blog',
-      8 => 'field_author',
-      9 => 'title',
-      10 => 'group_blog_displaying_author',
+      8 => 'title',
+      9 => 'group_blog_displaying_author',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -134,6 +133,35 @@ function usanetwork_consumptionator_post_field_group_info() {
     ),
   );
   $export['group_blog_displaying_author|node|consumpt_post|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_blog_service|node|consumpt_post|form';
+  $field_group->group_name = 'group_blog_service';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'consumpt_post';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Blog service',
+    'weight' => '45',
+    'children' => array(
+      0 => 'field_author',
+      1 => 'field_post_original_link',
+      2 => 'field_post_original_date',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-blog-service field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_blog_service|node|consumpt_post|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

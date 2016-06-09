@@ -18,6 +18,7 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
    */
   public function __construct($arguments) {
     parent::__construct($arguments);
+    module_load_include('inc', 'link', 'link.migrate');
     $this->description = t('My Test');
 
     $fields = array(
@@ -25,6 +26,7 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
       'atom:content'  => t('Description'),
       'atom:published' => t('Published'),
       'atom:name' => t('Author name'),
+      'atom:link' => t('Original link'),
       'media:credit' => t('Alt text'),
       'media:thumbnail' => t('Media thumbnail'),
     );
@@ -91,6 +93,8 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
     $this->addFieldMapping('field_author', 'author_tid');
     $this->addFieldMapping('field_author:source_type')
       ->defaultValue('tid');
+    $this->addFieldMapping('field_post_original_link', 'atom:link')->xpath('atom:link/@href');
+    $this->addFieldMapping('field_post_original_date', 'atom:published')->xpath('atom:published');
     //@todo may be alt text
     //$this->addFieldMapping('field_post_cover:field_file_image_alt_text', 'media:credit')->xpath('./media:content/media:credit');
   }

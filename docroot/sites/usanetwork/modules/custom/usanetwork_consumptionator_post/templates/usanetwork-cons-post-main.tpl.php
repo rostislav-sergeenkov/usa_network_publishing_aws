@@ -22,7 +22,17 @@
             <?php print $title; ?>
           </div>
           <div class="additional">
-            <?php print '<span class="episode">' . t('Posted on ') . $creating_date . '</span>';?>
+            <?php if ($violator && $is_new_design): ?>
+              <div class="violator"><?php print $violator; ?></div>
+            <?php endif; ?>
+            <?php if ($author && $is_new_design): ?>
+              <div class="author">By <span class="author_name"><?php print $author; ?></span></div>
+            <?php endif; ?>
+            <?php if ($is_new_design): ?>
+              <?php print '<span class="episode">' . t('Originally posted on ') . $creating_date . '</span>';?>
+            <?php else: ?>
+              <?php print '<span class="episode">' . t('Posted on ') . $creating_date . '</span>';?>
+            <?php endif; ?>
             <?php if (!empty($tags)): print '<span class="tags-title">' . t(' Tags: ') . '</span><span class="tags">' . $tags . '</span>'; endif;?>
           </div>
         </div>

@@ -2422,6 +2422,11 @@
     height: 100%;
     position: relative;
     width: 100%;
+    &:hover {
+      .image-block {
+        opacity: 0.85;
+      }
+    }
     @include breakpoint($bp-768-width) {
       height: auto;
     }
@@ -2445,6 +2450,8 @@
       height: 100%;
       position: relative;
       width: 100%;
+      opacity: 0.35;
+      @include transition(all 0.1s linear);
       @include breakpoint($bp-768-width) {
         height: calc(((100vw - 2 * #{get-vw(32px, 640)} - #{get-vw(18px, 640)}) / 2) * 0.5625);
       }
@@ -2467,6 +2474,7 @@
       padding: get-vw(25px, 1280);
       position: absolute;
       width: 100%;
+      background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat scroll 0 0;
       @include breakpoint($bp-min-1601-width) {
         padding: 31.25px;
       }
@@ -2568,6 +2576,11 @@
     height: 100%;
     position: relative;
     width: 100%;
+    &:hover {
+      .image-block {
+        opacity: 0.85;
+      }
+    }
     @include breakpoint($bp-768-width) {
       height: auto;
     }
@@ -2587,6 +2600,8 @@
       height: 100%;
       position: relative;
       width: 100%;
+      opacity: 0.35;
+      @include transition(all 0.1s linear);
       @include breakpoint($bp-768-width) {
         height: calc(((100vw - 2 * #{get-vw(32px, 640)} - #{get-vw(18px, 640)}) / 2) * 0.5625);
       }
@@ -2597,17 +2612,19 @@
         img {
           height: 100%;
           width: 100%;
+          opacity: 1 !important;
         }
       }
     }
     .meta-wrapper {
-      bottom: get-vw(30px, 1280);
+      bottom: 0;
       height: auto;
-      left: get-vw(25px, 1280);
       max-height: calc(100% - #{get-vw(60px, 1280)});
       overflow: hidden;
       position: absolute;
-      width: calc(100% - #{get-vw(50px, 1280)});
+      padding: get-vw(25px, 1280);;
+      width: 100%;
+      background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat scroll 0 0;
       @include breakpoint($bp-min-1601-width) {
         bottom: 37.5px;
         left: 31.25px;
@@ -2807,6 +2824,11 @@
     height: 100%;
     position: relative;
     width: 100%;
+    &:hover {
+      .image-block {
+        opacity: 0.85;
+      }
+    }
     a {
       display: block;
       height: 100%;
@@ -2819,6 +2841,8 @@
       height: 100%;
       position: relative;
       width: get-vw(152px, 1280);
+      opacity: 0.35;
+      @include transition(all 0.1s linear);
       @include breakpoint($bp-min-1601-width) {
         width: 190px;
       }
@@ -3243,6 +3267,7 @@
       position: absolute;
       width: 100%;
       z-index: 1;
+      background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat scroll 0 0;
       @include breakpoint($bp-min-1601-width) {
         padding: 37.5px;
       }

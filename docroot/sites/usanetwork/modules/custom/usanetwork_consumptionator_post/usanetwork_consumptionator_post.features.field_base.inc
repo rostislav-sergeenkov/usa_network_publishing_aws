@@ -10,6 +10,32 @@
 function usanetwork_consumptionator_post_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_author'
+  $field_bases['field_author'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_author',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'authors',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
   // Exported field_base: 'field_consumptionator_blog'
   $field_bases['field_consumptionator_blog'] = array(
     'active' => 1,

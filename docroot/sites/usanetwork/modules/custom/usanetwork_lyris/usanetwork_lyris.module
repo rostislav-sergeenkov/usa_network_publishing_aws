@@ -70,7 +70,7 @@ function usanetwork_lyris_theme() {
 /*
  * Functionality for Sign Up Block
  */
-function _usanetwork_lyris_signup_block() {
+function _usanetwork_lyris_signup_block($additional = FALSE) {
   if (path_is_admin(current_path())) {
     return NULL;
   }
@@ -109,7 +109,12 @@ function _usanetwork_lyris_signup_block() {
         }
       }
     }
-    $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
+    if ($additional) {
+      $content = drupal_get_form('usanetwork_lyris_newsletter_subscription_additional', $property);
+    } else {
+      $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
+    }
+
   }
 
   if ($content) {
@@ -160,6 +165,55 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
     '#ajax' => array(
       'callback' => 'newsletter_lyris_ajax_callback',
       'wrapper' => 'newsletter_lyris_ajax_wrapper',
+      'method' => 'replace',
+      'effect' => 'fade',
+      'validate_first' => TRUE,
+    ),
+  );
+  return $form;
+}
+
+/**
+ * Implementation of additional newsletter subscription form.
+ */
+function usanetwork_lyris_newsletter_subscription_additional($form, $form_state, $property) {
+  $form['newsletter'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div id="newsletter_lyris_ajax_wrapper_additional">',
+    '#suffix' => '</div>',
+  );
+  $form['newsletter']['title'] = array(
+    '#markup' => '<label>' . t('Sign Up for the @show_title Newsletter', array('@show_title' => $property['show_title'])) . '</label>',
+  );
+  $form['newsletter']['email'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array(
+      'placeholder' => 'enter email',
+    ),
+    '#size' => 23,
+    '#required' => TRUE,
+    '#rules' => array(
+      'email',
+      'length[10, 100]',
+    ),
+  );
+  $form['newsletter']['show_property'] = array(
+    '#type' => 'hidden',
+    '#value' => isset($property['show_value']) ? $property['show_value'] : '',
+  );
+  $form['newsletter']['submit'] = array(
+    '#prefix' => '<div class="form-submit-wrapper">',
+    '#suffix' => '</div>',
+    '#type' => 'submit',
+    '#value' => t('submit'),
+    '#attributes' => array(
+      'class' => array(
+        'show-color',
+      ),
+    ),
+    '#ajax' => array(
+      'callback' => 'newsletter_lyris_ajax_callback',
+      'wrapper' => 'newsletter_lyris_ajax_wrapper_additional',
       'method' => 'replace',
       'effect' => 'fade',
       'validate_first' => TRUE,

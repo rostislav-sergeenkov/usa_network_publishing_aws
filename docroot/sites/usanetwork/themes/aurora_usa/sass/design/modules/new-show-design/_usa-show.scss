@@ -252,7 +252,7 @@
           overflow: hidden;
           position: relative;
           width: 100%;
-          &:hover {
+          .no-touch &:hover {
             .asset-img {
               opacity: 0.85;
             }

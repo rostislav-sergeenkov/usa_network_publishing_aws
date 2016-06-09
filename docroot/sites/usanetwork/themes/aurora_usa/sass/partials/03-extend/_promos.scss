@@ -2422,7 +2422,7 @@
     height: 100%;
     position: relative;
     width: 100%;
-    &:hover {
+    .no-touch &:hover {
       .image-block {
         opacity: 0.85;
       }
@@ -2576,7 +2576,7 @@
     height: 100%;
     position: relative;
     width: 100%;
-    &:hover {
+    .no-touch &:hover {
       .image-block {
         opacity: 0.85;
       }
@@ -2824,7 +2824,7 @@
     height: 100%;
     position: relative;
     width: 100%;
-    &:hover {
+    .no-touch &:hover {
       .image-block {
         opacity: 0.85;
       }

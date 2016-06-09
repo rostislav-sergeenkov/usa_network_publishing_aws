@@ -4,39 +4,41 @@
       border-bottom: 0;
     }
   }
-  .section-title {
-    .section-title-wrapper {
+  .related-content-block {
+    .section-title {
+      .section-title-wrapper {
 
-      border-bottom: 2px solid;
-      color: #ffffff;
-      display: block;
-      font-family: $fira-sans-regular;
-      font-size: get-vw(20px, 1280);
-      letter-spacing: 3px;
-      padding-bottom: get-vw(16px, 1280);
-      text-align: center;
-      width: 100%;
+        border-bottom: 2px solid;
+        color: #ffffff;
+        display: block;
+        font-family: $fira-sans-regular;
+        font-size: get-vw(20px, 1280);
+        letter-spacing: 3px;
+        padding-bottom: get-vw(16px, 1280);
+        text-align: center;
+        width: 100%;
 
-      @include breakpoint ($bp-min-1901-width) {
-        font-size: 28px;
-        padding-bottom: 20px;
-      }
-      @include breakpoint ($bp-min-1601-width) {
-        font-size: 28px;
-        padding-bottom: 20px;
-      }
-      @include breakpoint ($bp-1024-width) {
-        font-size: get-vw(20px, 1024);
-        padding-bottom: get-vw(15px, 1024);
-      }
-      @include breakpoint ($bp-768-width) {
-        font-size: get-vw(20px, 768);
-        padding-bottom: get-vw(15px, 768);
-      }
+        @include breakpoint ($bp-min-1901-width) {
+          font-size: 28px;
+          padding-bottom: 20px;
+        }
+        @include breakpoint ($bp-min-1601-width) {
+          font-size: 28px;
+          padding-bottom: 20px;
+        }
+        @include breakpoint ($bp-1024-width) {
+          font-size: get-vw(20px, 1024);
+          padding-bottom: get-vw(15px, 1024);
+        }
+        @include breakpoint ($bp-768-width) {
+          font-size: get-vw(20px, 768);
+          padding-bottom: get-vw(15px, 768);
+        }
 
-      &:before,
-      &:after {
-        display: none;
+        &:before,
+        &:after {
+          display: none;
+        }
       }
     }
   }

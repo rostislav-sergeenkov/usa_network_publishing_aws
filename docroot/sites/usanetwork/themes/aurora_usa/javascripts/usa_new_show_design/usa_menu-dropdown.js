@@ -54,6 +54,8 @@
       _.options.isMenuOpenButtonActive = false;
       _.options.isMenuSignUplinkActive = false;
       _.options.isMenuCustomScrollActive = false;
+      _.options.isShowSignUpForm = false;
+      _.options.scrollDirection = '';
 
       // elements
       _.$body = $(document.body);
@@ -83,7 +85,6 @@
 
   // setTimeout
   usaShowMenu.prototype.setTimeout = function (callback, delay) {
-    console.info('setTimeout');
 
     var timeout = null;
 
@@ -96,9 +97,22 @@
 
   };
 
+  // scroll events
+  usaShowMenu.prototype.getScrollDirection = function (newYOffset) {
+    // newYOffset - window.pageYOffset
+
+    var _ = this,
+        currentYOffset = _.options.pageYOffset;
+
+    if (currentYOffset > newYOffset) {
+      _.options.scrollDirection = 'top';
+    } else if (currentYOffset < newYOffset) {
+      _.options.scrollDirection = 'down';
+    }
+  };
+
   // add || remove class
   usaShowMenu.prototype.addElemClass = function (elem, className, callback) {
-    console.info('addHeaderClass : ' + className);
 
     var _ = this,
         $elem = $(elem),
@@ -113,7 +127,6 @@
   };
 
   usaShowMenu.prototype.removeElemClass = function (elem, className, callback) {
-    console.info('removeHeaderClass : ' + className);
 
     var _ = this,
         $elem = $(elem),
@@ -125,6 +138,14 @@
     if (typeof callback === 'function') {
       callback();
     }
+  };
+
+  usaShowMenu.prototype.calcMenuHeight = function () {
+
+    var _ = this;
+
+    _.options.windowScreenHeigth = window.screen.height;
+
   };
 
   usaShowMenu.prototype.initMenuOpenHandler = function () {
@@ -167,7 +188,9 @@
         complete: function(elem) {
           _.removeElemClass($menuSignUplinkWrap, classActiveLink, null);
           _.removeElemClass($menuSignUplink, classActiveLink, null);
-          _.removeElemClass($form, activeClass, null);
+          _.removeElemClass($form, activeClass, function () {
+            _.options.isShowSignUpForm = false;
+          });
         }
       });
     } else {
@@ -177,7 +200,9 @@
       $form.velocity('slideDown', {
         duration: duration,
         complete: function(elem) {
-          _.addElemClass($form, activeClass, null);
+          _.addElemClass($form, activeClass, function () {
+            _.options.isShowSignUpForm = true;
+          });
         }
       });
     }
@@ -250,7 +275,8 @@
 
     var _ = this,
         $menuOpenButton = _.$menuOpenButton,
-        $signUpForm = _.$activeForm,
+        $signUpFormMobile = _.$signUpFormMobile,
+        $signUpFormDesktop = _.$signUpFormDesktop,
         $menuSignUplink = _.$menuSignUplink,
         resizeTimeOut = _.options.resizeTimeOut;
 
@@ -258,12 +284,21 @@
         .bind('scroll', function (e) {
           var $window = this;
 
-          if (_.options.isMenuOpenButtonActive) {
-            _.initMenuOpenHandler();
-          }
+          _.getScrollDirection($window.pageYOffset);
 
-          if (_.options.isMenuSignUplinkActive) {
-            _.initSignUpFormHandler();
+          console.info($(_.$showMenuWrap).outerHeight());
+
+          if (Math.abs($window.pageYOffset - _.options.pageYOffset) > $(_.$showMenuWrap).outerHeight()) {
+
+            _.options.pageYOffset = $window.pageYOffset;
+
+            if (_.options.isMenuOpenButtonActive) {
+              _.initMenuOpenHandler();
+            }
+
+            if (_.options.isMenuSignUplinkActive) {
+              _.initSignUpFormHandler();
+            }
           }
         })
         .bind('resize', function (e) {
@@ -305,7 +340,10 @@
     });
 
     // show || hide - sign up form
-    $($signUpForm).on('click', _.options.signUpFormCloseButtonSelector, function () {
+    $($signUpFormMobile).on('click', _.options.signUpFormCloseButtonSelector, function () {
+      _.initSignUpFormHandler();
+    });
+    $($signUpFormDesktop).on('click', _.options.signUpFormCloseButtonSelector, function () {
       _.initSignUpFormHandler();
     });
 
@@ -320,18 +358,19 @@
     var _ = this;
 
     _.options.isMobileBp = _.checkMatchWindowWidth('max', _.options.showMenuMobileBp);
+    _.options.pageYOffset = window.pageYOffset;
+    _.options.windowScreenHeigth = window.screen.height;
   };
 
   // init usaShowMenu app
   usaShowMenu.prototype.init = function (creation) {
-
-    console.info('init');
 
     var _ = this;
 
     if (creation && !_.$mainWrap.hasClass(_.options.initAppClass)) {
       _.$mainWrap.addClass(_.options.initAppClass);
       _.updateParamsValue();
+      _.checkSignUpForm();
       _.addEvents();
       if (_.options.isMobileBp) {
         _.addShowMenuCustomScroll();

@@ -350,7 +350,27 @@
         display: block;
         float: none;
         max-width: none !important;
+        height: 100%;
       }
+      //&:not(.show-menu-scroll-end) {
+      //  &:after {
+      //    content: '';
+      //    display: block;
+      //    width: 100%;
+      //    height: 9.1vw;
+      //    position: absolute;
+      //    bottom: 0;
+      //    background: -moz-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+      //    background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(135, 135, 135, 0)), color-stop(100%, rgba(0, 0, 0, 1)));
+      //    background: -webkit-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+      //    background: -o-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+      //    background: -ms-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+      //    background: linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+      //    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+      //    background-repeat: no-repeat;
+      //    z-index: 1;
+      //  }
+      //}
       .show-menu {
         height: 100%;
         .show-menu-item {
@@ -430,12 +450,12 @@
   }
 
   // header
-  header:not(.usa-sticky-header) &:not(.active) {
-
-  }
-  header.usa-sticky-header &:not(.active) {
-
-  }
+  //header:not(.usa-sticky-header) &:not(.active) {
+  //
+  //}
+  //header.usa-sticky-header &:not(.active) {
+  //
+  //}
 }
 
 // animate header

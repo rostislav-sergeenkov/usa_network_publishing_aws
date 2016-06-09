@@ -246,6 +246,9 @@ function _usanetwork_consumptionator_post_main_block() {
       $tags = $node_wrapper->field_content_tags->value();
       $tags_names = array();
       $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
+      $violator = NULL;
+      $creating_date = !empty($node->field_promo_created_ovts) ? $node_wrapper->field_promo_created_ovts->value() : $node->created;
+      $post_date = date('n/j/y', $creating_date);
       if ($is_new_design) {
         foreach ($tags as $tag) {
           $taxonomy_path = drupal_get_path_alias('taxonomy/term/' . $tag->tid);
@@ -257,8 +260,31 @@ function _usanetwork_consumptionator_post_main_block() {
         }
       }
       $tags_names = implode(', ', $tags_names);
+
+      // Set violator.
+      $original_link = $node_wrapper->field_post_original_link->value();
+      if (!empty($original_link['url'])) {
+        $violator = usanetwork_core_api_get_violator('node', $node->nid);
+        if ($violator) {
+          $violator = l($violator, $original_link->url, array(
+            'attributes' => array('class' => 'violator_link'),
+            'html' => TRUE,
+          ));
+        }
+      }
+
+      // Set author name.
+      if ($author = usanetwork_consumptionator_post_get_author('node', $node)) {
+        $author = $author->name;
+      }
+
+      // Set original date
+      $original_date = $node_wrapper->field_post_original_date->value();
+      if ($original_date) {
+        $date = new DateObject($original_date);
+        $post_date = $date->format('F j, Y');
+      }
     }
-    $creating_date = !empty($node->field_promo_created_ovts) ? $node_wrapper->field_promo_created_ovts->value() : $node->created;
     $navigation_links = _usanetwork_consumptionator_post_get_post_nav_links($node);
     $show_cover = $node_wrapper->field_post_cover_toggle->value();
     if (!empty($show_cover)) {
@@ -272,7 +298,7 @@ function _usanetwork_consumptionator_post_main_block() {
       'title' => !empty($node->title) ? $node->title : '',
       'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title , $body),
       'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
-      'creating_date' => date('n/j/y', $creating_date),
+      'creating_date' => $post_date,
       'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
       'tags' => !empty($tags_names) ? $tags_names : '',
       'body' => $body,
@@ -287,6 +313,9 @@ function _usanetwork_consumptionator_post_main_block() {
               !empty($node->field_gallery_recap_block_title) ? $node_wrapper->field_gallery_recap_block_title->value() : NULL
           )
           : '',
+      'violator' => $violator,
+      'author' => $author,
+      'is_new_design' => $is_new_design ? TRUE : FALSE,
     );
     return theme('usanetwork_cons_post_main', $theme_variables);
   }

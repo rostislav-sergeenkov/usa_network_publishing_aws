@@ -2503,6 +2503,7 @@
         padding-top: get-vw(18px, 640);
       }
       .caption {
+        @extend %usa-violator-icon;
         display: block;
         font-size: get-vw(15px, 1280);
         line-height: 1;
@@ -2542,7 +2543,7 @@
               padding-top: 3px;
             }
             @include breakpoint($bp-768-width) {
-              padding-top: get-vw(3px, 640);
+              padding-top: get-vw(3px, 768);
             }
           }
         }
@@ -2669,6 +2670,7 @@
         padding-top: get-vw(18px, 640);
       }
       .caption {
+        @extend %usa-violator-icon;
         display: block;
         font-size: get-vw(15px, 1280);
         line-height: 1;
@@ -2708,7 +2710,7 @@
               padding-top: 3px;
             }
             @include breakpoint($bp-768-width) {
-              padding-top: get-vw(3px, 640);
+              padding-top: get-vw(3px, 768);
             }
           }
         }
@@ -2899,6 +2901,7 @@
         vertical-align: middle;
       }
       .caption {
+        @extend %usa-violator-icon;
         color: $usa-episode-item-text;
         font-family: $fira-sans-regular;
         font-size: get-vw(12px, 1280);
@@ -3050,6 +3053,7 @@
         }
       }
       .caption {
+        @extend %usa-violator-icon;
         color: $usa-articles-color;
         font-family: $open-sans-regular;
         font-size: get-vw(18px, 1280);
@@ -3155,6 +3159,9 @@
       @include breakpoint($bp-768-width) {
         display: block;
       }
+    }
+    .caption {
+      @extend %usa-violator-icon;
     }
     .title {
       color: $usa-related-title;
@@ -3309,6 +3316,7 @@
       height: auto;
       width: 100%;
       .caption {
+        @extend %usa-violator-icon;
         color: white;
         display: inline-block;
         font-family: $avalon-medium;
@@ -3473,6 +3481,7 @@
     }
     .meta {
       .caption {
+        @extend %usa-violator-icon;
         display: block;
         line-height: 1;
         text-align: left;
@@ -3495,7 +3504,7 @@
               padding-top: 3px;
             }
             @include breakpoint($bp-768-width) {
-              padding-top: get-vw(3px, 640);
+              padding-top: get-vw(3px, 768);
             }
           }
         }
@@ -3693,6 +3702,7 @@
           top: auto;
         }
         .caption {
+          @extend %usa-violator-icon;
           font-size: get-vw(15px, 1280);
           margin-bottom: get-vw(20px, 1280);
           @include breakpoint($bp-min-1601-width) {
@@ -3807,6 +3817,3 @@
     }
   }
 }
-
-
-

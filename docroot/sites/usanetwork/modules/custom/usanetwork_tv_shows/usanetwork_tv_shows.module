@@ -2573,6 +2573,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
         );
         if (strtolower($show_menu_item_main_link[0]['title']) == 'email sign up') {
           $classes[] = 'menu-sign-up';
+          $show_menus[$key]['sign_up'] = TRUE;
         }
         $menu_item_url = $show_menu_item_main_link[0]['url'];
         $menu_item_url_query = (isset($show_menu_item_main_link[0]['query'])) ? $show_menu_item_main_link[0]['query'] : '';
@@ -4629,11 +4630,16 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
     $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
   }
 
+  $caption = !empty($data->promo_violator) ? check_plain($data->promo_violator) :
+    ($data->bundle == 'mpx_video_2' ? t('Full Episode') : '');
+  if ($is_new_design) {
+    // @todo if previously was not loaded nodes, think about logic without node loading.
+    $caption = usanetwork_core_api_get_violator($data->entity_type, $data->entity_id);
+  }
   $theme_variables = array(
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
-    'caption' => !empty($data->promo_violator) ? check_plain($data->promo_violator) :
-        ($data->bundle == 'mpx_video_2' ? t('Full Episode') : ''),
+    'caption' => $caption,
     'title' => !empty($data->promo_title)
         ? $data->promo_title     // Title text is checked at a level higher.
         : $data->title,

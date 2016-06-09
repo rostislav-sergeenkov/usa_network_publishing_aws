@@ -2573,6 +2573,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
         );
         if (strtolower($show_menu_item_main_link[0]['title']) == 'email sign up') {
           $classes[] = 'menu-sign-up';
+          $show_menus[$key]['sign_up'] = TRUE;
         }
         $menu_item_url = $show_menu_item_main_link[0]['url'];
         $menu_item_url_query = (isset($show_menu_item_main_link[0]['query'])) ? $show_menu_item_main_link[0]['query'] : '';

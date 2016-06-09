@@ -479,12 +479,25 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
     'ad' => $show_ad,
     'ad_id' => $offset,
     'title' => NULL,
+    'filters' => array(),
     'node_nid' => $node->nid,
     'ajax_load' => $ajax_load,
     'load_more_link' => !$ajax_load,
     'is_new_design' => $is_new_design,
     'tag_tid' => $tag_id,
   );
+
+  if ($is_new_design) {
+    $post_tags = _usanetwork_posts_get_posts_tags($node->nid);
+    if ($post_tags) {
+      //filter
+    }
+    if ($tag_id) {
+      $theme_variables['active_filter_title'] = 'mrrobot/blog/tag/tge-verge';
+    } else {
+      $theme_variables['active_filter_title'] = 'all articles';
+    }
+  }
 
   $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset, $tag_id);
 

@@ -15,14 +15,12 @@
 <div class="landing-list-items-one-item blog-landing-list-items-one-item">
   <?php if ((!$ajax_load) && (!empty($node_nid))) : ?>
     <div class="upper-bar">
-      <?php if (empty($is_new_design)) : ?>
-        <div class="title">
-          <h2><?php print $title; ?></h2>
-        </div>
-      <?php endif; ?>
+      <div class="title">
+        <h2><?php print $title; ?></h2>
+      </div>
       <?php if (!empty($filters)): ?>
         <div class="all-seasons-filter item-filter">
-          <div class="filter-label"><?php print !empty($active_filter_title) ? $active_filter_title : t('All seasons'); ?></div>
+          <div class="filter-label"><?php print !empty($active_filter_title) ? $active_filter_title : t('All Posts'); ?></div>
           <ul class="filter-menu">
             <?php foreach ($filters as $filter): ?>
               <li class="filter-item"><a href="<?php print $filter['url']; ?>" class="no-ajax <?php if ($filter['active'] == TRUE) : print 'active'; endif; ?>"><?php print $filter['title']; ?></a>

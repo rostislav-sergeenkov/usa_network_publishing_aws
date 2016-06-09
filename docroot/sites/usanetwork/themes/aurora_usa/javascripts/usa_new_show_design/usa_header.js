@@ -428,7 +428,9 @@ var USAN = USAN || {};
           _.getScrollDirection(newYOffset);
 
           if (USAN.hasOwnProperty('scrollToTop') && USAN.scrollToTop) {
-            _.resetHeader();
+            _.slideUpStickyHeader(function () {
+              _.resetHeader();
+            });
             return;
           }
 

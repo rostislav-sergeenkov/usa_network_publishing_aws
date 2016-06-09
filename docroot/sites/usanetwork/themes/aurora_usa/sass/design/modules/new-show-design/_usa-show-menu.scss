@@ -335,6 +335,7 @@
     }
     .bottom-menu-block-inner {
       @include clear();
+      background: #000000;
       margin: 0 auto;
       max-width: 1600px;
       width: 100%;
@@ -355,13 +356,13 @@
         @include breakpoint($bp-768-width) {
           height: auto;
         }
-        & > li {
+        .show-menu-item {
           height: 100%;
           @include breakpoint($bp-768-width) {
             background: $header-full-episodes-back;
             border-bottom: 1px solid $header-new-menu-item-border;
             float: none;
-            height: get-vw(70px, 768);
+            //height: get-vw(70px, 768);
             width: 100%;
           }
           &:last-child {
@@ -383,6 +384,7 @@
             text-align: center;
             text-decoration: none;
             text-transform: uppercase;
+            @include transition(all 0.2s linear 0);
             @include breakpoint($bp-min-1601-width) {
               font-size: 15.625px;
               line-height: 71px;
@@ -392,7 +394,7 @@
               color: $header-new-menu-item-color;
               font-size: get-vw(26px, 768);
               line-height: calc(#{get-vw(70px, 768)} - 4px);
-              padding: 0 get-vw(40px, 768);
+              padding: get-vw(4px, 768) get-vw(40px, 768) 0;
               text-align: left;
               width: 100%;
             }

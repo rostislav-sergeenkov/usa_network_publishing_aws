@@ -31,7 +31,17 @@
         }
       }
     }
+    #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+      &.active {
+        & + #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl,
+        & + #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters,
+        & + #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb {
+          display: none;
+        }
+      }
+    }
   }
+
 
   #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl,
   #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters,

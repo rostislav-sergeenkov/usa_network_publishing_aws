@@ -1,7 +1,7 @@
 <?php
 
 define('VOX_BLOG_FEED_MRROBOT_ATOM', 'http://www.theverge.com/rss/partner/mr-robot/index.xml');
-define('VOX_BLOG_FEED_VIOLATOR_TEXT', 'Featured From The Verge');
+define('VOX_BLOG_FEED_VIOLATOR_TEXT', 'Featured From <b>The Verge</b>');
 define('MR_ROBOT_SHOW_ID', 56156);
 
 /**

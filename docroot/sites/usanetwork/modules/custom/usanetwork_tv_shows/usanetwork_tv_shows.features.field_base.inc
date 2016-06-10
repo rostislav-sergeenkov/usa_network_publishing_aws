@@ -156,6 +156,32 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'usanetwork_dynamic_entity_reference',
   );
 
+  // Exported field_base: 'field_articles'
+  $field_bases['field_articles'] = array(
+    'active' => 1,
+    'cardinality' => 4,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_articles',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'usanetwork_dynamic_entity_reference',
+    'settings' => array(
+      'entity_bundles' => array(
+        'consumpt_post' => 'consumpt_post',
+      ),
+      'entity_type_ids' => array(
+        'node' => 'node',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'usanetwork_dynamic_entity_reference',
+  );
+
   // Exported field_base: 'field_banner'
   $field_bases['field_banner'] = array(
     'active' => 1,

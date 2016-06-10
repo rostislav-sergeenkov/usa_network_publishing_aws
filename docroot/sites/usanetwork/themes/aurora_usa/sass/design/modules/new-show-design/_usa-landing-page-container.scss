@@ -7,15 +7,8 @@
     @include clear();
     border-bottom: 2px solid;
     margin-bottom: 100px;
-    padding: 0 get-vw(16px, 1280) 0;
     position: relative;
     width: 100%;
-    @include breakpoint($bp-min-1601-width) {
-      padding: 0 20px 0;
-    }
-    @include breakpoint($bp-768-width) {
-      padding: get-vw(40px, 768);
-    }
     &.infinity-finished {
       margin-bottom: 0;
     }

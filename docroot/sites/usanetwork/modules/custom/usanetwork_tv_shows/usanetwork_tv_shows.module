@@ -2592,7 +2592,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     }
   }
 
-  $title_tag = 'h1';
+  $title_tag = 'div';
   $show_title = array(
     '#type' => 'html_tag',
     '#tag' => $title_tag,

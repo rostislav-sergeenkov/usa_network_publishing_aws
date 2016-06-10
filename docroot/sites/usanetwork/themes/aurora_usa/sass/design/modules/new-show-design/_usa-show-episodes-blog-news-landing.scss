@@ -8,19 +8,19 @@
     width: 100%;
     .blog-landing-list-items {
       margin-bottom: 100px;
-      padding-top: get-vw(90px, 1280);
+      //padding-top: get-vw(90px, 1280);
       position: relative;
       @include breakpoint ($bp-min-1601-width) {
-        padding-top: 135px;
+        //padding-top: 135px;
       }
       @include breakpoint ($bp-1024-width) {
-        padding-top: get-vw(90px, 1024);
+        //padding-top: get-vw(90px, 1024);
       }
       @include breakpoint ($bp-768-width) {
-        padding-top: get-vw(55px, 768);
+        //padding-top: get-vw(55px, 768);
       }
       @include breakpoint ($bp-640-width) {
-        padding-top: get-vw(55px, 640);
+        //padding-top: get-vw(55px, 640);
       }
     }
     .landing-list-items-one-item {
@@ -457,235 +457,6 @@
         }
       }
     }
-    .upper-bar {
-      position: relative;
-      h2 {
-        box-sizing: border-box;
-        color: #ffffff;
-        font-family: $fira-sans-medium;
-        font-size: get-vw(30px, 1280);
-        line-height: get-vw(80px, 1600);
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        text-transform: uppercase;
-        @include breakpoint($bp-min-1601-width) {
-          font-size: 30px;
-          line-height: 80px;
-        }
-        @include breakpoint($bp-1024-width) {
-          font-size: get-vw(30px, 1024);
-          line-height: get-vw(80px, 1024);
-        }
-        @include breakpoint($bp-768-width) {
-          font-size: get-vw(30px, 768);
-          line-height: get-vw(80px, 768);
-          padding-left: get-vw(30px, 768);
-          text-align: left;
-        }
-        @include breakpoint($bp-640-width) {
-          font-size: 18px;
-          line-height: 55px;
-          padding-left: 10px;
-        }
-      }
-    }
-    .item-filter {
-      bottom: 0px;
-      border: 1px solid;
-      border-bottom: none;
-      margin: 0;
-      right: get-vw(45px, 1280);
-      position: absolute;
-      width: get-vw(205px, 1600);
-      &:not(.open) {
-        @include breakpoint($bp-min-769-width) {
-          border-color: transparent!important;
-        }
-      }
-      @include breakpoint($bp-min-1601-width) {
-        right: 60px;
-        width: 205px;
-      }
-      @include breakpoint($bp-1024-width) {
-        right: get-vw(45px, 1024);
-      }
-      @include breakpoint($bp-768-width) {
-        bottom: auto;
-        border-bottom: 1px solid;
-        margin-top: -19px;
-        right: get-vw(45px, 768);
-        top: 50%;
-        width: 205px;
-      }
-      @include breakpoint($bp-640-width) {
-        right: get-vw(10px, 640);
-      }
-      @include breakpoint($bp-640-width) {
-        left: 10px;
-        margin: 10px 0;
-        position: relative;
-        right: auto;
-      }
-      &.open {
-        background: black;
-        @include breakpoint($bp-min-769-width) {
-          border-bottom: none;
-        }
-        @include breakpoint($bp-768-width) {
-          border-bottom-color: transparent!important;
-        }
-        .filter-label {
-          text-align: left;
-          border-color: transparent;
-          background: transparent;
-          @include breakpoint($bp-min-769-width) {
-            padding: 0 get-vw(40px, 1600) 0 get-vw(15px, 1600);
-          }
-          @include breakpoint($bp-min-1601-width) {
-            padding: 0 40px 0 15px;
-          }
-          span {
-            &:after {
-              content: "\e60a";
-            }
-          }
-        }
-        .filter-menu {
-          background: black;
-          border: 1px solid;
-          border-top: 1px solid $usa-episode-item-text!important;
-          box-sizing: content-box;
-          display: block;
-          left: -1px;
-          top: 0px;
-          @include breakpoint($bp-768-width) {
-            top: -1px;
-          }
-        }
-      }
-      .filter-label {
-        background: black;
-        color: white;
-        cursor: pointer;
-        font-family: $fira-sans-medium;
-        font-size: get-vw(18px, 1600);
-        letter-spacing: 0.5px;
-        line-height: get-vw(50px, 1600);
-        overflow: hidden;
-        padding-right: get-vw(40px, 1600);
-        position: relative;
-        text-align: right;
-        text-overflow: ellipsis;
-        -o-text-overflow: ellipsis;
-        text-transform: capitalize;
-        white-space: nowrap;
-        width: 100%;
-        @include breakpoint($bp-min-1601-width) {
-          font-size: 18px;
-          line-height: 50px;
-          padding-right: 40px;
-        }
-        @include breakpoint($bp-768-width) {
-          font-size: 14px;
-          letter-spacing: 1px;
-          line-height: 38px;
-          padding: 0 40px 0 15px;
-          text-align: left;
-          width: 100%;
-        }
-        span {
-          &:after {
-            content: "\e609";
-            color: inherit;
-            display: block;
-            font-family: $ico-font;
-            font-size: 16px;
-            margin-right: -8px;
-            position: absolute;
-            right: 25px;
-            top: 0;
-            z-index: 3;
-            @include breakpoint($bp-min-769-width) {
-              font-size: get-vw(16px, 1600);
-              margin: 0;
-              right: get-vw(12px, 1600);
-            }
-            @include breakpoint($bp-min-1601-width) {
-              font-size: 16px;
-              right: 12px;
-            }
-          }
-        }
-      }
-      .filter-menu {
-        display: none;
-        margin-top: get-vw(50px, 1600);
-        max-height: 200px;
-        overflow-y: auto;
-        position: absolute;
-        width: 100%;
-        z-index: 2;
-        @include breakpoint($bp-min-1601-width) {
-          margin-top: 50px;
-        }
-        @include breakpoint($bp-768-width) {
-          margin-top: 39px;
-        }
-        li {
-          border-bottom: 1px solid;
-          border-color: $usa-episode-item-text!important;
-          overflow: hidden;
-          position: relative;
-          width: 100%;
-          &:hover, &.active {
-            span {
-              color: $header-tab-title;
-            }
-          }
-          &:last-child {
-            border-bottom: none;
-          }
-          span {
-            background: none;
-            display: inline-block;
-          }
-          a {
-            color: #ffffff;
-            display: block;
-            font-size: get-vw(18px, 1600);
-            font-family: $fira-sans-medium;
-            height: 100%;
-            letter-spacing: 1px;
-            line-height: get-vw(50px, 1600);
-            text-align: left;
-            padding: 0 get-vw(40px, 1600) 0 get-vw(15px, 1600);
-            text-decoration: none;
-            text-transform: capitalize;
-            width: 100%;
-            &:hover, &.active {
-              color: $header-tab-title;
-            }
-            @include breakpoint($bp-min-1601-width) {
-              font-size: 18px;
-              line-height: 50px;
-              padding: 0 40px 0 15px;
-            }
-            @include  breakpoint($bp-768-width) {
-              font-size: 14px;
-              line-height: 14px;
-              padding: 9px 15px;
-              text-align: left;
-            }
-          }
-        }
-        .mCSB_dragger {
-          .mCSB_dragger_bar {
-            background-color: rgba(222, 216, 216, 0.75);
-          }
-        }
-      }
-    }
   }
   #block-usanetwork-episodes-usa-landing-tvep-list-block {
     .landing-list-items-all {
@@ -931,4 +702,245 @@
       }
     }
   }
+
+  // upper bar &&  filter item
+  #block-usanetwork-episodes-usa-landing-tvep-list-block,
+  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block,
+  #block-usanetwork-episodes-usa-landing-tvep-list-block {
+
+    // upper bar
+    .upper-bar {
+      position: relative;
+      h2 {
+        box-sizing: border-box;
+        color: #ffffff;
+        font-family: $fira-sans-medium;
+        font-size: get-vw(30px, 1280);
+        line-height: get-vw(80px, 1600);
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 30px;
+          line-height: 80px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(30px, 1024);
+          line-height: get-vw(80px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(30px, 768);
+          line-height: get-vw(80px, 768);
+          padding-left: get-vw(30px, 768);
+          text-align: left;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: 18px;
+          line-height: 55px;
+          padding-left: 10px;
+        }
+      }
+    }
+
+    // filter item
+    .item-filter {
+      border: 1px solid;
+      border-bottom: none;
+      margin: 0;
+      right: get-vw(45px, 1280);
+      top: calc(100% - #{get-vw(51px, 1600)});
+      position: absolute;
+      min-width: get-vw(205px, 1600);
+      max-width: 300px;
+      &:not(.open) {
+        @include breakpoint($bp-min-769-width) {
+          border-color: transparent!important;
+        }
+      }
+      @include breakpoint($bp-min-1601-width) {
+        right: 60px;
+        top: calc(100% - 51px);
+        min-width: 205px;
+      }
+      @include breakpoint($bp-1024-width) {
+        right: get-vw(45px, 1024);
+      }
+      @include breakpoint($bp-768-width) {
+        bottom: auto;
+        border-bottom: 1px solid;
+        margin-top: -19px;
+        right: get-vw(45px, 768);
+        top: 50%;
+        min-width: 205px;
+        max-width: 260px;
+      }
+      @include breakpoint($bp-640-width) {
+        right: get-vw(10px, 640);
+      }
+      @include breakpoint($bp-640-width) {
+        left: 10px;
+        margin: 10px 0;
+        position: relative;
+        right: auto;
+      }
+      &.open {
+        background: black;
+        @include breakpoint($bp-min-769-width) {
+          border-bottom: none;
+        }
+        @include breakpoint($bp-768-width) {
+          border-bottom-color: transparent!important;
+        }
+        .filter-label {
+          text-align: left;
+          border-color: transparent;
+          background: transparent;
+          @include breakpoint($bp-min-769-width) {
+            padding: 0 get-vw(40px, 1600) 0 get-vw(15px, 1600);
+          }
+          @include breakpoint($bp-min-1601-width) {
+            padding: 0 40px 0 15px;
+          }
+          span {
+            &:after {
+              content: "\e60a";
+            }
+          }
+        }
+        .filter-menu {
+          background: black;
+          border: 1px solid;
+          border-top: 1px solid $usa-episode-item-text!important;
+          box-sizing: content-box;
+          display: block;
+          left: -1px;
+          top: 0;
+        }
+      }
+      .filter-label {
+        background: black;
+        color: white;
+        cursor: pointer;
+        font-family: $fira-sans-medium;
+        font-size: get-vw(18px, 1600);
+        letter-spacing: 0.5px;
+        line-height: get-vw(50px, 1600);
+        overflow: hidden;
+        padding-right: get-vw(40px, 1600);
+        position: relative;
+        text-align: right;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-transform: capitalize;
+        white-space: nowrap;
+        width: 100%;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 18px;
+          line-height: 50px;
+          padding-right: 40px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: 14px;
+          letter-spacing: 1px;
+          line-height: 38px;
+          padding: 0 40px 0 15px;
+          text-align: left;
+          width: 100%;
+        }
+        span {
+          &:after {
+            content: "\e609";
+            color: inherit;
+            display: block;
+            font-family: $ico-font;
+            font-size: 16px;
+            margin-right: -8px;
+            position: absolute;
+            right: 25px;
+            top: 0;
+            z-index: 3;
+            @include breakpoint($bp-min-769-width) {
+              font-size: get-vw(16px, 1600);
+              margin: 0;
+              right: get-vw(12px, 1600);
+            }
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 16px;
+              right: 12px;
+            }
+          }
+        }
+      }
+      .filter-menu {
+        display: none;
+        max-height: 200px;
+        overflow-y: auto;
+        position: relative;
+        width: 100%;
+        z-index: 2;
+        .filter-item {
+          border-bottom: 1px solid;
+          border-color: $usa-episode-item-text!important;
+          overflow: hidden;
+          padding: 0 get-vw(40px, 1600) 0 get-vw(15px, 1600);
+          position: relative;
+          width: 100%;
+          @include breakpoint($bp-min-1601-width) {
+            padding: 0 40px 0 15px;
+          }
+          @include  breakpoint($bp-768-width) {
+            padding: 9px 15px;
+          }
+          &:hover, &.active {
+            span {
+              color: $header-tab-title;
+            }
+          }
+          &:last-child {
+            border-bottom: none;
+          }
+          span {
+            background: none;
+            display: inline-block;
+          }
+          a {
+            color: #ffffff;
+            display: block;
+            font-size: get-vw(18px, 1600);
+            font-family: $fira-sans-medium;
+            height: 100%;
+            letter-spacing: 1px;
+            line-height: get-vw(50px, 1600);
+            overflow: hidden;
+            text-align: left;
+            text-decoration: none;
+            text-transform: capitalize;
+            width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            &:hover, &.active {
+              color: $header-tab-title;
+            }
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 18px;
+              line-height: 50px;
+            }
+            @include  breakpoint($bp-768-width) {
+              font-size: 14px;
+              line-height: 14px;
+              text-align: left;
+            }
+          }
+        }
+        .mCSB_dragger {
+          .mCSB_dragger_bar {
+            background-color: rgba(222, 216, 216, 0.75);
+          }
+        }
+      }
+    }
+
+  }
 }
+

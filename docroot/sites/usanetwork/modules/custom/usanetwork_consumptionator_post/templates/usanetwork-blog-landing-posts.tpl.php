@@ -19,9 +19,9 @@
         <h2><?php print $title; ?></h2>
       </div>
       <?php if (!empty($filters)): ?>
-        <div class="all-seasons-filter item-filter">
-          <div class="filter-label"><?php print !empty($active_filter_title) ? $active_filter_title : t('All Posts'); ?></div>
-          <ul class="filter-menu">
+        <div class="all-articles-filter item-filter show-border">
+          <div class="filter-label"><?php print !empty($active_filter_title) ? $active_filter_title : t('All Posts'); ?><span class="show-color show-font"></span></div>
+          <ul class="filter-menu show-border">
             <?php foreach ($filters as $filter): ?>
               <li class="filter-item"><a href="<?php print $filter['url']; ?>" class="no-ajax <?php if ($filter['active'] == TRUE) : print 'active'; endif; ?>"><?php print $filter['title']; ?></a>
               </li>

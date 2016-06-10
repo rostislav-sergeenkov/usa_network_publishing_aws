@@ -88,6 +88,12 @@
       display: none;
     }
   }
+  #top-five-photos {
+    .meta-icon.full-video-icon-default {
+      display: none !important;
+    }
+  }
+
   #top-five-videos,
   #top-five-photos {
     .line-block-inner {

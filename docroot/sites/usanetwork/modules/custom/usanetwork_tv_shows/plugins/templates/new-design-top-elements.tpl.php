@@ -18,6 +18,7 @@
           <div class="node node-usanetwork-promo usa-show-related-top-promo">
             <a href="<?php print $element['link']; ?>" class="omniture-tracking-processed">
               <div class="image-block">
+                <div class="meta-icon full-video-icon-default"></div>
                 <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
                   <div data-src="<?php print $element['image_mobile']; ?>"></div>
                   <div data-media="(min-width: 769px)" data-src="<?php print $element['image']; ?>"></div>

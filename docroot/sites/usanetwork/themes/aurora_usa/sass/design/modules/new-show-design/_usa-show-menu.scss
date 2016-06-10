@@ -305,10 +305,11 @@
   .bottom-menu-block {
     border-bottom: 2px solid;
     border-top: 2px solid;
-    height: get-vw(60px, 1280);
+    //height: get-vw(60px, 1280);
+    height: auto;
     width: 100%;
     @include breakpoint($bp-min-1601-width) {
-      height: 75px;
+      //height: 75px;
     }
     @include breakpoint($bp-768-width) {
       border-bottom: 2px solid;
@@ -508,10 +509,10 @@
             @include breakpoint($bp-min-769-width) {
               border-bottom: 1px solid;
               border-top: 1px solid;
-              height: calc(#{get-vw(60px, 1280)} * 0.7);
+              //height: calc(#{get-vw(60px, 1280)} * 0.7);
             }
             @include breakpoint($bp-min-1601-width) {
-              height: calc(75px * 0.7);
+              //height: calc(75px * 0.7);
             }
             @include breakpoint($bp-768-width) {
               border-bottom: 1px solid;

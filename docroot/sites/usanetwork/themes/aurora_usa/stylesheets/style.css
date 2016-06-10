@@ -4622,6 +4622,66 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   height: 100%;
   width: 100%;
 }
+.show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon,
+.show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon {
+  background-image: none;
+  border: 2px solid;
+  border-radius: 50%;
+  border-color: rgba(200, 200, 200, 0.8);
+  box-sizing: content-box;
+  height: 1.625vw;
+  line-height: 1.625vw;
+  width: 1.625vw;
+  margin-left: calc(-1.625vw / 2);
+  margin-top: calc(-1.625vw / 2);
+  left: 50%;
+  top: 50%;
+  position: absolute;
+}
+@media (min-width: 1601px) {
+  .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon,
+  .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon {
+    height: 26px;
+    line-height: 26px;
+    margin-left: calc(-26px / 2);
+    margin-top: calc(-26px / 2);
+    width: 26px;
+  }
+}
+@media (max-width: 768px) {
+  .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon,
+  .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon {
+    border-color: #ffffff;
+    height: 8.59375vw;
+    line-height: 8.59375vw;
+    margin-left: calc(-8.59375vw / 2);
+    margin-top: calc(-8.59375vw / 2);
+    width: 8.59375vw;
+  }
+}
+.show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon:after,
+.show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon:after {
+  color: rgba(200, 200, 200, 0.8);
+  display: block;
+  content: '\e627';
+  font-family: "ico-font";
+  font-size: 1.125vw;
+  position: relative;
+  text-align: center;
+}
+@media (min-width: 1601px) {
+  .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon:after,
+  .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon:after {
+    font-size: 18px;
+  }
+}
+@media (max-width: 768px) {
+  .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon:after,
+  .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon:after {
+    color: #ffffff;
+    font-size: 4.94792vw;
+  }
+}
 .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .meta-wrapper,
 .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .meta-wrapper {
   height: 100%;
@@ -41063,13 +41123,8 @@ body.blog .view-display-id-blog_content .views-row {
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
   border-bottom: 2px solid;
   border-top: 2px solid;
-  height: 4.6875vw;
+  height: auto;
   width: 100%;
-}
-@media (min-width: 1601px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
-    height: 75px;
-  }
 }
 @media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
@@ -41266,12 +41321,6 @@ body.blog .view-display-id-blog_content .views-row {
   .show-new-design #header.usa-sticky-header-initialized.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
     border-bottom: 1px solid;
     border-top: 1px solid;
-    height: calc(4.6875vw * 0.7);
-  }
-}
-@media (min-width: 1601px) {
-  .show-new-design #header.usa-sticky-header-initialized.usa-sticky-header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
-    height: calc(75px * 0.7);
   }
 }
 @media (max-width: 768px) {
@@ -44972,6 +45021,9 @@ body.blog .view-display-id-blog_content .views-row {
   .show-related-content-block .view-more {
     display: none;
   }
+}
+.show-related-content-block #top-five-photos .meta-icon.full-video-icon-default {
+  display: none !important;
 }
 @media (max-width: 768px) {
   .show-related-content-block #top-five-videos .line-block-inner,

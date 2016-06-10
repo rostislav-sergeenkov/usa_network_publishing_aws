@@ -43,12 +43,11 @@ function new_design_articles_content_type_render($subtype, $conf, $args, $contex
   $author_uid = variable_get('usanetwork_blog_migrate_the_verge_user_uid', 0);
 
   if ($show_logo) {
-    $logo = $logo_entity->field_service_logo->value();
-    $logo = file_create_url($logo['uri']);
-    $logo['logo_image'] = $logo;
-  }
-  else {
-    $logo = '';
+    $logo_field = $logo_entity->field_service_logo->value();
+    if ($logo_field) {
+      $logo_field = file_create_url($logo_field['uri']);
+      $logo['logo_image'] = $logo_field;
+    }
   }
 
   if ($author_uid > 0) {

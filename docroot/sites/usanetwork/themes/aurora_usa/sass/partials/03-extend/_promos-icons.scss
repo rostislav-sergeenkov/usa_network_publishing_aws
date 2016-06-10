@@ -1,0 +1,36 @@
+%usa-violator-icon {
+  .violator_icon.verge {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    vertical-align: middle;
+    margin-top: get-vw(-3px, 1280);
+    @include breakpoint($bp-min-1601-width) {
+      margin-top: -3px;
+    }
+    @include breakpoint($bp-768-width) {
+      margin-top: get-vw(-3px, 768);
+    }
+    &:after {
+      color: #ffffff;
+      content: "\e631";
+      display: block;
+      font-family: $ico-font;
+      font-size: get-vw(16px, 1280);
+      line-height: get-vw(16px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 16px;
+        line-height: 16px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: get-vw(16px, 1024);
+        line-height: get-vw(16px, 1024);
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(16px, 768);
+        line-height: get-vw(16px, 768);
+      }
+    }
+  }
+}

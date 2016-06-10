@@ -18,12 +18,14 @@
     <div class="episode-info-block show-border">
       <div class="episode-info-header">
         <div class="episode-title-block">
-          <div class="episode-title">
-            <?php print $episode_title; ?>
-          </div>
-          <div class="additional">
-            <?php print '<span class="episode">'.t('S').$season_number.t(' episode ').$episode_number.'</span><span class="aired">'.t(' Aired on ').'</span>'.$air_date_text; ?>
-          </div>
+          <?php if($new_design): ?>
+            <div class="episode"><?php print '<h1 class="episode-inner">'.t('S').$season_number.t(' episode ').$episode_number.'</h1>'; ?></div>
+            <div class="episode-title"><h2 class="episode-title-inner"><?php print $episode_title; ?></h2></div>
+            <div class="additional"><?php print '<span class="aired">'.t(' Aired on ').'</span>'.$air_date_text; ?></div>
+          <?php else: ?>
+            <div class="episode-title"><?php print $episode_title; ?></div>
+            <div class="additional"><?php print '<span class="episode">'.t('S').$season_number.t(' episode ').$episode_number.'</span><span class="aired">'.t(' Aired on ').'</span>'.$air_date_text; ?></div>
+          <?php endif; ?>
         </div>
         <div class="share">
           <?php print $sharebar; ?>

@@ -962,9 +962,8 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Service',
     'weight' => '27',
     'children' => array(
-      0 => 'field_service_link',
-      1 => 'field_service_logo',
-      2 => 'field_show_service_logo',
+      0 => 'field_service_logo',
+      1 => 'field_show_service_logo',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

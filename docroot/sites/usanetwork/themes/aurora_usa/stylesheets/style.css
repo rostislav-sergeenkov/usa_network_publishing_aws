@@ -40985,25 +40985,6 @@ body.blog .view-display-id-blog_content .views-row {
     width: 11.06771vw;
   }
 }
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo {
-  display: none;
-  float: left;
-  font-size: 1px;
-  line-height: 1;
-  position: relative;
-  width: auto;
-}
-@media (max-width: 768px) {
-  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo {
-    display: none;
-  }
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .second-logo img {
-  height: 100%;
-  line-height: 1;
-  max-width: none;
-  width: auto;
-}
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
   margin: 0 auto;
   position: relative;
@@ -49448,32 +49429,7 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .blog-landing-list-items,
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .blog-landing-list-items {
   margin-bottom: 100px;
-  padding-top: 7.03125vw;
   position: relative;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .blog-landing-list-items,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .blog-landing-list-items {
-    padding-top: 135px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .blog-landing-list-items,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .blog-landing-list-items {
-    padding-top: 8.78906vw;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .blog-landing-list-items,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .blog-landing-list-items {
-    padding-top: 7.16146vw;
-  }
-}
-@media (max-width: 640px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .blog-landing-list-items,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .blog-landing-list-items {
-    padding-top: 8.59375vw;
-  }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .landing-list-items-one-item,
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .landing-list-items-one-item {
@@ -50177,313 +50133,6 @@ body.blog .view-display-id-blog_content .views-row {
     font-size: 2.1875vw;
   }
 }
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar {
-  position: relative;
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2 {
-  box-sizing: border-box;
-  color: #ffffff;
-  font-family: "FiraSansMedium", sans-serif;
-  font-size: 2.34375vw;
-  line-height: 5vw;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  text-transform: uppercase;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2 {
-    font-size: 30px;
-    line-height: 80px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2 {
-    font-size: 2.92969vw;
-    line-height: 7.8125vw;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2 {
-    font-size: 3.90625vw;
-    line-height: 10.41667vw;
-    padding-left: 3.90625vw;
-    text-align: left;
-  }
-}
-@media (max-width: 640px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2 {
-    font-size: 18px;
-    line-height: 55px;
-    padding-left: 10px;
-  }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter {
-  bottom: 0px;
-  border: 1px solid;
-  border-bottom: none;
-  margin: 0;
-  right: 3.51563vw;
-  position: absolute;
-  width: 12.8125vw;
-}
-@media (min-width: 769px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter:not(.open),
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter:not(.open) {
-    border-color: transparent !important;
-  }
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter {
-    right: 60px;
-    width: 205px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter {
-    right: 4.39453vw;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter {
-    bottom: auto;
-    border-bottom: 1px solid;
-    margin-top: -19px;
-    right: 5.85938vw;
-    top: 50%;
-    width: 205px;
-  }
-}
-@media (max-width: 640px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter {
-    right: 1.5625vw;
-  }
-}
-@media (max-width: 640px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter {
-    left: 10px;
-    margin: 10px 0;
-    position: relative;
-    right: auto;
-  }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open {
-  background: black;
-}
-@media (min-width: 769px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open {
-    border-bottom: none;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open {
-    border-bottom-color: transparent !important;
-  }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-label {
-  text-align: left;
-  border-color: transparent;
-  background: transparent;
-}
-@media (min-width: 769px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-label {
-    padding: 0 2.5vw 0 0.9375vw;
-  }
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-label {
-    padding: 0 40px 0 15px;
-  }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label span:after,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-label span:after {
-  content: "\e60a";
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-menu,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-menu {
-  background: black;
-  border: 1px solid;
-  border-top: 1px solid #7c7c7c !important;
-  box-sizing: content-box;
-  display: block;
-  left: -1px;
-  top: 0px;
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-menu,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-menu {
-    top: -1px;
-  }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label {
-  background: black;
-  color: white;
-  cursor: pointer;
-  font-family: "FiraSansMedium", sans-serif;
-  font-size: 1.125vw;
-  letter-spacing: 0.5px;
-  line-height: 3.125vw;
-  overflow: hidden;
-  padding-right: 2.5vw;
-  position: relative;
-  text-align: right;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  text-transform: capitalize;
-  white-space: nowrap;
-  width: 100%;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label {
-    font-size: 18px;
-    line-height: 50px;
-    padding-right: 40px;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label {
-    font-size: 14px;
-    letter-spacing: 1px;
-    line-height: 38px;
-    padding: 0 40px 0 15px;
-    text-align: left;
-    width: 100%;
-  }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label span:after,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label span:after {
-  content: "\e609";
-  color: inherit;
-  display: block;
-  font-family: "ico-font";
-  font-size: 16px;
-  margin-right: -8px;
-  position: absolute;
-  right: 25px;
-  top: 0;
-  z-index: 3;
-}
-@media (min-width: 769px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label span:after,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label span:after {
-    font-size: 1vw;
-    margin: 0;
-    right: 0.75vw;
-  }
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label span:after,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label span:after {
-    font-size: 16px;
-    right: 12px;
-  }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu {
-  display: none;
-  margin-top: 3.125vw;
-  max-height: 200px;
-  overflow-y: auto;
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu {
-    margin-top: 50px;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu {
-    margin-top: 39px;
-  }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu li {
-  border-bottom: 1px solid;
-  border-color: #7c7c7c !important;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li:hover span, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li.active span,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu li:hover span,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu li.active span {
-  color: #adadad;
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li:last-child,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu li:last-child {
-  border-bottom: none;
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li span,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu li span {
-  background: none;
-  display: inline-block;
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu li a {
-  color: #ffffff;
-  display: block;
-  font-size: 1.125vw;
-  font-family: "FiraSansMedium", sans-serif;
-  height: 100%;
-  letter-spacing: 1px;
-  line-height: 3.125vw;
-  text-align: left;
-  padding: 0 2.5vw 0 0.9375vw;
-  text-decoration: none;
-  text-transform: capitalize;
-  width: 100%;
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a:hover, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a.active,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu li a:hover,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu li a.active {
-  color: #adadad;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu li a {
-    font-size: 18px;
-    line-height: 50px;
-    padding: 0 40px 0 15px;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu li a,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu li a {
-    font-size: 14px;
-    line-height: 14px;
-    padding: 9px 15px;
-    text-align: left;
-  }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .mCSB_dragger .mCSB_dragger_bar,
-.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .mCSB_dragger .mCSB_dragger_bar {
-  background-color: rgba(222, 216, 216, 0.75);
-}
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .landing-list-items-all {
   padding-top: 0;
 }
@@ -50779,6 +50428,351 @@ body.blog .view-display-id-blog_content .views-row {
     margin-top: 4.6875vw;
     width: 100%;
   }
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar {
+  position: relative;
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+  box-sizing: border-box;
+  color: #ffffff;
+  font-family: "FiraSansMedium", sans-serif;
+  font-size: 2.34375vw;
+  line-height: 5vw;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 30px;
+    line-height: 80px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 2.92969vw;
+    line-height: 7.8125vw;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 3.90625vw;
+    line-height: 10.41667vw;
+    padding-left: 3.90625vw;
+    text-align: left;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar h2,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .upper-bar h2 {
+    font-size: 18px;
+    line-height: 55px;
+    padding-left: 10px;
+  }
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+  border: 1px solid;
+  border-bottom: none;
+  margin: 0;
+  right: 3.51563vw;
+  top: calc(100% - 3.1875vw);
+  position: absolute;
+  min-width: 12.8125vw;
+  max-width: 300px;
+}
+@media (min-width: 769px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter:not(.open),
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter:not(.open),
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter:not(.open) {
+    border-color: transparent !important;
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    right: 60px;
+    top: calc(100% - 51px);
+    min-width: 205px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    right: 4.39453vw;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    bottom: auto;
+    border-bottom: 1px solid;
+    margin-top: -19px;
+    right: 5.85938vw;
+    top: 50%;
+    min-width: 205px;
+    max-width: 260px;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    right: 1.5625vw;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter {
+    left: 10px;
+    margin: 10px 0;
+    position: relative;
+    right: auto;
+  }
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open {
+  background: black;
+}
+@media (min-width: 769px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open {
+    border-bottom: none;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open {
+    border-bottom-color: transparent !important;
+  }
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-label,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label {
+  text-align: left;
+  border-color: transparent;
+  background: transparent;
+}
+@media (min-width: 769px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-label,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label {
+    padding: 0 2.5vw 0 0.9375vw;
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-label,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label {
+    padding: 0 40px 0 15px;
+  }
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label span:after,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-label span:after,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-label span:after {
+  content: "\e60a";
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-menu,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter.open .filter-menu,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open .filter-menu {
+  background: black;
+  border: 1px solid;
+  border-top: 1px solid #7c7c7c !important;
+  box-sizing: content-box;
+  display: block;
+  left: -1px;
+  top: 0;
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
+  background: black;
+  color: white;
+  cursor: pointer;
+  font-family: "FiraSansMedium", sans-serif;
+  font-size: 1.125vw;
+  letter-spacing: 0.5px;
+  line-height: 3.125vw;
+  overflow: hidden;
+  padding-right: 2.5vw;
+  position: relative;
+  text-align: right;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-transform: capitalize;
+  white-space: nowrap;
+  width: 100%;
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
+    font-size: 18px;
+    line-height: 50px;
+    padding-right: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label {
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 38px;
+    padding: 0 40px 0 15px;
+    text-align: left;
+    width: 100%;
+  }
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label span:after,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label span:after,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label span:after {
+  content: "\e609";
+  color: inherit;
+  display: block;
+  font-family: "ico-font";
+  font-size: 16px;
+  margin-right: -8px;
+  position: absolute;
+  right: 25px;
+  top: 0;
+  z-index: 3;
+}
+@media (min-width: 769px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label span:after,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label span:after,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label span:after {
+    font-size: 1vw;
+    margin: 0;
+    right: 0.75vw;
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label span:after,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-label span:after,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-label span:after {
+    font-size: 16px;
+    right: 12px;
+  }
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu {
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item {
+  border-bottom: 1px solid;
+  border-color: #7c7c7c !important;
+  overflow: hidden;
+  padding: 0 2.5vw 0 0.9375vw;
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item {
+    padding: 0 40px 0 15px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item {
+    padding: 9px 15px;
+  }
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item:hover span, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item.active span,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item:hover span,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item.active span,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item:hover span,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item.active span {
+  color: #adadad;
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item:last-child,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item:last-child,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item:last-child {
+  border-bottom: none;
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item span,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item span,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item span {
+  background: none;
+  display: inline-block;
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item a,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item a,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item a {
+  color: #ffffff;
+  display: block;
+  font-size: 1.125vw;
+  font-family: "FiraSansMedium", sans-serif;
+  height: 100%;
+  letter-spacing: 1px;
+  line-height: 3.125vw;
+  overflow: hidden;
+  text-align: left;
+  text-decoration: none;
+  text-transform: capitalize;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item a:hover, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item a.active,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item a:hover,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item a.active,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item a:hover,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item a.active {
+  color: #adadad;
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item a,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item a,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item a {
+    font-size: 18px;
+    line-height: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item a,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .filter-item a,
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .filter-item a {
+    font-size: 14px;
+    line-height: 14px;
+    text-align: left;
+  }
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .mCSB_dragger .mCSB_dragger_bar,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .item-filter .filter-menu .mCSB_dragger .mCSB_dragger_bar,
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter .filter-menu .mCSB_dragger .mCSB_dragger_bar {
+  background-color: rgba(222, 216, 216, 0.75);
 }
 
 .show-new-design.consumptionator-video-page .video-block {

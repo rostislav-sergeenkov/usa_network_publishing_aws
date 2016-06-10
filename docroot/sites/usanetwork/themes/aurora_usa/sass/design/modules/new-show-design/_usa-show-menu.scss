@@ -202,23 +202,6 @@
           width: get-vw(85px, 768);
         }
       }
-      .second-logo {
-        display: none;
-        float: left;
-        font-size: 1px;
-        line-height: 1;
-        position: relative;
-        width: auto;
-        @include breakpoint($bp-768-width) {
-          display: none;
-        }
-        img {
-          height: 100%;
-          line-height: 1;
-          max-width: none;
-          width: auto;
-        }
-      }
     }
     .title-block {
       margin: 0 auto;

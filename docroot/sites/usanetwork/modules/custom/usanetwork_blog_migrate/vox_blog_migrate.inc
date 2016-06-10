@@ -150,6 +150,10 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
             'key' => 's.pageName',
             'value' => $show_name . ' : ' . $show_name . ' Blog : ' . $entity->title,
           ),
+          array(
+            'key' => 's.prop17',
+            'value' => 'The Verge',
+          ),
           'default' => NULL,
         ),
         'disable' => NULL,

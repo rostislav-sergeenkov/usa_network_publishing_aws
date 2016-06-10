@@ -16,7 +16,11 @@
   <?php if ((!$ajax_load) && (!empty($node_nid))) : ?>
     <div class="upper-bar">
       <div class="title">
-        <h2><?php print $title; ?></h2>
+        <?php if (!empty($is_new_design)) : ?>
+          <h1 class="page-title"><?php print $title; ?></h1>
+        <?php else : ?>
+          <h2><?php print $title; ?></h2>
+        <?php endif; ?>
       </div>
       <?php if (!empty($filters)): ?>
         <div class="all-articles-filter item-filter show-border">

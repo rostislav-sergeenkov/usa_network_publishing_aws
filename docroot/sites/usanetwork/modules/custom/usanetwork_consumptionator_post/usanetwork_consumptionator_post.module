@@ -609,7 +609,7 @@ function _usanetwork_posts_get_posts_tags($show_nid){
   $query->addField('tags_field', 'field_content_tags_tid', 'tag_tid');
   $query->leftJoin('taxonomy_term_data', 'term', 'term.tid=tags_field.field_content_tags_tid');
   $query->addField('term', 'name', 'tag_name');
-  $query->groupBy('term.name');
+  $query->groupBy('term.tid');
   $result = $query->execute()->fetchall();
 
   return $result;

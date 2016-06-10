@@ -22,18 +22,19 @@
             <?php print $title; ?>
           </div>
           <div class="additional">
-            <?php if ($violator && $is_new_design): ?>
-              <div class="violator"><?php print $violator; ?></div>
-            <?php endif; ?>
-            <?php if ($author && $is_new_design): ?>
-              <div class="author">By <span class="author_name"><?php print $author; ?></span></div>
-            <?php endif; ?>
-            <?php if ($is_new_design): ?>
-              <?php print '<span class="episode">' . t('Originally posted on ') . $creating_date . '</span>';?>
+            <?php if ( $is_new_design): ?>
+              <?php if ($violator): ?>
+                <div class="violator"><?php print $violator; ?></div>
+              <?php endif; ?>
+              <?php if ($author): ?>
+                <div class="author">By <span class="author_name"><?php print $author; ?></span></div>
+              <?php endif; ?>
+              <?php print '<div class="episode">' . t('Originally posted on ') . $creating_date . '</div>';?>
+              <?php if (!empty($tags)): print '<div class="tags-wrap"><span class="tags-title">' . t(' Tags: ') . '</span><span class="tags">' . $tags . '</span></div>'; endif;?>
             <?php else: ?>
               <?php print '<span class="episode">' . t('Posted on ') . $creating_date . '</span>';?>
+              <?php if (!empty($tags)): print '<span class="tags-title">' . t(' Tags: ') . '</span><span class="tags">' . $tags . '</span>'; endif;?>
             <?php endif; ?>
-            <?php if (!empty($tags)): print '<span class="tags-title">' . t(' Tags: ') . '</span><span class="tags">' . $tags . '</span>'; endif;?>
           </div>
         </div>
         <div class="share">

@@ -1,3 +1,17 @@
+.show-mrrobot {
+  .articles-block {
+    .usa-section-title {
+      .logo-sponsored {
+        background-image: url("../images/presentedby_theverge.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
 .articles-block {
   @include clear();
   background: $consum-also-back;
@@ -28,6 +42,48 @@
     }
     @include breakpoint($bp-768-width) {
       padding: 0;
+    }
+    .usa-section-title {
+      border-bottom: 2px solid;
+      padding: 0;
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-768-width) {
+        border-bottom: 4px solid;
+      }
+      &.sponsored-enable {
+        .title {
+          color: #ffffff;
+          padding: get-vw(30px, 1280) 0 get-vw(17px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            padding: 37.5px 0 21.25px;
+          }
+          @include breakpoint($bp-768-width) {
+            border: none;
+            padding: get-vw(30px, 640) 0 get-vw(20px, 640);
+          }
+        }
+        .sponsored {
+          height: 29px;
+          margin: 0 auto;
+          padding: 4px;
+          position: static;
+          text-align: center;
+          width: 242px;
+          @include breakpoint($bp-768-width) {
+            height: 33px;
+            padding: 6px;
+            width: 282px;
+          }
+          img {
+            display: inline;
+            height: auto;
+            max-height: none;
+            max-width: none;
+            width: 100%;
+          }
+        }
+      }
     }
     .articles-content {
       @include clear();

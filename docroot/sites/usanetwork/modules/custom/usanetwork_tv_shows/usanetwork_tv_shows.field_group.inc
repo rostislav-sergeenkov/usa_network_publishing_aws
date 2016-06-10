@@ -79,6 +79,33 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_articles|node|tv_show|form';
+  $field_group->group_name = 'group_articles';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_new_design';
+  $field_group->data = array(
+    'label' => 'Articles',
+    'weight' => '32',
+    'children' => array(
+      0 => 'field_articles',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-articles field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_articles|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_bcd_spot|node|tv_show|form';
   $field_group->group_name = 'group_bcd_spot';
   $field_group->entity_type = 'node';
@@ -697,11 +724,12 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_new_design',
       1 => 'field_tvs_spec_features',
-      2 => 'group_bcd_spot',
-      3 => 'group_best_of_section',
-      4 => 'group_episodes_section',
-      5 => 'group_relevant_content',
-      6 => 'group_service',
+      2 => 'group_articles',
+      3 => 'group_bcd_spot',
+      4 => 'group_best_of_section',
+      5 => 'group_episodes_section',
+      6 => 'group_relevant_content',
+      7 => 'group_service',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

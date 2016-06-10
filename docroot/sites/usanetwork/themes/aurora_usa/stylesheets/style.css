@@ -3780,6 +3780,9 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   position: relative;
   width: 100%;
 }
+.no-touch .b-c-d-block li .usa-bcd-carousel-promo:hover .image-block, .b-c-d-block .no-touch li .usa-bcd-carousel-promo:hover .image-block {
+  opacity: 0.85;
+}
 @media (max-width: 768px) {
   .b-c-d-block li .usa-bcd-carousel-promo {
     height: auto;
@@ -3805,6 +3808,9 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   height: 100%;
   position: relative;
   width: 100%;
+  opacity: 0.35;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
 }
 @media (max-width: 768px) {
   .b-c-d-block li .usa-bcd-carousel-promo .image-block {
@@ -3829,6 +3835,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   padding: 1.95313vw;
   position: absolute;
   width: 100%;
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat scroll 0 0;
 }
 @media (min-width: 1601px) {
   .b-c-d-block li .usa-bcd-carousel-promo .meta-wrapper {
@@ -3972,6 +3979,9 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   position: relative;
   width: 100%;
 }
+.no-touch .best-of-section .best-of-content li .usa-best-of-promo:hover .image-block, .best-of-section .best-of-content .no-touch li .usa-best-of-promo:hover .image-block {
+  opacity: 0.85;
+}
 @media (max-width: 768px) {
   .best-of-section .best-of-content li .usa-best-of-promo {
     height: auto;
@@ -3991,6 +4001,9 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   height: 100%;
   position: relative;
   width: 100%;
+  opacity: 0.35;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
 }
 @media (max-width: 768px) {
   .best-of-section .best-of-content li .usa-best-of-promo .image-block {
@@ -4005,15 +4018,17 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 .best-of-section .best-of-content li .usa-best-of-promo .image-block .asset-img img {
   height: 100%;
   width: 100%;
+  opacity: 1 !important;
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta-wrapper {
-  bottom: 2.34375vw;
+  bottom: 0;
   height: auto;
-  left: 1.95313vw;
   max-height: calc(100% - 4.6875vw);
   overflow: hidden;
   position: absolute;
-  width: calc(100% - 3.90625vw);
+  padding: 1.95313vw;
+  width: 100%;
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat scroll 0 0;
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta-wrapper {
@@ -4272,6 +4287,9 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   position: relative;
   width: 100%;
 }
+.no-touch .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo:hover .image-block, .latest-episodes-block .episodes-list .no-touch li .usa-episodes-carousel-promo:hover .image-block {
+  opacity: 0.85;
+}
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo a {
   display: block;
   height: 100%;
@@ -4284,6 +4302,9 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   height: 100%;
   position: relative;
   width: 11.875vw;
+  opacity: 0.35;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
 }
 @media (min-width: 1601px) {
   .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block {
@@ -4801,6 +4822,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   position: absolute;
   width: 100%;
   z-index: 1;
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat scroll 0 0;
 }
 @media (min-width: 1601px) {
   .show-new-design .related-content-block ul li .show-latest-promo .meta-wrapper {
@@ -40573,10 +40595,20 @@ body.blog .view-display-id-blog_content .views-row {
   position: relative;
   width: 100%;
 }
+.no-touch .show-new-design .related-content-block ul li > div:hover .asset-img {
+  opacity: 0.85;
+}
 @media (max-width: 640px) {
   .show-new-design .related-content-block ul li > div {
     height: auto;
   }
+}
+.show-new-design .related-content-block ul li > div .asset-img {
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  -o-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  opacity: 0.35;
 }
 .show-new-design .related-content-block .related-ad {
   background: #656364;

@@ -7,8 +7,14 @@
   <div class="pane-content">
     <div class="articles-wrapper">
       <div class="usa-section-title show-border sponsored-enable">
-        <h2 class="title">Articles</h2>
-        <div class="sponsored show-color"><img src="<?php print $data['#content']['logo'] ?>" alt="" /></div>
+        <h2 class="title"><?php print t('Articles'); ?></h2>
+        <?php if (!empty($data['#content']['logo']['show_logo'])): ?>
+          <div class="sponsored show-color">
+            <?php if (!empty($data['#content']['logo']['logo_image'])): ?>
+              <img src="<?php print $data['#content']['logo']['logo_image'] ?>" alt="" />
+            <?php endif; ?>
+          </div>
+        <?php endif; ?>
       </div>
       <div class="articles-content">
         <ul>

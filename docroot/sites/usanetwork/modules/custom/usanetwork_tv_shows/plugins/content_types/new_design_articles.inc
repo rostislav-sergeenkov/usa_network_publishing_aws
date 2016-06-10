@@ -34,15 +34,18 @@ $plugin = array(
  */
 function new_design_articles_content_type_render($subtype, $conf, $args, $context) {
   $out = array();
+  $logo = array();
 
   $node_show = $context->data;
   $logo_entity = entity_metadata_wrapper('node', $node_show);
   $show_logo = $logo_entity->field_show_service_logo->value();
+  $logo['show_logo'] = $show_logo;
   $author_uid = variable_get('usanetwork_blog_migrate_the_verge_user_uid', 0);
 
   if ($show_logo) {
     $logo = $logo_entity->field_service_logo->value();
     $logo = file_create_url($logo['uri']);
+    $logo['logo_image'] = $logo;
   }
   else {
     $logo = '';

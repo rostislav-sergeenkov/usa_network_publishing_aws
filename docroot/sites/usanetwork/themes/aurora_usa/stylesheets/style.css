@@ -41384,6 +41384,12 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design #header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active + #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl, .show-new-design #header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active + #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters, .show-new-design #header #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active + #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb {
   display: none;
 }
+.show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl,
+.show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters,
+.show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb {
+  position: relative;
+  z-index: 0;
+}
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu,
 .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu,
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu {

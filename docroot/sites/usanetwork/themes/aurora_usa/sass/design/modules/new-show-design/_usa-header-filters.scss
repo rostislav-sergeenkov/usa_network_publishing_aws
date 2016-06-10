@@ -46,6 +46,10 @@
   #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl,
   #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters,
   #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb {
+
+    position: relative;
+    z-index: 0;
+
     .upper-menu {
       @include clear();
       padding: get-vw(16px, 1280) get-vw(12px, 1280);

@@ -245,6 +245,14 @@
               @include breakpoint($bp-768-width) {
                 margin-bottom: get-vw(30px, 768);
               }
+              .title {
+                font-size: 38px;
+                margin: 0;
+                padding: 0;
+                @include breakpoint($bp-min-1601-width) {
+                  font-size: 54px;
+                }
+              }
             }
             .additional {
               color: $consum-carousel-odd;

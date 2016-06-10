@@ -8,20 +8,7 @@
     width: 100%;
     .blog-landing-list-items {
       margin-bottom: 100px;
-      //padding-top: get-vw(90px, 1280);
       position: relative;
-      @include breakpoint ($bp-min-1601-width) {
-        //padding-top: 135px;
-      }
-      @include breakpoint ($bp-1024-width) {
-        //padding-top: get-vw(90px, 1024);
-      }
-      @include breakpoint ($bp-768-width) {
-        //padding-top: get-vw(55px, 768);
-      }
-      @include breakpoint ($bp-640-width) {
-        //padding-top: get-vw(55px, 640);
-      }
     }
     .landing-list-items-one-item {
       overflow: auto;
@@ -711,7 +698,7 @@
     // upper bar
     .upper-bar {
       position: relative;
-      h2 {
+      h2, .page-title {
         box-sizing: border-box;
         color: #ffffff;
         font-family: $fira-sans-medium;

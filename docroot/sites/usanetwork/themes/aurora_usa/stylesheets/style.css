@@ -40256,9 +40256,9 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 .show-new-design {
-  background: #181818;
+  background: #000000;
 }
-.show-new-design.usa-tv-show, .show-new-design.consumptionator-video-page {
+.show-new-design.usa-tv-show {
   background: -moz-linear-gradient(top, black 0%, black 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);
   background: -webkit-linear-gradient(top, black 0%, black 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);
   background: linear-gradient(to bottom, #000000 0%, #000000 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);

@@ -649,7 +649,8 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = 
     }
     $query->groupBy('cp.nid');
     $query->addExpression("GROUP_CONCAT(term.name SEPARATOR ', ')", 'tags');
-    $query->orderBy('post_covts.field_promo_created_ovts_value', 'DESC');
+    $query->addExpression('IF(post_covts.field_promo_created_ovts_value is NULL, cp.created, post_covts.field_promo_created_ovts_value)', 'sorted_time');
+    $query->orderBy('sorted_time', 'DESC');
     $query->range($offset * USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS, USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS);
     $result = $query->execute()->fetchAll();
 

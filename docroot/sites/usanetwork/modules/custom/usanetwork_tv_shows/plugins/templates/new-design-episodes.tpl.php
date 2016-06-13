@@ -34,19 +34,25 @@
       <div class="meta-wrapper-inner">
         <div class="meta">
           <div class="caption"><?php print $main['season']; ?>&nbsp<?php print $main['episode']; ?></div>
-          <div class="title">
-            <?php if (!empty($data['#content']['links'])): ?>
-              <?php print t('Where to Watch'); ?>
-            <?php else: ?>
+          <?php if (!empty($main['video_link'])): ?>
+            <div class="title">
               <?php print $main['title']; ?>
-            <?php endif;?>
-          </div>
-          <?php if (!empty($data['#content']['links'])) : ?>
-            <div class="additional">
-              <?php foreach ($data['#content']['links'] as $link): ?>
-                <a href="<?php print $link['url'] ?>" class="additional-link show-color show-font"><?php print $link['title'] ?> ></a><br>
-              <?php endforeach; ?>
             </div>
+            <div class="additional">
+              <a href="<?php print $main['video_link']; ?>" class="additional-link show-color show-font"><?php print t('Watch'); ?> ></a><br>
+              <a href="<?php print $main['episode_link']; ?>" class="additional-link show-color show-font"><?php print t('Read the Recap'); ?> ></a><br>
+            </div>
+          <?php else: ?>
+            <div class="title">
+              <?php print t('Where to Watch'); ?>
+            </div>
+            <?php if (!empty($main['where2watch_links'])) : ?>
+              <div class="additional">
+                <?php foreach ($main['where2watch_links'] as $link): ?>
+                  <a href="<?php print $link['url'] ?>" class="additional-link show-color show-font"><?php print $link['title'] ?> ></a><br>
+                <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
           <?php endif; ?>
         </div>
       </div>

@@ -780,18 +780,7 @@ function _usanetwork_person_render_where2watch_block() {
         }
       }
 
-      $query = db_select('file_managed', 'fm');
-      $query->fields('fm', array('fid'));
-      $query->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
-      $query->join('mpx_video', 'mpx_video', 'fm.fid=mpx_video.fid');
-      $query->condition('mpx_video.status', FILE_PUBLISHED);
-      $query->join('field_data_field_show', 'field_show', 'fm.fid=field_show.entity_id');
-      $query->condition('field_show.field_show_target_id', $show_node->nid);
-      $query->join('field_data_field_mpx_full_episode', 'full_episode', 'fm.fid=full_episode.entity_id');
-      $query->condition('full_episode.field_mpx_full_episode_value', '1');
-      $query->range(0, 1);
-
-      $is_full_exists = $query->execute()->fetchAll();
+      $is_full_exists = _usanetwork_is_full_video_exists($show_node);
 
       $theme_vars = array(
         'title' => t('Where to Watch'),
@@ -813,6 +802,30 @@ function _usanetwork_person_render_where2watch_block() {
   } else {
     return NULL;
   }
+}
+
+/**
+ * Helper function for finding out if full video exist for show
+ */
+function _usanetwork_is_full_video_exists($show) {
+  if (!is_object($show)) {
+    $show = node_load($show);
+  }
+
+  $query = db_select('file_managed', 'fm');
+  $query->fields('fm', array('fid'));
+  $query->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
+  $query->join('mpx_video', 'mpx_video', 'fm.fid=mpx_video.fid');
+  $query->condition('mpx_video.status', FILE_PUBLISHED);
+  $query->join('field_data_field_show', 'field_show', 'fm.fid=field_show.entity_id');
+  $query->condition('field_show.field_show_target_id', $show->nid);
+  $query->join('field_data_field_mpx_full_episode', 'full_episode', 'fm.fid=full_episode.entity_id');
+  $query->condition('full_episode.field_mpx_full_episode_value', '1');
+  $query->range(0, 1);
+
+  $is_full_exists = $query->execute()->fetchAll();
+
+  return $is_full_exists;
 }
 
 /*

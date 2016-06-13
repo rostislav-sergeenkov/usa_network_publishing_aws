@@ -270,7 +270,7 @@ function _usanetwork_consumptionator_post_main_block() {
     if (!empty($original_link['url'])) {
       $violator = usanetwork_core_api_get_violator('node', $node->nid);
       if ($violator) {
-        $violator = l($violator, $original_link->url, array(
+        $violator = l($violator, $original_link['url'], array(
           'attributes' => array('class' => 'violator_link show-color'),
           'html' => TRUE,
         ));
@@ -538,15 +538,17 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
         'url' => url('node/' . $node->nid . '/blog' . $blog_url),
         'active' => (empty($tag_id)) ? TRUE : FALSE,
       );
-      foreach ($post_tags as $post_tag) {
-        $taxonomy_path = drupal_get_path_alias('taxonomy/term/' . $post_tag->tag_tid);
-        $tag_title = t('Featured From @term_name', array('@term_name' => $post_tag->tag_name));
-        $theme_variables['filters'][$post_tag->tag_tid] = array(
+      $post_tid_verge = variable_get('usanetwork_blog_migrate_the_verge_taxonomy_term_tid', NULL);
+      if ($post_tid_verge) {
+        $post_tag = taxonomy_term_load($post_tid_verge);
+        $taxonomy_path = drupal_get_path_alias('taxonomy/term/' . $post_tid_verge);
+        $tag_title = t('Featured From @term_name', array('@term_name' => $post_tag->name));
+        $theme_variables['filters'][$post_tid_verge] = array(
           'title' => $tag_title,
           'url' => url('node/' . $node->nid . '/' . $taxonomy_path),
-          'active' => ($tag_id == $post_tag->tag_tid) ? TRUE : FALSE,
+          'active' => ($tag_id == $post_tid_verge) ? TRUE : FALSE,
         );
-        if ($tag_id == $post_tag->tag_tid) {
+        if ($tag_id == $post_tid_verge) {
           $theme_variables['title'] = $tag_title;
           $theme_variables['active_filter_title'] = $theme_variables['title'];
         }

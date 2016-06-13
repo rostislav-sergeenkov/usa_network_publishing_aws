@@ -14,7 +14,12 @@
         <?php foreach ($explore_filters as $explore_filter): ?>
           <li class="filter-item<?php if ($explore_filter['active'] == TRUE): print ' active'; endif; ?>">
             <a href="<?php print $explore_filter['url']; ?>#explore-landing-page-header"<?php if (isset($explore_filter['id'])):?> data-type="<?php print $explore_filter['id'];?>"<?php endif;?> class="no-ajax show-border">
-              <span class="title"><?php print $explore_filter['name']; ?></span> <span class="items-in show-color show-font">(<?php print $explore_filter['items_count']; ?>)</span>
+              <?php if (empty($explore_filter['first_item'])): ?>
+                <span class="title"><?php print $explore_filter['name']; ?></span>
+              <?php else: ?>
+                <h1><span class="title"><?php print $explore_filter['name']; ?></span></h1>
+              <?php endif; ?>
+              <span class="items-in show-color show-font">(<?php print $explore_filter['items_count']; ?>)</span>
             </a>
           </li>
         <?php endforeach; ?>

@@ -14,7 +14,12 @@
         <?php foreach ($photo_filters as $photo_filter): ?>
           <li class="filter-item<?php if ($photo_filter['active'] == TRUE): print ' active'; endif; ?>">
             <a href="<?php print $photo_filter['url']; ?>#photos-landing-page-header"<?php if (isset($photo_filter['id'])):?> data-type="<?php print $photo_filter['id'];?>"<?php endif;?> class="no-ajax show-border">
-              <span class="title"><?php print $photo_filter['name']; ?></span> <span class="items-in show-color show-font">(<?php print $photo_filter['items_count']; ?>)</span>
+              <?php if (empty($photo_filter['first_item'])): ?>
+                <span class="title"><?php print $photo_filter['name']; ?></span>
+              <?php else: ?>
+                <h1><span class="title"><?php print $photo_filter['name']; ?></span></h1>
+              <?php endif; ?>
+              <span class="items-in show-color show-font">(<?php print $photo_filter['items_count']; ?>)</span>
             </a>
           </li>
         <?php endforeach; ?>

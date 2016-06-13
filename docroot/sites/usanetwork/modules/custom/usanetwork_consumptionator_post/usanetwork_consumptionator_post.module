@@ -270,7 +270,7 @@ function _usanetwork_consumptionator_post_main_block() {
     if (!empty($original_link['url'])) {
       $violator = usanetwork_core_api_get_violator('node', $node->nid);
       if ($violator) {
-        $violator = l($violator, $original_link->url, array(
+        $violator = l($violator, $original_link['url'], array(
           'attributes' => array('class' => 'violator_link show-color'),
           'html' => TRUE,
         ));

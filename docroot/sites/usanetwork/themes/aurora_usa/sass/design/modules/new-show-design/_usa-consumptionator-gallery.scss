@@ -591,6 +591,13 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               text-overflow: ellipsis;
               width: 100%;
               white-space: nowrap;
+              h1 {
+                color: $consum-carousel-text;
+                display: inline-block;
+                font-size: 25px;
+                font-family: $tex-gyreschola-italic;
+                white-space: nowrap;
+              }
               .slide-index {
                 font-size: 27px;
                 font-family: $fira-sans-medium;
@@ -598,6 +605,9 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               @include breakpoint($bp-1600-width) {
                 font-size: 13px;
                 padding-right: 375px;
+                h1 {
+                  font-size: 13px;
+                }
                 .slide-index {
                   font-size: 14px;
                 }
@@ -607,6 +617,9 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 font-size: 12px;
                 left: 70px;
                 padding-right: 320px;
+                h1 {
+                  font-size: 12px;
+                }
                 .slide-index {
                   font-size: 13px;
                 }
@@ -619,6 +632,9 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 bottom: 5px;
                 font-size: 11px;
                 padding-right: 240px;
+                h1 {
+                  font-size: 11px;
+                }
                 .slide-index {
                   font-size: 12px;
                 }

@@ -140,10 +140,9 @@ function new_design_articles_content_type_get_latest_articles($author_uid, $node
         }
 
         $author_term = usanetwork_consumptionator_post_get_author('node', $entity_wrapper->value());
-        $author_name = NULL;
+        $out['items'][$raw]['author'] = NULL;
         if ($author_term) {
-          $author_name = $author_term->name;
-          $out['items'][$raw]['author'] = $author_name;
+          $out['items'][$raw]['author'] = $author_term->name;
         }
 
         if (isset($entity_wrapper->created)) {

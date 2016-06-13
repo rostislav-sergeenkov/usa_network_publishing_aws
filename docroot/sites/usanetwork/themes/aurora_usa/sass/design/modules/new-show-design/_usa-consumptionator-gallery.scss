@@ -486,6 +486,10 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               top: 0;
               position: absolute;
               width: 100%;
+              &.portrait {
+                margin: 0 auto;
+                width: auto;
+              }
             }
           }
           .slide-info {

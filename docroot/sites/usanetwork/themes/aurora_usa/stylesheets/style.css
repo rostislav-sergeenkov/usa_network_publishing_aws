@@ -47006,6 +47006,10 @@ body.blog .view-display-id-blog_content .views-row {
   position: absolute;
   width: 100%;
 }
+.show-new-design.consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .show-new-design .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait {
+  margin: 0 auto;
+  width: auto;
+}
 .show-new-design.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .show-new-design .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
   box-sizing: border-box;
   display: none;

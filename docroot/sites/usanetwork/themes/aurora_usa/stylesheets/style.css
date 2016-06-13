@@ -46354,6 +46354,59 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design .consumptionator-episode-main-block .episode-info-header .share .gig-button-container [id$='reaction4-share_img']:before {
   color: #545454;
 }
+.show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block h1, .show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block h2 {
+  margin: 0;
+  padding: 0;
+}
+.show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .episode .episode-inner {
+  font-family: "FiraSansMedium", sans-serif;
+  font-size: 1.75781vw;
+  line-height: 1.4;
+}
+@media (min-width: 1601px) {
+  .show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .episode .episode-inner {
+    font-size: 24px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .episode .episode-inner {
+    font-size: 2.92969vw;
+  }
+}
+.show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .episode-title {
+  margin-bottom: 0 !important;
+}
+@media (min-width: 1601px) {
+  .show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .episode-title {
+    margin-bottom: 0 !important;
+  }
+}
+.show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .episode-title .episode-title-inner {
+  color: black;
+  font-family: "FiraSansMedium", sans-serif;
+  font-size: 36px;
+  line-height: 1.4;
+}
+@media (min-width: 1601px) {
+  .show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .episode-title .episode-title-inner {
+    font-size: 40px;
+  }
+}
+.show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .additional {
+  color: #000000 !important;
+  font-family: "FiraSansRegular", sans-serif;
+  font-size: 1.40625vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .additional {
+    font-size: 18px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .additional {
+    font-size: 2.34375vw;
+  }
+}
 
 @media (min-width: 1025px) {
   body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) .slick-list,
@@ -47891,7 +47944,12 @@ body.blog .view-display-id-blog_content .views-row {
   float: left;
   width: 50%;
 }
+.show-new-design .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left h1 {
+  margin: 0;
+  padding: 0;
+}
 .show-new-design .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
+  display: block;
   font-family: "FiraSansMedium", sans-serif;
   font-size: 38px;
   line-height: 1.3;
@@ -47902,6 +47960,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 .show-new-design .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
+  display: block;
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 19.5px;
   color: #3e3e3e;

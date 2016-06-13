@@ -6701,109 +6701,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_show-field_episodes_block_links'
-  $field_instances['node-tv_show-field_episodes_block_links'] = array(
-    'bundle' => 'tv_show',
-    'custom_add_another' => '',
-    'custom_remove' => '',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'block_cover_title' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 219,
-      ),
-      'follow_social' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_episodes_block_links',
-    'label' => 'Links',
-    'required' => 0,
-    'settings' => array(
-      'absolute_url' => 1,
-      'attributes' => array(
-        'class' => '',
-        'configurable_class' => 0,
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'rel_remove' => 'default',
-      'title' => 'required',
-      'title_label_use_field_label' => 0,
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 0,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 33,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_show-field_fb_children'
   $field_instances['node-tv_show-field_fb_children'] = array(
     'bundle' => 'tv_show',
@@ -18431,7 +18328,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Featured Video Promos');
   t('Floodlight Category');
   t('Floodlight Type');
-  t('Gigya Share Bar');
   t('Google+ page');
   t('H1');
   t('Hashtag');
@@ -18446,7 +18342,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Legal Copy');
   t('Limited to 20 characters or less. This displays in the show header.');
   t('Link');
-  t('Links');
   t('Lyris List ID');
   t('MARKERS');
   t('Main Block Content');

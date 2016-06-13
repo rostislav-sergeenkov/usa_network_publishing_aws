@@ -30,6 +30,9 @@
           <?php if (!empty($title)): ?>
             <div class="title"><?php print $title; ?></div>
           <?php endif; ?>
+          <?php if (!empty($video_link)) : ?>
+            <div class="additional show-color show-font"><?php print t('Watch');?></div>
+          <?php endif; ?>
           <div class="additional show-color show-font"><?php print t('Read the recap');?></div>
         </div>
       </div>

@@ -443,7 +443,6 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '31',
     'children' => array(
       0 => 'field_show_episode_block',
-      1 => 'field_episodes_block_links',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

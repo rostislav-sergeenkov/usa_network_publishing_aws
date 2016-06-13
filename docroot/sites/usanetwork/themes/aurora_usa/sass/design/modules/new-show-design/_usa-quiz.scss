@@ -8,6 +8,9 @@
   .consum-sidebar {
     background: black;
     .items-block {
+      @include breakpoint($bp-min-1025-width) {
+        margin-bottom: 32px;
+      }
       .episodes-list-slider {
         &.horizontal {
           @include breakpoint($bp-640-width) {

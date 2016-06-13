@@ -12,6 +12,7 @@
  $(element).usaShowMenu() - init carousel
  */
 
+var USAN = USAN || {};
 
 (function ($) {
 
@@ -28,6 +29,10 @@
 
       // default settings
       _.defaults = {
+        headerSelector: '#header', // string
+        topMenuBlockSelector: '.top-menu-block', // string
+        bottomMenuBlockSelector: '.bottom-menu-block', // string
+        socialBlockSelector: '.social-block', // string
         showMenuWrapSelector: '.show-menu-tab', // string
         showMenuSelector: '.show-menu', // string
         showMenuItemSelector: '.show-menu-item', // string
@@ -39,6 +44,7 @@
         initAppClass: 'usa-show-menu-initialized',
         showMenuMobileBp: 768,
         activeClass: 'active',
+        classHeaderMenuOpen: 'menu-open',
         classActiveLink: 'active-link',
         classAnimating: 'velocity-animating',
         classShowMenuScrollEnd: 'show-menu-scroll-end',
@@ -50,6 +56,8 @@
       _.options = $.extend(true, _.defaults, settings);
 
       // params
+      _.options.isMobileDevice = usa_deviceInfo.mobileDevice;
+      _.options.windowInnerHeight = window.innerHeight;
       _.options.isMobileBp = false;
       _.options.isMenuOpenButtonActive = false;
       _.options.isMenuSignUplinkActive = false;
@@ -59,7 +67,11 @@
 
       // elements
       _.$body = $(document.body);
+      _.$header = $(_.options.headerSelector);
       _.$mainWrap = $(element);
+      _.$topMenuBlock = _.$mainWrap.find(_.options.topMenuBlockSelector);
+      _.$bottomMenuBlock = _.$mainWrap.find(_.options.bottomMenuBlockSelector);
+      _.$socialMenuBlock = _.$mainWrap.find(_.options.socialBlockSelector);
       _.$showMenuWrap = _.$mainWrap.find(_.options.showMenuWrapSelector);
       _.$showMenu = _.$showMenuWrap.find(_.options.showMenuSelector);
       _.$showMenuItems = _.$showMenu.find(_.options.showMenuItemSelector);
@@ -140,27 +152,23 @@
     }
   };
 
-  usaShowMenu.prototype.calcMenuHeight = function () {
-
-    var _ = this;
-
-    _.options.windowScreenHeigth = window.screen.height;
-
-  };
-
   usaShowMenu.prototype.initMenuOpenHandler = function () {
 
     var _ = this,
+        $header = _.$header,
         $menuOpenButton = _.$menuOpenButton,
         $mainWrap = _.$mainWrap,
+        classHeaderMenuOpen = _.options.classHeaderMenuOpen,
         activeClass = _.options.activeClass;
 
     if (!_.options.isMenuOpenButtonActive) {
       _.options.isMenuOpenButtonActive = true;
+      _.addElemClass($header, classHeaderMenuOpen, null);
       _.addElemClass($menuOpenButton, activeClass, null);
       _.addElemClass($mainWrap, activeClass, null);
     } else {
       _.options.isMenuOpenButtonActive = false;
+      _.removeElemClass($header, classHeaderMenuOpen, null);
       _.removeElemClass($menuOpenButton, activeClass, null);
       _.removeElemClass($mainWrap, activeClass, null);
     }
@@ -286,12 +294,8 @@
 
           _.getScrollDirection($window.pageYOffset);
 
-          console.info($(_.$showMenuWrap).outerHeight());
-
-          if (Math.abs($window.pageYOffset - _.options.pageYOffset) > $(_.$showMenuWrap).outerHeight()) {
-
-            _.options.pageYOffset = $window.pageYOffset;
-
+          // close menu & form on scroll to top
+          if (USAN.hasOwnProperty('scrollToTop') && USAN.scrollToTop) {
             if (_.options.isMenuOpenButtonActive) {
               _.initMenuOpenHandler();
             }
@@ -300,6 +304,19 @@
               _.initSignUpFormHandler();
             }
           }
+
+          // if (Math.abs($window.pageYOffset - _.options.pageYOffset) > $(_.$showMenuWrap).outerHeight()) {
+          //
+          //   _.options.pageYOffset = $window.pageYOffset;
+          //
+          //   if (_.options.isMenuOpenButtonActive) {
+          //     _.initMenuOpenHandler();
+          //   }
+          //
+          //   if (_.options.isMenuSignUplinkActive) {
+          //     _.initSignUpFormHandler();
+          //   }
+          // }
         })
         .bind('resize', function (e) {
 
@@ -359,7 +376,7 @@
 
     _.options.isMobileBp = _.checkMatchWindowWidth('max', _.options.showMenuMobileBp);
     _.options.pageYOffset = window.pageYOffset;
-    _.options.windowScreenHeigth = window.screen.height;
+    _.options.windowInnerHeight = window.innerHeight;
   };
 
   // init usaShowMenu app

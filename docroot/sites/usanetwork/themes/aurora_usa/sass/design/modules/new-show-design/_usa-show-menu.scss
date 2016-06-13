@@ -13,6 +13,11 @@
 
   &.active {
     .top-menu-block {
+      .top-menu-block-inner {
+        @include breakpoint($bp-768-width) {
+          padding: get-vw(15px, 768) 0 get-vw(18px, 768);
+        }
+      }
       .logo-block {
         @include breakpoint($bp-768-width) {
           margin-top: calc(#{get-vw(-17.5px, 768) + get-vw(-16px, 768)});
@@ -33,6 +38,13 @@
       .bottom-menu-block-inner {
         @include breakpoint($bp-768-width) {
           display: block;
+          height: 100%;
+        }
+        .show-menu-tab {
+          @include breakpoint($bp-768-width) {
+            // calc 100vh - .top-menu-block: padding-top + padding-bottom + show-mrrobot: height + tune-in: line-height + margin-top + social-block
+            //max-height: calc(100vh - #{get-vw(15px, 768) + get-vw(18px, 768) + get-vw(57px, 768) + get-vw(18px, 768) + get-vw(10px, 768) + get-vw(86px, 768)} - 2px);
+          }
         }
       }
     }
@@ -235,8 +247,8 @@
         }
         @include breakpoint($bp-768-width) {
           display: none;
-          margin-top: get-vw(10px, 768);
-          font-size: get-vw(16px, 768);
+          padding-top: get-vw(10px, 768);
+          font-size: get-vw(18px, 768);
           line-height: 1;
         }
       }
@@ -305,12 +317,8 @@
   .bottom-menu-block {
     border-bottom: 2px solid;
     border-top: 2px solid;
-    //height: get-vw(60px, 1280);
     height: auto;
     width: 100%;
-    @include breakpoint($bp-min-1601-width) {
-      //height: 75px;
-    }
     @include breakpoint($bp-768-width) {
       border-bottom: 2px solid;
       border-top: none;
@@ -336,25 +344,6 @@
         max-width: none !important;
         height: 100%;
       }
-      //&:not(.show-menu-scroll-end) {
-      //  &:after {
-      //    content: '';
-      //    display: block;
-      //    width: 100%;
-      //    height: 9.1vw;
-      //    position: absolute;
-      //    bottom: 0;
-      //    background: -moz-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
-      //    background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(135, 135, 135, 0)), color-stop(100%, rgba(0, 0, 0, 1)));
-      //    background: -webkit-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
-      //    background: -o-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
-      //    background: -ms-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
-      //    background: linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
-      //    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
-      //    background-repeat: no-repeat;
-      //    z-index: 1;
-      //  }
-      //}
       .show-menu {
         height: 100%;
         .show-menu-item {
@@ -363,13 +352,7 @@
             background: $header-full-episodes-back;
             border-bottom: 1px solid $header-new-menu-item-border;
             float: none;
-            height: get-vw(70px, 768);
             width: 100%;
-          }
-          &.active-link {
-            @include breakpoint($bp-768-width) {
-              height: auto;
-            }
           }
           &:last-child {
             @include breakpoint($bp-768-width) {
@@ -396,11 +379,14 @@
               line-height: 71px;
               padding: 0 36.25px;
             }
+            @include breakpoint($bp-1024-width) {
+              padding: 0 get-vw(21px, 1024);
+            }
             @include breakpoint($bp-768-width) {
               color: $header-new-menu-item-color;
               font-size: get-vw(26px, 768);
-              line-height: calc(#{get-vw(70px, 768)} - 4px);
-              padding: get-vw(4px, 768) get-vw(40px, 768) 0;
+              line-height: 1;
+              padding: get-vw(39px, 768) get-vw(40px, 768) get-vw(35px, 768);
               text-align: left;
               width: 100%;
             }
@@ -452,6 +438,13 @@
     }
   }
   #header {
+    &.menu-open {
+      #head-leaderboard {
+        @include breakpoint($bp-768-width) {
+          display: none;
+        }
+      }
+    }
     &.usa-sticky-header-initialized {
 
       // header added transition for elements
@@ -509,10 +502,6 @@
             @include breakpoint($bp-min-769-width) {
               border-bottom: 1px solid;
               border-top: 1px solid;
-              //height: calc(#{get-vw(60px, 1280)} * 0.7);
-            }
-            @include breakpoint($bp-min-1601-width) {
-              //height: calc(75px * 0.7);
             }
             @include breakpoint($bp-768-width) {
               border-bottom: 1px solid;

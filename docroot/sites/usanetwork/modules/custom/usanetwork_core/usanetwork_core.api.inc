@@ -169,10 +169,12 @@ function usanetwork_core_api_get_violator($entity_type, $entity_id) {
       case 'tv_episode':
         $violator = 'Recap';
         break;
-      case 'consumpt_post' || 'post':
+      case 'consumpt_post':
+      case 'post':
         $violator = 'Article';
         break;
-      case 'catchall_page' || 'usanetwork_promo':
+      case 'catchall_page':
+      case 'usanetwork_promo':
         $violator = 'Extras';
         break;
     }

@@ -1,4 +1,15 @@
 #header {
+  &.usa-sticky-header {
+    .usa-newsletter-subscription-wrap {
+      padding: 0;
+      @include breakpoint($bp-min-1601-width) {
+        padding: 0;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: 0;
+      }
+    }
+  }
   .menu-sign-up {
     &.active-link {
       background-color: $change-episode-color !important;
@@ -7,15 +18,19 @@
 }
 
 .usa-newsletter-subscription-wrap {
-  background-color: $change-episode-color;
   height: auto;
   left: 0;
   top: calc(100% - 3px);
+  padding: 0 get-vw(16px, 1280);
   position: absolute;
   min-width: 300px;
   width: 100%;
+  @include breakpoint($bp-min-1601-width) {
+    padding: 0 20px;
+  }
   @include breakpoint($bp-768-width) {
     background: black;
+    padding: 0;
     position: static;
   }
   .messages {
@@ -36,10 +51,10 @@
   }
 }
 
-
 #usa-newsletter-subscription-mobile,
 #usa-newsletter-subscription-desktop {
   @include clear;
+  background-color: $change-episode-color;
   border-bottom: 2px solid;
   box-sizing: border-box;
   display: none;

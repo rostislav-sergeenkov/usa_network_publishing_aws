@@ -487,7 +487,8 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               position: absolute;
               width: 100%;
               &.portrait {
-                margin: 0 auto;
+                left: 50%;
+                transform: translateX(-50%);
                 width: auto;
               }
             }

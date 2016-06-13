@@ -76,11 +76,18 @@ function _usanetwork_tv_show_get_episodes_block($show) {
       $where2watch_links = array();
       if (!empty($providers)) {
         foreach ($providers as $provider) {
-          $where2watch_links[] = array(
+          $provider_info = array(
             'url' => $provider['url'],
             'title' => $provider['title'],
           );
+          if (_where2watch_is_provider_featuted($provider)) {
+            $where2watch_links[] = $provider_info;
+          }
         }
+        $where2watch_links[] = array(
+          'url' => url('node/' . $show->nid . '/cast', array('fragment' => 'where-to-watch')),
+          'title' => t('See all'),
+        );
       }
       $first_element_array = array(
         'title' => $first_element->title,

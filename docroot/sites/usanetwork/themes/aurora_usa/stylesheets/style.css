@@ -4032,10 +4032,10 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta-wrapper {
-    bottom: 37.5px;
-    left: 31.25px;
+    bottom: 0;
+    padding: 31.25px;
     max-height: calc(100% - 75px);
-    width: calc(100% - 62.5px);
+    width: 100%;
   }
 }
 @media (max-width: 768px) {
@@ -41976,22 +41976,41 @@ body.blog .view-display-id-blog_content .views-row {
   font-style: italic;
 }
 
+#header.usa-sticky-header .usa-newsletter-subscription-wrap {
+  padding: 0;
+}
+@media (min-width: 1601px) {
+  #header.usa-sticky-header .usa-newsletter-subscription-wrap {
+    padding: 0;
+  }
+}
+@media (max-width: 768px) {
+  #header.usa-sticky-header .usa-newsletter-subscription-wrap {
+    padding: 0;
+  }
+}
 #header .menu-sign-up.active-link {
   background-color: #1e1e1e !important;
 }
 
 .usa-newsletter-subscription-wrap {
-  background-color: #1e1e1e;
   height: auto;
   left: 0;
   top: calc(100% - 3px);
+  padding: 0 1.25vw;
   position: absolute;
   min-width: 300px;
   width: 100%;
 }
+@media (min-width: 1601px) {
+  .usa-newsletter-subscription-wrap {
+    padding: 0 20px;
+  }
+}
 @media (max-width: 768px) {
   .usa-newsletter-subscription-wrap {
     background: black;
+    padding: 0;
     position: static;
   }
 }
@@ -42011,6 +42030,7 @@ body.blog .view-display-id-blog_content .views-row {
 
 #usa-newsletter-subscription-mobile,
 #usa-newsletter-subscription-desktop {
+  background-color: #1e1e1e;
   border-bottom: 2px solid;
   box-sizing: border-box;
   display: none;
@@ -44184,20 +44204,11 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 .usa-show-aspot .pane-new-design-relevant-content {
-  background: #111111;
+  background: none;
   float: right;
   height: 100%;
   overflow: hidden;
   width: 23%;
-}
-@media (min-width: 769px) {
-  .usa-show-aspot .pane-new-design-relevant-content {
-    background: #000000;
-    background: -moz-linear-gradient(top, black 0%, #121212 10%, #121212 90%, black 100%);
-    background: -webkit-linear-gradient(top, black 0%, #121212 10%, #121212 90%, black 100%);
-    background: linear-gradient(to bottom, #000000 0%, #121212 10%, #121212 90%, #000000 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#000000',GradientType=0 );
-  }
 }
 @media (max-width: 768px) {
   .usa-show-aspot .pane-new-design-relevant-content {
@@ -45594,6 +45605,32 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 
+.show-new-design:not(.usa-tv-show) .usa-wrap {
+  padding: 0 1.25vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design:not(.usa-tv-show) .usa-wrap {
+    padding: 0 20px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design:not(.usa-tv-show) .usa-wrap {
+    padding: 0;
+  }
+}
+.show-new-design.consumptionator-page .usa-wrap {
+  padding-top: 1.25vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design.consumptionator-page .usa-wrap {
+    padding-top: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design.consumptionator-page .usa-wrap {
+    padding-top: 0;
+  }
+}
 .show-new-design.consumptionator-page #block-usanetwork-mpx-video-usanetwork-social-content .social-block {
   border-bottom: 0;
 }
@@ -48659,7 +48696,6 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design .landing-page-container .landing-items-blocks {
   border-bottom: 2px solid;
   margin-bottom: 100px;
-  padding: 0 1.25vw 0;
   position: relative;
   width: 100%;
 }
@@ -48667,16 +48703,6 @@ body.blog .view-display-id-blog_content .views-row {
   clear: both;
   content: '';
   display: table;
-}
-@media (min-width: 1601px) {
-  .show-new-design .landing-page-container .landing-items-blocks {
-    padding: 0 20px 0;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design .landing-page-container .landing-items-blocks {
-    padding: 5.20833vw;
-  }
 }
 .show-new-design .landing-page-container .landing-items-blocks.infinity-finished {
   margin-bottom: 0;
@@ -50029,6 +50055,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div,
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div {
+  border: 1px solid;
   box-sizing: border-box;
   display: inline-block;
   position: relative;
@@ -50039,9 +50066,9 @@ body.blog .view-display-id-blog_content .views-row {
   color: #ffffff;
   display: inline-block;
   font-family: "FiraSansRegular", sans-serif;
-  font-size: 1.17188vw;
+  font-size: 1.40625vw;
   line-height: 1;
-  padding: 1.32813vw 1.95313vw;
+  padding: 1.5625vw 2.34375vw;
   position: relative;
   text-transform: uppercase;
   width: 100%;
@@ -50049,65 +50076,66 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1601px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    font-size: 18px;
-    padding: 26px;
+    font-size: 20px;
+    padding: 20px 30px;
   }
 }
 @media (max-width: 1024px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    font-size: 1.31836vw;
-    padding: 1.17188vw 2.05078vw;
+    font-size: 1.75781vw;
+    padding: 1.95313vw 2.92969vw;
   }
 }
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    font-size: 1.5625vw;
-    padding: 1.69271vw 2.99479vw;
+    font-size: 2.60417vw;
+    padding: 2.60417vw 3.90625vw;
   }
 }
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    font-size: 1.875vw;
-    padding: 2.03125vw 3.125vw;
+    font-size: 4.6875vw;
+    padding: 3.125vw 4.6875vw;
   }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span,
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a span {
   display: inline-block;
+  background: transparent;
   vertical-align: middle;
-  margin-left: 1.71875vw;
+  margin-left: 1.25vw;
 }
 @media (min-width: 1601px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a span {
-    margin-left: 45px;
+    margin-left: 16px;
   }
 }
 @media (max-width: 1024px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a span {
-    margin-left: 2.83203vw;
+    margin-left: 1.5625vw;
   }
 }
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a span {
-    margin-left: 3.77604vw;
+    margin-left: 2.08333vw;
   }
 }
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a span {
-    margin-left: 4.6875vw;
+    margin-left: 2.5vw;
   }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span:after,
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a span:after {
   content: "\e608";
-  color: #ffffff;
+  color: inherit !important;
   font-family: "ico-font";
   font-size: 1.25vw;
   line-height: 1;
@@ -50488,9 +50516,6 @@ body.blog .view-display-id-blog_content .views-row {
     width: 100%;
   }
 }
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div {
-  border: 1px solid;
-}
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div {
     text-align: center;
@@ -50503,60 +50528,10 @@ body.blog .view-display-id-blog_content .views-row {
     width: 100%;
   }
 }
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-  font-size: 1.40625vw;
-  padding: 1.5625vw 2.34375vw;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    font-size: 20px;
-    padding: 20px 30px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    font-size: 1.75781vw;
-    padding: 1.95313vw 2.92969vw;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    font-size: 2.60417vw;
-    padding: 2.60417vw 0;
-  }
-}
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    font-size: 4.6875vw;
     padding: 3.125vw 0;
   }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span {
-  background: transparent;
-  margin-left: 1.25vw;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span {
-    margin-left: 16px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span {
-    margin-left: 1.5625vw;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span {
-    margin-left: 2.08333vw;
-  }
-}
-@media (max-width: 640px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span {
-    margin-left: 2.5vw;
-  }
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a span:after {
-  color: inherit !important;
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links {
   float: right;
@@ -50937,7 +50912,6 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design.consumptionator-video-page .video-block {
   margin: 0;
   overflow: hidden;
-  padding: 0 1.25vw;
   position: relative;
   width: 100%;
 }
@@ -50945,17 +50919,6 @@ body.blog .view-display-id-blog_content .views-row {
   clear: both;
   content: '';
   display: table;
-}
-@media (min-width: 1601px) {
-  .show-new-design.consumptionator-video-page .video-block {
-    padding: 0 20px;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design.consumptionator-video-page .video-block {
-    height: auto;
-    padding: 0;
-  }
 }
 @media (min-width: 769px) {
   .show-new-design.consumptionator-video-page .video-block .consum-sidebar {

@@ -19,6 +19,9 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
     $scenes_count = 0;
     foreach ($vars['items'] as $item) {
       $fc_tg_item = reset($item['entity']['field_collection_item']);
+      if (empty($fc_tg_item['field_season']['#items'][0]['entity']) || empty($fc_tg_item['field_episode']['#items'][0]['entity'])) {
+        continue;
+      }
       $season_node_wrapper = entity_metadata_wrapper('node', $fc_tg_item['field_season']['#items'][0]['entity']);
       $episode_node_wrapper = entity_metadata_wrapper('node', $fc_tg_item['field_episode']['#items'][0]['entity']);
       $scenes = array();

@@ -2849,7 +2849,9 @@
     width: 100%;
     .no-touch &:hover {
       .image-block {
-        opacity: 0.85;
+        .asset-img {
+          opacity: 0.85;
+        }
       }
     }
     a {
@@ -2864,15 +2866,16 @@
       height: 100%;
       position: relative;
       width: get-vw(152px, 1280);
-      opacity: 0.35;
-      @include transition(all 0.1s linear);
       @include breakpoint($bp-min-1601-width) {
         width: 190px;
       }
       .asset-img {
         height: 100%;
+        opacity: 0.35;
         position: relative;
         width: 100%;
+        z-index: 0;
+        @include transition(all 0.1s linear);
         img {
           height: 100%;
           width: 100%;
@@ -2922,14 +2925,33 @@
       }
       .additional {
         background: none;
-        font-family: $fira-sans-regular;
+        display: inline-block;
+        font-family: $fira-sans-medium;
         font-size: get-vw(12px, 1280);
         line-height: get-vw(23px, 1280);
         position: relative;
         text-transform: uppercase;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
         @include breakpoint($bp-min-1601-width) {
           font-size: 15px;
           line-height: 28.75px;
+        }
+
+        &:last-child {
+          margin-left: get-vw(20px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            margin-left: 20px;
+          }
+          @include breakpoint($bp-1024-width) {
+            margin-left: get-vw(20px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            margin-left: get-vw(20px, 640);
+          }
         }
         &:after {
           color: inherit;
@@ -3129,7 +3151,7 @@
         height: 100%;
         width: 100%;
       }
-      .meta-icon {
+      .meta-icon.full-video-icon-default {
         background-image: none;
         border: 2px solid;
         border-radius: 50%;

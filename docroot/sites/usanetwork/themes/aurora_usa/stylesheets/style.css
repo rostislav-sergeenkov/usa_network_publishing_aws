@@ -41214,6 +41214,11 @@ body.blog .view-display-id-blog_content .views-row {
     padding: 0 36.25px;
   }
 }
+@media (max-width: 1024px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    padding: 0 2.05078vw;
+  }
+}
 @media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
     color: #c7c7c7;

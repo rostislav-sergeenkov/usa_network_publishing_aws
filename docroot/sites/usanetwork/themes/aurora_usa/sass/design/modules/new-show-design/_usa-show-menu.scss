@@ -379,11 +379,13 @@
               line-height: 71px;
               padding: 0 36.25px;
             }
+            @include breakpoint($bp-1024-width) {
+              padding: 0 get-vw(21px, 1024);
+            }
             @include breakpoint($bp-768-width) {
               color: $header-new-menu-item-color;
               font-size: get-vw(26px, 768);
               line-height: 1;
-              //line-height: calc(#{get-vw(70px, 768)} - 4px);
               padding: get-vw(39px, 768) get-vw(40px, 768) get-vw(35px, 768);
               text-align: left;
               width: 100%;

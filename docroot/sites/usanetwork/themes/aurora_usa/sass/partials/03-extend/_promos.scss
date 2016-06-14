@@ -2406,7 +2406,7 @@
         @include breakpoint($bp-min-1601-width) {
           font-size: 17.5px;
           margin-left: 6.25px;
-          max-height: 98px;
+          max-height: 97px;
         }
         @include breakpoint($between-769-1024) {
           font-size: get-vw(11px, 1024);

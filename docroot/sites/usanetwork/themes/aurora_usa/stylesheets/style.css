@@ -3806,7 +3806,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   .usa-show-aspot .pane-new-design-relevant-content li .usa-aspot-carousel-promo .meta-wrapper-inner .title {
     font-size: 17.5px;
     margin-left: 6.25px;
-    max-height: 98px;
+    max-height: 97px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -48724,7 +48724,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (min-width: 1025px) {
   .show-new-design .consumptionator-quiz-main-block .consum-sidebar .items-block {
-    margin-bottom: 32px;
+    margin-bottom: 45px;
   }
 }
 @media (max-width: 640px) {
@@ -48802,6 +48802,9 @@ body.blog .view-display-id-blog_content .views-row {
     line-height: 13px;
     text-transform: uppercase;
   }
+}
+.show-new-design .consumptionator-quiz-main-block .consum-sidebar .more-items {
+  background: #000000;
 }
 @media (max-width: 640px) {
   .show-new-design .consumptionator-quiz-main-block .consum-sidebar .more-items {
@@ -50811,6 +50814,9 @@ body.blog .view-display-id-blog_content .views-row {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons {
     width: 100%;
   }
+}
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div.preview_episode_button {
+  margin-top: 10px;
 }
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div {

@@ -9,7 +9,7 @@
     background: black;
     .items-block {
       @include breakpoint($bp-min-1025-width) {
-        margin-bottom: 32px;
+        margin-bottom: 45px;
       }
       .episodes-list-slider {
         &.horizontal {
@@ -95,6 +95,7 @@
       }
     }
     .more-items {
+      background: #000000;
       @include breakpoint($bp-640-width) {
         border: 1px solid;
       }

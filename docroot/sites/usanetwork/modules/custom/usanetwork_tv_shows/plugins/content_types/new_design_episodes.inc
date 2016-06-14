@@ -71,7 +71,7 @@ function _usanetwork_tv_show_get_episodes_block($show) {
   } else {
     $episodes = _usanetwork_tv_show_get_episodes($show);
     if (!empty($episodes)) {
-      $first_element = array_shift($episodes);
+      $first_element = array_pop(array_slice($episodes, -1));
       $providers = field_get_items('node', $show, 'field_where2watch_providers');
       $where2watch_links = array();
       if (!empty($providers)) {
@@ -94,7 +94,7 @@ function _usanetwork_tv_show_get_episodes_block($show) {
         'image_desktop' => image_style_url('1040x585', $first_element->episode_uri),
         'image_mobile' => image_style_url('655x408', $first_element->episode_uri),
         'season' => t('Season @season', array('@season' => $first_element->season_id)),
-        'episode' => t('Episode @episode', array('@episode' => $first_element->episode_id)),
+        'episode' => t('Episode @episode', array('@episode' => 1)),
         'episode_link' => url('node/' . $first_element->nid),
         'where2watch_links' => $where2watch_links,
       );
@@ -139,9 +139,9 @@ function _usanetwork_tv_show_get_episodes($show, $order = 'ASC') {
     $query->addField('field_season_id', 'field_season_id_value', 'season_id');
     $query->join('field_data_field_episode_number', 'field_episode_number', 'n.nid=field_episode_number.entity_id');
     $query->addField('field_episode_number', 'field_episode_number_value', 'episode_id');
+    $query->leftJoin('field_data_field_promo_image_override', 'override_image', 'override_image.entity_id=n.nid');
     $query->join('field_data_field_tv_cover_media', 'field_tv_cover_media', 'n.nid=field_tv_cover_media.entity_id');
-    $query->join('file_managed', 'fm', 'fm.fid=field_tv_cover_media.field_tv_cover_media_fid');
-    $query->addField('fm', 'uri', 'episode_uri');
+    $query->addExpression('IF(override_image.field_promo_image_override_fid is NULL, field_tv_cover_media.field_tv_cover_media_fid, override_image.field_promo_image_override_fid)', 'episode_image_fid');
     $query->orderBy('cast(season_id as unsigned)', $order);
     $query->orderBy('cast(episode_id as unsigned)', $order);
     $query->range(0, 10);
@@ -151,6 +151,8 @@ function _usanetwork_tv_show_get_episodes($show, $order = 'ASC') {
 
     foreach ($result as &$result_item) {
       $episode_data = _usanetwork_episodes_get_episode_full_episode_data($show_nid, $result_item->season_id, $result_item->episode_id);
+      $image_file = file_load((!empty($episode_data->image_fid) ? $episode_data->image_fid : $result_item->episode_image_fid));
+      $result_item->episode_uri = $image_file->uri;
 
       if (!empty($episode_data)) {
         foreach ($episode_data as $key => $value) {

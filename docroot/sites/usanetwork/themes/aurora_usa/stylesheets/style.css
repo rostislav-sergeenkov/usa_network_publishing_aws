@@ -3920,6 +3920,11 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   font-size: 1.17188vw;
   line-height: 1;
   margin-bottom: 1.5625vw;
+  font-family: "FiraSansRegular", sans-serif;
+}
+.b-c-d-block li .usa-bcd-carousel-promo .meta .caption strong, .b-c-d-block li .usa-bcd-carousel-promo .meta .caption b, .b-c-d-block li .usa-bcd-carousel-promo .meta .caption i {
+  font-family: "FiraSansMedium", sans-serif;
+  font-weight: normal;
 }
 @media (min-width: 1601px) {
   .b-c-d-block li .usa-bcd-carousel-promo .meta .caption {
@@ -4015,6 +4020,27 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 @media (max-width: 768px) {
   .b-c-d-block li .usa-bcd-carousel-promo .meta .additional {
     font-size: 2vw;
+  }
+}
+.b-c-d-block li .usa-bcd-carousel-promo .meta .author {
+  color: #ffffff;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 1.40625vw;
+  line-height: 1.4;
+}
+@media (min-width: 1601px) {
+  .b-c-d-block li .usa-bcd-carousel-promo .meta .author {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .b-c-d-block li .usa-bcd-carousel-promo .meta .author {
+    font-size: 1.75781vw;
+  }
+}
+@media (max-width: 768px) {
+  .b-c-d-block li .usa-bcd-carousel-promo .meta .author {
+    font-size: 2.86458vw;
   }
 }
 
@@ -44928,11 +44954,11 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon:after {
-  font-size: 2.34375vw;
+  font-size: 3.51563vw;
 }
 @media (min-width: 1601px) {
   .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon:after {
-    font-size: 30px;
+    font-size: 45px;
   }
 }
 @media (max-width: 1024px) {

@@ -488,7 +488,7 @@
             @include breakpoint($bp-640-width) {
               @include sprite-background(episode-minus-icon);
               margin-top: 0;
-              top: 6px;
+              top: calc(-15px + #{get-vw(21px, 640)});
             }
           }
           .image-block {

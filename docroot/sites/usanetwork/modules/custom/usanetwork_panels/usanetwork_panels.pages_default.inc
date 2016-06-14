@@ -50,20 +50,9 @@ function usanetwork_panels_default_page_manager_handlers() {
           'context' => 'argument_entity_id:node_1',
           'not' => FALSE,
         ),
-        1 => array(
-          'name' => 'entity_field_value:node:tv_show:field_new_design',
-          'settings' => array(
-            'field_new_design' => array(
-              'und' => array(
-                0 => array(
-                  'value' => 1,
-                ),
-              ),
-            ),
-            'field_new_design_value' => array(
-              0 => 1,
-            ),
-          ),
+        2 => array(
+          'name' => 'usa_new_design',
+          'settings' => NULL,
           'context' => 'argument_entity_id:node_1',
           'not' => FALSE,
         ),

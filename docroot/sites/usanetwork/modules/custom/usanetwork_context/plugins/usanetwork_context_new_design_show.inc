@@ -9,7 +9,7 @@ class usanetwork_context_new_design_show extends context_condition {
 
   function execute($node) {
     if ($this->condition_used()) {
-      $new_design = _usanetwork_get_field_item('node', $node, 'field_new_design', 'value');
+      $new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
 
       foreach ($this->get_contexts() as $context) {
         $is_new_design = $this->fetch_from_context($context, 'values');

@@ -749,6 +749,11 @@ function _usanetwork_episodes_get_episode_full_episode_data($show_nid, $season_n
   // Join MPX Full episode
   $query->join('field_data_field_mpx_full_episode', 'full_episode_field', 'full_episode_field.entity_id=mpxv.fid');
   $query->condition('full_episode_field.field_mpx_full_episode_value', '1');
+  // Join MPX Full episode
+  $query->leftJoin('field_data_field_mpx_image', 'mpx_image', 'mpx_image.entity_id=mpxv.fid');
+  $query->leftJoin('field_data_field_promo_image_override', 'override_image', 'override_image.entity_id=mpxv.fid');
+  $query->addExpression('IF(override_image.field_promo_image_override_fid is NULL, mpx_image.field_mpx_image_fid, override_image.field_promo_image_override_fid)', 'image_fid');
+
   // LeftJoin MPX Language
   $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = mpxv.fid');
   $query->condition(

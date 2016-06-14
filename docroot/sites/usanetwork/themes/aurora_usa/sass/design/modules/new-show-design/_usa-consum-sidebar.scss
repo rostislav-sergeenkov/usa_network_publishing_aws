@@ -1,5 +1,6 @@
 .show-new-design {
   .consum-sidebar {
+    box-sizing: border-box;
     background: $consum-back;
     float: left;
     height: 100%;
@@ -17,22 +18,25 @@
       width: 100%;
     }
     &.sticky-sidebar {
+      overflow: hidden;
       @include breakpoint($bp-min-1025-width) {
-        height: calc(100vh - 7.12195vw)!important;
+        //height: calc(100vh - 7.12195vw)!important;
+        height: 100vh !important;
         position: fixed!important;
-        right: 0;
-        top: get-vw(73px, 1025)!important;
+        right: get-vw(16px, 1280);
+        top: 0 !important;
+        //top: get-vw(73px, 1025)!important;
         .more-items {
           bottom: auto!important;
           margin-top: -45px;
         }
       }
       @include breakpoint($bp-min-1601-width) {
-        height: calc(100vh - 135px)!important;
-        left: calc(1200px + (100% - 1600px)/2);
-        top: 135px!important;
+        //height: calc(100vh - 135px)!important;
+        left: calc(1170px + (100% - 1560px)/2);
+        //top: 135px!important;
         right: auto;
-        width: 400px;
+        max-width: 390px;
       }
       &.related-visible, &.social-visible, &.footer-visible {
         @include breakpoint($bp-min-1025-width) {
@@ -124,12 +128,16 @@
       position: relative;
       &.vertical {
         display: block;
+        overflow: hidden;
         height: calc(100% - 90px);
         @include breakpoint($bp-1024-width) {
           display: none;
         }
         &.no-all-link {
           height: calc(100% - 45px);
+        }
+        .mCSB_scrollTools {
+          width: 4px;
         }
         ul {
           height: 100%;
@@ -141,9 +149,13 @@
           width: 100%;
           @include breakpoint($bp-min-1025-width) {
             border-bottom: 2px solid $tonight-section-back;
+            width: calc(100% - #{get-vw(25px, 1600)});
             &:last-child {
               border: none;
             }
+          }
+          @include breakpoint($bp-min-1601-width) {
+            width: calc(100% - 25px);
           }
           > div {
             height: 100%;

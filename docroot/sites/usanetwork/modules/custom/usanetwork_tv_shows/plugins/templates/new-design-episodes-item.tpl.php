@@ -14,9 +14,12 @@
 <?php print (!empty($episode) ? $episode : ''); ?>
 <?php print (!empty($episode_link) ? $episode_link : ''); ?>*/
 ?>
-<div class="node node-usanetwork-promo usa-episodes-carousel-promo">
+<div class="node node-usanetwork-promo usa-episodes-carousel-promo<?php print (!empty($video_link)) ? ' full-episode' : '' ; ?>">
   <a href="<?php print (!empty($episode_link) ? $episode_link : '#'); ?>">
     <div class="image-block">
+      <?php if (!empty($video_link)) : ?>
+        <div class="meta-icon full-video-icon-default"></div>
+      <?php endif; ?>
       <div class="asset-img">
         <img src="<?php print (!empty($image) ? $image : '#'); ?>" alt="">
       </div>
@@ -29,6 +32,9 @@
           <?php endif; ?>
           <?php if (!empty($title)): ?>
             <div class="title"><?php print $title; ?></div>
+          <?php endif; ?>
+          <?php if (!empty($video_link)) : ?>
+            <div class="additional show-color show-font"><?php print t('Watch');?></div>
           <?php endif; ?>
           <div class="additional show-color show-font"><?php print t('Read the recap');?></div>
         </div>

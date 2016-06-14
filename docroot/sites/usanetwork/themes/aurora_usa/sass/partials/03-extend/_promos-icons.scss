@@ -1,4 +1,11 @@
 %usa-violator-icon {
+  .violator_link {
+    font-family: $fira-sans-regular;
+    strong, b, i {
+      font-family: $fira-sans-medium;
+      font-weight: normal;
+    }
+  }
   .violator_icon.verge {
     display: inline-block;
     margin: 0;
@@ -6,6 +13,11 @@
     width: auto;
     vertical-align: middle;
     margin-top: get-vw(-3px, 1280);
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
     @include breakpoint($bp-min-1601-width) {
       margin-top: -3px;
     }
@@ -31,6 +43,34 @@
         font-size: get-vw(16px, 768);
         line-height: get-vw(16px, 768);
       }
+    }
+  }
+}
+
+// full-video-icon-default
+%usa-promo-video-play-icon {
+  background-image: none;
+  box-sizing: content-box;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:after {
+    color: rgba(200, 200, 200, 0.8);
+    display: block;
+    content: '\e632';
+    font-family: $ico-font;
+    position: relative;
+    text-align: center;
+    @include breakpoint($bp-768-width) {
+      color: #ffffff;
     }
   }
 }

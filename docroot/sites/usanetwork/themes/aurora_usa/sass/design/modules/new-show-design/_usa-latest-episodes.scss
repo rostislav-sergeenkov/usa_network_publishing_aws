@@ -45,20 +45,93 @@
       float: none;
       width: 100%;
     }
-    > a {
-      display: block;
-      height: 100%;
-      position: absolute;
-      width: 100%;
+    &.full-episode {
+      .image-block {
+        position: absolute;
+        .meta-icon {
+          @extend %usa-promo-video-play-icon;
+          line-height: get-vw(90px, 1280);
+          margin-left: calc(#{get-vw(-90px, 1280)} / 2);
+          margin-top: calc(#{get-vw(-90px, 1280)} / 2);
+          @include breakpoint($bp-min-1601-width) {
+            line-height: 135px;
+            margin-left: calc(#{-135px} / 2);
+            margin-top: calc(#{-135px} / 2);
+          }
+          @include breakpoint($bp-768-width) {
+            line-height: get-vw(75px, 768);
+            margin-left: calc(#{get-vw(-75px, 768)} / 2);
+            margin-top: calc(#{get-vw(-75px, 768)} / 2);
+          }
+          &:after  {
+            font-size: get-vw(90px, 1280);
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 135px;
+            }
+            @include breakpoint($bp-768-width) {
+              font-size: get-vw(75px, 768);
+            }
+          }
+        }
+      }
+      .meta-wrapper {
+        box-sizing: border-box;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        padding: get-vw(20px, 1280) get-vw(18px, 1280);
+        z-index: 2;
+        @include breakpoint($bp-min-1601-width) {
+          padding: 20px 18px;
+        }
+        @include breakpoint($bp-768-width) {
+          padding: get-vw(20px, 768) get-vw(18px, 768);
+        }
+        .meta {
+          text-align: left;
+        }
+        .caption {
+          font-family: $fira-sans-light;
+        }
+        .title {
+          background: none;
+          color: #ffffff;
+          font-family: $fira-sans-light;
+          text-transform: none;
+          -webkit-text-fill-color: initial;
+        }
+        .additional {
+          .additional-link {
+            font-family: $fira-sans-light;
+            &:first-child {
+              margin-right: get-vw(22px, 1280);
+              @include breakpoint($bp-min-1601-width) {
+                margin-right: 22px;
+              }
+              @include breakpoint($bp-768-width) {
+                margin-right: get-vw(30px, 640);
+              }
+            }
+          }
+          br {
+            display: none;
+            @include breakpoint($bp-768-width) {
+              display: none;
+            }
+          }
+        }
+      }
     }
     .image-block {
       height: 100%;
-      position: relative;
+      position: absolute;
       width: 100%;
+      z-index: 0;
       .asset-img {
         height: 100%;
         position: absolute;
         width: 100%;
+        z-index: 0;
         img {
           height: 100%;
           width: 100%;
@@ -66,8 +139,12 @@
       }
     }
     .meta-wrapper {
+      box-sizing: border-box;
       margin: auto;
+      height: auto;
+      width: 100%;
       position: relative;
+      z-index: 2;
     }
     .meta {
       text-align: center;
@@ -84,7 +161,7 @@
         }
       }
       .title {
-        color: white;
+        color: #ffffff;
         font-family: $fira-sans-medium;
         font-size: get-vw(30px, 1280);
         line-height: 1.1;
@@ -149,6 +226,35 @@
       width: 100%;
       @include breakpoint($bp-min-1601-width) {
         height: calc(((((1600px - 20px*2)*2)/3)*0.5625)/5);
+      }
+      .usa-episodes-carousel-promo {
+        .image-block {
+          .meta-icon {
+            @extend %usa-promo-video-play-icon;
+            line-height: get-vw(45px, 1280);
+            margin-left: calc(#{get-vw(-45px, 1280)} / 2);
+            margin-top: calc(#{get-vw(-45px, 1280)} / 2);
+            @include breakpoint($bp-min-1601-width) {
+              line-height: 45px;
+              margin-left: calc(#{-45px} / 2);
+              margin-top: calc(#{-45px} / 2);
+            }
+            @include breakpoint($bp-1024-width) {
+              line-height: get-vw(25px, 1024);
+              margin-left: calc(#{get-vw(-25px, 1024)} / 2);
+              margin-top: calc(#{get-vw(-25px, 1024)} / 2);
+            }
+            &:after  {
+              font-size: get-vw(45px, 1280);
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 45px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: get-vw(25px, 1024);
+              }
+            }
+          }
+        }
       }
     }
     .mCSB_scrollTools {

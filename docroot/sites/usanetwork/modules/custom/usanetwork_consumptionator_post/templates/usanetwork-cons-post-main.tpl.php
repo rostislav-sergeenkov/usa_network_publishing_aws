@@ -19,7 +19,11 @@
       <div class="post-info-header">
         <div class="post-title-block">
           <div class="post-title">
-            <?php print $title; ?>
+            <?php if ($is_new_design): ?>
+              <h1 class="title"><?php print $title; ?></h1>
+            <?php else: ?>
+              <?php print $title; ?>
+            <?php endif; ?>
           </div>
           <div class="additional">
             <?php if ($is_new_design): ?>

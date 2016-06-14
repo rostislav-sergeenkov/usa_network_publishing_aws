@@ -8,20 +8,7 @@
     width: 100%;
     .blog-landing-list-items {
       margin-bottom: 100px;
-      //padding-top: get-vw(90px, 1280);
       position: relative;
-      @include breakpoint ($bp-min-1601-width) {
-        //padding-top: 135px;
-      }
-      @include breakpoint ($bp-1024-width) {
-        //padding-top: get-vw(90px, 1024);
-      }
-      @include breakpoint ($bp-768-width) {
-        //padding-top: get-vw(55px, 768);
-      }
-      @include breakpoint ($bp-640-width) {
-        //padding-top: get-vw(55px, 640);
-      }
     }
     .landing-list-items-one-item {
       overflow: auto;
@@ -299,6 +286,7 @@
             display: none;
           }
           > div {
+            border: 1px solid;
             box-sizing: border-box;
             display: inline-block;
             position: relative;
@@ -307,47 +295,48 @@
               color: #ffffff;
               display: inline-block;
               font-family: $fira-sans-regular;
-              font-size: get-vw(15px, 1280);
+              font-size: get-vw(18px, 1280);
               line-height: 1;
-              padding: get-vw(17px, 1280) get-vw(25px, 1280);
+              padding: get-vw(20px, 1280) get-vw(30px, 1280);
               position: relative;
               text-transform: uppercase;
               width: 100%;
               @include breakpoint($bp-min-1601-width) {
-                font-size: 18px;
-                padding: 26px;
+                font-size: 20px;
+                padding: 20px 30px;
               }
               @include breakpoint($bp-1024-width) {
-                font-size: get-vw(13.5px, 1024);
-                padding: get-vw(12px, 1024) get-vw(21px, 1024);
+                font-size: get-vw(18px, 1024);
+                padding: get-vw(20px, 1024) get-vw(30px, 1024);
               }
               @include breakpoint($bp-768-width) {
-                font-size: get-vw(12px, 768);
-                padding: get-vw(13px, 768) get-vw(23px, 768);
+                font-size: get-vw(20px, 768);
+                padding: get-vw(20px, 768) get-vw(30px, 768);
               }
               @include breakpoint($bp-640-width) {
-                font-size: get-vw(12px, 640);
-                padding: get-vw(13px, 640) get-vw(20px, 640);
+                font-size: get-vw(30px, 640);
+                padding: get-vw(20px, 640) get-vw(30px, 640);
               }
               span {
                 display: inline-block;
+                background: transparent;
                 vertical-align: middle;
-                margin-left: get-vw(22px, 1280);
+                margin-left: get-vw(16px, 1280);
                 @include breakpoint($bp-min-1601-width) {
-                  margin-left: 45px;
+                  margin-left: 16px;
                 }
                 @include breakpoint($bp-1024-width) {
-                  margin-left: get-vw(29px, 1024);
+                  margin-left: get-vw(16px, 1024);
                 }
                 @include breakpoint($bp-768-width) {
-                  margin-left: get-vw(29px, 768);
+                  margin-left: get-vw(16px, 768);
                 }
                 @include breakpoint($bp-640-width) {
-                  margin-left: get-vw(30px, 640);
+                  margin-left: get-vw(16px, 640);
                 }
                 &:after {
                   content: "\e608";
-                  color: #ffffff;
+                  color: inherit !important;
                   font-family: $ico-font;
                   font-size: get-vw(16px, 1280);
                   line-height: 1;
@@ -635,7 +624,6 @@
             width: 100%;
           }
           > div {
-            border: 1px solid;
             @include breakpoint ($bp-768-width) {
               text-align: center;
               width: get-vw(349px, 768);
@@ -645,42 +633,8 @@
               width: 100%;
             }
             a {
-              font-size: get-vw(18px, 1280);
-              padding: get-vw(20px, 1280) get-vw(30px, 1280);
-              @include breakpoint($bp-min-1601-width) {
-                font-size: 20px;
-                padding: 20px 30px;
-              }
-              @include breakpoint($bp-1024-width) {
-                font-size: get-vw(18px, 1024);
-                padding: get-vw(20px, 1024) get-vw(30px, 1024);
-              }
-              @include breakpoint($bp-768-width) {
-                font-size: get-vw(20px, 768);
-                padding: get-vw(20px, 768) 0;
-              }
               @include breakpoint($bp-640-width) {
-                font-size: get-vw(30px, 640);
                 padding: get-vw(20px, 640) 0;
-              }
-              span {
-                background: transparent;
-                margin-left: get-vw(16px, 1280);
-                @include breakpoint($bp-min-1601-width) {
-                  margin-left: 16px;
-                }
-                @include breakpoint($bp-1024-width) {
-                  margin-left: get-vw(16px, 1024);
-                }
-                @include breakpoint($bp-768-width) {
-                  margin-left: get-vw(16px, 768);
-                }
-                @include breakpoint($bp-640-width) {
-                  margin-left: get-vw(16px, 640);
-                }
-                &:after {
-                  color: inherit !important;
-                }
               }
             }
           }
@@ -711,7 +665,7 @@
     // upper bar
     .upper-bar {
       position: relative;
-      h2 {
+      h2, .page-title {
         box-sizing: border-box;
         color: #ffffff;
         font-family: $fira-sans-medium;

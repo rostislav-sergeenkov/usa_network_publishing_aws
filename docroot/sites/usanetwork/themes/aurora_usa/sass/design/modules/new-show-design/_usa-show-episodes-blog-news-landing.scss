@@ -477,7 +477,7 @@
             @include breakpoint($bp-640-width) {
               @include sprite-background(episode-minus-icon);
               margin-top: 0;
-              top: 6px;
+              top: calc(-15px + #{get-vw(21px, 640)});
             }
           }
           .image-block {
@@ -624,6 +624,9 @@
             width: 100%;
           }
           > div {
+            &.preview_episode_button {
+              margin-top: 10px;
+            }
             @include breakpoint ($bp-768-width) {
               text-align: center;
               width: get-vw(349px, 768);

@@ -54,7 +54,7 @@
           <div class="full-episode-button hover-avail <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>"><a href="<?php print $second_full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Con-Subtitulos'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a></div>
         <?php endif; ?>
         <?php if (!empty($preview_episode_url)): ?>
-          <div class="preview_episode_button"><a href="<?php print $preview_episode_url; ?>"><div class="font-icon video-font-icon"></div><?php print t('Watch a preview'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a></div>
+          <div class="preview_episode_button show-border"><a href="<?php print $preview_episode_url; ?>"><div class="font-icon video-font-icon"></div><?php print t('Watch a preview'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a></div>
         <?php endif; ?>
       </div>
       <div class="links">

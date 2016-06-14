@@ -772,6 +772,7 @@ function _usanetwork_person_render_where2watch_block() {
         $provider_info = array(
           'url' => $provider['url'],
           'image' => _where2watch_get_provider_image($provider, $providers_logo),
+          'title' => $provider['title'],
         );
         if (_where2watch_is_provider_featuted($provider)) {
           $featured_elements[] = $provider_info;

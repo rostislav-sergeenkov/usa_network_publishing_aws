@@ -32,7 +32,7 @@
               <div class="providers-row-inner">
                 <?php foreach ($featured_elements as $featured_element) : ?>
                 <div class="provider">
-                  <a href="<?php print $featured_element['url']; ?>">
+                  <a href="<?php print $featured_element['url']; ?>" data-title="<?php print $featured_element['title']; ?>">
                     <img src="<?php print $featured_element['image']; ?>">
                   </a>
                 </div>
@@ -58,7 +58,7 @@
               <div class="providers-row-inner show-border">
                 <?php endif; ?>
                 <div class="provider">
-                  <a href="<?php print $element['url']; ?>">
+                  <a href="<?php print $element['url']; ?>" data-title="<?php print $element['title']; ?>">
                     <img src="<?php print $element['image']; ?>">
                   </a>
                 </div>

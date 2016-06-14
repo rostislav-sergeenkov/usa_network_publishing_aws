@@ -38,31 +38,22 @@
 // full-video-icon-default
 %usa-promo-video-play-icon {
   background-image: none;
-  border: 2px solid;
-  border-radius: 50%;
-  border-color: rgba(200,200,200,0.8);
   box-sizing: content-box;
   left: 50%;
   top: 50%;
   position: absolute;
+  width: auto;
+  height: auto;
   z-index: 1;
-  @include breakpoint($bp-768-width) {
-    border-color: #ffffff;
-  }
   &:after {
     color: rgba(200, 200, 200, 0.8);
     display: block;
-    content: '\e627';
+    content: '\e632';
     font-family: $ico-font;
-    font-size: get-vw(18px, 1280);
     position: relative;
     text-align: center;
-    @include breakpoint($bp-min-1601-width) {
-      font-size: 18px;
-    }
     @include breakpoint($bp-768-width) {
       color: #ffffff;
-      font-size: get-vw(38px, 768);
     }
   }
 }

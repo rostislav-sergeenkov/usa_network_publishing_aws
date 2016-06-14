@@ -19,7 +19,7 @@ var USAN = USAN || {};
         $toTop = $('#usa-to-top'),
         scrollEasing = 'easeInOutQuad',
         scrollOffset = 0,
-        scrollDuration = 3000;
+        scrollDuration = 1500;
 
     USAN.scrollToTop = false;
 

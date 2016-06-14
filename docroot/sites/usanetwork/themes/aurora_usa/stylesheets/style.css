@@ -846,40 +846,30 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   }
 }
 
-.latest-episodes-block .main-episode.full-episode .image-block .meta-icon, .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon {
+.latest-episodes-block .main-episode.full-episode .image-block .meta-icon, .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon, .show-related-content-block #top-five-videos .slide .meta-icon,
+.show-related-content-block #top-five-photos .slide .meta-icon {
   background-image: none;
-  border: 2px solid;
-  border-radius: 50%;
-  border-color: rgba(200, 200, 200, 0.8);
   box-sizing: content-box;
   left: 50%;
   top: 50%;
   position: absolute;
+  width: auto;
+  height: auto;
   z-index: 1;
 }
-@media (max-width: 768px) {
-  .latest-episodes-block .main-episode.full-episode .image-block .meta-icon, .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon {
-    border-color: #ffffff;
-  }
-}
-.latest-episodes-block .main-episode.full-episode .image-block .meta-icon:after, .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon:after {
+.latest-episodes-block .main-episode.full-episode .image-block .meta-icon:after, .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon:after, .show-related-content-block #top-five-videos .slide .meta-icon:after,
+.show-related-content-block #top-five-photos .slide .meta-icon:after {
   color: rgba(200, 200, 200, 0.8);
   display: block;
-  content: '\e627';
+  content: '\e632';
   font-family: "ico-font";
-  font-size: 1.40625vw;
   position: relative;
   text-align: center;
 }
-@media (min-width: 1601px) {
-  .latest-episodes-block .main-episode.full-episode .image-block .meta-icon:after, .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon:after {
-    font-size: 18px;
-  }
-}
 @media (max-width: 768px) {
-  .latest-episodes-block .main-episode.full-episode .image-block .meta-icon:after, .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon:after {
+  .latest-episodes-block .main-episode.full-episode .image-block .meta-icon:after, .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon:after, .show-related-content-block #top-five-videos .slide .meta-icon:after,
+  .show-related-content-block #top-five-photos .slide .meta-icon:after {
     color: #ffffff;
-    font-size: 4.94792vw;
   }
 }
 
@@ -4681,66 +4671,6 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block img {
   height: 100%;
   width: 100%;
-}
-.show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default,
-.show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default {
-  background-image: none;
-  border: 2px solid;
-  border-radius: 50%;
-  border-color: rgba(200, 200, 200, 0.8);
-  box-sizing: content-box;
-  height: 1.625vw;
-  line-height: 1.625vw;
-  width: 1.625vw;
-  margin-left: calc(-1.625vw / 2);
-  margin-top: calc(-1.625vw / 2);
-  left: 50%;
-  top: 50%;
-  position: absolute;
-}
-@media (min-width: 1601px) {
-  .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default,
-  .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default {
-    height: 26px;
-    line-height: 26px;
-    margin-left: calc(-26px / 2);
-    margin-top: calc(-26px / 2);
-    width: 26px;
-  }
-}
-@media (max-width: 768px) {
-  .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default,
-  .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default {
-    border-color: #ffffff;
-    height: 8.59375vw;
-    line-height: 8.59375vw;
-    margin-left: calc(-8.59375vw / 2);
-    margin-top: calc(-8.59375vw / 2);
-    width: 8.59375vw;
-  }
-}
-.show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default:after,
-.show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default:after {
-  color: rgba(200, 200, 200, 0.8);
-  display: block;
-  content: '\e627';
-  font-family: "ico-font";
-  font-size: 1.125vw;
-  position: relative;
-  text-align: center;
-}
-@media (min-width: 1601px) {
-  .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default:after,
-  .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default:after {
-    font-size: 18px;
-  }
-}
-@media (max-width: 768px) {
-  .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default:after,
-  .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .image-block .meta-icon.full-video-icon-default:after {
-    color: #ffffff;
-    font-size: 4.94792vw;
-  }
 }
 .show-related-content-block #top-five-videos .slide .usa-show-related-top-promo .meta-wrapper,
 .show-related-content-block #top-five-photos .slide .usa-show-related-top-promo .meta-wrapper {
@@ -40418,6 +40348,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .usa-wrap {
   background: none;
+  overflow: hidden;
   max-width: 1600px;
 }
 .show-new-design .usa-section-title {
@@ -44736,41 +44667,35 @@ body.blog .view-display-id-blog_content .views-row {
   position: absolute;
 }
 .latest-episodes-block .main-episode.full-episode .image-block .meta-icon {
-  height: 7.03125vw;
   line-height: 7.03125vw;
-  width: 7.03125vw;
   margin-left: calc(-7.03125vw / 2);
   margin-top: calc(-7.03125vw / 2);
 }
 @media (min-width: 1601px) {
   .latest-episodes-block .main-episode.full-episode .image-block .meta-icon {
-    height: 135px;
     line-height: 135px;
     margin-left: calc(-135px / 2);
     margin-top: calc(-135px / 2);
-    width: 135px;
   }
 }
 @media (max-width: 768px) {
   .latest-episodes-block .main-episode.full-episode .image-block .meta-icon {
-    height: 8.59375vw;
-    line-height: 8.59375vw;
-    margin-left: calc(-8.59375vw / 2);
-    margin-top: calc(-8.59375vw / 2);
-    width: 8.59375vw;
+    line-height: 9.76563vw;
+    margin-left: calc(-9.76563vw / 2);
+    margin-top: calc(-9.76563vw / 2);
   }
 }
 .latest-episodes-block .main-episode.full-episode .image-block .meta-icon:after {
-  font-size: 4.29688vw;
+  font-size: 7.03125vw;
 }
 @media (min-width: 1601px) {
   .latest-episodes-block .main-episode.full-episode .image-block .meta-icon:after {
-    font-size: 80px;
+    font-size: 135px;
   }
 }
 @media (max-width: 768px) {
   .latest-episodes-block .main-episode.full-episode .image-block .meta-icon:after {
-    font-size: 5.20833vw;
+    font-size: 9.76563vw;
   }
 }
 .latest-episodes-block .main-episode.full-episode .meta-wrapper {
@@ -44807,17 +44732,17 @@ body.blog .view-display-id-blog_content .views-row {
 .latest-episodes-block .main-episode.full-episode .meta-wrapper .additional .additional-link {
   font-family: "FiraSansLight", sans-serif;
 }
-.latest-episodes-block .main-episode.full-episode .meta-wrapper .additional .additional-link:last-child {
-  margin-left: 1.71875vw;
+.latest-episodes-block .main-episode.full-episode .meta-wrapper .additional .additional-link:first-child {
+  margin-right: 1.71875vw;
 }
 @media (min-width: 1601px) {
-  .latest-episodes-block .main-episode.full-episode .meta-wrapper .additional .additional-link:last-child {
-    margin-left: 22px;
+  .latest-episodes-block .main-episode.full-episode .meta-wrapper .additional .additional-link:first-child {
+    margin-right: 22px;
   }
 }
 @media (max-width: 768px) {
-  .latest-episodes-block .main-episode.full-episode .meta-wrapper .additional .additional-link:last-child {
-    margin-left: 4.6875vw;
+  .latest-episodes-block .main-episode.full-episode .meta-wrapper .additional .additional-link:first-child {
+    margin-right: 4.6875vw;
   }
 }
 .latest-episodes-block .main-episode.full-episode .meta-wrapper .additional br {
@@ -44958,28 +44883,22 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon {
-  height: 3.51563vw;
   line-height: 3.51563vw;
-  width: 3.51563vw;
   margin-left: calc(-3.51563vw / 2);
   margin-top: calc(-3.51563vw / 2);
 }
 @media (min-width: 1601px) {
   .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon {
-    height: 45px;
     line-height: 45px;
     margin-left: calc(-45px / 2);
     margin-top: calc(-45px / 2);
-    width: 45px;
   }
 }
 @media (max-width: 1024px) {
   .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon {
-    height: 2.44141vw;
     line-height: 2.44141vw;
     margin-left: calc(-2.44141vw / 2);
     margin-top: calc(-2.44141vw / 2);
-    width: 2.44141vw;
   }
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon:after {
@@ -44992,7 +44911,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 1024px) {
   .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .meta-icon:after {
-    font-size: 1.75781vw;
+    font-size: 2.44141vw;
   }
 }
 .latest-episodes-block .episodes-list .mCSB_scrollTools {
@@ -45338,6 +45257,44 @@ body.blog .view-display-id-blog_content .views-row {
     height: auto;
     padding-left: 3.75vw;
     width: 38.75vw;
+  }
+}
+.show-related-content-block #top-five-videos .slide .meta-icon,
+.show-related-content-block #top-five-photos .slide .meta-icon {
+  line-height: 2.1875vw;
+  margin-left: calc(-2.1875vw / 2);
+  margin-top: calc(-2.1875vw / 2);
+}
+@media (min-width: 1601px) {
+  .show-related-content-block #top-five-videos .slide .meta-icon,
+  .show-related-content-block #top-five-photos .slide .meta-icon {
+    line-height: 28px;
+    margin-left: calc(-28px / 2);
+    margin-top: calc(-28px / 2);
+  }
+}
+@media (max-width: 768px) {
+  .show-related-content-block #top-five-videos .slide .meta-icon,
+  .show-related-content-block #top-five-photos .slide .meta-icon {
+    line-height: 8.59375vw;
+    margin-left: calc(-8.59375vw / 2);
+    margin-top: calc(-8.59375vw / 2);
+  }
+}
+.show-related-content-block #top-five-videos .slide .meta-icon:after,
+.show-related-content-block #top-five-photos .slide .meta-icon:after {
+  font-size: 2.1875vw;
+}
+@media (min-width: 1601px) {
+  .show-related-content-block #top-five-videos .slide .meta-icon:after,
+  .show-related-content-block #top-five-photos .slide .meta-icon:after {
+    font-size: 28px;
+  }
+}
+@media (max-width: 768px) {
+  .show-related-content-block #top-five-videos .slide .meta-icon:after,
+  .show-related-content-block #top-five-photos .slide .meta-icon:after {
+    font-size: 8.59375vw;
   }
 }
 @media (max-width: 768px) {

@@ -50,32 +50,26 @@
         position: absolute;
         .meta-icon {
           @extend %usa-promo-video-play-icon;
-          height: get-vw(90px, 1280);
           line-height: get-vw(90px, 1280);
-          width: get-vw(90px, 1280);
           margin-left: calc(#{get-vw(-90px, 1280)} / 2);
           margin-top: calc(#{get-vw(-90px, 1280)} / 2);
           @include breakpoint($bp-min-1601-width) {
-            height: 135px;
             line-height: 135px;
             margin-left: calc(#{-135px} / 2);
             margin-top: calc(#{-135px} / 2);
-            width: 135px;
           }
           @include breakpoint($bp-768-width) {
-            height: get-vw(66px, 768);
-            line-height: get-vw(66px, 768);
-            margin-left: calc(#{get-vw(-66px, 768)} / 2);
-            margin-top: calc(#{get-vw(-66px, 768)} / 2);
-            width: get-vw(66px, 768);
+            line-height: get-vw(75px, 768);
+            margin-left: calc(#{get-vw(-75px, 768)} / 2);
+            margin-top: calc(#{get-vw(-75px, 768)} / 2);
           }
           &:after  {
-            font-size: get-vw(55px, 1280);
+            font-size: get-vw(90px, 1280);
             @include breakpoint($bp-min-1601-width) {
-              font-size: 80px;
+              font-size: 135px;
             }
             @include breakpoint($bp-768-width) {
-              font-size: get-vw(40px, 768);
+              font-size: get-vw(75px, 768);
             }
           }
         }
@@ -109,13 +103,13 @@
         .additional {
           .additional-link {
             font-family: $fira-sans-light;
-            &:last-child {
-              margin-left: get-vw(22px, 1280);
+            &:first-child {
+              margin-right: get-vw(22px, 1280);
               @include breakpoint($bp-min-1601-width) {
-                margin-left: 22px;
+                margin-right: 22px;
               }
               @include breakpoint($bp-768-width) {
-                margin-left: get-vw(30px, 640);
+                margin-right: get-vw(30px, 640);
               }
             }
           }
@@ -243,24 +237,18 @@
         .image-block {
           .meta-icon {
             @extend %usa-promo-video-play-icon;
-            height: get-vw(45px, 1280);
             line-height: get-vw(45px, 1280);
-            width: get-vw(45px, 1280);
             margin-left: calc(#{get-vw(-45px, 1280)} / 2);
             margin-top: calc(#{get-vw(-45px, 1280)} / 2);
             @include breakpoint($bp-min-1601-width) {
-              height: 45px;
               line-height: 45px;
               margin-left: calc(#{-45px} / 2);
               margin-top: calc(#{-45px} / 2);
-              width: 45px;
             }
             @include breakpoint($bp-1024-width) {
-              height: get-vw(25px, 1024);
               line-height: get-vw(25px, 1024);
               margin-left: calc(#{get-vw(-25px, 1024)} / 2);
               margin-top: calc(#{get-vw(-25px, 1024)} / 2);
-              width: get-vw(25px, 1024);
             }
             &:after  {
               font-size: get-vw(30px, 1280);
@@ -268,7 +256,7 @@
                 font-size: 30px;
               }
               @include breakpoint($bp-1024-width) {
-                font-size: get-vw(18px, 1024);
+                font-size: get-vw(25px, 1024);
               }
             }
           }

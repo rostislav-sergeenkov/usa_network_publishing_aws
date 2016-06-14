@@ -3151,52 +3151,6 @@
         height: 100%;
         width: 100%;
       }
-      .meta-icon.full-video-icon-default {
-        background-image: none;
-        border: 2px solid;
-        border-radius: 50%;
-        border-color: rgba(200,200,200,0.8);
-        box-sizing: content-box;
-        height: get-vw(26px, 1600);
-        line-height: get-vw(26px, 1600);
-        width: get-vw(26px, 1600);
-        margin-left: calc(#{get-vw(-26px, 1600)} / 2);
-        margin-top: calc(#{get-vw(-26px, 1600)} / 2);
-        left: 50%;
-        top: 50%;
-        position: absolute;
-        @include breakpoint($bp-min-1601-width) {
-          height: 26px;
-          line-height: 26px;
-          margin-left: calc(#{-26px} / 2);
-          margin-top: calc(#{-26px} / 2);
-          width: 26px;
-        }
-        @include breakpoint($bp-768-width) {
-          border-color: #ffffff;
-          height: get-vw(66px, 768);
-          line-height: get-vw(66px, 768);
-          margin-left: calc(#{get-vw(-66px, 768)} / 2);
-          margin-top: calc(#{get-vw(-66px, 768)} / 2);
-          width: get-vw(66px, 768);
-        }
-        &:after {
-          color: rgba(200,200,200,0.8);
-          display: block;
-          content: '\e627';
-          font-family: $ico-font;
-          font-size: get-vw(18px, 1600);
-          position: relative;
-          text-align: center;
-          @include breakpoint($bp-min-1601-width) {
-            font-size: 18px;
-          }
-          @include breakpoint($bp-768-width) {
-            color: #ffffff;
-            font-size: get-vw(38px, 768);
-          }
-        }
-      }
     }
     .meta-wrapper {
       height: 100%;

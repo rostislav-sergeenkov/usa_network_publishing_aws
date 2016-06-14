@@ -71,8 +71,8 @@
       </div>
     </div>
     <div class="view-more">
-      <a href="<?php print $data['#content']['articles']['view_more']; ?>"
-         class="view-more-link"><?php print t('View more'); ?></a>
+      <a href="<?php print $data['#content']['articles']['view_more']['url']; ?>"
+         class="view-more-link"><?php print $data['#content']['articles']['view_more']['title']; ?></a>
     </div>
   </div>
 </div>

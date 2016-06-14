@@ -90,6 +90,7 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '32',
     'children' => array(
       0 => 'field_articles',
+      1 => 'field_articles_view_more_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1074,10 +1075,10 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Show Cast Landing Page',
     'weight' => '9',
     'children' => array(
-      0 => 'group_where_to_watch',
-      1 => 'group_cast_main',
-      2 => 'group_cast_recap',
-      3 => 'group_social_meter',
+      0 => 'group_cast_main',
+      1 => 'group_cast_recap',
+      2 => 'group_social_meter',
+      3 => 'group_where_to_watch',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

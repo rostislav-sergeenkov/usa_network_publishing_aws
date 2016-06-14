@@ -3341,7 +3341,7 @@
         @extend %usa-violator-icon;
         color: white;
         display: inline-block;
-        font-family: $avalon-medium;
+        font-family: $fira-sans-regular;
         font-size: get-vw(20px, 1280);
         line-height: 1.5;
         margin-bottom: get-vw(8px, 1280);
@@ -3356,6 +3356,10 @@
           font-size: get-vw(16px, 640);
           margin-bottom: get-vw(6px, 640);
           padding: 0 get-vw(36px, 640);
+        }
+        strong, b, i {
+          font-family: $fira-sans-medium;
+          font-weight: normal;
         }
       }
       .title {
@@ -3507,6 +3511,11 @@
         display: block;
         line-height: 1;
         text-align: left;
+        font-family: $fira-sans-regular;
+        strong, b, i {
+          font-family: $fira-sans-medium;
+          font-weight: normal;
+        }
         span {
           color: white;
           font-family: $fira-sans-medium;

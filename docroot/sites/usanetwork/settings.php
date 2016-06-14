@@ -52,7 +52,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
       $conf['environment_indicator_overwritten_fixed'] = FALSE;
 
       // File path settings.
-      $conf['file_temporary_path'] = '/tmp/php';
+      $conf['file_temporary_path'] = '/Users/Nikolai_Verbitskii/tmp/php';
       $conf['file_public_path'] = 'sites/usanetwork/files/public';
       $conf['file_private_path'] = 'sites/usanetwork/files/private';
     }

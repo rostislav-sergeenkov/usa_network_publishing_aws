@@ -161,7 +161,7 @@
         }
       }
       .title {
-        color: $usa-episode-title;
+        color: #ffffff;
         font-family: $fira-sans-medium;
         font-size: get-vw(30px, 1280);
         line-height: 1.1;
@@ -172,12 +172,6 @@
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(48px, 640);
-        }
-        @supports (-webkit-background-clip: text) or (-webkit-text-fill-color: transparent) {
-          background: -webkit-linear-gradient(top, $gray-sky, $gray-light-gamma);
-          background: linear-gradient(top, $gray-sky, $gray-light-gamma);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
         }
       }
       .additional {

@@ -35,13 +35,13 @@ $plugin = array(
 function new_design_articles_content_type_render($subtype, $conf, $args, $context) {
   $logo = array();
   $node_show = $context->data;
-  $logo_entity = entity_metadata_wrapper('node', $node_show);
-  $show_logo = $logo_entity->field_show_service_logo->value();
+  $node_show_wrapper = entity_metadata_wrapper('node', $node_show);
+  $show_logo = $node_show_wrapper->field_show_service_logo->value();
   $logo['show_logo'] = $show_logo;
   $author_uid = variable_get('usanetwork_blog_migrate_the_verge_user_uid', 0);
 
   if ($show_logo) {
-    $logo_field = $logo_entity->field_service_logo->value();
+    $logo_field = $node_show_wrapper->field_service_logo->value();
     if ($logo_field) {
       $logo_field = file_create_url($logo_field['uri']);
       $logo['logo_image'] = $logo_field;
@@ -55,7 +55,15 @@ function new_design_articles_content_type_render($subtype, $conf, $args, $contex
   else {
     $out = new_design_articles_content_type_get_manual_articles($articles);
   }
-  $out['view_more'] = url('node/' . $node_show->nid . '/blog');
+
+  $out['view_more'] = $node_show_wrapper->field_articles_view_more_link->value();
+
+  if (empty($out['view_more']['url'])) {
+    $out['view_more']['url'] = url('node/' . $node_show->nid . '/blog');
+  }
+  if (empty($out['view_more']['title']) || strpos($out['view_more']['title'], $out['view_more']['url']) !== FALSE) {
+    $out['view_more']['title'] = t('View more');
+  }
 
   $block = new stdClass();
   if (!empty($out['items'])) {

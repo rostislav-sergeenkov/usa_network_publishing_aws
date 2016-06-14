@@ -45396,6 +45396,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 .show-new-design .consum-sidebar {
+  box-sizing: border-box;
   background: #121212;
   float: left;
   height: 100%;
@@ -45417,12 +45418,15 @@ body.blog .view-display-id-blog_content .views-row {
     width: 100%;
   }
 }
+.show-new-design .consum-sidebar.sticky-sidebar {
+  overflow: hidden;
+}
 @media (min-width: 1025px) {
   .show-new-design .consum-sidebar.sticky-sidebar {
-    height: calc(100vh - 7.12195vw) !important;
+    height: 100vh !important;
     position: fixed !important;
-    right: 0;
-    top: 7.12195vw !important;
+    right: 1.25vw;
+    top: 0 !important;
   }
   .show-new-design .consum-sidebar.sticky-sidebar .more-items {
     bottom: auto !important;
@@ -45431,11 +45435,9 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (min-width: 1601px) {
   .show-new-design .consum-sidebar.sticky-sidebar {
-    height: calc(100vh - 135px) !important;
-    left: calc(1200px + (100% - 1600px)/2);
-    top: 135px !important;
+    left: calc(1170px + (100% - 1560px)/2);
     right: auto;
-    width: 400px;
+    max-width: 390px;
   }
 }
 @media (min-width: 1025px) {
@@ -45550,6 +45552,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .consum-sidebar .episodes-list-slider.vertical {
   display: block;
+  overflow: hidden;
   height: calc(100% - 90px);
 }
 @media (max-width: 1024px) {
@@ -45559,6 +45562,9 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .consum-sidebar .episodes-list-slider.vertical.no-all-link {
   height: calc(100% - 45px);
+}
+.show-new-design .consum-sidebar .episodes-list-slider.vertical .mCSB_scrollTools {
+  width: 4px;
 }
 .show-new-design .consum-sidebar .episodes-list-slider.vertical ul {
   height: 100%;
@@ -45572,9 +45578,15 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1025px) {
   .show-new-design .consum-sidebar .episodes-list-slider.vertical li {
     border-bottom: 2px solid #2e2c2d;
+    width: calc(100% - 1.5625vw);
   }
   .show-new-design .consum-sidebar .episodes-list-slider.vertical li:last-child {
     border: none;
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design .consum-sidebar .episodes-list-slider.vertical li {
+    width: calc(100% - 25px);
   }
 }
 .show-new-design .consum-sidebar .episodes-list-slider.vertical li > div {

@@ -5313,6 +5313,10 @@ function _usanetwork_tv_shows_nd_footer_block() {
  * Return if entity show is with new design.
  */
 function _usanetwork_tv_shows_is_new_design_entity($entity_type, $entity, $return_show = FALSE) {
+  $query_params = drupal_get_query_parameters();
+  if (isset($query_params['newdesign'])) {
+    return $query_params['newdesign'];
+  }
   $result = &drupal_static(__FUNCTION__);
   if (isset($result)) {
     return $result;

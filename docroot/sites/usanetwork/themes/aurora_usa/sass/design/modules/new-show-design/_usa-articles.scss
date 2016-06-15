@@ -74,8 +74,8 @@
           text-align: center;
           width: 242px;
           @include breakpoint($bp-768-width) {
-            height: 33px;
-            padding: 6px;
+            height: get-vw(35px, 640);
+            padding: 2px;
             width: get-vw(282px, 640);
           }
           img {

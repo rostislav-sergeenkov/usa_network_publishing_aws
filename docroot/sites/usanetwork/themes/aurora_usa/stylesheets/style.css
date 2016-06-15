@@ -41081,11 +41081,14 @@ body.blog .view-display-id-blog_content .views-row {
   width: 100%;
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block a {
-  background-size: 100% 100%;
   display: block;
   height: 100%;
   outline: none;
-  text-indent: -9999px;
+  text-align: center;
+  width: 100%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block a img {
+  height: auto;
   width: 100%;
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .tune-in {
@@ -41130,6 +41133,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
   height: 4.25938vw;
+  overflow: hidden;
 }
 @media (min-width: 1601px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
@@ -41140,9 +41144,6 @@ body.blog .view-display-id-blog_content .views-row {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
     height: 7.42188vw;
   }
-}
-#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot a {
-  background-image: url("../images/mr-robot-logo.png");
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
   background: none;
@@ -45069,8 +45070,8 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 768px) {
   .articles-block .articles-wrapper .usa-section-title.sponsored-enable .sponsored {
-    height: 33px;
-    padding: 6px;
+    height: 5.46875vw;
+    padding: 2px;
     width: 44.0625vw;
   }
 }
@@ -49793,6 +49794,17 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .where-to-watch .usa-providers .provider a img {
   max-width: 90%;
+  max-height: 3.75vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .usa-providers .provider a img {
+    max-height: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .usa-providers .provider a img {
+    max-height: 60px;
+  }
 }
 .show-new-design .video-recap-block {
   background: black;

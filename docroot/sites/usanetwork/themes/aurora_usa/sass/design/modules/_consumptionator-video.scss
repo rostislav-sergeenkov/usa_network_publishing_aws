@@ -486,6 +486,9 @@ body:not(.show-new-design).consumptionator-page, .page-videos-live {
         //          content: " ";
         //          background:url('../images/sign_in_key.png') center top no-repeat;
         //        }
+        & {
+          background: green;
+        }
         &.inactive {
           .sign-in-button {
             display: none;
@@ -501,6 +504,7 @@ body:not(.show-new-design).consumptionator-page, .page-videos-live {
           }
         }
         &.inactive {
+          height: auto;
           .inner-wrap {
             background: #3D3D3D;
             padding: 20px;

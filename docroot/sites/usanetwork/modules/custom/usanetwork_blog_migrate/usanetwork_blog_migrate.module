@@ -74,7 +74,7 @@ function usanetwork_blog_migrate_cron() {
         array('@migration' => $machine_name)));
     $migration = Migration::getInstance($machine_name);
     // Prepare to Update the contents/data
-    $migration->prepareUpdate();
+    //$migration->prepareUpdate();
     // Trigger the migration
     $result = $migration->processImport();
     // Log that we've completed this update.

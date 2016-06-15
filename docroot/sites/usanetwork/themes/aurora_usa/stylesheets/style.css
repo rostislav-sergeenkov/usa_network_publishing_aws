@@ -48548,6 +48548,13 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design.node-type-timeline-gallery .node-timeline-gallery > .content {
   background: black;
 }
+.show-new-design.node-type-timeline-gallery #timeline-player-slideshow-area .vert-end-line {
+  border-color: #ffffff;
+}
+.show-new-design.node-type-timeline-gallery .timeline-holder {
+  background-image: url("../images/line-timeline_white.jpg");
+  background-position: 0 48px;
+}
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items {
   background-color: #222222;
 }

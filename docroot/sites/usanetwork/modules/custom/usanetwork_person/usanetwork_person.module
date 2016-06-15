@@ -759,6 +759,8 @@ function _usanetwork_person_render_where2watch_block() {
     return '';
   }
 
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
+
   $cache_name = 'tv_show_where2watch_' . $show_node->nid;
   $cache = cache_get($cache_name);
   if (empty($cache)) {
@@ -771,7 +773,7 @@ function _usanetwork_person_render_where2watch_block() {
       foreach ($providers as $provider) {
         $provider_info = array(
           'url' => $provider['url'],
-          'image' => _where2watch_get_provider_image($provider, $providers_logo),
+          'image' => ($is_new_design) ? _where2watch_get_provider_image($provider, $providers_logo, 'light') : _where2watch_get_provider_image($provider, $providers_logo, 'dark'),
           'title' => $provider['title'],
         );
         if (_where2watch_is_provider_featuted($provider)) {
@@ -832,9 +834,10 @@ function _usanetwork_is_full_video_exists($show) {
 /*
  * Helper function for getting images for provider
  */
-function _where2watch_get_provider_image($provider, $providers_logo) {
+function _where2watch_get_provider_image($provider, $providers_logo, $color) {
   $logo_key = array_search($provider['title'], array_column($providers_logo, 'name'));
-  $image_fid = $providers_logo[$logo_key]['image'];
+  $image_title = ($color == 'light') ? 'image' : 'image_dark';
+  $image_fid = $providers_logo[$logo_key][$image_title];
   $image_file = file_load($image_fid);
   $image = file_create_url($image_file->uri);
   return $image;

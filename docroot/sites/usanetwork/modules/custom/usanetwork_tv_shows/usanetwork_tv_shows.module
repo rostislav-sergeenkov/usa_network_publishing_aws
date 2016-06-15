@@ -2509,16 +2509,22 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
 
   $show_wrapper = entity_metadata_wrapper('node', $show);
 
-  if (!empty($show->field_display_title)) {
-    $display_title = $show_wrapper->field_display_title->value();
-    if (!empty($display_title)) {
-      $show_title = $display_title;
+  if (!empty($show->field_main_logo)) {
+    $main_logo_field = $show_wrapper->field_main_logo->value();
+    $main_logo_uri = $main_logo_field['uri'];
+    $show_title = theme_image(array('path' => $main_logo_uri));
+  } else {
+    if (!empty($show->field_display_title)) {
+      $display_title = $show_wrapper->field_display_title->value();
+      if (!empty($display_title)) {
+        $show_title = $display_title;
+      }
+      else {
+        $show_title = $show->title;
+      }
     }
-    else {
-      $show_title = $show->title;
-    }
+    $show_title = decode_entities($show_title);
   }
-  $show_title = decode_entities($show_title);
 
   $show_class = usanetwork_tv_shows_color_show_css_class($show);
 
@@ -2596,14 +2602,16 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
   }
 
   $title_tag = 'div';
-  $show_title = array(
+  $show_title_tag = array(
     '#type' => 'html_tag',
     '#tag' => $title_tag,
     '#attributes' => array('class' => 'title'),
-    '#value' => l($show_title, 'node/' . $show->nid),
+    '#value' => l($show_title, 'node/' . $show->nid, array('html' => TRUE)),
   );
+  $show_title = theme('html_tag', array('element' => $show_title_tag));
+
   return theme('usanetwork_tv_shows_new_design_menu', array(
-    'show_title' => theme('html_tag', array('element' => $show_title)),
+    'show_title' => $show_title,
     'show_class' => $show_class,
     'hashtag' => isset($hashtag) ? $hashtag : NULL,
     'tune_in_date' => isset($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : NULL,

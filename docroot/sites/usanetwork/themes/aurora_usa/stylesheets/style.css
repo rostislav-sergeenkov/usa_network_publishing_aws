@@ -3857,9 +3857,11 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   height: 100%;
   position: relative;
   width: 100%;
-  opacity: 0.35;
   -webkit-transition: all 0.1s linear;
   transition: all 0.1s linear;
+}
+.no-touch .b-c-d-block li .usa-bcd-carousel-promo .image-block, .b-c-d-block .no-touch li .usa-bcd-carousel-promo .image-block {
+  opacity: 0.35;
 }
 @media (max-width: 768px) {
   .b-c-d-block li .usa-bcd-carousel-promo .image-block {
@@ -4077,9 +4079,11 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   height: 100%;
   position: relative;
   width: 100%;
-  opacity: 0.35;
   -webkit-transition: all 0.1s linear;
   transition: all 0.1s linear;
+}
+.no-touch .best-of-section .best-of-content li .usa-best-of-promo .image-block, .best-of-section .best-of-content .no-touch li .usa-best-of-promo .image-block {
+  opacity: 0.35;
 }
 @media (max-width: 768px) {
   .best-of-section .best-of-content li .usa-best-of-promo .image-block {
@@ -48908,9 +48912,13 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .result-title {
   font-family: "FiraSansMedium", sans-serif;
+  line-height: 1.2em;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .result-description {
   font-family: "opensansregular", sans-serif;
+}
+.show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .result-description span {
+  color: white !important;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz .page-note {
   font-family: "FiraSansRegular", sans-serif;
@@ -48987,7 +48995,6 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {
   font-family: "FiraSansMedium", sans-serif;
   padding: 5px;
-  width: 320px;
 }
 @media (max-width: 640px) {
   .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {

@@ -48,6 +48,8 @@ var USAN = USAN || {};
         minShowLogoHeight: 41, // number px 
         minShowLogoWidth: 261, // number px
         minShowLogoDecrease: 0.6, // number % min height 60%
+        callBackInitStickyHeader: '',
+        callBackOffStickyHeader: '',
         callBackOnScroll: ''
       };
 
@@ -155,7 +157,39 @@ var USAN = USAN || {};
     });
   };
 
-  // reset
+  // initStickyHeader
+  usaStickyHeader.prototype.initStickyHeader = function () {
+
+    var _ = this,
+        $headerSpacer = _.$headerSpacer,
+        $showLogo = _.$showLogo;
+
+    $headerSpacer.addClass(_.options.slideHeaderSpacerClass);
+
+    if (!_.options.isMobileDevice && !_.options.isMobileBp) {
+      $showLogo.css({
+        'height': _.options.minShowLogoHeight,
+        'width': _.options.minShowLogoWidth
+      });
+    }
+
+    _.addHeaderClass(_.options.stickyHeaderClass, function () {
+      _.options.isHeaderSticky = true;
+    });
+
+    _.slideUpStickyHeader(null);
+
+    _.setTimeout(function () {
+      _.addHeaderClass(_.options.slideHeaderClass, null);
+      _.options.isHeaderSlide = true;
+    }, _.options.delayCssAnimate);
+
+    if (typeof _.options.callBackInitStickyHeader === 'function') {
+      _.options.callBackInitStickyHeader();
+    }
+  };
+
+  // resetHeader
   usaStickyHeader.prototype.resetHeader = function () {
 
     var _ = this;
@@ -171,6 +205,9 @@ var USAN = USAN || {};
       _.removeHeaderClass(_.options.slideHeaderClass, null);
       _.options.isHeaderSlide = false;
       _.updateHeaderSpacerHeight();
+      if (typeof _.options.callBackOffStickyHeader === 'function') {
+        _.options.callBackOffStickyHeader();
+      }
     }, _.options.delayCssAnimate);
   };
 
@@ -254,31 +291,11 @@ var USAN = USAN || {};
   };
   usaStickyHeader.prototype.checkHeaderOffset = function () {
 
-    var _ = this,
-        $headerSpacer = _.$headerSpacer,
-        $showLogo = _.$showLogo;
+    var _ = this;
 
     if (_.options.pageYOffset > _.options.headerHeight && !_.options.isHeaderSticky) {
 
-      $headerSpacer.addClass(_.options.slideHeaderSpacerClass);
-
-      if (!_.options.isMobileDevice && !_.options.isMobileBp) {
-        $showLogo.css({
-          'height': _.options.minShowLogoHeight,
-          'width': _.options.minShowLogoWidth
-        });
-      }
-      
-      _.addHeaderClass(_.options.stickyHeaderClass, function () {
-        _.options.isHeaderSticky = true;
-      });
-
-      _.slideUpStickyHeader(null);
-
-      _.setTimeout(function () {
-        _.addHeaderClass(_.options.slideHeaderClass, null);
-        _.options.isHeaderSlide = true;
-      }, _.options.delayCssAnimate);
+      _.initStickyHeader();
 
     } else if (_.options.pageYOffset < _.options.headerHeight  && _.options.isHeaderSticky) {
       _.slideUpStickyHeader(function () {
@@ -470,9 +487,26 @@ var USAN = USAN || {};
   //================================
   $(document).ready(function () {
     if ($('body').hasClass('show-new-design') && $('body').hasClass('consumptionator-page')) {
+
+      var $consumSidebar = $('.consum-sidebar'),
+          sidebarStickyClass = 'sticky-sidebar';
+
       $('#header').usaStickyHeader({
-        additionalMode: {
-          isRightRailPosition: true
+        callBackInitStickyHeader: function () {
+          if (Drupal.behaviors.hasOwnProperty('consumptionator_right_rail')) {
+            Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
+            if (!$consumSidebar.hasClass(sidebarStickyClass)) {
+              $consumSidebar.addClass(sidebarStickyClass);
+            }
+          }
+        },
+        callBackOffStickyHeader: function () {
+          if (Drupal.behaviors.hasOwnProperty('consumptionator_right_rail')) {
+            Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
+            if ($consumSidebar.hasClass(sidebarStickyClass)) {
+              $consumSidebar.removeClass(sidebarStickyClass);
+            }
+          }
         }
       });
     } else if ($('body').hasClass('show-new-design')) {

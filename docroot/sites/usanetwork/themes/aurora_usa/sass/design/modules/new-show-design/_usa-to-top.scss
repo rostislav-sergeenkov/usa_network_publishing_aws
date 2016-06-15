@@ -5,8 +5,8 @@
   height: 37px;
   width: 37px;
   @include breakpoint($bp-768-width) {
-    height: 66px;
-    width: 66px;
+    //height: 66px;
+    //width: 66px;
   }
   &:before {
     @include sprite-background(back_to_top);

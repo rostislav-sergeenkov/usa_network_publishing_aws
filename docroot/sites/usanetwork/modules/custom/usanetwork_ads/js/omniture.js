@@ -522,6 +522,40 @@
 
     attach: function (context, settings) {
 
+      // new design mrrobot
+      if ($('body').hasClass('show-new-design') && !$('body').hasClass('page-node-microsite')) {
+        
+        
+        // Click on WHERE TO WATCH link button
+        $('#where-to-watch .link-button a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+
+              var showName = $('#header .title-block .title').text().trim(),
+                  linkName = $(this).text().trim();
+
+              AdobeTracking.clickedPageItem = showName + ' : Where to Watch : ' + linkName ;
+              _satellite.track('pageItemClicked');
+            }
+          });
+        });
+
+        // Click on WHERE TO WATCH provider link
+        $('#where-to-watch .provider a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+
+              var showName = $('#header .title-block .title').text().trim(),
+                  linkName = $(this).attr('data-title').trim();
+
+              AdobeTracking.clickedPageItem = showName + ' : Where to Watch : ' + linkName ;
+              _satellite.track('pageItemClicked');
+            }
+          });
+        });
+      }
+      // end new design mrrobot
+
       if (typeof s != 'object') {
         return;
       }

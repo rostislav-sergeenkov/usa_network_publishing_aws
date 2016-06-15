@@ -92,6 +92,7 @@ function usanetwork_tv_shows_field_group_info() {
       0 => 'field_service_logo',
       1 => 'field_show_service_logo',
       2 => 'field_articles',
+      3 => 'field_articles_view_more_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -8,6 +8,9 @@
   .consum-sidebar {
     background: black;
     .items-block {
+      @include breakpoint($bp-min-1025-width) {
+        margin-bottom: 45px;
+      }
       .episodes-list-slider {
         &.horizontal {
           @include breakpoint($bp-640-width) {
@@ -92,6 +95,7 @@
       }
     }
     .more-items {
+      background: #000000;
       @include breakpoint($bp-640-width) {
         border: 1px solid;
       }
@@ -185,9 +189,13 @@
       }
       .result-title {
         font-family: $fira-sans-medium;
+        line-height: 1.2em;
       }
       .result-description {
         font-family: $open-sans-regular;
+        span {
+          color: white !important;
+        }
       }
       .page-note {
         font-family: $fira-sans-regular;
@@ -256,7 +264,6 @@
       .answer-title {
         font-family: $fira-sans-medium;
         padding: 5px;
-        width: 320px;
         @include breakpoint ($bp-640-width) {
           font-size: get-vw(18px, 640);
         }

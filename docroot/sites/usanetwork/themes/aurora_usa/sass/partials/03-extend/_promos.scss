@@ -2433,6 +2433,7 @@
         opacity: 0.85;
       }
     }
+    
     @include breakpoint($bp-768-width) {
       height: auto;
     }
@@ -2456,7 +2457,9 @@
       height: 100%;
       position: relative;
       width: 100%;
-      opacity: 0.35;
+      .no-touch & {
+        opacity: 0.35;
+      }
       @include transition(all 0.1s linear);
       @include breakpoint($bp-768-width) {
         height: calc(((100vw - 2 * #{get-vw(32px, 640)} - #{get-vw(18px, 640)}) / 2) * 0.5625);
@@ -2638,7 +2641,9 @@
       height: 100%;
       position: relative;
       width: 100%;
-      opacity: 0.35;
+      .no-touch & {
+        opacity: 0.35;
+      }
       @include transition(all 0.1s linear);
       @include breakpoint($bp-768-width) {
         height: calc(((100vw - 2 * #{get-vw(32px, 640)} - #{get-vw(18px, 640)}) / 2) * 0.5625);

@@ -195,6 +195,9 @@ function new_design_best_of_section_get_promo_links($entity, $entity_type, $tv_c
   if (isset($entity->type) && 'usanetwork_promo' == $entity->type) {
     $title = 'See all updates';
     if (usanetwork_core_api_check_field($entity, 'field_promo_link', $entity_type)) {
+      if (usanetwork_core_api_check_field($entity, 'field_promo_call_to_action_text', $entity_type)) {
+        $title = $entity_wrapper->field_promo_call_to_action_text->value();
+      }
       $bottom_link = $entity_wrapper->field_promo_link->value();
       $bottom_link['title'] = $title;
     }

@@ -89,8 +89,10 @@ function usanetwork_tv_shows_field_group_info() {
     'label' => 'Articles',
     'weight' => '32',
     'children' => array(
-      0 => 'field_articles',
-      1 => 'field_articles_view_more_link',
+      0 => 'field_service_logo',
+      1 => 'field_show_service_logo',
+      2 => 'field_articles',
+      3 => 'field_articles_view_more_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -724,12 +726,12 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_new_design',
       1 => 'field_tvs_spec_features',
-      2 => 'group_articles',
-      3 => 'group_bcd_spot',
-      4 => 'group_best_of_section',
-      5 => 'group_episodes_section',
-      6 => 'group_relevant_content',
-      7 => 'group_service',
+      2 => 'field_main_logo',
+      3 => 'group_articles',
+      4 => 'group_bcd_spot',
+      5 => 'group_best_of_section',
+      6 => 'group_episodes_section',
+      7 => 'group_relevant_content',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

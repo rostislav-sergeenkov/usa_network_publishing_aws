@@ -4,6 +4,15 @@
       background: black;
     }
   }
+  #timeline-player-slideshow-area {
+    .vert-end-line {
+      border-color: #ffffff;
+    }
+  }
+  .timeline-holder {
+    background-image: url("../images/line-timeline_white.jpg");
+    background-position: 0 48px;
+  }
   .timelineFlat {
     .timeline-items {
       background-color: $usa-special-block;
@@ -161,6 +170,9 @@
     .timeline-line {
       a.timeline-node {
         background: none;
+        //&:after {
+        //  border-color: #ffffff;
+        //}
         &.active {
           &:after {
             background: currentColor;

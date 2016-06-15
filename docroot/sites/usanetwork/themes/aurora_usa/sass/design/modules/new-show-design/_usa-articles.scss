@@ -75,7 +75,7 @@
           width: 242px;
           @include breakpoint($bp-768-width) {
             height: get-vw(35px, 640);
-            padding: 6px;
+            padding: 2px;
             width: get-vw(282px, 640);
           }
           img {

@@ -45071,7 +45071,7 @@ body.blog .view-display-id-blog_content .views-row {
 @media (max-width: 768px) {
   .articles-block .articles-wrapper .usa-section-title.sponsored-enable .sponsored {
     height: 5.46875vw;
-    padding: 6px;
+    padding: 2px;
     width: 44.0625vw;
   }
 }

@@ -17,6 +17,7 @@
   }
   .usa-wrap {
     background: none;
+    overflow: hidden;
     max-width: 1600px;
   }
   .usa-section-title {
@@ -34,41 +35,6 @@
     &.show-border {
       @include breakpoint($bp-768-width) {
         border-top: 2px solid $gray-dark!important;
-      }
-    }
-    &.sponsored-enable {
-      padding: get-vw(30px, 1280) 0 calc(#{get-vw(17px, 1280)} + 29px);
-      @include breakpoint($bp-min-1601-width) {
-        padding: 37.5px 0 calc(21.25px + 29px);
-      }
-      @include breakpoint($bp-768-width) {
-        border-top: none;
-        border-bottom: 4px solid;
-        padding: get-vw(30px, 640) 0 calc(#{get-vw(20px, 640)} + 33px);
-      }
-      .title {
-        color: $tve-select;
-      }
-      .sponsored {
-        bottom: 0;
-        height: 29px;
-        left: 50%;
-        margin-left: -121px;
-        padding: 4px;
-        position: absolute;
-        text-align: center;
-        width: 242px;
-        @include breakpoint($bp-768-width) {
-          height: 33px;
-          margin-left: -141px;
-          padding: 6px;
-          width: 282px;
-        }
-        img {
-          display: inline;
-          max-height: 80%;
-          max-width: 90%;
-        }
       }
     }
     .title {

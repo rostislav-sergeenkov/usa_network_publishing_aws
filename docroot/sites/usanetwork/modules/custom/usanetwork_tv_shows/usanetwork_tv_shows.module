@@ -224,7 +224,6 @@ function usanetwork_tv_shows_block_view($delta = '') {
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_script.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_header.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_menu-dropdown.js',
-            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_menu-dropdown.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_carousels.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_to-top.js',
 //            drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
@@ -2509,15 +2508,6 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
 
   $show_wrapper = entity_metadata_wrapper('node', $show);
 
-  if (!empty($show->field_service_logo)) {
-    $service_logo_uri = $show_wrapper->field_service_logo->file->value()->uri;
-    $service_logo = file_create_url($service_logo_uri);
-    if (!empty($show->field_service_link)) {
-      $service_link_value = $show_wrapper->field_service_link->value();
-      $service_link = $service_link_value['url'];
-    }
-  }
-
   if (!empty($show->field_display_title)) {
     $display_title = $show_wrapper->field_display_title->value();
     if (!empty($display_title)) {
@@ -2557,6 +2547,9 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
   if (!empty($sign_up['content'])) {
     $sign_up_block = render($sign_up['content']);
   };
+
+  $additional_sign_up_block = _usanetwork_lyris_signup_block(TRUE);
+  $additional_sign_up_block_render = render($additional_sign_up_block);
 
   $show_menus = array();
   $promo_menu_links = field_get_items('node', $show, 'field_show_links');
@@ -2601,7 +2594,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     }
   }
 
-  $title_tag = 'h1';
+  $title_tag = 'div';
   $show_title = array(
     '#type' => 'html_tag',
     '#tag' => $title_tag,
@@ -2609,8 +2602,6 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     '#value' => l($show_title, 'node/' . $show->nid),
   );
   return theme('usanetwork_tv_shows_new_design_menu', array(
-    'service_logo' => isset($service_logo) ? $service_logo : NULL,
-    'service_link' => isset($service_link) ? $service_link : NULL,
     'show_title' => theme('html_tag', array('element' => $show_title)),
     'show_class' => $show_class,
     'hashtag' => isset($hashtag) ? $hashtag : NULL,
@@ -2618,7 +2609,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     'social_icons' => $social_links,
     'show_menu_tab_items' => $show_menus,
     'sign_up_block' => isset($sign_up_block) ? $sign_up_block : NULL,
-    'sign_up_block_additional' => render(_usanetwork_lyris_signup_block(TRUE)),
+    'sign_up_block_additional' => $additional_sign_up_block_render,
   ));
 }
 
@@ -4007,6 +3998,9 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
       $result[$selected_category]['active'] = TRUE;
     }
 
+    reset($result);
+    $key = key($result);
+    $result[$key]['first_item'] = TRUE;
     return $result;
   }
 
@@ -4631,16 +4625,11 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
     $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
   }
 
-  $caption = !empty($data->promo_violator) ? check_plain($data->promo_violator) :
-    ($data->bundle == 'mpx_video_2' ? t('Full Episode') : '');
-  if ($is_new_design) {
-    // @todo if previously was not loaded nodes, think about logic without node loading.
-    $caption = usanetwork_core_api_get_violator($data->entity_type, $data->entity_id);
-  }
   $theme_variables = array(
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
-    'caption' => $caption,
+    'caption' => !empty($data->promo_violator) ? $data->promo_violator :
+      ($data->bundle == 'mpx_video_2' ? t('Full Episode') : ''),
     'title' => !empty($data->promo_title)
         ? $data->promo_title     // Title text is checked at a level higher.
         : $data->title,
@@ -4787,6 +4776,12 @@ function _usanetwork_tv_shows_cache_set_related_content($tv_show_node, $node_typ
           $field_sponsored = _usanetwork_get_field_item($cached_data_item->entity_type, $entity, 'field_sponsored', 'value');
           $cached_data_item->sponsored = $field_sponsored;
         }
+      }
+
+      // Set violator
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity($cached_data_item->entity_type, $entity);
+      if ($is_new_design) {
+        $cached_data_item->promo_violator = usanetwork_core_api_get_violator($cached_data_item->entity_type, $cached_data_item->entity_id);
       }
     }
   }
@@ -5100,6 +5095,11 @@ function _usanetwork_tv_shows_landing_page_explore_get_tags($show_id, $params) {
     else {
       $result[USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY]['active'] = TRUE;
     }
+    
+    reset($result);
+    $key = key($result);
+    $result[$key]['first_item'] = TRUE;
+    
     return $result;
   }
   return NULL;

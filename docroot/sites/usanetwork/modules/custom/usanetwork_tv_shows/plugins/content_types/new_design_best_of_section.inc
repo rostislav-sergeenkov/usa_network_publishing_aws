@@ -63,12 +63,23 @@ function new_design_best_of_section_content_type_edit_form($form, &$form_state) 
 function new_design_best_of_section_get_content($node) {
   $best_of_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_best_of_items');
   $best_of_data = array();
-  $layout_scheme = new_design_best_of_section_get_layout(count($best_of_content));
-
+  $layout_scheme = new_design_best_of_section_get_suitable_layout($best_of_content);
+  if (!$layout_scheme) {
+    return array();
+  }
   foreach ($best_of_content as $index => $item) {
     $styles_for_types = new_design_best_of_section_get_styles_for_types();
-    $style_desktop = $styles_for_types[$layout_scheme['items'][$index]['desktop_type']]['desktop'];
-    $style_mobile = $styles_for_types[$layout_scheme['items'][$index]['mobile_type']]['mobile'];
+    $style_desktop = NULL;
+    $style_mobile = NULL;
+    if (isset($layout_scheme['items'][$index]['desktop_type'])) {
+      $style_desktop = $styles_for_types[$layout_scheme['items'][$index]['desktop_type']]['desktop'];
+    }
+    if (isset($layout_scheme['items'][$index]['mobile_type'])) {
+      $style_mobile = $styles_for_types[$layout_scheme['items'][$index]['mobile_type']]['mobile'];
+    }
+    if (!($style_desktop && $style_mobile)) {
+      continue;
+    }
     $data_item = usanetwork_promo_get_promo_content_variables($item);
     $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
     $additional_data = array(
@@ -85,6 +96,30 @@ function new_design_best_of_section_get_content($node) {
   return $best_of_data;
 }
 
+/**
+ * @param $best_of_content
+ * @return array
+ */
+function new_design_best_of_section_get_suitable_layout(&$best_of_content) {
+  $layout_scheme = new_design_best_of_section_get_layout(count($best_of_content));
+  $count = count($best_of_content);
+  if (empty($layout_scheme)) {
+    $layout_scheme = new_design_best_of_section_get_layout($count + 1);
+  }
+  if (empty($layout_scheme)) {
+    while (empty($layout_scheme) && $count > 0) {
+      $layout_scheme = new_design_best_of_section_get_layout(--$count);
+    }
+  }
+  if (empty($layout_scheme)) {
+    return FALSE;
+  }
+
+  $best_of_content = array_slice($best_of_content, 0, $count);
+
+  return $layout_scheme;
+}
+
 function new_design_best_of_section_get_layout($layout) {
   // Type can be:
   //  - half_vertical
@@ -92,7 +127,8 @@ function new_design_best_of_section_get_layout($layout) {
   //  - full
   //  - quarter
   switch ($layout) {
-    case 'three_items_default' || 3:
+    case 'three_items_default':
+    case 3:
       return array(
         'class' => 'three-items-default',
         'items' => array(
@@ -110,11 +146,14 @@ function new_design_best_of_section_get_layout($layout) {
           ),
         ),
       );
-    case 'four_items_default' || 4:
+    case 'four_items_default':
+    case 4:
       return array();
-    case 'five_items_default' || 5:
+    case 'five_items_default':
+    case 5:
       return array();
-    case 'six_items_default' || 6:
+    case 'six_items_default':
+    case 6:
       return array();
     default:
       return array();

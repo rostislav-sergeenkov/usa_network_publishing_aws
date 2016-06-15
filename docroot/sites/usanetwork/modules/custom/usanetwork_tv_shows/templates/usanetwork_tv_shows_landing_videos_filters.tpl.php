@@ -14,7 +14,12 @@
         <?php foreach ($video_filters as $video_filter): ?>
           <li class="filter-item<?php if ($video_filter['active'] == TRUE): print ' active'; endif; ?>">
             <a href="<?php print $video_filter['url']; ?>#videos-landing-page-header" data-type="<?php print $video_filter['tid']; ?>" class="no-ajax show-border">
-              <span class="title"><?php print $video_filter['name']; ?></span> <span class="items-in show-color show-font">(<?php print $video_filter['items_count']; ?>)</span>
+              <?php if (empty($video_filter['first_item'])): ?>
+                <span class="title"><?php print $video_filter['name']; ?></span>
+              <?php else: ?>
+                <h1><span class="title"><?php print $video_filter['name']; ?></span></h1>
+              <?php endif; ?>
+              <span class="items-in show-color show-font">(<?php print $video_filter['items_count']; ?>)</span>
             </a>
           </li>
         <?php endforeach; ?>

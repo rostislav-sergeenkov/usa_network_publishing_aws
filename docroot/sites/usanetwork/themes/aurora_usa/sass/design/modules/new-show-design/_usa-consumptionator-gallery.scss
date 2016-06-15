@@ -486,6 +486,18 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               top: 0;
               position: absolute;
               width: 100%;
+              &.portrait {
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: 0;
+                margin: auto;
+                position: absolute;
+                max-height: 100%;
+                max-width: 100%;
+                height: 100%;
+                width: auto;
+              }
             }
           }
           .slide-info {
@@ -540,7 +552,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 display: table-cell;
               }
               @include breakpoint($bp-min-1601-width) {
-                font-size: 26px;
+                font-size: 18.5px;
               }
               @include breakpoint($bp-1600-width) {
                 height: 44px;
@@ -581,7 +593,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             .slider-counter {
               bottom: 5px;
               color: $consum-carousel-text;
-              font-size: 25px;
+              font-size: 16px;
               font-family: $tex-gyreschola-italic;
               left: 45px;
               overflow: hidden;
@@ -591,13 +603,23 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               text-overflow: ellipsis;
               width: 100%;
               white-space: nowrap;
+              h1 {
+                color: $consum-carousel-text;
+                display: inline-block;
+                font-size: 16px;
+                font-family: $tex-gyreschola-italic;
+                white-space: nowrap;
+              }
               .slide-index {
-                font-size: 27px;
+                font-size: 16px;
                 font-family: $fira-sans-medium;
               }
               @include breakpoint($bp-1600-width) {
                 font-size: 13px;
                 padding-right: 375px;
+                h1 {
+                  font-size: 13px;
+                }
                 .slide-index {
                   font-size: 14px;
                 }
@@ -607,6 +629,9 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 font-size: 12px;
                 left: 70px;
                 padding-right: 320px;
+                h1 {
+                  font-size: 12px;
+                }
                 .slide-index {
                   font-size: 13px;
                 }
@@ -619,6 +644,9 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 bottom: 5px;
                 font-size: 11px;
                 padding-right: 240px;
+                h1 {
+                  font-size: 11px;
+                }
                 .slide-index {
                   font-size: 12px;
                 }

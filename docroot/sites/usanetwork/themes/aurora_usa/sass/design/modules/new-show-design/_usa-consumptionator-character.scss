@@ -149,7 +149,12 @@
         .block-character-info-header-left {
           float: left;
           width: 50%;
+          h1 {
+            margin: 0;
+            padding: 0;
+          }
           .full-name {
+            display: block;
             font-family: $fira-sans-medium;
             font-size: 38px;
             line-height: 1.3;
@@ -158,6 +163,7 @@
             }
           }
           .description {
+            display: block;
             font-family: $tex-gyreschola-italic;
             font-size: 19.5px;
             color: $consum-carousel-odd;

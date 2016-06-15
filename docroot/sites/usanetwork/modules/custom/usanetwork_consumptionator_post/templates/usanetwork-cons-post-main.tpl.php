@@ -19,18 +19,26 @@
       <div class="post-info-header">
         <div class="post-title-block">
           <div class="post-title">
-            <?php print $title; ?>
+            <?php if ($is_new_design): ?>
+              <h1 class="title"><?php print $title; ?></h1>
+            <?php else: ?>
+              <?php print $title; ?>
+            <?php endif; ?>
           </div>
           <div class="additional">
-            <?php if ( $is_new_design): ?>
+            <?php if ($is_new_design): ?>
               <?php if ($violator): ?>
                 <div class="violator"><?php print $violator; ?></div>
               <?php endif; ?>
               <?php if ($author): ?>
                 <div class="author">By <span class="author_name"><?php print $author; ?></span></div>
               <?php endif; ?>
-              <?php print '<div class="episode">' . t('Originally posted on ') . $creating_date . '</div>';?>
-              <?php if (!empty($tags)): print '<div class="tags-wrap"><span class="tags-title">' . t(' Tags: ') . '</span><span class="tags">' . $tags . '</span></div>'; endif;?>
+              <?php if ($original_publish_date): ?>
+                <?php print '<div class="episode">' . t('Originally posted on ') . $original_publish_date . '</div>';?>
+              <?php else: ?>
+                  <?php print '<div class="episode">' . t('Posted on ') . $creating_date . '</div>';?>
+              <?php endif; ?>
+                <?php if (!empty($tags)): print '<div class="tags-wrap"><span class="tags-title">' . t(' Tags: ') . '</span><span class="tags">' . $tags . '</span></div>'; endif;?>
             <?php else: ?>
               <?php print '<span class="episode">' . t('Posted on ') . $creating_date . '</span>';?>
               <?php if (!empty($tags)): print '<span class="tags-title">' . t(' Tags: ') . '</span><span class="tags">' . $tags . '</span>'; endif;?>

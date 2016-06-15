@@ -245,6 +245,14 @@
               @include breakpoint($bp-768-width) {
                 margin-bottom: get-vw(30px, 768);
               }
+              .title {
+                font-size: 38px;
+                margin: 0;
+                padding: 0;
+                @include breakpoint($bp-min-1601-width) {
+                  font-size: 54px;
+                }
+              }
             }
             .additional {
               color: $consum-carousel-odd;
@@ -596,6 +604,7 @@
       }
     }
   }
+
   .consumptionator-episode-main-block {
     .episode-info-header {
       .share {
@@ -624,6 +633,54 @@
             &:before {
               color: $poll-color;
             }
+          }
+        }
+      }
+      .episode-title-block {
+        h1, h2 {
+          margin: 0;
+          padding: 0;
+        }
+        .episode {
+          .episode-inner {
+            font-family: $fira-sans-medium;
+            font-size: get-vw(22.5px, 1280);
+            line-height: 1.4;
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 24px;
+            }
+            @include breakpoint($bp-768-width) {
+              font-size: get-vw(22.5px, 768);
+            }
+          }
+        }
+        .episode-title {
+          margin-bottom: 0 !important;
+          @include breakpoint($bp-min-1601-width) {
+            margin-bottom: 0 !important;
+          }
+          .episode-title-inner {
+            color: black;
+            font-family: $fira-sans-medium;
+            font-size: 36px;
+            line-height: 1.4;
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 40px;
+            }
+          }
+        }
+        .additional {
+          color: #000000 !important;
+          font-family: $fira-sans-regular;
+          font-size: get-vw(18px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 18px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(18px, 768);
+          }
+          .aired {
+
           }
         }
       }

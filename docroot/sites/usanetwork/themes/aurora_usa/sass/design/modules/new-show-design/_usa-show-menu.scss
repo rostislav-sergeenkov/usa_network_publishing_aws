@@ -224,12 +224,17 @@
         width: 100%;
       }
       a {
-        background-size: 100% 100%;
+        //background-size: 100% 100%;
         display: block;
         height: 100%;
         outline: none;
-        text-indent: -9999px;
+        text-align: center;
+        //text-indent: -9999px;
         width: 100%;
+        img {
+          height: auto;
+          width: 100%;
+        }
       }
       .tune-in {
         font-family: $fira-sans-regular;
@@ -262,6 +267,7 @@
         }
         .title {
           height: get-vw(54.52px, 1280);
+          overflow: hidden;
           @include breakpoint($bp-min-1601-width) {
             height: 68.15px;
           }
@@ -269,9 +275,9 @@
             height: get-vw(57px, 768);
           }
         }
-        a {
-          background-image: url('../images/mr-robot-logo.png');
-        }
+        //a {
+          //background-image: url('../images/mr-robot-logo.png');
+        //}
       }
     }
     .menu-open-button {

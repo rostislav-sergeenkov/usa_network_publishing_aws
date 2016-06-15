@@ -49786,6 +49786,17 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .where-to-watch .usa-providers .provider a img {
   max-width: 90%;
+  max-height: 3.75vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design .where-to-watch .usa-providers .provider a img {
+    max-height: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .where-to-watch .usa-providers .provider a img {
+    max-height: 60px;
+  }
 }
 .show-new-design .video-recap-block {
   background: black;

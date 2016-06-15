@@ -42,7 +42,6 @@
     }
   }
 
-
   #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl,
   #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters,
   #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb {
@@ -305,6 +304,9 @@
                     line-height: 14px;
                     letter-spacing: 1px;
                   }
+                }
+                .items-in {
+                  font-family: $fira-sans-bold;
                 }
               }
               &.active {

@@ -430,97 +430,99 @@
 
 // animate header
 // default transition duration 200ms
-.show-new-design {
-  #header-spacer {
-    @include transition(all 0.1s linear 0);
-    &.slide-spacer {
-      @include transition(all 0.2s linear 0);
-    }
-  }
-  #header {
-    &.menu-open {
-      #head-leaderboard {
-        @include breakpoint($bp-768-width) {
-          display: none;
-        }
-      }
-    }
-    &.usa-sticky-header-initialized {
-
-      // header added transition for elements
-      &.usa-slide-header {
+.no-touch {
+  .show-new-design {
+    #header-spacer {
+      @include transition(all 0.1s linear 0);
+      &.slide-spacer {
         @include transition(all 0.2s linear 0);
-        //.header-inner,
-        #head-leaderboard,
-        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu,
-        .top-menu-block-inner,
-        //.top-menu-block-inner .title-block,
-        .top-menu-block-inner .title-block .title,
-        //.top-menu-block-inner .title-block .title a,
-        .bottom-menu-block,
-        .bottom-menu-block-inner,
-        .bottom-menu-block .show-menu-tab .show-menu > li a {
-          @include transition(all 0.2s linear 0);
-        }
       }
-
-      // header slide up -100%
-      &.usa-slide-up-header {
-        -moz-transform: translateY(-100%);
-        -ms-transform: translateY(-100%);
-        -webkit-transform: translateY(-100%);
-        -o-transform: translateY(-100%);
-        transform: translateY(-100%);
-      }
-
-      // header decrease show logo
-      &.usa-decrease-header {
-        .top-menu-block-inner .title-block .title {
-          @include transition(all 0.1s linear 0);
-        }
-      }
-
-      // header sticky style
-      &.usa-sticky-header {
+    }
+    #header {
+      &.menu-open {
         #head-leaderboard {
-          height: 0;
-          margin: 0;
-          padding: 0;
-          visibility: hidden;
+          @include breakpoint($bp-768-width) {
+            display: none;
+          }
         }
-        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
-          @include breakpoint($bp-min-1601-width) {
-            padding-left: 0;
-            padding-right: 0;
+      }
+      &.usa-sticky-header-initialized {
+
+        // header added transition for elements
+        &.usa-slide-header {
+          @include transition(all 0.2s linear 0);
+          //.header-inner,
+          #head-leaderboard,
+          #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu,
+          .top-menu-block-inner,
+            //.top-menu-block-inner .title-block,
+          .top-menu-block-inner .title-block .title,
+            //.top-menu-block-inner .title-block .title a,
+          .bottom-menu-block,
+          .bottom-menu-block-inner,
+          .bottom-menu-block .show-menu-tab .show-menu > li a {
+            @include transition(all 0.2s linear 0);
           }
-          .top-menu-block-inner {
-            @include breakpoint($bp-768-width) {
-              padding: calc(#{get-vw(30px, 768)} * 0.7) 0;
-            }
+        }
+
+        // header slide up -100%
+        &.usa-slide-up-header {
+          -moz-transform: translateY(-100%);
+          -ms-transform: translateY(-100%);
+          -webkit-transform: translateY(-100%);
+          -o-transform: translateY(-100%);
+          transform: translateY(-100%);
+        }
+
+        // header decrease show logo
+        &.usa-decrease-header {
+          .top-menu-block-inner .title-block .title {
+            @include transition(all 0.1s linear 0);
           }
-          .bottom-menu-block {
-            @include breakpoint($bp-min-769-width) {
-              border-bottom: 1px solid;
-              border-top: 1px solid;
+        }
+
+        // header sticky style
+        &.usa-sticky-header {
+          #head-leaderboard {
+            height: 0;
+            margin: 0;
+            padding: 0;
+            visibility: hidden;
+          }
+          #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+            @include breakpoint($bp-min-1601-width) {
+              padding-left: 0;
+              padding-right: 0;
             }
-            @include breakpoint($bp-768-width) {
-              border-bottom: 1px solid;
-              border-top: 0;
+            .top-menu-block-inner {
+              @include breakpoint($bp-768-width) {
+                padding: calc(#{get-vw(30px, 768)} * 0.7) 0;
+              }
             }
-            .show-menu-tab .show-menu > li a {
-              line-height: calc(#{get-vw(60px, 1280)} * 0.7);
-              @include breakpoint($bp-min-1601-width) {
-                line-height: calc(75px * 0.7);
+            .bottom-menu-block {
+              @include breakpoint($bp-min-769-width) {
+                border-bottom: 1px solid;
+                border-top: 1px solid;
               }
               @include breakpoint($bp-768-width) {
-                line-height: calc(#{get-vw(70px, 768)} * 0.7);
+                border-bottom: 1px solid;
+                border-top: 0;
+              }
+              .show-menu-tab .show-menu > li a {
+                line-height: calc(#{get-vw(60px, 1280)} * 0.7);
+                @include breakpoint($bp-min-1601-width) {
+                  line-height: calc(75px * 0.7);
+                }
+                @include breakpoint($bp-768-width) {
+                  line-height: calc(#{get-vw(70px, 768)} * 0.7);
+                }
               }
             }
-          }
-          .social-block {
-            right: get-vw(16px, 1280);
-            @include breakpoint($bp-min-1601-width) {
-              right: calc(50% - ((1600px / 2) - 20px)); // width 1600px / 2
+            .social-block {
+              right: get-vw(16px, 1280);
+              @include breakpoint($bp-min-1601-width) {
+                right: calc(50% - ((1600px / 2) - 20px)); // width 1600px / 2
+              }
             }
           }
         }
@@ -528,5 +530,3 @@
     }
   }
 }
-
-

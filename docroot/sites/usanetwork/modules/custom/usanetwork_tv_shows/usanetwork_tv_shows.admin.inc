@@ -35,7 +35,12 @@ function usanetwork_tv_shows_where2watch_load_form($form, &$form_state) {
 
   $form['provider_logo'] = array(
     '#type' => 'file',
-    '#title' => t("Provider's logo"),
+    '#title' => t("Light logo (for dark backgrounds)"),
+  );
+
+  $form['provider_logo_dark'] = array(
+    '#type' => 'file',
+    '#title' => t("Dark logo (for light backgrounds)"),
   );
 
   $form['submit'] = array(
@@ -55,21 +60,30 @@ function usanetwork_tv_shows_where2watch_load_form_submit($form, &$form_state){
   $is_writable = file_prepare_directory($providers_folder, FILE_CREATE_DIRECTORY);
   if ($is_writable) {
     $provider_logo = file_save_upload('provider_logo', array(), $providers_folder, FILE_EXISTS_RENAME);
+    $provider_logo_dark = file_save_upload('provider_logo_dark', array(), $providers_folder, FILE_EXISTS_RENAME);
 
     if (!$provider_logo) {
       form_set_error('provider_logo', 'No image was uploaded');
       return;
     }
 
+    if (!$provider_logo_dark) {
+      form_set_error('provider_logo_dark', 'No image was uploaded');
+      return;
+    }
+
     $provider_logo->status = 1;
+    $provider_logo_dark->status = 1;
 
     file_save($provider_logo);
+    file_save($provider_logo_dark);
 
     $where2watch_providers = variable_get('where2watch_providers', array());
 
     $where2watch_providers[] = array(
       'name' => $form_state['values']['provider_name'],
       'image' => $provider_logo->fid,
+      'image_dark' => $provider_logo_dark->fid,
     );
 
     variable_set('where2watch_providers', $where2watch_providers);
@@ -88,19 +102,24 @@ function usanetwork_tv_shows_where2watch_table() {
   if (!empty($providers)){
     foreach ($providers as $key => $provider) {
       $image = file_load($provider['image']);
+      $image_dark = file_load($provider['image_dark']);
       $rows[] = array(
         $provider['name'],
         theme('image_style', array(
             'path' => $image->uri,
             'style_name' => 'thumbnail',
           )),
+        theme('image_style', array(
+          'path' => $image_dark->uri,
+          'style_name' => 'thumbnail',
+        )),
         l('delete','admin/usanetwork/where_to_watch/' . $key . '/delete'),
       );
     }
   }
 
   $output = theme('table', array(
-    'header' => array('Provider Name', 'Logo', 'Actions'),
+    'header' => array('Provider Name', 'Light Logo', 'Dark Logo', 'Actions'),
     'rows' => $rows,
   ));
 
@@ -114,12 +133,12 @@ function _usanetwork_tv_shows_where2watch_table_delete($provider_id) {
   $providers = variable_get('where2watch_providers', array());
 
   $file = file_load($providers[$provider_id]['image']);
+  $file_dark = file_load($providers[$provider_id]['image_dark']);
 
   file_delete($file);
+  file_delete($file_dark);
 
   unset($providers[$provider_id]);
-
-  file_delete($file);
 
   variable_set('where2watch_providers', $providers);
 

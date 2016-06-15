@@ -505,7 +505,7 @@ body:not(.show-new-design).consumptionator-page, .page-videos-live {
             background: #3D3D3D;
             padding: 20px;
             height: 100%;
-            position: absolute;
+            position: relative;
             width: 100%;
             @include breakpoint($bp-768-width) {
               padding: 0;

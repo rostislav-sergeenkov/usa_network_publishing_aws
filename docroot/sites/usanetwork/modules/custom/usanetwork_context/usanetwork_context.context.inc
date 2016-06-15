@@ -478,6 +478,7 @@ function usanetwork_context_context_default_contexts() {
         'shows' => 'shows',
         'node/*/blog' => 'node/*/blog',
         'node/*/blog/*' => 'node/*/blog/*',
+        'node/*/tag/*' => 'node/*/tag/*',
         'movies' => 'movies',
         'home/*' => 'home/*',
         'feedback' => 'feedback',

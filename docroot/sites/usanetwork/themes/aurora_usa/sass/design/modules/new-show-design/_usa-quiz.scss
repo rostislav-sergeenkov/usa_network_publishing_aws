@@ -188,9 +188,13 @@
       }
       .result-title {
         font-family: $fira-sans-medium;
+        line-height: 1.2em;
       }
       .result-description {
         font-family: $open-sans-regular;
+        span {
+          color: white !important;
+        }
       }
       .page-note {
         font-family: $fira-sans-regular;
@@ -259,7 +263,6 @@
       .answer-title {
         font-family: $fira-sans-medium;
         padding: 5px;
-        width: 320px;
         @include breakpoint ($bp-640-width) {
           font-size: get-vw(18px, 640);
         }

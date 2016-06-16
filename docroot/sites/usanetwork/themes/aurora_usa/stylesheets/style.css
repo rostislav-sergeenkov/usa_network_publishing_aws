@@ -40847,7 +40847,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 .show-new-design #additional-footer .legal-menu li:first-child {
-  padding-left: 0px;
+  padding-left: 0;
 }
 .show-new-design #additional-footer .legal-menu li:last-child:after {
   display: none;

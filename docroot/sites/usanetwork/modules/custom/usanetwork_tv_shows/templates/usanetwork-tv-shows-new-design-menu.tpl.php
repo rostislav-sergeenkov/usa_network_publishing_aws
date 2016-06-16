@@ -9,6 +9,9 @@
         <div class="tune-in"><?php print $tune_in_date; ?></div>
       <?php endif; ?>
     </div>
+    <?php if (!empty($sponsored_path)) : ?>
+      <div class="sponsored" data-mpspath="<?php print $sponsored_path; ?>" data-scalemps="1"></div>
+    <?php endif; ?>
     <div class="menu-open-button show-color show-font"></div>
   </div>
 </div>

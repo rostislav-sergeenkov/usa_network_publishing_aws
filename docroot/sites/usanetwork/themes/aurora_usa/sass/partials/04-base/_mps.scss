@@ -12,9 +12,9 @@
       max-width: 970px;
       overflow: hidden;
       text-align: center;
-      @include breakpoint($bp-768-width) {
-        min-height: 45px;
-      }
+      //@include breakpoint($bp-768-width) {
+      //  min-height: 45px;
+      //}
     }
   }
 }

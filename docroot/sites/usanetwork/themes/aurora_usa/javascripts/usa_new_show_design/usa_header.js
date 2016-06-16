@@ -414,7 +414,8 @@ var USAN = USAN || {};
   // windows events
   usaStickyHeader.prototype.addEvents = function () {
 
-    var _ = this;
+    var _ = this,
+        $header = _.$header;
 
     $(window)
         .bind('scroll', function (e) {
@@ -436,8 +437,10 @@ var USAN = USAN || {};
           }
 
           if (_.options.isMobileDevice) {
-            _.checkHeaderOffset();
-            _.slideStickyHeader();
+            if (!$header.hasClass(_.classHeaderMenuOpen)) {
+              _.checkHeaderOffset();
+              _.slideStickyHeader();
+            }
           } else {
             // if ($window.pageYOffset > 1 && !_.options.isMobileBp) {
             //   _.resizeShowLogo();

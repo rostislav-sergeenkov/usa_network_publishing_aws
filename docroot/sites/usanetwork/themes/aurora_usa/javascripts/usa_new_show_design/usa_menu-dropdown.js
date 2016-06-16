@@ -57,6 +57,8 @@ var USAN = USAN || {};
 
       // params
       _.options.isMobileDevice = usa_deviceInfo.mobileDevice;
+      _.options.isTabletDevice = usa_deviceInfo.mobileDevice && !usa_deviceInfo.smartphone ? true : false;
+      _.options.isSmartphoneDevice = usa_deviceInfo.smartphone;
       _.options.windowInnerHeight = window.innerHeight;
       _.options.isMobileBp = false;
       _.options.isMenuOpenButtonActive = false;
@@ -93,6 +95,19 @@ var USAN = USAN || {};
   usaShowMenu.prototype.checkMatchWindowWidth = function (widthName, bp) {
     // widthName - 'min' or 'max'; bp - breakpoint for check
     return window.matchMedia('(' + widthName + '-width: ' + bp + 'px)').matches;
+  };
+
+  // check mobile device
+  usaShowMenu.prototype.setMobileDeviceClass = function () {
+
+    var _ = this,
+        $header = _.$header;
+
+    if (_.options.isSmartphoneDevice) {
+      _.addElemClass($header, 'smartphone');
+    } else if (_.options.isTabletDevice) {
+      _.addElemClass($header, 'tablet')
+    }
   };
 
   // setTimeout
@@ -227,7 +242,7 @@ var USAN = USAN || {};
 
     $showMenu.mCustomScrollbar({
       axis: 'y',
-      autoHideScrollbar: true,
+      autoHideScrollbar: false,
       theme: 'light',
       scrollbarPosition: 'inside',
       callbacks: {
@@ -386,6 +401,9 @@ var USAN = USAN || {};
 
     if (creation && !_.$mainWrap.hasClass(_.options.initAppClass)) {
       _.$mainWrap.addClass(_.options.initAppClass);
+      if (_.options.isMobileDevice) {
+        _.setMobileDeviceClass();
+      }
       _.updateParamsValue();
       _.checkSignUpForm();
       _.addEvents();

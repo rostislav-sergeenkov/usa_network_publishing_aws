@@ -44723,7 +44723,7 @@ body.blog .view-display-id-blog_content .views-row {
 .latest-episodes-block .main-episode.full-episode .image-block {
   position: absolute;
 }
-.no-touch .latest-episodes-block .main-episode.full-episode .image-block {
+.no-touch .latest-episodes-block .main-episode.full-episode .image-block .asset-img {
   opacity: 0.35;
 }
 .latest-episodes-block .main-episode.full-episode .image-block .meta-icon {

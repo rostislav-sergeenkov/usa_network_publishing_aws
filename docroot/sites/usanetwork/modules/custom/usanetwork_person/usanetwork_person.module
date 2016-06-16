@@ -611,7 +611,7 @@ function _usanetwork_person_render_cast_recap_block() {
               'autoPlay' => 'false',
             ),
           )),
-          'button_url' => l($button_text . '<span class="show-color show-font"></span>', 'node/' . $show_node->nid . '/videos',
+          'button_url' => l($button_text . '<span class="show-color show-font"></span>', 'node/' . $show_node->nid . '/episodes',
             array('html' => TRUE, 'attributes' => array('class' => array('video-button', 'show-border')))),
         );
         return theme('usanetwork_person_cast_recap_nd_block', $theme_variables);

@@ -324,7 +324,7 @@
             font-size: 17.5px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(14px, 640);
+            font-size: get-vw(20.4px, 640);
           }
           &:hover {
             text-decoration: underline;

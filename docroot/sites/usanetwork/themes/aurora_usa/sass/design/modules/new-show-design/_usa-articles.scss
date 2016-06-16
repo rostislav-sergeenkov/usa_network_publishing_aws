@@ -18,7 +18,6 @@
 }
 .articles-block {
   @include clear();
-  background: $consum-also-back;
   padding: 0 get-vw(16px, 1280);
   position: relative;
   width: 100%;

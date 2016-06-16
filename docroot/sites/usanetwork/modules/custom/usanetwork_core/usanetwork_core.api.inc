@@ -211,7 +211,7 @@ function _usanetwork_core_api_get_node_image_field_names() {
     ),
     // Catchall
     'catchall_page' => array(
-      'main' => 'field_usa_catchall_media',
+      'main' => 'field_usa_og_image',
       'files' => 'field_usa_catchall_media',
       'og_image' => 'field_usa_og_image',
     ),

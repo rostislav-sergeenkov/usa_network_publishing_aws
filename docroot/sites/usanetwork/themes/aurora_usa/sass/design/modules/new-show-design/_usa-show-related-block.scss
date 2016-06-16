@@ -1,6 +1,5 @@
 .show-related-content-block {
   @include clear();
-  background-color: $consum-also-back;
   padding: get-vw(16px, 1280) get-vw(16px, 1280);
   position: relative;
   @include breakpoint($bp-min-1601-width) {

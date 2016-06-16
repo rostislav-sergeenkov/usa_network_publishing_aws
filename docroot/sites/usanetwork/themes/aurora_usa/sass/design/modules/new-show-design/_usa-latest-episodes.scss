@@ -1,6 +1,5 @@
 .latest-episodes-block {
   @include clear();
-  background: $consum-also-back;
   padding: get-vw(16px, 1280);
   position: relative;
   width: 100%;

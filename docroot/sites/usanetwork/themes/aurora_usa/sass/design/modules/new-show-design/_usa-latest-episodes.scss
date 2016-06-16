@@ -94,6 +94,7 @@
         }
         @include breakpoint($bp-768-width) {
           padding: get-vw(20px, 768) get-vw(18px, 768);
+          background: none;
         }
         .meta {
           text-align: left;

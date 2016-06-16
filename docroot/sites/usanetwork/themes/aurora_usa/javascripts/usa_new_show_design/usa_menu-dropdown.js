@@ -66,6 +66,7 @@ var USAN = USAN || {};
       _.options.isMenuCustomScrollActive = false;
       _.options.isShowSignUpForm = false;
       _.options.scrollDirection = '';
+      _.options.customScrollend = false;
 
       // elements
       _.$body = $(document.body);
@@ -258,6 +259,10 @@ var USAN = USAN || {};
           } else {
             _.addElemClass($showMenuWrap, classShowMenuScrollEnd, null);
           }
+        },
+        onTotalScroll:function(){
+          console.info("scrolled to bottom");
+          _.options.customScrollend = true;
         }
       }
     });
@@ -314,6 +319,16 @@ var USAN = USAN || {};
           var $window = this;
 
           _.getScrollDirection($window.pageYOffset);
+
+          if (_.options.customScrollend) {
+            if (_.options.isMenuOpenButtonActive) {
+              _.initMenuOpenHandler();
+            }
+
+            if (_.options.isMenuSignUplinkActive) {
+              _.initSignUpFormHandler();
+            }
+          }
 
           // close menu & form on scroll to top
           if (USAN.hasOwnProperty('scrollToTop') && USAN.scrollToTop) {

@@ -3899,6 +3899,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
     overflow: visible;
     padding: 0;
     position: relative;
+    background: none;
   }
 }
 .b-c-d-block li .usa-bcd-carousel-promo .meta-wrapper-inner {
@@ -4127,6 +4128,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
     padding: 0;
     position: relative;
     width: 100%;
+    background: none;
   }
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta-wrapper-inner {
@@ -4539,7 +4541,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   border-top: 2px solid;
   height: auto;
   margin-top: 0.78125vw;
-  max-height: 15.23438vw;
+  max-height: 18.35938vw;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -4633,19 +4635,6 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   text-transform: none;
   white-space: normal;
 }
-@supports (-webkit-line-clamp: 4) {
-  .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
-    display: -webkit-box;
-    height: auto;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-  }
-  @media (max-width: 768px) {
-    .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
-      -webkit-line-clamp: 2 !important;
-    }
-}
-}
 @media (min-width: 1601px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
     font-size: 22.5px;
@@ -4654,7 +4643,6 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 @media (max-width: 768px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
     font-size: 3.75vw;
-    max-height: 9vw !important;
   }
 }
 
@@ -4940,6 +4928,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
     max-height: none;
     padding: 1.875vw 2.5vw;
     position: relative;
+    background: none;
   }
 }
 .show-new-design .related-content-block ul li .show-latest-promo .meta-wrapper-inner {
@@ -40858,7 +40847,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 .show-new-design #additional-footer .legal-menu li:first-child {
-  padding-left: 0px;
+  padding-left: 0;
 }
 .show-new-design #additional-footer .legal-menu li:last-child:after {
   display: none;
@@ -44661,7 +44650,6 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 .latest-episodes-block {
-  background: #181818;
   padding: 1.25vw;
   position: relative;
   width: 100%;
@@ -44729,8 +44717,14 @@ body.blog .view-display-id-blog_content .views-row {
     width: 100%;
   }
 }
+.latest-episodes-block .main-episode.full-episode:hover .image-block {
+  opacity: 0.85 !important;
+}
 .latest-episodes-block .main-episode.full-episode .image-block {
   position: absolute;
+}
+.no-touch .latest-episodes-block .main-episode.full-episode .image-block .asset-img {
+  opacity: 0.35;
 }
 .latest-episodes-block .main-episode.full-episode .image-block .meta-icon {
   line-height: 7.03125vw;
@@ -44771,6 +44765,7 @@ body.blog .view-display-id-blog_content .views-row {
   position: absolute;
   padding: 1.5625vw 1.40625vw;
   z-index: 2;
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat scroll 0 0;
 }
 @media (min-width: 1601px) {
   .latest-episodes-block .main-episode.full-episode .meta-wrapper {
@@ -44780,6 +44775,7 @@ body.blog .view-display-id-blog_content .views-row {
 @media (max-width: 768px) {
   .latest-episodes-block .main-episode.full-episode .meta-wrapper {
     padding: 2.60417vw 2.34375vw;
+    background: none;
   }
 }
 .latest-episodes-block .main-episode.full-episode .meta-wrapper .meta {
@@ -44987,7 +44983,6 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 .articles-block {
-  background: #181818;
   padding: 0 1.25vw;
   position: relative;
   width: 100%;
@@ -45140,7 +45135,6 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 .show-related-content-block {
-  background-color: #181818;
   padding: 1.25vw 1.25vw;
   position: relative;
 }

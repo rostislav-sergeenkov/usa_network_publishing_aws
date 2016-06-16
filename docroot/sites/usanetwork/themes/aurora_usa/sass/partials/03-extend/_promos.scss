@@ -2492,6 +2492,7 @@
         overflow: visible;
         padding: 0;
         position: relative;
+        background: none;
       }
     }
     .meta-wrapper-inner {
@@ -2682,6 +2683,7 @@
         padding: 0;
         position: relative;
         width: 100%;
+        background: none;
       }
     }
     .meta-wrapper-inner {
@@ -3038,7 +3040,7 @@
       border-top: 2px solid;
       height: auto;
       margin-top: get-vw(10px, 1280);
-      max-height: get-vw(195px, 1280);
+      max-height: get-vw(235px, 1280);
       overflow: hidden;
       position: relative;
       width: 100%;
@@ -3114,21 +3116,23 @@
         text-overflow: ellipsis;
         text-transform: none;
         white-space: normal;
-        @supports (-webkit-line-clamp: 4) {
-          display: -webkit-box;
-          height: auto;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 4;
-          @include breakpoint($bp-768-width) {
-            -webkit-line-clamp: 2!important;
-          }
-        }
+
+        //@supports (-webkit-line-clamp: 4) {
+        //  display: -webkit-box;
+        //  height: auto;
+        //-webkit-box-orient: vertical;
+        //  -webkit-line-clamp: 4;
+        //  @include breakpoint($bp-768-width) {
+        //    -webkit-line-clamp: 2!important;
+        //  }
+        //}
         @include breakpoint($bp-min-1601-width) {
           font-size: 22.5px;
+          //max-height: 85px;
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(24px, 640);
-          max-height: get-vw(57.6px, 640)!important;
+          //max-height: get-vw(57.6px, 640)!important;
         }
       }
     }
@@ -3361,6 +3365,7 @@
         max-height: none;
         padding: get-vw(12px, 640) get-vw(16px, 640);
         position: relative;
+        background: none;
       }
     }
     .meta-wrapper-inner {

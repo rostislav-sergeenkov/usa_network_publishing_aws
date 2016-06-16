@@ -45,12 +45,12 @@ $main = $data['#content']['first_block'];
               <?php print $main['title']; ?>
             </div>
             <div class="additional">
-              <a href="<?php print $main['video_link']; ?>"
-                 class="additional-link show-color show-font"><?php print t('Watch'); ?>
-                ></a><br>
-              <a href="<?php print $main['episode_link']; ?>"
-                 class="additional-link show-color show-font"><?php print t('Read the Recap'); ?>
-                ></a><br>
+              <a href="<?php print $main['video_link']; ?>" class="additional-link show-color show-font">
+                <?php print t('Watch'); ?>>
+              </a><br>
+              <a href="<?php print $main['episode_link']; ?>" class="additional-link show-color show-font">
+                <?php print t('Read the Recap'); ?>>
+              </a><br>
             </div>
           <?php else: ?>
             <div class="title">

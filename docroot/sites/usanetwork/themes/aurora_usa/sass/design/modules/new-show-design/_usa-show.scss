@@ -307,7 +307,7 @@
           @include linksSeparator(get-vw(14px, 640), get-vw(10px, 640), get-vw(10px, 640), $usa-footer-color);
         }
         &:first-child {
-          padding-left: 0px;
+          padding-left: 0;
         }
         &:last-child {
           &:after {

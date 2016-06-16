@@ -50,7 +50,8 @@ var USAN = USAN || {};
         minShowLogoDecrease: 0.6, // number % min height 60%
         callBackInitStickyHeader: '',
         callBackOffStickyHeader: '',
-        callBackOnScroll: ''
+        callBackOnScroll: '',
+        callBackOnResize: ''
       };
 
       // create global options
@@ -130,7 +131,6 @@ var USAN = USAN || {};
 
   // scroll events
   usaStickyHeader.prototype.getScrollDirection = function (newYOffset) {
-    // newYOffset - window.pageYOffset
 
     var _ = this,
         currentYOffset = _.options.pageYOffset;
@@ -157,14 +157,11 @@ var USAN = USAN || {};
     });
   };
 
-  // initStickyHeader
-  usaStickyHeader.prototype.initStickyHeader = function () {
+  // header show logo
+  usaStickyHeader.prototype.setShowLogoSize = function () {
 
     var _ = this,
-        $headerSpacer = _.$headerSpacer,
         $showLogo = _.$showLogo;
-
-    $headerSpacer.addClass(_.options.slideHeaderSpacerClass);
 
     if (!_.options.isMobileDevice && !_.options.isMobileBp) {
       $showLogo.css({
@@ -172,6 +169,17 @@ var USAN = USAN || {};
         'width': _.options.minShowLogoWidth
       });
     }
+  };
+
+  // initStickyHeader
+  usaStickyHeader.prototype.initStickyHeader = function () {
+
+    var _ = this,
+        $headerSpacer = _.$headerSpacer;
+
+    $headerSpacer.addClass(_.options.slideHeaderSpacerClass);
+
+    // _.setShowLogoSize();
 
     _.addHeaderClass(_.options.stickyHeaderClass, function () {
       _.options.isHeaderSticky = true;
@@ -221,9 +229,9 @@ var USAN = USAN || {};
     }
 
     _.options.isSlideProcessing = true;
+    _.options.isSlideUpHeaderSticky = true;
     _.addHeaderClass(_.options.slideUpHeaderClass, null);
     _.setTimeout(function () {
-      _.options.isSlideUpHeaderSticky = true;
       _.options.isSlideProcessing = false;
       _.checkHeaderPosition();
       if (typeof callback === 'function') {
@@ -240,9 +248,9 @@ var USAN = USAN || {};
     }
 
     _.options.isSlideProcessing = true;
+    _.options.isSlideUpHeaderSticky = false;
     _.removeHeaderClass(_.options.slideUpHeaderClass, null);
     _.setTimeout(function () {
-      _.options.isSlideUpHeaderSticky = false;
       _.options.isSlideProcessing = false;
       _.options.slideUpStartPositon = window.pageYOffset;
       _.checkHeaderPosition();
@@ -416,6 +424,10 @@ var USAN = USAN || {};
 
           _.getScrollDirection(newYOffset);
 
+          if (typeof _.options.callBackOnScroll === 'function') {
+            _.options.callBackOnScroll();
+          }
+
           if (USAN.hasOwnProperty('scrollToTop') && USAN.scrollToTop) {
             _.slideUpStickyHeader(function () {
               _.resetHeader();
@@ -427,9 +439,9 @@ var USAN = USAN || {};
             _.checkHeaderOffset();
             _.slideStickyHeader();
           } else {
-            if ($window.pageYOffset > 1 && !_.options.isMobileBp) {
-              _.resizeShowLogo();
-            }
+            // if ($window.pageYOffset > 1 && !_.options.isMobileBp) {
+            //   _.resizeShowLogo();
+            // }
             _.checkHeaderOffset();
             _.slideStickyHeader();
           }
@@ -437,6 +449,10 @@ var USAN = USAN || {};
         .bind('resize', function (e) {
 
           var $window = this;
+
+          if (typeof _.options.callBackOnResize === 'function') {
+            _.options.callBackOnResize();
+          }
 
           _.updateOptionsVal();
           _.setHeaderSpacerHeight(_.options.headerHeight);

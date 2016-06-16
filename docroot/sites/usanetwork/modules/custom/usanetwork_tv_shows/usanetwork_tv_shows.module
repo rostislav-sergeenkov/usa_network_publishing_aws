@@ -5220,12 +5220,16 @@ function _usanetwork_tv_shows_landing_page_explore_items_block_item($node, $curr
       $promo_link = url(reset($promo_link_field[0]));
     }
   }
+  $caption = !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '';
+  if ($is_new_design) {
+    $caption = !empty($own_promo_lines['violator']) ? $own_promo_lines['violator'] : '';
+  }
   $theme_variables = array(
     'classes' => NULL,
     'custom_classes' => NULL,
     'target_url' => !empty($promo_link) ? $promo_link : url('node/' . $node->nid),
     'media_icon' => !empty($own_promo_lines['icon_type']) ? $own_promo_lines['icon_type'] : 'video-icon',
-    'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
+    'caption' => $caption,
     'title' => !empty($own_promo_lines['promo_title'])
         ? $own_promo_lines['promo_title']
         : $node->title,

@@ -225,8 +225,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_header.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_menu-dropdown.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_carousels.js',
-            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_to-top.js',
-//            drupal_get_path('module', 'usanetwork_aspot') . '/js/usanetwork_aspot_home_page.giui.js'
+            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_to-top.js'
           ),
         ),
       );
@@ -2508,16 +2507,22 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
 
   $show_wrapper = entity_metadata_wrapper('node', $show);
 
-  if (!empty($show->field_display_title)) {
-    $display_title = $show_wrapper->field_display_title->value();
-    if (!empty($display_title)) {
-      $show_title = $display_title;
+  if (!empty($show->field_main_logo)) {
+    $main_logo_field = $show_wrapper->field_main_logo->value();
+    $main_logo_uri = $main_logo_field['uri'];
+    $show_title = theme_image(array('path' => $main_logo_uri));
+  } else {
+    if (!empty($show->field_display_title)) {
+      $display_title = $show_wrapper->field_display_title->value();
+      if (!empty($display_title)) {
+        $show_title = $display_title;
+      }
+      else {
+        $show_title = $show->title;
+      }
     }
-    else {
-      $show_title = $show->title;
-    }
+    $show_title = decode_entities($show_title);
   }
-  $show_title = decode_entities($show_title);
 
   $show_class = usanetwork_tv_shows_color_show_css_class($show);
 
@@ -2595,14 +2600,24 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
   }
 
   $title_tag = 'div';
-  $show_title = array(
+  $show_title_tag = array(
     '#type' => 'html_tag',
     '#tag' => $title_tag,
     '#attributes' => array('class' => 'title'),
-    '#value' => l($show_title, 'node/' . $show->nid),
+    '#value' => l($show_title, 'node/' . $show->nid, array('html' => TRUE)),
   );
+  $show_title = theme('html_tag', array('element' => $show_title_tag));
+
+  if (!empty($show->field_sponsored)) {
+    $field_sponsored = $show_wrapper->field_sponsored->value();
+    if ($field_sponsored == '1') {
+      $sponsored_path = '/node/' . $show->nid;
+    }
+  }
+
+
   return theme('usanetwork_tv_shows_new_design_menu', array(
-    'show_title' => theme('html_tag', array('element' => $show_title)),
+    'show_title' => $show_title,
     'show_class' => $show_class,
     'hashtag' => isset($hashtag) ? $hashtag : NULL,
     'tune_in_date' => isset($usa_tv_tune_in_date) ? $usa_tv_tune_in_date : NULL,
@@ -2610,6 +2625,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
     'show_menu_tab_items' => $show_menus,
     'sign_up_block' => isset($sign_up_block) ? $sign_up_block : NULL,
     'sign_up_block_additional' => $additional_sign_up_block_render,
+    'sponsored_path' => isset($sponsored_path) ? $sponsored_path: NULL,
   ));
 }
 
@@ -5220,12 +5236,16 @@ function _usanetwork_tv_shows_landing_page_explore_items_block_item($node, $curr
       $promo_link = url(reset($promo_link_field[0]));
     }
   }
+  $caption = !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '';
+  if ($is_new_design) {
+    $caption = !empty($own_promo_lines['violator']) ? $own_promo_lines['violator'] : '';
+  }
   $theme_variables = array(
     'classes' => NULL,
     'custom_classes' => NULL,
     'target_url' => !empty($promo_link) ? $promo_link : url('node/' . $node->nid),
     'media_icon' => !empty($own_promo_lines['icon_type']) ? $own_promo_lines['icon_type'] : 'video-icon',
-    'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
+    'caption' => $caption,
     'title' => !empty($own_promo_lines['promo_title'])
         ? $own_promo_lines['promo_title']
         : $node->title,

@@ -375,7 +375,8 @@ function _usanetwork_promo_pull_node_promo_details($entity_object) {
       }
       $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $entity_object);
       if ($is_new_design) {
-        $promo_fields['show_name'] = usanetwork_core_api_get_violator('node', $entity_object->nid);
+        $promo_fields['violator'] = usanetwork_core_api_get_violator('node', $entity_object->nid);
+        $promo_fields['show_name'] = $promo_fields['violator'];
       }
       return $promo_fields;
     }

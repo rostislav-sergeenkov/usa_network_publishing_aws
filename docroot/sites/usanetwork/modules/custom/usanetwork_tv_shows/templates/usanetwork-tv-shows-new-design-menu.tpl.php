@@ -3,13 +3,15 @@
     <div class="logo-block">
       <a href="/" title="Home" rel="home" class="logo"></a>
     </div>
-    <div
-      class="title-block<?php print (!empty($show_class)) ? ' ' . $show_class : ''; ?>">
+    <div class="title-block<?php print (!empty($show_class)) ? ' ' . $show_class : ''; ?>">
       <?php print $show_title; ?>
       <?php if (!empty($tune_in_date)): ?>
         <div class="tune-in"><?php print $tune_in_date; ?></div>
       <?php endif; ?>
     </div>
+    <?php if (!empty($sponsored_path)) : ?>
+      <div class="sponsored" data-mpspath="<?php print $sponsored_path; ?>" data-scalemps="1"></div>
+    <?php endif; ?>
     <div class="menu-open-button show-color show-font"></div>
   </div>
 </div>

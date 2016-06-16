@@ -472,6 +472,16 @@
       }
     }
     #header {
+      &:not(.usa-sticky-header-initialized) {
+        .show-menu-tab {
+          @include breakpoint($bp-min-1601-width) {
+            max-height: 75px;
+          }
+          @include breakpoint($bp-min-769-width) {
+            max-height: calc(#{get-vw(60px, 1280)} + 4px);
+          }
+        }
+      }
       &.menu-open {
         #head-leaderboard {
           @include breakpoint($bp-768-width) {

@@ -19,7 +19,9 @@
           <div class="meta">
             <?php if (!empty($caption)): ?>
               <?php if ($is_new_design): ?>
-                <span class="show-color"><?php print $caption; ?></span>
+                <div class="caption">
+                  <span class="show-color"><?php print $caption; ?></span>
+                </div>
               <?php else: ?>
                 <?php print $caption; ?>
               <?php endif; ?>

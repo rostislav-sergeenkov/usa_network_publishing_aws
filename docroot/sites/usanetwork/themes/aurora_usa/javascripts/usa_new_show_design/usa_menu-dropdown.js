@@ -192,6 +192,7 @@ var USAN = USAN || {};
   usaShowMenu.prototype.initSignUpFormHandler = function () {
 
     var _ = this,
+        $showMenu = _.$showMenu,
         $menuSignUplink = _.$menuSignUplink,
         $menuSignUplinkWrap = _.$menuSignUplinkWrap,
         classActiveLink = _.options.classActiveLink,
@@ -224,6 +225,11 @@ var USAN = USAN || {};
         duration: duration,
         complete: function(elem) {
           _.addElemClass($form, activeClass, function () {
+            if (_.options.isMobileDevice) {
+              $($showMenu).mCustomScrollbar("scrollTo",$form,{
+                scrollInertia: 300
+              });
+            }
             _.options.isShowSignUpForm = true;
           });
         }
@@ -319,19 +325,6 @@ var USAN = USAN || {};
               _.initSignUpFormHandler();
             }
           }
-
-          // if (Math.abs($window.pageYOffset - _.options.pageYOffset) > $(_.$showMenuWrap).outerHeight()) {
-          //
-          //   _.options.pageYOffset = $window.pageYOffset;
-          //
-          //   if (_.options.isMenuOpenButtonActive) {
-          //     _.initMenuOpenHandler();
-          //   }
-          //
-          //   if (_.options.isMenuSignUplinkActive) {
-          //     _.initSignUpFormHandler();
-          //   }
-          // }
         })
         .bind('resize', function (e) {
 

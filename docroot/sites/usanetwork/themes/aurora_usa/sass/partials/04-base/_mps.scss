@@ -3,7 +3,7 @@
   #head-leaderboard {
     padding: 10px 0;
     overflow: hidden;
-    @include breakpoint($bp-640-width) {
+    @include breakpoint($bp-768-width) {
       padding: 0 0 6px;
     }
     #topbanner {

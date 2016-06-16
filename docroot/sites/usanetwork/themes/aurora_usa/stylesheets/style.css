@@ -40356,9 +40356,12 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design #header.usa-sticky-header-initialized {
   left: 0;
   top: 0;
-  position: absolute;
+  position: relative;
   width: 100%;
   z-index: 1000;
+}
+.show-new-design #header.usa-init-sticky-header {
+  position: absolute;
 }
 .show-new-design #header.smartphone, .show-new-design #header.tablet {
   z-index: 99999;
@@ -40372,16 +40375,16 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design #header.usa-slide-header .header-inner,
 .show-new-design #header.usa-slide-header #head-leaderboard {
-  -webkit-transition: all 0.2s linear;
+  -webkit-transition: all 0.3s linear;
   -webkit-transition-delay: 0;
-  -moz-transition: all 0.2s linear 0;
-  -o-transition: all 0.2s linear 0;
-  transition: all 0.2s linear 0;
+  -moz-transition: all 0.3s linear 0;
+  -o-transition: all 0.3s linear 0;
+  transition: all 0.3s linear 0;
 }
 .show-new-design #header.usa-sticky-header {
   position: fixed;
 }
-.show-new-design #header.usa-sticky-header #head-leaderboard {
+.show-new-design #header.usa-header-hide-leaderboard #head-leaderboard {
   height: 0;
   margin: 0;
   padding: 0;

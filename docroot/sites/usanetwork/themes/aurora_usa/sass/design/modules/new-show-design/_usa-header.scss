@@ -11,9 +11,13 @@
     &.usa-sticky-header-initialized {
       left: 0;
       top: 0;
-      position: absolute;
+      position: relative;
       width: 100%;
       z-index: 1000;
+    }
+
+    &.usa-init-sticky-header {
+      position: absolute;
     }
 
     &.smartphone,
@@ -26,13 +30,16 @@
       @include transition(all 0.2s linear 0);
       .header-inner,
       #head-leaderboard {
-        @include transition(all 0.2s linear 0);
+        @include transition(all 0.3s linear 0);
       }
     }
 
     // header sticky style
     &.usa-sticky-header {
       position: fixed;
+    }
+
+    &.usa-header-hide-leaderboard {
       #head-leaderboard {
         height: 0;
         margin: 0;

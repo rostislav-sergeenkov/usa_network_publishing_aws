@@ -1,9 +1,11 @@
+// for all devices
 .show-new-design {
   #header {
+    background-color: black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
     overflow: visible;
     width: 100%;
     .header-inner {
-      background-color: black;
       margin: 0 auto;
       width: 100%;
       @include breakpoint($bp-min-1601-width) {
@@ -19,9 +21,20 @@
     }
     &.usa-sticky-header {
       position: fixed;
-      .header-inner {
-        width: 100%;
+      #head-leaderboard {
+        height: 0;
+        margin: 0;
+        padding: 0;
+        visibility: hidden;
       }
+    }
+    // header slide up -100%
+    &.usa-slide-up-header {
+      -moz-transform: translateY(-105%);
+      -ms-transform: translateY(-100%);
+      -webkit-transform: translateY(-105%);
+      -o-transform: translateY(-105%);
+      transform: translateY(-105%);
     }
   }
   #header-spacer {
@@ -29,5 +42,78 @@
     background-color: black;
     margin: 0 auto;
     max-width: 1600px;
+  }
+}
+
+// -----------------
+// animate header
+// default transition duration 200ms
+// -----------------
+
+// desktop styles
+.no-touch {
+  .show-new-design {
+    #header-spacer {
+      @include transition(all 0.1s linear 0);
+      &.slide-spacer {
+        @include transition(all 0.2s linear 0);
+      }
+    }
+
+    #header {
+
+    }
+  }
+}
+// mobile styles
+.no-touch {
+  .show-new-design {
+
+  }
+}
+
+.no-touch {
+  .show-new-design {
+    #header-spacer {
+      @include transition(all 0.1s linear 0);
+      &.slide-spacer {
+        @include transition(all 0.2s linear 0);
+      }
+    }
+    #header {
+      &:not(.usa-sticky-header-initialized) {
+        .show-menu-tab {
+          @include breakpoint($bp-min-1601-width) {
+            max-height: 75px;
+          }
+          @include breakpoint($bp-min-769-width) {
+            max-height: calc(#{get-vw(60px, 1280)} + 4px);
+          }
+        }
+      }
+      &.menu-open {
+        #head-leaderboard {
+          @include breakpoint($bp-768-width) {
+            display: none;
+          }
+        }
+      }
+      &.usa-sticky-header-initialized {
+
+        // header added transition for elements
+        &.usa-slide-header {
+          @include transition(all 0.2s linear 0);
+          .header-inner,
+          #head-leaderboard {
+            @include transition(all 0.2s linear 0);
+          }
+        }
+
+        // header sticky style
+        &.usa-sticky-header {
+
+        }
+      }
+    }
   }
 }

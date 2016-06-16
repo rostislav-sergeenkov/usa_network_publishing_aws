@@ -41219,19 +41219,37 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
-  float: left;
+  float: none !important;
   max-width: 100% !important;
+  width: 100%;
+}
+@media (min-width: 769px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
+    text-align: center;
+  }
 }
 @media (max-width: 768px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
     display: block;
-    float: none;
     max-width: none !important;
     height: 100%;
   }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+  margin: 0 auto;
   height: 100%;
+}
+#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 769px) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+  }
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
   height: 100%;
@@ -41278,7 +41296,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 1024px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-    padding: 0 2.05078vw;
+    padding: 0 2.00195vw;
   }
 }
 @media (max-width: 768px) {
@@ -41293,6 +41311,18 @@ body.blog .view-display-id-blog_content .views-row {
 }
 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a:not(:hover):not(.active) {
   color: white !important;
+}
+@supports (display: flex) {
+  #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  @media (min-width: 769px) {
+    #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
+      float: none;
+    }
+}
 }
 @media (min-width: 1601px) {
   #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {

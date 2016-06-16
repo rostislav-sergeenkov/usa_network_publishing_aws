@@ -342,16 +342,26 @@
       }
     }
     .show-menu-tab {
-      float: left;
+      float: none !important;
       max-width: 100% !important;
+      width: 100%;
+      @include breakpoint($bp-min-769-width) {
+        text-align: center;
+      }
       @include breakpoint($bp-768-width) {
         display: block;
-        float: none;
         max-width: none !important;
         height: 100%;
       }
       .show-menu {
+        @include clear;
+        margin: 0 auto;
         height: 100%;
+        @include breakpoint($bp-min-769-width) {
+          display: inline-block;
+          vertical-align: middle;
+          width: auto;
+        }
         .show-menu-item {
           height: 100%;
           @include breakpoint($bp-768-width) {
@@ -386,7 +396,7 @@
               padding: 0 36.25px;
             }
             @include breakpoint($bp-1024-width) {
-              padding: 0 get-vw(21px, 1024);
+              padding: 0 get-vw(20.5px, 1024);
             }
             @include breakpoint($bp-768-width) {
               color: $header-new-menu-item-color;
@@ -402,6 +412,23 @@
           }
         }
       }
+
+      // flex model
+      @supports (display: flex) {
+        & {
+          .show-menu {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            .show-menu-item {
+              @include breakpoint($bp-min-769-width) {
+                float: none;
+              }
+            }
+          }
+        }
+      }
+      // end
     }
     .social-block {
       @include breakpoint($bp-min-1601-width) {

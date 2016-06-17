@@ -6,8 +6,7 @@
 
     }
 
-    &.tablet,
-    &.smartphone {
+    &.menu-open {
       #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
         .bottom-menu-block {
           position: relative;
@@ -20,7 +19,10 @@
         #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
           .bottom-menu-block {
             .show-menu-tab {
-              height: calc((100vh - #{get-vw(86px, 768) + get-vw(30px, 768) + get-vw(33px, 768) + get-vw(57px, 768) + get-vw(10px, 768) + get-vw(18px, 768)}) - 4px);
+              @media all and (orientation: portrait) {
+                /* Style adjustments for portrait mode goes here */
+                height: calc((100vh - #{get-vw(86px, 768) + get-vw(30px, 768) + get-vw(33px, 768) + get-vw(57px, 768) + get-vw(10px, 768) + get-vw(18px, 768)}) - 4px);
+              }
             }
           }
         }
@@ -31,7 +33,10 @@
       #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
         .bottom-menu-block {
           .show-menu-tab {
-            height: calc((100vh - #{get-vw(86px, 768) + get-vw(30px, 768) + get-vw(33px, 768) + get-vw(57px, 768) + get-vw(10px, 768) + get-vw(18px, 768)}) - 124px);
+            @media all and (orientation: portrait) {
+              /* Style adjustments for portrait mode goes here */
+              height: calc((100vh - #{get-vw(86px, 768) + get-vw(30px, 768) + get-vw(33px, 768) + get-vw(57px, 768) + get-vw(10px, 768) + get-vw(18px, 768)}) - 124px);
+            }
           }
         }
       }
@@ -45,6 +50,13 @@
             }
           }
         }
+      }
+      //@media all and (orientation:portrait) {
+      //  /* Style adjustments for portrait mode goes here */
+      //}
+
+      @media all and (orientation: landscape) {
+        /* Style adjustments for landscape mode goes here */
       }
     }
   }

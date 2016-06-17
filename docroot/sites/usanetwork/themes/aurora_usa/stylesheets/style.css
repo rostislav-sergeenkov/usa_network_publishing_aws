@@ -40568,12 +40568,12 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design #header.usa-sticky-header-initialized {
   position: absolute;
+  z-index: 99999;
 }
 .show-new-design #header.usa-sticky-header {
   left: 0;
   top: -100%;
   position: fixed;
-  z-index: 100000;
 }
 .show-new-design #header.usa-sticky-header.slide-down {
   -webkit-animation-name: slideDown;
@@ -41081,17 +41081,28 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 
-.show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block, .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
+.show-new-design #header.menu-open #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
   position: relative;
 }
-.show-new-design #header.usa-sticky-header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
-  height: calc((100vh - 30.46875vw) - 4px);
+@media all and (orientation: portrait) {
+  .show-new-design #header.usa-sticky-header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
+    /* Style adjustments for portrait mode goes here */
+    height: calc((100vh - 30.46875vw) - 4px);
+  }
 }
-.show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
-  height: calc((100vh - 30.46875vw) - 124px);
+@media all and (orientation: portrait) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
+    /* Style adjustments for portrait mode goes here */
+    height: calc((100vh - 30.46875vw) - 124px);
+  }
 }
 .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab:not(.show-menu-scroll-end):after {
   display: block;
+}
+@media all and (orientation: landscape) {
+  .show-new-design #header.smartphone {
+    /* Style adjustments for landscape mode goes here */
+  }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
   background: black;

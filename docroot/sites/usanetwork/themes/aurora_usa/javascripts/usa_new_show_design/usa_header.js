@@ -1,9 +1,10 @@
 /*
- http://wicky.nillia.ms/headroom.js/
- */
+ readme
 
-var USAN = USAN || {};
-// check USAN.hasOwnProperty('scrollToTop') && USAN.scrollToTop
+ dependency:
+  headroom - http://wicky.nillia.ms/headroom.js/
+
+ */
 
 (function ($) {
 
@@ -37,7 +38,11 @@ var USAN = USAN || {};
         stickyMobileBp: 768,
         animatedSlideHeader: 200, // animation duration 200ms
         animatedOffElements: 300, // animation duration 300ms
-        easing: 'linear'
+        easing: 'linear',
+        callBackInitStickyHeader: '',
+        callBackOffStickyHeader: '',
+        callBackOnScroll: '',
+        callBackOnResize: ''
       };
 
       // create global options
@@ -237,7 +242,10 @@ var USAN = USAN || {};
     _.setTimeout(function () {
       $header.css({
         top: 0
-      })
+      });
+      if (typeof _.options.callBackInitStickyHeader === 'function') {
+        _.options.callBackInitStickyHeader();
+      }
     }, _.options.animatedSlideHeader);
 
   };
@@ -254,6 +262,10 @@ var USAN = USAN || {};
       _.removeElemClass($header, _.options.stickyHeaderClass, null);
       _.removeElemClass($header, _.options.animatedHeaderClass, null);
       $header.attr('style', '');
+      _.updateHeaderSpacerHeight();
+      if (typeof _.options.callBackOffStickyHeader === 'function') {
+        _.options.callBackOffStickyHeader();
+      }
     }, _.options.animatedOffElements);
   };
   usaStickyHeader.prototype.showHeaderOffElements = function () {
@@ -271,8 +283,6 @@ var USAN = USAN || {};
     _.addElemClass($header, _.options.adOffHeaderClass, null);
   };
 
-
-
   // windows events
   usaStickyHeader.prototype.addEvents = function () {
 
@@ -286,18 +296,30 @@ var USAN = USAN || {};
 
           if ($window.pageYOffset > _.options.headerHeight && !_.options.isInitStickyHeader) {
             _.initStickyHeader();
-          } else if (!_.options.isMobileDevice && $window.pageYOffset <= _.options.headerHeight && _.options.isInitStickyHeader) {
+          } else if ($window.pageYOffset <= _.options.headerHeight && _.options.isInitStickyHeader) {
             _.showHeaderOffElements();
-          } else if (!_.options.isMobileDevice && $window.pageYOffset > _.options.headerHeight && _.options.isInitStickyHeader) {
+          } else if ($window.pageYOffset > _.options.headerHeight && _.options.isInitStickyHeader) {
             _.hideHeaderOffElements();
-          } 
+          }
 
           _.options.pageYOffset = $window.pageYOffset;
+
+          if (typeof _.options.callBackOnScroll === 'function') {
+            _.options.callBackOnScroll();
+          }
         })
         .bind('resize', function (e) {
 
           var $window = this;
 
+          _.setTimeout(function () {
+            _.updateOptionsVal();
+            _.setHeaderSpacerHeight(_.options.headerHeight);
+          }, 150);
+
+          if (typeof _.options.callBackOnResize === 'function') {
+            _.options.callBackOnResize();
+          }
         });
   };
 
@@ -314,6 +336,7 @@ var USAN = USAN || {};
     if (creation && !_.$header.hasClass(initHeaderClass)) {
       _.$header.addClass(initHeaderClass);
       _.updateOptionsVal();
+      _.checkHeaderSpacer();
       _.setHeaderSpacerHeight(_.options.headerHeight);
       _.usaHeadroom.init();
       _.addEvents();
@@ -342,11 +365,32 @@ var USAN = USAN || {};
   // event document ready
   //================================
   $(document).ready(function () {
+    if ($('body').hasClass('show-new-design') && $('body').hasClass('consumptionator-page')) {
 
-    if ($('body').hasClass('show-new-design')) {
+      var $consumSidebar = $('.consum-sidebar'),
+          sidebarStickyClass = 'sticky-sidebar';
+
+      $('#header').usaStickyHeader({
+        callBackInitStickyHeader: function () {
+          if (Drupal.behaviors.hasOwnProperty('consumptionator_right_rail')) {
+            Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
+            if (!$consumSidebar.hasClass(sidebarStickyClass)) {
+              $consumSidebar.addClass(sidebarStickyClass);
+            }
+          }
+        },
+        callBackOffStickyHeader: function () {
+          if (Drupal.behaviors.hasOwnProperty('consumptionator_right_rail')) {
+            Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
+            if ($consumSidebar.hasClass(sidebarStickyClass)) {
+              $consumSidebar.removeClass(sidebarStickyClass);
+            }
+          }
+        }
+      });
+    } else if ($('body').hasClass('show-new-design')) {
       $('#header').usaStickyHeader();
     }
-
   });
 
 })(jQuery);

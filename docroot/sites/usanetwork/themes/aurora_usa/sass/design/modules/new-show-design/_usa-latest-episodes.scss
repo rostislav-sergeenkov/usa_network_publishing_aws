@@ -53,9 +53,7 @@
       .image-block {
         position: absolute;
         .no-touch & {
-          .asset-img {
-            opacity: 0.35;
-          }
+          opacity: 0.35;
         }
         .meta-icon {
           @extend %usa-promo-video-play-icon;

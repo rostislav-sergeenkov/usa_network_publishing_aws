@@ -32,7 +32,7 @@
             <?php print t('Watch');?>
           </a>
         <?php endif; ?>
-        <a href="<?php print $episode_link; ?>" class="additional show-color show-font">
+        <a href="<?php print $episode_link; ?>" class="additional show-font">
           <?php print t('Read the Recap'); ?>>
         </a>
       </div>

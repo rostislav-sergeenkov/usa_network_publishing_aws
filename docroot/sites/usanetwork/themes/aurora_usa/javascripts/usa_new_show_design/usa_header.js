@@ -1,7 +1,5 @@
 /*
- dependency:
- velocityjs: '1.2.2'
- VelocityJS - VelocityJS.org
+ http://wicky.nillia.ms/headroom.js/
  */
 
 var USAN = USAN || {};
@@ -23,70 +21,44 @@ var USAN = USAN || {};
       // default settings
       _.defaults = {
         // selectors
-        adBlockId: 'head-leaderboard',
-        headerSpacerId: 'header-spacer',
-        headerInnerClass: 'header-inner',
-        showLogoSel: '.top-menu-block-inner .title-block .title',
+        adBlockSelector: '#head-leaderboard',
+        headerSpacerSelector: '#header-spacer',
         initHeaderClass: 'usa-sticky-header-initialized',
-        decreaseHeaderClass: 'usa-decrease-header', // string
-        initStickyHeaderClass: 'usa-init-sticky-header', // string
-        stickyHeaderClass: 'usa-sticky-header', // string
-        slideHeaderClass: 'usa-slide-header', // string
-        slideUpHeaderClass: 'usa-slide-up-header', // string
-        adOffHeaderClass: 'usa-header-hide-leaderboard', // string
-        slideHeaderSpacerClass: 'slide-spacer', // string
-        classHeaderMenuOpen: 'menu-open',
-        
+
+        // name classes
+        stickyHeaderClass: 'usa-sticky-header',
+        animatedHeaderClass: 'animated',
+        adOffHeaderClass: 'off-elements', // string
+
         additionalMode: {},
 
         // functionality
         sticky: true, // boolean
-        stickyMobile: true, // boolean
         stickyMobileBp: 768,
-        durationCssAnimate: 200, // ms; default css transition-duration
-        delayCssAnimate: 300, // number ms
-        easing: 'linear',
-        scrollDiffMin: 20, // number px
-        minShowLogoHeight: 41, // number px 
-        minShowLogoWidth: 261, // number px
-        minShowLogoDecrease: 0.6, // number % min height 60%
-        callBackInitStickyHeader: '',
-        callBackOffStickyHeader: '',
-        callBackOnScroll: '',
-        callBackOnResize: ''
+        animatedSlideHeader: 200, // animation duration 200ms
+        animatedOffElements: 300, // animation duration 300ms
+        easing: 'linear'
       };
 
       // create global options
       _.options = $.extend(true, _.defaults, settings);
 
-      // set params
-      _.options.pageYOffset = window.pageYOffset;
-      _.options.scrollDirection = ''; // string value 'top' or 'down'
-      _.options.headerHeight = 0;
-      _.options.defaultHeaderHeight = 0;
-      _.options.headerSpacerHeight = 0;
-      _.options.adBlockHeight = 0;
+      // params
       _.options.isMobileDevice = usa_deviceInfo.mobileDevice;
-      _.options.isInitHeaderSticky = false;
-      _.options.isHeaderSticky = false;
-      _.options.isHeaderSlide = false;
-      _.options.isSlideUpHeaderSticky = false;
-      _.options.isSlideProcessing = false;
-      _.options.isScrollDiffMin = false;
-      _.options.slideUpStartPositon = 0;
-      _.options.showLogoHeight = 0;
-      _.options.showLogoWidth = 0;
-      _.options.calcMinShowLogoHeight = 0;
-      _.options.isResizeShowLogoProcessing = false;
+      _.options.pageYOffset = window.pageYOffset;
+      _.options.headerHeight = 0;
+      _.options.adBlockHeight = 0;
+      _.options.isInitStickyHeader = false;
+
       _.options.isMobileBp = false;
 
       // elements
       _.$body = $(document.body);
       _.$header = $(element);
-      _.$headerInner = $(element).find('.' + _.options.headerInnerClass);
-      _.$headerSpacer = $('#' + _.options.headerSpacerId);
-      _.$adBlock = $('#' + _.options.adBlockId);
-      _.$showLogo = $(element).find(_.options.showLogoSel);
+      _.$headerSpacer = $(_.options.headerSpacerSelector);
+      _.$adBlock = $(_.options.adBlockSelector);
+
+      _.usaHeadroom = _.headroom();
 
       // data attributes value
       // _.data = {};
@@ -98,10 +70,83 @@ var USAN = USAN || {};
     return usaStickyHeader;
   }());
 
+  //---------------------------
+  // main functionality
+  //---------------------------
+
+  usaStickyHeader.prototype.headroom = function () {
+
+    var _ = this,
+        $header = document.getElementById("header");
+
+    return new Headroom($header, {
+      // vertical offset in px before element is first unpinned
+      offset: 0,
+      // scroll tolerance in px before state changes
+      tolerance: 20,
+      classes: {
+        // when element is initialised
+        initial: "init-slide",
+        // when scrolling up
+        pinned: "slide-down",
+        // when scrolling down
+        unpinned: "slide-up",
+        // when above offset
+        top: "header-top",
+        // when below offset
+        notTop: "header-not-top",
+        // when at bottom of scoll area
+        bottom: "header-bottom",
+        // when not at bottom of scroll area
+        notBottom: "header-not-bottom"
+      },
+      // callback when pinned, `this` is headroom object
+      onPin: function () {
+      },
+      // callback when unpinned, `this` is headroom object
+      onUnpin: function () {
+      },
+      // callback when above offset, `this` is headroom object
+      onTop: function () {
+        console.info('onTop');
+        if (_.options.isInitStickyHeader) {
+          _.resetStickyHeader();
+        }
+      },
+      // callback when below offset, `this` is headroom object
+      onNotTop: function () {
+      },
+      // callback when at bottom of page, `this` is headroom object
+      onBottom: function () {
+      },
+      // callback when moving away from bottom of page, `this` is headroom object
+      onNotBottom: function () {
+      }
+    });
+  };
+
+  //---------------------------
+  // additional functionality
+  //---------------------------
+
   // check Window Width
   usaStickyHeader.prototype.checkMatchWindowWidth = function (widthName, bp) {
     // widthName - 'min' or 'max'; bp - breakpoint for check
     return window.matchMedia('(' + widthName + '-width: ' + bp + 'px)').matches;
+  };
+
+  // setTimeout
+  usaStickyHeader.prototype.setTimeout = function (callback, delay) {
+
+    var timeout = null;
+
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      if (typeof callback === 'function') {
+        callback();
+      }
+    }, delay);
+
   };
 
   // add || remove class
@@ -132,213 +177,16 @@ var USAN = USAN || {};
     }
   };
 
-  // add || remove class
-  usaStickyHeader.prototype.addHeaderClass = function (className, callback) {
-
-    var _ = this,
-        $header = _.$header,
-        headerClass = className.trim();
-
-    if (!$header.hasClass(headerClass)) {
-      $header.addClass(headerClass);
-    }
-    if (typeof callback === 'function') {
-      callback();
-    }
-  };
-  usaStickyHeader.prototype.removeHeaderClass = function (className, callback) {
-
-    var _ = this,
-        $header = _.$header,
-        headerClass = className.trim();
-
-    if ($header.hasClass(headerClass)) {
-      $header.removeClass(headerClass);
-    }
-    if (typeof callback === 'function') {
-      callback();
-    }
-  };
-
-  // scroll events
-  usaStickyHeader.prototype.getScrollDirection = function (newYOffset) {
-
-    var _ = this,
-        currentYOffset = _.options.pageYOffset;
-
-    if (currentYOffset > newYOffset) {
-      _.options.scrollDirection = 'top';
-    } else if (currentYOffset < newYOffset) {
-      _.options.scrollDirection = 'down';
-    }
-
-    if (Math.abs(newYOffset - _.options.pageYOffset) > _.options.scrollDiffMin) {
-      _.options.isScrollDiffMin = true;
-    } else {
-      _.options.isScrollDiffMin = false;
-    }
-
-    _.options.pageYOffset = newYOffset;
-  };
-  usaStickyHeader.prototype.scrollToTop = function (top, duration, easing, callback) {
-    $("html, body").animate({scrollTop: top}, duration, easing, function() {
-      if (typeof callback === 'function') {
-        callback();
-      }
-    });
-  };
-
-  // header show logo
-  usaStickyHeader.prototype.setShowLogoSize = function () {
-
-    var _ = this,
-        $showLogo = _.$showLogo;
-
-    if (!_.options.isMobileDevice && !_.options.isMobileBp) {
-      $showLogo.css({
-        'height': _.options.minShowLogoHeight,
-        'width': _.options.minShowLogoWidth
-      });
-    }
-  };
-
-  // initStickyHeader
-  usaStickyHeader.prototype.initStickyHeader = function () {
+  // update value
+  usaStickyHeader.prototype.updateOptionsVal = function () {
 
     var _ = this;
 
-    if (!_.options.isInitHeaderSticky) {
-      _.addElemClass(_.$header, _.options.initStickyHeaderClass, function () {
-        _.options.isInitHeaderSticky = true;
-      });
-    }
-    
-    _.setHeaderSpacerHeight(_.options.headerHeight - _.options.adBlockHeight);
-    _.addElemClass(_.$header, _.options.stickyHeaderClass, function () {
-      _.options.isHeaderSticky = true;
-    });
-    _.slideUpStickyHeader(null);
+    _.options.isMobileBp = _.checkMatchWindowWidth('max', _.options.stickyMobileBp);
+    _.options.pageYOffset = window.pageYOffset;
+    _.options.adBlockHeight = _.$adBlock.outerHeight();
+    _.options.headerHeight = _.$header.outerHeight();
 
-    _.setTimeout(function () {
-      _.addElemClass(_.$header, _.options.slideHeaderClass, function () {
-        _.options.isHeaderSlide = true;
-      });
-      _.addElemClass(_.$header, _.options.adOffHeaderClass, null);
-      _.addElemClass(_.$headerSpacer, _.options.slideHeaderSpacerClass);
-    }, _.options.delayCssAnimate);
-
-    if (typeof _.options.callBackInitStickyHeader === 'function') {
-      _.options.callBackInitStickyHeader();
-    }
-  };
-
-  // resetHeader
-  usaStickyHeader.prototype.resetHeader = function () {
-
-    var _ = this;
-    _.options.isHeaderSticky = false;
-    _.setHeaderSpacerHeight(_.options.headerHeight);
-    _.removeElemClass(_.$header, _.options.adOffHeaderClass, null);
-    _.removeElemClass(_.$header, _.options.slideUpHeaderClass, null);
-    _.setTimeout(function () {
-      _.removeElemClass(_.$header, _.options.slideHeaderClass, null);
-      _.removeElemClass(_.$header, _.options.stickyHeaderClass, null);
-      _.updateHeaderSpacerHeight();
-      if (typeof _.options.callBackOffStickyHeader === 'function') {
-        _.options.callBackOffStickyHeader();
-      }
-    }, _.options.delayCssAnimate);
-  };
-
-  // slide header
-  usaStickyHeader.prototype.slideUpStickyHeader = function (callback) {
-
-    var _ = this;
-
-    if (_.options.isSlideProcessing) {
-      return;
-    }
-
-    _.options.isSlideProcessing = true;
-    _.options.isSlideUpHeaderSticky = true;
-    _.addElemClass(_.$header, _.options.slideUpHeaderClass, null);
-    _.setTimeout(function () {
-      _.options.isSlideProcessing = false;
-      _.checkHeaderPosition();
-      if (typeof callback === 'function') {
-        callback();
-      }
-    }, _.options.delayCssAnimate);
-  };
-  usaStickyHeader.prototype.slideDownStickyHeader = function (callback) {
-
-    var _ = this;
-
-    if (_.options.isSlideProcessing) {
-      return;
-    }
-
-    _.options.isSlideProcessing = true;
-    _.options.isSlideUpHeaderSticky = false;
-    _.removeElemClass(_.$header,_.options.slideUpHeaderClass, null);
-    _.setTimeout(function () {
-      _.options.isSlideProcessing = false;
-      _.options.slideUpStartPositon = window.pageYOffset;
-      _.checkHeaderPosition();
-      if (typeof callback === 'function') {
-        callback();
-      }
-    }, _.options.delayCssAnimate);
-  };
-  usaStickyHeader.prototype.slideStickyHeader = function () {
-
-    var _ = this;
-
-    if (_.options.isHeaderSticky && _.options.isHeaderSlide) {
-
-      console.info('slide');
-      if (_.options.scrollDirection == 'down' && _.options.isScrollDiffMin && !_.options.isSlideUpHeaderSticky) {
-        // slide Up StickyHeader
-        _.slideUpStickyHeader(null);
-      } else if (_.options.scrollDirection == 'top' && _.options.isSlideUpHeaderSticky) {
-        // slide Down StickyHeader
-        _.slideDownStickyHeader(null);
-      }
-    }
-  };
-
-  // setTimeout
-  usaStickyHeader.prototype.setTimeout = function (callback, delay) {
-
-    var timeout = null;
-
-    clearTimeout(timeout);
-    timeout = setTimeout(function () {
-      if (typeof callback === 'function') {
-        callback();
-      }
-    }, delay);
-
-  };
-
-  usaStickyHeader.prototype.checkHeaderPosition = function () {
-
-    var _ = this;
-
-    if (_.options.pageYOffset < _.options.headerHeight && _.options.isHeaderSticky) {
-      _.resetHeader();
-    }
-  };
-  usaStickyHeader.prototype.checkHeaderOffset = function () {
-
-    var _ = this;
-    
-    if (_.options.pageYOffset > _.options.headerHeight && !_.options.isHeaderSticky) {
-      _.initStickyHeader();
-    } else if (_.options.pageYOffset < 2 && _.options.isHeaderSticky) {
-      console.info('2');
-      _.resetHeader();
-    }
   };
 
   // header spacer
@@ -375,65 +223,55 @@ var USAN = USAN || {};
     });
   };
 
-  // resize resizeShowLogo
-  usaStickyHeader.prototype.resetShowLogo = function () {
+  // sticky header
+  usaStickyHeader.prototype.initStickyHeader = function () {
 
     var _ = this,
-        $showLogo = _.$showLogo;
+        $header = _.$header;
 
-    _.removeElemClass(_.$header,_.options.decreaseHeaderClass, function () {
-      _.$showLogo.removeAttr('style');
-      _.options.isResizeShowLogoProcessing = false;
-    });
-  };
-  usaStickyHeader.prototype.resizeShowLogo = function () {
+    _.options.isInitStickyHeader = true;
 
-    var _ = this,
-        $showLogo = _.$showLogo,
-        $headerSpacer = _.$headerSpacer,
-        decreaseHeight = 0.005 * _.options.showLogoHeight * _.options.pageYOffset,
-        decreaseWidth = 0.005 * _.options.showLogoWidth * _.options.pageYOffset,
-        logoHeight = _.options.showLogoHeight - decreaseHeight,
-        logoWidth = _.options.showLogoWidth - decreaseWidth;
-
-    // _.options.scrollDirection == 'down' &&
-    if (!_.options.isHeaderSticky && !_.options.isHeaderSlide && logoHeight >= _.options.calcMinShowLogoHeight) {
-      _.addElemClass(_.$header, _.options.decreaseHeaderClass, function () {
-        _.options.isResizeShowLogoProcessing = true;
-      });
-      $showLogo.css({
-        'height': logoHeight,
-        'width': logoWidth
-      });
-      $headerSpacer.css({
-        'height': _.options.headerSpacerHeight - decreaseHeight
+    _.addElemClass($header, _.options.stickyHeaderClass, null);
+    _.addElemClass($header, _.options.adOffHeaderClass, null);
+    _.addElemClass($header, _.options.animatedHeaderClass, null);
+    _.setTimeout(function () {
+      $header.css({
+        top: 0
       })
+    }, _.options.animatedSlideHeader);
 
-    } else {
-      _.removeElemClass(_.$header,_.options.decreaseHeaderClass, function () {
-        _.options.isResizeShowLogoProcessing = false;
-      });
-    }
   };
-
-  // update value
-  usaStickyHeader.prototype.updateOptionsVal = function () {
+  usaStickyHeader.prototype.resetStickyHeader = function () {
 
     var _ = this,
-        calcMinShowLogoHeight;
+        $header = _.$header;
 
-    _.options.isMobileBp = _.checkMatchWindowWidth('max', _.options.stickyMobileBp);
-    _.options.pageYOffset = window.pageYOffset;
-    _.options.adBlockHeight = _.$adBlock.outerHeight();
-    _.options.headerHeight = _.$header.outerHeight();
-    _.options.headerSpacerHeight = _.options.headerHeight;
-    _.options.minScrollLength = _.options.headerHeight / 2;
-    _.options.showLogoHeight = _.$showLogo.outerHeight();
-    _.options.showLogoWidth = _.$showLogo.outerWidth();
+    _.options.isInitStickyHeader = false;
 
-    calcMinShowLogoHeight = _.options.showLogoHeight * _.options.minShowLogoDecrease;
-    _.options.calcMinShowLogoHeight = calcMinShowLogoHeight >= _.options.minShowLogoHeight ? calcMinShowLogoHeight : _.options.minShowLogoHeight;
+    _.removeElemClass($header, _.options.adOffHeaderClass, null);
+
+    _.setTimeout(function () {
+      _.removeElemClass($header, _.options.stickyHeaderClass, null);
+      _.removeElemClass($header, _.options.animatedHeaderClass, null);
+      $header.attr('style', '');
+    }, _.options.animatedOffElements);
   };
+  usaStickyHeader.prototype.showHeaderOffElements = function () {
+
+    var _ = this,
+        $header = _.$header;
+
+    _.removeElemClass($header, _.options.adOffHeaderClass, null);
+  };
+  usaStickyHeader.prototype.hideHeaderOffElements = function () {
+
+    var _ = this,
+        $header = _.$header;
+
+    _.addElemClass($header, _.options.adOffHeaderClass, null);
+  };
+
+
 
   // windows events
   usaStickyHeader.prototype.addEvents = function () {
@@ -444,66 +282,41 @@ var USAN = USAN || {};
     $(window)
         .bind('scroll', function (e) {
 
-          var $window = this,
-              newYOffset = $window.pageYOffset;
+          var $window = this;
 
-          _.getScrollDirection(newYOffset);
+          if ($window.pageYOffset > _.options.headerHeight && !_.options.isInitStickyHeader) {
+            _.initStickyHeader();
+          } else if (!_.options.isMobileDevice && $window.pageYOffset <= _.options.headerHeight && _.options.isInitStickyHeader) {
+            _.showHeaderOffElements();
+          } else if (!_.options.isMobileDevice && $window.pageYOffset > _.options.headerHeight && _.options.isInitStickyHeader) {
+            _.hideHeaderOffElements();
+          } 
 
-          if (typeof _.options.callBackOnScroll === 'function') {
-            _.options.callBackOnScroll();
-          }
-
-          // if (USAN.hasOwnProperty('scrollToTop') && USAN.scrollToTop) {
-          //   _.slideUpStickyHeader(function () {
-          //     _.resetHeader();
-          //   });
-          //   return;
-          // }
-
-          if (_.options.isMobileDevice) {
-            if (!$header.hasClass(_.classHeaderMenuOpen)) {
-              _.checkHeaderOffset();
-              _.slideStickyHeader();
-            }
-          } else {
-            console.info('scroll', newYOffset);
-            // if ($window.pageYOffset > 1 && !_.options.isMobileBp) {
-            //   _.resizeShowLogo();
-            // }
-            _.checkHeaderOffset();
-            _.slideStickyHeader();
-          }
+          _.options.pageYOffset = $window.pageYOffset;
         })
         .bind('resize', function (e) {
 
           var $window = this;
 
-          if (typeof _.options.callBackOnResize === 'function') {
-            _.options.callBackOnResize();
-          }
-
-          _.updateOptionsVal();
-          _.setHeaderSpacerHeight(_.options.headerHeight);
         });
   };
 
+  //---------------------------
   // init usaStickyHeader app
+  //---------------------------
   usaStickyHeader.prototype.init = function (creation) {
+
+    console.info('init');
 
     var _ = this,
         initHeaderClass = _.options.initHeaderClass;
 
     if (creation && !_.$header.hasClass(initHeaderClass)) {
-      if (!_.options.stickyMobile && _.options.isMobileDevice) {
-        return;
-      } else {
-        _.$header.addClass(initHeaderClass);
-        _.updateOptionsVal();
-        _.checkHeaderSpacer();
-        // _.setHeaderSpacerHeight(_.options.headerHeight);
-        _.checkHeaderOffset();
-        _.addEvents();
-      }
+      _.$header.addClass(initHeaderClass);
+      _.updateOptionsVal();
+      _.setHeaderSpacerHeight(_.options.headerHeight);
+      _.usaHeadroom.init();
+      _.addEvents();
     }
   };
 
@@ -529,32 +342,11 @@ var USAN = USAN || {};
   // event document ready
   //================================
   $(document).ready(function () {
-    if ($('body').hasClass('show-new-design') && $('body').hasClass('consumptionator-page')) {
 
-      var $consumSidebar = $('.consum-sidebar'),
-          sidebarStickyClass = 'sticky-sidebar';
-
-      $('#header').usaStickyHeader({
-        callBackInitStickyHeader: function () {
-          if (Drupal.behaviors.hasOwnProperty('consumptionator_right_rail')) {
-            Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
-            if (!$consumSidebar.hasClass(sidebarStickyClass)) {
-              $consumSidebar.addClass(sidebarStickyClass);
-            }
-          }
-        },
-        callBackOffStickyHeader: function () {
-          if (Drupal.behaviors.hasOwnProperty('consumptionator_right_rail')) {
-            Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
-            if ($consumSidebar.hasClass(sidebarStickyClass)) {
-              $consumSidebar.removeClass(sidebarStickyClass);
-            }
-          }
-        }
-      });
-    } else if ($('body').hasClass('show-new-design')) {
+    if ($('body').hasClass('show-new-design')) {
       $('#header').usaStickyHeader();
     }
+
   });
 
 })(jQuery);

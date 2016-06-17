@@ -226,13 +226,13 @@
 
     &.usa-sticky-header-initialized {
       position: absolute;
+      z-index: 99999;
     }
 
     &.usa-sticky-header {
       left: 0;
       top: -100%;
       position: fixed;
-      z-index: 100000;
 
       &.slide-down {
         -webkit-animation-name: slideDown;

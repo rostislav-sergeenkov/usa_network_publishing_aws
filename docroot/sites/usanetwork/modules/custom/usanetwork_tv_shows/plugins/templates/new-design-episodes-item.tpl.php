@@ -31,7 +31,7 @@
           <a href="<?php print $video_link; ?>" class="additional show-color show-font">
             <?php print t('Watch');?>
           </a>
-        <?php else: ?>
+        <?php elseif ($featured_provider): ?>
           <a href="<?php print $featured_provider['url']; ?>" class="additional show-color show-font">
             <?php print t('Watch on ') . $featured_provider['title'];?>
           </a>

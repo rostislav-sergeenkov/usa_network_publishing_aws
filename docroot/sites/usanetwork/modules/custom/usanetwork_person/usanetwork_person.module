@@ -853,3 +853,26 @@ function _where2watch_is_provider_featuted($provider) {
     return FALSE;
   }
 }
+
+/**
+ * Get featured providers
+ *
+ * @param $providers
+ * @return array
+ */
+function _where2watch_get_featured_provider($providers){
+  $featured_provider = array();
+  if (!empty($providers)) {
+    foreach ($providers as $provider) {
+      if (_where2watch_is_provider_featuted($provider)) {
+        $featured_provider = array(
+          'url' => $provider['url'],
+          'title' => $provider['title'],
+        );
+        break;
+      }
+    }
+  }
+
+  return $featured_provider;
+}

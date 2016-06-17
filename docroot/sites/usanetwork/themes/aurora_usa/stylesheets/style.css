@@ -40553,22 +40553,22 @@ body.blog .view-display-id-blog_content .views-row {
   background-color: black;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   overflow: visible;
-  position: relative;
+  position: static;
   width: 100%;
+  z-index: 99999;
   will-change: transform;
-  -webkit-transition: -webkit-transform 200ms linear;
-  -moz-transition: -moz-transform 200ms linear;
-  -o-transition: -o-transform 200ms linear;
-  transition: transform 200ms linear;
+  -webkit-transition: -webkit-transform 0.2s linear;
+  -moz-transition: -moz-transform 0.2s linear;
+  -o-transition: -o-transform 0.2s linear;
+  transition: transform 0.2s linear;
 }
 .show-new-design #header.menu-open {
-  position: fixed;
+  position: fixed !important;
   overflow: hidden;
   height: 100vh;
 }
 .show-new-design #header.usa-sticky-header-initialized {
   position: absolute;
-  z-index: 99999;
 }
 .show-new-design #header.usa-sticky-header {
   left: 0;
@@ -40604,6 +40604,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design #header .header-inner {
   margin: 0 auto;
+  position: relative;
   width: 100%;
   -webkit-transition: all 0.2s linear;
   -webkit-transition-delay: 0s;
@@ -40617,11 +40618,12 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 .show-new-design #header #head-leaderboard {
-  -webkit-transition: height, padding 0.3s linear;
-  -webkit-transition-delay: 0s, 0s;
-  -moz-transition: height, padding 0.3s linear 0s;
-  -o-transition: height, padding 0.3s linear 0s;
-  transition: height, padding 0.3s linear 0s;
+  will-change: transform;
+  -webkit-transition: all 0.3s linear;
+  -webkit-transition-delay: 0s;
+  -moz-transition: all 0.3s linear 0s;
+  -o-transition: all 0.3s linear 0s;
+  transition: all 0.3s linear 0s;
 }
 .show-new-design #header-spacer {
   display: none;

@@ -47,7 +47,9 @@
     &.full-episode {
       &:hover {
         .image-block {
-          opacity: 0.85 !important;
+          .asset-img {
+            opacity: 0.85 !important;
+          }
         }
       }
       .image-block {

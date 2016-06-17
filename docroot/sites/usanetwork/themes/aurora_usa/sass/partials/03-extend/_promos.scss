@@ -2890,7 +2890,6 @@
     }
     a {
       display: block;
-      height: 100%;
       outline: none;
       position: relative;
       width: 100%;
@@ -2959,20 +2958,21 @@
       }
       .additional {
         background: none;
-        display: inline-block;
+        display: block;
         font-family: $fira-sans-medium;
-        font-size: get-vw(12px, 1280);
+        font-size: get-vw(14px, 1280);
         line-height: get-vw(23px, 1280);
         position: relative;
         text-transform: uppercase;
         margin-right: get-vw(20px, 1280);
+        top: get-vw(7px, 1280);
 
         /* Better Font Rendering =========== */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 
         @include breakpoint($bp-min-1601-width) {
-          font-size: 15px;
+          font-size: 14px;
           line-height: 28.75px;
           margin-right: 20px;
         }
@@ -2985,6 +2985,12 @@
 
         &:last-child {
           margin-right: 0 !important;
+          color: #a0a09f;
+          font-size: get-vw(11px, 1280);
+          top: 0;
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 11px;
+          }
         }
         &:after {
           color: inherit;

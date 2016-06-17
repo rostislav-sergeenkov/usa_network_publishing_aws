@@ -222,6 +222,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
         '#attached' => array(
           'js' => array(
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_script.js',
+            path_to_theme('aurora_usa') . '/javascripts/headroom.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_header.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_menu-dropdown.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_carousels.js',

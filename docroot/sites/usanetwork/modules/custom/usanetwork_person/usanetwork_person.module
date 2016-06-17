@@ -611,7 +611,7 @@ function _usanetwork_person_render_cast_recap_block() {
               'autoPlay' => 'false',
             ),
           )),
-          'button_url' => l($button_text . '<span class="show-color show-font"></span>', 'node/' . $show_node->nid . '/videos',
+          'button_url' => l($button_text . '<span class="show-color show-font"></span>', 'node/' . $show_node->nid . '/episodes',
             array('html' => TRUE, 'attributes' => array('class' => array('video-button', 'show-border')))),
         );
         return theme('usanetwork_person_cast_recap_nd_block', $theme_variables);
@@ -852,4 +852,27 @@ function _where2watch_is_provider_featuted($provider) {
   } else {
     return FALSE;
   }
+}
+
+/**
+ * Get featured providers
+ *
+ * @param $providers
+ * @return array
+ */
+function _where2watch_get_featured_provider($providers){
+  $featured_provider = array();
+  if (!empty($providers)) {
+    foreach ($providers as $provider) {
+      if (_where2watch_is_provider_featuted($provider)) {
+        $featured_provider = array(
+          'url' => $provider['url'],
+          'title' => $provider['title'],
+        );
+        break;
+      }
+    }
+  }
+
+  return $featured_provider;
 }

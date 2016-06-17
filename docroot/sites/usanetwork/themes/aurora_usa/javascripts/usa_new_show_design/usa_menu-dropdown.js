@@ -57,6 +57,8 @@ var USAN = USAN || {};
 
       // params
       _.options.isMobileDevice = usa_deviceInfo.mobileDevice;
+      _.options.isTabletDevice = usa_deviceInfo.mobileDevice && !usa_deviceInfo.smartphone ? true : false;
+      _.options.isSmartphoneDevice = usa_deviceInfo.smartphone;
       _.options.windowInnerHeight = window.innerHeight;
       _.options.isMobileBp = false;
       _.options.isMenuOpenButtonActive = false;
@@ -64,6 +66,7 @@ var USAN = USAN || {};
       _.options.isMenuCustomScrollActive = false;
       _.options.isShowSignUpForm = false;
       _.options.scrollDirection = '';
+      _.options.customScrollend = false;
 
       // elements
       _.$body = $(document.body);
@@ -93,6 +96,19 @@ var USAN = USAN || {};
   usaShowMenu.prototype.checkMatchWindowWidth = function (widthName, bp) {
     // widthName - 'min' or 'max'; bp - breakpoint for check
     return window.matchMedia('(' + widthName + '-width: ' + bp + 'px)').matches;
+  };
+
+  // check mobile device
+  usaShowMenu.prototype.setMobileDeviceClass = function () {
+
+    var _ = this,
+        $header = _.$header;
+
+    if (_.options.isSmartphoneDevice) {
+      _.addElemClass($header, 'smartphone');
+    } else if (_.options.isTabletDevice) {
+      _.addElemClass($header, 'tablet')
+    }
   };
 
   // setTimeout
@@ -177,6 +193,7 @@ var USAN = USAN || {};
   usaShowMenu.prototype.initSignUpFormHandler = function () {
 
     var _ = this,
+        $showMenu = _.$showMenu,
         $menuSignUplink = _.$menuSignUplink,
         $menuSignUplinkWrap = _.$menuSignUplinkWrap,
         classActiveLink = _.options.classActiveLink,
@@ -209,6 +226,11 @@ var USAN = USAN || {};
         duration: duration,
         complete: function(elem) {
           _.addElemClass($form, activeClass, function () {
+            if (_.options.isMobileDevice && $showMenu.mCustomScrollbar !== undefined) {
+              $($showMenu).mCustomScrollbar("scrollTo",$form,{
+                scrollInertia: 200
+              });
+            }
             _.options.isShowSignUpForm = true;
           });
         }
@@ -226,8 +248,9 @@ var USAN = USAN || {};
     _.options.isMenuCustomScrollActive = true;
 
     $showMenu.mCustomScrollbar({
+      scrollInertia: 200,
       axis: 'y',
-      autoHideScrollbar: true,
+      autoHideScrollbar: false,
       theme: 'light',
       scrollbarPosition: 'inside',
       callbacks: {
@@ -237,6 +260,10 @@ var USAN = USAN || {};
           } else {
             _.addElemClass($showMenuWrap, classShowMenuScrollEnd, null);
           }
+        },
+        onTotalScroll:function(){
+          console.info("scrolled to bottom");
+          _.options.customScrollend = true;
         }
       }
     });
@@ -294,6 +321,16 @@ var USAN = USAN || {};
 
           _.getScrollDirection($window.pageYOffset);
 
+          if (_.options.customScrollend) {
+            if (_.options.isMenuOpenButtonActive) {
+              _.initMenuOpenHandler();
+            }
+
+            if (_.options.isMenuSignUplinkActive) {
+              _.initSignUpFormHandler();
+            }
+          }
+
           // close menu & form on scroll to top
           if (USAN.hasOwnProperty('scrollToTop') && USAN.scrollToTop) {
             if (_.options.isMenuOpenButtonActive) {
@@ -304,19 +341,6 @@ var USAN = USAN || {};
               _.initSignUpFormHandler();
             }
           }
-
-          // if (Math.abs($window.pageYOffset - _.options.pageYOffset) > $(_.$showMenuWrap).outerHeight()) {
-          //
-          //   _.options.pageYOffset = $window.pageYOffset;
-          //
-          //   if (_.options.isMenuOpenButtonActive) {
-          //     _.initMenuOpenHandler();
-          //   }
-          //
-          //   if (_.options.isMenuSignUplinkActive) {
-          //     _.initSignUpFormHandler();
-          //   }
-          // }
         })
         .bind('resize', function (e) {
 
@@ -386,6 +410,9 @@ var USAN = USAN || {};
 
     if (creation && !_.$mainWrap.hasClass(_.options.initAppClass)) {
       _.$mainWrap.addClass(_.options.initAppClass);
+      if (_.options.isMobileDevice) {
+        _.setMobileDeviceClass();
+      }
       _.updateParamsValue();
       _.checkSignUpForm();
       _.addEvents();

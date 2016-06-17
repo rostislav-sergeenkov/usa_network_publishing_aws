@@ -455,7 +455,7 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_question(&$vars) {
     if (in_array($vars['type'], array('video', 'video_text'))) {
       $video = _usanetwork_quiz_get_field_item($question, 'field_quiz_question_video', 0, 'field_collection_item');
       if (!empty($video)) {
-        $vars['video'] = theme('usanetwork_quiz_mpx_video', array(
+        $vars['video'] = theme('pub_mpx_video', array(
           'file' => $video,
           'width' => 590,
           'height' => 332,

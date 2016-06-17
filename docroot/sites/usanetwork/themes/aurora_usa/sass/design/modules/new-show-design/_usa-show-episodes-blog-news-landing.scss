@@ -640,8 +640,17 @@
             width: 100%;
           }
           > div {
-            &.preview_episode_button {
-              margin-top: 10px;
+            border: none;
+            display: block;
+            width: 100%;
+            &:last-child {
+              margin-top: get-vw(22px, 1280);
+              @include breakpoint($bp-min-1601-width) {
+                margin-top: 22px;
+              }
+              @include breakpoint ($bp-768-width) {
+                margin-top: get-vw(22px, 768);
+              }
             }
             @include breakpoint ($bp-768-width) {
               text-align: center;
@@ -650,6 +659,11 @@
             @include breakpoint($bp-640-width) {
               display: block;
               width: 100%;
+            }
+            .button-inner {
+              border: 1px solid;
+              display: inline-block;
+              vertical-align: middle;
             }
             a {
               @include breakpoint($bp-640-width) {

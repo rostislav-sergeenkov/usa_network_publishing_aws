@@ -458,7 +458,7 @@ body:not(.show-new-design) .usanetwork-aspot {
 .aspot-and-episodes {
   @include clear();
   overflow: hidden;
-  height: 42.75vw;
+  height: 42.8vw;
   position: relative;
   width: 100%;
   @include breakpoint($bp-min-2500-width) {

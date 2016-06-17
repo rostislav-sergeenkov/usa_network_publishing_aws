@@ -4453,7 +4453,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .meta-wrapper-inner .additional {
   background: none;
-  display: inline-block;
+  display: inline;
   font-family: "FiraSansMedium", sans-serif;
   font-size: 0.9375vw;
   line-height: 1.79688vw;
@@ -34455,7 +34455,7 @@ body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 .social-meter-
 
 .aspot-and-episodes {
   overflow: hidden;
-  height: 43.75vw;
+  height: 42.8vw;
   position: relative;
   width: 100%;
 }

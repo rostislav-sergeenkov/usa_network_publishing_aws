@@ -226,9 +226,9 @@ var USAN = USAN || {};
         duration: duration,
         complete: function(elem) {
           _.addElemClass($form, activeClass, function () {
-            if (_.options.isMobileDevice) {
+            if (_.options.isMobileDevice && $showMenu.mCustomScrollbar !== undefined) {
               $($showMenu).mCustomScrollbar("scrollTo",$form,{
-                scrollInertia: 300
+                scrollInertia: 200
               });
             }
             _.options.isShowSignUpForm = true;
@@ -248,6 +248,7 @@ var USAN = USAN || {};
     _.options.isMenuCustomScrollActive = true;
 
     $showMenu.mCustomScrollbar({
+      scrollInertia: 200,
       axis: 'y',
       autoHideScrollbar: false,
       theme: 'light',

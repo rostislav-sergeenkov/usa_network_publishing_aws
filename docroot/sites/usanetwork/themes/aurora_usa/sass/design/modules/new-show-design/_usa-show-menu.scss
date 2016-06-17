@@ -3,14 +3,7 @@
 .show-new-design {
   #header {
     &:not(.usa-sticky-header-initialized) {
-      .show-menu-tab {
-        @include breakpoint($bp-min-1601-width) {
-          max-height: 73px;
-        }
-        @include breakpoint($bp-min-769-width) {
-          max-height: calc(#{get-vw(60px, 1280)} + 2px);
-        }
-      }
+
     }
 
     &.tablet,
@@ -373,6 +366,7 @@
       }
     }
     .bottom-menu-block {
+      @include transition(all 0.2s linear 0);
       border-bottom: 1px solid;
       border-top: 1px solid;
       height: auto;

@@ -59,17 +59,7 @@ function _usanetwork_tv_show_get_episodes_block($show) {
     if (!empty($episodes)) {
 
       $providers = field_get_items('node', $show, 'field_where2watch_providers');
-      if (!empty($providers)) {
-        foreach ($providers as $provider) {
-          if (_where2watch_is_provider_featuted($provider)) {
-            $featured_provider = array(
-              'url' => $provider['url'],
-              'title' => $provider['title'],
-            );
-            break;
-          }
-        }
-      }
+      $featured_provider = _where2watch_get_featured_provider($providers);
 
       $first_element = array_shift($episodes);
       $first_element_array = array(

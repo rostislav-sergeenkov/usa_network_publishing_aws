@@ -216,7 +216,7 @@
     z-index: 99999;
 
     will-change: transform;
-    @include transition(transform 200ms linear);
+    @include transition(transform 0.2s linear);
 
 
     &.menu-open {
@@ -279,7 +279,8 @@
     }
 
     #head-leaderboard {
-      @include transition(height, padding 0.3s linear 0s);
+      will-change: transform;
+      @include transition(all 0.3s linear 0s);
     }
   }
 

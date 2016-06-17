@@ -332,7 +332,6 @@ body:not(.show-new-design) .landing-page-container {
   .landing-items-blocks {
     @include clear();
     border-bottom: 2px solid;
-    margin-bottom: 100px;
     padding: 20px 16px 40px;
     position: relative;
     width: 100%;

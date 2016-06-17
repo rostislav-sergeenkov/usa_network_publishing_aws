@@ -41,7 +41,7 @@
       <div class="buttons">
         <?php if (!empty($full_episode_url)): ?>
           <?php if (!empty($new_design)): ?>
-            <div class="full-episode-button hover-avail show-border"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch the full episode'); ?><span class="show-color show-font"></span></a></div>
+            <div class="full-episode-button hover-avail"><div class="button-inner show-border"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch the full episode'); ?><span class="show-color show-font"></span></a></div></div>
           <?php else: ?>
             <div class="full-episode-button hover-avail show-color"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch a full episode'); ?></a></div>
           <?php endif; ?>

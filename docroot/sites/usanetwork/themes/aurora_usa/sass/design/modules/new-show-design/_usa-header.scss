@@ -211,22 +211,22 @@
     background-color: black;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
     overflow: visible;
-    position: relative;
+    position: static;
     width: 100%;
+    z-index: 99999;
 
     will-change: transform;
-    @include transition(transform 200ms linear);
+    @include transition(transform 0.2s linear);
 
 
     &.menu-open {
-      position: fixed;
+      position: fixed !important;
       overflow: hidden;
       height: 100vh;
     }
 
     &.usa-sticky-header-initialized {
       position: absolute;
-      z-index: 99999;
     }
 
     &.usa-sticky-header {
@@ -270,6 +270,7 @@
 
     .header-inner {
       margin: 0 auto;
+      position: relative;
       width: 100%;
       @include breakpoint($bp-min-1601-width) {
         width: 1600px;
@@ -278,7 +279,8 @@
     }
 
     #head-leaderboard {
-      @include transition(height, padding 0.3s linear 0s);
+      will-change: transform;
+      @include transition(all 0.3s linear 0s);
     }
   }
 

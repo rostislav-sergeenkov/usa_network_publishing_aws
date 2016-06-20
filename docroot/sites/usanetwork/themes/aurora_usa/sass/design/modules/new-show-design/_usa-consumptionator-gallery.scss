@@ -552,7 +552,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 display: table-cell;
               }
               @include breakpoint($bp-min-1601-width) {
-                font-size: 18.5px;
+                font-size: 20px;
               }
               @include breakpoint($bp-1600-width) {
                 height: 44px;
@@ -593,7 +593,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             .slider-counter {
               bottom: 5px;
               color: $consum-carousel-text;
-              font-size: 16px;
+              font-size: 14px;
               font-family: $tex-gyreschola-italic;
               left: 45px;
               overflow: hidden;
@@ -606,12 +606,12 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               h1 {
                 color: $consum-carousel-text;
                 display: inline-block;
-                font-size: 16px;
+                font-size: 14px;
                 font-family: $tex-gyreschola-italic;
                 white-space: nowrap;
               }
               .slide-index {
-                font-size: 16px;
+                font-size: 15px;
                 font-family: $fira-sans-medium;
               }
               @include breakpoint($bp-1600-width) {

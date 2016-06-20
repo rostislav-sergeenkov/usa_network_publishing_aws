@@ -3091,7 +3091,6 @@
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(28px, 640);
-          margin: 0;
         }
         a {
           color: inherit;

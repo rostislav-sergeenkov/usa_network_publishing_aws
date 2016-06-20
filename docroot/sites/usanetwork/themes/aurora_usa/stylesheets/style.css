@@ -42954,7 +42954,7 @@ body.blog .view-display-id-blog_content .views-row {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
     background-repeat: no-repeat;
     width: 100%;
-    z-index: 1;
+    z-index: 0;
   }
 }
 .usa-show-aspot .usanetwork-aspot .aspot-draggable-element {

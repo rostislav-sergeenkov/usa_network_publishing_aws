@@ -138,8 +138,9 @@
         padding-right: 22.5px;
       }
       @include breakpoint($bp-768-width) {
-        font-size: get-vw(22px, 640);
+        font-size: get-vw(24px, 640);
         padding-right: get-vw(22px, 640);
+        padding-top: get-vw(1.4px, 768);
       }
       &:before {
         display: block;

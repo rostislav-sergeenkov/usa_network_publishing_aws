@@ -2413,7 +2413,8 @@
           max-height: get-vw(58px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(20px, 640);
+          color: $usa-related-title;
+          font-size: get-vw(22px, 640);
           line-height: 1.2;
           margin: 0;
           max-height: get-vw(139px, 640);
@@ -2576,6 +2577,7 @@
           font-size: 21px;
         }
         @include breakpoint($bp-768-width) {
+          color: $usa-related-title;
           font-size: get-vw(27.2px, 640);
         }
       }
@@ -2763,7 +2765,8 @@
           font-size: 21px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(24px, 640);
+          color: $usa-related-title;
+          font-size: get-vw(22px, 640);
         }
       }
       .additional {

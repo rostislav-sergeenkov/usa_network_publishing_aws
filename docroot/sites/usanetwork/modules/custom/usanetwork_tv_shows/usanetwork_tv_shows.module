@@ -4642,11 +4642,16 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
     $content_id = '/' . $data->entity_type . '/' . $data->entity_id;
   }
 
+  $violator = !empty($data->promo_violator) ? $data->promo_violator :
+    ($data->bundle == 'mpx_video_2' ? t('Full Episode') : '');
+  if ($is_new_design) {
+    $violator = usanetwork_core_api_get_violator($data->entity_type, $data->entity_id);
+  }
+  
   $theme_variables = array(
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
-    'caption' => !empty($data->promo_violator) ? $data->promo_violator :
-      ($data->bundle == 'mpx_video_2' ? t('Full Episode') : ''),
+    'caption' => $violator,
     'title' => !empty($data->promo_title)
         ? $data->promo_title     // Title text is checked at a level higher.
         : $data->title,

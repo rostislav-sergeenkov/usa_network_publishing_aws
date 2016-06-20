@@ -421,15 +421,22 @@
   font-family: "firasansregular", sans-serif;
 }
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop div[data-rel="title"] {
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
+  line-height: 0.98;
 }
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop .aspot-draggable-cta-button {
+  letter-spacing: 0.23em;
+  line-height: 2.1;
   padding: 0 18px 0 0;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile .aspot-draggable-cta-button {
+  letter-spacing: 0.23em;
+  line-height: 2.1;
 }
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop .aspot-draggable-cta-button[data-rel="cta_button_0"] {
   background: none;
   font-size: 23px;
-  padding: 0 27px 12px 0;
+  padding: 0 27px 9.6px 0;
 }
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop .aspot-draggable-cta-button[data-rel="cta_button_0"]:before {
   border-bottom: 1px dotted white;
@@ -441,7 +448,8 @@
   width: 40%;
 }
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile div[data-rel="title"] {
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
+  line-height: 0.98;
 }
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile .aspot-draggable-cta-button[data-rel="cta_button_0"] {
   background: none;

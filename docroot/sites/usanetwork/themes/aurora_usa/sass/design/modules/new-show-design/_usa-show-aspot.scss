@@ -77,8 +77,8 @@
         color: #ffffff;
         font-family: $fira-sans-regular;
         font-size: get-vw(96px, 1600);
-        letter-spacing: 0.1em;
-        line-height: 0.88;
+        letter-spacing: 0.04em;
+        line-height: 0.98;
         margin: 0;
         text-shadow: 0.05em 0.03em rgba(0,0,0,0.5);
         text-transform: uppercase;
@@ -147,7 +147,7 @@
             &:before {
               @include breakpoint($bp-min-641-width) {
                 border: 1px dotted currentColor;
-                bottom: get-vw(-13px, 1280);
+                bottom: get-vw(-10.6px, 1280);
                 color: inherit;
                 content: '';
                 display: block;
@@ -156,10 +156,10 @@
                 width: 40%;
               }
               @include breakpoint($between-641-768) {
-                bottom: get-vw(-10.5px, 768);
+                bottom: get-vw(-8.56px, 768);
               }
               @include breakpoint($bp-min-1601-width) {
-                bottom: -16.25px;
+                bottom: -13.25px;
               }
             }
             &:after {
@@ -190,12 +190,12 @@
         }
         a {
           background: none;
-          color: #ffffff;
+          color: $usa-episode-title;
           display: block;
           font-family: $fira-sans-regular;
           font-size: get-vw(16px, 1280);
-          letter-spacing: 0.1em;
-          line-height: 1.8;
+          letter-spacing: 0.23em;
+          line-height: 2.1;
           outline: none;
           padding: 0 get-vw(18px, 1280) 0 0;
           position: relative;

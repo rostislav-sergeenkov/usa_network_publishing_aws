@@ -191,13 +191,14 @@ function new_design_best_of_section_get_promo_links($entity, $entity_type, $tv_c
   }
 
   $bottom_link = NULL;
+  $cta_text = NULL;
   $title = 'See more';
+  if (usanetwork_core_api_check_field($entity, 'field_promo_call_to_action_text', $entity_type)) {
+    $cta_text = $entity_wrapper->field_promo_call_to_action_text->value();
+  }
   if (isset($entity->type) && 'usanetwork_promo' == $entity->type) {
-    $title = 'See all updates';
+    $title = $cta_text ? $cta_text : 'See all updates';
     if (usanetwork_core_api_check_field($entity, 'field_promo_link', $entity_type)) {
-      if (usanetwork_core_api_check_field($entity, 'field_promo_call_to_action_text', $entity_type)) {
-        $title = $entity_wrapper->field_promo_call_to_action_text->value();
-      }
       $bottom_link = $entity_wrapper->field_promo_link->value();
       $bottom_link['title'] = $title;
     }
@@ -211,37 +212,37 @@ function new_design_best_of_section_get_promo_links($entity, $entity_type, $tv_c
       $url = url('node/' . $tv_content->nid . '/blog');
     }
     $bottom_link = array(
-      'title' => $title . ' blog posts',
+      'title' => $title = $cta_text ? $cta_text : $title . ' blog posts',
       'url' => $url,
     );
   }
   elseif (isset($entity->type) && 'person' == $entity->type) {
     $bottom_link = array(
-      'title' => $title . ' cast & info',
+      'title' => $title = $cta_text ? $cta_text : $title . ' cast & info',
       'url' => url('node/' . $tv_content->nid . '/cast'),
     );
   }
   elseif (isset($entity->type) && 'tv_episode' == $entity->type) {
     $bottom_link = array(
-      'title' => $title . ' episodes',
+      'title' => $title = $cta_text ? $cta_text : $title . ' episodes',
       'url' => url('node/' . $tv_content->nid . '/cast'),
     );
   }
   elseif (isset($entity->type) && 'media_gallery' == $entity->type) {
     $bottom_link = array(
-      'title' => $title . ' photo galleries',
+      'title' => $title = $cta_text ? $cta_text : $title . ' photo galleries',
       'url' => url('node/' . $tv_content->nid . '/photos'),
     );
   }
   elseif ($entity_type == 'file') {
     $bottom_link = array(
-      'title' => $title . ' videos',
+      'title' => $title = $cta_text ? $cta_text : $title . ' videos',
       'url' => url('node/' . $tv_content->nid . '/videos'),
     );
   }
   else {
     $bottom_link = array(
-      'title' => $title . ' extras',
+      'title' => $title = $cta_text ? $cta_text : $title . ' extras',
       'url' => url('node/' . $tv_content->nid . '/explore'),
     );
   }

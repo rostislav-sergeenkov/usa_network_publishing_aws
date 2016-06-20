@@ -148,8 +148,8 @@ function usanetwork_consumptionator_post_field_group_info() {
     'weight' => '45',
     'children' => array(
       0 => 'field_author',
-      1 => 'field_post_original_link',
-      2 => 'field_post_original_date',
+      1 => 'field_post_original_date',
+      2 => 'field_post_original_link',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -246,6 +246,7 @@ function usanetwork_consumptionator_post_field_group_info() {
       5 => 'field_promo_title',
       6 => 'field_promo_topic',
       7 => 'field_promo_violator_name',
+      8 => 'field_promo_call_to_action_text',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

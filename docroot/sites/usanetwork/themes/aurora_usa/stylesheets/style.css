@@ -43422,8 +43422,8 @@ body.blog .view-display-id-blog_content .views-row {
   color: #ffffff;
   font-family: "FiraSansRegular", sans-serif;
   font-size: 6vw;
-  letter-spacing: 0.1em;
-  line-height: 0.88;
+  letter-spacing: 0.04em;
+  line-height: 0.98;
   margin: 0;
   text-shadow: 0.05em 0.03em rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
@@ -44413,7 +44413,7 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 641px) {
   .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:before {
     border: 1px dotted currentColor;
-    bottom: -1.01563vw;
+    bottom: -0.82812vw;
     color: inherit;
     content: '';
     display: block;
@@ -44424,12 +44424,12 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:before {
-    bottom: -1.36719vw;
+    bottom: -1.11458vw;
   }
 }
 @media (min-width: 1601px) {
   .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:before {
-    bottom: -16.25px;
+    bottom: -13.25px;
   }
 }
 .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a:after {
@@ -44464,12 +44464,12 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a {
   background: none;
-  color: #ffffff;
+  color: #aaaaaa;
   display: block;
   font-family: "FiraSansRegular", sans-serif;
   font-size: 1.25vw;
-  letter-spacing: 0.1em;
-  line-height: 1.8;
+  letter-spacing: 0.23em;
+  line-height: 2.1;
   outline: none;
   padding: 0 1.40625vw 0 0;
   position: relative;

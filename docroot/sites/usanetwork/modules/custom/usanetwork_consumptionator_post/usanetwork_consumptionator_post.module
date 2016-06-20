@@ -578,8 +578,8 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
         'desktop_image_url' => image_style_url('677x381', $cover_uri),
         'title' => $post_data->title,
         'description' => check_markup($post_data->description, 'wysiwyg_mini'),
-        'post_date' => !empty($post_data->created)
-          ? gmdate('m/d/Y', $post_data->created)
+        'post_date' => !empty($post_data->sorted_time)
+          ? gmdate('m/d/Y', $post_data->sorted_time)
           : NULL,
         'tags' => $post_data->tags,
         'active' => (!$ajax_load && $post_data_index == 0) ? TRUE : FALSE,

@@ -151,10 +151,9 @@ function usanetwork_core_api_get_violator($entity_type, $entity_id) {
         $violator = 'Gallery';
         break;
       case 'mpx_video_1':
-        $categories_terms = $entity_wrapper->field_usa_video_terms->value();
-        if(!empty($categories_terms)) {
-          $deepest_term = end($categories_terms);
-          $violator = $deepest_term->name;
+        $violator = usanetwork_mpx_video_get_video_category($entity);
+        if (empty($violator)) {
+          $violator = t('Clip');
         }
         break;
       case 'mpx_video_2':

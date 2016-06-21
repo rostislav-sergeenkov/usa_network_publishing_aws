@@ -73,16 +73,15 @@
           text-align: center;
           width: 242px;
           @include breakpoint($bp-768-width) {
-            height: get-vw(35px, 640);
-            padding: 2px;
-            width: get-vw(282px, 640);
+            height: get-vw(29px, 768);
+            width: get-vw(242px, 768);
           }
           img {
             display: inline;
             height: auto;
-            max-height: none;
-            max-width: none;
-            width: 100%;
+            max-height: 100%;
+            max-width: 100%;
+            width: auto;
           }
         }
       }

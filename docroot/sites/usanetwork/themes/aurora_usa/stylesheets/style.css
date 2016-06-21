@@ -45315,17 +45315,16 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 768px) {
   .articles-block .articles-wrapper .usa-section-title.sponsored-enable .sponsored {
-    height: 5.46875vw;
-    padding: 2px;
-    width: 44.0625vw;
+    height: 3.77604vw;
+    width: 31.51042vw;
   }
 }
 .articles-block .articles-wrapper .usa-section-title.sponsored-enable .sponsored img {
   display: inline;
   height: auto;
-  max-height: none;
-  max-width: none;
-  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
 }
 .articles-block .articles-wrapper .articles-content {
   padding: 1.32813vw 0 1.95313vw;

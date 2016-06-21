@@ -2413,7 +2413,8 @@
           max-height: get-vw(58px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(20px, 640);
+          color: $usa-related-title;
+          font-size: get-vw(22px, 640);
           line-height: 1.2;
           margin: 0;
           max-height: get-vw(139px, 640);
@@ -2576,6 +2577,7 @@
           font-size: 21px;
         }
         @include breakpoint($bp-768-width) {
+          color: $usa-related-title;
           font-size: get-vw(27.2px, 640);
         }
       }
@@ -2763,7 +2765,8 @@
           font-size: 21px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(24px, 640);
+          color: $usa-related-title;
+          font-size: get-vw(22px, 640);
         }
       }
       .additional {
@@ -3091,7 +3094,7 @@
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(28px, 640);
-          margin: 0;
+          margin: 0 0 get-vw(5px, 768);
         }
         a {
           color: inherit;
@@ -3122,23 +3125,22 @@
         text-overflow: ellipsis;
         text-transform: none;
         white-space: normal;
-
-        //@supports (-webkit-line-clamp: 4) {
-        //  display: -webkit-box;
-        //  height: auto;
-        //-webkit-box-orient: vertical;
-        //  -webkit-line-clamp: 4;
-        //  @include breakpoint($bp-768-width) {
-        //    -webkit-line-clamp: 2!important;
-        //  }
-        //}
+        @supports (-webkit-line-clamp: 4) {
+          display: -webkit-box;
+          height: auto;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 4;
+          @include breakpoint($bp-768-width) {
+            -webkit-line-clamp: 2!important;
+          }
+        }
         @include breakpoint($bp-min-1601-width) {
           font-size: 22.5px;
-          //max-height: 85px;
+          max-height: 85px;
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(24px, 640);
-          //max-height: get-vw(57.6px, 640)!important;
+          max-height: get-vw(57.6px, 640)!important;
         }
       }
     }
@@ -3240,10 +3242,12 @@
         max-height: 47.75px;
       }
       @include breakpoint($bp-768-width) {
-        font-size: get-vw(28px, 640);
-        max-height: get-vw(72.8px, 640);
-        white-space: normal;
+        color: $usa-related-title;
+        font-size: get-vw(22px, 640);
+        line-height: 1.2;
+        max-height: get-vw(139px, 640);
         text-transform: none;
+        white-space: normal;
       }
     }
     .additional {

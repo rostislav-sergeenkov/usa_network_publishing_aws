@@ -68,21 +68,28 @@
         .sponsored {
           height: 29px;
           margin: 0 auto;
-          padding: 4px;
-          position: static;
+          position: relative;
           text-align: center;
           width: 242px;
           @include breakpoint($bp-768-width) {
-            height: get-vw(35px, 640);
-            padding: 2px;
-            width: get-vw(282px, 640);
+            height: get-vw(29px, 768);
+            width: get-vw(242px, 768);
           }
           img {
+            bottom: 0;
             display: inline;
             height: auto;
-            max-height: none;
-            max-width: none;
-            width: 100%;
+            left: 0;
+            margin: auto;
+            max-height: calc(100% - 8px);
+            max-width: 100%;
+            position: absolute;
+            right: 0;
+            top: 2px;
+            width: auto;
+            @include breakpoint($bp-768-width) {
+              top: 4px;
+            }
           }
         }
       }

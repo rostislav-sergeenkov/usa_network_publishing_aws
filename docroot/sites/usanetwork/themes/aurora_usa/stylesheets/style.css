@@ -41115,6 +41115,12 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design #header.menu-open #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
   position: relative;
 }
+.show-new-design #header.menu-open:not(.off-elements) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+  max-height: calc(100vh - 96px - 2px - 26.5625vw);
+}
+.show-new-design #header.menu-open.off-elements #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+  max-height: calc(100vh - 2px - 26.5625vw);
+}
 @media all and (orientation: portrait) {
   .show-new-design #header.usa-sticky-header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
     /* Style adjustments for portrait mode goes here */
@@ -41648,6 +41654,7 @@ body.blog .view-display-id-blog_content .views-row {
     background: black;
     display: block;
     float: none;
+    height: 11.19792vw;
     max-width: none;
     text-align: center;
     width: 100%;

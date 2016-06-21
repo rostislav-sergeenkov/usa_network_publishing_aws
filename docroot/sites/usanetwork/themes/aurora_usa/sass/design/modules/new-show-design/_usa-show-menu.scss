@@ -12,6 +12,28 @@
           position: relative;
         }
       }
+      &:not(.off-elements) {
+        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+          .bottom-menu-block {
+            .show-menu-tab {
+              .show-menu {
+                max-height: calc(100vh - 96px - 2px - #{get-vw(33px, 768) + get-vw(57px, 768) + get-vw(28px, 768) + get-vw(86px, 768)});
+              }
+            }
+          }
+        }
+      }
+      &.off-elements {
+        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+          .bottom-menu-block {
+            .show-menu-tab {
+              .show-menu {
+                max-height: calc(100vh - 2px - #{get-vw(33px, 768) + get-vw(57px, 768) + get-vw(28px, 768) + get-vw(86px, 768)});
+              }
+            }
+          }
+        }
+      }
     }
 
     &.usa-sticky-header {
@@ -501,7 +523,7 @@
           background: black;
           display: block;
           float: none;
-          //height: get-vw(86px, 768);
+          height: get-vw(86px, 768);
           max-width: none;
           text-align: center;
           width: 100%;

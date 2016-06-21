@@ -86,7 +86,7 @@
           .title {
             line-height: 1.5;
             @include breakpoint($bp-640-width) {
-              font-size: get-vw(32px, 640);
+              font-size: get-vw(40px, 640);
             }
           }
           .airing-date,
@@ -523,6 +523,7 @@
           .airing-date, .expiration-date {
             @include breakpoint($bp-640-width) {
               margin-bottom: get-vw(10px, 640);
+              text-transform: uppercase;
             }
           }
           .series {

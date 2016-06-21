@@ -301,6 +301,15 @@
           .video-font-icon {
             display: none;
           }
+          .full-episode-button {
+             margin-bottom: get-vw(22px, 1280);
+              @include breakpoint($bp-min-1601-width) {
+                margin-bottom: 22px;
+              }
+              @include breakpoint ($bp-768-width) {
+                margin-bottom: get-vw(22px, 768);
+              }
+          }
           > div {
             border: 1px solid;
             box-sizing: border-box;
@@ -643,15 +652,6 @@
             border: none;
             display: block;
             width: 100%;
-            &:last-child {
-              margin-top: get-vw(22px, 1280);
-              @include breakpoint($bp-min-1601-width) {
-                margin-top: 22px;
-              }
-              @include breakpoint ($bp-768-width) {
-                margin-top: get-vw(22px, 768);
-              }
-            }
             @include breakpoint ($bp-768-width) {
               text-align: center;
               width: get-vw(349px, 768);

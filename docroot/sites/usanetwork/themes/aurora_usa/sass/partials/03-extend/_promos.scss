@@ -3094,6 +3094,7 @@
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(28px, 640);
+          margin: 0 0 get-vw(5px, 768);
         }
         a {
           color: inherit;
@@ -3241,10 +3242,12 @@
         max-height: 47.75px;
       }
       @include breakpoint($bp-768-width) {
-        font-size: get-vw(28px, 640);
-        max-height: get-vw(72.8px, 640);
-        white-space: normal;
+        color: $usa-related-title;
+        font-size: get-vw(22px, 640);
+        line-height: 1.2;
+        max-height: get-vw(139px, 640);
         text-transform: none;
+        white-space: normal;
       }
     }
     .additional {

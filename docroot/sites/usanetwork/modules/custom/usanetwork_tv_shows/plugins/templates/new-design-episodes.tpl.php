@@ -82,7 +82,7 @@ $main = $data['#content']['first_block'];
     </ul>
   </div>
   <div class="view-more">
-    <?php print $data['#content']['link']; ?>
+    <?php print $data['#content']['link_mobile']; ?>
   </div>
 </div>
 

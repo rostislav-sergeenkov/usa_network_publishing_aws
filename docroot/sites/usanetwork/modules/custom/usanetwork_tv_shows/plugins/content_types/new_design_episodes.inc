@@ -35,6 +35,7 @@ function new_design_episodes_content_type_render($subtype, $conf, $args, $contex
       $theme_variables['carousel_items'] = $episodes['carousel_items'];
       $theme_variables['title'] = t('Episodes');
       $theme_variables['link'] = l(t('View more'), 'node/' . $node->nid . '/episodes', array('attributes' => array('class' => 'view-more-link')));
+      $theme_variables['link_mobile'] = l(t('View all Episodes'), 'node/' . $node->nid . '/episodes', array('attributes' => array('class' => 'view-more-link')));
       $block->content = array(
         '#theme' => 'new_design_episodes',
         '#content' => $theme_variables,

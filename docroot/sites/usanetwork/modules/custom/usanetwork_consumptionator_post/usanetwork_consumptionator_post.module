@@ -565,6 +565,9 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
 
   $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset, $tag_id);
   if (!empty($posts_data)) {
+    if (count($posts_data) < USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS) {
+      $theme_variables['load_more_link'] = FALSE;
+    }
     foreach ($posts_data as $post_data_index => $post_data) {
       $cover_file = entity_load('file', array($post_data->post_cover_fid));
       if (!empty($cover_file)) {

@@ -742,6 +742,7 @@ function _usanetwork_episodes_get_episode_full_episode_data($show_nid, $season_n
   $query = db_select('mpx_video', 'mpxv');
   $query->fields('mpxv', array('fid', 'title', 'airdate', 'available_date', 'expiration_date', 'status'));
   $query->condition('mpxv.status', '1');
+  $query->condition('mpxv.expiration_date', time(), '>');
   // Join Season number
   $query->join('field_data_field_mpx_season_number', 'mpx_season_number', 'mpx_season_number.entity_id=mpxv.fid');
   $query->condition('mpx_season_number.field_mpx_season_number_value', $season_number);

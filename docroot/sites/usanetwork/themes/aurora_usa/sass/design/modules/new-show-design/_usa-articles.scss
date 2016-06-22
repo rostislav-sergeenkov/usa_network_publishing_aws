@@ -37,12 +37,8 @@
     width: 100%;
   }
   .articles-wrapper {
-    padding: 0 get-vw(26px, 1280);
     position: relative;
     width: 100%;
-    @include breakpoint($bp-min-1601-width) {
-      padding: 0 32.5px;
-    }
     @include breakpoint($bp-768-width) {
       padding: 0;
     }
@@ -96,9 +92,10 @@
     }
     .articles-content {
       @include clear();
-      padding: get-vw(17px, 1280) 0 get-vw(25px, 1280);
+
+      padding: get-vw(17px, 1280) get-vw(26px, 1280) get-vw(25px, 1280);
       @include breakpoint($bp-min-1601-width) {
-        padding: 21.25px 0 31.25px;
+        padding: 21.25px 32.5px 31.25px;
       }
       @include breakpoint($bp-768-width) {
         padding: get-vw(20px, 640) get-vw(40px, 640);

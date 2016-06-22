@@ -86,7 +86,7 @@
           .title {
             line-height: 1.5;
             @include breakpoint($bp-640-width) {
-              font-size: get-vw(32px, 640);
+              font-size: get-vw(40px, 640);
             }
           }
           .airing-date,
@@ -301,6 +301,15 @@
           .video-font-icon {
             display: none;
           }
+          .full-episode-button {
+             margin-bottom: get-vw(22px, 1280);
+              @include breakpoint($bp-min-1601-width) {
+                margin-bottom: 22px;
+              }
+              @include breakpoint ($bp-768-width) {
+                margin-bottom: get-vw(22px, 768);
+              }
+          }
           > div {
             border: 1px solid;
             box-sizing: border-box;
@@ -514,6 +523,7 @@
           .airing-date, .expiration-date {
             @include breakpoint($bp-640-width) {
               margin-bottom: get-vw(10px, 640);
+              text-transform: uppercase;
             }
           }
           .series {
@@ -643,15 +653,6 @@
             border: none;
             display: block;
             width: 100%;
-            &:last-child {
-              margin-top: get-vw(22px, 1280);
-              @include breakpoint($bp-min-1601-width) {
-                margin-top: 22px;
-              }
-              @include breakpoint ($bp-768-width) {
-                margin-top: get-vw(22px, 768);
-              }
-            }
             @include breakpoint ($bp-768-width) {
               text-align: center;
               width: get-vw(349px, 768);

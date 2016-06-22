@@ -4996,6 +4996,9 @@ function _usanetwork_tv_shows_landing_page_explore_filters_block() {
   }
   $params = _usanetwork_tv_shows_landing_page_explore_prepare_query_params();
   $item_tags = _usanetwork_tv_shows_landing_page_explore_get_tags($tv_show_node->nid, $params);
+  if (!empty($item_tags[USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY])) {
+    $item_tags[USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY]['name'] = 'All Extras';
+  }
   if (empty($item_tags)) {
     return '';
   }

@@ -3418,8 +3418,10 @@ function usanetwork_tv_shows_field_default_field_instances() {
   // Exported field_instance: 'node-tv_show-field_cast_head_image'
   $field_instances['node-tv_show-field_cast_head_image'] = array(
     'bundle' => 'tv_show',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'deleted' => 0,
-    'description' => 'Min 2880x1260',
+    'description' => 'Min 2880x1260; for Mr. Robot New Design 2880x900',
     'display' => array(
       'block_cover_title' => array(
         'label' => 'above',
@@ -3486,12 +3488,9 @@ function usanetwork_tv_shows_field_default_field_instances() {
       'default_image' => 0,
       'file_directory' => '[current-date:custom:Y]/[current-date:custom:m]',
       'file_extensions' => 'png gif jpg jpeg',
-      'focus' => 0,
-      'focus_lock_ratio' => 0,
-      'focus_min_size' => '',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '2880x1260',
+      'min_resolution' => '2880x900',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -3511,6 +3510,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
           'mpx_player' => 0,
           'mpx_video_1' => 0,
           'mpx_video_2' => 0,
+          'mpx_video_6' => 0,
           'video' => 0,
         ),
         'browser_plugins' => array(
@@ -18564,7 +18564,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Main Logo');
   t('Main_link');
   t('Maximum 150 characters recommended, OK to exceed for search results and indexing but most relevant information should be listed first.');
-  t('Min 2880x1260');
+  t('Min 2880x1260; for Mr. Robot New Design 2880x900');
   t('Min 475x537');
   t('Min 640x560');
   t('Mobile URL');

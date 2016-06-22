@@ -235,14 +235,6 @@ function usanetwork_views_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-/*    'action::gigya_shareui_node_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-*/
     'action::node_unpublish_action' => array(
       'selected' => 1,
       'postpone_processing' => 0,
@@ -375,7 +367,7 @@ function usanetwork_views_views_default_views() {
     6 => 0,
     7 => 0,
   );
-  /* Filter criterion: Content: Show (field_show) */
+  /* Filter criterion: Field: Show (field_show) */
   $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
   $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
   $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
@@ -392,6 +384,26 @@ function usanetwork_views_views_default_views() {
     21 => 0,
     26 => 0,
     31 => 0,
+  );
+  /* Filter criterion: Content: Author uid */
+  $handler->display->display_options['filters']['uid']['id'] = 'uid';
+  $handler->display->display_options['filters']['uid']['table'] = 'node';
+  $handler->display->display_options['filters']['uid']['field'] = 'uid';
+  $handler->display->display_options['filters']['uid']['value'] = '';
+  $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Author';
+  $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    16 => 0,
+    21 => 0,
+    26 => 0,
+    31 => 0,
+    36 => 0,
   );
 
   /* Display: Manager */

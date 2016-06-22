@@ -37,12 +37,16 @@
             <img src="<?php print $desktop_image_url; ?>" alt=""/>
           </a>
         </div>
+        <?php if (!empty($violator)): ?>
+          <div class="caption">
+            <?php if ($new_design): ?>
+              <span class="show-color"><?php print $violator; ?></span>
+            <?php else: ?>
+              <?php print $violator; ?>
+            <?php endif; ?>
+          </div>
+        <?php endif; ?>
       </div>
-      <?php if (!empty($tags)): ?>
-        <div class="tags">
-          <?php print '<span>'.t('Tags:') . '</span> ' . $tags; ?>
-        </div>
-      <?php endif; ?>
       <div class="description"><?php print $description; ?></div>
     </div>
     <div class="buttons-bar">

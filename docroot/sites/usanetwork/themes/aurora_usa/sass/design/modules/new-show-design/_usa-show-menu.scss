@@ -46,7 +46,6 @@
           .bottom-menu-block {
             .show-menu-tab {
               @media all and (orientation: portrait) {
-
                 height: calc((100vh - #{get-vw(86px, 768) + get-vw(30px, 768) + get-vw(33px, 768) + get-vw(57px, 768) + get-vw(10px, 768) + get-vw(18px, 768)}) - 4px);
               }
             }
@@ -102,7 +101,117 @@
       //}
 
       @media all and (orientation: landscape) {
-        /* Style adjustments for landscape mode goes here */
+        &.menu-open {
+          &:not(.off-elements) {
+            #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+              .bottom-menu-block {
+                .show-menu-tab {
+                  .show-menu {
+                    @include breakpoint($bp-768-width) {
+                      max-height: calc(100vh - 56px - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &.off-elements {
+            #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+              .bottom-menu-block {
+                .show-menu-tab {
+                  .show-menu {
+                    @include breakpoint($bp-768-width) {
+                      max-height: calc(100vh - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+          &.active {
+            .top-menu-block {
+              .top-menu-block-inner {
+                @include breakpoint($bp-768-width) {
+                  padding: get-vw(10px, 768) 0 get-vw(12px, 768);
+                }
+              }
+              .logo-block {
+                @include breakpoint($bp-768-width) {
+                  margin-top: get-vw(-17.5px, 768);
+                }
+              }
+              .menu-open-button.active {
+                margin-top: get-vw(-17.5px, 768);
+              }
+            }
+          }
+          .top-menu-block {
+            .top-menu-block-inner {
+              @include breakpoint($bp-768-width) {
+                padding: get-vw(20px, 768) 0 get-vw(21.5px, 768);
+              }
+            }
+            .title-block {
+              &.show-mrrobot {
+                @include breakpoint($bp-768-width) {
+                  width: get-vw(348px, 1280);
+                }
+                .title {
+                  @include breakpoint($bp-768-width) {
+                    height: get-vw(54.52px, 1280);
+                  }
+                }
+              }
+            }
+            .tune-in {
+              @include breakpoint($bp-768-width) {
+                padding-top: get-vw(6px, 768);
+                font-size: get-vw(12px, 768);
+              }
+            }
+          }
+          .bottom-menu-block {
+            .show-menu-tab {
+              .show-menu {
+                .show-menu-item {
+                  a {
+                    @include breakpoint($bp-768-width) {
+                      font-size: get-vw(20px, 768);
+                      padding: get-vw(30px, 768) get-vw(30px, 768) get-vw(27px, 768);
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .social-block {
+            .hashtag {
+              @include breakpoint($bp-768-width) {
+                font-size: get-vw(16px, 768);
+                line-height: get-vw(60px, 768);
+                padding-right: get-vw(24.3px, 768);
+              }
+            }
+            .social-icons {
+              a {
+                @include breakpoint($bp-768-width) {
+                  margin-right: get-vw(17.4px, 768);
+                }
+                &:last-child {
+                  margin-right: 0;
+                }
+                &:before {
+                  @include breakpoint($bp-768-width) {
+                    font-size: get-vw(27.8px, 768);
+                    line-height: get-vw(60px, 768);
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

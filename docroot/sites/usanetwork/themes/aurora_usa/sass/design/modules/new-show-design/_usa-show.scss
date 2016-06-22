@@ -167,7 +167,7 @@
     background: #000000;
     border-bottom: 2px solid;
     margin-bottom: 100px;
-    padding: 40px 16px;
+    padding: 40px 0;
     position: relative;
     width: 100%;
     @include breakpoint($bp-640-width) {
@@ -179,7 +179,7 @@
     ul {
       @include clear();
       margin: 0 auto;
-      padding: 0;
+      padding: 0 16px;
       position: relative;
       width: 100%;
       li {

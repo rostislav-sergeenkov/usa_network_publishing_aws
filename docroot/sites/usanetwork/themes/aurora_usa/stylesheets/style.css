@@ -40535,7 +40535,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 
-.no-touch .show-new-design #header.off-elements #head-leaderboard {
+.show-new-design #header.off-elements #head-leaderboard {
   height: 0;
   padding: 0;
   -webkit-animation-duration: 0s;
@@ -40552,7 +40552,7 @@ body.blog .view-display-id-blog_content .views-row {
   animation-name: swingOutX;
   backface-visibility: visible !important;
 }
-.no-touch .show-new-design #header #head-leaderboard {
+.show-new-design #header #head-leaderboard {
   -webkit-animation-duration: 0.3s;
   -moz-animation-duration: 0.3s;
   -o-animation-duration: 0.3s;
@@ -49816,7 +49816,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .where-to-watch-inner {
-    padding: 6.25vw 3.125vw;
+    padding: 4.6875vw 3.125vw;
   }
 }
 .show-new-design .where-to-watch .where-to-watch-inner .first-line .description-block:first-child {
@@ -49833,6 +49833,7 @@ body.blog .view-display-id-blog_content .views-row {
     text-align: center;
     vertical-align: middle;
     width: 45%;
+    margin-top: 0;
   }
 }
 @media (max-width: 768px) {
@@ -49846,7 +49847,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap {
-    margin-top: 6.25vw;
+    margin-top: 4.6875vw;
   }
 }
 .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
@@ -49865,12 +49866,12 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
-    padding: 2.60417vw 5.20833vw;
+    padding: 3.90625vw 6.51042vw;
   }
 }
 @media (max-width: 640px) {
   .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
-    padding: 3.125vw 6.25vw;
+    padding: 4.6875vw 7.8125vw;
   }
 }
 .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button:first-child {
@@ -49910,17 +49911,17 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 1024px) {
   .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
-    font-size: 1.75781vw;
+    font-size: 1.95313vw;
   }
 }
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
-    font-size: 2.60417vw;
+    font-size: 4.55729vw;
   }
 }
 @media (max-width: 640px) {
   .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
-    font-size: 3.125vw;
+    font-size: 5.46875vw;
   }
 }
 .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
@@ -49947,7 +49948,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
-    font-size: 1.82292vw;
+    font-size: 2.86458vw;
     margin-left: 1.82292vw;
   }
 }
@@ -50073,7 +50074,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .where-to-watch .usa-providers .provider a img {
   max-width: 90%;
-  max-height: 3.75vw;
+  max-height: 5vw;
 }
 @media (min-width: 1601px) {
   .show-new-design .where-to-watch .usa-providers .provider a img {
@@ -50082,7 +50083,8 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .usa-providers .provider a img {
-    max-height: 60px;
+    max-height: 10.41667vw;
+    height: 80px;
   }
 }
 .show-new-design .video-recap-block {

@@ -180,12 +180,16 @@ function usanetwork_core_api_get_violator($entity_type, $entity_id) {
   }
 
   $blog_service = usanetwork_blog_migrate_get_post_service($entity);
-  if ($blog_service == 'verge') {
+  return usanetwork_core_api_prepare_blog_service_violator($violator, $blog_service);
+}
+
+function usanetwork_core_api_prepare_blog_service_violator($violator, $service) {
+  if ($service == 'verge') {
     $violator_tag = array(
       'element' => array(
         '#tag' => 'span',
         '#attributes' => array(
-          'class' => 'violator_icon ' . $blog_service,
+          'class' => 'violator_icon ' . $service,
         ),
         '#value' => '',
       ),

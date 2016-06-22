@@ -40863,7 +40863,7 @@ body.blog .view-display-id-blog_content .views-row {
   background: #000000;
   border-bottom: 2px solid;
   margin-bottom: 100px;
-  padding: 40px 16px;
+  padding: 40px 0;
   position: relative;
   width: 100%;
 }
@@ -40882,7 +40882,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 .show-new-design .related-content-block ul {
   margin: 0 auto;
-  padding: 0;
+  padding: 0 16px;
   position: relative;
   width: 100%;
 }
@@ -41115,26 +41115,36 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design #header.menu-open #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block {
   position: relative;
 }
-.show-new-design #header.menu-open:not(.off-elements) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
-  max-height: calc(100vh - 96px - 2px - 26.5625vw);
+@media (max-width: 768px) {
+  .show-new-design #header.menu-open:not(.off-elements) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    max-height: calc(100vh - 96px - 2px - 26.5625vw);
+  }
 }
-.show-new-design #header.menu-open.off-elements #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
-  max-height: calc(100vh - 2px - 26.5625vw);
+@media (max-width: 768px) {
+  .show-new-design #header.menu-open.off-elements #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    max-height: calc(100vh - 2px - 26.5625vw);
+  }
 }
 @media all and (orientation: portrait) {
   .show-new-design #header.usa-sticky-header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
-    /* Style adjustments for portrait mode goes here */
     height: calc((100vh - 30.46875vw) - 4px);
   }
 }
 @media all and (orientation: portrait) {
   .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
-    /* Style adjustments for portrait mode goes here */
     height: calc((100vh - 30.46875vw) - 124px);
   }
 }
 .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab:not(.show-menu-scroll-end):after {
   display: block;
+}
+@media (max-width: 768px) {
+  .show-new-design #header.smartphone.menu-open:not(.off-elements) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    max-height: calc(100vh - 56px - 2px - 26.5625vw);
+  }
+}
+.show-new-design #header.smartphone #head-leaderboard #topbanner {
+  min-height: 50px;
 }
 @media all and (orientation: landscape) {
   .show-new-design #header.smartphone {
@@ -45291,14 +45301,8 @@ body.blog .view-display-id-blog_content .views-row {
   width: 100%;
 }
 .articles-block .articles-wrapper {
-  padding: 0 2.03125vw;
   position: relative;
   width: 100%;
-}
-@media (min-width: 1601px) {
-  .articles-block .articles-wrapper {
-    padding: 0 32.5px;
-  }
 }
 @media (max-width: 768px) {
   .articles-block .articles-wrapper {
@@ -45362,7 +45366,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
 }
 .articles-block .articles-wrapper .articles-content {
-  padding: 1.32813vw 0 1.95313vw;
+  padding: 1.32813vw 2.03125vw 1.95313vw;
 }
 .articles-block .articles-wrapper .articles-content:after {
   clear: both;
@@ -45371,7 +45375,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (min-width: 1601px) {
   .articles-block .articles-wrapper .articles-content {
-    padding: 21.25px 0 31.25px;
+    padding: 21.25px 32.5px 31.25px;
   }
 }
 @media (max-width: 768px) {
@@ -50345,7 +50349,7 @@ body.blog .view-display-id-blog_content .views-row {
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .title,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .title {
-    font-size: 5vw;
+    font-size: 6.25vw;
   }
 }
 @media (max-width: 640px) {
@@ -50713,6 +50717,22 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons .video-font-icon {
   display: none;
 }
+.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button,
+.show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button {
+  margin-bottom: 1.71875vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button {
+    margin-bottom: 22px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button,
+  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button {
+    margin-bottom: 2.86458vw;
+  }
+}
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div,
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div {
   border: 1px solid;
@@ -51030,6 +51050,7 @@ body.blog .view-display-id-blog_content .views-row {
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .airing-date, .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .expiration-date {
     margin-bottom: 1.5625vw;
+    text-transform: uppercase;
   }
 }
 @media (max-width: 640px) {
@@ -51180,19 +51201,6 @@ body.blog .view-display-id-blog_content .views-row {
   border: none;
   display: block;
   width: 100%;
-}
-.show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div:last-child {
-  margin-top: 1.71875vw;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div:last-child {
-    margin-top: 22px;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div:last-child {
-    margin-top: 2.86458vw;
-  }
 }
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div {

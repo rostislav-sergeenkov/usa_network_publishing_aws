@@ -235,7 +235,7 @@
           @include breakpoint($bp-640-width) {
             height: auto;
           }
-          .asset-img {
+          .no-touch & .asset-img {
             @include transition(all 0.1s linear);
             opacity: 0.35;
           }

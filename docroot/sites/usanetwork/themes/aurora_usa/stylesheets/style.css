@@ -40952,7 +40952,7 @@ body.blog .view-display-id-blog_content .views-row {
     height: auto;
   }
 }
-.show-new-design .related-content-block ul li > div .asset-img {
+.no-touch .show-new-design .related-content-block ul li > div .asset-img {
   -webkit-transition: all 0.1s linear;
   -moz-transition: all 0.1s linear;
   -o-transition: all 0.1s linear;
@@ -41147,8 +41147,76 @@ body.blog .view-display-id-blog_content .views-row {
   min-height: 50px;
 }
 @media all and (orientation: landscape) {
-  .show-new-design #header.smartphone {
-    /* Style adjustments for landscape mode goes here */
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .menu-open-button.active {
+    margin-top: -2.27865vw;
+  }
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:last-child {
+    margin-right: 0;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone.menu-open:not(.off-elements) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    max-height: calc(100vh - 56px - 2px - 17.28021vw);
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone.menu-open.off-elements #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    max-height: calc(100vh - 2px - 17.28021vw);
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .top-menu-block-inner {
+    padding: 1.30208vw 0 1.5625vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .logo-block {
+    margin-top: -2.27865vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .top-menu-block-inner {
+    padding: 2.60417vw 0 2.79948vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
+    width: 27.1875vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
+    height: 4.25938vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .tune-in {
+    padding-top: 0.78125vw;
+    font-size: 1.5625vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    font-size: 2.60417vw;
+    padding: 3.90625vw 3.90625vw 3.51563vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .hashtag {
+    font-size: 2.08333vw;
+    line-height: 7.8125vw;
+    padding-right: 3.16406vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a {
+    margin-right: 2.26563vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:before {
+    font-size: 3.61979vw;
+    line-height: 7.8125vw;
   }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
@@ -51352,7 +51420,7 @@ body.blog .view-display-id-blog_content .views-row {
     right: 5px;
     top: 50%;
     min-width: 155px;
-    max-width: 155px;
+    max-width: 215px;
   }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .item-filter.open,

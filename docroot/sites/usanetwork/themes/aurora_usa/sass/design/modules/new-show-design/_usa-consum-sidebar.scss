@@ -22,14 +22,20 @@
       @include breakpoint($bp-min-1025-width) {
         //height: calc(100vh - 7.12195vw)!important;
         height: 100vh !important;
+        left: calc(100% - 320px - #{get-vw(16px, 1280)});
         position: fixed!important;
-        right: get-vw(16px, 1280);
+        right: auto;
         top: 0 !important;
+
         //top: get-vw(73px, 1025)!important;
         .more-items {
           bottom: auto!important;
           margin-top: -45px;
         }
+      }
+      @include breakpoint($bp-min-1281-width) {
+        left: calc((100% - #{get-vw(16px, 1280)*2})*0.75  + #{get-vw(16px, 1280)});
+        width: calc((100% - #{get-vw(16px, 1280)*2})*0.25 );
       }
       @include breakpoint($bp-min-1601-width) {
         //height: calc(100vh - 135px)!important;
@@ -41,8 +47,13 @@
       &.related-visible, &.social-visible, &.footer-visible {
         @include breakpoint($bp-min-1025-width) {
           bottom: 0;
+          left: auto;
           position: absolute!important;
           top: auto!important;
+          right: 0;
+        }
+        @include breakpoint($bp-min-1281-width) {
+          width: 25%;
         }
       }
     }

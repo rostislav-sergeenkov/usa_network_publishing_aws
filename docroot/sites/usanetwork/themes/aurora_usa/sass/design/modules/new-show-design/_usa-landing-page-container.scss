@@ -9,6 +9,9 @@
     margin-bottom: 100px;
     position: relative;
     width: 100%;
+    @include breakpoint($bp-768-width) {
+      padding: 0 get-vw(32px, 768)
+    }
     &.infinity-finished {
       margin-bottom: 0;
     }

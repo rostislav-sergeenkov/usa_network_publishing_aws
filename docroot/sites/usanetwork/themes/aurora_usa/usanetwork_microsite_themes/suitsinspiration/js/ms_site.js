@@ -27,13 +27,13 @@
             hostname = window.location.hostname,
             env = hostname.replace('.usanetwork.com', '');
         ifrm.contentWindow.postMessage(env, 'http://offerpop.com');
-//usa_debug('========== initIframeResize(), env: ' + env);
+        //usa_debug('========== initIframeResize(), env: ' + env);
       }, delay);
     },
 
     // setIframeHeight
     setIframeHeight: function(ifrmHeight) {
-//usa_debug('============== parent.setIframeHeight(' + ifrmHeight + ')');
+      //usa_debug('============== parent.setIframeHeight(' + ifrmHeight + ')');
       var ifrm = document.getElementById('offerpop-iframe');
       ifrm.style.visibility = 'hidden';
       ifrm.style.height = ifrmHeight;
@@ -56,7 +56,7 @@
       // Listen to message from child window
       eventer(messageEvent,function(e) {
         if (e.origin == 'http://offerpop.com') {
-//usa_debug('parent received message!:  ' + e.data);
+          //usa_debug('parent received message!:  ' + e.data);
           self.setIframeHeight(e.data);
         }
       }, false);
@@ -64,7 +64,8 @@
       setTimeout(function(){
         if (Drupal.behaviors.ms_global.globalInitialPageLoad) {
           $('header').prepend('<div id="head-leaderboard" class="ad-leaderboard"></div>');
-          Drupal.behaviors.ms_global.create728x90Ad();
+//          Drupal.behaviors.ms_global.refreshAd('page-header');
+//          Drupal.behaviors.ms_global.refreshAd('videos');
 
           // set-up menu gigya share bar
           var $infoContainer = $('#mega-nav'),

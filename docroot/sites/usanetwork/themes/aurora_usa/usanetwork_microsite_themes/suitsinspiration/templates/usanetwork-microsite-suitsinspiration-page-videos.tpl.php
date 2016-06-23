@@ -204,7 +204,6 @@ $time = time();
       </div>
     </div>
     <?php endif; ?>
-    <div id="ad_300x60_1"></div>
-    <div id="ad_300x250_1"></div>
+    <div id="video-ad300x250" class="ad"></div>
   </div>
 </div>

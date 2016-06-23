@@ -3507,15 +3507,15 @@
         font-size: get-vw(16px, 768);
         line-height: 1.3;
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(18px, 640);
+          font-size: get-vw(22px, 640);
         }
       }
       .title {
         color: white;
         font-size: get-vw(16px, 768);
-        line-height: 1.3;
+        line-height: 1.6;
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(24px, 640);
+          font-size: get-vw(28px, 640);
         }
       }
     }

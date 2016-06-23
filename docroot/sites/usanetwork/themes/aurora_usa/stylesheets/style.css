@@ -48696,6 +48696,7 @@ body.blog .view-display-id-blog_content .views-row {
 @media (max-width: 768px) {
   .show-new-design .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
     font-size: 10px;
+    line-height: 2;
   }
 }
 @media (max-width: 480px) {

@@ -272,7 +272,7 @@ function _usanetwork_consumptionator_post_main_block() {
       if ($violator) {
         $violator = l($violator, $original_link['url'], array(
           'attributes' => array(
-            'class' => 'violator_link show-color',
+            'class' => 'violator-link show-color',
             'target' => '_blank'
           ),
           'html' => TRUE,

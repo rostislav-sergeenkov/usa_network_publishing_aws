@@ -5144,6 +5144,12 @@ function _usanetwork_tv_shows_landing_page_explore_get_items($show_nid, $tag_id 
     'quiz' => 'quiz',
     'timeline_gallery' => 'timeline_gallery',
   );
+  $show_node = node_load($show_nid);
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
+  $featured_nids = array();
+  if ($is_new_design) {
+    $featured_nids = _usanetwork_tv_shows_landing_page_explore_get_featured_items($show_node);
+  }
   $query = db_select('node', 'n');
   $query->condition('n.status', NODE_PUBLISHED);
   $query->condition('n.type', $node_types, 'IN');
@@ -5163,6 +5169,9 @@ function _usanetwork_tv_shows_landing_page_explore_get_items($show_nid, $tag_id 
       ->condition('promo_exclude_field.field_promo_exclude_from_related_value', NULL)
       ->condition('promo_exclude_field.field_promo_exclude_from_related_value', 0)
   );
+  foreach ($featured_nids as $nid) {
+    $query->orderBy('n.nid = ' . $nid, 'DESC');
+  }
   $query->orderBy('sorted_time', $sorting);
   if(is_numeric($start) && is_numeric($lenght)) {
     $query->range($start, $lenght);
@@ -5178,6 +5187,19 @@ function _usanetwork_tv_shows_landing_page_explore_get_items($show_nid, $tag_id 
     return entity_load('node', $node_ids);
   }
   return FALSE;
+}
+
+function _usanetwork_tv_shows_landing_page_explore_get_featured_items($show_node) {
+  $field_promo_items = field_get_items('node', $show_node, 'field_show_explore_promo');
+  $featured_nids = array();
+  if (!empty($field_promo_items) && is_array($field_promo_items)) {
+    foreach ($field_promo_items as $promo_reference) {
+      if ($promo_reference['target_type'] == 'node') {
+        $featured_nids[] = $promo_reference['target_id'];
+      }
+    }
+  }
+  return $featured_nids;
 }
 
 /**

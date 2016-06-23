@@ -582,8 +582,11 @@ function _usanetwork_media_gallery_get_multiple_show_galleries() {
  */
 function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type = NULL, $episode_num = NULL, $sorting = 'ASC', $start = NULL, $lenght = NULL) {
   $show_node = node_load($show_nid);
-  $featured_nids = _usanetwork_media_gallery_landing_page_get_featured_items($show_node);
-
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
+  $featured_nids = array();
+  if ($is_new_design) {
+    $featured_nids = _usanetwork_media_gallery_landing_page_get_featured_items($show_node);
+  }
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
   $query->condition('node.type', 'media_gallery');

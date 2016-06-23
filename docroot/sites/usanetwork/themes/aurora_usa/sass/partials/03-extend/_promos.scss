@@ -2945,6 +2945,7 @@
         font-family: $fira-sans-regular;
         font-size: get-vw(12px, 1280);
         line-height: 1.2;
+        margin-top: get-vw(14px, 1600);
         @include breakpoint($bp-min-1601-width) {
           font-size: 15px;
         }
@@ -2952,7 +2953,7 @@
       .title {
         color: $gray-sky;
         font-family: $fira-sans-regular;
-        font-size: get-vw(20px, 1280);
+        font-size: get-vw(16px, 1280);
         letter-spacing: 0.5px;
         line-height: 1.3;
         @include breakpoint($bp-min-1601-width) {
@@ -2968,7 +2969,7 @@
         position: relative;
         text-transform: uppercase;
         margin-right: get-vw(20px, 1280);
-        top: get-vw(7px, 1280);
+        top: get-vw(5px, 1280);
 
         /* Better Font Rendering =========== */
         -webkit-font-smoothing: antialiased;
@@ -2990,7 +2991,7 @@
           margin-right: 0 !important;
           color: #a0a09f;
           font-size: get-vw(11px, 1280);
-          top: 0;
+          top: get-vw(-5px, 1280);
           @include breakpoint($bp-min-1601-width) {
             font-size: 11px;
           }

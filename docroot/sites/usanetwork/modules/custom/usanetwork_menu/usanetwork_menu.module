@@ -1173,6 +1173,7 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
       $image = $entity_wrapper->field_usa_og_image->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() : '';
+    $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
     $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
     if (!empty($advert_block['content'])) {
       $authbar = render($advert_block['content']);
@@ -1216,6 +1217,7 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->body) ? $entity_wrapper->body->value->value() : '');
+    $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
     if (!empty($node->field_episode)) {
       $episode = $entity_wrapper->field_episode->value();
       if ($episode_num_items = field_get_items('node', $episode, 'field_episode_number')) {
@@ -1389,6 +1391,7 @@ function _usanetwork_menu_consumptionator_block_person($node) {
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->body) ? $entity_wrapper->body->value->value() : '');
+    $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
     $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
     if (!empty($advert_block['content'])) {
       $authbar = render($advert_block['content']);
@@ -1427,7 +1430,7 @@ function _usanetwork_menu_consumptionator_block_quiz($node) {
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->body) ? $entity_wrapper->body->value->value() : '');
-//    $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description)
+    $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
     $description = preg_replace('/<iframe.*?>(.*)<\/iframe>/', '', $description);
     $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
     $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
@@ -1465,6 +1468,7 @@ function _usanetwork_menu_consumptionator_block_consumpt_post($node) {
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->field_summary) ? $entity_wrapper->field_summary->value->value() : '');
+    $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
 
     //Sponsored MPS
     if (!empty($node->field_sponsored)) {

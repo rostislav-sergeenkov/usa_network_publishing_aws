@@ -654,7 +654,6 @@
             display: block;
             width: 100%;
             @include breakpoint ($bp-768-width) {
-              text-align: center;
               width: get-vw(349px, 768);
             }
             @include breakpoint($bp-640-width) {

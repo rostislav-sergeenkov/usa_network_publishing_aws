@@ -2413,7 +2413,7 @@
           max-height: get-vw(58px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          color: $usa-related-title;
+          color: $usa-bcd-title;
           font-size: get-vw(22px, 640);
           line-height: 1.2;
           margin: 0;
@@ -2577,7 +2577,7 @@
           font-size: 21px;
         }
         @include breakpoint($bp-768-width) {
-          color: $usa-related-title;
+          color: $usa-bcd-title;
           font-size: get-vw(27.2px, 640);
         }
       }
@@ -2765,8 +2765,8 @@
           font-size: 21px;
         }
         @include breakpoint($bp-768-width) {
-          color: $usa-related-title;
-          font-size: get-vw(22px, 640);
+          color: $usa-bcd-title;
+          font-size: get-vw(27.2px, 640);
         }
       }
       .additional {
@@ -3227,7 +3227,7 @@
       @extend %usa-violator-icon;
     }
     .title {
-      color: $usa-related-title;
+      color: $usa-bcd-title;
       font-family: $open-sans-semibold;
       font-size: get-vw(15px, 1280);
       letter-spacing: 1px;
@@ -3240,7 +3240,7 @@
         max-height: 47.75px;
       }
       @include breakpoint($bp-768-width) {
-        color: $usa-related-title;
+        color: $usa-bcd-title;
         font-size: get-vw(22px, 640);
         line-height: 1.2;
         max-height: get-vw(139px, 640);
@@ -3311,7 +3311,6 @@
         margin-bottom: 17.5px;
       }
       @include breakpoint($bp-768-width) {
-        color: $usa-related-title;
         font-size: get-vw(28px, 640);
         margin-bottom: 0;
       }

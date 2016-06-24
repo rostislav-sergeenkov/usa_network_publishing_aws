@@ -1068,7 +1068,7 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
       ? $show_node->title
       : '',
     'show_poster' => array(
-      'mobile' => image_style_url('640x560', $banner_images['mobile']),
+      'mobile' => ($new_design_display) ? image_style_url('640x360_ndaspotm', $banner_images['mobile']) : image_style_url('640x560', $banner_images['mobile']),
       'desktop' => image_style_url('2880x1620', $banner_images['desktop']),
     ),
     'show_title_prefix_style' => isset($draggable_data->data->{$json_array_type}->title_prefix)

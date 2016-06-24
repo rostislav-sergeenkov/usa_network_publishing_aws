@@ -102,7 +102,7 @@
           .description {
             @include breakpoint($bp-640-width) {
               display: none;
-              font-size: get-vw(18px, 640);
+              font-size: get-vw(22px, 640);
             }
           }
         }

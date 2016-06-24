@@ -45993,6 +45993,9 @@ html.no-scroll, body.no-scroll {
   height: 100%;
   width: 100%;
 }
+.show-new-design .consum-sidebar .episodes-list-slider.vertical li > div:hover .asset-img {
+  opacity: 1;
+}
 .show-new-design .consum-sidebar .episodes-list-slider.vertical li a {
   height: 100%;
   width: 100%;
@@ -46004,9 +46007,11 @@ html.no-scroll, body.no-scroll {
   position: absolute;
   top: 50%;
   width: 75px;
+  opacity: 0.35;
 }
 .show-new-design .consum-sidebar .episodes-list-slider.vertical li .asset-img.active {
   border-left: 3px solid;
+  opacity: 1;
 }
 .show-new-design .consum-sidebar .episodes-list-slider.vertical li .asset-img img {
   height: 100%;
@@ -50480,7 +50485,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item.active .episode-landing-info-block .description,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item.active .episode-landing-info-block .description {
     display: none;
-    font-size: 2.8125vw;
+    font-size: 3.4375vw;
   }
 }
 @media (max-width: 640px) {

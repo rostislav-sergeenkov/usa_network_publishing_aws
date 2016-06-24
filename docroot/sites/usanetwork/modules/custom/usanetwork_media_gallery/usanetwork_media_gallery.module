@@ -581,6 +581,12 @@ function _usanetwork_media_gallery_get_multiple_show_galleries() {
  * @param $season_nid
  */
 function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type = NULL, $episode_num = NULL, $sorting = 'ASC', $start = NULL, $lenght = NULL) {
+  $show_node = node_load($show_nid);
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
+  $featured_nids = array();
+  if ($is_new_design) {
+    $featured_nids = _usanetwork_media_gallery_landing_page_get_featured_items($show_node);
+  }
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
   $query->condition('node.type', 'media_gallery');
@@ -600,6 +606,10 @@ function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type = NULL
   );
   $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
   $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
+
+  foreach ($featured_nids as $nid) {
+    $query->orderBy('node.nid = ' . $nid, 'DESC');
+  }
   $query->orderBy('sorted_time', $sorting);
   if (is_numeric($start) && is_numeric($lenght)) {
     $query->range($start, $lenght);
@@ -621,6 +631,19 @@ function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type = NULL
     return entity_load('node', $node_ids);
   }
   return FALSE;
+}
+
+function _usanetwork_media_gallery_landing_page_get_featured_items($show_node) {
+  $field_promo_items = field_get_items('node', $show_node, 'field_show_plmb_promo');
+  $featured_nids = array();
+  if (!empty($field_promo_items) && is_array($field_promo_items)) {
+    foreach ($field_promo_items as $promo_reference) {
+      if ($promo_reference['target_type'] == 'node') {
+        $featured_nids[] = $promo_reference['target_id'];
+      }
+    }
+  }
+  return $featured_nids;
 }
 
 /**

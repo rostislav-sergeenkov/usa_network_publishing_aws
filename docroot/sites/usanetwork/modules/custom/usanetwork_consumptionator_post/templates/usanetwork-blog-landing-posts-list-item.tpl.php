@@ -38,12 +38,8 @@
           </a>
         </div>
         <?php if (!empty($violator)): ?>
-          <div class="caption">
-            <?php if ($new_design): ?>
-              <span class="show-color"><?php print $violator; ?></span>
-            <?php else: ?>
-              <?php print $violator; ?>
-            <?php endif; ?>
+          <div class="caption show-color">
+            <?php print $violator; ?>
           </div>
         <?php endif; ?>
       </div>

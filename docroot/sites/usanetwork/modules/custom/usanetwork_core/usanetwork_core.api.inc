@@ -189,7 +189,7 @@ function usanetwork_core_api_prepare_blog_service_violator($violator, $service) 
       'element' => array(
         '#tag' => 'span',
         '#attributes' => array(
-          'class' => 'violator_icon ' . $service,
+          'class' => 'violator-icon ' . $service,
         ),
         '#value' => '',
       ),

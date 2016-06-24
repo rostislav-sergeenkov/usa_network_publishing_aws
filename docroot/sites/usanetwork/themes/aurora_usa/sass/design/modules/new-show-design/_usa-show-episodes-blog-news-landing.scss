@@ -223,6 +223,29 @@
             height: get-vw(119px, 640);
             width: get-vw(212px, 640);
           }
+          .caption {
+            bottom: 0px;
+            color: white;
+            display: inline-block;
+            font-family: $fira-sans-medium;
+            padding: 2px 8px 0;
+            position: absolute;
+            left: 0;
+            line-height: normal;
+            max-width: 100%;
+            text-transform: uppercase;
+            @extend %usa-violator-icon;
+            @include breakpoint($bp-768-width) {
+              font-size: 10px;
+              padding: 1px 4px 0;
+            }
+            @include breakpoint($bp-480-width) {
+              font-size: 7px;
+            }
+            b {
+              font-family: $fira-sans-bold;
+            }
+          }
         }
         .airing-date,
         .expiration-date,

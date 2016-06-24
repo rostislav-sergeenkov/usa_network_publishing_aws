@@ -81,12 +81,6 @@ function usanetwork_media_gallery_context_default_contexts() {
           'region' => 'header',
           'weight' => '0',
         ),
-        'usanetwork_media_gallery-usa_gallery_show_gallery_lmb' => array(
-          'module' => 'usanetwork_media_gallery',
-          'delta' => 'usa_gallery_show_gallery_lmb',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
         'usanetwork_media_gallery-usa_gallery_show_gallery_all' => array(
           'module' => 'usanetwork_media_gallery',
           'delta' => 'usa_gallery_show_gallery_all',

@@ -982,35 +982,6 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_service|node|tv_show|form';
-  $field_group->group_name = 'group_service';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_show';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_new_design';
-  $field_group->data = array(
-    'label' => 'Service',
-    'weight' => '27',
-    'children' => array(
-      0 => 'field_service_logo',
-      1 => 'field_show_service_logo',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Service',
-      'instance_settings' => array(
-        'required_fields' => 0,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_service|node|tv_show|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_show_aspots|node|tv_show|form';
   $field_group->group_name = 'group_show_aspots';
   $field_group->entity_type = 'node';

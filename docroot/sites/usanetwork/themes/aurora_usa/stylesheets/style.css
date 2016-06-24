@@ -49674,7 +49674,7 @@ html.no-scroll, body.no-scroll {
   width: 100%;
 }
 .show-new-design .block-usanetwork-person-usanetwork-person-cast-lmb-block .cast-and-info-header-image .asset-img {
-  padding-top: 30.625%;
+  padding-top: 31.25%;
   position: relative;
   width: 100%;
 }
@@ -50534,7 +50534,7 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block {
-    width: calc(100% - 46.35417vw);
+    width: calc(100% - 47.39583vw);
   }
 }
 @media (max-width: 640px) {
@@ -50682,7 +50682,7 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .image-block {
-    right: calc(100% + 0.91146vw);
+    right: calc(100% + 1.95313vw);
     height: 22.00521vw;
     width: 45.44271vw;
   }
@@ -50848,7 +50848,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar {
     clear: both;
     padding-top: 2.53906vw;
-    width: calc(100% - 46.35417vw);
+    width: calc(100% - 47.39583vw);
   }
 }
 @media (max-width: 640px) {

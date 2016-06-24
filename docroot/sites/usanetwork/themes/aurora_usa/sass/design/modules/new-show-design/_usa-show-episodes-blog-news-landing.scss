@@ -128,7 +128,7 @@
           width: calc(100% - #{get-vw(355px, 1024) + get-vw(12px, 1024)});
         }
         @include breakpoint($bp-768-width) {
-          width: calc(100% - #{get-vw(349px, 768) + get-vw(7px, 768)});
+          width: calc(100% - #{get-vw(349px, 768) + get-vw(15px, 768)});
         }
         @include breakpoint($bp-640-width) {
           width: calc(100% - #{get-vw(212px, 640) + get-vw(15px, 640)});
@@ -213,7 +213,7 @@
             width: get-vw(355px, 1024);
           }
           @include breakpoint ($bp-768-width) {
-            right: calc(100% + #{get-vw(7px, 768)});
+            right: calc(100% + #{get-vw(15px, 768)});
             height: get-vw(169px, 768);
             width: get-vw(349px, 768);
           }
@@ -312,7 +312,7 @@
         @include breakpoint($bp-768-width) {
           clear: both;
           padding-top: get-vw(26px, 1024);
-          width: calc(100% - #{get-vw(349px, 768) + get-vw(7px, 768)});
+          width: calc(100% - #{get-vw(349px, 768) + get-vw(15px, 768)});
         }
         @include breakpoint($bp-640-width) {
           float: none;

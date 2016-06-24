@@ -1,3 +1,8 @@
+html, body {
+  &.no-scroll {
+    overflow-y: hidden;
+  }
+}
 .show-new-design {
   //background: $consum-also-back;
   background: #000000;

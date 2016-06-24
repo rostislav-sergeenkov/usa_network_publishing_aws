@@ -40674,6 +40674,10 @@ body.blog .view-display-id-blog_content .views-row {
   transition: all 0.2s linear 0s;
 }
 
+html.no-scroll, body.no-scroll {
+  overflow-y: hidden;
+}
+
 .show-new-design {
   background: #000000;
 }

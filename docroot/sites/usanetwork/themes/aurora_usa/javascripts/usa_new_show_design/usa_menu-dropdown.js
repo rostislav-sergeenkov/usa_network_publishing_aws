@@ -29,6 +29,7 @@ var USAN = USAN || {};
 
       // default settings
       _.defaults = {
+        htmlSelector: 'html',
         headerSelector: '#header', // string
         topMenuBlockSelector: '.top-menu-block', // string
         bottomMenuBlockSelector: '.bottom-menu-block', // string
@@ -48,6 +49,7 @@ var USAN = USAN || {};
         classActiveLink: 'active-link',
         classAnimating: 'velocity-animating',
         classShowMenuScrollEnd: 'show-menu-scroll-end',
+        classNoScroll: 'no-scroll',
         resizeTimeOut: 50, // number ms
         durationSlideForm: 200 // number ms
       };
@@ -69,6 +71,7 @@ var USAN = USAN || {};
       _.options.customScrollend = false;
 
       // elements
+      _.$html = $(_.options.htmlSelector);
       _.$body = $(document.body);
       _.$header = $(_.options.headerSelector);
       _.$mainWrap = $(element);
@@ -171,19 +174,23 @@ var USAN = USAN || {};
   usaShowMenu.prototype.initMenuOpenHandler = function () {
 
     var _ = this,
+        $html = _.$html,
         $header = _.$header,
         $menuOpenButton = _.$menuOpenButton,
         $mainWrap = _.$mainWrap,
         classHeaderMenuOpen = _.options.classHeaderMenuOpen,
+        classNoScroll = _.options.classNoScroll,
         activeClass = _.options.activeClass;
 
     if (!_.options.isMenuOpenButtonActive) {
       _.options.isMenuOpenButtonActive = true;
+      _.addElemClass($html, classNoScroll, null);
       _.addElemClass($header, classHeaderMenuOpen, null);
       _.addElemClass($menuOpenButton, activeClass, null);
       _.addElemClass($mainWrap, activeClass, null);
     } else {
       _.options.isMenuOpenButtonActive = false;
+      _.removeElemClass($html, classNoScroll, null);
       _.removeElemClass($header, classHeaderMenuOpen, null);
       _.removeElemClass($menuOpenButton, activeClass, null);
       _.removeElemClass($mainWrap, activeClass, null);
@@ -251,6 +258,7 @@ var USAN = USAN || {};
       scrollInertia: 200,
       axis: 'y',
       autoHideScrollbar: false,
+      documentTouchScroll: false,
       theme: 'light',
       scrollbarPosition: 'inside',
       callbacks: {
@@ -322,9 +330,9 @@ var USAN = USAN || {};
           _.getScrollDirection($window.pageYOffset);
 
           if (_.options.customScrollend) {
-            if (_.options.isMenuOpenButtonActive) {
+            /*if (_.options.isMenuOpenButtonActive) {
               _.initMenuOpenHandler();
-            }
+            }*/
 
             if (_.options.isMenuSignUplinkActive) {
               _.initSignUpFormHandler();

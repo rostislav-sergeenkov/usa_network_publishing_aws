@@ -40675,8 +40675,11 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 html.no-scroll, body.no-scroll {
-  overflow-y: hidden;
+  left: 0;
+  overflow: hidden;
   position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .show-new-design {

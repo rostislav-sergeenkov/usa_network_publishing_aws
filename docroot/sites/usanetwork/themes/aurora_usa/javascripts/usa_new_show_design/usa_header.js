@@ -115,6 +115,13 @@
       // callback when above offset, `this` is headroom object
       onTop: function () {
         console.info('onTop');
+
+        var $header = _.$header,
+            menuOpen = _.options.menuOpen;
+
+        if ($header.hasClass(menuOpen)) {
+          return false;
+        }
         if (_.options.isInitStickyHeader) {
           _.resetStickyHeader();
         }

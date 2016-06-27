@@ -204,6 +204,7 @@ var USAN = USAN || {};
         $mainWrap = _.$mainWrap,
         classHeaderMenuOpen = _.options.classHeaderMenuOpen,
         classNoScroll = _.options.classNoScroll,
+        resizeTimeOut = _.options.resizeTimeOut,
         activeClass = _.options.activeClass;
 
     if (!_.options.isMenuOpenButtonActive) {
@@ -216,13 +217,16 @@ var USAN = USAN || {};
     } else {
       _.options.isMenuOpenButtonActive = false;
       _.removeElemClass($html, classNoScroll, null);
-      if(_.options.pageYOffset != window.pageYOffset) {
-        $('body').scrollTop(_.options.pageYOffset);
-      }
-      _.removeElemClass($header, classHeaderMenuOpen, null);
-      _.removeElemClass($menuOpenButton, activeClass, null);
-      _.removeElemClass($mainWrap, activeClass, null);
-      _.checkHeaderSpacer();
+      _.setTimeout(function () {
+        if(_.options.pageYOffset != window.pageYOffset) {
+          $('body').scrollTop(_.options.pageYOffset);
+        }
+        _.removeElemClass($header, classHeaderMenuOpen, null);
+        _.removeElemClass($menuOpenButton, activeClass, null);
+        _.removeElemClass($mainWrap, activeClass, null);
+        _.checkHeaderSpacer();
+      }, resizeTimeOut);
+      
     }
   };
 

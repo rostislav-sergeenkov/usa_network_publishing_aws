@@ -151,6 +151,7 @@ body{
   background-color: #FFF;
   margin: 0;
   padding: 0;
+  max-width: 100%;
   top: 0;
 }
 .page-node-microsite #main {
@@ -336,6 +337,37 @@ header .ad-leaderboard {
   margin-top: 0;
   clear: left;
 }
+
+
+/* Eater promo */
+#eater-link {
+  display: block;
+  padding: 0;
+  margin: 0 auto 40px;
+}
+
+
+/* Offerpop iframe */
+#offerpop {
+  display: block;
+  width: 100%;
+  height: initial;
+  margin-bottom: 80px;
+  background-color: #DDD;
+}
+#offerpop:before {
+  content: 'Offerpop content goes here';
+  display: block;
+  position: absolute;
+  top: calc(50% - 28px);
+  left: 0;
+  width: 100%;
+  color: #555;
+  text-align: center;
+  font-size: 36px;
+}
+
+
 
 /* BEGIN MEDIA QUERIES */
 @media (min-width: 1740px) {

@@ -264,7 +264,6 @@
     _.options.isInitStickyHeader = false;
 
     _.removeElemClass($header, _.options.adOffHeaderClass, null);
-    _.updateHeaderSpacerHeight();
     _.setTimeout(function () {
       _.removeElemClass($header, _.options.stickyHeaderClass, null);
       _.removeElemClass($header, _.options.animatedHeaderClass, null);
@@ -299,7 +298,12 @@
     $(window)
         .bind('scroll', function (e) {
 
-          var $window = this;
+          var $window = this,
+              menuOpen = _.options.menuOpen;
+
+          if ($header.hasClass(menuOpen)) {
+            return false;
+          }
 
           if ($window.pageYOffset > _.options.headerHeight && !_.options.isInitStickyHeader) {
             _.initStickyHeader();

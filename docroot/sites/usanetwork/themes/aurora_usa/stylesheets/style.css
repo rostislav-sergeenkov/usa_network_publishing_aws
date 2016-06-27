@@ -40676,6 +40676,7 @@ body.blog .view-display-id-blog_content .views-row {
 
 html.no-scroll, body.no-scroll {
   overflow-y: hidden;
+  position: fixed;
 }
 
 .show-new-design {

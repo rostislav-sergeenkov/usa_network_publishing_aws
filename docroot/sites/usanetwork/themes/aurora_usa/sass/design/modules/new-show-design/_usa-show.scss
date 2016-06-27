@@ -1,6 +1,7 @@
 html, body {
   &.no-scroll {
     overflow-y: hidden;
+    position: fixed;
   }
 }
 .show-new-design {

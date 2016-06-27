@@ -226,7 +226,6 @@ var USAN = USAN || {};
         _.removeElemClass($mainWrap, activeClass, null);
         _.checkHeaderSpacer();
       }, resizeTimeOut);
-      
     }
   };
 

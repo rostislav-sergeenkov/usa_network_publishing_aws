@@ -31,6 +31,7 @@ var USAN = USAN || {};
       _.defaults = {
         htmlSelector: 'html',
         headerSelector: '#header', // string
+        headerSpacerSelector: '#header-spacer', // string
         topMenuBlockSelector: '.top-menu-block', // string
         bottomMenuBlockSelector: '.bottom-menu-block', // string
         socialBlockSelector: '.social-block', // string
@@ -74,6 +75,7 @@ var USAN = USAN || {};
       _.$html = $(_.options.htmlSelector);
       _.$body = $(document.body);
       _.$header = $(_.options.headerSelector);
+      _.$headerSpacer = $(_.options.headerSpacerSelector);
       _.$mainWrap = $(element);
       _.$topMenuBlock = _.$mainWrap.find(_.options.topMenuBlockSelector);
       _.$bottomMenuBlock = _.$mainWrap.find(_.options.bottomMenuBlockSelector);
@@ -126,6 +128,27 @@ var USAN = USAN || {};
       }
     }, delay);
 
+  };
+
+  usaShowMenu.prototype.checkHeaderSpacer = function () {
+    var _ = this,
+        $headerHeight = _.$header.innerHeight(),
+        $headerSpacerHeight = _.$headerSpacer.innerHeight();
+
+    if ($headerSpacerHeight != $headerHeight) {
+      _.setHeaderSpacerHeight($headerHeight);
+    }
+  };
+
+  usaShowMenu.prototype.setHeaderSpacerHeight = function (height) {
+
+    var _ = this,
+        $headerSpacer = _.$headerSpacer;
+
+    $headerSpacer.css({
+      display: 'block',
+      height: height + 'px'
+    });
   };
 
   // scroll events
@@ -194,6 +217,7 @@ var USAN = USAN || {};
       _.removeElemClass($header, classHeaderMenuOpen, null);
       _.removeElemClass($menuOpenButton, activeClass, null);
       _.removeElemClass($mainWrap, activeClass, null);
+      _.checkHeaderSpacer();
     }
   };
 

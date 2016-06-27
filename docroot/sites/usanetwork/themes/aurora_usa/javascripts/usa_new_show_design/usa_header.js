@@ -29,7 +29,8 @@
         // name classes
         stickyHeaderClass: 'usa-sticky-header',
         animatedHeaderClass: 'animated',
-        adOffHeaderClass: 'off-elements', // string
+        adOffHeaderClass: 'off-elements',
+        menuOpen: 'menu-open',// string
 
         additionalMode: {},
 
@@ -220,7 +221,13 @@
   usaStickyHeader.prototype.setHeaderSpacerHeight = function (height) {
 
     var _ = this,
-        $headerSpacer = _.$headerSpacer;
+        $header = _.$header,
+        $headerSpacer = _.$headerSpacer,
+        menuOpen = _.options.menuOpen;
+
+    if ($header.hasClass(menuOpen)) {
+      return false;
+    }
 
     $headerSpacer.css({
       display: 'block',
@@ -257,7 +264,7 @@
     _.options.isInitStickyHeader = false;
 
     _.removeElemClass($header, _.options.adOffHeaderClass, null);
-
+    _.updateHeaderSpacerHeight();
     _.setTimeout(function () {
       _.removeElemClass($header, _.options.stickyHeaderClass, null);
       _.removeElemClass($header, _.options.animatedHeaderClass, null);

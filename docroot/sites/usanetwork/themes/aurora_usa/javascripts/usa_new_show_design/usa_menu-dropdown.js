@@ -279,7 +279,7 @@ var USAN = USAN || {};
     _.options.isMenuCustomScrollActive = true;
 
     $showMenu.mCustomScrollbar({
-      scrollInertia: 200,
+      scrollInertia: 0,
       axis: 'y',
       autoHideScrollbar: false,
       documentTouchScroll: false,
@@ -353,10 +353,10 @@ var USAN = USAN || {};
 
           _.getScrollDirection($window.pageYOffset);
 
-          if (_.options.customScrollend) {
-            /*if (_.options.isMenuOpenButtonActive) {
+          /*if (_.options.customScrollend) {
+            if (_.options.isMenuOpenButtonActive) {
               _.initMenuOpenHandler();
-            }*/
+            }
 
             if (_.options.isMenuSignUplinkActive) {
               _.initSignUpFormHandler();
@@ -372,7 +372,7 @@ var USAN = USAN || {};
             if (_.options.isMenuSignUplinkActive) {
               _.initSignUpFormHandler();
             }
-          }
+          }*/
         })
         .bind('resize', function (e) {
 

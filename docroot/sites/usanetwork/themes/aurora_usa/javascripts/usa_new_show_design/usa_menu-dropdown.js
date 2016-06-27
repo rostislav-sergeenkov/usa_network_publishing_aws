@@ -52,7 +52,8 @@ var USAN = USAN || {};
         classShowMenuScrollEnd: 'show-menu-scroll-end',
         classNoScroll: 'no-scroll',
         resizeTimeOut: 50, // number ms
-        durationSlideForm: 200 // number ms
+        durationSlideForm: 200, // number ms
+        pageOffset: 0
       };
 
       // create global options
@@ -207,6 +208,7 @@ var USAN = USAN || {};
 
     if (!_.options.isMenuOpenButtonActive) {
       _.options.isMenuOpenButtonActive = true;
+      _.options.pageYOffset = window.pageYOffset;
       _.addElemClass($html, classNoScroll, null);
       _.addElemClass($header, classHeaderMenuOpen, null);
       _.addElemClass($menuOpenButton, activeClass, null);
@@ -214,6 +216,9 @@ var USAN = USAN || {};
     } else {
       _.options.isMenuOpenButtonActive = false;
       _.removeElemClass($html, classNoScroll, null);
+      if(_.options.pageYOffset != window.pageYOffset) {
+        $('body').scrollTop(_.options.pageYOffset);
+      }
       _.removeElemClass($header, classHeaderMenuOpen, null);
       _.removeElemClass($menuOpenButton, activeClass, null);
       _.removeElemClass($mainWrap, activeClass, null);

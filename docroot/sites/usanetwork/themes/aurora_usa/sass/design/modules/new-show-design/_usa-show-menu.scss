@@ -139,15 +139,46 @@
               }
               .logo-block {
                 @include breakpoint($bp-768-width) {
-                  margin-top: get-vw(-17.5px, 768);
+                  margin-top: get-vw(-12.3px, 768);
                 }
               }
               .menu-open-button.active {
-                margin-top: get-vw(-17.5px, 768);
+                margin-top: get-vw(-12.3px, 768);
               }
             }
           }
           .top-menu-block {
+            .logo-block {
+              @include breakpoint($bp-768-width) {
+
+              }
+            }
+            .logo-block {
+              @include breakpoint($bp-768-width) {
+                left: get-vw(24.6px, 768);
+                height: get-vw(24.6px, 768);
+                margin-top: get-vw(-12.3px, 768);
+              }
+              .logo {
+                @include breakpoint($bp-768-width) {
+                  width: get-vw(59.7px, 768);
+                }
+              }
+            }
+            .menu-open-button {
+              @include breakpoint($bp-768-width) {
+                height: get-vw(24.6px, 768);
+                margin-top: get-vw(-12.3px, 768);
+                right: get-vw(24.6px, 768);
+                width: get-vw(35px, 768);
+              }
+              &:before {
+                @include breakpoint($bp-768-width) {
+                  font-size: get-vw(35px, 768);
+                  line-height: get-vw(24.6px, 768);
+                }
+              }
+            }
             .top-menu-block-inner {
               @include breakpoint($bp-768-width) {
                 padding: get-vw(20px, 768) 0 get-vw(21.5px, 768);

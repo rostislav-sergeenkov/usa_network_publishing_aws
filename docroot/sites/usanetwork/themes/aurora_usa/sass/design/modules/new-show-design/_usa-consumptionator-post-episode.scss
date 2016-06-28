@@ -250,7 +250,7 @@
                 margin: 0;
                 padding: 0;
                 @include breakpoint($bp-640-width) {
-                  font-size: get-vw(28px, 640);
+                  font-size: get-vw(32px, 640);
                 }
                 @include breakpoint($bp-min-1601-width) {
                   font-size: 54px;
@@ -669,7 +669,7 @@
             font-size: 36px;
             line-height: 1.4;
             @include breakpoint($bp-640-width) {
-              font-size: get-vw(28px, 640);
+              font-size: get-vw(32px, 640);
             }
             @include breakpoint($bp-min-1601-width) {
               font-size: 40px;

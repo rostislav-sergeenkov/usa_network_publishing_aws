@@ -45787,7 +45787,6 @@ html.no-scroll, body.no-scroll {
 
 .show-new-design .consum-sidebar {
   box-sizing: border-box;
-  background: #121212;
   float: left;
   height: 100%;
   overflow: hidden;
@@ -45855,7 +45854,6 @@ html.no-scroll, body.no-scroll {
   max-height: none !important;
 }
 .show-new-design .consum-sidebar .advert {
-  background: #121212;
   height: 250px;
   width: 100%;
 }

@@ -274,8 +274,8 @@
     _.setTimeout(function () {
       _.removeElemClass($header, _.options.stickyHeaderClass, null);
       _.removeElemClass($header, _.options.animatedHeaderClass, null);
-      $header.attr('style', '');
       _.updateHeaderSpacerHeight();
+      $header.attr('style', '');
       if (typeof _.options.callBackOffStickyHeader === 'function') {
         _.options.callBackOffStickyHeader();
       }
@@ -352,12 +352,14 @@
         initHeaderClass = _.options.initHeaderClass;
 
     if (creation && !_.$header.hasClass(initHeaderClass)) {
-      _.$header.addClass(initHeaderClass);
-      _.updateOptionsVal();
-      _.checkHeaderSpacer();
-      _.setHeaderSpacerHeight(_.options.headerHeight);
-      _.usaHeadroom.init();
-      _.addEvents();
+      _.setTimeout(function () {
+        _.$header.addClass(initHeaderClass);
+        _.updateOptionsVal();
+        _.checkHeaderSpacer();
+        _.setHeaderSpacerHeight(_.options.headerHeight);
+        _.usaHeadroom.init();
+        _.addEvents();
+      }, 150);
     }
   };
 

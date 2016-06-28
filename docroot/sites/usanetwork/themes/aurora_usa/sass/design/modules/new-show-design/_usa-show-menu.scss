@@ -180,14 +180,12 @@
               }
             }
             .title-block {
-              &.show-mrrobot {
+              @include breakpoint($bp-768-width) {
+                width: get-vw(348px, 1280);
+              }
+              .title {
                 @include breakpoint($bp-768-width) {
-                  width: get-vw(348px, 1280);
-                }
-                .title {
-                  @include breakpoint($bp-768-width) {
-                    height: get-vw(54.52px, 1280);
-                  }
+                  height: get-vw(54.52px, 1280);
                 }
               }
             }
@@ -456,10 +454,25 @@
       .title-block {
         margin: 0 auto;
         position: relative;
+        width: get-vw(348px, 1280);
+        @include breakpoint($bp-min-1601-width) {
+          width: 435px;
+        }
+        @include breakpoint($bp-768-width) {
+          width: get-vw(372px, 768);
+        }
         .title {
+          height: get-vw(54.52px, 1280);
           margin: 0 auto;
+          overflow: hidden;
           position: relative;
           width: 100%;
+          @include breakpoint($bp-min-1601-width) {
+            height: 68.15px;
+          }
+          @include breakpoint($bp-768-width) {
+            height: get-vw(57px, 768);
+          }
         }
         a {
           //background-size: 100% 100%;
@@ -494,28 +507,6 @@
             font-size: get-vw(18px, 768);
             line-height: 1;
           }
-        }
-        &.show-mrrobot {
-          width: get-vw(348px, 1280);
-          @include breakpoint($bp-min-1601-width) {
-            width: 435px;
-          }
-          @include breakpoint($bp-768-width) {
-            width: get-vw(372px, 768);
-          }
-          .title {
-            height: get-vw(54.52px, 1280);
-            overflow: hidden;
-            @include breakpoint($bp-min-1601-width) {
-              height: 68.15px;
-            }
-            @include breakpoint($bp-768-width) {
-              height: get-vw(57px, 768);
-            }
-          }
-          //a {
-          //background-image: url('../images/mr-robot-logo.png');
-          //}
         }
       }
       .menu-open-button {
@@ -648,6 +639,11 @@
               }
               &:not(:hover):not(.active) {
                 color: white !important;
+              }
+              &:not(.active) {
+                @include breakpoint($bp-768-width) {
+                  color: white !important;
+                }
               }
             }
           }

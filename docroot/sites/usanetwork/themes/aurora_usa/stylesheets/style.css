@@ -41147,16 +41147,6 @@ html.no-scroll, body.no-scroll {
     max-height: calc(100vh - 2px - 26.5625vw);
   }
 }
-@media all and (orientation: portrait) {
-  .show-new-design #header.usa-sticky-header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
-    height: calc((100vh - 30.46875vw) - 4px);
-  }
-}
-@media all and (orientation: portrait) {
-  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
-    height: calc((100vh - 30.46875vw) - 124px);
-  }
-}
 .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab:not(.show-menu-scroll-end):after {
   display: block;
 }

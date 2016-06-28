@@ -45434,16 +45434,6 @@ html.no-scroll, body.no-scroll {
   position: relative;
   width: 100%;
 }
-@media (max-width: 768px) {
-  .articles-block .articles-wrapper .usa-section-title {
-    border-bottom: 4px solid;
-  }
-}
-@media (max-width: 480px) {
-  .articles-block .articles-wrapper .usa-section-title {
-    border-bottom: 2px solid;
-  }
-}
 .articles-block .articles-wrapper .usa-section-title.sponsored-enable .title {
   padding: 2.34375vw 0 1.32813vw;
 }
@@ -45483,11 +45473,6 @@ html.no-scroll, body.no-scroll {
   right: 0;
   top: 2px;
   width: auto;
-}
-@media (max-width: 768px) {
-  .articles-block .articles-wrapper .usa-section-title.sponsored-enable .sponsored img {
-    top: 4px;
-  }
 }
 @media (max-width: 480px) {
   .articles-block .articles-wrapper .usa-section-title.sponsored-enable .sponsored img {
@@ -45638,7 +45623,7 @@ html.no-scroll, body.no-scroll {
 }
 .show-related-content-block .title-block {
   background-color: #282828;
-  border-bottom: 4px solid;
+  border-bottom: 2px solid;
 }
 @media (max-width: 768px) {
   .show-related-content-block .title-block {

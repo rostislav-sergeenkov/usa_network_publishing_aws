@@ -269,12 +269,14 @@
     }
 
     .header-inner {
-      height: 100%;
       margin: 0 auto;
       position: relative;
       width: 100%;
       @include breakpoint($bp-min-1601-width) {
         width: 1600px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: 100%;
       }
       @include transition(all 0.2s linear 0s);
     }

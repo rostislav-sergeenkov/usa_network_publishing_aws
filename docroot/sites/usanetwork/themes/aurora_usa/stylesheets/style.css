@@ -40640,7 +40640,6 @@ body.blog .view-display-id-blog_content .views-row {
   padding: 0;
 }
 .show-new-design #header .header-inner {
-  height: 100%;
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -40653,6 +40652,11 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1601px) {
   .show-new-design #header .header-inner {
     width: 1600px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #header .header-inner {
+    height: 100%;
   }
 }
 .show-new-design #header #head-leaderboard {

@@ -40602,7 +40602,7 @@ body.blog .view-display-id-blog_content .views-row {
 .show-new-design #header.menu-open {
   position: fixed !important;
   overflow: hidden;
-  height: 100vh;
+  height: 100%;
 }
 .show-new-design #header.usa-sticky-header-initialized {
   position: absolute;
@@ -40612,13 +40612,13 @@ body.blog .view-display-id-blog_content .views-row {
   top: -100%;
   position: fixed;
 }
-.show-new-design #header.usa-sticky-header.slide-down {
+.show-new-design #header.usa-sticky-header:not(.menu-open).slide-down {
   -webkit-animation-name: slideDown;
   -moz-animation-name: slideDown;
   -o-animation-name: slideDown;
   animation-name: slideDown;
 }
-.show-new-design #header.usa-sticky-header.slide-up {
+.show-new-design #header.usa-sticky-header:not(.menu-open).slide-up {
   -webkit-animation-name: slideUp;
   -moz-animation-name: slideUp;
   -o-animation-name: slideUp;
@@ -40640,6 +40640,7 @@ body.blog .view-display-id-blog_content .views-row {
   padding: 0;
 }
 .show-new-design #header .header-inner {
+  height: 100%;
   margin: 0 auto;
   position: relative;
   width: 100%;
@@ -41223,12 +41224,12 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media all and (orientation: landscape) and (max-width: 768px) {
-  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
     width: 27.1875vw;
   }
 }
 @media all and (orientation: landscape) and (max-width: 768px) {
-  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
     height: 4.25938vw;
   }
 }
@@ -41493,11 +41494,34 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
   margin: 0 auto;
   position: relative;
+  width: 27.1875vw;
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
+    width: 435px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
+    width: 48.4375vw;
+  }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
+  height: 4.25938vw;
   margin: 0 auto;
+  overflow: hidden;
   position: relative;
   width: 100%;
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
+    height: 68.15px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
+    height: 7.42188vw;
+  }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block a {
   display: block;
@@ -41535,33 +41559,6 @@ html.no-scroll, body.no-scroll {
     padding-top: 1.30208vw;
     font-size: 2.34375vw;
     line-height: 1;
-  }
-}
-.show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
-  width: 27.1875vw;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
-    width: 435px;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot {
-    width: 48.4375vw;
-  }
-}
-.show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
-  height: 4.25938vw;
-  overflow: hidden;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
-    height: 68.15px;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block.show-mrrobot .title {
-    height: 7.42188vw;
   }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
@@ -41736,6 +41733,11 @@ html.no-scroll, body.no-scroll {
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a:not(:hover):not(.active) {
   color: white !important;
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a:not(.active) {
+    color: white !important;
+  }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab:after {
   display: none;

@@ -222,7 +222,7 @@
     &.menu-open {
       position: fixed !important;
       overflow: hidden;
-      height: 100vh;
+      height: 100%;
     }
 
     &.usa-sticky-header-initialized {
@@ -233,19 +233,19 @@
       left: 0;
       top: -100%;
       position: fixed;
-
-      &.slide-down {
-        -webkit-animation-name: slideDown;
-        -moz-animation-name: slideDown;
-        -o-animation-name: slideDown;
-        animation-name: slideDown;
-      }
-
-      &.slide-up {
-        -webkit-animation-name: slideUp;
-        -moz-animation-name: slideUp;
-        -o-animation-name: slideUp;
-        animation-name: slideUp;
+      &:not(.menu-open) {
+        &.slide-down {
+          -webkit-animation-name: slideDown;
+          -moz-animation-name: slideDown;
+          -o-animation-name: slideDown;
+          animation-name: slideDown;
+        }
+        &.slide-up {
+          -webkit-animation-name: slideUp;
+          -moz-animation-name: slideUp;
+          -o-animation-name: slideUp;
+          animation-name: slideUp;
+        }
       }
     }
 
@@ -269,6 +269,7 @@
     }
 
     .header-inner {
+      height: 100%;
       margin: 0 auto;
       position: relative;
       width: 100%;

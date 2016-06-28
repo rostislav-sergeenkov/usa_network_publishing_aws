@@ -200,9 +200,7 @@
 
           self.refreshAd('page-header');
           self.refreshAd('videos');
-          var style = {};
-          style.dark = '';
-          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#home-content'), style.dark);
+          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#home-content'), 'light');
 
           $('#video-container').addClass('active');
           var urlParts = self.parseUrl(window.location.href); // history.state['path']);

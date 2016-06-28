@@ -45435,6 +45435,11 @@ html.no-scroll, body.no-scroll {
     border-bottom: 4px solid;
   }
 }
+@media (max-width: 480px) {
+  .articles-block .articles-wrapper .usa-section-title {
+    border-bottom: 2px solid;
+  }
+}
 .articles-block .articles-wrapper .usa-section-title.sponsored-enable .title {
   padding: 2.34375vw 0 1.32813vw;
 }
@@ -45478,6 +45483,12 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 768px) {
   .articles-block .articles-wrapper .usa-section-title.sponsored-enable .sponsored img {
     top: 4px;
+  }
+}
+@media (max-width: 480px) {
+  .articles-block .articles-wrapper .usa-section-title.sponsored-enable .sponsored img {
+    max-height: calc(100% - 4px);
+    top: 2px;
   }
 }
 .articles-block .articles-wrapper .articles-content {

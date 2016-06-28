@@ -11,12 +11,16 @@
 ?>
 <div class="node node-usanetwork-promo usa-episodes-carousel-promo<?php print (!empty($video_link)) ? ' full-episode' : '' ; ?>">
   <div class="image-block">
-    <?php if (!empty($video_link)) : ?>
-      <div class="meta-icon full-video-icon-default"></div>
+    <?php if (!empty($video_link) || !empty($featured_provider)) : ?>
+      <a href="<?php print (!empty($video_link)) ? $video_link : $featured_provider['url']; ?>">
+        <div class="meta-icon full-video-icon-default"></div>
     <?php endif; ?>
-    <div class="asset-img">
-      <img src="<?php print (!empty($image) ? $image : '#'); ?>" alt="">
-    </div>
+      <div class="asset-img">
+        <img src="<?php print (!empty($image) ? $image : '#'); ?>" alt="">
+      </div>
+    <?php if (!empty($video_link) || !empty($featured_provider)) : ?>
+      </a>
+    <?php endif; ?>
   </div>
   <div class="meta-wrapper">
     <div class="meta-wrapper-inner">

@@ -150,11 +150,6 @@
           .top-menu-block {
             .logo-block {
               @include breakpoint($bp-768-width) {
-
-              }
-            }
-            .logo-block {
-              @include breakpoint($bp-768-width) {
                 left: get-vw(24.6px, 768);
                 height: get-vw(24.6px, 768);
                 margin-top: get-vw(-12.3px, 768);
@@ -446,7 +441,7 @@
         }
         .logo {
           float: left;
-          width: get-vw(56px, 1280);
+          width: get-vw(71px, 1600);
           @include breakpoint($bp-min-1601-width) {
             width: 71px;
           }

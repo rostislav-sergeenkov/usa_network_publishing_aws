@@ -61,7 +61,7 @@ html, body {
       }
       @include breakpoint($bp-768-width) {
         color: $usa-section-title-color;
-        font-size: get-vw(30px, 640);
+        font-size: get-vw(30.72px, 768);
       }
     }
     > a {
@@ -144,7 +144,7 @@ html, body {
         padding-right: 22.5px;
       }
       @include breakpoint($bp-768-width) {
-        font-size: get-vw(24px, 640);
+        font-size: get-vw(19.2px, 768);
         padding-right: get-vw(22px, 640);
         padding-top: get-vw(1.4px, 768);
       }
@@ -334,7 +334,7 @@ html, body {
             font-size: 17.5px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(20.4px, 640);
+            font-size: get-vw(16.8px, 768);
           }
           &:hover {
             text-decoration: underline;

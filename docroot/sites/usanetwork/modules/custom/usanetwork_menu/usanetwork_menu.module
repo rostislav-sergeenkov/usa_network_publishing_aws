@@ -2028,6 +2028,7 @@ function usanetwork_menu_form_usanetwork_settings_form_alter(&$form, &$form_stat
   $form['header_movies'] = array(
     '#type' => 'fieldset',
     '#title' => t('Movies for Header'),
+    '#description' => t('Leave empty for picking the the most recent available movies'),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
   );

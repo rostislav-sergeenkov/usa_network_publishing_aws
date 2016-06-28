@@ -36,13 +36,7 @@
       </div>
       <?php endif; ?>
 
-      <?php if (!empty($section['is_last'])): // add Eater promo and Offerpop iframe and footer ?>
-        <a id="eater-link" class="section" href="//dev.usanetwork.com/node/65041" target="_blank"><img src="/sites/usanetwork/themes/aurora_usa/usanetwork_microsite_themes/suitsinspiration/images/eater-promo-image.png" alt="Eater promo image"></a>
-
-        <div id="offerpop" class="section">
-          <iframe id="offerpop-iframe" src="//offerpop.com/commerce/gallery/22727?context=iframe" width="100%" height="800" frameborder="0" scrolling="auto"></iframe>
-        </div>
-
+      <?php if (!empty($section['is_last'])): // add footer ?>
         <footer id="footer-microsite" role="contentinfo" class="clearfix">
           <div class="region region-footer">
             <?php print $footer; ?>

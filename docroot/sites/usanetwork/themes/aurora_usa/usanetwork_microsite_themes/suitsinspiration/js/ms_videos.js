@@ -54,7 +54,7 @@
       usa_debug('[USA DEBUG] handleMediaEvent -- event.type: ' + event.type);
       switch (event.type) {
         case 'OnReleaseEnd':
-          jQuery('#thumbnail-list .item-list > ul > li.active').next().click();
+          Drupal.behaviors.ms_videos.clickThumbnail(jQuery('#thumbnail-list .item-list > ul > li.active').next());
           break;
         default:
           break;
@@ -62,15 +62,15 @@
     },
 
     initEventListeners: function() {
-      usa_debug('[USA DEBUG] initEventListeners() -- $pdk: ', $pdk);
-      usa_debug('[USA DEBUG] initEventListeners() -- $pdk.controller: ', $pdk.controller);
+//      usa_debug('[USA DEBUG] initEventListeners() -- $pdk: ', $pdk);
+//      usa_debug('[USA DEBUG] initEventListeners() -- $pdk.controller: ', $pdk.controller);
       if (typeof $pdk == 'object' && $pdk.hasOwnProperty('controller') && $pdk.controller.ready && $pdk.controller.hasOwnProperty('iframe') && $pdk.controller.iframe.contentWindow) {
-        usa_debug('[USA DEBUG] initEventListeners() -- setting event listeners');
+//        usa_debug('[USA DEBUG] initEventListeners() -- setting event listeners');
 
         // Point all event listeners at handleMediaEvent
         $pdk.controller.removeEventListener('OnReleaseEnd');
         $pdk.controller.addEventListener('OnReleaseEnd', Drupal.behaviors.ms_videos.handleMediaEvent);
-        usa_debug('[USA DEBUG] initEventListeners() -- finished setting event listeners');
+//        usa_debug('[USA DEBUG] initEventListeners() -- finished setting event listeners');
       }
       else {
         setTimeout(Drupal.behaviors.ms_videos.initEventListeners, 500);
@@ -260,15 +260,13 @@
 
     // click Thumbnail
     clickThumbnail: function (elem, autoplay) {
-      var refreshAdsOmniture = 0,
-          autoplay = autoplay || true,
+      var autoplay = autoplay || true,
           videoContainer = $('#video-container'),
           msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
 
       if (videoContainer.attr('data-video-url') != elem.attr('data-video-url')) {
         $('#thumbnail-list .item-list ul li.thumbnail').removeClass('active');
         elem.addClass('active');
-        refreshAdsOmniture = 1;
       }
       else {
         if (!elem.hasClass('active')) {

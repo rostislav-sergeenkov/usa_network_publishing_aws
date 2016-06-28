@@ -26,6 +26,22 @@ function usanetwork_microsite_suitsinspiration_get_theme_registry_variables() {
         ),
       ),
     ),
+    'usanetwork_microsite_suitsinspiration_page_home' => array(
+      'template' => 'usanetwork-microsite-suitsinspiration-page-home',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'description' => NULL,
+        'aspots' => array(),
+        'featured' => array(),
+        'characters' => array(
+          0 => array(
+            'url' => NULL,
+            'title' => NULL,
+            'image_url' => NULL,
+          ),
+        ),
+      ),
+    ),
     'usanetwork_microsite_suitsinspiration_page_videos' => array(
       'template' => 'usanetwork-microsite-suitsinspiration-page-videos',
       'path' => $subtheme_path,
@@ -51,6 +67,16 @@ function usanetwork_microsite_suitsinspiration_get_theme_registry_variables() {
           'season_number' => NULL,
           'episode_number' => NULL,
           'duration' => NULL,
+        ),
+      ),
+    ),
+    'usanetwork_microsite_suitsinspiration_page_games' => array(
+      'template' => 'usanetwork-microsite-suitsinspiration-page-games',
+      'path' => $subtheme_path,
+      'variables' => array(
+        'page' => array(
+          'quiz_html' => NULL,
+          'nid' => NULL,
         ),
       ),
     ),

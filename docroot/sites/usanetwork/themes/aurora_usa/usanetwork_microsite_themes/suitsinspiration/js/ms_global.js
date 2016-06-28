@@ -78,7 +78,6 @@
           contentType = Drupal.behaviors.ms_global.toTitleCase(anchor),
           altContentType = null,
           specificContentName = null;
-      //usa_debug('=========== setOmnitureData(' + anchor + ', ' + contentName + '), siteName: ' + siteName + ', contentType: ' + contentType);
 
       // set section-specific overrides
       switch (anchor) {
@@ -104,18 +103,36 @@
       else omnitureArray.push(contentType); // content_type
       if (contentName) omnitureArray.push(contentName); // content_name
       if (specificContentName) omnitureArray.push(specificContentName); // specific_content_name
-      s.pageName = omnitureArray.join(joinStr);
-      s.prop3 = contentType;
-      s.prop4 = (contentType == 'Bio') ? 'Profile Page' : omnitureArray[0] + joinStr + omnitureArray[1]; // 'Profile Page' is intentional per Loretta!
-      s.prop5 = omnitureArray[0] + joinStr + omnitureArray[1] + joinStr + omnitureArray[2];
+      AdobeTracking.pageName = omnitureArray.join(joinStr); // s.pageName
+      AdobeTracking.contentType = contentType; // s.prop3
+      AdobeTracking.showSiteFeature = (contentType == 'Bio') ? 'Profile Page' : omnitureArray[0] + joinStr + omnitureArray[1]; // s.prop4 'Profile Page' is intentional per Loretta!
+      AdobeTracking.showSiteFeatureII = omnitureArray[0] + joinStr + omnitureArray[1] + joinStr + omnitureArray[2]; // s.prop5
+
       var reverseOmnitureArray = omnitureArray.reverse();
       pageName = reverseOmnitureArray.join(' | ') + ' | USANetwork';
-
       $('title').text(pageName);
+
+      usa_debug('=========== [USA DEBUG] setOmnitureData(' + anchor + ', ' + contentName + '), siteName: ' + siteName + ', contentType: ' + contentType + ', omnitureArray: ', omnitureArray);
+
+      _satellite.track('virtPageTrack');
+/*
+      var AdobeTracking = new Object();
+      AdobeTracking.division = 'Cable';
+      AdobeTracking.businessUnit = 'USA Network';
+      AdobeTracking.contentGroup = 'Drama';
+      AdobeTracking.contentType = 'Home'; // s.prop3
+      AdobeTracking.showSite = 'Suits'; // s.prop10
+      AdobeTracking.pageName = s.pageName;
+      AdobeTracking.showSiteFeature = s.prop4;
+      AdobeTracking.showSiteFeatureII = s.prop5;
+
+      _satellite.pageBottom();
 
       if (typeof s_gi != 'undefined') {
         void(s.t()); // omniture page call
       }
+*/
+
     },
 
     // ADS
@@ -183,6 +200,9 @@
 
           self.refreshAd('page-header');
           self.refreshAd('videos');
+          var style = {};
+          style.dark = '';
+          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#home-content'), style.dark);
 
           $('#video-container').addClass('active');
           var urlParts = self.parseUrl(window.location.href); // history.state['path']);

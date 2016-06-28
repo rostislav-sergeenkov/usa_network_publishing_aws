@@ -40675,8 +40675,11 @@ body.blog .view-display-id-blog_content .views-row {
 }
 
 html.no-scroll, body.no-scroll {
-  overflow-y: hidden;
+  left: 0;
+  overflow: hidden;
   position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .show-new-design {
@@ -41162,7 +41165,7 @@ html.no-scroll, body.no-scroll {
 }
 @media all and (orientation: landscape) {
   .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .menu-open-button.active {
-    margin-top: -2.27865vw;
+    margin-top: -1.60156vw;
   }
   .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:last-child {
     margin-right: 0;
@@ -41185,7 +41188,33 @@ html.no-scroll, body.no-scroll {
 }
 @media all and (orientation: landscape) and (max-width: 768px) {
   .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .logo-block {
-    margin-top: -2.27865vw;
+    margin-top: -1.60156vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
+    left: 3.20313vw;
+    height: 3.20313vw;
+    margin-top: -1.60156vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block .logo {
+    width: 7.77344vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
+    height: 3.20313vw;
+    margin-top: -1.60156vw;
+    right: 3.20313vw;
+    width: 4.55729vw;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button:before {
+    font-size: 4.55729vw;
+    line-height: 3.20313vw;
   }
 }
 @media all and (orientation: landscape) and (max-width: 768px) {
@@ -45784,7 +45813,6 @@ html.no-scroll, body.no-scroll {
 
 .show-new-design .consum-sidebar {
   box-sizing: border-box;
-  background: #121212;
   float: left;
   height: 100%;
   overflow: hidden;
@@ -45852,7 +45880,6 @@ html.no-scroll, body.no-scroll {
   max-height: none !important;
 }
 .show-new-design .consum-sidebar .advert {
-  background: #121212;
   height: 250px;
   width: 100%;
 }

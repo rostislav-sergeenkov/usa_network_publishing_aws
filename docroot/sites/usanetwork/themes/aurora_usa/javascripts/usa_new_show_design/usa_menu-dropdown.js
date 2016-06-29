@@ -54,7 +54,8 @@ var USAN = USAN || {};
         classNoScroll: 'no-scroll',
         resizeTimeOut: 50, // number ms
         durationSlideForm: 200, // number ms
-        pageOffset: 0
+        pageOffset: 0,
+        menuOpenPageOffset: 0
       };
 
       // create global options
@@ -212,7 +213,7 @@ var USAN = USAN || {};
 
     if (!_.options.isMenuOpenButtonActive) {
       _.options.isMenuOpenButtonActive = true;
-      _.options.pageYOffset = window.pageYOffset;
+      _.options.menuOpenPageOffset = window.pageYOffset;
       _.addElemClass($html, classNoScroll, null);
       _.addElemClass($body, classNoScroll, null);
       _.addElemClass($header, classHeaderMenuOpen, null);
@@ -222,8 +223,8 @@ var USAN = USAN || {};
       _.options.isMenuOpenButtonActive = false;
       _.removeElemClass($html, classNoScroll, null);
       _.removeElemClass($body, classNoScroll, null);
-      if(_.options.pageYOffset != window.pageYOffset) {
-        $('body').animate({scrollTop:_.options.pageYOffset}, 0, 'step-end', function(){
+      if(_.options.menuOpenPageOffset != window.pageYOffset) {
+        $('body').animate({scrollTop:_.options.menuOpenPageOffset}, 0, 'step-end', function(){
           _.setTimeout(function () {
             _.removeElemClass($menuOpenButton, activeClass, null);
             _.removeElemClass($mainWrap, activeClass, null);

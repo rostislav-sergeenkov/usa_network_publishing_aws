@@ -322,6 +322,9 @@
         line-height: get-vw(90px, 640);
         padding: 0 get-vw(24px, 640);
       }
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw(30px, 640);
+      }
     }
     #relevant-content-carousel {
       height: calc(100% - #{get-vw(42px, 1280)});

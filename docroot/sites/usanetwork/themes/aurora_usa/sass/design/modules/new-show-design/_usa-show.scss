@@ -66,6 +66,9 @@ html, body {
         color: $usa-section-title-color;
         font-size: get-vw(30.72px, 768);
       }
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw(30px, 640);
+      }
     }
     > a {
       bottom: get-vw(15px, 1280);
@@ -151,6 +154,9 @@ html, body {
         padding-right: get-vw(22px, 640);
         padding-top: get-vw(1.4px, 768);
       }
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw(24px, 640);
+      }
       &:before {
         display: block;
         content: '\e608';
@@ -167,6 +173,11 @@ html, body {
         @include breakpoint($bp-768-width) {
           font-size: get-vw(19.2px, 768);
           line-height: get-vw(19.2px, 768);
+        }
+
+        @include breakpoint($bp-640-width) {
+          font-size: get-vw(18px, 640);
+          line-height: get-vw(22px, 640);
         }
       }
     }
@@ -338,6 +349,9 @@ html, body {
           }
           @include breakpoint($bp-768-width) {
             font-size: get-vw(16.8px, 768);
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: get-vw(20.4px, 640);
           }
           &:hover {
             text-decoration: underline;

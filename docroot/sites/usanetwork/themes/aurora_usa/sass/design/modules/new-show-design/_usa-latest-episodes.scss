@@ -204,6 +204,9 @@
             line-height: 1.5;
             margin-right: 0;
           }
+          @include breakpoint($bp-640-width) {
+            font-size: get-vw(22px, 640);
+          }
           &:last-child {
             margin-right: 0;
           }

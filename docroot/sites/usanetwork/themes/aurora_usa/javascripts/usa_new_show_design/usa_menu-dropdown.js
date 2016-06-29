@@ -228,6 +228,8 @@ var USAN = USAN || {};
           _.setTimeout(function () {
             _.removeElemClass($menuOpenButton, activeClass, null);
             _.removeElemClass($mainWrap, activeClass, null);
+            _.addElemClass($header, 'slide-down', null);
+            _.removeElemClass($header, 'slide-up', null);
             _.removeElemClass($header, classHeaderMenuOpen, null);
             //_.checkHeaderSpacer();
           }, resizeTimeOut);

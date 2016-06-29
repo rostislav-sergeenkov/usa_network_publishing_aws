@@ -97,8 +97,10 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
     case 'usanetwork_dynamic_entity_reference_default':
 
       if ($element['#entity_type'] == 'field_collection_item') {
-        $entity = $element['#entity']->hostEntity();
-        $entity_type = $element['#entity']->hostEntityType();
+        if (!empty($element['#entity'])) {
+          $entity = $element['#entity']->hostEntity();
+          $entity_type = $element['#entity']->hostEntityType();
+        }
       }
       else {
         $entity = $element['#entity'];

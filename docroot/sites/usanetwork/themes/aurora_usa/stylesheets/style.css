@@ -40889,8 +40889,8 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 768px) {
   .show-new-design .view-more .view-more-link:before {
-    font-size: 2.8125vw;
-    line-height: 3.4375vw;
+    font-size: 2.5vw;
+    line-height: 2.5vw;
   }
 }
 .show-new-design .related-content-block {
@@ -44759,7 +44759,8 @@ html.no-scroll, body.no-scroll {
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a {
-    font-size: 1.69271vw;
+    font-size: 1.84896vw;
+    padding-right: 1.69271vw;
   }
 }
 @media (max-width: 640px) {
@@ -44789,7 +44790,7 @@ html.no-scroll, body.no-scroll {
 @media (min-width: 641px) and (max-width: 768px) {
   .usa-show-aspot .usanetwork-aspot .meta-wrap .cta-link a span:after {
     font-size: 1.26302vw;
-    margin-top: -0.63151vw;
+    margin-top: -0.79948vw;
   }
 }
 @media (max-width: 640px) {
@@ -51161,7 +51162,7 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .links > a {
-    font-size: 2.8125vw;
+    font-size: 3.25vw;
   }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:first-child,

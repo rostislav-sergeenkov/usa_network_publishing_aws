@@ -253,7 +253,7 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
     $error_message = str_replace($search, $replace, $matches[0]);
     list($form, $form_state) = ajax_get_form();
     drupal_process_form($form['#newsletter'], $form, $form_state);
-    form_set_error('', '<span class="error">' . t('%title,', array('%title' => $error_message)) . '</span>');
+    form_set_error('', '<span class="error">' . t('%title', array('%title' => $error_message)) . '</span>');
     return $form['newsletter'];
   }
 }

@@ -730,7 +730,21 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'locked' => 0,
     'module' => 'usanetwork_dynamic_entity_reference',
     'settings' => array(
-      'entity_bundles' => '',
+      'entity_bundles' => array(
+        'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
+        'media_gallery' => 'media_gallery',
+        'mpx_video_1' => 'mpx_video_1',
+        'mpx_video_2' => 'mpx_video_2',
+        'person' => 'person',
+        'post' => 'post',
+        'quiz' => 'quiz',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
+      ),
       'entity_type_ids' => array(
         'file' => 'file',
         'node' => 'node',

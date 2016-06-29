@@ -112,6 +112,13 @@
       },
       // callback when unpinned, `this` is headroom object
       onUnpin: function () {
+        var $header = _.$header,
+            menuOpen = _.options.menuOpen;
+
+        if ($header.hasClass(menuOpen)) {
+          _.removeElemClass($header, 'slide-up', null);
+          _.addElemClass($header, 'slide-down', null);
+        }
       },
       // callback when above offset, `this` is headroom object
       onTop: function () {

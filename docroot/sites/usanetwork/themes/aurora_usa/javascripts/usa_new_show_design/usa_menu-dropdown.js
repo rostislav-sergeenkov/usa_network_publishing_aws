@@ -30,6 +30,7 @@ var USAN = USAN || {};
       // default settings
       _.defaults = {
         htmlSelector: 'html',
+        bodySelector: 'body',
         headerSelector: '#header', // string
         headerSpacerSelector: '#header-spacer', // string
         topMenuBlockSelector: '.top-menu-block', // string
@@ -75,6 +76,7 @@ var USAN = USAN || {};
       // elements
       _.$html = $(_.options.htmlSelector);
       _.$body = $(document.body);
+      _.$bodySelector = $(_.options.bodySelector);
       _.$header = $(_.options.headerSelector);
       _.$headerSpacer = $(_.options.headerSpacerSelector);
       _.$mainWrap = $(element);
@@ -199,6 +201,7 @@ var USAN = USAN || {};
 
     var _ = this,
         $html = _.$html,
+        $body = _.$bodySelector,
         $header = _.$header,
         $menuOpenButton = _.$menuOpenButton,
         $mainWrap = _.$mainWrap,
@@ -211,21 +214,31 @@ var USAN = USAN || {};
       _.options.isMenuOpenButtonActive = true;
       _.options.pageYOffset = window.pageYOffset;
       _.addElemClass($html, classNoScroll, null);
+      _.addElemClass($body, classNoScroll, null);
       _.addElemClass($header, classHeaderMenuOpen, null);
       _.addElemClass($menuOpenButton, activeClass, null);
       _.addElemClass($mainWrap, activeClass, null);
     } else {
       _.options.isMenuOpenButtonActive = false;
       _.removeElemClass($html, classNoScroll, null);
-      _.setTimeout(function () {
-        if(_.options.pageYOffset != window.pageYOffset) {
-          $('body').scrollTop(_.options.pageYOffset);
-        }
-        _.removeElemClass($header, classHeaderMenuOpen, null);
-        _.removeElemClass($menuOpenButton, activeClass, null);
-        _.removeElemClass($mainWrap, activeClass, null);
-        _.checkHeaderSpacer();
-      }, resizeTimeOut);
+      _.removeElemClass($body, classNoScroll, null);
+      if(_.options.pageYOffset != window.pageYOffset) {
+        $('body').animate({scrollTop:_.options.pageYOffset}, 0, 'step-end', function(){
+          _.setTimeout(function () {
+            _.removeElemClass($menuOpenButton, activeClass, null);
+            _.removeElemClass($mainWrap, activeClass, null);
+            _.removeElemClass($header, classHeaderMenuOpen, null);
+            //_.checkHeaderSpacer();
+          }, resizeTimeOut);
+        });
+      } else {
+        _.setTimeout(function () {
+          _.removeElemClass($header, classHeaderMenuOpen, null);
+          _.removeElemClass($menuOpenButton, activeClass, null);
+          _.removeElemClass($mainWrap, activeClass, null);
+          //_.checkHeaderSpacer();
+        }, resizeTimeOut);
+      }
     }
   };
 

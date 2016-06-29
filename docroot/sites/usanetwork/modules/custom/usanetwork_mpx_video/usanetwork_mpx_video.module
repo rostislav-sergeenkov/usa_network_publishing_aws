@@ -20,6 +20,7 @@ define('USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL', 10);
 define("USA_MPX_VIDEO_FULL_VIDEO", "Full Episodes");
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 define('USA_MPX_ACCOUNT_NAME', 'NBCU USA Network');
+define('USA_MPX_TVE_ACCOUNT_NAME', 'NBCU TVE - USA Network');
 define('USA_MPX_IMAGE_SIZE', '1080');
 define('USA_GLOBAL_PLAYER_ID', 'qRe1IXDE_V0F');
 
@@ -77,6 +78,14 @@ function usanetwork_mpx_video_menu() {
     'page arguments' => array('_usanetwork_mpx_watchwith_admin_form'),
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_mpx_video.admin.inc',
+  );
+
+  $items['v/%'] = array(
+    'title' => 'Video Page',
+    'description' => 'MPX Media GUID Redirect',
+    'page callback' => '_usanetwork_mpx_media_guid_redirect',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
   );
 
   return $items;
@@ -3258,4 +3267,19 @@ function usanetwork_mpx_video_form_alter(&$form, &$form_state, $form_id) {
       ),
     );
   }
+}
+
+/*
+ * Redirect for MPX by v/file_guid
+ */
+function _usanetwork_mpx_media_guid_redirect($guid) {
+  $tve_account_id = db_select('mpx_accounts', 'ma')
+    ->fields('ma', array('id'))
+    ->condition('import_account', rawurlencode(USA_MPX_TVE_ACCOUNT_NAME), 'LIKE')
+    ->execute()
+    ->fetchField();
+  $account =  _media_theplatform_mpx_get_account_data($tve_account_id);
+  $files = media_theplatform_mpx_get_files_by_guid($guid, $account);
+  $file = reset($files);
+  drupal_goto(url('file/' . $file->fid));
 }

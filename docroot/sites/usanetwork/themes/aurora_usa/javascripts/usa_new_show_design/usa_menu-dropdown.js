@@ -226,6 +226,7 @@ var USAN = USAN || {};
       if(_.options.menuOpenPageOffset != window.pageYOffset) {
         $('body').animate({scrollTop:_.options.menuOpenPageOffset}, 0, 'step-end', function(){
           _.setTimeout(function () {
+            console.info('animationCallback');
             _.removeElemClass($menuOpenButton, activeClass, null);
             _.removeElemClass($mainWrap, activeClass, null);
             _.addElemClass($header, 'slide-down', null);

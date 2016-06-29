@@ -200,7 +200,14 @@
 
           self.refreshAd('page-header');
           self.refreshAd('videos');
-          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#home-content'), 'light');
+          var style = {
+            bleed: 'bleed',
+            dark: 'dark',
+            darkMenu: 'dark-menu',
+            light: 'light',
+            light_stacked: 'light-stacked'
+          };
+          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#home-content'), style.light);
 
           $('#video-container').addClass('active');
           var urlParts = self.parseUrl(window.location.href); // history.state['path']);

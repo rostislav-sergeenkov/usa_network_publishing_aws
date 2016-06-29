@@ -235,7 +235,8 @@
             padding: 0 22.5px 0 0;
           }
           @include breakpoint($between-641-768) {
-            font-size: get-vw(13px, 768);
+            font-size: get-vw(14.2px, 768);
+            padding-right: get-vw(13px, 768);
           }
           @include breakpoint($bp-640-width) {
             font-size: get-vw(16px, 640);
@@ -259,7 +260,7 @@
               }
               @include breakpoint($between-641-768) {
                 font-size: get-vw(9.7px, 768);
-                margin-top: get-vw(-4.85px, 768);
+                margin-top: get-vw(-6.14px, 768);
               }
               @include breakpoint($bp-640-width) {
                 font-size: get-vw(12px, 640);

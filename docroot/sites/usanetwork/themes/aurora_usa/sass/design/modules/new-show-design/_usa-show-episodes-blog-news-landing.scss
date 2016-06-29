@@ -429,7 +429,7 @@
               text-align: left;
             }
             @include breakpoint($bp-640-width) {
-              font-size: get-vw(18px, 640);
+              font-size: get-vw(20.8px, 640);
             }
             &:first-child {
               margin-bottom: get-vw(30px, 1280);

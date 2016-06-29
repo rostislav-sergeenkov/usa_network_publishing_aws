@@ -41159,6 +41159,97 @@ html.no-scroll, body.no-scroll {
     max-height: calc(100vh - 2px - 26.5625vw);
   }
 }
+@media all and (orientation: portrait) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block {
+    height: 5.85938vw;
+  }
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:last-child {
+    margin-right: 0;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet.menu-open:not(.off-elements) #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    max-height: calc(100vh - 96px - 2px - 13.93229vw);
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet.menu-open.off-elements #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    max-height: calc(100vh - 2px - 13.93229vw);
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .top-menu-block-inner {
+    padding: 0.78125vw 0 1.04167vw;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block {
+    width: 25vw;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .title-block .title {
+    height: 3.90625vw;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .logo-block {
+    left: 2.86458vw;
+    height: 2.36979vw;
+    margin-top: calc(1.54948vw);
+    top: 0;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .logo-block .logo {
+    width: 5.72917vw;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .menu-open-button {
+    height: 3.51563vw;
+    margin-top: calc(0.97656vw);
+    right: 1.69271vw;
+    top: 0;
+    width: 3.51563vw;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu.active .top-menu-block .menu-open-button:before {
+    font-size: 3.51563vw;
+    line-height: 3.51563vw;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .tune-in {
+    padding-top: 0.78125vw;
+    font-size: 1.5625vw;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    font-size: 2.34375vw;
+    padding: 2.08333vw 2.86458vw 1.82292vw;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .hashtag {
+    font-size: 1.82292vw;
+    line-height: 5.85938vw;
+    padding-right: 3.90625vw;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a {
+    margin-right: 1.69271vw;
+  }
+}
+@media all and (orientation: portrait) and (max-width: 768px) {
+  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block .social-icons a:before {
+    font-size: 2.86458vw;
+    line-height: 5.85938vw;
+  }
+}
 .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab:not(.show-menu-scroll-end):after {
   display: block;
 }

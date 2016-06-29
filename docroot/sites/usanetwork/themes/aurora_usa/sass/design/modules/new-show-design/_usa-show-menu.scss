@@ -40,6 +40,136 @@
       }
     }
 
+    &.tablet {
+      @media all and (orientation: portrait) {
+        &.menu-open {
+          &:not(.off-elements) {
+            #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+              .bottom-menu-block {
+                .show-menu-tab {
+                  .show-menu {
+                    @include breakpoint($bp-768-width) {
+                      max-height: calc(100vh - 96px - 2px - #{get-vw(14px, 768) + get-vw(30px, 768) + get-vw(18px, 768) + get-vw(45px, 768)});
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &.off-elements {
+            #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+              .bottom-menu-block {
+                .show-menu-tab {
+                  .show-menu {
+                    @include breakpoint($bp-768-width) {
+                      max-height: calc(100vh - 2px - #{get-vw(14px, 768) + get-vw(30px, 768) + get-vw(18px, 768) + get-vw(45px, 768)});
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+          &.active {
+            .top-menu-block {
+              .top-menu-block-inner {
+                @include breakpoint($bp-768-width) {
+                  padding: get-vw(6px, 768) 0 get-vw(8px, 768);
+                }
+              }
+              .title-block {
+                @include breakpoint($bp-768-width) {
+                  width: get-vw(192px, 768);
+                }
+                .title {
+                  @include breakpoint($bp-768-width) {
+                    height: get-vw(30px, 768);
+                  }
+                }
+              }
+              .logo-block {
+                @include breakpoint($bp-768-width) {
+                  left: get-vw(22px, 768);
+                  height: get-vw(18.2px, 768);
+                  margin-top: calc(#{get-vw(6px, 768) + (get-vw(30px, 768) - get-vw(18.2px, 768))/2});
+                  top: 0;
+                }
+                .logo {
+                  @include breakpoint($bp-768-width) {
+                    width: get-vw(44px, 768);
+                  }
+                }
+              }
+              .menu-open-button {
+                @include breakpoint($bp-768-width) {
+                  height: get-vw(27px, 768);
+                  margin-top: calc(#{get-vw(6px, 768) + (get-vw(30px, 768) - get-vw(27px, 768))/2});
+                  right: get-vw(13px, 768);
+                  top: 0;
+                  width: get-vw(27px, 768);
+                }
+                &:before {
+                  @include breakpoint($bp-768-width) {
+                    font-size: get-vw(27px, 768);
+                    line-height: get-vw(27px, 768);
+                  }
+                }
+              }
+            }
+          }
+          .top-menu-block {
+            .tune-in {
+              @include breakpoint($bp-768-width) {
+                padding-top: get-vw(6px, 768);
+                font-size: get-vw(12px, 768);
+              }
+            }
+          }
+          .bottom-menu-block {
+            .show-menu-tab {
+              .show-menu {
+                .show-menu-item {
+                  a {
+                    @include breakpoint($bp-768-width) {
+                      font-size: get-vw(18px, 768);
+                      padding: get-vw(16px, 768) get-vw(22px, 768) get-vw(14px, 768);
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .social-block {
+            height: get-vw(45px, 768);
+            .hashtag {
+              @include breakpoint($bp-768-width) {
+                font-size: get-vw(14px, 768);
+                line-height: get-vw(45px, 768);
+                padding-right: get-vw(30px, 768);
+              }
+            }
+            .social-icons {
+              a {
+                @include breakpoint($bp-768-width) {
+                  margin-right: get-vw(13px, 768);
+                }
+                &:last-child {
+                  margin-right: 0;
+                }
+                &:before {
+                  @include breakpoint($bp-768-width) {
+                    font-size: get-vw(22px, 768);
+                    line-height: get-vw(45px, 768);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     &.smartphone {
       #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
         .bottom-menu-block {

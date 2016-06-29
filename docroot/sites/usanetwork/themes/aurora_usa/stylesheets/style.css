@@ -40604,6 +40604,18 @@ body.blog .view-display-id-blog_content .views-row {
   overflow: hidden;
   height: 100%;
 }
+.show-new-design #header.menu-open.slide-down {
+  -webkit-animation-name: slideDown;
+  -moz-animation-name: slideDown;
+  -o-animation-name: slideDown;
+  animation-name: slideDown;
+}
+.show-new-design #header.menu-open.slide-up {
+  -webkit-animation-name: slideDown;
+  -moz-animation-name: slideDown;
+  -o-animation-name: slideDown;
+  animation-name: slideDown;
+}
 .show-new-design #header.usa-sticky-header-initialized {
   position: absolute;
 }
@@ -41145,16 +41157,6 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 768px) {
   .show-new-design #header.menu-open.off-elements #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
     max-height: calc(100vh - 2px - 26.5625vw);
-  }
-}
-@media all and (orientation: portrait) {
-  .show-new-design #header.usa-sticky-header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
-    height: calc((100vh - 30.46875vw) - 4px);
-  }
-}
-@media all and (orientation: portrait) {
-  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab {
-    height: calc((100vh - 30.46875vw) - 124px);
   }
 }
 .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab:not(.show-menu-scroll-end):after {
@@ -50957,7 +50959,7 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 640px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    font-size: 4.6875vw;
+    font-size: 3.125vw;
     padding: 3.125vw 4.6875vw;
   }
 }
@@ -51397,11 +51399,6 @@ html.no-scroll, body.no-scroll {
   border: 1px solid;
   display: inline-block;
   vertical-align: middle;
-}
-@media (max-width: 640px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons > div a {
-    padding: 3.125vw 0;
-  }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links {
   float: right;

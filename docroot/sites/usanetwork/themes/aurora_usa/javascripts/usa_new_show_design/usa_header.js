@@ -112,6 +112,7 @@
       },
       // callback when unpinned, `this` is headroom object
       onUnpin: function () {
+        console.info('slideUp');
       },
       // callback when above offset, `this` is headroom object
       onTop: function () {

@@ -40604,6 +40604,18 @@ body.blog .view-display-id-blog_content .views-row {
   overflow: hidden;
   height: 100%;
 }
+.show-new-design #header.menu-open.slide-down {
+  -webkit-animation-name: slideDown;
+  -moz-animation-name: slideDown;
+  -o-animation-name: slideDown;
+  animation-name: slideDown;
+}
+.show-new-design #header.menu-open.slide-up {
+  -webkit-animation-name: slideDown;
+  -moz-animation-name: slideDown;
+  -o-animation-name: slideDown;
+  animation-name: slideDown;
+}
 .show-new-design #header.usa-sticky-header-initialized {
   position: absolute;
 }

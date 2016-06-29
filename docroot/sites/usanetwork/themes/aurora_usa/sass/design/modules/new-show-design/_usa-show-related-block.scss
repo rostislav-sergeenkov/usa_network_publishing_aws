@@ -54,7 +54,7 @@
   }
   .title-block {
     background-color: $tve-modalFooter;
-    border-bottom: 4px solid;
+    border-bottom: 2px solid;
     @include breakpoint($bp-768-width) {
       background-color: $tve-modalBorder;
     }
@@ -78,7 +78,7 @@
         color: $tve-select;
         padding-bottom: get-vw(27px, 640);
         padding-top: get-vw(36px, 640);
-        font-size: get-vw(28px, 640);
+        font-size: get-vw(30.72px, 768);
       }
     }
   }

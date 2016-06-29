@@ -39,33 +39,7 @@
         }
       }
     }
-
-    &.usa-sticky-header {
-      &.tablet {
-        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
-          .bottom-menu-block {
-            .show-menu-tab {
-              @media all and (orientation: portrait) {
-                height: calc((100vh - #{get-vw(86px, 768) + get-vw(30px, 768) + get-vw(33px, 768) + get-vw(57px, 768) + get-vw(10px, 768) + get-vw(18px, 768)}) - 4px);
-              }
-            }
-          }
-        }
-      }
-    }
-
-    &.tablet {
-      #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
-        .bottom-menu-block {
-          .show-menu-tab {
-            @media all and (orientation: portrait) {
-
-              height: calc((100vh - #{get-vw(86px, 768) + get-vw(30px, 768) + get-vw(33px, 768) + get-vw(57px, 768) + get-vw(10px, 768) + get-vw(18px, 768)}) - 124px);
-            }
-          }
-        }
-      }
-    }
+    
     &.smartphone {
       #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
         .bottom-menu-block {
@@ -139,29 +113,53 @@
               }
               .logo-block {
                 @include breakpoint($bp-768-width) {
-                  margin-top: get-vw(-17.5px, 768);
+                  margin-top: get-vw(-12.3px, 768);
                 }
               }
               .menu-open-button.active {
-                margin-top: get-vw(-17.5px, 768);
+                margin-top: get-vw(-12.3px, 768);
               }
             }
           }
           .top-menu-block {
+            .logo-block {
+              @include breakpoint($bp-768-width) {
+                left: get-vw(24.6px, 768);
+                height: get-vw(24.6px, 768);
+                margin-top: get-vw(-12.3px, 768);
+              }
+              .logo {
+                @include breakpoint($bp-768-width) {
+                  width: get-vw(59.7px, 768);
+                }
+              }
+            }
+            .menu-open-button {
+              @include breakpoint($bp-768-width) {
+                height: get-vw(24.6px, 768);
+                margin-top: get-vw(-12.3px, 768);
+                right: get-vw(24.6px, 768);
+                width: get-vw(35px, 768);
+              }
+              &:before {
+                @include breakpoint($bp-768-width) {
+                  font-size: get-vw(35px, 768);
+                  line-height: get-vw(24.6px, 768);
+                }
+              }
+            }
             .top-menu-block-inner {
               @include breakpoint($bp-768-width) {
                 padding: get-vw(20px, 768) 0 get-vw(21.5px, 768);
               }
             }
             .title-block {
-              &.show-mrrobot {
+              @include breakpoint($bp-768-width) {
+                width: get-vw(348px, 1280);
+              }
+              .title {
                 @include breakpoint($bp-768-width) {
-                  width: get-vw(348px, 1280);
-                }
-                .title {
-                  @include breakpoint($bp-768-width) {
-                    height: get-vw(54.52px, 1280);
-                  }
+                  height: get-vw(54.52px, 1280);
                 }
               }
             }
@@ -415,7 +413,7 @@
         }
         .logo {
           float: left;
-          width: get-vw(56px, 1280);
+          width: get-vw(71px, 1600);
           @include breakpoint($bp-min-1601-width) {
             width: 71px;
           }
@@ -430,10 +428,25 @@
       .title-block {
         margin: 0 auto;
         position: relative;
+        width: get-vw(348px, 1280);
+        @include breakpoint($bp-min-1601-width) {
+          width: 435px;
+        }
+        @include breakpoint($bp-768-width) {
+          width: get-vw(372px, 768);
+        }
         .title {
+          height: get-vw(54.52px, 1280);
           margin: 0 auto;
+          overflow: hidden;
           position: relative;
           width: 100%;
+          @include breakpoint($bp-min-1601-width) {
+            height: 68.15px;
+          }
+          @include breakpoint($bp-768-width) {
+            height: get-vw(57px, 768);
+          }
         }
         a {
           //background-size: 100% 100%;
@@ -468,28 +481,6 @@
             font-size: get-vw(18px, 768);
             line-height: 1;
           }
-        }
-        &.show-mrrobot {
-          width: get-vw(348px, 1280);
-          @include breakpoint($bp-min-1601-width) {
-            width: 435px;
-          }
-          @include breakpoint($bp-768-width) {
-            width: get-vw(372px, 768);
-          }
-          .title {
-            height: get-vw(54.52px, 1280);
-            overflow: hidden;
-            @include breakpoint($bp-min-1601-width) {
-              height: 68.15px;
-            }
-            @include breakpoint($bp-768-width) {
-              height: get-vw(57px, 768);
-            }
-          }
-          //a {
-          //background-image: url('../images/mr-robot-logo.png');
-          //}
         }
       }
       .menu-open-button {
@@ -622,6 +613,11 @@
               }
               &:not(:hover):not(.active) {
                 color: white !important;
+              }
+              &:not(.active) {
+                @include breakpoint($bp-768-width) {
+                  color: white !important;
+                }
               }
             }
           }

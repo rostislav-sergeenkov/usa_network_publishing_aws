@@ -29,7 +29,8 @@
         // name classes
         stickyHeaderClass: 'usa-sticky-header',
         animatedHeaderClass: 'animated',
-        adOffHeaderClass: 'off-elements', // string
+        adOffHeaderClass: 'off-elements',
+        menuOpen: 'menu-open',// string
 
         additionalMode: {},
 
@@ -42,7 +43,8 @@
         callBackInitStickyHeader: '',
         callBackOffStickyHeader: '',
         callBackOnScroll: '',
-        callBackOnResize: ''
+        callBackOnResize: '',
+        callBackOnOrientationchange: ''
       };
 
       // create global options
@@ -114,6 +116,13 @@
       // callback when above offset, `this` is headroom object
       onTop: function () {
         console.info('onTop');
+
+        var $header = _.$header,
+            menuOpen = _.options.menuOpen;
+
+        if ($header.hasClass(menuOpen)) {
+          return false;
+        }
         if (_.options.isInitStickyHeader) {
           _.resetStickyHeader();
         }
@@ -220,7 +229,13 @@
   usaStickyHeader.prototype.setHeaderSpacerHeight = function (height) {
 
     var _ = this,
-        $headerSpacer = _.$headerSpacer;
+        $header = _.$header,
+        $headerSpacer = _.$headerSpacer,
+        menuOpen = _.options.menuOpen;
+
+    if ($header.hasClass(menuOpen)) {
+      return false;
+    }
 
     $headerSpacer.css({
       display: 'block',
@@ -257,12 +272,11 @@
     _.options.isInitStickyHeader = false;
 
     _.removeElemClass($header, _.options.adOffHeaderClass, null);
-
     _.setTimeout(function () {
       _.removeElemClass($header, _.options.stickyHeaderClass, null);
       _.removeElemClass($header, _.options.animatedHeaderClass, null);
-      $header.attr('style', '');
       _.updateHeaderSpacerHeight();
+      $header.attr('style', '');
       if (typeof _.options.callBackOffStickyHeader === 'function') {
         _.options.callBackOffStickyHeader();
       }
@@ -290,25 +304,32 @@
         $header = _.$header;
 
     $(window)
-        .bind('scroll', function (e) {
+      .bind('scroll', function (e) {
 
-          var $window = this;
+        var $window = this,
+            menuOpen = _.options.menuOpen;
 
-          if ($window.pageYOffset > _.options.headerHeight && !_.options.isInitStickyHeader) {
-            _.initStickyHeader();
-          } else if ($window.pageYOffset <= _.options.headerHeight && _.options.isInitStickyHeader) {
-            _.showHeaderOffElements();
-          } else if ($window.pageYOffset > _.options.headerHeight && _.options.isInitStickyHeader) {
-            _.hideHeaderOffElements();
-          }
+        if ($header.hasClass(menuOpen)) {
+          return false;
+        }
 
-          _.options.pageYOffset = $window.pageYOffset;
+        if ($window.pageYOffset > _.options.headerHeight && !_.options.isInitStickyHeader) {
+          _.initStickyHeader();
+        } else if ($window.pageYOffset <= _.options.headerHeight && _.options.isInitStickyHeader) {
+          _.showHeaderOffElements();
+        } else if ($window.pageYOffset > _.options.headerHeight && _.options.isInitStickyHeader) {
+          _.hideHeaderOffElements();
+        }
 
-          if (typeof _.options.callBackOnScroll === 'function') {
-            _.options.callBackOnScroll();
-          }
-        })
-        .bind('resize', function (e) {
+        _.options.pageYOffset = $window.pageYOffset;
+
+        if (typeof _.options.callBackOnScroll === 'function') {
+          _.options.callBackOnScroll();
+        }
+      })
+      .bind('resize', function (e) {
+
+        if(!_.options.isMobileDevice) {
 
           var $window = this;
 
@@ -320,7 +341,22 @@
           if (typeof _.options.callBackOnResize === 'function') {
             _.options.callBackOnResize();
           }
-        });
+
+        }
+      })
+      .bind('orientationchange', function(e){
+
+        var $window = this;
+
+        _.setTimeout(function () {
+          _.updateOptionsVal();
+          _.setHeaderSpacerHeight(_.options.headerHeight);
+        }, 150);
+
+        if (typeof _.options.callBackOnOrientationchange === 'function') {
+          _.options.callBackOnOrientationchange();
+        }
+      });
   };
 
   //---------------------------
@@ -334,12 +370,14 @@
         initHeaderClass = _.options.initHeaderClass;
 
     if (creation && !_.$header.hasClass(initHeaderClass)) {
-      _.$header.addClass(initHeaderClass);
-      _.updateOptionsVal();
-      _.checkHeaderSpacer();
-      _.setHeaderSpacerHeight(_.options.headerHeight);
-      _.usaHeadroom.init();
-      _.addEvents();
+      _.setTimeout(function () {
+        _.$header.addClass(initHeaderClass);
+        _.updateOptionsVal();
+        _.checkHeaderSpacer();
+        _.setHeaderSpacerHeight(_.options.headerHeight);
+        _.usaHeadroom.init();
+        _.addEvents();
+      }, 150);
     }
   };
 

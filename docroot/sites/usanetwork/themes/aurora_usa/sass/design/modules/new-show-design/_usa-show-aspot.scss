@@ -316,7 +316,7 @@
         padding: 0 12.5px;
       }
       @include breakpoint($bp-768-width) {
-        font-size: get-vw(30px, 640);
+        font-size: get-vw(30.72px, 768);
         height: get-vw(90px, 640);
         line-height: get-vw(90px, 640);
         padding: 0 get-vw(24px, 640);

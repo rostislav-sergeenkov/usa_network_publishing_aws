@@ -222,7 +222,7 @@
     &.menu-open {
       position: fixed !important;
       overflow: hidden;
-      height: 100vh;
+      height: 100%;
     }
 
     &.usa-sticky-header-initialized {
@@ -233,19 +233,19 @@
       left: 0;
       top: -100%;
       position: fixed;
-
-      &.slide-down {
-        -webkit-animation-name: slideDown;
-        -moz-animation-name: slideDown;
-        -o-animation-name: slideDown;
-        animation-name: slideDown;
-      }
-
-      &.slide-up {
-        -webkit-animation-name: slideUp;
-        -moz-animation-name: slideUp;
-        -o-animation-name: slideUp;
-        animation-name: slideUp;
+      &:not(.menu-open) {
+        &.slide-down {
+          -webkit-animation-name: slideDown;
+          -moz-animation-name: slideDown;
+          -o-animation-name: slideDown;
+          animation-name: slideDown;
+        }
+        &.slide-up {
+          -webkit-animation-name: slideUp;
+          -moz-animation-name: slideUp;
+          -o-animation-name: slideUp;
+          animation-name: slideUp;
+        }
       }
     }
 
@@ -274,6 +274,9 @@
       width: 100%;
       @include breakpoint($bp-min-1601-width) {
         width: 1600px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: 100%;
       }
       @include transition(all 0.2s linear 0s);
     }

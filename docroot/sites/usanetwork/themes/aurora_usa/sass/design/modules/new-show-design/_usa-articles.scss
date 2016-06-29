@@ -48,9 +48,6 @@
       padding: 0;
       position: relative;
       width: 100%;
-      @include breakpoint($bp-768-width) {
-        border-bottom: 4px solid;
-      }
       &.sponsored-enable {
         .title {
           padding: get-vw(30px, 1280) 0 get-vw(17px, 1280);
@@ -84,8 +81,9 @@
             right: 0;
             top: 2px;
             width: auto;
-            @include breakpoint($bp-768-width) {
-              top: 4px;
+            @include breakpoint($bp-480-width) {
+              max-height: calc(100% - 4px);
+              top: 2px;
             }
           }
         }

@@ -2414,7 +2414,7 @@
         }
         @include breakpoint($bp-768-width) {
           color: $usa-bcd-title;
-          font-size: get-vw(22px, 640);
+          font-size: get-vw(20.89px, 768);
           line-height: 1.2;
           margin: 0;
           max-height: get-vw(139px, 640);
@@ -2578,7 +2578,7 @@
         }
         @include breakpoint($bp-768-width) {
           color: $usa-bcd-title;
-          font-size: get-vw(27.2px, 640);
+          font-size: get-vw(20.89px, 768);
         }
       }
       .additional {
@@ -2766,7 +2766,7 @@
         }
         @include breakpoint($bp-768-width) {
           color: $usa-bcd-title;
-          font-size: get-vw(27.2px, 640);
+          font-size: get-vw(20.89px, 768);
         }
       }
       .additional {
@@ -3091,7 +3091,7 @@
           margin: 0 0 6.25px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(28px, 640);
+          font-size: get-vw(20.89px, 768);
           margin: 0 0 get-vw(5px, 768);
         }
         a {
@@ -3111,7 +3111,7 @@
           font-size: 17.5px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(16px, 640);
+          font-size: get-vw(15.36px, 768);
         }
       }
       .caption {
@@ -3119,7 +3119,7 @@
         color: $usa-articles-color;
         font-family: $open-sans-regular;
         font-size: get-vw(18px, 1280);
-        line-height: 1.2;
+        line-height: 1.4;
         text-overflow: ellipsis;
         text-transform: none;
         white-space: normal;
@@ -3137,7 +3137,7 @@
           max-height: 85px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(24px, 640);
+          font-size: get-vw(17.28px, 768);
           max-height: get-vw(57.6px, 640)!important;
         }
       }
@@ -3241,7 +3241,7 @@
       }
       @include breakpoint($bp-768-width) {
         color: $usa-bcd-title;
-        font-size: get-vw(22px, 640);
+        font-size: get-vw(20.89px, 768);
         line-height: 1.2;
         max-height: get-vw(139px, 640);
         text-transform: none;
@@ -3261,7 +3261,7 @@
         line-height: calc(18.75px * 1.3);
       }
       @include breakpoint($bp-768-width) {
-        font-size: get-vw(14px, 640);
+        font-size: get-vw(15.36px, 768);
         line-height: calc(#{get-vw(14px, 640)} * 1.3);
         white-space: normal;
       }
@@ -3311,7 +3311,7 @@
         margin-bottom: 17.5px;
       }
       @include breakpoint($bp-768-width) {
-        font-size: get-vw(28px, 640);
+        font-size: get-vw(20.89px, 768);
         margin-bottom: 0;
       }
     }

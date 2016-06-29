@@ -819,6 +819,7 @@ function _usanetwork_is_full_video_exists($show) {
   $query->fields('fm', array('fid'));
   $query->condition('fm.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
   $query->join('mpx_video', 'mpx_video', 'fm.fid=mpx_video.fid');
+  $query->condition('mpx_video.expiration_date', time(), '>');
   $query->condition('mpx_video.status', FILE_PUBLISHED);
   $query->join('field_data_field_show', 'field_show', 'fm.fid=field_show.entity_id');
   $query->condition('field_show.field_show_target_id', $show->nid);

@@ -31,6 +31,7 @@ var USAN = USAN || {};
       _.defaults = {
         htmlSelector: 'html',
         headerSelector: '#header', // string
+        headerSpacerSelector: '#header-spacer', // string
         topMenuBlockSelector: '.top-menu-block', // string
         bottomMenuBlockSelector: '.bottom-menu-block', // string
         socialBlockSelector: '.social-block', // string
@@ -51,7 +52,8 @@ var USAN = USAN || {};
         classShowMenuScrollEnd: 'show-menu-scroll-end',
         classNoScroll: 'no-scroll',
         resizeTimeOut: 50, // number ms
-        durationSlideForm: 200 // number ms
+        durationSlideForm: 200, // number ms
+        pageOffset: 0
       };
 
       // create global options
@@ -74,6 +76,7 @@ var USAN = USAN || {};
       _.$html = $(_.options.htmlSelector);
       _.$body = $(document.body);
       _.$header = $(_.options.headerSelector);
+      _.$headerSpacer = $(_.options.headerSpacerSelector);
       _.$mainWrap = $(element);
       _.$topMenuBlock = _.$mainWrap.find(_.options.topMenuBlockSelector);
       _.$bottomMenuBlock = _.$mainWrap.find(_.options.bottomMenuBlockSelector);
@@ -128,6 +131,27 @@ var USAN = USAN || {};
 
   };
 
+  usaShowMenu.prototype.checkHeaderSpacer = function () {
+    var _ = this,
+        $headerHeight = _.$header.innerHeight(),
+        $headerSpacerHeight = _.$headerSpacer.innerHeight();
+
+    if ($headerSpacerHeight != $headerHeight) {
+      _.setHeaderSpacerHeight($headerHeight);
+    }
+  };
+
+  usaShowMenu.prototype.setHeaderSpacerHeight = function (height) {
+
+    var _ = this,
+        $headerSpacer = _.$headerSpacer;
+
+    $headerSpacer.css({
+      display: 'block',
+      height: height + 'px'
+    });
+  };
+
   // scroll events
   usaShowMenu.prototype.getScrollDirection = function (newYOffset) {
     // newYOffset - window.pageYOffset
@@ -180,10 +204,12 @@ var USAN = USAN || {};
         $mainWrap = _.$mainWrap,
         classHeaderMenuOpen = _.options.classHeaderMenuOpen,
         classNoScroll = _.options.classNoScroll,
+        resizeTimeOut = _.options.resizeTimeOut,
         activeClass = _.options.activeClass;
 
     if (!_.options.isMenuOpenButtonActive) {
       _.options.isMenuOpenButtonActive = true;
+      _.options.pageYOffset = window.pageYOffset;
       _.addElemClass($html, classNoScroll, null);
       _.addElemClass($header, classHeaderMenuOpen, null);
       _.addElemClass($menuOpenButton, activeClass, null);
@@ -191,9 +217,15 @@ var USAN = USAN || {};
     } else {
       _.options.isMenuOpenButtonActive = false;
       _.removeElemClass($html, classNoScroll, null);
-      _.removeElemClass($header, classHeaderMenuOpen, null);
-      _.removeElemClass($menuOpenButton, activeClass, null);
-      _.removeElemClass($mainWrap, activeClass, null);
+      _.setTimeout(function () {
+        if(_.options.pageYOffset != window.pageYOffset) {
+          $('body').scrollTop(_.options.pageYOffset);
+        }
+        _.removeElemClass($header, classHeaderMenuOpen, null);
+        _.removeElemClass($menuOpenButton, activeClass, null);
+        _.removeElemClass($mainWrap, activeClass, null);
+        _.checkHeaderSpacer();
+      }, resizeTimeOut);
     }
   };
 
@@ -255,7 +287,7 @@ var USAN = USAN || {};
     _.options.isMenuCustomScrollActive = true;
 
     $showMenu.mCustomScrollbar({
-      scrollInertia: 200,
+      scrollInertia: 0,
       axis: 'y',
       autoHideScrollbar: false,
       documentTouchScroll: false,
@@ -329,10 +361,10 @@ var USAN = USAN || {};
 
           _.getScrollDirection($window.pageYOffset);
 
-          if (_.options.customScrollend) {
-            /*if (_.options.isMenuOpenButtonActive) {
+          /*if (_.options.customScrollend) {
+            if (_.options.isMenuOpenButtonActive) {
               _.initMenuOpenHandler();
-            }*/
+            }
 
             if (_.options.isMenuSignUplinkActive) {
               _.initSignUpFormHandler();
@@ -348,7 +380,7 @@ var USAN = USAN || {};
             if (_.options.isMenuSignUplinkActive) {
               _.initSignUpFormHandler();
             }
-          }
+          }*/
         })
         .bind('resize', function (e) {
 

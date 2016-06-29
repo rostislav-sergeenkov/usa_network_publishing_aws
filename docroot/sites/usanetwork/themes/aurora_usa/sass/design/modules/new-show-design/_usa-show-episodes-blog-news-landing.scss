@@ -362,7 +362,7 @@
                 padding: get-vw(20px, 768) get-vw(30px, 768);
               }
               @include breakpoint($bp-640-width) {
-                font-size: get-vw(30px, 640);
+                font-size: get-vw(20px, 640);
                 padding: get-vw(20px, 640) get-vw(30px, 640);
               }
               span {
@@ -687,11 +687,6 @@
               border: 1px solid;
               display: inline-block;
               vertical-align: middle;
-            }
-            a {
-              @include breakpoint($bp-640-width) {
-                padding: get-vw(20px, 640) 0;
-              }
             }
           }
         }

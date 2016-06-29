@@ -200,7 +200,7 @@
             margin-right: 28.75px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(22px, 640);
+            font-size: get-vw(19.2px, 768);
             line-height: 1.5;
             margin-right: 0;
           }

@@ -90,7 +90,7 @@
       text-align: left;
       width: 100%;
       @include breakpoint($bp-min-1025-width) {
-        border-bottom: 1px solid $tonight-section-back;
+        border-bottom: 2px solid $tonight-section-back;
       }
       @include breakpoint($bp-1024-width) {
         height: 60px;

@@ -109,6 +109,7 @@
       },
       // callback when pinned, `this` is headroom object
       onPin: function () {
+        console.info('slideDown');
       },
       // callback when unpinned, `this` is headroom object
       onUnpin: function () {

@@ -43,6 +43,7 @@
     &.tablet {
       @media all and (orientation: portrait) {
         &.menu-open {
+          background: transparent;
           &:not(.off-elements) {
             #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
               .bottom-menu-block {
@@ -69,65 +70,88 @@
               }
             }
           }
+          #header-overlay {
+            display: block;
+          }
+        }
+        #header-overlay {
+          background: black;
+          height: 100%;
+          opacity: 0.6;
+          position: absolute;
+          width: 100%;
         }
         #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
           &.active {
             .top-menu-block {
-              .top-menu-block-inner {
-                @include breakpoint($bp-768-width) {
-                  padding: get-vw(6px, 768) 0 get-vw(8px, 768);
-                }
-              }
-              .title-block {
-                @include breakpoint($bp-768-width) {
-                  width: get-vw(192px, 768);
-                }
-                .title {
-                  @include breakpoint($bp-768-width) {
-                    height: get-vw(30px, 768);
-                  }
-                }
-              }
               .logo-block {
                 @include breakpoint($bp-768-width) {
-                  left: get-vw(22px, 768);
-                  height: get-vw(18.2px, 768);
                   margin-top: calc(#{get-vw(6px, 768) + (get-vw(30px, 768) - get-vw(18.2px, 768))/2});
                   top: 0;
-                }
-                .logo {
-                  @include breakpoint($bp-768-width) {
-                    width: get-vw(44px, 768);
-                  }
                 }
               }
               .menu-open-button {
                 @include breakpoint($bp-768-width) {
-                  height: get-vw(27px, 768);
                   margin-top: calc(#{get-vw(6px, 768) + (get-vw(30px, 768) - get-vw(27px, 768))/2});
-                  right: get-vw(13px, 768);
                   top: 0;
-                  width: get-vw(27px, 768);
-                }
-                &:before {
-                  @include breakpoint($bp-768-width) {
-                    font-size: get-vw(27px, 768);
-                    line-height: get-vw(27px, 768);
-                  }
                 }
               }
             }
           }
           .top-menu-block {
+            .top-menu-block-inner {
+              @include breakpoint($bp-768-width) {
+                padding: get-vw(6px, 768) 0 get-vw(8px, 768);
+              }
+            }
+            .title-block {
+              @include breakpoint($bp-768-width) {
+                width: get-vw(192px, 768);
+              }
+              .title {
+                @include breakpoint($bp-768-width) {
+                  height: get-vw(30px, 768);
+                }
+              }
+            }
+            .logo-block {
+              @include breakpoint($bp-768-width) {
+                left: get-vw(22px, 768);
+                height: get-vw(18.2px, 768);
+                margin-top: get-vw(-9.1px, 768);
+              }
+              .logo {
+                @include breakpoint($bp-768-width) {
+                  width: get-vw(44px, 768);
+                }
+              }
+            }
             .tune-in {
               @include breakpoint($bp-768-width) {
                 padding-top: get-vw(6px, 768);
                 font-size: get-vw(12px, 768);
               }
             }
+            .menu-open-button {
+              @include breakpoint($bp-768-width) {
+                height: get-vw(27px, 768);
+                margin-top: get-vw(-13.5px, 768);
+                right: get-vw(13px, 768);
+                width: get-vw(27px, 768);
+              }
+              &:before {
+                @include breakpoint($bp-768-width) {
+                  font-size: get-vw(27px, 768);
+                  line-height: get-vw(27px, 768);
+                }
+              }
+            }
           }
           .bottom-menu-block {
             .show-menu-tab {
+              &:after {
+                display: none;
+              }
               .show-menu {
                 .show-menu-item {
                   a {

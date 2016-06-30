@@ -224,16 +224,18 @@ var USAN = USAN || {};
       _.removeElemClass($html, classNoScroll, null);
       _.removeElemClass($body, classNoScroll, null);
       if(_.options.menuOpenPageOffset != window.pageYOffset) {
-        $('body').animate({scrollTop:_.options.menuOpenPageOffset}, 0, 'step-end', function(){
-          _.setTimeout(function () {
-            console.info('animationCallback');
-            _.removeElemClass($menuOpenButton, activeClass, null);
-            _.removeElemClass($mainWrap, activeClass, null);
-            _.addElemClass($header, 'slide-down', null);
-            _.removeElemClass($header, 'slide-up', null);
-            _.removeElemClass($header, classHeaderMenuOpen, null);
-            //_.checkHeaderSpacer();
-          }, resizeTimeOut);
+        $('body').animate({scrollTop:_.options.menuOpenPageOffset + 500}, 0, 'step-end', function(){
+          $('body').animate({scrollTop:_.options.menuOpenPageOffset}, 50, 'swing', function(){
+            _.setTimeout(function () {
+              _.removeElemClass($menuOpenButton, activeClass, null);
+              _.removeElemClass($mainWrap, activeClass, null);
+              _.addElemClass($header, 'slide-down', null);
+              _.removeElemClass($header, 'slide-up', null);
+              console.info('animationCallback');
+              _.removeElemClass($header, classHeaderMenuOpen, null);
+              //_.checkHeaderSpacer();
+            }, resizeTimeOut);
+          });
         });
       } else {
         _.setTimeout(function () {

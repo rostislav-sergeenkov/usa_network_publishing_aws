@@ -75,6 +75,7 @@
 ?>
 <?php if (!isset($ajax) || empty($ajax)): ?>
   <header id="header">
+    <div id="header-overlay"></div>
     <div class="header-inner">
       <span id="site-name">
         <?php print $site_name; ?>

@@ -41,7 +41,7 @@
             padding: 18.75px 18.75px 0 18.75px;
           }
           @include breakpoint($bp-768-width) {
-            border-top: 1px solid;
+            border-top: 2px solid;
             color: white!important;
           }
           @include breakpoint($bp-640-width) {
@@ -150,7 +150,7 @@
               display: none;
             }
             @include breakpoint($between-641-768) {
-              border-bottom: 1px solid $usa-episode-item-text;
+              border-bottom: 2px solid $usa-episode-item-text;
             }
             li {
               @include breakpoint($bp-640-width) {

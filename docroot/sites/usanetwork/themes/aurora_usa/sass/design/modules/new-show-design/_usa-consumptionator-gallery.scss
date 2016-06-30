@@ -177,7 +177,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         }
         @include breakpoint($bp-640-width) {
           border-top: none;
-          border-bottom: 1px solid;
+          border-bottom: 2px solid;
           color: white!important;
           height: auto;
           line-height: 1;

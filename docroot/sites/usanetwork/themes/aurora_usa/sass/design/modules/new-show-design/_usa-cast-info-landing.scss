@@ -387,7 +387,7 @@
       }
       .providers-row-inner {
         @include clear();
-        border-bottom: 1px solid;
+        border-bottom: 2px solid;
         display: inline-block;
         padding: get-vw(30px, 1600) get-vw(60px, 1600);
         position: relative;

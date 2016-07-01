@@ -76,7 +76,8 @@ function _usanetwork_tv_show_get_episodes_block($show) {
   } else {
     $episodes = _usanetwork_tv_show_get_episodes($show);
     if (!empty($episodes)) {
-      $first_element = array_pop(array_slice($episodes, -1));
+      $array_slice = array_slice($episodes, -1);
+      $first_element = array_pop($array_slice);
       $providers = field_get_items('node', $show, 'field_where2watch_providers');
       $where2watch_links = array();
       if (!empty($providers)) {

@@ -2775,7 +2775,7 @@
           font-size: get-vw(20.89px, 768);
         }
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(27.2px, 640);
+          font-size: get-vw(13px, 375);
         }
       }
       .additional {
@@ -3267,7 +3267,7 @@
         white-space: normal;
       }
       @include breakpoint($bp-640-width) {
-          font-size: get-vw(22px, 640);
+          font-size: get-vw(13px, 375);
         }
     }
     .additional {

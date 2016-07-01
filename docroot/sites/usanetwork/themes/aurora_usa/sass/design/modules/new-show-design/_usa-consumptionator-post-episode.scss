@@ -603,7 +603,7 @@
         padding: 40px 24px 90px;
       }
       @include breakpoint($bp-640-width) {
-        border-bottom: 12px solid;
+        border-bottom: 2px solid;
         padding: 40px 0 75px;
       }
     }

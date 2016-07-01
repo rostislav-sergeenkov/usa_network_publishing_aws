@@ -12,6 +12,7 @@
   width: 3px;
   z-index: 2;
   cursor: pointer;
+  height: 2px !important;
 }
 
 .show-color {

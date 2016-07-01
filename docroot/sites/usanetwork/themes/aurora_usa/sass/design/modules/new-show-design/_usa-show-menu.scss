@@ -270,6 +270,9 @@
                 @include breakpoint($bp-768-width) {
                   max-height: 100%;
                 }
+                .mCustomScrollBox {
+                  max-height: 100%!important;
+                }
               }
             }
           }

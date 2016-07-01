@@ -250,7 +250,7 @@
                 margin: 0;
                 padding: 0;
                 @include breakpoint($bp-640-width) {
-                  font-size: get-vw(32px, 640);
+                  font-size: get-vw(38.4px, 640);
                 }
                 @include breakpoint($bp-min-1601-width) {
                   font-size: 54px;
@@ -506,7 +506,7 @@
           @include breakpoint($bp-640-width) {
             color: $poll-color;
             width: 100%;
-            font-size: get-vw(20px, 640);
+            font-size: get-vw(27.2px, 640);
           }
           h2 {
             font-size: 1.5em;

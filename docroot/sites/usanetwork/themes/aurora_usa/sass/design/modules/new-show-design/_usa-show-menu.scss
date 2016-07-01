@@ -617,8 +617,8 @@
           margin-top: -16px;
         }
         @include breakpoint($bp-1024-width) {
-          height: get-vw(21px, 1024);
-          margin-top: get-vw(-10.5px, 1024);
+          height: get-vw(20.6px, 1024);
+          margin-top: get-vw(-10.3px, 1024);
         }
         @include breakpoint($bp-768-width) {
           left: get-vw(35px, 768);

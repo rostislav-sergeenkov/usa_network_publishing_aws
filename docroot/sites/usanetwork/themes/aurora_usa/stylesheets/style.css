@@ -41398,6 +41398,9 @@ html.no-scroll, body.no-scroll {
     max-height: 100%;
   }
 }
+.show-new-design #header.smartphone.menu-open #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .mCustomScrollBox {
+  max-height: 100% !important;
+}
 .show-new-design #header.smartphone #head-leaderboard #topbanner {
   min-height: 50px;
 }

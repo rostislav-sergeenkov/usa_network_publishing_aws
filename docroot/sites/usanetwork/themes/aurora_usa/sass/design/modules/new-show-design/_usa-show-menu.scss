@@ -206,13 +206,72 @@
       }
       &.menu-open {
         &:not(.off-elements) {
+          .region-header {
+            @include breakpoint($bp-768-width) {
+              height: calc(100% - 56px);
+            }
+          }
           #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
             .bottom-menu-block {
               .show-menu-tab {
                 .show-menu {
                   @include breakpoint($bp-768-width) {
-                    max-height: calc(100vh - 56px - 2px - #{get-vw(33px, 768) + get-vw(57px, 768) + get-vw(28px, 768) + get-vw(86px, 768)});
+                    //max-height: calc(100vh - 56px - 2px - #{get-vw(33px, 768) + get-vw(57px, 768) + get-vw(28px, 768) + get-vw(86px, 768)});
                   }
+                }
+              }
+            }
+          }
+        }
+        &.off-elements {
+          .region-header {
+            @include breakpoint($bp-768-width) {
+              height: 100%;
+            }
+          }
+          #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+            .bottom-menu-block {
+              .show-menu-tab {
+                .show-menu {
+                  @include breakpoint($bp-768-width) {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+        .region-header {
+          @include breakpoint($bp-768-width) {
+            position: relative;
+          }
+        }
+        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+          @include breakpoint($bp-768-width) {
+            height: 100%;
+          }
+          .content {
+            height: 100%;
+          }
+          .bottom-menu-block {
+            height: 100%;
+            @include breakpoint($bp-768-width) {
+              max-height: calc(100% - #{get-vw(33px, 768) + get-vw(57px, 768) + get-vw(28px, 768)});
+            }
+            .bottom-menu-block-inner {
+              height: 100%;
+              position: relative;
+            }
+            .show-menu-tab {
+              @include breakpoint($bp-768-width) {
+                max-height: calc(100% - #{get-vw(86px, 768)});
+              }
+              .show-menu {
+                @include breakpoint($bp-768-width) {
+                  max-height: 100%;
+                }
+                .mCustomScrollBox {
+                  max-height: 100%!important;
                 }
               }
             }
@@ -236,7 +295,7 @@
                 .show-menu-tab {
                   .show-menu {
                     @include breakpoint($bp-768-width) {
-                      max-height: calc(100vh - 56px - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
+                      //max-height: calc(100vh - 56px - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
                     }
                   }
                 }
@@ -249,7 +308,7 @@
                 .show-menu-tab {
                   .show-menu {
                     @include breakpoint($bp-768-width) {
-                      max-height: calc(100vh - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
+                     //max-height: calc(100vh - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
                     }
                   }
                 }
@@ -325,7 +384,13 @@
             }
           }
           .bottom-menu-block {
+            @include breakpoint($bp-768-width) {
+              max-height: calc(100% - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768)})!important;
+            }
             .show-menu-tab {
+              @include breakpoint($bp-768-width) {
+                max-height: calc(100% - #{get-vw(60px, 768)})!important;
+              }
               .show-menu {
                 .show-menu-item {
                   a {

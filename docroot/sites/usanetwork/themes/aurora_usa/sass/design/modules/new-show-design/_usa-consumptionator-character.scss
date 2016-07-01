@@ -117,7 +117,7 @@
       }
       @include breakpoint ($bp-640-width) {
         padding: 56.25vw 0 0;
-        border-bottom: 8px solid;
+        border-bottom: 2px solid;
       }
       &.social-enable {
         .gallery-recap-block {

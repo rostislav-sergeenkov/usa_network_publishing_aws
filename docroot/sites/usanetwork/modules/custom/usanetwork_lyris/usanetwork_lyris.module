@@ -100,6 +100,8 @@ function _usanetwork_lyris_signup_block($additional = FALSE) {
     }
     if (isset($show)) {
       $show_wrapper = entity_metadata_wrapper('node', $show);
+      $new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show);
+      $property['new_design'] = $new_design;
       if ($show->field_show_news_letter) {
         if ($show_wrapper->field_show_news_letter->value()) {
           $property['show_title'] = $show->title;
@@ -114,7 +116,6 @@ function _usanetwork_lyris_signup_block($additional = FALSE) {
     } else {
       $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
     }
-
   }
 
   if ($content) {
@@ -133,8 +134,11 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
     '#prefix' => '<div id="newsletter_lyris_ajax_wrapper">',
     '#suffix' => '</div>',
   );
+  $label = $property['new_design']
+    ? t('Sign Up for the @show_title Mailing List', array('@show_title' => $property['show_title']))
+    : t('Sign Up for the @show_title Newsletter', array('@show_title' => $property['show_title']));
   $form['newsletter']['title'] = array(
-    '#markup' => '<label>' . t('Sign Up for the @show_title Newsletter', array('@show_title' => $property['show_title'])) . '</label>',
+    '#markup' => '<label>' . $label . '</label>',
   );
   $form['newsletter']['email'] = array(
     '#type' => 'textfield',
@@ -182,8 +186,11 @@ function usanetwork_lyris_newsletter_subscription_additional($form, $form_state,
     '#prefix' => '<div id="newsletter_lyris_ajax_wrapper_additional">',
     '#suffix' => '</div>',
   );
+  $label = $property['new_design']
+    ? t('Sign Up for the @show_title Mailing List', array('@show_title' => $property['show_title']))
+    : t('Sign Up for the @show_title Newsletter', array('@show_title' => $property['show_title']));
   $form['newsletter']['title'] = array(
-    '#markup' => '<label>' . t('Sign Up for the @show_title Newsletter', array('@show_title' => $property['show_title'])) . '</label>',
+    '#markup' => '<label>' . $label . '</label>',
   );
   $form['newsletter']['email'] = array(
     '#type' => 'textfield',

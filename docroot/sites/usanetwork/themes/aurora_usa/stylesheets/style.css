@@ -47851,6 +47851,37 @@ html.no-scroll, body.no-scroll {
     font-size: 30px;
   }
 }
+.show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before {
+  position: absolute;
+}
+.show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after {
+  background: white;
+  border-radius: 20%;
+  content: '';
+  display: block;
+  height: 30px;
+  margin-left: 1px;
+  margin-top: -7px;
+  position: absolute;
+  width: 29px;
+  z-index: -1;
+}
+@media (max-width: 1024px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after {
+    height: 25px;
+    margin-left: 2px;
+    margin-top: -5px;
+    width: 23px;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after {
+    height: 28px;
+    margin-left: 1px;
+    margin-top: -6px;
+    width: 28px;
+  }
+}
 .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container [id$='reaction0-facebook_img']:before {
   color: #3b5998;
 }
@@ -47865,6 +47896,9 @@ html.no-scroll, body.no-scroll {
 }
 .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:before, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:before, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:before, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:before, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:before {
   color: #545454;
+}
+.show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:after, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:after, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:after, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:after, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container [id$='reaction4-share_img']:after {
+  display: none;
 }
 .show-new-design.consumptionator-page .gallery-wrapper:hover .gallery-list .slide .slide-info, .show-new-design.node-type-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, .show-new-design.node-type-tv-episode .gallery-wrapper:hover .gallery-list .slide .slide-info, .show-new-design .gallery-recap-block .gallery-wrapper:hover .gallery-list .slide .slide-info, .show-new-design.node-type-consumpt-post .gallery-wrapper:hover .gallery-list .slide .slide-info, .show-new-design .node-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper:hover .gallery-list .slide .slide-info {
   display: table !important;
@@ -48444,6 +48478,12 @@ html.no-scroll, body.no-scroll {
   .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div {
     font-size: 30px;
   }
+  .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after {
+    height: 28px;
+    margin-left: 1px;
+    margin-top: -6px;
+    width: 28px;
+  }
 }
 .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .gallery-list.ready .slide, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .gallery-list.ready .slide {
   display: block;
@@ -48565,6 +48605,12 @@ html.no-scroll, body.no-scroll {
 }
 .show-new-design.node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div {
   font-size: 30px;
+}
+.show-new-design.node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after {
+  height: 28px;
+  margin-left: 1px;
+  margin-top: -6px;
+  width: 28px;
 }
 .show-new-design.node-type-post .node-media-gallery .gallery-wrapper .gallery-list.ready .slide, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-list.ready .slide, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .gallery-list.ready .slide {
   display: block;

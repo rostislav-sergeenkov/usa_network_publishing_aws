@@ -4604,12 +4604,12 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   }
 }
 .articles-block .articles-wrapper li .usa-articles-promo .meta-wrapper-inner {
-  height: 100%;
+  height: auto;
   position: relative;
   width: 100%;
 }
 .articles-block .articles-wrapper li .usa-articles-promo .meta {
-  height: 100%;
+  height: auto;
   position: relative;
   width: 100%;
 }
@@ -4684,6 +4684,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   font-family: "opensansregular", sans-serif;
   font-size: 1.40625vw;
   line-height: 1.2;
+  overflow: hidden;
   text-overflow: ellipsis;
   text-transform: none;
   white-space: normal;

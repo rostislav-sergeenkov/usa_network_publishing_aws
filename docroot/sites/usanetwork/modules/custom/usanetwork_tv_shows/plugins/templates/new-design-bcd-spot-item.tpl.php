@@ -25,7 +25,7 @@
 <?php print (!empty($image_mobile) ? $image_mobile : ''); ?>
 <?php print (!empty($position) ? $position : ''); ?>*/
 ?>
-<div class="node node-usanetwork-promo usa-bcd-carousel-promo<?php print ($position == 'first')? ' big': ''; ?>">
+<div class="node node-usanetwork-promo usa-bcd-carousel-promo<?php print ($position == 'first')? ' big': ''; ?>" data-spot-name="<?php print $bcd_type; ?>">
   <a href="<?php print !empty($url) ? $url : '#'; ?>">
     <div class="image-block">
       <?php if (($position == 'first')): ?>

@@ -66,9 +66,19 @@
             padding-bottom: get-vw(15px, 768);
           }
 
+          @include breakpoint ($bp-640-width) {
+            font-size: get-vw(25px, 640);
+            padding-bottom: get-vw(20px, 640);
+          }
+
           &:before,
           &:after {
             display: none;
+          }
+          .desktop-title {
+            @include breakpoint ($bp-640-width) {
+              display: none;
+            }
           }
         }
       }

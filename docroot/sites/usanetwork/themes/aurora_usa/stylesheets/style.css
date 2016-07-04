@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -41809,6 +41809,25 @@ html.no-scroll, body.no-scroll {
     line-height: 1;
   }
 }
+.show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
+  top: 50%;
+  position: absolute;
+}
+@media (min-width: 769px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
+    right: 1.25vw;
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
+    right: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
+    display: none;
+  }
+}
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .menu-open-button {
   background: none;
   cursor: pointer;
@@ -41869,6 +41888,26 @@ html.no-scroll, body.no-scroll {
     border-top: none;
     height: auto;
     position: absolute;
+  }
+}
+.show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block.sponsored-enable {
+  position: relative;
+}
+.show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block.sponsored-enable .show-menu-tab {
+  text-align: left;
+}
+.show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block.sponsored-enable .social-block {
+  margin-top: calc(-1.5625vw / 2);
+  top: 50%;
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block.sponsored-enable .social-block {
+    margin-top: calc(-25px / 2);
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block.sponsored-enable .social-block {
+    margin-top: 0;
   }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .bottom-menu-block-inner {

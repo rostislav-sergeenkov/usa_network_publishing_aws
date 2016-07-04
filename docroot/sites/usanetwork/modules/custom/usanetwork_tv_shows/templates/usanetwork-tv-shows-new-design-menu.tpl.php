@@ -15,7 +15,7 @@
     <div class="menu-open-button show-color show-font"></div>
   </div>
 </div>
-<div class="bottom-menu-block show-border">
+<div class="bottom-menu-block show-border <?php print (!empty($sponsored_path)) ? ' sponsored-enable' : ''; ?>">
   <div class="bottom-menu-block-inner">
     <div class="show-menu-tab">
       <?php if (!empty($show_menu_tab_items)): ?>

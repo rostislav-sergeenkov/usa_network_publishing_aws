@@ -50863,6 +50863,46 @@ html.no-scroll, body.no-scroll {
   }
 }
 
+.show-new-design.smartphone #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar {
+  height: 55px;
+}
+.show-new-design.smartphone #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar .title {
+  display: none !important;
+}
+.show-new-design.smartphone #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar .item-filter {
+  right: 5%;
+  width: 90%;
+  max-width: none;
+}
+.show-new-design.smartphone #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar .item-filter.open {
+  right: 50%;
+  margin-right: -125px;
+  max-width: 250px;
+}
+.show-new-design.smartphone #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar .item-filter.open .filter-label {
+  padding-left: 15px;
+}
+.show-new-design.smartphone #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar .filter-label {
+  font-size: 18px;
+  line-height: 38px;
+  padding: 0 5px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.show-new-design.smartphone #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar .filter-label span {
+  background: none !important;
+  display: inline-block;
+  text-align: right;
+  position: relative;
+  height: 38px;
+  width: 35px;
+  vertical-align: middle;
+}
+.show-new-design.smartphone #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .upper-bar .filter-label span:after {
+  display: inline-block;
+  right: 7.5px;
+}
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block,
 .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
   background-color: #000000;

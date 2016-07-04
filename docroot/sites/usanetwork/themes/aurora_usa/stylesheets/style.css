@@ -4127,25 +4127,23 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta-wrapper {
   bottom: 0;
-  height: auto;
-  max-height: calc(100% - 3.90625vw);
+  height: 100%;
   overflow: hidden;
+  padding: 0;
   position: absolute;
-  padding: 1.95313vw;
   width: 100%;
   background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat scroll 0 0;
 }
 @media (min-width: 1601px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta-wrapper {
     bottom: 0;
-    padding: 31.25px;
-    max-height: calc(100% - 62.5px);
     width: 100%;
   }
 }
 @media (max-width: 768px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta-wrapper {
     bottom: auto;
+    height: auto;
     left: auto;
     max-height: none;
     overflow: visible;
@@ -4161,18 +4159,26 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   width: 100%;
 }
 .best-of-section .best-of-content li .usa-best-of-promo .meta {
-  height: 100%;
+  height: auto;
   position: relative;
   width: 100%;
 }
 @media (min-width: 769px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta {
+    bottom: 0;
+    left: 0;
+    padding: 1.95313vw;
+    position: absolute;
     text-align: center;
+  }
+}
+@media (min-width: 1601px) {
+  .best-of-section .best-of-content li .usa-best-of-promo .meta {
+    padding: 2.44141vw;
   }
 }
 @media (max-width: 768px) {
   .best-of-section .best-of-content li .usa-best-of-promo .meta {
-    height: auto;
     padding-top: 2.8125vw;
   }
 }

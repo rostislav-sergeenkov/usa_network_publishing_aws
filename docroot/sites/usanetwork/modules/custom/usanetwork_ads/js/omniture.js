@@ -314,19 +314,15 @@
 
     promoClick: function ($self, name, show_name) {
 
-      console.info('promoClick',$self, name, show_name);
-
       if (show_name === '') {
         s.linkTrackVars = 'events,eVar55';
         s.linkTrackEvents = s.events = 'event51';
         s.eVar55 = name;
-        console.info('promoClick 1');
       } else {
         s.linkTrackVars = 'events,eVar55,eVar33';
         s.linkTrackEvents = s.events = 'event51';
         s.eVar33 = show_name;
         s.eVar55 = name;
-        console.info('promoClick 2');
       }
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {

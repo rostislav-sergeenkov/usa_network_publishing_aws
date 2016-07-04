@@ -40645,7 +40645,7 @@ body.blog .view-display-id-blog_content .views-row {
   overflow: visible;
   position: static;
   width: 100%;
-  z-index: 99999;
+  z-index: 1000;
   will-change: transform;
   -webkit-transition: -webkit-transform 0.2s linear;
   -moz-transition: -moz-transform 0.2s linear;

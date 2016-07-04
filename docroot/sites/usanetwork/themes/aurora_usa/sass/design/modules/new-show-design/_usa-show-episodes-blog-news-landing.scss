@@ -1,4 +1,48 @@
 .show-new-design {
+  &.smartphone {
+    #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
+      .upper-bar {
+        height: 55px;
+        .title {
+          display: none !important;
+        }
+        .item-filter {
+          right: 5%;
+          width: 90%;
+          max-width: none;
+          &.open {
+            right: 50%;
+            margin-right: -125px;
+            max-width: 250px;
+            .filter-label {
+              padding-left: 15px;
+            }
+          }
+        }
+        .filter-label {
+          font-size: 18px;
+          line-height: 38px;
+          padding: 0 5px;
+          text-align: center;
+          text-transform: uppercase;
+          vertical-align: middle;
+          span {
+            background: none !important;
+            display: inline-block;
+            text-align: right;
+            position: relative;
+            height: 38px;
+            width: 35px;
+            vertical-align: middle;
+            &:after {
+              display: inline-block;
+              right: 7.5px;
+            }
+          }
+        }
+      }
+    }
+  }
   #block-usanetwork-episodes-usa-landing-tvep-list-block,
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
     @include clear();

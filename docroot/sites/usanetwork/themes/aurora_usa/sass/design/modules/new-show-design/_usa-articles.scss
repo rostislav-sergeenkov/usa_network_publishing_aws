@@ -121,10 +121,11 @@
           margin-bottom: get-vw(40px, 640);
         }
       }
-      &:last-child {
-        margin-right: 0;
+      &:nth-child(4) {
+        float: right;
       }
       &:nth-child(n+3) {
+        margin-right: 0;
         @include breakpoint($bp-768-width) {
           display: none;
         }

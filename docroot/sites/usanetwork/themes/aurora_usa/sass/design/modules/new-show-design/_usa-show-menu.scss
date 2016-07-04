@@ -702,6 +702,19 @@
           }
         }
       }
+      .sponsored {
+        top: 50%;
+        position: absolute;
+        @include breakpoint($bp-min-769-width) {
+          right: get-vw(16px, 1280);
+        }
+        @include breakpoint($bp-min-1601-width) {
+          right: 20px;
+        }
+        @include breakpoint($bp-768-width) {
+          display: none;
+        }
+      }
       .menu-open-button {
         background: none;
         cursor: pointer;
@@ -754,6 +767,24 @@
         height: auto;
         position: absolute;
       }
+
+      &.sponsored-enable {
+        position: relative;
+        .show-menu-tab {
+          text-align: left;
+        }
+        .social-block {
+          margin-top: calc(#{get-vw(-20px, 1280)} / 2);
+          top: 50%;
+          @include breakpoint($bp-min-1601-width) {
+            margin-top: calc(#{-25px} / 2);
+          }
+          @include breakpoint($bp-768-width) {
+            margin-top: 0;
+          }
+        }
+      }
+
       .bottom-menu-block-inner {
         @include clear();
         background: #000000;

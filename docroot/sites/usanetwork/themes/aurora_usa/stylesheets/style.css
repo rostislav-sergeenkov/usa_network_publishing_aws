@@ -45156,13 +45156,12 @@ html.no-scroll, body.no-scroll {
     width: 100%;
   }
 }
-.b-c-d-block li:nth-child(3) {
+.b-c-d-block li:nth-child(2) {
   margin-right: 0;
 }
-@media (max-width: 768px) {
-  .b-c-d-block li:nth-child(3) {
-    float: right;
-  }
+.b-c-d-block li:nth-child(3) {
+  margin-right: 0;
+  float: right;
 }
 
 .best-of-section {

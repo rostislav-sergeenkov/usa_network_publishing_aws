@@ -40,11 +40,12 @@
         width: 100%;
       }
     }
+    &:nth-child(2) {
+      margin-right: 0;
+    }
     &:nth-child(3) {
       margin-right: 0;
-      @include breakpoint($bp-768-width) {
-        float: right;
-      }
+      float: right;
     }
     @extend %usa-bcd-carousel-promo;
   }

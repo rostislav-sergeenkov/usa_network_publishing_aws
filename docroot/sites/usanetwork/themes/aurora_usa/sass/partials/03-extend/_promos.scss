@@ -3075,12 +3075,12 @@
       }
     }
     .meta-wrapper-inner {
-      height: 100%;
+      height: auto;
       position: relative;
       width: 100%;
     }
     .meta {
-      height: 100%;
+      height: auto;
       position: relative;
       width: 100%;
       .title-and-additional {
@@ -3139,6 +3139,7 @@
         font-family: $open-sans-regular;
         font-size: get-vw(18px, 1280);
         line-height: 1.2;
+        overflow: hidden;
         text-overflow: ellipsis;
         text-transform: none;
         white-space: normal;

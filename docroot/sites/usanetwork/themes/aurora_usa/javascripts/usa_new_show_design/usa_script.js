@@ -43,7 +43,7 @@
   $(window).resize(function () {
     setTimeout(function () {
       checkDescriptionLines();
-    }, 50);
+    }, 1000);
   });
 
 })(jQuery);

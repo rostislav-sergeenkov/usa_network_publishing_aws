@@ -45,11 +45,13 @@
           width: calc((100% - #{get-vw(18px, 640)})/2);
         }
         &:nth-child(2) {
+          margin-right: 0;
           @include breakpoint($bp-768-width) {
             float: right;
           }
         }
         &:nth-child(3) {
+          float: right;
           margin-right: 0;
           width: calc((100% - #{get-vw(12px, 1280)})/2);
           @include breakpoint($bp-min-1601-width) {

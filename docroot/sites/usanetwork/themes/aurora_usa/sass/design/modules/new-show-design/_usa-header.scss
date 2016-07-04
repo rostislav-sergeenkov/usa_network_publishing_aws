@@ -218,7 +218,6 @@
     will-change: transform;
     @include transition(transform 0.2s linear);
 
-
     &.menu-open {
       position: fixed !important;
       overflow: hidden;

@@ -314,15 +314,19 @@
 
     promoClick: function ($self, name, show_name) {
 
+      console.info('promoClick',$self, name, show_name);
+
       if (show_name === '') {
         s.linkTrackVars = 'events,eVar55';
         s.linkTrackEvents = s.events = 'event51';
         s.eVar55 = name;
+        console.info('promoClick 1');
       } else {
         s.linkTrackVars = 'events,eVar55,eVar33';
         s.linkTrackEvents = s.events = 'event51';
         s.eVar33 = show_name;
         s.eVar55 = name;
+        console.info('promoClick 2');
       }
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
@@ -344,7 +348,8 @@
             show_name,
             page_name,
             blockName,
-            name;
+            name,
+            showNewDesignClass = 'show-new-design';
 
         // Home page
         if (body.hasClass('page-home')) {
@@ -364,7 +369,7 @@
         }
 
         // Show page
-        if (body.hasClass('usa-tv-show')) {
+        if (body.hasClass('usa-tv-show') && !body.hasClass(showNewDesignClass)) {
           page_name = 'Show Page ';
           if ($self.closest('.aspot-and-episodes .episodes-list').length > 0) {
             name = page_name + 'Latest Full Episodes Block';
@@ -375,6 +380,41 @@
           }
           if ($self.closest('.show-latest-block').length > 0) {
             name = page_name + 'The Latest Block';
+          }
+        } else if (body.hasClass('usa-tv-show') && body.hasClass(showNewDesignClass)) {
+          page_name = 'Show Landing ';
+
+          if ($self.closest('#relevant-content-carousel').length > 0) {
+            name = page_name + 'Right Rail';
+          }
+
+          if ($self.closest('.usa-bcd-carousel-promo').length > 0) {
+            blockName = $self.closest('.usa-bcd-carousel-promo').attr('data-spot-name');
+            name = page_name + blockName + '-Spot';
+          }
+
+          if ($self.closest('.best-of-content').length > 0) {
+            name = page_name + 'Explore 3 Tall';
+          }
+
+          if ($self.closest('.episodes-wrapper').length > 0) {
+            name = page_name + 'Episodes';
+          }
+
+          if ($self.closest('.articles-content').length > 0) {
+            name = page_name + 'Articles';
+          }
+
+          if ($self.closest('#top-five-videos').length > 0) {
+            name = page_name + 'Top 5 Videos';
+          }
+
+          if ($self.closest('#top-five-photos').length > 0) {
+            name = page_name + 'Top 5 Galleries';
+          }
+
+          if ($self.closest('#special-fuatures').length > 0) {
+            name = page_name + 'Special Features';
           }
         }
 
@@ -592,7 +632,8 @@
         });
 
         // Home Page A-spot click
-        $( "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
+        $( ".show-new-design #aspot-usanetwork a," +
+        "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
         "#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button," +
         ".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
         //$('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {

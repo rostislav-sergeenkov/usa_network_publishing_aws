@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -4604,12 +4604,12 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   }
 }
 .articles-block .articles-wrapper li .usa-articles-promo .meta-wrapper-inner {
-  height: 100%;
+  height: auto;
   position: relative;
   width: 100%;
 }
 .articles-block .articles-wrapper li .usa-articles-promo .meta {
-  height: 100%;
+  height: auto;
   position: relative;
   width: 100%;
 }
@@ -4684,6 +4684,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   font-family: "opensansregular", sans-serif;
   font-size: 1.40625vw;
   line-height: 1.2;
+  overflow: hidden;
   text-overflow: ellipsis;
   text-transform: none;
   white-space: normal;
@@ -45194,13 +45195,12 @@ html.no-scroll, body.no-scroll {
     width: 100%;
   }
 }
-.b-c-d-block li:nth-child(3) {
+.b-c-d-block li:nth-child(2) {
   margin-right: 0;
 }
-@media (max-width: 768px) {
-  .b-c-d-block li:nth-child(3) {
-    float: right;
-  }
+.b-c-d-block li:nth-child(3) {
+  margin-right: 0;
+  float: right;
 }
 
 .best-of-section {
@@ -50481,8 +50481,14 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
-    font-size: 2.86458vw;
-    margin-left: 1.82292vw;
+    font-size: 3.125vw;
+    margin-left: 2.08333vw;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
+    font-size: 3.75vw;
+    margin-left: 2.5vw;
   }
 }
 .show-new-design .where-to-watch .live-link {
@@ -50541,8 +50547,14 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .description-block {
-    font-size: 3.75vw;
-    margin-top: 50px;
+    font-size: 3.77604vw;
+    margin-top: 10.41667vw;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design .where-to-watch .description-block {
+    font-size: 4.53125vw;
+    margin-top: 12.5vw;
   }
 }
 .show-new-design .where-to-watch .usa-providers {
@@ -50590,7 +50602,7 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .usa-providers .provider {
-    margin: 2.60417vw 0;
+    margin: 5.85938vw 0;
     width: 50%;
   }
 }
@@ -50745,8 +50757,14 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 768px) {
   .show-new-design .video-recap-block .video-button span:after {
-    font-size: 2.5vw;
+    font-size: 2.60417vw;
     margin-left: 1.95313vw;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design .video-recap-block .video-button span:after {
+    font-size: 3.125vw;
+    margin-left: 2.34375vw;
   }
 }
 

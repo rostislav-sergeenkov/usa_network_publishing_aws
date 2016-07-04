@@ -889,14 +889,14 @@
         }
       }
       .social-block {
-        @include breakpoint($bp-min-1601-width) {
-          right: 20px;
-          top: calc((100% - 75px) / 2);
-        }
         @include breakpoint($bp-min-769-width) {
           right: get-vw(16px, 1280);
-          top: calc((100% - #{get-vw(60px, 1280)}) / 2);
+          top: calc((100% - #{get-vw(60px, 1280) + get-vw(16px, 1280) - get-vw(10px, 1280)} + 2px) / 2);
           position: absolute;
+        }
+        @include breakpoint($bp-min-1601-width) {
+          right: 20px;
+          top: calc((100% - (73px + 20px - 12.5px)) / 2);
         }
         @include breakpoint($bp-768-width) {
           background: black;

@@ -182,12 +182,20 @@
         a {
           display: table-cell;
           height: 100%;
-          text-align: center;
+          text-align: right;
           vertical-align: middle;
           width: auto;
           img {
             opacity: 1;
-            width: 100%;
+            max-height: 25px;
+            height: auto;
+            width: auto;
+            @include breakpoint($bp-min-1601-width) {
+              max-height: 35px;
+            }
+            @include breakpoint($bp-1024-width) {
+              max-height: 20px;
+            }
           }
         }
       }

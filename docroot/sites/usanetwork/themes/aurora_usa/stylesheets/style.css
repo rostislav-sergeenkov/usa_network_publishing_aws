@@ -47453,7 +47453,7 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 640px) {
   .show-new-design .consumptionator-episode-main-block .episode-info-header .episode-title-block .episode-title .episode-title-inner {
-    font-size: 5vw;
+    font-size: 6.0vw;
   }
 }
 @media (min-width: 1601px) {
@@ -49107,6 +49107,11 @@ html.no-scroll, body.no-scroll {
     font-size: 54px;
   }
 }
+@media (max-width: 640px) {
+  .show-new-design .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 6.0vw;
+  }
+}
 .show-new-design .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
   display: block;
   font-family: "texgyrescholaitalic", Times, serif;
@@ -49329,7 +49334,7 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 640px) {
   .show-new-design .consumptionator-characters-main-block .character-info-block .block-character-info-content > .description .description-items {
     width: 100%;
-    font-size: 18px;
+    font-size: 4.25vw;
     color: #545454;
   }
 }

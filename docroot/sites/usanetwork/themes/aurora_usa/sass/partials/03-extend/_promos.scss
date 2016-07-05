@@ -3371,19 +3371,23 @@
 %usa-show-related-promo {
   .show-latest-promo {
     @include breakpoint($bp-640-width) {
-      padding-top: calc((100vw - #{get-vw(16px, 640)}*2)*0.4);
+      padding-top: 56.25%;
     }
     .asset-img {
       height: 100%;
       width: 100%;
       @include breakpoint($bp-640-width) {
-        height: calc((100vw - #{get-vw(16px, 640)}*2)*0.4);
+        height: auto;
         left: 0;
+        padding-top: 56.25%;
         position: absolute;
         top: 0;
       }
       img {
+        left: 0;
         height: 100%;
+        position: absolute;
+        top: 0;
         width: 100%;
       }
     }
@@ -3403,7 +3407,8 @@
       @include breakpoint($bp-640-width) {
         bottom: auto;
         max-height: none;
-        padding: get-vw(12px, 640) get-vw(16px, 640);
+        overflow: visible;
+        padding: 0;
         position: relative;
         background: none;
       }
@@ -3433,9 +3438,11 @@
           padding: 0 12.5px;
         }
         @include breakpoint($bp-640-width) {
+          bottom: 100%;
           font-size: get-vw(16px, 640);
-          margin-bottom: get-vw(6px, 640);
-          padding: 0 get-vw(36px, 640);
+          margin-bottom: 0;
+          padding: 0 get-vw(10px, 640);
+          position: absolute;
         }
         strong, b, i {
           font-family: $fira-sans-medium;
@@ -3453,7 +3460,7 @@
         }
       }
       .title {
-        color: white;
+        color: $usa-bcd-title;
         font-family: $avalon-medium;
         font-size: get-vw(30px, 1280);
         line-height: 1.2;
@@ -3461,7 +3468,8 @@
           font-size: 37.5px;
         }
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(18px, 640);
+          font-size: get-vw(26.2px, 640);
+          padding: get-vw(20px, 640) get-vw(10px, 640) 0;
         }
       }
       .additional {
@@ -3473,7 +3481,8 @@
           font-size: 20px;
         }
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(12px, 640);
+          font-size: get-vw(21.8px, 640);
+          padding: 0 get-vw(10px, 640) 0;
         }
       }
     }

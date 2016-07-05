@@ -41304,11 +41304,6 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media all and (orientation: portrait) and (max-width: 768px) {
-  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
-    height: 3.90625vw;
-  }
-}
-@media all and (orientation: portrait) and (max-width: 768px) {
   .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
     left: 2.86458vw;
     height: 2.36979vw;
@@ -41470,11 +41465,6 @@ html.no-scroll, body.no-scroll {
 @media all and (orientation: landscape) and (max-width: 768px) {
   .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block {
     width: 27.1875vw;
-  }
-}
-@media all and (orientation: landscape) and (max-width: 768px) {
-  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
-    height: 4.25938vw;
   }
 }
 @media all and (orientation: landscape) and (max-width: 768px) {

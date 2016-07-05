@@ -228,8 +228,12 @@ address {
     a {
       border-color: white;
       color: white;
+      font-family: $fira-sans-regular;
       font-size: 17px;
       padding-bottom: 3px;
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw(28.4px, 640);
+      }
     }
   }
   a {

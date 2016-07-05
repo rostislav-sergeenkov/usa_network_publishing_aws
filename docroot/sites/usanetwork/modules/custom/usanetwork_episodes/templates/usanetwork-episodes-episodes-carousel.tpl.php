@@ -35,5 +35,5 @@
   <?php endif; ?>
 </div>
 <div class="more-items more-episodes <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
-  <a href="<?php print $all_episodes_link; ?>"><?php print t('View All episodes'); ?></a>
+  <a href="<?php print $all_episodes_link; ?>"><?php print t('View All episodes'); ?><?php if (!empty($new_design)): ?><span class="show-color show-font"></span><?php endif; ?></a>
 </div>

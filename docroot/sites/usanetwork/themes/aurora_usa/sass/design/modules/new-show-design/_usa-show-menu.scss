@@ -110,7 +110,7 @@
               }
               .title {
                 @include breakpoint($bp-768-width) {
-                  height: get-vw(30px, 768);
+                  //height: get-vw(30px, 768);
                 }
               }
             }
@@ -372,7 +372,7 @@
               }
               .title {
                 @include breakpoint($bp-768-width) {
-                  height: get-vw(54.52px, 1280);
+                  //height: get-vw(54.52px, 1280);
                 }
               }
             }
@@ -486,7 +486,7 @@
 
     .social-block {
       @include clear();
-      max-width: 20%;
+      max-width: 25%;
       width: 100%;
       .hashtag {
         background: none;
@@ -655,16 +655,17 @@
           width: get-vw(372px, 768);
         }
         .title {
-          height: get-vw(54.52px, 1280);
+          //height: get-vw(54.52px, 1280);
+          height: auto;
           margin: 0 auto;
           overflow: hidden;
           position: relative;
           width: 100%;
           @include breakpoint($bp-min-1601-width) {
-            height: 68.15px;
+            //height: 68.15px;
           }
           @include breakpoint($bp-768-width) {
-            height: get-vw(57px, 768);
+            //height: get-vw(57px, 768);
           }
         }
         a {

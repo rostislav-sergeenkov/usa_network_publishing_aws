@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -41304,11 +41304,6 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media all and (orientation: portrait) and (max-width: 768px) {
-  .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
-    height: 3.90625vw;
-  }
-}
-@media all and (orientation: portrait) and (max-width: 768px) {
   .show-new-design #header.tablet #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .logo-block {
     left: 2.86458vw;
     height: 2.36979vw;
@@ -41473,11 +41468,6 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media all and (orientation: landscape) and (max-width: 768px) {
-  .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
-    height: 4.25938vw;
-  }
-}
-@media all and (orientation: landscape) and (max-width: 768px) {
   .show-new-design #header.smartphone #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .tune-in {
     padding-top: 0.78125vw;
     font-size: 1.5625vw;
@@ -41564,7 +41554,7 @@ html.no-scroll, body.no-scroll {
   }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block {
-  max-width: 20%;
+  max-width: 25%;
   width: 100%;
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-block:after {
@@ -41761,21 +41751,11 @@ html.no-scroll, body.no-scroll {
   }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
-  height: 4.25938vw;
+  height: auto;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
   width: 100%;
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
-    height: 68.15px;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block .title {
-    height: 7.42188vw;
-  }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .title-block a {
   display: block;
@@ -53749,13 +53729,25 @@ html.no-scroll, body.no-scroll {
 .show-new-design #usa-tve-help-link.signOut .usaTveLogin a {
   display: table-cell;
   height: 100%;
-  text-align: center;
+  text-align: right;
   vertical-align: middle;
   width: auto;
 }
 .show-new-design #usa-tve-help-link.signOut .usaTveLogin a img {
   opacity: 1;
-  width: 100%;
+  max-height: 25px;
+  height: auto;
+  width: auto;
+}
+@media (min-width: 1601px) {
+  .show-new-design #usa-tve-help-link.signOut .usaTveLogin a img {
+    max-height: 35px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design #usa-tve-help-link.signOut .usaTveLogin a img {
+    max-height: 20px;
+  }
 }
 
 #admin-menu {

@@ -42125,6 +42125,7 @@ html.no-scroll, body.no-scroll {
   -webkit-transform: translateZ(0);
   position: relative;
   transform: translateZ(0);
+  text-align: center;
   z-index: 2;
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu:after,
@@ -42311,24 +42312,14 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter .filter-menu .mCSB_dragger .mCSB_dragger_bar {
   background-color: rgba(222, 216, 216, 0.75);
 }
-.show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter,
-.show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.all-items-filter,
-.show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.all-items-filter {
-  float: left;
-  width: calc(100% - 13.4375vw);
-}
-@media (min-width: 1601px) {
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter,
-  .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.all-items-filter,
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.all-items-filter {
-    width: calc(100% - 215px);
-  }
-}
 @media (min-width: 769px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.all-items-filter,
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.all-items-filter {
     border: none;
+    display: inline-block;
+    max-width: 64%;
+    vertical-align: top;
   }
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter .filter-label,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.all-items-filter .filter-label,
@@ -42346,6 +42337,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.all-items-filter,
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.all-items-filter {
+    float: left;
     position: relative;
     vertical-align: middle;
     min-width: 205px;
@@ -42403,7 +42395,7 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.all-items-filter .filter-menu li {
   cursor: pointer;
   display: inline-block;
-  margin: 1.5625vw 3.51563vw 0 0;
+  margin: 1.5625vw 2.51563vw 0 0;
   padding: 0;
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter .filter-menu li:last-child,
@@ -42554,10 +42546,11 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.sorter-items,
 .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.sorter-items,
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.sorter-items {
-  float: right;
-  margin-top: 0.9375vw;
+  display: inline-block;
+  margin-top: 0.875vw;
   position: relative;
   text-align: right;
+  vertical-align: top;
   width: 12.8125vw;
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.sorter-items:after,
@@ -42571,7 +42564,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.sorter-items,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.sorter-items,
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.sorter-items {
-    margin-top: 15px;
+    margin-top: 14px;
     width: 205px;
   }
 }
@@ -42579,6 +42572,8 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.sorter-items,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.sorter-items,
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.sorter-items {
+    display: block;
+    float: right;
     margin: 0;
     width: 205px;
   }

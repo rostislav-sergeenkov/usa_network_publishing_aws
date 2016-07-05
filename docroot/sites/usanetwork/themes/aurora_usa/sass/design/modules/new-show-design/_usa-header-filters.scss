@@ -57,6 +57,7 @@
       -webkit-transform: translateZ(0);
       position: relative;
       transform: translateZ(0);
+      text-align: center;
       z-index: 2;
       @include breakpoint($bp-min-1601-width) {
         padding: 40px 20px 15px;
@@ -179,13 +180,11 @@
           }
         }
         &.all-items-filter {
-          float: left;
-          width: calc(100% - #{get-vw(215px, 1600)});
-          @include breakpoint($bp-min-1601-width) {
-            width: calc(100% - 215px);
-          }
           @include breakpoint($bp-min-769-width) {
             border: none;
+            display: inline-block;
+            max-width: 64%;
+            vertical-align: top;
             .filter-label {
               border: none;
               display: none;
@@ -195,6 +194,7 @@
             }
           }
           @include breakpoint($bp-768-width) {
+            float: left;
             position: relative;
             vertical-align: middle;
             min-width: 205px;
@@ -232,7 +232,7 @@
             li {
               cursor: pointer;
               display: inline-block;
-              margin: get-vw(20px, 1280) get-vw(45px, 1280) 0 0;
+              margin: get-vw(20px, 1280) get-vw(32.2px, 1280) 0 0;
               padding: 0;
               &:last-child {
                 margin-right: 0;
@@ -338,17 +338,20 @@
           }
         }
         &.sorter-items {
-          float: right;
-          margin-top: get-vw(15px, 1600);
+          display: inline-block;
+          margin-top: get-vw(14px, 1600);
           position: relative;
           text-align: right;
           @include clear();
+          vertical-align: top;
           width: get-vw(205px, 1600);
           @include breakpoint($bp-min-1601-width) {
-            margin-top: 15px;
+            margin-top: 14px;
             width: 205px;
           }
           @include breakpoint($bp-768-width) {
+            display: block;
+            float: right;
             margin: 0;
             width: 205px;
           }

@@ -204,6 +204,11 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
           if (count($fids) < $count) {
             $items_left = $count - count($fids);
             $fids = array_merge($fids, array_slice($_fids, 0, ($items_left < $current ? $items_left : $current)));
+            // Case when one item is taken and it is full episode.
+            // It use for last episode of show.
+            if ($full_episode && $count == 1) {
+              return 'last_full';
+            }
           }
           $related_files = entity_load('file', $fids);
 
@@ -349,8 +354,13 @@ function usanetwork_get_endcard_variables($file) {
   }
   elseif ($full_episode) {
     $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT);
-    $related_clip_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT);
-    $related_files = array_merge($related_files, $related_clip_files);
+    if($related_files != 'last_full') {
+      $related_clip_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT);
+      $related_files = array_merge($related_files, $related_clip_files);
+    }
+    else {
+      $related_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT + 1 );
+    }
   } elseif (!$full_episode) {
     $related_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, 1);
   }
@@ -397,3 +407,4 @@ function usanetwork_get_endcard_variables($file) {
   }
   return NULL;
 }
+

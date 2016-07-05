@@ -46763,86 +46763,6 @@ html.no-scroll, body.no-scroll {
     line-height: 13.28125vw;
   }
 }
-.show-new-design .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal, .show-new-design .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal {
-  /*@include breakpoint($bp-640-width) {
-    li {
-      background: $consum-carousel-even;
-      height: 75px;
-      position: relative;
-      width: 100%!important;
-      &:nth-child(odd) {
-        background: $consum-carousel-odd;
-      }
-      &:nth-child(even) {
-        background: $consum-carousel-even;
-      }
-      > div {
-        height: 100%;
-        width: 100%;
-      }
-      a {
-        height: 100%;
-        width: 100%;
-      }
-      .asset-img {
-        height: 50px;
-        left: 4%;
-        margin-top: -25px;
-        position: absolute;
-        top: 50%;
-        width: 75px;
-        &.active {
-          border-left: 7px solid;
-        }
-        img {
-          height: 100%;
-          width: 100%;
-        }
-        & ~ .meta-wrapper {
-          .meta {
-            padding-left: calc(8% + 75px);
-          }
-        }
-      }
-      .meta-wrapper {
-        background: none;
-        height: 100%;
-        width: 100%;
-        .meta-wrapper-inner {
-          display: table;
-          height: 100%;
-          width: 100%;
-        }
-        .meta-icon {
-          display: none;
-        }
-        .meta {
-          color: $consum-carousel-text;
-          padding-left: 4%;
-          display: table-cell;
-          max-width: 100px;
-          vertical-align: middle;
-          width: 100%;
-          .caption {
-            font-size: 10px;
-            line-height: 13px;
-          }
-          .title {
-            font-size: 15px;
-            line-height: 18px;
-            margin-bottom: 7px;
-          }
-          .additional {
-            font-family: $tex-gyreschola-italic;
-            font-size: 10px;
-            line-height: 13px;
-            text-transform: uppercase;
-          }
-        }
-      }
-    }
-  }*/
-}
 @media (max-width: 640px) {
   .show-new-design .consumptionator-episode-main-block .consum-sidebar .more-items, .show-new-design .consumptionator-post-main-block .consum-sidebar .more-items {
     background: black;
@@ -46856,11 +46776,18 @@ html.no-scroll, body.no-scroll {
     padding: 0;
   }
 }
-.show-new-design .consumptionator-episode-main-block .consum-sidebar .more-items a:after, .show-new-design .consumptionator-post-main-block .consum-sidebar .more-items a:after {
-  display: none;
+@media (max-width: 768px) {
+  .show-new-design .consumptionator-episode-main-block .consum-sidebar .more-items a:after, .show-new-design .consumptionator-post-main-block .consum-sidebar .more-items a:after {
+    display: none;
+  }
 }
 .show-new-design .consumptionator-episode-main-block .consum-sidebar .more-items a span, .show-new-design .consumptionator-post-main-block .consum-sidebar .more-items a span {
   background: none;
+}
+@media (min-width: 769px) {
+  .show-new-design .consumptionator-episode-main-block .consum-sidebar .more-items a span, .show-new-design .consumptionator-post-main-block .consum-sidebar .more-items a span {
+    display: none;
+  }
 }
 .show-new-design .consumptionator-episode-main-block .consum-sidebar .more-items a span:after, .show-new-design .consumptionator-post-main-block .consum-sidebar .more-items a span:after {
   content: "\e608";

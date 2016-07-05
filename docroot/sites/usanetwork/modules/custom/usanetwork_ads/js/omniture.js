@@ -592,9 +592,9 @@
       }
       // end new design mrrobot
 
-      if (typeof s != 'object') {
-        return;
-      }
+      //if (typeof s != 'object') {
+      //  return;
+      //}
 
       //redesign
       if (!$('body').hasClass('page-node-microsite')) {

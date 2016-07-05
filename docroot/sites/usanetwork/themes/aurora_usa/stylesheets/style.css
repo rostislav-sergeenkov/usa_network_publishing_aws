@@ -69,7 +69,22 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   width: 3px;
   z-index: 2;
   cursor: pointer;
+}
+
+.show-new-design .show-color-border, .show-new-design .asset-img.show {
+  position: relative;
+}
+.show-new-design .show-color-border:before, .show-new-design .asset-img.show:before {
+  background: #2c2c2c;
+  display: block;
+  content: '';
   height: 2px !important;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 3px;
+  z-index: 2;
+  cursor: pointer;
 }
 
 .show-color {

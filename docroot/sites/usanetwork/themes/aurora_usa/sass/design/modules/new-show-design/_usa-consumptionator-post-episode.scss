@@ -64,19 +64,19 @@
             padding: 0;
           }
           &:after {
-            @include breakpoint($bp-768-width) {
+            @include breakpoint($bp-1024-width) {
               display: none;
             }
           }
           span {
             background: none;
-            @include breakpoint($bp-min-769-width) {
+            @include breakpoint($bp-min-1025-width) {
               display: none;
             }
             &:after {
               content: "\e608";
               font-family: $ico-font;
-              @include breakpoint($bp-768-width) {
+              @include breakpoint($bp-1024-width) {
                 display: inline-block;
                 font-size: 12px;
                 line-height: 1;

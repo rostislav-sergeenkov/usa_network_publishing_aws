@@ -160,6 +160,9 @@
             @include breakpoint($bp-min-1601-width) {
               font-size: 54px;
             }
+            @include breakpoint($bp-640-width) {
+              font-size: get-vw(38.4px, 640);
+            }
           }
           .description {
             display: block;
@@ -345,7 +348,7 @@
             }
             @include breakpoint($bp-640-width) {
               width: 100%;
-              font-size: 18px;
+              font-size: get-vw(27.2px, 640);
               color: $poll-color;
             }
             .person-quotation {

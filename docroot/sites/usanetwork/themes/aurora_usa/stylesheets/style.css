@@ -7126,17 +7126,14 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
 }
 
 body:not(.show-new-design) #topbanner {
-  margin: 0 auto 20px;
+  margin: 10px auto;
   overflow: hidden;
   text-align: center;
   max-width: 970px;
-  top: 10px;
-  position: relative;
 }
 @media (max-width: 640px) {
   body:not(.show-new-design) #topbanner {
-    margin: 0 auto 6px;
-    top: 6px;
+    margin: 3px auto;
   }
 }
 

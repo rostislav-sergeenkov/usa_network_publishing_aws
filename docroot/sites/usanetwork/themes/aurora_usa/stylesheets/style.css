@@ -48626,11 +48626,6 @@ html.no-scroll, body.no-scroll {
 .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .gallery-list.ready .slide, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .gallery-list.ready .slide {
   display: block;
 }
-@media (min-width: 641px) and (max-width: 1024px) {
-  .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img {
-    height: calc((100vw - 340px) * 0.5625);
-  }
-}
 @media (max-width: 1024px) {
   .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info {
     height: auto;
@@ -48665,26 +48660,15 @@ html.no-scroll, body.no-scroll {
     font-size: 12px;
   }
 }
-@media (min-width: 641px) and (max-width: 1024px) {
-  .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .gallery-pager-wrap {
-    bottom: auto;
-    top: calc((100vw - 340px) * 0.5625 + 13px);
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .gallery-pager-wrap, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .gallery-pager-wrap {
-    top: calc((100vw - 340px) * 0.5625 + 18px);
-  }
-}
 @media (min-width: 769px) and (max-width: 1024px) {
   .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .slide-control, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .slide-control {
-    top: calc((100vw - 340px) * 0.5625 + 26px);
+    margin-top: calc(56.25% + 26px);
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .slide-control, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .slide-control {
     height: 38px;
-    top: calc((100vw - 340px) * 0.5625 + 36px);
+    margin-top: calc(56.25% + 36px);
     width: 38px;
   }
 }
@@ -48968,18 +48952,13 @@ html.no-scroll, body.no-scroll {
   display: block;
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img {
-    height: calc((100vw - 20px) * 0.5625);
-  }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
   .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-pager-wrap {
-    top: calc((100vw - 20px) * 0.5625 + 13px);
+    margin-top: calc(56.25% + 13px);
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .slide-control {
-    top: calc((100vw - 20px) * 0.5625 + 26px);
+    margin-top: calc(56.25% + 26px);
   }
 }
 

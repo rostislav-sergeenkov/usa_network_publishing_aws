@@ -42238,10 +42238,10 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter .filter-label,
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter .filter-label {
   background: black;
-  color: white;
+  color: #f1f1f1;
   cursor: pointer;
-  font-family: "FiraSansMedium", sans-serif;
-  font-size: 1.125vw;
+  font-family: "FiraSansRegular", sans-serif;
+  font-size: 0.9vw;
   letter-spacing: 0.5px;
   line-height: 3.125vw;
   overflow: hidden;
@@ -42258,7 +42258,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter .filter-label,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter .filter-label,
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter .filter-label {
-    font-size: 18px;
+    font-size: 14.4px;
     line-height: 50px;
     padding-right: 40px;
   }
@@ -42267,7 +42267,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter .filter-label,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter .filter-label,
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter .filter-label {
-    color: white;
+    color: #f1f1f1;
     font-size: 14px;
     letter-spacing: 1px;
     line-height: 38px;
@@ -42441,10 +42441,10 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter .filter-menu li a,
 .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.all-items-filter .filter-menu li a,
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.all-items-filter .filter-menu li a {
-  color: white;
+  color: #f1f1f1;
   display: block;
-  font-size: 1.125vw;
-  font-family: "FiraSansMedium", sans-serif;
+  font-size: 0.9vw;
+  font-family: "FiraSansRegular", sans-serif;
   text-transform: capitalize;
   letter-spacing: 0.5px;
   line-height: 1.8;
@@ -42466,7 +42466,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter .filter-menu li a,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.all-items-filter .filter-menu li a,
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.all-items-filter .filter-menu li a {
-    font-size: 18px;
+    font-size: 14.4px;
   }
 }
 @media (max-width: 768px) {
@@ -42494,7 +42494,7 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter .filter-menu li a h1,
 .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.all-items-filter .filter-menu li a h1,
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.all-items-filter .filter-menu li a h1 {
-  font-size: 1.125vw;
+  font-size: 0.9vw;
   font-family: "FiraSansMedium", sans-serif;
   text-transform: capitalize;
   letter-spacing: 0.5px;
@@ -42504,7 +42504,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter .filter-menu li a h1,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.all-items-filter .filter-menu li a h1,
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.all-items-filter .filter-menu li a h1 {
-    font-size: 18px;
+    font-size: 14.4px;
   }
 }
 @media (max-width: 768px) {
@@ -42521,7 +42521,7 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter .filter-menu li a .items-in,
 .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.all-items-filter .filter-menu li a .items-in,
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.all-items-filter .filter-menu li a .items-in {
-  font-family: "FiraSansBold", sans-serif;
+  font-family: "FiraSansMedium", sans-serif;
 }
 @media (min-width: 769px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.all-items-filter .filter-menu li.active a,
@@ -42556,7 +42556,7 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.sorter-items,
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.sorter-items {
   display: inline-block;
-  margin-top: 0.875vw;
+  margin-top: 0.75vw;
   position: relative;
   text-align: right;
   vertical-align: top;
@@ -42573,7 +42573,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.sorter-items,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.sorter-items,
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.sorter-items {
-    margin-top: 14px;
+    margin-top: 12px;
     width: 205px;
   }
 }
@@ -42652,7 +42652,7 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.sorter-items .filter-menu li a {
   color: #ffffff;
   display: block;
-  font-size: 1.125vw;
+  font-size: 0.9vw;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   height: 100%;
   letter-spacing: 1px;
@@ -42674,7 +42674,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-filters-vl .upper-menu .item-filter.sorter-items .filter-menu li a,
   .show-new-design #block-usanetwork-media-gallery-usa-gallery-show-gallery-filters .upper-menu .item-filter.sorter-items .filter-menu li a,
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-explore-fb .upper-menu .item-filter.sorter-items .filter-menu li a {
-    font-size: 18px;
+    font-size: 14.4px;
     line-height: 50px;
     padding: 0 40px 0 15px;
   }

@@ -28,7 +28,8 @@ $plugin = array(
  */
 function new_design_tv_show_aspot_content_type_render($subtype, $conf, $args, $context) {
   $node = $context[0]->data;
-  $aspot_node = $context[1]->data;
+  $aspot_field = _usanetwork_get_field_item('node', $node, 'field_usa_tv_a_spot', 'target_id');
+  $aspot_node = node_load($aspot_field);
   $block = new stdClass();
   $block->content = array(
     '#markup' => '<div id="aspot-usanetwork" class="show-border" data-content-type="tv-show">' . usanetwork_aspot_render_tvshow_slide($aspot_node, $node) . '</div>',

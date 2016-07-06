@@ -2599,7 +2599,7 @@
           font-size: 10px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(12.8px, 640);
+          font-size: get-vw(24px, 640);
         }
       }
       .author {
@@ -2614,7 +2614,7 @@
           font-size: get-vw(18px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(22px, 768);
+          font-size: get-vw(24px, 640);
         }
       }
     }
@@ -2776,10 +2776,7 @@
         }
         @include breakpoint($bp-768-width) {
           color: $usa-bcd-title;
-          font-size: get-vw(20.89px, 768);
-        }
-        @include breakpoint($bp-640-width) {
-          font-size: get-vw(13px, 375);
+          font-size: get-vw(27.2px, 640);
         }
       }
       .additional {
@@ -3159,10 +3156,11 @@
         @include breakpoint($bp-768-width) {
           line-height: 1.4;
           font-size: get-vw(17.28px, 768);
-          max-height: get-vw(57.6px, 640)!important;
+          max-height: get-vw(48.384px, 768)!important;
         }
         @include breakpoint($bp-640-width) {
           font-size: get-vw(24px, 640);
+          max-height: get-vw(67.2px, 640)!important;
         }
       }
     }
@@ -3439,7 +3437,7 @@
         }
         @include breakpoint($bp-640-width) {
           bottom: 100%;
-          font-size: get-vw(16px, 640);
+          font-size: get-vw(15px, 640);
           margin-bottom: 0;
           padding: 0 get-vw(10px, 640);
           position: absolute;
@@ -3468,7 +3466,7 @@
           font-size: 37.5px;
         }
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(26.2px, 640);
+          font-size: get-vw(27.2px, 640);
           padding: get-vw(20px, 640) get-vw(10px, 640) 0;
         }
       }
@@ -3481,7 +3479,7 @@
           font-size: 20px;
         }
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(21.8px, 640);
+          font-size: get-vw(24px, 640);
           padding: 0 get-vw(10px, 640) 0;
         }
       }
@@ -3636,6 +3634,9 @@
         font-family: $tex-gyreschola-italic;
         text-transform: uppercase;
         text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+        @include breakpoint($bp-768-width) {
+          text-transform: none;
+        }
       }
     }
     &.small {
@@ -3675,18 +3676,19 @@
       }
       .meta-icon {
         left: 50%;
-        margin-left: get-vw(-37px, 1280);
-        margin-top: calc(-28.125% + #{get-vw(37px, 1280)});
+        margin-left: get-vw(-37px, 1600);
+        margin-top: calc(28.125% - #{get-vw(37px, 1600)});
+        top: 0;
         @include breakpoint($bp-min-1601-width) {
           margin-left: -37px;
-          margin-top: calc(-28.125% + 37px);
+          margin-top: calc(28.125% - 37px);
         }
         @include breakpoint($bp-768-width) {
           bottom: 100%;
           margin-bottom: calc(28.125% - #{get-vw(37px, 768)});
           margin-left: get-vw(-37px, 768);
           margin-top: 0;
-          top: auto
+          top: auto;
         }
       }
       .meta {
@@ -3716,10 +3718,10 @@
             font-size: 11px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(13px, 640);
+            font-size: get-vw(15px, 640);
           }
         }
-        title {
+        .title {
           font-size: get-vw(25px, 1280);
           @include breakpoint($bp-min-1601-width) {
             font-size: 27px;
@@ -3727,8 +3729,13 @@
           @include breakpoint($between-769-1024) {
             font-size: 20px;
           }
+          @include breakpoint($bp-min-769-width) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(21px, 640);
+            font-size: get-vw(27.2px, 640);
           }
         }
         .additional {
@@ -3740,7 +3747,7 @@
             font-size: 9.6px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(12px, 640);
+            font-size: get-vw(24px, 640);
           }
         }
       }
@@ -3792,8 +3799,8 @@
       }
       .meta-icon {
         left: 50%;
-        margin-left: get-vw(-37px, 1280);
-        margin-top: get-vw(-37px, 1280);
+        margin-left: get-vw(-37px, 1600);
+        margin-top: get-vw(-37px, 1600);
         top: 50%;
         @include breakpoint($bp-min-1601-width) {
           margin-left: -37px;
@@ -3846,7 +3853,7 @@
             font-size: 21px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(24px, 640);
+            font-size: get-vw(27.2px, 640);
           }
         }
         .additional {
@@ -3858,7 +3865,7 @@
             font-size: 10.4px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(13px, 640);
+            font-size: get-vw(24px, 640);
           }
         }
       }

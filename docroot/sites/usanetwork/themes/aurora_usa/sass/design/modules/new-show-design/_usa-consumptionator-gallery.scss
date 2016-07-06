@@ -191,6 +191,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
           @include breakpoint($bp-640-width) {
             font-size: get-vw(25px, 640);
             line-height: get-vw(85px, 640);
+            width: 100%;
           }
         }
       }

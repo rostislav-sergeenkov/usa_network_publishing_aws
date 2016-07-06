@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -47722,6 +47722,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design.consumptionator-page .gallery-block .consum-sidebar .items-block-title h2, .show-new-design.node-type-media-gallery .gallery-block .consum-sidebar .items-block-title h2, .show-new-design.node-type-tv-episode .gallery-block .consum-sidebar .items-block-title h2, .show-new-design .gallery-recap-block .gallery-block .consum-sidebar .items-block-title h2, .show-new-design.node-type-consumpt-post .gallery-block .consum-sidebar .items-block-title h2, .show-new-design .node-media-gallery .gallery-block .consum-sidebar .items-block-title h2, .show-new-design.node-type-usanetwork-microsite .gallery-block .consum-sidebar .items-block-title h2 {
     font-size: 3.90625vw;
     line-height: 13.28125vw;
+    width: 100%;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -53240,7 +53241,7 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 640px) {
   .show-new-design.consumptionator-video-page .video-block .video-player-helper {
-    padding: 5.46875vw 7.5vw 7.8125vw;
+    padding: 5.46875vw 7.5vw 16.25vw;
   }
 }
 .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-helper-top {
@@ -53275,6 +53276,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-helper-top {
     margin-bottom: 1.875vw;
     padding-right: 0;
+    position: static;
   }
 }
 .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-info {
@@ -53359,6 +53361,13 @@ html.no-scroll, body.no-scroll {
   display: inline-block;
   vertical-align: middle;
 }
+@media (max-width: 640px) {
+  .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share {
+    left: 7.5vw;
+    bottom: 3.59375vw;
+    position: absolute;
+  }
+}
 .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-label {
   display: none;
 }
@@ -53388,7 +53397,7 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 640px) {
   .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container {
-    padding-right: 1.5625vw;
+    padding-right: 3.90625vw;
   }
 }
 .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container td > div {
@@ -53409,7 +53418,7 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 640px) {
   .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container td > div {
-    font-size: 3.59375vw;
+    font-size: 7.5vw;
   }
 }
 .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before {

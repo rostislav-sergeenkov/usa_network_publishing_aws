@@ -40808,6 +40808,40 @@ html.no-scroll, body.no-scroll {
   background: linear-gradient(to bottom, #000000 0%, #000000 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#111111',GradientType=0 );
 }
+.show-new-design .gallery-recap-block .section-title .section-title-wrapper {
+  color: #282828;
+  font-family: "FiraSansMedium", sans-serif;
+  font-size: 1.71875vw;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+@media (min-width: 1601px) {
+  .show-new-design .gallery-recap-block .section-title .section-title-wrapper {
+    font-size: 27.5px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .show-new-design .gallery-recap-block .section-title .section-title-wrapper {
+    font-size: 17px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .gallery-recap-block .section-title .section-title-wrapper {
+    font-size: 4vw;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design .gallery-recap-block .section-title .section-title-wrapper {
+    font-size: 4.6875vw;
+  }
+}
+.show-new-design .gallery-recap-block .section-title .section-title-wrapper:before, .show-new-design .gallery-recap-block .section-title .section-title-wrapper:after {
+  display: none !important;
+}
 .show-new-design .pane-mps-midbanner {
   padding-top: 2.57813vw;
   text-align: center;

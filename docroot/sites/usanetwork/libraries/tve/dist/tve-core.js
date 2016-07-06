@@ -1,5 +1,3 @@
-
-
 //Source: ./bower-components/angular/angular.js
 /**
  * @license AngularJS v1.2.13
@@ -25937,7 +25935,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
         };
       }])
 
-      .directive('modalWindow', ['$timeout', function($timeout) {
+      .directive('modalWindow', [function() {
         return {
           restrict: 'EA',
           scope: {
@@ -25950,9 +25948,7 @@ makeSwipeDirective('ngSwipeRight', 1, 'swiperight');
             scope.windowClass = attrs.windowClass || '';
 
             //trigger CSS transitions
-            $timeout(function() {
-              scope.animate = true;
-            });
+            scope.animate = true;
           }
         };
       }])

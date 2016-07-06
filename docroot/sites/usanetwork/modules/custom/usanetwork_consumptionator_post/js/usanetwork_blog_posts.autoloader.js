@@ -6,17 +6,20 @@
     loadPageItems: function(eventClick) {
       var nodeNid = $('.landing-list-items-all').data('node-nid'),
         click = eventClick || '',
-        offset = $('.ajax-load-block > .landing-list-items-one-item').length;
+        offset = $('.ajax-load-block > .landing-list-items-one-item').length,
+        tag = $('.landing-list-items-all').data('tag-tid');
 
-      if (nodeNid > 0) {
+      if (tag > 0) {
+        var serviceUrl = '/ajax/usanetwork-blog-posts/get-related-tag/' + nodeNid + '/' + offset + '/' + tag;
+      } else if (nodeNid > 0) {
         var serviceUrl = '/ajax/usanetwork-blog-posts/get-related/' + nodeNid + '/' + offset;
-       } else {
+      } else {
         var serviceUrl = '/ajax/usanetwork-blog-posts/get-related/news/' + offset;
       }
 
       $('.ajax-load-block .load-more-link a').after('<div id="load-more-loader-js"></div>');
 
-      addSpinJs('load-more-loader-js', 'consumptionator-page', '#ffffff');
+      addSpinJs('load-more-loader-js', 'show-new-design', '#ffffff');
 
       $.ajax({
         type: 'GET',

@@ -1,0 +1,303 @@
+.latest-episodes-block {
+  @include clear();
+  padding: get-vw(16px, 1280);
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-min-1601-width) {
+    padding: 20px;
+  }
+  @include breakpoint($bp-768-width) {
+    padding: 0 get-vw(32px, 640);
+  }
+  .touch & {
+    .main-episode {
+      .image-block {
+        &:after {
+          bottom: 0;
+          content: '';
+          display: block;
+          height: 33%;
+          position: absolute;
+          background: -moz-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+          background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(135, 135, 135, 0)), color-stop(100%, rgba(0, 0, 0, 0.8)));
+          background: -webkit-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+          background: -o-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+          background: -ms-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+          background: linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+          background-repeat: no-repeat;
+          width: 100%;
+          z-index: 0;
+        }
+      }
+    }
+  }
+  .episodes-wrapper {
+    @include clear();
+    height: calc((((100vw - #{get-vw(16px, 1280)}*2)*2)/3)*0.5625);
+    margin-top: get-vw(13px, 1280);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-1601-width) {
+      height: calc((((1600px - 20px*2)*2)/3)*0.5625);
+      margin-top: 16.25px;
+    }
+    @include breakpoint($bp-768-width) {
+      height: auto;
+      margin-top: 0;
+      padding: 0 get-vw(8px, 640);
+    }
+    .view-more {
+      display: none;
+      background: $consum-also-back;
+      @include breakpoint($bp-768-width) {
+        display: block;
+      }
+    }
+  }
+  .main-episode {
+    float: left;
+    display: flex;
+    height: 100%;
+    position: relative;
+    width: calc((100%*2)/3);
+    @include breakpoint($bp-768-width) {
+      height: calc((100vw - #{get-vw(40px, 640)}*2)*0.607);
+      float: none;
+      width: 100%;
+    }
+    &.full-episode {
+      &:hover {
+        .image-block {
+          .asset-img {
+            opacity: 0.85 !important;
+          }
+        }
+      }
+      .image-block {
+        position: absolute;
+        .no-touch & {
+          .asset-img {
+            opacity: 0.35;
+          }
+        }
+        .meta-icon {
+          @extend %usa-promo-video-play-icon;
+          line-height: get-vw(90px, 1280);
+          margin-left: calc(#{get-vw(-90px, 1280)} / 2);
+          margin-top: calc(#{get-vw(-90px, 1280)} / 2);
+          @include breakpoint($bp-min-1601-width) {
+            line-height: 135px;
+            margin-left: calc(#{-135px} / 2);
+            margin-top: calc(#{-135px} / 2);
+          }
+          @include breakpoint($bp-768-width) {
+            line-height: get-vw(75px, 768);
+            margin-left: calc(#{get-vw(-75px, 768)} / 2);
+            margin-top: calc(#{get-vw(-75px, 768)} / 2);
+          }
+          &:after  {
+            font-size: get-vw(90px, 1280);
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 135px;
+            }
+            @include breakpoint($bp-768-width) {
+              font-size: get-vw(75px, 768);
+            }
+          }
+        }
+      }
+      .meta-wrapper {
+        box-sizing: border-box;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        padding: get-vw(20px, 1280) get-vw(18px, 1280);
+        z-index: 2;
+        background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat scroll 0 0;
+        @include breakpoint($bp-min-1601-width) {
+          padding: 20px 18px;
+        }
+        @include breakpoint($bp-768-width) {
+          padding: get-vw(20px, 768) get-vw(18px, 768);
+          background: none;
+        }
+        .meta {
+          text-align: left;
+        }
+        .caption {
+          font-family: $fira-sans-light;
+        }
+        .title {
+          background: none;
+          color: #ffffff;
+          font-family: $fira-sans-light;
+          text-transform: none;
+          -webkit-text-fill-color: initial;
+        }
+        .additional {
+          .additional-link {
+            font-family: $fira-sans-light;
+            &:first-child {
+              margin-right: get-vw(22px, 1280);
+              @include breakpoint($bp-min-1601-width) {
+                margin-right: 22px;
+              }
+              @include breakpoint($bp-768-width) {
+                margin-right: get-vw(30px, 640);
+              }
+            }
+          }
+          br {
+            display: none;
+            @include breakpoint($bp-768-width) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .image-block {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: 0;
+      .asset-img {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: 0;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    .meta-wrapper {
+      box-sizing: border-box;
+      margin: auto;
+      height: auto;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    .meta {
+      text-align: center;
+      .caption {
+        color: $usa-episodes-text;
+        font-family: $fira-sans-regular;
+        font-size: get-vw(18px, 1280);
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 22.5px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(30px, 640);
+        }
+      }
+      .title {
+        color: #ffffff;
+        font-family: $fira-sans-medium;
+        font-size: get-vw(30px, 1280);
+        line-height: 1.1;
+        text-transform: uppercase;
+        word-break: break-word;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 37.5px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(48px, 640);
+        }
+      }
+      .additional {
+        .additional-link {
+          background: none;
+          font-family: $fira-sans-regular;
+          font-size: get-vw(14px, 1280);
+          margin-right: get-vw(23px, 1280);
+          outline: none;
+          text-transform: uppercase;
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 17.5px;
+            margin-right: 28.75px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(19.2px, 768);
+            line-height: 1.5;
+            margin-right: 0;
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: get-vw(22px, 640);
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+        br {
+          display: none;
+          @include breakpoint($bp-768-width) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .episodes-list {
+    float: left;
+    height: 100%;
+    position: relative;
+    width: calc(100%/3);
+    @include breakpoint($bp-768-width) {
+      display: none;
+    }
+    ul {
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    li {
+      @extend %usa-episodes-carousel-promo;
+      background: $schedule-view-back;
+      border-bottom: 1px solid $consum-also-back;
+      height: calc(((((100vw - #{get-vw(16px, 1280)}*2)*2)/3)*0.5625)/5);
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        height: calc(((((1600px - 20px*2)*2)/3)*0.5625)/5);
+      }
+      .usa-episodes-carousel-promo {
+        .image-block {
+          .meta-icon {
+            @extend %usa-promo-video-play-icon;
+            line-height: get-vw(45px, 1280);
+            margin-left: calc(#{get-vw(-45px, 1280)} / 2);
+            margin-top: calc(#{get-vw(-45px, 1280)} / 2);
+            @include breakpoint($bp-min-1601-width) {
+              line-height: 45px;
+              margin-left: calc(#{-45px} / 2);
+              margin-top: calc(#{-45px} / 2);
+            }
+            @include breakpoint($bp-1024-width) {
+              line-height: get-vw(25px, 1024);
+              margin-left: calc(#{get-vw(-25px, 1024)} / 2);
+              margin-top: calc(#{get-vw(-25px, 1024)} / 2);
+            }
+            &:after  {
+              font-size: get-vw(45px, 1280);
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 45px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: get-vw(25px, 1024);
+              }
+            }
+          }
+        }
+      }
+    }
+    .mCSB_scrollTools {
+      width: 4px;
+    }
+  }
+}

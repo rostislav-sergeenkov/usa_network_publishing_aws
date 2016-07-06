@@ -419,7 +419,7 @@ function usanetwork_app_and_services_footer_links() {
 /**
  * Render button footer block
  */
-function usanetwork_bottom_footer() {
+function usanetwork_bottom_footer($suffix = TRUE) {
 
   $menu = menu_load('usa-footer-bottom');
   if (!$menu) {
@@ -457,10 +457,10 @@ function usanetwork_bottom_footer() {
         'legal-menu',
       )
     ),
-    'suffix' => array(
-      variable_get('usanetwork_social_links', ''),
-      '<div class="copyright">' . preg_replace('/(Y{4})/', date('Y'), variable_get('usanetwork_footer_message', '')) . '</div>',
-    ),
+    'suffix' => ($suffix) ? array(
+        variable_get('usanetwork_social_links', ''),
+        '<div class="copyright">' . preg_replace('/(Y{4})/', date('Y'), variable_get('usanetwork_footer_message', '')) . '</div>',
+      ) : array('<div class="copyright">' . preg_replace('/(Y{4})/', date('Y'), variable_get('usanetwork_footer_message', '')) . '</div>'),
       )
   );
 }

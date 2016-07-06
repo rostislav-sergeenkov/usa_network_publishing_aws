@@ -11,10 +11,10 @@
   <?php if (!empty($rendered_carousel)): ?>
     <?php print $rendered_carousel; ?>
   <?php endif; ?>
-    <div class="more-items more-quizes show-color">
-      <?php if (!empty($cast_landing_link)): ?>
+    <?php if (!empty($cast_landing_link)): ?>
+      <div class="more-items more-quizes show-color">
         <?php print $cast_landing_link; ?>
-      <?php endif; ?>
-    </div>
+      </div>
+    <?php endif; ?>
   </div>
 </div>

@@ -1,5 +1,7 @@
 <?php
 
+define('USANETWORK_BLOG_MIGRATE_AUTHORS_VOC', 'authors');
+
 /**
  *  Implements hook_form_FORM_ID_alter().
  */
@@ -72,7 +74,7 @@ function usanetwork_blog_migrate_cron() {
         array('@migration' => $machine_name)));
     $migration = Migration::getInstance($machine_name);
     // Prepare to Update the contents/data
-    $migration->prepareUpdate();
+    //$migration->prepareUpdate();
     // Trigger the migration
     $result = $migration->processImport();
     // Log that we've completed this update.
@@ -81,4 +83,11 @@ function usanetwork_blog_migrate_cron() {
     drupal_set_message(t('USANETWORK MIGRATE:  Completed @migration migration update.',
         array('@migration' => $machine_name)));
   }
+}
+
+function usanetwork_blog_migrate_get_post_service($node) {
+  if ('consumpt_post' == $node->type && variable_get('usanetwork_blog_migrate_the_verge_user_uid', FALSE) == $node->uid) {
+    return 'verge';
+  }
+  return FALSE;
 }

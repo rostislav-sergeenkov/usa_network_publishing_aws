@@ -13,8 +13,10 @@
               <?php if (!empty($title)): ?>
                 <div class="title"><?php print $title; ?></div>
               <?php endif; ?>
-              <?php if (!empty($additional)): ?>
-                <div class="additional"><?php print $additional; ?></div>
+              <?php if (empty($new_design)) : ?>
+                <?php if (!empty($additional)): ?>
+                  <div class="additional"><?php print $additional; ?></div>
+                <?php endif; ?>
               <?php endif; ?>
             </div>
           </div>

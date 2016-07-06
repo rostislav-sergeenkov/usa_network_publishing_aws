@@ -287,6 +287,7 @@ function usanetwork_aspot_field_group_info() {
       3 => 'field_aspot_tgi_title',
       4 => 'field_aspot_tgi_title_prefix',
       5 => 'field_aspot_tgi_desc',
+      6 => 'field_new_design',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

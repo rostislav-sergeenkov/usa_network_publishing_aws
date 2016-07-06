@@ -2420,7 +2420,8 @@
           max-height: get-vw(139px, 640);
         }
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(22px, 640);
+          font-size: get-vw(27.2px, 640);
+          max-height: get-vw(196px, 640);
         }
       }
     }
@@ -3270,8 +3271,9 @@
         white-space: normal;
       }
       @include breakpoint($bp-640-width) {
-          font-size: get-vw(13px, 375);
-        }
+        font-size: get-vw(27.2px, 640);
+        max-height: get-vw(196px, 640);
+      }
     }
     .additional {
       color: $usa-related-additional;
@@ -3287,12 +3289,12 @@
       }
       @include breakpoint($bp-768-width) {
         font-size: get-vw(15.36px, 768);
-        line-height: calc(#{get-vw(14px, 640)} * 1.3);
+        line-height: 1.3;
         white-space: normal;
       }
       @include breakpoint($bp-640-width) {
-          font-size: get-vw(14px, 640);
-        }
+        font-size: get-vw(24px, 640);
+      }
     }
   }
 }
@@ -3339,12 +3341,9 @@
         margin-bottom: 17.5px;
       }
       @include breakpoint($bp-768-width) {
-        font-size: get-vw(20.89px, 768);
+        font-size: get-vw(27.2px, 640);
         margin-bottom: 0;
       }
-      @include breakpoint($bp-640-width) {
-          font-size: get-vw(28px, 640);
-        }
     }
     .additional {
       color: $usa-related-additional;

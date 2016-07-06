@@ -46314,7 +46314,6 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 480px) {
   .show-new-design .consum-sidebar .items-block-title h2 {
     font-size: 16px;
-    width: 90%;
   }
 }
 .show-new-design .consum-sidebar .episodes-list-slider {

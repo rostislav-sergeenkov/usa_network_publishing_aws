@@ -132,6 +132,73 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
   return 'full-video-icon-default';
 }
 
+function usanetwork_core_api_get_violator($entity_type, $entity_id) {
+  $entity = entity_load($entity_type, array($entity_id));
+
+  if (is_array($entity)) {
+    $entity = $entity[$entity_id];
+  }
+  $entity_wrapper = entity_metadata_wrapper($entity_type, $entity);
+
+  $violator = '';
+  if (usanetwork_core_api_check_field($entity, 'field_promo_violator_name', $entity_type)) {
+    $violator = $entity_wrapper->field_promo_violator_name->value();
+  }
+  else{
+    switch ($entity->type) {
+      case 'timeline_gallery':
+      case 'media_gallery':
+        $violator = 'Gallery';
+        break;
+      case 'mpx_video_1':
+        $violator = usanetwork_mpx_video_get_video_category($entity);
+        if (empty($violator)) {
+          $violator = t('Clip');
+        }
+        break;
+      case 'mpx_video_2':
+        $violator = 'Full Episode';
+        break;
+      case 'quiz':
+        $violator = 'Quiz';
+        break;
+      case 'person':
+        $violator = 'Cast';
+        break;
+      case 'tv_episode':
+        $violator = 'Recap';
+        break;
+      case 'consumpt_post':
+      case 'post':
+        $violator = 'Article';
+        break;
+      case 'catchall_page':
+      case 'usanetwork_promo':
+        $violator = 'Extras';
+        break;
+    }
+  }
+
+  $blog_service = usanetwork_blog_migrate_get_post_service($entity);
+  return usanetwork_core_api_prepare_blog_service_violator($violator, $blog_service);
+}
+
+function usanetwork_core_api_prepare_blog_service_violator($violator, $service) {
+  if ($service == 'verge') {
+    $violator_tag = array(
+      'element' => array(
+        '#tag' => 'span',
+        '#attributes' => array(
+          'class' => 'violator-icon ' . $service,
+        ),
+        '#value' => '',
+      ),
+    );
+    $violator = theme('html_tag', $violator_tag) . $violator;
+  }
+  return $violator;
+}
+
 /**
  * Returns an associated array of image field names of nodes.
  */
@@ -147,7 +214,7 @@ function _usanetwork_core_api_get_node_image_field_names() {
     ),
     // Catchall
     'catchall_page' => array(
-      'main' => 'field_usa_catchall_media',
+      'main' => 'field_usa_og_image',
       'files' => 'field_usa_catchall_media',
       'og_image' => 'field_usa_og_image',
     ),
@@ -355,4 +422,55 @@ function usanetwork_core_api_check_field($entity_object, $field_name, $entity_ty
   }
 
   return FALSE;
+}
+
+/**
+ * Get content from dynamic field.
+ *
+ * @param $entity
+ * @param $field
+ */
+function usanetwork_core_api_get_dynamic_entity_reference_content($entity, $field) {
+  $content = array();
+  if (!empty($entity->$field)) {
+    $field_data = field_get_items('node', $entity, $field);
+    foreach ($field_data as $data) {
+      $dynamic_entity = entity_load($data['target_type'], array($data['target_id']));
+      if (is_array($dynamic_entity)) {
+        $dynamic_entity = reset($dynamic_entity);
+      }
+      if (!empty($dynamic_entity) && usanetwork_core_api_check_entity_publish($dynamic_entity, $data['target_type'])) {
+        $item = array(
+          'entity_type' => $data['target_type'],
+          'entity_id' => $data['target_id'],
+          'entity' => $dynamic_entity,
+        );
+        $content[] = $item;
+      }
+    }
+  }
+  return $content;
+}
+
+/**
+ * Get output position for array index. Can be used as classes.
+ *
+ * @param $array
+ * @param $index
+ */
+function usanetwork_core_api_get_output_position($array, $index) {
+  $positions = array();
+  if ($index === 0) {
+    $positions[] = 'first';
+  }
+  if (($index % 2) === 0) {
+    $positions[] = 'even';
+  }
+  else {
+    $positions[] = 'odd';
+  }
+  if ($index + 1 == count($array)) {
+    $positions[] = 'last';
+  }
+  return $positions;
 }

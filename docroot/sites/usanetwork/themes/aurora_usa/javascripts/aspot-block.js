@@ -407,7 +407,7 @@
           Drupal.behaviors.ajax_aspot.initHomeAspot();
         }
 
-        Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+        $('#aspot-usanetwork').usaAspotHelper();
 
       }).fail(function () {
         console.info('ajax fail');
@@ -447,7 +447,7 @@
 
             _self.initHomeAspot();
 
-            Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+            $('#aspot-usanetwork').usaAspotHelper();
           }
 
         } else if (_body.hasClass('node-type-tv-show')) {
@@ -461,10 +461,10 @@
               // send ajax
               _self.getAspot(url);
             } else {
-              Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+              $('#aspot-usanetwork').usaAspotHelper();
             }
           } else {
-            Drupal.behaviors.usanetwork_aspot_home_page_giui.init();
+            $('#aspot-usanetwork').usaAspotHelper();
           }
         }
 

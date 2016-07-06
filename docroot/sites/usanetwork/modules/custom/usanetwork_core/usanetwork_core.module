@@ -195,22 +195,27 @@ function usanetwork_core_set_alt_for_files_list($files, $node_wrapper) {
   $alt_text = '';
   $file_wrappers = [];
   foreach ($files as $file) {
-    $file_wrapper = entity_metadata_wrapper('file', $file);
-    $file_wrappers[] = $file_wrapper;
-    if (usanetwork_core_api_check_field($file, 'field_image_copy_alt_to_other', 'file')) {
-      if (usanetwork_core_api_check_field($file, 'field_file_image_alt_text', 'file')) {
-        $alt_text = $file_wrapper->field_file_image_alt_text->value();
+    if ($file->type == 'image') {
+      $file_wrapper = entity_metadata_wrapper('file', $file);
+      $file_wrappers[] = $file_wrapper;
+      if (usanetwork_core_api_check_field($file, 'field_image_copy_alt_to_other', 'file')) {
+        if (usanetwork_core_api_check_field($file, 'field_file_image_alt_text', 'file')) {
+          $alt_text = $file_wrapper->field_file_image_alt_text->value();
+        }
       }
     }
   }
-  if (empty($alt_text)) {
+  if (empty($alt_text) && !empty($file_wrappers)) {
     if (usanetwork_core_api_check_field($node_wrapper, 'field_show')) {
       $alt_text = $node_wrapper->field_show->title->value();
     }
   }
   if (!empty($alt_text)) {
     foreach ($file_wrappers as $file_wrapper) {
-      $current_alt = $file_wrapper->field_file_image_alt_text->value();
+      $current_alt = NULL;
+      if (usanetwork_core_api_check_field($file_wrapper, 'field_file_image_alt_text', 'file')) {
+        $current_alt = $file_wrapper->field_file_image_alt_text->value();
+      }
       if (empty($current_alt)) {
         $file_wrapper->field_file_image_alt_text->set($alt_text);
         $file_wrapper->save();

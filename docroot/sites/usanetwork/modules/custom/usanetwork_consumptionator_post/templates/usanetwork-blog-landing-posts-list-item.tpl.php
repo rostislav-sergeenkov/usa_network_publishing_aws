@@ -14,7 +14,7 @@
  * $gallery_url' => URL to Gallery page
  */
 ?>
-<div class="episode-landing-list-item<?php if (!empty($active)): print ' active'; endif; ?>">
+<div class="episode-landing-list-item<?php if (!empty($active)): print ' active'; endif; ?><?php print (!empty($new_design))? ' show-border': ''; ?>">
   <div class="episode-landing-list-item-inner">
     <div class="episode-landing-info-block">
       <?php if (empty($news_post)) : ?>
@@ -37,18 +37,22 @@
             <img src="<?php print $desktop_image_url; ?>" alt=""/>
           </a>
         </div>
+        <?php if (!empty($violator)): ?>
+          <div class="caption show-color">
+            <?php print $violator; ?>
+          </div>
+        <?php endif; ?>
       </div>
-      <?php if (!empty($tags)): ?>
-        <div class="tags">
-          <?php print '<span>'.t('Tags:') . '</span> ' . $tags; ?>
-        </div>
-      <?php endif; ?>
       <div class="description"><?php print $description; ?></div>
     </div>
     <div class="buttons-bar">
       <div class="buttons">
         <?php if (!empty($blog_url)): ?>
-          <div class="full-episode-button show-color hover-avail"><a href="<?php print $blog_url; ?>"><?php print t('Read the post'); ?></a></div>
+          <?php if (!empty($new_design)): ?>
+            <div class="full-episode-button show-border hover-avail"><a href="<?php print $blog_url; ?>"><?php print t('Read the post'); ?><span class="show-color show-font"></span></a></div>
+          <?php else: ?>
+            <div class="full-episode-button show-color hover-avail"><a href="<?php print $blog_url; ?>"><?php print t('Read the post'); ?></a></div>
+          <?php endif; ?>
         <?php endif; ?>
       </div>
     </div>

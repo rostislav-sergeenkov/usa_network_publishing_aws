@@ -6,7 +6,7 @@
       homeMainBlockId, showMainBlockId, homePageName, showPageName, ndShowPageName,
       homeAspot, homeOptions, showAspot, showOptions, ndShowAspot, ndShowOptions,
       isInitHomeAspot, isInitShowAspot, isInitNdShowAspot,
-      tvs_newDesignStatus, ndMainBlockFlagClass, ndDesignCheckboxId;
+      tvs_newDesignStatus, ndMainBlockFlagClass, ndDesignCheckboxId, ndAspotSettings;
 
   // sets vars values
   usanetworkAspotNodeFormId = 'usanetwork-aspot-node-form';
@@ -30,6 +30,8 @@
     defaultFontSettings: {
       stepUpDown: 1,
       defaultStepPosition: 7, // min value 1, max value 12
+      minFontSizeCounter: 1,
+      maxFontSizeCounter: 12,
       homePage: {
         mobile: {
           title_prefix: {
@@ -196,6 +198,76 @@
         }
       }
     },
+  };
+
+  // new design aspots settings
+  ndAspotSettings = {
+    defaultFontSettings: {
+      stepUpDown: 1,
+      defaultStepPosition: 14, // min value 1, max value 12
+      minFontSizeCounter: 1,
+      maxFontSizeCounter: 30,
+      homePage: {
+        mobile: {
+          title_prefix: {
+            default_font_size: 17.28,
+            step: 1
+          },
+          title: {
+            default_font_size: 66.56,
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: 20,
+            step: 1.5
+          }
+        },
+        desktop: {
+          title_prefix: {
+            default_font_size: 14.08,
+            step: 1
+          },
+          title: {
+            default_font_size: 76.8,
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: 24,
+            step: 1.5
+          }
+        }
+      },
+      showPage: {
+        mobile: {
+          title_prefix: {
+            default_font_size: 17.28,
+            step: 1
+          },
+          title: {
+            default_font_size: 66.56,
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: 20,
+            step: 1.5
+          }
+        },
+        desktop: {
+          title_prefix: {
+            default_font_size: 14.08,
+            step: 1
+          },
+          title: {
+            default_font_size: 76.8,
+            step: 4
+          },
+          aspot_description: {
+            default_font_size: 24,
+            step: 1.5
+          }
+        }
+      }
+    },
     defaultNewDesignElemPositions: {
       nd_aspot_elements: {
         title_prefix: {
@@ -278,7 +350,6 @@
           showBgOffset: true, // false default value
 
           // for home Aspot disabled new design
-          initUsaDesignCheckbox: false,
           ndDesignCheckboxStatus: false,
           ndMainBlockClass: ndMainBlockFlagClass,
           ndDesignCheckboxId: ndDesignCheckboxId
@@ -297,7 +368,6 @@
           mainBlockId: showMainBlockId,
           pageName: showPageName,
           showBgOffset: false, // false default value
-          initUsaDesignCheckbox: true,
           ndDesignCheckboxStatus: tvs_newDesignStatus,
           ndMainBlockClass: ndMainBlockFlagClass,
           ndDesignCheckboxId: ndDesignCheckboxId
@@ -306,17 +376,16 @@
         // sets usaShowAspot options (new design)
         ndShowOptions = {
           aspot_draggable_items_data_name: ndShowPageName + aspot_draggable_items_data_name,
-          aspotSettings: aspotSettings,
+          aspotSettings: ndAspotSettings,
           aspot_elements: globalSettings.tvs_nd_aspot_elements,
           bg_offset_value: globalSettings.tvs_nd_desktop.bg_offset_value,
           bg_offset_image_url: globalSettings.tvs_nd_desktop.bg_offset_image_url,
           bg_offset_image_url_mobile: globalSettings.tvs_nd_mobile.bg_offset_image_url,
-          defaultFontSize: aspotSettings.defaultFontSettings.showPage,
-          defaultElemPosition: aspotSettings.defaultNewDesignElemPositions.nd_aspot_elements,
+          defaultFontSize: ndAspotSettings.defaultFontSettings.showPage,
+          defaultElemPosition: ndAspotSettings.defaultNewDesignElemPositions.nd_aspot_elements,
           mainBlockId: showMainBlockId,
           pageName: ndShowPageName,
           showBgOffset: false, // false default value
-          initUsaDesignCheckbox: true,
           ndDesignCheckboxStatus: tvs_newDesignStatus,
           ndMainBlockClass: ndMainBlockFlagClass,
           ndDesignCheckboxId: ndDesignCheckboxId
@@ -441,7 +510,7 @@
         PreviewBlockWrapper_tpl, PreviewBlockWrapperMobile_tpl, PreviewBlockWrapperTitle_tpl, PreviewBlockWrapperMobileTitle_tpl, PreviewBlockWrapperId,
         PreviewBlockWrapperMobileId, defaultFontSize, defaultElemPosition, aspotDraggableItemsData, aspotDraggableItemsDataId, aspotDraggableItemsData_tpl,
         PreviewBlock, PreviewBlockMobile, PreviewBlockWrapper, PreviewBlockWrapperMobile, ctaButtonClass,
-        newDesignClass, ndDesignCheckboxStatus, initNewDesignCheckbox;
+        newDesignClass, ndDesignCheckboxStatus, minFontSizeCounter, maxFontSizeCounter;
 
     // default params value
     defaultParams = {
@@ -461,11 +530,12 @@
     fontSettings = allParams.aspotSettings.defaultFontSettings;
     fontStepUpDown = fontSettings.stepUpDown;
     fontDefaultStepPosition = fontSettings.defaultStepPosition;
+    minFontSizeCounter = fontSettings.minFontSizeCounter;
+    maxFontSizeCounter = fontSettings.maxFontSizeCounter;
     pageName = allParams.pageName;
     isShowBgOffset = allParams.showBgOffset;
     defaultFontSize = allParams.defaultFontSize;
     defaultElemPosition = allParams.defaultElemPosition;
-    initNewDesignCheckbox = allParams.initUsaDesignCheckbox;
     ndDesignCheckboxStatus = allParams.ndDesignCheckboxStatus;
     newDesignClass = allParams.ndMainBlockClass;
     draggableElements = [];
@@ -1236,8 +1306,10 @@
               currentFontSize = parseFloat(fieldFontSize.text()),
               newCounter, newFontSize;
 
+          console.info('font-size', fontDefaultStepPosition, minFontSizeCounter, maxFontSizeCounter);
+
           if (activeItem.hasClass('increase-font')) {
-            if (stepCounterNum < 13) {
+            if (stepCounterNum <= maxFontSizeCounter) {
               newCounter = stepCounterNum + fontStepUpDown;
               newFontSize = sericeApi.mathNewFontSize(currentFontSize, fontSizeStep);
 
@@ -1249,7 +1321,7 @@
               currentField.css('fontSize', newFontSize + 'px');
             }
           } else if (activeItem.hasClass('decrease-font')) {
-            if (stepCounterNum > 1) {
+            if (stepCounterNum > minFontSizeCounter) {
               newCounter = stepCounterNum - fontStepUpDown;
               newFontSize = sericeApi.mathNewFontSize(currentFontSize, -fontSizeStep);
 

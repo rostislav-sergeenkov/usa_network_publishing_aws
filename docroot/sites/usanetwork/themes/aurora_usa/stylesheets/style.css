@@ -4111,9 +4111,13 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
     height: calc((100vw - 2 * 5vw) * 0.4375);
   }
 }
-.best-of-section .best-of-content li .usa-best-of-promo > a {
+.best-of-section .best-of-content li .usa-best-of-promo .promo-link {
+  display: block;
   height: 100%;
-  position: relative;
+  left: 0;
+  outline: none;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 .best-of-section .best-of-content li .usa-best-of-promo .image-block {

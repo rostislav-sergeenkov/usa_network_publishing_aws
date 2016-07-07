@@ -125,7 +125,13 @@
 }
 
 @mixin aspotShowFonts($step, $default-font-desktop, $default-font-mobile, $new-design) {
-  @for $i from 1 to 14 {
+
+  $end: 14;
+
+  @if ($new-design == true) {
+    $end: 31;
+  }
+  @for $i from 1 to $end {
     &.font-show-mobile-#{$i} {
       @include breakpoint($bp-640-width) {
         font-size: get-vw($default-font-mobile + $step*($i - 1), 640);

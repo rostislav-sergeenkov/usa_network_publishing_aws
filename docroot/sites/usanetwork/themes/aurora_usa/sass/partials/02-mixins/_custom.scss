@@ -129,7 +129,7 @@
   $end: 14;
 
   @if ($new-design == true) {
-    $end: 31;
+    $end: 32;
   }
   @for $i from 1 to $end {
     &.font-show-mobile-#{$i} {

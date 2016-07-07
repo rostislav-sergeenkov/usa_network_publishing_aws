@@ -334,7 +334,7 @@ function _usanetwork_consumptionator_post_main_block() {
 /*
  * Get latest posts
  */
-function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 20) {
+function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 20, $exclude_verge = FALSE) {
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
   $query->condition('node.type', 'consumpt_post');
@@ -350,6 +350,13 @@ function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid =
       $query->leftJoin('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=node.nid');
       $query->isNull('field_consumptionator_blog.field_consumptionator_blog_target_id');
     }
+  }
+  if ($exclude_verge) {
+    $query->leftJoin('field_data_field_content_tags', 'tags_field', 'tags_field.entity_id=node.nid');
+    $query->condition(db_or()
+      ->isNull('tags_field.field_content_tags_tid')
+      ->condition('tags_field.field_content_tags_tid', variable_get('usanetwork_blog_migrate_the_verge_taxonomy_term_tid', FALSE), '!=')
+    );
   }
   $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
   $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');

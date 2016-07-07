@@ -2642,9 +2642,13 @@
         }
       }
     }
-    > a {
+    .promo-link {
+      display: block;
       height: 100%;
-      position: relative;
+      left: 0;
+      outline: none;
+      position: absolute;
+      top: 0;
       width: 100%;
     }
     .image-block {

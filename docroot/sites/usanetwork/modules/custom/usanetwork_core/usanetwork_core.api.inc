@@ -363,6 +363,15 @@ function usanetwork_core_api_check_display_relate_content($node) {
  * @return bool
  */
 function usanetwork_core_api_check_entity_publish($entity, $entity_type = 'node') {
+  global $user;
+  // Allow specify users see unpublished content.
+  $query_params = drupal_get_query_parameters();
+  if (isset($query_params['show_unpublished']) && $query_params['show_unpublished'] == 1) {
+    $allowed_for_user = !empty(array_intersect_key(usanetwork_core_api_get_roles_allowed_unpublished_content(), $user->roles));
+    if ($allowed_for_user) {
+      return TRUE;
+    }
+  }
   switch ($entity_type) {
     case 'node':
       if ($entity->status != NODE_PUBLISHED) {
@@ -376,6 +385,15 @@ function usanetwork_core_api_check_entity_publish($entity, $entity_type = 'node'
       break;
   }
   return TRUE;
+}
+
+function usanetwork_core_api_get_roles_allowed_unpublished_content() {
+  return array(
+    11 => 'administrator',
+    16 => 'editor',
+    21 => 'moderator',
+    31 => 'previewer',
+  );
 }
 
 /**

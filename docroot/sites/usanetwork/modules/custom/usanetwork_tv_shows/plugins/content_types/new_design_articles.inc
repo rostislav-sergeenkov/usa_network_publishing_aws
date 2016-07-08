@@ -79,7 +79,7 @@ function new_design_articles_content_type_get_manual_articles($articles) {
   $articles_data = array();
   foreach ($articles as $index => $item) {
     $data_item = usanetwork_promo_get_promo_content_variables($item);
-    $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
+    $row_image_uri = usanetwork_core_api_get_content_image_given_image_override($item['entity_type'], $item['entity']);
     $positions = usanetwork_core_api_get_output_position($articles, $index);
     $blog_service = usanetwork_blog_migrate_get_post_service($item['entity']);
     $author_term = usanetwork_consumptionator_post_get_author($item['entity_type'], $item['entity']);

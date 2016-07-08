@@ -7,7 +7,7 @@
   }
 }
 
-.consumptionator-video-page {
+body:not(.show-new-design).consumptionator-video-page {
   .video-block {
     .player-wrapper {
       float: none !important;
@@ -89,7 +89,7 @@
   }
 }
 
-.consumptionator-page, .page-videos-live {
+body:not(.show-new-design).consumptionator-page, .page-videos-live {
   .video-block {
     @include clear;
     margin: 0;
@@ -343,10 +343,11 @@
           }
         }
         &.section-auth {
-          position: absolute;
           left: 0;
           top: 0;
-          height: 100%;
+          position: absolute;
+          padding-bottom: 56.25%;
+          height: 0;
           width: 100%;
           z-index: 1;
           .auth-msg-wrap {
@@ -485,6 +486,9 @@
         //          content: " ";
         //          background:url('../images/sign_in_key.png') center top no-repeat;
         //        }
+        & {
+          background: green;
+        }
         &.inactive {
           .sign-in-button {
             display: none;
@@ -500,11 +504,12 @@
           }
         }
         &.inactive {
+          height: auto;
           .inner-wrap {
             background: #3D3D3D;
             padding: 20px;
             height: 100%;
-            position: absolute;
+            position: relative;
             width: 100%;
             @include breakpoint($bp-768-width) {
               padding: 0;

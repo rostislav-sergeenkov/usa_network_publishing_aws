@@ -390,8 +390,8 @@
     $($slides).each(function (index, el) {
 
       var $slideCounter = $(el).find(_.options.slideCounter),
-          //slickIndex = parseInt(el.dataset.slickIndex) + 1;
-          slickIndex = (el.hasOwnProperty('dataset') && el.dataset.hasOwnProperty('slickIndex')) ? parseInt(el.dataset.slickIndex) + 1 : 1;
+
+          slickIndex = el.dataset.hasOwnProperty('slickIndex') ? parseInt(el.dataset.slickIndex) + 1 : index + 1;
 
       $slideCounter.text(slickIndex + separator + slideCount);
     });

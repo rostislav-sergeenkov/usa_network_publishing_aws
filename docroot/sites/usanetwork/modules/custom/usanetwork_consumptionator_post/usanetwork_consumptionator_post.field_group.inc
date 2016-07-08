@@ -26,8 +26,7 @@ function usanetwork_consumptionator_post_field_group_info() {
       0 => 'field_collection',
       1 => 'field_content_tags',
       2 => 'field_contributor',
-      3 => 'field_media_gallery',
-      4 => 'field_usa_css',
+      3 => 'field_usa_css',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -117,7 +116,7 @@ function usanetwork_consumptionator_post_field_group_info() {
   $field_group->parent_name = 'group_basic_information';
   $field_group->data = array(
     'label' => 'Displaying Author',
-    'weight' => '14',
+    'weight' => '15',
     'children' => array(
       0 => 'field_blog_display_author',
       1 => 'field_override_display_author',
@@ -134,6 +133,35 @@ function usanetwork_consumptionator_post_field_group_info() {
     ),
   );
   $export['group_blog_displaying_author|node|consumpt_post|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_blog_service|node|consumpt_post|form';
+  $field_group->group_name = 'group_blog_service';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'consumpt_post';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Blog service',
+    'weight' => '45',
+    'children' => array(
+      0 => 'field_author',
+      1 => 'field_post_original_date',
+      2 => 'field_post_original_link',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-blog-service field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_blog_service|node|consumpt_post|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -218,6 +246,7 @@ function usanetwork_consumptionator_post_field_group_info() {
       5 => 'field_promo_title',
       6 => 'field_promo_topic',
       7 => 'field_promo_violator_name',
+      8 => 'field_promo_call_to_action_text',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -5,3 +5,92 @@
  */
 
 include_once 'usanetwork_context.features.inc';
+
+/**
+ * Implements hook_context_plugins().
+ */
+function usanetwork_context_context_plugins() {
+  $plugins = array();
+  $plugins['usanetwork_context_new_design_show'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'usanetwork_context') . '/plugins',
+      'file' => 'usanetwork_context_new_design_show.inc',
+      'class' => 'usanetwork_context_new_design_show',
+      'parent' => 'context_condition',
+    ),
+  );
+  $plugins['usanetwork_context_new_design_cons'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'usanetwork_context') . '/plugins',
+      'file' => 'usanetwork_context_new_design_cons.inc',
+      'class' => 'usanetwork_context_new_design_cons',
+      'parent' => 'context_condition',
+    ),
+  );
+  $plugins['usanetwork_context_new_design_file'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'usanetwork_context') . '/plugins',
+      'file' => 'usanetwork_context_new_design_file.inc',
+      'class' => 'usanetwork_context_new_design_file',
+      'parent' => 'context_condition',
+    ),
+  );
+  return $plugins;
+}
+
+/**
+ * Implements hook_context_registry().
+ *
+ */
+function usanetwork_context_context_registry() {
+  $registry = array();
+  $registry['conditions'] = array(
+    'new_design_show' => array(
+      'title' => t('New design show'),
+      'description' => t('This condition works for all Landing pages.'),
+      'plugin' => 'usanetwork_context_new_design_show',
+    ),
+    'new_design_consumpt' => array(
+      'title' => t('New design consumpt'),
+      'description' => t('This condition works for selected Consumptionator pages.'),
+      'plugin' => 'usanetwork_context_new_design_cons',
+    ),
+    'new_design_file' => array(
+      'title' => t('New design file'),
+      'description' => t('This condition works for selected File pages.'),
+      'plugin' => 'usanetwork_context_new_design_file',
+    ),
+  );
+  return $registry;
+}
+
+/**
+ * Implements hook_init().
+ *
+ */
+function usanetwork_context_init() {
+  $show_node = _usanetwork_menu_show_menu_get_current_show_node();
+  if ($show_node) {
+    if ($plugin = context_get_plugin('condition', 'new_design_show')) {
+      $plugin->execute($show_node);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function usanetwork_context_node_view($node, $view_mode, $langcode) {
+  if ($plugin = context_get_plugin('condition', 'new_design_consumpt')) {
+    $plugin->execute($node);
+  }
+}
+
+/**
+ * Implements hook_file_view().
+ */
+function usanetwork_context_file_view($file, $view_mode, $langcode) {
+  if ($plugin = context_get_plugin('condition', 'new_design_file')) {
+    $plugin->execute($file);
+  }
+}

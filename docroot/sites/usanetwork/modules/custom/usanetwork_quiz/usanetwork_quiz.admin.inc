@@ -3,6 +3,7 @@
 /**
  * Returns configuration module form.
  */
+//TODO: Can be removed is we use one player for all
 function usanetwork_quiz_config_form($form, &$form_state) {
   $form['players'] = array(
     '#type' => 'fieldset',

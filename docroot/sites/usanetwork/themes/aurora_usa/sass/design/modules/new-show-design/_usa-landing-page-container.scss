@@ -1,0 +1,201 @@
+.show-new-design .landing-page-container {
+  background: black;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  .landing-items-blocks {
+    @include clear();
+    border-bottom: 2px solid;
+    margin-bottom: 100px;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-768-width) {
+      padding: 0 get-vw(32px, 768)
+    }
+    &.infinity-finished {
+      margin-bottom: 0;
+    }
+    &.all-shows-items-blocks, &.all-movies-items-blocks {
+      padding: 20px 20px 40px;
+      @include breakpoint($bp-min-1901-width) {
+        padding: 20px 32px 40px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: 20px 10px 40px;
+      }
+      ul {
+        max-width: 1820px;
+        li {
+          height: 13.2vw;
+          margin-bottom: 0;
+          margin-right: 0.6%;
+          margin-top: 0.58vw;
+          width: 24.55%;
+          @extend %all-shows-promo;
+          @include breakpoint($bp-min-1901-width) {
+            height: 251px;
+            margin-top: 11px;
+          }
+          @include breakpoint($bp-min-1281-width) {
+            &:nth-child(4n) {
+              margin-right: 0;
+            }
+          }
+          @include breakpoint($between-769-1280) {
+            height: 16.9vw;
+            margin-right: 1.1%;
+            margin-top: 1.05vw;
+            width: 32.6%;
+            &:nth-child(3n) {
+              margin-right: 0;
+            }
+          }
+          @include breakpoint($bp-768-width) {
+            height: 26vw;
+            margin-right: 0;
+            margin-top: 1.9vw;
+            width: 49%;
+            &:nth-child(2n) {
+              float: right;
+              margin-right: 0;
+            }
+          }
+          > div {
+            float: none;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+    ul {
+      @include clear();
+      height: calc(((100vw - 2*#{get-vw(20px, 1600)} - #{get-vw(16px, 1600)})/2)*0.8203125);
+      margin: 0 auto 20px;
+      padding: 0;
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        height: calc(((1600px - 2*20px - 16px)/2)*0.8203125);
+        max-width: 1560px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: auto;
+      }
+      li {
+        float: left;
+        height: calc((100% - #{get-vw(16px, 1600)})/2);
+        margin-right: get-vw(16px, 1600);
+        overflow: hidden;
+        position: relative;
+        width: calc((((100% - #{get-vw(16px, 1600)})/2) - #{get-vw(16px, 1600)})/2);
+        @include breakpoint($bp-min-1601-width) {
+          height: calc((100% - 16px)/2);
+          margin-right: 16px;
+          width: calc((((100% - 16px)/2) - 16px)/2);
+        }
+        @include breakpoint($bp-768-width) {
+          height: auto;
+          margin-right: 0;
+          width: calc((100% - #{get-vw(18px, 640)})/2);
+        }
+        @extend %usa-landing-container-promo;
+      }
+      &.odd {
+        li {
+          &:nth-child(1) {
+            height: 100%;
+            width: calc((100% - #{get-vw(16px, 1600)})/2);
+            @include breakpoint($bp-min-1601-width) {
+              width: calc((100% - 16px)/2);
+            }
+            @include breakpoint($bp-768-width) {
+              height: auto;
+              margin-bottom: get-vw(55px, 640);
+              width: 100%;
+            }
+          }
+          &:nth-child(2), &:nth-child(3) {
+            margin-bottom: get-vw(16px, 1600);
+            @include breakpoint($bp-min-1601-width) {
+              margin-bottom: 16px;
+            }
+            @include breakpoint($bp-768-width) {
+              margin-bottom: get-vw(55px, 640);
+            }
+          }
+          &:nth-child(3), &:nth-child(5) {
+            margin-right: 0;
+            @include breakpoint($bp-768-width) {
+              clear: right;
+            }
+          }
+          &:nth-child(2), &:nth-child(4) {
+            margin-right: get-vw(15.9px, 1600);
+            @include breakpoint($bp-min-1601-width) {
+              margin-right: 15.9px;
+            }
+            @include breakpoint($bp-768-width) {
+              clear: left;
+              margin-right: get-vw(17.9px, 640);
+            }
+          }
+        }
+      }
+      &.even {
+        li {
+          @include breakpoint($bp-768-width) {
+            margin-bottom: get-vw(55px, 640);
+          }
+          &:nth-child(5) {
+            height: 100%;
+            margin-right: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: calc((100% - #{get-vw(16px, 1600)})/2);
+            @include breakpoint($bp-min-1601-width) {
+              width: calc((100% - 16px)/2);
+            }
+            @include breakpoint($bp-768-width) {
+              height: auto;
+              margin-bottom: 0;
+              position: relative;
+              width: 100%;
+            }
+          }
+          &:nth-child(1), &:nth-child(2) {
+            margin-bottom: get-vw(16px, 1600);
+            @include breakpoint($bp-min-1601-width) {
+              margin-bottom: 16px;
+            }
+            @include breakpoint($bp-768-width) {
+              margin-bottom: get-vw(55px, 640);
+            }
+          }
+          &:nth-child(3) {
+            clear: left;
+            @include breakpoint($bp-768-width) {
+              clear: none;
+            }
+          }
+          &:nth-child(1), &:nth-child(3) {
+            margin-right: get-vw(15.9px, 1600);
+            @include breakpoint($bp-min-1601-width) {
+              margin-right: 15.9px;
+            }
+            @include breakpoint($bp-768-width) {
+              clear: left;
+              margin-right: get-vw(17.9px, 640);
+            }
+          }
+          &:nth-child(2), &:nth-child(4) {
+            @include breakpoint($bp-768-width) {
+              clear: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}

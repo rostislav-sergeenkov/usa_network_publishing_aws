@@ -1,0 +1,25 @@
+#usa-to-top {
+  cursor: pointer;
+  margin-left: auto;
+  position: relative;
+  height: 37px;
+  width: 37px;
+  @include breakpoint($bp-768-width) {
+    //height: 66px;
+    //width: 66px;
+  }
+  &:before {
+    @include sprite-background(back_to_top);
+    content: ''; //@todo add correct icon
+    color: #ffffff;
+    display: block;
+    font-family: $ico-font;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 1;
+    margin: -10.5px 0 0 -8.5px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+  }
+}

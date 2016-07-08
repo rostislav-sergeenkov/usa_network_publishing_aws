@@ -82,11 +82,19 @@ function aurora_usa_preprocess_html(&$vars) {
     );
     if (in_array($entity->type, $consumptionator_node_types)) {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $entity);
+      if ($is_new_design == 1) {
+        $vars['classes_array'][] = 'show-new-design';
+      }
     }
     if ($entity->type == 'tv_show') {
       $show_title = _usanetwork_get_field_item('node', $entity, 'field_pathauto_alias', 'value');
       $show_class = drupal_html_class('show-' . $show_title);
       $vars['classes_array'][] = $show_class;
+      $new_design = _usanetwork_tv_shows_is_new_design_entity('node', $entity);
+      if ($new_design) {
+        $vars['classes_array'][] = 'show-new-design';
+      }
     }
     elseif ($entity->type == 'movie') {
       $movie_title = usanetwork_tv_shows_color_get_node_code($entity);
@@ -107,9 +115,13 @@ function aurora_usa_preprocess_html(&$vars) {
     }
   }
   elseif ($entity = menu_get_object('file')) {
-    if ($entity->filemime == 'video/mpx') {
+    if (in_array($entity->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
       $vars['classes_array'][] =  drupal_html_class('consumptionator-video-page');
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('file', $entity);
+      if ($is_new_design == 1) {
+        $vars['classes_array'][] = 'show-new-design';
+      }
     }
     $tv_content_node = usanetwork_core_api_get_tv_content_node($entity);
     if (!empty($tv_content_node)) {
@@ -169,9 +181,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/consumptionator-carousels.js');
   drupal_add_js($theme_path . '/javascripts/lazy-load-custom.js');
   drupal_add_js($theme_path . '/javascripts/spin.min.js');
-  drupal_add_js('var USAN = USAN || {};',
-    array('type' => 'inline', 'scope' => 'header', 'weight' => -100)
-  );
+  drupal_add_js($theme_path . '/javascripts/USAN.js', array('scope' => 'header', 'weight' => -100));
 
   $icomoon_ie_fix = array(
     '#tag' => 'script',

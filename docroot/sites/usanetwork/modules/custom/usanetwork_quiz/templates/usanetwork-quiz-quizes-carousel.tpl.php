@@ -6,7 +6,7 @@
   </div>
 </div>
 <div class="items-block quizes-block">
-  <div class="items-block-title quizes-block-title">
+  <div class="items-block-title quizes-block-title<?php print !empty($new_design) ? ' show-color show-font' : ''; ?>">
     <h2><?php print $block_title;?></h2>
   </div>
   <?php if (!empty($quizes['vertical'])): ?>
@@ -32,7 +32,7 @@
     </div>
   <?php endif; ?>
 </div>
-<div class="more-items more-explore show-color">
+<div class="more-items more-explore <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
   <?php if (!empty($show_explore_link)): ?>
     <?php print $show_explore_link; ?>
   <?php endif; ?>

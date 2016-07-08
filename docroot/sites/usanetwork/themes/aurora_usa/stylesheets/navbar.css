@@ -14,6 +14,22 @@
   cursor: pointer;
 }
 
+.show-new-design .show-color-border, .show-new-design .asset-img.show {
+  position: relative;
+}
+.show-new-design .show-color-border:before, .show-new-design .asset-img.show:before {
+  background: #2c2c2c;
+  display: block;
+  content: '';
+  height: 2px !important;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 3px;
+  z-index: 2;
+  cursor: pointer;
+}
+
 .show-color {
   background: #2c2c2c;
 }
@@ -386,6 +402,70 @@
   font-family: 'texgyrescholaitalic';
   src: url("../fonts/texgyreschola-italic-webfont.eot");
   src: url("../fonts/texgyreschola-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/texgyreschola-italic-webfont.woff") format("woff"), url("../fonts/texgyreschola-italic-webfont.ttf") format("truetype"), url("../fonts/texgyreschola-italic-webfont.svg#texgyrescholaitalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FiraSansRegular';
+  src: url("../fonts/FiraSansRegular.eot");
+  src: url("../fonts/FiraSansRegular.eot") format("embedded-opentype"), url("../fonts/FiraSansRegular.woff") format("woff"), url("../fonts/FiraSansRegular.ttf") format("truetype"), url("../fonts/FiraSansRegular.svg#FiraSansRegular") format("svg");
+}
+
+@font-face {
+  font-family: 'FiraSansMedium';
+  src: url("../fonts/FiraSansMedium.eot");
+  src: url("../fonts/FiraSansMedium.eot") format("embedded-opentype"), url("../fonts/FiraSansMedium.woff") format("woff"), url("../fonts/FiraSansMedium.ttf") format("truetype"), url("../fonts/FiraSansMedium.svg#FiraSansMedium") format("svg");
+}
+
+@font-face {
+  font-family: 'FiraSansLight';
+  src: url("../fonts/FiraSansLight.eot");
+  src: url("../fonts/FiraSansLight.eot") format("embedded-opentype"), url("../fonts/FiraSansLight.woff") format("woff"), url("../fonts/FiraSansLight.ttf") format("truetype"), url("../fonts/FiraSansLight.svg#FiraSansLight") format("svg");
+}
+
+@font-face {
+  font-family: 'FiraSansBold';
+  src: url("../fonts/FiraSansBold.eot");
+  src: url("../fonts/FiraSansBold.eot") format("embedded-opentype"), url("../fonts/FiraSansBold.woff") format("woff"), url("../fonts/FiraSansBold.ttf") format("truetype"), url("../fonts/FiraSansBold.svg#FiraSansBold") format("svg");
+}
+
+@font-face {
+  font-family: 'opensansregular';
+  src: url("../fonts/opensans-regular-webfont.eot");
+  src: url("../fonts/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-regular-webfont.woff") format("woff"), url("../fonts/opensans-regular-webfont.ttf") format("truetype"), url("../fonts/opensans-regular-webfont.svg#opensansregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensanssemibold';
+  src: url("../fonts/opensans-semibold-webfont.eot");
+  src: url("../fonts/opensans-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-semibold-webfont.woff") format("woff"), url("../fonts/opensans-semibold-webfont.ttf") format("truetype"), url("../fonts/opensans-semibold-webfont.svg#opensanssemibold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotolight';
+  src: url("../fonts/roboto-light-webfont.eot");
+  src: url("../fonts/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-light-webfont.woff") format("woff"), url("../fonts/roboto-light-webfont.ttf") format("truetype"), url("../fonts/roboto-light-webfont.svg#robotolight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotomedium';
+  src: url("../fonts/roboto-medium-webfont.eot");
+  src: url("../fonts/roboto-medium-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-medium-webfont.woff") format("woff"), url("../fonts/roboto-medium-webfont.ttf") format("truetype"), url("../fonts/roboto-medium-webfont.svg#robotomedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ropasansregular';
+  src: url("../fonts/ropasans-regular-webfont.eot");
+  src: url("../fonts/ropasans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ropasans-regular-webfont.woff") format("woff"), url("../fonts/ropasans-regular-webfont.ttf") format("truetype"), url("../fonts/ropasans-regular-webfont.svg#ropasansregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }

@@ -5406,28 +5406,31 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   }
 }
 .show-new-design .landing-page-container .landing-items-blocks ul li .usa-landing-container-promo.small .meta .title {
-  font-size: 1.95313vw;
+  font-size: 1.375vw;
+  max-height: 5.3125vw;
 }
 @media (min-width: 1601px) {
   .show-new-design .landing-page-container .landing-items-blocks ul li .usa-landing-container-promo.small .meta .title {
-    font-size: 27px;
+    font-size: 22px;
+    max-height: 85px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .show-new-design .landing-page-container .landing-items-blocks ul li .usa-landing-container-promo.small .meta .title {
-    font-size: 20px;
+    font-size: 1.75vw;
+    max-height: 4.49219vw;
   }
 }
 @media (min-width: 769px) {
   .show-new-design .landing-page-container .landing-items-blocks ul li .usa-landing-container-promo.small .meta .title {
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
   }
 }
 @media (max-width: 768px) {
   .show-new-design .landing-page-container .landing-items-blocks ul li .usa-landing-container-promo.small .meta .title {
     font-size: 4.25vw;
+    max-height: none;
   }
 }
 .show-new-design .landing-page-container .landing-items-blocks ul li .usa-landing-container-promo.small .meta .additional {
@@ -5571,7 +5574,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .show-new-design .landing-page-container .landing-items-blocks ul li .usa-landing-container-promo.big .meta .title {
-    font-size: 21px;
+    font-size: 2.70508vw;
   }
 }
 @media (max-width: 768px) {

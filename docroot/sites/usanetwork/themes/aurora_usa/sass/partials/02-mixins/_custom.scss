@@ -141,8 +141,15 @@
       @include breakpoint($bp-min-641-width) {
         font-size: get-vw($default-font-desktop + $step*($i - 1), 1280);
       }
-      @include breakpoint($between-641-768) {
-        font-size: get-vw(($default-font-desktop + $step*($i - 1))*1.285, 1280)!important;
+      @if ($new-design == true) {
+        @include breakpoint($between-641-768) {
+          font-size: get-vw(($default-font-desktop + $step*($i - 1))*1.35, 1280)!important;
+        }
+      }
+      @if ($new-design == false) {
+        @include breakpoint($between-641-768) {
+          font-size: get-vw(($default-font-desktop + $step*($i - 1))*1.285, 1280)!important;
+        }
       }
       @if ($new-design == false) {
         @include breakpoint($bp-min-2500-width) {

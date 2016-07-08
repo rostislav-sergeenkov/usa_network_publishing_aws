@@ -46,6 +46,11 @@
       }
     }
     #aspot-usanetwork {
+      .wrp, .node, .asset-img, .asset-img img {
+        @include breakpoint($bp-min-769-width) {
+          height: 100%;
+        }
+      }
       @include breakpoint($bp-768-width) {
         border-bottom: 2px solid;
         .asset-img {

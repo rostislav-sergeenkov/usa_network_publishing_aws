@@ -41853,9 +41853,6 @@ html.no-scroll, body.no-scroll {
   }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
-  height: 30px;
-  width: 100px;
-  background: #f4ea71;
   top: 50%;
   position: absolute;
   -moz-transform: translateY(-50%);

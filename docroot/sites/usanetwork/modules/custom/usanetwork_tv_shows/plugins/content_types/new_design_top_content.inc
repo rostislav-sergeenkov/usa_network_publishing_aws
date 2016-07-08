@@ -146,7 +146,7 @@ function _new_design_get_top_elements($show, $type, $count) {
             ? count($node->field_media_items[$node->language]) + 1
             : count($node->field_media_items[$node->language]))
           : 0) . ' ' . t('Photos');
-      $node_image = usanetwork_core_api_get_content_image('node', $node, 'main', 1, TRUE);
+      $node_image = usanetwork_core_api_get_content_image_given_image_override('node', $node, 'main', 1, TRUE);
       $items[] = array(
         'title' => $element->title,
         'link' => url('node/' . $element->nid),

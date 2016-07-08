@@ -100,6 +100,31 @@ function usanetwork_core_api_get_content_image($entity_type, $entity, $image_typ
   return NULL;
 }
 
+/**
+ * Get content image given image override.
+ *
+ * @param $entity_type - type of entity.
+ * @param $entity - entity object or entity id.
+ * @param $image_type - the type of image (in 95% cases you need 'main').
+ * @param $limit - the number of values that should be returned from field (let it = 1 if you need a single value).
+ * @param $return_uri - the boolean value. It returns file object if it false and returns image uri if it true.
+ */
+function usanetwork_core_api_get_content_image_given_image_override($entity_type, $entity, $image_type = 'main', $limit = 1, $return_uri = TRUE) {
+  $content_image = NULL;
+  if (!empty($entity->field_promo_image_override)) {
+    $field_image_override_items = field_get_items($entity_type, $entity, 'field_promo_image_override');
+
+    if (!empty($field_image_override_items)) {
+      $field_image_override = reset($field_image_override_items);
+      $content_image = $field_image_override['uri'];
+    }
+  }
+  else {
+    $content_image = usanetwork_core_api_get_content_image($entity_type, $entity, $image_type, $limit, $return_uri);
+  }
+  return $content_image;
+}
+
 function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
   $entity = entity_load($entity_type, array($entity_id));
 

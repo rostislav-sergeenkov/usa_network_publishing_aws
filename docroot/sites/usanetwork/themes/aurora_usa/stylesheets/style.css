@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -41862,6 +41862,15 @@ html.no-scroll, body.no-scroll {
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
   top: 50%;
   position: absolute;
+  -moz-transform: translateY(-50%);
+  /* Для Firefox */
+  -ms-transform: translateY(-50%);
+  /* Для IE */
+  -webkit-transform: translateY(-50%);
+  /* Для Safari, Chrome, iOS */
+  -o-transform: translateY(-50%);
+  /* Для Opera */
+  transform: translateY(-50%);
 }
 @media (min-width: 769px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {
@@ -43417,6 +43426,11 @@ html.no-scroll, body.no-scroll {
     left: 0;
     position: absolute;
     top: 0;
+  }
+}
+@media (min-width: 769px) {
+  .usa-show-aspot .pane-new-design-aspot #aspot-usanetwork .wrp, .usa-show-aspot .pane-new-design-aspot #aspot-usanetwork .node, .usa-show-aspot .pane-new-design-aspot #aspot-usanetwork .asset-img, .usa-show-aspot .pane-new-design-aspot #aspot-usanetwork .asset-img img {
+    height: 100%;
   }
 }
 @media (max-width: 768px) {

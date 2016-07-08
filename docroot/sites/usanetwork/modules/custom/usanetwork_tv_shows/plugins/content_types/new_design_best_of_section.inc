@@ -81,7 +81,7 @@ function new_design_best_of_section_get_content($node) {
       continue;
     }
     $data_item = usanetwork_promo_get_promo_content_variables($item);
-    $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
+    $row_image_uri = usanetwork_core_api_get_content_image_given_image_override($item['entity_type'], $item['entity']);
     $additional_data = array(
       'image_desktop' => image_style_url($style_desktop, $row_image_uri),
       'image_mobile' => image_style_url($style_mobile, $row_image_uri),

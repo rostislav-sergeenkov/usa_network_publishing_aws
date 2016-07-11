@@ -651,7 +651,7 @@
             .inner-wrap {
               background: $gallery-description-back;
               padding: get-vw(55px, 1600) get-vw(60px, 1600) get-vw(40px, 1600) get-vw(75px, 1600);
-              height: 100%;
+              height: auto;
               position: relative;
               width: 100%;
               @include breakpoint($bp-min-1601-width) {
@@ -665,7 +665,7 @@
               }
             }
             .inner {
-              height: 100%;
+              height: auto;
               width: 100%;
               & > .asset-img {
                 float: left;
@@ -821,7 +821,7 @@
                     padding: get-vw(7.5px, 768);
                   }
                   @include breakpoint($bp-640-width) {
-                    padding: get-vw(9px, 640) get-vw(21px, 640) 0;
+                    padding: get-vw(21px, 640) get-vw(9px, 640) 0;
                   }
                   .caption {
                     @extend %usa-violator-icon;
@@ -899,6 +899,7 @@
                     color: white;
                     font-family: $tex-gyreschola-italic;
                     font-size: get-vw(14px, 1600);
+                    text-align: left;
                     text-transform: uppercase;
                     @include breakpoint($bp-min-1601-width) {
                       font-size: 14px;

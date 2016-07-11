@@ -3863,9 +3863,6 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   position: relative;
   width: 100%;
 }
-.no-touch .b-c-d-block li .usa-bcd-carousel-promo:hover .image-block, .b-c-d-block .no-touch li .usa-bcd-carousel-promo:hover .image-block {
-  opacity: 0.85;
-}
 @media (max-width: 768px) {
   .b-c-d-block li .usa-bcd-carousel-promo {
     height: auto;
@@ -3893,9 +3890,6 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   width: 100%;
   -webkit-transition: all 0.1s linear;
   transition: all 0.1s linear;
-}
-.no-touch .b-c-d-block li .usa-bcd-carousel-promo .image-block, .b-c-d-block .no-touch li .usa-bcd-carousel-promo .image-block {
-  opacity: 0.35;
 }
 @media (max-width: 768px) {
   .b-c-d-block li .usa-bcd-carousel-promo .image-block {
@@ -4098,9 +4092,6 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   position: relative;
   width: 100%;
 }
-.no-touch .best-of-section .best-of-content li .usa-best-of-promo:hover .image-block, .best-of-section .best-of-content .no-touch li .usa-best-of-promo:hover .image-block {
-  opacity: 0.85;
-}
 @media (max-width: 768px) {
   .best-of-section .best-of-content li .usa-best-of-promo {
     height: auto;
@@ -4126,9 +4117,6 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   width: 100%;
   -webkit-transition: all 0.1s linear;
   transition: all 0.1s linear;
-}
-.no-touch .best-of-section .best-of-content li .usa-best-of-promo .image-block, .best-of-section .best-of-content .no-touch li .usa-best-of-promo .image-block {
-  opacity: 0.35;
 }
 @media (max-width: 768px) {
   .best-of-section .best-of-content li .usa-best-of-promo .image-block {
@@ -4421,9 +4409,6 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   position: relative;
   width: 100%;
 }
-.no-touch .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo:hover .image-block .asset-img, .latest-episodes-block .episodes-list .no-touch li .usa-episodes-carousel-promo:hover .image-block .asset-img {
-  opacity: 0.85;
-}
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo a {
   display: block;
   outline: none;
@@ -4443,7 +4428,6 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 }
 .latest-episodes-block .episodes-list li .usa-episodes-carousel-promo .image-block .asset-img {
   height: 100%;
-  opacity: 0.35;
   position: relative;
   width: 100%;
   z-index: 0;
@@ -40809,6 +40793,12 @@ html.no-scroll, body.no-scroll {
   background: linear-gradient(to bottom, #000000 0%, #000000 6.6%, #181818 9.7%, #181818 18.4%, #111111 21%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#111111',GradientType=0 );
 }
+.no-touch .show-new-design .node-usanetwork-promo:hover .asset-img {
+  opacity: 0.85;
+}
+.no-touch .show-new-design .node-usanetwork-promo .asset-img {
+  opacity: 0.35;
+}
 .show-new-design .gallery-recap-block .section-title .section-title-wrapper {
   color: #282828;
   font-family: "FiraSansMedium", sans-serif;
@@ -41125,20 +41115,10 @@ html.no-scroll, body.no-scroll {
   position: relative;
   width: 100%;
 }
-.no-touch .show-new-design .related-content-block ul li > div:hover .asset-img {
-  opacity: 0.85;
-}
 @media (max-width: 640px) {
   .show-new-design .related-content-block ul li > div {
     height: auto;
   }
-}
-.no-touch .show-new-design .related-content-block ul li > div .asset-img {
-  -webkit-transition: all 0.1s linear;
-  -moz-transition: all 0.1s linear;
-  -o-transition: all 0.1s linear;
-  transition: all 0.1s linear;
-  opacity: 0.35;
 }
 .show-new-design .related-content-block .related-ad {
   background: #656364;

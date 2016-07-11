@@ -108,6 +108,9 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       'social_meter' => array(
         'value' => t('Social Meter'),
       ),
+      'violator' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_gi_violator', $lang, t('Violator')),
+      ),
     ),
     'tvs_aspot_elements' => array(
       'title_prefix' => array(
@@ -121,6 +124,9 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       ),
       'social_meter' => array(
         'value' => t('Social Meter'),
+      ),
+      'violator' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_tgi_violator', $lang, t('Violator')),
       ),
     ),
     //for New Design
@@ -149,6 +155,9 @@ function usanetwork_aspot_form_usanetwork_aspot_node_form_alter(&$form, &$form_s
       ),
       'social_meter' => array(
         'value' => t('Social Meter'),
+      ),
+      'violator' => array(
+        'value' => _usanetwork_aspot_get_form_state_field_value($form_state, 'field_aspot_tgi_violator', $lang, t('Violator')),
       ),
     ),
     'airdate' => $airdate,
@@ -397,8 +406,10 @@ function usanetwork_aspot_theme() {
         'show_title_prefix_style' => NULL,
         'show_title' => NULL,
         'show_desc' => NULL,
+        'show_violator' => NULL,
         'show_title_style' => NULL,
         'show_description_style' => NULL,
+        'show_violator_style'  => NULL,
         'show_image_bg_offset' => NULL,
         'cta_buttons' => array(
           0 => array(
@@ -428,8 +439,10 @@ function usanetwork_aspot_theme() {
         'show_title_prefix_style' => NULL,
         'show_title' => NULL,
         'show_desc' => NULL,
+        'show_violator' => NULL,
         'show_title_style' => NULL,
         'show_description_style' => NULL,
+        'show_violator_style'  => NULL,
         'show_image_bg_offset' => NULL,
         'cta_buttons' => array(
           0 => array(
@@ -916,6 +929,17 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
         )
       )
       : FALSE,
+    'show_violator_style' => isset($draggable_data->data->aspot_elements->violator)
+      ? array(
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->violator),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->aspot_elements->violator),
+        'width' => $draggable_data->data->aspot_elements->violator->width,
+        'fonts' => array(
+          'desktop' => !empty($draggable_data->data->aspot_elements->violator->stepCounter) ? $draggable_data->data->aspot_elements->violator->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->aspot_elements->violator->stepCounterM) ? $draggable_data->data->aspot_elements->violator->stepCounterM : NULL,
+        )
+      )
+      : FALSE,
     'social_meter_style' => isset($draggable_data->data->aspot_elements->social_meter)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->aspot_elements->social_meter),
@@ -941,6 +965,11 @@ function _usanetwork_aspot_render_carousel_node($aspot_node, $show_node) {
   if (!empty($aspot_node->field_aspot_gi_desc)) {
     $value = $aspot_node_wrapper->field_aspot_gi_desc->value();
     $theme_array['show_desc'] = $value['value'];
+  }
+
+  if (!empty($aspot_node->field_aspot_gi_violator)) {
+    $value = $aspot_node_wrapper->field_aspot_gi_violator->value();
+    $theme_array['show_violator'] = $value;
   }
 
   $theme_array['cta_buttons'] = array();
@@ -1104,6 +1133,17 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
         )
       )
       : FALSE,
+    'show_violator_style' => isset($draggable_data->data->{$json_array_type}->violator)
+      ? array(
+        'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->{$json_array_type}->violator),
+        'mobile' => _usanetwork_aspot_get_draggable_style_data_mobile($draggable_data->data->{$json_array_type}->violator),
+        'width' => $draggable_data->data->{$json_array_type}->violator->width,
+        'fonts' => array(
+          'desktop' => !empty($draggable_data->data->{$json_array_type}->violator->stepCounter) ? $draggable_data->data->{$json_array_type}->violator->stepCounter : NULL,
+          'mobile' => !empty($draggable_data->data->{$json_array_type}->violator->stepCounterM) ? $draggable_data->data->{$json_array_type}->violator->stepCounterM : NULL,
+        )
+      )
+      : FALSE,
     'social_meter_style' => isset($draggable_data->data->{$json_array_type}->social_meter)
       ? array(
         'desktop' => _usanetwork_aspot_get_draggable_style_data($draggable_data->data->{$json_array_type}->social_meter),
@@ -1133,6 +1173,11 @@ function usanetwork_aspot_render_tvshow_slide($aspot_node, $show_node) {
   if (!empty($aspot_node->field_aspot_tgi_desc)) {
     $value = $aspot_node_wrapper->field_aspot_tgi_desc->value();
     $theme_array['show_desc'] = $value['value'];
+  }
+
+  if (!empty($aspot_node->field_aspot_tgi_violator)) {
+    $value = $aspot_node_wrapper->field_aspot_tgi_violator->value();
+    $theme_array['show_violator'] = $value;
   }
 
   if (in_array('social_meter', $enabled_elements) && module_exists('usanetwork_social_meter')) {
@@ -1449,6 +1494,12 @@ function _usanetwork_aspot_form_get_draggable_elements_states_rules() {
       'field_name' => 'field_aspot_enabled_gi',
       'field_item_name' => 'aspot_description',
     ),
+    'field_aspot_gi_violator' => array(
+      'altering_element' => 'field_aspot_gi_violator',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_gi',
+      'field_item_name' => 'violator',
+    ),
     'field_aspot_gi_cta' => array(
       'altering_element' => 'field_aspot_gi_cta',
       'state_name' => 'visible',
@@ -1472,6 +1523,12 @@ function _usanetwork_aspot_form_get_draggable_elements_states_rules() {
       'state_name' => 'visible',
       'field_name' => 'field_aspot_enabled_tgi',
       'field_item_name' => 'aspot_description',
+    ),
+    'field_aspot_tgi_violator' => array(
+      'altering_element' => 'field_aspot_tgi_violator',
+      'state_name' => 'visible',
+      'field_name' => 'field_aspot_enabled_tgi',
+      'field_item_name' => 'violator',
     ),
     'field_aspot_tgi_cta' => array(
       'altering_element' => 'field_aspot_tgi_cta',

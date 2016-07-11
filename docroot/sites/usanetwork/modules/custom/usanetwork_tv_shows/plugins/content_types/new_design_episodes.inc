@@ -64,9 +64,12 @@ function _usanetwork_tv_show_get_episodes_block($show) {
       $providers = field_get_items('node', $show, 'field_where2watch_providers');
       $featured_provider = _where2watch_get_featured_provider($providers);
 
-      $first_element = array_shift($episodes_manual_elements);
-      $first_element_data = _usanetwork_tv_show_get_episodes($show, 'ASC', $first_element['target_id']);
-      $first_element_data = reset($first_element_data);
+      while (empty($first_element_data)) {
+        $first_element = array_shift($episodes_manual_elements);
+        $first_element_data = _usanetwork_tv_show_get_episodes($show, 'ASC', $first_element['target_id']);
+        $first_element_data = reset($first_element_data);
+      }
+
       $first_element_array = array(
         'title' => $first_element_data->title,
         'image_desktop' => image_style_url('1040x585', $first_element_data->episode_uri),

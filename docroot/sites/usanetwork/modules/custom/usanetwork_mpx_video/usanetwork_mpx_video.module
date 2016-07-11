@@ -2207,7 +2207,7 @@ function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
 function theme_usanetwork_mpx_inactive_video($variables) {
   $video = "";
   $video .= "<div class='asset-img'>" . $variables['thumbnail_image'] . "</div>";
-  $video .= "<div class='expired-text'>" . t('This video content has expired.') . "</div>";
+  $video .= "<div class='expired-text'><span>" . t('This video content has expired.') . "</span></div>";
   $video .= "<div class='suggest-text'>" . t('May we suggest the following?') . "</div>";
   $video .= "<div class='suggest-videos-block'>";
   $video .= $variables['full_episode_view'];

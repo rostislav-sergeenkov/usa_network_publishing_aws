@@ -275,6 +275,31 @@
           }
         }
       }
+      .aspot-violator {
+        //background: $schedule-tonight;
+        color: white;
+        font-size: get-vw(14px, 1280);
+        font-family: $fira-sans-regular;
+        line-height: 1;
+        letter-spacing: get-vw(0.8px, 1280);
+        padding: get-vw(8px, 1280) get-vw(15px, 1280) get-vw(5px, 1280);
+        text-transform: uppercase;
+        text-align: center;
+        width: auto;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 14px;
+          letter-spacing: 0.8px;
+          padding: 88px 18px 5px;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: get-vw(13px, 640);
+          letter-spacing: get-vw(0.8px, 640);
+          padding: get-vw(6px, 640) get-vw(10px, 640) get-vw(3px, 640);
+        }
+        strong, b, i {
+          font-family: $fira-sans-medium;
+        }
+      }
     }
   }
   .pane-new-design-relevant-content {

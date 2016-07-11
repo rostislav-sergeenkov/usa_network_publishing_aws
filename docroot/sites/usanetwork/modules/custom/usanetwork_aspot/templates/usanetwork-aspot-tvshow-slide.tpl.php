@@ -49,7 +49,7 @@
               <?php if (!empty($show_description_style['width'])): print ' data-width="' . $show_description_style['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
               <?php print $show_desc; ?>
             </div>
-            <div class="aspot-violator aspot-draggable-element
+            <div class="aspot-violator aspot-draggable-element show-color
               <?php print (!empty($show_violator_style['fonts']['desktop']) ? 'font-show-desktop-' . $show_violator_style['fonts']['desktop'] : ''); ?>
               <?php print (!empty($show_violator_style['fonts']['mobile']) ? 'font-show-mobile-' . $show_violator_style['fonts']['mobile'] : ''); ?>"
               <?php if (!empty($show_violator_style['desktop'])): print ' data-style-desktop="' . $show_violator_style['desktop'] . '" data-style-mobile="' . $show_violator_style['mobile'] . '"'; endif; ?>

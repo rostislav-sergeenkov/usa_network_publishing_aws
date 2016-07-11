@@ -399,6 +399,36 @@
   margin-right: 10px;
 }
 
+ /* violator */
+
+#edit-group_usa_aspot_ui .draggable-area div[data-rel="violator"],
+#edit-group_usa_tv_aspot_ui .draggable-area div[data-rel="violator"] {
+  background: #2c2c2c;
+  color: white;
+  font-size: 14px;
+  font-family: "FiraSansRegular",sans-serif;
+  line-height: 1;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  width: auto;
+}
+.draggable-area div[data-rel="violator"] strong,
+.draggable-area div[data-rel="violator"] b,
+.draggable-area div[data-rel="violator"] i {
+  font-family: "FiraSansMedium", sans-serif;
+}
+
+#edit-group_usa_aspot_ui .draggable-area.desktop div[data-rel="violator"],
+#edit-group_usa_tv_aspot_ui .draggable-area.desktop div[data-rel="violator"] {
+  padding: 7px 10px 5px;
+}
+
+#edit-group_usa_aspot_ui .draggable-area.mobile div[data-rel="violator"],
+#edit-group_usa_tv_aspot_ui .draggable-area.mobile div[data-rel="violator"] {
+  font-size: 13px;
+  padding: 6px 10px 3px;
+}
+
 /* USA New Design Mr. Robot */
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile{
   height: 360px;
@@ -407,6 +437,11 @@
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop{
   height: 524px;
   width: 932px;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile div[data-rel="violator"],
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop div[data-rel="violator"] {
+  background: #2c2c2c;
+  width: auto;
 }
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile div[data-rel="title"],
 #edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop div[data-rel="title"] {

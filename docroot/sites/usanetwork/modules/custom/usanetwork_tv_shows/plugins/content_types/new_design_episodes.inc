@@ -3,6 +3,8 @@
  * New design Relevant Content content type.
  */
 
+define('EPISODES_CAROUSEL_COUNT', 6);
+
 $plugin = array(
   'title' => t('Episodes'),
   'description' => t('Episodes for new design.'),
@@ -53,74 +55,118 @@ function _usanetwork_tv_show_get_episodes_block($show) {
   $first_element_array = array();
   $carousel_items = array();
 
-  $is_full_exists = _usanetwork_is_full_video_exists($show);
+  $manual_block = _usanetwork_get_field_item('node', $show, 'field_episodes_manual_mode', 'value');
 
-  if (!empty($is_full_exists)) {
-    $episodes = _usanetwork_tv_show_get_episodes($show, 'DESC');
-    if (!empty($episodes)) {
+  if ($manual_block) {
+    $episodes_manual_elements = field_get_items('node', $show, 'field_episodes_manual_elements');
 
+    if (count($episodes_manual_elements) >= EPISODES_CAROUSEL_COUNT) {
       $providers = field_get_items('node', $show, 'field_where2watch_providers');
       $featured_provider = _where2watch_get_featured_provider($providers);
 
-      $first_element = array_shift($episodes);
+      $first_element = array_shift($episodes_manual_elements);
+      $first_element_data = _usanetwork_tv_show_get_episodes($show, 'ASC', $first_element['target_id']);
+      $first_element_data = reset($first_element_data);
       $first_element_array = array(
-        'title' => $first_element->title,
-        'image_desktop' => image_style_url('1040x585', $first_element->episode_uri),
-        'image_mobile' => image_style_url('655x408', $first_element->episode_uri),
-        'season' => t('S@season', array('@season' => $first_element->season_id)),
-        'episode' => t('EP@episode', array('@episode' => $first_element->episode_id)),
-        'episode_link' => url('node/' . $first_element->nid),
-        'video_link' => url('file/' . $first_element->fid),
+        'title' => $first_element_data->title,
+        'image_desktop' => image_style_url('1040x585', $first_element_data->episode_uri),
+        'image_mobile' => image_style_url('655x408', $first_element_data->episode_uri),
+        'season' => t('S@season', array('@season' => $first_element_data->season_id)),
+        'episode' => t('EP@episode', array('@episode' => $first_element_data->episode_id)),
+        'episode_link' => url('node/' . $first_element_data->nid),
+        'video_link' => url('file/' . $first_element_data->fid),
       );
-    }
-  } else {
-    $episodes = _usanetwork_tv_show_get_episodes($show);
-    if (!empty($episodes)) {
-      $array_slice = array_slice($episodes, -1);
-      $first_element = array_pop($array_slice);
-      $providers = field_get_items('node', $show, 'field_where2watch_providers');
-      $where2watch_links = array();
-      if (!empty($providers)) {
-        foreach ($providers as $provider) {
-          if (_where2watch_is_provider_featuted($provider)) {
-            $where2watch_links[] = array(
-              'url' => $provider['url'],
-              'title' => $provider['title'],
-            );
-          }
+
+      foreach ($episodes_manual_elements as $item) {
+        $item_data = _usanetwork_tv_show_get_episodes($show, 'ASC', $item['target_id']);
+        if ($item_data) {
+          $item_data = reset($item_data);
+          $theme_item = array(
+            'title' => $item_data->title,
+            'image' => image_style_url('190x116', $item_data->episode_uri),
+            'season' => t('S@season', array('@season' => $item_data->season_id)),
+            'episode' => t('EP@episode', array('@episode' => $item_data->episode_id)),
+            'episode_link' => url('node/' . $item_data->nid),
+            'video_link' => (isset($item_data->fid)) ? url('file/' . $item_data->fid) : NULL,
+            'featured_provider' => !empty($featured_provider) ? $featured_provider : NULL,
+          );
+          $carousel_items[] = theme('new_design_episodes_item', $theme_item);
         }
-        $where2watch_links[] = array(
-          'url' => url('node/' . $show->nid . '/cast', array('fragment' => 'where-to-watch')),
-          'title' => t('See all'),
+      }
+    }
+  }
+
+  if (empty($carousel_items) || (count($carousel_items) < (EPISODES_CAROUSEL_COUNT - 1))) {
+    $carousel_items = array();
+    $is_full_exists = _usanetwork_is_full_video_exists($show);
+
+    if (!empty($is_full_exists)) {
+      $episodes = _usanetwork_tv_show_get_episodes($show, 'DESC');
+      if (!empty($episodes)) {
+
+        $providers = field_get_items('node', $show, 'field_where2watch_providers');
+        $featured_provider = _where2watch_get_featured_provider($providers);
+
+        $first_element = array_shift($episodes);
+        $first_element_array = array(
+          'title' => $first_element->title,
+          'image_desktop' => image_style_url('1040x585', $first_element->episode_uri),
+          'image_mobile' => image_style_url('655x408', $first_element->episode_uri),
+          'season' => t('S@season', array('@season' => $first_element->season_id)),
+          'episode' => t('EP@episode', array('@episode' => $first_element->episode_id)),
+          'episode_link' => url('node/' . $first_element->nid),
+          'video_link' => url('file/' . $first_element->fid),
         );
       }
-      $featured_provider = reset($where2watch_links);
+    }
+    else {
+      $episodes = _usanetwork_tv_show_get_episodes($show);
+      if (!empty($episodes)) {
+        $array_slice = array_slice($episodes, -1);
+        $first_element = array_pop($array_slice);
+        $providers = field_get_items('node', $show, 'field_where2watch_providers');
+        $where2watch_links = array();
+        if (!empty($providers)) {
+          foreach ($providers as $provider) {
+            if (_where2watch_is_provider_featuted($provider)) {
+              $where2watch_links[] = array(
+                'url' => $provider['url'],
+                'title' => $provider['title'],
+              );
+            }
+          }
+          $where2watch_links[] = array(
+            'url' => url('node/' . $show->nid . '/cast', array('fragment' => 'where-to-watch')),
+            'title' => t('See all'),
+          );
+        }
+        $featured_provider = reset($where2watch_links);
 
-      $first_element_array = array(
-        'title' => $first_element->title,
-        'image_desktop' => image_style_url('1040x585', $first_element->episode_uri),
-        'image_mobile' => image_style_url('655x408', $first_element->episode_uri),
-        'season' => t('Season @season', array('@season' => $first_element->season_id)),
-        'episode' => t('Episode @episode', array('@episode' => 1)),
-        'episode_link' => url('node/' . $first_element->nid),
-        'where2watch_links' => $where2watch_links,
+        $first_element_array = array(
+          'title' => $first_element->title,
+          'image_desktop' => image_style_url('1040x585', $first_element->episode_uri),
+          'image_mobile' => image_style_url('655x408', $first_element->episode_uri),
+          'season' => t('Season @season', array('@season' => $first_element->season_id)),
+          'episode' => t('Episode @episode', array('@episode' => 1)),
+          'episode_link' => url('node/' . $first_element->nid),
+          'where2watch_links' => $where2watch_links,
+        );
+      }
+    }
+
+    foreach ($episodes as $item) {
+      $theme_item = array(
+        'title' => $item->title,
+        'image' => image_style_url('190x116', $item->episode_uri),
+        'season' => t('S@season', array('@season' => $item->season_id)),
+        'episode' => t('EP@episode', array('@episode' => $item->episode_id)),
+        'episode_link' => url('node/' . $item->nid),
+        'video_link' => (isset($item->fid)) ? url('file/' . $item->fid) : NULL,
+        'featured_provider' => !empty($featured_provider) ? $featured_provider : NULL,
       );
+      $carousel_items[] = theme('new_design_episodes_item', $theme_item);
     }
   }
-
-  foreach ($episodes as $item) {
-    $theme_item = array(
-      'title' => $item->title,
-      'image' => image_style_url('190x116', $item->episode_uri),
-      'season' => t('S@season', array('@season' => $item->season_id)),
-      'episode' => t('EP@episode', array('@episode' => $item->episode_id)),
-      'episode_link' => url('node/' . $item->nid),
-      'video_link' => (isset($item->fid)) ? url('file/' . $item->fid) : NULL,
-      'featured_provider' => !empty($featured_provider) ? $featured_provider : NULL,
-    );
-    $carousel_items[] = theme('new_design_episodes_item', $theme_item);
-  }
-
   return array(
     'first_element' => $first_element_array,
     'carousel_items' => $carousel_items,
@@ -128,9 +174,9 @@ function _usanetwork_tv_show_get_episodes_block($show) {
 }
 
 
-function _usanetwork_tv_show_get_episodes($show, $order = 'ASC') {
+function _usanetwork_tv_show_get_episodes($show, $order = 'ASC', $nid = NULL) {
   $show_nid = $show->nid;
-  $cache_name = 'tv_show_new_design_episodes_' . $order . '_' . $show_nid;
+  $cache_name = 'tv_show_new_design_episodes_' . $order . '_' . $show_nid . '_' . $nid;
 
   $cache = cache_get($cache_name);
 
@@ -139,6 +185,9 @@ function _usanetwork_tv_show_get_episodes($show, $order = 'ASC') {
     $query->fields('n', array('nid', 'title'));
     $query->condition('n.type', 'tv_episode')
       ->condition('n.status', NODE_PUBLISHED);
+    if ($nid) {
+      $query->condition('n.nid', $nid);
+    }
     $query->join('field_data_field_show', 'field_show', 'n.nid=field_show.entity_id');
     $query->condition('field_show.field_show_target_id', $show_nid);
     $query->join('field_data_field_season', 'field_season', 'n.nid=field_season.entity_id');

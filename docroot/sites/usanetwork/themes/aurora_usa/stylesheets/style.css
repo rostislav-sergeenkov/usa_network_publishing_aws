@@ -52322,14 +52322,8 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block .caption,
   .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .image-block .caption {
-    font-size: 10px;
-    padding: 1px 4px 0;
-  }
-}
-@media (max-width: 480px) {
-  .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block .caption,
-  .show-new-design #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .episode-landing-info-block .image-block .caption {
-    font-size: 7px;
+    font-size: 1.5625vw;
+    padding: 1px 0.52083vw 0;
   }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .episode-landing-info-block .image-block .caption b,
@@ -54159,6 +54153,7 @@ html.no-scroll, body.no-scroll {
   padding-top: 56.25%;
   position: absolute !important;
   width: 100%;
+  z-index: 0;
 }
 .show-new-design.consumptionator-video-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .asset-img img:not(.lazyloader-icon) {
   display: block !important;
@@ -54171,7 +54166,9 @@ html.no-scroll, body.no-scroll {
 .show-new-design.consumptionator-video-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper {
   height: auto;
   padding-top: 56.25%;
+  position: relative;
   width: 100%;
+  z-index: 1;
 }
 .show-new-design.consumptionator-video-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta {
   height: auto;

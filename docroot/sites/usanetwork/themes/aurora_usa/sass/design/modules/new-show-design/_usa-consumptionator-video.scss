@@ -795,6 +795,7 @@
                   padding-top: 56.25%;
                   position: absolute!important;
                   width: 100%;
+                  z-index: 0;
                   img:not(.lazyloader-icon) {
                     display: block!important;
                     height: 100%;
@@ -807,7 +808,9 @@
                 .meta-wrapper {
                   height: auto;
                   padding-top: 56.25%;
+                  position: relative;
                   width: 100%;
+                  z-index: 1;
                 }
                 .meta {
                   height: auto;

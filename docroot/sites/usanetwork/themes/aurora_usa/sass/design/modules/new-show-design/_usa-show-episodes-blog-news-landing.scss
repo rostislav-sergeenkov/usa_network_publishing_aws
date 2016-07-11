@@ -228,7 +228,7 @@
           @include breakpoint($bp-640-width) {
             font-size: get-vw(28px, 640);
             margin-top: 0;
-            width: calc(100% - 40px);
+            width: 100%;
           }
           a {
             color: $usa-blog-item-title;
@@ -749,7 +749,6 @@
   }
 
   // upper bar &&  filter item
-  #block-usanetwork-episodes-usa-landing-tvep-list-block,
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block,
   #block-usanetwork-episodes-usa-landing-tvep-list-block {
 

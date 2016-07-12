@@ -974,6 +974,8 @@
           var self = $(itemElement),
               selfName = self.data('rel');
 
+          console.info(defaultElemPosition[selfName]);
+
           if (defaultElemPosition[selfName] === undefined) {
             return;
           }
@@ -1015,7 +1017,10 @@
           var self = $(itemElement),
               selfName = self.attr('data-rel');
 
-          if (selfName === 'aspot_offset_percent' || selfName === 'social_meter' || selfName === 'title') {
+          console.info(selfName, defaultElemPosition[selfName]);
+
+          if (selfName === 'aspot_offset_percent' || selfName === 'social_meter'
+              || selfName === 'title' || selfName === 'violator') {
             return;
           }
 

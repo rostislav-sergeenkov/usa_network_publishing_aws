@@ -207,7 +207,7 @@ header .primary-nav #logo {
   line-height: 1.2;
 }
 .section-description p {
-  margin: 0;
+  margin: 0 0 20px;
 }
 section h2 {
   font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
@@ -238,21 +238,26 @@ section h2 {
 #home .sponsored {
   display: block;
   position: absolute;
-  bottom: 5.5%;
-  right: 1.8%;
-  width: 34%;
-  height: 20%;
+  bottom: 3%;
+  right: 14.4%;
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+  background-color: lightblue;
 }
+/*
 #home .sponsored:before {
-  content: 'Powered by Lexus MPS Sponsor Logo TK';
+  content: '';
   display: block;
   width: 100%;
   height: 100%;
-  line-height: 1;
-  color: #000;
-  text-align: center;
-  background-color: lightskyblue;
+  background-color: transparent;
+  background-image: url('../images/suits_meghanmarkle_site_lexuslogo_v2.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
+*/
 #site-nav.section {
   padding: 0;
 }
@@ -352,19 +357,6 @@ header .ad-leaderboard {
   height: initial;
   margin-bottom: 80px;
 }
-/*
-#offerpop:before {
-  content: 'Offerpop content goes here';
-  display: block;
-  position: absolute;
-  top: calc(50% - 28px);
-  left: 0;
-  width: 100%;
-  color: #555;
-  text-align: center;
-  font-size: 36px;
-}
-*/
 
 
 
@@ -380,6 +372,12 @@ header .ad-leaderboard {
 }
 
 @media (max-width: 990px) {
+  #home .sponsored {
+    bottom: 3%;
+    right: 14.8%;
+    width: 20.2%;
+    height: 22.9%;
+  }
   #microsite footer {
     padding-bottom: 48px;
   }

@@ -64,8 +64,6 @@
       setTimeout(function(){
         if (Drupal.behaviors.ms_global.globalInitialPageLoad) {
           $('header').prepend('<div id="head-leaderboard" class="ad-leaderboard"></div>');
-//          Drupal.behaviors.ms_global.refreshAd('page-header');
-//          Drupal.behaviors.ms_global.refreshAd('videos');
 
           // set-up menu gigya share bar
           var $infoContainer = $('#mega-nav'),

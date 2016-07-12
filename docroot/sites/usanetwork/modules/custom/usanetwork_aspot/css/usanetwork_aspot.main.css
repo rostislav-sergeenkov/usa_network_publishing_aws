@@ -405,11 +405,10 @@
 #edit-group_usa_tv_aspot_ui .draggable-area div[data-rel="violator"] {
   background: #2c2c2c;
   color: white;
-  font-size: 14px;
   font-family: "FiraSansRegular",sans-serif;
-  line-height: 1;
-  letter-spacing: 0.8px;
+  line-height: 1.5;
   text-transform: uppercase;
+  text-align: center;
   width: auto;
 }
 .draggable-area div[data-rel="violator"] strong,
@@ -420,13 +419,16 @@
 
 #edit-group_usa_aspot_ui .draggable-area.desktop div[data-rel="violator"],
 #edit-group_usa_tv_aspot_ui .draggable-area.desktop div[data-rel="violator"] {
-  padding: 7px 10px 5px;
+  font-size: 15px;
+  letter-spacing: 0.7px;
+  padding: 3px 7px 0;
 }
 
 #edit-group_usa_aspot_ui .draggable-area.mobile div[data-rel="violator"],
 #edit-group_usa_tv_aspot_ui .draggable-area.mobile div[data-rel="violator"] {
-  font-size: 13px;
-  padding: 6px 10px 3px;
+  font-size: 15px;
+  letter-spacing: 0.7px;
+  padding: 3px 7px 0;
 }
 
 /* USA New Design Mr. Robot */

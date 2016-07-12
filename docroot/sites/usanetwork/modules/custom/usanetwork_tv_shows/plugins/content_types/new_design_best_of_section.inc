@@ -193,15 +193,19 @@ function new_design_best_of_section_get_promo_links($entity, $entity_type, $tv_c
   $bottom_link = NULL;
   $cta_text = NULL;
   $title = 'See more';
+  $see_more_link = NULL;
   if (usanetwork_core_api_check_field($entity, 'field_promo_call_to_action_text', $entity_type)) {
     $cta_text = $entity_wrapper->field_promo_call_to_action_text->value();
   }
   if (isset($entity->type) && 'usanetwork_promo' == $entity->type) {
-    $title = $cta_text ? $cta_text : 'See all updates';
-    if (usanetwork_core_api_check_field($entity, 'field_promo_link', $entity_type)) {
-      $bottom_link = $entity_wrapper->field_promo_link->value();
-      $bottom_link['title'] = $title;
+     $title = $cta_text ? $cta_text : 'See all updates';
+    if (usanetwork_core_api_check_field($entity, 'field_promo_see_more_link', $entity_type)) {
+      $bottom_link= $entity_wrapper->field_promo_see_more_link->value();
     }
+    elseif (usanetwork_core_api_check_field($entity, 'field_promo_link', $entity_type)) {
+      $bottom_link = $entity_wrapper->field_promo_link->value();
+    }
+    $bottom_link['title'] = $title;
   }
   elseif (isset($entity->type) && 'consumpt_post' == $entity->type) {
     if (usanetwork_core_api_check_field($entity, 'field_consumptionator_blog', $entity_type)) {

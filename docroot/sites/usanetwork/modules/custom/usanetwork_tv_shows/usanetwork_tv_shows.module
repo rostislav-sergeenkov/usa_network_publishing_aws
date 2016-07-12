@@ -4647,6 +4647,11 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
   if ($is_new_design) {
     $violator = usanetwork_core_api_get_violator($data->entity_type, $data->entity_id);
   }
+  $additional = (($data->entity_type == 'file') && ($is_new_design))
+    ? ''
+    : (!empty($data->promo_description)
+      ? htmlspecialchars($data->promo_description)
+      : '');
   
   $theme_variables = array(
     'custom_classes' => implode(" ", $classes),
@@ -4655,9 +4660,7 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
     'title' => !empty($data->promo_title)
         ? $data->promo_title     // Title text is checked at a level higher.
         : $data->title,
-    'additional' => !empty($data->promo_description)
-        ? htmlspecialchars($data->promo_description)
-        : '',
+    'additional' => $additional,
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,
     'media_icon' => $data->media_icon,

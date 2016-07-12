@@ -54844,6 +54844,9 @@ html.no-scroll, body.no-scroll {
   height: 100%;
   width: 100%;
 }
+.show-new-design #usa-tve-help-link.mobile-device {
+  display: none !important;
+}
 .show-new-design #usa-tve-help-link .links-wrapper {
   height: 100%;
   width: 100%;

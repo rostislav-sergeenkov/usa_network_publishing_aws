@@ -108,6 +108,38 @@
   }
 }
 
+#home_page_aspot_preview,
+#show_aspot_preview {
+  .aspot-violator {
+    color: white;
+    font-size: get-vw(15px, 1280);
+    font-family: $fira-sans-regular;
+    line-height: 1.5;
+    letter-spacing: get-vw(0.7px, 1280);
+    padding: get-vw(3px, 1280) get-vw(7px, 1280) 0;
+    text-transform: uppercase;
+    text-align: center;
+    width: auto;
+    @include breakpoint($bp-min-1601-width) {
+      font-size: 18.75px;
+      letter-spacing: 0.7px;
+      padding: 3px 8.75px 0;
+    }
+    @include breakpoint($bp-768-width) {
+      font-size: get-vw(12px, 768);
+    }
+    @include breakpoint($bp-640-width) {
+      font-size: get-vw(15px, 640);
+      letter-spacing: get-vw(0.7px, 640);
+      padding: get-vw(3px, 640) get-vw(7px, 640) 0;
+    }
+    strong, b, i {
+      font-family: $fira-sans-medium;
+    }
+  }
+}
+
+
 body:not(.show-new-design) .usanetwork-aspot {
 
   .aspot-draggable-element {

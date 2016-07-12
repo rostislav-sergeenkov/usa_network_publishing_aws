@@ -9,7 +9,8 @@ function usanetwork_entityreference_field_attach_form($entity_type, $entity, &$f
     if ((isset($entity->type) && (($entity->type == 'usa_homepage') || ($entity->type == 'tv_show'))) || ($entity_type == 'field_collection_item')) {
       foreach (array('field_usa_hp_arefs', 'field_usa_hp_brefs', 'field_usa_hp_crefs', 'field_hp_promos',
           'field_usa_tv_a_spot', 'field_usa_tv_promo', 'field_usa_tv_promo_vids', 'field_hp_nav_img_more',
-          'field_alternative_content', 'field_collection_best_of_items') as $changed_field) {
+          'field_alternative_content', 'field_collection_best_of_items', 'field_bcd_spot', 'field_best_of_items',
+          'field_episodes_manual_elements', 'field_articles', 'field_tvs_spec_features') as $changed_field) {
         //Redefine theme for multiple value
         if (isset($form[$changed_field])) {
           $form[$changed_field][$form[$changed_field]['#language']]['#theme'] = 'usanetwork_entityreference_field_multiple_value_form';

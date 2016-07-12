@@ -50760,6 +50760,9 @@ html.no-scroll, body.no-scroll {
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-line #timeline-line-left:before, .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-line #timeline-line-right:before {
   color: inherit;
 }
+.show-new-design.node-type-timeline-gallery .timelineFlat .timeline-view .vert-end-line.right {
+  border-right: 0;
+}
 
 .show-new-design .consumptionator-quiz-main-block {
   overflow: hidden;

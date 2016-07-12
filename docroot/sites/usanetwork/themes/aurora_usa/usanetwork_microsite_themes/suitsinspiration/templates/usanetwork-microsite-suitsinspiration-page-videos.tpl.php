@@ -49,10 +49,6 @@ $time = time();
          data-entitlement
          data-video-url=""
          data-ng-class="{'start': isPlayerStart,'play': isPlayerPlay, 'pause': isPlayerPause}">
-<!-- NEW PLAYER CODE FOLLOWS!!!!
-//var playerIframeHtml = '<iframe src="//player.theplatform.com/p/HNK2IC/qRe1IXDE_V0F/select/media/guid/2140458126/{VIDEO_ID}?autoPlay=false&excludeSharing=false" width="640" height="360" frameBorder="0" seamless="seamless" allowFullScreen></iframe>';
--->
-
       <div class="video-container-ajaxed">
         <div
           class="video-auth-player-wrapper file-video-mpx video usa-video featured-asset premium-asset">

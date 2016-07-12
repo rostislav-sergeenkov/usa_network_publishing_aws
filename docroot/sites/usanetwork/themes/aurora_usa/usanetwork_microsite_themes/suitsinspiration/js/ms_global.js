@@ -115,24 +115,6 @@
       usa_debug('=========== [USA DEBUG] setOmnitureData(' + anchor + ', ' + contentName + '), siteName: ' + siteName + ', contentType: ' + contentType + ', omnitureArray: ', omnitureArray);
 
       _satellite.track('virtPageTrack');
-/*
-      var AdobeTracking = new Object();
-      AdobeTracking.division = 'Cable';
-      AdobeTracking.businessUnit = 'USA Network';
-      AdobeTracking.contentGroup = 'Drama';
-      AdobeTracking.contentType = 'Home'; // s.prop3
-      AdobeTracking.showSite = 'Suits'; // s.prop10
-      AdobeTracking.pageName = s.pageName;
-      AdobeTracking.showSiteFeature = s.prop4;
-      AdobeTracking.showSiteFeatureII = s.prop5;
-
-      _satellite.pageBottom();
-
-      if (typeof s_gi != 'undefined') {
-        void(s.t()); // omniture page call
-      }
-*/
-
     },
 
     // ADS

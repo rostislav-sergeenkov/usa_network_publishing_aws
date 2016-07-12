@@ -86,7 +86,8 @@ function new_design_best_of_section_get_content($node) {
       'image_desktop' => image_style_url($style_desktop, $row_image_uri),
       'image_mobile' => image_style_url($style_mobile, $row_image_uri),
     );
-    $links = new_design_best_of_section_get_promo_links($item['entity'], $item['entity_type'], $node);
+    $links = new_design_best_of_section_get_promo_links($item['entity'], $item['entity_type'], $node, $data_item);
+
     $data_item = $data_item + $additional_data + $links;
     $best_of_data[] = array(
       'item' => $data_item,
@@ -181,15 +182,24 @@ function new_design_best_of_section_get_styles_for_types() {
   );
 }
 
-function new_design_best_of_section_get_promo_links($entity, $entity_type, $tv_content) {
+function new_design_best_of_section_get_promo_links($entity, $entity_type, $tv_content, &$data_item) {
   $entity_wrapper = entity_metadata_wrapper($entity_type, $entity);
   $promo_links = array();
   if (usanetwork_core_api_check_field($entity, 'field_promo_links', $entity_type)) {
-    foreach ($entity_wrapper->field_promo_links->value() as $item) {
-      $promo_links[] = $item;
+    foreach ($entity_wrapper->field_promo_links->value() as $link) {
+      $promo_links[] = $link;
     }
   }
-
+  if ($entity->type == 'usanetwork_promo') {
+    if (count($promo_links) == 1) {
+      $link = reset($promo_links);
+      $data_item['url'] = $link['url'];
+      if (!empty($link['title'])) {
+        $data_item['title'] = $link['title'];
+      }
+      $promo_links = array();
+    }
+  }
   $bottom_link = NULL;
   $cta_text = NULL;
   $title = 'See more';

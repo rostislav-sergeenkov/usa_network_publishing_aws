@@ -3259,13 +3259,12 @@
       color: $usa-related-additional;
       font-family: $tex-gyreschola-italic;
       font-size: get-vw(11px, 1280);
-      line-height: calc(#{get-vw(14.45px, 1280)} * 1.3);
+      line-height: 1.7;
       text-transform: uppercase;
       overflow: hidden;
       white-space: nowrap;
       @include breakpoint($bp-min-1601-width) {
         font-size: 13.75px;
-        line-height: calc(18.75px * 1.3);
       }
       @include breakpoint($bp-768-width) {
         font-size: get-vw(15.36px, 768);

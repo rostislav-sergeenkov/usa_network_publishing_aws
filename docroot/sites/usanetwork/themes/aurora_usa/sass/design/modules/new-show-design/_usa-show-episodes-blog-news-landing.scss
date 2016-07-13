@@ -228,7 +228,7 @@
           @include breakpoint($bp-640-width) {
             font-size: get-vw(28px, 640);
             margin-top: 0;
-            width: calc(100% - 40px);
+            width: 100%;
           }
           a {
             color: $usa-blog-item-title;
@@ -280,11 +280,8 @@
             text-transform: uppercase;
             @extend %usa-violator-icon;
             @include breakpoint($bp-768-width) {
-              font-size: 10px;
-              padding: 1px 4px 0;
-            }
-            @include breakpoint($bp-480-width) {
-              font-size: 7px;
+              font-size: get-vw(12px, 768);
+              padding: 1px get-vw(4px, 768) 0;
             }
             b {
               font-family: $fira-sans-bold;
@@ -749,7 +746,6 @@
   }
 
   // upper bar &&  filter item
-  #block-usanetwork-episodes-usa-landing-tvep-list-block,
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block,
   #block-usanetwork-episodes-usa-landing-tvep-list-block {
 

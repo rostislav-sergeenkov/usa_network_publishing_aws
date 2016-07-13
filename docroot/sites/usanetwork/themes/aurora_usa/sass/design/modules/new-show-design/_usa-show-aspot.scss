@@ -49,6 +49,7 @@
       .wrp, .node, .asset-img, .asset-img img {
         @include breakpoint($bp-min-769-width) {
           height: 100%;
+          width: 100%;
         }
       }
       @include breakpoint($bp-768-width) {
@@ -80,6 +81,7 @@
       display: none;
     }
     .meta-wrap {
+      // add preview changes aurora_usa/sass/design/modules/_a-spot-preview.scss
       position: static;
       .aspot-draggable-element {
         box-sizing: border-box;

@@ -48,7 +48,11 @@
   #show_aspot_preview {
     &:not(.show-new-design) {
       .slide {
+        height: 42.8vw;
         width: 77.77778%;
+        @include breakpoint($bp-768-width) {
+          height: auto;
+        }
         @include breakpoint($bp-640-width) {
           width: 100%;
         }
@@ -71,6 +75,7 @@
           position: relative;
           width: 100%;
         }
+
       }
       .wrp, .node, .asset-img, .asset-img img {
         @include breakpoint($bp-min-769-width) {

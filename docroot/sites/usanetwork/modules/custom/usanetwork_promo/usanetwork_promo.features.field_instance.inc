@@ -5059,7 +5059,7 @@ function usanetwork_promo_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 1,
+      'weight' => 7,
     ),
   );
 
@@ -5231,7 +5231,7 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 9,
     ),
   );
 
@@ -5324,7 +5324,7 @@ function usanetwork_promo_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 12,
     ),
   );
 
@@ -5417,7 +5417,7 @@ function usanetwork_promo_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 13,
     ),
   );
 
@@ -5938,7 +5938,7 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 4,
+      'weight' => 10,
     ),
   );
 
@@ -6047,7 +6047,7 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 8,
+      'weight' => 14,
     ),
   );
 
@@ -6390,7 +6390,7 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 5,
+      'weight' => 15,
     ),
   );
 
@@ -7161,7 +7161,7 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 2,
+      'weight' => 8,
     ),
   );
 
@@ -7251,7 +7251,7 @@ function usanetwork_promo_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 11,
     ),
   );
 

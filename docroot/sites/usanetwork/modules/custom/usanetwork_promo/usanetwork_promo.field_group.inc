@@ -31,7 +31,8 @@ function usanetwork_promo_field_group_info() {
       5 => 'field_movie',
       6 => 'field_explore_tag',
       7 => 'field_promo_links',
-      8 => 'title',
+      8 => 'field_promo_see_more_link',
+      9 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -44899,14 +44899,14 @@ html.no-scroll, body.no-scroll {
 @media (min-width: 769px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {
     right: 1.25vw;
-    top: calc((100% - 5.15625vw + 2px) / 2);
+    top: calc(((100% - 4.4375vw - 2px)/2) - 0.78125vw + 0.625vw);
     position: absolute;
   }
 }
 @media (min-width: 1601px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {
     right: 20px;
-    top: calc((100% - (73px + 20px - 12.5px)) / 2);
+    top: calc(((100% - 73px)/2) - 12.5px + 10px);
   }
 }
 @media (max-width: 768px) {

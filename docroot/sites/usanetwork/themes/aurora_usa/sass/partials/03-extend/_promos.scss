@@ -2433,11 +2433,6 @@
     height: 100%;
     position: relative;
     width: 100%;
-    .no-touch &:hover {
-      .image-block {
-        opacity: 0.85;
-      }
-    }
     
     @include breakpoint($bp-768-width) {
       height: auto;
@@ -2462,9 +2457,6 @@
       height: 100%;
       position: relative;
       width: 100%;
-      .no-touch & {
-        opacity: 0.35;
-      }
       @include transition(all 0.1s linear);
       @include breakpoint($bp-768-width) {
         height: calc(((100vw - 2 * #{get-vw(32px, 640)} - #{get-vw(18px, 640)}) / 2) * 0.5625);
@@ -2627,11 +2619,6 @@
     height: 100%;
     position: relative;
     width: 100%;
-    .no-touch &:hover {
-      .image-block {
-        opacity: 0.85;
-      }
-    }
     @include breakpoint($bp-768-width) {
       height: auto;
     }
@@ -2655,9 +2642,6 @@
       height: 100%;
       position: relative;
       width: 100%;
-      .no-touch & {
-        opacity: 0.35;
-      }
       @include transition(all 0.1s linear);
       @include breakpoint($bp-768-width) {
         height: calc(((100vw - 2 * #{get-vw(32px, 640)} - #{get-vw(18px, 640)}) / 2) * 0.5625);
@@ -2899,13 +2883,6 @@
     height: 100%;
     position: relative;
     width: 100%;
-    .no-touch &:hover {
-      .image-block {
-        .asset-img {
-          opacity: 0.85;
-        }
-      }
-    }
     a {
       display: block;
       outline: none;
@@ -2922,7 +2899,6 @@
       }
       .asset-img {
         height: 100%;
-        opacity: 0.35;
         position: relative;
         width: 100%;
         z-index: 0;
@@ -3261,10 +3237,10 @@
       line-height: 1.3;
       text-transform: uppercase;
       overflow: hidden;
-      max-height: get-vw(38px, 1280);
+      max-height: get-vw(46px, 1600);
       @include breakpoint($bp-min-1601-width) {
         font-size: 18.75px;
-        max-height: 47.75px;
+        max-height: 46px;
       }
       @include breakpoint($bp-768-width) {
         color: $usa-bcd-title;
@@ -3283,13 +3259,12 @@
       color: $usa-related-additional;
       font-family: $tex-gyreschola-italic;
       font-size: get-vw(11px, 1280);
-      line-height: calc(#{get-vw(14.45px, 1280)} * 1.3);
+      line-height: 1.7;
       text-transform: uppercase;
       overflow: hidden;
       white-space: nowrap;
       @include breakpoint($bp-min-1601-width) {
         font-size: 13.75px;
-        line-height: calc(18.75px * 1.3);
       }
       @include breakpoint($bp-768-width) {
         font-size: get-vw(15.36px, 768);
@@ -3763,6 +3738,25 @@
         height: 100%;
         position: relative;
         width: 100%;
+        @include breakpoint($bp-min-769-width) {
+          &:after {
+            bottom: 0;
+            content: '';
+            display: block;
+            height: 33%;
+            position: absolute;
+            background: -moz-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+            background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(135, 135, 135, 0)), color-stop(100%, rgba(0, 0, 0, 0.8)));
+            background: -webkit-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+            background: -o-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+            background: -ms-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+            background: linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+            background-repeat: no-repeat;
+            width: 100%;
+            z-index: 0;
+          }
+        }
         @include breakpoint($bp-768-width) {
           height: auto;
           padding-top: 43.75%;

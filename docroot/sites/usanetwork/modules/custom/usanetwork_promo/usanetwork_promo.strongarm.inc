@@ -74,7 +74,7 @@ function usanetwork_promo_strongarm() {
           'weight' => '7',
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => '6',
         ),
         'path' => array(
           'weight' => '6',

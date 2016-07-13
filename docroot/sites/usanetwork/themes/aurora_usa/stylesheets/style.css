@@ -35176,7 +35176,13 @@ body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 .social-meter-
   font-family: "FiraSansMedium", sans-serif;
 }
 .node-type-usanetwork-aspot #show_aspot_preview:not(.show-new-design) .slide {
+  height: 42.8vw;
   width: 77.77778%;
+}
+@media (max-width: 768px) {
+  .node-type-usanetwork-aspot #show_aspot_preview:not(.show-new-design) .slide {
+    height: auto;
+  }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview:not(.show-new-design) .slide {

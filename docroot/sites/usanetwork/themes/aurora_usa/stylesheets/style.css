@@ -44927,9 +44927,6 @@ html.no-scroll, body.no-scroll {
   }
 }
 
-.show-new-design .usa-wrap {
-  background: #ff9933 !important;
-}
 @media (min-width: 769px) {
   .show-new-design #header.usa-sticky-header.off-elements .upper-menu {
     padding-top: 0;

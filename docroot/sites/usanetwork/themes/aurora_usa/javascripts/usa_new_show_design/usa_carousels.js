@@ -107,6 +107,7 @@
       autoHideScrollbar: true,
       theme: 'light',
       scrollbarPosition: 'inside',
+      scrollInertia: 0,
       callbacks: {
         onInit: function () {
           if ($activeItem.length > 0) {

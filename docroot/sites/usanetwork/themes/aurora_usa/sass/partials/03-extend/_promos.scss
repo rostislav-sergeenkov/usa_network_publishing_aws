@@ -2420,7 +2420,8 @@
           max-height: get-vw(139px, 640);
         }
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(22px, 640);
+          font-size: get-vw(27.2px, 640);
+          max-height: get-vw(196px, 640);
         }
       }
     }
@@ -2599,7 +2600,7 @@
           font-size: 10px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(12.8px, 640);
+          font-size: get-vw(24px, 640);
         }
       }
       .author {
@@ -2614,7 +2615,7 @@
           font-size: get-vw(18px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(22px, 768);
+          font-size: get-vw(24px, 640);
         }
       }
     }
@@ -2641,9 +2642,13 @@
         }
       }
     }
-    > a {
+    .promo-link {
+      display: block;
       height: 100%;
-      position: relative;
+      left: 0;
+      outline: none;
+      position: absolute;
+      top: 0;
       width: 100%;
     }
     .image-block {
@@ -2670,21 +2675,19 @@
     }
     .meta-wrapper {
       bottom: 0;
-      height: auto;
-      max-height: calc(100% - #{get-vw(50px, 1280)});
+      height: 100%;
       overflow: hidden;
+      padding: 0;
       position: absolute;
-      padding: get-vw(25px, 1280);
       width: 100%;
       background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) no-repeat scroll 0 0;
       @include breakpoint($bp-min-1601-width) {
         bottom: 0;
-        padding: 31.25px;
-        max-height: calc(100% - 62.5px);
         width: 100%;
       }
       @include breakpoint($bp-768-width) {
         bottom: auto;
+        height: auto;
         left: auto;
         max-height: none;
         overflow: visible;
@@ -2700,14 +2703,20 @@
       width: 100%;
     }
     .meta {
-      height: 100%;
+      height: auto;
       position: relative;
       width: 100%;
       @include breakpoint($bp-min-769-width) {
+        bottom: 0;
+        left: 0;
+        padding: get-vw(25px, 1280);
+        position: absolute;
         text-align: center;
       }
+      @include breakpoint($bp-min-1601-width) {
+        padding: get-vw(31.25px, 1280);
+      }
       @include breakpoint($bp-768-width) {
-        height: auto;
         padding-top: get-vw(18px, 640);
       }
       .caption {
@@ -2772,9 +2781,6 @@
         }
         @include breakpoint($bp-768-width) {
           color: $usa-bcd-title;
-          font-size: get-vw(20.89px, 768);
-        }
-        @include breakpoint($bp-640-width) {
           font-size: get-vw(27.2px, 640);
         }
       }
@@ -3071,12 +3077,12 @@
       }
     }
     .meta-wrapper-inner {
-      height: 100%;
+      height: auto;
       position: relative;
       width: 100%;
     }
     .meta {
-      height: 100%;
+      height: auto;
       position: relative;
       width: 100%;
       .title-and-additional {
@@ -3135,6 +3141,7 @@
         font-family: $open-sans-regular;
         font-size: get-vw(18px, 1280);
         line-height: 1.2;
+        overflow: hidden;
         text-overflow: ellipsis;
         text-transform: none;
         white-space: normal;
@@ -3154,10 +3161,11 @@
         @include breakpoint($bp-768-width) {
           line-height: 1.4;
           font-size: get-vw(17.28px, 768);
-          max-height: get-vw(57.6px, 640)!important;
+          max-height: get-vw(48.384px, 768)!important;
         }
         @include breakpoint($bp-640-width) {
           font-size: get-vw(24px, 640);
+          max-height: get-vw(67.2px, 640)!important;
         }
       }
     }
@@ -3267,8 +3275,9 @@
         white-space: normal;
       }
       @include breakpoint($bp-640-width) {
-          font-size: get-vw(22px, 640);
-        }
+        font-size: get-vw(27.2px, 640);
+        max-height: get-vw(196px, 640);
+      }
     }
     .additional {
       color: $usa-related-additional;
@@ -3284,12 +3293,12 @@
       }
       @include breakpoint($bp-768-width) {
         font-size: get-vw(15.36px, 768);
-        line-height: calc(#{get-vw(14px, 640)} * 1.3);
+        line-height: 1.3;
         white-space: normal;
       }
       @include breakpoint($bp-640-width) {
-          font-size: get-vw(14px, 640);
-        }
+        font-size: get-vw(24px, 640);
+      }
     }
   }
 }
@@ -3336,12 +3345,9 @@
         margin-bottom: 17.5px;
       }
       @include breakpoint($bp-768-width) {
-        font-size: get-vw(20.89px, 768);
+        font-size: get-vw(27.2px, 640);
         margin-bottom: 0;
       }
-      @include breakpoint($bp-640-width) {
-          font-size: get-vw(28px, 640);
-        }
     }
     .additional {
       color: $usa-related-additional;
@@ -3366,19 +3372,23 @@
 %usa-show-related-promo {
   .show-latest-promo {
     @include breakpoint($bp-640-width) {
-      padding-top: calc((100vw - #{get-vw(16px, 640)}*2)*0.4);
+      padding-top: 56.25%;
     }
     .asset-img {
       height: 100%;
       width: 100%;
       @include breakpoint($bp-640-width) {
-        height: calc((100vw - #{get-vw(16px, 640)}*2)*0.4);
+        height: auto;
         left: 0;
+        padding-top: 56.25%;
         position: absolute;
         top: 0;
       }
       img {
+        left: 0;
         height: 100%;
+        position: absolute;
+        top: 0;
         width: 100%;
       }
     }
@@ -3398,7 +3408,8 @@
       @include breakpoint($bp-640-width) {
         bottom: auto;
         max-height: none;
-        padding: get-vw(12px, 640) get-vw(16px, 640);
+        overflow: visible;
+        padding: 0;
         position: relative;
         background: none;
       }
@@ -3428,9 +3439,11 @@
           padding: 0 12.5px;
         }
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(16px, 640);
-          margin-bottom: get-vw(6px, 640);
-          padding: 0 get-vw(36px, 640);
+          bottom: 100%;
+          font-size: get-vw(15px, 640);
+          margin-bottom: 0;
+          padding: 0 get-vw(10px, 640);
+          position: absolute;
         }
         strong, b, i {
           font-family: $fira-sans-medium;
@@ -3448,7 +3461,7 @@
         }
       }
       .title {
-        color: white;
+        color: $usa-bcd-title;
         font-family: $avalon-medium;
         font-size: get-vw(30px, 1280);
         line-height: 1.2;
@@ -3456,7 +3469,8 @@
           font-size: 37.5px;
         }
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(18px, 640);
+          font-size: get-vw(27.2px, 640);
+          padding: get-vw(20px, 640) get-vw(10px, 640) 0;
         }
       }
       .additional {
@@ -3468,7 +3482,8 @@
           font-size: 20px;
         }
         @include breakpoint($bp-640-width) {
-          font-size: get-vw(12px, 640);
+          font-size: get-vw(24px, 640);
+          padding: 0 get-vw(10px, 640) 0;
         }
       }
     }
@@ -3622,6 +3637,9 @@
         font-family: $tex-gyreschola-italic;
         text-transform: uppercase;
         text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+        @include breakpoint($bp-768-width) {
+          text-transform: none;
+        }
       }
     }
     &.small {
@@ -3661,18 +3679,19 @@
       }
       .meta-icon {
         left: 50%;
-        margin-left: get-vw(-37px, 1280);
-        margin-top: calc(-28.125% + #{get-vw(37px, 1280)});
+        margin-left: get-vw(-37px, 1600);
+        margin-top: calc(28.125% - #{get-vw(37px, 1600)});
+        top: 0;
         @include breakpoint($bp-min-1601-width) {
           margin-left: -37px;
-          margin-top: calc(-28.125% + 37px);
+          margin-top: calc(28.125% - 37px);
         }
         @include breakpoint($bp-768-width) {
           bottom: 100%;
           margin-bottom: calc(28.125% - #{get-vw(37px, 768)});
           margin-left: get-vw(-37px, 768);
           margin-top: 0;
-          top: auto
+          top: auto;
         }
       }
       .meta {
@@ -3702,19 +3721,27 @@
             font-size: 11px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(13px, 640);
+            font-size: get-vw(15px, 640);
           }
         }
-        title {
-          font-size: get-vw(25px, 1280);
+        .title {
+          font-size: get-vw(22px, 1600);
+          max-height: get-vw(85px, 1600);
           @include breakpoint($bp-min-1601-width) {
-            font-size: 27px;
+            font-size: 22px;
+            max-height: 85px;
           }
           @include breakpoint($between-769-1024) {
-            font-size: 20px;
+            font-size: get-vw(17.92px, 1024);
+            max-height: get-vw(46px, 1024);
+          }
+          @include breakpoint($bp-min-769-width) {
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(21px, 640);
+            font-size: get-vw(27.2px, 640);
+            max-height: none;
           }
         }
         .additional {
@@ -3726,7 +3753,7 @@
             font-size: 9.6px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(12px, 640);
+            font-size: get-vw(24px, 640);
           }
         }
       }
@@ -3778,8 +3805,8 @@
       }
       .meta-icon {
         left: 50%;
-        margin-left: get-vw(-37px, 1280);
-        margin-top: get-vw(-37px, 1280);
+        margin-left: get-vw(-37px, 1600);
+        margin-top: get-vw(-37px, 1600);
         top: 50%;
         @include breakpoint($bp-min-1601-width) {
           margin-left: -37px;
@@ -3829,10 +3856,10 @@
             font-size: 34px;
           }
           @include breakpoint($between-769-1024) {
-            font-size: 21px;
+            font-size: get-vw(27.7px, 1024);
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(24px, 640);
+            font-size: get-vw(27.2px, 640);
           }
         }
         .additional {
@@ -3844,7 +3871,7 @@
             font-size: 10.4px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(13px, 640);
+            font-size: get-vw(24px, 640);
           }
         }
       }

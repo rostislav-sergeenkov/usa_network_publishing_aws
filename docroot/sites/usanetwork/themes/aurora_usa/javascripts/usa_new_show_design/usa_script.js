@@ -1,4 +1,15 @@
 (function ($) {
+  
+  // set body class
+  function addBodyClass() {
+
+    var $body = $('body'),
+        bodyClassSmartphone = 'smartphone';
+
+    if (usa_deviceInfo.smartphone) {
+      $body.addClass(bodyClassSmartphone);
+    }
+  }
 
   //=======================================
   // usa changable-link
@@ -25,13 +36,14 @@
   }
 
   $(document).ready(function () {
+    addBodyClass();
     initUsaChangableLink();
     checkDescriptionLines();
   });
   $(window).resize(function () {
     setTimeout(function () {
       checkDescriptionLines();
-    }, 50);
+    }, 1000);
   });
 
 })(jQuery);

@@ -191,6 +191,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
           @include breakpoint($bp-640-width) {
             font-size: get-vw(25px, 640);
             line-height: get-vw(85px, 640);
+            width: 100%;
           }
         }
       }
@@ -408,6 +409,35 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             font-size: 30px;
           }
         }
+        [id$='_img'] {
+          &:before {
+            position: absolute;
+          }
+          &:after {
+            background: white;
+            border-radius: 20%;
+            content: '';
+            display: block;
+            height: 30px;
+            margin-left: 1px;
+            margin-top: -7px;
+            position: absolute;
+            width: 29px;
+            z-index: -1;
+            @include breakpoint($bp-1024-width) {
+              height: 25px;
+              margin-left: 2px;
+              margin-top: -5px;
+              width: 23px;
+            }
+            @include breakpoint($bp-640-width) {
+              height: 28px;
+              margin-left: 1px;
+              margin-top: -6px;
+              width: 28px;
+            }
+          }
+        }
         [id$='reaction0-facebook_img'] {
           &:before {
             color: $usa-video-helper-facebook;
@@ -431,6 +461,9 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         [id$='reaction4-share_img'] {
           &:before {
             color: $poll-color;
+          }
+          &:after {
+            display: none;
           }
         }
       }
@@ -966,6 +999,14 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               td > div {
                 font-size: 30px;
               }
+              [id$='_img'] {
+                &:after {
+                  height: 28px;
+                  margin-left: 1px;
+                  margin-top: -6px;
+                  width: 28px;
+                }
+              }
             }
           }
         }
@@ -977,11 +1018,6 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
           }
           .slide {
             .node {
-              .asset-img {
-                @include breakpoint($between-641-1024) {
-                  height: calc((100vw - 340px) * 0.5625);
-                }
-              }
               .slide-info {
                 @include breakpoint($bp-1024-width) {
                   height: auto;
@@ -1017,22 +1053,13 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
         }
-        .gallery-pager-wrap {
-          @include breakpoint($between-641-1024) {
-            bottom: auto;
-            top: calc((100vw - 340px) * 0.5625 + 13px);
-          }
-          @include breakpoint($between-641-768) {
-            top: calc((100vw - 340px) * 0.5625 + 18px);
-          }
-        }
         .slide-control {
           @include breakpoint($between-769-1024) {
-            top: calc((100vw - 340px) * 0.5625 + 26px);
+            margin-top: calc(56.25% + 26px);
           }
           @include breakpoint($between-641-768) {
             height: 38px;
-            top: calc((100vw - 340px) * 0.5625 + 36px);
+            margin-top: calc(56.25% + 36px);
             width: 38px;
           }
           &:after {
@@ -1093,6 +1120,14 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
             td > div {
               font-size: 30px;
+            }
+            [id$='_img'] {
+              &:after {
+                height: 28px;
+                margin-left: 1px;
+                margin-top: -6px;
+                width: 28px;
+              }
             }
           }
         }
@@ -1333,24 +1368,15 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               display: block;
             }
           }
-          .slide {
-            .node {
-              .asset-img {
-                @include breakpoint($between-769-1024) {
-                  height: calc((100vw - 20px) * 0.5625);
-                }
-              }
-            }
-          }
         }
         .gallery-pager-wrap {
           @include breakpoint($between-769-1024) {
-            top: calc((100vw - 20px) * 0.5625 + 13px);
+            margin-top: calc(56.25% + 13px);
           }
         }
         .slide-control {
           @include breakpoint($between-769-1024) {
-            top: calc((100vw - 20px) * 0.5625 + 26px);
+            margin-top: calc(56.25% + 26px);
           }
         }
       }

@@ -17,6 +17,42 @@ html, body {
     background: linear-gradient(to bottom,#000000 0%,#000000 6.6%,#181818 9.7%,#181818 18.4%,#111111 21%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#111111',GradientType=0 );
   }
+
+  .gallery-recap-block {
+    .section-title {
+      .section-title-wrapper {
+
+        color: $tve-modalFooter;
+        font-family: $fira-sans-medium;
+        font-size: get-vw(22px, 1280);
+        letter-spacing: 2px;
+        line-height: 1;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        text-transform: uppercase;
+
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 27.5px;
+        }
+        @include breakpoint($between-769-1024) {
+          font-size: 17px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(30.72px, 768);
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: get-vw(30px, 640);
+        }
+
+        &:before,
+        &:after {
+          display: none !important;
+        }
+      }
+    }
+  }
+
   .pane-mps-midbanner {
     padding-top: get-vw(33px, 1280);
     text-align: center;
@@ -226,18 +262,14 @@ html, body {
         @include breakpoint($bp-640-width) {
           height: auto;
           margin-bottom: get-vw(20px, 640);
-          margin-right: 0;
-          padding: 0 get-vw(16px, 640);
-          width: 100%;
-          &:last-child, &.last {
+          &:nth-child(2n) {
+            margin-right: 0;
+          }
+          &:last-child, &.last, &:nth-child(5) {
             margin-bottom: 0;
           }
           &.ymal-item {
-            border-bottom: 1px solid;
-            border-top: 1px solid;
-            height: 115vw;
-            margin: 40px 0 0;
-            padding: 0;
+            display: none;
           }
         }
         @include breakpoint($bp-480-width) {

@@ -4648,7 +4648,9 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
     $violator = usanetwork_core_api_get_violator($data->entity_type, $data->entity_id);
   }
   $additional = (($data->entity_type == 'file') && ($is_new_design))
-    ? ''
+    ? (($violator != $data->promo_description)
+      ? $data->promo_description
+      : '')
     : (!empty($data->promo_description)
       ? htmlspecialchars($data->promo_description)
       : '');

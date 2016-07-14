@@ -189,7 +189,7 @@
             light: 'light',
             light_stacked: 'light-stacked'
           };
-          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#home-content'), style.light);
+          //Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#home-content'), style.light);
 
           $('#video-container').addClass('active');
           var urlParts = self.parseUrl(window.location.href); // history.state['path']);

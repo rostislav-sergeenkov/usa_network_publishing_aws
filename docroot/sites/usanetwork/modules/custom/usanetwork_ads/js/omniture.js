@@ -312,7 +312,7 @@
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
-    promoClick: function ($self, name, show_name) {
+    promoClick: function ($self, name, show_name, nameEnding) {
 
       if (show_name === '') {
         s.linkTrackVars = 'events,eVar55';
@@ -331,7 +331,7 @@
         };
       }
 
-      s.tl(this, 'o', name + ' Click', null, s.goToUrl);
+      s.tl(this, 'o', name + nameEnding, null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -345,6 +345,7 @@
             page_name,
             blockName,
             name,
+            nameEnding = ' Click',
             showNewDesignClass = 'show-new-design';
 
         // Home page
@@ -381,7 +382,9 @@
           page_name = 'Show Landing ';
 
           if ($self.closest('#relevant-content-carousel').length > 0) {
-            name = page_name + 'Right Rail';
+            var pos = $self.closest('li').index() + 1;
+            name = page_name + 'Right Rail Click - Pos ' + pos;
+            nameEnding = '';
           }
 
           if ($self.closest('.usa-bcd-carousel-promo').length > 0) {
@@ -549,7 +552,7 @@
         }
 
         // init omniture tracking
-        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name);
+        Drupal.behaviors.omniture_tracking.promoClick($self, name, global_show_name, nameEnding);
       }
     },
 

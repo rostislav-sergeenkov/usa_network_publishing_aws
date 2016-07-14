@@ -344,6 +344,11 @@ header .ad-leaderboard {
   margin-bottom: 80px;
 }
 
+#suits-inspiration-link {
+  color: #c60023;
+  cursor: pointer;
+}
+
 
 
 /* BEGIN MEDIA QUERIES */

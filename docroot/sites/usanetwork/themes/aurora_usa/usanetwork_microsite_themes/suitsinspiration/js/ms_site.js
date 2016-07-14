@@ -19,6 +19,7 @@
       Drupal.behaviors.ms_site.initIframeResize();
     },
 
+/*
     // initIframeResize
     initIframeResize: function(delay) {
       delay = delay || 700;
@@ -30,6 +31,7 @@
         //usa_debug('========== initIframeResize(), env: ' + env);
       }, delay);
     },
+*/
 
     // setIframeHeight
     setIframeHeight: function(ifrmHeight) {
@@ -48,6 +50,7 @@
           basePageName = siteName + ' | USA Network',
           self = this;
 
+/*
       // Create IE + others compatible event handler
       var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
       var eventer = window[eventMethod];
@@ -60,6 +63,13 @@
           self.setIframeHeight(e.data);
         }
       }, false);
+*/
+
+      var search = window.location.search;
+      if (search.indexOf('contentId') > -1 && search.indexOf('campaignId') > -1) {
+        usa_debug('********* USA: offerpop params in url so scroll down to Offerpop iframe');
+        Drupal.behaviors.ms_global.scrollToElem('#offerpop');
+      }
 
       setTimeout(function(){
         if (Drupal.behaviors.ms_global.globalInitialPageLoad) {
@@ -76,7 +86,14 @@
               };
           if (typeof Drupal.behaviors.ms_gigya != 'undefined' && typeof Drupal.behaviors.ms_gigya.updateGigyaSharebar == 'function') Drupal.behaviors.ms_gigya.updateGigyaSharebar(1, gigyaSettings);
         }
-        $('#offerpop-iframe').on('load', function(){ self.initIframeResize(4000); });
+//        $('#offerpop-iframe').on('load', function(){ self.initIframeResize(4000); });
+
+        // initialize click on #SuitsInspiration
+        jQuery('#suits-inspiration-link').click(function(){
+          usa_debug('********* USA: clicked on suits-inspiration-link');
+          Drupal.behaviors.ms_global.scrollToElem('#offerpop');
+        });
+
       }, 500);
 
       // RE-SIZING

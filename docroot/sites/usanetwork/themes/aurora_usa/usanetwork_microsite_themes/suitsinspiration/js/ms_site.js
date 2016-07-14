@@ -19,29 +19,6 @@
       Drupal.behaviors.ms_site.initIframeResize();
     },
 
-/*
-    // initIframeResize
-    initIframeResize: function(delay) {
-      delay = delay || 700;
-      setTimeout(function() {
-        var ifrm = document.getElementById('offerpop-iframe'),
-            hostname = window.location.hostname,
-            env = hostname.replace('.usanetwork.com', '');
-        ifrm.contentWindow.postMessage(env, 'http://offerpop.com');
-        //usa_debug('========== initIframeResize(), env: ' + env);
-      }, delay);
-    },
-*/
-
-    // setIframeHeight
-    setIframeHeight: function(ifrmHeight) {
-      //usa_debug('============== parent.setIframeHeight(' + ifrmHeight + ')');
-      var ifrm = document.getElementById('offerpop-iframe');
-      ifrm.style.visibility = 'hidden';
-      ifrm.style.height = ifrmHeight;
-      ifrm.style.visibility = 'visible';
-    },
-
     // ATTACH
     attach: function (context, settings) {
       // set defaults
@@ -49,21 +26,6 @@
           basePath = Drupal.settings.microsites_settings.base_path,
           basePageName = siteName + ' | USA Network',
           self = this;
-
-/*
-      // Create IE + others compatible event handler
-      var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-      var eventer = window[eventMethod];
-      var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-
-      // Listen to message from child window
-      eventer(messageEvent,function(e) {
-        if (e.origin == 'http://offerpop.com') {
-          //usa_debug('parent received message!:  ' + e.data);
-          self.setIframeHeight(e.data);
-        }
-      }, false);
-*/
 
       var search = window.location.search;
       if (search.indexOf('contentId') > -1 && search.indexOf('campaignId') > -1) {
@@ -86,7 +48,6 @@
               };
           if (typeof Drupal.behaviors.ms_gigya != 'undefined' && typeof Drupal.behaviors.ms_gigya.updateGigyaSharebar == 'function') Drupal.behaviors.ms_gigya.updateGigyaSharebar(1, gigyaSettings);
         }
-//        $('#offerpop-iframe').on('load', function(){ self.initIframeResize(4000); });
 
         // initialize click on #SuitsInspiration
         jQuery('#suits-inspiration-link').click(function(){

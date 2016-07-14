@@ -17,6 +17,18 @@ html, body {
     background: linear-gradient(to bottom,#000000 0%,#000000 6.6%,#181818 9.7%,#181818 18.4%,#111111 21%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#111111',GradientType=0 );
   }
+  .node-usanetwork-promo {
+    .no-touch &:hover {
+      .asset-img {
+        opacity: 0.85;
+      }
+    }
+    .no-touch & {
+      .asset-img {
+        opacity: 0.35;
+      }
+    }
+  }
 
   .gallery-recap-block {
     .section-title {
@@ -280,20 +292,8 @@ html, body {
           overflow: hidden;
           position: relative;
           width: 100%;
-          .no-touch &:hover {
-            .asset-img {
-              opacity: 0.85;
-            }
-          }
           @include breakpoint($bp-640-width) {
             height: auto;
-          }
-
-          .no-touch & {
-            .asset-img {
-              @include transition(all 0.1s linear);
-              opacity: 0.35;
-            }
           }
         }
         @extend %social-promo;

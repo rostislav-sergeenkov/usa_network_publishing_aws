@@ -491,6 +491,15 @@
           max-width: calc(100% - 175px);
         }
       }
+
+      #usa-tve-help-link.mobile-device ~ .nav-bar-tabs {
+        @include breakpoint($bp-768-width) {
+          max-width: calc(100% - 75px);
+        }
+        @include breakpoint($bp-480-width) {
+          max-width: calc(100% - 50px);
+        }
+      }
     }
   }
 }

@@ -45,6 +45,9 @@ function _usanetwork_video_live_right_rail_ajax($offset) {
     if (isset($on_now_item->nid)) {
       $tv_show = node_load($on_now_item->nid);
     }
+    if (isset($on_now_item->mid)) {
+      $tv_show = node_load($on_now_item->mid);
+    }
 
     if (isset($tv_show)) {
       $dynamic_content = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_enable', 'value');
@@ -53,7 +56,11 @@ function _usanetwork_video_live_right_rail_ajax($offset) {
         $enable_right_rail = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_right_rail', 'value');
 
         if ($enable_right_rail == 'latest_feed') {
-          $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show, 0, USANETWORK_VIDEO_LIVE_RIGHT_RAIL_NUMBER_ELIMENTS);
+          if ($tv_show->type == 'tv_show') {
+            $related_content = _usanetwork_tv_shows_cache_get_limited_related_show_content($tv_show, 0, USANETWORK_VIDEO_LIVE_RIGHT_RAIL_NUMBER_ELIMENTS);
+          } else {
+            $related_content = _usanetwork_movie_cache_get_limited_related_movie_content($tv_show, 0, USANETWORK_VIDEO_LIVE_RIGHT_RAIL_NUMBER_ELIMENTS);
+          }
 
           $promos = array();
 
@@ -105,6 +112,9 @@ function _usanetwork_video_live_related_ajax($offset) {
 
     if (isset($on_now_item->nid)) {
       $tv_show = node_load($on_now_item->nid);
+    }
+    if (isset($on_now_item->mid)) {
+      $tv_show = node_load($on_now_item->mid);
     }
 
     if (isset($tv_show)) {

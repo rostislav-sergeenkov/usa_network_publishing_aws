@@ -1,4 +1,4 @@
-.page-node-microsite , .node-type-timeline-gallery {
+body:not(.show-new-design).page-node-microsite, body:not(.show-new-design).node-type-timeline-gallery {
   .timelineFlat {
     .timeline-items {
       .timeline-item-image {
@@ -6,7 +6,8 @@
       }
       // player wrapper
       #player-wrapper {
-        display: none;
+        background-color: #000000;
+        visibility: hidden;
         position: absolute;
         iframe {
           height: 100%;
@@ -43,7 +44,7 @@
   }
 }
 
-.node-type-timeline-gallery {
+body:not(.show-new-design).node-type-timeline-gallery {
   .sharebar {
     .field-type-gigya-sharebar {
       width: 100%;
@@ -161,7 +162,7 @@
   }
 }
 .touch {
-  .node-type-timeline-gallery {
+  body:not(.show-new-design).node-type-timeline-gallery {
     .timeline-item-details {
       ::-webkit-scrollbar {
         width: 10px;

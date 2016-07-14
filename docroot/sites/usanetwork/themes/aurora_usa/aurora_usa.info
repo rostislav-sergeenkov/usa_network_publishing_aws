@@ -29,6 +29,7 @@ regions[footer]                  = Footer
 regions[on_now]                  = On Now
 regions[personalization_trigger] = Personalization Trigger
 regions[personalization]         = Personalization
+regions[footer_additional]       = Additional Footer
 
 ; THEME OPTIONS
 

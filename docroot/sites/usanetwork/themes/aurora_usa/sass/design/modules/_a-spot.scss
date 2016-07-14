@@ -108,7 +108,7 @@
   }
 }
 
-.usanetwork-aspot {
+body:not(.show-new-design) .usanetwork-aspot {
 
   .aspot-draggable-element {
     display: none;
@@ -140,7 +140,7 @@
     }
     .title_prefix {
       @include aspotFonts(1px, 8.08px, 11.28px);
-      @include aspotShowFonts(1px, 8.08px, 11.28px);
+      @include aspotShowFonts(1px, 8.08px, 11.28px, false);
     }
     .title {
       color: #ffffff;
@@ -158,7 +158,7 @@
         font-size: 10.4vw;
       }
       @include aspotFonts(4px, 52.8px, 42.56px);
-      @include aspotShowFonts(4px, 52.8px, 42.56px);
+      @include aspotShowFonts(4px, 52.8px, 42.56px, false);
       p {
         margin: 0;
         text-shadow: 1px 1px 0.5em $aspot-shadow;
@@ -180,7 +180,7 @@
         font-size: 3.125vw;
       }
       @include aspotFonts(1.5px, 15px, 11px);
-      @include aspotShowFonts(1.5px, 15px, 11px);
+      @include aspotShowFonts(1.5px, 15px, 11px, false);
       p {
         margin: 0;
         text-shadow: 1px 1px 0.5em $aspot-shadow;
@@ -458,7 +458,7 @@
 .aspot-and-episodes {
   @include clear();
   overflow: hidden;
-  height: 43.75vw;
+  height: 42.8vw;
   position: relative;
   width: 100%;
   @include breakpoint($bp-min-2500-width) {

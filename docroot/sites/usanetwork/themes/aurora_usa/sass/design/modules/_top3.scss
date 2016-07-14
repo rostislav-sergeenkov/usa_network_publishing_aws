@@ -207,6 +207,16 @@
       }
     }
   }
+  &.sponsored-enable {
+    & > .content {
+      @include breakpoint($bp-1280-width) {
+        padding-top: calc(156px + 35px + 20px);
+      }
+      @include breakpoint($bp-768-width) {
+        padding-top: calc(#{get-vw(156px, 768)} + 35px + #{get-vw(15px, 768)});
+      }
+    }
+  }
   & > .content {
     @include clear();
     height: auto;
@@ -222,7 +232,7 @@
       padding-bottom: 300px;
     }
     @include breakpoint($bp-768-width) {
-      padding-top: get-vw(156px, 1024);
+      padding-top: get-vw(156px, 768);
     }
   }
   #slider-player {
@@ -275,8 +285,52 @@
         width: get-vw(70.4px, 1024);
       }
     }
+    &:not(.info-hide){
+      & ~ #slider-container {
+        #drag-icon-block {
+          &.full-changed {
+            bottom: get-vw(180px, 1901);
+            @include breakpoint($bp-min-1901-width) {
+              bottom: 180px;
+            }
+            @include breakpoint($bp-1024-width) {
+              bottom: get-vw(137.76px, 1024);
+            }
+          }
+        }
+      }
+    }
     &.inactive {
       display: none;
+      & + #cc-button.active {
+        & + #slider-container {
+          #drop-area {
+            bottom: get-vw(-120px, 1901);
+            @include breakpoint($bp-min-1901-width) {
+              bottom: -120px;
+            }
+            @include breakpoint($bp-1024-width) {
+              bottom: get-vw(-91.82px, 1024);
+            }
+          }
+        }
+      }
+      &:not(.info-hide){
+        & + #cc-button.active {
+          & + #slider-container {
+            #drag-icon-block {
+              bottom: get-vw(68px, 1901);
+              opacity: 0.3;
+              @include breakpoint($bp-min-1901-width) {
+                bottom: 68px;
+              }
+              @include breakpoint($bp-1024-width) {
+                bottom: get-vw(52.04px, 1024);
+              }
+            }
+          }
+        }
+      }
     }
     &.show {
       display: block;
@@ -476,7 +530,7 @@
   .right-sidebar {
     float: left;
     position: relative;
-    width: calc(100% - 67.33298vw);
+    width: calc(100% - #{get-vw(1280px, 1901)});
     @include breakpoint($bp-min-1901-width) {
       width: calc(100% - 1280px);
     }
@@ -486,6 +540,26 @@
     }
     @include breakpoint($bp-1024-width) {
       padding-top: 53.8vw;
+    }
+    &.sponsored-enable {
+      .advert {
+        @include breakpoint($bp-min-1281-width) {
+          margin: calc(#{get-vw(147px, 1901)} - 35px - #{get-vw(15px, 1280)}) auto 0;
+        }
+        @include breakpoint($bp-min-1901-width) {
+          margin-top: 89.7px;
+        }
+      }
+      .choose-top3-img {
+        @include breakpoint($bp-1280-width) {
+          bottom: calc(100% + 33px + (35px + 20px)/2);
+          max-height: calc(90px + 35px + 20px);
+        }
+        @include breakpoint($bp-768-width) {
+          bottom: calc(100% + #{get-vw(33px, 768)} + (35px + #{get-vw(15px, 768)})/2);
+          max-height: calc(#{get-vw(90px, 768)} + (35px + #{get-vw(15px, 768)}));
+        }
+      }
     }
     .choose-top3-img {
       height: auto;
@@ -509,7 +583,7 @@
         width: 100%;
       }
       @include breakpoint($bp-768-width) {
-        bottom: calc(100% + 2.148vw);
+        bottom: calc(100% + #{get-vw(16.5px, 768)});
         max-height: get-vw(90px, 768);
       }
       img {
@@ -521,6 +595,22 @@
         }
       }
     }
+    #topthreelogo {
+      height: 35px;
+      margin: get-vw(15px, 1280) auto 0;
+      max-height: 35px;
+      max-width: 100%;
+      width: 240px;
+      @include breakpoint($bp-min-1901-width) {
+        margin-top: 22.3px;
+      }
+      @include breakpoint($bp-1280-width) {
+        margin: 20px auto 0;
+      }
+      @include breakpoint($bp-768-width) {
+        margin: get-vw(15px, 768) auto 0;
+      }
+    }
     .advert {
       height: 250px;
       margin: get-vw(147px, 1901) auto 0;
@@ -529,7 +619,8 @@
         margin-top: 147px;
       }
       @include breakpoint($bp-1280-width) {
-        margin-left: calc(67.33298vw + (32.66702vw - 320px)/2) ;
+        margin-left: calc(#{get-vw(1280px, 1901)} + (#{get-vw(621px, 1901)} - 320px)/2) ;
+        margin-top: 0;
       }
       @include breakpoint($bp-1024-width) {
         margin: 25px auto 0;
@@ -836,6 +927,49 @@
     &:before {
       content: '\e623';
     }
+  }
+  #cc-button {
+    display: none;
+    border-color: grey;
+    color: grey;
+    font-family: $avalon-demi;
+    font-size: get-vw(24px, 1901);
+    line-height: get-vw(51px, 1901);
+    right: get-vw(40px, 1901);
+    text-align: center;
+    text-transform: uppercase;
+    top: calc(20px + #{get-vw(40px, 1901) + get-vw(53px, 1901)});
+    @include breakpoint($bp-min-1901-width) {
+      font-size: 24px;
+      line-height: 51px;
+      right: 40px;
+      top: calc(15px + (40px + 53px));
+    }
+    @include breakpoint($bp-1024-width) {
+      font-size: get-vw(18.36px, 1024);
+      line-height: get-vw(39.015px, 1024);
+      right: get-vw(30.6px, 1024);
+      top: calc(10px + #{get-vw(30.6px, 1024) + get-vw(40.5px, 1024)});
+    }
+    &.active {
+      border-color: white;
+      color: white;
+    }
+    &.inactive {
+      display: none;
+    }
+    &.show {
+      display: block;
+    }
+    &.info-hide {
+      display: none;
+    }
+    &.popup-hide {
+      display: none;
+    }
+    //&:before {
+    //  content: '\e623';
+    //}
   }
   .close-button {
     right: get-vw(40px, 1901);
@@ -1443,12 +1577,16 @@
       bottom: get-vw(-52.03px, 1024);
       height: get-vw(104.06px, 1024);
     }
-    &.show {
+    &.full-changed {
       bottom: 0;
       z-index: 100;
     }
+    &.show {
+      bottom: 0!important;
+      z-index: 100;
+    }
     &.not-allowed {
-      bottom: -500px;
+      bottom: -500px!important;
       z-index: 0;
     }
     & > div {
@@ -1630,6 +1768,16 @@
           font-size: get-vw(22px, 1024);
           line-height: get-vw(67px, 1024);
           width: get-vw(250px, 1024);
+        }
+      }
+      #topthreelogo {
+        height: 35px;
+        margin: get-vw(25px, 1280) auto 0;
+        max-height: 35px;
+        max-width: 100%;
+        width: 240px;
+        @include breakpoint($bp-min-1901-width) {
+          margin: 37.1px auto 0;
         }
       }
     }
@@ -2056,6 +2204,10 @@
   pointer-events: none;
   position: absolute;
   width: get-vw(60px, 1901);
+  -moz-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+  -o-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+  -webkit-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+  transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
   @include breakpoint($bp-min-1901-width) {
     bottom: 120px;
     height: 60px;

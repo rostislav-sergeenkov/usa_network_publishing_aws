@@ -1,0 +1,5 @@
+name = TVE Cookie Detection
+description = 3rd party cookies support detection.
+core = 7.x
+package = NBCU TVE
+version = 7.x-1.2

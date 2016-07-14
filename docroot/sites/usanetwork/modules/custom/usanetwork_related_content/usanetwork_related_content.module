@@ -74,8 +74,9 @@ function usanetwork_related_content_get_related_content_ajax($consum_node, $tv_c
       $response['overlimited'] = FALSE;
       $related_content = array_slice($related_content, 0, $limit);
     }
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_content_node);
     $function = 'usanetwork_' . $tv_content_node->type . '_consumptionator_render_related_content_items_block';
-    $response['rendered'] = $function($related_content, $start_from, $limit);
+    $response['rendered'] = $function($related_content, $start_from, $limit, $is_new_design);
     $response['total'] = count($related_content);
     $response['found'] = TRUE;
   }

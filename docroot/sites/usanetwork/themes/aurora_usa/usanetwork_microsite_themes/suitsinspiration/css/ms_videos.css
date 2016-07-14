@@ -64,7 +64,7 @@
   display: none;
 }
 #microsite #video-gigya-share-container {
-  width: 284px;
+  width: 300px;
   margin: 15px auto 0;
 }
 #microsite #video-gigya-share-title {
@@ -797,8 +797,5 @@
 @media (max-width: 570px) {
   #microsite .video-player-desc {
     width: 100%;
-  }
-  #microsite #video-gigya-share-container {
-    width: 256px;
   }
 }

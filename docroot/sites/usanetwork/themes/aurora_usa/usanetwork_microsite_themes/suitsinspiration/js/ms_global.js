@@ -141,6 +141,12 @@
       }, 2000);
     },
 
+    scrollToElem: function(elem) {
+      $('html, body').animate({
+        scrollTop: $(elem).offset().top
+      }, 2000);
+    },
+
     // IsScrolledIntoView
     // determines whether the entire element is in the viewable part of the window
     isScrolledIntoView: function(elem) {
@@ -189,7 +195,7 @@
             light: 'light',
             light_stacked: 'light-stacked'
           };
-          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#home-content'), style.light);
+          //Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#home-content'), style.light);
 
           $('#video-container').addClass('active');
           var urlParts = self.parseUrl(window.location.href); // history.state['path']);

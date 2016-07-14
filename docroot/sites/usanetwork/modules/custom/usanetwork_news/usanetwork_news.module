@@ -73,6 +73,11 @@ function usanetwork_news_landing_get_posts($offset = 0, $show_ad = FALSE, $ajax_
     $query->leftJoin('field_data_field_show', 'show_field', 'show_field.entity_id=cp.nid');
     $query->leftJoin('node', 'n', 'show_field.field_show_target_id=n.nid');
     $query->addField('n', 'title', 'show_title');
+    $query->leftJoin('field_data_field_content_tags', 'tags_field', 'tags_field.entity_id=cp.nid');
+    $query->condition(db_or()
+      ->isNull('tags_field.field_content_tags_tid')
+      ->condition('tags_field.field_content_tags_tid', variable_get('usanetwork_blog_migrate_the_verge_taxonomy_term_tid', FALSE), '!=')
+    );
     $query->addExpression('IF(post_covts.field_promo_created_ovts_value is NULL, cp.created, post_covts.field_promo_created_ovts_value)', 'sorted_time');
     $query->condition('cp.type', 'consumpt_post');
     $query->condition('cp.status', NODE_PUBLISHED);

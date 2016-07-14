@@ -97,6 +97,14 @@ function usanetwork_consumptionator_post_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
 
+  $items['node/%node/tag/%'] = array(
+    'title' => 'Blog',
+    'page arguments' => array(1),
+    'page callback' => 'usanetwork_consumptionator_post_blank_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
   $items['ajax/usanetwork-blog-posts/get-related/%node/%'] = array(
     'title' => 'Related content',
     'page callback' => 'usanetwork_consumptionator_post_blog_get_posts_ajax',
@@ -104,6 +112,15 @@ function usanetwork_consumptionator_post_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+
+  $items['ajax/usanetwork-blog-posts/get-related-tag/%node/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_consumptionator_post_blog_get_posts_ajax',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   $items['ajax/usanetwork-blog-posts/get-related/news/%'] = array(
     'title' => 'Related content',
     'page callback' => 'usanetwork_consumptionator_post_blog_get_posts_ajax',
@@ -194,12 +211,13 @@ function _usanetwork_consumptionator_post_related_content_block() {
       $tv_show_node = node_load($show_field[0]['target_id']);
 
       $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_show_node);
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
     }
     else {
       $related_content = usanetwork_news_get_all_related_content_for_consumpt_page($content);
     }
     if (!empty($related_content)) {
-      $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content);
+      $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, 0, 1, $is_new_design);
 
       $load_more_link = &drupal_static('load_more_link');
       $load_more_link = TRUE;
@@ -209,6 +227,7 @@ function _usanetwork_consumptionator_post_related_content_block() {
         'show_nid' => (!empty($tv_show_node->nid)) ? $tv_show_node->nid : NULL,
         'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
         'node_nid' => $content->nid,
+        'new_design' => isset($is_new_design) ? $is_new_design : NULL,
       ));
     }
   }
@@ -222,15 +241,59 @@ function _usanetwork_consumptionator_post_main_block() {
   $node = menu_get_object('node');
   if (isset($node->type) && $node->type == 'consumpt_post') {
     $node_wrapper = entity_metadata_wrapper('node', $node);
+    if (!empty($node->field_show)) {
+      $show_nid = $node_wrapper->field_show->nid->value();
+    }
+    $blog_service = usanetwork_blog_migrate_get_post_service($node);
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
+
+    $violator = NULL;
+    $creating_date = !empty($node->field_promo_created_ovts) ? $node_wrapper->field_promo_created_ovts->value() : $node->created;
+    $post_date = date('n/j/y', $creating_date);
+    
     if (!empty($node->field_content_tags)) {
       $tags = $node_wrapper->field_content_tags->value();
       $tags_names = array();
-      foreach ($tags as $tag) {
-        $tags_names[] = $tag->name;
+      if ($is_new_design) {
+        foreach ($tags as $tag) {
+          $taxonomy_path = drupal_get_path_alias('taxonomy/term/' . $tag->tid);
+          $tags_names[] = l($tag->name, 'node/' . $show_nid . '/' . $taxonomy_path);
+        }
+      } else {
+        foreach ($tags as $tag) {
+          $tags_names[] = $tag->name;
+        }
       }
       $tags_names = implode(', ', $tags_names);
     }
-    $creating_date = !empty($node->field_promo_created_ovts) ? $node_wrapper->field_promo_created_ovts->value() : $node->created;
+
+    // Set violator.
+    $original_link = $node_wrapper->field_post_original_link->value();
+    if (!empty($original_link['url'])) {
+      $violator = usanetwork_core_api_get_violator('node', $node->nid);
+      if ($violator) {
+        $violator = l($violator, $original_link['url'], array(
+          'attributes' => array(
+            'class' => 'violator-link show-color',
+            'target' => '_blank'
+          ),
+          'html' => TRUE,
+        ));
+      }
+    }
+
+    // Set author name.
+    if ($author = usanetwork_consumptionator_post_get_author('node', $node)) {
+      $author = $author->name;
+    }
+
+    // Set original date
+    $original_date = $node_wrapper->field_post_original_date->value();
+    if ($original_date) {
+      $date = new DateObject($original_date);
+      $original_date = $date->format('F j, Y');
+    }
+
     $navigation_links = _usanetwork_consumptionator_post_get_post_nav_links($node);
     $show_cover = $node_wrapper->field_post_cover_toggle->value();
     if (!empty($show_cover)) {
@@ -244,12 +307,13 @@ function _usanetwork_consumptionator_post_main_block() {
       'title' => !empty($node->title) ? $node->title : '',
       'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title , $body),
       'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
-      'creating_date' => date('n/j/y', $creating_date),
+      'creating_date' => $post_date,
+      'original_publish_date' => $original_date,
       'image_desktop' => !empty($image['uri']) ? image_style_url('769x434', $image['uri']) : '',
       'tags' => !empty($tags_names) ? $tags_names : '',
       'body' => $body,
       'rendered_carousel' => !empty($node->field_show)
-          ? _usanetwork_consumptionator_post_posts_carousel($node_wrapper->field_show->nid->value(), $blog_nid, $node->nid)
+          ? _usanetwork_consumptionator_post_posts_carousel($show_nid, $blog_nid, $node->nid)
           : _usanetwork_consumptionator_post_posts_carousel(NULL, $blog_nid, $node->nid),
       'source' => !empty($node->field_post_source) ? $node_wrapper->field_post_source->value() : '',
       'gallery_rec' => !empty($node->field_gallery_recap)
@@ -259,6 +323,10 @@ function _usanetwork_consumptionator_post_main_block() {
               !empty($node->field_gallery_recap_block_title) ? $node_wrapper->field_gallery_recap_block_title->value() : NULL
           )
           : '',
+      'violator' => $violator,
+      'author' => $author,
+      'is_new_design' => $is_new_design ? TRUE : FALSE,
+      'blog_service' => $blog_service,
     );
     return theme('usanetwork_cons_post_main', $theme_variables);
   }
@@ -268,7 +336,7 @@ function _usanetwork_consumptionator_post_main_block() {
 /*
  * Get latest posts
  */
-function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 20) {
+function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 20, $exclude_verge = FALSE) {
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
   $query->condition('node.type', 'consumpt_post');
@@ -284,6 +352,13 @@ function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid =
       $query->leftJoin('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=node.nid');
       $query->isNull('field_consumptionator_blog.field_consumptionator_blog_target_id');
     }
+  }
+  if ($exclude_verge) {
+    $query->leftJoin('field_data_field_content_tags', 'tags_field', 'tags_field.entity_id=node.nid');
+    $query->condition(db_or()
+      ->isNull('tags_field.field_content_tags_tid')
+      ->condition('tags_field.field_content_tags_tid', variable_get('usanetwork_blog_migrate_the_verge_taxonomy_term_tid', FALSE), '!=')
+    );
   }
   $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
   $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
@@ -303,6 +378,27 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
   $result =  _usanetwork_consumptionator_post_get_posts($show_id, $blog_nid);
   if (isset($result)) {
     $posts = entity_load('node', array_keys($result));
+
+    $is_new_design = FALSE;
+    if (is_numeric($show_id)) {
+      $show_node = node_load($show_id);
+      if (!empty($blog_nid)) {
+        $blog_node = node_load($blog_nid);
+        $show_blog_title = $blog_node->title;
+      }
+      else {
+        $show_blog_title = _usanetwork_get_field_item('node', $show_node, 'field_show_blog_title', 'value');
+      }
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
+      if ($show_blog_title) {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $blog_url = '/' . pathauto_cleanstring($show_blog_title);
+      }
+      else {
+        $blog_url = '';
+      }
+    }
+
     $rendered_items = array();
     foreach ($posts as $post) {
       if (!empty($post->field_post_cover)) {
@@ -314,9 +410,7 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
         $image = reset($image);
       }
       if (!empty($post->field_promo_created_ovts)) {
-        $created_ovts = field_get_items('node', $post, 'field_promo_created_ovts');
-        $created_ovts = reset($created_ovts);
-        $created_ovts = $created_ovts['value'];
+        $created_ovts = _usanetwork_get_field_item('node', $post, 'field_promo_created_ovts', 'value');
       }
       else {
         $created_ovts = $post->created;
@@ -328,44 +422,33 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
         'active' => ($post_id == $post->nid) ? TRUE : FALSE,
         'icon_type' => usanetwork_core_api_get_media_icon('node', $post->nid),
       );
+      $episode_variables['new_design'] = !empty($is_new_design) ? $is_new_design : NULL;
+      $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
+      $rendered_items['vertical'][] = theme('usanetwork_cons_post_carousel_item_v', $episode_variables);
       $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
       $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
       $rendered_items['horizontal'][] = theme('usanetwork_cons_post_carousel_item_h', $episode_variables);
-      $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-      $rendered_items['vertical'][] = theme('usanetwork_cons_post_carousel_item_v', $episode_variables);
     }
+
     $advert_block = module_invoke('mps', 'block_view', 'topbox');
     if (!empty($advert_block['content'])) {
       $advert = render($advert_block['content']);
     }
-    if (is_numeric($show_id)) {
-      $show_node = node_load($show_id);
-      if (!empty($blog_nid)) {
-        $blog_node = node_load($blog_nid);
-        $show_blog_title = $blog_node->title;
-      }
-      else {
-        $show_blog_title = _usanetwork_get_field_item('node', $show_node, 'field_show_blog_title', 'value');
-      }
-      if ($show_blog_title) {
-        module_load_include('inc', 'pathauto', 'pathauto');
-        $blog_url = '/' . pathauto_cleanstring($show_blog_title);
-      }
-      else {
-        $blog_url = '';
-      }
-    }
+
     $theme_variables = array(
       'posts' => !empty($rendered_items) ? $rendered_items : array(),
       'advert_block' => isset($advert) ? $advert : NULL,
       'block_title' => (is_numeric($show_id))
-        ? (!empty($show_blog_title)
-          ? $show_blog_title
-          : t('@show_name blog', array('@show_name' => $show_node->title)))
+        ? (($is_new_design)
+          ? t('Latest Articles')
+          : ((!empty($show_blog_title)
+            ? $show_blog_title
+            : t('@show_name blog', array('@show_name' => $show_node->title)))))
         : t('Latest News'),
       'posts_landing_link' => (is_numeric($show_id))
-        ? l(t('View all posts'), 'node/' . $show_id . '/blog' . $blog_url)
+        ? l((($is_new_design) ? t('View all Articles <span class="show-color show-font"></span>') : t('View all posts')), 'node/' . $show_id . '/blog' . $blog_url, array('html' => TRUE))
         : l(t('View all news'), 'news'),
+      'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
     );
     return theme('usanetwork_cons_post_carousel', $theme_variables);
   }
@@ -394,7 +477,7 @@ function usanetwork_consumptionator_post_blank_page() {
   return '';
 }
 
-function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL, $offset = 0, $show_ad = FALSE, $ajax_load = FALSE) {
+function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL, $offset = 0, $show_ad = FALSE, $ajax_load = FALSE, $tag_id = NULL) {
   if (path_is_admin(current_path())) {
     return '';
   }
@@ -412,6 +495,15 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
       $blog_id = NULL;
       $show_title = $node->title;
       $blog_title = usanetwork_consumptionator_post_get_blog_title($node);
+      if ($tag_id === NULL) {
+        $tag_name = arg(3);
+        if ($tag_name && (arg(2) == 'tag') ) {
+          $tag_alias = arg(2).'/'.arg(3);
+          $tag_path = drupal_get_normal_path($tag_alias);
+          $tag = menu_get_object('taxonomy_term', 2, $tag_path);
+          $tag_id = !empty($tag) ? $tag->tid : NULL;
+        }
+      }
       break;
     case 'consumpt_blog':
       if (empty($node->field_show)) {
@@ -427,21 +519,64 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
       return '';
   }
 
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
+
   $theme_variables = array(
     'items' => array(),
     'ad' => $show_ad,
     'ad_id' => $offset,
     'title' => NULL,
+    'filters' => array(),
     'node_nid' => $node->nid,
     'ajax_load' => $ajax_load,
     'load_more_link' => !$ajax_load,
+    'is_new_design' => $is_new_design,
+    'tag_tid' => $tag_id,
   );
-
-  $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset);
 
   $theme_variables['title'] = $blog_title;
 
+  if ($is_new_design) {
+    $post_tags = _usanetwork_posts_get_posts_tags($node->nid);
+    if ($post_tags) {
+      if ($blog_title) {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $blog_url = '/' . pathauto_cleanstring($blog_title);
+      } else {
+        $blog_url = '';
+      }
+      $theme_variables['filters']['all'] = array(
+        'title' => t('All Articles'),
+        'url' => url('node/' . $node->nid . '/blog' . $blog_url),
+        'active' => (empty($tag_id)) ? TRUE : FALSE,
+      );
+      $post_tid_verge = variable_get('usanetwork_blog_migrate_the_verge_taxonomy_term_tid', NULL);
+      if ($post_tid_verge) {
+        $post_tag = taxonomy_term_load($post_tid_verge);
+        $taxonomy_path = drupal_get_path_alias('taxonomy/term/' . $post_tid_verge);
+        $tag_title = t('Featured From @term_name', array('@term_name' => $post_tag->name));
+        $theme_variables['filters'][$post_tid_verge] = array(
+          'title' => $tag_title,
+          'url' => url('node/' . $node->nid . '/' . $taxonomy_path),
+          'active' => ($tag_id == $post_tid_verge) ? TRUE : FALSE,
+        );
+        if ($tag_id == $post_tid_verge) {
+          $theme_variables['title'] = $tag_title;
+          $theme_variables['active_filter_title'] = $theme_variables['title'];
+        }
+      }
+    }
+    if (empty($tag_id)) {
+      $theme_variables['title'] = t('All Articles');
+      $theme_variables['active_filter_title'] = $theme_variables['title'];
+    }
+  }
+
+  $posts_data = _usanetwork_consumptionator_post_get_posts_data($show_id, $blog_id, $offset, $tag_id);
   if (!empty($posts_data)) {
+    if (count($posts_data) < USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS) {
+      $theme_variables['load_more_link'] = FALSE;
+    }
     foreach ($posts_data as $post_data_index => $post_data) {
       $cover_file = entity_load('file', array($post_data->post_cover_fid));
       if (!empty($cover_file)) {
@@ -455,11 +590,13 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
         'desktop_image_url' => image_style_url('677x381', $cover_uri),
         'title' => $post_data->title,
         'description' => check_markup($post_data->description, 'wysiwyg_mini'),
-        'post_date' => !empty($post_data->created)
-          ? gmdate('m/d/Y', $post_data->created)
+        'post_date' => !empty($post_data->sorted_time)
+          ? gmdate('m/d/Y', $post_data->sorted_time)
           : NULL,
         'tags' => $post_data->tags,
         'active' => (!$ajax_load && $post_data_index == 0) ? TRUE : FALSE,
+        'new_design' => $is_new_design,
+        'violator' => $post_data->violator,
       );
 
       $theme_variables['items'][] = theme('usanetwork_blog_landing_posts_list_item', $theme_item_variables);
@@ -477,9 +614,32 @@ function _usanetwork_consumptionator_post_get_blog_posts_list_block($node = NULL
     : '';
 }
 
-function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = NULL, $offset = 0) {
+/*
+ * Helper function for getting list of tags for posts by show
+ */
+function _usanetwork_posts_get_posts_tags($show_nid){
+  $query = db_select('node', 'n');
+  $query->condition('n.type', 'consumpt_post');
+  $query->condition('n.status', NODE_PUBLISHED);
+  $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=n.nid');
+  $query->condition('show_field.field_show_target_id', $show_nid);
+  $query->join('field_data_field_content_tags', 'tags_field', 'tags_field.entity_id=n.nid');
+  $query->addField('tags_field', 'field_content_tags_tid', 'tag_tid');
+  $query->leftJoin('taxonomy_term_data', 'term', 'term.tid=tags_field.field_content_tags_tid');
+  $query->addField('term', 'name', 'tag_name');
+  $query->groupBy('tag_tid');
+  $result = $query->execute()->fetchall();
+
+  return $result;
+}
+
+function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = NULL, $offset = 0, $tag = NULL) {
   $cache_blog_id = !empty($blog_nid) ? $blog_nid : $show_nid;
-  $cache_name = 'blog_landing_page_' . $cache_blog_id . '_' . $offset;
+  if (!empty($tag)) {
+    $cache_name = 'blog_landing_page_' . $cache_blog_id . '_' . $offset . '_' . $tag;
+  } else {
+    $cache_name = 'blog_landing_page_' . $cache_blog_id . '_' . $offset;
+  }
   $cache = cache_get($cache_name);
   if (empty($cache)) {
     $query = db_select('node', 'cp');
@@ -487,16 +647,18 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = 
     $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=cp.nid');
     $query->addField('show_field', 'field_show_target_id', 'show_nid');
     $query->leftJoin('field_data_body', 'body_field', 'body_field.entity_id=cp.nid');
-    $query->addField('body_field', 'body_value', 'body');
+    $query->addExpression('MAX(body_field.body_value)', 'body');
     $query->leftJoin('field_data_field_summary', 'field_summary', 'field_summary.entity_id=cp.nid');
-    $query->addField('field_summary', 'field_summary_value', 'summary');
+    $query->addExpression('MAX(field_summary.field_summary_value)', 'summary');
     $query->leftJoin('field_data_field_post_cover', 'post_cover', 'post_cover.entity_id=cp.nid');
-    $query->addField('post_cover', 'field_post_cover_fid', 'post_cover_fid');
+    $query->addExpression('MAX(post_cover.field_post_cover_fid)', 'post_cover_fid');
     $query->leftJoin('field_data_field_content_tags', 'tags_field', 'tags_field.entity_id=cp.nid');
-    $query->addField('tags_field', 'field_content_tags_tid', 'tag_tid');
+    $query->addExpression('MAX(tags_field.field_content_tags_tid)', 'tag_tid');
+    $query->leftJoin('field_data_field_promo_violator_name', 'field_violator', 'field_violator.entity_id=cp.nid');
+    $query->addExpression('MAX(field_violator.field_promo_violator_name_value)', 'violator');
     $query->leftJoin('taxonomy_term_data', 'term', 'term.tid=tags_field.field_content_tags_tid');
     $query->leftJoin('field_data_field_promo_created_ovts', 'post_covts', 'post_covts.entity_id=cp.nid');
-    $query->addField('post_covts', 'field_promo_created_ovts_value', 'created');
+    $query->addExpression('MAX(post_covts.field_promo_created_ovts_value)', 'created');
     $query->condition('cp.type', 'consumpt_post');
     $query->condition('cp.status', NODE_PUBLISHED);
     $query->condition('show_field.field_show_target_id', $show_nid);
@@ -508,15 +670,26 @@ function _usanetwork_consumptionator_post_get_posts_data($show_nid, $blog_nid = 
       $query->leftJoin('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=cp.nid');
       $query->isNull('field_consumptionator_blog.field_consumptionator_blog_target_id');
     }
+    if (!empty($tag)) {
+      $query->condition('tags_field.field_content_tags_tid', $tag);
+    }
     $query->groupBy('cp.nid');
     $query->addExpression("GROUP_CONCAT(term.name SEPARATOR ', ')", 'tags');
-    $query->orderBy('post_covts.field_promo_created_ovts_value', 'DESC');
+    $query->addExpression("GROUP_CONCAT(term.tid SEPARATOR ',')", 'tids');
+    $query->addExpression('IF(MAX(post_covts.field_promo_created_ovts_value) is NULL, cp.created, MAX(post_covts.field_promo_created_ovts_value))', 'sorted_time');
+    $query->orderBy('sorted_time', 'DESC');
     $query->range($offset * USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS, USANETWORK_CONSUMPTIONATOR_POST_AMOUNT_OF_POSTS);
     $result = $query->execute()->fetchAll();
 
     if ($result) {
       foreach ($result as &$result_item) {
         $result_item->description = _usanetwork_consumptionator_post_get_season_episodes_description($result_item);
+        if (($tid = variable_get('usanetwork_blog_migrate_the_verge_taxonomy_term_tid', FALSE)) && !empty($result_item->tids)) {
+          $result_item->tids = explode(',', $result_item->tids);
+          if (in_array($tid, $result_item->tids)) {
+            $result_item->violator = usanetwork_core_api_prepare_blog_service_violator($result_item->violator, 'verge');
+          }
+        }
       }
     }
     cache_set($cache_name, $result, 'cache', time() + 900);
@@ -536,7 +709,7 @@ function usanetwork_consumptionator_post_get_blog_title($tv_show_node) {
   }
 }
 
-function _usanetwork_consumptionator_post_get_posts_count($show_nid, $blog_nid = NULL) {
+function _usanetwork_consumptionator_post_get_posts_count($show_nid, $blog_nid = NULL, $tag = NULL) {
   $query = db_select('node', 'cp');
   $query->join('field_data_field_show', 'show_field', 'show_field.entity_id=cp.nid');
   $query->condition('cp.type', 'consumpt_post');
@@ -549,6 +722,10 @@ function _usanetwork_consumptionator_post_get_posts_count($show_nid, $blog_nid =
   else {
     $query->leftJoin('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=cp.nid');
     $query->isNull('field_consumptionator_blog.field_consumptionator_blog_target_id');
+  }
+  if (!empty($tag)) {
+    $query->leftJoin('field_data_field_content_tags', 'field_content_tags', 'field_content_tags.entity_id=cp.nid');
+    $query->condition('field_content_tags.field_content_tags_tid', $tag);
   }
   $query->addExpression("COUNT(*)", 'count');
   $result = $query->execute()->fetchObject();
@@ -579,7 +756,7 @@ function _usanetwork_consumptionator_post_get_season_episodes_description($resul
   return '';
 }
 
-function usanetwork_consumptionator_post_blog_get_posts_ajax($node, $offset) {
+function usanetwork_consumptionator_post_blog_get_posts_ajax($node, $offset, $tag = NULL) {
   if (is_object($node)) {
     $response = array(
       'found' => FALSE,
@@ -604,8 +781,8 @@ function usanetwork_consumptionator_post_blog_get_posts_ajax($node, $offset) {
       default:
         return '';
     }
-    $count = _usanetwork_consumptionator_post_get_posts_count($show_id, $blog_id);
-    $block = _usanetwork_consumptionator_post_get_blog_posts_list_block($node, $offset, TRUE, TRUE);
+    $count = _usanetwork_consumptionator_post_get_posts_count($show_id, $blog_id, $tag);
+    $block = _usanetwork_consumptionator_post_get_blog_posts_list_block($node, $offset, TRUE, TRUE, $tag);
   }
   else {
     $response = array(
@@ -873,4 +1050,12 @@ function usanetwork_consumptionator_post_blogs_autocomplete($title) {
     }
   }
   drupal_json_output($output);
+}
+
+function usanetwork_consumptionator_post_get_author($entity_type, $entity) {
+  $entity_wrapper = entity_metadata_wrapper($entity_type, $entity);
+  if (usanetwork_core_api_check_field($entity, 'field_author', $entity_type)) {
+    return $entity_wrapper->field_author->value();
+  }
+  return NULL;
 }

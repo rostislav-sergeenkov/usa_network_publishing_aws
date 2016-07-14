@@ -29,6 +29,7 @@ function usanetwork_consumptionator_post_context_default_contexts() {
       'values' => array(
         'node/*/blog' => 'node/*/blog',
         'node/*/blog/*' => 'node/*/blog/*',
+        'node/*/tag/*' => 'node/*/tag/*',
       ),
     ),
   );

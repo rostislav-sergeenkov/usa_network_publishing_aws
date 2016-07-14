@@ -383,8 +383,16 @@ Project demo: http://shindiristudio.com/timeline
             previewImage = $gigyaShareBar.attr('data-share-picture');
 
         Drupal.behaviors.timeline_gallery.updateGigyaSharebar(shareBarId, previewImage);
-        // refresh Ad topBanner
-        Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+
+        // Refresh Ad
+        if ($('body').hasClass('page-node-microsite')
+          && typeof Drupal.behaviors.ms_global != 'undefined'
+          && typeof Drupal.behaviors.ms_global.refreshAds == 'function') {
+          Drupal.behaviors.ms_global.refreshAds('timeline');
+        }
+        else {
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+        }
       });
 
       $this.timeline('setWidthHeightMargin');
@@ -1259,6 +1267,7 @@ Project demo: http://shindiristudio.com/timeline
             if (typeof yearsArr[y][m] == 'undefined') yearsArr[y][m] = {};
             yearsArr[y][m][d] = dataId;
             var isActive = (index == data.currentIndex ? ' active' : '');
+            var newDesign = ($('body').hasClass('show-new-design')? ' show-color show-font' : '');
             // leftPos = position of dots for each episode
             if (data.options.categories) {
               var leftPos = (data.options.yearsOn) ? (100/(monthsDays[1][y][m] + 1)) * d : (100/(monthsDays[m] + 1)) * d;
@@ -1269,7 +1278,7 @@ Project demo: http://shindiristudio.com/timeline
             var nName = ((typeof nodeName != 'undefined') ? nodeName : d);
 
             // Store node element
-            nodes[dataId] = '<a href="#'+dataId+'" class="timeline-node'+isActive+'" style="left: '+leftPos+'%">\n';
+            nodes[dataId] = '<a href="#'+dataId+'" class="timeline-node'+isActive+newDesign+'" style="left: '+leftPos+'%">\n';
 
             if (typeof dataDesc != 'undefined') nodes[dataId]+= '<span class="timeline-node-desc">'+dataDesc+'</span>\n';
 

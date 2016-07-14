@@ -11,6 +11,7 @@
         $('#mobileVideoModalOverlay').click(function() {
           Drupal.behaviors.video_mobile.hideMobileVideoModal();
         });
+        $('#mobileVideoModalOverlay').show();
       }
       if ($('#mobileVideoModal').length == 0) {
         // create modal dialog
@@ -24,9 +25,8 @@
         $modal.find('.download-app-button').click(function(e) {
           Drupal.behaviors.video_mobile.hideMobileVideoModal();
         });
+        $('#mobileVideoModal').show();
       }
-      $('#mobileVideoModalOverlay').show();
-      $('#mobileVideoModal').show();
     },
 
     hideMobileVideoModal : function() {

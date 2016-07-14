@@ -54,7 +54,8 @@
       usa_debug('[USA DEBUG] handleMediaEvent -- event.type: ' + event.type);
       switch (event.type) {
         case 'OnReleaseEnd':
-          Drupal.behaviors.ms_videos.clickThumbnail(jQuery('#thumbnail-list .item-list > ul > li.active').next());
+          var nextVideo = jQuery('#thumbnail-list .item-list > ul > li.active').next();
+          if (nextVideo.length > 0) Drupal.behaviors.ms_videos.clickThumbnail(nextVideo);
           break;
         default:
           break;

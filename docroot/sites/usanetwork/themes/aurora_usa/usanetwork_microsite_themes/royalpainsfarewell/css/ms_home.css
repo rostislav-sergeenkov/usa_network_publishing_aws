@@ -78,6 +78,7 @@
   left: 0;
   margin-left: calc(50% - 306px) !important;
   width: 612px;
+  visibility: hidden;
 }
 #home #home-countdown #counter .circle {
   display: table;

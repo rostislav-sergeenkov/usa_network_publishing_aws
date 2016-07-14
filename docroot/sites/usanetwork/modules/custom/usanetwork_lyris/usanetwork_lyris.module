@@ -19,6 +19,11 @@ function usanetwork_lyris_menu() {
     'access arguments' => array('administer usanetwork'),
     'file' => 'usanetwork_lyris.admin.inc',
   );
+//  $items['email_sign_up'] = array(
+//    'title' => t('USA EMAIL Sign UP'),
+//    'page callback' => '_usanetwork_lyris_email_sign_up',
+//    'access arguments' => array('access content'),
+//  );
   return $items;
 }
 
@@ -65,7 +70,7 @@ function usanetwork_lyris_theme() {
 /*
  * Functionality for Sign Up Block
  */
-function _usanetwork_lyris_signup_block() {
+function _usanetwork_lyris_signup_block($additional = FALSE) {
   if (path_is_admin(current_path())) {
     return NULL;
   }
@@ -95,6 +100,8 @@ function _usanetwork_lyris_signup_block() {
     }
     if (isset($show)) {
       $show_wrapper = entity_metadata_wrapper('node', $show);
+      $new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show);
+      $property['new_design'] = $new_design;
       if ($show->field_show_news_letter) {
         if ($show_wrapper->field_show_news_letter->value()) {
           $property['show_title'] = $show->title;
@@ -104,7 +111,11 @@ function _usanetwork_lyris_signup_block() {
         }
       }
     }
-    $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
+    if ($additional) {
+      $content = drupal_get_form('usanetwork_lyris_newsletter_subscription_additional', $property);
+    } else {
+      $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
+    }
   }
 
   if ($content) {
@@ -123,8 +134,11 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
     '#prefix' => '<div id="newsletter_lyris_ajax_wrapper">',
     '#suffix' => '</div>',
   );
+  $label = $property['new_design']
+    ? t('Sign Up for the @show_title Mailing List', array('@show_title' => $property['show_title']))
+    : t('Sign Up for the @show_title Newsletter', array('@show_title' => $property['show_title']));
   $form['newsletter']['title'] = array(
-    '#markup' => '<label>' . t('Sign Up for the @show_title Newsletter', array('@show_title' => $property['show_title'])) . '</label>',
+    '#markup' => '<label>' . $label . '</label>',
   );
   $form['newsletter']['email'] = array(
     '#type' => 'textfield',
@@ -164,6 +178,58 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
 }
 
 /**
+ * Implementation of additional newsletter subscription form.
+ */
+function usanetwork_lyris_newsletter_subscription_additional($form, $form_state, $property) {
+  $form['newsletter'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<div id="newsletter_lyris_ajax_wrapper_additional">',
+    '#suffix' => '</div>',
+  );
+  $label = $property['new_design']
+    ? t('Sign Up for the @show_title Mailing List', array('@show_title' => $property['show_title']))
+    : t('Sign Up for the @show_title Newsletter', array('@show_title' => $property['show_title']));
+  $form['newsletter']['title'] = array(
+    '#markup' => '<label>' . $label . '</label>',
+  );
+  $form['newsletter']['email'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array(
+      'placeholder' => 'enter email',
+    ),
+    '#size' => 23,
+    '#required' => TRUE,
+    '#rules' => array(
+      'email',
+      'length[10, 100]',
+    ),
+  );
+  $form['newsletter']['show_property'] = array(
+    '#type' => 'hidden',
+    '#value' => isset($property['show_value']) ? $property['show_value'] : '',
+  );
+  $form['newsletter']['submit'] = array(
+    '#prefix' => '<div class="form-submit-wrapper">',
+    '#suffix' => '</div>',
+    '#type' => 'submit',
+    '#value' => t('submit'),
+    '#attributes' => array(
+      'class' => array(
+        'show-color',
+      ),
+    ),
+    '#ajax' => array(
+      'callback' => 'newsletter_lyris_ajax_callback',
+      'wrapper' => 'newsletter_lyris_ajax_wrapper_additional',
+      'method' => 'replace',
+      'effect' => 'fade',
+      'validate_first' => TRUE,
+    ),
+  );
+  return $form;
+}
+
+/**
  * Implementation of newsletter subscription ajax callback.
  */
 
@@ -184,7 +250,7 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
   $result = usanetwork_lyris_assign_user_to_list($user, $show_property, 'newsletter');
   preg_match("/<TYPE>(.*?)<\/TYPE>/", $result, $matches);
   if($matches[1] == 'success') {
-    $form['newsletter']['#markup'] = t('Your email %title was successfully added to the list!', array('%title' => $form_state['values']['email']));
+    $form['newsletter']['#markup'] = t('Your email %title was successfully added to the list!', array('%title' => $form_state['values']['email'])) . '<div class="close-form show-color">close</div>';
     return $form['newsletter'];
   }
   else {
@@ -194,7 +260,7 @@ function newsletter_lyris_ajax_callback($form, $form_state) {
     $error_message = str_replace($search, $replace, $matches[0]);
     list($form, $form_state) = ajax_get_form();
     drupal_process_form($form['#newsletter'], $form, $form_state);
-    form_set_error('', '<span class="error">' . t('%title,', array('%title' => $error_message)) . '</span>');
+    form_set_error('', '<span class="error">' . t('%title', array('%title' => $error_message)) . '</span>');
     return $form['newsletter'];
   }
 }
@@ -291,4 +357,16 @@ function usanetwork_lyris_assign_user_to_list($user, $show_property = null, $fro
 
 function usanetwork_lyris_unsub_user_from_list($user) {
   $lyris->UpdateMemberStatus($user['email'], $user['list'], 'unsub');
+}
+
+/*
+ * Email Sign Up Page
+ */
+function _usanetwork_lyris_email_sign_up() {
+  $sign_up = module_invoke('usanetwork_lyris', 'block_view', 'newsletter_subscription');
+  if (!empty($sign_up['content'])) {
+    $sign_up_block = render($sign_up['content']);
+  };
+
+  return $sign_up_block;
 }

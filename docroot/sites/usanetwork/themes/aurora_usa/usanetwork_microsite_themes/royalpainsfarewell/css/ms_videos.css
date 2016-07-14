@@ -247,8 +247,13 @@
 }
 #microsite .file-video-mpx.view-mode-inline_content iframe,
 #microsite .featured-asset .video-player-wrapper iframe {
+  height: calc((80vw - 320px) * 0.5625);
+  max-height: 551px;
   width: 100%;
-  height: calc(56.26% * 1px);
+}
+body.video-fullscreen #microsite .file-video-mpx.view-mode-inline_content iframe,
+body.video-fullscreen #microsite .featured-asset .video-player-wrapper iframe {
+  max-height: none;
 }
 #video-container .error-message {
   display: none;
@@ -718,6 +723,10 @@
   #microsite .featured-asset .video-player-wrapper,
   #microsite .featured-asset .video-player-wrapper .file-video-mpx {
     width: 100%;
+    height: calc(80vw * 0.5625);
+  }
+  #microsite .file-video-mpx.view-mode-inline_content iframe,
+  #microsite .featured-asset .video-player-wrapper iframe {
     height: calc(80vw * 0.5625);
   }
   #microsite .video-player-desc {

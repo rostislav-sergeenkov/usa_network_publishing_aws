@@ -74,19 +74,23 @@
  */
 ?>
 <?php if (!isset($ajax) || empty($ajax)): ?>
-  <header>
-    <span id="site-name">
-      <?php print $site_name; ?>
-    </span>
-    <!-- leaderboard ad -->
-    <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
-    <!-- /leaderboard -->
-    <?php print render($page['personalization_trigger']); ?>
-    <!-- header -->
-    <?php print render($page['header']); ?>
-    <!-- /header -->
+  <header id="header">
+    <div id="header-overlay"></div>
+    <div class="header-inner">
+      <span id="site-name">
+        <?php print $site_name; ?>
+      </span>
+      <!-- leaderboard ad -->
+      <?php if ($page['leaderboard']): ?><div id="head-leaderboard" class="ad-leaderboard"><?php print render($page['leaderboard']); ?></div><?php endif; ?>
+      <!-- /leaderboard -->
+      <?php print render($page['personalization_trigger']); ?>
+      <!-- header -->
+      <?php print render($page['header']); ?>
+      <!-- /header -->
+    </div>
   </header>
-
+  <div id="header-spacer"></div>
+  
 <?php endif; ?>
 
 <div class="usa-wrap"><?php // this wrapper is intended for ad rails response please do not theme against it ?>
@@ -139,3 +143,10 @@
   </footer>
   <!-- /FOOTER -->
 </div>
+<?php if ($page['footer_additional']) : ?>
+  <footer id="additional-footer" role="contentinfo" class="clearfix">
+    <div class="footer-inner">
+      <?php print render($page['footer_additional']); ?>
+    </div>
+  </footer>
+<?php endif;?>

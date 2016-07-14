@@ -37,9 +37,16 @@ function usanetwork_mpx_video_admin($form, &$form_state) {
 
   $form['player_url']['usanetwork_player_url_pdk'] = array(
     '#type' => 'textfield',
-    '#title' => t('Pdk'),
+    '#title' => t('Player Pdk'),
     '#description' => t('Player URL Parameter &pdk='),
     '#default_value' => variable_get('usanetwork_player_url_pdk', ''),
+  );
+
+  $form['player_url']['usanetwork_page_url_pdk'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Page Pdk'),
+    '#description' => t('Pdk version for page file'),
+    '#default_value' => variable_get('usanetwork_page_url_pdk', ''),
   );
 
   $form['player_url']['usanetwork_player_url_logLevel'] = array(

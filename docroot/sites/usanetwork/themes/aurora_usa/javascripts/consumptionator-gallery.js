@@ -390,6 +390,7 @@
     $($slides).each(function (index, el) {
 
       var $slideCounter = $(el).find(_.options.slideCounter),
+
           slickIndex = el.dataset.hasOwnProperty('slickIndex') ? parseInt(el.dataset.slickIndex) + 1 : index + 1;
 
       $slideCounter.text(slickIndex + separator + slideCount);
@@ -718,9 +719,14 @@
           if (initAdobeTracking) {
             _.callAdobeTracking();
           }
+
+          if ($('body').hasClass('page-node-microsite')
+            && typeof Drupal.behaviors.ms_global == 'object'
+            && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
+              Drupal.behaviors.ms_global.refreshAds('galleries');
+          }
         })
         .on('afterChange', function (event, slick, currentSlide) {
-
           _.gigyaSharebar(currentSlide);
           _.movePagerItems(_, currentSlide);
 

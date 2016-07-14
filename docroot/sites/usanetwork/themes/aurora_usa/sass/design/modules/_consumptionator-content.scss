@@ -69,7 +69,7 @@ body:not(.show-new-design) .consum-sidebar {
       }
     }
     @include breakpoint($bp-min-2500-width) {
-      left: calc(1867.5px + (100% - 2500px)/2);
+      left: calc(1867.5px + (100% - 2500px)/2)!important;
       right: auto;
       width: 628px;
     }
@@ -535,6 +535,32 @@ body:not(.show-new-design) .consum-sidebar {
     }
     @include breakpoint($bp-640-width) {
       height: 56vw;
+    }
+    &.promo-enable {
+      .download-app-wrapper {
+        display: none;
+      }
+    }
+    .live-promo {
+      display: table;
+      height: 100%;
+      width: 100%;
+      .live-promo-wrapper {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        img {
+          @include breakpoint($between-1025-1280) {
+            max-height: calc(((100vw - 320px)*0.5625) - 250px);
+          }
+          @include breakpoint($bp-min-1281-width) {
+            max-height: calc(42.01875vw - 250px);
+          }
+          @include breakpoint($bp-min-2500-width) {
+            max-height: calc(1093.75px - 250px);
+          }
+        }
+      }
     }
     .download-app-wrapper {
       display: table-cell;

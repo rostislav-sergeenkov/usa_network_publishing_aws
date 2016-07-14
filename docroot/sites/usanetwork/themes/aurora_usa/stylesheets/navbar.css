@@ -14,6 +14,22 @@
   cursor: pointer;
 }
 
+.show-new-design .show-color-border, .show-new-design .asset-img.show {
+  position: relative;
+}
+.show-new-design .show-color-border:before, .show-new-design .asset-img.show:before {
+  background: #2c2c2c;
+  display: block;
+  content: '';
+  height: 2px !important;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 3px;
+  z-index: 2;
+  cursor: pointer;
+}
+
 .show-color {
   background: #2c2c2c;
 }
@@ -24,17 +40,56 @@
   background: #525252;
 }
 
-.page-movies .show-color, .node-type-movie .show-color, .movie-consumptionator .show-color {
+.page-movies .show-color, .node-type-movie .show-color, .movie-consumptionator .show-color, .page-news .show-color, body:not([class*=" show-"]).node-type-consumpt-post .show-color {
   background: #3d415b;
 }
-.page-movies .show-color.secondary, .node-type-movie .show-color.secondary, .movie-consumptionator .show-color.secondary {
+.page-movies .show-color.secondary, .node-type-movie .show-color.secondary, .movie-consumptionator .show-color.secondary, .page-news .show-color.secondary, body:not([class*=" show-"]).node-type-consumpt-post .show-color.secondary {
   background: #434664;
 }
-.page-movies .show-color.hover-avail:hover, .page-movies .show-color.tertiary:hover, .node-type-movie .show-color.hover-avail:hover, .node-type-movie .show-color.tertiary:hover, .movie-consumptionator .show-color.hover-avail:hover, .movie-consumptionator .show-color.tertiary:hover {
+.page-movies .show-color.secondary:before, .node-type-movie .show-color.secondary:before, .movie-consumptionator .show-color.secondary:before, .page-news .show-color.secondary:before, body:not([class*=" show-"]).node-type-consumpt-post .show-color.secondary:before {
   background: #33374e;
 }
-.page-movies .show-border, .node-type-movie .show-border, .movie-consumptionator .show-border {
-  border-color: #3d415b;
+.page-movies .show-color.tertiary, .node-type-movie .show-color.tertiary, .movie-consumptionator .show-color.tertiary, .page-news .show-color.tertiary, body:not([class*=" show-"]).node-type-consumpt-post .show-color.tertiary {
+  background: #33374e;
+}
+.page-movies .show-color.tertiary:before, .node-type-movie .show-color.tertiary:before, .movie-consumptionator .show-color.tertiary:before, .page-news .show-color.tertiary:before, body:not([class*=" show-"]).node-type-consumpt-post .show-color.tertiary:before {
+  background: #434664;
+}
+.page-movies .show-color.hover-avail:hover, .page-movies .show-color.tertiary:hover, .node-type-movie .show-color.hover-avail:hover, .node-type-movie .show-color.tertiary:hover, .movie-consumptionator .show-color.hover-avail:hover, .movie-consumptionator .show-color.tertiary:hover, .page-news .show-color.hover-avail:hover, .page-news .show-color.tertiary:hover, body:not([class*=" show-"]).node-type-consumpt-post .show-color.hover-avail:hover, body:not([class*=" show-"]).node-type-consumpt-post .show-color.tertiary:hover {
+  background: #33374e;
+}
+.page-movies .show-color.show-font, .node-type-movie .show-color.show-font, .movie-consumptionator .show-color.show-font, .page-news .show-color.show-font, body:not([class*=" show-"]).node-type-consumpt-post .show-color.show-font {
+  color: #3d415b !important;
+}
+.page-movies .show-border, .node-type-movie .show-border, .movie-consumptionator .show-border, .page-news .show-border, body:not([class*=" show-"]).node-type-consumpt-post .show-border {
+  border-color: #3d415b !important;
+}
+.page-movies .show-border:before, .page-movies .show-border:after, .node-type-movie .show-border:before, .node-type-movie .show-border:after, .movie-consumptionator .show-border:before, .movie-consumptionator .show-border:after, .page-news .show-border:before, .page-news .show-border:after, body:not([class*=" show-"]).node-type-consumpt-post .show-border:before, body:not([class*=" show-"]).node-type-consumpt-post .show-border:after {
+  border-color: #3d415b !important;
+}
+.page-movies .show-border.secondary, .node-type-movie .show-border.secondary, .movie-consumptionator .show-border.secondary, .page-news .show-border.secondary, body:not([class*=" show-"]).node-type-consumpt-post .show-border.secondary {
+  border-color: #434664 !important;
+}
+.page-movies .show-border.secondary:before, .page-movies .show-border.secondary:after, .node-type-movie .show-border.secondary:before, .node-type-movie .show-border.secondary:after, .movie-consumptionator .show-border.secondary:before, .movie-consumptionator .show-border.secondary:after, .page-news .show-border.secondary:before, .page-news .show-border.secondary:after, body:not([class*=" show-"]).node-type-consumpt-post .show-border.secondary:before, body:not([class*=" show-"]).node-type-consumpt-post .show-border.secondary:after {
+  border-color: #434664 !important;
+}
+.page-movies .show-border.tertiary, .node-type-movie .show-border.tertiary, .movie-consumptionator .show-border.tertiary, .page-news .show-border.tertiary, body:not([class*=" show-"]).node-type-consumpt-post .show-border.tertiary {
+  border-color: #33374e !important;
+}
+.page-movies .show-border.tertiary:before, .page-movies .show-border.tertiary:after, .node-type-movie .show-border.tertiary:before, .node-type-movie .show-border.tertiary:after, .movie-consumptionator .show-border.tertiary:before, .movie-consumptionator .show-border.tertiary:after, .page-news .show-border.tertiary:before, .page-news .show-border.tertiary:after, body:not([class*=" show-"]).node-type-consumpt-post .show-border.tertiary:before, body:not([class*=" show-"]).node-type-consumpt-post .show-border.tertiary:after {
+  border-color: #33374e !important;
+}
+.page-movies .show-color-border:before, .page-movies .asset-img.show:before, .node-type-movie .show-color-border:before, .node-type-movie .asset-img.show:before, .movie-consumptionator .show-color-border:before, .movie-consumptionator .asset-img.show:before, .page-news .show-color-border:before, .page-news .asset-img.show:before, body:not([class*=" show-"]).node-type-consumpt-post .show-color-border:before, body:not([class*=" show-"]).node-type-consumpt-post .asset-img.show:before {
+  background: #3d415b !important;
+}
+.page-movies .item-hover:hover, .node-type-movie .item-hover:hover, .movie-consumptionator .item-hover:hover, .page-news .item-hover:hover, body:not([class*=" show-"]).node-type-consumpt-post .item-hover:hover {
+  background: #3d415b;
+}
+.page-movies .icons-block a, .node-type-movie .icons-block a, .movie-consumptionator .icons-block a, .page-news .icons-block a, body:not([class*=" show-"]).node-type-consumpt-post .icons-block a {
+  color: #3d415b !important;
+}
+.page-movies .person-quotation:before, .page-movies .person-quotation:after, .node-type-movie .person-quotation:before, .node-type-movie .person-quotation:after, .movie-consumptionator .person-quotation:before, .movie-consumptionator .person-quotation:after, .page-news .person-quotation:before, .page-news .person-quotation:after, body:not([class*=" show-"]).node-type-consumpt-post .person-quotation:before, body:not([class*=" show-"]).node-type-consumpt-post .person-quotation:after {
+  color: #3d415b !important;
 }
 
 @font-face {
@@ -347,6 +402,70 @@
   font-family: 'texgyrescholaitalic';
   src: url("../fonts/texgyreschola-italic-webfont.eot");
   src: url("../fonts/texgyreschola-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/texgyreschola-italic-webfont.woff") format("woff"), url("../fonts/texgyreschola-italic-webfont.ttf") format("truetype"), url("../fonts/texgyreschola-italic-webfont.svg#texgyrescholaitalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FiraSansRegular';
+  src: url("../fonts/FiraSansRegular.eot");
+  src: url("../fonts/FiraSansRegular.eot") format("embedded-opentype"), url("../fonts/FiraSansRegular.woff") format("woff"), url("../fonts/FiraSansRegular.ttf") format("truetype"), url("../fonts/FiraSansRegular.svg#FiraSansRegular") format("svg");
+}
+
+@font-face {
+  font-family: 'FiraSansMedium';
+  src: url("../fonts/FiraSansMedium.eot");
+  src: url("../fonts/FiraSansMedium.eot") format("embedded-opentype"), url("../fonts/FiraSansMedium.woff") format("woff"), url("../fonts/FiraSansMedium.ttf") format("truetype"), url("../fonts/FiraSansMedium.svg#FiraSansMedium") format("svg");
+}
+
+@font-face {
+  font-family: 'FiraSansLight';
+  src: url("../fonts/FiraSansLight.eot");
+  src: url("../fonts/FiraSansLight.eot") format("embedded-opentype"), url("../fonts/FiraSansLight.woff") format("woff"), url("../fonts/FiraSansLight.ttf") format("truetype"), url("../fonts/FiraSansLight.svg#FiraSansLight") format("svg");
+}
+
+@font-face {
+  font-family: 'FiraSansBold';
+  src: url("../fonts/FiraSansBold.eot");
+  src: url("../fonts/FiraSansBold.eot") format("embedded-opentype"), url("../fonts/FiraSansBold.woff") format("woff"), url("../fonts/FiraSansBold.ttf") format("truetype"), url("../fonts/FiraSansBold.svg#FiraSansBold") format("svg");
+}
+
+@font-face {
+  font-family: 'opensansregular';
+  src: url("../fonts/opensans-regular-webfont.eot");
+  src: url("../fonts/opensans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-regular-webfont.woff") format("woff"), url("../fonts/opensans-regular-webfont.ttf") format("truetype"), url("../fonts/opensans-regular-webfont.svg#opensansregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensanssemibold';
+  src: url("../fonts/opensans-semibold-webfont.eot");
+  src: url("../fonts/opensans-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-semibold-webfont.woff") format("woff"), url("../fonts/opensans-semibold-webfont.ttf") format("truetype"), url("../fonts/opensans-semibold-webfont.svg#opensanssemibold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotolight';
+  src: url("../fonts/roboto-light-webfont.eot");
+  src: url("../fonts/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-light-webfont.woff") format("woff"), url("../fonts/roboto-light-webfont.ttf") format("truetype"), url("../fonts/roboto-light-webfont.svg#robotolight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotomedium';
+  src: url("../fonts/roboto-medium-webfont.eot");
+  src: url("../fonts/roboto-medium-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-medium-webfont.woff") format("woff"), url("../fonts/roboto-medium-webfont.ttf") format("truetype"), url("../fonts/roboto-medium-webfont.svg#robotomedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ropasansregular';
+  src: url("../fonts/ropasans-regular-webfont.eot");
+  src: url("../fonts/ropasans-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ropasans-regular-webfont.woff") format("woff"), url("../fonts/ropasans-regular-webfont.ttf") format("truetype"), url("../fonts/ropasans-regular-webfont.svg#ropasansregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }

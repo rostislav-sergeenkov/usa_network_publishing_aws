@@ -2,7 +2,9 @@
   <a href="<?php print $url; ?>">
     <div class="meta-wrap">
       <div class="meta">
-        <div class="title"><?php print $title; ?></div>
+        <?php if (!empty($title)): ?>
+          <div class="title"><?php print $title; ?></div>
+        <?php endif; ?>
         <div class="additional"><span><?php print $series_and_number; ?></span> <?php print $duration; ?></div>
         <div class="meta-icon video-icon"></div>
       </div>

@@ -140,6 +140,12 @@ function usanetwork_files_strongarm() {
         'metatags' => array(
           'weight' => '2',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'file' => array(

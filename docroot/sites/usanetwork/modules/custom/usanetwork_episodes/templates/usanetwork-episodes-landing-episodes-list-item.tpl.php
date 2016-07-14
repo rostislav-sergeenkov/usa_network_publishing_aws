@@ -14,7 +14,7 @@
  * $gallery_url' => URL to Gallery page
  */
 ?>
-<div class="episode-landing-list-item<?php if (!empty($active)): print ' active'; endif; ?>">
+<div class="episode-landing-list-item<?php if (!empty($active)): print ' active'; endif; ?><?php print (!empty($new_design)) ? ' show-border' : ''; ?>">
   <div class="episode-landing-list-item-inner">
     <div class="episode-landing-info-block">
       <div class="open-description"></div>
@@ -40,21 +40,38 @@
     <div class="buttons-bar">
       <div class="buttons">
         <?php if (!empty($full_episode_url)): ?>
-          <div class="full-episode-button show-color hover-avail"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch a full episode'); ?></a></div>
+          <?php if (!empty($new_design)): ?>
+            <div class="full-episode-button hover-avail"><div class="button-inner show-border"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch the full episode'); ?><span class="show-color show-font"></span></a></div></div>
+          <?php else: ?>
+            <div class="full-episode-button hover-avail show-color"><a href="<?php print $full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch a full episode'); ?></a></div>
+          <?php endif; ?>
+        <?php else: ?>
+          <?php if (!empty($new_design)): ?>
+            <?php if (!empty($featured_provider)) : ?>
+              <div class="full-episode-button hover-avail"><div class="button-inner show-border"><a href="<?php print $featured_provider['url']; ?>" target="_blank"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch on @provider', array('@provider' => $featured_provider['title'])); ?><span class="show-color show-font"></span></a></div></div>
+            <?php endif; ?>
+            <?php if (!empty($where2watch_link)) : ?>
+              <div class="full-episode-button hover-avail"><div class="button-inner show-border"><a href="<?php print $where2watch_link; ?>" target="_blank"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('More Ways to watch'); ?><span class="show-color show-font"></span></a></div></div>
+            <?php endif; ?>
+          <?php endif; ?>
         <?php endif; ?>
         <?php if (!empty($second_full_episode_url)): ?>
-          <div class="full-episode-button show-color hover-avail"><a href="<?php print $second_full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Con-Subtitulos'); ?></a></div>
+          <div class="full-episode-button hover-avail <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>"><a href="<?php print $second_full_episode_url; ?>"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Con-Subtitulos'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a></div>
         <?php endif; ?>
         <?php if (!empty($preview_episode_url)): ?>
-          <div class="preview_episode_button"><a href="<?php print $preview_episode_url; ?>"><div class="font-icon video-font-icon"></div><?php print t('Watch a preview'); ?></a></div>
+          <?php if (!empty($new_design)): ?>
+            <div class="preview_episode_button"><div class="button-inner show-border"><a href="<?php print $preview_episode_url; ?>"><div class="font-icon video-font-icon"></div><?php print t('Watch a preview'); ?><span class="show-color show-font"></span></a></div></div>
+          <?php else : ?>
+            <div class="preview_episode_button"><a href="<?php print $preview_episode_url; ?>"><div class="font-icon video-font-icon"></div><?php print t('Watch a preview'); ?></a></div>
+          <?php endif; ?>
         <?php endif; ?>
       </div>
       <div class="links">
         <?php if (!empty($guide_url)): ?>
-          <a class="guide-url" href="<?php print $guide_url; ?>"><?php print t('Read the guide'); ?></a>
+          <a class="guide-url" href="<?php print $guide_url; ?>"><?php print (!empty($new_design)) ? t('Read the recap') : t('Read the guide'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a>
         <?php endif; ?>
         <?php if (!empty($gallery_url)): ?>
-          <a class="gallery-url" href="<?php print $gallery_url; ?>"><?php print t('View the gallery'); ?></a>
+          <a class="gallery-url" href="<?php print $gallery_url; ?>"><?php print t('View the gallery'); ?><?php if (!empty($new_design)) : ?><span class="show-color show-font"></span><?php endif; ?></a>
         <?php endif; ?>
       </div>
     </div>

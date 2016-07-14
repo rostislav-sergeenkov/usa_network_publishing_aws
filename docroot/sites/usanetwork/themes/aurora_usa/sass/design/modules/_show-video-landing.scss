@@ -1,4 +1,4 @@
-.landing-page-container {
+body:not(.show-new-design) .landing-page-container {
   background: $poll-back;
   overflow: hidden;
   padding-top: 40px;

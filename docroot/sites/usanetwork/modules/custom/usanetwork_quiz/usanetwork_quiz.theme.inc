@@ -13,6 +13,7 @@ function theme_usanetwork_quiz_sidebar($vars) {
 /**
  * Theme callback for usanetwork_quiz_mpx_video
  */
+//TODO: Can be removed is we use one player for all
 function theme_usanetwork_quiz_mpx_video($vars) {
   $file = (object) $vars['file'];
 

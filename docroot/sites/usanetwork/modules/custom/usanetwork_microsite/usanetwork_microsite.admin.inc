@@ -39,6 +39,9 @@ function usanetwork_microsite_form_usanetwork_microsite_node_form_alter(&$form, 
     if(isset($section_item['field_ms_video_filters'])) {
       $section_item['field_ms_video_filters']['#attributes']['class'][] = 'field-ms-video-filters-delta_' .$section_item['#delta'];
     }
+    if(isset($section_item['field_mc_default_video_filter'])) {
+      $section_item['field_mc_default_video_filter']['#attributes']['class'][] = 'field-mc-default-video-filter-delta_' .$section_item['#delta'];
+    }
   }
 
   if (!empty($form_state['values'])) {
@@ -90,6 +93,12 @@ function usanetwork_microsite_ms_section_add_more_ajax($form, $form_state) {
         unset($field['field_ms_video_filters'][$langcode][$field_option['#return_value']]);
       }
     }
+    $field_options = usanetwork_microsite_get_multiple_elements_from_field($field['field_mc_default_video_filter'][$langcode]);
+    foreach ($field_options as $key => $field_option) {
+      if (!isset($field['field_mc_default_video_filter'][$langcode]['#options'][$field_option['#return_value']])) {
+        unset($field['field_mc_default_video_filter'][$langcode][$field_option['#return_value']]);
+      }
+    }
   }
   $add_more_ajax_commands = ajax_prepare_response(field_add_more_js($form, $form_state));
   return array('#type' => 'ajax', '#commands' => $add_more_ajax_commands);
@@ -106,12 +115,18 @@ function usanetwork_microsite_set_video_filters_options($show_id, &$field_ms_sec
       if (isset($section_item['field_ms_video_filters'])) {
         $section_item['field_ms_video_filters'][$langcode]['#options'] = $filter_options;
       }
+      if (isset($section_item['field_mc_default_video_filter'])) {
+        $section_item['field_mc_default_video_filter'][$langcode]['#options'] = $filter_options;
+      }
     }
   }
   else {
     foreach ($field_ms_section_items as &$section_item) {
       if (isset($section_item['field_ms_video_filters'])) {
         $section_item['field_ms_video_filters'][$langcode]['#access'] = FALSE;
+      }
+      if (isset($section_item['field_mc_default_video_filter'])) {
+        $section_item['field_mc_default_video_filter'][$langcode]['#access'] = FALSE;
       }
     }
   }
@@ -126,6 +141,9 @@ function usanetwork_microsite_filters_options_ajax($form, $form_state) {
     if (!empty($section_type) && $section_type == 'videos') {
       $field_video_filters = drupal_render($field_item['field_ms_video_filters']);
       $field_class = 'field-ms-video-filters-delta_' . $field_item['#delta'];
+      $commands[] = ajax_command_replace('.' . $field_class, $field_video_filters);
+      $field_video_filters = drupal_render($field_item['field_mc_default_video_filter']);
+      $field_class = 'field-mc-default-video-filter-delta_' . $field_item['#delta'];
       $commands[] = ajax_command_replace('.' . $field_class, $field_video_filters);
     }
   }
@@ -257,6 +275,12 @@ function _usanetwork_microsite_section_after_build($form, &$form_state) {
       );
 
       $form[$k]['field_ms_video_filters']['#states'] = array(
+        'visible' => array(
+          ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'videos'),
+        ),
+      );
+
+      $form[$k]['field_mc_default_video_filter']['#states'] = array(
         'visible' => array(
           ':input[name="field_ms_section[' . $lang . '][' . $k . '][field_ms_section_type][' . $lang . ']"]' => array('value' => 'videos'),
         ),

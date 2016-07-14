@@ -1,0 +1,309 @@
+@-webkit-keyframes swingInX {
+  0% {
+    -webkit-transform: perspective(400px) rotateX(-90deg);
+  }
+
+  100% {
+    -webkit-transform: perspective(400px) rotateX(0deg);
+  }
+}
+@-moz-keyframes swingInX {
+  0% {
+    -moz-transform: perspective(400px) rotateX(-90deg);
+  }
+
+  100% {
+    -moz-transform: perspective(400px) rotateX(0deg);
+  }
+}
+@-o-keyframes swingInX {
+  0% {
+    -o-transform: perspective(400px) rotateX(-90deg);
+  }
+
+  100% {
+    -o-transform: perspective(400px) rotateX(0deg);
+  }
+}
+@keyframes swingInX {
+  0% {
+    transform: perspective(400px) rotateX(-90deg);
+  }
+
+  100% {
+    transform: perspective(400px) rotateX(0deg);
+  }
+}
+
+@-webkit-keyframes swingOutX {
+  0% {
+    -webkit-transform: perspective(400px) rotateX(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(400px) rotateX(-90deg);
+  }
+}
+
+@-moz-keyframes swingOutX {
+  0% {
+    -moz-transform: perspective(400px) rotateX(0deg);
+  }
+  100% {
+    -moz-transform: perspective(400px) rotateX(-90deg);
+  }
+}
+
+@-o-keyframes swingOutX {
+  0% {
+    -o-transform: perspective(400px) rotateX(0deg);
+  }
+  100% {
+    -o-transform: perspective(400px) rotateX(-90deg);
+  }
+}
+
+@keyframes swingOutX {
+  0% {
+    transform: perspective(400px) rotateX(0deg);
+  }
+  100% {
+    transform: perspective(400px) rotateX(-90deg);
+  }
+}
+
+// -------------------------
+// animation duration 200ms
+// -------------------------
+
+@-webkit-keyframes slideDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+  }
+}
+
+@-moz-keyframes slideDown {
+  0% {
+    -moz-transform: translateY(-100%);
+  }
+
+  100% {
+    -moz-transform: translateY(0);
+  }
+}
+
+@-o-keyframes slideDown {
+  0% {
+    -o-transform: translateY(-100%);
+  }
+
+  100% {
+    -o-transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes slideUp {
+  0% {
+    -webkit-transform: translateY(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(-100%);
+  }
+}
+@-moz-keyframes slideUp {
+  0% {
+    -moz-transform: translateY(0);
+  }
+
+  100% {
+    -moz-transform: translateY(-100%);
+  }
+}
+@-o-keyframes slideUp {
+  0% {
+    -o-transform: translateY(0);
+  }
+
+  100% {
+    -o-transform: translateY(-100%);
+  }
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+//.no-touch {
+  .show-new-design {
+
+    #header {
+      &.off-elements {
+        #head-leaderboard {
+          height: 0;
+          padding: 0;
+
+          -webkit-animation-duration: 0s;
+          -moz-animation-duration: 0s;
+          -o-animation-duration: 0s;
+          animation-duration: 0s;
+
+          -webkit-transform-origin: top;
+          -webkit-animation-name: swingOutX;
+          -webkit-backface-visibility: visible !important;
+          -moz-animation-name: swingOutX;
+          -moz-backface-visibility: visible !important;
+          -o-animation-name: swingOutX;
+          -o-backface-visibility: visible !important;
+          animation-name: swingOutX;
+          backface-visibility: visible !important;
+        }
+      }
+      #head-leaderboard {
+        -webkit-animation-duration: 0.3s;
+        -moz-animation-duration: 0.3s;
+        -o-animation-duration: 0.3s;
+        animation-duration: 0.3s;
+        -webkit-animation-fill-mode: both;
+        -moz-animation-fill-mode: both;
+        -o-animation-fill-mode: both;
+        animation-fill-mode: both;
+        will-change: transform, opacity;
+
+        -webkit-transform-origin: top;
+        -moz-transform-origin: top;
+        -ie-transform-origin: top;
+        -o-transform-origin: top;
+        transform-origin: top;
+
+        -webkit-backface-visibility: visible !important;
+        -webkit-animation-name: swingInX;
+        -moz-backface-visibility: visible !important;
+        -moz-animation-name: swingInX;
+        -o-backface-visibility: visible !important;
+        -o-animation-name: swingInX;
+        backface-visibility: visible !important;
+        animation-name: swingInX;
+      }
+    }
+  }
+//}
+.show-new-design {
+
+  #header {
+    background-color: black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    overflow: visible;
+    position: static;
+    width: 100%;
+    z-index: 1000;
+
+    will-change: transform;
+    @include transition(transform 0.2s linear);
+
+    &.menu-open {
+      position: fixed !important;
+      overflow: hidden;
+      height: 100%;
+      &.slide-down {
+        -webkit-animation-name: slideDown;
+        -moz-animation-name: slideDown;
+        -o-animation-name: slideDown;
+        animation-name: slideDown;
+      }
+      &.slide-up {
+        -webkit-animation-name: slideDown;
+        -moz-animation-name: slideDown;
+        -o-animation-name: slideDown;
+        animation-name: slideDown;
+      }
+    }
+
+    &.usa-sticky-header-initialized {
+      position: absolute;
+    }
+
+    &.usa-sticky-header {
+      left: 0;
+      top: -100%;
+      position: fixed;
+      &:not(.menu-open) {
+        &.slide-down {
+          -webkit-animation-name: slideDown;
+          -moz-animation-name: slideDown;
+          -o-animation-name: slideDown;
+          animation-name: slideDown;
+        }
+        &.slide-up {
+          -webkit-animation-name: slideUp;
+          -moz-animation-name: slideUp;
+          -o-animation-name: slideUp;
+          animation-name: slideUp;
+        }
+      }
+    }
+
+    &.animated {
+      -webkit-animation-duration: 0.2s;
+      -moz-animation-duration: 0.2s;
+      -o-animation-duration: 0.2s;
+      animation-duration: 0.2s;
+      -webkit-animation-fill-mode: both;
+      -moz-animation-fill-mode: both;
+      -o-animation-fill-mode: both;
+      animation-fill-mode: both;
+      will-change: transform, opacity;
+    }
+
+    &.off-elements {
+      #head-leaderboard {
+        height: 0;
+        padding: 0;
+      }
+    }
+
+    .header-inner {
+      margin: 0 auto;
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        width: 1600px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: 100%;
+      }
+      @include transition(all 0.2s linear 0s);
+    }
+
+    #head-leaderboard {
+      will-change: transform;
+      @include transition(all 0.3s linear 0s);
+    }
+  }
+
+  #header-spacer {
+    display: none;
+    background-color: black;
+    margin: 0 auto;
+    max-width: 1600px;
+    @include transition(all 0.2s linear 0s);
+  }
+}
+

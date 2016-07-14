@@ -141,6 +141,12 @@
       }, 2000);
     },
 
+    scrollToElem: function(elem) {
+      $('html, body').animate({
+        scrollTop: $(elem).offset().top
+      }, 2000);
+    },
+
     // IsScrolledIntoView
     // determines whether the entire element is in the viewable part of the window
     isScrolledIntoView: function(elem) {

@@ -89,7 +89,7 @@ body:not(.show-new-design).consumptionator-video-page {
   }
 }
 
-body:not(.show-new-design).consumptionator-page, .page-videos-live {
+body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).page-videos-live {
   .video-block {
     @include clear;
     margin: 0;
@@ -764,7 +764,7 @@ body:not(.show-new-design).consumptionator-page, .page-videos-live {
   }
 }
 
-.page-videos-live {
+body:not(.show-new-design).page-videos-live {
   .expandable-container {
     margin: 0;
   }

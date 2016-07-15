@@ -14,7 +14,7 @@ define('USANETWORK_ADS_POST_TITLE', '[usa_post_title]');
  * Implements hook_init().
  */
 function usanetwork_ads_init() {
-  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/omniture.js', array('scope' => 'footer', 'every_page' => true));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/omniture.js', array('scope' => 'footer', 'every_page' => true, 'weight' => 25));
 }
 
 /**

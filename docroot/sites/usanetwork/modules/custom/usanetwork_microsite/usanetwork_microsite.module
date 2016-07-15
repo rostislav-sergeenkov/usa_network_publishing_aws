@@ -31,7 +31,8 @@ function usanetwork_microsite_menu() {
     'title' => t('USA Network microsite'),
     'page callback' => 'usanetwork_microsite_page_callback',
     'page arguments' => array('node', 1),
-    'access arguments' => array('access content'),
+    'access callback' => 'node_access',
+    'access arguments' => array('view', 1),
     'type' => MENU_CALLBACK,
   );
 

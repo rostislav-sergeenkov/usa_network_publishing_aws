@@ -18,18 +18,18 @@
           <?php endif; ?>
           <div class="meta">
             <?php if (!empty($caption)): ?>
-              <?php if ($is_new_design): ?>
-                <div class="caption">
+              <div class="caption">
+                <?php if ($is_new_design): ?>
                   <span class="show-color"><?php print $caption; ?></span>
-                </div>
-              <?php else: ?>
-                <?php print $caption; ?>
-              <?php endif; ?>
+                <?php else: ?>
+                  <?php print $caption; ?>
+                <?php endif; ?>
+              </div>  
             <?php endif; ?>
             <?php if (!empty($title)): ?>
               <div class="title"><?php print $title; ?></div>
             <?php endif; ?>
-            <?php if (!empty($additional)): ?>
+            <?php if (!empty($additional) && !$is_new_design): ?>
               <div class="additional"><?php print $additional; ?></div>
             <?php endif; ?>
           </div>

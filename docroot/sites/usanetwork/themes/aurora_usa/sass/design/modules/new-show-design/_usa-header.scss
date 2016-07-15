@@ -213,11 +213,10 @@
     overflow: visible;
     position: static;
     width: 100%;
-    z-index: 99999;
+    z-index: 1000;
 
     will-change: transform;
     @include transition(transform 0.2s linear);
-
 
     &.menu-open {
       position: fixed !important;

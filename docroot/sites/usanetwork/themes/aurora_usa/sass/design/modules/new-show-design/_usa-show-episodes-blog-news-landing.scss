@@ -1,4 +1,48 @@
 .show-new-design {
+  &.smartphone {
+    #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
+      .upper-bar {
+        height: 55px;
+        .title {
+          display: none !important;
+        }
+        .item-filter {
+          right: 5%;
+          width: 90%;
+          max-width: none;
+          &.open {
+            right: 50%;
+            margin-right: -125px;
+            max-width: 250px;
+            .filter-label {
+              padding-left: 15px;
+            }
+          }
+        }
+        .filter-label {
+          font-size: 18px;
+          line-height: 38px;
+          padding: 0 5px;
+          text-align: center;
+          text-transform: uppercase;
+          vertical-align: middle;
+          span {
+            background: none !important;
+            display: inline-block;
+            text-align: right;
+            position: relative;
+            height: 38px;
+            width: 35px;
+            vertical-align: middle;
+            &:after {
+              display: inline-block;
+              right: 7.5px;
+            }
+          }
+        }
+      }
+    }
+  }
   #block-usanetwork-episodes-usa-landing-tvep-list-block,
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block {
     @include clear();
@@ -131,7 +175,7 @@
           width: calc(100% - #{get-vw(349px, 768) + get-vw(15px, 768)});
         }
         @include breakpoint($bp-640-width) {
-          width: calc(100% - #{get-vw(212px, 640) + get-vw(15px, 640)});
+          width: calc(100% - #{get-vw(177.7px, 640) + get-vw(30px, 640)});
         }
         .open-description {
           display: none;
@@ -160,7 +204,7 @@
             font-size: get-vw(15px, 768);
           }
           @include breakpoint($bp-640-width) {
-            font-size: get-vw(18px, 640);
+            font-size: get-vw(20px, 640);
           }
         }
         .title {
@@ -182,9 +226,9 @@
             margin-top: get-vw(6px, 768);
           }
           @include breakpoint($bp-640-width) {
-            font-size: get-vw(26px, 640);
+            font-size: get-vw(28px, 640);
             margin-top: 0;
-            width: calc(100% - 40px);
+            width: 100%;
           }
           a {
             color: $usa-blog-item-title;
@@ -220,8 +264,8 @@
           @include breakpoint($bp-640-width) {
             right: calc(100% + #{get-vw(15px, 640)});
             margin-bottom: 0;
-            height: get-vw(119px, 640);
-            width: get-vw(212px, 640);
+            height: get-vw(100px, 640);
+            width: get-vw(177.7px, 640);
           }
           .caption {
             bottom: 0px;
@@ -236,11 +280,8 @@
             text-transform: uppercase;
             @extend %usa-violator-icon;
             @include breakpoint($bp-768-width) {
-              font-size: 10px;
-              padding: 1px 4px 0;
-            }
-            @include breakpoint($bp-480-width) {
-              font-size: 7px;
+              font-size: get-vw(12px, 768);
+              padding: 1px get-vw(4px, 768) 0;
             }
             b {
               font-family: $fira-sans-bold;
@@ -475,7 +516,7 @@
                 display: block;
                 font-family: $ico-font;
                 font-size: get-vw(16px, 1280);
-                line-height: 18px;
+                line-height: 1;
                 @include breakpoint($bp-min-1601-width) {
                   font-size: 18px;
                 }
@@ -599,20 +640,20 @@
         .title {
           @include breakpoint($bp-640-width) {
             position: absolute;
-            left: calc(#{get-vw(212px, 640) + get-vw(20px, 640)});
-            width: calc(100% - 40px - #{get-vw(212px, 640) + get-vw(20px, 640)});
+            left: calc(#{get-vw(177.7px, 640) + get-vw(30px, 640)});
+            width: calc(100% - 40px - #{get-vw(177.7px, 640) + get-vw(30px, 640)});
           }
         }
 
         .series {
           @include breakpoint($bp-640-width) {
-            top: calc(50% - #{get-vw(15px, 640)});
+            top: calc(50% - #{get-vw(30px, 640)});
           }
         }
 
         .title {
           @include breakpoint($bp-640-width) {
-            top: calc(50% + #{get-vw(15px, 640)/2});
+            top: 50%;
           }
         }
 
@@ -705,7 +746,6 @@
   }
 
   // upper bar &&  filter item
-  #block-usanetwork-episodes-usa-landing-tvep-list-block,
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block,
   #block-usanetwork-episodes-usa-landing-tvep-list-block {
 

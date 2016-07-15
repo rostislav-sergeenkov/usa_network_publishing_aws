@@ -87,13 +87,13 @@
           // if countdown is zero on pageload
           // get the next event with no messaging or delays
           // and re-start the timer
-          if (zeroOnPageLoad) {
+          if (Drupal.behaviors.countdown.zeroOnPageLoad) {
             Drupal.behaviors.countdown.getNextEvent();
           }
           else {
             // countdown reached zero
-            // remove the countdown timer
-            jQuery('#home-countdown').remove();
+            // hide the countdown timer and tune-in
+            document.getElementById('home-countdown').style.visibility = 'hidden';
 /*
             // show a message and then in 1 minute, restart the countdown
             jQuery('#section_countdown h3').first().css('display', 'none');
@@ -125,6 +125,7 @@
           if (document.getElementById('dsec')) {
             document.getElementById('dsec').innerHTML=dsec;
           }
+          document.getElementById('home-countdown').style.visibility = 'visible';
           setTimeout(function() {
             Drupal.behaviors.countdown.eventCountdown(yr, m, d, hr, min, tz);
           }, 1000);
@@ -179,10 +180,11 @@
       }
 
       // NEW CODE TO ALLOW COUNTDOWN RESET TO THE SAME TIME NEXT WEEK ON WEDNESDAY
+      // set zeroOnPageLoad to 1 for this to happen
       var todayAtEventTime = Date.parse('today').set({hour: hour, minute: minute}),
           wednesdayAtEventTime = Date.today().next().wednesday().set({hour: hour, minute: minute}),
           nextEventDate,
-          zeroOnPageLoad=1,
+          zeroOnPageLoad = 0,
           count2 = null,
           self = this;
 

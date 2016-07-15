@@ -91,6 +91,7 @@
     }
   }
   #top-five-photos {
+    margin-right: 0;
     .meta-icon.full-video-icon-default {
       display: none !important;
     }
@@ -167,6 +168,10 @@
     }
   }
   #special-fuatures {
+    float: right;
+    @include breakpoint($bp-768-width) {
+      float: none;
+    }
     .title-block {
       @include breakpoint($bp-768-width) {
         display: none;

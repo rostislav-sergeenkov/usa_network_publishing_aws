@@ -241,7 +241,9 @@ function _usanetwork_consumptionator_post_main_block() {
   $node = menu_get_object('node');
   if (isset($node->type) && $node->type == 'consumpt_post') {
     $node_wrapper = entity_metadata_wrapper('node', $node);
-    $show_nid = $node_wrapper->field_show->nid->value();
+    if (!empty($node->field_show)) {
+      $show_nid = $node_wrapper->field_show->nid->value();
+    }
     $blog_service = usanetwork_blog_migrate_get_post_service($node);
     $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
 
@@ -334,7 +336,7 @@ function _usanetwork_consumptionator_post_main_block() {
 /*
  * Get latest posts
  */
-function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 20) {
+function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 20, $exclude_verge = FALSE) {
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
   $query->condition('node.type', 'consumpt_post');
@@ -350,6 +352,13 @@ function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid =
       $query->leftJoin('field_data_field_consumptionator_blog', 'field_consumptionator_blog', 'field_consumptionator_blog.entity_id=node.nid');
       $query->isNull('field_consumptionator_blog.field_consumptionator_blog_target_id');
     }
+  }
+  if ($exclude_verge) {
+    $query->leftJoin('field_data_field_content_tags', 'tags_field', 'tags_field.entity_id=node.nid');
+    $query->condition(db_or()
+      ->isNull('tags_field.field_content_tags_tid')
+      ->condition('tags_field.field_content_tags_tid', variable_get('usanetwork_blog_migrate_the_verge_taxonomy_term_tid', FALSE), '!=')
+    );
   }
   $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
   $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
@@ -437,7 +446,7 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
             : t('@show_name blog', array('@show_name' => $show_node->title)))))
         : t('Latest News'),
       'posts_landing_link' => (is_numeric($show_id))
-        ? l((($is_new_design) ? t('View all Articles') : t('View all posts')), 'node/' . $show_id . '/blog' . $blog_url)
+        ? l((($is_new_design) ? t('View all Articles <span class="show-color show-font"></span>') : t('View all posts')), 'node/' . $show_id . '/blog' . $blog_url, array('html' => TRUE))
         : l(t('View all news'), 'news'),
       'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
     );

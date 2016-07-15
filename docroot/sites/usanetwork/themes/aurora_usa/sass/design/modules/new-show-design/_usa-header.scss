@@ -213,16 +213,27 @@
     overflow: visible;
     position: static;
     width: 100%;
-    z-index: 99999;
+    z-index: 1000;
 
     will-change: transform;
     @include transition(transform 0.2s linear);
-
 
     &.menu-open {
       position: fixed !important;
       overflow: hidden;
       height: 100%;
+      &.slide-down {
+        -webkit-animation-name: slideDown;
+        -moz-animation-name: slideDown;
+        -o-animation-name: slideDown;
+        animation-name: slideDown;
+      }
+      &.slide-up {
+        -webkit-animation-name: slideDown;
+        -moz-animation-name: slideDown;
+        -o-animation-name: slideDown;
+        animation-name: slideDown;
+      }
     }
 
     &.usa-sticky-header-initialized {

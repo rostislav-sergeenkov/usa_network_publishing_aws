@@ -30,6 +30,7 @@ var USAN = USAN || {};
       // default settings
       _.defaults = {
         htmlSelector: 'html',
+        bodySelector: 'body',
         headerSelector: '#header', // string
         headerSpacerSelector: '#header-spacer', // string
         topMenuBlockSelector: '.top-menu-block', // string
@@ -53,7 +54,8 @@ var USAN = USAN || {};
         classNoScroll: 'no-scroll',
         resizeTimeOut: 50, // number ms
         durationSlideForm: 200, // number ms
-        pageOffset: 0
+        pageOffset: 0,
+        menuOpenPageOffset: 0
       };
 
       // create global options
@@ -75,6 +77,7 @@ var USAN = USAN || {};
       // elements
       _.$html = $(_.options.htmlSelector);
       _.$body = $(document.body);
+      _.$bodySelector = $(_.options.bodySelector);
       _.$header = $(_.options.headerSelector);
       _.$headerSpacer = $(_.options.headerSpacerSelector);
       _.$mainWrap = $(element);
@@ -199,6 +202,7 @@ var USAN = USAN || {};
 
     var _ = this,
         $html = _.$html,
+        $body = _.$bodySelector,
         $header = _.$header,
         $menuOpenButton = _.$menuOpenButton,
         $mainWrap = _.$mainWrap,
@@ -209,23 +213,38 @@ var USAN = USAN || {};
 
     if (!_.options.isMenuOpenButtonActive) {
       _.options.isMenuOpenButtonActive = true;
-      _.options.pageYOffset = window.pageYOffset;
+      _.options.menuOpenPageOffset = window.pageYOffset;
       _.addElemClass($html, classNoScroll, null);
+      _.addElemClass($body, classNoScroll, null);
       _.addElemClass($header, classHeaderMenuOpen, null);
       _.addElemClass($menuOpenButton, activeClass, null);
       _.addElemClass($mainWrap, activeClass, null);
     } else {
       _.options.isMenuOpenButtonActive = false;
       _.removeElemClass($html, classNoScroll, null);
-      _.setTimeout(function () {
-        if(_.options.pageYOffset != window.pageYOffset) {
-          $('body').scrollTop(_.options.pageYOffset);
-        }
-        _.removeElemClass($header, classHeaderMenuOpen, null);
-        _.removeElemClass($menuOpenButton, activeClass, null);
-        _.removeElemClass($mainWrap, activeClass, null);
-        _.checkHeaderSpacer();
-      }, resizeTimeOut);
+      _.removeElemClass($body, classNoScroll, null);
+      if(_.options.menuOpenPageOffset != window.pageYOffset) {
+        $('body').animate({scrollTop:_.options.menuOpenPageOffset + 500}, 0, 'step-end', function(){
+          $('body').animate({scrollTop:_.options.menuOpenPageOffset}, 50, 'swing', function(){
+            _.setTimeout(function () {
+              _.removeElemClass($menuOpenButton, activeClass, null);
+              _.removeElemClass($mainWrap, activeClass, null);
+              _.addElemClass($header, 'slide-down', null);
+              _.removeElemClass($header, 'slide-up', null);
+              console.info('animationCallback');
+              _.removeElemClass($header, classHeaderMenuOpen, null);
+              //_.checkHeaderSpacer();
+            }, resizeTimeOut);
+          });
+        });
+      } else {
+        _.setTimeout(function () {
+          _.removeElemClass($header, classHeaderMenuOpen, null);
+          _.removeElemClass($menuOpenButton, activeClass, null);
+          _.removeElemClass($mainWrap, activeClass, null);
+          //_.checkHeaderSpacer();
+        }, resizeTimeOut);
+      }
     }
   };
 

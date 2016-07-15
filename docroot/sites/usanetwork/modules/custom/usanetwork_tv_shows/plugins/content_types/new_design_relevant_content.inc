@@ -141,7 +141,7 @@ function new_design_relevant_content_get_manual_content($node, $conf) {
   $relevant_data = array();
   foreach ($relevant_content as $item) {
     $data_item = usanetwork_promo_get_promo_content_variables($item);
-    $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
+    $row_image_uri = usanetwork_core_api_get_content_image_given_image_override($item['entity_type'], $item['entity']);
     $additional_data = array(
       'image_desktop' => image_style_url('99x84', $row_image_uri),
       'image_mobile' => image_style_url('284x187', $row_image_uri),

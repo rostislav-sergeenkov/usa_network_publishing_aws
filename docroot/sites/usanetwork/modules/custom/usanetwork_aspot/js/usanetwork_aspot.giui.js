@@ -525,7 +525,8 @@
     draggableElementsData = Object.keys(aspot_elements);
     mainBlock = $('#' + allParams.mainBlockId);
     bgOffsetBlock = $('#edit-field-aspot-preview-bg-offset');
-    aspotPreviewBlock = mainBlock.find('[id^=edit-field-aspot-enabled-].form-wrapper');
+    // aspotPreviewBlock = mainBlock.find('[id^=edit-field-aspot-enabled-].form-wrapper');
+    aspotPreviewBlock = $('#' + allParams.aspotPreviewBlockId);
     aspotElemCheckboxes = aspotPreviewBlock.find('.form-checkboxes input.form-checkbox');
     fontSettings = allParams.aspotSettings.defaultFontSettings;
     fontStepUpDown = fontSettings.stepUpDown;
@@ -801,7 +802,7 @@
       enableDraggableElem: function () {
         var draggableOptions = {
           grid: [1, 1],
-          appendTo: '#edit-field-aspot-enabled-gi',
+          appendTo: '#' + allParams.aspotPreviewBlockId,
           containment: "parent",
           //snap: true,
           cursor: "move",
@@ -1088,6 +1089,10 @@
             bgPreviewingBlock = $('#' + bgPreviewingBlockId);
 
         usa_debug('save data ' + pageName);
+
+        if ($(mainBlock).css('display') == 'none') {
+          return;
+        }
 
         $.each(draggableElements, function (index, itemElement) {
 
@@ -1407,4 +1412,78 @@
   }
 
 
+        var globalSettings = settings.giui_settings,
+            aspotSettings = Drupal.behaviors.usanetwork_aspot_giui,
+            aspot_draggable_items_data = $('#aspot_draggable_items_data'),
+            homeAspot, showAspot, homeOptions, showOptions;
+
+        // sets homeAspot options
+        homeOptions = {
+          aspot_elements: globalSettings.aspot_elements,
+          bg_offset_value: globalSettings.desktop.bg_offset_value,
+          bg_offset_image_url: globalSettings.desktop.bg_offset_image_url,
+          bg_offset_image_url_mobile: globalSettings.mobile.bg_offset_image_url,
+          defaultFontSize: aspotSettings.defaultFontSettings.homePage,
+          defaultElemPosition: aspotSettings.defaultElemPosition.aspot_elements,
+          mainBlockId: 'edit-group_usa_aspot_ui',
+          pageName: 'homepage',
+          showBgOffset: true // false default value
+        };
+
+        // sets homeAspot options
+        showOptions = {
+          aspot_elements: globalSettings.tvs_aspot_elements,
+          bg_offset_value: globalSettings.tvs_desktop.bg_offset_value,
+          bg_offset_image_url: globalSettings.tvs_desktop.bg_offset_image_url,
+          bg_offset_image_url_mobile: globalSettings.tvs_mobile.bg_offset_image_url,
+          defaultFontSize: aspotSettings.defaultFontSettings.showPage,
+          defaultElemPosition: aspotSettings.defaultElemPosition.tvs_aspot_elements,
+          mainBlockId: 'edit-group_usa_tv_aspot_ui',
+          pageName: 'showpage',
+          showBgOffset: false // false default value
+        };
+
+        // init Aspots
+        homeAspot = adminAspotService(homeOptions);
+        showAspot = adminAspotService(showOptions);
+
+        $('#usanetwork-aspot-node-form').submit(function () {
+
+          var headTextarea = $('#edit-field-aspot-gi-draggable-data-und-0-value'),
+              headInput = $('input[name="aspot_draggable_items_data"]').eq(0),
+              homeUiPositions = $('#' + homeAspot.aspotDraggableItemsDataId).text(),
+              showUiPositions = $('#' + showAspot.aspotDraggableItemsDataId).text(),
+              aspot_elements = globalSettings.aspot_elements,
+              tvs_aspot_elements = globalSettings.tvs_aspot_elements,
+              homeUiPositionsVal, showUiPositionsVal;
+
+          if ((homeUiPositions == '') && (showUiPositions == '')) {
+            headInput.val(headTextarea.text());
+          } else {
+
+            if (homeUiPositions != '') {
+              homeUiPositionsVal = JSON.parse(homeUiPositions);
+            } else {
+              homeUiPositionsVal = aspot_elements;
+            }
+
+            if (showUiPositions != '') {
+              showUiPositionsVal = JSON.parse(showUiPositions);
+            } else {
+              showUiPositionsVal = tvs_aspot_elements;
+            }
+
+            var myData = {
+              data: {
+                aspot_elements: homeUiPositionsVal,
+                tvs_aspot_elements: showUiPositionsVal
+              }
+            };
+
+            headInput.val(JSON.stringify(myData));
+          }
+        });
+      });
+    }
+  }
 }(jQuery));

@@ -813,7 +813,7 @@
         mainBlock.find('.aspot-draggable-element')
             .draggable(draggableOptions)
             .css("position", "absolute");
-        mainBlock.find('[data-rel=title_prefix], [data-rel=title], [data-rel=aspot_description]').resizable({
+        mainBlock.find('[data-rel=title_prefix], [data-rel=title], [data-rel=aspot_description], [data-rel=violator]').resizable({
           containment: "parent",
           stop: function () {
             sericeApi.saveDraggableItemsData();
@@ -890,7 +890,7 @@
           });
         }
         if (aspot_elements[itemElement].width) {
-          if (draggableElement.data('rel') === 'social_meter') {
+          if (draggableElement.data('rel') === 'social_meter' || draggableElement.data('rel') === 'violator') {
             return;
           }
           draggableElement.css({
@@ -915,7 +915,7 @@
           });
         }
         if (aspot_elements[itemElement].widthM) {
-          if (draggableElement.data('rel') === 'social_meter') {
+          if (draggableElement.data('rel') === 'social_meter' || draggableElement.data('rel') === 'violator') {
             return;
           }
           draggableElementMobile.css({
@@ -974,6 +974,8 @@
           var self = $(itemElement),
               selfName = self.data('rel');
 
+          console.info(defaultElemPosition[selfName]);
+
           if (defaultElemPosition[selfName] === undefined) {
             return;
           }
@@ -1015,7 +1017,10 @@
           var self = $(itemElement),
               selfName = self.attr('data-rel');
 
-          if (selfName === 'aspot_offset_percent' || selfName === 'social_meter' || selfName === 'title') {
+          console.info(selfName, defaultElemPosition[selfName]);
+
+          if (selfName === 'aspot_offset_percent' || selfName === 'social_meter'
+              || selfName === 'title' || selfName === 'violator') {
             return;
           }
 
@@ -1078,6 +1083,7 @@
       },
 
       saveDraggableItemsData: function () {
+
         var elementsMeta = {},
             bgPreviewingBlock = $('#' + bgPreviewingBlockId);
 
@@ -1201,7 +1207,7 @@
           fieldWidthPercent = 'auto';
         }
 
-        if (item.data('rel') === 'social_meter') {
+        if (item.data('rel') === 'social_meter' || item.data('rel') === 'violator') {
           fieldWidthPercent = '';
         }
 

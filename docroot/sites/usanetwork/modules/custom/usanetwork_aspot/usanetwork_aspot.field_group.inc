@@ -224,6 +224,7 @@ function usanetwork_aspot_field_group_info() {
       4 => 'field_aspot_gi_title_prefix',
       5 => 'field_aspot_preview_bg_offset',
       6 => 'field_aspot_gi_desc',
+      7 => 'field_aspot_gi_violator',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -288,6 +289,7 @@ function usanetwork_aspot_field_group_info() {
       4 => 'field_aspot_tgi_title_prefix',
       5 => 'field_aspot_tgi_desc',
       6 => 'field_new_design',
+      7 => 'field_aspot_tgi_violator',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

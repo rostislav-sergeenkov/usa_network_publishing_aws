@@ -193,7 +193,13 @@
         }
       }
     }
+    .timeline-view {
+      .vert-end-line.right {
+        border-right: 0;
+      }
+    }
   }
 }
+
 
 

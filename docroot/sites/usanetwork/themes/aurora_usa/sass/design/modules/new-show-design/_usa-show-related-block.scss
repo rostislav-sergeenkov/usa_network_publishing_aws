@@ -80,6 +80,9 @@
         padding-top: get-vw(36px, 640);
         font-size: get-vw(30.72px, 768);
       }
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw(28px, 640);
+      }
     }
   }
   .view-more {
@@ -88,6 +91,7 @@
     }
   }
   #top-five-photos {
+    margin-right: 0;
     .meta-icon.full-video-icon-default {
       display: none !important;
     }
@@ -164,6 +168,10 @@
     }
   }
   #special-fuatures {
+    float: right;
+    @include breakpoint($bp-768-width) {
+      float: none;
+    }
     .title-block {
       @include breakpoint($bp-768-width) {
         display: none;

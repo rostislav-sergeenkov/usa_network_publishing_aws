@@ -317,8 +317,12 @@
                 margin-left: get-vw(12px, 1024);
               }
               @include breakpoint($bp-768-width) {
-                font-size: get-vw(22px, 768);
-                margin-left: get-vw(14px, 768);
+                font-size: get-vw(24px, 768);
+                margin-left: get-vw(16px, 768);
+              }
+              @include breakpoint($bp-640-width) {
+                font-size: get-vw(24px, 640);
+                margin-left: get-vw(16px, 640);
               }
             }
           }
@@ -371,8 +375,12 @@
         margin-top: 50px;
       }
       @include breakpoint($bp-768-width) {
-        font-size: get-vw(24px, 640);
-        margin-top: 50px;
+        font-size: get-vw(29px, 768);
+        margin-top: get-vw(80px, 768);
+      }
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw(29px, 640);
+        margin-top: get-vw(80px, 640);
       }
     }
 
@@ -387,7 +395,7 @@
       }
       .providers-row-inner {
         @include clear();
-        border-bottom: 1px solid;
+        border-bottom: 2px solid;
         display: inline-block;
         padding: get-vw(30px, 1600) get-vw(60px, 1600);
         position: relative;
@@ -412,7 +420,7 @@
         }
         @include breakpoint($bp-768-width) {
           //height: get-vw(60px, 768);
-          margin: get-vw(20px, 768) 0;
+          margin: get-vw(45px, 768) 0;
           width: 50%;
         }
         &:last-child {
@@ -535,8 +543,12 @@
             margin-left: 15px;
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(16px, 640);
+            font-size: get-vw(20px, 768);
             margin-left: get-vw(15px, 768);
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: get-vw(20px, 640);
+            margin-left: get-vw(15px, 640);
           }
         }
       }

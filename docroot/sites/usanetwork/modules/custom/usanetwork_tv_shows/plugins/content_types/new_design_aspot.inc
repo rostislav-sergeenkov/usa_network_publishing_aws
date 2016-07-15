@@ -28,18 +28,21 @@ $plugin = array(
  */
 function new_design_tv_show_aspot_content_type_render($subtype, $conf, $args, $context) {
   $node = $context[0]->data;
-  $aspot_node = $context[1]->data;
-  $block = new stdClass();
-  $block->content = array(
-    '#markup' => '<div id="aspot-usanetwork" class="show-border" data-content-type="tv-show">' . usanetwork_aspot_render_tvshow_slide($aspot_node, $node) . '</div>',
-    '#attached' => array(
-      'js' => array(
-        drupal_get_path('theme', 'aurora_usa') . '/javascripts/aspot-block.js'
+  $aspot_field = _usanetwork_get_field_item('node', $node, 'field_usa_tv_a_spot', 'target_id');
+  if ($aspot_field) {
+    $aspot_node = node_load($aspot_field);
+    $block = new stdClass();
+    $block->content = array(
+      '#markup' => '<div id="aspot-usanetwork" class="show-border" data-content-type="tv-show">' . usanetwork_aspot_render_tvshow_slide($aspot_node, $node) . '</div>',
+      '#attached' => array(
+        'js' => array(
+          drupal_get_path('theme', 'aurora_usa') . '/javascripts/aspot-block.js'
+        ),
+        '#weight' => 1,
       ),
-      '#weight' => 1,
-    ),
-  );
-  return $block;
+    );
+    return $block;
+  }
 }
 
 function new_design_tv_show_aspot_content_type_edit_form($form, &$form_state) {

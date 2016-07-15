@@ -39,7 +39,161 @@
         }
       }
     }
-    
+
+    &.tablet {
+      @media all and (orientation: portrait) {
+        &.menu-open {
+          background: transparent;
+          &:not(.off-elements) {
+            #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+              .bottom-menu-block {
+                .show-menu-tab {
+                  .show-menu {
+                    @include breakpoint($bp-768-width) {
+                      max-height: calc(100vh - 96px - 2px - #{get-vw(14px, 768) + get-vw(30px, 768) + get-vw(18px, 768) + get-vw(45px, 768)});
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &.off-elements {
+            #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+              .bottom-menu-block {
+                .show-menu-tab {
+                  .show-menu {
+                    @include breakpoint($bp-768-width) {
+                      max-height: calc(100vh - 2px - #{get-vw(14px, 768) + get-vw(30px, 768) + get-vw(18px, 768) + get-vw(45px, 768)});
+                    }
+                  }
+                }
+              }
+            }
+          }
+          #header-overlay {
+            display: block;
+          }
+        }
+        #header-overlay {
+          background: black;
+          height: 100%;
+          opacity: 0.6;
+          position: absolute;
+          width: 100%;
+        }
+        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+          &.active {
+            .top-menu-block {
+              .logo-block {
+                @include breakpoint($bp-768-width) {
+                  margin-top: calc(#{get-vw(6px, 768) + (get-vw(30px, 768) - get-vw(18.2px, 768))/2});
+                  top: 0;
+                }
+              }
+              .menu-open-button {
+                @include breakpoint($bp-768-width) {
+                  margin-top: calc(#{get-vw(6px, 768) + (get-vw(30px, 768) - get-vw(27px, 768))/2});
+                  top: 0;
+                }
+              }
+            }
+          }
+          .top-menu-block {
+            .top-menu-block-inner {
+              @include breakpoint($bp-768-width) {
+                padding: get-vw(6px, 768) 0 get-vw(8px, 768);
+              }
+            }
+            .title-block {
+              @include breakpoint($bp-768-width) {
+                width: get-vw(192px, 768);
+              }
+              .title {
+                @include breakpoint($bp-768-width) {
+                  //height: get-vw(30px, 768);
+                }
+              }
+            }
+            .logo-block {
+              @include breakpoint($bp-768-width) {
+                left: get-vw(22px, 768);
+                height: get-vw(18.2px, 768);
+                margin-top: get-vw(-9.1px, 768);
+              }
+              .logo {
+                @include breakpoint($bp-768-width) {
+                  width: get-vw(44px, 768);
+                }
+              }
+            }
+            .tune-in {
+              @include breakpoint($bp-768-width) {
+                padding-top: get-vw(6px, 768);
+                font-size: get-vw(12px, 768);
+              }
+            }
+            .menu-open-button {
+              @include breakpoint($bp-768-width) {
+                height: get-vw(27px, 768);
+                margin-top: get-vw(-13.5px, 768);
+                right: get-vw(13px, 768);
+                width: get-vw(27px, 768);
+              }
+              &:before {
+                @include breakpoint($bp-768-width) {
+                  font-size: get-vw(27px, 768);
+                  line-height: get-vw(27px, 768);
+                }
+              }
+            }
+          }
+          .bottom-menu-block {
+            .show-menu-tab {
+              &:after {
+                display: none;
+              }
+              .show-menu {
+                .show-menu-item {
+                  a {
+                    @include breakpoint($bp-768-width) {
+                      font-size: get-vw(18px, 768);
+                      padding: get-vw(16px, 768) get-vw(22px, 768) get-vw(14px, 768);
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .social-block {
+            height: get-vw(45px, 768);
+            .hashtag {
+              @include breakpoint($bp-768-width) {
+                font-size: get-vw(14px, 768);
+                line-height: get-vw(45px, 768);
+                padding-right: get-vw(30px, 768);
+              }
+            }
+            .social-icons {
+              a {
+                @include breakpoint($bp-768-width) {
+                  margin-right: get-vw(13px, 768);
+                }
+                &:last-child {
+                  margin-right: 0;
+                }
+                &:before {
+                  @include breakpoint($bp-768-width) {
+                    font-size: get-vw(22px, 768);
+                    line-height: get-vw(45px, 768);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     &.smartphone {
       #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
         .bottom-menu-block {
@@ -52,13 +206,72 @@
       }
       &.menu-open {
         &:not(.off-elements) {
+          .region-header {
+            @include breakpoint($bp-768-width) {
+              height: calc(100% - 56px);
+            }
+          }
           #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
             .bottom-menu-block {
               .show-menu-tab {
                 .show-menu {
                   @include breakpoint($bp-768-width) {
-                    max-height: calc(100vh - 56px - 2px - #{get-vw(33px, 768) + get-vw(57px, 768) + get-vw(28px, 768) + get-vw(86px, 768)});
+                    //max-height: calc(100vh - 56px - 2px - #{get-vw(33px, 768) + get-vw(57px, 768) + get-vw(28px, 768) + get-vw(86px, 768)});
                   }
+                }
+              }
+            }
+          }
+        }
+        &.off-elements {
+          .region-header {
+            @include breakpoint($bp-768-width) {
+              height: 100%;
+            }
+          }
+          #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+            .bottom-menu-block {
+              .show-menu-tab {
+                .show-menu {
+                  @include breakpoint($bp-768-width) {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+        .region-header {
+          @include breakpoint($bp-768-width) {
+            position: relative;
+          }
+        }
+        #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+          @include breakpoint($bp-768-width) {
+            height: 100%;
+          }
+          .content {
+            height: 100%;
+          }
+          .bottom-menu-block {
+            height: 100%;
+            @include breakpoint($bp-768-width) {
+              max-height: calc(100% - #{get-vw(33px, 768) + get-vw(57px, 768) + get-vw(28px, 768)});
+            }
+            .bottom-menu-block-inner {
+              height: 100%;
+              position: relative;
+            }
+            .show-menu-tab {
+              @include breakpoint($bp-768-width) {
+                max-height: calc(100% - #{get-vw(86px, 768)});
+              }
+              .show-menu {
+                @include breakpoint($bp-768-width) {
+                  max-height: 100%;
+                }
+                .mCustomScrollBox {
+                  max-height: 100%!important;
                 }
               }
             }
@@ -82,7 +295,7 @@
                 .show-menu-tab {
                   .show-menu {
                     @include breakpoint($bp-768-width) {
-                      max-height: calc(100vh - 56px - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
+                      //max-height: calc(100vh - 56px - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
                     }
                   }
                 }
@@ -95,7 +308,7 @@
                 .show-menu-tab {
                   .show-menu {
                     @include breakpoint($bp-768-width) {
-                      max-height: calc(100vh - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
+                     //max-height: calc(100vh - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
                     }
                   }
                 }
@@ -159,7 +372,7 @@
               }
               .title {
                 @include breakpoint($bp-768-width) {
-                  height: get-vw(54.52px, 1280);
+                  //height: get-vw(54.52px, 1280);
                 }
               }
             }
@@ -171,7 +384,13 @@
             }
           }
           .bottom-menu-block {
+            @include breakpoint($bp-768-width) {
+              max-height: calc(100% - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768)})!important;
+            }
             .show-menu-tab {
+              @include breakpoint($bp-768-width) {
+                max-height: calc(100% - #{get-vw(60px, 768)})!important;
+              }
               .show-menu {
                 .show-menu-item {
                   a {
@@ -267,7 +486,7 @@
 
     .social-block {
       @include clear();
-      max-width: 20%;
+      max-width: 25%;
       width: 100%;
       .hashtag {
         background: none;
@@ -398,8 +617,8 @@
           margin-top: -16px;
         }
         @include breakpoint($bp-1024-width) {
-          height: get-vw(21px, 1024);
-          margin-top: get-vw(-10.5px, 1024);
+          height: get-vw(20.6px, 1024);
+          margin-top: get-vw(-10.3px, 1024);
         }
         @include breakpoint($bp-768-width) {
           left: get-vw(35px, 768);
@@ -436,16 +655,17 @@
           width: get-vw(372px, 768);
         }
         .title {
-          height: get-vw(54.52px, 1280);
+          //height: get-vw(54.52px, 1280);
+          height: auto;
           margin: 0 auto;
           overflow: hidden;
           position: relative;
           width: 100%;
           @include breakpoint($bp-min-1601-width) {
-            height: 68.15px;
+            //height: 68.15px;
           }
           @include breakpoint($bp-768-width) {
-            height: get-vw(57px, 768);
+            //height: get-vw(57px, 768);
           }
         }
         a {
@@ -481,6 +701,25 @@
             font-size: get-vw(18px, 768);
             line-height: 1;
           }
+        }
+      }
+      .sponsored {
+        top: 50%;
+        position: absolute;
+        -moz-transform: translateY(-50%); /* Для Firefox */
+        -ms-transform: translateY(-50%); /* Для IE */
+        -webkit-transform: translateY(-50%); /* Для Safari, Chrome, iOS */
+        -o-transform: translateY(-50%); /* Для Opera */
+        transform: translateY(-50%);
+
+        @include breakpoint($bp-min-769-width) {
+          right: get-vw(16px, 1280);
+        }
+        @include breakpoint($bp-min-1601-width) {
+          right: 20px;
+        }
+        @include breakpoint($bp-768-width) {
+          display: none;
         }
       }
       .menu-open-button {
@@ -535,6 +774,24 @@
         height: auto;
         position: absolute;
       }
+
+      &.sponsored-enable {
+        position: relative;
+        .show-menu-tab {
+          text-align: left;
+        }
+        .social-block {
+          margin-top: calc(#{get-vw(-20px, 1280)} / 2);
+          top: 50%;
+          @include breakpoint($bp-min-1601-width) {
+            margin-top: calc(#{-25px} / 2);
+          }
+          @include breakpoint($bp-768-width) {
+            margin-top: 0;
+          }
+        }
+      }
+
       .bottom-menu-block-inner {
         @include clear();
         background: #000000;
@@ -639,14 +896,14 @@
         }
       }
       .social-block {
-        @include breakpoint($bp-min-1601-width) {
-          right: 20px;
-          top: calc((100% - 75px) / 2);
-        }
         @include breakpoint($bp-min-769-width) {
           right: get-vw(16px, 1280);
-          top: calc((100% - #{get-vw(60px, 1280)}) / 2);
+          top: calc(((100% - #{get-vw(71px, 1600)} - 2px)/2) - #{get-vw(12.5px, 1600)} + #{get-vw(10px, 1600)});
           position: absolute;
+        }
+        @include breakpoint($bp-min-1601-width) {
+          right: 20px;
+          top: calc(((100% - 73px)/2) - 12.5px + 10px);
         }
         @include breakpoint($bp-768-width) {
           background: black;

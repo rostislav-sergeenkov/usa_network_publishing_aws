@@ -6,7 +6,8 @@
     <?php if (!empty($node_nid)): print ' data-node-nid="' . $node_nid . '"'; endif; ?>
     <?php if (!empty($file_fid)): print ' data-file-fid="' . $file_fid . '"'; endif; ?>>
   <h2 class="section-title">
-    <span class="section-title-wrapper show-border secondary"><?php print t('Related content')?></span>
+    <span class="section-title-wrapper show-border secondary"><?php print t('Related')?><span class="desktop-title"><?php print t(' content')?></span></span>
+
   </h2>
   <?php if (!empty($related_items_block)): ?>
     <?php print $related_items_block; ?>

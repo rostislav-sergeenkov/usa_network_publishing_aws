@@ -68,6 +68,10 @@ body {
   }
 }
 
+#header-overlay {
+  display: none;
+}
+
 .usa-wrap {
   max-width: 2500px;
   margin: 0 auto;
@@ -224,8 +228,12 @@ address {
     a {
       border-color: white;
       color: white;
+      font-family: $fira-sans-regular;
       font-size: 17px;
       padding-bottom: 3px;
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw(28.4px, 640);
+      }
     }
   }
   a {
@@ -421,8 +429,8 @@ address {
   font-size: 30px;
   padding: 37px 27px;
   margin: 54px 0 28px;
-  border-top: 3px solid;
-  border-bottom: 3px solid;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
   line-height: 1.5em;
   @include breakpoint($bp-1280-width) {
     font-size: 22px;

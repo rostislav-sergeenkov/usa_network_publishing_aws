@@ -1,23 +1,21 @@
 .show-new-design {
-
   #header {
     &.usa-sticky-header {
+      &.off-elements {
+        .upper-menu {
+          @include breakpoint($bp-min-769-width) {
+            padding-top: 0;
+          }
+        }
+      }
       .upper-menu {
-        padding-bottom: 10px;
-        padding-top: 10px;
         margin: 0 auto;
         @include breakpoint($bp-min-1601-width) {
           width: 1600px;
         }
-        @include breakpoint($bp-min-769-width) {
-          padding-top: 0;
-        }
         .item-filter {
           &.all-items-filter {
             .filter-menu li {
-              @include breakpoint($bp-min-769-width) {
-                margin-top: 15px;
-              }
               @include breakpoint($bp-768-width) {
                 margin: 0;
               }
@@ -57,7 +55,9 @@
       -webkit-transform: translateZ(0);
       position: relative;
       transform: translateZ(0);
+      text-align: center;
       z-index: 2;
+      @include transition(padding 0.1s linear 0);
       @include breakpoint($bp-min-1601-width) {
         padding: 40px 20px 15px;
       }
@@ -111,10 +111,10 @@
         }
         .filter-label {
           background: black;
-          color: white;
+          color: $usa-filter-color;
           cursor: pointer;
-          font-family: $fira-sans-medium;
-          font-size: get-vw(18px, 1600);
+          font-family: $fira-sans-regular;
+          font-size: get-vw(14.4px, 1600);
           letter-spacing: 0.5px;
           line-height: get-vw(50px, 1600);
           overflow: hidden;
@@ -127,12 +127,12 @@
           white-space: nowrap;
           width: 100%;
           @include breakpoint($bp-min-1601-width) {
-            font-size: 18px;
+            font-size: 14.4px;
             line-height: 50px;
             padding-right: 40px;
           }
           @include breakpoint($bp-768-width) {
-            color: white;
+            color: $usa-filter-color;
             font-size: 14px;
             letter-spacing: 1px;
             line-height: 38px;
@@ -179,13 +179,11 @@
           }
         }
         &.all-items-filter {
-          float: left;
-          width: calc(100% - #{get-vw(215px, 1600)});
-          @include breakpoint($bp-min-1601-width) {
-            width: calc(100% - 215px);
-          }
           @include breakpoint($bp-min-769-width) {
             border: none;
+            display: inline-block;
+            max-width: 64%;
+            vertical-align: top;
             .filter-label {
               border: none;
               display: none;
@@ -195,6 +193,7 @@
             }
           }
           @include breakpoint($bp-768-width) {
+            float: left;
             position: relative;
             vertical-align: middle;
             min-width: 205px;
@@ -232,7 +231,7 @@
             li {
               cursor: pointer;
               display: inline-block;
-              margin: get-vw(20px, 1280) get-vw(45px, 1280) 0 0;
+              margin: get-vw(20px, 1280) get-vw(32.2px, 1280) 0 0;
               padding: 0;
               &:last-child {
                 margin-right: 0;
@@ -252,10 +251,10 @@
                 width: 100%;
               }
               a {
-                color: white;
+                color: $usa-filter-color;
                 display: block;
-                font-size: get-vw(18px, 1600);
-                font-family: $fira-sans-medium;
+                font-size: get-vw(14.4px, 1600);
+                font-family: $fira-sans-regular;
                 text-transform: capitalize;
                 letter-spacing: 0.5px;
                 line-height: 1.8;
@@ -270,7 +269,7 @@
                   }
                 }
                 @include breakpoint($bp-min-1601-width) {
-                  font-size: 18px;
+                  font-size: 14.4px;
                 }
                 @include breakpoint($bp-768-width) {
                   color: #ffffff;
@@ -289,13 +288,13 @@
                   }
                 }
                 h1 {
-                  font-size: get-vw(18px, 1600);
+                  font-size: get-vw(14.4px, 1600);
                   font-family: $fira-sans-medium;
                   text-transform: capitalize;
                   letter-spacing: 0.5px;
                   line-height: 1.8;
                   @include breakpoint($bp-min-1601-width) {
-                    font-size: 18px;
+                    font-size: 14.4px;
                   }
                   @include breakpoint($bp-768-width) {
                     font-size: 14px;
@@ -306,7 +305,7 @@
                   }
                 }
                 .items-in {
-                  font-family: $fira-sans-bold;
+                  font-family: $fira-sans-medium;
                 }
               }
               &.active {
@@ -338,17 +337,20 @@
           }
         }
         &.sorter-items {
-          float: right;
-          margin-top: get-vw(15px, 1600);
+          display: inline-block;
+          margin-top: get-vw(12px, 1600);
           position: relative;
           text-align: right;
           @include clear();
+          vertical-align: top;
           width: get-vw(205px, 1600);
           @include breakpoint($bp-min-1601-width) {
-            margin-top: 15px;
+            margin-top: 12px;
             width: 205px;
           }
           @include breakpoint($bp-768-width) {
+            display: block;
+            float: right;
             margin: 0;
             width: 205px;
           }
@@ -391,7 +393,7 @@
               a {
                 color: #ffffff;
                 display: block;
-                font-size: get-vw(18px, 1600);
+                font-size: get-vw(14.4px, 1600);
                 font-family: $avalon-medium;
                 height: 100%;
                 letter-spacing: 1px;
@@ -405,7 +407,7 @@
                   color: $header-tab-title;
                 }
                 @include breakpoint($bp-min-1601-width) {
-                  font-size: 18px;
+                  font-size: 14.4px;
                   line-height: 50px;
                   padding: 0 40px 0 15px;
                 }

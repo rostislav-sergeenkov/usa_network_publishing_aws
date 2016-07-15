@@ -49,9 +49,10 @@ function new_design_tv_show_bcd_spot_content_type_edit_form($form, &$form_state)
 function new_design_tv_show_bcd_spot_get_content($node) {
   $bcd_spot_content = usanetwork_core_api_get_dynamic_entity_reference_content($node, 'field_bcd_spot');
   $bcd_spot_data = array();
+  $bcd_types = new_design_tv_show_bcd_spot_get_bcd_type();
   foreach ($bcd_spot_content as $index => $item) {
     $data_item = usanetwork_promo_get_promo_content_variables($item);
-    $row_image_uri = usanetwork_core_api_get_content_image($item['entity_type'], $item['entity']);
+    $row_image_uri = usanetwork_core_api_get_content_image_given_image_override($item['entity_type'], $item['entity']);
     $positions = usanetwork_core_api_get_output_position($bcd_spot_content, $index);
     $blog_service = usanetwork_blog_migrate_get_post_service($item['entity']);
     $author_term = usanetwork_consumptionator_post_get_author($item['entity_type'], $item['entity']);
@@ -65,9 +66,14 @@ function new_design_tv_show_bcd_spot_get_content($node) {
       'position' => current($positions),
       'blog_service' => $blog_service,
       'author' => $author_name,
+      'bcd_type' => $bcd_types[$index],
     );
     $data_item = $data_item + $additional_data;
     $bcd_spot_data[] = $data_item;
   }
   return $bcd_spot_data;
+}
+
+function new_design_tv_show_bcd_spot_get_bcd_type() {
+  return array('B', 'C', 'D');
 }

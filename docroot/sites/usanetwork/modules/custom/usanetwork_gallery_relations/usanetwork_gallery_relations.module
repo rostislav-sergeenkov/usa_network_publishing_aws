@@ -76,6 +76,7 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
     $query->entityCondition('entity_type', 'node');
     $query->entityCondition('bundle', array('tv_season'));
     $query->fieldCondition('field_show', 'target_id', $selected_show);
+    $query->propertyOrderBy('title', 'ASC');
     $show_result = $query->execute();
 
     // If the first element of the options aray is "- Select -" (et. al.) then

@@ -38,10 +38,13 @@
               scope.login = authService.openLoginModal;
               scope.verificationInProgress = verificationInProgress;
               scope.text = text[verificationInProgress];
+              $rootScope.isMobile = isMobile;
               $rootScope.isRetina = scope.isRetina = helper.isRetina;
               $rootScope.user = {
                 isAuthenticated: scope.isAuthenticated
               };
+              
+              
 
               if (scope.isAuthenticated) {
                 authService.getSelectedProvider().then(function (providerInfo) {

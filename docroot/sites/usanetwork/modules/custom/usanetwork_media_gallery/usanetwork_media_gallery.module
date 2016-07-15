@@ -1111,12 +1111,16 @@ function _usanetwork_media_gallery_landing_page_vbget_photos_block_item($node, $
   list($mobile_image, $desktop_image) = _usanetwork_tv_shows_landing_page_prepare_item_image($current_item_index, $image_url, $big_element_index, $is_new_design);
   
   $own_promo_lines = _usanetwork_promo_pull_node_promo_details($node);
+  $caption = !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '';
+  if ($is_new_design) {
+    $caption = !empty($own_promo_lines['violator']) ? $own_promo_lines['violator'] : '';
+  }
   $theme_variables = array(
     'classes' => NULL,
     'custom_classes' => NULL,
     'target_url' => url('node/' . $node->nid),
     'media_icon' => !empty($own_promo_lines['icon_type']) ? $own_promo_lines['icon_type'] : 'video-icon',
-    'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
+    'caption' => $caption,
     'title' => !empty($own_promo_lines['promo_title'])
       ? $own_promo_lines['promo_title']
       : $node->title,

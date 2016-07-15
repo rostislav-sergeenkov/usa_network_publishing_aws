@@ -33,32 +33,39 @@
  */
 ?>
 <div class="node node-usanetwork-promo usa-best-of-promo<?php print !empty($layout_scheme['desktop_type'])? ' ' . $layout_scheme['desktop_type'] : ''; ?><?php print !empty($layout_scheme['mobile_type'])? ' mobile-' . $layout_scheme['mobile_type'] : ''; ?>">
-  <a href="<?php print !empty($item['url']) ? $item['url'] : '#'; ?>">
-    <div class="image-block">
-      <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
-        <?php if (!empty($item['image_mobile'])): ?>
-          <div data-src="<?php print $item['image_mobile']; ?>"></div>
-        <?php endif; ?>
-        <?php if (!empty($item['image_desktop'])): ?>
-          <div data-media="(min-width: 769px)" data-src="<?php print $item['image_desktop']; ?>"></div>
-          <!--[if (IE 8) & (!IEMobile)]>
-          <div data-src="<?php print $item['image_desktop']; ?>"></div>
-          <![endif]-->
-        <?php endif; ?>
-        <?php if (!empty($item['image_desktop'])): ?>
-          <noscript><img src="<?php print $item['image_desktop']; ?>" alt="" title="" /></noscript>
-        <?php endif; ?>
-      </div>
+  <div class="image-block">
+    <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
+      <?php if (!empty($item['image_mobile'])): ?>
+        <div data-src="<?php print $item['image_mobile']; ?>"></div>
+      <?php endif; ?>
+      <?php if (!empty($item['image_desktop'])): ?>
+        <div data-media="(min-width: 769px)" data-src="<?php print $item['image_desktop']; ?>"></div>
+        <!--[if (IE 8) & (!IEMobile)]>
+        <div data-src="<?php print $item['image_desktop']; ?>"></div>
+        <![endif]-->
+      <?php endif; ?>
+      <?php if (!empty($item['image_desktop'])): ?>
+        <noscript><img src="<?php print $item['image_desktop']; ?>" alt="" title="" /></noscript>
+      <?php endif; ?>
     </div>
-  </a>
+  </div>
   <div class="meta-wrapper">
     <div class="meta-wrapper-inner">
+      <?php if (!empty($item['url']) && (empty($item['links']) || count($item['links']) == 1)): ?>
+        <a href="<?php print $item['url']; ?>" class="promo-link"></a>
+      <?php endif; ?>
       <div class="meta">
         <?php if (!empty($item['violator'])): ?>
           <div class="caption"><span class="show-color"><?php print $item['violator']; ?></span></div>
         <?php endif; ?>
         <?php if (!empty($item['title'])): ?>
-          <div class="title"><?php print $item['title']; ?></div>
+          <?php if (!empty($item['url']) && (empty($item['links']) || count($item['links']) == 1)): ?>
+            <a href="<?php print $item['url']; ?>">
+              <div class="title"><?php print $item['title']; ?></div>
+            </a>
+          <?php else: ?>
+            <div class="title"><?php print $item['title']; ?></div>
+          <?php endif; ?>
         <?php endif; ?>
         <?php if (!empty($item['links'])): ?>
           <div class="additional">

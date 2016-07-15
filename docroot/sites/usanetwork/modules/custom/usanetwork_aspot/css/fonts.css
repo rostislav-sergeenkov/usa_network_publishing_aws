@@ -41,3 +41,21 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'FiraSansRegular';
+  src: url('../../../../themes/aurora_usa/fonts/FiraSansRegular.eot');
+  src: url('../../../../themes/aurora_usa/fonts/FiraSansRegular.eot') format('embedded-opentype'),
+  url('../../../../themes/aurora_usa/fonts/FiraSansRegular.woff') format('woff'),
+  url('../../../../themes/aurora_usa/fonts/FiraSansRegular.ttf') format('truetype'),
+  url('../../../../themes/aurora_usa/fonts/FiraSansRegular.svg#FiraSansRegular') format('svg');
+}
+
+@font-face {
+  font-family: 'FiraSansMedium';
+  src: url('../../../../themes/aurora_usa/fonts/FiraSansMedium.eot');
+  src: url('../../../../themes/aurora_usa/fonts/FiraSansMedium.eot') format('embedded-opentype'),
+  url('../../../../themes/aurora_usa/fonts/FiraSansMedium.woff') format('woff'),
+  url('../../../../themes/aurora_usa/fonts/FiraSansMedium.ttf') format('truetype'),
+  url('../../../../themes/aurora_usa/fonts/FiraSansMedium.svg#FiraSansMedium') format('svg');
+}

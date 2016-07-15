@@ -144,6 +144,7 @@ $usa-related-title: #e6e6e6;
 $usa-bcd-title: #e6e7e8;
 $usa-related-additional: #cdcdcd;
 $usa-footer-color: #bababa;
+$usa-filter-color: #f1f1f1;
 $usa-blog-item-title: #d7d3d1;
 $usa-blog-item-desc: #abb7b7;
 $usa-episodes-link: #cecece;
@@ -170,7 +171,23 @@ $usa-episode-title: #aaaaaa;
     width: 3px;
     z-index: 2;
     cursor: pointer;
-    height: 2px !important;
+  }
+}
+.show-new-design {
+  .show-color-border, .asset-img.show {
+    position: relative;
+    &:before {
+      background: $usa-logo-back;
+      display: block;
+      content: '';
+      height: 2px !important;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 3px;
+      z-index: 2;
+      cursor: pointer;
+    }
   }
 }
 

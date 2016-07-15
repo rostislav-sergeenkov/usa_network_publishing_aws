@@ -59,7 +59,13 @@
               <?php if (!empty($show_description_style['width'])): print ' data-width="' . $show_description_style['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
               <?php print $show_desc; ?>
             </div>
-
+            <div class="aspot-violator aspot-draggable-element show-color
+              <?php print (!empty($show_violator_style['fonts']['desktop']) ? 'font-desktop-' . $show_violator_style['fonts']['desktop'] : ''); ?>
+              <?php print (!empty($show_violator_style['fonts']['mobile']) ? 'font-mobile-' . $show_violator_style['fonts']['mobile'] : ''); ?>"
+              <?php if (!empty($show_violator_style['desktop'])): print ' data-style-desktop="' . $show_violator_style['desktop'] . '" data-style-mobile="' . $show_violator_style['mobile'] . '"'; endif; ?>
+              <?php if (!empty($show_violator_style['width'])): print ' data-width="' . $show_violator_style['width'] . '"'; else: print ' data-width="auto"'; endif; ?>>
+              <?php print $show_violator; ?>
+            </div>
             <?php if (!empty($show_timer)): ?>
               <div class="show-timer">
                 <div class="start" <?php if (!empty($show_timer['title_prefix_style'])): print ' style="' . $show_timer['title_prefix_style'] . '"'; endif; ?>>

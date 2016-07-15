@@ -46,6 +46,12 @@
       }
     }
     #aspot-usanetwork {
+      .wrp, .node, .asset-img, .asset-img img {
+        @include breakpoint($bp-min-769-width) {
+          height: 100%;
+          width: 100%;
+        }
+      }
       @include breakpoint($bp-768-width) {
         border-bottom: 2px solid;
         .asset-img {
@@ -75,6 +81,7 @@
       display: none;
     }
     .meta-wrap {
+      // add preview changes aurora_usa/sass/design/modules/_a-spot-preview.scss
       position: static;
       .aspot-draggable-element {
         box-sizing: border-box;
@@ -100,7 +107,7 @@
       }
       .title_prefix {
         @include aspotFonts(1px, 8.08px, 11.28px);
-        @include aspotShowFonts(1px, 8.08px, 11.28px, true);
+        @include aspotShowFonts(1px, 1.08px, 4.28px, true);
       }
       .title {
         color: #ffffff;
@@ -118,7 +125,7 @@
           font-size: 10.4vw;
         }
         @include aspotFonts(4px, 52.8px, 42.56px);
-        @include aspotShowFonts(4px, 52.8px, 42.56px, true);
+        @include aspotShowFonts(4px, 24.8px, 14.56px, true);
         p {
           margin: 0;
           text-shadow: 0 0.04em rgba(0,0,0,0.5);
@@ -140,7 +147,7 @@
           font-size: 3.125vw;
         }
         @include aspotFonts(1.5px, 15px, 11px);
-        @include aspotShowFonts(1.5px, 15px, 11px, true);
+        @include aspotShowFonts(1.5px, 4.5px, 0.5px, true);
         p {
           margin: 0;
           text-shadow: 0 0.1em rgba(0,0,0,0.5);
@@ -268,6 +275,34 @@
               }
             }
           }
+        }
+      }
+      .aspot-violator {
+        // add preview changes aurora_usa/sass/design/modules/_a-spot-preview.scss
+        color: white;
+        font-size: get-vw(15px, 1280);
+        font-family: $fira-sans-regular;
+        line-height: 1.5;
+        letter-spacing: get-vw(0.7px, 1280);
+        padding: get-vw(3px, 1280) get-vw(7px, 1280) 0;
+        text-transform: uppercase;
+        text-align: center;
+        width: auto;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 18.75px;
+          letter-spacing: 0.7px;
+          padding: 3px 8.75px 0;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(12px, 768);
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: get-vw(15px, 640);
+          letter-spacing: get-vw(0.7px, 640);
+          padding: get-vw(3px, 640) get-vw(7px, 640) 0;
+        }
+        strong, b, i {
+          font-family: $fira-sans-medium;
         }
       }
     }

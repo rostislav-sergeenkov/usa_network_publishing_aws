@@ -550,14 +550,23 @@ body:not(.show-new-design) .consum-sidebar {
         text-align: center;
         vertical-align: middle;
         img {
+          @include breakpoint($bp-768-width) {
+            max-width: 100vw;
+          }
+          @include breakpoint($between-769-1024) {
+            max-width: calc(100vw - 340px);
+          }
           @include breakpoint($between-1025-1280) {
             max-height: calc(((100vw - 320px)*0.5625) - 250px);
+            max-width: 320px;
           }
           @include breakpoint($bp-min-1281-width) {
             max-height: calc(42.01875vw - 250px);
+            max-width: 25vw;
           }
           @include breakpoint($bp-min-2500-width) {
             max-height: calc(1093.75px - 250px);
+            max-width: 632px;
           }
         }
       }

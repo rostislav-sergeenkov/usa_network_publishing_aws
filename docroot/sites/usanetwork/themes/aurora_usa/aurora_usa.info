@@ -8,7 +8,7 @@ scripts[] = javascripts/variables-and-functions.js
 scripts[] = javascripts/global-carousels.js
 
 ; Stylesheets
-stylesheets[all][] = stylesheets/style.css
+stylesheets[all][] = stylesheets/style_new.css
 stylesheets[all][] = static-stylesheets/static-style.css
 
 ; Regions

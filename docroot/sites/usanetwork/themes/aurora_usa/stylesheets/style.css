@@ -584,7 +584,7 @@ you can use the generic selector below, but it's slower:
 }
 
 .block-usanetwork-personalization .close, .flex-direction-nav a, .block-usanetwork-mpx-video .view .file.tve-video-auth > a:after,
-#block-views-usa-mpx-video-fullepisodes-live .view .file.tve-video-auth > a:after, .icons-social a, .social-follow-block .icons-social a, .snipe-msg .close, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:after, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:hover:after {
+#block-views-usa-mpx-video-fullepisodes-live .view .file.tve-video-auth > a:after, .icons-social a, .snipe-msg .close, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:after, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:hover:after {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -621,37 +621,6 @@ you can use the generic selector below, but it's slower:
   border: 2px solid #2d2d2d;
   width: 304px;
   height: 254px;
-}
-
-.usa-social #content {
-  text-align: left;
-  vertical-align: top;
-  float: none;
-  width: 100%;
-  padding-right: 0;
-}
-
-@media (min-width: 900px) {
-  .usa-social.one-sidebar #content {
-    float: left;
-    margin-right: -315px;
-    padding-right: 315px;
-  }
-}
-
-.usa-social .sidebar {
-  clear: both;
-  width: 100%;
-  margin-top: 30px;
-}
-@media (min-width: 900px) {
-  .usa-social .sidebar {
-    float: left;
-    clear: none;
-    width: 300px;
-    margin-left: 15px;
-    margin-top: 0;
-  }
 }
 
 h1, h2, h3, .smaller-header h2, h4, h5, h6 {
@@ -707,9 +676,7 @@ body, #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h
   font-size: 12px;
 }
 
-.social-follow-block .item-content .title, .social-follow-block .item-content .title h2,
-.social-follow-block .item-content .title h4,
-.social-follow-block .item-content .title .field-name-field-usa-actor-name, .lyris .form-submit, .echo-item-data {
+.lyris .form-submit, .echo-item-data {
   font-family: "avalonregular", Arial, sans-serif;
   font-size: 14px;
 }
@@ -729,8 +696,7 @@ body, #block-views-usa-mpx-video-latest-live-video .view-mode-full .show-title h
   font-size: 18px;
 }
 
-.social-follow-block h2, #lyris h2, #usanetwork_social_chatter_title, .social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer,
-.social-follow-block .attachment-after .view-usa-cast.view-display-id-attachment_2 .view-footer, #usanetwork_social_join .usanetwork_social_join_msg {
+#lyris h2, #usanetwork_social_chatter_title, #usanetwork_social_join .usanetwork_social_join_msg {
   font-family: "avalonregular", Arial, sans-serif;
   font-size: 24px;
 }
@@ -767,7 +733,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
 
-body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .five-promo-item-block ul li.first .meta, .five-promo-item-block ul li:nth-child(2) .meta, .five-promo-item-block ul li .last .meta, .show-latest-block ul li .meta, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta, body:not(.show-new-design) .related-content-block ul li .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta {
+body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .five-promo-item-block ul li.first .meta, .five-promo-item-block ul li:nth-child(2) .meta, .five-promo-item-block ul li .last .meta, .show-latest-block ul li .meta, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta, body:not(.show-new-design) .related-content-block ul li .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta {
   direction: ltr;
   color: #ffffff;
 }
@@ -5736,7 +5702,7 @@ body:not(.show-new-design) #topbanner {
   border-bottom: 1px solid #1f1f1f;
 }
 
-.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev, .icons-arrow-prev, .icons-close_welcome_popup, .tveModal .modalHeader .closeButton, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after, .icons-sync-now-small, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev, .icons-arrow-prev, .icons-close_welcome_popup, .tveModal .modalHeader .closeButton, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, #utilities .breadcrumb .separator, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .ie8 .usa-secondary-menu .shows > li.first > span:after, .icons-sync-now-small, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
   background: url('../images/icons-s4b131226d7.png') no-repeat;
 }
 
@@ -5780,11 +5746,11 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 -1341px;
 }
 
-.icons-follow-facebook-hover-v2, .ie9 .social-follow-block .icons-social .usasocial-fb:hover, .ie8 .social-follow-block .icons-social .usasocial-fb:hover {
+.icons-follow-facebook-hover-v2 {
   background-position: 0 -2319px;
 }
 
-.icons-follow-facebook-v2, .ie9 .social-follow-block .icons-social .usasocial-fb, .ie8 .social-follow-block .icons-social .usasocial-fb {
+.icons-follow-facebook-v2 {
   background-position: 0 -2357px;
 }
 
@@ -5796,11 +5762,11 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 -1974px;
 }
 
-.icons-follow-twitter-hover-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter:hover, .ie8 .icons-social a.person-twitter.usasocial-twitter:hover, .ie9 .social-follow-block .icons-social .usasocial-twitter:hover, .ie8 .social-follow-block .icons-social .usasocial-twitter:hover {
+.icons-follow-twitter-hover-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter:hover, .ie8 .icons-social a.person-twitter.usasocial-twitter:hover {
   background-position: 0 -1069px;
 }
 
-.icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter {
+.icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter {
   background-position: 0 -1107px;
 }
 
@@ -5848,7 +5814,7 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 -1493px;
 }
 
-.icons-pinterest-hover-v2, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover, .ie9 .social-follow-block .icons-social .usasocial-pinterest:hover, .ie8 .social-follow-block .icons-social .usasocial-pinterest:hover {
+.icons-pinterest-hover-v2, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover {
   background-position: 0 -2069px;
 }
 
@@ -5864,7 +5830,7 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 -1145px;
 }
 
-.icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
+.icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest {
   background-position: 0 -1936px;
 }
 
@@ -5900,7 +5866,7 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 0;
 }
 
-.icons-tumblr-hover-v2, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover, .ie9 .social-follow-block .icons-social .usasocial-tumblr:hover, .ie8 .social-follow-block .icons-social .usasocial-tumblr:hover {
+.icons-tumblr-hover-v2, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover {
   background-position: 0 -2448px;
 }
 
@@ -5908,7 +5874,7 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 -1884px;
 }
 
-.icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
+.icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr {
   background-position: 0 -2539px;
 }
 
@@ -10096,43 +10062,6 @@ header .tve-help-link.signIn .inlineLoader {
 }
 .expandable-menu > div {
   background: #2d2d2d;
-}
-
-.mega-sub-nav-container, [id="personalization-drawer"] {
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  -webkit-transition-timing-function: linear;
-  -moz-transition-timing-function: linear;
-  -o-transition-timing-function: linear;
-  transition-timing-function: linear;
-  -webkit-transition-property: all;
-  -moz-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -webkit-transform: translate3d(0, 100%, 0);
-  -moz-transform: translate3d(0, 100%, 0);
-  -ms-transform: translate3d(0, 100%, 0);
-  -o-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0);
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  position: fixed;
-  z-index: 50000;
-  background: rgba(0, 0, 0, 0.9);
-}
-.active-item.mega-sub-nav-container, .active-item[id="personalization-drawer"] {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  bottom: 65px;
-}
-.usa-showmenu-active .active-item.mega-sub-nav-container, .usa-showmenu-active .active-item[id="personalization-drawer"] {
-  bottom: 115px;
 }
 
 .five-promo-item-block {
@@ -24631,23 +24560,6 @@ html[xmlns] .slides {
   position: absolute;
   width: 100%;
 }
-.carousel ul li .meta-wrap.poll {
-  bottom: auto;
-  height: 115px;
-  top: 0px;
-}
-.carousel ul li .meta-wrap.poll .meta {
-  left: 50%;
-  margin-left: -68px;
-  top: 70%;
-  width: 135px;
-}
-.carousel ul li .meta-wrap.poll .title {
-  font-size: 20px;
-  line-height: normal;
-  margin: 0 auto;
-  text-align: center;
-}
 .carousel ul li .meta-wrap .meta-wrapper-inner {
   height: 100%;
   display: table;
@@ -27444,23 +27356,19 @@ html[xmlns] .slides {
   width: 100%;
 }
 
-.social-follow-block h2, #lyris h2, #usanetwork_social_chatter_title {
+#lyris h2, #usanetwork_social_chatter_title {
   margin: 0;
   text-align: center;
   border-bottom: 1px solid #3d3d3d;
   padding: 14px 15px;
 }
 
-.social-follow-block h2, #lyris h2, #usanetwork_social_chatter_title {
+#lyris h2, #usanetwork_social_chatter_title {
   font-weight: normal;
   color: white;
   letter-spacing: 0.05em;
   line-height: 1;
   text-transform: lowercase;
-}
-
-body.usa-social {
-  overflow-x: hidden;
 }
 
 .icons-social a {
@@ -27573,203 +27481,6 @@ body.usa-social {
 }
 .icons-social a.usasocial-fb {
   padding-left: 8px;
-}
-
-.usa-social #main {
-  max-width: 1245px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-@media (min-width: 330px) {
-  .usa-social #main {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-}
-@media (min-width: 1275px) {
-  .usa-social #main {
-    width: auto;
-    clear: both;
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-.usa-social .tabs {
-  display: none;
-  /* need to ask vino about this */
-}
-.usa-social .tabs .secondary {
-  display: none;
-}
-.usa-social li {
-  list-style: none;
-}
-
-.social-follow-block {
-  background-color: #232323;
-  border: 1px solid #3d3d3d;
-  margin-bottom: 20px;
-}
-.social-follow-block h2 {
-  border: 0;
-  padding: 16px 12px 11px 8px;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #2d2d2d));
-  background: -webkit-linear-gradient(center top, #000000, #2d2d2d);
-  background: -moz-linear-gradient(center top, #000000, #2d2d2d);
-  background: -o-linear-gradient(center top, #000000, #2d2d2d);
-  background: linear-gradient(center top, #000000, #2d2d2d);
-  text-transform: none;
-}
-.social-follow-block ul {
-  margin: 0;
-}
-.social-follow-block ul li {
-  font-size: 0;
-  overflow: hidden;
-  padding: 10px 0 10px 54px;
-  margin: 0;
-  border-top: 1px solid #4b4b4b;
-}
-.social-follow-block ul li figure {
-  display: inline-block;
-  margin-left: -42px;
-  vertical-align: middle;
-  width: 42px;
-  height: 42px;
-}
-.social-follow-block .item-content {
-  display: inline-block;
-  margin-right: -145px;
-  overflow: hidden;
-  padding-right: 145px;
-  text-align: right;
-  vertical-align: middle;
-  width: 100%;
-}
-.social-follow-block .item-content .title {
-  line-height: 1em;
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-  width: 100%;
-}
-.social-follow-block .item-content .title > div {
-  margin: 4px 0 0 11px;
-}
-.social-follow-block .item-content .title h2,
-.social-follow-block .item-content .title h4,
-.social-follow-block .item-content .title .field-name-field-usa-actor-name {
-  color: white;
-  text-transform: none;
-  font-weight: normal;
-}
-.social-follow-block .item-content .title .field-name-field-role {
-  font-style: italic;
-  color: #d0d0d0;
-  font-weight: normal;
-}
-.social-follow-block .item-content a {
-  color: white;
-}
-.social-follow-block .icons-social {
-  font-size: 14px;
-  display: inline-block;
-  margin-right: -130px;
-  overflow: hidden;
-  vertical-align: middle;
-  width: 130px;
-}
-.social-follow-block .icons-social a {
-  background-color: transparent;
-  color: #878785;
-  float: right;
-  margin-left: 7px;
-  width: 19px;
-  height: 21px;
-  padding: 0;
-  font-size: 1.4em;
-}
-.ie9 .social-follow-block .icons-social a, .ie8 .social-follow-block .icons-social a {
-  text-indent: 9999px;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  -o-border-radius: 0;
-  border-radius: 0;
-  height: 18px;
-  width: 9px;
-  margin-right: 5px;
-}
-.social-follow-block .icons-social a:hover {
-  color: #0ab6e8;
-}
-.social-follow-block .icons-social .usasocial-pinterest {
-  background-color: #878785;
-  color: #414141;
-  padding-top: 3px;
-  width: 21px;
-}
-.ie9 .social-follow-block .icons-social .usasocial-pinterest, .ie8 .social-follow-block .icons-social .usasocial-pinterest {
-  width: 20px;
-  height: 20px;
-  padding-top: 0;
-  background-color: transparent;
-}
-.social-follow-block .icons-social .usasocial-pinterest:hover {
-  background-color: #0ab6e8;
-  color: #414141;
-}
-.social-follow-block .icons-social .usasocial-fb {
-  margin-left: 3px;
-}
-.ie9 .social-follow-block .icons-social .usasocial-twitter, .ie8 .social-follow-block .icons-social .usasocial-twitter {
-  width: 22px;
-}
-.ie9 .social-follow-block .icons-social .usasocial-tumblr, .ie8 .social-follow-block .icons-social .usasocial-tumblr {
-  width: 12px;
-}
-.social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer,
-.social-follow-block .attachment-after .view-usa-cast.view-display-id-attachment_2 .view-footer {
-  position: relative;
-  border-top: 1px solid #4b4b4b;
-  padding: 10px 15px 7px 10px;
-  text-transform: lowercase;
-  cursor: pointer;
-  text-align: center;
-}
-.social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer:after,
-.social-follow-block .attachment-after .view-usa-cast.view-display-id-attachment_2 .view-footer:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 6px;
-  border-color: white transparent transparent transparent;
-  right: 40px;
-  position: absolute;
-  top: 18px;
-}
-.social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer.open:after,
-.social-follow-block .attachment-after .view-usa-cast.view-display-id-attachment_2 .view-footer.open:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 6px;
-  border-color: transparent transparent white transparent;
-  right: 40px;
-  position: absolute;
-  top: 14px;
-}
-.social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-footer::first-letter,
-.social-follow-block .attachment-after .view-usa-cast.view-display-id-attachment_2 .view-footer::first-letter {
-  text-transform: capitalize;
-}
-.social-follow-block .attachment-after .view-usa-shows.view-display-id-attachment_1 .view-content,
-.social-follow-block .attachment-after .view-usa-cast.view-display-id-attachment_2 .view-content {
-  display: none;
 }
 
 /* lyris */
@@ -28614,14 +28325,6 @@ input.echo-submit-text {
   padding-bottom: 0;
 }
 
-/*.echo-streamserver-controls-stream-item.echo-streamserver-controls-stream-item-plugin-PinboardVisualization.isotope-item {
-  padding: 0px;
-}
-.echo-streamserver-controls-stream-item.echo-streamserver-controls-stream-item-plugin-PinboardVisualization.isotope-item {
-  left: 130px;
-  position: absolute;
-  top: 0px;
-}*/
 .echo-streamserver-controls-stream-item-plugin-PinboardVisualization .echo-streamserver-controls-stream-item-depth-0 {
   padding: 0px;
   background-color: #ffffff;

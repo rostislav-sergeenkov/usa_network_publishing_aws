@@ -5604,2822 +5604,6 @@ body:not(.show-new-design) #topbanner {
   left: -10000px;
 }
 
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #home_page_aspot_preview,
-  .node-type-usanetwork-aspot #show_aspot_preview,
-  .node-type-usanetwork-aspot #default_aspot_preview {
-    margin: 0 auto;
-    max-width: 2500px;
-  }
-}
-.node-type-usanetwork-aspot #home_page_aspot_preview h2,
-.node-type-usanetwork-aspot #show_aspot_preview h2,
-.node-type-usanetwork-aspot #default_aspot_preview h2 {
-  color: #000000;
-  padding: 0 10px;
-}
-.node-type-usanetwork-aspot #home_page_aspot_preview .slide,
-.node-type-usanetwork-aspot #show_aspot_preview .slide {
-  position: relative;
-}
-.node-type-usanetwork-aspot #home_page_aspot_preview .aspot-violator,
-.node-type-usanetwork-aspot #show_aspot_preview .aspot-violator {
-  color: white;
-  font-size: 1.17188vw;
-  font-family: "FiraSansRegular", sans-serif;
-  line-height: 1.5;
-  letter-spacing: 0.05469vw;
-  padding: 0.23438vw 0.54688vw 0;
-  text-transform: uppercase;
-  text-align: center;
-  width: auto;
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #home_page_aspot_preview .aspot-violator,
-  .node-type-usanetwork-aspot #show_aspot_preview .aspot-violator {
-    font-size: 18.75px;
-    letter-spacing: 0.7px;
-    padding: 3px 8.75px 0;
-  }
-}
-@media (max-width: 768px) {
-  .node-type-usanetwork-aspot #home_page_aspot_preview .aspot-violator,
-  .node-type-usanetwork-aspot #show_aspot_preview .aspot-violator {
-    font-size: 1.5625vw;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #home_page_aspot_preview .aspot-violator,
-  .node-type-usanetwork-aspot #show_aspot_preview .aspot-violator {
-    font-size: 2.34375vw;
-    letter-spacing: 0.10937vw;
-    padding: 0.46875vw 1.09375vw 0;
-  }
-}
-.node-type-usanetwork-aspot #home_page_aspot_preview .aspot-violator strong, .node-type-usanetwork-aspot #home_page_aspot_preview .aspot-violator b, .node-type-usanetwork-aspot #home_page_aspot_preview .aspot-violator i,
-.node-type-usanetwork-aspot #show_aspot_preview .aspot-violator strong,
-.node-type-usanetwork-aspot #show_aspot_preview .aspot-violator b,
-.node-type-usanetwork-aspot #show_aspot_preview .aspot-violator i {
-  font-family: "FiraSansMedium", sans-serif;
-}
-.node-type-usanetwork-aspot #show_aspot_preview:not(.show-new-design) .slide {
-  height: 42.8vw;
-  width: 77.77778%;
-}
-@media (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview:not(.show-new-design) .slide {
-    height: auto;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview:not(.show-new-design) .slide {
-    width: 100%;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design {
-  background: none !important;
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .slide {
-  position: relative;
-  height: 40.85938vw;
-  width: 75.6%;
-  max-width: 1179px;
-  z-index: 1;
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .slide {
-    height: 653.75px;
-  }
-}
-@media (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .slide {
-    padding-top: 56.25%;
-    height: 0;
-    position: relative;
-    width: 100%;
-  }
-}
-@media (min-width: 769px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .wrp, .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .node, .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .asset-img, .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .asset-img img {
-    height: 100%;
-    width: 100%;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .wrp {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 2;
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap {
-  position: static;
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-draggable-element {
-  box-sizing: border-box;
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix, .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .start {
-  color: #ffffff;
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 1.1vw;
-  line-height: 1;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-shadow: 0 0.1em rgba(0, 0, 0, 0.5);
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix, .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .start {
-    font-size: 17.6px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix, .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .start {
-    font-size: 2.7vw;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix p, .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .start p {
-  margin: 0;
-  text-shadow: 0 0.1em rgba(0, 0, 0, 0.5);
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-1 {
-    font-size: 1.7625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-1 {
-    font-size: 0.63125vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-1 {
-    font-size: 15.78125px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-2 {
-    font-size: 1.91875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-2 {
-    font-size: 0.70938vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-2 {
-    font-size: 17.73438px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-3 {
-    font-size: 2.075vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-3 {
-    font-size: 0.7875vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-3 {
-    font-size: 19.6875px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-4 {
-    font-size: 2.23125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-4 {
-    font-size: 0.86563vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-4 {
-    font-size: 21.64063px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-5 {
-    font-size: 2.3875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-5 {
-    font-size: 0.94375vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-5 {
-    font-size: 23.59375px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-6 {
-    font-size: 2.54375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-6 {
-    font-size: 1.02187vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-6 {
-    font-size: 25.54688px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-7 {
-    font-size: 2.7vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-7 {
-    font-size: 1.1vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-7 {
-    font-size: 27.5px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-8 {
-    font-size: 2.85625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-8 {
-    font-size: 1.17812vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-8 {
-    font-size: 29.45313px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-9 {
-    font-size: 3.0125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-9 {
-    font-size: 1.25625vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-9 {
-    font-size: 31.40625px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-10 {
-    font-size: 3.16875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-10 {
-    font-size: 1.33438vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-10 {
-    font-size: 33.35938px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-11 {
-    font-size: 3.325vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-11 {
-    font-size: 1.4125vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-11 {
-    font-size: 35.3125px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-12 {
-    font-size: 3.48125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-12 {
-    font-size: 1.49063vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-12 {
-    font-size: 37.26563px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-13 {
-    font-size: 3.6375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-13 {
-    font-size: 1.56875vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-13 {
-    font-size: 39.21875px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-1 {
-    font-size: 0.66875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-1 {
-    font-size: 0.08438vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-1 {
-    font-size: 0.11391vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-1 {
-    font-size: 1.35px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-2 {
-    font-size: 0.825vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-2 {
-    font-size: 0.1625vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-2 {
-    font-size: 0.21938vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-2 {
-    font-size: 2.6px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-3 {
-    font-size: 0.98125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-3 {
-    font-size: 0.24063vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-3 {
-    font-size: 0.32484vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-3 {
-    font-size: 3.85px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-4 {
-    font-size: 1.1375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-4 {
-    font-size: 0.31875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-4 {
-    font-size: 0.43031vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-4 {
-    font-size: 5.1px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-5 {
-    font-size: 1.29375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-5 {
-    font-size: 0.39688vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-5 {
-    font-size: 0.53578vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-5 {
-    font-size: 6.35px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-6 {
-    font-size: 1.45vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-6 {
-    font-size: 0.475vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-6 {
-    font-size: 0.64125vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-6 {
-    font-size: 7.6px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-7 {
-    font-size: 1.60625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-7 {
-    font-size: 0.55313vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-7 {
-    font-size: 0.74672vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-7 {
-    font-size: 8.85px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-8 {
-    font-size: 1.7625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-8 {
-    font-size: 0.63125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-8 {
-    font-size: 0.85219vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-8 {
-    font-size: 10.1px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-9 {
-    font-size: 1.91875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-9 {
-    font-size: 0.70938vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-9 {
-    font-size: 0.95766vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-9 {
-    font-size: 11.35px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-10 {
-    font-size: 2.075vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-10 {
-    font-size: 0.7875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-10 {
-    font-size: 1.06312vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-10 {
-    font-size: 12.6px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-11 {
-    font-size: 2.23125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-11 {
-    font-size: 0.86563vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-11 {
-    font-size: 1.16859vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-11 {
-    font-size: 13.85px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-12 {
-    font-size: 2.3875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-12 {
-    font-size: 0.94375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-12 {
-    font-size: 1.27406vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-12 {
-    font-size: 15.1px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-13 {
-    font-size: 2.54375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-13 {
-    font-size: 1.02187vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-13 {
-    font-size: 1.37953vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-13 {
-    font-size: 16.35px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-14 {
-    font-size: 2.7vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-14 {
-    font-size: 1.1vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-14 {
-    font-size: 1.485vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-14 {
-    font-size: 17.6px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-15 {
-    font-size: 2.85625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-15 {
-    font-size: 1.17812vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-15 {
-    font-size: 1.59047vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-15 {
-    font-size: 18.85px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-16 {
-    font-size: 3.0125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-16 {
-    font-size: 1.25625vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-16 {
-    font-size: 1.69594vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-16 {
-    font-size: 20.1px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-17 {
-    font-size: 3.16875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-17 {
-    font-size: 1.33438vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-17 {
-    font-size: 1.80141vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-17 {
-    font-size: 21.35px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-18 {
-    font-size: 3.325vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-18 {
-    font-size: 1.4125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-18 {
-    font-size: 1.90687vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-18 {
-    font-size: 22.6px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-19 {
-    font-size: 3.48125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-19 {
-    font-size: 1.49063vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-19 {
-    font-size: 2.01234vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-19 {
-    font-size: 23.85px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-20 {
-    font-size: 3.6375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-20 {
-    font-size: 1.56875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-20 {
-    font-size: 2.11781vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-20 {
-    font-size: 25.1px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-21 {
-    font-size: 3.79375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-21 {
-    font-size: 1.64688vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-21 {
-    font-size: 2.22328vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-21 {
-    font-size: 26.35px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-22 {
-    font-size: 3.95vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-22 {
-    font-size: 1.725vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-22 {
-    font-size: 2.32875vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-22 {
-    font-size: 27.6px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-23 {
-    font-size: 4.10625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-23 {
-    font-size: 1.80313vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-23 {
-    font-size: 2.43422vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-23 {
-    font-size: 28.85px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-24 {
-    font-size: 4.2625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-24 {
-    font-size: 1.88125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-24 {
-    font-size: 2.53969vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-24 {
-    font-size: 30.1px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-25 {
-    font-size: 4.41875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-25 {
-    font-size: 1.95938vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-25 {
-    font-size: 2.64516vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-25 {
-    font-size: 31.35px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-26 {
-    font-size: 4.575vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-26 {
-    font-size: 2.0375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-26 {
-    font-size: 2.75063vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-26 {
-    font-size: 32.6px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-27 {
-    font-size: 4.73125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-27 {
-    font-size: 2.11562vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-27 {
-    font-size: 2.85609vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-27 {
-    font-size: 33.85px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-28 {
-    font-size: 4.8875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-28 {
-    font-size: 2.19375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-28 {
-    font-size: 2.96156vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-28 {
-    font-size: 35.1px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-29 {
-    font-size: 5.04375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-29 {
-    font-size: 2.27187vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-29 {
-    font-size: 3.06703vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-29 {
-    font-size: 36.35px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-30 {
-    font-size: 5.2vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-30 {
-    font-size: 2.35vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-30 {
-    font-size: 3.1725vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-30 {
-    font-size: 37.6px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-mobile-31 {
-    font-size: 5.35625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-31 {
-    font-size: 2.42812vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-31 {
-    font-size: 3.27797vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-show-desktop-31 {
-    font-size: 38.85px;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title {
-  color: #ffffff;
-  font-family: "FiraSansRegular", sans-serif;
-  font-size: 6vw;
-  letter-spacing: 0.04em;
-  line-height: 0.98;
-  margin: 0;
-  text-shadow: 0 0.04em rgba(0, 0, 0, 0.5);
-  text-transform: uppercase;
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title {
-    font-size: 96px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title {
-    font-size: 10.4vw;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-1 {
-    font-size: 6.65vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-1 {
-    font-size: 4.125vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-1 {
-    font-size: 103.125px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-2 {
-    font-size: 7.275vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-2 {
-    font-size: 4.4375vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-2 {
-    font-size: 110.9375px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-3 {
-    font-size: 7.9vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-3 {
-    font-size: 4.75vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-3 {
-    font-size: 118.75px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-4 {
-    font-size: 8.525vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-4 {
-    font-size: 5.0625vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-4 {
-    font-size: 126.5625px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-5 {
-    font-size: 9.15vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-5 {
-    font-size: 5.375vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-5 {
-    font-size: 134.375px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-6 {
-    font-size: 9.775vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-6 {
-    font-size: 5.6875vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-6 {
-    font-size: 142.1875px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-7 {
-    font-size: 10.4vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-7 {
-    font-size: 6.0vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-7 {
-    font-size: 150px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-8 {
-    font-size: 11.025vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-8 {
-    font-size: 6.3125vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-8 {
-    font-size: 157.8125px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-9 {
-    font-size: 11.65vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-9 {
-    font-size: 6.625vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-9 {
-    font-size: 165.625px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-10 {
-    font-size: 12.275vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-10 {
-    font-size: 6.9375vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-10 {
-    font-size: 173.4375px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-11 {
-    font-size: 12.9vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-11 {
-    font-size: 7.25vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-11 {
-    font-size: 181.25px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-12 {
-    font-size: 13.525vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-12 {
-    font-size: 7.5625vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-12 {
-    font-size: 189.0625px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-13 {
-    font-size: 14.15vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-13 {
-    font-size: 7.875vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-13 {
-    font-size: 196.875px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-1 {
-    font-size: 2.275vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-1 {
-    font-size: 1.9375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-1 {
-    font-size: 2.61563vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-1 {
-    font-size: 31px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-2 {
-    font-size: 2.9vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-2 {
-    font-size: 2.25vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-2 {
-    font-size: 3.0375vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-2 {
-    font-size: 36px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-3 {
-    font-size: 3.525vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-3 {
-    font-size: 2.5625vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-3 {
-    font-size: 3.45938vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-3 {
-    font-size: 41px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-4 {
-    font-size: 4.15vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-4 {
-    font-size: 2.875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-4 {
-    font-size: 3.88125vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-4 {
-    font-size: 46px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-5 {
-    font-size: 4.775vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-5 {
-    font-size: 3.1875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-5 {
-    font-size: 4.30312vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-5 {
-    font-size: 51px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-6 {
-    font-size: 5.4vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-6 {
-    font-size: 3.5vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-6 {
-    font-size: 4.725vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-6 {
-    font-size: 56px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-7 {
-    font-size: 6.025vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-7 {
-    font-size: 3.8125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-7 {
-    font-size: 5.14687vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-7 {
-    font-size: 61px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-8 {
-    font-size: 6.65vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-8 {
-    font-size: 4.125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-8 {
-    font-size: 5.56875vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-8 {
-    font-size: 66px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-9 {
-    font-size: 7.275vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-9 {
-    font-size: 4.4375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-9 {
-    font-size: 5.99063vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-9 {
-    font-size: 71px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-10 {
-    font-size: 7.9vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-10 {
-    font-size: 4.75vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-10 {
-    font-size: 6.4125vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-10 {
-    font-size: 76px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-11 {
-    font-size: 8.525vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-11 {
-    font-size: 5.0625vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-11 {
-    font-size: 6.83438vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-11 {
-    font-size: 81px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-12 {
-    font-size: 9.15vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-12 {
-    font-size: 5.375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-12 {
-    font-size: 7.25625vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-12 {
-    font-size: 86px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-13 {
-    font-size: 9.775vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-13 {
-    font-size: 5.6875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-13 {
-    font-size: 7.67813vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-13 {
-    font-size: 91px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-14 {
-    font-size: 10.4vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-14 {
-    font-size: 6.0vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-14 {
-    font-size: 8.1vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-14 {
-    font-size: 96px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-15 {
-    font-size: 11.025vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-15 {
-    font-size: 6.3125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-15 {
-    font-size: 8.52188vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-15 {
-    font-size: 101px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-16 {
-    font-size: 11.65vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-16 {
-    font-size: 6.625vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-16 {
-    font-size: 8.94375vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-16 {
-    font-size: 106px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-17 {
-    font-size: 12.275vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-17 {
-    font-size: 6.9375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-17 {
-    font-size: 9.36563vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-17 {
-    font-size: 111px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-18 {
-    font-size: 12.9vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-18 {
-    font-size: 7.25vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-18 {
-    font-size: 9.7875vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-18 {
-    font-size: 116px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-19 {
-    font-size: 13.525vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-19 {
-    font-size: 7.5625vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-19 {
-    font-size: 10.20938vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-19 {
-    font-size: 121px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-20 {
-    font-size: 14.15vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-20 {
-    font-size: 7.875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-20 {
-    font-size: 10.63125vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-20 {
-    font-size: 126px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-21 {
-    font-size: 14.775vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-21 {
-    font-size: 8.1875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-21 {
-    font-size: 11.05313vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-21 {
-    font-size: 131px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-22 {
-    font-size: 15.4vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-22 {
-    font-size: 8.5vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-22 {
-    font-size: 11.475vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-22 {
-    font-size: 136px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-23 {
-    font-size: 16.025vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-23 {
-    font-size: 8.8125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-23 {
-    font-size: 11.89688vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-23 {
-    font-size: 141px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-24 {
-    font-size: 16.65vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-24 {
-    font-size: 9.125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-24 {
-    font-size: 12.31875vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-24 {
-    font-size: 146px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-25 {
-    font-size: 17.275vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-25 {
-    font-size: 9.4375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-25 {
-    font-size: 12.74063vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-25 {
-    font-size: 151px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-26 {
-    font-size: 17.9vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-26 {
-    font-size: 9.75vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-26 {
-    font-size: 13.1625vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-26 {
-    font-size: 156px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-27 {
-    font-size: 18.525vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-27 {
-    font-size: 10.0625vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-27 {
-    font-size: 13.58438vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-27 {
-    font-size: 161px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-28 {
-    font-size: 19.15vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-28 {
-    font-size: 10.375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-28 {
-    font-size: 14.00625vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-28 {
-    font-size: 166px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-29 {
-    font-size: 19.775vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-29 {
-    font-size: 10.6875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-29 {
-    font-size: 14.42813vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-29 {
-    font-size: 171px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-30 {
-    font-size: 20.4vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-30 {
-    font-size: 11vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-30 {
-    font-size: 14.85vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-30 {
-    font-size: 176px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-mobile-31 {
-    font-size: 21.025vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-31 {
-    font-size: 11.3125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-31 {
-    font-size: 15.27188vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-show-desktop-31 {
-    font-size: 181px;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title p {
-  margin: 0;
-  text-shadow: 0 0.04em rgba(0, 0, 0, 0.5);
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description {
-  color: #ffffff;
-  font-family: "FiraSansRegular", sans-serif;
-  font-size: 1.875vw;
-  letter-spacing: 0.05em;
-  line-height: 1;
-  margin: 0;
-  text-transform: none;
-  text-shadow: 0 0.1em rgba(0, 0, 0, 0.5);
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description {
-    font-size: 30px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description {
-    font-size: 3.125vw;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-1 {
-    font-size: 1.71875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-1 {
-    font-size: 1.17188vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-1 {
-    font-size: 29.29688px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-2 {
-    font-size: 1.95313vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-2 {
-    font-size: 1.28906vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-2 {
-    font-size: 32.22656px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-3 {
-    font-size: 2.1875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-3 {
-    font-size: 1.40625vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-3 {
-    font-size: 35.15625px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-4 {
-    font-size: 2.42188vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-4 {
-    font-size: 1.52344vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-4 {
-    font-size: 38.08594px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-5 {
-    font-size: 2.65625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-5 {
-    font-size: 1.64063vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-5 {
-    font-size: 41.01563px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-6 {
-    font-size: 2.89063vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-6 {
-    font-size: 1.75781vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-6 {
-    font-size: 43.94531px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-7 {
-    font-size: 3.125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-7 {
-    font-size: 1.875vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-7 {
-    font-size: 46.875px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-8 {
-    font-size: 3.35938vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-8 {
-    font-size: 1.99219vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-8 {
-    font-size: 49.80469px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-9 {
-    font-size: 3.59375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-9 {
-    font-size: 2.10938vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-9 {
-    font-size: 52.73438px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-10 {
-    font-size: 3.82813vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-10 {
-    font-size: 2.22656vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-10 {
-    font-size: 55.66406px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-11 {
-    font-size: 4.0625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-11 {
-    font-size: 2.34375vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-11 {
-    font-size: 58.59375px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-12 {
-    font-size: 4.29688vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-12 {
-    font-size: 2.46094vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-12 {
-    font-size: 61.52344px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-13 {
-    font-size: 4.53125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-13 {
-    font-size: 2.57813vw;
-  }
-}
-@media (min-width: 2500px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-13 {
-    font-size: 64.45313px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-1 {
-    font-size: 0.07813vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-1 {
-    font-size: 0.35156vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-1 {
-    font-size: 0.47461vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-1 {
-    font-size: 5.625px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-2 {
-    font-size: 0.3125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-2 {
-    font-size: 0.46875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-2 {
-    font-size: 0.63281vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-2 {
-    font-size: 7.5px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-3 {
-    font-size: 0.54688vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-3 {
-    font-size: 0.58594vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-3 {
-    font-size: 0.79102vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-3 {
-    font-size: 9.375px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-4 {
-    font-size: 0.78125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-4 {
-    font-size: 0.70313vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-4 {
-    font-size: 0.94922vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-4 {
-    font-size: 11.25px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-5 {
-    font-size: 1.01563vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-5 {
-    font-size: 0.82031vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-5 {
-    font-size: 1.10742vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-5 {
-    font-size: 13.125px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-6 {
-    font-size: 1.25vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-6 {
-    font-size: 0.9375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-6 {
-    font-size: 1.26563vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-6 {
-    font-size: 15px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-7 {
-    font-size: 1.48438vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-7 {
-    font-size: 1.05469vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-7 {
-    font-size: 1.42383vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-7 {
-    font-size: 16.875px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-8 {
-    font-size: 1.71875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-8 {
-    font-size: 1.17188vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-8 {
-    font-size: 1.58203vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-8 {
-    font-size: 18.75px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-9 {
-    font-size: 1.95313vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-9 {
-    font-size: 1.28906vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-9 {
-    font-size: 1.74023vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-9 {
-    font-size: 20.625px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-10 {
-    font-size: 2.1875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-10 {
-    font-size: 1.40625vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-10 {
-    font-size: 1.89844vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-10 {
-    font-size: 22.5px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-11 {
-    font-size: 2.42188vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-11 {
-    font-size: 1.52344vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-11 {
-    font-size: 2.05664vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-11 {
-    font-size: 24.375px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-12 {
-    font-size: 2.65625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-12 {
-    font-size: 1.64063vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-12 {
-    font-size: 2.21484vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-12 {
-    font-size: 26.25px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-13 {
-    font-size: 2.89063vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-13 {
-    font-size: 1.75781vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-13 {
-    font-size: 2.37305vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-13 {
-    font-size: 28.125px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-14 {
-    font-size: 3.125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-14 {
-    font-size: 1.875vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-14 {
-    font-size: 2.53125vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-14 {
-    font-size: 30px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-15 {
-    font-size: 3.35938vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-15 {
-    font-size: 1.99219vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-15 {
-    font-size: 2.68945vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-15 {
-    font-size: 31.875px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-16 {
-    font-size: 3.59375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-16 {
-    font-size: 2.10938vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-16 {
-    font-size: 2.84766vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-16 {
-    font-size: 33.75px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-17 {
-    font-size: 3.82813vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-17 {
-    font-size: 2.22656vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-17 {
-    font-size: 3.00586vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-17 {
-    font-size: 35.625px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-18 {
-    font-size: 4.0625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-18 {
-    font-size: 2.34375vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-18 {
-    font-size: 3.16406vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-18 {
-    font-size: 37.5px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-19 {
-    font-size: 4.29688vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-19 {
-    font-size: 2.46094vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-19 {
-    font-size: 3.32227vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-19 {
-    font-size: 39.375px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-20 {
-    font-size: 4.53125vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-20 {
-    font-size: 2.57813vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-20 {
-    font-size: 3.48047vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-20 {
-    font-size: 41.25px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-21 {
-    font-size: 4.76563vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-21 {
-    font-size: 2.69531vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-21 {
-    font-size: 3.63867vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-21 {
-    font-size: 43.125px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-22 {
-    font-size: 5vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-22 {
-    font-size: 2.8125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-22 {
-    font-size: 3.79688vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-22 {
-    font-size: 45px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-23 {
-    font-size: 5.23438vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-23 {
-    font-size: 2.92969vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-23 {
-    font-size: 3.95508vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-23 {
-    font-size: 46.875px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-24 {
-    font-size: 5.46875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-24 {
-    font-size: 3.04688vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-24 {
-    font-size: 4.11328vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-24 {
-    font-size: 48.75px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-25 {
-    font-size: 5.70313vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-25 {
-    font-size: 3.16406vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-25 {
-    font-size: 4.27148vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-25 {
-    font-size: 50.625px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-26 {
-    font-size: 5.9375vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-26 {
-    font-size: 3.28125vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-26 {
-    font-size: 4.42969vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-26 {
-    font-size: 52.5px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-27 {
-    font-size: 6.17188vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-27 {
-    font-size: 3.39844vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-27 {
-    font-size: 4.58789vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-27 {
-    font-size: 54.375px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-28 {
-    font-size: 6.40625vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-28 {
-    font-size: 3.51563vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-28 {
-    font-size: 4.74609vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-28 {
-    font-size: 56.25px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-29 {
-    font-size: 6.64063vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-29 {
-    font-size: 3.63281vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-29 {
-    font-size: 4.9043vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-29 {
-    font-size: 58.125px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-30 {
-    font-size: 6.875vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-30 {
-    font-size: 3.75vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-30 {
-    font-size: 5.0625vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-30 {
-    font-size: 60px;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-mobile-31 {
-    font-size: 7.10938vw;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-31 {
-    font-size: 3.86719vw;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-31 {
-    font-size: 5.2207vw !important;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-show-desktop-31 {
-    font-size: 61.875px;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description p {
-  margin: 0;
-  text-shadow: 0 0.1em rgba(0, 0, 0, 0.5);
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link {
-  position: relative;
-  text-shadow: 0 0.1em rgba(0, 0, 0, 0.5);
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link:not(.cta_button_0) {
-    display: none !important;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link:not(.cta_button_0) a {
-  background: none !important;
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a {
-  font-size: 1.79688vw;
-  padding: 0 2.10938vw 0 0;
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a {
-    font-size: 28.75px;
-    padding: 0 33.75px 0 0;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a {
-    font-size: 2.42188vw;
-    padding: 0 2.84505vw 0 0;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a {
-    font-size: 3.59375vw;
-    padding: 0 4.21875vw 0 0;
-  }
-}
-@media (min-width: 641px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a:before {
-    border: 1px dotted currentColor;
-    bottom: -0.82812vw;
-    color: inherit;
-    content: '';
-    display: block;
-    left: 0;
-    position: absolute;
-    width: 40%;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a:before {
-    bottom: -1.11458vw;
-  }
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a:before {
-    bottom: -13.25px;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a:after {
-  color: inherit;
-  content: "\e608";
-  display: block;
-  font-family: "ico-font";
-  font-size: 1.40625vw;
-  line-height: 1;
-  position: absolute;
-  margin-top: -0.70313vw;
-  right: 0;
-  top: 50%;
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a:after {
-    font-size: 22.5px;
-    margin-top: -11.25px;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a:after {
-    font-size: 1.90104vw;
-    margin-top: -0.95052vw;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a:after {
-    font-size: 2.8125vw;
-    margin-top: -1.40625vw;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link a {
-  background: none;
-  color: #aaaaaa;
-  display: block;
-  font-family: "FiraSansRegular", sans-serif;
-  font-size: 1.25vw;
-  letter-spacing: 0.23em;
-  line-height: 2.1;
-  outline: none;
-  padding: 0 1.40625vw 0 0;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link a {
-    font-size: 20px;
-    padding: 0 22.5px 0 0;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link a {
-    font-size: 1.84896vw;
-    padding-right: 1.69271vw;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link a {
-    font-size: 2.5vw;
-    padding: 0 2.8125vw 0 0;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link a span:after {
-  color: inherit;
-  content: "\e608";
-  display: block;
-  font-family: "ico-font";
-  font-size: 0.9375vw;
-  line-height: 1;
-  position: absolute;
-  margin-top: -0.46875vw;
-  right: 0;
-  top: 50%;
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link a span:after {
-    font-size: 15px;
-    margin-top: -7.5px;
-  }
-}
-@media (min-width: 641px) and (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link a span:after {
-    font-size: 1.26302vw;
-    margin-top: -0.79948vw;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link a span:after {
-    font-size: 1.875vw;
-    margin-top: -0.9375vw;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-violator {
-  color: white;
-  font-size: 1.17188vw;
-  font-family: "FiraSansRegular", sans-serif;
-  line-height: 1.5;
-  letter-spacing: 0.05469vw;
-  padding: 0.23438vw 0.54688vw 0;
-  text-transform: uppercase;
-  text-align: center;
-  width: auto;
-}
-@media (min-width: 1601px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-violator {
-    font-size: 18.75px;
-    letter-spacing: 0.7px;
-    padding: 3px 8.75px 0;
-  }
-}
-@media (max-width: 768px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-violator {
-    font-size: 1.5625vw;
-  }
-}
-@media (max-width: 640px) {
-  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-violator {
-    font-size: 2.34375vw;
-    letter-spacing: 0.10937vw;
-    padding: 0.46875vw 1.09375vw 0;
-  }
-}
-.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-violator strong, .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-violator b, .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-violator i {
-  font-family: "FiraSansMedium", sans-serif;
-}
-.node-type-usanetwork-aspot #default_aspot_preview {
-  max-width: 1245px;
-}
-
 /* Slider */
 .slick-slider {
   position: relative;
@@ -8508,6 +5692,1811 @@ body:not(.show-new-design) #topbanner {
   border: 1px solid transparent;
 }
 
+.field-type-gigya-sharebar,
+.node-type-timeline-gallery .timeline-gigya-share {
+  margin-bottom: 20px;
+}
+.field-type-gigya-sharebar .gig-button-container td > div,
+.field-type-gigya-sharebar .gig-button-container td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
+  width: 32px !important;
+  height: 32px !important;
+  background-image: url("../images/social_chatter_icons.png");
+  background-repeat: none;
+}
+@media (max-width: 1024px) {
+  .field-type-gigya-sharebar .gig-button-container td > div,
+  .field-type-gigya-sharebar .gig-button-container td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
+    width: 26px !important;
+    height: 26px !important;
+  }
+}
+@media (max-width: 709px) {
+  .field-type-gigya-sharebar .gig-button-container td > div,
+  .field-type-gigya-sharebar .gig-button-container td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+@media (max-width: 480px) {
+  .field-type-gigya-sharebar .gig-button-container td > div,
+  .field-type-gigya-sharebar .gig-button-container td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
+    width: 22px !important;
+    height: 22px !important;
+  }
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div {
+  background-position: 1px -2908px !important;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div:hover {
+  background-position: 1px -2948px !important;
+}
+@media (max-width: 709px) {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div {
+    background-position: 1px -3422px !important;
+  }
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div:hover {
+    background-position: 1px -3452px !important;
+  }
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div {
+  background-position: 1px -2750px !important;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div:hover {
+  background-position: 1px -2790px !important;
+}
+@media (max-width: 709px) {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div {
+    background-position: 1px -3304px !important;
+  }
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div:hover {
+    background-position: 1px -3334px !important;
+  }
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div {
+  background-position: 1px -3225px !important;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div:hover {
+  background-position: 1px -3265px !important;
+}
+@media (max-width: 709px) {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div {
+    background-position: 1px -3660px !important;
+  }
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div:hover {
+    background-position: 1px -3690px !important;
+  }
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div {
+  background-position: 1px -3067px !important;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div:hover {
+  background-position: 1px -3107px !important;
+}
+@media (max-width: 709px) {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div {
+    background-position: 1px -3542px !important;
+  }
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div:hover {
+    background-position: 1px -3572px !important;
+  }
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div {
+  background-position: 5px -3717px !important;
+}
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div:hover {
+  background-position: 5px -3747px !important;
+}
+@media (max-width: 709px) {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div {
+    background-position: 4px -3779px !important;
+  }
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div:hover {
+    background-position: 4px -3804px !important;
+  }
+}
+
+body div.gig-simpleShareUI {
+  border-color: #414141;
+}
+body div.gig-simpleShareUI div.gig-simpleShareUI-inner {
+  background-color: #2D2D2D;
+  border-color: #000;
+}
+body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-caption {
+  border-bottom: 1px solid #000;
+}
+body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-caption,
+body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-caption-text {
+  background-color: #1C1C1C;
+  color: #A7A6A6;
+}
+body div.gig-simpleShareUI div.gig-simpleShareUI-inner .gig-simpleShareUI-buttonText {
+  color: #ffffff;
+}
+
+/*
+== malihu jquery custom scrollbar plugin ==
+Plugin URI: http://manos.malihu.gr/jquery-custom-content-scroller
+*/
+/*
+CONTENTS:
+	1. BASIC STYLE - Plugin's basic/essential CSS properties (normally, should not be edited).
+	2. VERTICAL SCROLLBAR - Positioning and dimensions of vertical scrollbar.
+	3. HORIZONTAL SCROLLBAR - Positioning and dimensions of horizontal scrollbar.
+	4. VERTICAL AND HORIZONTAL SCROLLBARS - Positioning and dimensions of 2-axis scrollbars.
+	5. TRANSITIONS - CSS3 transitions for hover events, auto-expanded and auto-hidden scrollbars.
+	6. SCROLLBAR COLORS, OPACITY AND BACKGROUNDS
+		6.1 THEMES - Scrollbar colors, opacity, dimensions, backgrounds etc. via ready-to-use themes.
+*/
+/*
+------------------------------------------------------------------------------------------------------------------------
+1. BASIC STYLE
+------------------------------------------------------------------------------------------------------------------------
+*/
+.mCustomScrollbar {
+  -ms-touch-action: none;
+  touch-action: none;
+  /* MSPointer events - direct all pointer events to js */
+}
+
+.mCustomScrollbar.mCS_no_scrollbar {
+  -ms-touch-action: auto;
+  touch-action: auto;
+}
+
+.mCustomScrollBox {
+  /* contains plugin's markup */
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  max-width: 100%;
+  outline: none;
+  direction: ltr;
+}
+
+.mCSB_container {
+  /* contains the original content */
+  overflow: hidden;
+  width: auto;
+  height: auto;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+2. VERTICAL SCROLLBAR
+y-axis
+------------------------------------------------------------------------------------------------------------------------
+*/
+.mCSB_inside > .mCSB_container {
+  margin-right: 0;
+}
+
+.mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden {
+  margin-right: 0;
+}
+
+/* non-visible scrollbar */
+.mCS-dir-rtl > .mCSB_inside > .mCSB_container {
+  /* RTL direction/left-side scrollbar */
+  margin-right: 0;
+  margin-left: 30px;
+}
+
+.mCS-dir-rtl > .mCSB_inside > .mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden {
+  margin-left: 0;
+}
+
+/* RTL direction/left-side scrollbar */
+.mCSB_scrollTools {
+  /* contains scrollbar markup (draggable element, dragger rail, buttons etc.) */
+  position: absolute;
+  width: 16px;
+  height: auto;
+  left: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.mCSB_outside + .mCSB_scrollTools {
+  right: -26px;
+}
+
+/* scrollbar position: outside */
+.mCS-dir-rtl > .mCSB_inside > .mCSB_scrollTools,
+.mCS-dir-rtl > .mCSB_outside + .mCSB_scrollTools {
+  /* RTL direction/left-side scrollbar */
+  right: auto;
+  left: 0;
+}
+
+.mCS-dir-rtl > .mCSB_outside + .mCSB_scrollTools {
+  left: -26px;
+}
+
+/* RTL direction/left-side scrollbar (scrollbar position: outside) */
+.mCSB_scrollTools .mCSB_draggerContainer {
+  /* contains the draggable element and dragger rail markup */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: auto;
+}
+
+.mCSB_scrollTools a + .mCSB_draggerContainer {
+  margin: 20px 0;
+}
+
+.mCSB_scrollTools .mCSB_draggerRail {
+  width: 2px;
+  height: 100%;
+  margin: 0 auto;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+}
+
+.mCSB_scrollTools .mCSB_dragger {
+  /* the draggable element */
+  cursor: pointer;
+  width: 100%;
+  height: 30px;
+  /* minimum dragger height */
+  z-index: 1;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  /* the dragger element */
+  position: relative;
+  width: 4px;
+  height: 100%;
+  margin: 0 auto;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar {
+  width: 12px;
+  /* auto-expanded scrollbar */
+}
+
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  width: 8px;
+  /* auto-expanded scrollbar */
+}
+
+.mCSB_scrollTools .mCSB_buttonUp,
+.mCSB_scrollTools .mCSB_buttonDown {
+  display: block;
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.mCSB_scrollTools .mCSB_buttonDown {
+  bottom: 0;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+3. HORIZONTAL SCROLLBAR
+x-axis
+------------------------------------------------------------------------------------------------------------------------
+*/
+.mCSB_horizontal.mCSB_inside > .mCSB_container {
+  margin-right: 0;
+  margin-bottom: 30px;
+}
+
+.mCSB_horizontal.mCSB_outside > .mCSB_container {
+  min-height: 100%;
+}
+
+.mCSB_horizontal > .mCSB_container.mCS_no_scrollbar_x.mCS_x_hidden {
+  margin-bottom: 0;
+}
+
+/* non-visible scrollbar */
+.mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  width: auto;
+  height: 16px;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.mCustomScrollBox + .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.mCustomScrollBox + .mCSB_scrollTools + .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  bottom: -26px;
+}
+
+/* scrollbar position: outside */
+.mCSB_scrollTools.mCSB_scrollTools_horizontal a + .mCSB_draggerContainer {
+  margin: 0 20px;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+  height: 2px;
+  margin: 7px 0;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger {
+  width: 30px;
+  /* minimum dragger width */
+  height: 100%;
+  left: 0;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  width: 100%;
+  height: 4px;
+  margin: 6px auto;
+}
+
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar {
+  height: 12px;
+  /* auto-expanded scrollbar */
+  margin: 2px auto;
+}
+
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  height: 8px;
+  /* auto-expanded scrollbar */
+  margin: 4px 0;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft,
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft {
+  left: 0;
+}
+
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight {
+  right: 0;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+4. VERTICAL AND HORIZONTAL SCROLLBARS
+yx-axis
+------------------------------------------------------------------------------------------------------------------------
+*/
+.mCSB_container_wrapper {
+  position: absolute;
+  height: auto;
+  width: auto;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.mCSB_container_wrapper > .mCSB_container {
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+
+.mCSB_vertical_horizontal > .mCSB_scrollTools.mCSB_scrollTools_vertical {
+  bottom: 20px;
+}
+
+.mCSB_vertical_horizontal > .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  right: 20px;
+}
+
+/* non-visible horizontal scrollbar */
+.mCSB_container_wrapper.mCS_no_scrollbar_x.mCS_x_hidden + .mCSB_scrollTools.mCSB_scrollTools_vertical {
+  bottom: 0;
+}
+
+/* non-visible vertical scrollbar/RTL direction/left-side scrollbar */
+.mCSB_container_wrapper.mCS_no_scrollbar_y.mCS_y_hidden + .mCSB_scrollTools ~ .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.mCS-dir-rtl > .mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  right: 0;
+}
+
+/* RTL direction/left-side scrollbar */
+.mCS-dir-rtl > .mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  left: 20px;
+}
+
+/* non-visible scrollbar/RTL direction/left-side scrollbar */
+.mCS-dir-rtl > .mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_container_wrapper.mCS_no_scrollbar_y.mCS_y_hidden + .mCSB_scrollTools ~ .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  left: 0;
+}
+
+.mCS-dir-rtl > .mCSB_inside > .mCSB_container_wrapper {
+  /* RTL direction/left-side scrollbar */
+  margin-right: 0;
+  margin-left: 30px;
+}
+
+.mCSB_container_wrapper.mCS_no_scrollbar_y.mCS_y_hidden > .mCSB_container {
+  padding-right: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.mCSB_container_wrapper.mCS_no_scrollbar_x.mCS_x_hidden > .mCSB_container {
+  padding-bottom: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_container_wrapper.mCS_no_scrollbar_y.mCS_y_hidden {
+  margin-right: 0;
+  /* non-visible scrollbar */
+  margin-left: 0;
+}
+
+/* non-visible horizontal scrollbar */
+.mCustomScrollBox.mCSB_vertical_horizontal.mCSB_inside > .mCSB_container_wrapper.mCS_no_scrollbar_x.mCS_x_hidden {
+  margin-bottom: 0;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+5. TRANSITIONS
+------------------------------------------------------------------------------------------------------------------------
+*/
+.mCSB_scrollTools,
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_buttonUp,
+.mCSB_scrollTools .mCSB_buttonDown,
+.mCSB_scrollTools .mCSB_buttonLeft,
+.mCSB_scrollTools .mCSB_buttonRight {
+  -webkit-transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+  -o-transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+  transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger_bar,
+.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerRail,
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger_bar,
+.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerRail {
+  -webkit-transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
+  -moz-transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
+  -o-transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
+  transition: width .2s ease-out .2s, height .2s ease-out .2s, margin-left .2s ease-out .2s, margin-right .2s ease-out .2s, margin-top .2s ease-out .2s, margin-bottom .2s ease-out .2s, opacity .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+6. SCROLLBAR COLORS, OPACITY AND BACKGROUNDS
+------------------------------------------------------------------------------------------------------------------------
+*/
+/*
+----------------------------------------
+6.1 THEMES
+----------------------------------------
+*/
+/* default theme ("light") */
+.mCSB_scrollTools {
+  opacity: 0.75;
+  filter: "alpha(opacity=75)";
+  -ms-filter: "alpha(opacity=75)";
+}
+
+.mCS-autoHide > .mCustomScrollBox > .mCSB_scrollTools,
+.mCS-autoHide > .mCustomScrollBox ~ .mCSB_scrollTools {
+  opacity: 0;
+  filter: "alpha(opacity=0)";
+  -ms-filter: "alpha(opacity=0)";
+}
+
+.mCustomScrollbar > .mCustomScrollBox > .mCSB_scrollTools.mCSB_scrollTools_onDrag,
+.mCustomScrollbar > .mCustomScrollBox ~ .mCSB_scrollTools.mCSB_scrollTools_onDrag,
+.mCustomScrollBox:hover > .mCSB_scrollTools,
+.mCustomScrollBox:hover ~ .mCSB_scrollTools,
+.mCS-autoHide:hover > .mCustomScrollBox > .mCSB_scrollTools,
+.mCS-autoHide:hover > .mCustomScrollBox ~ .mCSB_scrollTools {
+  opacity: 1;
+  filter: "alpha(opacity=100)";
+  -ms-filter: "alpha(opacity=100)";
+}
+
+.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.4);
+  filter: "alpha(opacity=40)";
+  -ms-filter: "alpha(opacity=40)";
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.75);
+  filter: "alpha(opacity=75)";
+  -ms-filter: "alpha(opacity=75)";
+}
+
+.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
+  filter: "alpha(opacity=85)";
+  -ms-filter: "alpha(opacity=85)";
+}
+
+.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+  filter: "alpha(opacity=90)";
+  -ms-filter: "alpha(opacity=90)";
+}
+
+.mCSB_scrollTools .mCSB_buttonUp,
+.mCSB_scrollTools .mCSB_buttonDown,
+.mCSB_scrollTools .mCSB_buttonLeft,
+.mCSB_scrollTools .mCSB_buttonRight {
+  background-image: url(mCSB_buttons.png);
+  /* css sprites */
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  filter: "alpha(opacity=40)";
+  -ms-filter: "alpha(opacity=40)";
+}
+
+.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: 0 0;
+  /*
+  sprites locations
+  light: 0 0, -16px 0, -32px 0, -48px 0, 0 -72px, -16px -72px, -32px -72px
+  dark: -80px 0, -96px 0, -112px 0, -128px 0, -80px -72px, -96px -72px, -112px -72px
+  */
+}
+
+.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: 0 -20px;
+  /*
+  sprites locations
+  light: 0 -20px, -16px -20px, -32px -20px, -48px -20px, 0 -92px, -16px -92px, -32px -92px
+  dark: -80px -20px, -96px -20px, -112px -20px, -128px -20px, -80px -92px, -96px -92px, -112 -92px
+  */
+}
+
+.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: 0 -40px;
+  /*
+  sprites locations
+  light: 0 -40px, -20px -40px, -40px -40px, -60px -40px, 0 -112px, -20px -112px, -40px -112px
+  dark: -80px -40px, -100px -40px, -120px -40px, -140px -40px, -80px -112px, -100px -112px, -120px -112px
+  */
+}
+
+.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: 0 -56px;
+  /*
+  sprites locations
+  light: 0 -56px, -20px -56px, -40px -56px, -60px -56px, 0 -128px, -20px -128px, -40px -128px
+  dark: -80px -56px, -100px -56px, -120px -56px, -140px -56px, -80px -128px, -100px -128px, -120px -128px
+  */
+}
+
+.mCSB_scrollTools .mCSB_buttonUp:hover,
+.mCSB_scrollTools .mCSB_buttonDown:hover,
+.mCSB_scrollTools .mCSB_buttonLeft:hover,
+.mCSB_scrollTools .mCSB_buttonRight:hover {
+  opacity: 0.75;
+  filter: "alpha(opacity=75)";
+  -ms-filter: "alpha(opacity=75)";
+}
+
+.mCSB_scrollTools .mCSB_buttonUp:active,
+.mCSB_scrollTools .mCSB_buttonDown:active,
+.mCSB_scrollTools .mCSB_buttonLeft:active,
+.mCSB_scrollTools .mCSB_buttonRight:active {
+  opacity: 0.9;
+  filter: "alpha(opacity=90)";
+  -ms-filter: "alpha(opacity=90)";
+}
+
+/* theme: "dark" */
+.mCS-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -80px 0;
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -80px -20px;
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -80px -40px;
+}
+
+.mCS-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -80px -56px;
+}
+
+/* ---------------------------------------- */
+/* theme: "light-2", "dark-2" */
+.mCS-light-2.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-dark-2.mCSB_scrollTools .mCSB_draggerRail {
+  width: 4px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 4px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.75);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+.mCS-light-2.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-dark-2.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-light-2.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-2.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  width: 100%;
+  height: 4px;
+  margin: 6px auto;
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-light-2.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -32px 0;
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -32px -20px;
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -40px -40px;
+}
+
+.mCS-light-2.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -40px -56px;
+}
+
+/* theme: "dark-2" */
+.mCS-dark-2.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark-2.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -112px 0;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -112px -20px;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -120px -40px;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -120px -56px;
+}
+
+/* ---------------------------------------- */
+/* theme: "light-thick", "dark-thick" */
+.mCS-light-thick.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-dark-thick.mCSB_scrollTools .mCSB_draggerRail {
+  width: 4px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 6px;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.75);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.mCS-light-thick.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-dark-thick.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+  height: 4px;
+  margin: 6px 0;
+}
+
+.mCS-light-thick.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-thick.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  width: 100%;
+  height: 6px;
+  margin: 5px auto;
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-light-thick.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -16px 0;
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -16px -20px;
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -20px -40px;
+}
+
+.mCS-light-thick.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -20px -56px;
+}
+
+/* theme: "dark-thick" */
+.mCS-dark-thick.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark-thick.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -96px 0;
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -96px -20px;
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -100px -40px;
+}
+
+.mCS-dark-thick.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -100px -56px;
+}
+
+/* ---------------------------------------- */
+/* theme: "light-thin", "dark-thin" */
+.mCS-light-thin.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mCS-light-thin.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-thin.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 2px;
+}
+
+.mCS-light-thin.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-dark-thin.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+}
+
+.mCS-light-thin.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-thin.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  width: 100%;
+  height: 2px;
+  margin: 7px auto;
+}
+
+/* theme "dark-thin" */
+.mCS-dark-thin.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark-thin.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -80px 0;
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -80px -20px;
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -80px -40px;
+}
+
+.mCS-dark-thin.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -80px -56px;
+}
+
+/* ---------------------------------------- */
+/* theme "rounded", "rounded-dark", "rounded-dots", "rounded-dots-dark" */
+.mCS-rounded.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_dragger,
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger,
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_dragger,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger {
+  height: 14px;
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 14px;
+  margin: 0 1px;
+}
+
+.mCS-rounded.mCSB_scrollTools_horizontal .mCSB_dragger,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal .mCSB_dragger,
+.mCS-rounded-dots.mCSB_scrollTools_horizontal .mCSB_dragger,
+.mCS-rounded-dots-dark.mCSB_scrollTools_horizontal .mCSB_dragger {
+  width: 14px;
+}
+
+.mCS-rounded.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dots.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  height: 14px;
+  margin: 1px 0;
+}
+
+.mCS-rounded.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCS-rounded.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar {
+  width: 16px;
+  /* auto-expanded scrollbar */
+  height: 16px;
+  margin: -1px 0;
+}
+
+.mCS-rounded.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-rounded.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail,
+.mCS-rounded-dark.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-rounded-dark.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  width: 4px;
+  /* auto-expanded scrollbar */
+}
+
+.mCS-rounded.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCS-rounded.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_dragger .mCSB_dragger_bar {
+  height: 16px;
+  /* auto-expanded scrollbar */
+  width: 16px;
+  margin: 0 -1px;
+}
+
+.mCS-rounded.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-rounded.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-rounded-dark.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  height: 4px;
+  /* auto-expanded scrollbar */
+  margin: 6px 0;
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: 0 -72px;
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: 0 -92px;
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: 0 -112px;
+}
+
+.mCS-rounded.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: 0 -128px;
+}
+
+/* theme "rounded-dark", "rounded-dots-dark" */
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -80px -72px;
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -80px -92px;
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -80px -112px;
+}
+
+.mCS-rounded-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -80px -128px;
+}
+
+/* theme "rounded-dots", "rounded-dots-dark" */
+.mCS-rounded-dots.mCSB_scrollTools_vertical .mCSB_draggerRail,
+.mCS-rounded-dots-dark.mCSB_scrollTools_vertical .mCSB_draggerRail {
+  width: 4px;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-rounded-dots.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-rounded-dots-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  background-color: transparent;
+  background-position: center;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAANElEQVQYV2NkIAAYiVbw//9/Y6DiM1ANJoyMjGdBbLgJQAX/kU0DKgDLkaQAvxW4HEvQFwCRcxIJK1XznAAAAABJRU5ErkJggg==");
+  background-repeat: repeat-y;
+  opacity: 0.3;
+  filter: "alpha(opacity=30)";
+  -ms-filter: "alpha(opacity=30)";
+}
+
+.mCS-rounded-dots.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-rounded-dots-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  height: 4px;
+  margin: 6px 0;
+  background-repeat: repeat-x;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -16px -72px;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -16px -92px;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -20px -112px;
+}
+
+.mCS-rounded-dots.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -20px -128px;
+}
+
+/* theme "rounded-dots-dark" */
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAALElEQVQYV2NkIAAYSVFgDFR8BqrBBEifBbGRTfiPZhpYjiQFBK3A6l6CvgAAE9kGCd1mvgEAAAAASUVORK5CYII=");
+}
+
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -96px -72px;
+}
+
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -96px -92px;
+}
+
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -100px -112px;
+}
+
+.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -100px -128px;
+}
+
+/* ---------------------------------------- */
+/* theme "3d", "3d-dark", "3d-thick", "3d-thick-dark" */
+.mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-repeat: repeat-y;
+  background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0.5)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -o-linear-gradient(left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.mCS-3d.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.5)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* theme "3d", "3d-dark" */
+.mCS-3d.mCSB_scrollTools_vertical .mCSB_dragger,
+.mCS-3d-dark.mCSB_scrollTools_vertical .mCSB_dragger {
+  height: 70px;
+}
+
+.mCS-3d.mCSB_scrollTools_horizontal .mCSB_dragger,
+.mCS-3d-dark.mCSB_scrollTools_horizontal .mCSB_dragger {
+  width: 70px;
+}
+
+.mCS-3d.mCSB_scrollTools,
+.mCS-3d-dark.mCSB_scrollTools {
+  opacity: 1;
+  filter: "alpha(opacity=30)";
+  -ms-filter: "alpha(opacity=30)";
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_draggerRail {
+  width: 8px;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 0 1px rgba(0, 0, 0, 0.5), inset -1px 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-3d.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-3d.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #555;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 8px;
+}
+
+.mCS-3d.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-3d-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+  height: 8px;
+  margin: 4px 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5), inset 0 -1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.mCS-3d.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  width: 100%;
+  height: 8px;
+  margin: 4px auto;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -32px -72px;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -32px -92px;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -40px -112px;
+}
+
+.mCS-3d.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -40px -128px;
+}
+
+/* theme "3d-dark" */
+.mCS-3d-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.mCS-3d-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.mCS-3d-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -112px -72px;
+}
+
+.mCS-3d-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -112px -92px;
+}
+
+.mCS-3d-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -120px -112px;
+}
+
+.mCS-3d-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -120px -128px;
+}
+
+/* ---------------------------------------- */
+/* theme: "3d-thick", "3d-thick-dark" */
+.mCS-3d-thick.mCSB_scrollTools,
+.mCS-3d-thick-dark.mCSB_scrollTools {
+  opacity: 1;
+  filter: "alpha(opacity=30)";
+  -ms-filter: "alpha(opacity=30)";
+}
+
+.mCS-3d-thick.mCSB_scrollTools,
+.mCS-3d-thick-dark.mCSB_scrollTools,
+.mCS-3d-thick.mCSB_scrollTools .mCSB_draggerContainer,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_draggerContainer {
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.mCSB_inside + .mCS-3d-thick.mCSB_scrollTools_vertical,
+.mCSB_inside + .mCS-3d-thick-dark.mCSB_scrollTools_vertical {
+  right: 1px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools_vertical,
+.mCS-3d-thick-dark.mCSB_scrollTools_vertical {
+  box-shadow: inset 1px 0 1px rgba(0, 0, 0, 0.1), inset 0 0 14px rgba(0, 0, 0, 0.5);
+}
+
+.mCS-3d-thick.mCSB_scrollTools_horizontal,
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal {
+  bottom: 1px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 14px rgba(0, 0, 0, 0.5);
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4);
+  width: 12px;
+  margin: 2px;
+  position: absolute;
+  height: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mCS-3d-thick.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-3d-thick.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #555;
+}
+
+.mCS-3d-thick.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  height: 12px;
+  width: auto;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_draggerContainer {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: inset 1px 1px 16px rgba(0, 0, 0, 0.1);
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: transparent;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -32px -72px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -32px -92px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -40px -112px;
+}
+
+.mCS-3d-thick.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -40px -128px;
+}
+
+/* theme: "3d-thick-dark" */
+.mCS-3d-thick-dark.mCSB_scrollTools {
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.2);
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 0 14px rgba(0, 0, 0, 0.2);
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4), inset -1px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #777;
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_draggerContainer {
+  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: inset 1px 1px 16px rgba(0, 0, 0, 0.1);
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: transparent;
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -112px -72px;
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -112px -92px;
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -120px -112px;
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -120px -128px;
+}
+
+/* ---------------------------------------- */
+/* theme: "minimal", "minimal-dark" */
+.mCSB_outside + .mCS-minimal.mCSB_scrollTools_vertical,
+.mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
+  right: 0;
+  margin: 12px 0;
+}
+
+.mCustomScrollBox.mCS-minimal + .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.mCustomScrollBox.mCS-minimal + .mCSB_scrollTools + .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.mCustomScrollBox.mCS-minimal-dark + .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.mCustomScrollBox.mCS-minimal-dark + .mCSB_scrollTools + .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  bottom: 0;
+  margin: 0 12px;
+}
+
+/* RTL direction/left-side scrollbar */
+.mCS-dir-rtl > .mCSB_outside + .mCS-minimal.mCSB_scrollTools_vertical,
+.mCS-dir-rtl > .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
+  left: 0;
+  right: auto;
+}
+
+.mCS-minimal.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: transparent;
+}
+
+.mCS-minimal.mCSB_scrollTools_vertical .mCSB_dragger,
+.mCS-minimal-dark.mCSB_scrollTools_vertical .mCSB_dragger {
+  height: 50px;
+}
+
+.mCS-minimal.mCSB_scrollTools_horizontal .mCSB_dragger,
+.mCS-minimal-dark.mCSB_scrollTools_horizontal .mCSB_dragger {
+  width: 50px;
+}
+
+.mCS-minimal.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  filter: "alpha(opacity=20)";
+  -ms-filter: "alpha(opacity=20)";
+}
+
+.mCS-minimal.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-minimal.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
+  filter: "alpha(opacity=50)";
+  -ms-filter: "alpha(opacity=50)";
+}
+
+/* theme: "minimal-dark" */
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.2);
+  filter: "alpha(opacity=20)";
+  -ms-filter: "alpha(opacity=20)";
+}
+
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  filter: "alpha(opacity=50)";
+  -ms-filter: "alpha(opacity=50)";
+}
+
+/* ---------------------------------------- */
+/* theme "light-3", "dark-3" */
+.mCS-light-3.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools .mCSB_draggerRail {
+  width: 6px;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mCS-light-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 6px;
+}
+
+.mCS-light-3.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-dark-3.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-light-3.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+  height: 6px;
+  margin: 5px 0;
+}
+
+.mCS-light-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-light-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools_vertical.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  width: 12px;
+}
+
+.mCS-light-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-light-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_dragger.mCSB_dragger_onDrag_expanded + .mCSB_draggerRail,
+.mCS-dark-3.mCSB_scrollTools_horizontal.mCSB_scrollTools_onDrag_expand .mCSB_draggerContainer:hover .mCSB_draggerRail {
+  height: 12px;
+  margin: 2px 0;
+}
+
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -32px -72px;
+}
+
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -32px -92px;
+}
+
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -40px -112px;
+}
+
+.mCS-light-3.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -40px -128px;
+}
+
+/* theme "dark-3" */
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-dark-3.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -112px -72px;
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -112px -92px;
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -120px -112px;
+}
+
+.mCS-dark-3.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -120px -128px;
+}
+
+/* ---------------------------------------- */
+/* theme "inset", "inset-dark", "inset-2", "inset-2-dark", "inset-3", "inset-3-dark" */
+.mCS-inset.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-2.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-3.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_draggerRail {
+  width: 12px;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mCS-inset.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  width: 6px;
+  margin: 3px 5px;
+  position: absolute;
+  height: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mCS-inset.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-2.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-3.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar {
+  height: 6px;
+  margin: 5px 3px;
+  position: absolute;
+  width: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mCS-inset.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-inset-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-inset-2.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-inset-2-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-inset-3.mCSB_scrollTools_horizontal .mCSB_draggerRail,
+.mCS-inset-3-dark.mCSB_scrollTools_horizontal .mCSB_draggerRail {
+  width: 100%;
+  height: 12px;
+  margin: 2px 0;
+}
+
+.mCS-inset.mCSB_scrollTools .mCSB_buttonUp,
+.mCS-inset-2.mCSB_scrollTools .mCSB_buttonUp,
+.mCS-inset-3.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -32px -72px;
+}
+
+.mCS-inset.mCSB_scrollTools .mCSB_buttonDown,
+.mCS-inset-2.mCSB_scrollTools .mCSB_buttonDown,
+.mCS-inset-3.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -32px -92px;
+}
+
+.mCS-inset.mCSB_scrollTools .mCSB_buttonLeft,
+.mCS-inset-2.mCSB_scrollTools .mCSB_buttonLeft,
+.mCS-inset-3.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -40px -112px;
+}
+
+.mCS-inset.mCSB_scrollTools .mCSB_buttonRight,
+.mCS-inset-2.mCSB_scrollTools .mCSB_buttonRight,
+.mCS-inset-3.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -40px -128px;
+}
+
+/* theme "inset-dark", "inset-2-dark", "inset-3-dark" */
+.mCS-inset-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-inset-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_buttonUp,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_buttonUp,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_buttonUp {
+  background-position: -112px -72px;
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_buttonDown,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_buttonDown,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_buttonDown {
+  background-position: -112px -92px;
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_buttonLeft,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_buttonLeft,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_buttonLeft {
+  background-position: -120px -112px;
+}
+
+.mCS-inset-dark.mCSB_scrollTools .mCSB_buttonRight,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_buttonRight,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_buttonRight {
+  background-position: -120px -128px;
+}
+
+/* theme "inset-2", "inset-2-dark" */
+.mCS-inset-2.mCSB_scrollTools .mCSB_draggerRail,
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: transparent;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.mCS-inset-2-dark.mCSB_scrollTools .mCSB_draggerRail {
+  border-color: #000;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* theme "inset-3", "inset-3-dark" */
+.mCS-inset-3.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.mCS-inset-3.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.mCS-inset-3.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.mCS-inset-3.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-inset-3.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---------------------------------------- */
 @-webkit-keyframes swingInX {
   0% {
     -webkit-transform: perspective(400px) rotateX(-90deg);

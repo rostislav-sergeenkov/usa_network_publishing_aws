@@ -59,9 +59,6 @@ function aurora_usa_preprocess_html(&$vars) {
   drupal_add_html_head($viewport, 'viewport');
 
   // adding usa-social body class to global and show pages
-  if (arg(2) == 'social' || arg(0) == 'social') {
-    $vars['classes_array'][] = drupal_html_class('usa-social');
-  }
   if (arg(0) == 'videos' && arg(1) == 'live') {
     $vars['classes_array'][] = drupal_html_class('consumptionator-page');
   }

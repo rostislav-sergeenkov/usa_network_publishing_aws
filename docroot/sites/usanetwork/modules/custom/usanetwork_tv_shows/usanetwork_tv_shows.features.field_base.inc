@@ -272,6 +272,28 @@ function usanetwork_tv_shows_field_default_field_bases() {
     'type' => 'usanetwork_dynamic_entity_reference',
   );
 
+  // Exported field_base: 'field_best_of_block_format'
+  $field_bases['field_best_of_block_format'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_best_of_block_format',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(),
+      'allowed_values_function' => 'usanetwork_tv_shows_best_of_block_get_field_layout_items',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_best_of_items'
   $field_bases['field_best_of_items'] = array(
     'active' => 1,
@@ -696,7 +718,7 @@ function usanetwork_tv_shows_field_default_field_bases() {
   // Exported field_base: 'field_collection_best_of_items'
   $field_bases['field_collection_best_of_items'] = array(
     'active' => 1,
-    'cardinality' => 5,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_collection_best_of_items',

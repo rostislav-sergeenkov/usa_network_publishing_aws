@@ -142,9 +142,57 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_tvs_best_of-field_best_of_block_format'
+  $field_instances['field_collection_item-field_tvs_best_of-field_best_of_block_format'] = array(
+    'bundle' => 'field_tvs_best_of',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 'type_a',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_best_of_block_format',
+    'label' => 'Block Format',
+    'required' => 1,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_tvs_best_of-field_collection_best_of_items'
   $field_instances['field_collection_item-field_tvs_best_of-field_collection_best_of_items'] = array(
     'bundle' => 'field_tvs_best_of',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -1851,6 +1899,71 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'type' => 'text_textarea_with_summary',
       'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-tv_season-field_gigya_share_bar'
+  $field_instances['node-tv_season-field_gigya_share_bar'] = array(
+    'bundle' => 'tv_season',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'gigya',
+        'settings' => array(
+          'gigya_sharebar_advanced' => array(),
+          'gigya_sharebar_buttons' => 'twitter-tweet, facebook-like',
+          'gigya_sharebar_container_id' => 'gigya-share',
+          'gigya_sharebar_desc' => '[node:summary]',
+          'gigya_sharebar_image_behavior' => 'first',
+          'gigya_sharebar_image_url' => '',
+          'gigya_sharebar_layout' => 'horizontal',
+          'gigya_sharebar_link_back' => '[node:url:absolute]',
+          'gigya_sharebar_override_default' => FALSE,
+          'gigya_sharebar_short_url' => 0,
+          'gigya_sharebar_showcounts' => 'right',
+          'gigya_sharebar_title' => '[node:title]',
+        ),
+        'type' => 'gigya_sharebar_formatter_default',
+        'weight' => 7,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_gigya_share_bar',
+    'label' => 'Gigya Share Bar',
+    'required' => FALSE,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'gigya',
+      'settings' => array(),
+      'type' => 'sharebar',
+      'weight' => 9,
     ),
   );
 
@@ -18747,6 +18860,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Base URL');
   t('Best Of Blocks');
   t('Best of items');
+  t('Block Format');
   t('Block title');
   t('Blog Title');
   t('CHILDREN');
@@ -18798,6 +18912,7 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Featured Video Promos');
   t('Floodlight Category');
   t('Floodlight Type');
+  t('Gigya Share Bar');
   t('Google+ page');
   t('H1');
   t('Hashtag');

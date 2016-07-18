@@ -460,7 +460,7 @@ function usanetwork_quiz_preprocess_usanetwork_quiz_question(&$vars) {
           'width' => 590,
           'height' => 332,
           'pub_mpx_player_parameters' => array(
-            'autoPlay' => 'true',
+            'autoPlay' => 'false',
           ),
         ));
       }

@@ -1,6 +1,32 @@
 <?php
 /**
- *
+ * @file
+ * Theme implementation for section of best of block.
+ * 
+ * Available variables:
+ *  - $title
+ *  - $layout_scheme: General layout scheme for separate block.
+ *    - name
+ *    - number_of_items
+ *    - class
+ *    - icon_path
+ *    - items
+ *  - $promos:
+ *    - url
+ *    - image
+ *      - mobile
+ *      - desktop
+ *    - icon_type
+ *    - icon_text
+ *    - caption
+ *    - title
+ *    - description
+ *    - more_link
+ *    - layout_scheme: Specify layout scheme for a promo.
+ *      - desktop_type
+ *      - mobile_type
+ *    - sponsored
+ *    - content_id
  */
 ?>
 <div class="best-of-block five-promo-item-block show-border">

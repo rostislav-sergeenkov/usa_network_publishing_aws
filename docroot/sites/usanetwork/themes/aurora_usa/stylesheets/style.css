@@ -4682,7 +4682,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   color: #cdcdcd;
   font-family: "opensansregular", sans-serif;
   font-size: 1.40625vw;
-  line-height: 1.2;
+  line-height: 1.6875vw;
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: none;
@@ -4704,12 +4704,13 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 @media (min-width: 1601px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
     font-size: 22.5px;
+    line-height: 27px;
     max-height: 85px;
   }
 }
 @media (max-width: 768px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
-    line-height: 1.4;
+    line-height: 3.15vw;
     font-size: 2.25vw;
     max-height: 6.3vw !important;
   }
@@ -4717,6 +4718,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 @media (max-width: 640px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
     font-size: 3.75vw;
+    line-height: 5.25vw;
     max-height: 10.5vw !important;
   }
 }

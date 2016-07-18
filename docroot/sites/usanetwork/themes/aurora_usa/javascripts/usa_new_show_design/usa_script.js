@@ -18,7 +18,7 @@
     if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
       if ($('.articles-block').length > 0) {
         $('.title-and-additional').each(function () {
-          var captionHeight = parseFloat($(this).closest('.meta-wrapper').css('max-height'))*0.95 - $(this).outerHeight();
+          var captionHeight = parseFloat($(this).closest('.meta-wrapper').css('max-height'))*0.9 - $(this).outerHeight();
           var captionLineHeight = parseFloat($(this).next().css('line-height'));
           var lines = Math.floor(captionHeight / captionLineHeight);
           $(this).next().attr('style', '-webkit-line-clamp:' + lines + ';max-height:' + captionLineHeight * lines + 'px;');

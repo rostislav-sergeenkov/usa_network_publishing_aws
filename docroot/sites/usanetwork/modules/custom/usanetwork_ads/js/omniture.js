@@ -99,7 +99,8 @@
       s.linkTrackVars = 'events,eVar64';
       s.linkTrackEvents = s.events = 'event64';
       s.eVar64 = name;
-      if (!$self.hasClass('seeit-reminder') && $self.attr('href') != '#') {
+
+      if (!$self.hasClass('seeit-reminder') && !$self.hasClass('menu-sign-up') && $self.attr('href') != '#') {
         s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };

@@ -791,7 +791,18 @@
           }
         }
       }
-
+      &:not(.sponsored-enable) {
+        .show-menu-tab {
+          & + .social-block {
+            @include breakpoint($bp-min-769-width) {
+              top: calc(((100% - #{get-vw(71px, 1600)} - 2px)/2) - #{get-vw(12.5px, 1600)} + #{get-vw(10px, 1600)});
+            }
+            @include breakpoint($bp-min-1601-width) {
+              top: calc(((100% - 73px)/2) - 12.5px + 10px);
+            }
+          }
+        }
+      }
       .bottom-menu-block-inner {
         @include clear();
         background: #000000;
@@ -879,7 +890,6 @@
             }
           }
         }
-
         &:after {
           display: none;
           pointer-events: none;
@@ -898,12 +908,12 @@
       .social-block {
         @include breakpoint($bp-min-769-width) {
           right: get-vw(16px, 1280);
-          top: calc(((100% - #{get-vw(71px, 1600)} - 2px)/2) - #{get-vw(12.5px, 1600)} + #{get-vw(10px, 1600)});
+          top: calc(((100% - 2px)/2) - #{get-vw(12.5px, 1600)} + #{get-vw(10px, 1600)});
           position: absolute;
         }
         @include breakpoint($bp-min-1601-width) {
           right: 20px;
-          top: calc(((100% - 73px)/2) - 12.5px + 10px);
+          top: calc(((100% - 2px)/2) - 12.5px + 10px);
         }
         @include breakpoint($bp-768-width) {
           background: black;

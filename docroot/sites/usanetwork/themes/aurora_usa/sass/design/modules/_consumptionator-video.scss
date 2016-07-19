@@ -704,6 +704,9 @@ body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).page
           top: 40%;
           width: 90%;
           z-index: 2;
+          @include breakpoint($bp-480-width) {
+            top: 35%;
+          }
           .first-line {
             display: block;
             font-size: 26px;
@@ -716,6 +719,10 @@ body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).page
             @include breakpoint($bp-768-width) {
               font-size: 15px;
               line-height: 26px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 13px;
+              line-height: 23px;
             }
             @include breakpoint($bp-480-width) {
               font-size: 10px;

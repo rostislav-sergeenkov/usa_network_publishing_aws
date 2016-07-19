@@ -17852,6 +17852,11 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   width: 90%;
   z-index: 2;
 }
+@media (max-width: 480px) {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg {
+    top: 35%;
+  }
+}
 body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
   display: block;
   font-size: 26px;
@@ -17868,6 +17873,12 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
     font-size: 15px;
     line-height: 26px;
+  }
+}
+@media (max-width: 640px) {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+    font-size: 13px;
+    line-height: 23px;
   }
 }
 @media (max-width: 480px) {
@@ -29613,6 +29624,12 @@ html[xmlns] .slides {
   #microsite #video-container .locked-msg .first-line {
     font-size: 15px;
     line-height: 26px;
+  }
+}
+@media (max-width: 640px) {
+  #microsite #video-container .locked-msg .first-line {
+    font-size: 13px;
+    line-height: 23px;
   }
 }
 @media (max-width: 480px) {
@@ -57199,6 +57216,11 @@ html.no-scroll, body.no-scroll {
   width: 90%;
   z-index: 2;
 }
+@media (max-width: 480px) {
+  .show-new-design.consumptionator-video-page .video-block .player-wrapper .video-player-wrapper .locked-msg {
+    top: 35%;
+  }
+}
 .show-new-design.consumptionator-video-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
   display: block;
   font-size: 26px;
@@ -57215,6 +57237,12 @@ html.no-scroll, body.no-scroll {
   .show-new-design.consumptionator-video-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
     font-size: 15px;
     line-height: 26px;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design.consumptionator-video-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+    font-size: 13px;
+    line-height: 23px;
   }
 }
 @media (max-width: 480px) {

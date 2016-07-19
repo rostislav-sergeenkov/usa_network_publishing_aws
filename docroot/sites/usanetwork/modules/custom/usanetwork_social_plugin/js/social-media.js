@@ -58,7 +58,7 @@
   Drupal.behaviors.SocialMedia = {
     _getPlaceholder: function($el) {
       // @todo: move image src to config
-      return '<img alt="&lt;--social-media--&gt;" class="pub_blog_post-social drupal-content" data-social-option="' + $el.data('socialOption') + '" data-social-value="' + $el.data('socialValue') + '" src="/sites/usanetwork/modules/custom/usanetwork_instagram/plugins/social/images/social_loading.png" title="&lt;--social-media--&gt;" />';
+      return '<img alt="&lt;--social-media--&gt;" class="pub_blog_post-social drupal-content" data-social-option="' + $el.data('socialOption') + '" data-social-value="' + $el.data('socialValue') + '" src="/sites/usanetwork/modules/custom/usanetwork_social_plugin/plugins/social/images/social_loading.png" title="&lt;--social-media--&gt;" />';
     },
     _getWrapper: function($el) {
       return '<div class="social-media-processed" data-social-option="' + $el.data('socialOption') + '" data-social-value="' + $el.data('socialValue') + '"></div>';

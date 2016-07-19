@@ -1,16 +1,16 @@
 <?php
 /**
  * @file
- * Code for the Usanetwork Instagram.
+ * Code for the Usanetwork Social Plugin.
  */
 
 /**
  * Implements hook_menu().
  */
-function usanetwork_instagram_menu() {
+function usanetwork_social_plugin_menu() {
   $items['social-media/embed/%'] = array(
     'title' => 'Social Media Embed',
-    'page callback' => 'usanetwork_instagram_social_media_embed',
+    'page callback' => 'usanetwork_social_plugin_social_media_embed',
     'page arguments' => array(2),
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
@@ -22,7 +22,7 @@ function usanetwork_instagram_menu() {
 /**
  * Implements hook_wysiwyg_include_directory().
  */
-function usanetwork_instagram_wysiwyg_include_directory($type) {
+function usanetwork_social_plugin_wysiwyg_include_directory($type) {
   switch ($type) {
     case 'plugins':
       return 'plugins';
@@ -32,7 +32,7 @@ function usanetwork_instagram_wysiwyg_include_directory($type) {
 /**
  * Menu callback for social embed preview.
  */
-function usanetwork_instagram_social_media_embed($network) {
+function usanetwork_social_plugin_social_media_embed($network) {
   $url = isset($_GET['url']) ? $_GET['url'] : FALSE;
 
   if (!$network || !$url) {
@@ -48,7 +48,7 @@ function usanetwork_instagram_social_media_embed($network) {
   $libs = &drupal_static('drupal_add_library', array());
   $libs = array();
 
-  drupal_add_js(drupal_get_path('module', 'usanetwork_instagram') . '/js/social-media.js', array(
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social_plugin') . '/js/social-media.js', array(
     'requires_jquery' => TRUE,
   ));
   drupal_add_html_head(array(
@@ -65,7 +65,7 @@ function usanetwork_instagram_social_media_embed($network) {
     '#theme' => 'html',
     'page_top' => array(),
     'page_bottom' => array(),
-    '#children' => '<div class="social-media-container"><img src="' . url(drupal_get_path('module', 'usanetwork_instagram') . '/plugins/social/images/social_loading.png') . '" alt="&lt;--social-media--&gt;" title="&lt;--social-media--&gt;" class="pub_blog_post-social" data-social-option="' . $network . '" data-social-value="' . $url . '" /></div>',
+    '#children' => '<div class="social-media-container"><img src="' . url(drupal_get_path('module', 'usanetwork_social_plugin') . '/plugins/social/images/social_loading.png') . '" alt="&lt;--social-media--&gt;" title="&lt;--social-media--&gt;" class="pub_blog_post-social" data-social-option="' . $network . '" data-social-value="' . $url . '" /></div>',
   );
 
   print drupal_render($page);
@@ -74,11 +74,11 @@ function usanetwork_instagram_social_media_embed($network) {
 /**
  * Implements hook_page_build().
  */
-function usanetwork_instagram_page_build(&$page) {
+function usanetwork_social_plugin_page_build(&$page) {
   if (path_is_admin(current_path())) {
     return;
   }
-  $page['content']['#attached']['js'][] = drupal_get_path('module', 'usanetwork_instagram') . '/js/social-media.js';
+  $page['content']['#attached']['js'][] = drupal_get_path('module', 'usanetwork_social_plugin') . '/js/social-media.js';
   $page['content']['#attached']['drupal_add_html_head'][] = array(
     array(
       '#tag' => 'script',

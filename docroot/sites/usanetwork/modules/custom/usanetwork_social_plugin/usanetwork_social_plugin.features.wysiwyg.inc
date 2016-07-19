@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_instagram.features.wysiwyg.inc
+ * usanetwork_social_plugin.features.wysiwyg.inc
  */
 
 /**
  * Implements hook_wysiwyg_default_profiles().
  */
-function usanetwork_instagram_wysiwyg_default_profiles() {
+function usanetwork_social_plugin_wysiwyg_default_profiles() {
   $profiles = array();
 
   // Exported profile: wysiwyg_social

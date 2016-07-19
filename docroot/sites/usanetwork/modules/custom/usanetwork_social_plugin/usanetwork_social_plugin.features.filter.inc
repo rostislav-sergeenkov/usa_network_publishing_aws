@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_instagram.features.filter.inc
+ * usanetwork_social_plugin.features.filter.inc
  */
 
 /**
  * Implements hook_filter_default_formats().
  */
-function usanetwork_instagram_filter_default_formats() {
+function usanetwork_social_plugin_filter_default_formats() {
   $formats = array();
 
   // Exported format: WYSIWYG Social.

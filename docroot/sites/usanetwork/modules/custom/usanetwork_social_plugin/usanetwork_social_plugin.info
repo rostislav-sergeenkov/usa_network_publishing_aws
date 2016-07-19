@@ -1,9 +1,9 @@
-name = Usanetwork Instagram
+name = Usanetwork Social Plugin
 description = Social WYSIWYG plugin.
 core = 7.x
 package = USA Network
 version = 7.x-1.0
-project = usanetwork_instagram
+project = usanetwork_social_plugin
 dependencies[] = features
 dependencies[] = filter
 dependencies[] = media_wysiwyg

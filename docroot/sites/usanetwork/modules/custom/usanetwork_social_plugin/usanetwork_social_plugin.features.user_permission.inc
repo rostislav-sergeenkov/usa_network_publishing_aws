@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * usanetwork_instagram.features.user_permission.inc
+ * usanetwork_social_plugin.features.user_permission.inc
  */
 
 /**
  * Implements hook_user_default_permissions().
  */
-function usanetwork_instagram_user_default_permissions() {
+function usanetwork_social_plugin_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: 'use text format wysiwyg_social'.

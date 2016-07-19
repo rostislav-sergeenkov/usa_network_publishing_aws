@@ -10,7 +10,7 @@
  * @return
  *   Meta information about the buttons provided by this plugin.
  */
-function usanetwork_instagram_usa_plugin() {
+function usanetwork_social_plugin_usa_plugin() {
   drupal_add_library('system', 'ui.dialog');
 
   // Social media

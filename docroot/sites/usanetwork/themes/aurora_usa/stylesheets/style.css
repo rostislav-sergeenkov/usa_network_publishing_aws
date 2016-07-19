@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -767,42 +767,42 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
 
-body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .five-promo-item-block ul li.first .meta, .five-promo-item-block ul li:nth-child(2) .meta, .five-promo-item-block ul li .last .meta, .show-latest-block ul li .meta, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta, body:not(.show-new-design) .related-content-block ul li .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta {
+body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .five-promo-item-block ul li.first .meta, .five-promo-item-block ul li:nth-child(2) .meta, .five-promo-item-block ul li .last .meta, .show-latest-block ul li .meta, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta, body:not(.show-new-design) .related-content-block ul li .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta, .carousel ul li .meta-wrap.poll .meta, .carousel ul li .meta, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta {
   direction: ltr;
   color: #ffffff;
 }
-body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li.first .meta .caption, .five-promo-item-block ul li:nth-child(2) .meta .caption, .five-promo-item-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .caption, body:not(.show-new-design) .related-content-block ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li:nth-child(2) .meta .title, .five-promo-item-block ul li .last .meta .title, .show-latest-block ul li .meta .title, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .title, body:not(.show-new-design) .related-content-block ul li .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li:nth-child(2) .meta .additional, .five-promo-item-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .additional, body:not(.show-new-design) .related-content-block ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .five-promo-item-block ul li.first .meta .description, .five-promo-item-block ul li:nth-child(2) .meta .description, .five-promo-item-block ul li .last .meta .description, .show-latest-block ul li .meta .description, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .description, body:not(.show-new-design) .related-content-block ul li .meta .description, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .description, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .five-promo-item-block ul li.first .meta .show-title, .five-promo-item-block ul li:nth-child(2) .meta .show-title, .five-promo-item-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .show-title, body:not(.show-new-design) .related-content-block ul li .meta .show-title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .show-title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .topic, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .five-promo-item-block ul li.first .meta .topic, .five-promo-item-block ul li:nth-child(2) .meta .topic, .five-promo-item-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .topic, body:not(.show-new-design) .related-content-block ul li .meta .topic, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .topic, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic {
+body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li.first .meta .caption, .five-promo-item-block ul li:nth-child(2) .meta .caption, .five-promo-item-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .caption, body:not(.show-new-design) .related-content-block ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li:nth-child(2) .meta .title, .five-promo-item-block ul li .last .meta .title, .show-latest-block ul li .meta .title, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .title, body:not(.show-new-design) .related-content-block ul li .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li:nth-child(2) .meta .additional, .five-promo-item-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .additional, body:not(.show-new-design) .related-content-block ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .five-promo-item-block ul li.first .meta .description, .five-promo-item-block ul li:nth-child(2) .meta .description, .five-promo-item-block ul li .last .meta .description, .show-latest-block ul li .meta .description, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .description, body:not(.show-new-design) .related-content-block ul li .meta .description, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .description, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .description, .carousel ul li .meta .description, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .description, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .five-promo-item-block ul li.first .meta .show-title, .five-promo-item-block ul li:nth-child(2) .meta .show-title, .five-promo-item-block ul li .last .meta .show-title, .show-latest-block ul li .meta .show-title, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .show-title, body:not(.show-new-design) .related-content-block ul li .meta .show-title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .show-title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .show-title, .carousel ul li .meta .show-title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .show-title, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .topic, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .five-promo-item-block ul li.first .meta .topic, .five-promo-item-block ul li:nth-child(2) .meta .topic, .five-promo-item-block ul li .last .meta .topic, .show-latest-block ul li .meta .topic, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .topic, body:not(.show-new-design) .related-content-block ul li .meta .topic, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .topic, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .topic, .carousel ul li .meta .topic, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .topic {
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li.first .meta .caption, .five-promo-item-block ul li:nth-child(2) .meta .caption, .five-promo-item-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .caption, body:not(.show-new-design) .related-content-block ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption {
+body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li.first .meta .caption, .five-promo-item-block ul li:nth-child(2) .meta .caption, .five-promo-item-block ul li .last .meta .caption, .show-latest-block ul li .meta .caption, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .caption, body:not(.show-new-design) .related-content-block ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li .meta .caption, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .caption {
   font-size: 13px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   letter-spacing: 0.75px;
 }
-body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li:nth-child(2) .meta .title, .five-promo-item-block ul li .last .meta .title, .show-latest-block ul li .meta .title, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .title, body:not(.show-new-design) .related-content-block ul li .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title {
+body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li:nth-child(2) .meta .title, .five-promo-item-block ul li .last .meta .title, .show-latest-block ul li .meta .title, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .title, body:not(.show-new-design) .related-content-block ul li .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li .meta .title, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .title {
   font-size: 16px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li:nth-child(2) .meta .additional, .five-promo-item-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .additional, body:not(.show-new-design) .related-content-block ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional {
+body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li:nth-child(2) .meta .additional, .five-promo-item-block ul li .last .meta .additional, .show-latest-block ul li .meta .additional, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .additional, body:not(.show-new-design) .related-content-block ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li .meta .additional, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional {
   font-size: 11px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional span, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .five-promo-item-block ul li.first .meta .additional span, .five-promo-item-block ul li:nth-child(2) .meta .additional span, .five-promo-item-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .additional span, body:not(.show-new-design) .related-content-block ul li .meta .additional span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span {
+body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional span, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .five-promo-item-block ul li.first .meta .additional span, .five-promo-item-block ul li:nth-child(2) .meta .additional span, .five-promo-item-block ul li .last .meta .additional span, .show-latest-block ul li .meta .additional span, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta .additional span, body:not(.show-new-design) .related-content-block ul li .meta .additional span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta .additional span, .carousel ul li .meta .additional span, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
 }
-body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta > div:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta > div:only-child, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta > div:only-child, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta > div:only-child, .five-promo-item-block ul li.first .meta > div:only-child, .five-promo-item-block ul li:nth-child(2) .meta > div:only-child, .five-promo-item-block ul li .last .meta > div:only-child, .show-latest-block ul li .meta > div:only-child, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta > div:only-child, body:not(.show-new-design) .related-content-block ul li .meta > div:only-child, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta > div:only-child, .shows-block .show-info-block .show-bottom-info ul li .meta > div:only-child, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta > div:only-child, .carousel ul li .meta > div:only-child, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta > div:only-child {
+body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta > div:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta > div:only-child, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta > div:only-child, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta > div:only-child, .five-promo-item-block ul li.first .meta > div:only-child, .five-promo-item-block ul li:nth-child(2) .meta > div:only-child, .five-promo-item-block ul li .last .meta > div:only-child, .show-latest-block ul li .meta > div:only-child, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta > div:only-child, body:not(.show-new-design) .related-content-block ul li .meta > div:only-child, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta > div:only-child, .shows-block .show-info-block .show-bottom-info ul li .meta > div:only-child, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta > div:only-child, .carousel ul li .meta > div:only-child, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta > div:only-child {
   white-space: normal;
 }
 @supports (-webkit-line-clamp: 2) {
-  body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta > div:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta > div:only-child, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta > div:only-child, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta > div:only-child, .five-promo-item-block ul li.first .meta > div:only-child, .five-promo-item-block ul li:nth-child(2) .meta > div:only-child, .five-promo-item-block ul li .last .meta > div:only-child, .show-latest-block ul li .meta > div:only-child, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta > div:only-child, body:not(.show-new-design) .related-content-block ul li .meta > div:only-child, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta > div:only-child, .shows-block .show-info-block .show-bottom-info ul li .meta > div:only-child, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta > div:only-child, .carousel ul li .meta > div:only-child, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta > div:only-child {
+  body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta > div:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta > div:only-child, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta > div:only-child, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta > div:only-child, .five-promo-item-block ul li.first .meta > div:only-child, .five-promo-item-block ul li:nth-child(2) .meta > div:only-child, .five-promo-item-block ul li .last .meta > div:only-child, .show-latest-block ul li .meta > div:only-child, body:not(.show-new-design) .consum-sidebar .episodes-list-slider.vertical li .meta > div:only-child, body:not(.show-new-design) .related-content-block ul li .meta > div:only-child, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta > div:only-child, .shows-block .show-info-block .show-bottom-info ul li .meta > div:only-child, body:not(.show-new-design) .landing-page-container .landing-items-blocks ul li .meta > div:only-child, .carousel ul li .meta > div:only-child, .carousel ul li .poll-items .poll-item .node .meta-wrapper .meta > div:only-child {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -2006,33 +2006,33 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   }
 }
 
-.full-episodes-block.carousel-block .carousel ul li .video-promo:before, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before {
+.full-episodes-block.carousel-block .carousel ul li .video-promo:before, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before {
   bottom: 0;
   height: 81px;
   top: auto;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo:before, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo:before, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before {
     height: 87px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo:before, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo:before, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo:before {
     height: 32.4%;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img {
+.full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img {
   height: 100%;
   width: 100%;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img img, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img img {
+.full-episodes-block.carousel-block .carousel ul li .video-promo .asset-img img, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo .asset-img img {
   height: 100%;
   width: 100%;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file:before, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file:before {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file:before, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file:before, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file:before {
   display: none !important;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth > a:after, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth > a:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth > a:after {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth > a:after, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth > a:after, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth > a:after {
   font-family: 'usanetwork';
   speak: none;
   -webkit-font-feature-settings: "liga", "dlig";
@@ -2061,7 +2061,7 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   width: auto;
   height: auto;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth .asset-img:after, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth .asset-img:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth .asset-img:after {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file.tve-video-auth .asset-img:after, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth .asset-img:after, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file.tve-video-auth .asset-img:after {
   content: "";
   display: block;
   width: 0;
@@ -2072,156 +2072,156 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   right: 0;
   top: 0;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .asset-img img, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .asset-img img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .asset-img img {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .asset-img img, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .asset-img img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .asset-img img {
   height: auto;
   width: 100%;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper {
     height: 4.28vw;
   }
 }
 @media (min-width: 2500px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper {
     height: 103px;
   }
 }
 @media (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-wrapper {
     height: 36%;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
   font-size: 0.68385vw;
   line-height: 1.05208vw;
 }
 @media (min-width: 1901px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 0.78125vw;
     line-height: 1.40625vw;
   }
 }
 @media (max-width: 1024px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 0.97656vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 1.17188vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 640px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .caption, .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .additional {
     font-size: 1.40625vw;
     line-height: 2.10938vw;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
   font-size: 0.94687vw;
   line-height: 1.05208vw;
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title .field-item, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title .field-item, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title .field-item {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title .field-item, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title .field-item, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title .field-item {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 @media (min-width: 1901px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
     font-size: 18px;
     line-height: 20px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
     font-size: 1.09375vw;
     line-height: 1.40625vw;
   }
 }
 @media (max-width: 1024px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
     font-size: 1.36719vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
     font-size: 1.69271vw;
     line-height: 1.75781vw;
   }
 }
 @media (max-width: 640px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta .title {
     font-size: 2.03125vw;
     line-height: 2.10938vw;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
   left: 4%;
   height: 2.52499vw;
   margin-top: -1.26249vw;
   width: 2.52499vw;
 }
 @media (min-width: 1901px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
     height: 48px;
     margin-top: -24px;
     width: 48px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
     height: 2.65625vw;
     margin-top: -1.32813vw;
     width: 2.65625vw;
   }
 }
 @media (max-width: 1024px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
     height: 3.32031vw;
     margin-top: -1.66016vw;
     width: 3.32031vw;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon {
     height: 4.6875vw;
     margin-top: -2.34375vw;
     width: 4.6875vw;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
+.full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
   padding-left: calc(8% + 2.52499vw);
 }
 @media (min-width: 1901px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
     padding-left: calc(8% + 48px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
     padding-left: calc(8% + 2.65625vw);
   }
 }
 @media (max-width: 1024px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
     padding-left: calc(8% + 3.32031vw);
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .video-promo.file .meta-icon ~ .meta {
     padding-left: calc(8% + 4.6875vw);
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper {
+.full-episodes-block.carousel-block .carousel ul li .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper {
   background: none;
   bottom: 0;
   height: 81px;
@@ -2230,22 +2230,22 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   z-index: 1;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper {
+  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper {
     height: 87px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper {
+  .full-episodes-block.carousel-block .carousel ul li .meta-wrapper, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper {
     height: 32.4%;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta-wrapper-inner, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper-inner, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper-inner {
+.full-episodes-block.carousel-block .carousel ul li .meta-wrapper-inner, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper-inner, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-wrapper-inner {
   height: 100%;
   display: table;
   position: relative;
   width: 100%;
 }
-.full-episodes-block.carousel-block .carousel ul li .meta-back, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-back, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-back {
+.full-episodes-block.carousel-block .carousel ul li .meta-back, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-back, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-back {
   background: #323232;
   bottom: 0;
   height: 100%;
@@ -2253,121 +2253,121 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   position: absolute;
   width: 100%;
 }
-.full-episodes-block.carousel-block .carousel ul li .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta {
+.full-episodes-block.carousel-block .carousel ul li .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta {
   padding-left: 4%;
 }
-.full-episodes-block.carousel-block .carousel ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
+.full-episodes-block.carousel-block .carousel ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
   font-size: 11px;
 }
-.full-episodes-block.carousel-block .carousel ul li .meta .caption span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
+.full-episodes-block.carousel-block .carousel ul li .meta .caption span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   line-height: 18px;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
     font-size: 10px;
     line-height: 16px;
   }
 }
 @media (max-width: 480px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption span {
     font-size: 8px;
     line-height: 14px;
   }
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
     font-size: 1.71875vw;
     line-height: 2;
   }
 }
 @media (max-width: 480px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
+  .full-episodes-block.carousel-block .carousel ul li .meta .caption, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption {
     font-size: 9.5px;
   }
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title {
     font-size: 18px;
     line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title {
     font-size: 2.5vw;
     line-height: 1.4;
   }
 }
 @media (max-width: 480px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title {
+  .full-episodes-block.carousel-block .carousel ul li .meta .title, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title {
     font-size: 13px;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
+.full-episodes-block.carousel-block .carousel ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 11px;
   letter-spacing: 0.75px;
 }
-.full-episodes-block.carousel-block .carousel ul li .meta .additional span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
+.full-episodes-block.carousel-block .carousel ul li .meta .additional span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   line-height: 18px;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
     font-size: 10px;
     line-height: 16px;
   }
 }
 @media (max-width: 480px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional span, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span {
     font-size: 8px;
     line-height: 14px;
   }
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
     font-size: 13px;
     line-height: 20px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
     font-size: 1.71875vw;
     line-height: 2;
   }
 }
 @media (max-width: 480px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
+  .full-episodes-block.carousel-block .carousel ul li .meta .additional, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional {
     font-size: 9.5px;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
+.full-episodes-block.carousel-block .carousel ul li .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
   left: 4%;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
     height: 47px;
     left: 20px;
     margin-top: -24px;
@@ -2375,22 +2375,22 @@ body:not(.show-new-design) .consum-sidebar .episodes-list-slider.horizontal li .
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
     height: 6.25vw;
     margin-top: -3.125vw;
     width: 6.25vw;
   }
 }
-.full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
+.full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
   padding-left: 60px;
 }
 @media (min-width: 1601px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
     padding-left: 80px;
   }
 }
 @media (max-width: 768px) {
-  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
+  .full-episodes-block.carousel-block .carousel ul li .meta-icon ~ .meta, body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
     padding-left: calc(8% + 6.25vw);
   }
 }
@@ -4682,7 +4682,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
   color: #cdcdcd;
   font-family: "opensansregular", sans-serif;
   font-size: 1.40625vw;
-  line-height: 1.2;
+  line-height: 1.6875vw;
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: none;
@@ -4704,12 +4704,13 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 @media (min-width: 1601px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
     font-size: 22.5px;
+    line-height: 27px;
     max-height: 85px;
   }
 }
 @media (max-width: 768px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
-    line-height: 1.4;
+    line-height: 3.15vw;
     font-size: 2.25vw;
     max-height: 6.3vw !important;
   }
@@ -4717,6 +4718,7 @@ body:not(.show-new-design) .landing-page-container .landing-items-blocks.all-sho
 @media (max-width: 640px) {
   .articles-block .articles-wrapper li .usa-articles-promo .meta .caption {
     font-size: 3.75vw;
+    line-height: 5.25vw;
     max-height: 10.5vw !important;
   }
 }
@@ -15854,7 +15856,7 @@ body:not(.show-new-design) .consum-sidebar {
 }
 @media (min-width: 2500px) {
   body:not(.show-new-design) .consum-sidebar.sticky-sidebar {
-    left: calc(1867.5px + (100% - 2500px)/2);
+    left: calc(1867.5px + (100% - 2500px)/2) !important;
     right: auto;
     width: 628px;
   }
@@ -16418,6 +16420,47 @@ body:not(.show-new-design) .consum-sidebar .download-app {
 @media (max-width: 640px) {
   body:not(.show-new-design) .consum-sidebar .download-app {
     height: 56vw;
+  }
+}
+body:not(.show-new-design) .consum-sidebar .download-app.promo-enable .download-app-wrapper {
+  display: none;
+}
+body:not(.show-new-design) .consum-sidebar .download-app .live-promo {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+body:not(.show-new-design) .consum-sidebar .download-app .live-promo .live-promo-wrapper {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+@media (max-width: 768px) {
+  body:not(.show-new-design) .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
+    max-width: 100vw;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  body:not(.show-new-design) .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
+    max-width: calc(100vw - 340px);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  body:not(.show-new-design) .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
+    max-height: calc(((100vw - 320px)*0.5625) - 250px);
+    max-width: 320px;
+  }
+}
+@media (min-width: 1281px) {
+  body:not(.show-new-design) .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
+    max-height: calc(42.01875vw - 250px);
+    max-width: 25vw;
+  }
+}
+@media (min-width: 2500px) {
+  body:not(.show-new-design) .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
+    max-height: calc(1093.75px - 250px);
+    max-width: 632px;
   }
 }
 body:not(.show-new-design) .consum-sidebar .download-app .download-app-wrapper {
@@ -17182,31 +17225,31 @@ body:not(.show-new-design).consumptionator-video-page .video-block .consum-sideb
   }
 }
 
-body:not(.show-new-design).consumptionator-page .video-block, .page-videos-live .video-block {
+body:not(.show-new-design).consumptionator-page .video-block, body:not(.show-new-design).page-videos-live .video-block {
   margin: 0;
   overflow: hidden;
   padding: 0;
   position: relative;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block:after, .page-videos-live .video-block:after {
+body:not(.show-new-design).consumptionator-page .video-block:after, body:not(.show-new-design).page-videos-live .video-block:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (min-width: 1281px) {
-  body:not(.show-new-design).consumptionator-page .video-block, .page-videos-live .video-block {
+  body:not(.show-new-design).consumptionator-page .video-block, body:not(.show-new-design).page-videos-live .video-block {
     max-height: 1093.75px;
     max-width: 2500px;
     margin: 0 auto;
   }
 }
 @media (max-width: 1024px) {
-  body:not(.show-new-design).consumptionator-page .video-block, .page-videos-live .video-block {
+  body:not(.show-new-design).consumptionator-page .video-block, body:not(.show-new-design).page-videos-live .video-block {
     height: auto;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper {
   float: left;
   height: auto;
   position: relative;
@@ -17215,24 +17258,24 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper, .p
   /*old css end*/
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper {
     width: calc(100% - 320px);
     z-index: 1;
   }
 }
 @media (max-width: 1024px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper, .page-videos-live .video-block .player-wrapper {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper {
     width: 100%;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper:hover .player-thumbnail img, .page-videos-live .video-block .player-wrapper:hover .player-thumbnail img {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper:hover .player-thumbnail img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper:hover .player-thumbnail img {
   opacity: .2;
   transition: opacity 0.3s ease-in-out;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper > .node, .page-videos-live .video-block .player-wrapper > .node {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper > .node, body:not(.show-new-design).page-videos-live .video-block .player-wrapper > .node {
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help, .page-videos-live .video-block .player-wrapper .tve-help {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help {
   background-color: #161616;
   border: 1px solid #4b4b4b;
   display: none;
@@ -17242,76 +17285,76 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tv
   width: 100%;
   z-index: 1;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download, .page-videos-live .video-block .player-wrapper .tve-help .tve-download {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-download {
   padding-top: 20px;
   position: relative;
   top: 82px;
 }
 @media (max-width: 644px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download, .page-videos-live .video-block .player-wrapper .tve-help .tve-download {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-download {
     font-size: 11px;
     line-height: 16px;
     top: -6px;
   }
 }
 @media (min-width: 1275px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download, .page-videos-live .video-block .player-wrapper .tve-help .tve-download {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-download {
     font-size: 20px;
     line-height: 30px;
     top: 102px;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link, .page-videos-live .video-block .player-wrapper .tve-help .tve-download-link {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-download-link {
   position: relative;
   top: 100px;
   left: -14px;
 }
 @media (max-width: 644px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link, .page-videos-live .video-block .player-wrapper .tve-help .tve-download-link {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-download-link {
     left: -4px;
     top: -3px;
   }
 }
 @media (min-width: 1275px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link, .page-videos-live .video-block .player-wrapper .tve-help .tve-download-link {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-download-link {
     top: 120px;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a:after, .page-videos-live .video-block .player-wrapper .tve-help .tve-download-link a:after {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a:after, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-download-link a:after {
   content: "";
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a img, .page-videos-live .video-block .player-wrapper .tve-help .tve-download-link a img {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-download-link a img {
   height: 35px;
   padding-left: 29px;
 }
 @media (max-width: 644px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a img, .page-videos-live .video-block .player-wrapper .tve-help .tve-download-link a img {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-download-link a img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-download-link a img {
     padding-left: 9px;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .arrow, .page-videos-live .video-block .player-wrapper .tve-help .arrow {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .arrow, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .arrow {
   position: absolute;
   right: 0;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-msg, .page-videos-live .video-block .player-wrapper .tve-help .tve-msg {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-msg, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-msg {
   position: relative;
   top: 52px;
 }
 @media (max-width: 644px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-msg, .page-videos-live .video-block .player-wrapper .tve-help .tve-msg {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-msg, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-msg {
     top: 14px;
     font-size: 11px;
     line-height: 16px;
   }
 }
 @media (min-width: 1275px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-msg, .page-videos-live .video-block .player-wrapper .tve-help .tve-msg {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-msg, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-msg {
     font-size: 20px;
     line-height: 30px;
     top: 82px;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-close, .page-videos-live .video-block .player-wrapper .tve-help .tve-close {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-close, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-close {
   float: right;
   position: relative;
   top: 112px;
@@ -17320,20 +17363,20 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tv
   color: #0AB6E8;
 }
 @media (max-width: 644px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-close, .page-videos-live .video-block .player-wrapper .tve-help .tve-close {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-close, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-close {
     top: 3px;
   }
 }
 @media (min-width: 1275px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-close, .page-videos-live .video-block .player-wrapper .tve-help .tve-close {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-close, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-close {
     top: 250px;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-close > img, .page-videos-live .video-block .player-wrapper .tve-help .tve-close > img {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help .tve-close > img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help .tve-close > img {
   padding-right: 5px;
   padding-bottom: 1px;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:before, .page-videos-live .video-block .player-wrapper .tve-help:before {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:before, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help:before {
   position: absolute;
   content: "";
   display: block;
@@ -17346,7 +17389,7 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tv
   z-index: 106;
 }
 @media (max-width: 644px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:before, .page-videos-live .video-block .player-wrapper .tve-help:before {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:before, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help:before {
     border-bottom: 14px solid #1f1f1f;
     border-right: 14px solid transparent;
     top: 158px;
@@ -17355,14 +17398,14 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tv
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:before, .page-videos-live .video-block .player-wrapper .tve-help:before {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:before, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help:before {
     border-bottom: 14px solid #1f1f1f;
     border-right: 14px solid transparent;
     top: 318px;
     left: 16%;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:after, .page-videos-live .video-block .player-wrapper .tve-help:after {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:after, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help:after {
   position: absolute;
   content: "";
   display: block;
@@ -17375,7 +17418,7 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tv
   z-index: 105;
 }
 @media (max-width: 644px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:after, .page-videos-live .video-block .player-wrapper .tve-help:after {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:after, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help:after {
     border-bottom: 14px solid #4b4b4b;
     border-right: 14px solid transparent;
     top: 156px;
@@ -17384,31 +17427,31 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tv
   }
 }
 @media (min-width: 645px) and (max-width: 959px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:after, .page-videos-live .video-block .player-wrapper .tve-help:after {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .tve-help:after, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .tve-help:after {
     border-bottom: 14px solid #4b4b4b;
     border-right: 14px solid transparent;
     top: 316px;
     left: 16%;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper {
   line-height: 1;
   height: 0;
   position: relative;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth + body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth + .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth + body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth + body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player {
   opacity: 0;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player {
   padding-bottom: 56.25%;
   opacity: 0;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player.show-section, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player.show-section {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player.show-section, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player.show-section {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .geo-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .geo-error {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .geo-error, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .geo-error {
   background-image: url("../images/geo-error.jpeg");
   background-position: center center;
   background-repeat: no-repeat;
@@ -17419,14 +17462,14 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   height: 100%;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .geo-error a, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .geo-error a {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .geo-error a, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .geo-error a {
   display: block;
   font-size: 0;
   line-height: 0;
   height: 100%;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .flash-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .flash-error {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .flash-error, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .flash-error {
   background-image: url("../images/flash-error.jpeg");
   background-position: center center;
   background-repeat: no-repeat;
@@ -17437,14 +17480,14 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   height: 100%;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .flash-error a, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .flash-error a {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .flash-error a, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .flash-error a {
   display: block;
   font-size: 0;
   line-height: 0;
   height: 100%;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .player-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .player-error {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .player-error, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .player-error {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -17458,7 +17501,7 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   text-align: center;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth {
   left: 0;
   top: 0;
   position: absolute;
@@ -17467,7 +17510,7 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   width: 100%;
   z-index: 1;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .auth-msg-wrap, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .auth-msg-wrap {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .auth-msg-wrap, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .auth-msg-wrap {
   position: absolute;
   left: 0;
   top: 0;
@@ -17475,7 +17518,7 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   width: 100%;
   z-index: 2;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail {
   position: absolute;
   left: 0;
   top: 0;
@@ -17483,16 +17526,16 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   width: 100%;
   z-index: 1;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail.hide-section, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail.hide-section {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail.hide-section, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail.hide-section {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail img {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail img {
   opacity: 1;
   height: 100%;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading {
   margin: -20px 0 0 -20px;
   display: none;
   position: absolute;
@@ -17504,10 +17547,10 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   -webkit-animation: video-spinner 1s infinite linear;
   animation: video-spinner 1s infinite linear;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading.show-spinner, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading.show-spinner {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading.show-spinner, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading.show-spinner {
   display: block;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading:before, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading:before {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading:before, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail .video-loading:before {
   color: #ffffff;
   content: "\e62d";
   display: block;
@@ -17526,16 +17569,16 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   -moz-osx-font-smoothing: grayscale;
 }
 body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover .locked-msg,
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover .sign-in-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper:hover .locked-msg,
-.page-videos-live .video-block .player-wrapper .video-player-wrapper:hover .sign-in-wrapper {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper:hover .sign-in-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper:hover .locked-msg,
+body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper:hover .sign-in-wrapper {
   display: block;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .pdk-player-wrap, .page-videos-live .video-block .player-wrapper .video-player-wrapper .pdk-player-wrap {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .pdk-player-wrap, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .pdk-player-wrap {
   position: absolute;
   left: 0;
   top: 0;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper {
   display: none;
   left: 0;
   padding: 20px 0;
@@ -17545,22 +17588,22 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   width: 100%;
 }
 @media (max-width: 1280px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper {
     padding: 15px 0;
   }
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button, .page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button {
     padding: 15px 50px 15px 15px;
   }
 }
 @media (max-width: 1024px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper {
     padding: 10px 0;
   }
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button, .page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button {
     font-size: 12px;
     padding: 10px 40px 10px 10px;
   }
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button:after {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button:after, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-wrapper .sign-in-button:after {
     font-size: 12px;
     line-height: 12px;
     margin-right: -6px;
@@ -17568,14 +17611,14 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
     right: 20px;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-button, .page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-button {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-button, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-button {
   background: #ffffff;
   color: #000000;
   padding: 20px 50px 20px 20px;
   position: relative;
   text-transform: uppercase;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-button:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-button:after {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .sign-in-button:after, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .sign-in-button:after {
   color: #000000;
   content: "\e608";
   display: block;
@@ -17588,25 +17631,25 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   margin-top: -8px;
   right: 25px;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper, .page-videos-live .video-block .player-wrapper .video-player-wrapper {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper {
   background: green;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .sign-in-button, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .sign-in-button {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .sign-in-button, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .sign-in-button {
   display: none;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive:hover {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive:hover {
   cursor: default;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover a:after, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive:hover a:after {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover a:after, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive:hover a:after {
   display: none;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive:hover img {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive:hover img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive:hover img {
   opacity: 1;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive {
   height: auto;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap {
   background: #3D3D3D;
   padding: 20px;
   height: 100%;
@@ -17614,90 +17657,90 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   width: 100%;
 }
 @media (max-width: 768px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner-wrap {
     padding: 0;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner {
   height: 100%;
   width: 100%;
 }
 @media (max-width: 768px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner {
     background: transparent;
     height: auto;
     margin: 0 auto;
     max-width: 660px;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
   float: left;
   margin-bottom: 30px;
   width: 32vw;
   height: 18vw;
 }
 @media (max-width: 1280px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
     margin-bottom: 15px;
   }
 }
 @media (max-width: 1024px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
     margin-bottom: 40px;
   }
 }
 @media (max-width: 768px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
     margin-bottom: 20px;
     margin-top: 20px;
   }
 }
 @media (max-width: 640px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
     margin-bottom: 10px;
     width: inherit;
     height: inherit;
     display: none !important;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img {
   height: 100%;
   width: 100%;
 }
 @media (max-width: 640px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img > img {
     display: none;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
   float: left;
   font-size: 24px;
   margin-left: 50px;
   margin-top: 65px;
 }
 @media (max-width: 1280px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
     margin-left: 20px;
     margin-top: 53px;
     font-size: 20px;
   }
 }
 @media (max-width: 1024px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
     margin-left: 40px;
     margin-top: 53px;
     font-size: 20px;
   }
 }
 @media (max-width: 768px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
     margin-left: 10px;
     margin-top: 65px;
     font-size: 14px;
   }
 }
 @media (max-width: 640px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .expired-text {
     color: #9AE0EB;
     float: none;
     font-size: 18px;
@@ -17706,34 +17749,34 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
     text-align: center;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
   clear: both;
   font-size: 20px;
   margin-bottom: 24px;
 }
 @media (max-width: 1280px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
     margin-bottom: 10px;
   }
 }
 @media (max-width: 1024px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
     margin-bottom: 24px;
   }
 }
 @media (max-width: 640px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-text {
     font-size: 16px;
     margin-bottom: 10px;
     margin-top: 10px;
     text-align: center;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block {
   text-align: center;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
   display: inline-block;
   height: 16.4vw;
   margin-right: 20px;
@@ -17743,52 +17786,52 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   width: 30%;
 }
 @media (min-width: 2500px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
     height: 410px;
   }
 }
 @media (max-width: 1280px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
     height: 14vw;
     margin-right: 12px;
     width: calc(30% - 30px);
   }
 }
 @media (max-width: 1024px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
     height: 20vw;
     width: calc(30% - 40px);
   }
 }
 @media (max-width: 768px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
     height: 23vw;
     width: 30%;
   }
 }
 @media (max-width: 640px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file {
     height: 29.8vw;
     margin-right: 0;
     width: 34vw;
   }
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child {
     display: none;
   }
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:first-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:first-child {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:first-child, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:first-child {
     margin-right: 1.5%;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file:last-child {
   margin-right: 0;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file > a, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file > a {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file > a, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .file > a {
   display: block;
   height: 100%;
   position: relative;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta {
   display: table-cell;
   max-width: 100px;
   overflow: hidden;
@@ -17798,52 +17841,52 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   vertical-align: middle;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
   left: 4%;
   margin-top: -19px;
   position: absolute;
   top: 50%;
 }
 @media (min-width: 1601px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
     height: 47px;
     margin-top: -24px;
     width: 47px;
   }
 }
 @media (min-width: 641px) and (max-width: 1280px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
 }
 @media (max-width: 480px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
     height: 30px;
     margin-top: -15px;
     width: 30px;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
   padding-left: calc(8% + 37px);
 }
 @media (min-width: 1601px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
     padding-left: calc(8% + 47px);
   }
 }
 @media (min-width: 641px) and (max-width: 1280px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
 @media (max-width: 480px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon ~ .meta {
     padding-left: calc(8% + 30px);
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg {
   display: none;
   left: 5%;
   position: absolute;
@@ -17852,58 +17895,58 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   width: 90%;
   z-index: 2;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
   display: block;
   font-size: 26px;
   line-height: 45px;
   text-transform: uppercase;
 }
 @media (max-width: 1280px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
     font-size: 20px;
     line-height: 36px;
   }
 }
 @media (max-width: 768px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
     font-size: 15px;
     line-height: 26px;
   }
 }
 @media (max-width: 480px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
     font-size: 10px;
     line-height: 18px;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
   display: block;
   font-size: 16px;
 }
 @media (max-width: 1024px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
     font-size: 14px;
   }
 }
 @media (max-width: 640px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
     font-size: 12px;
   }
 }
 @media (max-width: 480px) {
-  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line, .page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
+  body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .second-line {
     font-size: 8px;
   }
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .pdk-player-wrap, .page-videos-live .video-block .player-wrapper .video-player-wrapper .pdk-player-wrap {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .pdk-player-wrap, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .pdk-player-wrap {
   height: 100%;
   width: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper iframe, .page-videos-live .video-block .player-wrapper .video-player-wrapper iframe {
+body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper iframe, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper iframe {
   height: 100% !important;
   width: 100% !important;
 }
-body:not(.show-new-design).consumptionator-page .video-block #player-login, .page-videos-live .video-block #player-login {
+body:not(.show-new-design).consumptionator-page .video-block #player-login, body:not(.show-new-design).page-videos-live .video-block #player-login {
   height: 100%;
   position: absolute;
   left: 0;
@@ -17911,120 +17954,120 @@ body:not(.show-new-design).consumptionator-page .video-block #player-login, .pag
   width: 100%;
   z-index: 1;
 }
-body:not(.show-new-design).consumptionator-page .video-block #player-login .borealis, .page-videos-live .video-block #player-login .borealis {
+body:not(.show-new-design).consumptionator-page .video-block #player-login .borealis, body:not(.show-new-design).page-videos-live .video-block #player-login .borealis {
   height: 100%;
 }
-body:not(.show-new-design).consumptionator-page .video-block #player-login img, .page-videos-live .video-block #player-login img {
+body:not(.show-new-design).consumptionator-page .video-block #player-login img, body:not(.show-new-design).page-videos-live .video-block #player-login img {
   height: 100%;
   width: 100%;
 }
 
-.page-videos-live .expandable-container {
+body:not(.show-new-design).page-videos-live .expandable-container {
   margin: 0;
 }
-.page-videos-live .video-block {
+body:not(.show-new-design).page-videos-live .video-block {
   margin-bottom: 0;
 }
 @media (min-width: 1281px) {
-  .page-videos-live .video-block {
+  body:not(.show-new-design).page-videos-live .video-block {
     height: 42.01875vw;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block {
+  body:not(.show-new-design).page-videos-live .video-block {
     height: calc((100vw - 320px)*0.5625);
     overflow: visible;
   }
 }
-.page-videos-live .video-block #videoplayer {
+body:not(.show-new-design).page-videos-live .video-block #videoplayer {
   position: absolute;
   left: 0;
   top: 0;
 }
-.page-videos-live .video-block .consum-sidebar .download-app {
+body:not(.show-new-design).page-videos-live .video-block .consum-sidebar .download-app {
   display: none;
 }
 @media (max-width: 1024px) {
-  .page-videos-live .video-block .consum-sidebar .download-app {
+  body:not(.show-new-design).page-videos-live .video-block .consum-sidebar .download-app {
     display: table;
   }
 }
-.page-videos-live .video-block .consum-sidebar .advert {
+body:not(.show-new-design).page-videos-live .video-block .consum-sidebar .advert {
   height: auto;
   padding: 0;
 }
 @media (min-width: 1025px) {
-  .page-videos-live .video-block .consum-sidebar .advert {
+  body:not(.show-new-design).page-videos-live .video-block .consum-sidebar .advert {
     height: 250px !important;
     position: relative;
   }
 }
 @media (max-width: 640px) {
-  .page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .slider-horizontal {
+  body:not(.show-new-design).page-videos-live .video-block .consum-sidebar .episodes-list-slider.horizontal .slider-horizontal {
     top: 0 !important;
   }
 }
-.page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
+body:not(.show-new-design).page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
   height: calc(100% - 250px);
 }
 @media (max-width: 1024px) {
-  .page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
+  body:not(.show-new-design).page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
     height: auto;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-related) {
+  body:not(.show-new-design).page-videos-live .video-block:not(.show-app):not(.show-related) {
     margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-related) .player-wrapper {
+  body:not(.show-new-design).page-videos-live .video-block:not(.show-app):not(.show-related) .player-wrapper {
     margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-related) .consum-sidebar .items-block {
+  body:not(.show-new-design).page-videos-live .video-block:not(.show-app):not(.show-related) .consum-sidebar .items-block {
     height: auto;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-related) .consum-sidebar .download-app {
+  body:not(.show-new-design).page-videos-live .video-block:not(.show-app):not(.show-related) .consum-sidebar .download-app {
     display: table;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block:not(.show-app):not(.show-related) .consum-sidebar .more-items {
+  body:not(.show-new-design).page-videos-live .video-block:not(.show-app):not(.show-related) .consum-sidebar .more-items {
     background: none !important;
   }
 }
-.page-videos-live .video-block.show-app .consum-sidebar .download-app {
+body:not(.show-new-design).page-videos-live .video-block.show-app .consum-sidebar .download-app {
   display: table;
 }
 @media (min-width: 1025px) {
-  .page-videos-live .video-block.show-related.show-app .consum-sidebar {
+  body:not(.show-new-design).page-videos-live .video-block.show-related.show-app .consum-sidebar {
     height: 45vw;
     max-height: 1125px !important;
   }
 }
 @media (min-width: 1025px) {
-  .page-videos-live .video-block.show-related {
+  body:not(.show-new-design).page-videos-live .video-block.show-related {
     height: auto;
     max-height: none;
   }
 }
 @media (min-width: 1281px) {
-  .page-videos-live .video-block.show-related .player-wrapper {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .player-wrapper {
     height: 42.01875vw;
     max-height: 1093.75px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .player-wrapper {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .player-wrapper {
     height: calc((100vw - 320px) * 0.5625);
   }
 }
 @media (min-width: 1025px) {
-  .page-videos-live .video-block.show-related .consum-sidebar {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .consum-sidebar {
     left: auto;
     float: right;
     overflow: hidden;
@@ -18033,12 +18076,12 @@ body:not(.show-new-design).consumptionator-page .video-block #player-login img, 
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .consum-sidebar {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .consum-sidebar {
     width: 320px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .consum-sidebar .more-items {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .consum-sidebar .more-items {
     bottom: 0;
     left: 0;
     right: auto;
@@ -18047,61 +18090,61 @@ body:not(.show-new-design).consumptionator-page .video-block #player-login img, 
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .consum-sidebar .more-items a {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .consum-sidebar .more-items a {
     padding: 0 25px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .consum-sidebar .items-block {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .consum-sidebar .items-block {
     position: relative;
     right: auto;
     top: auto;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .consum-sidebar .items-block-title h2 {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .consum-sidebar .items-block-title h2 {
     width: 100%;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.vertical {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.vertical {
     display: block;
     height: calc(100% - 90px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.horizontal {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.horizontal {
     display: none;
   }
 }
-.page-videos-live .video-block.show-related .section-title {
+body:not(.show-new-design).page-videos-live .video-block.show-related .section-title {
   margin-top: 40px;
 }
 @media (min-width: 1025px) {
-  .page-videos-live .video-block.show-related .section-title {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .section-title {
     float: left;
     width: 74.7%;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .section-title {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .section-title {
     width: calc(100% - 320px);
   }
 }
 @media (max-width: 1024px) {
-  .page-videos-live .video-block.show-related .section-title {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .section-title {
     clear: both;
     padding-top: 40px;
   }
 }
 @media (min-width: 1281px) {
-  .page-videos-live .video-block.show-related .gallery-wrapper {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .gallery-wrapper {
     height: 42.01875vw;
     max-height: 1093.75px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .gallery-wrapper {
+  body:not(.show-new-design).page-videos-live .video-block.show-related .gallery-wrapper {
     height: calc((100vw - 320px) * 0.5625);
   }
 }
@@ -44766,6 +44809,16 @@ html.no-scroll, body.no-scroll {
     margin-top: 0;
   }
 }
+@media (min-width: 769px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block:not(.sponsored-enable) .show-menu-tab + .social-block {
+    top: calc(((100% - 4.4375vw - 2px)/2) - 0.78125vw + 0.625vw);
+  }
+}
+@media (min-width: 1601px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block:not(.sponsored-enable) .show-menu-tab + .social-block {
+    top: calc(((100% - 73px)/2) - 12.5px + 10px);
+  }
+}
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .bottom-menu-block-inner {
   background: #000000;
   margin: 0 auto;
@@ -44905,14 +44958,14 @@ html.no-scroll, body.no-scroll {
 @media (min-width: 769px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {
     right: 1.25vw;
-    top: calc(((100% - 4.4375vw - 2px)/2) - 0.78125vw + 0.625vw);
+    top: calc(((100% - 2px)/2) - 0.78125vw + 0.625vw);
     position: absolute;
   }
 }
 @media (min-width: 1601px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .social-block {
     right: 20px;
-    top: calc(((100% - 73px)/2) - 12.5px + 10px);
+    top: calc(((100% - 2px)/2) - 12.5px + 10px);
   }
 }
 @media (max-width: 768px) {

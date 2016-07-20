@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -9490,26 +9490,18 @@ header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-p
 header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon {
   border: 2px solid white;
   border-radius: 50%;
-  height: 2.78801vw;
-  width: 2.78801vw;
-}
-@media (min-width: 1901px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon {
-    height: 53px;
-    width: 53px;
-  }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before {
   content: "\e627";
   display: block;
   font-family: "ico-font";
-  font-size: 1.57812vw;
-  line-height: 2.78801vw;
+  font-size: 2.36718vw;
+  line-height: 4.26092vw;
 }
 @media (min-width: 1901px) {
   header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before {
-    font-size: 30px;
-    line-height: 53px;
+    font-size: 45px;
+    line-height: 81px;
   }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .title {

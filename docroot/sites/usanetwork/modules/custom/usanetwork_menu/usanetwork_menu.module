@@ -1390,7 +1390,7 @@ function _usanetwork_menu_consumptionator_block_person($node) {
       $image = $entity_wrapper->field_usa_character_thumb->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
-      (!empty($node->body) ? $entity_wrapper->body->value->value() : '');
+      (!empty($node->body) ? $entity_wrapper->body->value()['value'] : '');
     $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
     $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
     if (!empty($advert_block['content'])) {
@@ -1429,7 +1429,7 @@ function _usanetwork_menu_consumptionator_block_quiz($node) {
       $image = $entity_wrapper->field_usa_og_image->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
-      (!empty($node->body) ? $entity_wrapper->body->value->value() : '');
+      (!empty($node->body) ? $entity_wrapper->body->value()['value'] : '');
     $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
     $description = preg_replace('/<iframe.*?>(.*)<\/iframe>/', '', $description);
     $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
@@ -1467,7 +1467,7 @@ function _usanetwork_menu_consumptionator_block_consumpt_post($node) {
       $image = $entity_wrapper->field_post_cover->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
-      (!empty($node->field_summary) ? $entity_wrapper->field_summary->value->value() : '');
+      (!empty($node->field_summary) ? $entity_wrapper->field_summary->value()['value'] : '');
     $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
 
     //Sponsored MPS

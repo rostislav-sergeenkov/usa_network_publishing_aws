@@ -731,41 +731,101 @@ function usanetwork_tv_shows_image_default_styles() {
     ),
   );
 
-  $styles['928x714'] = array(
+  $styles['926x722'] = array(
     'effects' => array(
       array(
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
-          'width' => 928,
-          'height' => 714,
+          'width' => 926,
+          'height' => 722,
         ),
         'weight' => 0,
       ),
       array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 928,
-          'height' => 714,
+          'width' => 926,
+          'height' => 722,
         ),
         'weight' => 1,
       ),
     ),
   );
-  $styles['457x351'] = array(
+  $styles['926x353'] = array(
     'effects' => array(
       array(
         'name' => 'focal_point_scale_and_crop',
         'data' => array(
-          'width' => 457,
-          'height' => 351,
+          'width' => 926,
+          'height' => 353,
         ),
         'weight' => 0,
       ),
       array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 457,
-          'height' => 351,
+          'width' => 926,
+          'height' => 353,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['719x276'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 719,
+          'height' => 276,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 719,
+          'height' => 276,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['455x353'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 455,
+          'height' => 353,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 455,
+          'height' => 353,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['455x722'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 455,
+          'height' => 722,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 455,
+          'height' => 722,
         ),
         'weight' => 1,
       ),
@@ -886,6 +946,26 @@ function usanetwork_tv_shows_image_default_styles() {
         'data' => array(
           'width' => 719,
           'height' => 414,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['719x404'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 719,
+          'height' => 404,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 719,
+          'height' => 404,
         ),
         'weight' => 1,
       ),
@@ -1266,6 +1346,46 @@ function usanetwork_tv_shows_image_default_styles() {
         'data' => array(
           'width' => 336,
           'height' => 251,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['354x276'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 354,
+          'height' => 276,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 354,
+          'height' => 276,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+  $styles['354x564'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 354,
+          'height' => 564,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 354,
+          'height' => 564,
         ),
         'weight' => 1,
       ),
@@ -5434,7 +5554,7 @@ function usanetwork_tv_shows_best_of_block_get_layouts() {
       'items' => array(
         array(
           'desktop_type' => 'full',
-          'mobile_type' => 'half-horizontal',
+          'mobile_type' => 'full',
         ),
         array(
           'desktop_type' => 'quarter',
@@ -5456,7 +5576,7 @@ function usanetwork_tv_shows_best_of_block_get_layouts() {
     ),
     'type_b' => array(
       'name' => 'Type B',
-      '' => 6,
+      'number_of_items' => 6,
       'class' => 'type-b',
       'icon_path' => drupal_get_path('theme', 'aurora_usa') . '/images/layout-icons/BestOfBlocksIconsB.gif',
       'items' => array(
@@ -5492,20 +5612,20 @@ function usanetwork_tv_shows_best_of_block_get_layouts() {
 function usanetwork_tv_shows_best_of_block_get_styles_for_types() {
   return array(
     'half-vertical' => array(
-      'desktop' => 'thumbnail',
-      'mobile' => 'thumbnail',
+      'desktop' => '455x722',
+      'mobile' => '354x564',
     ),
     'half-horizontal' => array(
-      'desktop' => 'thumbnail',
-      'mobile' => '591x330',
+      'desktop' => '926x353',
+      'mobile' => '719x276',
     ),
     'full' => array(
-      'desktop' => '928x714',
-      'mobile' => 'thumbnail',
+      'desktop' => '926x722',
+      'mobile' => '719x404',
     ),
     'quarter' => array(
-      'desktop' => '457x351',
-      'mobile' => '291x234',
+      'desktop' => '455x353',
+      'mobile' => '354x276',
     ),
   );
 }

@@ -17895,7 +17895,6 @@ body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .vi
   width: 90%;
   z-index: 2;
 }
-body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg .first-line {
 @media (max-width: 480px) {
   body:not(.show-new-design).consumptionator-page .video-block .player-wrapper .video-player-wrapper .locked-msg, body:not(.show-new-design).page-videos-live .video-block .player-wrapper .video-player-wrapper .locked-msg {
     top: 35%;

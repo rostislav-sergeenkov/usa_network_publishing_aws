@@ -13,18 +13,20 @@
 }
 [id$="-field-best-of-block-format-und"] > div:nth-child(1) label {
   background: url("/sites/usanetwork/themes/aurora_usa/images/layout-icons/BestOfBlocksIconsA.gif");
+  background-position-x: 50px;
+  background-repeat: no-repeat;
 }
 [id$="-field-best-of-block-format-und"] > div:nth-child(2) label {
   background: url("/sites/usanetwork/themes/aurora_usa/images/layout-icons/BestOfBlocksIconsB.gif");
+  background-position-x: 50px;
+  background-repeat: no-repeat;
 }
 [id$="-field-best-of-block-format-und"] > div label {
-  background-size: 100%;
-  background-repeat: no-repeat;
   display: inline-block;
   height: 40px;
-  text-indent: -9999px;
+  line-height: 40px;
   vertical-align: middle!important;
-  width: 100px;
+  width: 150px;
 }
 [id$="-field-best-of-block-format-und"] > div input {
   display: inline-block;

@@ -308,7 +308,7 @@
                 .show-menu-tab {
                   .show-menu {
                     @include breakpoint($bp-768-width) {
-                     //max-height: calc(100vh - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
+                      //max-height: calc(100vh - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
                     }
                   }
                 }
@@ -777,6 +777,12 @@
 
       &.sponsored-enable {
         position: relative;
+        .show-menu {
+          @include breakpoint($bp-min-769-width) {
+            margin: 0 !important;
+            max-width: calc(100% - 25%);
+          }
+        }
         .show-menu-tab {
           text-align: left;
         }
@@ -885,6 +891,32 @@
               &:not(.active) {
                 @include breakpoint($bp-768-width) {
                   color: white !important;
+                }
+              }
+            }
+          }
+
+          // .show-menu
+          @supports (display: flex) {
+            & {
+              @include breakpoint($bp-min-769-width) {
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+              }
+              .show-menu-item {
+                @include breakpoint($bp-min-769-width) {
+                  float: none;
+                  flex-grow: 1;
+                }
+                a {
+                  @include breakpoint($bp-min-769-width) {
+                    white-space: nowrap;
+                    padding: 0 !important;
+                  }
                 }
               }
             }

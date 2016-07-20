@@ -699,6 +699,7 @@ function usanetwork_tv_shows_field_group_info() {
       0 => 'field_livetv_enable',
       1 => 'field_livetv_related',
       2 => 'field_livetv_right_rail',
+      3 => 'group_right_rail_promo',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -864,6 +865,35 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_required_information|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_right_rail_promo|node|tv_show|form';
+  $field_group->group_name = 'group_right_rail_promo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_livetv';
+  $field_group->data = array(
+    'label' => 'Right Rail Promo',
+    'weight' => '153',
+    'children' => array(
+      0 => 'field_promo_regular_image',
+      1 => 'field_promo_url',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Right Rail Promo',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $export['group_right_rail_promo|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

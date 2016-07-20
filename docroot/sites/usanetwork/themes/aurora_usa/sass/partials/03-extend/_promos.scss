@@ -3116,7 +3116,7 @@
         color: $usa-articles-color;
         font-family: $open-sans-regular;
         font-size: get-vw(18px, 1280);
-        line-height: 1.2;
+        line-height: get-vw(21.6px, 1280);
         overflow: hidden;
         text-overflow: ellipsis;
         text-transform: none;
@@ -3132,15 +3132,17 @@
         }
         @include breakpoint($bp-min-1601-width) {
           font-size: 22.5px;
+          line-height: 27px;
           max-height: 85px;
         }
         @include breakpoint($bp-768-width) {
-          line-height: 1.4;
+          line-height: get-vw(24.192px, 768);
           font-size: get-vw(17.28px, 768);
           max-height: get-vw(48.384px, 768)!important;
         }
         @include breakpoint($bp-640-width) {
           font-size: get-vw(24px, 640);
+          line-height: get-vw(33.6px, 640);
           max-height: get-vw(67.2px, 640)!important;
         }
       }

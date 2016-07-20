@@ -2704,7 +2704,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
           'show-color',
           'show-font',
         );
-        if (strtolower($show_menu_item_main_link[0]['title']) == 'email sign up') {
+        if ((strtolower($show_menu_item_main_link[0]['title']) == 'email sign up') || (strtolower($show_menu_item_main_link[0]['title']) == 'email')) {
           $classes[] = 'menu-sign-up';
           $show_menus[$key]['sign_up'] = TRUE;
         }

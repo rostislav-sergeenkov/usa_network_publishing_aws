@@ -21,8 +21,15 @@ function usanetwork_video_live_menu() {
     'type' => MENU_CALLBACK,
   );
   $items['ajax/render-video-live-related/%'] = array(
-    'title' => 'Video Live Right Rail',
+    'title' => 'Video Live Related',
     'page callback' => '_usanetwork_video_live_related_ajax',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['ajax/render-video-live-promo/%'] = array(
+    'title' => 'Video Live Promo',
+    'page callback' => '_usanetwork_video_live_promo_ajax',
     'page arguments' => array(2),
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -172,6 +179,48 @@ function _usanetwork_video_live_related_ajax($offset) {
   }
 }
 
+/**
+ * Live Video: Related Content Ajax Response
+ */
+function _usanetwork_video_live_promo_ajax($offset) {
+  $on_now_item = usanetwork_schedule_pull_on_now_item($offset, 'show_title');
+  if (!empty($on_now_item)) {
+
+    if (is_array($on_now_item)) {
+      $on_now_item = reset($on_now_item);
+    }
+
+    if (isset($on_now_item->nid)) {
+      $tv_show = node_load($on_now_item->nid);
+    }
+    if (isset($on_now_item->mid)) {
+      $tv_show = node_load($on_now_item->mid);
+    }
+
+    if (isset($tv_show)) {
+      $dynamic_content = _usanetwork_get_field_item('node', $tv_show, 'field_livetv_enable', 'value');
+
+      if ($dynamic_content == 1) {
+        $promo_image_uri = _usanetwork_get_field_item('node', $tv_show, 'field_promo_regular_image', 'uri');
+        $promo_image = file_create_url($promo_image_uri);
+        $promo_url = _usanetwork_get_field_item('node', $tv_show, 'field_promo_url', 'value');
+
+        if (!empty($promo_image) && !empty($promo_url)) {
+          $theme_variables = array(
+            'promo_image' => $promo_image,
+            'promo_url' => $promo_url,
+          );
+          $promo_content_response = theme('usanetwork_video_live_promo', $theme_variables);
+
+          return drupal_json_output(array(
+            'rendered' => $promo_content_response,
+          ));
+        }
+      }
+    }
+  }
+}
+
 /*
  * Implements hook_theme
  */
@@ -191,6 +240,13 @@ function usanetwork_video_live_theme($existing, $type, $theme, $path) {
         'color_css' => NULL,
       ),
       'template' => 'templates/usanetwork-video-live-quiz',
+    ),
+    'usanetwork_video_live_promo' => array(
+      'variables' => array(
+        'promo_image' => NULL,
+        'promo_url' => NULL,
+      ),
+      'template' => 'templates/usanetwork-video-live-promo',
     ),
   );
   return $themes;

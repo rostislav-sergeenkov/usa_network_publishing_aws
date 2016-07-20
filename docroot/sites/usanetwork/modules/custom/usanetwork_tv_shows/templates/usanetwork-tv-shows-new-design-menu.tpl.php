@@ -17,8 +17,8 @@
 </div>
 <div class="bottom-menu-block show-border <?php print (!empty($sponsored_path)) ? ' sponsored-enable' : ''; ?>">
   <div class="bottom-menu-block-inner">
-    <div class="show-menu-tab">
-      <?php if (!empty($show_menu_tab_items)): ?>
+    <?php if (!empty($show_menu_tab_items)): ?>
+      <div class="show-menu-tab">
         <ul class="show-menu menu">
           <?php foreach ($show_menu_tab_items as $show_menu_tab_item): ?>
             <li class="show-menu-item"><?php print $show_menu_tab_item['main_link']; ?>
@@ -32,8 +32,8 @@
             </li>
           <?php endforeach; ?>
         </ul>
-      <?php endif; ?>
-    </div>
+      </div>
+    <?php endif; ?>
     <div class="social-block">
       <div class="social-icons social-follow show-color show-font">
         <?php foreach ($social_icons as $social_link): ?>

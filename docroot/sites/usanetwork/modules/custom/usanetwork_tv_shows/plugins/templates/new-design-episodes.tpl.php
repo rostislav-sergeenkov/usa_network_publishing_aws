@@ -15,7 +15,7 @@ $main = $data['#content']['first_block'];
 
     <div class="image-block">
       <?php if (!empty($main['video_link'])) : ?>
-      <a href="<?php $main['video_link']; ?>">
+      <a href="<?php print $main['video_link']; ?>">
         <div class="meta-icon full-video-icon-default"></div>
       <?php endif; ?>
       <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">

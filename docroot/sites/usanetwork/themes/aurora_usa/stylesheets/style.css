@@ -34720,6 +34720,10 @@ body:not(.show-new-design) .usanetwork-aspot .social_meter .row-2 .social-meter-
     width: 100%;
   }
 }
+.aspot-and-episodes .show-aspot #aspot-usanetwork {
+  height: 100%;
+  width: 100%;
+}
 .aspot-and-episodes .show-aspot #ajax_aspot_show {
   height: 100%;
   width: 100%;

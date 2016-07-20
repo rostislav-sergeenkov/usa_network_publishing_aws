@@ -1,0 +1,15 @@
+name = Usanetwork Social Plugin
+description = Social WYSIWYG plugin.
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_social_plugin
+dependencies[] = features
+dependencies[] = filter
+dependencies[] = media_wysiwyg
+dependencies[] = token_filter
+dependencies[] = wysiwyg
+features[features_api][] = api:2
+features[filter][] = wysiwyg_social
+features[user_permission][] = use text format wysiwyg_social
+features[wysiwyg][] = wysiwyg_social

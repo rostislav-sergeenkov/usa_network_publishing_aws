@@ -1124,21 +1124,15 @@ header {
                     &.movie-play-icon {
                       border: 2px solid white;
                       border-radius: 50%;
-                      height: get-vw(53px, 1901);
-                      width: get-vw(53px, 1901);
-                      @include breakpoint($bp-min-1901-width) {
-                        height: 53px;
-                        width: 53px;
-                      }
                       &:before {
                         content: "\e627";
                         display: block;
                         font-family: $ico-font;
-                        font-size: get-vw(30px, 1901);
-                        line-height: get-vw(53px, 1901);
+                        font-size: get-vw(45px, 1901);
+                        line-height: get-vw(81px, 1901);
                         @include breakpoint($bp-min-1901-width) {
-                          font-size: 30px;
-                          line-height: 53px;
+                          font-size: 45px;
+                          line-height: 81px;
                         }
                       }
                     }

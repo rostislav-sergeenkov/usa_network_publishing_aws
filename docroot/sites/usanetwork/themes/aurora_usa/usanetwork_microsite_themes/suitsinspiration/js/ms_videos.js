@@ -87,14 +87,14 @@
     //ajax request
     getVideo: function (url, initialPageLoad, isAuth) {
       initialPageLoad = initialPageLoad || 0;
-      var videoContainer = $('#video-container'),
-          playerThumbnail = videoContainer.find('.video-image'),
+      var $videoContainer = $('#video-container'),
+          $playerThumbnail = $videoContainer.find('.video-image'),
           playerWrapSelector = '.file-video-mpx',
-          playerDesc = videoContainer.find('.video-player-desc'),
-          playerAuth = videoContainer.find('.video-auth-player-wrapper'),
-          playerNoAuth = videoContainer.find('.video-no-auth-player-wrapper'),
+          $playerDesc = $videoContainer.find('.video-player-desc'),
+          $playerAuth = $videoContainer.find('.video-auth-player-wrapper'),
+          $playerNoAuth = $videoContainer.find('.video-no-auth-player-wrapper'),
           msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false,
-          playerWrap;
+          $playerWrap;
 
       $.ajax({
         type: 'GET',
@@ -108,24 +108,24 @@
             player = data.player,
             preview_image = data.preview_image;
 
-        if (playerAuth.hasClass('active-player')) {
-          playerWrap = playerAuth.find(playerWrapSelector);
-          playerNoAuth.find(playerWrapSelector).html('<iframe class="base-iframe"></iframe>');
-          playerThumbnail.html(image);
-          playerWrap.html(player);
+        if ($playerAuth.hasClass('active-player')) {
+          $playerWrap = $playerAuth.find(playerWrapSelector);
+          $playerNoAuth.find(playerWrapSelector).html('<iframe class="base-iframe"></iframe>');
+          $playerThumbnail.html(image);
+          $playerWrap.html(player);
         }
-        if (playerNoAuth.hasClass('active-player')) {
-          playerWrap = playerNoAuth.find(playerWrapSelector);
-          playerAuth.find(playerWrapSelector).html('<iframe class="base-iframe"></iframe>');
-          playerWrap.html(player);
+        if ($playerNoAuth.hasClass('active-player')) {
+          $playerWrap = $playerNoAuth.find(playerWrapSelector);
+          $playerAuth.find(playerWrapSelector).html('<iframe class="base-iframe"></iframe>');
+          $playerWrap.html(player);
         }
 
-        playerWrap.find('iframe').eq(0).off('load');
-        playerDesc.html(description);
+        $playerWrap.find('iframe').eq(0).off('load');
+        $playerDesc.html(description);
 
         Drupal.behaviors.ms_videos.playerBind({
           isAuth: isAuth,
-          playerWrap: playerWrap,
+          playerWrap: $playerWrap,
           episodeRating: data['episode-rating'],
           episodeTitle: data['episode-title'],
           mpxGuid: data['mpx-guid']
@@ -156,11 +156,11 @@
       initialPageLoad = initialPageLoad || 0;
       var autoplay = autoplay || true,
           selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active',
-          activeVideoThumb = $(selector),
-          videoContainer = $('#video-container'),
-          dataPlayerId = activeVideoThumb.attr('data-player-id'),
-          dataFid = activeVideoThumb.attr('data-fid'),
-          dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
+          $activeVideoThumb = $(selector),
+          $videoContainer = $('#video-container'),
+          dataPlayerId = $activeVideoThumb.data('player-id'),
+          dataFid = $activeVideoThumb.data('fid'),
+          dataFullEpisode = $activeVideoThumb.data('full-episode'),
           ad_300x250 = $('#videos #ad300x250'),
           isAuth = false,
           filter,
@@ -175,11 +175,13 @@
       }
       //usa_debug('========= setVideoPlayer(' + autoplay + ', ' + selector + ', ' + data + ', ' + initialPageLoad + ')\ndataFid: ' + dataFid);
 
-      if (videoContainer.attr('data-video-url') != activeVideoThumb.attr('data-video-url')) {
-        videoContainer.attr('data-video-url', activeVideoThumb.attr('data-video-url'));
+      if ($videoContainer.attr('data-video-url') != $activeVideoThumb.attr('data-video-url')) {
+        $videoContainer.attr('data-video-url', $activeVideoThumb.attr('data-video-url'));
       }
 
-      if (dataFullEpisode == 'true') {
+      if (dataFullEpisode || dataFullEpisode == 'true') {
+        usa_debug('setVideoPlayer(' + autoplay + ', ' + selector + ', data, ' + initialPageLoad + ') -- dataFullEpisode: ' + dataFullEpisode + ', data: ', data);
+        usa_debug('$activeVideoThumb: ', $activeVideoThumb);
         Drupal.behaviors.ms_videos.mobileModal();
         $('#videos .full-pane').addClass('full-desc');
       }
@@ -201,12 +203,12 @@
       if ($('#thumbnail-list .item-list ul li.thumbnail.active > div').hasClass('tve-video-auth')) {
         isAuth = true;
         autoplay = false;
-        videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
-        videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
+        $videoContainer.find('.video-no-auth-player-wrapper').removeClass('active-player').hide();
+        $videoContainer.find('.video-auth-player-wrapper').addClass('active-player').show();
       }
       else {
-        videoContainer.find('.video-auth-player-wrapper').removeClass('active-player').hide();
-        videoContainer.find('.video-no-auth-player-wrapper').addClass('active-player').show();
+        $videoContainer.find('.video-auth-player-wrapper').removeClass('active-player').hide();
+        $videoContainer.find('.video-no-auth-player-wrapper').addClass('active-player').show();
       }
 
       url = Drupal.settings.basePath + 'ajax/get-video-in-player/' + Drupal.settings.microsites_settings.nid + '/' + dataFid + '/' + autoplay + '/' + tve.adobePass.currentProvider;
@@ -237,12 +239,12 @@
 
     // SetPausePlayer
     setPausePlayer: function () {
-      var videoContainer = $('#video-container');
-      if (videoContainer.hasClass('start')) {
-        videoContainer.removeClass('play pause').addClass('pause');
+      var $videoContainer = $('#video-container');
+      if ($videoContainer.hasClass('start')) {
+        $videoContainer.removeClass('play pause').addClass('pause');
         $pdk.controller.clickPlayButton(false);
         $pdk.controller.pause(true);
-        videoContainer.find('.active-player .custom-play').click(function () {
+        $videoContainer.find('.active-player .custom-play').click(function () {
           $pdk.controller.clickPlayButton(true);
           $pdk.controller.pause(false);
         });
@@ -251,9 +253,9 @@
 
     // SetPlayPlayer
     setPlayPlayer: function () {
-      var videoContainer = $('#video-container');
-      if (videoContainer.hasClass('active')) {
-        videoContainer.removeClass('play pause').addClass('play');
+      var $videoContainer = $('#video-container');
+      if ($videoContainer.hasClass('active')) {
+        $videoContainer.removeClass('play pause').addClass('play');
         $pdk.controller.clickPlayButton(true);
         $pdk.controller.pause(false);
       }
@@ -262,10 +264,10 @@
     // click Thumbnail
     clickThumbnail: function (elem, autoplay) {
       var autoplay = autoplay || true,
-          videoContainer = $('#video-container'),
+          $videoContainer = $('#video-container'),
           msGlobalExists = (typeof Drupal.behaviors.ms_global != 'undefined') ? true : false;
 
-      if (videoContainer.attr('data-video-url') != elem.attr('data-video-url')) {
+      if ($videoContainer.attr('data-video-url') != elem.attr('data-video-url')) {
         $('#thumbnail-list .item-list ul li.thumbnail').removeClass('active');
         elem.addClass('active');
       }

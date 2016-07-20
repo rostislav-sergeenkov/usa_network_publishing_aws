@@ -29,7 +29,7 @@
  *    - content_id
  */
 ?>
-<div class="best-of-block best-of-block-items <?php print (!empty($layout_scheme['number_of_items']))? 'best-of-block-items-'.$layout_scheme['number_of_items'].' ': ''; ?>show-border">
+<div class="best-of-block best-of-block-items <?php print (!empty($layout_scheme['class']))? 'best-of-block-items-'.$layout_scheme['class'].' ': 'best-of-block-items-type-a'; ?>show-border">
   <h2 class="section-title">
     <span class="section-title-wrapper show-border secondary"><?php print (!empty($title))? $title: t('Best of'); ?></span>
   </h2>

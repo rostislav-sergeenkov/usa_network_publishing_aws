@@ -823,7 +823,7 @@
       @extend %mobile-half-horizontal-promo;
     }
   }
-  &.best-of-block-items-5 {
+  &.best-of-block-items-type-a {
     li {
       &:nth-child(1) {
         @include breakpoint($bp-768-width) {
@@ -877,7 +877,7 @@
       }
     }
   }
-  &.best-of-block-items-6 {
+  &.best-of-block-items-type-b {
     li {
       &:nth-child(1) {
         @include breakpoint($bp-768-width) {

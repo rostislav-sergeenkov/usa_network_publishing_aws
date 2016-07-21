@@ -15041,12 +15041,7 @@ body:not(.show-new-design).consumptionator-page .gallery-wrapper .share-bar .fie
   }
 }
 body:not(.show-new-design).consumptionator-page .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design).node-type-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design).node-type-tv-episode .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design) .gallery-recap-block .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design).node-type-consumpt-post .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design) .node-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design).node-type-usanetwork-microsite .gallery-wrapper:hover .gallery-list .slide .slide-info {
-  display: table !important;
-}
-@media (max-width: 1024px) {
-  body:not(.show-new-design).consumptionator-page .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design).node-type-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design).node-type-tv-episode .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design) .gallery-recap-block .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design).node-type-consumpt-post .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design) .node-media-gallery .gallery-wrapper:hover .gallery-list .slide .slide-info, body:not(.show-new-design).node-type-usanetwork-microsite .gallery-wrapper:hover .gallery-list .slide .slide-info {
-    display: block;
-  }
+  display: block !important;
 }
 @media (min-width: 1025px) {
   body:not(.show-new-design).consumptionator-page .gallery-wrapper:hover .gallery-pager-wrap, body:not(.show-new-design).node-type-media-gallery .gallery-wrapper:hover .gallery-pager-wrap, body:not(.show-new-design).node-type-tv-episode .gallery-wrapper:hover .gallery-pager-wrap, body:not(.show-new-design) .gallery-recap-block .gallery-wrapper:hover .gallery-pager-wrap, body:not(.show-new-design).node-type-consumpt-post .gallery-wrapper:hover .gallery-pager-wrap, body:not(.show-new-design) .node-media-gallery .gallery-wrapper:hover .gallery-pager-wrap, body:not(.show-new-design).node-type-usanetwork-microsite .gallery-wrapper:hover .gallery-pager-wrap {
@@ -15109,7 +15104,7 @@ body:not(.show-new-design).consumptionator-page .gallery-wrapper .gallery-list .
   background: rgba(0, 0, 0, 0.5);
   bottom: 0;
   left: 0;
-  height: 20%;
+  min-height: 20%;
   padding: 0 150px 0 45px;
   width: 100%;
   position: absolute;
@@ -15160,11 +15155,6 @@ body:not(.show-new-design).consumptionator-page .gallery-wrapper .gallery-list .
   top: 36px;
   width: 100%;
 }
-@media (min-width: 1025px) {
-  body:not(.show-new-design).consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design) .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design) .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
-    display: table-cell;
-  }
-}
 @media (min-width: 1901px) {
   body:not(.show-new-design).consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design) .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design) .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
     font-size: 26px;
@@ -15172,14 +15162,12 @@ body:not(.show-new-design).consumptionator-page .gallery-wrapper .gallery-list .
 }
 @media (max-width: 1900px) {
   body:not(.show-new-design).consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design) .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design) .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
-    height: 44px;
     padding-right: 220px;
     top: 20px;
   }
 }
 @media (max-width: 1280px) {
   body:not(.show-new-design).consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design) .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design) .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .description, body:not(.show-new-design).node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .description {
-    height: 40px;
     left: 70px;
     padding-right: 190px;
     top: 15px;

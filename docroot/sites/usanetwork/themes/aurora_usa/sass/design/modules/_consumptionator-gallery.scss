@@ -269,10 +269,7 @@ body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).node
       .gallery-list {
         .slide {
           .slide-info {
-            display: table !important;
-            @include breakpoint($bp-1024-width) {
-              display: block;
-            }
+            display: block!important;
           }
         }
       }
@@ -336,7 +333,7 @@ body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).node
             background: rgba(0, 0, 0, 0.5);
             bottom: 0;
             left: 0;
-            height: 20%;
+            min-height: 20%;
             padding: 0 150px 0 45px;
             width: 100%;
             position: absolute;
@@ -375,19 +372,14 @@ body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).node
               text-overflow: ellipsis;
               top: 36px;
               width: 100%;
-              @include breakpoint($bp-min-1025-width) {
-                display: table-cell;
-              }
               @include breakpoint($bp-min-1901-width) {
                 font-size: 26px;
               }
               @include breakpoint($bp-1900-width) {
-                height: 44px;
                 padding-right: 220px;
                 top: 20px;
               }
               @include breakpoint($bp-1280-width) {
-                height: 40px;
                 left: 70px;
                 padding-right: 190px;
                 top: 15px;

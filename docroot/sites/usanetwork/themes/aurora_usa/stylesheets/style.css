@@ -13402,7 +13402,7 @@ header .tve-help-link.signIn .inlineLoader {
 .best-of-block-items li > div .meta {
   display: inline-block;
   overflow: hidden;
-  padding-left: 2%;
+  padding-left: 3%;
   vertical-align: middle;
   width: 96%;
 }

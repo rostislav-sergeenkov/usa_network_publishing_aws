@@ -71,7 +71,7 @@ function usanetwork_blocks_block_info() {
 
   $blocks['usa_footer_promos'] = array(
     'info' => t('Usanetwork Footer: Promo links'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
   $blocks['usanetwork_social_carousel'] = array(

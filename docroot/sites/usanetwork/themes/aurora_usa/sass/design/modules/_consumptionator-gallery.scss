@@ -744,17 +744,18 @@ body:not(.show-new-design).node-type-tv-episode, body:not(.show-new-design).node
     padding: 0;
     position: relative;
     width: 100%;
-    @include breakpoint($bp-min-1901-width) {
-      height: calc(42.01875vw - 110px);
+    @include breakpoint($bp-min-1025-width) {
       max-height: 1050px;
     }
-    @include breakpoint($bp-min-1281-width) {
-      height: calc(42.01875vw - 70px);
-      max-height: 1050px;
-    }
-    @include breakpoint($between-1025-1280) {
-      height: calc((100vw - 150px) * 0.5625);
-      overflow: visible;
+    .gallery-list {
+      .slide {
+        .node {
+          .asset-img {
+            height: auto;
+            padding-top: 56.25%;
+          }
+        }
+      }
     }
   }
 }

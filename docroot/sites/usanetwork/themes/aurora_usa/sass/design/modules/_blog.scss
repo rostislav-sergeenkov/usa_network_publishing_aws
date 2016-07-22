@@ -138,7 +138,7 @@ body {
 
 .node {
   &.node-post {
-    @extend %semi-headline;
+    font-family: $avalon-medium;
     font-size: 16px;
     .field-name-body {
       margin-bottom: 40px;

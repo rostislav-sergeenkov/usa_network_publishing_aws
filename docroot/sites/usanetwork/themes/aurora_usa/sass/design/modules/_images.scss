@@ -3,10 +3,11 @@
     h3 {
       margin: 0 0 3px;
       line-height: 22.5px;
-      font-family: $headline-semi;
+      font-family: $avalon-medium;
     }
     .caption {
-      @extend %regular-15;
+      font-family: $avalon-book;
+      font-size: 15px;
       > div {
         display: inline;
       }

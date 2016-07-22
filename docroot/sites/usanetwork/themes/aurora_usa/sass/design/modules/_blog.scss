@@ -114,19 +114,6 @@ body {
           }
         }
       }
-
-      .file-video-mpx {
-        &.view-mode-inline_content {
-          iframe {
-            width: 615px;
-            height: 345px;
-            @include breakpoint($bp-blog-mobile) {
-              width: 300px;
-              height: 168px;
-            }
-          }
-        }
-      }
     }
     .usanetwork-show-menu-panel {
       width: 100%;

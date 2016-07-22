@@ -5514,10 +5514,6 @@ function _usanetwork_tv_shows_is_new_design_entity($entity_type, $entity, $retur
   if (isset($query_params['newdesign'])) {
     return $query_params['newdesign'];
   }
-  $result = &drupal_static(__FUNCTION__);
-  if (isset($result)) {
-    return $result;
-  }
   $is_new_design = $show = FALSE;
   if ($entity) {
     if (!is_object($entity)) {

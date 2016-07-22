@@ -1,5 +1,4 @@
-body:not(.show-new-design) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block, #block-usanetwork-news-landing {
+#block-usanetwork-episodes-usa-landing-tvep-list-block, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block, #block-usanetwork-news-landing {
     @include clear();
     color: $poll-color;
     position: relative;
@@ -581,7 +580,7 @@ body:not(.show-new-design) {
       }
     }
   }
-  #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block, #block-usanetwork-news-landing {
+#block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block, #block-usanetwork-news-landing {
     .landing-list-items-one-item {
       border-top: 0;
     }
@@ -669,7 +668,7 @@ body:not(.show-new-design) {
       }
     }
   }
-  #block-usanetwork-news-landing {
+#block-usanetwork-news-landing {
     .episode-landing-list-item {
       @include breakpoint($bp-480-width) {
         padding: 25px 10px;
@@ -753,4 +752,4 @@ body:not(.show-new-design) {
       }
     }
   }
-}
+

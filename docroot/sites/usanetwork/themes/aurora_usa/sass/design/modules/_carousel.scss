@@ -147,24 +147,6 @@
         height: 82px;
         position: absolute;
         width: 100%;
-        &.poll {
-          bottom: auto;
-          height: 115px;
-          top: 0px;
-          @extend %meta;
-          .meta {
-            left: 50%;
-            margin-left: -68px;
-            top: 70%;
-            width: 135px;
-          }
-          .title {
-            font-size: 20px;
-            line-height: normal;
-            margin: 0 auto;
-            text-align: center;
-          }
-        }
         .meta-wrapper-inner {
           height: 100%;
           display: table;

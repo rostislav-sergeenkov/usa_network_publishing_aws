@@ -380,7 +380,10 @@
         hideNextButton();
       }
     },
-    getAspot: function (url) {
+    getAspot: function (url, aspotHelperConfig) {
+
+      aspotHelperConfig = aspotHelperConfig || {};
+
       $.ajax({
         url: url,
         method: "GET"
@@ -407,7 +410,7 @@
           Drupal.behaviors.ajax_aspot.initHomeAspot();
         }
 
-        $('#aspot-usanetwork').usaAspotHelper();
+        $('#aspot-usanetwork').usaAspotHelper(aspotHelperConfig);
 
       }).fail(function () {
         console.info('ajax fail');
@@ -420,6 +423,7 @@
       $(document.body).once(function () {
 
         var _body = $('body'),
+            aspotHelperConfig = {},
             paramsUrl = '',
             url;
 
@@ -452,6 +456,13 @@
 
         } else if (_body.hasClass('node-type-tv-show')) {
 
+          if (_body.hasClass('show-new-design')) {
+            aspotHelperConfig.bpMax = 1600 - 40; // max breakpoint - padding
+            aspotHelperConfig.widthAspotPercentBpMax = 75.6;
+          } else {
+            aspotHelperConfig.widthAspotPercentBpMax = 77.77778;
+          }
+
           if (typeof aspot !== "undefined") {
             paramsUrl = aspot;
             url = 'ajax/usanetwork-aspot/get-aspot-show/' + settings.usanetwork_tv_show_nid + '/' + paramsUrl;
@@ -459,12 +470,12 @@
             if (paramsUrl != '' && typeof settings.usanetwork_tv_show_nid !== "undefined") {
               $('#ajax_aspot_show').empty();
               // send ajax
-              _self.getAspot(url);
+              _self.getAspot(url, aspotHelperConfig);
             } else {
-              $('#aspot-usanetwork').usaAspotHelper();
+              $('#aspot-usanetwork').usaAspotHelper(aspotHelperConfig);
             }
           } else {
-            $('#aspot-usanetwork').usaAspotHelper();
+            $('#aspot-usanetwork').usaAspotHelper(aspotHelperConfig);
           }
         }
 

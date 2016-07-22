@@ -1,4 +1,4 @@
-body:not(.show-new-design) .consumptionator-quiz-main-block, .page-videos-live {
+.consumptionator-quiz-main-block, .page-videos-live {
   article.node-quiz {
     float: left;
     position: relative;
@@ -113,7 +113,7 @@ body:not(.show-new-design) .consumptionator-quiz-main-block, .page-videos-live {
   }
 
 }
-body:not(.show-new-design) .consumptionator-quiz-main-block {
+.consumptionator-quiz-main-block {
   @include clear();
   overflow: hidden;
   position: relative;

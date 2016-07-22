@@ -1,5 +1,4 @@
-body:not(.show-new-design) {
-  .consumptionator-characters-main-block {
+.consumptionator-characters-main-block {
     @include clear();
     overflow: hidden;
     position: relative;
@@ -202,18 +201,6 @@ body:not(.show-new-design) {
           @include breakpoint($bp-480-width) {
             padding: 10px 1px;
           }
-          .file-video-mpx.view-mode-inline_content {
-            padding-top: 56.25%;
-            position: relative;
-            width: 100%;
-          }
-          iframe {
-            height: 100%;
-            left: 0;
-            position: absolute;
-            top: 0;
-            width: 100%;
-          }
           ul {
             word-spacing: -6px;
             li {
@@ -314,5 +301,5 @@ body:not(.show-new-design) {
       }
     }
   }
-}
+
 

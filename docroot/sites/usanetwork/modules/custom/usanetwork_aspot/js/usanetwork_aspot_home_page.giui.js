@@ -17,7 +17,9 @@
       // default settings
       _.defaults = {
         home_page_aspot_previewId: 'home_page_aspot_preview',
-        show_page_aspot_previewId: 'show_aspot_preview'
+        show_page_aspot_previewId: 'show_aspot_preview',
+        bpMax: 2500, // px
+        widthAspotPercentBpMax: 100 // %
       };
 
       // create global options
@@ -25,6 +27,7 @@
 
       // set params
       // _.options.isMobileDevice = usa_deviceInfo.mobileDevice;
+      _.options.maxWidthAspot = _.options.bpMax * (_.options.widthAspotPercentBpMax / 100);
 
       // elements
       _.$body = $(document.body);
@@ -45,6 +48,8 @@
 
   usaAspotHelper.prototype.initChangeDraggableElementsPosition = function (elem) {
 
+    var _ = this;
+
     $.each(elem, function (indexItem, itemElement) {
       var container = $(this);
       if (container.find('.aspot-draggable-element')) {
@@ -63,10 +68,11 @@
 
             // create attributes data width for bp 2500 & 640-768
             if (!self.data('max-width')) {
+
               if (elWidth === 'auto') {
                 self.attr('data-max-width', elWidth);
               } else {
-                maxWidth = (elWidth / 100 * 2500) + 'px';
+                maxWidth = (elWidth / 100 * _.options.maxWidthAspot) + 'px';
                 self.attr('data-max-width', maxWidth);
               }
             }
@@ -164,11 +170,22 @@
   // event document ready
   //================================
   $(document).ready(function () {
+
+    var showAspotHelperConfig = {};
+
     if ($('body').hasClass('node-type-movie')) {
       $('#aspot-usanetwork').usaAspotHelper();
     } else if ($('body').hasClass('node-type-usanetwork-aspot')) {
+
+      if ($('#show_aspot_preview').hasClass('show-new-design')) {
+        showAspotHelperConfig.bpMax = 1600 - 40; // max breakpoint - padding
+        showAspotHelperConfig.widthAspotPercentBpMax = 75.6;
+      } else {
+        showAspotHelperConfig.widthAspotPercentBpMax = 77.77778;
+      }
+
       $('#home_page_aspot_preview').usaAspotHelper();
-      $('#show_aspot_preview').usaAspotHelper();
+      $('#show_aspot_preview').usaAspotHelper(showAspotHelperConfig);
     }
   });
   

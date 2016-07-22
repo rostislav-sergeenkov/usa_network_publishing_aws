@@ -351,11 +351,9 @@
   .node-type-usanetwork-microsite #microsite .gallery-wrapper .gallery-list .slide .node .asset-img {
     height: calc(80vw * 0.5625);
   }
-  .node-type-usanetwork-microsite #microsite .gallery-wrapper .gallery-pager-wrap {
-    top: calc((80vw * 0.5625) + 13px);
-  }
   .node-type-usanetwork-microsite #microsite .gallery-wrapper .slide-control {
-    top: calc((80vw * 0.5625) + 48.5px);
+    margin-top: calc(56.25% + 48.5px);
+    top: 0;
   }
   .node-type-usanetwork-microsite #microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
     left: 0;

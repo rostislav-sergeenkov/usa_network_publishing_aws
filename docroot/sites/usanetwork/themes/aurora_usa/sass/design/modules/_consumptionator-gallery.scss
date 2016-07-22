@@ -1,5 +1,4 @@
-
-body:not(.show-new-design):not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
+body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
   .slick-list,
   .slick-track {
     @include breakpoint($bp-min-1025-width) {
@@ -7,8 +6,8 @@ body:not(.show-new-design):not(.node-type-person, .node-type-post, .node-type-ca
     }
   }
 }
-body:not(.show-new-design) {
-  .gallery-wrapper {
+
+.gallery-wrapper {
     // gallery advert
     .interstitial-wrap {
       display: none;
@@ -136,11 +135,8 @@ body:not(.show-new-design) {
       }
     }
   }
-}
 
-
-body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).node-type-media-gallery, body:not(.show-new-design).node-type-tv-episode, body:not(.show-new-design) .gallery-recap-block, body:not(.show-new-design).node-type-consumpt-post, body:not(.show-new-design) .node-media-gallery, body:not(.show-new-design).node-type-usanetwork-microsite {
-
+body.consumptionator-page, body.node-type-media-gallery, body.node-type-tv-episode, .gallery-recap-block, body.node-type-consumpt-post, .node-media-gallery, body.node-type-usanetwork-microsite {
   .gallery-block {
     @include clear();
     margin: 0;
@@ -683,10 +679,9 @@ body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).node
       }
     }
   }
-
 }
 
-body:not(.show-new-design).consumptionator-page:not(.node-type-person), body:not(.show-new-design).node-type-media-gallery, body:not(.show-new-design).node-type-tv-episode, body:not(.show-new-design) .gallery-recap-block, body:not(.show-new-design).node-type-consumpt-post, body:not(.show-new-design).node-type-usanetwork-microsite, body:not(.show-new-design):not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery {
+body.consumptionator-page:not(.node-type-person), body.node-type-media-gallery, body.node-type-tv-episode, .gallery-recap-block, body.node-type-consumpt-post, body.node-type-usanetwork-microsite, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery {
   .gallery-wrapper {
     .gallery-list {
       &.ready {
@@ -710,7 +705,7 @@ body:not(.show-new-design).consumptionator-page:not(.node-type-person), body:not
   }
 }
 
-body:not(.show-new-design).node-type-media-gallery {
+body.node-type-media-gallery {
   header {
     .header-nav-bar {
       .nav-bar-tabs {
@@ -728,7 +723,7 @@ body:not(.show-new-design).node-type-media-gallery {
   }
 }
 
-body:not(.show-new-design).node-type-tv-episode, body:not(.show-new-design).node-type-consumpt-post, body:not(.show-new-design) .node-media-gallery, body:not(.show-new-design) .gallery-recap-block, body:not(.show-new-design).node-type-usanetwork-microsite {
+body.node-type-tv-episode, body.node-type-consumpt-post, .node-media-gallery, .gallery-recap-block, body.node-type-usanetwork-microsite {
   .gallery-wrapper {
     float: none;
     margin: 0;
@@ -752,130 +747,135 @@ body:not(.show-new-design).node-type-tv-episode, body:not(.show-new-design).node
   }
 }
 
-body:not(.show-new-design) {
+.cast-and-info-description, .movie-info-description {
   .node-media-gallery {
-    &.view-mode-inline_content {
-      .gallery-wrapper {
-        @include breakpoint($between-1025-1280) {
-          height: calc((100vw - 395px) * 0.5625);
-          overflow: hidden;
-        }
+    .gallery-wrapper {
+      @include breakpoint($bp-1024-width) {
+        height: auto;
+        width: 100%;
       }
-    }
-  }
-  .cast-and-info-description, .movie-info-description {
-    .node-media-gallery {
-      .gallery-wrapper {
-        @include breakpoint($bp-1024-width) {
-          height: auto;
+      .share-bar {
+        @include breakpoint($between-641-1024) {
+          background: $gallery-description-back;
+          bottom: auto;
+          height: 90px;
+          padding-top: 10px;
+          position: relative;
+          right: auto;
           width: 100%;
         }
-        .share-bar {
+        h3.field-label {
           @include breakpoint($between-641-1024) {
-            background: $gallery-description-back;
-            bottom: auto;
-            height: 90px;
-            padding-top: 10px;
-            position: relative;
-            right: auto;
-            width: 100%;
+            text-align: center;
           }
-          h3.field-label {
+        }
+        .field-name-field-gigya-share-bar {
+          table {
             @include breakpoint($between-641-1024) {
-              text-align: center;
-            }
-          }
-          .field-name-field-gigya-share-bar {
-            table {
-              @include breakpoint($between-641-1024) {
-                margin: 0 auto;
-              }
-            }
-          }
-          .gig-button-container {
-            @include breakpoint($between-641-1024) {
-              margin-right: 20px;
-              padding: 0;
-              &.gig-button-container-share {
-                margin-right: 0;
-              }
-              td > div {
-                font-size: 30px;
-              }
+              margin: 0 auto;
             }
           }
         }
-        .gallery-list {
-          &.ready {
-            .slide {
-              display: block;
+        .gig-button-container {
+          @include breakpoint($between-641-1024) {
+            margin-right: 20px;
+            padding: 0;
+            &.gig-button-container-share {
+              margin-right: 0;
+            }
+            td > div {
+              font-size: 30px;
             }
           }
+        }
+      }
+      .gallery-list {
+        &.ready {
           .slide {
-            .node {
-              .slide-info {
+            display: block;
+          }
+        }
+        .slide {
+          .node {
+            .slide-info {
+              @include breakpoint($bp-1024-width) {
+                height: auto;
+                min-height: 100px;
+              }
+              @include breakpoint($between-641-768) {
+                padding: 0 50px;
+              }
+              .description {
                 @include breakpoint($bp-1024-width) {
-                  height: auto;
-                  min-height: 100px;
+                  margin-top: 0px;
+                  min-height: 70px;
+                  padding: 30px 0 0;
+                  position: static;
+                  text-align: center;
                 }
-                @include breakpoint($between-641-768) {
-                  padding: 0 50px;
-                }
-                .description {
-                  @include breakpoint($bp-1024-width) {
-                    margin-top: 0px;
-                    min-height: 70px;
-                    padding: 30px 0 0;
-                    position: static;
-                    text-align: center;
-                  }
-                }
-                .slider-counter {
-                  @include breakpoint($bp-1024-width) {
-                    bottom: 5px;
-                    font-size: 11px;
-                    margin-top: 15px;
-                    padding-right: 0;
-                    position: static;
-                    text-align: center;
-                    white-space: normal;
-                    .slide-index {
-                      font-size: 12px;
-                    }
+              }
+              .slider-counter {
+                @include breakpoint($bp-1024-width) {
+                  bottom: 5px;
+                  font-size: 11px;
+                  margin-top: 15px;
+                  padding-right: 0;
+                  position: static;
+                  text-align: center;
+                  white-space: normal;
+                  .slide-index {
+                    font-size: 12px;
                   }
                 }
               }
             }
           }
         }
-        .slide-control {
-          @include breakpoint($between-769-1024) {
-            margin-top: calc(56.25% + 26px);
-          }
+      }
+      .slide-control {
+        @include breakpoint($between-769-1024) {
+          margin-top: calc(56.25% + 26px);
+        }
+        @include breakpoint($between-641-768) {
+          height: 38px;
+          margin-top: calc(56.25% + 36px);
+          width: 38px;
+        }
+        &:after {
           @include breakpoint($between-641-768) {
-            height: 38px;
-            margin-top: calc(56.25% + 36px);
-            width: 38px;
+            font-size: 38px;
           }
-          &:after {
-            @include breakpoint($between-641-768) {
-              font-size: 38px;
-            }
+        }
+        &.slide-prev {
+          @include breakpoint($between-641-768) {
+            left: 10px;
           }
-          &.slide-prev {
-            @include breakpoint($between-641-768) {
-              left: 10px;
-            }
-          }
-          &.slide-next {
-            @include breakpoint($between-641-768) {
-              right: 10px;
-            }
+        }
+        &.slide-next {
+          @include breakpoint($between-641-768) {
+            right: 10px;
           }
         }
       }
     }
   }
+}
+
+.block-character-info-content {
+  .node-media-gallery {
+    .gallery-wrapper {
+      .gallery-list {
+        &.ready {
+          .slide {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
   &.node-type-post, &.node-type-catchall-seo-page, .block-character-info-content {
     .node-media-gallery {
       .gallery-wrapper {
@@ -1137,19 +1137,6 @@ body:not(.show-new-design) {
             }
             &:after {
               content: "\e629";
-            }
-          }
-        }
-      }
-    }
-  }
-  .block-character-info-content {
-    .node-media-gallery {
-      .gallery-wrapper {
-        .gallery-list {
-          &.ready {
-            .slide {
-              display: block;
             }
           }
         }

@@ -1,0 +1,978 @@
+%desktop-full-promo {
+  .meta-wrapper {
+    @include breakpoint($bp-min-769-width) {
+      background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+      background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background-repeat: no-repeat;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+      height: 9.1vw;
+    }
+    @include breakpoint($bp-min-1901-width) {
+      height: 173px;
+    }
+  }
+  .meta {
+    .caption {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(22px, 1901);
+        line-height: get-vw(30px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 22px;
+        line-height: 30px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+    .title {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(34px, 1901);
+        line-height: get-vw(40px, 1901);
+        max-height: get-vw(80px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 34px;
+        line-height: 40px;
+        max-height: 80px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: 18px;
+        line-height: 21px;
+        max-height: 42px;
+      }
+    }
+    .additional {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(22px, 1901);
+        line-height: get-vw(30px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 22px;
+        line-height: 30px;
+      }
+      @include breakpoint($bp-1024-width) {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+  }
+  .meta-icon {
+    @include breakpoint($bp-min-1025-width) {
+      height: get-vw(80px, 1901);
+      margin-top: get-vw(-40px, 1901);
+      width: get-vw(80px, 1901);
+    }
+    @include breakpoint($bp-min-1901-width) {
+      height: 80px;
+      margin-top: -40px;
+      width: 80px;
+    }
+    @include breakpoint($bp-1024-width) {
+      height: 42px;
+      margin-top: -21px;
+      width: 42px;
+    }
+    ~ .meta {
+      @include breakpoint($bp-min-1025-width) {
+        padding-left: calc(7% + #{get-vw(80px, 1901)});
+      }
+      @include breakpoint($bp-min-1901-width) {
+        padding-left: calc(7% + 80px);
+      }
+      @include breakpoint($bp-1024-width) {
+        padding-left: calc(7% + 42px);
+      }
+    }
+  }
+}
+%mobile-full-promo {
+  .meta-wrapper {
+    @include breakpoint($between-641-768) {
+      background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+      background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background-repeat: no-repeat;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+      height: 25%;
+    }
+    @include breakpoint($bp-640-width) {
+      background: $video-promo-back-gray;
+      height: 29%;
+    }
+    @include breakpoint($bp-480-width) {
+      height: 33%;
+    }
+  }
+  .meta {
+    .caption {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(12px, 480);
+        line-height: get-vw(16px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+    .title {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(18px, 480);
+        line-height: get-vw(21px, 480);
+        max-height: get-vw(42px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 18px;
+        line-height: 21px;
+        max-height: 42px;
+      }
+    }
+    .additional {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(12px, 480);
+        line-height: get-vw(16px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+  }
+  .meta-icon {
+    @include breakpoint($bp-768-width) {
+      height: get-vw(36px, 480);
+      margin-top: get-vw(-18px, 480);
+      width: get-vw(36px, 480);
+    }
+    @include breakpoint($bp-480-width) {
+      height: 36px;
+      margin-top: -18px;
+      width: 36px;
+    }
+    ~ .meta {
+      @include breakpoint($bp-768-width) {
+        padding-left: calc(7% + #{get-vw(36px, 480)});
+      }
+      @include breakpoint($bp-480-width) {
+        padding-left: calc(7% + 36px);
+      }
+    }
+  }
+}
+%desktop-quarter-promo {
+  .meta-wrapper {
+    @include breakpoint($bp-min-769-width) {
+      background: $video-promo-back-gray;
+      height: 25%;
+    }
+  }
+  .meta {
+    .caption {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(18px, 1901);
+        line-height: get-vw(24px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 18px;
+        line-height: 24px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 9.5px;
+        line-height: 12px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9.5px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9.5px;
+        line-height: 12px;
+      }
+    }
+    .title {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(24px, 1901);
+        line-height: get-vw(30px, 1901);
+        max-height: get-vw(60px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 24px;
+        line-height: 30px;
+        max-height: 60px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 13px;
+        line-height: 16px;
+        max-height: 32px;
+      }
+    }
+    .additional {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(16px, 1901);
+        line-height: get-vw(22px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 9px;
+        line-height: 12px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9px;
+        line-height: 12px;
+      }
+    }
+  }
+  .meta-icon {
+    @include breakpoint($bp-min-1025-width) {
+      height: get-vw(48px, 1901);
+      margin-top: get-vw(-24px, 1901);
+      width: get-vw(48px, 1901);
+    }
+    @include breakpoint($bp-min-1901-width) {
+      height: 48px;
+      margin-top: -24px;
+      width: 48px;
+    }
+    @include breakpoint($between-769-1024) {
+      height: 26px;
+      margin-top: -13px;
+      width: 26px;
+    }
+    ~ .meta {
+      @include breakpoint($bp-min-1025-width) {
+        padding-left: calc(7% + #{get-vw(48px, 1901)});
+      }
+      @include breakpoint($bp-min-1901-width) {
+        padding-left: calc(7% + 48px);
+      }
+      @include breakpoint($between-769-1024) {
+        padding-left: calc(7% + 26px);
+      }
+    }
+  }
+}
+%mobile-quarter-promo {
+  .meta-wrapper {
+    @include breakpoint($bp-768-width) {
+      background: $video-promo-back-gray;
+      height: 25%;
+    }
+    @include breakpoint($bp-480-width) {
+      height: 12.4vw;
+    }
+  }
+  .meta {
+    .caption {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9.5px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9.5px;
+        line-height: 12px;
+      }
+    }
+    .title {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(13px, 480);
+        line-height: get-vw(16px, 480);
+        max-height: get-vw(32px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 13px;
+        line-height: 16px;
+        max-height: 32px;
+      }
+    }
+    .additional {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9px;
+        line-height: 12px;
+      }
+    }
+  }
+  .meta-icon {
+    @include breakpoint($bp-768-width) {
+      height: get-vw(26px, 480);
+      margin-top: get-vw(-13px, 480);
+      width: get-vw(26px, 480);
+    }
+    @include breakpoint($bp-480-width) {
+      height: 26px;
+      margin-top: -13px;
+      width: 26px;
+    }
+    ~ .meta {
+      @include breakpoint($bp-768-width) {
+        padding-left: calc(7% + #{get-vw(26px, 480)});
+      }
+      @include breakpoint($bp-480-width) {
+        padding-left: calc(7% + 26px);
+      }
+    }
+  }
+}
+%desktop-half-vertical-promo {
+  .meta-wrapper {
+    @include breakpoint($bp-min-769-width) {
+      background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+      background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background-repeat: no-repeat;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+      height: calc((100% - #{get-vw(16px, 1900)})*0.125);
+    }
+    @include breakpoint($bp-min-1901-width) {
+      height: calc((100% - 16px)*0.125);
+    }
+  }
+  .meta {
+    .caption {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(18px, 1901);
+        line-height: get-vw(24px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 18px;
+        line-height: 24px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 9.5px;
+        line-height: 12px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9.5px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9.5px;
+        line-height: 12px;
+      }
+    }
+    .title {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(24px, 1901);
+        line-height: get-vw(30px, 1901);
+        max-height: get-vw(60px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 24px;
+        line-height: 30px;
+        max-height: 60px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 13px;
+        line-height: 16px;
+        max-height: 32px;
+      }
+    }
+    .additional {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(16px, 1901);
+        line-height: get-vw(22px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 9px;
+        line-height: 12px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9px;
+        line-height: 12px;
+      }
+    }
+  }
+  .meta-icon {
+    @include breakpoint($bp-min-1025-width) {
+      height: get-vw(48px, 1901);
+      margin-top: get-vw(-24px, 1901);
+      width: get-vw(48px, 1901);
+    }
+    @include breakpoint($bp-min-1901-width) {
+      height: 48px;
+      margin-top: -24px;
+      width: 48px;
+    }
+    @include breakpoint($between-769-1024) {
+      height: 26px;
+      margin-top: -13px;
+      width: 26px;
+    }
+    ~ .meta {
+      @include breakpoint($bp-min-1025-width) {
+        padding-left: calc(7% + #{get-vw(48px, 1901)});
+      }
+      @include breakpoint($bp-min-1901-width) {
+        padding-left: calc(7% + 48px);
+      }
+      @include breakpoint($between-769-1024) {
+        padding-left: calc(7% + 26px);
+      }
+    }
+  }
+}
+%mobile-half-vertical-promo {
+  .meta-wrapper {
+    @include breakpoint($bp-768-width) {
+      background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+      background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background-repeat: no-repeat;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+      height: calc((100% - #{get-vw(12px, 1900)})*0.125);
+    }
+    @include breakpoint($bp-480-width) {
+      height: 12.4vw;
+    }
+  }
+  .meta {
+    .caption {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9.5px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9.5px;
+        line-height: 12px;
+      }
+    }
+    .title {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(13px, 480);
+        line-height: get-vw(16px, 480);
+        max-height: get-vw(32px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 13px;
+        line-height: 16px;
+        max-height: 32px;
+      }
+    }
+    .additional {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9px;
+        line-height: 12px;
+      }
+    }
+  }
+  .meta-icon {
+    @include breakpoint($bp-768-width) {
+      height: get-vw(26px, 480);
+      margin-top: get-vw(-13px, 480);
+      width: get-vw(26px, 480);
+    }
+    @include breakpoint($bp-480-width) {
+      height: 26px;
+      margin-top: -13px;
+      width: 26px;
+    }
+    ~ .meta {
+      @include breakpoint($bp-768-width) {
+        padding-left: calc(7% + #{get-vw(26px, 480)});
+      }
+      @include breakpoint($bp-480-width) {
+        padding-left: calc(7% + 26px);
+      }
+    }
+  }
+}
+%desktop-half-horizontal-promo {
+  .meta-wrapper {
+    @include breakpoint($bp-min-769-width) {
+      background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+      background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background-repeat: no-repeat;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+      height: 25%;
+    }
+  }
+  .meta {
+    .caption {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(18px, 1901);
+        line-height: get-vw(24px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 18px;
+        line-height: 24px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 9.5px;
+        line-height: 12px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9.5px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9.5px;
+        line-height: 12px;
+      }
+    }
+    .title {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(24px, 1901);
+        line-height: get-vw(30px, 1901);
+        max-height: get-vw(60px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 24px;
+        line-height: 30px;
+        max-height: 60px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 13px;
+        line-height: 16px;
+        max-height: 32px;
+      }
+    }
+    .additional {
+      @include breakpoint($bp-min-1025-width) {
+        font-size: get-vw(16px, 1901);
+        line-height: get-vw(22px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: 9px;
+        line-height: 12px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9px;
+        line-height: 12px;
+      }
+    }
+  }
+  .meta-icon {
+    @include breakpoint($bp-min-1025-width) {
+      height: get-vw(48px, 1901);
+      margin-top: get-vw(-24px, 1901);
+      width: get-vw(48px, 1901);
+    }
+    @include breakpoint($bp-min-1901-width) {
+      height: 48px;
+      margin-top: -24px;
+      width: 48px;
+    }
+    @include breakpoint($between-769-1024) {
+      height: 26px;
+      margin-top: -13px;
+      width: 26px;
+    }
+    ~ .meta {
+      @include breakpoint($bp-min-1025-width) {
+        padding-left: calc(7% + #{get-vw(48px, 1901)});
+      }
+      @include breakpoint($bp-min-1901-width) {
+        padding-left: calc(7% + 48px);
+      }
+      @include breakpoint($between-769-1024) {
+        padding-left: calc(7% + 26px);
+      }
+    }
+  }
+}
+%mobile-half-horizontal-promo {
+  .meta-wrapper {
+    @include breakpoint($bp-768-width) {
+      background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+      background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background-repeat: no-repeat;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+      height: 25%;
+    }
+    @include breakpoint($bp-480-width) {
+      height: 12.4vw;
+    }
+  }
+  .meta {
+    .caption {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9.5px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9.5px;
+        line-height: 12px;
+      }
+    }
+    .title {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(13px, 480);
+        line-height: get-vw(16px, 480);
+        max-height: get-vw(32px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 13px;
+        line-height: 16px;
+        max-height: 32px;
+      }
+    }
+    .additional {
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(9px, 480);
+        line-height: get-vw(12px, 480);
+      }
+      @include breakpoint($bp-480-width) {
+        font-size: 9px;
+        line-height: 12px;
+      }
+    }
+  }
+  .meta-icon {
+    @include breakpoint($bp-768-width) {
+      height: get-vw(26px, 480);
+      margin-top: get-vw(-13px, 480);
+      width: get-vw(26px, 480);
+    }
+    @include breakpoint($bp-480-width) {
+      height: 26px;
+      margin-top: -13px;
+      width: 26px;
+    }
+    ~ .meta {
+      @include breakpoint($bp-768-width) {
+        padding-left: calc(7% + #{get-vw(26px, 480)});
+      }
+      @include breakpoint($bp-480-width) {
+        padding-left: calc(7% + 26px);
+      }
+    }
+  }
+}
+.best-of-block-items {
+  @include clear();
+  background: $footer-links;
+  border-bottom: 2px solid;
+  padding: 40px 16px;
+  position: relative;
+  width: 100%;
+  &:nth-child(even) {
+    background: $poll-back;
+  }
+  @include breakpoint($bp-480-width) {
+    padding: 40px 10px;
+  }
+  ul {
+    @include clear();
+    margin: 0 auto;
+    max-width: 1868px;
+    padding: 0;
+    position: relative;
+    width: 100%;
+  }
+  li {
+    height: auto;
+    overflow: hidden;
+    position: absolute;
+    @include breakpoint($bp-768-width) {
+      position: relative;
+    }
+    > div {
+      left: 0;
+      height: 100%;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      @extend %meta;
+      .meta-wrapper {
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+      }
+      .meta-wrapper-inner {
+        height: 100%;
+        display: block;
+        position: relative;
+        width: 100%;
+        &:before {
+          content: "";
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle;
+        }
+      }
+      .meta {
+        display: inline-block;
+        overflow: hidden;
+        padding-left: 3%;
+        vertical-align: middle;
+        width: 96%;
+        .title {
+          font-family: $avalon-medium;
+        }
+        .additional {
+          font-family: $tex-gyreschola-italic;
+        }
+        > div {
+          &:nth-last-child(3) {
+            @include breakpoint($between-769-990) {
+              display: none;
+            }
+          }
+        }
+      }
+      .meta-icon {
+        left: 4%;
+        position: absolute;
+        top: 50%;
+      }
+      .asset-img {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    &:nth-child(1) {
+      float: left;
+      position: relative;
+    }
+    &.desktop-full {
+      @include breakpoint($bp-min-769-width) {
+        padding-top: calc(((100% - #{get-vw(16px, 1900)})/2)*0.78);
+        width: calc((100% - #{get-vw(16px, 1900)})/2);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        padding-top: calc(((100% - 16px)/2)*0.78);
+        width: calc((100% - 16px)/2);
+      }
+      @extend %desktop-full-promo;
+    }
+    &.mobile-full {
+      @include breakpoint($bp-768-width) {
+        padding-top: 56.25%;
+        width: 100%;
+      }
+      @extend %mobile-full-promo;
+    }
+    &.desktop-quarter {
+      @include breakpoint($bp-min-769-width) {
+        padding-top: calc((((100% - #{get-vw(16px, 1900)})/2)*0.78 - #{get-vw(16px, 1900)})/2);
+        width: calc((((100% - #{get-vw(16px, 1900)})/2) - #{get-vw(16px, 1900)})/2);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        padding-top: calc((((100% - 16px)/2)*0.78 - 16px)/2);
+        width: calc((((100% - 16px)/2) - 16px)/2);
+      }
+      @extend %desktop-quarter-promo;
+    }
+    &.mobile-quarter {
+      @include breakpoint($bp-768-width) {
+        padding-top: calc(((100% - #{get-vw(12px, 768)})/2)*0.78);
+        width: calc((100% - #{get-vw(12px, 768)})/2);
+      }
+      @extend %mobile-quarter-promo;
+    }
+    &.desktop-half-vertical {
+      @include breakpoint($bp-min-769-width) {
+        padding-top: calc(((100% - #{get-vw(16px, 1900)})/2)*0.78);
+        width: calc((((100% - #{get-vw(16px, 1900)})/2) - #{get-vw(16px, 1900)})/2);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        padding-top: calc(((100% - 16px)/2)*0.78);
+        width: calc((((100% - 16px)/2) - 16px)/2);
+      }
+      @extend %desktop-half-vertical-promo;
+    }
+    &.mobile-half-vertical {
+      @include breakpoint($bp-768-width) {
+        padding-top: calc(((100% - #{get-vw(12px, 768)})/2)*0.78*2 + #{get-vw(12px, 768)});
+        width: calc((100% - #{get-vw(12px, 768)})/2);
+      }
+      @extend %mobile-half-vertical-promo;
+    }
+    &.desktop-half-horizontal {
+      @include breakpoint($bp-min-769-width) {
+        padding-top: calc((((100% - #{get-vw(16px, 1900)})/2)*0.78 - #{get-vw(16px, 1900)})/2);
+        width: calc((100% - #{get-vw(16px, 1900)})/2);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        padding-top: calc((((100% - 16px)/2)*0.78 - 16px)/2);
+        width: calc((100% - 16px)/2);
+      }
+      @extend %desktop-half-horizontal-promo;
+    }
+    &.mobile-half-horizontal {
+      @include breakpoint($bp-768-width) {
+        padding-top: calc(((100% - #{get-vw(12px, 768)})/2)*0.78);
+        width: 100%;
+      }
+      @extend %mobile-half-horizontal-promo;
+    }
+  }
+  &.best-of-block-items-type-a {
+    li {
+      &:nth-child(1) {
+        @include breakpoint($bp-768-width) {
+          float: none;
+          margin-bottom: get-vw(12px, 768);
+        }
+      }
+      &:nth-child(2) {
+        @include breakpoint($bp-min-769-width) {
+          left: calc(((100% - #{get-vw(16px, 1900)})/2) + #{get-vw(16px, 1900)});
+          top: 0;
+        }
+        @include breakpoint($bp-min-1901-width) {
+          left: calc(((100% - 16px)/2) + 16px);
+        }
+        @include breakpoint($bp-768-width) {
+          float: left;
+          margin-bottom: get-vw(12px, 768);
+        }
+      }
+      &:nth-child(3) {
+        @include breakpoint($bp-min-769-width) {
+          top: 0;
+          right: 0;
+        }
+        @include breakpoint($bp-768-width) {
+          float: right;
+          margin-bottom: get-vw(12px, 768);
+        }
+      }
+      &:nth-child(4) {
+        @include breakpoint($bp-min-769-width) {
+          bottom: 0;
+          left: calc(((100% - #{get-vw(16px, 1900)})/2) + #{get-vw(16px, 1900)});
+        }
+        @include breakpoint($bp-min-1901-width) {
+          left: calc(((100% - 16px)/2) + 16px);
+        }
+        @include breakpoint($bp-768-width) {
+          float: left;
+        }
+      }
+      &:nth-child(5) {
+        @include breakpoint($bp-min-769-width) {
+          bottom: 0;
+          right: 0;
+        }
+        @include breakpoint($bp-768-width) {
+          float: right;
+        }
+      }
+    }
+  }
+  &.best-of-block-items-type-b {
+    li {
+      &:nth-child(1) {
+        @include breakpoint($bp-768-width) {
+          margin-bottom: get-vw(12px, 768);
+        }
+      }
+      &:nth-child(2) {
+        @include breakpoint($bp-min-769-width) {
+          left: calc((((100% - #{get-vw(16px, 1900)})/2) - #{get-vw(16px, 1900)})/2 + #{get-vw(16px, 1900)});
+          top: 0;
+        }
+        @include breakpoint($bp-min-1901-width) {
+          left: calc((((100% - 16px)/2) - 16px)/2 + 16px);
+        }
+        @include breakpoint($bp-768-width) {
+          float: right;
+          margin-bottom: get-vw(12px, 768);
+        }
+      }
+      &:nth-child(3) {
+        @include breakpoint($bp-min-769-width) {
+          right: 0;
+          top: 0;
+        }
+        @include breakpoint($bp-768-width) {
+          float: right;
+        }
+      }
+      &:nth-child(4) {
+        @include breakpoint($bp-min-769-width) {
+          bottom: 0;
+          left: calc((((100% - #{get-vw(16px, 1900)})/2) - #{get-vw(16px, 1900)})/2 + #{get-vw(16px, 1900)});
+        }
+        @include breakpoint($bp-min-1901-width) {
+          left: calc((((100% - 16px)/2) - 16px)/2 + 16px);
+        }
+        @include breakpoint($bp-768-width) {
+          float: none;
+          clear: both;
+          margin-bottom: get-vw(12px, 768);
+        }
+      }
+      &:nth-child(5) {
+        @include breakpoint($bp-min-769-width) {
+          bottom: 0;
+          left: calc(((100% - #{get-vw(16px, 1900)})/2) + #{get-vw(16px, 1900)});
+        }
+        @include breakpoint($bp-min-1901-width) {
+          left: calc(((100% - 16px)/2) + 16px);
+        }
+        @include breakpoint($bp-768-width) {
+          float: left;
+        }
+      }
+      &:nth-child(6) {
+        @include breakpoint($bp-min-769-width) {
+          bottom: 0;
+          right: 0;
+        }
+        @include breakpoint($bp-768-width) {
+          float: right;
+        }
+      }
+    }
+  }
+}

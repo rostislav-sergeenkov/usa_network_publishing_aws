@@ -1434,6 +1434,7 @@ function usanetwork_tv_shows_field_group_info() {
       0 => 'field_tvs_desktop_cimage',
       1 => 'field_tvs_promo_items',
       2 => 'field_tvs_promoted_content',
+      3 => 'field_promoted_automatic_mode',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

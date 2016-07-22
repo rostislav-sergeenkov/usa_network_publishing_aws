@@ -344,7 +344,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
         $alt_text = _usanetwork_get_field_item('file', $gallery_file, 'field_file_image_alt_text', 'value');
         $idx++;
         if ($is_new_design) {
-          if (!empty($info) && ($info['width'] < $info['height'])) {
+          if (!empty($info) && ($info['width'] <= $info['height'])) {
             $slide_variables = array(
               'image' => theme_image(array(
                 'path' => '',

@@ -6,8 +6,8 @@
  */
 ?>
 <div class="block-usanetwork-person-usanetwork-person-cast-lmb-block show-border">
-  <div class="cast-and-info-header-image">
-    <?php if (!empty($head_image)): ?>
+  <?php if (!empty($head_image['mobile']) && !empty($head_image['desktop'])): ?>
+    <div class="cast-and-info-header-image">
       <div class="asset-img" data-picture data-alt="" data-class="tile-img">
         <?php if (!empty($head_image['mobile'])): ?>
           <div data-src="<?php print $head_image['mobile']; ?>"></div>
@@ -22,8 +22,8 @@
           <noscript><img src="<?php print $head_image['desktop']; ?>" width="2880" height="1260" alt="" title="" /></noscript>
         <?php endif; ?>
       </div>
-    <?php endif; ?>
-  </div>
+    </div>
+  <?php endif; ?>
   <div class="cast-and-info-description<?php print (empty($second_image))? ' no-image': ''; ?>">
     <?php if (!empty($description)): ?>
       <div class="description">

@@ -99,7 +99,8 @@
       s.linkTrackVars = 'events,eVar64';
       s.linkTrackEvents = s.events = 'event64';
       s.eVar64 = name;
-      if (!$self.hasClass('seeit-reminder') && $self.attr('href') != '#') {
+
+      if (!$self.hasClass('seeit-reminder') && !$self.hasClass('menu-sign-up') && $self.attr('href') != '#') {
         s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
@@ -607,6 +608,7 @@
         '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
         '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
         '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
+        '#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .show-menu-tab a,' +
         '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {

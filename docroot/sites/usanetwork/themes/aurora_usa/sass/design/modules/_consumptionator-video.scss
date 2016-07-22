@@ -89,7 +89,7 @@ body:not(.show-new-design).consumptionator-video-page {
   }
 }
 
-body:not(.show-new-design).consumptionator-page, .page-videos-live {
+body:not(.show-new-design).consumptionator-page, body:not(.show-new-design).page-videos-live {
   .video-block {
     @include clear;
     margin: 0;
@@ -487,7 +487,7 @@ body:not(.show-new-design).consumptionator-page, .page-videos-live {
         //          background:url('../images/sign_in_key.png') center top no-repeat;
         //        }
         & {
-          background: green;
+          background: black;
         }
         &.inactive {
           .sign-in-button {
@@ -704,6 +704,9 @@ body:not(.show-new-design).consumptionator-page, .page-videos-live {
           top: 40%;
           width: 90%;
           z-index: 2;
+          @include breakpoint($bp-480-width) {
+            top: 35%;
+          }
           .first-line {
             display: block;
             font-size: 26px;
@@ -716,6 +719,10 @@ body:not(.show-new-design).consumptionator-page, .page-videos-live {
             @include breakpoint($bp-768-width) {
               font-size: 15px;
               line-height: 26px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 13px;
+              line-height: 23px;
             }
             @include breakpoint($bp-480-width) {
               font-size: 10px;
@@ -764,7 +771,7 @@ body:not(.show-new-design).consumptionator-page, .page-videos-live {
   }
 }
 
-.page-videos-live {
+body:not(.show-new-design).page-videos-live {
   .expandable-container {
     margin: 0;
   }
@@ -781,6 +788,30 @@ body:not(.show-new-design).consumptionator-page, .page-videos-live {
       position: absolute;
       left: 0;
       top: 0;
+    }
+    .player-wrapper {
+      .video-player-wrapper.section-auth {
+        .player-thumbnail {
+          img {
+            opacity: 0.3;
+          }
+        }
+        .locked-msg {
+          display: block;
+        }
+        .sign-in-wrapper {
+          display: block;
+        }
+      }
+      &:hover {
+        .video-player-wrapper.section-auth {
+          .player-thumbnail {
+            img {
+              opacity: 1;
+            }
+          }
+        }
+      }
     }
     .consum-sidebar {
       .download-app {

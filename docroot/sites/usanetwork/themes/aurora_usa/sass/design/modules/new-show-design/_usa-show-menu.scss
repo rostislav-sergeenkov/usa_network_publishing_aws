@@ -308,7 +308,7 @@
                 .show-menu-tab {
                   .show-menu {
                     @include breakpoint($bp-768-width) {
-                     //max-height: calc(100vh - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
+                      //max-height: calc(100vh - 2px - #{get-vw(22px, 768) + get-vw(54.52px, 1280) + get-vw(18px, 768) + get-vw(60px, 768)});
                     }
                   }
                 }
@@ -777,6 +777,12 @@
 
       &.sponsored-enable {
         position: relative;
+        .show-menu {
+          @include breakpoint($bp-min-769-width) {
+            margin: 0 !important;
+            max-width: calc(100% - 25%);
+          }
+        }
         .show-menu-tab {
           text-align: left;
         }
@@ -784,17 +790,28 @@
           margin-top: calc(#{get-vw(-20px, 1280)} / 2);
           top: 50%;
           @include breakpoint($bp-min-1601-width) {
-            margin-top: calc(#{-25px} / 2);
+            margin-top: -12.5px;
           }
           @include breakpoint($bp-768-width) {
             margin-top: 0;
           }
         }
       }
-
+      &:not(.sponsored-enable) {
+        .show-menu-tab {
+          & + .social-block {
+            @include breakpoint($bp-min-769-width) {
+              top: calc(((100% - #{get-vw(71px, 1600)} - 2px)/2) - #{get-vw(12.5px, 1600)} + #{get-vw(10px, 1600)});
+            }
+            @include breakpoint($bp-min-1601-width) {
+              top: calc(((100% - 73px)/2) - 12.5px + 10px);
+            }
+          }
+        }
+      }
       .bottom-menu-block-inner {
         @include clear();
-        background: #000000;
+        background: black;
         margin: 0 auto;
         max-width: 1600px;
         width: 100%;
@@ -803,10 +820,12 @@
         }
       }
       .show-menu-tab {
-        float: none !important;
+        float: none;
+        height: 100%;
         max-width: 100% !important;
-        width: 100%;
+        overflow: hidden;
         position: relative;
+        width: 100%;
         @include breakpoint($bp-min-769-width) {
           text-align: center;
         }
@@ -817,15 +836,22 @@
         }
         .show-menu {
           @include clear;
+          display: block;
           margin: 0 auto;
           height: 100%;
+          position: relative;
+          width: 100%;
           @include breakpoint($bp-min-769-width) {
             display: inline-block;
             vertical-align: middle;
             width: auto;
           }
           .show-menu-item {
+            display: block;
+            float: left;
             height: 100%;
+            padding: 0;
+            position: relative;
             @include breakpoint($bp-768-width) {
               background: $header-full-episodes-back;
               border-bottom: 1px solid $header-new-menu-item-border;
@@ -878,8 +904,33 @@
               }
             }
           }
-        }
 
+          // .show-menu
+          @supports (display: flex) {
+            & {
+              @include breakpoint($bp-min-769-width) {
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+              }
+              .show-menu-item {
+                @include breakpoint($bp-min-769-width) {
+                  float: none;
+                  flex-grow: 1;
+                }
+                a {
+                  @include breakpoint($bp-min-769-width) {
+                    white-space: nowrap;
+                    padding: 0 !important;
+                  }
+                }
+              }
+            }
+          }
+        }
         &:after {
           display: none;
           pointer-events: none;
@@ -898,12 +949,12 @@
       .social-block {
         @include breakpoint($bp-min-769-width) {
           right: get-vw(16px, 1280);
-          top: calc(((100% - #{get-vw(71px, 1600)} - 2px)/2) - #{get-vw(12.5px, 1600)} + #{get-vw(10px, 1600)});
+          top: calc(((100% - 2px)/2) - #{get-vw(12.5px, 1600)} + #{get-vw(10px, 1600)});
           position: absolute;
         }
         @include breakpoint($bp-min-1601-width) {
           right: 20px;
-          top: calc(((100% - 73px)/2) - 12.5px + 10px);
+          top: calc(((100% - 2px)/2) - 12.5px + 10px);
         }
         @include breakpoint($bp-768-width) {
           background: black;

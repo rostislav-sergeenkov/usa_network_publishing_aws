@@ -109,7 +109,7 @@
     @include breakpoint($bp-640-width) {
       height: 100%;
       overflow: hidden;
-      padding-bottom: 35vw;
+      //padding-bottom: 35vw;
       position: relative;
       width: 100%;
     }
@@ -135,19 +135,34 @@
       }
     }
   }
+
+  .about-show-image-block + .about-show-text-block {
+    float: none;
+    width: 50%;
+    @include breakpoint($bp-640-width) {
+      padding-bottom: 35vw;
+      width: 100%;
+    }
+    @include breakpoint($bp-min-1025-width) {
+      margin-left: 25%;
+    }
+    @include breakpoint($between-1025-1280) {
+      float: none;
+      margin-left: 300px;
+      width: calc(100% - 600px);
+    }
+  }
+
   .about-show-text-block {
-    color: $poll-color;
     float: left;
+    color: $poll-color;
     font-family: $avalon-medium;
     height: 100%;
     line-height: 1.4;
     padding: 35px get-vw(54px, 1025);
-    width: 50%;
+    width: 75%;
     @include breakpoint($bp-min-641-width) {
       margin-top: 2.5vw;
-    }
-    @include breakpoint($bp-min-1025-width) {
-      margin-left: 25%;
     }
     @include breakpoint($bp-min-1901-width) {
       margin-top: 47.5px;
@@ -155,14 +170,14 @@
     }
     @include breakpoint($between-1025-1280) {
       float: none;
-      margin-left: 300px;
-      width: calc(100% - 600px);
+      margin-left: 0;
+      width: calc(100% - 300px);
     }
     @include breakpoint($between-641-1024) {
       width: calc(100% - 300px);
     }
     @include breakpoint($bp-640-width) {
-      padding: 0;
+      padding: 0 0 22px;
       width: 100%;
     }
     .about-show-text-block-title {

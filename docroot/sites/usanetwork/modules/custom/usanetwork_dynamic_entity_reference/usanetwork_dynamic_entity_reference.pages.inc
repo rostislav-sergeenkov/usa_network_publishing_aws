@@ -230,10 +230,12 @@ function usanetwork_dynamic_entity_reference_get_referenceable_entities($instanc
     );
     $query->leftJoin('field_data_field_show', 'fs', 'fs.entity_id = ' . $entity_conditions[$target_type]);
     $query->leftJoin('field_data_field_multiple_show', 'fms', 'fms.entity_id = ' . $entity_conditions[$target_type]);
-    $query->condition(db_or()
-      ->condition('fs.field_show_target_id', $instance_info['entity_id'], '=')
-      ->condition('fms.field_multiple_show_target_id', $instance_info['entity_id'], '=')
-    );
+    if (!empty($instance_info['entity_id']) && is_numeric($instance_info['entity_id'])) {
+      $query->condition(db_or()
+        ->condition('fs.field_show_target_id', $instance_info['entity_id'], '=')
+        ->condition('fms.field_multiple_show_target_id', $instance_info['entity_id'], '=')
+      );
+    }
   }
   $query->range(0, $limit);
   $result = $query->execute()->fetchAll();

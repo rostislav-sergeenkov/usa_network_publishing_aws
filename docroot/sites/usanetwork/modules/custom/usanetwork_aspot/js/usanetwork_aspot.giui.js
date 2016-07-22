@@ -330,7 +330,7 @@
           desktop: {
             left: '50px',
             top: '358px',
-            indentTop: 15
+            indentTop: 2.35
           },
           mobile: {
             left: '31px',
@@ -345,7 +345,7 @@
           desktop: {
             left: '50px',
             top: '425px',
-            indentTop: 23.75
+            indentTop: 14.95
           },
           mobile: {
             left: '31px',
@@ -360,7 +360,7 @@
           desktop: {
             left: '50px',
             top: '455px',
-            indentTop: 15
+            indentTop: 6.2
           },
           mobile: {
             left: '31px',
@@ -1010,8 +1010,6 @@
 
       setDefaultPositions: function (container) {
 
-        console.info('setDefaultPositions');
-
         var elements = container.find('.aspot-draggable-element'),
             nd_additionals;
 
@@ -1068,8 +1066,6 @@
 
       calcElemBottomPosition: function (options) {
 
-        console.info('calcElemBottomPosition', options);
-
         var version = options.version,
             $container = options.container,
             $elements = options.elements,
@@ -1077,16 +1073,12 @@
             left = options.left,
             queueElemArr = options.queueElemArr,
             setBottomPosition = false,
-            nextBottomPosition = 0;
+            nextTopPosition = $container.find('.draggable-area').outerHeight() - bottom;
 
         $.each(queueElemArr, function (index, itemElement) {
 
-          console.info(index, itemElement);
-
           var $elem = $($elements).filter('[data-rel=' + itemElement +']'),
               indentTop = defaultElemPosition[itemElement][version].indentTop;
-
-          console.info(indentTop);
 
           if ($elem.css('display') === 'none') {
             return;
@@ -1096,27 +1088,22 @@
 
             setBottomPosition = true;
             $elem.css({
-              bottom: bottom,
               left: left,
-              top: 'auto'
+              top: nextTopPosition - $elem.outerHeight()
             });
 
-            nextBottomPosition = bottom + $elem.outerHeight() + indentTop;
-
-            console.info('nextBottomPosition =' + nextBottomPosition);
+            nextTopPosition = nextTopPosition - $elem.outerHeight() - indentTop;
 
             return;
+
           } else {
 
             $elem.css({
-              bottom: nextBottomPosition,
               left: left,
-              top: 'auto'
+              top: nextTopPosition - $elem.outerHeight()
             });
 
-            nextBottomPosition = nextBottomPosition + $elem.outerHeight() + indentTop;
-
-            console.info('nextBottomPosition =' + nextBottomPosition);
+            nextTopPosition = nextTopPosition - $elem.outerHeight() - indentTop;
           }
         });
       },
@@ -1141,8 +1128,6 @@
 
           var self = $(itemElement),
               selfName = self.attr('data-rel');
-
-          console.info(selfName, defaultElemPosition[selfName]);
 
           if (selfName === 'aspot_offset_percent' || selfName === 'social_meter'
               || selfName === 'title' || selfName === 'violator') {
@@ -1436,8 +1421,6 @@
               defaultFontSize = parseFloat(fieldFontSize.attr('data-default-font-size')),
               currentFontSize = parseFloat(fieldFontSize.text()),
               newCounter, newFontSize;
-
-          console.info('font-size', fontDefaultStepPosition, minFontSizeCounter, maxFontSizeCounter);
 
           if (activeItem.hasClass('increase-font')) {
             if (stepCounterNum <= maxFontSizeCounter) {

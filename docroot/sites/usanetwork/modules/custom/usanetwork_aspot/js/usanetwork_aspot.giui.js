@@ -270,59 +270,103 @@
     },
     defaultNewDesignElemPositions: {
       nd_aspot_elements: {
+        nd_additionals: {
+          bottom: 56.25, // default 56.25px
+          bottomM: 28.35, // default 41px
+          left: 50,
+          leftM: 31,
+          queueElemArr: ['cta_button_2', 'cta_button_1', 'cta_button_0', 'title'],
+          queueElemArrM: ['cta_button_0', 'title']
+        },
         title_prefix: {
           dataRel: 'title_prefix',
           alignLeft: 3,
           alignLeftM: 3,
-          left: '0px',
-          top: '0px',
-          leftM: '0px',
-          topM: '0px'
+          desktop: {
+            left: '0px',
+            top: '0px',
+            indentTop: 0
+          },
+          mobile: {
+            left: '0px',
+            top: '0px',
+            indentTop: 0
+          }
         },
         title: {
           dataRel: 'title',
           alignLeft: 0,
           alignLeftM: 0,
-          left: '47px',
-          top: '253px',
-          leftM: '24px',
-          topM: '269px'
+          desktop: {
+            left: '50px',
+            top: '253px',
+            indentTop: 0
+          },
+          mobile: {
+            left: '31px',
+            top: '269px',
+            indentTop: 0
+          }
         },
         aspot_description: {
           dataRel: 'aspot_description',
           alignLeft: 3,
           alignLeftM: 3,
-          left: '0px',
-          top: '0px',
-          leftM: '0px',
-          topM: '0px'
+          desktop: {
+            left: '0px',
+            top: '0px',
+            indentTop: 0
+          },
+          mobile: {
+            left: '0px',
+            top: '0px',
+            indentTop: 0
+          }
         },
         cta_button_0: {
           dataRel: 'cta_button_0',
           alignLeft: 4,
           alignLeftM: -1,
-          left: '48px',
-          top: '358px',
-          leftM: '26px',
-          topM: '313px'
+          desktop: {
+            left: '50px',
+            top: '358px',
+            indentTop: 2.35
+          },
+          mobile: {
+            left: '31px',
+            top: '313px',
+            indentTop: 5.35
+          }
         },
         cta_button_1: {
           dataRel: 'cta_button_1',
           alignLeft: 4,
           alignLeftM: -1,
-          left: '49px',
-          top: '425px',
-          leftM: '0px',
-          topM: '0px'
+          desktop: {
+            left: '50px',
+            top: '425px',
+            indentTop: 14.95
+          },
+          mobile: {
+            left: '31px',
+            top: '0px',
+            indentTop: 0
+          }
         },
         cta_button_2: {
           dataRel: 'cta_button_2',
           alignLeft: 409,
           alignLeftM: -1,
-          left: '49px',
-          top: '455px',
-          leftM: '0px',
-          topM: '0px'
+          desktop: {
+            left: '50px',
+            top: '455px',
+            indentTop: 6.2
+          },
+          mobile: {
+            left: '31px',
+            top: '0px',
+            indentTop: 0
+          }
         }
       }
     }
@@ -966,34 +1010,102 @@
 
       setDefaultPositions: function (container) {
 
-        console.info('setDefaultPositions');
+        var elements = container.find('.aspot-draggable-element'),
+            nd_additionals;
 
-        var elements = container.find('.aspot-draggable-element');
+        if (ndDesignCheckboxStatus) {
 
-        $.each(elements, function (index, itemElement) {
-          var self = $(itemElement),
-              selfName = self.data('rel');
+          nd_additionals = defaultElemPosition.nd_additionals;
 
-          console.info(defaultElemPosition[selfName]);
+          if (container.hasClass('wrapper-mobile')) {
+            sericeApi.calcElemBottomPosition({
+              version: 'mobile',
+              container: container,
+              elements: elements,
+              bottom: nd_additionals.bottomM,
+              left: nd_additionals.leftM,
+              queueElemArr: nd_additionals.queueElemArrM
+            });
+          } else if (container.hasClass('wrapper-desktop')) {
+            sericeApi.calcElemBottomPosition({
+              version: 'desktop',
+              container: container,
+              elements: elements,
+              bottom: nd_additionals.bottom,
+              left: nd_additionals.left,
+              queueElemArr: nd_additionals.queueElemArr
+            });
+          }
 
-          if (defaultElemPosition[selfName] === undefined) {
+        } else {
+
+          $.each(elements, function (index, itemElement) {
+            var self = $(itemElement),
+                selfName = self.data('rel');
+
+            if (defaultElemPosition[selfName] === undefined) {
+              return;
+            }
+
+            if (container.hasClass('wrapper-mobile')) {
+              self.css({
+                left: defaultElemPosition[selfName].leftM,
+                top: defaultElemPosition[selfName].topM
+              })
+            } else if (container.hasClass('wrapper-desktop')) {
+              self.css({
+                left: defaultElemPosition[selfName].left,
+                top: defaultElemPosition[selfName].top
+              })
+            }
+          });
+        }
+
+        sericeApi.saveDraggableItemsData();
+      },
+
+      calcElemBottomPosition: function (options) {
+
+        var version = options.version,
+            $container = options.container,
+            $elements = options.elements,
+            bottom = options.bottom,
+            left = options.left,
+            queueElemArr = options.queueElemArr,
+            setBottomPosition = false,
+            nextTopPosition = $container.find('.draggable-area').outerHeight() - bottom;
+
+        $.each(queueElemArr, function (index, itemElement) {
+
+          var $elem = $($elements).filter('[data-rel=' + itemElement +']'),
+              indentTop = defaultElemPosition[itemElement][version].indentTop;
+
+          if ($elem.css('display') === 'none') {
             return;
           }
 
-          if (container.hasClass('wrapper-mobile')) {
-            self.css({
-              left: defaultElemPosition[selfName].leftM,
-              top: defaultElemPosition[selfName].topM
-            })
-          } else if (container.hasClass('wrapper-desktop')) {
-            self.css({
-              left: defaultElemPosition[selfName].left,
-              top: defaultElemPosition[selfName].top
-            })
+          if (!setBottomPosition) {
+
+            setBottomPosition = true;
+            $elem.css({
+              left: left,
+              top: nextTopPosition - $elem.outerHeight()
+            });
+
+            nextTopPosition = nextTopPosition - $elem.outerHeight() - indentTop;
+
+            return;
+
+          } else {
+
+            $elem.css({
+              left: left,
+              top: nextTopPosition - $elem.outerHeight()
+            });
+
+            nextTopPosition = nextTopPosition - $elem.outerHeight() - indentTop;
           }
         });
-
-        sericeApi.saveDraggableItemsData();
       },
 
       resetElemWidth: function (container) {
@@ -1016,8 +1128,6 @@
 
           var self = $(itemElement),
               selfName = self.attr('data-rel');
-
-          console.info(selfName, defaultElemPosition[selfName]);
 
           if (selfName === 'aspot_offset_percent' || selfName === 'social_meter'
               || selfName === 'title' || selfName === 'violator') {
@@ -1311,8 +1421,6 @@
               defaultFontSize = parseFloat(fieldFontSize.attr('data-default-font-size')),
               currentFontSize = parseFloat(fieldFontSize.text()),
               newCounter, newFontSize;
-
-          console.info('font-size', fontDefaultStepPosition, minFontSizeCounter, maxFontSizeCounter);
 
           if (activeItem.hasClass('increase-font')) {
             if (stepCounterNum <= maxFontSizeCounter) {

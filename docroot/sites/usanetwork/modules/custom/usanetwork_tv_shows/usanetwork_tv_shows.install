@@ -203,3 +203,13 @@ function usanetwork_tv_shows_update_7026() {
 
   field_delete_field('field_tvs_mobile_cimage');
 }
+
+/**
+ * Delete unused duplicated seasons from Suits.
+ */
+function usanetwork_tv_shows_update_7027() {
+  $suits_season_1_nid = '296';
+  node_delete($suits_season_1_nid);
+  $suits_season_2_nid = '291';
+  node_delete($suits_season_2_nid);
+}

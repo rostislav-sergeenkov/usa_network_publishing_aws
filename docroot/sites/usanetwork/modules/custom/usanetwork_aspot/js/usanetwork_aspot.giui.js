@@ -1186,7 +1186,7 @@
             parrentHeight = parent.height(),
             fieldWidth = item.innerWidth(),
             fieldFontSize = parentWrap.find('.edit-field-size[data-field-name=' + dataRel + '] .field-font-size'),
-        // params
+            // params
             itemLeft = item.css('left'),
             itemTop = item.css('top'),
             percentX = (parseInt(itemLeft) / parrentWidth * 100).toFixed(1),
@@ -1405,6 +1405,4 @@
       destroyAspot: sericeApi.destroy
     };
   }
-
-
 }(jQuery));

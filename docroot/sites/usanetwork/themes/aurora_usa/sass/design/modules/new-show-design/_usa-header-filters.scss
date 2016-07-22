@@ -1,23 +1,21 @@
 .show-new-design {
-
   #header {
     &.usa-sticky-header {
+      &.off-elements {
+        .upper-menu {
+          @include breakpoint($bp-min-769-width) {
+            padding-top: 0;
+          }
+        }
+      }
       .upper-menu {
-        padding-bottom: 10px;
-        padding-top: 10px;
         margin: 0 auto;
         @include breakpoint($bp-min-1601-width) {
           width: 1600px;
         }
-        @include breakpoint($bp-min-769-width) {
-          padding-top: 0;
-        }
         .item-filter {
           &.all-items-filter {
             .filter-menu li {
-              @include breakpoint($bp-min-769-width) {
-                margin-top: 15px;
-              }
               @include breakpoint($bp-768-width) {
                 margin: 0;
               }
@@ -59,6 +57,7 @@
       transform: translateZ(0);
       text-align: center;
       z-index: 2;
+      @include transition(padding 0.1s linear 0);
       @include breakpoint($bp-min-1601-width) {
         padding: 40px 20px 15px;
       }

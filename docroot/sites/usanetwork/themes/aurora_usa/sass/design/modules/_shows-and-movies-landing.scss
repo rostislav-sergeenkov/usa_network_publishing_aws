@@ -4,8 +4,8 @@
     border-bottom: 2px solid $usa-logo-back;
   }
 }
-body:not(.show-new-design) {
-  .content {
+
+.content {
     .all-shows-landing-page-container, .all-movies-landing-page-container {
       background: $footer-promo-links;
       padding-top: 77px;
@@ -109,5 +109,5 @@ body:not(.show-new-design) {
       }
     }
   }
-}
+
 

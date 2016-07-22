@@ -1,8 +1,8 @@
 .consumptionator-page, .node-type-tv-episode {
 
 }
-body:not(.show-new-design) {
-  .consumptionator-episode-main-block, .consumptionator-post-main-block {
+
+.consumptionator-episode-main-block, .consumptionator-post-main-block {
     @include clear();
     overflow: hidden;
     position: relative;
@@ -477,6 +477,6 @@ body:not(.show-new-design) {
       }
     }
   }
-}
+
 
 

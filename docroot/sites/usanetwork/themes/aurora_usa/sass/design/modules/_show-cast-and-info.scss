@@ -1,6 +1,5 @@
-body:not(.show-new-design) {
-  .block-usanetwork-person-usanetwork-person-cast-lmb-block,
-  .block-usanetwork-movie-usanetwork-lmb-block {
+.block-usanetwork-person-usanetwork-person-cast-lmb-block,
+.block-usanetwork-movie-usanetwork-lmb-block {
     @include clear();
     background: $poll-back;
     border-bottom: 2px solid;
@@ -160,7 +159,7 @@ body:not(.show-new-design) {
       }
     }
   }
-  .cast-and-crew-block {
+.cast-and-crew-block {
     @include clear();
     background: $footer-links;
     border-bottom: 2px solid;
@@ -220,7 +219,7 @@ body:not(.show-new-design) {
       }
     }
   }
-}
+
 .series-recap-block {
   @include clear();
   background: $poll-back;

@@ -1,5 +1,4 @@
-body:not(.show-new-design) {
-  .consumptionator-characters-main-block {
+.consumptionator-characters-main-block {
     @include clear();
     overflow: hidden;
     position: relative;
@@ -302,5 +301,5 @@ body:not(.show-new-design) {
       }
     }
   }
-}
+
 

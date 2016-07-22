@@ -19,7 +19,7 @@
   }
 }
 
-body:not(.show-new-design) .consum-sidebar {
+.consum-sidebar {
   background: $consum-back;
   float: left;
   height: 100%;
@@ -764,7 +764,7 @@ body:not(.show-new-design) .consum-sidebar {
     }
   }
 }
-body:not(.show-new-design) .consumptionator-video-page {
+.consumptionator-video-page {
   &.page-full-video {
     &.admin-menu {
       @include breakpoint($bp-min-769-width) {
@@ -813,8 +813,8 @@ body:not(.show-new-design) .consumptionator-video-page {
     }
   }
 }
-body:not(.show-new-design) {
-  .consumptionator-characters-main-block, .consumptionator-episode-main-block, .consumptionator-quiz-main-block, .consumptionator-post-main-block {
+
+.consumptionator-characters-main-block, .consumptionator-episode-main-block, .consumptionator-quiz-main-block, .consumptionator-post-main-block {
     .consum-sidebar {
       @include breakpoint($between-1025-1280) {
         float: left;
@@ -993,10 +993,10 @@ body:not(.show-new-design) {
       }
     }
   }
-}
 
 
-body:not(.show-new-design) .related-content-block {
+
+.related-content-block {
   @include clear();
   background: #000000;
   border-bottom: 2px solid;

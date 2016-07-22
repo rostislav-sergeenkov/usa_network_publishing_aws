@@ -34,8 +34,15 @@
       width: 100%;
     }
     .video-player {
+      height: auto;
+      padding-top: 56.25%;
+      position: relative;
+      width: 100%;
       iframe {
-        height: 361px;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
         width: 100%;
       }
     }

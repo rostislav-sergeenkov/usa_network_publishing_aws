@@ -37933,26 +37933,6 @@ yx-axis
   background: #e9eaeb;
 }
 
-.catchall-takeover #head-leaderboard {
-  margin-bottom: 15px;
-}
-.catchall-takeover #messages,
-.catchall-takeover #content .tabs {
-  display: none;
-}
-.catchall-takeover #main {
-  padding-left: 0;
-  padding-right: 0;
-}
-.catchall-takeover .field-name-field-usa-catchall-html iframe {
-  display: block;
-  width: 100%;
-  height: 1400px;
-  border: none;
-  left: 0;
-  position: relative;
-}
-
 .maintenance-page #page {
   padding: 0 15px;
   margin: 4em auto;
@@ -38483,8 +38463,17 @@ body.blog .view-display-id-blog_content .views-row {
     width: 100%;
   }
 }
+.node-catchall-seo-page .group-left .video-player {
+  height: auto;
+  padding-top: 56.25%;
+  position: relative;
+  width: 100%;
+}
 .node-catchall-seo-page .group-left .video-player iframe {
-  height: 361px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 .node-catchall-seo-page .group-right {

@@ -14,7 +14,6 @@ function usanetwork_taboola_menu() {
     'page arguments' => array('_usanetwork_taboola_settings_form'),
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_taboola.admin.inc',
-    'type' => MENU_CALLBACK,
   );
   return $items;
 }

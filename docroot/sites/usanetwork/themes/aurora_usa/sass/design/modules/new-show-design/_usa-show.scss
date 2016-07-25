@@ -31,9 +31,24 @@ html, body {
   }
 
   .gallery-recap-block {
+    background: $consup-gallery-bg;
+    padding: 40px 35px 104px;
+    @include breakpoint($bp-min-1901-width) {
+      padding: 40px 55px 104px;
+    }
+    @include breakpoint($bp-1280-width) {
+      border-bottom: 2px solid;
+      padding: 30px 25px 90px;
+    }
+    @include breakpoint($bp-1024-width) {
+      padding: 40px 24px 90px;
+    }
+    @include breakpoint($bp-640-width) {
+      border-bottom: 2px solid;
+      padding: 40px 0 75px;
+    }
     .section-title {
       .section-title-wrapper {
-
         color: $tve-modalFooter;
         font-family: $fira-sans-medium;
         font-size: get-vw(22px, 1280);
@@ -43,7 +58,6 @@ html, body {
         padding: 0;
         text-align: center;
         text-transform: uppercase;
-
         @include breakpoint($bp-min-1601-width) {
           font-size: 27.5px;
         }
@@ -56,7 +70,6 @@ html, body {
         @include breakpoint($bp-640-width) {
           font-size: get-vw(30px, 640);
         }
-
         &:before,
         &:after {
           display: none !important;

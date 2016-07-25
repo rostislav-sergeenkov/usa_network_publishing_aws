@@ -375,6 +375,11 @@ var USAN = USAN || {};
         resizeTimeOut = _.options.resizeTimeOut;
 
     $(window)
+        .bind('touchmove', function(e) {
+          if (_.options.isTabletDevice && _.options.isMenuOpenButtonActive) {
+            e.preventDefault();
+          }
+        })
         .bind('scroll', function (e) {
           var $window = this;
 

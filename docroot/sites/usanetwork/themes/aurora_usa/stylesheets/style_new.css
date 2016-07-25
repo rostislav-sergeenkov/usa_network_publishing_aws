@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix {
   zoom: 1;
 }
@@ -7807,12 +7807,7 @@ yx-axis
 }
 
 html.no-scroll, body.no-scroll {
-  background: black !important;
-  left: 0;
   overflow: hidden;
-  position: fixed;
-  top: 0;
-  width: 100%;
 }
 
 .show-new-design {

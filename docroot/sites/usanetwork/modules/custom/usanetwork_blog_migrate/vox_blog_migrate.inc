@@ -51,7 +51,10 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
       MigrateDestinationNode::getKeySchema()
     );
 
-    $items_url = VOX_BLOG_FEED_MRROBOT_ATOM;
+    $items_url = variable_get('blog_migrate_mrrobot_url', NULL);
+    if (empty($items_url)) {
+      return;
+    }
     $item_xpath = '/atom:feed/atom:entry';  // relative to document
     $item_ID_xpath = 'atom:id';
 
@@ -95,6 +98,8 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
       ->defaultValue('tid');
     $this->addFieldMapping('field_post_original_link', 'atom:link')->xpath('atom:link/@href');
     $this->addFieldMapping('field_post_original_date', 'atom:published')->xpath('atom:published');
+    //@todo it will be updated https://www.drupal.org/node/1888268 try to uncomment
+    //$this->addFieldMapping('field_post_original_date:timezone', 'published_timezone');
     //@todo may be alt text
     //$this->addFieldMapping('field_post_cover:field_file_image_alt_text', 'media:credit')->xpath('./media:content/media:credit');
   }
@@ -124,6 +129,11 @@ class USANetworkVoxBlogFeedMigration extends XMLMigration {
       }
       $current_row->author_tid = $term->tid;
     }
+    //@todo it will be updated https://www.drupal.org/node/1888268 try to uncomment
+//    $published_date =$current_row->xml->published->__toString();
+//    $date = new DateObject($published_date);
+//    $timezone= $date->format('e');
+//    $current_row->published_timezone = $timezone;
   }
 
   public function complete($entity, stdClass $row) {

@@ -1258,3 +1258,12 @@ function usanetwork_core_update_7188() {
     module_enable(array('akamai'));
   }
 }
+
+/**
+ * Enable Social Plugin Module.
+ */
+function usanetwork_core_update_7189() {
+  if (!module_exists('usanetwork_social_plugin')) {
+    module_enable(array('usanetwork_social_plugin'));
+  }
+}

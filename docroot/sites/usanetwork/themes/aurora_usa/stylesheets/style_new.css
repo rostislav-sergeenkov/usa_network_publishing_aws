@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix {
   zoom: 1;
 }
@@ -7806,7 +7806,12 @@ yx-axis
   transition: all 0.2s linear 0s;
 }
 
-html.no-scroll, body.no-scroll {
+html.no-scroll {
+  background: black !important;
+  overflow: hidden;
+}
+
+body.no-scroll.smartphone {
   background: black !important;
   left: 0;
   overflow: hidden;

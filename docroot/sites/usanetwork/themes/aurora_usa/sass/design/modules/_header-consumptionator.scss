@@ -217,34 +217,6 @@
         }
       }
     }
-//    .tve-help-link {
-//      background: none;
-//      float: right;
-//      display: block;
-//      height: 100%;
-//      @include breakpoint($bp-768-width) {
-//        display: none;
-//      }
-//      a {
-//        color: #ffffff;
-//      }
-//      &.signOut {
-//        &:hover {
-//          background: $consup-border;
-//        }
-//        .links-wrapper {
-//          border-left: 1px solid $consup-border;
-//        }
-//      }
-//      &.signIn {
-//        &.no-auth {
-//          border-left: 1px solid $consup-border;
-//          &:hover {
-//            background: $consup-border;
-//          }
-//        }
-//      }
-//    }
     .tab-content {
       @include breakpoint($bp-768-width) {
         display: block;
@@ -473,7 +445,6 @@
           border-right: none;
         }
       }
-
       #usa-tve-help-link.signIn ~ .nav-bar-tabs {
         @include breakpoint($bp-768-width) {
           max-width: calc(100% - 125px);
@@ -482,7 +453,6 @@
           max-width: calc(100% - 100px);
         }
       }
-
       #usa-tve-help-link.signOut ~ .nav-bar-tabs {
         @include breakpoint($bp-768-width) {
           max-width: calc(100% - 200px);
@@ -491,7 +461,6 @@
           max-width: calc(100% - 175px);
         }
       }
-
       #usa-tve-help-link.mobile-device ~ .nav-bar-tabs {
         @include breakpoint($bp-768-width) {
           max-width: calc(100% - 75px);
@@ -523,20 +492,6 @@
         margin-bottom: 35px;
         @include breakpoint($bp-768-width) {
           margin-bottom: 0;
-  //      }
-  //    }
-  //  }
-  //}
-  //.block-usanetwork-menu {
-  //  &.open {
-  //    @include breakpoint($bp-min-769-width) {
-  //      background: $bottom-footer-back;
-  //      .tve-help-link.signOut {
-  //        .tve-header-links {
-  //          .first {
-  //            display: none;
-  //          }
-  //        }
         }
       }
     }

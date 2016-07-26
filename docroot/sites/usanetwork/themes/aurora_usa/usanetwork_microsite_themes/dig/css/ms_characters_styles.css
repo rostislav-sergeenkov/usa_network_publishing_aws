@@ -618,10 +618,6 @@ html.ie9 #microsite #home .characters-cast .btns a.bx-next{
     margin-bottom: 1em;
     clear: left;
   }
-  /*hot fix for Hamburger menu not working on smartphone*/
-  body[data-menu-position=open] #jPanelMenu-menu {
-    z-index: 2!important;
-  }
 }
 
 @media (max-width: 542px) {

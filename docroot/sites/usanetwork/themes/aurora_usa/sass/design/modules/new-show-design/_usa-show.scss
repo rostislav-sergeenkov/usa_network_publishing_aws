@@ -1,17 +1,11 @@
-html {
+html, body {
   &.no-scroll {
-    background: black!important;
+    //background: black!important;
+    //left: 0;
     overflow: hidden;
-  }
-}
-body {
-  &.no-scroll.smartphone {
-    background: black!important;
-    left: 0;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    width: 100%;
+    //position: fixed;
+    //top: 0;
+    //width: 100%;
   }
 }
 .show-new-design {

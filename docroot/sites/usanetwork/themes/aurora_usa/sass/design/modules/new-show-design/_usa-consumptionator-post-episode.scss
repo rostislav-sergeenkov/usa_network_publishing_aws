@@ -291,7 +291,6 @@
                   }
                 }
               }
-
               .author {
                 color: #000000;
                 font-family: $fira-sans-light;
@@ -310,7 +309,6 @@
                   letter-spacing: 1px;
                 }
               }
-
               .episode {
                 font-family: $fira-sans-light;
                 font-size: get-vw(18px, 1280);
@@ -325,7 +323,6 @@
                   content: '';
                 }
               }
-
               .tags-wrap {
                 span {
                   font-family: $fira-sans-medium;
@@ -338,22 +335,7 @@
                     font-size: get-vw(18px, 768);
                   }
                 }
-                /*.tags-title {
-                  margin-left: 1em;
-                  position: relative;
-                  &:after {
-                    left: -0.5em;
-                    content: '';
-                    line-height: 1;
-                    position: absolute;
-                    top: -4px;
-                    @include breakpoint($bp-1280-width) {
-                      top: -2px;
-                    }
-                  }
-                }*/
               }
-
               .aired {
                 text-transform: none;
               }
@@ -589,7 +571,6 @@
       }
     }
   }
-
   .consumptionator-episode-main-block {
     .episode-info-header {
       .share {

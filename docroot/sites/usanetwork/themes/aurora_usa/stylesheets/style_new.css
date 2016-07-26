@@ -14924,12 +14924,6 @@ html.no-scroll, body.no-scroll {
   text-align: center;
   width: 100%;
 }
-@media (min-width: 1901px) {
-  .show-new-design.consumptionator-page .related-content-block .section-title .section-title-wrapper {
-    font-size: 28px;
-    padding-bottom: 20px;
-  }
-}
 @media (min-width: 1601px) {
   .show-new-design.consumptionator-page .related-content-block .section-title .section-title-wrapper {
     font-size: 28px;

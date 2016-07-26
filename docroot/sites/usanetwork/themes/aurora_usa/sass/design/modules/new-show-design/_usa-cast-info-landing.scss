@@ -212,7 +212,6 @@
       @include breakpoint($bp-768-width) {
         padding: get-vw(30px, 640) get-vw(20px, 640);
       }
-
       .first-line {
         .description-block {
           &:first-child {
@@ -241,14 +240,12 @@
           }
         }
       }
-
       .link-buttons-wrap {
         margin-top: 15px;
         text-align: center;
         @include breakpoint($bp-768-width) {
           margin-top: get-vw(30px, 640);
         }
-
         .link-button {
           display: inline-block;
           padding: get-vw(15px, 1280) get-vw(30px, 1280);
@@ -383,11 +380,9 @@
         margin-top: get-vw(80px, 640);
       }
     }
-
     .usa-providers {
       position: relative;
       text-align: center;
-
       .providers-row {
         display: block;
         position: relative;
@@ -411,15 +406,12 @@
       .provider {
         display: table;
         float: left;
-        //height: get-vw(60px, 1600);
         margin-right: get-vw(140px, 1600);
         position: relative;
         @include breakpoint($bp-min-1601-width) {
-          //height: 60px;
           margin-right: 140px;
         }
         @include breakpoint($bp-768-width) {
-          //height: get-vw(60px, 768);
           margin: get-vw(45px, 768) 0;
           width: 50%;
         }
@@ -442,7 +434,6 @@
             }
             @include breakpoint($bp-768-width) {
               max-height: get-vw(80px, 768);
-              //max-height: 60px;
               height: 80px;
             }
           }

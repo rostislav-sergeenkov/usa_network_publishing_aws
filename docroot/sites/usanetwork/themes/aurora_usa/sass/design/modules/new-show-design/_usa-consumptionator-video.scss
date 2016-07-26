@@ -384,15 +384,12 @@
                 top: 50%;
                 height: 40px;
                 width: 40px;
-
                 -moz-animation: video-spinner 1s infinite linear;
                 -webkit-animation: video-spinner 1s infinite linear;
                 animation: video-spinner 1s infinite linear;
-
                 &.show-spinner {
                   display: block;
                 }
-
                 &:before {
                   color: #ffffff;
                   content: "\e62d";
@@ -426,7 +423,6 @@
             left: 0;
             top: 0;
           }
-
           .sign-in-wrapper {
             display: none;
             left: 0;
@@ -1025,7 +1021,6 @@
                   font-size: get-vw(48px, 640);
                 }
               }
-
               [id$='reaction0-facebook_img'] {
                 &:before {
                   color: $usa-video-helper-facebook;
@@ -1051,7 +1046,6 @@
                   color: $poll-color;
                 }
               }
-
             }
           }
         }
@@ -1073,8 +1067,6 @@
             top: get-vw(-5px, 1024);
             height: get-vw(42px, 1024);
             width: get-vw(160px, 1024);
-            //height: 42px;
-            //width: 160px;
           }
           @include breakpoint($bp-768-width) {
             right: 0;

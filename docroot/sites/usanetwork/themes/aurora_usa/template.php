@@ -163,7 +163,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/velocity.min.js');
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
   drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
-  drupal_add_js($theme_path . '/javascripts/tableheader.js');
+  //drupal_add_js($theme_path . '/javascripts/tableheader.js');
   drupal_add_js($theme_path . '/javascripts/jquery.mCustomScrollbar.concat.min.js');
   drupal_add_js($theme_path . '/javascripts/matchmedia.js');
   drupal_add_js($theme_path . '/javascripts/picturefill.js');

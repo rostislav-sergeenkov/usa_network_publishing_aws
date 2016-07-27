@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -33541,9 +33541,6 @@ yx-axis
     display: none;
   }
 }
-.schedule-on-tonight .caroufredsel_wrapper {
-  height: 100% !important;
-}
 .schedule-on-tonight .view-schedule {
   height: 9.4687vw;
   position: absolute;
@@ -33594,18 +33591,6 @@ yx-axis
 .schedule-on-tonight .schedule-buttons {
   position: absolute;
   top: 0;
-  -webkit-transition-property: left;
-  -moz-transition-property: left;
-  -o-transition-property: left;
-  transition-property: left;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease;
-  -moz-transition-timing-function: ease;
-  -o-transition-timing-function: ease;
-  transition-timing-function: ease;
   height: 100%;
   width: 9.4687vw;
 }
@@ -33619,13 +33604,7 @@ yx-axis
   left: 0;
 }
 .schedule-on-tonight .schedule-buttons.on-now {
-  left: 100%;
-  margin-left: -9.4687vw;
-}
-@media (min-width: 1901px) {
-  .schedule-on-tonight .schedule-buttons.on-now {
-    margin-left: -180px;
-  }
+  right: 0;
 }
 .schedule-on-tonight .schedule-buttons a {
   background: #474747;
@@ -33736,9 +33715,43 @@ yx-axis
     font-size: 26px;
   }
 }
+.schedule-on-tonight .schedule-carousel-wrap {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.schedule-on-tonight .schedule-carousel {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 200%;
+  -webkit-transition: left 0.3s ease-in-out;
+  -moz-transition: left 0.3s ease-in-out;
+  -o-transition: left 0.3s ease-in-out;
+  transition: left 0.3s ease-in-out;
+}
+.schedule-on-tonight .schedule-carousel:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.schedule-on-tonight .schedule-carousel.on-tonight {
+  left: 0;
+}
+.schedule-on-tonight .schedule-carousel.on-now {
+  left: -100%;
+}
+.schedule-on-tonight .schedule-items-wrapper:after {
+  clear: both;
+  content: '';
+  display: table;
+}
 .schedule-on-tonight .schedule-block {
+  box-sizing: border-box;
   float: left;
   height: 9.4687vw;
+  width: 50%;
+  position: relative;
 }
 .schedule-on-tonight .schedule-block:after {
   clear: both;
@@ -33751,11 +33764,11 @@ yx-axis
   }
 }
 .schedule-on-tonight .schedule-block.on-tonight {
-  margin-left: 9.4687vw;
+  padding-left: 9.4687vw;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block.on-tonight {
-    margin-left: 180px;
+    padding-left: 180px;
   }
 }
 .schedule-on-tonight .schedule-block.on-tonight .schedule-item {
@@ -33794,22 +33807,22 @@ yx-axis
   vertical-align: middle;
 }
 .schedule-on-tonight .schedule-block.on-now {
-  margin-right: 9.4687vw;
+  padding-right: 9.4687vw;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block.on-now {
-    margin-right: 180px;
+    padding-right: 180px;
   }
 }
-.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper {
+.schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper {
   text-align: right;
 }
-.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper:after {
+.schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper:after {
   clear: both;
   content: '';
   display: table;
 }
-.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item {
+.schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item {
   float: right;
   display: table;
   box-sizing: border-box;
@@ -33820,71 +33833,71 @@ yx-axis
   vertical-align: top;
   width: 49%;
 }
-.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item:after {
+.schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (min-width: 1901px) {
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item {
     height: 180px;
     max-width: 600px;
   }
 }
 @media (min-width: 769px) and (max-width: 990px) {
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item {
     margin-top: 0;
     max-width: none;
   }
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item:first-child {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item:first-child {
     margin-left: 0;
   }
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .time {
     float: none;
     max-width: none;
   }
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .episode-info {
     float: none;
     max-width: none;
   }
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info .episode-show {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .episode-info .episode-show {
     float: left;
   }
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info .icons-block {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .episode-info .icons-block {
     float: left;
     margin-left: 1.51515vw;
   }
 }
-.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
+.schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .time {
   margin-left: 0;
   width: 15.12195vw;
 }
 @media (min-width: 1901px) {
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .time {
     max-width: 287.525px;
     width: 287.525px;
   }
 }
 @media (min-width: 769px) and (max-width: 990px) {
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .time {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .time {
     width: 100%;
   }
 }
-.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
+.schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .episode-info {
   width: calc(100% - 15.62336vw);
 }
 @media (min-width: 1901px) {
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .episode-info {
     width: calc(100% - 297px);
   }
 }
 @media (min-width: 769px) and (max-width: 990px) {
-  .schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .episode-info {
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .episode-info {
     padding-right: 15px;
     width: 100%;
   }
 }
-.schedule-on-tonight .schedule-block.on-now .schedule-item-wrapper .schedule-item .schedule-item-wrap {
+.schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .schedule-item-wrap {
   display: table-cell;
   vertical-align: middle;
 }

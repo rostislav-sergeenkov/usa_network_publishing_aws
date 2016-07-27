@@ -170,6 +170,9 @@
             }
             a {
               background: none !important;
+              &:after {
+                display: none!important;
+              }
             }
           }
           &.cta_button_0 {

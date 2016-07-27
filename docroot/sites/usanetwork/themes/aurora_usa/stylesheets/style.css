@@ -32439,6 +32439,9 @@ yx-axis
 .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link:not(.cta_button_0) a {
   background: none !important;
 }
+.node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link:not(.cta_button_0) a:after {
+  display: none !important;
+}
 .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .cta-link.cta_button_0 a {
   font-size: 1.79688vw;
   padding: 0 2.10938vw 0 0;

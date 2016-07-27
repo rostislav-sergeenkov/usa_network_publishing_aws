@@ -355,7 +355,7 @@
         },
         cta_button_2: {
           dataRel: 'cta_button_2',
-          alignLeft: 409,
+          alignLeft: 4,
           alignLeftM: -1,
           desktop: {
             left: '50px',

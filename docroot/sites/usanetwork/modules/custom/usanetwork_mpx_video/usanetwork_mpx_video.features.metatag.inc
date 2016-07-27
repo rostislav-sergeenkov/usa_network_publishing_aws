@@ -53,9 +53,6 @@ function usanetwork_mpx_video_metatag_export_default() {
       'og:image' => array(
         'value' => '[file:og-image]',
       ),
-      'article:published_time' => array(
-        'value' => '[file:field-mpx-available-date:custom:c]',
-      ),
     ),
   );
 
@@ -77,9 +74,6 @@ function usanetwork_mpx_video_metatag_export_default() {
       ),
       'og:image' => array(
         'value' => '[file:og-image]',
-      ),
-      'article:published_time' => array(
-        'value' => '[file:field-mpx-available-date:custom:c]',
       ),
     ),
   );

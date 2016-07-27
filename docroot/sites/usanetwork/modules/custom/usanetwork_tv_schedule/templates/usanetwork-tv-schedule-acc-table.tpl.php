@@ -11,7 +11,7 @@
 <div class="schedule-wrapper">
   <?php if (!empty($navigation)): ?>
     <div class="schedule-navigation">
-      <ul>
+      <ul class="slider">
         <?php foreach ($navigation as $navigation_item): ?>
           <li<?php if($navigation_item['active']): print ' class="active"'; endif;?>>
             <a href="<?php print !empty($navigation_item['sdate_value']) ? $navigation_item['sdate_url'] : url('schedule'); ?>">
@@ -22,8 +22,8 @@
         <?php endforeach; ?>
       </ul>
     </div>
-    <a href="javascript:void(0)" class="schedule-navigation-controls jcarousel-control-prev link-color-reset"></a>
-    <a href="javascript:void(0)" class="schedule-navigation-controls jcarousel-control-next link-color-reset"></a>
+    <div class="slide-next slide-control schedule-navigation-controls" style="display: block;"></div>
+    <div class="slide-prev slide-control schedule-navigation-controls" style="display: block;"></div>
   <?php endif; ?>
   <?php if (!empty($schedule_rows)): ?>
     <div class="schedule-table">

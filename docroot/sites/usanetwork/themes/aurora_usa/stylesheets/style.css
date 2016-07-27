@@ -33027,48 +33027,6 @@ yx-axis
   padding: 0;
   border-bottom: 2px solid #2c2c2c;
 }
-.schedule-wrapper .schedule-table .carousel-vert {
-  overflow: hidden;
-  position: static;
-  margin: 0;
-  padding: 0;
-  max-height: 770px;
-}
-.schedule-wrapper .schedule-table .jcarousel-control-next {
-  display: block;
-  height: 19px;
-  line-height: 19px;
-  margin-left: -9.5px;
-  overflow: hidden;
-  position: absolute;
-  left: 50%;
-  top: 0;
-}
-.schedule-wrapper .schedule-table .jcarousel-control-next:before {
-  content: "\e60a";
-  color: #545454;
-  font-family: "ico-font";
-  font-size: 32px;
-  display: block;
-}
-.schedule-wrapper .schedule-table .jcarousel-control-prev {
-  display: block;
-  height: 19px;
-  line-height: 19px;
-  margin-left: -9.5px;
-  overflow: hidden;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  text-decoration: none;
-}
-.schedule-wrapper .schedule-table .jcarousel-control-prev:before {
-  content: "\e609";
-  color: #545454;
-  font-family: "ico-font";
-  font-size: 32px;
-  display: block;
-}
 .schedule-wrapper .schedule-table ul {
   width: 100%;
 }

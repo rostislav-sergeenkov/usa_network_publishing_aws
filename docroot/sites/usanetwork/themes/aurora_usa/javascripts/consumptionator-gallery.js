@@ -680,66 +680,66 @@
         refreshAD = false;
 
     _.$gallery
-        .on('init', function (event, slick) {
+      .on('init', function (event, slick) {
 
-          $gallery.addClass('ready');
+        $gallery.addClass('ready');
 
-            _.updateGalleryElem(_);
-            _.createPagerPosition(_);
-            _.setPagerPosition(_);
-            _.gigyaSharebar(initialSlide);
-            _.movePagerItems(_, initialSlide);
+          _.updateGalleryElem(_);
+          _.createPagerPosition(_);
+          _.setPagerPosition(_);
+          _.gigyaSharebar(initialSlide);
+          _.movePagerItems(_, initialSlide);
 
-          if (initSlidesCounter) {
-            _.createSlidesCounter(slick);
-          }
-          if (initMouseWhell) {
-            _.addMouseWhell(slick);
-          }
-          if (initResize) {
-            _.resize(_);
-          }
-        })
-        .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        if (initSlidesCounter) {
+          _.createSlidesCounter(slick);
+        }
+        if (initMouseWhell) {
+          _.addMouseWhell(slick);
+        }
+        if (initResize) {
+          _.resize(_);
+        }
+      })
+      .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
-          // Interstitial
-          if (initInterstitial) {
-            // advert counter up +1
-            adCounter += 1;
-            // if advertCounter = slidesCount fire show gallery advert
-            if (adCounter === adSlidesCount) {
-              // reset advert counter
-              adCounter = 0;
-              // show gallery ad
-              _.insertInterstitial.showInterstitial(_, refreshAD);
-              refreshAD = true;
-            }
+        // Interstitial
+        if (initInterstitial) {
+          // advert counter up +1
+          adCounter += 1;
+          // if advertCounter = slidesCount fire show gallery advert
+          if (adCounter === adSlidesCount) {
+            // reset advert counter
+            adCounter = 0;
+            // show gallery ad
+            _.insertInterstitial.showInterstitial(_, refreshAD);
+            refreshAD = true;
           }
+        }
 
-          if (initAdobeTracking) {
-            _.callAdobeTracking();
-          }
+        if (initAdobeTracking) {
+          _.callAdobeTracking();
+        }
 
-          if ($('body').hasClass('page-node-microsite')
-            && typeof Drupal.behaviors.ms_global == 'object'
-            && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
-              Drupal.behaviors.ms_global.refreshAds('galleries');
-          }
-        })
-        .on('afterChange', function (event, slick, currentSlide) {
-          _.gigyaSharebar(currentSlide);
-          _.movePagerItems(_, currentSlide);
+        if ($('body').hasClass('page-node-microsite')
+          && typeof Drupal.behaviors.ms_global == 'object'
+          && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
+            Drupal.behaviors.ms_global.refreshAds('galleries');
+        }
+      })
+      .on('afterChange', function (event, slick, currentSlide) {
+        _.gigyaSharebar(currentSlide);
+        _.movePagerItems(_, currentSlide);
 
-          if (_.$body.hasClass('node-type-media-gallery')) {
-            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+        if (_.$body.hasClass('node-type-media-gallery')) {
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+        }
+        if (_.$body.hasClass('node-type-person') || _.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post') || (_.$body.hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
+          if (!$('.region-header').hasClass('sticky-shows-submenu')) {
+            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
           }
-          if (_.$body.hasClass('node-type-person') || _.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post') || (_.$body.hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
-            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
-            if (!$('.region-header').hasClass('sticky-shows-submenu')) {
-              Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
-            }
-          }
-        });
+        }
+      });
 
     _.$interstitialNext.on('click', function () {
       _.insertInterstitial.hideInterstitial(_);

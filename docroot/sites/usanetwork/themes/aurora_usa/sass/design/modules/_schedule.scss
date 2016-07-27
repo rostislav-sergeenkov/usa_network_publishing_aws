@@ -316,48 +316,6 @@
     position: relative;
     padding: 0;
     border-bottom: 2px solid $usa-logo-back;
-    .carousel-vert {
-      overflow: hidden;
-      position: static;
-      margin: 0;
-      padding: 0;
-      max-height: 770px;
-    }
-    .jcarousel-control-next {
-      display: block;
-      height: 19px;
-      line-height: 19px;
-      margin-left: -9.5px;
-      overflow: hidden;
-      position: absolute;
-      left: 50%;
-      top: 0;
-      &:before {
-        content: "\e60a";
-        color: $poll-color;
-        font-family: $ico-font;
-        font-size: 32px;
-        display: block;
-      }
-    }
-    .jcarousel-control-prev {
-      display: block;
-      height: 19px;
-      line-height: 19px;
-      margin-left: -9.5px;
-      overflow: hidden;
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      text-decoration: none;
-      &:before {
-        content: "\e609";
-        color: $poll-color;
-        font-family: $ico-font;
-        font-size: 32px;
-        display: block;
-      }
-    }
     ul {
       width: 100%;
       li.date-separate {

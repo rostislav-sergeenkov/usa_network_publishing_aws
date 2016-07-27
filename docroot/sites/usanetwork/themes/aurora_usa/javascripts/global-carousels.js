@@ -1,82 +1,6 @@
 (function ($) {
   Drupal.behaviors.global_carousels = {
     carouselInit: function () {
-      /*$('.carousel-vertical').hover(function () {
-       var myScroll = new IScroll('.carousel-vertical', {
-       mouseWheel: true
-       });
-
-       document.addEventListener('touchmove', function (e) {
-       e.preventDefault();
-       }, false);
-       });*/
-
-      /**
-       * VERTICAL CAROUSELS INITIALIZATION
-       */
-      $('.carousel-vert').each(function () {
-        var $container = $(this),
-            $carousel = $container.find('ul').eq(0),
-            carousel_id = $container.eq(0).attr('data-carousel-id');
-
-        // Schedule page open-description-button click
-        $('.carousel-vert .open-description').bind('click', function (e) {
-          e.preventDefault();
-          if ($(this).closest('li').hasClass('active')) {
-            $('.carousel-vert li').removeClass('active');
-          } else {
-            $('.carousel-vert li').removeClass('active');
-            $(this).closest('li').addClass('active');
-          }
-        });
-
-        // Carousels initialization
-        if (!$carousel.hasClass('stop')) {
-          $container
-              .on('jcarousel:createend', function () {
-                $carousel.find('a').click(function (e) {
-                  e.preventDefault();
-                });
-
-                $container.swipe({
-                  excludedElements: "button, input, select, textarea, .noSwipe",
-                  swipeUp: function () {
-                    if (!$carousel.hasClass('stop')) {
-                      if ($('.carousel-vert .open-description').closest('li').hasClass('active')) {
-                        $('.carousel-vert li').removeClass('active');
-                      }
-                      $container.jcarousel('scroll', '+=2');
-                    }
-                  },
-                  swipeDown: function () {
-                    if (!$carousel.hasClass('stop')) {
-                      if ($('.carousel-vert .open-description').closest('li').hasClass('active')) {
-                        $('.carousel-vert li').removeClass('active');
-                      }
-                      $container.jcarousel('scroll', '-=2');
-                    }
-                  }
-                });
-              })
-              .on('jcarousel:scroll', function (event, carousel) {
-                $.each(carousel._items, function (i, v) {
-                  if ($(v).hasClass('active')) {
-                    Drupal.behaviors.global_carousels.showClose($(v));
-                  }
-                });
-              })
-              .jcarousel({
-                vertical: true,
-                animation: {
-                  duration: 500,
-                  easing: 'linear'
-                },
-                rtl: false
-              });
-        }
-
-        Drupal.behaviors.global_carousels.carouselControlsInit('vert', carousel_id, $container, $carousel);
-      });
 
       /**
        * LEFT CAROUSELS INITIALIZATION
@@ -526,7 +450,6 @@
         });
 
       //});
-
     }
   };
 

@@ -339,13 +339,6 @@
     position: relative;
     padding: 0;
     border-bottom: 2px solid $usa-logo-back;
-    .carousel-vert {
-      overflow: hidden;
-      position: static;
-      margin: 0;
-      padding: 0;
-      max-height: 770px;
-    }
     ul {
       width: 100%;
       li.date-separate {

@@ -32,7 +32,7 @@ function aurora_usa_modernizr_load_alter(&$load) {
   // We will check for touch events, and if we do load the hammer.js script.
   $load[] = array(
     'test' => 'Modernizr.touch',
-    'yep'  => array('/'. drupal_get_path('theme','aurora_usa') . '/javascripts/hammer.js'),
+    //'yep'  => array('/'. drupal_get_path('theme','aurora_usa') . '/javascripts/hammer.js'),
   );
 
   return $load;
@@ -162,8 +162,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
   drupal_add_js($theme_path . '/javascripts/velocity.min.js');
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
-  drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
-  //drupal_add_js($theme_path . '/javascripts/tableheader.js');
   drupal_add_js($theme_path . '/javascripts/jquery.mCustomScrollbar.concat.min.js');
   drupal_add_js($theme_path . '/javascripts/matchmedia.js');
   drupal_add_js($theme_path . '/javascripts/picturefill.js');
@@ -583,7 +581,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     break;
     case 'field_hp_promos':
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       foreach ($vars['items'] as $delta => $item) {
         $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
       }
@@ -936,12 +933,10 @@ function aurora_usa_preprocess_views_view(&$vars) {
     }
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'block_1') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
     }
 
     if($vars['view']->name == 'usa_shows' && $vars['view']->current_display == 'block_1') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-carousel.js');
     }
   }

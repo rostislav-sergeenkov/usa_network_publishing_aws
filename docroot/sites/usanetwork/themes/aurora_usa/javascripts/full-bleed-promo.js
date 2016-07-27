@@ -29,7 +29,6 @@
         }
       });
 
-
       $(window).bind('resize', function () {
         waitForFinalEvent(function(){
           if($('#full-bleed-promo').hasClass('visible')){

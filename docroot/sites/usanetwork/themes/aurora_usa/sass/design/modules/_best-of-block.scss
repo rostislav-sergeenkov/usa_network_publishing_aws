@@ -7,7 +7,6 @@
       bottom: 173px;
     }
   }
-
   .meta-wrapper {
     @include breakpoint($bp-min-769-width) {
       background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);

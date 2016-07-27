@@ -33045,13 +33045,6 @@ yx-axis
   padding: 0;
   border-bottom: 2px solid #2c2c2c;
 }
-.schedule-wrapper .schedule-table .carousel-vert {
-  overflow: hidden;
-  position: static;
-  margin: 0;
-  padding: 0;
-  max-height: 770px;
-}
 .schedule-wrapper .schedule-table ul {
   width: 100%;
 }

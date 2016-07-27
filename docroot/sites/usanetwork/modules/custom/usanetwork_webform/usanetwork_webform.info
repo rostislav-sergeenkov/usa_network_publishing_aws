@@ -12,7 +12,6 @@ dependencies[] = recaptcha
 dependencies[] = strongarm
 dependencies[] = usanetwork_strongarm
 dependencies[] = webform
-dependencies[] = webform_conditional
 dependencies[] = webform_validation
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2

@@ -356,7 +356,11 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data, $show_title = NULL
         continue;
       }
     } else {
-      $schedule_item->mid = _usanetwork_tv_schedule_get_nid_by_title($schedule_item->show_title, 'movie');
+      $move_nid = _usanetwork_tv_schedule_get_nid_by_title($schedule_item->show_title, 'movie');
+      if (empty($move_nid)) {
+        $move_nid = _usanetwork_tv_schedule_get_nid_by_title($schedule_item->title, 'movie');
+      }
+      $schedule_item->mid = $move_nid;
     }
   }
 }

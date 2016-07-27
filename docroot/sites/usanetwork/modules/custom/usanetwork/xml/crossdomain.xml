@@ -7,4 +7,5 @@
     <allow-access-from domain="*.nbcudps.com"/>
     <allow-access-from domain="*.westminsterkennelclub.org"/>
     <allow-access-from domain="*.theplatform.com"/>
+    <allow-access-from domain="player.theplatform.com" headers="*"/>
 </cross-domain-policy>

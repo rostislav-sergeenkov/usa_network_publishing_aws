@@ -22,8 +22,12 @@
               <div class="meta-wrapper">
                 <div class="meta-wrapper-inner">
                   <div class="meta">
-                    <div class="title"><?php print !empty($person['name']) ? $person['name'] : ''; ?></div>
-                    <div class="additional"><?php print !empty($person['role']) ? $person['role'] : ''; ?></div>
+                    <?php if (!empty($person['name'])): ?>
+                      <div class="title"><?php print $person['name']; ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($person['role'])): ?>
+                      <div class="additional"><?php print $person['role']; ?></div>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>

@@ -1,0 +1,136 @@
+<?php
+
+define('USANETWORK_BLOG_MIGRATE_AUTHORS_VOC', 'authors');
+
+/**
+ *  Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_blog_migrate_form_usanetwork_settings_form_alter(&$form, &$form_state, $form_id) {
+  $form['blog_migrate_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Blog migrate settings'),
+    '#description' => t('Display settings of feed migration process'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['blog_migrate_settings']['blog_migrate_general_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('General blog migrate settings'),
+    '#description' => t('General settiongs for all blogs feeds and shows.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['blog_migrate_settings']['blog_migrate_general_settings']['blog_migrate_frequency'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Frequency of import. In minutes.'),
+    '#description' => t('.'),
+    '#default_value' => variable_get('blog_migrate_frequency', 60),
+  );
+
+  $service = usanetwork_blog_migrate_get_services();
+  foreach ($service as $key => $service) {
+    $form['blog_migrate_settings'][$key . '_settings'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('@service_name @show_name blog migration settings', array(
+          '@service_name' => $service['service_name'],
+          '@show_name' => $service['show_name'],
+        )
+      ),
+      '#description' => t('Settings for @service_name feeds of @show_name shows.', array(
+        '@service_name' => $service['service_name'],
+        '@show_name' => $service['show_name'],
+      )),
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+    );
+    $form['blog_migrate_settings'][$key . '_settings']['blog_migrate_' . $service['blog_machine_name'] . '_nid'] = array(
+      '#type' => 'textfield',
+      '#title' => t('@show_name blog.', array('@show_name' => $service['show_name'])),
+      '#description' => t('Blog of @show_name show that will use for migration blog posts.', array('@show_name' => $service['show_name'])),
+      '#default_value' => variable_get('blog_migrate_' . $service['blog_machine_name'] . '_nid', NULL),
+      '#autocomplete_path' => 'ajax/consumptionator_blog/autocomplete',
+    );
+    $form['blog_migrate_settings'][$key . '_settings']['blog_migrate_' . $service['blog_machine_name'] . '_url'] = array(
+      '#type' => 'textfield',
+      '#title' => t('@show_name blog url.', array('@show_name' => $service['show_name'])),
+      '#description' => t('Url of @show_name show and @service_name service that will use for migration blog posts.', array(
+        '@service_name' => $service['service_name'],
+        '@show_name' => $service['show_name'],
+      )),
+      '#default_value' => variable_get('blog_migrate_' . $service['blog_machine_name'] . '_url', NULL),
+    );
+    $form['blog_migrate_settings'][$key . '_settings']['blog_migrate_' . $service['blog_machine_name'] . '_perform'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Import.'),
+      '#default_value' => variable_get('blog_migrate_' . $service['blog_machine_name'] . '_perform', FALSE),
+    );
+  }
+
+  $form['#validate'][] = 'usanetwork_blog_migrate_settings_form_validate';
+}
+
+function usanetwork_blog_migrate_settings_form_validate($form, &$form_state) {
+  if (!is_numeric($form_state['values']['blog_migrate_frequency'])) {
+    form_set_error('blog_migrate_frequency', 'Migrate export frequency should be number.');
+  }
+}
+
+/**
+ * Implements hook_init().
+ */
+function usanetwork_blog_migrate_init() {
+  module_load_include('inc', 'usanetwork_blog_migrate', 'vox_blog_migrate');
+}
+
+/**
+ * Implements hook_cron().
+ */
+function usanetwork_blog_migrate_cron() {
+  // If the minimum lifetime hasn't been passed, skip.
+  $lifetime = REQUEST_TIME - variable_get('usanetwork_blog_migrate_last', 0);
+  if ($lifetime < variable_get('blog_migrate_frequency', 60) * 60) {
+    return;
+  }
+  variable_set('usanetwork_blog_migrate_last', REQUEST_TIME);
+
+  $services = usanetwork_blog_migrate_get_services();
+  foreach ($services as $machine_name => $service) {
+    if (!variable_get('blog_migrate_' . $service['blog_machine_name'] . '_perform', FALSE)) {
+      continue;
+    }
+    // Log that we're starting this update.
+    watchdog('usanetwork_migrate', 'Starting @migration migration update.',
+        array('@migration' => $machine_name), WATCHDOG_NOTICE);
+    drupal_set_message(t('USANETWORK MIGRATE:  Starting @migration migration update.',
+        array('@migration' => $machine_name)));
+    $migration = Migration::getInstance($machine_name);
+    // Prepare to Update the contents/data
+    //$migration->prepareUpdate();
+    // Trigger the migration
+    $result = $migration->processImport();
+    // Log that we've completed this update.
+    watchdog('usanetwork_migrate', 'Completed @migration migration update.',
+        array('@migration' => $machine_name), WATCHDOG_NOTICE);
+    drupal_set_message(t('USANETWORK MIGRATE:  Completed @migration migration update.',
+        array('@migration' => $machine_name)));
+  }
+}
+
+function usanetwork_blog_migrate_get_post_service($node) {
+  if ('consumpt_post' == $node->type && variable_get('usanetwork_blog_migrate_the_verge_user_uid', FALSE) == $node->uid) {
+    return 'verge';
+  }
+  return FALSE;
+}
+
+function usanetwork_blog_migrate_get_services() {
+  return array(
+    'usanetwork_vox_blog' => array(
+      'service_name' => 'The Verge',
+      'show_name' => 'Mr. Robot',
+      'blog_machine_name' => 'mrrobot',
+    ),
+  );
+}

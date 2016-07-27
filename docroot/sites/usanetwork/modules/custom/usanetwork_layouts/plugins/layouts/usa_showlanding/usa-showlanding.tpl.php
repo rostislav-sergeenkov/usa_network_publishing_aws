@@ -24,7 +24,7 @@
     </div>
   <?php endif; ?>
     <?php if($content['two']) : ?>
-    <div class="panel-panel panel-four panel-row catch-up-explore-panel">
+    <div class="panel-panel panel-four panel-row">
       <?php print $content['two']; ?>
     </div>
     <?php endif; ?>

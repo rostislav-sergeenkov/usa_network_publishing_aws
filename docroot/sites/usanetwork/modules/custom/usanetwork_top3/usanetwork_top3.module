@@ -176,7 +176,7 @@ function _usanetwork_top3_main_block() {
     $advert = render($advert_block['content']);
   }
 
-  $player = _usanetwork_mpx_video_get_player_src(array('parent_account' => '1', 'player_id' => 'top3_usa'), 'player');
+  $player = _usanetwork_mpx_video_get_player_src(array('player_id' => _usanetwork_tve_video_get_player_id(), 'pub_mpx_player_parameters' => array('excludeSharing' => 'true')), 'player');
 
   if (!empty($node->body)) {
     $top3_description = strip_tags($node_wrapper->body->value->value());
@@ -188,6 +188,17 @@ function _usanetwork_top3_main_block() {
       'top3_title' => $node->title,
       'top3_description' => $top3_description)),
     'setting');
+
+  //Sponsored MPS
+  if (!empty($node->field_sponsored)) {
+    $field_sponsored = $node_wrapper->field_sponsored->value();
+    if ($field_sponsored == '1') {
+      $logo_advert_block = module_invoke('mps', 'block_view', 'topthreelogo');
+      if (!empty($logo_advert_block['content'])) {
+        $logo_advert = render($logo_advert_block['content']);
+      }
+    }
+  }
 
   $query_params = drupal_get_query_parameters();
   if (!empty($query_params) && (isset($query_params['shared']) && isset($query_params['node']))) {
@@ -206,8 +217,8 @@ function _usanetwork_top3_main_block() {
           $isset_video = TRUE;
           $video = _usanetwork_mpx_video_get_player_src(array(
             'file' => $shared_file,
-            'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
-            'player_id' => 'top3_usa',
+            'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'excludeSharing' => 'true'),
+            'player_id' => _usanetwork_tve_video_get_player_id(),
           ));
           $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $shared_file), 'link');
         }
@@ -238,6 +249,7 @@ function _usanetwork_top3_main_block() {
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
       'isset_video' => isset($isset_video) ? $isset_video : NULL,
+      'logo_advert' => isset($logo_advert) ? $logo_advert : NULL,
     );
 
     return theme('usanetwork_top3_shared', $theme_variables);
@@ -275,8 +287,8 @@ function _usanetwork_top3_main_block() {
           $fid = $slide_video->fid;
           $video = _usanetwork_mpx_video_get_player_src(array(
             'file' => $slide_video,
-            'pub_mpx_player_parameters' => array('autoPlay' => 'true'),
-            'player_id' => 'top3_usa',
+            'pub_mpx_player_parameters' => array('autoPlay' => 'true', 'excludeSharing' => 'true'),
+            'player_id' => _usanetwork_tve_video_get_player_id(),
           ));
           $video_link = _usanetwork_mpx_video_get_player_src(array('file' => $slide_video), 'link');
         }
@@ -305,6 +317,7 @@ function _usanetwork_top3_main_block() {
       'top3_title' => $node->title,
       'player' => $player,
       'advert_block' => isset($advert) ? $advert : NULL,
+      'logo_advert' => isset($logo_advert) ? $logo_advert : NULL,
     );
     return theme('usanetwork_top3_main_block', $theme_variables);
   }

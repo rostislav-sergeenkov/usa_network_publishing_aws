@@ -10,26 +10,36 @@
 ?>
 
 <div class="cast-and-crew-block show-border">
-  <h2 class="section-title">
-    <span class="section-title-wrapper show-border secondary"><?php print !empty($title) ? $title : ''; ?></span>
-  </h2>
+  <?php if($new_design): ;?>
+    <div class="usa-section-title show-border">
+      <h2 class="title"><?php print !empty($title) ? $title : ''; ?></h2>
+    </div>
+  <?php else: ; ?>
+    <h2 class="section-title">
+      <span class="section-title-wrapper show-border secondary"><?php print !empty($title) ? $title : ''; ?></span>
+    </h2>
+  <?php endif; ?>
   <?php if (!empty($persons)) : ?>
     <ul>
       <?php foreach ($persons as $person) :?>
         <li class="block-item">
-          <div class="node node-usanetwork-promo cast-promo">
+          <div class="node node-usanetwork-promo <?php print($new_design)? 'usa-cast-promo': 'cast-promo';?>">
             <a href="<?php print (!empty($person['url']))? $person['url']: '#'; ?>">
-              <div class="meta-wrapper">
-                <div class="meta-wrapper-inner">
-                  <div class="meta">
-                    <div class="title"><?php print !empty($person['name']) ? $person['name'] : ''; ?></div>
-                    <div class="additional"><?php print !empty($person['role']) ? $person['role'] : ''; ?></div>
-                  </div>
-                </div>
-              </div>
               <?php if (!empty($person['image'])): ?>
                 <div class="asset-img"><?php print $person['image']; ?></div>
               <?php endif; ?>
+              <div class="meta-wrapper">
+                <div class="meta-wrapper-inner">
+                  <div class="meta">
+                    <?php if (!empty($person['name'])): ?>
+                      <div class="title"><?php print $person['name']; ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($person['role'])): ?>
+                      <div class="additional"><?php print $person['role']; ?></div>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              </div>
             </a>
           </div>
         </li>

@@ -91,6 +91,7 @@ function usanetwork_aspot_field_default_field_bases() {
         'aspot_description' => 'Description',
         'cta_button' => 'Call to action button',
         'social_meter' => 'Social meter',
+        'violator' => 'Violator',
       ),
       'allowed_values_function' => '',
     ),
@@ -119,6 +120,7 @@ function usanetwork_aspot_field_default_field_bases() {
         'aspot_description' => 'Description',
         'cta_button' => 'Call to action button',
         'social_meter' => 'Social meter',
+        'violator' => 'Violator',
       ),
       'allowed_values_function' => '',
     ),
@@ -229,6 +231,27 @@ function usanetwork_aspot_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_aspot_gi_violator'
+  $field_bases['field_aspot_gi_violator'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_aspot_gi_violator',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_aspot_preview_bg_offset'
@@ -349,6 +372,27 @@ function usanetwork_aspot_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_aspot_tgi_violator'
+  $field_bases['field_aspot_tgi_violator'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_aspot_tgi_violator',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_call_to_action_type'

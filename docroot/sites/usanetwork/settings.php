@@ -73,6 +73,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
+    $conf['file_temporary_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
     $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     // Memchache settings
@@ -115,6 +116,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
+    $conf['file_temporary_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
     $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     // Memchache settings
@@ -151,6 +153,7 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
 
     // File path settings. Acquia automatically figures our the public and tmp
     // file paths, however we have to set the private path manually.
+    $conf['file_temporary_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     $conf['file_private_path'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/files-private';
     $conf['plupload_temporary_uri'] = '/mnt/gfs/files/' . $_ENV["AH_SITE_GROUP"] . '/sites/tmp';
     // Memchache settings
@@ -243,6 +246,11 @@ switch ($_ENV['AH_SITE_ENVIRONMENT']) {
     $conf['apachesolr_read_only'] = "0";
 
     $conf['acquia_purge_domains'] = array('www.usanetwork.com');
+
+    $conf['akamai_basepath'] = 'http://www.usanetwork.com';
+    $conf['akamai_username'] = 'usanetwork';
+    $conf['akamai_password'] = 'prgc1che';
+    $conf['akamai_domain'] = 'production';
 
     // www redirect
     default_site_request_handler();

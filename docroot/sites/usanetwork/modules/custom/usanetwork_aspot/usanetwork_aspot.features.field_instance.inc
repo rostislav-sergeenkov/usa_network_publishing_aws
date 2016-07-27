@@ -151,6 +151,8 @@ function usanetwork_aspot_field_default_field_instances() {
   // Exported field_instance: 'node-usanetwork_aspot-field_aspot_enabled_gi'
   $field_instances['node-usanetwork_aspot-field_aspot_enabled_gi'] = array(
     'bundle' => 'usanetwork_aspot',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'List of enabled draggable elements that should be displayed in A-Spot carousel',
@@ -208,6 +210,8 @@ function usanetwork_aspot_field_default_field_instances() {
   // Exported field_instance: 'node-usanetwork_aspot-field_aspot_enabled_tgi'
   $field_instances['node-usanetwork_aspot-field_aspot_enabled_tgi'] = array(
     'bundle' => 'usanetwork_aspot',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => 'List of enabled draggable elements that should be displayed in A-Spot carousel',
@@ -259,7 +263,7 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 68,
+      'weight' => 77,
     ),
   );
 
@@ -335,7 +339,7 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 63,
+      'weight' => 64,
     ),
   );
 
@@ -624,6 +628,80 @@ function usanetwork_aspot_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_aspot-field_aspot_gi_violator'
+  $field_instances['node-usanetwork_aspot-field_aspot_gi_violator'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 73,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_gi_violator',
+    'label' => 'Violator',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 63,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_aspot-field_aspot_preview_bg_offset'
   $field_instances['node-usanetwork_aspot-field_aspot_preview_bg_offset'] = array(
     'bundle' => 'usanetwork_aspot',
@@ -759,7 +837,7 @@ function usanetwork_aspot_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 73,
+      'weight' => 83,
     ),
   );
 
@@ -831,7 +909,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 72,
+      'weight' => 81,
     ),
   );
 
@@ -903,7 +981,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 71,
+      'weight' => 80,
     ),
   );
 
@@ -975,7 +1053,7 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 70,
+      'weight' => 79,
     ),
   );
 
@@ -1047,7 +1125,81 @@ function usanetwork_aspot_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 69,
+      'weight' => 78,
+    ),
+  );
+
+  // Exported field_instance: 'node-usanetwork_aspot-field_aspot_tgi_violator'
+  $field_instances['node-usanetwork_aspot-field_aspot_tgi_violator'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 74,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_aspot_tgi_violator',
+    'label' => 'Violator',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+        'size' => 60,
+        'soft_length_limit' => '',
+        'soft_length_minimum' => '',
+        'soft_length_style_select' => 1,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 82,
     ),
   );
 
@@ -2751,6 +2903,75 @@ Suggested max dimensions 380px x 80px<br/>
     ),
   );
 
+  // Exported field_instance: 'node-usanetwork_aspot-field_new_design'
+  $field_instances['node-usanetwork_aspot-field_new_design'] = array(
+    'bundle' => 'usanetwork_aspot',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 72,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_new_design',
+    'label' => 'New Design',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 76,
+    ),
+  );
+
   // Exported field_instance: 'node-usanetwork_aspot-field_show'
   $field_instances['node-usanetwork_aspot-field_show'] = array(
     'bundle' => 'usanetwork_aspot',
@@ -4118,6 +4339,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('Mobile Text line 3 Font Size');
   t('Mobile image');
   t('Narrow version with a unique aspect ratio. this loads for mobile and scales down to 300x250. Minimum 640w x 560h.');
+  t('New Design');
   t('Optional image to display in place of the Title Text Line 1. <br/>
 Suggested max dimensions 380px x 80px<br/>
 * Title Text Line 1 will render as the alt text.');
@@ -4155,6 +4377,7 @@ Suggested max dimensions 380px x 80px<br/>
   t('Title text line 1');
   t('Title text line 2');
   t('Title text line 3');
+  t('Violator');
   t('Webm Video URL');
   t('example (tune-in time): TONIGHT 10/9C');
   t('example: Show name');

@@ -4,7 +4,7 @@
  */
 ?>
 
-<div class="items-block-title characters-block-title">
+<div class="items-block-title characters-block-title<?php print !empty($new_design) ? ' show-color show-font' : ''; ?>">
   <h2><?php print !empty($block_title) ? $block_title : '';?></h2>
 </div>
 <?php if (!empty($items_v)): ?>

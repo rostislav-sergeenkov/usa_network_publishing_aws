@@ -1,16 +1,12 @@
 // DEFAULT COLORS
 $nav-black          : rgba(black, 0.9);
-$black-trans-9      : rgba(black, 0.9);
-$black-trans-85     : rgba(black, 0.85);
 $black-trans        : rgba(black, 0.8);
 $black-trans-5      : rgba(black, 0.5);
 $black-trans-3      : rgba(black, 0.3);
-$black-trans-vid    : rgba(31, 31, 31, 0.3);
 $black-dark         : #161616;
 $black-true         : #000000;
 $black              : #1f1f1f;
 $black-into-gray    : #232323;
-$gray-dark          : #2d2d2d;
 $gray-med           : #3d3d3d;
 $gray-med-darker    : #313131;
 $gray-med-dark      : #414141;
@@ -22,7 +18,6 @@ $gray-darker-light  : #636363;
 $gray-dark-light    : #717274;
 $gray-light         : #878785;
 $gray-extra-light   : #A3A3A3;
-$gray-sky           : #CCCCCC;
 $tan                : #b0b0b0;
 $tan-light          : #d6d6d6;
 $beige              : #D0D0D0;
@@ -57,6 +52,13 @@ $link-border-hover: $white;
 $link-border-active: $white;
 $link-border-visited: $blue;
 
+// tve_auth2
+$bg-modalContent: #a9a9a9;
+$tve-modalFooter: #282828;
+$tve-modalBorder: #272727;
+$tve-select: #8b8b8b;
+$tve-provider: #b7b7b7;
+
 //NEW COLORS!!!!
 //color variables
 $aspot-shadow : #333333;
@@ -76,6 +78,8 @@ $header-tab-back : #e1e1e1;
 $header-tab-back-new : #363435;
 $header-tab-button-back : #8b8b8c;
 $header-menu-item-back : #444444;
+$header-new-menu-item-border : #454545;
+$header-new-menu-item-color : #c7c7c7;
 $header-tab-back-hover : #a9a9a9;
 $header-menu-item-separator : #b9b9b9;
 $header-show-caption : #3a3a3a;
@@ -123,6 +127,33 @@ $microsite-arrow: #56000a;
 $top-three-not-allow : #bc0d1d;
 $usa-endcard-dark: #2b2b2b;
 $continue-gallery-back : #4e4e4e;
+$gray-dark: #2d2d2d;
+$gray-sky: #cccccc;
+$right-rail-usa-show-back: #111111;
+$right-rail-usa-show-color: #cfcfcf;
+$usa-episodes-text: #a6a6a6;
+$usa-episode-item-text: #7c7c7c;
+$usa-articles-color: #cdcdcd;
+$usa-section-title-color: #6c6c6c;
+$usa-special-block: #222222;
+$usa-top-five-block: #151515;
+$usa-related-title: #e6e6e6;
+$usa-bcd-title: #e6e7e8;
+$usa-related-additional: #cdcdcd;
+$usa-footer-color: #bababa;
+$usa-filter-color: #f1f1f1;
+$usa-blog-item-title: #d7d3d1;
+$usa-blog-item-desc: #abb7b7;
+$usa-episodes-link: #cecece;
+$usa-video-helper-color: #dadada;
+$usa-video-helper-facebook: #3b5998;
+$usa-video-helper-twitter: #00aced;
+$usa-video-helper-tumblr: #32506d;
+$usa-video-helper-pinterest: #cb2027;
+$usa-sign-up: #cacaca;
+$usa-sign-up-input-wrap-border: #484848;
+$usa-sign-up-input-border: #515151;
+$usa-episode-title: #aaaaaa;
 
 .show-color-border, .asset-img.show {
   position: relative;
@@ -139,6 +170,23 @@ $continue-gallery-back : #4e4e4e;
     cursor: pointer;
   }
 }
+.show-new-design {
+  .show-color-border, .asset-img.show {
+    position: relative;
+    &:before {
+      background: $usa-logo-back;
+      display: block;
+      content: '';
+      height: 2px !important;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 3px;
+      z-index: 2;
+      cursor: pointer;
+    }
+  }
+}
 
 .show-color {
   background: $usa-logo-back;
@@ -151,22 +199,70 @@ $continue-gallery-back : #4e4e4e;
     }
   }
 }
-.page-movies, .node-type-movie, .movie-consumptionator {
+.page-movies, .node-type-movie, .movie-consumptionator, .page-news, body:not([class*=" show-"]).node-type-consumpt-post {
   .show-color {
     background: $usa-movie-back;
     &.secondary {
       background: $usa-movie-secondary-back;
+      &:before {
+        background: $usa-movie-tertiary-back;
+      }
+    }
+    &.tertiary {
+      background: $usa-movie-tertiary-back;
+      &:before {
+        background: $usa-movie-secondary-back;
+      }
     }
     &.hover-avail, &.tertiary {
       &:hover {
         background: $usa-movie-tertiary-back;
       }
     }
+    &.show-font {
+      color: $usa-movie-back!important;
+    }
   }
   .show-border {
-    border-color: $usa-movie-back;
+    border-color: $usa-movie-back!important;
+    &:before, &:after {
+      border-color: $usa-movie-back!important;
+    }
+    &.secondary {
+      border-color: $usa-movie-secondary-back!important;
+      &:before, &:after {
+        border-color: $usa-movie-secondary-back!important;
+      }
+    }
+    &.tertiary {
+      border-color: $usa-movie-tertiary-back!important;
+      &:before, &:after {
+        border-color: $usa-movie-tertiary-back!important;
+      }
+    }
+  }
+  .show-color-border, .asset-img.show {
+    &:before {
+      background: $usa-movie-back!important;
+    }
+  }
+  .item-hover {
+    &:hover {
+      background: $usa-movie-back;
+    }
+  }
+  .icons-block {
+    a {
+      color: $usa-movie-back!important;
+    }
+  }
+  .person-quotation {
+    &:before, &:after {
+      color: $usa-movie-back!important;
+    }
   }
 }
+
 
 
 

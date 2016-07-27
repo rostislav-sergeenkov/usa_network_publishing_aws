@@ -14,7 +14,7 @@ define('USANETWORK_ADS_POST_TITLE', '[usa_post_title]');
  * Implements hook_init().
  */
 function usanetwork_ads_init() {
-  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/omniture.js', array('scope' => 'footer', 'every_page' => true));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_ads') . '/js/omniture.js', array('scope' => 'footer', 'every_page' => true, 'weight' => 25));
 }
 
 /**
@@ -1113,7 +1113,7 @@ function _usanetwork_ads_default_omniture_variables_settings($entity_type = NULL
       switch ($bundle) {
         case 'consumpt_post':
           $vars += array(
-            's.prop4' => USANETWORK_ADS_POST_SHOW_NAME . ' Blog',
+            's.prop4' => USANETWORK_ADS_POST_SHOW_NAME . ' : ' . USANETWORK_ADS_POST_SHOW_NAME . ' Blog',
             's.pageName' => USANETWORK_ADS_POST_SHOW_NAME . ' : ' . USANETWORK_ADS_POST_SHOW_NAME . ' Blog : ' . USANETWORK_ADS_POST_TITLE,
             's.prop3' => 'Blog'
           );

@@ -1,0 +1,6 @@
+name = usanetwork_news
+description = News
+core = 7.x
+package = USA Network
+version = 7.x-1.2
+project = usanetwork_news

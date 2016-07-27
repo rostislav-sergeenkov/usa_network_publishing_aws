@@ -1201,3 +1201,69 @@ function usanetwork_core_update_7183() {
     module_enable(array('usanetwork_video_live'));
   }
 }
+
+/**
+ * Install usanetwork_blog_migrate module.
+ */
+function usanetwork_core_update_7184() {
+  if (!module_exists('usanetwork_blog_migrate')) {
+    module_enable(array('usanetwork_blog_migrate'));
+  }
+}
+
+/**
+ * Enables AdvAgg Modifier module.
+ */
+function usanetwork_core_update_7185() {
+  if (!module_exists('advagg_mod')) {
+    module_enable(array('advagg_mod'));
+  }
+}
+
+/**
+ * Enables USANetwork News module.
+ */
+function usanetwork_core_update_7186() {
+  if (!module_exists('usanetwork_news')) {
+    module_enable(array('usanetwork_news'));
+  }
+}
+
+/**
+ * Changes for Auth2.
+ */
+function usanetwork_core_update_7187() {
+  if (module_exists('tve_k2')) {
+    module_disable(array('tve_k2'));
+  }
+  if (module_exists('tve_auth')) {
+    module_disable(array('tve_auth'));
+  }
+  if (!module_exists('tve_auth2')) {
+    module_enable(array('tve_auth2'));
+  }
+  if (!module_exists('tve_player')) {
+    module_enable(array('tve_player'));
+  }
+  if (!module_exists('tve_auth2_cookies')) {
+    module_enable(array('tve_auth2_cookies'));
+  }
+}
+
+/**
+ * Enables Akamai module.
+ */
+function usanetwork_core_update_7188() {
+  if (!module_exists('akamai')) {
+    module_enable(array('akamai'));
+  }
+}
+
+/**
+ * Enable Social Plugin Module.
+ */
+function usanetwork_core_update_7189() {
+  if (!module_exists('usanetwork_social_plugin')) {
+    module_enable(array('usanetwork_social_plugin'));
+  }
+}

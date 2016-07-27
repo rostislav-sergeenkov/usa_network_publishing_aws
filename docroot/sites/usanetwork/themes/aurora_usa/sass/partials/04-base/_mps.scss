@@ -1,13 +1,51 @@
 // advert
-#topbanner {
-  margin: 10px auto;
-  overflow: hidden;
-  text-align: center;
-  max-width: 970px;
-  @include breakpoint($bp-640-width) {
-    margin: 3px auto;
+.show-new-design {
+  #head-leaderboard {
+   padding: 10px 0;
+   overflow: hidden;
+    @include breakpoint($bp-768-width) {
+      padding: 0 0 6px;
+    }
+    #topbanner {
+      margin: 0 auto;
+      min-height: 90px;
+      max-width: 970px;
+      overflow: hidden;
+      text-align: center;
+      //@include breakpoint($bp-768-width) {
+      //  min-height: 45px;
+     //}
+    }
   }
 }
+
+//body:not(.show-new-design) {
+//  #topbanner {
+//    margin: 0 auto 20px;
+//    overflow: hidden;
+//    text-align: center;
+//    max-width: 970px;
+//    top: 10px;
+//    position: relative;
+//    @include breakpoint($bp-640-width) {
+//      margin: 0 auto 6px;
+//      top: 6px;
+//    }
+//  }
+//}
+body:not(.show-new-design) {
+  #topbanner {
+    margin: 10px auto;
+    overflow: hidden;
+    text-align: center;
+    max-width: 970px;
+    @include breakpoint($bp-640-width) {
+      margin: 3px auto;
+    }
+  }
+}
+
+
 .midbanner {
   height: auto;
   margin: 20px auto;
@@ -32,7 +70,12 @@
     .header-nav-bar {
       .nav-bar-tabs {
         .sponsored {
-          display: table;
+          display: block;
+          @supports (display: flex) {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
           float: left;
           height: get-vw(73px, 1025);
           max-height: get-vw(73px, 1025);
@@ -51,8 +94,8 @@
             max-height: 50px;
           }
           .mps-slot {
-            display: table-cell;
-            vertical-align: middle;
+            //height: 100%;
+            //width: 100%
           }
         }
       }

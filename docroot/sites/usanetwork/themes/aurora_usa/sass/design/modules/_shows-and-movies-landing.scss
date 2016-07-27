@@ -4,6 +4,7 @@
     border-bottom: 2px solid $usa-logo-back;
   }
 }
+
 .content {
   .all-shows-landing-page-container, .all-movies-landing-page-container {
     background: $footer-promo-links;
@@ -11,7 +12,7 @@
     @include breakpoint($bp-1280-width) {
       padding-top: 55px;
     }
-    @include breakpoint($bp-1280-width) {
+    @include breakpoint($bp-1024-width) {
       padding-top: 42px;
     }
     .landing-items-blocks {
@@ -108,3 +109,5 @@
     }
   }
 }
+
+

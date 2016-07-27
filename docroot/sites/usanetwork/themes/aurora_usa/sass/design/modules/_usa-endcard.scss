@@ -1,6 +1,5 @@
 // new usa end card
 [data-show-end-card="1"] {
-
   .video-player-wrapper {
     &:hover {
       .endcard_block img {
@@ -8,10 +7,8 @@
       }
     }
   }
-
   // end card
   .player {
-
     // hide end card
     .endcard_block {
       display: none;
@@ -19,7 +16,6 @@
       opacity: 0;
       overflow: hidden;
     }
-
     h3 {
       color: #ffffff;
       font-family: $avalon-book;
@@ -42,7 +38,6 @@
         padding: 9.125px;
       }
     }
-
     .close {
       cursor: pointer;
       background-color: $usa-endcard-dark;
@@ -99,7 +94,6 @@
         width: 31px;
       }
     }
-
     .pdk-player-wrap {
       width: 100%;
       height: 100%;
@@ -109,7 +103,6 @@
         }
       }
     }
-
     // share button
     .episode-share-bar-wrap {
       display: table;
@@ -119,14 +112,12 @@
         display: block;
       }
     }
-
     .episode-share-bar {
       display: table-cell;
       vertical-align: middle;
       @include breakpoint($bp-480-width) {
         display: block;
       }
-
       table {
         margin: 0 auto;
         max-width: 250px;
@@ -145,13 +136,11 @@
           width: 31px;
         }
       }
-
       .gig-button-container {
         margin: 0;
         padding: 0;
         width: 100%;
       }
-
       .usa-share-button {
         border-radius: 5px;
         cursor: pointer;
@@ -229,7 +218,6 @@
           }
         }
       }
-
       .Facebook {
         border-bottom: 1px solid #163492;
         @include background-image(linear-gradient(#547fce, #3159b0));
@@ -262,7 +250,6 @@
         }
       }
     }
-
     // reload button
     .reload-button {
       display: none;
@@ -341,7 +328,6 @@
         }
       }
     }
-
     // episode-up-next
     .endcard_topRight {
       background-color: $aspot-shadow;
@@ -434,7 +420,6 @@
         }
       }
     }
-
     // episode-share
     .endcard_bottomLeft{
       background-color: $aspot-shadow;
@@ -454,7 +439,6 @@
         }
       }
     }
-
     // episode-related
     .endcard_bottomRight {
       background-color: $usa-endcard-dark;
@@ -471,7 +455,7 @@
       }
       .player-episodes-list {
         margin: 0 auto;
-        height: calc(100% - 6.73vw);
+        height: calc(100% - #{get-vw(128px, 1901)});
         width: 85%;
         @include breakpoint($bp-min-1901-width) {
           height: calc(100% - 128px);

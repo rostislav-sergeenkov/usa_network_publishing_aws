@@ -1,6 +1,12 @@
 <?php
 //generate css file
 ?>
+.show-<?php print $node_code; ?> a {
+  color: <?php print $tertiary_color_code; ?>;
+}
+.show-<?php print $node_code; ?> a:hover, .show-<?php print $node_code; ?> a:active {
+  color: <?php print $primary_color_code; ?>;
+}
 .show-<?php print $node_code; ?>.show-color-border:before, .show-<?php print $node_code; ?>.asset-img.show:before {
   background: <?php print $primary_color_code; ?>;
 }

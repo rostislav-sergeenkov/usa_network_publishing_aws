@@ -1,0 +1,26 @@
+.tveModalBx.welcomeModal .tve-auth2-default-style-1 {
+  color: #4e4e4e;
+  font-size: 28px;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.tveModalBx.welcomeModal .tve-auth2-default-style-2 {
+  color: #fe0000;
+  font-size: 51px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.tveModalBx.welcomeModal .tve-auth2-default-style-3 {
+  color: #fe0000;
+  font-size: 144px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.tveModalBx.welcomeModal .tve-auth2-default-style-4 {
+  color: #f89814;
+  font-size: 194px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 #fff;
+}

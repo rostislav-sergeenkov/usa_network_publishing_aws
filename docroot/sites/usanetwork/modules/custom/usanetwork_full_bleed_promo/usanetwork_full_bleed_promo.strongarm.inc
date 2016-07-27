@@ -146,22 +146,31 @@ function usanetwork_full_bleed_promo_strongarm() {
       'promo_teaser_large' => array(
         'custom_settings' => FALSE,
       ),
+      'microsite_output' => array(
+        'custom_settings' => FALSE,
+      ),
+      'microsite_thumbnail' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
-        ),
-        'title' => array(
-          'weight' => '0',
-        ),
-        'path' => array(
           'weight' => '4',
         ),
+        'title' => array(
+          'weight' => '1',
+        ),
+        'path' => array(
+          'weight' => '5',
+        ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '3',
         ),
         'xmlsitemap' => array(
+          'weight' => '2',
+        ),
+        'locations' => array(
           'weight' => '5',
         ),
       ),

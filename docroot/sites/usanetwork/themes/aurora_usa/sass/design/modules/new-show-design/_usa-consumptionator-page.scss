@@ -1,0 +1,71 @@
+.show-new-design {
+  &:not(.usa-tv-show) {
+    .usa-wrap {
+      padding: 0 get-vw(16px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        padding: 0 20px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: 0;
+      }
+    }
+  }
+  &.consumptionator-page {
+    .usa-wrap {
+      padding-top: get-vw(16px, 1280);
+
+      @include breakpoint($bp-min-1601-width) {
+        padding-top: 20px;
+      }
+
+      @include breakpoint($bp-768-width) {
+        padding-top: 0;
+      }
+    }
+    #block-usanetwork-mpx-video-usanetwork-social-content {
+      .social-block {
+        border-bottom: 0;
+      }
+    }
+    .related-content-block {
+      .section-title {
+        .section-title-wrapper {
+          border-bottom: 2px solid;
+          color: #ffffff;
+          display: block;
+          font-family: $fira-sans-medium;
+          font-size: get-vw(20px, 1280);
+          letter-spacing: 3px;
+          padding-bottom: get-vw(16px, 1280);
+          text-align: center;
+          width: 100%;
+          @include breakpoint ($bp-min-1601-width) {
+            font-size: 28px;
+            padding-bottom: 20px;
+          }
+          @include breakpoint ($bp-1024-width) {
+            font-size: get-vw(20px, 1024);
+            padding-bottom: get-vw(15px, 1024);
+          }
+          @include breakpoint ($bp-768-width) {
+            font-size: get-vw(20px, 768);
+            padding-bottom: get-vw(15px, 768);
+          }
+          @include breakpoint ($bp-640-width) {
+            font-size: get-vw(25px, 640);
+            padding-bottom: get-vw(20px, 640);
+          }
+          &:before,
+          &:after {
+            display: none;
+          }
+          .desktop-title {
+            @include breakpoint ($bp-640-width) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

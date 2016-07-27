@@ -60,8 +60,6 @@
       </div>
     </div>
   <?php endif; ?>
-  <div class="ad ad-728x90"></div>
-
   <div class="carousel-wrapper">
     <?php print $shows_carousels; ?>
   </div>

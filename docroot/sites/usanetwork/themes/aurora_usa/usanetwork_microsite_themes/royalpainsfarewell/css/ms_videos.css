@@ -106,10 +106,6 @@
   font-size: 14px;
   white-space: normal;
 }
-#microsite .block-usanetwork-mpx-video .view .file h4:after,
-#block-views-usa-mpx-video-fullepisodes-live .view .file h4:after {
-  background-image: none;
-}
 #microsite .video-container.in-player {
   display: block;
 }

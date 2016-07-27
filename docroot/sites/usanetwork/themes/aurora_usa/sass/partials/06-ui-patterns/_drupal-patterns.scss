@@ -42,7 +42,6 @@
 
 .status {
   border-color: $green;
-  // color: $green;
   @include background-image(
     repeating-linear-gradient(
       -45deg,
@@ -56,7 +55,6 @@
 
 .warning {
   border-color: $orange;
-  // color: $orange;
   @include background-image(
     repeating-linear-gradient(
       -45deg,
@@ -70,7 +68,6 @@
 
 .error {
   border-color: $red;
-  // color: $red;
   @include background-image(
     repeating-linear-gradient(
       -45deg,
@@ -81,70 +78,6 @@
       )
     );
 }
-
-// BLOCK
-
-// TABS
-// ul.tabs {
-//   @include tabs;
-// }
-
-// NEW USER FORM
-// .form-required {
-//   color: $red;
-// }
-
-// LOG IN FORM
-
-// NEW PASSWORD FORM
-
-// PAGERS
-// ul.pager {
-//   @include horizontal-list(0.5em);
-// }
-
-// RSS LINK
-// a.feed-icon {
-//   @if $border-links == true {
-//     @include undo-border-links;
-//   }
-// }
-
-// INLINE LINKS
-// ul.inline {
-//   @include inline-list;
-// }
-
-// TAXONOMY LIST
-// .field-type-taxonomy-term-reference {
-//   .field-item {
-//     display: inline;
-//   }
-// }
-
-// FIELDS
-// .field-label-above {
-//   .field-label {
-//     display: block;
-//   }
-// }
-
-// NODE PAGE
-
-// COMMENTS
-// #comments {
-//   .comment {
-//     @include vertical-separation;
-//     &:last-child {
-//       @include un-vertical-separation;
-//     }
-//   }
-//   .indented {
-//     padding-left: 1em;
-//   }
-// }
-
-// COMMENT FORM
 
 // UNPUBLISHED CONTENT
 .node-unpublished {

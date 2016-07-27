@@ -109,32 +109,6 @@
               }
             }
           }
-          /*.show-open {
-            @include breakpoint($bp-min-769-width) {
-              &:hover {
-                &:after {
-                  border: 3px solid #ffffff;
-                  border-radius: 50%;
-                  display: block;
-                  color: #ffffff;
-                  content: 'open';
-                  cursor: pointer;
-                  font-family: $avalon-book;
-                  font-size: 30px;
-                  line-height: 120px;
-                  height: 120px;
-                  left: 50%;
-                  margin-left: -69px;
-                  margin-top: -60px;
-                  position: absolute;
-                  text-align: center;
-                  text-transform: uppercase;
-                  top: 50%;
-                  width: 120px;
-                }
-              }
-            }
-          }*/
         }
       }
     }
@@ -625,7 +599,6 @@
         visibility: hidden;
       }
     }
-
     .show-top-info {
       @include clear();
       margin-right: 130px;
@@ -697,11 +670,6 @@
           @include breakpoint($bp-640-width) {
             display: none;
           }
-          /*@include breakpoint($bp-480-width) {
-            font-size: 7.5px;
-            line-height: 8.75px;
-            padding-left: 5px;
-          }*/
           span {
             display: block;
             font-family: $tex-gyreschola-italic
@@ -709,7 +677,6 @@
         }
       }
     }
-
     .show-central-info {
       float: left;
       height: 250px;
@@ -938,7 +905,6 @@
               height: 100%;
               width: 100%;
             }
-
           }
           .showcardad {
             height: 100%;
@@ -1069,7 +1035,6 @@
               -webkit-box-orient: vertical;
               height: auto;
             }
-
           }
           @include breakpoint($bp-480-width) {
             font-size: 8px;
@@ -1080,7 +1045,6 @@
               -webkit-line-clamp: 2;
               height: auto;
             }
-
           }
         }
         .show-link {

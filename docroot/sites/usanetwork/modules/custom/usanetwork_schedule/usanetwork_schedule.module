@@ -460,8 +460,8 @@ function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 0) {
       ->isNull('fdfml.field_mpx_language_value')
   );
   $query->condition('v.status', 1);
-  $query->orderBy('v.airdate', 'DESC');
-  $query->orderBy('field_episode_number.field_mpx_episode_number_value', 'DESC');
+  $query->orderBy('cast(season_field.field_mpx_season_number_value as unsigned)', 'DESC');
+  $query->orderBy('cast(field_episode_number.field_mpx_episode_number_value as unsigned)', 'DESC');
 
   if ($limit > 0) {
     $query->range(0, $limit);

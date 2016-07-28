@@ -1032,7 +1032,7 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
         $media_item['field_data'][$field['field_name']] = (int) ($value == 'true');
       } else if ($field['field_name'] == 'field_mpx_duration') {
         $duration_value = _usanetwork_mpx_video_parse_data($field_pattern, $media_data);
-        $media_item['field_data'][$field['field_name']] = round($duration_value[0]);
+        $media_item['field_data'][$field['field_name']] = round(max($duration_value));
       } else if ($field['field_name'] == 'field_mpx_season_number') {
         if ($account->import_account == rawurlencode(USA_MPX_ACCOUNT_NAME)) {
           $nbcu_value = $media_data[$nbcu_key];

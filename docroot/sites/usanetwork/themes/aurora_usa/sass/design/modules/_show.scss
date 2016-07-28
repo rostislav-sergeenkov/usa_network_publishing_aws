@@ -544,30 +544,58 @@
       }
       a {
         display: block;
-        height: auto;
+        height: 26px;
         margin: 0px 0px 20px 10px;
         opacity: 0.6;
-        width: auto;
+        position: relative;
+        width: 26px;
         @include breakpoint($bp-1024-width) {
           margin-right: 15px;
         }
         @include breakpoint($bp-min-1901-width) {
           margin: 0px 0px 20px 25px;
         }
+        &:before {
+          color: #ffffff;
+          display: block;
+          font-family: $ico-font;
+          font-size: 26px;
+          left: 50%;
+          margin-left: -13px;
+          position: absolute;
+          top: 0;
+        }
         &:hover {
           opacity: 0.3;
         }
         &.facebook {
-          @include sprite-background(fb-icon-header);
+          //@include sprite-background(fb-icon-header);
+          &:before {
+            content: "\e618";
+          }
         }
         &.twitter {
-          @include sprite-background(twitter-icon-header);
+          //@include sprite-background(twitter-icon-header);
+          &:before {
+            content: "\e61a";
+          }
         }
         &.instagram {
-          @include sprite-background(insta-icon-header);
+          //@include sprite-background(insta-icon-header);
+          &:before {
+            content: "\e621";
+          }
         }
         &.pinterest {
-          @include sprite-background(pinterest-icon-header);
+          //@include sprite-background(pinterest-icon-header);
+          &:before {
+            content: "\e617";
+          }
+        }
+        &.tumblr {
+          &:before {
+            content: "\e619";
+          }
         }
         &.youtube {
           @include sprite-background(youtube-icon-header);

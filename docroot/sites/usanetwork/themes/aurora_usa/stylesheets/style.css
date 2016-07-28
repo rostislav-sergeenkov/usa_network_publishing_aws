@@ -1,8 +1,8 @@
-@charset "UTF-8";
-.clearfix, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
+@charset "IBM866";
+.clearfix {
   zoom: 1;
 }
-.clearfix:after, .lyris .pane-content:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
+.clearfix:after {
   content: "\0020";
   display: table;
   clear: both;
@@ -583,7 +583,7 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-.flex-direction-nav a, .icons-social a, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:after, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:hover:after {
+.flex-direction-nav a, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:after, body.blog .panel-display .panel-col-top .inside .blog-header .category-menu .menu-label:hover:after {
   font-family: 'usanetwork';
   speak: none;
   /* Enable Ligatures */
@@ -659,7 +659,7 @@ pre, code, kbd, tt {
   font-family: Consolas, Menlo, "Courier New", monospace, monospace;
 }
 
-body, .lyris .form-item-email input {
+body {
   font-family: "avalonregular", Arial, sans-serif;
 }
 
@@ -667,48 +667,13 @@ body.blog .panel-display .panel-col-last .panel-pane h2.pane-title, body.blog .p
   font-family: "avalonregular", Arial, sans-serif;
 }
 
-.echo-item-footer, #showList {
-  font-family: "avalonregular", Arial, sans-serif;
-  font-size: 12px;
-}
-
-.lyris .form-submit, .echo-item-data {
-  font-family: "avalonregular", Arial, sans-serif;
-  font-size: 14px;
-}
-
-#usanetwork_social_show_comment .echo-item-data {
-  font-family: "avalonregular", Arial, sans-serif;
-  font-size: 16px;
-}
-
-#lyris h2, #usanetwork_social_chatter_title, #usanetwork_social_join .usanetwork_social_join_msg {
-  font-family: "avalonregular", Arial, sans-serif;
-  font-size: 24px;
-}
-
-#showList h3 {
-  font-family: "avalonregular", Arial, sans-serif;
-  font-size: 30px;
-}
-
 body.blog .panel-display .panel-col-last .panel-pane .view-display-id-most_popular .views-row .views-field-title, body.blog .panel-display .panel-col-top h1 {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-}
-
-.echo-item-content .echo-item-tweetUserName a {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 12px;
 }
 
 .node.node-post .field-name-post-date {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 14px;
-}
-
-.echo-item-authorName {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .node.node-post .field-name-title h2 {
@@ -4645,101 +4610,6 @@ input[type="radio"], input[type="checkbox"] {
   content: '\e60f';
 }
 
-.social-usa:after {
-  bottom: 8%;
-  content: '';
-  display: block;
-  left: 50%;
-  margin-left: -18px;
-  position: absolute;
-  background-image: url('../images/sprites-sea8d049f41.png');
-  background-position: 0 -836px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 21px;
-  width: 47px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .social-usa:after {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -914px;
-    height: 21px;
-    width: 47px;
-  }
-}
-@media (max-width: 480px) {
-  .social-usa.resize-avail-480:after {
-    background-image: url('../images/sprites-sea8d049f41.png');
-    background-position: 0 -1428px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    display: block;
-    height: 14px;
-    width: 30px;
-  }
-}
-@media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
-  .social-usa.resize-avail-480:after {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -1487px;
-    height: 13px;
-    width: 30px;
-  }
-}
-
-.social-insta:after {
-  bottom: 8%;
-  content: '';
-  display: block;
-  left: 50%;
-  margin-left: -8px;
-  position: absolute;
-  background-image: url('../images/sprites-sea8d049f41.png');
-  background-position: 0 -1579px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 26px;
-  width: 26px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .social-insta:after {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -1503px;
-    height: 26px;
-    width: 26px;
-  }
-}
-
-.social-twitter:after {
-  bottom: 8%;
-  content: '';
-  display: block;
-  left: 50%;
-  margin-left: -8px;
-  position: absolute;
-  background-image: url('../images/sprites-sea8d049f41.png');
-  background-position: 0 -1535px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 22px;
-  width: 26px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .social-twitter:after {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -1440px;
-    height: 22px;
-    width: 26px;
-  }
-}
-
 .eye-icon:before {
   display: block;
   content: '\e613';
@@ -5147,7 +5017,7 @@ body:not(.show-new-design) #topbanner {
   }
 }
 
-.clearfix:after, .lyris .pane-content:after, #showList .echo-item-footer:after, .usanetwork_social_global_show:after {
+.clearfix:after {
   content: "";
   display: table;
   clear: both;
@@ -5332,7 +5202,7 @@ body:not(.show-new-design) #topbanner {
   border-bottom: 1px solid #1f1f1f;
 }
 
-.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev, .icons-arrow-prev, .icons-close_welcome_popup, .icons-facebook-hover-v6, .icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .icons-sync-now-small, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
+.icons-sprite, .icons-arrow-next-hover-v2, .icons-arrow-next-v2, .ie9 .flex-direction-nav a.flex-next, .ie8 .flex-direction-nav a.flex-next, .icons-arrow-next, .icons-arrow-prev-hover-v2, .icons-arrow-prev-v2, .ie9 .flex-direction-nav a.flex-prev, .ie8 .flex-direction-nav a.flex-prev, .icons-arrow-prev, .icons-close_welcome_popup, .icons-facebook-hover-v6, .icons-facebook-v6, .icons-facebook, .icons-follow-facebook-hover-v2, .icons-follow-facebook-v2, .icons-follow-facebook-v3, .icons-follow-facebook, .icons-follow-twitter-hover-v2, .icons-follow-twitter-v2, .icons-follow-twitter-v3, .icons-follow-twitter, .icons-gray-arrow-left, .icons-gray-arrow-right, .icons-ico-close-tray-mobi, .icons-ico-close-tray-tablet, .icons-line-arrow-gray, .icons-logo-usa-mobi, .icons-logo-usa-tablet, .icons-on_now, .icons-on_now_blue, .icons-pinterest-hover-v2, .icons-pinterest-hover-v3, .icons-pinterest-hover-v4, .icons-pinterest-hover-v6, .icons-pinterest-v2, .icons-pinterest-v4, .icons-pinterest-v5, .icons-pinterest-v6, .icons-pinterest, .icons-selector_arrows, .icons-sync-now-small, .icons-sync-now, .icons-tumblr-hover-v2, .icons-tumblr-hover-v3, .icons-tumblr-v2, .icons-tumblr-v3, .icons-tumblr, .icons-twitter-hover-v4, .icons-twitter-v4, .icons-twitter, .icons-watch-alt {
   background: url('../images/icons-s4b131226d7.png') no-repeat;
 }
 
@@ -5364,11 +5234,11 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 -737px;
 }
 
-.icons-facebook-hover-v6, .ie9 .icons-social a.usasocial-fb:hover, .ie8 .icons-social a.usasocial-fb:hover {
+.icons-facebook-hover-v6 {
   background-position: 0 -2159px;
 }
 
-.icons-facebook-v6, .ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb {
+.icons-facebook-v6 {
   background-position: 0 -2211px;
 }
 
@@ -5392,11 +5262,11 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 -1974px;
 }
 
-.icons-follow-twitter-hover-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter:hover, .ie8 .icons-social a.person-twitter.usasocial-twitter:hover {
+.icons-follow-twitter-hover-v2 {
   background-position: 0 -1069px;
 }
 
-.icons-follow-twitter-v2, .ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter {
+.icons-follow-twitter-v2 {
   background-position: 0 -1107px;
 }
 
@@ -5444,7 +5314,7 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 -1493px;
 }
 
-.icons-pinterest-hover-v2, .ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover {
+.icons-pinterest-hover-v2 {
   background-position: 0 -2069px;
 }
 
@@ -5460,7 +5330,7 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 -1145px;
 }
 
-.icons-pinterest-v2, .ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest {
+.icons-pinterest-v2 {
   background-position: 0 -1936px;
 }
 
@@ -5495,7 +5365,7 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 0;
 }
 
-.icons-tumblr-hover-v2, .ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover {
+.icons-tumblr-hover-v2 {
   background-position: 0 -2448px;
 }
 
@@ -5503,7 +5373,7 @@ body:not(.show-new-design) #topbanner {
   background-position: 0 -1884px;
 }
 
-.icons-tumblr-v2, .ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr {
+.icons-tumblr-v2 {
   background-position: 0 -2539px;
 }
 
@@ -19297,10 +19167,11 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 .shows-block .show-info-block .social-icons a {
   display: block;
-  height: auto;
+  height: 26px;
   margin: 0px 0px 20px 10px;
   opacity: 0.6;
-  width: auto;
+  position: relative;
+  width: 26px;
 }
 @media (max-width: 1024px) {
   .shows-block .show-info-block .social-icons a {
@@ -19312,80 +19183,33 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     margin: 0px 0px 20px 25px;
   }
 }
+.shows-block .show-info-block .social-icons a:before {
+  color: #ffffff;
+  display: block;
+  font-family: "ico-font";
+  font-size: 26px;
+  left: 50%;
+  margin-left: -13px;
+  position: absolute;
+  top: 0;
+}
 .shows-block .show-info-block .social-icons a:hover {
   opacity: 0.3;
 }
-.shows-block .show-info-block .social-icons a.facebook {
-  background-image: url('../images/sprites-sea8d049f41.png');
-  background-position: 0 -1800px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 26px;
-  width: 13px;
+.shows-block .show-info-block .social-icons a.facebook:before {
+  content: "\e618";
 }
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .shows-block .show-info-block .social-icons a.facebook {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -1655px;
-    height: 26px;
-    width: 13px;
-  }
+.shows-block .show-info-block .social-icons a.twitter:before {
+  content: "\e61a";
 }
-.shows-block .show-info-block .social-icons a.twitter {
-  background-image: url('../images/sprites-sea8d049f41.png');
-  background-position: 0 -1011px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 26px;
-  width: 26px;
+.shows-block .show-info-block .social-icons a.instagram:before {
+  content: "\e621";
 }
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .shows-block .show-info-block .social-icons a.twitter {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -1142px;
-    height: 26px;
-    width: 26px;
-  }
+.shows-block .show-info-block .social-icons a.pinterest:before {
+  content: "\e617";
 }
-.shows-block .show-info-block .social-icons a.instagram {
-  background-image: url('../images/sprites-sea8d049f41.png');
-  background-position: 0 -1090px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 26px;
-  width: 26px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .shows-block .show-info-block .social-icons a.instagram {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -1308px;
-    height: 26px;
-    width: 26px;
-  }
-}
-.shows-block .show-info-block .social-icons a.pinterest {
-  background-image: url('../images/sprites-sea8d049f41.png');
-  background-position: 0 -598px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 26px;
-  width: 26px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .shows-block .show-info-block .social-icons a.pinterest {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -578px;
-    height: 26px;
-    width: 26px;
-  }
+.shows-block .show-info-block .social-icons a.tumblr:before {
+  content: "\e619";
 }
 .shows-block .show-info-block .social-icons a.youtube {
   background-image: url('../images/sprites-sea8d049f41.png');
@@ -23374,51 +23198,6 @@ html[xmlns] .slides {
   height: 100%;
   width: 100%;
 }
-.carousel ul li .video-auth .meta-wrap:after {
-  content: '';
-  display: block;
-  position: absolute;
-  background-image: url('../images/sprites-sea8d049f41.png');
-  background-position: 0 -1562px;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: block;
-  height: 12px;
-  width: 22px;
-  right: 7px;
-  top: 7px;
-}
-@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  .carousel ul li .video-auth .meta-wrap:after {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -1544px;
-    height: 12px;
-    width: 22px;
-  }
-}
-@media (max-width: 480px) {
-  .carousel ul li .video-auth .meta-wrap:after {
-    background-image: url('../images/sprites-sea8d049f41.png');
-    background-position: 0 -1719px;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    display: block;
-    height: 10px;
-    width: 18px;
-    right: 5px;
-    top: 5px;
-  }
-}
-@media (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 3 / 2), (max-width: 480px) and (min--moz-device-pixel-ratio: 2), (max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 144dppx) {
-  .carousel ul li .video-auth .meta-wrap:after {
-    background-image: url('../images/sprites-retina-s9afd837dcc.png');
-    background-size: 65px 1826.5px;
-    background-position: 0 -1531px;
-    height: 10px;
-    width: 18px;
-  }
-}
 .carousel ul li .meta-wrap {
   background: #636363;
   bottom: 0;
@@ -24582,1087 +24361,6 @@ body.page-node-microsite .file-video-mpx.view-mode-inline_content iframe {
 #microsite #video-container .tve-help .tve-help-inner {
   height: 100%;
   width: 100%;
-}
-
-#lyris h2, #usanetwork_social_chatter_title {
-  margin: 0;
-  text-align: center;
-  border-bottom: 1px solid #3d3d3d;
-  padding: 14px 15px;
-}
-
-#lyris h2, #usanetwork_social_chatter_title {
-  font-weight: normal;
-  color: white;
-  letter-spacing: 0.05em;
-  line-height: 1;
-  text-transform: lowercase;
-}
-
-.icons-social a {
-  color: #161616;
-  background-color: #878785;
-  font-size: 1.5em;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-  padding: 4px 3px 3px;
-  height: 32px;
-  width: 32px;
-  display: inline-block;
-  margin-left: 5px;
-}
-.ie9 .icons-social a.usasocial-fb, .ie8 .icons-social a.usasocial-fb {
-  text-indent: 9999px;
-  vertical-align: top;
-}
-.ie9 .icons-social a.show-twitter.usasocial-twitter, .ie8 .icons-social a.show-twitter.usasocial-twitter {
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/icons/follow-twitter-v2.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  width: 22px;
-  height: 18px;
-  width: 22px;
-  height: 18px;
-  display: inline-block !important;
-  text-indent: 9999px;
-}
-.ie9 .icons-social a.show-twitter.usasocial-twitter:hover, .ie8 .icons-social a.show-twitter.usasocial-twitter:hover {
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/icons/follow-twitter-hover-v2.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  width: 22px;
-  height: 18px;
-  display: inline-block !important;
-  text-indent: 9999px;
-}
-.ie9 .icons-social a.person-twitter.usasocial-twitter, .ie8 .icons-social a.person-twitter.usasocial-twitter {
-  width: 22px;
-  height: 18px;
-  display: inline-block !important;
-  text-indent: 9999px;
-  background-color: transparent;
-}
-.ie9 .icons-social a.person-twitter.usasocial-twitter:hover, .ie8 .icons-social a.person-twitter.usasocial-twitter:hover {
-  display: inline-block !important;
-  text-indent: 9999px;
-}
-.ie9 .icons-social a.usasocial-facebook, .ie8 .icons-social a.usasocial-facebook {
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/icons/follow-facebook-v2.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  width: 9px;
-  height: 18px;
-  width: 9px;
-  height: 18px;
-  display: inline-block !important;
-  text-indent: 9999px;
-}
-.ie9 .icons-social a.usasocial-facebook:hover, .ie8 .icons-social a.usasocial-facebook:hover {
-  text-indent: -119988px;
-  overflow: hidden;
-  text-align: left;
-  background-image: url('../images/icons/follow-facebook-hover-v2.png');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  width: 9px;
-  height: 18px;
-  display: inline-block !important;
-  text-indent: 9999px;
-}
-.ie9 .icons-social a.usasocial-pinterest, .ie8 .icons-social a.usasocial-pinterest {
-  width: 18px;
-  height: 18px;
-  display: inline-block !important;
-  text-indent: 9999px;
-  vertical-align: top;
-  background-color: transparent !important;
-}
-.ie9 .icons-social a.usasocial-pinterest:hover, .ie8 .icons-social a.usasocial-pinterest:hover {
-  display: inline-block !important;
-  text-indent: 9999px;
-}
-.ie9 .icons-social a.usasocial-tumblr, .ie8 .icons-social a.usasocial-tumblr {
-  width: 12px;
-  height: 18px;
-  display: inline-block !important;
-  vertical-align: top;
-  text-indent: 9999px;
-}
-.ie9 .icons-social a.usasocial-tumblr:hover, .ie8 .icons-social a.usasocial-tumblr:hover {
-  display: inline-block !important;
-  text-indent: 9999px;
-}
-.icons-social a:hover {
-  background-color: white;
-}
-.icons-social a.usasocial-fb {
-  padding-left: 8px;
-}
-
-/* lyris */
-.lyris {
-  background-color: #232323;
-  margin-bottom: 15px;
-  border: 1px solid #3d3d3d;
-}
-.lyris .pane-content {
-  padding: 19px 15px;
-  border-top: 1px solid #161616;
-  position: relative;
-  width: 300px;
-  margin: 0 auto;
-}
-.lyris .form-submit {
-  float: right;
-  background-color: #878785;
-  height: 2.5714em;
-  border: 0;
-  width: 60px;
-  padding-left: 0;
-  padding-right: 0;
-  text-align: center;
-  padding-top: 2px;
-  line-height: 2.5714em;
-}
-.lyris .form-item-email {
-  float: left;
-  width: 204px;
-  margin: 0;
-}
-.lyris .form-item-email input {
-  margin: 0;
-}
-.lyris .error {
-  color: #d63c17;
-  font-size: 12px;
-  background: none;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-.lyris .success {
-  padding-left: 8px;
-  display: block;
-}
-.lyris em {
-  font-style: normal;
-}
-
-#lyris h2 {
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #2d2d2d));
-  background: -webkit-linear-gradient(center top, #000000, #2d2d2d);
-  background: -moz-linear-gradient(center top, #000000, #2d2d2d);
-  background: -o-linear-gradient(center top, #000000, #2d2d2d);
-  background: linear-gradient(center top, #000000, #2d2d2d);
-}
-
-#lyris.pane-usanetwork-lyris-newsletter-subscription h2 {
-  text-transform: capitalize;
-}
-
-#usanetwork-lyris-newsletter-subscription {
-  color: #888886;
-  line-height: 19px;
-}
-
-/* chat with fans */
-#chat-echo-stream {
-  background-color: white;
-  padding: 0 12px 30px;
-}
-@media (min-width: 1050px) {
-  #chat-echo-stream {
-    padding-left: 42px;
-    padding-right: 42px;
-  }
-}
-
-/* Chatter with TV */
-#tvTitle {
-  color: #0ab6e8;
-  font-size: 16px;
-  line-height: 1em;
-}
-@media (min-width: 1050px) {
-  #tvTitle {
-    font-size: 18px;
-  }
-}
-
-#chatterToTv {
-  font-size: 14px;
-  background-color: white;
-  color: black;
-  display: none;
-  padding: 25px 12px 0;
-  line-height: 1em;
-}
-@media (min-width: 1050px) {
-  #chatterToTv {
-    padding-left: 40px;
-    padding-right: 40px;
-    font-size: 16px;
-  }
-}
-#chatterToTv div {
-  padding-bottom: 12px;
-  padding-top: 12px;
-}
-@media (min-width: 1050px) {
-  #chatterToTv div {
-    padding-bottom: 15px;
-    padding-top: 15px;
-  }
-}
-#chatterToTv div:first-child {
-  padding: 0;
-}
-#chatterToTv + #chat-submit-form {
-  padding-top: 10px;
-}
-
-#tvLegalCopy {
-  font-size: 12px;
-}
-@media (min-width: 1050px) {
-  #tvLegalCopy {
-    font-size: 13px;
-  }
-}
-
-.commentAnnotation {
-  font-weight: bold;
-}
-
-/* twitter */
-#echo-stream {
-  background-color: white;
-  padding: 30px 12px;
-}
-@media (min-width: 1050px) {
-  #echo-stream {
-    padding-left: 42px;
-    padding-right: 42px;
-  }
-}
-#echo-stream .echo-item-footer .echo-item-date {
-  display: none;
-}
-
-/* echo stream */
-.echo-stream-header {
-  float: right;
-  margin: 0;
-}
-
-.echo-stream-body {
-  clear: both;
-}
-
-.echo-submit-controls {
-  margin-top: 0;
-}
-
-.echo-stream-more {
-  color: #636363;
-}
-
-.echo-item-container {
-  position: relative;
-}
-
-.echo-item-wrapper {
-  margin-left: 0;
-  float: none;
-  width: auto;
-  clear: both;
-}
-@media (min-width: 330px) {
-  .echo-item-wrapper {
-    clear: none;
-    margin-left: 58px;
-  }
-}
-@media (min-width: 723px) {
-  .echo-item-wrapper {
-    margin-left: 63px;
-  }
-}
-
-.echo-item-subwrapper {
-  margin-left: 0;
-}
-
-.echo-item-data {
-  padding-bottom: 6px;
-  letter-spacing: 0.05em;
-  line-height: 1.3;
-  padding-top: 4px;
-}
-.echo-item-data p {
-  margin: 0 0 10px;
-}
-.echo-item-data .echo-item-body .echo-primaryColor .echo-item-text a:hover {
-  color: #3d3d3d;
-  text-decoration: none;
-}
-
-.echo-item-body {
-  color: inherit;
-  padding: 0;
-}
-
-.echo-item-likes {
-  padding-top: 2px;
-}
-
-.echo-item-via {
-  display: none;
-}
-
-.echo-item-authorName {
-  color: #3d3d3d;
-  font-weight: normal;
-  letter-spacing: 0.05em;
-  line-height: 19px;
-  word-break: break-all;
-}
-.echo-item-authorName a {
-  color: #3d3d3d;
-}
-.echo-item-authorName a:hover {
-  color: #3d3d3d;
-}
-
-.echo-item-footer {
-  color: #a3a3a3;
-  background: none;
-  padding: 0;
-  line-height: 1.5em;
-  margin-top: 0;
-}
-.echo-item-footer .echo-item-from a,
-.echo-item-footer .echo-item-from span {
-  color: #2d2d2d;
-}
-.echo-item-footer .echo-secondaryColor {
-  color: #2d2d2d;
-}
-
-.echo-TwitterIntents-plugin .echo-item-text a:hover {
-  color: #3d3d3d;
-  text-decoration: none;
-}
-.echo-TwitterIntents-plugin .echo-item-footer {
-  margin-top: 0;
-}
-
-.echo-item-controls .echo-item-control,
-.echo-item-controls a {
-  color: #2d2d2d;
-}
-.echo-item-controls .echo-item-control:hover,
-.echo-item-controls a:hover {
-  color: #2d2d2d;
-}
-
-.echo-application-message, .echo-control-message {
-  color: #3D3D3D;
-}
-
-.echo-item-children {
-  padding-left: 20px;
-}
-@media (min-width: 500px) {
-  .echo-item-children {
-    padding-left: 77px;
-  }
-}
-.echo-item-children .echo-item-container {
-  margin-right: 0;
-  margin-left: 0;
-  padding: 15px;
-}
-.echo-item-children .echo-item-subwrapper {
-  margin: 0;
-}
-.echo-item-children .echo-item-content {
-  padding: 0;
-}
-.echo-item-children .echo-item-wrapper {
-  margin-left: 30px;
-}
-@media (min-width: 723px) {
-  .echo-item-children .echo-item-wrapper {
-    margin-left: 45px;
-  }
-}
-
-input.echo-submit-text {
-  padding: 3px;
-}
-
-.echo-item-replyForm {
-  margin: 0 0 0 20px;
-}
-@media (min-width: 500px) {
-  .echo-item-replyForm {
-    margin-left: 77px;
-  }
-}
-.echo-item-replyForm .echo-submit-controls {
-  margin-top: 5px;
-}
-.echo-item-replyForm .echo-submit-header span {
-  font-size: 12px;
-}
-
-.echo-submit-forcedLoginUserInfoMessage {
-  padding-right: 30px;
-}
-
-.echo-item-content {
-  color: #3d3d3d;
-  position: relative;
-  margin-bottom: 2px;
-  padding: 8px 0 12px;
-}
-@media (min-width: 330px) {
-  .echo-item-content {
-    padding-bottom: 8px;
-  }
-}
-.echo-item-content .echo-item-avatar-wrapper {
-  display: inline;
-  float: left;
-  margin-bottom: 10px;
-}
-@media (min-width: 500px) {
-  .echo-item-content .echo-item-avatar-wrapper {
-    margin-bottom: 0;
-  }
-}
-.echo-item-content .echo-item-tweetUserName {
-  display: block;
-  clear: both;
-}
-@media (min-width: 500px) {
-  .echo-item-content .echo-item-tweetUserName {
-    display: inline;
-    clear: none;
-  }
-}
-.echo-item-content .echo-item-tweetUserName a {
-  color: #3d3d3d;
-}
-.echo-item-content .echo-item-tweetDate a {
-  color: #3d3d3d;
-}
-.echo-item-content .echo-item-tweetDate a:hover {
-  color: #3d3d3d;
-}
-.echo-item-content .echo-item-container-root {
-  padding: 0;
-}
-.echo-item-content .echo-item-expandChildren {
-  margin-right: 0;
-  margin-left: 20px;
-}
-@media (min-width: 500px) {
-  .echo-item-content .echo-item-expandChildren {
-    margin-left: 77px;
-  }
-}
-
-/* chat with fans form */
-#chat-submit-form {
-  clear: both;
-  overflow: hidden;
-  background-color: white;
-  padding: 30px 12px 0;
-}
-@media (min-width: 1050px) {
-  #chat-submit-form {
-    padding-left: 42px;
-    padding-right: 42px;
-  }
-}
-#chat-submit-form .echo-auth-logged .echo-auth-avatar,
-#chat-submit-form .echo-auth-logged .echo-auth-name {
-  display: none;
-}
-#chat-submit-form .echo-auth-login,
-#chat-submit-form .echo-auth-logout {
-  font-size: 15px;
-}
-
-.echo-submit-header span {
-  color: #878785;
-}
-
-.echo-auth-logout,
-.echo-auth-login {
-  text-transform: uppercase;
-  font-size: 11px;
-  color: #2d2d2d;
-  float: right;
-}
-
-.echo-submit-counterLabel {
-  color: #a3a3a3;
-  padding-top: 4px;
-}
-
-.echo-submit-container {
-  width: 100%;
-}
-
-.echo-submit-content {
-  padding: 0;
-  border: 0;
-}
-
-.echo-submit-body {
-  width: 100%;
-}
-.echo-submit-body textarea {
-  color: #a3a3a3;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid #636363;
-  height: 77px;
-  padding: 5px;
-}
-
-.echo-submit-markersContainer,
-.echo-submit-tagsContainer {
-  display: none !important;
-}
-
-.echo-submit-forcedLogin .echo-submit-controls {
-  display: none;
-}
-
-/* global chat with fans pgs */
-#globalChatWithFans > div:first-child {
-  display: none;
-}
-
-#syncIframe {
-  height: 1250px;
-}
-
-#showList {
-  background-color: white;
-  padding: 10px 12px 40px;
-  color: #a3a3a3;
-}
-@media (min-width: 723px) {
-  #showList {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-#showList a {
-  color: #a3a3a3;
-}
-#showList a:hover {
-  color: #a3a3a3;
-}
-#showList h3 {
-  color: #cccccc;
-  text-transform: lowercase;
-  margin-bottom: 5px;
-  margin-right: 75px;
-}
-@media (min-width: 500px) {
-  #showList h3 {
-    margin-right: 100px;
-  }
-}
-#showList .go-chat {
-  position: absolute;
-  right: 0;
-  top: 2px;
-  background-color: #cccccc;
-  color: white;
-  padding: 2px 18px 1px 6px;
-  font-size: 14px;
-}
-@media (min-width: 500px) {
-  #showList .go-chat {
-    top: 11px;
-    font-size: 20px;
-    padding: 6px 22px 5px 8px;
-  }
-}
-@media (min-width: 1275px) {
-  #showList .go-chat {
-    top: 27px;
-    font-size: 24px;
-  }
-}
-#showList .go-chat:after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 5px;
-  border-color: transparent transparent transparent white;
-  position: absolute;
-  right: 2px;
-  top: 9px;
-}
-@media (min-width: 500px) {
-  #showList .go-chat:after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    border: solid 6px;
-    border-color: transparent transparent transparent white;
-    top: 11px;
-  }
-}
-#showList .echo-item-from,
-#showList .echo-item-sourceIcon,
-#showList .echo-item-date {
-  float: left;
-}
-#showList .echo-item-sourceIcon {
-  margin-right: 3px;
-}
-#showList .echo-item-wrapper {
-  margin-right: 80px;
-}
-@media (min-width: 500px) {
-  #showList .echo-item-wrapper {
-    margin-right: 150px;
-  }
-}
-
-.usanetwork_social_global_show {
-  position: relative;
-  border-bottom: 1px solid #cccccc;
-  cursor: pointer;
-  padding-bottom: 6px;
-}
-
-/* signin popup */
-#fancybox-wrap {
-  padding: 0;
-  left: 0 !important;
-}
-@media (min-width: 330px) {
-  #fancybox-wrap {
-    left: 25% !important;
-  }
-}
-
-/* show landing page social */
-#usanetwork_social_show_homepage_chatter {
-  background-color: #2d2d2d;
-}
-
-#usanetwork_social_chatter_title {
-  text-align: left;
-}
-
-#usanetwork_social_show_comment {
-  border-bottom: 1px solid #3d3d3d;
-  border-top: 1px solid #161616;
-  padding: 10px 15px;
-}
-#usanetwork_social_show_comment .echo-item-content {
-  color: white;
-}
-#usanetwork_social_show_comment .echo-item-data a {
-  word-break: break-all;
-}
-#usanetwork_social_show_comment .echo-item-authorName {
-  color: #717274;
-  font-size: 20px;
-  padding-bottom: 8px;
-}
-#usanetwork_social_show_comment .echo-item-footer {
-  font-size: 13px;
-}
-#usanetwork_social_show_comment .echo-item-footer img {
-  display: none !important;
-}
-#usanetwork_social_show_comment .echo-item-footer a {
-  color: #a3a3a3;
-}
-#usanetwork_social_show_comment .echo-item-date,
-#usanetwork_social_show_comment .echo-item-from {
-  float: left;
-}
-#usanetwork_social_show_comment .echo-stream-header,
-#usanetwork_social_show_comment .echo-stream-more {
-  display: none !important;
-}
-
-#usanetwork_social_join {
-  clear: both;
-  text-align: center;
-  padding: 10px 0 7px;
-  border-top: 1px solid #161616;
-  position: relative;
-}
-#usanetwork_social_join .usanetwork_social_join_msg {
-  color: white;
-  letter-spacing: 0.05em;
-  line-height: 1;
-  padding-left: 20px;
-  position: relative;
-  text-transform: lowercase;
-}
-#usanetwork_social_join .usanetwork_social_join_msg:before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: solid 6px;
-  border-color: transparent transparent transparent white;
-  position: absolute;
-  left: 0;
-  top: 5px;
-}
-
-#block-usanetwork-social-usa-show-social-getglue iframe {
-  width: 100% !important;
-}
-@media (min-width: 900px) {
-  #block-usanetwork-social-usa-show-social-getglue iframe {
-    width: 300px;
-  }
-}
-
-.navSocial-empty-span {
-  float: left;
-  height: 32px;
-  width: 10px;
-}
-@media (min-width: 645px) {
-  .navSocial-empty-span {
-    width: 70px;
-  }
-}
-@media (min-width: 900px) and (max-width: 958px) {
-  .navSocial-empty-span {
-    width: 10px;
-  }
-}
-@media (min-width: 960px) {
-  .navSocial-empty-span {
-    width: 70px;
-  }
-}
-
-#usanetwork_social_chatter_title {
-  background-color: #232323;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #2d2d2d));
-  background: -webkit-linear-gradient(center top, #000000, #2d2d2d);
-  background: -moz-linear-gradient(center top, #000000, #2d2d2d);
-  background: -o-linear-gradient(center top, #000000, #2d2d2d);
-  background: linear-gradient(center top, #000000, #2d2d2d);
-  height: 55px;
-  padding-left: 30px;
-  padding-right: 30px;
-  text-align: left;
-}
-
-.navTwitter-selected {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-
-.navChatter-selected {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2871px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-
-.navFb-selected {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-
-.navPinterest-selected {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3109px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-
-.navGetGlue-selected {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-
-.navInstagram-selected {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3187px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-
-.navTwitter {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2752px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-.navTwitter:hover {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2792px transparent;
-}
-
-.navChatter {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2831px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-.navChatter:hover {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2871px transparent;
-}
-
-.navFb {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2910px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-.navFb:hover {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2950px transparent;
-}
-
-.navPinterest {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3069px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-.navPinterest:hover {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3109px transparent;
-}
-
-.navGetGlue {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -2991px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-.navGetGlue:hover {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3030px transparent;
-}
-
-.navInstagram {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3148px transparent;
-  float: left;
-  text-indent: -9999px;
-  width: 32px;
-  height: 32px;
-}
-.navInstagram:hover {
-  background: url("../images/social_chatter_icons.png") no-repeat scroll 0 -3187px transparent;
-}
-
-.widget-background {
-  background-color: #ffffff;
-  text-align: center;
-  display: none;
-}
-
-/*Instagram widget styles*/
-#instagram {
-  padding-left: 20px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-right: 20px;
-}
-
-.echo-streamserver-controls-stream-item-header {
-  display: none;
-}
-
-.echo-streamserver-controls-stream-item-body.echo-primaryColor {
-  display: none;
-}
-
-.echo-streamserver-controls-stream-item-plugin-PinboardVisualization .echo-streamserver-controls-stream-item-container .echo-streamserver-controls-stream-item-footer {
-  display: none;
-  margin-top: 5px;
-}
-
-.echo-streamserver-controls-stream-item-mediagallery-item, .echo-streamserver-controls-stream-item-mediagallery-item iframe {
-  display: block;
-  width: 112px;
-  height: 112px;
-  border: 4px solid whitesmoke;
-}
-
-.echo-streamserver-controls-stream-item-plugin-PinboardVisualization .echo-streamserver-controls-stream-item-content {
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-  background: none repeat scroll 0 0 white;
-  border-color: #D9D4D4 -moz-use-text-color -moz-use-text-color #D9D4D4;
-  border-image: none;
-  border-style: none;
-  border-width: 0;
-  box-shadow: none;
-  margin: 0 30px 15px;
-  padding-bottom: 0;
-}
-
-.echo-streamserver-controls-stream-item-plugin-PinboardVisualization .echo-streamserver-controls-stream-item-depth-0 {
-  padding: 0px;
-  background-color: #ffffff;
-}
-
-.echo-streamserver-controls-stream-item-content {
-  width: 156px;
-}
-
-.echo-streamserver-controls-stream-item-plugin-PinboardVisualization-media {
-  margin-top: 0;
-  text-align: center;
-}
-
-.echo-streamserver-controls-stream-item-content {
-  width: 150px;
-}
-
-.echo-streamserver-controls-stream-item.echo-streamserver-controls-stream-item-plugin-PinboardVisualization.isotope-item {
-  float: left;
-  height: 130px;
-  width: 130px;
-}
-
-.echo-streamserver-controls-stream-item-mediagallery-thumbnails {
-  height: 130px;
-  overflow: hidden;
-  width: 130px;
-}
-
-.echo-streamserver-controls-stream-item-mediagallery-container {
-  background-color: #ffffff;
-  height: 130px;
-  width: 130px;
-}
-
-.echo-streamserver-controls-stream-more, .echo-streamserver-controls-stream-fullStateLayout {
-  border: 1px solid #E4E4E4;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 30px;
-  padding: 10px;
-  text-align: center;
-}
-
-.echo-streamserver-controls-stream-more, .echo-stream-more {
-  display: none !important;
-}
-
-.page-node-social .echo-stream-more {
-  display: block !important;
-}
-
-#usanetwork_social_section_join {
-  background: #282828;
-  border-top: 1px solid #161616;
-  clear: both;
-  padding: 10px 0 7px;
-  position: relative;
-  text-align: center;
-}
-#usanetwork_social_section_join .usanetwork_social_join_msg:before {
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-  border-color: transparent transparent transparent white;
-  border-image: none;
-  border-style: solid;
-  border-width: 6px;
-  content: "";
-  display: block;
-  height: 0;
-  left: 0;
-  position: absolute;
-  top: 5px;
-  width: 0;
-}
-#usanetwork_social_section_join .usanetwork_social_join_msg {
-  color: #FFFFFF;
-  letter-spacing: 0.05em;
-  line-height: 1;
-  padding-left: 20px;
-  position: relative;
-  text-transform: none;
-}
-
-#join-tweets, #join-chatter, #join-buzz {
-  text-transform: none;
-  font-size: 24px;
-  cursor: pointer;
-  display: none;
-}
-
-.getglue-checkin-widget {
-  width: 100% !important;
-}
-
-#pinterest > span {
-  box-shadow: 0 0 0px #aaaaaa !important;
-  border-radius: 0px !important;
-}
-
-/* basic scrollbar styling */
-/* vertical scrollbar */
-.usa-rebelmouse iframe {
-  height: 800px !important;
-  margin-top: 0;
-  min-height: 800px;
-  overflow: hidden;
 }
 
 .field-type-gigya-sharebar,

@@ -151,12 +151,6 @@
 
       var body = $('body');
 
-      //$(window).bind('resize', function () {
-      //  waitForFinalEvent(function(){
-      //    self.micrositeReloadBxSlider();
-      //  }, 500, "home Cast & Crew gallery");
-      //});
-
       body.once(function () {
         // init mps block for node-type-person
         var mainBlock, infoBlock;

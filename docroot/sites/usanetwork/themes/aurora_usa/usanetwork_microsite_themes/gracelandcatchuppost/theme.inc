@@ -217,6 +217,7 @@ function usanetwork_microsite_gracelandcatchuppost_get_theme_includes() {
 
   return array(
     'css' => array(
+      $default_theme_path . '/css/style_microsite.css',
       $site_theme_path . '/css/fonts.css',
       $site_theme_path . '/css/ms_styles.css',
       $site_theme_path . '/css/ms_gigya_share.css',

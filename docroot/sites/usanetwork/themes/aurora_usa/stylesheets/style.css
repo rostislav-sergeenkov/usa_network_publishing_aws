@@ -5416,66 +5416,109 @@ header:after {
   content: '';
   display: table;
 }
-body.front header {
+body:not(.node-type-tv-show):not(.consumptionator-page) header {
   background-color: #e9eaeb;
 }
-body.front header .header-nav-bar {
+body:not(.node-type-tv-show):not(.consumptionator-page) header .header-nav-bar {
   -webkit-transition: all 0.5s ease-out 0s;
   -moz-transition: all 0.5s ease-out 0s;
   -o-transition: all 0.5s ease-out 0s;
   transition: all 0.5s ease-out 0s;
 }
-body.front header .usa-logo {
+body:not(.node-type-tv-show):not(.consumptionator-page) header .usa-logo {
   -webkit-transition: all 0.5s ease-out 0s;
   -moz-transition: all 0.5s ease-out 0s;
   -o-transition: all 0.5s ease-out 0s;
   transition: all 0.5s ease-out 0s;
 }
 @media (min-width: 769px) {
-  body.front header .nav-bar-tabs a {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .nav-bar-tabs a {
     -webkit-transition: all 0.5s ease-out 0s;
     -moz-transition: all 0.5s ease-out 0s;
     -o-transition: all 0.5s ease-out 0s;
     transition: all 0.5s ease-out 0s;
   }
 }
-header.sticky-shows-submenu .header-nav-bar {
+@media (min-width: 769px) {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .show-title-block {
+    -webkit-transition: all 0.5s ease-out 0s;
+    -moz-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+  }
+}
+@media (min-width: 769px) {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .show-title-block .title {
+    -webkit-transition: all 0.5s ease-out 0s;
+    -moz-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+  }
+}
+body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu {
+  z-index: 10000000;
+}
+body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .header-nav-bar {
   height: 4.75122vw;
 }
 @media (min-width: 1901px) {
-  header.sticky-shows-submenu .header-nav-bar {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .header-nav-bar {
     height: 90px;
   }
 }
-header.sticky-shows-submenu .usa-logo {
+body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .usa-logo {
   background: none !important;
   width: 6.53659vw;
 }
 @media (min-width: 1901px) {
-  header.sticky-shows-submenu .usa-logo {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .usa-logo {
     width: 123px;
   }
 }
-header.sticky-shows-submenu .usa-logo a {
+body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .usa-logo a {
   background-image: url("../images/usa-logo-small-menu.png");
 }
 @media (min-width: 769px) {
-  header.sticky-shows-submenu .nav-bar-tabs a {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .nav-bar-tabs a {
     font-size: 0.87805vw;
     line-height: 4.75122vw;
     padding: 0 3.12195vw;
   }
 }
 @media (min-width: 769px) and (min-width: 1901px) {
-  header.sticky-shows-submenu .nav-bar-tabs a {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .nav-bar-tabs a {
     font-size: 16.7px;
     line-height: 90px;
     padding: 0 59.3px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  header.sticky-shows-submenu .nav-bar-tabs a {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .nav-bar-tabs a {
     font-size: 9px;
+  }
+}
+@media (min-width: 769px) {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .show-title-block {
+    height: 3.26144vw;
+  }
+}
+@media (min-width: 1901px) {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .show-title-block {
+    height: 62px;
+  }
+}
+@media (min-width: 769px) {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .show-title-block .title {
+    font-size: 1.26249vw;
+    line-height: 3.26144vw;
+    margin: 0 1.57812vw 0 20px;
+  }
+}
+@media (min-width: 1901px) {
+  body:not(.node-type-tv-show):not(.consumptionator-page) header .region-header.sticky-shows-submenu .show-title-block .title {
+    font-size: 24px;
+    line-height: 62px;
+    margin: 0 30px 0 20px;
   }
 }
 header ul, header li, header ol {

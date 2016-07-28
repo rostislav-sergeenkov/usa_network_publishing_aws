@@ -3,7 +3,7 @@ header {
   min-width: 300px;
   position: relative;
   width: 100%;
-  body.front & {
+  body:not(.node-type-tv-show):not(.consumptionator-page) & {
     background-color: $poll-back;
     .header-nav-bar {
       -webkit-transition: all 0.5s ease-out 0s;
@@ -27,37 +27,76 @@ header {
         }
       }
     }
-  }
-  &.sticky-shows-submenu {
-    .header-nav-bar {
-      height: get-vw(48.7px, 1025);
-      @include breakpoint($bp-min-1901-width) {
-        height: 90px;
-      }
-    }
-    .usa-logo {
-      background: none!important;
-      width: get-vw(67px, 1025);
-      @include breakpoint($bp-min-1901-width) {
-        width: 123px;
-      }
-      a {
-        background-image: url('../images/usa-logo-small-menu.png');
-      }
-    }
-    .nav-bar-tabs {
+    .show-title-block {
       @include breakpoint($bp-min-769-width) {
-        a {
-          font-size: get-vw(9px, 1025);
-          line-height: get-vw(48.7px, 1025);
-          padding: 0 get-vw(32px, 1025);
+        -webkit-transition: all 0.5s ease-out 0s;
+        -moz-transition: all 0.5s ease-out 0s;
+        -o-transition: all 0.5s ease-out 0s;
+        transition: all 0.5s ease-out 0s;
+      }
+      .title {
+        @include breakpoint($bp-min-769-width) {
+          -webkit-transition: all 0.5s ease-out 0s;
+          -moz-transition: all 0.5s ease-out 0s;
+          -o-transition: all 0.5s ease-out 0s;
+          transition: all 0.5s ease-out 0s;
+        }
+      }
+    }
+    .region-header {
+      &.sticky-shows-submenu {
+        z-index: 10000000;
+        .header-nav-bar {
+          height: get-vw(48.7px, 1025);
           @include breakpoint($bp-min-1901-width) {
-            font-size: 16.7px;
-            line-height: 90px;
-            padding: 0 59.3px;
+            height: 90px;
           }
-          @include breakpoint($bp-1024-width) {
-            font-size: 9px;
+        }
+        .usa-logo {
+          background: none!important;
+          width: get-vw(67px, 1025);
+          @include breakpoint($bp-min-1901-width) {
+            width: 123px;
+          }
+          a {
+            background-image: url('../images/usa-logo-small-menu.png');
+          }
+        }
+        .nav-bar-tabs {
+          @include breakpoint($bp-min-769-width) {
+            a {
+              font-size: get-vw(9px, 1025);
+              line-height: get-vw(48.7px, 1025);
+              padding: 0 get-vw(32px, 1025);
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 16.7px;
+                line-height: 90px;
+                padding: 0 59.3px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 9px;
+              }
+            }
+          }
+        }
+        .show-title-block {
+          @include breakpoint($bp-min-769-width) {
+            height: get-vw(62px, 1901);
+          }
+          @include breakpoint($bp-min-1901-width) {
+            height: 62px;
+          }
+          .title {
+            @include breakpoint($bp-min-769-width) {
+              font-size: get-vw(24px, 1901);
+              line-height: get-vw(62px, 1901);
+              margin: 0 get-vw(30px, 1901) 0 20px;
+            }
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 24px;
+              line-height: 62px;
+              margin: 0 30px 0 20px;
+            }
           }
         }
       }

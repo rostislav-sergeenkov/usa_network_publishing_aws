@@ -446,7 +446,7 @@
     }
 
     // vertical version
-    if (!statusBp && (!$('body').hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$('body').hasClass('node-type-post') && !$('body').hasClass('node-type-catchall-seo-page')) {
+    if (!statusBp && (!$('body').hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$('body').hasClass('blog') && !$('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginRight: '',
         marginTop: pagerWrapStyles.desktop.marginTop,
@@ -460,7 +460,7 @@
     }
 
     // horizontal version
-    if (statusBp || ($('body').hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $('body').hasClass('node-type-post') || $('body').hasClass('node-type-catchall-seo-page')) {
+    if (statusBp || ($('body').hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $('body').hasClass('blog') || $('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginTop: '',
         marginRight: pagerWrapStyles.mobile.marginRight,
@@ -486,9 +486,9 @@
       return;
     }
 
-    if (statusBp || ($body.hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $body.hasClass('node-type-post')) {
+    if (statusBp || ($body.hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $body.hasClass('blog')) {
       _.movePagerHorizontal(_this, slideIndex);
-    } else if (!statusBp && (!$body.hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$body.hasClass('node-type-post')) {
+    } else if (!statusBp && (!$body.hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$body.hasClass('blog')) {
       _.movePagerVertical(_this, slideIndex);
     }
   };

@@ -1,4 +1,4 @@
-body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
+body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
   .slick-list,
   .slick-track {
     @include breakpoint($bp-min-1025-width) {
@@ -678,7 +678,7 @@ body:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) {
   }
 }
 
-body.consumptionator-page:not(.node-type-person), body.node-type-media-gallery, body.node-type-tv-episode, .gallery-recap-block, body.node-type-consumpt-post, body.node-type-usanetwork-microsite, body:not(.node-type-person):not(.node-type-post):not(.node-type-catchall-seo-page) .node-media-gallery {
+body.consumptionator-page:not(.node-type-person), body.node-type-media-gallery, body.node-type-tv-episode, .gallery-recap-block, body.node-type-consumpt-post, body.node-type-usanetwork-microsite, body:not(.node-type-person):not(.blog):not(.node-type-catchall-seo-page) .node-media-gallery {
   .gallery-wrapper {
     .gallery-list {
       &.ready {
@@ -872,7 +872,7 @@ body.node-type-tv-episode, body.node-type-consumpt-post, .node-media-gallery, .g
 }
 
 body {
-  &.node-type-post, &.node-type-catchall-seo-page, .block-character-info-content {
+  &.blog, &.node-type-catchall-seo-page, .block-character-info-content {
     .node-media-gallery {
       .gallery-wrapper {
         height: auto;

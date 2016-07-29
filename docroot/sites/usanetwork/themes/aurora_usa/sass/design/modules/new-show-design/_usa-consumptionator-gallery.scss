@@ -787,6 +787,11 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               top: 50%;
               width: auto;
               z-index: 125;
+              &.preview-portrait {
+                height: 48px;
+                max-width: 48px;
+                width: auto;
+              }
             }
           }
           &:focus {

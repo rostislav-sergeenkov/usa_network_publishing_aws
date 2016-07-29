@@ -374,10 +374,12 @@
   usaGallery.prototype.createCustomPaging = function (slick, index) {
 
     var $slide = $(slick.$slides[index].innerHTML),
-        imgPreviewUrl = $($slide.find('img')[0]).data('preview'),
+        slideImg = $($slide.find('img')[0]),
+        imgPreviewUrl = slideImg.data('preview'),
+        imgPreviewClass = (slideImg.hasClass('portrait'))? 'class="preview-portrait" ': '',
         showColorPager = ($('body[class*=" show-"]').length > 0 || $('body').hasClass('page-videos-live')) ? 'show-color ' : '';
 
-    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div><img src="' + imgPreviewUrl + '" alt=""></div>';
+    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div><img ' + imgPreviewClass + 'src="' + imgPreviewUrl + '" alt=""></div>';
   };
 
   usaGallery.prototype.createSlidesCounter = function (slick) {

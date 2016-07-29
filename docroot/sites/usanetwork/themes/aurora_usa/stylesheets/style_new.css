@@ -16478,6 +16478,11 @@ html.no-scroll, body.no-scroll {
   width: auto;
   z-index: 125;
 }
+.show-new-design.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img.preview-portrait, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img.preview-portrait, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img.preview-portrait, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img.preview-portrait, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img.preview-portrait, .show-new-design .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img.preview-portrait, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:hover img.preview-portrait {
+  height: 48px;
+  max-width: 48px;
+  width: auto;
+}
 .show-new-design.consumptionator-page .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .show-new-design .node-media-gallery .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-pager-wrap .gallery-pager li:focus {
   outline: none;
 }

@@ -32,7 +32,7 @@ function aurora_usa_modernizr_load_alter(&$load) {
   // We will check for touch events, and if we do load the hammer.js script.
   $load[] = array(
     'test' => 'Modernizr.touch',
-    'yep'  => array('/'. drupal_get_path('theme','aurora_usa') . '/javascripts/hammer.js'),
+    //'yep'  => array('/'. drupal_get_path('theme','aurora_usa') . '/javascripts/hammer.js'),
   );
 
   return $load;
@@ -59,9 +59,6 @@ function aurora_usa_preprocess_html(&$vars) {
   drupal_add_html_head($viewport, 'viewport');
 
   // adding usa-social body class to global and show pages
-  if (arg(2) == 'social' || arg(0) == 'social') {
-    $vars['classes_array'][] = drupal_html_class('usa-social');
-  }
   if (arg(0) == 'videos' && arg(1) == 'live') {
     $vars['classes_array'][] = drupal_html_class('consumptionator-page');
   }
@@ -82,11 +79,19 @@ function aurora_usa_preprocess_html(&$vars) {
     );
     if (in_array($entity->type, $consumptionator_node_types)) {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $entity);
+      if ($is_new_design == 1) {
+        $vars['classes_array'][] = 'show-new-design';
+      }
     }
     if ($entity->type == 'tv_show') {
       $show_title = _usanetwork_get_field_item('node', $entity, 'field_pathauto_alias', 'value');
       $show_class = drupal_html_class('show-' . $show_title);
       $vars['classes_array'][] = $show_class;
+      $new_design = _usanetwork_tv_shows_is_new_design_entity('node', $entity);
+      if ($new_design) {
+        $vars['classes_array'][] = 'show-new-design';
+      }
     }
     elseif ($entity->type == 'movie') {
       $movie_title = usanetwork_tv_shows_color_get_node_code($entity);
@@ -107,9 +112,13 @@ function aurora_usa_preprocess_html(&$vars) {
     }
   }
   elseif ($entity = menu_get_object('file')) {
-    if ($entity->filemime == 'video/mpx') {
+    if (in_array($entity->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
       $vars['classes_array'][] = drupal_html_class('consumptionator-page');
       $vars['classes_array'][] =  drupal_html_class('consumptionator-video-page');
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('file', $entity);
+      if ($is_new_design == 1) {
+        $vars['classes_array'][] = 'show-new-design';
+      }
     }
     $tv_content_node = usanetwork_core_api_get_tv_content_node($entity);
     if (!empty($tv_content_node)) {
@@ -149,12 +158,9 @@ function aurora_usa_preprocess_page(&$vars) {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
-  drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
   drupal_add_js($theme_path . '/javascripts/velocity.min.js');
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
-  drupal_add_js($theme_path . '/javascripts/font-feature-detection.js');
-  drupal_add_js($theme_path . '/javascripts/tableheader.js');
   drupal_add_js($theme_path . '/javascripts/jquery.mCustomScrollbar.concat.min.js');
   drupal_add_js($theme_path . '/javascripts/matchmedia.js');
   drupal_add_js($theme_path . '/javascripts/picturefill.js');
@@ -169,9 +175,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/consumptionator-carousels.js');
   drupal_add_js($theme_path . '/javascripts/lazy-load-custom.js');
   drupal_add_js($theme_path . '/javascripts/spin.min.js');
-  drupal_add_js('var USAN = USAN || {};',
-    array('type' => 'inline', 'scope' => 'header', 'weight' => -100)
-  );
+  drupal_add_js($theme_path . '/javascripts/USAN.js', array('scope' => 'header', 'weight' => -100));
 
   $icomoon_ie_fix = array(
     '#tag' => 'script',
@@ -576,7 +580,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
     break;
     case 'field_hp_promos':
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       foreach ($vars['items'] as $delta => $item) {
         $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
       }
@@ -929,12 +932,10 @@ function aurora_usa_preprocess_views_view(&$vars) {
     }
     if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'block_1') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
     }
 
     if($vars['view']->name == 'usa_shows' && $vars['view']->current_display == 'block_1') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.carouFredSel.min.js');
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-carousel.js');
     }
   }

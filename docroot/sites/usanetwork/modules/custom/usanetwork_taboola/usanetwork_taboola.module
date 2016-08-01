@@ -5,6 +5,21 @@
  */
 
 /**
+ * Implements hook_menu().
+ */
+function usanetwork_taboola_menu() {
+  $items['admin/usanetwork/taboola'] = array(
+    'title' => 'Taboola Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_usanetwork_taboola_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_taboola.admin.inc',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
  * Implements hook_block_info().
  */
 function usanetwork_taboola_block_info()
@@ -49,10 +64,20 @@ function _usanetwork_taboola_video_block() {
     return '';
   }
 
-  drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header.js', array('type' => 'file', 'scope' => 'header'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_footer.js', array('type' => 'file', 'scope' => 'footer'));
+  $file = _usanetwork_menu_get_object();
+  $show = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id');
+  $show_witout_taboola = variable_get('usanetwork_taboola_shows');
+  if (empty($show_witout_taboola[$show])) {
+    drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header.js', array(
+      'type' => 'file',
+      'scope' => 'header'
+    ));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_footer.js', array(
+      'type' => 'file',
+      'scope' => 'footer'
+    ));
 
-  $output = '<div id="taboola-below-player-thumbnails"></div>
+    $output = '<div id="taboola-below-player-thumbnails"></div>
 <script type="text/javascript">
   window._taboola = window._taboola || [];
   _taboola.push({
@@ -63,9 +88,10 @@ function _usanetwork_taboola_video_block() {
   });
 </script>';
 
-  $variables = array('output' => $output);
+    $variables = array('output' => $output);
 
-  return theme('usanetwork_taboola', $variables);
+    return theme('usanetwork_taboola', $variables);
+  }
 }
 
 /*
@@ -76,10 +102,20 @@ function _usanetwork_taboola_gallery_block() {
     return '';
   }
 
-  drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header.js', array('type' => 'file', 'scope' => 'header'));
-  drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_footer.js', array('type' => 'file', 'scope' => 'footer'));
+  $node = _usanetwork_menu_get_object();
+  $show = _usanetwork_get_field_item('node', $node, 'field_show', 'target_id');
+  $show_witout_taboola = variable_get('usanetwork_taboola_shows');
+  if (empty($show_witout_taboola[$show])) {
+    drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header.js', array(
+      'type' => 'file',
+      'scope' => 'header'
+    ));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_footer.js', array(
+      'type' => 'file',
+      'scope' => 'footer'
+    ));
 
-  $output = '<div id="taboola-below-gallery-thumbnails"></div>
+    $output = '<div id="taboola-below-gallery-thumbnails"></div>
 <script type="text/javascript">
   window._taboola = window._taboola || [];
   _taboola.push({
@@ -90,9 +126,10 @@ function _usanetwork_taboola_gallery_block() {
   });
 </script>';
 
-  $variables = array('output' => $output);
+    $variables = array('output' => $output);
 
-  return theme('usanetwork_taboola', $variables);
+    return theme('usanetwork_taboola', $variables);
+  }
 }
 
 /**
@@ -174,6 +211,10 @@ function usanetwork_taboola_preprocess_node(&$vars) {
       }
       elseif ($gallery_type == 'Character Gallery') {
         $character = _usanetwork_get_field_item('node', $node, 'field_person', 'entity');
+        if (empty($character)) {
+          $character_id = _usanetwork_get_field_item('node', $node, 'field_person', 'target_id');
+          $character = node_load($character_id);
+        }
         $first_name = _usanetwork_get_field_item('node', $character, 'field_person_first_name', 'value');
         $last_name = _usanetwork_get_field_item('node', $character, 'field_person_last_name', 'value');
         $actor = _usanetwork_get_field_item('node', $character, 'field_usa_actor_name', 'value');
@@ -315,8 +356,13 @@ function usanetwork_taboola_preprocess_node(&$vars) {
 function usanetwork_taboola_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
   if (in_array($file->type,  _pub_mpx_get_mpx_account_video_file_types(TRUE)) && $vars['view_mode'] == 'full') {
-    $show = _usanetwork_get_field_item('file', $file, 'field_show', 'entity');
-    $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
+    $file_wrapper = entity_metadata_wrapper('file', $file);
+    if (isset($file->field_show)) {
+      $show = $file_wrapper->field_show->value();
+    }
+    if (isset($file->field_mpx_full_episode)) {
+      $full_episode = $file_wrapper->field_mpx_full_episode->value();
+    }
     if ($full_episode === '0') {
       if (!empty($show)) {
         $filter = usanetwork_mpx_video_get_video_category($file);
@@ -338,8 +384,12 @@ function usanetwork_taboola_preprocess_file_entity(&$vars) {
     }
     else {
       if (!empty($show)) {
-        $season = _usanetwork_get_field_item('file', $file, 'field_mpx_season_number', 'value');
-        $episode = _usanetwork_get_field_item('file', $file, 'field_mpx_episode_number', 'value');
+        if (isset($file->field_mpx_season_number)) {
+          $season = $file_wrapper->field_mpx_season_number->value();
+        }
+        if (isset($file->field_mpx_episode_number)) {
+          $episode = $file_wrapper->field_mpx_episode_number->value();
+        }
         $tag_taboola = array(
           '#type' => 'html_tag',
           '#tag' => 'meta',
@@ -357,7 +407,9 @@ function usanetwork_taboola_preprocess_file_entity(&$vars) {
         drupal_add_html_head($tag_taboola, 'syndication-promo-text');
       }
       else {
-        $movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
+        if (isset($file->field_movie)) {
+          $movie = $file_wrapper->field_movie->value();
+        }
         if (!empty($movie)) {
           $tag_taboola = array(
             '#type' => 'html_tag',
@@ -385,5 +437,22 @@ function usanetwork_taboola_preprocess_file_entity(&$vars) {
       ),
     );
     drupal_add_html_head($tag_taboola_image, 'syndication-promo-image');
+
+    if (isset($file->field_mpx_expiration_date)) {
+      $expiration_date = $file_wrapper->field_mpx_expiration_date->value();
+    }
+    if (!empty($expiration_date)) {
+      $expiration_date_format = gmdate('D, d M Y H:i:s T', $expiration_date);
+
+      $tag_taboola_expiration_date = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'item-expiration-date',
+          'content' => $expiration_date_format,
+        ),
+      );
+      drupal_add_html_head($tag_taboola_expiration_date, 'item-expiration-date');
+    }
   }
 }

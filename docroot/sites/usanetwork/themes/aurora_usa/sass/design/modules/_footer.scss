@@ -14,7 +14,10 @@ footer {
       padding: 9.3px 0;
     }
     form {
-       > div {
+      .close-form {
+        display: none;
+      }
+      > div {
         margin: 0 auto;
         max-width: 1250px;
         width: 100%;

@@ -67,6 +67,11 @@ function usanetwork_media_gallery_block_info() {
     'info' => 'Show gallery landing page: all galleries',
     'cache' => DRUPAL_NO_CACHE,
   );
+  
+  $blocks['usa_gallery_show_gallery_filters'] = array(
+    'info' => 'Show gallery landing page: filters',
+    'cache' => DRUPAL_NO_CACHE,
+  );
 
   $blocks['usa_gallery_show_gallery_lmb'] = array(
     'info' => 'Show gallery landing page: main block',
@@ -110,6 +115,11 @@ function usanetwork_media_gallery_block_view($delta = '') {
     case 'usa_gallery_show_gallery_all':
       $block['subject'] = '';
       $block['content'] = _usanetwork_media_gallery_landing_page_photos_block();
+      break;
+    
+    case 'usa_gallery_show_gallery_filters':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_media_gallery_landing_page_photos_filters_block();
       break;
   }
 
@@ -195,6 +205,13 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
         'photo_block' => NULL,
       ),
       'template' => 'templates/usanetwork-media-gallery-landing-photos',
+    ),
+    'usanetwork_media_gallery_landing_photos_filters' => array(
+      'variables' => array(
+        'photo_filters' => array(),
+        'photo_sorters' => array(),
+      ),
+      'template' => 'templates/usanetwork-media-gallery-landing-photos-filters',
     ),
     'usanetwork_media_gallery_landing_photos_items_block' => array(
       'variables' => array(
@@ -314,6 +331,9 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
     $endcard_enabled = _usanetwork_get_field_item('node', $node, 'field_enable_nitro', 'value');
     $endcard_path = _usanetwork_get_field_item('node', $node, 'field_nitro_action_name', 'value');
 
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node',$node);
+
+    $idx = 0;
     if (!empty($gallery_field) && is_array($gallery_field)) {
       foreach ($gallery_field as $gallery_file) {
         if (is_array($gallery_file)) {
@@ -322,7 +342,46 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
         $info = image_get_info($gallery_file->uri);
         $alt_text = _usanetwork_get_field_item('file', $gallery_file, 'field_file_image_alt_text', 'value');
-        if (!empty($info) && ($info['width'] > 1868 || $info['height'] > 1094)) {
+        $idx++;
+        if ($is_new_design) {
+          if (!empty($info) && ($info['width'] <= $info['height'])) {
+            $slide_variables = array(
+              'image' => theme_image(array(
+                'path' => '',
+                'attributes' => array(
+                  'data-lazy' => file_create_url($gallery_file->uri),
+                  'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $gallery_file->uri)),
+                  'alt' => $alt_text,
+                  'class' => 'portrait',
+                ),
+              )),
+              'info' => array(
+                'description' => '',
+                'gallery_name' => $node->title,
+                'photo_name' => $gallery_file->filename,
+              ),
+            );
+          } else {
+            $slide_variables = array(
+              'image' => theme_image(array(
+                'path' => '',
+                'attributes' => array(
+                  'data-lazy' => file_create_url(image_style_url('1280x720', $gallery_file->uri)),
+                  'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $gallery_file->uri)),
+                  'alt' => $alt_text,
+                ),
+              )),
+              'info' => array(
+                'description' => '',
+                'gallery_name' => $node->title,
+                'photo_name' => $gallery_file->filename,
+              ),
+            );
+          }
+          if ($idx == 1) {
+            $slide_variables['first_item'] = TRUE;
+          }
+        } elseif (!empty($info) && ($info['width'] > 1868 || $info['height'] > 1094)) {
           $slide_variables = array(
             'image' => theme_image(array(
               //'path' => image_style_url('usanetwork_media_gallery_image', $gallery_file->uri),
@@ -331,6 +390,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
                 'data-lazy' => file_create_url(image_style_url('usanetwork_media_gallery_image', $gallery_file->uri)),
                 'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $gallery_file->uri)),
                 'alt' => $alt_text,
+                'class' => (!empty($info) && ($info['width'] <= $info['height'])) ? 'portrait' : '',
               ),
             )),
             'info' => array(
@@ -348,6 +408,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
                 'data-lazy' => file_create_url($gallery_file->uri),
                 'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $gallery_file->uri)),
                 'alt' => $alt_text,
+                'class' => (!empty($info) && ($info['width'] <= $info['height'])) ? 'portrait' : '',
               ),
             )),
             'info' => array(
@@ -417,6 +478,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       $show_nid = $node_wrapper->field_show->nid->value();
       $gallery_type = $node_wrapper->field_gallery_type->value();
       $gallery_field_season_id_value = _usanetwork_get_field_item('node', $node, 'field_season', 'target_id');
+      $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_nid);
       if (!empty($gallery_field_season_id_value)) {
         $tv_season_node = node_load($gallery_field_season_id_value);
         $season_id = _usanetwork_get_field_item('node', $tv_season_node, 'field_season_id', 'value');
@@ -467,6 +529,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
         'title' => $own_promo_lines['title'],
         'description' => !empty($own_promo_lines['description']) ? $own_promo_lines['description'] : NULL,
         'active' => ($gallery_item->nid == $node->nid) ? TRUE : FALSE,
+        'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
       );
 
       $rendered_items['slides_vertical'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide_vertical', $gallery_item_vertical);
@@ -479,6 +542,7 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       'slides_horizontal' => !empty($rendered_items['slides_horizontal']) ? $rendered_items['slides_horizontal'] : '',
       'ad' => isset($advert) ? $advert : NULL,
       'link' => isset($show_nid) ? url('node/' . $show_nid . '/photos') : NULL,
+      'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
     ));
   }
 }
@@ -519,6 +583,12 @@ function _usanetwork_media_gallery_get_multiple_show_galleries() {
  * @param $season_nid
  */
 function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type = NULL, $episode_num = NULL, $sorting = 'ASC', $start = NULL, $lenght = NULL) {
+  $show_node = node_load($show_nid);
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
+  $featured_nids = array();
+  if ($is_new_design) {
+    $featured_nids = _usanetwork_media_gallery_landing_page_get_featured_items($show_node);
+  }
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
   $query->condition('node.type', 'media_gallery');
@@ -538,6 +608,10 @@ function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type = NULL
   );
   $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = node.nid');
   $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, node.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
+
+  foreach ($featured_nids as $nid) {
+    $query->orderBy('node.nid = ' . $nid, 'DESC');
+  }
   $query->orderBy('sorted_time', $sorting);
   if (is_numeric($start) && is_numeric($lenght)) {
     $query->range($start, $lenght);
@@ -561,6 +635,19 @@ function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type = NULL
   return FALSE;
 }
 
+function _usanetwork_media_gallery_landing_page_get_featured_items($show_node) {
+  $field_promo_items = field_get_items('node', $show_node, 'field_show_plmb_promo');
+  $featured_nids = array();
+  if (!empty($field_promo_items) && is_array($field_promo_items)) {
+    foreach ($field_promo_items as $promo_reference) {
+      if ($promo_reference['target_type'] == 'node') {
+        $featured_nids[] = $promo_reference['target_id'];
+      }
+    }
+  }
+  return $featured_nids;
+}
+
 /**
  * Renders content for photos block.
  */
@@ -570,20 +657,22 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
   if (empty($tv_show_node) || $tv_show_node->type != 'tv_show') {
     return '';
   }
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
+  $items_quantity = _usanetwork_media_gallery_landing_page_get_items_quantity($is_new_design);
   $params = _usanetwork_media_gallery_photo_landing_prepare_query_params();
   $gallery_types = _usanetwork_media_gallery_get_gallery_types($tv_show_node->nid, $params);
   if (empty($gallery_types)) {
     return '';
   }
   $gallery_sorters = _usanetwork_media_gallery_landing_page_sorters($tv_show_node->nid, $params);
-  $galleries = _usanetwork_media_gallery_get_galleries($tv_show_node->nid, $params['category'], NULL, $params['sort_order'], 0, USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK + 1);
+  $galleries = _usanetwork_media_gallery_get_galleries($tv_show_node->nid, $params['category'], NULL, $params['sort_order'], 0, $items_quantity + 1);
   $load_more = &drupal_static('load_more_link');
   $load_more = FALSE;
-  if (count($galleries) >= USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK) {
-    $galleries = array_slice($galleries, 0, USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK);
+  if (count($galleries) >= $items_quantity) {
+    $galleries = array_slice($galleries, 0, $items_quantity);
     $load_more = TRUE;
   }
-  $gallery_block = _usanetwork_media_gallery_landing_page_vbget_photos_block($galleries, 0, USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK);
+  $gallery_block = _usanetwork_media_gallery_landing_page_vbget_photos_block($tv_show_node, $galleries, 0, $items_quantity);
 
   $section_name = $params['category'] === NULL ? USA_GALLERY_ALL_GALLERIES_LABEL :
     ($params['category'] === USA_GALLERY_OTHER_TYPE_MACHINE_NAME ? USA_GALLERY_OTHER_TYPE_LABEL : $params['category']);
@@ -599,6 +688,7 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
   $tag_videos_type = '<strong class="photos-type">' . $video_filter_title_short . '</strong>';
   $tag_seasons_type = '<strong class="seasons-type">' . t('all seasons') . '</strong>';
   $tag_show_name = '<strong class="show-name">' . $tv_show_node->title . '</strong>';
+
   $result = theme('usanetwork_media_gallery_landing_photos', array(
     'block_title' => $section_name,
     'photo_filters' => $gallery_types,
@@ -607,7 +697,7 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
     'photo_sorter_title' => $video_sorter_title,
     'photos_block' => $gallery_block,
     'show_nid' => $tv_show_node->nid,
-    'items_per_page_limit' => USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK,
+    'items_per_page_limit' => $items_quantity,
     'filter_tid' => ($params['category'] === NULL) ? USA_GALLERY_ALL_GALLERIES : $params['category'],
     'sorting_order' => $params['sort_order'],
     'load_more_link' => $load_more,
@@ -616,6 +706,7 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
       '!seasons_type' => $tag_seasons_type,
       '!show_name' => $tag_show_name,
     )),
+    'is_new_design' => $is_new_design ? TRUE : FALSE,
   ));
 
   drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
@@ -625,6 +716,52 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
   ), 'setting');
 
   return $result;
+}
+
+function _usanetwork_media_gallery_landing_page_photos_filters_block() {
+  $tv_show_node = menu_get_object();
+  if (empty($tv_show_node) || $tv_show_node->type != 'tv_show') {
+    return '';
+  }
+  $params = _usanetwork_media_gallery_photo_landing_prepare_query_params();
+  $gallery_types = _usanetwork_media_gallery_get_gallery_types($tv_show_node->nid, $params);
+  if (empty($gallery_types)) {
+    return '';
+  }
+  $gallery_sorters = _usanetwork_media_gallery_landing_page_sorters($tv_show_node->nid, $params);
+  $section_name = $params['category'] === NULL ? USA_GALLERY_ALL_GALLERIES_LABEL :
+    ($params['category'] === USA_GALLERY_OTHER_TYPE_MACHINE_NAME ? USA_GALLERY_OTHER_TYPE_LABEL : $params['category']);
+  $key = md5($params['category']);
+  $video_filter_title = ($params['category'] !== NULL)
+    ? $section_name . ' (' . $gallery_types[$key]['items_count'] . ')'
+    : t('All galleries');
+  $video_sorter_title = (isset($gallery_sorters[$params['sort_order']]))
+    ? $gallery_sorters[$params['sort_order']]['title']
+    : t('Newest');
+
+  $result = theme('usanetwork_media_gallery_landing_photos_filters', array(
+    'photo_filters' => $gallery_types,
+    'photo_filter_title' => $video_filter_title,
+    'photo_sorters' => $gallery_sorters,
+    'photo_sorter_title' => $video_sorter_title,
+    'show_nid' => $tv_show_node->nid,
+    'filter_tid' => ($params['category'] === NULL) ? USA_GALLERY_ALL_GALLERIES : $params['category'],
+    'sorting_order' => $params['sort_order'],
+  ));
+  return $result;
+}
+
+/**
+ * @param $is_new_design
+ * @return int
+ */
+function _usanetwork_media_gallery_landing_page_get_items_quantity($is_new_design) {
+  $items_quantity = USA_GALLERY_CONS_LANDING_ITEMS_IN_BLOCK;
+  if ($is_new_design) {
+    $items_quantity = USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK_NEW_DESIGN;
+    return $items_quantity;
+  }
+  return $items_quantity;
 }
 
 /**
@@ -647,8 +784,9 @@ function _usanetwork_media_gallery_related_content_block() {
       $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_content_node);
 
       if (!empty($related_content)) {
+        $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_content_node);
         $function = 'usanetwork_media_gallery_output_' . $tv_content_node->type . '_related_content';
-        return $function($tv_content_node, $related_content, $content);
+        return $function($tv_content_node, $related_content, $content, $is_new_design);
       }
     }
   }
@@ -660,8 +798,8 @@ function _usanetwork_media_gallery_related_content_block() {
  * @param $related_content
  * @return string
  */
-function usanetwork_media_gallery_output_tv_show_related_content($tv_show_node, $related_content, $content) {
-  $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content);
+function usanetwork_media_gallery_output_tv_show_related_content($tv_show_node, $related_content, $content, $is_new_design) {
+  $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, 0, 1, $is_new_design);
   $load_more_link = &drupal_static('load_more_link');
   $load_more_link = TRUE;
   return theme('usanetwork_tv_show_consumptionator_related_items_container', array(
@@ -868,6 +1006,7 @@ function _usanetwork_media_gallery_get_gallery_types($show_id, $params) {
           'sort_order' => $params['sort_order'],
         )
       )),
+      'first_item' => TRUE,
     );
     array_unshift($result, $all_galleries);
     return $result;
@@ -921,12 +1060,13 @@ function _usanetwork_media_gallery_landing_page_sorters($show_id, $params) {
  * @param int $start_from
  * @param int $limit
  */
-function _usanetwork_media_gallery_landing_page_vbget_photos_block($items, $start_from = 0, $limit = USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK) {
-
+function _usanetwork_media_gallery_landing_page_vbget_photos_block($show_node, $items, $start_from = 0, $limit = USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK) {
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
   $ad_id = intval($start_from / $limit);
+
   $theme_variables = array(
     'ad' => $start_from == 0 ? FALSE : TRUE,
-    'ad_id' => $ad_id,
+    'ad_id' => 'advert-photos-landing-' . $ad_id,
     'is_even' => (($ad_id + 1) % 2 == 0) ? TRUE : FALSE,
     'items' => array(),
   );
@@ -936,7 +1076,13 @@ function _usanetwork_media_gallery_landing_page_vbget_photos_block($items, $star
     $theme_variables['items'][] = _usanetwork_media_gallery_landing_page_vbget_photos_block_item($item, $current_item_index, $theme_variables['is_even']);
     $current_item_index++;
   }
-  return theme('usanetwork_media_gallery_landing_photos_items_block', $theme_variables);
+  
+  if ($is_new_design) {
+    return theme('usanetwork_tv_shows_landing_items_new_design_block', $theme_variables);
+  }
+  else {
+    return theme('usanetwork_media_gallery_landing_photos_items_block', $theme_variables);
+  }
 }
 
 
@@ -950,8 +1096,12 @@ function _usanetwork_media_gallery_landing_page_vbget_photos_block($items, $star
  */
 function _usanetwork_media_gallery_landing_page_vbget_photos_block_item($node, $current_item_index, $is_item_even = FALSE) {
 
-  $big_element_index = $is_item_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK - 1);
-
+  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
+  $items_quantity = _usanetwork_media_gallery_landing_page_get_items_quantity($is_new_design);
+  $big_element_index = $is_item_even ? 0 : ($items_quantity - 1);
+  if ($is_new_design) {
+    $big_element_index = !$is_item_even ? 0 : ($items_quantity - 1);
+  }
   if (!empty($node->field_promo_image_override)) {
     $field_image_override = field_get_items('node', $node, 'field_promo_image_override');
     $field_image_override = reset($field_image_override);
@@ -960,26 +1110,19 @@ function _usanetwork_media_gallery_landing_page_vbget_photos_block_item($node, $
   else {
     $image_url = usanetwork_core_api_get_content_image('node', $node);
   }
-  $mobile_image = '';
-  $desktop_image = '';
-
-  if (!empty($image_url)) {
-    if ($current_item_index == $big_element_index) { // Big image
-      $mobile_image = image_style_url('719x414', $image_url);
-      $desktop_image = image_style_url('927x756', $image_url);
-    }
-    else { // Small image
-      $desktop_image = image_style_url('456x372', $image_url);
-    }
-  }
+  list($mobile_image, $desktop_image) = _usanetwork_tv_shows_landing_page_prepare_item_image($current_item_index, $image_url, $big_element_index, $is_new_design);
+  
   $own_promo_lines = _usanetwork_promo_pull_node_promo_details($node);
-
+  $caption = !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '';
+  if ($is_new_design) {
+    $caption = !empty($own_promo_lines['violator']) ? $own_promo_lines['violator'] : '';
+  }
   $theme_variables = array(
     'classes' => NULL,
     'custom_classes' => NULL,
     'target_url' => url('node/' . $node->nid),
     'media_icon' => !empty($own_promo_lines['icon_type']) ? $own_promo_lines['icon_type'] : 'video-icon',
-    'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
+    'caption' => $caption,
     'title' => !empty($own_promo_lines['promo_title'])
       ? $own_promo_lines['promo_title']
       : $node->title,
@@ -988,6 +1131,7 @@ function _usanetwork_media_gallery_landing_page_vbget_photos_block_item($node, $
       : '',
     'image_mobile' => $mobile_image,
     'image_desktop' => $desktop_image,
+    'is_new_design' => $is_new_design ? TRUE : FALSE,
   );
 
   $theme_name = ($current_item_index == $big_element_index)
@@ -1014,7 +1158,7 @@ function usanetwork_media_gallery_get_photos_landing_related_content_ajax($show_
   else {
     $response['overlimited'] = TRUE;
   }
-  $response['rendered'] = _usanetwork_media_gallery_landing_page_vbget_photos_block($galleries, $start_from, $lenght);
+  $response['rendered'] = _usanetwork_media_gallery_landing_page_vbget_photos_block($show_node, $galleries, $start_from, $lenght);
   return drupal_json_output($response);
 }
 

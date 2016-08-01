@@ -1,0 +1,658 @@
+.show-new-design {
+  .consumptionator-episode-main-block, .consumptionator-post-main-block {
+    @include clear();
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    .consum-sidebar {
+      .episodes-list-slider {
+        &.horizontal {
+          li {
+            @include breakpoint($bp-640-width) {
+              height: auto;
+              padding: get-vw(40px, 640) get-vw(40px, 640) 0;
+            }
+            &:nth-child(n+4) {
+              @include breakpoint($bp-640-width) {
+                display: none;
+              }
+            }
+            .meta-wrapper {
+              @include breakpoint($bp-640-width) {
+                padding: get-vw(15px, 640) get-vw(20px, 640) 0;
+              }
+            }
+          }
+          .node {
+            &.active {
+              &:before {
+                @include breakpoint($bp-640-width) {
+                  height: calc((100vw - 2*#{get-vw(40px, 640)})*0.5625);
+                  width: 7px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .items-block-title {
+        @include breakpoint($bp-640-width) {
+          border-top: none;
+          border-bottom: 1px solid;
+          height: auto;
+          line-height: 1;
+          padding: 0;
+          text-align: center;
+        }
+        h2 {
+          @include breakpoint($bp-640-width) {
+            color: white!important;
+            font-size: get-vw(25px, 640);
+            line-height: get-vw(85px, 640);
+          }
+        }
+      }
+      .more-items {
+        @include breakpoint($bp-640-width) {
+          background: black;
+          text-align: center;
+        }
+        a {
+          @include breakpoint($bp-640-width) {
+            font-size: get-vw(30px, 640);
+            line-height: get-vw(100px, 640);
+            padding: 0;
+          }
+          &:after {
+            @include breakpoint($bp-1024-width) {
+              display: none;
+            }
+          }
+          span {
+            background: none;
+            @include breakpoint($bp-min-1025-width) {
+              display: none;
+            }
+            &:after {
+              content: "\e608";
+              font-family: $ico-font;
+              @include breakpoint($bp-1024-width) {
+                display: inline-block;
+                font-size: 12px;
+                line-height: 1;
+                margin-left: 8px;
+                margin-top: -6px;
+                position: relative;
+                right: auto;
+              }
+              @include breakpoint($bp-640-width) {
+                font-size: get-vw(22px, 640);
+                margin-top: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+    .episode-info-main-block, .post-info-main-block {
+      float: left;
+      position: relative;
+      width: 75%;
+      background: #ffffff;
+      color: #000000;
+      @include breakpoint($between-1025-1280) {
+        width: calc(100% - 320px);
+      }
+      @include breakpoint($bp-1024-width) {
+        float: none;
+        width: 100%;
+      }
+      @include breakpoint($bp-640-width) {
+        padding: 56.25vw 0 0;
+      }
+      &.no-cover-image {
+        @include breakpoint($bp-640-width) {
+          padding: 0;
+        }
+      }
+      .episode-change-link {
+        bottom: get-vw(25px, 1280);
+        color: $change-episode-color;
+        display: block;
+        font-family: $fira-sans-regular;
+        font-size: 21px;
+        outline: none;
+        position: absolute;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          bottom: 38px;
+        }
+        @include breakpoint($bp-1280-width) {
+          font-size: 15px;
+        }
+        @include breakpoint($bp-1024-width) {
+          bottom: get-vw(38px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          bottom: get-vw(36.5px, 768);
+        }
+        @include breakpoint($bp-640-width) {
+          bottom: get-vw(28px, 640);
+        }
+        &:after {
+          color: $change-episode-color;
+          font-family: "ico-font";
+          font-size: 14px;
+          display: block;
+          position: absolute;
+          top: 50%;
+          margin-top: -8px;
+          line-height: 1;
+          @include breakpoint($bp-1280-width) {
+            font-size: 10px;
+            margin-top: -5px;
+          }
+        }
+        &.previous {
+          left: get-vw(75px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            left: 40px;
+          }
+          @include breakpoint($bp-1024-width) {
+            left: get-vw(30px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            left: get-vw(30px, 768);
+          }
+          @include breakpoint($bp-640-width) {
+            left: get-vw(30px, 640);
+          }
+          &:after {
+            content: "\e607";
+            left: -15px;
+          }
+        }
+        &.next {
+          right: get-vw(75px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            right: 40px;
+          }
+          @include breakpoint($bp-1024-width) {
+            right: get-vw(30px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            right: get-vw(30px, 768);
+          }
+          @include breakpoint($bp-640-width) {
+            right: get-vw(30px, 640);
+          }
+          &:after {
+            content: "\e608";
+            right: -15px;
+          }
+        }
+      }
+      .episode-info-block, .post-info-block {
+        border-bottom: 2px solid;
+        padding: get-vw(37px, 1280) get-vw(46px, 1280) get-vw(74px, 1280) get-vw(32px, 1280);
+        @include breakpoint($bp-min-1601-width) {
+          padding: 50px 94px 100px 70px;
+        }
+        @include breakpoint($bp-1024-width) {
+          padding: get-vw(60px, 1024) get-vw(120px, 1024) get-vw(100px, 1024) get-vw(120px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          padding: get-vw(57px, 768) get-vw(50px, 768) get-vw(97px, 768) get-vw(50px, 768);
+        }
+        @include breakpoint($bp-640-width) {
+          border-bottom: 0;
+          padding: get-vw(35px, 640) get-vw(40px, 640) get-vw(108px, 640);
+        }
+        @include clear();
+        .episode-info-header, .post-info-header {
+          @include clear();
+          position: relative;
+          margin-bottom: 26px;
+          @include breakpoint($bp-1280-width) {
+            margin-bottom: 40px;
+          }
+          @include breakpoint($bp-1024-width) {
+            margin-bottom: 16px;
+          }
+          .episode-title-block, .post-title-block {
+            float: left;
+            width: 70%;
+            @include breakpoint($bp-1024-width) {
+              float: none;
+              margin-bottom: 10px;
+              width: 100%;
+            }
+            @include breakpoint($bp-480-width) {
+              float: none;
+              width: 100%;
+            }
+            .episode-title, .post-title {
+              color: black;
+              font-family: $fira-sans-medium;
+              font-size: 38px;
+              line-height: 1.3;
+              margin-bottom: get-vw(30px, 1280);
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 54px;
+                margin-bottom: 40px;
+              }
+              @include breakpoint($bp-768-width) {
+                margin-bottom: get-vw(30px, 768);
+              }
+              .title {
+                font-size: 38px;
+                margin: 0;
+                padding: 0;
+                @include breakpoint($bp-640-width) {
+                  font-size: get-vw(38.4px, 640);
+                }
+                @include breakpoint($bp-min-1601-width) {
+                  font-size: 54px;
+                }
+              }
+            }
+            .additional {
+              color: $consum-carousel-odd;
+              font-family: $fira-sans-regular;
+              font-size: 12px;
+              line-height: 1.3;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 18px;
+              }
+              .violator {
+                margin-bottom: get-vw(15px, 1280);
+                @include breakpoint($bp-min-1601-width) {
+                  margin-bottom: 15px;
+                }
+                @include breakpoint($bp-768-width) {
+                  margin-bottom: get-vw(30px, 768);
+                }
+                @extend %usa-violator-icon;
+                .violator-link {
+                  color: #ffffff;
+                  font-family: $fira-sans-regular;
+                  font-size: get-vw(16.5px, 1280);
+                  line-height: 1.5;
+                  padding: get-vw(3px, 1280) get-vw(7px, 1280) 0;
+                  text-transform: uppercase;
+                  width: auto;
+                  @include breakpoint($bp-min-1601-width) {
+                    padding: 3px 8.75px 0;
+                    font-size: 18px;
+                  }
+                  @include breakpoint($bp-768-width) {
+                    padding: get-vw(3px, 768) get-vw(7px, 768);
+                    font-size: get-vw(20px, 768);
+                  }
+                }
+              }
+              .author {
+                color: #000000;
+                font-family: $fira-sans-light;
+                font-size: get-vw(22.5px, 1280);
+                line-height: 1.4;
+                text-transform: capitalize;
+                @include breakpoint($bp-min-1601-width) {
+                  font-size: 22.5px;
+                }
+                @include breakpoint($bp-768-width) {
+                  font-size: get-vw(22.5px, 768);
+                }
+                .author_name {
+                  font-family: $fira-sans-medium;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                }
+              }
+              .episode {
+                font-family: $fira-sans-light;
+                font-size: get-vw(18px, 1280);
+                line-height: 1.4;
+                @include breakpoint($bp-min-1601-width) {
+                  font-size: 18px;
+                }
+                @include breakpoint($bp-768-width) {
+                  font-size: get-vw(18px, 768);
+                }
+                &:after {
+                  content: '';
+                }
+              }
+              .tags-wrap {
+                span {
+                  font-family: $fira-sans-medium;
+                  font-size: get-vw(18px, 1280);
+                  line-height: 1.5;
+                  @include breakpoint($bp-min-1601-width) {
+                    font-size: 18px;
+                  }
+                  @include breakpoint($bp-768-width) {
+                    font-size: get-vw(18px, 768);
+                  }
+                }
+              }
+              .aired {
+                text-transform: none;
+              }
+            }
+          }
+          .share {
+            color: $consum-carousel-text;
+            float: right;
+            font-family: $fira-sans-regular;
+            margin-top: 10px;
+            width: 30%;
+            @include breakpoint($bp-1024-width) {
+              float: none;
+              margin: 0;
+              width: 100%;
+            }
+            h3 {
+              display: none;
+            }
+            .field-type-gigya-sharebar {
+              margin-bottom: 0;
+              float: right;
+              @include breakpoint ($bp-1024-width) {
+                float: left;
+              }
+              .gig-button-container {
+                @include breakpoint ($bp-1024-width) {
+                  height: 32px;
+                  margin: 5px 10px 0 0;
+                  padding: 0;
+                  width: 32px;
+                }
+                td {
+                  > div {
+                    font-size: 32px!important;
+                  }
+                }
+                [id$='reaction0-facebook_img'] {
+                  &:before {
+                    color: $usa-video-helper-facebook;
+                  }
+                }
+                [id$='reaction1-twitter_img'] {
+                  &:before {
+                    color: $usa-video-helper-twitter;
+                  }
+                }
+                [id$='reaction2-tumblr_img'] {
+                  &:before {
+                    color: $usa-video-helper-tumblr;
+                  }
+                }
+                [id$='reaction3-pinterest_img'] {
+                  &:before {
+                    color: $usa-video-helper-pinterest;
+                  }
+                }
+                [id$='reaction4-share_img'] {
+                  &:before {
+                    color: $poll-color;
+                  }
+                }
+              }
+            }
+            .episode-button {
+              border: 1px solid;
+              float: right;
+              margin-top: 20px;
+              position: relative;
+              text-align: left;
+              width: 230px;
+              @include breakpoint($bp-1280-width) {
+                margin-top: 5px;
+                width: 158px;
+              }
+              span {
+                &:after {
+                  content: "\e608";
+                  font-family: "ico-font";
+                  font-size: 11px;
+                  display: block;
+                  position: absolute;
+                  right: 14px;
+                  top: 0;
+                  z-index: 3;
+                  @include breakpoint($bp-1280-width) {
+                    right: 8px;
+                  }
+                }
+              }
+              a {
+                color: black;
+                display: block;
+                text-transform: uppercase;
+                font-size: 15px;
+                line-height: 54px;
+                padding: 0 0 0 30px;
+                position: relative;
+                width: 100%;
+                @include breakpoint($bp-1280-width) {
+                  font-size: 13px;
+                  line-height: 44px;
+                  padding: 0 9%;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: 12px;
+                  line-height: 34px;
+                  padding: 0 35px 0 10px;
+                }
+                @include breakpoint($between-641-768) {
+                  font-size: 10px;
+                }
+                @include breakpoint($bp-640-width) {
+                  line-height: 40px;
+                  padding: 0 35px 0 10px;
+                }
+              }
+            }
+          }
+        }
+        .episode-info-image, .post-info-image {
+          float: right;
+          width: 61.1%;
+          padding: 0 0 20px 15px;
+          background-color: #ffffff;
+          margin-left: 30px;
+          position: relative;
+          z-index: 1;
+          @include breakpoint($bp-1024-width) {
+            float: none;
+            width: 100%;
+            margin: 0 0 6vw 0;
+            padding: 0;
+          }
+          @include breakpoint($bp-640-width) {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+        .episode-info-description, .post-info-description {
+          font-family: $open-sans-regular;
+          font-size: 20px;
+          line-height: 1.5em;
+          position: relative;
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 26px;
+          }
+          @include breakpoint($bp-640-width) {
+            color: $poll-color;
+            width: 100%;
+            font-size: get-vw(27.2px, 640);
+          }
+          h2 {
+            font-size: 1.5em;
+            margin: 0.2em 0
+          }
+          h3:not(.field-label) {
+            font-size: 1.3em;
+            margin: 0;
+          }
+          h4 {
+            font-size: 1em;
+            margin: 0;
+          }
+          p {
+            &:first-child {
+              margin-top: 0;
+              .lines-quotation {
+                @include breakpoint($bp-min-1281-width) {
+                  margin-top: 0;
+                }
+              }
+            }
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+          iframe {
+            max-width: 100%;
+          }
+          .lines-quotation {
+            @include breakpoint($bp-768-width) {
+              padding: 22px 15px;
+            }
+          }
+          .source {
+            font-family: $fira-sans-medium;
+            color: $schedule-pm-color;
+            letter-spacing: 2px;
+            font-size: 16px;
+            text-transform: uppercase;
+            line-height: 1;
+            @include breakpoint($bp-1280-width) {
+              font-size: 13px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 12px;
+            }
+          }
+          .source-title {
+            font-family: $fira-sans-regular;
+            color: $schedule-pm-color;
+          }
+          a.source-title {
+            color: $source-link;
+            &:hover,
+            &:active {
+              color: $source-link;
+              text-decoration: underline;
+            }
+          }
+        }
+        .node-wrapper {
+          &.advert {
+            @include breakpoint($between-1025-1280) {
+              display: none;
+            }
+            @include breakpoint($bp-1024-width) {
+              display: block;
+              width: 39%;
+              float: right;
+              margin: 0 0 20px 34px;
+            }
+            @include breakpoint($bp-768-width) {
+              width: 46%;
+            }
+            @include breakpoint($bp-640-width) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .consumptionator-episode-main-block {
+    .episode-info-header {
+      .share {
+        .gig-button-container {
+          [id$='reaction0-facebook_img'] {
+            &:before {
+              color: $usa-video-helper-facebook;
+            }
+          }
+          [id$='reaction1-twitter_img'] {
+            &:before {
+              color: $usa-video-helper-twitter;
+            }
+          }
+          [id$='reaction2-tumblr_img'] {
+            &:before {
+              color: $usa-video-helper-tumblr;
+            }
+          }
+          [id$='reaction3-pinterest_img'] {
+            &:before {
+              color: $usa-video-helper-pinterest;
+            }
+          }
+          [id$='reaction4-share_img'] {
+            &:before {
+              color: $poll-color;
+            }
+          }
+        }
+      }
+      .episode-title-block {
+        h1, h2 {
+          margin: 0;
+          padding: 0;
+        }
+        .episode {
+          .episode-inner {
+            font-family: $fira-sans-medium;
+            font-size: get-vw(22.5px, 1280);
+            line-height: 1.4;
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 24px;
+            }
+            @include breakpoint($bp-768-width) {
+              font-size: get-vw(22.5px, 768);
+            }
+          }
+        }
+        .episode-title {
+          margin-bottom: 0 !important;
+          @include breakpoint($bp-min-1601-width) {
+            margin-bottom: 0 !important;
+          }
+          .episode-title-inner {
+            color: black;
+            font-family: $fira-sans-medium;
+            font-size: 36px;
+            line-height: 1.4;
+            @include breakpoint($bp-640-width) {
+              font-size: get-vw(38.4px, 640);
+            }
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 40px;
+            }
+          }
+        }
+        .additional {
+          color: #000000 !important;
+          font-family: $fira-sans-regular;
+          font-size: get-vw(18px, 1280);
+          @include breakpoint($bp-min-1601-width) {
+            font-size: 18px;
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(18px, 768);
+          }
+          .aired {
+
+          }
+        }
+      }
+    }
+  }
+}

@@ -12,19 +12,21 @@
     </div>
     <?php endif; ?>
   </div>
-  <div class="download-app">
-    <div class="download-app-wrapper">
-      <div class="image-block"></div>
-      <div class="text-block">Get USA NOW to watch full episodes from any device.</div>
-      <div class="download-button show-color">
-        <a href="/app" target="_self">
-          Download the app
-        </a>
+  <?php if(empty($new_design)) : ?>
+    <div class="download-app">
+      <div class="download-app-wrapper">
+        <div class="image-block"></div>
+        <div class="text-block">Get USA NOW to watch full episodes from any device.</div>
+        <div class="download-button show-color">
+          <a href="/app" target="_self">
+            Download the app
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+  <?php endif; ?>
   <div class="items-block galleries-thumbs-block">
-    <div class="items-block-title galleries-block-title">
+    <div class="items-block-title galleries-block-title<?php print !empty($new_design) ? ' show-color show-font show-border' : ''; ?>">
       <?php if (!empty($block_title)): ?>
         <h2><?php print $block_title; ?></h2>
       <?php endif; ?>
@@ -60,8 +62,8 @@
   </div>
   <!-- change link to special photo page for show-->
   <?php if (!empty($link)): ?>
-    <div class="more-items more-photos show-color">
-      <a href="<?php print $link; ?>"><?php print t('View all photos'); ?></a>
+    <div class="more-items more-photos <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
+      <a href="<?php print $link; ?>"><?php print t('View all photos'); ?><?php if (!empty($new_design)): ?><span class="show-color show-font"></span><?php endif; ?></a>
     </div>
   <?php endif; ?>
 </div>

@@ -302,7 +302,7 @@ function usanetwork_tv_shows_color_show_css_class($show_node) {
   }
 
   // get show css class from static variable
-  if ($show_class_cache = cache_get('show_id_' . $show_id, 'show_class')) {
+  if ($show_class_cache = cache_get('show_id_' . $show_id)) {
     $show_css_class = $show_class_cache->data;
     return $show_class_cache->data;
   }
@@ -316,7 +316,7 @@ function usanetwork_tv_shows_color_show_css_class($show_node) {
   }
 
   //set show css class from show in cache
-  cache_set('show_id_' . $show_id, $show_css_class, 'show_class');
+  cache_set('show_id_' . $show_id, $show_css_class);
 
   return $show_css_class;
 }
@@ -346,7 +346,7 @@ function usanetwork_tv_shows_color_movie_css_class($movie_node) {
   }
 
   // get show css class from static variable
-  if ($movie_class_cache = cache_get('show_id_' . $movie_id, 'show_class')) {
+  if ($movie_class_cache = cache_get('show_id_' . $movie_id)) {
     $movie_css_class = $movie_class_cache->data;
     return $movie_class_cache->data;
   }
@@ -355,7 +355,7 @@ function usanetwork_tv_shows_color_movie_css_class($movie_node) {
   $movie_css_class = 'movie-' . drupal_clean_css_identifier(pathauto_cleanstring($movie_node->title));
 
   //set show css class from show in cache
-  cache_set('show_id_' . $movie_id, $movie_css_class, 'show_class');
+  cache_set('show_id_' . $movie_id, $movie_css_class);
 
   return $movie_css_class;
 }

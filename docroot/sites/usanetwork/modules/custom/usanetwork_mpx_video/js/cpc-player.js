@@ -14,12 +14,15 @@
           return {
             scope: true,
             compile: function (element, attrs, transclude) {
-              return function (scope, $element, $attrs) {
+              return function (scope, $element, attr) {
 
                 // var tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop},
                 var user = {
                   isAuthenticated: authService.isAuthenticated() // check status
-                };
+                },
+                  pdk = attr['pdk'],
+                  logLevel = attr['loglevel'];
+
 
                 // create global scope obj
                 $rootScope.user = user;
@@ -44,7 +47,10 @@
                     // tveAnalytics.authzTrack(true, {
                     //   mvpd_id: status.mvpdId
                     // });
-                    initLivePlayer($cookies);
+                    initLivePlayer($cookies, {
+                      pdk: pdk,
+                      logLevel: logLevel
+                    });
                   }
                 });
               };
@@ -53,7 +59,7 @@
         }
       ]);
 
-  function initLivePlayer($cookies) {
+  function initLivePlayer($cookies, customParams) {
 
     if ($cookies.nbcu_user_settings) {
       var nbcu_user_settings = JSON.parse($cookies.nbcu_user_settings),
@@ -69,6 +75,12 @@
     var parameters = new NBCUniCPC.PlayerParameters();
     parameters.autoPlay = true;
     parameters.mvpdId = mvpdId || '';
+    if (customParams.pdk !== undefined) {
+      parameters.autoPlay += '&pdk=' + customParams.pdk;
+    }
+    if (customParams.logLevel !== undefined) {
+      parameters.autoPlay += '&logLevel=' + customParams.logLevel;
+    }
 
     $cpc = NBCUniCPC.load("videoplayer", NBCUniCPC.Account.USA, contentInitObj, parameters);
     $cpc.addEventListener(NBCUniCPC.Event.INSTREAM_DATA, onInStreamData);
@@ -116,6 +128,7 @@
       // send ajax
       Drupal.behaviors.usanetwork_menu_live_video_header.init();
       Drupal.behaviors.usanetwork_video_live.right_rail();
+      Drupal.behaviors.usanetwork_video_live.right_rail_promo();
       Drupal.behaviors.usanetwork_video_live.related_content();
 
       $.ajax({

@@ -31,15 +31,22 @@ function usanetwork_mpx_video_admin($form, &$form_state) {
   $form['player_url'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,
-    '#title' => t('Player URL Settings'),
+    '#title' => t('VOD Player URL Settings'),
     '#description' => t('Set up Player URL Settings.'),
   );
 
   $form['player_url']['usanetwork_player_url_pdk'] = array(
     '#type' => 'textfield',
-    '#title' => t('Pdk'),
+    '#title' => t('Player Pdk'),
     '#description' => t('Player URL Parameter &pdk='),
     '#default_value' => variable_get('usanetwork_player_url_pdk', ''),
+  );
+
+  $form['player_url']['usanetwork_page_url_pdk'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Page Pdk'),
+    '#description' => t('Pdk version for page file'),
+    '#default_value' => variable_get('usanetwork_page_url_pdk', ''),
   );
 
   $form['player_url']['usanetwork_player_url_logLevel'] = array(
@@ -47,6 +54,34 @@ function usanetwork_mpx_video_admin($form, &$form_state) {
     '#title' => t('logLevel'),
     '#description' => t('Player URL Parameter &logLevel='),
     '#default_value' => variable_get('usanetwork_player_url_logLevel', ''),
+  );
+
+  $form['live_player_url'] = array(
+    '#type' => 'fieldset',
+    '#collapsible' => TRUE,
+    '#title' => t('Live Player URL Settings'),
+    '#description' => t('Set up Player URL Settings.'),
+  );
+
+  $form['live_player_url']['usanetwork_live_player_url_pdk'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Player Pdk'),
+    '#description' => t('Player URL Parameter &pdk='),
+    '#default_value' => variable_get('usanetwork_live_player_url_pdk', ''),
+  );
+
+  $form['live_player_url']['usanetwork_live_page_url_pdk'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Page Pdk'),
+    '#description' => t('Pdk version for page file'),
+    '#default_value' => variable_get('usanetwork_live_page_url_pdk', ''),
+  );
+
+  $form['live_player_url']['usanetwork_live_player_url_logLevel'] = array(
+    '#type' => 'textfield',
+    '#title' => t('logLevel'),
+    '#description' => t('Player URL Parameter &logLevel='),
+    '#default_value' => variable_get('usanetwork_live_player_url_logLevel', ''),
   );
 
   return system_settings_form($form);

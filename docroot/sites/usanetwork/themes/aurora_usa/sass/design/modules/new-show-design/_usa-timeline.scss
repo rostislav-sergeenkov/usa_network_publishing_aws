@@ -170,9 +170,6 @@
     .timeline-line {
       a.timeline-node {
         background: none;
-        //&:after {
-        //  border-color: #ffffff;
-        //}
         &.active {
           &:after {
             background: currentColor;
@@ -183,7 +180,6 @@
           font-family: $fira-sans-regular!important;
         }
       }
-
       h4.timeline-month {
         color: white;
       }

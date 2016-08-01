@@ -3,176 +3,156 @@
   color: $poll-color;
   background-color: $poll-back;
   .shows-filters {
-      text-align: right;
-      margin: 20px 20px 20px 0;
-      @include clear;
+    text-align: right;
+    margin: 20px 20px 20px 0;
+    @include clear;
+    @include breakpoint($bp-480-width) {
+      margin-right: 9px;
+    }
+    @include breakpoint($bp-320-width) {
+      text-align: left;
+      margin: 20px 10px 13px 10px;
+    }
+    .item-filter {
+      display: inline-block;
+      margin-right: 33px;
+      position: relative;
+      vertical-align: middle;
+      min-width: 235px;
+      @include breakpoint($bp-1280-width) {
+        min-width: 155px;
+        margin-right: 25px;
+      }
       @include breakpoint($bp-480-width) {
-        margin-right: 9px;
+        min-width: 122px;
+        margin-right: 5px;
       }
-      @include breakpoint($bp-320-width) {
-        text-align: left;
-        margin: 20px 10px 13px 10px;
+      &:last-child {
+        margin-right: 0;
+        @include breakpoint($bp-320-width) {
+          display: inline-block;
+          text-align: center;
+        }
       }
-      .item-filter {
-        display: inline-block;
-        margin-right: 33px;
-        position: relative;
-        vertical-align: middle;
-        min-width: 235px;
-        @include breakpoint($bp-1280-width) {
-          min-width: 155px;
-          margin-right: 25px;
-        }
-        @include breakpoint($bp-480-width) {
-          min-width: 122px;
-          margin-right: 5px;
-        }
-        &:last-child {
-          margin-right: 0;
-          @include breakpoint($bp-320-width) {
-            display: inline-block;
-            text-align: center;
-          }
-        }
-        &.open {
-          .filter-label {
-            border-color: transparent;
-            background: $footer-back;
-            &:after {
-              content: "\e60a";
-            }
-          }
-          .filter-menu {
-            display: block;
-          }
-        }
+      &.open {
         .filter-label {
-          border: 1px solid $gray-light-gamma;
-          border-bottom-width: 2px;
-          cursor: pointer;
-          font-size: 21px;
-          font-family: $avalon-medium;
-          line-height: 42px;
-          text-align: left;
-          overflow: hidden;
-          position: relative;
-          padding: 0 50px 0 20px;
-          color: $gray-dark-darker;
-          width: 235px;
-          text-overflow: ellipsis;
-          -o-text-overflow: ellipsis;
-          white-space: nowrap;
-          @include breakpoint($bp-1280-width) {
-            width: 155px;
-            font-size: 17px;
-            line-height: 27px;
-            border-bottom-width: 1px;
-          }
-          @include breakpoint($bp-480-width) {
-            width: 122px;
-            font-size: 12px;
-            line-height: 22px;
-          }
+          border-color: transparent;
+          background: $footer-back;
           &:after {
-            content: "\e609";
-            color: $poll-color;
-            font-family: $ico-font;
-            font-size: 16px;
-            display: block;
-            position: absolute;
-            margin-right: -8px;
-            right: 25px;
-            top: 0;
-            z-index: 3;
-            @include breakpoint($bp-1280-width) {
-              font-size: 12px;
-              right: 17px;
-            }
+            content: "\e60a";
           }
         }
         .filter-menu {
-          background: $footer-back;
-          top: 1px;
-          display: none;
-          margin-top: 40px;
-          max-height: 200px;
-          overflow-y: auto;
+          display: block;
+        }
+      }
+      .filter-label {
+        border: 1px solid $gray-light-gamma;
+        border-bottom-width: 2px;
+        cursor: pointer;
+        font-size: 21px;
+        font-family: $avalon-medium;
+        line-height: 42px;
+        text-align: left;
+        overflow: hidden;
+        position: relative;
+        padding: 0 50px 0 20px;
+        color: $gray-dark-darker;
+        width: 235px;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        white-space: nowrap;
+        @include breakpoint($bp-1280-width) {
+          width: 155px;
+          font-size: 17px;
+          line-height: 27px;
+          border-bottom-width: 1px;
+        }
+        @include breakpoint($bp-480-width) {
+          width: 122px;
+          font-size: 12px;
+          line-height: 22px;
+        }
+        &:after {
+          content: "\e609";
+          color: $poll-color;
+          font-family: $ico-font;
+          font-size: 16px;
+          display: block;
           position: absolute;
+          margin-right: -8px;
+          right: 25px;
+          top: 0;
+          z-index: 3;
+          @include breakpoint($bp-1280-width) {
+            font-size: 12px;
+            right: 17px;
+          }
+        }
+      }
+      .filter-menu {
+        background: $footer-back;
+        top: 1px;
+        display: none;
+        margin-top: 40px;
+        max-height: 200px;
+        overflow-y: auto;
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+        @include breakpoint($bp-1280-width){
+          margin-top: 29px;
+        }
+        @include breakpoint($bp-1280-width){
+          margin-top: 23px;
+        }
+        li {
+          overflow: hidden;
+          position: relative;
           width: 100%;
-          z-index: 2;
-          @include breakpoint($bp-1280-width){
-            margin-top: 29px;
-          }
-          @include breakpoint($bp-1280-width){
-            margin-top: 23px;
-          }
-          li {
-            overflow: hidden;
-            position: relative;
+          a {
+            color: #ffffff;
+            display: block;
+            font-size: 20px;
+            font-family: $avalon-medium;
+            height: 100%;
+            line-height: 25px;
+            text-align: left;
+            padding: 10px 20px;
+            text-decoration: none;
             width: 100%;
-            a {
-              color: #ffffff;
-              display: block;
-              font-size: 20px;
-              font-family: $avalon-medium;
-              height: 100%;
-              line-height: 25px;
-              text-align: left;
-              padding: 10px 20px;
-              text-decoration: none;
-              width: 100%;
-              &:hover, &.active {
-                color: $gray-dark-darker;
-              }
-              @include breakpoint($bp-1280-width){
-                font-size: 17px;
-                line-height: 20px;
-                padding: 5px 20px;
-              }
-              @include breakpoint($bp-480-width){
-                font-size: 12px;
-                line-height: 15px;
-              }
+            &:hover, &.active {
+              color: $gray-dark-darker;
+            }
+            @include breakpoint($bp-1280-width){
+              font-size: 17px;
+              line-height: 20px;
+              padding: 5px 20px;
+            }
+            @include breakpoint($bp-480-width){
+              font-size: 12px;
+              line-height: 15px;
             }
           }
         }
       }
-      .show-filter-reset {
-        min-width: 35px;
+    }
+    .show-filter-reset {
+      min-width: 35px;
+      a{
+      font-size: 14px;
+      color: $gray-semi-ultra-med;
+      text-decoration: underline;
+      font-style: italic;
+        @include breakpoint ($bp-768-width){
+          font-size: 12px;
+        }
+      }
+      @include breakpoint ($bp-480-width){
+        min-width: 27px;
         a{
-        font-size: 14px;
-        color: $gray-semi-ultra-med;
-        text-decoration: underline;
-        font-style: italic;
-          @include breakpoint ($bp-768-width){
-            font-size: 12px;
-          }
+          font-size: 10px;
         }
-        @include breakpoint ($bp-480-width){
-          min-width: 27px;
-          a{
-            font-size: 10px;
-          }
-        }
-      }
-    }
-
-
-  .ad-728x90 {
-    margin: 0 auto;
-    padding: 10px 0;
-    max-width: 728px;
-    a {
-      display: block;
-      max-height: 90px;
-    }
-    @include breakpoint($bp-768-width) {
-      height: 100%;
-      a {
-        height: auto;
-      }
-      img {
-        width: 100%;
       }
     }
   }
@@ -189,42 +169,56 @@
     display: block;
     width: auto;
     margin: 0 50px;
-    ul {
+    ul.slider {
+      box-sizing: border-box;
       vertical-align: middle;
       border-top: 1px solid #ffffff;
       @include clear;
-      width: 20000em;
+      overflow: hidden;
       position: relative;
       display: block;
       list-style: none;
       margin: 0;
       padding: 0;
+      height: 124px;
+      @include breakpoint($bp-1280-width) {
+        height: 83px;
+      }
+      @include breakpoint($bp-1024-width) {
+        height: 67px;
+      }
+      &:not(.slick-initialized) {
+        li {
+          width: calc(100% / 7);
+          @include breakpoint($bp-768-width) {
+            width: calc(100% / 5);
+          }
+          @include breakpoint($bp-320-width) {
+            width: calc(100%  / 3);
+          }
+        }
+      }
       li {
-        border-right: 1px solid $poll-back;
-        height: 123px;
+        //box-sizing: border-box;
         display: block;
         float: left;
-        width: calc((100vw - 100px) / 7);
-        @include breakpoint($bp-1280-width) {
-          height: 82px;
-        }
-        @include breakpoint($bp-1024-width) {
-          height: 66px;
-        }
+        height: 100%;
         &:first-child {
-          border-left: 1px solid $poll-back;
+          a {
+            border-left: 1px solid $poll-back;
+          }
         }
         @include breakpoint($bp-768-width) {
-          width: calc((100vw - 100px) / 5);
           &:first-child {
-            border-left: 0 solid #ffffff;
+            a {
+              border-left: 0 solid #ffffff;
+            }
           }
           &:last-child {
-            border-right: 0 solid #ffffff;
+            a {
+              border-right: 0 solid #ffffff;
+            }
           }
-        }
-        @include breakpoint($bp-320-width) {
-          width: calc((100vw - 100px) / 3);
         }
         &:hover, &.active {
           background-color: $gray-med-darker;
@@ -233,12 +227,20 @@
           }
         }
         a {
+          box-sizing: border-box;
+          border-right: 1px solid $poll-back;
           color: $header-tab-back;
           display: block;
-          height: 100%;
           padding-top: 13px;
           text-decoration: none;
           text-align: center;
+          height: 124px;
+          @include breakpoint($bp-1280-width) {
+            height: 83px;
+          }
+          @include breakpoint($bp-1024-width) {
+            height: 67px;
+          }
           span {
             display: block;
             &.week-day {
@@ -281,6 +283,7 @@
     }
   }
   .schedule-navigation-controls {
+    box-sizing: border-box;
     position: absolute;
     background-color: $gray-med-darker;
     top: 0;
@@ -307,12 +310,12 @@
       position: absolute;
       top: 50%;
     }
-    &.jcarousel-control-prev {
+    &.slide-prev {
       left: 0;
       border-right: 1px solid #ffffff;
       &:after {content: '\e607';}
     }
-    &.jcarousel-control-next {
+    &.slide-next {
       right: 0;
       border-left: 1px solid #ffffff;
       &:after {content: '\e608';}
@@ -336,48 +339,6 @@
     position: relative;
     padding: 0;
     border-bottom: 2px solid $usa-logo-back;
-    .carousel-vert {
-      overflow: hidden;
-      position: static;
-      margin: 0;
-      padding: 0;
-      max-height: 770px;
-    }
-    .jcarousel-control-next {
-      display: block;
-      height: 19px;
-      line-height: 19px;
-      margin-left: -9.5px;
-      overflow: hidden;
-      position: absolute;
-      left: 50%;
-      top: 0;
-      &:before {
-        content: "\e60a";
-        color: $poll-color;
-        font-family: $ico-font;
-        font-size: 32px;
-        display: block;
-      }
-    }
-    .jcarousel-control-prev {
-      display: block;
-      height: 19px;
-      line-height: 19px;
-      margin-left: -9.5px;
-      overflow: hidden;
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      text-decoration: none;
-      &:before {
-        content: "\e609";
-        color: $poll-color;
-        font-family: $ico-font;
-        font-size: 32px;
-        display: block;
-      }
-    }
     ul {
       width: 100%;
       li.date-separate {

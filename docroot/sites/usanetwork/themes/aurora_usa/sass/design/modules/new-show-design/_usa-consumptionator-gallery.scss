@@ -139,7 +139,6 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
 }
 
 .show-new-design.consumptionator-page, .show-new-design.node-type-media-gallery, .show-new-design.node-type-tv-episode, .show-new-design .gallery-recap-block, .show-new-design.node-type-consumpt-post, .show-new-design .node-media-gallery, .show-new-design.node-type-usanetwork-microsite {
-
   .gallery-block {
     @include clear();
     margin: 0;
@@ -224,10 +223,6 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 @include breakpoint($between-1025-1280) {
                   padding-left: 12px;
                 }
-                //.title {
-                //  font-size: 12px;
-                //  line-height: 15px;
-                //}
               }
             }
           }
@@ -324,7 +319,6 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
       }
     }
   }
-
   .gallery-wrapper {
     background: $gallery-description-back;
     float: left;
@@ -488,7 +482,6 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         display: block;
       }
     }
-
     .gallery-list {
       height: 100%;
       &.ready {
@@ -794,6 +787,11 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               top: 50%;
               width: auto;
               z-index: 125;
+              &.preview-portrait {
+                height: 48px;
+                max-width: 48px;
+                width: auto;
+              }
             }
           }
           &:focus {
@@ -826,7 +824,6 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         }
       }
     }
-
     // slide controls prev / next
     .slide-control {
       color: #ffffff;
@@ -1131,7 +1128,6 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
         }
-
         .gallery-list {
           &.ready {
             .slide {

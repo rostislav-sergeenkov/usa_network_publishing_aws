@@ -137,6 +137,7 @@ function usanetwork_microsite_royalpainsfarewell_get_theme_includes() {
   return array(
     'css' => array(
       $site_theme_path . '/css/fonts.css',
+      $default_theme_path . '/css/style_microsite.css',
       $default_theme_path . '/css/ms_styles.css',
       $default_theme_path . '/css/site_nav.css',
       $default_theme_path . '/css/counter.css',

@@ -79,11 +79,11 @@ function usanetwork_mpx_video_menu() {
     'file' => 'usanetwork_mpx_video.admin.inc',
   );
 
-  $items['v/%'] = array(
+  $items['video/share/%'] = array(
     'title' => 'Video Page',
     'description' => 'MPX Media GUID Redirect',
     'page callback' => '_usanetwork_mpx_media_guid_redirect',
-    'page arguments' => array(1),
+    'page arguments' => array(2),
     'access arguments' => array('access content'),
   );
 
@@ -3493,8 +3493,30 @@ function _usanetwork_mpx_media_guid_redirect($guid) {
     ->condition('import_account', rawurlencode(USA_MPX_TVE_ACCOUNT_NAME), 'LIKE')
     ->execute()
     ->fetchField();
-  $account =  _media_theplatform_mpx_get_account_data($tve_account_id);
-  $files = media_theplatform_mpx_get_files_by_guid($guid, $account);
-  $file = reset($files);
-  drupal_goto(url('file/' . $file->fid));
+  $account_tve =  _media_theplatform_mpx_get_account_data($tve_account_id);
+  $files = media_theplatform_mpx_get_files_by_guid($guid, $account_tve);
+  if (!empty($files)) {
+    $file_full = reset($files);
+    $full_video = _usanetwork_get_field_item('file', $file_full, 'field_mpx_full_episode', 'value');
+  }
+
+  if (empty($files) || $full_video == 0) {
+    $tve_account_id = db_select('mpx_accounts', 'ma')
+      ->fields('ma', array('id'))
+      ->condition('import_account', rawurlencode(USA_MPX_ACCOUNT_NAME), 'LIKE')
+      ->execute()
+      ->fetchField();
+    $account_mpx =  _media_theplatform_mpx_get_account_data($tve_account_id);
+    $files_short = media_theplatform_mpx_get_files_by_guid($guid, $account_mpx);
+    $file_short = reset($files_short);
+    $file = $file_short;
+  } else {
+    $file = $file_full;
+  }
+
+  if (isset($file)) {
+    drupal_goto(url('file/' . $file->fid));
+  } else {
+    drupal_goto(url('/'));
+  }
 }

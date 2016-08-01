@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix, #utilities, .lyris .pane-content, #showList .echo-item-footer, .usanetwork_social_global_show {
   zoom: 1;
 }
@@ -7091,10 +7091,6 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   background-image: url(../images/default-promo-icons/full-video-icon.png);
 }
 
-.movie-play-icon {
-  background-image: url(../images/default-promo-icons/full-video-icon.png);
-}
-
 .quiz-icon-default {
   background-image: url(../images/default-promo-icons/quiz-icon.png);
 }
@@ -9489,6 +9485,23 @@ header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-p
     height: 81px;
     margin-bottom: 9.3px;
     width: 81px;
+  }
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon {
+  border: 2px solid white;
+  border-radius: 50%;
+}
+header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before {
+  content: "\e627";
+  display: block;
+  font-family: "ico-font";
+  font-size: 2.36718vw;
+  line-height: 4.26092vw;
+}
+@media (min-width: 1901px) {
+  header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before {
+    font-size: 45px;
+    line-height: 81px;
   }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .title {
@@ -29270,53 +29283,6 @@ html[xmlns] .slides {
   float: left;
   width: 33.33333%;
 }
-@media (min-width: 769px) {
-  .ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
-    display: inline-block;
-    vertical-align: middle;
-    width: auto;
-  }
-}
-.ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
-  float: left;
-}
-.ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-  padding: 0 2.26563vw;
-}
-@media (min-width: 1601px) {
-  .ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-    padding: 0 36.25px;
-  }
-}
-@media (max-width: 1024px) {
-  .ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-    padding: 0 2.00195vw;
-  }
-}
-
-@media (min-width: 769px) {
-  .ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
-    display: inline-block;
-    vertical-align: middle;
-    width: auto;
-  }
-}
-.ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
-  float: left;
-}
-.ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-  padding: 0 2.26563vw;
-}
-@media (min-width: 1601px) {
-  .ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-    padding: 0 36.25px;
-  }
-}
-@media (max-width: 1024px) {
-  .ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-    padding: 0 2.00195vw;
-  }
-}
 
 .file-video-mpx.view-mode-inline_content iframe {
   width: 615px;
@@ -46087,22 +46053,13 @@ html.no-scroll, body.no-scroll {
 }
 @media (min-width: 769px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
   }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
   height: 100%;
-}
-@media (min-width: 769px) {
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
-    float: none;
-    flex-grow: 1;
-  }
 }
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
@@ -46127,7 +46084,7 @@ html.no-scroll, body.no-scroll {
   letter-spacing: 1.5px;
   line-height: calc(4.6875vw - 2px);
   outline: none;
-  padding: 0;
+  padding: 0 2.26563vw;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -46137,15 +46094,16 @@ html.no-scroll, body.no-scroll {
   -o-transition: all 0.2s linear 0;
   transition: all 0.2s linear 0;
 }
-@media (min-width: 769px) {
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-    white-space: nowrap;
-  }
-}
 @media (min-width: 1601px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
     font-size: 15.625px;
     line-height: 71px;
+    padding: 0 36.25px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    padding: 0 2.00195vw;
   }
 }
 @media (max-width: 768px) {
@@ -46165,6 +46123,30 @@ html.no-scroll, body.no-scroll {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a:not(.active) {
     color: white !important;
   }
+}
+@supports (display: flex) {
+  @media (min-width: 769px) {
+    .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+}
+  @media (min-width: 769px) {
+    .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
+      float: none;
+      flex-grow: 1;
+    }
+}
+  @media (min-width: 769px) {
+    .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+      white-space: nowrap;
+      padding: 0 !important;
+    }
+}
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab:after {
   display: none;

@@ -4,78 +4,96 @@
     border-bottom: 2px solid $usa-logo-back;
   }
 }
-body:not(.show-new-design) {
-  .content {
-    .all-shows-landing-page-container, .all-movies-landing-page-container {
-      background: $footer-promo-links;
-      padding-top: 77px;
+
+.content {
+  .all-shows-landing-page-container, .all-movies-landing-page-container {
+    background: $footer-promo-links;
+    padding-top: 77px;
+    @include breakpoint($bp-1280-width) {
+      padding-top: 55px;
+    }
+    @include breakpoint($bp-1024-width) {
+      padding-top: 42px;
+    }
+    .landing-items-blocks {
+      border-bottom: 2px solid $usa-logo-back;
+      margin-bottom: 0px;
+    }
+    .section-title {
+      margin-bottom: 50px;
       @include breakpoint($bp-1280-width) {
-        padding-top: 55px;
+        margin-bottom: 18px;
       }
-      @include breakpoint($bp-1280-width) {
-        padding-top: 42px;
-      }
-      .landing-items-blocks {
-        border-bottom: 2px solid $usa-logo-back;
-        margin-bottom: 0px;
-      }
-      .section-title {
-        margin-bottom: 50px;
-        @include breakpoint($bp-1280-width) {
-          margin-bottom: 18px;
+      .section-title-wrapper {
+        @include breakpoint($between-769-1024) {
+          max-width: calc(100% - 490px);
         }
-        .section-title-wrapper {
-          @include breakpoint($between-769-1024) {
-            max-width: calc(100% - 490px);
-          }
-          @include breakpoint($between-641-768) {
-            max-width: calc(100% - 346px);
-          }
-          @include breakpoint($bp-640-width) {
-            max-width: calc(100% - 163px);
-          }
-        }
-      }
-      .upper-menu {
-        background: none;
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding-right: 45px;
-        margin-top: 41px;
-        z-index: 1;
-        @include breakpoint($bp-1280-width) {
-          top: -6px;
-        }
-        @include breakpoint($bp-768-width) {
-          padding-right: 20px;
+        @include breakpoint($between-641-768) {
+          max-width: calc(100% - 346px);
         }
         @include breakpoint($bp-640-width) {
-          padding-right: 10px;
+          max-width: calc(100% - 163px);
         }
-        ~ .section-title {
-          @include breakpoint($bp-640-width) {
-            margin-bottom: 7px;
-            text-align: left;
-            padding-left: 22px;
+      }
+    }
+    .upper-menu {
+      background: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding-right: 45px;
+      margin-top: 41px;
+      z-index: 1;
+      @include breakpoint($bp-1280-width) {
+        top: -6px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding-right: 20px;
+      }
+      @include breakpoint($bp-640-width) {
+        padding-right: 10px;
+      }
+      ~ .section-title {
+        @include breakpoint($bp-640-width) {
+          margin-bottom: 7px;
+          text-align: left;
+          padding-left: 22px;
+        }
+      }
+      .item-filter {
+        &.sorter-items {
+          width: 212px;
+          @include breakpoint($bp-1280-width) {
+            margin-top: 0;
+            width: 180px;
           }
-        }
-        .item-filter {
-          &.sorter-items {
-            width: 212px;
+          @include breakpoint($bp-768-width) {
+            width: 133px;
+            margin: 0;
+          }
+          .filter-label {
+            width: inherit;
+            font-size: 21px;
+            padding-left: 35px;
+            color: $poll-color;
             @include breakpoint($bp-1280-width) {
-              margin-top: 0;
-              width: 180px;
+              font-size: 18px;
+              padding-left: 20px;
             }
             @include breakpoint($bp-768-width) {
-              width: 133px;
-              margin: 0;
+              font-size: 15px;
+              padding-left: 15px;
+              padding-right: 30px;
+              &:after {
+                font-size: 13px;
+                right: 20px;
+              }
             }
-            .filter-label {
-              width: inherit;
+          }
+          .filter-menu {
+            a {
               font-size: 21px;
               padding-left: 35px;
-              color: $poll-color;
               @include breakpoint($bp-1280-width) {
                 font-size: 18px;
                 padding-left: 20px;
@@ -83,25 +101,6 @@ body:not(.show-new-design) {
               @include breakpoint($bp-768-width) {
                 font-size: 15px;
                 padding-left: 15px;
-                padding-right: 30px;
-                &:after {
-                  font-size: 13px;
-                  right: 20px;
-                }
-              }
-            }
-            .filter-menu {
-              a {
-                font-size: 21px;
-                padding-left: 35px;
-                @include breakpoint($bp-1280-width) {
-                  font-size: 18px;
-                  padding-left: 20px;
-                }
-                @include breakpoint($bp-768-width) {
-                  font-size: 15px;
-                  padding-left: 15px;
-                }
               }
             }
           }
@@ -110,4 +109,5 @@ body:not(.show-new-design) {
     }
   }
 }
+
 

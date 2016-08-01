@@ -8,6 +8,37 @@ require_once 'usanetwork_core.api.inc';
 function usanetwork_core_js_alter(&$javascript) {
   $javascript['misc/ajax.js']['data'] = drupal_get_path('module', 'usanetwork_core') . '/js/ajax.js';
 }
+
+/**
+ * Implements hook_css_alter().
+ */
+function usanetwork_core_css_alter(&$css) {
+  $is_new_design = NULL;
+  $entity = menu_get_object();
+  $entity_type = 'node';
+  if (empty($entity)) {
+    $entity = menu_get_object('file');
+    $entity_type = 'file';
+  }
+  $theme_path = drupal_get_path('theme', 'aurora_usa');
+  $style_css_item = $css[$theme_path . '/stylesheets/style.css'];
+  if ($entity && $entity->type == 'usanetwork_microsite') {
+    unset($css[$theme_path . '/stylesheets/style.css']);
+    return;
+  }
+  if ($entity && $entity->type != 'usanetwork_aspot') {
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity($entity_type, $entity);
+  }
+  if (!empty($is_new_design)) {
+    if (isset($css[$theme_path . '/stylesheets/style.css'])) {
+      $new_design_css_path = $theme_path . '/stylesheets/style_new.css';
+      unset($css[$theme_path . '/stylesheets/style.css']);
+      $style_css_item['data'] = $new_design_css_path;
+      $css[$new_design_css_path] = $style_css_item;
+    }
+  }
+}
+
 /**
  * Implements hook_wysiwyg_editor_settings_alter()
  */

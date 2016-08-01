@@ -106,10 +106,6 @@
   font-size: 14px;
   white-space: normal;
 }
-#microsite .block-usanetwork-mpx-video .view .file h4:after,
-#block-views-usa-mpx-video-fullepisodes-live .view .file h4:after {
-  background-image: none;
-}
 #microsite .video-container.in-player {
   display: block;
 }
@@ -227,9 +223,19 @@
   right: auto;
   z-index: 105 !important;
 }
-#video-container .file-video-mpx {
+#video-container .file-video-mpx.view-mode-inline_content {
   line-height: 0;
+  height: auto;
+  padding-top: 56.25%;
   position: relative;
+  width: 100%;
+}
+#video-container .file-video-mpx.view-mode-inline_content iframe {
+  height: 100%!important;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 .video-auth-player-wrapper.featured-asset .video-player-wrapper {
   float: none;
@@ -244,12 +250,6 @@
   max-height: 551px;
   margin-right: 0;
   margin-bottom: 4px;
-}
-#microsite .file-video-mpx.view-mode-inline_content iframe,
-#microsite .featured-asset .video-player-wrapper iframe {
-  height: calc((80vw - 320px) * 0.5625);
-  max-height: 551px;
-  width: 100%;
 }
 body.video-fullscreen #microsite .file-video-mpx.view-mode-inline_content iframe,
 body.video-fullscreen #microsite .featured-asset .video-player-wrapper iframe {

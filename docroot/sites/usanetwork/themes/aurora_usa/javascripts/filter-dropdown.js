@@ -11,7 +11,6 @@
           $('.item-filter').removeClass('open');
           $(this).closest('.item-filter').addClass('open');
         }
-
       });
 
       // Select block item click

@@ -232,14 +232,7 @@ function usanetwork_menu_block_view($delta = '') {
 
     case 'usanetwork_menu_aspot_ot':
       $block['subject'] = '';
-      $block['content'] = array(
-        '#markup' => _usanetwork_menu_aspot_onnow_tonight_block(),
-        '#attached' => array(
-          'js' => array(
-            path_to_theme('aurora_usa') . '/javascripts/jquery.carouFredSel.min.js',
-          ),
-        ),
-      );
+      $block['content'] = _usanetwork_menu_aspot_onnow_tonight_block();
       break;
 
     case 'usanetwork_menu_consumptionator':

@@ -1,16 +1,3 @@
-.node-type-catchall-page {
-  .tiles {
-    @extend %movies-grid;
-  }
-}
-.upcoming-movie {
-  @extend %grid-item;
-  position: relative;
-  .meta {
-    @extend .promo-metadata;
-    white-space: nowrap;
-  }
-}
 .page-movies {
   #block-usanetwork-movie-usanetwork-movies-all-movies, #block-usanetwork-movie-usanetwork-movies-schedule {
     .landing-page-container {

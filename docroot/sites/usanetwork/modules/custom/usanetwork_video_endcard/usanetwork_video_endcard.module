@@ -4,6 +4,36 @@ define('USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT', 1);
 define('USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT', 10);
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_video_endcard_image_default_styles() {
+  $styles = array();
+
+  $styles['409x231'] = array(
+    'effects' => array(
+      array(
+        'name' => 'focal_point_scale_and_crop',
+        'data' => array(
+          'width' => 409,
+          'height' => 231,
+        ),
+        'weight' => 0,
+      ),
+      array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 409,
+          'height' => 231,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Returns related items for a file entity.
  */
 function _usanetwork_video_endcard_pick_related_items($file, $full_episode = false, $filter_category = true, $count) {

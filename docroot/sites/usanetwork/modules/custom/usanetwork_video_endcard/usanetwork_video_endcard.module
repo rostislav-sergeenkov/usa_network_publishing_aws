@@ -1,40 +1,7 @@
 <?php
 
-define('USANETWORK_VIDEO_ENDCARD_RELATED_COUNT', 3);
 define('USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT', 1);
 define('USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT', 10);
-
-/**
- * Implements hook_init().
- */
-function usanetwork_video_endcard_init() {
-  $file = menu_get_object('file');
-  if ($file) {
-    $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode' , 'value');
-    if ($full_episode == '0') {
-      drupal_add_js(drupal_get_path('module', 'usanetwork_video_endcard') . '/js/usanetwork_video_endcard.js', array(
-        'every_page' => true
-      ));
-    }
-  }
-}
-
-/**
- * Implements hook_menu().
- */
-function usanetwork_video_endcard_menu() {
-  $items = array();
-
-  $items['videos/endcard/ajax/related'] = array(
-    'title' => 'Related items',
-    'access callback' => true,
-    'page callback' => 'usanetwork_video_endcard_related_items',
-    'delivery callback' => 'drupal_json_output',
-    'type' => MENU_CALLBACK,
-  );
-
-  return $items;
-}
 
 /**
  * Implements hook_image_default_styles().
@@ -64,71 +31,6 @@ function usanetwork_video_endcard_image_default_styles() {
   );
 
   return $styles;
-}
-
-/**
- * Menu callback for related items.
- */
-function usanetwork_video_endcard_related_items() {
-  $items = array();
-
-  $guid = isset($_REQUEST['guid']) ? $_REQUEST['guid'] : false;
-  $player_url = isset($_GET['url']) ? $_GET['url'] : false;
-  if ($guid) {
-    $files = media_theplatform_mpx_get_files_by_guid($guid);
-    $file = false;
-    foreach ($files as $file_info) {
-      if ($file_info->published) {
-        $file = $file_info;
-        break;
-      }
-    }
-    if ($file && $file->status && $file->published) {
-      $file = entity_load_single('file', $file->fid);
-
-      // check if it's full episode
-      $full_episode = reset(field_get_items('file', $file, 'field_mpx_full_episode'));
-      if ($full_episode) {
-        $full_episode = ($full_episode['value'] == '1') ? true : false;
-      }
-
-      // check if it's video page or global page
-      $filter_category = true;
-      if ($player_url) {
-        $player_url = preg_replace('|https?:\/\/.*\/|Uis', '', $player_url);
-        $video_url = drupal_get_normal_path($player_url);
-        $video = menu_get_object('file', 1, $video_url);
-        if (!$video || !in_array($video->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
-          $filter_category = false;
-        }
-      }
-
-      $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_COUNT);
-      foreach ($related_files as $related_file) {
-        $overriden_image = NULL;
-        if (!empty($related_file->field_promo_image_override)) {
-          $overriden_image = field_get_items('file', $related_file, 'field_promo_image_override');
-          $overriden_image = reset($overriden_image);
-          $overriden_image = image_style_url('409x231', $overriden_image['uri']);
-        }
-        $uri = entity_uri('file', $related_file);
-        $item = array(
-          'guid' => $related_file->mpx_video_data['guid'],
-          'url' => url($uri['path'], array('absolute' => TRUE)),
-          'title' => $related_file->filename,
-          'media$thumbnails' => array(
-            array(
-              'plfile$url' => !empty($overriden_image) ? $overriden_image : $related_file->mpx_video_data['thumbnail_url'],
-            ),
-          ),
-        );
-
-        $items[] = $item;
-      }
-    }
-  }
-
-  return $items;
 }
 
 /**
@@ -219,6 +121,11 @@ function _usanetwork_video_endcard_pick_related_items($file, $full_episode = fal
           if (count($fids) < $count) {
             $items_left = $count - count($fids);
             $fids = array_merge($fids, array_slice($_fids, 0, ($items_left < $current ? $items_left : $current)));
+            // Case when one item is taken and it is full episode.
+            // It use for last episode of show.
+            if ($full_episode && $count == 1) {
+              return 'last_full';
+            }
           }
           $related_files = entity_load('file', $fids);
 
@@ -364,8 +271,15 @@ function usanetwork_get_endcard_variables($file) {
   }
   elseif ($full_episode) {
     $related_files = _usanetwork_video_endcard_pick_related_items($file, $full_episode, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_FULL_VIDEO_COUNT);
-    $related_clip_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT);
-    $related_files = array_merge($related_files, $related_clip_files);
+    if($related_files != 'last_full') {
+      $related_clip_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT);
+      $related_files = array_merge($related_files, $related_clip_files);
+    }
+    else {
+      $related_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, USANETWORK_VIDEO_ENDCARD_RELATED_CLIPS_COUNT + 1 );
+    }
+  } elseif (!$full_episode) {
+    $related_files = _usanetwork_video_endcard_pick_related_items($file, FALSE, $filter_category, 1);
   }
 
   foreach ($related_files as $related_file) {
@@ -410,3 +324,4 @@ function usanetwork_get_endcard_variables($file) {
   }
   return NULL;
 }
+

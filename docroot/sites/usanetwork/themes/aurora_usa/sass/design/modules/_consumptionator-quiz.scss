@@ -1,8 +1,4 @@
-.consumptionator-quiz-main-block {
-  @include clear();
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+.consumptionator-quiz-main-block, .page-videos-live {
   article.node-quiz {
     float: left;
     position: relative;
@@ -10,8 +6,6 @@
     background: #ffffff;
     color: #000000;
     padding: 0;
-    padding-bottom: 10000px;
-    margin-bottom: -10000px;
     overflow: hidden;
     @include breakpoint($between-1025-1280) {
       width: calc(100% - 320px);
@@ -116,6 +110,17 @@
         }
       }
     }
+  }
+
+}
+.consumptionator-quiz-main-block {
+  @include clear();
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  article.node-quiz {
+    padding-bottom: 10000px;
+    margin-bottom: -10000px;
   }
   .consum-sidebar {
     .items-block {

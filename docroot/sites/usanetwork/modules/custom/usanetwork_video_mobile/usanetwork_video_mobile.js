@@ -11,6 +11,7 @@
         $('#mobileVideoModalOverlay').click(function() {
           Drupal.behaviors.video_mobile.hideMobileVideoModal();
         });
+        $('#mobileVideoModalOverlay').show();
       }
       if ($('#mobileVideoModal').length == 0) {
         // create modal dialog
@@ -24,9 +25,8 @@
         $modal.find('.download-app-button').click(function(e) {
           Drupal.behaviors.video_mobile.hideMobileVideoModal();
         });
+        $('#mobileVideoModal').show();
       }
-      $('#mobileVideoModalOverlay').show();
-      $('#mobileVideoModal').show();
     },
 
     hideMobileVideoModal : function() {
@@ -35,13 +35,18 @@
     },
 
     iosRedirect: function() {
-      var usaDeepLinking = this;
 
-      var iframe = '<iframe ' +
-          'class="usa-app-detect" ' +
-          'style="display: none;" ' +
-          'src="' + this.settings.usa.deepLinking + '" />';
-      $('body', this.context).append(iframe);
+      window.location = this.settings.usa.deepLinking;
+      setTimeout(function() {
+        // Prevent from trying to load non-existing address.
+        window.stop();
+      }, 3000);
+
+      // var iframe = '<iframe ' +
+      //     'class="usa-app-detect" ' +
+      //     'style="display: none;" ' +
+      //     'src="' + this.settings.usa.deepLinking + '" />';
+      // $('body', this.context).append(iframe);
 
       return this;
     },
@@ -59,7 +64,7 @@
         return;
       }
       // check if user uses mobile device
-      if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
+      if (!$('body').hasClass('page-node-microsite') && (usa_deviceInfo.iOS || usa_deviceInfo.android)) {
         var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
         // show modal dialog
         Drupal.behaviors.video_mobile.showMobileVideoModal(os);

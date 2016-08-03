@@ -365,6 +365,12 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data, $show_title = NULL
         $schedule_item->nid = $show_nid;
         continue;
       }
+    } else {
+      $move_nid = _usanetwork_tv_schedule_get_nid_by_title($schedule_item->show_title, 'movie');
+      if (empty($move_nid)) {
+        $move_nid = _usanetwork_tv_schedule_get_nid_by_title($schedule_item->title, 'movie');
+      }
+      $schedule_item->mid = $move_nid;
     }
   }
 }
@@ -464,8 +470,8 @@ function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 0) {
       ->isNull('fdfml.field_mpx_language_value')
   );
   $query->condition('v.status', 1);
-  $query->orderBy('v.airdate', 'DESC');
-  $query->orderBy('field_episode_number.field_mpx_episode_number_value', 'DESC');
+  $query->orderBy('cast(season_field.field_mpx_season_number_value as unsigned)', 'DESC');
+  $query->orderBy('cast(field_episode_number.field_mpx_episode_number_value as unsigned)', 'DESC');
 
   if ($limit > 0) {
     $query->range(0, $limit);

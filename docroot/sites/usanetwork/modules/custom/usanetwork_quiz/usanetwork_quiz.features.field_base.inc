@@ -384,6 +384,28 @@ function usanetwork_quiz_field_default_field_bases() {
     'type' => 'range_integer',
   );
 
+  // Exported field_base: 'field_quiz_result_share_image'
+  $field_bases['field_quiz_result_share_image'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_quiz_result_share_image',
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'image',
+    'settings' => array(
+      'default_image' => 0,
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 0,
+    'type' => 'image',
+  );
+
   // Exported field_base: 'field_quiz_result_share_text'
   $field_bases['field_quiz_result_share_text'] = array(
     'active' => 1,

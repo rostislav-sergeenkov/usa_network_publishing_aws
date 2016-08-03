@@ -71,6 +71,7 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_includes() {
   return array(
     'css' => array(
       $default_theme_path . '/css/fonts.css',
+      $default_theme_path . '/css/style_microsite.css',
       $site_theme_path . '/css/ms_styles.css',
       $default_theme_path . '/css/ms_gigya_share.css',
       $default_theme_path . '/css/ms_videos.css',
@@ -82,7 +83,6 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_includes() {
       $default_theme_path . '/js/ms_gigya.js',
       $site_theme_path . '/js/ms_global.js',
       $default_theme_path . '/js/ms_videos.js',
-      $default_theme_path . '/js/ms_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
   );

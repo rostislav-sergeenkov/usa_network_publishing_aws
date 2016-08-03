@@ -219,6 +219,7 @@
     }
   }
 }
+
 .series-recap-block {
   @include clear();
   background: $poll-back;
@@ -237,22 +238,21 @@
     padding: 40px 12px;
   }
   .series-recap-video {
-    height: 54.13vw;
+    height: auto;
+    padding-top: 56.25%;
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1901-width) {
       height: 1014.75px;
       max-width: 1804px;
       margin: 0 auto;
-    }
-    @include breakpoint ($bp-1024-width) {
-      height: 53vw;
-    }
-    @include breakpoint ($bp-768-width) {
-      height: 52vw;
+      padding-top: 0;
     }
     iframe {
+      left: 0;
       height: 100%;
+      position: absolute;
+      top: 0;
       width: 100%;
     }
   }
@@ -389,3 +389,4 @@
     }
   }
 }
+

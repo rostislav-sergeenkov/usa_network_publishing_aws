@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for usanetwork_mpx_video_clips block.
+ * Template for usanetwork_live_right_rail block.
  */
 ?>
 <div class="items-block clips-block">

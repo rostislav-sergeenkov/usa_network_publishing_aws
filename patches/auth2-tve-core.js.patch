@@ -1,0 +1,33 @@
+Index: docroot/sites/usanetwork/libraries/tve/dist/tve-core.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- docroot/sites/usanetwork/libraries/tve/dist/tve-core.js	(date 1467642504000)
++++ docroot/sites/usanetwork/libraries/tve/dist/tve-core.js	(revision )
+@@ -1,5 +1,3 @@
+-
+-
+ //Source: ./bower-components/angular/angular.js
+ /**
+  * @license AngularJS v1.2.13
+@@ -25937,7 +25935,7 @@
+         };
+       }])
+ 
+-      .directive('modalWindow', ['$timeout', function($timeout) {
++      .directive('modalWindow', [function() {
+         return {
+           restrict: 'EA',
+           scope: {
+@@ -25950,9 +25948,7 @@
+             scope.windowClass = attrs.windowClass || '';
+ 
+             //trigger CSS transitions
+-            $timeout(function() {
+-              scope.animate = true;
++            scope.animate = true;
+-            });
+           }
+         };
+       }])

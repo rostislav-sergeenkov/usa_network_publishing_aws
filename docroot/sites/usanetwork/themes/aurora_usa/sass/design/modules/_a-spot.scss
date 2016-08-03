@@ -5,16 +5,13 @@
   overflow: hidden;
   min-height: 43vw;
   max-height: 43.75vw;
-  //  padding-bottom: 43.7%; /* ~16:7 */
   position: relative;
   will-change: transform, opacity;
   @include breakpoint($bp-min-2500-width) {
     min-height: 1090px;
     max-height: 1094px;
-    // padding-bottom: 1094px;
   }
   @include breakpoint($bp-640-width) {
-    // padding-bottom: 87.45%;
     min-height: 90vw;
     max-height: 90.625vw;
   }
@@ -34,7 +31,6 @@
     position: absolute;
     top: 0;
     will-change: transform, opacity;
-
     &.ready {
       -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
       -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
@@ -99,7 +95,6 @@
     }
     .wrp {
       background: #000000;
-      //      overflow: hidden;
     }
     .slide-content {
       overflow: hidden;
@@ -109,11 +104,9 @@
 }
 
 .usanetwork-aspot {
-
   .aspot-draggable-element {
     display: none;
   }
-
   .meta-wrap {
     position: static;
     .aspot-draggable-element {
@@ -140,7 +133,7 @@
     }
     .title_prefix {
       @include aspotFonts(1px, 8.08px, 11.28px);
-      @include aspotShowFonts(1px, 8.08px, 11.28px);
+      @include aspotShowFonts(1px, 8.08px, 11.28px, false);
     }
     .title {
       color: #ffffff;
@@ -158,7 +151,7 @@
         font-size: 10.4vw;
       }
       @include aspotFonts(4px, 52.8px, 42.56px);
-      @include aspotShowFonts(4px, 52.8px, 42.56px);
+      @include aspotShowFonts(4px, 52.8px, 42.56px, false);
       p {
         margin: 0;
         text-shadow: 1px 1px 0.5em $aspot-shadow;
@@ -180,52 +173,10 @@
         font-size: 3.125vw;
       }
       @include aspotFonts(1.5px, 15px, 11px);
-      @include aspotShowFonts(1.5px, 15px, 11px);
+      @include aspotShowFonts(1.5px, 15px, 11px, false);
       p {
         margin: 0;
         text-shadow: 1px 1px 0.5em $aspot-shadow;
-      }
-    }
-    .show-timer {
-      color: #ffffff;
-      font-family: $avalon-medium;
-      font-size: 35px;
-      margin-bottom: 70px;
-      @include breakpoint($bp-min-1601-width) {
-        font-size: 60px;
-      }
-      @include breakpoint($bp-1024-width) {
-        margin-bottom: 50px;
-      }
-      @include breakpoint($bp-640-width) {
-        margin-bottom: 35px;
-        font-size: 25px;
-      }
-      .digit {
-        float: left;
-        text-align: center;
-        width: 40px;
-        @include breakpoint($bp-min-1601-width) {
-          width: 60px;
-        }
-        @include breakpoint($bp-640-width) {
-          width: 30px;
-        }
-      }
-      .digit-separator {
-        float: left;
-        font-size: 30px;
-        line-height: 30px;
-        padding: 0 5px;
-        @include breakpoint($bp-min-1601-width) {
-          font-size: 45px;
-          line-height: 45px;
-        }
-        @include breakpoint($bp-640-width) {
-          font-size: 22px;
-          line-height: 22px;
-          padding: 0 3px;
-        }
       }
     }
     .cta-link {
@@ -233,6 +184,7 @@
       &:not(.cta_button_0) {
         a {
           background: none !important;
+          text-shadow: 1px 1px 0.5em $aspot-shadow;
         }
       }
       &.cta_button_0 {
@@ -457,7 +409,7 @@
 .aspot-and-episodes {
   @include clear();
   overflow: hidden;
-  height: 43.75vw;
+  height: 42.8vw;
   position: relative;
   width: 100%;
   @include breakpoint($bp-min-2500-width) {
@@ -488,6 +440,10 @@
     @include breakpoint($bp-640-width) {
       float: none;
       height: 87.5vw;
+      width: 100%;
+    }
+    #aspot-usanetwork {
+      height: 100%;
       width: 100%;
     }
     #ajax_aspot_show {
@@ -894,40 +850,6 @@
             }
             &:after {
               border-bottom: 15px solid #ffffff;
-            }
-          }
-        }
-      }
-    }
-  }
-  .new-show-page {
-    .aspot-and-episodes {
-      .usanetwork-aspot {
-        .meta-wrap {
-          .new-episode {
-            font-style: normal;
-            @include breakpoint($bp-min-1281-width) {
-              font-size: 24px;
-              line-height: 30px;
-            }
-            span {
-              font-style: italic;
-            }
-          }
-          .show-title {
-            @include breakpoint($bp-min-1281-width) {
-              font-size: 70px;
-              margin-bottom: 40px;
-            }
-          }
-          .cta-link {
-            max-width: 175px;
-            @include breakpoint($bp-min-1281-width) {
-              max-width: 280px;
-              & a {
-                font-size: 24px;
-                line-height: 30px;
-              }
             }
           }
         }

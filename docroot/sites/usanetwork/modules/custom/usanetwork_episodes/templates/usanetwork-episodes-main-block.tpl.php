@@ -14,22 +14,34 @@
 */
 ?>
 <div class="consumptionator-episode-main-block ">
-  <div class="episode-info-main-block right-rail-line">
+  <div class="episode-info-main-block right-rail-line<?php print (empty($image_desktop))? ' no-cover-image' : ''; ?>">
     <div class="episode-info-block show-border">
       <div class="episode-info-header">
         <div class="episode-title-block">
-          <div class="episode-title">
-            <?php print $episode_title; ?>
-          </div>
-          <div class="additional">
-            <?php print '<span class="episode">'.t('S').$season_number.t(' episode ').$episode_number.'</span><span class="aired">'.t(' Aired on ').'</span>'.$air_date_text; ?>
-          </div>
+          <?php if($new_design): ?>
+            <div class="episode"><?php print '<h1 class="episode-inner">'.t('S').$season_number.t(' episode ').$episode_number.'</h1>'; ?></div>
+            <div class="episode-title"><h2 class="episode-title-inner"><?php print $episode_title; ?></h2></div>
+            <div class="additional"><?php print '<span class="aired">'.t(' Aired on ').'</span>'.$air_date_text; ?></div>
+          <?php else: ?>
+            <div class="episode-title"><?php print $episode_title; ?></div>
+            <div class="additional"><?php print '<span class="episode">'.t('S').$season_number.t(' episode ').$episode_number.'</span><span class="aired">'.t(' Aired on ').'</span>'.$air_date_text; ?></div>
+          <?php endif; ?>
         </div>
         <div class="share">
           <?php print $sharebar; ?>
           <?php if (!empty($episode_video_link)): ?>
-            <div class="episode-button show-color">
-              <a href="<?php print $episode_video_link; ?>"><?php print t('Watch the episode'); ?></a>
+            <div class="episode-button <?php print ($new_design)? 'show-border': 'show-color'; ?>">
+              <a href="<?php print $episode_video_link; ?>"><?php print t('Watch the episode'); ?>
+                <?php if($new_design): ?>
+                  <span class="show-color show-font"></span>
+                <?php endif; ?>
+              </a>
+            </div>
+          <?php elseif (!empty($new_design)): ?>
+            <div class="episode-button <?php print ($new_design)? 'show-border': 'show-color'; ?>">
+              <a href="<?php print $where2watch_link; ?>"><?php print t('Where to watch'); ?>
+                <span class="show-color show-font"></span>
+              </a>
             </div>
           <?php endif; ?>
         </div>

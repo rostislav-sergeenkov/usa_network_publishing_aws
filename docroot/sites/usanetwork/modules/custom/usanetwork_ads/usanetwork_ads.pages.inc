@@ -279,9 +279,14 @@ function _usanetwork_ads_replace_tokens($value, $entity, $entity_type) {
     if ($entity->type == "consumpt_post") {
       if (strpos($value, USANETWORK_ADS_POST_SHOW_NAME) !== FALSE) {
         $show_field = _usanetwork_get_field_item($entity_type, $entity, 'field_show', 'target_id');
-        $show = node_load($show_field);
+        if (!empty($show_field)) {
+          $show = node_load($show_field);
+          $show_title = $show->title;
+        } else {
+          $show_title = 'News';
+        }
         $search = array(USANETWORK_ADS_POST_SHOW_NAME, USANETWORK_ADS_POST_TITLE);
-        $replace = array($show->title, $entity->title);
+        $replace = array($show_title, $entity->title);
         $value = str_replace($search, $replace, $value);
       }
     }

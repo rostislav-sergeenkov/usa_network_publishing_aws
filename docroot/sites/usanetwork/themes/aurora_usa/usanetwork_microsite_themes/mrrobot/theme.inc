@@ -221,6 +221,7 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
     'css' => array(
       $module_path . '/css/jquery.bxslider.css',
       $site_theme_path . '/css/fonts.css',
+      $default_theme_path . '/css/style_microsite.css',
       $default_theme_path . '/css/ms_styles.css',
       $default_theme_path . '/css/site_nav.css',
       $site_theme_path . '/css/ms_gigya_share.css',
@@ -250,7 +251,6 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
       $site_theme_path . '/js/ms_galleries_bxslider.js',
       $default_theme_path . '/js/date.js',
       $site_theme_path . '/js/counter.js',
-      $default_theme_path . '/js/ms_video_endcard.js',
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.js',
     ),
   );

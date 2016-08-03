@@ -8,8 +8,8 @@
   </div>
 </div>
 <div class="items-block episodes-block">
-  <div class="items-block-title episodes-block-title">
-    <h2><?php print t('Season ').$season_number.t(' episode guides')?></h2>
+  <div class="items-block-title episodes-block-title<?php print !empty($new_design) ? ' show-color show-font' : ''; ?>">
+    <h2><?php print t('Season ') . $season_number ; ?><?php if (!empty($new_design)) : print t(' recaps'); else :  print t(' episode guides'); endif; ?></h2>
   </div>
   <?php if (!empty($episodes['vertical'])): ?>
     <div class="episodes-list-slider vertical">
@@ -34,6 +34,6 @@
     </div>
   <?php endif; ?>
 </div>
-<div class="more-items more-episodes show-color">
-  <a href="<?php print $all_episodes_link; ?>"><?php print t('View All episodes'); ?></a>
+<div class="more-items more-episodes <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
+  <a href="<?php print $all_episodes_link; ?>"><?php print t('View All episodes'); ?><?php if (!empty($new_design)): ?><span class="show-color show-font"></span><?php endif; ?></a>
 </div>

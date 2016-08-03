@@ -14,7 +14,10 @@ footer {
       padding: 9.3px 0;
     }
     form {
-       > div {
+      .close-form {
+        display: none;
+      }
+      > div {
         margin: 0 auto;
         max-width: 1250px;
         width: 100%;
@@ -168,7 +171,7 @@ footer {
       padding: 37.1px 83.475px;
     }
     ul {
-      max-width: calc(100% - 7.9vw);
+      max-width: calc(100% - #{get-vw(150px, 1901)});
       @include breakpoint($bp-min-1901-width) {
         max-width: calc(100% - 150px);
       }
@@ -210,7 +213,11 @@ footer {
         @include breakpoint($bp-768-width) {
           font-size: 8.3px;
         }
+        &:active {
+          color: $footer-links;
+        }
         &:hover {
+          color: $footer-links;
           text-decoration: underline;
         }
         img {
@@ -229,7 +236,7 @@ footer {
       color: $footer-links;
       float: none;
       font-size: get-vw(11px, 1025);
-      max-width: calc(100% - 7.9vw);
+      max-width: calc(100% - #{get-vw(150px, 1901)});
       padding-top: get-vw(4px, 1025);
       text-transform: uppercase;
       @include breakpoint($bp-min-1901-width) {
@@ -352,11 +359,15 @@ footer {
         @include breakpoint($bp-1024-width) {
           font-size: 10.5px;
         }
-        span {
-          color: $footer-new-show;
+        &:active {
+          color: $footer-links;
         }
         &:hover {
+          color: $footer-links;
           text-decoration: underline;
+        }
+        span {
+          color: $footer-new-show;
         }
       }
     }

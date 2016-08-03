@@ -2,31 +2,64 @@
 
   var counter = 0;
 
-  $(document).ready(function () {
-    if (!ng) {
-      return;
-    }
+  // functionality for cpc live player
+  ng.module('tve.auth.directives')
+      .directive('usaPlayerIsLive', [
+        '$rootScope',
+        'authService', '$cookies', '$timeout',
+        function ($rootScope, authService, $cookies, $timeout) {
+
+          'use strict';
+
+          return {
+            scope: true,
+            compile: function (element, attrs, transclude) {
+              return function (scope, $element, attr) {
+
+                // var tveAnalytics = tve.analytics ? tve.analytics : {authzTrack: ng.noop},
+                var user = {
+                  isAuthenticated: authService.isAuthenticated() // check status
+                },
+                  pdk = attr['pdk'],
+                  logLevel = attr['loglevel'];
 
 
-    var $injector = ng.element(document).injector();
+                // create global scope obj
+                $rootScope.user = user;
+                $rootScope.playerThumbnail = true;
+                $rootScope.removePlayerThumbnail = false;
 
-    $injector.invoke(['$cookies', 'tveConfig', 'tveModal', 'authService', function ($cookies, tveConfig, tveModal, authService) {
+                // Open login modal window on thumbnail click
+                //referencing openLoginModal function to the current scope
+                $rootScope.openLoginWindow = authService.openLoginModal;
 
-      if ($cookies['nbcu_ap_loginpending']) {
-        authService.promise.then(function () {
-          initLivePlayer($cookies);
-        });
-      }
+                authService.promise.then(function (status) {
 
-      if (authService.isAuthN()) {
-        initLivePlayer($cookies);
-      }
+                  // check Authenticated and delete thumbnail if Authenticated = true
+                  user.isAuthenticated = status.isAuthenticated;
 
-    }]);
+                  if (scope.isAuthenticated) {
 
-  });
+                    $rootScope.playerThumbnail = false;
+                    $timeout(function () {
+                      $rootScope.removePlayerThumbnail = true;
+                    }, 500);
+                    // tveAnalytics.authzTrack(true, {
+                    //   mvpd_id: status.mvpdId
+                    // });
+                    initLivePlayer($cookies, {
+                      pdk: pdk,
+                      logLevel: logLevel
+                    });
+                  }
+                });
+              };
+            }
+          };
+        }
+      ]);
 
-  function initLivePlayer($cookies) {
+  function initLivePlayer($cookies, customParams) {
 
     if ($cookies.nbcu_user_settings) {
       var nbcu_user_settings = JSON.parse($cookies.nbcu_user_settings),
@@ -42,6 +75,12 @@
     var parameters = new NBCUniCPC.PlayerParameters();
     parameters.autoPlay = true;
     parameters.mvpdId = mvpdId || '';
+    if (customParams.pdk !== undefined) {
+      parameters.autoPlay += '&pdk=' + customParams.pdk;
+    }
+    if (customParams.logLevel !== undefined) {
+      parameters.autoPlay += '&logLevel=' + customParams.logLevel;
+    }
 
     $cpc = NBCUniCPC.load("videoplayer", NBCUniCPC.Account.USA, contentInitObj, parameters);
     $cpc.addEventListener(NBCUniCPC.Event.INSTREAM_DATA, onInStreamData);
@@ -89,6 +128,7 @@
       // send ajax
       Drupal.behaviors.usanetwork_menu_live_video_header.init();
       Drupal.behaviors.usanetwork_video_live.right_rail();
+      Drupal.behaviors.usanetwork_video_live.right_rail_promo();
       Drupal.behaviors.usanetwork_video_live.related_content();
 
       $.ajax({

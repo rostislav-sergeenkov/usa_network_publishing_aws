@@ -39,10 +39,10 @@
   }
   &.sticky-sidebar {
     @include breakpoint($bp-min-1025-width) {
-      height: calc(100vh - 7.12195vw)!important;
+      height: calc(100vh - #{get-vw(135px, 1901)})!important;
       position: fixed!important;
       right: 0;
-      top: get-vw(73px, 1025)!important;
+      top: get-vw(135px, 1901)!important;
       .advert {
         height: 250px;
         padding: 0;
@@ -69,7 +69,7 @@
       }
     }
     @include breakpoint($bp-min-2500-width) {
-      left: calc(1867.5px + (100% - 2500px)/2);
+      left: calc(1867.5px + (100% - 2500px)/2)!important;
       right: auto;
       width: 628px;
     }
@@ -87,8 +87,12 @@
   .advert {
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
-      height: 23.4vw;
-      padding: calc((23.4vw - 250px)/2) 0;
+      height: get-vw(585px, 2500);
+      padding: calc((#{get-vw(585px, 2500)} - 250px)/2) 0;
+    }
+    @include breakpoint($bp-min-2500-width) {
+      height: 585px;
+      padding: 167.5px 0;
     }
     @include breakpoint($between-1025-1280) {
       height: 250px;
@@ -116,7 +120,10 @@
     position: relative;
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
-      height: calc(100% - 23.4vw);
+      height: calc(100% - #{get-vw(585px, 2500)});
+    }
+    @include breakpoint($bp-min-2500-width) {
+      height: calc(100% - 585px);
     }
     @include breakpoint($between-1025-1280) {
       height: auto;
@@ -126,7 +133,7 @@
       width: 100%;
     }
     @include breakpoint($bp-1024-width) {
-      height: calc(100% - 23.4vw);
+      height: calc(100% - #{get-vw(585px, 2500)});
     }
   }
   .items-block-title {
@@ -203,7 +210,7 @@
           height: calc(100% - 70px);
         }
       }
-      ul, .bx-viewport, .bx-wrapper {
+      ul {
         height: 100%!important;
       }
       li {
@@ -402,56 +409,6 @@
           }
         }
       }
-      .bx-controls-direction {
-        a {
-          display: block;
-          position: absolute;
-          width: 60px;
-          top: 0;
-          height: 100%;
-          z-index: 9;
-          background: rgba(255, 255, 255, .6);
-          @include breakpoint($bp-1024-width) {
-            width: 40px;
-          }
-          @include breakpoint($bp-480-width){
-            display: none;
-          }
-          &:after {
-            color: $poll-color;
-            display: block;
-            font-family: $ico-font;
-            font-size: 32px;
-            left: 50%;
-            margin-left: -16px;
-            margin-top: -16px;
-            opacity: 1;
-            position: absolute;
-            top: 50%;
-          }
-          &:hover {
-            background: rgba(255, 255, 255, .8);
-          }
-          &.bx-prev {
-            left: 0;
-            &:after {
-              content: "\e607";
-            }
-          }
-          &.bx-next {
-            right: 0;
-            &:after {
-              content: "\e608";
-            }
-          }
-          &.disabled {
-            width: 0;
-            &:after {
-              opacity: 0;
-            }
-          }
-        }
-      }
     }
   }
   .more-items {
@@ -532,6 +489,9 @@
       @include breakpoint($bp-480-width) {
         line-height: 60px;
       }
+      &:hover, &:active {
+        color: white;
+      }
       &:after {
         color: #ffffff;
         content: "\e608";
@@ -575,6 +535,41 @@
     }
     @include breakpoint($bp-640-width) {
       height: 56vw;
+    }
+    &.promo-enable {
+      .download-app-wrapper {
+        display: none;
+      }
+    }
+    .live-promo {
+      display: table;
+      height: 100%;
+      width: 100%;
+      .live-promo-wrapper {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        img {
+          @include breakpoint($bp-768-width) {
+            max-width: 100vw;
+          }
+          @include breakpoint($between-769-1024) {
+            max-width: calc(100vw - 340px);
+          }
+          @include breakpoint($between-1025-1280) {
+            max-height: calc(((100vw - 320px)*0.5625) - 250px);
+            max-width: 320px;
+          }
+          @include breakpoint($bp-min-1281-width) {
+            max-height: calc(42.01875vw - 250px);
+            max-width: 25vw;
+          }
+          @include breakpoint($bp-min-2500-width) {
+            max-height: calc(1093.75px - 250px);
+            max-width: 632px;
+          }
+        }
+      }
     }
     .download-app-wrapper {
       display: table-cell;
@@ -760,7 +755,7 @@
     }
   }
 }
-#block-usanetwork-media-gallery-usa-gallery-consumptionator-main, .consumptionator-video-page .video-block {
+#block-usanetwork-media-gallery-usa-gallery-consumptionator-main {
   .consum-sidebar {
     .more-items {
       @include breakpoint($between-1025-1280) {
@@ -796,7 +791,7 @@
     header {
       &.sign-in {
         @include breakpoint($between-769-1024) {
-          height: calc(7.10153vw + 35px);
+          height: calc(#{get-vw(135px, 1901)} + 35px);
         }
         ~ .usa-wrap {
           @include breakpoint($between-769-1024) {
@@ -806,43 +801,19 @@
       }
     }
   }
-  .video-block {
-    .consum-sidebar {
-      .advert {
-        display: none;
+  &:not(.page-full-video) {
+    #topbanner {
+      @include breakpoint($bp-min-641-width) {
+        margin: 0 auto 10px;
+        top: 5px;
       }
-      .items-block {
-        @include breakpoint($bp-min-1281-width) {
-          bottom: 40px;
-          height: calc(100% - 85px);
-          position: absolute;
-        }
-        @include breakpoint($bp-min-1901-width) {
-          bottom: 70px;
-          height: calc(100% - 140px);
-        }
-      }
-      .download-app {
-        @include breakpoint($between-1025-1280) {
-          bottom: 0;
-          height: 290px;
-          position: absolute;
-          right: 0;
-          width: 320px;
-        }
-        @include breakpoint($bp-1024-width) {
-          width: 100%;
-        }
-      }
-      .episodes-list-slider.vertical {
-        height: calc(100% - 45px);
-        @include breakpoint($bp-min-1901-width) {
-          height: calc(100% - 70px);
-        }
-      }
+    }
+    .companionContainer {
+      margin: 0 auto;
     }
   }
 }
+
 .consumptionator-characters-main-block, .consumptionator-episode-main-block, .consumptionator-quiz-main-block, .consumptionator-post-main-block {
   .consum-sidebar {
     @include breakpoint($between-1025-1280) {
@@ -1023,6 +994,8 @@
   }
 }
 
+
+
 .related-content-block {
   @include clear();
   background: #000000;
@@ -1169,5 +1142,24 @@
   }
   .advert, .ad-728x90 {
     position: relative;
+  }
+}
+
+.gallery-recap-block {
+  background: $consup-gallery-bg;
+  padding: 40px 35px 104px;
+  @include breakpoint($bp-min-1901-width) {
+    padding: 40px 55px 104px;
+  }
+  @include breakpoint($bp-1280-width) {
+    border-bottom: 2px solid;
+    padding: 30px 25px 90px;
+  }
+  @include breakpoint($bp-1024-width) {
+    padding: 40px 24px 90px;
+  }
+  @include breakpoint($bp-640-width) {
+    border-bottom: 12px solid;
+    padding: 40px 0 75px;
   }
 }

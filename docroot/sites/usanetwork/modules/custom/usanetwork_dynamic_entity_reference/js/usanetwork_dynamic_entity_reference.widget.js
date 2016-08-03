@@ -11,6 +11,7 @@
     attach: function (context) {
       var $context = $(context);
       var $selects = $context.find('select.dynamic-entity-reference-entity-type').once('dynamic-entity-reference');
+      var originalPath;
       if ($selects.length) {
         $selects.change(function() {
           var $select = $(this);
@@ -33,6 +34,26 @@
         });
         $selects.change();
       }
+      $('.dynamic-entity-reference-is-all-shows').change(function() {
+        var $checkbox = $(this);
+        var $autocomplete = $checkbox.parents('.container-inline').find('.form-autocomplete');
+        var $proxy = $('#' + $autocomplete.attr('id') + '-autocomplete');
+        var basePathParts;
+        if(this.checked) {
+          originalPath = $proxy.val();
+          basePathParts = originalPath.split('/');
+          if ($.isNumeric(basePathParts[8])) {
+            basePathParts[8] = 'none';
+          }
+          var newPath = basePathParts.join('/');
+          $proxy.val(newPath).removeClass('autocomplete-processed');
+        }
+        else {
+          $proxy.val(originalPath).removeClass('autocomplete-processed');
+        }
+        $autocomplete.unbind('keydown').unbind('keyup').unbind('blur');
+        Drupal.behaviors.autocomplete.attach($checkbox.parents());
+      });
     }
   };
 

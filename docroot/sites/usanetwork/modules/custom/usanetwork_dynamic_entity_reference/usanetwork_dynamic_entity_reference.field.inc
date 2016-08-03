@@ -97,8 +97,10 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
     case 'usanetwork_dynamic_entity_reference_default':
 
       if ($element['#entity_type'] == 'field_collection_item') {
-        $entity = $element['#entity']->hostEntity();
-        $entity_type = $element['#entity']->hostEntityType();
+        if (!empty($element['#entity'])) {
+          $entity = $element['#entity']->hostEntity();
+          $entity_type = $element['#entity']->hostEntityType();
+        }
       }
       else {
         $entity = $element['#entity'];
@@ -168,6 +170,15 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
         ),
       );
 
+      $all_shows_checkbox = array(
+        '#type' => 'checkbox',
+        '#title' => 'Search across all shows',
+        '#weight' => 100,
+        '#attributes' => array(
+          'class' => array('dynamic-entity-reference-is-all-shows'),
+        ),
+      );
+
       return array(
         '#prefix' => !empty($label_text) ? '<label>'. $label_text . '</label>' . PHP_EOL : '',
         '#type' => 'container',
@@ -176,6 +187,7 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
         ),
         'target_type' => $entity_type,
         'target_id' => $element,
+        'is_all_show' => $all_shows_checkbox,
         '#attached' => array(
           'js' => array(
             drupal_get_path('module', 'usanetwork_dynamic_entity_reference') . '/js/usanetwork_dynamic_entity_reference.widget.js' => array(

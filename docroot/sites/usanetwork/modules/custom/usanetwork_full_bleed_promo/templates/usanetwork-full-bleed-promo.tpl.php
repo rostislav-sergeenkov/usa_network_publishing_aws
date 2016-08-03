@@ -4,8 +4,7 @@
  */
 ?>
 
-
-<div id="full-bleed-promo" class="show-border <?php print !empty($desktop_url) || !empty($mobile_url) ? 'full-bleed-enable' : ''; ?>">
+<div id="full-bleed-promo" class="show-border <?php print !empty($desktop_url) || !empty($mobile_url) ? 'full-bleed-enable' : ''; ?>"<?php !empty($background) ? print ' style="background-color:' . $background . '"' : ''; ?>>
   <?php if (!empty($desktop_url) || !empty($mobile_url)): ?>
     <div class="full-bleed-wrapper">
       <div class="block-advert">

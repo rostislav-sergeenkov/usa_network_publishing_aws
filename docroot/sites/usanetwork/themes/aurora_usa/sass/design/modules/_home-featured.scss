@@ -11,7 +11,7 @@
       &.start {
         margin-left: 0;
       }
-      .jcarousel-controls {
+      .usa-carousel-controls {
         display: none;
       }
     }
@@ -20,7 +20,7 @@
         margin-left: 260px;
         overflow: hidden;
         &:hover {
-          .jcarousel-control-next {
+          .usa-carousel-control-next {
             right: 220px;
           }
         }
@@ -31,7 +31,7 @@
         margin-left: 240px;
         overflow: hidden;
         &:hover {
-          .jcarousel-control-next {
+          .usa-carousel-control-next {
             right: 180px;
           }
         }
@@ -41,7 +41,7 @@
       &.start {
         margin-left: 460px;
         &:hover {
-          .jcarousel-control-next {
+          .usa-carousel-control-next {
             right: 400px;
           }
         }
@@ -49,9 +49,21 @@
     }
     ul {
       position: relative;
-      li {
+      @include breakpoint($bp-768-width) {
+        display: block;
+      }
+      li.description-item {
         height: 556px;
-        margin: 0px 17px 0px 0px;
+        @include breakpoint($bp-min-1601-width) {
+          height: 628px;
+        }
+        @include breakpoint($bp-768-width) {
+          height: auto;
+        }
+      }
+      li:not(.description-item) {
+        height: 556px;
+        margin: 0 17px 0 0;
         position: relative;
         width: 476px;
         @include breakpoint($bp-min-1601-width) {
@@ -170,14 +182,11 @@
     }
   }
   .carousel-description-item {
-    left: -300px;
+    //left: -300px;
     width: 300px;
     @include breakpoint($bp-min-1601-width) {
-      left: -520px;
+      //left: -520px;
       width: 520px;
-    }
-    &.start {
-      left: 0px;
     }
     .description-wrapper {
       float: left;
@@ -231,19 +240,16 @@
     }
     .carousel-description-item {
       height: auto;
-      left: 0px;
+      left: 0;
       position: relative;
       top: 0;
       width: 100%;
-      &.start {
-        left: 0px;
-      }
       .description-wrapper {
         display: block;
         float: none;
         height: auto;
         margin-right: 0;
-        padding: 0px 0px 0px get-vw(20px, 768);
+        padding: 0 0 0 get-vw(20px, 768);
         width: 100%;
       }
       .description-block {
@@ -280,7 +286,7 @@
   }
   @include breakpoint($bp-480-width) {
     &.carousel-block {
-      padding: 37.5px 0px 0px;
+      padding: 37.5px 0 0;
     }
     .carousel {
       margin-top: 34.375px;

@@ -268,6 +268,9 @@
       @include breakpoint($bp-1600-width) {
         padding-left: 25px;
       }
+      @include breakpoint($bp-480-width) {
+        padding-left: 0;
+      }
       position: relative;
       &:nth-child(2n-1) {
         background: $footer-links;

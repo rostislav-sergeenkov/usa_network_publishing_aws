@@ -12,7 +12,7 @@ var desktop_show_open_width_large = 2164;
 var show_title_offset_desktop = 200;
 var show_title_offset_tablet = 160;
 //var show_title_offset = (window.innerWidth < window_size_tablet)? 160: 200;
-var right_rail_min_height_livepage = 490;
+var right_rail_min_height = 490;
 // New breakpoint vars for window.matchMedia
 // window.matchMedia("(min-width: " + 640 + "px)").matches = window.innerWidth > window_size_mobile_640
 // window.matchMedia("(max-width: " + 640 + "px)").matches = window.innerWidth <= window_size_mobile_640
@@ -148,41 +148,6 @@ $(window).bind('resize', function () {
 
 });
 
-$(document).ready(function () {
-
-  $('.node-type-usanetwork-static-page .node-usanetwork-static-page a[href^="#"]').click(function (e) {
-    e.preventDefault();
-    var target = $(this).attr('href').substring(1);
-    var targetName = target.substring(0);
-    scrollToAnchorName(targetName);
-  });
-
-  $('.character-info-block .tabs li').click(function () {
-    if (!$(this).hasClass('active')) {
-      $('.character-info-block .tabs li').removeClass('active');
-      $('.character-info-block .description-item').removeClass('active');
-      $(this).addClass('active');
-      var activeTab = $(this).attr('data-tab');
-      $('.description-item[data-tab="' + activeTab + '"]').addClass('active');
-    }
-  });
-
-  $(document).on('click', 'a[href$="enhanced"]', function(e){
-    e.preventDefault();
-    var parced_src = customParseURL(unescape($(this).attr('href')));
-    if (parced_src.params.mobile_url && (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice)) {
-      setTimeout(function () {
-        window.location = parced_src.params.mobile_url;
-      }, 500);
-    } else {
-      setTimeout(function () {
-        window.location = parced_src.path;
-      }, 500);
-    }
-  });
-
-});
-
 // detect browser
 function browserDetect() {
 
@@ -248,3 +213,42 @@ function addSpinJs(itemId, bodyClass, color) {
   var target = document.getElementById(itemId);
   var spinner = new Spinner(opts).spin(target);
 }
+
+$(document).ready(function () {
+
+  if (browserDetect() === 'msie' && getInternetExplorerVersion() === 10) {
+    $("html").addClass("ie10");
+  }
+
+  $('.node-type-usanetwork-static-page .node-usanetwork-static-page a[href^="#"]').click(function (e) {
+    e.preventDefault();
+    var target = $(this).attr('href').substring(1);
+    var targetName = target.substring(0);
+    scrollToAnchorName(targetName);
+  });
+
+  $('.character-info-block .tabs li').click(function () {
+    if (!$(this).hasClass('active')) {
+      $('.character-info-block .tabs li').removeClass('active');
+      $('.character-info-block .description-item').removeClass('active');
+      $(this).addClass('active');
+      var activeTab = $(this).attr('data-tab');
+      $('.description-item[data-tab="' + activeTab + '"]').addClass('active');
+    }
+  });
+
+  $(document).on('click', 'a[href$="enhanced"]', function(e){
+    e.preventDefault();
+    var parced_src = customParseURL(unescape($(this).attr('href')));
+    if (parced_src.params.mobile_url && (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice)) {
+      setTimeout(function () {
+        window.location = parced_src.params.mobile_url;
+      }, 500);
+    } else {
+      setTimeout(function () {
+        window.location = parced_src.path;
+      }, 500);
+    }
+  });
+
+});

@@ -79,6 +79,92 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_articles|node|tv_show|form';
+  $field_group->group_name = 'group_articles';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_new_design';
+  $field_group->data = array(
+    'label' => 'Articles',
+    'weight' => '32',
+    'children' => array(
+      0 => 'field_articles',
+      1 => 'field_articles_view_more_link',
+      2 => 'field_service_logo',
+      3 => 'field_show_service_logo',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-articles field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_articles|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_bcd_spot|node|tv_show|form';
+  $field_group->group_name = 'group_bcd_spot';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_new_design';
+  $field_group->data = array(
+    'label' => 'BCD-Spot',
+    'weight' => '29',
+    'children' => array(
+      0 => 'field_bcd_spot',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-bcd-spot field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_bcd_spot|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_best_of_section|node|tv_show|form';
+  $field_group->group_name = 'group_best_of_section';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_new_design';
+  $field_group->data = array(
+    'label' => 'Best of section',
+    'weight' => '30',
+    'children' => array(
+      0 => 'field_best_of_items',
+      1 => 'field_best_of_section_link',
+      2 => 'field_best_of_section_title',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-best-of-section field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_best_of_section|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_cast_main|node|tv_show|form';
   $field_group->group_name = 'group_cast_main';
   $field_group->entity_type = 'node';
@@ -120,6 +206,7 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '134',
     'children' => array(
       0 => 'field_cast_recap_video',
+      1 => 'field_series_recap_title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -264,10 +351,10 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Endcard Settings',
-    'weight' => '7',
+    'weight' => '15',
     'children' => array(
-      0 => 'field_endcard_timing',
-      1 => 'field_custom_time',
+      0 => 'field_custom_time',
+      1 => 'field_endcard_timing',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -348,6 +435,35 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_episodes_section|node|tv_show|form';
+  $field_group->group_name = 'group_episodes_section';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_new_design';
+  $field_group->data = array(
+    'label' => 'Episodes',
+    'weight' => '31',
+    'children' => array(
+      0 => 'field_show_episode_block',
+      1 => 'field_episodes_manual_mode',
+      2 => 'field_episodes_manual_elements',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-episodes-section field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_episodes_section|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_fb_settings|node|tv_show|form';
   $field_group->group_name = 'group_fb_settings';
   $field_group->entity_type = 'node';
@@ -396,7 +512,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = 'group_additional_information';
   $field_group->data = array(
     'label' => 'Floodlight Tag',
-    'weight' => '78',
+    'weight' => '80',
     'children' => array(
       0 => 'field_floodlight_category',
       1 => 'field_floodlight_type',
@@ -578,11 +694,12 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'LiveTV Settings',
-    'weight' => '21',
+    'weight' => '14',
     'children' => array(
       0 => 'field_livetv_enable',
       1 => 'field_livetv_related',
       2 => 'field_livetv_right_rail',
+      3 => 'group_right_rail_promo',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -596,6 +713,40 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_livetv|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_new_design|node|tv_show|form';
+  $field_group->group_name = 'group_new_design';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'New Design',
+    'weight' => '17',
+    'children' => array(
+      0 => 'field_main_logo',
+      1 => 'field_new_design',
+      2 => 'field_tvs_spec_features',
+      3 => 'group_articles',
+      4 => 'group_bcd_spot',
+      5 => 'group_best_of_section',
+      6 => 'group_episodes_section',
+      7 => 'group_relevant_content',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-new-design field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_new_design|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -659,6 +810,34 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_relevant_content|node|tv_show|form';
+  $field_group->group_name = 'group_relevant_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_new_design';
+  $field_group->data = array(
+    'label' => 'Relevant content view',
+    'weight' => '28',
+    'children' => array(
+      0 => 'field_relevant_content_modes',
+      1 => 'field_relevant_content_title',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-relevant-content field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_relevant_content|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_required_information|node|tv_show|form';
   $field_group->group_name = 'group_required_information';
   $field_group->entity_type = 'node';
@@ -686,6 +865,35 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_required_information|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_right_rail_promo|node|tv_show|form';
+  $field_group->group_name = 'group_right_rail_promo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_livetv';
+  $field_group->data = array(
+    'label' => 'Right Rail Promo',
+    'weight' => '153',
+    'children' => array(
+      0 => 'field_promo_regular_image',
+      1 => 'field_promo_url',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Right Rail Promo',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $export['group_right_rail_promo|node|tv_show|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -842,7 +1050,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Show Blog Landing Page',
-    'weight' => '18',
+    'weight' => '12',
     'children' => array(
       0 => 'field_show_blog_title',
     ),
@@ -870,11 +1078,12 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Show Cast Landing Page',
-    'weight' => '14',
+    'weight' => '9',
     'children' => array(
       0 => 'group_cast_main',
       1 => 'group_cast_recap',
       2 => 'group_social_meter',
+      3 => 'group_where_to_watch',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -899,7 +1108,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Show Explore Landing Page',
-    'weight' => '19',
+    'weight' => '13',
     'children' => array(
       0 => 'field_show_explore_promo',
     ),
@@ -954,7 +1163,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Show Photo Landing Page',
-    'weight' => '17',
+    'weight' => '11',
     'children' => array(
       0 => 'field_show_plmb_promo',
     ),
@@ -981,7 +1190,7 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Show Video Landing Page',
-    'weight' => '16',
+    'weight' => '10',
     'children' => array(
       0 => 'field_show_vlmb_promo',
     ),
@@ -1005,14 +1214,11 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'tv_show';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_show_aspots';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'slideshow options',
     'weight' => '70',
-    'children' => array(
-      0 => 'field_usa_autoscroll',
-      1 => 'field_usa_slide_speed',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'slideshow options',
@@ -1041,18 +1247,19 @@ function usanetwork_tv_shows_field_group_info() {
     'children' => array(
       0 => 'field_hide_cast_carousel',
       1 => 'field_hide_social_follow',
-      2 => 'group_chat_settings',
-      3 => 'group_chatter_to_tv_settings',
-      4 => 'group_fb_settings',
-      5 => 'group_getglue_settings',
-      6 => 'group_homepage_twitter_settings',
-      7 => 'group_instagram_settings',
-      8 => 'group_newsletter',
-      9 => 'group_pinterest_settings',
-      10 => 'group_sync_settings',
-      11 => 'group_trend',
-      12 => 'group_twitter_settings',
-      13 => 'group_usa_show_follow',
+      2 => 'field_hashtag',
+      3 => 'group_chat_settings',
+      4 => 'group_chatter_to_tv_settings',
+      5 => 'group_fb_settings',
+      6 => 'group_getglue_settings',
+      7 => 'group_homepage_twitter_settings',
+      8 => 'group_instagram_settings',
+      9 => 'group_newsletter',
+      10 => 'group_pinterest_settings',
+      11 => 'group_sync_settings',
+      12 => 'group_trend',
+      13 => 'group_twitter_settings',
+      14 => 'group_usa_show_follow',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1222,11 +1429,12 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Shows Queue Block',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_tvs_desktop_cimage',
       1 => 'field_tvs_promo_items',
       2 => 'field_tvs_promoted_content',
+      3 => 'field_promoted_automatic_mode',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1342,12 +1550,12 @@ function usanetwork_tv_shows_field_group_info() {
       8 => 'field_about_ymal',
       9 => 'field_tvs_show_latest_lnd_feed',
       10 => 'field_see_it_url',
-      11 => 'group_usa_tv_promo_vids',
-      12 => 'group_usa_tv_promo',
-      13 => 'group_about_area',
-      14 => 'group_latest_episodes_alt',
-      15 => 'group_show_aspots',
-      16 => 'group_tvs_best_of',
+      11 => 'group_about_area',
+      12 => 'group_latest_episodes_alt',
+      13 => 'group_show_aspots',
+      14 => 'group_tvs_best_of',
+      15 => 'group_usa_tv_promo_vids',
+      16 => 'group_usa_tv_promo',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1478,6 +1686,34 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_usa_show_follow|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_where_to_watch|node|tv_show|form';
+  $field_group->group_name = 'group_where_to_watch';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_show';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_show_cast_landing';
+  $field_group->data = array(
+    'label' => 'Where To Watch',
+    'weight' => '136',
+    'children' => array(
+      0 => 'field_where2watch_providers',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Where To Watch',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $export['group_where_to_watch|node|tv_show|form'] = $field_group;
 
   return $export;
 }

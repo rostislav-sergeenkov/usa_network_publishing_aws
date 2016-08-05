@@ -6,7 +6,7 @@
   </div>
 </div>
 <div class="items-block posts-block">
-  <div class="items-block-title posts-block-title">
+  <div class="items-block-title posts-block-title<?php !empty($new_design) ? print ' show-color show-font' : ''; ?>">
     <h2><?php print $block_title;?></h2>
   </div>
   <?php if (!empty($posts['vertical'])): ?>
@@ -32,7 +32,7 @@
     </div>
   <?php endif; ?>
 </div>
-<div class="more-items more-posts show-color">
+<div class="more-items more-posts <?php print (!empty($new_design)) ?  'show-border' : 'show-color'; ?>">
   <?php if (!empty($posts_landing_link)): ?>
     <?php print $posts_landing_link; ?>
   <?php endif; ?>

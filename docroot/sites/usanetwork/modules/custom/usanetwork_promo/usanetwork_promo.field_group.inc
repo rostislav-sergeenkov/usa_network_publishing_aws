@@ -29,8 +29,10 @@ function usanetwork_promo_field_group_info() {
       3 => 'field_promo_assoc_video',
       4 => 'field_promo_assoc_content',
       5 => 'field_movie',
-      6 => 'title',
-      7 => 'field_explore_tag',
+      6 => 'field_explore_tag',
+      7 => 'field_promo_links',
+      8 => 'field_promo_see_more_link',
+      9 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

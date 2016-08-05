@@ -71,8 +71,12 @@
     </div>
     <div class="meta-wrap">
       <div class="meta">
-        <div class="title"><?php print $entity_data['title']; ?></div>
-        <div class="additional"><span><?php print $entity_data['additional_text']; ?></span> <?php print $entity_data['additional_duration']; ?></div>
+        <?php if (!empty($entity_data['title'])): ?>
+          <div class="title"><?php print $entity_data['title']; ?></div>
+        <?php endif; ?>
+        <?php if (!empty($entity_data['additional_text'])): ?>
+          <div class="additional"><span><?php print $entity_data['additional_text']; ?></span> <?php print $entity_data['additional_duration']; ?></div>
+        <?php endif; ?>
       </div>
       <div class="meta-icon <?php print $entity_data['icon_class']; ?> resize-avail-480"></div>
     </div>

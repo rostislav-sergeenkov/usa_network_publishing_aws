@@ -245,6 +245,35 @@
         }
       });
     },
+    right_rail_promo: function () {
+      var timezoneOffset = usanetwork_menu_get_user_timezone_offset(),
+          videoBlock = $('.video-block');
+
+      $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        url: Drupal.settings.basePath + 'ajax/render-video-live-promo/' + timezoneOffset,
+        success: function(data) {
+          if (data != null && typeof data != 'undefined') {
+            if($('.consum-sidebar .download-app').hasClass('promo-enable')){
+              $('.consum-sidebar .download-app .live-promo').remove();
+              $('.consum-sidebar .download-app .download-app-wrapper').after(data.rendered);
+            } else {
+              $('.consum-sidebar .download-app').addClass('promo-enable');
+              $('.consum-sidebar .download-app .download-app-wrapper').after(data.rendered);
+            }
+          } else {
+            $('.consum-sidebar .download-app .live-promo').remove();
+            $('.consum-sidebar .download-app').removeClass('promo-enable');
+          }
+        },
+        error: function () {
+          console.info('error');
+          $('.consum-sidebar .download-app .live-promo').remove();
+          $('.consum-sidebar .download-app').removeClass('promo-enable');
+        }
+      });
+    },
     related_content: function () {
       var timezoneOffset = usanetwork_menu_get_user_timezone_offset(),
           videoBlock = $('.video-block');
@@ -325,6 +354,7 @@
     attach: function (context, settings) {
       $('body').once(function () {
         Drupal.behaviors.usanetwork_video_live.right_rail();
+        Drupal.behaviors.usanetwork_video_live.right_rail_promo();
         Drupal.behaviors.usanetwork_video_live.related_content();
       })
     }

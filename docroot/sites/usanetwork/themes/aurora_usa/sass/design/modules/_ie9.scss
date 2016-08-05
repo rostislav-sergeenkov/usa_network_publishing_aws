@@ -34,4 +34,31 @@
       }
     }
   }
+  .show-new-design {
+    #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu {
+      .bottom-menu-block {
+        .show-menu-tab {
+          .show-menu {
+            @include breakpoint($bp-min-769-width) {
+              display: inline-block;
+              vertical-align: middle;
+              width: auto;
+            }
+            .show-menu-item {
+              float: left;
+              a {
+                padding: 0 get-vw(29px, 1280);
+                @include breakpoint($bp-min-1601-width) {
+                  padding: 0 36.25px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  padding: 0 get-vw(20.5px, 1024);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

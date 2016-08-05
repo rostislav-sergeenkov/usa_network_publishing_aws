@@ -390,8 +390,8 @@
     $($slides).each(function (index, el) {
 
       var $slideCounter = $(el).find(_.options.slideCounter),
-          //slickIndex = parseInt(el.dataset.slickIndex) + 1;
-          slickIndex = (el.hasOwnProperty('dataset') && el.dataset.hasOwnProperty('slickIndex')) ? parseInt(el.dataset.slickIndex) + 1 : 1;
+
+          slickIndex = el.dataset.hasOwnProperty('slickIndex') ? parseInt(el.dataset.slickIndex) + 1 : index + 1;
 
       $slideCounter.text(slickIndex + separator + slideCount);
     });
@@ -435,6 +435,7 @@
     var _ = _this,
         $pagerWrap = _.$galleryPagerWrap,
         $pager = _.$galleryPager,
+        $galleryParent = _.$galleryParent,
         pagerPositionBp = _.options.pagerPositionBp,
         pagerWrapStyles = _.options.galleryPagerWrap.styles,
         pagerStyles = _.options.galleryPager.styles,
@@ -445,7 +446,7 @@
     }
 
     // vertical version
-    if (!statusBp && !$('body').hasClass('node-type-person') && !$('body').hasClass('node-type-post') && !$('body').hasClass('node-type-catchall-seo-page')) {
+    if (!statusBp && (!$('body').hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$('body').hasClass('node-type-post') && !$('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginRight: '',
         marginTop: pagerWrapStyles.desktop.marginTop,
@@ -459,7 +460,7 @@
     }
 
     // horizontal version
-    if (statusBp || $('body').hasClass('node-type-person') || $('body').hasClass('node-type-post') || $('body').hasClass('node-type-catchall-seo-page')) {
+    if (statusBp || ($('body').hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $('body').hasClass('node-type-post') || $('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginTop: '',
         marginRight: pagerWrapStyles.mobile.marginRight,
@@ -477,6 +478,7 @@
 
     var _ = _this,
         $body = _.$body,
+        $galleryParent = _.$galleryParent,
         pagerPositionBp = _.options.pagerPositionBp,
         statusBp = _.checkWindowWidth(pagerPositionBp);
 
@@ -484,9 +486,9 @@
       return;
     }
 
-    if (statusBp || $body.hasClass('node-type-person') || $body.hasClass('node-type-post')) {
+    if (statusBp || ($body.hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $body.hasClass('node-type-post')) {
       _.movePagerHorizontal(_this, slideIndex);
-    } else if (!statusBp && !$body.hasClass('node-type-person') && !$body.hasClass('node-type-post')) {
+    } else if (!statusBp && (!$body.hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$body.hasClass('node-type-post')) {
       _.movePagerVertical(_this, slideIndex);
     }
   };
@@ -658,6 +660,7 @@
     _.$galleryPager = $(element).find(_.options.galleryPager.selector);
     _.$pagerItems = $(_.$galleryPager).find(_.options.pagerDots.selector);
     _.options.pagerDots.length = _.$pagerItems.length;
+    _.$galleryParent = $(element).parent();
 
     return _;
   };
@@ -716,16 +719,21 @@
           if (initAdobeTracking) {
             _.callAdobeTracking();
           }
+
+          if ($('body').hasClass('page-node-microsite')
+            && typeof Drupal.behaviors.ms_global == 'object'
+            && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
+              Drupal.behaviors.ms_global.refreshAds('galleries');
+          }
         })
         .on('afterChange', function (event, slick, currentSlide) {
-
           _.gigyaSharebar(currentSlide);
           _.movePagerItems(_, currentSlide);
 
           if (_.$body.hasClass('node-type-media-gallery')) {
             Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
           }
-          if (_.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post')) {
+          if (_.$body.hasClass('node-type-person') || _.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post') || (_.$body.hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
             Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
             if (!$('.region-header').hasClass('sticky-shows-submenu')) {
               Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
@@ -780,7 +788,8 @@
   $(document).ready(function () {
 
     if ($('body').hasClass('node-type-media-gallery') || $('body').hasClass('node-type-tv-episode') ||
-        $('body').hasClass('node-type-consumpt-post') || $('.gallery-wrapper').parent().hasClass('view-mode-inline_content')) {
+        $('body').hasClass('node-type-consumpt-post') || $('.gallery-wrapper').parent().hasClass('view-mode-inline_content') ||
+        $('.gallery-wrapper').parent().hasClass('gallery-recap-block')) {
 
       if ($('.gallery-wrapper').length == 0) {
         return false;

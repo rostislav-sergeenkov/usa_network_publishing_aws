@@ -100,6 +100,31 @@ function usanetwork_core_api_get_content_image($entity_type, $entity, $image_typ
   return NULL;
 }
 
+/**
+ * Get content image given image override.
+ *
+ * @param $entity_type - type of entity.
+ * @param $entity - entity object or entity id.
+ * @param $image_type - the type of image (in 95% cases you need 'main').
+ * @param $limit - the number of values that should be returned from field (let it = 1 if you need a single value).
+ * @param $return_uri - the boolean value. It returns file object if it false and returns image uri if it true.
+ */
+function usanetwork_core_api_get_content_image_given_image_override($entity_type, $entity, $image_type = 'main', $limit = 1, $return_uri = TRUE) {
+  $content_image = NULL;
+  if (!empty($entity->field_promo_image_override)) {
+    $field_image_override_items = field_get_items($entity_type, $entity, 'field_promo_image_override');
+
+    if (!empty($field_image_override_items)) {
+      $field_image_override = reset($field_image_override_items);
+      $content_image = $field_image_override['uri'];
+    }
+  }
+  else {
+    $content_image = usanetwork_core_api_get_content_image($entity_type, $entity, $image_type, $limit, $return_uri);
+  }
+  return $content_image;
+}
+
 function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
   $entity = entity_load($entity_type, array($entity_id));
 
@@ -132,6 +157,73 @@ function usanetwork_core_api_get_media_icon($entity_type, $entity_id) {
   return 'full-video-icon-default';
 }
 
+function usanetwork_core_api_get_violator($entity_type, $entity_id) {
+  $entity = entity_load($entity_type, array($entity_id));
+
+  if (is_array($entity)) {
+    $entity = $entity[$entity_id];
+  }
+  $entity_wrapper = entity_metadata_wrapper($entity_type, $entity);
+
+  $violator = '';
+  if (usanetwork_core_api_check_field($entity, 'field_promo_violator_name', $entity_type)) {
+    $violator = $entity_wrapper->field_promo_violator_name->value();
+  }
+  else{
+    switch ($entity->type) {
+      case 'timeline_gallery':
+      case 'media_gallery':
+        $violator = 'Gallery';
+        break;
+      case 'mpx_video_1':
+        $violator = usanetwork_mpx_video_get_video_category($entity);
+        if (empty($violator)) {
+          $violator = t('Clip');
+        }
+        break;
+      case 'mpx_video_2':
+        $violator = 'Full Episode';
+        break;
+      case 'quiz':
+        $violator = 'Quiz';
+        break;
+      case 'person':
+        $violator = 'Cast';
+        break;
+      case 'tv_episode':
+        $violator = 'Recap';
+        break;
+      case 'consumpt_post':
+      case 'post':
+        $violator = 'Article';
+        break;
+      case 'catchall_page':
+      case 'usanetwork_promo':
+        $violator = 'Extras';
+        break;
+    }
+  }
+
+  $blog_service = usanetwork_blog_migrate_get_post_service($entity);
+  return usanetwork_core_api_prepare_blog_service_violator($violator, $blog_service);
+}
+
+function usanetwork_core_api_prepare_blog_service_violator($violator, $service) {
+  if ($service == 'verge') {
+    $violator_tag = array(
+      'element' => array(
+        '#tag' => 'span',
+        '#attributes' => array(
+          'class' => 'violator-icon ' . $service,
+        ),
+        '#value' => '',
+      ),
+    );
+    $violator = theme('html_tag', $violator_tag) . $violator;
+  }
+  return $violator;
+}
+
 /**
  * Returns an associated array of image field names of nodes.
  */
@@ -147,7 +239,7 @@ function _usanetwork_core_api_get_node_image_field_names() {
     ),
     // Catchall
     'catchall_page' => array(
-      'main' => 'field_usa_catchall_media',
+      'main' => 'field_usa_og_image',
       'files' => 'field_usa_catchall_media',
       'og_image' => 'field_usa_og_image',
     ),
@@ -246,6 +338,10 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'media_items' => 'field_media_items',
       'og_image' => 'field_usa_og_image',
     ),
+    'top3_gallery' => array(
+      'main' => 'field_promo_image_override',
+      'og_image' => 'field_usa_og_image',
+    ),
   );
 }
 
@@ -292,6 +388,15 @@ function usanetwork_core_api_check_display_relate_content($node) {
  * @return bool
  */
 function usanetwork_core_api_check_entity_publish($entity, $entity_type = 'node') {
+  global $user;
+  // Allow specify users see unpublished content.
+  $query_params = drupal_get_query_parameters();
+  if (isset($query_params['show_unpublished']) && $query_params['show_unpublished'] == 1) {
+    $allowed_for_user = !empty(array_intersect_key(usanetwork_core_api_get_roles_allowed_unpublished_content(), $user->roles));
+    if ($allowed_for_user) {
+      return TRUE;
+    }
+  }
   switch ($entity_type) {
     case 'node':
       if ($entity->status != NODE_PUBLISHED) {
@@ -305,6 +410,15 @@ function usanetwork_core_api_check_entity_publish($entity, $entity_type = 'node'
       break;
   }
   return TRUE;
+}
+
+function usanetwork_core_api_get_roles_allowed_unpublished_content() {
+  return array(
+    11 => 'administrator',
+    16 => 'editor',
+    21 => 'moderator',
+    31 => 'previewer',
+  );
 }
 
 /**
@@ -351,4 +465,55 @@ function usanetwork_core_api_check_field($entity_object, $field_name, $entity_ty
   }
 
   return FALSE;
+}
+
+/**
+ * Get content from dynamic field.
+ *
+ * @param $entity
+ * @param $field
+ */
+function usanetwork_core_api_get_dynamic_entity_reference_content($entity, $field) {
+  $content = array();
+  if (!empty($entity->$field)) {
+    $field_data = field_get_items('node', $entity, $field);
+    foreach ($field_data as $data) {
+      $dynamic_entity = entity_load($data['target_type'], array($data['target_id']));
+      if (is_array($dynamic_entity)) {
+        $dynamic_entity = reset($dynamic_entity);
+      }
+      if (!empty($dynamic_entity) && usanetwork_core_api_check_entity_publish($dynamic_entity, $data['target_type'])) {
+        $item = array(
+          'entity_type' => $data['target_type'],
+          'entity_id' => $data['target_id'],
+          'entity' => $dynamic_entity,
+        );
+        $content[] = $item;
+      }
+    }
+  }
+  return $content;
+}
+
+/**
+ * Get output position for array index. Can be used as classes.
+ *
+ * @param $array
+ * @param $index
+ */
+function usanetwork_core_api_get_output_position($array, $index) {
+  $positions = array();
+  if ($index === 0) {
+    $positions[] = 'first';
+  }
+  if (($index % 2) === 0) {
+    $positions[] = 'even';
+  }
+  else {
+    $positions[] = 'odd';
+  }
+  if ($index + 1 == count($array)) {
+    $positions[] = 'last';
+  }
+  return $positions;
 }

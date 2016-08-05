@@ -58,7 +58,7 @@
         //showCardCloseAnimeEasing: 'easeOutQuint',
         showCardOpenAnimeEasing: 'easeInOutCubic',
         showCardCloseAnimeEasing: 'easeInOutCubic',
-        showCardGetAdminMinBp: 769,
+        isShowCardGetAdMinBp: 769,
         showCardBp: {
           // variables-and-functions.js
           window_size_desktop_large: 1901,
@@ -378,7 +378,7 @@
     browserName = browserDetect();
     widthDiff = windowInnerWidth - $(window).innerWidth();
 
-    if (_.options.isShowCardGetAdminMinBp && !$currentSlideNode.hasClass(_.initials.showCardCarouselItemClassAdvertEnable)) {
+    if (_.options.isShowCardGetAdMinBp && !$currentSlideNode.hasClass(_.initials.showCardCarouselItemClassAdvertEnable)) {
       try {
         Drupal.behaviors.mpsSponsorShip.execSponsoredBlock($currentSlideNode);
       } catch (e) {
@@ -396,7 +396,7 @@
         }
       }
     } else if (isWindow_size_mobile_480) {
-      slideNewWidth = (windowInnerWidth - 2 * _.initials.showCardMargin.show_carousel_margin_480 + slideSizeWidth) - document.body.clientWidth;
+      slideNewWidth = (windowInnerWidth - 2 * _.initials.showCardMargin.show_carousel_margin_480 + slideSizeWidth) + (windowInnerWidth - document.body.clientWidth);
       slideTranslateX = slideTranslateX - (_.initials.showCardMargin.show_carousel_margin_480 / 2);
     } else if (isWindow_size_tablet_1024) {
       slideNewWidth = windowInnerWidth - 2 * _.initials.showCardMargin.show_carousel_margin_1024 + slideSizeWidth;
@@ -695,7 +695,6 @@
     if (creation && !$($mainWrap).hasClass(initClassName)) {
       $($mainWrap).addClass(initClassName);
       if (_.initials.isMobileDescription && _.options.isMobileDescriptionBp && !_.options.isMobileDescriptionInit) {
-        console.info('isMobileDescription');
         _.onMobileCarouselDescription();
       }
       if (_.initials.isDescriptionSponsored) {

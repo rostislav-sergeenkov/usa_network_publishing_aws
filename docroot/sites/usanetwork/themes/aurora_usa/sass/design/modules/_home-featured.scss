@@ -1,64 +1,37 @@
 .featured-block {
   overflow: hidden;
-  padding: 40px 0;
   position: relative;
   width: 100%;
+  &.carousel-block {
+    padding: 40px 40px 40px 20px;
+    @include breakpoint($bp-min-1601-width) {
+      padding: 40px 60px 40px 20px;
+    }
+  }
   &:not(.visible) {
     background: $footer-links!important;
   }
   .carousel {
-    @include breakpoint($bp-768-width) {
-      &.start {
-        margin-left: 0;
-      }
-      .usa-carousel-controls {
-        display: none;
-      }
-    }
-    @include breakpoint($between-769-1024) {
-      &.start {
-        margin-left: 260px;
-        overflow: hidden;
-        &:hover {
-          .usa-carousel-control-next {
-            right: 220px;
-          }
-        }
-      }
-    }
-    @include breakpoint($bp-min-1025-width) {
-      &.start {
-        margin-left: 240px;
-        overflow: hidden;
-        &:hover {
-          .usa-carousel-control-next {
-            right: 180px;
-          }
-        }
-      }
-    }
-    @include breakpoint($bp-min-1601-width) {
-      &.start {
-        margin-left: 460px;
-        &:hover {
-          .usa-carousel-control-next {
-            right: 400px;
-          }
-        }
-      }
-    }
     ul {
       position: relative;
       @include breakpoint($bp-768-width) {
         display: block;
       }
       li.description-item {
+        margin-right: 0;
         height: 556px;
+        width: 280px;
+        @include breakpoint($between-769-1024) {
+          margin-right: 20px;
+        }
         @include breakpoint($bp-min-1601-width) {
           height: 628px;
+          width: 520px;
         }
         @include breakpoint($bp-768-width) {
+          margin-right: 0;
           height: auto;
+          width: 100%;
         }
       }
       li:not(.description-item) {
@@ -76,7 +49,7 @@
           margin-right: 0;
           width: 100%;
         }
-        &.first {
+        &.large {
           width: 670px;
           @include breakpoint($bp-min-1601-width) {
             width: 757px;
@@ -119,7 +92,7 @@
               margin-bottom: 22px;
             }
             @include breakpoint($bp-768-width) {
-              margin-bottom: 0px;
+              margin-bottom: 0;
               margin-right: 2%;
             }
           }
@@ -154,7 +127,7 @@
             font-size: 14px;
             height: 32px;
             line-height: 32px;
-            right: 0%;
+            right: 0;
             text-align: center;
             width: 100%;
           }
@@ -177,25 +150,19 @@
             }
           }
         }
-        /**/
       }
     }
   }
   .carousel-description-item {
-    //left: -300px;
-    width: 300px;
+    margin-right: 0;
+    width: 280px;
     @include breakpoint($bp-min-1601-width) {
-      //left: -520px;
       width: 520px;
     }
     .description-wrapper {
-      float: left;
       text-align: center;
-      padding: 0 20px;
-      width: 300px;
-      @include breakpoint($bp-min-1601-width) {
-        width: 520px;
-      }
+      padding: 0 20px 0 0;
+      width: 100%;
     }
     .caption, .additional-text {
       clear: both;
@@ -226,12 +193,12 @@
   }
   @include breakpoint($bp-768-width) {
     &.carousel-block {
-      padding: get-vw(60px, 768) 0px 0px;
+      padding: get-vw(60px, 768) 0 0;
     }
     .carousel {
       position: relative;
       margin-left: 0;
-      margin-bottom: 0px;
+      margin-bottom: 0;
       margin-top: get-vw(55px, 768);
       padding: 0 10px;
       ul {
@@ -239,6 +206,7 @@
       }
     }
     .carousel-description-item {
+      margin: 0;
       height: auto;
       left: 0;
       position: relative;
@@ -277,7 +245,7 @@
       .logo {
         float: left;
         margin-left: get-vw(20px, 768);
-        margin-top: 0px;
+        margin-top: 0;
         img {
           max-height: get-vw(24px, 768);
         }
@@ -293,7 +261,7 @@
     }
     .carousel-description-item {
       .description-wrapper {
-        padding: 0px 0px 0px 12.5px;
+        padding: 0 0 0 12.5px;
       }
       .caption, .additional-text {
         font-size: 15px;

@@ -218,11 +218,6 @@ function usanetwork_mpx_video_block_view($delta) {
       $block['subject'] = '';
        $block['content'] = array(
          '#markup' => usanetwork_mpx_video_full_latest_episodes_carousel(),
-         '#attached' => array(
-           'js' => array(
-             drupal_get_path('theme', 'aurora_usa') . '/javascripts/full-episodes-carousel.js',
-           ),
-         ),
        );
       break;
     case 'usa_mpx_video_clips':
@@ -537,7 +532,6 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
  */
 function usanetwork_mpx_video_global_videos_page() {
   //get featured elements
-  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/full-episodes.js');
   $usanework_full_episodes_aspot = array_slice(variable_get('usanework_full_episodes_aspot', array()), 0, USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS);
 
   $featured_aspot= $featured_carousel= array();

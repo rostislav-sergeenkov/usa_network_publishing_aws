@@ -937,10 +937,8 @@ function aurora_usa_preprocess_views_view(&$vars) {
 
     if($vars['view']->name == 'usa_shows' && $vars['view']->current_display == 'block_1') {
       drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-carousel.js');
     }
   }
-
 }
 
 /**

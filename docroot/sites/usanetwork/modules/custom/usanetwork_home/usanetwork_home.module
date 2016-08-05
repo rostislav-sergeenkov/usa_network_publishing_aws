@@ -72,11 +72,6 @@ function usanetwork_home_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = array(
         '#markup' => _usanetwork_home_shows_queue_block(),
-        '#attached' => array(
-          'js' => array(
-            path_to_theme('aurora_usa') . '/javascripts/show-carousel.js',
-          ),
-        ),
       );
       break;
 
@@ -85,11 +80,6 @@ function usanetwork_home_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = array(
         '#markup' => _usanetwork_home_featured_carousel(),
-        '#attached' => array(
-          'js' => array(
-            path_to_theme('aurora_usa') . '/javascripts/featured-carousel.js',
-          ),
-        ),
       );
       break;
   }
@@ -485,7 +475,6 @@ function _usanetwork_home_featured_carousel() {
             'featured-carousel',
             'carousel',
             'carousel-left',
-            'start',
           ),
           'data-carousel-id' => 3,
         ),
@@ -498,12 +487,9 @@ function _usanetwork_home_featured_carousel() {
         'type' => 'ul',
         'attributes' => array(
           'class' => array(
-            'slides',
+            'usa-carousel-left',
+            'swiper-wrapper',
           ),
-        ),
-        'suffix' => array(
-          '<a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
-           <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>'
         )
       ));
 

@@ -20,8 +20,8 @@
     </ul>
   </div>
   <div class="carousel-controls-wrap">
-    <a href="javascript:void(0)" class="usa-carousel-controls usa-carousel-control-prev link-color-reset"></a>
-    <a href="javascript:void(0)" class="usa-carousel-controls usa-carousel-control-next link-color-reset"></a>
+    <a href="javascript:void(0)" class="usa-carousel-controls usa-carousel-control-prev link-color-reset usa-carousel-button-disabled"></a>
+    <a href="javascript:void(0)" class="usa-carousel-controls usa-carousel-control-next link-color-reset usa-carousel-button-disabled"></a>
   </div>
   <a class="get-app" href="">Get the app to watch</a>
 </div>

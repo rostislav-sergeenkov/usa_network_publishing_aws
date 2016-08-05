@@ -41,7 +41,11 @@
         }
       }
       .node-usanetwork-promo {
+        height: 250px;
         margin-bottom: 15px;
+        @include breakpoint($bp-min-1601-width) {
+          height: 279px;
+        }
         @include breakpoint($bp-min-769-width) {
           &:last-child {
             margin-bottom: 0;

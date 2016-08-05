@@ -56,8 +56,8 @@
         showCardOpenAnimeTime: 500,
         // showCardOpenAnimeEasing: 'easeInCubic',
         //showCardCloseAnimeEasing: 'easeOutQuint',
-        showCardOpenAnimeEasing: 'easeInQuint',
-        showCardCloseAnimeEasing: 'easeOutQuint',
+        showCardOpenAnimeEasing: 'easeInOutCubic',
+        showCardCloseAnimeEasing: 'easeInOutCubic',
         showCardGetAdminMinBp: 769,
         showCardBp: {
           // variables-and-functions.js

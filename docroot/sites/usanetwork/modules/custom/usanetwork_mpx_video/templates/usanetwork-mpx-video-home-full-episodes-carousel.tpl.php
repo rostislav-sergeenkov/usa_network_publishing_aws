@@ -18,8 +18,8 @@
     </ul>
   </div>
   <div class="carousel-controls-wrap">
-    <a href="javascript:void(0)" class="usa-carousel-controls usa-carousel-control-prev link-color-reset"></a>
-    <a href="javascript:void(0)" class="usa-carousel-controls usa-carousel-control-next link-color-reset"></a>
+    <a href="javascript:void(0)" class="usa-carousel-controls usa-carousel-control-prev link-color-reset usa-carousel-button-disabled"></a>
+    <a href="javascript:void(0)" class="usa-carousel-controls usa-carousel-control-next link-color-reset usa-carousel-button-disabled"></a>
   </div>
   <?php if($show_more): ?>
     <a href="javascript:void(0)" class="more-button more">

@@ -8834,6 +8834,11 @@ header .tve-help-link.signIn .inlineLoader {
     padding-left: 25px;
   }
 }
+@media (max-width: 480px) {
+  .page-videos .carousel-wrapper .carousel-block-left {
+    padding-left: 0;
+  }
+}
 .page-videos .carousel-wrapper .carousel-block-left:nth-child(2n-1) {
   background: #dcddde;
 }

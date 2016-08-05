@@ -72,11 +72,6 @@ function usanetwork_home_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = array(
         '#markup' => _usanetwork_home_shows_queue_block(),
-        '#attached' => array(
-          'js' => array(
-            path_to_theme('aurora_usa') . '/javascripts/show-carousel.js',
-          ),
-        ),
       );
       break;
 
@@ -85,11 +80,6 @@ function usanetwork_home_block_view($delta = '') {
       $block['subject'] = '';
       $block['content'] = array(
         '#markup' => _usanetwork_home_featured_carousel(),
-        '#attached' => array(
-          'js' => array(
-            path_to_theme('aurora_usa') . '/javascripts/featured-carousel.js',
-          ),
-        ),
       );
       break;
   }
@@ -330,8 +320,6 @@ function _usanetwork_home_featured_carousel_get_items_count() {
 }
 
 function _usanetwork_home_featured_carousel() {
-  $content = array();
-
   $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
 
   if ($homepage) {
@@ -363,19 +351,17 @@ function _usanetwork_home_featured_carousel() {
       $description_vars['background'] = file_create_url($bg_field[0]['uri']);
     }
 
-    $output['description'] = theme('usanetwork_home_carousel_description_item', $description_vars);
+    $output_description = theme('usanetwork_home_carousel_description_item', $description_vars);
 
     $field_promo_items = field_get_items('node', $homepage_node, 'field_hp_ft_featured');
 
     if (!empty($field_promo_items)) {
       $i = 0;
-      $featured_promo_items = array();
+      $featured_promo_items = array(array('data' => $output_description, 'class' => array('carousel-item', 'swiper-slide', 'description-item')));
       $list_item_promo = array();
       foreach ($field_promo_items as $delta => $promo_reference) {
         $promo_entity = entity_load($promo_reference['target_type'], array($promo_reference['target_id']));
         $show_class = '';
-        $icon_type = '';
-        $more_link = '';
 
         if (empty($promo_entity)) {
           continue;
@@ -414,13 +400,6 @@ function _usanetwork_home_featured_carousel() {
           if (!empty($show_field[0]['target_id'])) {
             $show_class = usanetwork_tv_shows_color_show_css_class($show_field[0]['target_id']);
           }
-        }
-
-
-        if (!empty($promo_entity->field_promo_call_to_action_text)) {
-          $promo_call_to_action_text_field = field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_call_to_action_text');
-          $promo_call_to_action_text = reset($promo_call_to_action_text_field);
-          $more_link = $promo_call_to_action_text['value'];
         }
 
         if (!empty($promo_entity->field_promo_link)) {
@@ -466,7 +445,17 @@ function _usanetwork_home_featured_carousel() {
         $list_item_promo[] = theme('usanetwork_home_featured_promo', $featured_vars);
 
         if ($i % 2 == 0 || $i == 0) {
-          $featured_promo_items[] = implode(PHP_EOL, $list_item_promo);
+          if ($i == 0) {
+            $featured_promo_items[] = array(
+              'data' => implode(PHP_EOL, $list_item_promo),
+              'class' => array('carousel-item', 'swiper-slide', 'large'),
+            );
+          } else {
+            $featured_promo_items[] = array(
+              'data' => implode(PHP_EOL, $list_item_promo),
+              'class' => array('carousel-item', 'swiper-slide'),
+            );
+          }
           $list_item_promo = array();
         }
 
@@ -486,7 +475,6 @@ function _usanetwork_home_featured_carousel() {
             'featured-carousel',
             'carousel',
             'carousel-left',
-            'start',
           ),
           'data-carousel-id' => 3,
         ),
@@ -499,12 +487,9 @@ function _usanetwork_home_featured_carousel() {
         'type' => 'ul',
         'attributes' => array(
           'class' => array(
-            'slides',
+            'usa-carousel-left',
+            'swiper-wrapper',
           ),
-        ),
-        'suffix' => array(
-          '<a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
-           <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>'
         )
       ));
 

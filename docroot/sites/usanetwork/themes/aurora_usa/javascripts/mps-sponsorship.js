@@ -26,9 +26,9 @@
     // exec Show Card Sponsored Block
     execSponsoredBlock: function (block) {
 
-      if(!block.hasClass('advert-enable')) {
+      if(!$(block).hasClass('advert-enable')) {
         // block - parent element ".slides li .node-usanetwork-promo"
-        var showCarouselItem = '.show-carousel .slides li.slide-',
+        var showCarouselItem = '.show-carousel .usa-carousel-left li.slide-',
             fileId = block.data('mpspath'),
             itemParent = block.closest('li'),
             itemParentClass = itemParent.data('slide-id');
@@ -86,9 +86,10 @@
         }
 
         // page-videos
-        if (body.hasClass('page-videos')) {
-          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.carousel-wrapper .carousel-block'), style.light_stacked);
-        }
+        // used in global-carousels.js 
+        // if (body.hasClass('page-videos')) {
+        //   Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.carousel-wrapper .carousel-block'), style.light_stacked);
+        // }
 
         // consumptionators pages
         if (body.hasClass('consumptionator-page')) {

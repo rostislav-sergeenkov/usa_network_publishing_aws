@@ -4,28 +4,30 @@
 */
 ?>
 <div class="social-block carousel-block" data-block-name="Social Carousel">
-  <div class="carousel-description-item start">
-    <div class="description-wrapper">
-      <div class="description-block">
-        <?php if (!empty($caption)):?>
-          <div class="caption"><?php print $caption; ?></div>
-        <?php endif; ?>
-        <?php if (!empty($title)):?>
-          <div class="title"><?php print $title; ?></div>
-        <?php endif; ?>
-        <?php if (!empty($additional)):?>
-          <div class="additional-text"><?php print $additional; ?></div>
-        <?php endif; ?>
-      </div>
-    </div>
-  </div>
   <?php $promos_length = 0; ?>
   <?php if (!empty($promos)): ?>
     <?php $promos_length = count($promos); ?>
-    <div class="carousel social-carousel carousel-left start" data-carousel-id="4">
-      <ul class="slides">
+    <div class="carousel social-carousel carousel-left" data-carousel-id="4">
+      <ul class="usa-carousel-left swiper-wrapper slides">
+        <li class="carousel-item swiper-slide description-item">
+          <div class="carousel-description-item">
+            <div class="description-wrapper">
+              <div class="description-block">
+                <?php if (!empty($caption)):?>
+                  <div class="caption"><?php print $caption; ?></div>
+                <?php endif; ?>
+                <?php if (!empty($title)):?>
+                  <div class="title"><?php print $title; ?></div>
+                <?php endif; ?>
+                <?php if (!empty($additional)):?>
+                  <div class="additional-text"><?php print $additional; ?></div>
+                <?php endif; ?>
+              </div>
+            </div>
+          </div>
+        </li>
         <?php foreach ($promos as $promo): ?>
-          <li<?php if (!empty($promo['class'])): print ' class="' . $promo['class'] . '"'; endif;?>>
+          <li class="carousel-item swiper-slide <?php if (!empty($promo['class'])): print $promo['class']; endif;?>">
             <div class="node node-usanetwork-promo social-promo">
               <a href="<?php print !empty($promo['url']) ? $promo['url'] : '#'; ?>">
                 <?php if (!empty($promo['image'])): ?>
@@ -56,8 +58,10 @@
           </li>
         <?php endforeach; ?>
       </ul>
-      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-prev link-color-reset"></a>
-      <a href="javascript:void(0)" class="jcarousel-controls jcarousel-control-next link-color-reset"></a>
+    </div>
+    <div class="carousel-controls-wrap">
+      <a href="javascript:void(0)" class="usa-carousel-controls usa-carousel-control-prev link-color-reset usa-carousel-button-disabled"></a>
+      <a href="javascript:void(0)" class="usa-carousel-controls usa-carousel-control-next link-color-reset usa-carousel-button-disabled"></a>
     </div>
   <?php endif; ?>
   <?php if ($promos_length > 2): ?>

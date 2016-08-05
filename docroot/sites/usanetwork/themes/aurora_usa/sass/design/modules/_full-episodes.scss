@@ -207,6 +207,12 @@
         margin-bottom: 1px;
         padding: 0;
       }
+      &:not(.ready) {
+        @include breakpoint($bp-480-width) {
+          background: url(../images/ajax-loader.gif) no-repeat center center transparent !important;
+          min-height: 86px;
+        }
+      }
       &:not(.active) {
         .carousel-description-item {
           .description-wrapper {
@@ -218,6 +224,7 @@
           }
         }
       }
+
       &.active {
         .carousel {
           @include breakpoint($bp-480-width) {
@@ -258,6 +265,9 @@
       }
     }
     .carousel-block-left {
+      @include breakpoint($bp-1600-width) {
+        padding-left: 25px;
+      }
       position: relative;
       &:nth-child(2n-1) {
         background: $footer-links;
@@ -274,6 +284,23 @@
                 line-height: 40px !important;
               }
             }
+          }
+        }
+      }
+      .usa-carousel-left {
+        li.description-item {
+          margin-right: 20px;
+          width: 200px;
+          @include breakpoint($bp-min-1601-width) {
+            margin-right: 40px;
+            width: 300px;
+          }
+          @include breakpoint($bp-1024-width) {
+            margin-right: 15px;
+          }
+          @include breakpoint($bp-480-width) {
+            margin-right: 0;
+            width: 100%;
           }
         }
       }
@@ -298,7 +325,7 @@
         &:after {
           content: "\e608";
           display: block;
-          font-family: "ico-font";
+          font-family: $ico-font;
           position: absolute;
           margin-top: -8px;
           right: 0;
@@ -307,24 +334,11 @@
       }
       .carousel-description-item {
         height: auto;
-        left: -300px;
-        margin: 40px auto;
-        @include breakpoint($bp-1600-width) {
-          left: -200px;
-        }
-        &.start {
-          left: 60px;
-          @include breakpoint($bp-1600-width) {
-            left: 25px;
-          }
-          @include breakpoint($bp-480-width) {
-            left: 0;
-          }
-        }
         @include breakpoint($bp-480-width) {
           height: 86px;
           left: 0;
           margin: 0;
+          overflow: hidden;
           position: relative;
           top: 0;
         }

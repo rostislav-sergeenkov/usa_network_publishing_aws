@@ -1018,9 +1018,6 @@ body.page-node-microsite {
   font-size: 1.2em;
   color: #e5ce96;
 }
-#microsite .block-usanetwork-mpx-video .view .file h4:after, #block-views-usa-mpx-video-fullepisodes-live .view .file h4:after {
-  background-image: none;
-}
 /* corrected & add styles */
 #microsite section .microsite-section-container {
   margin: 0 17px 0 265px;
@@ -2167,24 +2164,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   .page-node-microsite #tv-show-menu li {
     display: block;
-  }
-  .page-node-microsite #tv-show-menu .item-list .slide-panel-link {
-    background-color: #2d2d2d;
-    border-color: #3d3d3d;
-    border-style: solid;
-    border-width: 0 0 1px;
-    color: #d0d0d0;
-    display: block;
-    font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
-    font-size: 18px;
-    margin: 0;
-    padding: 10px 12px 8px;
-    line-height: 1;
-    position: relative;
-    text-transform: lowercase;
-  }
-  .page-node-microsite #tv-show-menu .item-list .slide-panel-link:hover {
-    color: #ffffff;
   }
   .page-node-microsite #tv-show-menu li.parent-item:hover > a:after {
     content: "";

@@ -11,7 +11,6 @@
       padding: 0 10px;
     }
   }
-
   #home_page_aspot_preview,
   #show_aspot_preview {
     .slide {
@@ -75,7 +74,6 @@
           position: relative;
           width: 100%;
         }
-
       }
       .wrp, .node, .asset-img, .asset-img img {
         @include breakpoint($bp-min-769-width) {
@@ -172,6 +170,9 @@
             }
             a {
               background: none !important;
+              &:after {
+                display: none!important;
+              }
             }
           }
           &.cta_button_0 {

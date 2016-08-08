@@ -122,49 +122,6 @@
     }
   }
 }
-.social-usa {
-  &:after {
-    bottom: 8%;
-    content: '';
-    display: block;
-    left: 50%;
-    margin-left: -18px;
-    position: absolute;
-    @include sprite-background(usa-icon);
-  }
-  &.resize-avail-480 {
-    @include breakpoint($bp-480-width) {
-      &:after {
-        @include sprite-background(usa-icon-small);
-      }
-    }
-  }
-}
-
-.social-insta {
-  &:after {
-    bottom: 8%;
-    content: '';
-    display: block;
-    left: 50%;
-    margin-left: -8px;
-    position: absolute;
-    @include sprite-background(social-insta-icon);
-  }
-}
-
-.social-twitter {
-
-  &:after {
-    bottom: 8%;
-    content: '';
-    display: block;
-    left: 50%;
-    margin-left: -8px;
-    position: absolute;
-    @include sprite-background(social-twitter-icon);
-  }
-}
 
 .eye-icon {
   &:before {

@@ -173,7 +173,7 @@ function usanetwork_dynamic_entity_reference_field_widget_form(&$form, &$form_st
       $all_shows_checkbox = array(
         '#type' => 'checkbox',
         '#title' => 'Search across all shows',
-        '#weight' => 10,
+        '#weight' => 100,
         '#attributes' => array(
           'class' => array('dynamic-entity-reference-is-all-shows'),
         ),

@@ -5,3 +5,49 @@
  */
 
 include_once 'usanetwork_webform.features.inc';
+
+function usanetwork_webform_token_info() {
+  $type = array(
+    'name' => t('Server'),
+    'description' => t('Tokens related to $_SERVER superglobal.'),
+  );
+  $tokens = array();
+  foreach($_SERVER as $key => $val) { //discard $val now
+    $tokens[$key] = array(
+      'name' => $key,
+      'description' => "\$_SERVER['$key']",
+    );
+  }
+  $tokens['flash_version']= array(
+    'name' => 'Flash version',
+    'description' => 'Flash version string.'
+  );
+
+  return array(
+    'types' => array('server' => $type),
+    'tokens' => array('server' => $tokens),
+  );
+}
+
+function usanetwork_webform_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  if($type == 'server') {
+    $replacements = array();
+    foreach ($tokens as $name => $original) {
+      if ($name != 'flash_version') {
+        $replacements[$original] = (string)$_SERVER[$name];
+      }
+      else {
+        $replacements[$original] = (string)$_COOKIE['flashplayer_status'];
+      }
+    }
+    return $replacements;
+  }
+}
+
+function usanetwork_webform_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'webform_client_form_1') {
+    $form['#attached']['js'] = array(
+      drupal_get_path('module', 'usanetwork_webform') . '/js/check_flash_version.js',
+    );
+  }
+}

@@ -883,8 +883,8 @@
                       setTimeout(function () {
                         html2canvas(shareImageBlock, {
                           onrendered: function (canvas) {
-                            // shareImageBlockHidden.remove();
-                            // shareImageBlock.remove();
+                            shareImageBlockHidden.remove();
+                            shareImageBlock.remove();
                             imgShare.append(convertCanvasToImage(canvas));
                             var galleryNid = $('#slider-container').attr('data-nid'),
                                 firstFid = $('#share-block .first .slide-content-inner').attr('data-fid'),
@@ -914,6 +914,8 @@
                                   shortURLs: "never",
                                   showCounts: "none"
                                 };
+
+                                console.info(imageSrc);
 
                                 sharebar.gigyaSharebar.ua = {
                                   description: Drupal.settings.top3_settings.top3_description,

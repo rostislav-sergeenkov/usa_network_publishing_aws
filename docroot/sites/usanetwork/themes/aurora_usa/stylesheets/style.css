@@ -33773,6 +33773,9 @@ body.blog .view-display-id-blog_content .views-row {
   border: 1px solid transparent;
 }
 
+.node-type-top3-gallery {
+  overflow-x: hidden;
+}
 .node-type-top3-gallery #content .region-content {
   position: relative;
 }

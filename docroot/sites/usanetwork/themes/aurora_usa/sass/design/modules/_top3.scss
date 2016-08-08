@@ -1,4 +1,5 @@
 .node-type-top3-gallery {
+  overflow-x: hidden;
   #content .region-content {
     position: relative;
   }
@@ -14,6 +15,7 @@
   top: 0;
   z-index: 1;
 }
+
 #share-image-block {
   display: none;
   height: 720px;

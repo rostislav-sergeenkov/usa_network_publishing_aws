@@ -1,3 +1,19 @@
+.node-type-top3-gallery {
+  #content .region-content {
+    position: relative;
+  }
+}
+#share-image-block-hidden {
+  background-color: #000000;
+  height: 100%;
+  width: 100%;
+  min-height: 720px;
+  min-width: 1280px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
 #share-image-block {
   display: none;
   height: 720px;
@@ -122,6 +138,7 @@
   padding: get-vw(120px, 1901) get-vw(90px, 1901) get-vw(120px, 1901) get-vw(130px, 1901);
   position: relative;
   width: 100%;
+  z-index: 2;
   @include breakpoint($bp-min-1901-width) {
     padding: 120px 110px;
   }

@@ -254,16 +254,20 @@
             .meta {
               color: #ffffff;
               margin-left: get-vw(185px, 1025);
+              margin-right: get-vw(150px, 1025); // my addition (width shareblock)
               padding-top: 0;
               position: relative;
               @include breakpoint($bp-min-1901-width) {
                 margin-left: 343px;
+                margin-right: 278px; // too(width shareblock)
               }
               @include breakpoint($bp-1024-width) {
                 margin-left: 185px;
+                margin-right: 0; //====================
               }
               @include breakpoint($bp-480-width) {
                 margin-left: 0;
+                margin-right: 0; //======================
               }
               .description {
                 clear: none;

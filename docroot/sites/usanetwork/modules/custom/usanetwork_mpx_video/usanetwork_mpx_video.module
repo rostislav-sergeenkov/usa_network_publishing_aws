@@ -1244,10 +1244,12 @@ function usanetwork_mpx_video_page_alter(&$page) {
   //HOTFIX for removing DTM Omniture Call if Disabled Omniture Variables
   $current_menu_object = _usanetwork_menu_get_object();
   if (isset($current_menu_object)) {
-    $entity_settings = _usanetwork_ads_entity_settings($current_menu_object, $current_menu_object->entity_type);
-    if (isset($entity_settings['omniture']['disable']) && $entity_settings['omniture']['disable']) {
-      drupal_add_js('window.USA_suppressCall = 1;', array('type' => 'inline', 'scope' => 'header', 'every_page' => TRUE, 'preprocess' => FALSE));
-//        return "undefined" != typeof window.USA_suppressCall ? !window.USA_suppressCall : !0;
+    if (isset($current_menu_object->entity_type)) {
+      $entity_settings = _usanetwork_ads_entity_settings($current_menu_object, $current_menu_object->entity_type);
+      if (isset($entity_settings['omniture']['disable']) && $entity_settings['omniture']['disable']) {
+        drupal_add_js('window.USA_suppressCall = 1;', array('type' => 'inline', 'scope' => 'header', 'every_page' => TRUE, 'preprocess' => FALSE));
+        //        return "undefined" != typeof window.USA_suppressCall ? !window.USA_suppressCall : !0;
+      }
     }
   }
 }

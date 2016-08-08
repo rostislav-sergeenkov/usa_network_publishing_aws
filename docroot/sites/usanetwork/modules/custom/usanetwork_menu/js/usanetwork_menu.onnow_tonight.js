@@ -1,11 +1,9 @@
-(function($) {
+(function ($) {
   Drupal.behaviors.usanetwork_menu_onnow_tonight = {
     attach: function (context, settings) {
 
-      if (usa_deviceInfo.mobileDevice) {
-        if (!usa_deviceInfo.smartphone) {
-          usanetworkMenuGetOTBlockInfo();
-        }
+      if (usa_deviceInfo.mobileDevice && !usa_deviceInfo.smartphone) {
+        usanetworkMenuGetOTBlockInfo();
       } else {
         usanetworkMenuGetOTBlockInfo();
       }
@@ -18,7 +16,7 @@
           dataType: 'JSON',
           data: {},
           url: Drupal.settings.basePath + 'ajax/render-onnow-tonight/' + timezoneOffset,
-          success: function(message) {
+          success: function (message) {
             var onnowTonightBlock = $('#block-usanetwork-menu-usanetwork-menu-aspot-ot .content');
 
             if (typeof message.html != undefined) {
@@ -31,69 +29,26 @@
 
       // Init schedule carousel
       function scheduleInit() {
-        $('.schedule-carousel').carouFredSel({
-          auto: false,
-          circular: false,
-          infinite: false,
-          direction: "left",
-          prev: $('.schedule-on-tonight').find('.schedule-buttons .on-now'),
-          next: $('.schedule-on-tonight').find('.schedule-buttons .on-tonight'),
-          responsive: true,
-          items: {
-            visible: 1,
-            start: $('.schedule-block .on-tonight')
-          },
-          scroll: {
-            items: 1,
-            duration: 300,
-            pauseOnHover: true
-          },
-          onCreate: function () {
-            $(".schedule-buttons a, .schedule-on-tonight a.calendar-reminder").click(scheduleBtnClick);
-            window.seeit_remind_plugin.init();
-          }
+        $('#block-usanetwork-menu-usanetwork-menu-aspot-ot .schedule-buttons a').on('click', scheduleBtnClick);
+        $('#block-usanetwork-menu-usanetwork-menu-aspot-ot .schedule-on-tonight a.calendar-reminder').on('click', function (e) {
+          e.preventDefault();
         });
+        if (window.hasOwnProperty('seeit_remind_plugin')) {
+          window.seeit_remind_plugin.init();
+        }
       }
 
       // Changed class schedule carousel
       var scheduleBtnClick = function (e) {
         e.preventDefault();
 
-        if (!$(this).hasClass('active')) {
-          var current_class = $(this).attr('data-class');
+        var current_class = $(this).attr('data-class');
 
-          $(".schedule-buttons a, .schedule-on-tonight a.calendar-reminder").removeClass('active');
-          $(this).parent().removeClass('on-tonight on-now');
-          $(this).parent().addClass(current_class);
-          $(this).addClass('active');
-        }
+        $('#block-usanetwork-menu-usanetwork-menu-aspot-ot .schedule-carousel')
+            .removeClass('on-tonight on-now')
+            .addClass(current_class);
       };
-
-      $(window).bind('resize', function () {
-        if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
-          if ($('.schedule-carousel').hasClass('destroy')) {
-            scheduleInit();
-            $('.schedule-carousel').removeClass('destroy');
-            $('.schedule-buttons').removeClass('on-tonight on-now').addClass('on-tonight');
-            $('.schedule-buttons a').removeClass('active');
-            $('.schedule-buttons a.on-tonight').addClass('active');
-          }
-        } else {
-          if (!$('.schedule-carousel').hasClass('destroy')) {
-            $('.schedule-carousel').trigger('_cfs_triggerEvent', ['destroy', true]);
-            $('.schedule-carousel').addClass('destroy');
-          }
-        }
-      });
-
-      $(window).load(function () {
-        if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
-          $('.schedule-carousel').addClass('destroy');
-        } else {
-          scheduleInit();
-        }
-      });
-
     }
   };
+
 })(jQuery);

@@ -344,7 +344,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
         $alt_text = _usanetwork_get_field_item('file', $gallery_file, 'field_file_image_alt_text', 'value');
         $idx++;
         if ($is_new_design) {
-          if (!empty($info) && ($info['width'] < $info['height'])) {
+          if (!empty($info) && ($info['width'] <= $info['height'])) {
             $slide_variables = array(
               'image' => theme_image(array(
                 'path' => '',
@@ -390,6 +390,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
                 'data-lazy' => file_create_url(image_style_url('usanetwork_media_gallery_image', $gallery_file->uri)),
                 'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $gallery_file->uri)),
                 'alt' => $alt_text,
+                'class' => (!empty($info) && ($info['width'] <= $info['height'])) ? 'portrait' : '',
               ),
             )),
             'info' => array(
@@ -407,6 +408,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
                 'data-lazy' => file_create_url($gallery_file->uri),
                 'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $gallery_file->uri)),
                 'alt' => $alt_text,
+                'class' => (!empty($info) && ($info['width'] <= $info['height'])) ? 'portrait' : '',
               ),
             )),
             'info' => array(

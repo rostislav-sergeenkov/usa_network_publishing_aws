@@ -374,10 +374,12 @@
   usaGallery.prototype.createCustomPaging = function (slick, index) {
 
     var $slide = $(slick.$slides[index].innerHTML),
-        imgPreviewUrl = $($slide.find('img')[0]).data('preview'),
+        slideImg = $($slide.find('img')[0]),
+        imgPreviewUrl = slideImg.data('preview'),
+        imgPreviewClass = (slideImg.hasClass('portrait'))? 'class="preview-portrait" ': '',
         showColorPager = ($('body[class*=" show-"]').length > 0 || $('body').hasClass('page-videos-live')) ? 'show-color ' : '';
 
-    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div><img src="' + imgPreviewUrl + '" alt=""></div>';
+    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div><img ' + imgPreviewClass + 'src="' + imgPreviewUrl + '" alt=""></div>';
   };
 
   usaGallery.prototype.createSlidesCounter = function (slick) {
@@ -446,7 +448,7 @@
     }
 
     // vertical version
-    if (!statusBp && (!$('body').hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$('body').hasClass('node-type-post') && !$('body').hasClass('node-type-catchall-seo-page')) {
+    if (!statusBp && (!$('body').hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$('body').hasClass('blog') && !$('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginRight: '',
         marginTop: pagerWrapStyles.desktop.marginTop,
@@ -460,7 +462,7 @@
     }
 
     // horizontal version
-    if (statusBp || ($('body').hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $('body').hasClass('node-type-post') || $('body').hasClass('node-type-catchall-seo-page')) {
+    if (statusBp || ($('body').hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $('body').hasClass('blog') || $('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginTop: '',
         marginRight: pagerWrapStyles.mobile.marginRight,
@@ -486,9 +488,9 @@
       return;
     }
 
-    if (statusBp || ($body.hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $body.hasClass('node-type-post')) {
+    if (statusBp || ($body.hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $body.hasClass('blog')) {
       _.movePagerHorizontal(_this, slideIndex);
-    } else if (!statusBp && (!$body.hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$body.hasClass('node-type-post')) {
+    } else if (!statusBp && (!$body.hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$body.hasClass('blog')) {
       _.movePagerVertical(_this, slideIndex);
     }
   };
@@ -680,66 +682,66 @@
         refreshAD = false;
 
     _.$gallery
-        .on('init', function (event, slick) {
+      .on('init', function (event, slick) {
 
-          $gallery.addClass('ready');
+        $gallery.addClass('ready');
 
-            _.updateGalleryElem(_);
-            _.createPagerPosition(_);
-            _.setPagerPosition(_);
-            _.gigyaSharebar(initialSlide);
-            _.movePagerItems(_, initialSlide);
+          _.updateGalleryElem(_);
+          _.createPagerPosition(_);
+          _.setPagerPosition(_);
+          _.gigyaSharebar(initialSlide);
+          _.movePagerItems(_, initialSlide);
 
-          if (initSlidesCounter) {
-            _.createSlidesCounter(slick);
-          }
-          if (initMouseWhell) {
-            _.addMouseWhell(slick);
-          }
-          if (initResize) {
-            _.resize(_);
-          }
-        })
-        .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        if (initSlidesCounter) {
+          _.createSlidesCounter(slick);
+        }
+        if (initMouseWhell) {
+          _.addMouseWhell(slick);
+        }
+        if (initResize) {
+          _.resize(_);
+        }
+      })
+      .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
-          // Interstitial
-          if (initInterstitial) {
-            // advert counter up +1
-            adCounter += 1;
-            // if advertCounter = slidesCount fire show gallery advert
-            if (adCounter === adSlidesCount) {
-              // reset advert counter
-              adCounter = 0;
-              // show gallery ad
-              _.insertInterstitial.showInterstitial(_, refreshAD);
-              refreshAD = true;
-            }
+        // Interstitial
+        if (initInterstitial) {
+          // advert counter up +1
+          adCounter += 1;
+          // if advertCounter = slidesCount fire show gallery advert
+          if (adCounter === adSlidesCount) {
+            // reset advert counter
+            adCounter = 0;
+            // show gallery ad
+            _.insertInterstitial.showInterstitial(_, refreshAD);
+            refreshAD = true;
           }
+        }
 
-          if (initAdobeTracking) {
-            _.callAdobeTracking();
-          }
+        if (initAdobeTracking) {
+          _.callAdobeTracking();
+        }
 
-          if ($('body').hasClass('page-node-microsite')
-            && typeof Drupal.behaviors.ms_global == 'object'
-            && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
-              Drupal.behaviors.ms_global.refreshAds('galleries');
-          }
-        })
-        .on('afterChange', function (event, slick, currentSlide) {
-          _.gigyaSharebar(currentSlide);
-          _.movePagerItems(_, currentSlide);
+        if ($('body').hasClass('page-node-microsite')
+          && typeof Drupal.behaviors.ms_global == 'object'
+          && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
+            Drupal.behaviors.ms_global.refreshAds('galleries');
+        }
+      })
+      .on('afterChange', function (event, slick, currentSlide) {
+        _.gigyaSharebar(currentSlide);
+        _.movePagerItems(_, currentSlide);
 
-          if (_.$body.hasClass('node-type-media-gallery')) {
-            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+        if (_.$body.hasClass('node-type-media-gallery')) {
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+        }
+        if (_.$body.hasClass('node-type-person') || _.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post') || (_.$body.hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
+          if (!$('.region-header').hasClass('sticky-shows-submenu')) {
+            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
           }
-          if (_.$body.hasClass('node-type-person') || _.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post') || (_.$body.hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
-            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
-            if (!$('.region-header').hasClass('sticky-shows-submenu')) {
-              Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
-            }
-          }
-        });
+        }
+      });
 
     _.$interstitialNext.on('click', function () {
       _.insertInterstitial.hideInterstitial(_);

@@ -629,3 +629,40 @@ function usanetwork_feedback_update_7101() {
   
   node_save($node);
 }
+
+/**
+ * Add technical field.
+ */
+function usanetwork_feedback_update_7102() {
+  $nid = db_select("node", "n")
+    ->fields("n", array("nid"))
+    ->condition("title", "Feedback", '=')
+    ->condition("type", "webform", '=')
+    ->orderBy('nid', 'desc')
+    ->execute()
+    ->fetchField();
+
+  $node = node_load($nid);
+
+  $node->webform['components'][13] = array (
+    'nid' => 1,
+    'cid' => '13',
+    'pid' => '0',
+    'form_key' => 'technical_information',
+    'name' => 'Technical information',
+    'type' => 'hidden',
+    'value' => 'Flash Version: [server:flash_version];
+*User Agent: [server:HTTP_USER_AGENT];',
+    'extra' =>
+      array (
+        'private' => 0,
+        'hidden_type' => 'value',
+        'analysis' => false,
+      ),
+    'required' => '0',
+    'weight' => '12',
+    'page_num' => 1,
+  );
+
+  node_save($node);
+}

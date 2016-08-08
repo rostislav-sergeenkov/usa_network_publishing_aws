@@ -1,4 +1,12 @@
 %desktop-full-promo {
+  .sponsored {
+    @include breakpoint($bp-min-769-width) {
+      bottom: 9.1vw;
+    }
+    @include breakpoint($bp-min-1901-width) {
+      bottom: 173px;
+    }
+  }
   .meta-wrapper {
     @include breakpoint($bp-min-769-width) {
       background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
@@ -92,6 +100,17 @@
   }
 }
 %mobile-full-promo {
+  .sponsored {
+    @include breakpoint($between-641-768) {
+      bottom: 25%;
+    }
+    @include breakpoint($bp-640-width) {
+      bottom: 29%;
+    }
+    @include breakpoint($bp-480-width) {
+      bottom: 33%;
+    }
+  }
   .meta-wrapper {
     @include breakpoint($between-641-768) {
       background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
@@ -332,6 +351,14 @@
   }
 }
 %desktop-half-vertical-promo {
+  .sponsored {
+    @include breakpoint($bp-min-769-width) {
+      bottom: calc((100% - #{get-vw(16px, 1900)})*0.125);
+    }
+    @include breakpoint($bp-min-1901-width) {
+      bottom: calc((100% - 16px)*0.125);
+    }
+  }
   .meta-wrapper {
     @include breakpoint($bp-min-769-width) {
       background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
@@ -441,6 +468,14 @@
   }
 }
 %mobile-half-vertical-promo {
+  .sponsored {
+    @include breakpoint($bp-768-width) {
+      bottom: calc((100% - #{get-vw(12px, 1900)})*0.125);
+    }
+    @include breakpoint($bp-480-width) {
+      bottom: 12.4vw;
+    }
+  }
   .meta-wrapper {
     @include breakpoint($bp-768-width) {
       background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
@@ -726,6 +761,15 @@
       top: 0;
       width: 100%;
       @extend %meta;
+      .sponsored {
+        bottom: 25%;
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        @include breakpoint($bp-480-width) {
+          bottom: 12.4vw;
+        }
+      }
       .meta-wrapper {
         bottom: 0;
         position: absolute;

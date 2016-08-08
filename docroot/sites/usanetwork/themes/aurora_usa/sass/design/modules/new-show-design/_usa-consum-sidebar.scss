@@ -19,14 +19,11 @@
     &.sticky-sidebar {
       overflow: hidden;
       @include breakpoint($bp-min-1025-width) {
-        //height: calc(100vh - 7.12195vw)!important;
         height: 100vh !important;
         left: calc(100% - 320px - #{get-vw(16px, 1280)});
         position: fixed!important;
         right: auto;
         top: 0 !important;
-
-        //top: get-vw(73px, 1025)!important;
         .more-items {
           bottom: auto!important;
           margin-top: -45px;
@@ -37,9 +34,7 @@
         width: calc((100% - #{get-vw(16px, 1280)*2})*0.25 );
       }
       @include breakpoint($bp-min-1601-width) {
-        //height: calc(100vh - 135px)!important;
         left: calc(1170px + (100% - 1560px)/2);
-        //top: 135px!important;
         right: auto;
         max-width: 390px;
       }

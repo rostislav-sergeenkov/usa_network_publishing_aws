@@ -214,18 +214,35 @@ function usanetwork_taboola_preprocess_node(&$vars) {
           $character_id = _usanetwork_get_field_item('node', $node, 'field_person', 'target_id');
           $character = node_load($character_id);
         }
-        $first_name = _usanetwork_get_field_item('node', $character, 'field_person_first_name', 'value');
-        $last_name = _usanetwork_get_field_item('node', $character, 'field_person_last_name', 'value');
-        $actor = _usanetwork_get_field_item('node', $character, 'field_usa_actor_name', 'value');
-        $tag_taboola = array(
-          '#type' => 'html_tag',
-          '#tag' => 'meta',
-          '#attributes' => array(
-            'name' => 'syndication-promo-text',
-            'content' => t('View Photos of @actor, who plays @character on @show_name',
-              array('@show_name' => $show->title, '@actor' => $actor, '@character' => $first_name . ' ' . $last_name)),
-          ),
-        );
+        if ($character) {
+          $first_name = _usanetwork_get_field_item('node', $character, 'field_person_first_name', 'value');
+          $last_name = _usanetwork_get_field_item('node', $character, 'field_person_last_name', 'value');
+          $actor = _usanetwork_get_field_item('node', $character, 'field_usa_actor_name', 'value');
+          $tag_taboola = array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+              'name' => 'syndication-promo-text',
+              'content' => t('View Photos of @actor, who plays @character on @show_name',
+                array(
+                  '@show_name' => $show->title,
+                  '@actor' => $actor,
+                  '@character' => $first_name . ' ' . $last_name
+                )),
+            ),
+          );
+        }
+        else {
+          $tag_taboola = array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+              'name' => 'syndication-promo-text',
+              'content' => t('View @show_name Photos: @title',
+                array('@show_name' => $show->title, '@title' => $node->title)),
+            ),
+          );
+        }
         drupal_add_html_head($tag_taboola, 'syndication-promo-text');
       }
       elseif ($gallery_type == 'GIF Gallery') {
@@ -355,8 +372,13 @@ function usanetwork_taboola_preprocess_node(&$vars) {
 function usanetwork_taboola_preprocess_file_entity(&$vars) {
   $file = $vars['file'];
   if (in_array($file->type,  _pub_mpx_get_mpx_account_video_file_types(TRUE)) && $vars['view_mode'] == 'full') {
-    $show = _usanetwork_get_field_item('file', $file, 'field_show', 'entity');
-    $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
+    $file_wrapper = entity_metadata_wrapper('file', $file);
+    if (isset($file->field_show)) {
+      $show = $file_wrapper->field_show->value();
+    }
+    if (isset($file->field_mpx_full_episode)) {
+      $full_episode = $file_wrapper->field_mpx_full_episode->value();
+    }
     if ($full_episode === '0') {
       if (!empty($show)) {
         $filter = usanetwork_mpx_video_get_video_category($file);
@@ -378,8 +400,12 @@ function usanetwork_taboola_preprocess_file_entity(&$vars) {
     }
     else {
       if (!empty($show)) {
-        $season = _usanetwork_get_field_item('file', $file, 'field_mpx_season_number', 'value');
-        $episode = _usanetwork_get_field_item('file', $file, 'field_mpx_episode_number', 'value');
+        if (isset($file->field_mpx_season_number)) {
+          $season = $file_wrapper->field_mpx_season_number->value();
+        }
+        if (isset($file->field_mpx_episode_number)) {
+          $episode = $file_wrapper->field_mpx_episode_number->value();
+        }
         $tag_taboola = array(
           '#type' => 'html_tag',
           '#tag' => 'meta',
@@ -397,7 +423,9 @@ function usanetwork_taboola_preprocess_file_entity(&$vars) {
         drupal_add_html_head($tag_taboola, 'syndication-promo-text');
       }
       else {
-        $movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
+        if (isset($file->field_movie)) {
+          $movie = $file_wrapper->field_movie->value();
+        }
         if (!empty($movie)) {
           $tag_taboola = array(
             '#type' => 'html_tag',
@@ -425,5 +453,22 @@ function usanetwork_taboola_preprocess_file_entity(&$vars) {
       ),
     );
     drupal_add_html_head($tag_taboola_image, 'syndication-promo-image');
+
+    if (isset($file->field_mpx_expiration_date)) {
+      $expiration_date = $file_wrapper->field_mpx_expiration_date->value();
+    }
+    if (!empty($expiration_date)) {
+      $expiration_date_format = gmdate('D, d M Y H:i:s T', $expiration_date);
+
+      $tag_taboola_expiration_date = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'item-expiration-date',
+          'content' => $expiration_date_format,
+        ),
+      );
+      drupal_add_html_head($tag_taboola_expiration_date, 'item-expiration-date');
+    }
   }
 }

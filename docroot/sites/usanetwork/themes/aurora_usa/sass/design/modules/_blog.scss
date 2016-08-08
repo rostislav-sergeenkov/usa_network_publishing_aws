@@ -58,27 +58,22 @@ body {
         .inside {
           margin-left: 0;
         }
-
         .panel-pane {
           border-bottom: 3px solid $gray-med-dark;
           padding-bottom: 10px;
           margin-bottom: 10px;
-
           @include breakpoint($bp-blog-mobile) {
             &:nth-of-type(2n + 2) {
               margin-left: 0;
             }
           }
-
           .dart-name-300x250_scr {
             max-height: 250px;
             overflow: hidden;
           }
-
           p {
             margin-top: 0;
           }
-
           h2 {
             &.pane-title {
               @extend %regular-headline;
@@ -89,7 +84,6 @@ body {
               padding-bottom: 10px;
             }
           }
-
           .view-display-id-most_popular {
             .views-row {
               @extend %regular-headline;
@@ -114,24 +108,10 @@ body {
           }
         }
       }
-
-      .file-video-mpx {
-        &.view-mode-inline_content {
-          iframe {
-            width: 615px;
-            height: 345px;
-            @include breakpoint($bp-blog-mobile) {
-              width: 300px;
-              height: 168px;
-            }
-          }
-        }
-      }
     }
     .usanetwork-show-menu-panel {
       width: 100%;
     }
-
     .view-display-id-blog_content {
       .views-row {
         border-bottom: 3px solid $gray-med-dark;
@@ -151,7 +131,7 @@ body {
 
 .node {
   &.node-post {
-    @extend %semi-headline;
+    font-family: $avalon-medium;
     font-size: 16px;
     .field-name-body {
       margin-bottom: 40px;
@@ -210,7 +190,6 @@ body {
         @include link-colors($blue-hampton, $black, $blue-hampton, $blue-hampton, $blue-hampton);
       }
     }
-
     .panel-display {
       @include breakpoint($bp-menu-narrow) {
         min-width: 297px;
@@ -375,7 +354,6 @@ body {
       .panel-col-last {
         .panel-pane {
           border-bottom: none;
-
           h2 {
             &.pane-title {
               color: $blue-hampton;
@@ -391,7 +369,6 @@ body {
             }
           }
         }
-
         .view-display-id-most_popular {
           .views-row {
             .views-field-title {
@@ -406,7 +383,6 @@ body {
         }
       }
     }
-
     .view-display-id-blog_content {
       .views-row {
         border-bottom: 1px solid $beige;
@@ -426,7 +402,6 @@ body {
         }
       }
     }
-
     .field-name-post-date {
       color: $blue-hampton;
       @include breakpoint($bp-menu-narrow) {

@@ -1,0 +1,19 @@
+%bottom-drawer {
+  @include transition-duration(0.2s);
+  @include transition-timing-function(linear);
+  @include transition-property(all);
+  @include translate3d(0, 100%, 0);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  z-index: $ziMegaPanels;
+  background: $nav-black;
+  &.active-item {
+    @include translate3d(0, 0, 0);
+    bottom: $primary-nav-height-dt;
+    .usa-showmenu-active & {
+      bottom: $primary-nav-height-dt + 50px;
+    }
+  }
+}

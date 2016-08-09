@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix {
   zoom: 1;
 }
@@ -8161,17 +8161,20 @@ header .tve-help-link.signIn .inlineLoader {
 .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta {
   color: #ffffff;
   margin-left: 18.04878vw;
+  margin-right: 14.63415vw;
   padding-top: 0;
   position: relative;
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta {
     margin-left: 343px;
+    margin-right: 278px;
   }
 }
 @media (max-width: 1024px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta {
     margin-left: 185px;
+    margin-right: 0;
   }
 }
 @media (max-width: 480px) {
@@ -16458,8 +16461,8 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 
 .tveModal .modalHeader .closeButton {
   background-position: 0 0;
-  right: -20px !important;
-  top: 0 !important;
+  right: -19px !important;
+  top: 3px !important;
 }
 
 @media (min-width: 1025px) {
@@ -16864,6 +16867,11 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   border: none;
   padding: 0;
   cursor: pointer;
+  background-color: transparent;
+  -moz-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
 }
 
 .tveModal .richContent .mainHeading {
@@ -32327,12 +32335,10 @@ yx-axis
 }
 .schedule-on-tonight .icons-block {
   margin-left: 0.94687vw;
-  margin-top: 0.52604vw;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .icons-block {
     margin-left: 18px;
-    margin-top: 10px;
   }
 }
 .schedule-on-tonight .icons-block a {
@@ -32349,6 +32355,7 @@ yx-axis
 }
 .schedule-on-tonight .icons-block a:before {
   font-size: 1.3677vw;
+  line-height: 1;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .icons-block a:before {
@@ -32507,6 +32514,9 @@ yx-axis
     float: left;
     margin-left: 1.51515vw;
   }
+  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .episode-show {
+    padding-left: 0;
+  }
 }
 .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .time {
   margin-left: 0;
@@ -32556,20 +32566,20 @@ yx-axis
   .schedule-on-tonight .schedule-block .time {
     font-size: 25px;
     line-height: 30px;
-    padding-right: 45px;
+    padding-right: 35px;
   }
 }
 .schedule-on-tonight .schedule-block .time span, .schedule-on-tonight .schedule-block .time a {
   color: #ffffff;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 2.34375vw;
-  line-height: 2.96875vw;
+  font-size: 2.31457vw;
+  line-height: 2.94582vw;
   letter-spacing: 3px;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block .time span, .schedule-on-tonight .schedule-block .time a {
-    font-size: 44.6px;
-    line-height: 56.4px;
+    font-size: 44px;
+    line-height: 56px;
   }
 }
 .schedule-on-tonight .schedule-block .time span.time-color, .schedule-on-tonight .schedule-block .time a.time-color {
@@ -32618,39 +32628,39 @@ yx-axis
   color: #ffffff;
   float: left;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.26249vw;
+  font-size: 0.84166vw;
   letter-spacing: 0.5px;
-  margin-top: 0.46875vw;
+  margin-top: 0.52604vw;
   text-transform: uppercase;
   width: 53%;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block .episode-info {
-    font-size: 24px;
-    margin-top: 8.9px;
+    font-size: 16px;
+    margin-top: 10px;
   }
 }
 .schedule-on-tonight .schedule-block .episode-show {
-  height: 2.89321vw;
+  height: 1.89374vw;
   line-height: 1.2;
-  margin-bottom: 1.05208vw;
+  margin-bottom: 0.52604vw;
   overflow: hidden;
   word-wrap: break-word;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block .episode-show {
-    height: 55px;
-    margin-bottom: 20px;
+    height: 36px;
+    margin-bottom: 10px;
   }
 }
 .schedule-on-tonight .schedule-block .episode-show .episode-show-wrapper {
   display: table-cell;
-  height: 2.89321vw;
+  height: 1.89374vw;
   vertical-align: middle;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block .episode-show .episode-show-wrapper {
-    height: 55px;
+    height: 36px;
   }
 }
 .schedule-on-tonight .schedule-block .icons-block:after {

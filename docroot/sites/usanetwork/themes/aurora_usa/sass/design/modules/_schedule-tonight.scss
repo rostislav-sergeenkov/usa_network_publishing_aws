@@ -155,10 +155,8 @@
   }
   .icons-block {
     margin-left: get-vw(18px, 1901);
-    margin-top: get-vw(10px, 1901);
     @include breakpoint($bp-min-1901-width) {
       margin-left: 18px;
-      margin-top: 10px;
     }
     a {
       clear: none;
@@ -171,6 +169,7 @@
       }
       &:before {
         font-size: get-vw(26px, 1901);
+        line-height: 1;
         @include breakpoint($bp-min-1901-width) {
           font-size: 26px;
         }
@@ -289,6 +288,9 @@
                 margin-left: get-vw(15px, 990);
               }
             }
+            .episode-show {
+              padding-left: 0;
+            }
           }
           .time {
             margin-left: 0;
@@ -331,17 +333,17 @@
       @include breakpoint($bp-min-1901-width) {
         font-size: 25px;
         line-height: 30px;
-        padding-right: 45px;
+        padding-right: 35px;
       }
       span, a {
         color: #ffffff;
         font-family: $avalon-medium;
-        font-size: get-vw(30px, 1280);
-        line-height: get-vw(38px, 1280);
+        font-size: get-vw(44px, 1901);
+        line-height: get-vw(56px, 1901);
         letter-spacing: 3px;
         @include breakpoint($bp-min-1901-width) {
-          font-size: 44.6px;
-          line-height: 56.4px;
+          font-size: 44px;
+          line-height: 56px;
         }
         &.time-color {
           font-family: $avalon-medium;
@@ -390,32 +392,32 @@
       color: #ffffff;
       float: left;
       font-family: $avalon-medium;
-      font-size: get-vw(24px, 1901);
+      font-size: get-vw(16px, 1901);
       letter-spacing: 0.5px;
-      margin-top: get-vw(6px, 1280);
+      margin-top: get-vw(10px, 1901);
       text-transform: uppercase;
       width: 53%;
       @include breakpoint($bp-min-1901-width) {
-        font-size: 24px;
-        margin-top: 8.9px;
+        font-size: 16px;
+        margin-top: 10px;
       }
     }
     .episode-show {
-      height: get-vw(55px, 1901);
+      height: get-vw(36px, 1901);
       line-height: 1.2;
-      margin-bottom: get-vw(20px, 1901);
+      margin-bottom: get-vw(10px, 1901);
       overflow: hidden;
       word-wrap: break-word;
       @include breakpoint($bp-min-1901-width) {
-        height: 55px;
-        margin-bottom: 20px;
+        height: 36px;
+        margin-bottom: 10px;
       }
       & .episode-show-wrapper {
         display: table-cell;
-        height: get-vw(55px, 1901);
+        height: get-vw(36px, 1901);
         vertical-align: middle;
         @include breakpoint($bp-min-1901-width) {
-          height: 55px;
+          height: 36px;
         }
       }
     }

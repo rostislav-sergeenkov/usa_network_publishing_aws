@@ -59,8 +59,9 @@
                             class="additional"><?php print $item['date'] ?></div>
                         <?php endif; ?>
                       </div>
-                      <div
-                        class="caption"><?php print $item['description'] ?></div>
+                      <?php if ($item['description']): ?>
+                        <div class="caption" data-text="<?php print $item['description'] ?>"><?php print $item['description'] ?></div>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>

@@ -46,15 +46,6 @@
       background: url("../images/sprites/circle.png") no-repeat transparent;
     }
   }
-  .carousel {
-    .jcarousel-controls {
-      background:transparent;
-      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#60ffffff,endColorstr=#60ffffff);
-      &:hover{
-        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80ffffff,endColorstr=#80ffffff);
-      }
-    }
-  }
   .aspot-and-episodes {
     .episodes-list {
       ul {

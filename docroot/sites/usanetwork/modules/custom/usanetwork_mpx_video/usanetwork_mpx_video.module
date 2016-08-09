@@ -20,6 +20,7 @@ define('USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL', 10);
 define("USA_MPX_VIDEO_FULL_VIDEO", "Full Episodes");
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 define('USA_MPX_ACCOUNT_NAME', 'NBCU USA Network');
+define('USA_MPX_TVE_ACCOUNT_NAME', 'NBCU TVE - USA Network');
 define('USA_MPX_IMAGE_SIZE', '1080');
 
 /**
@@ -76,6 +77,14 @@ function usanetwork_mpx_video_menu() {
     'page arguments' => array('_usanetwork_mpx_watchwith_admin_form'),
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_mpx_video.admin.inc',
+  );
+
+  $items['video/share/%'] = array(
+    'title' => 'Video Page',
+    'description' => 'MPX Media GUID Redirect',
+    'page callback' => '_usanetwork_mpx_media_guid_redirect',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
   );
 
   return $items;
@@ -209,11 +218,6 @@ function usanetwork_mpx_video_block_view($delta) {
       $block['subject'] = '';
        $block['content'] = array(
          '#markup' => usanetwork_mpx_video_full_latest_episodes_carousel(),
-         '#attached' => array(
-           'js' => array(
-             drupal_get_path('theme', 'aurora_usa') . '/javascripts/full-episodes-carousel.js',
-           ),
-         ),
        );
       break;
     case 'usa_mpx_video_clips':
@@ -528,7 +532,6 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
  */
 function usanetwork_mpx_video_global_videos_page() {
   //get featured elements
-  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/full-episodes.js');
   $usanework_full_episodes_aspot = array_slice(variable_get('usanework_full_episodes_aspot', array()), 0, USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS);
 
   $featured_aspot= $featured_carousel= array();
@@ -3472,5 +3475,42 @@ function usanetwork_mpx_video_form_alter(&$form, &$form_state, $form_id) {
         ':input[name="field_endcard_timing[und]"]' => array('value' => 'enable_custom'),
       ),
     );
+  }
+}
+
+/*
+ * Redirect for MPX by v/file_guid
+ */
+function _usanetwork_mpx_media_guid_redirect($guid) {
+  $tve_account_id = db_select('mpx_accounts', 'ma')
+    ->fields('ma', array('id'))
+    ->condition('import_account', rawurlencode(USA_MPX_TVE_ACCOUNT_NAME), 'LIKE')
+    ->execute()
+    ->fetchField();
+  $account_tve =  _media_theplatform_mpx_get_account_data($tve_account_id);
+  $files = media_theplatform_mpx_get_files_by_guid($guid, $account_tve);
+  if (!empty($files)) {
+    $file_full = reset($files);
+    $full_video = _usanetwork_get_field_item('file', $file_full, 'field_mpx_full_episode', 'value');
+  }
+
+  if (empty($files) || $full_video == 0) {
+    $tve_account_id = db_select('mpx_accounts', 'ma')
+      ->fields('ma', array('id'))
+      ->condition('import_account', rawurlencode(USA_MPX_ACCOUNT_NAME), 'LIKE')
+      ->execute()
+      ->fetchField();
+    $account_mpx =  _media_theplatform_mpx_get_account_data($tve_account_id);
+    $files_short = media_theplatform_mpx_get_files_by_guid($guid, $account_mpx);
+    $file_short = reset($files_short);
+    $file = $file_short;
+  } else {
+    $file = $file_full;
+  }
+
+  if (isset($file)) {
+    drupal_goto(url('file/' . $file->fid));
+  } else {
+    drupal_goto(url('/'));
   }
 }

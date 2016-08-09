@@ -1385,6 +1385,7 @@ function _usanetwork_menu_consumptionator_block_person($node) {
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->body) ? $entity_wrapper->body->value()['value'] : '');
     $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
+    $description = preg_replace("/<img.+\>/i", "", $description);
     $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
     if (!empty($advert_block['content'])) {
       $authbar = render($advert_block['content']);

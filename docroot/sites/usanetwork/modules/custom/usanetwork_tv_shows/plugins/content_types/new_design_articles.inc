@@ -70,6 +70,11 @@ function new_design_articles_content_type_render($subtype, $conf, $args, $contex
     $block->content = array(
       '#theme' => 'new_design_articles',
       '#content' => array('logo' => $logo, 'articles' => $out),
+      '#attached' => array (
+        'js' => array(
+          drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.dotdotdot.min.js',
+        ),
+      ),
     );
   }
   return $block;

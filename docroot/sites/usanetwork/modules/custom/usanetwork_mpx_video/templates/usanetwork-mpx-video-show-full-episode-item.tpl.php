@@ -1,4 +1,4 @@
-<li class="<?php print ($is_first) ? 'first' : ''; ?>">
+<li class="carousel-item swiper-slide">
   <div class="node node-usanetwork-promo">
     <a href="<?php print $video_url; ?>">
       <div class="meta-wrap">

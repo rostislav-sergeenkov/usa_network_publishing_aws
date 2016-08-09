@@ -11,66 +11,65 @@
     padding: 40px;
   }
   @include breakpoint($bp-768-width) {
-    padding: get-vw(60px, 768) 0px 0px;
+    padding: get-vw(60px, 768) 0 0;
   }
   @include breakpoint($bp-480-width) {
-    padding: 37.5px 0px 0px;
+    padding: 37.5px 0 0;
   }
   .carousel {
-    @include breakpoint($between-769-1024) {
-      &.start {
-        margin-left: 165px;
-        overflow: hidden;
-        &:hover {
-          .jcarousel-control-next {
-            right: 125px;
-          }
-        }
-      }
-    }
-    @include breakpoint($bp-min-1025-width) {
-      &.start {
-        margin-left: 165px;
-        overflow: hidden;
-        &:hover {
-          .jcarousel-control-next {
-            right: 105px;
-          }
-        }
-      }
-    }
-    @include breakpoint($bp-min-1601-width) {
-      &.start {
-        margin-left: 265px;
-        &:hover {
-          .jcarousel-control-next {
-            right: 205px;
-          }
-        }
-      }
-    }
-    @include breakpoint($bp-768-width) {
-      &.start {
-        margin-left: 0px;
-      }
-      .jcarousel-controls {
-        display: none;
-      }
-    }
     &.carousel_2_rows {
       height: 515px;
-      .node-usanetwork-promo {
-        margin-bottom: 15px;
-      }
       @include breakpoint($bp-min-1601-width) {
         height: 573px;
       }
       @include breakpoint($bp-768-width) {
         height: auto;
       }
+      li.description-item {
+        height: 515px;
+        @include breakpoint($bp-min-1601-width) {
+          height: 573px;
+        }
+        @include breakpoint($bp-768-width) {
+          margin-right: 0;
+          height: auto;
+        }
+      }
+      li:not(.description-item) {
+        @include breakpoint($bp-min-769-width) {
+          height: 100%;
+        }
+      }
+      .node-usanetwork-promo {
+        height: 250px;
+        margin-bottom: 15px;
+        @include breakpoint($bp-min-1601-width) {
+          height: 279px;
+        }
+        @include breakpoint($bp-min-769-width) {
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
     }
     ul {
-      li {
+      li.description-item {
+        margin-right: 40px;
+        height: 250px;
+        width: 145px;
+        @include breakpoint($between-769-1024) {
+          width: 125px;
+        }
+        @include breakpoint($bp-min-1601-width) {
+          height: 279px;
+          width: 245px;
+        }
+        @include breakpoint($bp-768-width) {
+          margin-right: 0;
+        }
+      }
+      li:not(.description-item) {
         margin-right: 15px;
         @include breakpoint($bp-min-1601-width) {
           height: 279px;
@@ -81,22 +80,16 @@
     }
   }
   .carousel-description-item {
-    left: -225px;
-    width: 225px;
-    &.start {
-      left: 0;
-    }
-    .description-wrapper {
-      padding: 40px;
-      width: 100%;
-    }
+    width: 145px;
     @include breakpoint($between-769-1024) {
-      left: -205px;
-      width: 205px;
+      width: 125px;
     }
     @include breakpoint($bp-min-1601-width) {
-      left: -325px;
-      width: 325px;
+      width: 245px;
+    }
+    .description-wrapper {
+      padding: 0;
+      width: 100%;
     }
     .caption, .additional-text {
       font-size: 12px;
@@ -144,6 +137,7 @@
       margin-top: get-vw(50px, 768);
       padding: 0 10px;
       ul {
+        display: block;
         width: 100%;
         li {
           margin-bottom: 15px;
@@ -183,14 +177,11 @@
     }
     .carousel-description-item {
       height: auto;
-      left: 0px;
-      padding: 0px 20px;
+      left: 0;
+      padding: 0 20px;
       position: relative;
       top: 0;
       width: 100%;
-      &.start {
-        left: 0px;
-      }
       .description-wrapper {
         display: block;
         float: none;

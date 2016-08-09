@@ -164,11 +164,6 @@ function usanetwork_blocks_block_view($delta) {
       $block['subject'] = '';
       $block['content'] = array(
         '#markup' => _usanetwork_blocks_social_carousel_block_content(),
-        '#attached' => array(
-          'js' => array(
-            drupal_get_path('theme', 'aurora_usa') . '/javascripts/social-carousel.js'
-          ),
-        ),
       );
       break;
     case 'usanetwork_catchall_related':

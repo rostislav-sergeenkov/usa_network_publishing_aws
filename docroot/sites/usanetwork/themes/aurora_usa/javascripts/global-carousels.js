@@ -1,457 +1,800 @@
+/* readme
+
+ dependency:
+
+ Swiper - http://idangero.us/swiper
+ VelocityJS - VelocityJS.org
+
+ */
+
 (function ($) {
-  Drupal.behaviors.global_carousels = {
-    carouselInit: function () {
 
-      /**
-       * LEFT CAROUSELS INITIALIZATION
-       */
-      $('.carousel-left').each(function () {
-        var $container = $(this),
-            $carousel = $container.find('ul').eq(0),
-            carousel_id = $container.eq(0).attr('data-carousel-id');
-        if ((!$carousel.hasClass('stop')) && (!$container.hasClass('destroy'))) {
-          $container
-              .on('jcarousel:createend', function () {
-                $carousel.find('a').click(function (e) {
-                  e.preventDefault();
-                });
-                $container.swipe({
-                  excludedElements: "button, input, select, textarea, .noSwipe",
-                  allowPageScroll: "vertical",
-                  threshold: 50,
-                  swipeRight: function () {
-                    if (!$carousel.hasClass('stop')) {
-                      var visible_item = $container.jcarousel('visible').index($container.find('li.first'));
-                      if (visible_item >= 0 && !$container.hasClass('start')) {
-                        Drupal.behaviors.global_carousels.swipeShowDescription($container);
-                      }
-                      var swipeElements = '-=' + Drupal.behaviors.global_carousels.swipeItems($carousel);
-                      $container.jcarousel('scroll', swipeElements);
-                    }
-                  },
-                  swipeLeft: function () {
-                    var count = Drupal.behaviors.global_carousels.swipeItems($carousel);
+  'use strict';
 
-                    if (!$carousel.hasClass('stop')) {
-                      if ($container.hasClass('start')) {
-                        if ($(window).width() <= 768) {
-                          $container.jcarousel('scroll', '+=' + count);
-                        } else {
-                          if (Drupal.behaviors.global_carousels.checkFirstSlideOverflow($container)) {
-                            Drupal.behaviors.global_carousels.swipeHideDescription($container);
-                          } else {
-                            Drupal.behaviors.global_carousels.swipeHideDescription($container);
-                            $container.jcarousel('scroll', '+=' + count);
-                          }
-                        }
-                      } else {
-                        $container.jcarousel('scroll', '+=' + count);
-                      }
-                    }
-                  },
-                  tap: function (event, target) {
+  var usaCarouselLeft = window.usaCarouselLeft || {};
 
-                    if ($(target).hasClass('slides')) {
-                      return false;
-                    }
+  usaCarouselLeft = (function () {
 
-                    var click_on_opened = $(target).closest('li.active').length > 0;
-                    var tapHandler = function() {
-                      if ($(target).attr('href')) {
-                        if (!$(target).hasClass('show-open')) {
-                          window.location = $(target).attr('href');
-                        } else {
-                          if ($container.hasClass('start')) {
-                            Drupal.behaviors.global_carousels.swipeHideDescription($container);
-                            setTimeout(function () {
-                              Drupal.behaviors.global_carousels.showOpen($(target));
-                            }, 600);
-                          }
-                          else {
-                            Drupal.behaviors.global_carousels.showOpen($(target));
-                          }
-                        }
-                      } else {
-                        var link = $(target).closest('a');
+    function usaCarouselLeft(element, settings) {
 
-                        if ($(target).find('a.show-open').length > 0) {
-                          if ($container.hasClass('start')) {
-                            Drupal.behaviors.global_carousels.swipeHideDescription($container);
+      var _ = this;
 
-                            setTimeout(function () {
-                              Drupal.behaviors.global_carousels.showOpen($(target).find('a.show-open'));
-                            }, 600);
-                          }
-                          else {
-                            Drupal.behaviors.global_carousels.showOpen($(target).find('a.show-open'));
-                          }
-                        }
+      _.defaults = {
 
-                        if (link.length == 0) {
-                          return false;
-                        }
+        // selectors
+        selectors: {
+          carouselWrap: '.carousel-left',
+          carousel: '.usa-carousel-left',
+          prevArrow: '.usa-carousel-control-prev',
+          nextArrow: '.usa-carousel-control-next',
+          carouselDescription: '.carousel-description-item',
+          carouselItem: '.carousel-item',
+          moreButton: '.more-button'
+        },
 
-                        if (!link.hasClass('show-open')) {
-                          window.location = link.attr('href');
-                        } else {
-                          if ($container.hasClass('start')) {
-                            Drupal.behaviors.global_carousels.swipeHideDescription($container);
+        // swiper
+        swiper: {
+          freeMode: true,
+          loop: false,
+          initialSlide: 0,
+          slidesPerView: 'auto',
+          speed: 500,
+          buttonDisabledClass: 'usa-carousel-button-disabled'
+          // controls buttons sets on init
+        },
 
-                            setTimeout(function () {
-                              Drupal.behaviors.global_carousels.showOpen($(target));
-                            }, 600);
-                          } else {
-                            Drupal.behaviors.global_carousels.showOpen($(target));
-                          }
-                        }
-                      }
-                    };
+        // show card
+        isShowCardCarousel: false,
+        showCardOpenItemClass: 'show-open',
+        showCardCloseItemClass: 'close-button',
+        showCardSocialIconsSelector: '.social-icons',
+        showCardCarouselItemNodeClassOpen: 'open',
+        showCardCarouselClassStop: 'stop',
+        showCardCarouselItemClassAdvertEnable: 'advert-enable',
+        showCardCarouselItemClassActive: 'active',
+        showCardOpenItemClassActive: 'active',
+        showCardOpenAnimeTime: 500,
+        // showCardOpenAnimeEasing: 'easeInCubic',
+        //showCardCloseAnimeEasing: 'easeOutQuint',
+        showCardOpenAnimeEasing: 'easeInOutCubic',
+        showCardCloseAnimeEasing: 'easeInOutCubic',
+        isShowCardGetAdMinBp: 769,
+        showCardBp: {
+          // variables-and-functions.js
+          window_size_desktop_large: 1901,
+          window_size_desktop_large_1900: 1900,
+          window_size_desktop_1280: 1280,
+          window_size_tablet_1024: 1024,
+          window_size_tablet_portrait_768: 768,
+          window_size_mobile_480: 480
+        },
+        showCardOpenWidth: {
+          desktop_show_open_width_large: 2164,
+          desktop_show_open_width: 1450
+        },
+        showCardMargin: {
+          show_carousel_margin: 60,
+          show_carousel_margin_1024: 40,
+          show_carousel_margin_480: 20
+        },
 
-                    if ((event instanceof MouseEvent) && event.button != 0) {
-                      return false;
-                    }
+        // description item
+        isMobileDescription: false, // use replace description item
+        mobileDescriptionBp: 768, // breakpoint for mobile version
+        addMobileDescriptionClick: false, // add CLICK on description item
+        isDescriptionSponsored: false, // update mpsSponsorShip.execShowCard
+        descriptionSponsoredClass: 'sponsored',
+        descriptionSponsoredStyle: 'light-stacked',
 
-                    if (($carousel.find('li.active').length > 0) && ($carousel.hasClass('stop'))) {
-                      $carousel.unbind('show:close');
-                      $carousel.on('show:close', function() {
-                        if ($(target).closest('a.show-open').hasClass('active')) {
-                          $(target).closest('a.show-open').removeClass('active');
-                          return false;
-                        }
-                        if (!$(target).closest('li.active').length > 0) {
-                          $carousel.find('a.show-open.active').removeClass('active');
-                          tapHandler();
-                        }
-                      });
-                      Drupal.behaviors.global_carousels.showClose($carousel.find('li.active'));
-                    } else {
-                      tapHandler();
-                    }
-                  }
-                });
-              })
-              .on('jcarousel:scroll', function (event, carousel) {
-                $.each(carousel._items, function (i, v) {
-                  if ($(v).hasClass('active')) {
-                    Drupal.behaviors.global_carousels.showClose($(v));
-                  }
-                });
-                $container.on('jcarousel:fullyvisiblein', 'li.first', function (event, carousel) {
-                  if (!$carousel.hasClass('stop')) {
-                    Drupal.behaviors.global_carousels.swipeShowDescription($container);
-                  }
-                });
-              })
-              .on('jcarousel:scrollend', function (event, carousel) {
-                setTimeout(function(){
-                  Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(carousel._items);
-                }, 500);
-              })
-              .on('jcarousel:reloadend', function (event, carousel) {
-                $carousel.find('a').click(function (e) {
-                  e.preventDefault();
-                });
-              })
-              .jcarousel({
-                animation: {
-                  duration: 500,
-                  easing: 'linear'
-                },
-                rtl: false
-              });
-        }
+        // more button
+        isMoreButtonCarousel: false,
+        moreButtonBp: 768,
+        moreButtonHiddenItemsGt: 1,
+        moreButtonClassMore: 'more',
+        moreButtonClassClose: 'close',
+        moreButtonCarouselItemsClassHidden: 'hidden',
 
-        Drupal.behaviors.global_carousels.carouselControlsInit('left', carousel_id, $container, $carousel);
-      });
+        // others
+        mainWrapReadyClassName: 'ready',
+        mainWrapActiveClassName: 'active',
+        initClassName: 'usa-carousel-initialized'
+      };
 
-      /**
-       * RIGHT CAROUSELS INITIALIZATION
-       */
-      $('.carousel-right').each(function () {
-        var $container = $(this),
-            $carousel = $container.find('ul').eq(0),
-            carousel_id = $container.eq(0).attr('data-carousel-id');
+      // create global initials object
+      _.initials = $.extend(true, _.defaults, settings);
 
-        $container
-            .on('jcarousel:createend', function () {
-              $carousel.find('a').click(function (e) {
-                e.preventDefault();
-              });
+      // elements
+      _.usaSwiper = {};
+      _.$body = $(document.body);
+      _.$mainWrap = $(element);
+      _.$carouselWrap = $(element).find(_.initials.selectors.carouselWrap);
+      _.$carousel = $(element).find(_.initials.selectors.carousel);
+      _.$carouselDescription = $(element).find(_.initials.selectors.carouselDescription);
+      _.$carouselDescriptionSponsored = _.$carouselDescription.find(_.initials.selectors.descriptionSponsoredClass);
+      _.$prevArrow = $(element).find(_.initials.selectors.prevArrow);
+      _.$nextArrow = $(element).find(_.initials.selectors.nextArrow);
+      _.$carouselItems = $(element).find(_.initials.selectors.carouselItem);
+      _.$moreButton = $(element).find(_.initials.selectors.moreButton);
 
-              $carousel.css('left', '0px');
-              $container.swipe({
-                excludedElements: "button, input, select, textarea, .noSwipe",
-                swipeLeft: function () {
-                  var visible_item = $container.jcarousel('visible').index($container.find('li.first'))
-                  if (visible_item >= 0 && !$container.hasClass('start')) {
-                    Drupal.behaviors.global_carousels.swipeShowDescription($container);
-                  }
-                  var swipeElements = '-=' + Drupal.behaviors.global_carousels.swipeItems($carousel);
-                  $container.jcarousel('scroll', swipeElements);
-                },
-                swipeRight: function () {
-                  if ($container.hasClass('start')) {
-                    Drupal.behaviors.global_carousels.swipeHideDescription($container);
-                    var count = (Drupal.behaviors.global_carousels.swipeItems($carousel) <= 1) ? 1 : Drupal.behaviors.global_carousels.swipeItems($carousel) - 1;
-                    $container.jcarousel('scroll', '+=' + count);
-                  } else {
-                    $container.jcarousel('scroll', '+=' + Drupal.behaviors.global_carousels.swipeItems($carousel));
-                  }
-                },
-                tap: function (event, target) {
-                  if ((event instanceof MouseEvent) && event.button != 0) {
-                    return false;
-                  }
-                  if ($(target).attr('href')) {
-                    window.location = $(target).attr('href');
-                  } else {
-                    var link = $(target).closest('a');
-                    if (link.length == 0) {
-                      return false;
-                    }
-                    window.location = link.attr('href');
-                  }
-                }
-              });
-            })
-            .on('jcarousel:scroll', function (event, carousel) {
-              $.each(carousel._items, function (i, v) {
-                if ($(v).hasClass('active')) {
-                  Drupal.behaviors.global_carousels.showClose($(v));
-                }
-              });
-              $container.on('jcarousel:fullyvisiblein', 'li.first', function (event, carousel) {
-                Drupal.behaviors.global_carousels.swipeShowDescription($container);
-              })
-            })
-            .on('jcarousel:reloadend', function (event, carousel) {
-              $carousel.find('a').click(function (e) {
-                e.preventDefault();
-              });
+      // options
+      _.options = {
+        carouselViewport: _.$carouselWrap.width(),
+        carouselItemsLength: _.$carouselItems.length,
+        isWindowLoad: false,
+        isCarouselInit: false,
+        isMobileDescriptionInit: false,
+        isMobileDescriptionActive: false,
+        isMobileDescriptionBp: _.checkMatchWindowWidth('max', _.initials.mobileDescriptionBp),
+        isMoreButtonActive: false,
+        isMoreButtonBp: _.checkMatchWindowWidth('max', _.initials.moreButtonBp),
+        isShowCardGetAdminMinBp: _.checkMatchWindowWidth('min', _.initials.showCardGetAdminMinBp),
+        defaultCarouselDescriptionItemClass: _.$carouselDescription.parent().attr('class'),
+      };
 
-              $carousel.css('left', '0px');
-            })
-            .jcarousel({
-              animation: {
-                duration: 500,
-                easing: 'linear'
-              },
-              rtl: true
-            });
+      // showCard
+      _.showCard = {
+        isOpen: false,
+        inProgress: false
+      };
 
-        Drupal.behaviors.global_carousels.carouselControlsInit('right', carousel_id, $container, $carousel);
-      });
+      // init app
+      _.init(true);
+    }
 
-      // TODO: Unite right, left, vert initialization loops into one
-      $('.carousel').each(function () {
-        var $container = $(this),
-            $carousel = $container.find('ul').eq(0),
-            carousel_id = $container.eq(0).attr('data-carousel-id');
-      });
+    return usaCarouselLeft;
 
-    },
-    carouselControlsInit: function (direction, carousel_id, $container, $carousel) {
-      var carousel = '.carousel-' + direction + '[data-carousel-id="' + carousel_id + '"] ',
-          prev_control = '.jcarousel-control-prev',
-          next_control = '.jcarousel-control-next',
-          first = carousel, second = carousel;
+  }());
 
-      if ((carousel_id) && (!$(carousel).hasClass('destroy'))) {
-        /*if ((direction === 'left') || (direction === 'vert')) {
-         first += prev_control;
-         second += next_control;
-         } else {
-         first += next_control;
-         second += prev_control;
-         }*/
-        first += prev_control;
-        second += next_control;
+  /* --------------------------
+   * Helper functionality
+   ----------------------------*/
 
-        $(first + ', ' + second)
-            .on('jcarouselcontrol:active', function () {
-              $(this).removeClass('inactive');
-            })
-            .on('jcarouselcontrol:inactive', function () {
-              $(this).addClass('inactive');
-            });
+  // check Window Width
+  usaCarouselLeft.prototype.checkMatchWindowWidth = function (widthName, bp) {
+    // widthName - 'min' or 'max'; bp - breakpoint for check
+    return window.matchMedia('(' + widthName + '-width: ' + bp + 'px)').matches;
+  };
 
-        $(first).jcarouselControl({
-          target: '-=' + Drupal.behaviors.global_carousels.swipeItems($carousel)
-        });
+  // setTimeout
+  usaCarouselLeft.prototype.setTimeout = function (callback, delay) {
 
-        $(second)
-            .on('click', function () {
-              if ($(this).hasClass('inactive') && $(this).hasClass('jcarousel-control-prev')) {
-                Drupal.behaviors.global_carousels.swipeShowDescription($container);
-              }
-            })
-            .jcarouselControl({
-              target: '+=' + Drupal.behaviors.global_carousels.swipeItems($carousel)
-            });
+    var timeout = null;
+
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      if (typeof callback === 'function') {
+        callback();
       }
-    },
-    swipeItems: function (carousel) {
-      var width = window.innerWidth,
-          item_width = carousel.find('> li').eq(0).width() + parseInt(carousel.find('> li').eq(0).css('margin-right'));
+    }, delay);
+  };
 
-      return Math.floor(width / item_width);
-    },
-    swipeHideDescription: function (element) {
-      element.removeClass('start');
-      element.prev().removeClass('start');
-    },
-    swipeShowDescription: function (element) {
-      element.addClass('start');
-      element.prev().addClass('start');
-    },
-    showOpen: function (target) {
-      var current_item = target.closest('li');
-      var current_item_show_open_link = current_item.find('a.show-open');
-      var current_item_node = current_item.find('.node').eq(0);
-      var carousel = target.closest('ul');
-      var current_left = parseInt(carousel.css('left'));
-      var width = desktop_show_open_width;
-      var item_width = current_item.width();
+  // add || remove class
+  usaCarouselLeft.prototype.addElemClass = function (elem, className, callback) {
 
-      if (window.matchMedia("(min-width: " + window_size_desktop_large + "px)").matches) {
+    var _ = this,
+        $elem = $(elem),
+        elemClass = className.trim();
 
-        var browserName = browserDetect(),
-            widthDiff = window.innerWidth - $(window).innerWidth();
+    if (!$elem.hasClass(elemClass)) {
+      $elem.addClass(elemClass);
+    }
+    if (typeof callback === 'function') {
+      callback();
+    }
+  };
+  usaCarouselLeft.prototype.removeElemClass = function (elem, className, callback) {
 
-        if (browserName === 'safari' && window.innerWidth - widthDiff >= window_size_desktop_large) {
-          width = desktop_show_open_width_large;
-        } else if (browserName !== 'safari') {
-          if (window.innerWidth >= window_size_desktop_large) {
-            width = desktop_show_open_width_large;
-          }
-        }
-      }
+    var _ = this,
+        $elem = $(elem),
+        elemClass = className.trim();
 
-      if (window.matchMedia("(max-width: " + window_size_desktop_1280 + "px)").matches) {
-        width = window.innerWidth - 2 * show_carousel_margin + item_width;
-      }
-      if (window.matchMedia("(max-width: " + window_size_mobile_480 + "px)").matches) {
-        var scrollWidth = window.innerWidth - document.body.clientWidth;
-        width = width + scrollWidth;
-      }
-      var width_block = width - item_width;
-      var left = (window.innerWidth - width_block) / 2 - item_width - current_item.offset()['left'] + current_left;
-
-      if(!current_item_node.hasClass('advert-enable')) {
-        Drupal.behaviors.mpsSponsorShip.execSponsoredBlock(current_item_node);
-      }
-
-      carousel.velocity({ left: left }, 500, 'linear');
-      current_item.velocity({ width: width }, {
-        duration: 500,
-        easing: 'easeInCubic',
-        progress: function(elements, complete, remaining, start, tweenValue) {
-          if (complete * 100 >= 60 && !current_item.hasClass('active')) {
-            current_item.addClass('active');
-          }
-        }
-      });
-
-      current_item_show_open_link.addClass('active');
-      current_item_node.addClass('open');
-      current_item.find('.show-open').css('max-width', item_width);
-      setTimeout(function () {
-        current_item.find('.social-icons').show();
-      }, 500);
-      current_item.attr('data-left', current_left);
-      current_item.attr('data-width', item_width);
-      carousel.addClass('stop');
-
-      Drupal.behaviors.omniture_tracking.showCardClick(current_item_node);
-
-    },
-    showClose: function (item) {
-      var carousel = item.closest('ul');
-      var current_item_node = item.find('.node').eq(0);
-      var left = parseInt(item.attr('data-left'));
-      var item_width = parseInt(item.attr('data-width'));
-      current_item_node.removeClass('open');
-      carousel.animate({left: left}, 500, 'easeOutQuint');
-      item.velocity({ width: item_width }, {
-        duration: 500,
-        easing: 'easeOutQuint',
-        progress: function(elements, complete, remaining, start, tweenValue) {
-          if (complete * 100 >= 10 && item.hasClass('active')) {
-            item.removeClass('active');
-          }
-          if (complete * 100 == 100) {
-            item.removeAttr('style');
-            item.find('.show-open').removeAttr('style');
-            carousel.trigger('show:close');
-          }
-        }
-      });
-      item.find('.social-icons').hide();
-      item.removeAttr('data-left');
-      item.removeAttr('data-width');
-      carousel.removeClass('stop');
-
-      //if(window.innerWidth >= window_size_tablet_portrait ) {
-      //  if (current_item_node.data('mpspath')) {
-      //    Drupal.behaviors.mpsSponsorShip.removeExecSponsoredBlock(current_item_node);
-      //  } else {
-      //    Drupal.behaviors.mpsAdvert.homeShowsQueueRemoveAd(current_item_node);
-      //  }
-      //}
-
-      //item.find('.show-open').unbind('click');
-    },
-
-    checkFirstSlideOverflow: function($carousel) {
-      var first_slide_width = $carousel.find('ul.slides .first').width(),
-          desc_width = $carousel.parent().find('.carousel-description-item').width(),
-          window_width = $(window).width();
-
-      return (first_slide_width + desc_width > window_width);
-    },
-
-    attach: function (context, settings) {
-
-
-      $(window).bind('resize', function () {
-        Drupal.behaviors.global_carousels.carouselInit();
-      });
-
-      //$(window).load(function () {
-        Drupal.behaviors.global_carousels.carouselInit();
-
-        $(".carousel.start .jcarousel-control-next").unbind('click');
-        $(".carousel.start .jcarousel-control-next").click(function (e) {
-          var $carousel = $(this).closest('.carousel'),
-              overflow = Drupal.behaviors.global_carousels.checkFirstSlideOverflow($carousel),
-              count;
-
-          if ($carousel.length > 1) $carousel = $($carousel.get(0));
-
-          e.preventDefault();
-
-          count = (Drupal.behaviors.global_carousels.swipeItems($($carousel).find('ul')) <= 1)
-            ? 1 : Drupal.behaviors.global_carousels.swipeItems($($carousel).find('ul')) - 1;
-
-          if (overflow && $carousel.hasClass('start')) {
-            Drupal.behaviors.global_carousels.swipeHideDescription($(this).parent());
-          } else {
-            Drupal.behaviors.global_carousels.swipeHideDescription($(this).parent());
-            $carousel.jcarousel('scroll', '+=' + count);
-          }
-        });
-
-        $(".carousel .jcarousel-control-prev").click(function (e) {
-          if ($(this).hasClass('inactive') && !$(this).closest('.carousel').hasClass('start')){
-            var carousel = $(this).closest('.carousel');
-
-            Drupal.behaviors.global_carousels.swipeShowDescription(carousel);
-          }
-        });
-
-      //});
+    if ($elem.hasClass(elemClass)) {
+      $elem.removeClass(elemClass);
+    }
+    if (typeof callback === 'function') {
+      callback();
     }
   };
 
+  // update options
+  usaCarouselLeft.prototype.updateOptions = function () {
+
+    var _ = this;
+
+    _.$carouselItems = $(_.$mainWrap).find(_.initials.selectors.carouselItem);
+    _.$carouselDescription = $(_.$mainWrap).find(_.initials.selectors.carouselDescription);
+    _.options.carouselViewport = _.$carousel.width();
+    _.options.isMobileDescriptionBp = _.checkMatchWindowWidth('max', _.initials.mobileDescriptionBp);
+    _.options.isMoreButtonBp = _.checkMatchWindowWidth('max', _.initials.moreButtonBp);
+    _.options.isShowCardGetAdminMinBp = _.checkMatchWindowWidth('max', _.initials.showCardGetAdminMinBp);
+  };
+
+  // addEvents
+  usaCarouselLeft.prototype.addEvents = function () {
+
+    var _ = this;
+
+    // show card events
+    if (_.initials.isShowCardCarousel) {
+      // open click
+      $(_.$carousel).on('click', '.' + _.initials.showCardOpenItemClass, function (e) {
+
+        e.preventDefault();
+
+        var $self = $(e.currentTarget);
+
+        if (!_.options.isWindowLoad) {
+          return;
+        }
+
+        if (_.showCard.inProgress) {
+          return;
+        }
+
+        if (_.showCard.isOpen && $self.hasClass(_.initials.showCardOpenItemClassActive)) {
+          _.closeShowCard();
+        } else if (_.showCard.isOpen && !$self.hasClass(_.initials.showCardOpenItemClassActive)) {
+          _.closeShowCard(function () {
+            _.openShowCard($self);
+          });
+        } else if (!_.showCard.isOpen && !$self.hasClass(_.initials.showCardOpenItemClassActive)) {
+          _.openShowCard($self);
+        }
+      });
+      // close click
+      $(_.$carousel).on('click', '.' + _.initials.showCardCloseItemClass, function (e) {
+
+        e.preventDefault();
+
+        if (_.options.isWindowLoad) {
+          _.closeShowCard();
+        }
+      });
+    }
+
+    // add description click
+    if (_.initials.isMobileDescription && _.initials.addMobileDescriptionClick) {
+      $(_.$mainWrap).on('click', _.initials.selectors.carouselDescription, function (e) {
+        if (_.options.isMobileDescriptionBp) {
+          if (!_.options.isMobileDescriptionActive) {
+            _.addElemClass(_.$mainWrap, _.initials.mainWrapActiveClassName, function () {
+              _.usaSwiper.onResize(true);
+              _.options.isMobileDescriptionActive = true;
+            });
+          } else if (_.options.isMobileDescriptionActive) {
+            _.removeElemClass(_.$mainWrap, _.initials.mainWrapActiveClassName, function () {
+              _.options.isMobileDescriptionActive = false;
+            });
+          }
+        }
+      });
+    }
+
+    // add more button click
+    if (_.initials.isMoreButtonCarousel) {
+      $(_.$moreButton).on('click', function (e) {
+
+        e.preventDefault();
+
+        var $self = $(e.target);
+
+        if (_.options.isMoreButtonBp) {
+          if (!_.options.isMoreButtonActive) {
+            _.removeElemClass($self, _.initials.moreButtonClassMore, null);
+            _.addElemClass($self, _.initials.moreButtonClassClose, function () {
+              _.showMoreBtnCarouselItems();
+              _.options.isMoreButtonActive = true;
+            });
+          } else if (_.options.isMoreButtonActive) {
+            _.removeElemClass($self, _.initials.moreButtonClassClose, null);
+            _.addElemClass($self, _.initials.moreButtonClassMore, function () {
+              _.hideMoreBtnCarouselItems();
+              try {
+                $(_.$mainWrap).velocity("scroll", {duration: 1000, easing: "linear"});
+              } catch (e) {
+
+              }
+              _.options.isMoreButtonActive = false;
+            });
+          }
+        }
+      });
+    }
+
+    $(window)
+        .load(function () {
+          _.options.isWindowLoad = true;
+        })
+        .on('resize', function () {
+
+          _.updateOptions();
+
+          // show card
+          if (_.initials.isShowCardCarousel && _.showCard.isOpen) {
+            _.closeShowCard();
+          }
+
+          // description
+          if (_.initials.isMobileDescription && _.options.isMobileDescriptionBp && !_.options.isMobileDescriptionInit) {
+            _.onMobileCarouselDescription();
+          } else if (_.initials.isMobileDescription && !_.options.isMobileDescriptionBp && _.options.isMobileDescriptionInit) {
+            _.offMobileCarouselDescription();
+          }
+
+          // more button
+          if (_.options.isCarouselInit && _.initials.isMoreButtonCarousel && _.options.isMoreButtonBp) {
+            _.hideMoreBtnCarouselItems();
+            _.destroySwiper();
+          } else if (!_.options.isCarouselInit && _.initials.isMoreButtonCarousel && !_.options.isMoreButtonBp) {
+            _.showMoreBtnCarouselItems();
+            _.initSwiper();
+          }
+
+          // swiper
+          if (_.options.isCarouselInit) {
+            _.usaSwiper.params.slidesPerGroup = _.calcSlidesPerGroup(_.options.carouselViewport, _.initials.swiper.initialSlide);
+            _.usaSwiper.update(true);
+          }
+        });
+  };
+
+  /* --------------------------
+   * Show card functionality
+   ----------------------------*/
+
+  // openShowCard
+  usaCarouselLeft.prototype.openShowCard = function (target) {
+
+    var _ = this,
+        $mainWrap, $carousel, $openBtn, $currentSlide, currentSlideIndex, $currentSlideNode, $socialIcons,
+        slideGridTranslateX, slideSizeWidth, slideTranslateX, carouselSpeed, durationAnim, easingAnim,
+        carouselDefaultTranslate, slideNewWidth, windowInnerWidth, windowOuterWidth, browserName, widthDiff,
+        isWindow_size_desktop_large, isWindow_size_desktop_large_1900, isWindow_size_desktop_1280,
+        isWindow_size_tablet_1024, isWindow_size_tablet_portrait_768, isWindow_size_mobile_480;
+
+    _.showCard.inProgress = true;
+    $mainWrap = _.$mainWrap;
+    $carousel = _.$carousel;
+    $openBtn = target;
+    $currentSlide = target.closest('li');
+    currentSlideIndex = $currentSlide.index();
+    $currentSlideNode = $currentSlide.find('.node').eq(0);
+    $socialIcons = $currentSlide.find(_.initials.showCardSocialIconsSelector);
+    slideGridTranslateX = _.usaSwiper.slidesGrid[currentSlideIndex];
+    slideSizeWidth = _.usaSwiper.slidesSizesGrid[currentSlideIndex];
+    slideTranslateX = slideSizeWidth + slideGridTranslateX;
+    carouselSpeed = _.usaSwiper.params.speed;
+    durationAnim = _.initials.showCardOpenAnimeTime;
+    easingAnim = _.initials.showCardOpenAnimeEasing;
+    carouselDefaultTranslate = _.usaSwiper.getWrapperTranslate();
+    slideNewWidth = _.initials.showCardOpenWidth.desktop_show_open_width;
+    windowInnerWidth = window.innerWidth;
+    isWindow_size_desktop_large = _.checkMatchWindowWidth('min', _.initials.showCardBp.window_size_desktop_large);
+    isWindow_size_desktop_large_1900 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_desktop_large_1900);
+    isWindow_size_desktop_1280 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_desktop_1280);
+    isWindow_size_tablet_1024 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_tablet_1024);
+    isWindow_size_tablet_portrait_768 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_tablet_portrait_768);
+    isWindow_size_mobile_480 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_mobile_480);
+    browserName = browserDetect();
+    widthDiff = windowInnerWidth - $(window).innerWidth();
+
+    if (_.options.isShowCardGetAdMinBp && !$currentSlideNode.hasClass(_.initials.showCardCarouselItemClassAdvertEnable)) {
+      try {
+        Drupal.behaviors.mpsSponsorShip.execSponsoredBlock($currentSlideNode);
+      } catch (e) {
+        console.log('error show-card: execSponsoredBlock');
+      }
+    }
+
+    if (isWindow_size_desktop_large) {
+      slideTranslateX = slideTranslateX - _.initials.showCardMargin.show_carousel_margin;
+      if (browserName === 'safari' && windowInnerWidth - widthDiff >= _.initials.showCardBp.window_size_desktop_large) {
+        slideNewWidth = _.initials.showCardOpenWidth.desktop_show_open_width_large;
+      } else if (browserName !== 'safari') {
+        if (windowInnerWidth >= _.initials.showCardBp.window_size_desktop_large) {
+          slideNewWidth = _.initials.showCardOpenWidth.desktop_show_open_width_large;
+        }
+      }
+    } else if (isWindow_size_mobile_480) {
+      slideNewWidth = (windowInnerWidth - 2 * _.initials.showCardMargin.show_carousel_margin_480 + slideSizeWidth) + (windowInnerWidth - document.body.clientWidth);
+      slideTranslateX = slideTranslateX - (_.initials.showCardMargin.show_carousel_margin_480 / 2);
+    } else if (isWindow_size_tablet_1024) {
+      slideNewWidth = windowInnerWidth - 2 * _.initials.showCardMargin.show_carousel_margin_1024 + slideSizeWidth;
+      slideTranslateX = slideTranslateX - (_.initials.showCardMargin.show_carousel_margin_480 / 2);
+    } else if (isWindow_size_desktop_1280) {
+      slideNewWidth = windowInnerWidth - 2 * _.initials.showCardMargin.show_carousel_margin + slideSizeWidth;
+    } else if (isWindow_size_desktop_large_1900) {
+      slideTranslateX = slideTranslateX - _.initials.showCardMargin.show_carousel_margin - (windowInnerWidth - slideNewWidth) / 2;
+    }
+
+    // stop carousel
+    _.usaSwiper.lockSwipeToNext();
+    _.usaSwiper.lockSwipeToPrev();
+    _.usaSwiper.lockSwipes();
+    _.usaSwiper.disableMousewheelControl();
+    _.usaSwiper.disableKeyboardControl();
+
+    // set css
+    $openBtn.css('max-width', slideSizeWidth + 'px');
+    $carousel.css({'transition-duration': carouselSpeed + 'ms'});
+
+    // set carousel transition
+    _.usaSwiper.setWrapperTranslate('-' + slideTranslateX, 0, 0);
+
+    // show slide inner content
+    $currentSlide.velocity({width: slideNewWidth}, {
+      duration: durationAnim,
+      delay: carouselSpeed,
+      easing: easingAnim,
+      progress: function (elements, complete, remaining, start, tweenValue) {
+        if (complete * 100 >= 60 && !$currentSlide.hasClass('active')) {
+          _.addElemClass($currentSlide, _.initials.showCardCarouselItemClassActive, null);
+        }
+      },
+      complete: function (elements) {
+        _.showCard.inProgress = false;
+      }
+    });
+
+    // add class
+    _.addElemClass($openBtn, _.initials.showCardOpenItemClassActive, null);
+    _.addElemClass($currentSlideNode, _.initials.showCardCarouselItemNodeClassOpen, null);
+    _.addElemClass($mainWrap, _.initials.showCardCarouselClassStop, null);
+    _.addElemClass($carousel, _.initials.showCardCarouselClassStop, null);
+    $socialIcons.show();
+
+    // set showCard params
+    _.showCard.isOpen = true;
+    _.showCard.$currentSlide = $currentSlide;
+    _.showCard.$currentSlideNode = $currentSlideNode;
+    _.showCard.$openBtn = $openBtn;
+    _.showCard.$socialIcons = $socialIcons;
+    _.showCard.currentSlideIndex = currentSlideIndex;
+    _.showCard.slideGridTranslateX = slideGridTranslateX;
+    _.showCard.slideSizeWidth = slideSizeWidth;
+    _.showCard.slideTranslateX = slideTranslateX;
+    _.showCard.carouselDefaultTranslate = carouselDefaultTranslate;
+    _.showCard.carouselSpeed = carouselSpeed;
+    _.showCard.durationAnim = durationAnim;
+
+    try {
+      Drupal.behaviors.omniture_tracking.showCardClick($currentSlideNode);
+    } catch (e) {
+      console.log('error show-card: showCardClick');
+    }
+  };
+
+  // closeShowCard
+  usaCarouselLeft.prototype.closeShowCard = function (callbackComplete) {
+
+    var _ = this,
+        $mainWrap = _.$mainWrap,
+        $carousel = _.$carousel,
+        $openBtn = _.showCard.$openBtn,
+        $currentSlide = _.showCard.$currentSlide,
+        $currentSlideNode = _.showCard.$currentSlideNode,
+        $socialIcons = _.showCard.$socialIcons,
+        slideSizeWidth = _.showCard.slideSizeWidth,
+        carouselDefaultTranslate = _.showCard.carouselDefaultTranslate,
+        carouselSpeed = _.showCard.carouselSpeed,
+        durationAnim = _.showCard.durationAnim;
+
+    // set carousel transition-duration
+    $carousel.css({
+      'transition-duration': carouselSpeed + 'ms'
+    });
+
+    $currentSlide.velocity({width: slideSizeWidth + 'px'}, {
+      duration: durationAnim,
+      easing: _.initials.showCardCloseAnimeEasing,
+      progress: function (elements, complete, remaining, start, tweenValue) {
+        if (complete * 100 >= 10 && $currentSlide.hasClass(_.initials.showCardCarouselItemClassActive)) {
+          $socialIcons.hide();
+          _.removeElemClass($currentSlideNode, _.initials.showCardCarouselItemNodeClassOpen, null);
+          _.removeElemClass($currentSlide, _.initials.showCardCarouselItemClassActive, null);
+        }
+        // if (complete * 100 == 100) {
+        //
+        // }
+      },
+      complete: function (elements) {
+
+        // remove attr
+        $currentSlide.removeAttr('style');
+        $openBtn.removeAttr('style');
+
+        // set carousel translate
+        _.usaSwiper.setWrapperTranslate(carouselDefaultTranslate);
+
+        // unlock slider events
+        _.usaSwiper.unlockSwipeToNext();
+        _.usaSwiper.unlockSwipeToPrev();
+        _.usaSwiper.unlockSwipes();
+        _.usaSwiper.enableMousewheelControl();
+        _.usaSwiper.enableKeyboardControl();
+        _.usaSwiper.onResize(true);
+
+        // remove class
+        _.removeElemClass($openBtn, _.initials.showCardOpenItemClassActive, null);
+        _.removeElemClass($mainWrap, _.initials.showCardCarouselClassStop, null);
+        _.removeElemClass($carousel, _.initials.showCardCarouselClassStop, null);
+
+        // reset showCard object
+        _.showCard = {
+          isOpen: false,
+          inProgress: false
+        };
+
+        if (typeof callbackComplete === 'function') {
+          callbackComplete();
+        }
+      }
+    });
+  };
+
+  /* --------------------------
+   * Description functionality
+   ----------------------------*/
+
+  // update Description Sponsored Block
+  usaCarouselLeft.prototype.getDescriptionSponsored = function () {
+
+    var _ = this;
+
+    if ($(_.$mainWrap).data('block-name') == "Chrisley Knows Best Carousel") {
+
+      $(_.$carouselDescriptionSponsored).empty();
+
+      _.setTimeout(function () {
+        try {
+          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock(_.$carouselDescription, _.initials.descriptionSponsoredStyle);
+        } catch (e) {
+          console.log('error description sponsored: initSponsoredBlock');
+        }
+      }, 200);
+    }
+
+  };
+
+  // onMobileCarouselDescription
+  usaCarouselLeft.prototype.onMobileCarouselDescription = function () {
+
+    var _ = this;
+
+    if (!_.options.isMobileDescriptionInit) {
+      $(_.$carouselDescription).insertBefore($(_.$carouselWrap));
+      $(_.$carouselItems).eq(0).remove();
+      _.updateOptions();
+      // if (_.initials.isDescriptionSponsored) {
+      //   _.getDescriptionSponsored();
+      // }
+      _.options.isMobileDescriptionInit = true;
+    }
+  };
+
+  // offMobileCarouselDescription
+  usaCarouselLeft.prototype.offMobileCarouselDescription = function () {
+
+    var _ = this;
+
+    if (_.options.isMobileDescriptionInit) {
+      $(_.$carousel).prepend($('<li>', {
+        class: _.options.defaultCarouselDescriptionItemClass,
+        html: _.$carouselDescription
+      }));
+      _.removeElemClass(_.$mainWrap, _.initials.mainWrapActiveClassName, null);
+      _.updateOptions();
+      // if (_.initials.isDescriptionSponsored) {
+      //   _.getDescriptionSponsored();
+      // }
+      _.options.isMobileDescriptionInit = false;
+    }
+  };
+
+  /* --------------------------
+   * More button functionality
+   ----------------------------*/
+  usaCarouselLeft.prototype.showMoreBtnCarouselItems = function () {
+    var _ = this;
+    $(_.$carouselItems).removeClass(_.initials.moreButtonCarouselItemsClassHidden);
+  };
+
+  usaCarouselLeft.prototype.hideMoreBtnCarouselItems = function () {
+    var _ = this;
+    $(_.$carouselItems).filter(':gt(' + _.initials.moreButtonHiddenItemsGt + ')').addClass(_.initials.moreButtonCarouselItemsClassHidden);
+  };
+
+  /* ---------------------------
+   * Carousel functionality
+   ----------------------------*/
+
+  // hide carousel controls
+  usaCarouselLeft.prototype.hideCarouselControlButtons = function () {
+    var _ = this;
+    _.addElemClass(_.$prevArrow, _.initials.swiper.buttonDisabledClass, null);
+    _.addElemClass(_.$nextArrow, _.initials.swiper.buttonDisabledClass, null);
+  };
+
+  // show carousel controls
+  usaCarouselLeft.prototype.showCarouselControlButtons = function () {
+    var _ = this;
+    _.removeElemClass(_.$prevArrow, _.initials.swiper.buttonDisabledClass, null);
+    _.removeElemClass(_.$nextArrow, _.initials.swiper.buttonDisabledClass, null);
+  };
+
+  // calcSlideItemToScroll
+  usaCarouselLeft.prototype.calcSlidesPerGroup = function (viewport, currentItemIndex) {
+
+    var _ = this,
+        $carouselItems = _.$carouselItems,
+        carouselItemsLength = _.options.carouselItemsLength,
+        sumWidth = 0,
+        slidesPerGroup = 0,
+        i;
+    if (_.initials.isMobileDescription && _.options.isMobileDescriptionBp) {
+      slidesPerGroup = 1;
+    } else {
+      for (i = currentItemIndex; i < carouselItemsLength; i++) {
+
+        sumWidth = sumWidth + $carouselItems.eq(i).outerWidth(true);
+
+        if (sumWidth > viewport) {
+          break;
+        } else {
+          slidesPerGroup += 1;
+        }
+      }
+    }
+
+    return slidesPerGroup;
+  };
+
+  // destroy swiper
+  usaCarouselLeft.prototype.destroySwiper = function () {
+
+    var _ = this;
+    if (_.options.isCarouselInit) {
+      _.usaSwiper.destroy(true, true);
+      _.hideCarouselControlButtons();
+    }
+  };
+
+  // init swiper
+  usaCarouselLeft.prototype.initSwiper = function () {
+
+    var _ = this;
+
+    if (_.initials.isMoreButtonCarousel && _.options.isMoreButtonBp) {
+      _.hideMoreBtnCarouselItems();
+      return;
+    }
+
+    _.initials.swiper.onInit = function (sw) {
+      _.options.isCarouselInit = true;
+    };
+
+    _.initials.swiper.onDestroy = function () {
+      _.options.isCarouselInit = false;
+    };
+
+    _.initials.swiper.nextButton = _.$nextArrow;
+    _.initials.swiper.prevButton = _.$prevArrow;
+    _.initials.swiper.slidesPerGroup = _.calcSlidesPerGroup(_.options.carouselViewport, _.initials.swiper.initialSlide);
+    _.usaSwiper = new Swiper(_.$carouselWrap, _.initials.swiper);
+  };
+
+  /* --------------------------
+   * Init app
+   ----------------------------*/
+  usaCarouselLeft.prototype.init = function (creation) {
+
+    var _ = this,
+        $mainWrap = _.$mainWrap,
+        initClassName = _.options.initClassName;
+
+    if (creation && !$($mainWrap).hasClass(initClassName)) {
+      $($mainWrap).addClass(initClassName);
+      if (_.initials.isMobileDescription && _.options.isMobileDescriptionBp && !_.options.isMobileDescriptionInit) {
+        _.onMobileCarouselDescription();
+      }
+      if (_.initials.isDescriptionSponsored) {
+        try {
+          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock(_.$carouselDescription, _.initials.descriptionSponsoredStyle);
+        } catch (e) {
+          console.log('error description sponsored: initSponsoredBlock');
+        }
+      }
+      _.initSwiper();
+      _.addEvents();
+      _.addElemClass(_.$mainWrap, _.initials.mainWrapReadyClassName, null); // add block class ready
+    }
+  };
+
+  //==================================
+  // create jQuery method usaCarouselLeft
+  //==================================
+  $.fn.usaCarouselLeft = function () {
+    var _ = this,
+        opt = arguments[0],
+        args = Array.prototype.slice.call(arguments, 1),
+        l = _.length,
+        i,
+        ret;
+    for (i = 0; i < l; i++) {
+      if (typeof opt == 'object' || typeof opt == 'undefined')
+        _[i].usaCarouselLeft = new usaCarouselLeft(_[i], opt);
+      else
+        ret = _[i].usaCarouselLeft[opt].apply(_[i].usaCarouselLeft, args);
+      if (typeof ret != 'undefined') return ret;
+    }
+    return _;
+  };
+
+  // document ready
+  $(document).ready(function () {
+
+    var $body = $(document.body);
+
+    // home page
+    if ($body.hasClass('front')) {
+
+      if ($('.featured-block').attr('data-url')) {
+        var back_url = $('.featured-block').attr('data-url');
+        $('.featured-block').css({'background': 'url(' + back_url + ') no-repeat', 'background-size': 'cover'});
+      }
+
+      // shows card carousel
+      $('#block-usanetwork-home-usanetwork-home-shows-queue .carousel-block').usaCarouselLeft({
+        isShowCardCarousel: true,
+        isMobileDescription: true,
+        mobileDescriptionBp: 768,
+        addMobileDescriptionClick: false
+      });
+
+      // full episodes carousel
+      $('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest .carousel-block').usaCarouselLeft({
+        isMobileDescription: true,
+        mobileDescriptionBp: 768,
+        addMobileDescriptionClick: false,
+        isMoreButtonCarousel: true,
+        moreButtonBp: 768,
+        moreButtonHiddenItemsGt: ($('#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest .full-episodes-carousel').hasClass('carousel_1_rows')) ? 3 : 1
+      });
+
+      // featured carousel
+      $('#block-usanetwork-blocks-usanetwork-featured-carousel .carousel-block').usaCarouselLeft({
+        isMobileDescription: true,
+        mobileDescriptionBp: 768,
+        addMobileDescriptionClick: false,
+        isMoreButtonCarousel: true,
+        moreButtonBp: 768,
+        moreButtonHiddenItemsGt: 1
+      });
+
+      // social carousel
+      $('#block-usanetwork-blocks-usanetwork-social-carousel .carousel-block').usaCarouselLeft({
+        isMobileDescription: true,
+        mobileDescriptionBp: 768,
+        addMobileDescriptionClick: false,
+        isMoreButtonCarousel: true,
+        moreButtonBp: 768,
+        moreButtonHiddenItemsGt: 1,
+        slidesOffsetBefore: 60,
+        slidesOffsetAfter: 0
+      });
+    }
+
+    // page-videos
+    if ($body.hasClass('page-videos')) {
+      $('.carousel-block-left').each(function (i, el) {
+        $(this).usaCarouselLeft({
+          isMobileDescription: true,
+          mobileDescriptionBp: 480,
+          addMobileDescriptionClick: true,
+          isDescriptionSponsored: true
+        });
+      });
+    }
+  });
 }(jQuery));
 

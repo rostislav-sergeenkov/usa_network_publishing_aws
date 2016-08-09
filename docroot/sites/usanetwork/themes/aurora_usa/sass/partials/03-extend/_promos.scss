@@ -3044,12 +3044,12 @@
       width: 100%;
       @include breakpoint($bp-min-1601-width) {
         margin-top: 12.5px;
-        max-height: 243.75px;
+        max-height: 293.75px;
       }
       @include breakpoint($bp-768-width) {
         border: none;
         margin-top: get-vw(20px, 640);
-        max-height: none;/*need to fix*/
+        max-height: none;
       }
     }
     .meta-wrapper-inner {
@@ -3118,32 +3118,19 @@
         font-size: get-vw(18px, 1280);
         line-height: get-vw(21.6px, 1280);
         overflow: hidden;
-        text-overflow: ellipsis;
         text-transform: none;
         white-space: normal;
-        @supports (-webkit-line-clamp: 4) {
-          display: -webkit-box;
-          height: auto;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 4;
-          @include breakpoint($bp-768-width) {
-            -webkit-line-clamp: 2!important;
-          }
-        }
         @include breakpoint($bp-min-1601-width) {
           font-size: 22.5px;
           line-height: 27px;
-          max-height: 85px;
         }
         @include breakpoint($bp-768-width) {
           line-height: get-vw(24.192px, 768);
           font-size: get-vw(17.28px, 768);
-          max-height: get-vw(48.384px, 768)!important;
         }
         @include breakpoint($bp-640-width) {
           font-size: get-vw(24px, 640);
           line-height: get-vw(33.6px, 640);
-          max-height: get-vw(67.2px, 640)!important;
         }
       }
     }

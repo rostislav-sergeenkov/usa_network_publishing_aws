@@ -8908,7 +8908,7 @@ header .tve-help-link.signIn .inlineLoader {
   top: 50%;
 }
 .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item {
-  height: auto;
+  height: 250px;
 }
 @media (max-width: 480px) {
   .page-videos .carousel-wrapper .carousel-block-left .carousel-description-item {
@@ -23875,6 +23875,7 @@ html[xmlns] .slides {
   width: auto;
 }
 .carousel ul {
+  height: auto;
   width: 100%;
   position: relative;
 }
@@ -24059,6 +24060,7 @@ html[xmlns] .slides {
 
 .carousel-description-item {
   height: 100%;
+  overflow: hidden;
   position: relative;
 }
 .carousel-description-item .description-button {
@@ -24237,13 +24239,6 @@ html[xmlns] .slides {
 }
 .ie8 .meta-icon:before {
   background: url("../images/sprites/circle.png") no-repeat transparent;
-}
-.ie8 .carousel .jcarousel-controls {
-  background: transparent;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#60ffffff,endColorstr=#60ffffff);
-}
-.ie8 .carousel .jcarousel-controls:hover {
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#80ffffff,endColorstr=#80ffffff);
 }
 .ie8 .aspot-and-episodes .episodes-list ul li .asset-img img {
   height: auto !important;

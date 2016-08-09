@@ -336,7 +336,7 @@
         }
       }
       .carousel-description-item {
-        height: auto;
+        height: 250px;
         @include breakpoint($bp-480-width) {
           height: 86px;
           left: 0;
@@ -435,4 +435,3 @@
     }
   }
 }
-

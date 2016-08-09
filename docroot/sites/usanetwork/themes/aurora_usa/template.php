@@ -168,9 +168,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/mps-advert.js');
   drupal_add_js($theme_path . '/javascripts/mps-sponsorship.js');
   drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');
-  drupal_add_js($theme_path . '/javascripts/jquery.touchSwipe.min.js');
-  drupal_add_js($theme_path . '/javascripts/jquery.jcarousel.min.js');
-  drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
   drupal_add_js($theme_path . '/javascripts/swiper.jquery.min.js');
   drupal_add_js($theme_path . '/javascripts/slick.min.js');
   drupal_add_js($theme_path . '/javascripts/consumptionator-carousels.js');
@@ -580,7 +577,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       $vars['classes_array'][] = drupal_html_class('slides');
     break;
     case 'field_hp_promos':
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       foreach ($vars['items'] as $delta => $item) {
         $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
       }
@@ -930,13 +926,6 @@ function aurora_usa_preprocess_views_view(&$vars) {
     $views_preprocess_function = 'aurora_usa_preprocess_views_view_fields__' . $vars['view']->name . '__' . $vars['view']->current_display;
     if (function_exists($views_preprocess_function)) {
      $views_preprocess_function($vars);
-    }
-    if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'block_1') {
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-    }
-
-    if($vars['view']->name == 'usa_shows' && $vars['view']->current_display == 'block_1') {
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
     }
   }
 }

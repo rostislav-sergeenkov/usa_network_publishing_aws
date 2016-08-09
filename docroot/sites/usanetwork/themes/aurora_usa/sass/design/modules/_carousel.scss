@@ -120,6 +120,7 @@
   }
   ul {
     @include clear;
+    height: auto;
     width: 100%;
     position: relative;
     li.description-item {
@@ -291,6 +292,7 @@
 
 .carousel-description-item {
   height: 100%;
+  overflow: hidden;
   position: relative;
   .description-button {
     color: transparent;

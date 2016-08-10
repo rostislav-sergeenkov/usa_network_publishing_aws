@@ -38,7 +38,7 @@
           var item = $(this).next(),
               captionLineHeight = parseFloat(item.css('line-height')),
               lines = 2,
-              text = $(this).next().data('text');
+              text = item.data('text');
           addDots(item, lines, captionLineHeight, text);
         });
       }

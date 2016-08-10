@@ -254,12 +254,12 @@
             .meta {
               color: #ffffff;
               margin-left: get-vw(185px, 1025);
-              margin-right: get-vw(150px, 1025);
+              margin-right: get-vw(310px, 1901);
               padding-top: 0;
               position: relative;
               @include breakpoint($bp-min-1901-width) {
                 margin-left: 343px;
-                margin-right: 278px;
+                margin-right: 310px;
               }
               @include breakpoint($bp-1024-width) {
                 margin-left: 185px;

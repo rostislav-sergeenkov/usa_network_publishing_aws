@@ -8144,14 +8144,14 @@ header .tve-help-link.signIn .inlineLoader {
 .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta {
   color: #ffffff;
   margin-left: 18.04878vw;
-  margin-right: 14.63415vw;
+  margin-right: 16.30721vw;
   padding-top: 0;
   position: relative;
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .tab-content .tab-item .tab-item-content .node .meta, .node-type-catchall-page header .tab-content .tab-item .tab-item-content .node .meta, .page-videos-live header .tab-content .tab-item .tab-item-content .node .meta, .node-type-media-gallery header .tab-content .tab-item .tab-item-content .node .meta, .node-type-person header .tab-content .tab-item .tab-item-content .node .meta {
     margin-left: 343px;
-    margin-right: 278px;
+    margin-right: 310px;
   }
 }
 @media (max-width: 1024px) {

@@ -340,6 +340,7 @@
                 letter-spacing: 1px;
                 word-wrap: break-word;
                 line-height: 1.6;
+                margin-top: 0;
                 @include breakpoint($bp-min-1901-width) {
                   font-size: 33.6px;
                 }

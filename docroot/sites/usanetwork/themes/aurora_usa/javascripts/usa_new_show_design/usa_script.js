@@ -11,37 +11,35 @@
     }
   }
 
-  //=======================================
-  // usa changable-link
-  //=======================================
-  function checkDescriptionLines() {
-    if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
-      if ($('.articles-block').length > 0) {
-        $('.title-and-additional').each(function () {
-          var captionHeight = parseFloat($(this).closest('.meta-wrapper').css('max-height'))*0.9 - $(this).outerHeight(),
-           captionLineHeight = parseFloat($(this).next().css('line-height')),
-           lines = Math.floor(captionHeight / captionLineHeight),
-           text = $(this).next().data('text');
-          $(this).next().text(text).dotdotdot({
-            height: captionLineHeight * lines,
-            lastCharacter : {
-              noEllipsis : [ ' ', ',', ';', '.', '!', '?', '\'' ]
-            }
-          });
-        });
+  //add dots for description in articles block
+  function addDots(item, lines, captionLineHeight, text) {
+    item.text(text).dotdotdot({
+      height: captionLineHeight * lines,
+      lastCharacter: {
+        noEllipsis: [' ', ',', ';', '.', '!', '?', '\'']
       }
-    } else {
-      if ($('.articles-block').length > 0) {
+    });
+  }
+
+  //calculate lines in articles block
+  function checkDescriptionLines() {
+    if ($('.articles-block').length > 0) {
+      if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
         $('.title-and-additional').each(function () {
-          var captionLineHeight = parseFloat($(this).next().css('line-height')),
-          lines = 2,
-          text = $(this).next().data('text');
-          $(this).next().text(text).dotdotdot({
-            height: captionLineHeight * lines,
-            lastCharacter : {
-              noEllipsis : [ ' ', ',', ';', '.', '!', '?', '\'' ]
-            }
-          });
+          var captionHeight = parseFloat($(this).closest('.meta-wrapper').css('max-height')) * 0.9 - $(this).outerHeight(),
+              item = $(this).next(),
+              captionLineHeight = parseFloat(item.css('line-height')),
+              lines = Math.floor(captionHeight / captionLineHeight),
+              text = item.data('text');
+          addDots(item, lines, captionLineHeight, text);
+        });
+      } else {
+        $('.title-and-additional').each(function () {
+          var item = $(this).next(),
+              captionLineHeight = parseFloat(item.css('line-height')),
+              lines = 2,
+              text = $(this).next().data('text');
+          addDots(item, lines, captionLineHeight, text);
         });
       }
     }

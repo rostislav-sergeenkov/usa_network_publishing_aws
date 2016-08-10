@@ -6971,23 +6971,6 @@ header .tab-item.full-episode-tab .latest-full-episodes .node:nth-child(3), head
     height: 322.7px;
   }
 }
-header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.news-tab .latest-news .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta {
-  display: block;
-  margin-top: -2.14634vw;
-  max-width: none;
-  position: absolute;
-  top: 50%;
-}
-@media (max-width: 1024px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.news-tab .latest-news .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta {
-    margin-top: -22px;
-  }
-}
-@media (min-width: 1901px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta, header .tab-item.news-tab .latest-news .node:not(.header-news-promo):not(.sponsored-enable) a:hover .meta-wrapper .meta {
-    margin-top: -40.5px;
-  }
-}
 header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a {
   color: #ffffff;
   display: block;

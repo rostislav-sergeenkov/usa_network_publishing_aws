@@ -770,27 +770,6 @@ header {
             height: 322.7px;
           }
           &:not(.header-news-promo) {
-            &:not(.sponsored-enable) {
-              a {
-                &:hover {
-                  .meta-wrapper {
-                    .meta {
-                      display: block;
-                      margin-top: get-vw(-22px, 1025);
-                      max-width: none;
-                      position: absolute;
-                      top: 50%;
-                      @include breakpoint($bp-1024-width) {
-                        margin-top: -22px;
-                      }
-                      @include breakpoint($bp-min-1901-width) {
-                        margin-top: -40.5px;
-                      }
-                    }
-                  }
-                }
-              }
-            }
             a {
               color: #ffffff;
               display: block;

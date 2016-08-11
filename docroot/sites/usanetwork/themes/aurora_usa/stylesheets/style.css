@@ -1126,21 +1126,25 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .meta, .related-content-block ul li .social-promo .meta-wrapper .meta {
     height: calc(100% - 80px);
+    margin-bottom: 16px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .meta, .related-content-block ul li .social-promo .meta-wrapper .meta {
     height: calc(100% - 76px);
+    margin-bottom: 14px;
   }
 }
 @media (max-width: 640px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .meta, .related-content-block ul li .social-promo .meta-wrapper .meta {
     height: calc(100% - 52px);
+    margin-bottom: 8px;
   }
 }
 @media (max-width: 480px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .meta, .related-content-block ul li .social-promo .meta-wrapper .meta {
     height: calc(100% - 44px);
+    margin-bottom: 9px;
   }
 }
 .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .topic, .related-content-block ul li .social-promo .meta-wrapper .topic {
@@ -1213,41 +1217,18 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 20px;
-  margin-top: 13px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-transform: none;
-  white-space: normal;
-}
-@supports (-webkit-line-clamp: 3) {
-  .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
-    display: -webkit-box;
-    height: auto;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-  }
 }
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
     font-size: 19px;
     line-height: 24px;
-    max-height: 108px;
-    margin-top: 20px;
   }
 }
 @media (max-width: 768px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
     font-size: 2.47396vw;
-    height: 23.75vw;
     line-height: 1.4;
-    margin-top: 2.60417vw;
   }
-  @supports (-webkit-line-clamp: 7) {
-    .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
-      -webkit-line-clamp: 7;
-      height: auto;
-    }
-}
 }
 .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {
   cursor: pointer;
@@ -1256,7 +1237,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   height: 35px;
   letter-spacing: 1px;
   line-height: 35px;
-  margin-top: 9px;
   overflow: hidden;
   text-align: center;
   text-transform: uppercase;
@@ -1270,7 +1250,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     font-size: 19px;
     height: 48px;
     line-height: 48px;
-    margin-top: 16px;
   }
 }
 @media (min-width: 641px) and (max-width: 768px) {
@@ -1278,12 +1257,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     font-size: 19px;
     height: 48px;
     line-height: 48px;
-    margin-top: 14px;
-  }
-}
-@media (max-width: 640px) {
-  .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {
-    margin-top: 8px;
   }
 }
 @media (max-width: 480px) {
@@ -1291,7 +1264,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     font-size: 12px;
     height: 26px;
     line-height: 26px;
-    margin-top: 9px;
   }
 }
 .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo .meta-wrapper .meta-button:hover, .related-content-block ul li .social-promo .meta-wrapper .meta-button:hover {
@@ -1366,15 +1338,18 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 }
 .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
   height: calc(100% - 6.25026vw);
+  margin-bottom: 1.69271vw;
 }
 @media (min-width: 1901px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
     height: calc(100% - 118.8175px);
+    margin-bottom: 32.17px;
   }
 }
 @media (max-width: 768px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .meta, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta {
     height: calc(100% - 48px);
+    margin-bottom: 13px;
   }
 }
 @media (max-width: 640px) {
@@ -1454,63 +1429,31 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-size: 1.10468vw;
-  height: 11.32299vw;
-  margin-top: 0.89427vw;
-  max-height: none;
-}
-@supports (-webkit-line-clamp: 7) {
-  .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
-    -webkit-line-clamp: 7;
-    height: auto;
-  }
 }
 @media (min-width: 1901px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
     font-size: 21px;
-    margin-top: 17px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
     font-size: 1.10468vw;
-    height: 9.66597vw;
   }
-  @supports (-webkit-line-clamp: 6) {
-    .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
-      -webkit-line-clamp: 6;
-      height: auto;
-    }
-}
 }
 @media (min-width: 641px) and (max-width: 768px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
     font-size: 1.32813vw;
-    height: 7.63672vw;
   }
-  @supports (-webkit-line-clamp: 4) {
-    .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
-      -webkit-line-clamp: 4;
-      height: auto;
-    }
-}
 }
 @media (max-width: 640px) {
   .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
-    height: 23.78906vw;
     font-size: 3.28125vw;
   }
-  @supports (-webkit-line-clamp: 5) {
-    .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .additional, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .additional {
-      -webkit-line-clamp: 5;
-      height: auto;
-    }
-}
 }
 .social-block.carousel-block .carousel ul li:not(.description-item) .social-promo.ymal-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo.ymal-promo .meta-wrapper .meta-button {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.17188vw;
   height: 2.86458vw;
-  margin-top: 1.69271vw;
   line-height: 2.86458vw;
 }
 @media (min-width: 1901px) {
@@ -1518,7 +1461,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     font-size: 23px;
     height: 54.4px;
     line-height: 54.4px;
-    margin-top: 32.17px;
   }
 }
 @media (max-width: 768px) {
@@ -1526,7 +1468,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     font-size: 9px;
     line-height: 22px;
     height: 22px;
-    margin-top: 13px;
   }
 }
 @media (max-width: 640px) {
@@ -20460,84 +20401,64 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   line-height: 30px;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-bottom: 15px;
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-description .node .subheading {
     font-size: 30px;
     line-height: 38px;
+    margin-bottom: 20px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .shows-block .show-info-block .show-description .node .subheading {
     font-size: 2.92969vw;
     line-height: 3.71094vw;
+    margin-bottom: 1.5625vw;
   }
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block .show-description .node .subheading {
     font-size: 3.90625vw;
     line-height: 4.94792vw;
+    margin-bottom: 2.08333vw;
   }
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-description .node .subheading {
     font-size: 15px;
     line-height: 20px;
+    margin-bottom: 0px;
   }
 }
 .shows-block .show-info-block .show-description .node .about-content {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 15px;
-  margin-top: 15px;
-  text-transform: none;
 }
 @media (min-width: 1901px) {
   .shows-block .show-info-block .show-description .node .about-content {
     font-size: 14px;
     line-height: 20px;
-    margin-top: 20px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .shows-block .show-info-block .show-description .node .about-content {
     font-size: 2.29492vw;
     line-height: 2.49023vw;
-    margin-top: 1.5625vw;
   }
 }
 @media (max-width: 768px) {
   .shows-block .show-info-block .show-description .node .about-content {
     font-size: 1.82292vw;
-    height: 12.63021vw;
     line-height: 2.60417vw;
-    margin-top: 2.08333vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
   }
-  @supports (-webkit-line-clamp: 5) {
-    .shows-block .show-info-block .show-description .node .about-content {
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-      height: auto;
-    }
-}
 }
 @media (max-width: 480px) {
   .shows-block .show-info-block .show-description .node .about-content {
     font-size: 8px;
-    height: 21px;
     line-height: 11px;
-    margin-top: 0px;
   }
-  @supports (-webkit-line-clamp: 2) {
-    .shows-block .show-info-block .show-description .node .about-content {
-      -webkit-line-clamp: 2;
-      height: auto;
-    }
-}
 }
 .shows-block .show-info-block .show-description .node .show-link {
   bottom: 10px;

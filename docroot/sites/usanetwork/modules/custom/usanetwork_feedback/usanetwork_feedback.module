@@ -50,7 +50,9 @@ function usanetwork_feedback_newsletter_lyris_signup(&$form, &$form_state) {
 }
 
 function usanetwork_feedback_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == "views_exposed_form" && $form['#id'] == "views-exposed-form-webform-results-1-page-1") {
+  if (
+    $form_id == 'views_exposed_form' &&
+    ($form['#id'] == 'views-exposed-form-webform-results-1-page-1' || $form['#id'] == 'views-exposed-form-webform-results-1-default')) {
     module_load_include('inc', 'webform', '/components/select');
     $feedback_node = node_load(USANETWORK_FEEDBACK_NODE_ID);
 

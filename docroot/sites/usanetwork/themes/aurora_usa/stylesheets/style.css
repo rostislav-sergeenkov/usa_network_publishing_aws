@@ -4778,6 +4778,10 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   background-image: url(../images/default-promo-icons/full-video-icon.png);
 }
 
+.movie-play-icon {
+  background-image: url(../images/default-promo-icons/full-video-icon.png);
+}
+
 .quiz-icon-default {
   background-image: url(../images/default-promo-icons/quiz-icon.png);
 }
@@ -7086,23 +7090,6 @@ header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-p
     height: 81px;
     margin-bottom: 9.3px;
     width: 81px;
-  }
-}
-header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon {
-  border: 2px solid white;
-  border-radius: 50%;
-}
-header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before {
-  content: "\e627";
-  display: block;
-  font-family: "ico-font";
-  font-size: 2.36718vw;
-  line-height: 4.26092vw;
-}
-@media (min-width: 1901px) {
-  header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .meta-icon.movie-play-icon:before {
-    font-size: 45px;
-    line-height: 81px;
   }
 }
 header .tab-item.full-episode-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.full-episode-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.full-episode-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.movies-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.news-tab .latest-full-episodes .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.news-tab .latest-movies .node:not(.header-news-promo) a .meta-wrapper .meta .title, header .tab-item.news-tab .latest-news .node:not(.header-news-promo) a .meta-wrapper .meta .title {
@@ -24333,6 +24320,53 @@ html[xmlns] .slides {
 .ie9 .show-menu-tab .show-menu li.active ul.menu li {
   float: left;
   width: 33.33333%;
+}
+@media (min-width: 769px) {
+  .ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+  }
+}
+.ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
+  float: left;
+}
+.ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+  padding: 0 2.26563vw;
+}
+@media (min-width: 1601px) {
+  .ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    padding: 0 36.25px;
+  }
+}
+@media (max-width: 1024px) {
+  .ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    padding: 0 2.00195vw;
+  }
+}
+
+@media (min-width: 769px) {
+  .ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+  }
+}
+.ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
+  float: left;
+}
+.ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+  padding: 0 2.26563vw;
+}
+@media (min-width: 1601px) {
+  .ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    padding: 0 36.25px;
+  }
+}
+@media (max-width: 1024px) {
+  .ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    padding: 0 2.00195vw;
+  }
 }
 
 body:not(.page-node-microsite) .file-video-mpx.view-mode-inline_content {

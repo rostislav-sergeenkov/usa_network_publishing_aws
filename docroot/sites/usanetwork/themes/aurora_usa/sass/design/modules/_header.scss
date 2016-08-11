@@ -844,21 +844,21 @@ header {
                       margin-bottom: 9.3px;
                       width: 81px;
                     }
-                    &.movie-play-icon {
-                      border: 2px solid white;
-                      border-radius: 50%;
-                      &:before {
-                        content: "\e627";
-                        display: block;
-                        font-family: $ico-font;
-                        font-size: get-vw(45px, 1901);
-                        line-height: get-vw(81px, 1901);
-                        @include breakpoint($bp-min-1901-width) {
-                          font-size: 45px;
-                          line-height: 81px;
-                        }
-                      }
-                    }
+                    //&.movie-play-icon {
+                    //  border: 2px solid white;
+                    //  border-radius: 50%;
+                    //  &:before {
+                    //    content: "\e627";
+                    //    display: block;
+                    //    font-family: $ico-font;
+                    //    font-size: get-vw(45px, 1901);
+                    //    line-height: get-vw(81px, 1901);
+                    //    @include breakpoint($bp-min-1901-width) {
+                    //      font-size: 45px;
+                    //      line-height: 81px;
+                    //    }
+                    //  }
+                    //}
                   }
                   .title {
                     font-family: $avalon-medium;

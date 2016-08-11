@@ -45,7 +45,7 @@
                       <div class="title"><?php print $promo['promo_title']; ?></div>
                     <?php endif; ?>
                     <?php if (!empty($promo['description'])): ?>
-                      <div class="additional"><?php print $promo['description']; ?></div>
+                      <div class="additional multiline-ellipsis" data-text="<?php print $promo['description']; ?>"><?php print $promo['description']; ?></div>
                     <?php endif; ?>
                   </div>
                   <?php if (!empty($promo['cta'])): ?>

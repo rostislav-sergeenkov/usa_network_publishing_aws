@@ -29,14 +29,14 @@ var window_size_desktop_max_width_2500 = 2500,
 var isIphone = navigator.userAgent.match(/iPhone/i) != null;
 
 // change priority for events
-$.fn.bindFirst = function (name, fn) {
+$.fn.bindFirst = function(name, fn) {
   // bind as you normally would
   // don't want to miss out on any jQuery magic
   this.on(name, fn);
 
   // Thanks to a comment by @Martin, adding support for
   // namespaced events too.
-  this.each(function () {
+  this.each(function() {
     var handlers = $._data(this, 'events')[name.split('.')[0]];
     // take out the handler we just inserted from the end
     var handler = handlers.pop();
@@ -47,9 +47,9 @@ $.fn.bindFirst = function (name, fn) {
 
 
 // waitForFinalEvent
-var waitForFinalEvent = (function () {
+var waitForFinalEvent = (function() {
   var timers = {};
-  return function (callback, ms, uniqueId) {
+  return function(callback, ms, uniqueId) {
     if (!uniqueId) {
       uniqueId = "Don't call this twice without a uniqueId";
     }
@@ -74,13 +74,12 @@ var waitForFinalEvent = (function () {
 // example $.urlParam(name, url);
 // name = string
 // url = default window.location.href
-$.urlParam = function (name, url) {
+$.urlParam = function(name, url) {
   var url = url || window.location.href,
       results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url);
   if (results == null) {
     return null;
-  }
-  else {
+  } else {
     return results[1] || 0;
   }
 };
@@ -94,10 +93,12 @@ function customParseURL(url) {
     host: a.hostname,
     port: a.port,
     query: a.search,
-    params: (function () {
+    params: (function() {
       var ret = {},
           seg = a.search.replace(/^\?/, '').split('&'),
-          len = seg.length, i = 0, s;
+          len = seg.length,
+          i = 0,
+          s;
       for (; i < len; i++) {
         if (!seg[i]) {
           continue;
@@ -123,8 +124,7 @@ function getInternetExplorerVersion() {
     var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
     if (re.exec(ua) != null)
       rv = parseFloat(RegExp.$1);
-  }
-  else if (navigator.appName == 'Netscape') {
+  } else if (navigator.appName == 'Netscape') {
     var ua = navigator.userAgent;
     var re = new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})");
     if (re.exec(ua) != null)
@@ -141,23 +141,23 @@ function scrollToAnchorName(targetName) {
   }, 1000);
 }
 
-$(window).bind('resize', function () {
+$(window).bind('resize', function() {
 
   //show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
   show_carousel_margin = (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) ? 40 : 50;
 
 });
 
-$(document).ready(function () {
+$(document).ready(function() {
 
-  $('.node-type-usanetwork-static-page .node-usanetwork-static-page a[href^="#"]').click(function (e) {
+  $('.node-type-usanetwork-static-page .node-usanetwork-static-page a[href^="#"]').click(function(e) {
     e.preventDefault();
     var target = $(this).attr('href').substring(1);
     var targetName = target.substring(0);
     scrollToAnchorName(targetName);
   });
 
-  $('.character-info-block .tabs li').click(function () {
+  $('.character-info-block .tabs li').click(function() {
     if (!$(this).hasClass('active')) {
       $('.character-info-block .tabs li').removeClass('active');
       $('.character-info-block .description-item').removeClass('active');
@@ -167,15 +167,15 @@ $(document).ready(function () {
     }
   });
 
-  $(document).on('click', 'a[href$="enhanced"]', function(e){
+  $(document).on('click', 'a[href$="enhanced"]', function(e) {
     e.preventDefault();
     var parced_src = customParseURL(unescape($(this).attr('href')));
     if (parced_src.params.mobile_url && (usa_deviceInfo.smartphone || usa_deviceInfo.mobileDevice)) {
-      setTimeout(function () {
+      setTimeout(function() {
         window.location = parced_src.params.mobile_url;
       }, 500);
     } else {
-      setTimeout(function () {
+      setTimeout(function() {
         window.location = parced_src.path;
       }, 500);
     }
@@ -248,3 +248,51 @@ function addSpinJs(itemId, bodyClass, color) {
   var target = document.getElementById(itemId);
   var spinner = new Spinner(opts).spin(target);
 }
+
+//=================================================================================
+
+function addDots(item, lines, captionLineHeight, text) {
+  item.text(text).dotdotdot({
+    height: captionLineHeight * lines,
+    lastCharacter: {
+      noEllipsis: [' ', ',', ';', '.', '!', '?', '\'']
+    }
+  });
+}
+
+//calculate lines in articles block
+function checkDescriptionLines() {
+  $('.multiline-ellipsis').parent().each(function() {
+    var childrenHeight = 0,
+        parent = $(this),
+        item = parent.children('.multiline-ellipsis'),
+        parentHeight = 0;
+    parent.children().each(function() {
+      if ($(this).hasClass('multiline-ellipsis')) {
+        return false;
+      }
+      childrenHeight += $(this).outerHeight(true);
+    });
+    if (!isNaN(parseFloat(parent.css('height')))) {
+      parentHeight = parseFloat(parent.css('height'));
+    } else if (!isNaN(parseFloat(parent.css('max-height')))) {
+      parentHeight = parseFloat(parent.css('max-height'));
+    } else {
+
+    }
+    var captionHeight = parentHeight - childrenHeight,
+        captionLineHeight = parseFloat(item.css('line-height')),
+        lines = Math.floor(captionHeight / captionLineHeight),
+        text = item.data('text');
+    addDots(item, lines, captionLineHeight, text);
+  });
+}
+
+$(document).ready(function() {
+  checkDescriptionLines();
+});
+$(window).resize(function() {
+  setTimeout(function() {
+    checkDescriptionLines();
+  }, 500);
+});

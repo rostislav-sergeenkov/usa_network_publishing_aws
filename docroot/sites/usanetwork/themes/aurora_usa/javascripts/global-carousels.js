@@ -433,6 +433,7 @@
       },
       complete: function (elements) {
         _.showCard.inProgress = false;
+        checkDescriptionLines();
       }
     });
 
@@ -797,4 +798,3 @@
     }
   });
 }(jQuery));
-

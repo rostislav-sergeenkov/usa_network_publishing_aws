@@ -145,14 +145,14 @@
           }
         }
         .episodes-list-slider {
-          &.horizontal {
+          &.horizontal-mode {
             @include breakpoint($bp-min-769-width) {
               display: none;
             }
             @include breakpoint($between-641-768) {
               border-bottom: 2px solid $usa-episode-item-text;
             }
-            li {
+            .usa-carousel-item {
               @include breakpoint($bp-640-width) {
                 height: auto;
                 padding: get-vw(40px, 640) get-vw(40px, 640) 0;

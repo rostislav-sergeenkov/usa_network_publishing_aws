@@ -23,7 +23,7 @@
         // vertical
         isVerticalMode: true,
         verticalModeBpMin: 1025, // min-width
-        verticalClassName: 'vertical',
+        verticalClassName: 'vertical-mode',
         mCustomScrollbar: {
           axis: "y",
           autoHideScrollbar: true,
@@ -34,7 +34,7 @@
         // horizontal
         isHorizontalMode: true,
         horizontalModeBpMax: 1024, // max-width
-        horizontalClassName: 'horizontal',
+        horizontalClassName: 'horizontal-mode',
         swiper: {
           freeMode: true,
           slidesPerView: 'auto',
@@ -44,7 +44,7 @@
 
         // mobile mode
         mobileBpMax: 640, // max-width
-        mobileModeClassName: 'horizontal',
+        mobileModeClassName: 'horizontal-mode',
 
         // more button
         isMoreButton: false,
@@ -184,6 +184,13 @@
             _.consoleCustom('waitForFinalEvent');
             _.updateOptions();
             _.checkMode();
+            if (_.options.isHorizontalMode && _.options.isHorizontalModeActive) {
+              try {
+                _.usaSwiper.onResize(true);
+              } catch (e) {
+                _.consoleCustom('error usaRightRailCarousel: onResize');
+              }
+            }
           }, _.options.waitForFinalEvent, 'usaRightRailCarousel');
         });
   };
@@ -402,6 +409,8 @@
         $mainWrap = _.$mainWrap,
         initClassName = _.options.initClassName;
 
+    _.consoleCustom('usaCarousel init');
+
     if (creation && !$($mainWrap).hasClass(initClassName)) {
       $($mainWrap).addClass(initClassName);
       _.switchMode();
@@ -435,21 +444,45 @@
     var $body = $('body'),
         $episodesListSlider = $('.episodes-list-slider');
 
-    if (!$body.is('.show-new-design')) {
+    if ($body.is('.show-new-design')) {
 
-    }
-    if ($body.is('.usa-tv-show')) {
       $episodesListSlider.usaCarousel({
         isVerticalMode: true,
-        verticalModeBpMin: 769,
+        verticalModeBpMin: 1025,
         isHorizontalMode: true,
-        horizontalModeBpMax: 768,
-        destroyCarouselBpMax: 640,
-        isMoreButton: true,
-        moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
+        horizontalModeBpMax: 1024,
+        destroyCarouselBpMax: 640
       });
+
     } else {
-      $episodesListSlider.usaCarousel();
+
+      if ($body.is('.usa-tv-show')) {
+        $episodesListSlider.usaCarousel({
+          isVerticalMode: true,
+          verticalModeBpMin: 769,
+          isHorizontalMode: true,
+          horizontalModeBpMax: 768,
+          destroyCarouselBpMax: 640,
+          isMoreButton: true,
+          moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
+        });
+      } else if ($body.is('.node-type-media-gallery')) {
+        $episodesListSlider.usaCarousel({
+          isVerticalMode: true,
+          verticalModeBpMin: 1281,
+          isHorizontalMode: true,
+          horizontalModeBpMax: 1280,
+          destroyCarouselBpMax: 640
+        });
+      } else {
+        $episodesListSlider.usaCarousel({
+          isVerticalMode: true,
+          verticalModeBpMin: 1025,
+          isHorizontalMode: true,
+          horizontalModeBpMax: 1024,
+          destroyCarouselBpMax: 640
+        });
+      }
     }
   });
 

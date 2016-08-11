@@ -28,12 +28,12 @@
       .advert {
         display: none;
       }
-      .episodes-list-slider.horizontal {
+      .episodes-list-slider.horizontal-mode {
         @include breakpoint($between-1025-1280) {
           display: none;
         }
       }
-      .episodes-list-slider.vertical {
+      .episodes-list-slider.vertical-mode {
         height: calc(100% - 45px);
         @include breakpoint($bp-min-1901-width) {
           height: calc(100% - 70px);
@@ -667,8 +667,8 @@
         }
       }
       .episodes-list-slider {
-        &.horizontal {
-          .slider-horizontal {
+        &.horizontal-mode {
+          .usa-carousel {
             @include breakpoint($bp-640-width) {
               top: 0 !important;
             }

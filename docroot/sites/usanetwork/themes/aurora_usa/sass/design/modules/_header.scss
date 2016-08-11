@@ -770,27 +770,6 @@ header {
             height: 322.7px;
           }
           &:not(.header-news-promo) {
-            &:not(.sponsored-enable) {
-              a {
-                &:hover {
-                  .meta-wrapper {
-                    .meta {
-                      display: block;
-                      margin-top: get-vw(-22px, 1025);
-                      max-width: none;
-                      position: absolute;
-                      top: 50%;
-                      @include breakpoint($bp-1024-width) {
-                        margin-top: -22px;
-                      }
-                      @include breakpoint($bp-min-1901-width) {
-                        margin-top: -40.5px;
-                      }
-                    }
-                  }
-                }
-              }
-            }
             a {
               color: #ffffff;
               display: block;
@@ -865,21 +844,21 @@ header {
                       margin-bottom: 9.3px;
                       width: 81px;
                     }
-                    &.movie-play-icon {
-                      border: 2px solid white;
-                      border-radius: 50%;
-                      &:before {
-                        content: "\e627";
-                        display: block;
-                        font-family: $ico-font;
-                        font-size: get-vw(45px, 1901);
-                        line-height: get-vw(81px, 1901);
-                        @include breakpoint($bp-min-1901-width) {
-                          font-size: 45px;
-                          line-height: 81px;
-                        }
-                      }
-                    }
+                    //&.movie-play-icon {
+                    //  border: 2px solid white;
+                    //  border-radius: 50%;
+                    //  &:before {
+                    //    content: "\e627";
+                    //    display: block;
+                    //    font-family: $ico-font;
+                    //    font-size: get-vw(45px, 1901);
+                    //    line-height: get-vw(81px, 1901);
+                    //    @include breakpoint($bp-min-1901-width) {
+                    //      font-size: 45px;
+                    //      line-height: 81px;
+                    //    }
+                    //  }
+                    //}
                   }
                   .title {
                     font-family: $avalon-medium;

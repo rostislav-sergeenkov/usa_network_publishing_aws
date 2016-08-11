@@ -831,9 +831,12 @@
           position: relative;
           width: 100%;
           @include breakpoint($bp-min-769-width) {
-            display: inline-block;
-            vertical-align: middle;
-            width: auto;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
           }
           .show-menu-item {
             display: block;
@@ -841,6 +844,10 @@
             height: 100%;
             padding: 0;
             position: relative;
+            @include breakpoint($bp-min-769-width) {
+              float: none;
+              flex-grow: 1;
+            }
             @include breakpoint($bp-768-width) {
               background: $header-full-episodes-back;
               border-bottom: 1px solid $header-new-menu-item-border;
@@ -862,18 +869,17 @@
               letter-spacing: 1.5px;
               line-height: calc(#{get-vw(60px, 1280)} - 2px);
               outline: none;
-              padding: 0 get-vw(29px, 1280);
+              padding: 0;
               text-align: center;
               text-decoration: none;
               text-transform: uppercase;
               @include transition(all 0.2s linear 0);
+              @include breakpoint($bp-min-769-width) {
+                white-space: nowrap;
+              }
               @include breakpoint($bp-min-1601-width) {
                 font-size: 15.625px;
                 line-height: 71px;
-                padding: 0 36.25px;
-              }
-              @include breakpoint($bp-1024-width) {
-                padding: 0 get-vw(20.5px, 1024);
               }
               @include breakpoint($bp-768-width) {
                 color: $header-new-menu-item-color;
@@ -893,6 +899,7 @@
               }
             }
           }
+
           // .show-menu
           @supports (display: flex) {
             & {

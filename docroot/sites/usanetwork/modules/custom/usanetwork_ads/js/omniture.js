@@ -714,8 +714,8 @@
           });
         });
 
-        // Click promo item
-        $('.episodes-list-slider.horizontal .slide-control, a.jcarousel-controls').once('omniture-tracking', function () {
+        // Click carousel control button
+        $('.usa-carousel-controls-wrap .usa-carousel-controls').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {
@@ -728,9 +728,9 @@
                   target = $(this),
                   pageName, blockName, nameNav, fullName;
 
-              if (target.hasClass('jcarousel-control-prev') || target.hasClass('slide-prev')) {
+              if (target.hasClass('usa-carousel-control-prev')) {
                 nameNav = 'Carousel Back';
-              } else if (target.hasClass('jcarousel-control-next') || target.hasClass('slide-next')) {
+              } else if (target.hasClass('usa-carousel-control-next')) {
                 nameNav = 'Carousel Next';
               }
 

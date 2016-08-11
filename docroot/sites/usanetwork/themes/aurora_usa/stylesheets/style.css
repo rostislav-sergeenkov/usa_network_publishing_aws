@@ -15405,13 +15405,13 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.vertical {
+  .page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.vertical-mode {
     display: block;
     height: calc(100% - 90px);
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.horizontal {
+  .page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.horizontal-mode {
     display: none;
   }
 }

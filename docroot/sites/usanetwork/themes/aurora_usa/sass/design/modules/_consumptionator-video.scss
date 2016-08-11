@@ -782,13 +782,13 @@
           }
         }
         .episodes-list-slider {
-          &.vertical {
+          &.vertical-mode {
             @include breakpoint($between-1025-1280) {
               display: block;
               height: calc(100% - 90px);
             }
           }
-          &.horizontal {
+          &.horizontal-mode {
             @include breakpoint($between-1025-1280) {
               display: none;
             }

@@ -191,6 +191,11 @@
                 _.consoleCustom('error usaRightRailCarousel: onResize');
               }
             }
+            if (_.options.isHorizontalModeBp && !_.options.isHorizontalModeActive) {
+              _.addElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+            } else if (!_.options.isHorizontalModeBp && !_.options.isHorizontalModeActive) {
+              _.removeElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+            }
           }, _.options.waitForFinalEvent, 'usaRightRailCarousel');
         });
   };
@@ -260,6 +265,16 @@
   usaCarousel.prototype.initHorizontalMode = function () {
 
     var _ = this;
+
+    if (_.$carouselItems.length <= _.options.swiper.slidesPerGroup) {
+      if (_.options.isHorizontalModeBp && !_.options.isHorizontalModeActive) {
+        _.addElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+      } else if (!_.options.isHorizontalModeBp && !_.options.isHorizontalModeActive) {
+        _.removeElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+      }
+
+      return false;
+    }
 
     _.options.swiper.onInit = function (sw) {
       _.options.isHorizontalModeActive = true;
@@ -446,13 +461,23 @@
 
     if ($body.is('.show-new-design')) {
 
-      $episodesListSlider.usaCarousel({
-        isVerticalMode: true,
-        verticalModeBpMin: 1025,
-        isHorizontalMode: true,
-        horizontalModeBpMax: 1024,
-        destroyCarouselBpMax: 640
-      });
+      if ($body.is('.consumptionator-video-page')) {
+        $episodesListSlider.usaCarousel({
+          isVerticalMode: true,
+          verticalModeBpMin: 769,
+          isHorizontalMode: true,
+          horizontalModeBpMax: 768,
+          destroyCarouselBpMax: 640
+        });
+      } else {
+        $episodesListSlider.usaCarousel({
+          isVerticalMode: true,
+          verticalModeBpMin: 1025,
+          isHorizontalMode: true,
+          horizontalModeBpMax: 1024,
+          destroyCarouselBpMax: 640
+        });
+      }
 
     } else {
 

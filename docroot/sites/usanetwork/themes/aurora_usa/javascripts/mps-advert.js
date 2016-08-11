@@ -109,8 +109,9 @@
     },
 
     consumptionatorChangeAd: function (mainBlock, infoBlock) {
-      var infoBlockAd = infoBlock.find('.advert .topbox'),
-          sidebarAd = $('.consum-sidebar .advert .topbox'),
+      console.info('consumptionatorChangeAd', mainBlock);
+      var infoBlockAd = infoBlock.find('.advert #topbox'),
+          sidebarAd = $('.consum-sidebar .advert #topbox'),
           nameAd = 'topbox',
           selector = '#' + nameAd;
 
@@ -143,7 +144,7 @@
             Drupal.behaviors.mpsAdvert.mpsMakeRequest();
             Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
           }
-        }, 0, "ad change");
+        }, 150, "ad change");
       });
     },
 

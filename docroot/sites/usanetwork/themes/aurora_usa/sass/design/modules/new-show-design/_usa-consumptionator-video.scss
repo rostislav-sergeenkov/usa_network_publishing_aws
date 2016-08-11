@@ -179,7 +179,7 @@
               }
             }
           }
-          &.vertical {
+          &.vertical-mode {
             @include breakpoint($bp-min-769-width) {
               display: block;
               height: calc(100% - #{get-vw(87.5px, 1600)} - 2px);

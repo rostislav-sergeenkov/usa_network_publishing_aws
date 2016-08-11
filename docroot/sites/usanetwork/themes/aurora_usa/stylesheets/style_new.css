@@ -4824,6 +4824,10 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-cont
   background-image: url(../images/default-promo-icons/full-video-icon.png);
 }
 
+.movie-play-icon {
+  background-image: url(../images/default-promo-icons/full-video-icon.png);
+}
+
 .quiz-icon-default {
   background-image: url(../images/default-promo-icons/quiz-icon.png);
 }
@@ -8955,9 +8959,12 @@ html.no-scroll, body.no-scroll {
 }
 @media (min-width: 769px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
-    display: inline-block;
-    vertical-align: middle;
-    width: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 }
 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
@@ -8966,6 +8973,12 @@ html.no-scroll, body.no-scroll {
   height: 100%;
   padding: 0;
   position: relative;
+}
+@media (min-width: 769px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
+    float: none;
+    flex-grow: 1;
+  }
 }
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
@@ -8990,7 +9003,7 @@ html.no-scroll, body.no-scroll {
   letter-spacing: 1.5px;
   line-height: calc(4.6875vw - 2px);
   outline: none;
-  padding: 0 2.26563vw;
+  padding: 0;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -9000,16 +9013,15 @@ html.no-scroll, body.no-scroll {
   -o-transition: all 0.2s linear 0;
   transition: all 0.2s linear 0;
 }
+@media (min-width: 769px) {
+  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    white-space: nowrap;
+  }
+}
 @media (min-width: 1601px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
     font-size: 15.625px;
     line-height: 71px;
-    padding: 0 36.25px;
-  }
-}
-@media (max-width: 1024px) {
-  .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-    padding: 0 2.00195vw;
   }
 }
 @media (max-width: 768px) {

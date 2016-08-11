@@ -324,7 +324,6 @@
         mode: false
       }
     });
-    
     $('#top-five-videos').usaCarousels({
       vertical: {
         mode: false

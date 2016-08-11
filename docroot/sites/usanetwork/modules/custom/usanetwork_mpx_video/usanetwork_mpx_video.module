@@ -1247,10 +1247,12 @@ function usanetwork_mpx_video_page_alter(&$page) {
   //HOTFIX for removing DTM Omniture Call if Disabled Omniture Variables
   $current_menu_object = _usanetwork_menu_get_object();
   if (isset($current_menu_object)) {
-    $entity_settings = _usanetwork_ads_entity_settings($current_menu_object, $current_menu_object->entity_type);
-    if (isset($entity_settings['omniture']['disable']) && $entity_settings['omniture']['disable']) {
-      drupal_add_js('window.USA_suppressCall = 1;', array('type' => 'inline', 'scope' => 'header', 'every_page' => TRUE, 'preprocess' => FALSE));
-//        return "undefined" != typeof window.USA_suppressCall ? !window.USA_suppressCall : !0;
+    if (isset($current_menu_object->entity_type)) {
+      $entity_settings = _usanetwork_ads_entity_settings($current_menu_object, $current_menu_object->entity_type);
+      if (isset($entity_settings['omniture']['disable']) && $entity_settings['omniture']['disable']) {
+        drupal_add_js('window.USA_suppressCall = 1;', array('type' => 'inline', 'scope' => 'header', 'every_page' => TRUE, 'preprocess' => FALSE));
+        //        return "undefined" != typeof window.USA_suppressCall ? !window.USA_suppressCall : !0;
+      }
     }
   }
 }
@@ -3185,7 +3187,7 @@ function _usa_mpx_video_clips_render() {
         $theme_variables = array(
           'promos' => $promos,
           'video_type' => ($tv_content_node->type == 'tv_show')
-            ? (!empty($filter) ? $filter : t('Clips'))
+            ? (($file->mpx_video_data['status'] == FILE_NOT_PUBLISHED) ? t('Related videos') : (!empty($filter) ? $filter : t('Clips')))
             : t('Movies'),
           'more_items_url' => ($tv_content_node->type == 'tv_show')
             ? l(($is_new_design) ? t('View all videos <span class="show-color show-font"></span>') : t('View all videos'), 'node/' . $tv_content_node->nid . '/videos', array('html' => TRUE))

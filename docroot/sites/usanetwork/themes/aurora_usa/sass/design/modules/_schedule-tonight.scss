@@ -288,9 +288,6 @@
                 margin-left: get-vw(15px, 990);
               }
             }
-            .episode-show {
-              padding-left: 0;
-            }
           }
           .time {
             margin-left: 0;
@@ -392,7 +389,7 @@
       color: #ffffff;
       float: left;
       font-family: $avalon-medium;
-      font-size: get-vw(16px, 1901);
+      font-size: get-vw(15px, 1901);
       letter-spacing: 0.5px;
       margin-top: get-vw(10px, 1901);
       text-transform: uppercase;

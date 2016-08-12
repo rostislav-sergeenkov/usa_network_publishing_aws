@@ -1014,63 +1014,47 @@
           line-height: 30px;
           text-overflow: ellipsis;
           white-space: nowrap;
+          margin-bottom: 15px;
           @include breakpoint($bp-min-1901-width) {
             font-size: 30px;
             line-height: 38px;
+            margin-bottom: 20px;
           }
           @include breakpoint($between-769-1024) {
             font-size: get-vw(30px, 1024);
             line-height: get-vw(38px, 1024);
+            margin-bottom: get-vw(16px, 1024);
           }
           @include breakpoint($bp-768-width) {
             font-size: get-vw(30px, 768);
             line-height: get-vw(38px, 768);
+            margin-bottom: get-vw(16px, 768);
           }
           @include breakpoint($bp-480-width) {
             font-size: 15px;
             line-height: 20px;
+            margin-bottom: 0px;
           }
         }
         .about-content {
           font-family: $avalon-medium;
           font-size: 12px;
           line-height: 15px;
-          margin-top: 15px;
-          text-transform: none;
           @include breakpoint($bp-min-1901-width) {
             font-size: 14px;
             line-height: 20px;
-            margin-top: 20px;
           }
           @include breakpoint($between-769-1024) {
             font-size: get-vw(23.5px, 1024);
             line-height: get-vw(25.5px, 1024);
-            margin-top: get-vw(16px, 1024);
           }
           @include breakpoint($bp-768-width) {
             font-size: get-vw(14px, 768);
-            height: get-row-height(20px, 14px, 5, 768);
             line-height: get-vw(20px, 768);
-            margin-top: get-vw(16px, 768);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: normal;
-            @supports (-webkit-line-clamp: 5)  {
-              display: -webkit-box;
-              -webkit-line-clamp: 5;
-              -webkit-box-orient: vertical;
-              height: auto;
-            }
           }
           @include breakpoint($bp-480-width) {
             font-size: 8px;
-            height: 21px;
             line-height: 11px;
-            margin-top: 0px;
-            @supports (-webkit-line-clamp: 2)  {
-              -webkit-line-clamp: 2;
-              height: auto;
-            }
           }
         }
         .show-link {
@@ -1422,4 +1406,3 @@
     }
   }
 }
-

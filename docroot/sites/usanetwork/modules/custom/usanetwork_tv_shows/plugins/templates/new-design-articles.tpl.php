@@ -55,8 +55,7 @@
                           <div class="additional">
                             By <?php print $item['author'] ?> <?php print $item['date'] ?></div>
                         <?php else: ?>
-                          <div
-                            class="additional"><?php print $item['date'] ?></div>
+                          <div class="additional"><?php print $item['date'] ?></div>
                         <?php endif; ?>
                       </div>
                       <?php if ($item['description']): ?>

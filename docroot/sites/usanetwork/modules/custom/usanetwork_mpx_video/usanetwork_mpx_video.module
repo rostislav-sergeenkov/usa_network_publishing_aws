@@ -3481,7 +3481,7 @@ function usanetwork_mpx_video_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /*
- * Redirect for MPX by v/file_guid
+ * Redirect for MPX by video/share/file_guid
  */
 function _usanetwork_mpx_media_guid_redirect($guid) {
   $tve_account_id = db_select('mpx_accounts', 'ma')
@@ -3492,7 +3492,8 @@ function _usanetwork_mpx_media_guid_redirect($guid) {
   $account_tve =  _media_theplatform_mpx_get_account_data($tve_account_id);
   $files = media_theplatform_mpx_get_files_by_guid($guid, $account_tve);
   if (!empty($files)) {
-    $file_full = reset($files);
+    $file = reset($files);
+    $file_full = file_load($file->fid);
     $full_video = _usanetwork_get_field_item('file', $file_full, 'field_mpx_full_episode', 'value');
   }
 

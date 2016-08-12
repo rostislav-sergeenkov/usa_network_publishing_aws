@@ -348,9 +348,11 @@
     var _ = this,
         $mainWrap, $carousel, $openBtn, $currentSlide, currentSlideIndex, $currentSlideNode, $socialIcons,
         slideGridTranslateX, slideSizeWidth, slideTranslateX, carouselSpeed, durationAnim, easingAnim,
-        carouselDefaultTranslate, slideNewWidth, windowInnerWidth, windowOuterWidth, browserName, widthDiff,
+        carouselDefaultTranslate, slideNewWidth, windowInnerWidth, browserName, widthDiff,
         isWindow_size_desktop_large, isWindow_size_desktop_large_1900, isWindow_size_desktop_1280,
-        isWindow_size_tablet_1024, isWindow_size_tablet_portrait_768, isWindow_size_mobile_480;
+        isWindow_size_tablet_1024, isWindow_size_mobile_480;
+
+    // isWindow_size_tablet_portrait_768 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_tablet_portrait_768);
 
     _.showCard.inProgress = true;
     $mainWrap = _.$mainWrap;
@@ -373,18 +375,9 @@
     isWindow_size_desktop_large_1900 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_desktop_large_1900);
     isWindow_size_desktop_1280 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_desktop_1280);
     isWindow_size_tablet_1024 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_tablet_1024);
-    isWindow_size_tablet_portrait_768 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_tablet_portrait_768);
     isWindow_size_mobile_480 = _.checkMatchWindowWidth('max', _.initials.showCardBp.window_size_mobile_480);
     browserName = browserDetect();
     widthDiff = windowInnerWidth - $(window).innerWidth();
-
-    if (_.options.isShowCardGetAdMinBp && !$currentSlideNode.hasClass(_.initials.showCardCarouselItemClassAdvertEnable)) {
-      try {
-        Drupal.behaviors.mpsSponsorShip.execSponsoredBlock($currentSlideNode);
-      } catch (e) {
-        console.log('error show-card: execSponsoredBlock');
-      }
-    }
 
     if (isWindow_size_desktop_large) {
       slideTranslateX = slideTranslateX - _.initials.showCardMargin.show_carousel_margin;
@@ -427,6 +420,15 @@
       delay: carouselSpeed,
       easing: easingAnim,
       progress: function (elements, complete, remaining, start, tweenValue) {
+        if (complete * 100 >= 60) {
+          if (_.options.isShowCardGetAdMinBp && !$currentSlideNode.hasClass(_.initials.showCardCarouselItemClassAdvertEnable)) {
+            try {
+              Drupal.behaviors.mpsSponsorShip.execSponsoredBlock($currentSlideNode);
+            } catch (e) {
+              console.log('error show-card: execSponsoredBlock');
+            }
+          }
+        }
         if (complete * 100 >= 60 && !$currentSlide.hasClass('active')) {
           _.addElemClass($currentSlide, _.initials.showCardCarouselItemClassActive, null);
         }

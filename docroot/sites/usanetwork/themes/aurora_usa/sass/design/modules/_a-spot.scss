@@ -615,7 +615,7 @@
         border-bottom: 2px solid;
         padding-top: 2px;
         padding-bottom: 2px;
-        height: 100%;
+        height: calc(18.5625vw + 6px);
       }
 
       @include breakpoint($bp-640-width) {

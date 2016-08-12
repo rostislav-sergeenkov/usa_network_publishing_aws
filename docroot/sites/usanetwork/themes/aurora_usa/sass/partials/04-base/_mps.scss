@@ -183,45 +183,6 @@ body:not(.show-new-design) {
   }
 }
 
-.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of {
-  .five-promo-item-block{
-    .sponsored {
-      &.active {
-         padding: 3px 0;
-       }
-      background-color: $sponsorship-dark;
-//      bottom: 34.7%;
-      bottom: 25%;
-      right: 0;
-      position: absolute;
-      width: 63%;
-//      @include breakpoint($bp-768-width) {
-//        bottom: 8.6vw;
-//      }
-//      @include breakpoint($bp-640-width) {
-//        bottom: 12.4vw;
-//      }
-    }
-    li{
-      &.first{
-        .sponsored {
-          bottom: 9.1vw;
-          width: 30%;
-          @include breakpoint($bp-768-width) {
-            bottom: 25%;
-          }
-          @include breakpoint($bp-640-width) {
-            bottom: 29%;
-          }
-          @include breakpoint($bp-min-1901-width) {
-            bottom: 173px;
-          }
-        }
-      }
-    }
-  }
-}
-
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-related {
   .show-latest-block {
     ul {

@@ -5002,36 +5002,6 @@ body:not(.show-new-design) #topbanner {
   height: calc(90% - 50px);
 }
 
-.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
-  background-color: #242424;
-  bottom: 25%;
-  right: 0;
-  position: absolute;
-  width: 63%;
-}
-.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored.active {
-  padding: 3px 0;
-}
-.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
-  bottom: 9.1vw;
-  width: 30%;
-}
-@media (max-width: 768px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
-    bottom: 25%;
-  }
-}
-@media (max-width: 640px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
-    bottom: 29%;
-  }
-}
-@media (min-width: 1901px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
-    bottom: 173px;
-  }
-}
-
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
   background-color: #242424;
   bottom: 9.1vw;

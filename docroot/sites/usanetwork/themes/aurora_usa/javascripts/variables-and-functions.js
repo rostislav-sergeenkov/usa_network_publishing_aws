@@ -146,6 +146,10 @@ $(window).bind('resize', function() {
   //show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
   show_carousel_margin = (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) ? 40 : 50;
 
+  setTimeout(function() {
+    checkDescriptionLines();
+  }, 500);
+
 });
 
 $(document).ready(function() {
@@ -180,6 +184,8 @@ $(document).ready(function() {
       }, 500);
     }
   });
+
+  checkDescriptionLines();
 
 });
 
@@ -287,13 +293,3 @@ function checkDescriptionLines() {
     addDots(item, lines, captionLineHeight, text);
   });
 }
-
-$(document).ready(function() {
-  checkDescriptionLines();
-});
-
-$(window).resize(function() {
-  setTimeout(function() {
-    checkDescriptionLines();
-  }, 500);
-});

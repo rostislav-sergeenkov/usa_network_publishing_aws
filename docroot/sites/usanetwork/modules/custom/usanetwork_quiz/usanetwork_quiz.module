@@ -113,21 +113,13 @@ function usanetwork_quiz_theme() {
       ),
       'template' => 'templates/usanetwork-quiz-quizes-carousel',
     ),
-    'usanetwork_quiz_quizes_carousel_item_h' => array(
+    'usanetwork_quiz_quizes_carousel_item' => array(
       'variables' => array(
         'url' => NULL,
         'title' => NULL,
         'active' => NULL,
       ),
-      'template' => 'templates/usanetwork-quiz-quizes-carousel-item-h',
-    ),
-    'usanetwork_quiz_quizes_carousel_item_v' => array(
-      'variables' => array(
-        'url' => NULL,
-        'title' => NULL,
-        'active' => NULL,
-      ),
-      'template' => 'templates/usanetwork-quiz-quizes-carousel-item-v',
+      'template' => 'templates/usanetwork-quiz-quizes-carousel-item',
     ),
     'usanetwork_quiz_field_multiple_value_form' => array(
       'render element' => 'element',
@@ -987,12 +979,10 @@ function _usanetwork_quiz_quizes_carousel() {
             'active' => ($node->nid == $quiz->nid) ? TRUE : FALSE,
             'icon_type' => usanetwork_core_api_get_media_icon('node', $quiz->nid),
           );
-          $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-          $rendered_items['vertical'][] = theme('usanetwork_quiz_quizes_carousel_item_v', $episode_variables);
           $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
           $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
           $episode_variables['new_design'] = !empty($is_new_design) ? $is_new_design : NULL;
-          $rendered_items['horizontal'][] = theme('usanetwork_quiz_quizes_carousel_item_h', $episode_variables);
+          $rendered_items['carousel'][] = theme('usanetwork_quiz_quizes_carousel_item', $episode_variables);
         }
         $advert_block = module_invoke('mps', 'block_view', 'topbox');
         if (!empty($advert_block['content'])) {

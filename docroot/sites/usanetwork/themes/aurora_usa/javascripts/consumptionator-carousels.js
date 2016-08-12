@@ -9,260 +9,427 @@
 
       var _ = this;
 
-      // info about usaCarousel App
-      _.info = {
-        project: 'usanetwork.com',
-        slick: '1.5.5',
-        ver: '0.1.0'
-      };
-
       _.defaults = {
+        selectors: {
+          closestWrap: '.episodes-list', // used for add class carousel-end
+          carousel: '.usa-carousel',
+          carouselItem: '.usa-carousel-item',
+          carouselActiveItem: '.usa-carousel-item.active',
+          prevArrow: '.usa-carousel-control-prev',
+          nextArrow: '.usa-carousel-control-next',
+          moreButton: '.more-button'
+        },
 
-        destroySliderBp: 640,
-        resizeTimeOut: 50,
-        numberSlidesNoInit: 3,
-        number_of_mobile_items: ($(document.body).hasClass('consumptionator-page')) ? 5 : 3,
+        // vertical
+        isVerticalMode: true,
+        verticalModeBpMin: 1025, // min-width
+        verticalClassName: 'vertical-mode',
+        mCustomScrollbar: {
+          axis: "y",
+          autoHideScrollbar: true,
+          scrollInertia: 0,
+          scrollbarPosition: "inside"
+        },
 
-        // elements classes
-        carousel: 'slider-horizontal',
-        prevArrow: 'slide-prev',
-        nextArrow: 'slide-next',
-        controlArrow: 'slide-control',
-        moreButton: 'more-button',
-        slides: 'slide-item',
+        // horizontal
+        isHorizontalMode: true,
+        horizontalModeBpMax: 1024, // max-width
+        horizontalClassName: 'horizontal-mode',
+        swiper: {
+          freeMode: true,
+          slidesPerView: 'auto',
+          slidesPerGroup: 3,
+          buttonDisabledClass: 'usa-carousel-control-disabled'
+        },
 
-        // slider config
-        slider: {
-          autoplay: false,
-          infinite: false,
-          speed: 400,
-          initialSlide: 0,
-          slidesToShow: 3,
-          slidesToScroll: 3
-        }
+        // mobile mode
+        mobileBpMax: 640, // max-width
+        mobileModeClassName: 'horizontal-mode',
+
+        // more button
+        isMoreButton: false,
+        moreButtonHiddenItemsGt: 1,
+        moreButtonClassMore: 'more',
+        moreButtonClassClose: 'close',
+        moreButtonCarouselItemsClassHidden: 'hidden',
+        moreButtonCarouselClassNoHidden: 'no-hidden-items',
+
+        // other
+        waitForFinalEvent: 200, // ms
+        carouselVerticalEndClassName: 'carousel-end',
+        initClassName: 'usa-carousel-initialized'
       };
 
-      // create global options
+      // create global options object
       _.options = $.extend(true, _.defaults, settings);
+
+      // swiper object
+      _.usaSwiper = {};
 
       // elements
       _.$body = $(document.body);
-      _.$carouselWrap = $(element);
-      _.$carousel = $(element).find('.' + _.options.carousel);
-      _.$slides = $(element).find('.' + _.options.slides);
-      _.$prevArrow = $(element).find('.' + _.options.prevArrow);
-      _.$nextArrow = $(element).find('.' + _.options.nextArrow);
-      _.$moreButton = $(element).find('.' + _.options.moreButton);
+      _.$closestWrap = $(element).closest(_.options.selectors.closestWrap);
+      _.$mainWrap = $(element);
+      _.$carousel = $(element).find(_.options.selectors.carousel);
+      _.$carouselItems = $(element).find(_.options.selectors.carouselItem);
+      _.$carouselActiveItem = $(element).find(_.options.selectors.carouselActiveItem);
+      _.$prevArrow = $(element).find(_.options.selectors.prevArrow);
+      _.$nextArrow = $(element).find(_.options.selectors.nextArrow);
+      _.$moreButton = $(element).find(_.options.selectors.moreButton);
 
-      // data attributes value
-      _.data = {
-        blockName: $(element).data('block-name')
-      };
-
-      // update params
-      _.options.numberSlides = _.$slides.length;
-      _.options.moreButtonLength = _.$moreButton.length;
-      _.options.slider.slide = '.' + _.options.slideClass;
-      _.options.slider.prevArrow = _.$prevArrow;
-      _.options.slider.nextArrow = _.$nextArrow;
-      _.options.destroySlider = _.checkMaxWindowWidth(_.options.destroySliderBp);
-      _.options.initCarousel = false;
-      _.options.initMoreBtn = false;
-      _.options.showMoreBtn = false;
+      // set options
+      _.options.isVerticalModeBp = _.checkMatchWindowWidth('min', _.options.verticalModeBpMin);
+      _.options.isHorizontalModeBp = _.checkMatchWindowWidth('max', _.options.horizontalModeBpMax);
+      _.options.isMobileBpMax = _.checkMatchWindowWidth('max', _.options.mobileBpMax);
+      _.options.isVerticalModeActive = false;
+      _.options.isHorizontalModeActive = false;
+      _.options.isHorizontalModeDestroy = false;
+      _.options.isMobileModeActive = false;
+      _.options.isMoreButtonActive = false;
 
       // init app
       _.init(true);
     }
 
     return usaCarousel;
-
   }());
 
-  //============
-  // helper
-  //============
+  /* --------------------------
+   * Helper functionality
+   ----------------------------*/
 
-  usaCarousel.prototype.checkMinWindowWidth = function (bp) {
-    return window.matchMedia('(min-width: ' + bp + 'px)').matches;
+  // custom console
+  usaCarousel.prototype.consoleCustom = function (msg) {
+    console.info(msg);
   };
 
-  usaCarousel.prototype.checkMaxWindowWidth = function (bp) {
-    return window.matchMedia('(max-width: ' + bp + 'px)').matches;
+  // check Window Width
+  usaCarousel.prototype.checkMatchWindowWidth = function (widthName, bp) {
+    // widthName - 'min' or 'max'; bp - breakpoint for check
+    return window.matchMedia('(' + widthName + '-width: ' + bp + 'px)').matches;
   };
 
-  usaCarousel.prototype.resize = function () {
+  // setTimeout
+  usaCarousel.prototype.setTimeout = function (callback, delay) {
 
-    var _ = this,
-        destroySliderBp = _.options.destroySliderBp,
-        $carouselWrap = _.$carouselWrap,
-        $slides = _.$slides,
-        number_of_items = _.options.number_of_mobile_items,
-        resizeTime = _.options.resizeTimeOut,
-        resizeTimeOut;
+    var timeout = null;
 
-    $(window).on('resize', function () {
-
-      var destroySlider = false,
-          initCarousel = _.options.initCarousel;
-
-      _.options.destroySlider = _.checkMaxWindowWidth(destroySliderBp);
-      destroySlider = _.options.destroySlider;
-
-      clearTimeout(resizeTimeOut);
-
-      resizeTimeOut = setTimeout(function () {
-
-        // update more button
-        if (_.options.initMoreBtn) {
-          if (destroySlider && !_.options.showMoreBtn) {
-            _.showMoreBtn();
-          } else if (!destroySlider && _.options.showMoreBtn) {
-            _.hideMoreBtn();
-          }
-        } else {
-          if (!destroySlider) {
-            $slides.removeClass('hidden');
-          } else if(destroySlider) {
-            if (!$carouselWrap.hasClass('no-hidden-items')) {
-              $slides.filter(':gt(' + (number_of_items - 1) + ')').addClass('hidden');
-            }
-          }
-        }
-
-        // update carousel
-        if (destroySlider && initCarousel) { // less 640px
-          _.destroyCarousel();
-        } else if (!destroySlider && !initCarousel) { // more 640px
-          _.initCarousel();
-        }
-
-      }, resizeTime);
-    });
-  };
-
-  //============
-  // more button
-  //============
-  usaCarousel.prototype.initMoreBtn = function () {
-
-    var _ = this,
-        $carouselWrap = _.$carouselWrap,
-        $slides = _.$slides,
-        number_of_items = _.options.number_of_mobile_items;
-
-    if (_.options.moreButtonLength > 0) {
-
-      _.options.initMoreBtn = true;
-      _.addMoreBtnClick();
-
-      if (_.options.destroySlider) {
-        _.showMoreBtn();
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      if (typeof callback === 'function') {
+        callback();
       }
-    } else {
-      if (_.options.destroySlider && !$carouselWrap.hasClass('no-hidden-items')) {
-        $slides.filter(':gt(' + (number_of_items - 1) + ')').addClass('hidden');
-      }
+    }, delay);
+  };
+
+  // add || remove class
+  usaCarousel.prototype.addElemClass = function (elem, className, callback) {
+
+    var _ = this,
+        $elem = $(elem),
+        elemClass = className.trim();
+
+    if (!$elem.hasClass(elemClass)) {
+      $elem.addClass(elemClass);
+    }
+    if (typeof callback === 'function') {
+      callback();
+    }
+  };
+  usaCarousel.prototype.removeElemClass = function (elem, className, callback) {
+
+    var _ = this,
+        $elem = $(elem),
+        elemClass = className.trim();
+
+    if ($elem.hasClass(elemClass)) {
+      $elem.removeClass(elemClass);
+    }
+    if (typeof callback === 'function') {
+      callback();
     }
   };
 
-  usaCarousel.prototype.addMoreBtnClick = function () {
+  // update options
+  usaCarousel.prototype.updateOptions = function () {
+    var _ = this;
 
-    var _ = this,
-        $carouselWrap = _.$carouselWrap,
-        $slides = _.$slides,
-        $moreButton = _.$moreButton,
-        number_of_items = _.options.number_of_mobile_items;
-
-    $moreButton.once(function () {
-
-      var self = $(this);
-
-      self.on('click', function () {
-        if (self.hasClass('more')) {
-          $slides.removeClass('hidden');
-          self.removeClass('more').addClass('close');
-        } else {
-          $slides.filter(':gt(' + (number_of_items - 1) + ')').addClass('hidden');
-          self.removeClass('close').addClass('more');
-          $carouselWrap.velocity("scroll", {duration: 1000, easing: "linear"});
-        }
-      });
-    });
+    _.options.isVerticalModeBp = _.checkMatchWindowWidth('min', _.options.verticalModeBpMin);
+    _.options.isHorizontalModeBp = _.checkMatchWindowWidth('max', _.options.horizontalModeBpMax);
+    _.options.isMobileBpMax = _.checkMatchWindowWidth('max', _.options.mobileBpMax);
   };
 
-  usaCarousel.prototype.showMoreBtn = function () {
-
-    var _ = this,
-        $carouselWrap = _.$carouselWrap,
-        $slides = _.$slides,
-        $moreButton = _.$moreButton,
-        number_of_items = _.options.number_of_mobile_items;
-
-    if (!$carouselWrap.hasClass('no-hidden-items')) {
-      $slides.filter(':gt(' + (number_of_items - 1) + ')').addClass('hidden');
-      $moreButton.show();
-      _.options.showMoreBtn = true;
-    }
-  };
-
-  usaCarousel.prototype.hideMoreBtn = function () {
-
-    var _ = this,
-        $slides = _.$slides,
-        $moreButton = _.$moreButton;
-
-    $slides.removeClass('hidden');
-    $moreButton
-        .hide()
-        .removeClass('close')
-        .addClass('more');
-
-    _.options.showMoreBtn = false;
-  };
-
-  //============
-  // carousel
-  //============
-
-  usaCarousel.prototype.destroyCarousel = function () {
-    var _ = this,
-        $carousel = _.$carousel,
-        initCarousel = _.options.initCarousel;
-
-    if (initCarousel) {
-      _.options.initCarousel = false;
-      $carousel.slick('unslick');
-    }
-  };
-
-  usaCarousel.prototype.initCarousel = function () {
-
-    var _ = this,
-        $carousel = _.$carousel,
-        destroySlider = _.options.destroySlider,
-        numberSlides = _.options.numberSlides,
-        numberSlidesNoInit = _.options.numberSlidesNoInit,
-        initCarousel = _.options.initCarousel;
-
-    if (!destroySlider && !initCarousel && numberSlides > numberSlidesNoInit) {
-      _.options.initCarousel = true;
-      $carousel.slick(_.options.slider);
-    }
-  };
-
-  //============
-  // init app
-  //============
-
-  usaCarousel.prototype.init = function (creation) {
+  // addEvents
+  usaCarousel.prototype.addEvents = function () {
 
     var _ = this;
 
-    if (!_.options.initApp == true) {
-      _.options.initApp = creation;
-      _.initMoreBtn();
-      _.initCarousel();
-      _.resize();
+    if (_.options.isMoreButton) {
+      $(_.$moreButton).on('click', function (e) {
+
+        var $self = $(this);
+
+        if (!_.options.isMoreButtonActive) {
+          _.openMoreButton($self);
+        } else if (_.options.isMoreButtonActive) {
+          _.closeMoreButton($self);
+        }
+      });
+    }
+
+
+    $(window)
+        .on('resize', function (e) {
+          waitForFinalEvent(function () {
+            _.consoleCustom('waitForFinalEvent');
+            _.updateOptions();
+            _.checkMode();
+            if (_.options.isHorizontalMode && _.options.isHorizontalModeActive) {
+              try {
+                _.usaSwiper.onResize(true);
+              } catch (e) {
+                _.consoleCustom('error usaRightRailCarousel: onResize');
+              }
+            }
+            if (_.options.isHorizontalModeBp && !_.options.isHorizontalModeActive) {
+              _.addElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+            } else if (!_.options.isHorizontalModeBp && !_.options.isHorizontalModeActive) {
+              _.removeElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+            }
+          }, _.options.waitForFinalEvent, 'usaRightRailCarousel');
+        });
+  };
+
+  /* -----------------------------------
+   * Vertical mode
+   -----------------------------------*/
+  usaCarousel.prototype.initVerticalMode = function () {
+
+    var _ = this,
+        $closestWrap = _.$closestWrap,
+        $carousel = _.$carousel,
+        $carouselItems = _.$carouselItems,
+        $carouselActiveItem = _.$carouselActiveItem,
+        carouselVerticalEndClassName = _.options.carouselVerticalEndClassName;
+
+    _.options.isVerticalModeActive = true;
+    _.addElemClass(_.$mainWrap, _.options.verticalClassName, null);
+
+    _.options.mCustomScrollbar.callbacks = {
+      onInit: function () {
+        if ($carouselActiveItem.length > 0) {
+          setTimeout(function () {
+            $($carousel).mCustomScrollbar("scrollTo", $carouselActiveItem);
+          }, 500);
+        }
+      },
+      whileScrolling: function () {
+        if (this.mcs.topPct <= 97) {
+          _.removeElemClass($closestWrap, carouselVerticalEndClassName, null);
+        } else {
+          _.addElemClass($closestWrap, carouselVerticalEndClassName, null);
+        }
+      },
+      onScroll: function () {
+        var items = [],
+            i = 0;
+
+        $.each($carouselItems, function () {
+          items[i] = this;
+          i++;
+        });
+
+        try {
+          Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(items);
+        } catch (e) {
+          _.consoleCustom('error usaRightRailCarousel: galleryLazyLoadScroll');
+        }
+
+      }
+    };
+
+    $($carousel).mCustomScrollbar(_.options.mCustomScrollbar);
+
+  };
+  usaCarousel.prototype.destroyVerticalMode = function () {
+
+    var _ = this;
+    _.options.isVerticalModeActive = false;
+    _.removeElemClass(_.$mainWrap, _.options.verticalClassName, null);
+    $(_.$carousel).mCustomScrollbar('destroy');
+  };
+
+  /* -----------------------------------
+   * Horizontal mode
+   -----------------------------------*/
+  usaCarousel.prototype.initHorizontalMode = function () {
+
+    var _ = this;
+
+    if (_.$carouselItems.length <= _.options.swiper.slidesPerGroup) {
+      if (_.options.isHorizontalModeBp && !_.options.isHorizontalModeActive) {
+        _.addElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+      } else if (!_.options.isHorizontalModeBp && !_.options.isHorizontalModeActive) {
+        _.removeElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+      }
+
+      return false;
+    }
+
+    _.options.swiper.onInit = function (sw) {
+      _.options.isHorizontalModeActive = true;
+      _.addElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+      if (_.options.isHorizontalModeDestroy) {
+        _.options.isHorizontalModeDestroy = false;
+        sw.update(true);
+      }
+    };
+    _.options.swiper.onDestroy = function (sw) {
+      _.options.isHorizontalModeActive = false;
+      _.options.isHorizontalModeDestroy = true;
+      _.removeElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+    };
+    _.options.swiper.prevButton = _.$prevArrow;
+    _.options.swiper.nextButton = _.$nextArrow;
+
+    _.usaSwiper = new Swiper($(_.$mainWrap), _.options.swiper);
+  };
+  usaCarousel.prototype.destroyHorizontalMode = function () {
+
+    var _ = this;
+
+    _.usaSwiper.destroy(true, true);
+  };
+
+  /* -----------------------------------
+   * Mobile mode
+   -----------------------------------*/
+  usaCarousel.prototype.initMobileMode = function () {
+
+    var _ = this;
+
+    _.options.isMobileModeActive = true;
+    _.addElemClass(_.$mainWrap, _.options.mobileModeClassName, null);
+
+    if (_.options.isMoreButton) {
+      _.hideMoreBtnCarouselItems();
+    }
+  };
+  usaCarousel.prototype.destroyMobileMode = function () {
+
+    var _ = this;
+
+    _.options.isMobileModeActive = false;
+    _.removeElemClass(_.$mainWrap, _.options.mobileModeClassName, null);
+
+    if (_.options.isMoreButton) {
+      _.options.isMoreButtonActive = false;
+      _.removeElemClass(_.$moreButton, _.options.moreButtonClassClose, null);
+      _.addElemClass(_.$moreButton, _.options.moreButtonClassMore, null);
+      _.showMoreBtnCarouselItems();
+    }
+  };
+
+  /* -----------------------------------
+   * More button
+   -----------------------------------*/
+  usaCarousel.prototype.showMoreBtnCarouselItems = function () {
+    var _ = this;
+    _.removeElemClass(_.$carouselItems, _.options.moreButtonCarouselItemsClassHidden, null);
+  };
+  usaCarousel.prototype.hideMoreBtnCarouselItems = function () {
+    var _ = this;
+    if (!_.$mainWrap.hasClass(_.options.moreButtonCarouselClassNoHidden)) {
+      $(_.$carouselItems).filter(':gt(' + (_.options.moreButtonHiddenItemsGt) + ')').addClass(_.options.moreButtonCarouselItemsClassHidden);
+    }
+  };
+  usaCarousel.prototype.openMoreButton = function (elem) {
+
+    var _ = this;
+    _.options.isMoreButtonActive = true;
+    _.removeElemClass(elem, _.options.moreButtonClassMore, null);
+    _.addElemClass(elem, _.options.moreButtonClassClose, null);
+    _.showMoreBtnCarouselItems();
+  };
+
+  usaCarousel.prototype.closeMoreButton = function (elem) {
+
+    var _ = this;
+
+    _.options.isMoreButtonActive = false;
+    _.removeElemClass(elem, _.options.moreButtonClassClose, null);
+    _.addElemClass(elem, _.options.moreButtonClassMore, function () {
+      _.hideMoreBtnCarouselItems();
+      try {
+        $(_.$mainWrap).velocity("scroll", {duration: 700, easing: "linear"});
+      } catch (e) {
+        _.consoleCustom('error usaRightRailCarousel more button: scroll to element');
+      }
+    });
+  };
+
+  /* -----------------------------------
+   * Switch Mode
+   -----------------------------------*/
+  usaCarousel.prototype.checkMode = function () {
+
+    var _ = this;
+
+    if (_.options.isVerticalMode && !_.options.isVerticalModeActive && _.options.isVerticalModeBp) {
+      if (_.options.isHorizontalModeActive) {
+        _.destroyHorizontalMode();
+      }
+      if (_.options.isMobileModeActive) {
+        _.destroyMobileMode();
+      }
+    } else if (_.options.isHorizontalMode && !_.options.isHorizontalModeActive
+        && _.options.isHorizontalModeBp && !_.options.isMobileBpMax) {
+      if (_.options.isVerticalModeActive) {
+        _.destroyVerticalMode();
+      }
+      if (_.options.isMobileModeActive) {
+        _.destroyMobileMode();
+      }
+    } else if (_.options.isMobileBpMax && !_.options.isMobileModeActive) {
+      if (_.options.isVerticalModeActive) {
+        _.destroyVerticalMode();
+      }
+      if (_.options.isHorizontalModeActive) {
+        _.destroyHorizontalMode();
+      }
+    }
+
+    _.switchMode();
+  };
+  usaCarousel.prototype.switchMode = function () {
+
+    var _ = this;
+
+    if (_.options.isVerticalMode && !_.options.isVerticalModeActive && _.options.isVerticalModeBp) {
+      _.initVerticalMode();
+    } else if (_.options.isHorizontalMode && !_.options.isHorizontalModeActive &&
+        _.options.isHorizontalModeBp && !_.options.isMobileBpMax) {
+      _.initHorizontalMode();
+    } else if (_.options.isMobileBpMax && !_.options.isMobileModeActive) {
+      _.initMobileMode();
+    }
+  };
+
+  /* --------------------------
+   * init
+   ----------------------------*/
+  usaCarousel.prototype.init = function (creation) {
+
+    var _ = this,
+        $mainWrap = _.$mainWrap,
+        initClassName = _.options.initClassName;
+
+    _.consoleCustom('usaCarousel init');
+
+    if (creation && !$($mainWrap).hasClass(initClassName)) {
+      $($mainWrap).addClass(initClassName);
+      _.switchMode();
+      _.addEvents();
     }
   };
 
@@ -287,56 +454,55 @@
     return _;
   };
 
-  Drupal.behaviors.consumptionator_carousels = {
-    // Init all vertical carousels
-    initVSliders: function () {
-      $('.episodes-list-slider.vertical .slider-vertical').mCustomScrollbar({
-        axis: "y",
-        autoHideScrollbar: true,
-        scrollInertia: 0,
-        scrollbarPosition: "inside",
-        callbacks: {
-          onInit: function () {
-            var activeItem = $('.slider-vertical li.slide-item .asset-img.active').closest('li');
-            if (activeItem.length > 0) {
-              setTimeout(function () {
-                $('.slider-vertical').mCustomScrollbar("scrollTo", activeItem);
-              }, 500);
-            }
-          },
-          whileScrolling: function () {
-            if (this.mcs.topPct >= 97) {
-              $('.episodes-list', '.aspot-and-episodes').removeClass('shadow');
-            } else {
-              if (!$('.episodes-list', '.aspot-and-episodes').hasClass('shadow')) {
-                $('.episodes-list', '.aspot-and-episodes').addClass('shadow');
-              }
-            }
-          },
-          onScroll: function () {
-            var items = [];
-            var i = 0;
-            $(this).find('li').each(function () {
-              items[i] = this;
-              i++;
-            });
-            Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(items);
-          }
+  $(document).ready(function () {
+
+    var $body = $('body'),
+        $episodesListSlider = $('.episodes-list-slider');
+
+    if ($episodesListSlider.length > 0 && !$body.is('.page-videos-live')) {
+      if ($body.is('.show-new-design')) {
+        if ($body.is('.consumptionator-video-page')) {
+          $episodesListSlider.usaCarousel({
+            isVerticalMode: true,
+            verticalModeBpMin: 769,
+            isHorizontalMode: true,
+            horizontalModeBpMax: 768,
+            destroyCarouselBpMax: 640
+          });
+        } else {
+          $episodesListSlider.usaCarousel({
+            isVerticalMode: true,
+            verticalModeBpMin: 1025,
+            isHorizontalMode: true,
+            horizontalModeBpMax: 1024,
+            destroyCarouselBpMax: 640
+          });
         }
-      });
-    },
-    attach: function (context, settings) {
 
-      $(document.body).once(function () {
-
-        // init right rail carousel
-        Drupal.behaviors.consumptionator_carousels.initVSliders();
-
-        // init episodes-list-slider horizontal
-        $('.episodes-list-slider.horizontal').usaCarousel();
-
-      });
+      } else {
+        if ($body.is('.usa-tv-show')) {
+          $episodesListSlider.usaCarousel({
+            isVerticalMode: true,
+            verticalModeBpMin: 769,
+            isHorizontalMode: true,
+            horizontalModeBpMax: 768,
+            destroyCarouselBpMax: 640,
+            isMoreButton: true,
+            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
+          });
+        } else if ($body.is('.node-type-media-gallery')) {
+          $episodesListSlider.usaCarousel({
+            isVerticalMode: true,
+            verticalModeBpMin: 1281,
+            isHorizontalMode: true,
+            horizontalModeBpMax: 1280,
+            destroyCarouselBpMax: 640
+          });
+        } else {
+          $episodesListSlider.usaCarousel();
+        }
+      }
     }
-  };
+  });
 
 })(jQuery);

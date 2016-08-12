@@ -153,33 +153,22 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
       'path' => $path . '/templates',
       'template' => 'usanetwork-media-gallery-consumptionator-slides',
     ),
-    'usanetwork_media_gallery_consumptionator_episode_slide_horizontal' => array(
+    'usanetwork_media_gallery_consumptionator_episode_slide' => array(
       'variables' => array(
         'gallery_url' => NULL,
+        'image_mobile_url' => NULL,
         'image_url' => NULL,
         'title' => NULL,
         'season' => NULL,
         'episode' => NULL,
       ),
       'path' => $path . '/templates',
-      'template' => 'usanetwork-media-gallery-consumptionator-episode-slide-horizontal',
-    ),
-    'usanetwork_media_gallery_consumptionator_episode_slide_vertical' => array(
-      'variables' => array(
-        'gallery_url' => NULL,
-        'image_url' => NULL,
-        'title' => NULL,
-        'season' => NULL,
-        'episode' => NULL,
-      ),
-      'path' => $path . '/templates',
-      'template' => 'usanetwork-media-gallery-consumptionator-episode-slide-vertical',
+      'template' => 'usanetwork-media-gallery-consumptionator-episode-slide',
     ),
     'usanetwork_media_gallery_consumptionator_episode_slides' => array(
       'variables' => array(
         'block_title' => NULL,
-        'slides_vertical' => array(),
-        'slides_horizontal' => array(),
+        'slides_carousel' => array()
       ),
       'path' => $path . '/templates',
       'template' => 'usanetwork-media-gallery-consumptionator-episode-slides',
@@ -515,16 +504,10 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
       else {
         $promo_image_url = usanetwork_core_api_get_content_image('node', $gallery_item);
       }
-      $gallery_item_vertical = array(
-        'gallery_url' => url('node/' . $gallery_item->nid),
-        'image_url' => !empty($promo_image_url) ? image_style_url('111x74', $promo_image_url) : '',
-        'title' => $own_promo_lines['title'],
-        'description' => !empty($own_promo_lines['description']) ? $own_promo_lines['description'] : NULL,
-        'active' => ($gallery_item->nid == $node->nid) ? TRUE : FALSE,
-      );
 
-      $gallery_item_horizontal = array(
+      $gallery_item = array(
         'gallery_url' => url('node/' . $gallery_item->nid),
+        'image_mobile_url' => !empty($promo_image_url) ? image_style_url('111x74', $promo_image_url) : '',
         'image_url' => !empty($promo_image_url) ? image_style_url('full_episodes_633x356', $promo_image_url) : '',
         'title' => $own_promo_lines['title'],
         'description' => !empty($own_promo_lines['description']) ? $own_promo_lines['description'] : NULL,
@@ -532,14 +515,12 @@ function _usanetwork_media_gallery_consumptionator_episodes_block() {
         'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
       );
 
-      $rendered_items['slides_vertical'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide_vertical', $gallery_item_vertical);
-      $rendered_items['slides_horizontal'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide_horizontal', $gallery_item_horizontal);
+      $rendered_items['slides_carousel'][] = theme('usanetwork_media_gallery_consumptionator_episode_slide', $gallery_item);
     }
 
     return theme('usanetwork_media_gallery_consumptionator_episode_slides', array(
       'block_title' => !empty($block_title) ? $block_title : t('Other'),
-      'slides_vertical' => !empty($rendered_items['slides_vertical']) ? $rendered_items['slides_vertical'] : '',
-      'slides_horizontal' => !empty($rendered_items['slides_horizontal']) ? $rendered_items['slides_horizontal'] : '',
+      'slides_carousel' => !empty($rendered_items['slides_carousel']) ? $rendered_items['slides_carousel'] : '',
       'ad' => isset($advert) ? $advert : NULL,
       'link' => isset($show_nid) ? url('node/' . $show_nid . '/photos') : NULL,
       'new_design' => !empty($is_new_design) ? $is_new_design : NULL,

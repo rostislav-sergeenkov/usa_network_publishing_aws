@@ -9,25 +9,16 @@
   <div class="items-block-title posts-block-title<?php !empty($new_design) ? print ' show-color show-font' : ''; ?>">
     <h2><?php print $block_title;?></h2>
   </div>
-  <?php if (!empty($posts['vertical'])): ?>
-    <div class="episodes-list-slider vertical">
-      <ul class="slider-vertical">
-        <?php foreach ($posts['vertical'] as $item_v): ?>
-          <?php print $item_v; ?>
+  <?php if (!empty($posts['carousel'])): ?>
+    <div class="episodes-list-slider no-hidden-items" data-block-name="Right Rail Carousel">
+      <ul class="usa-carousel swiper-wrapper">
+        <?php foreach ($posts['carousel'] as $item): ?>
+          <?php print $item; ?>
         <?php endforeach; ?>
       </ul>
-    </div>
-  <?php endif; ?>
-  <?php if (!empty($posts['horizontal'])): ?>
-    <div class="episodes-list-slider horizontal no-hidden-items" data-block-name="Right Rail Carousel">
-      <ul class="slider-horizontal">
-        <?php foreach ($posts['horizontal'] as $item_h): ?>
-          <?php print $item_h; ?>
-        <?php endforeach; ?>
-      </ul>
-      <div class="horizontal-controls">
-        <div class="slide-next slide-control slick-disabled"></div>
-        <div class="slide-prev slide-control slick-disabled"></div>
+      <div class="usa-carousel-controls-wrap">
+        <div class="usa-carousel-control-next usa-carousel-controls usa-carousel-control-disabled"></div>
+        <div class="usa-carousel-control-prev usa-carousel-controls usa-carousel-control-disabled"></div>
       </div>
     </div>
   <?php endif; ?>

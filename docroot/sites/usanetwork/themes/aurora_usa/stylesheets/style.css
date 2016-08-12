@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix {
   zoom: 1;
 }
@@ -680,42 +680,42 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
 }
 
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .five-promo-item-block ul li.first .meta, .five-promo-item-block ul li.last .meta, .best-of-block-items li > div .meta, .show-latest-block ul li .meta, .consum-sidebar .episodes-list-slider.vertical li .meta, .related-content-block ul li .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .landing-page-container .landing-items-blocks ul li .meta, .carousel ul li:not(.description-item) .meta, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta, .five-promo-item-block ul li .meta, .best-of-block-items li > div .meta, .show-latest-block ul li .meta, .consum-sidebar .episodes-list-slider.vertical li .meta, .related-content-block ul li .meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta, .shows-block .show-info-block .show-bottom-info ul li .meta, .landing-page-container .landing-items-blocks ul li .meta, .carousel ul li:not(.description-item) .meta, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta {
   direction: ltr;
   color: #ffffff;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li.first .meta .caption, .five-promo-item-block ul li.last .meta .caption, .best-of-block-items li > div .meta .caption, .show-latest-block ul li .meta .caption, .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li:not(.description-item) .meta .caption, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .caption, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li.last .meta .title, .best-of-block-items li > div .meta .title, .show-latest-block ul li .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li:not(.description-item) .meta .title, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .title, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li.last .meta .additional, .best-of-block-items li > div .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li:not(.description-item) .meta .additional, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .additional, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .five-promo-item-block ul li.first .meta .description, .five-promo-item-block ul li.last .meta .description, .best-of-block-items li > div .meta .description, .show-latest-block ul li .meta .description, .consum-sidebar .episodes-list-slider.vertical li .meta .description, .related-content-block ul li .meta .description, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .description, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .landing-page-container .landing-items-blocks ul li .meta .description, .carousel ul li:not(.description-item) .meta .description, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .description, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .five-promo-item-block ul li.first .meta .show-title, .five-promo-item-block ul li.last .meta .show-title, .best-of-block-items li > div .meta .show-title, .show-latest-block ul li .meta .show-title, .consum-sidebar .episodes-list-slider.vertical li .meta .show-title, .related-content-block ul li .meta .show-title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .show-title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .landing-page-container .landing-items-blocks ul li .meta .show-title, .carousel ul li:not(.description-item) .meta .show-title, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .show-title, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .topic, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .five-promo-item-block ul li.first .meta .topic, .five-promo-item-block ul li.last .meta .topic, .best-of-block-items li > div .meta .topic, .show-latest-block ul li .meta .topic, .consum-sidebar .episodes-list-slider.vertical li .meta .topic, .related-content-block ul li .meta .topic, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .topic, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .landing-page-container .landing-items-blocks ul li .meta .topic, .carousel ul li:not(.description-item) .meta .topic, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .topic {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li .meta .caption, .best-of-block-items li > div .meta .caption, .show-latest-block ul li .meta .caption, .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li:not(.description-item) .meta .caption, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .caption, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li .meta .title, .best-of-block-items li > div .meta .title, .show-latest-block ul li .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li:not(.description-item) .meta .title, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .title, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li .meta .additional, .best-of-block-items li > div .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li:not(.description-item) .meta .additional, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .additional, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .description, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .description, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .description, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .description, .five-promo-item-block ul li .meta .description, .best-of-block-items li > div .meta .description, .show-latest-block ul li .meta .description, .consum-sidebar .episodes-list-slider.vertical li .meta .description, .related-content-block ul li .meta .description, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .description, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .description, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .description, .shows-block .show-info-block .show-bottom-info ul li .meta .description, .landing-page-container .landing-items-blocks ul li .meta .description, .carousel ul li:not(.description-item) .meta .description, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .description, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .show-title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .show-title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .show-title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .show-title, .five-promo-item-block ul li .meta .show-title, .best-of-block-items li > div .meta .show-title, .show-latest-block ul li .meta .show-title, .consum-sidebar .episodes-list-slider.vertical li .meta .show-title, .related-content-block ul li .meta .show-title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .show-title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .show-title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .show-title, .shows-block .show-info-block .show-bottom-info ul li .meta .show-title, .landing-page-container .landing-items-blocks ul li .meta .show-title, .carousel ul li:not(.description-item) .meta .show-title, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .show-title, .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .topic, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .topic, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .topic, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .topic, .five-promo-item-block ul li .meta .topic, .best-of-block-items li > div .meta .topic, .show-latest-block ul li .meta .topic, .consum-sidebar .episodes-list-slider.vertical li .meta .topic, .related-content-block ul li .meta .topic, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .topic, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .topic, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .topic, .shows-block .show-info-block .show-bottom-info ul li .meta .topic, .landing-page-container .landing-items-blocks ul li .meta .topic, .carousel ul li:not(.description-item) .meta .topic, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .topic {
   overflow: hidden;
   text-decoration: none;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li.first .meta .caption, .five-promo-item-block ul li.last .meta .caption, .best-of-block-items li > div .meta .caption, .show-latest-block ul li .meta .caption, .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li:not(.description-item) .meta .caption, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .caption {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .caption, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .caption, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .caption, .five-promo-item-block ul li .meta .caption, .best-of-block-items li > div .meta .caption, .show-latest-block ul li .meta .caption, .consum-sidebar .episodes-list-slider.vertical li .meta .caption, .related-content-block ul li .meta .caption, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .caption, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .caption, .shows-block .show-info-block .show-bottom-info ul li .meta .caption, .landing-page-container .landing-items-blocks ul li .meta .caption, .carousel ul li:not(.description-item) .meta .caption, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .caption {
   font-size: 13px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   letter-spacing: 0.75px;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li.first .meta .title, .five-promo-item-block ul li.last .meta .title, .best-of-block-items li > div .meta .title, .show-latest-block ul li .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li:not(.description-item) .meta .title, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .title {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .title, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .title, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .title, .five-promo-item-block ul li .meta .title, .best-of-block-items li > div .meta .title, .show-latest-block ul li .meta .title, .consum-sidebar .episodes-list-slider.vertical li .meta .title, .related-content-block ul li .meta .title, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .title, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .title, .shows-block .show-info-block .show-bottom-info ul li .meta .title, .landing-page-container .landing-items-blocks ul li .meta .title, .carousel ul li:not(.description-item) .meta .title, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .title {
   font-size: 16px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li.first .meta .additional, .five-promo-item-block ul li.last .meta .additional, .best-of-block-items li > div .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li:not(.description-item) .meta .additional, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .additional {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional, .five-promo-item-block ul li .meta .additional, .best-of-block-items li > div .meta .additional, .show-latest-block ul li .meta .additional, .consum-sidebar .episodes-list-slider.vertical li .meta .additional, .related-content-block ul li .meta .additional, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional, .shows-block .show-info-block .show-bottom-info ul li .meta .additional, .landing-page-container .landing-items-blocks ul li .meta .additional, .carousel ul li:not(.description-item) .meta .additional, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .additional {
   font-size: 11px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   letter-spacing: 1px;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional span, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .five-promo-item-block ul li.first .meta .additional span, .five-promo-item-block ul li.last .meta .additional span, .best-of-block-items li > div .meta .additional span, .show-latest-block ul li .meta .additional span, .consum-sidebar .episodes-list-slider.vertical li .meta .additional span, .related-content-block ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .landing-page-container .landing-items-blocks ul li .meta .additional span, .carousel ul li:not(.description-item) .meta .additional span, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .additional span {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta .additional span, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta .additional span, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta .additional span, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta .additional span, .five-promo-item-block ul li .meta .additional span, .best-of-block-items li > div .meta .additional span, .show-latest-block ul li .meta .additional span, .consum-sidebar .episodes-list-slider.vertical li .meta .additional span, .related-content-block ul li .meta .additional span, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta .additional span, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta .additional span, .shows-block .show-info-block .show-bottom-info ul li .meta .additional span, .landing-page-container .landing-items-blocks ul li .meta .additional span, .carousel ul li:not(.description-item) .meta .additional span, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta .additional span {
   font-size: 11px;
   font-family: "texgyrescholaitalic", Times, serif;
   letter-spacing: 1px;
 }
-.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta > div:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta > div:only-child, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta > div:only-child, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta > div:only-child, .five-promo-item-block ul li.first .meta > div:only-child, .five-promo-item-block ul li.last .meta > div:only-child, .best-of-block-items li > div .meta > div:only-child, .show-latest-block ul li .meta > div:only-child, .consum-sidebar .episodes-list-slider.vertical li .meta > div:only-child, .related-content-block ul li .meta > div:only-child, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta > div:only-child, .shows-block .show-info-block .show-bottom-info ul li .meta > div:only-child, .landing-page-container .landing-items-blocks ul li .meta > div:only-child, .carousel ul li:not(.description-item) .meta > div:only-child, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta > div:only-child {
+.consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta > div:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta > div:only-child, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta > div:only-child, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta > div:only-child, .five-promo-item-block ul li .meta > div:only-child, .best-of-block-items li > div .meta > div:only-child, .show-latest-block ul li .meta > div:only-child, .consum-sidebar .episodes-list-slider.vertical li .meta > div:only-child, .related-content-block ul li .meta > div:only-child, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta > div:only-child, .shows-block .show-info-block .show-bottom-info ul li .meta > div:only-child, .landing-page-container .landing-items-blocks ul li .meta > div:only-child, .carousel ul li:not(.description-item) .meta > div:only-child, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta > div:only-child {
   white-space: normal;
 }
 @supports (-webkit-line-clamp: 2) {
-  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta > div:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta > div:only-child, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta > div:only-child, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta > div:only-child, .five-promo-item-block ul li.first .meta > div:only-child, .five-promo-item-block ul li.last .meta > div:only-child, .best-of-block-items li > div .meta > div:only-child, .show-latest-block ul li .meta > div:only-child, .consum-sidebar .episodes-list-slider.vertical li .meta > div:only-child, .related-content-block ul li .meta > div:only-child, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta > div:only-child, .shows-block .show-info-block .show-bottom-info ul li .meta > div:only-child, .landing-page-container .landing-items-blocks ul li .meta > div:only-child, .carousel ul li:not(.description-item) .meta > div:only-child, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta > div:only-child {
+  .consum-sidebar .episodes-list-slider.horizontal li .aspot-carousel-promo .meta > div:only-child, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta > div:only-child, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta > div:only-child, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta > div:only-child, .five-promo-item-block ul li .meta > div:only-child, .best-of-block-items li > div .meta > div:only-child, .show-latest-block ul li .meta > div:only-child, .consum-sidebar .episodes-list-slider.vertical li .meta > div:only-child, .related-content-block ul li .meta > div:only-child, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta > div:only-child, .shows-block .show-info-block .show-central-info .promo .node a .meta-wrapper .meta > div:only-child, .shows-block .show-info-block .show-bottom-info ul li .meta > div:only-child, .landing-page-container .landing-items-blocks ul li .meta > div:only-child, .carousel ul li:not(.description-item) .meta > div:only-child, .carousel ul li:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta > div:only-child {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -2343,180 +2343,48 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 
-.five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-landing-videos-item-small.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb.watch-now > a:before {
-  height: 4.68175vw;
-  width: 4.99737vw;
-}
-@media (min-width: 1901px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-landing-videos-item-small.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb.watch-now > a:before {
-    height: 89px;
-    width: 95px;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-landing-videos-item-small.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb.watch-now > a:before {
-    height: 6.14062vw;
-    width: 6.5625vw;
-  }
-}
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-landing-videos-item-small.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb.watch-now > a:before, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb.watch-now > a:before {
-    height: 18.22917vw;
-    width: 19.53125vw;
-  }
+.landing-page-container .landing-items-blocks ul li .three-line-video {
+  /*&.usanetwork-media-gallery-landing-photos-item-small,*/
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption {
+  .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .caption {
     font-size: 1.23698vw;
     line-height: 1.5625vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .title {
+  .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .title {
     font-size: 1.69271vw;
     line-height: 2.08333vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional {
+  .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta .additional {
     font-size: 1.17188vw;
     line-height: 1.5625vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon {
+  .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon {
     height: 3.90625vw;
     margin-top: -1.95313vw;
     width: 3.90625vw;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta {
+  .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-landing-videos-item-small .meta-icon ~ .meta {
     padding-left: calc(8% + 3.90625vw);
   }
 }
-@media (min-width: 641px) and (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper {
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    background-repeat: no-repeat;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
-    height: 25%;
-  }
-}
-@media (max-width: 640px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper {
-    height: 29% !important;
-  }
-}
-@media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-wrapper, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-wrapper {
-    height: 33% !important;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption {
-    font-size: 1.23698vw;
-    line-height: 1.5625vw;
-  }
-}
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption {
-    font-size: 2.5vw;
-    line-height: 3.33333vw;
-  }
-}
-@media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .caption, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .caption {
-    font-size: 12px;
-    line-height: 16px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .title {
-    font-size: 1.69271vw;
-    line-height: 2.08333vw;
-  }
-}
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .title {
-    font-size: 3.75vw;
-    line-height: 4.375vw;
-  }
-}
-@media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .title, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .title {
-    font-size: 18px;
-    line-height: 21px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional {
-    font-size: 1.17188vw;
-    line-height: 1.5625vw;
-  }
-}
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional {
-    font-size: 2.5vw;
-    line-height: 3.33333vw;
-  }
-}
-@media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta .additional, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta .additional {
-    font-size: 12px;
-    line-height: 16px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon {
-    height: 3.90625vw;
-    margin-top: -1.95313vw;
-    width: 3.90625vw;
-  }
-}
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon {
-    height: 7.5vw;
-    margin-top: -3.75vw;
-    width: 7.5vw;
-  }
-}
-@media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon {
-    height: 36px;
-    margin-top: -18px;
-    width: 36px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta {
-    padding-left: calc(8% + 3.90625vw);
-  }
-}
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta {
-    padding-left: calc(8% + 7.5vw);
-  }
-}
-@media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-video-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-explore-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-photo-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-tv-shows-all-shows-lmb .meta-icon ~ .meta, .five-promo-item-block ul li.last .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video.usanetwork-movies-all-movies-lmb .meta-icon ~ .meta {
-    padding-left: calc(8% + 36px);
-  }
-}
-.five-promo-item-block ul li.last .three-line-video .asset-img, .landing-page-container .landing-items-blocks ul li .three-line-video .asset-img {
+.landing-page-container .landing-items-blocks ul li .three-line-video .asset-img {
   height: 100%;
   width: 100%;
 }
-.five-promo-item-block ul li.last .three-line-video .asset-img img, .landing-page-container .landing-items-blocks ul li .three-line-video .asset-img img {
+.landing-page-container .landing-items-blocks ul li .three-line-video .asset-img img {
   height: 100%;
   width: 100%;
 }
-.five-promo-item-block ul li.last .three-line-video .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-wrapper {
+.landing-page-container .landing-items-blocks ul li .three-line-video .meta-wrapper {
   background: #656364;
   bottom: 0;
   height: 25%;
@@ -2525,17 +2393,17 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   z-index: 1;
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-wrapper {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta-wrapper {
     height: 12.4vw;
   }
 }
-.five-promo-item-block ul li.last .three-line-video .meta-wrapper-inner, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-wrapper-inner {
+.landing-page-container .landing-items-blocks ul li .three-line-video .meta-wrapper-inner {
   height: 100%;
   display: table;
   position: relative;
   width: 100%;
 }
-.five-promo-item-block ul li.last .three-line-video .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta {
+.landing-page-container .landing-items-blocks ul li .three-line-video .meta {
   display: table-cell;
   max-width: 100px;
   overflow: hidden;
@@ -2543,93 +2411,93 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   vertical-align: middle;
   width: 100%;
 }
-.five-promo-item-block ul li.last .three-line-video .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
+.landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
   font-size: 0.94687vw;
   line-height: 1.26249vw;
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
     font-size: 18px;
     line-height: 24px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
     font-size: 9.5px;
     line-height: 12px;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
     font-size: 1.97917vw;
     line-height: 2.5vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .caption {
     font-size: 9.5px;
     line-height: 12px;
   }
 }
-.five-promo-item-block ul li.last .three-line-video .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
+.landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.26249vw;
   line-height: 1.57812vw;
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
     font-size: 24px;
     line-height: 30px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
     font-size: 13px;
     line-height: 16px;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
     font-size: 2.70833vw;
     line-height: 3.33333vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .title {
     font-size: 13px;
     line-height: 16px;
   }
 }
-.five-promo-item-block ul li.last .three-line-video .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
+.landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 0.84166vw;
   line-height: 1.15729vw;
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
     font-size: 16px;
     line-height: 22px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
     font-size: 9px;
     line-height: 12px;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
     font-size: 1.875vw;
     line-height: 2.5vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta .additional {
     font-size: 9px;
     line-height: 12px;
   }
 }
-.five-promo-item-block ul li.last .three-line-video .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
+.landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
   left: 4%;
   height: 2.52499vw;
   margin-top: -1.26249vw;
@@ -2638,88 +2506,66 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   width: 2.52499vw;
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.last .three-line-video .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
     height: 48px;
     margin-top: -24px;
     width: 48px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li.last .three-line-video .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
     height: 26px;
     margin-top: -13px;
     width: 26px;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
     height: 5.41667vw;
     margin-top: -2.70833vw;
     width: 5.41667vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon {
     height: 26px;
     margin-top: -13px;
     width: 26px;
   }
 }
-.five-promo-item-block ul li.last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
+.landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
   padding-left: calc(8% + 2.52499vw);
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
     padding-left: calc(8% + 48px);
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .five-promo-item-block ul li.last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
     padding-left: calc(8% + 26px);
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
     padding-left: calc(8% + 5.41667vw);
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.last .three-line-video .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
+  .landing-page-container .landing-items-blocks ul li .three-line-video .meta-icon ~ .meta {
     padding-left: calc(8% + 26px);
   }
 }
 
-.five-promo-item-block ul li.first .three-line-video-large.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video-large.watch-now > a:before {
-  height: 9.4687vw;
-  width: 10.15255vw;
-}
-@media (min-width: 1901px) {
-  .five-promo-item-block ul li.first .three-line-video-large.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video-large.watch-now > a:before {
-    height: 180px;
-    width: 193px;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.first .three-line-video-large.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video-large.watch-now > a:before {
-    height: 10.625vw;
-    width: 11.40625vw;
-  }
-}
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.first .three-line-video-large.watch-now > a:before, .landing-page-container .landing-items-blocks ul li .three-line-video-large.watch-now > a:before {
-    height: 18.22917vw;
-    width: 19.53125vw;
-  }
-}
-.five-promo-item-block ul li.first .three-line-video-large .asset-img, .landing-page-container .landing-items-blocks ul li .three-line-video-large .asset-img {
+.landing-page-container .landing-items-blocks ul li .three-line-video-large .asset-img {
   height: 100%;
   width: 100%;
 }
-.five-promo-item-block ul li.first .three-line-video-large .asset-img img, .landing-page-container .landing-items-blocks ul li .three-line-video-large .asset-img img {
+.landing-page-container .landing-items-blocks ul li .three-line-video-large .asset-img img {
   height: 100%;
   width: 100%;
 }
-.five-promo-item-block ul li.first .three-line-video-large .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
+.landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
   bottom: 0;
   height: 25%;
   position: absolute;
@@ -2727,7 +2573,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   z-index: 1;
 }
 @media (min-width: 641px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
@@ -2739,33 +2585,33 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 @media (min-width: 769px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
     height: 9.1vw;
   }
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
     height: 173px;
   }
 }
 @media (max-width: 640px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
     background: #656364;
     height: 29%;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper {
     height: 33%;
   }
 }
-.five-promo-item-block ul li.first .three-line-video-large .meta-wrapper-inner, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper-inner {
+.landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-wrapper-inner {
   height: 100%;
   display: table;
   position: relative;
   width: 100%;
 }
-.five-promo-item-block ul li.first .three-line-video-large .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta {
+.landing-page-container .landing-items-blocks ul li .three-line-video-large .meta {
   display: table-cell;
   max-width: 100px;
   overflow: hidden;
@@ -2773,93 +2619,93 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   vertical-align: middle;
   width: 100%;
 }
-.five-promo-item-block ul li.first .three-line-video-large .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
+.landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
   font-size: 1.15729vw;
   line-height: 1.57812vw;
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
     font-size: 22px;
     line-height: 30px;
   }
 }
 @media (max-width: 1024px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
     font-size: 12px;
     line-height: 16px;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
     font-size: 2.5vw;
     line-height: 3.33333vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .caption, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .caption {
     font-size: 12px;
     line-height: 16px;
   }
 }
-.five-promo-item-block ul li.first .three-line-video-large .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
+.landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 1.78853vw;
   line-height: 2.10416vw;
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
     font-size: 34px;
     line-height: 40px;
   }
 }
 @media (max-width: 1024px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
     font-size: 18px;
     line-height: 21px;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
     font-size: 3.75vw;
     line-height: 4.375vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .title, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .title {
     font-size: 18px;
     line-height: 21px;
   }
 }
-.five-promo-item-block ul li.first .three-line-video-large .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
+.landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
   font-family: "texgyrescholaitalic", Times, serif;
   font-size: 1.15729vw;
   line-height: 1.57812vw;
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
     font-size: 22px;
     line-height: 30px;
   }
 }
 @media (max-width: 1024px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
     font-size: 12px;
     line-height: 16px;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
     font-size: 2.5vw;
     line-height: 3.33333vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta .additional, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta .additional {
     font-size: 12px;
     line-height: 16px;
   }
 }
-.five-promo-item-block ul li.first .three-line-video-large .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
+.landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
   left: 4%;
   height: 4.20831vw;
   margin-top: -2.10416vw;
@@ -2868,53 +2714,53 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   width: 4.20831vw;
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
     height: 80px;
     margin-top: -40px;
     width: 80px;
   }
 }
 @media (max-width: 1024px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
     height: 42px;
     margin-top: -21px;
     width: 42px;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
     height: 7.5vw;
     margin-top: -3.75vw;
     width: 7.5vw;
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-icon, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon {
     height: 36px;
     margin-top: -18px;
     width: 36px;
   }
 }
-.five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
+.landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
   padding-left: calc(8% + 4.20831vw);
 }
 @media (min-width: 1901px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
     padding-left: calc(8% + 80px);
   }
 }
 @media (max-width: 1024px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
     padding-left: calc(8% + 42px);
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
     padding-left: calc(8% + 7.5vw);
   }
 }
 @media (max-width: 480px) {
-  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta, .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
+  .landing-page-container .landing-items-blocks ul li .three-line-video-large .meta-icon ~ .meta {
     padding-left: calc(8% + 36px);
   }
 }
@@ -4913,36 +4759,6 @@ body:not(.show-new-design) #topbanner {
 }
 .aspot-and-episodes .episodes-list.sponsored-enable .episodes-list-slider.vertical {
   height: calc(90% - 50px);
-}
-
-.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored {
-  background-color: #242424;
-  bottom: 25%;
-  right: 0;
-  position: absolute;
-  width: 63%;
-}
-.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block .sponsored.active {
-  padding: 3px 0;
-}
-.pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
-  bottom: 9.1vw;
-  width: 30%;
-}
-@media (max-width: 768px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
-    bottom: 25%;
-  }
-}
-@media (max-width: 640px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
-    bottom: 29%;
-  }
-}
-@media (min-width: 1901px) {
-  .pane-usanetwork-tv-shows-usanetwork-tv-shows-best-of .five-promo-item-block li.first .sponsored {
-    bottom: 173px;
-  }
 }
 
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
@@ -8998,6 +8814,494 @@ header .tve-help-link.signIn .inlineLoader {
   }
 }
 
+.five-promo-item-block ul li.first .three-line-video-large.watch-now > a:before {
+  height: 9.4687vw;
+  width: 10.15255vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li.first .three-line-video-large.watch-now > a:before {
+    height: 180px;
+    width: 193px;
+  }
+}
+@media (min-width: 600px) and (max-width: 1280px) {
+  .five-promo-item-block ul li.first .three-line-video-large.watch-now > a:before {
+    height: 10.625vw;
+    width: 11.40625vw;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li.first .three-line-video-large.watch-now > a:before {
+    height: 18.22917vw;
+    width: 19.53125vw;
+  }
+}
+@media (min-width: 600px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+    height: 29%;
+  }
+}
+@media (min-width: 769px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper {
+    height: 9.1vw;
+  }
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper {
+    height: 173px;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper {
+    background: #656364;
+    height: 29%;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-wrapper {
+    height: 33%;
+  }
+}
+.five-promo-item-block ul li.first .three-line-video-large .meta .caption {
+  font-size: 1.15729vw;
+  line-height: 1.57812vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .caption {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+@media (max-width: 1024px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .caption {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .caption {
+    font-size: 1.5625vw;
+    line-height: 2.08333vw;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .caption {
+    font-size: 2.5vw;
+    line-height: 3.33333vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .caption {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+.five-promo-item-block ul li.first .three-line-video-large .meta .title {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 1.78853vw;
+  line-height: 2.10416vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .title {
+    font-size: 34px;
+    line-height: 40px;
+  }
+}
+@media (max-width: 1024px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .title {
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .title {
+    font-size: 2.34375vw;
+    line-height: 2.73438vw;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .title {
+    font-size: 3.75vw;
+    line-height: 4.375vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .title {
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+.five-promo-item-block ul li.first .three-line-video-large .meta .additional {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 1.15729vw;
+  line-height: 1.57812vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .additional {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+@media (max-width: 1024px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .additional {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .additional {
+    font-size: 1.5625vw;
+    line-height: 2.08333vw;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .additional {
+    font-size: 2.5vw;
+    line-height: 3.33333vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta .additional {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+.five-promo-item-block ul li.first .three-line-video-large .meta-icon {
+  height: 4.20831vw;
+  margin-top: -2.10416vw;
+  width: 4.20831vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon {
+    height: 80px;
+    margin-top: -40px;
+    width: 80px;
+  }
+}
+@media (max-width: 1024px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon {
+    height: 42px;
+    margin-top: -21px;
+    width: 42px;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon {
+    height: 5.46875vw;
+    margin-top: -2.73438vw;
+    width: 5.46875vw;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon {
+    height: 7.5vw;
+    margin-top: -3.75vw;
+    width: 7.5vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon {
+    height: 36px;
+    margin-top: -18px;
+    width: 36px;
+  }
+}
+.five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta {
+  padding-left: calc(8% + 4.20831vw);
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta {
+    padding-left: calc(8% + 80px);
+  }
+}
+@media (max-width: 1024px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta {
+    padding-left: calc(8% + 42px);
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta {
+    padding-left: calc(8% + 5.46875vw);
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta {
+    padding-left: calc(8% + 7.5vw);
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li.first .three-line-video-large .meta-icon ~ .meta {
+    padding-left: calc(8% + 36px);
+  }
+}
+
+.five-promo-item-block ul li:not(.first) .three-line-video.watch-now > a:before {
+  height: 4.68175vw;
+  width: 4.99737vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video.watch-now > a:before {
+    height: 89px;
+    width: 95px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video.watch-now > a:before {
+    height: 6.14062vw;
+    width: 6.5625vw;
+  }
+}
+@media (max-width: 768px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video.watch-now > a:before {
+    height: 10.625vw;
+    width: 11.40625vw;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video.watch-now > a:before {
+    height: 18.22917vw;
+    width: 19.53125vw;
+  }
+}
+.five-promo-item-block ul li:not(.first) .three-line-video .meta-wrapper {
+  background: #656364;
+  height: 25%;
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-wrapper {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+    height: 29%;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-wrapper {
+    background: #656364;
+    height: 29%;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-wrapper {
+    height: 33%;
+  }
+}
+.five-promo-item-block ul li:not(.first) .three-line-video .meta .caption {
+  font-size: 0.94687vw;
+  line-height: 1.26249vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .caption {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .caption {
+    font-size: 1.23698vw;
+    line-height: 1.5625vw;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .caption {
+    font-size: 1.23698vw;
+    line-height: 1.5625vw;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .caption {
+    font-size: 1.5625vw;
+    line-height: 2.08333vw;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .caption {
+    font-size: 2.5vw;
+    line-height: 3.33333vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .caption {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+.five-promo-item-block ul li:not(.first) .three-line-video .meta .title {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 1.26249vw;
+  line-height: 1.57812vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .title {
+    font-size: 1.69271vw;
+    line-height: 2.08333vw;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .title {
+    font-size: 1.69271vw;
+    line-height: 2.08333vw;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .title {
+    font-size: 2.34375vw;
+    line-height: 2.73438vw;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .title {
+    font-size: 3.75vw;
+    line-height: 4.375vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .title {
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+.five-promo-item-block ul li:not(.first) .three-line-video .meta .additional {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 0.84166vw;
+  line-height: 1.15729vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .additional {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .additional {
+    font-size: 1.17188vw;
+    line-height: 1.5625vw;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .additional {
+    font-size: 1.17188vw;
+    line-height: 1.5625vw;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .additional {
+    font-size: 1.5625vw;
+    line-height: 2.08333vw;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .additional {
+    font-size: 2.5vw;
+    line-height: 3.33333vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta .additional {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+.five-promo-item-block ul li:not(.first) .three-line-video .meta-icon {
+  height: 2.52499vw;
+  margin-top: -1.26249vw;
+  width: 2.52499vw;
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon {
+    height: 48px;
+    margin-top: -24px;
+    width: 48px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon {
+    height: 3.90625vw;
+    margin-top: -1.95313vw;
+    width: 3.90625vw;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon {
+    height: 3.90625vw;
+    margin-top: -1.95313vw;
+    width: 3.90625vw;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon {
+    height: 5.46875vw;
+    margin-top: -2.73438vw;
+    width: 5.46875vw;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon {
+    height: 7.5vw;
+    margin-top: -3.75vw;
+    width: 7.5vw;
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon {
+    height: 36px;
+    margin-top: -18px;
+    width: 36px;
+  }
+}
+.five-promo-item-block ul li:not(.first) .three-line-video .meta-icon ~ .meta {
+  padding-left: calc(8% + 2.52499vw);
+}
+@media (min-width: 1901px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon ~ .meta {
+    padding-left: calc(8% + 48px);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon ~ .meta {
+    padding-left: calc(8% + 3.90625vw);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon ~ .meta {
+    padding-left: calc(8% + 3.90625vw);
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon ~ .meta {
+    padding-left: calc(8% + 5.46875vw);
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon ~ .meta {
+    padding-left: calc(8% + 7.5vw);
+  }
+}
+@media (max-width: 480px) {
+  .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon ~ .meta {
+    padding-left: calc(8% + 36px);
+  }
+}
+
 .five-promo-item-block {
   background: #dcddde;
   border-bottom: 2px solid;
@@ -9032,135 +9336,196 @@ header .tve-help-link.signIn .inlineLoader {
   display: table;
 }
 .five-promo-item-block ul li {
-  float: left;
-  height: 39.82vw;
+  height: auto;
   overflow: hidden;
+}
+.five-promo-item-block ul li.first {
+  float: left;
+  padding-top: calc(49.6% * 0.816);
   position: relative;
   width: 49.6%;
 }
-@media (min-width: 1901px) {
-  .five-promo-item-block ul li {
-    height: 756px;
-  }
-}
-@media (max-width: 768px) {
-  .five-promo-item-block ul li {
-    height: calc((100vw - 32px) / 1.28);
-    width: 100%;
+@media (max-width: 1280px) {
+  .five-promo-item-block ul li.first {
+    margin-bottom: 0.8%;
   }
 }
 @media (min-width: 769px) and (max-width: 1280px) {
   .five-promo-item-block ul li.first {
-    height: 32.55vw;
+    padding-top: calc(57% * 0.575);
     width: 57%;
   }
 }
-@media (max-width: 768px) {
+@media (min-width: 600px) and (max-width: 768px) {
   .five-promo-item-block ul li.first {
-    height: 55.65vw;
-    margin-bottom: 1.47vw;
+    padding-top: calc(49.6% * 0.575);
+    width: 49.6%;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 599px) {
   .five-promo-item-block ul li.first {
-    height: 51.6vw;
-  }
-}
-.five-promo-item-block ul li.last {
-  float: right;
-}
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.last {
-    height: auto;
-  }
-}
-@media (min-width: 769px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.last {
-    clear: both;
-    height: auto;
-    overflow: visible;
+    margin-bottom: 1.6%;
+    padding-top: 57.5%;
     width: 100%;
   }
 }
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.last {
-    height: auto;
-  }
-}
-.five-promo-item-block ul li.last > div {
-  float: left;
-  height: 49.2%;
-  width: 49.2%;
+.five-promo-item-block ul li:not(.first) {
+  padding-top: calc(((49.6% - 0.8%)/2)*0.816);
+  position: absolute;
+  width: calc((49.6% - 0.8%)/2);
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.last > div {
-    height: 36.83vw;
+  .five-promo-item-block ul li:not(.first) {
+    position: relative;
   }
 }
-.five-promo-item-block ul li.last > div:nth-child(1), .five-promo-item-block ul li.last > div:nth-child(2) {
-  margin-bottom: 1.6%;
-}
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.last > div:nth-child(1), .five-promo-item-block ul li.last > div:nth-child(2) {
-    margin-bottom: 1.47vw;
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li:not(.first) {
+    padding-top: calc(49.6% * 0.575);
+    width: 49.6%;
   }
 }
-.five-promo-item-block ul li.last > div:nth-child(2), .five-promo-item-block ul li.last > div:nth-child(4) {
-  float: right;
+@media (max-width: 599px) {
+  .five-promo-item-block ul li:not(.first) {
+    padding-top: 57.5%;
+    width: 100%;
+  }
 }
 @media (min-width: 769px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.last > div:not(.advert-block) {
+  .five-promo-item-block ul li:nth-child(2), .five-promo-item-block ul li:nth-child(3), .five-promo-item-block ul li:nth-child(4) {
     float: left;
-    height: 26.2vw;
-    margin-bottom: 0;
     margin-right: 0.8%;
-    margin-top: 0.8vw;
+    padding-top: calc(32.8% * 0.816);
+    position: relative;
     width: 32.8%;
   }
 }
-@media (max-width: 768px) {
-  .five-promo-item-block ul li.last > div:not(.advert-block) {
-    height: 55.65vw;
-    margin-right: 0;
-    width: 100%;
+@media (min-width: 1281px) {
+  .five-promo-item-block ul li:nth-child(2) {
+    left: 50.4%;
+    top: 0;
   }
 }
 @media (min-width: 769px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.last > div:nth-child(3) {
-    margin-right: 0;
+  .five-promo-item-block ul li:nth-child(2) {
+    clear: left;
   }
 }
-@media (min-width: 769px) and (max-width: 1280px) {
-  .five-promo-item-block ul li.last .advert-block {
-    bottom: 100%;
-    height: 32.55vw;
-    position: absolute;
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(2) {
+    float: right;
+    margin-bottom: 0.8%;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li:nth-child(2) {
+    margin-bottom: 1.6%;
+  }
+}
+@media (min-width: 1281px) {
+  .five-promo-item-block ul li:nth-child(3) {
     right: 0;
-    width: 41.67%;
+    top: 0;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(3) {
+    float: left;
+  }
+}
+@media (max-width: 599px) {
+  .five-promo-item-block ul li:nth-child(3) {
+    margin-bottom: 1.6%;
+  }
+}
+@media (min-width: 1281px) {
+  .five-promo-item-block ul li:nth-child(4) {
+    bottom: 0;
+    left: 50.4%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:nth-child(4) {
+    margin-right: 0;
+    float: right;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .five-promo-item-block ul li:nth-child(4) {
+    float: right;
+  }
+}
+.five-promo-item-block ul li:nth-child(5) {
+  bottom: 0;
+  right: 0;
+}
+@media (min-width: 769px) and (max-width: 1280px) {
+  .five-promo-item-block ul li:nth-child(5) {
+    bottom: auto;
+    padding-top: calc(57% * 0.575);
+    right: 0;
+    top: 0;
+    width: 41.6%;
   }
 }
 @media (max-width: 768px) {
-  .five-promo-item-block ul li.last .advert-block {
+  .five-promo-item-block ul li.advert-block {
     display: none;
   }
 }
-.five-promo-item-block ul li > div {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-.five-promo-item-block ul li > div.advert-block .advertisement {
+.five-promo-item-block ul li.advert-block .advertisement {
   background: #656364;
   left: 50%;
   height: 250px;
   margin-left: -150px;
   margin-top: -125px;
-  max-height: 100%;
-  max-width: 100%;
   position: absolute;
   top: 50%;
   width: 300px;
+}
+.five-promo-item-block ul li > div {
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.five-promo-item-block ul li > div.watch-now {
+  position: absolute;
+}
+.five-promo-item-block ul li > div .meta-wrapper {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+.five-promo-item-block ul li > div .meta-wrapper-inner {
+  height: 100%;
+  display: table;
+  position: relative;
+  width: 100%;
+}
+.five-promo-item-block ul li > div .meta {
+  display: table-cell;
+  max-width: 100px;
+  overflow: hidden;
+  padding-left: 4%;
+  vertical-align: middle;
+  width: 100%;
+}
+.five-promo-item-block ul li > div .meta-icon {
+  left: 4%;
+  position: absolute;
+  top: 50%;
+}
+.five-promo-item-block ul li > div .asset-img {
+  height: 100%;
+  width: 100%;
+}
+.five-promo-item-block ul li > div .asset-img img {
+  height: 100%;
+  width: 100%;
 }
 .five-promo-item-block.movie-all-movies-main-block .movies-main-description {
   color: #5d5d5d;

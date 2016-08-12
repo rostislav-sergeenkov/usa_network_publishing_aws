@@ -195,11 +195,11 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         }
       }
       .episodes-list-slider {
-        &.vertical {
+        &.vertical-mode {
           @include breakpoint($between-1025-1280) {
             height: calc(100% - 70px);
           }
-          li {
+          .usa-carousel-item {
             @include breakpoint($between-1025-1280) {
               height: 50px;
             }
@@ -227,8 +227,8 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
         }
-        &.horizontal {
-          li {
+        &.horizontal-mode {
+          .usa-carousel-item {
             @include breakpoint($bp-640-width) {
               height: auto;
               padding: get-vw(40px, 640) get-vw(40px, 640) 0;

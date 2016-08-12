@@ -420,7 +420,7 @@
       delay: carouselSpeed,
       easing: easingAnim,
       progress: function (elements, complete, remaining, start, tweenValue) {
-        if (complete * 100 >= 60) {
+        if (complete * 100 >= 20) {
           if (_.options.isShowCardGetAdMinBp && !$currentSlideNode.hasClass(_.initials.showCardCarouselItemClassAdvertEnable)) {
             try {
               Drupal.behaviors.mpsSponsorShip.execSponsoredBlock($currentSlideNode);

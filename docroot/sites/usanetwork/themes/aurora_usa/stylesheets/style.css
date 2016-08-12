@@ -32833,9 +32833,6 @@ yx-axis
     float: left;
     margin-left: 1.51515vw;
   }
-  .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .episode-show {
-    padding-left: 0;
-  }
 }
 .schedule-on-tonight .schedule-block.on-now .schedule-items-wrapper .schedule-item .time {
   margin-left: 0;
@@ -32947,7 +32944,7 @@ yx-axis
   color: #ffffff;
   float: left;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 0.84166vw;
+  font-size: 0.78906vw;
   letter-spacing: 0.5px;
   margin-top: 0.52604vw;
   text-transform: uppercase;

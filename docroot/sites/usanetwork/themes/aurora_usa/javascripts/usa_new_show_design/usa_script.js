@@ -11,18 +11,8 @@
     }
   }
 
-  //add dots for description in articles block
-  function addDots(item, lines, captionLineHeight, text) {
-    item.text(text).dotdotdot({
-      height: captionLineHeight * lines,
-      lastCharacter: {
-        noEllipsis: [' ', ',', ';', '.', '!', '?', '\'']
-      }
-    });
-  }
-
   //calculate lines in articles block
-  function checkDescriptionLines() {
+  function checkDescriptionLinesNewDesign() {
     if ($('.articles-block').length > 0) {
       if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
         $('.title-and-additional').each(function () {
@@ -56,11 +46,11 @@
   $(document).ready(function () {
     addBodyClass();
     initUsaChangableLink();
-    checkDescriptionLines();
+    checkDescriptionLinesNewDesign();
   });
   $(window).resize(function () {
     setTimeout(function () {
-      checkDescriptionLines();
+      checkDescriptionLinesNewDesign();
     }, 500);
   });
 

@@ -291,6 +291,7 @@ function checkDescriptionLines() {
 $(document).ready(function() {
   checkDescriptionLines();
 });
+
 $(window).resize(function() {
   setTimeout(function() {
     checkDescriptionLines();

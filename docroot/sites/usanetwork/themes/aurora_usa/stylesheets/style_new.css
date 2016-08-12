@@ -15147,6 +15147,12 @@ html.no-scroll, body.no-scroll {
   opacity: 1;
   visibility: visible;
 }
+.show-new-design .consum-sidebar .episodes-list-slider .usa-carousel .usa-carousel-item .node .asset-img {
+  background-image: url("../images/ajax-loader.gif");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: inherit;
+}
 .show-new-design .consum-sidebar .episodes-list-slider.vertical-mode {
   display: block;
   overflow: hidden;

@@ -715,7 +715,7 @@
         });
 
         // Click carousel control button
-        $('.usa-carousel-controls-wrap .usa-carousel-controls').once('omniture-tracking', function () {
+        $('.usa-carousel-controls').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {

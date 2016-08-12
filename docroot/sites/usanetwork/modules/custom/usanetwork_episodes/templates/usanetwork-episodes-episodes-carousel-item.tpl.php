@@ -15,18 +15,14 @@
                 <div data-media="(min-width: 641px)"
                      data-src="<?php print $image; ?>"></div>
               <?php endif; ?>
-              <?php if (!empty($image_mobile)): ?>
-                <div data-media="(min-width: 1025px)"
-                     data-src="<?php print $image_mobile; ?>"></div>
-              <?php endif; ?>
             <?php elseif ($new_design): ?>
               <?php if (!empty($image)): ?>
                 <div data-src="<?php print $image; ?>"></div>
               <?php endif; ?>
-              <?php if (!empty($image_mobile)): ?>
-                <div data-media="(min-width: 1025px)"
-                     data-src="<?php print $image_mobile; ?>"></div>
-              <?php endif; ?>
+            <?php endif; ?>
+            <?php if (!empty($image_mobile)): ?>
+              <div data-media="(min-width: 1025px)"
+                   data-src="<?php print $image_mobile; ?>"></div>
             <?php endif; ?>
 
             <?php if (!empty($image)): ?>

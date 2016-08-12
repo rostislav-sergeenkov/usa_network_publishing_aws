@@ -109,9 +109,8 @@
     },
 
     consumptionatorChangeAd: function (mainBlock, infoBlock) {
-      console.info('consumptionatorChangeAd', mainBlock);
-      var infoBlockAd = infoBlock.find('.advert #topbox'),
-          sidebarAd = $('.consum-sidebar .advert #topbox'),
+      var infoBlockAd = infoBlock.find('.advert .topbox'),
+          sidebarAd = $('.consum-sidebar .advert .topbox'),
           nameAd = 'topbox',
           selector = '#' + nameAd;
 

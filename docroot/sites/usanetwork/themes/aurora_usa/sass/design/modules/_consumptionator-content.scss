@@ -217,6 +217,16 @@
     .usa-carousel {
       opacity: 1;
       visibility: visible;
+      .usa-carousel-item {
+        .node {
+          .asset-img {
+            background-image: url("../images/ajax-loader.gif");
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: inherit;
+          }
+        }
+      }
     }
     &.vertical-mode {
       display: block;

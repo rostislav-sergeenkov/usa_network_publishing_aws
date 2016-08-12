@@ -13468,6 +13468,12 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   opacity: 1;
   visibility: visible;
 }
+.consum-sidebar .episodes-list-slider .usa-carousel .usa-carousel-item .node .asset-img {
+  background-image: url("../images/ajax-loader.gif");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: inherit;
+}
 .consum-sidebar .episodes-list-slider.vertical-mode {
   display: block;
   height: calc(100% - 85px);

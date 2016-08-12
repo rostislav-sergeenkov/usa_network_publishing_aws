@@ -1650,7 +1650,7 @@ function _usanetwork_menu_static_page_header_block() {
 }
 
 function _usanetwork_menu_render_live_video_header_ajax($offset) {
-  $on_now_item = usanetwork_schedule_pull_on_now_item($offset, 'show_title');
+  $on_now_item = usanetwork_schedule_pull_on_now_item($offset, 'show_alias');
   if (!empty($on_now_item)) {
     $image_url = NULL;
 
@@ -1737,7 +1737,6 @@ function _usanetwork_menu_consumptionator_block_live_video() {
   $query->condition('ttd.name', 'Live');
   $live_video_fid = $query->execute()->fetchField();
   $live_video = file_load($live_video_fid);
-  $gygia = field_view_field('file', $live_video, 'field_gigya_share_bar');
 
   $theme_variables = array(
     'authbar' => !empty($authbar) ? $authbar : NULL,
@@ -1781,9 +1780,9 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
     return drupal_json_output(NULL);
   }
 
-  $on_now = usanetwork_schedule_pull_on_now_item($time_correlation);
-  $up_next = usanetwork_schedule_pull_up_next_item($time_correlation);
-  $tonight = _usanetwork_tv_schedule_get_primetime_items(3);
+  $on_now = usanetwork_schedule_pull_on_now_item($time_correlation, 'show_alias');
+  $up_next = usanetwork_schedule_pull_up_next_item($time_correlation, 'show_alias');
+  $tonight = _usanetwork_tv_schedule_get_primetime_items(3, 'show_alias');
 
   $on_now_block = array();
   $up_next_block = array();

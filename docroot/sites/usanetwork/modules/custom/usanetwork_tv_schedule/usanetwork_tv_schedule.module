@@ -1731,9 +1731,9 @@ function _usanetwork_tv_schedule_parse_feed_data($feed_data) {
 /**
  * Returns primetime items.
  */
-function _usanetwork_tv_schedule_get_primetime_items($limit = USANETWORK_TV_SCHEDULE_PRIMETIME_ITEMS_LENGTH) {
+function _usanetwork_tv_schedule_get_primetime_items($limit = USANETWORK_TV_SCHEDULE_PRIMETIME_ITEMS_LENGTH, $show_title = NULL) {
   return usanetwork_schedule_pull_by_timerange(
-      USANETWORK_TV_SCHEDULE_PRIMETIME_START_HOUR, USANETWORK_TV_SCHEDULE_PRIMETIME_END_HOUR, $limit, 0
+      USANETWORK_TV_SCHEDULE_PRIMETIME_START_HOUR, USANETWORK_TV_SCHEDULE_PRIMETIME_END_HOUR, $limit, 0, $show_title
   );
 }
 

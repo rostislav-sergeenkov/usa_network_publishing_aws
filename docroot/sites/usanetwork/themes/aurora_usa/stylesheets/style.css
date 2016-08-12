@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix {
   zoom: 1;
 }
@@ -28552,7 +28552,7 @@ yx-axis
     border-bottom: 2px solid;
     padding-top: 2px;
     padding-bottom: 2px;
-    height: 100%;
+    height: calc(18.5625vw + 6px);
   }
 }
 @media (max-width: 640px) {

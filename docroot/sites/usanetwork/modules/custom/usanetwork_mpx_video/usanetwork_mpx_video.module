@@ -588,6 +588,10 @@ function usanetwork_mpx_video_global_videos_page() {
 
   $shows_carousels = _usanetwork_mpx_video_shows_full_episodes();
 
+  $js_settings['usa']['androidAppLink'] = USANETWORK_USANOW_ANDROID_URL;
+  $js_settings['usa']['itunesAppLink'] = 'itms-apps://itunes.apple.com/app/id' . USANETWORK_USANOW_ITUNES_ID;
+  drupal_add_js($js_settings, 'setting');
+
   $theme_variables = array(
     'featured_aspot' => $featured_aspot,
     'features_full_episodes' => $featured_carousel,
@@ -650,7 +654,7 @@ function _usanetwork_mpx_video_shows_full_episodes() {
           'carousel_id' => 'carousel-' . drupal_clean_css_identifier(strtolower($result_item->title)),
           'carousel_border' => usanetwork_tv_shows_color_show_css_class($result_item->nid),
           'sponsored' => $sponsored,
-          'file_path' => $file_id,
+          'file_path' => isset($file_id) ? $file_id : NULL,
         );
 
         $output .= theme('usanetwork_mpx_video_shows_full_episodes', $theme_variables);

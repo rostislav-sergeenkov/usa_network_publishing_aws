@@ -24669,6 +24669,7 @@ html[xmlns] .slides {
 }
 
 body:not(.page-node-microsite) .file-video-mpx.view-mode-inline_content {
+  clear: both;
   padding-top: 56.25%;
   position: relative;
   width: 100%;

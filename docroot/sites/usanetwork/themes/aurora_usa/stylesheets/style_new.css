@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix {
   zoom: 1;
 }
@@ -8664,6 +8664,7 @@ html.no-scroll, body.no-scroll {
   }
 }
 .show-new-design .file-video-mpx.view-mode-inline_content {
+  clear: both;
   padding-top: 56.25%;
   position: relative;
   width: 100%;

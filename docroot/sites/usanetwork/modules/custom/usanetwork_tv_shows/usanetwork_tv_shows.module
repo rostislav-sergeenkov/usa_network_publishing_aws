@@ -4997,7 +4997,6 @@ function _usanetwork_tv_shows_cache_rebuild_related_content_all($tv_show_node) {
  */
 function _usanetwork_tv_shows_explore_lmb() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
-  $theme_variables = array();
   if (!empty($show_node)) {
     $field_promo_items = field_get_items('node', $show_node, 'field_show_explore_promo');
     if (!empty($field_promo_items) && is_array($field_promo_items)) {
@@ -5061,11 +5060,11 @@ function _usanetwork_tv_shows_explore_lmb() {
           'is_first' => $is_first,
         );
       }
-      $advert_block = module_invoke('mps', 'block_view', 'topbox');
-      if (!empty($advert_block['content'])) {
-        $advert = render($advert_block['content']);
-      }
       if (!empty($promos)) {
+        $advert_block = module_invoke('mps', 'block_view', 'topbox');
+        if (!empty($advert_block['content'])) {
+          $advert = render($advert_block['content']);
+        }
         $theme_variables = array(
           'promos' => $promos,
           'ad' => isset($advert) ? $advert : FALSE,

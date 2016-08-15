@@ -253,7 +253,7 @@ function usanetwork_webform_views_default_views() {
   $handler->display->display_options['filters']['data_7']['group'] = 1;
   $handler->display->display_options['filters']['data_7']['exposed'] = TRUE;
   $handler->display->display_options['filters']['data_7']['expose']['operator_id'] = 'data_7_op';
-  $handler->display->display_options['filters']['data_7']['expose']['label'] = 'Email Adress';
+  $handler->display->display_options['filters']['data_7']['expose']['label'] = 'Email Address';
   $handler->display->display_options['filters']['data_7']['expose']['operator'] = 'data_7_op';
   $handler->display->display_options['filters']['data_7']['expose']['identifier'] = 'email';
   $handler->display->display_options['filters']['data_7']['expose']['remember_roles'] = array(

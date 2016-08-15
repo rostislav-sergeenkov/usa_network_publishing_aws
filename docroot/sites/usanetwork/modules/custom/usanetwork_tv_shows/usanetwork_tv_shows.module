@@ -159,7 +159,7 @@ function usanetwork_tv_shows_block_info() {
   $blocks['usanetwork_tv_shows_video_vl_nd'] = array(
     'info' => 'Tv Shows: Video landing videos list of new design',
     'cache' => DRUPAL_NO_CACHE,
-  );
+  );  
   $blocks['usanetwork_tv_shows_filters_vl'] = array(
     'info' => 'Tv Shows: Video landing video filters',
     'cache' => DRUPAL_NO_CACHE,
@@ -485,7 +485,7 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
         'items' => array(),
       ),
       'template' => 'templates/usanetwork-tv-shows-landing-videos-items-block',
-    ),
+    ),    
     'usanetwork_tv_shows_landing_items_new_design_block' => array(
       'variables' => array(
         'ad' => NULL,
@@ -3490,7 +3490,6 @@ function _usanetwork_tv_shows_render_best_of_block($block_title, $field_promo_it
  */
 function _usanetwork_tv_shows_render_video_lmb_block() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
-  $theme_variables = array();
   if (!empty($show_node)) {
     $field_promo_items = field_get_items('node', $show_node, 'field_show_vlmb_promo');
     if (!empty($field_promo_items) && is_array($field_promo_items)) {
@@ -3554,15 +3553,17 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
           'is_first' => $is_first,
         );
       }
-      $advert_block = module_invoke('mps', 'block_view', 'topbox');
-      if (!empty($advert_block['content'])) {
-        $advert = render($advert_block['content']);
+      if (!empty($promos)) {
+        $advert_block = module_invoke('mps', 'block_view', 'topbox');
+        if (!empty($advert_block['content'])) {
+          $advert = render($advert_block['content']);
+        }
+        $theme_variables = array(
+          'promos' => $promos,
+          'ad' => isset($advert) ? $advert : FALSE,
+        );
+        return theme('usanetwork_tv_shows_video_lmb_block', $theme_variables);
       }
-      $theme_variables = array(
-        'promos' => $promos,
-        'ad' => isset($advert) ? $advert : FALSE,
-      );
-      return theme('usanetwork_tv_shows_video_lmb_block', $theme_variables);
     }
   }
   return '';
@@ -3798,7 +3799,7 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
   if ($is_wrong_condition) {
     return '';
   }
-
+  
   $videos_block = _usanetwork_tv_shows_landing_page_vbget_videos_block($tv_show_node, $query_parameters['category'],
     $query_parameters['sort_by'], $query_parameters['sort_order']
   );
@@ -3859,6 +3860,7 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
  * @return array
  */
 function _usanetwork_tv_shows_landing_page_videos_prepare_parameters() {
+  $is_wrong_condition = FALSE;
   if (path_is_admin(current_path())) {
     $is_wrong_condition = TRUE;
   }
@@ -4470,7 +4472,7 @@ function _usanetwork_tv_shows_landing_page_prepare_videos_data($show_node, $sele
       }
     }
   }
-
+ 
   if ($sort_direction == 'ASC') {
     $data = array_reverse($data);
   }
@@ -4794,7 +4796,7 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
     : (!empty($data->promo_description)
       ? htmlspecialchars($data->promo_description)
       : '');
-
+  
   $theme_variables = array(
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
@@ -5267,11 +5269,11 @@ function _usanetwork_tv_shows_landing_page_explore_get_tags($show_id, $params) {
     else {
       $result[USA_TV_SHOW_ALL_EXPLORE_ITEMS_KEY]['active'] = TRUE;
     }
-
+    
     reset($result);
     $key = key($result);
     $result[$key]['first_item'] = TRUE;
-
+    
     return $result;
   }
   return NULL;
@@ -5405,7 +5407,7 @@ function _usanetwork_tv_shows_landing_page_explore_items_block_item($node, $curr
     $image_url = usanetwork_core_api_get_content_image('node', $node);
   }
   list($mobile_image, $desktop_image) = _usanetwork_tv_shows_landing_page_prepare_item_image($current_item_index, $image_url, $big_element_index, $is_new_design);
-
+  
   $own_promo_lines = _usanetwork_promo_pull_node_promo_details($node);
   $promo_link = NULL;
   if (!empty($node->field_promo_link)) {

@@ -8577,11 +8577,6 @@ header .tve-help-link.signIn .inlineLoader {
   margin-left: 20px;
 }
 @media (max-width: 480px) {
-  .page-videos .carousel-wrapper .carousel-block.active .get-app {
-    display: block;
-  }
-}
-@media (max-width: 480px) {
   .page-videos .carousel-wrapper .carousel-block .carousel {
     display: none;
   }
@@ -8597,6 +8592,7 @@ header .tve-help-link.signIn .inlineLoader {
   right: 10px;
   text-transform: uppercase;
   text-decoration: none;
+  z-index: 5;
 }
 .page-videos .carousel-wrapper .carousel-block-left {
   position: relative;

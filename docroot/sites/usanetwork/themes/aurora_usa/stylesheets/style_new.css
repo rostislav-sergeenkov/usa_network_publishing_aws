@@ -4980,7 +4980,7 @@ body:not(.show-new-design) #topbanner {
 .aspot-and-episodes .episodes-list.sponsored-enable > .title .title-wrapper {
   height: 50%;
 }
-.aspot-and-episodes .episodes-list.sponsored-enable .episodes-list-slider.vertical {
+.aspot-and-episodes .episodes-list.sponsored-enable .episodes-list-slider.vertical-mode {
   height: calc(90% - 50px);
 }
 

@@ -3753,11 +3753,13 @@ function usanetwork_tv_shows_usa_omniture_alter(&$omniture_variables, $context) 
  */
 function _usanetwork_tv_shows_landing_page_get_validated_query_params($tv_show_node) {
   $query_parameters = drupal_get_query_parameters();
+  //Test: Default all Videos Category for some show
+  $shows_with_default_all_videos = array('Suits', 'Chrisley Knows Best', 'Queen Of The South');
   $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
   // Set default category.
   if (!isset($query_parameters['category'])) {
     $query_parameters['category'] = USA_TV_SHOW_FULL_EPISODE;
-    if ($is_new_design) {
+    if ($is_new_design || in_array($tv_show_node->title, $shows_with_default_all_videos)) {
       $query_parameters['category'] = USA_TV_SHOW_ALL_VIDEOS_EPISODE;
     }
   }

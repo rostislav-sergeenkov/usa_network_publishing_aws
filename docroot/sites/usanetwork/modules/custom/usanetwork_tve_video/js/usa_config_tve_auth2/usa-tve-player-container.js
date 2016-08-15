@@ -185,6 +185,7 @@
               scope.isPlayerPause = false;
               scope.playerThumbnail = true;
               scope.removePlayerThumbnail = false;
+              scope.hideShowSpinner = false;
               scope.user = {
                 isAuthenticated: authService.isAuthenticated()
               };
@@ -235,6 +236,11 @@
                   USAN.ms_player.setPlayerEvents();
                 }
               });
+
+              // check free full episode
+              if (isMobile && !isEntitlement && isFullEpisode) {
+                scope.hidePlayerSpinner = true;
+              }
 
               // check cookie status
               if (Drupal.settings.tve_cookie_detection != undefined && Drupal.settings.tve_cookie_detection.status == false) {

@@ -99,7 +99,8 @@
              data-ng-if="!removePlayerThumbnail">
           <div class="player-thumbnail"
                data-ng-class="{'hide-section': !playerThumbnail}">
-            <div class="video-loading show-spinner"></div>
+            <div class="video-loading show-spinner"
+                 data-ng-hide="hidePlayerSpinner"></div>
             <?php if (!$is_live): ?>
               <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
               print theme_image(array('path' => image_style_url($image['#style_name'], $image['#path'])));

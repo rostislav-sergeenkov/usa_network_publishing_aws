@@ -244,7 +244,6 @@
         } catch (e) {
           _.consoleCustom('error usaRightRailCarousel: galleryLazyLoadScroll');
         }
-
       }
     };
 
@@ -288,6 +287,13 @@
       _.options.isHorizontalModeActive = false;
       _.options.isHorizontalModeDestroy = true;
       _.removeElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+    };
+    _.options.swiper.onSlideChangeEnd = function (sw) {
+      try {
+        Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(_.$carouselItems);
+      } catch (e) {
+        _.consoleCustom('error usaRightRailCarousel: galleryLazyLoadScroll');
+      }
     };
     _.options.swiper.prevButton = _.$prevArrow;
     _.options.swiper.nextButton = _.$nextArrow;
@@ -504,5 +510,4 @@
       }
     }
   });
-
 })(jQuery);

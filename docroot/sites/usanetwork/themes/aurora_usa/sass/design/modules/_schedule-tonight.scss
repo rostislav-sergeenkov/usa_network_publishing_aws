@@ -364,21 +364,21 @@
           line-height: 0;
           span {
             color: $schedule-pm-color;
-            font-size: get-vw(25px, 1901);
-            line-height: get-vw(30px, 1901);
+            font-size: get-vw(20px, 1901);
+            line-height: get-vw(25px, 1901);
             letter-spacing: 0.5px;
             @include breakpoint($bp-min-1901-width) {
-              font-size: 25px;
-              line-height: 30px;
+              font-size: 20px;
+              line-height: 25px;
             }
             &.live{
               border: 2px solid $schedule-pm-color;
               border-radius: get-vw(6px, 1901);
               display: inline-block;
-              padding: 0 get-vw(5px, 1901);
+              padding: 0 get-vw(4px, 1901);
               @include breakpoint($bp-min-1901-width) {
                 border-radius: 6px;
-                padding: 0 5px;
+                padding: 0 4px;
               }
             }
           }

@@ -32918,26 +32918,26 @@ yx-axis
 }
 .schedule-on-tonight .schedule-block .time .on-now-link .watch-now span {
   color: #606060;
-  font-size: 1.3151vw;
-  line-height: 1.57812vw;
+  font-size: 1.05208vw;
+  line-height: 1.3151vw;
   letter-spacing: 0.5px;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block .time .on-now-link .watch-now span {
-    font-size: 25px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 25px;
   }
 }
 .schedule-on-tonight .schedule-block .time .on-now-link .watch-now span.live {
   border: 2px solid #606060;
   border-radius: 0.31562vw;
   display: inline-block;
-  padding: 0 0.26302vw;
+  padding: 0 0.21042vw;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block .time .on-now-link .watch-now span.live {
     border-radius: 6px;
-    padding: 0 5px;
+    padding: 0 4px;
   }
 }
 .schedule-on-tonight .schedule-block .episode-info {

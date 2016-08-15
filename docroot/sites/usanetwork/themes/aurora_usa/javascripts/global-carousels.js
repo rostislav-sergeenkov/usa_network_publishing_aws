@@ -7,7 +7,6 @@
  */
 
 
-
 (function ($) {
 
   'use strict';
@@ -30,7 +29,8 @@
           nextArrow: '.usa-carousel-control-next',
           carouselDescription: '.carousel-description-item',
           carouselItem: '.carousel-item',
-          moreButton: '.more-button'
+          moreButton: '.more-button',
+          getApp: '.get-app'
         },
 
         // swiper
@@ -116,6 +116,7 @@
       _.$nextArrow = $(element).find(_.initials.selectors.nextArrow);
       _.$carouselItems = $(element).find(_.initials.selectors.carouselItem);
       _.$moreButton = $(element).find(_.initials.selectors.moreButton);
+      _.$getApp = $(element).find(_.initials.selectors.getApp);
 
       // options
       _.options = {
@@ -130,6 +131,12 @@
         isMoreButtonBp: _.checkMatchWindowWidth('max', _.initials.moreButtonBp),
         isShowCardGetAdminMinBp: _.checkMatchWindowWidth('min', _.initials.showCardGetAdminMinBp),
         defaultCarouselDescriptionItemClass: _.$carouselDescription.parent().attr('class'),
+        isMobileDevice: usa_deviceInfo.mobileDevice,
+        isIos: usa_deviceInfo.iOS,
+        itunesAppLink: Drupal.settings.usa.itunesAppLink,
+        isAndroid: usa_deviceInfo.android,
+        androidAppLink: Drupal.settings.usa.androidAppLink,
+        appPageUrl: '/app'
       };
 
       // showCard
@@ -260,10 +267,12 @@
           if (!_.options.isMobileDescriptionActive) {
             _.addElemClass(_.$mainWrap, _.initials.mainWrapActiveClassName, function () {
               _.usaSwiper.onResize(true);
+              _.showGetAppLink();
               _.options.isMobileDescriptionActive = true;
             });
           } else if (_.options.isMobileDescriptionActive) {
             _.removeElemClass(_.$mainWrap, _.initials.mainWrapActiveClassName, function () {
+              _.hideGetAppLink();
               _.options.isMobileDescriptionActive = false;
             });
           }
@@ -302,6 +311,20 @@
       });
     }
 
+    _.$getApp.on('click', function (e) {
+      e.preventDefault();
+
+      console.info('click $getApp');
+
+      if (_.options.isIos) {
+        window.location = _.options.itunesAppLink;
+      } else if (_.options.isAndroid) {
+        window.location = _.options.androidAppLink;
+      } else {
+        window.location = _.options.appPageUrl;
+      }
+    });
+
     $(window)
         .load(function () {
           _.options.isWindowLoad = true;
@@ -337,6 +360,26 @@
             _.usaSwiper.update(true);
           }
         });
+  };
+
+  /* --------------------------
+   * Get app link
+   ----------------------------*/
+  usaCarouselLeft.prototype.showGetAppLink = function () {
+
+    var _ = this;
+
+    if (_.options.isMobileDevice && _.$getApp.length > 0) {
+      _.$getApp.show();
+    }
+  };
+  usaCarouselLeft.prototype.hideGetAppLink = function () {
+
+    var _ = this;
+
+    if (_.options.isMobileDevice && _.$getApp.length > 0) {
+      _.$getApp.hide();
+    }
   };
 
   /* --------------------------

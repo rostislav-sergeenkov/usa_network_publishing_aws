@@ -240,11 +240,6 @@
         .carousel-left {
           margin-left: 20px;
         }
-        .get-app {
-          @include breakpoint($bp-480-width) {
-            display: block;
-          }
-        }
       }
       .carousel {
         @include breakpoint($bp-480-width) {
@@ -262,6 +257,7 @@
         right: 10px;
         text-transform: uppercase;
         text-decoration: none;
+        z-index: 5;
       }
     }
     .carousel-block-left {

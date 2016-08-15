@@ -4,8 +4,9 @@
 
  Swiper - http://idangero.us/swiper
  VelocityJS - VelocityJS.org
-
  */
+
+
 
 (function ($) {
 
@@ -675,9 +676,16 @@
     _.initials.swiper.onInit = function (sw) {
       _.options.isCarouselInit = true;
     };
-
     _.initials.swiper.onDestroy = function () {
       _.options.isCarouselInit = false;
+    };
+
+    _.initials.swiper.onSlideChangeEnd = function (sw) {
+      try {
+        Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(_.$carouselItems);
+      } catch (e) {
+        _.consoleCustom('error usaRightRailCarousel: galleryLazyLoadScroll');
+      }
     };
 
     _.initials.swiper.nextButton = _.$nextArrow;

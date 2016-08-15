@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix {
   zoom: 1;
 }
@@ -32871,8 +32871,8 @@ yx-axis
   color: #606060;
   float: left;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.3151vw;
-  line-height: 1.57812vw;
+  font-size: 1.05208vw;
+  line-height: 1.3151vw;
   letter-spacing: 0.5px;
   padding-right: 2.36718vw;
   text-transform: uppercase;
@@ -32880,8 +32880,8 @@ yx-axis
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block .time {
-    font-size: 25px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 25px;
     padding-right: 35px;
   }
 }
@@ -32900,14 +32900,14 @@ yx-axis
 }
 .schedule-on-tonight .schedule-block .time span.time-color, .schedule-on-tonight .schedule-block .time a.time-color {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 1.3151vw;
-  line-height: 1.57812vw;
+  font-size: 1.05208vw;
+  line-height: 1.3151vw;
   text-transform: uppercase;
 }
 @media (min-width: 1901px) {
   .schedule-on-tonight .schedule-block .time span.time-color, .schedule-on-tonight .schedule-block .time a.time-color {
-    font-size: 25px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 25px;
   }
 }
 .schedule-on-tonight .schedule-block .time span:focus, .schedule-on-tonight .schedule-block .time a:focus {

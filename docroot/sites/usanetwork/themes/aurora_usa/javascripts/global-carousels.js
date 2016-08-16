@@ -133,9 +133,9 @@
         defaultCarouselDescriptionItemClass: _.$carouselDescription.parent().attr('class'),
         isMobileDevice: usa_deviceInfo.mobileDevice,
         isIos: usa_deviceInfo.iOS,
-        itunesAppLink: Drupal.settings.usa.itunesAppLink,
+        itunesAppLink: (Drupal.settings.hasOwnProperty('usa') && Drupal.settings.usa.hasOwnProperty('itunesAppLink')) ? Drupal.settings.usa.itunesAppLink : '/app',
         isAndroid: usa_deviceInfo.android,
-        androidAppLink: Drupal.settings.usa.androidAppLink,
+        androidAppLink: (Drupal.settings.hasOwnProperty('usa') && Drupal.settings.usa.hasOwnProperty('androidAppLink')) ? Drupal.settings.usa.androidAppLink : '/app',
         appPageUrl: '/app'
       };
 

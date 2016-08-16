@@ -24640,30 +24640,6 @@ html[xmlns] .slides {
   }
 }
 
-@media (min-width: 769px) {
-  .ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
-    display: inline-block;
-    vertical-align: middle;
-    width: auto;
-  }
-}
-.ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
-  float: left;
-}
-.ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-  padding: 0 2.26563vw;
-}
-@media (min-width: 1601px) {
-  .ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-    padding: 0 36.25px;
-  }
-}
-@media (max-width: 1024px) {
-  .ie10 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-    padding: 0 2.00195vw;
-  }
-}
-
 body:not(.page-node-microsite) .file-video-mpx.view-mode-inline_content {
   clear: both;
   padding-top: 56.25%;

@@ -9634,8 +9634,18 @@ html.no-scroll, body.no-scroll {
 }
   @media (min-width: 769px) {
     .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
-      white-space: nowrap;
+      align-items: center;
+      display: flex;
+      height: calc(4.6875vw - 2px);
+      line-height: 1;
+      justify-content: center;
       padding: 0 !important;
+      white-space: nowrap;
+    }
+}
+  @media (min-width: 1601px) {
+    .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+      height: 71px;
     }
 }
 }
@@ -23039,6 +23049,30 @@ html.no-scroll, body.no-scroll {
 }
 [data-show-end-card="1"] .player .endcard_bottomRight .related-slider {
   height: 100%;
+}
+
+@media (min-width: 769px) {
+  .ie10 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+  }
+}
+.ie10 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item {
+  float: left;
+}
+.ie10 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+  padding: 0 2.26563vw;
+}
+@media (min-width: 1601px) {
+  .ie10 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    padding: 0 36.25px;
+  }
+}
+@media (max-width: 1024px) {
+  .ie10 #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
+    padding: 0 2.00195vw;
+  }
 }
 
 #usaLoginStatusModal {

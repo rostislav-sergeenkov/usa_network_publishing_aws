@@ -2222,7 +2222,7 @@ function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
   $variables['thumbnail_image'] = theme('image_style', array('style_name' =>'300x169_video', 'path' => $file_image_url));
 
   //most recent full episode
-  $show_id = $file->field_show['und'][0]['target_id'];
+  $show_id = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id');
   if (!empty($show_id) && is_numeric($show_id)) {
     $query = db_select('mpx_video', 'm');
     $query->innerJoin('field_data_field_mpx_full_episode', 'f', 'm.fid = f.entity_id');
@@ -2267,20 +2267,27 @@ function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
  * Theme callback for usanetwork_mpx_inactive_video
  */
 function theme_usanetwork_mpx_inactive_video($variables) {
-  $new_design = _usanetwork_tv_shows_is_new_design_entity('file', $variables['file']);
+  $file = $variables['file'];
+  $new_design = _usanetwork_tv_shows_is_new_design_entity('file', $file);
 
   $video = "";
   $video .= "<div class='asset-img'>" . $variables['thumbnail_image'] . "</div>";
   $video .= "<div class='expired-text'><span>" . t('This video content has expired.') . "</span></div>";
   if ($new_design) {
     $video .= "<div class='suggest-text show-border'>" . t('May we suggest the following?') . "</div>";
+  } elseif (empty($file->field_show) && !empty($file->field_movie)) {
+    $video .= "<div class='suggest-text'></div>";
   } else {
     $video .= "<div class='suggest-text'>" . t('May we suggest the following?') . "</div>";
   }
   $video .= "<div class='suggest-videos-block'>";
-  $video .= $variables['full_episode_view'];
-  foreach ($variables['clip_view'] as $value) {
-    $video .= $value;
+  if (isset($variables['full_episode_view'])) {
+    $video .= $variables['full_episode_view'];
+  }
+  if (isset($variables['clip_view'])) {
+    foreach ($variables['clip_view'] as $value) {
+      $video .= $value;
+    }
   }
   $video .= "</div>";
   return $video;

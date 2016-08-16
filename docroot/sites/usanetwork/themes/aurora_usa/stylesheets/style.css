@@ -11813,13 +11813,6 @@ footer h2 {
   }
 }
 .consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img img, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img img {
-  height: 100%;
-  left: 0;
-  top: 0;
-  position: absolute;
-  width: 100%;
-}
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img img.portrait {
   bottom: 0;
   left: 0;
   right: 0;

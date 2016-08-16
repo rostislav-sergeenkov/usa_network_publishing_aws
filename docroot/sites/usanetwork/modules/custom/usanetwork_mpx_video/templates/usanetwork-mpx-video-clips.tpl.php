@@ -73,9 +73,9 @@
           </li>
         <?php endforeach; ?>
       </ul>
-      <div class="horizontal-controls">
-        <div class="slide-next slide-control slick-disabled"></div>
-        <div class="slide-prev slide-control slick-disabled"></div>
+      <div class="usa-carousel-controls-wrap">
+        <div class="usa-carousel-control-next usa-carousel-controls usa-carousel-control-disabled"></div>
+        <div class="usa-carousel-control-prev usa-carousel-controls usa-carousel-control-disabled"></div>
       </div>
     </div>
   <?php endif; ?>

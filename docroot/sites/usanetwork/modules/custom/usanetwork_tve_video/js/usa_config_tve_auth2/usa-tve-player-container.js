@@ -112,11 +112,11 @@
       .directive('usaTvePlayerContainer', [
         '$rootScope',
         'authService', 'tveAuthConfig', 'tveConfig', 'helper', 'tveModal', '$timeout', '$http', '$sce', '$cookies',
-        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService', 'usaPlayerError', 'usaVideoService',
+        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService', 'usaPlayerError', 'usaVideoService', 'usaSocialService',
 
         function ($rootScope,
                   authService, tveAuthConfig, tveConfig, helper, tveModal, $timeout, $http, $sce, $cookies,
-                  usaEndCardService, usaEndCardHelper, usaMicrositesService, usaPlayerError, usaVideoService) {
+                  usaEndCardService, usaEndCardHelper, usaMicrositesService, usaPlayerError, usaVideoService, usaSocialService) {
           return {
             scope: true,
             controller: ['$scope', function ($scope) {
@@ -276,7 +276,6 @@
 
               // Callback for initiating the authorization request.
               function initiateAuthorization() {
-                console.info('initiateAuthorization');
                 var DEFAULT_RATING = 'TV-14',
                     adobePassResourceId = Drupal.settings.adobePass.adobePassResourceId,
                     resource = [
@@ -292,7 +291,6 @@
                       '</rss>'
                     ].join('');
                 tve.adobePass.getAuthorization(resource, function (status, response) {
-                  console.info('tve.adobePass.getAuthorization');
                   if (status) {
                     encodedToken = encodeURIComponent(response.token);
                     // If Adobe Pass getAuthorization status is true proceeds with playback.
@@ -472,7 +470,6 @@
               }
 
               function _onReleaseError(pdkEvent) {
-                console.info('_onReleaseError');
                 if (pdkEvent.data.exception == "GeoLocationBlocked") {
                   usaPlayerError.initGeoRestrictionError();
                 } else {
@@ -591,6 +588,8 @@
                */
               function _onPlayerLoaded(pdkEvent) {
 
+                usaSocialService.initSocialBlock();
+
                 scope.$apply(function () {
                   scope.statusPlayerLoaded = true;
                 });
@@ -669,7 +668,6 @@
                   $(playerWrap).html(errorBlock);
 
                   if (scope.playerThumbnail) {
-                    console.info('_authzFailure');
                     hidePlayerThumbnail();
                   }
                 }

@@ -5,6 +5,23 @@
   // customs USA services
   ng.module('tve.auth.services')
 
+      .factory('usaSocialService', [
+        '$rootScope',
+        function ($rootScope) {
+
+          var serviceAPI = {
+            initSocialBlock: function () {
+              if (Drupal.settings.hasOwnProperty('usa') && Drupal.settings.usa.hasOwnProperty('social_block') &&
+                  window.hasOwnProperty('massrel') && massrel.hasOwnProperty('ui')) {
+                $('#block-usanetwork-mpx-video-usanetwork-social-content .content').append(Drupal.settings.usa.social_block);
+                massrel.ui.init();
+              }
+            }
+          };
+
+          return serviceAPI;
+        }])
+
       .factory('usaVideoService', [
         '$rootScope', '$q',
         function ($rootScope, $q) {

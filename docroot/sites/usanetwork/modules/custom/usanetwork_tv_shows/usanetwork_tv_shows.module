@@ -2644,7 +2644,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
   if (!empty($show->field_main_logo)) {
     $main_logo_field = $show_wrapper->field_main_logo->value();
     $main_logo_uri = $main_logo_field['uri'];
-    $show_title = theme_image(array('path' => $main_logo_uri));
+    $show_title = theme_image(array('path' => $main_logo_uri, 'attributes' => array()));
   } else {
     if (!empty($show->field_display_title)) {
       $display_title = $show_wrapper->field_display_title->value();

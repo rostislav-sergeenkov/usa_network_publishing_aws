@@ -71,7 +71,7 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_includes() {
   return array(
     'css' => array(
       $default_theme_path . '/css/fonts.css',
-      $default_theme_path . '/css/style_microsite.css',
+      $site_theme_path . '/css/style_microsite.css',
       $site_theme_path . '/css/ms_styles.css',
       $default_theme_path . '/css/ms_gigya_share.css',
       $default_theme_path . '/css/ms_videos.css',

@@ -137,8 +137,6 @@
         appPageUrl: '/app'
       };
 
-      console.info(_);
-
       // showCard
       _.showCard = {
         isOpen: false,

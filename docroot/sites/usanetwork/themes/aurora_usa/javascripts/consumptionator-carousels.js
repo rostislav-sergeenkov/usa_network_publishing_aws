@@ -271,16 +271,15 @@
       } else if (!_.options.isHorizontalModeBp && !_.options.isHorizontalModeActive) {
         _.removeElemClass(_.$mainWrap, _.options.horizontalClassName, null);
       }
-
       return false;
     }
 
+    _.addElemClass(_.$mainWrap, _.options.horizontalClassName, null);
+
     _.options.swiper.onInit = function (sw) {
       _.options.isHorizontalModeActive = true;
-      _.addElemClass(_.$mainWrap, _.options.horizontalClassName, null);
       if (_.options.isHorizontalModeDestroy) {
         _.options.isHorizontalModeDestroy = false;
-        sw.update(true);
       }
     };
     _.options.swiper.onDestroy = function (sw) {
@@ -438,7 +437,6 @@
       _.addEvents();
     }
   };
-
 
   //==================================
   // create jQuery method usaCarousel

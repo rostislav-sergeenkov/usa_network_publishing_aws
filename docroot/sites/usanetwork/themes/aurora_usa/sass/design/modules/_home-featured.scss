@@ -9,144 +9,146 @@
     }
   }
   &:not(.visible) {
-    background: $footer-links!important;
+    background: $footer-links !important;
   }
   .carousel {
-    ul {
+    .usa-carousel-left {
       position: relative;
       @include breakpoint($bp-768-width) {
         display: block;
       }
-      li.description-item {
-        margin-right: 0;
-        height: 556px;
-        width: 280px;
-        @include breakpoint($between-769-1024) {
-          margin-right: 20px;
-        }
-        @include breakpoint($bp-min-1601-width) {
-          height: 628px;
-          width: 520px;
-        }
-        @include breakpoint($bp-768-width) {
+      .carousel-item {
+        &.description-item {
           margin-right: 0;
-          height: auto;
-          width: 100%;
-        }
-      }
-      li:not(.description-item) {
-        height: 556px;
-        margin: 0 17px 0 0;
-        position: relative;
-        width: 476px;
-        @include breakpoint($bp-min-1601-width) {
-          height: 628px;
-          width: 539px;
-        }
-        @include breakpoint($bp-768-width) {
-          height: auto;
-          margin-bottom: 15px;
-          margin-right: 0;
-          width: 100%;
-        }
-        &.large {
-          width: 670px;
+          height: 556px;
+          width: 280px;
+          @include breakpoint($between-769-1024) {
+            margin-right: 20px;
+          }
           @include breakpoint($bp-min-1601-width) {
-            width: 757px;
+            height: 628px;
+            width: 520px;
           }
           @include breakpoint($bp-768-width) {
+            margin-right: 0;
+            height: auto;
             width: 100%;
-            img {
-              height: auto;
+          }
+        }
+        &:not(.description-item) {
+          height: 556px;
+          margin: 0 17px 0 0;
+          position: relative;
+          width: 476px;
+          @include breakpoint($bp-min-1601-width) {
+            height: 628px;
+            width: 539px;
+          }
+          @include breakpoint($bp-768-width) {
+            height: auto;
+            margin-bottom: 15px;
+            margin-right: 0;
+            width: 100%;
+          }
+          &.large {
+            width: 670px;
+            @include breakpoint($bp-min-1601-width) {
+              width: 757px;
+            }
+            @include breakpoint($bp-768-width) {
+              width: 100%;
+              img {
+                height: auto;
+                width: 100%;
+              }
+            }
+          }
+          img {
+            height: 268px;
+            width: 476px;
+            @include breakpoint($bp-min-1601-width) {
+              height: 303px;
+              width: 539px;
+            }
+            @include breakpoint($bp-768-width) {
+              height: 100%;
               width: 100%;
             }
           }
-        }
-        img {
-          height: 268px;
-          width: 476px;
-          @include breakpoint($bp-min-1601-width) {
-            height: 303px;
-            width: 539px;
-          }
-          @include breakpoint($bp-768-width) {
-            height: 100%;
-            width: 100%;
-          }
-        }
-        > div:not(.featured-large) {
-          height: 268px;
-          width: 476px;
-          @include breakpoint($bp-min-1601-width) {
-            height: 303px;
-            width: 539px;
-          }
-          @include breakpoint($bp-768-width) {
-            float: left;
-            height: 26.1vw;
-            width: 49%;
-          }
-          &:first-child {
-            margin-bottom: 20px;
+          > div:not(.featured-large) {
+            height: 268px;
+            width: 476px;
             @include breakpoint($bp-min-1601-width) {
-              margin-bottom: 22px;
+              height: 303px;
+              width: 539px;
             }
             @include breakpoint($bp-768-width) {
-              margin-bottom: 0;
-              margin-right: 2%;
+              float: left;
+              height: 26.1vw;
+              width: 49%;
+            }
+            &:first-child {
+              margin-bottom: 20px;
+              @include breakpoint($bp-min-1601-width) {
+                margin-bottom: 22px;
+              }
+              @include breakpoint($bp-768-width) {
+                margin-bottom: 0;
+                margin-right: 2%;
+              }
             }
           }
-        }
-        @extend %featured-large-promo;
-        @extend %featured-small-promo;
-        .node-usanetwork-promo {
-          overflow: hidden;
-        }
-        @extend %meta;
-        /**/
-        .more {
-          bottom: 5%;
-          color: #ffffff;
-          font-family: $avalon-medium;
-          font-size: 12px;
-          height: auto;
-          right: 5%;
-          text-decoration: none;
-          text-transform: uppercase;
-          position: absolute;
-          width: auto;
-          &:hover {
-            text-decoration: underline;
+          @extend %featured-large-promo;
+          @extend %featured-small-promo;
+          .node-usanetwork-promo {
+            overflow: hidden;
           }
-          @include breakpoint($bp-768-width) {
-            bottom: 3%;
-            font-size: 10px;
-          }
-          @include breakpoint($bp-480-width) {
-            bottom: 0;
-            font-size: 14px;
-            height: 32px;
-            line-height: 32px;
-            right: 0;
-            text-align: center;
-            width: 100%;
-          }
-          &:after {
+          @extend %meta;
+          /**/
+          .more {
+            bottom: 5%;
             color: #ffffff;
-            content: "\e608";
-            display: block;
-            font-family: $ico-font;
-            font-size: 9px;
-            margin-top: -4px;
+            font-family: $avalon-medium;
+            font-size: 12px;
+            height: auto;
+            right: 5%;
+            text-decoration: none;
+            text-transform: uppercase;
             position: absolute;
-            right: -12px;
-            top: 50%;
+            width: auto;
+            &:hover {
+              text-decoration: underline;
+            }
             @include breakpoint($bp-768-width) {
-              font-size: 8px;
-              margin-top: -4px;
+              bottom: 3%;
+              font-size: 10px;
             }
             @include breakpoint($bp-480-width) {
-              display: none;
+              bottom: 0;
+              font-size: 14px;
+              height: 32px;
+              line-height: 32px;
+              right: 0;
+              text-align: center;
+              width: 100%;
+            }
+            &:after {
+              color: #ffffff;
+              content: "\e608";
+              display: block;
+              font-family: $ico-font;
+              font-size: 9px;
+              margin-top: -4px;
+              position: absolute;
+              right: -12px;
+              top: 50%;
+              @include breakpoint($bp-768-width) {
+                font-size: 8px;
+                margin-top: -4px;
+              }
+              @include breakpoint($bp-480-width) {
+                display: none;
+              }
             }
           }
         }

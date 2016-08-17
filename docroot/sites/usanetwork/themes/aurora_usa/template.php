@@ -146,6 +146,18 @@ function aurora_usa_preprocess_html(&$vars) {
 }
 
 /**
+ * Implements hook_process_html()
+ */
+function aurora_usa_process_html(&$vars)  {
+  foreach (array('head', 'styles', 'scripts') as $replace) {
+    if (!isset($vars[$replace])) {
+      continue;
+    }
+    $vars[$replace] = preg_replace('/(src|href|@import )(url\(|=)(")http(s?):/', '$1$2$3', $vars[$replace]);
+  }
+}
+
+/**
  * Override or insert variables into the page template.
  *
  * @param $vars

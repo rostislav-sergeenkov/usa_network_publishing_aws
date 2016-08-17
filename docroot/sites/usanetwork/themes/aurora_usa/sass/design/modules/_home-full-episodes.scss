@@ -1,6 +1,7 @@
 #block-usanetwork-mpx-video-usa-mpx-video-home-full-latest {
   width: 100%;
 }
+
 .full-episodes-block.carousel-block {
   background: $poll-back;
   overflow: hidden;
@@ -25,19 +26,21 @@
       @include breakpoint($bp-768-width) {
         height: auto;
       }
-      li.description-item {
-        height: 515px;
-        @include breakpoint($bp-min-1601-width) {
-          height: 573px;
+      .carousel-item {
+        &.description-item {
+          height: 515px;
+          @include breakpoint($bp-min-1601-width) {
+            height: 573px;
+          }
+          @include breakpoint($bp-768-width) {
+            margin-right: 0;
+            height: auto;
+          }
         }
-        @include breakpoint($bp-768-width) {
-          margin-right: 0;
-          height: auto;
-        }
-      }
-      li:not(.description-item) {
-        @include breakpoint($bp-min-769-width) {
-          height: 100%;
+        &:not(.description-item) {
+          @include breakpoint($bp-min-769-width) {
+            height: 100%;
+          }
         }
       }
       .node-usanetwork-promo {
@@ -53,29 +56,31 @@
         }
       }
     }
-    ul {
-      li.description-item {
-        margin-right: 40px;
-        height: 250px;
-        width: 145px;
-        @include breakpoint($between-769-1024) {
-          width: 125px;
+    .usa-carousel-left {
+      .carousel-item {
+        &.description-item {
+          margin-right: 40px;
+          height: 250px;
+          width: 145px;
+          @include breakpoint($between-769-1024) {
+            width: 125px;
+          }
+          @include breakpoint($bp-min-1601-width) {
+            height: 279px;
+            width: 245px;
+          }
+          @include breakpoint($bp-768-width) {
+            margin-right: 0;
+          }
         }
-        @include breakpoint($bp-min-1601-width) {
-          height: 279px;
-          width: 245px;
+        &:not(.description-item) {
+          margin-right: 15px;
+          @include breakpoint($bp-min-1601-width) {
+            height: 279px;
+            width: 335px;
+          }
+          @extend %video-promo;
         }
-        @include breakpoint($bp-768-width) {
-          margin-right: 0;
-        }
-      }
-      li:not(.description-item) {
-        margin-right: 15px;
-        @include breakpoint($bp-min-1601-width) {
-          height: 279px;
-          width: 335px;
-        }
-        @extend %video-promo;
       }
     }
   }

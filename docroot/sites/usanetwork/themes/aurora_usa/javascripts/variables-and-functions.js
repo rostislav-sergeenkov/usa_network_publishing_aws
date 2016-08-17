@@ -148,6 +148,7 @@ $(window).bind('resize', function() {
 
   setTimeout(function() {
     checkDescriptionLines();
+    checkDescriptionLinesPromo(true);
   }, 500);
 
 });
@@ -186,6 +187,7 @@ $(document).ready(function() {
   });
 
   checkDescriptionLines();
+  checkDescriptionLinesPromo(false);
 
 });
 
@@ -291,5 +293,47 @@ function checkDescriptionLines() {
         lines = Math.floor(captionHeight / captionLineHeight),
         text = item.data('text');
     addDots(item, lines, captionLineHeight, text);
+  });
+}
+
+function checkDescriptionLinesPromo(resetText) {
+  if(resetText) {
+    $('.multiline-ellipsis-meta > div').each(function() {
+      var item = $(this);
+      item.text(item.data('text'));
+    });
+  }
+  $('.multiline-ellipsis-meta').each(function() {
+    var parent = $(this),
+     lines = 0,
+     lineHeight = 0,
+     text = '',
+     childQuantity = parent.children().length;
+    if (childQuantity === 2) {
+      lineHeight = parseFloat(parent.children('.title').css('line-height'));
+      lines = Math.floor(parent.children('.title').outerHeight() / lineHeight);
+      if (lines > 1) {
+        text = parent.children('.title').data('text');
+        addDots(parent.children('.title'), 2, lineHeight, text);
+        parent.children().not('.title').css({
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap'
+        });
+      } else {
+        parent.children('.title').css({
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap'
+        });
+        lineHeight = parseFloat(parent.children().not('.title').css('line-height'));
+        text = parent.children().not('.title').data('text');
+        addDots(parent.children().not('.title'), 2, lineHeight, text);
+      }
+    } else if (childQuantity === 1) {
+      lineHeight = parseFloat(parent.children().css('line-height'));
+      text = parent.children().data('text');
+      addDots(parent.children(), 2, lineHeight, text);
+    }
   });
 }

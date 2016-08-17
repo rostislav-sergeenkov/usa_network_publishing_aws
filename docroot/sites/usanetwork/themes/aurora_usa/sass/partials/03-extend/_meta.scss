@@ -29,7 +29,7 @@
         letter-spacing: 1px;
       }
     }
-    & > div {
+    &:not(.multiline-ellipsis-meta) > div {
       &:only-child {
         @supports (-webkit-line-clamp: 2)  {
           display: -webkit-box;
@@ -38,6 +38,18 @@
           height: auto;
         }
         white-space: normal;
+      }
+    }
+    & > div {
+      &:nth-last-child(3) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        &~div {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
     }
   }

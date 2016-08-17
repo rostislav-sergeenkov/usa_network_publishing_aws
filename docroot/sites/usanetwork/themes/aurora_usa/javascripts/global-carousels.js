@@ -55,10 +55,8 @@
         showCardCarouselItemClassActive: 'active',
         showCardOpenItemClassActive: 'active',
         showCardOpenAnimeTime: 500,
-        // showCardOpenAnimeEasing: 'easeInCubic',
-        //showCardCloseAnimeEasing: 'easeOutQuint',
-        showCardOpenAnimeEasing: 'easeInOutCubic',
-        showCardCloseAnimeEasing: 'easeInOutCubic',
+        showCardOpenAnimeEasing: 'easeInOutExpo',
+        showCardCloseAnimeEasing: 'easeInOutExpo',
         isShowCardGetAdMinBp: 769,
         showCardBp: {
           // variables-and-functions.js
@@ -138,8 +136,6 @@
         androidAppLink: (Drupal.settings.hasOwnProperty('usa') && Drupal.settings.usa.hasOwnProperty('androidAppLink')) ? Drupal.settings.usa.androidAppLink : '/app',
         appPageUrl: '/app'
       };
-
-      console.info(_);
 
       // showCard
       _.showCard = {

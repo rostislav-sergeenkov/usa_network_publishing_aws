@@ -98,7 +98,7 @@
 
   .usa-carousel-slider {
     .slick-list {
-      overflow: visible!important;
+      overflow: visible !important;
     }
   }
 
@@ -114,146 +114,146 @@
   }
   &.destroy {
     > ul {
-      left: 0!important;
+      left: 0 !important;
       width: auto;
     }
   }
-  ul {
-    @include clear;
+  .usa-carousel-left {
     height: auto;
     width: 100%;
     position: relative;
-    li.description-item {
-      margin-right: 20px;
-      width: 150px;
-      @include breakpoint($bp-min-1601-width) {
-        margin-right: 40px;
-        width: 250px;
-      }
-      @include breakpoint($bp-480-width) {
-        margin-right: 0;
-        width: 100%;
-      }
-    }
-    li:not(.description-item) {
-      float: left;
-      height: 250px;
-      margin: 0 10px 0 0;
-      overflow: hidden;
-      position: relative;
-      width: 300px;
-      @include breakpoint($bp-min-1601-width) {
-        margin-right: 15px;
-      }
-      &.odd {
-        .meta-wrap {
-          background: $social-twitter-back;
+    .carousel-item {
+      &.description-item {
+        margin-right: 20px;
+        width: 150px;
+        @include breakpoint($bp-min-1601-width) {
+          margin-right: 40px;
+          width: 250px;
         }
-      }
-      &.other-show {
-        h3 {
-          color: $poll-color;
-          font-family: $tex-gyreschola-italic;
-          font-size: 12px;
-          position: absolute;
-          text-transform: uppercase;
-          top: -20px;
-          z-index: 1;
-        }
-      }
-      a {
-        display: block;
-        height: 100%;
-        width: 100%;
-      }
-      img {
-        height: auto;
-        width: 100%;
-      }
-      .node {
-        height: 100%;
-        width: 100%;
-      }
-      .meta-wrap {
-        background: $promo-dark-back;
-        bottom: 0;
-        height: 82px;
-        position: absolute;
-        width: 100%;
-        z-index: 1;
-        .meta-wrapper-inner {
-          height: 100%;
-          display: table;
+        @include breakpoint($bp-480-width) {
+          margin-right: 0;
           width: 100%;
         }
       }
-      .meta-icon {
-        display: block;
-        height: 37px;
-        left: 10px;
-        margin-top: -19px;
-        position: absolute;
-        top: 50%;
-        width: 37px;
-        ~ .meta {
-          padding-left: 55px;
-        }
-      }
-      @extend %meta;
-      .meta {
-        display: table-cell;
-        max-width: 100px;
+      &:not(.description-item) {
+        height: 250px;
+        margin: 0 10px 0 0;
         overflow: hidden;
-        padding-left: 10px;
         position: relative;
-        vertical-align: middle;
-        width: 100%;
-        .title, .additional, .caption {
-          line-height: 18px;
+        width: 300px;
+        @include breakpoint($bp-min-1601-width) {
+          margin-right: 15px;
         }
-      }
-      &.poll {
+        &.odd {
+          .meta-wrap {
+            background: $social-twitter-back;
+          }
+        }
+        &.other-show {
+          h3 {
+            color: $poll-color;
+            font-family: $tex-gyreschola-italic;
+            font-size: 12px;
+            position: absolute;
+            text-transform: uppercase;
+            top: -20px;
+            z-index: 1;
+          }
+        }
         a {
-          height: 115px;
-        }
-      }
-      .poll-items {
-        @include clear;
-        background-color: $header-show-caption;
-        height: 135px;
-        position: relative;
-        .poll-item {
-          border-right: 1px solid $header-tab-back-hover;
-          float: left;
+          display: block;
           height: 100%;
-          width: 33.33333%;
-          &:last-child {
-            border-right: none;
+          width: 100%;
+        }
+        img {
+          height: auto;
+          width: 100%;
+        }
+        .node {
+          height: 100%;
+          width: 100%;
+        }
+        .meta-wrap {
+          background: $promo-dark-back;
+          bottom: 0;
+          height: 82px;
+          position: absolute;
+          width: 100%;
+          z-index: 1;
+          .meta-wrapper-inner {
+            height: 100%;
+            display: table;
+            width: 100%;
           }
+        }
+        .meta-icon {
+          display: block;
+          height: 37px;
+          left: 10px;
+          margin-top: -19px;
+          position: absolute;
+          top: 50%;
+          width: 37px;
+          ~ .meta {
+            padding-left: 55px;
+          }
+        }
+        @extend %meta;
+        .meta {
+          display: table-cell;
+          max-width: 100px;
+          overflow: hidden;
+          padding-left: 10px;
+          position: relative;
+          vertical-align: middle;
+          width: 100%;
+          .title, .additional, .caption {
+            line-height: 18px;
+          }
+        }
+        &.poll {
           a {
-            text-decoration: none;
+            height: 115px;
           }
-          .node {
-            .asset-img {
-              img {
-                width: 100%;
-              }
+        }
+        .poll-items {
+          @include clear;
+          background-color: $header-show-caption;
+          height: 135px;
+          position: relative;
+          .poll-item {
+            border-right: 1px solid $header-tab-back-hover;
+            float: left;
+            height: 100%;
+            width: 33.33333%;
+            &:last-child {
+              border-right: none;
             }
-            .meta-wrapper {
-              @extend %meta;
-              .meta {
-                position: static;
-                padding: 20px 0 0;
-                margin: 0;
-                .title {
-                  font-size: 20px;
-                  line-height: 28px;
-                  margin-left: 0;
-                  text-align: center;
+            a {
+              text-decoration: none;
+            }
+            .node {
+              .asset-img {
+                img {
+                  width: 100%;
                 }
-                .caption {
-                  line-height: 18px;
-                  text-align: center;
+              }
+              .meta-wrapper {
+                @extend %meta;
+                .meta {
+                  position: static;
+                  padding: 20px 0 0;
+                  margin: 0;
+                  .title {
+                    font-size: 20px;
+                    line-height: 28px;
+                    margin-left: 0;
+                    text-align: center;
+                  }
+                  .caption {
+                    line-height: 18px;
+                    text-align: center;
+                  }
                 }
               }
             }
@@ -278,6 +278,7 @@
     padding: 40px 0 40px 20px;
   }
 }
+
 .featured-block.carousel-block {
   @include breakpoint ($bp-min-1281-width) {
     background-size: contain !important;
@@ -353,6 +354,7 @@
     }
   }
 }
+
 .latest-block {
   @include breakpoint($bp-480-width) {
     .carousel-description-item {

@@ -51,6 +51,15 @@ function usanetwork_wysiwyg_wysiwyg_default_profiles() {
         'lines_quotation' => array(
           'lines_quotation' => 1,
         ),
+        'usa_justify_left' => array(
+          'usa_justify_left' => 1,
+        ),
+        'usa_justify_center' => array(
+          'usa_justify_center' => 1,
+        ),
+        'usa_justify_right' => array(
+          'usa_justify_right' => 1,
+        ),
         'drupal' => array(
           'media' => 1,
           'usa_inline_gallery' => 1,

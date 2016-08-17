@@ -2,12 +2,16 @@
   .meta {
     direction: ltr;
     color: #ffffff;
+    &:not(.multiline-ellipsis-meta) {
+      .caption, .title, .additional, .description, .show-title, .topic {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
     .caption, .title, .additional, .description, .show-title, .topic {
-      overflow: hidden;
       text-decoration: none;
       text-transform: uppercase;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
     .caption {
       font-size: 13px;

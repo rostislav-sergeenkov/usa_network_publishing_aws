@@ -300,7 +300,8 @@ function checkDescriptionLinesPromo(resetText) {
   if(resetText) {
     $('.multiline-ellipsis-meta > div').each(function() {
       var item = $(this);
-      item.text(item.data('text'));
+      console.info(item.attr('data-text'));
+      item.text(item.attr('data-text'));
     });
   }
   $('.multiline-ellipsis-meta').each(function() {
@@ -315,17 +316,7 @@ function checkDescriptionLinesPromo(resetText) {
       if (lines > 1) {
         text = parent.children('.title').data('text');
         addDots(parent.children('.title'), 2, lineHeight, text);
-        parent.children().not('.title').css({
-          textOverflow: 'ellipsis',
-          overflow: 'hidden',
-          whiteSpace: 'nowrap'
-        });
       } else {
-        parent.children('.title').css({
-          textOverflow: 'ellipsis',
-          overflow: 'hidden',
-          whiteSpace: 'nowrap'
-        });
         lineHeight = parseFloat(parent.children().not('.title').css('line-height'));
         text = parent.children().not('.title').data('text');
         addDots(parent.children().not('.title'), 2, lineHeight, text);

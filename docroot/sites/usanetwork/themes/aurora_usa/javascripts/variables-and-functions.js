@@ -299,9 +299,10 @@ function checkDescriptionLines() {
 function checkDescriptionLinesPromo(resetText) {
   if(resetText) {
     $('.multiline-ellipsis-meta > div').each(function() {
-      var item = $(this);
-      console.info(item.attr('data-text'));
-      item.text(item.attr('data-text'));
+      var item = $(this),
+          text = item.attr('data-text');
+      console.info(text);
+      item.text(text);
     });
   }
   $('.multiline-ellipsis-meta').each(function() {

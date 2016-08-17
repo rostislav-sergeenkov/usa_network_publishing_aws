@@ -4680,7 +4680,7 @@ body:not(.show-new-design) #topbanner {
   }
 }
 
-.featured-block .slides .sponsored {
+.featured-block .usa-carousel-left .sponsored {
   background-color: #242424;
   bottom: 40%;
   right: 0;
@@ -4688,10 +4688,11 @@ body:not(.show-new-design) #topbanner {
   width: 39.5%;
   z-index: 2;
 }
-.featured-block .slides .sponsored.active {
-  padding: 3px 0;
+.featured-block .usa-carousel-left .sponsored > .mps-slot {
+  margin-bottom: 3px !important;
+  margin-top: 3px !important;
 }
-.featured-block .slides li.first .sponsored {
+.featured-block .usa-carousel-left .carousel-item:not(.description-item).large .sponsored {
   bottom: 31%;
   width: 30%;
 }
@@ -4703,8 +4704,9 @@ body:not(.show-new-design) #topbanner {
   position: absolute;
   width: 14%;
 }
-.page-home .block-usanetwork-aspot .slide .sponsored.active {
-  padding: 3px 0;
+.page-home .block-usanetwork-aspot .slide .sponsored > .mps-slot {
+  margin-bottom: 3px !important;
+  margin-top: 3px !important;
 }
 @media (max-width: 640px) {
   .page-home .block-usanetwork-aspot .slide .sponsored {
@@ -4720,8 +4722,9 @@ body:not(.show-new-design) #topbanner {
   right: 0;
   width: 14%;
 }
-.aspot-and-episodes .show-aspot .sponsored.active {
-  padding: 3px 0;
+.aspot-and-episodes .show-aspot .sponsored > .mps-slot {
+  margin-bottom: 3px !important;
+  margin-top: 3px !important;
 }
 @media (max-width: 640px) {
   .aspot-and-episodes .show-aspot .sponsored {
@@ -4750,8 +4753,9 @@ body:not(.show-new-design) #topbanner {
   position: absolute;
   width: 30%;
 }
-.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored.active {
-  padding: 3px 0;
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored > .mps-slot {
+  margin-bottom: 3px !important;
+  margin-top: 3px !important;
 }
 @media (min-width: 1901px) {
   .pane-usanetwork-tv-shows-usanetwork-tv-shows-related .show-latest-block ul li .node-usanetwork-promo .sponsored {
@@ -4800,8 +4804,9 @@ body:not(.show-new-design) #topbanner {
   position: absolute;
   width: 30%;
 }
-.related-content-block .node-usanetwork-promo .sponsored.active {
-  padding: 3px 0;
+.related-content-block .node-usanetwork-promo .sponsored > .mps-slot {
+  margin-bottom: 3px !important;
+  margin-top: 3px !important;
 }
 @media (min-width: 1901px) {
   .related-content-block .node-usanetwork-promo .sponsored {

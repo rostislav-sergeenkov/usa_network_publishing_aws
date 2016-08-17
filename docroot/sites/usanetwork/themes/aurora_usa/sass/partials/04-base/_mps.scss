@@ -18,21 +18,6 @@
     }
   }
 }
-
-//body:not(.show-new-design) {
-//  #topbanner {
-//    margin: 0 auto 20px;
-//    overflow: hidden;
-//    text-align: center;
-//    max-width: 970px;
-//    top: 10px;
-//    position: relative;
-//    @include breakpoint($bp-640-width) {
-//      margin: 0 auto 6px;
-//      top: 6px;
-//    }
-//  }
-//}
 body:not(.show-new-design) {
   #topbanner {
     margin: 10px auto;
@@ -44,8 +29,6 @@ body:not(.show-new-design) {
     }
   }
 }
-
-
 .midbanner {
   height: auto;
   margin: 20px auto;
@@ -64,7 +47,6 @@ body:not(.show-new-design) {
   text-align: center;
   max-width: 970px;
 }
-
 .consumptionator-page {
   header {
     .header-nav-bar {
@@ -102,13 +84,12 @@ body:not(.show-new-design) {
     }
   }
 }
-
-
 .featured-block {
-  .slides {
+  .usa-carousel-left {
     .sponsored {
-      &.active {
-        padding: 3px 0;
+      & > .mps-slot {
+        margin-bottom: 3px !important;
+        margin-top: 3px !important;
       }
       background-color: $sponsorship-dark;
       bottom: 40%;
@@ -117,11 +98,13 @@ body:not(.show-new-design) {
       width: 39.5%;
       z-index: 2;
     }
-    li {
-      &.first {
-        .sponsored {
-          bottom: 31%;
-          width: 30%;
+    .carousel-item {
+      &:not(.description-item) {
+        &.large {
+          .sponsored {
+            bottom: 31%;
+            width: 30%;
+          }
         }
       }
     }
@@ -131,8 +114,9 @@ body:not(.show-new-design) {
   .block-usanetwork-aspot{
     .slide {
       .sponsored {
-        &.active {
-          padding: 3px 0;
+        & > .mps-slot {
+          margin-bottom: 3px !important;
+          margin-top: 3px !important;
         }
         background-color: $sponsorship-dark;
         bottom: 0;
@@ -150,8 +134,9 @@ body:not(.show-new-design) {
 .aspot-and-episodes {
   .show-aspot {
     .sponsored {
-      &.active {
-        padding: 3px 0;
+      & > .mps-slot {
+        margin-bottom: 3px !important;
+        margin-top: 3px !important;
       }
       background-color: $sponsorship-dark;
       position: absolute;
@@ -182,15 +167,15 @@ body:not(.show-new-design) {
     }
   }
 }
-
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-related {
   .show-latest-block {
     ul {
       li{
         .node-usanetwork-promo {
           .sponsored {
-            &.active {
-              padding: 3px 0;
+            & > .mps-slot {
+              margin-bottom: 3px !important;
+              margin-top: 3px !important;
             }
             background-color: $sponsorship-dark;
             bottom: 9.1vw;
@@ -230,12 +215,12 @@ body:not(.show-new-design) {
     }
   }
 }
-
 .related-content-block {
   .node-usanetwork-promo {
     .sponsored {
-      &.active {
-        padding: 3px 0;
+      & > .mps-slot {
+        margin-bottom: 3px !important;
+        margin-top: 3px !important;
       }
       background-color: $sponsorship-dark;
       bottom: 9.1vw;

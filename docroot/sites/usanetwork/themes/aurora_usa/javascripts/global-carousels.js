@@ -55,10 +55,8 @@
         showCardCarouselItemClassActive: 'active',
         showCardOpenItemClassActive: 'active',
         showCardOpenAnimeTime: 500,
-        // showCardOpenAnimeEasing: 'easeInCubic',
-        //showCardCloseAnimeEasing: 'easeOutQuint',
-        showCardOpenAnimeEasing: 'easeInOutCubic',
-        showCardCloseAnimeEasing: 'easeInOutCubic',
+        showCardOpenAnimeEasing: 'easeInOutExpo',
+        showCardCloseAnimeEasing: 'easeInOutExpo',
         isShowCardGetAdMinBp: 769,
         showCardBp: {
           // variables-and-functions.js

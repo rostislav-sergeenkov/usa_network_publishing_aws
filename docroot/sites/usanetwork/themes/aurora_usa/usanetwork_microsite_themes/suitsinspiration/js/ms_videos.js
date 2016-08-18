@@ -52,10 +52,15 @@
     // player events
     handleMediaEvent: function(event) {
       usa_debug('[USA DEBUG] handleMediaEvent -- event.type: ' + event.type);
+      if (window.hasOwnProperty('$pdk')) {
+        $pdk.controller.showFullScreen();
+      }
       switch (event.type) {
-        case 'OnReleaseEnd':
+        case 'handleMediaEvent':
           var nextVideo = jQuery('#thumbnail-list .item-list > ul > li.active').next();
-          if (nextVideo.length > 0) Drupal.behaviors.ms_videos.clickThumbnail(nextVideo);
+          if (nextVideo.length > 0) {
+            Drupal.behaviors.ms_videos.clickThumbnail(nextVideo);
+          }
           break;
         default:
           break;

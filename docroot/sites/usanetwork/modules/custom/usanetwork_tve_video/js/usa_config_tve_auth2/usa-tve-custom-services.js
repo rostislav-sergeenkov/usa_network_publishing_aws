@@ -71,7 +71,7 @@
               ms_player = {},
               ms_Defer = $q.defer();
 
-          ms_player.isMicrosite = body.hasClass('page-node-microsite') ? true : false;
+          ms_player.isMicrosite = body.hasClass('page-node-microsite') || $('#microsite').length > 0 ? true : false;
           ms_player.isVideoFirstRun = true;
           ms_player.isInitPlayer = false;
           ms_player.isAuthServicePromiseThen = false;

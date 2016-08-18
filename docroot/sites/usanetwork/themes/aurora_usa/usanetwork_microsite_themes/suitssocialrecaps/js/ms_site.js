@@ -16,7 +16,13 @@
 
       if ($('#videos').length > 0) Drupal.behaviors.ms_videos.setVideoHeight();
 
-      Drupal.behaviors.ms_site.initIframeResize();
+      console.info(this);
+
+      try {
+        Drupal.behaviors.ms_site.initIframeResize();
+      } catch (e) {
+        usa_debug('error ms_site : Drupal.behaviors.ms_site.initIframeResize');
+      }
     },
 
     // initIframeResize

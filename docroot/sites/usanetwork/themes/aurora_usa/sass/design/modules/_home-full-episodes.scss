@@ -28,9 +28,11 @@
       }
       .carousel-item {
         &.description-item {
-          height: 515px;
+          @include breakpoint($bp-min-769-width) {
+            height: 515px!important;
+          }
           @include breakpoint($bp-min-1601-width) {
-            height: 573px;
+            height: 573px!important;
           }
           @include breakpoint($bp-768-width) {
             margin-right: 0;
@@ -41,17 +43,17 @@
           @include breakpoint($bp-min-769-width) {
             height: 100%;
           }
-        }
-      }
-      .node-usanetwork-promo {
-        height: 250px;
-        margin-bottom: 15px;
-        @include breakpoint($bp-min-1601-width) {
-          height: 279px;
-        }
-        @include breakpoint($bp-min-769-width) {
-          &:last-child {
-            margin-bottom: 0;
+          .node-usanetwork-promo {
+            @include breakpoint($bp-min-769-width) {
+              height: 250px;
+              margin-bottom: 15px;
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+            @include breakpoint($bp-min-1601-width) {
+              height: 279px;
+            }
           }
         }
       }
@@ -74,7 +76,9 @@
           }
         }
         &:not(.description-item) {
-          margin-right: 15px;
+          @include breakpoint($bp-min-769-width) {
+            margin-right: 15px;
+          }
           @include breakpoint($bp-min-1601-width) {
             height: 279px;
             width: 335px;
@@ -137,6 +141,7 @@
   }
   @include breakpoint($bp-768-width) {
     .carousel {
+      @include clear();
       margin-left: 0;
       margin-bottom: 10px;
       margin-top: get-vw(50px, 768);
@@ -145,7 +150,9 @@
         display: block;
         width: 100%;
         li {
-          margin-bottom: 15px;
+          &:not(.description-item) {
+            margin-bottom: 15px;
+          }
         }
       }
       &.carousel_1_rows {

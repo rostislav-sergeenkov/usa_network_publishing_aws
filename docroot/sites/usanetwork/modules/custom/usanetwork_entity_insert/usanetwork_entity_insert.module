@@ -110,7 +110,10 @@ function usanetwork_entity_insert_tokens($type, $tokens, array $data = array(), 
     foreach ($tokens as $name => $original) {
       $content = '';
       $parts = explode(':', preg_replace('/(\[|\])/', '', $original));
-      list(, $name, $entity_type, $entity_id, $view_mode, $auto_play) = $parts;
+      list(, $name, $entity_type, $entity_id, $view_mode) = $parts;
+      if (isset($parts[5])) {
+        $auto_play = $parts[5];
+      }
       if (in_array($name, array_keys(_usanetwork_entity_insert_types()))) {
         $enabled = _usanetwork_entity_insert_enabled_entities($name);
         $view_mode = $view_mode ? $view_mode : _usanetwork_entity_insert_default_view_mode($name);
@@ -127,7 +130,7 @@ function usanetwork_entity_insert_tokens($type, $tokens, array $data = array(), 
               $rendered_entity = reset($rendered_entity);
               $rendered_entity = $rendered_entity[$entity_id];
               $rendered_entity['#embedded'] = TRUE;
-              if ($auto_play) {
+              if (!empty($auto_play)) {
                 $rendered_entity['#embedded_autoplay'] = TRUE;
               } else {
                 $rendered_entity['#embedded_autoplay'] = FALSE;

@@ -58,6 +58,7 @@
                     $pdk.bind(this, true);
                     $pdk.controller.setIFrame(this, true);
 
+                    console.info('load');
                     controller._bindPlayerEvents();
 
                     if ($rootScope.isEntitled && userStatus.isAuthenticated) {
@@ -124,6 +125,7 @@
                 $scope.initiateAuthorization();
               };
               this._bindPlayerEvents = function () {
+                console.info('this._bindPlayerEvents');
                 $scope._bindPlayerEvents();
               };
               this.hidePlayerThumbnail = function () {
@@ -154,7 +156,7 @@
               // endCardMetaData = Drupal.settings.short_endcard;
 
               isAdStart = false;
-              nextEpisodeUrl = attr['nextEpisodeUrl'];
+              nextEpisodeUrl = attr['nextEpisodeUrl'] || '';
               usaVideoSettingsRun = false;
               positionTime = Drupal.settings.videoSetTime; // seconds
 
@@ -343,10 +345,12 @@
 
 
                 // init end card service
-                if (isShowEndCard) {
-                  usaEndCardService.init();
-                } else if (nextEpisodeUrl != '') {
-                  $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+                if (!isMicrosite) {
+                  if (isShowEndCard) {
+                    usaEndCardService.init();
+                  } else if (nextEpisodeUrl != '') {
+                    $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+                  }
                 }
 
                 // init watchwith
@@ -359,6 +363,7 @@
               USAN.ms_player = {
 
                 clearPlayerEvents: function () {
+                  // $pdk.controller.showFullScreen();
                   $pdk.controller.listenerId = 0;
                   for (var key in $pdk.controller.listeners) {
                     delete $pdk.controller.listeners[key];

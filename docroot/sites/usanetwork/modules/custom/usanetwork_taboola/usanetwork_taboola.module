@@ -187,7 +187,10 @@ function usanetwork_taboola_preprocess_node(&$vars) {
   if (!empty($node)) {
     if ($node->type == 'media_gallery') {
       $gallery_type = _usanetwork_get_field_item('node', $node, 'field_gallery_type', 'value');
-      $show = _usanetwork_get_field_item('node', $node, 'field_show', 'entity');
+      $show_id = _usanetwork_get_field_item('node', $node, 'field_show', 'target_id');
+      if (!empty($show_id)) {
+        $show = node_load($show_id);
+      }
       if ($gallery_type == 'Episodic Gallery') {
         $season_node = _usanetwork_get_field_item('node', $node, 'field_season', 'entity');
         if (!empty($season_node)) {

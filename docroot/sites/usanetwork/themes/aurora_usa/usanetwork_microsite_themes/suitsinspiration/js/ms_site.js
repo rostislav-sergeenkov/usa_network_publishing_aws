@@ -22,10 +22,23 @@
       if ($('#videos').length > 0) Drupal.behaviors.ms_videos.setVideoHeight();
 
       try {
+        usa_debug('ms_site : Drupal.behaviors.ms_site.initIframeResize');
         Drupal.behaviors.ms_site.initIframeResize();
       } catch (e) {
         usa_debug('error ms_site : Drupal.behaviors.ms_site.initIframeResize');
       }
+    },
+
+    // initIframeResize
+    initIframeResize: function(delay) {
+      delay = delay || 700;
+      setTimeout(function() {
+        var ifrm = document.getElementById('offerpop-iframe'),
+            hostname = window.location.hostname,
+            env = hostname.replace('.usanetwork.com', '');
+        ifrm.contentWindow.postMessage(env, 'http://offerpop.com');
+//usa_debug('========== initIframeResize(), env: ' + env);
+      }, delay);
     },
 
     // ATTACH

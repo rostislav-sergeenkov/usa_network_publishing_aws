@@ -478,6 +478,7 @@
       complete: function (elements) {
         _.showCard.inProgress = false;
         checkDescriptionLines();
+        checkDescriptionLinesPromo(true);
       }
     });
 

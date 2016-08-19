@@ -141,12 +141,15 @@ function scrollToAnchorName(targetName) {
   }, 1000);
 }
 
+var resizeTimer;
+
 $(window).bind('resize', function() {
 
   //show_carousel_margin = (window.innerWidth < window_size_tablet_portrait)? 40: 50;
   show_carousel_margin = (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) ? 40 : 50;
 
-  setTimeout(function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function() {
     checkDescriptionLines();
     checkDescriptionLinesPromo(true);
   }, 500);
@@ -300,31 +303,36 @@ function checkDescriptionLinesPromo(resetText) {
   if(resetText) {
     $('.multiline-ellipsis-meta > div').each(function() {
       var item = $(this),
-          text = item.attr('data-text');
-      console.info(text);
-      item.text(text);
+          dataText = item.attr('data-text');
+      $(item).text(dataText);
+      item.attr('style', '');
     });
   }
   $('.multiline-ellipsis-meta').each(function() {
     var parent = $(this),
-     lines = 0,
+     linesCoefficient = 0,
      lineHeight = 0,
      text = '',
      childQuantity = parent.children().length;
     if (childQuantity === 2) {
       lineHeight = parseFloat(parent.children('.title').css('line-height'));
-      lines = Math.floor(parent.children('.title').outerHeight() / lineHeight);
-      if (lines > 1) {
-        text = parent.children('.title').data('text');
+      linesCoefficient = parent.children('.title').outerHeight() / lineHeight;
+      if (linesCoefficient > 1.3) {
+        text = parent.children('.title').attr('data-text');
         addDots(parent.children('.title'), 2, lineHeight, text);
+        parent.children().not('.title').css({
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap'
+        });
       } else {
         lineHeight = parseFloat(parent.children().not('.title').css('line-height'));
-        text = parent.children().not('.title').data('text');
+        text = parent.children().not('.title').attr('data-text');
         addDots(parent.children().not('.title'), 2, lineHeight, text);
       }
     } else if (childQuantity === 1) {
       lineHeight = parseFloat(parent.children().css('line-height'));
-      text = parent.children().data('text');
+      text = parent.children().attr('data-text');
       addDots(parent.children(), 2, lineHeight, text);
     }
   });

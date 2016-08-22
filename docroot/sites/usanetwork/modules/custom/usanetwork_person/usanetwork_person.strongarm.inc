@@ -165,7 +165,7 @@ function usanetwork_person_strongarm() {
           'weight' => '8',
         ),
         'title' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'path' => array(
           'weight' => '7',
@@ -174,10 +174,10 @@ function usanetwork_person_strongarm() {
           'weight' => '9',
         ),
         'xmlsitemap' => array(
-          'weight' => '11',
+          'weight' => '14',
         ),
         'locations' => array(
-          'weight' => '30',
+          'weight' => '15',
         ),
       ),
       'display' => array(),

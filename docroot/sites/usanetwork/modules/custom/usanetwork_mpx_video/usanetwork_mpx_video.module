@@ -2426,9 +2426,11 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     return _tve_player_error('Could not render player: Invalid MPX account.');
   }
 
-  $account_mpx_url = $file_mpx_account->account_id;
-  $account_mpx_url_array = explode('/', $account_mpx_url);
-  $account_mpx_id = end($account_mpx_url_array);
+  if (!empty($variables['file'])) {
+    $account_mpx_url = $file_mpx_account->account_id;
+    $account_mpx_url_array = explode('/', $account_mpx_url);
+    $account_mpx_id = end($account_mpx_url_array);
+  }
 
   $mpx_guid = NULL;
   if (!empty($file->field_mpx_guid[LANGUAGE_NONE][0]['value'])) {

@@ -171,7 +171,7 @@ function usanetwork_quiz_strongarm() {
           'weight' => '11',
         ),
         'locations' => array(
-          'weight' => '30',
+          'weight' => '15',
         ),
       ),
       'display' => array(

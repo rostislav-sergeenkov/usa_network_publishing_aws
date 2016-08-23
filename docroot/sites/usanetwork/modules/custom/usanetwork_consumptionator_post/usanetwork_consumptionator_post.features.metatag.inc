@@ -32,7 +32,7 @@ function usanetwork_consumptionator_post_metatag_export_default() {
         'value' => '[node:field_usa_og_description]',
       ),
       'og:image' => array(
-        'value' => '[node:field_usa_og_image]',
+        'value' => '[node:field_usa_og_image], [node:field_post_cover]',
       ),
     ),
   );

@@ -95,6 +95,11 @@
         if (body.hasClass('consumptionator-page')) {
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .nav-bar-tabs'), style.dark);
         }
+
+        // new design
+        if (body.is('.show-new-design')) {
+          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#header'), style.dark);
+        }
       });
 
       window.onload = function() {

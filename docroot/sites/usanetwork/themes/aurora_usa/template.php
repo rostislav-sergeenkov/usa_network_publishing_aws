@@ -186,7 +186,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/lazy-load-custom.js');
   drupal_add_js($theme_path . '/javascripts/spin.min.js');
   drupal_add_js($theme_path . '/javascripts/USAN.js', array('scope' => 'header', 'weight' => -100));
-  if(drupal_is_front_page()){
+  if(drupal_is_front_page()) {
     drupal_add_js($theme_path . '/javascripts/jquery.dotdotdot.min.js');
   }
 

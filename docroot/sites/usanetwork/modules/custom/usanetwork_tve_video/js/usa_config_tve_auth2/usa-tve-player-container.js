@@ -58,7 +58,6 @@
                     $pdk.bind(this, true);
                     $pdk.controller.setIFrame(this, true);
 
-                    console.info('load');
                     controller._bindPlayerEvents();
 
                     if ($rootScope.isEntitled && userStatus.isAuthenticated) {
@@ -125,7 +124,6 @@
                 $scope.initiateAuthorization();
               };
               this._bindPlayerEvents = function () {
-                console.info('this._bindPlayerEvents');
                 $scope._bindPlayerEvents();
               };
               this.hidePlayerThumbnail = function () {
@@ -242,6 +240,9 @@
               // check free full episode
               if (isMobile && !isEntitlement && isFullEpisode) {
                 scope.hidePlayerSpinner = true;
+              }
+              if (isMobile && !usaSocialService.isSocialBlock) {
+                usaSocialService.initSocialBlock();
               }
 
               // check cookie status
@@ -593,7 +594,9 @@
                */
               function _onPlayerLoaded(pdkEvent) {
 
-                usaSocialService.initSocialBlock();
+                if (!usaSocialService.isSocialBlock) {
+                  usaSocialService.initSocialBlock();
+                }
 
                 scope.$apply(function () {
                   scope.statusPlayerLoaded = true;

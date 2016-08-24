@@ -19576,23 +19576,20 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .consumptionator-quiz-main-block .right-rail-line {
   float: none;
 }
-.consumptionator-quiz-main-block .consum-sidebar .advert {
-  height: 250px;
-  padding: 0;
-}
 .consumptionator-quiz-main-block .consum-sidebar .items-block {
   z-index: 0;
 }
 @media (min-width: 1025px) {
   .consumptionator-quiz-main-block .consum-sidebar .items-block {
-    height: calc(100% - 250px) !important;
     min-height: 245px;
+    height: calc(100% - 250px) !important;
     top: 0;
   }
 }
 @media (min-width: 1901px) {
   .consumptionator-quiz-main-block .consum-sidebar .items-block {
     min-height: 400px;
+    height: calc(100% - 23.4vw) !important;
   }
 }
 .consumptionator-quiz-main-block .consum-sidebar .more-items {

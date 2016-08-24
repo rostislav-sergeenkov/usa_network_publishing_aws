@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix {
   zoom: 1;
 }
@@ -4987,6 +4987,33 @@ body:not(.show-new-design) #topbanner {
 .aspot-and-episodes .episodes-list.sponsored-enable > .title .title-wrapper {
   height: 50%;
 }
+.aspot-and-episodes .episodes-list.sponsored-enable > .title .sponsored {
+  height: 50%;
+  position: relative;
+}
+.aspot-and-episodes .episodes-list.sponsored-enable > .title .sponsored .mps-slot {
+  height: 100% !important;
+  position: relative;
+  width: 100% !important;
+}
+.aspot-and-episodes .episodes-list.sponsored-enable > .title .sponsored .mps-slot div[id*='google_ads_iframe'] {
+  height: 100%;
+  width: 100%;
+}
+.aspot-and-episodes .episodes-list.sponsored-enable > .title .sponsored .mps-slot div[id*='google_ads_iframe'] iframe {
+  -moz-transform-origin: 0 0 !important;
+  -moz-transform: scale(1) !important;
+  -o-transform-origin: 0 0 !important;
+  -o-transform: scale(1) !important;
+  -webkit-transform-origin: 0 0 !important;
+  -webkit-transform: scale(1) !important;
+  -ms-transform-origin: 0 0 !important;
+  -ms-transform: scale(1) !important;
+  transform-origin: 0 0 !important;
+  transform: scale(1) !important;
+  height: 100%;
+  width: 100%;
+}
 .aspot-and-episodes .episodes-list.sponsored-enable .episodes-list-slider.vertical-mode {
   height: calc(90% - 50px);
 }
@@ -9377,6 +9404,7 @@ html.no-scroll, body.no-scroll {
   -webkit-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
+  width: 15%;
 }
 @media (min-width: 769px) {
   .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .top-menu-block .sponsored {

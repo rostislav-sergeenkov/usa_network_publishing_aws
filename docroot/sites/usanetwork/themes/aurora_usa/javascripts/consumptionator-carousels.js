@@ -316,9 +316,8 @@
     _.options.isMobileModeActive = true;
     _.addElemClass(_.$mainWrap, _.options.mobileModeClassName, null);
 
-    if (_.options.isMoreButton) {
-      _.hideMoreBtnCarouselItems();
-    }
+    _.hideMoreBtnCarouselItems();
+
   };
   usaCarousel.prototype.destroyMobileMode = function () {
 
@@ -500,10 +499,13 @@
             verticalModeBpMin: 1281,
             isHorizontalMode: true,
             horizontalModeBpMax: 1280,
-            destroyCarouselBpMax: 640
+            destroyCarouselBpMax: 640,
+            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
           });
         } else {
-          $episodesListSlider.usaCarousel();
+          $episodesListSlider.usaCarousel({
+            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
+          });
         }
       }
     }

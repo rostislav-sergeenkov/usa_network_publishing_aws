@@ -95,7 +95,26 @@
         if (body.hasClass('consumptionator-page')) {
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .nav-bar-tabs'), style.dark);
         }
+
+        // new design
+        if (body.is('.show-new-design')) {
+          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#header'), style.dark);
+        }
       });
+
+      window.onload = function() {
+        var mpsIframe = ".usa-tv-show .episodes-list.sponsored-enable .sponsored .mps-slot div[id*='google_ads_iframe'] iframe";
+        var intervalSponsoredLoad = setInterval(function(){
+          if ($(mpsIframe).length > 0) {
+            var iframe = $(mpsIframe),
+                iframeHead = iframe.contents().find('head');
+            if (iframeHead.children().length != 0) {
+              iframeHead.append("<style type='text/css'>#google_image_div {width: 100%; height: 100%;}#google_image_div > a {width: 100%; height: 100%; display: block; position: relative;} #google_image_div img{position: absolute;height: auto;width: auto;max-height: 100%;max-width: 100%;top: 0;left: 0;right: 0;bottom: 0;margin: auto;}</style>");
+              clearInterval(intervalSponsoredLoad);
+            }
+          }
+        }, 1000);
+      }
     }
   };
 }(jQuery));

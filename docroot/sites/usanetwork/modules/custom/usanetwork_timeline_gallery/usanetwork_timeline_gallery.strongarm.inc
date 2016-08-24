@@ -165,18 +165,21 @@ function usanetwork_timeline_gallery_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '6',
           'metatags' => array(
             'weight' => '8',
           ),
         ),
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '5',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '7',
         ),
         'xmlsitemap' => array(
+          'weight' => '8',
+        ),
+        'locations' => array(
           'weight' => '11',
         ),
       ),

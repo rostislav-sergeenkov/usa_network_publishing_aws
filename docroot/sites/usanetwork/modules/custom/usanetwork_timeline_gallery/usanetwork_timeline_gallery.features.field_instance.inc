@@ -889,7 +889,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
       'module' => 'gigya',
       'settings' => array(),
       'type' => 'sharebar',
-      'weight' => 32,
+      'weight' => 12,
     ),
   );
 
@@ -2182,6 +2182,81 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-timeline_gallery-field_sponsored'
+  $field_instances['node-timeline_gallery-field_sponsored'] = array(
+    'bundle' => 'timeline_gallery',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 37,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_sponsored',
+    'label' => 'Sponsored',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'pub_mpx' => array(
+          'media_data_fieldpath' => '',
+        ),
+      ),
+      'type' => 'options_onoff',
+      'weight' => 34,
+    ),
+  );
+
   // Exported field_instance: 'node-timeline_gallery-field_summary'
   $field_instances['node-timeline_gallery-field_summary'] = array(
     'bundle' => 'timeline_gallery',
@@ -2680,6 +2755,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
   t('Short Description');
   t('Show');
   t('Show Name or Violator');
+  t('Sponsored');
   t('Tags');
   t('Timeline media item');
   t('Title');

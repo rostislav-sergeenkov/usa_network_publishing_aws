@@ -158,6 +158,33 @@ body:not(.show-new-design) {
         .title-wrapper {
           height: 50%;
         }
+        .sponsored {
+          height: 50%;
+          position: relative;
+          .mps-slot {
+            height: 100%!important;
+            position: relative;
+            width: 100%!important;
+            div[id*='google_ads_iframe'] {
+              height: 100%;
+              width: 100%;
+              iframe {
+                -moz-transform-origin: 0 0!important;
+                -moz-transform: scale(1)!important;
+                -o-transform-origin: 0 0!important;
+                -o-transform: scale(1)!important;
+                -webkit-transform-origin: 0 0!important;
+                -webkit-transform: scale(1)!important;
+                -ms-transform-origin: 0 0!important;
+                -ms-transform: scale(1)!important;
+                transform-origin: 0 0!important;
+                transform: scale(1)!important;
+                height: 100%;
+                width: 100%;
+              }
+            }
+          }
+        }
       }
       .episodes-list-slider {
         &.vertical-mode {

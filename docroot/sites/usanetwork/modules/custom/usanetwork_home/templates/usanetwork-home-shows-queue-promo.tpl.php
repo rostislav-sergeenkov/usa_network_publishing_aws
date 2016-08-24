@@ -20,7 +20,7 @@
       <?php endif; ?>
       <div class="meta-back"></div>
       <div class="meta-wrapper">
-        <div class="meta-wrapper-inner">
+        <div class="meta-wrapper-inner multiline-ellipsis-meta-wrapper">
           <div class="meta-icon<?php if (!empty($icon_type)): print ' ' . $icon_type; endif; ?>"></div>
           <div class="meta multiline-ellipsis-meta">
             <?php if (!empty($episode_title)): ?>

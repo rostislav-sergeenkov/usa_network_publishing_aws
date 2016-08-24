@@ -14,7 +14,7 @@
     <?php endif; ?>
     <div class="meta-wrapper">
       <div class="meta-back"></div>
-      <div class="meta-wrapper-inner">
+      <div class="meta-wrapper-inner<?php print (!$is_first)? ' multiline-ellipsis-meta-wrapper' : '';?>">
         <?php if ($icon_type && !$is_first): ?>
           <div class="meta-icon <?php print $icon_type; ?>"></div>
         <?php endif; ?>

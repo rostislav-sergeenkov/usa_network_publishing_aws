@@ -9,6 +9,20 @@
         white-space: nowrap;
       }
     }
+    &.multiline-ellipsis-meta {
+      .caption, .title, .additional, .description, .show-title, .topic {
+        white-space: normal;
+        width: 100%;
+      }
+    }
+    body:not(.ie9) &.multiline-ellipsis-meta {
+      align-items: flex-start;
+      display: flex;
+      max-width: 100%;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+    }
     .caption, .title, .additional, .description, .show-title, .topic {
       text-decoration: none;
       text-transform: uppercase;

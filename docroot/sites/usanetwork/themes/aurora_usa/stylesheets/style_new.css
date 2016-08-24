@@ -4451,6 +4451,10 @@ ul.menu li {
   }
 }
 
+body:not(.ie9) .multiline-ellipsis-meta-wrapper {
+  display: block !important;
+}
+
 img {
   height: auto;
   vertical-align: text-bottom;

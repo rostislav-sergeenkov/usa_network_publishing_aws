@@ -2,7 +2,7 @@
   <a href="<?php print $url; ?>">
     <div class="meta-wrapper">
       <div class="meta-back"></div>
-      <div class="meta-wrapper-inner">
+      <div class="meta-wrapper-inner multiline-ellipsis-meta-wrapper">
         <div class="meta-icon <?php (!empty($icon)) ? print $icon : 'video-icon'; ?>"></div>
         <div class="meta multiline-ellipsis-meta">
           <?php if (!empty($caption)): ?>

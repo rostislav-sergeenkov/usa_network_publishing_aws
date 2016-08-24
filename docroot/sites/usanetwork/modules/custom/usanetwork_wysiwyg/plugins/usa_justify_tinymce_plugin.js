@@ -7,6 +7,12 @@
     init: function(editor, url) {
       editor.addCommand('mceUsaJustifyLeft', function() {
         tinymce.activeEditor.formatter.register('usa_justify_left', {inline : 'span', 'classes' : 'usa-left'} );
+        if (tinymce.activeEditor.formatter.match('usa_justify_center')) {
+          tinymce.activeEditor.formatter.remove('usa_justify_center');
+        }
+        if (tinymce.activeEditor.formatter.match('usa_justify_right')) {
+          tinymce.activeEditor.formatter.remove('usa_justify_right');
+        }
         tinymce.activeEditor.formatter.toggle('usa_justify_left');
       });
 
@@ -32,6 +38,12 @@
     init: function(editor, url) {
       editor.addCommand('mceUsaJustifyCenter', function() {
         tinymce.activeEditor.formatter.register('usa_justify_center', {inline : 'span', 'classes' : 'usa-center'} );
+        if (tinymce.activeEditor.formatter.match('usa_justify_left')) {
+          tinymce.activeEditor.formatter.remove('usa_justify_left');
+        }
+        if (tinymce.activeEditor.formatter.match('usa_justify_right')) {
+          tinymce.activeEditor.formatter.remove('usa_justify_right');
+        }
         tinymce.activeEditor.formatter.toggle('usa_justify_center');
       });
 
@@ -57,6 +69,12 @@
     init: function(editor, url) {
       editor.addCommand('mceUsaJustifyRight', function() {
         tinymce.activeEditor.formatter.register('usa_justify_right', {inline : 'span', 'classes' : 'usa-right'} );
+        if (tinymce.activeEditor.formatter.match('usa_justify_center')) {
+          tinymce.activeEditor.formatter.remove('usa_justify_center');
+        }
+        if (tinymce.activeEditor.formatter.match('usa_justify_left')) {
+          tinymce.activeEditor.formatter.remove('usa_justify_left');
+        }
         tinymce.activeEditor.formatter.toggle('usa_justify_right');
       });
 

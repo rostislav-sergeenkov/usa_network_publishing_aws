@@ -270,7 +270,9 @@ function _usanetwork_token_og_description_body($entity, $entity_type) {
   list($entity_id, ,$bundle) = entity_extract_ids($entity_type, $entity);
   switch ($entity_type) {
     case 'node':
-      if (isset($entity->body) && !empty($entity->body) && $body = reset(field_get_items('node', $entity, 'body'))) {
+      $body_field = field_get_items('node', $entity, 'body');
+      if (isset($entity->body) && !empty($entity->body) && !empty($body_field)) {
+        $body = reset($body_field);
         $result = _usanetwork_token_limit_text(isset($body['safe_value']) ? $body['safe_value'] : $body['value'], OG_DESCRIPTION_LIMIT);
       }
       break;

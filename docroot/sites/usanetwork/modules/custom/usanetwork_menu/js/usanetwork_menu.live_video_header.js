@@ -44,8 +44,7 @@
             linkBack: url,
             title: 'USA Network Live TV Streaming'
           };
-          Drupal.gigya.showSharebar(sharebar);
-
+          if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
         },
         error: function () {
           console.info('error');

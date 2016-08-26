@@ -1053,8 +1053,7 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
       $show_node = !empty($show_nid) ? node_load($show_nid) : NULL;
       $movie_node = !empty($movie_nid) ? node_load($movie_nid) : NULL;
       if (!empty($show_node)) {
-        $show_name = $show_node->title;
-        $shows_filter[$show_nid] = $show_name;
+        $shows_filter[$show_nid] = $show_node->title;
       }
       if (!empty($filter_show_nid) && $filter_show_nid != $show_nid) {
         continue;
@@ -1062,7 +1061,9 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
       if ($start_time >= $current_day_end_time && empty($filter_show_nid)) {
         continue;
       }
-      $show_name = ($tv_schedule_item->program_type == 'movie') ? t('USA MOVIE') : $tv_schedule_item->show_title;
+      if ($show_name !== 'Law & Order: Special Victims Unit') {
+        $show_name = ($tv_schedule_item->program_type == 'movie') ? t('USA MOVIE') : $tv_schedule_item->show_title;
+      }
       if (empty($show_node)) {
         $theme_row_variables['episode_show'] = $show_name;
         $theme_row_variables['episode_description'] = !empty($tv_schedule_item->program_description) ? $tv_schedule_item->program_description : '';

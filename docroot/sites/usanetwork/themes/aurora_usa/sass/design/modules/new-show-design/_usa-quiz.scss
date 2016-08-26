@@ -259,10 +259,12 @@
         @include clear();
       }
       .inner {
-        max-width: 320px;
+        max-width: 100%;
       }
       .answer-title {
         font-family: $fira-sans-medium;
+        margin: 0 auto;
+        max-width: 100%;
         padding: 5px;
         @include breakpoint ($bp-640-width) {
           font-size: get-vw(18px, 640);

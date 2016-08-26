@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix {
   zoom: 1;
 }
@@ -16819,8 +16819,8 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 
 .tveModal .modalHeader .closeButton {
   background-position: 0 0;
-  right: -19px !important;
-  top: 3px !important;
+  right: -20px !important;
+  top: 0 !important;
 }
 
 @media (min-width: 1025px) {
@@ -17225,11 +17225,6 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   border: none;
   padding: 0;
   cursor: pointer;
-  background-color: transparent;
-  -moz-transform: rotateY(-180deg);
-  -ms-transform: rotateY(-180deg);
-  -webkit-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
 }
 
 .tveModal .richContent .mainHeading {

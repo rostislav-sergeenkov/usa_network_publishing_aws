@@ -982,6 +982,7 @@ function _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season_id, $epis
   $previous_episode = $episode_id - 1;
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
+  $query->condition('node.status', NODE_PUBLISHED);
   $query->innerJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
   $query->innerJoin('field_data_field_season', 'field_season', 'field_season.entity_id = node.nid');
   $query->innerJoin('field_data_field_episode_number', 'field_episode_number', 'field_episode_number.entity_id = node.nid');
@@ -1000,6 +1001,7 @@ function _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season_id, $epis
   $next_episode = $episode_id + 1;
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
+  $query->condition('node.status', NODE_PUBLISHED);
   $query->innerJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
   $query->innerJoin('field_data_field_season', 'field_season', 'field_season.entity_id = node.nid');
   $query->innerJoin('field_data_field_episode_number', 'field_episode_number', 'field_episode_number.entity_id = node.nid');

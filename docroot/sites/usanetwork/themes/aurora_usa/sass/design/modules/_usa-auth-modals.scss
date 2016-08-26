@@ -353,8 +353,8 @@
 
 .tveModal .modalHeader .closeButton {
   background-position: 0 0;
-  right: -19px !important;
-  top: 3px !important;
+  right: -20px !important;
+  top: 0 !important;
 }
 
 @media (min-width: 1025px) {
@@ -772,11 +772,6 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  background-color: transparent;
-  -moz-transform: rotateY(-180deg);
-  -ms-transform: rotateY(-180deg);
-  -webkit-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
 }
 
 .tveModal .richContent .mainHeading {

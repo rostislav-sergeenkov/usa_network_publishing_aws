@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix {
   zoom: 1;
 }
@@ -19541,9 +19541,11 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   display: table;
 }
 .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .inner, .page-videos-live article.node-quiz .usanetwork-quiz-answer .inner {
-  max-width: 320px;
+  max-width: 100%;
 }
 .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title, .page-videos-live article.node-quiz .usanetwork-quiz-answer .answer-title {
+  margin: 0 auto;
+  max-width: 100%;
   padding: 5px;
   width: 320px;
 }

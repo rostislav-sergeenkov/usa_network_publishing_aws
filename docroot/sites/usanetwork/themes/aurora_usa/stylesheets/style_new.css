@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix {
   zoom: 1;
 }
@@ -18516,10 +18516,12 @@ html.no-scroll, body.no-scroll {
   display: table;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .inner {
-  max-width: 320px;
+  max-width: 100%;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {
   font-family: "FiraSansMedium", sans-serif;
+  margin: 0 auto;
+  max-width: 100%;
   padding: 5px;
 }
 @media (max-width: 640px) {

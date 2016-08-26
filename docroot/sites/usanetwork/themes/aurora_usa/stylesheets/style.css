@@ -34585,6 +34585,11 @@ body.blog .view-display-id-blog_content .views-row {
     height: 52.8vw;
   }
 }
+#block-usanetwork-top3-usanetwork-top3-main-block #top3-slider-wrapper.share-open:after {
+  clear: both;
+  content: '';
+  display: table;
+}
 @media (max-width: 768px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #top3-slider-wrapper.share-open {
     height: 85.5vw;
@@ -34911,7 +34916,7 @@ body.blog .view-display-id-blog_content .views-row {
 #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 {
   display: none;
   height: 3.15623vw;
-  margin: 2.10416vw auto 1.57812vw;
+  margin: 1.57812vw auto 0;
   position: relative;
   text-align: center;
   width: 17.83272vw;
@@ -34919,21 +34924,21 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 {
     height: 60px;
-    margin: 40px auto 30px;
+    margin: 30px auto 0;
     width: 339px;
   }
 }
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 {
     height: 4.48242vw;
-    margin: 2.99023vw auto 2.24219vw;
+    margin: 2.24316vw auto 0;
     width: 25.39063vw;
   }
 }
 @media (max-width: 768px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 {
     height: 9.5625vw;
-    margin: 6.37917vw auto 2.08333vw;
+    margin: 4.78542vw auto 0;
     width: 54.16667vw;
   }
 }
@@ -35543,30 +35548,49 @@ body.blog .view-display-id-blog_content .views-row {
   width: 100%;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #share-block .share-block-gigya-container {
+  display: flex;
   color: white;
+  flex-direction: column;
+  height: calc(100% - 23.72436vw);
+  justify-content: space-around;
   position: relative;
   width: 100%;
 }
+@media (min-width: 1901px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #share-block .share-block-gigya-container {
+    height: calc(100% - 451px);
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #share-block .share-block-gigya-container {
+    height: calc(100% - 33.78906vw);
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-top3-usanetwork-top3-main-block #share-block .share-block-gigya-container {
+    height: calc(100% - 2% - 35.57292vw - 17.44792vw);
+  }
+}
 #block-usanetwork-top3-usanetwork-top3-main-block #share-block .share-block-gigya-container .top-text {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 2.52499vw;
+  font-size: 2.31457vw;
   line-height: 1;
   text-align: center;
   text-transform: uppercase;
 }
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #share-block .share-block-gigya-container .top-text {
-    font-size: 48px;
+    font-size: 44px;
   }
 }
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #share-block .share-block-gigya-container .top-text {
-    font-size: 3.58789vw;
+    font-size: 3.27148vw;
   }
 }
 @media (max-width: 768px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #share-block .share-block-gigya-container .top-text {
-    font-size: 4.78385vw;
+    font-size: 4.36198vw;
   }
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #share-block #gigya-share-top3_gig_containerParent #gigya-share-top3 {

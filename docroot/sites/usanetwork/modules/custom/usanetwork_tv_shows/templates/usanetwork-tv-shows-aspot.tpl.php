@@ -21,10 +21,10 @@
           <?php endif; ?>
         </div>
       <?php endif; ?>
-      <div class="episodes-list-slider vertical">
-        <ul class="slider-vertical">
+      <div class="episodes-list-slider show-border" data-block-name="Right Rail Carousel">
+        <ul class="usa-carousel swiper-wrapper">
           <?php foreach ($episodes as $episode): ?>
-            <li class="slide-item">
+            <li class="usa-carousel-item swiper-slide">
               <div class="node node-usanetwork-promo aspot-carousel-promo">
                 <a href="<?php print !empty($episode['url']) ? $episode['url'] : '#'; ?>">
                   <div class="meta-wrapper">
@@ -51,40 +51,9 @@
             </li>
           <?php endforeach; ?>
         </ul>
-      </div>
-      <div class="episodes-list-slider horizontal show-border" data-block-name="Right Rail Carousel">
-        <ul class="slider-horizontal">
-          <?php foreach ($episodes as $episode): ?>
-            <li class="slide-item">
-              <div class="node node-usanetwork-promo aspot-carousel-promo">
-                <a href="<?php print !empty($episode['url']) ? $episode['url'] : '#'; ?>">
-                  <div class="meta-wrapper">
-                    <div class="meta-wrapper-inner">
-                      <div class="meta-icon <?php (!empty($episode['icon'])) ? print $episode['icon'] : 'video-icon'; ?>"></div>
-                      <div class="meta">
-                        <?php if (!empty($episode['violator'])): ?>
-                          <div class="caption"><?php print $episode['violator']; ?></div>
-                        <?php endif; ?>
-                        <?php if (!empty($episode['title'])): ?>
-                          <div class="title"><?php print $episode['title']; ?></div>
-                        <?php endif; ?>
-                        <?php if (!empty($episode['description'])): ?>
-                          <div class="additional"><?php print $episode['description']; ?></div>
-                        <?php endif; ?>
-                      </div>
-                    </div>
-                  </div>
-                  <?php if (!empty($episode['image_url'])): ?>
-                    <div class="asset-img"><?php print $episode['image_url']; ?></div>
-                  <?php endif; ?>
-                </a>
-              </div>
-            </li>
-          <?php endforeach; ?>
-        </ul>
-        <div class="horizontal-controls">
-          <div class="slide-next slide-control slick-disabled"></div>
-          <div class="slide-prev slide-control slick-disabled"></div>
+        <div class="usa-carousel-controls-wrap">
+          <div class="usa-carousel-control-next usa-carousel-controls usa-carousel-control-disabled"></div>
+          <div class="usa-carousel-control-prev usa-carousel-controls usa-carousel-control-disabled"></div>
         </div>
         <?php if($show_more_button): ?>
           <div class="more-button-wrapper">

@@ -20,6 +20,7 @@ define('USA_MPX_VIDEO_DEFAULT_HOME_VIDEOS_FULL', 10);
 define("USA_MPX_VIDEO_FULL_VIDEO", "Full Episodes");
 define('USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS', 6);
 define('USA_MPX_ACCOUNT_NAME', 'NBCU USA Network');
+define('USA_MPX_TVE_ACCOUNT_NAME', 'NBCU TVE - USA Network');
 define('USA_MPX_IMAGE_SIZE', '1080');
 
 /**
@@ -76,6 +77,14 @@ function usanetwork_mpx_video_menu() {
     'page arguments' => array('_usanetwork_mpx_watchwith_admin_form'),
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_mpx_video.admin.inc',
+  );
+
+  $items['video/share/%'] = array(
+    'title' => 'Video Page',
+    'description' => 'MPX Media GUID Redirect',
+    'page callback' => '_usanetwork_mpx_media_guid_redirect',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
   );
 
   return $items;
@@ -209,11 +218,6 @@ function usanetwork_mpx_video_block_view($delta) {
       $block['subject'] = '';
        $block['content'] = array(
          '#markup' => usanetwork_mpx_video_full_latest_episodes_carousel(),
-         '#attached' => array(
-           'js' => array(
-             drupal_get_path('theme', 'aurora_usa') . '/javascripts/full-episodes-carousel.js',
-           ),
-         ),
        );
       break;
     case 'usa_mpx_video_clips':
@@ -528,7 +532,6 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
  */
 function usanetwork_mpx_video_global_videos_page() {
   //get featured elements
-  drupal_add_js(path_to_theme('aurora_usa') . '/javascripts/full-episodes.js');
   $usanework_full_episodes_aspot = array_slice(variable_get('usanework_full_episodes_aspot', array()), 0, USA_MPX_VIDEO_LATEST_FULL_EPISODE_MAX_ELEMENTS);
 
   $featured_aspot= $featured_carousel= array();
@@ -584,6 +587,10 @@ function usanetwork_mpx_video_global_videos_page() {
   }
 
   $shows_carousels = _usanetwork_mpx_video_shows_full_episodes();
+
+  $js_settings['usa']['androidAppLink'] = USANETWORK_USANOW_ANDROID_URL;
+  $js_settings['usa']['itunesAppLink'] = 'itms-apps://itunes.apple.com/app/id' . USANETWORK_USANOW_ITUNES_ID;
+  drupal_add_js($js_settings, 'setting');
 
   $theme_variables = array(
     'featured_aspot' => $featured_aspot,
@@ -647,7 +654,7 @@ function _usanetwork_mpx_video_shows_full_episodes() {
           'carousel_id' => 'carousel-' . drupal_clean_css_identifier(strtolower($result_item->title)),
           'carousel_border' => usanetwork_tv_shows_color_show_css_class($result_item->nid),
           'sponsored' => $sponsored,
-          'file_path' => $file_id,
+          'file_path' => isset($file_id) ? $file_id : NULL,
         );
 
         $output .= theme('usanetwork_mpx_video_shows_full_episodes', $theme_variables);
@@ -2215,7 +2222,7 @@ function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
   $variables['thumbnail_image'] = theme('image_style', array('style_name' =>'300x169_video', 'path' => $file_image_url));
 
   //most recent full episode
-  $show_id = $file->field_show['und'][0]['target_id'];
+  $show_id = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id');
   if (!empty($show_id) && is_numeric($show_id)) {
     $query = db_select('mpx_video', 'm');
     $query->innerJoin('field_data_field_mpx_full_episode', 'f', 'm.fid = f.entity_id');
@@ -2260,20 +2267,27 @@ function usanetwork_mpx_video_preprocess_pub_mpx_inactive_video(&$variables) {
  * Theme callback for usanetwork_mpx_inactive_video
  */
 function theme_usanetwork_mpx_inactive_video($variables) {
-  $new_design = _usanetwork_tv_shows_is_new_design_entity('file', $variables['file']);
+  $file = $variables['file'];
+  $new_design = _usanetwork_tv_shows_is_new_design_entity('file', $file);
 
   $video = "";
   $video .= "<div class='asset-img'>" . $variables['thumbnail_image'] . "</div>";
   $video .= "<div class='expired-text'><span>" . t('This video content has expired.') . "</span></div>";
   if ($new_design) {
     $video .= "<div class='suggest-text show-border'>" . t('May we suggest the following?') . "</div>";
+  } elseif (empty($file->field_show) && !empty($file->field_movie)) {
+    $video .= "<div class='suggest-text'></div>";
   } else {
     $video .= "<div class='suggest-text'>" . t('May we suggest the following?') . "</div>";
   }
   $video .= "<div class='suggest-videos-block'>";
-  $video .= $variables['full_episode_view'];
-  foreach ($variables['clip_view'] as $value) {
-    $video .= $value;
+  if (isset($variables['full_episode_view'])) {
+    $video .= $variables['full_episode_view'];
+  }
+  if (isset($variables['clip_view'])) {
+    foreach ($variables['clip_view'] as $value) {
+      $video .= $value;
+    }
   }
   $video .= "</div>";
   return $video;
@@ -2412,9 +2426,11 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     return _tve_player_error('Could not render player: Invalid MPX account.');
   }
 
-  $account_mpx_url = $file_mpx_account->account_id;
-  $account_mpx_url_array = explode('/', $account_mpx_url);
-  $account_mpx_id = end($account_mpx_url_array);
+  if (!empty($variables['file'])) {
+    $account_mpx_url = $file_mpx_account->account_id;
+    $account_mpx_url_array = explode('/', $account_mpx_url);
+    $account_mpx_id = end($account_mpx_url_array);
+  }
 
   $mpx_guid = NULL;
   if (!empty($file->field_mpx_guid[LANGUAGE_NONE][0]['value'])) {
@@ -3385,7 +3401,14 @@ function usanetwork_social_content_block() {
 
       if (!empty($SpredFast_ID)) {
         $id = 'mr-space_' . $SpredFast_ID;
-        $output = '<div class="social-block show-border"><div class="mr-space" id="' . $id . '" data-space-id="usa-network/' . $SpredFast_ID . '" style="min-height: 500px;"></div></div>';
+        if ($entity_type == 'file') {
+          $output = '';
+          $html_settings = '<div class="social-block show-border"><div class="mr-space" id="' . $id . '" data-space-id="usa-network/' . $SpredFast_ID . '" style="min-height: 500px;"></div></div>';
+          $js_settings['usa']['social_block'] = $html_settings;
+          drupal_add_js($js_settings, 'setting');
+        } else {
+          $output = '<div class="social-block show-border"><div class="mr-space" id="' . $id . '" data-space-id="usa-network/' . $SpredFast_ID . '" style="min-height: 500px;"></div></div>';
+        }
         drupal_add_js('!function(a,b,c,d,e,f,g,h,i,j,k){h=a[d]=a[d]||{},h.ui=h.ui||[],i=a[e]=a[e]||{},i[f]||(j=b.getElementsByTagName(c)[0],k=b.createElement(c),k.src="//platform.massrelevance.com/js/massrel.js",j.parentNode.insertBefore(k,j),i[f]=function(){h.ui.push([].slice.call(arguments))}),i[f]("load",{el:b.getElementById(g)})}(window,document,"script","massrel","spredfast","exp","' . $id . '");', array('type' => 'inline', 'scope' => 'footer'));
       }
     }
@@ -3474,5 +3497,43 @@ function usanetwork_mpx_video_form_alter(&$form, &$form_state, $form_id) {
         ':input[name="field_endcard_timing[und]"]' => array('value' => 'enable_custom'),
       ),
     );
+  }
+}
+
+/*
+ * Redirect for MPX by video/share/file_guid
+ */
+function _usanetwork_mpx_media_guid_redirect($guid) {
+  $tve_account_id = db_select('mpx_accounts', 'ma')
+    ->fields('ma', array('id'))
+    ->condition('import_account', rawurlencode(USA_MPX_TVE_ACCOUNT_NAME), 'LIKE')
+    ->execute()
+    ->fetchField();
+  $account_tve =  _media_theplatform_mpx_get_account_data($tve_account_id);
+  $files = media_theplatform_mpx_get_files_by_guid($guid, $account_tve);
+  if (!empty($files)) {
+    $file = reset($files);
+    $file_full = file_load($file->fid);
+    $full_video = _usanetwork_get_field_item('file', $file_full, 'field_mpx_full_episode', 'value');
+  }
+
+  if (empty($files) || $full_video == 0) {
+    $tve_account_id = db_select('mpx_accounts', 'ma')
+      ->fields('ma', array('id'))
+      ->condition('import_account', rawurlencode(USA_MPX_ACCOUNT_NAME), 'LIKE')
+      ->execute()
+      ->fetchField();
+    $account_mpx =  _media_theplatform_mpx_get_account_data($tve_account_id);
+    $files_short = media_theplatform_mpx_get_files_by_guid($guid, $account_mpx);
+    $file_short = reset($files_short);
+    $file = $file_short;
+  } else {
+    $file = $file_full;
+  }
+
+  if (isset($file)) {
+    drupal_goto(url('file/' . $file->fid));
+  } else {
+    drupal_goto(url('/'));
   }
 }

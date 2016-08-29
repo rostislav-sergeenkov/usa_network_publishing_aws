@@ -1,251 +1,264 @@
+.carousel-block {
+  &.stop {
+    .carousel-controls-wrap {
+      .usa-carousel-controls {
+        display: none !important;
+      }
+    }
+  }
+  &:hover {
+    .carousel-controls-wrap {
+      .usa-carousel-controls {
+        width: 60px;
+        @include breakpoint($bp-1024-width) {
+          width: 40px;
+        }
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+        &.usa-carousel-control-prev {
+          left: 0;
+        }
+        &.usa-carousel-control-next {
+          right: 0;
+        }
+        &.usa-carousel-button-disabled {
+          width: 0;
+          &:after {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  .carousel-controls-wrap {
+    .usa-carousel-controls {
+      background: rgba(255, 255, 255, .6);
+      display: block;
+      top: 50%;
+      height: calc(100% - 80px); // height - (padding-top + padding-bottom)
+      position: absolute;
+      transform: translateY(-50%);
+      width: 60px;
+      z-index: 9;
+
+      @include breakpoint($bp-1024-width) {
+        width: 40px;
+      }
+      @include breakpoint($bp-480-width) {
+        display: none;
+      }
+      &:after {
+        color: $poll-color;
+        display: block;
+        font-family: $ico-font;
+        font-size: 32px;
+        left: 50%;
+        margin-left: -16px;
+        margin-top: -16px;
+        opacity: 1;
+        position: absolute;
+        top: 50%;
+      }
+      &:hover {
+        background: rgba(255, 255, 255, .8);
+      }
+      &.usa-carousel-control-prev {
+        left: -60px;
+        @include breakpoint($bp-1024-width) {
+          left: -40px;
+        }
+        &:after {
+          content: "\e607";
+
+        }
+      }
+      &.usa-carousel-control-next {
+        right: -60px;
+        @include breakpoint($bp-1024-width) {
+          right: -40px;
+        }
+        &:after {
+          content: "\e608";
+        }
+      }
+      &.usa-carousel-button-disabled {
+        width: 0;
+        &:after {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
 .carousel {
   position: relative;
-  &.start {
-    .jcarousel-controls {
-      width: 0px;
-      &:after {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-  }
-  .jcarousel-controls {
-    display: block;
-    position: absolute;
-    width: 60px;
-    top: 0;
-    height: 100%;
-    z-index: 9;
-    background: rgba(255, 255, 255, .6);
-    @include breakpoint($bp-1024-width) {
-      width: 40px;
-    }
-    @include breakpoint($bp-480-width){
-      display: none;
-    }
-    &:after {
-      color: $poll-color;
-      display: block;
-      font-family: $ico-font;
-      font-size: 32px;
-      left: 50%;
-      margin-left: -16px;
-      margin-top: -16px;
-      opacity: 1;
-      position: absolute;
-      top: 50%;
-    }
-    &:hover {
-      background: rgba(255, 255, 255, .8);
-    }
-    &.jcarousel-control-prev {
-      left: -60px;
-      @include breakpoint($bp-1024-width) {
-        left: -40px;
-      }
-      &:after {
-        content: "\e607";
 
-      }
-    }
-    &.jcarousel-control-next {
-      right: -60px;
-      @include breakpoint($bp-1024-width) {
-        right: -40px;
-      }
-      &:after {
-        content: "\e608";
-      }
-    }
-    &.inactive {
-      width: 0px;
-      &:after {
-        opacity: 0;
-      }
+  .usa-carousel-slider {
+    .slick-list {
+      overflow: visible !important;
     }
   }
+
   .stop {
-    ~ .jcarousel-controls {
-      width: 0px!important;
-      &:after {
-        opacity: 0!important;
+    ~ .carousel-controls-wrap {
+      .usa-carousel-controls {
+        width: 0 !important;
+        &:after {
+          opacity: 0 !important;
+        }
       }
     }
-  }
-  .caroufredsel_wrapper {
   }
   &.destroy {
     > ul {
-      left: 0!important;
+      left: 0 !important;
       width: auto;
     }
   }
-  ul {
-    @include clear;
-    width: 20000em;
+  .usa-carousel-left {
+    height: auto;
+    width: 100%;
     position: relative;
-    li {
-      float: left;
-      height: 250px;
-      margin: 0px 10px 0px 0px;
-      position: relative;
-      width: 300px;
-      @include breakpoint($bp-min-1601-width) {
-        margin-right: 15px;
-      }
-      &.odd {
-        .meta-wrap {
-          background: $social-twitter-back;
+    .carousel-item {
+      &.description-item {
+        margin-right: 20px;
+        width: 150px;
+        @include breakpoint($bp-min-1601-width) {
+          margin-right: 40px;
+          width: 250px;
         }
-      }
-      &.other-show {
-        h3 {
-          color: $poll-color;
-          font-family: $tex-gyreschola-italic;
-          font-size: 12px;
-          position: absolute;
-          text-transform: uppercase;
-          top: -20px;
-          z-index: 1;
-        }
-      }
-      a {
-        display: block;
-        height: 100%;
-        width: 100%;
-      }
-      img {
-        height: auto;
-        width: 100%;
-      }
-      .node {
-        height: 100%;
-        width: 100%;
-      }
-      .meta-wrap {
-        background: $promo-dark-back;
-        bottom: 0;
-        height: 82px;
-        position: absolute;
-        width: 100%;
-        .meta-wrapper-inner {
-          height: 100%;
-          display: table;
+        @include breakpoint($bp-480-width) {
+          margin-right: 0;
           width: 100%;
         }
       }
-      .meta-icon {
-        display: block;
-        height: 37px;
-        left: 10px;
-        margin-top: -19px;
-        position: absolute;
-        top: 50%;
-        width: 37px;
-        ~ .meta {
-          padding-left: 55px;
-        }
-      }
-      @extend %meta;
-      .meta {
-        display: table-cell;
-        max-width: 100px;
+      &:not(.description-item) {
+        height: 250px;
+        margin: 0 10px 0 0;
         overflow: hidden;
-        padding-left: 10px;
         position: relative;
-        vertical-align: middle;
-        width: 100%;
-        .title, .additional, .caption {
-          line-height: 18px;
+        width: 300px;
+        @include breakpoint($bp-min-1601-width) {
+          margin-right: 15px;
         }
-      }
-      &.poll {
+        &.odd {
+          .meta-wrap {
+            background: $social-twitter-back;
+          }
+        }
+        &.other-show {
+          h3 {
+            color: $poll-color;
+            font-family: $tex-gyreschola-italic;
+            font-size: 12px;
+            position: absolute;
+            text-transform: uppercase;
+            top: -20px;
+            z-index: 1;
+          }
+        }
         a {
-          height: 115px;
-        }
-      }
-      .poll-items {
-        @include clear;
-        background-color: $header-show-caption;
-        height: 135px;
-        position: relative;
-        .poll-item {
-          border-right: 1px solid $header-tab-back-hover;
-          float: left;
+          display: block;
           height: 100%;
-          width: 33.33333%;
-          &:last-child {
-            border-right: none;
+          width: 100%;
+        }
+        img {
+          height: auto;
+          width: 100%;
+        }
+        .node {
+          height: 100%;
+          width: 100%;
+        }
+        .meta-wrap {
+          background: $promo-dark-back;
+          bottom: 0;
+          height: 82px;
+          position: absolute;
+          width: 100%;
+          z-index: 1;
+          .meta-wrapper-inner {
+            height: 100%;
+            display: table;
+            width: 100%;
           }
+        }
+        .meta-icon {
+          display: block;
+          height: 37px;
+          left: 10px;
+          margin-top: -19px;
+          position: absolute;
+          top: 50%;
+          width: 37px;
+          ~ .meta {
+            padding-left: 55px;
+          }
+        }
+        @extend %meta;
+        .meta {
+          display: table-cell;
+          max-width: 100px;
+          overflow: hidden;
+          padding-left: 10px;
+          position: relative;
+          vertical-align: middle;
+          width: 100%;
+          .title, .additional, .caption {
+            line-height: 18px;
+          }
+        }
+        &.poll {
           a {
-            text-decoration: none;
+            height: 115px;
           }
-          .node {
-            .asset-img {
-              img {
-                width: 100%;
-              }
+        }
+        .poll-items {
+          @include clear;
+          background-color: $header-show-caption;
+          height: 135px;
+          position: relative;
+          .poll-item {
+            border-right: 1px solid $header-tab-back-hover;
+            float: left;
+            height: 100%;
+            width: 33.33333%;
+            &:last-child {
+              border-right: none;
             }
-            .meta-wrapper {
-              @extend %meta;
-              .meta {
-                position: static;
-                padding: 20px 0 0;
-                margin: 0;
-                .title {
-                  font-size: 20px;
-                  line-height: 28px;
-                  margin-left: 0;
-                  text-align: center;
+            a {
+              text-decoration: none;
+            }
+            .node {
+              .asset-img {
+                img {
+                  width: 100%;
                 }
-                .caption {
-                  line-height: 18px;
-                  text-align: center;
+              }
+              .meta-wrapper {
+                @extend %meta;
+                .meta {
+                  position: static;
+                  padding: 20px 0 0;
+                  margin: 0;
+                  .title {
+                    font-size: 20px;
+                    line-height: 28px;
+                    margin-left: 0;
+                    text-align: center;
+                  }
+                  .caption {
+                    line-height: 18px;
+                    text-align: center;
+                  }
                 }
               }
             }
           }
         }
-      }
-    }
-  }
-  .carousel-btns {
-    display: none;
-    .btns {
-      cursor: pointer;
-      text-indent: -9999px;
-      &.disabled {
-        visibility: hidden;
-      }
-    }
-    .next {
-      display: block;
-      left: 2%;
-      margin-top: -16px;
-      position: absolute;
-      top: 50%;
-      &:before {
-        color: $poll-color;
-        content: "\e607";
-        display: block;
-        font-family: $ico-font;
-        font-size: 32px;
-        position: absolute;
-      }
-    }
-    .prev {
-      display: block;
-      right: 2%;
-      margin-top: -16px;
-      position: absolute;
-      top: 50%;
-      &:before {
-        color: $poll-color;
-        content: "\e608";
-        display: block;
-        font-family: $ico-font;
-        font-size: 32px;
-        position: absolute;
       }
     }
   }
@@ -262,9 +275,10 @@
     padding: 40px;
   }
   @include breakpoint($bp-480-width) {
-    padding: 40px 0px 40px 20px;
+    padding: 40px 0 40px 20px;
   }
 }
+
 .featured-block.carousel-block {
   @include breakpoint ($bp-min-1281-width) {
     background-size: contain !important;
@@ -278,216 +292,10 @@
   }
 }
 
-.carousel-left {
-  -webkit-transition-property: margin;
-  -moz-transition-property: margin;
-  -o-transition-property: margin;
-  transition-property: margin;
-  -webkit-transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-  -webkit-transition-timing-function: ease;
-  -moz-transition-timing-function: ease;
-  -o-transition-timing-function: ease;
-  transition-timing-function: ease;
-  width: 100%;
-  &.start {
-    @include breakpoint($bp-1024-width) {
-      margin-left: 200px;
-    }
-    @include breakpoint($bp-480-width) {
-      margin-left: 0px;
-    }
-    @include breakpoint($bp-min-1025-width) {
-      margin-left: 180px;
-    }
-    @include breakpoint($bp-min-1601-width) {
-      margin-left: 340px;
-    }
-    &:hover {
-      .jcarousel-control-next {
-        width: 60px;
-        @include breakpoint($bp-1024-width) {
-          right: 160px;
-          width: 40px;
-        }
-        @include breakpoint($bp-min-1025-width) {
-          right: 120px;
-        }
-        @include breakpoint($bp-min-1601-width) {
-          right: 280px;
-        }
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
-        &.inactive {
-          width: 0px;
-          &:after {
-            opacity: 0;
-          }
-        }
-      }
-    }
-  }
-  &:not(.start) {
-    .jcarousel-control-prev.inactive {
-      width: 60px;
-      @include breakpoint($bp-1024-width) {
-        right: 160px;
-        width: 40px;
-      }
-      @include breakpoint($bp-min-1025-width) {
-        right: 120px;
-      }
-      @include breakpoint($bp-min-1601-width) {
-        right: 280px;
-      }
-      &:after {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-  }
-}
-
-.carousel-right {
-  -webkit-transition-property: margin;
-  -moz-transition-property: margin;
-  -o-transition-property: margin;
-  transition-property: margin;
-  -webkit-transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-  -webkit-transition-timing-function: ease;
-  -moz-transition-timing-function: ease;
-  -o-transition-timing-function: ease;
-  transition-timing-function: ease;
-  width: 100%;
-  ul {
-    li {
-      float: right;
-      .meta {
-        text-align: left;
-      }
-      .meta-icon {
-        left: 0px;
-        position: absolute;
-        top: 0;
-      }
-    }
-  }
-  .jcarousel-controls {
-    &.jcarousel-control-next {
-      left: -60px;
-      right: auto;
-      @include breakpoint($bp-1024-width) {
-        left: -40px;
-      }
-      &:after {
-        content: "\e607";
-
-      }
-    }
-    &.jcarousel-control-prev {
-      left: auto;
-      right: -60px;
-      @include breakpoint($bp-1024-width) {
-        right: -40px;
-      }
-      &:after {
-        content: "\e608";
-      }
-    }
-  }
-
-  &.start {
-    @include breakpoint($bp-1024-width) {
-      margin-left: -200px;
-    }
-    @include breakpoint($bp-480-width) {
-      margin-left: 0px;
-    }
-    @include breakpoint($bp-min-1025-width) {
-      margin-left: -180px;
-    }
-    @include breakpoint($bp-min-1601-width) {
-      margin-left: -340px;
-    }
-    &:hover {
-      .jcarousel-control-next {
-        width: 60px;
-        @include breakpoint($bp-1024-width) {
-          left: 160px;
-          width: 40px;
-        }
-        @include breakpoint($bp-min-1025-width) {
-          left: 120px;
-        }
-        @include breakpoint($bp-min-1601-width) {
-          left: 280px;
-        }
-        &:after {
-          opacity: 1;
-          visibility: visible;
-        }
-      }
-    }
-  }
-  &:not(.start) {
-    .jcarousel-control-prev.inactive {
-      width: 60px;
-      @include breakpoint($bp-1024-width) {
-        width: 40px;
-      }
-      &:after {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-  }
-}
-
-.carousel-block-right {
-  background: $poll-back;
-  .carousel-description-item {
-    .description-button {
-      display: block;
-      left: auto;
-      right: 0px;
-      text-decoration: none;
-      &:before {
-        content: "\e608";
-      }
-    }
-  }
-}
-
 .carousel-description-item {
-  -webkit-transition-property: left;
-  -moz-transition-property: left;
-  -o-transition-property: left;
-  transition-property: left;
-  -webkit-transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-  -webkit-transition-timing-function: ease;
-  -moz-transition-timing-function: ease;
-  -o-transition-timing-function: ease;
-  transition-timing-function: ease;
-  left: -150px;
   height: 100%;
-  position: absolute;
-  top: 0px;
-  @include breakpoint($bp-min-1601-width) {
-    left: -250px;
-  }
-  &.start {
-    left: 75px;
-  }
+  overflow: hidden;
+  position: relative;
   .description-button {
     color: transparent;
     cursor: default;
@@ -506,32 +314,11 @@
       position: absolute;
     }
   }
-  .carousel-block-right & {
-    -webkit-transition-property: right;
-    -moz-transition-property: right;
-    -o-transition-property: right;
-    transition-property: right;
-    -webkit-transition-duration: 0.5s;
-    -moz-transition-duration: 0.5s;
-    -o-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-    -webkit-transition-timing-function: ease;
-    -moz-transition-timing-function: ease;
-    -o-transition-timing-function: ease;
-    transition-timing-function: ease;
-    left: auto;
-    right: -150px;
-    @include breakpoint($bp-min-1601-width) {
-      right: -250px;
-    }
-    &.start {
-      right: 75px;
-    }
-  }
   .description-wrapper {
     display: table;
     height: 100%;
-    float: right;
+    //float: right;
+    margin-left: auto;
     width: 150px;
     @include breakpoint($bp-min-1601-width) {
       width: 250px;
@@ -567,6 +354,7 @@
     }
   }
 }
+
 .latest-block {
   @include breakpoint($bp-480-width) {
     .carousel-description-item {
@@ -595,7 +383,7 @@
       color: #ffffff;
       content: "\e609";
       display: block;
-      font-family: "ico-font";
+      font-family: $ico-font;
       font-size: get-vw(24px, 768);
       left: 50%;
       line-height: get-vw(24px, 768);
@@ -644,8 +432,3 @@
     }
   }
 }
-
-
-
-
-

@@ -6,8 +6,8 @@
     width: 100%;
     .consum-sidebar {
       .episodes-list-slider {
-        &.horizontal {
-          li {
+        &.horizontal-mode {
+          .usa-carousel-item {
             @include breakpoint($bp-640-width) {
               height: auto;
               padding: get-vw(40px, 640) get-vw(40px, 640) 0;

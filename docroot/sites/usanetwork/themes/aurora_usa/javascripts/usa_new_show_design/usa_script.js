@@ -11,17 +11,25 @@
     }
   }
 
-  //=======================================
-  // usa changable-link
-  //=======================================
-  function checkDescriptionLines() {
-    if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
-      if ($('.articles-block').length > 0) {
+  //calculate lines in articles block
+  function checkDescriptionLinesNewDesign() {
+    if ($('.articles-block').length > 0) {
+      if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
         $('.title-and-additional').each(function () {
-          var captionHeight = parseFloat($(this).closest('.meta-wrapper').css('max-height'))*0.9 - $(this).outerHeight();
-          var captionLineHeight = parseFloat($(this).next().css('line-height'));
-          var lines = Math.floor(captionHeight / captionLineHeight);
-          $(this).next().attr('style', '-webkit-line-clamp:' + lines + ';max-height:' + captionLineHeight * lines + 'px;');
+          var captionHeight = parseFloat($(this).closest('.meta-wrapper').css('max-height')) * 0.9 - $(this).outerHeight(),
+              item = $(this).next(),
+              captionLineHeight = parseFloat(item.css('line-height')),
+              lines = Math.floor(captionHeight / captionLineHeight),
+              text = item.data('text');
+          addDots(item, lines, captionLineHeight, text);
+        });
+      } else {
+        $('.title-and-additional').each(function () {
+          var item = $(this).next(),
+              captionLineHeight = parseFloat(item.css('line-height')),
+              lines = 2,
+              text = item.data('text');
+          addDots(item, lines, captionLineHeight, text);
         });
       }
     }
@@ -38,12 +46,12 @@
   $(document).ready(function () {
     addBodyClass();
     initUsaChangableLink();
-    checkDescriptionLines();
+    checkDescriptionLinesNewDesign();
   });
   $(window).resize(function () {
     setTimeout(function () {
-      checkDescriptionLines();
-    }, 1000);
+      checkDescriptionLinesNewDesign();
+    }, 500);
   });
 
 })(jQuery);

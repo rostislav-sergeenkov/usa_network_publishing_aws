@@ -2644,7 +2644,7 @@ function _usanetwork_tv_shows_new_design_menu($show = NULL) {
   if (!empty($show->field_main_logo)) {
     $main_logo_field = $show_wrapper->field_main_logo->value();
     $main_logo_uri = $main_logo_field['uri'];
-    $show_title = theme_image(array('path' => $main_logo_uri));
+    $show_title = theme_image(array('path' => $main_logo_uri, 'attributes' => array()));
   } else {
     if (!empty($show->field_display_title)) {
       $display_title = $show_wrapper->field_display_title->value();
@@ -3490,7 +3490,6 @@ function _usanetwork_tv_shows_render_best_of_block($block_title, $field_promo_it
  */
 function _usanetwork_tv_shows_render_video_lmb_block() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
-  $theme_variables = array();
   if (!empty($show_node)) {
     $field_promo_items = field_get_items('node', $show_node, 'field_show_vlmb_promo');
     if (!empty($field_promo_items) && is_array($field_promo_items)) {
@@ -3554,15 +3553,17 @@ function _usanetwork_tv_shows_render_video_lmb_block() {
           'is_first' => $is_first,
         );
       }
-      $advert_block = module_invoke('mps', 'block_view', 'topbox');
-      if (!empty($advert_block['content'])) {
-        $advert = render($advert_block['content']);
+      if (!empty($promos)) {
+        $advert_block = module_invoke('mps', 'block_view', 'topbox');
+        if (!empty($advert_block['content'])) {
+          $advert = render($advert_block['content']);
+        }
+        $theme_variables = array(
+          'promos' => $promos,
+          'ad' => isset($advert) ? $advert : FALSE,
+        );
+        return theme('usanetwork_tv_shows_video_lmb_block', $theme_variables);
       }
-      $theme_variables = array(
-        'promos' => $promos,
-        'ad' => isset($advert) ? $advert : FALSE,
-      );
-      return theme('usanetwork_tv_shows_video_lmb_block', $theme_variables);
     }
   }
   return '';
@@ -3752,11 +3753,13 @@ function usanetwork_tv_shows_usa_omniture_alter(&$omniture_variables, $context) 
  */
 function _usanetwork_tv_shows_landing_page_get_validated_query_params($tv_show_node) {
   $query_parameters = drupal_get_query_parameters();
+  //Test: Default all Videos Category for some show
+  $shows_with_default_all_videos = array('Suits', 'Chrisley Knows Best', 'Queen Of The South');
   $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
   // Set default category.
   if (!isset($query_parameters['category'])) {
     $query_parameters['category'] = USA_TV_SHOW_FULL_EPISODE;
-    if ($is_new_design) {
+    if ($is_new_design || in_array($tv_show_node->title, $shows_with_default_all_videos)) {
       $query_parameters['category'] = USA_TV_SHOW_ALL_VIDEOS_EPISODE;
     }
   }
@@ -3859,6 +3862,7 @@ function _usanetwork_tv_shows_landing_page_videos_block() {
  * @return array
  */
 function _usanetwork_tv_shows_landing_page_videos_prepare_parameters() {
+  $is_wrong_condition = FALSE;
   if (path_is_admin(current_path())) {
     $is_wrong_condition = TRUE;
   }
@@ -4017,7 +4021,7 @@ function _usanetwork_tv_shows_landing_page_find_root_tid($query_data) {
 function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $selected_category = 0, $sort_field = 'timestamp', $sort_direction = 'DESC') {
   $query = db_select('file_managed', 'f');
   $query->fields('f', array('fid'));
-  $query->condition('f.status', '1');
+  $query->condition('f.published', '1');
   $query->join('field_data_field_show', 's', 'f.fid=s.entity_id');
   $query->condition('s.entity_type', 'file');
   $query->condition('s.field_show_target_id', $show_node->nid);
@@ -4130,18 +4134,11 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
     }
 
     // Fill All videos category
-    foreach ($result as $result_key => &$result_item) {
-      if ($result_key != USA_TV_SHOW_ALL_VIDEOS_EPISODE) {
-        if (!empty($result_item['items'])) {
-          foreach ($result_item['items'] as $result_fid) {
-            if (!in_array($result_fid, $result[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['items'])) {
-              $result[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['items'][] = $result_fid;
-            }
-          }
-        }
-      }
+    $items = array();
+    foreach ($query_result as $query_result_key => $query_result_item) {
+      $items[$query_result_item->fid] = $query_result_item->fid;
     }
-
+    $result[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['items'] = $items;
     $result[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['items_count'] = count($result[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['items']);
 
     if ($result[USA_TV_SHOW_FULL_EPISODE]['items_count'] == 0) {
@@ -4211,7 +4208,7 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
   if (empty($cached_data)) {
     $query = db_select('file_managed', 'f');
     $query->fields('f', array('fid'));
-    $query->condition('f.status', '1');
+    $query->condition('f.published', '1');
     $query->join('field_data_field_show', 's', 'f.fid=s.entity_id');
     $query->condition('s.entity_type', 'file');
     $query->condition('s.field_show_target_id', $show_node->nid);
@@ -4817,6 +4814,8 @@ function _usanetwork_tv_shows_consumptionator_render_related_content_item_defaul
  * Renders YouMayAlsoLike item (featured function).
  */
 function _usanetwork_tv_shows_consumptionator_render_related_content_item_ymal($data) {
+  $theme_path = drupal_get_path('theme', 'aurora_usa');
+  drupal_add_js($theme_path . '/javascripts/jquery.dotdotdot.min.js');
   $classes = array();
   $desktop_image = $mobile_image = '';
   $target_url = '<front>';
@@ -4993,7 +4992,6 @@ function _usanetwork_tv_shows_cache_rebuild_related_content_all($tv_show_node) {
  */
 function _usanetwork_tv_shows_explore_lmb() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
-  $theme_variables = array();
   if (!empty($show_node)) {
     $field_promo_items = field_get_items('node', $show_node, 'field_show_explore_promo');
     if (!empty($field_promo_items) && is_array($field_promo_items)) {
@@ -5057,11 +5055,11 @@ function _usanetwork_tv_shows_explore_lmb() {
           'is_first' => $is_first,
         );
       }
-      $advert_block = module_invoke('mps', 'block_view', 'topbox');
-      if (!empty($advert_block['content'])) {
-        $advert = render($advert_block['content']);
-      }
       if (!empty($promos)) {
+        $advert_block = module_invoke('mps', 'block_view', 'topbox');
+        if (!empty($advert_block['content'])) {
+          $advert = render($advert_block['content']);
+        }
         $theme_variables = array(
           'promos' => $promos,
           'ad' => isset($advert) ? $advert : FALSE,

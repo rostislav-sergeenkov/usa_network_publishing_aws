@@ -4,6 +4,7 @@
  * .module file
  */
 
+define('USANETWORK_FEEDBACK_NODE_ID', 1);
 /**
 * Implementation of hook_menu().
 */
@@ -26,7 +27,9 @@ function usanetwork_feedback_menu() {
  * Implementation of hook_form_FORM_ID_alter().
  */
 function usanetwork_feedback_form_webform_client_form_1_alter(&$form, &$form_state, $form_id) {
-
+  $form['#attached']['js'] = array(
+    drupal_get_path('module', 'usanetwork_webform') . '/js/check_flash_version.js',
+  );
   $form['#submit'][] = 'usanetwork_feedback_newsletter_lyris_signup';
 }
 
@@ -44,4 +47,56 @@ function usanetwork_feedback_newsletter_lyris_signup(&$form, &$form_state) {
       watchdog('usanetwork_feedback', 'Failed to add '. $user['email'] . ' to "usa_all" lyris ID');
     }
   }
+}
+
+function usanetwork_feedback_form_alter(&$form, &$form_state, $form_id) {
+  if (
+    $form_id == 'views_exposed_form' &&
+    ($form['#id'] == 'views-exposed-form-webform-results-1-page-1' || $form['#id'] == 'views-exposed-form-webform-results-1-default')) {
+    module_load_include('inc', 'webform', '/components/select');
+    $feedback_node = node_load(USANETWORK_FEEDBACK_NODE_ID);
+
+    $component = usanetwork_webform_get_component($feedback_node, 'state');
+    $options = _webform_select_options($component, FALSE, FALSE);
+    $form['state']['#type'] = "select";
+    $form['state']['#size'] = null;
+    $form['state']['#default_value']= '';
+    $form['state']['#options'] = array_merge(array('' => 'All'), $options);
+
+    $component = usanetwork_webform_get_component($feedback_node, 'age_range');
+    $options = _webform_select_options($component, FALSE, FALSE);
+    $form['age_range']['#type'] = "select";
+    $form['age_range']['#size'] = null;
+    $form['age_range']['#default_value']= '';
+    $form['age_range']['#options'] = array_merge(array('' => 'All'), $options);
+
+    $component = usanetwork_webform_get_component($feedback_node, 'topic');
+    $options = _webform_select_options($component, FALSE, FALSE);
+    $form['topic']['#type'] = "select";
+    $form['topic']['#size'] = null;
+    $form['topic']['#default_value']= '';
+    $form['topic']['#options'] = array_merge(array('' => 'All'), $options);
+
+    $component = usanetwork_webform_get_component($feedback_node, 'program');
+    $options = _webform_select_options($component, FALSE, FALSE);
+    $form['program']['#type'] = "select";
+    $form['program']['#size'] = null;
+    $form['program']['#default_value']= '';
+    $form['program']['#options'] = array_merge(array('' => 'All'), $options);
+
+    $component = usanetwork_webform_get_component($feedback_node, 'site_area');
+    $options = _webform_select_options($component, FALSE, FALSE);
+    $form['site_area']['#type'] = "select";
+    $form['site_area']['#size'] = null;
+    $form['site_area']['#default_value']= '';
+    $form['site_area']['#options'] = array_merge(array('' => 'All'), $options);
+
+    $component = usanetwork_webform_get_component($feedback_node, 'tv_provider');
+    $options = _webform_select_options($component, FALSE, FALSE);
+    $form['tv_provider']['#type'] = "select";
+    $form['tv_provider']['#size'] = null;
+    $form['tv_provider']['#default_value']= '';
+    $form['tv_provider']['#options'] = array_merge(array('' => 'All'), $options);
+  }
+
 }

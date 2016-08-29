@@ -86,7 +86,7 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo Details',
-    'weight' => '11',
+    'weight' => '9',
     'children' => array(
       0 => 'field_call_to_action_type',
       1 => 'field_promo_call_to_action_text',
@@ -121,7 +121,7 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'SEO',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_seo_h1',
       1 => 'field_seo_page_title',
@@ -142,6 +142,33 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_sponsorship|node|timeline_gallery|form';
+  $field_group->group_name = 'group_sponsorship';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'timeline_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sponsorship',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_sponsored',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-sponsorship field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_sponsorship|node|timeline_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_timeline_gallery_nitro|node|timeline_gallery|form';
   $field_group->group_name = 'group_timeline_gallery_nitro';
   $field_group->entity_type = 'node';
@@ -150,7 +177,7 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA Nitro',
-    'weight' => '5',
+    'weight' => '3',
     'children' => array(),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -175,7 +202,7 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'USA OG fields',
-    'weight' => '6',
+    'weight' => '4',
     'children' => array(
       0 => 'field_usa_og_image',
     ),

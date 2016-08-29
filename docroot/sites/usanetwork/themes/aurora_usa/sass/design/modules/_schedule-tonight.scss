@@ -155,10 +155,8 @@
   }
   .icons-block {
     margin-left: get-vw(18px, 1901);
-    margin-top: get-vw(10px, 1901);
     @include breakpoint($bp-min-1901-width) {
       margin-left: 18px;
-      margin-top: 10px;
     }
     a {
       clear: none;
@@ -166,13 +164,20 @@
       @include breakpoint($bp-min-1901-width) {
         margin-right: 45px;
       }
+      @include breakpoint($between-769-990) {
+        margin-right: 23.4px;
+      }
       &:last-child {
         margin-right: 0;
       }
       &:before {
         font-size: get-vw(26px, 1901);
+        line-height: 1;
         @include breakpoint($bp-min-1901-width) {
           font-size: 26px;
+        }
+        @include breakpoint($between-769-990) {
+          font-size: 13.5px;
         }
       }
     }
@@ -322,35 +327,47 @@
       color: $schedule-pm-color;
       float: left;
       font-family: $avalon-medium;
-      font-size: get-vw(25px, 1901);
-      line-height: get-vw(30px, 1901);
+      font-size: get-vw(20px, 1901);
+      line-height: get-vw(25px, 1901);
       letter-spacing: 0.5px;
       padding-right: get-vw(45px, 1901);
       text-transform: uppercase;
       max-width: 50%;
       @include breakpoint($bp-min-1901-width) {
-        font-size: 25px;
-        line-height: 30px;
-        padding-right: 45px;
+        font-size: 20px;
+        line-height: 25px;
+        padding-right: 35px;
+      }
+      @include breakpoint($between-769-990) {
+        font-size: 10.4px;
+        line-height: 13px;
       }
       span, a {
         color: #ffffff;
         font-family: $avalon-medium;
-        font-size: get-vw(30px, 1280);
-        line-height: get-vw(38px, 1280);
+        font-size: get-vw(44px, 1901);
+        line-height: get-vw(56px, 1901);
         letter-spacing: 3px;
         @include breakpoint($bp-min-1901-width) {
-          font-size: 44.6px;
-          line-height: 56.4px;
+          font-size: 44px;
+          line-height: 56px;
+        }
+        @include breakpoint($between-769-990) {
+          font-size: 22.9px;
+          line-height: 29.2px;
         }
         &.time-color {
           font-family: $avalon-medium;
-          font-size: get-vw(25px, 1901);
-          line-height: get-vw(30px, 1901);
+          font-size: get-vw(20px, 1901);
+          line-height: get-vw(25px, 1901);
           text-transform: uppercase;
           @include breakpoint($bp-min-1901-width) {
-            font-size: 25px;
-            line-height: 30px;
+            font-size: 20px;
+            line-height: 25px;
+          }
+          @include breakpoint($between-769-990) {
+            font-size: 10.4px;
+            line-height: 13px;
           }
         }
         &:focus {
@@ -365,21 +382,21 @@
           line-height: 0;
           span {
             color: $schedule-pm-color;
-            font-size: get-vw(25px, 1901);
-            line-height: get-vw(30px, 1901);
+            font-size: get-vw(20px, 1901);
+            line-height: get-vw(25px, 1901);
             letter-spacing: 0.5px;
             @include breakpoint($bp-min-1901-width) {
-              font-size: 25px;
-              line-height: 30px;
+              font-size: 20px;
+              line-height: 25px;
             }
             &.live{
               border: 2px solid $schedule-pm-color;
               border-radius: get-vw(6px, 1901);
               display: inline-block;
-              padding: 0 get-vw(5px, 1901);
+              padding: 0 get-vw(4px, 1901);
               @include breakpoint($bp-min-1901-width) {
                 border-radius: 6px;
-                padding: 0 5px;
+                padding: 0 4px;
               }
             }
           }
@@ -390,32 +407,43 @@
       color: #ffffff;
       float: left;
       font-family: $avalon-medium;
-      font-size: get-vw(24px, 1901);
+      font-size: get-vw(15px, 1901);
       letter-spacing: 0.5px;
-      margin-top: get-vw(6px, 1280);
+      margin-top: get-vw(10px, 1901);
       text-transform: uppercase;
       width: 53%;
       @include breakpoint($bp-min-1901-width) {
-        font-size: 24px;
-        margin-top: 8.9px;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      @include breakpoint($between-769-990) {
+        font-size: 7.8px;
+        width: 60%;
       }
     }
     .episode-show {
-      height: get-vw(55px, 1901);
+      height: get-vw(36px, 1901);
       line-height: 1.2;
-      margin-bottom: get-vw(20px, 1901);
+      margin-bottom: get-vw(10px, 1901);
       overflow: hidden;
       word-wrap: break-word;
       @include breakpoint($bp-min-1901-width) {
-        height: 55px;
-        margin-bottom: 20px;
+        height: 36px;
+        margin-bottom: 10px;
+      }
+      @include breakpoint($between-769-990) {
+        height: 18.72px;
+        margin-bottom: 5.2px;
       }
       & .episode-show-wrapper {
         display: table-cell;
-        height: get-vw(55px, 1901);
+        height: get-vw(36px, 1901);
         vertical-align: middle;
         @include breakpoint($bp-min-1901-width) {
-          height: 55px;
+          height: 36px;
+        }
+        @include breakpoint($between-769-990) {
+          height: 18.72px;
         }
       }
     }

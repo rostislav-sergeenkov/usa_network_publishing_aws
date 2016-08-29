@@ -26,9 +26,9 @@
     // exec Show Card Sponsored Block
     execSponsoredBlock: function (block) {
 
-      if(!block.hasClass('advert-enable')) {
+      if(!$(block).hasClass('advert-enable')) {
         // block - parent element ".slides li .node-usanetwork-promo"
-        var showCarouselItem = '.show-carousel .slides li.slide-',
+        var showCarouselItem = '.show-carousel .usa-carousel-left li.slide-',
             fileId = block.data('mpspath'),
             itemParent = block.closest('li'),
             itemParentClass = itemParent.data('slide-id');
@@ -86,9 +86,10 @@
         }
 
         // page-videos
-        if (body.hasClass('page-videos')) {
-          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.carousel-wrapper .carousel-block'), style.light_stacked);
-        }
+        // used in global-carousels.js 
+        // if (body.hasClass('page-videos')) {
+        //   Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.carousel-wrapper .carousel-block'), style.light_stacked);
+        // }
 
         // consumptionators pages
         if (body.hasClass('consumptionator-page')) {
@@ -100,6 +101,20 @@
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#header'), style.dark);
         }
       });
+
+      window.onload = function() {
+        var mpsIframe = ".usa-tv-show .episodes-list.sponsored-enable .sponsored .mps-slot div[id*='google_ads_iframe'] iframe";
+        var intervalSponsoredLoad = setInterval(function(){
+          if ($(mpsIframe).length > 0) {
+            var iframe = $(mpsIframe),
+                iframeHead = iframe.contents().find('head');
+            if (iframeHead.children().length != 0) {
+              iframeHead.append("<style type='text/css'>#google_image_div {width: 100%; height: 100%;}#google_image_div > a {width: 100%; height: 100%; display: block; position: relative;} #google_image_div img{position: absolute;height: auto;width: auto;max-height: 100%;max-width: 100%;top: 0;left: 0;right: 0;bottom: 0;margin: auto;}</style>");
+              clearInterval(intervalSponsoredLoad);
+            }
+          }
+        }, 1000);
+      }
     }
   };
 }(jQuery));

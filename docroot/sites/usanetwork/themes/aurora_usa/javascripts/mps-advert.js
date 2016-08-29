@@ -143,7 +143,7 @@
             Drupal.behaviors.mpsAdvert.mpsMakeRequest();
             Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
           }
-        }, 0, "ad change");
+        }, 150, "ad change");
       });
     },
 

@@ -5,6 +5,26 @@
   // customs USA services
   ng.module('tve.auth.services')
 
+      .factory('usaSocialService', [
+        '$rootScope',
+        function ($rootScope) {
+
+          var serviceAPI = {
+            isSocialBlock: false,
+            initSocialBlock: function () {
+              if (Drupal.settings.hasOwnProperty('usa') && Drupal.settings.usa.hasOwnProperty('social_block') &&
+                  window.hasOwnProperty('massrel') && massrel.hasOwnProperty('ui')) {
+                serviceAPI.isSocialBlock = true;
+                console.info('initSocialBlock true');
+                $('#block-usanetwork-mpx-video-usanetwork-social-content .content').append(Drupal.settings.usa.social_block);
+                massrel.ui.init();
+              }
+            }
+          };
+
+          return serviceAPI;
+        }])
+
       .factory('usaVideoService', [
         '$rootScope', '$q',
         function ($rootScope, $q) {
@@ -54,7 +74,7 @@
               ms_player = {},
               ms_Defer = $q.defer();
 
-          ms_player.isMicrosite = body.hasClass('page-node-microsite') ? true : false;
+          ms_player.isMicrosite = body.hasClass('page-node-microsite') || $('#microsite').length > 0 ? true : false;
           ms_player.isVideoFirstRun = true;
           ms_player.isInitPlayer = false;
           ms_player.isAuthServicePromiseThen = false;

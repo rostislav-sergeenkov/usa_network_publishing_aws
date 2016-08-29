@@ -158,7 +158,6 @@ function aurora_usa_preprocess_page(&$vars) {
   $theme_path = drupal_get_path('theme', 'aurora_usa');
   drupal_add_js(libraries_get_path('flexslider') . '/jquery.flexslider-min.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js(libraries_get_path('jRespond') . '/jRespond.min.js', array('group' => JS_THEME, 'every_page' => TRUE));
-  drupal_add_js(libraries_get_path('jpanelmenu') . '/jquery.jpanelmenu.js', array('group' => JS_THEME, 'every_page' => TRUE));
   drupal_add_js($theme_path . '/javascripts/jquery.xdomainrequest.min.js');
   drupal_add_js($theme_path . '/javascripts/velocity.min.js');
   drupal_add_js($theme_path . '/javascripts/filter-dropdown.js');
@@ -169,14 +168,15 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/mps-advert.js');
   drupal_add_js($theme_path . '/javascripts/mps-sponsorship.js');
   drupal_add_js($theme_path . '/javascripts/jquery.easing.1.3.js');
-  drupal_add_js($theme_path . '/javascripts/jquery.touchSwipe.min.js');
-  drupal_add_js($theme_path . '/javascripts/jquery.jcarousel.min.js');
-  drupal_add_js($theme_path . '/javascripts/jquery.jcarousel-control.min.js');
+  drupal_add_js($theme_path . '/javascripts/swiper.jquery.min.js');
   drupal_add_js($theme_path . '/javascripts/slick.min.js');
   drupal_add_js($theme_path . '/javascripts/consumptionator-carousels.js');
   drupal_add_js($theme_path . '/javascripts/lazy-load-custom.js');
   drupal_add_js($theme_path . '/javascripts/spin.min.js');
   drupal_add_js($theme_path . '/javascripts/USAN.js', array('scope' => 'header', 'weight' => -100));
+  if(drupal_is_front_page()){
+    drupal_add_js($theme_path . '/javascripts/jquery.dotdotdot.min.js');
+  }
 
   $icomoon_ie_fix = array(
     '#tag' => 'script',
@@ -580,7 +580,6 @@ function aurora_usa_preprocess_field(&$vars, $hook) {
       $vars['classes_array'][] = drupal_html_class('slides');
     break;
     case 'field_hp_promos':
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
       foreach ($vars['items'] as $delta => $item) {
         $vars['item_attributes_array'][$delta]['class'] = 'carousel-item';
       }
@@ -931,16 +930,7 @@ function aurora_usa_preprocess_views_view(&$vars) {
     if (function_exists($views_preprocess_function)) {
      $views_preprocess_function($vars);
     }
-    if($vars['view']->name == 'usa_cast' && $vars['view']->current_display == 'block_1') {
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-    }
-
-    if($vars['view']->name == 'usa_shows' && $vars['view']->current_display == 'block_1') {
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/jquery.touchSwipe.min.js');
-      drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/show-carousel.js');
-    }
   }
-
 }
 
 /**

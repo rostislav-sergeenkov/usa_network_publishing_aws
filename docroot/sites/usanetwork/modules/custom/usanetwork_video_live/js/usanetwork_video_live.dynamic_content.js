@@ -209,6 +209,58 @@
       });
     //-------- end --------
     },
+    right_rail_omniture: function ($episodesListSlider) {
+
+      var $slider = $episodesListSlider || $('.episodes-list-slider'),
+          fullName = 'Live Page ' + $slider.data('block-name');
+
+      try {
+        // Click carousel control button
+        $slider.find('.usa-carousel-controls').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
+
+              var target = $(this),
+                  nameNav;
+
+              if (target.hasClass('usa-carousel-control-prev')) {
+                nameNav = 'Carousel Back';
+              } else if (target.hasClass('usa-carousel-control-next')) {
+                nameNav = 'Carousel Next';
+              }
+
+              Drupal.behaviors.omniture_tracking.carouselNavClick(fullName, nameNav);
+            }
+          });
+        });
+
+        // Click promo item
+        $slider.find('.node-usanetwork-promo a').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
+              var $self = $(this),
+                  global_show_name = $('header .nav-bar-tabs .show-name').text().trim() || '',
+                  nameEnding = ' Click';
+
+              Drupal.behaviors.omniture_tracking.promoClick($self, fullName, global_show_name, nameEnding);
+            }
+          });
+        });
+
+      } catch (e) {
+        usa_debug('error: live page right rail omniture');
+      }
+    },
     reset_right_rail: function() {
       $('.consum-sidebar').removeClass('sticky-sidebar footer-visible').removeAttr('style');
     },
@@ -221,16 +273,24 @@
         dataType: 'JSON',
         url: Drupal.settings.basePath + 'ajax/render-video-live-right-rail/' + timezoneOffset,
         success: function(data) {
+          var $episodesListSlider;
           if ( data != null && typeof data != 'undefined') {
             $('.consum-sidebar .items-block').remove();
             $('.consum-sidebar .more-items').remove();
             videoBlock.removeClass('show-app');
             $('.consum-sidebar .download-app').after(data.rendered);
-
-            Drupal.behaviors.consumptionator_carousels.initVSliders();
-
-            $('.episodes-list-slider.horizontal').usaCarousel();
-
+            $episodesListSlider = $('.episodes-list-slider');
+            $episodesListSlider.usaCarousel({
+              isVerticalMode: true,
+              verticalModeBpMin: 1281,
+              isHorizontalMode: true,
+              horizontalModeBpMax: 1280,
+              destroyCarouselBpMax: 640
+            });
+            if (window.hasOwnProperty('picturefill')) {
+              window.picturefill();
+            }
+            Drupal.behaviors.usanetwork_video_live.right_rail_omniture($episodesListSlider);
           } else {
             $('.consum-sidebar .items-block').remove();
             $('.consum-sidebar .more-items').remove();

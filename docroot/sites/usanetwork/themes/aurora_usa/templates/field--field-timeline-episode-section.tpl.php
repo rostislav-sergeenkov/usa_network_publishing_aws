@@ -115,7 +115,7 @@ $firstScene = TRUE;
                data-imagesrc="<?php print $scene['image_src']; ?>">
             <div class="timeline-item-image">
               <?php print $scene['image']; ?>
-              <?php if (!empty($scene['video'] && $scene['video_link'])): ?>
+              <?php if (!empty($scene['video']) && !empty($scene['video_link'])): ?>
                 <div class="play-button" data-status="active"></div>
               <?php endif; ?>
             </div>
@@ -137,7 +137,7 @@ $firstScene = TRUE;
                   data-share-picture="<?php print $scene['image_src']; ?>"></div>
               </div>
             </div>
-            <?php if (!empty($scene['video'] && $scene['video_link'])): ?>
+            <?php if (!empty($scene['video']) && !empty($scene['video_link'])): ?>
               <div class="video-data"
                    data-src="<?php print $scene['video']; ?>"
                    data-src-link="<?php print $scene['video_link']; ?>">

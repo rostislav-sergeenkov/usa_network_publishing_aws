@@ -15788,6 +15788,26 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   }
 }
 
+@media (max-width: 640px) {
+  .movie-consumptionator .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img {
+    display: block !important;
+    height: auto;
+    padding-top: 200px;
+    width: 100%;
+  }
+  .movie-consumptionator .video-block .player-wrapper .video-player-wrapper.inactive .inner > .asset-img img {
+    bottom: 0;
+    display: block !important;
+    height: 169px;
+    left: 0 !important;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0 !important;
+    width: 300px;
+  }
+}
+
 [data-show-end-card="1"] .video-player-wrapper:hover .endcard_block img {
   opacity: 1 !important;
 }

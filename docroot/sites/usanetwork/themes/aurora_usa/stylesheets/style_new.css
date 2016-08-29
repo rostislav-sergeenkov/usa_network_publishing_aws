@@ -18516,6 +18516,7 @@ html.no-scroll, body.no-scroll {
   display: table;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .inner {
+  margin: 0 !important;
   max-width: 100%;
 }
 .show-new-design .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title {

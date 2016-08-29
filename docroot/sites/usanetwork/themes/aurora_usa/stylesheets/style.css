@@ -19561,6 +19561,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   display: table;
 }
 .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .inner, .page-videos-live article.node-quiz .usanetwork-quiz-answer .inner {
+  margin: 0 !important;
   max-width: 100%;
 }
 .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title, .page-videos-live article.node-quiz .usanetwork-quiz-answer .answer-title {

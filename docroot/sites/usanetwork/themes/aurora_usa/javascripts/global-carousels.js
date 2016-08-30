@@ -129,7 +129,7 @@
         isMoreButtonBp: _.checkMatchWindowWidth('max', _.initials.moreButtonBp),
         isShowCardGetAdminMinBp: _.checkMatchWindowWidth('min', _.initials.showCardGetAdminMinBp),
         defaultCarouselDescriptionItemClass: _.$carouselDescription.parent().attr('class'),
-        isMobileDevice: USAN.isMobile.any,
+        isMobileDevice: USAN.isMobile.isMobileDevice,
         isApple: USAN.isMobile.apple.device,
         itunesAppLink: (Drupal.settings.hasOwnProperty('usa') && Drupal.settings.usa.hasOwnProperty('itunesAppLink')) ? Drupal.settings.usa.itunesAppLink : '/app',
         isAndroid: USAN.isMobile.android.device,

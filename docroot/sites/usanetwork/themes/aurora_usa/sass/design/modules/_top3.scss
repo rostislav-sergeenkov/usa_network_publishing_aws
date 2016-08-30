@@ -385,6 +385,7 @@
       height: 52.8vw;
     }
     &.share-open {
+      @include clear();
       @include breakpoint($bp-768-width) {
         height: 85.5vw;
       }
@@ -664,23 +665,23 @@
   #gigya-share-top3 {
     display: none;
     height: get-vw(60px, 1901);
-    margin: get-vw(40px, 1901) auto get-vw(30px, 1901);
+    margin: get-vw(30px, 1901) auto 0;
     position: relative;
     text-align: center;
     width: get-vw(339px, 1901);
     @include breakpoint($bp-min-1901-width) {
       height: 60px;
-      margin: 40px auto 30px;
+      margin: 30px auto 0;
       width: 339px;
     }
     @include breakpoint($bp-1024-width) {
       height: get-vw(45.9px, 1024);
-      margin: get-vw(30.62px, 1024) auto get-vw(22.96px, 1024);
+      margin: get-vw(22.97px, 1024) auto 0;
       width: get-vw(260px, 1024);
     }
     @include breakpoint($bp-768-width) {
       height: get-vw(45.9px, 480);
-      margin: get-vw(30.62px, 480) auto get-vw(10px, 480);
+      margin: get-vw(22.97px, 480) auto 0;
       width: get-vw(260px, 480);
     }
     .gig-button-container {
@@ -1186,23 +1187,36 @@
     visibility: hidden;
     width: 100%;
     .share-block-gigya-container {
+      display: flex;
       color: white;
+      flex-direction: column;
+      height: calc(100% - #{get-vw(451px, 1901)});
+      justify-content: space-around;
       position: relative;
       width: 100%;
+      @include breakpoint($bp-min-1901-width) {
+        height: calc(100% - 451px);
+      }
+      @include breakpoint($bp-1024-width) {
+        height: calc(100% - #{get-vw(346px, 1024)});
+      }
+      @include breakpoint($bp-768-width) {
+        height: calc(100% - 2% - #{get-vw(273.2px, 768)} - #{get-vw(134px, 768)});
+      }
       .top-text {
         font-family: $avalon-medium;
-        font-size: get-vw(48px, 1901);
+        font-size: get-vw(44px, 1901);
         line-height: 1;
         text-align: center;
         text-transform: uppercase;
         @include breakpoint($bp-min-1901-width) {
-          font-size: 48px;
+          font-size: 44px;
         }
         @include breakpoint($bp-1024-width) {
-          font-size: get-vw(36.74px, 1024);
+          font-size: get-vw(33.5px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(36.74px, 768);
+          font-size: get-vw(33.5px, 768);
         }
       }
     }

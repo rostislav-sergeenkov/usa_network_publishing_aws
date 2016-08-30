@@ -493,15 +493,6 @@
             isMoreButton: true,
             moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
           });
-        } else if ($body.is('.node-type-media-gallery')) {
-          $episodesListSlider.usaCarousel({
-            isVerticalMode: true,
-            verticalModeBpMin: 1281,
-            isHorizontalMode: true,
-            horizontalModeBpMax: 1280,
-            destroyCarouselBpMax: 640,
-            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
-          });
         } else {
           $episodesListSlider.usaCarousel({
             moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2

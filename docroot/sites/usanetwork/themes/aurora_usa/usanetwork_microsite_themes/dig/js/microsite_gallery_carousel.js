@@ -31,7 +31,7 @@
             linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
             title: $title
           }
-          Drupal.gigya.showSharebar(sharebar);
+          if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
 
           // omniture
           if (initialPageLoad) {

@@ -146,18 +146,6 @@ function aurora_usa_preprocess_html(&$vars) {
 }
 
 /**
- * Implements hook_process_html()
- */
-function aurora_usa_process_html(&$vars)  {
-  foreach (array('head', 'styles', 'scripts') as $replace) {
-    if (!isset($vars[$replace])) {
-      continue;
-    }
-    $vars[$replace] = preg_replace('/(src|href|@import )(url\(|=)(")http(s?):/', '$1$2$3', $vars[$replace]);
-  }
-}
-
-/**
  * Override or insert variables into the page template.
  *
  * @param $vars
@@ -186,6 +174,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/lazy-load-custom.js');
   drupal_add_js($theme_path . '/javascripts/spin.min.js');
   drupal_add_js($theme_path . '/javascripts/USAN.js', array('scope' => 'header', 'weight' => -100));
+  drupal_add_js($theme_path . '/javascripts/isMobile.js');
   if(drupal_is_front_page()) {
     drupal_add_js($theme_path . '/javascripts/jquery.dotdotdot.min.js');
   }

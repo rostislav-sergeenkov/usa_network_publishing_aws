@@ -359,7 +359,7 @@
               sharebar.gigyaSharebar.ua.imageBhev = 'url';
               sharebar.gigyaSharebar.ua.imageUrl = imageUrl;
               sharebar.gigyaSharebar.ua.description = description;
-              Drupal.gigya.showSharebar(sharebar);
+              if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
             }
           });
         }

@@ -821,4 +821,35 @@
     }
   }
 }
+.movie-consumptionator {
+  .video-block {
+    .player-wrapper {
+      .video-player-wrapper {
+        &.inactive {
+          .inner {
+            & > .asset-img {
+              @include breakpoint($bp-640-width) {
+                display: block!important;
+                height: auto;
+                padding-top: 200px;
+                width: 100%;
+                img {
+                  bottom: 0;
+                  display: block!important;
+                  height: 169px;
+                  left: 0!important;
+                  margin: auto;
+                  position: absolute;
+                  right: 0;
+                  top: 0!important;
+                  width: 300px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 

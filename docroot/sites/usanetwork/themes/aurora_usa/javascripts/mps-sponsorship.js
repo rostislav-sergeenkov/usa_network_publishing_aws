@@ -102,7 +102,7 @@
         }
       });
 
-      window.onload = function() {
+      $(window).load(function() {
         var mpsIframe = ".usa-tv-show .episodes-list.sponsored-enable .sponsored .mps-slot div[id*='google_ads_iframe'] iframe";
         var intervalSponsoredLoad = setInterval(function(){
           if ($(mpsIframe).length > 0) {
@@ -114,7 +114,7 @@
             }
           }
         }, 1000);
-      }
+      });
     }
   };
 }(jQuery));

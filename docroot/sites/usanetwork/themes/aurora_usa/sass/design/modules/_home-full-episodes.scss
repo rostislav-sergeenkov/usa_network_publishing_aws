@@ -231,6 +231,18 @@
   @include breakpoint($bp-480-width) {
     .carousel {
       margin-top: 31.25px;
+      .carousel-item:not(.description-item) {
+        .meta-wrapper-inner {
+          .meta {
+            .title {
+              line-height: 15px;
+            }
+            .additional {
+              line-height: 12px;
+            }
+          }
+        }
+      }
     }
     .carousel-description-item {
       .title {

@@ -11846,14 +11846,14 @@ footer h2 {
 }
 .consumptionator-page .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img img, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .asset-img img, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .asset-img img {
   bottom: 0;
+  height: auto;
   left: 0;
-  right: 0;
-  top: 0;
   margin: auto;
-  position: absolute;
   max-height: 100%;
   max-width: 100%;
-  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: auto;
 }
 .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info {
@@ -19561,6 +19561,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   display: table;
 }
 .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .inner, .page-videos-live article.node-quiz .usanetwork-quiz-answer .inner {
+  margin: 0 !important;
   max-width: 100%;
 }
 .consumptionator-quiz-main-block article.node-quiz .usanetwork-quiz-answer .answer-title, .page-videos-live article.node-quiz .usanetwork-quiz-answer .answer-title {

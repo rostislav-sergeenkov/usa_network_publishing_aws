@@ -136,7 +136,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
   }
 }
 
-.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .gallery-recap-block, .node-type-consumpt-post, .node-media-gallery, .node-type-usanetwork-microsite {
+.node-type-media-gallery {
   .gallery-block {
     @include clear();
     margin: 0;
@@ -144,33 +144,82 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
     padding: 0;
     position: relative;
     width: 100%;
-    @include breakpoint($bp-min-1281-width) {
+    @include breakpoint($bp-min-1025-width) {
       height: 42.01875vw;
       max-height: 1093.75px;
       max-width: 2500px;
       margin: 0 auto;
     }
-    @include breakpoint($between-1025-1280) {
-      height: calc((100vw - 320px) * 0.5625);
-      margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
-      overflow: visible;
-    }
     @include breakpoint($bp-1024-width) {
       height: auto;
     }
     .consum-sidebar {
+      @include breakpoint($between-1025-1280) {
+        overflow: hidden;
+        padding-left: 0;
+        position: relative;
+        width: 320px;
+      }
       .download-app {
+        @include breakpoint($between-1025-1280) {
+          display: none;
+        }
         @include breakpoint($bp-768-width) {
           display: none;
         }
       }
+      .items-block {
+        @include breakpoint($between-1025-1280) {
+          height: calc(100% - 250px);
+          position: relative;
+          right: auto;
+          top: auto;
+          width: 100%;
+        }
+        .items-block-title {
+          @include breakpoint($between-1025-1280) {
+            height: 35px;
+            line-height: 35px;
+          }
+          h2 {
+            @include breakpoint($between-1025-1280) {
+              width: 100%;
+            }
+          }
+        }
+        .episodes-list-slider {
+          &.vertical-mode {
+            @include breakpoint($between-1025-1280) {
+              display: block;
+              height: calc(100% - 70px);
+            }
+          }
+        }
+      }
       .more-items {
+        @include breakpoint($between-1025-1280) {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: auto;
+          top: auto;
+          width: 100%;
+        }
         @include breakpoint($between-641-768) {
           top: 0;
+        }
+        a {
+          @include breakpoint($between-1025-1280) {
+            line-height: 35px;
+            padding: 0 20px;
+          }
         }
       }
     }
   }
+}
+
+.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .gallery-recap-block, .node-type-consumpt-post, .node-media-gallery, .node-type-usanetwork-microsite {
   .gallery-wrapper {
     background: $gallery-description-back;
     float: left;

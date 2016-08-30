@@ -753,16 +753,6 @@
   }
 }
 
-#block-usanetwork-media-gallery-usa-gallery-consumptionator-main {
-  .consum-sidebar {
-    .more-items {
-      @include breakpoint($between-1025-1280) {
-        background: none !important;
-      }
-    }
-  }
-}
-
 .consumptionator-video-page {
   &.page-full-video {
     &.admin-menu {

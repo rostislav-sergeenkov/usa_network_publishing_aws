@@ -11655,48 +11655,97 @@ footer h2 {
   }
 }
 
-.consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .gallery-recap-block .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block, .node-type-usanetwork-microsite .gallery-block {
+.node-type-media-gallery .gallery-block {
   margin: 0;
   overflow: hidden;
   padding: 0;
   position: relative;
   width: 100%;
 }
-.consumptionator-page .gallery-block:after, .node-type-media-gallery .gallery-block:after, .node-type-tv-episode .gallery-block:after, .gallery-recap-block .gallery-block:after, .node-type-consumpt-post .gallery-block:after, .node-media-gallery .gallery-block:after, .node-type-usanetwork-microsite .gallery-block:after {
+.node-type-media-gallery .gallery-block:after {
   clear: both;
   content: '';
   display: table;
 }
-@media (min-width: 1281px) {
-  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .gallery-recap-block .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block, .node-type-usanetwork-microsite .gallery-block {
+@media (min-width: 1025px) {
+  .node-type-media-gallery .gallery-block {
     height: 42.01875vw;
     max-height: 1093.75px;
     max-width: 2500px;
     margin: 0 auto;
   }
 }
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .gallery-recap-block .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block, .node-type-usanetwork-microsite .gallery-block {
-    height: calc((100vw - 320px) * 0.5625);
-    margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
-    overflow: visible;
-  }
-}
 @media (max-width: 1024px) {
-  .consumptionator-page .gallery-block, .node-type-media-gallery .gallery-block, .node-type-tv-episode .gallery-block, .gallery-recap-block .gallery-block, .node-type-consumpt-post .gallery-block, .node-media-gallery .gallery-block, .node-type-usanetwork-microsite .gallery-block {
+  .node-type-media-gallery .gallery-block {
     height: auto;
   }
 }
-@media (max-width: 768px) {
-  .consumptionator-page .gallery-block .consum-sidebar .download-app, .node-type-media-gallery .gallery-block .consum-sidebar .download-app, .node-type-tv-episode .gallery-block .consum-sidebar .download-app, .gallery-recap-block .gallery-block .consum-sidebar .download-app, .node-type-consumpt-post .gallery-block .consum-sidebar .download-app, .node-media-gallery .gallery-block .consum-sidebar .download-app, .node-type-usanetwork-microsite .gallery-block .consum-sidebar .download-app {
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .node-type-media-gallery .gallery-block .consum-sidebar {
+    overflow: hidden;
+    padding-left: 0;
+    position: relative;
+    width: 320px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .node-type-media-gallery .gallery-block .consum-sidebar .download-app {
     display: none;
   }
 }
+@media (max-width: 768px) {
+  .node-type-media-gallery .gallery-block .consum-sidebar .download-app {
+    display: none;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .node-type-media-gallery .gallery-block .consum-sidebar .items-block {
+    height: calc(100% - 250px);
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .node-type-media-gallery .gallery-block .consum-sidebar .items-block .items-block-title {
+    height: 35px;
+    line-height: 35px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .node-type-media-gallery .gallery-block .consum-sidebar .items-block .items-block-title h2 {
+    width: 100%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .node-type-media-gallery .gallery-block .consum-sidebar .items-block .episodes-list-slider.vertical-mode {
+    display: block;
+    height: calc(100% - 70px);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .node-type-media-gallery .gallery-block .consum-sidebar .more-items {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    top: auto;
+    width: 100%;
+  }
+}
 @media (min-width: 641px) and (max-width: 768px) {
-  .consumptionator-page .gallery-block .consum-sidebar .more-items, .node-type-media-gallery .gallery-block .consum-sidebar .more-items, .node-type-tv-episode .gallery-block .consum-sidebar .more-items, .gallery-recap-block .gallery-block .consum-sidebar .more-items, .node-type-consumpt-post .gallery-block .consum-sidebar .more-items, .node-media-gallery .gallery-block .consum-sidebar .more-items, .node-type-usanetwork-microsite .gallery-block .consum-sidebar .more-items {
+  .node-type-media-gallery .gallery-block .consum-sidebar .more-items {
     top: 0;
   }
 }
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .node-type-media-gallery .gallery-block .consum-sidebar .more-items a {
+    line-height: 35px;
+    padding: 0 20px;
+  }
+}
+
 .consumptionator-page .gallery-wrapper, .node-type-media-gallery .gallery-wrapper, .node-type-tv-episode .gallery-wrapper, .gallery-recap-block .gallery-wrapper, .node-type-consumpt-post .gallery-wrapper, .node-media-gallery .gallery-wrapper, .node-type-usanetwork-microsite .gallery-wrapper {
   background: #1f1f1f;
   float: left;
@@ -14428,12 +14477,6 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   .consum-sidebar .download-app .download-button a {
     font-size: 10px;
     padding: 5px 10px 5px 5px;
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-  #block-usanetwork-media-gallery-usa-gallery-consumptionator-main .consum-sidebar .more-items {
-    background: none !important;
   }
 }
 

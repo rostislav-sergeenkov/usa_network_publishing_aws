@@ -110,8 +110,8 @@
 
     micrositeMobileModal: function () {
       // check if user uses mobile device
-      if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
-        var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
+      if (USAN.isMobile.apple.device || USAN.isMobile.android.device) {
+        var os = USAN.isMobile.apple.device ? 'iOS' : 'android';
         Drupal.behaviors.video_mobile.showMobileVideoModal(os);
       }
     },

@@ -1683,7 +1683,7 @@
       &:after {
         content: '1';
       }
-      &[style*="display: none;"] {
+      &[style*="none;"] {
         ~ .ui-sortable-helper {
           &:after {
             content: '1';
@@ -1712,7 +1712,7 @@
           }
         }
         + div {
-          +[style*="display: none;"] {
+          +[style*="none;"] {
             ~ .ui-sortable-helper {
               &:after {
                 content: '2';
@@ -1725,7 +1725,7 @@
             }
           }
           + div {
-            +[style*="display: none;"] {
+            +[style*="none;"] {
               ~ .ui-sortable-helper {
                 &:after {
                   content: '3';
@@ -1736,7 +1736,7 @@
         }
       }
       &.drop-area__item:not(.ui-sortable-placeholder):not(.ui-sortable-helper) {
-        +[style*="display: none;"] {
+        +[style*="none;"] {
           ~ .ui-sortable-helper {
             &:after {
               content: '2';
@@ -1749,7 +1749,7 @@
           }
         }
         +.drop-area__item:not(.ui-sortable-placeholder):not(.ui-sortable-helper) {
-          +[style*="display: none;"] {
+          +[style*="none;"] {
             ~ .ui-sortable-helper {
               &:after {
                 content: '3';
@@ -1758,7 +1758,7 @@
           }
         }
         +.ui-sortable-placeholder {
-          +[style*="display: none;"] {
+          +[style*="none;"] {
             ~ .ui-sortable-helper {
               &:after {
                 content: '2';
@@ -1789,7 +1789,7 @@
       }
     }
     &:nth-child(4) {
-      &[style*="display: none;"] {
+      &[style*="none;"] {
         ~ .ui-sortable-helper {
           &:after {
             content: '3';

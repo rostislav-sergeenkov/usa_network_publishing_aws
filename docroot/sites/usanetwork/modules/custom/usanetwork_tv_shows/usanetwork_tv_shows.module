@@ -4021,7 +4021,7 @@ function _usanetwork_tv_shows_landing_page_find_root_tid($query_data) {
 function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $selected_category = 0, $sort_field = 'timestamp', $sort_direction = 'DESC') {
   $query = db_select('file_managed', 'f');
   $query->fields('f', array('fid'));
-  $query->condition('f.status', '1');
+  $query->condition('f.published', '1');
   $query->join('field_data_field_show', 's', 'f.fid=s.entity_id');
   $query->condition('s.entity_type', 'file');
   $query->condition('s.field_show_target_id', $show_node->nid);
@@ -4134,18 +4134,11 @@ function _usanetwork_tv_shows_landing_page_vbget_video_types($show_node, $select
     }
 
     // Fill All videos category
-    foreach ($result as $result_key => &$result_item) {
-      if ($result_key != USA_TV_SHOW_ALL_VIDEOS_EPISODE) {
-        if (!empty($result_item['items'])) {
-          foreach ($result_item['items'] as $result_fid) {
-            if (!in_array($result_fid, $result[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['items'])) {
-              $result[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['items'][] = $result_fid;
-            }
-          }
-        }
-      }
+    $items = array();
+    foreach ($query_result as $query_result_key => $query_result_item) {
+      $items[$query_result_item->fid] = $query_result_item->fid;
     }
-
+    $result[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['items'] = $items;
     $result[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['items_count'] = count($result[USA_TV_SHOW_ALL_VIDEOS_EPISODE]['items']);
 
     if ($result[USA_TV_SHOW_FULL_EPISODE]['items_count'] == 0) {

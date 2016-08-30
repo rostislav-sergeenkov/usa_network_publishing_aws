@@ -303,14 +303,14 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             }
             img {
               bottom: 0;
+              height: auto;
               left: 0;
-              right: 0;
-              top: 0;
               margin: auto;
-              position: absolute;
               max-height: 100%;
               max-width: 100%;
-              height: 100%;
+              position: absolute;
+              right: 0;
+              top: 0;
               width: auto;
             }
           }

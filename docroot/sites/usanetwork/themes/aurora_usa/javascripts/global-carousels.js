@@ -129,10 +129,10 @@
         isMoreButtonBp: _.checkMatchWindowWidth('max', _.initials.moreButtonBp),
         isShowCardGetAdminMinBp: _.checkMatchWindowWidth('min', _.initials.showCardGetAdminMinBp),
         defaultCarouselDescriptionItemClass: _.$carouselDescription.parent().attr('class'),
-        isMobileDevice: usa_deviceInfo.mobileDevice,
-        isIos: usa_deviceInfo.iOS,
+        isMobileDevice: USAN.isMobile.any,
+        isApple: USAN.isMobile.apple.device,
         itunesAppLink: (Drupal.settings.hasOwnProperty('usa') && Drupal.settings.usa.hasOwnProperty('itunesAppLink')) ? Drupal.settings.usa.itunesAppLink : '/app',
-        isAndroid: usa_deviceInfo.android,
+        isAndroid: USAN.isMobile.android.device,
         androidAppLink: (Drupal.settings.hasOwnProperty('usa') && Drupal.settings.usa.hasOwnProperty('androidAppLink')) ? Drupal.settings.usa.androidAppLink : '/app',
         appPageUrl: '/app'
       };
@@ -315,7 +315,7 @@
 
       console.info('click $getApp');
 
-      if (_.options.isIos) {
+      if (_.options.isApple) {
         window.location = _.options.itunesAppLink;
       } else if (_.options.isAndroid) {
         window.location = _.options.androidAppLink;

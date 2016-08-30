@@ -113,6 +113,9 @@
       $('.drag-group').show();
       dragIconBlock.show();
       $('#info').show();
+      $('.drop-area__item').each(function(index){
+        $(this).attr('data-count', index+1);
+      });
     }
 
     function changeTwoItems(first, second, target) {

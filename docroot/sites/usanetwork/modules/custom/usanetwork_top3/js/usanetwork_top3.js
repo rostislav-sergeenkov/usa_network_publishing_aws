@@ -955,6 +955,11 @@
                         changeTwoItems(start_item, finish_item, $('.preview-item'));
                         previewOpen();
                       },
+                      helper: function(event, ui){
+                        var $clone = $(ui).clone();
+                        $clone.css('position','absolute');
+                        return $clone.get(0);
+                      },
                       items: ".drop-area__item"
                     });
                     $('.drag-group').disableSelection();

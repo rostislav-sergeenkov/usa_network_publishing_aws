@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: 'ico-font';
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ico-font.eot");
@@ -5,56 +6,62 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Proxima N W01 Thin Reg";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Thin-webfont.eot");
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Thin-webfont.eot?iefix") format("embedded-opentype"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Thin-webfont.woff") format("woff"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Thin-webfont.ttf") format("truetype"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Thin-webfont.svg#Proxima N W01 Thin Reg") format("svg");
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Thin-webfont.woff") format("woff"),
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Thin-webfont.ttf") format("truetype"),
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Thin-webfont.svg#Proxima N W01 Thin Reg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Proxima N W01 Reg";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Reg-webfont.eot");
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Reg-webfont.eot?iefix") format("embedded-opentype"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Reg-webfont.woff") format("woff"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Reg-webfont.ttf") format("truetype"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Reg-webfont.svg#Proxima N W01 Reg") format("svg");
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Reg-webfont.woff") format("woff"),
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Reg-webfont.ttf") format("truetype"),
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Reg-webfont.svg#Proxima N W01 Reg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Proxima N W01 Smbd";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Sbold-webfont.eot");
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Sbold-webfont.eot?iefix") format("embedded-opentype"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Sbold-webfont.woff") format("woff"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Sbold-webfont.ttf") format("truetype"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Sbold-webfont.svg#Proxima N W01 Smbd") format("svg");
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Sbold-webfont.woff") format("woff"),
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Sbold-webfont.ttf") format("truetype"),
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Sbold-webfont.svg#Proxima N W01 Smbd") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Proxima N W01 Bold";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Bold-webfont.eot.eot");
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Bold-webfont.eot.eot?iefix") format("embedded-opentype"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Bold-webfont.woff") format("woff"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Bold-webfont.ttf") format("truetype"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Bold-webfont.svg#Proxima N W01 Bold") format("svg");
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Bold-webfont.woff") format("woff"),
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Bold-webfont.ttf") format("truetype"),
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Bold-webfont.svg#Proxima N W01 Bold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Proxima N W01 Xbold";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Xbold-webfont.eot");
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Xbold-webfont.eot?iefix") format("embedded-opentype"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Xbold-webfont.woff") format("woff"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Xbold-webfont.ttf") format("truetype"),
-      url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Xbold-webfont.svg#Proxima N W01 Xbold") format("svg");
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Xbold-webfont.woff") format("woff"),
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Xbold-webfont.ttf") format("truetype"),
+  url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/ProximaNova-Xbold-webfont.svg#Proxima N W01 Xbold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "avalonextra_light";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-XLight-webfont.eot?iefix") format("eot"),
@@ -62,6 +69,7 @@
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-XLight-webfont.ttf") format("truetype"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-XLight-webfont.svg#avalonextra_light") format("svg");
 }
+
 @font-face {
   font-family: "avalonextra_light_oblique";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-XLightObl-webfont.eot?iefix") format("eot"),
@@ -69,6 +77,7 @@
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-XLightObl-webfont.ttf") format("truetype"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-XLightObl-webfont.svg#avalonextra_light_oblique") format("svg");
 }
+
 @font-face {
   font-family: "avalonregular";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Book-webfont.eot?iefix") format("eot"),
@@ -76,6 +85,7 @@
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Book-webfont.ttf") format("truetype"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Book-webfont.svg#avalonregular") format("svg");
 }
+
 @font-face {
   font-family: "avalonitalic";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-BookOblique-webfont.eot?iefix") format("eot"),
@@ -83,6 +93,7 @@
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-BookOblique-webfont.ttf") format("truetype"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-BookOblique-webfont.svg#avalonitalic") format("svg");
 }
+
 @font-face {
   font-family: "avalonmedium";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Medium-webfont.eot?iefix") format("eot"),
@@ -90,6 +101,7 @@
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Medium-webfont.ttf") format("truetype"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Medium-webfont.svg#avalonmedium") format("svg");
 }
+
 @font-face {
   font-family: "avalonmedium_oblique";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-MediumOblique-webfont.eot?iefix") format("eot"),
@@ -97,6 +109,7 @@
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-MediumOblique-webfont.ttf") format("truetype"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-MediumOblique-webfont.svg#avalonmedium_oblique") format("svg");
 }
+
 @font-face {
   font-family: "avalonbold";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Demi-webfont.eot?iefix") format("eot"),
@@ -104,6 +117,7 @@
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Demi-webfont.ttf") format("truetype"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Demi-webfont.svg#avalonbold") format("svg");
 }
+
 @font-face {
   font-family: "avalonbold_italic";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-DemiOblique-webfont.eot?iefix") format("eot"),
@@ -111,6 +125,7 @@
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-DemiOblique-webfont.ttf") format("truetype"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-DemiOblique-webfont.svg#avalonbold_italic") format("svg");
 }
+
 @font-face {
   font-family: "avalon_mediumbold";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Bold-webfont.eot?iefix") format("eot"),
@@ -118,6 +133,7 @@
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Bold-webfont.ttf") format("truetype"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-Bold-webfont.svg#avalon_mediumbold") format("svg");
 }
+
 @font-face {
   font-family: "avalonbold_oblique";
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-BoldOblique-webfont.eot?iefix") format("eot"),
@@ -125,6 +141,7 @@
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-BoldOblique-webfont.ttf") format("truetype"),
   url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-BoldOblique-webfont.svg#avalonbold_oblique") format("svg");
 }
+
 @font-face {
   font-family: 'avalonregular_condensed';
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-BookCond-webfont.eot"),
@@ -135,6 +152,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'avalonmedium_condensed';
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-MediumCond-webfont.eot"),
@@ -145,6 +163,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'avalondemi_condensed';
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-DemiCond-webfont.eot"),
@@ -155,6 +174,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'avalonbold_condensed';
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/Avalon-BoldCond-webfont.eot"),
@@ -165,6 +185,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'itc_avant_garde_pro_mdbold';
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/itcavantgardepro-bold-webfont.eot"),
@@ -175,6 +196,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'itc_avant_garde_gothic_prdemi';
   src: url("http://www.usanetwork.com/sites/usanetwork/themes/aurora_usa/fonts/itcavantgardepro-demi-webfont.eot"),
@@ -185,6 +207,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 /* WARNING:	You are using ligatures for your icon font.
 			Ligatures are not supported in IE 9 (and older).
 			Use the Private Use Area encoding for best browser support.

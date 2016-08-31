@@ -56,7 +56,7 @@
         $pdk.controller.showFullScreen();
       }
       switch (event.type) {
-        case 'handleMediaEvent':
+        case 'OnReleaseEnd':
           var nextVideo = jQuery('#thumbnail-list .item-list > ul > li.active').next();
           if (nextVideo.length > 0) {
             Drupal.behaviors.ms_videos.clickThumbnail(nextVideo);

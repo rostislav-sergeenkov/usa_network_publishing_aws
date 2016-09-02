@@ -81,7 +81,6 @@
               &:before {
                 @include transition(all 0.3s ease-out);
                 width: 18px;
-                pointer-events: none;
                 @include breakpoint($bp-min-1901-width) {
                   width: 30px;
                 }

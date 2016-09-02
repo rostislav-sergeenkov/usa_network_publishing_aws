@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM866";
 .clearfix {
   zoom: 1;
 }
@@ -26636,6 +26636,9 @@ yx-axis
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel.load {
   background-image: none;
+}
+.touch #block-usanetwork-aspot-usanetwork-aspot-carousel.load {
+  overflow: visible;
 }
 #block-usanetwork-aspot-usanetwork-aspot-carousel.load .slide .wrp {
   background: #000000;

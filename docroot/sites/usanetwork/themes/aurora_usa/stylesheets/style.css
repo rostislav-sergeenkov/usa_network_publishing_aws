@@ -19830,6 +19830,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
     width: 18px;
+    pointer-events: none;
   }
   .shows-block .show-carousel > ul > li:not(.active) > .node:hover:after {
     display: block;

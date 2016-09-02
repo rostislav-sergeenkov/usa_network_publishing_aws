@@ -1241,9 +1241,13 @@
         }
 
         if($('html').hasClass('touch')) {
-            $('html').on('click', function(e) {
-              $('#mobile-nav').removeClass('show-nav-links-list');
-            });
+          $(document).click(function(e){
+            if (e.target.getElementById != 'mobile-nav' && e.target.parentElement.getElementById != 'mobile-nav') {
+              if($('#mobile-nav').hasClass('show-nav-links-list')) {
+                $('#mobile-nav').removeClass('show-nav-links-list');
+              }
+            }
+          });
           $('#mobile-nav').on('click', function(e) {
             e.stopPropagation();
               if ($('#mobile-nav').hasClass('show-nav-links-list')) {

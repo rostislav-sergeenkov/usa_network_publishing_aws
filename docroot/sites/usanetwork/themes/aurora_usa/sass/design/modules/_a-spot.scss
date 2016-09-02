@@ -11,6 +11,9 @@
   }
   &.load {
     background-image: none;
+    .touch & {
+      overflow: visible;
+    }
     .slide {
       .wrp {
         background: #000000;

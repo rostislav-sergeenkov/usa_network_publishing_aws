@@ -121,6 +121,7 @@
   z-index: 20;
 }
 #microsite #galleries-content .flex-direction-nav a {
+  color: white;
   line-height: 80px;
 }
 #microsite #galleries-content .flexslider .counter {

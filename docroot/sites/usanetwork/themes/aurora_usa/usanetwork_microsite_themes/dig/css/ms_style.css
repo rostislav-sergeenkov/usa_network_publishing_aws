@@ -992,6 +992,9 @@ ul#mobile-nav-links-list li.sub-nav.active span {
 body.page-node-microsite {
   overflow: hidden;
 }
+html.touch {
+  cursor: pointer;
+}
 .page-node-microsite .usa-wrap {
   background-color: #000;
   padding-top: 0;

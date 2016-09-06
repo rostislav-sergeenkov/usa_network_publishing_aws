@@ -1153,3 +1153,136 @@
     padding: 40px 0 75px;
   }
 }
+
+.right-rail-line {
+  .sticky-share {
+    position: absolute;
+    left: 0;
+    @include breakpoint($bp-768-width) {
+      bottom: 0;
+      position: fixed;
+      top: auto;
+      width: 100%;
+    }
+    .field-label {
+      display: none;
+    }
+    table, tbody, tr, td {
+      display: block;
+      width: 100%;
+    }
+    .field-type-gigya-sharebar {
+      .gig-button-container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        td {
+          > div {
+            background: transparent;
+            position: relative!important;
+            text-align: center;
+            &:before {
+              background: transparent;
+              color: white!important;
+              display: block;
+              position: relative;
+              z-index: 2;
+            }
+          }
+        }
+        &.gig-button-container-facebook {
+          background: $usa-video-helper-facebook;
+          td {
+            > div:before {
+              content: '\e618';
+            }
+          }
+        }
+        &.gig-button-container-twitter {
+          background: $usa-video-helper-twitter;
+          td {
+            > div:before {
+              content: '\e61a';
+            }
+          }
+        }
+        &.gig-button-container-tumblr {
+          background: $usa-video-helper-tumblr;
+          td {
+            > div:before {
+              content: '\e619';
+            }
+          }
+        }
+        &.gig-button-container-pinterest {
+          background: $usa-video-helper-pinterest;
+          td {
+            > div:before {
+              content: '\e617';
+            }
+          }
+        }
+        &.gig-button-container-share {
+          background: $poll-color;
+          td {
+            > div:before {
+              content: '\e62a';
+            }
+          }
+        }
+      }
+    }
+    .node-type-consumpt-post & {
+      @include breakpoint($bp-min-1281-width) {
+        top: 45px;
+        width: 55px;
+      }
+      @include breakpoint($between-1025-1280) {
+        top: 38px;
+        width: 30px;
+      }
+      @include breakpoint($between-769-1024) {
+        top: 53px;
+        width: get-vw(55px, 1024);
+      }
+      .field-type-gigya-sharebar {
+        .gig-button-container {
+          td {
+            > div {
+              @include breakpoint($bp-min-1281-width) {
+                font-size: 30px!important;
+                height: 80px!important;
+                line-height: 80px!important;
+                width: 55px!important;
+              }
+              @include breakpoint($between-1025-1280) {
+                font-size: 16px!important;
+                height: 42px!important;
+                line-height: 42px!important;
+                width: 30px!important;
+              }
+              @include breakpoint($between-769-1024) {
+                font-size: get-vw(30px, 1024)!important;
+                height: get-vw(80px, 1024)!important;
+                line-height: get-vw(80px, 1024)!important;
+                width: get-vw(55px, 1024)!important;
+              }
+            }
+          }
+        }
+      }
+    }
+    .sub-menu-is-sticky & {
+      @include breakpoint($bp-min-769-width) {
+        position: fixed;
+        top: get-vw(150px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        top: 150px;
+      }
+      @include breakpoint($bp-min-2500-width) {
+        left: calc((100% - 2500px)/2);
+      }
+    }
+  }
+}

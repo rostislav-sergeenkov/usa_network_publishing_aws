@@ -82,6 +82,7 @@
     <?php if (!empty($navigation_links['next'])): ?>
       <?php print $navigation_links['next']; ?>
     <?php endif; ?>
+    <div id="main-block-bottom-line"></div>
   </div>
   <div class="consum-sidebar">
     <?php if (!empty($rendered_carousel)): ?>

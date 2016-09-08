@@ -15114,7 +15114,7 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 @media (min-width: 1025px) and (max-width: 1280px) {
   .node-type-consumpt-post .right-rail-line .sticky-share {
     top: 38px;
-    width: 30px;
+    width: 24px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -15133,10 +15133,10 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
   .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td > div {
-    font-size: 16px !important;
-    height: 42px !important;
-    line-height: 42px !important;
-    width: 30px !important;
+    font-size: 12.8px !important;
+    height: 33.6px !important;
+    line-height: 33.6px !important;
+    width: 24px !important;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -19720,6 +19720,22 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     height: 250px;
     padding: 0;
   }
+}
+
+.consumptionator-post-main-block .post-info-main-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+  color: #3b5998;
+}
+.consumptionator-post-main-block .post-info-main-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
+  color: #00aced;
+}
+.consumptionator-post-main-block .post-info-main-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
+  color: #32506d;
+}
+.consumptionator-post-main-block .post-info-main-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
+  color: #cb2027;
+}
+.consumptionator-post-main-block .post-info-main-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+  color: #545454;
 }
 
 .consumptionator-quiz-main-block article.node-quiz, .page-videos-live article.node-quiz {

@@ -14996,11 +14996,9 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
     top: auto;
   }
 }
-@media (max-width: 768px) {
-  .right-rail-line:not(.visible) .sticky-share {
-    position: absolute !important;
-    top: auto;
-  }
+.right-rail-line:not(.description-visible) .sticky-share {
+  position: absolute !important;
+  top: auto;
 }
 .right-rail-line .sticky-share {
   box-shadow: 0px 0px 5px black;
@@ -15166,6 +15164,11 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 @media (max-width: 768px) {
   .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .post-info-block {
     padding-bottom: 18.22917vw;
+  }
+}
+@media (max-width: 768px) {
+  .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .gallery-recap-block ~ .episode-change-link {
+    bottom: 36px;
   }
 }
 @media (max-width: 768px) {
@@ -19307,6 +19310,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
   border-bottom: 2px solid;
   padding: 45px 93px 90px 70px;
+  position: relative;
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {

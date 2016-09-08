@@ -8,14 +8,11 @@
               stickyShareHeight = stickyShare.outerHeight(),
               stickySharePosition = stickyShare.offset()['top'],
               bottomLinePosition = $('#main-block-bottom-line').offset()['top'],
-              bottomPadding = parseFloat(stickyShare.next().css('padding-bottom')),
+              bottomPadding = parseFloat(stickyShare.parent().css('padding-bottom')),
               newDesign = $('body').hasClass('show-new-design'),
               stickyShareOffsetTop = $('.sticky-share').offset()['top'] - $(window).scrollTop(),
-              headerHeight = $('#header').outerHeight(),
               topCoefficient = newDesign? 195/1600: 150/1901,
               currentCoefficient = stickyShareOffsetTop/window.innerWidth;
-          console.info(topCoefficient);
-          console.info(currentCoefficient);
           if((bottomLinePosition - stickySharePosition - stickyShareHeight) < bottomPadding) {
             stickyShare.css({
               bottom: bottomPadding + 'px',
@@ -37,7 +34,7 @@
         $('.sticky-share').removeAttr('style');
       }
       if ($('body').hasClass('show-new-design') && window.matchMedia("(min-width: " + window_size_desktop_medium + "px)").matches) {
-        if ($('.right-rail-line').hasClass('visible') && $('header').hasClass('off-elements') && $('.sticky-share').css('position') == 'fixed') {
+        if ($('.right-rail-line').hasClass('description-visible') && $('header').hasClass('off-elements') && $('.sticky-share').css('position') == 'fixed') {
           var stickyShare = $('.sticky-share'),
               leftOffset = parseFloat(stickyShare.css('left')),
               minLeft = 20;
@@ -72,10 +69,22 @@
         }
       });
 
-      $('.right-rail-line').viewportChecker({
+      $('.sticky-share').parent().viewportChecker({
         classToAdd: 'visible',
         offset: 0,
-        repeat: true
+        repeat: true,
+
+        callbackFunction: function (elem, action) {
+          if (elem.hasClass('visible')) {
+            if (!$('.right-rail-line').hasClass('description-visible')) {
+              $('.right-rail-line').addClass('description-visible');
+            }
+          } else {
+            if ($('.right-rail-line').hasClass('description-visible')) {
+              $('.right-rail-line').removeClass('description-visible');
+            }
+          }
+        }
       });
 
       Drupal.behaviors.consumptionator_sticky_share.stickySharePosition();

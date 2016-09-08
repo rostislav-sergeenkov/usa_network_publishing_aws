@@ -15,6 +15,9 @@
 ?>
 <div class="consumptionator-post-main-block">
   <div class="post-info-main-block right-rail-line<?php print (empty($image_desktop))? ' no-cover-image' : ''; ?>">
+    <div class="sticky-share">
+      <?php print $sticky_sharebar; ?>
+    </div>
     <div class="post-info-block show-border">
       <div class="post-info-header">
         <div class="post-title-block">
@@ -79,6 +82,7 @@
     <?php if (!empty($navigation_links['next'])): ?>
       <?php print $navigation_links['next']; ?>
     <?php endif; ?>
+    <div id="main-block-bottom-line"></div>
   </div>
   <div class="consum-sidebar">
     <?php if (!empty($rendered_carousel)): ?>

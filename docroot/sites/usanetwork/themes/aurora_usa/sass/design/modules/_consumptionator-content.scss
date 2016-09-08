@@ -1153,3 +1153,212 @@
     padding: 40px 0 75px;
   }
 }
+
+.right-rail-line {
+  #main-block-bottom-line {
+    bottom: 0;
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+  }
+  &.bottom-visible {
+    .sticky-share {
+      @include breakpoint($bp-768-width) {
+        position: absolute!important;
+        top: auto;
+      }
+    }
+  }
+  &:not(.visible) {
+    .sticky-share {
+      @include breakpoint($bp-768-width) {
+        position: absolute!important;
+        top: auto;
+      }
+    }
+  }
+  .sticky-share {
+    box-shadow: 0px 0px 5px black;
+    left: 0;
+    position: absolute;
+    @include breakpoint($bp-768-width) {
+      bottom: 0;
+      position: fixed;
+      top: auto;
+      width: 100%;
+      z-index: 100;
+    }
+    .field-label {
+      display: none;
+    }
+    table, tbody, tr, td {
+      display: block;
+      width: 100%;
+    }
+    .field-type-gigya-sharebar {
+      td {
+        @include breakpoint($bp-768-width) {
+          float: left;
+          &:nth-last-child(3) {
+            width: calc(100%/3);
+            & ~ td {
+              width: calc(100%/3);
+            }
+          }
+          &:nth-last-child(4) {
+            width: 25%;
+            & ~ td {
+              width: 25%;
+            }
+          }
+          &:nth-last-child(5) {
+            width: 20%;
+            & ~ td {
+              width: 20%;
+            }
+          }
+          .gig-button-container {
+            td {
+              width: 100%!important;
+              > div {
+                font-size: get-vw(44px, 768)!important;
+                height: get-vw(80px, 768)!important;
+                line-height: get-vw(80px, 768)!important;
+                width: 100%!important;
+              }
+            }
+          }
+        }
+      }
+    }
+    .field-type-gigya-sharebar {
+      margin: 0;
+      .gig-button-container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        td {
+          > div {
+            background: transparent;
+            position: relative!important;
+            text-align: center;
+            &:before {
+              background: transparent;
+              color: white!important;
+              display: block;
+              position: relative;
+              z-index: 2;
+            }
+          }
+        }
+        &.gig-button-container-facebook {
+          background: $usa-video-helper-facebook;
+          td {
+            > div:before {
+              content: '\e618';
+            }
+          }
+        }
+        &.gig-button-container-twitter {
+          background: $usa-video-helper-twitter;
+          td {
+            > div:before {
+              content: '\e61a';
+            }
+          }
+        }
+        &.gig-button-container-tumblr {
+          background: $usa-video-helper-tumblr;
+          td {
+            > div:before {
+              content: '\e619';
+            }
+          }
+        }
+        &.gig-button-container-pinterest {
+          background: $usa-video-helper-pinterest;
+          td {
+            > div:before {
+              content: '\e617';
+            }
+          }
+        }
+        &.gig-button-container-share {
+          background: $poll-color;
+          td {
+            > div:before {
+              content: '\e62a';
+            }
+          }
+        }
+      }
+    }
+    .node-type-consumpt-post & {
+      @include breakpoint($bp-min-1281-width) {
+        top: 45px;
+        width: 55px;
+      }
+      @include breakpoint($between-1025-1280) {
+        top: 38px;
+        width: 24px;
+      }
+      @include breakpoint($between-769-1024) {
+        top: 53px;
+        width: get-vw(55px, 1024);
+      }
+      .field-type-gigya-sharebar {
+        .gig-button-container {
+          td {
+            > div {
+              @include breakpoint($bp-min-1281-width) {
+                font-size: 30px!important;
+                height: 80px!important;
+                line-height: 80px!important;
+                width: 55px!important;
+              }
+              @include breakpoint($between-1025-1280) {
+                font-size: 12.8px!important;
+                height: 33.6px!important;
+                line-height: 33.6px!important;
+                width: 24px!important;
+              }
+              @include breakpoint($between-769-1024) {
+                font-size: get-vw(30px, 1024)!important;
+                height: get-vw(80px, 1024)!important;
+                line-height: get-vw(80px, 1024)!important;
+                width: get-vw(55px, 1024)!important;
+              }
+            }
+          }
+        }
+      }
+    }
+    .sub-menu-is-sticky & {
+      @include breakpoint($bp-min-769-width) {
+        position: fixed;
+        top: get-vw(150px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        top: 150px;
+      }
+      @include breakpoint($bp-min-2500-width) {
+        left: calc((100% - 2500px)/2);
+      }
+    }
+  }
+  .node-type-consumpt-post .consumptionator-post-main-block & {
+    .post-info-block {
+      @include breakpoint($bp-768-width) {
+        padding-bottom: get-vw(140px, 768);
+      }
+    }
+    .episode-change-link {
+      @include breakpoint($bp-768-width) {
+        bottom: get-vw(91px, 768);
+      }
+    }
+  }
+}

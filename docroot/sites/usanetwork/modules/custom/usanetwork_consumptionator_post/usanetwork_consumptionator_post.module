@@ -299,7 +299,7 @@ function _usanetwork_consumptionator_post_main_block() {
     $theme_variables = array(
       'title' => !empty($node->title) ? $node->title : '',
       'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title , $body),
-      'sticky_sharebar' => usanetwork_menu_render_sharebar($node, 'node', '', $node->title , $body),
+      'sticky_sharebar' => usanetwork_menu_render_sharebar($node, 'node', '', $node->title , $body, '',  'facebook, twitter, tumblr, share'),
       'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
       'creating_date' => $post_date,
       'original_publish_date' => $original_date,

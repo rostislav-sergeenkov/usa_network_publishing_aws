@@ -538,6 +538,9 @@ function usanetwork_menu_gigya_sharebar_alter(&$share_settings, $context) {
   if (!empty($context['display']['share_settings']) ) {
     $share_settings['gigyaSharebar']['ua'] = array_merge($share_settings['gigyaSharebar']['ua'], $context['display']['share_settings']);
   }
+  if (!empty($context['display']['share_buttons'])) {
+    $share_settings['gigyaSharebar']['shareButtons'] = $context['display']['share_buttons'];
+  }
   if ($context['entity_type'] == 'node') {
     $node = $context['entity'];
     $node_wrapper = entity_metadata_wrapper('node', $node);
@@ -2112,7 +2115,7 @@ function usanetwork_menu_form_usanetwork_settings_form_submit(&$form, &$form_sta
 /*
  * Renders gigya sharebar
  */
-function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, $description, $image_uri = '') {
+function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, $description, $image_uri = '', $share_buttons = '') {
 
   if (isset($entity->field_gigya_share_bar)) {
     $share_settings = array(
@@ -2123,7 +2126,10 @@ function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, 
       $share_settings['imageUrl'] = $image_uri;
       $share_settings['imageBhev'] = 'url';
     }
-    $sharebar = field_view_field($entity_type, $entity, 'field_gigya_share_bar', array('share_settings' => $share_settings));
+    $sharebar = field_view_field($entity_type, $entity, 'field_gigya_share_bar', array(
+      'share_settings' => $share_settings,
+      'share_buttons' => $share_buttons
+    ));
     $sharebar['#title'] = $label;
     return !empty($sharebar) ? render($sharebar) : '';
   }

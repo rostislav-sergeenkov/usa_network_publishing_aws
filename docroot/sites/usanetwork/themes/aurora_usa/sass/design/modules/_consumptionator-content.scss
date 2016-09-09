@@ -1172,12 +1172,10 @@
       }
     }
   }
-  &:not(.visible) {
+  &:not(.description-visible) {
     .sticky-share {
-      @include breakpoint($bp-768-width) {
-        position: absolute!important;
-        top: auto;
-      }
+      position: absolute!important;
+      top: auto;
     }
   }
   .sticky-share {
@@ -1353,6 +1351,13 @@
     .post-info-block {
       @include breakpoint($bp-768-width) {
         padding-bottom: get-vw(140px, 768);
+      }
+    }
+    .gallery-recap-block {
+      & ~ .episode-change-link {
+        @include breakpoint($bp-768-width) {
+          bottom: 36px;
+        }
       }
     }
     .episode-change-link {

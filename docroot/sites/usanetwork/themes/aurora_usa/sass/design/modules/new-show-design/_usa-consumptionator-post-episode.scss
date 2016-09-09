@@ -195,6 +195,7 @@
       .episode-info-block, .post-info-block {
         border-bottom: 2px solid;
         padding: get-vw(37px, 1280) get-vw(46px, 1280) get-vw(74px, 1280) get-vw(32px, 1280);
+        position: relative;
         @include breakpoint($bp-min-1601-width) {
           padding: 50px 94px 100px 70px;
         }

@@ -92,6 +92,7 @@
     .episode-info-block, .post-info-block {
       border-bottom: 2px solid;
       padding: 45px 93px 90px 70px;
+      position: relative;
       @include breakpoint($bp-1280-width) {
         padding: 38px 43px 76px 32px;
       }

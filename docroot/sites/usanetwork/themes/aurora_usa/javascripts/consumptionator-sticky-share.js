@@ -49,6 +49,36 @@
         }
       }
     },
+    gigyaSharebar: function gigyaSharebar() {
+      if (typeof Drupal.gigya != 'undefined') {
+        var container = $('.sticky-share');
+        var $sharebar = container.find('.field-name-field-gigya-share-bar > div');
+        if ($sharebar.length > 0) {
+
+          var $currentDescription = '',
+              $currentImageUrl = '';
+          if ($currentDescription == '' && $('meta[property="og:description"]').length > 0) {
+            $currentDescription = $('meta[property="og:description"]').attr('content');
+          } else if($currentDescription == '' && $('meta[name="description"]').length > 0) {
+            $currentDescription = $('meta[name="description"]').attr('content');
+          }
+          if ($currentImageUrl == '' && $('meta[property="og:image"]').length > 0) {
+            $currentImageUrl = $('meta[property="og:image"]').attr('content');
+          }
+
+          $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
+            if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
+              sharebar.gigyaSharebar.shareButtons = 'facebook, twitter, tumblr, share';
+              sharebar.gigyaSharebar.ua.linkBack = window.location.href;
+              sharebar.gigyaSharebar.ua.imageBhev = 'url';
+              sharebar.gigyaSharebar.ua.imageUrl = $currentImageUrl;
+              sharebar.gigyaSharebar.ua.description = $currentDescription;
+              if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+            }
+          });
+        }
+      }
+    },
     attach: function (context, settings) {
       
       $('#main-block-bottom-line').viewportChecker({
@@ -88,6 +118,10 @@
       });
 
       Drupal.behaviors.consumptionator_sticky_share.stickySharePosition();
+
+      $('body').once(function () {
+        Drupal.behaviors.consumptionator_sticky_share.gigyaSharebar()
+      });
 
       $(window).on("scroll", function () {
         Drupal.behaviors.consumptionator_sticky_share.stickySharePosition();

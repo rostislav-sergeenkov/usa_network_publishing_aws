@@ -15567,14 +15567,8 @@ html.no-scroll, body.no-scroll {
 .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
   content: '\e619';
 }
-.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest {
-  background: #cb2027;
-}
-.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
-  content: '\e617';
-}
 .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-share {
-  background: #545454;
+  background: #cb2027;
 }
 .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
   content: '\e62a';

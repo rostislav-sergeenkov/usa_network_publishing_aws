@@ -15887,7 +15887,6 @@ html.no-scroll, body.no-scroll {
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
   border-bottom: 2px solid;
   padding: 2.89063vw 3.59375vw 5.78125vw 2.5vw;
-  position: relative;
 }
 @media (min-width: 1601px) {
   .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
@@ -16401,6 +16400,9 @@ html.no-scroll, body.no-scroll {
     font-size: 2.34375vw;
   }
 }
+.show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
+  position: relative;
+}
 @media (min-width: 1025px) {
   .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
     padding-left: 3.59375vw;
@@ -16409,6 +16411,11 @@ html.no-scroll, body.no-scroll {
 @media (min-width: 1601px) {
   .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
     padding-left: 90px;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-image {
+    top: -56.25vw;
   }
 }
 

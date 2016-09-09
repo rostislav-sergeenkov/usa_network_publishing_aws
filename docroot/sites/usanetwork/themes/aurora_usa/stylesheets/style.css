@@ -19310,7 +19310,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
   border-bottom: 2px solid;
   padding: 45px 93px 90px 70px;
-  position: relative;
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
@@ -19726,6 +19725,9 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   }
 }
 
+.consumptionator-post-main-block .post-info-main-block .post-info-block {
+  position: relative;
+}
 @media (min-width: 1281px) {
   .consumptionator-post-main-block .post-info-main-block .post-info-block {
     padding-left: 93px;
@@ -19734,6 +19736,11 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-post-main-block .post-info-main-block .post-info-block {
     padding-left: 43px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-image {
+    top: -56.25vw;
   }
 }
 .consumptionator-post-main-block .post-info-main-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {

@@ -92,7 +92,6 @@
     .episode-info-block, .post-info-block {
       border-bottom: 2px solid;
       padding: 45px 93px 90px 70px;
-      position: relative;
       @include breakpoint($bp-1280-width) {
         padding: 38px 43px 76px 32px;
       }
@@ -435,11 +434,17 @@
 .consumptionator-post-main-block {
   .post-info-main-block {
     .post-info-block {
+      position: relative;
       @include breakpoint($bp-min-1281-width) {
         padding-left: 93px;
       }
       @include breakpoint($between-1025-1280) {
         padding-left: 43px;
+      }
+      .post-info-image {
+        @include breakpoint($bp-640-width) {
+          top: -56.25vw;
+        }
       }
     }
     .post-info-header {

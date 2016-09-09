@@ -191,16 +191,8 @@
             }
           }
         }
-        &.gig-button-container-pinterest {
-          background: $usa-video-helper-pinterest;
-          td {
-            > div:before {
-              content: '\e617';
-            }
-          }
-        }
         &.gig-button-container-share {
-          background: $poll-color;
+          background: $usa-video-helper-pinterest;
           td {
             > div:before {
               content: '\e62a';

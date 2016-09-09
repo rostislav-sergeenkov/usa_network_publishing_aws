@@ -13,6 +13,8 @@
               stickyShareOffsetTop = $('.sticky-share').offset()['top'] - $(window).scrollTop(),
               topCoefficient = newDesign? 195/1600: 150/1901,
               currentCoefficient = stickyShareOffsetTop/window.innerWidth;
+          console.info(bottomLinePosition - stickySharePosition - stickyShareHeight - bottomPadding);
+          console.info(currentCoefficient, topCoefficient);
           if((bottomLinePosition - stickySharePosition - stickyShareHeight) < bottomPadding) {
             stickyShare.css({
               bottom: bottomPadding + 'px',

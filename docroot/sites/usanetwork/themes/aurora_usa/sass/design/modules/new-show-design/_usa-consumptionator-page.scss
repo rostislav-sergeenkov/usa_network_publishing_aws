@@ -212,7 +212,7 @@
     .node-type-consumpt-post & {
       @include breakpoint($bp-min-1025-width) {
         top: get-vw(50px, 1600);
-        width: get-vw(32px, 1600);
+        width: get-vw(40px, 1600);
       }
       @include breakpoint($bp-min-1601-width) {
         top: 50px;
@@ -227,10 +227,10 @@
           td {
             > div {
               @include breakpoint($bp-min-1025-width) {
-                font-size: get-vw(17.5px, 1600)!important;
-                height: get-vw(46.5px, 1600)!important;
-                line-height: get-vw(46.5px, 1600)!important;
-                width: get-vw(32px, 1600)!important;
+                font-size: get-vw(22px, 1600)!important;
+                height: get-vw(58px, 1600)!important;
+                line-height: get-vw(58px, 1600)!important;
+                width: get-vw(40px, 1600)!important;
               }
               @include breakpoint($bp-min-1601-width) {
                 font-size: 30px!important;

@@ -434,6 +434,14 @@
 }
 .consumptionator-post-main-block {
   .post-info-main-block {
+    .post-info-block {
+      @include breakpoint($bp-min-1281-width) {
+        padding-left: 93px;
+      }
+      @include breakpoint($between-1025-1280) {
+        padding-left: 43px;
+      }
+    }
     .post-info-header {
       .share {
         .field-type-gigya-sharebar {

@@ -656,4 +656,16 @@
       }
     }
   }
+  .consumptionator-post-main-block {
+    .post-info-main-block {
+      .post-info-block {
+        @include breakpoint($bp-min-1025-width) {
+          padding-left: get-vw(46px, 1280);
+        }
+        @include breakpoint($bp-min-1601-width) {
+          padding-left: 90px;
+        }
+      }
+    }
+  }
 }

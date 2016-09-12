@@ -15157,7 +15157,12 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 }
 @media (max-width: 768px) {
   .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .post-info-block {
-    padding-bottom: 18.22917vw;
+    padding-bottom: 23.4375vw;
+  }
+}
+@media (max-width: 480px) {
+  .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .post-info-block {
+    padding-bottom: 29.16667vw;
   }
 }
 @media (max-width: 768px) {
@@ -15167,7 +15172,12 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 }
 @media (max-width: 768px) {
   .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .episode-change-link {
-    bottom: 11.84896vw;
+    bottom: 15.625vw;
+  }
+}
+@media (max-width: 480px) {
+  .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .episode-change-link {
+    bottom: 16.66667vw;
   }
 }
 

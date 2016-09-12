@@ -258,7 +258,10 @@
   .show-new-design.node-type-consumpt-post .consumptionator-post-main-block & {
     .post-info-block {
       @include breakpoint($bp-768-width) {
-        padding-bottom: get-vw(140px, 768);
+        padding-bottom: get-vw(180px, 768);
+      }
+      @include breakpoint($bp-480-width) {
+        padding-bottom: get-vw(140px, 480);
       }
     }
     .gallery-recap-block {
@@ -273,7 +276,10 @@
     }
     .episode-change-link {
       @include breakpoint($bp-768-width) {
-        bottom: get-vw(91px, 768);
+        bottom: get-vw(120px, 768);
+      }
+      @include breakpoint($bp-480-width) {
+        bottom: get-vw(80px, 480);
       }
     }
   }

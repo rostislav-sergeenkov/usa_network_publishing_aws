@@ -30,19 +30,19 @@
             <div class="video-loading"
                  data-ng-class="{'show-spinner': user.isAuthenticated}"></div>
             <?php if (!$is_live): ?>
-            <div class="asset-img" data-picture data-alt="" data-class="tile-img">
-              <?php if (!empty($image_mobile)): ?>
-                <div data-src="<?php print $image_mobile; ?>"></div>
-              <?php endif; ?>
-              <?php if (!empty($image_desktop)): ?>
-                <div data-media="(min-width: 1280px)" data-src="<?php print $image_desktop; ?>"></div>
-                <!--[if (IE 8) & (!IEMobile)]>
-                <div data-src="<?php print $image_desktop; ?>"></div>
-                <![endif]-->
-              <?php endif; ?>
-              <?php if (!empty($image_desktop)): ?>
-                <noscript><img src="<?php print $image_desktop; ?>" width="2880" height="1620" alt="" title="" /></noscript>
-              <?php endif; ?>
+              <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+                <?php if (!empty($image_mobile)): ?>
+                  <div data-src="<?php print $image_mobile; ?>"></div>
+                <?php endif; ?>
+                <?php if (!empty($image_desktop)): ?>
+                  <div data-media="(min-width: 1280px)" data-src="<?php print $image_desktop; ?>"></div>
+                  <!--[if (IE 8) & (!IEMobile)]>
+                  <div data-src="<?php print $image_desktop; ?>"></div>
+                  <![endif]-->
+                <?php endif; ?>
+                <?php if (!empty($image_desktop)): ?>
+                  <noscript><img src="<?php print $image_desktop; ?>" width="2880" height="1620" alt="" title="" /></noscript>
+                <?php endif; ?>
               </div>
             <?php else: ?>
               <img
@@ -102,9 +102,20 @@
             <div class="video-loading show-spinner"
                  data-ng-hide="hidePlayerSpinner"></div>
             <?php if (!$is_live): ?>
-              <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
-              print theme_image(array('path' => image_style_url($image['#style_name'], $image['#path'])));
-              ?>
+              <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+                <?php if (!empty($image_mobile)): ?>
+                  <div data-src="<?php print $image_mobile; ?>"></div>
+                <?php endif; ?>
+                <?php if (!empty($image_desktop)): ?>
+                  <div data-media="(min-width: 1280px)" data-src="<?php print $image_desktop; ?>"></div>
+                  <!--[if (IE 8) & (!IEMobile)]>
+                  <div data-src="<?php print $image_desktop; ?>"></div>
+                  <![endif]-->
+                <?php endif; ?>
+                <?php if (!empty($image_desktop)): ?>
+                  <noscript><img src="<?php print $image_desktop; ?>" width="2880" height="1620" alt="" title="" /></noscript>
+                <?php endif; ?>
+              </div>
             <?php else: ?>
               <img
                 src="<?php print '/' . path_to_theme() . '/images/usa_liveTV.jpg'; ?>"

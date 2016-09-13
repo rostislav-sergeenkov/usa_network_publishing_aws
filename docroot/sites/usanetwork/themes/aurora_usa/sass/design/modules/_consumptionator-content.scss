@@ -1178,6 +1178,83 @@
       top: auto;
     }
   }
+  .touch & {
+    .sticky-share {
+      @include breakpoint($bp-min-769-width) {
+        bottom: 0;
+        top: auto!important;
+        width: 100%;
+      }
+      .field-type-gigya-sharebar {
+        td {
+          @include breakpoint($bp-min-769-width) {
+            float: left;
+            &:nth-last-child(3) {
+              width: calc(100%/3);
+              & ~ td {
+                width: calc(100%/3);
+              }
+            }
+            &:nth-last-child(4) {
+              width: 25%;
+              & ~ td {
+                width: 25%;
+              }
+            }
+            &:nth-last-child(5) {
+              width: 20%;
+              & ~ td {
+                width: 20%;
+              }
+            }
+            .gig-button-container {
+              td {
+                width: 100%!important;
+                > div {
+                  font-size: 44px!important;
+                  height: 80px!important;
+                  line-height: 80px!important;
+                  width: 100%!important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .touch &:not(.bottom-visible).description-visible {
+    .sticky-share {
+      @include breakpoint($bp-min-769-width) {
+        bottom: 0;
+        left: 0;
+        position: fixed!important;
+        z-index: 100;
+        width: 100%;
+      }
+      @include breakpoint($bp-min-1025-width) {
+        width: calc((100% - 320px));
+      }
+      @include breakpoint($bp-min-1281-width) {
+        width: 74.7%;
+      }
+      @include breakpoint($bp-min-2500-width) {
+        left: calc((100% - 2500px)/2);
+        width: 1867.5px;
+      }
+    }
+  }
+  .touch &.bottom-visible {
+    .sticky-share {
+      @include breakpoint($bp-min-769-width) {
+        bottom: -1px;
+        left: 0!important;
+        position: absolute!important;
+        width: 100%;
+        z-index: 100;
+      }
+    }
+  }
   .sticky-share {
     box-shadow: 0px 0px 5px black;
     left: 0;
@@ -1286,7 +1363,7 @@
         }
       }
     }
-    .node-type-consumpt-post & {
+    .no-touch .node-type-consumpt-post & {
       @include breakpoint($bp-min-1281-width) {
         top: 45px;
         width: 55px;
@@ -1361,6 +1438,28 @@
       }
       @include breakpoint($bp-480-width) {
         bottom: get-vw(80px, 480);
+      }
+    }
+  }
+  .touch .node-type-consumpt-post .consumptionator-post-main-block & {
+    .post-info-block {
+      @include breakpoint($bp-min-769-width) {
+        padding-bottom: 160px;
+      }
+    }
+    .gallery-recap-block {
+      & ~ .episode-change-link {
+        @include breakpoint($bp-min-1281-width) {
+          bottom: 39px;
+        }
+        @include breakpoint($between-1025-1280) {
+          bottom: 34px;
+        }
+      }
+    }
+    .episode-change-link {
+      @include breakpoint($bp-min-769-width) {
+        bottom: 110px;
       }
     }
   }

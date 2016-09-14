@@ -11804,6 +11804,17 @@ footer h2 {
 .consumptionator-page .gallery-wrapper:not(.end-card):hover .share-bar, .node-type-media-gallery .gallery-wrapper:not(.end-card):hover .share-bar, .node-type-tv-episode .gallery-wrapper:not(.end-card):hover .share-bar, .gallery-recap-block .gallery-wrapper:not(.end-card):hover .share-bar, .node-type-consumpt-post .gallery-wrapper:not(.end-card):hover .share-bar, .node-media-gallery .gallery-wrapper:not(.end-card):hover .share-bar, .node-type-usanetwork-microsite .gallery-wrapper:not(.end-card):hover .share-bar {
   display: block;
 }
+@media (min-width: 1025px) {
+  .consumptionator-page .gallery-wrapper.end-card .slide-prev, .node-type-media-gallery .gallery-wrapper.end-card .slide-prev, .node-type-tv-episode .gallery-wrapper.end-card .slide-prev, .gallery-recap-block .gallery-wrapper.end-card .slide-prev, .node-type-consumpt-post .gallery-wrapper.end-card .slide-prev, .node-media-gallery .gallery-wrapper.end-card .slide-prev, .node-type-usanetwork-microsite .gallery-wrapper.end-card .slide-prev {
+    left: auto;
+    right: 90px;
+  }
+}
+@media (min-width: 1901px) {
+  .consumptionator-page .gallery-wrapper.end-card .slide-prev, .node-type-media-gallery .gallery-wrapper.end-card .slide-prev, .node-type-tv-episode .gallery-wrapper.end-card .slide-prev, .gallery-recap-block .gallery-wrapper.end-card .slide-prev, .node-type-consumpt-post .gallery-wrapper.end-card .slide-prev, .node-media-gallery .gallery-wrapper.end-card .slide-prev, .node-type-usanetwork-microsite .gallery-wrapper.end-card .slide-prev {
+    right: 105px;
+  }
+}
 .consumptionator-page .gallery-wrapper > .node, .node-type-media-gallery .gallery-wrapper > .node, .node-type-tv-episode .gallery-wrapper > .node, .gallery-recap-block .gallery-wrapper > .node, .node-type-consumpt-post .gallery-wrapper > .node, .node-media-gallery .gallery-wrapper > .node, .node-type-usanetwork-microsite .gallery-wrapper > .node {
   height: 100%;
   width: 100%;

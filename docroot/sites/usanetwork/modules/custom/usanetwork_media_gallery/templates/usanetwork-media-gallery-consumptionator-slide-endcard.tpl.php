@@ -31,7 +31,7 @@
         <div class="up-next"><?php print t('Up next:'); ?></div>
         <?php if (!empty($endcard['title'])): ?>
           <div class="other-gallery-name">
-            <a href="#">
+            <a href="<?php if (!empty($endcard['url'])): ?><?php print $endcard['url']; ?><?php endif; ?>">
               <?php print $endcard['title']; ?>
             </a>
           </div>
@@ -43,7 +43,7 @@
         <?php endif; ?>
         <?php if (!empty($endcard['image'])): ?>
           <div class="other-gallery-image">
-            <a href="#">
+            <a href="<?php if (!empty($endcard['url'])): ?><?php print $endcard['url']; ?><?php endif; ?>">
               <img src="<?php print $endcard['image']; ?>" alt="">
             </a>
           </div>

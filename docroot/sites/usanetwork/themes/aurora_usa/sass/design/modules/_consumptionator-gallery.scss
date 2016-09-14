@@ -252,7 +252,15 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
       }
     }
     &.end-card {
-
+      .slide-prev {
+        @include breakpoint($bp-min-1025-width) {
+          left: auto;
+          right: 90px;
+        }
+        @include breakpoint($bp-min-1901-width) {
+          right: 105px;
+        }
+      }
     }
     > .node {
       height: 100%;

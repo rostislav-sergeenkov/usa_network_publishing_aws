@@ -20,6 +20,7 @@
       <div><?php if (!empty($endcard['title'])): ?><?php print $endcard['title']; ?><?php endif; ?></div>
       <div><?php if (!empty($endcard['caption'])): ?><?php print $endcard['caption']; ?><?php endif; ?></div>
       <div><?php if (!empty($endcard['url'])): ?><?php print $endcard['url']; ?><?php endif; ?></div>
+      <div><?php if (!empty($endcard['share_bar'])): ?><?php print $endcard['share_bar']; ?><?php endif; ?></div>
     </div>
     <div class="slider-counter">
       <span class="gallery-name">

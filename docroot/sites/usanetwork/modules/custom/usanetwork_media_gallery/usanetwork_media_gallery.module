@@ -507,6 +507,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
           'title' => $endcard_next_element->title,
           'caption' => ((!empty($season_num)) ? t('S@season', array('@season' => $season_num)) : '') . ((!empty($episode_num)) ? t(' Episode @episode', array('@episode' => $episode_num)) : ''),
           'url' => url('node/' . $endcard_next_element->nid),
+          'share_bar' => usanetwork_menu_render_sharebar($node, 'node', t('Share this gallery'), $node->title, $slide_variables['info']['description'])
         );
 
         $slides[] = theme('usanetwork_media_gallery_consumptionator_slide_endcard', $slide_variables);

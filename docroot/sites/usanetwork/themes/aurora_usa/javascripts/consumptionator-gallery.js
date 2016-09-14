@@ -679,6 +679,7 @@
   usaGallery.prototype.addSlickEventsCallBacks = function () {
 
     var _ = this,
+        $galleryWrap = _.$galleryWrap,
         $gallery = _.$gallery,
         initInterstitial = _.options.initInterstitial,
         initAdobeTracking = _.options.initAdobeTracking,
@@ -739,6 +740,12 @@
 
         if (initAdobeTracking) {
           _.callAdobeTracking();
+        }
+
+        if ($gallery.find('.slick-active .node-gallery').hasClass('end-card')) {
+          $galleryWrap.addClass('end-card');
+        } else {
+          $galleryWrap.removeClass('end-card');
         }
 
         if (_.$body.hasClass('node-type-media-gallery')) {

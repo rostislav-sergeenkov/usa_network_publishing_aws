@@ -234,6 +234,26 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
       height: auto;
       width: 100%;
     }
+    &:not(.end-card):hover {
+      .gallery-list {
+        .slide {
+          .slide-info {
+            display: block!important;
+          }
+        }
+      }
+      .gallery-pager-wrap {
+        @include breakpoint($bp-min-1025-width) {
+          display: block;
+        }
+      }
+      .share-bar {
+        display: block;
+      }
+    }
+    &.end-card {
+
+    }
     > .node {
       height: 100%;
       width: 100%;
@@ -307,23 +327,6 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             font-size: 30px;
           }
         }
-      }
-    }
-    &:hover {
-      .gallery-list {
-        .slide {
-          .slide-info {
-            display: block!important;
-          }
-        }
-      }
-      .gallery-pager-wrap {
-        @include breakpoint($bp-min-1025-width) {
-          display: block;
-        }
-      }
-      .share-bar {
-        display: block;
       }
     }
     .gallery-list {
@@ -496,6 +499,28 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                 position: static;
                 text-align: center;
                 white-space: normal;
+              }
+            }
+          }
+          &.end-card {
+            .end-card-block {
+              background: black;
+              height: 100%;
+              opacity: 0.7;
+              width: 35%;
+            }
+            .slide-info {
+              @include breakpoint($bp-min-1025-width) {
+                background: rgba(0, 0, 0, 0.5);
+                display: block;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+              }
+              .slider-counter {
+                @include breakpoint($bp-min-1025-width) {
+                  display: none;
+                }
               }
             }
           }

@@ -134,7 +134,6 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
   return array(
     'usanetwork_media_gallery_consumptionator_slide' => array(
       'variables' => array(
-        'gigya_id' => NULL,
         'image' => NULL,
         'info' => array(
           'description' => NULL,
@@ -142,6 +141,16 @@ function usanetwork_media_gallery_theme($existing, $type, $theme, $path) {
       ),
       'path' => $path . '/templates',
       'template' => 'usanetwork-media-gallery-consumptionator-slide',
+    ),
+    'usanetwork_media_gallery_consumptionator_slide_endcard' => array(
+      'variables' => array(
+        'image' => NULL,
+        'info' => array(
+          'description' => NULL,
+        ),
+      ),
+      'path' => $path . '/templates',
+      'template' => 'usanetwork-media-gallery-consumptionator-slide-endcard'
     ),
     'usanetwork_media_gallery_consumptionator_slides' => array(
       'variables' => array(
@@ -319,20 +328,25 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
   if (isset($node->type) && $node->type == 'media_gallery') {
     global $base_url;
+    $node_wrapper = entity_metadata_wrapper('node', $node);
     $slides = array();
     if (isset($node->field_gigya_share_bar)) {
       $sharebar = field_view_field('node', $node, 'field_gigya_share_bar');
       $sharebar['#title'] = t('Share this image');
     }
-    $gallery_field = field_get_items('node', $node, 'field_media_items');
-
-    $image_cover_field = field_get_items('node', $node, 'field_cover_item');
-    if (!empty($image_cover_field)) {
-      array_unshift($gallery_field, reset($image_cover_field));
+    if (!empty($node->field_media_items)) {
+      $gallery_field = $node_wrapper->field_media_items->value() ;
     }
 
-    $endcard_enabled = _usanetwork_get_field_item('node', $node, 'field_enable_nitro', 'value');
-    $endcard_path = _usanetwork_get_field_item('node', $node, 'field_nitro_action_name', 'value');
+    if (!empty($node->field_cover_item)) {
+      $image_cover_field = $node_wrapper->field_cover_item->value() ;
+    }
+    if (!empty($image_cover_field)) {
+      array_unshift($gallery_field, $image_cover_field);
+    }
+
+    $endcard_enabled = $node_wrapper->field_enable_nitro->value();
+    $endcard_path = $node_wrapper->field_nitro_action_name->value();
 
     $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node',$node);
 
@@ -401,10 +415,10 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
           $slide_variables['first_item'] = TRUE;
         }
 
-        $caption_field = field_get_items('file', $gallery_file, 'field_caption');
+        $caption_field = _usanetwork_get_field_item('file', $gallery_file, 'field_caption', 'value');
 
         if (!empty($caption_field)) {
-          $slide_variables['info']['description'] = strip_tags($caption_field[0]['value'], '<a>');
+          $slide_variables['info']['description'] = strip_tags($caption_field, '<a>');
         }
 
         if (!empty($endcard_enabled)) {
@@ -422,9 +436,79 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
         $slides[] = theme('usanetwork_media_gallery_consumptionator_slide', $slide_variables);
       }
-    }
 
-    $node_wrapper = entity_metadata_wrapper('node', $node);
+      if ($node->field_show) {
+        $show_id = $node_wrapper->field_show->value()->nid;
+      }
+      $endcard_next_element = _usanetwork_media_gallery_get_endcard_element($node->nid, $show_id);
+
+      if (!empty($endcard_next_element)) {
+
+        $wrapper_endcard_next_element = entity_metadata_wrapper('node', $endcard_next_element);
+
+        $next_gallery_cover_image = $wrapper_endcard_next_element->field_cover_item->value()->uri;
+
+        if ($endcard_next_element->field_season) {
+          $season = $wrapper_endcard_next_element->field_season->value();
+          $season_num = _usanetwork_get_field_item('node', $season, 'field_season_id', 'value');
+        }
+        if (!empty($endcard_next_element->field_episode)) {
+          $episode = $wrapper_endcard_next_element->field_episode->value();
+          $episode_num = _usanetwork_get_field_item('node', $episode, 'field_episode_number', 'value');
+        }
+
+        $endcard_background = array_shift($gallery_field);
+        if (is_array($endcard_background)) {
+          $endcard_background = (object) $endcard_background;
+        }
+        $info = image_get_info($endcard_background->uri);
+        if (!empty($info) && ($info['width'] > 1868 || $info['height'] > 1094)) {
+          $slide_variables = array(
+            'image' => theme_image(array(
+              'path' => '',
+              'attributes' => array(
+                'data-lazy' => file_create_url(image_style_url('usanetwork_media_gallery_image', $endcard_background->uri)),
+                'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $next_gallery_cover_image)),
+              ),
+            )),
+            'info' => array(
+              'gallery_name' => $node->title,
+              'photo_name' => $endcard_background->filename,
+            ),
+          );
+        } else {
+          $slide_variables = array(
+            'image' => theme_image(array(
+              'path' => '',
+              'attributes' => array(
+                'data-lazy' => file_create_url($endcard_background->uri),
+                'data-preview' => file_create_url(image_style_url('usanetwork_media_gallery_image_preview', $next_gallery_cover_image)),
+                'class' => (!empty($info) && ($info['width'] <= $info['height'])) ? 'portrait' : '',
+              ),
+            )),
+            'info' => array(
+              'gallery_name' => $node->title,
+              'photo_name' => $endcard_background->filename,
+            ),
+          );
+        }
+        $caption_field = _usanetwork_get_field_item('file', $endcard_background, 'field_caption', 'value');
+
+        if (!empty($caption_field)) {
+          $slide_variables['info']['description'] = strip_tags($caption_field, '<a>');
+        }
+
+        $next_gallery_cover_image = _usanetwork_get_field_item('node', $endcard_next_element, 'field_cover_item', 'uri');
+
+        $slide_variables['endcard'] = array(
+          'image' => file_create_url($next_gallery_cover_image),
+          'title' => $endcard_next_element->title,
+          'caption' => ((!empty($season_num)) ? t('S@season', array('@season' => $season_num)) : '') . ((!empty($episode_num)) ? t(' Episode@episode', array('@episode' => $episode_num)) : ''),
+        );
+
+        $slides[] = theme('usanetwork_media_gallery_consumptionator_slide_endcard', $slide_variables);
+      }
+    }
 
     return theme('usanetwork_media_gallery_consumptionator_slides', array(
       'slides' => $slides,
@@ -437,6 +521,65 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
   }
 
   return '';
+}
+
+/*
+ * Get Next Element for EndCard
+ */
+function _usanetwork_media_gallery_get_endcard_element($node_id, $show_id) {
+  $galleries_stack = _usanetwork_media_gallery_get_endcard_gallery_stack($show_id);
+  $next_element = array_slice($galleries_stack, array_search($node_id, array_keys($galleries_stack)) + 1, 1, TRUE);
+  $next_node = node_load(key($next_element));
+
+  return $next_node;
+}
+
+/*
+ * Get List of All Galleries
+ */
+function _usanetwork_media_gallery_get_endcard_gallery_stack($show) {
+  $gallery_stack = array();
+
+  $query = db_select('node', 'node');
+  $query->fields('node', array('nid'));
+  $query->condition('node.type', 'media_gallery');
+  $query->condition('node.status', NODE_PUBLISHED);
+  $query->leftJoin('field_data_field_show', 'field_show', 'field_show.entity_id = node.nid');
+  $query->condition('field_show.field_show_target_id', $show);
+  $query->leftJoin('field_data_field_gallery_type', 'gallery_type', 'gallery_type.entity_id = node.nid');
+
+  $episodic_query = clone $query;
+  $episodic_query->condition('gallery_type.field_gallery_type_value', 'Episodic Gallery');
+  $episodic_query->leftJoin('field_data_field_season', 'season', 'season.entity_id = node.nid');
+  $episodic_query->leftJoin('node', 'tv_season', 'tv_season.nid = season.field_season_target_id');
+  $episodic_query->leftJoin('field_data_field_season_id', 'season_id', 'season_id.entity_id = tv_season.nid');
+  $episodic_query->orderBy('cast(season_id.field_season_id_value as unsigned)', 'DESC');
+  $episodic_query->leftJoin('field_data_field_episode', 'episode', 'episode.entity_id = node.nid');
+  $episodic_query->leftJoin('node', 'tv_episode', 'tv_episode.nid = episode.field_episode_target_id');
+  $episodic_query->leftJoin('field_data_field_episode_number', 'episode_number', 'episode_number.entity_id = tv_episode.nid');
+  $episodic_query->orderBy('cast(episode_number.field_episode_number_value as unsigned)', 'DESC');
+  $result_episodic_gallery = $episodic_query->execute()->fetchAllKeyed(0,0);
+  $gallery_stack = $gallery_stack + $result_episodic_gallery;
+
+  $gif_query = clone $query;
+  $gif_query->condition('gallery_type.field_gallery_type_value', 'GIF Gallery');
+  $gif_query->orderBy('node.created', 'DESC');
+  $result_gif_gallery = $gif_query->execute()->fetchAllKeyed(0,0);
+  $gallery_stack = $gallery_stack + $result_gif_gallery;
+
+  $other_query = clone $query;
+  $other_query->condition('gallery_type.field_gallery_type_value', '0');
+  $other_query->orderBy('node.created', 'DESC');
+  $result_other_gallery = $other_query->execute()->fetchAllKeyed(0,0);
+  $gallery_stack = $gallery_stack + $result_other_gallery;
+
+  $character_query = clone $query;
+  $character_query->condition('gallery_type.field_gallery_type_value', 'Character Gallery');
+  $character_query->orderBy('node.created', 'DESC');
+  $result_character_gallery = $character_query->execute()->fetchAllKeyed(0,0);
+  $gallery_stack = $gallery_stack + $result_character_gallery;
+
+  return $gallery_stack;
 }
 
 /**

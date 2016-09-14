@@ -85,27 +85,29 @@
       ////////////////////////////////////////////
       // Act on twitter embeds, when lib ready. //
       ////////////////////////////////////////////
-      twttr.ready(function(twttr) {
-        $('img[data-social-option=tw]:not(.social-media-processed)', context).each(function() {
-          var $that = $(this);
-          var value = $(this).data('socialValue').match(/\w*$/)[0];
+      if (window.twttr !== 'undefined' && typeof twttr.ready === 'function') {
+        twttr.ready(function (twttr) {
+          $('img[data-social-option=tw]:not(.social-media-processed)', context).each(function () {
+            var $that = $(this);
+            var value = $(this).data('socialValue').match(/\w*$/)[0];
 
-          if (!value) {
-            return;
-          }
+            if (!value) {
+              return;
+            }
 
-          var $wrapper = $(self._getWrapper($that));
-          $that.replaceWith($wrapper);
+            var $wrapper = $(self._getWrapper($that));
+            $that.replaceWith($wrapper);
 
-          twttr.widgets.createTweet(value, $wrapper[0], {
-            conversation: 'none', // or all
-            cards: 'visible', // or hidden
-            linkColor: '#cc0000', // default is blue
-            theme: 'light' // or dark
+            twttr.widgets.createTweet(value, $wrapper[0], {
+              conversation: 'none', // or all
+              cards: 'visible', // or hidden
+              linkColor: '#cc0000', // default is blue
+              theme: 'light' // or dark
+            });
+
           });
-
         });
-      });
+      }
 
       //////////////////////////////
       // Act on instagram embeds. //

@@ -82,7 +82,7 @@ function usanetwork_context_init() {
  */
 function usanetwork_context_node_view($node, $view_mode, $langcode) {
   if ($plugin = context_get_plugin('condition', 'new_design_consumpt')) {
-    $plugin->execute($node);
+    $plugin->execute($node, $view_mode);
   }
 }
 

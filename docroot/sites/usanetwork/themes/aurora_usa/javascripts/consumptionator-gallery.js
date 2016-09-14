@@ -163,8 +163,8 @@
 
       if ($('body').hasClass('node-type-tv-episode')) {
         if (Drupal.settings.umbel_settings !== undefined) {
-          var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
-              pageName = Drupal.settings.umbel_settings.usa_umbel_param_2;
+          var showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '',
+              pageName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_2') ? Drupal.settings.umbel_settings.usa_umbel_param_2 : '';
         }
         s.linkTrackVars = 'events,prop3,prop4,prop5';
         s.prop3 = 'Gallery';
@@ -174,8 +174,8 @@
 
       if ($('body').hasClass('node-type-media-gallery')) {
         if (Drupal.settings.umbel_settings !== undefined) {
-          var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
-              galleryName = Drupal.settings.umbel_settings.usa_umbel_param_3,
+          var showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '',
+              galleryName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_3') ? Drupal.settings.umbel_settings.usa_umbel_param_3 : '',
               slideNumber = parseInt($('.gallery-wrapper .slide.slick-active').data('slick-index')) + 1;
           s.pageName = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : Image ' + slideNumber;
         }

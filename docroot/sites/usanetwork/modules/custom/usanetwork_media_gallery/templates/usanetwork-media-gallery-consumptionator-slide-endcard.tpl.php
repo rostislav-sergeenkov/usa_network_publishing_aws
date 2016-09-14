@@ -12,6 +12,11 @@
   <div class="slide-info">
     <div class="end-card-description">
       <div class="end-card-description-wrapper">
+        <?php if (!empty($endcard['share_bar'])): ?>
+          <div class="end-card-sharebar">
+            <?php print $endcard['share_bar']; ?>
+          </div>
+        <?php endif; ?>
         <?php if (!empty($info['description'])): ?>
           <div class="description"><?php print $info['description']; ?></div>
         <?php endif; ?>

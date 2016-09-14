@@ -2,7 +2,7 @@
 
   Drupal.behaviors.consumptionator_sticky_share = {
     stickySharePosition: function () {
-      if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
+      if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches && !$('html').hasClass('touch')) {
         if ($('.right-rail-line').hasClass('bottom-visible')) {
           var stickyShare = $('.sticky-share'),
               stickyShareHeight = stickyShare.outerHeight(),
@@ -13,8 +13,6 @@
               stickyShareOffsetTop = $('.sticky-share').offset()['top'] - $(window).scrollTop(),
               topCoefficient = newDesign? 195/1600: 150/1901,
               currentCoefficient = stickyShareOffsetTop/window.innerWidth;
-          console.info(bottomLinePosition - stickySharePosition - stickyShareHeight - bottomPadding);
-          console.info(currentCoefficient, topCoefficient);
           if((bottomLinePosition - stickySharePosition - stickyShareHeight) < bottomPadding) {
             stickyShare.css({
               bottom: bottomPadding + 'px',
@@ -35,7 +33,7 @@
       } else {
         $('.sticky-share').removeAttr('style');
       }
-      if ($('body').hasClass('show-new-design') && window.matchMedia("(min-width: " + window_size_desktop_medium + "px)").matches) {
+      if ($('body').hasClass('show-new-design') && window.matchMedia("(min-width: " + window_size_desktop_medium + "px)").matches && !$('html').hasClass('touch')) {
         if ($('.right-rail-line').hasClass('description-visible') && $('header').hasClass('off-elements') && $('.sticky-share').css('position') == 'fixed') {
           var stickyShare = $('.sticky-share'),
               leftOffset = parseFloat(stickyShare.css('left')),

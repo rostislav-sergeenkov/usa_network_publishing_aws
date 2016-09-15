@@ -15533,18 +15533,18 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   }
 }
 @media (min-width: 769px) {
-  .sub-menu-is-sticky .right-rail-line .sticky-share {
+  .no-touch .sub-menu-is-sticky .right-rail-line .sticky-share {
     position: fixed;
     top: 7.89058vw;
   }
 }
 @media (min-width: 1901px) {
-  .sub-menu-is-sticky .right-rail-line .sticky-share {
+  .no-touch .sub-menu-is-sticky .right-rail-line .sticky-share {
     top: 150px;
   }
 }
 @media (min-width: 2500px) {
-  .sub-menu-is-sticky .right-rail-line .sticky-share {
+  .no-touch .sub-menu-is-sticky .right-rail-line .sticky-share {
     left: calc((100% - 2500px)/2);
   }
 }

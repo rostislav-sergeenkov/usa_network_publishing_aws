@@ -251,6 +251,89 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
         display: block;
       }
     }
+    &.end-card {
+      .share-bar {
+        .gig-button-container {
+          td > div {
+            &:before {
+              @include breakpoint($bp-1024-width) {
+                position: absolute;
+              }
+            }
+            &:after {
+              @include breakpoint($bp-1024-width) {
+                background: white;
+                border-radius: 20%;
+                content: '';
+                display: block;
+                height: 25px;
+                margin-left: 2px;
+                margin-top: -5px;
+                position: absolute;
+                width: 23px;
+                z-index: -1;
+              }
+              @include breakpoint($bp-640-width) {
+                height: 28px;
+                margin-left: 1px;
+                margin-top: -6px;
+                width: 28px;
+              }
+            }
+          }
+          &.gig-button-container-facebook {
+            td > div {
+              &:before {
+                @include breakpoint($bp-1024-width) {
+                  color: $usa-video-helper-facebook;
+                }
+              }
+            }
+          }
+          &.gig-button-container-twitter {
+            td > div {
+              &:before {
+                @include breakpoint($bp-1024-width) {
+                  color: $usa-video-helper-twitter;
+                }
+              }
+            }
+          }
+          &.gig-button-container-tumblr {
+            td > div {
+              &:before {
+                @include breakpoint($bp-1024-width) {
+                  color: $usa-video-helper-tumblr;
+                }
+              }
+            }
+          }
+          &.gig-button-container-pinterest {
+            td > div {
+              &:before {
+                @include breakpoint($bp-1024-width) {
+                  color: $usa-video-helper-pinterest;
+                }
+              }
+            }
+          }
+          &.gig-button-container-share {
+            td > div {
+              &:before {
+                @include breakpoint($bp-1024-width) {
+                  color: white;
+                }
+              }
+              &:after {
+                @include breakpoint($bp-1024-width) {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     > .node {
       height: 100%;
       width: 100%;
@@ -952,7 +1035,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
               width: get-vw(32px, 1280)!important;
             }
             @include breakpoint($bp-min-2500-width) {
-              mheight: 62.5px!important;
+              height: 62.5px!important;
               width: 62.5px!important;
             }
             &:before {

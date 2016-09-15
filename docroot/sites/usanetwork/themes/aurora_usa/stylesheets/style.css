@@ -11804,6 +11804,63 @@ footer h2 {
 .consumptionator-page .gallery-wrapper:not(.end-card):hover .share-bar, .node-type-media-gallery .gallery-wrapper:not(.end-card):hover .share-bar, .node-type-tv-episode .gallery-wrapper:not(.end-card):hover .share-bar, .gallery-recap-block .gallery-wrapper:not(.end-card):hover .share-bar, .node-type-consumpt-post .gallery-wrapper:not(.end-card):hover .share-bar, .node-media-gallery .gallery-wrapper:not(.end-card):hover .share-bar, .node-type-usanetwork-microsite .gallery-wrapper:not(.end-card):hover .share-bar {
   display: block;
 }
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before {
+    position: absolute;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after {
+    background: white;
+    border-radius: 20%;
+    content: '';
+    display: block;
+    height: 25px;
+    margin-left: 2px;
+    margin-top: -5px;
+    position: absolute;
+    width: 23px;
+    z-index: -1;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container td > div:after {
+    height: 28px;
+    margin-left: 1px;
+    margin-top: -6px;
+    width: 28px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-facebook td > div:before, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-facebook td > div:before, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-facebook td > div:before, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-facebook td > div:before, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-facebook td > div:before, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-facebook td > div:before, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-facebook td > div:before {
+    color: #3b5998;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-twitter td > div:before, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-twitter td > div:before, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-twitter td > div:before, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-twitter td > div:before, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-twitter td > div:before, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-twitter td > div:before, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-twitter td > div:before {
+    color: #00aced;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-tumblr td > div:before, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-tumblr td > div:before, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-tumblr td > div:before, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-tumblr td > div:before, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-tumblr td > div:before, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-tumblr td > div:before, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-tumblr td > div:before {
+    color: #32506d;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-pinterest td > div:before, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-pinterest td > div:before, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-pinterest td > div:before, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-pinterest td > div:before, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-pinterest td > div:before, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-pinterest td > div:before, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-pinterest td > div:before {
+    color: #cb2027;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:before, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:before, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:before, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:before, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:before, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:before, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:before {
+    color: white;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:after, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:after, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:after, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:after, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:after, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:after, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container.gig-button-container-share td > div:after {
+    display: none;
+  }
+}
 .consumptionator-page .gallery-wrapper > .node, .node-type-media-gallery .gallery-wrapper > .node, .node-type-tv-episode .gallery-wrapper > .node, .gallery-recap-block .gallery-wrapper > .node, .node-type-consumpt-post .gallery-wrapper > .node, .node-media-gallery .gallery-wrapper > .node, .node-type-usanetwork-microsite .gallery-wrapper > .node {
   height: 100%;
   width: 100%;
@@ -12627,7 +12684,7 @@ footer h2 {
 }
 @media (min-width: 2500px) {
   .consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div {
-    mheight: 62.5px !important;
+    height: 62.5px !important;
     width: 62.5px !important;
   }
 }

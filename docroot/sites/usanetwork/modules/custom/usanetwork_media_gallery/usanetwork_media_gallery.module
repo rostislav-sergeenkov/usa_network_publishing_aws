@@ -502,7 +502,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
           $next_gallery_cover_image = _usanetwork_get_field_item('node', $endcard_next_element, 'field_cover_item', 'uri');
 
           $slide_variables['endcard'] = array(
-            'image' => file_create_url($next_gallery_cover_image),
+            'image' => file_create_url(image_style_url('640x360_ndaspotm', $next_gallery_cover_image)),
             'title' => $endcard_next_element->title,
             'caption' => ((!empty($season_num)) ? t('S@season', array('@season' => $season_num)) : '') . ((!empty($episode_num)) ? t(' Episode @episode', array('@episode' => $episode_num)) : ''),
             'url' => url('node/' . $endcard_next_element->nid),

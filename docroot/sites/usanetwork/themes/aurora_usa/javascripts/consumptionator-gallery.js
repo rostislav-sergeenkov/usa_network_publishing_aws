@@ -158,8 +158,11 @@
   //=============================
 
   // AdobeTracking
-  usaGallery.prototype.callAdobeTracking = function () {
+  usaGallery.prototype.callAdobeTracking = function (_this) {
     if (typeof s_gi != 'undefined') {
+
+      var _ = _this,
+          $galleryWrap = _.$galleryWrap;
 
       if ($('body').hasClass('node-type-tv-episode')) {
         if (Drupal.settings.umbel_settings !== undefined) {
@@ -176,8 +179,9 @@
         if (Drupal.settings.umbel_settings !== undefined) {
           var showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '',
               galleryName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_3') ? Drupal.settings.umbel_settings.usa_umbel_param_3 : '',
-              slideNumber = parseInt($('.gallery-wrapper .slide.slick-active').data('slick-index')) + 1;
-          s.pageName = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : Image ' + slideNumber;
+              slideNumber = parseInt($('.gallery-wrapper .slide.slick-active').data('slick-index')) + 1,
+              pageNameEnd = ($galleryWrap.hasClass('end-card'))? 'Gallery End Card': 'Image ' + slideNumber;
+          s.pageName = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + pageNameEnd;
         }
       }
 
@@ -679,6 +683,7 @@
   usaGallery.prototype.addSlickEventsCallBacks = function () {
 
     var _ = this,
+        $galleryWrap = _.$galleryWrap,
         $gallery = _.$gallery,
         initInterstitial = _.options.initInterstitial,
         initAdobeTracking = _.options.initAdobeTracking,
@@ -734,11 +739,17 @@
         }
       })
       .on('afterChange', function (event, slick, currentSlide) {
+        if ($gallery.find('.slick-active .node-gallery').hasClass('end-card')) {
+          $galleryWrap.addClass('end-card');
+        } else {
+          $galleryWrap.removeClass('end-card');
+        }
+
         _.gigyaSharebar(currentSlide);
         _.movePagerItems(_, currentSlide);
 
         if (initAdobeTracking) {
-          _.callAdobeTracking();
+          _.callAdobeTracking(_);
         }
 
         if (_.$body.hasClass('node-type-media-gallery')) {

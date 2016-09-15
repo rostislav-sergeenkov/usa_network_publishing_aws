@@ -251,17 +251,6 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
         display: block;
       }
     }
-    &.end-card {
-      .slide-prev {
-        @include breakpoint($bp-min-1025-width) {
-          left: auto;
-          right: 90px;
-        }
-        @include breakpoint($bp-min-1901-width) {
-          right: 105px;
-        }
-      }
-    }
     > .node {
       height: 100%;
       width: 100%;
@@ -512,18 +501,15 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
           }
           &.end-card {
             .end-card-block {
+              background: rgba(0, 0, 0, 0.7);
               height: 100%;
               position: absolute;
               right: 0;
               top: 0;
               width: 35%;
-              .end-card-block-back {
-                background: black;
-                height: 100%;
-                left: 0;
-                opacity: 0.7;
-                position: absolute;
-                top: 0;
+              @include breakpoint($bp-1024-width) {
+                height: auto;
+                padding-top: 56.25%;
                 width: 100%;
               }
               .end-card-block-wrapper {
@@ -537,11 +523,35 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                 @include breakpoint($bp-min-2500-width) {
                   padding: 64.5px;
                 }
+                @include breakpoint($bp-1024-width) {
+                  display: block;
+                  padding: 0;
+                }
               }
               .end-card-block-meta {
                 display: table-cell;
                 vertical-align: middle;
                 width: 100%;
+                @include breakpoint($bp-1024-width) {
+                  display: block;
+                  height: 100%;
+                  padding: get-vw(40px, 768);
+                }
+                &:before {
+                  @include breakpoint($bp-1024-width) {
+                    content: '';
+                    display: inline-block;
+                    height: 100%;
+                    vertical-align: middle;
+                  }
+                }
+              }
+              .meta-text {
+                @include breakpoint($bp-1024-width) {
+                  display: inline-block;
+                  vertical-align: middle;
+                  width: 30%;
+                }
               }
               .up-next {
                 color: white;
@@ -553,14 +563,22 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                   font-size: 58.6px;
                   margin-bottom: 58.6px;
                 }
+                @include breakpoint($bp-1024-width) {
+                  font-size: get-vw(30px, 768);
+                  margin-bottom: get-vw(15px, 768);
+                }
               }
               .other-gallery-name {
                 font-family: $avalon-book;
                 font-size: get-vw(30px, 1280);
                 line-height: 1.3;
                 text-transform: uppercase;
+                word-break: break-all;
                 @include breakpoint($bp-min-2500-width) {
                   font-size: 58.6px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: get-vw(30px, 768);
                 }
                 a {
                   color: white;
@@ -574,6 +592,9 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                 @include breakpoint($bp-min-2500-width) {
                   font-size: 35.2px;
                 }
+                @include breakpoint($bp-1024-width) {
+                  font-size: get-vw(18px, 768);
+                }
               }
               .other-gallery-image {
                 height: auto;
@@ -583,6 +604,13 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                 width: 100%;
                 @include breakpoint($bp-min-2500-width) {
                   margin-top: 58.6px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  display: inline-block;
+                  margin-top: 0;
+                  padding-top: calc(67%*0.5625);
+                  vertical-align: middle;
+                  width: 67%;
                 }
                 img {
                   height: 100%;
@@ -598,12 +626,15 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                 background: rgba(0, 0, 0, 0.5);
                 display: block;
                 position: absolute;
-                padding: get-vw(30px, 1280) 35% get-vw(30px, 1280) get-vw(30px, 1280);
+                padding: get-vw(30px, 1280) 35% get-vw(30px, 1280) 80px;
                 height: 100%;
                 width: 100%;
               }
+              @include breakpoint($bp-min-1281-width) {
+                padding: get-vw(30px, 1280) 35% get-vw(30px, 1280) get-vw(60px, 1280);
+              }
               @include breakpoint($bp-min-2500-width) {
-                padding: 58.6px 35% 58.6px 58.6px;
+                padding: 58.6px 35% 58.6px 117.2px;
               }
               .end-card-description {
                 @include breakpoint($bp-min-1025-width) {
@@ -864,6 +895,130 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
       }
       &.slick-disabled {
         display: none !important;
+      }
+    }
+    .end-card-sharebar {
+      @include breakpoint($bp-min-1025-width) {
+        display: block;
+      }
+      @include breakpoint($bp-1024-width) {
+        display: none;
+      }
+      .field-label {
+        display: none;
+      }
+      .share-title-first-line {
+        color: white;
+        font-family: $avalon-medium;
+        font-size: get-vw(30px, 1280);
+        line-height: 1.4;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 58.6px;
+        }
+      }
+      .share-title-second-line {
+        color: white;
+        font-family: $avalon-book;
+        font-size: get-vw(30px, 1280);
+        line-height: 1.3;
+        margin-bottom: get-vw(12.8px, 1280);
+        text-transform: uppercase;
+        word-break: break-all;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 58.6px;
+          margin-bottom: 25px;
+        }
+      }
+      .field-type-gigya-sharebar {
+        @include breakpoint($bp-min-1025-width) {
+          margin-bottom: get-vw(20px, 1280);
+        }
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 39px;
+        }
+        .gig-button-container {
+          @include breakpoint($bp-min-1025-width) {
+            margin-bottom: 0;
+            margin-right: get-vw(15px, 1280);
+            padding: 0;
+          }
+          @include breakpoint($bp-min-2500-width) {
+            margin-right: 29.3px;
+          }
+          td > div {
+            @include breakpoint($bp-min-1025-width) {
+              height: get-vw(32px, 1280)!important;
+              width: get-vw(32px, 1280)!important;
+            }
+            @include breakpoint($bp-min-2500-width) {
+              mheight: 62.5px!important;
+              width: 62.5px!important;
+            }
+            &:before {
+              @include breakpoint($bp-min-1025-width) {
+                border-radius: get-vw(5px, 1280);
+                color: white;
+                font-size: get-vw(24px, 1280)!important;
+                padding: get-vw(4px, 1280);
+              }
+              @include breakpoint($bp-min-2500-width) {
+                border-radius: 9.8px;
+                font-size: 46.9px!important;
+                padding: 7.8px;
+              }
+            }
+          }
+          &.gig-button-container-facebook {
+            td > div {
+              &:before {
+                @include breakpoint($bp-min-1025-width) {
+                  background: $usa-video-helper-facebook;
+                  content: '\e618';
+                }
+              }
+            }
+          }
+          &.gig-button-container-twitter {
+            td > div {
+              &:before {
+                @include breakpoint($bp-min-1025-width) {
+                  background: $usa-video-helper-twitter;
+                  content: '\e61a';
+                }
+              }
+            }
+          }
+          &.gig-button-container-tumblr {
+            td > div {
+              &:before {
+                @include breakpoint($bp-min-1025-width) {
+                  background: $usa-video-helper-tumblr;
+                  content: '\e619';
+                }
+              }
+            }
+          }
+          &.gig-button-container-pinterest {
+            td > div {
+              &:before {
+                @include breakpoint($bp-min-1025-width) {
+                  background: $usa-video-helper-pinterest;
+                  content: '\e617';
+                }
+              }
+            }
+          }
+          &.gig-button-container-share {
+            td > div {
+              &:before {
+                @include breakpoint($bp-min-1025-width) {
+                  background: transparent;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

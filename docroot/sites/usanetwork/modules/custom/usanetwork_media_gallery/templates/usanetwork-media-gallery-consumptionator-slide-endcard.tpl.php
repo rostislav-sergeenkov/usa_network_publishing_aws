@@ -14,6 +14,10 @@
       <div class="end-card-description-wrapper">
         <?php if (!empty($endcard['share_bar'])): ?>
           <div class="end-card-sharebar">
+            <div class="share-title-first-line"><?php print t('Share:'); ?></div>
+            <?php if (!empty($info['gallery_name'])): ?>
+              <div class="share-title-second-line"><?php print $info['gallery_name']; ?></div>
+            <?php endif; ?>
             <?php print $endcard['share_bar']; ?>
           </div>
         <?php endif; ?>
@@ -30,22 +34,23 @@
     </div>
   </div>
   <div class="end-card-block">
-    <div class="end-card-block-back"></div>
     <div class="end-card-block-wrapper">
       <div class="end-card-block-meta">
-        <div class="up-next"><?php print t('Up next:'); ?></div>
-        <?php if (!empty($endcard['title'])): ?>
-          <div class="other-gallery-name">
-            <a href="<?php if (!empty($endcard['url'])): ?><?php print $endcard['url']; ?><?php endif; ?>">
-              <?php print $endcard['title']; ?>
-            </a>
-          </div>
-        <?php endif; ?>
-        <?php if (!empty($endcard['caption'])): ?>
-          <div class="other-gallery-episode">
-            <?php print $endcard['caption']; ?>
-          </div>
-        <?php endif; ?>
+        <div class="meta-text">
+          <div class="up-next"><?php print t('Up next:'); ?></div>
+          <?php if (!empty($endcard['title'])): ?>
+            <div class="other-gallery-name">
+              <a href="<?php if (!empty($endcard['url'])): ?><?php print $endcard['url']; ?><?php endif; ?>">
+                <?php print $endcard['title']; ?>
+              </a>
+            </div>
+          <?php endif; ?>
+          <?php if (!empty($endcard['caption'])): ?>
+            <div class="other-gallery-episode">
+              <?php print $endcard['caption']; ?>
+            </div>
+          <?php endif; ?>
+        </div>
         <?php if (!empty($endcard['image'])): ?>
           <div class="other-gallery-image">
             <a href="<?php if (!empty($endcard['url'])): ?><?php print $endcard['url']; ?><?php endif; ?>">

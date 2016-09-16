@@ -67,7 +67,8 @@
         prevArrow: '.slide-prev',
         nextArrow: '.slide-next',
         slideCounter: '.slider-counter .slide-index',
-        shareBar: '.field-name-field-gigya-share-bar > div',
+        endcardShareBar: '.end-card-sharebar .field-name-field-gigya-share-bar > div',
+        shareBar: '.share-bar .field-name-field-gigya-share-bar > div',
         // interstitial selectors
         interstitialWrap: '.interstitial-wrap',
         interstitialBlock: '.interstitial-block',
@@ -124,6 +125,7 @@
       _.$interstitialWrap = $(element).find(_.options.interstitialWrap);
       _.$interstitialBlock = $(element).find(_.options.interstitialBlock);
       _.$interstitialNext = $(element).find(_.options.interstitialNext);
+      _.$endcardShareBar = $(element).find(_.options.endcardShareBar);
       _.$shareBar = $(element).find(_.options.shareBar);
       _.$prevArrow = $(element).find(_.options.prevArrow);
       _.$nextArrow = $(element).find(_.options.nextArrow);
@@ -292,13 +294,15 @@
           galleryId = _.data.galleryId,
           gallerySharingPath = _.data.gallerySharingPath,
           $gallery = _.$gallery,
+          $endcardSharebar = _.$endcardShareBar,
           $sharebar = _.$shareBar,
           $slide = $gallery.find('.slick-active'),
+          endcard = $slide.children().hasClass('end-card'),
           description = $slide.find('.slide-info .description').text().trim(),
           image = $slide.find('.asset-img img'),
           imageUrl = image.attr('src') ? image.attr('src'): image.attr('data-lazy'),
-          link_back = (_.data.gallerySharingPath == '')? window.location.href.split('#')[0]: _.data.gallerySharingPath,
-          slideIndex;
+          link_back = (gallerySharingPath == '')? window.location.href.split('#')[0]: gallerySharingPath,
+          slideIndex = '';
 
       if ($sharebar.length > 0) {
 
@@ -321,10 +325,12 @@
           galleryId = galleryId + "-";
         }
 
-        if (currentSlide > 0 || $gallery.closest('.description-item[data-tab="actor-bio"]').length > 0) {
-          slideIndex = '#' + galleryId + (currentSlide + 1);
-        } else {
-          slideIndex = '';
+        if(!endcard) {
+          if (currentSlide > 0 || $gallery.closest('.description-item[data-tab="actor-bio"]').length > 0) {
+            slideIndex = '#' + galleryId + (currentSlide + 1);
+          } else {
+            slideIndex = '';
+          }
         }
 
         if ($('body').hasClass('page-node-microsite')) {

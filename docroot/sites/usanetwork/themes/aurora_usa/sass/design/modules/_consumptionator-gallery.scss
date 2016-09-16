@@ -689,7 +689,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                 margin-top: get-vw(60px, 1280);
                 position: relative;
                 width: 100%;
-                @include breakpoint($bp-min-1601-width) {
+                @include breakpoint($bp-min-2500-width) {
                   margin-top: 117.2px;
                 }
                 @include breakpoint($bp-1024-width) {

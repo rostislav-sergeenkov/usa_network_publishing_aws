@@ -12284,7 +12284,7 @@ footer h2 {
   position: relative;
   width: 100%;
 }
-@media (min-width: 1601px) {
+@media (min-width: 2500px) {
   .consumptionator-page .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .node-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image {
     margin-top: 117.2px;
   }

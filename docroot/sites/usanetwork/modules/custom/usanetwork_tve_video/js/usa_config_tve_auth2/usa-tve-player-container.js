@@ -238,9 +238,9 @@
               });
 
               // check free full episode
-              if (isMobile && !isEntitlement && isFullEpisode) {
-                scope.hidePlayerSpinner = true;
-              }
+              // if (isMobile && !isEntitlement && isFullEpisode) {
+              //   scope.hidePlayerSpinner = true;
+              // }
               if (isMobile && !usaSocialService.isSocialBlock) {
                 usaSocialService.initSocialBlock();
               }
@@ -432,7 +432,6 @@
               };
 
               function initAutoPlay() {
-
                 if (isMicrosite) {
                   if (scope.statusSetToken) {
                     hidePlayerThumbnail();
@@ -447,6 +446,8 @@
                     if (scope.statusPlayerLoaded && scope.statusSetToken) {
                       $pdk.controller.clickPlayButton();
                     }
+                  } else if (isMobile && !isEntitlement && isFullEpisode) {
+                    hidePlayerThumbnail();
                   } else {
                     if (scope.statusPlayerLoaded && !isMobile) {
                       $pdk.controller.clickPlayButton();

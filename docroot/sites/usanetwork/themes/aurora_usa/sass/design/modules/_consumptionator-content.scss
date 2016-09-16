@@ -1403,7 +1403,7 @@
         }
       }
     }
-    .sub-menu-is-sticky & {
+    .no-touch .sub-menu-is-sticky & {
       @include breakpoint($bp-min-769-width) {
         position: fixed;
         top: get-vw(150px, 1901);

@@ -16,9 +16,11 @@
           Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
         }
         if($body.hasClass('sub-menu-is-sticky')) {
-          $body.css('margin-top', header_submenu_h);
+          // $body.css('margin-top', header_submenu_h);
+          $('#header').css('padding-bottom', header_submenu_h);
         } else {
-          $body.css('margin-top', 0);
+          // $body.css('margin-top', 0);
+          $('#header').css('padding-bottom', 0);
         }
       }
 

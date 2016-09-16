@@ -768,6 +768,12 @@
     });
   };
 
+  usaGallery.prototype.checkEndcard = function (_this) {
+    var _ = _this,
+        $galleryWrap = _.$galleryWrap;
+    return $galleryWrap.hasClass('gallery-with-endcard');
+  };
+
   //=============================
   // Init usaGallery app
   //=============================
@@ -776,6 +782,10 @@
     var _ = this;
 
     if (creation && !_.$gallery.hasClass('gallery-initialized')) {
+
+      if(_.checkEndcard(_)) {
+        _.options.gallery.infinite = true;
+      }
 
       _.addSlickEventsCallBacks();
       _.$gallery

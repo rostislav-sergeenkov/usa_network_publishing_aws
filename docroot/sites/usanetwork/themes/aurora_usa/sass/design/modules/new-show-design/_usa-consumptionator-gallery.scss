@@ -368,7 +368,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         right: auto;
         width: 100%;
       }
-      h3.field-label {
+      h3.field-label, h3.endcard-label {
         color: $free-full-episodes;
         font-size: 14px;
         font-family: $fira-sans-regular;
@@ -383,6 +383,9 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         @include breakpoint($bp-640-width) {
           text-align: center;
         }
+      }
+      h3.endcard-label {
+        display: none;
       }
       .field-name-field-gigya-share-bar {
         margin-bottom: 0;
@@ -480,6 +483,21 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
       }
       .share-bar {
         display: block;
+      }
+    }
+    &.end-card {
+      .share-bar {
+        h3.endcard-label {
+          display: none;
+          @include breakpoint($bp-1024-width) {
+            display: block;
+          }
+        }
+        h3.field-label {
+          @include breakpoint($bp-1024-width) {
+            display: none;
+          }
+        }
       }
     }
     .gallery-list {

@@ -687,22 +687,21 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
               .other-gallery-image {
                 height: auto;
                 margin-top: get-vw(60px, 1280);
-                padding-top: 56.25%;
                 position: relative;
                 width: 100%;
-                @include breakpoint($bp-min-2500-width) {
+                @include breakpoint($bp-min-1601-width) {
                   margin-top: 117.2px;
                 }
                 @include breakpoint($bp-1024-width) {
                   margin-top: 0;
-                  padding-top: calc(67%*0.5625);
                   width: 67%;
                 }
+                a {
+                  display: block;
+                  outline: none;
+                }
                 img {
-                  height: 100%;
-                  left: 0;
-                  position: absolute;
-                  top: 0;
+                  height: auto;
                   width: 100%;
                 }
               }

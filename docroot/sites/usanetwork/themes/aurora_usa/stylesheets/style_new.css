@@ -17402,7 +17402,6 @@ html.no-scroll, body.no-scroll {
 .show-new-design.consumptionator-page .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design .node-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image {
   height: auto;
   margin-top: 4.6875vw;
-  padding-top: 56.25%;
   position: relative;
   width: 100%;
 }
@@ -17414,15 +17413,15 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 1024px) {
   .show-new-design.consumptionator-page .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design .node-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image {
     margin-top: 0;
-    padding-top: calc(67%*0.5625);
     width: 67%;
   }
 }
+.show-new-design.consumptionator-page .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image a, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image a, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image a, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image a, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image a, .show-new-design .node-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image a, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image a {
+  display: block;
+  outline: none;
+}
 .show-new-design.consumptionator-page .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image img, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image img, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image img, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image img, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image img, .show-new-design .node-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image img, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block .other-gallery-image img {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
+  height: auto;
   width: 100%;
 }
 @media (min-width: 1025px) {

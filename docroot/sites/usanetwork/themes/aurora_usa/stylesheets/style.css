@@ -11805,6 +11805,16 @@ footer h2 {
   display: block;
 }
 @media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar h3.endcard-label, .node-type-media-gallery .gallery-wrapper.end-card .share-bar h3.endcard-label, .node-type-tv-episode .gallery-wrapper.end-card .share-bar h3.endcard-label, .gallery-recap-block .gallery-wrapper.end-card .share-bar h3.endcard-label, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar h3.endcard-label, .node-media-gallery .gallery-wrapper.end-card .share-bar h3.endcard-label, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar h3.endcard-label {
+    display: block;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-page .gallery-wrapper.end-card .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper.end-card .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper.end-card .share-bar h3.field-label, .gallery-recap-block .gallery-wrapper.end-card .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar h3.field-label, .node-media-gallery .gallery-wrapper.end-card .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar h3.field-label {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
   .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container td > div:before {
     position: absolute;
   }
@@ -11910,7 +11920,7 @@ footer h2 {
     width: 100%;
   }
 }
-.consumptionator-page .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .gallery-recap-block .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label {
+.consumptionator-page .gallery-wrapper .share-bar h3.field-label, .consumptionator-page .gallery-wrapper .share-bar h3.endcard-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.endcard-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.endcard-label, .gallery-recap-block .gallery-wrapper .share-bar h3.field-label, .gallery-recap-block .gallery-wrapper .share-bar h3.endcard-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.endcard-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.endcard-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.endcard-label {
   color: #d0d0d2;
   font-size: 14px;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
@@ -11920,15 +11930,18 @@ footer h2 {
   text-transform: uppercase;
 }
 @media (max-width: 1280px) {
-  .consumptionator-page .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .gallery-recap-block .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label {
+  .consumptionator-page .gallery-wrapper .share-bar h3.field-label, .consumptionator-page .gallery-wrapper .share-bar h3.endcard-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.endcard-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.endcard-label, .gallery-recap-block .gallery-wrapper .share-bar h3.field-label, .gallery-recap-block .gallery-wrapper .share-bar h3.endcard-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.endcard-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.endcard-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.endcard-label {
     font-size: 12px;
     line-height: 18px;
   }
 }
 @media (max-width: 640px) {
-  .consumptionator-page .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .gallery-recap-block .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label {
+  .consumptionator-page .gallery-wrapper .share-bar h3.field-label, .consumptionator-page .gallery-wrapper .share-bar h3.endcard-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.endcard-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.field-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.endcard-label, .gallery-recap-block .gallery-wrapper .share-bar h3.field-label, .gallery-recap-block .gallery-wrapper .share-bar h3.endcard-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.field-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.endcard-label, .node-media-gallery .gallery-wrapper .share-bar h3.field-label, .node-media-gallery .gallery-wrapper .share-bar h3.endcard-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.field-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.endcard-label {
     text-align: center;
   }
+}
+.consumptionator-page .gallery-wrapper .share-bar h3.endcard-label, .node-type-media-gallery .gallery-wrapper .share-bar h3.endcard-label, .node-type-tv-episode .gallery-wrapper .share-bar h3.endcard-label, .gallery-recap-block .gallery-wrapper .share-bar h3.endcard-label, .node-type-consumpt-post .gallery-wrapper .share-bar h3.endcard-label, .node-media-gallery .gallery-wrapper .share-bar h3.endcard-label, .node-type-usanetwork-microsite .gallery-wrapper .share-bar h3.endcard-label {
+  display: none;
 }
 .consumptionator-page .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-tv-episode .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .gallery-recap-block .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-consumpt-post .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-media-gallery .gallery-wrapper .share-bar .field-name-field-gigya-share-bar, .node-type-usanetwork-microsite .gallery-wrapper .share-bar .field-name-field-gigya-share-bar {
   margin-bottom: 0;

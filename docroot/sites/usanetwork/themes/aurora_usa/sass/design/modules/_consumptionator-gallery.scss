@@ -253,6 +253,16 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
     }
     &.end-card {
       .share-bar {
+        h3.endcard-label {
+          @include breakpoint($bp-1024-width) {
+            display: block;
+          }
+        }
+        h3.field-label {
+          @include breakpoint($bp-1024-width) {
+            display: none;
+          }
+        }
         .gig-button-container {
           td > div {
             &:before {
@@ -372,7 +382,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
         right: auto;
         width: 100%;
       }
-      h3.field-label {
+      h3.field-label, h3.endcard-label {
         color: $free-full-episodes;
         font-size: 14px;
         font-family: $avalon-book;
@@ -387,6 +397,9 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
         @include breakpoint($bp-640-width) {
           text-align: center;
         }
+      }
+      h3.endcard-label {
+       display: none;
       }
       .field-name-field-gigya-share-bar {
         margin-bottom: 0;

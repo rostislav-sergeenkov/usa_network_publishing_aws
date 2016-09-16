@@ -28,6 +28,9 @@
   <div class="slide-next slide-control"></div>
   <div class="slide-prev slide-control"></div>
   <div class="share-bar">
+    <?php if (!empty($endcard)): ?>
+      <h3 class="endcard-label"><?php print t('Share this gallery'); ?></h3>
+    <?php endif; ?>
     <?php print $sharebar; ?>
   </div>
 </div>

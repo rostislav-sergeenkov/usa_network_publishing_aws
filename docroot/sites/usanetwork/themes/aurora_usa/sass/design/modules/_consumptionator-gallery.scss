@@ -1000,12 +1000,12 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
         font-family: $avalon-book;
         font-size: get-vw(24px, 1280);
         line-height: 1.3;
-        margin-bottom: get-vw(10px, 1280);
+        margin-bottom: get-vw(15px, 1280);
         text-transform: uppercase;
         word-wrap: break-word;
         @include breakpoint($bp-min-2500-width) {
           font-size: 46.9px;
-          margin-bottom: 19.53px;
+          margin-bottom: 29.3px;
         }
       }
       .field-type-gigya-sharebar {

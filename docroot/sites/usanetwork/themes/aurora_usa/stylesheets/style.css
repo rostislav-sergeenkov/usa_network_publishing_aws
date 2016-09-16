@@ -12348,7 +12348,7 @@ footer h2 {
 }
 @media (min-width: 2500px) {
   .consumptionator-page .gallery-wrapper .gallery-list .slide .node.end-card .slide-info .end-card-description-wrapper .description, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .slide-info .end-card-description-wrapper .description, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node.end-card .slide-info .end-card-description-wrapper .description, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node.end-card .slide-info .end-card-description-wrapper .description, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node.end-card .slide-info .end-card-description-wrapper .description, .node-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .slide-info .end-card-description-wrapper .description, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node.end-card .slide-info .end-card-description-wrapper .description {
-    font-size: 23.4px;
+    font-size: 25.4px;
     padding: 0 234.4px 0 0;
   }
 }
@@ -12643,14 +12643,14 @@ footer h2 {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 1.875vw;
   line-height: 1.3;
-  margin-bottom: 0.78125vw;
+  margin-bottom: 1.17188vw;
   text-transform: uppercase;
   word-wrap: break-word;
 }
 @media (min-width: 2500px) {
   .consumptionator-page .gallery-wrapper .end-card-sharebar .share-title-second-line, .node-type-media-gallery .gallery-wrapper .end-card-sharebar .share-title-second-line, .node-type-tv-episode .gallery-wrapper .end-card-sharebar .share-title-second-line, .gallery-recap-block .gallery-wrapper .end-card-sharebar .share-title-second-line, .node-type-consumpt-post .gallery-wrapper .end-card-sharebar .share-title-second-line, .node-media-gallery .gallery-wrapper .end-card-sharebar .share-title-second-line, .node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .share-title-second-line {
     font-size: 46.9px;
-    margin-bottom: 19.53px;
+    margin-bottom: 29.3px;
   }
 }
 @media (min-width: 1025px) {

@@ -294,10 +294,15 @@ function _usanetwork_consumptionator_post_main_block() {
       }
     }
     $body = !empty($node->body) ? $node_wrapper->body->value->value() : '';
+    $share_description = $node_wrapper->field_usa_og_description->value();
+    if (empty($share_description)) {
+      $share_description = '';
+    }
     $blog_nid = !empty($node->field_consumptionator_blog) ? $node_wrapper->field_consumptionator_blog->nid->value() : NULL;
     $theme_variables = array(
       'title' => !empty($node->title) ? $node->title : '',
-      'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title , $body),
+      'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title , $share_description),
+      'sticky_sharebar' => usanetwork_menu_render_sharebar($node, 'node', '', $node->title , $share_description, '',  'facebook, twitter, tumblr, share'),
       'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
       'creating_date' => $post_date,
       'original_publish_date' => $original_date,

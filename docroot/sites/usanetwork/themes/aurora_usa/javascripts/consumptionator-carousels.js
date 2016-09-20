@@ -14,7 +14,7 @@
           closestWrap: '.episodes-list', // used for add class carousel-end
           carousel: '.usa-carousel',
           carouselItem: '.usa-carousel-item',
-          carouselActiveItem: '.usa-carousel-item.active',
+          carouselActiveNodeItem: '.node-usanetwork-promo.active',
           prevArrow: '.usa-carousel-control-prev',
           nextArrow: '.usa-carousel-control-next',
           moreButton: '.more-button'
@@ -72,7 +72,7 @@
       _.$mainWrap = $(element);
       _.$carousel = $(element).find(_.options.selectors.carousel);
       _.$carouselItems = $(element).find(_.options.selectors.carouselItem);
-      _.$carouselActiveItem = $(element).find(_.options.selectors.carouselActiveItem);
+      _.$carouselActiveItem = $(element).find(_.options.selectors.carouselActiveNodeItem).parent();
       _.$prevArrow = $(element).find(_.options.selectors.prevArrow);
       _.$nextArrow = $(element).find(_.options.selectors.nextArrow);
       _.$moreButton = $(element).find(_.options.selectors.moreButton);
@@ -427,8 +427,6 @@
     var _ = this,
         $mainWrap = _.$mainWrap,
         initClassName = _.options.initClassName;
-
-    _.consoleCustom('usaCarousel init');
 
     if (creation && !$($mainWrap).hasClass(initClassName)) {
       $($mainWrap).addClass(initClassName);

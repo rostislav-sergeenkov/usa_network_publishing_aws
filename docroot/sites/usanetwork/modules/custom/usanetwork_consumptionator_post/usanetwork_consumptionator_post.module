@@ -334,7 +334,7 @@ function _usanetwork_consumptionator_post_main_block() {
 /*
  * Get latest posts
  */
-function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 20, $exclude_verge = FALSE) {
+function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 10, $exclude_verge = FALSE) {
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
   $query->condition('node.type', 'consumpt_post');

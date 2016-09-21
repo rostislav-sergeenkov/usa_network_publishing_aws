@@ -14,7 +14,7 @@
           closestWrap: '.episodes-list', // used for add class carousel-end
           carousel: '.usa-carousel',
           carouselItem: '.usa-carousel-item',
-          carouselActiveItem: '.usa-carousel-item.active',
+          carouselActiveNodeItem: '.node-usanetwork-promo.active',
           prevArrow: '.usa-carousel-control-prev',
           nextArrow: '.usa-carousel-control-next',
           moreButton: '.more-button'
@@ -72,7 +72,7 @@
       _.$mainWrap = $(element);
       _.$carousel = $(element).find(_.options.selectors.carousel);
       _.$carouselItems = $(element).find(_.options.selectors.carouselItem);
-      _.$carouselActiveItem = $(element).find(_.options.selectors.carouselActiveItem);
+      _.$carouselActiveItem = $(element).find(_.options.selectors.carouselActiveNodeItem).parent();
       _.$prevArrow = $(element).find(_.options.selectors.prevArrow);
       _.$nextArrow = $(element).find(_.options.selectors.nextArrow);
       _.$moreButton = $(element).find(_.options.selectors.moreButton);
@@ -428,8 +428,6 @@
         $mainWrap = _.$mainWrap,
         initClassName = _.options.initClassName;
 
-    _.consoleCustom('usaCarousel init');
-
     if (creation && !$($mainWrap).hasClass(initClassName)) {
       $($mainWrap).addClass(initClassName);
       _.switchMode();
@@ -460,7 +458,8 @@
   $(document).ready(function () {
 
     var $body = $('body'),
-        $episodesListSlider = $('.episodes-list-slider');
+        $episodesListSlider = $('.episodes-list-slider'),
+        $moreButton = $episodesListSlider.find('.more-button');
 
     if ($episodesListSlider.length > 0 && !$body.is('.page-videos-live')) {
       if ($body.is('.show-new-design')) {
@@ -490,6 +489,11 @@
             isHorizontalMode: true,
             horizontalModeBpMax: 768,
             destroyCarouselBpMax: 640,
+            isMoreButton: true,
+            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
+          });
+        } else if($moreButton.length > 0 ) {
+          $episodesListSlider.usaCarousel({
             isMoreButton: true,
             moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
           });

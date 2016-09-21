@@ -392,7 +392,7 @@
 
   usaGallery.prototype.createCustomPaging = function (slick, index) {
 
-    var $slide = $(slick.$slides[index].innerHTML),
+    var $slide = $(slick.$slides[index]),
         slideImg = $($slide.find('img')[0]),
         imgPreviewUrl = slideImg.data('preview'),
         imgPreviewClass = (slideImg.hasClass('portrait'))? 'class="preview-portrait" ': '',

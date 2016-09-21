@@ -916,19 +916,19 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b {
 }
 .show-new-design .related-content-block ul li .social-promo .meta-wrapper .additional {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 10px;
+  line-height: 15px;
 }
 @media (min-width: 1601px) {
   .show-new-design .related-content-block ul li .social-promo .meta-wrapper .additional {
-    font-size: 19px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 19px;
   }
 }
 @media (max-width: 768px) {
   .show-new-design .related-content-block ul li .social-promo .meta-wrapper .additional {
-    font-size: 2.47396vw;
-    line-height: 1.4;
+    font-size: 1.95313vw;
+    line-height: 2.73438vw;
   }
 }
 .show-new-design .related-content-block ul li .social-promo .meta-wrapper .meta-button {

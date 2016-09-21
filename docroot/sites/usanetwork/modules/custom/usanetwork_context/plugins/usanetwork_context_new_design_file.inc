@@ -12,12 +12,12 @@ class usanetwork_context_new_design_file extends context_condition {
     return $values;
   }
 
-  function execute($file) {
+  function execute($file, $view_mode) {
     if ($this->condition_used()) {
       $new_design = _usanetwork_tv_shows_is_new_design_entity('file', $file);
 
       foreach ($this->get_contexts($file->type) as $context) {
-        if ($new_design == '1') {
+        if ($new_design == '1' && $view_mode == 'full') {
           $this->condition_met($context, $file->type);
         }
       }

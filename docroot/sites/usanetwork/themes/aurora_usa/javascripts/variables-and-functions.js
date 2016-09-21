@@ -1,6 +1,7 @@
 var $ = jQuery;
 var window_size_desktop_max_width = 2500;
 var window_size_desktop_large = 1901;
+var window_size_desktop_medium = 1601;
 var window_size_desktop = 1281;
 var window_size_tablet_portrait = 769;
 var window_size_tablet = 1025;

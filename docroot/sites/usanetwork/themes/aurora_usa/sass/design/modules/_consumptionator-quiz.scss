@@ -1,5 +1,8 @@
 .consumptionator-quiz-main-block, .page-videos-live {
   article.node-quiz {
+    width: 100%;
+  }
+  .right-rail-line {
     float: left;
     position: relative;
     width: 74.7%;
@@ -116,23 +119,34 @@
   }
 
 }
+
 .consumptionator-quiz-main-block {
-  @include clear();
+  display: flex;
+  align-items: stretch;
   overflow: hidden;
   position: relative;
   width: 100%;
-  article.node-quiz {
-    padding-bottom: 10000px;
-    margin-bottom: -10000px;
+  @include breakpoint($bp-1024-width) {
+    display: block;
+  }
+  .right-rail-line {
+    float: none;
   }
   .consum-sidebar {
     .items-block {
+      z-index: 0;
       @include breakpoint($bp-min-1025-width) {
-        height: 245px;
+        min-height: 245px;
+        height: calc(100% - 250px) !important;
+        top: 0;
       }
       @include breakpoint($bp-min-1901-width) {
-        height: 400px;
+        min-height: 400px;
+        height: calc(100% - 23.4vw) !important;
       }
+    }
+    .more-items {
+      z-index: 1;
     }
   }
 }

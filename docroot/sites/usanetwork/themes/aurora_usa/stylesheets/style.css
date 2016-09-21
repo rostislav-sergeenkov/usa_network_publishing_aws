@@ -893,10 +893,16 @@ body:not(.ie9) .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carous
   line-height: 20px;
   text-align: center;
 }
+@media (min-width: 769px) {
+  .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-large .meta .title {
+    padding: 0 60px;
+  }
+}
 @media (min-width: 1601px) {
   .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-large .meta .title {
     font-size: 24px;
     line-height: 30px;
+    padding: 0 80px;
   }
 }
 @media (max-width: 768px) {
@@ -1239,19 +1245,19 @@ body:not(.ie9) .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carous
 }
 .social-block.carousel-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 10px;
+  line-height: 15px;
 }
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
-    font-size: 19px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 19px;
   }
 }
 @media (max-width: 768px) {
   .social-block.carousel-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
-    font-size: 2.47396vw;
-    line-height: 1.4;
+    font-size: 1.95313vw;
+    line-height: 2.73438vw;
   }
 }
 .social-block.carousel-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {

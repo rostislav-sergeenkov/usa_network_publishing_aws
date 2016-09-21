@@ -292,8 +292,7 @@
             _.addElemClass($self, _.initials.moreButtonClassClose, function () {
               _.showMoreBtnCarouselItems();
               _.options.isMoreButtonActive = true;
-              resetDescriptionLinesPromo();
-          });
+            });
           } else if (_.options.isMoreButtonActive) {
             _.removeElemClass($self, _.initials.moreButtonClassClose, null);
             _.addElemClass($self, _.initials.moreButtonClassMore, function () {
@@ -479,7 +478,6 @@
       complete: function (elements) {
         _.showCard.inProgress = false;
         checkDescriptionLines();
-        resetDescriptionLinesPromo();
       }
     });
 

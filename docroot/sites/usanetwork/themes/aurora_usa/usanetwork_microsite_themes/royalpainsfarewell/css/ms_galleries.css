@@ -112,7 +112,6 @@
   font-size: 26px;
   line-height: 1.2;
   height: initial;
-  color: #55452A;
   text-transform: uppercase;
   text-decoration: none;
   position: relative;
@@ -120,6 +119,9 @@
   left: 0;
   cursor: pointer;
   background-color: transparent;
+}
+.page-node-microsite.show-royalpains #galleries-filter li.filter-item {
+  color: #55452A;
 }
 #galleries-filter li.filter-item p {
   display: table-cell;
@@ -255,11 +257,11 @@
 #galleries-nav-list .gallery-title .gallery-h1 {
   display: none;
 }
-#galleries-nav-list a,
-#galleries-nav-list a:link,
-#galleries-nav-list a:visited,
-#galleries-nav-list a:hover,
-#galleries-nav-list a:active {
+.page-node-microsite.show-royalpains #galleries-nav-list a,
+.page-node-microsite.show-royalpains #galleries-nav-list a:link,
+.page-node-microsite.show-royalpains #galleries-nav-list a:visited,
+.page-node-microsite.show-royalpains #galleries-nav-list a:hover,
+.page-node-microsite.show-royalpains #galleries-nav-list a:active {
   color: #55452A;
   text-decoration: none;
 }

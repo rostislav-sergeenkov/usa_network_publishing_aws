@@ -44,7 +44,7 @@ function theme_flexslider_file_entity($vars) {
 function theme_bxslide_file_entity($vars) {
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-gallery.js');
   $element = $vars['element']['#object'];
-  $output = _usanetwork_media_gallery_consumptionator_gallery_slides_block($element);
+  $output = _usanetwork_media_gallery_consumptionator_gallery_slides_block($element, FALSE, FALSE);
   return $output;
 }
 

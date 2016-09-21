@@ -3,27 +3,48 @@
   background-repeat: no-repeat;
   background-position: center center;
   overflow: hidden;
-  min-height: 43vw;
-  max-height: 43.75vw;
   position: relative;
   will-change: transform, opacity;
   @include breakpoint($bp-min-2500-width) {
     min-height: 1090px;
-    max-height: 1094px;
-  }
-  @include breakpoint($bp-640-width) {
-    min-height: 90vw;
-    max-height: 90.625vw;
+    max-height: 1093px;
   }
   &.load {
     background-image: none;
-    min-height: inherit;
+    .touch & {
+      overflow: visible;
+    }
     .slide {
+      .wrp {
+        background: #000000;
+      }
       .slide-content {
         @include breakpoint($bp-640-width) {
           display: block !important;
         }
       }
+    }
+  }
+  .content {
+    height: 0;
+    padding-top: 43.75%;
+    @include breakpoint($bp-min-2500-width) {
+      padding-top: 1090px;
+    }
+    @include breakpoint($bp-640-width) {
+      padding-top: 87.5%;
+    }
+  }
+
+  #aspot-usanetwork {
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    .slider-container {
+      height: 100%;
+      width: 100%;
     }
   }
   .next-button {
@@ -78,23 +99,21 @@
   }
   .asset-img {
     img {
-      height: 43.75vw;
-      max-height: 1094px;
+      height: 100%;
+      max-height: 1093px;
       width: 100%;
-      @include breakpoint($bp-640-width) {
-        height: 87.5vw;
-      }
     }
   }
   .slide {
     position: relative;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     z-index: 0;
     &.slick-active {
       z-index: 1;
     }
     .wrp {
-      background: #000000;
+      background: transparent;
     }
     .slide-content {
       overflow: hidden;

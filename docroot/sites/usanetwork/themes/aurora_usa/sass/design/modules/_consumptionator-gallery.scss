@@ -136,7 +136,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
   }
 }
 
-.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .gallery-recap-block, .node-type-consumpt-post, .node-media-gallery, .node-type-usanetwork-microsite {
+.node-type-media-gallery {
   .gallery-block {
     @include clear();
     margin: 0;
@@ -144,33 +144,82 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
     padding: 0;
     position: relative;
     width: 100%;
-    @include breakpoint($bp-min-1281-width) {
+    @include breakpoint($bp-min-1025-width) {
       height: 42.01875vw;
       max-height: 1093.75px;
       max-width: 2500px;
       margin: 0 auto;
     }
-    @include breakpoint($between-1025-1280) {
-      height: calc((100vw - 320px) * 0.5625);
-      margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
-      overflow: visible;
-    }
     @include breakpoint($bp-1024-width) {
       height: auto;
     }
     .consum-sidebar {
+      @include breakpoint($between-1025-1280) {
+        overflow: hidden;
+        padding-left: 0;
+        position: relative;
+        width: 320px;
+      }
       .download-app {
+        @include breakpoint($between-1025-1280) {
+          display: none;
+        }
         @include breakpoint($bp-768-width) {
           display: none;
         }
       }
+      .items-block {
+        @include breakpoint($between-1025-1280) {
+          height: calc(100% - 250px);
+          position: relative;
+          right: auto;
+          top: auto;
+          width: 100%;
+        }
+        .items-block-title {
+          @include breakpoint($between-1025-1280) {
+            height: 35px;
+            line-height: 35px;
+          }
+          h2 {
+            @include breakpoint($between-1025-1280) {
+              width: 100%;
+            }
+          }
+        }
+        .episodes-list-slider {
+          &.vertical-mode {
+            @include breakpoint($between-1025-1280) {
+              display: block;
+              height: calc(100% - 70px);
+            }
+          }
+        }
+      }
       .more-items {
+        @include breakpoint($between-1025-1280) {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: auto;
+          top: auto;
+          width: 100%;
+        }
         @include breakpoint($between-641-768) {
           top: 0;
+        }
+        a {
+          @include breakpoint($between-1025-1280) {
+            line-height: 35px;
+            padding: 0 20px;
+          }
         }
       }
     }
   }
+}
+
+.consumptionator-page, .node-type-media-gallery, .node-type-tv-episode, .gallery-recap-block, .node-type-consumpt-post, .node-media-gallery, .node-type-usanetwork-microsite {
   .gallery-wrapper {
     background: $gallery-description-back;
     float: left;
@@ -184,6 +233,116 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
     @include breakpoint($bp-1024-width) {
       height: auto;
       width: 100%;
+    }
+    &:not(.end-card):hover {
+      .gallery-list {
+        .slide {
+          .slide-info {
+            display: block!important;
+          }
+        }
+      }
+      .gallery-pager-wrap {
+        @include breakpoint($bp-min-1025-width) {
+          display: block;
+        }
+      }
+      .share-bar {
+        display: block;
+      }
+    }
+    &.end-card {
+      .share-bar {
+        h3.endcard-label {
+          @include breakpoint($bp-1024-width) {
+            display: block;
+          }
+        }
+        h3.field-label {
+          @include breakpoint($bp-1024-width) {
+            display: none;
+          }
+        }
+        .gig-button-container {
+          td > div {
+            &:before {
+              @include breakpoint($bp-1024-width) {
+                position: absolute;
+              }
+            }
+            &:after {
+              @include breakpoint($bp-1024-width) {
+                background: white;
+                border-radius: 20%;
+                content: '';
+                display: block;
+                height: 25px;
+                margin-left: 2px;
+                margin-top: -5px;
+                position: absolute;
+                width: 23px;
+                z-index: -1;
+              }
+              @include breakpoint($bp-640-width) {
+                height: 28px;
+                margin-left: 1px;
+                margin-top: -6px;
+                width: 28px;
+              }
+            }
+          }
+          &.gig-button-container-facebook {
+            td > div {
+              &:before {
+                @include breakpoint($bp-1024-width) {
+                  color: $usa-video-helper-facebook;
+                }
+              }
+            }
+          }
+          &.gig-button-container-twitter {
+            td > div {
+              &:before {
+                @include breakpoint($bp-1024-width) {
+                  color: $usa-video-helper-twitter;
+                }
+              }
+            }
+          }
+          &.gig-button-container-tumblr {
+            td > div {
+              &:before {
+                @include breakpoint($bp-1024-width) {
+                  color: $usa-video-helper-tumblr;
+                }
+              }
+            }
+          }
+          &.gig-button-container-pinterest {
+            td > div {
+              &:before {
+                @include breakpoint($bp-1024-width) {
+                  color: $usa-video-helper-pinterest;
+                }
+              }
+            }
+          }
+          &.gig-button-container-share {
+            td > div {
+              &:before {
+                @include breakpoint($bp-1024-width) {
+                  color: white;
+                }
+              }
+              &:after {
+                @include breakpoint($bp-1024-width) {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
     }
     > .node {
       height: 100%;
@@ -223,7 +382,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
         right: auto;
         width: 100%;
       }
-      h3.field-label {
+      h3.field-label, h3.endcard-label {
         color: $free-full-episodes;
         font-size: 14px;
         font-family: $avalon-book;
@@ -238,6 +397,9 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
         @include breakpoint($bp-640-width) {
           text-align: center;
         }
+      }
+      h3.endcard-label {
+       display: none;
       }
       .field-name-field-gigya-share-bar {
         margin-bottom: 0;
@@ -258,23 +420,6 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             font-size: 30px;
           }
         }
-      }
-    }
-    &:hover {
-      .gallery-list {
-        .slide {
-          .slide-info {
-            display: block!important;
-          }
-        }
-      }
-      .gallery-pager-wrap {
-        @include breakpoint($bp-min-1025-width) {
-          display: block;
-        }
-      }
-      .share-bar {
-        display: block;
       }
     }
     .gallery-list {
@@ -447,6 +592,174 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                 position: static;
                 text-align: center;
                 white-space: normal;
+              }
+            }
+          }
+          &.end-card {
+            .end-card-block {
+              background: rgba(0, 0, 0, 0.7);
+              height: 100%;
+              position: absolute;
+              right: 0;
+              top: 0;
+              width: 35%;
+              @include breakpoint($bp-1024-width) {
+                height: auto;
+                padding-top: 56.25%;
+                width: 100%;
+              }
+              .end-card-block-wrapper {
+                height: 100%;
+                left: 0;
+                padding: get-vw(30px, 1280);
+                position: absolute;
+                top: 0;
+                width: 100%;
+                @include breakpoint($bp-min-2500-width) {
+                  padding: 58.6px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  padding: get-vw(40px, 768);
+                }
+              }
+              .end-card-block-meta {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                justify-content: center;
+                position: relative;
+                width: 100%;
+                @include breakpoint($bp-1024-width) {
+                  align-items: center;
+                  flex-direction: row;
+                  height: 100%;
+                  justify-content: space-between;
+                }
+              }
+              .meta-text {
+                @include breakpoint($bp-1024-width) {
+                  width: 30%;
+                }
+              }
+              .up-next {
+                color: white;
+                font-family: $avalon-medium;
+                font-size: get-vw(24px, 1280);
+                margin-bottom: get-vw(30px, 1280);
+                text-transform: uppercase;
+                @include breakpoint($bp-min-2500-width) {
+                  font-size: 46.9px;
+                  margin-bottom: 58.6px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: get-vw(24px, 768);
+                  margin-bottom: get-vw(15px, 768);
+                }
+              }
+              .other-gallery-name {
+                font-family: $avalon-book;
+                font-size: get-vw(24px, 1280);
+                line-height: 1.3;
+                text-transform: uppercase;
+                word-wrap: break-word;
+                @include breakpoint($bp-min-2500-width) {
+                  font-size: 46.9px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: get-vw(24px, 768);
+                }
+                a {
+                  color: white;
+                }
+              }
+              .other-gallery-episode {
+                color: white;
+                font-family: $tex-gyreschola-italic;
+                font-size: get-vw(14.4px, 1280);
+                text-transform: uppercase;
+                @include breakpoint($bp-min-2500-width) {
+                  font-size: 28.125px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: get-vw(14.4px, 768);
+                }
+              }
+              .other-gallery-image {
+                height: auto;
+                margin-top: get-vw(60px, 1280);
+                position: relative;
+                width: 100%;
+                @include breakpoint($bp-min-2500-width) {
+                  margin-top: 117.2px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  margin-top: 0;
+                  width: 67%;
+                }
+                a {
+                  display: block;
+                  outline: none;
+                }
+                img {
+                  height: auto;
+                  width: 100%;
+                }
+              }
+            }
+            .slide-info {
+              @include breakpoint($bp-min-1025-width) {
+                background: rgba(0, 0, 0, 0.5);
+                display: block;
+                position: absolute;
+                padding: get-vw(30px, 1280) 35% get-vw(30px, 1280) 80px;
+                height: 100%;
+                width: 100%;
+              }
+              @include breakpoint($bp-min-1281-width) {
+                padding: get-vw(30px, 1280) 35% get-vw(30px, 1280) get-vw(60px, 1280);
+              }
+              @include breakpoint($bp-min-2500-width) {
+                padding: 58.6px 35% 58.6px 117.2px;
+              }
+              .end-card-description {
+                @include breakpoint($bp-min-1025-width) {
+                  height: 100%;
+                  position: relative;
+                  width: 100%;
+                }
+              }
+              .end-card-description-wrapper {
+                @include breakpoint($bp-min-1025-width) {
+                  bottom: 0;
+                  height: auto;
+                  left: 0;
+                  max-height: 100%;
+                  overflow: hidden;
+                  position: absolute;
+                  width: 100%;
+                }
+                .description {
+                  @include breakpoint($bp-min-1025-width) {
+                    font-family: $avalon-book;
+                    font-size: get-vw(13px, 1280);
+                    line-height: 1.3;
+                  }
+                  @include breakpoint($between-1025-1280) {
+                    padding: 0 120px 0 0;
+                  }
+                  @include breakpoint($bp-min-1281-width) {
+                    padding: 0 get-vw(120px, 1280) 0 0;
+                  }
+                  @include breakpoint($bp-min-2500-width) {
+                    font-size: 25.4px;
+                    padding: 0 234.4px 0 0;
+                  }
+                }
+              }
+              .slider-counter {
+                @include breakpoint($bp-min-1025-width) {
+                  display: none;
+                }
               }
             }
           }
@@ -672,6 +985,130 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
       }
       &.slick-disabled {
         display: none !important;
+      }
+    }
+    .end-card-sharebar {
+      @include breakpoint($bp-min-1025-width) {
+        display: block;
+      }
+      @include breakpoint($bp-1024-width) {
+        display: none;
+      }
+      .field-label {
+        display: none;
+      }
+      .share-title-first-line {
+        color: white;
+        font-family: $avalon-medium;
+        font-size: get-vw(24px, 1280);
+        line-height: 1.4;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 46.9px;
+        }
+      }
+      .share-title-second-line {
+        color: white;
+        font-family: $avalon-book;
+        font-size: get-vw(24px, 1280);
+        line-height: 1.3;
+        margin-bottom: get-vw(15px, 1280);
+        text-transform: uppercase;
+        word-wrap: break-word;
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 46.9px;
+          margin-bottom: 29.3px;
+        }
+      }
+      .field-type-gigya-sharebar {
+        @include breakpoint($bp-min-1025-width) {
+          margin-bottom: get-vw(20px, 1280);
+        }
+        @include breakpoint($bp-min-2500-width) {
+          font-size: 39px;
+        }
+        .gig-button-container {
+          @include breakpoint($bp-min-1025-width) {
+            margin-bottom: 0;
+            margin-right: get-vw(15px, 1280);
+            padding: 0;
+          }
+          @include breakpoint($bp-min-2500-width) {
+            margin-right: 29.3px;
+          }
+          td > div {
+            @include breakpoint($bp-min-1025-width) {
+              height: get-vw(32px, 1280)!important;
+              width: get-vw(32px, 1280)!important;
+            }
+            @include breakpoint($bp-min-2500-width) {
+              height: 62.5px!important;
+              width: 62.5px!important;
+            }
+            &:before {
+              @include breakpoint($bp-min-1025-width) {
+                border-radius: get-vw(5px, 1280);
+                color: white;
+                font-size: get-vw(24px, 1280)!important;
+                padding: get-vw(4px, 1280);
+              }
+              @include breakpoint($bp-min-2500-width) {
+                border-radius: 9.8px;
+                font-size: 46.9px!important;
+                padding: 7.8px;
+              }
+            }
+          }
+          &.gig-button-container-facebook {
+            td > div {
+              &:before {
+                @include breakpoint($bp-min-1025-width) {
+                  background: $usa-video-helper-facebook;
+                  content: '\e618';
+                }
+              }
+            }
+          }
+          &.gig-button-container-twitter {
+            td > div {
+              &:before {
+                @include breakpoint($bp-min-1025-width) {
+                  background: $usa-video-helper-twitter;
+                  content: '\e61a';
+                }
+              }
+            }
+          }
+          &.gig-button-container-tumblr {
+            td > div {
+              &:before {
+                @include breakpoint($bp-min-1025-width) {
+                  background: $usa-video-helper-tumblr;
+                  content: '\e619';
+                }
+              }
+            }
+          }
+          &.gig-button-container-pinterest {
+            td > div {
+              &:before {
+                @include breakpoint($bp-min-1025-width) {
+                  background: $usa-video-helper-pinterest;
+                  content: '\e617';
+                }
+              }
+            }
+          }
+          &.gig-button-container-share {
+            td > div {
+              &:before {
+                @include breakpoint($bp-min-1025-width) {
+                  background: transparent;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

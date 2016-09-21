@@ -4,9 +4,11 @@
  */
 ?>
 <div class="consumptionator-quiz-main-block">
-  <?php if (!empty($rendered_quiz)): ?>
+  <div class="right-rail-line">
+    <?php if (!empty($rendered_quiz)): ?>
       <?php print $rendered_quiz; ?>
-  <?php endif; ?>
+    <?php endif; ?>
+  </div>
   <div class="consum-sidebar">
   <?php if (!empty($rendered_carousel)): ?>
     <?php print $rendered_carousel; ?>

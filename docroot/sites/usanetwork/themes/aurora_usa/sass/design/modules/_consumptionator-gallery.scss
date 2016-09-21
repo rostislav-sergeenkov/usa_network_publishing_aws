@@ -193,6 +193,11 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
               display: block;
               height: calc(100% - 70px);
             }
+            &.no-all-link {
+              @include breakpoint($between-1025-1280) {
+                height: calc(100% - 35px);
+              }
+            }
           }
         }
       }

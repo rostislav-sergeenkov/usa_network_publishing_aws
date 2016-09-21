@@ -893,10 +893,16 @@ body:not(.ie9) .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carous
   line-height: 20px;
   text-align: center;
 }
+@media (min-width: 769px) {
+  .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-large .meta .title {
+    padding: 0 60px;
+  }
+}
 @media (min-width: 1601px) {
   .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-large .meta .title {
     font-size: 24px;
     line-height: 30px;
+    padding: 0 80px;
   }
 }
 @media (max-width: 768px) {
@@ -1239,19 +1245,19 @@ body:not(.ie9) .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carous
 }
 .social-block.carousel-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 10px;
+  line-height: 15px;
 }
 @media (min-width: 1601px) {
   .social-block.carousel-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
-    font-size: 19px;
-    line-height: 24px;
+    font-size: 15px;
+    line-height: 19px;
   }
 }
 @media (max-width: 768px) {
   .social-block.carousel-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .social-promo .meta-wrapper .additional, .related-content-block ul li .social-promo .meta-wrapper .additional {
-    font-size: 2.47396vw;
-    line-height: 1.4;
+    font-size: 1.95313vw;
+    line-height: 2.73438vw;
   }
 }
 .social-block.carousel-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .social-promo .meta-wrapper .meta-button, .related-content-block ul li .social-promo .meta-wrapper .meta-button {
@@ -11753,6 +11759,11 @@ footer h2 {
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
+  .node-type-media-gallery .gallery-block .consum-sidebar .items-block .episodes-list-slider.vertical-mode.no-all-link {
+    height: calc(100% - 35px);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
   .node-type-media-gallery .gallery-block .consum-sidebar .more-items {
     position: absolute;
     bottom: 0;
@@ -14477,6 +14488,42 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   top: 0;
   width: 0;
   z-index: 2;
+}
+.consum-sidebar .episodes-list-slider .more-button {
+  background-color: #e9eaeb;
+  cursor: pointer;
+  color: #545454;
+  display: none;
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 20px;
+  line-height: 130px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+  width: 100%;
+}
+@media (max-width: 640px) {
+  .consum-sidebar .episodes-list-slider .more-button {
+    display: block;
+  }
+}
+@media (max-width: 480px) {
+  .consum-sidebar .episodes-list-slider .more-button {
+    line-height: 80px;
+  }
+}
+.consum-sidebar .episodes-list-slider .more-button.close .more-text {
+  display: none;
+}
+.consum-sidebar .episodes-list-slider .more-button.close .close-text {
+  display: block;
+}
+.consum-sidebar .episodes-list-slider .more-button.more .more-text {
+  display: block;
+}
+.consum-sidebar .episodes-list-slider .more-button.more .close-text {
+  display: none;
 }
 .consum-sidebar .more-items {
   display: block;

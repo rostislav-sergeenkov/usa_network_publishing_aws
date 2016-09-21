@@ -1,11 +1,6 @@
 <div class="show-title-block-wrapper show-border secondary">
   <div class="show-title-block show-color">
     <?php print $movie_title; ?>
-    <div class="social-icons social-follow">
-      <?php foreach ($social_icons as $social_link): ?>
-        <?php print $social_link; ?>
-      <?php endforeach; ?>
-    </div>
     <div class="schedule">
       <?php if (!empty($time)): ?>
       <div class="time">

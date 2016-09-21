@@ -2,12 +2,30 @@
   .meta {
     direction: ltr;
     color: #ffffff;
+    &:not(.multiline-ellipsis-meta) {
+      .caption, .title, .additional, .description, .show-title, .topic {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    &.multiline-ellipsis-meta {
+      .caption, .title, .additional, .description, .show-title, .topic {
+        white-space: normal;
+        width: 100%;
+      }
+    }
+    body:not(.ie9) &.multiline-ellipsis-meta {
+      align-items: flex-start;
+      display: flex;
+      max-width: 100%;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+    }
     .caption, .title, .additional, .description, .show-title, .topic {
-      overflow: hidden;
       text-decoration: none;
       text-transform: uppercase;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
     .caption {
       font-size: 13px;
@@ -29,7 +47,7 @@
         letter-spacing: 1px;
       }
     }
-    & > div {
+    &:not(.multiline-ellipsis-meta) > div {
       &:only-child {
         @supports (-webkit-line-clamp: 2)  {
           display: -webkit-box;
@@ -38,6 +56,18 @@
           height: auto;
         }
         white-space: normal;
+      }
+    }
+    & > div {
+      &:nth-last-child(3) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        &~div {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
     }
   }

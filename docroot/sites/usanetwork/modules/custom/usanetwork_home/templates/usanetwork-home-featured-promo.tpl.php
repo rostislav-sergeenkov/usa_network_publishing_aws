@@ -14,22 +14,22 @@
     <?php endif; ?>
     <div class="meta-wrapper">
       <div class="meta-back"></div>
-      <div class="meta-wrapper-inner<?php print (!$is_first)? ' multiline-ellipsis-meta-wrapper' : '';?>">
+      <div class="meta-wrapper-inner">
         <?php if ($icon_type && !$is_first): ?>
           <div class="meta-icon <?php print $icon_type; ?>"></div>
         <?php endif; ?>
-        <div class="meta<?php print (!$is_first)? ' multiline-ellipsis-meta' : '';?>">
+        <div class="meta">
           <?php if ($icon_type && $is_first): ?>
             <div class="meta-icon <?php print $icon_type; ?>"></div>
           <?php endif; ?>
           <?php if (!empty($caption)): ?>
-            <div class="caption"<?php print (!$is_first)? ' data-text="'.$caption.'"' : '';?>><?php print $caption; ?></div>
+            <div class="caption"><?php print $caption; ?></div>
           <?php endif; ?>
           <?php if (!empty($title)): ?>
-            <div class="title"<?php print (!$is_first)? ' data-text="'.$title.'"' : '';?>><?php print $title; ?></div>
+            <div class="title"><?php print $title; ?></div>
           <?php endif; ?>
           <?php if (!empty($description)): ?>
-            <div class="additional"<?php print (!$is_first)? ' data-text="'.$description.'"' : '';?>><?php print $description; ?></div>
+            <div class="additional"><?php print $description; ?></div>
           <?php endif; ?>
         </div>
       </div>

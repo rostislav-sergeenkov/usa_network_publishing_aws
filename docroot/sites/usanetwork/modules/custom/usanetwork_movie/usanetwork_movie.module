@@ -513,7 +513,7 @@ function _usanetwork_movies_mb_block() {
       if (preg_match("/^(.+)\[node:(\d+)\]$/", $featured_movie_id, $matches)) {
         $featured_movie = node_load($matches[2]);
       }
-      if (!empty($featured_movie) && $featured_movie->type == 'movie') {
+      if (!empty($featured_movie)) {
         if ($featured_movie->status) {
           $is_first = ($i == 0) ? TRUE : FALSE;
           $i++;
@@ -537,7 +537,7 @@ function _usanetwork_movies_mb_block() {
                 )
                 : NULL,
             ),
-            'icon_type' => $has_full_episode ? 'full-video-icon-default' : 'about-show-icon-default',
+            'icon_type' => ($featured_movie->type == 'movie') ? ($has_full_episode ? 'full-video-icon-default' : 'about-show-icon-default') : (usanetwork_core_api_get_media_icon('node', $featured_movie->nid)),
             'caption' => $caption,
             'title' => $featured_movie->title,
             'description' => isset($has_full_episode->expiration_date)
@@ -633,9 +633,9 @@ function usanetwork_movie_movies_landing_main_form_submit($form, &$form_state) {
  */
 function usanetwork_movie_movies_autocomplete($title) {
   $query = db_select('node', 'n');
-  $query->fields('n',array('nid', 'title'));
+  $query->fields('n',array('nid', 'title', 'type'));
   $query->condition('n.title', '%' . $title . '%', 'LIKE');
-  $query->condition('n.type', 'movie', '=');
+  $query->condition('n.type', array('movie', 'usanetwork_promo', 'consumpt_post', 'quiz'), 'IN');
   $query->condition('n.status', NODE_PUBLISHED, '=');
   $query->range(0, 10);
   $result = $query->execute()->fetchAll();
@@ -645,7 +645,7 @@ function usanetwork_movie_movies_autocomplete($title) {
     foreach($result as $row) {
       $row->title = check_plain($row->title);
       $key = $row->title . ' [node:' . $row->nid . ']';
-      $output[$key] = $row->title;
+      $output[$key] = $row->title . ' (' . $row->type . ')';
     }
   }
   drupal_json_output($output);

@@ -43,6 +43,11 @@
           </div>
         <?php endif; ?>
       </div>
+      <?php if (empty($new_design) && !empty($tags)): ?>
+        <div class="tags">
+          <?php print '<span>'.t('Tags:') . '</span> ' . $tags; ?>
+        </div>
+      <?php endif; ?>
       <div class="description"><?php print $description; ?></div>
     </div>
     <div class="buttons-bar">

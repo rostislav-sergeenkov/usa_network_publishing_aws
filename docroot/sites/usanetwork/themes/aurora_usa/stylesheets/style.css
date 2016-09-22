@@ -12601,8 +12601,9 @@ footer h2 {
   display: none !important;
 }
 .consumptionator-page .gallery-wrapper .gallery-next, .node-type-media-gallery .gallery-wrapper .gallery-next, .node-type-tv-episode .gallery-wrapper .gallery-next, .gallery-recap-block .gallery-wrapper .gallery-next, .node-type-consumpt-post .gallery-wrapper .gallery-next, .node-media-gallery .gallery-wrapper .gallery-next, .node-type-usanetwork-microsite .gallery-wrapper .gallery-next {
-  display: block;
+  color: #ffffff;
   cursor: pointer;
+  display: none;
   height: 48px;
   margin-top: -24px;
   position: absolute;

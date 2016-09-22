@@ -66,6 +66,7 @@
         },
         prevArrow: '.slide-prev',
         nextArrow: '.slide-next',
+        nextGallery: '.gallery-next',
         slideCounter: '.slider-counter .slide-index',
         endcardShareBar: '.end-card-sharebar .field-name-field-gigya-share-bar > div',
         shareBar: '.share-bar .field-name-field-gigya-share-bar > div',
@@ -132,6 +133,7 @@
       _.$shareBar = $(element).find(_.options.shareBar);
       _.$prevArrow = $(element).find(_.options.prevArrow);
       _.$nextArrow = $(element).find(_.options.nextArrow);
+      _.$nextGallery = $(element).find(_.options.nextGallery);
       _.$appendDots = $(element).find(_.options.galleryPagerWrap.selector);
       _.$endCardBlock = $(element).find(_.options.endCardBlock);
 
@@ -250,6 +252,9 @@
     var _ = this;
 
     _.$endCardBlock.on('click', 'a', function (e) {
+      _.callEndCardAdobeTracking.clickNextItem();
+    });
+    _.$nextGallery.on('click', 'a', function (e) {
       _.callEndCardAdobeTracking.clickNextItem();
     });
   };
@@ -829,10 +834,6 @@
     var _ = this;
 
     if (creation && !_.$gallery.hasClass('gallery-initialized')) {
-
-      if(_.options.isGalleryEndCard) {
-        _.options.gallery.infinite = true;
-      }
 
       _.addSlickEventsCallBacks();
       _.$gallery

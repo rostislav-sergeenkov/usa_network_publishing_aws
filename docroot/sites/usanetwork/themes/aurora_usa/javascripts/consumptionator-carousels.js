@@ -274,6 +274,12 @@
       return false;
     }
 
+    if (_.$carouselActiveItem.length > 0) {
+      _.options.swiper.initialSlide = _.$carouselActiveItem.index();
+    } else {
+      _.options.swiper.initialSlide = 0;
+    }
+
     _.addElemClass(_.$mainWrap, _.options.horizontalClassName, null);
 
     _.options.swiper.onInit = function (sw) {

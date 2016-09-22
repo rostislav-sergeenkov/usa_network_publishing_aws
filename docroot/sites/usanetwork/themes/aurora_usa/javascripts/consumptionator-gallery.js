@@ -830,10 +830,6 @@
 
     if (creation && !_.$gallery.hasClass('gallery-initialized')) {
 
-      if(_.options.isGalleryEndCard) {
-        _.options.gallery.infinite = true;
-      }
-
       _.addSlickEventsCallBacks();
       _.$gallery
           .slick(_.options.gallery)

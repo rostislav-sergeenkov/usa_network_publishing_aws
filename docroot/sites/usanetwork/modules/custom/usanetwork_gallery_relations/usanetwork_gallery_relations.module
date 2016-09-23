@@ -62,10 +62,15 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
 
   // Check if a value for show has already been provided.
   $selected_show = '';
+  $triggering_element = NULL;
+  if (!empty($form_state['values'])) {
+    $trigger = $form_state['triggering_element'];
+    $triggering_element = $trigger['#field_name'];
+  }
   if (isset($form_state['values']['field_show'][LANGUAGE_NONE][0]['target_id'])) {
     $selected_show = $form_state['values']['field_show'][LANGUAGE_NONE][0]['target_id'];
   }
-  elseif (isset($form_state['node']->field_show[LANGUAGE_NONE][0]['target_id'])) {
+  elseif (isset($form_state['node']->field_show[LANGUAGE_NONE][0]['target_id']) && empty($triggering_element)) {
     $selected_show = $form_state['node']->field_show[LANGUAGE_NONE][0]['target_id'];
   }
 
@@ -169,6 +174,17 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
     $form['field_episode'][LANGUAGE_NONE]['#default_value'] = NULL;
     $form['field_episode'][LANGUAGE_NONE]['#disabled'] = TRUE;
   }
+
+  if (empty($selected_show) && $triggering_element == 'field_show') {
+    $form['field_season'][LANGUAGE_NONE]['#options'] = array('_none' => t('- None -'));
+    $form['field_season'][LANGUAGE_NONE]['#default_value'] = '_none';
+    $form['field_season']['#disabled'] = TRUE;
+
+    $form['field_episode'][LANGUAGE_NONE]['#options'] = array('_none' => t('- None -'));
+    $form['field_episode'][LANGUAGE_NONE]['#default_value'] = '_none';
+    $form['field_episode']['#disabled'] = TRUE;
+  }
+
   // Add a form validator.
   $form['#validate'][] = 'usanetwork_gallery_relations_gallery_form_validate';
 }
@@ -181,7 +197,14 @@ function usanetwork_gallery_relations_form_media_gallery_node_form_alter(&$form,
  * @see usanetwork_gallery_relations_form_media_gallery_node_form_alter()
  */
 function usanetwork_gallery_relations_season_option_populate_js($form, $form_state) {
-  return $form['field_season'];
+  // We want to replace both the season and the episodes so we return an list
+  // of ajax commands.
+  $commands = array();
+  $field_season = drupal_render($form['field_season']);
+  $field_episode = drupal_render($form['field_episode']);
+  $commands[] = ajax_command_replace('#season-wrapper', $field_season);
+  $commands[] = ajax_command_replace('#episode-wrapper', $field_episode);
+  return array('#type' => 'ajax', '#commands' => $commands);
 }
 
 /**

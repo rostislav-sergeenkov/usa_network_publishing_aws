@@ -1006,7 +1006,7 @@
               @include breakpoint($bp-640-width) {
                 padding-right: get-vw(25px, 640);
               }
-              & td > div {
+              & td div {
                 font-size: 23px;
                 line-height: 1!important;
                 height: auto !important;

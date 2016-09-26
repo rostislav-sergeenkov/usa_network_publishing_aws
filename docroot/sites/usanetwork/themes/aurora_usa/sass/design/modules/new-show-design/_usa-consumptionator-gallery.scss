@@ -408,6 +408,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         }
         [id$='_img'] {
           &:before {
+            left: 0;
             position: absolute;
           }
           &:after {

@@ -4505,6 +4505,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:no
   display: block;
   font-family: "ico-font";
   font-size: 32px;
+  position: relative !important;
 }
 @media (max-width: 1024px) {
   body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div {
@@ -11792,6 +11793,7 @@ footer h2 {
 }
 @media (max-width: 1024px) {
   .consumptionator-page .gallery-wrapper.end-card .share-bar .gig-button-container td div:before, .node-type-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container td div:before, .node-type-tv-episode .gallery-wrapper.end-card .share-bar .gig-button-container td div:before, .gallery-recap-block .gallery-wrapper.end-card .share-bar .gig-button-container td div:before, .node-type-consumpt-post .gallery-wrapper.end-card .share-bar .gig-button-container td div:before, .node-media-gallery .gallery-wrapper.end-card .share-bar .gig-button-container td div:before, .node-type-usanetwork-microsite .gallery-wrapper.end-card .share-bar .gig-button-container td div:before {
+    left: 0;
     position: absolute;
   }
 }
@@ -15528,7 +15530,7 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 .right-rail-line .sticky-share .field-label {
   display: none;
 }
-.right-rail-line .sticky-share table, .right-rail-line .sticky-share tbody, .right-rail-line .sticky-share tr, .right-rail-line .sticky-share td {
+.right-rail-line .sticky-share table, .right-rail-line .sticky-share tbody, .right-rail-line .sticky-share tr, .right-rail-line .sticky-share td, .right-rail-line .sticky-share button {
   display: block;
   width: 100%;
 }

@@ -1328,6 +1328,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:no
   display: block;
   font-family: "ico-font";
   font-size: 32px;
+  position: relative!important;
 }
 @media (max-width: 1024px) {
   body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div {

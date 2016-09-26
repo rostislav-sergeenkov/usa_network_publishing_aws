@@ -215,6 +215,7 @@ body:not(.blog), .blog .node-media-gallery.view-mode-inline_content  {
           display: block;
           font-family: "ico-font";
           font-size: 32px;
+          position: relative!important;
           @include breakpoint ($bp-1024-width) {
             font-size: 26px;
           }

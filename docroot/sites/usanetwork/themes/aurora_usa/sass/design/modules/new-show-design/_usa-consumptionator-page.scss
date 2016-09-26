@@ -126,7 +126,7 @@
             .gig-button-container {
               td {
                 width: 100%!important;
-                > div {
+                div {
                   font-size: 44px!important;
                   height: 80px!important;
                   line-height: 80px!important;
@@ -214,7 +214,7 @@
           .gig-button-container {
             td {
               width: 100%!important;
-              > div {
+              div {
                 font-size: get-vw(44px, 768)!important;
                 height: get-vw(80px, 768)!important;
                 line-height: get-vw(80px, 768)!important;
@@ -232,7 +232,7 @@
         padding: 0;
         width: 100%;
         td {
-          > div {
+          div {
             background: transparent;
             position: relative!important;
             text-align: center;
@@ -248,7 +248,7 @@
         &.gig-button-container-facebook {
           background: $usa-video-helper-facebook;
           td {
-            > div:before {
+            div:before {
               content: '\e618';
             }
           }
@@ -256,7 +256,7 @@
         &.gig-button-container-twitter {
           background: $usa-video-helper-twitter;
           td {
-            > div:before {
+            div:before {
               content: '\e61a';
             }
           }
@@ -264,7 +264,7 @@
         &.gig-button-container-tumblr {
           background: $usa-video-helper-tumblr;
           td {
-            > div:before {
+            div:before {
               content: '\e619';
             }
           }
@@ -272,7 +272,7 @@
         &.gig-button-container-share {
           background: $usa-video-helper-pinterest;
           td {
-            > div:before {
+            div:before {
               content: '\e62a';
             }
           }
@@ -295,7 +295,7 @@
       .field-type-gigya-sharebar {
         .gig-button-container {
           td {
-            > div {
+            div {
               @include breakpoint($bp-min-1025-width) {
                 font-size: get-vw(22px, 1600)!important;
                 height: get-vw(58px, 1600)!important;

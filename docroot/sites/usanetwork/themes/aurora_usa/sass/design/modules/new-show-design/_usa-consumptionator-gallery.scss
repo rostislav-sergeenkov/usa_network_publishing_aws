@@ -402,7 +402,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
           &.gig-button-container-share {
             margin-right: 0;
           }
-          td > div {
+          td div {
             font-size: 30px;
           }
         }
@@ -1199,7 +1199,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
           @include breakpoint($bp-min-1601-width) {
             margin-right: 18.75px;
           }
-          td > div {
+          td div {
             @include breakpoint($bp-min-1025-width) {
               height: get-vw(32px, 1280)!important;
               width: get-vw(32px, 1280)!important;
@@ -1223,7 +1223,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
           &.gig-button-container-facebook {
-            td > div {
+            td div {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-facebook;
@@ -1233,7 +1233,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
           &.gig-button-container-twitter {
-            td > div {
+            td div {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-twitter;
@@ -1243,7 +1243,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
           &.gig-button-container-tumblr {
-            td > div {
+            td div {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-tumblr;
@@ -1253,7 +1253,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
           &.gig-button-container-pinterest {
-            td > div {
+            td div {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-pinterest;
@@ -1263,7 +1263,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
           &.gig-button-container-share {
-            td > div {
+            td div {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: transparent;
@@ -1362,7 +1362,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               &.gig-button-container-share {
                 margin-right: 0;
               }
-              td > div {
+              td div {
                 font-size: 30px;
               }
               [id$='_img'] {
@@ -1484,7 +1484,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             &.gig-button-container-share {
               margin-right: 0;
             }
-            td > div {
+            td div {
               font-size: 30px;
             }
             [id$='_img'] {

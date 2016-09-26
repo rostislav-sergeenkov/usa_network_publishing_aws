@@ -229,7 +229,7 @@
                 width: 32px;
               }
               td {
-                > div {
+                div {
                   font-size: 32px!important;
                 }
               }
@@ -453,35 +453,35 @@
           .gig-button-container {
             &.gig-button-container-facebook {
               td {
-                > div:before {
+                div:before {
                   color: $usa-video-helper-facebook;
                 }
               }
             }
             &.gig-button-container-twitter {
               td {
-                > div:before {
+                div:before {
                   color: $usa-video-helper-twitter;
                 }
               }
             }
             &.gig-button-container-tumblr {
               td {
-                > div:before {
+                div:before {
                   color: $usa-video-helper-tumblr;
                 }
               }
             }
             &.gig-button-container-pinterest {
               td {
-                > div:before {
+                div:before {
                   color: $usa-video-helper-pinterest;
                 }
               }
             }
             &.gig-button-container-share {
               td {
-                > div:before {
+                div:before {
                   color: $poll-color;
                 }
               }

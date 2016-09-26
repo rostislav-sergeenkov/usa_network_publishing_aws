@@ -4737,43 +4737,47 @@ input[type="radio"], input[type="checkbox"] {
   content: '\e616';
 }
 
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div, body:not(.blog).node-type-top3-gallery .gig-button-container td > div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td > div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td > div {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container td button, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td button, body:not(.blog).node-type-top3-gallery .gig-button-container td button, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td button, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td button, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td button {
+  background: none;
+  height: auto !important;
+}
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div {
   background-image: none !important;
   display: block;
   font-family: "ico-font";
   font-size: 32px;
 }
 @media (max-width: 1024px) {
-  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div, body:not(.blog).node-type-top3-gallery .gig-button-container td > div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td > div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td > div {
+  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div {
     font-size: 26px;
   }
 }
 @media (max-width: 480px) {
-  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td > div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div, body:not(.blog).node-type-top3-gallery .gig-button-container td > div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td > div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td > div {
+  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div {
     font-size: 23px;
   }
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-facebook td > div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-facebook td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-facebook td div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-facebook td div:before {
   content: "\e602";
   color: #afafaf;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-twitter td > div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-twitter td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-twitter td div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-twitter td div:before {
   content: "\e603";
   color: #afafaf;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-tumblr td > div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-tumblr td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-tumblr td div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-tumblr td div:before {
   content: "\e604";
   color: #afafaf;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-pinterest td > div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-pinterest td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-pinterest td div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-pinterest td div:before {
   content: "\e605";
   color: #afafaf;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-share td > div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-share td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-share td div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-share td div:before {
   content: "\e606";
   color: #afafaf;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-email td > div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-email td > div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-email td > div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-email td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-email td > div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-email td > div:before {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container.gig-button-container-email td div:before, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-email td div:before, body:not(.blog).node-type-top3-gallery .gig-button-container.gig-button-container-email td div:before, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container.gig-button-container-email td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-email td div:before, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container.gig-button-container-email td div:before {
   content: "\e625";
   color: #afafaf;
 }
@@ -6193,129 +6197,129 @@ button.swiper-pagination-bullet {
 .node-type-timeline-gallery .timeline-gigya-share {
   margin-bottom: 20px;
 }
-.field-type-gigya-sharebar .gig-button-container td > div,
-.field-type-gigya-sharebar .gig-button-container td > div:hover,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
+.field-type-gigya-sharebar .gig-button-container td div,
+.field-type-gigya-sharebar .gig-button-container td div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div:hover {
   width: 32px !important;
   height: 32px !important;
   background-image: url("../images/social_chatter_icons.png");
   background-repeat: none;
 }
 @media (max-width: 1024px) {
-  .field-type-gigya-sharebar .gig-button-container td > div,
-  .field-type-gigya-sharebar .gig-button-container td > div:hover,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container td div,
+  .field-type-gigya-sharebar .gig-button-container td div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div:hover {
     width: 26px !important;
     height: 26px !important;
   }
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container td > div,
-  .field-type-gigya-sharebar .gig-button-container td > div:hover,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container td div,
+  .field-type-gigya-sharebar .gig-button-container td div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div:hover {
     width: 24px !important;
     height: 24px !important;
   }
 }
 @media (max-width: 480px) {
-  .field-type-gigya-sharebar .gig-button-container td > div,
-  .field-type-gigya-sharebar .gig-button-container td > div:hover,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container td div,
+  .field-type-gigya-sharebar .gig-button-container td div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div:hover {
     width: 22px !important;
     height: 22px !important;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td div {
   background-position: 1px -2908px !important;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:hover,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td div:hover {
   background-position: 1px -2948px !important;
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td div {
     background-position: 1px -3422px !important;
   }
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:hover,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-facebook td div:hover {
     background-position: 1px -3452px !important;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td div {
   background-position: 1px -2750px !important;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:hover,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td div:hover {
   background-position: 1px -2790px !important;
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td div {
     background-position: 1px -3304px !important;
   }
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:hover,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-twitter td div:hover {
     background-position: 1px -3334px !important;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td div {
   background-position: 1px -3225px !important;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:hover,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td div:hover {
   background-position: 1px -3265px !important;
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td div {
     background-position: 1px -3660px !important;
   }
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:hover,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-tumblr td div:hover {
     background-position: 1px -3690px !important;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td div {
   background-position: 1px -3067px !important;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:hover,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td div:hover {
   background-position: 1px -3107px !important;
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td div {
     background-position: 1px -3542px !important;
   }
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:hover,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-pinterest td div:hover {
     background-position: 1px -3572px !important;
   }
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td div {
   background-position: 5px -3717px !important;
 }
-.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover,
-.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div:hover {
+.field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:hover,
+.node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td div:hover {
   background-position: 5px -3747px !important;
 }
 @media (max-width: 709px) {
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td div {
     background-position: 4px -3779px !important;
   }
-  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:hover,
-  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td > div:hover {
+  .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:hover,
+  .node-type-timeline-gallery .timeline-gigya-share .gig-button-container.gig-button-container-share td div:hover {
     background-position: 4px -3804px !important;
   }
 }
@@ -15505,7 +15509,7 @@ html.no-scroll, body.no-scroll {
   .touch .right-rail-line .sticky-share .field-type-gigya-sharebar td .gig-button-container td {
     width: 100% !important;
   }
-  .touch .right-rail-line .sticky-share .field-type-gigya-sharebar td .gig-button-container td > div {
+  .touch .right-rail-line .sticky-share .field-type-gigya-sharebar td .gig-button-container td div {
     font-size: 44px !important;
     height: 80px !important;
     line-height: 80px !important;
@@ -15592,7 +15596,7 @@ html.no-scroll, body.no-scroll {
   .right-rail-line .sticky-share .field-type-gigya-sharebar td .gig-button-container td {
     width: 100% !important;
   }
-  .right-rail-line .sticky-share .field-type-gigya-sharebar td .gig-button-container td > div {
+  .right-rail-line .sticky-share .field-type-gigya-sharebar td .gig-button-container td div {
     font-size: 5.72917vw !important;
     height: 10.41667vw !important;
     line-height: 10.41667vw !important;
@@ -15607,12 +15611,12 @@ html.no-scroll, body.no-scroll {
   padding: 0;
   width: 100%;
 }
-.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td > div {
+.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td div {
   background: transparent;
   position: relative !important;
   text-align: center;
 }
-.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td > div:before {
+.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td div:before {
   background: transparent;
   color: white !important;
   display: block;
@@ -15622,25 +15626,25 @@ html.no-scroll, body.no-scroll {
 .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook {
   background: #3b5998;
 }
-.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before {
   content: '\e618';
 }
 .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter {
   background: #00aced;
 }
-.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
+.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before {
   content: '\e61a';
 }
 .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr {
   background: #32506d;
 }
-.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
+.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before {
   content: '\e619';
 }
 .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-share {
   background: #cb2027;
 }
-.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+.right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before {
   content: '\e62a';
 }
 @media (min-width: 1025px) {
@@ -15662,7 +15666,7 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (min-width: 1025px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td > div {
+  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td div {
     font-size: 1.375vw !important;
     height: 3.625vw !important;
     line-height: 3.625vw !important;
@@ -15670,7 +15674,7 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (min-width: 1601px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td > div {
+  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td div {
     font-size: 30px !important;
     height: 80px !important;
     line-height: 80px !important;
@@ -15678,7 +15682,7 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td > div {
+  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container td div {
     font-size: 2.92969vw !important;
     height: 7.8125vw !important;
     line-height: 7.8125vw !important;
@@ -16219,7 +16223,7 @@ html.no-scroll, body.no-scroll {
     width: 32px;
   }
 }
-.show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td > div {
+.show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container td div {
   font-size: 32px !important;
 }
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-header .share .field-type-gigya-sharebar .gig-button-container [id$='reaction0-facebook_img']:before {
@@ -16970,7 +16974,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share {
     margin-right: 0;
   }
-  .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container td > div {
+  .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container td div, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container td div, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container td div, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container td div, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container td div, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td div, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container td div {
     font-size: 30px;
   }
 }
@@ -17874,19 +17878,19 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (min-width: 1025px) {
-  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div {
+  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div {
     height: 2.5vw !important;
     width: 2.5vw !important;
   }
 }
 @media (min-width: 1601px) {
-  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div {
+  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div {
     height: 40px !important;
     width: 40px !important;
   }
 }
 @media (min-width: 1025px) {
-  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before {
+  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before {
     border-radius: 0.39063vw;
     color: white;
     font-size: 1.875vw !important;
@@ -17894,38 +17898,38 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (min-width: 1601px) {
-  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td > div:before {
+  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container td div:before {
     border-radius: 6.25px;
     font-size: 30px !important;
     padding: 5px;
   }
 }
 @media (min-width: 1025px) {
-  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before {
     background: #3b5998;
     content: '\e618';
   }
 }
 @media (min-width: 1025px) {
-  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
+  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before {
     background: #00aced;
     content: '\e61a';
   }
 }
 @media (min-width: 1025px) {
-  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
+  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before {
     background: #32506d;
     content: '\e619';
   }
 }
 @media (min-width: 1025px) {
-  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
+  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:before {
     background: #cb2027;
     content: '\e617';
   }
 }
 @media (min-width: 1025px) {
-  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+  .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before {
     background: transparent;
   }
 }
@@ -18005,7 +18009,7 @@ html.no-scroll, body.no-scroll {
   .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share {
     margin-right: 0;
   }
-  .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div {
+  .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td div, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td div {
     font-size: 30px;
   }
   .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after {
@@ -18117,7 +18121,7 @@ html.no-scroll, body.no-scroll {
 .show-new-design.node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share {
   margin-right: 0;
 }
-.show-new-design.node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td > div {
+.show-new-design.node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td div, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td div, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container td div {
   font-size: 30px;
 }
 .show-new-design.node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after {
@@ -18934,8 +18938,8 @@ html.no-scroll, body.no-scroll {
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share-title {
   font-family: "FiraSansRegular", sans-serif;
 }
-.show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share .gig-button-container td > div,
-.show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share .gig-button-container td > div:hover {
+.show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share .gig-button-container td div,
+.show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share .gig-button-container td div:hover {
   font-size: 24px;
   height: 24px !important;
   width: 24px !important;
@@ -22759,24 +22763,24 @@ html.no-scroll, body.no-scroll {
     padding-right: 3.90625vw;
   }
 }
-.show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container td > div {
+.show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container td div {
   font-size: 23px;
   line-height: 1 !important;
   height: auto !important;
   width: auto !important;
 }
 @media (max-width: 1024px) {
-  .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container td > div {
+  .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container td div {
     font-size: 1.95313vw;
   }
 }
 @media (max-width: 768px) {
-  .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container td > div {
+  .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container td div {
     font-size: 2.60417vw;
   }
 }
 @media (max-width: 640px) {
-  .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container td > div {
+  .show-new-design.consumptionator-video-page .video-block .video-player-helper .usa-episode-share .field-type-gigya-sharebar .gig-button-container td div {
     font-size: 7.5vw;
   }
 }

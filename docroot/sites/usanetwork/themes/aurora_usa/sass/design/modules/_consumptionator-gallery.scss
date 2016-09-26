@@ -267,6 +267,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
           td div {
             &:before {
               @include breakpoint($bp-1024-width) {
+                left: 0;
                 position: absolute;
               }
             }

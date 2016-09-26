@@ -4746,6 +4746,7 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:no
   display: block;
   font-family: "ico-font";
   font-size: 32px;
+  position: relative !important;
 }
 @media (max-width: 1024px) {
   body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div {
@@ -15567,7 +15568,7 @@ html.no-scroll, body.no-scroll {
 .right-rail-line .sticky-share .field-label {
   display: none;
 }
-.right-rail-line .sticky-share table, .right-rail-line .sticky-share tbody, .right-rail-line .sticky-share tr, .right-rail-line .sticky-share td {
+.right-rail-line .sticky-share table, .right-rail-line .sticky-share tbody, .right-rail-line .sticky-share tr, .right-rail-line .sticky-share td, .right-rail-line .sticky-share button {
   display: block;
   width: 100%;
 }
@@ -16979,6 +16980,7 @@ html.no-scroll, body.no-scroll {
   }
 }
 .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container [id$='_img']:before {
+  left: 0;
   position: absolute;
 }
 .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container [id$='_img']:after {

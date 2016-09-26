@@ -50,7 +50,7 @@
       width: 100%;
       margin: 0;
       .gig-button-container {
-        td > div {
+        td div {
           margin: 0 get-vw(5px, 1025) 0 0 !important;
           width: get-vw(20px, 1025) !important;
           @include breakpoint($bp-min-1901-width) {
@@ -97,8 +97,8 @@
           .timeline-gigya-share {
             .gig-button-container {
               td {
-                > div,
-                > div:hover {
+                div,
+                div:hover {
                   @include breakpoint($bp-1280-width) {
                     width: 27px !important;
                     height: 27px !important;

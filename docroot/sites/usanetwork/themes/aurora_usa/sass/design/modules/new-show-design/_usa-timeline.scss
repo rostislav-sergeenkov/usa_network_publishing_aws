@@ -129,8 +129,8 @@
           .timeline-gigya-share {
             .gig-button-container {
               td {
-                div,
-                div:hover {
+                > div,
+                > div:hover {
                   font-size: 24px;
                   height: 24px !important;
                   width: 24px !important;

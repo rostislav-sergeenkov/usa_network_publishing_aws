@@ -773,7 +773,7 @@
       .player-wrapper {
         @include breakpoint($bp-min-1281-width) {
           max-height: 1093.75px;
-        }\
+        }
       }
       .consum-sidebar {
         @include breakpoint($bp-min-1025-width) {

@@ -524,17 +524,20 @@ function _usanetwork_movies_mb_block() {
           }
           $caption = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_violator_name', 'value');
           $has_full_episode = _usanetwork_movie_has_full_episode($featured_movie);
+          if (!empty($featured_movie->field_promo_link)) {
+            $promo_link_field = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_link', 'url');
+          }
+
           $promos[] = array(
             'watch_now' => !empty($has_full_episode) ? 'watch-now' : NULL,
-            'url' => empty($has_full_episode) ? url('node/' . $featured_movie->nid) : url('file/' . $has_full_episode->fid),
+            'url' => empty($has_full_episode) ? (isset($promo_link_field) ? url($promo_link_field) : url('node/' . $featured_movie->nid)) : url('file/' . $has_full_episode->fid),
             'image' => array(
               'mobile' => !empty($cover_media)
                 ? image_style_url('719x414', $cover_media) : NULL,
               'desktop' => !empty($cover_media)
                 ? ($is_first
                   ? image_style_url('927x756', $cover_media)
-                  : image_style_url('456x372', $cover_media)
-                )
+                  : image_style_url('456x372', $cover_media))
                 : NULL,
             ),
             'icon_type' => ($featured_movie->type == 'movie') ? ($has_full_episode ? 'full-video-icon-default' : 'about-show-icon-default') : (usanetwork_core_api_get_media_icon('node', $featured_movie->nid)),

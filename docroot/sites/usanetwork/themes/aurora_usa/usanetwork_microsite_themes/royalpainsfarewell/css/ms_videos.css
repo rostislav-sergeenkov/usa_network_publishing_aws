@@ -41,9 +41,11 @@
 #microsite .featured-asset .tve-help-link img {
   width: auto;
   height: 16px;
+  box-sizing: content-box;
+}
+.page-node-microsite.show-royalpains #microsite .featured-asset .tve-help-link img {
   background-color: #55452A;
   border: 4px solid #55452A;
-  box-sizing: content-box;
 }
 #microsite .featured-asset .tve-help .tve-download-link {
   max-width: 326px;
@@ -162,7 +164,7 @@
 .video-auth-player-wrapper.featured-asset .tve-help {
   margin: 0;
 }
-.video-auth-player-wrapper.featured-asset .tve-help-link {
+.page-node-microsite.show-royalpains #microsite .video-auth-player-wrapper.featured-asset .tve-help-link {
   color: #55452A;
 }
 .video-auth-player-wrapper.featured-asset .loginButton img {
@@ -180,14 +182,16 @@
   display: inline-block;
   margin-left: 10px;
   padding: 0 0 0 12px;
-  border-left: 1px solid #55452A;
   line-height: 10px;
 }
-.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a,
-.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:link,
-.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:visited,
-.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:hover,
-.video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:active {
+.page-node-microsite.show-royalpains #microsite .video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope {
+  border-left: 1px solid #55452A;
+}
+.page-node-microsite.show-royalpains .video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a,
+.page-node-microsite.show-royalpains .video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:link,
+.page-node-microsite.show-royalpains .video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:visited,
+.page-node-microsite.show-royalpains .video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:hover,
+.page-node-microsite.show-royalpains .video-auth-player-wrapper.featured-asset .tve-help-link.signOut .item-list ul.ng-scope a:active {
   color: #55452A;
 }
 .video-auth-player-wrapper.featured-asset .tve-close {
@@ -415,7 +419,6 @@ body.video-fullscreen #microsite .featured-asset .video-player-wrapper iframe {
   font-size: 26px;
   line-height: 1.2;
   height: initial;
-  color: #55452A;
   text-transform: uppercase;
   text-decoration: none;
   position: relative;
@@ -423,6 +426,9 @@ body.video-fullscreen #microsite .featured-asset .video-player-wrapper iframe {
   left: 0;
   cursor: pointer;
   background-color: transparent;
+}
+.page-node-microsite.show-royalpains #video-filter li.filter-item {
+  color: #55452A;
 }
 #video-filter li.filter-item:last-child {
   margin-right: 0;
@@ -506,8 +512,10 @@ body.video-fullscreen #microsite .featured-asset .video-player-wrapper iframe {
   width: 31.3%;
   min-height: 111px;
   margin: 0 1% 6% 0;
-  color: #55452A;
   vertical-align: top;
+}
+.page-node-microsite.show-royalpains #video-item-list-wrapper li {
+  color: #55452A;
 }
 #video-item-list-wrapper li:nth-child(3n) {
   margin-right: 0;
@@ -552,13 +560,15 @@ body.video-fullscreen #microsite .featured-asset .video-player-wrapper iframe {
   text-overflow: ellipsis;
 }
 #video-item-list-wrapper .field-name-field-mpx-title h4 {
-  color: #55452A;
   text-align: left;
   text-transform: none;
   font-family: "avalonregular", sans-serif !important;
   font-size: 15px !important;
   line-height: 1.2 !important;
   margin: 0;
+}
+.page-node-microsite.show-royalpains #video-item-list-wrapper .field-name-field-mpx-title h4 {
+  color: #55452A;
 }
 /* get rid of "key" icon */
 #videos .block-usanetwork-mpx-video .view .file.tve-video-auth > a:after,
@@ -575,11 +585,11 @@ body.video-fullscreen #microsite .featured-asset .video-player-wrapper iframe {
   display: none;
   background-image: none;
 }
-#video-item-list-wrapper a,
-#video-item-list-wrapper a:link,
-#video-item-list-wrapper a:visited,
-#video-item-list-wrapper a:hover,
-#video-item-list-wrapper a:active {
+.page-node-microsite.show-royalpains #video-item-list-wrapper a,
+.page-node-microsite.show-royalpains #video-item-list-wrapper a:link,
+.page-node-microsite.show-royalpains #video-item-list-wrapper a:visited,
+.page-node-microsite.show-royalpains #video-item-list-wrapper a:hover,
+.page-node-microsite.show-royalpains #video-item-list-wrapper a:active {
   color: #55452A;
   text-decoration: none;
 }

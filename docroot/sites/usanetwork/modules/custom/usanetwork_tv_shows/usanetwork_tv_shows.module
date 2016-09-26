@@ -4686,10 +4686,10 @@ function usanetwork_tv_show_consumptionator_get_ymal_item($show_node) {
       $about_field_data = '';
 
       if (!empty($related_show_node->field_about_ymal)) {
-        $about_field = field_get_items('node', $related_show_node, 'field_about_ymal');
+        $about_field = _usanetwork_get_field_item('node', $related_show_node, 'field_about_ymal', 'value');
 
         if (!empty($about_field)) {
-          $about_field_data = check_plain(reset(reset($about_field)));
+          $about_field_data = check_plain($about_field);
         }
       }
       if (!empty($related_show_node->field_tv_cover_media)) {

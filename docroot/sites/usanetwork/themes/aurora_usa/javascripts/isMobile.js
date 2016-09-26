@@ -108,7 +108,7 @@ var USAN = USAN || {};
         };
         this.seven_inch = match(seven_inch, ua);
         this.touchOS = ('ontouchstart' in document.documentElement) ? true : false;
-        this.any = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch || this.touchOS;
+        this.isMobileDevice = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch || this.touchOS;
 
         // excludes 'other' devices and ipods, targeting touchscreen phones
         this.phone = this.apple.phone || this.android.phone || this.windows.phone;

@@ -14,7 +14,7 @@
           closestWrap: '.episodes-list', // used for add class carousel-end
           carousel: '.usa-carousel',
           carouselItem: '.usa-carousel-item',
-          carouselActiveItem: '.usa-carousel-item.active',
+          carouselActiveNodeItem: '.node-usanetwork-promo.active',
           prevArrow: '.usa-carousel-control-prev',
           nextArrow: '.usa-carousel-control-next',
           moreButton: '.more-button'
@@ -72,7 +72,7 @@
       _.$mainWrap = $(element);
       _.$carousel = $(element).find(_.options.selectors.carousel);
       _.$carouselItems = $(element).find(_.options.selectors.carouselItem);
-      _.$carouselActiveItem = $(element).find(_.options.selectors.carouselActiveItem);
+      _.$carouselActiveItem = $(element).find(_.options.selectors.carouselActiveNodeItem).parent();
       _.$prevArrow = $(element).find(_.options.selectors.prevArrow);
       _.$nextArrow = $(element).find(_.options.selectors.nextArrow);
       _.$moreButton = $(element).find(_.options.selectors.moreButton);
@@ -274,6 +274,12 @@
       return false;
     }
 
+    if (_.$carouselActiveItem.length > 0) {
+      _.options.swiper.initialSlide = _.$carouselActiveItem.index();
+    } else {
+      _.options.swiper.initialSlide = 0;
+    }
+
     _.addElemClass(_.$mainWrap, _.options.horizontalClassName, null);
 
     _.options.swiper.onInit = function (sw) {
@@ -428,8 +434,6 @@
         $mainWrap = _.$mainWrap,
         initClassName = _.options.initClassName;
 
-    _.consoleCustom('usaCarousel init');
-
     if (creation && !$($mainWrap).hasClass(initClassName)) {
       $($mainWrap).addClass(initClassName);
       _.switchMode();
@@ -491,15 +495,6 @@
             horizontalModeBpMax: 768,
             destroyCarouselBpMax: 640,
             isMoreButton: true,
-            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
-          });
-        } else if ($body.is('.node-type-media-gallery')) {
-          $episodesListSlider.usaCarousel({
-            isVerticalMode: true,
-            verticalModeBpMin: 1281,
-            isHorizontalMode: true,
-            horizontalModeBpMax: 1280,
-            destroyCarouselBpMax: 640,
             moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
           });
         } else {

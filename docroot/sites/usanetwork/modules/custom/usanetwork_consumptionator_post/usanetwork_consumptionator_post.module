@@ -161,6 +161,7 @@ function usanetwork_consumptionator_post_block_info() {
 function usanetwork_consumptionator_post_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'consumpt_post') {
     $node->content['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-right-rail.js';
+    $node->content['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-sticky-share.js';
   }
 }
 
@@ -456,7 +457,7 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
 function _usanetwork_consumptionator_post_gallery_recap($gallery_id, $block_title = NULL) {
 
   if (is_numeric($gallery_id)) {
-    $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id));
+    $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id), FALSE, FALSE);
     $theme_variables = array(
       'gallery_html' => !empty($gallery_html) ? $gallery_html : '',
       'block_title' => !empty($block_title) ? $block_title : t('Gallery Recap'),

@@ -461,13 +461,13 @@ function usanetwork_taboola_preprocess_file_entity(&$vars) {
       $expiration_date = $file_wrapper->field_mpx_expiration_date->value();
     }
     if (!empty($expiration_date)) {
-      $expiration_date_format = gmdate('D, d M Y H:i:s T', $expiration_date);
+      $expiration_date_format = gmdate('Y-m-d', $expiration_date);
 
       $tag_taboola_expiration_date = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
         '#attributes' => array(
-          'name' => 'item-expiration-date',
+          'itemprop' => 'expires',
           'content' => $expiration_date_format,
         ),
       );

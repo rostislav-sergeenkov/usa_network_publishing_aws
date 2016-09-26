@@ -66,12 +66,17 @@
         },
         prevArrow: '.slide-prev',
         nextArrow: '.slide-next',
+        nextGallery: '.gallery-next',
         slideCounter: '.slider-counter .slide-index',
-        shareBar: '.field-name-field-gigya-share-bar > div',
+        endcardShareBar: '.end-card-sharebar .field-name-field-gigya-share-bar > div',
+        shareBar: '.share-bar .field-name-field-gigya-share-bar > div',
         // interstitial selectors
         interstitialWrap: '.interstitial-wrap',
         interstitialBlock: '.interstitial-block',
         interstitialNext: '.interstitial-next',
+        // end card
+        // isGalleryEndCard: false,
+        endCardBlock: '.end-card-block',
 
         // interstitial params
         //interstitialInitPages: ['all'], //default all, body classes for init interstitial ["node-type-media-gallery", "node-type-consumpt-post", "node-type-tv-episode"]
@@ -124,10 +129,13 @@
       _.$interstitialWrap = $(element).find(_.options.interstitialWrap);
       _.$interstitialBlock = $(element).find(_.options.interstitialBlock);
       _.$interstitialNext = $(element).find(_.options.interstitialNext);
+      _.$endcardShareBar = $(element).find(_.options.endcardShareBar);
       _.$shareBar = $(element).find(_.options.shareBar);
       _.$prevArrow = $(element).find(_.options.prevArrow);
       _.$nextArrow = $(element).find(_.options.nextArrow);
+      _.$nextGallery = $(element).find(_.options.nextGallery);
       _.$appendDots = $(element).find(_.options.galleryPagerWrap.selector);
+      _.$endCardBlock = $(element).find(_.options.endCardBlock);
 
       // data attributes value
       _.data = {
@@ -144,6 +152,7 @@
       _.options.gallery.prevArrow = _.$prevArrow;
       _.options.gallery.nextArrow = _.$nextArrow;
       _.options.gallery.appendDots = _.$galleryPagerWrap;
+      _.options.isGalleryEndCard = _.checkEndcard();
 
       // init app
       _.init(_.options.init);
@@ -158,18 +167,31 @@
   //=============================
 
   // AdobeTracking
-  usaGallery.prototype.callAdobeTracking = function () {
+  usaGallery.prototype.callAdobeTracking = function (_this) {
     if (typeof s_gi != 'undefined') {
+
+      var _ = _this,
+          $galleryWrap = _.$galleryWrap;
 
       if ($('body').hasClass('node-type-tv-episode')) {
         if (Drupal.settings.umbel_settings !== undefined) {
-          var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
-              pageName = Drupal.settings.umbel_settings.usa_umbel_param_2;
+          var showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '',
+              pageName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_2') ? Drupal.settings.umbel_settings.usa_umbel_param_2 : '';
         }
         s.linkTrackVars = 'events,prop3,prop4,prop5';
         s.prop3 = 'Gallery';
         s.prop4 = showName.trim() + ' : ' + pageName.trim();
         s.prop5 = 'Episodic Gallery';
+      }
+
+      if ($('body').hasClass('node-type-media-gallery')) {
+        if (Drupal.settings.umbel_settings !== undefined) {
+          var showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '',
+              galleryName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_3') ? Drupal.settings.umbel_settings.usa_umbel_param_3 : '',
+              slideNumber = parseInt($('.gallery-wrapper .slide.slick-active').data('slick-index')) + 1,
+              pageNameEnd = ($galleryWrap.hasClass('end-card'))? 'Gallery End Card': 'Image ' + slideNumber;
+          s.pageName = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + pageNameEnd;
+        }
       }
 
       if ($('body').hasClass('page-videos-live')) {
@@ -194,6 +216,47 @@
 
       void (s.t());
     }
+  };
+
+
+  // end card
+  usaGallery.prototype.callEndCardAdobeTracking = {
+    showEndCard: function () {
+      AdobeTracking.photoBreakPoint = 'Photo Gallery End Card';
+      _satellite.track('setPhotoBreakPoint');
+    },
+    clickNextItem: function () {
+
+      var showName = '',
+          galleryName = '';
+
+      if ($('body').hasClass('node-type-media-gallery')) {
+        showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '';
+        galleryName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_3') ? Drupal.settings.umbel_settings.usa_umbel_param_3 : '';
+      }
+
+      AdobeTracking.clickedPageItem = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + 'End Card Next Click';
+      _satellite.track('pageItemClicked');
+    }
+  };
+
+  usaGallery.prototype.checkEndcard = function () {
+
+    var _ = this;
+
+    return _.$galleryWrap.hasClass('gallery-with-endcard');
+  };
+
+  usaGallery.prototype.setEndCartNextClick = function () {
+
+    var _ = this;
+
+    _.$endCardBlock.on('click', 'a', function (e) {
+      _.callEndCardAdobeTracking.clickNextItem();
+    });
+    _.$nextGallery.on('click', 'a', function (e) {
+      _.callEndCardAdobeTracking.clickNextItem();
+    });
   };
 
   // mps advert
@@ -279,13 +342,15 @@
           galleryId = _.data.galleryId,
           gallerySharingPath = _.data.gallerySharingPath,
           $gallery = _.$gallery,
+          $endcardSharebar = _.$endcardShareBar,
           $sharebar = _.$shareBar,
           $slide = $gallery.find('.slick-active'),
+          endcard = $slide.children().hasClass('end-card'),
           description = $slide.find('.slide-info .description').text().trim(),
           image = $slide.find('.asset-img img'),
           imageUrl = image.attr('src') ? image.attr('src'): image.attr('data-lazy'),
-          link_back = (_.data.gallerySharingPath == '')? window.location.href.split('#')[0]: _.data.gallerySharingPath,
-          slideIndex;
+          link_back = (gallerySharingPath == '')? window.location.href.split('#')[0]: gallerySharingPath,
+          slideIndex = '';
 
       if ($sharebar.length > 0) {
 
@@ -308,10 +373,12 @@
           galleryId = galleryId + "-";
         }
 
-        if (currentSlide > 0 || $gallery.closest('.description-item[data-tab="actor-bio"]').length > 0) {
-          slideIndex = '#' + galleryId + (currentSlide + 1);
-        } else {
-          slideIndex = '';
+        if(!endcard) {
+          if (currentSlide > 0 || $gallery.closest('.description-item[data-tab="actor-bio"]').length > 0) {
+            slideIndex = '#' + galleryId + (currentSlide + 1);
+          } else {
+            slideIndex = '';
+          }
         }
 
         if ($('body').hasClass('page-node-microsite')) {
@@ -373,7 +440,7 @@
 
   usaGallery.prototype.createCustomPaging = function (slick, index) {
 
-    var $slide = $(slick.$slides[index].innerHTML),
+    var $slide = $(slick.$slides[index]),
         slideImg = $($slide.find('img')[0]),
         imgPreviewUrl = slideImg.data('preview'),
         imgPreviewClass = (slideImg.hasClass('portrait'))? 'class="preview-portrait" ': '',
@@ -670,6 +737,7 @@
   usaGallery.prototype.addSlickEventsCallBacks = function () {
 
     var _ = this,
+        $galleryWrap = _.$galleryWrap,
         $gallery = _.$gallery,
         initInterstitial = _.options.initInterstitial,
         initAdobeTracking = _.options.initAdobeTracking,
@@ -701,6 +769,9 @@
         if (initResize) {
           _.resize(_);
         }
+        if (_.options.isGalleryEndCard) {
+          _.setEndCartNextClick();
+        }
       })
       .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
@@ -718,10 +789,6 @@
           }
         }
 
-        if (initAdobeTracking) {
-          _.callAdobeTracking();
-        }
-
         if ($('body').hasClass('page-node-microsite')
           && typeof Drupal.behaviors.ms_global == 'object'
           && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
@@ -729,8 +796,19 @@
         }
       })
       .on('afterChange', function (event, slick, currentSlide) {
+        if ($gallery.find('.slick-active .node-gallery').hasClass('end-card')) {
+          $galleryWrap.addClass('end-card');
+          usaGallery.prototype.callEndCardAdobeTracking.showEndCard();
+        } else {
+          $galleryWrap.removeClass('end-card');
+        }
+
         _.gigyaSharebar(currentSlide);
         _.movePagerItems(_, currentSlide);
+
+        if (initAdobeTracking) {
+          _.callAdobeTracking(_);
+        }
 
         if (_.$body.hasClass('node-type-media-gallery')) {
           Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);

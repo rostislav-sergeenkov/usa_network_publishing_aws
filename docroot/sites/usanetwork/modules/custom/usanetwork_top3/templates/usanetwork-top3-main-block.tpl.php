@@ -128,9 +128,9 @@
 
     <div id="drop-area" class="drop-area">
       <div class="drag-group">
-        <div class="drop-area__item show-color show-font" id="one"></div>
-        <div class="drop-area__item show-color show-font" id="two"></div>
-        <div class="drop-area__item show-color show-font" id="three"></div>
+        <div class="drop-area__item show-color show-font" id="one" data-count="1"></div>
+        <div class="drop-area__item show-color show-font" id="two" data-count="2"></div>
+        <div class="drop-area__item show-color show-font" id="three" data-count="3"></div>
       </div>
     </div>
 

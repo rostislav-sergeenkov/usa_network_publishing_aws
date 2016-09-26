@@ -2196,9 +2196,8 @@ function _usanetwork_menu_news_block() {
   $result = _usanetwork_consumptionator_post_get_posts(NULL, NULL, $limit = 3, $exclude_verge = TRUE);
 
   if (!empty($result)) {
-    $posts = entity_load('node', array_keys($result));
-    foreach ($posts as $post) {
-      $post_image_path = usanetwork_core_api_get_content_image('node', $post, 'main', $limit = 1, TRUE);
+    foreach ($result as $post) {
+      $post_image_path = usanetwork_core_api_get_content_image('node', $post->nid, 'main', $limit = 1, TRUE);
       $post_image = theme('image_style', array(
         'path' => $post_image_path,
         'style_name' => 'full_episodes_633x356',

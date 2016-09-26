@@ -200,6 +200,7 @@ function _usanetwork_consumptionator_post_related_content_block() {
   if (!empty($content)) {
     $show_field = field_get_items('node', $content, 'field_show');
 
+    $is_new_design = FALSE;
     if (!empty($show_field)) {
       $tv_show_node = node_load($show_field[0]['target_id']);
 
@@ -315,7 +316,7 @@ function _usanetwork_consumptionator_post_main_block() {
       'rendered_carousel' => isset($show_nid)
           ? _usanetwork_consumptionator_post_posts_carousel($show_nid, $blog_nid, $node->nid)
           : ((isset($movies))
-            ? _usanetwork_consumptionator_post_posts_carousel()
+            ? _usanetwork_consumptionator_post_posts_carousel(NULL, NULL, $node->nid, $movies)
             : _usanetwork_consumptionator_post_posts_carousel(NULL, $blog_nid, $node->nid)),
       'source' => !empty($node->field_post_source) ? $node_wrapper->field_post_source->value() : '',
       'gallery_rec' => !empty($node->field_gallery_recap)
@@ -334,16 +335,10 @@ function _usanetwork_consumptionator_post_main_block() {
 }
 
 /**
- * Implements hook_usa_dart_alter().
+ * Get all movie related content
+ *
+ * @return array
  */
-function _usanetwork_consumptionator_post_movie_get_right_rail_content() {
-  $elements = _usanetwork_consumptionator_post_movie_get_right_rail_elements();
-
-
-
-}
-
-
 function _usanetwork_consumptionator_post_movie_get_right_rail_elements() {
   $content_items = array();
   $node_filters = array(
@@ -392,6 +387,9 @@ function _usanetwork_consumptionator_post_movie_get_right_rail_elements() {
   return $content_items;
 }
 
+/*
+ * Get movie related nodes
+ */
 function _usanetwork_consumptionator_post_movie_pull_right_rail_nodes($filters = array()) {
   $query = db_select('node', 'n');
   $query->fields('n', array('nid', 'title', 'type', 'created', 'changed'));
@@ -492,6 +490,9 @@ function _usanetwork_consumptionator_post_movie_pull_right_rail_nodes($filters =
   return $result;
 }
 
+/*
+ * Get movie related files
+ */
 function _usanetwork_consumptionator_post_movie_pull_right_rail_files() {
   $query = db_select('mpx_video', 'mv');
   $query->fields('mv', array('title'));
@@ -610,11 +611,11 @@ function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid =
 /*
  * Renders posts carousel for blog.
 */
-function _usanetwork_consumptionator_post_posts_carousel($show_id = NULL, $blog_nid = NULL, $post_id = NULL) {
-  if (is_null($show_id)) {
-    $result =  _usanetwork_consumptionator_post_movie_get_right_rail_elements();
+function _usanetwork_consumptionator_post_posts_carousel($show_id = NULL, $blog_nid = NULL, $post_id = NULL, $movie = NULL) {
+  if (is_null($movie)) {
+    $result = _usanetwork_consumptionator_post_get_posts($show_id, $blog_nid);
   } else {
-    $result =  _usanetwork_consumptionator_post_get_posts($show_id, $blog_nid);
+    $result = _usanetwork_consumptionator_post_movie_get_right_rail_elements();
   }
   if (isset($result)) {
     $is_new_design = FALSE;
@@ -681,10 +682,10 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id = NULL, $blog_
           : ((!empty($show_blog_title)
             ? $show_blog_title
             : t('@show_name blog', array('@show_name' => $show_node->title)))))
-        : t('Latest News'),
+        : ((is_null($movie)) ? t('Latest News') : t('Movies')),
       'posts_landing_link' => (is_numeric($show_id))
         ? l((($is_new_design) ? t('View all Articles <span class="show-color show-font"></span>') : t('View all posts')), 'node/' . $show_id . '/blog' . $blog_url, array('html' => TRUE))
-        : l(t('View all news'), 'news'),
+        : ((is_null($movie)) ? l(t('View all news'), 'news') : l(t('View all movie'), 'movies')),
       'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
     );
     return theme('usanetwork_cons_post_carousel', $theme_variables);

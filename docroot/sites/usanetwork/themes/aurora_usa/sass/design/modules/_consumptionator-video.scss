@@ -687,27 +687,64 @@
       }
       &:not(.show-related) {
         @include breakpoint($between-1025-1280) {
-          margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
+          height: calc((100vw - 300px)*0.5625);
+          overflow: hidden;
         }
         .player-wrapper {
           @include breakpoint($between-1025-1280) {
-            margin-bottom: calc((100vw - 4px) / 48 * 9 + 45px);
+            width: calc(100% - 300px);
           }
         }
         .consum-sidebar {
-          .items-block {
+          @include breakpoint($between-1025-1280) {
+            overflow: hidden;
+            height: 100%;
+            padding: 0;
+            position: relative;
+            width: 300px;
+          }
+          .advert {
             @include breakpoint($between-1025-1280) {
-              height: auto;
+              margin: 0;
             }
           }
-          .download-app {
+          .items-block {
             @include breakpoint($between-1025-1280) {
-              display: table;
+              position: relative;
+              right: auto;
+              top: auto;
+            }
+          }
+          .items-block-title {
+            @include breakpoint($between-1025-1280) {
+              height: 35px;
+              line-height: 35px;
+            }
+            h2 {
+              @include breakpoint($between-1025-1280) {
+                width: 100%;
+              }
+            }
+          }
+          .episodes-list-slider.vertical-mode {
+            @include breakpoint($between-1025-1280) {
+              display: block;
+              height: calc(100% - 70px);
             }
           }
           .more-items {
             @include breakpoint($between-1025-1280) {
-              background: none !important;
+              bottom: 0;
+              left: 0;
+              right: auto;
+              top: auto;
+              width: 100%;
+            }
+            a {
+              @include breakpoint($between-1025-1280) {
+                line-height: 35px;
+                padding-left: 20px;
+              }
             }
           }
         }
@@ -735,12 +772,8 @@
       }
       .player-wrapper {
         @include breakpoint($bp-min-1281-width) {
-          height: 42.01875vw;
           max-height: 1093.75px;
-        }
-        @include breakpoint($between-1025-1280) {
-          height: calc((100vw - 320px) * 0.5625);
-        }
+        }\
       }
       .consum-sidebar {
         @include breakpoint($bp-min-1025-width) {

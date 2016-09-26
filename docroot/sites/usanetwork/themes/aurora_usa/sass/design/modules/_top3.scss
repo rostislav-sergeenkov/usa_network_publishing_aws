@@ -709,7 +709,7 @@
         margin: 0;
       }
       td {
-        div {
+        > div {
           font-size: get-vw(60px, 1901);
           @include breakpoint($bp-min-1901-width) {
             font-size: 60px;

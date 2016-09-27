@@ -13,6 +13,36 @@ function usanetwork_mpx_video_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_credit_squeeze|file|mpx_video_2|form';
+  $field_group->group_name = 'group_credit_squeeze';
+  $field_group->entity_type = 'file';
+  $field_group->bundle = 'mpx_video_2';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Credit Squeeze',
+    'weight' => '65',
+    'children' => array(
+      0 => 'field_mpx_credit_squeeze',
+      1 => 'field_mpx_timing_start',
+      2 => 'field_mpx_timing_end',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Credit Squeeze',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $export['group_credit_squeeze|file|mpx_video_2|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_endcard|file|mpx_video_2|form';
   $field_group->group_name = 'group_endcard';
   $field_group->entity_type = 'file';
@@ -23,8 +53,8 @@ function usanetwork_mpx_video_field_group_info() {
     'label' => 'Endcard Settings',
     'weight' => '47',
     'children' => array(
-      0 => 'field_endcard_timing',
-      1 => 'field_custom_time',
+      0 => 'field_custom_time',
+      1 => 'field_endcard_timing',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

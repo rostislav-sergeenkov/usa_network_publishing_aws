@@ -1319,11 +1319,11 @@ input[type="radio"], input[type="checkbox"] {
 .icons-block a.schedule-icon-font:before {
   content: '\e616';
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container td button, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td button, body:not(.blog).node-type-top3-gallery .gig-button-container td button, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td button, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td button, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td button {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container td button, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td button, body:not(.blog).node-type-top3-gallery .gig-button-container td button, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td button, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td button, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td button, .gig-button-container td button {
   background: none;
   height: auto !important;
 }
-body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div {
+body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div, .gig-button-container td div {
   background-image: none !important;
   display: block;
   font-family: "ico-font";
@@ -1331,12 +1331,12 @@ body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:no
   position: relative!important;
 }
 @media (max-width: 1024px) {
-  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div {
+  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div, .gig-button-container td div {
     font-size: 26px;
   }
 }
 @media (max-width: 480px) {
-  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div {
+  body:not(.blog) .field-type-gigya-sharebar .gig-button-container td div, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, body:not(.blog).node-type-top3-gallery .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container td div, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container td div, .gig-button-container td div {
     font-size: 23px;
   }
 }

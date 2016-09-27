@@ -5952,7 +5952,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'settings' => array(
         'display_label' => 1,
         'pub_mpx' => array(
-          'media_data_fieldpath' => '',
+          'media_data_fieldpath' => 'enableCreditSqueeze',
         ),
       ),
       'type' => 'options_onoff',
@@ -8479,7 +8479,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'text',
       'settings' => array(
         'pub_mpx' => array(
-          'media_data_fieldpath' => '',
+          'media_data_fieldpath' => 'endCreditSqueeze',
         ),
         'size' => 60,
         'soft_length_limit' => '',
@@ -8584,7 +8584,7 @@ function usanetwork_mpx_video_field_default_field_instances() {
       'module' => 'text',
       'settings' => array(
         'pub_mpx' => array(
-          'media_data_fieldpath' => '',
+          'media_data_fieldpath' => 'startCreditSqueeze',
         ),
         'size' => 60,
         'soft_length_limit' => '',

@@ -2,9 +2,8 @@
 .node-type-timeline-gallery .timeline-gigya-share {
   margin-bottom: 20px;
   .gig-button-container {
-    td {
-      > div,
-      > div:hover {
+    .usa-share-button {
+      &, &:hover {
         width: 32px !important;
         height: 32px !important;
         background-image: url('../images/social_chatter_icons.png');
@@ -24,81 +23,71 @@
       }
     }
     &.gig-button-container-facebook {
-      td {
-        > div {
-          background-position: 1px -2908px !important;
+      .usa-share-button {
+        background-position: 1px -2908px !important;
+        &:hover {
+          background-position: 1px -2948px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          background-position: 1px -3422px !important;
           &:hover {
-            background-position: 1px -2948px !important;
-          }
-          @include breakpoint($bp-home-narrowest) {
-            background-position: 1px -3422px !important;
-            &:hover {
-              background-position: 1px -3452px !important;
-            }
+            background-position: 1px -3452px !important;
           }
         }
       }
     }
     &.gig-button-container-twitter {
-      td {
-        > div {
-          background-position: 1px -2750px !important;
+      .usa-share-button {
+        background-position: 1px -2750px !important;
+        &:hover {
+          background-position: 1px -2790px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          background-position: 1px -3304px !important;
           &:hover {
-            background-position: 1px -2790px !important;
-          }
-          @include breakpoint($bp-home-narrowest) {
-            background-position: 1px -3304px !important;
-            &:hover {
-              background-position: 1px -3334px !important;
-            }
+            background-position: 1px -3334px !important;
           }
         }
       }
     }
     &.gig-button-container-tumblr {
-      td {
-        > div {
-          background-position: 1px -3225px !important;
+      .usa-share-button {
+        background-position: 1px -3225px !important;
+        &:hover {
+          background-position: 1px -3265px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          background-position: 1px -3660px !important;
           &:hover {
-            background-position: 1px -3265px !important;
-          }
-          @include breakpoint($bp-home-narrowest) {
-            background-position: 1px -3660px !important;
-            &:hover {
-              background-position: 1px -3690px !important;
-            }
+            background-position: 1px -3690px !important;
           }
         }
       }
     }
     &.gig-button-container-pinterest {
-      td {
-        > div {
-          background-position: 1px -3067px !important;
+      .usa-share-button {
+        background-position: 1px -3067px !important;
+        &:hover {
+          background-position: 1px -3107px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          background-position: 1px -3542px !important;
           &:hover {
-            background-position: 1px -3107px !important;
-          }
-          @include breakpoint($bp-home-narrowest) {
-            background-position: 1px -3542px !important;
-            &:hover {
-              background-position: 1px -3572px !important;
-            }
+            background-position: 1px -3572px !important;
           }
         }
       }
     }
     &.gig-button-container-share {
-      td {
-        > div {
-          background-position: 5px -3717px !important;
+      .usa-share-button {
+        background-position: 5px -3717px !important;
+        &:hover {
+          background-position: 5px -3747px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          background-position: 4px -3779px !important;
           &:hover {
-            background-position: 5px -3747px !important;
-          }
-          @include breakpoint($bp-home-narrowest) {
-            background-position: 4px -3779px !important;
-            &:hover {
-              background-position: 4px -3804px !important;
-            }
+            background-position: 4px -3804px !important;
           }
         }
       }

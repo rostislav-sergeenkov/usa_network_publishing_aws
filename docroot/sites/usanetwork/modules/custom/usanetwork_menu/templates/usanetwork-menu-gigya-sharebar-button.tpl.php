@@ -7,8 +7,4 @@
 ?>
 
 
-<div class="usa-share-button $text" onclick="$onClick">
-  <div class="button-text">
-    Share on $text
-  </div>
-</div>
+<div class="usa-share-button gig-share-button" onclick="$onClick"></div>

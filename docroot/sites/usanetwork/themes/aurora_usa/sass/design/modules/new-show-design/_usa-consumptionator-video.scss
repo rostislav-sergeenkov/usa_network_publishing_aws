@@ -1006,7 +1006,7 @@
               @include breakpoint($bp-640-width) {
                 padding-right: get-vw(25px, 640);
               }
-              & td > div {
+              .usa-share-button {
                 font-size: 23px;
                 line-height: 1!important;
                 height: auto !important;
@@ -1021,32 +1021,8 @@
                   font-size: get-vw(48px, 640);
                 }
               }
-              [id$='reaction0-facebook_img'] {
-                &:before {
-                  color: $usa-video-helper-facebook;
-                }
-              }
-              [id$='reaction1-twitter_img'] {
-                &:before {
-                  color: $usa-video-helper-twitter;
-                }
-              }
-              [id$='reaction2-tumblr_img'] {
-                &:before {
-                  color: $usa-video-helper-tumblr;
-                }
-              }
-              [id$='reaction3-pinterest_img'] {
-                &:before {
-                  color: $usa-video-helper-pinterest;
-                }
-              }
-              [id$='reaction4-share_img'] {
-                &:before {
-                  color: $poll-color;
-                }
-              }
             }
+            @extend %usa-gigya-colors;
           }
         }
         .usa-tve-login {

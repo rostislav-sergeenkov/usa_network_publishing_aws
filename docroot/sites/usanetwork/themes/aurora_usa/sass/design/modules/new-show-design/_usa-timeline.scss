@@ -128,41 +128,14 @@
           }
           .timeline-gigya-share {
             .gig-button-container {
-              td {
-                > div,
-                > div:hover {
-                  font-size: 24px;
-                  height: 24px !important;
-                  width: 24px !important;
-
-                }
-              }
-              [id$='reaction0-facebook_img'] {
-                &:before {
-                  color: $usa-video-helper-facebook;
-                }
-              }
-              [id$='reaction1-twitter_img'] {
-                &:before {
-                  color: $usa-video-helper-twitter;
-                }
-              }
-              [id$='reaction2-tumblr_img'] {
-                &:before {
-                  color: $usa-video-helper-tumblr;
-                }
-              }
-              [id$='reaction3-pinterest_img'] {
-                &:before {
-                  color: $usa-video-helper-pinterest;
-                }
-              }
-              [id$='reaction4-share_img'] {
-                &:before {
-                  color: $poll-color;
-                }
+              .usa-share-button,
+              .usa-share-button:hover {
+                font-size: 24px;
+                height: 24px !important;
+                width: 24px !important;
               }
             }
+            @extend %usa-gigya-colors;
           }
         }
       }

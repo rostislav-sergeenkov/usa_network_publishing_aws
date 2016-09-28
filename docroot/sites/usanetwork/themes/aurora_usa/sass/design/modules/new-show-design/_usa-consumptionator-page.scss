@@ -222,9 +222,7 @@
         }
       }
     }
-
     @extend %usa-gigya-sticky;
-
     .no-touch .node-type-consumpt-post & {
       @include breakpoint($bp-min-1025-width) {
         top: get-vw(50px, 1600);

@@ -374,7 +374,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         font-family: $fira-sans-regular;
         line-height: 20px;
         margin-top: 0;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         text-transform: uppercase;
         @include breakpoint($bp-1280-width) {
           font-size: 12px;
@@ -389,6 +389,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
       }
       .field-name-field-gigya-share-bar {
         margin-bottom: 0;
+        position: relative;
         table {
           @include breakpoint($bp-640-width) {
             margin: 0 auto;
@@ -396,19 +397,22 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         }
       }
       .gig-button-container {
+        margin-right: 5px;
         @include breakpoint($bp-640-width) {
           margin-right: 20px;
           padding: 0;
           &.gig-button-container-share {
             margin-right: 0;
           }
-          td > div {
+          .usa-share-button {
             font-size: 30px;
           }
         }
-        [id$='_img'] {
+        .usa-share-button {
+          position: relative;
           &:before {
-            position: absolute;
+            position: relative;
+            z-index: 2;
           }
           &:after {
             background: white;
@@ -416,54 +420,33 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             content: '';
             display: block;
             height: 30px;
-            margin-left: 1px;
-            margin-top: -7px;
+            left: 1px;
+            top: 1px;
             position: absolute;
             width: 29px;
-            z-index: -1;
             @include breakpoint($bp-1024-width) {
               height: 25px;
-              margin-left: 2px;
-              margin-top: -5px;
+              left: 2px;
+              top: 0px;
               width: 23px;
             }
             @include breakpoint($bp-640-width) {
               height: 28px;
-              margin-left: 1px;
-              margin-top: -6px;
-              width: 28px;
+              left: 1px;
+              top: 1px;
+              width: 27px;
             }
           }
         }
-        [id$='reaction0-facebook_img'] {
-          &:before {
-            color: $usa-video-helper-facebook;
-          }
-        }
-        [id$='reaction1-twitter_img'] {
-          &:before {
-            color: $usa-video-helper-twitter;
-          }
-        }
-        [id$='reaction2-tumblr_img'] {
-          &:before {
-            color: $usa-video-helper-tumblr;
-          }
-        }
-        [id$='reaction3-pinterest_img'] {
-          &:before {
-            color: $usa-video-helper-pinterest;
-          }
-        }
-        [id$='reaction4-share_img'] {
-          &:before {
-            color: $poll-color;
-          }
-          &:after {
-            display: none;
+        &.gig-button-container-share {
+          .usa-share-button {
+            &:after {
+              display: none;
+            }
           }
         }
       }
+      @extend %usa-gigya-colors;
     }
     &:not(.end-card):hover {
       .gallery-list {
@@ -1132,7 +1115,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
           @include breakpoint($bp-min-1601-width) {
             margin-right: 18.75px;
           }
-          td > div {
+          .usa-share-button {
             @include breakpoint($bp-min-1025-width) {
               height: get-vw(32px, 1280)!important;
               width: get-vw(32px, 1280)!important;
@@ -1143,20 +1126,19 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
             &:before {
               @include breakpoint($bp-min-1025-width) {
-                border-radius: get-vw(5px, 1280);
+                border-radius: 20%;
                 color: white;
                 font-size: get-vw(24px, 1280)!important;
                 padding: get-vw(4px, 1280);
               }
               @include breakpoint($bp-min-1601-width) {
-                border-radius: 6.25px;
                 font-size: 30px!important;
                 padding: 5px;
               }
             }
           }
           &.gig-button-container-facebook {
-            td > div {
+            .usa-share-button {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-facebook;
@@ -1166,7 +1148,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
           &.gig-button-container-twitter {
-            td > div {
+            .usa-share-button {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-twitter;
@@ -1176,7 +1158,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
           &.gig-button-container-tumblr {
-            td > div {
+            .usa-share-button {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-tumblr;
@@ -1186,7 +1168,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
           &.gig-button-container-pinterest {
-            td > div {
+            .usa-share-button {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-pinterest;
@@ -1196,7 +1178,7 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             }
           }
           &.gig-button-container-share {
-            td > div {
+            .usa-share-button {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: transparent;
@@ -1295,15 +1277,13 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               &.gig-button-container-share {
                 margin-right: 0;
               }
-              td > div {
+              .usa-share-button {
                 font-size: 30px;
-              }
-              [id$='_img'] {
                 &:after {
                   height: 28px;
-                  margin-left: 1px;
-                  margin-top: -6px;
-                  width: 28px;
+                  left: 1px;
+                  top: 1px;
+                  width: 27px;
                 }
               }
             }
@@ -1417,15 +1397,13 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
             &.gig-button-container-share {
               margin-right: 0;
             }
-            td > div {
+            .usa-share-button {
               font-size: 30px;
-            }
-            [id$='_img'] {
               &:after {
                 height: 28px;
-                margin-left: 1px;
-                margin-top: -6px;
-                width: 28px;
+                left: 1px;
+                top: 1px;
+                width: 27px;
               }
             }
           }

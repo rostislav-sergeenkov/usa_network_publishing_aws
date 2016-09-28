@@ -1,0 +1,42 @@
+%episodes-list-slider-controls {
+  .usa-carousel-controls-wrap {
+    display: none;
+    .usa-carousel-controls {
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      top: 0;
+      height: 100%;
+      z-index: 9;
+      background: rgba(255, 255, 255, 0.6);
+      width: 60px;
+      &.usa-carousel-control-prev {
+        left: 0;
+        &:after {
+          content: "\e607";
+        }
+      }
+      &.usa-carousel-control-next {
+        right: 0;
+        &:after {
+          content: "\e608";
+        }
+      }
+      &.usa-carousel-control-disabled {
+        display: none !important;
+      }
+      &:after {
+        color: #545454;
+        display: block;
+        font-family: $ico-font;
+        font-size: 32px;
+        left: 50%;
+        margin-left: -16px;
+        margin-top: -16px;
+        opacity: 1;
+        position: absolute;
+        top: 50%;
+      }
+    }
+  }
+}

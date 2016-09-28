@@ -7,7 +7,7 @@
  * );
  */
 ?>
-<div class="node node-gallery<?php if (!$gigya_id): ?> end-cart<?php endif; ?>">
+<div class="node node-gallery">
   <div class="asset-img">
     <?php if (!empty($image)): ?>
       <?php if (!empty($endcard_path)) : ?>

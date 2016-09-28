@@ -7,25 +7,16 @@
 <div class="items-block-title characters-block-title<?php print !empty($new_design) ? ' show-color show-font' : ''; ?>">
   <h2><?php print !empty($block_title) ? $block_title : '';?></h2>
 </div>
-<?php if (!empty($items_v)): ?>
-<div class="episodes-list-slider vertical">
-  <ul class="slider-vertical">
-    <?php foreach ($items_v as $item_v): ?>
-      <?php print $item_v; ?>
+<?php if (!empty($items_carousel)): ?>
+<div class="episodes-list-slider no-hidden-items" data-block-name="Right Rail Carousel">
+  <ul class="usa-carousel swiper-wrapper">
+    <?php foreach ($items_carousel as $item_carousel): ?>
+      <?php print $item_carousel; ?>
     <?php endforeach; ?>
   </ul>
-</div>
-<?php endif; ?>
-<?php if (!empty($items_h)): ?>
-<div class="episodes-list-slider horizontal no-hidden-items" data-block-name="Right Rail Carousel">
-  <ul class="slider-horizontal">
-    <?php foreach ($items_h as $item_h): ?>
-      <?php print $item_h; ?>
-    <?php endforeach; ?>
-  </ul>
-  <div class="horizontal-controls">
-    <div class="slide-next slide-control slick-disabled"></div>
-    <div class="slide-prev slide-control slick-disabled"></div>
+  <div class="usa-carousel-controls-wrap">
+    <div class="usa-carousel-control-next usa-carousel-controls usa-carousel-control-disabled"></div>
+    <div class="usa-carousel-control-prev usa-carousel-controls usa-carousel-control-disabled"></div>
   </div>
 </div>
 <?php endif; ?>

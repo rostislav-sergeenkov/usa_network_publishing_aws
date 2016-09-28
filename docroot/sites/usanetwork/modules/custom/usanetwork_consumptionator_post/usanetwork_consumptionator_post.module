@@ -30,21 +30,13 @@ function usanetwork_consumptionator_post_theme() {
       ),
       'template' => 'templates/usanetwork-cons-post-carousel',
     ),
-    'usanetwork_cons_post_carousel_item_h' => array(
+    'usanetwork_cons_post_carousel_item' => array(
       'variables' => array(
         'url' => NULL,
         'title' => NULL,
         'active' => NULL,
       ),
-      'template' => 'templates/usanetwork-cons-post-carousel-item-h',
-    ),
-    'usanetwork_cons_post_carousel_item_v' => array(
-      'variables' => array(
-        'url' => NULL,
-        'title' => NULL,
-        'active' => NULL,
-      ),
-      'template' => 'templates/usanetwork-cons-post-carousel-item-v',
+      'template' => 'templates/usanetwork-cons-post-carousel-item',
     ),
     'usanetwork_cons_post_gallery_rec' => array(
       'variables' => array(
@@ -169,6 +161,7 @@ function usanetwork_consumptionator_post_block_info() {
 function usanetwork_consumptionator_post_node_view($node, $view_mode, $langcode) {
   if ($node->type == 'consumpt_post') {
     $node->content['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-right-rail.js';
+    $node->content['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-sticky-share.js';
   }
 }
 
@@ -302,10 +295,15 @@ function _usanetwork_consumptionator_post_main_block() {
       }
     }
     $body = !empty($node->body) ? $node_wrapper->body->value->value() : '';
+    $share_description = $node_wrapper->field_usa_og_description->value();
+    if (empty($share_description)) {
+      $share_description = '';
+    }
     $blog_nid = !empty($node->field_consumptionator_blog) ? $node_wrapper->field_consumptionator_blog->nid->value() : NULL;
     $theme_variables = array(
       'title' => !empty($node->title) ? $node->title : '',
-      'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title , $body),
+      'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title , $share_description),
+      'sticky_sharebar' => usanetwork_menu_render_sharebar($node, 'node', '', $node->title , $share_description, '',  'facebook, twitter, tumblr, share'),
       'navigation_links' => !empty($navigation_links) ? $navigation_links : array(),
       'creating_date' => $post_date,
       'original_publish_date' => $original_date,
@@ -423,11 +421,9 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
         'icon_type' => usanetwork_core_api_get_media_icon('node', $post->nid),
       );
       $episode_variables['new_design'] = !empty($is_new_design) ? $is_new_design : NULL;
-      $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-      $rendered_items['vertical'][] = theme('usanetwork_cons_post_carousel_item_v', $episode_variables);
       $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
       $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-      $rendered_items['horizontal'][] = theme('usanetwork_cons_post_carousel_item_h', $episode_variables);
+      $rendered_items['carousel'][] = theme('usanetwork_cons_post_carousel_item', $episode_variables);
     }
 
     $advert_block = module_invoke('mps', 'block_view', 'topbox');
@@ -461,7 +457,7 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id, $blog_nid = N
 function _usanetwork_consumptionator_post_gallery_recap($gallery_id, $block_title = NULL) {
 
   if (is_numeric($gallery_id)) {
-    $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id));
+    $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id), FALSE, FALSE);
     $theme_variables = array(
       'gallery_html' => !empty($gallery_html) ? $gallery_html : '',
       'block_title' => !empty($block_title) ? $block_title : t('Gallery Recap'),

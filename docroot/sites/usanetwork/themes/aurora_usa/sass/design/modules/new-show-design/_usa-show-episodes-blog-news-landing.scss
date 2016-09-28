@@ -102,11 +102,9 @@
         }
       }
       &.active {
-
         @include breakpoint ($bp-640-width) {
           min-height: 0;
         }
-
         .episode-landing-info-block {
           @include breakpoint($bp-640-width) {
             float: none;
@@ -541,13 +539,6 @@
       padding-top: 0;
     }
     .episode-landing-list-item {
-      //min-height: get-vw(325px, 1280);
-      //@include breakpoint ($bp-min-1601-width) {
-      //  min-height: 407px;
-      //}
-      //@include breakpoint ($bp-1024-width) {
-      //  min-height: get-vw(293px, 1024);
-      //}
       @include breakpoint ($bp-768-width) {
         min-height: get-vw(294px, 768);
       }
@@ -555,7 +546,6 @@
         min-height: get-vw(172px, 640);
         padding: get-vw(26px, 640) get-vw(10px, 640);
       }
-
       &.active {
         .episode-landing-info-block {
           .open-description {
@@ -604,7 +594,6 @@
               margin-top: 0;
             }
           }
-
         }
         .buttons-bar {
           @include breakpoint($bp-640-width) {
@@ -612,7 +601,6 @@
           }
         }
       }
-
       .episode-landing-info-block {
         width: calc(100% - #{get-vw(450px, 1280) + get-vw(20px, 1280)});
         @include breakpoint($bp-min-1601-width) {
@@ -629,13 +617,11 @@
           min-height: 0;
           width: 100%;
         }
-
         .open-description {
           @include breakpoint($bp-640-width) {
             display: block;
           }
         }
-
         .series,
         .title {
           @include breakpoint($bp-640-width) {
@@ -644,19 +630,16 @@
             width: calc(100% - 40px - #{get-vw(177.7px, 640) + get-vw(30px, 640)});
           }
         }
-
         .series {
           @include breakpoint($bp-640-width) {
             top: calc(50% - #{get-vw(30px, 640)});
           }
         }
-
         .title {
           @include breakpoint($bp-640-width) {
             top: 50%;
           }
         }
-
         .image-block {
           right: calc(100% + #{get-vw(20px, 1280)});
           @include breakpoint ($bp-min-1601-width) {
@@ -673,7 +656,6 @@
             position: static;
           }
         }
-
         .description {
           margin-top: get-vw(15px, 1280);
           @include breakpoint($bp-1280-width) {
@@ -687,7 +669,6 @@
           }
         }
       }
-
       .buttons-bar {
         @include breakpoint ($bp-768-width) {
           width: 100%;
@@ -744,11 +725,9 @@
       }
     }
   }
-
   // upper bar &&  filter item
   #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block,
   #block-usanetwork-episodes-usa-landing-tvep-list-block {
-
     // upper bar
     .upper-bar {
       position: relative;
@@ -788,7 +767,6 @@
         }
       }
     }
-
     // filter item
     .item-filter {
       border: 1px solid;
@@ -816,18 +794,11 @@
         bottom: auto;
         border: none;
         margin-top: -19px;
-        //right: get-vw(45px, 768);
         right: 5px;
         top: 50%;
         min-width: 155px;
         max-width: 215px;
       }
-      //@include breakpoint($bp-640-width) {
-      //  left: 10px;
-      //  margin: 10px 0;
-      //  position: relative;
-      //  right: auto;
-      //}
       &.open {
         background: black;
         @include breakpoint($bp-min-769-width) {
@@ -889,7 +860,6 @@
           letter-spacing: 1px;
           line-height: 38px;
           padding: 0 25px 0 10px;
-          //text-align: left;
           width: 100%;
         }
         span {
@@ -988,7 +958,6 @@
         }
       }
     }
-
   }
 }
 

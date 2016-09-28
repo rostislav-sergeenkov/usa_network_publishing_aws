@@ -37,19 +37,19 @@
   color: #777;
   text-align: left;
 }
-#microsite .gig-bar-container .gig-button-container.gig-button-container-facebook td > div:before,
-#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before,
-#microsite .gig-bar-container .gig-button-container.gig-button-container-twitter td > div:before,
-#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before,
-#microsite .gig-bar-container .gig-button-container.gig-button-container-tumblr td > div:before,
-#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before,
-#microsite .gig-bar-container .gig-button-container.gig-button-container-pinterest td > div:before,
-#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before,
-#microsite .gig-bar-container .gig-button-container.gig-button-container-share td > div:before,
-#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+#microsite .gig-bar-container .gig-button-container.gig-button-container-facebook td div:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td div:before,
+#microsite .gig-bar-container .gig-button-container.gig-button-container-twitter td div:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td div:before,
+#microsite .gig-bar-container .gig-button-container.gig-button-container-tumblr td div:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td div:before,
+#microsite .gig-bar-container .gig-button-container.gig-button-container-pinterest td div:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td div:before,
+#microsite .gig-bar-container .gig-button-container.gig-button-container-share td div:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td div:before {
   color: #000;
 }
-#microsite .gig-bar-container .gig-button-container td > div, #microsite .gig-bar-container .gig-button-container td > div:hover, #microsite .field-type-gigya-sharebar .gig-button-container td > div, #microsite .field-type-gigya-sharebar .gig-button-container td > div:hover {
+#microsite .gig-bar-container .gig-button-container td div, #microsite .gig-bar-container .gig-button-container td div:hover, #microsite .field-type-gigya-sharebar .gig-button-container td div, #microsite .field-type-gigya-sharebar .gig-button-container td div:hover {
   font-size: 32px;
   width: initial !important;
   height: initial !important;
@@ -112,7 +112,6 @@
   font-size: 26px;
   line-height: 1.2;
   height: initial;
-  color: #55452A;
   text-transform: uppercase;
   text-decoration: none;
   position: relative;
@@ -120,6 +119,9 @@
   left: 0;
   cursor: pointer;
   background-color: transparent;
+}
+.page-node-microsite.show-royalpains #galleries-filter li.filter-item {
+  color: #55452A;
 }
 #galleries-filter li.filter-item p {
   display: table-cell;
@@ -255,11 +257,11 @@
 #galleries-nav-list .gallery-title .gallery-h1 {
   display: none;
 }
-#galleries-nav-list a,
-#galleries-nav-list a:link,
-#galleries-nav-list a:visited,
-#galleries-nav-list a:hover,
-#galleries-nav-list a:active {
+.page-node-microsite.show-royalpains #galleries-nav-list a,
+.page-node-microsite.show-royalpains #galleries-nav-list a:link,
+.page-node-microsite.show-royalpains #galleries-nav-list a:visited,
+.page-node-microsite.show-royalpains #galleries-nav-list a:hover,
+.page-node-microsite.show-royalpains #galleries-nav-list a:active {
   color: #55452A;
   text-decoration: none;
 }
@@ -351,11 +353,9 @@
   .node-type-usanetwork-microsite #microsite .gallery-wrapper .gallery-list .slide .node .asset-img {
     height: calc(80vw * 0.5625);
   }
-  .node-type-usanetwork-microsite #microsite .gallery-wrapper .gallery-pager-wrap {
-    top: calc((80vw * 0.5625) + 13px);
-  }
   .node-type-usanetwork-microsite #microsite .gallery-wrapper .slide-control {
-    top: calc((80vw * 0.5625) + 48.5px);
+    margin-top: calc(56.25% + 48.5px);
+    top: 0;
   }
   .node-type-usanetwork-microsite #microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
     left: 0;

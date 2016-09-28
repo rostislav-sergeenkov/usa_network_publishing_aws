@@ -44,8 +44,6 @@ function usanetwork_top3_block_view($delta) {
         '#markup' => _usanetwork_top3_main_block(),
         '#attached' => array(
           'js' => array(
-            $pdk_controller_url = "http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js",
-            drupal_add_js($pdk_controller_url, 'external'),
             drupal_get_path('module', 'gigya') . '/js/gigya_sharebar.js',
             drupal_get_path('module', 'usanetwork_top3') . '/js/draggabilly.pkgd.min.js',
             drupal_get_path('module', 'usanetwork_top3') . '/js/dragdrop.js',
@@ -177,6 +175,22 @@ function _usanetwork_top3_main_block() {
   }
 
   $player = _usanetwork_mpx_video_get_player_src(array('player_id' => _usanetwork_tve_video_get_player_id(), 'pub_mpx_player_parameters' => array('excludeSharing' => 'true')), 'player');
+
+  $pdk_version = USA_TVE_PDK_VERSION;
+  $page_pdk = variable_get('usanetwork_page_url_pdk', '');
+  if (!empty($page_pdk)) {
+    $pdk_version = $page_pdk;
+  }
+  $environment = _usanetwork_widget_get_environment();
+  if ($environment == 'prod') {
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
+  } elseif ($environment == 'stage') {
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js?pdk=' . $pdk_version;
+  }
+  else {
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
+  }
+  drupal_add_js($pdk_controller_url, 'external');
 
   if (!empty($node->body)) {
     $top3_description = strip_tags($node_wrapper->body->value->value());

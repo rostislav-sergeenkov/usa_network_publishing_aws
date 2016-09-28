@@ -58,14 +58,14 @@
     loadMobileModal: function() {
       var usaDeepLinking = this;
 
-      if (typeof usa_deviceInfo == 'undefined'
+      if (typeof USAN.isMobile == 'undefined'
           || typeof Drupal.settings.usanetwork_video_mobile == 'undefined'
           || window.location.pathname == '/videos') {
         return;
       }
       // check if user uses mobile device
-      if (!$('body').hasClass('page-node-microsite') && (usa_deviceInfo.iOS || usa_deviceInfo.android)) {
-        var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
+      if (!$('body').hasClass('page-node-microsite') && (USAN.isMobile.apple.device || USAN.isMobile.android.device)) {
+        var os = USAN.isMobile.apple.device ? 'iOS' : 'android';
         // show modal dialog
         Drupal.behaviors.video_mobile.showMobileVideoModal(os);
         if (os === 'iOS' && Drupal.settings.hasOwnProperty('usa') && Drupal.settings.usa.hasOwnProperty('itunesAppLink')) {
@@ -73,6 +73,9 @@
         } else {
           $('a.download-app-button').attr({'href': Drupal.settings.usanetwork_video_mobile.url[os], 'target': '_blank'});
         }
+      } else if (!$('body').hasClass('page-node-microsite') && USAN.isMobile.isMobileDevice) {
+        Drupal.behaviors.video_mobile.showMobileVideoModal(os);
+        $('a.download-app-button').attr({'href': '/app', 'target': '_blank'});
       }
 
       return this;
@@ -100,7 +103,9 @@
 
     attach : function (context, settings) {
 
-      if(usa_deviceInfo.mobileDevice) {
+      var isMobileDevice = USAN.isMobile.isMobileDevice;
+
+      if(isMobileDevice) {
         // If this has already run once on this page, don't run it again.
         if (this.inited) {
           return this;
@@ -109,7 +114,7 @@
         // Initialize the object.
         this.init.apply(this, arguments);
 
-        if (usa_deviceInfo.mobileDevice) {
+        if (isMobileDevice) {
           this.loadMobileModal();
         }
 

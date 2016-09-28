@@ -112,11 +112,11 @@
       .directive('usaTvePlayerContainer', [
         '$rootScope',
         'authService', 'tveAuthConfig', 'tveConfig', 'helper', 'tveModal', '$timeout', '$http', '$sce', '$cookies',
-        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService', 'usaPlayerError', 'usaVideoService',
+        'usaEndCardService', 'usaEndCardHelper', 'usaMicrositesService', 'usaPlayerError', 'usaVideoService', 'usaSocialService',
 
         function ($rootScope,
                   authService, tveAuthConfig, tveConfig, helper, tveModal, $timeout, $http, $sce, $cookies,
-                  usaEndCardService, usaEndCardHelper, usaMicrositesService, usaPlayerError, usaVideoService) {
+                  usaEndCardService, usaEndCardHelper, usaMicrositesService, usaPlayerError, usaVideoService, usaSocialService) {
           return {
             scope: true,
             controller: ['$scope', function ($scope) {
@@ -154,7 +154,7 @@
               // endCardMetaData = Drupal.settings.short_endcard;
 
               isAdStart = false;
-              nextEpisodeUrl = attr['nextEpisodeUrl'];
+              nextEpisodeUrl = attr['nextEpisodeUrl'] || '';
               usaVideoSettingsRun = false;
               positionTime = Drupal.settings.videoSetTime; // seconds
 
@@ -185,6 +185,7 @@
               scope.isPlayerPause = false;
               scope.playerThumbnail = true;
               scope.removePlayerThumbnail = false;
+              scope.hideShowSpinner = false;
               scope.user = {
                 isAuthenticated: authService.isAuthenticated()
               };
@@ -236,6 +237,14 @@
                 }
               });
 
+              // check free full episode
+              // if (isMobile && !isEntitlement && isFullEpisode) {
+              //   scope.hidePlayerSpinner = true;
+              // }
+              if (isMobile && !usaSocialService.isSocialBlock) {
+                usaSocialService.initSocialBlock();
+              }
+
               // check cookie status
               if (Drupal.settings.tve_cookie_detection != undefined && Drupal.settings.tve_cookie_detection.status == false) {
                 tveModal.open({
@@ -270,7 +279,6 @@
 
               // Callback for initiating the authorization request.
               function initiateAuthorization() {
-                console.info('initiateAuthorization');
                 var DEFAULT_RATING = 'TV-14',
                     adobePassResourceId = Drupal.settings.adobePass.adobePassResourceId,
                     resource = [
@@ -286,7 +294,6 @@
                       '</rss>'
                     ].join('');
                 tve.adobePass.getAuthorization(resource, function (status, response) {
-                  console.info('tve.adobePass.getAuthorization');
                   if (status) {
                     encodedToken = encodeURIComponent(response.token);
                     // If Adobe Pass getAuthorization status is true proceeds with playback.
@@ -339,10 +346,12 @@
 
 
                 // init end card service
-                if (isShowEndCard) {
-                  usaEndCardService.init();
-                } else if (nextEpisodeUrl != '') {
-                  $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+                if (!isMicrosite) {
+                  if (isShowEndCard) {
+                    usaEndCardService.init();
+                  } else if (nextEpisodeUrl != '') {
+                    $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
+                  }
                 }
 
                 // init watchwith
@@ -355,6 +364,7 @@
               USAN.ms_player = {
 
                 clearPlayerEvents: function () {
+                  // $pdk.controller.showFullScreen();
                   $pdk.controller.listenerId = 0;
                   for (var key in $pdk.controller.listeners) {
                     delete $pdk.controller.listeners[key];
@@ -422,7 +432,6 @@
               };
 
               function initAutoPlay() {
-
                 if (isMicrosite) {
                   if (scope.statusSetToken) {
                     hidePlayerThumbnail();
@@ -437,6 +446,8 @@
                     if (scope.statusPlayerLoaded && scope.statusSetToken) {
                       $pdk.controller.clickPlayButton();
                     }
+                  } else if (isMobile && !isEntitlement && isFullEpisode) {
+                    hidePlayerThumbnail();
                   } else {
                     if (scope.statusPlayerLoaded && !isMobile) {
                       $pdk.controller.clickPlayButton();
@@ -466,7 +477,6 @@
               }
 
               function _onReleaseError(pdkEvent) {
-                console.info('_onReleaseError');
                 if (pdkEvent.data.exception == "GeoLocationBlocked") {
                   usaPlayerError.initGeoRestrictionError();
                 } else {
@@ -585,6 +595,10 @@
                */
               function _onPlayerLoaded(pdkEvent) {
 
+                if (!usaSocialService.isSocialBlock) {
+                  usaSocialService.initSocialBlock();
+                }
+
                 scope.$apply(function () {
                   scope.statusPlayerLoaded = true;
                 });
@@ -663,7 +677,6 @@
                   $(playerWrap).html(errorBlock);
 
                   if (scope.playerThumbnail) {
-                    console.info('_authzFailure');
                     hidePlayerThumbnail();
                   }
                 }

@@ -232,14 +232,7 @@ function usanetwork_menu_block_view($delta = '') {
 
     case 'usanetwork_menu_aspot_ot':
       $block['subject'] = '';
-      $block['content'] = array(
-        '#markup' => _usanetwork_menu_aspot_onnow_tonight_block(),
-        '#attached' => array(
-          'js' => array(
-            path_to_theme('aurora_usa') . '/javascripts/jquery.carouFredSel.min.js',
-          ),
-        ),
-      );
+      $block['content'] = _usanetwork_menu_aspot_onnow_tonight_block();
       break;
 
     case 'usanetwork_menu_consumptionator':
@@ -544,6 +537,9 @@ function usanetwork_menu_image_default_styles() {
 function usanetwork_menu_gigya_sharebar_alter(&$share_settings, $context) {
   if (!empty($context['display']['share_settings']) ) {
     $share_settings['gigyaSharebar']['ua'] = array_merge($share_settings['gigyaSharebar']['ua'], $context['display']['share_settings']);
+  }
+  if (!empty($context['display']['share_buttons'])) {
+    $share_settings['gigyaSharebar']['shareButtons'] = $context['display']['share_buttons'];
   }
   if ($context['entity_type'] == 'node') {
     $node = $context['entity'];
@@ -1183,6 +1179,13 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
     if (!empty($tv_content_node->type)) {
       $field = !empty($tv_content_fields[$tv_content_node->type]) ? $tv_content_fields[$tv_content_node->type] : NULL;
     }
+    //Sponsored MPS
+    if (!empty($node->field_sponsored)) {
+      $field_sponsored = $entity_wrapper->field_sponsored->value();
+      if ($field_sponsored == '1') {
+        $node_id = '/node/' . $node->nid;
+      }
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
       'authbar' => isset($authbar) ? $authbar : NULL,
@@ -1195,6 +1198,7 @@ function _usanetwork_menu_consumptionator_block_catchall($node) {
         'description' => $description,
         'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title, $description),
       ),
+      'node_path' => isset($node_id) ? $node_id : NULL,
     );
     return theme('usanetwork_menu_consumptionator_catchall', $theme_variables);
   }
@@ -1309,12 +1313,20 @@ function _usanetwork_menu_consumptionator_block_timeline_gallery($node) {
       (!empty($node->field_summary) ? $entity_wrapper->field_summary->value() : '');
     $share_description = !empty($node->field_share_description) ? $entity_wrapper->field_share_description->value() :
       (!empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() : '');
+    //Sponsored MPS
+    if (!empty($node->field_sponsored)) {
+      $field_sponsored = $entity_wrapper->field_sponsored->value();
+      if ($field_sponsored == '1') {
+        $node_id = '/node/' . $node->nid;
+      }
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
       'show_url' => !empty($node->field_show) ? url('node/' . $entity_wrapper->field_show->value()->nid) : '',
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'gallery_name' => !empty($node->title) ? $node->title : '',
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
+      'node_path' => isset($node_id) ? $node_id : NULL,
       'details' => array(
         'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share this gallery'), $node->title, $share_description),
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
@@ -1352,6 +1364,13 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
     if (!empty($advert_block['content'])) {
       $authbar = render($advert_block['content']);
     }
+    //Sponsored MPS
+    if (!empty($node->field_sponsored)) {
+      $field_sponsored = $entity_wrapper->field_sponsored->value();
+      if ($field_sponsored == '1') {
+        $node_id = '/node/' . $node->nid;
+      }
+    }
     $theme_variables = array(
       'authbar' => isset($authbar) ? $authbar : NULL,
       'main_url' => url('<front>'),
@@ -1359,6 +1378,7 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
       'show_name' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
       'episode_name' => _usanetwork_core_get_node_title($node),
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
+      'node_path' => isset($node_id) ? $node_id : NULL,
       'details' => array(
         'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share this Episode Guide'), $node->title, $description),
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
@@ -1392,6 +1412,7 @@ function _usanetwork_menu_consumptionator_block_person($node) {
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
       (!empty($node->body) ? $entity_wrapper->body->value()['value'] : '');
     $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
+    $description = preg_replace("/<img.+\>/i", "", $description);
     $advert_block = module_invoke('usanetwork_tve_video', 'block_view', 'usanetwork_tve_video_auth_menu');
     if (!empty($advert_block['content'])) {
       $authbar = render($advert_block['content']);
@@ -1399,6 +1420,13 @@ function _usanetwork_menu_consumptionator_block_person($node) {
     $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
     $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
     $field = $tv_content_fields[$tv_content_node->type];
+    //Sponsored MPS
+    if (!empty($node->field_sponsored)) {
+      $field_sponsored = $entity_wrapper->field_sponsored->value();
+      if ($field_sponsored == '1') {
+        $node_id = '/node/' . $node->nid;
+      }
+    }
     $theme_variables = array(
       'authbar' => isset($authbar) ? $authbar : NULL,
       'main_url' => url('<front>'),
@@ -1406,6 +1434,7 @@ function _usanetwork_menu_consumptionator_block_person($node) {
       'show_name' => !empty($node->{$field}) ? $entity_wrapper->{$field}->value()->title : '',
       'person_name' => !empty($node->title) ? $node->title : '',
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
+      'node_path' => isset($node_id) ? $node_id : NULL,
       'details' => array(
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
         'description' => $description,
@@ -1435,12 +1464,20 @@ function _usanetwork_menu_consumptionator_block_quiz($node) {
     $tv_content_node = usanetwork_core_api_get_tv_content_node($node);
     $tv_content_fields = usanetwork_core_api_get_tv_content_fields_names();
     $field = $tv_content_fields[$tv_content_node->type];
+    //Sponsored MPS
+    if (!empty($node->field_sponsored)) {
+      $field_sponsored = $entity_wrapper->field_sponsored->value();
+      if ($field_sponsored == '1') {
+        $node_id = '/node/' . $node->nid;
+      }
+    }
     $theme_variables = array(
       'main_url' => url('<front>'),
       'show_url' => !empty($node->{$field}) ? url('node/' . $entity_wrapper->{$field}->value()->nid) : '',
       'show_name' => !empty($node->{$field}) ? $entity_wrapper->{$field}->value()->title : '',
       'quiz_name' => !empty($node->title) ? $node->title : '',
       'h1' => !empty($node->field_seo_h1) ? $entity_wrapper->field_seo_h1->value() : '',
+      'node_path' => isset($node_id) ? $node_id : NULL,
       'details' => array(
         'image' => !empty($image) ? image_style_url('300x250', $image['uri']) : '',
         'description' => $description,
@@ -1467,7 +1504,7 @@ function _usanetwork_menu_consumptionator_block_consumpt_post($node) {
       $image = $entity_wrapper->field_post_cover->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
-      (!empty($node->field_summary) ? $entity_wrapper->field_summary->value()['value'] : '');
+      (!empty($node->field_summary) ? $entity_wrapper->field_summary->value()['value'] : (!empty($node->body) ? $entity_wrapper->body->value()['value'] : ''));
     $description = preg_replace('/\[usa_embed:(\w+):(\w+):(\d+):(\w+)(:*)(\w*)\]/', '', $description);
 
     //Sponsored MPS
@@ -1656,7 +1693,7 @@ function _usanetwork_menu_static_page_header_block() {
 }
 
 function _usanetwork_menu_render_live_video_header_ajax($offset) {
-  $on_now_item = usanetwork_schedule_pull_on_now_item($offset, 'show_title');
+  $on_now_item = usanetwork_schedule_pull_on_now_item($offset, 'show_alias');
   if (!empty($on_now_item)) {
     $image_url = NULL;
 
@@ -1743,7 +1780,7 @@ function _usanetwork_menu_consumptionator_block_live_video() {
   $query->condition('ttd.name', 'Live');
   $live_video_fid = $query->execute()->fetchField();
   $live_video = file_load($live_video_fid);
-  $gygia = field_view_field('file', $live_video, 'field_gigya_share_bar');
+  $gygia = field_view_field('file', $live_video, 'field_gigya_share_bar'); // for sharing
 
   $theme_variables = array(
     'authbar' => !empty($authbar) ? $authbar : NULL,
@@ -1787,9 +1824,9 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
     return drupal_json_output(NULL);
   }
 
-  $on_now = usanetwork_schedule_pull_on_now_item($time_correlation);
-  $up_next = usanetwork_schedule_pull_up_next_item($time_correlation);
-  $tonight = _usanetwork_tv_schedule_get_primetime_items(3);
+  $on_now = usanetwork_schedule_pull_on_now_item($time_correlation, 'show_alias');
+  $up_next = usanetwork_schedule_pull_up_next_item($time_correlation, 'show_alias');
+  $tonight = _usanetwork_tv_schedule_get_primetime_items(3, 'show_alias');
 
   $on_now_block = array();
   $up_next_block = array();
@@ -2078,7 +2115,7 @@ function usanetwork_menu_form_usanetwork_settings_form_submit(&$form, &$form_sta
 /*
  * Renders gigya sharebar
  */
-function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, $description, $image_uri = '') {
+function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, $description, $image_uri = '', $share_buttons = '') {
 
   if (isset($entity->field_gigya_share_bar)) {
     $share_settings = array(
@@ -2089,7 +2126,10 @@ function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, 
       $share_settings['imageUrl'] = $image_uri;
       $share_settings['imageBhev'] = 'url';
     }
-    $sharebar = field_view_field($entity_type, $entity, 'field_gigya_share_bar', array('share_settings' => $share_settings));
+    $sharebar = field_view_field($entity_type, $entity, 'field_gigya_share_bar', array(
+      'share_settings' => $share_settings,
+      'share_buttons' => $share_buttons
+    ));
     $sharebar['#title'] = $label;
     return !empty($sharebar) ? render($sharebar) : '';
   }

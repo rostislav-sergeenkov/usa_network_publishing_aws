@@ -26,9 +26,9 @@
     // exec Show Card Sponsored Block
     execSponsoredBlock: function (block) {
 
-      if(!block.hasClass('advert-enable')) {
+      if(!$(block).hasClass('advert-enable')) {
         // block - parent element ".slides li .node-usanetwork-promo"
-        var showCarouselItem = '.show-carousel .slides li.slide-',
+        var showCarouselItem = '.show-carousel .usa-carousel-left li.slide-',
             fileId = block.data('mpspath'),
             itemParent = block.closest('li'),
             itemParentClass = itemParent.data('slide-id');
@@ -70,27 +70,6 @@
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#block-usanetwork-aspot-usanetwork-aspot-carousel .slide'), style.dark);
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.featured-carousel li'), style.dark);
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#full-bleed-promo'), style.bleed);
-
-          //var itemCarousel = $('#block-usanetwork-home-usanetwork-home-shows-queue .slides > li');
-          //
-          //itemCarousel.each(function (index, elem) {
-          //  var item = $(this),
-          //      itemParent,
-          //      backgroundItem,
-          //      itemAdvert,
-          //      fileId = item.find('.node').data('mpspath');
-          //
-          //  if(item.hasClass('first')) {
-          //    itemParent = 0;
-          //  } else {
-          //    itemParent = item.attr('class');
-          //  }
-          //
-          //  backgroundItem = '#block-usanetwork-home-usanetwork-home-shows-queue .slides li.' + itemParent + ' .show-info-block-wrapper';
-          //  itemAdvert = '#block-usanetwork-home-usanetwork-home-shows-queue .slides li.' + itemParent + ' .advert .showcardad';
-          //
-          //  Drupal.behaviors.mpsSponsorShip.execShowCard(backgroundItem, itemAdvert, fileId);
-          //});
         }
 
         // node-type-tv-show
@@ -107,14 +86,34 @@
         }
 
         // page-videos
-        if (body.hasClass('page-videos')) {
-          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.carousel-wrapper .carousel-block'), style.light_stacked);
-        }
+        // used in global-carousels.js 
+        // if (body.hasClass('page-videos')) {
+        //   Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('.carousel-wrapper .carousel-block'), style.light_stacked);
+        // }
 
         // consumptionators pages
         if (body.hasClass('consumptionator-page')) {
           Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('header .nav-bar-tabs'), style.dark);
         }
+
+        // new design
+        if (body.is('.show-new-design')) {
+          Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#header'), style.dark);
+        }
+      });
+
+      $(window).load(function() {
+        var mpsIframe = ".usa-tv-show .episodes-list.sponsored-enable .sponsored .mps-slot div[id*='google_ads_iframe'] iframe";
+        var intervalSponsoredLoad = setInterval(function(){
+          if ($(mpsIframe).length > 0) {
+            var iframe = $(mpsIframe),
+                iframeHead = iframe.contents().find('head');
+            if (iframeHead.children().length != 0) {
+              iframeHead.append("<style type='text/css'>#google_image_div {width: 100%; height: 100%;}#google_image_div > a {width: 100%; height: 100%; display: block; position: relative;} #google_image_div img{position: absolute;height: auto;width: auto;max-height: 100%;max-width: 100%;top: 0;left: 0;right: 0;bottom: 0;margin: auto;}</style>");
+              clearInterval(intervalSponsoredLoad);
+            }
+          }
+        }, 1000);
       });
     }
   };

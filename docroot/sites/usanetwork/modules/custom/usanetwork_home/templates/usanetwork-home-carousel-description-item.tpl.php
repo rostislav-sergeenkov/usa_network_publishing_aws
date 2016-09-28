@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="carousel-description-item start">
+<div class="carousel-description-item">
   <div class="description-wrapper">
     <div class="description-block">
       <div class="caption"><?php print $caption; ?></div>

@@ -53,7 +53,6 @@
     <!--[if IE 8 ]>
       <script src="<?php global $base_url; $theme_path = drupal_get_path('theme', 'aurora_usa'); print $base_url .'/'. $theme_path . '/javascripts/respond.min.js'; ?>"></script>
       <script src="<?php global $base_url; $theme_path = drupal_get_path('theme', 'aurora_usa'); print $base_url .'/'. $theme_path . '/javascripts/jquery-extra-selectors.js'; ?>"></script>
-      <script src="<?php global $base_url; $theme_path = drupal_get_path('theme', 'aurora_usa'); print $base_url .'/'. $theme_path . '/javascripts/ie8.js'; ?>"></script>
     <![endif]-->
   </head>
   <body class="<?php print $classes; ?>" <?php print $body_attributes;?>>

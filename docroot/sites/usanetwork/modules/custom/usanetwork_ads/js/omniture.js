@@ -714,8 +714,8 @@
           });
         });
 
-        // Click promo item
-        $('.episodes-list-slider.horizontal .slide-control, a.jcarousel-controls').once('omniture-tracking', function () {
+        // Click carousel control button
+        $('.usa-carousel-controls').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {
@@ -728,9 +728,9 @@
                   target = $(this),
                   pageName, blockName, nameNav, fullName;
 
-              if (target.hasClass('jcarousel-control-prev') || target.hasClass('slide-prev')) {
+              if (target.hasClass('usa-carousel-control-prev')) {
                 nameNav = 'Carousel Back';
-              } else if (target.hasClass('jcarousel-control-next') || target.hasClass('slide-next')) {
+              } else if (target.hasClass('usa-carousel-control-next')) {
                 nameNav = 'Carousel Next';
               }
 
@@ -870,6 +870,9 @@
 
         // Gigya share bar
         $('.field-type-gigya-sharebar').once('omniture-tracking', function () {
+
+          var $stickyShare = $(this).parent().hasClass('sticky-share') ? true : false;
+
           $(this).on('click', '.gig-share-button', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               var $self = $(this);
@@ -901,7 +904,7 @@
               }
 
               s.linkTrackVars = 'events,eVar73,eVar74';
-              s.linkTrackEvents = s.events = 'event41';
+              s.linkTrackEvents = s.events = $stickyShare ? 'event91' : 'event41';
               s.eVar73 = name.trim();
               s.eVar74 = network;
               s.tl(this, 'o', 'Social Share');

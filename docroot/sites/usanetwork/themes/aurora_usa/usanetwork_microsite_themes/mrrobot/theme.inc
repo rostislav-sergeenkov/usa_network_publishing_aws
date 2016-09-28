@@ -221,6 +221,9 @@ function usanetwork_microsite_mrrobot_get_theme_includes() {
     'css' => array(
       $module_path . '/css/jquery.bxslider.css',
       $site_theme_path . '/css/fonts.css',
+      $default_theme_path . '/css/fonts.css',
+      $default_theme_path . '/css/ms_usa-auth-modal.css',
+      $default_theme_path . '/css/style_microsite.css',
       $default_theme_path . '/css/ms_styles.css',
       $default_theme_path . '/css/site_nav.css',
       $site_theme_path . '/css/ms_gigya_share.css',

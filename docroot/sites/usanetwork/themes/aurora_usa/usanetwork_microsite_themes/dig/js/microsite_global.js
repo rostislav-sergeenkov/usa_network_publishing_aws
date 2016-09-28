@@ -473,8 +473,8 @@
     },
     micrositeMobileModal: function () {
       // check if user uses mobile device
-      if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
-        var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
+      if (USAN.isMobile.apple.device || USAN.isMobile.android.device) {
+        var os = USAN.isMobile.apple.device ? 'iOS' : 'android';
         Drupal.behaviors.video_mobile.showMobileVideoModal(os);
       }
     },
@@ -1240,6 +1240,26 @@
           Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer('false');
         }
 
+        if($('html').hasClass('touch')) {
+          $(document).click(function(e){
+            if (e.target.getElementById != 'mobile-nav' && e.target.parentElement.getElementById != 'mobile-nav') {
+              if($('#mobile-nav').hasClass('show-nav-links-list')) {
+                $('#mobile-nav').removeClass('show-nav-links-list');
+              }
+            }
+          });
+          $('#mobile-nav').on('click', function(e) {
+            e.stopPropagation();
+              if ($('#mobile-nav').hasClass('show-nav-links-list')) {
+                $('#mobile-nav').removeClass('show-nav-links-list');
+              } else {
+                $('#mobile-nav').addClass('show-nav-links-list');
+              }
+          });
+          $('#mobile-nav-links-list').click(function(e){
+            e.stopPropagation();
+          });
+}
         Drupal.behaviors.microsite_scroll.create728x90Ad();
 //        Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
         Drupal.behaviors.microsite_carousel.initCarousel();

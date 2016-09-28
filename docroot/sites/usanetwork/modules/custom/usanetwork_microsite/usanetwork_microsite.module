@@ -275,7 +275,7 @@ function usanetwork_microsite_process_file_entity(&$variables) {
         $node_wrapper = entity_metadata_wrapper('node', $node);
         $variables['theme_hook_suggestions'][] = 'file__mpx_video_usanetwork_microsite__' . $node_wrapper->field_ms_theme->value();
       }
-      // If video is with auth, calass tve-video-auth will be added.
+      // If video is with auth, class tve-video-auth will be added.
       if (
         !empty($variables['field_mpx_entitlement']) &&
         $variables['field_mpx_entitlement'][LANGUAGE_NONE][0]['safe_value'] == 'auth' &&
@@ -928,7 +928,7 @@ function usanetwork_microsite_get_rendered_gallery($node, $microsite_node = NULL
     ));
   }
   elseif ($use_new_gallery) {
-    $rendered = _usanetwork_media_gallery_consumptionator_gallery_slides_block($node, TRUE);
+    $rendered = _usanetwork_media_gallery_consumptionator_gallery_slides_block($node, TRUE, FALSE);
   }
   else {
     $gallery_view = node_view($node, 'microsite_output');

@@ -4,19 +4,41 @@
 (function ($) {
   Drupal.behaviors.ms_site = {
     // resizeResponse
-    resizeResponse: function() {
-      var wwidth = $(window).width();
 
-      if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice && wwidth < 748) {
+    addWidth: function (windowWidth) {
+      if (typeof usa_deviceInfo != 'undefined' && usa_deviceInfo.mobileDevice && windowWidth < 748) {
         $('.ad-leaderboard').css({'width': '300px', 'height': '50px'});
       }
       else {
         $('.ad-leaderboard').css({'width': '728px', 'height': '90px'});
       }
+    },
+
+    resizeResponse: function() {
+      var wwidth = $(window).width();
+
+      Drupal.behaviors.ms_site.addWidth(wwidth);
 
       if ($('#videos').length > 0) Drupal.behaviors.ms_videos.setVideoHeight();
 
-      Drupal.behaviors.ms_site.initIframeResize();
+      try {
+        usa_debug('ms_site : Drupal.behaviors.ms_site.initIframeResize');
+        Drupal.behaviors.ms_site.initIframeResize();
+      } catch (e) {
+        usa_debug('error ms_site : Drupal.behaviors.ms_site.initIframeResize');
+      }
+    },
+
+    // initIframeResize
+    initIframeResize: function(delay) {
+      delay = delay || 700;
+      setTimeout(function() {
+        var ifrm = document.getElementById('offerpop-iframe'),
+            hostname = window.location.hostname,
+            env = hostname.replace('.usanetwork.com', '');
+        ifrm.contentWindow.postMessage(env, 'http://offerpop.com');
+//usa_debug('========== initIframeResize(), env: ' + env);
+      }, delay);
     },
 
     // ATTACH
@@ -36,7 +58,8 @@
       setTimeout(function(){
         if (Drupal.behaviors.ms_global.globalInitialPageLoad) {
           $('header').prepend('<div id="head-leaderboard" class="ad-leaderboard"></div>');
-
+          self.addWidth($(window).width());
+          
           // set-up menu gigya share bar
           var $infoContainer = $('#mega-nav'),
               gigyaSettings = {

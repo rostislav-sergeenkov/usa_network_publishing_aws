@@ -113,21 +113,13 @@ function usanetwork_quiz_theme() {
       ),
       'template' => 'templates/usanetwork-quiz-quizes-carousel',
     ),
-    'usanetwork_quiz_quizes_carousel_item_h' => array(
+    'usanetwork_quiz_quizes_carousel_item' => array(
       'variables' => array(
         'url' => NULL,
         'title' => NULL,
         'active' => NULL,
       ),
-      'template' => 'templates/usanetwork-quiz-quizes-carousel-item-h',
-    ),
-    'usanetwork_quiz_quizes_carousel_item_v' => array(
-      'variables' => array(
-        'url' => NULL,
-        'title' => NULL,
-        'active' => NULL,
-      ),
-      'template' => 'templates/usanetwork-quiz-quizes-carousel-item-v',
+      'template' => 'templates/usanetwork-quiz-quizes-carousel-item',
     ),
     'usanetwork_quiz_field_multiple_value_form' => array(
       'render element' => 'element',
@@ -936,8 +928,8 @@ function _usanetwork_quiz_main_block() {
 
   $node = menu_get_object('node');
   if (isset($node->type) && $node->type == 'quiz') {
-    $node_wrapper = entity_metadata_wrapper('node', $node);
-    $quiz_content = drupal_render(node_view($node, 'full'));
+    $quiz_full_content = node_view($node, 'full');
+    $quiz_content = drupal_render($quiz_full_content);
     $theme_variables = array(
       'rendered_quiz' => $quiz_content,
       'rendered_carousel' => _usanetwork_quiz_quizes_carousel(),
@@ -970,6 +962,9 @@ function _usanetwork_quiz_quizes_carousel() {
       $result = $query->execute();
       if (isset($result['node'])) {
         $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_id);
+        if (empty($is_new_design)) {
+          drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-right-rail.js');
+        }
         $quizes = entity_load('node', array_keys($result['node']));
         $rendered_items = array();
         foreach ($quizes as $quiz) {
@@ -987,12 +982,10 @@ function _usanetwork_quiz_quizes_carousel() {
             'active' => ($node->nid == $quiz->nid) ? TRUE : FALSE,
             'icon_type' => usanetwork_core_api_get_media_icon('node', $quiz->nid),
           );
-          $episode_variables['image'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
-          $rendered_items['vertical'][] = theme('usanetwork_quiz_quizes_carousel_item_v', $episode_variables);
           $episode_variables['image'] = !empty($image['uri']) ? image_style_url('full_episodes_633x356', $image['uri']) : '';
           $episode_variables['image_mobile'] = !empty($image['uri']) ? image_style_url('111x74', $image['uri']) : '';
           $episode_variables['new_design'] = !empty($is_new_design) ? $is_new_design : NULL;
-          $rendered_items['horizontal'][] = theme('usanetwork_quiz_quizes_carousel_item_h', $episode_variables);
+          $rendered_items['carousel'][] = theme('usanetwork_quiz_quizes_carousel_item', $episode_variables);
         }
         $advert_block = module_invoke('mps', 'block_view', 'topbox');
         if (!empty($advert_block['content'])) {
@@ -1003,7 +996,7 @@ function _usanetwork_quiz_quizes_carousel() {
           'advert_block' => isset($advert) ? $advert : NULL,
           'block_title' => !empty($explore_tag) ? $explore_tag->name : t('All quizzes'),
           'show_explore_link' => !empty($explore_tag)
-            ? l(t('See All @tag_name', array('@tag_name' => $explore_tag->name)),
+            ? l(t('See All !tag_name', array('!tag_name' => $explore_tag->name)),
               'node/' . $show_id . '/explore', array('fragment' => 'explore-landing-page-header', 'query' => array('tag' => $explore_tag->tid)))
             : (!empty($is_new_design)
               ? l(t('Explore @show_name<span class="show-color show-font"></span>', array('@show_name' => $show_name)),

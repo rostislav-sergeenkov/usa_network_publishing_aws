@@ -8,10 +8,11 @@
 
 .consumptionator-page {
   background-color: $consum-back;
-  .usa-wrap{
+  .usa-wrap {
     background: none;
   }
 }
+
 .consumptionator-page.consumptionator-guide,
 .consumptionator-page.consumptionator-blog {
   header, .blog-block, .guide-block {
@@ -19,7 +20,7 @@
   }
 }
 
-body:not(.show-new-design) .consum-sidebar {
+.consum-sidebar {
   background: $consum-back;
   float: left;
   height: 100%;
@@ -34,25 +35,25 @@ body:not(.show-new-design) .consum-sidebar {
     width: 100%;
   }
   @include breakpoint($bp-1024-width) {
-    height: auto!important;
+    height: auto !important;
     width: 100%;
   }
   &.sticky-sidebar {
     @include breakpoint($bp-min-1025-width) {
-      height: calc(100vh - #{get-vw(135px, 1901)})!important;
-      position: fixed!important;
+      height: calc(100vh - #{get-vw(135px, 1901)}) !important;
+      position: fixed !important;
       right: 0;
-      top: get-vw(135px, 1901)!important;
+      top: get-vw(135px, 1901) !important;
       .advert {
         height: 250px;
         padding: 0;
       }
       .items-block {
-        height: calc(100% - 250px)!important;
+        height: calc(100% - 250px) !important;
         top: 0;
       }
       .more-items {
-        bottom: auto!important;
+        bottom: auto !important;
         margin-top: -45px;
       }
     }
@@ -62,33 +63,33 @@ body:not(.show-new-design) .consum-sidebar {
       }
     }
     @include breakpoint($bp-min-1901-width) {
-      height: calc(100vh - 135px)!important;
-      top: 135px!important;
+      height: calc(100vh - 135px) !important;
+      top: 135px !important;
       .more-items {
         margin-top: -70px;
       }
     }
     @include breakpoint($bp-min-2500-width) {
-      left: calc(1867.5px + (100% - 2500px)/2)!important;
+      left: calc(1867.5px + (100% - 2500px) / 2) !important;
       right: auto;
       width: 628px;
     }
     &.related-visible, &.social-visible, &.footer-visible {
       @include breakpoint($bp-min-1025-width) {
         bottom: 0;
-        position: absolute!important;
-        top: auto!important;
+        position: absolute !important;
+        top: auto !important;
       }
     }
   }
   &:not(.related-visible):not(.social-visible):not(.footer-visible) {
-    max-height: none!important;
+    max-height: none !important;
   }
   .advert {
     width: 100%;
     @include breakpoint($bp-min-1281-width) {
       height: get-vw(585px, 2500);
-      padding: calc((#{get-vw(585px, 2500)} - 250px)/2) 0;
+      padding: calc((#{get-vw(585px, 2500)} - 250px) / 2) 0;
     }
     @include breakpoint($bp-min-2500-width) {
       height: 585px;
@@ -195,7 +196,39 @@ body:not(.show-new-design) .consum-sidebar {
   }
   .episodes-list-slider {
     position: relative;
-    &.vertical {
+    &:not(.usa-carousel-initialized) {
+
+      background-image: url("../images/ajax-loader.gif");
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+
+      @include breakpoint($bp-1024-width) {
+        height: calc((100vw - 4px) / 48 * 9);
+      }
+      @include breakpoint($bp-640-width) {
+        height: 56.25vw;
+      }
+
+      .usa-carousel {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    .usa-carousel {
+      opacity: 1;
+      visibility: visible;
+      .usa-carousel-item {
+        .node {
+          .asset-img {
+            background-image: url("../images/ajax-loader.gif");
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: inherit;
+          }
+        }
+      }
+    }
+    &.vertical-mode {
       display: block;
       height: calc(100% - 85px);
       @include breakpoint($bp-min-1901-width) {
@@ -210,14 +243,15 @@ body:not(.show-new-design) .consum-sidebar {
           height: calc(100% - 70px);
         }
       }
-      ul, .bx-viewport, .bx-wrapper {
-        height: 100%!important;
+      .usa-carousel {
+        display: block;
+        height: 100% !important;
       }
-      li {
+      .usa-carousel-item {
         background: $consum-carousel-even;
         height: 75px;
         position: relative;
-        width: 100%!important;
+        width: 100% !important;
         @include breakpoint($bp-min-1901-width) {
           height: 115px;
         }
@@ -272,6 +306,9 @@ body:not(.show-new-design) .consum-sidebar {
             height: 100%;
             width: 100%;
           }
+          .meta-icon {
+            display: none;
+          }
           .meta {
             color: $consum-carousel-text;
             padding-left: 4%;
@@ -307,56 +344,15 @@ body:not(.show-new-design) .consum-sidebar {
         }
       }
     }
-    &.horizontal {
+    &.horizontal-mode {
       overflow: hidden;
       position: relative;
       display: none;
-      height: calc((100vw - 4px)/48*9);
+      height: calc((100vw - 4px) / 48 * 9);
       width: 100%;
-      &:hover .horizontal-controls {
-        display: block;
-        @include breakpoint($bp-640-width) {
-          display: none;
-        }
-      }
-      .horizontal-controls {
-        display: none;
-        .slide-control {
-          cursor: pointer;
+      &:hover .usa-carousel-controls-wrap {
+        @include breakpoint($bp-min-641-width) {
           display: block;
-          position: absolute;
-          top: 0;
-          height: 100%;
-          z-index: 9;
-          background: rgba(255, 255, 255, 0.6);
-          width: 60px;
-          &.slide-prev {
-            left: 0;
-            &:after {
-              content: "\e607";
-            }
-          }
-          &.slide-next {
-            right: 0;
-            &:after {
-              content: "\e608";
-            }
-          }
-          &.slick-disabled {
-            display: none !important;
-          }
-          &:after {
-            color: #545454;
-            display: block;
-            font-family: $ico-font;
-            font-size: 32px;
-            left: 50%;
-            margin-left: -16px;
-            margin-top: -16px;
-            opacity: 1;
-            position: absolute;
-            top: 50%;
-          }
         }
       }
       @include breakpoint($bp-1280-width) {
@@ -365,30 +361,30 @@ body:not(.show-new-design) .consum-sidebar {
       @include breakpoint($bp-640-width) {
         height: auto;
       }
-      ul {
+      .usa-carousel {
+        display: flex;
         position: relative;
-        height: auto!important;
+        height: auto !important;
         @include breakpoint($bp-min-641-width) {
-          height: 100%!important;
+          height: 100% !important;
         }
         @include breakpoint($bp-640-width) {
+          display: block;
           width: 100%;
         }
       }
-      li {
-        float: left;
+      .usa-carousel-item {
         margin-right: 2px;
         position: relative;
         height: 100%;
-        width: 33%;
+        width: calc((100% - 6px) / 3);
         @extend %aspot-carousel-promo;
-        @include breakpoint($bp-min-641-width) {
-          max-width: 33.3vw;
-        }
         @include breakpoint($bp-640-width) {
-          float: none;
           height: 56.25vw;
           width: 100%;
+          .asset-img.active {
+            border-left: 0 !important;
+          }
         }
       }
       .node {
@@ -404,12 +400,13 @@ body:not(.show-new-design) .consum-sidebar {
             left: 0;
             position: absolute;
             top: 0;
-            width: 0px;
+            width: 0;
             z-index: 2;
           }
         }
       }
     }
+    @extend %episodes-list-slider-controls;
   }
   .more-items {
     display: block;
@@ -418,7 +415,7 @@ body:not(.show-new-design) .consum-sidebar {
     left: 0;
     width: 100%;
     @include breakpoint($between-641-1024) {
-      background: none!important;
+      background: none !important;
     }
     @include breakpoint($bp-1280-width) {
       bottom: auto;
@@ -557,7 +554,7 @@ body:not(.show-new-design) .consum-sidebar {
             max-width: calc(100vw - 340px);
           }
           @include breakpoint($between-1025-1280) {
-            max-height: calc(((100vw - 320px)*0.5625) - 250px);
+            max-height: calc(((100vw - 320px) * 0.5625) - 250px);
             max-width: 320px;
           }
           @include breakpoint($bp-min-1281-width) {
@@ -577,41 +574,41 @@ body:not(.show-new-design) .consum-sidebar {
       vertical-align: middle;
       background: #474747;
       background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-      background: -moz-radial-gradient(circle closest-side at 50% 35%, #474747 0%,#121212 140%);
-      background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%,#474747), color-stop(140%,#121212));
-      background: -webkit-radial-gradient(circle closest-side at 50% 35%, #474747 0%,#121212 140%);
-      background: -o-radial-gradient(circle closest-side at 50% 35%, #474747 0%,#121212 140%);
-      background: -ms-radial-gradient(circle closest-side at 50% 35%, #474747 0%,#121212 140%);
-      background: radial-gradient(circle closest-side at 50% 35%, #474747 0%,#121212 140%);
+      background: -moz-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
+      background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(140%, #121212));
+      background: -webkit-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
+      background: -o-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
+      background: -ms-radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
+      background: radial-gradient(circle closest-side at 50% 35%, #474747 0%, #121212 140%);
       @include breakpoint($between-1025-1280) {
         background: #474747;
         background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-        background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
-        background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%,#474747), color-stop(175%,#121212));
-        background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
-        background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
-        background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
-        background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+        background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+        background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(175%, #121212));
+        background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+        background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+        background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+        background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
       }
       @include breakpoint($bp-1024-width) {
         background: #474747;
         background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-        background: -moz-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%,#121212 175%);
-        background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%,#474747), color-stop(175%,#121212));
-        background: -webkit-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%,#121212 175%);
-        background: -o-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%,#121212 175%);
-        background: -ms-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%,#121212 175%);
-        background: radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%,#121212 175%);
+        background: -moz-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
+        background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(175%, #121212));
+        background: -webkit-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
+        background: -o-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
+        background: -ms-radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
+        background: radial-gradient(circle closest-side at calc(50% - 102px) 50%, #474747 0%, #121212 175%);
       }
       @include breakpoint($bp-480-width) {
         background: #474747;
         background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NzQ3NDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OCUiIHN0b3AtY29sb3I9IiMxMjEyMTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-        background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
-        background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%,#474747), color-stop(175%,#121212));
-        background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
-        background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
-        background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
-        background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%,#121212 175%);
+        background: -moz-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+        background: -webkit-gradient(radial, center center, 0px, center center, 50%, color-stop(0%, #474747), color-stop(175%, #121212));
+        background: -webkit-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+        background: -o-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+        background: -ms-radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
+        background: radial-gradient(circle closest-side at calc(50% - 75px) 50%, #474747 0%, #121212 175%);
       }
     }
     .image-block {
@@ -755,20 +752,12 @@ body:not(.show-new-design) .consum-sidebar {
     }
   }
 }
-#block-usanetwork-media-gallery-usa-gallery-consumptionator-main {
-  .consum-sidebar {
-    .more-items {
-      @include breakpoint($between-1025-1280) {
-        background: none!important;
-      }
-    }
-  }
-}
-body:not(.show-new-design) .consumptionator-video-page {
+
+.consumptionator-video-page {
   &.page-full-video {
     &.admin-menu {
       @include breakpoint($bp-min-769-width) {
-        margin-top: 0px!important;
+        margin-top: 0px !important;
       }
     }
     .usa-wrap {
@@ -813,190 +802,191 @@ body:not(.show-new-design) .consumptionator-video-page {
     }
   }
 }
-body:not(.show-new-design) {
-  .consumptionator-characters-main-block, .consumptionator-episode-main-block, .consumptionator-quiz-main-block, .consumptionator-post-main-block {
-    .consum-sidebar {
+
+.consumptionator-characters-main-block, .consumptionator-episode-main-block,
+.consumptionator-quiz-main-block, .consumptionator-post-main-block {
+  .consum-sidebar {
+    @include breakpoint($between-1025-1280) {
+      float: left;
+      padding: 0;
+      position: relative;
+      width: 320px;
+    }
+    @include breakpoint($bp-1024-width) {
+      float: none;
+      max-height: none !important;
+      padding: 0;
+      position: relative;
+      width: 100%;
+    }
+    .items-block {
+      @include breakpoint($bp-min-1025-width) {
+        height: 420px;
+      }
+      @include breakpoint($bp-min-1901-width) {
+        height: 645px;
+      }
       @include breakpoint($between-1025-1280) {
-        float: left;
-        padding: 0;
         position: relative;
-        width: 320px;
       }
       @include breakpoint($bp-1024-width) {
-        float: none;
-        max-height: none!important;
+        height: auto;
         padding: 0;
         position: relative;
+        right: auto;
+        top: auto;
         width: 100%;
       }
-      .items-block {
-        @include breakpoint($bp-min-1025-width) {
-          height: 420px;
-        }
-        @include breakpoint($bp-min-1901-width) {
-          height: 645px;
-        }
-        @include breakpoint($between-1025-1280) {
-          position: relative;
-        }
-        @include breakpoint($bp-1024-width) {
-          height: auto;
-          padding: 0;
-          position: relative;
-          right: auto;
-          top: auto;
-          width: 100%;
-        }
-        .episodes-list-slider {
-          &.vertical {
-            @include breakpoint($between-1025-1280) {
-              display: block;
-              height: calc(100% - 90px);
-            }
-          }
-          &.horizontal {
-            overflow: hidden;
-            position: relative;
-            @include breakpoint($between-1025-1280) {
-              display: none;
-            }
-            ul {
-              position: relative;
-              @include breakpoint($bp-640-width) {
-                width: 100%;
-              }
-            }
-            @include breakpoint($bp-640-width) {
-              li {
-                background: $consum-carousel-even;
-                height: 75px;
-                position: relative;
-                width: 100%!important;
-                &:nth-child(odd) {
-                  background: $consum-carousel-odd;
-                }
-                &:nth-child(even) {
-                  background: $consum-carousel-even;
-                }
-                > div {
-                  height: 100%;
-                  width: 100%;
-                }
-                a {
-                  height: 100%;
-                  width: 100%;
-                }
-                .asset-img {
-                  height: 50px;
-                  left: 4%;
-                  margin-top: -25px;
-                  position: absolute;
-                  top: 50%;
-                  width: 75px;
-                  &.active {
-                    border-left: 7px solid;
-                  }
-                  img {
-                    height: 100%;
-                    width: 100%;
-                  }
-                  & ~ .meta-wrapper {
-                    .meta {
-                      padding-left: calc(8% + 75px);
-                    }
-                  }
-                }
-                .meta-wrapper {
-                  background: none;
-                  height: 100%;
-                  width: 100%;
-                  .meta-wrapper-inner {
-                    display: table;
-                    height: 100%;
-                    width: 100%;
-                  }
-                  .meta-icon {
-                    display: none;
-                  }
-                  .meta {
-                    color: $consum-carousel-text;
-                    padding-left: 4%;
-                    display: table-cell;
-                    max-width: 100px;
-                    vertical-align: middle;
-                    width: 100%;
-                    .caption {
-                      font-size: 10px;
-                      line-height: 13px;
-                    }
-                    .title {
-                      font-size: 15px;
-                      line-height: 18px;
-                      margin-bottom: 7px;
-                    }
-                    .additional {
-                      font-family: $tex-gyreschola-italic;
-                      font-size: 10px;
-                      line-height: 13px;
-                      text-transform: uppercase;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      .more-items {
-        @include breakpoint($between-1025-1280) {
-          bottom: 0;
-          display: block;
-          position: absolute;
-          left: 0;
-          top: auto;
-          width: 100%;
-        }
-        @include breakpoint($bp-1024-width) {
-          top: 0;
-        }
-        a {
+      .episodes-list-slider {
+        &.vertical-mode {
           @include breakpoint($between-1025-1280) {
-            padding-left: 25px;
+            display: block;
+            height: calc(100% - 90px);
+          }
+        }
+        &.horizontal-mode {
+          overflow: hidden;
+          position: relative;
+          @include breakpoint($between-1025-1280) {
+            display: none;
+          }
+          .usa-carousel {
+            display: flex;
+            position: relative;
+            @include breakpoint($bp-640-width) {
+              display: block;
+              width: 100%;
+            }
           }
           @include breakpoint($bp-640-width) {
-            font-size: 15px;
-            height: 45px;
-            line-height: 45px;
+            .usa-carousel-item {
+              background: $consum-carousel-even;
+              height: 75px;
+              position: relative;
+              width: 100% !important;
+              &:nth-child(odd) {
+                background: $consum-carousel-odd;
+              }
+              &:nth-child(even) {
+                background: $consum-carousel-even;
+              }
+              > div {
+                height: 100%;
+                width: 100%;
+              }
+              a {
+                height: 100%;
+                width: 100%;
+              }
+              .asset-img {
+                height: 50px;
+                left: 4%;
+                margin-top: -25px;
+                position: absolute;
+                top: 50%;
+                width: 75px;
+                &.active {
+                  border-left: 7px solid;
+                }
+                img {
+                  height: 100%;
+                  width: 100%;
+                }
+                & ~ .meta-wrapper {
+                  .meta {
+                    padding-left: calc(8% + 75px);
+                  }
+                }
+              }
+              .meta-wrapper {
+                background: none;
+                height: 100%;
+                width: 100%;
+                .meta-wrapper-inner {
+                  display: table;
+                  height: 100%;
+                  width: 100%;
+                }
+                .meta-icon {
+                  display: none;
+                }
+                .meta {
+                  color: $consum-carousel-text;
+                  padding-left: 4%;
+                  display: table-cell;
+                  max-width: 100px;
+                  vertical-align: middle;
+                  width: 100%;
+                  .caption {
+                    font-size: 10px;
+                    line-height: 13px;
+                  }
+                  .title {
+                    font-size: 15px;
+                    line-height: 18px;
+                    margin-bottom: 7px;
+                  }
+                  .additional {
+                    font-family: $tex-gyreschola-italic;
+                    font-size: 10px;
+                    line-height: 13px;
+                    text-transform: uppercase;
+                  }
+                }
+              }
+            }
           }
         }
       }
-      .advert {
-        @include breakpoint($bp-1024-width) {
-          display: none;
-        }
+    }
+    .more-items {
+      @include breakpoint($between-1025-1280) {
+        bottom: 0;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: auto;
+        width: 100%;
       }
-      .items-block-title {
+      @include breakpoint($bp-1024-width) {
+        top: 0;
+      }
+      a {
+        @include breakpoint($between-1025-1280) {
+          padding-left: 25px;
+        }
         @include breakpoint($bp-640-width) {
+          font-size: 15px;
           height: 45px;
           line-height: 45px;
         }
-        h2 {
-          @include breakpoint($between-1025-1280) {
-            width: 100%;
-          }
-          @include breakpoint($bp-640-width) {
-            font-size: 20px;
-            line-height: 45px;
-            text-align: left;
-          }
+      }
+    }
+    .advert {
+      @include breakpoint($bp-1024-width) {
+        display: none;
+      }
+    }
+    .items-block-title {
+      @include breakpoint($bp-640-width) {
+        height: 45px;
+        line-height: 45px;
+      }
+      h2 {
+        @include breakpoint($between-1025-1280) {
+          width: 100%;
+        }
+        @include breakpoint($bp-640-width) {
+          font-size: 20px;
+          line-height: 45px;
+          text-align: left;
         }
       }
     }
   }
 }
 
-
-body:not(.show-new-design) .related-content-block {
+.related-content-block {
   @include clear();
   background: #000000;
   border-bottom: 2px solid;
@@ -1032,7 +1022,7 @@ body:not(.show-new-design) .related-content-block {
         &:nth-child(2n) {
           margin-right: 0;
         }
-        &:nth-child(n+5){
+        &:nth-child(n+5) {
           margin-bottom: 0;
         }
       }
@@ -1131,14 +1121,14 @@ body:not(.show-new-design) .related-content-block {
   }
   .consum-loader {
     display: block;
-    height: 32px!important;
+    height: 32px !important;
     left: 50%;
     margin-left: -16px;
     margin-top: -16px;
     position: absolute;
     top: 50%;
     visibility: visible;
-    width: 32px!important;
+    width: 32px !important;
   }
   .advert, .ad-728x90 {
     position: relative;
@@ -1162,9 +1152,315 @@ body:not(.show-new-design) .related-content-block {
     border-bottom: 12px solid;
     padding: 40px 0 75px;
   }
-  .gallery-wrapper {
-    @include breakpoint($between-1025-1280) {
-      height: calc((100vw - 370px) * 0.5625);
+}
+
+.right-rail-line {
+  #main-block-bottom-line {
+    bottom: 0;
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+  }
+  &.bottom-visible {
+    .sticky-share {
+      @include breakpoint($bp-768-width) {
+        position: absolute!important;
+        top: auto;
+      }
+    }
+  }
+  &:not(.description-visible) {
+    .sticky-share {
+      position: absolute!important;
+      top: auto;
+    }
+  }
+  .touch & {
+    .sticky-share {
+      @include breakpoint($bp-min-769-width) {
+        bottom: 0;
+        top: auto!important;
+        width: 100%;
+      }
+      .field-type-gigya-sharebar {
+        td {
+          @include breakpoint($bp-min-769-width) {
+            float: left;
+            &:nth-last-child(3) {
+              width: calc(100%/3);
+              & ~ td {
+                width: calc(100%/3);
+              }
+            }
+            &:nth-last-child(4) {
+              width: 25%;
+              & ~ td {
+                width: 25%;
+              }
+            }
+            &:nth-last-child(5) {
+              width: 20%;
+              & ~ td {
+                width: 20%;
+              }
+            }
+            .gig-button-container {
+              td {
+                width: 100%!important;
+                div {
+                  font-size: 44px!important;
+                  height: 80px!important;
+                  line-height: 80px!important;
+                  width: 100%!important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .touch &:not(.bottom-visible).description-visible {
+    .sticky-share {
+      @include breakpoint($bp-min-769-width) {
+        bottom: 0;
+        left: 0;
+        position: fixed!important;
+        z-index: 100;
+        width: 100%;
+      }
+      @include breakpoint($bp-min-1025-width) {
+        width: calc((100% - 320px));
+      }
+      @include breakpoint($bp-min-1281-width) {
+        width: 74.7%;
+      }
+      @include breakpoint($bp-min-2500-width) {
+        left: calc((100% - 2500px)/2);
+        width: 1867.5px;
+      }
+    }
+  }
+  .touch &.bottom-visible {
+    .sticky-share {
+      @include breakpoint($bp-min-769-width) {
+        bottom: -1px;
+        left: 0!important;
+        position: absolute!important;
+        width: 100%;
+        z-index: 100;
+      }
+    }
+  }
+  .sticky-share {
+    box-shadow: 0px 0px 5px black;
+    left: 0;
+    position: absolute;
+    @include breakpoint($bp-768-width) {
+      bottom: 0;
+      position: fixed;
+      top: auto;
+      width: 100%;
+      z-index: 100;
+    }
+    .field-label {
+      display: none;
+    }
+    table, tbody, tr, td, button {
+      display: block;
+      width: 100%;
+    }
+    .field-type-gigya-sharebar {
+      td {
+        @include breakpoint($bp-768-width) {
+          float: left;
+          &:nth-last-child(3) {
+            width: calc(100%/3);
+            & ~ td {
+              width: calc(100%/3);
+            }
+          }
+          &:nth-last-child(4) {
+            width: 25%;
+            & ~ td {
+              width: 25%;
+            }
+          }
+          &:nth-last-child(5) {
+            width: 20%;
+            & ~ td {
+              width: 20%;
+            }
+          }
+          .gig-button-container {
+            td {
+              width: 100%!important;
+              div {
+                font-size: get-vw(44px, 768)!important;
+                height: get-vw(80px, 768)!important;
+                line-height: get-vw(80px, 768)!important;
+                width: 100%!important;
+              }
+            }
+          }
+        }
+      }
+    }
+    .field-type-gigya-sharebar {
+      margin: 0;
+      .gig-button-container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        td {
+          div {
+            background: transparent;
+            position: relative!important;
+            text-align: center;
+            &:before {
+              background: transparent;
+              color: white!important;
+              display: block;
+              position: relative;
+              z-index: 2;
+            }
+          }
+        }
+        &.gig-button-container-facebook {
+          background: $usa-video-helper-facebook;
+          td {
+            div:before {
+              content: '\e618';
+            }
+          }
+        }
+        &.gig-button-container-twitter {
+          background: $usa-video-helper-twitter;
+          td {
+            div:before {
+              content: '\e61a';
+            }
+          }
+        }
+        &.gig-button-container-tumblr {
+          background: $usa-video-helper-tumblr;
+          td {
+            div:before {
+              content: '\e619';
+            }
+          }
+        }
+        &.gig-button-container-share {
+          background: $usa-video-helper-pinterest;
+          td {
+            div:before {
+              content: '\e62a';
+            }
+          }
+        }
+      }
+    }
+    .no-touch .node-type-consumpt-post & {
+      @include breakpoint($bp-min-1281-width) {
+        top: 45px;
+        width: 55px;
+      }
+      @include breakpoint($between-1025-1280) {
+        top: 38px;
+        width: 28px;
+      }
+      @include breakpoint($between-769-1024) {
+        top: 53px;
+        width: get-vw(55px, 1024);
+      }
+      .field-type-gigya-sharebar {
+        .gig-button-container {
+          td {
+            div {
+              @include breakpoint($bp-min-1281-width) {
+                font-size: 30px!important;
+                height: 80px!important;
+                line-height: 80px!important;
+                width: 55px!important;
+              }
+              @include breakpoint($between-1025-1280) {
+                font-size: 15px!important;
+                height: 41px!important;
+                line-height: 41px!important;
+                width: 28px!important;
+              }
+              @include breakpoint($between-769-1024) {
+                font-size: get-vw(30px, 1024)!important;
+                height: get-vw(80px, 1024)!important;
+                line-height: get-vw(80px, 1024)!important;
+                width: get-vw(55px, 1024)!important;
+              }
+            }
+          }
+        }
+      }
+    }
+    .no-touch .sub-menu-is-sticky & {
+      @include breakpoint($bp-min-769-width) {
+        position: fixed;
+        top: get-vw(150px, 1901);
+      }
+      @include breakpoint($bp-min-1901-width) {
+        top: 150px;
+      }
+      @include breakpoint($bp-min-2500-width) {
+        left: calc((100% - 2500px)/2);
+      }
+    }
+  }
+  .node-type-consumpt-post .consumptionator-post-main-block & {
+    .post-info-block {
+      @include breakpoint($bp-768-width) {
+        padding-bottom: get-vw(180px, 768);
+      }
+      @include breakpoint($bp-480-width) {
+        padding-bottom: get-vw(140px, 480);
+      }
+    }
+    .gallery-recap-block {
+      & ~ .episode-change-link {
+        @include breakpoint($bp-768-width) {
+          bottom: 36px;
+        }
+      }
+    }
+    .episode-change-link {
+      @include breakpoint($bp-768-width) {
+        bottom: get-vw(120px, 768);
+      }
+      @include breakpoint($bp-480-width) {
+        bottom: get-vw(80px, 480);
+      }
+    }
+  }
+  .touch .node-type-consumpt-post .consumptionator-post-main-block & {
+    .post-info-block {
+      @include breakpoint($bp-min-769-width) {
+        padding-bottom: 160px;
+      }
+    }
+    .gallery-recap-block {
+      & ~ .episode-change-link {
+        @include breakpoint($bp-min-1281-width) {
+          bottom: 39px;
+        }
+        @include breakpoint($between-1025-1280) {
+          bottom: 34px;
+        }
+      }
+    }
+    .episode-change-link {
+      @include breakpoint($bp-min-769-width) {
+        bottom: 110px;
+      }
     }
   }
 }

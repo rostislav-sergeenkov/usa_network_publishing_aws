@@ -143,19 +143,13 @@
             Drupal.behaviors.mpsAdvert.mpsMakeRequest();
             Drupal.behaviors.mpsAdvert.mpsLoadAd(selector, nameAd);
           }
-        }, 0, "ad change");
+        }, 150, "ad change");
       });
     },
 
     attach: function (context, settings) {
 
       var body = $('body');
-
-      //$(window).bind('resize', function () {
-      //  waitForFinalEvent(function(){
-      //    self.micrositeReloadBxSlider();
-      //  }, 500, "home Cast & Crew gallery");
-      //});
 
       body.once(function () {
         // init mps block for node-type-person

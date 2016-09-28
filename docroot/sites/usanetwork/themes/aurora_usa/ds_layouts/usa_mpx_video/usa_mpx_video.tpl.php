@@ -23,37 +23,6 @@
           </div>
         </div>
       <?php elseif ($lock_video): ?>
-        <div class="tve-help">
-          <div class="tve-msg">By signing in with your TV provider you get
-            access to full<br/>episodes the day after they
-            air!
-          </div>
-          <div class="tve-download">To unlock full episodes you can select an
-            episode to sign in<br/>- or -<br/>DOWNLOAD THE
-            USA NOW APP
-          </div>
-          <div class="tve-download-link">
-            <a
-              href="https://play.google.com/store/apps/details?id=com.usanetwork.watcher">
-              <img
-                src="/sites/usanetwork/themes/aurora_usa/images/googleplay.png"
-                alt=""/>
-            </a>
-            <a href="http://www.usanetwork.com/usanow">
-              <img src="/sites/usanetwork/themes/aurora_usa/images/usanow.png"
-                   alt=""/>
-            </a>
-            <a href="https://itunes.apple.com/us/app/usa-now/id661695783?mt=8">
-              <img src="/sites/usanetwork/themes/aurora_usa/images/appstore.png"
-                   alt=""/>
-            </a>
-          </div>
-          <div class="tve-close">
-            <img src="/sites/usanetwork/themes/aurora_usa/images/close.png"
-                 alt=""/>
-            Close
-          </div>
-        </div>
         <div class="video-player-wrapper section-auth"
              data-ng-if="!removePlayerThumbnail">
           <div class="player-thumbnail"
@@ -61,19 +30,19 @@
             <div class="video-loading"
                  data-ng-class="{'show-spinner': user.isAuthenticated}"></div>
             <?php if (!$is_live): ?>
-            <div class="asset-img" data-picture data-alt="" data-class="tile-img">
-              <?php if (!empty($image_mobile)): ?>
-                <div data-src="<?php print $image_mobile; ?>"></div>
-              <?php endif; ?>
-              <?php if (!empty($image_desktop)): ?>
-                <div data-media="(min-width: 1280px)" data-src="<?php print $image_desktop; ?>"></div>
-                <!--[if (IE 8) & (!IEMobile)]>
-                <div data-src="<?php print $image_desktop; ?>"></div>
-                <![endif]-->
-              <?php endif; ?>
-              <?php if (!empty($image_desktop)): ?>
-                <noscript><img src="<?php print $image_desktop; ?>" width="2880" height="1620" alt="" title="" /></noscript>
-              <?php endif; ?>
+              <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+                <?php if (!empty($image_mobile)): ?>
+                  <div data-src="<?php print $image_mobile; ?>"></div>
+                <?php endif; ?>
+                <?php if (!empty($image_desktop)): ?>
+                  <div data-media="(min-width: 1280px)" data-src="<?php print $image_desktop; ?>"></div>
+                  <!--[if (IE 8) & (!IEMobile)]>
+                  <div data-src="<?php print $image_desktop; ?>"></div>
+                  <![endif]-->
+                <?php endif; ?>
+                <?php if (!empty($image_desktop)): ?>
+                  <noscript><img src="<?php print $image_desktop; ?>" width="2880" height="1620" alt="" title="" /></noscript>
+                <?php endif; ?>
               </div>
             <?php else: ?>
               <img
@@ -130,11 +99,23 @@
              data-ng-if="!removePlayerThumbnail">
           <div class="player-thumbnail"
                data-ng-class="{'hide-section': !playerThumbnail}">
-            <div class="video-loading show-spinner"></div>
+            <div class="video-loading show-spinner"
+                 data-ng-hide="hidePlayerSpinner"></div>
             <?php if (!$is_live): ?>
-              <?php $image = media_theplatform_mpx_file_formatter_image_view($file, array('settings' => array('image_style' => 'video_full')), '');
-              print theme_image(array('path' => image_style_url($image['#style_name'], $image['#path'])));
-              ?>
+              <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+                <?php if (!empty($image_mobile)): ?>
+                  <div data-src="<?php print $image_mobile; ?>"></div>
+                <?php endif; ?>
+                <?php if (!empty($image_desktop)): ?>
+                  <div data-media="(min-width: 1280px)" data-src="<?php print $image_desktop; ?>"></div>
+                  <!--[if (IE 8) & (!IEMobile)]>
+                  <div data-src="<?php print $image_desktop; ?>"></div>
+                  <![endif]-->
+                <?php endif; ?>
+                <?php if (!empty($image_desktop)): ?>
+                  <noscript><img src="<?php print $image_desktop; ?>" width="2880" height="1620" alt="" title="" /></noscript>
+                <?php endif; ?>
+              </div>
             <?php else: ?>
               <img
                 src="<?php print '/' . path_to_theme() . '/images/usa_liveTV.jpg'; ?>"

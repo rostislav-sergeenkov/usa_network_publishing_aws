@@ -12,96 +12,99 @@
         margin-bottom: 45px;
       }
       .episodes-list-slider {
-        &.horizontal {
-          @include breakpoint($bp-640-width) {
-            li {
-              background: $consum-carousel-even;
-              height: 75px;
-              position: relative;
-              width: 100%!important;
-              &:nth-child(odd) {
-                background: $consum-carousel-odd;
+        &.horizontal-mode {
+          .usa-carousel-item {
+            @include breakpoint($bp-640-width) {
+              height: auto;
+              padding: get-vw(40px, 640) get-vw(40px, 640) 0;
+            }
+            &:nth-child(n+4) {
+              @include breakpoint($bp-640-width) {
+                display: none;
               }
-              &:nth-child(even) {
-                background: $consum-carousel-even;
+            }
+            .meta-wrapper {
+              @include breakpoint($bp-640-width) {
+                padding: get-vw(15px, 640) get-vw(20px, 640) 0;
               }
-              > div {
-                height: 100%;
-                width: 100%;
-              }
-              a {
-                height: 100%;
-                width: 100%;
-              }
-              .asset-img {
-                height: 50px;
-                left: 4%;
-                margin-top: -25px;
-                position: absolute;
-                top: 50%;
-                width: 75px;
-                &.active {
-                  border-left: 7px solid;
-                }
-                img {
-                  height: 100%;
-                  width: 100%;
-                }
-                & ~ .meta-wrapper {
-                  .meta {
-                    padding-left: calc(8% + 75px);
-                  }
-                }
-              }
-              .meta-wrapper {
-                background: none;
-                height: 100%;
-                width: 100%;
-                .meta-wrapper-inner {
-                  display: table;
-                  height: 100%;
-                  width: 100%;
-                }
-                .meta-icon {
-                  display: none;
-                }
-                .meta {
-                  color: $consum-carousel-text;
-                  padding-left: 4%;
-                  display: table-cell;
-                  max-width: 100px;
-                  vertical-align: middle;
-                  width: 100%;
-                  .caption {
-                    font-size: 10px;
-                    line-height: 13px;
-                  }
-                  .title {
-                    font-size: 15px;
-                    line-height: 18px;
-                    margin-bottom: 7px;
-                  }
-                  .additional {
-                    font-family: $tex-gyreschola-italic;
-                    font-size: 10px;
-                    line-height: 13px;
-                    text-transform: uppercase;
-                  }
+            }
+          }
+          .node {
+            &.active {
+              &:before {
+                @include breakpoint($bp-640-width) {
+                  height: calc((100vw - 2*#{get-vw(40px, 640)})*0.5625);
+                  width: 7px;
                 }
               }
             }
           }
         }
       }
+      .items-block-title {
+        @include breakpoint($bp-640-width) {
+          border-top: none;
+          border-bottom: 1px solid;
+          height: auto;
+          line-height: 1;
+          padding: 0;
+          text-align: center;
+        }
+        h2 {
+          @include breakpoint($bp-640-width) {
+            color: white!important;
+            font-size: get-vw(25px, 640);
+            line-height: get-vw(85px, 640);
+          }
+        }
+      }
     }
     .more-items {
-      background: #000000;
       @include breakpoint($bp-640-width) {
-        border: 1px solid;
+        background: black;
+        text-align: center;
+      }
+      a {
+        @include breakpoint($bp-640-width) {
+          font-size: get-vw(30px, 640);
+          line-height: get-vw(100px, 640);
+          padding: 0;
+        }
+        &:after {
+          @include breakpoint($bp-1024-width) {
+            display: none;
+          }
+        }
+        span {
+          background: none;
+          @include breakpoint($bp-min-1025-width) {
+            display: none;
+          }
+          &:after {
+            content: "\e608";
+            font-family: $ico-font;
+            @include breakpoint($bp-1024-width) {
+              display: inline-block;
+              font-size: 12px;
+              line-height: 1;
+              margin-left: 8px;
+              margin-top: -6px;
+              position: relative;
+              right: auto;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: get-vw(22px, 640);
+              margin-top: 0;
+            }
+          }
+        }
       }
     }
   }
   article.node-quiz {
+    width: 100%;
+  }
+  .right-rail-line {
     background: black;
     color: white;
     float: left;
@@ -259,10 +262,13 @@
         @include clear();
       }
       .inner {
-        max-width: 320px;
+        margin: 0!important;
+        max-width: 100%;
       }
       .answer-title {
         font-family: $fira-sans-medium;
+        margin: 0 auto;
+        max-width: 100%;
         padding: 5px;
         @include breakpoint ($bp-640-width) {
           font-size: get-vw(18px, 640);
@@ -270,6 +276,5 @@
       }
     }
   }
-
 }
 

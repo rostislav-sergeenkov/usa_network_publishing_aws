@@ -10,103 +10,52 @@
       }
     },
     scheduleNavigationInit: function () {
-      var $navigation = $('.schedule-navigation'),
-          $controls = $('.schedule-wrapper .schedule-navigation-controls');
 
-      $navigation
-          .on('jcarousel:create jcarousel:reload', function () {
-            var $carousel = $(this),
-                width = null,
-                margin = $navigation.css('margin-left'),
-                start_item = $carousel.find('li.active').index();
-                $carousel.jcarousel('scroll', start_item, false);
-                hideControls = function () {
-                  $controls.hide();
-                  $navigation.css('margin', '0');
-                },
-                showControls = function () {
-                  $controls.show();
-                  $navigation.css('margin', '0 50px');
-                };
+      var $scheduleWrap = $('.schedule-wrapper'),
+          $navigation = $scheduleWrap.find('.schedule-navigation'),
+          $slider = $navigation.find('.slider'),
+          $slidePrev = $scheduleWrap.find('.slide-prev'),
+          $slideNext = $scheduleWrap.find('.slide-next'),
+          start_item = $slider.find('li.active').index();
 
-            if (margin == '0px') {
-              width = $carousel.innerWidth();
-            } else {
-              width = $carousel.innerWidth() + 100;
-            }
-
-            if (width <= 320) {
-              width = width - 100;
-              width = width / 3;
-
-              showControls();
-            } else if ((width > 320) && (width <= 768)) {
-              width = width - 100;
-              width = width / 5;
-
-              showControls();
-            } else {
-              width = width - 100;
-              width = width / 7;
-
-              showControls();
-            }
-
-            $carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-          })
-          .swipe({
-            excludedElements: "button, input, select, textarea, .noSwipe",
-            threshold: 50,
-            swipeRight: function () {
-              $(this).jcarousel('scroll', '-=3');
-            },
-            swipeLeft: function () {
-              $(this).jcarousel('scroll', '+=3');
-            }
-          })
-          .jcarousel({
-            animation: {
-              duration: 500,
-              easing: 'linear'
-            },
-            rtl: false
+      $($slider).slick({
+            infinite: false,
+            speed: 500,
+            nextArrow: $slideNext,
+            prevArrow: $slidePrev,
+            slidesToShow: 7,
+            slidesToScroll: 3,
+            responsive: [{
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 5
+              }
+            }, {
+              breakpoint: 320,
+              settings: {
+                slidesToShow: 3
+              }
+            }]
           });
 
-      $('.jcarousel-control-prev')
-          .on('jcarouselcontrol:active', function () {
-            $(this).removeClass('inactive');
-          })
-          .on('jcarouselcontrol:inactive', function () {
-            $(this).addClass('inactive');
-          })
-          .jcarouselControl({
-            target: '-=1'
-          });
-
-      $('.jcarousel-control-next')
-          .on('jcarouselcontrol:active', function () {
-            $(this).removeClass('inactive');
-          })
-          .on('jcarouselcontrol:inactive', function () {
-            $(this).addClass('inactive');
-          })
-          .jcarouselControl({
-            target: '+=1'
-          });
+      if (start_item !== 0) {
+        $($slider).slick('slickGoTo', start_item, true);
+      }
     },
 
     attach: function (context) {
+
       Drupal.behaviors.usanetwork_tv_schedule.scheduleNavigationInit();
 
       Date.prototype.stdTimezoneOffset = function () {
         var jan = new Date(this.getFullYear(), 0, 1);
         var jul = new Date(this.getFullYear(), 6, 1);
         return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
-      }
+      };
 
       Date.prototype.dst = function () {
         return this.getTimezoneOffset() < this.stdTimezoneOffset();
-      }
+      };
 
       var today = new Date();
       var today_date = today.toDateString();

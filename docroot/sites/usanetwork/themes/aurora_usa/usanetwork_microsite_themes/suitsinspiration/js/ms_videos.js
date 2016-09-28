@@ -52,10 +52,15 @@
     // player events
     handleMediaEvent: function(event) {
       usa_debug('[USA DEBUG] handleMediaEvent -- event.type: ' + event.type);
+      if (window.hasOwnProperty('$pdk')) {
+        $pdk.controller.showFullScreen();
+      }
       switch (event.type) {
         case 'OnReleaseEnd':
           var nextVideo = jQuery('#thumbnail-list .item-list > ul > li.active').next();
-          if (nextVideo.length > 0) Drupal.behaviors.ms_videos.clickThumbnail(nextVideo);
+          if (nextVideo.length > 0) {
+            Drupal.behaviors.ms_videos.clickThumbnail(nextVideo);
+          }
           break;
         default:
           break;
@@ -145,8 +150,8 @@
 
     mobileModal: function () {
       // check if user uses mobile device
-      if (usa_deviceInfo.iOS || usa_deviceInfo.android) {
-        var os = usa_deviceInfo.iOS ? 'iOS' : 'android';
+      if (USAN.isMobile.apple.device || USAN.isMobile.android.device) {
+        var os = USAN.isMobile.apple.device ? 'iOS' : 'android';
         Drupal.behaviors.video_mobile.showMobileVideoModal(os);
       }
     },

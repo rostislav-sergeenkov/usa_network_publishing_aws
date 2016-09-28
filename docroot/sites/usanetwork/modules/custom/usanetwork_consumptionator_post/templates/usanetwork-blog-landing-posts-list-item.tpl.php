@@ -37,7 +37,7 @@
             <img src="<?php print $desktop_image_url; ?>" alt=""/>
           </a>
         </div>
-        <?php if (!empty($violator)): ?>
+        <?php if (!empty($violator) && !empty($new_design)): ?>
           <div class="caption show-color">
             <?php print $violator; ?>
           </div>

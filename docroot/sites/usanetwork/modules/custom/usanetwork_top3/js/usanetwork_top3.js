@@ -113,6 +113,9 @@
       $('.drag-group').show();
       dragIconBlock.show();
       $('#info').show();
+      $('.drop-area__item').each(function(index){
+        $(this).attr('data-count', index+1);
+      });
     }
 
     function changeTwoItems(first, second, target) {
@@ -839,15 +842,11 @@
                 function isEmpty(el) {
                   return !$.trim(el.html());
                 }
-
                 if (isEmpty(slot0) || isEmpty(slot1) || isEmpty(slot2)) {
-
                   // hide dropArea
                   classie.remove(dropArea, 'show');
-
                 }
                 else {
-
                   classie.add(body, 'selectionComplete');
                   //highlight share btn
                   $('#share-button').once('share-button', function () {
@@ -858,7 +857,8 @@
                       }
                       $('#share-block-preview').hide();
                       $('#share-block img').remove();
-                      $('<div id="share-image-block" class="show-color">' +
+                      $('<div id="share-image-block-hidden"></div>' +
+                          '<div id="share-image-block" class="show-color">' +
                           '<div class="share-image-block-wrapper">' +
                           ' <div class="first show-color show-font"></div> ' +
                           '<div class="img-wrap"> ' +
@@ -872,14 +872,21 @@
                       $('#share-block .second, #share-image-block .second').html($('#share-block-preview .preview-item:eq(1) .slide-content-inner').clone());
                       $('#share-block .third, #share-image-block .third').html($('#share-block-preview .preview-item:eq(2) .slide-content-inner').clone());
                       var shareBlock = $('#share-block'),
+                          shareImageBlockHidden = $('#share-image-block-hidden'),
                           shareImageBlock = $('#share-image-block'),
                           imgShare = $('#share-img');
+
+                      shareImageBlockHidden.css({
+                        'background-color': $('body').css('background-color')
+                      });
+
                       $('#top3-slider-wrapper').addClass('share-open');
                       shareImageBlock.show();
                       $('#gigya-share-top3').before('<div class="loader-wrapper"><div class="load-more-loader"></div></div>');
                       setTimeout(function () {
                         html2canvas(shareImageBlock, {
                           onrendered: function (canvas) {
+                            shareImageBlockHidden.remove();
                             shareImageBlock.remove();
                             imgShare.append(convertCanvasToImage(canvas));
                             var galleryNid = $('#slider-container').attr('data-nid'),
@@ -910,6 +917,8 @@
                                   shortURLs: "never",
                                   showCounts: "none"
                                 };
+
+                                console.info(imageSrc);
 
                                 sharebar.gigyaSharebar.ua = {
                                   description: Drupal.settings.top3_settings.top3_description,
@@ -948,6 +957,11 @@
                         var finish_item = $('.drop-area__item').index($(ui.item));
                         changeTwoItems(start_item, finish_item, $('.preview-item'));
                         previewOpen();
+                      },
+                      helper: function(event, ui){
+                        var $clone = $(ui).clone();
+                        $clone.css('position','absolute');
+                        return $clone.get(0);
                       },
                       items: ".drop-area__item"
                     });

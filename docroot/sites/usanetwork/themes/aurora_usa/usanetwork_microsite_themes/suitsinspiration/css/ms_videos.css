@@ -81,15 +81,9 @@
   vertical-align: top;
 }
 
-
-
 .block-usanetwork-mpx-video .view .file h4, #block-views-usa-mpx-video-fullepisodes-live .view .file h4 {
   font-size: 0.875px;
   white-space: normal;
-}
-#microsite .block-usanetwork-mpx-video .view .file h4:after,
-#block-views-usa-mpx-video-fullepisodes-live .view .file h4:after {
-  background-image: none;
 }
 #microsite .video-container.in-player {
   display: block;
@@ -129,11 +123,11 @@
 }
 
 /* GIGYA SHARE */
-#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-facebook td > div:before,
-#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-twitter td > div:before,
-#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-tumblr td > div:before,
-#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-pinterest td > div:before,
-#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-share td > div:before {
+#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-facebook td div:before,
+#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-twitter td div:before,
+#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-tumblr td div:before,
+#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-pinterest td div:before,
+#microsite #videos .gig-bar-container .gig-button-container.gig-button-container-share td div:before {
   color: #000;
 }
 

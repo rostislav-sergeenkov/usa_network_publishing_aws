@@ -19,14 +19,11 @@
     &.sticky-sidebar {
       overflow: hidden;
       @include breakpoint($bp-min-1025-width) {
-        //height: calc(100vh - 7.12195vw)!important;
         height: 100vh !important;
         left: calc(100% - 320px - #{get-vw(16px, 1280)});
         position: fixed!important;
         right: auto;
         top: 0 !important;
-
-        //top: get-vw(73px, 1025)!important;
         .more-items {
           bottom: auto!important;
           margin-top: -45px;
@@ -37,9 +34,7 @@
         width: calc((100% - #{get-vw(16px, 1280)*2})*0.25 );
       }
       @include breakpoint($bp-min-1601-width) {
-        //height: calc(100vh - 135px)!important;
         left: calc(1170px + (100% - 1560px)/2);
-        //top: 135px!important;
         right: auto;
         max-width: 390px;
       }
@@ -134,7 +129,39 @@
     }
     .episodes-list-slider {
       position: relative;
-      &.vertical {
+      &:not(.usa-carousel-initialized) {
+
+        background-image: url("../images/ajax-loader.gif");
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+
+        @include breakpoint($bp-1024-width) {
+          height: calc((100vw - 12px)/48*9);
+        }
+        @include breakpoint($bp-640-width) {
+          height: 56.25vw;
+        }
+
+        .usa-carousel {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+      .usa-carousel {
+        opacity: 1;
+        visibility: visible;
+        .usa-carousel-item {
+          .node {
+            .asset-img {
+              background-image: url("../images/ajax-loader.gif");
+              background-position: 50% 50%;
+              background-repeat: no-repeat;
+              background-size: inherit;
+            }
+          }
+        }
+      }
+      &.vertical-mode {
         display: block;
         overflow: hidden;
         height: calc(100% - 90px);
@@ -147,10 +174,11 @@
         .mCSB_scrollTools {
           width: 4px;
         }
-        ul {
+        .usa-carousel {
           height: 100%;
+          display: block;
         }
-        li {
+        .usa-carousel-item {
           background: none;
           height: 75px;
           position: relative;
@@ -208,6 +236,9 @@
               height: 100%;
               width: 100%;
             }
+            .meta-icon {
+              display: none;
+            }
             .meta {
               color: $consum-carousel-text;
               padding-left: 16px;
@@ -224,56 +255,15 @@
           }
         }
       }
-      &.horizontal {
+      &.horizontal-mode {
         overflow: hidden;
         position: relative;
         display: none;
         height: calc((100vw - 12px)/48*9);
         width: 100%;
-        &:hover .horizontal-controls {
-          display: block;
-          @include breakpoint($bp-640-width) {
-            display: none;
-          }
-        }
-        .horizontal-controls {
-          display: none;
-          .slide-control {
-            cursor: pointer;
+        &:hover .usa-carousel-controls-wrap {
+          @include breakpoint($bp-min-641-width) {
             display: block;
-            position: absolute;
-            top: 0;
-            height: 100%;
-            z-index: 9;
-            background: rgba(255, 255, 255, 0.6);
-            width: 40px;
-            &.slide-prev {
-              left: 0;
-              &:after {
-                content: "\e607";
-              }
-            }
-            &.slide-next {
-              right: 0;
-              &:after {
-                content: "\e608";
-              }
-            }
-            &.slick-disabled {
-              display: none !important;
-            }
-            &:after {
-              color: #545454;
-              display: block;
-              font-family: $ico-font;
-              font-size: 32px;
-              left: 50%;
-              margin-left: -16px;
-              margin-top: -16px;
-              opacity: 1;
-              position: absolute;
-              top: 50%;
-            }
           }
         }
         @include breakpoint($bp-1024-width) {
@@ -282,28 +272,25 @@
         @include breakpoint($bp-640-width) {
           height: auto;
         }
-        ul {
+        .usa-carousel {
           position: relative;
           height: auto!important;
           @include breakpoint($bp-min-641-width) {
+            display: flex;
             height: 100%!important;
           }
           @include breakpoint($bp-640-width) {
+            display: block;
             width: 100%;
           }
         }
-        li {
-          float: left;
+        .usa-carousel-item {
           margin-right: 6px;
           position: relative;
           height: 100%;
           width: calc((100% - 12px)/3);
           @extend %usa-carousel-horizontal-promo;
-          @include breakpoint($bp-min-641-width) {
-            max-width: 33.3vw;
-          }
           @include breakpoint($bp-640-width) {
-            float: none;
             height: 56.25vw;
             margin-right: 0;
             width: 100%;
@@ -328,6 +315,7 @@
           }
         }
       }
+      @extend %episodes-list-slider-controls;
     }
     .more-items {
       background: #000000;

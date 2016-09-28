@@ -284,7 +284,7 @@ function usanetwork_schedule_pull_by_time($time, $limit = 1, $order = 'DESC', $s
 /**
  * Pulls items from schedule according FROM and TO timestamps.
  */
-function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1, $time_corellation = 0) {
+function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1, $time_corellation = 0, $show_title = NULL) {
   $dateTime = new DateTime('now');
   $primeTimeStart = $dateTime->setTime($time_from, 0)->getTimestamp();
   $query = db_select('usanetwork_schedule', 's');
@@ -294,7 +294,7 @@ function usanetwork_schedule_pull_by_timerange($time_from, $time_to, $limit = 1,
   $query->orderBy('s.start_time', 'ASC');
 
   $result = $query->execute()->fetchAll();
-  _usanetwork_schedule_fill_schedule_show_nids($result);
+  _usanetwork_schedule_fill_schedule_show_nids($result, $show_title);
 
   return $result;
 }
@@ -339,7 +339,7 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data, $show_title = NULL
         $show_node = node_load($show_result->nid);
         if (!empty($show_node)) {
           $schedule_item->title = _usanetwork_core_get_right_case_title($show_node, $schedule_item->title);
-          if ($show_title == 'show_title') {
+          if ($show_title == 'show_alias') {
             $schedule_item->show_title = $show_node->title;
           }
         }
@@ -351,12 +351,20 @@ function _usanetwork_schedule_fill_schedule_show_nids(&$data, $show_title = NULL
         $show_node = node_load($show_nid);
         if (!empty($show_node)) {
           $schedule_item->title = _usanetwork_core_get_right_case_title($show_node, $schedule_item->title);
+          if ($show_title == 'show_alias') {
+            $needle = !empty($show_title_aliases[$alias_title]) ? $show_title_aliases[$alias_title] : $needle;
+            $schedule_item->show_title = $needle;
+          }
         }
         $schedule_item->nid = $show_nid;
         continue;
       }
     } else {
-      $schedule_item->mid = _usanetwork_tv_schedule_get_nid_by_title($schedule_item->show_title, 'movie');
+      $move_nid = _usanetwork_tv_schedule_get_nid_by_title($schedule_item->show_title, 'movie');
+      if (empty($move_nid)) {
+        $move_nid = _usanetwork_tv_schedule_get_nid_by_title($schedule_item->title, 'movie');
+      }
+      $schedule_item->mid = $move_nid;
     }
   }
 }
@@ -456,8 +464,8 @@ function usanetwork_schedule_pull_latest_episodes($show_nid, $limit = 0) {
       ->isNull('fdfml.field_mpx_language_value')
   );
   $query->condition('v.status', 1);
-  $query->orderBy('v.airdate', 'DESC');
-  $query->orderBy('field_episode_number.field_mpx_episode_number_value', 'DESC');
+  $query->orderBy('cast(season_field.field_mpx_season_number_value as unsigned)', 'DESC');
+  $query->orderBy('cast(field_episode_number.field_mpx_episode_number_value as unsigned)', 'DESC');
 
   if ($limit > 0) {
     $query->range(0, $limit);

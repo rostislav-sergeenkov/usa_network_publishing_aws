@@ -1,5 +1,44 @@
 @import "fonts.css";
 
+/* jquery ui */
+.ui-icon-gripsmall-diagonal-se {
+  background: none;
+  height: 12px;
+  width: 12px;
+}
+.ui-icon-gripsmall-diagonal-se:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-bottom-color: #fff;
+  border-bottom: 12px solid;
+  border-left: 12px solid transparent;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+.ui-icon-gripsmall-diagonal-se:after {
+  background-repeat: no-repeat;
+  background-image: url(../images/ui-icons-222222-256x240.png);
+  background-position: -65px -225px;
+  content: '';
+  display: block;
+  text-indent: -99999px;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+.ui-resizable.active .ui-icon-gripsmall-diagonal-se:before {
+  border-bottom-color: #f00;
+}
+
+/* a-spot */
 #edit-group_usa_aspot_ui,
 #edit-group_usa_tv_aspot_ui {
   background: #ccc;

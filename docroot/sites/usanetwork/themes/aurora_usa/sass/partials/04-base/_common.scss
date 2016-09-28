@@ -598,7 +598,7 @@ address {
       font-size: 24px;
     }
     @include breakpoint($bp-1024-width) {
-      font-size: 13px;
+      font-size: 16px;
     }
     &:before {
       border: 1px solid #000000;
@@ -618,9 +618,9 @@ address {
         width: 7.4px;
       }
       @include breakpoint($bp-1024-width) {
-        height: 24px;
+        height: 28px;
         left: -8px;
-        margin-top: -12px;
+        margin-top: -14px;
         width: 4px;
       }
     }
@@ -642,8 +642,8 @@ address {
         width: 7.4px;
       }
       @include breakpoint($bp-1024-width) {
-        height: 24px;
-        margin-top: -12px;
+        height: 28px;
+        margin-top: -14px;
         right: -8px;
         width: 4px;
       }

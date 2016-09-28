@@ -853,11 +853,13 @@ header .primary-nav #logo {
   width: 25px;
   border-top: 5px solid #818181;
 }
-#mobile-nav:hover .border-icon {
+.no-touch #mobile-nav:hover .border-icon,
+.touch #mobile-nav.show-nav-links-list .border-icon {
   border-top-color: #FFF;
   border-bottom-color: #FFF;
 }
-#mobile-nav:hover .border-icon:before {
+.no-touch #mobile-nav:hover .border-icon:before,
+.touch #mobile-nav.show-nav-links-list .border-icon:before {
   border-top-color: #FFF;
 }
 /* end hamburger icon */
@@ -870,6 +872,9 @@ ul#mobile-nav-links-list {
   width: 180px;
   height: auto;
   z-index: 10;
+}
+.touch #mobile-nav.show-nav-links-list #mobile-nav-links-list {
+  display: block;
 }
 ul#mobile-nav-links-list li {
   float: none;
@@ -969,9 +974,9 @@ ul#mobile-nav-links-list li #mobile-nav-social a:hover {
 }
 /* menu hover states */
 /* ul#mobile-nav-links-list li.active ul, */
-#mobile-nav:hover ul#mobile-nav-links-list,
-#mobile-nav ul#mobile-nav-links-list:hover,
-#mobile-nav ul#mobile-nav-links-list li:hover {
+.no-touch #mobile-nav:hover ul#mobile-nav-links-list,
+.no-touch #mobile-nav ul#mobile-nav-links-list:hover,
+.no-touch #mobile-nav ul#mobile-nav-links-list li:hover {
   display: block;
 }
 ul#mobile-nav-links-list li.sub-nav.active span {
@@ -986,6 +991,9 @@ ul#mobile-nav-links-list li.sub-nav.active span {
 .jPanelMenu,
 body.page-node-microsite {
   overflow: hidden;
+}
+html.touch {
+  cursor: pointer;
 }
 .page-node-microsite .usa-wrap {
   background-color: #000;
@@ -1017,9 +1025,6 @@ body.page-node-microsite {
 #microsite .video-info {
   font-size: 1.2em;
   color: #e5ce96;
-}
-#microsite .block-usanetwork-mpx-video .view .file h4:after, #block-views-usa-mpx-video-fullepisodes-live .view .file h4:after {
-  background-image: none;
 }
 /* corrected & add styles */
 #microsite section .microsite-section-container {
@@ -2167,24 +2172,6 @@ body.page-node-microsite #block-usanetwork-blocks-usa-tv-show-menu {
   }
   .page-node-microsite #tv-show-menu li {
     display: block;
-  }
-  .page-node-microsite #tv-show-menu .item-list .slide-panel-link {
-    background-color: #2d2d2d;
-    border-color: #3d3d3d;
-    border-style: solid;
-    border-width: 0 0 1px;
-    color: #d0d0d0;
-    display: block;
-    font-family: "avalonregular", "Proxima N W01 Reg", Arial, sans-serif;
-    font-size: 18px;
-    margin: 0;
-    padding: 10px 12px 8px;
-    line-height: 1;
-    position: relative;
-    text-transform: lowercase;
-  }
-  .page-node-microsite #tv-show-menu .item-list .slide-panel-link:hover {
-    color: #ffffff;
   }
   .page-node-microsite #tv-show-menu li.parent-item:hover > a:after {
     content: "";

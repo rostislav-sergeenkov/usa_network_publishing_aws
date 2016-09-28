@@ -31,33 +31,20 @@
         <h2><?php print $block_title; ?></h2>
       <?php endif; ?>
     </div>
-    <?php if (!empty($slides_vertical) && !empty($slides_horizontal)): ?>
-      <?php if (!empty($slides_vertical)): ?>
-        <div class="episodes-list-slider vertical<?php print empty($link) ? ' no-all-link' : ''; ?>">
-          <ul class="slider-vertical">
-            <?php foreach ($slides_vertical as $slide_vertical): ?>
-              <li class="slide-item">
-                <?php print $slide_vertical; ?>
-              </li>
-            <?php endforeach; ?>
-          </ul>
+    <?php if (!empty($slides_carousel)): ?>
+      <div class="episodes-list-slider" data-block-name="Right Rail Carousel">
+        <ul class="usa-carousel swiper-wrapper">
+          <?php foreach ($slides_carousel as $slide): ?>
+            <li class="usa-carousel-item swiper-slide">
+              <?php print $slide; ?>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+        <div class="usa-carousel-controls-wrap">
+          <div class="usa-carousel-control-next usa-carousel-controls usa-carousel-control-disabled"></div>
+          <div class="usa-carousel-control-prev usa-carousel-controls usa-carousel-control-disabled"></div>
         </div>
-      <?php endif; ?>
-      <?php if (!empty($slides_horizontal)): ?>
-        <div class="episodes-list-slider horizontal" data-block-name="Right Rail Carousel">
-          <ul class="slider-horizontal">
-            <?php foreach ($slides_horizontal as $slide_horizontal): ?>
-              <li class="slide-item">
-                <?php print $slide_horizontal; ?>
-              </li>
-            <?php endforeach; ?>
-          </ul>
-          <div class="horizontal-controls">
-            <div class="slide-next slide-control slick-disabled"></div>
-            <div class="slide-prev slide-control slick-disabled"></div>
-          </div>
-        </div>
-      <?php endif; ?>
+      </div>
     <?php endif; ?>
   </div>
   <!-- change link to special photo page for show-->

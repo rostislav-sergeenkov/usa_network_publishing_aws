@@ -66,12 +66,17 @@
         },
         prevArrow: '.slide-prev',
         nextArrow: '.slide-next',
+        nextGallery: '.gallery-next',
         slideCounter: '.slider-counter .slide-index',
-        shareBar: '.field-name-field-gigya-share-bar > div',
+        endcardShareBar: '.end-card-sharebar .field-name-field-gigya-share-bar > div',
+        shareBar: '.share-bar .field-name-field-gigya-share-bar > div',
         // interstitial selectors
         interstitialWrap: '.interstitial-wrap',
         interstitialBlock: '.interstitial-block',
         interstitialNext: '.interstitial-next',
+        // end card
+        // isGalleryEndCard: false,
+        endCardBlock: '.end-card-block',
 
         // interstitial params
         //interstitialInitPages: ['all'], //default all, body classes for init interstitial ["node-type-media-gallery", "node-type-consumpt-post", "node-type-tv-episode"]
@@ -124,10 +129,13 @@
       _.$interstitialWrap = $(element).find(_.options.interstitialWrap);
       _.$interstitialBlock = $(element).find(_.options.interstitialBlock);
       _.$interstitialNext = $(element).find(_.options.interstitialNext);
+      _.$endcardShareBar = $(element).find(_.options.endcardShareBar);
       _.$shareBar = $(element).find(_.options.shareBar);
       _.$prevArrow = $(element).find(_.options.prevArrow);
       _.$nextArrow = $(element).find(_.options.nextArrow);
+      _.$nextGallery = $(element).find(_.options.nextGallery);
       _.$appendDots = $(element).find(_.options.galleryPagerWrap.selector);
+      _.$endCardBlock = $(element).find(_.options.endCardBlock);
 
       // data attributes value
       _.data = {
@@ -144,6 +152,7 @@
       _.options.gallery.prevArrow = _.$prevArrow;
       _.options.gallery.nextArrow = _.$nextArrow;
       _.options.gallery.appendDots = _.$galleryPagerWrap;
+      _.options.isGalleryEndCard = _.checkEndcard();
 
       // init app
       _.init(_.options.init);
@@ -158,18 +167,31 @@
   //=============================
 
   // AdobeTracking
-  usaGallery.prototype.callAdobeTracking = function () {
+  usaGallery.prototype.callAdobeTracking = function (_this) {
     if (typeof s_gi != 'undefined') {
+
+      var _ = _this,
+          $galleryWrap = _.$galleryWrap;
 
       if ($('body').hasClass('node-type-tv-episode')) {
         if (Drupal.settings.umbel_settings !== undefined) {
-          var showName = Drupal.settings.umbel_settings.usa_umbel_param_1,
-              pageName = Drupal.settings.umbel_settings.usa_umbel_param_2;
+          var showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '',
+              pageName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_2') ? Drupal.settings.umbel_settings.usa_umbel_param_2 : '';
         }
         s.linkTrackVars = 'events,prop3,prop4,prop5';
         s.prop3 = 'Gallery';
         s.prop4 = showName.trim() + ' : ' + pageName.trim();
         s.prop5 = 'Episodic Gallery';
+      }
+
+      if ($('body').hasClass('node-type-media-gallery')) {
+        if (Drupal.settings.umbel_settings !== undefined) {
+          var showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '',
+              galleryName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_3') ? Drupal.settings.umbel_settings.usa_umbel_param_3 : '',
+              slideNumber = parseInt($('.gallery-wrapper .slide.slick-active').data('slick-index')) + 1,
+              pageNameEnd = ($galleryWrap.hasClass('end-card'))? 'Gallery End Card': 'Image ' + slideNumber;
+          s.pageName = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + pageNameEnd;
+        }
       }
 
       if ($('body').hasClass('page-videos-live')) {
@@ -194,6 +216,47 @@
 
       void (s.t());
     }
+  };
+
+
+  // end card
+  usaGallery.prototype.callEndCardAdobeTracking = {
+    showEndCard: function () {
+      AdobeTracking.photoBreakPoint = 'Photo Gallery End Card';
+      _satellite.track('setPhotoBreakPoint');
+    },
+    clickNextItem: function () {
+
+      var showName = '',
+          galleryName = '';
+
+      if ($('body').hasClass('node-type-media-gallery')) {
+        showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '';
+        galleryName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_3') ? Drupal.settings.umbel_settings.usa_umbel_param_3 : '';
+      }
+
+      AdobeTracking.clickedPageItem = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + 'End Card Next Click';
+      _satellite.track('pageItemClicked');
+    }
+  };
+
+  usaGallery.prototype.checkEndcard = function () {
+
+    var _ = this;
+
+    return _.$galleryWrap.hasClass('gallery-with-endcard');
+  };
+
+  usaGallery.prototype.setEndCartNextClick = function () {
+
+    var _ = this;
+
+    _.$endCardBlock.on('click', 'a', function (e) {
+      _.callEndCardAdobeTracking.clickNextItem();
+    });
+    _.$nextGallery.on('click', 'a', function (e) {
+      _.callEndCardAdobeTracking.clickNextItem();
+    });
   };
 
   // mps advert
@@ -279,13 +342,15 @@
           galleryId = _.data.galleryId,
           gallerySharingPath = _.data.gallerySharingPath,
           $gallery = _.$gallery,
+          $endcardSharebar = _.$endcardShareBar,
           $sharebar = _.$shareBar,
           $slide = $gallery.find('.slick-active'),
+          endcard = $slide.children().hasClass('end-card'),
           description = $slide.find('.slide-info .description').text().trim(),
           image = $slide.find('.asset-img img'),
           imageUrl = image.attr('src') ? image.attr('src'): image.attr('data-lazy'),
-          link_back = (_.data.gallerySharingPath == '')? window.location.href.split('#')[0]: _.data.gallerySharingPath,
-          slideIndex;
+          link_back = (gallerySharingPath == '')? window.location.href.split('#')[0]: gallerySharingPath,
+          slideIndex = '';
 
       if ($sharebar.length > 0) {
 
@@ -308,10 +373,12 @@
           galleryId = galleryId + "-";
         }
 
-        if (currentSlide > 0 || $gallery.closest('.description-item[data-tab="actor-bio"]').length > 0) {
-          slideIndex = '#' + galleryId + (currentSlide + 1);
-        } else {
-          slideIndex = '';
+        if(!endcard) {
+          if (currentSlide > 0 || $gallery.closest('.description-item[data-tab="actor-bio"]').length > 0) {
+            slideIndex = '#' + galleryId + (currentSlide + 1);
+          } else {
+            slideIndex = '';
+          }
         }
 
         if ($('body').hasClass('page-node-microsite')) {
@@ -359,7 +426,7 @@
               sharebar.gigyaSharebar.ua.imageBhev = 'url';
               sharebar.gigyaSharebar.ua.imageUrl = imageUrl;
               sharebar.gigyaSharebar.ua.description = description;
-              Drupal.gigya.showSharebar(sharebar);
+              if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
             }
           });
         }
@@ -373,11 +440,13 @@
 
   usaGallery.prototype.createCustomPaging = function (slick, index) {
 
-    var $slide = $(slick.$slides[index].innerHTML),
-        imgPreviewUrl = $($slide.find('img')[0]).data('preview'),
+    var $slide = $(slick.$slides[index]),
+        slideImg = $($slide.find('img')[0]),
+        imgPreviewUrl = slideImg.data('preview'),
+        imgPreviewClass = (slideImg.hasClass('portrait'))? 'class="preview-portrait" ': '',
         showColorPager = ($('body[class*=" show-"]').length > 0 || $('body').hasClass('page-videos-live')) ? 'show-color ' : '';
 
-    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div><img src="' + imgPreviewUrl + '" alt=""></div>';
+    return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div><img ' + imgPreviewClass + 'src="' + imgPreviewUrl + '" alt=""></div>';
   };
 
   usaGallery.prototype.createSlidesCounter = function (slick) {
@@ -446,7 +515,7 @@
     }
 
     // vertical version
-    if (!statusBp && (!$('body').hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$('body').hasClass('node-type-post') && !$('body').hasClass('node-type-catchall-seo-page')) {
+    if (!statusBp && (!$('body').hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$('body').hasClass('blog') && !$('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginRight: '',
         marginTop: pagerWrapStyles.desktop.marginTop,
@@ -460,7 +529,7 @@
     }
 
     // horizontal version
-    if (statusBp || ($('body').hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $('body').hasClass('node-type-post') || $('body').hasClass('node-type-catchall-seo-page')) {
+    if (statusBp || ($('body').hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $('body').hasClass('blog') || $('body').hasClass('node-type-catchall-seo-page')) {
       $pagerWrap.css({
         marginTop: '',
         marginRight: pagerWrapStyles.mobile.marginRight,
@@ -486,9 +555,9 @@
       return;
     }
 
-    if (statusBp || ($body.hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $body.hasClass('node-type-post')) {
+    if (statusBp || ($body.hasClass('node-type-person') && !$galleryParent.hasClass('gallery-recap-block')) || $body.hasClass('blog')) {
       _.movePagerHorizontal(_this, slideIndex);
-    } else if (!statusBp && (!$body.hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$body.hasClass('node-type-post')) {
+    } else if (!statusBp && (!$body.hasClass('node-type-person') || $galleryParent.hasClass('gallery-recap-block')) && !$body.hasClass('blog')) {
       _.movePagerVertical(_this, slideIndex);
     }
   };
@@ -668,6 +737,7 @@
   usaGallery.prototype.addSlickEventsCallBacks = function () {
 
     var _ = this,
+        $galleryWrap = _.$galleryWrap,
         $gallery = _.$gallery,
         initInterstitial = _.options.initInterstitial,
         initAdobeTracking = _.options.initAdobeTracking,
@@ -680,66 +750,76 @@
         refreshAD = false;
 
     _.$gallery
-        .on('init', function (event, slick) {
+      .on('init', function (event, slick) {
 
-          $gallery.addClass('ready');
+        $gallery.addClass('ready');
 
-            _.updateGalleryElem(_);
-            _.createPagerPosition(_);
-            _.setPagerPosition(_);
-            _.gigyaSharebar(initialSlide);
-            _.movePagerItems(_, initialSlide);
+          _.updateGalleryElem(_);
+          _.createPagerPosition(_);
+          _.setPagerPosition(_);
+          _.gigyaSharebar(initialSlide);
+          _.movePagerItems(_, initialSlide);
 
-          if (initSlidesCounter) {
-            _.createSlidesCounter(slick);
-          }
-          if (initMouseWhell) {
-            _.addMouseWhell(slick);
-          }
-          if (initResize) {
-            _.resize(_);
-          }
-        })
-        .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        if (initSlidesCounter) {
+          _.createSlidesCounter(slick);
+        }
+        if (initMouseWhell) {
+          _.addMouseWhell(slick);
+        }
+        if (initResize) {
+          _.resize(_);
+        }
+        if (_.options.isGalleryEndCard) {
+          _.setEndCartNextClick();
+        }
+      })
+      .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
-          // Interstitial
-          if (initInterstitial) {
-            // advert counter up +1
-            adCounter += 1;
-            // if advertCounter = slidesCount fire show gallery advert
-            if (adCounter === adSlidesCount) {
-              // reset advert counter
-              adCounter = 0;
-              // show gallery ad
-              _.insertInterstitial.showInterstitial(_, refreshAD);
-              refreshAD = true;
-            }
+        // Interstitial
+        if (initInterstitial) {
+          // advert counter up +1
+          adCounter += 1;
+          // if advertCounter = slidesCount fire show gallery advert
+          if (adCounter === adSlidesCount) {
+            // reset advert counter
+            adCounter = 0;
+            // show gallery ad
+            _.insertInterstitial.showInterstitial(_, refreshAD);
+            refreshAD = true;
           }
+        }
 
-          if (initAdobeTracking) {
-            _.callAdobeTracking();
-          }
+        if ($('body').hasClass('page-node-microsite')
+          && typeof Drupal.behaviors.ms_global == 'object'
+          && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
+            Drupal.behaviors.ms_global.refreshAds('galleries');
+        }
+      })
+      .on('afterChange', function (event, slick, currentSlide) {
+        if ($gallery.find('.slick-active .node-gallery').hasClass('end-card')) {
+          $galleryWrap.addClass('end-card');
+          usaGallery.prototype.callEndCardAdobeTracking.showEndCard();
+        } else {
+          $galleryWrap.removeClass('end-card');
+        }
 
-          if ($('body').hasClass('page-node-microsite')
-            && typeof Drupal.behaviors.ms_global == 'object'
-            && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
-              Drupal.behaviors.ms_global.refreshAds('galleries');
-          }
-        })
-        .on('afterChange', function (event, slick, currentSlide) {
-          _.gigyaSharebar(currentSlide);
-          _.movePagerItems(_, currentSlide);
+        _.gigyaSharebar(currentSlide);
+        _.movePagerItems(_, currentSlide);
 
-          if (_.$body.hasClass('node-type-media-gallery')) {
-            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+        if (initAdobeTracking) {
+          _.callAdobeTracking(_);
+        }
+
+        if (_.$body.hasClass('node-type-media-gallery')) {
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+        }
+        if (_.$body.hasClass('node-type-person') || _.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post') || (_.$body.hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
+          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
+          if (!$('.region-header').hasClass('sticky-shows-submenu')) {
+            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
           }
-          if (_.$body.hasClass('node-type-person') || _.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post') || (_.$body.hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
-            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
-            if (!$('.region-header').hasClass('sticky-shows-submenu')) {
-              Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
-            }
-          }
-        });
+        }
+      });
 
     _.$interstitialNext.on('click', function () {
       _.insertInterstitial.hideInterstitial(_);

@@ -3,25 +3,21 @@
   background-repeat: no-repeat;
   background-position: center center;
   overflow: hidden;
-  min-height: 43vw;
-  max-height: 43.75vw;
-  //  padding-bottom: 43.7%; /* ~16:7 */
   position: relative;
   will-change: transform, opacity;
   @include breakpoint($bp-min-2500-width) {
     min-height: 1090px;
-    max-height: 1094px;
-    // padding-bottom: 1094px;
-  }
-  @include breakpoint($bp-640-width) {
-    // padding-bottom: 87.45%;
-    min-height: 90vw;
-    max-height: 90.625vw;
+    max-height: 1093px;
   }
   &.load {
     background-image: none;
-    min-height: inherit;
+    .touch & {
+      overflow: visible;
+    }
     .slide {
+      .wrp {
+        background: #000000;
+      }
       .slide-content {
         @include breakpoint($bp-640-width) {
           display: block !important;
@@ -29,12 +25,33 @@
       }
     }
   }
+  .content {
+    height: 0;
+    padding-top: 43.75%;
+    @include breakpoint($bp-min-2500-width) {
+      padding-top: 1090px;
+    }
+    @include breakpoint($bp-640-width) {
+      padding-top: 87.5%;
+    }
+  }
+
+  #aspot-usanetwork {
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    .slider-container {
+      height: 100%;
+      width: 100%;
+    }
+  }
   .next-button {
     display: none;
     position: absolute;
     top: 0;
     will-change: transform, opacity;
-
     &.ready {
       -webkit-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
       -moz-box-shadows: -2.5px 0px 4px rgba(0, 0, 0, 0.35);
@@ -82,24 +99,21 @@
   }
   .asset-img {
     img {
-      height: 43.75vw;
-      max-height: 1094px;
+      height: 100%;
+      max-height: 1093px;
       width: 100%;
-      @include breakpoint($bp-640-width) {
-        height: 87.5vw;
-      }
     }
   }
   .slide {
     position: relative;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     z-index: 0;
     &.slick-active {
       z-index: 1;
     }
     .wrp {
-      background: #000000;
-      //      overflow: hidden;
+      background: transparent;
     }
     .slide-content {
       overflow: hidden;
@@ -108,12 +122,10 @@
   }
 }
 
-body:not(.show-new-design) .usanetwork-aspot {
-
+.usanetwork-aspot {
   .aspot-draggable-element {
     display: none;
   }
-
   .meta-wrap {
     position: static;
     .aspot-draggable-element {
@@ -184,48 +196,6 @@ body:not(.show-new-design) .usanetwork-aspot {
       p {
         margin: 0;
         text-shadow: 1px 1px 0.5em $aspot-shadow;
-      }
-    }
-    .show-timer {
-      color: #ffffff;
-      font-family: $avalon-medium;
-      font-size: 35px;
-      margin-bottom: 70px;
-      @include breakpoint($bp-min-1601-width) {
-        font-size: 60px;
-      }
-      @include breakpoint($bp-1024-width) {
-        margin-bottom: 50px;
-      }
-      @include breakpoint($bp-640-width) {
-        margin-bottom: 35px;
-        font-size: 25px;
-      }
-      .digit {
-        float: left;
-        text-align: center;
-        width: 40px;
-        @include breakpoint($bp-min-1601-width) {
-          width: 60px;
-        }
-        @include breakpoint($bp-640-width) {
-          width: 30px;
-        }
-      }
-      .digit-separator {
-        float: left;
-        font-size: 30px;
-        line-height: 30px;
-        padding: 0 5px;
-        @include breakpoint($bp-min-1601-width) {
-          font-size: 45px;
-          line-height: 45px;
-        }
-        @include breakpoint($bp-640-width) {
-          font-size: 22px;
-          line-height: 22px;
-          padding: 0 3px;
-        }
       }
     }
     .cta-link {
@@ -581,22 +551,24 @@ body:not(.show-new-design) .usanetwork-aspot {
       width: 100%;
     }
     @include breakpoint($bp-min-769-width) {
-      &.shadow:after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 9.1vw;
-        position: absolute;
-        bottom: 0;
-        background: -moz-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(135, 135, 135, 0)), color-stop(100%, rgba(0, 0, 0, 1)));
-        background: -webkit-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
-        background: -o-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
-        background: -ms-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
-        background: linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
-        background-repeat: no-repeat;
-        z-index: 1;
+      &:not(.carousel-end) {
+        &.shadow:after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 9.1vw;
+          position: absolute;
+          bottom: 0;
+          background: -moz-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+          background: -webkit-gradient(linear, left bottom, left top, color-stop(0%, rgba(135, 135, 135, 0)), color-stop(100%, rgba(0, 0, 0, 1)));
+          background: -webkit-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+          background: -o-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+          background: -ms-linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+          background: linear-gradient(to bottom, rgba(135, 135, 135, 0) 0%, rgba(0, 0, 0, 1) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+          background-repeat: no-repeat;
+          z-index: 1;
+        }
       }
     }
     @include breakpoint($bp-min-2500-width) {
@@ -652,131 +624,112 @@ body:not(.show-new-design) .usanetwork-aspot {
     }
 
     @extend %aspot-carousel-promo;
-    .episodes-list-slider.vertical {
-      height: 90%;
+    .episodes-list-slider {
+      overflow: hidden;
       position: relative;
+      height: 90%;
       width: 100%;
+
       @include breakpoint($bp-768-width) {
-        display: none;
+        border-bottom: 2px solid;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        height: calc(18.5625vw + 6px);
       }
-      ul {
+
+      @include breakpoint($bp-640-width) {
+        border-bottom: 2px solid;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      &:hover {
+        @include breakpoint($between-641-768) {
+          .usa-carousel-controls-wrap {
+            display: block;
+          }
+        }
+      }
+
+      &:not(.usa-carousel-initialized) {
+        .usa-carousel {
+          .usa-carousel-item {
+            @include breakpoint($bp-640-width) {
+              display: none;
+              &:first-child, &:nth-child(2), &:nth-child(3){
+                display: block;
+              }
+            }
+          }
+        }
+      }
+
+      .usa-carousel {
+        display: block;
         height: 100% !important;
-        li {
-          background: $full-episodes-light-back;
-          overflow: hidden;
-          height: 12.4vw;
-          margin-bottom: 2px;
-          position: relative;
+        @include breakpoint($between-641-768) {
+          display: flex;
+          height: 18.5625vw;
           width: 100%;
-          &:nth-child(2n) {
-            background: $full-episodes-dark-back;
+        }
+        @include breakpoint($bp-640-width) {
+          display: block;
+        }
+        .usa-carousel-item {
+          box-sizing: border-box;
+          overflow: hidden;
+          position: relative;
+          @include breakpoint($bp-min-769-width) {
+            background: $full-episodes-light-back;
+            margin-bottom: 2px;
+            height: 12.4vw;
+            width: 100%;
           }
           @include breakpoint($bp-min-2500-width) {
             height: 311px;
           }
-        }
-      }
-    }
-    .episodes-list-slider.horizontal {
-      padding-top: 2px;
-      padding-bottom: 2px;
-      border-bottom: 2px solid;
-      overflow: hidden;
-      position: relative;
-      &:hover .horizontal-controls {
-        display: block;
-        @include breakpoint($bp-640-width) {
-          display: none;
-        }
-      }
-      .horizontal-controls {
-        display: none;
-        .slide-control {
-          cursor: pointer;
-          display: block;
-          position: absolute;
-          top: 0;
-          height: 100%;
-          z-index: 9;
-          background: rgba(255, 255, 255, 0.6);
-          width: 60px;
-          &.slide-prev {
-            left: 0;
-            &:after {
-              content: "\e607";
-            }
-          }
-          &.slide-next {
-            right: 0;
-            &:after {
-              content: "\e608";
-            }
-          }
-          &.slick-disabled {
-            display: none !important;
-          }
-          &:after {
-            color: #545454;
-            display: block;
-            font-family: $ico-font;
-            font-size: 32px;
-            left: 50%;
-            margin-left: -16px;
-            margin-top: -16px;
-            opacity: 1;
-            position: absolute;
-            top: 50%;
-          }
-        }
-      }
-      @include breakpoint($bp-640-width) {
-        padding: 0;
-      }
-      @include breakpoint($bp-min-769-width) {
-        display: none;
-      }
-      .slider-horizontal  {
-        overflow: hidden;
-        position: relative;
-        @include breakpoint($between-641-768) {
-          height: 18.5625vw;
-          width: 100%;
-        }
-        @include clear;
-        .slide-item {
-          box-sizing: border-box;
-          float: left;
-          margin-right: 2px;
-          margin-bottom: 0;
-          height: 100%;
-          position: relative;
-          width: 33%;
           @include breakpoint($between-641-768) {
+            margin-right: 2px;
+            margin-bottom: 0;
             height: 18.5625vw;
-            .meta-icon {
-              height: 30px;
-              margin-top: -15px;
-              width: 30px;
-              ~ .meta {
-                padding-left: calc(8% + 30px);
-              }
-            }
+            width: calc((100% - 6px) / 3);
           }
           @include breakpoint($bp-640-width) {
-            float: none;
             margin: 0 0 2px 0;
             height: 56.25vw;
-            overflow: hidden;
             width: 100%;
-            &:last-child {
+          }
+          &:nth-child(2n) {
+            @include breakpoint($bp-min-769-width) {
+              background: $full-episodes-dark-back;
+            }
+          }
+          &:last-child {
+            @include breakpoint($bp-640-width) {
               margin-bottom: 0;
             }
           }
+          .meta-icon {
+            @include breakpoint($between-641-768) {
+              .meta-icon {
+                height: 30px;
+                margin-top: -15px;
+                width: 30px;
+                ~ .meta {
+                  padding-left: calc(8% + 30px);
+                }
+              }
+            }
+          }
           .aspot-carousel-promo {
-            height: 100%;
+            @include breakpoint($bp-768-width) {
+              height: 100%;
+            }
           }
         }
       }
+      @extend %episodes-list-slider-controls;
       .more-button {
         background-color: $poll-back;
         cursor: pointer;
@@ -790,6 +743,9 @@ body:not(.show-new-design) .usanetwork-aspot {
         text-transform: uppercase;
         text-decoration: underline;
         width: 100%;
+        @include breakpoint($bp-640-width) {
+          display: block;
+        }
         @include breakpoint($bp-480-width) {
           line-height: 80px;
         }
@@ -899,40 +855,6 @@ body:not(.show-new-design) .usanetwork-aspot {
             }
             &:after {
               border-bottom: 15px solid #ffffff;
-            }
-          }
-        }
-      }
-    }
-  }
-  .new-show-page {
-    .aspot-and-episodes {
-      .usanetwork-aspot {
-        .meta-wrap {
-          .new-episode {
-            font-style: normal;
-            @include breakpoint($bp-min-1281-width) {
-              font-size: 24px;
-              line-height: 30px;
-            }
-            span {
-              font-style: italic;
-            }
-          }
-          .show-title {
-            @include breakpoint($bp-min-1281-width) {
-              font-size: 70px;
-              margin-bottom: 40px;
-            }
-          }
-          .cta-link {
-            max-width: 175px;
-            @include breakpoint($bp-min-1281-width) {
-              max-width: 280px;
-              & a {
-                font-size: 24px;
-                line-height: 30px;
-              }
             }
           }
         }

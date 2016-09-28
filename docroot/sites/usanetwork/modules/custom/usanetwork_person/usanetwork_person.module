@@ -42,7 +42,7 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'templates/usanetwork-person-character-carousel',
     ),
-    'usanetwork_person_character_carousel_item_h' => array(
+    'usanetwork_person_character_carousel_item' => array(
       'variables' => array(
         'target_url' => NULL,
         'title' => NULL,
@@ -51,18 +51,7 @@ function usanetwork_person_theme($existing, $type, $theme, $path) {
         'image_url' => NULL,
         'active' => NULL,
       ),
-      'template' => 'templates/usanetwork-person-character-carousel-item-h',
-    ),
-    'usanetwork_person_character_carousel_item_v' => array(
-      'variables' => array(
-        'target_url' => NULL,
-        'title' => NULL,
-        'show_class' => NULL,
-        'additional' => NULL,
-        'image_url' => NULL,
-        'active' => NULL,
-      ),
-      'template' => 'templates/usanetwork-person-character-carousel-item-v',
+      'template' => 'templates/usanetwork-person-character-carousel-item',
     ),
     'usanetwork_person_cast_lmb_block' => array(
       'variables' => array(
@@ -505,18 +494,7 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
         }
       }
 
-      $theme_item_vertical_variables = array(
-        'target_url' => url('node/' . $person_node->nid),
-        'image_url' => image_style_url('111x74', $image_url),
-        'show_class' => usanetwork_tv_shows_color_show_css_class($tv_show_node_nid),
-        'title' => $person_node->title,
-        'additional' => strtolower($role) != 'blank' ? $role : '',
-        'active' => ($person_node->nid == $current_person_nid)
-          ? TRUE
-          : FALSE,
-      );
-
-      $theme_item_horizontal_variables = array(
+      $theme_item_carousel_variables = array(
         'target_url' => url('node/' . $person_node->nid),
         'image_url' => image_style_url('full_episodes_633x356', $image_url),
         'image_url_mobile' => image_style_url('111x74', $image_url),
@@ -530,14 +508,12 @@ function _usanetwork_person_characters_get_rendered_carousel($tv_show_node_nid, 
         'new_design' => $is_new_design,
       );
 
-      $rendered_items['horizontal'][] = theme('usanetwork_person_character_carousel_item_h', $theme_item_horizontal_variables);
-      $rendered_items['vertical'][] = theme('usanetwork_person_character_carousel_item_v', $theme_item_vertical_variables);
+      $rendered_items['carousel'][] = theme('usanetwork_person_character_carousel_item', $theme_item_carousel_variables);
     }
 
     $theme_variables = array(
       'block_title' => t('Cast & Crew'),
-      'items_h' => $rendered_items['horizontal'],
-      'items_v' => $rendered_items['vertical'],
+      'items_carousel' => $rendered_items['carousel'],
       'new_design' => $is_new_design,
     );
 

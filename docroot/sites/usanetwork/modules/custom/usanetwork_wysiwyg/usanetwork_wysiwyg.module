@@ -30,6 +30,34 @@ function usanetwork_wysiwyg_plugin($editor, $version) {
         'load' => TRUE,
         'settings' => array(),
       ),
+      //JustifyLeft,JustifyCenter,JustifyRight,JustifyFull
+      'usa_justify_left' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'usa_justify_tinymce_plugin.js',
+        'buttons' => array(
+          'usa_justify_left' => t('USA Align Left')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
+      'usa_justify_center' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'usa_justify_tinymce_plugin.js',
+        'buttons' => array(
+          'usa_justify_center' => t('USA Align Center')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
+      'usa_justify_right' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'usa_justify_tinymce_plugin.js',
+        'buttons' => array(
+          'usa_justify_right' => t('USA Align Right')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
     );
   }
 }

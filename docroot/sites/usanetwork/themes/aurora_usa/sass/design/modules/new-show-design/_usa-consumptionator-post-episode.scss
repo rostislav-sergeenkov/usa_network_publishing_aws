@@ -362,43 +362,18 @@
                 float: left;
               }
               .gig-button-container {
+                margin: 0 5px 0 0;
                 @include breakpoint ($bp-1024-width) {
                   height: 32px;
                   margin: 5px 10px 0 0;
                   padding: 0;
                   width: 32px;
                 }
-                td {
-                  > div {
-                    font-size: 32px!important;
-                  }
-                }
-                [id$='reaction0-facebook_img'] {
-                  &:before {
-                    color: $usa-video-helper-facebook;
-                  }
-                }
-                [id$='reaction1-twitter_img'] {
-                  &:before {
-                    color: $usa-video-helper-twitter;
-                  }
-                }
-                [id$='reaction2-tumblr_img'] {
-                  &:before {
-                    color: $usa-video-helper-tumblr;
-                  }
-                }
-                [id$='reaction3-pinterest_img'] {
-                  &:before {
-                    color: $usa-video-helper-pinterest;
-                  }
-                }
-                [id$='reaction4-share_img'] {
-                  &:before {
-                    color: $poll-color;
-                  }
+                .usa-share-button {
+                  font-size: 32px!important;
                 }
               }
+              @extend %usa-gigya-colors;
             }
             .episode-button {
               border: 1px solid;
@@ -573,35 +548,6 @@
   }
   .consumptionator-episode-main-block {
     .episode-info-header {
-      .share {
-        .gig-button-container {
-          [id$='reaction0-facebook_img'] {
-            &:before {
-              color: $usa-video-helper-facebook;
-            }
-          }
-          [id$='reaction1-twitter_img'] {
-            &:before {
-              color: $usa-video-helper-twitter;
-            }
-          }
-          [id$='reaction2-tumblr_img'] {
-            &:before {
-              color: $usa-video-helper-tumblr;
-            }
-          }
-          [id$='reaction3-pinterest_img'] {
-            &:before {
-              color: $usa-video-helper-pinterest;
-            }
-          }
-          [id$='reaction4-share_img'] {
-            &:before {
-              color: $poll-color;
-            }
-          }
-        }
-      }
       .episode-title-block {
         h1, h2 {
           margin: 0;

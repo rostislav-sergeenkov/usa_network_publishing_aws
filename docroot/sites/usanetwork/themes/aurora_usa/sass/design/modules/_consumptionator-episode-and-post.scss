@@ -42,7 +42,7 @@
       }
       &:after {
         color: $change-episode-color;
-        font-family: "ico-font";
+        font-family: $ico-font;
         font-size: 14px;
         display: block;
         position: absolute;
@@ -222,16 +222,16 @@
               float: left;
             }
             .gig-button-container {
+              margin: 0 0 5px 0;
+              padding: 0 5px 0 0;
               @include breakpoint ($bp-1024-width) {
                 height: 32px;
                 margin: 5px 10px 0 0;
                 padding: 0;
                 width: 32px;
               }
-              td {
-                > div {
-                  font-size: 32px!important;
-                }
+              .usa-share-button {
+                font-size: 32px !important;
               }
             }
           }
@@ -419,7 +419,7 @@
     }
     .items-block {
       @include breakpoint($bp-min-1025-width) {
-        height: calc(100% - 250px)!important;
+        height: calc(100% - 250px) !important;
         top: 0;
       }
     }
@@ -431,6 +431,7 @@
     }
   }
 }
+
 .consumptionator-post-main-block {
   .post-info-main-block {
     .post-info-block {
@@ -450,43 +451,7 @@
     .post-info-header {
       .share {
         .field-type-gigya-sharebar {
-          .gig-button-container {
-            &.gig-button-container-facebook {
-              td {
-                > div:before {
-                  color: $usa-video-helper-facebook;
-                }
-              }
-            }
-            &.gig-button-container-twitter {
-              td {
-                > div:before {
-                  color: $usa-video-helper-twitter;
-                }
-              }
-            }
-            &.gig-button-container-tumblr {
-              td {
-                > div:before {
-                  color: $usa-video-helper-tumblr;
-                }
-              }
-            }
-            &.gig-button-container-pinterest {
-              td {
-                > div:before {
-                  color: $usa-video-helper-pinterest;
-                }
-              }
-            }
-            &.gig-button-container-share {
-              td {
-                > div:before {
-                  color: $poll-color;
-                }
-              }
-            }
-          }
+          @extend %usa-gigya-colors;
         }
       }
     }

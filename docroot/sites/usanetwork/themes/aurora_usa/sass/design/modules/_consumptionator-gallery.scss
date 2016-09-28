@@ -268,84 +268,54 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             display: none;
           }
         }
-        .gig-button-container {
-          td > div {
-            &:before {
+        .field-name-field-gigya-share-bar {
+          .gig-button-container {
+            .usa-share-button {
               @include breakpoint($bp-1024-width) {
-                position: absolute;
+                position: relative;
               }
-            }
-            &:after {
-              @include breakpoint($bp-1024-width) {
-                background: white;
-                border-radius: 20%;
-                content: '';
-                display: block;
-                height: 25px;
-                margin-left: 2px;
-                margin-top: -5px;
-                position: absolute;
-                width: 23px;
-                z-index: -1;
-              }
-              @include breakpoint($bp-640-width) {
-                height: 28px;
-                margin-left: 1px;
-                margin-top: -6px;
-                width: 28px;
-              }
-            }
-          }
-          &.gig-button-container-facebook {
-            td > div {
               &:before {
                 @include breakpoint($bp-1024-width) {
-                  color: $usa-video-helper-facebook;
-                }
-              }
-            }
-          }
-          &.gig-button-container-twitter {
-            td > div {
-              &:before {
-                @include breakpoint($bp-1024-width) {
-                  color: $usa-video-helper-twitter;
-                }
-              }
-            }
-          }
-          &.gig-button-container-tumblr {
-            td > div {
-              &:before {
-                @include breakpoint($bp-1024-width) {
-                  color: $usa-video-helper-tumblr;
-                }
-              }
-            }
-          }
-          &.gig-button-container-pinterest {
-            td > div {
-              &:before {
-                @include breakpoint($bp-1024-width) {
-                  color: $usa-video-helper-pinterest;
-                }
-              }
-            }
-          }
-          &.gig-button-container-share {
-            td > div {
-              &:before {
-                @include breakpoint($bp-1024-width) {
-                  color: white;
+                  position: absolute;
+                  z-index: 2;
                 }
               }
               &:after {
                 @include breakpoint($bp-1024-width) {
-                  display: none;
+                  background: white;
+                  border-radius: 20%;
+                  content: '';
+                  display: block;
+                  height: 25px;
+                  left: 2px;
+                  top: 0px;
+                  position: absolute;
+                  width: 23px;
+                }
+                @include breakpoint($bp-640-width) {
+                  height: 28px;
+                  left: 1px;
+                  top: 1px;
+                  width: 27px;
+                }
+              }
+            }
+            &.gig-button-container-share {
+              .usa-share-button {
+                &:before {
+                  @include breakpoint($bp-1024-width) {
+                    color: white;
+                  }
+                }
+                &:after {
+                  @include breakpoint($bp-1024-width) {
+                    display: none;
+                  }
                 }
               }
             }
           }
+          @extend %usa-gigya-colors;
         }
       }
     }
@@ -413,16 +383,16 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             margin: 0 auto;
           }
         }
-      }
-      .gig-button-container {
-        @include breakpoint($bp-640-width) {
-          margin-right: 20px;
-          padding: 0;
-          &.gig-button-container-share {
-            margin-right: 0;
-          }
-          td > div {
-            font-size: 30px;
+        .gig-button-container {
+          @include breakpoint($bp-640-width) {
+            margin-right: 20px;
+            padding: 0;
+            &.gig-button-container-share {
+              margin-right: 0;
+            }
+            .usa-share-button {
+              font-size: 30px;
+            }
           }
         }
       }
@@ -1212,16 +1182,16 @@ body.node-type-tv-episode, body.node-type-consumpt-post, .node-media-gallery, .g
               margin: 0 auto;
             }
           }
-        }
-        .gig-button-container {
-          @include breakpoint($between-641-1024) {
-            margin-right: 20px;
-            padding: 0;
-            &.gig-button-container-share {
-              margin-right: 0;
-            }
-            td > div {
-              font-size: 30px;
+          .gig-button-container {
+            @include breakpoint($between-641-1024) {
+              margin-right: 20px;
+              padding: 0;
+              &.gig-button-container-share {
+                margin-right: 0;
+              }
+              .usa-share-button {
+                font-size: 30px;
+              }
             }
           }
         }
@@ -1344,15 +1314,15 @@ body {
             table {
               margin: 0 auto;
             }
-          }
-          .gig-button-container {
-            margin-right: 20px;
-            padding: 0;
-            &.gig-button-container-share {
-              margin-right: 0;
-            }
-            td > div {
-              font-size: 30px;
+            .gig-button-container {
+              margin-right: 20px;
+              padding: 0;
+              &.gig-button-container-share {
+                margin-right: 0;
+              }
+              .usa-share-button {
+                font-size: 30px;
+              }
             }
           }
         }

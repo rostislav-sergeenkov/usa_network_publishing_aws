@@ -16,12 +16,12 @@
   padding: 0;
   display: inline-block;
   vertical-align: top;
-  margin: 0 3px 0;
+  margin: 0 3px 0 !important;
 }
-.node-type-timeline-gallery .gig-bar-container .gig-button-container td > div,
-.node-type-timeline-gallery .gig-bar-container .gig-button-container td > div:hover,
-.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container td > div,
-.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container td > div:hover {
+.node-type-timeline-gallery .gig-bar-container .gig-button-container .usa-share-button,
+.node-type-timeline-gallery .gig-bar-container .gig-button-container .usa-share-button:hover,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container .usa-share-button,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container .usa-share-button:hover {
   background-image: none !important;
   display: block;
   font-family: "ico-font";
@@ -31,28 +31,28 @@
   background-image: url("../images/social_chatter_icons.png");
   background-repeat: none;
 }
-.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-facebook td > div:before,
-.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook td > div:before {
+.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-facebook .usa-share-button:before,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook .usa-share-button:before {
   content: "\e602";
   color: #afafaf;
 }
-.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-twitter td > div:before,
-.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter td > div:before {
+.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-twitter .usa-share-button:before,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter .usa-share-button:before {
   content: "\e603";
   color: #afafaf;
 }
-.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-tumblr td > div:before,
-.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr td > div:before {
+.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-tumblr .usa-share-button:before,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr .usa-share-button:before {
   content: "\e604";
   color: #afafaf;
 }
-.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-pinterest td > div:before,
-.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest td > div:before {
+.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-pinterest .usa-share-button:before,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest .usa-share-button:before {
   content: "\e605";
   color: #afafaf;
 }
-.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-share td > div:before,
-.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-share td > div:before {
+.node-type-timeline-gallery .gig-bar-container .gig-button-container.gig-button-container-share .usa-share-button:before,
+.node-type-timeline-gallery .field-type-gigya-sharebar .gig-button-container.gig-button-container-share .usa-share-button:before {
   content: "\e606";
   color: #afafaf;
 }

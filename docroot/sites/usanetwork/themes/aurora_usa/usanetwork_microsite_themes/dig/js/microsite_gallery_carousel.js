@@ -26,26 +26,6 @@
             }
           });
 
-          // sharebar = new Object();
-          // sharebar.gigyaSharebar = {
-          //   containerID: "gigya-share",
-          //   iconsOnly: true,
-          //   layout: "horizontal",
-          //   shareButtons: "facebook, twitter, tumblr, pinterest, share",
-          //   shortURLs: "never",
-          //   showCounts: "none"
-          // }
-          //
-          //
-          // sharebar.gigyaSharebar.ua = {
-          //   description: $currentCaption,
-          //   imageBhev: "url",
-          //   imageUrl: $currentImage.attr('src'),
-          //   linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
-          //   title: $title
-          // }
-          // if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
-
           // omniture
           if (initialPageLoad) {
             var siteName = Drupal.settings.microsites_settings.title,

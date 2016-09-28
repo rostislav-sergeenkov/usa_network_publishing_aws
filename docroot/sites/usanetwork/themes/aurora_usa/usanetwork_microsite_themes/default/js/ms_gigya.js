@@ -34,24 +34,6 @@
           }
         });
 
-        // sharebar.gigyaSharebar = {
-        //   containerID: containerId,
-        //   iconsOnly: true,
-        //   layout: "horizontal",
-        //   shareButtons: "facebook, twitter, tumblr, pinterest, share",
-        //   shortURLs: "never",
-        //   showCounts: "none"
-        // }
-        //
-        // sharebar.gigyaSharebar.ua = {
-        //   description: shareDescription,
-        //   imageBhev: "url",
-        //   imageUrl: imageSrc,
-        //   linkBack: url,
-        //   title: shareTitle
-        // }
-        // if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
-
         // reset Gigya share bar clicks
         setTimeout(function(){
           var $shareButtons = $('#' + containerId + ' .gig-share-button div');

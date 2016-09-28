@@ -128,9 +128,8 @@
           }
           .timeline-gigya-share {
             .gig-button-container {
-              td {
-                > div,
-                > div:hover {
+              .usa-share-button {
+                &, &:hover {
                   font-size: 24px;
                   height: 24px !important;
                   width: 24px !important;

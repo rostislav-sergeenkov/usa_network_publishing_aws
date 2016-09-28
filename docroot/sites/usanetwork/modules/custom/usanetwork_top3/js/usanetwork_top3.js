@@ -7,7 +7,7 @@
       first_state = false;
     }
 
-    if($('.right-sidebar').hasClass('sponsored-enable')) {
+    if ($('.right-sidebar').hasClass('sponsored-enable')) {
       $('#block-usanetwork-top3-usanetwork-top3-main-block').addClass('sponsored-enable');
     }
 
@@ -62,7 +62,7 @@
       }
 
       return {
-        'endButtons' : '',
+        'endButtons': '',
         'nodeType': blockName,
         'pageName': pageName,
         'showName': showName
@@ -113,8 +113,8 @@
       $('.drag-group').show();
       dragIconBlock.show();
       $('#info').show();
-      $('.drop-area__item').each(function(index){
-        $(this).attr('data-count', index+1);
+      $('.drop-area__item').each(function (index) {
+        $(this).attr('data-count', index + 1);
       });
     }
 
@@ -242,7 +242,7 @@
       },
       pausePlayer: function () {
         $pdk.controller.pause(true);
-        if(playButton.hasClass('inactive') && !usa_deviceInfo.mobileDevice){
+        if (playButton.hasClass('inactive') && !usa_deviceInfo.mobileDevice) {
           playButton.addClass('show');
         }
       },
@@ -380,12 +380,12 @@
         }
 
         if (srcLink != undefined) {
-          if(!playButton.hasClass('show')){
+          if (!playButton.hasClass('show')) {
             playButton.addClass('show');
             ccButton.addClass('show');
           }
         } else {
-          if(playButton.hasClass('show')){
+          if (playButton.hasClass('show')) {
             playButton.removeClass('show');
             ccButton.removeClass('show');
           }
@@ -428,7 +428,7 @@
 
         ccButton.on('click', function () {
 
-          if(!$(this).hasClass('active')) {
+          if (!$(this).hasClass('active')) {
             $pdk.controller.setSubtitleLanguage("en");
             $(this).addClass('active');
           } else {
@@ -459,15 +459,15 @@
             var thumbTitle = $(this).find('.title').html();
             $('#chosen-player .img-wrapper img').attr('src', thumbImageSrc);
             $('#chosen-player .title').html(thumbTitle);
-            if($(this).hasClass('no-video')){
-              if(!$('#chosen-player .img-wrapper').hasClass('no-video')) {
+            if ($(this).hasClass('no-video')) {
+              if (!$('#chosen-player .img-wrapper').hasClass('no-video')) {
                 $('#chosen-player .img-wrapper').addClass('no-video');
               }
               if (playerService.playerStatus) {
                 playerService.hidePlayer();
               }
             } else {
-              if($('#chosen-player .img-wrapper').hasClass('no-video')) {
+              if ($('#chosen-player .img-wrapper').hasClass('no-video')) {
                 $('#chosen-player .img-wrapper').removeClass('no-video');
               }
               // set status clickOnThumb
@@ -842,6 +842,7 @@
                 function isEmpty(el) {
                   return !$.trim(el.html());
                 }
+
                 if (isEmpty(slot0) || isEmpty(slot1) || isEmpty(slot2)) {
                   // hide dropArea
                   classie.remove(dropArea, 'show');
@@ -908,6 +909,20 @@
                               },
                               success: function (data) {
                                 var url = 'http://' + window.location.hostname + data.url;
+
+                                USAN.initUSAGigya({
+                                  gigyaSharebar: {
+                                    ua: {
+                                      description: Drupal.settings.top3_settings.top3_description,
+                                      imageUrl: data.image_url,
+                                      linkBack: url,
+                                      title: Drupal.settings.top3_settings.top3_title
+                                    },
+                                    containerID: "gigya-share-top3",
+                                    shareButtons: "facebook, twitter, tumblr, email"
+                                  }
+                                });
+
                                 sharebar = new Object();
                                 sharebar.gigyaSharebar = {
                                   containerID: "gigya-share-top3",
@@ -918,8 +933,6 @@
                                   showCounts: "none"
                                 };
 
-                                console.info(imageSrc);
-
                                 sharebar.gigyaSharebar.ua = {
                                   description: Drupal.settings.top3_settings.top3_description,
                                   imageBhev: "url",
@@ -928,7 +941,6 @@
                                   title: Drupal.settings.top3_settings.top3_title
                                 };
                                 if (typeof Drupal.gigya.showSharebar == 'function') {
-                                  Drupal.gigya.showSharebar(sharebar);
                                   if (Drupal.behaviors.omniture_tracking != 'undefined') {
                                     Drupal.behaviors.omniture_tracking.top3.share(at_params);
                                   }
@@ -958,9 +970,9 @@
                         changeTwoItems(start_item, finish_item, $('.preview-item'));
                         previewOpen();
                       },
-                      helper: function(event, ui){
+                      helper: function (event, ui) {
                         var $clone = $(ui).clone();
-                        $clone.css('position','absolute');
+                        $clone.css('position', 'absolute');
                         return $clone.get(0);
                       },
                       items: ".drop-area__item"
@@ -993,7 +1005,7 @@
     };
 
     // create player block
-    if(first_state) {
+    if (first_state) {
       playerService.createPlayer();
     } else {
       if ($('#shared-container').hasClass('set-video')) {

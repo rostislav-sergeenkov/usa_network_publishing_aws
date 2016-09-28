@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   Drupal.behaviors.usanetwork_menu_live_video_header = {
     init: function () {
       var timezoneOffset = usanetwork_menu_get_user_timezone_offset();
@@ -8,7 +8,7 @@
         dataType: 'JSON',
         data: {},
         url: Drupal.settings.basePath + 'ajax/render-live-video-header/' + timezoneOffset,
-        success: function(message) {
+        success: function (message) {
 
           var headerBlock = $("#block-usanetwork-menu-usanetwork-menu-consumptionator .content");
 
@@ -17,7 +17,7 @@
             headerBlock.find('.show-name a').attr('href', on_now_vars.show_url);
             headerBlock.find('.show-name a span').text(on_now_vars.show_name);
             headerBlock.find('h1 a span').text(on_now_vars.episode.title);
-            headerBlock.find('.info-tab .asset-img img').attr('src' , on_now_vars.episode.image_url);
+            headerBlock.find('.info-tab .asset-img img').attr('src', on_now_vars.episode.image_url);
             headerBlock.find('.info-tab .caption').text(on_now_vars.episode.video_type);
             headerBlock.find('.info-tab .title').text(on_now_vars.episode.title);
             var additional = on_now_vars.episode.additional + ' ' + on_now_vars.episode.running_time;
@@ -26,25 +26,17 @@
             $('body').addClass(on_now_vars.episode.episode_class);
           }
 
-          sharebar = new Object();
-          sharebar.gigyaSharebar = {
-            containerID: "gigya-share-live-video",
-            iconsOnly: true,
-            layout: "horizontal",
-            shareButtons: "facebook, twitter, tumblr, pinterest, share",
-            shortURLs: "never",
-            showCounts: "none"
-          };
-
-          var url = window.location.href.split('#')[0];
-          sharebar.gigyaSharebar.ua = {
-            description: 'Stream USA Network TV live on your desktop',
-            imageBhev: "url",
-            imageUrl: Drupal.settings.usanetwork_menu.usa_live_tv_img,
-            linkBack: url,
-            title: 'USA Network Live TV Streaming'
-          };
-          if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+          USAN.initUSAGigya({
+            gigyaSharebar: {
+              ua: {
+                description: 'Stream USA Network TV live on your desktop',
+                imageUrl: Drupal.settings.usanetwork_menu.usa_live_tv_img,
+                linkBack: window.location.href.split('#')[0],
+                title: 'USA Network Live TV Streaming'
+              },
+              containerID: "gigya-share-live-video"
+            }
+          });
         },
         error: function () {
           console.info('error');

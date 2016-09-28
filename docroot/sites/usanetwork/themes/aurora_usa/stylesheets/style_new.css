@@ -18771,8 +18771,7 @@ html.no-scroll, body.no-scroll {
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share-title {
   font-family: "FiraSansRegular", sans-serif;
 }
-.show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share .gig-button-container td > div,
-.show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share .gig-button-container td > div:hover {
+.show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share .gig-button-container .usa-share-button, .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container .timeline-gigya-share .gig-button-container .usa-share-button:hover {
   font-size: 24px;
   height: 24px !important;
   width: 24px !important;

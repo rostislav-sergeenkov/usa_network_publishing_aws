@@ -22237,14 +22237,14 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 1280px) {
   .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container {
-    bottom: -4px;
+    bottom: 8px;
     padding-right: 16px;
   }
 }
 @media (max-width: 640px) {
   .node-type-timeline-gallery .timelineFlat .timeline-items .timeline-item-details .timeline-gigya-share-container {
     font-size: 12px;
-    bottom: -6px;
+    bottom: 4px;
   }
 }
 .node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-left, .node-type-timeline-gallery .timelineFlat .timeline-controls .timeline-right {
@@ -35662,13 +35662,13 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 1280px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar.sponsored-enable .choose-top3-img {
-    bottom: calc(100% + 33px + (35px + 20px)/2);
+    bottom: calc(100% + 33px + (35px + 20px) / 2);
     max-height: calc(90px + 35px + 20px);
   }
 }
 @media (max-width: 768px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar.sponsored-enable .choose-top3-img {
-    bottom: calc(100% + 4.29688vw + (35px + 1.95313vw)/2);
+    bottom: calc(100% + 4.29688vw + (35px + 1.95313vw) / 2);
     max-height: calc(11.71875vw + (35px + 1.95313vw));
   }
 }
@@ -35750,7 +35750,7 @@ body.blog .view-display-id-blog_content .views-row {
 }
 @media (max-width: 1280px) {
   #block-usanetwork-top3-usanetwork-top3-main-block .right-sidebar .advert {
-    margin-left: calc(67.33298vw + (32.66702vw - 320px)/2);
+    margin-left: calc(67.33298vw + (32.66702vw - 320px) / 2);
     margin-top: 0;
   }
 }
@@ -35777,7 +35777,7 @@ body.blog .view-display-id-blog_content .views-row {
 #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 {
   display: none;
   height: 3.15623vw;
-  margin: 1.57812vw auto 0;
+  margin: 0 auto 10px;
   position: relative;
   text-align: center;
   width: 17.83272vw;
@@ -35785,21 +35785,21 @@ body.blog .view-display-id-blog_content .views-row {
 @media (min-width: 1901px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 {
     height: 60px;
-    margin: 30px auto 0;
+    margin: 0 auto 5px;
     width: 339px;
   }
 }
 @media (max-width: 1024px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 {
     height: 4.48242vw;
-    margin: 2.24316vw auto 0;
+    margin: 0 auto 5px;
     width: 25.39063vw;
   }
 }
 @media (max-width: 768px) {
   #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 {
     height: 9.5625vw;
-    margin: 4.78542vw auto 0;
+    margin: 0 auto 5px;
     width: 54.16667vw;
   }
 }
@@ -35834,25 +35834,25 @@ body.blog .view-display-id-blog_content .views-row {
 #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container.gig-button-container-email {
   margin: 0;
 }
-#block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container td > div {
+#block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container .usa-share-button {
   font-size: 3.15623vw;
 }
 @media (min-width: 1901px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container td > div {
+  #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container .usa-share-button {
     font-size: 60px;
   }
 }
 @media (max-width: 1024px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container td > div {
+  #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container .usa-share-button {
     font-size: 4.48242vw;
   }
 }
 @media (max-width: 768px) {
-  #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container td > div {
+  #block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container .usa-share-button {
     font-size: 9.5625vw;
   }
 }
-#block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container td > div:before {
+#block-usanetwork-top3-usanetwork-top3-main-block #gigya-share-top3 .gig-button-container .usa-share-button:before {
   color: white;
 }
 #block-usanetwork-top3-usanetwork-top3-main-block #info-block {

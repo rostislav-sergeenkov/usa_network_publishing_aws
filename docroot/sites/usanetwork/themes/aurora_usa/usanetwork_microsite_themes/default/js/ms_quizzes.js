@@ -23,7 +23,10 @@
       if (typeof gigya !== 'undefined') {
         if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
           $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-            if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+            // if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+            if (typeof Drupal.gigya.showSharebar == 'function') {
+              USAN.initUSAGigya(sharebar);
+            }
           });
         }
       }

@@ -367,7 +367,9 @@
           if (typeof gigya !== 'undefined') {
             if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
               $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-                if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+                if (typeof Drupal.gigya.showSharebar == 'function') {
+                  USAN.initUSAGigya(sharebar);
+                }
               });
             }
           }
@@ -378,7 +380,9 @@
               sharebar.gigyaSharebar.ua.imageBhev = 'url';
               sharebar.gigyaSharebar.ua.imageUrl = imageUrl;
               sharebar.gigyaSharebar.ua.description = description;
-              if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+              if (typeof Drupal.gigya.showSharebar == 'function') {
+                USAN.initUSAGigya(sharebar);
+              }
             }
           });
         }

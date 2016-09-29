@@ -66,6 +66,7 @@
         },
         prevArrow: '.slide-prev',
         nextArrow: '.slide-next',
+        nextGallery: '.gallery-next',
         slideCounter: '.slider-counter .slide-index',
         endcardShareBar: '.end-card-sharebar .field-name-field-gigya-share-bar > div',
         shareBar: '.share-bar .field-name-field-gigya-share-bar > div',
@@ -73,6 +74,9 @@
         interstitialWrap: '.interstitial-wrap',
         interstitialBlock: '.interstitial-block',
         interstitialNext: '.interstitial-next',
+        // end card
+        // isGalleryEndCard: false,
+        endCardBlock: '.end-card-block',
 
         // interstitial params
         //interstitialInitPages: ['all'], //default all, body classes for init interstitial ["node-type-media-gallery", "node-type-consumpt-post", "node-type-tv-episode"]
@@ -129,7 +133,9 @@
       _.$shareBar = $(element).find(_.options.shareBar);
       _.$prevArrow = $(element).find(_.options.prevArrow);
       _.$nextArrow = $(element).find(_.options.nextArrow);
+      _.$nextGallery = $(element).find(_.options.nextGallery);
       _.$appendDots = $(element).find(_.options.galleryPagerWrap.selector);
+      _.$endCardBlock = $(element).find(_.options.endCardBlock);
 
       // data attributes value
       _.data = {
@@ -146,6 +152,7 @@
       _.options.gallery.prevArrow = _.$prevArrow;
       _.options.gallery.nextArrow = _.$nextArrow;
       _.options.gallery.appendDots = _.$galleryPagerWrap;
+      _.options.isGalleryEndCard = _.checkEndcard();
 
       // init app
       _.init(_.options.init);
@@ -209,6 +216,47 @@
 
       void (s.t());
     }
+  };
+
+
+  // end card
+  usaGallery.prototype.callEndCardAdobeTracking = {
+    showEndCard: function () {
+      AdobeTracking.photoBreakPoint = 'Photo Gallery End Card';
+      _satellite.track('setPhotoBreakPoint');
+    },
+    clickNextItem: function () {
+
+      var showName = '',
+          galleryName = '';
+
+      if ($('body').hasClass('node-type-media-gallery')) {
+        showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '';
+        galleryName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_3') ? Drupal.settings.umbel_settings.usa_umbel_param_3 : '';
+      }
+
+      AdobeTracking.clickedPageItem = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + 'End Card Next Click';
+      _satellite.track('pageItemClicked');
+    }
+  };
+
+  usaGallery.prototype.checkEndcard = function () {
+
+    var _ = this;
+
+    return _.$galleryWrap.hasClass('gallery-with-endcard');
+  };
+
+  usaGallery.prototype.setEndCartNextClick = function () {
+
+    var _ = this;
+
+    _.$endCardBlock.on('click', 'a', function (e) {
+      _.callEndCardAdobeTracking.clickNextItem();
+    });
+    _.$nextGallery.on('click', 'a', function (e) {
+      _.callEndCardAdobeTracking.clickNextItem();
+    });
   };
 
   // mps advert
@@ -725,6 +773,9 @@
         if (initResize) {
           _.resize(_);
         }
+        if (_.options.isGalleryEndCard) {
+          _.setEndCartNextClick();
+        }
       })
       .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
@@ -751,6 +802,7 @@
       .on('afterChange', function (event, slick, currentSlide) {
         if ($gallery.find('.slick-active .node-gallery').hasClass('end-card')) {
           $galleryWrap.addClass('end-card');
+          usaGallery.prototype.callEndCardAdobeTracking.showEndCard();
         } else {
           $galleryWrap.removeClass('end-card');
         }
@@ -778,12 +830,6 @@
     });
   };
 
-  usaGallery.prototype.checkEndcard = function (_this) {
-    var _ = _this,
-        $galleryWrap = _.$galleryWrap;
-    return $galleryWrap.hasClass('gallery-with-endcard');
-  };
-
   //=============================
   // Init usaGallery app
   //=============================
@@ -792,10 +838,6 @@
     var _ = this;
 
     if (creation && !_.$gallery.hasClass('gallery-initialized')) {
-
-      if(_.checkEndcard(_)) {
-        _.options.gallery.infinite = true;
-      }
 
       _.addSlickEventsCallBacks();
       _.$gallery

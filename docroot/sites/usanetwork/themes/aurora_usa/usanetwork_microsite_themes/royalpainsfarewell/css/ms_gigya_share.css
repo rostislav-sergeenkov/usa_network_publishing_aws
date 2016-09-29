@@ -24,6 +24,7 @@
   /*background-image: url("../images/social_chatter_icons.png");*/
   /*background-repeat: no-repeat;*/
   /*background-image: none !important;*/
+  cursor: pointer;
   display: block;
   font-family: "ico-font";
   font-size: 36px;
@@ -33,25 +34,20 @@
 #microsite .gig-bar-container .gig-button-container.gig-button-container-facebook .usa-share-button:before,
 #microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook .usa-share-button:before {
   content: "\e602";
-  color: #6c6f71;
 }
 #microsite .gig-bar-container .gig-button-container.gig-button-container-twitter .usa-share-button:before,
 #microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter .usa-share-button:before {
   content: "\e603";
-  color: #6c6f71;
 }
 #microsite .gig-bar-container .gig-button-container.gig-button-container-tumblr .usa-share-button:before,
 #microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr .usa-share-button:before {
   content: "\e604";
-  color: #6c6f71;
 }
 #microsite .gig-bar-container .gig-button-container.gig-button-container-pinterest .usa-share-button:before,
 #microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest .usa-share-button:before {
   content: "\e605";
-  color: #6c6f71;
 }
 #microsite .gig-bar-container .gig-button-container.gig-button-container-share .usa-share-button:before,
 #microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-share .usa-share-button:before {
   content: "\e606";
-  color: #6c6f71;
 }

@@ -206,11 +206,16 @@ body:not(.blog), .blog .node-media-gallery.view-mode-inline_content  {
   &.node-type-top3-gallery {
     .gig-button-container {
       td {
-        > div {
+        button {
+          background: none;
+          height: auto!important;
+        }
+        div {
           background-image: none !important;
           display: block;
           font-family: "ico-font";
           font-size: 32px;
+          position: relative!important;
           @include breakpoint ($bp-1024-width) {
             font-size: 26px;
           }
@@ -221,7 +226,7 @@ body:not(.blog), .blog .node-media-gallery.view-mode-inline_content  {
       }
       &.gig-button-container-facebook {
         td {
-          > div {
+          div {
             &:before {
               content: "\e602";
               color: $consum-carousel-text;
@@ -231,7 +236,7 @@ body:not(.blog), .blog .node-media-gallery.view-mode-inline_content  {
       }
       &.gig-button-container-twitter {
         td {
-          > div {
+          div {
             &:before {
               content: "\e603";
               color: $consum-carousel-text;
@@ -241,7 +246,7 @@ body:not(.blog), .blog .node-media-gallery.view-mode-inline_content  {
       }
       &.gig-button-container-tumblr {
         td {
-          > div {
+          div {
             &:before {
               content: "\e604";
               color: $consum-carousel-text;
@@ -251,7 +256,7 @@ body:not(.blog), .blog .node-media-gallery.view-mode-inline_content  {
       }
       &.gig-button-container-pinterest {
         td {
-          > div {
+          div {
             &:before {
               content: "\e605";
               color: $consum-carousel-text;
@@ -261,7 +266,7 @@ body:not(.blog), .blog .node-media-gallery.view-mode-inline_content  {
       }
       &.gig-button-container-share {
         td {
-          > div {
+          div {
             &:before {
               content: "\e606";
               color: $consum-carousel-text;
@@ -271,7 +276,7 @@ body:not(.blog), .blog .node-media-gallery.view-mode-inline_content  {
       }
       &.gig-button-container-email {
         td {
-          > div {
+          div {
             &:before {
               content: "\e625";
               color: $consum-carousel-text;

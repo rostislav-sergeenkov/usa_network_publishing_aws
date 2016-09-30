@@ -107,8 +107,8 @@ function usanetwork_related_content_get_related_content_for_consumpt_page($consu
   $related_content = $function(
     $tv_conten_node->nid, $consumpt_node,
     0, !empty($you_may_also_like_item)
-    ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE - 1
-    : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
+    ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE
+    : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE + 1);
 
   if (!empty($you_may_also_like_item)) {
     $related_content[] = $you_may_also_like_item;

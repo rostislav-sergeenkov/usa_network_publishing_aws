@@ -549,7 +549,7 @@ function usanetwork_promo_css_config_submit($form, &$form_state) {
  * Fixing html symbols in Fields in Admin Area
  */
 function usanetwork_field_widget_form_alter(&$element, &$form_state, $context) {
-  if (($element['#field_name'] == 'field_show') || ($element['#field_name'] == 'field_movie')) {
+  if (isset($element['#field_name']) && (($element['#field_name'] == 'field_show') || ($element['#field_name'] == 'field_movie'))) {
     foreach ($element['#options'] as &$option) {
       $option = htmlspecialchars_decode($option);
     }

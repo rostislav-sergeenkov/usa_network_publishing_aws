@@ -606,6 +606,12 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'content',
           'weight' => '-4',
         ),
+        'usanetwork_popup-usanetwork_popup_window_block' => array(
+          'module' => 'usanetwork_popup',
+          'delta' => 'usanetwork_popup_window_block',
+          'region' => 'content',
+          'weight' => '-3',
+        ),
       ),
     ),
   );

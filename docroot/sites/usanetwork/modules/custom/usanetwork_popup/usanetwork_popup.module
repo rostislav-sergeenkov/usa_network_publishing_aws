@@ -42,39 +42,51 @@ function _usanetwork_popup_window() {
   $popup_element = _usanetwork_get_field_item('node', $homepage_node, 'field_popup_element', 'target_id');
 
   if (!empty($popup_element)) {
-    drupal_add_js(drupal_get_path('module', 'usanetwork_popup') . '/js/usanetwork_popup.js');
     $popup_node = node_load($popup_element);
-    if ($popup_node->status == NODE_PUBLISHED) {
-      $popup_wrapper = entity_metadata_wrapper('node', $popup_node);
-      if (!empty($popup_node->field_popup_desktop_image)) {
-        $desktop = $popup_wrapper->field_popup_desktop_image->file->url->value();
-      }
-      if (!empty($popup_node->field_popup_mobile_image)) {
-        $mobile_retina = $popup_wrapper->field_popup_mobile_image->file->url->value();
-        $mobile_image = $popup_wrapper->field_popup_mobile_image->file->value();
-        $mobile = image_style_url('313x451', $mobile_image->uri);
-      }
-      if (!empty($popup_node->field_promo_link)) {
-        $link = $popup_wrapper->field_promo_link->url->value();
-        $target_value = $popup_wrapper->field_promo_link->attributes->value();
-        if (!empty($target_value)) {
-          $target = $target_value['target'];
+
+    $cookie_name = 'popup_window_' . $popup_node->nid;
+
+    $show_popup_window = TRUE;
+    if (isset($_COOKIE[$cookie_name])) {
+      $show_popup_window = FALSE;
+    }
+
+    if ($show_popup_window) {
+      if ($popup_node->status == NODE_PUBLISHED) {
+        drupal_add_js(drupal_get_path('module', 'usanetwork_popup') . '/js/usanetwork_popup.js');
+        $popup_wrapper = entity_metadata_wrapper('node', $popup_node);
+        if (!empty($popup_node->field_popup_desktop_image)) {
+          $desktop = $popup_wrapper->field_popup_desktop_image->file->url->value();
         }
+        if (!empty($popup_node->field_popup_mobile_image)) {
+          $mobile_retina = $popup_wrapper->field_popup_mobile_image->file->url->value();
+          $mobile_image = $popup_wrapper->field_popup_mobile_image->file->value();
+          $mobile = image_style_url('313x451', $mobile_image->uri);
+        }
+        if (!empty($popup_node->field_promo_link)) {
+          $link = $popup_wrapper->field_promo_link->url->value();
+          $target_value = $popup_wrapper->field_promo_link->attributes->value();
+          if (!empty($target_value)) {
+            $target = $target_value['target'];
+          }
+        }
+
+        $theme_variables = array(
+          'popup_image' => array(
+            'desktop' => (!empty($desktop)) ? $desktop : NULL,
+            'mobile' => (!empty($mobile)) ? $mobile : NULL,
+            'mobile_retina' => (!empty($mobile_retina)) ? $mobile_retina : NULL,
+          ),
+          'link' => array(
+            'url' => (!empty($link)) ? $link : NULL,
+            'target' => (!empty($target)) ? $target : NULL,
+          ),
+        );
+
+        setcookie($cookie_name, '1', time()+60*60*24*30);
+
+        return theme('usanetwork_popup_window', $theme_variables);
       }
-
-      $theme_variables = array(
-        'popup_image' => array(
-          'desktop' => (!empty($desktop)) ? $desktop : NULL,
-          'mobile' => (!empty($mobile)) ? $mobile : NULL,
-          'mobile_retina' => (!empty($mobile_retina)) ? $mobile_retina : NULL,
-        ),
-        'link' => array(
-          'url' => (!empty($link)) ? $link : NULL,
-          'target' => (!empty($target)) ? $target : NULL,
-        ),
-      );
-
-      return theme('usanetwork_popup_window', $theme_variables);
     }
   }
 

@@ -5,7 +5,7 @@
 ?>
 <div class="usa-home-popup-overlay">
   <div class="usa-home-popup">
-    <a href="<?php print $link['url']; ?>" target="<?php print $link['target']; ?>">
+    <a href="<?php print $link['url']; ?>"<?php (!empty($link['target'])) ? print ' target="' . $link['target'] . '"' : '';  ?>>
       <?php if (!empty($popup_image)): ?>
       <div class="asset-img" data-picture data-alt="" data-class="tile-img">
         <?php if (!empty($popup_image['mobile'])): ?>

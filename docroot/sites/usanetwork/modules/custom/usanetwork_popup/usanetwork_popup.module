@@ -7,62 +7,28 @@
 include_once 'usanetwork_popup.features.inc';
 
 /**
- *  Implements hook_block_info().
- */
-function usanetwork_popup_block_info() {
-  $blocks = array();
-
-  $blocks['usanetwork_popup_window_block'] = array(
-    'info' => t('Usanetwork: Pop-up block'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
-
-  return $blocks;
-}
-
-/**
- *  Implements hook_block_view().
- */
-function usanetwork_popup_block_view($delta = '') {
-  $block = array();
-
-  switch ($delta) {
-    case 'usanetwork_popup_window_block':
-      $block['subject'] = '';
-      $block['content'] = _usanetwork_popup_window_block();
-      break;
-  }
-
-  return $block;
-}
-
-/**
  *  Implements hook_theme().
  */
 function usanetwork_popup_theme($existing, $type, $theme, $path) {
   return array(
     'usanetwork_popup_window' => array(
       'variables' => array(
-        'show' => NULL,
-        'episodes_block_title' => NULL,
-        'episodes' => array(
-          0 => array(
-            'url' => NULL,
-            'title' => NULL,
-            'series_and_number' => NULL,
-            'duration' => NULL,
-            'image_url' => NULL,
-          ),
+        'popup_image' => array(
+          'desktop' => NULL,
+          'mobile' => NULL,
+          'mobile_retina' => NULL,
+        ),
+        'link' => array(
+          'url' => NULL,
+          'target' => NULL,
         ),
       ),
       'template' => 'templates/usanetwork-popup-window',
     ),
-
   );
 }
 
-function _usanetwork_popup_window_block() {
+function _usanetwork_popup_window() {
   if (arg(0) == 'admin') {
     return '';
   }
@@ -77,31 +43,38 @@ function _usanetwork_popup_window_block() {
 
   if (!empty($popup_element)) {
     $popup_node = node_load($popup_element);
-    $popup_wrapper = entity_metadata_wrapper('node', $popup_node);
-    if (!empty($popup_node->field_popup_desktop_image)) {
-      $desktop = $popup_wrapper->field_popup_desktop_image->file->url->value();
-    }
-    if (!empty($popup_node->field_popup_mobile_image)) {
-      $mobile = $popup_wrapper->field_popup_mobile_image->file->url->value();
-    }
-    if (!empty($popup_node->field_promo_link)) {
-      $link = $popup_wrapper->field_promo_link->url->value();
-      $target = $popup_wrapper->field_promo_link->attributes->value();
-    }
+    if ($popup_node->status == NODE_PUBLISHED) {
+      $popup_wrapper = entity_metadata_wrapper('node', $popup_node);
+      if (!empty($popup_node->field_popup_desktop_image)) {
+        $desktop = $popup_wrapper->field_popup_desktop_image->file->url->value();
+      }
+      if (!empty($popup_node->field_popup_mobile_image)) {
+        $mobile_retina = $popup_wrapper->field_popup_mobile_image->file->url->value();
+        $mobile_image = $popup_wrapper->field_popup_mobile_image->file->value();
+        $mobile = image_style_url('313x451', $mobile_image->uri);
+      }
+      if (!empty($popup_node->field_promo_link)) {
+        $link = $popup_wrapper->field_promo_link->url->value();
+        $target_value = $popup_wrapper->field_promo_link->attributes->value();
+        if (!empty($target_value)) {
+          $target = $target_value['target'];
+        }
+      }
 
-    $theme_variables = array(
-      'popup_image' => array(
-        'desktop' => $desktop,
-        'mobile' => $mobile,
-        'mobile_retina' => '',
-      ),
-      'link' => array(
-        'url' => $link,
-        'target' => '',
-      ),
-    );
+      $theme_variables = array(
+        'popup_image' => array(
+          'desktop' => (!empty($desktop)) ? $desktop : NULL,
+          'mobile' => (!empty($mobile)) ? $mobile : NULL,
+          'mobile_retina' => (!empty($mobile_retina)) ? $mobile_retina : NULL,
+        ),
+        'link' => array(
+          'url' => (!empty($link)) ? $link : NULL,
+          'target' => (!empty($target)) ? $target : NULL,
+        ),
+      );
 
-    return theme('usanetwork_popup_window', $theme_variables);
+      return theme('usanetwork_popup_window', $theme_variables);
+    }
   }
 
   return '';
@@ -117,9 +90,31 @@ function usanetwork_popup_page_alter(&$page) {
   }
   if ("home" == current_path()) {
     // Attach hidden modal windows to the bottom of the page.
-    $popup_window = _usanetwork_popup_window_block();
+    $popup_window = _usanetwork_popup_window();
     $page['page_bottom']['usanetwork_popup_windows'] = array(
       '#markup' => $popup_window,
     );
   }
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function usanetwork_popup_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: 313x451.
+  $styles['313x451'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 313,
+          'height' => 451,
+        ),
+      ),
+    ),
+  );
+
+  return $styles;
 }

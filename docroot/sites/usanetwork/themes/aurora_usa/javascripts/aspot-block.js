@@ -32,6 +32,7 @@
           counterImg = 0,
           mousePositionX = 0,
           mousePositionY = 0,
+          touchDevice = $('html').hasClass('touch'),
           _AT_Admin = $.urlParam('_AT_Admin');
 
       // check count slides before init
@@ -133,7 +134,7 @@
             }
 
             // check sticky header & slider pause
-            switchSlider();
+            switchSlider(true);
 
             // show slide content
             showElements(currentSlide, nextSlideIndex);
@@ -295,7 +296,7 @@
             return false;
           }
         } else {
-          if(scrollCheck && checkMousePosition()) {
+          if(!touchDevice && scrollCheck && checkMousePosition()) {
             return false;
           }
           else if (slider.hasClass('isStopped')) {
@@ -342,7 +343,7 @@
           easing: nameAnimation,
           complete: function (elements) {
             nextButton.removeClass('disable');
-            switchSlider();
+            switchSlider(true);
           }
         });
       }

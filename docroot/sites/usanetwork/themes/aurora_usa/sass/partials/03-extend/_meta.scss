@@ -59,7 +59,7 @@
         white-space: normal;
       }
     }
-    & > div {
+    & > div, &.multiline-ellipsis-meta > div {
       &:nth-last-child(3) {
         overflow: hidden;
         text-overflow: ellipsis;

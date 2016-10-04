@@ -42,6 +42,7 @@ function _usanetwork_popup_window() {
   $popup_element = _usanetwork_get_field_item('node', $homepage_node, 'field_popup_element', 'target_id');
 
   if (!empty($popup_element)) {
+    drupal_add_js(drupal_get_path('module', 'usanetwork_popup') . '/js/usanetwork_popup.js');
     $popup_node = node_load($popup_element);
 
     $cookie_name = 'popup_window_' . $popup_node->nid;

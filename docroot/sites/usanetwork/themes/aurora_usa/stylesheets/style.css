@@ -37761,6 +37761,124 @@ body.blog .view-display-id-blog_content .views-row {
   display: none;
 }
 
+.usa-home-popup-overlay {
+  background: rgba(0, 0, 0, 0.85);
+  height: 100%;
+  display: flex;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100000001;
+}
+
+.usa-home-popup {
+  height: auto;
+  margin: auto;
+  max-height: 90%;
+  max-width: 85%;
+  position: relative;
+  width: 1280px;
+}
+@media (max-width: 768px) {
+  .usa-home-popup {
+    width: 625px;
+  }
+}
+@media (max-width: 480px) {
+  .usa-home-popup {
+    width: 313px;
+  }
+}
+@media all and (orientation: landscape) {
+  .touch .usa-home-popup a {
+    height: 100%;
+    width: auto;
+  }
+  .touch .usa-home-popup .asset-img {
+    height: 100%;
+    width: auto;
+  }
+  .touch .usa-home-popup .asset-img img {
+    height: 100%;
+    width: auto;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .touch .usa-home-popup {
+    height: 900px;
+    width: auto;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 480px) {
+  .touch .usa-home-popup {
+    height: 450px;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .touch .usa-home-popup .usa-home-popup-close-icon {
+    height: 25px;
+    width: 25px;
+  }
+}
+@media all and (orientation: landscape) and (max-width: 768px) {
+  .touch .usa-home-popup .usa-home-popup-close-icon:before {
+    font-size: 15px;
+    line-height: 25px;
+  }
+}
+.usa-home-popup .usa-home-popup-close-icon {
+  cursor: pointer;
+  height: 35px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 35px;
+}
+@media (max-width: 480px) {
+  .usa-home-popup .usa-home-popup-close-icon {
+    height: 25px;
+    width: 25px;
+  }
+}
+.usa-home-popup .usa-home-popup-close-icon:before {
+  display: block;
+  color: white;
+  content: "\e62e";
+  font-family: "ico-font";
+  font-size: 20px;
+  line-height: 35px;
+  position: relative;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .usa-home-popup .usa-home-popup-close-icon:before {
+    font-size: 15px;
+    line-height: 25px;
+  }
+}
+.usa-home-popup a {
+  display: block;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  outline: none;
+  width: 100%;
+}
+.usa-home-popup .asset-img {
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+.usa-home-popup .asset-img img {
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
 #admin-menu {
   z-index: 100000;
 }

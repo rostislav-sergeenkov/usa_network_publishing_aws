@@ -121,19 +121,19 @@ function usanetwork_home_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '17',
+          'weight' => '18',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '18',
-        ),
-        'redirect' => array(
           'weight' => '19',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '20',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '21',
         ),
         'locations' => array(
           'weight' => '22',

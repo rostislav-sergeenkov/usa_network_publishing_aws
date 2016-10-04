@@ -133,7 +133,7 @@
             }
 
             // check sticky header & slider pause
-            switchSlider();
+            switchSlider(true);
 
             // show slide content
             showElements(currentSlide, nextSlideIndex);
@@ -342,7 +342,7 @@
           easing: nameAnimation,
           complete: function (elements) {
             nextButton.removeClass('disable');
-            switchSlider();
+            switchSlider(true);
           }
         });
       }

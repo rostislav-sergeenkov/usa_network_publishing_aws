@@ -32,6 +32,7 @@
           counterImg = 0,
           mousePositionX = 0,
           mousePositionY = 0,
+          touchDevice = $('html').hasClass('touch'),
           _AT_Admin = $.urlParam('_AT_Admin');
 
       // check count slides before init
@@ -295,7 +296,7 @@
             return false;
           }
         } else {
-          if(scrollCheck && checkMousePosition()) {
+          if(!touchDevice && scrollCheck && checkMousePosition()) {
             return false;
           }
           else if (slider.hasClass('isStopped')) {

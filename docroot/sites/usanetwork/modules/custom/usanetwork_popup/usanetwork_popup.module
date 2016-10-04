@@ -106,3 +106,20 @@ function _usanetwork_popup_window_block() {
 
   return '';
 }
+
+/**
+ * Implements hook_page_alter().
+ */
+function usanetwork_popup_page_alter(&$page) {
+  if (path_is_admin(current_path())) {
+    // Prevent from adding extra js and css files for admin area.
+    return;
+  }
+  if ("home" == current_path()) {
+    // Attach hidden modal windows to the bottom of the page.
+    $popup_window = _usanetwork_popup_window_block();
+    $page['page_bottom']['usanetwork_popup_windows'] = array(
+      '#markup' => $popup_window,
+    );
+  }
+}

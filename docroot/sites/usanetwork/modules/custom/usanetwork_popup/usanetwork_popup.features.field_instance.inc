@@ -74,7 +74,7 @@ function usanetwork_popup_field_default_field_instances() {
     'custom_add_another' => '',
     'custom_remove' => '',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Upload image should be 1280x800',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -163,7 +163,7 @@ function usanetwork_popup_field_default_field_instances() {
     'custom_add_another' => '',
     'custom_remove' => '',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Upload image should be 625x900',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -331,6 +331,8 @@ function usanetwork_popup_field_default_field_instances() {
   t('Desktop Image');
   t('Mobile Image');
   t('Pop-up Link');
+  t('Upload image should be 1280x800');
+  t('Upload image should be 625x900');
 
   return $field_instances;
 }

@@ -29,6 +29,15 @@ function usanetwork_user_permissions_user_default_permissions() {
     'module' => 'sitecatalyst',
   );
 
+  // Exported permission: 'administer adobe pass config variables'.
+  $permissions['administer adobe pass config variables'] = array(
+    'name' => 'administer adobe pass config variables',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'tve_adobe_pass',
+  );
+
   // Exported permission: 'administer usanetwork'.
   $permissions['administer usanetwork'] = array(
     'name' => 'administer usanetwork',

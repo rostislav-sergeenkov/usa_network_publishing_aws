@@ -34,6 +34,8 @@
       .usa-home-popup-close-icon {
         @include breakpoint($bp-768-width) {
           height: 25px;
+          right: 5px;
+          top: 5px;
           width: 25px;
         }
         &:before {
@@ -61,11 +63,13 @@
     cursor: pointer;
     height: 35px;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 10px;
+    top: 10px;
     width: 35px;
     @include breakpoint($bp-480-width) {
       height: 25px;
+      right: 5px;
+      top: 5px;
       width: 25px;
     }
     &:before {

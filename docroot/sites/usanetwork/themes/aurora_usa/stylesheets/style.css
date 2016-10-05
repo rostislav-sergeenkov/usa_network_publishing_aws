@@ -37819,6 +37819,8 @@ body.blog .view-display-id-blog_content .views-row {
 @media all and (orientation: landscape) and (max-width: 768px) {
   .touch .usa-home-popup .usa-home-popup-close-icon {
     height: 25px;
+    right: 5px;
+    top: 5px;
     width: 25px;
   }
 }
@@ -37832,13 +37834,15 @@ body.blog .view-display-id-blog_content .views-row {
   cursor: pointer;
   height: 35px;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 10px;
+  top: 10px;
   width: 35px;
 }
 @media (max-width: 480px) {
   .usa-home-popup .usa-home-popup-close-icon {
     height: 25px;
+    right: 5px;
+    top: 5px;
     width: 25px;
   }
 }

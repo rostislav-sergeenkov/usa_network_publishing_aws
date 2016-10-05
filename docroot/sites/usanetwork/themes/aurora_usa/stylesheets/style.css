@@ -783,6 +783,11 @@ body:not(.ie9) .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carous
   display: table;
   width: 100%;
 }
+@media (max-width: 768px) {
+  .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-large .meta-wrapper .meta-wrapper-inner {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
 .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-large .meta-back {
   bottom: 0;
   display: block;
@@ -805,12 +810,16 @@ body:not(.ie9) .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carous
 }
 @media (max-width: 768px) {
   .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-large .meta-back {
-    background: #000000;
-    opacity: 0.6;
+    display: none;
   }
 }
 .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-large .meta {
   padding-left: 0;
+}
+@media (max-width: 768px) {
+  .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-large .meta {
+    position: static;
+  }
 }
 .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-large .meta .meta-icon {
   display: block;

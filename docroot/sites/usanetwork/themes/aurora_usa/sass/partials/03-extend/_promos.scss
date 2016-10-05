@@ -29,6 +29,9 @@
         height: 100%;
         display: table;
         width: 100%;
+        @include breakpoint($bp-768-width) {
+          background: rgba(0, 0, 0, 0.6);
+        }
       }
     }
     .meta-back {
@@ -49,12 +52,14 @@
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
       }
       @include breakpoint($bp-768-width) {
-        background: #000000;
-        opacity: 0.6;
+        display: none;
       }
     }
     .meta {
       padding-left: 0;
+      @include breakpoint($bp-768-width) {
+        position: static;
+      }
       .meta-icon {
         display: block;
         height: 52px;

@@ -81,6 +81,7 @@ function _usanetwork_popup_window() {
             'url' => (!empty($link)) ? $link : NULL,
             'target' => (!empty($target)) ? $target : NULL,
           ),
+          'popup_title' => $popup_node->title,
         );
 
         setcookie($cookie_name, '1', time()+60*60*24*30);

@@ -3,7 +3,7 @@
  * Template for Pop-up Window
  */
 ?>
-<div class="usa-home-popup-overlay">
+<div class="usa-home-popup-overlay" data-title="<?php print $popup_title; ?>">
   <div class="usa-home-popup">
     <a href="<?php print $link['url']; ?>"<?php (!empty($link['target'])) ? print ' target="' . $link['target'] . '"' : '';  ?>>
       <?php if (!empty($popup_image)): ?>

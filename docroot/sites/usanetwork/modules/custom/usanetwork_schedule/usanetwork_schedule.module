@@ -411,13 +411,13 @@ function _usanetwork_schedule_find_node($title) {
 function usanetwork_schedule_pull_on_now_item($time_correlation = 0, $show_title = NULL) {
   $time = REQUEST_TIME + $time_correlation;
 
-  return usanetwork_schedule_pull_by_time($time, 1, 'DESC', $show_title);
+  return usanetwork_schedule_pull_by_time($time, 1, 'DESC', $show_title, $show_title);
 }
 
 /**
  * Pulls next item from schedule.
  */
-function usanetwork_schedule_pull_up_next_item($time_correlation = 0) {
+function usanetwork_schedule_pull_up_next_item($time_correlation = 0, $show_title = NULL) {
   $time = REQUEST_TIME + $time_correlation;
   $query = db_select('usanetwork_schedule', 's');
   $query->fields('s', array());
@@ -432,7 +432,7 @@ function usanetwork_schedule_pull_up_next_item($time_correlation = 0) {
     return array();
   }
 
-  _usanetwork_schedule_fill_schedule_show_nids($result);
+  _usanetwork_schedule_fill_schedule_show_nids($result, $show_title);
 
   return $result;
 }

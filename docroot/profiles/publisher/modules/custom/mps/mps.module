@@ -204,10 +204,10 @@ function mps_page_alter(&$page) {
   $data = _mps_gather_data($page, $status);
   mps_sanitize_output($data);
   if (strpos($status, '40') === 0) {
-    $data = json_encode($data, JSON_UNESCAPED_SLASHES);
+    $encoded_data = json_encode($data, JSON_UNESCAPED_SLASHES);
   }
   else {
-    $data = json_encode($data, JSON_UNESCAPED_UNICODE);
+    $encoded_data = json_encode($data, JSON_UNESCAPED_UNICODE);
   }
 
   $mps_options = array(
@@ -218,35 +218,39 @@ function mps_page_alter(&$page) {
   mps_options_setup($mps_options);
   mps_sanitize_output($mps_options);
 
-  $header_js  = 'var mpscall = ' . $data . "\n";
+  $header_js  = 'var mpscall = ' . $encoded_data . "\n";
   $header_js .= 'var mpsopts = ' . json_encode($mps_options) . "\n";
 
   if (variable_get('mps_integration') == 0) {
-    $header_js .= 'var mps = mps || {};' . "\n";
-    $header_js .= 'document.write(\'<scr\'+\'ipt id="mps-ext-load" src="//\'+mpsopts.host+\'/fetch/ext/load-\'+mpscall.site+\'.js"></scr\'+\'ipt>\');';
+    $header_js .= 'var mps = mps || {};';
   }
   else {
     $header_js .= 'var mps=mps||{}, head=document.head||document.getElementsByTagName(\'head\')[0], mpsload=document.createElement(\'script\'); mpsload.src=\'//\'+mpsopts.host+\'/fetch/ext/load-\'+mpscall.site+\'.js?nowrite=jq\'; mpsload.id="mps-load"; mpsload.async=false; head.insertBefore(mpsload,head.firstChild);';
   }
 
-  $header_options = array(
+  $footer_js = 'typeof(mps.writeFooter)==\'function\' && mps.writeFooter();';
+  $page['content']['#attached']['js'][] = array(
+    'data' => $header_js,
     'type' => 'inline',
     'scope' => 'header',
     'force header' => TRUE,
   );
-  drupal_add_js($header_js, $header_options);
 
-  $footer_js = 'typeof(mps.writeFooter)==\'function\' && mps.writeFooter();';
-  $footer_options = array(
+  $page['content']['#attached']['js'][] = array(
+    'data' => '//' . $mps_options['host'] . '/fetch/ext/load-' . $data['site'] . '.js',
+    'type' => 'external',
+    'scope' => 'header',
+  );
+  $page['content']['#attached']['js'][] = array(
+    'data' => $footer_js,
     'type' => 'inline',
     'scope' => 'footer',
     /**
-    * It should be the last thing inlined on the page.
-    * It prevents drupal from unnecessary files splitting on JS aggregation
-    */
+     * It should be the last thing inlined on the page.
+     * It prevents drupal from unnecessary files splitting on JS aggregation
+     */
     'group' => JS_THEME + 100,
   );
-  drupal_add_js($footer_js, $footer_options);
 }
 
 /**

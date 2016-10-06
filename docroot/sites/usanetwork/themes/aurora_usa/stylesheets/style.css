@@ -37764,7 +37764,7 @@ body.blog .view-display-id-blog_content .views-row {
 .usa-home-popup-overlay {
   background: rgba(0, 0, 0, 0.85);
   height: 100%;
-  display: flex;
+  display: none;
   left: 0;
   overflow: hidden;
   position: fixed;

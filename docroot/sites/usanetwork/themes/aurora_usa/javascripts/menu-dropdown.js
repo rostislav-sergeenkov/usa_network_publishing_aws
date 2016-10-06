@@ -16,10 +16,8 @@
           Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
         }
         if($body.hasClass('sub-menu-is-sticky')) {
-          // $body.css('margin-top', header_submenu_h);
           $('#header').css('padding-bottom', header_submenu_h);
         } else {
-          // $body.css('margin-top', 0);
           $('#header').css('padding-bottom', 0);
         }
       }
@@ -174,6 +172,7 @@
 
       if($submenu.length && $userMenu.length) {
         var upperMenuOffsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1);
+        console.info(upperMenuOffsetTop);
       }
 
       $(document.body).once('window-events', function () {
@@ -423,12 +422,16 @@
         $(window).on('resize', function (e) {
           clearTimeout(timer_id);
           timer_id = setTimeout(function() {
+            submenuOffsetTop = Math.round($submenu.offset()['top']);
             _self.stickyHeader(submenuOffsetTop, $submenu);
             //temporary code for hiding provider
             if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
               Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
             }
             if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
+              /*if($submenu.length && $userMenu.length) {
+                upperMenuOffsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1);
+              }*/
               _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
             }
           }, 300);

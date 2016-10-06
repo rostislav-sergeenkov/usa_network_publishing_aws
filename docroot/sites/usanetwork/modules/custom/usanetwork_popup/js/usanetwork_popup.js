@@ -3,7 +3,46 @@
   Drupal.behaviors.usanetwork_popup = {
     attach: function (context, settings) {
 
-      var popupTitle = $('.usa-home-popup-overlay').attr('data-title');
+      if ($('body').hasClass('front') && $('.usa-home-popup-overlay').length > 0) {
+
+        var popup = $('.usa-home-popup-overlay'),
+            popupTitle = popup.attr('data-title'),
+            popupCookieName = 'popup_window_' + popup.attr('data-popup-id');
+        
+        if(getCookie(popupCookieName) != undefined) {
+          popup.remove();
+        } else {
+          popup.css('display', 'flex');
+
+          popup.once('omniture-tracking', function () {
+            showPopupOmniture();
+          });
+
+          setCookie(popupCookieName);
+          
+          popup.click(function(e){
+            if (e.target.className != 'tile-img' && e.target.className != 'asset-img' && e.target.className != 'usa-popup-link') {
+              clickExitPopupOmniture();
+            }
+            popup.remove();
+          });
+        }
+      }
+
+      function getCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+      }
+
+      function setCookie(name) {
+        var expire_date = new Date(new Date().getTime() + 30 * 86400 * 1000);
+        document.cookie = name + '=1;'
+            + ' expires=' + expire_date.toUTCString() + ';'
+            + ' path=' + Drupal.settings.basePath + ';'
+            + ' domain=.' + document.location.hostname + ';';
+      }
       
       function showPopupOmniture() {
         if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
@@ -31,19 +70,6 @@
         }
       }
 
-      if ($('body').hasClass('front') && $('.usa-home-popup-overlay').length > 0) {
-        $('.usa-home-popup-overlay').once('omniture-tracking', function () {
-          showPopupOmniture();
-        });
-      }
-      
-      $('.usa-home-popup-overlay').click(function(e){
-        if (e.target.className != 'tile-img' && e.target.className != 'asset-img' && e.target.className != 'usa-popup-link') {
-          clickExitPopupOmniture();
-        }
-        $('.usa-home-popup-overlay').remove();
-      });
-      
     }
   }
 

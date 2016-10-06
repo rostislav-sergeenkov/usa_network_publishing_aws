@@ -1,7 +1,10 @@
 .usa-home-popup-overlay {
+  align-items: center;
   background: rgba(0, 0, 0, 0.85);
   height: 100%;
   display: none;
+  flex-direction: row;
+  justify-content: center;
   left: 0;
   overflow: hidden;
   position: fixed;
@@ -11,7 +14,6 @@
 }
 .usa-home-popup {
   height: auto;
-  margin: auto;
   max-height: 90%;
   max-width: 85%;
   position: relative;

@@ -301,28 +301,7 @@
       s.tl(this, 'o', pageName + ' ' + name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
-
-    clickPopupLink: function ($self, popupTitle, pageName) {
-
-      s.linkTrackVars = 'events,pageName,prop25,prop26,prop27,prop65,eVar65';
-      s.linkTrackEvents = s.events = 'event65';
-      s.pageName = 'USA Network : Homepage : '+ popupTitle +' : Pop-up Shown';
-      s.prop25 = 'USA Network : Homepage : '+ popupTitle +' : Pop-up Shown';
-      s.prop26 = 'Pop-Up Image Click';
-      s.prop27 = 'USA Network : Homepage : '+ popupTitle +' : Pop-up Shown | Pop-Up Image Click';
-      s.prop65 = s.eVar65 = 'USA Network : Homepage : '+ popupTitle +' : Pop-Up Image Click';
-
-      if ($self.attr('href') != '#') {
-        s.goToUrl = function () {
-          Drupal.behaviors.omniture_tracking.goToUrl($self);
-        };
-      }
-
-      s.tl(this, 'o', pageName, null, s.goToUrl);
-      s.manageVars('clearVars', s.linkTrackVars, 1);
-      
-    },
-
+    
     carouselNavClick: function (fullName, nameNav) {
 
         s.linkTrackVars = 'events,eVar55,eVar33';
@@ -731,25 +710,6 @@
               } else {
                 Drupal.behaviors.omniture_tracking.globalPromoClick(self);
               }
-            }
-          });
-        });
-
-        // Click popup link
-        $('.usa-home-popup-overlay a').once('omniture-tracking', function () {
-          $(this).on('click', function (e) {
-            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              if ($(this).attr('target') == '_blank') {
-
-              } else {
-                e.preventDefault();
-              }
-
-              var $self = $(this),
-                  popupTitle = $('.usa-home-popup-overlay').attr('data-title'),
-                  pageName = 'USA Network : Homepage : '+ popupTitle +' : Pop-up Shown';
-
-              Drupal.behaviors.omniture_tracking.clickPopupLink($self, popupTitle, pageName);
             }
           });
         });

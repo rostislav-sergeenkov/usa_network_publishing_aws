@@ -19,6 +19,23 @@
           });
 
           setCookie(popupCookieName);
+
+          // Click popup link
+          $('.usa-home-popup-overlay a').once('omniture-tracking', function () {
+            $(this).on('click', function (e) {
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
+
+              var $self = $(this),
+                  pageName = 'USA Network : Homepage : '+ popupTitle +' : Pop-up Shown';
+
+              clickPopupLink($self, popupTitle, pageName);
+
+            });
+          });
           
           popup.click(function(e){
             if (e.target.className != 'tile-img' && e.target.className != 'asset-img' && e.target.className != 'usa-popup-link') {
@@ -67,6 +84,25 @@
 
           s.tl(this, 'o', 'Pop-Up Exit Click');
           s.manageVars('clearVars', s.linkTrackVars, 1);
+        }
+      }
+
+      function clickPopupLink($self, popupTitle, pageName) {
+        if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+          s.linkTrackVars = 'events,pageName,prop25,prop26,prop27,prop65,eVar65';
+          s.linkTrackEvents = s.events = 'event65';
+          s.pageName = 'USA Network : Homepage : '+ popupTitle +' : Pop-up Shown';
+          s.prop25 = 'USA Network : Homepage : '+ popupTitle +' : Pop-up Shown';
+          s.prop26 = 'Pop-Up Image Click';
+          s.prop27 = 'USA Network : Homepage : '+ popupTitle +' : Pop-up Shown | Pop-Up Image Click';
+          s.prop65 = s.eVar65 = 'USA Network : Homepage : '+ popupTitle +' : Pop-Up Image Click';
+
+          s.tl(this, 'o', 'Pop-Up Image Click');
+          s.manageVars('clearVars', s.linkTrackVars, 1);
+
+          if ($self.attr('href') != '#') {
+            Drupal.behaviors.omniture_tracking.goToUrl($self);
+          }
         }
       }
 

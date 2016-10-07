@@ -29,6 +29,9 @@
         height: 100%;
         display: table;
         width: 100%;
+        @include breakpoint($bp-768-width) {
+          background: rgba(0, 0, 0, 0.6);
+        }
       }
     }
     .meta-back {
@@ -49,12 +52,14 @@
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
       }
       @include breakpoint($bp-768-width) {
-        background: #000000;
-        opacity: 0.6;
+        display: none;
       }
     }
     .meta {
       padding-left: 0;
+      @include breakpoint($bp-768-width) {
+        position: static;
+      }
       .meta-icon {
         display: block;
         height: 52px;
@@ -105,9 +110,13 @@
         font-size: 14px;
         line-height: 18px;
         text-align: center;
+        @include breakpoint($bp-min-769-width) {
+          padding: 0 60px;
+        }
         @include breakpoint($bp-min-1601-width) {
           font-size: 18px;
           line-height: 24px;
+          padding: 0 80px;
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(18px, 768);
@@ -122,9 +131,13 @@
         font-size: 16px;
         line-height: 20px;
         text-align: center;
+        @include breakpoint($bp-min-769-width) {
+          padding: 0 60px;
+        }
         @include breakpoint($bp-min-1601-width) {
           font-size: 24px;
           line-height: 30px;
+          padding: 0 80px;
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(24px, 768);
@@ -141,9 +154,13 @@
         line-height: 14px;
         text-align: center;
         text-transform: uppercase;
+        @include breakpoint($bp-min-769-width) {
+          padding: 0 60px;
+        }
         @include breakpoint($bp-min-1601-width) {
           font-size: 16px;
           line-height: 20px;
+          padding: 0 80px;
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(16px, 768);
@@ -414,15 +431,15 @@
       }
       .additional {
         font-family: $avalon-medium;
-        font-size: 13px;
-        line-height: 20px;
+        font-size: 10px;
+        line-height: 15px;
         @include breakpoint($bp-min-1601-width) {
-          font-size: 19px;
-          line-height: 24px;
+          font-size: 15px;
+          line-height: 19px;
         }
         @include breakpoint($bp-768-width) {
-          font-size: get-vw(19px, 768);
-          line-height: 1.4;
+          font-size: get-vw(15px, 768);
+          line-height: get-vw(21px, 768);
         }
       }
       .meta-button {

@@ -5,15 +5,14 @@
       if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches && !$('html').hasClass('touch')) {
         if ($('.right-rail-line').hasClass('bottom-visible')) {
           var stickyShare = $('.sticky-share'),
-              stickyShareHeight = stickyShare.outerHeight(),
-              stickySharePosition = stickyShare.offset()['top'],
-              bottomLinePosition = $('#main-block-bottom-line').offset()['top'],
+              stickySharePosition = stickyShare[0].getBoundingClientRect().bottom,
+              bottomLinePosition = $('#main-block-bottom-line')[0].getBoundingClientRect().top,
               bottomPadding = parseFloat(stickyShare.parent().css('padding-bottom')),
               newDesign = $('body').hasClass('show-new-design'),
-              stickyShareOffsetTop = $('.sticky-share').offset()['top'] - $(window).scrollTop(),
+              stickyShareOffsetTop = stickyShare[0].getBoundingClientRect().top,
               topCoefficient = newDesign? 195/1600: 150/1901,
               currentCoefficient = stickyShareOffsetTop/window.innerWidth;
-          if((bottomLinePosition - stickySharePosition - stickyShareHeight) < bottomPadding) {
+          if((bottomLinePosition - stickySharePosition) < bottomPadding) {
             stickyShare.css({
               bottom: bottomPadding + 'px',
               left: 0,

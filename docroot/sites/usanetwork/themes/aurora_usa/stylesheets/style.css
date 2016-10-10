@@ -27691,196 +27691,352 @@ yx-axis
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-1 {
     font-size: 1.7625vw;
+    text-shadow: 1px 1px 0.88125vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-1 p {
+    text-shadow: 1px 1px 0.88125vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 {
     font-size: 0.63125vw;
+    text-shadow: 1px 1px 0.31563vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 p {
+    text-shadow: 1px 1px 0.31563vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 {
     font-size: 15.78125px;
+    text-shadow: 1px 1px 7.89063px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-1 p {
+    text-shadow: 1px 1px 7.89063px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-2 {
     font-size: 1.91875vw;
+    text-shadow: 1px 1px 0.95937vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-2 p {
+    text-shadow: 1px 1px 0.95937vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 {
     font-size: 0.70938vw;
+    text-shadow: 1px 1px 0.35469vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 p {
+    text-shadow: 1px 1px 0.35469vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 {
     font-size: 17.73438px;
+    text-shadow: 1px 1px 8.86719px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-2 p {
+    text-shadow: 1px 1px 8.86719px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-3 {
     font-size: 2.075vw;
+    text-shadow: 1px 1px 1.0375vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-3 p {
+    text-shadow: 1px 1px 1.0375vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 {
     font-size: 0.7875vw;
+    text-shadow: 1px 1px 0.39375vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 p {
+    text-shadow: 1px 1px 0.39375vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 {
     font-size: 19.6875px;
+    text-shadow: 1px 1px 9.84375px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-3 p {
+    text-shadow: 1px 1px 9.84375px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-4 {
     font-size: 2.23125vw;
+    text-shadow: 1px 1px 1.11562vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-4 p {
+    text-shadow: 1px 1px 1.11562vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 {
     font-size: 0.86563vw;
+    text-shadow: 1px 1px 0.43281vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 p {
+    text-shadow: 1px 1px 0.43281vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 {
     font-size: 21.64063px;
+    text-shadow: 1px 1px 10.82031px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-4 p {
+    text-shadow: 1px 1px 10.82031px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-5 {
     font-size: 2.3875vw;
+    text-shadow: 1px 1px 1.19375vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-5 p {
+    text-shadow: 1px 1px 1.19375vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 {
     font-size: 0.94375vw;
+    text-shadow: 1px 1px 0.47188vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 p {
+    text-shadow: 1px 1px 0.47188vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 {
     font-size: 23.59375px;
+    text-shadow: 1px 1px 11.79688px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-5 p {
+    text-shadow: 1px 1px 11.79688px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-6 {
     font-size: 2.54375vw;
+    text-shadow: 1px 1px 1.27188vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-6 p {
+    text-shadow: 1px 1px 1.27188vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 {
     font-size: 1.02187vw;
+    text-shadow: 1px 1px 0.51094vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 p {
+    text-shadow: 1px 1px 0.51094vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 {
     font-size: 25.54688px;
+    text-shadow: 1px 1px 12.77344px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-6 p {
+    text-shadow: 1px 1px 12.77344px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-7 {
     font-size: 2.7vw;
+    text-shadow: 1px 1px 1.35vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-7 p {
+    text-shadow: 1px 1px 1.35vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 {
     font-size: 1.1vw;
+    text-shadow: 1px 1px 0.55vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 p {
+    text-shadow: 1px 1px 0.55vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 {
     font-size: 27.5px;
+    text-shadow: 1px 1px 13.75px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-7 p {
+    text-shadow: 1px 1px 13.75px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-8 {
     font-size: 2.85625vw;
+    text-shadow: 1px 1px 1.42813vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-8 p {
+    text-shadow: 1px 1px 1.42813vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 {
     font-size: 1.17812vw;
+    text-shadow: 1px 1px 0.58906vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 p {
+    text-shadow: 1px 1px 0.58906vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 {
     font-size: 29.45313px;
+    text-shadow: 1px 1px 14.72656px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-8 p {
+    text-shadow: 1px 1px 14.72656px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-9 {
     font-size: 3.0125vw;
+    text-shadow: 1px 1px 1.50625vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-9 p {
+    text-shadow: 1px 1px 1.50625vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 {
     font-size: 1.25625vw;
+    text-shadow: 1px 1px 0.62812vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 p {
+    text-shadow: 1px 1px 0.62812vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 {
     font-size: 31.40625px;
+    text-shadow: 1px 1px 15.70312px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-9 p {
+    text-shadow: 1px 1px 15.70312px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-10 {
     font-size: 3.16875vw;
+    text-shadow: 1px 1px 1.58438vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-10 p {
+    text-shadow: 1px 1px 1.58438vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 {
     font-size: 1.33438vw;
+    text-shadow: 1px 1px 0.66719vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 p {
+    text-shadow: 1px 1px 0.66719vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 {
     font-size: 33.35938px;
+    text-shadow: 1px 1px 16.67969px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-10 p {
+    text-shadow: 1px 1px 16.67969px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-11 {
     font-size: 3.325vw;
+    text-shadow: 1px 1px 1.6625vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-11 p {
+    text-shadow: 1px 1px 1.6625vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 {
     font-size: 1.4125vw;
+    text-shadow: 1px 1px 0.70625vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 p {
+    text-shadow: 1px 1px 0.70625vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 {
     font-size: 35.3125px;
+    text-shadow: 1px 1px 17.65625px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-11 p {
+    text-shadow: 1px 1px 17.65625px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-12 {
     font-size: 3.48125vw;
+    text-shadow: 1px 1px 1.74063vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-12 p {
+    text-shadow: 1px 1px 1.74063vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 {
     font-size: 1.49063vw;
+    text-shadow: 1px 1px 0.74531vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 p {
+    text-shadow: 1px 1px 0.74531vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 {
     font-size: 37.26563px;
+    text-shadow: 1px 1px 18.63281px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-12 p {
+    text-shadow: 1px 1px 18.63281px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-13 {
     font-size: 3.6375vw;
+    text-shadow: 1px 1px 1.81875vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-mobile-13 p {
+    text-shadow: 1px 1px 1.81875vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-13 {
     font-size: 1.56875vw;
+    text-shadow: 1px 1px 0.78438vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-13 p {
+    text-shadow: 1px 1px 0.78438vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-13 {
     font-size: 39.21875px;
+    text-shadow: 1px 1px 19.60938px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title_prefix.font-desktop-13 p {
+    text-shadow: 1px 1px 19.60938px #333333;
   }
 }
 @media (max-width: 640px) {
@@ -28166,196 +28322,352 @@ yx-axis
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-1 {
     font-size: 6.65vw;
+    text-shadow: 1px 1px 3.325vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-1 p {
+    text-shadow: 1px 1px 3.325vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-1 {
     font-size: 4.125vw;
+    text-shadow: 1px 1px 2.0625vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-1 p {
+    text-shadow: 1px 1px 2.0625vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-1 {
     font-size: 103.125px;
+    text-shadow: 1px 1px 51.5625px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-1 p {
+    text-shadow: 1px 1px 51.5625px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-2 {
     font-size: 7.275vw;
+    text-shadow: 1px 1px 3.6375vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-2 p {
+    text-shadow: 1px 1px 3.6375vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-2 {
     font-size: 4.4375vw;
+    text-shadow: 1px 1px 2.21875vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-2 p {
+    text-shadow: 1px 1px 2.21875vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-2 {
     font-size: 110.9375px;
+    text-shadow: 1px 1px 55.46875px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-2 p {
+    text-shadow: 1px 1px 55.46875px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-3 {
     font-size: 7.9vw;
+    text-shadow: 1px 1px 3.95vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-3 p {
+    text-shadow: 1px 1px 3.95vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-3 {
     font-size: 4.75vw;
+    text-shadow: 1px 1px 2.375vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-3 p {
+    text-shadow: 1px 1px 2.375vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-3 {
     font-size: 118.75px;
+    text-shadow: 1px 1px 59.375px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-3 p {
+    text-shadow: 1px 1px 59.375px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-4 {
     font-size: 8.525vw;
+    text-shadow: 1px 1px 4.2625vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-4 p {
+    text-shadow: 1px 1px 4.2625vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-4 {
     font-size: 5.0625vw;
+    text-shadow: 1px 1px 2.53125vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-4 p {
+    text-shadow: 1px 1px 2.53125vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-4 {
     font-size: 126.5625px;
+    text-shadow: 1px 1px 63.28125px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-4 p {
+    text-shadow: 1px 1px 63.28125px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-5 {
     font-size: 9.15vw;
+    text-shadow: 1px 1px 4.575vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-5 p {
+    text-shadow: 1px 1px 4.575vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-5 {
     font-size: 5.375vw;
+    text-shadow: 1px 1px 2.6875vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-5 p {
+    text-shadow: 1px 1px 2.6875vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-5 {
     font-size: 134.375px;
+    text-shadow: 1px 1px 67.1875px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-5 p {
+    text-shadow: 1px 1px 67.1875px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-6 {
     font-size: 9.775vw;
+    text-shadow: 1px 1px 4.8875vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-6 p {
+    text-shadow: 1px 1px 4.8875vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-6 {
     font-size: 5.6875vw;
+    text-shadow: 1px 1px 2.84375vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-6 p {
+    text-shadow: 1px 1px 2.84375vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-6 {
     font-size: 142.1875px;
+    text-shadow: 1px 1px 71.09375px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-6 p {
+    text-shadow: 1px 1px 71.09375px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-7 {
     font-size: 10.4vw;
+    text-shadow: 1px 1px 5.2vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-7 p {
+    text-shadow: 1px 1px 5.2vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-7 {
     font-size: 6.0vw;
+    text-shadow: 1px 1px 3.0vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-7 p {
+    text-shadow: 1px 1px 3.0vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-7 {
     font-size: 150px;
+    text-shadow: 1px 1px 75px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-7 p {
+    text-shadow: 1px 1px 75px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-8 {
     font-size: 11.025vw;
+    text-shadow: 1px 1px 5.5125vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-8 p {
+    text-shadow: 1px 1px 5.5125vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-8 {
     font-size: 6.3125vw;
+    text-shadow: 1px 1px 3.15625vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-8 p {
+    text-shadow: 1px 1px 3.15625vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-8 {
     font-size: 157.8125px;
+    text-shadow: 1px 1px 78.90625px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-8 p {
+    text-shadow: 1px 1px 78.90625px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-9 {
     font-size: 11.65vw;
+    text-shadow: 1px 1px 5.825vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-9 p {
+    text-shadow: 1px 1px 5.825vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-9 {
     font-size: 6.625vw;
+    text-shadow: 1px 1px 3.3125vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-9 p {
+    text-shadow: 1px 1px 3.3125vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-9 {
     font-size: 165.625px;
+    text-shadow: 1px 1px 82.8125px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-9 p {
+    text-shadow: 1px 1px 82.8125px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-10 {
     font-size: 12.275vw;
+    text-shadow: 1px 1px 6.1375vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-10 p {
+    text-shadow: 1px 1px 6.1375vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-10 {
     font-size: 6.9375vw;
+    text-shadow: 1px 1px 3.46875vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-10 p {
+    text-shadow: 1px 1px 3.46875vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-10 {
     font-size: 173.4375px;
+    text-shadow: 1px 1px 86.71875px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-10 p {
+    text-shadow: 1px 1px 86.71875px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-11 {
     font-size: 12.9vw;
+    text-shadow: 1px 1px 6.45vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-11 p {
+    text-shadow: 1px 1px 6.45vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-11 {
     font-size: 7.25vw;
+    text-shadow: 1px 1px 3.625vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-11 p {
+    text-shadow: 1px 1px 3.625vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-11 {
     font-size: 181.25px;
+    text-shadow: 1px 1px 90.625px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-11 p {
+    text-shadow: 1px 1px 90.625px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-12 {
     font-size: 13.525vw;
+    text-shadow: 1px 1px 6.7625vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-12 p {
+    text-shadow: 1px 1px 6.7625vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-12 {
     font-size: 7.5625vw;
+    text-shadow: 1px 1px 3.78125vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-12 p {
+    text-shadow: 1px 1px 3.78125vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-12 {
     font-size: 189.0625px;
+    text-shadow: 1px 1px 94.53125px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-12 p {
+    text-shadow: 1px 1px 94.53125px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .title.font-mobile-13 {
     font-size: 14.15vw;
+    text-shadow: 1px 1px 7.075vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-mobile-13 p {
+    text-shadow: 1px 1px 7.075vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-13 {
     font-size: 7.875vw;
+    text-shadow: 1px 1px 3.9375vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-13 p {
+    text-shadow: 1px 1px 3.9375vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .title.font-desktop-13 {
     font-size: 196.875px;
+    text-shadow: 1px 1px 98.4375px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .title.font-desktop-13 p {
+    text-shadow: 1px 1px 98.4375px #333333;
   }
 }
 @media (max-width: 640px) {
@@ -28645,196 +28957,352 @@ yx-axis
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-1 {
     font-size: 1.71875vw;
+    text-shadow: 1px 1px 0.85938vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-1 p {
+    text-shadow: 1px 1px 0.85938vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 {
     font-size: 1.17188vw;
+    text-shadow: 1px 1px 0.58594vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 p {
+    text-shadow: 1px 1px 0.58594vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 {
     font-size: 29.29688px;
+    text-shadow: 1px 1px 14.64844px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-1 p {
+    text-shadow: 1px 1px 14.64844px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-2 {
     font-size: 1.95313vw;
+    text-shadow: 1px 1px 0.97656vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-2 p {
+    text-shadow: 1px 1px 0.97656vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 {
     font-size: 1.28906vw;
+    text-shadow: 1px 1px 0.64453vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 p {
+    text-shadow: 1px 1px 0.64453vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 {
     font-size: 32.22656px;
+    text-shadow: 1px 1px 16.11328px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-2 p {
+    text-shadow: 1px 1px 16.11328px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-3 {
     font-size: 2.1875vw;
+    text-shadow: 1px 1px 1.09375vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-3 p {
+    text-shadow: 1px 1px 1.09375vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 {
     font-size: 1.40625vw;
+    text-shadow: 1px 1px 0.70313vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 p {
+    text-shadow: 1px 1px 0.70313vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 {
     font-size: 35.15625px;
+    text-shadow: 1px 1px 17.57813px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-3 p {
+    text-shadow: 1px 1px 17.57813px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-4 {
     font-size: 2.42188vw;
+    text-shadow: 1px 1px 1.21094vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-4 p {
+    text-shadow: 1px 1px 1.21094vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 {
     font-size: 1.52344vw;
+    text-shadow: 1px 1px 0.76172vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 p {
+    text-shadow: 1px 1px 0.76172vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 {
     font-size: 38.08594px;
+    text-shadow: 1px 1px 19.04297px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-4 p {
+    text-shadow: 1px 1px 19.04297px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-5 {
     font-size: 2.65625vw;
+    text-shadow: 1px 1px 1.32813vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-5 p {
+    text-shadow: 1px 1px 1.32813vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 {
     font-size: 1.64063vw;
+    text-shadow: 1px 1px 0.82031vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 p {
+    text-shadow: 1px 1px 0.82031vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 {
     font-size: 41.01563px;
+    text-shadow: 1px 1px 20.50781px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-5 p {
+    text-shadow: 1px 1px 20.50781px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-6 {
     font-size: 2.89063vw;
+    text-shadow: 1px 1px 1.44531vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-6 p {
+    text-shadow: 1px 1px 1.44531vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 {
     font-size: 1.75781vw;
+    text-shadow: 1px 1px 0.87891vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 p {
+    text-shadow: 1px 1px 0.87891vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 {
     font-size: 43.94531px;
+    text-shadow: 1px 1px 21.97266px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-6 p {
+    text-shadow: 1px 1px 21.97266px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-7 {
     font-size: 3.125vw;
+    text-shadow: 1px 1px 1.5625vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-7 p {
+    text-shadow: 1px 1px 1.5625vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 {
     font-size: 1.875vw;
+    text-shadow: 1px 1px 0.9375vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 p {
+    text-shadow: 1px 1px 0.9375vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 {
     font-size: 46.875px;
+    text-shadow: 1px 1px 23.4375px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-7 p {
+    text-shadow: 1px 1px 23.4375px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-8 {
     font-size: 3.35938vw;
+    text-shadow: 1px 1px 1.67969vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-8 p {
+    text-shadow: 1px 1px 1.67969vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 {
     font-size: 1.99219vw;
+    text-shadow: 1px 1px 0.99609vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 p {
+    text-shadow: 1px 1px 0.99609vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 {
     font-size: 49.80469px;
+    text-shadow: 1px 1px 24.90234px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-8 p {
+    text-shadow: 1px 1px 24.90234px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-9 {
     font-size: 3.59375vw;
+    text-shadow: 1px 1px 1.79688vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-9 p {
+    text-shadow: 1px 1px 1.79688vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 {
     font-size: 2.10938vw;
+    text-shadow: 1px 1px 1.05469vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 p {
+    text-shadow: 1px 1px 1.05469vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 {
     font-size: 52.73438px;
+    text-shadow: 1px 1px 26.36719px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-9 p {
+    text-shadow: 1px 1px 26.36719px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-10 {
     font-size: 3.82813vw;
+    text-shadow: 1px 1px 1.91406vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-10 p {
+    text-shadow: 1px 1px 1.91406vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 {
     font-size: 2.22656vw;
+    text-shadow: 1px 1px 1.11328vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 p {
+    text-shadow: 1px 1px 1.11328vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 {
     font-size: 55.66406px;
+    text-shadow: 1px 1px 27.83203px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-10 p {
+    text-shadow: 1px 1px 27.83203px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-11 {
     font-size: 4.0625vw;
+    text-shadow: 1px 1px 2.03125vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-11 p {
+    text-shadow: 1px 1px 2.03125vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 {
     font-size: 2.34375vw;
+    text-shadow: 1px 1px 1.17188vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 p {
+    text-shadow: 1px 1px 1.17188vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 {
     font-size: 58.59375px;
+    text-shadow: 1px 1px 29.29688px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-11 p {
+    text-shadow: 1px 1px 29.29688px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-12 {
     font-size: 4.29688vw;
+    text-shadow: 1px 1px 2.14844vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-12 p {
+    text-shadow: 1px 1px 2.14844vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 {
     font-size: 2.46094vw;
+    text-shadow: 1px 1px 1.23047vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 p {
+    text-shadow: 1px 1px 1.23047vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 {
     font-size: 61.52344px;
+    text-shadow: 1px 1px 30.76172px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-12 p {
+    text-shadow: 1px 1px 30.76172px #333333;
   }
 }
 @media (max-width: 640px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-13 {
     font-size: 4.53125vw;
+    text-shadow: 1px 1px 2.26563vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-mobile-13 p {
+    text-shadow: 1px 1px 2.26563vw #333333;
   }
 }
 @media (min-width: 641px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-13 {
     font-size: 2.57813vw;
+    text-shadow: 1px 1px 1.28906vw #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-13 p {
+    text-shadow: 1px 1px 1.28906vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-13 {
     font-size: 64.45313px;
+    text-shadow: 1px 1px 32.22656px #333333;
+  }
+  .usanetwork-aspot .meta-wrap .aspot-description.font-desktop-13 p {
+    text-shadow: 1px 1px 32.22656px #333333;
   }
 }
 @media (max-width: 640px) {
@@ -29106,7 +29574,17 @@ yx-axis
 }
 .usanetwork-aspot .meta-wrap .cta-link:not(.cta_button_0) a {
   background: none !important;
-  text-shadow: 1px 1px 0.5em #333333;
+  text-shadow: 1px 1px 0.635vw #333333;
+}
+@media (min-width: 2500px) {
+  .usanetwork-aspot .meta-wrap .cta-link:not(.cta_button_0) a {
+    text-shadow: 1px 1px 15.87px #333333;
+  }
+}
+@media (max-width: 640px) {
+  .usanetwork-aspot .meta-wrap .cta-link:not(.cta_button_0) a {
+    text-shadow: 1px 1px 1.35vw #333333;
+  }
 }
 .usanetwork-aspot .meta-wrap .cta-link.cta_button_0 a {
   padding: 1.4vw 4.5vw 1.4vw 3.5vw;
@@ -29982,196 +30460,352 @@ yx-axis
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-1 {
     font-size: 1.7625vw;
+    text-shadow: 1px 1px 0.88125vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-1 p {
+    text-shadow: 1px 1px 0.88125vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-1 {
     font-size: 0.63125vw;
+    text-shadow: 1px 1px 0.31563vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-1 p {
+    text-shadow: 1px 1px 0.31563vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-1 {
     font-size: 15.78125px;
+    text-shadow: 1px 1px 7.89063px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-1 p {
+    text-shadow: 1px 1px 7.89063px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-2 {
     font-size: 1.91875vw;
+    text-shadow: 1px 1px 0.95937vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-2 p {
+    text-shadow: 1px 1px 0.95937vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-2 {
     font-size: 0.70938vw;
+    text-shadow: 1px 1px 0.35469vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-2 p {
+    text-shadow: 1px 1px 0.35469vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-2 {
     font-size: 17.73438px;
+    text-shadow: 1px 1px 8.86719px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-2 p {
+    text-shadow: 1px 1px 8.86719px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-3 {
     font-size: 2.075vw;
+    text-shadow: 1px 1px 1.0375vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-3 p {
+    text-shadow: 1px 1px 1.0375vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-3 {
     font-size: 0.7875vw;
+    text-shadow: 1px 1px 0.39375vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-3 p {
+    text-shadow: 1px 1px 0.39375vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-3 {
     font-size: 19.6875px;
+    text-shadow: 1px 1px 9.84375px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-3 p {
+    text-shadow: 1px 1px 9.84375px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-4 {
     font-size: 2.23125vw;
+    text-shadow: 1px 1px 1.11562vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-4 p {
+    text-shadow: 1px 1px 1.11562vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-4 {
     font-size: 0.86563vw;
+    text-shadow: 1px 1px 0.43281vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-4 p {
+    text-shadow: 1px 1px 0.43281vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-4 {
     font-size: 21.64063px;
+    text-shadow: 1px 1px 10.82031px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-4 p {
+    text-shadow: 1px 1px 10.82031px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-5 {
     font-size: 2.3875vw;
+    text-shadow: 1px 1px 1.19375vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-5 p {
+    text-shadow: 1px 1px 1.19375vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-5 {
     font-size: 0.94375vw;
+    text-shadow: 1px 1px 0.47188vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-5 p {
+    text-shadow: 1px 1px 0.47188vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-5 {
     font-size: 23.59375px;
+    text-shadow: 1px 1px 11.79688px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-5 p {
+    text-shadow: 1px 1px 11.79688px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-6 {
     font-size: 2.54375vw;
+    text-shadow: 1px 1px 1.27188vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-6 p {
+    text-shadow: 1px 1px 1.27188vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-6 {
     font-size: 1.02187vw;
+    text-shadow: 1px 1px 0.51094vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-6 p {
+    text-shadow: 1px 1px 0.51094vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-6 {
     font-size: 25.54688px;
+    text-shadow: 1px 1px 12.77344px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-6 p {
+    text-shadow: 1px 1px 12.77344px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-7 {
     font-size: 2.7vw;
+    text-shadow: 1px 1px 1.35vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-7 p {
+    text-shadow: 1px 1px 1.35vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-7 {
     font-size: 1.1vw;
+    text-shadow: 1px 1px 0.55vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-7 p {
+    text-shadow: 1px 1px 0.55vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-7 {
     font-size: 27.5px;
+    text-shadow: 1px 1px 13.75px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-7 p {
+    text-shadow: 1px 1px 13.75px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-8 {
     font-size: 2.85625vw;
+    text-shadow: 1px 1px 1.42813vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-8 p {
+    text-shadow: 1px 1px 1.42813vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-8 {
     font-size: 1.17812vw;
+    text-shadow: 1px 1px 0.58906vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-8 p {
+    text-shadow: 1px 1px 0.58906vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-8 {
     font-size: 29.45313px;
+    text-shadow: 1px 1px 14.72656px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-8 p {
+    text-shadow: 1px 1px 14.72656px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-9 {
     font-size: 3.0125vw;
+    text-shadow: 1px 1px 1.50625vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-9 p {
+    text-shadow: 1px 1px 1.50625vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-9 {
     font-size: 1.25625vw;
+    text-shadow: 1px 1px 0.62812vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-9 p {
+    text-shadow: 1px 1px 0.62812vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-9 {
     font-size: 31.40625px;
+    text-shadow: 1px 1px 15.70312px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-9 p {
+    text-shadow: 1px 1px 15.70312px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-10 {
     font-size: 3.16875vw;
+    text-shadow: 1px 1px 1.58438vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-10 p {
+    text-shadow: 1px 1px 1.58438vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-10 {
     font-size: 1.33438vw;
+    text-shadow: 1px 1px 0.66719vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-10 p {
+    text-shadow: 1px 1px 0.66719vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-10 {
     font-size: 33.35938px;
+    text-shadow: 1px 1px 16.67969px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-10 p {
+    text-shadow: 1px 1px 16.67969px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-11 {
     font-size: 3.325vw;
+    text-shadow: 1px 1px 1.6625vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-11 p {
+    text-shadow: 1px 1px 1.6625vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-11 {
     font-size: 1.4125vw;
+    text-shadow: 1px 1px 0.70625vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-11 p {
+    text-shadow: 1px 1px 0.70625vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-11 {
     font-size: 35.3125px;
+    text-shadow: 1px 1px 17.65625px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-11 p {
+    text-shadow: 1px 1px 17.65625px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-12 {
     font-size: 3.48125vw;
+    text-shadow: 1px 1px 1.74063vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-12 p {
+    text-shadow: 1px 1px 1.74063vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-12 {
     font-size: 1.49063vw;
+    text-shadow: 1px 1px 0.74531vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-12 p {
+    text-shadow: 1px 1px 0.74531vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-12 {
     font-size: 37.26563px;
+    text-shadow: 1px 1px 18.63281px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-12 p {
+    text-shadow: 1px 1px 18.63281px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-13 {
     font-size: 3.6375vw;
+    text-shadow: 1px 1px 1.81875vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-mobile-13 p {
+    text-shadow: 1px 1px 1.81875vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-13 {
     font-size: 1.56875vw;
+    text-shadow: 1px 1px 0.78438vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-13 p {
+    text-shadow: 1px 1px 0.78438vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-13 {
     font-size: 39.21875px;
+    text-shadow: 1px 1px 19.60938px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title_prefix.font-desktop-13 p {
+    text-shadow: 1px 1px 19.60938px #333333;
   }
 }
 @media (max-width: 640px) {
@@ -30817,196 +31451,352 @@ yx-axis
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-1 {
     font-size: 6.65vw;
+    text-shadow: 1px 1px 3.325vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-1 p {
+    text-shadow: 1px 1px 3.325vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-1 {
     font-size: 4.125vw;
+    text-shadow: 1px 1px 2.0625vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-1 p {
+    text-shadow: 1px 1px 2.0625vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-1 {
     font-size: 103.125px;
+    text-shadow: 1px 1px 51.5625px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-1 p {
+    text-shadow: 1px 1px 51.5625px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-2 {
     font-size: 7.275vw;
+    text-shadow: 1px 1px 3.6375vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-2 p {
+    text-shadow: 1px 1px 3.6375vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-2 {
     font-size: 4.4375vw;
+    text-shadow: 1px 1px 2.21875vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-2 p {
+    text-shadow: 1px 1px 2.21875vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-2 {
     font-size: 110.9375px;
+    text-shadow: 1px 1px 55.46875px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-2 p {
+    text-shadow: 1px 1px 55.46875px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-3 {
     font-size: 7.9vw;
+    text-shadow: 1px 1px 3.95vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-3 p {
+    text-shadow: 1px 1px 3.95vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-3 {
     font-size: 4.75vw;
+    text-shadow: 1px 1px 2.375vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-3 p {
+    text-shadow: 1px 1px 2.375vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-3 {
     font-size: 118.75px;
+    text-shadow: 1px 1px 59.375px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-3 p {
+    text-shadow: 1px 1px 59.375px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-4 {
     font-size: 8.525vw;
+    text-shadow: 1px 1px 4.2625vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-4 p {
+    text-shadow: 1px 1px 4.2625vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-4 {
     font-size: 5.0625vw;
+    text-shadow: 1px 1px 2.53125vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-4 p {
+    text-shadow: 1px 1px 2.53125vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-4 {
     font-size: 126.5625px;
+    text-shadow: 1px 1px 63.28125px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-4 p {
+    text-shadow: 1px 1px 63.28125px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-5 {
     font-size: 9.15vw;
+    text-shadow: 1px 1px 4.575vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-5 p {
+    text-shadow: 1px 1px 4.575vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-5 {
     font-size: 5.375vw;
+    text-shadow: 1px 1px 2.6875vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-5 p {
+    text-shadow: 1px 1px 2.6875vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-5 {
     font-size: 134.375px;
+    text-shadow: 1px 1px 67.1875px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-5 p {
+    text-shadow: 1px 1px 67.1875px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-6 {
     font-size: 9.775vw;
+    text-shadow: 1px 1px 4.8875vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-6 p {
+    text-shadow: 1px 1px 4.8875vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-6 {
     font-size: 5.6875vw;
+    text-shadow: 1px 1px 2.84375vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-6 p {
+    text-shadow: 1px 1px 2.84375vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-6 {
     font-size: 142.1875px;
+    text-shadow: 1px 1px 71.09375px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-6 p {
+    text-shadow: 1px 1px 71.09375px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-7 {
     font-size: 10.4vw;
+    text-shadow: 1px 1px 5.2vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-7 p {
+    text-shadow: 1px 1px 5.2vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-7 {
     font-size: 6.0vw;
+    text-shadow: 1px 1px 3.0vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-7 p {
+    text-shadow: 1px 1px 3.0vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-7 {
     font-size: 150px;
+    text-shadow: 1px 1px 75px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-7 p {
+    text-shadow: 1px 1px 75px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-8 {
     font-size: 11.025vw;
+    text-shadow: 1px 1px 5.5125vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-8 p {
+    text-shadow: 1px 1px 5.5125vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-8 {
     font-size: 6.3125vw;
+    text-shadow: 1px 1px 3.15625vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-8 p {
+    text-shadow: 1px 1px 3.15625vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-8 {
     font-size: 157.8125px;
+    text-shadow: 1px 1px 78.90625px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-8 p {
+    text-shadow: 1px 1px 78.90625px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-9 {
     font-size: 11.65vw;
+    text-shadow: 1px 1px 5.825vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-9 p {
+    text-shadow: 1px 1px 5.825vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-9 {
     font-size: 6.625vw;
+    text-shadow: 1px 1px 3.3125vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-9 p {
+    text-shadow: 1px 1px 3.3125vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-9 {
     font-size: 165.625px;
+    text-shadow: 1px 1px 82.8125px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-9 p {
+    text-shadow: 1px 1px 82.8125px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-10 {
     font-size: 12.275vw;
+    text-shadow: 1px 1px 6.1375vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-10 p {
+    text-shadow: 1px 1px 6.1375vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-10 {
     font-size: 6.9375vw;
+    text-shadow: 1px 1px 3.46875vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-10 p {
+    text-shadow: 1px 1px 3.46875vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-10 {
     font-size: 173.4375px;
+    text-shadow: 1px 1px 86.71875px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-10 p {
+    text-shadow: 1px 1px 86.71875px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-11 {
     font-size: 12.9vw;
+    text-shadow: 1px 1px 6.45vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-11 p {
+    text-shadow: 1px 1px 6.45vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-11 {
     font-size: 7.25vw;
+    text-shadow: 1px 1px 3.625vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-11 p {
+    text-shadow: 1px 1px 3.625vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-11 {
     font-size: 181.25px;
+    text-shadow: 1px 1px 90.625px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-11 p {
+    text-shadow: 1px 1px 90.625px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-12 {
     font-size: 13.525vw;
+    text-shadow: 1px 1px 6.7625vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-12 p {
+    text-shadow: 1px 1px 6.7625vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-12 {
     font-size: 7.5625vw;
+    text-shadow: 1px 1px 3.78125vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-12 p {
+    text-shadow: 1px 1px 3.78125vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-12 {
     font-size: 189.0625px;
+    text-shadow: 1px 1px 94.53125px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-12 p {
+    text-shadow: 1px 1px 94.53125px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-13 {
     font-size: 14.15vw;
+    text-shadow: 1px 1px 7.075vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-mobile-13 p {
+    text-shadow: 1px 1px 7.075vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-13 {
     font-size: 7.875vw;
+    text-shadow: 1px 1px 3.9375vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-13 p {
+    text-shadow: 1px 1px 3.9375vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-13 {
     font-size: 196.875px;
+    text-shadow: 1px 1px 98.4375px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .title.font-desktop-13 p {
+    text-shadow: 1px 1px 98.4375px #333333;
   }
 }
 @media (max-width: 640px) {
@@ -31656,196 +32446,352 @@ yx-axis
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-1 {
     font-size: 1.71875vw;
+    text-shadow: 1px 1px 0.85938vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-1 p {
+    text-shadow: 1px 1px 0.85938vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-1 {
     font-size: 1.17188vw;
+    text-shadow: 1px 1px 0.58594vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-1 p {
+    text-shadow: 1px 1px 0.58594vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-1 {
     font-size: 29.29688px;
+    text-shadow: 1px 1px 14.64844px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-1 p {
+    text-shadow: 1px 1px 14.64844px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-2 {
     font-size: 1.95313vw;
+    text-shadow: 1px 1px 0.97656vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-2 p {
+    text-shadow: 1px 1px 0.97656vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-2 {
     font-size: 1.28906vw;
+    text-shadow: 1px 1px 0.64453vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-2 p {
+    text-shadow: 1px 1px 0.64453vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-2 {
     font-size: 32.22656px;
+    text-shadow: 1px 1px 16.11328px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-2 p {
+    text-shadow: 1px 1px 16.11328px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-3 {
     font-size: 2.1875vw;
+    text-shadow: 1px 1px 1.09375vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-3 p {
+    text-shadow: 1px 1px 1.09375vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-3 {
     font-size: 1.40625vw;
+    text-shadow: 1px 1px 0.70313vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-3 p {
+    text-shadow: 1px 1px 0.70313vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-3 {
     font-size: 35.15625px;
+    text-shadow: 1px 1px 17.57813px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-3 p {
+    text-shadow: 1px 1px 17.57813px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-4 {
     font-size: 2.42188vw;
+    text-shadow: 1px 1px 1.21094vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-4 p {
+    text-shadow: 1px 1px 1.21094vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-4 {
     font-size: 1.52344vw;
+    text-shadow: 1px 1px 0.76172vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-4 p {
+    text-shadow: 1px 1px 0.76172vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-4 {
     font-size: 38.08594px;
+    text-shadow: 1px 1px 19.04297px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-4 p {
+    text-shadow: 1px 1px 19.04297px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-5 {
     font-size: 2.65625vw;
+    text-shadow: 1px 1px 1.32813vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-5 p {
+    text-shadow: 1px 1px 1.32813vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-5 {
     font-size: 1.64063vw;
+    text-shadow: 1px 1px 0.82031vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-5 p {
+    text-shadow: 1px 1px 0.82031vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-5 {
     font-size: 41.01563px;
+    text-shadow: 1px 1px 20.50781px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-5 p {
+    text-shadow: 1px 1px 20.50781px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-6 {
     font-size: 2.89063vw;
+    text-shadow: 1px 1px 1.44531vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-6 p {
+    text-shadow: 1px 1px 1.44531vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-6 {
     font-size: 1.75781vw;
+    text-shadow: 1px 1px 0.87891vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-6 p {
+    text-shadow: 1px 1px 0.87891vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-6 {
     font-size: 43.94531px;
+    text-shadow: 1px 1px 21.97266px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-6 p {
+    text-shadow: 1px 1px 21.97266px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-7 {
     font-size: 3.125vw;
+    text-shadow: 1px 1px 1.5625vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-7 p {
+    text-shadow: 1px 1px 1.5625vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-7 {
     font-size: 1.875vw;
+    text-shadow: 1px 1px 0.9375vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-7 p {
+    text-shadow: 1px 1px 0.9375vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-7 {
     font-size: 46.875px;
+    text-shadow: 1px 1px 23.4375px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-7 p {
+    text-shadow: 1px 1px 23.4375px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-8 {
     font-size: 3.35938vw;
+    text-shadow: 1px 1px 1.67969vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-8 p {
+    text-shadow: 1px 1px 1.67969vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-8 {
     font-size: 1.99219vw;
+    text-shadow: 1px 1px 0.99609vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-8 p {
+    text-shadow: 1px 1px 0.99609vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-8 {
     font-size: 49.80469px;
+    text-shadow: 1px 1px 24.90234px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-8 p {
+    text-shadow: 1px 1px 24.90234px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-9 {
     font-size: 3.59375vw;
+    text-shadow: 1px 1px 1.79688vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-9 p {
+    text-shadow: 1px 1px 1.79688vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-9 {
     font-size: 2.10938vw;
+    text-shadow: 1px 1px 1.05469vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-9 p {
+    text-shadow: 1px 1px 1.05469vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-9 {
     font-size: 52.73438px;
+    text-shadow: 1px 1px 26.36719px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-9 p {
+    text-shadow: 1px 1px 26.36719px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-10 {
     font-size: 3.82813vw;
+    text-shadow: 1px 1px 1.91406vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-10 p {
+    text-shadow: 1px 1px 1.91406vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-10 {
     font-size: 2.22656vw;
+    text-shadow: 1px 1px 1.11328vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-10 p {
+    text-shadow: 1px 1px 1.11328vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-10 {
     font-size: 55.66406px;
+    text-shadow: 1px 1px 27.83203px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-10 p {
+    text-shadow: 1px 1px 27.83203px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-11 {
     font-size: 4.0625vw;
+    text-shadow: 1px 1px 2.03125vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-11 p {
+    text-shadow: 1px 1px 2.03125vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-11 {
     font-size: 2.34375vw;
+    text-shadow: 1px 1px 1.17188vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-11 p {
+    text-shadow: 1px 1px 1.17188vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-11 {
     font-size: 58.59375px;
+    text-shadow: 1px 1px 29.29688px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-11 p {
+    text-shadow: 1px 1px 29.29688px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-12 {
     font-size: 4.29688vw;
+    text-shadow: 1px 1px 2.14844vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-12 p {
+    text-shadow: 1px 1px 2.14844vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-12 {
     font-size: 2.46094vw;
+    text-shadow: 1px 1px 1.23047vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-12 p {
+    text-shadow: 1px 1px 1.23047vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-12 {
     font-size: 61.52344px;
+    text-shadow: 1px 1px 30.76172px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-12 p {
+    text-shadow: 1px 1px 30.76172px #333333;
   }
 }
 @media (max-width: 640px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-13 {
     font-size: 4.53125vw;
+    text-shadow: 1px 1px 2.26563vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-mobile-13 p {
+    text-shadow: 1px 1px 2.26563vw #333333;
   }
 }
 @media (min-width: 641px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-13 {
     font-size: 2.57813vw;
+    text-shadow: 1px 1px 1.28906vw #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-13 p {
+    text-shadow: 1px 1px 1.28906vw #333333;
   }
 }
 @media (min-width: 2500px) {
   .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-13 {
     font-size: 64.45313px;
+    text-shadow: 1px 1px 32.22656px #333333;
+  }
+  .node-type-usanetwork-aspot #show_aspot_preview.show-new-design .meta-wrap .aspot-description.font-desktop-13 p {
+    text-shadow: 1px 1px 32.22656px #333333;
   }
 }
 @media (max-width: 640px) {

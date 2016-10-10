@@ -29,8 +29,10 @@
       url: url + nid + '/' + versionRR,
       method: "GET"
     }).done(function (data) {
+
       var rightRailHTML = data.data;
       $currentBlock.replaceWith(rightRailHTML);
+
       // check and create images on page
       if (window.hasOwnProperty('picturefill')) {
         window.picturefill();

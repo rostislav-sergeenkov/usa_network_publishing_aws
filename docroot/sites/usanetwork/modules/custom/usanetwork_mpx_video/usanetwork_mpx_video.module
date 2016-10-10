@@ -459,52 +459,60 @@ function usanetwork_mpx_video_full_latest_episodes_carousel() {
   }
 
   foreach ($carousel_episodes as $episode) {
-    $episode_wrapper = entity_metadata_wrapper('file', $episode);
+    if (!empty($episode)) {
+      $episode_wrapper = entity_metadata_wrapper('file', $episode);
 
-    $show = $episode_wrapper->field_show->value();
-    $show_color = usanetwork_tv_shows_color_show_css_class($show);
-    $episode_season = $episode_wrapper->field_mpx_season_number->value();
-    $episode_number = $episode_wrapper->field_mpx_episode_number->value();
-    if (!empty($episode->field_promo_image_override)) {
-      $episode_field_items = field_get_items('file', $episode, 'field_promo_image_override');
+      $show = $episode_wrapper->field_show->value();
+      $show_color = usanetwork_tv_shows_color_show_css_class($show);
+      $episode_season = $episode_wrapper->field_mpx_season_number->value();
+      $episode_number = $episode_wrapper->field_mpx_episode_number->value();
+      if (!empty($episode->field_promo_image_override)) {
+        $episode_field_items = field_get_items('file', $episode, 'field_promo_image_override');
 
-      if (!empty($episode_field_items)) {
-        $field_image_override = reset($episode_field_items);
-        $episode_image = $field_image_override['uri'];
+        if (!empty($episode_field_items)) {
+          $field_image_override = reset($episode_field_items);
+          $episode_image = $field_image_override['uri'];
+        }
       }
-    }
-    else {
-      $episode_image = _usanetwork_mpx_video_get_image_path($episode);
-    }
+      else {
+        $episode_image = _usanetwork_mpx_video_get_image_path($episode);
+      }
 
-    $video_image = theme('image_style', array(
-      'path' => $episode_image,
-      'style_name' => '300x250',
-    ));
-    $season_info = '';
-    if (isset($episode_season)  && isset($episode_number)) {
-      $season_info= t('S@season EP@episode_number', array('@season' => $episode_season, '@episode_number' => $episode_number));
+      $video_image = theme('image_style', array(
+        'path' => $episode_image,
+        'style_name' => '300x250',
+      ));
+      $season_info = '';
+      if (isset($episode_season) && isset($episode_number)) {
+        $season_info = t('S@season EP@episode_number', array(
+          '@season' => $episode_season,
+          '@episode_number' => $episode_number
+        ));
+      }
+      elseif (isset($episode_season)) {
+        $season_info = t('S@season', array('@season' => $episode_season));
+      }
+      elseif (isset($episode_number)) {
+        $season_info = t('EP@episode_number', array('@episode_number' => $episode_number));
+      }
+      $episode_element = array(
+        'show_class' => $show_color,
+        'url' => url('file/' . $episode->fid),
+        'title' => $show->title,
+        'additional' => t('@season_info !episode_title', array(
+          '!episode_title' => _usanetwork_core_get_video_title($episode),
+          '@season_info' => $season_info
+        )),
+        'image' => $video_image,
+        'icon' => usanetwork_core_api_get_media_icon('file', $episode->fid),
+      );
+      $block_items .= theme('usanetwork_mpx_video_home_full_episodes_carousel_item', $episode_element);
+      if ($i % $row_number == $row_number - 1) {
+        $items[] = $block_items;
+        $block_items = '';
+      }
+      $i++;
     }
-    elseif (isset($episode_season)) {
-      $season_info = t('S@season', array('@season' => $episode_season));
-    }
-    elseif (isset($episode_number)) {
-      $season_info = t('EP@episode_number', array('@episode_number' => $episode_number));
-    }
-    $episode_element = array(
-      'show_class' => $show_color,
-      'url' => url('file/' . $episode->fid),
-      'title' => $show->title,
-      'additional' => t('@season_info !episode_title', array('!episode_title' => _usanetwork_core_get_video_title($episode), '@season_info' => $season_info)),
-      'image' => $video_image,
-      'icon' => usanetwork_core_api_get_media_icon('file', $episode->fid),
-    );
-    $block_items .= theme('usanetwork_mpx_video_home_full_episodes_carousel_item', $episode_element);
-    if ($i % $row_number == $row_number - 1) {
-      $items[] = $block_items;
-      $block_items = '';
-    }
-    $i++;
   }
 
   if ($block_items != ''){

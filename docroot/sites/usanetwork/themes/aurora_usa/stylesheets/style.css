@@ -30225,9 +30225,6 @@ yx-axis
 .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel.carousel-end:after {
   display: none;
 }
-.aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .mCSB_scrollTools {
-  width: 4px;
-}
 .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list {
   height: 100%;
   overflow: hidden;

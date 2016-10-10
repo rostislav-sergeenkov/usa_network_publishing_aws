@@ -1,7 +1,6 @@
 (function ($) {
   Drupal.behaviors.usanetwork_menu_dropdown = {
     stickyHeader: function(offsetTop, subMenuSelector) {
-      console.info(offsetTop);
       var $body = $('body'),
           header_submenu_h;
 
@@ -173,7 +172,6 @@
 
       if($submenu.length && $userMenu.length) {
         var upperMenuOffsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1);
-        console.info(upperMenuOffsetTop);
       }
 
       $(document.body).once('window-events', function () {
@@ -428,14 +426,12 @@
             } else {
               submenuOffsetTop = Math.round($submenu.offset()['top']);
             }
-            console.info(submenuOffsetTop);
             _self.stickyHeader(submenuOffsetTop, $submenu);
             //temporary code for hiding provider
             if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
               Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
             }
             if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
-              console.info(upperMenuOffsetTop);
               _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
             }
           }, 300);

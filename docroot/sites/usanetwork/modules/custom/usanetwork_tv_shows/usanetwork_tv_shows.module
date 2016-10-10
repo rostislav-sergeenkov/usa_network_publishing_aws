@@ -235,7 +235,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
             path_to_theme('aurora_usa') . '/javascripts/headroom.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_header.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_menu-dropdown.js',
-            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_carousels.js',
+            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_new_carousel.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_to-top.js'
           ),
         ),
@@ -2374,12 +2374,6 @@ function _usanetwork_tv_shows_aspot_block() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
 
   if (!empty($show_node)) {
-    $alternative_title_field = field_get_items('node', $show_node, 'field_tvs_lea_block_title');
-    $theme_variables['episodes_block_title'] = t('Latest full episodes');
-    if (!empty($alternative_title_field)) {
-      $theme_variables['episodes_block_title'] = check_plain($alternative_title_field[0]['value']);
-    }
-
     $theme_variables['show'] = '<div id="aspot-usanetwork" data-content-type="tv-show"><div id="ajax_aspot_show">' . usanetwork_aspot_tvshow_render($show_node) . '</div></div>';
   }
 
@@ -2391,6 +2385,11 @@ function _usanetwork_tv_shows_aspot_block() {
 }
 
 function usanetwork_tv_show_get_right_rail_variables_a($show_node) {
+  $alternative_title_field = field_get_items('node', $show_node, 'field_tvs_lea_block_title');
+  $theme_variables['episodes_block_title'] = t('Latest full episodes');
+  if (!empty($alternative_title_field)) {
+    $theme_variables['episodes_block_title'] = check_plain($alternative_title_field[0]['value']);
+  }
   $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
   $full_episodes = _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node, $needed_count);
   $theme_variables['items'] = array();
@@ -2406,6 +2405,11 @@ function usanetwork_tv_show_get_right_rail_variables_a($show_node) {
 }
 
 function usanetwork_tv_show_get_right_rail_variables_b($show_node) {
+  $alternative_title_field = field_get_items('node', $show_node, 'field_tvs_lea_block_title');
+  $theme_variables['episodes_block_title'] = t('Latest full episodes');
+  if (!empty($alternative_title_field)) {
+    $theme_variables['episodes_block_title'] = check_plain($alternative_title_field[0]['value']);
+  }
   $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
   $full_episodes = _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node, $needed_count);
   $theme_variables['items'] = array();

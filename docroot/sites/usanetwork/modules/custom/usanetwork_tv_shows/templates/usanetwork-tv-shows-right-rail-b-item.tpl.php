@@ -48,6 +48,9 @@
           <?php if (!empty($title)): ?>
             <div class="title"><?php print $title; ?></div>
           <?php endif; ?>
+          <?php if (!empty($description)): ?>
+            <div class="additional"><?php print $description; ?></div>
+          <?php endif; ?>
         </div>
       </div>
     </div>

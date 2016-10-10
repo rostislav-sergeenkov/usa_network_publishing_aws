@@ -30,6 +30,9 @@
           nameAnimation = 'linear', // default animation
           settings = Drupal.settings,
           counterImg = 0,
+          mousePositionX = 0,
+          mousePositionY = 0,
+          touchDevice = $('html').hasClass('touch'),
           _AT_Admin = $.urlParam('_AT_Admin');
 
       // check count slides before init
@@ -131,7 +134,7 @@
             }
 
             // check sticky header & slider pause
-            switchSlider();
+            switchSlider(true);
 
             // show slide content
             showElements(currentSlide, nextSlideIndex);
@@ -215,9 +218,13 @@
         if (slide.length > 1) {
           waitForFinalEvent(function () {
             // check sticky menu
-            switchSlider();
+            switchSlider(true);
           }, 200, 'scroll page');
         }
+      });
+
+      $(document).on("mousemove", function( event ) {
+        mousePosition(event);
       });
 
       $(window).on('resize', function () {
@@ -243,6 +250,21 @@
       // functions
       //=============
 
+      function mousePosition(event) {
+        mousePositionX = event.clientX;
+        mousePositionY = event.clientY;
+      }
+
+      function checkMousePosition() {
+        var sliderPosition = slider[0].getBoundingClientRect();
+        if(parseInt(mousePositionX) < parseInt(sliderPosition.right) && parseInt(mousePositionX) > parseInt(sliderPosition.left) &&
+            parseInt(mousePositionY) < parseInt(sliderPosition.bottom) && parseInt(mousePositionY) > parseInt(sliderPosition.top)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
       // stop auto play
       function stopAutoplay() {
         slider
@@ -264,7 +286,8 @@
       }
 
       // check sticky menu
-      function switchSlider() {
+      function switchSlider(scrollCheck) {
+        var scrollCheck = scrollCheck || false;
         if (stickyMenu.hasClass('sticky-shows-submenu')) {
           if (!slider.hasClass('isStopped')) {
             slider.slick('slickPause');
@@ -273,7 +296,10 @@
             return false;
           }
         } else {
-          if (slider.hasClass('isStopped')) {
+          if(!touchDevice && scrollCheck && checkMousePosition()) {
+            return false;
+          }
+          else if (slider.hasClass('isStopped')) {
             if (startAuto) {
               slider.slick('slickPlay');
             }
@@ -317,7 +343,7 @@
           easing: nameAnimation,
           complete: function (elements) {
             nextButton.removeClass('disable');
-            switchSlider();
+            switchSlider(true);
           }
         });
       }

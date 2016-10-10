@@ -1,6 +1,7 @@
 (function ($) {
   Drupal.behaviors.usanetwork_menu_dropdown = {
     stickyHeader: function(offsetTop, subMenuSelector) {
+      console.info(offsetTop);
       var $body = $('body'),
           header_submenu_h;
 
@@ -422,16 +423,19 @@
         $(window).on('resize', function (e) {
           clearTimeout(timer_id);
           timer_id = setTimeout(function() {
-            submenuOffsetTop = Math.round($submenu.offset()['top']);
+            if($submenu.hasClass('sticky-shows-submenu')) {
+              submenuOffsetTop = Math.round($('.usa-wrap').offset()['top'] - $submenu.outerHeight(true));
+            } else {
+              submenuOffsetTop = Math.round($submenu.offset()['top']);
+            }
+            console.info(submenuOffsetTop);
             _self.stickyHeader(submenuOffsetTop, $submenu);
             //temporary code for hiding provider
             if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
               Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
             }
             if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
-              /*if($submenu.length && $userMenu.length) {
-                upperMenuOffsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1);
-              }*/
+              console.info(upperMenuOffsetTop);
               _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
             }
           }, 300);

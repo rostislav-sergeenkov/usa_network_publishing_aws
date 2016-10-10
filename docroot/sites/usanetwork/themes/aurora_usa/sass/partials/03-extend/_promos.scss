@@ -1291,7 +1291,8 @@
 
 %three-line-video-promo {
   .three-line-video {
-    /*&.usanetwork-media-gallery-landing-photos-item-small,*/ &.usanetwork-tv-shows-landing-videos-item-small {
+    /*&.usanetwork-media-gallery-landing-photos-item-small,*/
+    &.usanetwork-tv-shows-landing-videos-item-small {
       .meta {
         .caption {
           @include breakpoint($between-769-1024) {
@@ -2250,6 +2251,225 @@
   }
 }
 
+%usa-show-right-rail-carousel-promo {
+  .usa-aspot-carousel-promo {
+    display: flex;
+    margin: auto;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-768-width) {
+      height: auto;
+    }
+    a {
+      display: block;
+      height: 100%;
+      position: relative;
+      width: 100%;
+      padding: calc(#{(get-vw(100px, 1280) - get-vw(67px, 1280)) / 2}) get-vw(14px, 1280);
+      @include breakpoint($bp-min-1901-width) {
+        padding: calc((135px - 83.75px)/2) 18px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: auto;
+        padding: 0;
+      }
+    }
+    .image-block {
+      left: get-vw(14px, 1280);
+      height: get-vw(67px, 1280);
+      margin-top: get-vw(-33.5px, 1280);
+      position: absolute;
+      top: 50%;
+      width: get-vw(79px, 1280);
+      @include breakpoint($bp-min-1901-width) {
+        left: 18px;
+        height: 83.75px;
+        margin-top: -41.875px;
+        width: 98.75px;
+      }
+      @include breakpoint($bp-768-width) {
+        left: 0;
+        height: get-vw(156px, 640);
+        margin: 0;
+        position: relative;
+        top: 0;
+        width: 100%;
+      }
+      .asset-img {
+        height: 100%;
+        position: relative;
+        width: 100%;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .item-number-border, .item-number {
+        background: none;
+        left: 0;
+        position: absolute;
+        top: 0;
+      }
+      .item-number-border {
+        height: get-vw(24px, 1280);
+        width: get-vw(24px, 1280);
+        @include breakpoint($bp-min-1901-width) {
+          height: 30px;
+          width: 30px;
+        }
+        @include breakpoint($bp-768-width) {
+          height: get-vw(48px, 640);
+          width: get-vw(48px, 640);
+        }
+        &:before {
+          color: inherit;
+          @include cssRightTriangle(get-vw(24px, 1280), currentColor, top, left);
+          position: absolute;
+          right: 0;
+          top: 0;
+          z-index: 1;
+          @include breakpoint($bp-min-1901-width) {
+            border-top-width: 30px;
+            border-right-width: 30px;
+          }
+          @include breakpoint($bp-768-width) {
+            border-top-width: get-vw(48px, 640);
+            border-right-width: get-vw(48px, 640);
+          }
+        }
+      }
+      .item-number {
+        color: white;
+        font-family: $avalon-book;
+        font-size: get-vw(12px, 1280);
+        height: get-vw(14px, 1280);
+        line-height: get-vw(14px, 1280);
+        padding-top: 3px;
+        text-align: center;
+        width: get-vw(14px, 1280);
+        z-index: 1;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 15px;
+          height: 17.5px;
+          line-height: 17.5px;
+          width: 17.5px;
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(24px, 640);
+          height: get-vw(28px, 640);
+          line-height: get-vw(28px, 640);
+          width: get-vw(28px, 640);
+        }
+      }
+    }
+    .meta-wrapper {
+      height: 100%;
+      padding-left: get-vw(103px, 1280);
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      @include breakpoint($bp-min-1601-width) {
+        padding-left: 129.25px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: auto;
+        padding: get-vw(15px, 640);
+      }
+    }
+    .meta-wrapper-inner {
+      display: table;
+      height: 100%;
+      position: relative;
+      width: 100%;
+    }
+    .meta {
+      display: table-cell;
+      vertical-align: top;
+      @include breakpoint($bp-768-width) {
+        display: block;
+        margin: 0;
+      }
+    }
+    .violator {
+      color: $consup-border;
+      font-family: $avalon-xlight;
+      font-size: get-vw(12px, 1280);
+      line-height: 1.4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 16px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: get-vw(10px, 1024);
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(18px, 768);
+        line-height: 1.2;
+        margin: 0;
+        white-space: normal;
+      }
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw(24px, 640);
+      }
+    }
+    .title {
+      color: $consup-border;
+      font-family: $avalon-book;
+      font-size: get-vw(14px, 1280);
+      letter-spacing: 1px;
+      line-height: 1.4;
+      max-height: get-vw(75px, 1280);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 17.5px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: get-vw(11px, 1024);
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(20.89px, 768);
+        line-height: 1.2;
+        margin: 0;
+        white-space: normal;
+      }
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw(27.2px, 640);
+      }
+    }
+    .additional {
+      color: $consup-border;
+      font-family: $avalon-book;
+      font-size: get-vw(14px, 1280);
+      letter-spacing: 1px;
+      line-height: 1.4;
+      max-height: get-vw(75px, 1280);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 17.5px;
+      }
+      @include breakpoint($between-769-1024) {
+        font-size: get-vw(11px, 1024);
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: get-vw(20.89px, 768);
+        line-height: 1.2;
+        margin: 0;
+        white-space: normal;
+      }
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw(27.2px, 640);
+      }
+    }
+  }
+}
+
 %usa-bcd-carousel-promo {
   .usa-bcd-carousel-promo {
     height: 100%;
@@ -2387,7 +2607,7 @@
         font-family: $fira-sans-regular;
         font-size: get-vw(27.2px, 1280);
         line-height: 1.2;
-        text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+        text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
         @include breakpoint($bp-min-1601-width) {
           font-size: 34px;
         }
@@ -2406,7 +2626,7 @@
         color: white;
         font-family: $tex-gyreschola-italic;
         font-size: get-vw(12.8px, 1280);
-        text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+        text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
         @include breakpoint($bp-min-1601-width) {
           font-size: 16px;
         }
@@ -2578,7 +2798,7 @@
         font-size: get-vw(27.2px, 1280);
         line-height: 1.2;
         text-align: left;
-        text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+        text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
         @include breakpoint($bp-min-1601-width) {
           font-size: 34px;
         }
@@ -2606,7 +2826,7 @@
           line-height: 1.3;
           outline: none;
           text-transform: uppercase;
-          text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+          text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
           @include breakpoint($bp-min-1601-width) {
             font-size: 21px;
           }
@@ -2627,7 +2847,7 @@
               font-family: $ico-font;
               font-size: get-vw(13.5px, 1280);
               line-height: 1;
-              text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+              text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
               @include breakpoint($bp-min-1601-width) {
                 font-size: 16.875px;
               }
@@ -2661,7 +2881,7 @@
         outline: none;
         position: relative;
         text-transform: uppercase;
-        text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+        text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
         @include breakpoint($bp-min-1601-width) {
           font-size: 18px;
           margin-top: 51.25px;
@@ -2700,6 +2920,7 @@
     }
   }
 }
+
 %usa-episodes-carousel-promo {
   .usa-episodes-carousel-promo {
     height: 100%;
@@ -2824,6 +3045,7 @@
     }
   }
 }
+
 %usa-articles-promo {
   .usa-articles-promo {
     height: auto;
@@ -2844,7 +3066,7 @@
         height: 251.25px;
       }
       @include breakpoint($bp-768-width) {
-        height: calc((100vw - 2*#{get-vw(40px, 640)})*0.5625);
+        height: calc((100vw - 2 * #{get-vw(40px, 640)}) * 0.5625);
       }
       .asset-img {
         height: 100%;
@@ -3288,7 +3510,7 @@
       }
       @include breakpoint($bp-640-width) {
         max-width: 100%;
-        height: calc((100vw - 2*#{get-vw(40px, 640)})*0.5625);
+        height: calc((100vw - 2 * #{get-vw(40px, 640)}) * 0.5625);
         width: 100%;
       }
       img {
@@ -3347,6 +3569,7 @@
     }
   }
 }
+
 %usa-landing-container-promo {
   .usa-landing-container-promo {
     height: 100%;
@@ -3416,13 +3639,13 @@
         font-family: $fira-sans-regular;
         line-height: 1.3;
         text-align: left;
-        text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+        text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
       }
       .additional {
         color: white;
         font-family: $tex-gyreschola-italic;
         text-transform: uppercase;
-        text-shadow: 0.1em 0.06em rgba(0,0,0,0.5);
+        text-shadow: 0.1em 0.06em rgba(0, 0, 0, 0.5);
         @include breakpoint($bp-768-width) {
           text-transform: none;
         }
@@ -3683,6 +3906,7 @@
     }
   }
 }
+
 %usa-cast-promo {
   .usa-cast-promo {
     .asset-img {

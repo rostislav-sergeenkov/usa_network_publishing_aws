@@ -175,6 +175,8 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/spin.min.js');
   drupal_add_js($theme_path . '/javascripts/USAN.js', array('scope' => 'header', 'weight' => -100));
   drupal_add_js($theme_path . '/javascripts/isMobile.js');
+  drupal_add_js($theme_path . '/javascripts/usa_new_show_design/usa_new_carousel.js');
+  drupal_add_js($theme_path . '/javascripts/usa-show-page-right-rail-target.js');
   if(drupal_is_front_page()) {
     drupal_add_js($theme_path . '/javascripts/jquery.dotdotdot.min.js');
   }

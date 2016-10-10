@@ -9,5 +9,5 @@
       <?php print $show ?>
     <?php endif; ?>
   </div>
+  <div class="episodes-list episodes-list-loader"></div>
 </div>
-

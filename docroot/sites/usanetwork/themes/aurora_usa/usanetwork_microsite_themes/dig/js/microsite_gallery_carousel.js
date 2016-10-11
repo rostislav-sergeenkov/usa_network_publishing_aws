@@ -1,6 +1,6 @@
-(function($) {
+(function ($) {
   Drupal.behaviors.microsite_gallery_carousel = {
-    updateGigyaSharebarOmniture: function($slider, initialPageLoad) {
+    updateGigyaSharebarOmniture: function ($slider, initialPageLoad) {
       initialPageLoad = initialPageLoad || false;
       if (typeof Drupal.gigya != 'undefined') {
         var slider = $slider.data('flexslider');
@@ -11,27 +11,20 @@
           if ($title == '') $title = $slider.parents('.microsite-section-container').find('.microsite-gallery-meta h1.gallery-title').text();
           var $currentImage = $slider.find('.flex-active-slide .file-image img');
           var $currentCaption = $slider.find('.flex-active-slide .field-name-field-caption p').text();
-
-          sharebar = new Object();
-          sharebar.gigyaSharebar = {
-            containerID: "gigya-share",
-            iconsOnly: true,
-            layout: "horizontal",
-            shareButtons: "facebook, twitter, tumblr, pinterest, share",
-            shortURLs: "never",
-            showCounts: "none"
-          }
-
           var url = $('.galleries-bxslider li.active a').attr('href');
           url = window.location.protocol + '//' + window.location.hostname + url;
-          sharebar.gigyaSharebar.ua = {
-            description: $currentCaption,
-            imageBhev: "url",
-            imageUrl: $currentImage.attr('src'),
-            linkBack: url, // + '#' + currentSlide, // @TODO: add the gallery name and possibly the photo number to the url
-            title: $title
-          }
-          if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+
+          USAN.initUSAGigya({
+            gigyaSharebar: {
+              ua: {
+                description: $currentCaption,
+                imageUrl: $currentImage.attr('src'),
+                linkBack: url,
+                title: $title
+              },
+              containerID: "gigya-share"
+            }
+          });
 
           // omniture
           if (initialPageLoad) {
@@ -51,31 +44,31 @@
         }
       }
     },
-    updateCounter: function($slider) {
+    updateCounter: function ($slider) {
       var slider = $slider.data('flexslider');
       var $counter = $slider.children('.counter');
       if (slider) {
         var current = slider.currentSlide + 1;
         var total = slider.slides.length;
         $counter.html(Drupal.t('!current of !total', {
-          '!current' : current,
-          '!total' : total
+          '!current': current,
+          '!total': total
         }));
       }
     },
-    refreshBannerAd: function() {
+    refreshBannerAd: function () {
       jQuery('.dart-name-728x90_ifr_reload_galleries iframe').attr('src', jQuery('.dart-name-728x90_ifr_reload_galleries iframe').attr('src'));
       jQuery('.dart-name-300x250_ifr_reload_galleries iframe').attr('src', jQuery('.dart-name-300x250_ifr_reload_galleries iframe').attr('src'));
     },
-    changeGalleryDescription: function (current_gallery){
+    changeGalleryDescription: function (current_gallery) {
       var current_description = current_gallery.find('.flex-active-slide .field-name-field-caption').html();
       current_gallery.find('.description-block').html(current_description);
     },
-    attach: function(settings, context) {
+    attach: function (settings, context) {
       // check to make sure there's a galleries section
       if ($('#microsite #galleries .section-wrapper').length > 0) {
         $(window).bind('resize', function () {
-          setTimeout(function() {
+          setTimeout(function () {
             if ($(".gig-simpleShareUI").length > 0) {
               var current_offset = $(".microsite-gallery").offset()['left'] + $(".microsite-gallery").width() - $(".gig-simpleShareUI").width();
               $(".gig-simpleShareUI").css('left', current_offset);

@@ -205,6 +205,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
       $module_path . '/css/jquery.bxslider.css',
       $default_theme_path . '/css/fonts.css',
       $default_theme_path . '/css/ms_usa-auth-modal.css',
+      $default_theme_path . '/css/ms_gigya_share.css',
       $default_theme_path . '/css/style_microsite.css',
       $site_theme_path . '/css/ms_style.css',
       $site_theme_path . '/css/ms_characters_styles.css',

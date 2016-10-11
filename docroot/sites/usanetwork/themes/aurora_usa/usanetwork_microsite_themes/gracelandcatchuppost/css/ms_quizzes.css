@@ -68,6 +68,11 @@
   right: 4px;
 }
 
+/* Quiz gigya */
+#microsite #quizzes .field-type-gigya-sharebar {
+  float: none;
+}
+
 /* Quiz answers */
 #microsite #quizzes .usanetwork-quiz-answer > .inner {
   margin: 0 5% 0 0 !important;

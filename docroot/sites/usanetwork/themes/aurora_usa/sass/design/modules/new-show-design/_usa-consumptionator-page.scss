@@ -69,6 +69,7 @@
     }
   }
 }
+
 .right-rail-line {
   #main-block-bottom-line {
     bottom: 0;
@@ -82,14 +83,14 @@
   &.bottom-visible {
     .sticky-share {
       @include breakpoint($bp-768-width) {
-        position: absolute!important;
+        position: absolute !important;
         top: auto;
       }
     }
   }
   &:not(.description-visible) {
     .sticky-share {
-      position: absolute!important;
+      position: absolute !important;
       top: auto;
       width: 100%;
     }
@@ -98,7 +99,7 @@
     .sticky-share {
       @include breakpoint($bp-min-769-width) {
         bottom: 0;
-        top: auto!important;
+        top: auto !important;
         width: 100%;
       }
       .field-type-gigya-sharebar {
@@ -106,9 +107,9 @@
           @include breakpoint($bp-min-769-width) {
             float: left;
             &:nth-last-child(3) {
-              width: calc(100%/3);
+              width: calc(100% / 3);
               & ~ td {
-                width: calc(100%/3);
+                width: calc(100% / 3);
               }
             }
             &:nth-last-child(4) {
@@ -124,14 +125,12 @@
               }
             }
             .gig-button-container {
-              td {
-                width: 100%!important;
-                div {
-                  font-size: 44px!important;
-                  height: 80px!important;
-                  line-height: 80px!important;
-                  width: 100%!important;
-                }
+              width: 100% !important;
+              .usa-share-button {
+                font-size: 44px !important;
+                height: 80px !important;
+                line-height: 80px !important;
+                width: 100% !important;
               }
             }
           }
@@ -144,18 +143,18 @@
       @include breakpoint($bp-min-769-width) {
         bottom: 0;
         left: get-vw(20px, 1600);
-        position: fixed!important;
+        position: fixed !important;
         z-index: 100;
-        width: calc(100% - 2*#{get-vw(20px, 1600)});
+        width: calc(100% - 2 * #{get-vw(20px, 1600)});
       }
       @include breakpoint($bp-min-1025-width) {
-        width: calc((100% - 2*#{get-vw(20px, 1600)} - 320px));
+        width: calc((100% - 2 * #{get-vw(20px, 1600)} - 320px));
       }
       @include breakpoint($bp-min-1281-width) {
-        width: calc((100% - 2*#{get-vw(20px, 1600)})*0.75);
+        width: calc((100% - 2 * #{get-vw(20px, 1600)}) * 0.75);
       }
       @include breakpoint($bp-min-1601-width) {
-        left: calc((100% - 1560px)/2);
+        left: calc((100% - 1560px) / 2);
         width: 1170px;
       }
     }
@@ -164,15 +163,15 @@
     .sticky-share {
       @include breakpoint($bp-min-769-width) {
         bottom: -1px;
-        left: 0!important;
-        position: absolute!important;
+        left: 0 !important;
+        position: absolute !important;
         width: 100%;
         z-index: 100;
       }
     }
   }
   .sticky-share {
-    box-shadow: 0px 0px 5px black;
+    box-shadow: 0 0 5px black;
     left: 0;
     position: absolute;
     @include breakpoint($bp-768-width) {
@@ -185,18 +184,18 @@
     .field-label {
       display: none;
     }
-    table, tbody, tr, td, button {
-      display: block;
-      width: 100%;
-    }
     .field-type-gigya-sharebar {
+      table, tbody, tr, td {
+        display: block;
+        width: 100%;
+      }
       td {
         @include breakpoint($bp-768-width) {
           float: left;
           &:nth-last-child(3) {
-            width: calc(100%/3);
+            width: calc(100% / 3);
             & ~ td {
-              width: calc(100%/3);
+              width: calc(100% / 3);
             }
           }
           &:nth-last-child(4) {
@@ -212,73 +211,18 @@
             }
           }
           .gig-button-container {
-            td {
-              width: 100%!important;
-              div {
-                font-size: get-vw(44px, 768)!important;
-                height: get-vw(80px, 768)!important;
-                line-height: get-vw(80px, 768)!important;
-                width: 100%!important;
-              }
+            width: 100%;
+            .usa-share-button {
+              font-size: get-vw(44px, 768) !important;
+              height: get-vw(80px, 768) !important;
+              line-height: get-vw(80px, 768) !important;
+              width: 100% !important;
             }
           }
         }
       }
     }
-    .field-type-gigya-sharebar {
-      margin: 0;
-      .gig-button-container {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        td {
-          div {
-            background: transparent;
-            position: relative!important;
-            text-align: center;
-            &:before {
-              background: transparent;
-              color: white!important;
-              display: block;
-              position: relative;
-              z-index: 2;
-            }
-          }
-        }
-        &.gig-button-container-facebook {
-          background: $usa-video-helper-facebook;
-          td {
-            div:before {
-              content: '\e618';
-            }
-          }
-        }
-        &.gig-button-container-twitter {
-          background: $usa-video-helper-twitter;
-          td {
-            div:before {
-              content: '\e61a';
-            }
-          }
-        }
-        &.gig-button-container-tumblr {
-          background: $usa-video-helper-tumblr;
-          td {
-            div:before {
-              content: '\e619';
-            }
-          }
-        }
-        &.gig-button-container-share {
-          background: $usa-video-helper-pinterest;
-          td {
-            div:before {
-              content: '\e62a';
-            }
-          }
-        }
-      }
-    }
+    @extend %usa-gigya-sticky;
     .no-touch .node-type-consumpt-post & {
       @include breakpoint($bp-min-1025-width) {
         top: get-vw(50px, 1600);
@@ -294,26 +238,24 @@
       }
       .field-type-gigya-sharebar {
         .gig-button-container {
-          td {
-            div {
-              @include breakpoint($bp-min-1025-width) {
-                font-size: get-vw(22px, 1600)!important;
-                height: get-vw(58px, 1600)!important;
-                line-height: get-vw(58px, 1600)!important;
-                width: get-vw(40px, 1600)!important;
-              }
-              @include breakpoint($bp-min-1601-width) {
-                font-size: 30px!important;
-                height: 80px!important;
-                line-height: 80px!important;
-                width: 55px!important;
-              }
-              @include breakpoint($between-769-1024) {
-                font-size: get-vw(30px, 1024)!important;
-                height: get-vw(80px, 1024)!important;
-                line-height: get-vw(80px, 1024)!important;
-                width: get-vw(55px, 1024)!important;
-              }
+          .usa-share-button {
+            @include breakpoint($bp-min-1025-width) {
+              font-size: get-vw(22px, 1600) !important;
+              height: get-vw(58px, 1600) !important;
+              line-height: get-vw(58px, 1600) !important;
+              width: get-vw(40px, 1600) !important;
+            }
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 30px !important;
+              height: 80px !important;
+              line-height: 80px !important;
+              width: 55px !important;
+            }
+            @include breakpoint($between-769-1024) {
+              font-size: get-vw(30px, 1024) !important;
+              height: get-vw(80px, 1024) !important;
+              line-height: get-vw(80px, 1024) !important;
+              width: get-vw(55px, 1024) !important;
             }
           }
         }
@@ -328,7 +270,7 @@
         top: get-vw(195px, 1600);
       }
       @include breakpoint($bp-min-1601-width) {
-        left: calc((100% - 1560px)/2);
+        left: calc((100% - 1560px) / 2);
         top: 195px;
       }
     }

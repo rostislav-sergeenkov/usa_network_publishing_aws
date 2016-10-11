@@ -111,26 +111,14 @@
     &.font-mobile-#{$i} {
       @include breakpoint($bp-640-width) {
         font-size: get-vw($default-font-mobile + $step*($i - 1), 640);
-        text-shadow: 1px 1px get-vw(($default-font-mobile + $step*($i - 1))/2, 640) $aspot-shadow;
-        p {
-          text-shadow: 1px 1px get-vw(($default-font-mobile + $step*($i - 1))/2, 640) $aspot-shadow;
-        }
       }
     }
     &.font-desktop-#{$i} {
       @include breakpoint($bp-min-641-width) {
         font-size: get-vw($default-font-desktop + $step*($i - 1), 1280);
-        text-shadow: 1px 1px get-vw(($default-font-desktop + $step*($i - 1))/2, 1280) $aspot-shadow;
-        p {
-          text-shadow: 1px 1px get-vw(($default-font-desktop + $step*($i - 1))/2, 1280) $aspot-shadow;
-        }
       }
       @include breakpoint($bp-min-2500-width) {
         font-size: ($default-font-desktop + $step*($i - 1))*1.953125;
-        text-shadow: 1px 1px ($default-font-desktop + $step*($i - 1))*1.953125/2 $aspot-shadow;
-        p {
-          text-shadow: 1px 1px ($default-font-desktop + $step*($i - 1))*1.953125/2 $aspot-shadow;
-        }
       }
     }
   }

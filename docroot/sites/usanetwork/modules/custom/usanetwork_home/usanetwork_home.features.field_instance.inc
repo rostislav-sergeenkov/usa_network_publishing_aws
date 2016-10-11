@@ -37,6 +37,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Additional text',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -89,6 +91,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Caption',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -141,6 +145,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Title',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -227,6 +233,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Additional text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -313,6 +321,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Caption text',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -399,6 +409,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Rows number',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -467,6 +479,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Floodlight Category',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -549,6 +563,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Floodlight Type',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -631,6 +647,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Full Episodes Manual',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'handler' => 'default',
       'user_register_form' => FALSE,
     ),
@@ -704,6 +722,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Full Episodes View Options',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -772,6 +792,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Full Episodes Semi-automatic',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'handler' => 'default',
       'user_register_form' => FALSE,
     ),
@@ -843,6 +865,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Carousel',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -850,7 +874,7 @@ function usanetwork_home_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 21,
+      'weight' => 15,
     ),
   );
 
@@ -915,6 +939,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Full Episodes block title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -994,6 +1020,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Featured Items',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'handler' => 'default',
       'user_register_form' => FALSE,
     ),
@@ -1063,6 +1091,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Social promo',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'handler' => 'default',
       'user_register_form' => FALSE,
     ),
@@ -1131,6 +1161,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Promo',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1223,6 +1255,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Global Nav Promos',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1315,6 +1349,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Global Nav Images - Show drawer',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1390,6 +1426,8 @@ function usanetwork_home_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1495,6 +1533,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Promo carousel',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1576,6 +1616,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Display Promo carousel',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1649,6 +1691,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Promo carousel title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1734,6 +1778,8 @@ function usanetwork_home_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
@@ -1841,6 +1887,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -1925,6 +1973,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Show Card Elements',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1942,6 +1992,89 @@ function usanetwork_home_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'node-usa_homepage-field_popup_element'
+  $field_instances['node-usa_homepage-field_popup_element'] = array(
+    'bundle' => 'usa_homepage',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_more' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'global_nav_block_shows' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'no_wrapper',
+    'field_name' => 'field_popup_element',
+    'label' => 'Pop-up Element',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_live_preview' => array(
+          'enabled' => 0,
+          'mode' => 'default',
+          'preview_type' => 'target',
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 16,
     ),
   );
 
@@ -2001,6 +2134,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'H1',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2082,6 +2217,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Page Title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2164,6 +2301,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Social additional',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2246,6 +2385,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Social title',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
@@ -2339,6 +2480,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Autoscroll A-spot carousel',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2425,6 +2568,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'A-spot references',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -2514,6 +2659,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'B-spot references',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -2608,6 +2755,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'C-spot references',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -2694,6 +2843,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'Day',
     'required' => 1,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'exclude_cv' => FALSE,
       'user_register_form' => FALSE,
     ),
@@ -2784,6 +2935,8 @@ function usanetwork_home_field_default_field_instances() {
     'label' => 'slideshowSpeed',
     'required' => 0,
     'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
       'max' => '',
       'min' => '',
       'prefix' => '',
@@ -2825,6 +2978,7 @@ function usanetwork_home_field_default_field_instances() {
   t('H1');
   t('Logo');
   t('Page Title');
+  t('Pop-up Element');
   t('Promo');
   t('Promo carousel');
   t('Promo carousel title');

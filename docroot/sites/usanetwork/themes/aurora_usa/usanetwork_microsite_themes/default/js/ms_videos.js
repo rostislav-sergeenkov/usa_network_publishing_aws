@@ -8,29 +8,23 @@
     updateGigyaSharebar: function(initialPageLoad, preview_image) {
       initialPageLoad = initialPageLoad || 0;
       if (typeof Drupal.gigya != 'undefined') {
-        var sharebar = new Object(),
-            $videoInfoContainer = $('#videos #video-container .video-player-desc'),
+        // var sharebar = new Object(),
+        var $videoInfoContainer = $('#videos #video-container .video-player-desc'),
             caption = $videoInfoContainer.find('.video-description').text(),
             shareTitle = $videoInfoContainer.find('.video-title').text(),
             imageSrc = preview_image;
 
-        sharebar.gigyaSharebar = {
-          containerID: "video-gigya-share",
-          iconsOnly: true,
-          layout: "horizontal",
-          shareButtons: "facebook, twitter, tumblr, pinterest, share",
-          shortURLs: "never",
-          showCounts: "none"
-        }
-
-        sharebar.gigyaSharebar.ua = {
-          description: caption,
-          imageBhev: "url",
-          imageUrl: imageSrc,
-          linkBack: url,
-          title: shareTitle
-        }
-        if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+        USAN.initUSAGigya({
+          gigyaSharebar: {
+            ua: {
+              description: caption,
+              imageUrl: imageSrc,
+              linkBack: url,
+              title: shareTitle
+            },
+            containerID: "video-gigya-share"
+          }
+        });
 
         // reset Gigya share bar clicks
         var $shareButtons = $('#video-gigya-share .gig-share-button div');

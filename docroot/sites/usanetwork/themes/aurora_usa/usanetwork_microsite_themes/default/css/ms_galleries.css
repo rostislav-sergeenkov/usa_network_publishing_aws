@@ -135,14 +135,14 @@
   vertical-align: top;
   margin: 0 3px 0;
 }
-#microsite .field-type-gigya-sharebar .gig-button-container td div {
+#microsite .field-type-gigya-sharebar .gig-button-container .usa-share-button {
   background-image: none !important;
   display: block;
   font-family: "ico-font";
   font-size: 24px;
 }
-#microsite .field-type-gigya-sharebar .gig-button-container td div,
-#microsite .field-type-gigya-sharebar .gig-button-container td div:hover {
+#microsite .field-type-gigya-sharebar .gig-button-container .usa-share-button,
+#microsite .field-type-gigya-sharebar .gig-button-container .usa-share-button:hover {
   width: 24px !important;
   height: 24px !important;
   background-image: url("../images/social_chatter_icons.png");

@@ -648,8 +648,8 @@
             Drupal.behaviors.ms_global.refreshAds('galleries');
 
             // initialize Gigya share bar clicks
-            $('#galleries #gigya-share .gig-button-container td div').unbind('click');
-            $('#galleries #gigya-share .gig-button-container td div').bind('click', function(){
+            $('#galleries #gigya-share .gig-button-container .usa-share-button').unbind('click');
+            $('#galleries #gigya-share .gig-button-container .usa-share-button').bind('click', function(){
               var title = $('#galleries .gallery-wrapper .gallery-name:first').text();
               Drupal.behaviors.ms_global.sendSocialShareOmniture($(this), title);
             });
@@ -776,7 +776,7 @@
         }
 
         // initialize gallery Gigya share bar clicks
-        $('#galleries #gigya-share .gig-button-container td div').bind('click', function(){
+        $('#galleries #gigya-share .gig-button-container .usa-share-button').bind('click', function(){
           var title = $('#galleries .gallery-wrapper .gallery-name:first').text();
           Drupal.behaviors.ms_global.sendSocialShareOmniture($(this), title);
         });

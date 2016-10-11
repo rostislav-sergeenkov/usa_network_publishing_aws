@@ -1718,7 +1718,7 @@ function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
     }
   }
   //Movie Landing Page
-  if (!empty($context['entity']) && $context['entity']->type == 'movie') {
+  if (!empty($context['entity']) && !empty($context['entity']->type) && $context['entity']->type == 'movie') {
     $landing_movie_omniture_variables = array(
       's.prop2' => t('Movies'),
       's.prop3' => t('Movies'),
@@ -1731,7 +1731,7 @@ function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
   }
 
   //Consumptionator Pages
-  if (!empty($context['entity']) && in_array($context['entity']->type,
+  if (!empty($context['entity']) && !empty($context['entity']->type) && in_array($context['entity']->type,
       array('media_gallery', 'person', 'quiz', 'catchall_page'))) {
     $tv_content = usanetwork_core_api_get_tv_content_node($context['entity']);
     if ($tv_content) {

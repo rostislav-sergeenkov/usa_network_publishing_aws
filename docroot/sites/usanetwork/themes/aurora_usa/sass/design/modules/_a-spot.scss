@@ -203,13 +203,7 @@
       &:not(.cta_button_0) {
         a {
           background: none !important;
-          text-shadow: 1px 1px 0.635vw $aspot-shadow;
-          @include breakpoint($bp-min-2500-width) {
-            text-shadow: 1px 1px 15.87px $aspot-shadow;
-          }
-          @include breakpoint($bp-640-width) {
-            text-shadow: 1px 1px 1.35vw $aspot-shadow;
-          }
+          text-shadow: 1px 1px 0.5em $aspot-shadow;
         }
       }
       &.cta_button_0 {

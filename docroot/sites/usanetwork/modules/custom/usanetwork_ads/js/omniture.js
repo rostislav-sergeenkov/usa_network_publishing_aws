@@ -301,7 +301,7 @@
       s.tl(this, 'o', pageName + ' ' + name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
-
+    
     carouselNavClick: function (fullName, nameNav) {
 
         s.linkTrackVars = 'events,eVar55,eVar33';
@@ -713,7 +713,7 @@
             }
           });
         });
-
+        
         // Click carousel control button
         $('.usa-carousel-controls').once('omniture-tracking', function () {
           $(this).on('click', function (e) {

@@ -167,8 +167,8 @@ On page load, only the first promo in each spot will be displayed.',
     'children' => array(
       0 => 'field_hp_episodes_block_title',
       1 => 'field_carousel_rows_number',
-      2 => 'field_full_episodes_options',
-      3 => 'field_full_episodes_manual',
+      2 => 'field_full_episodes_manual',
+      3 => 'field_full_episodes_options',
       4 => 'field_full_episodes_semi',
     ),
     'format_type' => 'fieldset',
@@ -341,7 +341,7 @@ If more than 4 are added a carousel will be triggered on page load so content ca
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Social carousel',
-    'weight' => '18',
+    'weight' => '14',
     'children' => array(
       0 => 'field_hp_ft_social',
       1 => 'field_social_promo_additional',

@@ -4,6 +4,7 @@
     position: relative;
   }
 }
+
 #share-image-block-hidden {
   background-color: #000000;
   height: 100%;
@@ -71,7 +72,7 @@
     }
     .title {
       bottom: 8%;
-      color: white!important;
+      color: white !important;
       display: block;
       font-family: $avalon-medium;
       left: auto;
@@ -135,6 +136,7 @@
     width: 32%;
   }
 }
+
 #block-usanetwork-top3-usanetwork-top3-main-block {
   height: auto;
   padding: get-vw(120px, 1901) get-vw(90px, 1901) get-vw(120px, 1901) get-vw(130px, 1901);
@@ -304,7 +306,7 @@
         width: get-vw(70.4px, 1024);
       }
     }
-    &:not(.info-hide){
+    &:not(.info-hide) {
       & ~ #slider-container {
         #drag-icon-block {
           &.full-changed {
@@ -334,7 +336,7 @@
           }
         }
       }
-      &:not(.info-hide){
+      &:not(.info-hide) {
         & + #cc-button.active {
           & + #slider-container {
             #drag-icon-block {
@@ -572,11 +574,11 @@
       }
       .choose-top3-img {
         @include breakpoint($bp-1280-width) {
-          bottom: calc(100% + 33px + (35px + 20px)/2);
+          bottom: calc(100% + 33px + (35px + 20px) / 2);
           max-height: calc(90px + 35px + 20px);
         }
         @include breakpoint($bp-768-width) {
-          bottom: calc(100% + #{get-vw(33px, 768)} + (35px + #{get-vw(15px, 768)})/2);
+          bottom: calc(100% + #{get-vw(33px, 768)} + (35px + #{get-vw(15px, 768)}) / 2);
           max-height: calc(#{get-vw(90px, 768)} + (35px + #{get-vw(15px, 768)}));
         }
       }
@@ -639,7 +641,7 @@
         margin-top: 147px;
       }
       @include breakpoint($bp-1280-width) {
-        margin-left: calc(#{get-vw(1280px, 1901)} + (#{get-vw(621px, 1901)} - 320px)/2) ;
+        margin-left: calc(#{get-vw(1280px, 1901)} + (#{get-vw(621px, 1901)} - 320px) / 2);
         margin-top: 0;
       }
       @include breakpoint($bp-1024-width) {
@@ -665,23 +667,27 @@
   #gigya-share-top3 {
     display: none;
     height: get-vw(60px, 1901);
-    margin: get-vw(30px, 1901) auto 0;
+    //margin: get-vw(30px, 1901) auto 0;
+    margin: 0 auto 10px;
     position: relative;
     text-align: center;
     width: get-vw(339px, 1901);
     @include breakpoint($bp-min-1901-width) {
       height: 60px;
-      margin: 30px auto 0;
+      //margin: 30px auto 0;
+      margin: 0 auto 5px;
       width: 339px;
     }
     @include breakpoint($bp-1024-width) {
       height: get-vw(45.9px, 1024);
-      margin: get-vw(22.97px, 1024) auto 0;
+      //margin: get-vw(22.97px, 1024) auto 0;
+      margin: 0 auto 5px;
       width: get-vw(260px, 1024);
     }
     @include breakpoint($bp-768-width) {
       height: get-vw(45.9px, 480);
-      margin: get-vw(22.97px, 480) auto 0;
+      //margin: get-vw(22.97px, 480) auto 0;
+      margin: 0 auto 5px;
       width: get-vw(260px, 480);
     }
     .gig-button-container {
@@ -708,21 +714,19 @@
       &.gig-button-container-email {
         margin: 0;
       }
-      td {
-        div {
-          font-size: get-vw(60px, 1901);
-          @include breakpoint($bp-min-1901-width) {
-            font-size: 60px;
-          }
-          @include breakpoint($bp-1024-width) {
-            font-size: get-vw(45.9px, 1024);
-          }
-          @include breakpoint($bp-768-width) {
-            font-size: get-vw(45.9px, 480);
-          }
-          &:before {
-            color: white;
-          }
+      .usa-share-button {
+        font-size: get-vw(60px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 60px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: get-vw(45.9px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          font-size: get-vw(45.9px, 480);
+        }
+        &:before {
+          color: white;
         }
       }
     }
@@ -1104,7 +1108,7 @@
         margin-right: 0;
       }
       .title {
-        display: none!important;
+        display: none !important;
       }
     }
     img {
@@ -1522,7 +1526,7 @@
     height: get-vw(136px, 1901);
     margin: 0;
     overflow: hidden;
-    position:absolute;
+    position: absolute;
     text-align: center;
     text-indent: -9000px;
     visibility: visible;
@@ -1557,7 +1561,7 @@
     text-align: center;
     border-radius: 5px;
     overflow: hidden;
-    position:absolute;
+    position: absolute;
     z-index: 101;
     &:hover {
       cursor: move;
@@ -1574,15 +1578,15 @@
   }
   .is-dropped {
     opacity: 0;
-    -webkit-transform: scale3d(0.7,0.7,1) !important;
-    transform: scale3d(0.7,0.7,1) !important;
+    -webkit-transform: scale3d(0.7, 0.7, 1) !important;
+    transform: scale3d(0.7, 0.7, 1) !important;
   }
   .is-complete {
     opacity: 1;
     -webkit-transition: opacity 0.3s, -webkit-transform 0.3s !important;
     transition: opacity 0.3s, transform 0.3s !important;
-    -webkit-transform: scale3d(1,1,1) !important;
-    transform: scale3d(1,1,1) !important;
+    -webkit-transform: scale3d(1, 1, 1) !important;
+    transform: scale3d(1, 1, 1) !important;
   }
   .animate {
     -webkit-transition: all 0.3s ease-out;
@@ -1598,10 +1602,10 @@
     width: 100%;
     background: transparent;
     text-align: center;
-    -moz-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
-    -o-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
-    -webkit-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
-    transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+    -moz-transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1);
+    -o-transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1);
+    -webkit-transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1);
+    transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1);
     @include breakpoint($bp-min-1901-width) {
       bottom: -68px;
       height: 136px;
@@ -1615,11 +1619,11 @@
       z-index: 100;
     }
     &.show {
-      bottom: 0!important;
+      bottom: 0 !important;
       z-index: 100;
     }
     &.not-allowed {
-      bottom: -500px!important;
+      bottom: -500px !important;
       z-index: 0;
     }
     & > div {
@@ -1650,8 +1654,8 @@
     }
     &.highlight {
       background: #ff3705;
-      -webkit-transform: scale3d(1.08,1.08,1);
-      transform: scale3d(1.08,1.08,1);
+      -webkit-transform: scale3d(1.08, 1.08, 1);
+      transform: scale3d(1.08, 1.08, 1);
     }
     &:before {
       @include cssRightTriangle(get-vw(68px, 1901), white, top, right);
@@ -1706,21 +1710,21 @@
         }
       }
       .title {
-        display: none!important;
+        display: none !important;
       }
     }
   }
 
   .drop-feedback.drop-area__item::before {
     opacity: 0;
-    -webkit-transform: scale3d(0,0,1);
-    transform: scale3d(0,0,1);
+    -webkit-transform: scale3d(0, 0, 1);
+    transform: scale3d(0, 0, 1);
   }
 
   .drop-feedback.drop-area__item::after {
     opacity: 1;
-    -webkit-transform: scale3d(1,1,1);
-    transform: scale3d(1,1,1);
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
   }
   #shared-container {
     padding: 80px 0 get-vw(227px, 1901);
@@ -2202,10 +2206,10 @@
   pointer-events: none;
   position: absolute;
   width: get-vw(60px, 1901);
-  -moz-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
-  -o-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
-  -webkit-transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
-  transition: all 0.5s cubic-bezier(0.6,0,0.4,1);
+  -moz-transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1);
+  -o-transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1);
+  -webkit-transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1);
+  transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1);
   @include breakpoint($bp-min-1901-width) {
     bottom: 120px;
     height: 60px;
@@ -2268,6 +2272,7 @@
     }
   }
 }
+
 .desktop-only {
   .touch & {
     display: none;

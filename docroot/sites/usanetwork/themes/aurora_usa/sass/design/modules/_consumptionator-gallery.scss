@@ -268,85 +268,54 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             display: none;
           }
         }
-        .gig-button-container {
-          td div {
-            &:before {
+        .field-name-field-gigya-share-bar {
+          .gig-button-container {
+            .usa-share-button {
               @include breakpoint($bp-1024-width) {
-                left: 0;
-                position: absolute;
+                position: relative;
               }
-            }
-            &:after {
-              @include breakpoint($bp-1024-width) {
-                background: white;
-                border-radius: 20%;
-                content: '';
-                display: block;
-                height: 25px;
-                margin-left: 2px;
-                margin-top: -5px;
-                position: absolute;
-                width: 23px;
-                z-index: -1;
-              }
-              @include breakpoint($bp-640-width) {
-                height: 28px;
-                margin-left: 1px;
-                margin-top: -6px;
-                width: 28px;
-              }
-            }
-          }
-          &.gig-button-container-facebook {
-            td div {
               &:before {
                 @include breakpoint($bp-1024-width) {
-                  color: $usa-video-helper-facebook;
-                }
-              }
-            }
-          }
-          &.gig-button-container-twitter {
-            td div {
-              &:before {
-                @include breakpoint($bp-1024-width) {
-                  color: $usa-video-helper-twitter;
-                }
-              }
-            }
-          }
-          &.gig-button-container-tumblr {
-            td div {
-              &:before {
-                @include breakpoint($bp-1024-width) {
-                  color: $usa-video-helper-tumblr;
-                }
-              }
-            }
-          }
-          &.gig-button-container-pinterest {
-            td div {
-              &:before {
-                @include breakpoint($bp-1024-width) {
-                  color: $usa-video-helper-pinterest;
-                }
-              }
-            }
-          }
-          &.gig-button-container-share {
-            td div {
-              &:before {
-                @include breakpoint($bp-1024-width) {
-                  color: white;
+                  position: absolute;
+                  z-index: 2;
                 }
               }
               &:after {
                 @include breakpoint($bp-1024-width) {
-                  display: none;
+                  background: white;
+                  border-radius: 20%;
+                  content: '';
+                  display: block;
+                  height: 25px;
+                  left: 2px;
+                  top: 0px;
+                  position: absolute;
+                  width: 23px;
+                }
+                @include breakpoint($bp-640-width) {
+                  height: 28px;
+                  left: 1px;
+                  top: 1px;
+                  width: 27px;
+                }
+              }
+            }
+            &.gig-button-container-share {
+              .usa-share-button {
+                &:before {
+                  @include breakpoint($bp-1024-width) {
+                    color: white;
+                  }
+                }
+                &:after {
+                  @include breakpoint($bp-1024-width) {
+                    display: none;
+                  }
                 }
               }
             }
           }
+          @extend %usa-gigya-colors;
         }
       }
     }
@@ -414,16 +383,16 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             margin: 0 auto;
           }
         }
-      }
-      .gig-button-container {
-        @include breakpoint($bp-640-width) {
-          margin-right: 20px;
-          padding: 0;
-          &.gig-button-container-share {
-            margin-right: 0;
-          }
-          td div {
-            font-size: 30px;
+        .gig-button-container {
+          @include breakpoint($bp-640-width) {
+            margin-right: 20px;
+            padding: 0;
+            &.gig-button-container-share {
+              margin-right: 0;
+            }
+            .usa-share-button {
+              font-size: 30px;
+            }
           }
         }
       }
@@ -959,9 +928,9 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
         }
       }
       &.slide-prev {
-        right: 90px;
-        @include breakpoint($bp-min-1901-width) {
-          right: 105px;
+        right: 105px;
+        @include breakpoint($bp-1900-width) {
+          right: 90px;
         }
         @include breakpoint($bp-1280-width) {
           left: 15px;
@@ -975,9 +944,9 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
         }
       }
       &.slide-next {
-        right: 40px;
-        @include breakpoint($bp-min-1901-width) {
-          right: 55px;
+        right: 55px;
+        @include breakpoint($bp-1900-width) {
+          right: 40px;
         }
         @include breakpoint($bp-1280-width) {
           right: 15px;
@@ -988,77 +957,9 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
         &:after {
           content: "\e629";
         }
-        &.slick-disabled {
-          ~ .gallery-next {
-            display: block;
-          }
-        }
       }
       &.slick-disabled {
         display: none !important;
-      }
-    }
-    .gallery-next {
-      color: #ffffff;
-      cursor: pointer;
-      display: none;
-      height: 48px;
-      margin-top: -24px;
-      position: absolute;
-      right: 40px;
-      top: 90%;
-      width: 48px;
-      z-index: 55;
-      @include breakpoint($bp-min-1901-width) {
-        margin-top: -27px;
-        height: 54px;
-        right: 55px;
-        width: 54px;
-      }
-      @include breakpoint($bp-1280-width) {
-        right: 15px;
-      }
-      @include breakpoint($bp-1024-width) {
-        margin-top: calc(56.25% + 48.5px);
-        top: 0;
-      }
-      @include breakpoint($bp-640-width) {
-        margin-top: calc(56.25% + 26px);
-      }
-      @include breakpoint($bp-480-width) {
-        height: 38px;
-        margin-top: calc(56.25% + 36px);
-        right: 10px;
-        width: 38px;
-      }
-      a {
-        color: #ffffff;
-        display: block;
-        height: 100%;
-        position: relative;
-        width: 100%;
-        &:hover {
-          background: none;
-        }
-        &:focus {
-          outline: none;
-        }
-        &:after {
-          content: "\e629";
-          display: block;
-          font-family: $ico-font;
-          font-size: 48px;
-          line-height: normal;
-          position: absolute;
-          right: 0;
-          top: 0;
-          @include breakpoint($bp-min-1901-width) {
-            font-size: 54px;
-          }
-          @include breakpoint($bp-480-width) {
-            font-size: 38px;
-          }
-        }
       }
     }
     .end-card-sharebar {
@@ -1110,7 +1011,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
           @include breakpoint($bp-min-2500-width) {
             margin-right: 29.3px;
           }
-          td div {
+          .usa-share-button {
             @include breakpoint($bp-min-1025-width) {
               height: get-vw(32px, 1280)!important;
               width: get-vw(32px, 1280)!important;
@@ -1134,7 +1035,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             }
           }
           &.gig-button-container-facebook {
-            td div {
+            .usa-share-button {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-facebook;
@@ -1144,7 +1045,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             }
           }
           &.gig-button-container-twitter {
-            td div {
+            .usa-share-button {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-twitter;
@@ -1154,7 +1055,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             }
           }
           &.gig-button-container-tumblr {
-            td div {
+            .usa-share-button {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-tumblr;
@@ -1164,7 +1065,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             }
           }
           &.gig-button-container-pinterest {
-            td div {
+            .usa-share-button {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: $usa-video-helper-pinterest;
@@ -1174,7 +1075,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
             }
           }
           &.gig-button-container-share {
-            td div {
+            .usa-share-button {
               &:before {
                 @include breakpoint($bp-min-1025-width) {
                   background: transparent;
@@ -1281,16 +1182,16 @@ body.node-type-tv-episode, body.node-type-consumpt-post, .node-media-gallery, .g
               margin: 0 auto;
             }
           }
-        }
-        .gig-button-container {
-          @include breakpoint($between-641-1024) {
-            margin-right: 20px;
-            padding: 0;
-            &.gig-button-container-share {
-              margin-right: 0;
-            }
-            td div {
-              font-size: 30px;
+          .gig-button-container {
+            @include breakpoint($between-641-1024) {
+              margin-right: 20px;
+              padding: 0;
+              &.gig-button-container-share {
+                margin-right: 0;
+              }
+              .usa-share-button {
+                font-size: 30px;
+              }
             }
           }
         }
@@ -1413,15 +1314,15 @@ body {
             table {
               margin: 0 auto;
             }
-          }
-          .gig-button-container {
-            margin-right: 20px;
-            padding: 0;
-            &.gig-button-container-share {
-              margin-right: 0;
-            }
-            td div {
-              font-size: 30px;
+            .gig-button-container {
+              margin-right: 20px;
+              padding: 0;
+              &.gig-button-container-share {
+                margin-right: 0;
+              }
+              .usa-share-button {
+                font-size: 30px;
+              }
             }
           }
         }

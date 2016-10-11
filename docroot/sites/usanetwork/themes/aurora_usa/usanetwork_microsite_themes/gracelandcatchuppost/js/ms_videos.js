@@ -14,23 +14,17 @@
             shareTitle = $videoInfoContainer.find('.video-title').text(),
             imageSrc = preview_image;
 
-        sharebar.gigyaSharebar = {
-          containerID: "video-gigya-share",
-          iconsOnly: true,
-          layout: "horizontal",
-          shareButtons: "facebook, twitter, tumblr, pinterest, share",
-          shortURLs: "never",
-          showCounts: "none"
-        }
-
-        sharebar.gigyaSharebar.ua = {
-          description: caption,
-          imageBhev: "url",
-          imageUrl: imageSrc,
-          linkBack: url,
-          title: shareTitle
-        }
-        if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+        USAN.initUSAGigya({
+          gigyaSharebar: {
+            ua: {
+              description: caption,
+              imageUrl: imageSrc,
+              linkBack: url,
+              title: shareTitle
+            },
+            containerID: 'video-gigya-share'
+          }
+        });
 
         // reset Gigya share bar clicks
         var $shareButtons = $('#video-gigya-share .gig-share-button div');

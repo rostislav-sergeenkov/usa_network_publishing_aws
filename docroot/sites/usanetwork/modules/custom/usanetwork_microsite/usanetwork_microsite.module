@@ -2580,7 +2580,7 @@ function _usanetwork_microsite_endcard_prepare_related_item($node_nid, $related_
 function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context) {
   if ($context['entity']){
     $entity = $context['entity'];
-    if ($entity->type == 'usanetwork_microsite') {
+    if (!empty($entity->type) && $entity->type == 'usanetwork_microsite') {
       $node = menu_get_object();
       if (!isset($node->type) || $node->type != 'usanetwork_microsite') {
         return;

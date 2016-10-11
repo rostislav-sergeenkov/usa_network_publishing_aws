@@ -894,7 +894,7 @@ function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables
     }
   }
 
-  if (!empty($context['entity']) && $context['entity']->type == 'consumpt_post') {
+  if (!empty($context['entity']) && !empty($context['entity']->type) && $context['entity']->type == 'consumpt_post') {
     $show_field = _usanetwork_get_field_item('node', $context['entity'], 'field_show', 'target_id');
     if ($show_field) {
       $show = node_load($show_field);

@@ -98,7 +98,7 @@ Project demo: http://shindiristudio.com/timeline
           linkBack: url,
           title: shareTitle
         }
-        if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+        if (typeof Drupal.gigya.showSharebar == 'function') USAN.initUSAGigya(sharebar);
 
         // reset Gigya share bar clicks
         var $timelineGigyaShareButtons = $('#' + shareBarId + ' .gig-share-button div');

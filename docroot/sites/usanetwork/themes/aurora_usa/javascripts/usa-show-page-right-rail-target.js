@@ -89,7 +89,7 @@
 
             if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
               s.goToUrl = function () {
-                // Drupal.behaviors.omniture_tracking.goToUrl($self);
+                Drupal.behaviors.omniture_tracking.goToUrl($self);
               };
             }
 

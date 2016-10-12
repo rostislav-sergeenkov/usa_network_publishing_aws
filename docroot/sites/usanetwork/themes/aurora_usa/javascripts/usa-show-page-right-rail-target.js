@@ -9,24 +9,37 @@
 
   function getShowPageRightRail() {
 
+    // showRightRail - Adobe Target variable
+
     //'ajax/show-landing/get-related/%node' - default ajax url, get version a
     //'ajax/show-landing/get-related/%node/a||b' - ajax url, select version a || b
 
-    var $currentBlock,
-        nid, url, versionRR, abTarget;
+    var $currentBlock, versionRightRail,
+        nid, url;
 
-    abTarget = true;
     $currentBlock = $('#main-slider .aspot-and-episodes .episodes-list');
     nid = Drupal.settings.usanetwork_tv_show_nid;
     url = 'ajax/show-landing/get-related/';
-    versionRR = 'a'; // default version a
+    versionRightRail = ''; // default version a
 
-    if (abTarget) {
-      versionRR = 'b';
+    // remove after test url #showRightRail=b
+    var urlParams = window.location.hash.substr(1).split("=");
+
+    if (window.hasOwnProperty('showRightRail')) {
+      console.info('Adobe Target Right Rail');
+      versionRightRail = window['showRightRail'] == 'b' ? 'b' : 'a';
+    } else if (!window.hasOwnProperty('showRightRail')) {
+      console.info('Right Rail URL # params');
+      versionRightRail = (urlParams[0] == 'showRightRail' && urlParams[1] == 'b') ? 'b' : 'a';
+    } else {
+      console.info('Right Rail default');
+      versionRightRail = 'a';
     }
 
+    console.info('version Right Rail = ' + versionRightRail);
+
     $.ajax({
-      url: url + nid + '/' + versionRR,
+      url: url + nid + '/' + versionRightRail,
       method: "GET"
     }).done(function (data) {
 
@@ -38,7 +51,7 @@
         window.picturefill();
       }
 
-      if (versionRR === 'a') {
+      if (versionRightRail == 'a') {
         $('#main-slider .episodes-list-slider').usaCarousel({
           isVerticalMode: true,
           verticalModeBpMin: 769,
@@ -48,9 +61,44 @@
           isMoreButton: true,
           moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
         });
-      } else if (versionRR === 'b') {
+      } else if (versionRightRail == 'b') {
         $('#relevant-content-carousel').usaNewCarousel();
       }
+
+      // Click promo item
+      $('#main-slider .usa-carousel .node-usanetwork-promo a').once('omniture-tracking', function () {
+        $(this).on('click', function (e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+
+            var $self = $(this),
+                name = 'Show Page Latest Full Episodes Block',
+                nameEnding = ' Click',
+                url = window.location.href;
+
+            if ($(this).attr('target') == '_blank') {
+
+            } else {
+              e.preventDefault();
+            }
+
+            s.linkTrackVars = 'events,eVar55,eVar73';
+            s.linkTrackEvents = s.events = 'event51';
+            s.eVar55 = name;
+            s.eVar73 = url;
+
+
+            if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
+              s.goToUrl = function () {
+                Drupal.behaviors.omniture_tracking.goToUrl($self);
+              };
+            }
+
+            s.tl(this, 'o', name + nameEnding, null, s.goToUrl);
+            s.manageVars('clearVars', s.linkTrackVars, 1);
+          }
+        });
+      });
+
 
     }).fail(function () {
       console.log('ajax fail');

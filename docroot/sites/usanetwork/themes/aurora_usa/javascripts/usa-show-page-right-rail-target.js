@@ -46,12 +46,10 @@
       var rightRailHTML = data.data;
       $currentBlock.replaceWith(rightRailHTML);
 
-      // check and create images on page
-      if (window.hasOwnProperty('picturefill')) {
-        window.picturefill();
-      }
-
       if (versionRightRail == 'a') {
+
+        Drupal.behaviors.lazyloader.attach();
+
         $('#main-slider .episodes-list-slider').usaCarousel({
           isVerticalMode: true,
           verticalModeBpMin: 769,
@@ -61,7 +59,14 @@
           isMoreButton: true,
           moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
         });
+
       } else if (versionRightRail == 'b') {
+
+        // check and create images on page
+        if (window.hasOwnProperty('picturefill')) {
+          window.picturefill();
+        }
+
         $('#relevant-content-carousel').usaNewCarousel();
       }
 

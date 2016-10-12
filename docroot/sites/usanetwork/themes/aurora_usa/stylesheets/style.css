@@ -3384,11 +3384,50 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
     margin: 0;
   }
 }
+.aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(1).title {
+  max-height: calc(4.26563vw);
+}
+@media (min-width: 1901px) {
+  .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(1).title {
+    max-height: calc((17.5px * 3) * 1.3);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(1).title {
+    max-height: calc(4.18945vw);
+  }
+}
+.aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(2).title {
+  max-height: calc(2.84375vw);
+}
+@media (min-width: 1901px) {
+  .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(2).title {
+    max-height: calc((17.5px * 2) * 1.3);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(2).title {
+    max-height: calc(2.79297vw);
+  }
+}
+.aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(3).violator ~ .title, .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(2).violator ~ .title {
+  max-height: calc(2.84375vw);
+}
+@media (min-width: 1901px) {
+  .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(3).violator ~ .title, .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(2).violator ~ .title {
+    max-height: calc((17.5px * 2) * 1.3);
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(3).violator ~ .title, .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .meta > div:nth-last-child(2).violator ~ .title {
+    max-height: calc(2.79297vw);
+  }
+}
 .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .violator {
   color: #363636;
   font-family: "avalonextra_light", Helvetica, Arial, sans-serif;
   font-size: 0.9375vw;
-  line-height: 1.4;
+  line-height: 1.3;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -3406,7 +3445,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (max-width: 768px) {
   .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .violator {
     font-size: 2.34375vw;
-    line-height: 1.2;
     margin: 0;
     white-space: normal;
   }
@@ -3421,11 +3459,8 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 1.09375vw;
   letter-spacing: 1px;
-  line-height: 1.4;
-  max-height: 5.85938vw;
+  line-height: 1.3;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 @media (min-width: 1901px) {
   .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .title {
@@ -3440,8 +3475,9 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (max-width: 768px) {
   .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .title {
     font-size: 2.72005vw;
-    line-height: 1.2;
+    line-height: 1.3;
     margin: 0;
+    max-height: none !important;
     white-space: normal;
   }
 }
@@ -3455,7 +3491,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
   font-size: 1.09375vw;
   letter-spacing: 1px;
-  line-height: 1.4;
+  line-height: 1.3;
   max-height: 5.85938vw;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3474,7 +3510,6 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (max-width: 768px) {
   .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel .slider-list .slide-item .usa-aspot-carousel-promo .additional {
     font-size: 2.72005vw;
-    line-height: 1.2;
     margin: 0;
     white-space: normal;
   }
@@ -30000,22 +30035,8 @@ yx-axis
     width: 100%;
   }
 }
-@media (min-width: 769px) {
-  .aspot-and-episodes .episodes-list.episodes-list__b:not(.carousel-end).shadow:after {
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 10%;
-    position: absolute;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(125, 125, 125, 0)), color-stop(100%, #7d7d7d));
-    background-image: -webkit-linear-gradient(rgba(125, 125, 125, 0), #7d7d7d);
-    background-image: -moz-linear-gradient(rgba(125, 125, 125, 0), #7d7d7d);
-    background-image: -o-linear-gradient(rgba(125, 125, 125, 0), #7d7d7d);
-    background-image: linear-gradient(rgba(125, 125, 125, 0), #7d7d7d);
-    background-repeat: no-repeat;
-    width: 100%;
-    z-index: 1;
-  }
+.aspot-and-episodes .episodes-list.episodes-list__b.shadow:after {
+  display: none !important;
 }
 .aspot-and-episodes .episodes-list.episodes-list__b > .title {
   background-color: #e1e1e1;
@@ -30084,6 +30105,23 @@ yx-axis
 @media (max-width: 768px) {
   .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel {
     height: auto;
+  }
+}
+@media (min-width: 769px) {
+  .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel:not(.carousel-end):after {
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 10%;
+    position: absolute;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(125, 125, 125, 0)), color-stop(100%, #7d7d7d));
+    background-image: -webkit-linear-gradient(rgba(125, 125, 125, 0), #7d7d7d);
+    background-image: -moz-linear-gradient(rgba(125, 125, 125, 0), #7d7d7d);
+    background-image: -o-linear-gradient(rgba(125, 125, 125, 0), #7d7d7d);
+    background-image: linear-gradient(rgba(125, 125, 125, 0), #7d7d7d);
+    background-repeat: no-repeat;
+    width: 100%;
+    z-index: 1;
   }
 }
 .aspot-and-episodes .episodes-list.episodes-list__b #relevant-content-carousel.carousel-end:after {

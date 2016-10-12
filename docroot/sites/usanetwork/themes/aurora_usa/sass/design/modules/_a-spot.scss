@@ -878,28 +878,15 @@
     &.episodes-list__b {
       background: #e1e1e1;
       padding: 0;
-      @include breakpoint($bp-min-1901-width) {
-
-      }
       @include breakpoint($bp-768-width) {
         height: auto;
         width: 100%;
       }
-      @include breakpoint($bp-min-769-width) {
-        &:not(.carousel-end) {
-          &.shadow:after {
-            bottom: 0;
-            content: '';
-            display: block;
-            height: 10%;
-            position: absolute;
-            @include background-image(linear-gradient(rgba(125, 125, 125, 0), rgba(125, 125, 125, 1)));
-            background-repeat: no-repeat;
-            width: 100%;
-            z-index: 1;
-          }
-        }
+
+      &.shadow:after {
+        display: none !important;
       }
+
       > .title {
         background-color: $header-tab-back;
         height: 10%;
@@ -955,6 +942,21 @@
         width: 100%;
         @include breakpoint($bp-768-width) {
           height: auto;
+        }
+        @include breakpoint($bp-min-769-width) {
+          &:not(.carousel-end) {
+            &:after {
+              bottom: 0;
+              content: '';
+              display: block;
+              height: 10%;
+              position: absolute;
+              @include background-image(linear-gradient(rgba(125, 125, 125, 0), rgba(125, 125, 125, 1)));
+              background-repeat: no-repeat;
+              width: 100%;
+              z-index: 1;
+            }
+          }
         }
         &.carousel-end {
           &:after {

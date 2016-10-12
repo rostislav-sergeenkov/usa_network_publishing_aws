@@ -13,7 +13,7 @@
 
 ?>
 
-<div class="episodes-list episodes-list__b shadow">
+<div class="episodes-list episodes-list__b">
   <?php if (!empty($episodes_block_title)): ?>
     <div class="title show-color">
       <div class="title-wrapper">

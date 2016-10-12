@@ -2468,6 +2468,7 @@ function _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node,  $
         unset($alternative_episode_content->entity_type, $alternative_episode_content->entity_id);
 
         if (!empty($alternative_episode_content->type)) {
+          $field_full_episode = NULL;
           $entity_wrapper = entity_metadata_wrapper($entity_type, $alternative_episode_content);
           if (!empty($alternative_episode_content->field_promo_image_override)) {
             $content_image = _usanetwork_get_field_item($entity_type, $alternative_episode_content, 'field_promo_image_override', 'uri');
@@ -2502,10 +2503,14 @@ function _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node,  $
           else {
             $promo_link = url($entity_type . '/' . $entity_id);
           }
+          $logic_violator = NULL;
+          if (!empty($field_full_episode)) {
+            $logic_violator = usanetwork_core_api_get_violator($entity_type, $entity_id);
+          }
           $episode_theme_variables = array(
             'url' => $promo_link,
             'violator' => $promo_data['show_name'],
-            'logic_violator' => usanetwork_core_api_get_violator($entity_type, $entity_id),
+            'logic_violator' => $logic_violator,
             'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
               (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : ''),
             'description' => !empty($promo_data['description']) ? $promo_data['description'] :
@@ -2543,11 +2548,11 @@ function _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node,  $
           $file_id = '/file/' . $full_latest_episode->fid;
         }
       }
-
+      $logic_violator = usanetwork_core_api_get_violator('file', $full_latest_episode->fid);
       $episode_theme_variables = array(
         'url' => url('file/' . $full_latest_episode->fid),
         'violator' => !empty($promo_data['show_name']) ? $promo_data['show_name'] : NULL,
-        'logic_violator' => usanetwork_core_api_get_violator('file', $full_latest_episode->fid),
+        'logic_violator' => $logic_violator,
         'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title']
           : (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : ''),
         'description' => !empty($promo_data['description']) ? $promo_data['description']

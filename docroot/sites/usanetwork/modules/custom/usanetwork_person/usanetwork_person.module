@@ -770,8 +770,8 @@ function _usanetwork_person_render_where2watch_block() {
         'description' => t('@show is also available for streaming or purchase from the following providers:', array('@show' => $show_node->title)),
         'elements' => $elements,
       );
+      cache_set($cache_name, $theme_vars, 'cache', REQUEST_TIME + 60 * 60);
     }
-    cache_set($cache_name, $theme_vars, 'cache', REQUEST_TIME + 60 * 60);
   } else {
     $theme_vars = $cache->data;
   }

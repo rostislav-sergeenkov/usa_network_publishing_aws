@@ -2358,6 +2358,7 @@ function _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node,  $
   }
 
   $elements = array();
+  $episodes_fids = array();
 
   if ($needed_count > 0) {
     $episodes = _usanetwork_mpx_video_get_latest_episodes_for_show($needed_count, $show_node->nid);
@@ -2365,9 +2366,6 @@ function _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node,  $
     $result_count = count($episodes);
     if ($result_count > 0) {
       $episodes_fids = array_keys($episodes);
-    }
-    else {
-      $episodes_fids = array();
     }
   }
 
@@ -3439,8 +3437,7 @@ function _usanetwork_tv_shows_render_best_of_block($block_title, $field_promo_it
       continue;
     }
     if (!empty($promo_entity->field_promo_image_override)) {
-      $field_image_override = reset(field_get_items($promo_reference['target_type'], $promo_entity, 'field_promo_image_override'));
-      $promo_image_url = $field_image_override['uri'];
+      $promo_image_url = _usanetwork_get_field_item($promo_reference['target_type'], $promo_entity, 'field_promo_image_override', 'uri');
     }
     else {
       $promo_image_url = usanetwork_core_api_get_content_image($promo_reference['target_type'], $promo_entity);

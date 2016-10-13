@@ -86,10 +86,10 @@
               e.preventDefault();
             }
 
-            s.linkTrackVars = 'events,eVar55,eVar73';
+            s.linkTrackVars = 'events,prop73,eVar55';
+            s.prop73 = url;
             s.linkTrackEvents = s.events = 'event51';
             s.eVar55 = name;
-            s.eVar73 = url;
 
 
             if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {

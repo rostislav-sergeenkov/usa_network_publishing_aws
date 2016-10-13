@@ -249,8 +249,6 @@ function usanetwork_mpx_video_ds_layout_settings_info() {
       'file' => 'ds_content',
     ),
     'classes' => array(),
-    'wrappers' => array(),
-    'layout_wrapper' => 'div',
   );
   $export['file|mpx_video_1|inline_content'] = $ds_layout;
 

@@ -9,8 +9,6 @@
 
   function getShowPageRightRail() {
 
-    // showRightRail - Adobe Target variable
-
     //'ajax/show-landing/get-related/%node' - default ajax url, get version a
     //'ajax/show-landing/get-related/%node/a||b' - ajax url, select version a || b
 
@@ -25,9 +23,9 @@
     // remove after test url #showRightRail=b
     var urlParams = window.location.hash.substr(1).split("=");
 
-    if (window.hasOwnProperty('showRightRail')) {
-      console.info('Adobe Target Right Rail');
-      versionRightRail = window['showRightRail'] == 'b' ? 'b' : 'a';
+    if (window.hasOwnProperty('rightRailVersion')) {
+      console.info('Adobe Target rightRailVersion');
+      versionRightRail = window['rightRailVersion'] == 'b' ? 'b' : 'a';
     } else if (!window.hasOwnProperty('showRightRail')) {
       console.info('Right Rail URL # params');
       versionRightRail = (urlParams[0] == 'showRightRail' && urlParams[1] == 'b') ? 'b' : 'a';

@@ -17,7 +17,6 @@ dependencies[] = usanetwork_ads
 features[features_api][] = api:2
 features[user_permission][] = access draggableviews
 features[user_permission][] = administer SiteCatalyst configuration
-features[user_permission][] = administer adobe pass config variables
 features[user_permission][] = administer usanetwork
 features[user_permission][] = administer usanetwork dart settings
 features[user_permission][] = create media_gallery content

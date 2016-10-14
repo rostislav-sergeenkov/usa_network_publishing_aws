@@ -1664,6 +1664,13 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         $variables['attribute_parameters']['logLevel'] = $log_level;
       }
 
+      if ($full_episode) {
+        $variables['attribute_parameters']['fwsitesection'] = 'usa_tveverywhere_vod_hub';
+      } else {
+        $variables['attribute_parameters']['fwsitesection'] = 'usa_video_vod';
+      }
+
+
       if ($is_live) {
         $pdk_version = USA_TVE_PDK_VERSION;
         if (isset($variables['attribute_parameters']['pdk'])) {

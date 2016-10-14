@@ -58,6 +58,8 @@
           moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
         });
 
+        Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .episodes-list'), 'dark');
+
       } else if (versionRightRail == 'b') {
 
         // check and create images on page

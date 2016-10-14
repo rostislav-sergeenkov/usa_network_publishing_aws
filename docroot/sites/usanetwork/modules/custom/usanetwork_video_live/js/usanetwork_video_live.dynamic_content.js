@@ -282,10 +282,11 @@
             $episodesListSlider = $('.episodes-list-slider');
             $episodesListSlider.usaCarousel({
               isVerticalMode: true,
-              verticalModeBpMin: 1281,
+              verticalModeBpMin: 1025,
               isHorizontalMode: true,
-              horizontalModeBpMax: 1280,
-              destroyCarouselBpMax: 640
+              horizontalModeBpMax: 1024,
+              destroyCarouselBpMax: 640,
+              moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
             });
             if (window.hasOwnProperty('picturefill')) {
               window.picturefill();

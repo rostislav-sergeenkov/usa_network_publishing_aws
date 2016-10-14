@@ -27,6 +27,7 @@ dependencies[] = usanetwork_menu
 dependencies[] = usanetwork_mpx_video
 dependencies[] = usanetwork_nitro
 dependencies[] = usanetwork_person
+dependencies[] = usanetwork_popup
 dependencies[] = usanetwork_post
 dependencies[] = usanetwork_promo
 dependencies[] = usanetwork_quiz

@@ -406,6 +406,42 @@
         }
       }
     }
+    .more-button {
+      background-color: $poll-back;
+      cursor: pointer;
+      color: $poll-color;
+      display: none;
+      font-family: $tex-gyreschola-italic;
+      font-size: 20px;
+      line-height: 130px;
+      letter-spacing: 1px;
+      text-align: center;
+      text-transform: uppercase;
+      text-decoration: underline;
+      width: 100%;
+      @include breakpoint($bp-640-width) {
+        display: block;
+      }
+      @include breakpoint($bp-480-width) {
+        line-height: 80px;
+      }
+      &.close {
+        .more-text {
+          display: none;
+        }
+        .close-text {
+          display: block;
+        }
+      }
+      &.more {
+        .more-text {
+          display: block;
+        }
+        .close-text {
+          display: none;
+        }
+      }
+    }
     @extend %episodes-list-slider-controls;
   }
   .more-items {

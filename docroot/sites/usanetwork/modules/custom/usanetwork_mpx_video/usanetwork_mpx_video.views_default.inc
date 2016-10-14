@@ -416,17 +416,6 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['field'] = 'field_usa_video_terms_target_id';
   $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['required'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: thePlatform MPX Video: thePlatform MPX Video Status */
-  $handler->display->display_options['arguments']['status']['id'] = 'status';
-  $handler->display->display_options['arguments']['status']['table'] = 'mpx_video';
-  $handler->display->display_options['arguments']['status']['field'] = 'status';
-  $handler->display->display_options['arguments']['status']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['status']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['status']['default_argument_options']['argument'] = '1';
-  $handler->display->display_options['arguments']['status']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['status']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['status']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['status']['limit'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: File: Type */

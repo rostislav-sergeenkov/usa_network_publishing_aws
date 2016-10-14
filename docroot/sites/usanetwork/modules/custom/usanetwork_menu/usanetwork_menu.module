@@ -1788,7 +1788,9 @@ function _usanetwork_menu_consumptionator_block_live_video() {
   $query->condition('ttd.name', 'Live');
   $live_video_fid = $query->execute()->fetchField();
   $live_video = file_load($live_video_fid);
-  $gygia = field_view_field('file', $live_video, 'field_gigya_share_bar'); // for sharing
+  if (!empty($live_video)) {
+    $gygia = field_view_field('file', $live_video, 'field_gigya_share_bar'); // for sharing
+  }
 
   $theme_variables = array(
     'authbar' => !empty($authbar) ? $authbar : NULL,

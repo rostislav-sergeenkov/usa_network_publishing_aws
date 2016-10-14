@@ -20,20 +20,6 @@ function usanetwork_tve_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tve_adobe_pass_accessenabler_loc_js';
-  $strongarm->value = _usanetwork_tve_video_get_adobe_pass_accessenabler_js_location();
-  $export['tve_adobe_pass_accessenabler_loc_js'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'tve_adobe_pass_accessenabler_mode';
-  $strongarm->value = 'js';
-  $export['tve_adobe_pass_accessenabler_mode'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'tve_adobe_pass_requestor_id';
   $strongarm->value = 'usa';
   $export['tve_adobe_pass_requestor_id'] = $strongarm;

@@ -434,17 +434,3 @@ function _usanetwork_tve_video_get_player_id() {
   }
   return $usa_global_player_id;
 }
-
-/**
- * Get Adobe Pass Access Enabler JS Location depending on environment
- */
-function _usanetwork_tve_video_get_adobe_pass_accessenabler_js_location() {
-  $environment = _usanetwork_widget_get_environment();
-  if ($environment == 'stage') {
-    $accessenabler_js_location = 'https://entitlement.auth-staging.adobe.com/entitlement/AccessEnabler.js';
-  }
-  else {
-    $accessenabler_js_location = 'https://entitlement.auth.adobe.com/entitlement/AccessEnabler.js';
-  }
-  return $accessenabler_js_location;
-}

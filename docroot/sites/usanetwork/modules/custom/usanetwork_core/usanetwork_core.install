@@ -1276,3 +1276,36 @@ function usanetwork_core_update_7190() {
     module_enable(array('usanetwork_popup'));
   }
 }
+
+/**
+ * Delete usanetwork_nitro module.
+ */
+function usanetwork_core_update_7191() {
+  $fields_to_delete = array(
+    'field_enable_nitro',
+    'field_nitro_action_name',
+  );
+  foreach ($fields_to_delete as $field_name) {
+    field_delete_field($field_name);
+    watchdog('usanetwork_core', 'Deleted the :field_name field from all content type instances.', array(':field_name' => $field_name));
+  }
+
+  ctools_include('export');
+  if ($group = field_group_load_field_group('group_catchall_nitro', 'node', 'catchall_page', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_media_gallery_nitro', 'node', 'media_gallery', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_tv_episode_nitro', 'node', 'tv_episode', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_person_nitro', 'node', 'person', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_timeline_gallery_nitro', 'node', 'timeline_gallery', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  module_disable(array('usanetwork_nitro'));
+}

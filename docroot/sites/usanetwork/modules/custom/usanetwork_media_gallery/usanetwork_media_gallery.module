@@ -335,9 +335,6 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
       array_unshift($gallery_field, $image_cover_field);
     }
 
-    $endcard_enabled = $node_wrapper->field_enable_nitro->value();
-    $endcard_path = $node_wrapper->field_nitro_action_name->value();
-
     $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node',$node);
 
     $idx = 0;
@@ -411,20 +408,6 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
         if (!empty($caption_field)) {
           $slide_variables['info']['description'] = strip_tags($caption_field, '<a>');
-        }
-
-        if (!empty($endcard_enabled)) {
-          if ($gallery_file == (object) end($gallery_field)) {
-            if (!empty($endcard_path)) {
-              if (preg_match('/(http:\/\/|https:\/\/)(.*)/', $endcard_path)) {
-                $slide_variables['target_blank'] = TRUE;
-              }
-              else {
-                $slide_variables['target_blank'] = FALSE;
-              }
-              $slide_variables['endcard_path'] = $endcard_path;
-            }
-          }
         }
 
         $slides[] = theme('usanetwork_media_gallery_consumptionator_slide', $slide_variables);

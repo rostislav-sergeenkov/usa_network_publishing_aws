@@ -554,6 +554,13 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
       }
       $vars['aspot_title_image'] = $line_1_image;
       break;
+    //hard code fix for task #2651
+    case 'catchall_page':
+      if ($node->nid == '65197') {
+        $rand_time = time();
+        drupal_add_js('https://ad.doubleclick.net/ddm/trackimpj/N3753.117456.USANETWORK/B8785104.134855467;dc_trk_aid=299536414;dc_trk_cid=66051757;ord='. $rand_time .';dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?');
+      }
+      break;
   }
 }
 

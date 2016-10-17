@@ -488,25 +488,17 @@
         }
 
       } else {
-        if ($body.is('.usa-tv-show')) {
-          $episodesListSlider.usaCarousel({
-            isVerticalMode: true,
-            verticalModeBpMin: 769,
-            isHorizontalMode: true,
-            horizontalModeBpMax: 768,
-            destroyCarouselBpMax: 640,
-            isMoreButton: true,
-            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
-          });
-        } else if($moreButton.length > 0 ) {
-          $episodesListSlider.usaCarousel({
-            isMoreButton: true,
-            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
-          });
-        } else {
-          $episodesListSlider.usaCarousel({
-            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
-          });
+        if (!$body.is('.usa-tv-show')) {
+          if($moreButton.length > 0 ) {
+            $episodesListSlider.usaCarousel({
+              isMoreButton: true,
+              moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
+            });
+          } else {
+            $episodesListSlider.usaCarousel({
+              moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
+            });
+          }
         }
       }
     }

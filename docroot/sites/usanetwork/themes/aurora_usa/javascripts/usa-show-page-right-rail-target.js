@@ -9,32 +9,19 @@
 
   function getShowPageRightRail() {
 
-    //'ajax/show-landing/get-related/%node' - default ajax url, get version a
-    //'ajax/show-landing/get-related/%node/a||b' - ajax url, select version a || b
-
     var $currentBlock, versionRightRail,
         nid, url;
 
     $currentBlock = $('#main-slider .aspot-and-episodes .episodes-list');
     nid = Drupal.settings.usanetwork_tv_show_nid;
     url = 'ajax/show-landing/get-related/';
-    versionRightRail = ''; // default version a
-
-    // remove after test url #showRightRail=b
-    var urlParams = window.location.hash.substr(1).split("=");
+    versionRightRail = '';
 
     if (window.hasOwnProperty('rightRailVersion')) {
-      console.info('Adobe Target rightRailVersion');
       versionRightRail = window['rightRailVersion'] == 'b' ? 'b' : 'a';
-    } else if (!window.hasOwnProperty('showRightRail')) {
-      console.info('Right Rail URL # params');
-      versionRightRail = (urlParams[0] == 'showRightRail' && urlParams[1] == 'b') ? 'b' : 'a';
     } else {
-      console.info('Right Rail default');
       versionRightRail = 'a';
     }
-
-    console.info('version Right Rail = ' + versionRightRail);
 
     $.ajax({
       url: url + nid + '/' + versionRightRail,
@@ -89,7 +76,6 @@
             s.linkTrackEvents = s.events = 'event51';
             s.eVar55 = name;
 
-
             if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
               s.goToUrl = function () {
                 Drupal.behaviors.omniture_tracking.goToUrl($self);
@@ -102,10 +88,8 @@
         });
       });
 
-
     }).fail(function () {
       console.log('ajax fail');
     });
   }
-
 })(jQuery);

@@ -24,10 +24,10 @@ function usanetwork_timeline_gallery_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_content_tags',
-      1 => 'field_summary',
-      2 => 'field_usa_css',
-      3 => 'field_share_title',
-      4 => 'field_share_description',
+      1 => 'field_share_description',
+      2 => 'field_share_title',
+      3 => 'field_summary',
+      4 => 'field_usa_css',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -58,8 +58,9 @@ function usanetwork_timeline_gallery_field_group_info() {
       1 => 'field_cover_item',
       2 => 'field_show',
       3 => 'field_timeline_episode_section',
-      4 => 'title',
-      5 => 'field_explore_tag',
+      4 => 'field_explore_tag',
+      5 => 'field_timeline_autoplay',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -84,17 +85,17 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo Details',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
-      0 => 'field_promo_call_to_action_text',
-      1 => 'field_promo_violator_name',
-      2 => 'field_promo_title',
-      3 => 'field_promo_topic',
-      4 => 'field_promo_long_description',
-      5 => 'field_promo_exclude_from_related',
-      6 => 'field_promo_created_ovts',
-      7 => 'field_call_to_action_type',
-      8 => 'field_promo_image_override',
+      0 => 'field_call_to_action_type',
+      1 => 'field_promo_call_to_action_text',
+      2 => 'field_promo_created_ovts',
+      3 => 'field_promo_exclude_from_related',
+      4 => 'field_promo_image_override',
+      5 => 'field_promo_long_description',
+      6 => 'field_promo_title',
+      7 => 'field_promo_topic',
+      8 => 'field_promo_violator_name',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -148,7 +149,7 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sponsorship',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_sponsored',
     ),

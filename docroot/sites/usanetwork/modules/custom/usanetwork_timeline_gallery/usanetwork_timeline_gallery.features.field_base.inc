@@ -50,6 +50,31 @@ function usanetwork_timeline_gallery_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_timeline_autoplay'
+  $field_bases['field_timeline_autoplay'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_timeline_autoplay',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'autoplay_video' => 'Auto-play Video',
+        'autoplay_gallery' => 'Auto Slideshow',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_timeline_episode_section'
   $field_bases['field_timeline_episode_section'] = array(
     'active' => 1,

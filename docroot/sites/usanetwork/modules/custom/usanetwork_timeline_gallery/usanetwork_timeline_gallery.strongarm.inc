@@ -165,7 +165,7 @@ function usanetwork_timeline_gallery_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '7',
           'metatags' => array(
             'weight' => '8',
           ),
@@ -174,13 +174,13 @@ function usanetwork_timeline_gallery_strongarm() {
           'weight' => '5',
         ),
         'redirect' => array(
-          'weight' => '7',
-        ),
-        'xmlsitemap' => array(
           'weight' => '8',
         ),
+        'xmlsitemap' => array(
+          'weight' => '9',
+        ),
         'locations' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
       ),
       'display' => array(),

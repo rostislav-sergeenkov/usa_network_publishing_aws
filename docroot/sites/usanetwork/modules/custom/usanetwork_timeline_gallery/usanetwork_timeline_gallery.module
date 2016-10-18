@@ -122,6 +122,7 @@ function usanetwork_timeline_gallery_preprocess_field(&$vars) {
     $vars['imageBaseUrl'] = '/' . path_to_theme() . '/images';
     $vars['player'] = _usanetwork_mpx_video_get_player_src(array('player_id' => _usanetwork_tve_video_get_player_id(), 'pub_mpx_player_parameters' => array('excludeSharing' => 'true')), 'player');
     $vars['isset_video'] = $isset_video;
+    $vars['autoplay'] = !empty($node->field_timeline_autoplay) ? $node_wrapper->field_timeline_autoplay->value() : 'no-autoplay';
   }
 }
 

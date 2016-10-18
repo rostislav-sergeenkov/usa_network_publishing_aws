@@ -66,8 +66,8 @@ function usanetwork_timeline_gallery_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'autoplay_video' => 'Auto-play Video',
-        'autoplay_gallery' => 'Auto Slideshow',
+        'video_autoplay' => 'Auto-play Video',
+        'gallery_autoplay' => 'Auto Slideshow',
       ),
       'allowed_values_function' => '',
     ),

@@ -78,7 +78,7 @@ $numberOfScenesPerEpisode = array();
 $firstScene = TRUE;
 ?>
 
-<section id="timeline-player-slideshow-area">
+<section id="timeline-player-slideshow-area" data-autoplay="<?php print $autoplay; ?>">
 
   <!-- Insert Slide Show -->
   <div class="timelineLoader">

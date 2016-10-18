@@ -2270,6 +2270,8 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
   // Exported field_instance: 'node-timeline_gallery-field_timeline_episode_section'
   $field_instances['node-timeline_gallery-field_timeline_episode_section'] = array(
     'bundle' => 'timeline_gallery',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -2323,7 +2325,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_timeline_episode_section',
-    'label' => 'Tmeline Episode',
+    'label' => 'Timeline Episode',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -2672,9 +2674,9 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
   t('Show Name or Violator');
   t('Sponsored');
   t('Tags');
+  t('Timeline Episode');
   t('Timeline media item');
   t('Title');
-  t('Tmeline Episode');
   t('Topic');
 
   return $field_instances;

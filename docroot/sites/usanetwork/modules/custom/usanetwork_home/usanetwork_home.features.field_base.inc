@@ -258,18 +258,18 @@ function usanetwork_home_field_default_field_bases() {
     'settings' => array(
       'entity_bundles' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
-        'tv_episode' => 'tv_episode',
-        'usanetwork_promo' => 'usanetwork_promo',
-        'consumpt_post' => 'consumpt_post',
-        'consumpt_blog' => 'consumpt_blog',
         'timeline_gallery' => 'timeline_gallery',
         'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -297,18 +297,18 @@ function usanetwork_home_field_default_field_bases() {
     'settings' => array(
       'entity_bundles' => array(
         'catchall_page' => 'catchall_page',
+        'consumpt_blog' => 'consumpt_blog',
+        'consumpt_post' => 'consumpt_post',
         'media_gallery' => 'media_gallery',
         'mpx_video_1' => 'mpx_video_1',
         'mpx_video_2' => 'mpx_video_2',
         'person' => 'person',
         'post' => 'post',
         'quiz' => 'quiz',
-        'tv_episode' => 'tv_episode',
-        'usanetwork_promo' => 'usanetwork_promo',
-        'consumpt_post' => 'consumpt_post',
-        'consumpt_blog' => 'consumpt_blog',
         'timeline_gallery' => 'timeline_gallery',
         'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_promo' => 'usanetwork_promo',
       ),
       'entity_type_ids' => array(
         'file' => 'file',
@@ -666,6 +666,41 @@ function usanetwork_home_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_popup_element'
+  $field_bases['field_popup_element'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_popup_element',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'popup_element' => 'popup_element',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_social_promo_additional'

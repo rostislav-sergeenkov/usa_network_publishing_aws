@@ -1491,6 +1491,13 @@ function usanetwork_tv_shows_form_tv_episode_node_form_alter(&$form, &$form_stat
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function usanetwork_tv_shows_form_tv_season_node_form_alter(&$form, &$form_state) {
+  $form['#validate'][] = 'usanetwork_tv_shows_tv_season_form_validate';
+}
+
+/**
  * Implements hook_usanetwork_overlay_prerender().
  */
 function usanetwork_tv_shows_usanetwork_overlay_prerender() {
@@ -1732,6 +1739,14 @@ function usanetwork_tv_shows_episode_form_validate($form, &$form_state) {
     $season_node = node_load($selected_season);
     if ($season_node->field_show[LANGUAGE_NONE][0]['target_id'] !== $selected_show) {
       form_set_error('field_season', t('The season you selected belongs to a different show than the show you selected on this form.'));
+    }
+  }
+}
+
+function usanetwork_tv_shows_tv_season_form_validate($form, &$form_state) {
+  if (!empty($form_state['values']['field_season_id']['und'][0]['value'])) {
+    if (!is_numeric($form_state['values']['field_season_id']['und'][0]['value'])) {
+      form_set_error('field_season_id', t('The season number should be numeric.'));
     }
   }
 }

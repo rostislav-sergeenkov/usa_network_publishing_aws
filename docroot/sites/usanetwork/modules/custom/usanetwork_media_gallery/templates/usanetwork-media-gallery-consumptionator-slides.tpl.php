@@ -27,6 +27,11 @@
   <div class="gallery-pager-wrap"></div>
   <div class="slide-next slide-control"></div>
   <div class="slide-prev slide-control"></div>
+  <?php if (!empty($endcard) && !empty($next_gallery_url)) : ?>
+    <div class="gallery-next">
+      <a href="<?php print $next_gallery_url; ?>"></a>
+    </div>
+  <?php endif; ?>
   <div class="share-bar">
     <?php if (!empty($endcard)): ?>
       <h3 class="endcard-label"><?php print t('Share the gallery'); ?></h3>

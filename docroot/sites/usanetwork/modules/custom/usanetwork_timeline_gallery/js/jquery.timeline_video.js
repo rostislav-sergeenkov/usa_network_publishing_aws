@@ -137,6 +137,8 @@
       // sets vars
       var _self = Drupal.behaviors.timeline_gallery,
           tlGallery = $('.tl3'),
+          tlGalleryItems = tlGallery.find('.timeline-item'),
+          tlGalleryItemsFirst = tlGalleryItems.filter(':first'),
           playerWrapper = $('#player-wrapper'),
           playerWrapperSrc = playerWrapper.data('player-src'),
           idPlayer = 'pdk-player',
@@ -145,15 +147,33 @@
           autoPlay = tlGallery.data('autoplay'),
           playButton;
 
-      console.info(autoPlay);
-
       // create player api
       var playerApi = {
 
+        statusVideoStart: false, // default value
+
+        // video autoplay
         video_autoplay: autoPlay == 'video_autoplay' ? true : false,
         gallery_autoplay: autoPlay == 'gallery_autoplay' ? true : false,
+        isGalleryEnd: false,
+        startVideoAutoPlay: function () {
 
-        statusVideoStart: false, // default value
+          var activeSlide = tlGallery.find('.timeline-item.active'),
+              playBtn = activeSlide.find('.play-button'),
+              videoDataBlock = activeSlide.find('.video-data');
+
+          if (!playerApi.isGalleryEnd && videoDataBlock.length > 0) {
+            playerApi.setPositionPlayer();
+            playerApi.hidePlayButton(playBtn);
+            playerApi.showPlayer(videoDataBlock);
+          }
+        },
+
+        checkGalleryEnd: function () {
+
+          playerApi.isGalleryEnd = tlGallery.find('.timeline-item.active').index() === tlGalleryItems.length ? true : false;
+          return playerApi.isGalleryEnd;
+        },
 
         // create player
         createPlayer: function () {
@@ -217,6 +237,14 @@
               playerApi.statusVideoStart = false;
               // hide player
               playerApi.hidePlayer();
+
+              if (playerApi.gallery_autoplay) {
+                if (playerApi.checkGalleryEnd()) {
+                  tlGallery.timeline('goTo', tlGalleryItemsFirst.data('id'));
+                } else {
+                  tlGallery.timeline('right');
+                }
+              }
             }
           }
 
@@ -303,7 +331,6 @@
 
         // show play button
         showPlayButton: function (buttonEl) {
-          console.info('showPlayButton');
           playButton = buttonEl || tlGallery.find('.timeline-item.active .play-button');
           playButton
               .attr('data-status', 'active')
@@ -312,25 +339,10 @@
 
         // hide play button
         hidePlayButton: function (buttonEl) {
-          console.info('hidePlayButton');
           playButton = buttonEl || tlGallery.find('.timeline-item.active .play-button');
           playButton
               .attr('data-status', 'inactive')
               .hide();
-        },
-
-        // video autoplay
-        startVideoAutoPlay: function () {
-
-          var activeSlide = tlGallery.find('.timeline-item.active'),
-              playBtn = activeSlide.find('.play-button'),
-              videoDataBlock = activeSlide.find('.video-data');
-
-          if (playerApi.video_autoplay && videoDataBlock.length > 0) {
-            playerApi.setPositionPlayer();
-            playerApi.hidePlayButton(playBtn);
-            playerApi.showPlayer(videoDataBlock);
-          }
         },
 
         // init
@@ -344,7 +356,6 @@
 
       // set click on play-button
       tlGallery.on('click', '.play-button', function (e) {
-        console.info('click play-button');
 
         var self = $(e.target),
             videoDataBlock = self.closest('.timeline-item.active').find('.video-data');
@@ -356,7 +367,7 @@
 
       // set windows load event
       $(window).on('load', function () {
-        if (playerApi.video_autoplay) {
+        if (playerApi.video_autoplay || playerApi.gallery_autoplay) {
           playerApi.startVideoAutoPlay();
         }
       });
@@ -364,7 +375,6 @@
       // set windows resize event
       $(window).on('resize', function () {
         waitForFinalEvent(function () {
-          console.info('resize', resizeTimer);
           // set player position
           playerApi.setPositionPlayer();
         }, resizeTimer, "timeline player gallery"); // timeout resize
@@ -395,6 +405,8 @@
           // hide and reset player
           playerApi.hidePlayer();
         }
+
+        playerApi.checkGalleryEnd();
       });
 
       $('.tl3').on('scrollStop.Timeline', function (e) {
@@ -421,6 +433,8 @@
         if (playerApi.video_autoplay) {
           playerApi.startVideoAutoPlay();
         }
+
+        playerApi.checkGalleryEnd();
       });
 
       $this.timeline('setWidthHeightMargin');
@@ -1499,7 +1513,6 @@
         //});
         $(window).on('resize', function () {
           waitForFinalEvent(function () {
-            console.info('resize setWidthHeightMargin');
             $this.timeline('setWidthHeightMargin');
           }, self.windowsResizeTimer, "timeline gallery"); // timeout resize
         });

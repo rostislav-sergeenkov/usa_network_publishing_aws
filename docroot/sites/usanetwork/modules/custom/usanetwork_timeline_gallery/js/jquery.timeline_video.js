@@ -742,6 +742,7 @@ Project demo: http://shindiristudio.com/timeline
 
         setWidthHeightMargin : function() {
           var $this = this,
+              landscapeMobile = (USAN.isMobile.phone && window.matchMedia("(orientation: landscape)").matches),
               data = $this.data('timeline'),
               timeline_settings = data.options,
               $timelineItems =  $this.find('.timeline-items'),
@@ -774,13 +775,27 @@ Project demo: http://shindiristudio.com/timeline
           data.margin = margin;
 
           // set css of timeline items
-          $items.find('.timeline-item-image, .timeline-item-details').css({'height': imgHeight + 'px'});
+          if(!landscapeMobile) {
+            $items.find('.timeline-item-image, .timeline-item-details').css({'height': imgHeight + 'px'});
+          } else {
+            $items.find('.timeline-item-image').css({'height': imgHeight + 'px'});
+            $items.find('.timeline-item-details').css({'height': (imgHeight * 0.5) + 'px'});
+          }
 
           if (itemWidth <= 728) {
-            $items.css({'width': itemWidth + 'px', 'height': (imgHeight * 2) + 'px'});
+            if(!landscapeMobile) {
+              $items.css({'width': itemWidth + 'px', 'height': (imgHeight * 2) + 'px'});
+            } else {
+              $items.css({'width': itemWidth + 'px', 'height': (imgHeight * 1.5) + 'px'});
+            }
 
             // Set margin so start element would place in middle of the screen
-            $timelineItems.css({'width': width + 'px', 'margin-left': margin + 'px', 'height': ((imgHeight * 2) + timelineItemsPaddingTopBottom) + 'px'});
+            if(!landscapeMobile) {
+              $timelineItems.css({'width': width + 'px', 'margin-left': margin + 'px', 'height': ((imgHeight * 2) + timelineItemsPaddingTopBottom) + 'px'});
+            } else {
+              $timelineItems.css({'width': width + 'px', 'margin-left': margin + 'px', 'height': ((imgHeight * 1.5) + timelineItemsPaddingTopBottom) + 'px'});
+            }
+
           }
           else {
             $items.css({'width': itemWidth + 'px', 'height': imgHeight + 'px'});
@@ -793,7 +808,7 @@ Project demo: http://shindiristudio.com/timeline
               timelineItemTextTopBottomMargin = Math.ceil(parseInt($timelineItemText.css('margin-top')) + parseInt($timelineItemText.css('margin-bottom'))),
               timelineItemShareHeight = $('#timeline .timeline-item .timeline-gigya-share-container:first').height(),
               timelineItemTitleHeight = $('#timeline .timeline-item h2:first').height(),
-              timelineItemTextHeight = Math.floor(imgHeight - timelineItemShareHeight - timelineItemTitleHeight - timelineItemTextTopBottomMargin);
+              timelineItemTextHeight = (!landscapeMobile)? Math.floor(imgHeight - timelineItemShareHeight - timelineItemTitleHeight - timelineItemTextTopBottomMargin): Math.floor(0.5 * imgHeight - timelineItemShareHeight - timelineItemTitleHeight - timelineItemTextTopBottomMargin);
 
           $timelineItemText.css({'height': timelineItemTextHeight + 'px'});
 

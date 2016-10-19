@@ -17,7 +17,10 @@ function usanetwork_video_mobile_entity_view($entity, $entity_type, $view_mode, 
       $full_episode = $full_episode_field_value == '1' ? TRUE : FALSE;
     }
 
-    if ($full_episode) {
+    $field_mpx_categories = field_get_items('file', $entity, 'field_mpx_media_categories');
+    $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
+
+    if ($full_episode || $is_live) {
       $player_id = pub_mpx_player_data_load($entity);
       if ($player_id['pid'] != 'dd_usa_vod_noauth') {
         // add itunes meta

@@ -1092,7 +1092,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
       'fields' => array(
         'fullEpisode' => FALSE,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
 
     //for prod
@@ -1102,7 +1102,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1110,7 +1110,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
 
   } else {
@@ -1155,7 +1155,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1163,7 +1163,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1663,6 +1663,13 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       } elseif (!empty($log_level)) {
         $variables['attribute_parameters']['logLevel'] = $log_level;
       }
+
+      if ($full_episode) {
+        $variables['attribute_parameters']['fwsitesection'] = 'usa_tveverywhere_vod_hub';
+      } else {
+        $variables['attribute_parameters']['fwsitesection'] = 'usa_video_vod';
+      }
+
 
       if ($is_live) {
         $pdk_version = USA_TVE_PDK_VERSION;

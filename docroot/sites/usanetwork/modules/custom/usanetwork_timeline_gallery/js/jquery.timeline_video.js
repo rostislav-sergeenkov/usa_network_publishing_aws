@@ -156,6 +156,7 @@
         video_autoplay: autoPlay == 'video_autoplay' ? true : false,
         gallery_autoplay: autoPlay == 'gallery_autoplay' ? true : false,
         isGalleryEnd: false,
+
         startVideoAutoPlay: function () {
 
           var activeSlide = tlGallery.find('.timeline-item.active'),
@@ -305,10 +306,7 @@
             playerApi.reloadFrame(src);
           }
 
-          playerWrapper.css({
-            'visibility': 'visible',
-            'zIndex': 1
-          });
+          playerWrapper.addClass('visible');
         },
 
         // hide player and finish video
@@ -321,11 +319,7 @@
             $pdk.controller.endCurrentRelease();
           }
 
-          playerWrapper.css({
-            'visibility': 'hidden',
-            'zIndex': 0
-          });
-
+          playerWrapper.removeClass('visible');
           playerApi.showPlayButton();
         },
 
@@ -430,7 +424,7 @@
           Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
         }
 
-        if (playerApi.video_autoplay) {
+        if (playerApi.video_autoplay || playerApi.gallery_autoplay) {
           playerApi.startVideoAutoPlay();
         }
 

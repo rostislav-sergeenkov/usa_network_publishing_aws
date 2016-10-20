@@ -199,23 +199,28 @@ function _usanetwork_consumptionator_post_related_content_block() {
 
   if (!empty($content)) {
     $show_field = field_get_items('node', $content, 'field_show');
+    $movies = field_get_items('node', $content, 'field_multiple_movies');
 
     $is_new_design = FALSE;
+    $tv_node = usanetwork_core_api_get_tv_content_node($content);
     if (!empty($show_field)) {
       $tv_show_node = node_load($show_field[0]['target_id']);
 
       $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_show_node);
       $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
-    }
-    else {
+    } elseif (!empty($movies)) {
+      $related_content = usanetwork_movies_get_all_related_content_for_consumpt_page($content);
+      $tv_node = reset($tv_node);
+    } else {
       $related_content = usanetwork_news_get_all_related_content_for_consumpt_page($content);
     }
     if (!empty($related_content)) {
-      $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, 0, 1, $is_new_design);
+      $function = 'usanetwork_' . $tv_node->type . '_consumptionator_render_related_content_items_block';
+      $block_of_items = $function($related_content, 0, 1, $is_new_design);
 
       $load_more_link = &drupal_static('load_more_link');
       $load_more_link = TRUE;
-      return theme('usanetwork_tv_show_consumptionator_related_items_container', array(
+      return theme('usanetwork_' . $tv_node->type . '_consumptionator_related_items_container', array(
         'related_items_block' => $block_of_items,
         'load_more_link' => $load_more_link,
         'show_nid' => (!empty($tv_show_node->nid)) ? $tv_show_node->nid : NULL,

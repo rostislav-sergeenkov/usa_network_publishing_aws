@@ -15,7 +15,7 @@
         width: 100%;
       }
     }
-    body:not(.ie9) &.multiline-ellipsis-meta {
+    &.multiline-ellipsis-meta {
       align-items: flex-start;
       display: flex;
       max-width: 100%;

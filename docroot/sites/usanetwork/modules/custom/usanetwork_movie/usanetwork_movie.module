@@ -44,6 +44,14 @@ function usanetwork_movie_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ajax/all-movies/get-related/%node/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_movie_get_related_content_ajax_all_movies',
+    'page arguments' => array(3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -810,6 +818,9 @@ function _usanetwork_movie_cache_set_related_movie_content($movie_node) {
  * @param int $limit
  */
 function usanetwork_movie_get_related_content($movie_nid, $start_from = 0, $limit = 1, $priority_bundle = NULL, $priority_bundle_limit = NULL) {
+  if (is_object($movie_nid)) {
+    $movie_nid = $movie_nid->nid;
+  }
   $content_items = array();
   $node_filters = array(
     'fmovie.bundle' => array(
@@ -818,7 +829,8 @@ function usanetwork_movie_get_related_content($movie_nid, $start_from = 0, $limi
         'media_gallery',
         'person',
         'quiz',
-        'catchall_page'),
+        'catchall_page',
+        'consumpt_post'),
       'operator' => 'IN',
     ),
   );
@@ -950,7 +962,8 @@ function _usanetwork_movie_pull_related_nodes($movie_id, $start_from = 0,
         $query->leftJoin('field_data_field_movie', 'movie_field', 'movie_field.entity_id=n.nid');
         $query->leftJoin('field_data_field_multiple_movies', 'movies_field', 'movies_field.entity_id=n.nid');
       } else {
-        $query->join('field_data_field_movie', 'movie_field', 'movie_field.entity_id=n.nid');
+        $query->leftJoin('field_data_field_movie', 'movie_field', 'movie_field.entity_id=n.nid');
+        $query->leftJoin('field_data_field_multiple_movies', 'movies_field', 'movies_field.entity_id=n.nid');
       }
     }
     if ($movie_id == 'all_movies') {
@@ -960,13 +973,18 @@ function _usanetwork_movie_pull_related_nodes($movie_id, $start_from = 0,
           ->isNotNull('movies_field.field_multiple_movies_target_id')
       );
     } else {
-      $query->condition('movie_field.field_movie_target_id', $movie_id);
+      $query->condition(
+        db_or()
+          ->condition('movie_field.field_movie_target_id', $movie_id)
+          ->condition('movies_field.field_multiple_movies_target_id', $movie_id)
+      );
     }
     $query->addField('movie_field', 'entity_type', 'entity_type');
-    $query->condition('movie_field.deleted', 0);
+    $query->addField('movies_field', 'entity_type', 'entity_type');
+//    $query->condition('movie_field.deleted', 0);
     // Join Movie node
-    $query->join('node', 'movie_node', 'movie_field.field_movie_target_id=movie_node.nid');
-    $query->addField('movie_node', 'title', 'movie_title');
+//    $query->join('node', 'movie_node', 'movie_field.field_movie_target_id=movie_node.nid');
+//    $query->addField('movie_node', 'title', 'movie_title');
     // Join associated videos
     $query->leftJoin('field_data_field_promo_assoc_video', 'assoc_videos_field', 'assoc_videos_field.entity_id=n.nid');
     $query->addField('assoc_videos_field', 'field_promo_assoc_video_target_id', 'assoc_fid');
@@ -1040,8 +1058,15 @@ function _usanetwork_movie_pull_related_nodes($movie_id, $start_from = 0,
       foreach ($result as &$result_item) {
         if (!empty($result_item->created_ovts)) {
           $result_item->created = $result_item->created_ovts;
+          unset($result_item->created_ovts);
         }
-        unset($result_item->created_ovts);
+        if (!empty($result_item->movies_field_entity_type)) {
+          $result_item->entity_type = $result_item->movies_field_entity_type;
+          unset($result_item->movies_field_entity_type);
+        } else {
+          $result_item->entity_type = $result_item->movie_field_entity_type;
+          unset($result_item->movie_field_entity_type);
+        }
         if (empty($result_item->promo_title) || empty($result_item->promo_description)) {
           $own_promo_lines = _usanetwork_promo_node_get_promo_lines(node_load($result_item->nid));
           $result_item->promo_title = !empty($result_item->promo_title) ? $result_item->promo_title
@@ -1120,7 +1145,8 @@ function _usanetwork_movie_pull_related_files($movie_id, $start_from = 0, $limit
         ->isNotNull('movie_field.field_movie_target_id')
         ->isNotNull('movies_field.field_multiple_movies_target_id')
     );
-
+    $query->join('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id=f.fid');
+    $query->condition('full_episode.field_mpx_full_episode_value', 0);
   } else {
     $query->condition('movie_field.field_movie_target_id', $movie_id);
   }
@@ -1205,6 +1231,31 @@ function usanetwork_movie_get_related_content_ajax($movie_node, $start_from = 0,
     $response['rendered'] = _usanetwork_movie_render_related_content_items_block($related_content, TRUE, $is_even, $start_from, $limit, TRUE);
   }
 
+  return drupal_json_output($response);
+}
+/**
+ * AJAX callback for getting related content of movie from all content.
+ */
+function usanetwork_movie_get_related_content_ajax_all_movies($consum_node, $start_from = 0, $limit = 1) {
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'overlimited' => TRUE,
+    'rendered' => '',
+  );
+
+  $related_content = _usanetwork_movie_cache_get_limited_related_video_content('all_movies',$consum_node, $start_from, $limit + 1);
+
+
+  if (!empty($related_content)) {
+    if (count($related_content) > $limit) {
+      $response['overlimited'] = FALSE;
+      $related_content = array_slice($related_content, 0, $limit);
+    }
+    $response['rendered'] = usanetwork_movie_consumptionator_render_related_content_items_block($related_content, $start_from, $limit);
+    $response['total'] = count($related_content);
+    $response['found'] = TRUE;
+  }
   return drupal_json_output($response);
 }
 
@@ -1414,8 +1465,7 @@ function usanetwork_movie_render_cast_crew_block() {
  * @param $limit = 0, if = 0 it returns all data.
  */
 function _usanetwork_movie_cache_get_limited_related_content($movie_node_id, $node, $start_from = 0, $limit = USA_TV_SHOW_RELATED_ITEMS_ON_PAGE) {
-  $movie_node = node_load($movie_node_id);
-  $data = _usanetwork_movie_cache_get_related_content($movie_node, $node->type);
+  $data = _usanetwork_movie_cache_get_related_content($movie_node_id, $node->type);
 
   foreach ($data as $key => $data_item) {
     if ($key < ($limit * 2)) {
@@ -1448,12 +1498,12 @@ function _usanetwork_movie_cache_get_limited_related_content($movie_node_id, $no
  * @param $accurate - if true cache will be create if it does not exist
  * @return bool|int|null|object|stdClass
  */
-function _usanetwork_movie_cache_get_related_content($movie_node, $node_type, $full_object = FALSE, $accurate = FALSE) {
-  $cache_name = _usanetwork_movie_create_related_content_cache_name($movie_node->nid, $node_type);
+function _usanetwork_movie_cache_get_related_content($movie_nid, $node_type, $full_object = FALSE, $accurate = FALSE) {
+  $cache_name = _usanetwork_movie_create_related_content_cache_name($movie_nid, $node_type);
   $data = cache_get($cache_name);
 
   if (!$accurate && empty($data)) {
-    _usanetwork_movie_cache_set_related_content($movie_node, $node_type);
+    _usanetwork_movie_cache_set_related_content($movie_nid, $node_type);
 
     $data = cache_get($cache_name);
   }
@@ -1468,8 +1518,8 @@ function _usanetwork_movie_cache_get_related_content($movie_node, $node_type, $f
  *
  * @param $movie_node
  */
-function _usanetwork_movie_cache_set_related_content($movie_node, $node_type) {
-  $cached_data = usanetwork_movie_get_related_content($movie_node, 0, USA_TV_SHOW_RELATED_CACHE_SIZE, $node_type, USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUEUE);
+function _usanetwork_movie_cache_set_related_content($movie_nid, $node_type) {
+  $cached_data = usanetwork_movie_get_related_content($movie_nid, 0, USA_TV_SHOW_RELATED_CACHE_SIZE, $node_type, USA_TV_SHOW_RELATED_CONSUMPTIONATOR_QUEUE);
   if (!empty($cached_data)) {
     foreach ($cached_data as $cached_id => &$cached_data_item) {
       $entity = entity_load($cached_data_item->entity_type, array($cached_data_item->entity_id));
@@ -1506,7 +1556,7 @@ function _usanetwork_movie_cache_set_related_content($movie_node, $node_type) {
       }
     }
   }
-  $cache_name = _usanetwork_movie_create_related_content_cache_name($movie_node->nid, $node_type);
+  $cache_name = _usanetwork_movie_create_related_content_cache_name($movie_nid, $node_type);
   cache_set($cache_name, $cached_data);
 }
 
@@ -1784,13 +1834,13 @@ function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
 }
 
 function usanetwork_movies_get_all_related_content_for_consumpt_page($consumpt_node) {
-//  $related_content = _usanetwork_movie_cache_get_limited_related_content($consumpt_node, 0, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
-  $related_content = _usanetwork_movie_cache_get_limited_related_video_content('all_movies', $consumpt_node, 0, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
+  $related_content = _usanetwork_movie_cache_get_limited_related_content('all_movies', $consumpt_node, 0, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
 
   if (!empty($related_content)) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
     drupal_add_js(array(
-      'usanetwork_all_consumpt_post_page_context' => 'consumptionator_news',
+      'usanetwork_movie_nid' => $consumpt_node->nid,
+      'usanetwork_all_consumpt_post_page_context' => 'all-movies',
       'usanetwork_all_consumpt_post_offset' => 0,
     ), 'setting');
   }

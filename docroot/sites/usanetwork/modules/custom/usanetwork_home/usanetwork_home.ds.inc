@@ -117,27 +117,5 @@ function usanetwork_home_ds_layout_settings_info() {
   );
   $export['node|usa_homepage|global_nav_block_more'] = $ds_layout;
 
-  $ds_layout = new stdClass();
-  $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|usa_homepage|global_nav_block_shows';
-  $ds_layout->entity_type = 'node';
-  $ds_layout->bundle = 'usa_homepage';
-  $ds_layout->view_mode = 'global_nav_block_shows';
-  $ds_layout->layout = 'global_nav_block';
-  $ds_layout->settings = array(
-    'hide_empty_regions' => 0,
-    'hide_sidebars' => 0,
-    'regions' => array(
-      'media' => array(
-        0 => 'field_hp_nav_img_shows',
-      ),
-    ),
-    'fields' => array(
-      'field_hp_nav_img_shows' => 'media',
-    ),
-    'classes' => array(),
-  );
-  $export['node|usa_homepage|global_nav_block_shows'] = $ds_layout;
-
   return $export;
 }

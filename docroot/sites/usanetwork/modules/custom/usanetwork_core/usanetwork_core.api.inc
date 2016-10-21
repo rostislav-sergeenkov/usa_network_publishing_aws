@@ -243,11 +243,6 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'files' => 'field_usa_catchall_media',
       'og_image' => 'field_usa_og_image',
     ),
-    // Global nav image
-    'global_nav_image' => array(
-      'main' => 'field_gobal_nav_image',
-      'global_nav' => 'field_gobal_nav_image',
-    ),
     // Media gallery
     'media_gallery' => array(
       'main' => 'field_cover_item',

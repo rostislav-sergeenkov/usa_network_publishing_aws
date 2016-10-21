@@ -31,13 +31,6 @@ function usanetwork_home_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
-  // ajax for global nav shows
-  $items['globalnav_shows'] = array(
-    'page callback' => 'usanetwork_home_globalnav_shows_ajax',
-    'access callback' => 'user_access',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
 
   return $items;
 }
@@ -104,7 +97,6 @@ function usanetwork_home_default_queues_type() {
           "tv_show" : "tv_show",
           "usanetwork_aspot" : 0,
           "catchall_page" : 0,
-          "global_nav_image" : 0,
           "usa_homepage" : 0,
           "media_gallery" : 0,
           "person" : 0,
@@ -987,26 +979,6 @@ function _usanetwork_home_publish_validate($element, &$form_state, $form) {
 
 /**
  * Block callback for the globalnav shows block
- * rip of home landing
- */
-function usanetwork_home_globalnav_shows_block() {
-  $render = array();
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-
-  // return the nodes as global_nav_block_shows
-  if (!empty($homepage['node'])) {
-    $render['globalnav_shows']['#prefix'] = '<div class="globalnav-shows">shows';
-    $render['globalnav_shows']['#suffix'] = '</div>';
-    $render['globalnav_shows']['inner'] = node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows');
-  }
-  else {
-    return;
-  }
-  return $render;
-}
-
-/**
- * Block callback for the globalnav shows block
  */
 function usanetwork_home_globalnav_more_block() {
   $render = array();
@@ -1057,58 +1029,6 @@ function usanetwork_home_globalnav_more_ajax($type = 'ajax') {
   else {
     return '';
   }
-}
-
-/**
- * Retrieve more thingie and place them in the drawer
- *
- * @param string $ajax
- *   Ajax or nojs.
- *
- * @return array
- *   Return an array of ajax commands.
- */
-function usanetwork_home_globalnav_shows_ajax($type = 'ajax') {
-  drupal_add_library('system', 'drupal.ajax');
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-
-  $data = array();
-  if (!empty($homepage['node'])) {
-    $data['globalnav_shows'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows'));
-  }
-
-  if ($type == 'ajax') {
-    $commands = array();
-
-    $content = '<div class="globalnav-content-shows" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
-    // Replace empty div with content.
-    $commands[] = ajax_command_replace('#globalnav-shows', $content);
-
-    $page = array(
-      '#type' => 'ajax',
-      '#commands' => $commands,
-    );
-    ajax_deliver($page);
-  }
-  else {
-    return '';
-  }
-}
-
-/**
- * Retrieve more thingie and place them in the syndicate drawer
- */
-function usanetwork_home_globalnav_shows_banner() {
-  $homepage = usanetwork_home_get_homepage(array('usa_homepage'));
-
-  $data = array();
-  if (!empty($homepage['node'])) {
-    $data['globalnav_shows'] = render(node_view_multiple(node_load_multiple(array_keys($homepage['node'])), 'global_nav_block_shows'));
-  }
-
-  $content = '<div class="globalnav-content-shows globalnav-content-replaced" id="globalnav-shows-replaced">' . $data['globalnav_shows'] . '</div>';
-
-  return $content;
 }
 
 /**
@@ -1648,7 +1568,6 @@ function _usanetwork_home_get_content_default_image_field_names() {
   return array(
     'usanetwork_aspot' => 'field_usa_aspot_desktop',
     'media_gallery' => 'field_cover_item',
-    'global_nav_image' => 'field_global_nav_image',
     'person' => 'field_person_cover_photo',
     'post' => 'field_post_cover',
     'usanetwork_promo' => 'field_promo_regular_image',

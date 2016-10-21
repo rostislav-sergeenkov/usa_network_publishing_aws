@@ -16,7 +16,6 @@ features[ds_view_modes][] = figure
 features[ds_view_modes][] = follow_social
 features[ds_view_modes][] = gallery_flexslider
 features[ds_view_modes][] = global_nav_block_more
-features[ds_view_modes][] = global_nav_block_shows
 features[ds_view_modes][] = home_promo
 features[ds_view_modes][] = home_promo_bspot
 features[ds_view_modes][] = microsite_thumbnail

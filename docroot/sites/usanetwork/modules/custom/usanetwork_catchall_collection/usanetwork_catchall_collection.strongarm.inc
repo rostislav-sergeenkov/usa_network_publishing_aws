@@ -17,7 +17,6 @@ function usanetwork_catchall_collection_strongarm() {
   $strongarm->value = array(
     'catchall_page' => 'catchall_page',
     'usanetwork_aspot' => 0,
-    'global_nav_image' => 0,
     'usa_homepage' => 0,
     'media_gallery' => 0,
     'person' => 0,
@@ -41,7 +40,6 @@ function usanetwork_catchall_collection_strongarm() {
   $strongarm->value = array(
     'catchall_page' => 'catchall_page',
     'usanetwork_aspot' => 0,
-    'global_nav_image' => 0,
     'usa_homepage' => 0,
     'media_gallery' => 0,
     'person' => 0,

@@ -38,9 +38,9 @@ function usanetwork_mpx_video_context_default_contexts() {
           'region' => 'leaderboard',
           'weight' => '-10',
         ),
-        'views-usa_mpx_video-latest_live_video' => array(
-          'module' => 'views',
-          'delta' => 'usa_mpx_video-latest_live_video',
+        'usanetwork_mpx_video-usa_mpx_video_live' => array(
+          'module' => 'usanetwork_mpx_video',
+          'delta' => 'usa_mpx_video_live',
           'region' => 'content',
           'weight' => '-10',
         ),

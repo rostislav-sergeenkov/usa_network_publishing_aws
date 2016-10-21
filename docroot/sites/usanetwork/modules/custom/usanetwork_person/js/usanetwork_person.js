@@ -19,7 +19,7 @@
               sharebar.gigyaSharebar.ua.imageBhev = 'url';
               sharebar.gigyaSharebar.ua.imageUrl = $currentImage.attr('data-src-share') ? $currentImage.attr('data-src-share') : $currentImage.attr('src');
               sharebar.gigyaSharebar.ua.description = $currentDescription;
-              if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+              if (typeof Drupal.gigya.showSharebar == 'function') USAN.initUSAGigya(sharebar);
             }
           });
         }

@@ -150,3 +150,21 @@
     }
   }
 }
+.page-videos-live {
+  article.node-quiz {
+    @include breakpoint($bp-min-1281-width) {
+      width: 74.7%;
+    }
+    @include breakpoint($between-1025-1280) {
+      width: calc(100% - 320px);
+    }
+    .usanetwork-quiz {
+      @include breakpoint($bp-1280-width) {
+        width: auto;
+      }
+      .repeat-button {
+        margin: 15px 0;
+      }
+    }
+  }
+}

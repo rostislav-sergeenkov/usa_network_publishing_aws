@@ -390,7 +390,7 @@
             sharebar.gigyaSharebar.ua.imageBhev = 'default';
           }
           sharebar.gigyaSharebar.ua.description = $result.find('.result-description .share').text();
-          if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+          if (typeof Drupal.gigya.showSharebar == 'function') USAN.initUSAGigya(sharebar);
         }
       });
     },

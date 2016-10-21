@@ -83,26 +83,20 @@ Project demo: http://shindiristudio.com/timeline
 
         if (caption == '') caption = $('.node-timeline-gallery .field-name-body .field-item').text();
 
-        sharebar.gigyaSharebar = {
-          containerID: shareBarId,
-          iconsOnly: true,
-          layout: "horizontal",
-          shareButtons: "facebook, twitter, tumblr, pinterest, share",
-          shortURLs: "never",
-          showCounts: "none"
-        }
-
-        sharebar.gigyaSharebar.ua = {
-          description: caption,
-          imageBhev: "url",
-          imageUrl: imageSrc,
-          linkBack: url,
-          title: shareTitle
-        }
-        if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+        USAN.initUSAGigya({
+          gigyaSharebar: {
+            ua: {
+              description: caption,
+              imageUrl: imageSrc,
+              linkBack: url,
+              title: shareTitle
+            },
+            containerID: shareBarId
+          }
+        });
 
         // reset Gigya share bar clicks
-        var $timelineGigyaShareButtons = $('#' + shareBarId + ' .gig-share-button div');
+        var $timelineGigyaShareButtons = $('#' + shareBarId + ' .gig-share-button');
         $timelineGigyaShareButtons.unbind('click');
         $timelineGigyaShareButtons.bind('click', function(){
           Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this));

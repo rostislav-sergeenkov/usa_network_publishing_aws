@@ -693,7 +693,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   white-space: normal;
   width: 100%;
 }
-body:not(.ie9) .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carousel-item .aspot-carousel-promo .meta.multiline-ellipsis-meta, .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carousel-item body:not(.ie9) .aspot-carousel-promo .meta.multiline-ellipsis-meta, body:not(.ie9) .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta.multiline-ellipsis-meta, .aspot-and-episodes .episodes-list body:not(.ie9) .aspot-carousel-promo .meta.multiline-ellipsis-meta, body:not(.ie9) .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta.multiline-ellipsis-meta, .page-videos .main .aspot-and-episodes > .node a body:not(.ie9) .meta-wrapper .meta.multiline-ellipsis-meta, body:not(.ie9) .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta.multiline-ellipsis-meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a body:not(.ie9) .meta-wrapper .meta.multiline-ellipsis-meta, body:not(.ie9) .five-promo-item-block ul li .meta.multiline-ellipsis-meta, .five-promo-item-block ul body:not(.ie9) li .meta.multiline-ellipsis-meta, body:not(.ie9) .best-of-block-items li > div .meta.multiline-ellipsis-meta, .best-of-block-items body:not(.ie9) li > div .meta.multiline-ellipsis-meta, body:not(.ie9) .show-latest-block ul li .meta.multiline-ellipsis-meta, .show-latest-block ul body:not(.ie9) li .meta.multiline-ellipsis-meta, body:not(.ie9) .consum-sidebar .episodes-list-slider.vertical-mode .usa-carousel-item .meta.multiline-ellipsis-meta, .consum-sidebar .episodes-list-slider.vertical-mode body:not(.ie9) .usa-carousel-item .meta.multiline-ellipsis-meta, body:not(.ie9) .related-content-block ul li .meta.multiline-ellipsis-meta, .related-content-block ul body:not(.ie9) li .meta.multiline-ellipsis-meta, body:not(.ie9) .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta.multiline-ellipsis-meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner body:not(.ie9) .suggest-videos-block .meta.multiline-ellipsis-meta, body:not(.ie9) .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta.multiline-ellipsis-meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner body:not(.ie9) .suggest-videos-block .meta.multiline-ellipsis-meta, body:not(.ie9) .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .meta-wrapper .meta.multiline-ellipsis-meta, .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a body:not(.ie9) .meta-wrapper .meta.multiline-ellipsis-meta, body:not(.ie9) .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-bottom-info ul li .meta.multiline-ellipsis-meta, .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-bottom-info ul body:not(.ie9) li .meta.multiline-ellipsis-meta, body:not(.ie9) .landing-page-container .landing-items-blocks ul li .meta.multiline-ellipsis-meta, .landing-page-container .landing-items-blocks ul body:not(.ie9) li .meta.multiline-ellipsis-meta, body:not(.ie9) .carousel .usa-carousel-left .carousel-item:not(.description-item) .meta.multiline-ellipsis-meta, .carousel .usa-carousel-left body:not(.ie9) .carousel-item:not(.description-item) .meta.multiline-ellipsis-meta, body:not(.ie9) .carousel .usa-carousel-left .carousel-item:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta.multiline-ellipsis-meta, .carousel .usa-carousel-left .carousel-item:not(.description-item) .poll-items .poll-item .node body:not(.ie9) .meta-wrapper .meta.multiline-ellipsis-meta {
+.consum-sidebar .episodes-list-slider.horizontal-mode .usa-carousel-item .aspot-carousel-promo .meta.multiline-ellipsis-meta, .aspot-and-episodes .episodes-list .aspot-carousel-promo .meta.multiline-ellipsis-meta, .page-videos .main .aspot-and-episodes > .node a .meta-wrapper .meta.multiline-ellipsis-meta, .page-videos .main .aspot-and-episodes .episodes-list ul li a .meta-wrapper .meta.multiline-ellipsis-meta, .five-promo-item-block ul li .meta.multiline-ellipsis-meta, .best-of-block-items li > div .meta.multiline-ellipsis-meta, .show-latest-block ul li .meta.multiline-ellipsis-meta, .consum-sidebar .episodes-list-slider.vertical-mode .usa-carousel-item .meta.multiline-ellipsis-meta, .related-content-block ul li .meta.multiline-ellipsis-meta, .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta.multiline-ellipsis-meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta.multiline-ellipsis-meta, .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .meta-wrapper .meta.multiline-ellipsis-meta, .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-bottom-info ul li .meta.multiline-ellipsis-meta, .landing-page-container .landing-items-blocks ul li .meta.multiline-ellipsis-meta, .carousel .usa-carousel-left .carousel-item:not(.description-item) .meta.multiline-ellipsis-meta, .carousel .usa-carousel-left .carousel-item:not(.description-item) .poll-items .poll-item .node .meta-wrapper .meta.multiline-ellipsis-meta {
   align-items: flex-start;
   display: flex;
   max-width: 100%;
@@ -16196,13 +16196,10 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   width: 100%;
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta {
-  display: table-cell;
-  max-width: 100px;
   overflow: hidden;
   padding-left: 4%;
   position: relative;
   text-align: left;
-  vertical-align: middle;
   width: 100%;
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon, .page-videos-live .video-block .player-wrapper .video-player-wrapper.inactive .inner .suggest-videos-block .meta-icon {
@@ -25538,6 +25535,16 @@ html[xmlns] .slides {
   .ie9 .show-new-design #block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .bottom-menu-block .show-menu-tab .show-menu .show-menu-item a {
     padding: 0 2.00195vw;
   }
+}
+.ie9 .node-usanetwork-promo .meta {
+  display: table-cell;
+  max-width: 100px;
+  overflow: hidden;
+  padding-left: 4%;
+  position: relative;
+  text-align: left;
+  vertical-align: middle;
+  width: 100%;
 }
 
 body:not(.page-node-microsite) .file-video-mpx.view-mode-inline_content {

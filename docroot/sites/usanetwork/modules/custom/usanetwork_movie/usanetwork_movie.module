@@ -983,8 +983,6 @@ function _usanetwork_movie_pull_related_nodes($movie_id, $start_from = 0,
           ->condition('movies_field.field_multiple_movies_target_id', $movie_id)
       );
     }
-    $query->addField('movie_field', 'entity_type', 'entity_type');
-    $query->addField('movies_field', 'entity_type', 'entity_type');
 //    $query->condition('movie_field.deleted', 0);
     // Join Movie node
 //    $query->join('node', 'movie_node', 'movie_field.field_movie_target_id=movie_node.nid');
@@ -1056,6 +1054,8 @@ function _usanetwork_movie_pull_related_nodes($movie_id, $start_from = 0,
       }
     }
 
+    $query->distinct();
+
     $result = $query->execute()->fetchAll();
 
     if (!empty($result)) {
@@ -1064,13 +1064,7 @@ function _usanetwork_movie_pull_related_nodes($movie_id, $start_from = 0,
           $result_item->created = $result_item->created_ovts;
           unset($result_item->created_ovts);
         }
-        if (!empty($result_item->movies_field_entity_type)) {
-          $result_item->entity_type = $result_item->movies_field_entity_type;
-          unset($result_item->movies_field_entity_type);
-        } else {
-          $result_item->entity_type = $result_item->movie_field_entity_type;
-          unset($result_item->movie_field_entity_type);
-        }
+        $result_item->entity_type = 'node';
         if (empty($result_item->promo_title) || empty($result_item->promo_description)) {
           $own_promo_lines = _usanetwork_promo_node_get_promo_lines(node_load($result_item->nid));
           $result_item->promo_title = !empty($result_item->promo_title) ? $result_item->promo_title

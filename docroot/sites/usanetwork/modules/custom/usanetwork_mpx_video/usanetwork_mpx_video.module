@@ -1965,13 +1965,11 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         $vars['time'] = gmdate("H:i:s", $duration_field['value']);
       }
 
-      if (!$is_live) {
-        if (isset($file->mpx_video_data['status']) && !$file->mpx_video_data['status']) {
-          $video = theme('pub_mpx_inactive_video', array(
-            'file' => $file
-          ));
-          $vars['video_inactive'] = $video;
-        }
+      if (isset($file->mpx_video_data['status']) && !$file->mpx_video_data['status']) {
+        $video = theme('pub_mpx_inactive_video', array(
+          'file' => $file
+        ));
+        $vars['video_inactive'] = $video;
       }
 
       $interactive = _usanetwork_get_field_item('file', $file, 'field_mpx_interactive', 'value');

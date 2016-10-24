@@ -1,0 +1,14 @@
+/** MPS Page Info **/
+
+.mps-json {
+  width: 100%;
+}
+#mps-admin-form .sticky-enabled {
+  margin: 0px;
+}
+#mps-opts-wrapper {
+  margin-top: 25px;
+}
+#mps-calls-wrapper {
+  margin-top: 25px;
+}

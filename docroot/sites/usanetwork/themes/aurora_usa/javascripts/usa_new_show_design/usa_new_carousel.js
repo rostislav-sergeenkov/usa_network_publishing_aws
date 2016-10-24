@@ -23,16 +23,16 @@
   //=============================
   // usaCarousel app
   //=============================
-  var usaCarousels = window.usaCarousels || {};
+  var usaNewCarousel = window.usaNewCarousel || {};
 
-  usaCarousels = (function () {
+  usaNewCarousel = (function () {
 
-    function usaCarousels(element, settings) {
+    function usaNewCarousel(element, settings) {
 
       var _ = this;
 
       if(!$.fn.hasOwnProperty('velocity') || !$.fn.hasOwnProperty('slick') || !$.fn.hasOwnProperty('mCustomScrollbar')) {
-        usa_debug('error: usaCarousels dependency');
+        usa_debug('error: usaNewCarousel dependency');
         return;
       }
 
@@ -85,14 +85,14 @@
       _.init(true);
     }
 
-    return usaCarousels;
+    return usaNewCarousel;
   }());
 
   //=================
   // mCustomScrollbar
   //=================
 
-  usaCarousels.prototype.initVCarousel = function () {
+  usaNewCarousel.prototype.initVCarousel = function () {
 
     var _ = this,
         $mainWrap = _.$mainWrap,
@@ -138,7 +138,7 @@
     });
   };
 
-  usaCarousels.prototype.destroyVCarousel = function () {
+  usaNewCarousel.prototype.destroyVCarousel = function () {
 
     var _ = this,
         $carousel = _.$carousel;
@@ -152,7 +152,7 @@
   // slick
   //============
 
-  usaCarousels.prototype.changeViewportHCarousel = function (operation, diffWidth, duration) {
+  usaNewCarousel.prototype.changeViewportHCarousel = function (operation, diffWidth, duration) {
 
     var _ = this,
         $carousel = _.$carousel;
@@ -162,7 +162,7 @@
     }, { duration: duration });
   };
 
-  usaCarousels.prototype.addSlickEventsCallBacks = function () {
+  usaNewCarousel.prototype.addSlickEventsCallBacks = function () {
 
     var _ = this,
         $carousel = _.$carousel,
@@ -213,7 +213,7 @@
         // });
   };
 
-  usaCarousels.prototype.destroyHCarousel = function () {
+  usaNewCarousel.prototype.destroyHCarousel = function () {
 
     var _ = this,
         $carousel = _.$carousel;
@@ -225,7 +225,7 @@
         .css('left', 0);
   };
 
-  usaCarousels.prototype.initHCarousel = function () {
+  usaNewCarousel.prototype.initHCarousel = function () {
 
     var _ = this,
         $carousel = _.$carousel;
@@ -238,11 +238,11 @@
   //============
   // helpers
   //============
-  usaCarousels.prototype.checkMaxWindowWidth = function (bp) {
+  usaNewCarousel.prototype.checkMaxWindowWidth = function (bp) {
     return window.matchMedia('(max-width: ' + bp + 'px)').matches;
   };
 
-  usaCarousels.prototype.addEvents = function () {
+  usaNewCarousel.prototype.addEvents = function () {
 
     var _ = this;
 
@@ -252,7 +252,7 @@
     });
   };
 
-  usaCarousels.prototype.initCarousel = function () {
+  usaNewCarousel.prototype.initCarousel = function () {
 
     var _ = this,
         status = _.status,
@@ -283,7 +283,7 @@
   //=============================
   // Init usaGallery app
   //=============================
-  usaCarousels.prototype.init = function (creation) {
+  usaNewCarousel.prototype.init = function (creation) {
 
     var _ = this;
 
@@ -296,7 +296,7 @@
   //================================
   // create jQuery method usaGallery
   //================================
-  $.fn.usaCarousels = function () {
+  $.fn.usaNewCarousel = function () {
     var _ = this,
         opt = arguments[0],
         args = Array.prototype.slice.call(arguments, 1),
@@ -305,9 +305,9 @@
         ret;
     for (i = 0; i < l; i++) {
       if (typeof opt == 'object' || typeof opt == 'undefined')
-        _[i].usaCarousels = new usaCarousels(_[i], opt);
+        _[i].usaNewCarousel = new usaNewCarousel(_[i], opt);
       else
-        ret = _[i].usaCarousels[opt].apply(_[i].usaCarousels, args);
+        ret = _[i].usaNewCarousel[opt].apply(_[i].usaNewCarousel, args);
       if (typeof ret != 'undefined') return ret;
     }
     return _;
@@ -318,23 +318,25 @@
   //================================
   $(document).ready(function () {
 
-    $('#relevant-content-carousel').usaCarousels();
-    $('#episode-list').usaCarousels({
-      horizontal: {
-        mode: false
-      }
-    });
-    
-    $('#top-five-videos').usaCarousels({
-      vertical: {
-        mode: false
-      }
-    });
+    if ($('body').is('.show-new-design')) {
+      $('#relevant-content-carousel').usaNewCarousel();
+      $('#episode-list').usaNewCarousel({
+        horizontal: {
+          mode: false
+        }
+      });
 
-    $('#top-five-photos').usaCarousels({
-      vertical: {
-        mode: false
-      }
-    });
+      $('#top-five-videos').usaNewCarousel({
+        vertical: {
+          mode: false
+        }
+      });
+
+      $('#top-five-photos').usaNewCarousel({
+        vertical: {
+          mode: false
+        }
+      });
+    }
   });
 })(jQuery);

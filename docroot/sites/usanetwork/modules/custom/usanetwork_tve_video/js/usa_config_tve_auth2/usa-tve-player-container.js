@@ -24,14 +24,19 @@
                       attrName: 'pdk',
                       key: 'pdk'
                     },
-                      {
-                        attrName: 'loglevel',
-                        key: 'loglevel'
-                      }],
-                    MVPD_ID_KEY = 'MVPDid',
-                    statusPromise = false,
-                    frame = $(element).find('iframe').eq(0),
-                    params, userStatus;
+                    {
+                      attrName: 'loglevel',
+                      key: 'loglevel'
+                    },
+                    {
+                      attrName: 'fwsitesection',
+                      key: 'fwsitesection'
+                    }
+                  ],
+                  MVPD_ID_KEY = 'MVPDid',
+                  statusPromise = false,
+                  frame = $(element).find('iframe').eq(0),
+                  params, userStatus;
 
                 $rootScope.playerWrap = element;
                 $rootScope.playerId = attr['id'];

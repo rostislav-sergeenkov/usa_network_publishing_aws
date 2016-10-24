@@ -20,6 +20,7 @@ function mps_requirements($phase) {
     'description' => $t('Master Page Service'),
   );
 
+  // Ensure that Pixelman is disabled.
   if (module_exists('pixelman')) {
     $requirements['mps']['value'] = $t('The Pixelman module is enabled, it should not be if MPS is, disable Pixelman.');
     $requirements['mps']['severity'] = REQUIREMENT_ERROR;
@@ -27,6 +28,41 @@ function mps_requirements($phase) {
   else {
     $requirements['mps']['value'] = $t('The Pixelman module is disabled, all is well.');
     $requirements['mps']['severity'] = REQUIREMENT_OK;
+  }
+
+  // Ensure that the user has exactly one autoloader.
+  $xautoload = $t('X Autoload');
+  $registry_autoload = $t('Registry Autoload');
+  if ($phase == 'runtime') {
+    $xautoload = l($xautoload, 'https://www.drupal.org/project/xautoload');
+    $registry_autoload = l($registry_autoload, 'https://www.drupal.org/project/registry_autoload');
+  }
+  else {
+    $xautoload = '<em>' . $xautoload . '</em>';
+    $registry_autoload = '<em>' . $registry_autoload . '</em>';
+  }
+
+  if (!module_exists('xautoload') && !module_exists('registry_autoload')) {
+    $requirements['mps_autoload'] = array(
+      'title' => $t('Autoloader'),
+      'value' => $t('None'),
+      'description' => $t('You must enable either !xautoload or !registry_autoload to run MPS module.', array(
+        '!xautoload' => $xautoload,
+        '!registry_autoload' => $registry_autoload,
+      )),
+      'severity' => REQUIREMENT_ERROR,
+    );
+  }
+  elseif (module_exists('xautoload') && module_exists('registry_autoload')) {
+    $requirements['mps_autoload'] = array(
+      'title' => $t('Autoloader'),
+      'value' => $t('Multiple'),
+      'description' => $t('!xautoload and !registry_autoload are both enabled. You must disable one of these modules to run MPS module.', array(
+        '!xautoload' => $xautoload,
+        '!registry_autoload' => $registry_autoload,
+      )),
+      'severity' => REQUIREMENT_ERROR,
+    );
   }
 
   return $requirements;
@@ -40,6 +76,9 @@ function mps_uninstall() {
   variable_del('mps_integration');
   variable_del('mps_site_override');
   variable_del('mps_query');
+  variable_del('mps_variables');
+  variable_del('mps_calls');
+  variable_del('mps_field_settings');
 }
 
 /**
@@ -102,4 +141,11 @@ function mps_enable() {
 
   // When we enable the module, load the MPS ad blocks right away.
   _mps_sync_ad_blocks();
+}
+
+/**
+ * Removing the 'mps_cat_pattern' variable.
+ */
+function mps_update_7100() {
+  variable_del('mps_cat_pattern');
 }

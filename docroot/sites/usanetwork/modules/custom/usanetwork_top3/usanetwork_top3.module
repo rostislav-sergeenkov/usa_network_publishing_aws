@@ -181,7 +181,7 @@ function _usanetwork_top3_main_block() {
   if (!empty($page_pdk)) {
     $pdk_version = $page_pdk;
   }
-  $environment = _usanetwork_widget_get_environment();
+  $environment = usanetwork_core_get_environment();
   if ($environment == 'prod') {
     $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
   } elseif ($environment == 'stage') {

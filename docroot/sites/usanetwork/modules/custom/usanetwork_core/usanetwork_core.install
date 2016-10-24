@@ -1350,3 +1350,10 @@ function usanetwork_core_update_7192() {
 
   module_disable(array('usanetwork_gobal_nav_image'));
 }
+
+/**
+ * Delete usanetwork_widget module.
+ */
+function usanetwork_core_update_7193() {
+  module_disable(array('usanetwork_widget'));
+}

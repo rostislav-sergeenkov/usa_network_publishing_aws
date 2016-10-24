@@ -89,20 +89,6 @@ function usanetwork_widget_js_alter(&$javascript) {
     }
   }
 }
-/**
- * Helper to generate an env value based on base root to be used for JS
- */
-function _usanetwork_widget_get_environment() {
-  $site_env = isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'prod';
-
-  // override
-  switch ($site_env) {
-    case 'acceptance': $site_env = 'qa';
-      break;
-  }
-
-  return $site_env;
-}
 
 /**
  * Implements hook_theme().

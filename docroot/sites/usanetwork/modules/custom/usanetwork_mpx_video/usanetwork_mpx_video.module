@@ -1094,7 +1094,7 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
 function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
   $rulesets = array();
 
-  $environment = _usanetwork_widget_get_environment();
+  $environment = usanetwork_core_get_environment();
   if ($environment == 'stage') {
     $rulesets[] = array(
       'fields' => array(
@@ -1685,7 +1685,7 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         if (!empty($page_pdk)) {
           $pdk_version = $page_pdk;
         }
-        $environment = _usanetwork_widget_get_environment();
+        $environment = usanetwork_core_get_environment();
         if ($environment == 'prod') {
           $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
         } elseif ($environment == 'stage') {

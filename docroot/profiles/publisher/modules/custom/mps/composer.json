@@ -1,0 +1,10 @@
+{
+    "name": "drupal/mps",
+    "description": "The MPS module allows sites to integrate with Master Page Service (MPS), an execution platform for advertising & analytics.  This module is managed by NBC's Digital Products & Interactive Media (DPIM).",
+    "type": "drupal-module",
+    "license": "proprietary",
+    "require": {
+      "drupal/ctools": "7.*",
+      "drupal/token": "7.*"
+    }
+}

@@ -1047,12 +1047,9 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-small .meta {
-  display: table-cell;
-  max-width: 100px;
   overflow: hidden;
   padding-left: 20px;
   position: relative;
-  vertical-align: middle;
   width: 100%;
 }
 .featured-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .featured-small .meta .caption {

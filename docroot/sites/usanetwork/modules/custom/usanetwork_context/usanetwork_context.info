@@ -32,7 +32,6 @@ dependencies[] = usanetwork_promo
 dependencies[] = usanetwork_quiz
 dependencies[] = usanetwork_seo_page
 dependencies[] = usanetwork_showpages
-dependencies[] = usanetwork_snipe
 dependencies[] = usanetwork_static_page
 dependencies[] = usanetwork_timeline_gallery
 dependencies[] = usanetwork_token

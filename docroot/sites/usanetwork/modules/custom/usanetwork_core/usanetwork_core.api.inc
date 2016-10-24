@@ -285,11 +285,6 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'header' => 'field_quiz_header_image',
       'og_image' => 'field_usa_og_image',
     ),
-    // Snipe
-    'snipe' => array(
-      'main' => 'field_usa_support_files',
-      'support_files' => 'field_usa_support_files',
-    ),
     // Static page
     'usanetwork_static_page' => array(
       'main' => 'field_usa_og_image',

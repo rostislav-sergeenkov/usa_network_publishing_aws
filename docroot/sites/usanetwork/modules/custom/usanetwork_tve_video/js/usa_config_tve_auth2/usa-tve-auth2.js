@@ -685,6 +685,7 @@
             // tve-auth2 module modals are styled with tveModalBx class
             className: 'tveModal' + (parseInt(authConfig.version, 10) > 1 ? 'Bx' : ''),
             disableAccessEnabler: Boolean(tve.adobeClientlessApi),
+            isAccessEnablerModeJS: adobePassConfig.adobePassAccessEnablerMode == "js" ? true : false,
             cookies: {
               FIRST_VISIT: 'first_visit',
               FIRST_VISIT_LIVE_PAGE: 'first_visit_live',
@@ -762,7 +763,9 @@
                   backdrop : 'static'
                 });
               }
-              checkFlashVersion();
+              if (!tveAuthConfig.isAccessEnablerModeJS) {
+                checkFlashVersion();
+              }
               init();
             });
           }
@@ -1096,7 +1099,7 @@
 
             function openLoginModal(isPreview, options) {
 
-              if (!tveAuthConfig.disableAccessEnabler) {
+              if (!tveAuthConfig.disableAccessEnabler && !tveAuthConfig.isAccessEnablerModeJS) {
                 //Checking the existence of a valid swfobject plugin and Flash version
                 if (!helper.device.isMobile && !hasValidFlashVersion()) {
                   tveErrorHandler.showErrorMessage(tveErrorHandler.errors.FLASH);

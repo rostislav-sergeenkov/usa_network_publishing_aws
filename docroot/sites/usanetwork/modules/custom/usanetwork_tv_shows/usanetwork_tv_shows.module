@@ -1500,7 +1500,7 @@ function usanetwork_tv_shows_form_tv_episode_node_form_alter(&$form, &$form_stat
     $query->entityCondition('entity_type', 'node');
     $query->entityCondition('bundle', 'tv_season');
     $query->fieldCondition('field_show', 'target_id', $selected_show);
-    $query->propertyOrderBy('title', 'ASC');
+    $query->fieldOrderBy('field_season_id', 'value * 1', 'ASC');
     $result = $query->execute();
 
     // If the first element of the options aray is "- Select -" (et. al.) then

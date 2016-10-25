@@ -1107,7 +1107,6 @@ function _usanetwork_movie_pull_related_nodes($movie_id, $start_from = 0,
 function _usanetwork_movie_pull_related_files($movie_id, $start_from = 0, $limit = 0, $direction = 'DESC', $sort_by = 'timestamp', $filters = array()) {
   $query = db_select('file_managed', 'f');
   $query->fields('f', array('created', 'timestamp'));
-  $query->fields('f', array('created', 'timestamp'));
   $query->leftJoin('mpx_video', 'mpx_video_data', 'f.fid=mpx_video_data.fid');
   $query->addField('mpx_video_data', 'title', 'title');
   $query->leftJoin('field_data_field_promo_exclude_from_related', 'fp_exclude', 'fp_exclude.entity_id=f.fid');
@@ -1242,7 +1241,7 @@ function usanetwork_movie_get_related_content_ajax_all_movies($consum_node, $sta
     'rendered' => '',
   );
 
-  $related_content = _usanetwork_movie_cache_get_limited_related_video_content('all_movies',$consum_node, $start_from, $limit + 1);
+  $related_content = _usanetwork_movie_cache_get_limited_related_content('all_movies',$consum_node, $start_from, $limit + 1);
 
 
   if (!empty($related_content)) {

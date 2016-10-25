@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix {
   zoom: 1;
 }
@@ -22166,7 +22166,18 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .page-node-microsite .timelineFlat .timeline-items #player-wrapper, .node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper {
   background-color: #000000;
   visibility: hidden;
+  opacity: 0;
   position: absolute;
+  z-index: 0;
+  -webkit-transition: all 0.3 linear;
+  -moz-transition: all 0.3 linear;
+  -o-transition: all 0.3 linear;
+  transition: all 0.3 linear;
+}
+.page-node-microsite .timelineFlat .timeline-items #player-wrapper.visible, .node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper.visible {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
 }
 .page-node-microsite .timelineFlat .timeline-items #player-wrapper iframe, .node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper iframe {
   height: 100%;

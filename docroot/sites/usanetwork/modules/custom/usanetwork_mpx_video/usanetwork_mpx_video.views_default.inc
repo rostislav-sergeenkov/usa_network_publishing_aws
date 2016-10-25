@@ -340,26 +340,6 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['row_options']['links'] = 1;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: USA Video Term (field_usa_video_terms) */
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['id'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['table'] = 'field_data_field_usa_video_terms';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['field'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: thePlatform MPX Video: thePlatform MPX Video Status */
-  $handler->display->display_options['arguments']['status']['id'] = 'status';
-  $handler->display->display_options['arguments']['status']['table'] = 'mpx_video';
-  $handler->display->display_options['arguments']['status']['field'] = 'status';
-  $handler->display->display_options['arguments']['status']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['status']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['status']['default_argument_options']['argument'] = '1';
-  $handler->display->display_options['arguments']['status']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['status']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['status']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['status']['limit'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: File: Type */

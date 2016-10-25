@@ -112,6 +112,16 @@ function usanetwork_tv_shows_menu() {
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_tv_shows.admin.inc',
   );
+
+  $items['ajax/show-landing/get-related/%node'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_tv_show_get_right_rail',
+    'page arguments' => array(3, 4),
+    'delivery callback' => 'drupal_json_output',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -225,7 +235,7 @@ function usanetwork_tv_shows_block_view($delta = '') {
             path_to_theme('aurora_usa') . '/javascripts/headroom.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_header.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_menu-dropdown.js',
-            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_carousels.js',
+            path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_new_carousel.js',
             path_to_theme('aurora_usa') . '/javascripts/usa_new_show_design/usa_to-top.js'
           ),
         ),
@@ -691,6 +701,47 @@ function usanetwork_tv_shows_theme($existing, $type, $theme, $path) {
     'new_design_articles' => array(
       'render element' => 'data',
       'template' => 'plugins/templates/new-design-articles',
+    ),
+    'usanetwork_tv_shows_right_rail' => array(
+      'variables' => array(
+        'episodes_block_title' => NULL,
+        'sponsored' => NULL,
+        'file_path' => NULL,
+        'show_more_button' => NULL,
+        'items' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-right-rail',
+    ),
+    'usanetwork_tv_shows_right_rail_item' => array(
+      'variables' => array(
+        'url' => NULL,
+        'title' => NULL,
+        'series_and_number' => NULL,
+        'duration' => NULL,
+        'image_url' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-right-rail-item'
+    ),
+
+    'usanetwork_tv_shows_right_rail_b' => array(
+      'variables' => array(
+        'episodes_block_title' => NULL,
+        'sponsored' => NULL,
+        'file_path' => NULL,
+        'show_more_button' => NULL,
+        'items' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-right-rail-b',
+    ),
+    'usanetwork_tv_shows_right_rail_b_item' => array(
+      'variables' => array(
+        'url' => NULL,
+        'title' => NULL,
+        'series_and_number' => NULL,
+        'duration' => NULL,
+        'image_url' => NULL,
+      ),
+      'template' => 'templates/usanetwork-tv-shows-right-rail-b-item'
     ),
   );
 }
@@ -2325,22 +2376,9 @@ function _usanetwork_tv_shows_aspot_block() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
 
   if (!empty($show_node)) {
-    $alternative_title_field = field_get_items('node', $show_node, 'field_tvs_lea_block_title');
-    $theme_variables['episodes_block_title'] = t('Latest full episodes');
-    if (!empty($alternative_title_field)) {
-      $theme_variables['episodes_block_title'] = check_plain($alternative_title_field[0]['value']);
-    }
-
+    drupal_add_js(path_to_theme() . '/javascripts/usa_new_show_design/usa_new_carousel.js');
+    drupal_add_js(path_to_theme() . '/javascripts/usa-show-page-right-rail-target.js');
     $theme_variables['show'] = '<div id="aspot-usanetwork" data-content-type="tv-show"><div id="ajax_aspot_show">' . usanetwork_aspot_tvshow_render($show_node) . '</div></div>';
-
-    $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
-
-    $full_episodes = _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node, $needed_count);
-
-    $theme_variables['episodes'] = $full_episodes['episodes'];
-    $theme_variables['sponsored'] = (isset($full_episodes['sponsored']) && !($full_episodes['has_not_full_episodes'])) ? $full_episodes['sponsored'] : FALSE;
-    $theme_variables['file_path'] = (isset($full_episodes['file_id']) && !($full_episodes['has_not_full_episodes'])) ? $full_episodes['file_id'] : FALSE;
-    $theme_variables['show_more_button'] = (count($theme_variables['episodes']) > 3) ? TRUE: FALSE;
   }
 
   if (!empty($theme_variables)) {
@@ -2350,6 +2388,56 @@ function _usanetwork_tv_shows_aspot_block() {
   return '';
 }
 
+function usanetwork_tv_show_get_right_rail_variables_a($show_node) {
+  $alternative_title_field = field_get_items('node', $show_node, 'field_tvs_lea_block_title');
+  $theme_variables['episodes_block_title'] = t('Latest full episodes');
+  if (!empty($alternative_title_field)) {
+    $theme_variables['episodes_block_title'] = check_plain($alternative_title_field[0]['value']);
+  }
+  $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
+  $full_episodes = _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node, $needed_count);
+  $theme_variables['items'] = array();
+  foreach ($full_episodes['episodes'] as $item) {
+    $theme_variables['items'][] = theme('usanetwork_tv_shows_right_rail_item', $item);
+  }
+  $theme_variables['sponsored'] = (isset($full_episodes['sponsored']) && !($full_episodes['has_not_full_episodes'])) ? $full_episodes['sponsored'] : FALSE;
+  $theme_variables['file_path'] = (isset($full_episodes['file_id']) && !($full_episodes['has_not_full_episodes'])) ? $full_episodes['file_id'] : FALSE;
+  $theme_variables['show_more_button'] = (count($theme_variables['episodes']) > 3) ? TRUE: FALSE;
+  return array(
+    'data' => theme('usanetwork_tv_shows_right_rail', $theme_variables),
+  );
+}
+
+function usanetwork_tv_show_get_right_rail_variables_b($show_node) {
+  $alternative_title_field = field_get_items('node', $show_node, 'field_tvs_lea_block_title');
+  $theme_variables['episodes_block_title'] = t('Latest full episodes');
+  if (!empty($alternative_title_field)) {
+    $theme_variables['episodes_block_title'] = check_plain($alternative_title_field[0]['value']);
+  }
+  $needed_count = USA_TV_SHOW_LATEST_FULL_NUMBER;
+  $full_episodes = _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node, $needed_count);
+  $theme_variables['items'] = array();
+  foreach ($full_episodes['episodes'] as $idx => $item) {
+    $item['content_count'] = $idx + 1;
+    $theme_variables['items'][] = theme('usanetwork_tv_shows_right_rail_b_item', $item);
+  }
+  $theme_variables['sponsored'] = (isset($full_episodes['sponsored']) && !($full_episodes['has_not_full_episodes'])) ? $full_episodes['sponsored'] : FALSE;
+  $theme_variables['file_path'] = (isset($full_episodes['file_id']) && !($full_episodes['has_not_full_episodes'])) ? $full_episodes['file_id'] : FALSE;
+  return array(
+    'data' => theme('usanetwork_tv_shows_right_rail_b', $theme_variables),
+  );
+}
+
+function usanetwork_tv_show_get_right_rail($node, $version) {
+  if ('a' == $version) {
+    return usanetwork_tv_show_get_right_rail_variables_a($node);
+  }
+  elseif ('b' == $version) {
+    return usanetwork_tv_show_get_right_rail_variables_b($node);
+  }
+
+  return usanetwork_tv_show_get_right_rail_variables_a($node);
+}
 
 function _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node,  $needed_count) {
   $alternative_episodes = _usanetwork_tv_shows_aspot_get_alternative_content($show_node);
@@ -2382,6 +2470,7 @@ function _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node,  $
         unset($alternative_episode_content->entity_type, $alternative_episode_content->entity_id);
 
         if (!empty($alternative_episode_content->type)) {
+          $field_full_episode = NULL;
           $entity_wrapper = entity_metadata_wrapper($entity_type, $alternative_episode_content);
           if (!empty($alternative_episode_content->field_promo_image_override)) {
             $content_image = _usanetwork_get_field_item($entity_type, $alternative_episode_content, 'field_promo_image_override', 'uri');
@@ -2416,20 +2505,23 @@ function _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node,  $
           else {
             $promo_link = url($entity_type . '/' . $entity_id);
           }
+          $logic_violator = NULL;
+          if (!empty($field_full_episode)) {
+            $logic_violator = usanetwork_core_api_get_violator($entity_type, $entity_id);
+          }
           $episode_theme_variables = array(
             'url' => $promo_link,
             'violator' => $promo_data['show_name'],
+            'logic_violator' => $logic_violator,
             'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] :
               (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : ''),
             'description' => !empty($promo_data['description']) ? $promo_data['description'] :
               (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : ''),
-            'image_url' => !empty($content_image) ? theme('image_style', array(
-              'path' => $content_image,
-              'style_name' => 'full_episodes_633x356'
-            )) : '',
             'icon' => !(empty($promo_data['icon_type'])) ? $promo_data['icon_type'] : NULL,
           );
 
+          $images = _usanetwork_tv_shows_get_images_array_for_right_rail($content_image);
+          $episode_theme_variables = array_merge($episode_theme_variables, $images);
           $elements[] = $episode_theme_variables;
         }
       }
@@ -2458,17 +2550,19 @@ function _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node,  $
           $file_id = '/file/' . $full_latest_episode->fid;
         }
       }
-
+      $logic_violator = usanetwork_core_api_get_violator('file', $full_latest_episode->fid);
       $episode_theme_variables = array(
         'url' => url('file/' . $full_latest_episode->fid),
         'violator' => !empty($promo_data['show_name']) ? $promo_data['show_name'] : NULL,
+        'logic_violator' => $logic_violator,
         'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title']
           : (!empty($own_promo_lines['title']) ? $own_promo_lines['title'] : ''),
         'description' => !empty($promo_data['description']) ? $promo_data['description']
           : (!empty($own_promo_lines['description']) ? $own_promo_lines['description'] : ''),
-        'image_url' => !empty($image_uri) ? theme('image_style', array('path' => $image_uri, 'style_name' => 'full_episodes_633x356')) : '',
         'icon' => !(empty($promo_data['icon_type'])) ? $promo_data['icon_type'] : NULL,
       );
+      $images = _usanetwork_tv_shows_get_images_array_for_right_rail($image_uri);
+      $episode_theme_variables = array_merge($episode_theme_variables, $images);
       $elements[] = $episode_theme_variables;
     }
   }
@@ -2479,6 +2573,23 @@ function _usanetwork_tv_shows_get_full_episodes_with_alternatives($show_node,  $
     'file_id' => isset($file_id) ? $file_id : NULL,
     'has_not_full_episodes' => $has_not_full_episodes,
   );
+}
+
+function _usanetwork_tv_shows_get_images_array_for_right_rail($image_uri) {
+  $images = array(
+    'image_url' => '',
+    'image_desktop' => '',
+    'image_mobile' => '',
+  );
+  if (!empty($image_uri)) {
+    $images['image_url'] = theme('image_style', array(
+      'path' => $image_uri,
+      'style_name' => 'full_episodes_633x356'
+    ));
+    $images['image_desktop'] = image_style_url('99x84', $image_uri);
+    $images['image_mobile'] = image_style_url('284x187', $image_uri);
+  }
+  return $images;
 }
 
 /**

@@ -15307,18 +15307,6 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
     width: 100%;
   }
 }
-@media (min-width: 1025px) {
-  .consumptionator-characters-main-block .consum-sidebar .items-block, .consumptionator-episode-main-block .consum-sidebar .items-block,
-  .consumptionator-quiz-main-block .consum-sidebar .items-block, .consumptionator-post-main-block .consum-sidebar .items-block {
-    height: 420px;
-  }
-}
-@media (min-width: 1901px) {
-  .consumptionator-characters-main-block .consum-sidebar .items-block, .consumptionator-episode-main-block .consum-sidebar .items-block,
-  .consumptionator-quiz-main-block .consum-sidebar .items-block, .consumptionator-post-main-block .consum-sidebar .items-block {
-    height: 645px;
-  }
-}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-characters-main-block .consum-sidebar .items-block, .consumptionator-episode-main-block .consum-sidebar .items-block,
   .consumptionator-quiz-main-block .consum-sidebar .items-block, .consumptionator-post-main-block .consum-sidebar .items-block {
@@ -20722,19 +20710,18 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (min-width: 1025px) {
   .consumptionator-quiz-main-block .consum-sidebar .items-block {
-    min-height: 245px;
-    height: calc(100% - 250px) !important;
+    height: calc(100% - 250px);
     top: 0;
-  }
-}
-@media (min-width: 1901px) {
-  .consumptionator-quiz-main-block .consum-sidebar .items-block {
-    min-height: 400px;
-    height: calc(100% - 23.4vw) !important;
   }
 }
 .consumptionator-quiz-main-block .consum-sidebar .more-items {
   z-index: 1;
+}
+@media (min-width: 1025px) {
+  .consumptionator-quiz-main-block .consum-sidebar .advert {
+    height: 250px;
+    padding: 0;
+  }
 }
 
 @media (min-width: 1281px) {

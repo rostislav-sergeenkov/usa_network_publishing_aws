@@ -16919,34 +16919,57 @@ html.no-scroll, body.no-scroll {
   position: relative;
 }
 .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before {
-  position: relative;
-  z-index: 2;
+  font-size: 30px;
+  left: 1px;
+  line-height: 30px;
+  position: absolute;
+  top: 1px;
+}
+@media (max-width: 1024px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before {
+    font-size: 28px;
+    line-height: 28px;
+  }
 }
 .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after {
-  background: white;
-  border-radius: 20%;
-  content: '';
-  display: block;
-  height: 30px;
-  left: 1px;
-  top: 1px;
-  position: absolute;
-  width: 29px;
+  font-size: 32px;
+  line-height: 32px;
 }
 @media (max-width: 1024px) {
   .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after {
-    height: 25px;
-    left: 2px;
-    top: 0px;
-    width: 23px;
+    font-size: 26px;
+    line-height: 26px;
   }
 }
 @media (max-width: 640px) {
   .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after {
-    height: 28px;
-    left: 1px;
-    top: 1px;
-    width: 27px;
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+.show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before {
+  color: white;
+  font-size: 32px;
+  line-height: 32px;
+  left: 0;
+  top: 0;
+}
+@media (max-width: 1024px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before {
+    font-size: 26px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:before {
+    font-size: 30px;
+    line-height: 30px;
   }
 }
 .show-new-design.consumptionator-page .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:after, .show-new-design.node-type-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:after, .show-new-design.node-type-tv-episode .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:after, .show-new-design .gallery-recap-block .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:after, .show-new-design .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share .usa-share-button:after {
@@ -17854,14 +17877,13 @@ html.no-scroll, body.no-scroll {
   .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share {
     margin-right: 0;
   }
-  .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button {
-    font-size: 30px;
+  .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before {
+    font-size: 28px;
+    line-height: 28px;
   }
   .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after {
-    height: 28px;
-    left: 1px;
-    top: 1px;
-    width: 27px;
+    font-size: 30px;
+    line-height: 30px;
   }
 }
 .show-new-design .cast-and-info-description .node-media-gallery .gallery-wrapper .gallery-list.ready .slide, .show-new-design .movie-info-description .node-media-gallery .gallery-wrapper .gallery-list.ready .slide {
@@ -17966,14 +17988,13 @@ html.no-scroll, body.no-scroll {
 .show-new-design.node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container.gig-button-container-share {
   margin-right: 0;
 }
-.show-new-design.node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button {
-  font-size: 30px;
+.show-new-design.node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:before {
+  font-size: 28px;
+  line-height: 28px;
 }
 .show-new-design.node-type-post .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .share-bar .gig-button-container .usa-share-button:after {
-  height: 28px;
-  left: 1px;
-  top: 1px;
-  width: 27px;
+  font-size: 30px;
+  line-height: 30px;
 }
 .show-new-design.node-type-post .node-media-gallery .gallery-wrapper .gallery-list.ready .slide, .show-new-design.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-list.ready .slide, .show-new-design .block-character-info-content .node-media-gallery .gallery-wrapper .gallery-list.ready .slide {
   display: block;

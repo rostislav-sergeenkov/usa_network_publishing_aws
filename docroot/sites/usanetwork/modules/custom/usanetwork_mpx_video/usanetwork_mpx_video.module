@@ -2602,7 +2602,12 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $share_settings['gigyaSharebar']['ua']['linkBack'] = url('file/' .$file->fid, array('absolute' => TRUE));
     }
   }
-}
+  if ($context['display']['is_live'] == TRUE) {
+    $share_settings['gigyaSharebar']['ua']['title'] = t('USA Network Live TV Streaming');
+    $share_settings['gigyaSharebar']['ua']['description'] = t('Stream USA Network TV live on your desktop');
+    $share_settings['gigyaSharebar']['ua']['linkBack'] = url('videos/live', array('absolute' => TRUE));
+  }
+ }
 
 /**
  * Implements hook_views_query_alter()

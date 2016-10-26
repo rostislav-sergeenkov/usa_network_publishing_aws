@@ -290,12 +290,7 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
               &:after {
                 @include breakpoint($bp-1024-width) {
                   font-size: 26px;
-                  height: auto;
-                  left: 0;
                   line-height: 26px;
-                  top: 0;
-                  position: absolute;
-                  width: auto;
                 }
                 @include breakpoint($bp-640-width) {
                   font-size: 30px;
@@ -307,12 +302,20 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
               .usa-share-button {
                 &:before {
                   @include breakpoint($bp-1024-width) {
-                    display: none;
+                    color: white;
+                    font-size: 26px;
+                    left: 0;
+                    line-height: 26px;
+                    top: 0;
+                  }
+                  @include breakpoint($bp-640-width) {
+                    font-size: 30px;
+                    line-height: 30px;
                   }
                 }
                 &:after {
                   @include breakpoint($bp-1024-width) {
-                    color: white;
+                    display: none;
                   }
                 }
               }

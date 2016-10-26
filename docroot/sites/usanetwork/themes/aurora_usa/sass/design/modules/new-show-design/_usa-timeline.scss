@@ -133,6 +133,13 @@
                 font-size: 24px;
                 height: 24px !important;
                 width: 24px !important;
+                &:before {
+                  font-size: 22px;
+                  left: 1px;
+                  line-height: 22px;
+                  position: absolute;
+                  top: 1px;
+                }
               }
             }
             @extend %usa-gigya-colors;

@@ -81,6 +81,7 @@
     .gig-bar-container {
       .gig-button-container {
         .usa-share-button {
+          position: relative;
           &:before {
             background: none;
             color: white;
@@ -142,7 +143,8 @@
       .gig-button-container-share {
         .usa-share-button {
           &:before {
-            //color: $poll-color;
+            content: "\e606";
+            color: $poll-color;
           }
         }
       }

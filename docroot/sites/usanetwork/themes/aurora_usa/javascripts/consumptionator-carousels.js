@@ -464,7 +464,8 @@
   $(document).ready(function () {
 
     var $body = $('body'),
-        $episodesListSlider = $('.episodes-list-slider');
+        $episodesListSlider = $('.episodes-list-slider'),
+        $moreButton = $episodesListSlider.find('.more-button');
 
     if ($episodesListSlider.length > 0 && !$body.is('.page-videos-live')) {
       if ($body.is('.show-new-design')) {
@@ -487,22 +488,20 @@
         }
 
       } else {
-        if ($body.is('.usa-tv-show')) {
-          $episodesListSlider.usaCarousel({
-            isVerticalMode: true,
-            verticalModeBpMin: 769,
-            isHorizontalMode: true,
-            horizontalModeBpMax: 768,
-            destroyCarouselBpMax: 640,
-            isMoreButton: true,
-            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
-          });
-        } else {
-          $episodesListSlider.usaCarousel({
-            moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
-          });
+        if (!$body.is('.usa-tv-show')) {
+          if($moreButton.length > 0 ) {
+            $episodesListSlider.usaCarousel({
+              isMoreButton: true,
+              moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
+            });
+          } else {
+            $episodesListSlider.usaCarousel({
+              moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
+            });
+          }
         }
       }
     }
   });
+
 })(jQuery);

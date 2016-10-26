@@ -708,7 +708,7 @@ function _usanetwork_person_render_cast_crew_block() {
  *  Implements hook_usa_omniture_alter().
  */
 function usanetwork_person_usa_omniture_alter(&$omniture_variables, $context) {
-  if (!empty($context['entity']) && $context['entity']->type == 'person') {
+  if (!empty($context['entity']) && !empty($context['entity']->type) && $context['entity']->type == 'person') {
     $role = _usanetwork_get_field_item('node', $context['entity'], 'field_role', 'taxonomy_term');
     if (!empty($role)) {
       if (strtolower($role->name) == 'character') {
@@ -852,4 +852,22 @@ function _where2watch_get_featured_provider($providers){
   }
 
   return $featured_provider;
+}
+
+/**
+ * Implements hook_metatag_pattern_alter().
+ */
+function usanetwork_person_metatag_pattern_alter(&$pattern, &$types, $tag_name) {
+  if (isset($types['node']) && 'person' == $types['node']->type) {
+    $node = $types['node'];
+    if ('og:image' == $tag_name) {
+      $node_wrapper = entity_metadata_wrapper('node', $node);
+      $og_image = $node_wrapper->field_usa_og_image->value();
+      if ($og_image) {
+        $pattern = '[node:field_usa_og_image]';
+      } else {
+        $pattern = '[node:field_person_cover_photo]';
+      }
+    }
+  }
 }

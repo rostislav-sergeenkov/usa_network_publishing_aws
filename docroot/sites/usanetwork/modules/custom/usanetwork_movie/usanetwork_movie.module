@@ -513,31 +513,38 @@ function _usanetwork_movies_mb_block() {
       if (preg_match("/^(.+)\[node:(\d+)\]$/", $featured_movie_id, $matches)) {
         $featured_movie = node_load($matches[2]);
       }
-      if (!empty($featured_movie) && $featured_movie->type == 'movie') {
+      if (!empty($featured_movie)) {
         if ($featured_movie->status) {
           $is_first = ($i == 0) ? TRUE : FALSE;
           $i++;
-          $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
+          if (!empty($featured_movie->field_promo_image_override)) {
+            $cover_media = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_image_override', 'uri');
+          } else {
+            $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
+          }
           $show_time = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_topic', 'value');
           if (empty($show_time)) {
             $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
           }
           $caption = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_violator_name', 'value');
           $has_full_episode = _usanetwork_movie_has_full_episode($featured_movie);
+          if (!empty($featured_movie->field_promo_link)) {
+            $promo_link_field = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_link', 'url');
+          }
+
           $promos[] = array(
             'watch_now' => !empty($has_full_episode) ? 'watch-now' : NULL,
-            'url' => empty($has_full_episode) ? url('node/' . $featured_movie->nid) : url('file/' . $has_full_episode->fid),
+            'url' => empty($has_full_episode) ? (isset($promo_link_field) ? url($promo_link_field) : url('node/' . $featured_movie->nid)) : url('file/' . $has_full_episode->fid),
             'image' => array(
               'mobile' => !empty($cover_media)
                 ? image_style_url('719x414', $cover_media) : NULL,
               'desktop' => !empty($cover_media)
                 ? ($is_first
                   ? image_style_url('927x756', $cover_media)
-                  : image_style_url('456x372', $cover_media)
-                )
+                  : image_style_url('456x372', $cover_media))
                 : NULL,
             ),
-            'icon_type' => $has_full_episode ? 'full-video-icon-default' : 'about-show-icon-default',
+            'icon_type' => ($featured_movie->type == 'movie') ? ($has_full_episode ? 'full-video-icon-default' : 'about-show-icon-default') : (usanetwork_core_api_get_media_icon('node', $featured_movie->nid)),
             'caption' => $caption,
             'title' => $featured_movie->title,
             'description' => isset($has_full_episode->expiration_date)
@@ -633,9 +640,9 @@ function usanetwork_movie_movies_landing_main_form_submit($form, &$form_state) {
  */
 function usanetwork_movie_movies_autocomplete($title) {
   $query = db_select('node', 'n');
-  $query->fields('n',array('nid', 'title'));
+  $query->fields('n',array('nid', 'title', 'type'));
   $query->condition('n.title', '%' . $title . '%', 'LIKE');
-  $query->condition('n.type', 'movie', '=');
+  $query->condition('n.type', array('movie', 'usanetwork_promo', 'consumpt_post', 'quiz'), 'IN');
   $query->condition('n.status', NODE_PUBLISHED, '=');
   $query->range(0, 10);
   $result = $query->execute()->fetchAll();
@@ -645,7 +652,7 @@ function usanetwork_movie_movies_autocomplete($title) {
     foreach($result as $row) {
       $row->title = check_plain($row->title);
       $key = $row->title . ' [node:' . $row->nid . ']';
-      $output[$key] = $row->title;
+      $output[$key] = $row->title . ' (' . $row->type . ')';
     }
   }
   drupal_json_output($output);
@@ -1261,7 +1268,7 @@ function _usanetwork_movie_render_related_content_item($data, $is_even = FALSE, 
     'custom_classes' => implode(" ", $classes),
     'target_url' => $target_url,
     'caption' => !empty($data->promo_topic) ? check_plain($data->promo_topic) : '',
-    'title' => !empty($data->promo_title) ? check_plain($data->promo_title) : '',
+    'title' => !empty($data->promo_title) ? $data->promo_title : '',
     'additional' => !empty($data->promo_description) ? check_plain($data->promo_description) : '',
     'image_desktop' => $desktop_image,
     'image_mobile' => $mobile_image,
@@ -1711,7 +1718,7 @@ function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
     }
   }
   //Movie Landing Page
-  if (!empty($context['entity']) && $context['entity']->type == 'movie') {
+  if (!empty($context['entity']) && !empty($context['entity']->type) && $context['entity']->type == 'movie') {
     $landing_movie_omniture_variables = array(
       's.prop2' => t('Movies'),
       's.prop3' => t('Movies'),
@@ -1724,7 +1731,7 @@ function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
   }
 
   //Consumptionator Pages
-  if (!empty($context['entity']) && in_array($context['entity']->type,
+  if (!empty($context['entity']) && !empty($context['entity']->type) && in_array($context['entity']->type,
       array('media_gallery', 'person', 'quiz', 'catchall_page'))) {
     $tv_content = usanetwork_core_api_get_tv_content_node($context['entity']);
     if ($tv_content) {

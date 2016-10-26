@@ -66,7 +66,9 @@
           if (typeof gigya !== 'undefined') {
             if (typeof Drupal.settings.gigyaSharebars != 'undefined') {
               $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
-                if (typeof Drupal.gigya.showSharebar == 'function') Drupal.gigya.showSharebar(sharebar);
+                if (typeof Drupal.gigya.showSharebar == 'function') {
+                  USAN.initUSAGigya(sharebar);
+                }
               });
             }
           }
@@ -209,6 +211,53 @@
       });
     //-------- end --------
     },
+    refreshGigyaOmniture: function() {
+
+      // Gigya share bar
+      $('.field-type-gigya-sharebar').once('omniture-tracking', function () {
+
+        var $stickyShare = $(this).parent().hasClass('sticky-share') ? true : false;
+
+        $(this).on('click', '.gig-share-button', function (e) {
+          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+            var $self = $(this);
+            var $container = $self.parents('.gig-button-container');
+            var network = 'Share';
+            if ($container.hasClass('gig-button-container-facebook')) {
+              network = 'Facebook';
+            }
+            else if ($container.hasClass('gig-button-container-twitter')) {
+              network = 'Twitter';
+            }
+            else if ($container.hasClass('gig-button-container-tumblr')) {
+              network = 'Tumblr';
+            }
+            else if ($container.hasClass('gig-button-container-pinterest')) {
+              network = 'Pinterest';
+            }
+
+            var name = '';
+
+            if ($(this).closest('.gallery-wrapper').length > 0) {
+              name = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text();
+            } else if ($(this).closest('header .tab-item-wrapper').length > 0) {
+              name = $('header .tab-item-wrapper .node-usanetwork-promo .title').text();
+            } else if ($(this).closest('.block-character-info-header').length > 0) {
+              name = $('.block-character-info-header .full-name').text();
+            } else if ($(this).closest('.episode-info-block').length > 0) {
+              name = $('.episode-info-block .episode-title').text();
+            }
+
+            s.linkTrackVars = 'events,eVar73,eVar74';
+            s.linkTrackEvents = s.events = $stickyShare ? 'event91' : 'event41';
+            s.eVar73 = name.trim();
+            s.eVar74 = network;
+            s.tl(this, 'o', 'Social Share');
+            s.manageVars('clearVars', s.linkTrackVars, 1);
+          }
+        });
+      });
+    },
     right_rail_omniture: function ($episodesListSlider) {
 
       var $slider = $episodesListSlider || $('.episodes-list-slider'),
@@ -282,10 +331,11 @@
             $episodesListSlider = $('.episodes-list-slider');
             $episodesListSlider.usaCarousel({
               isVerticalMode: true,
-              verticalModeBpMin: 1281,
+              verticalModeBpMin: 1025,
               isHorizontalMode: true,
-              horizontalModeBpMax: 1280,
-              destroyCarouselBpMax: 640
+              horizontalModeBpMax: 1024,
+              destroyCarouselBpMax: 640,
+              moreButtonHiddenItemsGt: ($(document.body).hasClass('consumptionator-page')) ? 4 : 2
             });
             if (window.hasOwnProperty('picturefill')) {
               window.picturefill();
@@ -380,6 +430,7 @@
               $('.gallery-wrapper').usaGallery();
             }
 
+            Drupal.behaviors.usanetwork_video_live.refreshGigyaOmniture();
 
             if ($('body').hasClass('sub-menu-is-sticky') && !$('.consum-sidebar').hasClass('sticky-sidebar')) {
               $('.consum-sidebar').addClass('sticky-sidebar');

@@ -657,9 +657,16 @@ ul, li {
   height: 32px;
   z-index: 100;
 }
+.timeline-item .timeline-gigya-share-container {
+  display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+/*
 .timeline-item .timeline-gigya-share-container > div {
   float: left;
 }
+*/
 .timeline-item .timeline-gigya-share-container .timeline-gigya-share-title {
   padding-right: 8px;
 }

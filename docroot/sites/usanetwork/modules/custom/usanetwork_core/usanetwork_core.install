@@ -1267,3 +1267,12 @@ function usanetwork_core_update_7189() {
     module_enable(array('usanetwork_social_plugin'));
   }
 }
+
+/**
+ * Enable Usanetwork Pop-up Module.
+ */
+function usanetwork_core_update_7190() {
+  if (!module_exists('usanetwork_popup')) {
+    module_enable(array('usanetwork_popup'));
+  }
+}

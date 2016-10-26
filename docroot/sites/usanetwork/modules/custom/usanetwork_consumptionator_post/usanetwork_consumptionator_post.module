@@ -334,7 +334,7 @@ function _usanetwork_consumptionator_post_main_block() {
 /*
  * Get latest posts
  */
-function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 20, $exclude_verge = FALSE) {
+function _usanetwork_consumptionator_post_get_posts($show_id = NULL, $blog_nid = NULL, $limit = 10, $exclude_verge = FALSE) {
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
   $query->condition('node.type', 'consumpt_post');
@@ -894,7 +894,7 @@ function usanetwork_consumptionator_post_usa_omniture_alter(&$omniture_variables
     }
   }
 
-  if (!empty($context['entity']) && $context['entity']->type == 'consumpt_post') {
+  if (!empty($context['entity']) && !empty($context['entity']->type) && $context['entity']->type == 'consumpt_post') {
     $show_field = _usanetwork_get_field_item('node', $context['entity'], 'field_show', 'target_id');
     if ($show_field) {
       $show = node_load($show_field);

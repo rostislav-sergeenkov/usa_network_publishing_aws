@@ -57,7 +57,7 @@
         showCardOpenAnimeTime: 500,
         showCardOpenAnimeEasing: 'easeInOutExpo',
         showCardCloseAnimeEasing: 'easeInOutExpo',
-        isShowCardGetAdMinBp: 769,
+        showCardGetAdMinBp: 769,
         showCardBp: {
           // variables-and-functions.js
           window_size_desktop_large: 1901,
@@ -127,7 +127,7 @@
         isMobileDescriptionBp: _.checkMatchWindowWidth('max', _.initials.mobileDescriptionBp),
         isMoreButtonActive: false,
         isMoreButtonBp: _.checkMatchWindowWidth('max', _.initials.moreButtonBp),
-        isShowCardGetAdminMinBp: _.checkMatchWindowWidth('min', _.initials.showCardGetAdminMinBp),
+        isShowCardGetAdMinBp: _.checkMatchWindowWidth('min', _.initials.showCardGetAdMinBp),
         defaultCarouselDescriptionItemClass: _.$carouselDescription.parent().attr('class'),
         isMobileDevice: USAN.isMobile.isMobileDevice,
         isApple: USAN.isMobile.apple.device,
@@ -292,7 +292,8 @@
             _.addElemClass($self, _.initials.moreButtonClassClose, function () {
               _.showMoreBtnCarouselItems();
               _.options.isMoreButtonActive = true;
-            });
+              resetDescriptionLinesPromo();
+          });
           } else if (_.options.isMoreButtonActive) {
             _.removeElemClass($self, _.initials.moreButtonClassClose, null);
             _.addElemClass($self, _.initials.moreButtonClassMore, function () {
@@ -478,6 +479,7 @@
       complete: function (elements) {
         _.showCard.inProgress = false;
         checkDescriptionLines();
+        resetDescriptionLinesPromo();
       }
     });
 

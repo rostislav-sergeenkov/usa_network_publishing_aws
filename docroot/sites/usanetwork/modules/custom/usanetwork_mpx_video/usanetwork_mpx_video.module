@@ -115,6 +115,10 @@ function usanetwork_mpx_video_block_info() {
     'info' => t('Video MPX: Long Video Top Advert'),
     'cache' => DRUPAL_NO_CACHE,
   );
+  $blocks['usa_mpx_video_live'] = array(
+    'info' => t('Video MPX: Video Live'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
 }
 
@@ -241,6 +245,11 @@ function usanetwork_mpx_video_block_view($delta) {
     case 'usa_mpx_video_full_video_advert':
       $block['subject'] = '';
       $block['content'] = _usanetwork_mpx_video_full_video_advert();
+      break;
+    case 'usa_mpx_video_live':
+      $block['subject'] = '';
+      $block['content'] = _usanetwork_mpx_video_live();
+      break;
   }
   return $block;
 }
@@ -706,24 +715,14 @@ function usanetwork_mpx_video_full_video_autocomplete($title = '') {
 }
 
 /**
- * Implements hook_library_alter().
- *
- * Remove pdk player from page
- */
-function usanetwork_mpx_video_library_alter(&$libraries, $module) {
-  $current_menu_item = menu_get_item();
-  $current_menu_item_path = $current_menu_item['path'];
-  if ($current_menu_item_path == 'videos/live') {
-    if ($module == 'tve_auth') {
-      unset($libraries['tve_auth']['js']['http://pdk.theplatform.com/5.5.6/pdk/tpPdkController.js']);
-    }
-  }
-}
-
-/**
  * Renders live video page
  */
 function usanetwork_mpx_video_live() {
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-auth2.js', array('scope' => 'footer', 'weight' => -2));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-custom-services.js', array('scope' => 'footer', 'weight' => 0));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-login-button.js', array('scope' => 'footer', 'weight' => 2));
+  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-logout-button.js', array('scope' => 'footer', 'weight' => 3));
+//  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-player-container.js', array('scope' => 'footer', 'weight' => 4));
   drupal_add_js('//client-cloudpath.nbcuni.com/current/api/NBCUniCPC.min.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/cpc-player.js', array('scope' => 'footer'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_video_live') . '/js/usanetwork_video_live.dynamic_content.js');
@@ -732,6 +731,151 @@ function usanetwork_mpx_video_live() {
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-gallery.js');
   drupal_add_js(drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-right-rail.js');
   return '';
+}
+
+function _usanetwork_mpx_video_live() {
+  $advert_block = module_invoke('mps', 'block_view', 'topbox');
+  if (!empty($advert_block['content'])) {
+    $live_advert = render($advert_block['content']);
+  } else {
+    $live_advert = NULL;
+  }
+
+  $params = drupal_get_query_parameters();
+  $pdk_var = variable_get('usanetwork_live_player_url_pdk', '');
+  $log_level_var = variable_get('usanetwork_live_player_url_logLevel', '');
+
+  if (isset($params['pdk'])) {
+    $pdk = $params['pdk'];
+  } elseif (!empty($pdk_var)) {
+    $pdk = $pdk_var;
+  }
+
+  if (isset($params['logLevel'])) {
+    $log_level = $params['logLevel'];
+  } elseif (!empty($log_level_var)) {
+    $log_level = $log_level_var;
+  }
+
+  $pdk_version = USA_TVE_PDK_VERSION;
+  $page_pdk = variable_get('usanetwork_live_page_url_pdk', '');
+  if (!empty($page_pdk)) {
+    $pdk_version = $page_pdk;
+  }
+  $environment = _usanetwork_widget_get_environment();
+  if ($environment == 'prod') {
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
+  } elseif ($environment == 'stage') {
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js?pdk=' . $pdk_version;
+  }
+  else {
+    $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
+  }
+  drupal_add_js($pdk_controller_url, 'external');
+
+  //FB card
+  $og_image_width = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'property' => 'og:image:width',
+      'content' => '1920',
+    ),
+  );
+  drupal_add_html_head($og_image_width, 'usanetwork_og:image:width');
+
+  $og_image_height = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'property' => 'og:image:height',
+      'content' => '1080',
+    ),
+  );
+  drupal_add_html_head($og_image_height, 'usanetwork_og:image:height');
+
+  //twitter card
+  $tag_card = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'twitter:card',
+      'content' => 'player',
+    ),
+    '#weight' => 1,
+  );
+  drupal_add_html_head($tag_card, 'usanetwork_twitter:card');
+
+  //twitter site
+  $tag_site = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'twitter:site',
+      'content' => '@USA_Network',
+    ),
+    '#weight' => 2,
+  );
+  drupal_add_html_head($tag_site, 'usanetwork_twitter:site');
+
+  //twitter thumbnail
+  $tag_thumbnail = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'twitter:image:src',
+      'content' => file_create_url(path_to_theme() . '/images/usa_liveTV.jpg'),
+    ),
+    '#weight' => 6,
+  );
+  drupal_add_html_head($tag_thumbnail, 'usanetwork_twitter:image:src');
+
+  //twitter player content type
+  $tag_content_type = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'twitter:player:stream:content_type',
+      'content' => 'video/mp4',
+    ),
+    '#weight' => 10,
+  );
+  drupal_add_html_head($tag_content_type, 'usanetwork_twitter:player:stream:content_type');
+
+  //twitter player height
+  $tag_height = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'twitter:player:height',
+      'content' => USANETWORK_MPX_TWITTER_CARD_HEIGHT,
+    ),
+    '#weight' => 11,
+  );
+  drupal_add_html_head($tag_height, 'usanetwork_twitter:player:height');
+
+  //twitter player width
+  $tag_width = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'twitter:player:width',
+      'content' => USANETWORK_MPX_TWITTER_CARD_WIDTH,
+    ),
+    '#weight' => 12,
+  );
+  drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');
+
+  $variables = array(
+    'default_image' => '/' . path_to_theme() . '/images/usa_liveTV.jpg',
+    'live_pdk' => !empty($pdk) ? $pdk : NULL,
+    'live_logLevel' => !empty($log_level) ? $log_level : NULL,
+    'live_advert' => $live_advert,
+    'download_link' => l(t('Download the app'), 'app', array('attributes' => array('target' => '_self'))),
+  );
+
+  $live_video_template = theme('usanetwork_mpx_video_live', $variables);
+  return $live_video_template;
 }
 
 /**
@@ -1100,7 +1244,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
       'fields' => array(
         'fullEpisode' => FALSE,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
 
     //for prod
@@ -1110,7 +1254,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1118,7 +1262,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
 
   } else {
@@ -1163,7 +1307,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1171,7 +1315,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1618,23 +1762,9 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       $full_episode = _usanetwork_get_field_item('file', $file, 'field_mpx_full_episode', 'value');
       $vars['full_episode'] = ($full_episode == '1') ? TRUE : FALSE;
 
-      $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
-      $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
-      $vars['is_live'] = $is_live;
-      if ($is_live) {
-        $advert_block = module_invoke('mps', 'block_view', 'topbox');
-        if (!empty($advert_block['content'])) {
-          $vars['live_advert'] = render($advert_block['content']);
-        } else {
-          $vars['live_advert'] = NULL;
-        }
-      }
-
-      if (!$is_live) {
-        $image_uri = _usanetwork_mpx_video_get_image_path($file);
-        $vars['image_desktop'] =  file_create_url(image_style_url('1868x1051', $image_uri));
-        $vars['image_mobile'] =  file_create_url(image_style_url('945x532', $image_uri));
-      }
+      $image_uri = _usanetwork_mpx_video_get_image_path($file);
+      $vars['image_desktop'] =  file_create_url(image_style_url('1868x1051', $image_uri));
+      $vars['image_mobile'] =  file_create_url(image_style_url('945x532', $image_uri));
 
       $field_mpx_guid = _usanetwork_get_field_item('file', $file, 'field_mpx_guid', 'value');
       if ($field_mpx_guid) {
@@ -1650,15 +1780,8 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         'file' => $file,
       );
 
-
-      if ($is_live) {
-        $pdk = variable_get('usanetwork_live_player_url_pdk', '');
-        $log_level = variable_get('usanetwork_live_player_url_logLevel', '');
-      } else {
-        $pdk = variable_get('usanetwork_player_url_pdk', '');
-        $log_level = variable_get('usanetwork_player_url_logLevel', '');
-      }
-
+      $pdk = variable_get('usanetwork_player_url_pdk', '');
+      $log_level = variable_get('usanetwork_player_url_logLevel', '');
 
       if (isset($params['pdk'])) {
         $variables['attribute_parameters']['pdk'] = $params['pdk'];
@@ -1671,34 +1794,9 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       } elseif (!empty($log_level)) {
         $variables['attribute_parameters']['logLevel'] = $log_level;
       }
-
-      if ($is_live) {
-        $pdk_version = USA_TVE_PDK_VERSION;
-        if (isset($variables['attribute_parameters']['pdk'])) {
-          $vars['live_pdk'] = $variables['attribute_parameters']['pdk'];
-        }
-        if (isset($variables['attribute_parameters']['logLevel'])) {
-          $vars['live_logLevel'] = $variables['attribute_parameters']['logLevel'];
-        }
-
-        $page_pdk = variable_get('usanetwork_live_page_url_pdk', '');
-        if (!empty($page_pdk)) {
-          $pdk_version = $page_pdk;
-        }
-        $environment = _usanetwork_widget_get_environment();
-        if ($environment == 'prod') {
-          $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
-        } elseif ($environment == 'stage') {
-          $pdk_controller_url = 'http://player.theplatform.com/pdk/dCK2IC/tpPdkController.js?pdk=' . $pdk_version;
-        }
-        else {
-          $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
-        }
-        drupal_add_js($pdk_controller_url, 'external');
-      } else {
-        $vars['video'] = theme('usanetwork_tve_player_mpx_video', $variables);
-      }
-
+  
+      $vars['video'] = theme('usanetwork_tve_player_mpx_video', $variables);
+  
       //FB card
       $og_image_width = array(
         '#type' => 'html_tag',
@@ -1722,10 +1820,6 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
 
       //twitter card
       if (!$full_episode) {
-
-//        $endcard_parameters = _usanetwork_mpx_video_get_short_endcard_parameters($file, $show);
-//        drupal_add_js(array('short_endcard' => $endcard_parameters), 'setting');
-
         //twitter card
         $tag_card = array(
           '#type' => 'html_tag',
@@ -1978,10 +2072,6 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       }
     }
   }
-  // Fill H1 tag.
-  $title = _pub_mpx_get_default_mpx_values('field_mpx_title', $file, 0, 'value');
-  $h1 = _pub_mpx_get_default_mpx_values('field_seo_h1', $file, 0, 'value');
-  $vars['h1'] = !empty($h1) ? $h1 : $title;
 }
 
 /**
@@ -2510,18 +2600,14 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $image_path = _usanetwork_mpx_video_get_image_path($file);
       $share_settings['gigyaSharebar']['ua']['imageUrl'] = file_create_url($image_path);
       $share_settings['gigyaSharebar']['ua']['linkBack'] = url('file/' .$file->fid, array('absolute' => TRUE));
-
-      // change url for live player
-      $field_mpx_categories = field_get_items('file', $file, 'field_mpx_media_categories');
-      $live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
-      if ($live) {
-        $share_settings['gigyaSharebar']['ua']['title'] = t('USA Network Live TV Streaming');
-        $share_settings['gigyaSharebar']['ua']['description'] = t('Stream USA Network TV live on your desktop');
-        $share_settings['gigyaSharebar']['ua']['linkBack'] = url('videos/live', array('absolute' => TRUE));
-      }
     }
   }
-}
+  if ($context['display']['is_live'] == TRUE) {
+    $share_settings['gigyaSharebar']['ua']['title'] = t('USA Network Live TV Streaming');
+    $share_settings['gigyaSharebar']['ua']['description'] = t('Stream USA Network TV live on your desktop');
+    $share_settings['gigyaSharebar']['ua']['linkBack'] = url('videos/live', array('absolute' => TRUE));
+  }
+ }
 
 /**
  * Implements hook_views_query_alter()
@@ -3134,7 +3220,11 @@ function usanetwork_mpx_video_theme($existing, $type, $theme, $path) {
     'usanetwork_mpx_video_new_design_bar' => array(
       'variables' => array(),
       'template' => 'templates/usanetwork-mpx-video-new-design-bar',
-    )
+    ),
+    'usanetwork_mpx_video_live' => array(
+      'variables' => array(),
+      'template' => 'templates/usanetwork-mpx-video-live',
+    ),
   );
   return $themes;
 }

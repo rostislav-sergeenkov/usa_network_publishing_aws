@@ -320,7 +320,12 @@
       border-left: 1px solid #ffffff;
       &:after {content: '\e608';}
     }
-
+    &.slick-disabled {
+      cursor: default;
+      &:after {
+        opacity: 0.3;
+      }
+    }
   }
   .time-zone {
     padding: 0 30px;

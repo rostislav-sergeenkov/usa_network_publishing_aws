@@ -63,6 +63,10 @@
   width: 100%;
 }
 
+/* Quiz gigya */
+#microsite #quizzes .field-name-field-gigya-share-bar{
+  float: none;
+}
 
 /* Quiz Nav */
 #microsite #quizzes .quizzes-nav {

@@ -1,0 +1,196 @@
+// gigya default version
+%usa-gigya {
+  // & = .field-type-gigya-sharebar
+  & {
+    padding: 0;
+    margin: 0;
+    .gig-bar-container {
+      .gig-button-container {
+        display: block;
+        padding: 0;
+        margin: 0 5px 0 0;
+        .usa-share-button {
+          cursor: pointer;
+          background-image: none !important;
+          color: $consum-carousel-text;
+          display: block;
+          font-family: $ico-font;
+          font-size: 32px;
+          line-height: 1;
+          @include breakpoint ($bp-1024-width) {
+            font-size: 26px;
+          }
+          @include breakpoint($bp-480-width) {
+            font-size: 23px;
+          }
+          //&:before {
+          //
+          //}
+        }
+      }
+      .gig-button-container-facebook {
+        .usa-share-button {
+          &:before {
+            content: "\e602";
+          }
+        }
+      }
+      .gig-button-container-twitter {
+        .usa-share-button {
+          &:before {
+            content: "\e603";
+          }
+        }
+      }
+      .gig-button-container-tumblr {
+        .usa-share-button {
+          &:before {
+            content: "\e604";
+          }
+        }
+      }
+      .gig-button-container-pinterest {
+        .usa-share-button {
+          &:before {
+            content: "\e605";
+          }
+        }
+      }
+      .gig-button-container-share {
+        .usa-share-button {
+          &:before {
+            content: "\e606";
+          }
+        }
+      }
+      .gig-button-container-email {
+        .usa-share-button {
+          &:before {
+            content: "\e625";
+          }
+        }
+      }
+    }
+  }
+}
+
+// gigya default version colors
+%usa-gigya-colors {
+  // & = .field-type-gigya-sharebar
+  & {
+    .gig-bar-container {
+      .gig-button-container {
+        .usa-share-button {
+          &:before {
+            color: $poll-color;
+          }
+        }
+      }
+      .gig-button-container-facebook {
+        .usa-share-button {
+          &:before {
+            color: $usa-video-helper-facebook;
+          }
+        }
+      }
+      .gig-button-container-twitter {
+        .usa-share-button {
+          &:before {
+            color: $usa-video-helper-twitter;
+          }
+        }
+      }
+      .gig-button-container-tumblr {
+        .usa-share-button {
+          &:before {
+            color: $usa-video-helper-tumblr;
+          }
+        }
+      }
+      .gig-button-container-pinterest {
+        .usa-share-button {
+          &:before {
+            color: $usa-video-helper-pinterest;
+          }
+        }
+      }
+      .gig-button-container-share {
+        .usa-share-button {
+          &:before {
+            color: $poll-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// gigya sticky version override default styles
+%usa-gigya-sticky-override-styles {
+
+}
+
+// gigya sticky version
+%usa-gigya-sticky {
+  .field-type-gigya-sharebar {
+    padding: 0;
+    margin: 0;
+    .gig-bar-container {
+      .gig-button-container {
+        display: block;
+        margin: 0;
+        padding: 0;
+        .usa-share-button {
+          background: transparent;
+          cursor: pointer;
+          position: relative !important;
+          text-align: center;
+          &:before {
+            background: transparent;
+            color: #ffffff !important;
+            display: block;
+            font-family: $ico-font;
+            font-size: inherit;
+            position: relative;
+            z-index: 2;
+          }
+        }
+      }
+      .gig-button-container-facebook {
+        background: $usa-video-helper-facebook;
+        .usa-share-button {
+          &:before {
+            content: "\e618";
+          }
+        }
+      }
+
+      .gig-button-container-twitter {
+        background: $usa-video-helper-twitter;
+        .usa-share-button {
+          &:before {
+            content: "\e61a";
+          }
+        }
+      }
+
+      .gig-button-container-tumblr {
+        background: $usa-video-helper-tumblr;
+        .usa-share-button {
+          &:before {
+            content: "\e619";
+          }
+        }
+      }
+
+      .gig-button-container-share {
+        background: $usa-video-helper-pinterest;
+        .usa-share-button {
+          &:before {
+            content: "\e62a";
+          }
+        }
+      }
+    }
+  }
+}

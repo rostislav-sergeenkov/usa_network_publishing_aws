@@ -34,7 +34,7 @@ function usanetwork_chartbeat_page_alter(&$page) {
  */
 function _usanetwork_chartbeat_set_variables($menu_object) {
   if ($menu_object) {
-    if (in_array($menu_object->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+    if (!empty($menu_object->type) && in_array($menu_object->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
       $full_episode = _usanetwork_get_field_item('file', $menu_object, 'field_mpx_full_episode', 'value');
       $show = _usanetwork_get_field_item('file', $menu_object, 'field_show', 'target_id');
       if ($full_episode == '1') {
@@ -46,7 +46,7 @@ function _usanetwork_chartbeat_set_variables($menu_object) {
       } else {
         $type = 'video short-form';
       }
-    } else if ($menu_object->type == 'timeline_gallery') {
+    } else if (!empty($menu_object->type) && $menu_object->type == 'timeline_gallery') {
       $type = 'timeline-gallery';
     }
   }

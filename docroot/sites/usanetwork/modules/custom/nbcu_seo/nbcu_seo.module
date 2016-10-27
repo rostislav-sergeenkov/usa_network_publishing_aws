@@ -192,6 +192,15 @@ function nbcu_seo_xmlsitemap_link_update(array $link) {
   }
 }
 
+function nbcu_seo_xmlsitemap_link_alter(&$link, $context) {
+  if ('file' == $link['type'] && !empty($link['id'])) {
+    $file = file_load($link['id']);
+    if (!usanetwork_core_api_check_entity_publish($file, 'file')) {
+      $link['status'] = 0;
+    }
+  }
+}
+
 /**
  * Returns list of xml sitemap types.
  */

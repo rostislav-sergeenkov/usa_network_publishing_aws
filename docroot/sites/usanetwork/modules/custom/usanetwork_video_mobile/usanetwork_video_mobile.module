@@ -14,13 +14,14 @@ function usanetwork_video_mobile_entity_view($entity, $entity_type, $view_mode, 
 
     $full_episode = FALSE;
     if ($full_episode_field_value = _usanetwork_get_field_item('file', $entity, 'field_mpx_full_episode', 'value')) {
-      $full_episode = $full_episode_field_value == '1' ? TRUE : FALSE;
+      $full_episode = ($full_episode_field_value == '1') ? TRUE : FALSE;
+    }
+    $auth_episode = FALSE;
+    if ($auth_episode_field_value = _usanetwork_get_field_item('file', $entity, 'field_mpx_entitlement', 'value')) {
+      $auth_episode = ($auth_episode_field_value == 'auth') ? TRUE : FALSE;
     }
 
-    $field_mpx_categories = field_get_items('file', $entity, 'field_mpx_media_categories');
-    $is_live = ($field_mpx_categories[0]['safe_value'] === 'Live') ? TRUE : FALSE;
-
-    if ($full_episode || $is_live) {
+    if ($full_episode && $auth_episode) {
       $player_id = pub_mpx_player_data_load($entity);
       if ($player_id['pid'] != 'dd_usa_vod_noauth') {
         // add itunes meta

@@ -517,7 +517,11 @@ function _usanetwork_movies_mb_block() {
         if ($featured_movie->status) {
           $is_first = ($i == 0) ? TRUE : FALSE;
           $i++;
-          $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
+          if (!empty($featured_movie->field_promo_image_override)) {
+            $cover_media = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_image_override', 'uri');
+          } else {
+            $cover_media = usanetwork_core_api_get_content_image('node', $featured_movie);
+          }
           $show_time = _usanetwork_get_field_item('node', $featured_movie, 'field_promo_topic', 'value');
           if (empty($show_time)) {
             $show_time = usanetwork_movie_schedule_get_data($featured_movie->title);
@@ -1714,7 +1718,7 @@ function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
     }
   }
   //Movie Landing Page
-  if (!empty($context['entity']) && $context['entity']->type == 'movie') {
+  if (!empty($context['entity']) && !empty($context['entity']->type) && $context['entity']->type == 'movie') {
     $landing_movie_omniture_variables = array(
       's.prop2' => t('Movies'),
       's.prop3' => t('Movies'),
@@ -1727,7 +1731,7 @@ function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
   }
 
   //Consumptionator Pages
-  if (!empty($context['entity']) && in_array($context['entity']->type,
+  if (!empty($context['entity']) && !empty($context['entity']->type) && in_array($context['entity']->type,
       array('media_gallery', 'person', 'quiz', 'catchall_page'))) {
     $tv_content = usanetwork_core_api_get_tv_content_node($context['entity']);
     if ($tv_content) {

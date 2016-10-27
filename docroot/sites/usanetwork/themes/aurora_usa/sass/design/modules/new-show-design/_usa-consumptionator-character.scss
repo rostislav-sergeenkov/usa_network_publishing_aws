@@ -205,33 +205,7 @@
             > div {
               float: right;
             }
-            .gig-button-container {
-              [id$='reaction0-facebook_img'] {
-                &:before {
-                  color: $usa-video-helper-facebook;
-                }
-              }
-              [id$='reaction1-twitter_img'] {
-                &:before {
-                  color: $usa-video-helper-twitter;
-                }
-              }
-              [id$='reaction2-tumblr_img'] {
-                &:before {
-                  color: $usa-video-helper-tumblr;
-                }
-              }
-              [id$='reaction3-pinterest_img'] {
-                &:before {
-                  color: $usa-video-helper-pinterest;
-                }
-              }
-              [id$='reaction4-share_img'] {
-                &:before {
-                  color: $poll-color;
-                }
-              }
-            }
+            @extend %usa-gigya-colors;
           }
         }
       }

@@ -365,6 +365,7 @@ function default_site_request_handler() {
 }
 
 $conf['admin_menu_cache_client'] = FALSE;
+$conf['revision_scheduler_cron_time'] = 180;
 
 if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && 'https' == $_SERVER["HTTP_X_FORWARDED_PROTO"]) {
   $_SERVER['HTTPS'] = 'on';

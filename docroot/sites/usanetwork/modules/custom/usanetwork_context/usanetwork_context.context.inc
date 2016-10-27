@@ -611,12 +611,6 @@ function usanetwork_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'usanetwork_blocks-usa_detect_ieversion' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_detect_ieversion',
-          'region' => 'main_suffix',
-          'weight' => '-10',
-        ),
         'usanetwork_blocks-usa_footer_promos' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_footer_promos',
@@ -813,12 +807,6 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_blocks-usa_detect_ieversion' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_detect_ieversion',
-          'region' => 'main_suffix',
-          'weight' => '-10',
-        ),
         'usanetwork_blocks-usa_footer_promos' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_footer_promos',

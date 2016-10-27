@@ -79,10 +79,10 @@ function _mps_get_value($field_type, $field) {
       $value = FALSE;
       break;
     case 'datetime':
-      $value = $field->value();
+      $value = date('Y-m-d H:i:s', $field->value());
       break;
     case 'datestamp':
-      $value = $field->value();
+      $value = date('Y-m-d H:i:s', $field->value());
       break;
     case 'entityreference':
       $value = $field->title->value();
@@ -152,9 +152,18 @@ function _mps_iterate_entity($entity_type, $entity) {
 
   $wrapper = entity_metadata_wrapper($entity_type, $entity);
 
-  $entity_array = array();
+  list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity) ;
 
-  $field_info_instances = field_info_instances($entity_type, $wrapper->getBundle());
+  $options = array(
+    'absolute' => TRUE,
+    'alias' => TRUE,
+  );
+
+  $entity_array = array(
+    'canonical_url' => url($entity_type . '/' . $id, $options),
+  );
+
+  $field_info_instances = field_info_instances($entity_type, $bundle);
 
   foreach ($field_info_instances as $field_name => $value) {
 
@@ -178,10 +187,19 @@ function _mps_iterate_entity($entity_type, $entity) {
       return _mps_get_value($field_info['type'], $property);
     };
     $field_value = $field_info['cardinality'] == 1 ? [$wrapper->$field_name] : iterator_to_array($wrapper->$field_name);
-    $field_value = implode('|', array_filter(array_map($_mps_get_value, $field_value)));
+    $field_value = array_filter(array_map($_mps_get_value, $field_value));
+    if (!is_array(reset($field_value))) {
+      $field_value = implode('|', $field_value);
+    }
     if ($field_value) {
-      $entity_array[$field_name] = $field_value;
+      if ($field_info['type'] === 'taxonomy_term_reference') {
+        $entity_array['tax:' . $field_name] = $field_value;
+      }
+      else {
+        $entity_array[$field_name] = $field_value;
+      }
     }
   }
+  ksort($entity_array);
   return $entity_array;
 }

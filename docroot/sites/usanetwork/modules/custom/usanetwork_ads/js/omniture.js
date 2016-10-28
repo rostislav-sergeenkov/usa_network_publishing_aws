@@ -46,7 +46,7 @@
       },
       share: function (at_params) {
         // Click on share
-        $('#gigya-share-top3 .gig-button').once('omniture-tracking', function () {
+        $('#gigya-share-top3 .gig-button-up').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
 

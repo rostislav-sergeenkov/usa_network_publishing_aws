@@ -8121,8 +8121,11 @@ header .tve-help-link.signIn .inlineLoader {
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
-  display: table;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  justify-content: center;
   line-height: 1.2;
   position: relative;
   text-align: center;
@@ -8131,30 +8134,26 @@ header .tve-help-link.signIn .inlineLoader {
 @media (min-width: 1025px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
     font-size: 1.5vw;
-    padding-top: 0.21042vw;
   }
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
     font-size: 28.5px;
-    padding-top: 4px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
     font-size: 15px;
-    padding-top: 0.3122vw;
   }
 }
 @media (max-width: 768px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a {
-    padding-top: 2px;
     width: 100%;
   }
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span {
-  display: table-cell;
-  vertical-align: middle;
+  display: block;
+  word-wrap: break-word;
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info {
   border-left: 1px solid #363636;

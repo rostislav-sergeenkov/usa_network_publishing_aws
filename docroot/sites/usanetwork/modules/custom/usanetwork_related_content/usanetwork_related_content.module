@@ -91,8 +91,14 @@ function usanetwork_related_content_is_load_more_link(&$related_content, $limit,
     $load_more_link = FALSE;
   }
   else {
-    $related_content = array_slice($related_content, 0, $limit);
-    $load_more_link = TRUE;
+    $last_element = end($related_content);
+    if (!empty($last_element->ymal)) {
+      array_splice($related_content, -2, 1);
+      $load_more_link = TRUE;
+    } else {
+      $related_content = array_slice($related_content, 0, $limit);
+      $load_more_link = TRUE;
+    }
   }
   if ($overlimited) {
     $load_more_link = !$load_more_link;

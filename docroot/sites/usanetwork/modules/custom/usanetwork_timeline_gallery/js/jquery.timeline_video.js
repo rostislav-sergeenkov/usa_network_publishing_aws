@@ -62,8 +62,9 @@ Project demo: http://shindiristudio.com/timeline
       }
 
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-        s.linkTrackVars = 'events,eVar73,eVar74';
+        s.linkTrackVars = 'events,prop73,eVar73,eVar74';
         s.linkTrackEvents = s.events = 'event41';
+        s.prop73 = window.location.href;
         s.eVar73 = shareTitle;
         s.eVar74 = shareType;
         s.tl(this, 'o', 'Social Share');

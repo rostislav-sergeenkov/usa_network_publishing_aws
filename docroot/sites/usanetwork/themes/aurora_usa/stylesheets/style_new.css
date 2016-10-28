@@ -18677,7 +18677,18 @@ html.no-scroll, body.no-scroll {
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper {
   background-color: #000000;
   visibility: hidden;
+  opacity: 0;
   position: absolute;
+  z-index: 0;
+  -webkit-transition: all 0.4 linear;
+  -moz-transition: all 0.4 linear;
+  -o-transition: all 0.4 linear;
+  transition: all 0.4 linear;
+}
+.show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper.visible {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
 }
 .show-new-design.node-type-timeline-gallery .timelineFlat .timeline-items #player-wrapper iframe {
   height: 100%;

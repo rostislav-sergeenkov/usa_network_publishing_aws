@@ -59,9 +59,8 @@ function usanetwork_timeline_gallery_field_group_info() {
       2 => 'field_show',
       3 => 'field_timeline_episode_section',
       4 => 'field_explore_tag',
-      5 => 'field_autoplay_video',
-      6 => 'field_autoplay_gallery',
-      7 => 'title',
+      5 => 'field_timeline_autoplay',
+      6 => 'title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -86,7 +85,7 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo Details',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_call_to_action_type',
       1 => 'field_promo_call_to_action_text',
@@ -150,7 +149,7 @@ function usanetwork_timeline_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sponsorship',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_sponsored',
     ),

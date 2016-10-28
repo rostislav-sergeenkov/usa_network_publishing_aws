@@ -33442,7 +33442,7 @@ yx-axis
 .schedule-wrapper .schedule-table ul {
   width: 100%;
 }
-.schedule-wrapper .schedule-table ul li.date-separate {
+.schedule-wrapper .schedule-table ul div.date-separate {
   background-color: #757575 !important;
   color: #ffffff;
   font-size: 32px;
@@ -33450,24 +33450,24 @@ yx-axis
   padding-left: calc((10% - 90px) / 2 + 7px);
 }
 @media (max-width: 1024px) {
-  .schedule-wrapper .schedule-table ul li.date-separate {
+  .schedule-wrapper .schedule-table ul div.date-separate {
     font-size: 22px;
     line-height: 50px;
     padding-left: 30px;
   }
 }
 @media (max-width: 480px) {
-  .schedule-wrapper .schedule-table ul li.date-separate {
+  .schedule-wrapper .schedule-table ul div.date-separate {
     padding-left: 15px;
   }
 }
-.schedule-wrapper .schedule-table ul li.date-separate .day-shcedule {
+.schedule-wrapper .schedule-table ul div.date-separate .day-schedule {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
 }
-.schedule-wrapper .schedule-table ul li.date-separate .date-shcedule {
+.schedule-wrapper .schedule-table ul div.date-separate .date-schedule {
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
 }
-.schedule-wrapper .schedule-table ul li.date-separate + li.active {
+.schedule-wrapper .schedule-table ul div.date-separate + li.active {
   border-top: 1px solid #dbdcdd;
 }
 .schedule-wrapper .schedule-table ul li {
@@ -33476,8 +33476,11 @@ yx-axis
   height: auto;
   width: 100%;
 }
-.schedule-wrapper .schedule-table ul li:nth-child(odd) {
+.schedule-wrapper .schedule-table ul li:nth-of-type(odd) {
   background-color: #dcddde;
+}
+.schedule-wrapper .schedule-table ul li:nth-of-type(even) {
+  background-color: #e9eaeb;
 }
 .schedule-wrapper .schedule-table ul li .schedule-item {
   box-sizing: border-box;
@@ -33856,7 +33859,7 @@ yx-axis
 .schedule-wrapper .schedule-table ul li.active .schedule-item .visible-block .open-description:before {
   content: '\e61b';
 }
-.schedule-wrapper .schedule-table ul li.active + li.date-separate {
+.schedule-wrapper .schedule-table ul li.active + div.date-separate {
   border-top: 1px solid #dbdcdd;
 }
 

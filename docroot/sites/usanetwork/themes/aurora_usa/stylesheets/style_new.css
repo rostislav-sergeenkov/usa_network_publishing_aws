@@ -19016,6 +19016,9 @@ html.no-scroll, body.no-scroll {
     margin: 37.6px 0;
   }
 }
+.show-new-design .consumptionator-quiz-main-block .right-rail-line .usanetwork-quiz .repeat-button {
+  margin: 15px 0;
+}
 @media (max-width: 640px) {
   .show-new-design .consumptionator-quiz-main-block .right-rail-line .usanetwork-quiz .repeat-button {
     font-size: 3.4375vw;

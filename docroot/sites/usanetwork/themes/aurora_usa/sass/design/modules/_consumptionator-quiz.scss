@@ -40,6 +40,7 @@
         }
       }
       .repeat-button {
+        margin: 15px 0;
         @include breakpoint ($bp-640-width) {
           font-size: get-vw(22px, 640);
         }
@@ -164,9 +165,6 @@
     .usanetwork-quiz {
       @include breakpoint($bp-1280-width) {
         width: auto;
-      }
-      .repeat-button {
-        margin: 15px 0;
       }
     }
   }

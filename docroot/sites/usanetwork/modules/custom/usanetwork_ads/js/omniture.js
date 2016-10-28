@@ -837,8 +837,9 @@
 
         // Click on Social Follow item
         $('#block-usanetwork-home-usanetwork-home-shows-queue .social-follow a,' +
-            'header .show-title-block-wrapper .social-follow a,' +
-            '.footer-social-bar a').once('omniture-tracking', function () {
+          '#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-follow a,' +
+          'header .show-title-block-wrapper .social-follow a,' +
+          '.footer-social-bar a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {

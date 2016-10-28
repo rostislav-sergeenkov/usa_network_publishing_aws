@@ -147,6 +147,7 @@
     .advert {
       @include breakpoint($bp-min-1025-width) {
         padding: 0;
+        height: 250px;
       }
     }
   }

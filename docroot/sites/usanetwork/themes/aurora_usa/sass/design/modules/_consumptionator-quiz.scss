@@ -155,6 +155,9 @@
     @include breakpoint($bp-min-1281-width) {
       width: 74.7%;
     }
+    @include breakpoint($bp-min-1025-width) {
+      float: left;
+    }
     @include breakpoint($between-1025-1280) {
       width: calc(100% - 320px);
     }

@@ -81,42 +81,69 @@
     .gig-bar-container {
       .gig-button-container {
         .usa-share-button {
+          position: relative;
           &:before {
-            color: $poll-color;
+            background: none;
+            color: white;
+          }
+          &:after {
+            display: block;
+            height: auto;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: auto;
           }
         }
       }
       .gig-button-container-facebook {
         .usa-share-button {
           &:before {
+            content: "\e634";
+          }
+          &:after {
             color: $usa-video-helper-facebook;
+            content: "\e635";
           }
         }
       }
       .gig-button-container-twitter {
         .usa-share-button {
           &:before {
+            content: "\e63a";
+          }
+          &:after {
             color: $usa-video-helper-twitter;
+            content: "\e63b";
           }
         }
       }
       .gig-button-container-tumblr {
         .usa-share-button {
           &:before {
+            content: "\e638";
+          }
+          &:after {
             color: $usa-video-helper-tumblr;
+            content: "\e639";
           }
         }
       }
       .gig-button-container-pinterest {
         .usa-share-button {
           &:before {
+            content: "\e636";
+          }
+          &:after {
             color: $usa-video-helper-pinterest;
+            content: "\e637";
           }
         }
       }
       .gig-button-container-share {
         .usa-share-button {
           &:before {
+            content: "\e606";
             color: $poll-color;
           }
         }

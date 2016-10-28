@@ -136,17 +136,17 @@
     .items-block {
       z-index: 0;
       @include breakpoint($bp-min-1025-width) {
-        min-height: 245px;
-        height: calc(100% - 250px) !important;
+        height: calc(100% - 250px);
         top: 0;
-      }
-      @include breakpoint($bp-min-1901-width) {
-        min-height: 400px;
-        height: calc(100% - 23.4vw) !important;
       }
     }
     .more-items {
       z-index: 1;
+    }
+    .advert {
+      @include breakpoint($bp-min-1025-width) {
+        padding: 0;
+      }
     }
   }
 }

@@ -5,7 +5,7 @@
     // gigyaSharebar
     lazyLoadImages: function() {
       var items = $('.usanetwork-quiz').find('img[data-src]');
-      Drupal.behaviors.lazy_load_custom.lazyLoadImages(items);
+      Drupal.behaviors.lazy_load_custom.lazyLoadImages(items, true);
     },
     initGigyaSharebar: function (data) {
 

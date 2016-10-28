@@ -20742,6 +20742,11 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     width: 74.7%;
   }
 }
+@media (min-width: 1025px) {
+  .page-videos-live article.node-quiz {
+    float: left;
+  }
+}
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live article.node-quiz {
     width: calc(100% - 320px);

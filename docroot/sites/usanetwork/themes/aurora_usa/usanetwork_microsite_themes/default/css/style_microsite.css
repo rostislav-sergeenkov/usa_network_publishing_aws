@@ -597,6 +597,9 @@ body.video-fullscreen #admin-menu {
 body.video-fullscreen header {
   display: none !important;
 }
+body.video-fullscreen footer {
+  display: none !important;
+}
 
 #header-overlay {
   display: none;

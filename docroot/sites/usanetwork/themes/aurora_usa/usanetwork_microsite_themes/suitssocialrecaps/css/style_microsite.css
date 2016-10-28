@@ -564,15 +564,18 @@ table {
 html {
   font-size: 16px;
   line-height: 1.5em;
+  height: 100%;
 }
 
 body {
   color: white;
   background-color: #e9eaeb;
+  height: 100%;
   margin: 0 auto;
   width: 100%;
   /*-webkit-font-smoothing: antialiased;*/
 }
+
 body.video-fullscreen {
   overflow-y: hidden !important;
 }
@@ -596,6 +599,21 @@ body.video-fullscreen #admin-menu {
 }
 body.video-fullscreen header {
   display: none !important;
+}
+body.video-fullscreen #offerpop {
+  display: none !important;
+}
+body.video-fullscreen footer {
+  display: none !important;
+}
+/* height: 100%; */
+body.video-fullscreen .usa-wrap,
+body.video-fullscreen #main,
+body.video-fullscreen #content,
+body.video-fullscreen .region-content,
+body.video-fullscreen #microsite,
+body.video-fullscreen #sections {
+  height: 100%;
 }
 
 #header-overlay {

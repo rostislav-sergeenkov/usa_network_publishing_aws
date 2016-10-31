@@ -145,17 +145,23 @@ function usanetwork_tve_video_page_alter(&$page) {
     if (isset($page['page_bottom']['tve_adobe_pass'])) {
       unset($page['page_bottom']['tve_adobe_pass']);
     }
-    if (isset($page['page_bottom']['tve_auth_modal_windows'])) {
-      unset($page['page_bottom']['tve_auth_modal_windows']);
+    if (isset($page['page_bottom']['tve_auth2_modal_windows'])) {
+      unset($page['page_bottom']['tve_auth2_modal_windows']);
     }
-    if (isset($page['page_bottom']['tve_auth'])) {
-      unset($page['page_bottom']['tve_auth']);
+    if (isset($page['page_bottom']['tve_auth2'])) {
+      unset($page['page_bottom']['tve_auth2']);
+    }
+    if (isset($page['page_bottom']['tve_auth2_cookies'])) {
+      unset($page['page_bottom']['tve_auth2_cookies']);
+    }
+    if (isset($page['page_bottom']['tve_auth2_3rd_party_cookies'])) {
+      unset($page['page_bottom']['tve_auth2_3rd_party_cookies']);
     }
   } else {
     // Attach hidden modal windows to the bottom of the page.
     $usa_modal_windows_html = theme('usa_tve_auth2_login_modal_status');
     $page['page_bottom']['usanetwork_tve_video_modal_windows'] = array(
-        '#markup' => $usa_modal_windows_html,
+      '#markup' => $usa_modal_windows_html,
     );
   }
 }

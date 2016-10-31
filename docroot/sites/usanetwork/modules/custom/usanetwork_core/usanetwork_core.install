@@ -1278,7 +1278,7 @@ function usanetwork_core_update_7190() {
 }
 
 /**
- * Delete usanetwork_nitro module.
+ * Disable usanetwork_nitro module.
  */
 function usanetwork_core_update_7191() {
   $fields_to_delete = array(
@@ -1311,7 +1311,7 @@ function usanetwork_core_update_7191() {
 }
 
 /**
- * Delete usanetwork_gobal_nav_image module.
+ * Disable usanetwork_gobal_nav_image module.
  */
 function usanetwork_core_update_7192() {
   $fields_to_delete = array(
@@ -1352,14 +1352,14 @@ function usanetwork_core_update_7192() {
 }
 
 /**
- * Delete usanetwork_widget module.
+ * Disable usanetwork_widget module.
  */
 function usanetwork_core_update_7193() {
   module_disable(array('usanetwork_widget'));
 }
 
 /**
- * Delete usanetwork_widget module.
+ * Disable usanetwork_widget module.
  */
 function usanetwork_core_update_7194() {
   $types = array(

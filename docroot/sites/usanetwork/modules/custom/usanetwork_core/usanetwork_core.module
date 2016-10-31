@@ -710,17 +710,3 @@ function _usanetwork_core_get_right_case_title($show_node, $title = '') {
   return $title;
 }
 
-/**
- * Helper to generate an env value based on base root
- */
-function usanetwork_core_get_environment() {
-  $site_env = isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'prod';
-
-  // override
-  switch ($site_env) {
-    case 'acceptance': $site_env = 'qa';
-      break;
-  }
-
-  return $site_env;
-}

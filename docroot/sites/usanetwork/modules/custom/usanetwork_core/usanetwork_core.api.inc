@@ -507,3 +507,18 @@ function usanetwork_core_api_get_output_position($array, $index) {
   }
   return $positions;
 }
+
+/**
+ * Helper to generate an env value based on base root
+ */
+function usanetwork_core_api_get_environment() {
+  $site_env = isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'prod';
+
+  // override
+  switch ($site_env) {
+    case 'acceptance': $site_env = 'qa';
+      break;
+  }
+
+  return $site_env;
+}

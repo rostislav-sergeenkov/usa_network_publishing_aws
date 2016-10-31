@@ -1426,7 +1426,7 @@ function _usanetwork_microsite_define_videoplayer($file) {
   }
 
 //  $pdk_controller_url = "http://player.theplatform.com/pdk/{$mpx_account_pid}/tpPdkController.js";
-  $environment = usanetwork_core_get_environment();
+  $environment = usanetwork_core_api_get_environment();
   if ($environment == 'prod') {
     $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
   } elseif ($environment == 'stage') {

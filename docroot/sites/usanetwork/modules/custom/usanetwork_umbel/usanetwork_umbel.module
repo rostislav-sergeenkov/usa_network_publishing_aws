@@ -30,7 +30,7 @@ function usanetwork_umbel_page_alter(&$page) {
     $usa_umbel_parameters = _usanetwork_umbel_variables($usa_umbel_parameters);
     $usanetwork_umbel_tracking_code = variable_get('usanetwork_umbel_tracking_code', 'iwgdlxrtqfiiortz');
 
-    $is_production = (usanetwork_core_get_environment() == 'prod') ? '1' : '0';
+    $is_production = (usanetwork_core_api_get_environment() == 'prod') ? '1' : '0';
 
     drupal_add_js(array('umbel_code' => $usanetwork_umbel_tracking_code,
       'umbel_settings' => $usa_umbel_parameters,

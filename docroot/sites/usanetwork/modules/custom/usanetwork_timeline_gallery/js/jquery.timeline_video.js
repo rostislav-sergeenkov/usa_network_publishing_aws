@@ -44,6 +44,15 @@
     windowsResizeTimer: 50, // default value 500
 
     // Gigya share bar
+    isInitSocialShareClick: false,
+    initSocialShareClick: function () {
+      this.isInitSocialShareClick = true;
+
+      $('#timeline-player-slideshow-area .timeline-gigya-share').on('click', '.gig-share-button', function (e) {
+        console.info('tl click');
+        Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this));
+      });
+    },
     sendSocialShareOmniture: function ($this) {
       var $container = $this.parents('.gig-button-container'),
           shareType = 'Share',
@@ -96,12 +105,16 @@
           }
         });
 
+        if (!this.isInitSocialShareClick) {
+          this.initSocialShareClick();
+        }
+
         // reset Gigya share bar clicks
-        var $timelineGigyaShareButtons = $('#' + shareBarId + ' .gig-share-button');
-        $timelineGigyaShareButtons.unbind('click');
-        $timelineGigyaShareButtons.bind('click', function () {
-          Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this));
-        });
+        // var $timelineGigyaShareButtons = $('#' + shareBarId + ' .gig-share-button');
+        // $timelineGigyaShareButtons.unbind('click');
+        // $timelineGigyaShareButtons.bind('click', function () {
+        //   Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this));
+        // });
       }
     },
 
@@ -1451,7 +1464,7 @@
           });
 
           // Gigya share buttons
-          var $timelineGigyaShareButtons = $('.node-timeline-gallery .timeline-item .timeline-gigya-share .gig-button-container .gig-share-button div');
+          var $timelineGigyaShareButtons = $('.node-timeline-gallery .timeline-item .timeline-gigya-share .gig-button-container .gig-share-button');
           $timelineGigyaShareButtons.on('click', function () {
             Drupal.behaviors.timeline_gallery.sendSocialShareOmniture($(this));
           });

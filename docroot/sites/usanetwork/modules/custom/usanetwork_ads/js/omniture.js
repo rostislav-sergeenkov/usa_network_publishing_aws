@@ -298,7 +298,7 @@
 
       if ($self.attr('href') != '#' && !$self.hasClass('next-button')) {
         s.goToUrl = function () {
-          //Drupal.behaviors.omniture_tracking.goToUrl($self);
+          Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
 
@@ -567,7 +567,66 @@
     // max number of characters to send to Omniture for questions
     omnitureMaxQuestionCharacters: 35,
 
+    // Gigya share bar
+    gigyaShareBarButtonClick: function (button, shareTitle) {
+
+      shareTitle = shareTitle || '';
+
+      var $stickyShare = button.parent().hasClass('sticky-share') ? true : false;
+      var $container = button.parents('.gig-button-container');
+      var network = 'Share';
+
+      if ($container.hasClass('gig-button-container-facebook')) {
+        network = 'Facebook';
+      }
+      else if ($container.hasClass('gig-button-container-twitter')) {
+        network = 'Twitter';
+      }
+      else if ($container.hasClass('gig-button-container-tumblr')) {
+        network = 'Tumblr';
+      }
+      else if ($container.hasClass('gig-button-container-pinterest')) {
+        network = 'Pinterest';
+      }
+
+      s.linkTrackVars = 'events,prop73,eVar73,eVar74';
+      s.linkTrackEvents = s.events = $stickyShare ? 'event91' : 'event41';
+      s.prop73 = pageUrl;
+      s.eVar73 = shareTitle;
+      s.eVar74 = network;
+      s.tl(this, 'o', 'Social Share');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
     attach: function (context, settings) {
+
+      var _this = this;
+
+      // microsite
+      if ($('body').hasClass('page-node-microsite')) {
+
+        // Gigya share bar
+        $('#page-header .field-type-gigya-sharebar').once('omniture-tracking', function () {
+          $(this).on('click', '.gig-share-button', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+
+              var shareTitle = '';
+
+              if (button.closest('.gallery-wrapper').length > 0) {
+                shareTitle = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text().trim();
+              } else if (button.closest('header .tab-item-wrapper').length > 0) {
+                shareTitle = $('header .tab-item-wrapper .node-usanetwork-promo .title').text().trim();
+              } else if (button.closest('.block-character-info-header').length > 0) {
+                shareTitle = $('.block-character-info-header .full-name').text().trim();
+              } else if (button.closest('.episode-info-block').length > 0) {
+                shareTitle = $('.episode-info-block .episode-title').text().trim();
+              }
+
+              _this.gigyaShareBarButtonClick($(this), shareTitle);
+            }
+          });
+        });
+      }
 
       // new design mrrobot
       if ($('body').hasClass('show-new-design') && !$('body').hasClass('page-node-microsite')) {
@@ -601,11 +660,7 @@
           });
         });
       }
-      // end new design mrrobot
 
-      //if (typeof s != 'object') {
-      //  return;
-      //}
 
       //redesign
       if (!$('body').hasClass('page-node-microsite')) {
@@ -837,9 +892,9 @@
 
         // Click on Social Follow item
         $('#block-usanetwork-home-usanetwork-home-shows-queue .social-follow a,' +
-          '#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-follow a,' +
-          'header .show-title-block-wrapper .social-follow a,' +
-          '.footer-social-bar a').once('omniture-tracking', function () {
+            '#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-follow a,' +
+            'header .show-title-block-wrapper .social-follow a,' +
+            '.footer-social-bar a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {
@@ -864,46 +919,9 @@
 
         // Gigya share bar
         $('.field-type-gigya-sharebar').once('omniture-tracking', function () {
-
-          var $stickyShare = $(this).parent().hasClass('sticky-share') ? true : false;
-
           $(this).on('click', '.gig-share-button', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              var $self = $(this);
-              var $container = $self.parents('.gig-button-container');
-              var network = 'Share';
-              if ($container.hasClass('gig-button-container-facebook')) {
-                network = 'Facebook';
-              }
-              else if ($container.hasClass('gig-button-container-twitter')) {
-                network = 'Twitter';
-              }
-              else if ($container.hasClass('gig-button-container-tumblr')) {
-                network = 'Tumblr';
-              }
-              else if ($container.hasClass('gig-button-container-pinterest')) {
-                network = 'Pinterest';
-              }
-
-              var name = '';
-
-              if ($(this).closest('.gallery-wrapper').length > 0) {
-                name = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text();
-              } else if ($(this).closest('header .tab-item-wrapper').length > 0) {
-                name = $('header .tab-item-wrapper .node-usanetwork-promo .title').text();
-              } else if ($(this).closest('.block-character-info-header').length > 0) {
-                name = $('.block-character-info-header .full-name').text();
-              } else if ($(this).closest('.episode-info-block').length > 0) {
-                name = $('.episode-info-block .episode-title').text();
-              }
-
-              s.linkTrackVars = 'events,prop73,eVar73,eVar74';
-              s.linkTrackEvents = s.events = $stickyShare ? 'event91' : 'event41';
-              s.prop73 = pageUrl;
-              s.eVar73 = name.trim();
-              s.eVar74 = network;
-              s.tl(this, 'o', 'Social Share');
-              s.manageVars('clearVars', s.linkTrackVars, 1);
+              _this.gigyaShareBarButtonClick($(this));
             }
           });
         });

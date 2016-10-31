@@ -1355,7 +1355,10 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_tv_cover_media)) {
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_tv_cover_media)) {
       $image = $entity_wrapper->field_tv_cover_media->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :

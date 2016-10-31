@@ -36,7 +36,7 @@
 
         // reset Gigya share bar clicks
         setTimeout(function(){
-          var $shareButtons = $('#' + containerId + ' .gig-share-button div');
+          var $shareButtons = $('#' + containerId + ' .gig-share-button');
           $shareButtons.unbind('click');
           $shareButtons.bind('click', function(){
             Drupal.behaviors.ms_gigya.sendSocialShareOmniture($(this), shareTitle);

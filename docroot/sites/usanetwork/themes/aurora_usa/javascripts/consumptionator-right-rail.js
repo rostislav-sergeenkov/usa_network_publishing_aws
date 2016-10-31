@@ -43,7 +43,7 @@
 
             var bottom_distance = window.innerHeight - sidebar[0].getBoundingClientRect().bottom,
                 current_max_height = window.innerHeight - bottom_distance - $('.header-nav-bar').height(),
-                min_height = $('.right-rail-line .node-media-gallery').parent().height() - $('.right-rail-line .node-media-gallery').last().position()['top'] + parseInt($('.right-rail-line > div').css("paddingBottom"));
+                min_height = $('.right-rail-line .node-media-gallery').parent().height() - $('.right-rail-line .node-media-gallery').last().position()['top'] + parseInt($('.right-rail-line > div, .right-rail-line > article').css("paddingBottom"));
             if (min_height < right_rail_min_height) {
               min_height = right_rail_min_height;
             }

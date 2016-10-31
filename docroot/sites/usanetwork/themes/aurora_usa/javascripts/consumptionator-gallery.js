@@ -171,6 +171,7 @@
     if (typeof s_gi != 'undefined') {
 
       var _ = _this,
+          pageUrl = window.location.href,
           $galleryWrap = _.$galleryWrap;
 
       if ($('body').hasClass('node-type-tv-episode')) {
@@ -178,7 +179,7 @@
           var showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '',
               pageName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_2') ? Drupal.settings.umbel_settings.usa_umbel_param_2 : '';
         }
-        s.linkTrackVars = 'events,prop3,prop4,prop5';
+        s.linkTrackVars = 'events,prop3,prop4,prop5,prop73';
         s.prop3 = 'Gallery';
         s.prop4 = showName.trim() + ' : ' + pageName.trim();
         s.prop5 = 'Episodic Gallery';
@@ -213,6 +214,8 @@
           s.pageName = s.prop5;
         }
       }
+
+      s.prop73 = pageUrl;
 
       void (s.t());
     }

@@ -474,6 +474,12 @@
         }
         if (complete * 100 >= 60 && !$currentSlide.hasClass('active')) {
           _.addElemClass($currentSlide, _.initials.showCardCarouselItemClassActive, null);
+          //lazy load inner images
+          var showCardImage = $currentSlide.find('.show-central-info .asset-img');
+          showCardImage.attr('data-picture', '');
+          if (typeof window.picturefill != 'undefined') {
+            window.picturefill();
+          }
           var images = $currentSlide.find('.show-bottom-info .asset-img img[data-src]');
           Drupal.behaviors.lazy_load_custom.lazyLoadImages(images);
         }

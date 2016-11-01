@@ -170,6 +170,8 @@
         video_autoplay: autoPlay == 'video_autoplay' ? true : false,
         gallery_autoplay: autoPlay == 'gallery_autoplay' ? true : false,
         isGalleryEnd: false,
+        isPlayerLoaded: false,
+        isAutoPlayInit: false,
 
         startVideoAutoPlay: function () {
 
@@ -185,7 +187,6 @@
         },
 
         checkGalleryEnd: function () {
-
           playerApi.isGalleryEnd = tlGallery.find('.timeline-item.active').index() === tlGalleryItems.length ? true : false;
           return playerApi.isGalleryEnd;
         },
@@ -241,6 +242,15 @@
           $pdk.controller.addEventListener('OnMediaLoadStart', _onMediaLoadStart);
           $pdk.controller.addEventListener('OnReleaseEnd', _onReleaseEnd);
           $pdk.controller.addEventListener('OnShowFullScreen', _onShowFullScreen);
+          $pdk.controller.addEventListener('OnPlayerLoaded', function () {
+            playerApi.isPlayerLoaded = true;
+            if (playerApi.video_autoplay || playerApi.gallery_autoplay) {
+              if (!playerApi.statusVideoStart && !playerApi.isAutoPlayInit) {
+                playerApi.isAutoPlayInit = true;
+                playerApi.startVideoAutoPlay();
+              }
+            }
+          });
 
           function _onMediaLoadStart(pdkEvent) {
             playerApi.statusVideoStart = true
@@ -325,11 +335,11 @@
 
         // hide player and finish video
         hidePlayer: function () {
-
           if (playerApi.statusVideoStart) {
             // change status
             playerApi.statusVideoStart = false;
             // stop video
+            $pdk.controller.pause(true);
             $pdk.controller.endCurrentRelease();
           }
 
@@ -373,13 +383,6 @@
         playerApi.showPlayer(videoDataBlock);
       });
 
-      // set windows load event
-      $(window).on('load', function () {
-        if (playerApi.video_autoplay || playerApi.gallery_autoplay) {
-          playerApi.startVideoAutoPlay();
-        }
-      });
-
       // set windows resize event
       $(window).on('resize', function () {
         waitForFinalEvent(function () {
@@ -414,7 +417,9 @@
           playerApi.hidePlayer();
         }
 
-        playerApi.checkGalleryEnd();
+        if (playerApi.gallery_autoplay) {
+          playerApi.checkGalleryEnd();
+        }
       });
 
       $('.tl3').on('scrollStop.Timeline', function (e) {

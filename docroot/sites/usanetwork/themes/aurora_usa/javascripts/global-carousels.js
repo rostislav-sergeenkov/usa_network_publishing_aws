@@ -474,6 +474,8 @@
         }
         if (complete * 100 >= 60 && !$currentSlide.hasClass('active')) {
           _.addElemClass($currentSlide, _.initials.showCardCarouselItemClassActive, null);
+          var images = $currentSlide.find('.show-bottom-info .asset-img img[data-src]');
+          Drupal.behaviors.lazy_load_custom.lazyLoadImages(images);
         }
       },
       complete: function (elements) {

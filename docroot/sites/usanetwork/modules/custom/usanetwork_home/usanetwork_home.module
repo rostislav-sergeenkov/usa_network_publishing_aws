@@ -1586,12 +1586,20 @@ function _usanetwork_home_shows_queue_get_inner_carousel_elements($show_node_wra
         $content_image = $promo_wrapper->field_promo_regular_image->value();
       }
 
+      $image_classes = array();
+      $image_classes[] = 'nolazyload';
+      $image_src = image_style_url('383x144', $content_image['uri']);
+      $show_card_image = theme('image', array(
+        'path' => $image_src,
+        'attributes' => array('class' => $image_classes),
+      ));
+
       $theme_variables = array(
         'title' => !empty($promo_data['promo_title']) ? $promo_data['promo_title'] : '',
         'description' => !empty($promo_data['description']) ? $promo_data['description'] : '',
         'show_class' => usanetwork_tv_shows_color_show_css_class($show_nid),
         'episode_url' => !empty($promo->field_promo_link) ? url($promo_wrapper->field_promo_link->url->value()) : '',
-        'image_url' => !empty($content_image) ? image_style_url('383x144', $content_image['uri']) : '',
+        'show_card_image' => !empty($show_card_image) ? $show_card_image : '',
         'icon_type' => !empty($promo_data['icon_type']) ? $promo_data['icon_type'] : '',
       );
 

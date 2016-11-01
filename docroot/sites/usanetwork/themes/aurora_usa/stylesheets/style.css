@@ -2206,7 +2206,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   bottom: 0;
   height: 45%;
   overflow: hidden;
-  position: absolute;
+  position: absolute !important;
   width: 100%;
 }
 .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-bottom-info ul li .show-inner .asset-img img {

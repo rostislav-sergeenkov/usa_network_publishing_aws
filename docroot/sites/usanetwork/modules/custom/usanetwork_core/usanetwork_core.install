@@ -1390,3 +1390,10 @@ function usanetwork_core_update_7194() {
 
   module_disable(array('usanetwork_snipe'));
 }
+
+/**
+ * Disable usanetwork_custompages module.
+ */
+function usanetwork_core_update_7195() {
+  module_disable(array('usanetwork_custompages'));
+}

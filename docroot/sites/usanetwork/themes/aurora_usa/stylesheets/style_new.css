@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix {
   zoom: 1;
 }
@@ -20913,7 +20913,9 @@ html.no-scroll, body.no-scroll {
   }
 }
 .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .landing-list-items-all {
+  margin-bottom: 100px;
   padding-top: 0;
+  position: relative;
 }
 @media (max-width: 768px) {
   .show-new-design #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item {

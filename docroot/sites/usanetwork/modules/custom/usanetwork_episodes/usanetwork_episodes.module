@@ -351,9 +351,13 @@ function _usanetwork_episodes_main_block() {
       $navigation_links = _usanetwork_episodes_get_ep_guide_nav_links($show_id, $season->nid, $episode_num, $season_num);
     }
     $body = !empty($episode_node->body) ? $episode_node_wrapper->body->value->value() : '';
+    $share_description = $episode_node_wrapper->field_usa_og_description->value();
+    if (empty($share_description)) {
+      $share_description = '';
+    }
     $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_id);
     $theme_variables = array(
-      'sharebar' => usanetwork_menu_render_sharebar($episode_node, 'node', t('Share'), $episode_node->title , $body),
+      'sharebar' => usanetwork_menu_render_sharebar($episode_node, 'node', t('Share'), $episode_node->title , $share_description),
       'episode_title' => $episode_node->title,
       'body' => $body,
       'season_number' => !empty($season_num) ? $season_num : '',

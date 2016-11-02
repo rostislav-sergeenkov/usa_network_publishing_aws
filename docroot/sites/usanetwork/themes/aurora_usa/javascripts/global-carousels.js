@@ -476,12 +476,14 @@
           _.addElemClass($currentSlide, _.initials.showCardCarouselItemClassActive, null);
           //lazy load inner images
           var showCardImage = $currentSlide.find('.show-central-info .asset-img');
-          showCardImage.attr('data-picture', '');
-          if (typeof window.picturefill != 'undefined') {
-            window.picturefill();
+          if (showCardImage.attr('data-picture') != '') {
+            showCardImage.attr('data-picture', '');
+            if (typeof window.picturefill != 'undefined') {
+              window.picturefill();
+            }
           }
           var images = $currentSlide.find('.show-bottom-info .asset-img img[data-src]');
-          Drupal.behaviors.lazy_load_custom.lazyLoadImages(images);
+          Drupal.behaviors.lazy_load_custom.lazyLoadImages(images, true);
         }
       },
       complete: function (elements) {

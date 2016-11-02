@@ -37,6 +37,7 @@
 
 
 (function ($) {
+
   Drupal.behaviors.timeline_gallery = {
 
     timelineTitle: null,
@@ -172,6 +173,7 @@
         isGalleryEnd: false,
         isPlayerLoaded: false,
         isAutoPlayInit: false,
+        isMobileDevice: USAN.isMobile.isMobileDevice,
 
         startVideoAutoPlay: function () {
 
@@ -245,7 +247,7 @@
           $pdk.controller.addEventListener('OnPlayerLoaded', function () {
             playerApi.isPlayerLoaded = true;
             if (playerApi.video_autoplay || playerApi.gallery_autoplay) {
-              if (!playerApi.statusVideoStart && !playerApi.isAutoPlayInit) {
+              if (!playerApi.isMobileDevice && !playerApi.statusVideoStart && !playerApi.isAutoPlayInit) {
                 playerApi.isAutoPlayInit = true;
                 playerApi.startVideoAutoPlay();
               }
@@ -443,7 +445,7 @@
           Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
         }
 
-        if (playerApi.video_autoplay || playerApi.gallery_autoplay) {
+        if (!playerApi.isMobileDevice && (playerApi.video_autoplay || playerApi.gallery_autoplay)) {
           playerApi.startVideoAutoPlay();
         }
 

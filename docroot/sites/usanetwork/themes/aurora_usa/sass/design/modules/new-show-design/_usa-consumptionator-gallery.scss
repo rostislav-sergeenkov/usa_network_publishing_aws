@@ -411,35 +411,50 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
         .usa-share-button {
           position: relative;
           &:before {
-            position: relative;
-            z-index: 2;
-          }
-          &:after {
-            background: white;
-            border-radius: 20%;
-            content: '';
-            display: block;
-            height: 30px;
+            font-size: 30px;
             left: 1px;
-            top: 1px;
+            line-height: 30px;
             position: absolute;
-            width: 29px;
+            top: 1px;
             @include breakpoint($bp-1024-width) {
-              height: 25px;
-              left: 2px;
-              top: 0px;
-              width: 23px;
+              font-size: 24px;
+              line-height: 24px;
             }
             @include breakpoint($bp-640-width) {
-              height: 28px;
-              left: 1px;
-              top: 1px;
-              width: 27px;
+              font-size: 28px;
+              line-height: 28px;
+            }
+          }
+          &:after {
+            font-size: 32px;
+            line-height: 32px;
+            @include breakpoint($bp-1024-width) {
+              font-size: 26px;
+              line-height: 26px;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: 30px;
+              line-height: 30px;
             }
           }
         }
         &.gig-button-container-share {
           .usa-share-button {
+            &:before {
+              color: white;
+              font-size: 32px;
+              line-height: 32px;
+              left: 0;
+              top: 0;
+              @include breakpoint($bp-1024-width) {
+                font-size: 26px;
+                line-height: 26px;
+              }
+              @include breakpoint($bp-640-width) {
+                font-size: 30px;
+                line-height: 30px;
+              }
+            }
             &:after {
               display: none;
             }
@@ -1278,12 +1293,13 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 margin-right: 0;
               }
               .usa-share-button {
-                font-size: 30px;
+                &:before {
+                  font-size: 28px;
+                  line-height: 28px;
+                }
                 &:after {
-                  height: 28px;
-                  left: 1px;
-                  top: 1px;
-                  width: 27px;
+                  font-size: 30px;
+                  line-height: 30px;
                 }
               }
             }
@@ -1398,12 +1414,13 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               margin-right: 0;
             }
             .usa-share-button {
-              font-size: 30px;
+              &:before {
+                font-size: 28px;
+                line-height: 28px;
+              }
               &:after {
-                height: 28px;
-                left: 1px;
-                top: 1px;
-                width: 27px;
+                font-size: 30px;
+                line-height: 30px;
               }
             }
           }

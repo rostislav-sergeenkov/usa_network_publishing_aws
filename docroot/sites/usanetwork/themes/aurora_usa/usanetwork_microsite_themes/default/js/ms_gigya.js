@@ -36,7 +36,7 @@
 
         // reset Gigya share bar clicks
         setTimeout(function(){
-          var $shareButtons = $('#' + containerId + ' .gig-share-button div');
+          var $shareButtons = $('#' + containerId + ' .gig-share-button');
           $shareButtons.unbind('click');
           $shareButtons.bind('click', function(){
             Drupal.behaviors.ms_gigya.sendSocialShareOmniture($(this), shareTitle);
@@ -65,8 +65,9 @@
       }
 
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-        s.linkTrackVars = 'events,eVar73,eVar74';
+        s.linkTrackVars = 'events,prop73,eVar73,eVar74';
         s.linkTrackEvents = s.events = 'event41';
+        s.prop73 = window.location.href;
         s.eVar73 = shareTitle;
         s.eVar74 = shareType;
         s.tl(this, 'o', 'Social Share');

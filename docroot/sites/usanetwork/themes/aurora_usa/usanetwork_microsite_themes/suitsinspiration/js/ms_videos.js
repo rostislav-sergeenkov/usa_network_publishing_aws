@@ -27,7 +27,7 @@
         });
 
         // reset Gigya share bar clicks
-        var $shareButtons = $('#video-gigya-share .gig-share-button div');
+        var $shareButtons = $('#video-gigya-share .gig-share-button');
         $shareButtons.unbind('click');
         $shareButtons.bind('click', function(){
           if (typeof Drupal.behaviors.ms_gigya != 'undefined' && typeof Drupal.behaviors.ms_gigya.sendSocialShareOmniture == 'function') Drupal.behaviors.ms_gigya.sendSocialShareOmniture($(this), shareTitle);

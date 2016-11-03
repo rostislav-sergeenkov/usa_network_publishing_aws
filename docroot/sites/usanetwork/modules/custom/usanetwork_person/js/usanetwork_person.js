@@ -11,13 +11,14 @@
           if ($currentDescription == '' && $('meta[property="og:description"]').length > 0) {
             $currentDescription = $('meta[property="og:description"]').attr('content');
           }
-          var $currentImage = container.find('.block-character-info-content .asset-img img');
+          var $imageContainer = container.find('.block-character-info-content .asset-img'),
+              $currentImageUrl = $imageContainer.find('div[data-media]').attr('data-src')? $imageContainer.find('div[data-media]').attr('data-src'): $('meta[property="og:image"]');
 
           $.each(Drupal.settings.gigyaSharebars, function (index, sharebar) {
             if (sharebar.gigyaSharebar.containerID == $sharebar.attr('id')) {
               sharebar.gigyaSharebar.ua.linkBack = window.location.href;
               sharebar.gigyaSharebar.ua.imageBhev = 'url';
-              sharebar.gigyaSharebar.ua.imageUrl = $currentImage.attr('data-src-share') ? $currentImage.attr('data-src-share') : $currentImage.attr('src');
+              sharebar.gigyaSharebar.ua.imageUrl = $currentImageUrl;
               sharebar.gigyaSharebar.ua.description = $currentDescription;
               if (typeof Drupal.gigya.showSharebar == 'function') USAN.initUSAGigya(sharebar);
             }
@@ -28,7 +29,7 @@
     attach: function (context, settings) {
 
       $('body').once(function () {
-        Drupal.behaviors.gigya_person.gigyaSharebar()
+        Drupal.behaviors.gigya_person.gigyaSharebar();
       })
     }
   }

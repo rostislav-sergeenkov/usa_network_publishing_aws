@@ -1,11 +1,14 @@
 (function($) {
+
+  var pageUrl = window.location.href;
+
   Drupal.behaviors.usanetwork_video_live = {
     showName: '',
     contentName: '',
     // gigyaSharebar
     lazyLoadImages: function() {
       var items = $('.usanetwork-quiz').find('img[data-src]');
-      Drupal.behaviors.lazy_load_custom.lazyLoadImages(items);
+      Drupal.behaviors.lazy_load_custom.lazyLoadImages(items, true);
     },
     initGigyaSharebar: function (data) {
 
@@ -90,6 +93,7 @@
       s.prop4 = quizShow + ' : ' + 'Quiz';
       s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
       s.prop10 = quizShow;
+      s.prop73 = pageUrl;
     },
     refreshQuizOmniture: function() {
 
@@ -115,13 +119,14 @@
               var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
 
               s.pageName = 'USA Live TV';
-              s.linkTrackVars = 'events,prop2,prop3,prop4,prop5,prop10,prop58,eVar58';
+              s.linkTrackVars = 'events,prop2,prop3,prop4,prop5,prop10,prop58,prop73,eVar58';
               s.linkTrackEvents = s.events = 'event88';
               s.prop2 = quizShowType;
               s.prop3 = 'Quiz';
               s.prop4 = quizShow + ' : ' + 'Quiz';
               s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
               s.prop10 = quizShow;
+              s.prop73 = pageUrl;
               s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
               s.tl(this, 'o', 'Poll/Question Shown');
               s.manageVars('clearVars', s.linkTrackVars, 1);
@@ -155,7 +160,7 @@
               var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
 
               s.pageName = 'USA Live TV';
-              s.linkTrackVars = 'events,prop2,prop3,prop4,prop5,prop10,prop58,eVar58';
+              s.linkTrackVars = 'events,prop2,prop3,prop4,prop5,prop10,prop58,prop73,eVar58';
               s.linkTrackEvents = s.events = 'event89';
               s.prop2 = quizShowType;
               s.prop3 = 'Quiz';
@@ -164,6 +169,7 @@
               s.prop10 = quizShow;
               s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
               s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion + ' : Answer : ' + quizQuestionValue;
+              s.prop73 = pageUrl;
               s.tl(this, 'o', 'Poll/Question Answered');
 
               if (NumQuestions === $quizQuestion.index() + 1) {
@@ -193,13 +199,14 @@
                 quizType = quiz_setting['quizType'];
 
             s.pageName = 'USA Live TV';
-            s.linkTrackVars = 'events,prop2,prop3,prop4,prop5,prop10,eVar65,prop65';
+            s.linkTrackVars = 'events,prop2,prop3,prop4,prop5,prop10,eVar65,prop73,prop65';
             s.linkTrackEvents = s.events = 'event65';
             s.prop2 = quizShowType;
             s.prop3 = 'Quiz';
             s.prop4 = quizShow + ' : ' + 'Quiz';
             s.prop5 = quizShow + ' : ' + 'Quiz' + ' : ' + quizTitle;
             s.prop10 = quizShow;
+            s.prop73 = pageUrl;
             s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
             console.info(s.pageName);
             s.tl(this, 'o', 'Restart');
@@ -248,8 +255,9 @@
               name = $('.episode-info-block .episode-title').text();
             }
 
-            s.linkTrackVars = 'events,eVar73,eVar74';
+            s.linkTrackVars = 'events,prop73,eVar73,eVar74';
             s.linkTrackEvents = s.events = $stickyShare ? 'event91' : 'event41';
+            s.prop73 = pageUrl;
             s.eVar73 = name.trim();
             s.eVar74 = network;
             s.tl(this, 'o', 'Social Share');

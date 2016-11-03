@@ -722,7 +722,6 @@ function usanetwork_mpx_video_live() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-custom-services.js', array('scope' => 'footer', 'weight' => 0));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-login-button.js', array('scope' => 'footer', 'weight' => 2));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-logout-button.js', array('scope' => 'footer', 'weight' => 3));
-//  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-player-container.js', array('scope' => 'footer', 'weight' => 4));
   drupal_add_js('//client-cloudpath.nbcuni.com/current/api/NBCUniCPC.min.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/cpc-player.js', array('scope' => 'footer'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_video_live') . '/js/usanetwork_video_live.dynamic_content.js');
@@ -1795,6 +1794,12 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         $variables['attribute_parameters']['logLevel'] = $log_level;
       }
   
+      if ($full_episode) {
+        $variables['attribute_parameters']['fwsitesection'] = 'usa_tveverywhere_vod_hub';
+      } else {
+        $variables['attribute_parameters']['fwsitesection'] = 'usa_video_vod';
+      }
+
       $vars['video'] = theme('usanetwork_tve_player_mpx_video', $variables);
   
       //FB card
@@ -2602,7 +2607,7 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $share_settings['gigyaSharebar']['ua']['linkBack'] = url('file/' .$file->fid, array('absolute' => TRUE));
     }
   }
-  if ($context['display']['is_live'] == TRUE) {
+  if (!empty($context['display']['is_live'])) {
     $share_settings['gigyaSharebar']['ua']['title'] = t('USA Network Live TV Streaming');
     $share_settings['gigyaSharebar']['ua']['description'] = t('Stream USA Network TV live on your desktop');
     $share_settings['gigyaSharebar']['ua']['linkBack'] = url('videos/live', array('absolute' => TRUE));

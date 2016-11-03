@@ -152,6 +152,12 @@
         Drupal.behaviors.omniture_tracking.top3.endButton(at_params);
       }
     });
+    $('#shared-container .choose-top3-img a').click(function () {
+      if (Drupal.behaviors.omniture_tracking != 'undefined') {
+        at_params.endButtons = 'Create your own Top3';
+        Drupal.behaviors.omniture_tracking.top3.endButton(at_params);
+      }
+    });
 
     // player service
     var playerService = {

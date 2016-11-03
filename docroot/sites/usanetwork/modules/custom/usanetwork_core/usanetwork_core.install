@@ -1411,7 +1411,7 @@ function usanetwork_core_update_7195() {
  * Uninstall disable modules.
  */
 function usanetwork_core_update_7196() {
-  $modules = array('usanetwork_personalization');
+  $modules = array('usanetwork_personalization', 'usanetwork_snipe');
   drupal_uninstall_modules($modules);
 }
 

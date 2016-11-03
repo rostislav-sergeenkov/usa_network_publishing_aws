@@ -146,7 +146,6 @@ function usanetwork_core_enable_modules() {
     'usanetwork_ads',
     'usanetwork_widget',
     'usanetwork_wysiwyg',
-    'usanetwork_promo_iframe',
     'usanetwork_home_clone',
     'usanetwork_home_edit',
     'usanetwork_tv_shows_color',
@@ -1413,5 +1412,40 @@ function usanetwork_core_update_7195() {
  */
 function usanetwork_core_update_7196() {
   $modules = array('usanetwork_personalization');
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_gobal_nav_image module.
+ */
+function usanetwork_core_update_7199() {
+  $types = array(
+    'usanetwork_promo_iframe',
+  );
+  foreach($types as $type) {
+    // First, delete nodes
+    $results = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('type', $type)
+      ->execute();
+    foreach ($results as $result) {
+      $nids[] = $result->nid;
+    }
+    if (!empty($nids)) {
+      node_delete_multiple($nids);
+      drupal_set_message(t('%count nodes has been deleted.', array('%count' => count($nids))));
+    }
+    // Then, delete content type
+    if (node_type_load($type)) {
+      node_type_delete($type);
+      variable_del('node_preview_' . $type);
+      drupal_set_message(t('%type content type has been deleted.', array('%type' => $type)));
+    }
+  }
+  node_types_rebuild();
+  menu_rebuild();
+
+  $modules = array('usanetwork_promo_iframe');
+  module_disable($modules);
   drupal_uninstall_modules($modules);
 }

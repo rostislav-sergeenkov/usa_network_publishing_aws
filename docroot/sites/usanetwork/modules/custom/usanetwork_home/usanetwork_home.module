@@ -102,7 +102,6 @@ function usanetwork_home_default_queues_type() {
           "person" : 0,
           "post" : 0,
           "usanetwork_promo" : 0,
-          "usanetwork_promo_iframe" : 0,
           "quiz" : 0,
           "catchall_seo_page" : 0,
           "snipe" : 0,

@@ -21,7 +21,6 @@ function usanetwork_catchall_collection_strongarm() {
     'media_gallery' => 0,
     'person' => 0,
     'usanetwork_promo' => 0,
-    'usanetwork_promo_iframe' => 0,
     'snipe' => 0,
     'usanetwork_static_page' => 0,
     'tv_episode' => 0,

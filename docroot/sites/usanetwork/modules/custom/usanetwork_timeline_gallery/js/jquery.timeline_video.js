@@ -186,6 +186,10 @@
             playerApi.hidePlayButton(playBtn);
             playerApi.showPlayer(videoDataBlock);
           }
+
+          if (playerApi.gallery_autoplay) {
+            playerApi.checkGalleryEnd();
+          }
         },
 
         checkGalleryEnd: function () {
@@ -418,10 +422,6 @@
           // hide and reset player
           playerApi.hidePlayer();
         }
-
-        if (playerApi.gallery_autoplay) {
-          playerApi.checkGalleryEnd();
-        }
       });
 
       $('.tl3').on('scrollStop.Timeline', function (e) {
@@ -448,8 +448,6 @@
         if (!playerApi.isMobileDevice && (playerApi.video_autoplay || playerApi.gallery_autoplay)) {
           playerApi.startVideoAutoPlay();
         }
-
-        playerApi.checkGalleryEnd();
       });
 
       $this.timeline('setWidthHeightMargin');

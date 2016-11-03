@@ -1307,7 +1307,9 @@ function usanetwork_core_update_7191() {
     field_group_group_export_delete($group, FALSE);
   }
 
-  module_disable(array('usanetwork_nitro'));
+  $modules = array('usanetwork_nitro');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
 }
 
 /**
@@ -1348,14 +1350,18 @@ function usanetwork_core_update_7192() {
   node_types_rebuild();
   menu_rebuild();
 
-  module_disable(array('usanetwork_gobal_nav_image'));
+  $modules = array('usanetwork_gobal_nav_image');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
 }
 
 /**
  * Disable usanetwork_widget module.
  */
 function usanetwork_core_update_7193() {
-  module_disable(array('usanetwork_widget'));
+  $modules = array('usanetwork_widget');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
 }
 
 /**
@@ -1388,12 +1394,16 @@ function usanetwork_core_update_7194() {
   node_types_rebuild();
   menu_rebuild();
 
-  module_disable(array('usanetwork_snipe'));
+  $modules = array('usanetwork_snipe');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
 }
 
 /**
  * Disable usanetwork_custompages module.
  */
 function usanetwork_core_update_7195() {
-  module_disable(array('usanetwork_custompages'));
+  $modules = array('usanetwork_custompages');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
 }

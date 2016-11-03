@@ -1407,3 +1407,11 @@ function usanetwork_core_update_7195() {
   module_disable($modules);
   drupal_uninstall_modules($modules);
 }
+
+/**
+ * Uninstall disable modules.
+ */
+function usanetwork_core_update_7196() {
+  $modules = array('usanetwork_personalization');
+  drupal_uninstall_modules($modules);
+}

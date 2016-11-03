@@ -34,6 +34,7 @@
           </div>
         </div>
       </div>
+      <img class="lazyloader-icon" src="/sites/usanetwork/modules/contrib/lazyloader/loader/loader-7.gif">
     </a>
   </div>
 </div>

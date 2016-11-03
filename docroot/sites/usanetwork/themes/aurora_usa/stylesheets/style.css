@@ -21642,6 +21642,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   display: block;
   color: #ffffff;
   height: 100%;
+  position: relative;
   width: 100%;
 }
 .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .asset-img {
@@ -21649,18 +21650,28 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   position: relative;
   width: 100%;
 }
-.shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a img {
+.shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .asset-img img {
   height: 100%;
   width: 100%;
 }
 @media (min-width: 769px) and (max-width: 1280px) {
-  .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a img {
+  .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .asset-img img {
     left: 50%;
     margin-left: -230px;
     max-width: none;
     position: absolute;
     width: auto;
   }
+}
+.shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .lazyloader-icon {
+  display: block;
+  height: 24px !important;
+  left: 50%;
+  margin-left: -12px;
+  margin-top: -12px;
+  position: absolute;
+  top: 50%;
+  width: 24px !important;
 }
 .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .meta-back {
   background: #000000;

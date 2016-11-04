@@ -1411,14 +1411,18 @@ function usanetwork_core_update_7195() {
  * Uninstall disable modules.
  */
 function usanetwork_core_update_7196() {
-  $modules = array('usanetwork_personalization', 'usanetwork_snipe');
+  $modules = array(
+    'usanetwork_personalization',
+    'usanetwork_snipe',
+    'usanetwork_watchwith',
+    );
   drupal_uninstall_modules($modules);
 }
 
 /**
  * Disable usanetwork_gobal_nav_image module.
  */
-function usanetwork_core_update_7199() {
+function usanetwork_core_update_7197() {
   $types = array(
     'usanetwork_promo_iframe',
   );

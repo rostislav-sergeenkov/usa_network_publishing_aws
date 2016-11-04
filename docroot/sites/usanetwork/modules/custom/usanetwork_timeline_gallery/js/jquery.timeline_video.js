@@ -37,6 +37,7 @@
 
 
 (function ($) {
+
   Drupal.behaviors.timeline_gallery = {
 
     timelineTitle: null,
@@ -172,6 +173,7 @@
         isGalleryEnd: false,
         isPlayerLoaded: false,
         isAutoPlayInit: false,
+        isMobileDevice: USAN.isMobile.isMobileDevice,
 
         startVideoAutoPlay: function () {
 
@@ -183,6 +185,10 @@
             playerApi.setPositionPlayer();
             playerApi.hidePlayButton(playBtn);
             playerApi.showPlayer(videoDataBlock);
+          }
+
+          if (playerApi.gallery_autoplay) {
+            playerApi.checkGalleryEnd();
           }
         },
 
@@ -245,7 +251,7 @@
           $pdk.controller.addEventListener('OnPlayerLoaded', function () {
             playerApi.isPlayerLoaded = true;
             if (playerApi.video_autoplay || playerApi.gallery_autoplay) {
-              if (!playerApi.statusVideoStart && !playerApi.isAutoPlayInit) {
+              if (!playerApi.isMobileDevice && !playerApi.statusVideoStart && !playerApi.isAutoPlayInit) {
                 playerApi.isAutoPlayInit = true;
                 playerApi.startVideoAutoPlay();
               }
@@ -416,10 +422,6 @@
           // hide and reset player
           playerApi.hidePlayer();
         }
-
-        if (playerApi.gallery_autoplay) {
-          playerApi.checkGalleryEnd();
-        }
       });
 
       $('.tl3').on('scrollStop.Timeline', function (e) {
@@ -443,11 +445,9 @@
           Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
         }
 
-        if (playerApi.video_autoplay || playerApi.gallery_autoplay) {
+        if (!playerApi.isMobileDevice && (playerApi.video_autoplay || playerApi.gallery_autoplay)) {
           playerApi.startVideoAutoPlay();
         }
-
-        playerApi.checkGalleryEnd();
       });
 
       $this.timeline('setWidthHeightMargin');

@@ -197,7 +197,6 @@ On page load, only the first promo in each spot will be displayed.',
     'weight' => '12',
     'children' => array(
       0 => 'field_hp_nav_img_more',
-      1 => 'field_hp_nav_img_shows',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

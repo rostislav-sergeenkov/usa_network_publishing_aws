@@ -568,13 +568,12 @@
     omnitureMaxQuestionCharacters: 35,
 
     // Gigya share bar
-    gigyaShareBarButtonClick: function (button, shareTitle) {
+    gigyaShareBarButtonClick: function (button) {
 
-      shareTitle = shareTitle || '';
-
-      var $stickyShare = button.parent().hasClass('sticky-share') ? true : false;
-      var $container = button.parents('.gig-button-container');
-      var network = 'Share';
+      var $stickyShare = button.closest('.sticky-share').length >= 1 ? true : false,
+          $container = button.parents('.gig-button-container'),
+          network = 'Share',
+          shareTitle = '';
 
       if ($container.hasClass('gig-button-container-facebook')) {
         network = 'Facebook';
@@ -587,6 +586,18 @@
       }
       else if ($container.hasClass('gig-button-container-pinterest')) {
         network = 'Pinterest';
+      }
+
+      if (!$('body').hasClass('page-node-microsite')) {
+        if (button.closest('.gallery-wrapper').length > 0) {
+          shareTitle = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text().trim();
+        } else if (button.closest('header .tab-item-wrapper').length > 0) {
+          shareTitle = $('header .tab-item-wrapper .node-usanetwork-promo .title').text().trim();
+        } else if (button.closest('.block-character-info-header').length > 0) {
+          shareTitle = $('.block-character-info-header .full-name').text().trim();
+        } else if (button.closest('.episode-info-block').length > 0) {
+          shareTitle = $('.episode-info-block .episode-title').text().trim();
+        }
       }
 
       s.linkTrackVars = 'events,prop73,eVar73,eVar74';
@@ -609,20 +620,7 @@
         $('#page-header .field-type-gigya-sharebar').once('omniture-tracking', function () {
           $(this).on('click', '.gig-share-button', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-
-              var shareTitle = '';
-
-              if (button.closest('.gallery-wrapper').length > 0) {
-                shareTitle = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text().trim();
-              } else if (button.closest('header .tab-item-wrapper').length > 0) {
-                shareTitle = $('header .tab-item-wrapper .node-usanetwork-promo .title').text().trim();
-              } else if (button.closest('.block-character-info-header').length > 0) {
-                shareTitle = $('.block-character-info-header .full-name').text().trim();
-              } else if (button.closest('.episode-info-block').length > 0) {
-                shareTitle = $('.episode-info-block .episode-title').text().trim();
-              }
-
-              _this.gigyaShareBarButtonClick($(this), shareTitle);
+              _this.gigyaShareBarButtonClick($(this));
             }
           });
         });

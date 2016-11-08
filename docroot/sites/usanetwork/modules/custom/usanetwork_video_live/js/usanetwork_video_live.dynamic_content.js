@@ -222,46 +222,9 @@
 
       // Gigya share bar
       $('.field-type-gigya-sharebar').once('omniture-tracking', function () {
-
-        var $stickyShare = $(this).parent().hasClass('sticky-share') ? true : false;
-
         $(this).on('click', '.gig-share-button', function (e) {
           if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            var $self = $(this);
-            var $container = $self.parents('.gig-button-container');
-            var network = 'Share';
-            if ($container.hasClass('gig-button-container-facebook')) {
-              network = 'Facebook';
-            }
-            else if ($container.hasClass('gig-button-container-twitter')) {
-              network = 'Twitter';
-            }
-            else if ($container.hasClass('gig-button-container-tumblr')) {
-              network = 'Tumblr';
-            }
-            else if ($container.hasClass('gig-button-container-pinterest')) {
-              network = 'Pinterest';
-            }
-
-            var name = '';
-
-            if ($(this).closest('.gallery-wrapper').length > 0) {
-              name = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text();
-            } else if ($(this).closest('header .tab-item-wrapper').length > 0) {
-              name = $('header .tab-item-wrapper .node-usanetwork-promo .title').text();
-            } else if ($(this).closest('.block-character-info-header').length > 0) {
-              name = $('.block-character-info-header .full-name').text();
-            } else if ($(this).closest('.episode-info-block').length > 0) {
-              name = $('.episode-info-block .episode-title').text();
-            }
-
-            s.linkTrackVars = 'events,prop73,eVar73,eVar74';
-            s.linkTrackEvents = s.events = $stickyShare ? 'event91' : 'event41';
-            s.prop73 = pageUrl;
-            s.eVar73 = name.trim();
-            s.eVar74 = network;
-            s.tl(this, 'o', 'Social Share');
-            s.manageVars('clearVars', s.linkTrackVars, 1);
+            Drupal.behaviors.omniture_tracking.gigyaShareBarButtonClick($(this));
           }
         });
       });

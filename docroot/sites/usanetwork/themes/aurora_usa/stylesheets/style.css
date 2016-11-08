@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "IBM437";
 .clearfix {
   zoom: 1;
 }
@@ -6690,11 +6690,11 @@ header .nav-bar-tabs {
     cursor: pointer;
     display: block;
     font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-    font-size: 1.26829vw;
+    font-size: 1.1vw;
     height: 100%;
     line-height: 7.12195vw;
     letter-spacing: 0.5px;
-    padding: 0 4.68293vw;
+    padding: 0 3.70732vw;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
@@ -6718,25 +6718,19 @@ header .nav-bar-tabs {
 }
 @media (min-width: 769px) and (min-width: 1901px) {
   header .nav-bar-tabs a {
-    font-size: 24px;
+    font-size: 20.9px;
     line-height: 135px;
-    padding: 0 89px;
+    padding: 0 70.4px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   header .nav-bar-tabs a {
-    font-size: 13px;
+    font-size: 11.275px;
   }
 }
 @media (min-width: 769px) and (min-width: 769px) and (max-width: 1024px) {
   header .nav-bar-tabs a {
-    padding: 0 3.90625vw;
-  }
-}
-@media (min-width: 769px) and (max-width: 768px) {
-  header .nav-bar-tabs a {
-    line-height: 50px;
-    padding: 0 36px;
+    padding: 0 3.25521vw;
   }
 }
 header .main-menu-open {
@@ -8206,17 +8200,20 @@ header .tve-help-link.signIn .inlineLoader {
 }
 @media (min-width: 1025px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
+    font-size: 1.26829vw;
     padding-top: 0.21042vw;
   }
 }
 @media (min-width: 1901px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
+    font-size: 24px;
     padding-left: 132px;
     padding-top: 4px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info a, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info a, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info a {
+    font-size: 13px;
     padding-top: 0.34146vw;
   }
 }

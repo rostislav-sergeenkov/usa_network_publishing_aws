@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "UTF-8";
 .clearfix {
   zoom: 1;
 }
@@ -38578,6 +38578,14 @@ body.blog .view-display-id-blog_content .views-row {
   width: 100%;
   z-index: 100000001;
 }
+.usa-home-popup-overlay #popup-effect {
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
 
 .usa-home-popup {
   height: auto;
@@ -38585,6 +38593,7 @@ body.blog .view-display-id-blog_content .views-row {
   max-width: 85%;
   position: relative;
   width: 1280px;
+  z-index: 1;
 }
 @media (max-width: 768px) {
   .usa-home-popup {

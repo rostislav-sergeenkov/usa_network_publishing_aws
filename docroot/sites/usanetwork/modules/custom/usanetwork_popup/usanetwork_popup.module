@@ -63,6 +63,15 @@ function _usanetwork_popup_window() {
         }
       }
 
+      if (!empty($popup_node->field_usa_css)) {
+        $css = $popup_wrapper->field_usa_css->value();
+        drupal_add_css($css, 'inline');
+      }
+      if (!empty($popup_node->field_usa_catchall_js)) {
+        $js = $popup_wrapper->field_usa_catchall_js->value();
+        drupal_add_js($js, array('type' => 'inline', 'scope' => 'footer'));
+      }
+
       $theme_variables = array(
         'popup_image' => array(
           'desktop' => (!empty($desktop)) ? $desktop : NULL,

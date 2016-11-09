@@ -4,6 +4,7 @@
  */
 ?>
 <div class="usa-home-popup-overlay" data-title="<?php print $popup_title; ?>" data-popup-id="<?php print $popup_id; ?>">
+  <canvas id="popup-effect"></canvas>
   <div class="usa-home-popup">
     <a class="usa-popup-link" href="<?php print $link['url']; ?>"<?php (!empty($link['target'])) ? print ' target="' . $link['target'] . '"' : '';  ?>>
       <?php if (!empty($popup_image)): ?>

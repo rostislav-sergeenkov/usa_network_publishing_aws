@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "IBM437";
 .clearfix {
   zoom: 1;
 }
@@ -24507,26 +24507,26 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
   display: inline-block;
-  padding: 1.17188vw 2.34375vw;
+  padding: 0.97656vw 1.95313vw;
 }
 @media (min-width: 1901px) {
   .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
-    padding: 22.3px 44.5px;
+    padding: 18.55px 37.1px;
   }
 }
 @media (max-width: 1024px) {
   .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
-    padding: 1.46484vw 2.92969vw;
+    padding: 1.2207vw 2.44141vw;
   }
 }
 @media (max-width: 768px) {
   .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
-    padding: 3.90625vw 6.51042vw;
+    padding: 3.25521vw 5.46875vw;
   }
 }
 @media (max-width: 640px) {
   .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
-    padding: 4.6875vw 7.8125vw;
+    padding: 3.90625vw 6.5625vw;
   }
 }
 .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button:first-child {
@@ -24549,7 +24549,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
   color: #ffffff;
-  font-size: 1.5625vw;
+  font-size: 1.05263vw;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-style: normal;
   letter-spacing: 1px;
@@ -24571,12 +24571,12 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 768px) {
   .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
-    font-size: 4.55729vw;
+    font-size: 3.90625vw;
   }
 }
 @media (max-width: 640px) {
   .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
-    font-size: 5.46875vw;
+    font-size: 4.6875vw;
   }
 }
 .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
@@ -24584,7 +24584,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   content: "\e608";
   display: inline-block;
   font-family: "ico-font";
-  font-size: 1.17073vw;
+  font-size: 0.78947vw;
   line-height: 1;
   margin-left: 0.9375vw;
   vertical-align: middle;
@@ -24597,7 +24597,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 1024px) {
   .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
-    font-size: 1.17188vw;
+    font-size: 1.46484vw;
     margin-left: 1.17188vw;
   }
 }
@@ -24688,6 +24688,9 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   display: block;
   position: relative;
   text-align: center;
+}
+.where-to-watch .usa-providers .providers-row:last-child .providers-row-inner {
+  border: none;
 }
 .where-to-watch .usa-providers .providers-row-inner {
   border-bottom: 2px solid;

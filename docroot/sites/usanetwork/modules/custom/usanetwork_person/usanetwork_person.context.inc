@@ -55,6 +55,12 @@ function usanetwork_person_context_default_contexts() {
           'region' => 'content',
           'weight' => '-7',
         ),
+        'usanetwork_person-usanetwork_person_where2watch' => array(
+          'module' => 'usanetwork_person',
+          'delta' => 'usanetwork_person_where2watch',
+          'region' => 'content',
+          'weight' => '-6',
+        ),
       ),
     ),
   );

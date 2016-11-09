@@ -3,10 +3,16 @@
  *
  */
 ?>
-<div id="where-to-watch" class="where-to-watch">
-  <div class="usa-section-title show-border">
-    <h2 class="title"><?php print !empty($title) ? $title : ''; ?></h2>
-  </div>
+<div id="where-to-watch" class="where-to-watch<?php print (empty($new_design))? ' show-border' : ''; ?>">
+  <?php if (!empty($new_design)) : ?>
+    <div class="usa-section-title show-border">
+      <h2 class="title"><?php print !empty($title) ? $title : ''; ?></h2>
+    </div>
+  <?php else : ?>
+    <h2 class="section-title">
+      <span class="section-title-wrapper show-border secondary"><?php print !empty($title) ? $title : ''; ?></span>
+    </h2>
+  <?php endif; ?>
   <div class="where-to-watch-inner">
     <div class="first-line">
       <?php if (!empty($is_full_exists)) : ?>

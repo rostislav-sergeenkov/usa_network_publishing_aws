@@ -24788,6 +24788,321 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   margin-top: 0;
 }
 
+.where-to-watch {
+  background: #e9eaeb;
+  border-bottom: 2px solid;
+  overflow: hidden;
+  padding-top: 40px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+.where-to-watch:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+.where-to-watch .where-to-watch-inner {
+  padding: 2.1875vw 2.8125vw;
+  width: 100%;
+}
+.where-to-watch .where-to-watch-inner:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .where-to-watch-inner {
+    padding: 41.6px 53.4px;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .where-to-watch-inner {
+    padding: 4.6875vw 3.125vw;
+  }
+}
+.where-to-watch .where-to-watch-inner .first-line .description-block:first-child {
+  margin-top: 0;
+}
+.where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner {
+  border: none;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider {
+    display: inline-block;
+    float: none;
+    text-align: center;
+    vertical-align: middle;
+    width: 45%;
+    margin-top: 0;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider a {
+    display: inline;
+  }
+}
+.where-to-watch .where-to-watch-inner .link-buttons-wrap {
+  margin-top: 15px;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap {
+    margin-top: 4.6875vw;
+  }
+}
+.where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
+  display: inline-block;
+  padding: 1.17188vw 2.34375vw;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
+    padding: 22.3px 44.5px;
+  }
+}
+@media (max-width: 1024px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
+    padding: 1.46484vw 2.92969vw;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
+    padding: 3.90625vw 6.51042vw;
+  }
+}
+@media (max-width: 640px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button {
+    padding: 4.6875vw 7.8125vw;
+  }
+}
+.where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button:first-child {
+  margin-right: 1.95313vw;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button:first-child {
+    margin-right: 37.1px;
+  }
+}
+@media (max-width: 1024px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button:first-child {
+    margin-right: 2.44141vw;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button:first-child {
+    display: none;
+  }
+}
+.where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
+  color: #ffffff;
+  font-size: 1.5625vw;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
+  line-height: 1;
+  padding-top: 3px;
+  position: relative;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
+    font-size: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
+    font-size: 1.95313vw;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
+    font-size: 4.55729vw;
+  }
+}
+@media (max-width: 640px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a {
+    font-size: 5.46875vw;
+  }
+}
+.where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
+  color: #ffffff;
+  content: "\e608";
+  display: inline-block;
+  font-family: "ico-font";
+  font-size: 1.17073vw;
+  line-height: 1;
+  margin-left: 0.9375vw;
+  vertical-align: middle;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
+    font-size: 15px;
+    margin-left: 12px;
+  }
+}
+@media (max-width: 1024px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
+    font-size: 1.17188vw;
+    margin-left: 1.17188vw;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
+    font-size: 3.125vw;
+    margin-left: 2.08333vw;
+  }
+}
+@media (max-width: 640px) {
+  .where-to-watch .where-to-watch-inner .link-buttons-wrap .link-button a:after {
+    font-size: 3.75vw;
+    margin-left: 2.5vw;
+  }
+}
+.where-to-watch .live-link {
+  border: 1px solid;
+  color: white;
+  display: inline-block;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 1.25vw;
+  line-height: 3.5vw;
+  padding: 0 2.1875vw 0;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .live-link {
+    font-size: 23.75px;
+    line-height: 66.5px;
+    padding: 0 41.6px 0;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .live-link {
+    display: none;
+  }
+}
+.where-to-watch .live-link span {
+  background: none;
+}
+.where-to-watch .live-link span:after {
+  display: inline-block;
+  color: inherit;
+  content: "\e608";
+  font-family: "ico-font";
+  font-size: 0.875vw;
+  margin-left: 0.9375vw;
+  position: relative;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .live-link span:after {
+    font-size: 16.6px;
+    margin-left: 17.8px;
+  }
+}
+.where-to-watch .description-block {
+  color: black;
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 1.25vw;
+  line-height: 1.4;
+  margin-top: 3.125vw;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .description-block {
+    font-size: 23.85px;
+    margin-top: 59.4px;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .description-block {
+    font-size: 3.77604vw;
+    margin-top: 10.41667vw;
+  }
+}
+@media (max-width: 640px) {
+  .where-to-watch .description-block {
+    font-size: 4.53125vw;
+    margin-top: 12.5vw;
+  }
+}
+.where-to-watch .usa-providers {
+  position: relative;
+  text-align: center;
+}
+.where-to-watch .usa-providers .providers-row {
+  display: block;
+  position: relative;
+  text-align: center;
+}
+.where-to-watch .usa-providers .providers-row-inner {
+  border-bottom: 2px solid;
+  display: inline-block;
+  padding: 1.875vw 3.75vw;
+  position: relative;
+}
+.where-to-watch .usa-providers .providers-row-inner:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .usa-providers .providers-row-inner {
+    padding: 35.625px 71.25px;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .usa-providers .providers-row-inner {
+    border: none;
+    padding: 0 2.60417vw;
+    width: 100%;
+  }
+}
+.where-to-watch .usa-providers .provider {
+  display: table;
+  float: left;
+  margin-right: 8.75vw;
+  position: relative;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .usa-providers .provider {
+    margin-right: 166.25px;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .usa-providers .provider {
+    margin: 5.85938vw 0;
+    width: 50%;
+  }
+}
+.where-to-watch .usa-providers .provider:last-child {
+  margin-right: 0;
+}
+.where-to-watch .usa-providers .provider a {
+  display: table-cell;
+  height: auto;
+  outline: none;
+  position: relative;
+  vertical-align: middle;
+  width: auto;
+}
+.where-to-watch .usa-providers .provider a img {
+  max-width: 90%;
+  max-height: 5vw;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .usa-providers .provider a img {
+    max-height: 95px;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .usa-providers .provider a img {
+    max-height: 10.41667vw;
+    height: 80px;
+  }
+}
+
 .series-recap-block {
   background: #e9eaeb;
   border-bottom: 2px solid;

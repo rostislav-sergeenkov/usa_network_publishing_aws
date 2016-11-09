@@ -274,18 +274,18 @@
       }
       .link-button {
         display: inline-block;
-        padding: get-vw(15px, 1280) get-vw(30px, 1280);
+        padding: get-vw(12.5px, 1280) get-vw(25px, 1280);
         @include breakpoint($bp-min-1901-width) {
-          padding: 22.3px 44.5px;
+          padding: 18.55px 37.1px;
         }
         @include breakpoint($bp-1024-width) {
-          padding: get-vw(15px, 1024) get-vw(30px, 1024);
+          padding: get-vw(12.5px, 1024) get-vw(25px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          padding: get-vw(30px, 768) get-vw(50px, 768);
+          padding: get-vw(25px, 768) get-vw(42px, 768);
         }
         @include breakpoint($bp-640-width) {
-          padding: get-vw(30px, 640) get-vw(50px, 640);
+          padding: get-vw(25px, 640) get-vw(42px, 640);
         }
         &:first-child {
           margin-right: get-vw(25px, 1280);
@@ -301,7 +301,7 @@
         }
         a {
           color: #ffffff;
-          font-size: get-vw(20px, 1280);
+          font-size: get-vw(20px, 1900);
           font-family: $avalon-medium;
           font-style: normal;
           letter-spacing: 1px;
@@ -317,17 +317,17 @@
             font-size: get-vw(20px, 1024);
           }
           @include breakpoint($bp-768-width) {
-            font-size: get-vw(35px, 768);
+            font-size: get-vw(30px, 768);
           }
           @include breakpoint($bp-640-width) {
-            font-size: get-vw(35px, 640);
+            font-size: get-vw(30px, 640);
           }
           &:after {
             color: #ffffff;
             content: "\e608";
             display: inline-block;
             font-family: $ico-font;
-            font-size: get-vw(12px, 1025);
+            font-size: get-vw(15px, 1900);
             line-height: 1;
             margin-left: get-vw(12px, 1280);
             vertical-align: middle;
@@ -336,7 +336,7 @@
               margin-left: 12px;
             }
             @include breakpoint($bp-1024-width) {
-              font-size: get-vw(12px, 1024);
+              font-size: get-vw(15px, 1024);
               margin-left: get-vw(12px, 1024);
             }
             @include breakpoint($bp-768-width) {
@@ -414,6 +414,11 @@
       display: block;
       position: relative;
       text-align: center;
+      &:last-child {
+        .providers-row-inner {
+          border: none;
+        }
+      }
     }
     .providers-row-inner {
       @include clear();

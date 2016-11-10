@@ -597,6 +597,9 @@ body.video-fullscreen #admin-menu {
 body.video-fullscreen header {
   display: none !important;
 }
+body.video-fullscreen footer {
+  display: none !important;
+}
 
 #header-overlay {
   display: none;
@@ -1322,6 +1325,7 @@ input[type="radio"], input[type="checkbox"] {
 
 body:not(.blog) .field-type-gigya-sharebar .gig-button-container .usa-share-button, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container .usa-share-button, body:not(.blog).node-type-top3-gallery .gig-button-container .usa-share-button, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container .usa-share-button, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container .usa-share-button, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container .usa-share-button {
   background-image: none !important;
+  cursor: pointer;
   display: block;
   font-family: "ico-font";
   font-size: 32px;

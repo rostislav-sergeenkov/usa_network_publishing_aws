@@ -341,7 +341,7 @@
     border-bottom: 2px solid $usa-logo-back;
     ul {
       width: 100%;
-      li.date-separate {
+      div.date-separate {
         background-color: $bottom-footer-back !important;
         color: #ffffff;
         font-size: 32px;
@@ -355,10 +355,10 @@
         @include breakpoint($bp-480-width) {
           padding-left: 15px;
         }
-        .day-shcedule {
+        .day-schedule {
           font-family: $avalon-medium;
         }
-        .date-shcedule {
+        .date-schedule {
           font-family: $avalon-book;
         }
         & + li.active {
@@ -370,8 +370,11 @@
         margin: 0;
         height: auto;
         width: 100%;
-        &:nth-child(odd) {
+        &:nth-of-type(odd) {
           background-color: $footer-links;
+        }
+        &:nth-of-type(even) {
+          background-color: $poll-back;
         }
         .schedule-item {
           box-sizing: border-box;
@@ -681,7 +684,7 @@
               }
             }
           }
-          & + li.date-separate {
+          & + div.date-separate {
             border-top: 1px solid $footer-promo-links;
           }
         }

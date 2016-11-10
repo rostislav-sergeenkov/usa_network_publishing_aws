@@ -289,156 +289,6 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-timeline_gallery-field_autoplay_gallery'
-  $field_instances['node-timeline_gallery-field_autoplay_gallery'] = array(
-    'bundle' => 'timeline_gallery',
-    'custom_add_another' => '',
-    'custom_remove' => '',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 36,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_autoplay_gallery',
-    'label' => 'Enable Auto Slideshow',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-      ),
-      'type' => 'options_onoff',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-timeline_gallery-field_autoplay_video'
-  $field_instances['node-timeline_gallery-field_autoplay_video'] = array(
-    'bundle' => 'timeline_gallery',
-    'custom_add_another' => '',
-    'custom_remove' => '',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 35,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_autoplay_video',
-    'label' => 'Enable Auto-play Video',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-        'pub_mpx' => array(
-          'media_data_fieldpath' => '',
-        ),
-      ),
-      'type' => 'options_onoff',
-      'weight' => 5,
-    ),
-  );
-
   // Exported field_instance: 'node-timeline_gallery-field_call_to_action_type'
   $field_instances['node-timeline_gallery-field_call_to_action_type'] = array(
     'bundle' => 'timeline_gallery',
@@ -744,7 +594,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -889,7 +739,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
       'module' => 'gigya',
       'settings' => array(),
       'type' => 'sharebar',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -2351,9 +2201,77 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-timeline_gallery-field_timeline_autoplay'
+  $field_instances['node-timeline_gallery-field_timeline_autoplay'] = array(
+    'bundle' => 'timeline_gallery',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 38,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_index' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_timeline_autoplay',
+    'label' => 'Autoplay Gallery',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-timeline_gallery-field_timeline_episode_section'
   $field_instances['node-timeline_gallery-field_timeline_episode_section'] = array(
     'bundle' => 'timeline_gallery',
+    'custom_add_another' => '',
+    'custom_remove' => '',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -2407,7 +2325,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_timeline_episode_section',
-    'label' => 'Tmeline Episode',
+    'label' => 'Timeline Episode',
     'required' => 0,
     'settings' => array(
       'custom_add_another' => '',
@@ -2419,7 +2337,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -2730,6 +2648,7 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('An image URL which should represent your object within the graph. The image must be at least 50px by 50px and have a maximum aspect ratio of 3:1. OG supports PNG, JPEG and GIF formats.');
+  t('Autoplay Gallery');
   t('Body');
   t('Call to Action Text');
   t('Call to Action Type');
@@ -2737,8 +2656,6 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
   t('Created date override');
   t('Custom CSS');
   t('Description');
-  t('Enable Auto Slideshow');
-  t('Enable Auto-play Video');
   t('Episode');
   t('Exclude from Related Content block');
   t('Explore Tag');
@@ -2757,9 +2674,9 @@ function usanetwork_timeline_gallery_field_default_field_instances() {
   t('Show Name or Violator');
   t('Sponsored');
   t('Tags');
+  t('Timeline Episode');
   t('Timeline media item');
   t('Title');
-  t('Tmeline Episode');
   t('Topic');
 
   return $field_instances;

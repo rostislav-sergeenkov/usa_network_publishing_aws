@@ -27,7 +27,7 @@ USAN.initUSAGigya = function(newShareBar) {
     buttonTemplate: '<div class="usa-share-button gig-share-button" onclick="$onClick"></div>'
   };
 
-  shareBar.gigyaSharebar = Object.assign(defaultShareBar.gigyaSharebar, newShareBar.gigyaSharebar);
+  shareBar.gigyaSharebar = jQuery.extend(true, defaultShareBar.gigyaSharebar, newShareBar.gigyaSharebar);
 
   if (Drupal.gigya.hasOwnProperty('showSharebar') && typeof Drupal.gigya.showSharebar == 'function') {
     console.log('done: init usa gigya');

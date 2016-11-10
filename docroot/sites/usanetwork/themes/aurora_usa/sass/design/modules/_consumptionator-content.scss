@@ -856,12 +856,6 @@
       width: 100%;
     }
     .items-block {
-      @include breakpoint($bp-min-1025-width) {
-        height: 420px;
-      }
-      @include breakpoint($bp-min-1901-width) {
-        height: 645px;
-      }
       @include breakpoint($between-1025-1280) {
         position: relative;
       }

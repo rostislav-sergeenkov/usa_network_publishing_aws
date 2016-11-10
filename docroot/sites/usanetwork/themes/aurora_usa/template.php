@@ -175,9 +175,7 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/spin.min.js');
   drupal_add_js($theme_path . '/javascripts/USAN.js', array('scope' => 'header', 'weight' => -100));
   drupal_add_js($theme_path . '/javascripts/isMobile.js');
-  if(drupal_is_front_page()) {
-    drupal_add_js($theme_path . '/javascripts/jquery.dotdotdot.min.js');
-  }
+  drupal_add_js($theme_path . '/javascripts/jquery.dotdotdot.min.js');
 
   $icomoon_ie_fix = array(
     '#tag' => 'script',
@@ -552,6 +550,17 @@ function aurora_usa_preprocess_node(&$vars, $hook) {
         $line_1_image = '';
       }
       $vars['aspot_title_image'] = $line_1_image;
+      break;
+    //hard code fix for task #2651
+    case 'catchall_page':
+      if ($node->nid == '65197') {
+        $rand_time = time();
+        drupal_add_js('https://ad.doubleclick.net/ddm/trackimpj/N3753.117456.USANETWORK/B8785104.134855467;dc_trk_aid=299536414;dc_trk_cid=66051757;ord='. $rand_time .';dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?');
+      }
+      if ($node->nid == '4166') {
+        $rand_time = time();
+        drupal_add_js('http://ad.doubleclick.net/adj/nbcu.usa/burnnotice_245033499sep30;site=usa;sect=burnnotice;sub=245033499sep30;genre=;daypart=primetime;!category=burnnotice;!category=js;!category=usa;network=tvn;sz=1x1;tagtype=js;uri=;pos=9;tile=9;ord=' . $rand_time .'?');
+      }
       break;
   }
 }

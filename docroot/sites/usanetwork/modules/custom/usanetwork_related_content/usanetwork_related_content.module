@@ -91,8 +91,14 @@ function usanetwork_related_content_is_load_more_link(&$related_content, $limit,
     $load_more_link = FALSE;
   }
   else {
-    $related_content = array_slice($related_content, 0, $limit);
-    $load_more_link = TRUE;
+    $last_element = end($related_content);
+    if (!empty($last_element->ymal)) {
+      array_splice($related_content, -2, 1);
+      $load_more_link = TRUE;
+    } else {
+      $related_content = array_slice($related_content, 0, $limit);
+      $load_more_link = TRUE;
+    }
   }
   if ($overlimited) {
     $load_more_link = !$load_more_link;
@@ -107,8 +113,8 @@ function usanetwork_related_content_get_related_content_for_consumpt_page($consu
   $related_content = $function(
     $tv_conten_node->nid, $consumpt_node,
     0, !empty($you_may_also_like_item)
-    ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE - 1
-    : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
+    ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE
+    : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE + 1);
 
   if (!empty($you_may_also_like_item)) {
     $related_content[] = $you_may_also_like_item;

@@ -61,7 +61,8 @@
 
       });
     },
-    lazyLoadImages: function (items) {
+    lazyLoadImages: function (items, viewportCheck) {
+      var withoutViewportCheck = viewportCheck || false;
       $.each(items, function (index, img_item) {
 
         var image = $(img_item),
@@ -70,7 +71,7 @@
 
         image.siblings('img.lazyloader-icon').css({ top: iconTop - iconFactor, left: iconLeft - iconFactor });
 
-        if (Drupal.behaviors.lazy_load_custom.windowView(image)) {
+        if (withoutViewportCheck || Drupal.behaviors.lazy_load_custom.windowView(image)) {
           Drupal.behaviors.lazy_load_custom.loadImage(image);
           image.fadeIn('slow');
         }

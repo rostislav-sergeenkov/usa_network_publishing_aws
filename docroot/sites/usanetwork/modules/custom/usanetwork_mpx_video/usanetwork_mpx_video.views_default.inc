@@ -97,361 +97,6 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['filters']['published_1']['field'] = 'published';
   $handler->display->display_options['filters']['published_1']['value'] = '1';
 
-  /* Display: Global Full Episode */
-  $handler = $view->new_display('block', 'Global Full Episode', 'global_full_mpx_episode');
-  $handler->display->display_options['defaults']['use_more'] = FALSE;
-  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['defaults']['query'] = FALSE;
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['row_class'] = 'grid-item';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'file';
-  $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_episode';
-  $handler->display->display_options['row_options']['links'] = 1;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['id'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['table'] = 'field_data_field_usa_video_terms';
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['field'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['required'] = TRUE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: thePlatform MPX Video: thePlatform MPX Video Status */
-  $handler->display->display_options['arguments']['status']['id'] = 'status';
-  $handler->display->display_options['arguments']['status']['table'] = 'mpx_video';
-  $handler->display->display_options['arguments']['status']['field'] = 'status';
-  $handler->display->display_options['arguments']['status']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['status']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['status']['default_argument_options']['argument'] = '1';
-  $handler->display->display_options['arguments']['status']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['status']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['status']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['status']['limit'] = '0';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: File: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['operator'] = 'not in';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'audio' => 'audio',
-    'document' => 'document',
-    'image' => 'image',
-    'mpx_player' => 'mpx_player',
-    'mpx_video' => 'mpx_video',
-    'video' => 'video',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: File: Full Episode (field_mpx_full_episode) */
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['id'] = 'field_mpx_full_episode_value';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['table'] = 'field_data_field_mpx_full_episode';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['field'] = 'field_mpx_full_episode_value';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['value'] = '1';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['group'] = 1;
-  /* Filter criterion: Taxonomy term: Name */
-  $handler->display->display_options['filters']['name']['id'] = 'name';
-  $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['filters']['name']['field'] = 'name';
-  $handler->display->display_options['filters']['name']['relationship'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['filters']['name']['operator'] = '!=';
-  $handler->display->display_options['filters']['name']['value'] = 'Live';
-  $handler->display->display_options['filters']['name']['group'] = 1;
-  /* Filter criterion: File: Published */
-  $handler->display->display_options['filters']['published']['id'] = 'published';
-  $handler->display->display_options['filters']['published']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['published']['field'] = 'published';
-  $handler->display->display_options['filters']['published']['value'] = '1';
-  $handler->display->display_options['filters']['published']['group'] = 1;
-  /* Filter criterion: Field: Show (field_show) */
-  $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
-  $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
-  $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
-  $handler->display->display_options['filters']['field_show_target_id']['operator'] = 'not empty';
-  $handler->display->display_options['block_description'] = 'Global Full Episode';
-
-  /* Display: Show Full Episode */
-  $handler = $view->new_display('block', 'Show Full Episode', 'show_full_mpx_episode');
-  $handler->display->display_options['display_description'] = 'Show Full Episode';
-  $handler->display->display_options['defaults']['query'] = FALSE;
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['row_class'] = 'grid-item';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'file';
-  $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_show_episode';
-  $handler->display->display_options['row_options']['links'] = 1;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Show (field_show) */
-  $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
-  $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
-  $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
-  $handler->display->display_options['arguments']['field_show_target_id']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['field_show_target_id']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_show_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_show_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_show_target_id']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: thePlatform MPX Video: thePlatform MPX Video Status */
-  $handler->display->display_options['arguments']['status']['id'] = 'status';
-  $handler->display->display_options['arguments']['status']['table'] = 'mpx_video';
-  $handler->display->display_options['arguments']['status']['field'] = 'status';
-  $handler->display->display_options['arguments']['status']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['status']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['status']['default_argument_options']['argument'] = '1';
-  $handler->display->display_options['arguments']['status']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['status']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['status']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['status']['limit'] = '0';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: File: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['operator'] = 'not in';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'audio' => 'audio',
-    'document' => 'document',
-    'image' => 'image',
-    'mpx_player' => 'mpx_player',
-    'mpx_video' => 'mpx_video',
-    'video' => 'video',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: File: Full Episode (field_mpx_full_episode) */
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['id'] = 'field_mpx_full_episode_value';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['table'] = 'field_data_field_mpx_full_episode';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['field'] = 'field_mpx_full_episode_value';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['value'] = '1';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['group'] = 1;
-  /* Filter criterion: File: Published */
-  $handler->display->display_options['filters']['published']['id'] = 'published';
-  $handler->display->display_options['filters']['published']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['published']['field'] = 'published';
-  $handler->display->display_options['filters']['published']['value'] = '1';
-  $handler->display->display_options['block_description'] = 'Show Full Episode';
-
-  /* Display: Category Videos */
-  $handler = $view->new_display('block', 'Category Videos', 'category_mpx_videos');
-  $handler->display->display_options['display_description'] = 'Category Videos';
-  $handler->display->display_options['defaults']['query'] = FALSE;
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'load_more';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['pager']['options']['more_button_text'] = 'more';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['row_class'] = 'grid-item';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'file';
-  $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_show_general';
-  $handler->display->display_options['row_options']['links'] = 1;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: USA Video Term (field_usa_video_terms) */
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['id'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['table'] = 'field_data_field_usa_video_terms';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['field'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_usa_video_terms_target_id']['summary_options']['items_per_page'] = '25';
-  /* Contextual filter: thePlatform MPX Video: thePlatform MPX Video Status */
-  $handler->display->display_options['arguments']['status']['id'] = 'status';
-  $handler->display->display_options['arguments']['status']['table'] = 'mpx_video';
-  $handler->display->display_options['arguments']['status']['field'] = 'status';
-  $handler->display->display_options['arguments']['status']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['status']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['status']['default_argument_options']['argument'] = '1';
-  $handler->display->display_options['arguments']['status']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['status']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['status']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['status']['limit'] = '0';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: File: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['operator'] = 'not in';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'audio' => 'audio',
-    'document' => 'document',
-    'image' => 'image',
-    'mpx_player' => 'mpx_player',
-    'mpx_video' => 'mpx_video',
-    'video' => 'video',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: File: Published */
-  $handler->display->display_options['filters']['published']['id'] = 'published';
-  $handler->display->display_options['filters']['published']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['published']['field'] = 'published';
-  $handler->display->display_options['filters']['published']['value'] = '1';
-  $handler->display->display_options['filters']['published']['group'] = 1;
-  $handler->display->display_options['block_description'] = 'Category Videos';
-
-  /* Display: Global Latest Full Episode Video */
-  $handler = $view->new_display('block', 'Global Latest Full Episode Video', 'global_latest_full_episode_video_mpx');
-  $handler->display->display_options['display_description'] = 'Global Latest Full Episode Video';
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'file';
-  $handler->display->display_options['row_options']['view_mode'] = 'full';
-  $handler->display->display_options['row_options']['links'] = 1;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['id'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['table'] = 'field_data_field_usa_video_terms';
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['field'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: thePlatform MPX Video: Air Date */
-  $handler->display->display_options['sorts']['airdate']['id'] = 'airdate';
-  $handler->display->display_options['sorts']['airdate']['table'] = 'mpx_video';
-  $handler->display->display_options['sorts']['airdate']['field'] = 'airdate';
-  $handler->display->display_options['sorts']['airdate']['order'] = 'DESC';
-  /* Sort criterion: File: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'file_managed';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: thePlatform MPX Video: thePlatform MPX Video Status */
-  $handler->display->display_options['arguments']['status']['id'] = 'status';
-  $handler->display->display_options['arguments']['status']['table'] = 'mpx_video';
-  $handler->display->display_options['arguments']['status']['field'] = 'status';
-  $handler->display->display_options['arguments']['status']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['status']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['status']['default_argument_options']['argument'] = '1';
-  $handler->display->display_options['arguments']['status']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['status']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['status']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['status']['limit'] = '0';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: File: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['operator'] = 'not in';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'audio' => 'audio',
-    'document' => 'document',
-    'image' => 'image',
-    'mpx_player' => 'mpx_player',
-    'mpx_video' => 'mpx_video',
-    'video' => 'video',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: File: Full Episode (field_mpx_full_episode) */
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['id'] = 'field_mpx_full_episode_value';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['table'] = 'field_data_field_mpx_full_episode';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['field'] = 'field_mpx_full_episode_value';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['value'] = '1';
-  $handler->display->display_options['filters']['field_mpx_full_episode_value']['group'] = 1;
-  /* Filter criterion: Taxonomy term: Name */
-  $handler->display->display_options['filters']['name']['id'] = 'name';
-  $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['filters']['name']['field'] = 'name';
-  $handler->display->display_options['filters']['name']['relationship'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['filters']['name']['operator'] = '!=';
-  $handler->display->display_options['filters']['name']['value'] = 'Live';
-  $handler->display->display_options['filters']['name']['group'] = 1;
-  /* Filter criterion: File: Published */
-  $handler->display->display_options['filters']['published']['id'] = 'published';
-  $handler->display->display_options['filters']['published']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['published']['field'] = 'published';
-  $handler->display->display_options['filters']['published']['value'] = '1';
-  /* Filter criterion: Field: Show (field_show) */
-  $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
-  $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
-  $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
-  $handler->display->display_options['filters']['field_show_target_id']['operator'] = 'not empty';
-  $handler->display->display_options['block_description'] = 'Global Latest Full Episode Video';
-
-  /* Display: Global Live Video */
-  $handler = $view->new_display('block', 'Global Live Video', 'latest_live_video');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'file';
-  $handler->display->display_options['row_options']['view_mode'] = 'full';
-  $handler->display->display_options['row_options']['links'] = 1;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['id'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['table'] = 'field_data_field_usa_video_terms';
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['field'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['required'] = TRUE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: thePlatform MPX Video: thePlatform MPX Video Status */
-  $handler->display->display_options['arguments']['status']['id'] = 'status';
-  $handler->display->display_options['arguments']['status']['table'] = 'mpx_video';
-  $handler->display->display_options['arguments']['status']['field'] = 'status';
-  $handler->display->display_options['arguments']['status']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['status']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['status']['default_argument_options']['argument'] = '1';
-  $handler->display->display_options['arguments']['status']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['status']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['status']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['status']['limit'] = '0';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: File: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['operator'] = 'not in';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'audio' => 'audio',
-    'document' => 'document',
-    'image' => 'image',
-    'mpx_player' => 'mpx_player',
-    'mpx_video' => 'mpx_video',
-    'video' => 'video',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Taxonomy term: Name */
-  $handler->display->display_options['filters']['name']['id'] = 'name';
-  $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['filters']['name']['field'] = 'name';
-  $handler->display->display_options['filters']['name']['relationship'] = 'field_usa_video_terms_target_id';
-  $handler->display->display_options['filters']['name']['value'] = 'Live';
-  $handler->display->display_options['filters']['name']['group'] = 1;
-  $handler->display->display_options['block_description'] = 'Global Live Video';
-
   /* Display: Global Full Episodes Live */
   $handler = $view->new_display('block', 'Global Full Episodes Live', 'fullepisodes_live');
   $handler->display->display_options['defaults']['title'] = FALSE;
@@ -586,6 +231,283 @@ function usanetwork_mpx_video_views_default_views() {
   $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
   $handler->display->display_options['filters']['field_show_target_id']['operator'] = 'not empty';
   $handler->display->display_options['block_description'] = 'Front Latest Full Episodes';
+
+  /* Display: Global Latest Full Episode Video */
+  $handler = $view->new_display('block', 'Global Latest Full Episode Video', 'global_latest_full_episode_video_mpx');
+  $handler->display->display_options['display_description'] = 'Global Latest Full Episode Video';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'file';
+  $handler->display->display_options['row_options']['view_mode'] = 'full';
+  $handler->display->display_options['row_options']['links'] = 1;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['id'] = 'field_usa_video_terms_target_id';
+  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['table'] = 'field_data_field_usa_video_terms';
+  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['field'] = 'field_usa_video_terms_target_id';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: thePlatform MPX Video: Air Date */
+  $handler->display->display_options['sorts']['airdate']['id'] = 'airdate';
+  $handler->display->display_options['sorts']['airdate']['table'] = 'mpx_video';
+  $handler->display->display_options['sorts']['airdate']['field'] = 'airdate';
+  $handler->display->display_options['sorts']['airdate']['order'] = 'DESC';
+  /* Sort criterion: File: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'file_managed';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: thePlatform MPX Video: thePlatform MPX Video Status */
+  $handler->display->display_options['arguments']['status']['id'] = 'status';
+  $handler->display->display_options['arguments']['status']['table'] = 'mpx_video';
+  $handler->display->display_options['arguments']['status']['field'] = 'status';
+  $handler->display->display_options['arguments']['status']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['status']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['status']['default_argument_options']['argument'] = '1';
+  $handler->display->display_options['arguments']['status']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['status']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['status']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['status']['limit'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: File: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'audio' => 'audio',
+    'document' => 'document',
+    'image' => 'image',
+    'mpx_player' => 'mpx_player',
+    'mpx_video' => 'mpx_video',
+    'video' => 'video',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: File: Full Episode (field_mpx_full_episode) */
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['id'] = 'field_mpx_full_episode_value';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['table'] = 'field_data_field_mpx_full_episode';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['field'] = 'field_mpx_full_episode_value';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['value'] = '1';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['group'] = 1;
+  /* Filter criterion: Taxonomy term: Name */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['relationship'] = 'field_usa_video_terms_target_id';
+  $handler->display->display_options['filters']['name']['operator'] = '!=';
+  $handler->display->display_options['filters']['name']['value'] = 'Live';
+  $handler->display->display_options['filters']['name']['group'] = 1;
+  /* Filter criterion: File: Published */
+  $handler->display->display_options['filters']['published']['id'] = 'published';
+  $handler->display->display_options['filters']['published']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['published']['field'] = 'published';
+  $handler->display->display_options['filters']['published']['value'] = '1';
+  /* Filter criterion: Field: Show (field_show) */
+  $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
+  $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
+  $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
+  $handler->display->display_options['filters']['field_show_target_id']['operator'] = 'not empty';
+  $handler->display->display_options['block_description'] = 'Global Latest Full Episode Video';
+
+  /* Display: Category Videos */
+  $handler = $view->new_display('block', 'Category Videos', 'category_mpx_videos');
+  $handler->display->display_options['display_description'] = 'Category Videos';
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'load_more';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['more_button_text'] = 'more';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'grid-item';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'file';
+  $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_show_general';
+  $handler->display->display_options['row_options']['links'] = 1;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: File: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'audio' => 'audio',
+    'document' => 'document',
+    'image' => 'image',
+    'mpx_player' => 'mpx_player',
+    'mpx_video' => 'mpx_video',
+    'video' => 'video',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: File: Published */
+  $handler->display->display_options['filters']['published']['id'] = 'published';
+  $handler->display->display_options['filters']['published']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['published']['field'] = 'published';
+  $handler->display->display_options['filters']['published']['value'] = '1';
+  $handler->display->display_options['filters']['published']['group'] = 1;
+  $handler->display->display_options['block_description'] = 'Category Videos';
+
+  /* Display: Show Full Episode */
+  $handler = $view->new_display('block', 'Show Full Episode', 'show_full_mpx_episode');
+  $handler->display->display_options['display_description'] = 'Show Full Episode';
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'grid-item';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'file';
+  $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_show_episode';
+  $handler->display->display_options['row_options']['links'] = 1;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Field: Show (field_show) */
+  $handler->display->display_options['arguments']['field_show_target_id']['id'] = 'field_show_target_id';
+  $handler->display->display_options['arguments']['field_show_target_id']['table'] = 'field_data_field_show';
+  $handler->display->display_options['arguments']['field_show_target_id']['field'] = 'field_show_target_id';
+  $handler->display->display_options['arguments']['field_show_target_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_show_target_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_show_target_id']['summary_options']['items_per_page'] = '25';
+  /* Contextual filter: thePlatform MPX Video: thePlatform MPX Video Status */
+  $handler->display->display_options['arguments']['status']['id'] = 'status';
+  $handler->display->display_options['arguments']['status']['table'] = 'mpx_video';
+  $handler->display->display_options['arguments']['status']['field'] = 'status';
+  $handler->display->display_options['arguments']['status']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['status']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['status']['default_argument_options']['argument'] = '1';
+  $handler->display->display_options['arguments']['status']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['status']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['status']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['status']['limit'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: File: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'audio' => 'audio',
+    'document' => 'document',
+    'image' => 'image',
+    'mpx_player' => 'mpx_player',
+    'mpx_video' => 'mpx_video',
+    'video' => 'video',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: File: Full Episode (field_mpx_full_episode) */
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['id'] = 'field_mpx_full_episode_value';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['table'] = 'field_data_field_mpx_full_episode';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['field'] = 'field_mpx_full_episode_value';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['value'] = '1';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['group'] = 1;
+  /* Filter criterion: File: Published */
+  $handler->display->display_options['filters']['published']['id'] = 'published';
+  $handler->display->display_options['filters']['published']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['published']['field'] = 'published';
+  $handler->display->display_options['filters']['published']['value'] = '1';
+  $handler->display->display_options['block_description'] = 'Show Full Episode';
+
+  /* Display: Global Full Episode */
+  $handler = $view->new_display('block', 'Global Full Episode', 'global_full_mpx_episode');
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'grid-item';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'file';
+  $handler->display->display_options['row_options']['view_mode'] = 'vid_teaser_episode';
+  $handler->display->display_options['row_options']['links'] = 1;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['id'] = 'field_usa_video_terms_target_id';
+  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['table'] = 'field_data_field_usa_video_terms';
+  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['field'] = 'field_usa_video_terms_target_id';
+  $handler->display->display_options['relationships']['field_usa_video_terms_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: thePlatform MPX Video: thePlatform MPX Video Status */
+  $handler->display->display_options['arguments']['status']['id'] = 'status';
+  $handler->display->display_options['arguments']['status']['table'] = 'mpx_video';
+  $handler->display->display_options['arguments']['status']['field'] = 'status';
+  $handler->display->display_options['arguments']['status']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['status']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['status']['default_argument_options']['argument'] = '1';
+  $handler->display->display_options['arguments']['status']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['status']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['status']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['status']['limit'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: File: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'audio' => 'audio',
+    'document' => 'document',
+    'image' => 'image',
+    'mpx_player' => 'mpx_player',
+    'mpx_video' => 'mpx_video',
+    'video' => 'video',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: File: Full Episode (field_mpx_full_episode) */
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['id'] = 'field_mpx_full_episode_value';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['table'] = 'field_data_field_mpx_full_episode';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['field'] = 'field_mpx_full_episode_value';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['value'] = '1';
+  $handler->display->display_options['filters']['field_mpx_full_episode_value']['group'] = 1;
+  /* Filter criterion: Taxonomy term: Name */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['relationship'] = 'field_usa_video_terms_target_id';
+  $handler->display->display_options['filters']['name']['operator'] = '!=';
+  $handler->display->display_options['filters']['name']['value'] = 'Live';
+  $handler->display->display_options['filters']['name']['group'] = 1;
+  /* Filter criterion: File: Published */
+  $handler->display->display_options['filters']['published']['id'] = 'published';
+  $handler->display->display_options['filters']['published']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['published']['field'] = 'published';
+  $handler->display->display_options['filters']['published']['value'] = '1';
+  $handler->display->display_options['filters']['published']['group'] = 1;
+  /* Filter criterion: Field: Show (field_show) */
+  $handler->display->display_options['filters']['field_show_target_id']['id'] = 'field_show_target_id';
+  $handler->display->display_options['filters']['field_show_target_id']['table'] = 'field_data_field_show';
+  $handler->display->display_options['filters']['field_show_target_id']['field'] = 'field_show_target_id';
+  $handler->display->display_options['filters']['field_show_target_id']['operator'] = 'not empty';
+  $handler->display->display_options['block_description'] = 'Global Full Episode';
   $export['usa_mpx_video'] = $view;
 
   $view = new view();

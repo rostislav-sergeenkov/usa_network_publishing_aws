@@ -276,27 +276,25 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
               }
               &:before {
                 @include breakpoint($bp-1024-width) {
+                  font-size: 24px;
+                  left: 1px;
+                  line-height: 24px;
                   position: absolute;
-                  z-index: 2;
+                  top: 1px;
+                }
+                @include breakpoint($bp-640-width) {
+                  font-size: 28px;
+                  line-height: 28px;
                 }
               }
               &:after {
                 @include breakpoint($bp-1024-width) {
-                  background: white;
-                  border-radius: 20%;
-                  content: '';
-                  display: block;
-                  height: 25px;
-                  left: 2px;
-                  top: 0px;
-                  position: absolute;
-                  width: 23px;
+                  font-size: 26px;
+                  line-height: 26px;
                 }
                 @include breakpoint($bp-640-width) {
-                  height: 28px;
-                  left: 1px;
-                  top: 1px;
-                  width: 27px;
+                  font-size: 30px;
+                  line-height: 30px;
                 }
               }
             }
@@ -305,6 +303,14 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                 &:before {
                   @include breakpoint($bp-1024-width) {
                     color: white;
+                    font-size: 26px;
+                    left: 0;
+                    line-height: 26px;
+                    top: 0;
+                  }
+                  @include breakpoint($bp-640-width) {
+                    font-size: 30px;
+                    line-height: 30px;
                   }
                 }
                 &:after {

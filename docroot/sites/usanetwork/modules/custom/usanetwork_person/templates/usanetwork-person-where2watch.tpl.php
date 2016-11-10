@@ -3,7 +3,7 @@
  *
  */
 ?>
-<div id="where-to-watch" class="where-to-watch">
+<div id="where-to-watch" class="where-to-watch<?php print (empty($new_design))? ' show-border' : ''; ?>">
   <?php if (!empty($new_design)) : ?>
     <div class="usa-section-title show-border">
       <h2 class="title"><?php print !empty($title) ? $title : ''; ?></h2>

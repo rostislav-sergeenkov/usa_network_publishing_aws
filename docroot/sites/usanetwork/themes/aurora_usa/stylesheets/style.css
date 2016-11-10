@@ -38264,6 +38264,7 @@ body.blog .view-display-id-blog_content .views-row {
   z-index: 100000001;
 }
 .usa-home-popup-overlay #popup-effect {
+  pointer-events: none;
   left: 0;
   top: 0;
   position: absolute;

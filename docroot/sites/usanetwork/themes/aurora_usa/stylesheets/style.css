@@ -38596,7 +38596,7 @@ body.blog .view-display-id-blog_content .views-row {
   max-height: 90%;
   max-width: 85%;
   position: relative;
-  width: 1280px;
+  width: auto;
   z-index: 1;
 }
 @media (max-width: 768px) {
@@ -38616,6 +38616,7 @@ body.blog .view-display-id-blog_content .views-row {
   }
   .touch .usa-home-popup .asset-img {
     height: 100%;
+    max-width: 1280px;
     width: auto;
   }
   .touch .usa-home-popup .asset-img img {
@@ -38698,7 +38699,7 @@ body.blog .view-display-id-blog_content .views-row {
 .usa-home-popup .asset-img {
   height: auto;
   max-height: 100%;
-  max-width: 100%;
+  max-width: 1280px;
   width: 100%;
 }
 .usa-home-popup .asset-img img {

@@ -27,7 +27,7 @@
   max-height: 90%;
   max-width: 85%;
   position: relative;
-  width: 1280px;
+  width: auto;
   z-index: 1;
   @include breakpoint($bp-768-width) {
     width: 625px;
@@ -66,6 +66,7 @@
       }
       .asset-img {
         height: 100%;
+        max-width: 1280px;
         width: auto;
         img {
           height: 100%;
@@ -118,7 +119,7 @@
   .asset-img {
     height: auto;
     max-height: 100%;
-    max-width: 100%;
+    max-width: 1280px;
     width: 100%;
     img {
       height: auto;

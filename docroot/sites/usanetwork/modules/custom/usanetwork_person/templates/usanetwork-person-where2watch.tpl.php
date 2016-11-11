@@ -30,7 +30,7 @@
       <?php endif; ?>
       <?php if (!empty($featured_elements)) : ?>
         <div class="description-block">
-          <?php print t('Watch the entire first season on:'); ?>
+          <?php print $primary_description; ?>
         </div>
         <div class="usa-providers">
             <div class="providers-row">

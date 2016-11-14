@@ -34,6 +34,9 @@
       </div>
     </div>
   </div>
+  <?php if (!empty($taboola_block)) : ?>
+    <?php print $taboola_block; ?>
+  <?php endif; ?>
   <div class="consum-sidebar">
     <div class="node-wrapper advert">
       <?php if ($live_advert): ?>

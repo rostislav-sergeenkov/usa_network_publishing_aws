@@ -59,14 +59,18 @@ function usanetwork_taboola_block_view($delta = '')
  * Taboola Block for Video Page
  */
 function _usanetwork_taboola_video_block() {
-  if (path_is_admin(current_path())) {
+  $current_path = current_path();
+  if (path_is_admin($current_path)) {
     return '';
   }
 
   $file = _usanetwork_menu_get_object();
-  $show = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id');
+  if (!empty($file)) {
+    $show = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id');
+  }
   $show_witout_taboola = variable_get('usanetwork_taboola_shows');
-  if (empty($show_witout_taboola[$show])) {
+
+  if ((isset($show) && empty($show_witout_taboola[$show])) || ($current_path == "videos/live")) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header.js', array(
       'type' => 'file',
       'scope' => 'header'
@@ -76,13 +80,19 @@ function _usanetwork_taboola_video_block() {
       'scope' => 'footer'
     ));
 
+    if ($current_path == "videos/live") {
+      $placement_name = 'Thumbnails Below Player';
+    } else {
+      $placement_name = 'Below Player Thumbnails';
+    }
+
     $output = '<div id="taboola-below-player-thumbnails"></div>
 <script type="text/javascript">
   window._taboola = window._taboola || [];
   _taboola.push({
     mode: \'thumbnails-a\',
     container: \'taboola-below-player-thumbnails\',
-    placement: \'Below Player Thumbnails\',
+    placement: \'' . $placement_name . '\',
     target_type: \'mix\'
   });
 </script>';

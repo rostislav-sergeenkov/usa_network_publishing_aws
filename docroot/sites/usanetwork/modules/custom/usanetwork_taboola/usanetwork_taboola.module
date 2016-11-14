@@ -31,6 +31,10 @@ function usanetwork_taboola_block_info()
     'info' => t('Usanetwork Taboola Gallery'),
     'cache' => DRUPAL_NO_CACHE,
   );
+  $blocks['usanetwork_taboola_post'] = array(
+    'info' => t('Usanetwork Taboola Post'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
 
   return $blocks;
 }
@@ -50,6 +54,10 @@ function usanetwork_taboola_block_view($delta = '')
     case 'usanetwork_taboola_gallery':
       $block['subject'] = t('');
       $block['content'] = _usanetwork_taboola_gallery_block();
+      break;
+    case 'usanetwork_taboola_post':
+      $block['subject'] = t('');
+      $block['content'] = _usanetwork_taboola_post_block();
       break;
   }
   return $block;
@@ -128,6 +136,42 @@ function _usanetwork_taboola_gallery_block() {
     $variables = array('output' => $output);
 
     return theme('usanetwork_taboola', $variables);
+  }
+}
+
+/*
+ * Taboola Block for Consumptionator Post Page
+ */
+function _usanetwork_taboola_post_block() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $node = _usanetwork_menu_get_object();
+  $show = _usanetwork_get_field_item('node', $node, 'field_show', 'target_id');
+  $show_witout_taboola = variable_get('usanetwork_taboola_shows');
+  if (empty($show_witout_taboola[$show])) {
+    drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header_post.js', array(
+      'type' => 'file',
+      'scope' => 'header'
+    ));
+    drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_footer.js', array(
+      'type' => 'file',
+      'scope' => 'footer'
+    ));
+
+    $output = '<div id="taboola-below-article-thumbnails"></div>
+<script type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({
+    mode: \'alternating-thumbnails-a\',
+    container: \'taboola-below-article-thumbnails\',
+    placement: \'Below Article Thumbnails\',
+    target_type: \'mix\'
+  });
+</script>';
+
+    return $output;
   }
 }
 

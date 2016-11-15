@@ -28,18 +28,18 @@ function usanetwork_popup_theme($existing, $type, $theme, $path) {
   );
 }
 
-function _usanetwork_popup_window() {
+function _usanetwork_popup_window($popup_element = NULL) {
   if (arg(0) == 'admin') {
     return '';
   }
 
-  $homepage = usanetwork_home_get_homepage();
-
-  if (!empty($homepage['node'])) {
-    $homepage_node = node_load(reset($homepage['node'])->nid);
+  if (empty($popup_element)) {
+    $homepage = usanetwork_home_get_homepage();
+    if (!empty($homepage['node'])) {
+      $homepage_node = node_load(reset($homepage['node'])->nid);
+    }
+    $popup_element = _usanetwork_get_field_item('node', $homepage_node, 'field_popup_element', 'target_id');
   }
-
-  $popup_element = _usanetwork_get_field_item('node', $homepage_node, 'field_popup_element', 'target_id');
 
   if (!empty($popup_element)) {
     $popup_node = node_load($popup_element);
@@ -105,6 +105,18 @@ function usanetwork_popup_page_alter(&$page) {
     // Attach hidden modal windows to the bottom of the page.
     $popup_window = _usanetwork_popup_window();
     $page['page_bottom']['usanetwork_popup_windows'] = array(
+      '#markup' => $popup_window,
+    );
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function usanetwork_popup_node_view($node, $view_mode, $langcode) {
+  if (($node->type == 'popup_element') && ($view_mode == 'full')) {
+    $popup_window = _usanetwork_popup_window($node->nid);
+    $node->content['popup_window'] = array(
       '#markup' => $popup_window,
     );
   }

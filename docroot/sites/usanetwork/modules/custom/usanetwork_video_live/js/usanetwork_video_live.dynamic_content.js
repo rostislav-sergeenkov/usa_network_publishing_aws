@@ -366,7 +366,7 @@
         success: function(data) {
           if (data != null && typeof data != 'undefined') {
 
-            $('h2.section-title').remove();
+            $('h2.section-title.live-video-related-title').remove();
             $('.gallery-wrapper').remove();
             $('.styles-quiz').remove();
             $('.video-block > article').remove();
@@ -374,7 +374,7 @@
               videoBlock.addClass('show-related');
             }
             $('.consum-sidebar').after(data.rendered);
-            $('.consum-sidebar').after('<h2 class="section-title"><span class="section-title-wrapper show-border secondary">Related content</span></h2>');
+            $('.consum-sidebar').after('<h2 class="section-title live-video-related-title"><span class="section-title-wrapper show-border secondary">Related content</span></h2>');
 
             if (data.variables != null && data.variables != '') {
               Drupal.settings.usanetwork_quiz = {};
@@ -410,7 +410,7 @@
             Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
 
           } else {
-            $('h2.section-title').remove();
+            $('h2.section-title.live-video-related-title').remove();
             $('.gallery-wrapper').remove();
             $('.styles-quiz').remove();
             $('.video-block > article').remove();
@@ -422,7 +422,7 @@
         },
         error: function () {
           console.info('error');
-          $('h2.section-title').remove();
+          $('h2.section-title.live-video-related-title').remove();
           $('.gallery-wrapper').remove();
           $('.styles-quiz').remove();
           $('.video-block > article').remove();

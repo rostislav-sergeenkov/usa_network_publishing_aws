@@ -10,9 +10,10 @@
 
           var popup = $('.usa-home-popup-overlay'),
               popupTitle = popup.attr('data-title'),
-              popupCookieName = 'popup_window_' + popup.attr('data-popup-id');
+              popupCookieName = 'popup_window_' + popup.attr('data-popup-id'),
+              previewPage = $('body').hasClass('node-type-popup-element');
 
-          if (getCookie(popupCookieName) != undefined) {
+          if (!previewPage && getCookie(popupCookieName) != undefined) {
             popup.remove();
           } else {
             popup.css('display', 'flex');
@@ -23,26 +24,24 @@
               });
 
               setCookie(popupCookieName);
-            }
 
-            // Click popup link
-            $('.usa-home-popup-overlay a').once('omniture-tracking', function () {
-              $(this).on('click', function (e) {
-                if ($(this).attr('target') == '_blank') {
+              // Click popup link
+              $('.usa-home-popup-overlay a').once('omniture-tracking', function () {
+                $(this).on('click', function (e) {
+                  if ($(this).attr('target') == '_blank') {
 
-                } else {
-                  e.preventDefault();
-                }
+                  } else {
+                    e.preventDefault();
+                  }
 
-                var $self = $(this),
-                    pageName = 'USA Network : Homepage : ' + popupTitle + ' : Pop-up Shown';
+                  var $self = $(this),
+                      pageName = 'USA Network : Homepage : ' + popupTitle + ' : Pop-up Shown';
 
-                if ($('body').hasClass('front')) {
                   clickPopupLink($self, popupTitle, pageName);
-                }
 
+                });
               });
-            });
+            }
 
             popup.click(function (e) {
               if ($('body').hasClass('front')) {

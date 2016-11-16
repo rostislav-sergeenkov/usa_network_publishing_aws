@@ -67,10 +67,17 @@ function _usanetwork_taboola_video_block() {
   $file = _usanetwork_menu_get_object();
   if (!empty($file)) {
     $show = _usanetwork_get_field_item('file', $file, 'field_show', 'target_id');
+    if (empty($show)) {
+      $movie = _usanetwork_get_field_item('file', $file, 'field_movie', 'target_id');
+      if (!empty($movie)) {
+        $show = 'movies';
+      }
+    }
   }
   $show_witout_taboola = variable_get('usanetwork_taboola_shows');
 
-  if ((isset($show) && empty($show_witout_taboola[$show])) || ($current_path == "videos/live")) {
+  if ((isset($show) && empty($show_witout_taboola[$show])) ||
+    (($current_path == "videos/live")&&(empty($show_witout_taboola['live'])))) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_taboola') . '/js/usanetwork_taboola_header.js', array(
       'type' => 'file',
       'scope' => 'header'

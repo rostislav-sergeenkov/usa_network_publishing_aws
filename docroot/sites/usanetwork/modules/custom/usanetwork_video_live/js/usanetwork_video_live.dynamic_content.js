@@ -312,6 +312,7 @@
               window.picturefill();
             }
             Drupal.behaviors.usanetwork_video_live.right_rail_omniture($episodesListSlider);
+            Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
           } else {
             $('.consum-sidebar .items-block').remove();
             $('.consum-sidebar .more-items').remove();
@@ -438,7 +439,7 @@
         Drupal.behaviors.usanetwork_video_live.right_rail();
         Drupal.behaviors.usanetwork_video_live.right_rail_promo();
         Drupal.behaviors.usanetwork_video_live.related_content();
-      })
+      });
     }
   };
 })(jQuery);

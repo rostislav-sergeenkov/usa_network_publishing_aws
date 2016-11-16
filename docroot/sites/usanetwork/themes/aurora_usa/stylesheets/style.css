@@ -16671,8 +16671,17 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 }
 .page-videos-live .video-block {
   margin-bottom: 0;
-  height: auto;
-  max-height: none;
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block {
+    height: 42.01875vw;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block {
+    height: calc((100vw - 320px)*0.5625);
+    overflow: visible;
+  }
 }
 .page-videos-live .video-block #videoplayer {
   position: absolute;
@@ -16731,12 +16740,6 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 .page-videos-live .video-block .player-wrapper:hover .video-player-wrapper.section-auth .player-thumbnail img {
   opacity: 1;
 }
-@media (min-width: 1025px) {
-  .page-videos-live .video-block .consum-sidebar {
-    left: auto;
-    float: right;
-  }
-}
 .page-videos-live .video-block .consum-sidebar .download-app {
   display: none;
 }
@@ -16766,6 +16769,15 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 @media (max-width: 1024px) {
   .page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
     height: auto;
+  }
+}
+.page-videos-live .video-block:not(.show-app):not(.show-related).taboola-enabled {
+  height: auto;
+  max-height: none;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-related).taboola-enabled .consum-sidebar.sticky-sidebar .more-items {
+    margin-top: -35px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -16845,10 +16857,20 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 .page-videos-live .video-block.show-app .consum-sidebar .download-app {
   display: table;
 }
+.page-videos-live .video-block.show-app:not(.show-related).taboola-enabled {
+  height: auto;
+  max-height: none;
+}
 @media (min-width: 1025px) {
   .page-videos-live .video-block.show-related.show-app .consum-sidebar {
     height: 45vw;
     max-height: 1125px !important;
+  }
+}
+@media (min-width: 1025px) {
+  .page-videos-live .video-block.show-related {
+    height: auto;
+    max-height: none;
   }
 }
 @media (min-width: 1281px) {
@@ -16858,6 +16880,8 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 }
 @media (min-width: 1025px) {
   .page-videos-live .video-block.show-related .consum-sidebar {
+    left: auto;
+    float: right;
     overflow: hidden;
     padding: 0;
     position: relative;

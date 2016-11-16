@@ -612,8 +612,13 @@
   }
   .video-block {
     margin-bottom: 0;
-    height: auto;
-    max-height: none;
+    @include breakpoint($bp-min-1281-width) {
+      height: 42.01875vw;
+    }
+    @include breakpoint($between-1025-1280) {
+      height: calc((100vw - 320px)*0.5625);
+      overflow: visible;
+    }
     #videoplayer {
       position: absolute;
       left: 0;
@@ -672,10 +677,6 @@
       }
     }
     .consum-sidebar {
-      @include breakpoint($bp-min-1025-width) {
-        left: auto;
-        float: right;
-      }
       .download-app {
         display: none;
         @include breakpoint($bp-1024-width) {
@@ -710,6 +711,19 @@
         }
       }
       &:not(.show-related) {
+        &.taboola-enabled {
+          height: auto;
+          max-height: none;
+          .consum-sidebar {
+            &.sticky-sidebar {
+              .more-items {
+                @include breakpoint($between-1025-1280) {
+                  margin-top: -35px;
+                }
+              }
+            }
+          }
+        }
         @include breakpoint($between-1025-1280) {
           height: calc((100vw - 300px)*0.5625);
           overflow: hidden;
@@ -790,6 +804,12 @@
           display: table;
         }
       }
+      &:not(.show-related) {
+        &.taboola-enabled {
+          height: auto;
+          max-height: none;
+        }
+      }
     }
     &.show-related {
       &.show-app {
@@ -800,6 +820,10 @@
           }
         }
       }
+      @include breakpoint($bp-min-1025-width) {
+        height: auto;
+        max-height: none;
+      }
       .player-wrapper {
         @include breakpoint($bp-min-1281-width) {
           max-height: 1093.75px;
@@ -807,6 +831,8 @@
       }
       .consum-sidebar {
         @include breakpoint($bp-min-1025-width) {
+          left: auto;
+          float: right;
           overflow: hidden;
           padding: 0;
           position: relative;

@@ -108,6 +108,10 @@
             window.picturefill();
           }
 
+          if(!$('body').hasClass('show-new-design')) {
+            refreshDescriptionLinesPromo();
+          }
+
           if (data.overlimited == false) {
             $('.ajax-load-block .load-more-link a').removeClass('disabled');
           } else {

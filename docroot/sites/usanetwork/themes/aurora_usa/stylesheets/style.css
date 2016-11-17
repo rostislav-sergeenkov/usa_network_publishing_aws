@@ -2776,37 +2776,37 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (max-width: 640px) {
   .show-latest-block ul li .show-latest-promo.big .meta .caption, .related-content-block ul li .show-latest-promo.big .meta .caption {
     font-size: 2.5vw;
-    line-height: 3.33333vw;
+    line-height: 3.125vw;
   }
 }
 @media (max-width: 480px) {
   .show-latest-block ul li .show-latest-promo.big .meta .caption, .related-content-block ul li .show-latest-promo.big .meta .caption {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 15px;
   }
 }
 @media (max-width: 640px) {
   .show-latest-block ul li .show-latest-promo.big .meta .title, .related-content-block ul li .show-latest-promo.big .meta .title {
     font-size: 3.75vw;
-    line-height: 4.375vw;
+    line-height: 4.16667vw;
   }
 }
 @media (max-width: 480px) {
   .show-latest-block ul li .show-latest-promo.big .meta .title, .related-content-block ul li .show-latest-promo.big .meta .title {
     font-size: 18px;
-    line-height: 21px;
+    line-height: 20px;
   }
 }
 @media (max-width: 640px) {
   .show-latest-block ul li .show-latest-promo.big .meta .additional, .related-content-block ul li .show-latest-promo.big .meta .additional {
     font-size: 2.5vw;
-    line-height: 3.33333vw;
+    line-height: 3.125vw;
   }
 }
 @media (max-width: 480px) {
   .show-latest-block ul li .show-latest-promo.big .meta .additional, .related-content-block ul li .show-latest-promo.big .meta .additional {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 15px;
   }
 }
 @media (max-width: 640px) {
@@ -2875,11 +2875,8 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   width: 100%;
 }
 .show-latest-block ul li .show-latest-promo .meta, .related-content-block ul li .show-latest-promo .meta {
-  display: table-cell;
-  max-width: 100px;
   overflow: hidden;
   padding-left: 4%;
-  vertical-align: middle;
   width: 100%;
 }
 .show-latest-block ul li .show-latest-promo .meta .caption, .related-content-block ul li .show-latest-promo .meta .caption {
@@ -2896,13 +2893,13 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (max-width: 768px) {
   .show-latest-block ul li .show-latest-promo .meta .caption, .related-content-block ul li .show-latest-promo .meta .caption {
     font-size: 1.97917vw;
-    line-height: 2.5vw;
+    line-height: 2.29167vw;
   }
 }
 @media (max-width: 480px) {
   .show-latest-block ul li .show-latest-promo .meta .caption, .related-content-block ul li .show-latest-promo .meta .caption {
     font-size: 9.5px;
-    line-height: 12px;
+    line-height: 11px;
   }
 }
 .show-latest-block ul li .show-latest-promo .meta .title, .related-content-block ul li .show-latest-promo .meta .title {
@@ -2919,13 +2916,13 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (max-width: 768px) {
   .show-latest-block ul li .show-latest-promo .meta .title, .related-content-block ul li .show-latest-promo .meta .title {
     font-size: 2.70833vw;
-    line-height: 3.33333vw;
+    line-height: 3.125vw;
   }
 }
 @media (max-width: 480px) {
   .show-latest-block ul li .show-latest-promo .meta .title, .related-content-block ul li .show-latest-promo .meta .title {
     font-size: 13px;
-    line-height: 16px;
+    line-height: 15px;
   }
 }
 .show-latest-block ul li .show-latest-promo .meta .additional, .related-content-block ul li .show-latest-promo .meta .additional {
@@ -2942,13 +2939,13 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (max-width: 768px) {
   .show-latest-block ul li .show-latest-promo .meta .additional, .related-content-block ul li .show-latest-promo .meta .additional {
     font-size: 1.875vw;
-    line-height: 2.5vw;
+    line-height: 2.29167vw;
   }
 }
 @media (max-width: 480px) {
   .show-latest-block ul li .show-latest-promo .meta .additional, .related-content-block ul li .show-latest-promo .meta .additional {
     font-size: 9px;
-    line-height: 12px;
+    line-height: 11px;
   }
 }
 .show-latest-block ul li .show-latest-promo .meta-icon, .related-content-block ul li .show-latest-promo .meta-icon {

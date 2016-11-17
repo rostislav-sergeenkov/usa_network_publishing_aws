@@ -1666,31 +1666,31 @@
         .caption {
           @include breakpoint($bp-640-width) {
             font-size: get-vw(12px, 480);
-            line-height: get-vw(16px, 480);
+            line-height: get-vw(15px, 480);
           }
           @include breakpoint($bp-480-width) {
             font-size: 12px;
-            line-height: 16px;
+            line-height: 15px;
           }
         }
         .title {
           @include breakpoint($bp-640-width) {
             font-size: get-vw(18px, 480);
-            line-height: get-vw(21px, 480);
+            line-height: get-vw(20px, 480);
           }
           @include breakpoint($bp-480-width) {
             font-size: 18px;
-            line-height: 21px;
+            line-height: 20px;
           }
         }
         .additional {
           @include breakpoint($bp-640-width) {
             font-size: get-vw(12px, 480);
-            line-height: get-vw(16px, 480);
+            line-height: get-vw(15px, 480);
           }
           @include breakpoint($bp-480-width) {
             font-size: 12px;
-            line-height: 16px;
+            line-height: 15px;
           }
         }
       }
@@ -1749,11 +1749,8 @@
       width: 100%;
     }
     .meta {
-      display: table-cell;
-      max-width: 100px;
       overflow: hidden;
       padding-left: 4%;
-      vertical-align: middle;
       width: 100%;
       .caption {
         background: none;
@@ -1765,11 +1762,11 @@
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(9.5px, 480);
-          line-height: get-vw(12px, 480);
+          line-height: get-vw(11px, 480);
         }
         @include breakpoint($bp-480-width) {
           font-size: 9.5px;
-          line-height: 12px;
+          line-height: 11px;
         }
       }
       .title {
@@ -1782,11 +1779,11 @@
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(13px, 480);
-          line-height: get-vw(16px, 480);
+          line-height: get-vw(15px, 480);
         }
         @include breakpoint($bp-480-width) {
           font-size: 13px;
-          line-height: 16px;
+          line-height: 15px;
         }
       }
       .additional {
@@ -1799,11 +1796,11 @@
         }
         @include breakpoint($bp-768-width) {
           font-size: get-vw(9px, 480);
-          line-height: get-vw(12px, 480);
+          line-height: get-vw(11px, 480);
         }
         @include breakpoint($bp-480-width) {
           font-size: 9px;
-          line-height: 12px;
+          line-height: 11px;
         }
       }
     }

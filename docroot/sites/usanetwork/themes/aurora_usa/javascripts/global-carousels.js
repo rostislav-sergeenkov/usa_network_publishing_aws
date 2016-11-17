@@ -292,7 +292,7 @@
             _.addElemClass($self, _.initials.moreButtonClassClose, function () {
               _.showMoreBtnCarouselItems();
               _.options.isMoreButtonActive = true;
-              resetDescriptionLinesPromo();
+              refreshDescriptionLinesPromo();
           });
           } else if (_.options.isMoreButtonActive) {
             _.removeElemClass($self, _.initials.moreButtonClassClose, null);
@@ -479,7 +479,7 @@
       complete: function (elements) {
         _.showCard.inProgress = false;
         checkDescriptionLines();
-        resetDescriptionLinesPromo();
+        refreshDescriptionLinesPromo();
       }
     });
 

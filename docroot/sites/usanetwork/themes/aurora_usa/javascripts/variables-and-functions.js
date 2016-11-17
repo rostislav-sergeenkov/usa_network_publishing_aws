@@ -152,7 +152,7 @@ $(window).bind('resize', function() {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(function() {
     checkDescriptionLines();
-    resetDescriptionLinesPromo();
+    refreshDescriptionLinesPromo();
   }, 500);
 
 });
@@ -300,7 +300,7 @@ function checkDescriptionLines() {
   });
 }
 
-function resetDescriptionLinesPromo() {
+function refreshDescriptionLinesPromo() {
   $('.multiline-ellipsis-meta > div').each(function() {
     var item = $(this),
         dataText = item.attr('data-text');

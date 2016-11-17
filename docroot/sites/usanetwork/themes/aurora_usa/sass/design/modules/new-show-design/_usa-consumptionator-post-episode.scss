@@ -618,5 +618,29 @@
         }
       }
     }
+    #taboola-below-article-thumbnails {
+      background: white;
+      clear: none;
+      float: left;
+      padding: 25px get-vw(46px, 1280) 15px;
+      width: 75%;
+      @include breakpoint($bp-min-1601-width) {
+        padding: 25px 94px 15px 90px;
+      }
+      @include breakpoint($between-1025-1280) {
+        width: calc(100% - 320px);
+      }
+      @include breakpoint($bp-1024-width) {
+        float: none;
+        padding: 25px get-vw(120px, 1024) 15px;
+        width: 100%;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: 25px get-vw(50px, 768) 15px;
+      }
+      @include breakpoint($bp-640-width) {
+        padding: 25px get-vw(40px, 640) 15px;
+      }
+    }
   }
 }

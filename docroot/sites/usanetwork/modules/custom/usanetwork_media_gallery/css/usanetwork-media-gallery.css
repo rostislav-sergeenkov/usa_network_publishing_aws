@@ -1,3 +1,12 @@
+.media-item img {
+  float: left;
+  margin: 0 auto;
+}
 .media-item .label-wrapper {
-    position: static;
+  box-sizing: border-box;
+  margin-left: 110px;
+  overflow: hidden;
+  position: static;
+  height: 100px;
+  width: 100px;
 }

@@ -443,87 +443,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-tv_episode-field_enable_nitro'
-  $field_instances['node-tv_episode-field_enable_nitro'] = array(
-    'bundle' => 'tv_episode',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'microsite_output' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_enable_nitro',
-    'label' => 'Enable Nitro',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 60,
-    ),
-  );
-
   // Exported field_instance: 'node-tv_episode-field_episode_number'
   $field_instances['node-tv_episode-field_episode_number'] = array(
     'bundle' => 'tv_episode',
@@ -600,92 +519,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'node-tv_episode-field_nitro_action_name'
-  $field_instances['node-tv_episode-field_nitro_action_name'] = array(
-    'bundle' => 'tv_episode',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'microsite_output' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'page_collection_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'search_index' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_nitro_action_name',
-    'label' => 'Nitro action name',
-    'required' => 0,
-    'settings' => array(
-      'custom_add_another' => '',
-      'custom_remove' => '',
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-        'soft_length_limit' => '',
-        'soft_length_minimum' => '',
-        'soft_length_style_select' => 0,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 61,
     ),
   );
 
@@ -19165,7 +18998,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Echo Query Template');
   t('Enable LiveTV Dynamic Content');
   t('Enable Manual Override');
-  t('Enable Nitro');
   t('Enable social');
   t('End Time');
   t('Endcard Timing');
@@ -19222,7 +19054,6 @@ function usanetwork_tv_shows_field_default_field_instances() {
   t('Min 640x560');
   t('Mobile URL');
   t('New Design');
-  t('Nitro action name');
   t('OG Description');
   t('OG Image');
   t('Override Elements');

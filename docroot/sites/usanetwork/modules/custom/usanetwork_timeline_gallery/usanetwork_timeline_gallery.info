@@ -46,7 +46,6 @@ features[field_group][] = group_gallery_basic|node|timeline_gallery|form
 features[field_group][] = group_promo_details|node|timeline_gallery|form
 features[field_group][] = group_seo|node|timeline_gallery|form
 features[field_group][] = group_sponsorship|node|timeline_gallery|form
-features[field_group][] = group_timeline_gallery_nitro|node|timeline_gallery|form
 features[field_group][] = group_usa_og_fields|node|timeline_gallery|form
 features[field_instance][] = field_collection_item-field_timeline_episode_section-field_episode
 features[field_instance][] = field_collection_item-field_timeline_episode_section-field_season

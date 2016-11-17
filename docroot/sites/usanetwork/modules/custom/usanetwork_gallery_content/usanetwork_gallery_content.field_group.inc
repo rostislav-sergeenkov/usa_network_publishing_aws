@@ -101,35 +101,6 @@ function usanetwork_gallery_content_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_media_gallery_nitro|node|media_gallery|form';
-  $field_group->group_name = 'group_media_gallery_nitro';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'media_gallery';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Gallery End Card',
-    'weight' => '5',
-    'children' => array(
-      0 => 'field_enable_nitro',
-      1 => 'field_nitro_action_name',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'label' => 'Gallery End Card',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'closed',
-    ),
-  );
-  $export['group_media_gallery_nitro|node|media_gallery|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_seo|node|media_gallery|form';
   $field_group->group_name = 'group_seo';
   $field_group->entity_type = 'node';

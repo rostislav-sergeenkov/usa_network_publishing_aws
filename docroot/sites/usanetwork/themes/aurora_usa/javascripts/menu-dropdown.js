@@ -396,9 +396,9 @@
         }
 
         //HotFix: Remove dropdown option from tab "Shop"
-        $(".tab .no-refresh").each(function(){
+        $(".pane-usanetwork-menu-usanetwork-menu-sm-main .tab a").each(function(){
           if ($(this).text() == 'shop' ||  $(this).text() == 'Shop') {
-            $(this).removeClass('no-refresh active').attr('target', '_blank');
+            $(this).removeClass('active').attr('target', '_blank');
             return false;
           }
         });

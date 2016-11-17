@@ -23,7 +23,6 @@ dependencies[] = usanetwork_gigya
 dependencies[] = usanetwork_movie_relation
 dependencies[] = usanetwork_promo
 dependencies[] = usanetwork_tv_shows
-dependencies[] = usanetwork_widget
 dependencies[] = views
 dependencies[] = views_load_more
 features[context][] = usa_mpx_videos_live

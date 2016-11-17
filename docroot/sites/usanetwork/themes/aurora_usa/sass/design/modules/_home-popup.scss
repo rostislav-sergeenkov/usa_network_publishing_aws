@@ -11,13 +11,24 @@
   top: 0;
   width: 100%;
   z-index: 100000001;
+  #popup-effect {
+    pointer-events: none;
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+  }
 }
+
 .usa-home-popup {
   height: auto;
   max-height: 90%;
   max-width: 85%;
   position: relative;
-  width: 1280px;
+  width: auto;
+  z-index: 1;
   @include breakpoint($bp-768-width) {
     width: 625px;
   }
@@ -55,6 +66,7 @@
       }
       .asset-img {
         height: 100%;
+        max-width: 1280px;
         width: auto;
         img {
           height: 100%;
@@ -107,7 +119,7 @@
   .asset-img {
     height: auto;
     max-height: 100%;
-    max-width: 100%;
+    max-width: 1280px;
     width: 100%;
     img {
       height: auto;

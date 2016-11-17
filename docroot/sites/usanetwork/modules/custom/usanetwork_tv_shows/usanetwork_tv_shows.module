@@ -112,6 +112,14 @@ function usanetwork_tv_shows_menu() {
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_tv_shows.admin.inc',
   );
+  $items['admin/usanetwork/where_to_watch/%/edit'] = array(
+    'title' => t('Where to watch: Edit Provider'),
+    'page callback' => '_usanetwork_tv_shows_where2watch_table_edit',
+    'page arguments' => array(3),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_tv_shows.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
 
   $items['ajax/show-landing/get-related/%node'] = array(
     'title' => 'Related content',
@@ -2377,7 +2385,7 @@ function _usanetwork_tv_shows_aspot_block() {
 
   if (!empty($show_node)) {
     drupal_add_js(path_to_theme() . '/javascripts/usa_new_show_design/usa_new_carousel.js');
-    drupal_add_js(path_to_theme() . '/javascripts/usa-show-page-right-rail-target.js');
+    drupal_add_js(path_to_theme() . '/javascripts/usa-show-page-right-rail-target.js', array('scope' => 'footer'));
     $theme_variables['show'] = '<div id="aspot-usanetwork" data-content-type="tv-show"><div id="ajax_aspot_show">' . usanetwork_aspot_tvshow_render($show_node) . '</div></div>';
   }
 

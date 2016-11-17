@@ -1,4 +1,4 @@
-@charset "IBM866";
+@charset "IBM437";
 .clearfix {
   zoom: 1;
 }
@@ -17681,8 +17681,87 @@ html.no-scroll, body.no-scroll {
 .show-new-design.consumptionator-page .gallery-wrapper .slide-control.slide-next:after, .show-new-design.node-type-media-gallery .gallery-wrapper .slide-control.slide-next:after, .show-new-design.node-type-tv-episode .gallery-wrapper .slide-control.slide-next:after, .show-new-design .gallery-recap-block .gallery-wrapper .slide-control.slide-next:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .slide-control.slide-next:after, .show-new-design .node-media-gallery .gallery-wrapper .slide-control.slide-next:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next:after {
   content: "\e629";
 }
+.show-new-design.consumptionator-page .gallery-wrapper .slide-control.slide-next.slick-disabled ~ .gallery-next, .show-new-design.node-type-media-gallery .gallery-wrapper .slide-control.slide-next.slick-disabled ~ .gallery-next, .show-new-design.node-type-tv-episode .gallery-wrapper .slide-control.slide-next.slick-disabled ~ .gallery-next, .show-new-design .gallery-recap-block .gallery-wrapper .slide-control.slide-next.slick-disabled ~ .gallery-next, .show-new-design.node-type-consumpt-post .gallery-wrapper .slide-control.slide-next.slick-disabled ~ .gallery-next, .show-new-design .node-media-gallery .gallery-wrapper .slide-control.slide-next.slick-disabled ~ .gallery-next, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .slide-control.slide-next.slick-disabled ~ .gallery-next {
+  display: block;
+}
 .show-new-design.consumptionator-page .gallery-wrapper .slide-control.slick-disabled, .show-new-design.node-type-media-gallery .gallery-wrapper .slide-control.slick-disabled, .show-new-design.node-type-tv-episode .gallery-wrapper .slide-control.slick-disabled, .show-new-design .gallery-recap-block .gallery-wrapper .slide-control.slick-disabled, .show-new-design.node-type-consumpt-post .gallery-wrapper .slide-control.slick-disabled, .show-new-design .node-media-gallery .gallery-wrapper .slide-control.slick-disabled, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .slide-control.slick-disabled {
   display: none !important;
+}
+.show-new-design.consumptionator-page .gallery-wrapper .gallery-next, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next {
+  color: #ffffff;
+  cursor: pointer;
+  display: none;
+  height: 48px;
+  margin-top: -24px;
+  position: absolute;
+  right: 40px;
+  top: 90%;
+  width: 48px;
+  z-index: 55;
+}
+@media (min-width: 1601px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .gallery-next, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next {
+    margin-top: -27px;
+    height: 54px;
+    width: 54px;
+  }
+}
+@media (max-width: 1280px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .gallery-next, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next {
+    right: 15px;
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .gallery-next, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next {
+    margin-top: calc(56.25% + 48.5px);
+    top: 0;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .gallery-next, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next {
+    margin-top: calc(56.25% + 26px);
+  }
+}
+@media (max-width: 480px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .gallery-next, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next {
+    height: 38px;
+    margin-top: calc(56.25% + 36px);
+    right: 10px;
+    width: 38px;
+  }
+}
+.show-new-design.consumptionator-page .gallery-wrapper .gallery-next a, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next a, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next a, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next a, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next a, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next a, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next a {
+  color: #ffffff;
+  display: block;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.show-new-design.consumptionator-page .gallery-wrapper .gallery-next a:hover, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next a:hover, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next a:hover, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next a:hover, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next a:hover, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next a:hover, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next a:hover {
+  background: none;
+}
+.show-new-design.consumptionator-page .gallery-wrapper .gallery-next a:focus, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next a:focus, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next a:focus, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next a:focus, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next a:focus, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next a:focus, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next a:focus {
+  outline: none;
+}
+.show-new-design.consumptionator-page .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next a:after, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next a:after, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next a:after {
+  content: "\e629";
+  display: block;
+  font-family: "ico-font";
+  font-size: 48px;
+  line-height: normal;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+@media (min-width: 1601px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next a:after, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next a:after, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next a:after {
+    font-size: 54px;
+  }
+}
+@media (max-width: 480px) {
+  .show-new-design.consumptionator-page .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-media-gallery .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-tv-episode .gallery-wrapper .gallery-next a:after, .show-new-design .gallery-recap-block .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-consumpt-post .gallery-wrapper .gallery-next a:after, .show-new-design .node-media-gallery .gallery-wrapper .gallery-next a:after, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .gallery-next a:after {
+    font-size: 38px;
+  }
 }
 @media (min-width: 1025px) {
   .show-new-design.consumptionator-page .gallery-wrapper .end-card-sharebar, .show-new-design.node-type-media-gallery .gallery-wrapper .end-card-sharebar, .show-new-design.node-type-tv-episode .gallery-wrapper .end-card-sharebar, .show-new-design .gallery-recap-block .gallery-wrapper .end-card-sharebar, .show-new-design.node-type-consumpt-post .gallery-wrapper .end-card-sharebar, .show-new-design .node-media-gallery .gallery-wrapper .end-card-sharebar, .show-new-design.node-type-usanetwork-microsite .gallery-wrapper .end-card-sharebar {

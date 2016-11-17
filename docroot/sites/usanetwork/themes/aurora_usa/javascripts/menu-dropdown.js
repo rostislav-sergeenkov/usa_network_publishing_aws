@@ -248,6 +248,8 @@
             tab.addClass('active').attr('data-state', 'active');
             tab_containers.eq(index).hide().slideDown(animation_speed, function () {
               $(".tab .no-refresh").bind('click', tabNavHandler);
+              var images = $(this).find('img[data-src]');
+              Drupal.behaviors.lazy_load_custom.lazyLoadImages(images, true);
             }).addClass('active');
 
             setTimeout(function () {

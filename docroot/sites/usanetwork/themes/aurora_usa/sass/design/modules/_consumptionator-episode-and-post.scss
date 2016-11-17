@@ -456,6 +456,28 @@
       }
     }
   }
+  #taboola-below-article-thumbnails {
+    background: white;
+    clear: none;
+    float: left;
+    padding: 25px 93px 15px;
+    width: 74.7%;
+    @include breakpoint($between-1025-1280) {
+      padding: 25px 43px 15px;
+      width: calc(100% - 320px);
+    }
+    @include breakpoint($bp-1024-width) {
+      float: none;
+      padding: 25px 11.8% 15px;
+      width: 100%;
+    }
+    @include breakpoint($bp-768-width) {
+      padding: 25px 6.7% 15px;
+    }
+    @include breakpoint($bp-640-width) {
+      padding: 25px 6% 15px;
+    }
+  }
 }
 
 

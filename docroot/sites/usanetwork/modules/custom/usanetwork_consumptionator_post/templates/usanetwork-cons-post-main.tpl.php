@@ -83,10 +83,10 @@
     <?php if (!empty($navigation_links['next'])): ?>
       <?php print $navigation_links['next']; ?>
     <?php endif; ?>
-    <?php if (!empty($taboola_block)): ?>
-      <?php print $taboola_block; ?>
-    <?php endif; ?>
   </div>
+  <?php if (!empty($taboola_block)): ?>
+    <?php print $taboola_block; ?>
+  <?php endif; ?>
   <div class="consum-sidebar">
     <?php if (!empty($rendered_carousel)): ?>
       <?php print $rendered_carousel; ?>

@@ -20660,6 +20660,36 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     top: -56.25vw;
   }
 }
+.consumptionator-post-main-block #taboola-below-article-thumbnails {
+  background: white;
+  clear: none;
+  float: left;
+  padding: 25px 93px 15px;
+  width: 74.7%;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    padding: 25px 43px 15px;
+    width: calc(100% - 320px);
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    float: none;
+    padding: 25px 11.8% 15px;
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    padding: 25px 6.7% 15px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    padding: 25px 6% 15px;
+  }
+}
 
 .consumptionator-quiz-main-block article.node-quiz, .page-videos-live article.node-quiz {
   width: 100%;

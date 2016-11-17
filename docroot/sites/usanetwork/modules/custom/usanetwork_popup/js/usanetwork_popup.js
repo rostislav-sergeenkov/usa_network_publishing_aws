@@ -6,43 +6,48 @@
       var pageUrl = window.location.href;
 
       $('body').once('usanetwork-popup', function () {
-        if ($('body').hasClass('front') && $('.usa-home-popup-overlay').length > 0) {
+        if (($('body').hasClass('front') || $('body').hasClass('node-type-popup-element')) && $('.usa-home-popup-overlay').length > 0) {
 
           var popup = $('.usa-home-popup-overlay'),
               popupTitle = popup.attr('data-title'),
-              popupCookieName = 'popup_window_' + popup.attr('data-popup-id');
+              popupCookieName = 'popup_window_' + popup.attr('data-popup-id'),
+              previewPage = $('body').hasClass('node-type-popup-element');
 
-          if (getCookie(popupCookieName) != undefined) {
+          if (!previewPage && getCookie(popupCookieName) != undefined) {
             popup.remove();
           } else {
             popup.css('display', 'flex');
 
-            popup.once('omniture-tracking', function () {
-              showPopupOmniture();
-            });
-
-            setCookie(popupCookieName);
-
-            // Click popup link
-            $('.usa-home-popup-overlay a').once('omniture-tracking', function () {
-              $(this).on('click', function (e) {
-                if ($(this).attr('target') == '_blank') {
-
-                } else {
-                  e.preventDefault();
-                }
-
-                var $self = $(this),
-                    pageName = 'USA Network : Homepage : ' + popupTitle + ' : Pop-up Shown';
-
-                clickPopupLink($self, popupTitle, pageName);
-
+            if ($('body').hasClass('front')) {
+              popup.once('omniture-tracking', function () {
+                showPopupOmniture();
               });
-            });
+
+              setCookie(popupCookieName);
+
+              // Click popup link
+              $('.usa-home-popup-overlay a').once('omniture-tracking', function () {
+                $(this).on('click', function (e) {
+                  if ($(this).attr('target') == '_blank') {
+
+                  } else {
+                    e.preventDefault();
+                  }
+
+                  var $self = $(this),
+                      pageName = 'USA Network : Homepage : ' + popupTitle + ' : Pop-up Shown';
+
+                  clickPopupLink($self, popupTitle, pageName);
+
+                });
+              });
+            }
 
             popup.click(function (e) {
-              if (e.target.className != 'tile-img' && e.target.className != 'asset-img' && e.target.className != 'usa-popup-link') {
-                clickExitPopupOmniture();
+              if ($('body').hasClass('front')) {
+                if (e.target.className != 'tile-img' && e.target.className != 'asset-img' && e.target.className != 'usa-popup-link') {
+                  clickExitPopupOmniture();
+                }
               }
               popup.remove();
             });

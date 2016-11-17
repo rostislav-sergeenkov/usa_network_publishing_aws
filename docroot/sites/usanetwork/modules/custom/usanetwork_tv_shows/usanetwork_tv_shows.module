@@ -112,6 +112,14 @@ function usanetwork_tv_shows_menu() {
     'access arguments' => array('administer site configuration'),
     'file' => 'usanetwork_tv_shows.admin.inc',
   );
+  $items['admin/usanetwork/where_to_watch/%/edit'] = array(
+    'title' => t('Where to watch: Edit Provider'),
+    'page callback' => '_usanetwork_tv_shows_where2watch_table_edit',
+    'page arguments' => array(3),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_tv_shows.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
 
   $items['ajax/show-landing/get-related/%node'] = array(
     'title' => 'Related content',

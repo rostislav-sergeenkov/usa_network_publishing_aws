@@ -865,12 +865,18 @@ function _usanetwork_mpx_video_live() {
   );
   drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');
 
+  $taboola_block = module_invoke('usanetwork_taboola', 'block_view', 'usanetwork_taboola_video');
+  if (!empty($taboola_block['content'])) {
+    $taboola = render($taboola_block['content']);
+  }
+
   $variables = array(
     'default_image' => '/' . path_to_theme() . '/images/usa_liveTV.jpg',
     'live_pdk' => !empty($pdk) ? $pdk : NULL,
     'live_logLevel' => !empty($log_level) ? $log_level : NULL,
     'live_advert' => $live_advert,
     'download_link' => l(t('Download the app'), 'app', array('attributes' => array('target' => '_self'))),
+    'taboola_block' => !empty($taboola) ? $taboola : NULL,
   );
 
   $live_video_template = theme('usanetwork_mpx_video_live', $variables);

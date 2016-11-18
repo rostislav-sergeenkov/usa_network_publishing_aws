@@ -57,7 +57,6 @@
       $.each(items, function (i, carousel_item) {
 
         var images = $(carousel_item).find('img[data-src]');
-        console.info(images);
         Drupal.behaviors.lazy_load_custom.lazyLoadImages(images);
 
       });

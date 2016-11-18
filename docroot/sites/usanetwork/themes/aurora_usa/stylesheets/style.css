@@ -9275,7 +9275,7 @@ header .tve-help-link.signIn .inlineLoader {
 @media (max-width: 480px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta .caption {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 15px;
   }
 }
 .five-promo-item-block ul li.first .three-line-video-large .meta .title {
@@ -9310,7 +9310,7 @@ header .tve-help-link.signIn .inlineLoader {
 @media (max-width: 480px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta .title {
     font-size: 18px;
-    line-height: 21px;
+    line-height: 20px;
   }
 }
 .five-promo-item-block ul li.first .three-line-video-large .meta .additional {
@@ -9345,7 +9345,7 @@ header .tve-help-link.signIn .inlineLoader {
 @media (max-width: 480px) {
   .five-promo-item-block ul li.first .three-line-video-large .meta .additional {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 15px;
   }
 }
 .five-promo-item-block ul li.first .three-line-video-large .meta-icon {
@@ -9510,7 +9510,7 @@ header .tve-help-link.signIn .inlineLoader {
 @media (max-width: 480px) {
   .five-promo-item-block ul li:not(.first) .three-line-video .meta .caption {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 15px;
   }
 }
 .five-promo-item-block ul li:not(.first) .three-line-video .meta .title {
@@ -9551,7 +9551,7 @@ header .tve-help-link.signIn .inlineLoader {
 @media (max-width: 480px) {
   .five-promo-item-block ul li:not(.first) .three-line-video .meta .title {
     font-size: 18px;
-    line-height: 21px;
+    line-height: 20px;
   }
 }
 .five-promo-item-block ul li:not(.first) .three-line-video .meta .additional {
@@ -9592,7 +9592,7 @@ header .tve-help-link.signIn .inlineLoader {
 @media (max-width: 480px) {
   .five-promo-item-block ul li:not(.first) .three-line-video .meta .additional {
     font-size: 12px;
-    line-height: 16px;
+    line-height: 15px;
   }
 }
 .five-promo-item-block ul li:not(.first) .three-line-video .meta-icon {
@@ -9881,11 +9881,8 @@ header .tve-help-link.signIn .inlineLoader {
   width: 100%;
 }
 .five-promo-item-block ul li > div .meta {
-  display: table-cell;
-  max-width: 100px;
   overflow: hidden;
   padding-left: 4%;
-  vertical-align: middle;
   width: 100%;
 }
 .five-promo-item-block ul li > div .meta-icon {

@@ -3,7 +3,7 @@
   Drupal.behaviors.consumptionator_right_rail = {
     rightRailPosition: function () {
       if ($('body').hasClass('page-videos-live')) {
-        if (!$('.video-block').hasClass('show-related')) {
+        if (!$('.video-block').hasClass('show-related') && !$('.video-block').hasClass('taboola-enabled')) {
           return false;
         }
       }
@@ -53,8 +53,10 @@
             sidebar.css({
               maxHeight: current_max_height + 'px'
             })
-          } else if ($('.video-block').hasClass('show-related')) {
-            if ($('.gallery-wrapper').length > 0) {
+          } else if ($('.video-block').hasClass('show-related') || $('.video-block').hasClass('taboola-enabled') ) {
+            if ($('#taboola-below-player-thumbnails').length > 0) {
+              var relatedContent = $('#taboola-below-player-thumbnails');
+            } else if ($('.gallery-wrapper').length > 0) {
               var relatedContent = $('.gallery-wrapper');
             } else {
               var relatedContent = $('.node-quiz');
@@ -85,6 +87,9 @@
        * %start_from - number of items that must be ignored from the beginning
        * %limit - number of items that must be pulled
        */
+      var sidebar = $('.consum-sidebar');
+
+
       $('.related-content-block').viewportChecker({
         classToAdd: 'visible',
         offset: 0,
@@ -92,12 +97,12 @@
 
         callbackFunction: function (elem, action) {
           if (elem.hasClass('visible')) {
-            if (!$('.consum-sidebar').hasClass('related-visible')) {
-              $('.consum-sidebar').addClass('related-visible');
+            if (!sidebar.hasClass('related-visible')) {
+              sidebar.addClass('related-visible');
             }
           } else {
-            if ($('.consum-sidebar').hasClass('related-visible')) {
-              $('.consum-sidebar').removeClass('related-visible');
+            if (sidebar.hasClass('related-visible')) {
+              sidebar.removeClass('related-visible');
             }
           }
         }
@@ -110,31 +115,32 @@
 
         callbackFunction: function (elem, action) {
           if (elem.hasClass('visible')) {
-            if (!$('.consum-sidebar').hasClass('social-visible')) {
-              $('.consum-sidebar').addClass('social-visible');
+            if (!sidebar.hasClass('social-visible')) {
+              sidebar.addClass('social-visible');
             }
           } else {
-            if ($('.consum-sidebar').hasClass('social-visible')) {
-              $('.consum-sidebar').removeClass('social-visible');
+            if (sidebar.hasClass('social-visible')) {
+              sidebar.removeClass('social-visible');
             }
           }
         }
       });
       if ($('body').hasClass('page-videos-live')) {
+        var videoBlock = $('.video-block');
         $('#footer').viewportChecker({
           classToAdd: 'visible',
           offset: 0,
           repeat: true,
 
           callbackFunction: function (elem, action) {
-            if ($('.video-block').hasClass('show-related')) {
+            if (videoBlock.hasClass('show-related') || videoBlock.hasClass('taboola-enabled')) {
               if (elem.hasClass('visible')) {
-                if (!$('.consum-sidebar').hasClass('footer-visible')) {
-                  $('.consum-sidebar').addClass('footer-visible');
+                if (!sidebar.hasClass('footer-visible')) {
+                  sidebar.addClass('footer-visible');
                 }
               } else {
-                if ($('.consum-sidebar').hasClass('footer-visible')) {
-                  $('.consum-sidebar').removeClass('footer-visible');
+                if (sidebar.hasClass('footer-visible')) {
+                  sidebar.removeClass('footer-visible');
                 }
               }
             }

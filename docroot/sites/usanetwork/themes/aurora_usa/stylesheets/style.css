@@ -2206,7 +2206,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   bottom: 0;
   height: 45%;
   overflow: hidden;
-  position: absolute;
+  position: absolute !important;
   width: 100%;
 }
 .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-bottom-info ul li .show-inner .asset-img img {
@@ -16761,6 +16761,46 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   left: 0;
   top: 0;
 }
+.page-videos-live .video-block .section-title {
+  margin-top: 40px;
+}
+@media (min-width: 1025px) {
+  .page-videos-live .video-block .section-title {
+    float: left;
+    width: 74.7%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block .section-title {
+    width: calc(100% - 320px);
+  }
+}
+@media (max-width: 1024px) {
+  .page-videos-live .video-block .section-title {
+    clear: both;
+    padding-top: 40px;
+  }
+}
+.page-videos-live .video-block #taboola-below-player-thumbnails {
+  padding: 0 20px;
+}
+@media (min-width: 1025px) {
+  .page-videos-live .video-block #taboola-below-player-thumbnails {
+    float: left;
+    width: 74.7%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block #taboola-below-player-thumbnails {
+    padding: 0 10px;
+    width: calc(100% - 320px);
+  }
+}
+@media (max-width: 1024px) {
+  .page-videos-live .video-block #taboola-below-player-thumbnails {
+    clear: both;
+  }
+}
 .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-auth .player-thumbnail img {
   opacity: 0.3;
 }
@@ -16802,6 +16842,15 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 @media (max-width: 1024px) {
   .page-videos-live .video-block:not(.show-app) .consum-sidebar .items-block {
     height: auto;
+  }
+}
+.page-videos-live .video-block:not(.show-app):not(.show-related).taboola-enabled {
+  height: auto;
+  max-height: none;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-related).taboola-enabled .consum-sidebar.sticky-sidebar .more-items {
+    margin-top: -35px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -16868,8 +16917,22 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
     padding-left: 20px;
   }
 }
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-related) .section-title {
+    width: calc(100% - 300px);
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .page-videos-live .video-block:not(.show-app):not(.show-related) #taboola-below-player-thumbnails {
+    width: calc(100% - 300px);
+  }
+}
 .page-videos-live .video-block.show-app .consum-sidebar .download-app {
   display: table;
+}
+.page-videos-live .video-block.show-app:not(.show-related).taboola-enabled {
+  height: auto;
+  max-height: none;
 }
 @media (min-width: 1025px) {
   .page-videos-live .video-block.show-related.show-app .consum-sidebar {
@@ -16937,26 +17000,6 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live .video-block.show-related .consum-sidebar .episodes-list-slider.horizontal-mode {
     display: none;
-  }
-}
-.page-videos-live .video-block.show-related .section-title {
-  margin-top: 40px;
-}
-@media (min-width: 1025px) {
-  .page-videos-live .video-block.show-related .section-title {
-    float: left;
-    width: 74.7%;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .page-videos-live .video-block.show-related .section-title {
-    width: calc(100% - 320px);
-  }
-}
-@media (max-width: 1024px) {
-  .page-videos-live .video-block.show-related .section-title {
-    clear: both;
-    padding-top: 40px;
   }
 }
 @media (min-width: 1281px) {
@@ -20657,6 +20700,36 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     top: -56.25vw;
   }
 }
+.consumptionator-post-main-block #taboola-below-article-thumbnails {
+  background: white;
+  clear: none;
+  float: left;
+  padding: 25px 93px 15px;
+  width: 74.7%;
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    padding: 25px 43px 15px;
+    width: calc(100% - 320px);
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    float: none;
+    padding: 25px 11.8% 15px;
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    padding: 25px 6.7% 15px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    padding: 25px 6% 15px;
+  }
+}
 
 .consumptionator-quiz-main-block article.node-quiz, .page-videos-live article.node-quiz {
   width: 100%;
@@ -21715,6 +21788,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   display: block;
   color: #ffffff;
   height: 100%;
+  position: relative;
   width: 100%;
 }
 .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .asset-img {
@@ -21722,18 +21796,28 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   position: relative;
   width: 100%;
 }
-.shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a img {
+.shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .asset-img img {
   height: 100%;
   width: 100%;
 }
 @media (min-width: 769px) and (max-width: 1280px) {
-  .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a img {
+  .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .asset-img img {
     left: 50%;
     margin-left: -230px;
     max-width: none;
     position: absolute;
     width: auto;
   }
+}
+.shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .lazyloader-icon {
+  display: block;
+  height: 24px !important;
+  left: 50%;
+  margin-left: -12px;
+  margin-top: -12px;
+  position: absolute;
+  top: 50%;
+  width: 24px !important;
 }
 .shows-block .carousel .usa-carousel-left .carousel-item:not(.description-item) .show-info-block .show-central-info .promo .node a .meta-back {
   background: #000000;

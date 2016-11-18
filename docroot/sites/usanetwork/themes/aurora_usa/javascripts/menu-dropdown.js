@@ -2,6 +2,7 @@
   Drupal.behaviors.usanetwork_menu_dropdown = {
     stickyHeader: function(offsetTop, subMenuSelector) {
       var $body = $('body'),
+          sidebar = $('.consum-sidebar'),
           header_submenu_h;
 
       if(!(offsetTop && subMenuSelector)) {return false;}
@@ -11,8 +12,16 @@
       function switchState() {
         $body.toggleClass('sub-menu-is-sticky');
         subMenuSelector.toggleClass('sticky-shows-submenu');
-        if ($('body').hasClass('node-type-person') || $('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-quiz') || $('body').hasClass('node-type-consumpt-post') || ($('body').hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
-          $('.consum-sidebar').toggleClass('sticky-sidebar');
+        if ($('body').hasClass('node-type-person') || $('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-quiz') || $('body').hasClass('node-type-consumpt-post') || ($('body').hasClass('page-videos-live') && ($('.video-block').hasClass('show-related') || $('.video-block').hasClass('taboola-enabled')))) {
+          if (subMenuSelector.hasClass('sticky-shows-submenu')) {
+            if (!sidebar.hasClass('sticky-sidebar')) {
+              sidebar.addClass('sticky-sidebar');
+            }
+          } else {
+            if (sidebar.hasClass('sticky-sidebar')) {
+              sidebar.removeClass('sticky-sidebar');
+            }
+          }
           Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
         }
         if($body.hasClass('sub-menu-is-sticky')) {
@@ -239,6 +248,8 @@
             tab.addClass('active').attr('data-state', 'active');
             tab_containers.eq(index).hide().slideDown(animation_speed, function () {
               $(".tab .no-refresh").bind('click', tabNavHandler);
+              var images = $(this).find('img[data-src]');
+              Drupal.behaviors.lazy_load_custom.lazyLoadImages(images, true);
             }).addClass('active');
 
             setTimeout(function () {

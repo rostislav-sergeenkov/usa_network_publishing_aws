@@ -568,8 +568,8 @@ function _usanetwork_person_render_cast_recap_block() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
   if (!empty($show_node)) {
     if (!empty($show_node->field_cast_recap_video)) {
-      $recap_video_file = reset(field_get_items('node', $show_node, 'field_cast_recap_video'));
-      $recap_video_file = file_load($recap_video_file['target_id']);
+      $recap_video_file = _usanetwork_get_field_item('node', $show_node, 'field_cast_recap_video', 'target_id');
+      $recap_video_file = file_load($recap_video_file);
       $file_wrapper = entity_metadata_wrapper('file', $recap_video_file);
       $promo_data = _usanetwork_promo_pull_file_promo_details($recap_video_file);
       $button_text = usanetwork_tv_shows_show_has_full_episodes($show_node->nid) ? t('Watch Full Episodes') : t('Watch More Video');

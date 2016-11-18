@@ -27,13 +27,6 @@ function usanetwork_comments_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_global_nav_image';
-  $strongarm->value = '0';
-  $export['comment_anonymous_global_nav_image'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_usanetwork_aspot';
   $strongarm->value = '0';
   $export['comment_anonymous_usanetwork_aspot'] = $strongarm;
@@ -44,13 +37,6 @@ function usanetwork_comments_strongarm() {
   $strongarm->name = 'comment_anonymous_usanetwork_promo';
   $strongarm->value = '0';
   $export['comment_anonymous_usanetwork_promo'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_usanetwork_promo_iframe';
-  $strongarm->value = '0';
-  $export['comment_anonymous_usanetwork_promo_iframe'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -118,13 +104,6 @@ function usanetwork_comments_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_global_nav_image';
-  $strongarm->value = 1;
-  $export['comment_default_mode_global_nav_image'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_usanetwork_aspot';
   $strongarm->value = 1;
   $export['comment_default_mode_usanetwork_aspot'] = $strongarm;
@@ -135,13 +114,6 @@ function usanetwork_comments_strongarm() {
   $strongarm->name = 'comment_default_mode_usanetwork_promo';
   $strongarm->value = 1;
   $export['comment_default_mode_usanetwork_promo'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_usanetwork_promo_iframe';
-  $strongarm->value = 1;
-  $export['comment_default_mode_usanetwork_promo_iframe'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -195,13 +167,6 @@ function usanetwork_comments_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_global_nav_image';
-  $strongarm->value = '50';
-  $export['comment_default_per_page_global_nav_image'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_usanetwork_aspot';
   $strongarm->value = '50';
   $export['comment_default_per_page_usanetwork_aspot'] = $strongarm;
@@ -212,13 +177,6 @@ function usanetwork_comments_strongarm() {
   $strongarm->name = 'comment_default_per_page_usanetwork_promo';
   $strongarm->value = '50';
   $export['comment_default_per_page_usanetwork_promo'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_usanetwork_promo_iframe';
-  $strongarm->value = '50';
-  $export['comment_default_per_page_usanetwork_promo_iframe'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -272,13 +230,6 @@ function usanetwork_comments_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_global_nav_image';
-  $strongarm->value = 1;
-  $export['comment_form_location_global_nav_image'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_usanetwork_aspot';
   $strongarm->value = 1;
   $export['comment_form_location_usanetwork_aspot'] = $strongarm;
@@ -289,13 +240,6 @@ function usanetwork_comments_strongarm() {
   $strongarm->name = 'comment_form_location_usanetwork_promo';
   $strongarm->value = 1;
   $export['comment_form_location_usanetwork_promo'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_usanetwork_promo_iframe';
-  $strongarm->value = 1;
-  $export['comment_form_location_usanetwork_promo_iframe'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -335,13 +279,6 @@ function usanetwork_comments_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_global_nav_image';
-  $strongarm->value = '1';
-  $export['comment_global_nav_image'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_catchall_page';
   $strongarm->value = '1';
   $export['comment_preview_catchall_page'] = $strongarm;
@@ -356,13 +293,6 @@ function usanetwork_comments_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_global_nav_image';
-  $strongarm->value = '1';
-  $export['comment_preview_global_nav_image'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_usanetwork_aspot';
   $strongarm->value = '1';
   $export['comment_preview_usanetwork_aspot'] = $strongarm;
@@ -373,13 +303,6 @@ function usanetwork_comments_strongarm() {
   $strongarm->name = 'comment_preview_usanetwork_promo';
   $strongarm->value = '1';
   $export['comment_preview_usanetwork_promo'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_usanetwork_promo_iframe';
-  $strongarm->value = '1';
-  $export['comment_preview_usanetwork_promo_iframe'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -433,13 +356,6 @@ function usanetwork_comments_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_global_nav_image';
-  $strongarm->value = 1;
-  $export['comment_subject_field_global_nav_image'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_usanetwork_aspot';
   $strongarm->value = 1;
   $export['comment_subject_field_usanetwork_aspot'] = $strongarm;
@@ -450,13 +366,6 @@ function usanetwork_comments_strongarm() {
   $strongarm->name = 'comment_subject_field_usanetwork_promo';
   $strongarm->value = 1;
   $export['comment_subject_field_usanetwork_promo'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_usanetwork_promo_iframe';
-  $strongarm->value = 1;
-  $export['comment_subject_field_usanetwork_promo_iframe'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -506,13 +415,6 @@ function usanetwork_comments_strongarm() {
   $strongarm->name = 'comment_usanetwork_promo';
   $strongarm->value = '1';
   $export['comment_usanetwork_promo'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_usanetwork_promo_iframe';
-  $strongarm->value = '1';
-  $export['comment_usanetwork_promo_iframe'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

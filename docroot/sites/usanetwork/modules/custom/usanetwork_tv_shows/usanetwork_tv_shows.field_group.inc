@@ -446,8 +446,8 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '31',
     'children' => array(
       0 => 'field_show_episode_block',
-      1 => 'field_episodes_manual_mode',
-      2 => 'field_episodes_manual_elements',
+      1 => 'field_episodes_manual_elements',
+      2 => 'field_episodes_manual_mode',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -806,6 +806,41 @@ function usanetwork_tv_shows_field_group_info() {
     ),
   );
   $export['group_pinterest_settings|node|tv_show|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_promo_details|node|tv_episode|form';
+  $field_group->group_name = 'group_promo_details';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'tv_episode';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Promo Details',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_promo_call_to_action_text',
+      1 => 'field_promo_violator_name',
+      2 => 'field_promo_title',
+      3 => 'field_promo_topic',
+      4 => 'field_promo_long_description',
+      5 => 'field_promo_exclude_from_related',
+      6 => 'field_promo_created_ovts',
+      7 => 'field_call_to_action_type',
+      8 => 'field_promo_image_override',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-promo-details field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_promo_details|node|tv_episode|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1366,34 +1401,6 @@ function usanetwork_tv_shows_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_tv_episode_nitro|node|tv_episode|form';
-  $field_group->group_name = 'group_tv_episode_nitro';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'tv_episode';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'USA Nitro',
-    'weight' => '2',
-    'children' => array(
-      0 => 'field_enable_nitro',
-      1 => 'field_nitro_action_name',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_tv_episode_nitro|node|tv_episode|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_tvs_best_of|node|tv_show|form';
   $field_group->group_name = 'group_tvs_best_of';
   $field_group->entity_type = 'node';
@@ -1550,12 +1557,12 @@ function usanetwork_tv_shows_field_group_info() {
       8 => 'field_about_ymal',
       9 => 'field_tvs_show_latest_lnd_feed',
       10 => 'field_see_it_url',
-      11 => 'group_about_area',
-      12 => 'group_latest_episodes_alt',
-      13 => 'group_show_aspots',
-      14 => 'group_tvs_best_of',
-      15 => 'group_usa_tv_promo_vids',
-      16 => 'group_usa_tv_promo',
+      11 => 'group_usa_tv_promo_vids',
+      12 => 'group_usa_tv_promo',
+      13 => 'group_about_area',
+      14 => 'group_latest_episodes_alt',
+      15 => 'group_show_aspots',
+      16 => 'group_tvs_best_of',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -1701,6 +1708,7 @@ function usanetwork_tv_shows_field_group_info() {
     'weight' => '136',
     'children' => array(
       0 => 'field_where2watch_providers',
+      1 => 'field_prim_provider_description',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

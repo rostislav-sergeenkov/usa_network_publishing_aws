@@ -568,8 +568,8 @@ function _usanetwork_person_render_cast_recap_block() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
   if (!empty($show_node)) {
     if (!empty($show_node->field_cast_recap_video)) {
-      $recap_video_file = reset(field_get_items('node', $show_node, 'field_cast_recap_video'));
-      $recap_video_file = file_load($recap_video_file['target_id']);
+      $recap_video_file = _usanetwork_get_field_item('node', $show_node, 'field_cast_recap_video', 'target_id');
+      $recap_video_file = file_load($recap_video_file);
       $file_wrapper = entity_metadata_wrapper('file', $recap_video_file);
       $promo_data = _usanetwork_promo_pull_file_promo_details($recap_video_file);
       $button_text = usanetwork_tv_shows_show_has_full_episodes($show_node->nid) ? t('Watch Full Episodes') : t('Watch More Video');
@@ -646,9 +646,8 @@ function _usanetwork_person_characters_related_content_block() {
   if (!empty($related_content)) {
     $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $person_node);
     $function = 'usanetwork_' . $tv_content_node->type . '_consumptionator_render_related_content_items_block';
+    $load_more_link =  usanetwork_related_content_is_load_more_link($related_content, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
     $block_of_items = $function($related_content, 0, 1, $is_new_design);
-    $load_more_link = &drupal_static('load_more_link');
-    $load_more_link = TRUE;
     return theme('usanetwork_' . $tv_content_node->type . '_consumptionator_related_items_container', array(
       'related_items_block' => $block_of_items,
       'load_more_link' => $load_more_link,
@@ -759,9 +758,13 @@ function _usanetwork_person_render_where2watch_block() {
         }
       }
 
+      $primary_description = _usanetwork_get_field_item('node', $show_node, 'field_prim_provider_description', 'value');
+
       $is_full_exists = _usanetwork_is_full_video_exists($show_node);
 
       $theme_vars = array(
+        'new_design' => $is_new_design,
+        'primary_description' => !empty($primary_description) ? $primary_description : (!empty($is_new_design) ? t('Watch the entire first season on:') : ''),
         'title' => t('Where to Watch'),
         'is_full_exists' => $is_full_exists,
         'usa_live_link' => l(t('USANetwork.com'), 'node/' . $show_node->nid . '/episodes'),
@@ -770,8 +773,8 @@ function _usanetwork_person_render_where2watch_block() {
         'description' => t('@show is also available for streaming or purchase from the following providers:', array('@show' => $show_node->title)),
         'elements' => $elements,
       );
+      cache_set($cache_name, $theme_vars, 'cache', REQUEST_TIME + 60 * 60);
     }
-    cache_set($cache_name, $theme_vars, 'cache', REQUEST_TIME + 60 * 60);
   } else {
     $theme_vars = $cache->data;
   }

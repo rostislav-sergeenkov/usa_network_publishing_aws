@@ -628,12 +628,21 @@ function _usanetwork_menu_main_menu_block() {
 
   foreach ($menu_links as $item) {
     if (!$item['hidden']) {
-      $items[] = array(
-        'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE, 'attributes' => array('class' => array('no-refresh'), 'data-state' => array('')))),
-        'class' => array(
-          'tab',
-        ),
-      );
+      if ($item['expanded']) {
+        $items[] = array(
+          'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE, 'attributes' => array('class' => array('no-refresh'), 'data-state' => array('')))),
+          'class' => array(
+            'tab',
+          ),
+        );
+      } else {
+        $items[] = array(
+          'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE, 'attributes' => array('data-state' => array('')))),
+          'class' => array(
+            'tab',
+          ),
+        );
+      }
     }
   }
   return theme('usanetwork_item_list', array(
@@ -981,10 +990,12 @@ function _usanetwork_menu_full_episodes_block() {
       : NULL;
 
     $episode_image = _usanetwork_mpx_video_get_image_path($episode);
-
-    $video_image = theme('image_style', array(
-      'path' => $episode_image,
-      'style_name' => 'full_episodes_633x356',
+    $image_classes = array();
+    $image_classes[] = 'nolazyload';
+    $image_src = image_style_url('full_episodes_633x356', $episode_image);
+    $video_image = theme('image', array(
+      'path' => $image_src,
+      'attributes' => array('class' => $image_classes),
     ));
 
     $sponsored_element = _usanetwork_menu_get_sponsored_file_by_show($show->nid);
@@ -1355,7 +1366,10 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
   if (!empty($node)) {
 
     $entity_wrapper = entity_metadata_wrapper('node', $node);
-    if (!empty($node->field_tv_cover_media)) {
+    if (!empty($node->field_usa_og_image)) {
+      $image = $entity_wrapper->field_usa_og_image->value();
+    }
+    elseif (!empty($node->field_tv_cover_media)) {
       $image = $entity_wrapper->field_tv_cover_media->value();
     }
     $description = !empty($node->field_usa_og_description) ? $entity_wrapper->field_usa_og_description->value() :
@@ -1795,7 +1809,9 @@ function _usanetwork_menu_consumptionator_block_live_video() {
   $query->condition('mv.status', 1);
   $live_video_fid = $query->execute()->fetchField();
   $live_video = file_load($live_video_fid);
-  $gygia = field_view_field('file', $live_video, 'field_gigya_share_bar'); // for sharing
+  if (!empty($live_video)) {
+    $gygia = field_view_field('file', $live_video, 'field_gigya_share_bar', array('is_live' => TRUE)); // for sharing
+  }
 
   $theme_variables = array(
     'authbar' => !empty($authbar) ? $authbar : NULL,
@@ -2176,9 +2192,12 @@ function _usanetwork_menu_movies_block() {
           }
           $movie_file = file_load($movie_file_data->fid);
           $video_image_path = _usanetwork_mpx_video_get_image_path($movie_file);
-          $video_image = theme('image_style', array(
-            'path' => $video_image_path,
-            'style_name' => 'full_episodes_633x356',
+          $image_classes = array();
+          $image_classes[] = 'nolazyload';
+          $image_src = image_style_url('full_episodes_633x356', $video_image_path);
+          $video_image = theme('image', array(
+            'path' => $image_src,
+            'attributes' => array('class' => $image_classes),
           ));
           //$video_image = !empty($cover_media) ? image_style_url('full_episodes_633x356', $cover_media) : NULL;
           $items_variables = array(
@@ -2203,11 +2222,15 @@ function _usanetwork_menu_news_block() {
   $result = _usanetwork_consumptionator_post_get_posts(NULL, NULL, $limit = 3, $exclude_verge = TRUE);
 
   if (!empty($result)) {
-    foreach ($result as $post) {
-      $post_image_path = usanetwork_core_api_get_content_image('node', $post->nid, 'main', $limit = 1, TRUE);
-      $post_image = theme('image_style', array(
-        'path' => $post_image_path,
-        'style_name' => 'full_episodes_633x356',
+    $posts = entity_load('node', array_keys($result));
+    foreach ($posts as $post) {
+      $post_image_path = usanetwork_core_api_get_content_image('node', $post, 'main', $limit = 1, TRUE);
+      $image_classes = array();
+      $image_classes[] = 'nolazyload';
+      $image_src = image_style_url('full_episodes_633x356', $post_image_path);
+      $post_image = theme('image', array(
+        'path' => $image_src,
+        'attributes' => array('class' => $image_classes),
       ));
       $items_variables = array(
         'url' => url('node/' . $post->nid),

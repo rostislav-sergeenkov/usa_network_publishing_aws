@@ -15,7 +15,7 @@
           </div>
           <ul class="filter-menu transform-filter">
             <?php foreach ($explore_filters as $explore_filter): ?>
-              <li class="filter-item<?php if ($explore_filter['active'] == TRUE): print ' active'; endif; ?>">
+              <li class="filter-item<?php if (!empty($explore_filter['active'])): print ' active'; endif; ?>">
                 <a href="<?php print $explore_filter['url']; ?>#explore-landing-page-header"<?php if (isset($explore_filter['id'])):?> data-type="<?php print $explore_filter['id'];?>"<?php endif;?> class="no-ajax">
                   <span class="title"><?php print $explore_filter['name']; ?></span> <span class="items-in">(<?php print $explore_filter['items_count']; ?>)</span>
                 </a>

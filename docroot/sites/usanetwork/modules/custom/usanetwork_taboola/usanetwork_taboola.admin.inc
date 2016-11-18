@@ -16,6 +16,9 @@ function _usanetwork_taboola_settings_form() {
     $show_array[$show->nid] = $show->title;
   }
 
+  $show_array['movies'] = t('Movies');
+  $show_array['live'] = t('Live TV');
+
   $form['usanetwork_taboola_shows'] = array(
     '#type' => 'checkboxes',
     '#title' => t('Shows with DISABLED Taboola :'),

@@ -680,26 +680,37 @@
                   height: 100%;
                   overflow: hidden;
                   position: relative;
-                  & a {
+                  a {
                     display: block;
                     color: #ffffff;
                     height: 100%;
+                    position: relative;
                     width: 100%;
                     .asset-img {
                       height: 100%;
                       position: relative;
                       width: 100%;
-                    }
-                    img {
-                      height: 100%;
-                      width: 100%;
-                      @include breakpoint($between-769-1280) {
-                        left: 50%;
-                        margin-left: -230px;
-                        max-width: none;
-                        position: absolute;
-                        width: auto;
+                      img {
+                        height: 100%;
+                        width: 100%;
+                        @include breakpoint($between-769-1280) {
+                          left: 50%;
+                          margin-left: -230px;
+                          max-width: none;
+                          position: absolute;
+                          width: auto;
+                        }
                       }
+                    }
+                    .lazyloader-icon {
+                      display: block;
+                      height: 24px!important;
+                      left: 50%;
+                      margin-left: -12px;
+                      margin-top: -12px;
+                      position: absolute;
+                      top: 50%;
+                      width: 24px!important;
                     }
                     .meta-back {
                       background: #000000;

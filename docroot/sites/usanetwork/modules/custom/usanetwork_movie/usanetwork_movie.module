@@ -658,7 +658,6 @@ function usanetwork_movie_movies_autocomplete($title) {
   $output = array();
   if (!empty($result) && is_array($result)) {
     foreach($result as $row) {
-      $row->title = check_plain($row->title);
       $key = $row->title . ' [node:' . $row->nid . ']';
       $output[$key] = $row->title . ' (' . $row->type . ')';
     }

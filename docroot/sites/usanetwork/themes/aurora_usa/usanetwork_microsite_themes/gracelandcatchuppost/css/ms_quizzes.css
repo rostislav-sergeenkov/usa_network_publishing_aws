@@ -50,15 +50,22 @@
   min-width: 250px;
   overflow: hidden;
 }
+#microsite #quizzes .usanetwork-quiz .repeat-button {
+  margin: 15px 0;
+}
 #microsite #quizzes .usanetwork-quiz .content-wrap .center {
   width: calc(100% - 340px);
   float: left;
   margin: 0;
 }
 #microsite #quizzes .usanetwork-quiz .content-wrap .sidebar {
-  margin-left: 40px;
-  width: 300px;
   float: left;
+  margin-left: 40px;
+  position: relative;
+  width: 300px;
+}
+#microsite #quizzes .usanetwork-quiz .content-wrap .sidebar .sharebar{
+  position: relative;
 }
 #microsite #quizzes .sharebar > h3 {
   float: left;
@@ -71,6 +78,8 @@
 /* Quiz gigya */
 #microsite #quizzes .field-type-gigya-sharebar {
   float: none;
+  height: auto;
+  position: relative;
 }
 
 /* Quiz answers */
@@ -288,7 +297,7 @@
 @media (max-width: 960px) {
   #microsite #quizzes .usanetwork-quiz .content-wrap .center {
     width: 100%;
-    float: left;
+    float: none;
     margin: 0;
   }
 }

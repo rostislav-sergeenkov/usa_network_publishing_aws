@@ -12,11 +12,11 @@
         <?php endif; ?>
       </div>
       <div class="meta-wrapper">
-        <div class="meta-wrapper-inner">
+        <div class="meta-wrapper-inner<?php print (!$is_new_design)? ' multiline-ellipsis-meta-wrapper': ''; ?>">
           <div class="meta-icon <?php print $media_icon; ?>"></div>
-          <div class="meta">
+          <div class="meta<?php print (!$is_new_design)? ' multiline-ellipsis-meta': ''; ?>">
             <?php if (!empty($caption)): ?>
-              <div class="caption">
+              <div class="caption"<?php print (!$is_new_design)? ' data-text="'.$caption.'"': ''; ?>>
                 <?php if ($is_new_design): ?>
                   <span class="show-color"><?php print $caption; ?></span>
                 <?php else: ?>
@@ -25,10 +25,10 @@
               </div>
             <?php endif; ?>
             <?php if (!empty($title)): ?>
-              <div class="title"><?php print $title; ?></div>
+              <div class="title"<?php print (!$is_new_design)? ' data-text="'.$title.'"': ''; ?>><?php print $title; ?></div>
             <?php endif; ?>
             <?php if (!empty($additional) && !$is_new_design): ?>
-              <div class="additional"><?php print $additional; ?></div>
+              <div class="additional" data-text="<?php print $additional; ?>"><?php print $additional; ?></div>
             <?php endif; ?>
           </div>
         </div>

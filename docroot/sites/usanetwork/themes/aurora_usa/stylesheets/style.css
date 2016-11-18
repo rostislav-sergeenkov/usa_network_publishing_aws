@@ -33756,6 +33756,12 @@ yx-axis
 .schedule-wrapper .schedule-navigation-controls.slide-next:after {
   content: '\e608';
 }
+.schedule-wrapper .schedule-navigation-controls.slick-disabled {
+  cursor: default;
+}
+.schedule-wrapper .schedule-navigation-controls.slick-disabled:after {
+  opacity: 0.3;
+}
 .schedule-wrapper .time-zone {
   padding: 0 30px;
 }

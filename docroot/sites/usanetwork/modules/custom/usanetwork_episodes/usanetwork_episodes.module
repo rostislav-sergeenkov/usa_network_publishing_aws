@@ -488,8 +488,9 @@ function usanetwork_episodes_get_episodes_list_block($display_filters_block = TR
       $theme_variables['is_global_block'] = FALSE;
     }
 
-    if (!empty($query['season'])) {
+    if (!empty($arg)) {
       $theme_variables['is_global_block'] = FALSE;
+      $next_season_available = FALSE;
     }
     $theme_variables['title'] = $current_season_data_item->season_title;
 

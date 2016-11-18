@@ -987,7 +987,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 13,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1038,7 +1038,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -1061,7 +1061,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1131,7 +1131,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 21,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1199,7 +1199,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 29,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1261,7 +1261,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 19,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1377,7 +1377,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -1398,7 +1398,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 16,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1464,7 +1464,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 15,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1538,7 +1538,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 32,
+        'weight' => 34,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1610,7 +1610,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 11,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1687,7 +1687,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 32,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1733,6 +1733,71 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-consumpt_post-field_multiple_movies'
+  $field_instances['node-consumpt_post-field_multiple_movies'] = array(
+    'bundle' => 'consumpt_post',
+    'custom_add_another' => '',
+    'custom_remove' => '',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'admin_reference_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'page_collection_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'user_ref_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_multiple_movies',
+    'label' => 'Multiple movies',
+    'required' => 0,
+    'settings' => array(
+      'custom_add_another' => '',
+      'custom_remove' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-consumpt_post-field_override_display_author'
   $field_instances['node-consumpt_post-field_override_display_author'] = array(
     'bundle' => 'consumpt_post',
@@ -1754,7 +1819,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 22,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1821,7 +1886,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 10,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1903,7 +1968,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -1928,7 +1993,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 20,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -1975,7 +2040,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         ),
       ),
       'type' => 'options_onoff',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -1997,7 +2062,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 9,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2073,7 +2138,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 8,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2161,7 +2226,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 33,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2217,7 +2282,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -2241,7 +2306,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 36,
+        'weight' => 2,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2317,7 +2382,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 28,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2398,7 +2463,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 27,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2465,7 +2530,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 30,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2560,7 +2625,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 26,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2637,7 +2702,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 25,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2714,7 +2779,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 23,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2791,7 +2856,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 24,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2868,7 +2933,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 37,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -2945,7 +3010,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 14,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -3022,7 +3087,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 18,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -3089,7 +3154,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 29,
+        'weight' => 31,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -3157,7 +3222,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 12,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -3213,7 +3278,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -3234,7 +3299,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 17,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -3291,7 +3356,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'soft_length_style_select' => 1,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -3390,7 +3455,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 35,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -3466,7 +3531,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 36,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -3565,6 +3630,7 @@ function usanetwork_consumptionator_post_field_default_field_instances() {
   t('Gallery Recap');
   t('Gigya Share Bar');
   t('H1 Override');
+  t('Multiple movies');
   t('OG Description');
   t('OG Image');
   t('Original date');

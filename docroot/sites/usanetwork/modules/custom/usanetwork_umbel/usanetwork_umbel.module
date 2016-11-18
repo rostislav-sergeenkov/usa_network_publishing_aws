@@ -30,7 +30,7 @@ function usanetwork_umbel_page_alter(&$page) {
     $usa_umbel_parameters = _usanetwork_umbel_variables($usa_umbel_parameters);
     $usanetwork_umbel_tracking_code = variable_get('usanetwork_umbel_tracking_code', 'iwgdlxrtqfiiortz');
 
-    $is_production = (_usanetwork_widget_get_environment() == 'prod') ? '1' : '0';
+    $is_production = (usanetwork_core_api_get_environment() == 'prod') ? '1' : '0';
 
     drupal_add_js(array('umbel_code' => $usanetwork_umbel_tracking_code,
       'umbel_settings' => $usa_umbel_parameters,
@@ -95,21 +95,25 @@ function _usanetwork_umbel_variables($settings) {
           'usa_umbel_param_1' => $current_menu_object->title,
           'usa_umbel_param_2' => "Landing Page",
         );
-        switch ($current_menu_item['map'][USANETWORK_UMBEL_SHOW_PARAMETER_NUMBER]) {
-          case 'episodes':
-            $settings['usa_umbel_param_3'] = "Episodes";
-            break;
-          case 'videos':
-            $settings['usa_umbel_param_3'] = "Videos";
-            break;
-          case 'photos':
-            $settings['usa_umbel_param_3'] = "Photos";
-            break;
-          case 'cast':
-            $settings['usa_umbel_param_3'] = "Cast & Info";
-            break;
-          default:
-            $settings['usa_umbel_param_3'] = "Homepage";
+        if (empty($current_menu_item['map'][USANETWORK_UMBEL_SHOW_PARAMETER_NUMBER])) {
+          $settings['usa_umbel_param_3'] = "Homepage";
+        } else {
+          switch ($current_menu_item['map'][USANETWORK_UMBEL_SHOW_PARAMETER_NUMBER]) {
+            case 'episodes':
+              $settings['usa_umbel_param_3'] = "Episodes";
+              break;
+            case 'videos':
+              $settings['usa_umbel_param_3'] = "Videos";
+              break;
+            case 'photos':
+              $settings['usa_umbel_param_3'] = "Photos";
+              break;
+            case 'cast':
+              $settings['usa_umbel_param_3'] = "Cast & Info";
+              break;
+            default:
+              $settings['usa_umbel_param_3'] = "Homepage";
+          }
         }
       } elseif (in_array($current_menu_object->type, array('person', 'quiz', 'media_gallery', 'catchall_page', 'tv_episode'))) {
         $tv_show_field = _usanetwork_get_field_item('node', $current_menu_object, 'field_show', 'target_id');

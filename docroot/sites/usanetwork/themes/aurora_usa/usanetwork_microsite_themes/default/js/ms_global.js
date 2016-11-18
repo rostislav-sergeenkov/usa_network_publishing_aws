@@ -191,8 +191,9 @@
           social_name = $self.data('name'),
           name = social_name.charAt(0).toUpperCase() + social_name.substr(1);
 
-      s.linkTrackVars='events,eVar74';
+      s.linkTrackVars='events,prop73,eVar74';
       s.linkTrackEvents = s.events = 'event40';
+      s.prop73 = window.location.href;
       s.eVar74 = name;
 
       if ($self.attr('href') != '#') {
@@ -227,8 +228,9 @@
       }
 
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-        s.linkTrackVars = 'events,eVar73,eVar74';
+        s.linkTrackVars = 'events,prop73,eVar73,eVar74';
         s.linkTrackEvents = s.events = 'event41';
+        s.prop73 = window.location.href;
         s.eVar73 = shareTitle;
         s.eVar74 = shareType;
         s.tl(this, 'o', 'Social Share');

@@ -487,13 +487,10 @@
                 }
               }
               .meta {
-                display: table-cell;
-                max-width: 100px;
                 overflow: hidden;
                 padding-left: 4%;
                 position: relative;
                 text-align: left;
-                vertical-align: middle;
                 width: 100%;
               }
               .meta-icon {
@@ -627,6 +624,34 @@
       left: 0;
       top: 0;
     }
+    .section-title {
+      margin-top: 40px;
+      @include breakpoint($bp-min-1025-width) {
+        float: left;
+        width: 74.7%;
+      }
+      @include breakpoint($between-1025-1280) {
+        width: calc(100% - 320px);
+      }
+      @include breakpoint($bp-1024-width) {
+        clear: both;
+        padding-top: 40px;
+      }
+    }
+    #taboola-below-player-thumbnails {
+      padding: 0 20px;
+      @include breakpoint($bp-min-1025-width) {
+        float: left;
+        width: 74.7%;
+      }
+      @include breakpoint($between-1025-1280) {
+        padding: 0 10px;
+        width: calc(100% - 320px);
+      }
+      @include breakpoint($bp-1024-width) {
+        clear: both;
+      }
+    }
     .player-wrapper {
       .video-player-wrapper.section-auth {
         .player-thumbnail {
@@ -686,6 +711,19 @@
         }
       }
       &:not(.show-related) {
+        &.taboola-enabled {
+          height: auto;
+          max-height: none;
+          .consum-sidebar {
+            &.sticky-sidebar {
+              .more-items {
+                @include breakpoint($between-1025-1280) {
+                  margin-top: -35px;
+                }
+              }
+            }
+          }
+        }
         @include breakpoint($between-1025-1280) {
           height: calc((100vw - 300px)*0.5625);
           overflow: hidden;
@@ -748,12 +786,28 @@
             }
           }
         }
+        .section-title {
+          @include breakpoint($between-1025-1280) {
+            width: calc(100% - 300px);
+          }
+        }
+        #taboola-below-player-thumbnails {
+          @include breakpoint($between-1025-1280) {
+            width: calc(100% - 300px);
+          }
+        }
       }
     }
     &.show-app {
       .consum-sidebar {
         .download-app {
           display: table;
+        }
+      }
+      &:not(.show-related) {
+        &.taboola-enabled {
+          height: auto;
+          max-height: none;
         }
       }
     }
@@ -826,20 +880,6 @@
               display: none;
             }
           }
-        }
-      }
-      .section-title {
-        margin-top: 40px;
-        @include breakpoint($bp-min-1025-width) {
-          float: left;
-          width: 74.7%;
-        }
-        @include breakpoint($between-1025-1280) {
-          width: calc(100% - 320px);
-        }
-        @include breakpoint($bp-1024-width) {
-          clear: both;
-          padding-top: 40px;
         }
       }
       .gallery-wrapper {

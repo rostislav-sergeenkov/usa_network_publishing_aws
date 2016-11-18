@@ -511,45 +511,6 @@ function usanetwork_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'usa_nitro';
-  $context->description = 'Adds code to page to allow Nitro rewards';
-  $context->tag = 'nitro pages';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'catchall_page' => 'catchall_page',
-        'media_gallery' => 'media_gallery',
-        'person' => 'person',
-        'tv_episode' => 'tv_episode',
-      ),
-      'options' => array(
-        'node_form' => '0',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'usanetwork_nitro-usa_nitro' => array(
-          'module' => 'usanetwork_nitro',
-          'delta' => 'usa_nitro',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Adds code to page to allow Nitro rewards');
-  t('nitro pages');
-  $export['usa_nitro'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'usanetwork_homepage';
   $context->description = 'The content in this context will appear on the site front page.';
   $context->tag = 'homepage';
@@ -648,12 +609,6 @@ function usanetwork_context_context_default_contexts() {
           'module' => 'usanetwork_menu',
           'delta' => 'usanetwork_menu_sm_menu',
           'region' => 'header',
-          'weight' => '-10',
-        ),
-        'usanetwork_blocks-usa_detect_ieversion' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_detect_ieversion',
-          'region' => 'main_suffix',
           'weight' => '-10',
         ),
         'usanetwork_blocks-usa_footer_promos' => array(
@@ -852,12 +807,6 @@ function usanetwork_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'usanetwork_blocks-usa_detect_ieversion' => array(
-          'module' => 'usanetwork_blocks',
-          'delta' => 'usa_detect_ieversion',
-          'region' => 'main_suffix',
-          'weight' => '-10',
-        ),
         'usanetwork_blocks-usa_footer_promos' => array(
           'module' => 'usanetwork_blocks',
           'delta' => 'usa_footer_promos',

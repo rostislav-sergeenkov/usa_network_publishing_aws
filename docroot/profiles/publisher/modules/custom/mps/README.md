@@ -9,3 +9,8 @@ contact [mps-core-team@nbcuni.com](mailto:mps-core-team@nbcuni.com).
 
 * [Client-side implemenation reference](http://develop.mps.io) - Gist
 * [Request parameter guide](http://goo.gl/SdYjiA) - Evernote
+
+## Requirements
+
+* >= PHP 5.4.0
+

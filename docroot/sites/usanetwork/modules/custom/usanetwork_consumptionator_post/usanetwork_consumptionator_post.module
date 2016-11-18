@@ -210,10 +210,9 @@ function _usanetwork_consumptionator_post_related_content_block() {
       $related_content = usanetwork_news_get_all_related_content_for_consumpt_page($content);
     }
     if (!empty($related_content)) {
+      $load_more_link =  usanetwork_related_content_is_load_more_link($related_content, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
       $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, 0, 1, $is_new_design);
 
-      $load_more_link = &drupal_static('load_more_link');
-      $load_more_link = TRUE;
       return theme('usanetwork_tv_show_consumptionator_related_items_container', array(
         'related_items_block' => $block_of_items,
         'load_more_link' => $load_more_link,
@@ -300,6 +299,11 @@ function _usanetwork_consumptionator_post_main_block() {
       $share_description = '';
     }
     $blog_nid = !empty($node->field_consumptionator_blog) ? $node_wrapper->field_consumptionator_blog->nid->value() : NULL;
+
+    $taboola_block = module_invoke('usanetwork_taboola', 'block_view', 'usanetwork_taboola_post');
+    if (!empty($taboola_block['content'])) {
+      $taboola = render($taboola_block['content']);
+    }
     $theme_variables = array(
       'title' => !empty($node->title) ? $node->title : '',
       'sharebar' => usanetwork_menu_render_sharebar($node, 'node', t('Share'), $node->title , $share_description),
@@ -325,6 +329,7 @@ function _usanetwork_consumptionator_post_main_block() {
       'author' => $author,
       'is_new_design' => $is_new_design ? TRUE : FALSE,
       'blog_service' => $blog_service,
+      'taboola_block' => !empty($taboola) ? $taboola : NULL,
     );
     return theme('usanetwork_cons_post_main', $theme_variables);
   }

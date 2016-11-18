@@ -536,7 +536,9 @@
   }
   #block-usanetwork-episodes-usa-landing-tvep-list-block {
     .landing-list-items-all {
+      margin-bottom: 100px;
       padding-top: 0;
+      position: relative;
     }
     .episode-landing-list-item {
       @include breakpoint ($bp-768-width) {

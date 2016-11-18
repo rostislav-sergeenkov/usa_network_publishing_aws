@@ -93,6 +93,7 @@ function usanetwork_microsite_suitsinspiration_get_theme_includes() {
   $site_theme_path = $theme_path . '/usanetwork_microsite_themes/suitsinspiration';
   $module_path = drupal_get_path('module', 'usanetwork_microsite');
   $mpx_video_path = drupal_get_path('module', 'usanetwork_mpx_video');
+  $rand_time = time();
 
   return array(
     'css' => array(
@@ -105,6 +106,7 @@ function usanetwork_microsite_suitsinspiration_get_theme_includes() {
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
     ),
     'js' => array(
+      'https://ad.doubleclick.net/ddm/trackimpj/N3753.117456.USANETWORK/B8785104.134855467;dc_trk_aid=299536414;dc_trk_cid=66051757;ord='.$rand_time.';dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?',
       drupal_get_path('module', 'gigya'). '/js/gigya_sharebar.js',
       $site_theme_path . '/js/ms_site.js',
       $default_theme_path . '/js/ms_gigya.js',

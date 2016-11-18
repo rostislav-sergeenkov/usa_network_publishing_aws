@@ -131,30 +131,37 @@ function usanetwork_catchall_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_catchall_nitro|node|catchall_page|form';
-  $field_group->group_name = 'group_catchall_nitro';
+  $field_group->identifier = 'group_promo_details|node|catchall_page|form';
+  $field_group->group_name = 'group_promo_details';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'catchall_page';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'USA Nitro',
-    'weight' => '7',
+    'label' => 'Promo Details',
+    'weight' => '9',
     'children' => array(
-      0 => 'field_enable_nitro',
-      1 => 'field_nitro_action_name',
+      0 => 'field_call_to_action_type',
+      1 => 'field_promo_call_to_action_text',
+      2 => 'field_promo_created_ovts',
+      3 => 'field_promo_exclude_from_related',
+      4 => 'field_promo_long_description',
+      5 => 'field_promo_title',
+      6 => 'field_promo_topic',
+      7 => 'field_promo_violator_name',
+      8 => 'field_promo_image_override',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => 'group-promo-details field-group-tab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_catchall_nitro|node|catchall_page|form'] = $field_group;
+  $export['group_promo_details|node|catchall_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

@@ -722,7 +722,6 @@ function usanetwork_mpx_video_live() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-custom-services.js', array('scope' => 'footer', 'weight' => 0));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-login-button.js', array('scope' => 'footer', 'weight' => 2));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-logout-button.js', array('scope' => 'footer', 'weight' => 3));
-//  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-player-container.js', array('scope' => 'footer', 'weight' => 4));
   drupal_add_js('//client-cloudpath.nbcuni.com/current/api/NBCUniCPC.min.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/cpc-player.js', array('scope' => 'footer'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_video_live') . '/js/usanetwork_video_live.dynamic_content.js');
@@ -762,7 +761,7 @@ function _usanetwork_mpx_video_live() {
   if (!empty($page_pdk)) {
     $pdk_version = $page_pdk;
   }
-  $environment = _usanetwork_widget_get_environment();
+  $environment = usanetwork_core_api_get_environment();
   if ($environment == 'prod') {
     $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
   } elseif ($environment == 'stage') {
@@ -866,12 +865,18 @@ function _usanetwork_mpx_video_live() {
   );
   drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');
 
+  $taboola_block = module_invoke('usanetwork_taboola', 'block_view', 'usanetwork_taboola_video');
+  if (!empty($taboola_block['content'])) {
+    $taboola = render($taboola_block['content']);
+  }
+
   $variables = array(
     'default_image' => '/' . path_to_theme() . '/images/usa_liveTV.jpg',
     'live_pdk' => !empty($pdk) ? $pdk : NULL,
     'live_logLevel' => !empty($log_level) ? $log_level : NULL,
     'live_advert' => $live_advert,
     'download_link' => l(t('Download the app'), 'app', array('attributes' => array('target' => '_self'))),
+    'taboola_block' => !empty($taboola) ? $taboola : NULL,
   );
 
   $live_video_template = theme('usanetwork_mpx_video_live', $variables);
@@ -1238,13 +1243,13 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
 function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
   $rulesets = array();
 
-  $environment = _usanetwork_widget_get_environment();
+  $environment = usanetwork_core_api_get_environment();
   if ($environment == 'stage') {
     $rulesets[] = array(
       'fields' => array(
         'fullEpisode' => FALSE,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
 
     //for prod
@@ -1254,7 +1259,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1262,7 +1267,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/' . USA_MPX_VIDEO_PROD_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
 
   } else {
@@ -1307,7 +1312,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
         'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1315,7 +1320,7 @@ function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
 //        'fullEpisode' => '1',
         'ownerId' => 'http://access.auth.theplatform.com/data/Account/'.USA_MPX_VIDEO_STAGE_ACCOUNT,
       ),
-      'guid' => 'gmTiMlNhe7TfN_Act8kP7Nh0jLRjwY6P',
+      'guid' => 'uEMl2Irbb_v3k9Z4eOv4z774MYiNULG6',
     );
     $rulesets[] = array(
       'fields' => array(
@@ -1794,9 +1799,15 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
       } elseif (!empty($log_level)) {
         $variables['attribute_parameters']['logLevel'] = $log_level;
       }
+  
+      if ($full_episode) {
+        $variables['attribute_parameters']['fwsitesection'] = 'usa_tveverywhere_vod_hub';
+      } else {
+        $variables['attribute_parameters']['fwsitesection'] = 'usa_video_vod';
+      }
 
       $vars['video'] = theme('usanetwork_tve_player_mpx_video', $variables);
-
+  
       //FB card
       $og_image_width = array(
         '#type' => 'html_tag',
@@ -2602,7 +2613,12 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $share_settings['gigyaSharebar']['ua']['linkBack'] = url('file/' .$file->fid, array('absolute' => TRUE));
     }
   }
-}
+  if (!empty($context['display']['is_live'])) {
+    $share_settings['gigyaSharebar']['ua']['title'] = t('USA Network Live TV Streaming');
+    $share_settings['gigyaSharebar']['ua']['description'] = t('Stream USA Network TV live on your desktop');
+    $share_settings['gigyaSharebar']['ua']['linkBack'] = url('videos/live', array('absolute' => TRUE));
+  }
+ }
 
 /**
  * Implements hook_views_query_alter()

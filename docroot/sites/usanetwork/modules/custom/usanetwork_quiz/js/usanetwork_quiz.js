@@ -271,6 +271,8 @@
     return quiz;
   };
 
+  var pageUrl = window.location.href;
+
   Drupal.behaviors.usanetwork_quiz = {
     setQuizOmniture: function() {
       function ucfirst(string){
@@ -294,9 +296,10 @@
               var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
 
               s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
-              s.linkTrackVars = 'events,prop58,eVar58';
+              s.linkTrackVars = 'events,prop58,prop73,eVar58';
               s.linkTrackEvents = s.events = 'event88';
               s.eVar58 = s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
+              s.prop73 = pageUrl;
               s.tl(this, 'o', 'Poll/Question Shown');
               s.manageVars('clearVars', s.linkTrackVars, 1);
             }
@@ -326,10 +329,11 @@
               var quizQuestion = (quizQuestionTitle.length > Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) ? quizQuestionTitle.substr(0, Drupal.behaviors.omniture_tracking.omnitureMaxQuestionCharacters) + '...' : quizQuestionTitle;
 
               s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber;
-              s.linkTrackVars = 'events,prop58,eVar58';
+              s.linkTrackVars = 'events,prop58,prop73,eVar58';
               s.linkTrackEvents = s.events = 'event89';
               s.eVar58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion;
               s.prop58 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Question ' + quizQuestionNumber + ' : ' + quizQuestion + ' : Answer : ' + quizQuestionValue;
+              s.prop73 = pageUrl;
               s.tl(this, 'o', 'Poll/Question Answered');
 
               if (NumQuestions === $quizQuestion.index() + 1) {
@@ -356,10 +360,11 @@
                 quizType = quiz_setting['quizType'];
 
             s.pageName = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType);
-            s.linkTrackVars = 'events,eVar65,prop65';
+            s.linkTrackVars = 'events,eVar65,prop65,prop73';
             s.linkTrackEvents = s.events = 'event65';
             s.eVar65 = s.prop65 = quizShow + ' : ' + quizTitle + ' : ' + ucfirst(quizType) + ' : Restart Button';
-            console.info(s.pageName);
+            s.prop73 = pageUrl;
+
             s.tl(this, 'o', 'Restart');
             s.manageVars('clearVars', s.linkTrackVars, 1);
           }

@@ -57,7 +57,7 @@
         showCardOpenAnimeTime: 500,
         showCardOpenAnimeEasing: 'easeInOutExpo',
         showCardCloseAnimeEasing: 'easeInOutExpo',
-        isShowCardGetAdMinBp: 769,
+        showCardGetAdMinBp: 769,
         showCardBp: {
           // variables-and-functions.js
           window_size_desktop_large: 1901,
@@ -127,7 +127,7 @@
         isMobileDescriptionBp: _.checkMatchWindowWidth('max', _.initials.mobileDescriptionBp),
         isMoreButtonActive: false,
         isMoreButtonBp: _.checkMatchWindowWidth('max', _.initials.moreButtonBp),
-        isShowCardGetAdminMinBp: _.checkMatchWindowWidth('min', _.initials.showCardGetAdminMinBp),
+        isShowCardGetAdMinBp: _.checkMatchWindowWidth('min', _.initials.showCardGetAdMinBp),
         defaultCarouselDescriptionItemClass: _.$carouselDescription.parent().attr('class'),
         isMobileDevice: USAN.isMobile.isMobileDevice,
         isApple: USAN.isMobile.apple.device,
@@ -159,6 +159,23 @@
   usaCarouselLeft.prototype.checkMatchWindowWidth = function (widthName, bp) {
     // widthName - 'min' or 'max'; bp - breakpoint for check
     return window.matchMedia('(' + widthName + '-width: ' + bp + 'px)').matches;
+  };
+
+  // Lazy load showcard inner images
+  usaCarouselLeft.prototype.lazyLoadShowcardImages = function (currentSlide) {
+    var showCardImage = currentSlide.find('.show-central-info .asset-img');
+    if (showCardImage.attr('data-picture') != '') {
+      var showCardLoaderIcon = currentSlide.find('.show-central-info .node > a > .lazyloader-icon');
+      showCardImage.attr('data-picture', '');
+      if (typeof window.picturefill != 'undefined') {
+        window.picturefill();
+        showCardImage.find('img').load(function () {
+          showCardLoaderIcon.remove();
+        });
+      }
+    }
+    var images = currentSlide.find('.show-bottom-info .asset-img img[data-src]');
+    Drupal.behaviors.lazy_load_custom.lazyLoadImages(images, true);
   };
 
   // setTimeout
@@ -474,6 +491,7 @@
         }
         if (complete * 100 >= 60 && !$currentSlide.hasClass('active')) {
           _.addElemClass($currentSlide, _.initials.showCardCarouselItemClassActive, null);
+          _.lazyLoadShowcardImages($currentSlide);
         }
       },
       complete: function (elements) {

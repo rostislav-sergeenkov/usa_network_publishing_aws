@@ -18,9 +18,9 @@
         </div>
       </div>
     </div>
-    <?php if (!empty($image_url)): ?>
+    <?php if (!empty($show_card_image)): ?>
       <div class="asset-img">
-        <img alt="" src="<?php print $image_url; ?>">
+        <?php print $show_card_image; ?>
       </div>
     <?php endif; ?>
   </div>

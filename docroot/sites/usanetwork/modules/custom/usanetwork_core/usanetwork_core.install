@@ -146,7 +146,6 @@ function usanetwork_core_enable_modules() {
     'usanetwork_ads',
     'usanetwork_widget',
     'usanetwork_wysiwyg',
-    'usanetwork_promo_iframe',
     'usanetwork_home_clone',
     'usanetwork_home_edit',
     'usanetwork_tv_shows_color',
@@ -1275,4 +1274,182 @@ function usanetwork_core_update_7190() {
   if (!module_exists('usanetwork_popup')) {
     module_enable(array('usanetwork_popup'));
   }
+}
+
+/**
+ * Disable usanetwork_nitro module.
+ */
+function usanetwork_core_update_7191() {
+  $fields_to_delete = array(
+    'field_enable_nitro',
+    'field_nitro_action_name',
+  );
+  foreach ($fields_to_delete as $field_name) {
+    field_delete_field($field_name);
+    watchdog('usanetwork_core', 'Deleted the :field_name field from all content type instances.', array(':field_name' => $field_name));
+  }
+
+  ctools_include('export');
+  if ($group = field_group_load_field_group('group_catchall_nitro', 'node', 'catchall_page', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_media_gallery_nitro', 'node', 'media_gallery', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_tv_episode_nitro', 'node', 'tv_episode', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_person_nitro', 'node', 'person', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_timeline_gallery_nitro', 'node', 'timeline_gallery', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  $modules = array('usanetwork_nitro');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_gobal_nav_image module.
+ */
+function usanetwork_core_update_7192() {
+  $fields_to_delete = array(
+    'field_hp_nav_img_shows',
+  );
+  foreach ($fields_to_delete as $field_name) {
+    field_delete_field($field_name);
+    watchdog('usanetwork_core', 'Deleted the :field_name field from all content type instances.', array(':field_name' => $field_name));
+  }
+
+  $types = array(
+    'global_nav_image',
+  );
+  foreach($types as $type) {
+    // First, delete nodes
+    $results = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('type', $type)
+      ->execute();
+    foreach ($results as $result) {
+      $nids[] = $result->nid;
+    }
+    if (!empty($nids)) {
+      node_delete_multiple($nids);
+      drupal_set_message(t('%count nodes has been deleted.', array('%count' => count($nids))));
+    }
+    // Then, delete content type
+    if (node_type_load($type)) {
+      node_type_delete($type);
+      variable_del('node_preview_' . $type);
+      drupal_set_message(t('%type content type has been deleted.', array('%type' => $type)));
+    }
+  }
+  node_types_rebuild();
+  menu_rebuild();
+
+  $modules = array('usanetwork_gobal_nav_image');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_widget module.
+ */
+function usanetwork_core_update_7193() {
+  $modules = array('usanetwork_widget');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_widget module.
+ */
+function usanetwork_core_update_7194() {
+  $types = array(
+    'snipe',
+  );
+  foreach($types as $type) {
+    // First, delete nodes
+    $results = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('type', $type)
+      ->execute();
+    foreach ($results as $result) {
+      $nids[] = $result->nid;
+    }
+    if (!empty($nids)) {
+      node_delete_multiple($nids);
+      drupal_set_message(t('%count nodes has been deleted.', array('%count' => count($nids))));
+    }
+    // Then, delete content type
+    if (node_type_load($type)) {
+      node_type_delete($type);
+      variable_del('node_preview_' . $type);
+      drupal_set_message(t('%type content type has been deleted.', array('%type' => $type)));
+    }
+  }
+  node_types_rebuild();
+  menu_rebuild();
+
+  $modules = array('usanetwork_snipe');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_custompages module.
+ */
+function usanetwork_core_update_7195() {
+  $modules = array('usanetwork_custompages');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Uninstall disable modules.
+ */
+function usanetwork_core_update_7196() {
+  $modules = array(
+    'usanetwork_personalization',
+    'usanetwork_snipe',
+    'usanetwork_watchwith',
+    );
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_gobal_nav_image module.
+ */
+function usanetwork_core_update_7197() {
+  $types = array(
+    'usanetwork_promo_iframe',
+  );
+  foreach($types as $type) {
+    // First, delete nodes
+    $results = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('type', $type)
+      ->execute();
+    foreach ($results as $result) {
+      $nids[] = $result->nid;
+    }
+    if (!empty($nids)) {
+      node_delete_multiple($nids);
+      drupal_set_message(t('%count nodes has been deleted.', array('%count' => count($nids))));
+    }
+    // Then, delete content type
+    if (node_type_load($type)) {
+      node_type_delete($type);
+      variable_del('node_preview_' . $type);
+      drupal_set_message(t('%type content type has been deleted.', array('%type' => $type)));
+    }
+  }
+  node_types_rebuild();
+  menu_rebuild();
+
+  $modules = array('usanetwork_promo_iframe');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
 }

@@ -723,7 +723,12 @@ function _usanetwork_media_gallery_get_galleries($show_nid, $gallery_type = NULL
   }
   $query = db_select('node', 'node');
   $query->fields('node', array('nid'));
-  $query->condition('node.type', 'media_gallery');
+  $query->leftJoin('field_data_field_promo_appear_under', 'au', 'au.entity_id = node.nid');
+  $query->condition(
+    db_or()
+      ->condition('node.type', 'media_gallery')
+      ->condition('au.field_promo_appear_under_value', 'photo')
+  );
   $query->condition('node.status', NODE_PUBLISHED);
   $query->leftJoin('field_data_field_show', 'show_field', 'show_field.entity_id = node.nid');
   $query->leftJoin('field_data_field_multiple_show', 'multiple_show_field', 'multiple_show_field.entity_id = node.nid');

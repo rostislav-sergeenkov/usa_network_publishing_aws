@@ -309,7 +309,7 @@
             _.addElemClass($self, _.initials.moreButtonClassClose, function () {
               _.showMoreBtnCarouselItems();
               _.options.isMoreButtonActive = true;
-              refreshDescriptionLinesPromo();
+              Drupal.behaviors.promo_rules.refreshDescriptionLinesPromo();
           });
           } else if (_.options.isMoreButtonActive) {
             _.removeElemClass($self, _.initials.moreButtonClassClose, null);
@@ -496,8 +496,8 @@
       },
       complete: function (elements) {
         _.showCard.inProgress = false;
-        checkDescriptionLines();
-        refreshDescriptionLinesPromo();
+        Drupal.behaviors.promo_rules.checkDescriptionLines();
+        Drupal.behaviors.promo_rules.refreshDescriptionLinesPromo();
       }
     });
 

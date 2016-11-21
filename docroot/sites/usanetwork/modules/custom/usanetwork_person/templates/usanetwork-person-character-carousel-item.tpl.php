@@ -38,16 +38,16 @@
           <?php if (!$new_design): ?>
             <div class="meta-back"></div>
           <?php endif; ?>
-          <div class="meta-wrapper-inner">
+          <div class="meta-wrapper-inner<?php print (!$new_design)? ' multiline-ellipsis-meta-wrapper': ''; ?>">
             <?php if (!$new_design): ?>
               <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
             <?php endif; ?>
-            <div class="meta">
+            <div class="meta<?php print (!$new_design)? ' multiline-ellipsis-meta': ''; ?>">
               <?php if (!empty($title)): ?>
-                <div class="title"><?php print $title; ?></div>
+                <div class="title"<?php print (!$new_design)? ' data-text="'.$title.'"': ''; ?>><?php print $title; ?></div>
               <?php endif; ?>
               <?php if (!empty($additional)): ?>
-                <div class="additional"><?php print $additional; ?></div>
+                <div class="additional"<?php print (!$new_design)? ' data-text="'.$additional.'"': ''; ?>><?php print $additional; ?></div>
               <?php endif; ?>
             </div>
           </div>

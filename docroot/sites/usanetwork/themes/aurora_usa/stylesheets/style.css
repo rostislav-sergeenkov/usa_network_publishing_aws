@@ -1616,11 +1616,8 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
   }
 }
 .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carousel-item .aspot-carousel-promo .meta, .aspot-and-episodes .episodes-list:not(.episodes-list__b) .aspot-carousel-promo .meta {
-  display: table-cell;
-  max-width: 100px;
   overflow: hidden;
   padding-left: 4%;
-  vertical-align: middle;
   width: 100%;
 }
 .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carousel-item .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list:not(.episodes-list__b) .aspot-carousel-promo .meta .caption {
@@ -1638,7 +1635,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (min-width: 641px) and (max-width: 768px) {
   .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carousel-item .aspot-carousel-promo .meta .caption, .aspot-and-episodes .episodes-list:not(.episodes-list__b) .aspot-carousel-promo .meta .caption {
     font-size: 1.25vw;
-    line-height: 2.5vw;
+    line-height: 1.5625vw;
   }
 }
 @media (max-width: 640px) {
@@ -1662,7 +1659,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (min-width: 641px) and (max-width: 768px) {
   .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carousel-item .aspot-carousel-promo .meta .title, .aspot-and-episodes .episodes-list:not(.episodes-list__b) .aspot-carousel-promo .meta .title {
     font-size: 1.875vw;
-    line-height: 2.8125vw;
+    line-height: 2.1875vw;
   }
 }
 @media (max-width: 640px) {
@@ -1712,7 +1709,7 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 @media (min-width: 641px) and (max-width: 768px) {
   .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carousel-item .aspot-carousel-promo .meta .additional, .aspot-and-episodes .episodes-list:not(.episodes-list__b) .aspot-carousel-promo .meta .additional {
     font-size: 1.25vw;
-    line-height: 2.5vw;
+    line-height: 1.5625vw;
   }
 }
 @media (max-width: 640px) {
@@ -3088,19 +3085,14 @@ h1, h2, h3, h4, h5, h6, strong, dfn, b, .node.node-post .field-name-title h1, .n
 }
 .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta {
   color: #ffffff;
-  display: table-cell;
-  max-width: 100px;
   overflow: hidden;
   padding-left: 4%;
   text-align: left;
-  vertical-align: middle;
   width: 100%;
 }
 .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta .title, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta .title, .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta .additional, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta .additional {
   letter-spacing: 1px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .landing-page-container .landing-items-blocks.all-shows-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta .caption, .landing-page-container .landing-items-blocks.all-movies-items-blocks ul li .all-shows-promo .meta-wrapper .meta-wrapper-inner .meta .caption {
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -14649,9 +14641,6 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 .consum-sidebar .episodes-list-slider.vertical-mode .usa-carousel-item .meta-wrapper .meta {
   color: #afafaf;
   padding-left: 4%;
-  display: table-cell;
-  max-width: 100px;
-  vertical-align: middle;
   width: 100%;
 }
 .consum-sidebar .episodes-list-slider.vertical-mode .usa-carousel-item .meta-wrapper .meta .caption {
@@ -15391,9 +15380,6 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   .consumptionator-quiz-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal-mode .usa-carousel-item .meta-wrapper .meta, .consumptionator-post-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal-mode .usa-carousel-item .meta-wrapper .meta {
     color: #afafaf;
     padding-left: 4%;
-    display: table-cell;
-    max-width: 100px;
-    vertical-align: middle;
     width: 100%;
   }
   .consumptionator-characters-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal-mode .usa-carousel-item .meta-wrapper .meta .caption, .consumptionator-episode-main-block .consum-sidebar .items-block .episodes-list-slider.horizontal-mode .usa-carousel-item .meta-wrapper .meta .caption,

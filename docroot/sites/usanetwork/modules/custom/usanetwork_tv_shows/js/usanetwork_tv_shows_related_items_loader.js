@@ -112,7 +112,7 @@
           }
 
           if(!$('body').hasClass('show-new-design')) {
-            refreshDescriptionLinesPromo();
+            Drupal.behaviors.promo_rules.refreshDescriptionLinesPromo();
           }
 
           if (data.overlimited == false) {

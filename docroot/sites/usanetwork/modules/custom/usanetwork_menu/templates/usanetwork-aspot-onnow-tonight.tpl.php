@@ -74,11 +74,6 @@
                            data-name="description"
                            href="<?php print $on_now_block_item['up_next']['episode_full_url']; ?>"></a>
                       <?php endif; ?>
-                      <?php if (!empty($on_now_block_item['up_next']['syndicated_url'])): ?>
-                        <a class="calendar-reminder seeit-reminder icon no-link"
-                           data-name="reminder" href="javascript:void(0)"
-                           data-url="<?php print $on_now_block_item['up_next']['syndicated_url']; ?>"></a>
-                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -117,11 +112,6 @@
                         <a class="schedule-icon-font icon"
                            data-name="description"
                            href="<?php print $on_now_block_item['on_now']['episode_full_url']; ?>"></a>
-                      <?php endif; ?>
-                      <?php if (!empty($on_now_block_item['on_now']['syndicated_url'])): ?>
-                        <a class="calendar-reminder seeit-reminder icon no-link"
-                           data-name="reminder" href="javascript:void(0)"
-                           data-url="<?php print $on_now_block_item['on_now']['syndicated_url']; ?>"></a>
                       <?php endif; ?>
                     </div>
                   </div>

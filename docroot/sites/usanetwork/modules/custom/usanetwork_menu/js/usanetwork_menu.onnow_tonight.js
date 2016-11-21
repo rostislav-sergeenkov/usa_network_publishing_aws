@@ -2,8 +2,10 @@
   Drupal.behaviors.usanetwork_menu_onnow_tonight = {
     attach: function (context, settings) {
 
-      if (usa_deviceInfo.mobileDevice && !usa_deviceInfo.smartphone) {
-        usanetworkMenuGetOTBlockInfo();
+      if (usa_deviceInfo.mobileDevice) {
+        if (!usa_deviceInfo.smartphone) {
+          usanetworkMenuGetOTBlockInfo();
+        }
       } else {
         usanetworkMenuGetOTBlockInfo();
       }

@@ -29,11 +29,6 @@
                            data-name="description"
                            href="<?php print $tonight_block_item['episode_full_url']; ?>"></a>
                       <?php endif; ?>
-                      <?php if (!empty($tonight_block_item['syndicated_url'])): ?>
-                        <a class="calendar-reminder seeit-reminder icon no-link"
-                           data-name="reminder" href="javascript:void(0)"
-                           data-url="<?php print $tonight_block_item['syndicated_url']; ?>"></a>
-                      <?php endif; ?>
                     </div>
                   </div>
                 </div>

@@ -22,11 +22,6 @@
         </div>
       <?php endif; ?>
       <div class="icons-block">
-        <?php if (!empty($icon_reminder_url)): ?>
-          <div class="icons-schedule">
-            <a class="seeit-reminder calendar-reminder icon" href="javascript:void(0)" data-url="<?php print $icon_reminder_url; ?>"></a>
-          </div>
-        <?php endif; ?>
         <?php if (!empty($rating)): ?>
           <div class="rating"><?php print $rating; ?></div>
         <?php endif; ?>

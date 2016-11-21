@@ -3424,9 +3424,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a:bef
 header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a:last-child {
   margin-right: 0;
 }
-header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a.seeit-reminder {
-  clear: none;
-}
 header .tab-item.schedule-tab .primetime-panel .schedule-item .time {
   color: #ffffff;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;

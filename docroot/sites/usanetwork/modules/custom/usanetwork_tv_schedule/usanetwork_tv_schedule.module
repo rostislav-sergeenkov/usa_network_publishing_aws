@@ -1123,10 +1123,10 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
 
       $schedule_rows[$start_time] = '';
       if (!empty($filter_show_nid)) {
-        $day = date('l', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
+        $day = date('ldm', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
         if ($day != $next_day_flag) {
           $next_day_flag = $day;
-          $variables['day'] = $next_day_flag;
+          $variables['day'] = date('l', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
           $variables['date'] = date('m/d', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
           $schedule_rows[$start_time] .= theme('usanetwork_tv_schedule_table_day_label', $variables);
         }

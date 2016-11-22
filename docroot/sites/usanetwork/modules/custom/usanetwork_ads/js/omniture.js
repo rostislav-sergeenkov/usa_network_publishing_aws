@@ -96,7 +96,9 @@
       }
     },
 
-    subMenuItems: function (elem, name) {
+    subMenuItems: function (elem, name, nameEventTrack) {
+
+      nameEventTrack = nameEventTrack || 'Global SubMenu Click';
 
       var $self = elem;
 
@@ -110,7 +112,7 @@
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
-      s.tl(this, 'o', 'Global SubMenu Click', null, s.goToUrl);
+      s.tl(this, 'o', nameEventTrack, null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -662,6 +664,25 @@
 
       //redesign
       if (!$('body').hasClass('page-node-microsite')) {
+
+        // click global menu Live TV
+        $('#block-usanetwork-menu-usanetwork-menu-sm-menu .nav-bar-tabs .menu a[data-state]:contains(Live TV)').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
+
+              var $self = $(this),
+                  menu_name = $self[0].innerHTML,
+                  nameEventTrack = 'Global Live TV';
+
+              Drupal.behaviors.omniture_tracking.subMenuItems($self, menu_name, nameEventTrack);
+            }
+          });
+        });
 
         // Click on submenu item
         $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +

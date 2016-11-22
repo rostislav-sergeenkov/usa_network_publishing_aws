@@ -1325,7 +1325,13 @@ function usanetwork_media_gallery_form_media_gallery_node_form_alter(&$form, &$f
   $form['field_multiple_show'][$lang]['#size'] = 10;
   //setting additional validation
   $form['#validate'][] = '_usanetwork_media_gallery_multiple_gallery_validate';
-  $form['#attached']['css'][] = drupal_get_path('module', 'usanetwork_media_gallery') . '/css/usanetwork-media-gallery.css';
+}
+
+/**
+ * Preprocess the media thumbnail.
+ */
+function usanetwork_media_gallery_preprocess_media_thumbnail(&$variables) {
+  drupal_add_css(drupal_get_path('module', 'usanetwork_media_gallery') . '/css/usanetwork-media-gallery.css');
 }
 
 /**

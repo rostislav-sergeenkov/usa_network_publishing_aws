@@ -770,7 +770,7 @@ function _usanetwork_person_render_where2watch_block() {
         'usa_live_link' => l(t('USANetwork.com'), 'node/' . $show_node->nid . '/episodes'),
         'usa_now_path' => l(t('USA NOW App'), 'app'),
         'featured_elements' => $featured_elements,
-        'description' => t('@show is also available for streaming or purchase from the following providers:', array('@show' => $show_node->title)),
+        'description' => t('@show is @also available for streaming or purchase from the following providers:', array('@show' => $show_node->title, '@also' => (!empty($featured_elements)) ? t('also') : '')),
         'elements' => $elements,
       );
       cache_set($cache_name, $theme_vars, 'cache', REQUEST_TIME + 60 * 60);

@@ -6,7 +6,7 @@
   box-sizing: border-box;
   margin-left: 110px;
   overflow: hidden;
-  position: static;
+  position: static !important;
   height: 100px;
   width: 100px;
 }

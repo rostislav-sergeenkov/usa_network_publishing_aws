@@ -30,9 +30,6 @@
     <?php endif; ?>
   </div>
   <div class="icons-block">
-    <?php if (!empty($syndicated_url)): ?>
-      <a class="calendar-reminder seeit-reminder icon" href="javascript:void(0)" data-url="<?php print $syndicated_url; ?>" data-name="reminder"></a>
-    <?php endif; ?>
     <?php if (!empty($episode_full_url)): ?>
       <a class="schedule-icon-font icon" href="<?php print $episode_full_url; ?>" data-name="description"></a>
     <?php endif; ?>

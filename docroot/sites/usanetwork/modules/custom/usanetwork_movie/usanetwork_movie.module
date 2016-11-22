@@ -1107,6 +1107,7 @@ function _usanetwork_movie_pull_related_files($movie_id, $start_from = 0, $limit
   $query = db_select('file_managed', 'f');
   $query->fields('f', array('created', 'timestamp'));
   $query->leftJoin('mpx_video', 'mpx_video_data', 'f.fid=mpx_video_data.fid');
+  $query->condition('f.type', _pub_mpx_get_mpx_account_video_file_types(TRUE), 'IN');
   $query->addField('mpx_video_data', 'title', 'title');
   $query->leftJoin('field_data_field_promo_exclude_from_related', 'fp_exclude', 'fp_exclude.entity_id=f.fid');
   $query->leftJoin('field_data_field_promo_created_ovts', 'fnp_created', 'fnp_created.entity_id=f.fid');

@@ -639,6 +639,7 @@
       }
     }
     #taboola-below-player-thumbnails {
+      clear: none;
       padding: 0 20px;
       @include breakpoint($bp-min-1025-width) {
         float: left;
@@ -795,6 +796,13 @@
           @include breakpoint($between-1025-1280) {
             width: calc(100% - 300px);
           }
+        }
+      }
+    }
+    &.taboola-enabled {
+      .consum-sidebar {
+        @include breakpoint($bp-min-1025-width) {
+          float: right;
         }
       }
     }

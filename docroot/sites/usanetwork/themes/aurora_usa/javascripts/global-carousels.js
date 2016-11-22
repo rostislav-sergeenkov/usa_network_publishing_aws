@@ -46,6 +46,7 @@
 
         // show card
         isShowCardCarousel: false,
+        showCardCarouselClass: 'show-carousel',
         showCardOpenItemClass: 'show-open',
         showCardCloseItemClass: 'close-button',
         showCardSocialIconsSelector: '.social-icons',
@@ -727,7 +728,8 @@
   // init swiper
   usaCarouselLeft.prototype.initSwiper = function () {
 
-    var _ = this;
+    var _ = this,
+        $carousel = _.$carouselWrap;
 
     if (_.initials.isMoreButtonCarousel && _.options.isMoreButtonBp) {
       _.hideMoreBtnCarouselItems();
@@ -743,7 +745,9 @@
 
     _.initials.swiper.onSlideChangeEnd = function (sw) {
       try {
-        Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(_.$carouselItems);
+        if (!$carousel.hasClass(_.initials.showCardCarouselClass)) {
+          Drupal.behaviors.lazy_load_custom.galleryLazyLoadScroll(_.$carouselItems);
+        }
       } catch (e) {
         _.consoleCustom('error usaRightRailCarousel: galleryLazyLoadScroll');
       }

@@ -16,6 +16,21 @@
         }
       });
 
+      $('.show-carousel').viewportChecker({
+        classToAdd: 'visible',
+        offset: 0,
+        repeat: false,
+
+        callbackFunction: function(elem, action){
+          elem.find('.show-open > .asset-img').each(function(){
+            $(this).attr('data-picture', '');
+          });
+          if (typeof window.picturefill != 'undefined') {
+            window.picturefill();
+          }
+        }
+      });
+
       $('.featured-block').viewportChecker({
         classToAdd: 'visible',
         offset: 0,
@@ -57,7 +72,6 @@
       $.each(items, function (i, carousel_item) {
 
         var images = $(carousel_item).find('img[data-src]');
-        console.info(images);
         Drupal.behaviors.lazy_load_custom.lazyLoadImages(images);
 
       });

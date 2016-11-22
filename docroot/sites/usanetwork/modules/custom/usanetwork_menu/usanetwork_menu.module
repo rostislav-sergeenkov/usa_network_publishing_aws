@@ -2183,11 +2183,11 @@ function _usanetwork_menu_movies_block() {
 }
 
 function _usanetwork_menu_news_block() {
-  $result = _usanetwork_consumptionator_post_get_posts(NULL, NULL, $limit = 3, $exclude_verge = TRUE);
+  $posts = _usanetwork_consumptionator_post_get_posts(NULL, NULL, $limit = 3, $exclude_verge = TRUE);
 
-  if (!empty($result)) {
-    $posts = entity_load('node', array_keys($result));
+  if (!empty($posts)) {
     foreach ($posts as $post) {
+      $post = node_load($post->nid);
       $post_image_path = usanetwork_core_api_get_content_image('node', $post, 'main', $limit = 1, TRUE);
       $image_classes = array();
       $image_classes[] = 'nolazyload';

@@ -16782,6 +16782,7 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   }
 }
 .page-videos-live .video-block #taboola-below-player-thumbnails {
+  clear: none;
   padding: 0 20px;
 }
 @media (min-width: 1025px) {
@@ -16925,6 +16926,11 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 @media (min-width: 1025px) and (max-width: 1280px) {
   .page-videos-live .video-block:not(.show-app):not(.show-related) #taboola-below-player-thumbnails {
     width: calc(100% - 300px);
+  }
+}
+@media (min-width: 1025px) {
+  .page-videos-live .video-block.taboola-enabled .consum-sidebar {
+    float: right;
   }
 }
 .page-videos-live .video-block.show-app .consum-sidebar .download-app {

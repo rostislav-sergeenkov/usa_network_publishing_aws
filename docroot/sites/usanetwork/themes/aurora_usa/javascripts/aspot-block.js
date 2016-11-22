@@ -29,7 +29,7 @@
       // name animation
           nameAnimation = 'linear', // default animation
           settings = Drupal.settings,
-          counterImg = 0,
+          // counterImg = 0,
           mousePositionX = 0,
           mousePositionY = 0,
           touchDevice = $('html').hasClass('touch'),
@@ -92,12 +92,24 @@
       // On init slide change
       slider
           .on('init', function (event, slick) {
+            var firstSlide = slide.eq(slick.options.initialSlide).not('.slick-cloned'),
+                slideClones = slider.find('.slick-cloned');
 
             // start next button
             nextButton.addClass('ready');
 
             // change logo color
             changeLogoColor(slick.currentSlide);
+            loadSlideImg(firstSlide);
+            setNextSlide(slick.options.initialSlide + 1);
+
+            firstSlide.find('img').load(function () {
+              firstSlide.find('.slide-content, .slide-content .aspot-draggable-element').show();
+            });
+
+            slideClones.each(function (index, item) {
+              loadSlideImg($(item));
+            });
           })
 
         // init slider
@@ -125,7 +137,7 @@
 
            // On before slide change
           .on('afterChange', function (event, slick, currentSlide) {
-
+            console.info('afterChange');
             var nextSlideIndex = currentSlide + 1;
 
             // check next slide index
@@ -142,6 +154,7 @@
 
           // On before slide change
           .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            console.info('beforeChange');
             // hide slide content
             hideElements(currentSlide, nextSlide);
           })
@@ -162,16 +175,31 @@
           });
       // end init slider
 
-      // event when load first slide img
-      var firstImg = slide.eq(0).not('.slick-cloned').find('img');
-      firstImg.load(function () {
-        slide.eq(0).not('.slick-cloned').find('.slide-content, .slide-content .aspot-draggable-element').show();
-      });
+      function loadSlideImg(slideItem) {
+        var assetImg = slideItem.find('.asset-img');
+
+        checkDataPicture(assetImg);
+      }
+
+      function checkDataPicture(elem) {
+
+        if(!elem[0].hasAttribute('data-picture')) {
+
+          $(elem).attr('data-picture', '');
+
+          // check and create images on page
+          if (typeof window.picturefill != 'undefined') {
+            window.picturefill();
+          }
+        }
+      }
 
       //start autoplay
-      aspotBlockImg.load(function () {
-        counterImg = counterImg + 1;
-        if (aspotBlockImg.length === counterImg) {
+      // aspotBlockImg.load(function () {
+      $(window).load(function () {
+
+        // counterImg = counterImg + 1;
+        // if (aspotBlockImg.length === counterImg) {
           var currentSlide = slider.slick('slickCurrentSlide'),
               nextSlide = slider.slick('slickCurrentSlide') + 1;
 
@@ -199,7 +227,7 @@
               stopAutoplay();
             }
           });
-        }
+        // }
       });
 
       // event on hover
@@ -318,10 +346,16 @@
       // change background on next-button
       function setNextSlide(nextIndex) {
 
-        var imgUrl, shiftBg;
+        var nextSlide = slide.eq(nextIndex),
+            imgUrl, shiftBg, img;
+
+        loadSlideImg(nextSlide);
+
+        img = nextSlide.find('.asset-img img');
 
         if (slidesSettings[nextIndex]) {
-          imgUrl = slidesSettings[nextIndex].src;
+          // imgUrl = slidesSettings[nextIndex].src;
+          imgUrl = img.attr('src');
           shiftBg = slidesSettings[nextIndex].shiftPercent;
         }
 
@@ -330,7 +364,7 @@
           'background-position': shiftBg + '%' + ' 0'
         });
 
-        slide.eq(nextIndex).find('.asset-img img').css('margin-left', -shiftBg + '%');
+        nextSlide.find('.asset-img img').css('margin-left', -shiftBg + '%');
       }
 
       // show next button

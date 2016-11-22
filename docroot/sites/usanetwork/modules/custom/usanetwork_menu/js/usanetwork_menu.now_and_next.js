@@ -36,7 +36,6 @@
               });
             }
 
-            window.seeit_remind_plugin.init();
           }
         });
       }

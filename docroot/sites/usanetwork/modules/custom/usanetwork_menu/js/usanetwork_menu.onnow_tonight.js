@@ -32,12 +32,6 @@
       // Init schedule carousel
       function scheduleInit() {
         $('#block-usanetwork-menu-usanetwork-menu-aspot-ot .schedule-buttons a').on('click', scheduleBtnClick);
-        $('#block-usanetwork-menu-usanetwork-menu-aspot-ot .schedule-on-tonight a.calendar-reminder').on('click', function (e) {
-          e.preventDefault();
-        });
-        if (window.hasOwnProperty('seeit_remind_plugin')) {
-          window.seeit_remind_plugin.init();
-        }
       }
 
       // Changed class schedule carousel

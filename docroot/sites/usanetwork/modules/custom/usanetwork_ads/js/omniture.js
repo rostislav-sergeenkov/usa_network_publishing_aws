@@ -105,7 +105,7 @@
       s.prop73 = pageUrl;
       s.eVar64 = name;
 
-      if (!$self.hasClass('seeit-reminder') && !$self.hasClass('menu-sign-up') && $self.attr('href') != '#') {
+      if (!$self.hasClass('menu-sign-up') && $self.attr('href') != '#') {
         s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
@@ -951,23 +951,6 @@
                 Drupal.behaviors.omniture_tracking.scheduleBar($(this));
               }
             });
-          });
-        });
-
-        // schedule page click on reminder
-        $('.page-schedule .schedule-wrapper a.seeit-reminder').once('omniture-tracking', function () {
-          $(this).on('click', function (e) {
-            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              if ($(this).attr('target') == '_blank') {
-
-              } else {
-                e.preventDefault();
-              }
-
-              var showName = $(this).parents('.visible-block').find('.episode-show').text().trim();
-
-              Drupal.behaviors.omniture_tracking.schedulePage(showName);
-            }
           });
         });
       }

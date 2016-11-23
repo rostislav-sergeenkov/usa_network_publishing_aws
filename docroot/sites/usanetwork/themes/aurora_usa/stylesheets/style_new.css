@@ -19779,24 +19779,8 @@ html.no-scroll, body.no-scroll {
 .show-new-design .where-to-watch .where-to-watch-inner .first-line .description-block:first-child {
   margin-top: 0;
 }
-.show-new-design .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner {
-  border: none;
-  text-align: center;
-}
-@media (max-width: 768px) {
-  .show-new-design .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider {
-    display: inline-block;
-    float: none;
-    text-align: center;
-    vertical-align: middle;
-    width: 45%;
-    margin-top: 0;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider a {
-    display: inline;
-  }
+.show-new-design .where-to-watch .where-to-watch-inner .last-line:only-child .description-block {
+  margin-top: 0;
 }
 .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap {
   margin-top: 15px;
@@ -19990,9 +19974,14 @@ html.no-scroll, body.no-scroll {
   position: relative;
   text-align: center;
 }
+.show-new-design .where-to-watch .usa-providers .providers-row:last-child .providers-row-inner {
+  border: none;
+}
 .show-new-design .where-to-watch .usa-providers .providers-row-inner {
+  align-items: center;
   border-bottom: 2px solid;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   padding: 1.875vw 3.75vw;
   position: relative;
 }
@@ -20009,13 +19998,13 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .usa-providers .providers-row-inner {
     border: none;
+    flex-wrap: wrap;
     padding: 0 2.60417vw;
     width: 100%;
   }
 }
 .show-new-design .where-to-watch .usa-providers .provider {
-  display: table;
-  float: left;
+  display: block;
   margin-right: 8.75vw;
   position: relative;
 }
@@ -20034,15 +20023,13 @@ html.no-scroll, body.no-scroll {
   margin-right: 0;
 }
 .show-new-design .where-to-watch .usa-providers .provider a {
-  display: table-cell;
+  display: block;
   height: auto;
   outline: none;
   position: relative;
-  vertical-align: middle;
   width: auto;
 }
 .show-new-design .where-to-watch .usa-providers .provider a img {
-  max-width: 90%;
   max-height: 5vw;
 }
 @media (min-width: 1601px) {
@@ -20053,7 +20040,6 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .usa-providers .provider a img {
     max-height: 10.41667vw;
-    height: 80px;
   }
 }
 .show-new-design .video-recap-block {

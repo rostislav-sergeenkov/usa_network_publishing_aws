@@ -24954,27 +24954,24 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     padding: 4.6875vw 3.125vw;
   }
 }
+.where-to-watch .where-to-watch-inner.only-one-line {
+  padding: 0 2.8125vw 32px;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .where-to-watch-inner.only-one-line {
+    padding: 0 53.4px 32px;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .where-to-watch-inner.only-one-line {
+    padding: 0 4.6875vw 32px;
+  }
+}
 .where-to-watch .where-to-watch-inner .first-line .description-block:first-child {
   margin-top: 0;
 }
-.where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner {
-  border: none;
-  text-align: center;
-}
-@media (max-width: 768px) {
-  .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider {
-    display: inline-block;
-    float: none;
-    text-align: center;
-    vertical-align: middle;
-    width: 45%;
-    margin-top: 0;
-  }
-}
-@media (max-width: 768px) {
-  .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider a {
-    display: inline;
-  }
+.where-to-watch .where-to-watch-inner .last-line:only-child .description-block {
+  margin-top: 0;
 }
 .where-to-watch .where-to-watch-inner .link-buttons-wrap {
   margin-top: 15px;
@@ -25173,8 +25170,10 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   border: none;
 }
 .where-to-watch .usa-providers .providers-row-inner {
+  align-items: center;
   border-bottom: 2px solid;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   padding: 1.875vw 3.75vw;
   position: relative;
 }
@@ -25191,13 +25190,13 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (max-width: 768px) {
   .where-to-watch .usa-providers .providers-row-inner {
     border: none;
+    flex-wrap: wrap;
     padding: 0 2.60417vw;
     width: 100%;
   }
 }
 .where-to-watch .usa-providers .provider {
-  display: table;
-  float: left;
+  display: block;
   margin-right: 8.75vw;
   position: relative;
 }
@@ -25209,22 +25208,20 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (max-width: 768px) {
   .where-to-watch .usa-providers .provider {
     margin: 5.85938vw 0;
-    width: 50%;
+    min-width: 50%;
   }
 }
 .where-to-watch .usa-providers .provider:last-child {
   margin-right: 0;
 }
 .where-to-watch .usa-providers .provider a {
-  display: table-cell;
+  display: block;
   height: auto;
   outline: none;
   position: relative;
-  vertical-align: middle;
   width: auto;
 }
 .where-to-watch .usa-providers .provider a img {
-  max-width: 90%;
   max-height: 5vw;
 }
 @media (min-width: 1901px) {
@@ -25235,7 +25232,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (max-width: 768px) {
   .where-to-watch .usa-providers .provider a img {
     max-height: 10.41667vw;
-    height: 80px;
   }
 }
 

@@ -1335,6 +1335,15 @@ function usanetwork_media_gallery_preprocess_media_thumbnail(&$variables) {
 }
 
 /**
+ * Implements hook_field_widget_form_alter().
+ */
+function usanetwork_media_gallery_field_widget_form_alter(&$element, &$form_state, $context) {
+  if ($context['field']['type'] == 'file') {
+    drupal_add_css(drupal_get_path('module', 'usanetwork_media_gallery') . '/css/usanetwork-media-gallery.css');
+  }
+}
+
+/**
  * See usanetwork_media_gallery_form_media_gallery_node_form_alter()
  * Validation on setting value only in one field
  *

@@ -718,8 +718,13 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {
-            $blog_title = usanetwork_consumptionator_post_get_blog_title($tv_content);
-            $head_title = $node->title . ' | ' . $blog_title .  ' | Blog | ' . $tv_content->title . ' | USA Network';
+            if (is_object($tv_content)) {
+              $blog_title = usanetwork_consumptionator_post_get_blog_title($tv_content);
+              $head_title = $node->title . ' | ' . $blog_title .  ' | Blog | ' . $tv_content->title . ' | USA Network';
+            } else {
+              $head_title = $node->title . ' | Movie Post | USA Network';
+            }
+
           }
           break;
       }

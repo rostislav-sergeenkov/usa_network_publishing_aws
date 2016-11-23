@@ -25,8 +25,10 @@
           Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
         }
         if($body.hasClass('sub-menu-is-sticky')) {
+          // $body.css('margin-top', header_submenu_h);
           $('#header').css('padding-bottom', header_submenu_h);
         } else {
+          // $body.css('margin-top', 0);
           $('#header').css('padding-bottom', 0);
         }
       }
@@ -432,11 +434,6 @@
         $(window).on('resize', function (e) {
           clearTimeout(timer_id);
           timer_id = setTimeout(function() {
-            if($submenu.hasClass('sticky-shows-submenu')) {
-              submenuOffsetTop = Math.round($('.usa-wrap').offset()['top'] - $submenu.outerHeight(true));
-            } else {
-              submenuOffsetTop = Math.round($submenu.offset()['top']);
-            }
             _self.stickyHeader(submenuOffsetTop, $submenu);
             //temporary code for hiding provider
             if ($('body.consumptionator-video-page').hasClass('page-full-video')) {

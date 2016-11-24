@@ -34,7 +34,7 @@
       .filter-label {
         border: 1px solid $gray-light-gamma;
         cursor: pointer;
-        font-size: 15px;
+        font-size: 14px;
         letter-spacing: 1px;
         text-transform: uppercase;
         font-family: $avalon-medium;
@@ -48,9 +48,6 @@
         -o-text-overflow: ellipsis;
         white-space: nowrap;
         width: 205px;
-        @include breakpoint($bp-1280-width) {
-          font-size: 14px;
-        }
         &:after {
           content: "\e609";
           color: $poll-color;
@@ -140,7 +137,7 @@
             a {
               color: $header-tab-text;
               display: block;
-              font-size: 15px;
+              font-size: 14px;
               font-family: $avalon-medium;
               text-transform: uppercase;
               line-height: 22px;
@@ -152,9 +149,6 @@
               &:active {
                 background: $header-tab-back-hover;
                 color: #ffffff;
-              }
-              @include  breakpoint($bp-1280-width) {
-                font-size: 14px;
               }
               @include  breakpoint($bp-768-width) {
                 color: #ffffff;
@@ -245,7 +239,7 @@
             a {
               color: #ffffff;
               display: block;
-              font-size: 15px;
+              font-size: 14px;
               font-family: $avalon-medium;
               height: 100%;
               letter-spacing: 1px;
@@ -257,9 +251,6 @@
               width: 100%;
               &:hover, &.active {
                 color: $gray-dark-darker;
-              }
-              @include  breakpoint($bp-1280-width) {
-                font-size: 14px;
               }
               @include  breakpoint($bp-768-width) {
                 line-height: 14px;
@@ -289,7 +280,7 @@
         margin: 0;
         float: left;
         line-height: 4em;
-        font-size: 18px;
+        font-size: 15px;
         letter-spacing: 1px;
         @include breakpoint($bp-1280-width) {
           font-size: 12px;

@@ -810,6 +810,32 @@
       .consum-sidebar {
         .download-app {
           display: table;
+          @include breakpoint($bp-min-1281-width) {
+            display: block;
+          }
+          .download-app-wrapper {
+            @include breakpoint($bp-min-1281-width) {
+              align-items: center;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              height: 100%;
+              width: 100%;
+            }
+          }
+          .image-block {
+            @include breakpoint($bp-min-1281-width) {
+              background-position: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+          .download-button {
+            @include breakpoint($bp-min-1281-width) {
+              margin: 5px auto;
+            }
+          }
         }
       }
       &:not(.show-related) {

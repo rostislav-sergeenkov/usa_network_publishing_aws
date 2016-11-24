@@ -15090,17 +15090,34 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   }
 }
 .consum-sidebar .download-app.promo-enable .download-app-wrapper {
-  display: none;
+  display: none !important;
 }
 .consum-sidebar .download-app .live-promo {
-  display: table;
+  display: block;
   height: 100%;
   width: 100%;
 }
-.consum-sidebar .download-app .live-promo .live-promo-wrapper {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
+@media (max-width: 1024px) {
+  .consum-sidebar .download-app .live-promo {
+    display: table;
+  }
+}
+@media (min-width: 1025px) {
+  .consum-sidebar .download-app .live-promo .live-promo-wrapper {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .download-app .live-promo .live-promo-wrapper {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
 }
 @media (max-width: 768px) {
   .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
@@ -15112,22 +15129,19 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
     max-width: calc(100vw - 340px);
   }
 }
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media (min-width: 1025px) {
   .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
-    max-height: calc(((100vw - 320px) * 0.5625) - 250px);
-    max-width: 320px;
-  }
-}
-@media (min-width: 1281px) {
-  .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
-    max-height: calc(42.01875vw - 250px);
-    max-width: 25vw;
-  }
-}
-@media (min-width: 2500px) {
-  .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
-    max-height: calc(1093.75px - 250px);
-    max-width: 632px;
+    bottom: 0;
+    display: flex;
+    height: auto;
+    left: 0;
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
   }
 }
 .consum-sidebar .download-app .download-app-wrapper {
@@ -16935,6 +16949,34 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 }
 .page-videos-live .video-block.show-app .consum-sidebar .download-app {
   display: table;
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block.show-app .consum-sidebar .download-app {
+    display: block;
+  }
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block.show-app .consum-sidebar .download-app .download-app-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block.show-app .consum-sidebar .download-app .image-block {
+    background-position: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block.show-app .consum-sidebar .download-app .download-button {
+    margin: 5px auto;
+  }
 }
 .page-videos-live .video-block.show-app:not(.show-related).taboola-enabled {
   height: auto;

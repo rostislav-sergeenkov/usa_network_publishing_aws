@@ -23009,7 +23009,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .landing-page-container .upper-menu .item-filter .filter-label {
   border: 1px solid #959595;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -23023,11 +23023,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   -o-text-overflow: ellipsis;
   white-space: nowrap;
   width: 205px;
-}
-@media (max-width: 1280px) {
-  .landing-page-container .upper-menu .item-filter .filter-label {
-    font-size: 14px;
-  }
 }
 .landing-page-container .upper-menu .item-filter .filter-label:after {
   content: "\e609";
@@ -23126,7 +23121,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li a {
   color: #666666;
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   line-height: 22px;
@@ -23138,11 +23133,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li a:hover, .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li a:active {
   background: darkgrey;
   color: #ffffff;
-}
-@media (max-width: 1280px) {
-  .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li a {
-    font-size: 14px;
-  }
 }
 @media (max-width: 768px) {
   .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li a {
@@ -23240,7 +23230,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a {
   color: #ffffff;
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   height: 100%;
   letter-spacing: 1px;
@@ -23253,11 +23243,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a:hover, .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a.active {
   color: #383838;
-}
-@media (max-width: 1280px) {
-  .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a {
-    font-size: 14px;
-  }
 }
 @media (max-width: 768px) {
   .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a {
@@ -23281,7 +23266,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   margin: 0;
   float: left;
   line-height: 4em;
-  font-size: 18px;
+  font-size: 15px;
   letter-spacing: 1px;
 }
 @media (max-width: 1280px) {

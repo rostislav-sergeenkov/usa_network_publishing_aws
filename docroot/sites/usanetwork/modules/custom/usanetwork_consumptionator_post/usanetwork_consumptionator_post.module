@@ -210,7 +210,6 @@ function _usanetwork_consumptionator_post_related_content_block() {
       $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_show_node);
     } elseif (!empty($movies)) {
       $related_content = usanetwork_movies_get_all_related_content_for_consumpt_page($content);
-      $tv_node = reset($tv_node);
     } else {
       $related_content = usanetwork_news_get_all_related_content_for_consumpt_page($content);
     }

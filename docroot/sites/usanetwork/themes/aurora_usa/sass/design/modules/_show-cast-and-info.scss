@@ -384,12 +384,18 @@
   .description-block {
     color: black;
     font-family: $avalon-book;
-    font-size: get-vw(20px, 1600);
+    font-size: 20px;
     line-height: 1.4;
     margin-top: get-vw(50px, 1600);
+    @include breakpoint($bp-min-1601-width) {
+      font-size: get-vw(20px, 1600);
+    }
     @include breakpoint($bp-min-1901-width) {
       font-size: 23.85px;
       margin-top: 59.4px;
+    }
+    @include breakpoint($between-769-1024) {
+      font-size: get-vw(20px, 1024);
     }
     @include breakpoint($bp-768-width) {
       font-size: get-vw(29px, 768);

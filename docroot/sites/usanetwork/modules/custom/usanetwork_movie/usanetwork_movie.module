@@ -830,7 +830,6 @@ function usanetwork_movie_get_related_content($movie_nid, $start_from = 0, $limi
       'values' => array(
         'usanetwork_promo',
         'media_gallery',
-        'person',
         'quiz',
         'catchall_page',
         'consumpt_post'),

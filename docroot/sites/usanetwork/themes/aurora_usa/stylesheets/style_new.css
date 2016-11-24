@@ -19943,14 +19943,18 @@ html.no-scroll, body.no-scroll {
 }
 .show-new-design .where-to-watch .description-block {
   font-family: "FiraSansRegular", sans-serif;
-  font-size: 1.25vw;
+  font-size: 20px;
   line-height: 1.4;
   margin-top: 3.125vw;
 }
 @media (min-width: 1601px) {
   .show-new-design .where-to-watch .description-block {
-    font-size: 20px;
     margin-top: 50px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .show-new-design .where-to-watch .description-block {
+    font-size: 1.95313vw;
   }
 }
 @media (max-width: 768px) {

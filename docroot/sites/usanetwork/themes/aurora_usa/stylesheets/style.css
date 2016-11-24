@@ -25135,14 +25135,24 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .where-to-watch .description-block {
   color: black;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 1.25vw;
+  font-size: 20px;
   line-height: 1.4;
   margin-top: 3.125vw;
+}
+@media (min-width: 1601px) {
+  .where-to-watch .description-block {
+    font-size: 1.25vw;
+  }
 }
 @media (min-width: 1901px) {
   .where-to-watch .description-block {
     font-size: 23.85px;
     margin-top: 59.4px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .where-to-watch .description-block {
+    font-size: 1.95313vw;
   }
 }
 @media (max-width: 768px) {

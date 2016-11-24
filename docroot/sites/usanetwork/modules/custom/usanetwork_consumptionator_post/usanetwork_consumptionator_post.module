@@ -702,7 +702,7 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id = NULL, $blog_
         : ((is_null($movie)) ? t('Latest News') : t('Movies')),
       'posts_landing_link' => (is_numeric($show_id))
         ? l((($is_new_design) ? t('View all Articles <span class="show-color show-font"></span>') : t('View all posts')), 'node/' . $show_id . '/blog' . $blog_url, array('html' => TRUE))
-        : ((is_null($movie)) ? l(t('View all news'), 'news') : l(t('View all movie'), 'movies')),
+        : ((is_null($movie)) ? l(t('View all news'), 'news') : l(t('View all movies'), 'movies')),
       'new_design' => !empty($is_new_design) ? $is_new_design : NULL,
     );
     return theme('usanetwork_cons_post_carousel', $theme_variables);

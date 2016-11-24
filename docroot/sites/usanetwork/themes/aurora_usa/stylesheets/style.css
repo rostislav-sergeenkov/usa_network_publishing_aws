@@ -20689,6 +20689,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 
 .consumptionator-post-main-block .post-info-main-block .post-info-block {
+  border-bottom: 1px solid;
   position: relative;
 }
 @media (min-width: 1281px) {
@@ -20699,6 +20700,11 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-post-main-block .post-info-main-block .post-info-block {
     padding-left: 43px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-post-main-block .post-info-main-block .post-info-block {
+    border-bottom: 0;
   }
 }
 @media (max-width: 640px) {

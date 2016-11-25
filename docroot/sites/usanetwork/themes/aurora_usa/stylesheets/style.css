@@ -15090,17 +15090,34 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   }
 }
 .consum-sidebar .download-app.promo-enable .download-app-wrapper {
-  display: none;
+  display: none !important;
 }
 .consum-sidebar .download-app .live-promo {
-  display: table;
+  display: block;
   height: 100%;
   width: 100%;
 }
-.consum-sidebar .download-app .live-promo .live-promo-wrapper {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
+@media (max-width: 1024px) {
+  .consum-sidebar .download-app .live-promo {
+    display: table;
+  }
+}
+@media (min-width: 1025px) {
+  .consum-sidebar .download-app .live-promo .live-promo-wrapper {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .consum-sidebar .download-app .live-promo .live-promo-wrapper {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
 }
 @media (max-width: 768px) {
   .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
@@ -15112,22 +15129,19 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
     max-width: calc(100vw - 340px);
   }
 }
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media (min-width: 1025px) {
   .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
-    max-height: calc(((100vw - 320px) * 0.5625) - 250px);
-    max-width: 320px;
-  }
-}
-@media (min-width: 1281px) {
-  .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
-    max-height: calc(42.01875vw - 250px);
-    max-width: 25vw;
-  }
-}
-@media (min-width: 2500px) {
-  .consum-sidebar .download-app .live-promo .live-promo-wrapper img {
-    max-height: calc(1093.75px - 250px);
-    max-width: 632px;
+    bottom: 0;
+    display: flex;
+    height: auto;
+    left: 0;
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
   }
 }
 .consum-sidebar .download-app .download-app-wrapper {
@@ -16935,6 +16949,34 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 }
 .page-videos-live .video-block.show-app .consum-sidebar .download-app {
   display: table;
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block.show-app .consum-sidebar .download-app {
+    display: block;
+  }
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block.show-app .consum-sidebar .download-app .download-app-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block.show-app .consum-sidebar .download-app .image-block {
+    background-position: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (min-width: 1281px) {
+  .page-videos-live .video-block.show-app .consum-sidebar .download-app .download-button {
+    margin: 5px auto;
+  }
 }
 .page-videos-live .video-block.show-app:not(.show-related).taboola-enabled {
   height: auto;
@@ -20689,6 +20731,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 
 .consumptionator-post-main-block .post-info-main-block .post-info-block {
+  border-bottom: 1px solid;
   position: relative;
 }
 @media (min-width: 1281px) {
@@ -20699,6 +20742,11 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (min-width: 1025px) and (max-width: 1280px) {
   .consumptionator-post-main-block .post-info-main-block .post-info-block {
     padding-left: 43px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-post-main-block .post-info-main-block .post-info-block {
+    border-bottom: 0;
   }
 }
 @media (max-width: 640px) {
@@ -23009,7 +23057,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .landing-page-container .upper-menu .item-filter .filter-label {
   border: 1px solid #959595;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
@@ -23023,11 +23071,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   -o-text-overflow: ellipsis;
   white-space: nowrap;
   width: 205px;
-}
-@media (max-width: 1280px) {
-  .landing-page-container .upper-menu .item-filter .filter-label {
-    font-size: 14px;
-  }
 }
 .landing-page-container .upper-menu .item-filter .filter-label:after {
   content: "\e609";
@@ -23126,7 +23169,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li a {
   color: #666666;
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   line-height: 22px;
@@ -23138,11 +23181,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li a:hover, .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li a:active {
   background: darkgrey;
   color: #ffffff;
-}
-@media (max-width: 1280px) {
-  .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li a {
-    font-size: 14px;
-  }
 }
 @media (max-width: 768px) {
   .landing-page-container .upper-menu .item-filter.all-items-filter .filter-menu li a {
@@ -23240,7 +23278,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a {
   color: #ffffff;
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   height: 100%;
   letter-spacing: 1px;
@@ -23253,11 +23291,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a:hover, .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a.active {
   color: #383838;
-}
-@media (max-width: 1280px) {
-  .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a {
-    font-size: 14px;
-  }
 }
 @media (max-width: 768px) {
   .landing-page-container .upper-menu .item-filter.sorter-items .filter-menu li a {
@@ -23281,7 +23314,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   margin: 0;
   float: left;
   line-height: 4em;
-  font-size: 18px;
+  font-size: 15px;
   letter-spacing: 1px;
 }
 @media (max-width: 1280px) {
@@ -24954,27 +24987,24 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     padding: 4.6875vw 3.125vw;
   }
 }
+.where-to-watch .where-to-watch-inner.only-one-line {
+  padding: 0 2.8125vw 32px;
+}
+@media (min-width: 1901px) {
+  .where-to-watch .where-to-watch-inner.only-one-line {
+    padding: 0 53.4px 32px;
+  }
+}
+@media (max-width: 768px) {
+  .where-to-watch .where-to-watch-inner.only-one-line {
+    padding: 0 4.6875vw 32px;
+  }
+}
 .where-to-watch .where-to-watch-inner .first-line .description-block:first-child {
   margin-top: 0;
 }
-.where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner {
-  border: none;
-  text-align: center;
-}
-@media (max-width: 768px) {
-  .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider {
-    display: inline-block;
-    float: none;
-    text-align: center;
-    vertical-align: middle;
-    width: 45%;
-    margin-top: 0;
-  }
-}
-@media (max-width: 768px) {
-  .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider a {
-    display: inline;
-  }
+.where-to-watch .where-to-watch-inner .last-line:only-child .description-block {
+  margin-top: 0;
 }
 .where-to-watch .where-to-watch-inner .link-buttons-wrap {
   margin-top: 15px;
@@ -25138,14 +25168,24 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .where-to-watch .description-block {
   color: black;
   font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 1.25vw;
+  font-size: 20px;
   line-height: 1.4;
   margin-top: 3.125vw;
+}
+@media (min-width: 1601px) {
+  .where-to-watch .description-block {
+    font-size: 1.25vw;
+  }
 }
 @media (min-width: 1901px) {
   .where-to-watch .description-block {
     font-size: 23.85px;
     margin-top: 59.4px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .where-to-watch .description-block {
+    font-size: 1.95313vw;
   }
 }
 @media (max-width: 768px) {
@@ -25173,8 +25213,10 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   border: none;
 }
 .where-to-watch .usa-providers .providers-row-inner {
+  align-items: center;
   border-bottom: 2px solid;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   padding: 1.875vw 3.75vw;
   position: relative;
 }
@@ -25191,13 +25233,13 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (max-width: 768px) {
   .where-to-watch .usa-providers .providers-row-inner {
     border: none;
+    flex-wrap: wrap;
     padding: 0 2.60417vw;
     width: 100%;
   }
 }
 .where-to-watch .usa-providers .provider {
-  display: table;
-  float: left;
+  display: block;
   margin-right: 8.75vw;
   position: relative;
 }
@@ -25209,22 +25251,20 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (max-width: 768px) {
   .where-to-watch .usa-providers .provider {
     margin: 5.85938vw 0;
-    width: 50%;
+    min-width: 50%;
   }
 }
 .where-to-watch .usa-providers .provider:last-child {
   margin-right: 0;
 }
 .where-to-watch .usa-providers .provider a {
-  display: table-cell;
+  display: block;
   height: auto;
   outline: none;
   position: relative;
-  vertical-align: middle;
   width: auto;
 }
 .where-to-watch .usa-providers .provider a img {
-  max-width: 90%;
   max-height: 5vw;
 }
 @media (min-width: 1901px) {
@@ -25235,7 +25275,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (max-width: 768px) {
   .where-to-watch .usa-providers .provider a img {
     max-height: 10.41667vw;
-    height: 80px;
   }
 }
 

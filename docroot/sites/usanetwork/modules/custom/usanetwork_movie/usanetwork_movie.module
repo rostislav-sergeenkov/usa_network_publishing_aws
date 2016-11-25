@@ -830,7 +830,6 @@ function usanetwork_movie_get_related_content($movie_nid, $start_from = 0, $limi
       'values' => array(
         'usanetwork_promo',
         'media_gallery',
-        'person',
         'quiz',
         'catchall_page',
         'consumpt_post'),
@@ -1831,7 +1830,7 @@ function usanetwork_movie_usa_omniture_alter(&$omniture_variables, $context) {
 }
 
 function usanetwork_movies_get_all_related_content_for_consumpt_page($consumpt_node) {
-  $related_content = _usanetwork_movie_cache_get_limited_related_content('all_movies', $consumpt_node, 0, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
+  $related_content = _usanetwork_movie_cache_get_limited_related_content('all_movies', $consumpt_node, 0, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE + 1);
 
   if (!empty($related_content)) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');

@@ -1328,6 +1328,13 @@ body.node-type-tv-episode, body.node-type-consumpt-post, .node-media-gallery, .g
                   }
                 }
               }
+              .gallery-name {
+                @include breakpoint($bp-1024-width) {
+                  display: inline;
+                  float: none;
+                  white-space: normal;
+                }
+              }
             }
           }
         }
@@ -1494,6 +1501,11 @@ body {
                   text-transform: uppercase;
                   width: 100%;
                   white-space: normal;
+                  .gallery-name {
+                    display: inline;
+                    float: none;
+                    white-space: normal;
+                  }
                   .slide-index {
                     font-size: 12px;
                     font-family: $avalon-medium;

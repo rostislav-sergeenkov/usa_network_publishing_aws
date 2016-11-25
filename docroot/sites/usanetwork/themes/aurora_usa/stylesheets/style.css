@@ -13314,6 +13314,13 @@ body.node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .asset-img
     font-size: 12px;
   }
 }
+@media (max-width: 1024px) {
+  .cast-and-info-description .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .gallery-name, .movie-info-description .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .gallery-name {
+    display: inline;
+    float: none;
+    white-space: normal;
+  }
+}
 @media (min-width: 769px) and (max-width: 1024px) {
   .cast-and-info-description .node-media-gallery .gallery-wrapper .slide-control, .movie-info-description .node-media-gallery .gallery-wrapper .slide-control {
     margin-top: calc(56.25% + 26px);
@@ -13462,6 +13469,11 @@ body.blog .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide
   text-align: center;
   text-transform: uppercase;
   width: 100%;
+  white-space: normal;
+}
+body.blog .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, body .block-character-info-content .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name {
+  display: inline;
+  float: none;
   white-space: normal;
 }
 body.blog .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, body .block-character-info-content .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {

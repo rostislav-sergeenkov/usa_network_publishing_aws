@@ -25251,18 +25251,22 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (max-width: 768px) {
   .where-to-watch .usa-providers .provider {
     margin: 5.85938vw 0;
-    min-width: 50%;
+    width: 50%;
   }
 }
 .where-to-watch .usa-providers .provider:last-child {
   margin-right: 0;
 }
 .where-to-watch .usa-providers .provider a {
-  display: block;
-  height: auto;
   outline: none;
   position: relative;
-  width: auto;
+}
+@media (min-width: 769px) {
+  .where-to-watch .usa-providers .provider a {
+    display: block;
+    height: auto;
+    width: auto;
+  }
 }
 .where-to-watch .usa-providers .provider a img {
   max-height: 5vw;

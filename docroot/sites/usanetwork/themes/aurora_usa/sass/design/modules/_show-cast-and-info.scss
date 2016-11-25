@@ -446,17 +446,19 @@
       }
       @include breakpoint($bp-768-width) {
         margin: get-vw(45px, 768) 0;
-        min-width: 50%;
+        width: 50%;
       }
       &:last-child {
         margin-right: 0;
       }
       a {
-        display: block;
-        height: auto;
         outline: none;
         position: relative;
-        width: auto;
+        @include breakpoint($bp-min-769-width) {
+          display: block;
+          height: auto;
+          width: auto;
+        }
         img {
           max-height: get-vw(80px, 1600);
           @include breakpoint($bp-min-1901-width) {

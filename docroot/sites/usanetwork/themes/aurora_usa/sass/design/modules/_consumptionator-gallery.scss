@@ -535,25 +535,15 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
               text-overflow: ellipsis;
               width: 100%;
               white-space: nowrap;
-              .slide-index {
-                font-size: 27px;
-                font-family: $avalon-medium;
-              }
               @include breakpoint($bp-1900-width) {
                 font-size: 13px;
                 padding-right: 375px;
-                .slide-index {
-                  font-size: 14px;
-                }
               }
               @include breakpoint($bp-1280-width) {
                 bottom: 0;
                 font-size: 12px;
                 left: 70px;
                 padding-right: 320px;
-                .slide-index {
-                  font-size: 13px;
-                }
               }
               @include breakpoint($bp-1024-width) {
                 bottom: 0;
@@ -563,9 +553,6 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                 bottom: 5px;
                 font-size: 11px;
                 padding-right: 240px;
-                .slide-index {
-                  font-size: 12px;
-                }
               }
               @include breakpoint($bp-640-width) {
                 margin-top: 15px;
@@ -573,6 +560,39 @@ body:not(.node-type-person, .blog, .node-type-catchall-seo-page) {
                 position: static;
                 text-align: center;
                 white-space: normal;
+              }
+              .slide-index {
+                font-size: 27px;
+                font-family: $avalon-medium;
+                margin-left: 5px;
+                @include breakpoint($bp-1900-width) {
+                  font-size: 14px;
+                }
+                @include breakpoint($bp-1280-width) {
+                  font-size: 13px;
+                }
+                @include breakpoint($bp-768-width) {
+                  font-size: 12px;
+                }
+              }
+              .gallery-name {
+                @include breakpoint($bp-min-641-width) {
+                  display: block;
+                  float: left;
+                  max-width: calc(100% - 115px);
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+                @include breakpoint($bp-1900-width) {
+                  max-width: calc(100% - 65px);
+                }
+                @include breakpoint($bp-1280-width) {
+                  max-width: calc(100% - 60px);
+                }
+                @include breakpoint($bp-768-width) {
+                  max-width: calc(100% - 55px);
+                }
               }
             }
           }

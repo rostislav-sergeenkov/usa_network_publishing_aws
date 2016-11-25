@@ -12456,17 +12456,10 @@ footer h2 {
   width: 100%;
   white-space: nowrap;
 }
-.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
-  font-size: 27px;
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-}
 @media (max-width: 1900px) {
   .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
     font-size: 13px;
     padding-right: 375px;
-  }
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
-    font-size: 14px;
   }
 }
 @media (max-width: 1280px) {
@@ -12475,9 +12468,6 @@ footer h2 {
     font-size: 12px;
     left: 70px;
     padding-right: 320px;
-  }
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
-    font-size: 13px;
   }
 }
 @media (max-width: 1024px) {
@@ -12492,9 +12482,6 @@ footer h2 {
     font-size: 11px;
     padding-right: 240px;
   }
-  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
-    font-size: 12px;
-  }
 }
 @media (max-width: 640px) {
   .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter {
@@ -12503,6 +12490,51 @@ footer h2 {
     position: static;
     text-align: center;
     white-space: normal;
+  }
+}
+.consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
+  font-size: 27px;
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  margin-left: 5px;
+}
+@media (max-width: 1900px) {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
+    font-size: 14px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
+    font-size: 13px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .slide-index {
+    font-size: 12px;
+  }
+}
+@media (min-width: 641px) {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name {
+    display: block;
+    float: left;
+    max-width: calc(100% - 115px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 1900px) {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name {
+    max-width: calc(100% - 65px);
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name {
+    max-width: calc(100% - 60px);
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-page .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-media-gallery .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node .slide-info .slider-counter .gallery-name {
+    max-width: calc(100% - 55px);
   }
 }
 .consumptionator-page .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block, .node-type-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block, .node-type-tv-episode .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block, .gallery-recap-block .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block, .node-type-consumpt-post .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block, .node-media-gallery .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block, .node-type-usanetwork-microsite .gallery-wrapper .gallery-list .slide .node.end-card .end-card-block {

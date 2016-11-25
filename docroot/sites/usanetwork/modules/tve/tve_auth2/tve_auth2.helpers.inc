@@ -127,6 +127,13 @@ function _tve_auth2_get_default_variables() {
           ),
           'fid' => NULL,
         ),
+        'chrome_flash' => array(
+          'title' => TVE_AUTH2_CHROME_FLASH_TITLE,
+          'description' => array(
+            'format' => TVE_AUTH2_WISYWYG_FORMAT,
+            'value' => TVE_AUTH2_CHROME_FLASH_ERROR_DESCRIPTION,
+          ),
+        ),
         'adobepass' => array(
           'title' => TVE_AUTH2_ADOBEPASS_ERROR_TITLE,
           'description' => array(

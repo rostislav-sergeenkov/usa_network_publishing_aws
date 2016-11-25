@@ -423,6 +423,7 @@ function _tve_auth2_modal_form_auth_flow(&$form, $defaults) {
   $error_sections = array(
     'general' => t('General'),
     'flash' => t('Flash'),
+    'chrome_flash' => t('Chrome 55 (or greater) Flash'),
     'adobepass' => t('Adobe Pass'),
     'macsafari' => t('Mac Safari'),
     'private_browsing' => t('Private Browsing'),

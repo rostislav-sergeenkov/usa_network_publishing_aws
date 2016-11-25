@@ -559,8 +559,12 @@
       .factory('tveErrorHandler', [
         '$http', '$log', 'helper', 'tveModal', 'errorConfig',
         function($http, $log, helper, tveModal, errorConfig) {
+
+        // debugger;
+
           var errorTypes = {
                 FLASH     : 'flash',
+                CHROME_FLASH: 'chrome_flash',
                 GENERAL   : 'general',
                 ADOBE_PASS: 'adobepass',
                 MAC_SAFARI: 'macsafari',
@@ -986,7 +990,8 @@
                 tveCookie = JSON.parse($.cookie(tveCookiesKeys.NBCU_USER)),
                 _isAuthenticated = tveCookie && tveCookie['authn'],
                 _selectedMvpd = tveCookie&& tveCookie['selectedProvider'],
-                adobePassApi, mvpdService, modalsData, modalsDataPreview;
+                adobePassApi, mvpdService, modalsData, modalsDataPreview,
+                isFlashBlockChrome55 = false;
 
             if (typeof Drupal.settings.tve_cookie_detection != 'undefined') {
               var thirdPartyCookieEnabled = Drupal.settings.tve_cookie_detection.status;
@@ -1006,7 +1011,10 @@
                     authDefer.reject(reason);
                     return;
                   }
-                  if (navigator.userAgent.indexOf('Mac') > 0 && navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+                  if (reason === 'flash' && checkIfNewestChrome(navigator.userAgent)) {
+                    isFlashBlockChrome55 = true;
+                    tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
+                  } else if (navigator.userAgent.indexOf('Mac') > 0 && navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
                     tveErrorHandler.showErrorMessage(tveErrorHandler.errors.MAC_SAFARI);
                   }
                   else {
@@ -1038,6 +1046,19 @@
               else {
                 return true;
               }
+            }
+
+            function checkIfNewestChrome(userAgent) {
+              if (userAgent.indexOf('Chrome') != -1) {
+                var arr = userAgent.split(' ');
+                var version = arr.find(function (item) {
+                  return item.match(/(?:^|[ ])Chrome\/(.*)/);
+                });
+
+                return version ? parseInt(version.replace('Chrome/', '').split('.')[0]) > 54 : false;
+              }
+
+              return false;
             }
 
             // functions
@@ -1101,7 +1122,10 @@
 
               if (!tveAuthConfig.disableAccessEnabler && !tveAuthConfig.isAccessEnablerModeJS) {
                 //Checking the existence of a valid swfobject plugin and Flash version
-                if (!helper.device.isMobile && !hasValidFlashVersion()) {
+                if (isFlashBlockChrome55 || (!hasValidFlashVersion() && checkIfNewestChrome(navigator.userAgent))) {
+                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
+                  return;
+                } else if (!helper.device.isMobile && !hasValidFlashVersion()) {
                   tveErrorHandler.showErrorMessage(tveErrorHandler.errors.FLASH);
                   return;
                 }

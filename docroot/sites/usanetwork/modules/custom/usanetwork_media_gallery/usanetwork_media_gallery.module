@@ -335,7 +335,7 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
       array_unshift($gallery_field, $image_cover_field);
     }
 
-    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node',$node);
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
 
     $idx = 0;
     if (!empty($gallery_field) && is_array($gallery_field)) {

@@ -175,10 +175,8 @@
           $galleryWrap = _.$galleryWrap;
 
       if ($('body').hasClass('node-type-tv-episode')) {
-        if (Drupal.settings.umbel_settings !== undefined) {
-          var showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '',
-              pageName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_2') ? Drupal.settings.umbel_settings.usa_umbel_param_2 : '';
-        }
+        var showName = (Drupal.settings.usanetwork_tv_show_title !== undefined) ? Drupal.settings.usanetwork_tv_show_title : '',
+            pageName = (Drupal.settings.usanetwork_tv_episode_title !== undefined) ? Drupal.settings.usanetwork_tv_episode_title : '';
         s.linkTrackVars = 'events,prop3,prop4,prop5,prop73';
         s.prop3 = 'Gallery';
         s.prop4 = showName.trim() + ' : ' + pageName.trim();
@@ -186,13 +184,11 @@
       }
 
       if ($('body').hasClass('node-type-media-gallery')) {
-        if (Drupal.settings.umbel_settings !== undefined) {
-          var showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '',
-              galleryName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_3') ? Drupal.settings.umbel_settings.usa_umbel_param_3 : '',
-              slideNumber = parseInt($('.gallery-wrapper .slide.slick-active').data('slick-index')) + 1,
-              pageNameEnd = ($galleryWrap.hasClass('end-card'))? 'Gallery End Card': 'Image ' + slideNumber;
-          s.pageName = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + pageNameEnd;
-        }
+        var showName = (Drupal.settings.usanetwork_tv_show_title !== undefined) ? Drupal.settings.usanetwork_tv_show_title : '',
+            galleryName = (Drupal.settings.usanetwork_media_gallery_title !== undefined) ? Drupal.settings.usanetwork_media_gallery_title : '',
+            slideNumber = parseInt($('.gallery-wrapper .slide.slick-active').data('slick-index')) + 1,
+            pageNameEnd = ($galleryWrap.hasClass('end-card'))? 'Gallery End Card': 'Image ' + slideNumber;
+        s.pageName = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + pageNameEnd;
       }
 
       if ($('body').hasClass('page-videos-live')) {
@@ -234,8 +230,8 @@
           galleryName = '';
 
       if ($('body').hasClass('node-type-media-gallery')) {
-        showName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_1') ? Drupal.settings.umbel_settings.usa_umbel_param_1 : '';
-        galleryName = Drupal.settings.umbel_settings.hasOwnProperty('usa_umbel_param_3') ? Drupal.settings.umbel_settings.usa_umbel_param_3 : '';
+        showName = (Drupal.settings.usanetwork_tv_show_title !== undefined) ? Drupal.settings.usanetwork_tv_show_title : '';
+        galleryName = (Drupal.settings.usanetwork_media_gallery_title !== undefined) ? Drupal.settings.usanetwork_media_gallery_title : '';
       }
 
       AdobeTracking.clickedPageItem = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + 'End Card Next Click';

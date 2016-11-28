@@ -1298,6 +1298,11 @@ function _usanetwork_menu_consumptionator_block_gallery($node) {
       'sponsored' => isset($sponsored) ? $sponsored : FALSE,
       'node_path' => isset($node_path) ? $node_path : FALSE,
     );
+    drupal_add_js(array(
+      'usanetwork_tv_show_title' => !empty($node->{$field}) ? $entity_wrapper->{$field}->value()->title : '',
+      'usanetwork_media_gallery_title' => $node_title,
+    ), 'setting');
+
     return theme('usanetwork_menu_consumptionator_gallery', $theme_variables);
   }
   return '';
@@ -1403,6 +1408,12 @@ function _usanetwork_menu_consumptionator_episode_guide($node) {
           ),
       ),
     );
+
+    drupal_add_js(array(
+      'usanetwork_tv_show_title' => !empty($node->field_show) ? $entity_wrapper->field_show->value()->title : '',
+      'usanetwork_tv_episode_title' => $node->title,
+    ), 'setting');
+
     return theme('usanetwork_menu_consumptionator_episode_guide', $theme_variables);
   }
   return '';

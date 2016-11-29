@@ -1122,7 +1122,7 @@
 
               if (!tveAuthConfig.disableAccessEnabler && !tveAuthConfig.isAccessEnablerModeJS) {
                 //Checking the existence of a valid swfobject plugin and Flash version
-                if (isFlashBlockChrome55 || (!hasValidFlashVersion() && checkIfNewestChrome(navigator.userAgent))) {
+                if (isFlashBlockChrome55 || (hasValidFlashVersion() && checkIfNewestChrome(navigator.userAgent))) {
                   tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
                   return;
                 } else if (!helper.device.isMobile && !hasValidFlashVersion()) {

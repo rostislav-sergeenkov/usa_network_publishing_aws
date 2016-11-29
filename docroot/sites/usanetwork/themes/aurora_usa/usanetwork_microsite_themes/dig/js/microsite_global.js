@@ -7,53 +7,93 @@
    * DV on Sep 21, 2015: Temporarily adding redirects to existing global functions
    * This is to allow the default/ms_quizzes.js code to work with Dig.
    */
-  Drupal.behaviors.ms_global = {
-    // change url address
-    changeUrl: function (anchor, anchorFull) {
-      Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
-    },
-
-    setOmnitureData: function (anchor, itemTitle) {
-      Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
-    },
-
-    create728x90Ad: function (section) {
-      Drupal.behaviors.microsite_scroll.create728x90Ad(section);
-    },
-
-    sendSocialShareOmniture: function ($this, title) {
-      title = title || null;
-      var $container = $this.parents('.gig-button-container'),
-          shareType = 'Share',
-          shareTitle = title;
-      if ($container.hasClass('gig-button-container-facebook')) {
-        shareType = 'Facebook';
-      }
-      else if ($container.hasClass('gig-button-container-twitter')) {
-        shareType = 'Twitter';
-      }
-      else if ($container.hasClass('gig-button-container-tumblr')) {
-        shareType = 'Tumblr';
-      }
-      else if ($container.hasClass('gig-button-container-pinterest')) {
-        shareType = 'Pinterest';
-      }
-
-      if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-        s.linkTrackVars = 'events,prop73,eVar73,eVar74';
-        s.linkTrackEvents = s.events = 'event41';
-        s.prop73 = window.location.href;
-        s.eVar73 = shareTitle;
-        s.eVar74 = shareType;
-        s.tl(this, 'o', 'Social Share');
-        s.manageVars('clearVars', s.linkTrackVars, 1);
-      }
-    }
-  };
+  // Drupal.behaviors.ms_global = {
+  //   // change url address
+  //   changeUrl: function (anchor, anchorFull) {
+  //     Drupal.behaviors.microsite_scroll.micrositeChangeUrl(anchor, anchorFull);
+  //   },
+  //
+  //   setOmnitureData: function (anchor, itemTitle) {
+  //     Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
+  //   },
+  //
+  //   create728x90Ad: function (section) {
+  //     Drupal.behaviors.microsite_scroll.create728x90Ad(section);
+  //   },
+  //
+  //   sendSocialShareOmniture: function ($this, title) {
+  //     title = title || null;
+  //     var $container = $this.parents('.gig-button-container'),
+  //         shareType = 'Share',
+  //         shareTitle = title;
+  //     if ($container.hasClass('gig-button-container-facebook')) {
+  //       shareType = 'Facebook';
+  //     }
+  //     else if ($container.hasClass('gig-button-container-twitter')) {
+  //       shareType = 'Twitter';
+  //     }
+  //     else if ($container.hasClass('gig-button-container-tumblr')) {
+  //       shareType = 'Tumblr';
+  //     }
+  //     else if ($container.hasClass('gig-button-container-pinterest')) {
+  //       shareType = 'Pinterest';
+  //     }
+  //
+  //     if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+  //       s.linkTrackVars = 'events,prop73,eVar73,eVar74';
+  //       s.linkTrackEvents = s.events = 'event41';
+  //       s.prop73 = window.location.href;
+  //       s.eVar73 = shareTitle;
+  //       s.eVar74 = shareType;
+  //       s.tl(this, 'o', 'Social Share');
+  //       s.manageVars('clearVars', s.linkTrackVars, 1);
+  //     }
+  //   }
+  // };//todo remove code
 
   Drupal.behaviors.microsite_scroll = {
 
     quoteAnimationTimer: null,
+
+    getActiveSectionName: function () {
+      return $('#left-nav .internal.active').attr('data-menuanchor');
+    },
+
+    mpsLoadAd: function (sectionName, loadset) {
+
+      var topbanner = 'topbanner',
+          topbox = 'topbox';
+
+      console.info(sectionName, loadset);
+
+
+      initAd($('#' + sectionName + ' .' + topbanner), topbanner);
+
+      if (sectionName != 'quizzes') {
+        initAd($('#' + sectionName + ' .' + topbox), topbox);
+      }
+
+      function initAd(adBanner, nameAd) {
+        $.each(adBanner, function (index, item) {
+
+          var $item = $(item);
+
+          try {
+            usa_debug('done: load mps ad ' + nameAd);
+
+            if (loadset == 'domReady') {
+              Drupal.behaviors.mpsAdvert.mpsLoadAd($item, nameAd);
+            } else {
+              $item.empty();
+              Drupal.behaviors.mpsAdvert.mpsMakeRequest();
+              Drupal.behaviors.mpsAdvert.mpsLoadAd($item, nameAd);
+            }
+          } catch (e) {
+            usa_debug('error: load mps ad ' + nameAd);
+          }
+        })
+      }
+    },
 
     animateQuote: function (listSelector, k, kmax, tweenDuration) {
       var list = $('#microsite ' + listSelector),
@@ -111,20 +151,6 @@
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
       });
     },
-
-    /*
-     // Animation for logo in left nav.
-     micrositeLogoAnim: function logoAnim(show_logo) {
-     if (show_logo) {
-     $('#left-nav-inner').animate({'top': '0'}, 400);
-     $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 1}, 200);
-     }
-     else {
-     $('#left-nav-inner').animate({'top': '-130px'}, 400);
-     $('#left-nav-logo, #left-nav-tunein').animate({'opacity': 0}, 200);
-     }
-     },
-     */
 
     // getUrlPath
     // url: (string) url to parse
@@ -323,7 +349,7 @@
           Drupal.behaviors.microsite_scroll.quotationAnimation('#characters #character-quotes .quotes.' + activeCharacterId);
         }
 
-        Drupal.behaviors.microsite_scroll.create728x90Ad(anchor);
+        Drupal.behaviors.microsite_scroll.mpsLoadAd(anchor);
         Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
 
         // set active menu item
@@ -482,21 +508,17 @@
     // set video player on click thumbnail
     micrositeSetVideoPlayer: function (autoplay, selector, data) {
 
-      var autoplay = autoplay || true,
-          selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active',
-          activeVideoThumb = $(selector),
+      autoplay = autoplay || true;
+      selector = selector || '#thumbnail-list .item-list ul li.thumbnail.active';
+
+      var activeVideoThumb = $(selector),
           videoContainer = $('#video-container'),
           dataPlayerId = activeVideoThumb.attr('data-player-id'),
           dataFid = activeVideoThumb.attr('data-fid'),
           dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
-          ad_728x90 = $('#videos .ad_728x90'),
-          ad_728x90_1 = $('#videos .ad_728x90_1'),
-          ad_300x60_1 = $('#videos #ad_300x60_1'),
-          ad_300x250 = $('#videos #ad_300x250'),
-          ad_300x250_1 = $('#videos #ad_300x250_1'),
           isAuth = false,
           filter, url;
-      
+
       if (data) {
         dataPlayerId = data.data.player_id;
         dataFid = data.data.fid;
@@ -508,34 +530,9 @@
 
       if (dataFullEpisode == 'true') {
         Drupal.behaviors.microsite_scroll.micrositeMobileModal();
-        if (ad_300x250_1) {
-          ad_300x250_1.closest('li.ad').hide();
-          ad_300x250_1.attr('id', 'ad_300x250').empty();
-        }
-        if (ad_728x90.attr('id') != 'ad_728x90_1') {
-          ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
-        }
-
         $('#videos .full-pane').addClass('full-desc');
-        ad_300x60_1.show();
-
       } else {
         $('#videos .full-pane').removeClass('full-desc');
-        ad_300x60_1.hide();
-
-        if (ad_728x90.attr('id') == 'ad_728x90_1') {
-          ad_728x90.attr('class', '').attr('class', ad_728x90.attr('data-class')).removeAttr('data-class').attr('id', '').empty();
-        }
-        if ($('#videos').find(ad_300x250)) {
-          ad_300x250.closest('li.ad').show();
-          ad_300x250.attr('id', 'ad_300x250_1');
-        }
-        if ($('#videos').find(ad_300x250_1)) {
-          ad_300x250_1.closest('li.ad').show();
-        }
-        if (dataFullEpisode == 'false') {
-          Drupal.behaviors.microsite_scroll.create728x90Ad();
-        }
       }
 
       Drupal.behaviors.microsite_scroll.micrositeSetPausePlayer();
@@ -607,6 +604,8 @@
     // 300x250 -- not for video companion ads!!
     create300x250Ad: function (section) {
 
+      debugger;
+
       usa_debug('create300x250Ad(' + section + ')');
       if (section != 'videos' && section != 'home' && section != 'quizzes') {
         // check to see if there's already an ad
@@ -636,13 +635,16 @@
           }
         }
       }
-    },
+    }, //todo check
 
     // createAds
     // there is a race condition if we try to create both the 728x90
     // and the 300x250 at about the same time, so we create the 728x90
     // first and then create the 300x250
     create728x90Ad: function (section) {
+
+      debugger;
+
       if (!section) {
         section = $('#sections .section.active').attr('id') || 'home';
       }
@@ -685,7 +687,9 @@
       if (section != 'videos' && section != 'quizzes') {
         Drupal.behaviors.microsite_scroll.create300x250Ad(section);
       }
-    },
+    }, //todo check
+
+
     //click Thumbnail
     micrositeClickThumbnail: function (elem) {
       usa_debug('=========== micrositeClickThumbnail(), elem: ');
@@ -1236,48 +1240,38 @@
       // test for video player load ad
       $(document).ready(function () {
 
+        var activeSectionName = Drupal.behaviors.microsite_scroll.getActiveSectionName();
+
+        Drupal.behaviors.microsite_scroll.mpsLoadAd(activeSectionName, 'domReady');
+
         if ($('#videos').hasClass('active')) {
           $('#video-container').addClass('active');
           Drupal.behaviors.microsite_scroll.micrositeSetVideoPlayer('false');
         }
 
-        if($('html').hasClass('touch')) {
-          $(document).click(function(e){
+        if ($('html').hasClass('touch')) {
+          $(document).click(function (e) {
             if (e.target.getElementById != 'mobile-nav' && e.target.parentElement.getElementById != 'mobile-nav') {
-              if($('#mobile-nav').hasClass('show-nav-links-list')) {
+              if ($('#mobile-nav').hasClass('show-nav-links-list')) {
                 $('#mobile-nav').removeClass('show-nav-links-list');
               }
             }
           });
-          $('#mobile-nav').on('click', function(e) {
+          $('#mobile-nav').on('click', function (e) {
             e.stopPropagation();
-              if ($('#mobile-nav').hasClass('show-nav-links-list')) {
-                $('#mobile-nav').removeClass('show-nav-links-list');
-              } else {
-                $('#mobile-nav').addClass('show-nav-links-list');
-              }
+            if ($('#mobile-nav').hasClass('show-nav-links-list')) {
+              $('#mobile-nav').removeClass('show-nav-links-list');
+            } else {
+              $('#mobile-nav').addClass('show-nav-links-list');
+            }
           });
-          $('#mobile-nav-links-list').click(function(e){
+          $('#mobile-nav-links-list').click(function (e) {
             e.stopPropagation();
           });
-}
-        Drupal.behaviors.microsite_scroll.create728x90Ad();
-//        Drupal.behaviors.microsite_scroll.micrositeCreateMobileMenu();
+        }
+
         Drupal.behaviors.microsite_carousel.initCarousel();
       });
-
-      //$('.section').on("scroll", function () {
-      //  if ($(this).attr('id') == 'home') {
-      //    if ($(window).width() >= minWidthForNav && $(window).height() <= heightForHomeLogoAnim && $(this).hasClass('active')) {
-      //      if ($(this).scrollTop() > scrollTopForLogoAnim) {
-      //        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(true);
-      //      }
-      //      else {
-      //        Drupal.behaviors.microsite_scroll.micrositeLogoAnim(false);
-      //      }
-      //    }
-      //  }
-      //});
 
       $('.section').on('scroll', function () {
         Drupal.behaviors.ms_lazyLoad.initImgShow();

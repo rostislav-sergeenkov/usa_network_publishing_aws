@@ -16,7 +16,7 @@
 <div id="about-inner-container">
   <div id="right-pane-bg"></div>
 
-  <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_about"></div>
+  <div class="ad-leaderboard topbanner"></div>
 
   <?php if (!empty($about_quotations) && is_array($about_quotations)): ?>
   <div class="left-pane">
@@ -66,7 +66,7 @@
     </div>
     <?php endif; ?>
 
-    <div class="ad300x250 dart-tag dart-name-300x250_ifr_reload_about"></div>
+    <div class="ad300x250 topbox"></div>
   </div>
 </div>
 

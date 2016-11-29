@@ -30,7 +30,7 @@
   <div id="right-pane-bg"></div>
 
   <!-- 728x90 ad -->
-  <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_episodes"></div>
+  <div class="ad-leaderboard topbanner"></div>
 
   <!-- episodes section title and navigation -->
   <div class="right-pane-content">
@@ -93,6 +93,6 @@
     <!-- end episode info -->
 
     <!-- 300x250 ad -->
-    <div class="ad300x250 content dart-tag dart-name-300x250_ifr_reload_episodes"></div>
+    <div class="ad300x250 content topbox"></div>
   </div>
 </div>

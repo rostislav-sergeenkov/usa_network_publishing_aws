@@ -365,6 +365,7 @@ function usanetwork_timeline_gallery_return_seasons($selected_show) {
   $query->entityCondition('entity_type', 'node');
   $query->entityCondition('bundle', array('tv_season'));
   $query->fieldCondition('field_show', 'target_id', $selected_show);
+  $query->fieldOrderBy('field_season_id', 'value * 1', 'ASC');
   $show_result = $query->execute();
 
   // Add each season that belongs to the user-selected show to the options
@@ -373,8 +374,8 @@ function usanetwork_timeline_gallery_return_seasons($selected_show) {
     $season_nids = array_keys($show_result['node']);
     $nodes = entity_load('node', $season_nids);
     foreach ($nodes as $node) {
-      $stat = check_plain($node->status) ? 'published' : 'unpublished';
-      $options[$node->nid] = check_plain($node->title) . ' (' . $stat . ')';
+      $stat = $node->status ? 'published' : 'unpublished';
+      $options[$node->nid] = $node->title . ' (' . $stat . ')';
     }
   }
 
@@ -460,8 +461,8 @@ function usanetwork_timeline_gallery_return_episodes($selected_season) {
     $episode_nids = array_keys($season_result['node']);
     $nodes = entity_load('node', $episode_nids);
     foreach ($nodes as $node) {
-      $stat = check_plain($node->status) ? 'published' : 'unpublished';
-      $options[$node->nid] = check_plain($node->title) . ' (' . $stat . ')';
+      $stat = $node->status ? 'published' : 'unpublished';
+      $options[$node->nid] = $node->title . ' (' . $stat . ')';
     }
   }
 

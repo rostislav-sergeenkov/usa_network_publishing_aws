@@ -565,6 +565,7 @@
           var errorTypes = {
                 FLASH     : 'flash',
                 CHROME_FLASH: 'chrome_flash',
+                CHROME_FLASH_55: 'chrome_flash_55',
                 GENERAL   : 'general',
                 ADOBE_PASS: 'adobepass',
                 MAC_SAFARI: 'macsafari',
@@ -801,7 +802,12 @@
 
             if (swfobject && !swfobject.hasFlashPlayerVersion(version)) {
               if (isFullEpisode) {
+
                 usaPlayerError.initFlashError();
+
+                if (usaPlayerError.checkIfChrome()) {
+                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
+                }
               }
             }
 
@@ -976,9 +982,9 @@
       .provider('authService', function() {
         this.$get = [
           '$http', '$q', '$cookies', '$cookieStore',
-          'tveAuthConfig', 'helper', 'tveModal', 'tveErrorHandler',
+          'tveAuthConfig', 'helper', 'tveModal', 'tveErrorHandler', 'usaPlayerError',
           function($http, $q, $cookies, $cookieStore,
-                   tveAuthConfig, helper, tveModal, tveErrorHandler) {
+                   tveAuthConfig, helper, tveModal, tveErrorHandler, usaPlayerError) {
 
             // is resolved after adobe pass check is finished and all the resources for modals are downloaded
             var authDefer = $q.defer(),
@@ -1011,9 +1017,10 @@
                     authDefer.reject(reason);
                     return;
                   }
-                  if (reason === 'flash' && checkIfNewestChrome(navigator.userAgent)) {
+                  if (reason === 'flash' && usaPlayerError.checkIfChrome55(navigator.userAgent)) {
                     isFlashBlockChrome55 = true;
-                    tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
+                    usaPlayerError.initFlashError();
+                    tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH_55);
                   } else if (navigator.userAgent.indexOf('Mac') > 0 && navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
                     tveErrorHandler.showErrorMessage(tveErrorHandler.errors.MAC_SAFARI);
                   }
@@ -1046,19 +1053,6 @@
               else {
                 return true;
               }
-            }
-
-            function checkIfNewestChrome(userAgent) {
-              if (userAgent.indexOf('Chrome') != -1) {
-                var arr = userAgent.split(' ');
-                var version = arr.find(function (item) {
-                  return item.match(/(?:^|[ ])Chrome\/(.*)/);
-                });
-
-                return version ? parseInt(version.replace('Chrome/', '').split('.')[0]) == 55 : false;
-              }
-
-              return false;
             }
 
             // functions
@@ -1122,11 +1116,15 @@
 
               if (!tveAuthConfig.disableAccessEnabler && !tveAuthConfig.isAccessEnablerModeJS) {
                 //Checking the existence of a valid swfobject plugin and Flash version
-                if (isFlashBlockChrome55) {
-                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
-                  return;
-                } else if (!helper.device.isMobile && !hasValidFlashVersion()) {
+
+                if (!helper.device.isMobile && !hasValidFlashVersion()) {
                   tveErrorHandler.showErrorMessage(tveErrorHandler.errors.FLASH);
+                  return;
+                } else if (usaPlayerError.checkIfChrome() && !hasValidFlashVersion()) {
+                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
+                  return
+                } else if (isFlashBlockChrome55) {
+                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH_55);
                   return;
                 }
               }

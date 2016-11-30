@@ -28,4 +28,4 @@
   print $content;
 endif; ?>
 
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_timeline"></div>
+<div class="ad-leaderboard topbanner"></div>

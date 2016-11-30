@@ -218,6 +218,7 @@ function usanetwork_microsite_dig_get_theme_includes() {
     ),
     'js' => array(
       $default_theme_path . '/js/lazyLoad.js',
+      $default_theme_path . '/js/ms_mps_ad.js',
       $site_theme_path . '/js/microsite_global.js',
       $module_path . '/js/jquery.bxslider.min.js',
       $site_theme_path . '/js/microsite_flexslider.js',

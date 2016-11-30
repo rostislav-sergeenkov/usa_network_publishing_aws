@@ -234,6 +234,7 @@ function usanetwork_microsite_gracelandcatchuppost_get_theme_includes() {
       drupal_get_path('module', 'usanetwork_video_mobile') . '/usanetwork_video_mobile.css',
     ),
     'js' => array(
+      $default_theme_path . '/js/ms_mps_ad.js',
       $module_path . '/js/jquery.bxslider.min.js',
       $module_path . '/js/jquery.waypoints.min.js', // checks for element scrolled into view
       $module_path . '/js/waypoints_shortcuts/inview.min.js', // part of waypoints for checking for element scrolled into view

@@ -80,6 +80,7 @@ function usanetwork_microsite_suitssocialrecaps_get_theme_includes() {
     ),
     'js' => array(
       drupal_get_path('module', 'gigya'). '/js/gigya_sharebar.js',
+      $default_theme_path . '/js/ms_mps_ad.js',
       $site_theme_path . '/js/ms_site.js',
       $default_theme_path . '/js/ms_gigya.js',
       $site_theme_path . '/js/ms_global.js',

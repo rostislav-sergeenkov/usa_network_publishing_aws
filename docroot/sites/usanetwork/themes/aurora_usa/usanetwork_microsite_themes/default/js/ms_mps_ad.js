@@ -3,6 +3,32 @@
  */
 (function ($) {
   Drupal.behaviors.ms_mpsAd = {
+
+    // Drupal.behaviors.microsite_scroll.mpsLoadAd(anchor, true);
+
+    getActiveSectionName: function () {
+      return $('#sections .section.active').attr('id');
+    },
+
+    mpsLoadAd: function (sectionName, reloadAd) {
+
+      var topbanner = 'topbanner',
+          topbox = 'topbox';
+
+      initAd($('#' + sectionName + ' .' + topbanner), topbanner);
+      initAd($('#' + sectionName + ' .' + topbox), topbox);
+
+      function initAd(adBanner, nameAd) {
+        $.each(adBanner, function (index, item) {
+          try {
+            Drupal.behaviors.ms_mpsAd.loadAd($(item), nameAd, reloadAd);
+          } catch (e) {
+            usa_debug('error: mps loadAd');
+          }
+        })
+      }
+    },
+
     loadAd: function (block, nameAd, reloadAd) {
 
       // block = $(elem) - elem for init

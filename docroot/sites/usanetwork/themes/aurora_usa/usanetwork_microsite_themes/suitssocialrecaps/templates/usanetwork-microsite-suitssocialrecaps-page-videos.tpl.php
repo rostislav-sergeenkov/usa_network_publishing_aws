@@ -200,7 +200,6 @@ $time = time();
       </div>
     </div>
     <?php endif; ?>
-    <div id="ad_300x60_1"></div>
-    <div id="ad_300x250_1"></div>
+    <div id="ad_300x250_1" class="topbox"></div>
   </div>
 </div>

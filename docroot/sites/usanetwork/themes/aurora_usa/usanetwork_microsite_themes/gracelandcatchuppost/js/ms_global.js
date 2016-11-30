@@ -8,30 +8,6 @@
     // GENERAL
     globalInitialPageLoad: true,
 
-    // mps ad
-    getActiveSectionName: function () {
-      return $('#sections .section.active').attr('id');
-    },
-
-    mpsLoadAd: function (sectionName, reloadAd) {
-
-      var topbanner = 'topbanner',
-          topbox = 'topbox';
-
-      initAd($('#' + sectionName + ' .' + topbanner), topbanner);
-      initAd($('#' + sectionName + ' .' + topbox), topbox);
-
-      function initAd(adBanner, nameAd) {
-        $.each(adBanner, function (index, item) {
-          try {
-            Drupal.behaviors.ms_mpsAd.loadAd($(item), nameAd, reloadAd);
-          } catch (e) {
-            usa_debug('error: mps loadAd');
-          }
-        })
-      }
-    },
-
     // getUrlPath
     getUrlPath: function(url) {
       url = url || window.location.href;
@@ -112,7 +88,7 @@
         Drupal.behaviors.ms_global.setOmnitureData(sectionId);
         Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
-        Drupal.behaviors.ms_global.mpsLoadAd(sectionId, true);
+        Drupal.behaviors.ms_mpsAd.mpsLoadAd(sectionId, true);
       }
     },
 
@@ -562,7 +538,7 @@
           self.sectionScroll(urlParts['section'], urlParts['item']);
         }, 2000);
 
-        self.mpsLoadAd(self.getActiveSectionName(), false);
+        Drupal.behaviors.ms_mpsAd.mpsLoadAd(Drupal.behaviors.ms_mpsAd.getActiveSectionName(), false);
 
       }, 2000);
       // END TIME OUT

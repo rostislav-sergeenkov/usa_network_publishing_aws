@@ -7,10 +7,7 @@
 
     quoteAnimationTimer: null,
 
-    getActiveSectionName: function () {
-      return $('#left-nav .internal.active').attr('data-menuanchor');
-    },
-
+    // mps
     mpsLoadAd: function (sectionName, reloadAd) {
 
       var topbanner = 'topbanner',
@@ -1029,9 +1026,7 @@
       // test for video player load ad
       $(document).ready(function () {
 
-        var activeSectionName = Drupal.behaviors.microsite_scroll.getActiveSectionName();
-
-        Drupal.behaviors.microsite_scroll.mpsLoadAd(activeSectionName, false);
+        Drupal.behaviors.microsite_scroll.mpsLoadAd(Drupal.behaviors.ms_mpsAd.getActiveSectionName(), false);
 
         if ($('#videos').hasClass('active')) {
           $('#video-container').addClass('active');

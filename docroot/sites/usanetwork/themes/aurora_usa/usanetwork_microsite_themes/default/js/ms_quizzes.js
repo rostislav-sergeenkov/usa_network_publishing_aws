@@ -235,7 +235,7 @@
                 Drupal.behaviors.ms_global.setOmnitureData('quizzes', data.title);
 
                 // refresh the 728x90 ad
-                Drupal.behaviors.ms_global.create728x90Ad();
+                Drupal.behaviors.ms_mpsAd.mpsLoadAd('quizzes', true);
 
                 // show 300x250 ad on splash page
                 setTimeout(function(){

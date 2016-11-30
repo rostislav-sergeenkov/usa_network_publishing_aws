@@ -150,7 +150,7 @@
             }
             else {
               Drupal.behaviors.microsite_characters.micrositeSetOmnitureData(nextItemTitle);
-              Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
+              Drupal.behaviors.microsite_scroll.mpsLoadAd('characters', true);
             }
 
             // remove disabled
@@ -189,7 +189,7 @@
                   }
                   else {
                     Drupal.behaviors.microsite_characters.micrositeSetOmnitureData(nextItemTitle);
-                    Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
+                    Drupal.behaviors.microsite_scroll.mpsLoadAd('characters', true);
                   }
 
                   // start quotation animations and show quotes
@@ -227,7 +227,7 @@
                     }
                     else {
                       Drupal.behaviors.microsite_characters.micrositeSetOmnitureData(nextItemTitle);
-                      Drupal.behaviors.microsite_scroll.create728x90Ad('characters');
+                      Drupal.behaviors.microsite_scroll.mpsLoadAd('characters', true);
                     }
 
                     // start quotation animations and show quotes

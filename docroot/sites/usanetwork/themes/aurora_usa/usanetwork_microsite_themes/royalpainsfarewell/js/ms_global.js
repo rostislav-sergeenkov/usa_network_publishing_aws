@@ -109,8 +109,6 @@
         Drupal.behaviors.ms_global.changeUrl(sectionId, anchorFull);
         Drupal.behaviors.ms_global.setActiveMenuItem(sectionId);
         Drupal.behaviors.ms_global.setOmnitureData(sectionId);
-        //Drupal.behaviors.ms_global.create728x90Ad(sectionId);
-        //Drupal.behaviors.ms_global.refreshMPS728x90Ad(sectionId);
         if (sectionId != 'videos') Drupal.behaviors.ms_global.refreshAds(sectionId);
       }
     },
@@ -339,43 +337,6 @@
       }
     },
 
-    // ADS
-/*
-    usa_refreshMicrositeAdsBySection: function (adContainer) {
-      usa_debug('usa_refreshMicrositeAdsBySection(' + adContainer + ')');
-      $(adContainer + ' iframe').attr('src', $(adContainer + ' iframe').attr('src'));
-    },
-
-    loadAds: function(selector, adslot) {
-      usa_debug('loadAds(' + selector + ', ' + adslot + ')');
-      if (typeof mps != 'undefined' && typeof mps.insertAd == 'function') {
-        mps.insertAd(selector, adslot);
-      }
-      else {
-        setTimeout(function(){
-          loadAds(selector, adslot);
-        }, 500);
-      }
-    },
-
-    refreshAds: function(section) {
-      usa_debug('refreshAds(' + section + ') SUCCESS');
-      var selector = '#' + section + ' .ad-leaderboard',
-          $ad = $(selector),
-          adslot = (section == 'home') ? 'topbanner' : 'midbanner';
-      if ($ad.html() != '' && $ad.find('iframe').length > 0) {
-        mps.refreshAds(adslot);
-      }
-      else {
-        if (section != 'home') {
-          mps.cloneAd(selector, adslot);
-        }
-        else {
-          Drupal.behaviors.ms_global.loadAds(selector, adslot);
-        }
-      }
-    },
-*/
     refreshAds: function(section) {
       var mpsslot = jQuery('#' + section + ' .mps-slot').data('mps-slot');
       if (mpsslot) {
@@ -402,7 +363,6 @@
       setTimeout(function(){
         Drupal.behaviors.ms_site.setSiteNav();
       }, 200);
-      //usa_debug('setActiveMenuItem(' + anchor + ') is done');
     },
 
     //scroll to top
@@ -452,8 +412,6 @@
       var nextSectionElem = document.getElementById(anchor),
           offsetAmount = -60,
           nextSectionTop = (nextSectionElem != null && anchor != 'home') ? nextSectionElem.offsetTop + offsetAmount : 0;
-
-      //usa_debug('========= sectionScroll(' + anchor + ', ' + item + ', ' + itemTitle + ') -- nextSectionTop: ' + nextSectionTop);
 
       $('html, body').animate({'scrollTop': nextSectionTop}, 1000, 'jswing', function () {
         $('.section').removeClass('active');
@@ -561,7 +519,6 @@
         $('#thumbnail-list').removeClass('expanded');
 
         Drupal.behaviors.ms_videos.getThumbnailList(url, offset, null, categoryName, filterClass);
-        //if (anchor == 'videos') Drupal.behaviors.ms_videos.micrositeSetPlayPlayer();
       }
     },
 

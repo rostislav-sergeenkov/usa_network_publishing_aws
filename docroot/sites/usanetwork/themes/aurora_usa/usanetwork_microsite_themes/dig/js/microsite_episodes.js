@@ -147,7 +147,7 @@
             }
             else {
               Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
-              Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
+              Drupal.behaviors.microsite_scroll.mpsLoadAd('episodes', true);
             }
 
             // remove disabled
@@ -181,7 +181,7 @@
                   }
                   else {
                     Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
-                    Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
+                    Drupal.behaviors.microsite_scroll.mpsLoadAd('episodes', true);
                   }
 
                   // remove disabled
@@ -215,7 +215,7 @@
                     }
                     else {
                       Drupal.behaviors.microsite_episodes.micrositeSetOmnitureData(nextEpisodeTitle);
-                      Drupal.behaviors.microsite_scroll.create728x90Ad('episodes');
+                      Drupal.behaviors.microsite_scroll.mpsLoadAd('episodes', true);
                     }
 
                     // remove disabled

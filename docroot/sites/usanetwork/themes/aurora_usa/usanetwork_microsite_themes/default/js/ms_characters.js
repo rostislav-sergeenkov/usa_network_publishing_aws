@@ -23,7 +23,7 @@
         Drupal.behaviors.ms_global.changeUrl(anchor, anchorFull);
         Drupal.behaviors.ms_global.setOmnitureData('characters', personName);
       }
-      Drupal.behaviors.ms_global.create728x90Ad('characters');
+      Drupal.behaviors.ms_mpsAd.mpsLoadAd('characters', true);
     },
 
     closeCharacterInfo: function() {

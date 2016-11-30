@@ -1205,7 +1205,7 @@ function _usanetwork_media_gallery_landing_page_vbget_photos_block($show_node, $
 
   $current_item_index = 0;
   foreach ($items as $item) {
-    $theme_variables['items'][] = _usanetwork_media_gallery_landing_page_vbget_photos_block_item($item, $current_item_index, $theme_variables['is_even']);
+    $theme_variables['items'][] = _usanetwork_media_gallery_landing_page_vbget_photos_block_item($item, $current_item_index, $theme_variables['is_even'], $is_new_design);
     $current_item_index++;
   }
   
@@ -1226,9 +1226,7 @@ function _usanetwork_media_gallery_landing_page_vbget_photos_block($show_node, $
  * @param bool $is_item_even
  * @return mixed|string
  */
-function _usanetwork_media_gallery_landing_page_vbget_photos_block_item($node, $current_item_index, $is_item_even = FALSE) {
-
-  $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $node);
+function _usanetwork_media_gallery_landing_page_vbget_photos_block_item($node, $current_item_index, $is_item_even = FALSE, $is_new_design = FALSE) {
   $items_quantity = _usanetwork_media_gallery_landing_page_get_items_quantity($is_new_design);
   $big_element_index = $is_item_even ? 0 : ($items_quantity - 1);
   if ($is_new_design) {

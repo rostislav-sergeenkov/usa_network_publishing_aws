@@ -14,7 +14,7 @@ function usanetwork_tve_video_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'tve_adobe_pass_accessenabler_loc';
-  $strongarm->value = '/' . drupal_get_path('module', 'usanetwork_tve_video') . '/flash/AccessEnablerLoader.swf';
+  $strongarm->value = '/sites/usanetwork/modules/custom/usanetwork_tve_video/flash/AccessEnablerLoader.swf';
   $export['tve_adobe_pass_accessenabler_loc'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -133,9 +133,22 @@ On an iOS or Android device, you need to download our USA NOW app.
         ),
       ),
       'chrome_flash' => array(
-        'title' => 'Chrome 55 disabled flash',
+        'title' => 'Chrome disabled flash',
         'description' => array(
-          'value' => 'Chrome 55 has disabled the flash on your machine, please turn it on!',
+          'value' => 'To enable Adobe Flash Player on a Google Chrome Browser:
+Type chrome:plugins in the address bar to open the Plug-ins page.
+On the Plug-ins page that appears, find the "Flash" listing. To enable Adobe Flash Player, click the Enable link under its name.
+Refresh the page and you should be able to stream our video content.',
+          'format' => 'plain_text',
+        ),
+      ),
+      'chrome_flash_55' => array(
+        'title' => 'Chrome 55 blocked flash',
+        'description' => array(
+          'value' => 'To unblock Adobe Flash Player on a Google Chrome Browser:
+Type chrome://settings/content in the address bar to open the Content Settings Pop-up.
+On the Content Settings Pop-up that appears, find the "Flash" listing. To unblock Flash, check Allow sites to run Flash and click Done.
+Refresh the page and you should be able to stream our video content.',
           'format' => 'plain_text',
         ),
       ),
@@ -307,9 +320,22 @@ On an iOS or Android device, you need to download our USA NOW app.
         ),
       ),
       'chrome_flash' => array(
-        'title' => 'Chrome 55 disabled flash',
+        'title' => 'Chrome disabled flash',
         'description' => array(
-          'value' => 'Chrome 55 has disabled the flash on your machine, please turn it on!',
+          'value' => 'To enable Adobe Flash Player on a Google Chrome Browser:
+Type chrome:plugins in the address bar to open the Plug-ins page.
+On the Plug-ins page that appears, find the "Flash" listing. To enable Adobe Flash Player, click the Enable link under its name.
+Refresh the page and you should be able to stream our video content.',
+          'format' => 'plain_text',
+        ),
+      ),
+      'chrome_flash_55' => array(
+        'title' => 'Chrome 55 blocked flash',
+        'description' => array(
+          'value' => 'To unblock Adobe Flash Player on a Google Chrome Browser:
+Type chrome://settings/content in the address bar to open the Content Settings Pop-up.
+On the Content Settings Pop-up that appears, find the "Flash" listing. To unblock Flash, check Allow sites to run Flash and click Done.
+Refresh the page and you should be able to stream our video content.',
           'format' => 'plain_text',
         ),
       ),

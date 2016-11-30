@@ -168,7 +168,6 @@ function usanetwork_tv_schedule_theme() {
         'day_part' => NULL,
         'episode_show' => NULL,
         'episode_title' => NULL,
-        'icon_reminder_url' => NULL,
         'rating' => NULL,
         'episode_url' => NULL,
         'episode_image_url' => NULL,
@@ -1111,8 +1110,6 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
         'episode_show' => $show_name,
         'episode_title' => $episode_title,
         'episode_fid' => !empty($tv_episode) ? $tv_episode->fid : '',
-        'icon_reminder_url' => !empty($show_nid) ? _usanetwork_menu_get_reminder_url($show_nid)
-          : '',
         'rating' => $rating,
         'episode_url' => !empty($tv_episode) ? url('file/' . $tv_episode->fid) : '',
         'episode_image_url' => $item_image,

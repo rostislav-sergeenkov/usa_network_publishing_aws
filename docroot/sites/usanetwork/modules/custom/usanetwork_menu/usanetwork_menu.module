@@ -268,7 +268,6 @@ function usanetwork_menu_theme() {
         'show_episode' => NULL,
         'data' => NULL,
         'node_url' => NULL,
-        'syndicated_url' => NULL,
         'episode_full_url' => NULL,
         'show_class' => NULL,
       ),
@@ -324,7 +323,6 @@ function usanetwork_menu_theme() {
           'on_now' => array(
             'show_title' => NULL,
             'episode_title' => NULL,
-            'syndicated_url' => NULL,
             'episode_full_url' => NULL,
             'label_link' => NULL,
             'on_now_caption' => NULL,
@@ -335,7 +333,6 @@ function usanetwork_menu_theme() {
             'episode_title' => NULL,
             'time' => NULL,
             'day_part' => NULL,
-            'syndicated_url' => NULL,
             'episode_full_url' => NULL,
             'label_link' => NULL,
           ),
@@ -345,21 +342,18 @@ function usanetwork_menu_theme() {
             'show_title' => NULL,
             'time' => NULL,
             'day_part' => NULL,
-            'syndicated_url' => NULL,
             'episode_full_url' => NULL,
           ),
           1 => array(
             'show_title' => NULL,
             'time' => NULL,
             'day_part' => NULL,
-            'syndicated_url' => NULL,
             'episode_full_url' => NULL,
           ),
           2 => array(
             'show_title' => NULL,
             'time' => NULL,
             'day_part' => NULL,
-            'syndicated_url' => NULL,
             'episode_full_url' => NULL,
           ),
         ),
@@ -710,7 +704,6 @@ function _usanetwork_menu_show_menu_primetime_block() {
         'show_title' => $program->show_title,
         'show_episode' => $program->title,
         'node_url' => NULL,
-        'syndicated_url' => isset($program->nid) ? _usanetwork_menu_get_reminder_url($program->nid) : NULL,
         'episode_full_url' => url('schedule', array('query' => array('guid' => $program->guid))),
         'show_class' => !empty($program->nid)
             ? usanetwork_tv_shows_color_show_css_class($program->nid)
@@ -883,7 +876,6 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'node_url' => !empty($data['now']->nid)
             ? (url('node/' . $data['now']->nid))
             : '',
-        'syndicated_url' => ($data['now']->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($data['now']->nid) : '',
         'episode_full_url' => url('schedule', array('query' => array('guid' => $data['now']->guid))),
         'show_class' => !empty($data['now']->nid)
             ? usanetwork_tv_shows_color_show_css_class($data['now']->nid)
@@ -925,7 +917,6 @@ function usanetwork_menu_render_running_show_ajax($user_timezone, $periods = 'no
         'node_url' => !empty($data['next']->nid)
             ? (url('node/' . $data['next']->nid))
             : '',
-        'syndicated_url' => ($data['next']->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($data['next']->nid) : '',
         'episode_full_url' => url('schedule', array('query' => array('guid' => $data['next']->guid))),
         'show_class' => !empty($data['next']->nid)
             ? usanetwork_tv_shows_color_show_css_class($data['next']->nid)
@@ -1853,7 +1844,6 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'show_title' => ($on_now->program_type == 'movie') ? t('USA Movie') :
           (!empty($on_now->show_title) ? $on_now->show_title : ''),
       'episode_title' => $on_now->title,
-      'syndicated_url' => ($on_now->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($on_now->nid) : '',
       'episode_full_url' => url('schedule', array('query' => array('guid' => $on_now->guid))),
       'episode_class' => !empty($on_now->nid)
         ? usanetwork_tv_shows_color_show_css_class($on_now->nid) . ' show-color-border'
@@ -1875,7 +1865,6 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
       'episode_title' => $up_next->title,
       'time' => date('g:i', $up_next->start_time),
       'day_part' => date('A', $up_next->start_time),
-      'syndicated_url' => ($up_next->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($up_next->nid) : '',
       'episode_full_url' => url('schedule', array('query' => array('guid' => $up_next->guid))),
       'episode_class' => !empty($up_next->nid)
         ? usanetwork_tv_shows_color_show_css_class($up_next->nid) . ' show-color-border'
@@ -1891,7 +1880,6 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
             (!empty($tonight_item->show_title) ? $tonight_item->show_title : ''),
         'time' => date('g:i', $tonight_item->start_time),
         'day_part' => date('A', $tonight_item->start_time),
-        'syndicated_url' => ($tonight_item->program_type != 'movie') ? _usanetwork_menu_get_reminder_url($tonight_item->nid) : '',
         'episode_full_url' => url('schedule', array('query' => array('guid' => $tonight_item->guid))),
         'episode_class' => !empty($tonight_item->nid)
           ? usanetwork_tv_shows_color_show_css_class($tonight_item->nid) . ' show-color-border'
@@ -1911,30 +1899,6 @@ function _usanetwork_menu_aspot_onnow_tonight_ajax($time_correlation = 0) {
   return drupal_json_output(array(
     'html' => theme('usanetwork_menu_aspot_onnow_tonight', $theme_data),
   ));
-}
-
-/**
- * Returns reminder URL.
- */
-function _usanetwork_menu_get_reminder_url($show_nid = NULL) {
-  if (empty($show_nid)) {
-    return NULL;
-  }
-  $node = node_load($show_nid);
-  $see_it_url = field_get_items('node', $node, 'field_see_it_url');
-  if (!empty($see_it_url)) {
-    $see_it_url = reset($see_it_url);
-    return url(check_plain($see_it_url['value']));
-  }
-  else {
-    $url_alias_field = field_get_items('node', $node, 'field_pathauto_alias');
-    if (!empty($url_alias_field)) {
-      $alias = $url_alias_field[0]['value'];
-      return url('https://see.it/' . $alias);
-    }
-  }
-
-  return NULL;
 }
 
 /*

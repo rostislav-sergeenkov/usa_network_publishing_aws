@@ -1019,6 +1019,7 @@
                   }
                   if (reason === 'flash' && usaPlayerError.checkIfChrome55(navigator.userAgent)) {
                     isFlashBlockChrome55 = true;
+                    usaPlayerError.initFlashError();
                     tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH_55);
                   } else if (navigator.userAgent.indexOf('Mac') > 0 && navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
                     tveErrorHandler.showErrorMessage(tveErrorHandler.errors.MAC_SAFARI);

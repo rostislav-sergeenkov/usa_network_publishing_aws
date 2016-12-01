@@ -1117,14 +1117,14 @@
               if (!tveAuthConfig.disableAccessEnabler && !tveAuthConfig.isAccessEnablerModeJS) {
                 //Checking the existence of a valid swfobject plugin and Flash version
 
-                if (!helper.device.isMobile && !hasValidFlashVersion()) {
-                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.FLASH);
-                  return;
-                } else if (usaPlayerError.checkIfChrome() && !hasValidFlashVersion()) {
-                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
-                  return
-                } else if (isFlashBlockChrome55) {
+                if (isFlashBlockChrome55) {
                   tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH_55);
+                  return;
+                } else if (usaPlayerError.checkIfChrome() && !helper.device.isMobile && !hasValidFlashVersion()) {
+                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
+                  return;
+                } else if (!helper.device.isMobile && !hasValidFlashVersion()) {
+                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.FLASH);
                   return;
                 }
               }

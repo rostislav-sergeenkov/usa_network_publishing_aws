@@ -4238,10 +4238,6 @@ ul.menu li {
   line-height: 0;
 }
 
-.seeit-iframe-wrapper {
-  z-index: 9999 !important;
-}
-
 .person-quotation {
   border: 1px solid #e9eaeb;
   clear: both;

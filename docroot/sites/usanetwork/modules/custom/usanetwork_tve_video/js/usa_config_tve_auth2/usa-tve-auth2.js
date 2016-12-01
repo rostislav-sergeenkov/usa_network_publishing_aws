@@ -1120,7 +1120,7 @@
                 if (isFlashBlockChrome55) {
                   tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH_55);
                   return;
-                } else if (usaPlayerError.checkIfChrome() && !hasValidFlashVersion()) {
+                } else if (usaPlayerError.checkIfChrome() && !helper.device.isMobile && !hasValidFlashVersion()) {
                   tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
                   return;
                 } else if (!helper.device.isMobile && !hasValidFlashVersion()) {

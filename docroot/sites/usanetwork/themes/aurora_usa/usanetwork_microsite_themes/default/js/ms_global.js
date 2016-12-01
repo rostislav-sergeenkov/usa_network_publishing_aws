@@ -544,32 +544,6 @@
       $(window).off('popstate');
       $(window).off('hashchange');
 
-/*
-      if (!$('html').hasClass('ie9')) {
-        // Turn on browser history functionality -- for example, browser back button.
-        // Popped variable is used to detect initial (useless) popstate.
-        // If history.state exists, assume browser isn't going to fire initial popstate.
-        var popped = ('state' in window.history && window.history.state !== null),
-            initialURL = location.href;
-        $(window).on('popstate');
-        $(window).bind('popstate', function(event) {
-          // Ignore inital popstate that some browsers fire on page load
-          var initialPop = !popped && location.href == initialURL
-          popped = true;
-
-          if (initialPop) return;
-
-//usa_debug('============= onpopstate activated! new state: ');
-//usa_debug(history.state);
-          var urlParts = self.parseUrl(history.state['path']),
-
-              anchor = urlParts['section'],
-              item = urlParts['item'];
-          self.sectionScroll(anchor, item);
-        });
-      }
-*/
-
       // RESIZE
       // set resize and orientation change
       var resizeTimer;
@@ -580,7 +554,6 @@
         }, 250);
       });
       window.addEventListener('orientationchange', self.resizeResponse);
-
     }
   }
 })(jQuery);

@@ -345,7 +345,7 @@
       }
       else {
         var adslot = (section == 'home') ? 'topbanner' : 'midbanner';
-        mps.cloneAd(jQuery('#' + section + ' .ad-leaderboard'), adslot)
+        mps.cloneAd(jQuery('#' + section + ' .ad-leaderboard'), adslot);
         usa_debug('mps.cloneAds(' + section + ', ' + adslot + ')');
       }
     },

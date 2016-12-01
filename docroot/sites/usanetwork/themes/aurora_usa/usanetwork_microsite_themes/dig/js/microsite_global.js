@@ -7,29 +7,6 @@
 
     quoteAnimationTimer: null,
 
-    // mps
-    mpsLoadAd: function (sectionName, reloadAd) {
-
-      var topbanner = 'topbanner',
-          topbox = 'topbox';
-
-      initAd($('#' + sectionName + ' .' + topbanner), topbanner);
-
-      if (sectionName != 'quizzes') {
-        initAd($('#' + sectionName + ' .' + topbox), topbox);
-      }
-
-      function initAd(adBanner, nameAd) {
-        $.each(adBanner, function (index, item) {
-          try {
-            Drupal.behaviors.ms_mpsAd.loadAd($(item), nameAd, reloadAd);
-          } catch (e) {
-            usa_debug('error: mps loadAd');
-          }
-        })
-      }
-    },
-
     animateQuote: function (listSelector, k, kmax, tweenDuration) {
       var list = $('#microsite ' + listSelector),
           listId = list.attr('id'),
@@ -284,7 +261,7 @@
           Drupal.behaviors.microsite_scroll.quotationAnimation('#characters #character-quotes .quotes.' + activeCharacterId);
         }
 
-        Drupal.behaviors.microsite_scroll.mpsLoadAd(anchor, true);
+        Drupal.behaviors.ms_mpsAd.mpsLoadAd(anchor, true);
         Drupal.behaviors.microsite_scroll.micrositeSetOmnitureData(anchor, itemTitle);
 
         // set active menu item
@@ -1026,7 +1003,7 @@
       // test for video player load ad
       $(document).ready(function () {
 
-        Drupal.behaviors.microsite_scroll.mpsLoadAd(Drupal.behaviors.ms_mpsAd.getActiveSectionName(), false);
+        Drupal.behaviors.ms_mpsAd.mpsLoadAd(Drupal.behaviors.ms_mpsAd.getActiveSectionName(), false);
 
         if ($('#videos').hasClass('active')) {
           $('#video-container').addClass('active');

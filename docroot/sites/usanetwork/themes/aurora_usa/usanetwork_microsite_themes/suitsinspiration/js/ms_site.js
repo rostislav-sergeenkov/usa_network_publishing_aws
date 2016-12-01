@@ -36,8 +36,11 @@
         var ifrm = document.getElementById('offerpop-iframe'),
             hostname = window.location.hostname,
             env = hostname.replace('.usanetwork.com', '');
-        ifrm.contentWindow.postMessage(env, 'http://offerpop.com');
-//usa_debug('========== initIframeResize(), env: ' + env);
+        try {
+          ifrm.contentWindow.postMessage(env, 'http://offerpop.com');
+        } catch (e) {
+          usa_debug('error: postMessage offerpop');
+        }
       }, delay);
     },
 

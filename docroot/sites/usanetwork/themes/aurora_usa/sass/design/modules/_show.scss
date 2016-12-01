@@ -1427,7 +1427,7 @@
           line-height: 93px;
           padding: 0 44.5px;
         }
-        &:not(.active) {
+        &:not(.active):not(:hover) {
           background: none;
         }
       }

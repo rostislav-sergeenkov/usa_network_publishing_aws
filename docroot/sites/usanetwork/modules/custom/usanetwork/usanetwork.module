@@ -1,7 +1,5 @@
 <?php
 
-define('USANETWORK_SEEIT_DEFAULT_URL', 'https://seeitstage.sv.comcast.com/external/embedded/seeit-remind.js');
-
 define('USANETWORK_PROMO_ICON_CSS_PATH', 'public://css/promo_icon.css');
 define('USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME', 'cta_type');
 /**

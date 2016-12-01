@@ -395,10 +395,6 @@
           }
         };
 
-        var seeitClose = function () {
-          $('.seeit-iframe-wrapper').remove();
-        };
-
         showTitleMove();
         if($('.show-menu').length > 0) {
           showMenuMove();
@@ -422,14 +418,6 @@
             _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
         }, 500);
-
-        $(window).load(function () {
-          $('.calendar-reminder').click(function () {
-            if (getInternetExplorerVersion() !== -1) {
-              $('.seeit-icon-close').bind('click', seeitClose);
-            }
-          });
-        });
 
         $(window).on('resize', function (e) {
           clearTimeout(timer_id);

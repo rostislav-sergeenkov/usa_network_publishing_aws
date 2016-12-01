@@ -26,7 +26,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
-    'expanded' => 0,
+    'expanded' => 1,
     'weight' => -49,
     'customized' => 1,
   );
@@ -47,7 +47,27 @@ function usanetwork_menu_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -44,
+    'weight' => -43,
+    'customized' => 1,
+  );
+  // Exported menu link: main-menu_live-tv:videos/live
+  $menu_links['main-menu_live-tv:videos/live'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'videos/live',
+    'router_path' => 'videos/live',
+    'link_title' => 'Live TV',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_live-tv:videos/live',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: main-menu_movies:movies
@@ -66,7 +86,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
-    'expanded' => 0,
+    'expanded' => 1,
     'weight' => -48,
     'customized' => 1,
   );
@@ -86,7 +106,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
-    'expanded' => 0,
+    'expanded' => 1,
     'weight' => -46,
     'customized' => 1,
   );
@@ -106,7 +126,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
-    'expanded' => 0,
+    'expanded' => 1,
     'weight' => -47,
     'customized' => 1,
   );
@@ -127,7 +147,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => -44,
     'customized' => 1,
   );
   // Exported menu link: main-menu_shows:<nolink>
@@ -146,7 +166,7 @@ function usanetwork_menu_menu_default_menu_links() {
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
-    'expanded' => 0,
+    'expanded' => 1,
     'weight' => -50,
     'customized' => 1,
   );
@@ -154,6 +174,7 @@ function usanetwork_menu_menu_default_menu_links() {
   // Included for use with string extractors like potx.
   t('Full episodes');
   t('Home');
+  t('Live TV');
   t('Movies');
   t('News');
   t('Schedule');

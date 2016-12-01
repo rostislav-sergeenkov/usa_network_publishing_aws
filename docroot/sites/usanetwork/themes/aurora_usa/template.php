@@ -101,10 +101,10 @@ function aurora_usa_preprocess_html(&$vars) {
     else {
       $tv_content_node = usanetwork_core_api_get_tv_content_node($entity);
       if (!empty($tv_content_node)) {
-        if ($tv_content_node->type == 'tv_show') {
+        if (is_object($tv_content_node) && $tv_content_node->type == 'tv_show') {
           $vars['classes_array'][] = usanetwork_tv_shows_color_show_css_class($tv_content_node);
         }
-        elseif ($tv_content_node->type == 'movie') {
+        elseif (is_object($tv_content_node) && $tv_content_node->type == 'movie') {
           $vars['classes_array'][] = usanetwork_tv_shows_color_movie_css_class($tv_content_node);
           $vars['classes_array'][] = 'movie-consumptionator';
         }

@@ -337,8 +337,8 @@ function _usanetwork_core_api_get_node_image_field_names() {
 
 function usanetwork_core_api_get_tv_content_fields_names() {
   return array(
-    'tv_show' => 'field_show',
-    'movie' => 'field_movie',
+    'tv_show' => array('field_show'),
+    'movie' => array('field_movie', 'field_multiple_movies'),
   );
 }
 
@@ -351,9 +351,11 @@ function usanetwork_core_api_get_tv_content_node($entity) {
     $entity_type = 'file';
   }
   $entity_wrapper = entity_metadata_wrapper($entity_type, $entity);
-  foreach($field_names as $tv_content_type => $field_name) {
-    if (usanetwork_core_api_check_field($entity_wrapper, $field_name)) {
-      return $entity_wrapper->$field_name->value();
+  foreach($field_names as $tv_content_type) {
+    foreach($tv_content_type as $field_name) {
+      if (usanetwork_core_api_check_field($entity_wrapper, $field_name)) {
+        return $entity_wrapper->$field_name->value();
+      }
     }
   }
   return NULL;

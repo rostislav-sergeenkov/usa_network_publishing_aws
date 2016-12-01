@@ -176,7 +176,7 @@ function usanetwork_news_usa_omniture_alter(&$omniture_variables, $context) {
  * Get Related content
  */
 function usanetwork_news_get_all_related_content_for_consumpt_page($consumpt_node) {
-  $related_content = _usanetwork_news_cache_get_limited_related_content($consumpt_node, 0, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
+  $related_content = _usanetwork_news_cache_get_limited_related_content($consumpt_node, 0, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE + 1);
 
   if (!empty($related_content)) {
     drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');

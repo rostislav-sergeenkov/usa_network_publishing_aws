@@ -4238,10 +4238,6 @@ ul.menu li {
   line-height: 0;
 }
 
-.seeit-iframe-wrapper {
-  z-index: 9999 !important;
-}
-
 .person-quotation {
   border: 1px solid #e9eaeb;
   clear: both;
@@ -16454,6 +16450,40 @@ html.no-scroll, body.no-scroll {
     top: -56.25vw;
   }
 }
+.show-new-design .consumptionator-post-main-block #taboola-below-article-thumbnails {
+  background: white;
+  clear: none;
+  float: left;
+  padding: 25px 3.59375vw 15px;
+  width: 75%;
+}
+@media (min-width: 1601px) {
+  .show-new-design .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    padding: 25px 94px 15px 90px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .show-new-design .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    width: calc(100% - 320px);
+  }
+}
+@media (max-width: 1024px) {
+  .show-new-design .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    float: none;
+    padding: 25px 11.71875vw 15px;
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    padding: 25px 6.51042vw 15px;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design .consumptionator-post-main-block #taboola-below-article-thumbnails {
+    padding: 25px 6.25vw 15px;
+  }
+}
 
 @media (min-width: 1025px) {
   body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall-seo-page) .slick-list,
@@ -19745,24 +19775,8 @@ html.no-scroll, body.no-scroll {
 .show-new-design .where-to-watch .where-to-watch-inner .first-line .description-block:first-child {
   margin-top: 0;
 }
-.show-new-design .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner {
-  border: none;
-  text-align: center;
-}
-@media (max-width: 768px) {
-  .show-new-design .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider {
-    display: inline-block;
-    float: none;
-    text-align: center;
-    vertical-align: middle;
-    width: 45%;
-    margin-top: 0;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design .where-to-watch .where-to-watch-inner .first-line .usa-providers .providers-row-inner .provider a {
-    display: inline;
-  }
+.show-new-design .where-to-watch .where-to-watch-inner .last-line:only-child .description-block {
+  margin-top: 0;
 }
 .show-new-design .where-to-watch .where-to-watch-inner .link-buttons-wrap {
   margin-top: 15px;
@@ -19925,14 +19939,18 @@ html.no-scroll, body.no-scroll {
 }
 .show-new-design .where-to-watch .description-block {
   font-family: "FiraSansRegular", sans-serif;
-  font-size: 1.25vw;
+  font-size: 20px;
   line-height: 1.4;
   margin-top: 3.125vw;
 }
 @media (min-width: 1601px) {
   .show-new-design .where-to-watch .description-block {
-    font-size: 20px;
     margin-top: 50px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .show-new-design .where-to-watch .description-block {
+    font-size: 1.95313vw;
   }
 }
 @media (max-width: 768px) {
@@ -19956,9 +19974,14 @@ html.no-scroll, body.no-scroll {
   position: relative;
   text-align: center;
 }
+.show-new-design .where-to-watch .usa-providers .providers-row:last-child .providers-row-inner {
+  border: none;
+}
 .show-new-design .where-to-watch .usa-providers .providers-row-inner {
+  align-items: center;
   border-bottom: 2px solid;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   padding: 1.875vw 3.75vw;
   position: relative;
 }
@@ -19975,13 +19998,13 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .usa-providers .providers-row-inner {
     border: none;
+    flex-wrap: wrap;
     padding: 0 2.60417vw;
     width: 100%;
   }
 }
 .show-new-design .where-to-watch .usa-providers .provider {
-  display: table;
-  float: left;
+  display: block;
   margin-right: 8.75vw;
   position: relative;
 }
@@ -20000,15 +20023,17 @@ html.no-scroll, body.no-scroll {
   margin-right: 0;
 }
 .show-new-design .where-to-watch .usa-providers .provider a {
-  display: table-cell;
-  height: auto;
   outline: none;
   position: relative;
-  vertical-align: middle;
-  width: auto;
+}
+@media (min-width: 769px) {
+  .show-new-design .where-to-watch .usa-providers .provider a {
+    display: block;
+    height: auto;
+    width: auto;
+  }
 }
 .show-new-design .where-to-watch .usa-providers .provider a img {
-  max-width: 90%;
   max-height: 5vw;
 }
 @media (min-width: 1601px) {
@@ -20019,7 +20044,6 @@ html.no-scroll, body.no-scroll {
 @media (max-width: 768px) {
   .show-new-design .where-to-watch .usa-providers .provider a img {
     max-height: 10.41667vw;
-    height: 80px;
   }
 }
 .show-new-design .video-recap-block {

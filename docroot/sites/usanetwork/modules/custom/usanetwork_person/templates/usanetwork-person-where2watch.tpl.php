@@ -13,40 +13,44 @@
       <span class="section-title-wrapper show-border secondary"><?php print !empty($title) ? $title : ''; ?></span>
     </h2>
   <?php endif; ?>
-  <div class="where-to-watch-inner">
-    <div class="first-line">
-      <?php if (!empty($is_full_exists)) : ?>
-        <div class="description-block">
-          <?php print t('Watch now on:'); ?>
-        </div>
-        <div class="link-buttons-wrap">
-          <div class="link-button show-color">
-            <?php print $usa_live_link; ?>
+    <?php if (!empty($is_full_exists) || !empty($featured_elements)) : ?>
+      <div class="where-to-watch-inner">
+        <div class="first-line">
+        <?php if (!empty($is_full_exists)) : ?>
+          <div class="description-block">
+            <?php print t('Watch now on:'); ?>
           </div>
-          <div class="link-button show-color">
-            <?php print $usa_now_path; ?>
+          <div class="link-buttons-wrap">
+            <div class="link-button show-color">
+              <?php print $usa_live_link; ?>
+            </div>
+            <div class="link-button show-color">
+              <?php print $usa_now_path; ?>
+            </div>
           </div>
-        </div>
-      <?php endif; ?>
-      <?php if (!empty($featured_elements)) : ?>
-        <div class="description-block">
-          <?php print $primary_description; ?>
-        </div>
-        <div class="usa-providers">
+        <?php endif; ?>
+        <?php if (!empty($featured_elements)) : ?>
+          <div class="description-block">
+            <?php print $primary_description; ?>
+          </div>
+          <div class="usa-providers">
             <div class="providers-row">
               <div class="providers-row-inner">
                 <?php foreach ($featured_elements as $featured_element) : ?>
-                <div class="provider">
-                  <a href="<?php print $featured_element['url']; ?>" data-title="<?php print $featured_element['title']; ?>" target="_blank">
-                    <img src="<?php print $featured_element['image']; ?>">
-                  </a>
-                </div>
+                  <div class="provider">
+                    <a href="<?php print $featured_element['url']; ?>" data-title="<?php print $featured_element['title']; ?>" target="_blank">
+                      <img src="<?php print $featured_element['image']; ?>">
+                    </a>
+                  </div>
                 <?php endforeach; ?>
               </div>
             </div>
-        </div>
-      <?php endif; ?>
-    </div>
+          </div>
+        <?php endif; ?>
+      </div>
+    <?php else : ?>
+      <div class="where-to-watch-inner only-one-line">
+    <?php endif; ?>
     <?php if (!empty($elements)) : ?>
       <div class="last-line">
         <div class="description-block">

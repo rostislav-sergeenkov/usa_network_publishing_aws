@@ -1,4 +1,4 @@
-<div class="video-block">
+<div class="video-block<?php print (!empty($taboola_block))? ' taboola-enabled': '';?>">
   <div
     class="player-wrapper right-rail-line"
     data-usa-tve-player-container
@@ -52,4 +52,7 @@
       </div>
     </div>
   </div>
+  <?php if (!empty($taboola_block)) : ?>
+    <?php print $taboola_block; ?>
+  <?php endif; ?>
 </div>

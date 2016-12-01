@@ -148,13 +148,16 @@
               text-align: left;
               white-space: normal;
               @include breakpoint($bp-min-1025-width) {
+                font-size: get-vw(13px, 1025);
                 padding-top: get-vw(4px, 1901);
               }
               @include breakpoint($bp-min-1901-width) {
+                font-size: 24px;
                 padding-left: 132px;
                 padding-top: 4px;
               }
               @include breakpoint($between-769-1024) {
+                font-size: 13px;
                 padding-top: get-vw(3.5px, 1025);
               }
               @include breakpoint($bp-768-width) {
@@ -212,7 +215,6 @@
               }
             }
           }
-
         }
       }
     }

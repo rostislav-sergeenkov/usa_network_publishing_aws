@@ -59,6 +59,9 @@
           case 'consumptionator_news':
             service_name = 'news';
             break;
+          case 'all-movies':
+            service_name = 'all-movies';
+            break;
           default:
             service_name = 'usanetwork-tv-shows';
             break;

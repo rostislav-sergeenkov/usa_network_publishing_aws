@@ -568,8 +568,8 @@ function _usanetwork_person_render_cast_recap_block() {
   $show_node = _usanetwork_menu_show_menu_get_current_show_node();
   if (!empty($show_node)) {
     if (!empty($show_node->field_cast_recap_video)) {
-      $recap_video_file = reset(field_get_items('node', $show_node, 'field_cast_recap_video'));
-      $recap_video_file = file_load($recap_video_file['target_id']);
+      $recap_video_file = _usanetwork_get_field_item('node', $show_node, 'field_cast_recap_video', 'target_id');
+      $recap_video_file = file_load($recap_video_file);
       $file_wrapper = entity_metadata_wrapper('file', $recap_video_file);
       $promo_data = _usanetwork_promo_pull_file_promo_details($recap_video_file);
       $button_text = usanetwork_tv_shows_show_has_full_episodes($show_node->nid) ? t('Watch Full Episodes') : t('Watch More Video');
@@ -770,7 +770,7 @@ function _usanetwork_person_render_where2watch_block() {
         'usa_live_link' => l(t('USANetwork.com'), 'node/' . $show_node->nid . '/episodes'),
         'usa_now_path' => l(t('USA NOW App'), 'app'),
         'featured_elements' => $featured_elements,
-        'description' => t('@show is also available for streaming or purchase from the following providers:', array('@show' => $show_node->title)),
+        'description' => t('@show is @also available for streaming or purchase from the following providers:', array('@show' => $show_node->title, '@also' => (!empty($featured_elements)) ? t('also') : '')),
         'elements' => $elements,
       );
       cache_set($cache_name, $theme_vars, 'cache', REQUEST_TIME + 60 * 60);

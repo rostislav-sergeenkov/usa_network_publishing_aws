@@ -1328,6 +1328,22 @@ function usanetwork_media_gallery_form_media_gallery_node_form_alter(&$form, &$f
 }
 
 /**
+ * Preprocess the media thumbnail.
+ */
+function usanetwork_media_gallery_preprocess_media_thumbnail(&$variables) {
+  drupal_add_css(drupal_get_path('module', 'usanetwork_media_gallery') . '/css/usanetwork-media-gallery.css');
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function usanetwork_media_gallery_field_widget_form_alter(&$element, &$form_state, $context) {
+  if (($context['field']['type'] == 'file') || ($context['field']['type'] == 'image')) {
+    drupal_add_css(drupal_get_path('module', 'usanetwork_media_gallery') . '/css/usanetwork-media-gallery.css');
+  }
+}
+
+/**
  * See usanetwork_media_gallery_form_media_gallery_node_form_alter()
  * Validation on setting value only in one field
  *

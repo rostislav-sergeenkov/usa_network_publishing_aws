@@ -293,7 +293,14 @@ function usanetwork_person_block_view($delta = '') {
 
     case 'usanetwork_person_where2watch':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_person_render_where2watch_block();
+      $block['content'] = array(
+        '#markup' => _usanetwork_person_render_where2watch_block(),
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('module', 'usanetwork_person') . '/js/where_to_watch.js',
+          ),
+        ),
+      );
       break;
   }
 

@@ -55,7 +55,7 @@
               flashErrorLinkTpl = '<div class="flash-error"><a href="//get.adobe.com/flashplayer/" target="_blank"></a></div>';
 
           function checkIfChrome() {
-            return /chrome/i.test(navigator.userAgent);
+            return /chrome/i.test(navigator.userAgent) && !/edge/i.test(navigator.userAgent);
           }
 
           function checkIfChrome55(userAgent) {

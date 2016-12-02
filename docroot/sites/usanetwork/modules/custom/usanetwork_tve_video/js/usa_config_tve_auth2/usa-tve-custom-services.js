@@ -72,6 +72,7 @@
           return {
             checkIfChrome: checkIfChrome,
             checkIfChrome55: checkIfChrome55,
+            isLivePlayer: false,
             initGeoRestrictionError: function () {
               $($rootScope.playerWrap).html(geoErrorLinkTpl);
               this.hidePlayerThumbnail();

@@ -6,8 +6,8 @@
   ng.module('tve.auth.directives')
       .directive('usaPlayerIsLive', [
         '$rootScope',
-        'authService', '$cookies', '$timeout',
-        function ($rootScope, authService, $cookies, $timeout) {
+        'authService', '$cookies', '$timeout', 'usaPlayerError',
+        function ($rootScope, authService, $cookies, $timeout, usaPlayerError) {
 
           'use strict';
 
@@ -22,6 +22,8 @@
                 },
                   pdk = attr['pdk'],
                   logLevel = attr['loglevel'];
+
+                usaPlayerError.isLivePlayer = true;
 
 
                 // create global scope obj

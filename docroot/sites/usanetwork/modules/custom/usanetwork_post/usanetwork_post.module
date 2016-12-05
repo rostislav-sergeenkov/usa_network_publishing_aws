@@ -933,20 +933,6 @@ function usanetwork_post_ctools_render_alter(&$info, &$page, &$context) {
           else if ($value == 'node') {
             if ($entity = node_load($ctools_context->argument)) {
               $attached_files = _usanetwork_post_entity_blog_get_css_field($entity, $entity_type);
-              //add umbel code to page with comments
-              if (($entity->type == 'post') && ($entity->comment == 2)) {
-                $umbel_code = '
-window._umbel = window._umbel || [];
-(function() {
-  window._umbel_test_mode = false;
-  window._umbel_property = "usa_network";
-  var u = document.createElement(\'script\'); u.type = \'text/javascript\'; u.async = true;
-  u.src = document.location.protocol + \'//tags.api.umbel.com/iwgdlxrtqfiiortz/w.js?d=\' + new Date().getMonth() + \'-\' + new Date().getDate();
-  var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(u, s);
-})();
-';
-                drupal_add_js($umbel_code, 'inline');
-              }
             }
           }
         }

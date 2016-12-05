@@ -2606,7 +2606,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             $video_file = _usanetwork_microsite_get_video_file_by_url($node, $args[4], FALSE);
             if(isset($video_file) && !empty($video_file->filename)) {
               $content_name = $video_file->filename;
-              $umbel = $video_file->filename;
             }
           }
           else {
@@ -2617,7 +2616,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 $video_file = _usanetwork_microsite_get_first_published_item($videos_section_wrapper->field_ms_videos);
                 if (!empty($video_file)) {
                   $content_name = $video_file->filename;
-                  $umbel = $video_file->filename;
                 }
               }
             }
@@ -2631,7 +2629,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             if (!empty($node)) {
               $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
               $content_name = $person_names['person_title'];
-              $umbel = $person_names['person_title'];
             }
           }
           elseif (!$characters_homepage_present) {
@@ -2643,7 +2640,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 if (!empty($node)) {
                   $person_names = _usanetwork_microsite_get_person_title_and_role_name($node);
                   $content_name = $person_names['person_title'];
-                  $umbel = $person_names['person_title'];
                 }
               }
             }
@@ -2656,7 +2652,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             if(!empty($node)) {
               $content_name = $node->title;
               $specific_content_name = ''; //'Photo 1';
-              $umbel = $node->title;
             }
           }
           else {
@@ -2667,7 +2662,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 $node = _usanetwork_microsite_get_first_published_item($galleries_section_wrapper->field_ms_media_gallery);
                 $content_name = $node->title;
                 $specific_content_name = ''; //'Photo 1';
-                $umbel = $node->title;
               }
             }
           }
@@ -2690,7 +2684,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
               }
               $content_name = $node_wrapper->title->value();
               $specific_content_name = str_replace('Season ', 'S', $season_title) . ' E' . $episode_number . ' Scene 1';
-              $umbel = $node_wrapper->title->value();
             }
           }
           break;
@@ -2700,7 +2693,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
             $node = _usanetwork_microsite_get_content_by_url($node, $args[4], 'episodes');
             if (!empty($node)) {
               $content_name = $node->title;
-              $umbel = $node->title;
             }
           }
           else {
@@ -2711,7 +2703,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
                 $node = _usanetwork_microsite_get_first_published_item($episodes_section_wrapper->field_ms_episode);
                 if (!empty($node)) {
                   $content_name = $node->title;
-                  $umbel = $node->title;
                 }
               }
             }
@@ -2719,7 +2710,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
           break;
         case 'about':
           $content_type = 'About';
-          $umbel = $content_type;
           break;
         case 'games':
           $content_type = 'Games';
@@ -2802,10 +2792,6 @@ function usanetwork_microsite_usa_omniture_alter(&$omniture_variables, $context)
       $omniture_variables['s.prop10'] = $omniture_array[0];
       $omniture_variables['s.prop4'] = ($content_type == 'Bio') ? 'Profile Page' : join($join_str, array_slice($omniture_array, 0, 2)); // 'Profile Page' is intentional per Loretta
       $omniture_variables['s.prop5'] = join($join_str, array_slice($omniture_array, 0, 3));
-
-      if (!empty($umbel)) {
-        $omniture_variables['umbel'] = $umbel;
-      }
     }
   }
 }

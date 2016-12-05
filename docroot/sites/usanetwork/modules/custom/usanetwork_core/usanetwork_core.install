@@ -1462,3 +1462,12 @@ function usanetwork_core_update_7198() {
   module_disable($modules);
   drupal_uninstall_modules($modules);
 }
+
+/**
+ * Disable usanetwork_umbel module.
+ */
+function usanetwork_core_update_7199() {
+  $modules = array('usanetwork_umbel');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}

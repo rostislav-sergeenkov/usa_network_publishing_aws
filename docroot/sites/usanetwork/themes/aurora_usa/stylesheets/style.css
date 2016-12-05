@@ -1,4 +1,4 @@
-@charset "IBM437";
+@charset "UTF-8";
 .clearfix {
   zoom: 1;
 }
@@ -16249,7 +16249,7 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   width: 100%;
 }
 .consumptionator-page .video-block .player-wrapper .video-player-wrapper.section-player .flash-error, .page-videos-live .video-block .player-wrapper .video-player-wrapper.section-player .flash-error {
-  background-image: url("../images/flash-error.jpeg");
+  background-image: url("../images/flash-error.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

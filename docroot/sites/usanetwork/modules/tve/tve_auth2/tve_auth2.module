@@ -18,6 +18,10 @@ define('TVE_AUTH2_STATUS_DIFFERENT', t('Draft and published settings are differe
 define('TVE_AUTH2_STATUS_EQUAL', t('Draft and published settings are equal.'));
 define('TVE_AUTH2_FLASH_ERROR_TITLE', "Oops! Your device isn't currently configured to play our videos.");
 define('TVE_AUTH2_FLASH_ERROR_DESCRIPTION', 'Our native app is coming soon.');
+define('TVE_AUTH2_CHROME_FLASH_TITLE', 'Flash is disabled in Chrome');
+define('TVE_AUTH2_CHROME_FLASH_ERROR_DESCRIPTION', 'Chrome has disabled the flash on your machine, please turn it on!');
+define('TVE_AUTH2_CHROME_FLASH_55_TITLE', 'Chrome 55 disabled flash');
+define('TVE_AUTH2_CHROME_FLASH_55_ERROR_DESCRIPTION', 'Chrome 55 has disabled the flash on your machine, please turn it on!');
 define('TVE_AUTH2_ADOBEPASS_ERROR_TITLE', "Sorry! There's a problem.");
 define('TVE_AUTH2_ADOBEPASS_ERROR_DESCRIPTION', 'Sorry about that! The login is not available now. Please try again later.');
 define('TVE_AUTH2_MACSAFARI_ERROR_TITLE', "Sorry! There's a problem with your flash version.");

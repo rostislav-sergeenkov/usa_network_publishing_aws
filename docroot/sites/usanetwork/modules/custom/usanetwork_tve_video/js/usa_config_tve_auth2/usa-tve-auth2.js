@@ -559,8 +559,13 @@
       .factory('tveErrorHandler', [
         '$http', '$log', 'helper', 'tveModal', 'errorConfig',
         function($http, $log, helper, tveModal, errorConfig) {
+
+        // debugger;
+
           var errorTypes = {
                 FLASH     : 'flash',
+                CHROME_FLASH: 'chrome_flash',
+                CHROME_FLASH_55: 'chrome_flash_55',
                 GENERAL   : 'general',
                 ADOBE_PASS: 'adobepass',
                 MAC_SAFARI: 'macsafari',
@@ -797,7 +802,12 @@
 
             if (swfobject && !swfobject.hasFlashPlayerVersion(version)) {
               if (isFullEpisode) {
+
                 usaPlayerError.initFlashError();
+
+                if (usaPlayerError.checkIfChrome()) {
+                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
+                }
               }
             }
 
@@ -972,9 +982,9 @@
       .provider('authService', function() {
         this.$get = [
           '$http', '$q', '$cookies', '$cookieStore',
-          'tveAuthConfig', 'helper', 'tveModal', 'tveErrorHandler',
+          'tveAuthConfig', 'helper', 'tveModal', 'tveErrorHandler', 'usaPlayerError',
           function($http, $q, $cookies, $cookieStore,
-                   tveAuthConfig, helper, tveModal, tveErrorHandler) {
+                   tveAuthConfig, helper, tveModal, tveErrorHandler, usaPlayerError) {
 
             // is resolved after adobe pass check is finished and all the resources for modals are downloaded
             var authDefer = $q.defer(),
@@ -986,7 +996,8 @@
                 tveCookie = JSON.parse($.cookie(tveCookiesKeys.NBCU_USER)),
                 _isAuthenticated = tveCookie && tveCookie['authn'],
                 _selectedMvpd = tveCookie&& tveCookie['selectedProvider'],
-                adobePassApi, mvpdService, modalsData, modalsDataPreview;
+                adobePassApi, mvpdService, modalsData, modalsDataPreview,
+                isFlashBlockChrome55 = false;
 
             if (typeof Drupal.settings.tve_cookie_detection != 'undefined') {
               var thirdPartyCookieEnabled = Drupal.settings.tve_cookie_detection.status;
@@ -1006,7 +1017,13 @@
                     authDefer.reject(reason);
                     return;
                   }
-                  if (navigator.userAgent.indexOf('Mac') > 0 && navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+                  if (reason === 'flash' && usaPlayerError.checkIfChrome55(navigator.userAgent)) {
+                    isFlashBlockChrome55 = true;
+                    if (!usaPlayerError.isLivePlayer) {
+                      usaPlayerError.initFlashError();
+                    }
+                    tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH_55);
+                  } else if (navigator.userAgent.indexOf('Mac') > 0 && navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
                     tveErrorHandler.showErrorMessage(tveErrorHandler.errors.MAC_SAFARI);
                   }
                   else {
@@ -1101,7 +1118,14 @@
 
               if (!tveAuthConfig.disableAccessEnabler && !tveAuthConfig.isAccessEnablerModeJS) {
                 //Checking the existence of a valid swfobject plugin and Flash version
-                if (!helper.device.isMobile && !hasValidFlashVersion()) {
+
+                if (isFlashBlockChrome55) {
+                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH_55);
+                  return;
+                } else if (usaPlayerError.checkIfChrome() && !helper.device.isMobile && !hasValidFlashVersion()) {
+                  tveErrorHandler.showErrorMessage(tveErrorHandler.errors.CHROME_FLASH);
+                  return;
+                } else if (!helper.device.isMobile && !hasValidFlashVersion()) {
                   tveErrorHandler.showErrorMessage(tveErrorHandler.errors.FLASH);
                   return;
                 }

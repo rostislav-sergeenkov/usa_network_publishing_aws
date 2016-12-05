@@ -2456,8 +2456,16 @@ function theme_usanetwork_mpx_video($variables) {
   //   <iframe src="http://player.theplatform.com/p/vCBdGC/C4Urwvl8rU61/embed/select/XaFHqcNj3NFM" width="480" height="270" frameborder="0" allowfullscreen>Your browser does not support iframes.</iframe>
   // Add id attribute to player iframe and a option to pass in extra query
   // params to the iframe url.
+  $global_player = variable_get('usanetwork_global_player_url', '');
 
-  $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
+  if (!empty($global_player)) {
+    $player_source = $global_player;
+  } else {
+    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
+  }
+
+  $player_source .=  '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
+
   $player_parameters = array(
     'query' => (isset($variables['pub_mpx_player_parameters'])
         ? $variables['pub_mpx_player_parameters']
@@ -2549,11 +2557,21 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     $mpx_guid = $file->field_mpx_guid[0]['value'];
   }
 
+  $global_player = variable_get('usanetwork_global_player_url', '');
+
   if ($return_type == 'video') {
     if ((!isset($file->fid)) || (!$mpx_guid) || !$mpx_account_pid || !$player_id) {
       return '';
     }
-    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
+
+    if (!empty($global_player)) {
+      $player_source = $global_player;
+    } else {
+      $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
+    }
+
+    $player_source .= '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
+
     $player_parameters = array(
         'query' => (isset($variables['pub_mpx_player_parameters'])
             ? $variables['pub_mpx_player_parameters']
@@ -2566,7 +2584,12 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     if (!$mpx_account_pid || !$player_id) {
       return '';
     }
-    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
+    if (!empty($global_player)) {
+      $player_source = $global_player;
+    } else {
+      $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
+    }
+
     $player_parameters = array(
       'query' => (isset($variables['pub_mpx_player_parameters'])
         ? $variables['pub_mpx_player_parameters']

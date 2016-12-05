@@ -51,16 +51,34 @@
         '$rootScope',
         function ($rootScope) {
 
-          var geoError = '<div class="geo-error"><a href="/" target="_blank"></a></div>',
-              flashError = '<div class="flash-error"><a href="//get.adobe.com/flashplayer/" target="_blank"></a></div>';
+          var geoErrorLinkTpl = '<div class="geo-error"><a href="/" target="_blank"></a></div>',
+              flashErrorLinkTpl = '<div class="flash-error"><a href="//get.adobe.com/flashplayer/" target="_blank"></a></div>';
+
+          function checkIfChrome() {
+            return /chrome/i.test(navigator.userAgent) && !/edge/i.test(navigator.userAgent);
+          }
+
+          function checkIfChrome55(userAgent) {
+            if (userAgent.indexOf('Chrome') != -1) {
+              var arr = userAgent.split(' ');
+              var version = arr.find(function (item) {
+                return item.match(/(?:^|[ ])Chrome\/(.*)/);
+              });
+              return version ? parseInt(version.replace('Chrome/', '').split('.')[0]) == 55 : false;
+            }
+            return false;
+          }
 
           return {
+            checkIfChrome: checkIfChrome,
+            checkIfChrome55: checkIfChrome55,
+            isLivePlayer: false,
             initGeoRestrictionError: function () {
-              $($rootScope.playerWrap).html(geoError);
+              $($rootScope.playerWrap).html(geoErrorLinkTpl);
               this.hidePlayerThumbnail();
             },
             initFlashError: function () {
-              $($rootScope.playerWrap).html(flashError);
+              $($rootScope.playerWrap).html(flashErrorLinkTpl);
               this.hidePlayerThumbnail();
             }
           };

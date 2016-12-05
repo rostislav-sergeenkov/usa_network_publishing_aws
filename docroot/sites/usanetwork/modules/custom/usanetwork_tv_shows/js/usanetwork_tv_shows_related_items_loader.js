@@ -111,6 +111,10 @@
             window.picturefill();
           }
 
+          if(!$('body').hasClass('show-new-design')) {
+            Drupal.behaviors.promo_rules.refreshDescriptionLinesPromo();
+          }
+
           if (data.overlimited == false) {
             $('.ajax-load-block .load-more-link a').removeClass('disabled');
           } else {

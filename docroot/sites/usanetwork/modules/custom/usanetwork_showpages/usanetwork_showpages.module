@@ -722,7 +722,7 @@ function usanetwork_showpages_preprocess_html(&$vars) {
               $blog_title = usanetwork_consumptionator_post_get_blog_title($tv_content);
               $head_title = $node->title . ' | ' . $blog_title .  ' | Blog | ' . $tv_content->title . ' | USA Network';
             } else {
-              $head_title = $node->title . ' | Movie Post | USA Network';
+              $head_title = $node->title . ' | Movies | USA Network';
             }
 
           }

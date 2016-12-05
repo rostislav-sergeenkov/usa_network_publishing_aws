@@ -22699,7 +22699,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     padding: 0 44.5px;
   }
 }
-.show-menu-tab .show-menu > li > a:not(.active) {
+.show-menu-tab .show-menu > li > a:not(.active):not(:hover) {
   background: none;
 }
 

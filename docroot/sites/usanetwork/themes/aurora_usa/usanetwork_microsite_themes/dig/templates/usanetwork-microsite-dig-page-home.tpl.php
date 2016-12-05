@@ -14,7 +14,7 @@
  */
 ?>
 
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_home"></div>
+<div class="ad-leaderboard topbanner"></div>
 <div class="region region-content">
   <div class="panel-display panel-onecol-stacked clearfix">
     <div class="panel-wrapper">

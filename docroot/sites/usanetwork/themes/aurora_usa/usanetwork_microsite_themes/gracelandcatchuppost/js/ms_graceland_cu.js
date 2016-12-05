@@ -104,12 +104,12 @@
                         dataFullEpisode = $activeVideoThumb.attr('data-full-episode');
 
                     if (dataFullEpisode == 'false' && Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard')) {
-                      Drupal.behaviors.ms_global.create728x90Ad(sectionId);
+                      Drupal.behaviors.ms_mpsAd.mpsLoadAd(sectionId, true);
                     }
                   }
                   else {
                     if (Drupal.behaviors.ms_global.isScrolledIntoView('#' + sectionId + ' .ad-leaderboard')) {
-                      Drupal.behaviors.ms_global.create728x90Ad(sectionId);
+                      Drupal.behaviors.ms_mpsAd.mpsLoadAd(sectionId, true);
                     }
                   }
                 }

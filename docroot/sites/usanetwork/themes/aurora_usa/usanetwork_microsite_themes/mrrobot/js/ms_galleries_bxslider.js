@@ -354,33 +354,38 @@
                 var galleryNavHeight = parseInt($('#galleries #gallery-content .bxslider img:first').height());
                 minNavSlides = Math.round(galleryNavHeight / (slideHeight + slideMargin));
 
-                $('.bxslider').swipe({
-                  excludedElements: "button, input, select, textarea, .noSwipe",
-                  allowPageScroll: "vertical",
-                  threshold: 50,
-                  swipeRight: function () {
-                    if ($('html').hasClass('touch')){
-                      var $activeSlide = $('#galleries #gallery-content ul.bxslider li.active2'),
-                          slideNum = (parseInt($activeSlide.attr('data-slide-index')) - 1);
-                      if (slideNum > -1) {
-                        $activeSlide.removeClass('active2').prev().addClass('active2');
-                        self.updateImageInfo(slideNum);
+                try {
+                  $('.bxslider').swipe({
+                    excludedElements: "button, input, select, textarea, .noSwipe",
+                    allowPageScroll: "vertical",
+                    threshold: 50,
+                    swipeRight: function () {
+                      if ($('html').hasClass('touch')){
+                        var $activeSlide = $('#galleries #gallery-content ul.bxslider li.active2'),
+                            slideNum = (parseInt($activeSlide.attr('data-slide-index')) - 1);
+                        if (slideNum > -1) {
+                          $activeSlide.removeClass('active2').prev().addClass('active2');
+                          self.updateImageInfo(slideNum);
+                        }
                       }
-                    }
-                  },
-                  swipeLeft: function () {
-                    if ($('html').hasClass('touch')){
-                      var totalNumSlides = $('#galleries #gallery-content ul.bxslider li').length,
-                          $activeSlide = $('#galleries #gallery-content ul.bxslider li.active2'),
-                          slideNum = (parseInt($activeSlide.attr('data-slide-index')) + 1);
-                      if (slideNum < totalNumSlides) {
-                        $activeSlide.removeClass('active2').next().addClass('active2');
-                        self.updateImageInfo(slideNum);
+                    },
+                    swipeLeft: function () {
+                      if ($('html').hasClass('touch')){
+                        var totalNumSlides = $('#galleries #gallery-content ul.bxslider li').length,
+                            $activeSlide = $('#galleries #gallery-content ul.bxslider li.active2'),
+                            slideNum = (parseInt($activeSlide.attr('data-slide-index')) + 1);
+                        if (slideNum < totalNumSlides) {
+                          $activeSlide.removeClass('active2').next().addClass('active2');
+                          self.updateImageInfo(slideNum);
+                        }
                       }
-                    }
 
-                  }
-                });
+                    }
+                  });
+                } catch (e) {
+                  usa_debug('error: bxslider swipe');
+                }
+
 
                 // initialize navigation/thumbnail slider
                 $('#bx-pager').bxSlider({

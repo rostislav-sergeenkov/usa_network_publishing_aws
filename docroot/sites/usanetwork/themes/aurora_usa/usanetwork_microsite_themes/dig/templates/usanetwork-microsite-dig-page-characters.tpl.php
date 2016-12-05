@@ -40,7 +40,7 @@
   <div id="right-pane-bg"></div>
 
   <!-- 728x90 ad -->
-  <div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_characters"></div>
+  <div class="ad-leaderboard topbanner"></div>
 
   <!-- quotes -->
   <?php if (!empty($people)): ?>
@@ -161,6 +161,6 @@
     <!-- end character info -->
 
     <!-- 300x250 ad -->
-    <div class="ad300x250 content dart-tag dart-name-300x250_ifr_reload_characters"></div>
+    <div class="ad300x250 content topbox"></div>
   </div>
 </div>

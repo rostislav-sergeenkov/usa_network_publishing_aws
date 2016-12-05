@@ -8,7 +8,7 @@
  * - $background_url - the URL of page background
  */
 ?>
-<div class="ad-leaderboard dart-tag dart-name-728x90_ifr_reload_games"></div>
+<div class="ad-leaderboard topbanner"></div>
 
 <?php if (!empty($h1) && $status == 'active'): ?>
   <h1><?php print $h1; ?></h1>

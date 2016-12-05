@@ -37,9 +37,6 @@
           $touch = false;
         }
 
-        console.info(autoScroll === 1 ? true : false);
-        console.info(slideShowSpeed != '' ? slideShowSpeed : 7000);
-
         $slideshow_selector
             .addClass('slides')
             .wrap('<div id="show-main-slider" class="flexslider a-spot"></div>')

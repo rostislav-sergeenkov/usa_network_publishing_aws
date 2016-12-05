@@ -35,7 +35,6 @@
     },
 
     initImgShow: function(items) {
-      console.info('initImgShow');
       var lazyloaderItems = items || $('img.lazyloader-icon');
       $.each(lazyloaderItems, function (index, item) {
         var image = $(item).parent().find('img[data-src]');

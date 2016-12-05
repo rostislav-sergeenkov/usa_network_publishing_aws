@@ -6,8 +6,7 @@
  * - $background_url - the URL of page background
  */
 ?>
-<div
-  class="ad_728x90 ad-leaderboard dart-tag dart-name-728x90_ifr_reload_videos"></div>
+<div class="ad-leaderboard topbanner"></div>
 <div class="full-pane">
   <div id="video-container"
        data-usa-tve-player-container
@@ -109,7 +108,6 @@
           </div>
         </div>
       </div>
-      <div id="ad_300x60_1"></div>
       <div class="video-player-desc">
         <?php if (!empty($video_desc)): ?>
           <?php print $video_desc; ?>
@@ -154,7 +152,7 @@
                     <?php endif; ?>
                     <?php if ($v_key == 1 || $video_count == 1): ?>
                       <li class="thumbnail views-row grid-item ad">
-                        <div id="ad_300x250_1"></div>
+                        <div id="ad_300x250_1" class="topbox"></div>
                       </li><?php endif; ?>
                   <?php endforeach; ?>
                 </ul>

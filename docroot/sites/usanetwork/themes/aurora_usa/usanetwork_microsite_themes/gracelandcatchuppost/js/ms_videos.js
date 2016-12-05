@@ -120,11 +120,6 @@
           dataPlayerId = activeVideoThumb.attr('data-player-id'),
           dataFid = activeVideoThumb.attr('data-fid'),
           dataFullEpisode = activeVideoThumb.attr('data-full-episode'),
-          ad_728x90 = $('#videos .ad_728x90'),
-          ad_728x90_1 = $('#videos .ad_728x90_1'),
-          ad_300x60_1 = $('#videos #ad_300x60_1'),
-          ad_300x250 = $('#videos #ad_300x250'),
-          ad_300x250_1 = $('#videos #ad_300x250_1'),
           isAuth = false,
           filter,
           url;
@@ -140,35 +135,10 @@
       }
 
       if (dataFullEpisode == 'true') {
-        Drupal.behaviors.ms_videos.micrositeMobileModal();
-        if (ad_300x250_1) {
-          ad_300x250_1.closest('li.ad').hide();
-          ad_300x250_1.attr('id', 'ad_300x250').empty();
-        }
-        if (ad_728x90.attr('id') != 'ad_728x90_1') {
-          ad_728x90.attr('data-class', ad_728x90.attr('class')).removeAttr('class').addClass('ad_728x90').attr('id', 'ad_728x90_1');
-        }
-
+        Drupal.behaviors.microsite_scroll.micrositeMobileModal();
         $('#videos .full-pane').addClass('full-desc');
-        ad_300x60_1.show();
-      }
-      else { // not full episode
+      } else {
         $('#videos .full-pane').removeClass('full-desc');
-        ad_300x60_1.hide();
-
-        if (ad_728x90.attr('id') == 'ad_728x90_1') {
-          ad_728x90.attr('class', '').attr('class', ad_728x90.attr('data-class')).removeAttr('data-class').attr('id', '').empty();
-        }
-        if ($('#videos').find(ad_300x250)) {
-          ad_300x250.closest('li.ad').show();
-          ad_300x250.attr('id', 'ad_300x250_1');
-        }
-        if ($('#videos').find(ad_300x250_1)) {
-          ad_300x250_1.closest('li.ad').show();
-        }
-        if (dataFullEpisode == 'false' && Drupal.behaviors.ms_global.isScrolledIntoView('#videos .ad-leaderboard')) {
-          Drupal.behaviors.ms_global.create728x90Ad();
-        }
       }
 
       Drupal.behaviors.ms_videos.micrositeSetPausePlayer();

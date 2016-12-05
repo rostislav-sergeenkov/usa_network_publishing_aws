@@ -22,7 +22,7 @@
       </div>
     </div>
     <?php if (!empty($show_image_desktop) || !empty($show_image_retina)): ?>
-      <div class="asset-img desktop" data-picture data-alt="" data-class="tile-img">
+      <div class="asset-img desktop" data-alt="" data-class="tile-img">
         <?php if (!empty($show_image_desktop)): ?>
           <div data-src="<?php print $show_image_desktop; ?>"></div>
           <!--[if (IE 8) & (!IEMobile)]>

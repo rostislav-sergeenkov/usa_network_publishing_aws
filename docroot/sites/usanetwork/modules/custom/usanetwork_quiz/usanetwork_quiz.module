@@ -316,7 +316,7 @@ function usanetwork_quiz_preprocess_usanetwork_quiz(&$vars) {
   // in the quizzes section of microsites. Gigya share does not allow html tags,
   // so this code removes the tags. Is there a better way to do this?
   $description = _usanetwork_quiz_get_field_item_value($node, 'body', 'value');
-  $settings['quizDescription'] = strip_tags($description);
+  $settings['quizDescription'] = drupal_html_to_text($description);
   drupal_add_js(array(
     'usanetwork_quiz' => array(
       $node->nid => $settings,

@@ -53,6 +53,13 @@
             <?php if (!empty($where2watch_link)) : ?>
               <div class="full-episode-button hover-avail"><div class="button-inner show-border"><a href="<?php print $where2watch_link; ?>" target="_blank"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('More Ways to watch'); ?><span class="show-color show-font"></span></a></div></div>
             <?php endif; ?>
+          <?php else: ?>
+            <?php if (!empty($featured_provider)) : ?>
+              <div class="full-episode-button hover-avail show-color"><a href="<?php print $featured_provider['url']; ?>" target="_blank"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Watch on @provider', array('@provider' => $featured_provider['title'])); ?><span class="show-color show-font"></span></a></div>
+            <?php endif; ?>
+            <?php if (!empty($where2watch_link)) : ?>
+              <div class="full-episode-button hover-avail show-color"><a href="<?php print $where2watch_link; ?>" target="_blank"><div class="font-icon video-font-icon show-color show-font"></div><?php print t('Other Ways to watch'); ?><span class="show-color show-font"></span></a></div>
+            <?php endif; ?>
           <?php endif; ?>
         <?php endif; ?>
         <?php if (!empty($second_full_episode_url)): ?>

@@ -91,6 +91,7 @@ function usanetwork_episodes_block_view($delta = '') {
     case 'usanetwork_episodes_main_block':
       $block['subject'] = '';
       $block['content'] = _usanetwork_episodes_main_block();
+      $block['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-sticky-share.js';
       break;
     case 'usanetwork_episodes_ep_carousel':
       $block['subject'] = '';
@@ -358,6 +359,7 @@ function _usanetwork_episodes_main_block() {
     $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_id);
     $theme_variables = array(
       'sharebar' => usanetwork_menu_render_sharebar($episode_node, 'node', t('Share'), $episode_node->title , $share_description),
+      'sticky_sharebar' => usanetwork_menu_render_sharebar($episode_node, 'node', '', $episode_node->title , $share_description, '',  'facebook, twitter, tumblr, share'),
       'episode_title' => $episode_node->title,
       'body' => $body,
       'season_number' => !empty($season_num) ? $season_num : '',

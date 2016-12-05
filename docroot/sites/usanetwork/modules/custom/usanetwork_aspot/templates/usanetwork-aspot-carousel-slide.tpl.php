@@ -9,7 +9,7 @@
     <div class="node usanetwork-aspot <?php print $show_class; ?>"  data-show-name="<?php print $show_name; ?>"  data-show="<?php print $show_class; ?>">
       <a href="<?php print $show_url; ?>" class="asset-img-link" target="_self">
         <?php if (!empty($show_poster)): ?>
-          <div class="asset-img" data-picture data-alt="" data-class="tile-img">
+          <div class="asset-img" <?php print(!empty($is_front)? '' : 'data-picture'); ?> data-alt="" data-class="tile-img">
             <div class="hidden offset-data" data-img-src="<?php print $show_poster['desktop']; ?>" data-shift-percent="<?php print $show_image_bg_offset; ?>"></div>
             <?php if (!empty($show_poster['mobile'])): ?>
               <div data-src="<?php print $show_poster['mobile']; ?>"></div>

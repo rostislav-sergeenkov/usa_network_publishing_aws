@@ -96,6 +96,7 @@ function usanetwork_timeline_gallery_field_group_info() {
       6 => 'field_promo_title',
       7 => 'field_promo_topic',
       8 => 'field_promo_violator_name',
+      9 => 'field_promo_appear_under',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

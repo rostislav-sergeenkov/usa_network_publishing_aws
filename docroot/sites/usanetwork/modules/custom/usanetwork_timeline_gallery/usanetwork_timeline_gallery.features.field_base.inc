@@ -10,6 +10,31 @@
 function usanetwork_timeline_gallery_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_promo_appear_under'
+  $field_bases['field_promo_appear_under'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_promo_appear_under',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'video' => 'Video landing page',
+        'photo' => 'Photo landing page',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_share_description'
   $field_bases['field_share_description'] = array(
     'active' => 1,

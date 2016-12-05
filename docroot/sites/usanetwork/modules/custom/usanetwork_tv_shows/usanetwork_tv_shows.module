@@ -4346,15 +4346,29 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
   $cached_data = cache_get('usanetwork_tvslp_videos_' . $show_node->nid);
 
   if (empty($cached_data)) {
-    $query = db_select('file_managed', 'f');
-    $query->fields('f', array('fid'));
-    $query->condition('f.published', '1');
-    $query->join('field_data_field_show', 's', 'f.fid=s.entity_id');
-    $query->condition('s.entity_type', 'file');
+    $query = db_select('field_data_field_show', 's');
     $query->condition('s.field_show_target_id', $show_node->nid);
-    $query->join('mpx_video', 'mv', 'f.fid=mv.fid');
-    $query->addField('mv', 'airdate', 'airdate');
-    $query->condition('mv.status', '1');
+    $query->leftJoin('file_managed', 'f', 'f.fid=s.entity_id');
+    $query->leftJoin('node', 'n', 'n.nid=s.entity_id');
+    $query->addExpression('IF(n.nid is NULL, f.fid, n.nid)', 'id');
+    $query->leftJoin('field_data_field_promo_appear_under', 'au', 'au.entity_id = n.nid');
+    $query->condition(
+      db_or()
+        ->condition('s.entity_type', 'file')
+        ->condition('au.field_promo_appear_under_value', 'video')
+    );
+    $query->addField('s', 'entity_type', 'entity_type');
+    $query->leftJoin('mpx_video', 'mv', 'f.fid=mv.fid');
+    $file_is_published = db_and()->condition('f.published', 1)->condition('mv.status', '1');
+    $query->condition(
+      db_or()
+        ->condition($file_is_published)
+        ->condition('n.status', 1)
+    );
+    $query->leftJoin('field_data_field_promo_created_ovts', 'promo_date_field', 'promo_date_field.entity_id=f.fid');
+    $query->addExpression('IF(promo_date_field.field_promo_created_ovts_value is NULL, mv.airdate, promo_date_field.field_promo_created_ovts_value)', 'airdate');
+    $query->leftJoin('field_data_field_promo_created_ovts', 'ovts', 'ovts.entity_id = n.nid');
+    $query->addExpression('IF(ovts.field_promo_created_ovts_value is NULL, n.created, ovts.field_promo_created_ovts_value)', 'sorted_time');
     $query->leftJoin('field_data_field_usa_video_terms', 't', 'f.fid=t.entity_id');
     $query->addField('t', 'field_usa_video_terms_target_id', 'category_term');
     $query->leftJoin('field_data_field_promo_exclude_from_related', 'promo_exclude_field', 'promo_exclude_field.entity_id=f.fid');
@@ -4363,8 +4377,6 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
     $no_promo_exclude_field->condition('promo_exclude_field.field_promo_exclude_from_related_value', NULL);
     $query->condition($no_promo_exclude_field);
     $query->addField('promo_exclude_field', 'field_promo_exclude_from_related_value', 'exclude');
-    $query->leftJoin('field_data_field_promo_created_ovts', 'promo_date_field', 'promo_date_field.entity_id=f.fid');
-    $query->addField('promo_date_field', 'field_promo_created_ovts_value', 'overriding_date');
     $query->leftJoin('field_data_field_mpx_full_episode', 'full_episode', 'full_episode.entity_id=f.fid');
     $query->addField('full_episode', 'field_mpx_full_episode_value', 'is_full');
     $query->leftJoin('field_data_field_mpx_language', 'fdfml', 'fdfml.entity_id = f.fid');
@@ -4376,12 +4388,12 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
       $sorted_result = array();
 
       foreach ($result as $result_item_index => $result_item) {
-        if (!isset($sorted_result[$result_item->fid])) {
-          $sorted_result[$result_item->fid] = $result_item;
-          $sorted_result[$result_item->fid]->category_term = array($sorted_result[$result_item->fid]->category_term);
+        if (!isset($sorted_result[$result_item_index])) {
+          $sorted_result[$result_item_index] = $result_item;
+          $sorted_result[$result_item_index]->category_term = array($sorted_result[$result_item_index]->category_term);
 
-          if (!empty($result_item->overriding_date)) {
-            $result_item->airdate = $result_item->overriding_date;
+          if (!empty($result_item->sorted_time)) {
+            $result_item->airdate = $result_item->sorted_time;
           }
 
           unset($result_item->overriding_date);
@@ -4393,17 +4405,17 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
           }
         }
         else {
-          $sorted_result[$result_item->fid]->category_term[] = $result_item->category_term;
+          $sorted_result[$result_item_index]->category_term[] = $result_item->category_term;
         }
 
         if (!empty($result_item->is_full)) {
           if (empty($result_item->language) || ($result_item->language == 'en')) {
-            if (!in_array(-1, $sorted_result[$result_item->fid]->category_term)) {
-              $sorted_result[$result_item->fid]->category_term[] = -1;
+            if (!in_array(-1, $sorted_result[$result_item_index]->category_term)) {
+              $sorted_result[$result_item_index]->category_term[] = -1;
             }
           } else {
-            if (!in_array(-2, $sorted_result[$result_item->fid]->category_term)) {
-              $sorted_result[$result_item->fid]->category_term[] = -2;
+            if (!in_array(-2, $sorted_result[$result_item_index]->category_term)) {
+              $sorted_result[$result_item_index]->category_term[] = -2;
             }
           }
         }
@@ -4471,8 +4483,9 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node,
     $result = _usanetwork_tv_shows_landing_page_prepare_videos_data($show_node, $selected_category, $sort_direction, $data, $start_from, $limit);
     $current_item_index = 0;
     foreach ($result as $result_item) {
-      $file = file_load($result_item->fid);
-      $theme_variables['items'][] = _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $current_item_index, $theme_variables['is_even'], $is_new_design);
+      $entity = entity_load($result_item->entity_type, array($result_item->id));
+      $entity = array_shift($entity);
+      $theme_variables['items'][] = _usanetwork_tv_shows_landing_page_vbget_videos_block_item($entity, $result_item->entity_type, $current_item_index, $theme_variables['is_even'], $is_new_design);
       $current_item_index++;
     }
   }
@@ -4489,34 +4502,52 @@ function _usanetwork_tv_shows_landing_page_vbget_videos_block($show_node,
   }
 }
 
-function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($file, $current_item_index, $is_even, $is_new_design) {
-
+function _usanetwork_tv_shows_landing_page_vbget_videos_block_item($entity, $entity_type, $current_item_index, $is_even, $is_new_design) {
   $big_element_index = $is_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK - 1);
   if ($is_new_design) {
     $big_element_index = !$is_even ? 0 : (USA_TV_SHOW_CONS_LANDING_ITEMS_IN_BLOCK_NEW_DESIGN - 1);
   }
-  if (!empty($file->field_promo_image_override)) {
-    $field_image_override = field_get_items('file', $file, 'field_promo_image_override');
-    $field_image_override = reset($field_image_override);
-    $image_url = $field_image_override['uri'];
+
+  if ('file' == $entity_type) {
+    $entity_id = $entity->fid;
+    $own_promo_lines = _usanetwork_promo_pull_file_promo_details($entity);
+    if (!empty($entity->field_promo_image_override)) {
+      $field_image_override = field_get_items('file', $entity, 'field_promo_image_override');
+      $field_image_override = reset($field_image_override);
+      $image_url = $field_image_override['uri'];
+    }
+    else {
+      $image_url = _usanetwork_mpx_video_get_image_path($entity);
+    }
   }
   else {
-    $image_url = _usanetwork_mpx_video_get_image_path($file);
+    $entity_id = $entity->nid;
+    $own_promo_lines = _usanetwork_promo_pull_node_promo_details($entity);
+    if (!empty($entity->field_promo_image_override)) {
+      $image_url = _usanetwork_get_field_item('node', $entity, 'field_promo_image_override', 'uri');
+    }
+    else {
+      $image_url = usanetwork_core_api_get_content_image('node', $entity);
+    }
   }
 
   list($mobile_image, $desktop_image) = _usanetwork_tv_shows_landing_page_prepare_item_image($current_item_index, $image_url, $big_element_index, $is_new_design);
-  $own_promo_lines = _usanetwork_promo_pull_file_promo_details($file);
-  $icon_type = usanetwork_core_api_get_media_icon('file', $file->fid);
+  $icon_type = usanetwork_core_api_get_media_icon($entity_type, $entity_id);
+
+  // Set caption.
+  $caption = !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '';
+  if ($is_new_design && $entity_type == 'node') {
+    $caption = !empty($own_promo_lines['violator']) ? $own_promo_lines['violator'] : '';
+  }
 
   $theme_variables = array(
     'classes' => NULL,
     'custom_classes' => NULL,
-    'target_url' => url('file/' . $file->fid),
+    'target_url' => url($entity_type . '/' . $entity_id),
     'media_icon' => !empty($icon_type) ? $icon_type : 'video-icon',
-    'caption' => !empty($own_promo_lines['topic']) ? $own_promo_lines['topic'] : '',
+    'caption' => $caption,
     'title' => !empty($own_promo_lines['promo_title'])
-      ? $own_promo_lines['promo_title']
-      : $file->filename,
+      ? $own_promo_lines['promo_title'] : '',
     'additional' => !empty($own_promo_lines['description'])
       ? $own_promo_lines['description']
       : '',
@@ -4580,9 +4611,9 @@ function _usanetwork_tv_shows_landing_page_prepare_item_image($current_item_inde
  */
 function _usanetwork_tv_shows_landing_page_prepare_videos_data($show_node, $selected_category, $sort_direction, $data, $start_from, $limit) {
   if ($selected_category != 0) {
-    foreach ($data as $fid => &$data_item) {
+    foreach ($data as $key => &$data_item) {
       if (!in_array($selected_category, $data_item->category_term)) {
-        unset($data[$fid]);
+        unset($data[$key]);
       }
     }
   }
@@ -4590,22 +4621,29 @@ function _usanetwork_tv_shows_landing_page_prepare_videos_data($show_node, $sele
   // Add featured videos in new design landing page for All videos filter.
   $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $show_node);
   if ($is_new_design && $selected_category == 0) {
-    // Get featured videos fids.
+    // Get featured content ids.
     $field_promo_items = field_get_items('node', $show_node, 'field_show_vlmb_promo');
-    $add_fids = array();
+    $add_items = array();
     if (!empty($field_promo_items) && is_array($field_promo_items)) {
-      foreach ($field_promo_items as $promo_reference) {
-        if ($promo_reference['target_type'] == 'file') {
-          $add_fids[] = $promo_reference['target_id'];
-        }
+      foreach ($field_promo_items as $idx => $promo_reference) {
+        $add_items[$idx]['entity_id'] = $promo_reference['target_id'];
+        $add_items[$idx]['entity_type'] = $promo_reference['target_type'];
       }
     }
-    $add_fids = array_reverse($add_fids);
-    // Featured videos to top.
-    foreach ($data as $fid => $item) {
-      if (in_array($fid, $add_fids)) {
-        $temp_item = array($fid => $item);
-        unset($data[$fid]);
+    $add_items = array_reverse($add_items);
+    // Return TRUE if item is in featured content.
+    $is_in_add = function ($item) use ($add_items) {
+      foreach ($add_items as $add_item) {
+        if ($add_item['entity_id'] == $item->id && $add_item['entity_type'] == $item->entity_type) {
+          return TRUE;
+        }
+      }
+    };
+    // Featured content to top.
+    foreach ($data as $key => $item) {
+      if ($is_in_add($item)) {
+        $temp_item = array($key => $item);
+        unset($data[$key]);
         $data = $temp_item + $data;
       }
     }

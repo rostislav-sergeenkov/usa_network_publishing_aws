@@ -7,13 +7,15 @@
           history.scrollRestoration = 'manual';
         }
       }
-      if (currentUrlElements.params['show'] != 'undefined' && currentUrlElements.params['show'] == 'wheretowatch') {
-        if ('scrollRestoration' in history) {
-          history.scrollRestoration = 'manual';
+      $(window).load(function(){
+        if (currentUrlElements.params['show'] != 'undefined' && currentUrlElements.params['show'] == 'wheretowatch') {
+          if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+          }
+          var target = document.getElementById('where-to-watch');
+          target.scrollIntoView();
         }
-        var target = document.getElementById('where-to-watch');
-        target.scrollIntoView();
-      }
+      });
     }
   }
 }(jQuery));

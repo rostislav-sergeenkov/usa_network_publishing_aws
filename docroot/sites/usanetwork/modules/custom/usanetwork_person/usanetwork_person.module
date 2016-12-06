@@ -263,6 +263,7 @@ function usanetwork_person_block_view($delta = '') {
     case 'usa_cons_chars_main_block':
       $block['subject'] = '';
       $block['content'] = _usanetwork_person_characters_main_block();
+      $block['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-sticky-share.js';
       break;
 
     case 'usa_cons_chars_related_content':
@@ -424,6 +425,7 @@ function _usanetwork_person_characters_main_block() {
 
   $theme_variables = array(
     'sharebar' => !empty($sharebar) ? render($sharebar) : '',
+    'sticky_sharebar' => usanetwork_menu_render_sharebar($person_node, 'node', '', NULL, NULL, '',  'facebook, twitter, tumblr, share'),
     'character_full_name' => $person_node->title,
     'character_description' => !empty($character_description) ? $character_description : '',
     'social_icons' => $social_icons,

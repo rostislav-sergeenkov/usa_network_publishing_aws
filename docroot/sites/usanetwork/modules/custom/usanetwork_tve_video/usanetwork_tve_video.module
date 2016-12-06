@@ -283,13 +283,7 @@ function _usanetwork_tve_video_get_player_information($file) {
     return _tve_player_error('Could not render player: Released file pid not found.');
   }
 
-  $global_player = variable_get('usanetwork_global_player_url', '');
-
-  if (!empty($global_player)) {
-    $player_source = $global_player;
-  } else {
-    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_pid;
-  }
+  $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_pid;
 
   $player_source .= '/select/media/guid/' . $account_mpx_id . '/'. $mpx_guid;
 

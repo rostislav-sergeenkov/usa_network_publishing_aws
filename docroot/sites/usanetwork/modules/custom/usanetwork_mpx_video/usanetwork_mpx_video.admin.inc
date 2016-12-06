@@ -28,18 +28,6 @@ function usanetwork_mpx_video_admin($form, &$form_state) {
     '#limit_validation_errors' => array(),
   );
 
-  $form['global_player_url'] = array(
-    '#type' => 'fieldset',
-    '#collapsible' => TRUE,
-    '#title' => t('Player Global Overrides'),
-  );
-
-  $form['global_player_url']['usanetwork_global_player_url'] = array(
-    '#type' => 'textfield',
-    '#title' => t('VOD Video Player URL'),
-    '#default_value' => variable_get('usanetwork_global_player_url', ''),
-  );
-
   $form['player_url'] = array(
     '#type' => 'fieldset',
     '#collapsible' => TRUE,

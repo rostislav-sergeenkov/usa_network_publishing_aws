@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM437";
 .clearfix {
   zoom: 1;
 }
@@ -21906,7 +21906,7 @@ html.no-scroll, body.no-scroll {
   width: 100%;
 }
 .show-new-design.consumptionator-video-page .video-block .player-wrapper .video-player-wrapper.section-player .flash-error {
-  background-image: url("../images/flash-error.jpg");
+  background-image: url("../images/flash-error.jpeg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

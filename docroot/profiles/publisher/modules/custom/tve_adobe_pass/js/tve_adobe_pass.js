@@ -253,19 +253,6 @@
         // Onload callback.
         accessLoadedCheck
       );
-
-      swfobject.addLoadEvent(function() {
-        if (!checkIfRequestIsSent()) {
-          config.authNCheckedFailedCallback('flash');
-          stopAECheck();
-        }
-      });
-    }
-
-    function checkIfRequestIsSent() {
-      if (window.hasOwnProperty('performance') && 'getEntriesByName' in window.performance) {
-        return window.performance && window.performance.getEntriesByName(window.location.origin + config.adobePassAccessEnablerLoc).length != 0
-      }
     }
 
     /**

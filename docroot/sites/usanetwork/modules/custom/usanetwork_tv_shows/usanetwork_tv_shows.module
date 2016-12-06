@@ -2705,9 +2705,10 @@ function _usanetwork_tv_shows_submenu() {
 
   $social_links = array();
   $social_links[] = array(
-    'type' => 'social',
+    'type' => 'sing-up',
     'link' => l('', '', array(
-        'fragment' => ' ',
+        'fragment' => '',
+        'external' => TRUE,
         'attributes' => array(
           'class' => 'menu-sign-up',
           'data-name' => 'sign-up',

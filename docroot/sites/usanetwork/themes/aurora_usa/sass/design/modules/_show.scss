@@ -1184,6 +1184,15 @@
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  .usa-newsletter-subscription-wrap {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    @include breakpoint($bp-768-width) {
+      display: none!important;
+    }
+  }
 }
 .sticky-shows-submenu {
   position: fixed;
@@ -1340,6 +1349,7 @@
       line-height: 1;
       margin-right: get-vw(20px, 1025);
       opacity: 0.6;
+      outline: none;
       position: relative;
       vertical-align: middle;
       @include breakpoint($bp-min-1901-width) {
@@ -1378,7 +1388,12 @@
           content: '\e617';
         }
       }
-      &:nth-child(n + 3) {
+      &.menu-sign-up {
+        &:before {
+          content: '\e617';
+        }
+      }
+      &:nth-child(n + 4) {
         display: none;
       }
     }

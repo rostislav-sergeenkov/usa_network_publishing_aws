@@ -91,8 +91,9 @@ function usanetwork_consumptionator_post_field_group_info() {
       6 => 'field_summary',
       7 => 'field_consumptionator_blog',
       8 => 'field_multiple_movies',
-      9 => 'title',
-      10 => 'group_blog_displaying_author',
+      9 => 'field_popup_element',
+      10 => 'title',
+      11 => 'group_blog_displaying_author',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

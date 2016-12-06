@@ -37,8 +37,14 @@ function _usanetwork_popup_window($popup_element = NULL) {
     $homepage = usanetwork_home_get_homepage();
     if (!empty($homepage['node'])) {
       $homepage_node = node_load(reset($homepage['node'])->nid);
+      $popup_element = _usanetwork_get_field_item('node', $homepage_node, 'field_popup_element', 'target_id');
+    } else {
+      $node_element = _usanetwork_menu_get_object();
+      if (!empty($node_element)) {
+        $popup_element = _usanetwork_get_field_item('node', $node_element, 'field_popup_element', 'target_id');
+      }
     }
-    $popup_element = _usanetwork_get_field_item('node', $homepage_node, 'field_popup_element', 'target_id');
+
   }
 
   if (!empty($popup_element)) {
@@ -101,7 +107,8 @@ function usanetwork_popup_page_alter(&$page) {
     // Prevent from adding extra js and css files for admin area.
     return;
   }
-  if ("home" == current_path()) {
+  $menu_object = _usanetwork_menu_get_object();
+  if (("home" == current_path()) || ($menu_object->type == "consumpt_post")) {
     // Attach hidden modal windows to the bottom of the page.
     $popup_window = _usanetwork_popup_window();
     $page['page_bottom']['usanetwork_popup_windows'] = array(

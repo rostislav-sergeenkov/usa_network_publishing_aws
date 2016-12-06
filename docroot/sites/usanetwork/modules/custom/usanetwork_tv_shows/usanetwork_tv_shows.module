@@ -4388,9 +4388,9 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
       $sorted_result = array();
 
       foreach ($result as $result_item_index => $result_item) {
-        if (!isset($sorted_result[$result_item_index])) {
-          $sorted_result[$result_item_index] = $result_item;
-          $sorted_result[$result_item_index]->category_term = array($sorted_result[$result_item_index]->category_term);
+        if (!isset($sorted_result[$result_item->id . $result_item->entity_type])) {
+          $sorted_result[$result_item->id . $result_item->entity_type] = $result_item;
+          $sorted_result[$result_item->id . $result_item->entity_type]->category_term = array($sorted_result[$result_item->id . $result_item->entity_type]->category_term);
 
           if (!empty($result_item->sorted_time)) {
             $result_item->airdate = $result_item->sorted_time;
@@ -4398,24 +4398,24 @@ function _usanetwork_tv_shows_landing_page_cache_vbget_videos($show_node) {
 
           unset($result_item->overriding_date);
           if ($result_item->exclude == 1) {
-            unset($result[$result_item_index]);
+            unset($result[$result_item->id . $result_item->entity_type]);
           }
           else {
             unset($result_item->exclude);
           }
         }
         else {
-          $sorted_result[$result_item_index]->category_term[] = $result_item->category_term;
+          $sorted_result[$result_item->id . $result_item->entity_type]->category_term[] = $result_item->category_term;
         }
 
         if (!empty($result_item->is_full)) {
           if (empty($result_item->language) || ($result_item->language == 'en')) {
-            if (!in_array(-1, $sorted_result[$result_item_index]->category_term)) {
-              $sorted_result[$result_item_index]->category_term[] = -1;
+            if (!in_array(-1, $sorted_result[$result_item->id . $result_item->entity_type]->category_term)) {
+              $sorted_result[$result_item->id . $result_item->entity_type]->category_term[] = -1;
             }
           } else {
-            if (!in_array(-2, $sorted_result[$result_item_index]->category_term)) {
-              $sorted_result[$result_item_index]->category_term[] = -2;
+            if (!in_array(-2, $sorted_result[$result_item->id . $result_item->entity_type]->category_term)) {
+              $sorted_result[$result_item->id . $result_item->entity_type]->category_term[] = -2;
             }
           }
         }

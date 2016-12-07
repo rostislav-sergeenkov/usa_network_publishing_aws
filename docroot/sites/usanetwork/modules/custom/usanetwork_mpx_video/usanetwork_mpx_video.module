@@ -2589,7 +2589,7 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     return url($player_source, $player_parameters);
   }
   elseif ($return_type == 'link') {
-    if ((!isset($file->fid)) || (!$mpx_guid) || !$mpx_account_pid) {
+    if ((!isset($file->fid)) || (!$mpx_guid)) {
       return '';
     }
     $player_source = '//link.theplatform.com/s/' . $file_mpx_account->account_pid . '/media/guid/' . $account_mpx_id .'/'. $mpx_guid;

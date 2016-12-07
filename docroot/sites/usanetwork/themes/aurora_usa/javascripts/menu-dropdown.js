@@ -188,6 +188,19 @@
       $(document.body).once('window-events', function () {
         var tablet = false;
 
+        $(document).on('click', '.menu-sign-up', function(e) {
+          e.preventDefault();
+          var button = $('.menu-sign-up'),
+              subscriptionWrap = $('.usa-newsletter-subscription-wrap');
+          if (button.hasClass('active')) {
+            subscriptionWrap.removeClass('active');
+            button.removeClass('active');
+          } else {
+            subscriptionWrap.addClass('active');
+            button.addClass('active');
+          }
+        });
+
         if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
           tablet = true;
         }

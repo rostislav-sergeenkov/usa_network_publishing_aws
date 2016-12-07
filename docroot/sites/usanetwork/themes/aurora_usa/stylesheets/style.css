@@ -6180,6 +6180,7 @@ header {
   min-width: 300px;
   position: relative;
   width: 100%;
+  z-index: 10;
 }
 header:after {
   clear: both;
@@ -22308,15 +22309,24 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   transform: translateZ(0);
 }
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .usa-newsletter-subscription-wrap {
+  display: none;
   position: absolute;
   left: 0;
   top: 100%;
   width: 100%;
 }
+@media (min-width: 769px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .usa-newsletter-subscription-wrap.active {
+    display: block;
+  }
+}
 @media (max-width: 768px) {
   .pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .usa-newsletter-subscription-wrap {
     display: none !important;
   }
+}
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .usa-newsletter-subscription-wrap form > div {
+  max-width: 100%;
 }
 
 .sticky-shows-submenu {
@@ -22540,8 +22550,11 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 .show-title-block .social-icons a.pinterest:before {
   content: '\e617';
 }
+.show-title-block .social-icons a.menu-sign-up.active {
+  opacity: 1;
+}
 .show-title-block .social-icons a.menu-sign-up:before {
-  content: '\e617';
+  content: '\e63c';
 }
 .show-title-block .social-icons a:nth-child(n + 4) {
   display: none;

@@ -1185,12 +1185,23 @@
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   .usa-newsletter-subscription-wrap {
+    display: none;
     position: absolute;
     left: 0;
     top: 100%;
     width: 100%;
+    &.active {
+      @include breakpoint($bp-min-769-width) {
+        display: block;
+      }
+    }
     @include breakpoint($bp-768-width) {
       display: none!important;
+    }
+    form {
+      > div {
+        max-width: 100%;
+      }
     }
   }
 }
@@ -1389,8 +1400,11 @@
         }
       }
       &.menu-sign-up {
+        &.active {
+          opacity: 1;
+        }
         &:before {
-          content: '\e617';
+          content: '\e63c';
         }
       }
       &:nth-child(n + 4) {

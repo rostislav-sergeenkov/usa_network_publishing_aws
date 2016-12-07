@@ -213,3 +213,11 @@ function usanetwork_tv_shows_update_7027() {
   $suits_season_2_nid = '291';
   node_delete($suits_season_2_nid);
 }
+
+
+/**
+ * Removes See.it field for TV Show (field_see_it_url).
+ */
+function usanetwork_tv_shows_update_7028() {
+  field_delete_field('field_see_it_url');
+}

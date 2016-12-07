@@ -90,8 +90,7 @@ $firstScene = TRUE;
   <div class="timelineFlat timelineFlatPortfolio tl3"
        data-share-title="<?php print $shareTitle; ?>"
        data-share-description="<?php print $shareDescription; ?>"
-       data-autoplay-video="<?php print $autoplayVideo; ?>"
-       data-autoplay-gallery="<?php print $autoplayGallery; ?>">
+       data-autoplay="<?php print $autoplay; ?>">
 
     <?php if (!empty($isset_video)): ?>
       <div id="player-wrapper" data-player-src="<?php print $player; ?>"></div>

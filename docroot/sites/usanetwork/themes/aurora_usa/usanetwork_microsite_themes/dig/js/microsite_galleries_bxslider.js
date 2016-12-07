@@ -121,6 +121,19 @@
             $slider.append('<div class="counter"></div>');
             Drupal.behaviors.microsite_gallery_carousel.updateCounter($slider);
 
+            // Gigya share bar
+            $('#gigya-share').once('omniture-tracking', function () {
+              $(this).on('click', '.gig-share-button', function (e) {
+                if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+
+                  var shareTitle = Drupal.settings.microsites_settings.title + ' : Gallery : ' +
+                      $slider.parents('.microsite-section-container').find('.microsite-gallery-meta .gallery-title').text();
+
+                  Drupal.behaviors.omniture_tracking.gigyaShareBarButtonClick($(this), shareTitle);
+                }
+              });
+            });
+
             if (callback) callback();
           },
           after: function() {

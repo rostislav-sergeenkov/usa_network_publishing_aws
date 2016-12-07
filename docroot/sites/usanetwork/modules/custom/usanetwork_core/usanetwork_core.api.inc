@@ -243,11 +243,6 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'files' => 'field_usa_catchall_media',
       'og_image' => 'field_usa_og_image',
     ),
-    // Global nav image
-    'global_nav_image' => array(
-      'main' => 'field_gobal_nav_image',
-      'global_nav' => 'field_gobal_nav_image',
-    ),
     // Media gallery
     'media_gallery' => array(
       'main' => 'field_cover_item',
@@ -289,11 +284,6 @@ function _usanetwork_core_api_get_node_image_field_names() {
       'splash' => 'field_quiz_splash_image',
       'header' => 'field_quiz_header_image',
       'og_image' => 'field_usa_og_image',
-    ),
-    // Snipe
-    'snipe' => array(
-      'main' => 'field_usa_support_files',
-      'support_files' => 'field_usa_support_files',
     ),
     // Static page
     'usanetwork_static_page' => array(
@@ -347,8 +337,8 @@ function _usanetwork_core_api_get_node_image_field_names() {
 
 function usanetwork_core_api_get_tv_content_fields_names() {
   return array(
-    'tv_show' => 'field_show',
-    'movie' => 'field_movie',
+    'tv_show' => array('field_show'),
+    'movie' => array('field_movie', 'field_multiple_movies'),
   );
 }
 
@@ -361,9 +351,11 @@ function usanetwork_core_api_get_tv_content_node($entity) {
     $entity_type = 'file';
   }
   $entity_wrapper = entity_metadata_wrapper($entity_type, $entity);
-  foreach($field_names as $tv_content_type => $field_name) {
-    if (usanetwork_core_api_check_field($entity_wrapper, $field_name)) {
-      return $entity_wrapper->$field_name->value();
+  foreach($field_names as $tv_content_type) {
+    foreach($tv_content_type as $field_name) {
+      if (usanetwork_core_api_check_field($entity_wrapper, $field_name)) {
+        return $entity_wrapper->$field_name->value();
+      }
     }
   }
   return NULL;
@@ -516,4 +508,19 @@ function usanetwork_core_api_get_output_position($array, $index) {
     $positions[] = 'last';
   }
   return $positions;
+}
+
+/**
+ * Helper to generate an env value based on base root
+ */
+function usanetwork_core_api_get_environment() {
+  $site_env = isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'prod';
+
+  // override
+  switch ($site_env) {
+    case 'acceptance': $site_env = 'qa';
+      break;
+  }
+
+  return $site_env;
 }

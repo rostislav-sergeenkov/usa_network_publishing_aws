@@ -2,6 +2,7 @@
   Drupal.behaviors.usanetwork_menu_dropdown = {
     stickyHeader: function(offsetTop, subMenuSelector) {
       var $body = $('body'),
+          sidebar = $('.consum-sidebar'),
           header_submenu_h;
 
       if(!(offsetTop && subMenuSelector)) {return false;}
@@ -11,8 +12,16 @@
       function switchState() {
         $body.toggleClass('sub-menu-is-sticky');
         subMenuSelector.toggleClass('sticky-shows-submenu');
-        if ($('body').hasClass('node-type-person') || $('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-consumpt-post') || ($('body').hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
-          $('.consum-sidebar').toggleClass('sticky-sidebar');
+        if ($('body').hasClass('node-type-person') || $('body').hasClass('node-type-tv-episode') || $('body').hasClass('node-type-quiz') || $('body').hasClass('node-type-consumpt-post') || ($('body').hasClass('page-videos-live') && ($('.video-block').hasClass('show-related') || $('.video-block').hasClass('taboola-enabled')))) {
+          if (subMenuSelector.hasClass('sticky-shows-submenu')) {
+            if (!sidebar.hasClass('sticky-sidebar')) {
+              sidebar.addClass('sticky-sidebar');
+            }
+          } else {
+            if (sidebar.hasClass('sticky-sidebar')) {
+              sidebar.removeClass('sticky-sidebar');
+            }
+          }
           Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
         }
         if($body.hasClass('sub-menu-is-sticky')) {
@@ -239,6 +248,8 @@
             tab.addClass('active').attr('data-state', 'active');
             tab_containers.eq(index).hide().slideDown(animation_speed, function () {
               $(".tab .no-refresh").bind('click', tabNavHandler);
+              var images = $(this).find('img[data-src]');
+              Drupal.behaviors.lazy_load_custom.lazyLoadImages(images, true);
             }).addClass('active');
 
             setTimeout(function () {
@@ -384,19 +395,15 @@
           }
         };
 
-        var seeitClose = function () {
-          $('.seeit-iframe-wrapper').remove();
-        };
-
         showTitleMove();
         if($('.show-menu').length > 0) {
           showMenuMove();
         }
 
         //HotFix: Remove dropdown option from tab "Shop"
-        $(".tab .no-refresh").each(function(){
+        $(".pane-usanetwork-menu-usanetwork-menu-sm-main .tab a").each(function(){
           if ($(this).text() == 'shop' ||  $(this).text() == 'Shop') {
-            $(this).removeClass('no-refresh active').attr('target', '_blank');
+            $(this).removeClass('active').attr('target', '_blank');
             return false;
           }
         });
@@ -411,14 +418,6 @@
             _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
         }, 500);
-
-        $(window).load(function () {
-          $('.calendar-reminder').click(function () {
-            if (getInternetExplorerVersion() !== -1) {
-              $('.seeit-icon-close').bind('click', seeitClose);
-            }
-          });
-        });
 
         $(window).on('resize', function (e) {
           clearTimeout(timer_id);

@@ -168,7 +168,6 @@ function usanetwork_tv_schedule_theme() {
         'day_part' => NULL,
         'episode_show' => NULL,
         'episode_title' => NULL,
-        'icon_reminder_url' => NULL,
         'rating' => NULL,
         'episode_url' => NULL,
         'episode_image_url' => NULL,
@@ -1070,6 +1069,8 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
         $theme_row_variables['time'] = date('g:i', $start_time);
         $theme_row_variables['day_part'] = date('A', $start_time);
         $theme_row_variables['link_class'] = (!empty($query_params['guid']) && $query_params['guid'] === $tv_schedule_item->guid) ? 'active' : NULL;
+        $theme_row_variables['episode_title'] = !empty($episode_title) ? $episode_title : NULL;
+        $theme_row_variables['rating'] = !empty($rating) ? $rating : NULL;
         $schedule_rows[$start_time] = theme('usanetwork_tv_schedule_table_element', $theme_row_variables);
         continue;
       }
@@ -1111,8 +1112,6 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
         'episode_show' => $show_name,
         'episode_title' => $episode_title,
         'episode_fid' => !empty($tv_episode) ? $tv_episode->fid : '',
-        'icon_reminder_url' => !empty($show_nid) ? _usanetwork_menu_get_reminder_url($show_nid)
-          : '',
         'rating' => $rating,
         'episode_url' => !empty($tv_episode) ? url('file/' . $tv_episode->fid) : '',
         'episode_image_url' => $item_image,
@@ -1123,10 +1122,10 @@ function usanetwork_tv_schedule_schedule_page($parameters = NULL, $show_full_pag
 
       $schedule_rows[$start_time] = '';
       if (!empty($filter_show_nid)) {
-        $day = date('l', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
+        $day = date('ldm', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
         if ($day != $next_day_flag) {
           $next_day_flag = $day;
-          $variables['day'] = $next_day_flag;
+          $variables['day'] = date('l', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
           $variables['date'] = date('m/d', $start_time - (USANETWORK_TV_SCHEDULE_DEFAULT_DAY_START_HOUR * 60 * 60));
           $schedule_rows[$start_time] .= theme('usanetwork_tv_schedule_table_day_label', $variables);
         }

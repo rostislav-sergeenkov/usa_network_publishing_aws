@@ -1322,6 +1322,7 @@ input[type="radio"], input[type="checkbox"] {
 
 body:not(.blog) .field-type-gigya-sharebar .gig-button-container .usa-share-button, body:not(.blog).node-type-timeline-gallery .timeline-gigya-share .gig-button-container .usa-share-button, body:not(.blog).node-type-top3-gallery .gig-button-container .usa-share-button, .blog .node-media-gallery.view-mode-inline_content .field-type-gigya-sharebar .gig-button-container .usa-share-button, .blog .node-media-gallery.view-mode-inline_content.node-type-timeline-gallery .timeline-gigya-share .gig-button-container .usa-share-button, .blog .node-media-gallery.view-mode-inline_content.node-type-top3-gallery .gig-button-container .usa-share-button {
   background-image: none !important;
+  cursor: pointer;
   display: block;
   font-family: "ico-font";
   font-size: 32px;
@@ -3404,9 +3405,6 @@ header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a:bef
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a:last-child {
   margin-right: 0;
-}
-header .tab-item.schedule-tab .primetime-panel .schedule-item .icons-block a.seeit-reminder {
-  clear: none;
 }
 header .tab-item.schedule-tab .primetime-panel .schedule-item .time {
   color: #ffffff;

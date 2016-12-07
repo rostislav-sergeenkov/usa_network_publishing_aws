@@ -145,17 +145,23 @@ function usanetwork_tve_video_page_alter(&$page) {
     if (isset($page['page_bottom']['tve_adobe_pass'])) {
       unset($page['page_bottom']['tve_adobe_pass']);
     }
-    if (isset($page['page_bottom']['tve_auth_modal_windows'])) {
-      unset($page['page_bottom']['tve_auth_modal_windows']);
+    if (isset($page['page_bottom']['tve_auth2_modal_windows'])) {
+      unset($page['page_bottom']['tve_auth2_modal_windows']);
     }
-    if (isset($page['page_bottom']['tve_auth'])) {
-      unset($page['page_bottom']['tve_auth']);
+    if (isset($page['page_bottom']['tve_auth2'])) {
+      unset($page['page_bottom']['tve_auth2']);
+    }
+    if (isset($page['page_bottom']['tve_auth2_cookies'])) {
+      unset($page['page_bottom']['tve_auth2_cookies']);
+    }
+    if (isset($page['page_bottom']['tve_auth2_3rd_party_cookies'])) {
+      unset($page['page_bottom']['tve_auth2_3rd_party_cookies']);
     }
   } else {
     // Attach hidden modal windows to the bottom of the page.
     $usa_modal_windows_html = theme('usa_tve_auth2_login_modal_status');
     $page['page_bottom']['usanetwork_tve_video_modal_windows'] = array(
-        '#markup' => $usa_modal_windows_html,
+      '#markup' => $usa_modal_windows_html,
     );
   }
 }
@@ -277,7 +283,13 @@ function _usanetwork_tve_video_get_player_information($file) {
     return _tve_player_error('Could not render player: Released file pid not found.');
   }
 
-  $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_pid;
+  $global_player = variable_get('usanetwork_global_player_url', '');
+
+  if (!empty($global_player)) {
+    $player_source = $global_player;
+  } else {
+    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_pid;
+  }
 
   $player_source .= '/select/media/guid/' . $account_mpx_id . '/'. $mpx_guid;
 
@@ -337,7 +349,7 @@ function theme_usanetwork_tve_player_mpx_video($variables) {
   if (!empty($page_pdk)) {
     $pdk_version = $page_pdk;
   }
-  $environment = _usanetwork_widget_get_environment();
+  $environment = usanetwork_core_api_get_environment();
   if ($environment == 'prod') {
     $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
   } elseif ($environment == 'stage') {
@@ -410,7 +422,7 @@ function _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_pid) {
  * Implements hook_menu().
  */
 function usanetwork_tve_video_menu() {
-  $environment = _usanetwork_widget_get_environment();
+  $environment = usanetwork_core_api_get_environment();
   if ($environment == 'stage') {
     $items['admin/usanetwork/tve-stage-settings'] = array(
       'title' => t('TVE Stage Settings'),
@@ -427,7 +439,7 @@ function usanetwork_tve_video_menu() {
  * Get Player Id depending on environment
  */
 function _usanetwork_tve_video_get_player_id() {
-  $environment = _usanetwork_widget_get_environment();
+  $environment = usanetwork_core_api_get_environment();
   if ($environment == 'stage') {
     $usa_global_player_id = 'zDNHUU4T0x36';
   }

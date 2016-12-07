@@ -59,6 +59,9 @@
           case 'consumptionator_news':
             service_name = 'news';
             break;
+          case 'all-movies':
+            service_name = 'all-movies';
+            break;
           default:
             service_name = 'usanetwork-tv-shows';
             break;
@@ -95,8 +98,9 @@
           }
 
           // Promo click omniture
-          $('.usa-wrap .ajax-load-block .node-usanetwork-promo a').once('omniture-tracking', function() {
-            $(this).on('click', function (e) {
+          $('.usa-wrap .ajax-load-block').once('omniture-tracking', function() {
+            $('.usa-wrap .ajax-load-block .node-usanetwork-promo a').unbind('click');
+            $(this).on('click', '.node-usanetwork-promo a', function (e) {
               e.preventDefault();
               var self = $(this);
               Drupal.behaviors.omniture_tracking.globalPromoClick(self);

@@ -12,32 +12,6 @@ include_once 'usanetwork_showpages.features.inc';
  * Implementation of hook_menu().
  */
 function usanetwork_showpages_menu() {
-  // tv show photos landing page
- /* $items['node/%node/photos'] = array(
-    'title' => t('Photos'),
-    'page callback' => 'usanetwork_showpages_photos',
-    'page arguments' => array(1),
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );*/
-  // tv show episodes landing page
-  /*$items['node/%node/episodes'] = array(
-    'title' => t('Episodes'),
-    'page callback' => 'usanetwork_showpages_episodes',
-    'page arguments' => array(1),
-    'access callback' => 'usanetwork_showpages_menu_access',
-    'access arguments' => array(1),
-    'type' => MENU_CALLBACK,
-  );*/
-  // tv show cast landing page
-  $items['node/%node/cast'] = array(
-    'title' => t('Cast'),
-    'page callback' => 'usanetwork_showpages_cast',
-    'page arguments' => array(1),
-    'access callback' => 'usanetwork_showpages_menu_access',
-    'access arguments' => array(1),
-    'type' => MENU_CALLBACK,
-  );
   // tv show videos landing page
   $items['node/%node/videos'] = array(
     'title' => t('Videos'),
@@ -302,41 +276,6 @@ function usanetwork_showpages_episodes($node) {
     $nid = $nid[0];
     drupal_goto('node/' . $nid);
   }
-  // or go back to the show node
-  drupal_goto('node/' . $show);
-}
-
-/**
- * Menu callback of show cast page
- * load the panel page for the first member listed in the draggable cast view
- * associated with a show
- */
-function usanetwork_showpages_cast($node) {
-  $render = array();
-  $lang = LANGUAGE_NONE;
-
-  // if there is no NID get out of there
-  if (!isset($node->nid)) {
-    return;
-  }
-
-  // grab the first element from the draggable view
-  $view = views_get_view('usa_cast');
-  $view->set_display('block_1');
-  $view->args = array($node->nid);
-  $view->pre_execute();
-  $view->execute();
-
-  if (!empty($view->result)) {
-    $cast_nid = $view->result[0]->nid;
-  }
-  $view->destroy();
-
-  // then go to that page
-  if (isset($cast_nid)) {
-    drupal_goto('node/' . $cast_nid);
-  }
-
   // or go back to the show node
   drupal_goto('node/' . $show);
 }
@@ -779,8 +718,13 @@ function usanetwork_showpages_preprocess_html(&$vars) {
             $head_title = $seo_page_title[0]['value'];
           }
           else {
-            $blog_title = usanetwork_consumptionator_post_get_blog_title($tv_content);
-            $head_title = $node->title . ' | ' . $blog_title .  ' | Blog | ' . $tv_content->title . ' | USA Network';
+            if (is_object($tv_content)) {
+              $blog_title = usanetwork_consumptionator_post_get_blog_title($tv_content);
+              $head_title = $node->title . ' | ' . $blog_title .  ' | Blog | ' . $tv_content->title . ' | USA Network';
+            } else {
+              $head_title = $node->title . ' | Movies | USA Network';
+            }
+
           }
           break;
       }

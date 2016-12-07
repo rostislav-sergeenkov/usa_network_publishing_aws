@@ -23,7 +23,15 @@
       #player-wrapper {
         background-color: #000000;
         visibility: hidden;
+        opacity: 0;
         position: absolute;
+        z-index: 0;
+        @include transition(all 0.4 linear);
+        &.visible {
+          visibility: visible;
+          opacity: 1;
+          z-index: 1;
+        }
         iframe {
           height: 100%;
           width: 100%;
@@ -133,6 +141,13 @@
                 font-size: 24px;
                 height: 24px !important;
                 width: 24px !important;
+                &:before {
+                  font-size: 22px;
+                  left: 1px;
+                  line-height: 22px;
+                  position: absolute;
+                  top: 1px;
+                }
               }
             }
             @extend %usa-gigya-colors;

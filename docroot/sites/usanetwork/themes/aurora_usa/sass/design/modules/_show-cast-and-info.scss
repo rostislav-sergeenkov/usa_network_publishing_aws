@@ -219,7 +219,259 @@
     }
   }
 }
-
+.where-to-watch {
+  @include clear();
+  background: $poll-back;
+  border-bottom: 2px solid;
+  overflow: hidden;
+  padding-top: 40px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  .where-to-watch-inner {
+    @include clear();
+    padding: get-vw(35px, 1600) get-vw(45px, 1600);
+    width: 100%;
+    @include breakpoint($bp-min-1901-width) {
+      padding: 41.6px 53.4px;
+    }
+    @include breakpoint($bp-768-width) {
+      padding: get-vw(30px, 640) get-vw(20px, 640);
+    }
+    &.only-one-line {
+      padding: 0 get-vw(45px, 1600) 32px;
+      @include breakpoint($bp-min-1901-width) {
+        padding: 0 53.4px 32px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding:  0 get-vw(30px, 640) 32px;
+      }
+    }
+    .first-line {
+      .description-block {
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+    .last-line:only-child {
+      .description-block {
+        margin-top: 0;
+      }
+    }
+    .link-buttons-wrap {
+      margin-top: 15px;
+      text-align: center;
+      @include breakpoint($bp-768-width) {
+        margin-top: get-vw(30px, 640);
+      }
+      .link-button {
+        display: inline-block;
+        padding: get-vw(12.5px, 1280) get-vw(25px, 1280);
+        @include breakpoint($bp-min-1901-width) {
+          padding: 18.55px 37.1px;
+        }
+        @include breakpoint($bp-1024-width) {
+          padding: get-vw(12.5px, 1024) get-vw(25px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          padding: get-vw(25px, 768) get-vw(42px, 768);
+        }
+        @include breakpoint($bp-640-width) {
+          padding: get-vw(25px, 640) get-vw(42px, 640);
+        }
+        &:first-child {
+          margin-right: get-vw(25px, 1280);
+          @include breakpoint($bp-min-1901-width) {
+            margin-right: 37.1px;
+          }
+          @include breakpoint($bp-1024-width) {
+            margin-right: get-vw(25px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            display: none;
+          }
+        }
+        a {
+          color: #ffffff;
+          font-size: get-vw(20px, 1900);
+          font-family: $avalon-medium;
+          font-style: normal;
+          letter-spacing: 1px;
+          line-height: 1;
+          padding-top: 3px;
+          position: relative;
+          text-transform: uppercase;
+          vertical-align: middle;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 20px;
+          }
+          @include breakpoint($bp-1024-width) {
+            font-size: get-vw(20px, 1024);
+          }
+          @include breakpoint($bp-768-width) {
+            font-size: get-vw(30px, 768);
+          }
+          @include breakpoint($bp-640-width) {
+            font-size: get-vw(30px, 640);
+          }
+          &:after {
+            color: #ffffff;
+            content: "\e608";
+            display: inline-block;
+            font-family: $ico-font;
+            font-size: get-vw(15px, 1900);
+            line-height: 1;
+            margin-left: get-vw(12px, 1280);
+            vertical-align: middle;
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 15px;
+              margin-left: 12px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: get-vw(15px, 1024);
+              margin-left: get-vw(12px, 1024);
+            }
+            @include breakpoint($bp-768-width) {
+              font-size: get-vw(24px, 768);
+              margin-left: get-vw(16px, 768);
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: get-vw(24px, 640);
+              margin-left: get-vw(16px, 640);
+            }
+          }
+        }
+      }
+    }
+  }
+  .live-link {
+    border: 1px solid;
+    color: white;
+    display: inline-block;
+    font-family: $avalon-book;
+    font-size: get-vw(20px, 1600);
+    line-height: get-vw(56px, 1600);
+    padding: 0 get-vw(35px, 1600) 0;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    @include breakpoint($bp-min-1901-width) {
+      font-size: 23.75px;
+      line-height: 66.5px;
+      padding: 0 41.6px 0;
+    }
+    @include breakpoint($bp-768-width) {
+      display: none;
+    }
+    span {
+      background: none;
+      &:after {
+        display: inline-block;
+        color: inherit;
+        content: "\e608";
+        font-family: $ico-font;
+        font-size: get-vw(14px, 1600);
+        margin-left: get-vw(15px, 1600);
+        position: relative;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 16.6px;
+          margin-left: 17.8px;
+        }
+      }
+    }
+  }
+  .description-block {
+    color: black;
+    font-family: $avalon-book;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-top: get-vw(50px, 1600);
+    @include breakpoint($bp-min-1601-width) {
+      font-size: get-vw(20px, 1600);
+    }
+    @include breakpoint($bp-min-1901-width) {
+      font-size: 23.85px;
+      margin-top: 59.4px;
+    }
+    @include breakpoint($between-769-1024) {
+      font-size: get-vw(20px, 1024);
+    }
+    @include breakpoint($bp-768-width) {
+      font-size: get-vw(29px, 768);
+      margin-top: get-vw(80px, 768);
+    }
+    @include breakpoint($bp-640-width) {
+      font-size: get-vw(29px, 640);
+      margin-top: get-vw(80px, 640);
+    }
+  }
+  .usa-providers {
+    position: relative;
+    text-align: center;
+    .providers-row {
+      display: block;
+      position: relative;
+      text-align: center;
+      &:last-child {
+        .providers-row-inner {
+          border: none;
+        }
+      }
+    }
+    .providers-row-inner {
+      @include clear();
+      align-items: center;
+      border-bottom: 2px solid;
+      display: flex;
+      justify-content: center;
+      padding: get-vw(30px, 1600) get-vw(60px, 1600);
+      position: relative;
+      @include breakpoint($bp-min-1901-width) {
+        padding: 35.625px 71.25px;
+      }
+      @include breakpoint($bp-768-width) {
+        border: none;
+        flex-wrap: wrap;
+        padding: 0 get-vw(20px, 768);
+        width: 100%;
+      }
+    }
+    .provider {
+      display: block;
+      margin-right: get-vw(140px, 1600);
+      position: relative;
+      @include breakpoint($bp-min-1901-width) {
+        margin-right: 166.25px;
+      }
+      @include breakpoint($bp-768-width) {
+        margin: get-vw(45px, 768) 0;
+        width: 50%;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        outline: none;
+        position: relative;
+        @include breakpoint($bp-min-769-width) {
+          display: block;
+          height: auto;
+          width: auto;
+        }
+        img {
+          max-height: get-vw(80px, 1600);
+          @include breakpoint($bp-min-1901-width) {
+            max-height: 95px;
+          }
+          @include breakpoint($bp-768-width) {
+            max-height: get-vw(80px, 768);
+          }
+        }
+      }
+    }
+  }
+}
 .series-recap-block {
   @include clear();
   background: $poll-back;

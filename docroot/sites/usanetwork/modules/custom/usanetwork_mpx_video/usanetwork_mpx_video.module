@@ -722,7 +722,6 @@ function usanetwork_mpx_video_live() {
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-custom-services.js', array('scope' => 'footer', 'weight' => 0));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-login-button.js', array('scope' => 'footer', 'weight' => 2));
   drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-logout-button.js', array('scope' => 'footer', 'weight' => 3));
-//  drupal_add_js(drupal_get_path('module', 'usanetwork_tve_video') . '/js/usa_config_tve_auth2/usa-tve-player-container.js', array('scope' => 'footer', 'weight' => 4));
   drupal_add_js('//client-cloudpath.nbcuni.com/current/api/NBCUniCPC.min.js', 'external');
   drupal_add_js(drupal_get_path('module', 'usanetwork_mpx_video') . '/js/cpc-player.js', array('scope' => 'footer'));
   drupal_add_js(drupal_get_path('module', 'usanetwork_video_live') . '/js/usanetwork_video_live.dynamic_content.js');
@@ -762,7 +761,7 @@ function _usanetwork_mpx_video_live() {
   if (!empty($page_pdk)) {
     $pdk_version = $page_pdk;
   }
-  $environment = _usanetwork_widget_get_environment();
+  $environment = usanetwork_core_api_get_environment();
   if ($environment == 'prod') {
     $pdk_controller_url = 'http://player.theplatform.com/pdk/HNK2IC/tpPdkController.js?pdk=' . $pdk_version;
   } elseif ($environment == 'stage') {
@@ -866,12 +865,18 @@ function _usanetwork_mpx_video_live() {
   );
   drupal_add_html_head($tag_width, 'usanetwork_twitter:player:width');
 
+  $taboola_block = module_invoke('usanetwork_taboola', 'block_view', 'usanetwork_taboola_video');
+  if (!empty($taboola_block['content'])) {
+    $taboola = render($taboola_block['content']);
+  }
+
   $variables = array(
     'default_image' => '/' . path_to_theme() . '/images/usa_liveTV.jpg',
     'live_pdk' => !empty($pdk) ? $pdk : NULL,
     'live_logLevel' => !empty($log_level) ? $log_level : NULL,
     'live_advert' => $live_advert,
     'download_link' => l(t('Download the app'), 'app', array('attributes' => array('target' => '_self'))),
+    'taboola_block' => !empty($taboola) ? $taboola : NULL,
   );
 
   $live_video_template = theme('usanetwork_mpx_video_live', $variables);
@@ -1238,7 +1243,7 @@ function usanetwork_mpx_video_media_theplatform_mpx_media_import_item_alter(&$me
 function usanetwork_mpx_video_pub_mpx_player_id_rulesets_info() {
   $rulesets = array();
 
-  $environment = _usanetwork_widget_get_environment();
+  $environment = usanetwork_core_api_get_environment();
   if ($environment == 'stage') {
     $rulesets[] = array(
       'fields' => array(
@@ -1795,6 +1800,12 @@ function usanetwork_mpx_video_preprocess_file_entity(&$vars) {
         $variables['attribute_parameters']['logLevel'] = $log_level;
       }
   
+      if ($full_episode) {
+        $variables['attribute_parameters']['fwsitesection'] = 'usa_tveverywhere_vod_hub';
+      } else {
+        $variables['attribute_parameters']['fwsitesection'] = 'usa_video_vod';
+      }
+
       $vars['video'] = theme('usanetwork_tve_player_mpx_video', $variables);
   
       //FB card
@@ -2445,8 +2456,16 @@ function theme_usanetwork_mpx_video($variables) {
   //   <iframe src="http://player.theplatform.com/p/vCBdGC/C4Urwvl8rU61/embed/select/XaFHqcNj3NFM" width="480" height="270" frameborder="0" allowfullscreen>Your browser does not support iframes.</iframe>
   // Add id attribute to player iframe and a option to pass in extra query
   // params to the iframe url.
+  $global_player = variable_get('usanetwork_global_player_url', '');
 
-  $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
+  if (!empty($global_player)) {
+    $player_source = $global_player;
+  } else {
+    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
+  }
+
+  $player_source .=  '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
+
   $player_parameters = array(
     'query' => (isset($variables['pub_mpx_player_parameters'])
         ? $variables['pub_mpx_player_parameters']
@@ -2538,11 +2557,21 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     $mpx_guid = $file->field_mpx_guid[0]['value'];
   }
 
+  $global_player = variable_get('usanetwork_global_player_url', '');
+
   if ($return_type == 'video') {
     if ((!isset($file->fid)) || (!$mpx_guid) || !$mpx_account_pid || !$player_id) {
       return '';
     }
-    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id . '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
+
+    if (!empty($global_player)) {
+      $player_source = $global_player;
+    } else {
+      $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
+    }
+
+    $player_source .= '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
+
     $player_parameters = array(
         'query' => (isset($variables['pub_mpx_player_parameters'])
             ? $variables['pub_mpx_player_parameters']
@@ -2555,7 +2584,12 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     if (!$mpx_account_pid || !$player_id) {
       return '';
     }
-    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
+    if (!empty($global_player)) {
+      $player_source = $global_player;
+    } else {
+      $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
+    }
+
     $player_parameters = array(
       'query' => (isset($variables['pub_mpx_player_parameters'])
         ? $variables['pub_mpx_player_parameters']
@@ -2602,7 +2636,7 @@ function usanetwork_mpx_video_gigya_sharebar_alter(&$share_settings, $context) {
       $share_settings['gigyaSharebar']['ua']['linkBack'] = url('file/' .$file->fid, array('absolute' => TRUE));
     }
   }
-  if ($context['display']['is_live'] == TRUE) {
+  if (!empty($context['display']['is_live'])) {
     $share_settings['gigyaSharebar']['ua']['title'] = t('USA Network Live TV Streaming');
     $share_settings['gigyaSharebar']['ua']['description'] = t('Stream USA Network TV live on your desktop');
     $share_settings['gigyaSharebar']['ua']['linkBack'] = url('videos/live', array('absolute' => TRUE));

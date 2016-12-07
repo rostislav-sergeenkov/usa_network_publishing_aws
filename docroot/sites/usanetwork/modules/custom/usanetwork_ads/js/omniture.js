@@ -2,6 +2,9 @@
  * Omniture Tracking Menu Links Code
  */
 (function ($) {
+
+  var pageUrl = window.location.href;
+
   Drupal.behaviors.omniture_tracking = {
     omniturePresent: function () {
       if (typeof s == 'object'
@@ -13,7 +16,7 @@
     },
 
     goToUrl: function (elem) {
-      if(elem.attr('href').indexOf('enhanced') + 1) {
+      if (elem.attr('href').indexOf('enhanced') + 1) {
 
       } else if (elem.attr('target') == '_blank') {
 
@@ -43,7 +46,7 @@
       },
       share: function (at_params) {
         // Click on share
-        $('#gigya-share-top3 .gig-button').once('omniture-tracking', function () {
+        $('#gigya-share-top3 .gig-button-up').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
 
@@ -78,8 +81,9 @@
           return;
         }
 
-        s.linkTrackVars = 'events,eVar63';
+        s.linkTrackVars = 'events,prop73,eVar63';
         s.linkTrackEvents = s.events = 'event63';
+        s.prop73 = pageUrl;
         s.eVar63 = menu_name.trim();
 
         if (!$self.hasClass('no-refresh') && $self.attr('href') != '#') {
@@ -92,20 +96,23 @@
       }
     },
 
-    subMenuItems: function (elem, name) {
+    subMenuItems: function (elem, name, nameEventTrack) {
+
+      nameEventTrack = nameEventTrack || 'Global SubMenu Click';
 
       var $self = elem;
 
-      s.linkTrackVars = 'events,eVar64';
+      s.linkTrackVars = 'events,prop73,eVar64';
       s.linkTrackEvents = s.events = 'event64';
+      s.prop73 = pageUrl;
       s.eVar64 = name;
 
-      if (!$self.hasClass('seeit-reminder') && !$self.hasClass('menu-sign-up') && $self.attr('href') != '#') {
+      if (!$self.hasClass('menu-sign-up') && $self.attr('href') != '#') {
         s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
       }
-      s.tl(this, 'o', 'Global SubMenu Click', null, s.goToUrl);
+      s.tl(this, 'o', nameEventTrack, null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
@@ -113,9 +120,9 @@
       if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
         if (event === "click") {
 
-          s.linkTrackVars = 'events,eVar21';
+          s.linkTrackVars = 'events,prop73,eVar21';
           s.linkTrackEvents = s.events = 'event4';
-          //s.linkTrackEvents = s.events = 'event4,event6';
+          s.prop73 = pageUrl;
           s.eVar21 = "Page " + counter;
 
           s.tl(this, 'o', 'Infinite Scroll Click Load');
@@ -123,9 +130,9 @@
 
         } else {
 
-          s.linkTrackVars = 'events,eVar21';
+          s.linkTrackVars = 'events,prop73,eVar21';
           s.linkTrackEvents = s.events = 'event5';
-          //s.linkTrackEvents = s.events = 'event5,event6';
+          s.prop73 = pageUrl;
           s.eVar21 = "Page " + counter;
 
           s.tl(this, 'o', 'Infinite Scroll Auto Load');
@@ -137,8 +144,9 @@
 
     newPageView: function (name) {
       if (typeof s_gi != 'undefined') {
-        s.linkTrackVars = 'events,prop5';
+        s.linkTrackVars = 'events,prop5,prop73';
         s.prop5 = name.trim();
+        s.prop73 = pageUrl;
         void (s.t());
       }
     },
@@ -174,8 +182,9 @@
 
       }
 
-      s.linkTrackVars = 'events,eVar65';
+      s.linkTrackVars = 'events,prop73,eVar65';
       s.linkTrackEvents = s.events = 'event65';
+      s.prop73 = pageUrl;
       s.eVar65 = 'Schedule Bar : ' + item_name;
 
       if (!$self.hasClass('no-link') && $self.attr('href') != '#') {
@@ -189,8 +198,9 @@
     },
 
     schedulePage: function (showName) {
-      s.linkTrackVars = 'events,eVar65';
+      s.linkTrackVars = 'events,prop73,eVar65';
       s.linkTrackEvents = s.events = 'event65';
+      s.prop73 = pageUrl;
       s.eVar65 = 'Schedule Page : Reminder : ' + showName;
       s.tl(this, 'o', 'Schedule Page Click');
       s.manageVars("clearVars", s.linkTrackVars, 1);
@@ -202,8 +212,9 @@
           social_name = $self.data('name'),
           name = social_name.charAt(0).toUpperCase() + social_name.substr(1);
 
-      s.linkTrackVars = 'events,eVar74';
+      s.linkTrackVars = 'events,prop73,eVar74';
       s.linkTrackEvents = s.events = 'event40';
+      s.prop73 = pageUrl;
       s.eVar74 = name;
 
       if ($self.attr('href') != '#') {
@@ -221,8 +232,9 @@
       var $self = elem,
           link_name = $self.text().replace(' New!', '');
 
-      s.linkTrackVars = 'events,eVar63,eVar64';
+      s.linkTrackVars = 'events,prop73,eVar63,eVar64';
       s.linkTrackEvents = s.events = 'event63,event64';
+      s.prop73 = pageUrl;
       s.eVar63 = 'Footer';
       s.eVar64 = link_name;
 
@@ -240,31 +252,23 @@
 
       var show_name = item_node.find($('.show-open .title')).text();
 
-      //s.linkTrackVars = 'events,prop4,prop10';
-      //s.linkTrackEvents = s.events = 'event6';
-      //s.prop4 = show_name + ' : Home Page Show Card';
-      //s.prop10 = show_name;
-
       if (typeof s_gi != 'undefined') {
         s.linkTrackEvents = s.events = 'event51';
-        s.linkTrackVars = 'events,prop4,prop10';
+        s.linkTrackVars = 'events,prop4,prop10,prop73';
         s.prop4 = show_name + ' : Home Page Show Card';
         s.prop10 = show_name;
+        s.prop73 = pageUrl;
         void (s.t());
       }
-
-
-      //s.prop4 = s.prop10 = '';
-      //s.tl(this, 'o', 'Home Page Show Card Click');
-      //s.manageVars('clearVars', s.linkTrackVars, 1);
     },
 
     showCardPromoClick: function ($self, name, prop4, prop10) {
 
-      s.linkTrackVars = 'events,prop4,prop10,eVar55';
+      s.linkTrackVars = 'events,prop4,prop10,prop73,eVar55';
+      s.linkTrackEvents = s.events = 'event51';
       s.prop4 = prop4;
       s.prop10 = prop10;
-      s.linkTrackEvents = s.events = 'event51';
+      s.prop73 = pageUrl;
       s.eVar55 = name;
 
       if ($self.attr('href') != '#' && $self.find('.show-open').length === 0) {
@@ -280,13 +284,15 @@
     aspotClick: function ($self, pageName, name, slideName) {
 
       if ($self.hasClass('next-button')) {
-        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackVars = 'events,prop73,eVar55,eVar33';
         s.linkTrackEvents = s.events = 'event51';
+        s.prop73 = pageUrl;
         s.eVar33 = name;
         s.eVar55 = pageName;
       } else {
-        s.linkTrackVars = 'events,eVar55,eVar33,eVar35';
+        s.linkTrackVars = 'events,prop73,eVar55,eVar33,eVar35';
         s.linkTrackEvents = s.events = 'event51';
+        s.prop73 = pageUrl;
         s.eVar33 = slideName;
         s.eVar35 = name;
         s.eVar55 = pageName;
@@ -301,13 +307,14 @@
       s.tl(this, 'o', pageName + ' ' + name + ' Click', null, s.goToUrl);
       s.manageVars('clearVars', s.linkTrackVars, 1);
     },
-    
+
     carouselNavClick: function (fullName, nameNav) {
 
-        s.linkTrackVars = 'events,eVar55,eVar33';
-        s.linkTrackEvents = s.events = 'event51';
-        s.eVar33 = nameNav;
-        s.eVar55 = fullName;
+      s.linkTrackVars = 'events,prop73,eVar55,eVar33';
+      s.linkTrackEvents = s.events = 'event51';
+      s.prop73 = pageUrl;
+      s.eVar33 = nameNav;
+      s.eVar55 = fullName;
 
       s.tl(this, 'o', fullName + ' ' + nameNav + ' Click');
       s.manageVars('clearVars', s.linkTrackVars, 1);
@@ -316,12 +323,14 @@
     promoClick: function ($self, name, show_name, nameEnding) {
 
       if (show_name === '') {
-        s.linkTrackVars = 'events,eVar55';
+        s.linkTrackVars = 'events,prop73,eVar55';
         s.linkTrackEvents = s.events = 'event51';
+        s.prop73 = pageUrl;
         s.eVar55 = name;
       } else {
-        s.linkTrackVars = 'events,eVar55,eVar33';
+        s.linkTrackVars = 'events,prop73,eVar55,eVar33';
         s.linkTrackEvents = s.events = 'event51';
+        s.prop73 = pageUrl;
         s.eVar33 = show_name;
         s.eVar55 = name;
       }
@@ -560,12 +569,69 @@
     // max number of characters to send to Omniture for questions
     omnitureMaxQuestionCharacters: 35,
 
+    // Gigya share bar
+    gigyaShareBarButtonClick: function (button) {
+
+      var $stickyShare = button.closest('.sticky-share').length >= 1 ? true : false,
+          $container = button.parents('.gig-button-container'),
+          network = 'Share',
+          shareTitle = '';
+
+      if ($container.hasClass('gig-button-container-facebook')) {
+        network = 'Facebook';
+      }
+      else if ($container.hasClass('gig-button-container-twitter')) {
+        network = 'Twitter';
+      }
+      else if ($container.hasClass('gig-button-container-tumblr')) {
+        network = 'Tumblr';
+      }
+      else if ($container.hasClass('gig-button-container-pinterest')) {
+        network = 'Pinterest';
+      }
+
+      if (!$('body').hasClass('page-node-microsite')) {
+        if (button.closest('.gallery-wrapper').length > 0) {
+          shareTitle = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text().trim();
+        } else if (button.closest('header .tab-item-wrapper').length > 0) {
+          shareTitle = $('header .tab-item-wrapper .node-usanetwork-promo .title').text().trim();
+        } else if (button.closest('.block-character-info-header').length > 0) {
+          shareTitle = $('.block-character-info-header .full-name').text().trim();
+        } else if (button.closest('.episode-info-block').length > 0) {
+          shareTitle = $('.episode-info-block .episode-title').text().trim();
+        }
+      }
+
+      s.linkTrackVars = 'events,prop73,eVar73,eVar74';
+      s.linkTrackEvents = s.events = $stickyShare ? 'event91' : 'event41';
+      s.prop73 = pageUrl;
+      s.eVar73 = shareTitle;
+      s.eVar74 = network;
+      s.tl(this, 'o', 'Social Share');
+      s.manageVars('clearVars', s.linkTrackVars, 1);
+    },
+
     attach: function (context, settings) {
+
+      var _this = this;
+
+      // microsite
+      if ($('body').hasClass('page-node-microsite')) {
+
+        // Gigya share bar
+        $('#page-header .field-type-gigya-sharebar').once('omniture-tracking', function () {
+          $(this).on('click', '.gig-share-button', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              _this.gigyaShareBarButtonClick($(this));
+            }
+          });
+        });
+      }
 
       // new design mrrobot
       if ($('body').hasClass('show-new-design') && !$('body').hasClass('page-node-microsite')) {
-        
-        
+
+
         // Click on WHERE TO WATCH link button
         $('#where-to-watch .link-button a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
@@ -574,7 +640,7 @@
               var showName = $('#header .title-block .title').text().trim(),
                   linkName = $(this).text().trim();
 
-              AdobeTracking.clickedPageItem = showName + ' : Where to Watch : ' + linkName ;
+              AdobeTracking.clickedPageItem = showName + ' : Where to Watch : ' + linkName;
               _satellite.track('pageItemClicked');
             }
           });
@@ -588,28 +654,43 @@
               var showName = $('#header .title-block .title').text().trim(),
                   linkName = $(this).attr('data-title').trim();
 
-              AdobeTracking.clickedPageItem = showName + ' : Where to Watch : ' + linkName ;
+              AdobeTracking.clickedPageItem = showName + ' : Where to Watch : ' + linkName;
               _satellite.track('pageItemClicked');
             }
           });
         });
       }
-      // end new design mrrobot
 
-      //if (typeof s != 'object') {
-      //  return;
-      //}
 
       //redesign
       if (!$('body').hasClass('page-node-microsite')) {
 
+        // click global menu Live TV
+        $('#block-usanetwork-menu-usanetwork-menu-sm-menu .nav-bar-tabs .menu a[data-state]:contains(Live TV)').once('omniture-tracking', function () {
+          $(this).on('click', function (e) {
+            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+              if ($(this).attr('target') == '_blank') {
+
+              } else {
+                e.preventDefault();
+              }
+
+              var $self = $(this),
+                  menu_name = $self[0].innerHTML,
+                  nameEventTrack = 'Global Live TV';
+
+              Drupal.behaviors.omniture_tracking.subMenuItems($self, menu_name, nameEventTrack);
+            }
+          });
+        });
+
         // Click on submenu item
         $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
-        '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
-        '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
-        '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
-        '#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .show-menu-tab a,' +
-        '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
+            '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
+            '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
+            '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
+            '#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .show-menu-tab a,' +
+            '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {
@@ -633,11 +714,11 @@
         });
 
         // Home Page A-spot click
-        $( ".show-new-design #aspot-usanetwork a," +
-        "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
-        "#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button," +
-        ".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
-        //$('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
+        $(".show-new-design #aspot-usanetwork a," +
+            "#block-usanetwork-aspot-usanetwork-aspot-carousel a," +
+            "#block-usanetwork-aspot-usanetwork-aspot-carousel .next-button," +
+            ".aspot-and-episodes .show-aspot .slide a").once('omniture-tracking', function () {
+          //$('#block-usanetwork-aspot-usanetwork-aspot-carousel a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {
@@ -689,8 +770,8 @@
 
         // Click promo item
         $('.usa-wrap .node-usanetwork-promo a,' +
-        '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a,' +
-        '#block-usanetwork-home-usanetwork-home-shows-queue .show-link a').once('omniture-tracking', function () {
+            '#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a,' +
+            '#block-usanetwork-home-usanetwork-home-shows-queue .show-link a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {
@@ -713,7 +794,7 @@
             }
           });
         });
-        
+
         // Click carousel control button
         $('.usa-carousel-controls').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
@@ -759,9 +840,9 @@
                   pageName = 'Consumptionator Post Page';
                 } else if (body.hasClass('node-type-media-gallery')) {
                   pageName = 'Consumptionator Gallery Page';
-                }  else if (body.hasClass('node-type-person')) {
+                } else if (body.hasClass('node-type-person')) {
                   pageName = 'Consumptionator Person Page';
-                }  else if (body.hasClass('node-type-quiz')) {
+                } else if (body.hasClass('node-type-quiz')) {
                   pageName = 'Consumptionator Quiz Page';
                 } else {
                   pageName = 'Consumptionator Page';
@@ -782,20 +863,6 @@
             }
           });
         });
-
-        // Click promo item
-        //$('.usa-wrap .node-usanetwork-promo a,' +
-        //'#block-usanetwork-home-usanetwork-home-shows-queue .promos-list a').once('omniture-tracking', function () {
-        //  $(this).on('click', function (e) {
-        //    if ($(this).attr('target') == '_blank') {
-
-      //} else {
-      //  e.preventDefault();
-      //}
-        //    var self = $(this);
-        //    Drupal.behaviors.omniture_tracking.globalPromoClick(self);
-        //  });
-        //});
 
         // Click on submenu schedule items
         $('header .schedule-tab a').once('omniture-tracking', function () {
@@ -844,8 +911,9 @@
 
         // Click on Social Follow item
         $('#block-usanetwork-home-usanetwork-home-shows-queue .social-follow a,' +
-        'header .show-title-block-wrapper .social-follow a,' +
-        '.footer-social-bar a').once('omniture-tracking', function () {
+            '#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .social-follow a,' +
+            'header .show-title-block-wrapper .social-follow a,' +
+            '.footer-social-bar a').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {
@@ -870,45 +938,9 @@
 
         // Gigya share bar
         $('.field-type-gigya-sharebar').once('omniture-tracking', function () {
-
-          var $stickyShare = $(this).parent().hasClass('sticky-share') ? true : false;
-
           $(this).on('click', '.gig-share-button', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              var $self = $(this);
-              var $container = $self.parents('.gig-button-container');
-              var network = 'Share';
-              if ($container.hasClass('gig-button-container-facebook')) {
-                network = 'Facebook';
-              }
-              else if ($container.hasClass('gig-button-container-twitter')) {
-                network = 'Twitter';
-              }
-              else if ($container.hasClass('gig-button-container-tumblr')) {
-                network = 'Tumblr';
-              }
-              else if ($container.hasClass('gig-button-container-pinterest')) {
-                network = 'Pinterest';
-              }
-
-              var name = '';
-
-              if ($(this).closest('.gallery-wrapper').length > 0) {
-                name = $('.gallery-wrapper .slide').eq(0).find('.gallery-name').text();
-              } else if ($(this).closest('header .tab-item-wrapper').length > 0) {
-                name = $('header .tab-item-wrapper .node-usanetwork-promo .title').text();
-              } else if ($(this).closest('.block-character-info-header').length > 0) {
-                name = $('.block-character-info-header .full-name').text();
-              } else if ($(this).closest('.episode-info-block').length > 0) {
-                name = $('.episode-info-block .episode-title').text();
-              }
-
-              s.linkTrackVars = 'events,eVar73,eVar74';
-              s.linkTrackEvents = s.events = $stickyShare ? 'event91' : 'event41';
-              s.eVar73 = name.trim();
-              s.eVar74 = network;
-              s.tl(this, 'o', 'Social Share');
-              s.manageVars('clearVars', s.linkTrackVars, 1);
+              _this.gigyaShareBarButtonClick($(this));
             }
           });
         });
@@ -940,23 +972,6 @@
                 Drupal.behaviors.omniture_tracking.scheduleBar($(this));
               }
             });
-          });
-        });
-
-        // schedule page click on reminder
-        $('.page-schedule .schedule-wrapper a.seeit-reminder').once('omniture-tracking', function () {
-          $(this).on('click', function (e) {
-            if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-              if ($(this).attr('target') == '_blank') {
-
-              } else {
-                e.preventDefault();
-              }
-
-              var showName = $(this).parents('.visible-block').find('.episode-show').text().trim();
-
-              Drupal.behaviors.omniture_tracking.schedulePage(showName);
-            }
           });
         });
       }

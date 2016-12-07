@@ -335,9 +335,6 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
       array_unshift($gallery_field, $image_cover_field);
     }
 
-    $endcard_enabled = $node_wrapper->field_enable_nitro->value();
-    $endcard_path = $node_wrapper->field_nitro_action_name->value();
-
     $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node',$node);
 
     $idx = 0;
@@ -411,20 +408,6 @@ function _usanetwork_media_gallery_consumptionator_gallery_slides_block($node = 
 
         if (!empty($caption_field)) {
           $slide_variables['info']['description'] = strip_tags($caption_field, '<a>');
-        }
-
-        if (!empty($endcard_enabled)) {
-          if ($gallery_file == (object) end($gallery_field)) {
-            if (!empty($endcard_path)) {
-              if (preg_match('/(http:\/\/|https:\/\/)(.*)/', $endcard_path)) {
-                $slide_variables['target_blank'] = TRUE;
-              }
-              else {
-                $slide_variables['target_blank'] = FALSE;
-              }
-              $slide_variables['endcard_path'] = $endcard_path;
-            }
-          }
         }
 
         $slides[] = theme('usanetwork_media_gallery_consumptionator_slide', $slide_variables);
@@ -948,9 +931,8 @@ function _usanetwork_media_gallery_related_content_block() {
  * @return string
  */
 function usanetwork_media_gallery_output_tv_show_related_content($tv_show_node, $related_content, $content, $is_new_design) {
+  $load_more_link =  usanetwork_related_content_is_load_more_link($related_content, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
   $block_of_items = usanetwork_tv_show_consumptionator_render_related_content_items_block($related_content, 0, 1, $is_new_design);
-  $load_more_link = &drupal_static('load_more_link');
-  $load_more_link = TRUE;
   return theme('usanetwork_tv_show_consumptionator_related_items_container', array(
     'related_items_block' => $block_of_items,
     'load_more_link' => $load_more_link,
@@ -1343,6 +1325,22 @@ function usanetwork_media_gallery_form_media_gallery_node_form_alter(&$form, &$f
   $form['field_multiple_show'][$lang]['#size'] = 10;
   //setting additional validation
   $form['#validate'][] = '_usanetwork_media_gallery_multiple_gallery_validate';
+}
+
+/**
+ * Preprocess the media thumbnail.
+ */
+function usanetwork_media_gallery_preprocess_media_thumbnail(&$variables) {
+  drupal_add_css(drupal_get_path('module', 'usanetwork_media_gallery') . '/css/usanetwork-media-gallery.css');
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function usanetwork_media_gallery_field_widget_form_alter(&$element, &$form_state, $context) {
+  if (($context['field']['type'] == 'file') || ($context['field']['type'] == 'image')) {
+    drupal_add_css(drupal_get_path('module', 'usanetwork_media_gallery') . '/css/usanetwork-media-gallery.css');
+  }
 }
 
 /**

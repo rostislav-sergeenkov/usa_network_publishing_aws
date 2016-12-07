@@ -1,7 +1,5 @@
 <?php
 
-define('USANETWORK_SEEIT_DEFAULT_URL', 'https://seeitstage.sv.comcast.com/external/embedded/seeit-remind.js');
-
 define('USANETWORK_PROMO_ICON_CSS_PATH', 'public://css/promo_icon.css');
 define('USANETWORK_PROMO_TAXONOMY_ICON_TYPE_NAME', 'cta_type');
 /**
@@ -371,49 +369,6 @@ function usanetwork_form_alter(&$form, &$form_state, $form_id) {
     drupal_add_css(drupal_get_path('module', 'focal_point') . '/css/focal_point.css');
     drupal_add_js(drupal_get_path('module', 'focal_point') . '/js/focal_point.js');
   }
-}
-
-/**
- * Render apps & services menu items
- */
-function usanetwork_app_and_services_footer_links() {
-
-  $menu = menu_load('menu-apps-services');
-  if (!$menu) {
-    return;
-  }
-  $menu_links = menu_load_links($menu['menu_name']);
-  foreach ($menu_links as $item) {
-    $items[] = array(
-      'data' => l($item['link_title'], $item['link_path'], array('html' => TRUE)),
-      'class' => array(
-        'menu-item'
-      ),
-    );
-  }
-  return theme('usanetwork_item_list', array(
-    'warpper_attributes' => array(
-      'class' => array(
-        'app-and-services-menu',
-      ),
-    ),
-    'title_tag' => 'h2',
-    'title_attributes' => array(
-      'class' => array(
-        'menu-title',
-        'app-and-services-menu',
-      ),
-    ),
-    'title' => t('apps & services'),
-    'items' => $items,
-    'type' => 'ul',
-    'attributes' => array(
-      'class' => array(
-        'menu'
-      )
-    ),
-      )
-  );
 }
 
 /**

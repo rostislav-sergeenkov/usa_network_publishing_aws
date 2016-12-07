@@ -24063,7 +24063,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (min-width: 641px) and (max-width: 768px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:first-child, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .links > a:first-child, #block-usanetwork-news-landing .episode-landing-list-item .buttons-bar .links > a:first-child {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:after, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .links > a:after, #block-usanetwork-news-landing .episode-landing-list-item .buttons-bar .links > a:after {
@@ -24470,21 +24470,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   display: block;
   margin: 0;
   width: auto;
-}
-@media (max-width: 1024px) {
-  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button:after {
-    content: "\e608";
-    color: #ffffff;
-    font-family: "ico-font";
-    font-size: 11px;
-    display: block;
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    margin-top: -5px;
-    line-height: 1;
-    z-index: 3;
-  }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button:nth-child(2n) {
   margin-top: 1.71875vw;

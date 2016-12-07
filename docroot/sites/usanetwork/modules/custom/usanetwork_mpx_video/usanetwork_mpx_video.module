@@ -2414,26 +2414,34 @@ function theme_usanetwork_mpx_video($variables) {
   $file_mpx_account = _media_theplatform_mpx_get_account_data($file->mpx_video_data['parent_account']);
   $mpx_account_default_player = media_theplatform_mpx_get_mpx_player_by_player_id($file_mpx_account->default_player);
 
-  $player = pub_mpx_player_data_load($file);
-  $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
-    (!empty($player['pid']) ? $player['pid'] : $mpx_account_default_player['pid']);
+  $global_player = variable_get('usanetwork_global_player_url', '');
 
-  $player = _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_id);
+  if (!empty($global_player)) {
+    $player_source = $global_player;
+  } else {
+    $player = pub_mpx_player_data_load($file);
+    $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
+      (!empty($player['pid']) ? $player['pid'] : $mpx_account_default_player['pid']);
 
-  $player_pid = !empty($player['pid']) ? $player['pid'] : NULL;
-  if (!$player_pid) {
-    return _tve_player_error('Could not render player: Invalid player PID.');
-  }
+    $player = _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_id);
 
-  $mpx_account_id = !empty($player['parent_account']) ? $player['parent_account'] : NULL;
-  if (!$mpx_account_id) {
-    return _tve_player_error('Could not render player: No MPX account id found.');
-  }
+    $player_pid = !empty($player['pid']) ? $player['pid'] : NULL;
+    if (!$player_pid) {
+      return _tve_player_error('Could not render player: Invalid player PID.');
+    }
 
-  $mpx_account = _media_theplatform_mpx_get_account_data($mpx_account_id);
-  $mpx_account_pid = isset($mpx_account->account_pid) ? $mpx_account->account_pid : NULL;
-  if (!$mpx_account_pid) {
-    return _tve_player_error('Could not render player: Invalid MPX account.');
+    $mpx_account_id = !empty($player['parent_account']) ? $player['parent_account'] : NULL;
+    if (!$mpx_account_id) {
+      return _tve_player_error('Could not render player: No MPX account id found.');
+    }
+
+    $mpx_account = _media_theplatform_mpx_get_account_data($mpx_account_id);
+    $mpx_account_pid = isset($mpx_account->account_pid) ? $mpx_account->account_pid : NULL;
+    if (!$mpx_account_pid) {
+      return _tve_player_error('Could not render player: Invalid MPX account.');
+    }
+
+    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
   }
 
   $account_mpx_url = $file_mpx_account->account_id;
@@ -2448,7 +2456,7 @@ function theme_usanetwork_mpx_video($variables) {
     $mpx_guid = $file->field_mpx_guid[0]['value'];
   }
 
-  if (!isset($file->fid) || !$mpx_guid || !$mpx_account_pid || !$player_id) {
+  if (!isset($file->fid) || !$mpx_guid) {
     return '';
   }
 
@@ -2456,13 +2464,6 @@ function theme_usanetwork_mpx_video($variables) {
   //   <iframe src="http://player.theplatform.com/p/vCBdGC/C4Urwvl8rU61/embed/select/XaFHqcNj3NFM" width="480" height="270" frameborder="0" allowfullscreen>Your browser does not support iframes.</iframe>
   // Add id attribute to player iframe and a option to pass in extra query
   // params to the iframe url.
-  $global_player = variable_get('usanetwork_global_player_url', '');
-
-  if (!empty($global_player)) {
-    $player_source = $global_player;
-  } else {
-    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
-  }
 
   $player_source .=  '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
 
@@ -2522,25 +2523,32 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     $player = pub_mpx_player_data_load($file);
   }
 
-  $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
-    (!empty($player['pid']) ? $player['pid'] : $mpx_account_default_player['pid']);
+  $global_player = variable_get('usanetwork_global_player_url', '');
 
-  $player = _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_id);
+  if (!empty($global_player)) {
+    $player_source = $global_player;
+  } else {
+    $player_id = !empty($variables['player_id']) ? $variables['player_id'] :
+      (!empty($player['pid']) ? $player['pid'] : $mpx_account_default_player['pid']);
 
-  $player_pid = !empty($player['pid']) ? $player['pid'] : NULL;
-  if (!$player_pid) {
-    return _tve_player_error('Could not render player: Invalid player PID.');
-  }
+    $player = _usanetwork_media_theplatform_mpx_get_mpx_player_by_pid($player_id);
 
-  $mpx_account_id = !empty($player['parent_account']) ? $player['parent_account'] : NULL;
-  if (!$mpx_account_id) {
-    return _tve_player_error('Could not render player: No MPX account id found.');
-  }
+    $player_pid = !empty($player['pid']) ? $player['pid'] : NULL;
+    if (!$player_pid) {
+      return _tve_player_error('Could not render player: Invalid player PID.');
+    }
 
-  $mpx_account = _media_theplatform_mpx_get_account_data($mpx_account_id);
-  $mpx_account_pid = isset($mpx_account->account_pid) ? $mpx_account->account_pid : NULL;
-  if (!$mpx_account_pid) {
-    return _tve_player_error('Could not render player: Invalid MPX account.');
+    $mpx_account_id = !empty($player['parent_account']) ? $player['parent_account'] : NULL;
+    if (!$mpx_account_id) {
+      return _tve_player_error('Could not render player: No MPX account id found.');
+    }
+
+    $mpx_account = _media_theplatform_mpx_get_account_data($mpx_account_id);
+    $mpx_account_pid = isset($mpx_account->account_pid) ? $mpx_account->account_pid : NULL;
+    if (!$mpx_account_pid) {
+      return _tve_player_error('Could not render player: Invalid MPX account.');
+    }
+    $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
   }
 
   if (!empty($variables['file'])) {
@@ -2557,17 +2565,9 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     $mpx_guid = $file->field_mpx_guid[0]['value'];
   }
 
-  $global_player = variable_get('usanetwork_global_player_url', '');
-
   if ($return_type == 'video') {
-    if ((!isset($file->fid)) || (!$mpx_guid) || !$mpx_account_pid || !$player_id) {
+    if ((!isset($file->fid)) || (!$mpx_guid)) {
       return '';
-    }
-
-    if (!empty($global_player)) {
-      $player_source = $global_player;
-    } else {
-      $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
     }
 
     $player_source .= '/select/media/guid/' . $account_mpx_id . '/' . $mpx_guid;
@@ -2581,15 +2581,6 @@ function _usanetwork_mpx_video_get_player_src($variables, $return_type = 'video'
     return url($player_source, $player_parameters);
   }
   elseif ($return_type == 'player') {
-    if (!$mpx_account_pid || !$player_id) {
-      return '';
-    }
-    if (!empty($global_player)) {
-      $player_source = $global_player;
-    } else {
-      $player_source = '//player.theplatform.com/p/' . $mpx_account_pid . '/' . $player_id;
-    }
-
     $player_parameters = array(
       'query' => (isset($variables['pub_mpx_player_parameters'])
         ? $variables['pub_mpx_player_parameters']

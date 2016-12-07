@@ -16,6 +16,9 @@
 <div class="consumptionator-episode-main-block ">
   <div class="episode-info-main-block right-rail-line<?php print (empty($image_desktop))? ' no-cover-image' : ''; ?>">
     <div class="episode-info-block show-border">
+      <div class="sticky-share">
+        <?php print $sticky_sharebar; ?>
+      </div>
       <div class="episode-info-header">
         <div class="episode-title-block">
           <?php if($new_design): ?>

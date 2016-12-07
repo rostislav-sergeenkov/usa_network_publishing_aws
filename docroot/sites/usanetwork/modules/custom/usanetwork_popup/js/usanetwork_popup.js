@@ -6,7 +6,7 @@
       var pageUrl = window.location.href;
 
       $('body').once('usanetwork-popup', function () {
-        if (($('body').hasClass('front') || $('body').hasClass('node-type-popup-element')) && $('.usa-home-popup-overlay').length > 0) {
+        if (($('body').hasClass('front') || $('body').hasClass('node-type-consumpt-post') || $('body').hasClass('node-type-popup-element')) && $('.usa-home-popup-overlay').length > 0) {
 
           var popup = $('.usa-home-popup-overlay'),
               popupTitle = popup.attr('data-title'),

@@ -2119,10 +2119,13 @@ function usanetwork_menu_form_usanetwork_settings_form_submit(&$form, &$form_sta
 function usanetwork_menu_render_sharebar($entity, $entity_type, $label, $title, $description, $image_uri = '', $share_buttons = '') {
 
   if (isset($entity->field_gigya_share_bar)) {
-    $share_settings = array(
-      'title' => strip_tags($title),
-      'description' => strip_tags($description),
-    );
+    $share_settings = array();
+    if (!empty($title)) {
+      $share_settings['title'] = strip_tags($title);
+    }
+    if (!empty($description)) {
+      $share_settings['description'] = strip_tags($description);
+    }
     if (!empty($image)) {
       $share_settings['imageUrl'] = $image_uri;
       $share_settings['imageBhev'] = 'url';

@@ -181,7 +181,7 @@
     $(window)
         .on('resize', function (e) {
           waitForFinalEvent(function () {
-            _.consoleCustom('waitForFinalEvent');
+            // _.consoleCustom('waitForFinalEvent');
             _.updateOptions();
             _.checkMode();
             if (_.options.isHorizontalMode && _.options.isHorizontalModeActive) {

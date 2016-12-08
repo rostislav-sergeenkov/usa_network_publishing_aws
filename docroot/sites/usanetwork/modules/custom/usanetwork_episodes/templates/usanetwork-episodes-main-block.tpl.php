@@ -64,6 +64,7 @@
           <?php print $body; ?>
         <?php endif; ?>
       </div>
+      <div id="main-block-bottom-line"></div>
     </div>
     <?php if (!empty($gallery_rec)): ?>
       <div class="gallery-recap-block show-border">

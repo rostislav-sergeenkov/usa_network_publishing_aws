@@ -1,18 +1,3 @@
-//
-// init gallery
-// $('el').usaGallery({
-//
-//    usaGallery config
-//
-//    gallery: {
-//      slick config
-//      http://kenwheeler.github.io/slick/
-//    }
-// });
-// dependency:
-//  1. mousewheel
-//
-
 (function ($) {
   'use strict';
 
@@ -23,13 +8,6 @@
     function usaGallery(element, settings) {
 
       var _ = this;
-
-      // info about usaGallery App
-      _.info = {
-        project: 'usanetwork.com',
-        slick: '1.5.5',
-        ver: '0.1.0'
-      };
 
       _.defaults = {
 
@@ -171,10 +149,11 @@
     if (typeof s_gi != 'undefined') {
 
       var _ = _this,
+          $body = $('body'),
           pageUrl = window.location.href,
           $galleryWrap = _.$galleryWrap;
 
-      if ($('body').hasClass('node-type-tv-episode')) {
+      if ($body.hasClass('node-type-tv-episode')) {
         var showName = (Drupal.settings.usanetwork_tv_show_title !== undefined) ? Drupal.settings.usanetwork_tv_show_title : '',
             pageName = (Drupal.settings.usanetwork_tv_episode_title !== undefined) ? Drupal.settings.usanetwork_tv_episode_title : '';
         s.linkTrackVars = 'events,prop3,prop4,prop5,prop73';
@@ -183,15 +162,18 @@
         s.prop5 = 'Episodic Gallery';
       }
 
-      if ($('body').hasClass('node-type-media-gallery')) {
+      if ($body.hasClass('node-type-media-gallery')) {
         var showName = (Drupal.settings.usanetwork_tv_show_title !== undefined) ? Drupal.settings.usanetwork_tv_show_title : '',
             galleryName = (Drupal.settings.usanetwork_media_gallery_title !== undefined) ? Drupal.settings.usanetwork_media_gallery_title : '',
             slideNumber = parseInt($('.gallery-wrapper .slide.slick-active').data('slick-index')) + 1,
             pageNameEnd = ($galleryWrap.hasClass('end-card'))? 'Gallery End Card': 'Image ' + slideNumber;
+
+        s.linkTrackVars = 'eVar78';
         s.pageName = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + pageNameEnd;
+        s.eVar78 = 'Image ' + slideNumber;
       }
 
-      if ($('body').hasClass('page-videos-live')) {
+      if ($body.hasClass('page-videos-live')) {
         var showName = Drupal.behaviors.usanetwork_video_live.showName.trim(),
             galleryName = Drupal.behaviors.usanetwork_video_live.contentName.trim();
         if(showName != '' && galleryName != '') {
@@ -200,7 +182,7 @@
         }
       }
 
-      if ($('body').hasClass('page-node-microsite')) {
+      if ($body.hasClass('page-node-microsite')) {
         if (typeof Drupal.behaviors.ms_global == 'object' && Drupal.behaviors.ms_global.hasOwnProperty('setOmnitureData')) {
           Drupal.behaviors.ms_global.setOmnitureData('galleries');
           return;

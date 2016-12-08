@@ -329,9 +329,8 @@
     }
 
     _.$getApp.on('click', function (e) {
-      e.preventDefault();
 
-      console.info('click $getApp');
+      e.preventDefault();
 
       if (_.options.isApple) {
         window.location = _.options.itunesAppLink;

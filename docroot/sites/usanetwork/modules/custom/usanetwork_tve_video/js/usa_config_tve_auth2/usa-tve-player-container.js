@@ -26,7 +26,7 @@
                     },
                     {
                       attrName: 'loglevel',
-                      key: 'loglevel'
+                      key: 'logLevel'
                     },
                     {
                       attrName: 'fwsitesection',

@@ -395,13 +395,13 @@
               margin-bottom: 15px;
             }
             @include breakpoint($between-641-768) {
-              margin-bottom: 0px;
+              margin-bottom: 0;
             }
           }
           &:after {
             content: "\e608";
             color: #545454;
-            font-family: "ico-font";
+            font-family: $ico-font;
             font-size: 13px;
             display: block;
             position: absolute;
@@ -637,7 +637,7 @@
           &:after {
             content: "\e608";
             color: #ffffff;
-            font-family: "ico-font";
+            font-family: $ico-font;
             font-size: 11px;
             display: block;
             position: absolute;
@@ -747,6 +747,62 @@
       .buttons-bar {
         @include breakpoint($bp-640-width) {
           display: none;
+        }
+      }
+    }
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block {
+  .episode-landing-list-item {
+    .buttons-bar {
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .full-episode-button {
+          display: block;
+          margin: 0;
+          width: auto;
+          &:nth-child(2n) {
+            margin-top: get-vw(22px, 1280);
+            @include breakpoint($bp-min-1601-width) {
+              margin-top: 22px;
+            }
+            @include breakpoint ($bp-768-width) {
+              margin-top: get-vw(22px, 768);
+            }
+          }
+          a {
+            padding: 15px get-vw(16px, 1281) 15px get-vw(58px, 1281);
+            @include breakpoint($bp-min-1901-width) {
+              padding: 15px 23.5px 15px 87px;
+            }
+            @include breakpoint($bp-1280-width) {
+              padding: 10px get-vw(16px, 1280) 10px get-vw(58px, 1280);
+            }
+            @include breakpoint($bp-1024-width) {
+              padding: 5px 35px 5px 10px;
+            }
+            @include breakpoint($between-769-990) {
+              padding: 5px get-vw(39px, 990) 5px get-vw(14px, 990);
+            }
+            @include breakpoint($bp-768-width) {
+              padding: 10px 31px 10px 10px;
+            }
+            .font-icon {
+              left: get-vw(16px, 1281);
+              @include breakpoint($bp-min-1901-width) {
+                left: 23.5px;
+              }
+              @include breakpoint($bp-1280-width) {
+                left: get-vw(16px, 1280);
+              }
+              @include breakpoint($bp-1024-width) {
+                display: none;
+              }
+            }
+          }
         }
       }
     }

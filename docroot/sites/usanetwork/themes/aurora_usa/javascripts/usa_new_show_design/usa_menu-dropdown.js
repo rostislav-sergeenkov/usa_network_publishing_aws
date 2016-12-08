@@ -231,7 +231,6 @@ var USAN = USAN || {};
               _.removeElemClass($mainWrap, activeClass, null);
               _.addElemClass($header, 'slide-down', null);
               _.removeElemClass($header, 'slide-up', null);
-              console.info('animationCallback');
               _.removeElemClass($header, classHeaderMenuOpen, null);
               //_.checkHeaderSpacer();
             }, resizeTimeOut);
@@ -321,7 +320,6 @@ var USAN = USAN || {};
           }
         },
         onTotalScroll:function(){
-          console.info("scrolled to bottom");
           _.options.customScrollend = true;
         }
       }

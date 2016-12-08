@@ -108,16 +108,15 @@
         notBottom: "header-not-bottom"
       },
       // callback when pinned, `this` is headroom object
-      onPin: function () {
-        console.info('slideDown');
-      },
+      // onPin: function () {
+      //   console.info('slideDown');
+      // },
       // callback when unpinned, `this` is headroom object
-      onUnpin: function () {
-        console.info('slideUp');
-      },
+      // onUnpin: function () {
+      //   console.info('slideUp');
+      // },
       // callback when above offset, `this` is headroom object
       onTop: function () {
-        console.info('onTop');
 
         var $header = _.$header,
             menuOpen = _.options.menuOpen;
@@ -365,8 +364,6 @@
   // init usaStickyHeader app
   //---------------------------
   usaStickyHeader.prototype.init = function (creation) {
-
-    console.info('init');
 
     var _ = this,
         initHeaderClass = _.options.initHeaderClass;

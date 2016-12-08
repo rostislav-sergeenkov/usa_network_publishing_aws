@@ -15485,6 +15485,14 @@ html.no-scroll, body.no-scroll {
   content: '';
   display: table;
 }
+@media (min-width: 1025px) {
+  .show-new-design .consumptionator-episode-main-block .consum-sidebar, .show-new-design .consumptionator-post-main-block .consum-sidebar {
+    float: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
 @media (max-width: 640px) {
   .show-new-design .consumptionator-episode-main-block .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carousel-item, .show-new-design .consumptionator-post-main-block .consum-sidebar .episodes-list-slider.horizontal-mode .usa-carousel-item {
     height: auto;

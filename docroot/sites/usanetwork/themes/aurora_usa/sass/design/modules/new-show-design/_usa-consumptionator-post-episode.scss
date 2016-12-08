@@ -5,6 +5,12 @@
     position: relative;
     width: 100%;
     .consum-sidebar {
+      @include breakpoint($bp-min-1025-width) {
+        float: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
       .episodes-list-slider {
         &.horizontal-mode {
           .usa-carousel-item {

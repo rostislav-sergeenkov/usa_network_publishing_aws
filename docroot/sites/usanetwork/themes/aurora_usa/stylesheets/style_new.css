@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "IBM437";
 .clearfix {
   zoom: 1;
 }
@@ -15420,25 +15420,25 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (min-width: 1025px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share {
+  .no-touch .right-rail-line .sticky-share {
     top: 3.125vw;
     width: 2.5vw;
   }
 }
 @media (min-width: 1601px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share {
+  .no-touch .right-rail-line .sticky-share {
     top: 50px;
     width: 55px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share {
+  .no-touch .right-rail-line .sticky-share {
     top: 5.85938vw;
     width: 5.37109vw;
   }
 }
 @media (min-width: 1025px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
+  .no-touch .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
     font-size: 1.375vw !important;
     height: 3.625vw !important;
     line-height: 3.625vw !important;
@@ -15446,7 +15446,7 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (min-width: 1601px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
+  .no-touch .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
     font-size: 30px !important;
     height: 80px !important;
     line-height: 80px !important;
@@ -15454,7 +15454,7 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
+  .no-touch .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
     font-size: 2.92969vw !important;
     height: 7.8125vw !important;
     line-height: 7.8125vw !important;
@@ -15472,61 +15472,6 @@ html.no-scroll, body.no-scroll {
   header.off-elements ~ .usa-wrap .right-rail-line .sticky-share {
     left: calc((100% - 1560px) / 2);
     top: 195px;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .post-info-block {
-    padding-bottom: 23.4375vw;
-  }
-}
-@media (max-width: 480px) {
-  .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .post-info-block {
-    padding-bottom: 29.16667vw;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .gallery-recap-block ~ .episode-change-link {
-    bottom: 4.7526vw;
-  }
-}
-@media (max-width: 640px) {
-  .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .gallery-recap-block ~ .episode-change-link {
-    bottom: 4.375vw;
-  }
-}
-@media (max-width: 768px) {
-  .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .episode-change-link {
-    bottom: 15.625vw;
-  }
-}
-@media (max-width: 480px) {
-  .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .episode-change-link {
-    bottom: 16.66667vw;
-  }
-}
-@media (min-width: 769px) {
-  .touch .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .post-info-block {
-    padding-bottom: 160px;
-  }
-}
-@media (min-width: 1025px) {
-  .touch .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .gallery-recap-block ~ .episode-change-link {
-    bottom: 1.95313vw;
-  }
-}
-@media (min-width: 1601px) {
-  .touch .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .gallery-recap-block ~ .episode-change-link {
-    bottom: 38px;
-  }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  .touch .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .gallery-recap-block ~ .episode-change-link {
-    bottom: 3.71094vw;
-  }
-}
-@media (min-width: 769px) {
-  .touch .show-new-design.node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .episode-change-link {
-    bottom: 110px;
   }
 }
 
@@ -15681,12 +15626,12 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 768px) {
   .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-change-link, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-change-link, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-change-link, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-change-link {
-    bottom: 4.7526vw;
+    bottom: 15.625vw;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-change-link, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-change-link, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-change-link, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-change-link {
-    bottom: 4.375vw;
+    bottom: 16.66667vw;
   }
 }
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-change-link:after, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-change-link:after, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-change-link:after, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-change-link:after {
@@ -15759,9 +15704,45 @@ html.no-scroll, body.no-scroll {
   content: "\e608";
   right: -15px;
 }
+@media (min-width: 769px) {
+  .touch .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .touch .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .touch .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .touch .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block, .touch .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .touch .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block, .touch .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block, .touch .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
+    padding-bottom: 160px;
+  }
+}
+@media (min-width: 1025px) {
+  .touch .show-new-design .consumptionator-episode-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .touch .show-new-design .consumptionator-episode-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link, .touch .show-new-design .consumptionator-post-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .touch .show-new-design .consumptionator-post-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link {
+    bottom: 1.95313vw;
+  }
+}
+@media (min-width: 1601px) {
+  .touch .show-new-design .consumptionator-episode-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .touch .show-new-design .consumptionator-episode-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link, .touch .show-new-design .consumptionator-post-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .touch .show-new-design .consumptionator-post-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link {
+    bottom: 38px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .touch .show-new-design .consumptionator-episode-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .touch .show-new-design .consumptionator-episode-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link, .touch .show-new-design .consumptionator-post-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .touch .show-new-design .consumptionator-post-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link {
+    bottom: 3.71094vw;
+  }
+}
+@media (min-width: 769px) {
+  .touch .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-change-link, .touch .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-change-link, .touch .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-change-link, .touch .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-change-link {
+    bottom: 110px;
+  }
+}
+@media (max-width: 768px) {
+  .show-new-design .consumptionator-episode-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .show-new-design .consumptionator-episode-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link, .show-new-design .consumptionator-post-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .show-new-design .consumptionator-post-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link {
+    bottom: 4.7526vw;
+  }
+}
+@media (max-width: 640px) {
+  .show-new-design .consumptionator-episode-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .show-new-design .consumptionator-episode-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link, .show-new-design .consumptionator-post-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .show-new-design .consumptionator-post-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link {
+    bottom: 4.375vw;
+  }
+}
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
   border-bottom: 2px solid;
-  padding: 2.89063vw 3.59375vw 5.78125vw 2.5vw;
+  padding: 2.89063vw 3.59375vw 5.78125vw 3.59375vw;
+  position: relative;
 }
 @media (min-width: 1601px) {
   .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
@@ -15775,13 +15756,18 @@ html.no-scroll, body.no-scroll {
 }
 @media (max-width: 768px) {
   .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
-    padding: 7.42188vw 6.51042vw 12.63021vw 6.51042vw;
+    padding: 7.42188vw 6.51042vw 23.4375vw 6.51042vw;
   }
 }
 @media (max-width: 640px) {
   .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
     border-bottom: 0;
-    padding: 5.46875vw 6.25vw 16.875vw;
+    padding: 5.46875vw 6.25vw 23.4375vw;
+  }
+}
+@media (max-width: 480px) {
+  .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
+    padding-bottom: 29.16667vw;
   }
 }
 .show-new-design .consumptionator-episode-main-block .episode-info-main-block .episode-info-block:after, .show-new-design .consumptionator-episode-main-block .episode-info-main-block .post-info-block:after, .show-new-design .consumptionator-episode-main-block .post-info-main-block .episode-info-block:after, .show-new-design .consumptionator-episode-main-block .post-info-main-block .post-info-block:after, .show-new-design .consumptionator-post-main-block .episode-info-main-block .episode-info-block:after, .show-new-design .consumptionator-post-main-block .episode-info-main-block .post-info-block:after, .show-new-design .consumptionator-post-main-block .post-info-main-block .episode-info-block:after, .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block:after {
@@ -16250,11 +16236,6 @@ html.no-scroll, body.no-scroll {
 }
 .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
   position: relative;
-}
-@media (min-width: 1025px) {
-  .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {
-    padding-left: 3.59375vw;
-  }
 }
 @media (min-width: 1601px) {
   .show-new-design .consumptionator-post-main-block .post-info-main-block .post-info-block {

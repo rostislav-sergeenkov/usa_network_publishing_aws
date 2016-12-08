@@ -134,10 +134,10 @@
           bottom: get-vw(38px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          bottom: get-vw(36.5px, 768);
+          bottom: get-vw(120px, 768);
         }
-        @include breakpoint($bp-640-width) {
-          bottom: get-vw(28px, 640);
+        @include breakpoint($bp-480-width) {
+          bottom: get-vw(80px, 480);
         }
         &:after {
           color: $change-episode-color;
@@ -192,9 +192,45 @@
           }
         }
       }
+      .touch & {
+        .episode-info-block, .post-info-block {
+          @include breakpoint($bp-min-769-width) {
+            padding-bottom: 160px;
+          }
+        }
+        .gallery-recap-block {
+          ~ .episode-change-link {
+            @include breakpoint($bp-min-1025-width) {
+              bottom: get-vw(25px, 1280);
+            }
+            @include breakpoint($bp-min-1601-width) {
+              bottom: 38px;
+            }
+            @include breakpoint($between-769-1024) {
+              bottom: get-vw(38px, 1024);
+            }
+          }
+        }
+        .episode-change-link {
+          @include breakpoint($bp-min-769-width) {
+            bottom: 110px;
+          }
+        }
+      }
+      .gallery-recap-block {
+        ~ .episode-change-link {
+          @include breakpoint($bp-768-width) {
+            bottom: get-vw(36.5px, 768);
+          }
+          @include breakpoint($bp-640-width) {
+            bottom: get-vw(28px, 640);
+          }
+        }
+      }
       .episode-info-block, .post-info-block {
         border-bottom: 2px solid;
-        padding: get-vw(37px, 1280) get-vw(46px, 1280) get-vw(74px, 1280) get-vw(32px, 1280);
+        padding: get-vw(37px, 1280) get-vw(46px, 1280) get-vw(74px, 1280) get-vw(46px, 1280);
+        position: relative;
         @include breakpoint($bp-min-1601-width) {
           padding: 50px 94px 100px 70px;
         }
@@ -202,11 +238,14 @@
           padding: get-vw(60px, 1024) get-vw(120px, 1024) get-vw(100px, 1024) get-vw(120px, 1024);
         }
         @include breakpoint($bp-768-width) {
-          padding: get-vw(57px, 768) get-vw(50px, 768) get-vw(97px, 768) get-vw(50px, 768);
+          padding: get-vw(57px, 768) get-vw(50px, 768) get-vw(180px, 768) get-vw(50px, 768);
         }
         @include breakpoint($bp-640-width) {
           border-bottom: 0;
-          padding: get-vw(35px, 640) get-vw(40px, 640) get-vw(108px, 640);
+          padding: get-vw(35px, 640) get-vw(40px, 640) get-vw(150px, 640);
+        }
+        @include breakpoint($bp-480-width) {
+          padding-bottom: get-vw(140px, 480);
         }
         @include clear();
         .episode-info-header, .post-info-header {
@@ -605,9 +644,6 @@
     .post-info-main-block {
       .post-info-block {
         position: relative;
-        @include breakpoint($bp-min-1025-width) {
-          padding-left: get-vw(46px, 1280);
-        }
         @include breakpoint($bp-min-1601-width) {
           padding-left: 90px;
         }

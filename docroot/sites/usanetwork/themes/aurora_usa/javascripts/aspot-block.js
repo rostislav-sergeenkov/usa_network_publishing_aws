@@ -137,7 +137,7 @@
 
            // On before slide change
           .on('afterChange', function (event, slick, currentSlide) {
-            console.info('afterChange');
+
             var nextSlideIndex = currentSlide + 1;
 
             // check next slide index
@@ -154,7 +154,7 @@
 
           // On before slide change
           .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-            console.info('beforeChange');
+
             // hide slide content
             hideElements(currentSlide, nextSlide);
           })
@@ -473,7 +473,7 @@
         $('#aspot-usanetwork').usaAspotHelper(aspotHelperConfig);
 
       }).fail(function () {
-        console.info('ajax fail');
+        console.log('ajax fail');
       });
     },
     attach: function (context, settings) {

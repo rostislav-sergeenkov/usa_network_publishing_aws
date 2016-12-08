@@ -6186,6 +6186,9 @@ header:after {
   content: '';
   display: table;
 }
+header #head-leaderboard {
+  overflow: auto;
+}
 body:not(.node-type-tv-show):not(.consumptionator-page) header {
   background-color: #e9eaeb;
 }

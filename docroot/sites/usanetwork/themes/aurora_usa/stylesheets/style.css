@@ -24063,7 +24063,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (min-width: 641px) and (max-width: 768px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:first-child, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .links > a:first-child, #block-usanetwork-news-landing .episode-landing-list-item .buttons-bar .links > a:first-child {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:after, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .links > a:after, #block-usanetwork-news-landing .episode-landing-list-item .buttons-bar .links > a:after {
@@ -24456,6 +24456,77 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 640px) {
   #block-usanetwork-news-landing .episode-landing-list-item.active .buttons-bar {
+    display: none;
+  }
+}
+
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button {
+  display: block;
+  margin: 0;
+  width: auto;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button:nth-child(2n) {
+  margin-top: 1.71875vw;
+}
+@media (min-width: 1601px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button:nth-child(2n) {
+    margin-top: 22px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button:nth-child(2n) {
+    margin-top: 2.86458vw;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+  padding: 15px 1.24902vw 15px 4.52771vw;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+    padding: 15px 23.5px 15px 87px;
+  }
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+    padding: 10px 1.25vw 10px 4.53125vw;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+    padding: 5px 35px 5px 10px;
+  }
+}
+@media (min-width: 769px) and (max-width: 990px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+    padding: 5px 3.93939vw 5px 1.41414vw;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+    padding: 10px 31px 10px 10px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a .font-icon {
+  left: 1.24902vw;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a .font-icon {
+    left: 23.5px;
+  }
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a .font-icon {
+    left: 1.25vw;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a .font-icon {
     display: none;
   }
 }

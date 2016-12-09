@@ -3,6 +3,9 @@ header {
   min-width: 300px;
   position: relative;
   width: 100%;
+  #head-leaderboard {
+    overflow: auto;
+  }
   body:not(.node-type-tv-show):not(.consumptionator-page) & {
     background-color: $poll-back;
     .header-nav-bar {

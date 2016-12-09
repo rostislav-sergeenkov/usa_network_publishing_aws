@@ -12,8 +12,11 @@
           if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
           }
-          var target = document.getElementById('where-to-watch');
-          target.scrollIntoView();
+          var offsetHeight = $('#head-leaderboard').height() + $('.header-nav-bar').height(),
+              target = $('#where-to-watch');
+          $('html, body').animate({
+            scrollTop: target.position().top + offsetHeight
+          }, 1000);
         }
       });
     }

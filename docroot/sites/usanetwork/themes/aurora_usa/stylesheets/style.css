@@ -19643,9 +19643,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   width: 74.7%;
   background: #ffffff;
   color: #000000;
-  padding: 45px 0;
-  padding-bottom: 10000px;
-  margin-bottom: -10000px;
+  padding: 45px 0 0;
   overflow: hidden;
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -19656,20 +19654,20 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block {
     border-bottom: 2px solid;
-    padding: 24px 0;
+    padding: 24px 0 0;
     margin-bottom: 0;
     width: 100%;
   }
 }
 @media (max-width: 768px) {
   .consumptionator-characters-main-block .character-info-block {
-    padding: 38px 0 38px 0;
+    padding: 38px 0 0;
   }
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block {
     padding: 56.25vw 0 0;
-    border-bottom: 8px solid;
+    border-bottom: 2px solid;
   }
 }
 .consumptionator-characters-main-block .character-info-block.social-enable .gallery-recap-block {
@@ -19683,137 +19681,9 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     padding-bottom: 0;
   }
 }
-.consumptionator-characters-main-block .character-info-block .block-character-info-header {
-  margin-bottom: 30px;
-  padding: 0 38px 0 58px;
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-@media (max-width: 1024px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header {
-    padding: 0 24px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header {
-    margin-bottom: 0;
-    padding: 10px 46px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header {
-    padding: 10px 25px;
-  }
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left {
-  float: left;
-  width: 50%;
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 54px;
-  line-height: 1.3;
-}
-@media (max-width: 1280px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 36px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 28.8px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 37.8px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 24px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 22px;
-  }
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 19.5px;
-  color: #3e3e3e;
-  text-transform: uppercase;
-}
-@media (max-width: 1280px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-    font-size: 13px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-    font-size: 10.4px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-    font-size: 10px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-    font-size: 8px;
-  }
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right {
-  float: right;
-  width: 45%;
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 26px;
-  color: #afafaf;
-}
-@media (max-width: 1280px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
-    font-size: 18px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
-    font-size: 15px;
-  }
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 26px;
-  text-align: right;
-  line-height: 1em;
-  margin: 0 14px 15px 0;
-}
-@media (max-width: 768px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
-    font-size: 18px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
-    font-size: 15px;
-  }
-}
-@media (max-width: 320px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
-    margin-bottom: 14px;
-  }
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share > div {
-  float: right;
-}
 .consumptionator-characters-main-block .character-info-block .block-character-info-content {
-  padding: 0 38px 0 58px;
+  padding: 0 38px 0 70px;
+  position: relative;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content:after {
   clear: both;
@@ -19827,8 +19697,141 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content {
-    padding: 0 24px;
+    padding: 0 24px 0 6.83594vw;
   }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content {
+    padding: 0 24px 16.27604vw;
+  }
+}
+@media (min-width: 769px) {
+  .no-touch body:not(.sub-menu-is-sticky) .consumptionator-characters-main-block .character-info-block .block-character-info-content .sticky-share {
+    top: 0;
+  }
+}
+@media (min-width: 769px) {
+  .touch .consumptionator-characters-main-block .character-info-block .block-character-info-content {
+    padding-bottom: 125px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header {
+  margin-bottom: 30px;
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header {
+    margin-bottom: 0;
+    padding: 10px 0;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left {
+  float: left;
+  width: 50%;
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 54px;
+  line-height: 1.3;
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 36px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 28.8px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 37.8px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 22px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .description {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 19.5px;
+  color: #3e3e3e;
+  text-transform: uppercase;
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .description {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .description {
+    font-size: 10.4px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .description {
+    font-size: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .description {
+    font-size: 8px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right {
+  float: right;
+  width: 45%;
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  color: #afafaf;
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share {
+    font-size: 18px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share {
+    font-size: 15px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share h3 {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  text-align: right;
+  line-height: 1em;
+  margin: 0 14px 15px 0;
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share h3 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share h3 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 320px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share h3 {
+    margin-bottom: 14px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share > div {
+  float: right;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .asset-img {
   width: 46.8%;
@@ -19846,9 +19849,9 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .asset-img {
+    bottom: 100%;
     height: 56.25vw;
     left: 0;
-    top: 0;
     position: absolute;
     width: 100%;
   }

@@ -170,7 +170,7 @@
 
         s.linkTrackVars = 'eVar78';
         s.pageName = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + pageNameEnd;
-        s.eVar78 = 'Image ' + slideNumber;
+        s.eVar78 = slideNumber;
       }
 
       if ($body.hasClass('page-videos-live')) {

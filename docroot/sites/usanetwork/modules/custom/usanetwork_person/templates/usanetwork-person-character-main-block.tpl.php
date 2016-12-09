@@ -5,34 +5,34 @@
 ?>
 <div class="consumptionator-characters-main-block">
   <div class="character-info-block right-rail-line show-border<?php print (!empty($gallery_rec))? ' gallery-enable': ''; ?><?php print (!empty($social_block))? ' social-enable': ''; ?>">
-    <div class="sticky-share">
-      <?php print $sticky_sharebar; ?>
-    </div>
-    <div class="block-character-info-header">
-      <div class="block-character-info-header-left">
-        <?php if($new_design): ?>
-          <h1 class="info-header-inner">
+    <div class="block-character-info-content">
+      <div class="sticky-share">
+        <?php print $sticky_sharebar; ?>
+      </div>
+      <div class="block-character-info-header">
+        <div class="block-character-info-header-left">
+          <?php if($new_design): ?>
+            <h1 class="info-header-inner">
+              <?php if (!empty($character_full_name)): ?>
+                <span class="full-name"><?php print $character_full_name; ?></span>
+              <?php endif; ?>
+              <?php if (!empty($character_description)): ?>
+                <span class="description"><?php print $character_description; ?></span>
+              <?php endif; ?>
+            </h1>
+          <?php else: ?>
             <?php if (!empty($character_full_name)): ?>
-              <span class="full-name"><?php print $character_full_name; ?></span>
+              <div class="full-name"><?php print $character_full_name; ?></div>
             <?php endif; ?>
             <?php if (!empty($character_description)): ?>
-              <span class="description"><?php print $character_description; ?></span>
+              <div class="description"><?php print $character_description; ?></div>
             <?php endif; ?>
-          </h1>
-        <?php else: ?>
-          <?php if (!empty($character_full_name)): ?>
-            <div class="full-name"><?php print $character_full_name; ?></div>
           <?php endif; ?>
-          <?php if (!empty($character_description)): ?>
-            <div class="description"><?php print $character_description; ?></div>
-          <?php endif; ?>
-        <?php endif; ?>
+        </div>
+        <div class="block-character-info-header-right">
+          <div class="share"><?php print $sharebar ?></div>
+        </div>
       </div>
-      <div class="block-character-info-header-right">
-        <div class="share"><?php print $sharebar ?></div>
-      </div>
-    </div>
-    <div class="block-character-info-content">
       <div class="asset-img" data-picture="" data-alt="" data-class="tile-img">
         <?php if (!empty($image_mobile)): ?>
           <div data-src="<?php print $image_mobile; ?>"></div>
@@ -72,6 +72,7 @@
           <div class="topbox"></div>
         </div>
       </div>
+      <div id="main-block-bottom-line" class=""></div>
     </div>
     <?php if (!empty($gallery_rec)): ?>
       <div class="gallery-recap-block show-border">

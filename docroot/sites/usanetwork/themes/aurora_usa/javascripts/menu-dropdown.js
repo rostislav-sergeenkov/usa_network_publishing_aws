@@ -314,14 +314,14 @@
                 if (tab_container_act.length) {
                   $(".tab .no-refresh").unbind('click');
                   tab_container_act
-                      .slideUp(animation_speed, function () {
-                        if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
-                          tab_containers.eq(index).css('height', 'auto');
-                        }
-                        $(".tab .no-refresh").unbind('click');
-                        openTab();
-                      })
-                      .removeClass('active');
+                    .slideUp(animation_speed, function () {
+                      if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
+                        tab_containers.eq(index).css('height', 'auto');
+                      }
+                      $(".tab .no-refresh").unbind('click');
+                      openTab();
+                    })
+                    .removeClass('active');
                 } else {
                   openTab();
                 }

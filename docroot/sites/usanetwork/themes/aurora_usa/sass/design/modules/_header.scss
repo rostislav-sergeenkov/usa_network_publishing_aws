@@ -4,6 +4,9 @@ header {
   position: relative;
   width: 100%;
   z-index: 10;
+  #head-leaderboard {
+    overflow: auto;
+  }
   body:not(.node-type-tv-show):not(.consumptionator-page) & {
     background-color: $poll-back;
     .header-nav-bar {

@@ -90,8 +90,14 @@ function usanetwork_episodes_block_view($delta = '') {
       break;
     case 'usanetwork_episodes_main_block':
       $block['subject'] = '';
-      $block['content'] = _usanetwork_episodes_main_block();
-      $block['#attached']['js'][] = drupal_get_path('theme', 'aurora_usa') . '/javascripts/consumptionator-sticky-share.js';
+      $block['content'] = array(
+        '#markup' => _usanetwork_episodes_main_block(),
+        '#attached' => array(
+          'js' => array(
+            path_to_theme('aurora_usa') . '/javascripts/consumptionator-sticky-share.js',
+          ),
+        ),
+      );
       break;
     case 'usanetwork_episodes_ep_carousel':
       $block['subject'] = '';

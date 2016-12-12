@@ -1,11 +1,14 @@
 (function ($) {
   Drupal.behaviors.usanetwork_menu_dropdown = {
-    stickyHeader: function(offsetTop, subMenuSelector) {
+    stickyHeader: function (offsetTop, subMenuSelector) {
+
       var $body = $('body'),
           sidebar = $('.consum-sidebar'),
           header_submenu_h;
 
-      if(!(offsetTop && subMenuSelector)) {return false;}
+      if (!(offsetTop && subMenuSelector)) {
+        return false;
+      }
 
       header_submenu_h = subMenuSelector.outerHeight(true);
 
@@ -24,7 +27,7 @@
           }
           Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
         }
-        if($body.hasClass('sub-menu-is-sticky')) {
+        if ($body.hasClass('sub-menu-is-sticky')) {
           // $body.css('margin-top', header_submenu_h);
           $('#header').css('padding-bottom', header_submenu_h);
         } else {
@@ -33,7 +36,7 @@
         }
       }
 
-      if(window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
+      if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
         // check offsetTop value
         if (!subMenuSelector.hasClass('sticky-shows-submenu')) {
           if (Math.round(subMenuSelector.offset()['top']) !== offsetTop) {
@@ -54,7 +57,9 @@
       var $upper_menu = $('.upper-menu'),
           header_submenu_h = $('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu').outerHeight(true) - 1;
 
-      if(!offsetTop) {return false;}
+      if (!offsetTop) {
+        return false;
+      }
 
       if (!$('.fixed-position').length) {
         // check offsetTop value
@@ -78,22 +83,22 @@
       }
 
       if ($(window).width() >= window_size_tablet_portrait) {
-        if(!$('.fixed-position').length) {
+        if (!$('.fixed-position').length) {
           var $upperMenu = $upper_menu.eq(0),
               $cloned = $upperMenu.clone(true);
 
           $cloned
-            .addClass('fixed-position')
-            .css('top', header_submenu_h).find('h1').remove();
+              .addClass('fixed-position')
+              .css('top', header_submenu_h).find('h1').remove();
           $upperMenu.before($cloned);
         }
 
         if ($(window).scrollTop() >= offsetTop) {
-            $('.fixed-position').addClass('is-visible');
+          $('.fixed-position').addClass('is-visible');
         } else {
           $('.fixed-position').removeClass('is-visible');
         }
-      } else if($('.fixed-position.is-visible').length) {
+      } else if ($('.fixed-position.is-visible').length) {
         $('.fixed-position').removeClass('is-visible');
       }
     },
@@ -103,13 +108,13 @@
     onTotalMCScrollStartOffset: null,
     MCScrollInstance: null,
 
-    closeTab: function() {
-      setTimeout(function() {
+    closeTab: function () {
+      setTimeout(function () {
         $('.tab-item').css('height', 'auto');
       }, 600);
     },
 
-    tabItemScroll: function() {
+    tabItemScroll: function () {
       var tab_wrapper = $('header .tab-item-wrapper');
 
       tab_wrapper.mCustomScrollbar({
@@ -117,7 +122,7 @@
         scrollInertia: 0,
         scrollbarPosition: "outside",
         callbacks: {
-          whileScrolling: function(){
+          whileScrolling: function () {
             if (this.mcs.topPct == 100) {
               Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollFlag = true;
               Drupal.behaviors.usanetwork_menu_dropdown.onTotalMCScrollStartOffset = $(window).scrollTop();
@@ -127,7 +132,7 @@
       });
     },
 
-    updateItemScroll: function() {
+    updateItemScroll: function () {
 
       $('.tab-item-wrapper').css('height', 'auto');
 
@@ -142,13 +147,13 @@
           ad_offset = ((ad_h - $(window).scrollTop()) < 0) ? 0 : ad_h - $(window).scrollTop(),
           scroll_h = window_h - header_h - ad_offset - (tab_padding_top + tab_padding_bottom);
 
-      if(scroll_h < tab_wrapper_h) {
+      if (scroll_h < tab_wrapper_h) {
         tab_wrapper.height(scroll_h);
         tab_wrapper.mCustomScrollbar("update");
       }
     },
 
-    hideProvider: function() {
+    hideProvider: function () {
       var provider = $('.tve-header-links .first');
       if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
         provider.hide();
@@ -163,25 +168,39 @@
 
     startScrollAt: null,
 
-    attach: function(context){
+    attach: function (context) {
       var _self = this,
           $body = $('body'),
           $submenu = $('.region-header'),
           //$submenu = ($body.hasClass('front'))? $('header'): $('.region-header'),
           submenuOffsetTop = null,
           $userMenu = $('.upper-menu'),
+          $header = $('#header'),
           timer_id;
 
-      if($submenu.length) {
-        if($('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu', $submenu).length) {
+      if ($submenu.length) {
+        if ($('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu', $submenu).length) {
           $submenu = $('.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu', $submenu);
         }
-        submenuOffsetTop = Math.round($submenu.offset()['top']);
+        // submenuOffsetTop = Math.round($submenu.offset()['top']);
+        submenuOffsetTop = calcSubmenuOffsetTop();
       } else {
         $submenu = null;
       }
 
-      if($submenu.length && $userMenu.length) {
+      function calcSubmenuOffsetTop() {
+
+        var calcOffsetTop = Math.round($header.outerHeight() - $submenu.outerHeight());
+
+        // consumptionator-video-page full-episode
+        if (calcOffsetTop < 0) {
+          calcOffsetTop = 0;
+        }
+
+        return calcOffsetTop;
+      }
+
+      if ($submenu.length && $userMenu.length) {
         var upperMenuOffsetTop = Math.round($userMenu.offset()['top'] - $submenu.outerHeight(true) - 1);
       }
 
@@ -267,7 +286,7 @@
 
             setTimeout(function () {
               Drupal.behaviors.usanetwork_menu_dropdown.updateItemScroll();
-            },animation_speed);
+            }, animation_speed);
 
             // HIDE SIGN TAB IF EXIST
             if ($('.page-videos .sign-in-link').length) {
@@ -284,7 +303,7 @@
             if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches) {
               if (tab.attr('data-state') == 'active') {
                 tab.removeClass('active').attr('data-state', '');
-                tab_containers.eq(index).slideUp(animation_speed, function() {
+                tab_containers.eq(index).slideUp(animation_speed, function () {
                   if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
                     tab_containers.eq(index).css('height', 'auto');
                   }
@@ -320,7 +339,7 @@
 
             if (tab.attr('data-state') == 'active') {
               tab.removeClass('active').attr('data-state', '');
-              tab_containers.eq(index).slideUp(animation_speed, function() {
+              tab_containers.eq(index).slideUp(animation_speed, function () {
                 if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
                   tab_containers.eq(index).css('height', 'auto');
                 }
@@ -409,13 +428,13 @@
         };
 
         showTitleMove();
-        if($('.show-menu').length > 0) {
+        if ($('.show-menu').length > 0) {
           showMenuMove();
         }
 
         //HotFix: Remove dropdown option from tab "Shop"
-        $(".pane-usanetwork-menu-usanetwork-menu-sm-main .tab a").each(function(){
-          if ($(this).text() == 'shop' ||  $(this).text() == 'Shop') {
+        $(".pane-usanetwork-menu-usanetwork-menu-sm-main .tab a").each(function () {
+          if ($(this).text() == 'shop' || $(this).text() == 'Shop') {
             $(this).removeClass('active').attr('target', '_blank');
             return false;
           }
@@ -425,28 +444,33 @@
         $(".main-menu-open a").bind('click', menuOpenHandler);
 
         // Positioning sticky header and photo/video filters, if the page was reloaded.
-        setTimeout(function() {
+        setTimeout(function () {
           _self.stickyHeader(submenuOffsetTop, $submenu);
-          if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
+          if ($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
             _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
         }, 500);
 
+        $(window).on('load', function () {
+          submenuOffsetTop = calcSubmenuOffsetTop();
+        });
+
         $(window).on('resize', function (e) {
+          submenuOffsetTop = calcSubmenuOffsetTop();
           clearTimeout(timer_id);
-          timer_id = setTimeout(function() {
+          timer_id = setTimeout(function () {
             _self.stickyHeader(submenuOffsetTop, $submenu);
             //temporary code for hiding provider
             if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
               Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
             }
-            if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
+            if ($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
               _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
             }
           }, 300);
 
           showTitleMove();
-          if($('.show-menu').length > 0) {
+          if ($('.show-menu').length > 0) {
             showMenuMove();
           }
 
@@ -478,7 +502,7 @@
           if ($('body.consumptionator-video-page').hasClass('page-full-video')) {
             Drupal.behaviors.usanetwork_menu_dropdown.hideProvider();
           }
-          if($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
+          if ($body.hasClass('page-node-videos') || $body.hasClass('page-node-photos') || $body.hasClass('page-node-explore')) {
             _self.stickyFilterbar(upperMenuOffsetTop, $userMenu, $submenu);
           }
 

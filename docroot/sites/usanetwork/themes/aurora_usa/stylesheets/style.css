@@ -6187,6 +6187,9 @@ header:after {
   content: '';
   display: table;
 }
+header #head-leaderboard {
+  overflow: auto;
+}
 body:not(.node-type-tv-show):not(.consumptionator-page) header {
   background-color: #e9eaeb;
 }
@@ -15851,25 +15854,25 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   }
 }
 @media (min-width: 1281px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share {
+  .no-touch .right-rail-line .sticky-share {
     top: 45px;
     width: 55px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share {
+  .no-touch .right-rail-line .sticky-share {
     top: 38px;
     width: 28px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share {
+  .no-touch .right-rail-line .sticky-share {
     top: 53px;
     width: 5.37109vw;
   }
 }
 @media (min-width: 1281px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
+  .no-touch .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
     font-size: 30px !important;
     height: 80px !important;
     line-height: 80px !important;
@@ -15877,7 +15880,7 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
+  .no-touch .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
     font-size: 15px !important;
     height: 41px !important;
     line-height: 41px !important;
@@ -15885,7 +15888,7 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .no-touch .node-type-consumpt-post .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
+  .no-touch .right-rail-line .sticky-share .field-type-gigya-sharebar .gig-button-container .usa-share-button {
     font-size: 2.92969vw !important;
     height: 7.8125vw !important;
     line-height: 7.8125vw !important;
@@ -15906,51 +15909,6 @@ body.node-type-catchall-seo-page .node-media-gallery .gallery-wrapper .gallery-l
 @media (min-width: 2500px) {
   .no-touch .sub-menu-is-sticky .right-rail-line .sticky-share {
     left: calc((100% - 2500px) / 2);
-  }
-}
-@media (max-width: 768px) {
-  .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .post-info-block {
-    padding-bottom: 23.4375vw;
-  }
-}
-@media (max-width: 480px) {
-  .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .post-info-block {
-    padding-bottom: 29.16667vw;
-  }
-}
-@media (max-width: 768px) {
-  .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .gallery-recap-block ~ .episode-change-link {
-    bottom: 36px;
-  }
-}
-@media (max-width: 768px) {
-  .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .episode-change-link {
-    bottom: 15.625vw;
-  }
-}
-@media (max-width: 480px) {
-  .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .episode-change-link {
-    bottom: 16.66667vw;
-  }
-}
-@media (min-width: 769px) {
-  .touch .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .post-info-block {
-    padding-bottom: 160px;
-  }
-}
-@media (min-width: 1281px) {
-  .touch .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .gallery-recap-block ~ .episode-change-link {
-    bottom: 39px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .touch .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .gallery-recap-block ~ .episode-change-link {
-    bottom: 34px;
-  }
-}
-@media (min-width: 769px) {
-  .touch .node-type-consumpt-post .consumptionator-post-main-block .right-rail-line .episode-change-link {
-    bottom: 110px;
   }
 }
 
@@ -19690,9 +19648,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   width: 74.7%;
   background: #ffffff;
   color: #000000;
-  padding: 45px 0;
-  padding-bottom: 10000px;
-  margin-bottom: -10000px;
+  padding: 45px 0 0;
   overflow: hidden;
 }
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -19703,20 +19659,20 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block {
     border-bottom: 2px solid;
-    padding: 24px 0;
+    padding: 24px 0 0;
     margin-bottom: 0;
     width: 100%;
   }
 }
 @media (max-width: 768px) {
   .consumptionator-characters-main-block .character-info-block {
-    padding: 38px 0 38px 0;
+    padding: 38px 0 0;
   }
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block {
     padding: 56.25vw 0 0;
-    border-bottom: 8px solid;
+    border-bottom: 2px solid;
   }
 }
 .consumptionator-characters-main-block .character-info-block.social-enable .gallery-recap-block {
@@ -19730,137 +19686,9 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
     padding-bottom: 0;
   }
 }
-.consumptionator-characters-main-block .character-info-block .block-character-info-header {
-  margin-bottom: 30px;
-  padding: 0 38px 0 58px;
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-@media (max-width: 1024px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header {
-    padding: 0 24px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header {
-    margin-bottom: 0;
-    padding: 10px 46px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header {
-    padding: 10px 25px;
-  }
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left {
-  float: left;
-  width: 50%;
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
-  font-size: 54px;
-  line-height: 1.3;
-}
-@media (max-width: 1280px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 36px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 28.8px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 37.8px;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 24px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .full-name {
-    font-size: 22px;
-  }
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-  font-family: "texgyrescholaitalic", Times, serif;
-  font-size: 19.5px;
-  color: #3e3e3e;
-  text-transform: uppercase;
-}
-@media (max-width: 1280px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-    font-size: 13px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-    font-size: 10.4px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-    font-size: 10px;
-  }
-}
-@media (max-width: 480px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-left .description {
-    font-size: 8px;
-  }
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right {
-  float: right;
-  width: 45%;
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 26px;
-  color: #afafaf;
-}
-@media (max-width: 1280px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
-    font-size: 18px;
-  }
-}
-@media (max-width: 768px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share {
-    font-size: 15px;
-  }
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
-  font-family: "avalonregular", Helvetica, Arial, sans-serif;
-  font-size: 26px;
-  text-align: right;
-  line-height: 1em;
-  margin: 0 14px 15px 0;
-}
-@media (max-width: 768px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
-    font-size: 18px;
-  }
-}
-@media (max-width: 1024px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
-    font-size: 15px;
-  }
-}
-@media (max-width: 320px) {
-  .consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share h3 {
-    margin-bottom: 14px;
-  }
-}
-.consumptionator-characters-main-block .character-info-block .block-character-info-header .block-character-info-header-right .share > div {
-  float: right;
-}
 .consumptionator-characters-main-block .character-info-block .block-character-info-content {
-  padding: 0 38px 0 58px;
+  padding: 0 38px 0 70px;
+  position: relative;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content:after {
   clear: both;
@@ -19874,8 +19702,141 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 1024px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content {
-    padding: 0 24px;
+    padding: 0 24px 0 6.83594vw;
   }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content {
+    padding: 0 24px 16.27604vw;
+  }
+}
+@media (min-width: 769px) {
+  .no-touch body:not(.sub-menu-is-sticky) .consumptionator-characters-main-block .character-info-block .block-character-info-content .sticky-share {
+    top: 0;
+  }
+}
+@media (min-width: 769px) {
+  .touch .consumptionator-characters-main-block .character-info-block .block-character-info-content {
+    padding-bottom: 125px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header {
+  margin-bottom: 30px;
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header {
+    margin-bottom: 0;
+    padding: 10px 0;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left {
+  float: left;
+  width: 50%;
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  font-size: 54px;
+  line-height: 1.3;
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 36px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 28.8px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 37.8px;
+  }
+}
+@media (max-width: 640px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .full-name {
+    font-size: 22px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .description {
+  font-family: "texgyrescholaitalic", Times, serif;
+  font-size: 19.5px;
+  color: #3e3e3e;
+  text-transform: uppercase;
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .description {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .description {
+    font-size: 10.4px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .description {
+    font-size: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-left .description {
+    font-size: 8px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right {
+  float: right;
+  width: 45%;
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  color: #afafaf;
+}
+@media (max-width: 1280px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share {
+    font-size: 18px;
+  }
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share {
+    font-size: 15px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share h3 {
+  font-family: "avalonregular", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  text-align: right;
+  line-height: 1em;
+  margin: 0 14px 15px 0;
+}
+@media (max-width: 768px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share h3 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share h3 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 320px) {
+  .consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share h3 {
+    margin-bottom: 14px;
+  }
+}
+.consumptionator-characters-main-block .character-info-block .block-character-info-content .block-character-info-header .block-character-info-header-right .share > div {
+  float: right;
 }
 .consumptionator-characters-main-block .character-info-block .block-character-info-content .asset-img {
   width: 46.8%;
@@ -19893,9 +19854,9 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 640px) {
   .consumptionator-characters-main-block .character-info-block .block-character-info-content .asset-img {
+    bottom: 100%;
     height: 56.25vw;
     left: 0;
-    top: 0;
     position: absolute;
     width: 100%;
   }
@@ -20125,8 +20086,13 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 768px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-change-link, .consumptionator-episode-main-block .post-info-main-block .episode-change-link, .consumptionator-post-main-block .episode-info-main-block .episode-change-link, .consumptionator-post-main-block .post-info-main-block .episode-change-link {
-    bottom: 36px;
+    bottom: 15.625vw;
     font-size: 13px;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-change-link, .consumptionator-episode-main-block .post-info-main-block .episode-change-link, .consumptionator-post-main-block .episode-info-main-block .episode-change-link, .consumptionator-post-main-block .post-info-main-block .episode-change-link {
+    bottom: 16.66667vw;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-change-link:after, .consumptionator-episode-main-block .post-info-main-block .episode-change-link:after, .consumptionator-post-main-block .episode-info-main-block .episode-change-link:after, .consumptionator-post-main-block .post-info-main-block .episode-change-link:after {
@@ -20191,13 +20157,34 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
   content: "\e608";
   right: -15px;
 }
+@media (min-width: 769px) {
+  .touch .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .touch .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .touch .consumptionator-episode-main-block .post-info-main-block .post-info-block, .touch .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .touch .consumptionator-post-main-block .episode-info-main-block .post-info-block, .touch .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .touch .consumptionator-post-main-block .post-info-main-block .post-info-block, .touch .consumptionator-post-main-block .post-info-main-block .episode-info-block {
+    padding-bottom: 160px;
+  }
+}
+@media (min-width: 769px) {
+  .touch .consumptionator-episode-main-block .episode-info-main-block .episode-change-link, .touch .consumptionator-episode-main-block .post-info-main-block .episode-change-link, .touch .consumptionator-post-main-block .episode-info-main-block .episode-change-link, .touch .consumptionator-post-main-block .post-info-main-block .episode-change-link {
+    bottom: 110px;
+  }
+}
+@media (min-width: 1281px) {
+  .consumptionator-episode-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .consumptionator-episode-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link, .consumptionator-post-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .consumptionator-post-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link {
+    bottom: 39px;
+  }
+}
+@media (max-width: 1280px) {
+  .consumptionator-episode-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .consumptionator-episode-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link, .consumptionator-post-main-block .episode-info-main-block .gallery-recap-block ~ .episode-change-link, .consumptionator-post-main-block .post-info-main-block .gallery-recap-block ~ .episode-change-link {
+    bottom: 34px;
+  }
+}
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
   border-bottom: 2px solid;
-  padding: 45px 93px 90px 70px;
+  padding: 45px 93px 90px 93px;
+  position: relative;
 }
 @media (max-width: 1280px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
-    padding: 38px 43px 76px 32px;
+    padding: 38px 43px 76px 43px;
   }
 }
 @media (max-width: 1024px) {
@@ -20207,13 +20194,18 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 768px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
-    padding: 50px 6.7% 90px;
+    padding: 50px 6.7% 23.4375vw;
   }
 }
 @media (max-width: 640px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
     border-bottom: 0;
-    padding: 30px 6% 75px;
+    padding: 30px 6% 23.4375vw;
+  }
+}
+@media (max-width: 480px) {
+  .consumptionator-episode-main-block .episode-info-main-block .episode-info-block, .consumptionator-episode-main-block .episode-info-main-block .post-info-block, .consumptionator-episode-main-block .post-info-main-block .episode-info-block, .consumptionator-episode-main-block .post-info-main-block .post-info-block, .consumptionator-post-main-block .episode-info-main-block .episode-info-block, .consumptionator-post-main-block .episode-info-main-block .post-info-block, .consumptionator-post-main-block .post-info-main-block .episode-info-block, .consumptionator-post-main-block .post-info-main-block .post-info-block {
+    padding-bottom: 29.16667vw;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block:after, .consumptionator-episode-main-block .episode-info-main-block .post-info-block:after, .consumptionator-episode-main-block .post-info-main-block .episode-info-block:after, .consumptionator-episode-main-block .post-info-main-block .post-info-block:after, .consumptionator-post-main-block .episode-info-main-block .episode-info-block:after, .consumptionator-post-main-block .episode-info-main-block .post-info-block:after, .consumptionator-post-main-block .post-info-main-block .episode-info-block:after, .consumptionator-post-main-block .post-info-main-block .post-info-block:after {
@@ -20615,17 +20607,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 
 .consumptionator-post-main-block .post-info-main-block .post-info-block {
   border-bottom: 1px solid;
-  position: relative;
-}
-@media (min-width: 1281px) {
-  .consumptionator-post-main-block .post-info-main-block .post-info-block {
-    padding-left: 93px;
-  }
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .consumptionator-post-main-block .post-info-main-block .post-info-block {
-    padding-left: 43px;
-  }
 }
 @media (max-width: 768px) {
   .consumptionator-post-main-block .post-info-main-block .post-info-block {
@@ -24092,7 +24073,7 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (min-width: 641px) and (max-width: 768px) {
   #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:first-child, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .links > a:first-child, #block-usanetwork-news-landing .episode-landing-list-item .buttons-bar .links > a:first-child {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .links > a:after, #block-usanetwork-consumptionator-post-usa-landing-blog-post-list-block .episode-landing-list-item .buttons-bar .links > a:after, #block-usanetwork-news-landing .episode-landing-list-item .buttons-bar .links > a:after {
@@ -24485,6 +24466,77 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 640px) {
   #block-usanetwork-news-landing .episode-landing-list-item.active .buttons-bar {
+    display: none;
+  }
+}
+
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button {
+  display: block;
+  margin: 0;
+  width: auto;
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button:nth-child(2n) {
+  margin-top: 1.71875vw;
+}
+@media (min-width: 1601px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button:nth-child(2n) {
+    margin-top: 22px;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button:nth-child(2n) {
+    margin-top: 2.86458vw;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+  padding: 15px 1.24902vw 15px 4.52771vw;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+    padding: 15px 23.5px 15px 87px;
+  }
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+    padding: 10px 1.25vw 10px 4.53125vw;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+    padding: 5px 35px 5px 10px;
+  }
+}
+@media (min-width: 769px) and (max-width: 990px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+    padding: 5px 3.93939vw 5px 1.41414vw;
+  }
+}
+@media (max-width: 768px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a {
+    padding: 10px 31px 10px 10px;
+  }
+}
+#block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a .font-icon {
+  left: 1.24902vw;
+}
+@media (min-width: 1901px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a .font-icon {
+    left: 23.5px;
+  }
+}
+@media (max-width: 1280px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a .font-icon {
+    left: 1.25vw;
+  }
+}
+@media (max-width: 1024px) {
+  #block-usanetwork-episodes-usa-landing-tvep-list-block .episode-landing-list-item .buttons-bar .buttons .full-episode-button a .font-icon {
     display: none;
   }
 }

@@ -100,19 +100,19 @@
       width: 75%;
       background: #ffffff;
       color: black;
-      padding: 45px 0;
+      padding: 45px 0 0;
       overflow: hidden;
       @include breakpoint($between-1025-1280) {
         width: calc(100% - 320px);
       }
       @include breakpoint($bp-1024-width) {
         border-bottom: 2px solid;
-        padding: 24px 0;
+        padding: 24px 0 0;
         margin-bottom: 0;
         width: 100%;
       }
       @include breakpoint($bp-768-width) {
-        padding: 38px 0 38px 0;
+        padding: 38px 0 0;
       }
       @include breakpoint ($bp-640-width) {
         padding: 56.25vw 0 0;
@@ -131,92 +131,94 @@
           }
         }
       }
-      .block-character-info-header {
-        @include clear();
-        margin-bottom: 30px;
-        padding: 0 38px 0 58px;
-        @include breakpoint($bp-1024-width) {
-          padding: 0 24px;
-        }
-        @include breakpoint($bp-640-width) {
-          margin-bottom: 0;
-          padding: 10px 46px;
-        }
-        @include breakpoint($bp-480-width) {
-          padding: 10px 25px;
-        }
-        .block-character-info-header-left {
-          float: left;
-          width: 50%;
-          h1 {
-            margin: 0;
-            padding: 0;
-          }
-          .full-name {
-            display: block;
-            font-family: $fira-sans-medium;
-            font-size: 38px;
-            line-height: 1.3;
-            @include breakpoint($bp-min-1601-width) {
-              font-size: 54px;
-            }
-            @include breakpoint($bp-640-width) {
-              font-size: get-vw(38.4px, 640);
-            }
-          }
-          .description {
-            display: block;
-            font-family: $tex-gyreschola-italic;
-            font-size: 19.5px;
-            color: $consum-carousel-odd;
-            text-transform: uppercase;
-            @include breakpoint($bp-1280-width) {
-              font-size: 13px;
-            }
-            @include breakpoint($bp-1024-width) {
-              font-size: 10.4px;
-            }
-            @include breakpoint($bp-768-width) {
-              font-size: 10px;
-              line-height: 2;
-            }
-            @include breakpoint($bp-480-width) {
-              font-size: 8px;
-              line-height: 14px;
-            }
-          }
-        }
-        .block-character-info-header-right {
-          float: right;
-          width: 45%;
-          .share {
-            font-family: $fira-sans-regular;
-            font-size: 26px;
-            color: $consum-carousel-text;
-            @include breakpoint($bp-1280-width) {
-              font-size: 18px;
-            }
-            @include breakpoint($bp-768-width) {
-              font-size: 15px;
-            }
-            h3 {
-              display: none;
-            }
-            > div {
-              float: right;
-            }
-            @extend %usa-gigya-colors;
-          }
-        }
-      }
       .block-character-info-content {
         @include clear();
-        padding: 0 38px 0 58px;
+        padding: 0 38px 0 70px;
+        position: relative;
         @include breakpoint($bp-1280-width) {
-          padding: 0 31px 0 36px;
+          padding: 0 31px 0 50px;
         }
         @include breakpoint($bp-1024-width) {
-          padding: 0 24px;
+          padding: 0 24px 0 get-vw(70px, 1024);
+        }
+        @include breakpoint($bp-768-width) {
+          padding: 0 24px get-vw(125px, 768);
+        }
+        .touch & {
+          @include breakpoint($bp-min-769-width) {
+            padding-bottom: 125px;
+          }
+        }
+        .block-character-info-header {
+          @include clear();
+          margin-bottom: 30px;
+          @include breakpoint($bp-640-width) {
+            margin-bottom: 0;
+            padding: 10px 0;
+          }
+          .block-character-info-header-left {
+            float: left;
+            width: 50%;
+            h1 {
+              margin: 0;
+              padding: 0;
+            }
+            .full-name {
+              display: block;
+              font-family: $fira-sans-medium;
+              font-size: 38px;
+              line-height: 1.3;
+              @include breakpoint($bp-min-1601-width) {
+                font-size: 54px;
+              }
+              @include breakpoint($bp-640-width) {
+                font-size: get-vw(38.4px, 640);
+              }
+            }
+            .description {
+              display: block;
+              font-family: $tex-gyreschola-italic;
+              font-size: 19.5px;
+              color: $consum-carousel-odd;
+              text-transform: uppercase;
+              @include breakpoint($bp-1280-width) {
+                font-size: 13px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 10.4px;
+              }
+              @include breakpoint($bp-768-width) {
+                font-size: 10px;
+                line-height: 2;
+              }
+              @include breakpoint($bp-480-width) {
+                font-size: 8px;
+                line-height: 14px;
+              }
+            }
+          }
+          .block-character-info-header-right {
+            float: right;
+            width: 45%;
+            .share {
+              font-family: $fira-sans-regular;
+              font-size: 26px;
+              color: $consum-carousel-text;
+              @include breakpoint($bp-1280-width) {
+                font-size: 18px;
+              }
+              @include breakpoint($bp-768-width) {
+                font-size: 15px;
+              }
+              h3 {
+                display: none;
+              }
+              > div {
+                float: right;
+              }
+              @extend %usa-gigya-colors;
+            }
+          }
         }
         .asset-img {
           width: 46.8%;
@@ -228,9 +230,9 @@
             width: 300px;
           }
           @include breakpoint($bp-640-width) {
+            bottom: 100%;
             height: 56.25vw;
             left: 0;
-            top: 0;
             position: absolute;
             width: 100%;
           }
@@ -356,5 +358,10 @@
         }
       }
     }
+  }
+}
+.no-touch .show-new-design header:not(.off-elements) ~ .usa-wrap .block-character-info-content .sticky-share {
+  @include breakpoint($bp-min-769-width) {
+    top: 0;
   }
 }

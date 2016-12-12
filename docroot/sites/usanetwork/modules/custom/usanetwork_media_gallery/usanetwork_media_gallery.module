@@ -1089,8 +1089,13 @@ function _usanetwork_media_gallery_photo_landing_prepare_query_params() {
 function _usanetwork_media_gallery_get_gallery_types($show_id, $params) {
 
   $query = db_select('node', 'n');
-  $query->condition('n.status', '1');
-  $query->condition('n.type', 'media_gallery');
+  $query->leftJoin('field_data_field_promo_appear_under', 'au', 'au.entity_id = n.nid');
+  $query->condition(
+    db_or()
+      ->condition('n.type', 'media_gallery')
+      ->condition('au.field_promo_appear_under_value', 'photo')
+  );
+  $query->condition('n.status', NODE_PUBLISHED);
   $query->fields('n', array('nid'));
   $query->leftJoin('field_data_field_show', 'show_field', 'n.nid=show_field.entity_id');
   $query->leftJoin('field_data_field_multiple_show', 'multiple_show_field', 'multiple_show_field.entity_id = n.nid');

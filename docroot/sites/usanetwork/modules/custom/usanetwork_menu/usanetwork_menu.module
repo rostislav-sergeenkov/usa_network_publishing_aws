@@ -569,18 +569,42 @@ function _usanetwork_menu_main_menu_block() {
   $show = menu_get_object();
   if(usanetwork_core_api_check_field($show, 'field_show_links')) {
     if (isset($show->type) && $show->type == 'tv_show') {
-      $items[] = array(
-        'data' => l($show->title, 'javascript:void(0)', array(
-          'fragment' => '',
-          'external' => TRUE,
-          'attributes' => array(
-            'class' => array(
-              'show-color',
-              'show-border',
-              'active'
-            )
+      $additional_sign_up_block = _usanetwork_lyris_signup_block(TRUE);
+      $additional_sign_up_block_render = render($additional_sign_up_block);
+      $show_menu_html = l($show->title, 'javascript:void(0)', array(
+        'fragment' => '',
+        'external' => TRUE,
+        'attributes' => array(
+          'class' => array(
+            'show-color',
+            'show-border',
+            'active'
           )
-        )),
+        )
+      ));
+      $show_menu_newsletter_html = theme('html_tag', array(
+        'element' => array(
+          '#tag' => 'div',
+          '#attributes' => array(
+            'id' => 'menu-newsletter',
+            'class' => 'menu-newsletter',
+          ),
+          '#value' => 'Newsletter',
+        ),
+      ));
+      $show_menu_newsletter_html .= $additional_sign_up_block_render;
+
+      $show_menu_html .= theme('html_tag', array(
+        'element' => array(
+          '#tag' => 'div',
+          '#attributes' => array(
+            'class' => 'newsletter-container',
+          ),
+          '#value' =>  $show_menu_newsletter_html,
+        ),
+      ));
+      $items[] = array(
+        'data' => $show_menu_html,
         'class' => array(
           'expanded',
           'header-show-menu',

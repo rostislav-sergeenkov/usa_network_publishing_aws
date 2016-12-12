@@ -130,6 +130,7 @@ function _usanetwork_lyris_signup_block($additional = FALSE) {
  */
 function usanetwork_lyris_newsletter_subscription($form, $form_state, $property) {
   global $base_secure_url;
+  global $base_url;
   $form['newsletter'] = array(
     '#type' => 'markup',
     '#prefix' => '<div id="newsletter_lyris_ajax_wrapper">',
@@ -157,6 +158,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
     '#type' => 'hidden',
     '#value' => isset($property['show_value']) ? $property['show_value'] : '',
   );
+  $environment = usanetwork_core_api_get_environment();
   $form['newsletter']['submit'] = array(
     '#prefix' => '<div class="form-submit-wrapper">',
     '#suffix' => '</div>',
@@ -173,7 +175,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
       'method' => 'replace',
       'effect' => 'fade',
       'validate_first' => TRUE,
-      'path' => $base_secure_url . '/system/ajax',
+      'path' => (($environment == 'prod') ? $base_secure_url : $base_url) . '/system/ajax',
     ),
   );
   return $form;
@@ -184,6 +186,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
  */
 function usanetwork_lyris_newsletter_subscription_additional($form, $form_state, $property) {
   global $base_secure_url;
+  global $base_url;
   $form['newsletter'] = array(
     '#type' => 'markup',
     '#prefix' => '<div id="newsletter_lyris_ajax_wrapper_additional">',
@@ -211,6 +214,7 @@ function usanetwork_lyris_newsletter_subscription_additional($form, $form_state,
     '#type' => 'hidden',
     '#value' => isset($property['show_value']) ? $property['show_value'] : '',
   );
+  $environment = usanetwork_core_api_get_environment();
   $form['newsletter']['submit'] = array(
     '#prefix' => '<div class="form-submit-wrapper">',
     '#suffix' => '</div>',
@@ -227,7 +231,7 @@ function usanetwork_lyris_newsletter_subscription_additional($form, $form_state,
       'method' => 'replace',
       'effect' => 'fade',
       'validate_first' => TRUE,
-      'path' => $base_secure_url . '/system/ajax',
+      'path' => (($environment == 'prod') ? $base_secure_url : $base_url) . '/system/ajax',
     ),
   );
   return $form;

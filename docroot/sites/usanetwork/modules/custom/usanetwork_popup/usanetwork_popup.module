@@ -108,7 +108,7 @@ function usanetwork_popup_page_alter(&$page) {
     return;
   }
   $menu_object = _usanetwork_menu_get_object();
-  if (("home" == current_path()) || ($menu_object->type == "consumpt_post")) {
+  if (("home" == current_path()) || (!empty($menu_object) && ($menu_object->type == "consumpt_post"))) {
     // Attach hidden modal windows to the bottom of the page.
     $popup_window = _usanetwork_popup_window();
     $page['page_bottom']['usanetwork_popup_windows'] = array(

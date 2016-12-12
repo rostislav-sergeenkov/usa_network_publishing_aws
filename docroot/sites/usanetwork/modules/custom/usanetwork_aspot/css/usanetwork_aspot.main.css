@@ -273,7 +273,8 @@
 }
 
 #edit-group_usa_aspot_ui .reset-wrapper .button,
-#edit-group_usa_tv_aspot_ui .reset-wrapper .button{
+#edit-group_usa_tv_aspot_ui .reset-wrapper .button,
+.aspot-copy-value-button {
   background: #e4e4e4;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -291,7 +292,8 @@
 }
 
 #edit-group_usa_aspot_ui .reset-wrapper .button:hover,
-#edit-group_usa_tv_aspot_ui .reset-wrapper .button:hover {
+#edit-group_usa_tv_aspot_ui .reset-wrapper .button:hover,
+.aspot-copy-value-button:hover {
   background: #a1a1a1;
 }
 

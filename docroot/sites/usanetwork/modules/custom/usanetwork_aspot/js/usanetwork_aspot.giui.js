@@ -6,7 +6,8 @@
       homeMainBlockId, showMainBlockId, homePageName, showPageName, ndShowPageName,
       homeAspot, homeOptions, showAspot, showOptions, ndShowAspot, ndShowOptions,
       isInitHomeAspot, isInitShowAspot, isInitNdShowAspot,
-      tvs_newDesignStatus, ndMainBlockFlagClass, ndDesignCheckboxId, ndAspotSettings;
+      tvs_newDesignStatus, ndMainBlockFlagClass, ndDesignCheckboxId, ndAspotSettings,
+      copyValSettings;
 
   // sets vars values
   usanetworkAspotNodeFormId = 'usanetwork-aspot-node-form';
@@ -24,6 +25,35 @@
   isInitHomeAspot = false;
   isInitShowAspot = false;
   isInitNdShowAspot = false;
+
+  // copy home fields value settings
+  copyValSettings = {
+    fields: {
+      'title prefix': {
+        homeTextAreaId: 'edit-field-aspot-gi-title-prefix-und-0-value',
+        showTextAreaId: 'edit-field-aspot-tgi-title-prefix-und-0-value'
+      },
+      'title': {
+        homeTextAreaId: 'edit-field-aspot-gi-title-und-0-value',
+        showTextAreaId: 'edit-field-aspot-tgi-title-und-0-value'
+      },
+      'description': {
+        homeTextAreaId: 'edit-field-aspot-gi-desc-und-0-value',
+        showTextAreaId: 'edit-field-aspot-tgi-desc-und-0-value'
+      }
+    },
+    links: {
+      'cta': {
+        linkFieldClass: 'form-type-link-field',
+        inputFieldTitleClass: 'link-field-title',
+        inputFieldUrlClass: 'link-field-url',
+        forms: {
+          homeFormId: 'edit-field-aspot-gi-cta',
+          showFormId: 'edit-field-aspot-tgi-cta'
+        }
+      }
+    }
+  };
 
   // default aspots settings
   aspotSettings = {
@@ -195,9 +225,18 @@
           top: '485px',
           leftM: '55px',
           topM: '495px'
+        },
+        cta_button_2: {
+          dataRel: 'cta_button_2',
+          alignLeft: 0,
+          alignLeftM: 0,
+          left: '0px',
+          top: '0px',
+          leftM: '0px',
+          topM: '0px'
         }
       }
-    },
+    }
   };
 
   // new design aspots settings
@@ -396,7 +435,12 @@
           // for home Aspot disabled new design
           ndDesignCheckboxStatus: false,
           ndMainBlockClass: ndMainBlockFlagClass,
-          ndDesignCheckboxId: ndDesignCheckboxId
+          ndDesignCheckboxId: ndDesignCheckboxId,
+
+          // copy home fields value settings
+          initCopyValButton: false,
+          copyValButtonId: 'aspot-gi-copy-value-button',
+          copyValSettings: copyValSettings
         };
 
         // sets showAspot options
@@ -414,7 +458,12 @@
           showBgOffset: false, // false default value
           ndDesignCheckboxStatus: tvs_newDesignStatus,
           ndMainBlockClass: ndMainBlockFlagClass,
-          ndDesignCheckboxId: ndDesignCheckboxId
+          ndDesignCheckboxId: ndDesignCheckboxId,
+
+          // copy home fields value settings
+          initCopyValButton: true,
+          copyValButtonId: 'aspot-tgi-copy-value-button',
+          copyValSettings: copyValSettings
         };
 
         // sets usaShowAspot options (new design)
@@ -432,7 +481,12 @@
           showBgOffset: false, // false default value
           ndDesignCheckboxStatus: tvs_newDesignStatus,
           ndMainBlockClass: ndMainBlockFlagClass,
-          ndDesignCheckboxId: ndDesignCheckboxId
+          ndDesignCheckboxId: ndDesignCheckboxId,
+
+          // copy home fields value settings
+          initCopyValButton: true,
+          copyValButtonId: 'aspot-tgi-copy-value-button',
+          copyValSettings: copyValSettings
         };
 
         // init home Aspots
@@ -554,7 +608,8 @@
         PreviewBlockWrapper_tpl, PreviewBlockWrapperMobile_tpl, PreviewBlockWrapperTitle_tpl, PreviewBlockWrapperMobileTitle_tpl, PreviewBlockWrapperId,
         PreviewBlockWrapperMobileId, defaultFontSize, defaultElemPosition, aspotDraggableItemsData, aspotDraggableItemsDataId, aspotDraggableItemsData_tpl,
         PreviewBlock, PreviewBlockMobile, PreviewBlockWrapper, PreviewBlockWrapperMobile, ctaButtonClass,
-        newDesignClass, ndDesignCheckboxStatus, minFontSizeCounter, maxFontSizeCounter;
+        newDesignClass, ndDesignCheckboxStatus, minFontSizeCounter, maxFontSizeCounter,
+        copyValFields, copyValCTALinks, initCopyValButton, copyValButtonId, copyValButtonClass, copyValButton_tpl;
 
     // default params value
     defaultParams = {
@@ -585,6 +640,12 @@
     draggableElements = [];
     draggableElementsMobile = [];
 
+    // copy fields value
+    initCopyValButton = allParams.initCopyValButton;
+    copyValButtonId = allParams.copyValButtonId;
+    copyValFields = allParams.copyValSettings.fields;
+    copyValCTALinks = allParams.copyValSettings.links.cta;
+
     // generate Ids
     PreviewBlockWrapperId = 'preview-' + pageName + '-wrapper';
     PreviewBlockWrapperMobileId = 'preview-' + pageName + '-wrapper-mobile';
@@ -595,6 +656,7 @@
     draggableAreaDesktopMobileId = 'edit-field-aspot-enabled-' + pageName + '-preview-mobile';
     aspotDraggableItemsDataId = allParams.aspot_draggable_items_data_name;
     ctaButtonClass = 'aspot-draggable-cta-button';
+    copyValButtonClass = 'aspot-copy-value-button';
 
     // templates
     aspotDraggableItemsData_tpl = $('<div>', {
@@ -655,6 +717,12 @@
     draggableAreaDesktopMobile_tpl = $('<div>', {
       id: draggableAreaDesktopMobileId,
       class: "draggable-area mobile"
+    });
+
+    copyValButton_tpl = $('<div>', {
+      id: copyValButtonId,
+      class: copyValButtonClass,
+      text: 'Copy Home fields value'
     });
 
     function resetElemWidth_tpl() {
@@ -875,6 +943,10 @@
             .prepend(PreviewBlockWrapper_tpl.append(PreviewBlockWrapperTitle_tpl, draggableAreaDesktop_tpl.append(desktopImg_tpl), addSetElempositionNav_tpl(), addFontSizeNav_tpl(defaultFontSize.desktop), resetElemWidth_tpl()))
             .prepend(PreviewBlockWrapperMobile_tpl.append(PreviewBlockWrapperMobileTitle_tpl, draggableAreaDesktopMobile_tpl.append(mobileImg_tpl), addSetElempositionNav_tpl(), addFontSizeNav_tpl(defaultFontSize.mobile), resetElemWidth_tpl()));
 
+        if (initCopyValButton) {
+          aspotPreviewBlock.append(copyValButton_tpl);
+        }
+
         if (ndDesignCheckboxStatus) {
           aspotPreviewBlock.addClass(newDesignClass);
         } else {
@@ -1077,7 +1149,7 @@
 
         $.each(queueElemArr, function (index, itemElement) {
 
-          var $elem = $($elements).filter('[data-rel=' + itemElement +']'),
+          var $elem = $($elements).filter('[data-rel=' + itemElement + ']'),
               indentTop = defaultElemPosition[itemElement][version].indentTop;
 
           if ($elem.css('display') === 'none') {
@@ -1137,11 +1209,11 @@
           if (container.hasClass('wrapper-mobile')) {
             self.css({
               left: titleLeft + defaultElemPosition[selfName].alignLeftM + 'px'
-            })
+            });
           } else if (container.hasClass('wrapper-desktop')) {
             self.css({
               left: titleLeft + defaultElemPosition[selfName].alignLeft + 'px'
-            })
+            });
           }
         });
 
@@ -1367,6 +1439,7 @@
         $(PreviewBlockWrapper_tpl).remove();
         $(PreviewBlockWrapperMobile_tpl).remove();
         $(aspotDraggableItemsData_tpl).remove();
+        $(copyValButton_tpl).remove();
       },
 
       init: function () {
@@ -1397,6 +1470,40 @@
 
     // event on mainBlock click
     mainBlock
+        .on('click', '#' + copyValButtonId, function (e) {
+          if (initCopyValButton) {
+            try {
+              var homeLinks = $('#' + copyValCTALinks.forms.homeFormId).find('.' + copyValCTALinks.linkFieldClass),
+                  showLinks = $('#' + copyValCTALinks.forms.showFormId).find('.' + copyValCTALinks.linkFieldClass);
+
+              // clear show links
+              showLinks.each(function (index, el) {
+                $(el).find('.' + copyValCTALinks.inputFieldTitleClass + ' input').val('');
+                $(el).find('.' + copyValCTALinks.inputFieldUrlClass + ' input').val('');
+              });
+
+              // copy home links
+              homeLinks.each(function (index, el) {
+
+                var inputFieldTitleVal = $(el).find('.' + copyValCTALinks.inputFieldTitleClass + ' input').val(),
+                    inputFieldUrlVal = $(el).find('.' + copyValCTALinks.inputFieldUrlClass + ' input').val();
+
+                showLinks.eq(index).find('.' + copyValCTALinks.inputFieldTitleClass + ' input').val(inputFieldTitleVal);
+                showLinks.eq(index).find('.' + copyValCTALinks.inputFieldUrlClass + ' input').val(inputFieldUrlVal);
+              });
+
+              // copy fields value
+              for (var key in copyValFields) {
+                var copyField = copyValFields[key],
+                    homeFieldVal = tinyMCE.get(copyField.homeTextAreaId).getContent();
+
+                tinyMCE.get(copyField.showTextAreaId).setContent(homeFieldVal);
+              }
+            } catch (e) {
+              console.log('error: copy aspot home value');
+            }
+          }
+        })
         .on('click', '.aspot-draggable-element', function (e) {
 
           var aspotDragElemActive = mainBlock.find(".aspot-draggable-element.active"),

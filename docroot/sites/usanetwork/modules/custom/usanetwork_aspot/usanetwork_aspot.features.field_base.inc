@@ -131,7 +131,7 @@ function usanetwork_aspot_field_default_field_bases() {
   // Exported field_base: 'field_aspot_gi_cta'
   $field_bases['field_aspot_gi_cta'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 3,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_aspot_gi_cta',
@@ -272,7 +272,7 @@ function usanetwork_aspot_field_default_field_bases() {
   // Exported field_base: 'field_aspot_tgi_cta'
   $field_bases['field_aspot_tgi_cta'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 3,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_aspot_tgi_cta',

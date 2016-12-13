@@ -229,6 +229,13 @@
           }
         });
 
+        $('#usanetwork-lyris-newsletter-subscription-additional').click(function(event){
+          if($(event.target).hasClass('close-form')){
+            var container = $('#newsletter-container');
+             container.removeClass('active');
+          }
+        });
+
         if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
           tablet = true;
         }

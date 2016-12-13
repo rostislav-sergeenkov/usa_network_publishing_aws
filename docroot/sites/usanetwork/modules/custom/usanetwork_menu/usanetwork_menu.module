@@ -587,7 +587,7 @@ function _usanetwork_menu_main_menu_block() {
           '#tag' => 'div',
           '#attributes' => array(
             'id' => 'menu-newsletter',
-            'class' => 'menu-newsletter',
+            'class' => array('menu-newsletter', 'show-color', 'secondary'),
           ),
           '#value' => 'Newsletter',
         ),
@@ -599,6 +599,7 @@ function _usanetwork_menu_main_menu_block() {
           '#tag' => 'div',
           '#attributes' => array(
             'class' => 'newsletter-container',
+            'id' => 'newsletter-container',
           ),
           '#value' =>  $show_menu_newsletter_html,
         ),

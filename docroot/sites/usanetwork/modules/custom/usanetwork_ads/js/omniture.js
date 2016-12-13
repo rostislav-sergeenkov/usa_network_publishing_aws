@@ -107,7 +107,7 @@
       s.prop73 = pageUrl;
       s.eVar64 = name;
 
-      if (!$self.hasClass('menu-sign-up') && $self.attr('href') != '#') {
+      if (!$self.hasClass('menu-sign-up') && !$self.hasClass('menu-newsletter') && $self.attr('href') != '#') {
         s.goToUrl = function () {
           Drupal.behaviors.omniture_tracking.goToUrl($self);
         };
@@ -687,10 +687,13 @@
         // Click on submenu item
         $('#block-usanetwork-menu-usanetwork-menu-sm-menu .tab-content .shows-tab a,' +
             '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .categorized-menu a,' +
+            '.pane-usanetwork-menu-usanetwork-menu-sm-main .menu .header-show-menu a,' +
             '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .title a,' +
             '.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .show-menu-tab a,' +
             '#block-usanetwork-tv-shows-usanetwork-tv-shows-nd-menu .show-menu-tab a,' +
-            '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a').once('omniture-tracking', function () {
+            '.pane-usanetwork-menu-usanetwork-menu-sm-full-episodes a,' +
+            '.social-icons a.menu-sign-up,' +
+            '#menu-newsletter').once('omniture-tracking', function () {
           $(this).on('click', function (e) {
             if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
               if ($(this).attr('target') == '_blank') {
@@ -702,7 +705,7 @@
               var $self = $(this),
                   sub_menu_name;
 
-              if ($self.hasClass('full-episodes-link')) {
+              if ($self.hasClass('full-episodes-link') || $self.hasClass('menu-sign-up')) {
                 sub_menu_name = $self.data('name');
               } else {
                 sub_menu_name = $self.text();

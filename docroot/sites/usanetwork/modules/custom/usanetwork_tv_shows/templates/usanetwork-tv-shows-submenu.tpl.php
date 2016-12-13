@@ -4,13 +4,6 @@
     <div class="social-icons social-follow">
       <?php foreach ($social_icons as $social_link): ?>
         <?php print $social_link['link']; ?>
-        <?php/* if ($social_link['type'] == 'sing-up'): ?>
-          <div class="usa-newsletter-subscription-wrap">
-            <div id="usa-newsletter-subscription-mobile" class="show-border">
-              <?php print $sign_up_block_additional; ?>
-            </div>
-          </div>
-        <?php endif; */?>
       <?php endforeach; ?>
     </div>
     <div class="schedule">

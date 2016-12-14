@@ -1390,3 +1390,18 @@ function usanetwork_media_gallery_metatag_pattern_alter(&$pattern, &$types, $tag
     }
   }
 }
+
+/*
+ * Alter sitecatalyst variables.
+ */
+function usanetwork_media_gallery_usa_omniture_alter(&$omniture_variables, $context) {
+  if ($context['entity']) {
+    $entity = $context['entity'];
+    $entity_type = $context['entity_type'];
+    if ($entity->type == 'media_gallery') {
+      $video_variables = _usanetwork_mpx_video_file_omniture($entity, $entity_type);
+      $video_variables['s.eVar78'] = t('1');
+      $omniture_variables = array_merge($omniture_variables, $video_variables);
+    }
+  }
+}

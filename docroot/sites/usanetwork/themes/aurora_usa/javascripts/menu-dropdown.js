@@ -207,6 +207,35 @@
       $(document.body).once('window-events', function () {
         var tablet = false;
 
+        $(document).on('click', '.menu-sign-up', function(e) {
+          e.preventDefault();
+          var button = $('.menu-sign-up'),
+              subscriptionWrap = $('.usa-newsletter-subscription-wrap');
+          if (button.hasClass('active')) {
+            subscriptionWrap.removeClass('active');
+            button.removeClass('active');
+          } else {
+            subscriptionWrap.addClass('active');
+            button.addClass('active');
+          }
+        });
+
+        $(document).on('click', '#menu-newsletter', function() {
+          var container = $(this).parent();
+          if (container.hasClass('active')) {
+            container.removeClass('active');
+          } else {
+            container.addClass('active');
+          }
+        });
+
+        $('#usanetwork-lyris-newsletter-subscription-additional').click(function(event){
+          if($(event.target).hasClass('close-form')){
+            var container = $('#newsletter-container');
+             container.removeClass('active');
+          }
+        });
+
         if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches) {
           tablet = true;
         }
@@ -237,7 +266,7 @@
         function showMenuMove() {
           if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches && !($('.show-menu').hasClass('inner'))) {
             $('.show-menu-tab .show-menu').addClass('inner');
-            $('.show-menu-tab .show-menu').appendTo('.header-show-menu');
+            $('.show-menu-tab .show-menu').insertBefore('#newsletter-container');
             $('.nav-bar-tabs .expanded > a:not(.no-refresh)').bind('click', tabNavHandler);
           }
           else if (window.matchMedia("(min-width: " + window_size_tablet_portrait + "px)").matches && ($('.show-menu').hasClass('inner'))) {
@@ -301,14 +330,14 @@
                 if (tab_container_act.length) {
                   $(".tab .no-refresh").unbind('click');
                   tab_container_act
-                      .slideUp(animation_speed, function () {
-                        if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
-                          tab_containers.eq(index).css('height', 'auto');
-                        }
-                        $(".tab .no-refresh").unbind('click');
-                        openTab();
-                      })
-                      .removeClass('active');
+                    .slideUp(animation_speed, function () {
+                      if (tab_containers.eq(index).hasClass('mCustomScrollbar')) {
+                        tab_containers.eq(index).css('height', 'auto');
+                      }
+                      $(".tab .no-refresh").unbind('click');
+                      openTab();
+                    })
+                    .removeClass('active');
                 } else {
                   openTab();
                 }

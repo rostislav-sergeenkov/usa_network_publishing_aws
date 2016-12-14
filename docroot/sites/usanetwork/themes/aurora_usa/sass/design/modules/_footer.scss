@@ -3,160 +3,6 @@ footer {
   min-width: 300px;
   position: relative;
   width: 100%;
-  .block-usanetwork-lyris {
-    background: $footer-promo-links;
-    padding: get-vw(20px, 1025) 0;
-    border-top: 1px solid $gray-extra-light;
-    @include breakpoint($bp-min-1901-width) {
-      padding: 37px 0;
-    }
-    @include breakpoint($bp-480-width) {
-      padding: 9.3px 0;
-    }
-    form {
-      .close-form {
-        display: none;
-      }
-      > div {
-        margin: 0 auto;
-        max-width: 1250px;
-        width: 100%;
-        color: $footer-back-home;
-        font-family: $avalon-medium;
-        font-size: get-vw(14px, 1025);
-        letter-spacing: 1px;
-        line-height: get-vw(30px, 1025);
-        min-height: get-vw(30px, 1025);
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        text-transform: uppercase;
-        text-align: center;
-        vertical-align: top;
-         @include breakpoint($bp-min-1901-width) {
-           font-size: 26px;
-           line-height: 55.65px;
-           min-height: 55.65px;
-         }
-         @include breakpoint($bp-768-width) {
-           font-size: 10.5px;
-           line-height: 22.5px;
-           min-height: 22.5px;
-         }
-        .placeholder {
-          font-style: normal;
-        }
-        label {
-          font-family: $avalon-medium;
-          font-weight: 400;
-          display: inline-block;
-          padding-right: get-vw(18px, 1025);
-          @include breakpoint($bp-min-1901-width) {
-            padding-right: 33.4px;
-          }
-          @include breakpoint($bp-768-width) {
-            display: block;
-            padding: 0;
-            margin: 0;
-          }
-        }
-        .form-item-email {
-          display: inline-block;
-          vertical-align: top;
-          padding-right: get-vw(18px, 1025);
-          margin: 0;
-          @include breakpoint($bp-min-1901-width) {
-            padding-right: 33.4px;
-          }
-          @include breakpoint($bp-1024-width) {
-            padding-right: 18px;
-          }
-          @include breakpoint ($bp-320-width) {
-            margin-bottom: 10px;
-          }
-          input {
-            color: $footer-back-home;
-            background: none;
-            border: 2px solid #3d3d3d;
-            outline: none;
-            padding: 0 get-vw(20px, 1025);
-            margin: 0;
-            font-family: $avalon-medium;
-            line-height: get-vw(30px, 1025);
-            height: get-vw(30px, 1025);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            overflow: hidden;
-            &::-webkit-input-placeholder {color:$footer-back-home; text-transform: uppercase;}
-            &::-moz-placeholder          {color:$footer-back-home; text-transform: uppercase;}
-            &:-moz-placeholder           {color:$footer-back-home; text-transform: uppercase;}
-            &:-ms-input-placeholder      {color:$footer-back-home; text-transform: uppercase;}
-            @include breakpoint($bp-min-1901-width) {
-              line-height: 55.65px;
-              height: 55.65px;
-              padding: 0 37px;
-            }
-            @include breakpoint($bp-768-width) {
-              border-width: 1px;
-              line-height: 22.5px;
-              height: 22.5px;
-            }
-            @include breakpoint($bp-480-width) {
-              display: block;
-            }
-          }
-        }
-         .form-submit-wrapper {
-           display: inline-block;
-           vertical-align: top;
-           position: relative;
-           input {
-             font-family: $avalon-medium;
-             line-height: get-vw(30px, 1025);
-             height: get-vw(30px, 1025);
-             letter-spacing: 1px;
-             color: $text-color;
-             border: 0;
-             text-transform: uppercase;
-             padding: 0 get-vw(40px, 1025) 0 get-vw(20px, 1025);
-             position: relative;
-             @include breakpoint($bp-min-1901-width) {
-               line-height: 55.65px;
-               height: 55.65px;
-               padding: 0 74.2px 0 37.1px;
-             }
-             @include breakpoint($bp-768-width) {
-               line-height: 22.5px;
-               height: 22.5px;
-               padding: 0 30px 0 15px;
-             }
-           }
-           &:after {
-             color: #ffffff;
-             content: "\e608";
-             display: block;
-             font-family: "ico-font";
-             font-size: get-vw(16px, 1025);
-             left: get-vw(80px, 1025);
-             line-height: 1;
-             margin-top: get-vw(-8px, 1025);
-             position: absolute;
-             top: 50%;
-             @include breakpoint($bp-min-1901-width) {
-               font-size: 30px;
-               left: 148.4px;
-               margin-top: -15px;
-             }
-             @include breakpoint($bp-768-width) {
-               left: 60px;
-               font-size: 12px;
-               margin-top: -6px;
-             }
-           }
-        }
-      }
-    }
-  }
   .footer-menu-wrapper {
     margin: 0 auto;
     max-width: 1900px;
@@ -390,6 +236,160 @@ footer {
     @include breakpoint($bp-480-width) {
       margin-left: 23.4px;
       margin-top: 14px;
+    }
+  }
+}
+.block-usanetwork-lyris, .usa-newsletter-subscription-wrap {
+  background: $footer-promo-links;
+  padding: get-vw(20px, 1025) 0;
+  border-top: 1px solid $gray-extra-light;
+  @include breakpoint($bp-min-1901-width) {
+    padding: 37px 0;
+  }
+  @include breakpoint($bp-480-width) {
+    padding: 9.3px 0;
+  }
+  form {
+    .close-form {
+      display: none;
+    }
+    > div {
+      margin: 0 auto;
+      max-width: 1250px;
+      width: 100%;
+      color: $footer-back-home;
+      font-family: $avalon-medium;
+      font-size: get-vw(14px, 1025);
+      letter-spacing: 1px;
+      line-height: get-vw(30px, 1025);
+      min-height: get-vw(30px, 1025);
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      text-transform: uppercase;
+      text-align: center;
+      vertical-align: top;
+      @include breakpoint($bp-min-1901-width) {
+        font-size: 26px;
+        line-height: 55.65px;
+        min-height: 55.65px;
+      }
+      @include breakpoint($bp-768-width) {
+        font-size: 10.5px;
+        line-height: 22.5px;
+        min-height: 22.5px;
+      }
+      .placeholder {
+        font-style: normal;
+      }
+      label {
+        font-family: $avalon-medium;
+        font-weight: 400;
+        display: inline-block;
+        padding-right: get-vw(18px, 1025);
+        @include breakpoint($bp-min-1901-width) {
+          padding-right: 33.4px;
+        }
+        @include breakpoint($bp-768-width) {
+          display: block;
+          padding: 0;
+          margin: 0;
+        }
+      }
+      .form-item-email {
+        display: inline-block;
+        vertical-align: top;
+        padding-right: get-vw(18px, 1025);
+        margin: 0;
+        @include breakpoint($bp-min-1901-width) {
+          padding-right: 33.4px;
+        }
+        @include breakpoint($bp-1024-width) {
+          padding-right: 18px;
+        }
+        @include breakpoint ($bp-320-width) {
+          margin-bottom: 10px;
+        }
+        input {
+          color: $footer-back-home;
+          background: none;
+          border: 2px solid #3d3d3d;
+          outline: none;
+          padding: 0 get-vw(20px, 1025);
+          margin: 0;
+          font-family: $avalon-medium;
+          line-height: get-vw(30px, 1025);
+          height: get-vw(30px, 1025);
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          overflow: hidden;
+          &::-webkit-input-placeholder {color:$footer-back-home; text-transform: uppercase;}
+          &::-moz-placeholder          {color:$footer-back-home; text-transform: uppercase;}
+          &:-moz-placeholder           {color:$footer-back-home; text-transform: uppercase;}
+          &:-ms-input-placeholder      {color:$footer-back-home; text-transform: uppercase;}
+          @include breakpoint($bp-min-1901-width) {
+            line-height: 55.65px;
+            height: 55.65px;
+            padding: 0 37px;
+          }
+          @include breakpoint($bp-768-width) {
+            border-width: 1px;
+            line-height: 22.5px;
+            height: 22.5px;
+          }
+          @include breakpoint($bp-480-width) {
+            display: block;
+          }
+        }
+      }
+      .form-submit-wrapper {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        input {
+          font-family: $avalon-medium;
+          line-height: get-vw(30px, 1025);
+          height: get-vw(30px, 1025);
+          letter-spacing: 1px;
+          color: $text-color;
+          border: 0;
+          text-transform: uppercase;
+          padding: 0 get-vw(40px, 1025) 0 get-vw(20px, 1025);
+          position: relative;
+          @include breakpoint($bp-min-1901-width) {
+            line-height: 55.65px;
+            height: 55.65px;
+            padding: 0 74.2px 0 37.1px;
+          }
+          @include breakpoint($bp-768-width) {
+            line-height: 22.5px;
+            height: 22.5px;
+            padding: 0 30px 0 15px;
+          }
+        }
+        &:after {
+          color: #ffffff;
+          content: "\e608";
+          display: block;
+          font-family: "ico-font";
+          font-size: get-vw(16px, 1025);
+          left: get-vw(80px, 1025);
+          line-height: 1;
+          margin-top: get-vw(-8px, 1025);
+          position: absolute;
+          top: 50%;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 30px;
+            left: 148.4px;
+            margin-top: -15px;
+          }
+          @include breakpoint($bp-768-width) {
+            left: 60px;
+            font-size: 12px;
+            margin-top: -6px;
+          }
+        }
+      }
     }
   }
 }

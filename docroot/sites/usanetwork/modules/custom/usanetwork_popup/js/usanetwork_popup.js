@@ -20,7 +20,15 @@
 
             if ($('body').hasClass('front')) {
               popup.once('omniture-tracking', function () {
-                showPopupOmniture();
+                var checkOmniture = setInterval(function() {
+                  if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+                    showPopupOmniture();
+                    clearInterval(checkOmniture);
+                  }
+                }, 200);
+                setTimeout(function() {
+                  clearInterval(checkOmniture);
+                }, 3000);
               });
 
               setCookie(popupCookieName);
@@ -70,14 +78,12 @@
         }
 
         function showPopupOmniture() {
-          if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
-            s.linkTrackVars = 'events,pageName';
-            s.linkTrackEvents = s.events = 'event6';
-            s.pageName = 'USA Network : Homepage : ' + popupTitle + ' : Pop-up Shown';
+          s.linkTrackVars = 'events,pageName';
+          s.linkTrackEvents = s.events = 'event6';
+          s.pageName = 'USA Network : Homepage : ' + popupTitle + ' : Pop-up Shown';
 
-            s.tl(this, 'o', 'Pop-up Shown');
-            s.manageVars('clearVars', s.linkTrackVars, 1);
-          }
+          s.tl(this, 'o', 'Pop-up Shown');
+          s.manageVars('clearVars', s.linkTrackVars, 1);
         }
 
         function clickExitPopupOmniture() {

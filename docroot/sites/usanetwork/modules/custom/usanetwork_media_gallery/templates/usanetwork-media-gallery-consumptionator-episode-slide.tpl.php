@@ -40,16 +40,16 @@
       <?php if (empty($new_design)): ?>
         <div class="meta-back"></div>
       <?php endif; ?>
-      <div class="meta-wrapper-inner<?php print (empty($new_design))? ' multiline-ellipsis-meta-wrapper': ''; ?>">
+      <div class="meta-wrapper-inner">
         <?php if (empty($new_design)): ?>
           <div class="meta-icon gallery-icon"></div>
         <?php endif; ?>
-        <div class="meta<?php print (empty($new_design))? ' multiline-ellipsis-meta': ''; ?>">
+        <div class="meta">
           <?php if (!empty($title)): ?>
-            <div class="title"<?php print (empty($new_design))? ' data-text="'.$title.'"': ''; ?>><?php print $title; ?></div>
+            <div class="title"><?php print $title; ?></div>
           <?php endif; ?>
           <?php if (!empty($description)): ?>
-            <div class="additional"<?php print (empty($new_design))? ' data-text="'.$description.'"': ''; ?>><?php print $description; ?></div>
+            <div class="additional"><?php print $description; ?></div>
           <?php endif; ?>
         </div>
       </div>

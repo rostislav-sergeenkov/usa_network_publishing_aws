@@ -176,7 +176,6 @@ function aurora_usa_preprocess_page(&$vars) {
   drupal_add_js($theme_path . '/javascripts/USAN.js', array('scope' => 'header', 'weight' => -100));
   drupal_add_js($theme_path . '/javascripts/isMobile.js');
   drupal_add_js($theme_path . '/javascripts/jquery.dotdotdot.min.js');
-  drupal_add_js($theme_path . '/javascripts/promo-rules.js');
 
   $icomoon_ie_fix = array(
     '#tag' => 'script',

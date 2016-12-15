@@ -311,7 +311,6 @@
             if (window.hasOwnProperty('picturefill')) {
               window.picturefill();
             }
-            Drupal.behaviors.promo_rules.refreshDescriptionLinesPromo();
             Drupal.behaviors.usanetwork_video_live.right_rail_omniture($episodesListSlider);
             Drupal.behaviors.consumptionator_right_rail.rightRailPosition();
           } else {

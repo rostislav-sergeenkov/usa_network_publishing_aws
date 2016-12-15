@@ -47,8 +47,6 @@
 
         Drupal.behaviors.mpsSponsorShip.initSponsoredBlock($('#main-slider .episodes-list'), 'dark');
 
-        Drupal.behaviors.promo_rules.refreshDescriptionLinesPromo();
-
       } else if (versionRightRail == 'b') {
 
         // check and create images on page

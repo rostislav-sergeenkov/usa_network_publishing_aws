@@ -330,7 +330,6 @@
           margin-top: 0.58vw;
           width: 24.55%;
           @extend %all-shows-promo;
-          @extend %meta;
           @include breakpoint($bp-min-1901-width) {
             height: 251px;
             margin-top: 11px;

@@ -35,16 +35,16 @@
           <?php if(!$new_design): ?>
             <div class="meta-back"></div>
           <?php endif; ?>
-          <div class="meta-wrapper-inner<?php print (!$new_design)? ' multiline-ellipsis-meta-wrapper': ''; ?>">
+          <div class="meta-wrapper-inner">
             <?php if(!$new_design): ?>
               <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
             <?php endif; ?>
-            <div class="meta<?php print (!$new_design)? ' multiline-ellipsis-meta': ''; ?>">
+            <div class="meta">
               <?php if (!empty($title)): ?>
-                <div class="title"<?php print (!$new_design)? ' data-text="'.$title.'"': ''; ?>><?php print $title; ?></div>
+                <div class="title"><?php print $title; ?></div>
               <?php endif; ?>
               <?php if (!empty($season_number) && !empty($episode_number)): ?>
-                <div class="additional"<?php print (!$new_design)? ' data-text="'.t('S').$season_number.t(' episode ').$episode_number.'"': ''; ?>><?php print t('S').$season_number.t(' episode ').$episode_number; ?></div>
+                <div class="additional"><?php print t('S').$season_number.t(' episode ').$episode_number; ?></div>
               <?php endif; ?>
             </div>
           </div>

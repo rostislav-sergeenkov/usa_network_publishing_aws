@@ -8,17 +8,17 @@
         <div class="sponsored" data-mpspath="<?php print $content_id; ?>" data-scalemps="1"></div>
       <?php endif; ?>
       <div class="meta-wrapper">
-        <div class="meta-wrapper-inner multiline-ellipsis-meta-wrapper">
+        <div class="meta-wrapper-inner">
           <div class="meta-icon <?php print $media_icon; ?>"></div>
-          <div class="meta multiline-ellipsis-meta">
+          <div class="meta">
             <?php if (!empty($caption)): ?>
-              <div class="caption" data-text="<?php print $caption; ?>"><?php print $caption; ?></div>
+              <div class="caption"><?php print $caption; ?></div>
             <?php endif; ?>
             <?php if (!empty($title)): ?>
-              <div class="title" data-text="<?php print $title; ?>"><?php print $title; ?></div>
+              <div class="title"><?php print $title; ?></div>
             <?php endif; ?>
             <?php if (!empty($additional)): ?>
-              <div class="additional" data-text="<?php print $additional; ?>"><?php print $additional; ?></div>
+              <div class="additional"><?php print $additional; ?></div>
             <?php endif; ?>
           </div>
         </div>

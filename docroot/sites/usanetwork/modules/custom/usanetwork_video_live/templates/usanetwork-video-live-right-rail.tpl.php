@@ -33,14 +33,14 @@
                 <?php endif; ?>
                 <div class="meta-wrapper">
                   <div class="meta-back"></div>
-                  <div class="meta-wrapper-inner multiline-ellipsis-meta-wrapper">
+                  <div class="meta-wrapper-inner">
                     <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'video-icon'; ?>"></div>
-                    <div class="meta multiline-ellipsis-meta">
+                    <div class="meta">
                       <?php if (!empty($promo['title'])): ?>
-                        <div class="title" data-text="<?php print $promo['title']; ?>"><?php print $promo['title']; ?></div>
+                        <div class="title"><?php print $promo['title']; ?></div>
                       <?php endif; ?>
                       <?php if (!empty($promo['description'])): ?>
-                        <div class="additional" data-text="<?php print $promo['description']; ?>"><?php print $promo['description']; ?></div>
+                        <div class="additional"><?php print $promo['description']; ?></div>
                       <?php endif; ?>
                     </div>
                   </div>

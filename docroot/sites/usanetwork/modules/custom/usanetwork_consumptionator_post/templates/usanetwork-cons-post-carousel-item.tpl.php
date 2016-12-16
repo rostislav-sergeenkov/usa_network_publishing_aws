@@ -35,17 +35,17 @@
           <?php if (empty($new_design)) : ?>
             <div class="meta-back"></div>
           <?php endif; ?>
-          <div class="meta-wrapper-inner">
+          <div class="meta-wrapper-inner<?php print (empty($new_design))? ' multiline-ellipsis-meta-wrapper': ''; ?>">
             <?php if (empty($new_design)) : ?>
               <div class="meta-icon <?php print !empty($icon_type) ? $icon_type : 'video-icon'; ?>"></div>
             <?php endif; ?>
-            <div class="meta">
+            <div class="meta<?php print (empty($new_design))? ' multiline-ellipsis-meta': ''; ?>">
               <?php if (!empty($title)): ?>
-                <div class="title"><?php print $title; ?></div>
+                <div class="title"<?php print (empty($new_design))? ' data-text="'.$title.'"': ''; ?>><?php print $title; ?></div>
               <?php endif; ?>
               <?php if (empty($new_design)) : ?>
                 <?php if (!empty($additional)): ?>
-                  <div class="additional"><?php print $additional; ?></div>
+                  <div class="additional" data-text="<?php print $additional; ?>"><?php print $additional; ?></div>
                 <?php endif; ?>
               <?php endif; ?>
             </div>

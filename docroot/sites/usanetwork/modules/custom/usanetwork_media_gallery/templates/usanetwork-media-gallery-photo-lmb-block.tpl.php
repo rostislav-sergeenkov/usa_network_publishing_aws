@@ -12,17 +12,17 @@
           <div class="node node-usanetwork-promo<?php if (!empty($promo['class'])) : print ' ' . $promo['class']; endif; ?>">
             <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
               <div class="meta-wrapper">
-                <div class="meta-wrapper-inner">
+                <div class="meta-wrapper-inner multiline-ellipsis-meta-wrapper">
                   <div class="meta-icon <?php print (!empty($promo['icon_type']))? $promo['icon_type']: ''; ?>"></div>
-                  <div class="meta">
+                  <div class="meta multiline-ellipsis-meta">
                     <?php if (!empty($promo['caption'])): ?>
-                      <div class="caption"><?php print $promo['caption']; ?></div>
+                      <div class="caption" data-text="<?php print $promo['caption']; ?>"><?php print $promo['caption']; ?></div>
                     <?php endif; ?>
                     <?php if (!empty($promo['title'])): ?>
-                      <div class="title"><?php print $promo['title']; ?></div>
+                      <div class="title" data-text="<?php print $promo['title']; ?>"><?php print $promo['title']; ?></div>
                     <?php endif; ?>
                     <?php if (!empty($promo['description'])): ?>
-                      <div class="additional"><?php print $promo['description']; ?></div>
+                      <div class="additional" data-text="<?php print $promo['description']; ?>"><?php print $promo['description']; ?></div>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -49,17 +49,17 @@
           <div class="node node-usanetwork-promo usanetwork-tv-shows-photo-lmb<?php if (!empty($promo['class'])) : print ' ' . $promo['class']; endif; ?>">
             <a href="<?php print (!empty($promo['url']))? $promo['url']: '#'; ?>">
               <div class="meta-wrapper">
-                <div class="meta-wrapper-inner">
+                <div class="meta-wrapper-inner multiline-ellipsis-meta-wrapper">
                   <div class="meta-icon <?php print (!empty($promo['icon_type']))? $promo['icon_type']: ''; ?>"></div>
-                  <div class="meta">
+                  <div class="meta multiline-ellipsis-meta">
                     <?php if (!empty($promo['caption'])): ?>
-                      <div class="caption"><?php print $promo['caption']; ?></div>
+                      <div class="caption" data-text="<?php print $promo['caption']; ?>"><?php print $promo['caption']; ?></div>
                     <?php endif; ?>
                     <?php if (!empty($promo['title'])): ?>
-                      <div class="title"><?php print $promo['title']; ?></div>
+                      <div class="title" data-text="<?php print $promo['title']; ?>"><?php print $promo['title']; ?></div>
                     <?php endif; ?>
                     <?php if (!empty($promo['description'])): ?>
-                      <div class="additional"><?php print $promo['description']; ?></div>
+                      <div class="additional" data-text="<?php print $promo['description']; ?>"><?php print $promo['description']; ?></div>
                     <?php endif; ?>
                   </div>
                 </div>

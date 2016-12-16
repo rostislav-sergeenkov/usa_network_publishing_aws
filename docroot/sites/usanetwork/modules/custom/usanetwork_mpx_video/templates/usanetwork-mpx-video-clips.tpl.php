@@ -47,22 +47,22 @@
                   <?php if (empty($new_design)) : ?>
                     <div class="meta-back"></div>
                   <?php endif; ?>
-                  <div class="meta-wrapper-inner">
+                  <div class="meta-wrapper-inner<?php print (empty($new_design))? ' multiline-ellipsis-meta-wrapper': ''; ?>">
                     <?php if (empty($new_design)) : ?>
                       <div class="meta-icon <?php print !empty($promo['icon_type']) ? $promo['icon_type'] : 'video-icon'; ?>"></div>
                     <?php endif; ?>
-                    <div class="meta">
+                    <div class="meta<?php print (empty($new_design))? ' multiline-ellipsis-meta': ''; ?>">
                       <?php if (!empty($new_design)) : ?>
                         <?php if (!empty($promo['description'])): ?>
                           <div class="additional"><?php print $promo['description']; ?></div>
                         <?php endif; ?>
                       <?php endif; ?>
                       <?php if (!empty($promo['title'])): ?>
-                        <div class="title"><?php print $promo['title']; ?></div>
+                        <div class="title"<?php print (empty($new_design))? ' data-text="'.$promo['title'].'"': ''; ?>><?php print $promo['title']; ?></div>
                       <?php endif; ?>
                       <?php if (empty($new_design)) : ?>
                         <?php if (!empty($promo['description'])): ?>
-                          <div class="additional"><?php print $promo['description']; ?></div>
+                          <div class="additional" data-text="<?php print $promo['description']; ?>"><?php print $promo['description']; ?></div>
                         <?php endif; ?>
                       <?php endif; ?>
                     </div>

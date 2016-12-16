@@ -7,16 +7,16 @@
   <?php if (!empty($target_url)): ?>
     <a href="<?php print $target_url; ?>">
       <div class="meta-wrapper">
-        <div class="meta-wrapper-inner">
-          <div class="meta">
+        <div class="meta-wrapper-inner multiline-ellipsis-meta-wrapper">
+          <div class="meta multiline-ellipsis-meta">
             <?php if (!empty($caption)): ?>
-              <div class="caption"><?php print $caption; ?></div>
+              <div class="caption" data-text="<?php print $caption; ?>"><?php print $caption; ?></div>
             <?php endif; ?>
             <?php if (!empty($title)): ?>
-              <div class="title"><?php print $title; ?></div>
+              <div class="title" data-text="<?php print $title; ?>"><?php print $title; ?></div>
             <?php endif; ?>
             <?php if (!empty($additional)): ?>
-              <div class="additional"><?php print $additional; ?></div>
+              <div class="additional" data-text="<?php print $additional; ?>"><?php print $additional; ?></div>
             <?php endif; ?>
           </div>
         </div>

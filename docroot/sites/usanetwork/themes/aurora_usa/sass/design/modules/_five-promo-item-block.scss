@@ -68,7 +68,7 @@
         }
         @include breakpoint($bp-480-width) {
           font-size: 12px;
-          line-height: 16px;
+          line-height: 15px;
         }
       }
       .title {
@@ -93,7 +93,7 @@
         }
         @include breakpoint($bp-480-width) {
           font-size: 18px;
-          line-height: 21px;
+          line-height: 20px;
         }
       }
       .additional {
@@ -118,7 +118,7 @@
         }
         @include breakpoint($bp-480-width) {
           font-size: 12px;
-          line-height: 16px;
+          line-height: 15px;
         }
       }
     }
@@ -246,7 +246,7 @@
         }
         @include breakpoint($bp-480-width) {
           font-size: 12px;
-          line-height: 16px;
+          line-height: 15px;
         }
       }
       .title {
@@ -275,7 +275,7 @@
         }
         @include breakpoint($bp-480-width) {
           font-size: 18px;
-          line-height: 21px;
+          line-height: 20px;
         }
       }
       .additional {
@@ -304,7 +304,7 @@
         }
         @include breakpoint($bp-480-width) {
           font-size: 12px;
-          line-height: 16px;
+          line-height: 15px;
         }
       }
     }
@@ -530,11 +530,8 @@
           width: 100%;
         }
         .meta {
-          display: table-cell;
-          max-width: 100px;
           overflow: hidden;
           padding-left: 4%;
-          vertical-align: middle;
           width: 100%;
         }
         .meta-icon {

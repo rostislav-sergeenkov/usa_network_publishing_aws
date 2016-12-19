@@ -73,8 +73,7 @@
     border-bottom: 0;
     padding: get-vw(30px, 768);
   }
-  #newsletter_lyris_ajax_wrapper_additional,
-  #newsletter_lyris_ajax_wrapper {
+  .newsletter-lyris-ajax-wrapper {
     @include clear;
     color: $usa-sign-up;
     font-family: $fira-sans-regular;

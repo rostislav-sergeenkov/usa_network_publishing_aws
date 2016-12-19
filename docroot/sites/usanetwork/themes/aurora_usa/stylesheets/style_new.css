@@ -10290,10 +10290,8 @@ html.no-scroll, body.no-scroll {
     padding: 3.90625vw;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper {
   color: #cacaca;
   font-family: "FiraSansRegular", sans-serif;
   font-size: 1.5625vw;
@@ -10302,45 +10300,35 @@ html.no-scroll, body.no-scroll {
   text-align: center;
   white-space: nowrap;
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional:after,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper:after,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional:after,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper:after {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper:after,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper:after {
   clear: both;
   content: '';
   display: table;
 }
 @media (min-width: 1601px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper {
     font-size: 20px;
   }
 }
 @media (max-width: 768px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper {
     font-size: 2.60417vw;
     line-height: 1.5;
     text-align: left;
     white-space: normal;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional input,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper input,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional input,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper input {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper input,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper input {
   height: auto;
   margin: 0;
   padding: 0;
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .close-form,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .close-form,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .close-form,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .close-form {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .close-form,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .close-form {
   display: inline-block;
   border: 0;
   color: #ffffff;
@@ -10358,10 +10346,8 @@ html.no-scroll, body.no-scroll {
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .close-form,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .close-form,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .close-form,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .close-form {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .close-form,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .close-form {
     font-size: 20px;
     line-height: 40px;
     height: 40px;
@@ -10370,10 +10356,8 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (max-width: 1024px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .close-form,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .close-form,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .close-form,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .close-form {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .close-form,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .close-form {
     font-size: 1.95313vw;
     line-height: 3.90625vw;
     height: 3.90625vw;
@@ -10382,10 +10366,8 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (max-width: 768px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .close-form,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .close-form,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .close-form,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .close-form {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .close-form,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .close-form {
     display: block;
     font-size: 2.60417vw;
     line-height: 6.51042vw;
@@ -10396,10 +10378,8 @@ html.no-scroll, body.no-scroll {
     max-width: 19.53125vw;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .close-form:after,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .close-form:after,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .close-form:after,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .close-form:after {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .close-form:after,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .close-form:after {
   color: #ffffff;
   content: "\e62b";
   display: inline-block;
@@ -10412,45 +10392,35 @@ html.no-scroll, body.no-scroll {
   top: 50%;
 }
 @media (min-width: 1601px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .close-form:after,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .close-form:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .close-form:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .close-form:after {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .close-form:after,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .close-form:after {
     font-size: 26px;
     margin-top: calc(-26px/2);
     right: 18px;
   }
 }
 @media (max-width: 1024px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .close-form:after,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .close-form:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .close-form:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .close-form:after {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .close-form:after,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .close-form:after {
     font-size: 2.53906vw;
     margin-top: calc(-1.26953vw);
     right: 1.75781vw;
   }
 }
 @media (max-width: 768px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .close-form:after,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .close-form:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .close-form:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .close-form:after {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .close-form:after,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .close-form:after {
     font-size: 3.38542vw;
     margin-top: calc(-1.69271vw);
     right: 2.34375vw;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .placeholder,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .placeholder,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .placeholder,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .placeholder {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .placeholder,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .placeholder {
   font-style: normal;
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional label,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper label,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional label,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper label {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper label,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper label {
   display: inline-block;
   line-height: 1;
   letter-spacing: 2px;
@@ -10458,26 +10428,20 @@ html.no-scroll, body.no-scroll {
   vertical-align: middle;
 }
 @media (min-width: 1601px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional label,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper label,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional label,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper label {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper label,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper label {
     margin-right: 25px;
   }
 }
 @media (max-width: 1024px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional label,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper label,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional label,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper label {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper label,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper label {
     margin-right: 1.46484vw;
   }
 }
 @media (max-width: 768px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional label,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper label,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional label,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper label {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper label,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper label {
     clear: both;
     float: none;
     display: block;
@@ -10485,36 +10449,28 @@ html.no-scroll, body.no-scroll {
     margin: 0 0 4.55729vw;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email {
   display: inline-block;
   margin: 0;
   margin-right: 1.95313vw;
   vertical-align: middle;
 }
 @media (min-width: 1601px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email {
     margin-right: 25px;
   }
 }
 @media (max-width: 1024px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email {
     margin-right: 1.46484vw;
   }
 }
 @media (max-width: 768px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email {
     box-sizing: border-box;
     display: block;
     float: left;
@@ -10523,10 +10479,8 @@ html.no-scroll, body.no-scroll {
     width: 75%;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email input,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email input,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email input,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email input {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email input,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email input {
   color: #d0d0d0;
   background: none;
   box-sizing: border-box;
@@ -10543,39 +10497,29 @@ html.no-scroll, body.no-scroll {
   text-align: left;
   overflow: hidden;
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email input::-webkit-input-placeholder,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email input::-webkit-input-placeholder,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email input::-webkit-input-placeholder,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email input::-webkit-input-placeholder {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email input::-webkit-input-placeholder,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email input::-webkit-input-placeholder {
   color: #d0d0d0;
   text-transform: uppercase;
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email input::-moz-placeholder,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email input::-moz-placeholder,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email input::-moz-placeholder,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email input::-moz-placeholder {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email input::-moz-placeholder,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email input::-moz-placeholder {
   color: #d0d0d0;
   text-transform: uppercase;
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email input:-moz-placeholder,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email input:-moz-placeholder,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email input:-moz-placeholder,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email input:-moz-placeholder {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email input:-moz-placeholder,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email input:-moz-placeholder {
   color: #d0d0d0;
   text-transform: uppercase;
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email input:-ms-input-placeholder,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email input:-ms-input-placeholder,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email input:-ms-input-placeholder,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email input:-ms-input-placeholder {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email input:-ms-input-placeholder,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email input:-ms-input-placeholder {
   color: #d0d0d0;
   text-transform: uppercase;
 }
 @media (min-width: 1601px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email input,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email input {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email input,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email input {
     font-size: 18px;
     line-height: 40px;
     height: 40px;
@@ -10583,20 +10527,16 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (max-width: 1024px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email input,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email input {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email input,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email input {
     font-size: 1.75781vw;
     line-height: 2.92969vw;
     padding: 0.19531vw 1.95313vw 0;
   }
 }
 @media (max-width: 768px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-item-email input,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-item-email input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-item-email input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-item-email input {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-item-email input,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-item-email input {
     background-color: #1e1e1e;
     border: 1px solid #515151;
     font-size: 2.60417vw;
@@ -10606,10 +10546,8 @@ html.no-scroll, body.no-scroll {
     width: 100%;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper {
   display: inline-block;
   line-height: 1;
   position: relative;
@@ -10617,20 +10555,16 @@ html.no-scroll, body.no-scroll {
   z-index: 0;
 }
 @media (max-width: 768px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper {
     box-sizing: border-box;
     display: block;
     float: right;
     width: 25%;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper:after,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper:after,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper:after,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper:after {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper:after,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper:after {
   color: #ffffff;
   content: "\e608";
   display: inline-block;
@@ -10644,39 +10578,31 @@ html.no-scroll, body.no-scroll {
   z-index: 1;
 }
 @media (min-width: 1601px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper:after,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper:after {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper:after,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper:after {
     font-size: 16px;
     margin-top: calc(-16px/2);
     right: 18px;
   }
 }
 @media (max-width: 1024px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper:after,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper:after {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper:after,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper:after {
     font-size: 1.5625vw;
     margin-top: calc(-0.78125vw);
     right: 1.75781vw;
   }
 }
 @media (max-width: 768px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper:after,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper:after,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper:after {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper:after,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper:after {
     font-size: 2.08333vw;
     margin-top: calc(-1.04167vw);
     right: 2.34375vw;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper input,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper input,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper input,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper input {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper input,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper input {
   border: 0;
   color: #ffffff;
   font-size: 1.5625vw;
@@ -10695,10 +10621,8 @@ html.no-scroll, body.no-scroll {
   transition: all 0.2s linear 0;
 }
 @media (min-width: 1601px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper input,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper input {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper input,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper input {
     font-size: 20px;
     line-height: 40px;
     height: 40px;
@@ -10706,20 +10630,16 @@ html.no-scroll, body.no-scroll {
   }
 }
 @media (max-width: 1024px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper input,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper input {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper input,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper input {
     font-size: 1.75781vw;
     line-height: 2.92969vw;
     padding: 0.19531vw 4.49219vw 0 1.46484vw;
   }
 }
 @media (max-width: 768px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper input,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper input,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper input {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper input,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper input {
     border: 1px solid transparent;
     font-size: 2.60417vw;
     line-height: 7.16146vw;
@@ -10729,16 +10649,12 @@ html.no-scroll, body.no-scroll {
     width: 100%;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper input.ajax-progressed,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper input.ajax-progressed,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper input.ajax-progressed,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper input.ajax-progressed {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper input.ajax-progressed,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper input.ajax-progressed {
   opacity: 0;
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper .ajax-progress,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper .ajax-progress,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper .ajax-progress,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper .ajax-progress {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper .ajax-progress,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper .ajax-progress {
   box-sizing: border-box;
   background: #1e1e1e;
   font-size: 1.5625vw;
@@ -10754,38 +10670,30 @@ html.no-scroll, body.no-scroll {
   z-index: 2;
 }
 @media (min-width: 1601px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper .ajax-progress,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper .ajax-progress,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper .ajax-progress,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper .ajax-progress {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper .ajax-progress,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper .ajax-progress {
     font-size: 20px;
     line-height: 42px;
   }
 }
 @media (max-width: 1024px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper .ajax-progress,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper .ajax-progress,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper .ajax-progress,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper .ajax-progress {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper .ajax-progress,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper .ajax-progress {
     font-size: 1.75781vw;
     line-height: 3.125vw;
   }
 }
 @media (max-width: 768px) {
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper .ajax-progress,
-  #usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper .ajax-progress,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper .ajax-progress,
-  #usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper .ajax-progress {
+  #usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper .ajax-progress,
+  #usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper .ajax-progress {
     background: #000000;
     font-size: 2.34375vw;
     line-height: 7.8125vw;
     height: 7.8125vw;
   }
 }
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper .message,
-#usa-newsletter-subscription-mobile #newsletter_lyris_ajax_wrapper .form-submit-wrapper .message,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper_additional .form-submit-wrapper .message,
-#usa-newsletter-subscription-desktop #newsletter_lyris_ajax_wrapper .form-submit-wrapper .message {
+#usa-newsletter-subscription-mobile .newsletter-lyris-ajax-wrapper .form-submit-wrapper .message,
+#usa-newsletter-subscription-desktop .newsletter-lyris-ajax-wrapper .form-submit-wrapper .message {
   color: #ffffff;
   padding: 0;
   margin: 0;

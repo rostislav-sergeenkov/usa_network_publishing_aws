@@ -6786,40 +6786,14 @@ header .nav-bar-tabs #newsletter-container form .form-submit-wrapper:after {
   right: 14px;
   top: 13px;
 }
-header .nav-bar-tabs #newsletter-container form #newsletter_lyris_ajax_wrapper_additional {
+header .nav-bar-tabs #newsletter-container form .newsletter-lyris-ajax-wrapper {
   color: #3d3d3d;
   font-family: "avalonmedium", Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
-header .nav-bar-tabs #newsletter-container form #newsletter_lyris_ajax_wrapper_additional .placeholder {
+header .nav-bar-tabs #newsletter-container form .newsletter-lyris-ajax-wrapper .placeholder {
   font-family: "avalonbold", Helvetica, Arial, sans-serif;
   font-style: normal;
-}
-header .nav-bar-tabs #newsletter-container form #newsletter_lyris_ajax_wrapper_additional .close-form {
-  color: white;
-  cursor: pointer;
-  font-family: "avalonbold", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  height: 38px;
-  letter-spacing: 2px;
-  line-height: 38px;
-  margin-top: 5px;
-  padding: 0 15px;
-  position: relative;
-  text-transform: uppercase;
-  width: 100px;
-}
-header .nav-bar-tabs #newsletter-container form #newsletter_lyris_ajax_wrapper_additional .close-form:after {
-  color: #ffffff;
-  content: "\e62e";
-  display: block;
-  font-family: "ico-font";
-  font-size: 16px;
-  line-height: 1;
-  margin-top: -8px;
-  position: absolute;
-  right: 11px;
-  top: 50%;
 }
 header .nav-bar-tabs #menu-newsletter {
   cursor: pointer;
@@ -8115,6 +8089,33 @@ header .tve-help-link.signIn .inlineLoader {
   margin: 0 5px;
   vertical-align: middle;
   width: 30px;
+}
+header .newsletter-lyris-ajax-wrapper .close-form {
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-family: "avalonbold", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  height: 38px;
+  letter-spacing: 2px;
+  line-height: 38px;
+  margin-top: 5px;
+  padding: 0 15px;
+  position: relative;
+  text-transform: uppercase;
+  width: 100px;
+}
+header .newsletter-lyris-ajax-wrapper .close-form:after {
+  color: #ffffff;
+  content: "\e62e";
+  display: block;
+  font-family: "ico-font";
+  font-size: 16px;
+  line-height: 1;
+  margin-top: -8px;
+  position: absolute;
+  right: 11px;
+  top: 50%;
 }
 
 .consumptionator-page header .header-nav-bar, .node-type-catchall-page header .header-nav-bar, .page-videos-live header .header-nav-bar, .node-type-media-gallery header .header-nav-bar, .node-type-person header .header-nav-bar {
@@ -22466,6 +22467,38 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 .pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .usa-newsletter-subscription-wrap form > div {
   max-width: 100%;
+}
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .usa-newsletter-subscription-wrap form .close-form {
+  display: block;
+  font-size: 1.26249vw;
+  height: 3.68227vw;
+  line-height: 3.68227vw;
+  margin: 0.52604vw auto;
+  padding: 0 1.52551vw;
+  text-align: left;
+  width: 9.73172vw;
+}
+@media (min-width: 1901px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .usa-newsletter-subscription-wrap form .close-form {
+    font-size: 24px;
+    height: 70px;
+    line-height: 70px;
+    margin: 10px auto;
+    padding: 0 29px;
+    width: 185px;
+  }
+}
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .usa-newsletter-subscription-wrap form .close-form:after {
+  font-size: 1.52551vw;
+  margin-top: -0.76276vw;
+  right: 1.05208vw;
+}
+@media (min-width: 1901px) {
+  .pane-usanetwork-tv-shows-usanetwork-tv-shows-submenu .usa-newsletter-subscription-wrap form .close-form:after {
+    font-size: 29px;
+    margin-top: -14.5px;
+    right: 20px;
+  }
 }
 
 .sticky-shows-submenu {

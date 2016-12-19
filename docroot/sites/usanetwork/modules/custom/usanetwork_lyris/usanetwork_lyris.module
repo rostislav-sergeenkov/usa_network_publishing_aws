@@ -136,7 +136,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
   }
   $form['newsletter'] = array(
     '#type' => 'markup',
-    '#prefix' => '<div id="newsletter_lyris_ajax_wrapper_' . $form_index . '">',
+    '#prefix' => '<div id="newsletter_lyris_ajax_wrapper_' . $form_index . '" class="newsletter-lyris-ajax-wrapper" >',
     '#suffix' => '</div>',
   );
   $label = (isset($property['new_design']) && $property['new_design'])

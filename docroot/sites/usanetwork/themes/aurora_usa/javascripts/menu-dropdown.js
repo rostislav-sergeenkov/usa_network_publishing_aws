@@ -229,10 +229,13 @@
           }
         });
 
-        $('#usanetwork-lyris-newsletter-subscription-additional').click(function(event){
+        $('header form[id^="usanetwork-lyris-newsletter-subscription"]').click(function(event){
           if($(event.target).hasClass('close-form')){
-            var container = $('#newsletter-container');
-             container.removeClass('active');
+            var closestActive = $(event.target).closest('.active');
+            closestActive.removeClass('active');
+            if(closestActive.hasClass('usa-newsletter-subscription-wrap')){
+              $('.menu-sign-up').removeClass('active');
+            }
           }
         });
 
@@ -280,6 +283,7 @@
           e.preventDefault();
 
           var tab = $(this),
+              parent = $(this).parent(),
               tabs = $('header .tab .no-refresh'),
               tab_containers = $('header .tab-item'),
               tab_container_act = $('header .tab-item.active'),
@@ -380,13 +384,16 @@
             }
           }
 
-          if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches && $(this).parent().hasClass('expanded')) {
+          if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches && parent.hasClass('expanded')) {
             if (!$(this).hasClass('active')) {
-              $(this).parent().addClass('active');
+              parent.addClass('active');
               $(this).addClass('active');
             } else {
-              $(this).parent().removeClass('active');
+              parent.removeClass('active');
               $(this).removeClass('active');
+              if(parent.hasClass('header-show-menu') && $('#newsletter-container.active').length > 0) {
+                $('#newsletter-container.active').removeClass('active');
+              }
             }
           }
 

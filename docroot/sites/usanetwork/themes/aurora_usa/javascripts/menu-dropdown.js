@@ -280,6 +280,7 @@
           e.preventDefault();
 
           var tab = $(this),
+              parent = $(this).parent(),
               tabs = $('header .tab .no-refresh'),
               tab_containers = $('header .tab-item'),
               tab_container_act = $('header .tab-item.active'),
@@ -380,8 +381,7 @@
             }
           }
 
-          if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches && $(this).parent().hasClass('expanded')) {
-            var parent = $(this).parent();
+          if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches && parent.hasClass('expanded')) {
             if (!$(this).hasClass('active')) {
               parent.addClass('active');
               $(this).addClass('active');

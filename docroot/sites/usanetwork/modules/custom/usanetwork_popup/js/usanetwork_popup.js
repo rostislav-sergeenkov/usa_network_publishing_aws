@@ -1,7 +1,7 @@
 (function ($) {
 
   Drupal.behaviors.usanetwork_popup = {
-    initPopup: function (cookiePageName, omniturePageName) {
+    initPopup: function (pageName, pageTitle, cookiePageName) {
 
       var $body = $('body'),
           pageUrl = window.location.href,
@@ -38,12 +38,7 @@
               } else {
                 e.preventDefault();
               }
-
-              var $self = $(this),
-                  pageName = 'USA Network : ' + omniturePageName + ' : ' + popupTitle + ' : Pop-up Shown';
-
-              clickPopupLink($self, popupTitle, pageName);
-
+              clickPopupLink($(this), popupTitle);
             });
           });
         }
@@ -56,6 +51,23 @@
           }
           popup.remove();
         });
+      }
+
+      function checkMaxPropLength(propFirstPart, propSecondPart) {
+
+        propFirstPart = propFirstPart || '';
+        propSecondPart = propSecondPart || '';
+
+        // max prop characters
+        var maxPropLength = 100,
+            propFirstLength = propFirstPart.length,
+            propSecondLength = propSecondPart.length;
+
+        if (propFirstLength + propSecondLength > maxPropLength) {
+          propFirstPart = propFirstPart.slice(0, maxPropLength - propSecondLength).trim();
+        }
+
+        return propFirstPart + propSecondPart;
       }
 
       function getCookie(name) {
@@ -76,7 +88,7 @@
       function showPopupOmniture() {
         s.linkTrackVars = 'events,pageName';
         s.linkTrackEvents = s.events = 'event6';
-        s.pageName = 'USA Network : ' + omniturePageName + ' : ' + popupTitle + ' : Pop-up Shown';
+        s.pageName = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up Shown');
 
         s.tl(this, 'o', 'Pop-up Shown');
         s.manageVars('clearVars', s.linkTrackVars, 1);
@@ -86,11 +98,11 @@
         if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
           s.linkTrackVars = 'events,pageName,prop25,prop26,prop27,prop65,prop73,eVar65';
           s.linkTrackEvents = s.events = 'event65';
-          s.pageName = 'USA Network : ' + omniturePageName + ' : ' + popupTitle + ' : Pop-up Shown';
-          s.prop25 = 'USA Network : ' + omniturePageName + ' : ' + popupTitle + ' : Pop-up Shown';
+          s.pageName = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up Shown');
+          s.prop25 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up Shown');
           s.prop26 = 'Pop-Up Exit Click';
-          s.prop27 = 'USA Network : ' + omniturePageName + ' : ' + popupTitle + ' : Pop-up Shown | Pop-Up Exit Click';
-          s.prop65 = s.eVar65 = 'USA Network : ' + omniturePageName + ' : ' + popupTitle + ' : Pop-Up Exit Click';
+          s.prop27 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up | Pop-Up Exit Click');
+          s.prop65 = s.eVar65 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-Up Exit Click');
           s.prop73 = pageUrl;
 
           s.tl(this, 'o', 'Pop-Up Exit Click');
@@ -98,15 +110,15 @@
         }
       }
 
-      function clickPopupLink($self, popupTitle, pageName) {
+      function clickPopupLink($self, popupTitle) {
         if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
           s.linkTrackVars = 'events,pageName,prop25,prop26,prop27,prop65,prop73,eVar65';
           s.linkTrackEvents = s.events = 'event65';
-          s.pageName = 'USA Network : ' + omniturePageName + ' : ' + popupTitle + ' : Pop-up Shown';
-          s.prop25 = 'USA Network : ' + omniturePageName + ' : ' + popupTitle + ' : Pop-up Shown';
+          s.pageName = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up Shown');
+          s.prop25 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up Shown');
           s.prop26 = 'Pop-Up Image Click';
-          s.prop27 = 'USA Network : ' + omniturePageName + ' : ' + popupTitle + ' : Pop-up Shown | Pop-Up Image Click';
-          s.prop65 = s.eVar65 = 'USA Network : ' + omniturePageName + ' : ' + popupTitle + ' : Pop-Up Image Click';
+          s.prop27 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up | Pop-Up Image Click');
+          s.prop65 = s.eVar65 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-Up Image Click');
           s.prop73 = pageUrl;
 
           s.tl(this, 'o', 'Pop-Up Image Click');
@@ -121,9 +133,10 @@
 
     attach: function (context, settings) {
 
-      var $body = $('body'),
-          _this = this,
-          cookiePageName, omniturePageName;
+      var _this = this,
+          $body = $('body'),
+          $header = $('header'),
+          showName, pageName, pageTitle, cookiePageName;
 
       $body.once('usanetwork-popup', function () {
         if ($('.usa-home-popup-overlay').length > 0) {
@@ -131,24 +144,27 @@
           if ($body.hasClass('front')) {
 
             cookiePageName = '';
-            omniturePageName = 'Homepage';
+            pageName = 'USA Network';
+            pageTitle = 'Homepage';
 
-            _this.initPopup(cookiePageName, omniturePageName);
+            _this.initPopup(pageName, pageTitle, cookiePageName);
 
           } else if ($body.hasClass('node-type-consumpt-post')) {
 
-            omniturePageName = 'Consumpt_post';
+            showName = $header.find('.nav-bar-tabs .menu-item.show-name').text().trim();
+            pageName = showName + ' : ' + showName + ' Blog';
+            pageTitle = $header.find('.nav-bar-tabs .menu-item.video-title').text().trim();
             cookiePageName = '_post';
 
-            _this.initPopup(cookiePageName, omniturePageName);
+            _this.initPopup(pageName, pageTitle, cookiePageName);
 
           } else if ($body.hasClass('node-type-popup-element')) {
 
             cookiePageName = '';
-            omniturePageName = '';
+            pageName = '';
+            pageTitle = '';
 
-            _this.initPopup(cookiePageName, omniturePageName);
-
+            _this.initPopup(pageName, pageTitle, cookiePageName);
           }
         }
       });

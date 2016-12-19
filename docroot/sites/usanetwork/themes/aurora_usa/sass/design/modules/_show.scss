@@ -1184,6 +1184,26 @@
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  .usa-newsletter-subscription-wrap {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    &.active {
+      @include breakpoint($bp-min-769-width) {
+        display: block;
+      }
+    }
+    @include breakpoint($bp-768-width) {
+      display: none!important;
+    }
+    form {
+      > div {
+        max-width: 100%;
+      }
+    }
+  }
 }
 .sticky-shows-submenu {
   position: fixed;
@@ -1340,6 +1360,7 @@
       line-height: 1;
       margin-right: get-vw(20px, 1025);
       opacity: 0.6;
+      outline: none;
       position: relative;
       vertical-align: middle;
       @include breakpoint($bp-min-1901-width) {
@@ -1378,7 +1399,15 @@
           content: '\e617';
         }
       }
-      &:nth-child(n + 3) {
+      &.menu-sign-up {
+        &.active {
+          opacity: 1;
+        }
+        &:before {
+          content: '\e63c';
+        }
+      }
+      &:nth-child(n + 4) {
         display: none;
       }
     }

@@ -1115,15 +1115,16 @@ function _usanetwork_media_gallery_get_gallery_types($show_id, $params) {
   if (!empty($query_results)) {
     $result = array();
     foreach ($query_results as $query_result) {
-      $key = md5($query_result->field_gallery_type_value);
+      $gallery_type_name = (empty($query_result->field_gallery_type_value) || $query_result->field_gallery_type_value === USA_GALLERY_OTHER_TYPE_MACHINE_NAME) ?
+        USA_GALLERY_OTHER_TYPE_LABEL : $query_result->field_gallery_type_value;
+      $key = $gallery_type_name;
       if (isset($result[$key])) {
         $result[$key]['items_count']++;
       }
       else {
         $result[$key]['active'] = (md5($params['category']) == $key) ? TRUE : FALSE;
         $result[$key]['items_count'] = 1;
-        $result[$key]['name'] = (empty($query_result->field_gallery_type_value) || $query_result->field_gallery_type_value === USA_GALLERY_OTHER_TYPE_MACHINE_NAME) ?
-          USA_GALLERY_OTHER_TYPE_LABEL : $query_result->field_gallery_type_value;
+        $result[$key]['name'] = $gallery_type_name;
         $result[$key]['id'] = $query_result->field_gallery_type_value;
         $result[$key]['url'] = url('node/' . $show_id . '/photos', array(
           'query' => array(
@@ -1133,7 +1134,7 @@ function _usanetwork_media_gallery_get_gallery_types($show_id, $params) {
         ));
       }
     }
-    $other_type_key = md5(USA_GALLERY_OTHER_TYPE_MACHINE_NAME);
+    $other_type_key = USA_GALLERY_OTHER_TYPE_LABEL;
     if (isset($result[$other_type_key]) && $result[$other_type_key] !== end($result)) {
       $buf = $result[$other_type_key];
       unset($result[$other_type_key]);
@@ -1387,6 +1388,21 @@ function usanetwork_media_gallery_metatag_pattern_alter(&$pattern, &$types, $tag
       if ($og_description) {
         $pattern = '[node:field_usa_og_description]';
       }
+    }
+  }
+}
+
+/*
+ * Alter sitecatalyst variables.
+ */
+function usanetwork_media_gallery_usa_omniture_alter(&$omniture_variables, $context) {
+  if ($context['entity']) {
+    $entity = $context['entity'];
+    $entity_type = $context['entity_type'];
+    if ($entity->type == 'media_gallery') {
+      $video_variables = _usanetwork_mpx_video_file_omniture($entity, $entity_type);
+      $video_variables['s.eVar78'] = t('1');
+      $omniture_variables = array_merge($omniture_variables, $video_variables);
     }
   }
 }

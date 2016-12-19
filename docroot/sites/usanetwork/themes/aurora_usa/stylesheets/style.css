@@ -8280,6 +8280,7 @@ header .tve-help-link.signIn .inlineLoader {
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.show-name a span {
   display: block;
+  max-width: 100%;
   word-wrap: break-word;
 }
 .consumptionator-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-catchall-page header .header-nav-bar .nav-bar-tabs .menu-item.info, .page-videos-live header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-media-gallery header .header-nav-bar .nav-bar-tabs .menu-item.info, .node-type-person header .header-nav-bar .nav-bar-tabs .menu-item.info {

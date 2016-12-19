@@ -1202,6 +1202,34 @@
       > div {
         max-width: 100%;
       }
+      .close-form {
+        display: block;
+        font-size: get-vw(24px, 1901);
+        height: get-vw(70px, 1901);
+        line-height: get-vw(70px, 1901);
+        margin: get-vw(10px, 1901) auto;
+        padding: 0 get-vw(29px, 1901);
+        text-align: left;
+        width: get-vw(185px, 1901);
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 24px;
+          height: 70px;
+          line-height: 70px;
+          margin: 10px auto;
+          padding: 0 29px;
+          width: 185px;
+        }
+        &:after {
+          font-size: get-vw(29px, 1901);
+          margin-top: get-vw(-14.5px, 1901);
+          right: get-vw(20px, 1901);
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 29px;
+            margin-top: -14.5px;
+            right: 20px;
+          }
+        }
+      }
     }
   }
 }

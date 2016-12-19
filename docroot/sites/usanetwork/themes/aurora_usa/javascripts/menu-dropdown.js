@@ -229,10 +229,13 @@
           }
         });
 
-        $('#usanetwork-lyris-newsletter-subscription-additional').click(function(event){
+        $('header form[id^="usanetwork-lyris-newsletter-subscription"]').click(function(event){
           if($(event.target).hasClass('close-form')){
-            var container = $('#newsletter-container');
-             container.removeClass('active');
+            var closestActive = $(event.target).closest('.active');
+            closestActive.removeClass('active');
+            if(closestActive.hasClass('usa-newsletter-subscription-wrap')){
+              $('.menu-sign-up').removeClass('active');
+            }
           }
         });
 

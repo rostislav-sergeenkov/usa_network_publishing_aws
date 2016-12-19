@@ -540,39 +540,13 @@ header {
             top: 13px;
           }
         }
-        #newsletter_lyris_ajax_wrapper_additional {
+        .newsletter-lyris-ajax-wrapper {
           color: $footer-back-home;
           font-family: $avalon-medium;
           font-size: 16px;
           .placeholder {
             font-family: $avalon-demi;
             font-style: normal;
-          }
-          .close-form {
-            color: $text-color;
-            cursor: pointer;
-            font-family: $avalon-demi;
-            font-size: 13px;
-            height: 38px;
-            letter-spacing: 2px;
-            line-height: 38px;
-            margin-top: 5px;
-            padding: 0 15px;
-            position: relative;
-            text-transform: uppercase;
-            width: 100px;
-            &:after {
-              color: #ffffff;
-              content: "\e62e";
-              display: block;
-              font-family: $ico-font;
-              font-size: 16px;
-              line-height: 1;
-              margin-top: -8px;
-              position: absolute;
-              right: 11px;
-              top: 50%;
-            }
           }
         }
       }
@@ -1652,6 +1626,35 @@ header {
         margin: 0 5px;
         vertical-align: middle;
         width: 30px;
+      }
+    }
+  }
+  .newsletter-lyris-ajax-wrapper {
+    .close-form {
+      color: $text-color;
+      cursor: pointer;
+      display: block;
+      font-family: $avalon-demi;
+      font-size: 13px;
+      height: 38px;
+      letter-spacing: 2px;
+      line-height: 38px;
+      margin-top: 5px;
+      padding: 0 15px;
+      position: relative;
+      text-transform: uppercase;
+      width: 100px;
+      &:after {
+        color: #ffffff;
+        content: "\e62e";
+        display: block;
+        font-family: $ico-font;
+        font-size: 16px;
+        line-height: 1;
+        margin-top: -8px;
+        position: absolute;
+        right: 11px;
+        top: 50%;
       }
     }
   }

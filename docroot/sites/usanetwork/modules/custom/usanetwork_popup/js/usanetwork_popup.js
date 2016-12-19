@@ -1,14 +1,21 @@
 (function ($) {
 
   Drupal.behaviors.usanetwork_popup = {
-    initPopup: function (pageName, pageTitle, cookiePageName) {
+    initPopup: function (isFront, cookiePageName) {
 
       var $body = $('body'),
           pageUrl = window.location.href,
           popup = $('.usa-home-popup-overlay'),
           popupTitle = popup.attr('data-title'),
           popupCookieName = 'popup_window_' + popup.attr('data-popup-id') + cookiePageName,
-          previewPage = $body.hasClass('node-type-popup-element');
+          previewPage = $body.hasClass('node-type-popup-element'),
+          pageName = 'USA Network : Homepage';
+
+      if (!isFront && window.hasOwnProperty('AdobeTracking')) {
+        pageName = (function () {
+          return $('<div>', {html: AdobeTracking.pageName}).text().trim();
+        })();
+      }
 
       if (!previewPage && getCookie(popupCookieName) != undefined) {
         popup.remove();
@@ -86,42 +93,45 @@
       }
 
       function showPopupOmniture() {
+
+        var trackName = 'Pop-up Shown';
+
         s.linkTrackVars = 'events,pageName';
         s.linkTrackEvents = s.events = 'event6';
-        s.pageName = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up Shown');
+        s.pageName = checkMaxPropLength(pageName, ' : ' + popupTitle + ' : ' + trackName);
 
-        s.tl(this, 'o', 'Pop-up Shown');
+        s.tl(this, 'o', trackName);
         s.manageVars('clearVars', s.linkTrackVars, 1);
       }
 
       function clickExitPopupOmniture() {
         if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+
+          var trackName = 'Pop-Up Exit Click';
+
           s.linkTrackVars = 'events,pageName,prop25,prop26,prop27,prop65,prop73,eVar65';
           s.linkTrackEvents = s.events = 'event65';
-          s.pageName = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up Shown');
-          s.prop25 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up Shown');
-          s.prop26 = 'Pop-Up Exit Click';
-          s.prop27 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up | Pop-Up Exit Click');
-          s.prop65 = s.eVar65 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-Up Exit Click');
+          s.pageName = checkMaxPropLength(pageName, ' : ' + popupTitle + ' : Pop-up');
+          s.prop65 = s.eVar65 = checkMaxPropLength(pageName, ' : ' + popupTitle + ' : ' + trackName);
           s.prop73 = pageUrl;
 
-          s.tl(this, 'o', 'Pop-Up Exit Click');
+          s.tl(this, 'o', trackName);
           s.manageVars('clearVars', s.linkTrackVars, 1);
         }
       }
 
       function clickPopupLink($self, popupTitle) {
         if (Drupal.behaviors.omniture_tracking.omniturePresent()) {
+
+          var trackName = 'Pop-Up Image Click';
+
           s.linkTrackVars = 'events,pageName,prop25,prop26,prop27,prop65,prop73,eVar65';
           s.linkTrackEvents = s.events = 'event65';
-          s.pageName = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up Shown');
-          s.prop25 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up Shown');
-          s.prop26 = 'Pop-Up Image Click';
-          s.prop27 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-up | Pop-Up Image Click');
-          s.prop65 = s.eVar65 = checkMaxPropLength(pageName + ' : ' + pageTitle, ' : ' + popupTitle + ' : Pop-Up Image Click');
+          s.pageName = checkMaxPropLength(pageName, ' : ' + popupTitle + ' : Pop-up');
+          s.prop65 = s.eVar65 = checkMaxPropLength(pageName, ' : ' + popupTitle + ' : ' + trackName);
           s.prop73 = pageUrl;
 
-          s.tl(this, 'o', 'Pop-Up Image Click');
+          s.tl(this, 'o', trackName);
           s.manageVars('clearVars', s.linkTrackVars, 1);
 
           if ($self.attr('href') != '#') {
@@ -135,36 +145,20 @@
 
       var _this = this,
           $body = $('body'),
-          $header = $('header'),
-          showName, pageName, pageTitle, cookiePageName;
+          isFront = false,
+          cookiePageName = '';
 
       $body.once('usanetwork-popup', function () {
         if ($('.usa-home-popup-overlay').length > 0) {
 
           if ($body.hasClass('front')) {
-
-            cookiePageName = '';
-            pageName = 'USA Network';
-            pageTitle = 'Homepage';
-
-            _this.initPopup(pageName, pageTitle, cookiePageName);
-
+            isFront = true;
+            _this.initPopup(isFront, cookiePageName);
           } else if ($body.hasClass('node-type-consumpt-post')) {
-
-            showName = $header.find('.nav-bar-tabs .menu-item.show-name').text().trim();
-            pageName = showName + ' : ' + showName + ' Blog';
-            pageTitle = $header.find('.nav-bar-tabs .menu-item.video-title').text().trim();
             cookiePageName = '_post';
-
-            _this.initPopup(pageName, pageTitle, cookiePageName);
-
+            _this.initPopup(isFront, cookiePageName);
           } else if ($body.hasClass('node-type-popup-element')) {
-
-            cookiePageName = '';
-            pageName = '';
-            pageTitle = '';
-
-            _this.initPopup(pageName, pageTitle, cookiePageName);
+            _this.initPopup(isFront, cookiePageName);
           }
         }
       });

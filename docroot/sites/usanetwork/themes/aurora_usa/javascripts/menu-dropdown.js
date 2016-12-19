@@ -381,12 +381,16 @@
           }
 
           if (window.matchMedia("(max-width: " + window_size_tablet_portrait_768 + "px)").matches && $(this).parent().hasClass('expanded')) {
+            var parent = $(this).parent();
             if (!$(this).hasClass('active')) {
-              $(this).parent().addClass('active');
+              parent.addClass('active');
               $(this).addClass('active');
             } else {
-              $(this).parent().removeClass('active');
+              parent.removeClass('active');
               $(this).removeClass('active');
+              if(parent.hasClass('header-show-menu') && $('#newsletter-container.active').length > 0) {
+                $('#newsletter-container.active').removeClass('active');
+              }
             }
           }
 

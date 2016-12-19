@@ -928,7 +928,7 @@ function usanetwork_microsite_get_rendered_gallery($node, $microsite_node = NULL
     ));
   }
   elseif ($use_new_gallery) {
-    $rendered = _usanetwork_media_gallery_consumptionator_gallery_slides_block($node, TRUE, FALSE);
+    $rendered = _usanetwork_media_gallery_consumptionator_gallery_slides_block($node, array('is_on_live' => TRUE, 'endcard' => FALSE));
   }
   else {
     $gallery_view = node_view($node, 'microsite_output');

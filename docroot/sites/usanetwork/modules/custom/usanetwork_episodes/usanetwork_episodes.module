@@ -218,7 +218,7 @@ function _usanetwork_episodes_gallery_recap() {
     $result = $query->execute();
     if (isset($result['node'])) {
       $gallery_id = reset($result['node']);
-      $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id->nid), FALSE, FALSE);
+      $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id->nid), array('is_on_live' => FALSE, 'endcard' => FALSE));
       $theme_variables = array(
         'gallery_html' => !empty($gallery_html) ? $gallery_html : '',
         'block_title' => t('Gallery Recap'),
@@ -235,7 +235,7 @@ function _usanetwork_episodes_gallery_recap() {
     $result = $query->execute();
     if (isset($result['node'])) {
       $gallery_id = reset($result['node']);
-      $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id->nid), FALSE, FALSE);
+      $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id->nid), array('is_on_live' => FALSE, 'endcard' => FALSE));
       $theme_variables = array(
         'gallery_html' => !empty($gallery_html) ? $gallery_html : '',
         'block_title' => t('Gallery'),

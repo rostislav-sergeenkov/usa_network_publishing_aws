@@ -638,38 +638,15 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
               text-overflow: ellipsis;
               width: 100%;
               white-space: nowrap;
-              h1 {
-                color: $consum-carousel-text;
-                display: inline-block;
-                font-size: 14px;
-                font-family: $tex-gyreschola-italic;
-                white-space: nowrap;
-              }
-              .slide-index {
-                font-size: 15px;
-                font-family: $fira-sans-medium;
-              }
               @include breakpoint($bp-1600-width) {
                 font-size: 13px;
                 padding-right: 375px;
-                h1 {
-                  font-size: 13px;
-                }
-                .slide-index {
-                  font-size: 14px;
-                }
               }
               @include breakpoint($bp-1280-width) {
                 bottom: 0;
                 font-size: 12px;
                 left: 70px;
                 padding-right: 320px;
-                h1 {
-                  font-size: 12px;
-                }
-                .slide-index {
-                  font-size: 13px;
-                }
               }
               @include breakpoint($bp-1024-width) {
                 bottom: 0;
@@ -679,12 +656,6 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 bottom: 5px;
                 font-size: 11px;
                 padding-right: 240px;
-                h1 {
-                  font-size: 11px;
-                }
-                .slide-index {
-                  font-size: 12px;
-                }
               }
               @include breakpoint($bp-640-width) {
                 margin-top: 15px;
@@ -692,6 +663,61 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                 position: static;
                 text-align: center;
                 white-space: normal;
+              }
+              h1 {
+                color: $consum-carousel-text;
+                display: inline;
+                font-size: 14px;
+                font-family: $tex-gyreschola-italic;
+                @include breakpoint($bp-min-641-width) {
+                  display: block;
+                  float: left;
+                  margin: 0;
+                  max-width: calc(100% - 55px);
+                  overflow: hidden;
+                  padding: 0;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+                @include breakpoint($bp-1600-width) {
+                  font-size: 13px;
+                }
+                @include breakpoint($bp-1280-width) {
+                  font-size: 12px;
+                }
+                @include breakpoint($bp-min-1025-width) {
+                  max-width: calc(100% - 65px);
+                }
+                @include breakpoint($bp-768-width) {
+                  font-size: 11px;
+                }
+              }
+              > .gallery-name {
+                @include breakpoint($bp-min-641-width) {
+                  display: block;
+                  float: left;
+                  max-width: calc(100% - 55px);
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+                @include breakpoint($bp-min-1025-width) {
+                  max-width: calc(100% - 65px);
+                }
+              }
+              .slide-index {
+                font-size: 15px;
+                font-family: $fira-sans-medium;
+                margin-left: 5px;
+                @include breakpoint($bp-1600-width) {
+                  font-size: 14px;
+                }
+                @include breakpoint($bp-1280-width) {
+                  font-size: 13px;
+                }
+                @include breakpoint($bp-768-width) {
+                  font-size: 12px;
+                }
               }
             }
           }
@@ -1410,6 +1436,13 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                       font-size: 12px;
                     }
                   }
+                  > .gallery-name {
+                    @include breakpoint($bp-1024-width) {
+                      display: inline;
+                      float: none;
+                      white-space: normal;
+                    }
+                  }
                 }
               }
             }
@@ -1564,6 +1597,11 @@ body.show-new-design:not(.node-type-person, .node-type-post, .node-type-catchall
                   text-transform: uppercase;
                   width: 100%;
                   white-space: normal;
+                  > .gallery-name {
+                    display: inline;
+                    float: none;
+                    white-space: normal;
+                  }
                   .slide-index {
                     font-size: 12px;
                     font-family: $fira-sans-medium;

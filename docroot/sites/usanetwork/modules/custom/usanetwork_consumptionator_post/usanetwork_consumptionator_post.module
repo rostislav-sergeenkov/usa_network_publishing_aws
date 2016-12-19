@@ -715,7 +715,7 @@ function _usanetwork_consumptionator_post_posts_carousel($show_id = NULL, $blog_
 function _usanetwork_consumptionator_post_gallery_recap($gallery_id, $block_title = NULL) {
 
   if (is_numeric($gallery_id)) {
-    $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id), FALSE, FALSE);
+    $gallery_html = _usanetwork_media_gallery_consumptionator_gallery_slides_block(node_load($gallery_id), array('is_on_live' => FALSE, 'endcard' => FALSE));
     $theme_variables = array(
       'gallery_html' => !empty($gallery_html) ? $gallery_html : '',
       'block_title' => !empty($block_title) ? $block_title : t('Gallery Recap'),

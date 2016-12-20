@@ -1690,10 +1690,11 @@ function _usanetwork_mpx_video_theplatform_guid_by_bitrate($guid, $feed_url) {
     }
   }
   //  Extract the file id from the URL
-  list($file_url) = explode('?', $selected_video->{'plfile$url'}); //  The part before the ?
-  $file_id = array_pop(explode('/', $file_url)); //  last part of the URL's path.
+  $file_url = explode('?', $selected_video->{'plfile$url'});//  The part before the ?
+  $file_url_array = explode('/', $file_url[0]);
+  $file_id = array_pop($file_url_array); //  last part of the URL's path.
 
-  return array($file_id, $file_url);
+  return array($file_id, $file_url[0]);
 }
 
 /**

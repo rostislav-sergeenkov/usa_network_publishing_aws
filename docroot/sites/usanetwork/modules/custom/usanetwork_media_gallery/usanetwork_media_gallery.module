@@ -818,7 +818,7 @@ function _usanetwork_media_gallery_landing_page_photos_block() {
 
   $section_name = $params['category'] === NULL ? USA_GALLERY_ALL_GALLERIES_LABEL :
     ($params['category'] === USA_GALLERY_OTHER_TYPE_MACHINE_NAME ? USA_GALLERY_OTHER_TYPE_LABEL : $params['category']);
-  $key = md5($params['category']);
+  $key = $params['category'];
   $video_filter_title = ($params['category'] !== NULL)
     ? $section_name . ' (' . $gallery_types[$key]['items_count'] . ')'
     : t('All galleries');
@@ -873,7 +873,7 @@ function _usanetwork_media_gallery_landing_page_photos_filters_block() {
   $gallery_sorters = _usanetwork_media_gallery_landing_page_sorters($tv_show_node->nid, $params);
   $section_name = $params['category'] === NULL ? USA_GALLERY_ALL_GALLERIES_LABEL :
     ($params['category'] === USA_GALLERY_OTHER_TYPE_MACHINE_NAME ? USA_GALLERY_OTHER_TYPE_LABEL : $params['category']);
-  $key = md5($params['category']);
+  $key = $params['category'];
   $video_filter_title = ($params['category'] !== NULL)
     ? $section_name . ' (' . $gallery_types[$key]['items_count'] . ')'
     : t('All galleries');
@@ -1127,7 +1127,7 @@ function _usanetwork_media_gallery_get_gallery_types($show_id, $params) {
         $result[$key]['items_count']++;
       }
       else {
-        $result[$key]['active'] = (md5($params['category']) == $key) ? TRUE : FALSE;
+        $result[$key]['active'] = ($params['category'] == $key) ? TRUE : FALSE;
         $result[$key]['items_count'] = 1;
         $result[$key]['name'] = $gallery_type_name;
         $result[$key]['id'] = $query_result->field_gallery_type_value;

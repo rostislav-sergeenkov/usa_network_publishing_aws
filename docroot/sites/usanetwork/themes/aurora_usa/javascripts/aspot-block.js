@@ -148,6 +148,9 @@
             // check sticky header & slider pause
             switchSlider(true);
 
+            // init load img
+            loadSlideImg(slide.eq(nextSlideIndex));
+
             // show slide content
             showElements(currentSlide, nextSlideIndex);
           })
@@ -348,8 +351,6 @@
 
         var nextSlide = slide.eq(nextIndex),
             imgUrl, shiftBg, img;
-
-        loadSlideImg(nextSlide);
 
         img = nextSlide.find('.asset-img img');
 

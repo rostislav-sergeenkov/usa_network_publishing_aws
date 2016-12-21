@@ -3,7 +3,7 @@
     <?php print $show_title; ?>
     <div class="social-icons social-follow">
       <?php foreach ($social_icons as $social_link): ?>
-        <?php print $social_link; ?>
+        <?php print $social_link['link']; ?>
       <?php endforeach; ?>
     </div>
     <div class="schedule">
@@ -27,3 +27,10 @@
     </div>
   </div>
 </div>
+<?php if (!empty($sign_up_block)) : ?>
+  <div class="usa-newsletter-subscription-wrap">
+    <div id="usa-newsletter-subscription-desktop" class="show-border">
+      <?php print $sign_up_block; ?>
+    </div>
+  </div>
+<?php endif; ?>

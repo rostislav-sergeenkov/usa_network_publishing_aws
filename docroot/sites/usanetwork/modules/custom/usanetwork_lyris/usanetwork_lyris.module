@@ -70,7 +70,7 @@ function usanetwork_lyris_theme() {
 /*
  * Functionality for Sign Up Block
  */
-function _usanetwork_lyris_signup_block($additional = FALSE) {
+function _usanetwork_lyris_signup_block() {
   if (path_is_admin(current_path())) {
     return NULL;
   }
@@ -111,11 +111,7 @@ function _usanetwork_lyris_signup_block($additional = FALSE) {
         }
       }
     }
-    if ($additional) {
-      $content = drupal_get_form('usanetwork_lyris_newsletter_subscription_additional', $property);
-    } else {
-      $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
-    }
+    $content = drupal_get_form('usanetwork_lyris_newsletter_subscription', $property);
   }
 
   if ($content) {
@@ -131,9 +127,16 @@ function _usanetwork_lyris_signup_block($additional = FALSE) {
 function usanetwork_lyris_newsletter_subscription($form, $form_state, $property) {
   global $base_secure_url;
   global $base_url;
+  static $form_index;
+  if (!isset($form_index)) {
+    $form_index = 0;
+  }
+  else {
+    $form_index++;
+  }
   $form['newsletter'] = array(
     '#type' => 'markup',
-    '#prefix' => '<div id="newsletter_lyris_ajax_wrapper">',
+    '#prefix' => '<div id="newsletter_lyris_ajax_wrapper_' . $form_index . '" class="newsletter-lyris-ajax-wrapper" >',
     '#suffix' => '</div>',
   );
   $label = (isset($property['new_design']) && $property['new_design'])
@@ -171,63 +174,7 @@ function usanetwork_lyris_newsletter_subscription($form, $form_state, $property)
     ),
     '#ajax' => array(
       'callback' => 'newsletter_lyris_ajax_callback',
-      'wrapper' => 'newsletter_lyris_ajax_wrapper',
-      'method' => 'replace',
-      'effect' => 'fade',
-      'validate_first' => TRUE,
-      'path' => (($environment == 'prod') ? $base_secure_url : $base_url) . '/system/ajax',
-    ),
-  );
-  return $form;
-}
-
-/**
- * Implementation of additional newsletter subscription form.
- */
-function usanetwork_lyris_newsletter_subscription_additional($form, $form_state, $property) {
-  global $base_secure_url;
-  global $base_url;
-  $form['newsletter'] = array(
-    '#type' => 'markup',
-    '#prefix' => '<div id="newsletter_lyris_ajax_wrapper_additional">',
-    '#suffix' => '</div>',
-  );
-  $label = $property['new_design']
-    ? t('Sign Up for the @show_title Mailing List', array('@show_title' => $property['show_title']))
-    : t('Sign Up for the @show_title Newsletter', array('@show_title' => $property['show_title']));
-  $form['newsletter']['title'] = array(
-    '#markup' => '<label>' . $label . '</label>',
-  );
-  $form['newsletter']['email'] = array(
-    '#type' => 'textfield',
-    '#attributes' => array(
-      'placeholder' => 'enter email',
-    ),
-    '#size' => 23,
-    '#required' => TRUE,
-    '#rules' => array(
-      'email',
-      'length[10, 100]',
-    ),
-  );
-  $form['newsletter']['show_property'] = array(
-    '#type' => 'hidden',
-    '#value' => isset($property['show_value']) ? $property['show_value'] : '',
-  );
-  $environment = usanetwork_core_api_get_environment();
-  $form['newsletter']['submit'] = array(
-    '#prefix' => '<div class="form-submit-wrapper">',
-    '#suffix' => '</div>',
-    '#type' => 'submit',
-    '#value' => t('submit'),
-    '#attributes' => array(
-      'class' => array(
-        'show-color',
-      ),
-    ),
-    '#ajax' => array(
-      'callback' => 'newsletter_lyris_ajax_callback',
-      'wrapper' => 'newsletter_lyris_ajax_wrapper_additional',
+      'wrapper' => 'newsletter_lyris_ajax_wrapper_' . $form_index,
       'method' => 'replace',
       'effect' => 'fade',
       'validate_first' => TRUE,

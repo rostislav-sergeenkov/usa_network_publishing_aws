@@ -42,6 +42,10 @@
         showTextAreaId: 'edit-field-aspot-tgi-desc-und-0-value'
       }
     },
+    violator: {
+      homeInputId: 'edit-field-aspot-gi-violator-und-0-value',
+      showInputId: 'edit-field-aspot-tgi-violator-und-0-value'
+    },
     links: {
       'cta': {
         linkFieldClass: 'form-type-link-field',
@@ -609,7 +613,7 @@
         PreviewBlockWrapperMobileId, defaultFontSize, defaultElemPosition, aspotDraggableItemsData, aspotDraggableItemsDataId, aspotDraggableItemsData_tpl,
         PreviewBlock, PreviewBlockMobile, PreviewBlockWrapper, PreviewBlockWrapperMobile, ctaButtonClass,
         newDesignClass, ndDesignCheckboxStatus, minFontSizeCounter, maxFontSizeCounter,
-        copyValFields, copyValCTALinks, initCopyValButton, copyValButtonId, copyValButtonClass, copyValButton_tpl;
+        copyValFields, copyValCTALinks, initCopyValButton, copyValButtonId, copyValButtonClass, copyValButton_tpl, copyValViolator;
 
     // default params value
     defaultParams = {
@@ -645,6 +649,7 @@
     copyValButtonId = allParams.copyValButtonId;
     copyValFields = allParams.copyValSettings.fields;
     copyValCTALinks = allParams.copyValSettings.links.cta;
+    copyValViolator = allParams.copyValSettings.violator;
 
     // generate Ids
     PreviewBlockWrapperId = 'preview-' + pageName + '-wrapper';
@@ -1474,7 +1479,9 @@
           if (initCopyValButton) {
             try {
               var homeLinks = $('#' + copyValCTALinks.forms.homeFormId).find('.' + copyValCTALinks.linkFieldClass),
-                  showLinks = $('#' + copyValCTALinks.forms.showFormId).find('.' + copyValCTALinks.linkFieldClass);
+                  showLinks = $('#' + copyValCTALinks.forms.showFormId).find('.' + copyValCTALinks.linkFieldClass),
+                  homeViolator = $('#' + copyValViolator.homeInputId),
+                  showViolator = $('#' + copyValViolator.showInputId);
 
               // clear show links
               showLinks.each(function (index, el) {
@@ -1491,6 +1498,9 @@
                 showLinks.eq(index).find('.' + copyValCTALinks.inputFieldTitleClass + ' input').val(inputFieldTitleVal);
                 showLinks.eq(index).find('.' + copyValCTALinks.inputFieldUrlClass + ' input').val(inputFieldUrlVal);
               });
+
+              // copy violator value
+              showViolator.val(homeViolator.val());
 
               // copy fields value
               for (var key in copyValFields) {

@@ -20627,9 +20627,9 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 }
 @media (max-width: 640px) {
   .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-image, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-image, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-image, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-image, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-image, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-image, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-image, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-image, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-image, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-image, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-image, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-image, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-image, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-image, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-image, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-image {
-    position: absolute;
-    top: 0;
     left: 0;
+    position: absolute;
+    top: -56.25vw;
   }
 }
 .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .episode-info-description, .consumptionator-episode-main-block .episode-info-main-block .episode-info-block .post-info-description, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .episode-info-description, .consumptionator-episode-main-block .episode-info-main-block .post-info-block .post-info-description, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .episode-info-description, .consumptionator-episode-main-block .post-info-main-block .episode-info-block .post-info-description, .consumptionator-episode-main-block .post-info-main-block .post-info-block .episode-info-description, .consumptionator-episode-main-block .post-info-main-block .post-info-block .post-info-description, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .episode-info-description, .consumptionator-post-main-block .episode-info-main-block .episode-info-block .post-info-description, .consumptionator-post-main-block .episode-info-main-block .post-info-block .episode-info-description, .consumptionator-post-main-block .episode-info-main-block .post-info-block .post-info-description, .consumptionator-post-main-block .post-info-main-block .episode-info-block .episode-info-description, .consumptionator-post-main-block .post-info-main-block .episode-info-block .post-info-description, .consumptionator-post-main-block .post-info-main-block .post-info-block .episode-info-description, .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-description {
@@ -20770,11 +20770,6 @@ body #header #usa-tve-help-link .usaTveLogout .sign-out-text {
 @media (max-width: 768px) {
   .consumptionator-post-main-block .post-info-main-block .post-info-block {
     border-bottom: 0;
-  }
-}
-@media (max-width: 640px) {
-  .consumptionator-post-main-block .post-info-main-block .post-info-block .post-info-image {
-    top: -56.25vw;
   }
 }
 .consumptionator-post-main-block #taboola-below-article-thumbnails {

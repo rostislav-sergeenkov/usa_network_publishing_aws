@@ -334,9 +334,9 @@
           padding: 0;
         }
         @include breakpoint($bp-640-width) {
-          position: absolute;
-          top: 0;
           left: 0;
+          position: absolute;
+          top: -56.25vw;
         }
       }
       .episode-info-description, .post-info-description {
@@ -467,11 +467,6 @@
       border-bottom: 1px solid;
       @include breakpoint($bp-768-width) {
         border-bottom: 0;
-      }
-      .post-info-image {
-        @include breakpoint($bp-640-width) {
-          top: -56.25vw;
-        }
       }
     }
     .post-info-header {

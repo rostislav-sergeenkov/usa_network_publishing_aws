@@ -145,6 +145,22 @@
   //=============================
 
   // AdobeTracking
+  usaGallery.prototype.setAdobeTrackingFirstSlide = function (indexSlide) {
+
+    var _ = this,
+        $body = $('body'),
+        initialSlide = indexSlide + 1;
+
+    if ($body.hasClass('node-type-media-gallery') && window.hasOwnProperty('AdobeTracking')) {
+      try {
+        if (Number(AdobeTracking.galleryItemDepth) != initialSlide) {
+          AdobeTracking.galleryItemDepth = initialSlide;
+        }
+      } catch (e) {
+        console.log('error: set AdobeTracking first slide');
+      }
+    }
+  };
   usaGallery.prototype.callAdobeTracking = function (_this) {
     if (typeof s_gi != 'undefined') {
 
@@ -166,7 +182,7 @@
         var showName = (Drupal.settings.usanetwork_tv_show_title !== undefined) ? Drupal.settings.usanetwork_tv_show_title : '',
             galleryName = (Drupal.settings.usanetwork_media_gallery_title !== undefined) ? Drupal.settings.usanetwork_media_gallery_title : '',
             slideNumber = parseInt($('.gallery-wrapper .slide.slick-active').data('slick-index')) + 1,
-            pageNameEnd = ($galleryWrap.hasClass('end-card'))? 'Gallery End Card': 'Image ' + slideNumber;
+            pageNameEnd = ($galleryWrap.hasClass('end-card')) ? 'Gallery End Card' : 'Image ' + slideNumber;
 
         s.linkTrackVars = 'eVar78';
         s.pageName = showName.trim() + ' : Photo Galleries : ' + galleryName.trim() + ' : ' + pageNameEnd;
@@ -176,7 +192,7 @@
       if ($body.hasClass('page-videos-live')) {
         var showName = Drupal.behaviors.usanetwork_video_live.showName.trim(),
             galleryName = Drupal.behaviors.usanetwork_video_live.contentName.trim();
-        if(showName != '' && galleryName != '') {
+        if (showName != '' && galleryName != '') {
           s.prop4 = showName + ' : ' + 'Photo Gallery';
           s.prop5 = showName + ' : ' + 'Gallery' + ' : ' + galleryName;
         }
@@ -329,8 +345,8 @@
           endcard = $slide.children().hasClass('end-card'),
           description = $slide.find('.slide-info .description').text().trim(),
           image = $slide.find('.asset-img img'),
-          imageUrl = image.attr('src') ? image.attr('src'): image.attr('data-lazy'),
-          link_back = (gallerySharingPath == '')? window.location.href.split('#')[0]: gallerySharingPath,
+          imageUrl = image.attr('src') ? image.attr('src') : image.attr('data-lazy'),
+          link_back = (gallerySharingPath == '') ? window.location.href.split('#')[0] : gallerySharingPath,
           slideIndex = '';
 
       if ($sharebar.length > 0) {
@@ -340,7 +356,7 @@
         }
 
         if (description == '' && typeof Drupal.settings.microsite_gallery_data != 'undefined' && Drupal.settings.microsite_gallery_data.description.value !== '') {
-          description = Drupal.settings.microsite_gallery_data.description.value.replace(/(<([^>]+)>)/ig,"");
+          description = Drupal.settings.microsite_gallery_data.description.value.replace(/(<([^>]+)>)/ig, "");
         }
         else if (description == '' && $('meta[property="og:description"]').length > 0) {
           description = $('meta[property="og:description"]').attr('content');
@@ -354,7 +370,7 @@
           galleryId = galleryId + "-";
         }
 
-        if(!endcard) {
+        if (!endcard) {
           if (currentSlide > 0 || $gallery.closest('.description-item[data-tab="actor-bio"]').length > 0) {
             slideIndex = '#' + galleryId + (currentSlide + 1);
           } else {
@@ -428,7 +444,7 @@
     var $slide = $(slick.$slides[index]),
         slideImg = $($slide.find('img')[0]),
         imgPreviewUrl = slideImg.data('preview'),
-        imgPreviewClass = (slideImg.hasClass('portrait'))? 'class="preview-portrait" ': '',
+        imgPreviewClass = (slideImg.hasClass('portrait')) ? 'class="preview-portrait" ' : '',
         showColorPager = ($('body[class*=" show-"]').length > 0 || $('body').hasClass('page-videos-live')) ? 'show-color ' : '';
 
     return '<div class="pager-item-inner" data-slick-index="' + index + '"><div class="' + showColorPager + 'base-dot-color"></div><img ' + imgPreviewClass + 'src="' + imgPreviewUrl + '" alt=""></div>';
@@ -637,6 +653,8 @@
       initialSlide = 0;
     }
 
+    _.setAdobeTrackingFirstSlide(initialSlide);
+
     return initialSlide;
   };
 
@@ -735,76 +753,75 @@
         refreshAD = false;
 
     _.$gallery
-      .on('init', function (event, slick) {
+        .on('init', function (event, slick) {
 
-        $gallery.addClass('ready');
-
+          $gallery.addClass('ready');
           _.updateGalleryElem(_);
           _.createPagerPosition(_);
           _.setPagerPosition(_);
           _.gigyaSharebar(initialSlide);
           _.movePagerItems(_, initialSlide);
 
-        if (initSlidesCounter) {
-          _.createSlidesCounter(slick);
-        }
-        if (initMouseWhell) {
-          _.addMouseWhell(slick);
-        }
-        if (initResize) {
-          _.resize(_);
-        }
-        if (_.options.isGalleryEndCard) {
-          _.setEndCartNextClick();
-        }
-      })
-      .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-
-        // Interstitial
-        if (initInterstitial) {
-          // advert counter up +1
-          adCounter += 1;
-          // if advertCounter = slidesCount fire show gallery advert
-          if (adCounter === adSlidesCount) {
-            // reset advert counter
-            adCounter = 0;
-            // show gallery ad
-            _.insertInterstitial.showInterstitial(_, refreshAD);
-            refreshAD = true;
+          if (initSlidesCounter) {
+            _.createSlidesCounter(slick);
           }
-        }
+          if (initMouseWhell) {
+            _.addMouseWhell(slick);
+          }
+          if (initResize) {
+            _.resize(_);
+          }
+          if (_.options.isGalleryEndCard) {
+            _.setEndCartNextClick();
+          }
+        })
+        .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
-        if ($('body').hasClass('page-node-microsite')
-          && typeof Drupal.behaviors.ms_global == 'object'
-          && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
+          // Interstitial
+          if (initInterstitial) {
+            // advert counter up +1
+            adCounter += 1;
+            // if advertCounter = slidesCount fire show gallery advert
+            if (adCounter === adSlidesCount) {
+              // reset advert counter
+              adCounter = 0;
+              // show gallery ad
+              _.insertInterstitial.showInterstitial(_, refreshAD);
+              refreshAD = true;
+            }
+          }
+
+          if ($('body').hasClass('page-node-microsite')
+              && typeof Drupal.behaviors.ms_global == 'object'
+              && Drupal.behaviors.ms_global.hasOwnProperty('refreshAds')) {
             Drupal.behaviors.ms_global.refreshAds('galleries');
-        }
-      })
-      .on('afterChange', function (event, slick, currentSlide) {
-        if ($gallery.find('.slick-active .node-gallery').hasClass('end-card')) {
-          $galleryWrap.addClass('end-card');
-          usaGallery.prototype.callEndCardAdobeTracking.showEndCard();
-        } else {
-          $galleryWrap.removeClass('end-card');
-        }
-
-        _.gigyaSharebar(currentSlide);
-        _.movePagerItems(_, currentSlide);
-
-        if (initAdobeTracking) {
-          _.callAdobeTracking(_);
-        }
-
-        if (_.$body.hasClass('node-type-media-gallery')) {
-          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
-        }
-        if (_.$body.hasClass('node-type-person') || _.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post') || (_.$body.hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
-          Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
-          if (!$('.region-header').hasClass('sticky-shows-submenu')) {
-            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
           }
-        }
-      });
+        })
+        .on('afterChange', function (event, slick, currentSlide) {
+          if ($gallery.find('.slick-active .node-gallery').hasClass('end-card')) {
+            $galleryWrap.addClass('end-card');
+            usaGallery.prototype.callEndCardAdobeTracking.showEndCard();
+          } else {
+            $galleryWrap.removeClass('end-card');
+          }
+
+          _.gigyaSharebar(currentSlide);
+          _.movePagerItems(_, currentSlide);
+
+          if (initAdobeTracking) {
+            _.callAdobeTracking(_);
+          }
+
+          if (_.$body.hasClass('node-type-media-gallery')) {
+            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox, Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+          }
+          if (_.$body.hasClass('node-type-person') || _.$body.hasClass('node-type-tv-episode') || _.$body.hasClass('node-type-consumpt-post') || (_.$body.hasClass('page-videos-live') && $('.video-block').hasClass('show-related'))) {
+            Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbox]);
+            if (!$('.region-header').hasClass('sticky-shows-submenu')) {
+              Drupal.behaviors.mpsAdvert.mpsRefreshAd([Drupal.behaviors.mpsAdvert.mpsNameAD.topbanner]);
+            }
+          }
+        });
 
     _.$interstitialNext.on('click', function () {
       _.insertInterstitial.hideInterstitial(_);

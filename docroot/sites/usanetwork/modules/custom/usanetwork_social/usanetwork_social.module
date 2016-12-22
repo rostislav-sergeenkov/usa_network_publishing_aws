@@ -1,0 +1,695 @@
+<?php
+// @TODO: REview once personalization is enabled
+/**
+ * @file
+ * Code for the usanetwork_social feature.
+ */
+
+include_once 'usanetwork_social.features.inc';
+
+/**
+ * Implementation of hook_menu().
+ */
+function usanetwork_social_menu() {
+  // admin pages
+  $items['admin/usanetwork/social-settings'] = array(
+    'title' => t('Social Settings'),
+    'description' => t('Administer USA Network social settings.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_social_settings_form'),
+    'access arguments' => array('administer usanetwork'),
+    'file' => 'usanetwork_social.admin.inc',
+  );
+
+  return $items;
+}
+
+
+  /**
+  * Implements hook_form_FORM_ID_alter().
+  */
+function usanetwork_social_form_node_form_alter(&$form, &$form_state) {
+  $lang = LANGUAGE_NONE;
+
+  if ($form['type']['#value'] == 'tv_show') {
+    // set the sitewide values as default values for each show
+
+    // TWITTER
+    // eql template
+    if (!isset($form['field_twitter_eql_template'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_eql_template'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_eql_template'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_echo_query_template', '');
+    }
+    // childrenof
+    if (!isset($form['field_twitter_childrenof'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_childrenof'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_childrenof'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_childrenof', '');
+    }
+    // feed
+    if (!isset($form['field_twitter_feed'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_feed'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_feed'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_feed', '');
+    }
+    // state
+    if (!isset($form['field_twitter_state'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_state'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_state'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_state', '');
+    }
+    // source
+    if (!isset($form['field_twitter_source'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_source'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_source'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_source', '');
+    }
+    // markers
+    if (!isset($form['field_twitter_markers'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_markers'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_markers'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_markers', '');
+    }
+    // tags
+    if (!isset($form['field_twitter_tags'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_tags'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_tags'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_tags', '');
+    }
+    // sortorder
+    if (!isset($form['field_twitter_sortorder'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_sortorder'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_sortorder'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_sortorder', '');
+    }
+    // safehtml
+    if (!isset($form['field_twitter_safehtml'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_safehtml'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_safehtml'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_safehtml', '');
+    }
+    // itemsperpage
+    if (!isset($form['field_twitter_itemsperpage'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_itemsperpage'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_itemsperpage'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_itemsperpage', '');
+    }
+    // children
+    if (!isset($form['field_twitter_children'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_twitter_children'][$lang][0]['value']['#default_value'])) {
+      $form['field_twitter_children'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_children', '');
+    }
+
+		// HOME PAGE TWITTER
+    // eql template
+    if (!isset($form['field_homepage_twitter_eql_templ'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_eql_templ'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_eql_templ'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_echo_query_template', '');
+    }
+    // childrenof
+    if (!isset($form['field_homepage_twitter_childrnof'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_childrnof'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_childrnof'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_childrenof', '');
+    }
+    // feed
+    if (!isset($form['field_homepage_twitter_feed'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_feed'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_feed'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_feed', '');
+    }
+    // state
+    if (!isset($form['field_homepage_twitter_state'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_state'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_state'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_state', '');
+    }
+    // source
+    if (!isset($form['field_homepage_twitter_source'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_source'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_source'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_source', '');
+    }
+    // markers
+    if (!isset($form['field_homepage_twitter_markers'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_markers'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_markers'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_markers', '');
+    }
+    // tags
+    if (!isset($form['field_homepage_twitter_tags'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_tags'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_tags'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_tags', '');
+    }
+    // sortorder
+    if (!isset($form['field_homepage_twitter_sortorder'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_sortorder'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_sortorder'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_sortorder', '');
+    }
+    // safehtml
+    if (!isset($form['field_homepage_twitter_safehtml'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_safehtml'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_safehtml'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_safehtml', '');
+    }
+    // itemsperpage
+    if (!isset($form['field_homepage_twitter_itemsperp'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_itemsperp'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_itemsperp'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_itemsperpage', '');
+    }
+    // children
+    if (!isset($form['field_homepage_twitter_children'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_homepage_twitter_children'][$lang][0]['value']['#default_value'])) {
+      $form['field_homepage_twitter_children'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_twitter_children', '');
+    }
+
+    // FACEBOOK
+    // eql template
+    if (!isset($form['field_fb_eql_template'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_eql_template'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_eql_template'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_echo_query_template', '');
+    }
+    // childrenof
+    if (!isset($form['field_fb_childrenof'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_childrenof'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_childrenof'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_childrenof', '');
+    }
+    // feed
+    if (!isset($form['field_fb_feed'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_feed'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_feed'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_feed', '');
+    }
+    // state
+    if (!isset($form['field_fb_state'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_state'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_state'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_state', '');
+    }
+    // source
+    if (!isset($form['field_fb_source'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_source'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_source'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_source', '');
+    }
+    // markers
+    if (!isset($form['field_fb_markers'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_markers'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_markers'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_markers', '');
+    }
+    // tags
+    if (!isset($form['field_fb_tags'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_tags'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_tags'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_tags', '');
+    }
+    // sortorder
+    if (!isset($form['field_fb_sortorder'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_sortorder'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_sortorder'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_sortorder', '');
+    }
+    // safehtml
+    if (!isset($form['field_fb_safehtml'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_safehtml'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_safehtml'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_safehtml', '');
+    }
+    // itemsperpage
+    if (!isset($form['field_fb_itemsperpage'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_itemsperpage'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_itemsperpage'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_itemsperpage', '');
+    }
+    // children
+    if (!isset($form['field_fb_children'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_fb_children'][$lang][0]['value']['#default_value'])) {
+      $form['field_fb_children'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_facebook_children', '');
+    }
+
+    // PINTEREST
+    // pinterest url
+    if (!isset($form['field_pinterest_url'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_pinterest_url'][$lang][0]['value']['#default_value'])) {
+      $form['field_pinterest_url'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_pinterest_url', '');
+    }
+
+    // GETGLUE
+    // pinterest url
+    if (!isset($form['field_getglue_show'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_getglue_show'][$lang][0]['value']['#default_value'])) {
+      $form['field_getglue_show'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_getglue_show', '');
+    }
+
+    // CHAT WITH FANS
+    // eql template
+    if (!isset($form['field_chat_eql_template'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_eql_template'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_eql_template'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_echo_query_template', '');
+    }
+    // childrenof
+    if (!isset($form['field_chat_childrenof'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_childrenof'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_childrenof'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_childrenof', '');
+    }
+    // feed
+    if (!isset($form['field_chat_feed'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_feed'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_feed'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_feed', '');
+    }
+    // state
+    if (!isset($form['field_chat_state'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_state'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_state'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_state', '');
+    }
+    // source
+    if (!isset($form['field_chat_source'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_source'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_source'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_source', '');
+    }
+    // markers
+    if (!isset($form['field_chat_markers'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_markers'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_markers'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_markers', '');
+    }
+    // tags
+    if (!isset($form['field_chat_tags'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_tags'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_tags'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_tags', '');
+    }
+    // sortorder
+    if (!isset($form['field_chat_sortorder'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_sortorder'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_sortorder'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_sortorder', '');
+    }
+    // safehtml
+    if (!isset($form['field_chat_safehtml'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_safehtml'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_safehtml'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_safehtml', '');
+    }
+    // itemsperpage
+    if (!isset($form['field_chat_itemsperpage'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_itemsperpage'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_itemsperpage'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_itemsperpage', '');
+    }
+    // children
+    if (!isset($form['field_chat_children'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_children'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_children'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_children', '');
+    }
+    // submitTargetUrl
+    if (!isset($form['field_chat_submittargeturl'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_submittargeturl'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_submittargeturl'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_submittargeturl', '');
+    }
+    // identityManagerUrl
+    if (!isset($form['field_chat_identitymanagerurl'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_chat_identitymanagerurl'][$lang][0]['value']['#default_value'])) {
+      $form['field_chat_identitymanagerurl'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_chat_identitymanagerurl', '');
+    }
+
+    // SOCIAL BUZZ
+    // baseUrl
+    if (!isset($form['field_trend_base_url'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_trend_base_url'][$lang][0]['value']['#default_value'])) {
+      $form['field_trend_base_url'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_trend_base_url', '');
+    }
+    // urlParams
+    if (!isset($form['field_trend_url_params'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_trend_url_params'][$lang][0]['value']['#default_value'])) {
+      $form['field_trend_url_params'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_trend_url_params', '');
+    }
+
+    // SYNC
+    // desktopUrl
+    if (!isset($form['field_sync_desktop_url'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_sync_desktop_url'][$lang][0]['value']['#default_value'])) {
+      $form['field_sync_desktop_url'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_sync_desktop_url', '');
+    }
+    // phoneUrl
+    if (!isset($form['field_sync_phone_url'][$lang][0]['value']['#default_value']) ||
+      empty($form['field_sync_phone_url'][$lang][0]['value']['#default_value'])) {
+      $form['field_sync_phone_url'][$lang][0]['value']['#default_value'] = variable_get('usanetwork_social_sync_phone_url', '');
+    }
+  }
+}
+
+  /**
+  * Local function for getting all published TV shows sorted alphabetically
+  */
+function _usanetwork_social_show_nids() {
+  $show_nids = array();
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node');
+  $query->entityCondition('bundle', array('tv_show'));
+  $query->propertyCondition('status', 1);
+  $query->propertyOrderBy('title', 'ASC');
+  $query->range(0, 100);
+  // execute the query
+  $result = $query->execute();
+  if (!empty($result['node'])) {
+    $show_nids = array_keys($result['node']);
+  }
+  return $show_nids;
+}
+
+function usanetwork_social_ago($time)
+{
+  $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+  $lengths = array("60","60","24","7","4.35","12","10");
+
+  $now = time();
+
+  $difference = $now - $time;
+  $tense = "ago";
+
+  for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
+    $difference /= $lengths[$j];
+  }
+
+  $difference = round($difference);
+
+  if ($difference != 1)
+  {
+    $periods[$j].= "s";
+  }
+
+  return "$difference $periods[$j] ago ";
+}
+
+function usanetwork_social_show_on_now_chatter_response($node, $numCommentsToShow=2) {
+  $lang = LANGUAGE_NONE;
+  $output = '';
+
+  if (isset($node->nid)) {
+    $showChatPage = isset($node->field_show_chat_page[$lang][0]['value']) ? $node->field_show_chat_page[$lang][0]['value'] : 0;
+    $showTokenName = isset($node->field_chat_show[$lang][0]['value']) ? $node->field_chat_show[$lang][0]['value'] : '';
+    $showAlias = drupal_get_path_alias('node/'.$node->nid);
+    $showUrl = (!empty($showAlias)) ? $showAlias : 'node/'.$node->nid;
+
+  }
+
+  // return empty block if its not a node page
+  // or if chat with fans is not turned on for this show
+  // or if a show token has not been set for this show
+  if (!isset($node->nid) || !$showChatPage || !$showTokenName) {
+    return $output;
+  }
+
+  $show = $showTokenName;
+
+  switch ($show) {
+    case 'covertaffairs':
+      $queryShow = 'caffairs';
+      break;
+    case 'criminalintent':
+      $queryShow = 'laworderci';
+      break;
+    case 'svu':
+      $queryShow = 'losvu';
+      break;
+    default:
+      $queryShow = $show;
+      break;
+  }
+
+  $query = urlencode("(childrenof:http://chatter.usanetwork.com/".$queryShow."/public/comments -state:ModeratorDeleted,ModeratorFlagged,SystemFlagged,CommunityFlagged -user.state:ModeratorBanned) sortOrder:reverseChronological safeHTML:true itemsPerPage:".$numCommentsToShow." children:0");
+
+  $echoApi = 'http://api.echoenabled.com/v1/search?appkey=prod.usanetwork&q='.$query;
+
+  // get Echo query results
+  $session = curl_init($echoApi);
+  curl_setopt($session, CURLOPT_HEADER, false);
+  //curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
+  curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+  $response = json_decode(trim(curl_exec($session)));
+
+  if (isset($response->entries)) {
+    foreach ($response->entries as $entries) {
+      $username = (isset($entries->actor->title)) ? strval($entries->actor->title) : '';
+      $avatar = (isset($entries->actor->avatar)) ? strval($entries->actor->avatar) : '//c0.echoenabled.com/images/avatar-default.png';
+      $comment = strip_tags(strval($entries->object->content));
+      $sourceIcon = (isset($entries->source->icon)) ? strval($entries->source->icon) : '';
+      $sourceName = strval($entries->source->name);
+      $sourceUri = (isset($entries->source->uri)) ? strval($entries->source->uri) : '';
+      $markers = (isset($entries->object->markers) &&
+        is_array($entries->object->markers) &&
+        count($entries->object->markers) > 0) ? $entries->object->markers : null; // $entries->object->markers is an array
+
+      if ($sourceName == 'usanetwork') {
+        //$sourceIcon = file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif'));
+        $sourceUri = 'http://www.usanetwork.com';
+      }
+
+      $time = usanetwork_social_ago(strtotime(strval($entries->postedTime)));
+
+      $output .= '
+        <div class="echo-item-content">
+         <div class="echo-item-container echo-item-container-root echo-item-depth-0">
+            <div class="echo-item-avatar-wrapper">
+               <div class="echo-item-avatar"><img src="'.$avatar.'" style="width: 48px; height: 48px;"></div>
+            </div>
+            <div class="echo-item-wrapper echo-item-wrapper-root">
+               <div class="echo-item-subwrapper">
+                  <div class="echo-item-subcontainer">
+                     <div class="echo-item-frame">
+                        <div class="echo-item-modeSwitch echo-clickable" style="display: none;"></div>
+                        <span class="echo-item-tweetDate"></span>
+                        <div class="echo-item-authorName echo-linkColor">'.$username.'</div>
+                        <span class="echo-item-tweetUserName"></span>
+                        <div class="echo-clear"></div>
+                        <div class="echo-item-data">
+                           <div class="echo-item-re"></div>
+                           <div class="echo-item-body echo-primaryColor"> <span class="echo-item-text">'.$comment.'</span><span class="echo-item-textEllipses" style="display: none;">...</span><span class="echo-item-textToggleTruncated echo-linkColor echo-clickable" style="display: none;"></span></div>
+                        </div>
+                        <div class="echo-item-footer echo-secondaryColor echo-secondaryFont">
+                           <a href="'.$sourceUri.'"><img class="echo-item-sourceIcon echo-clickable" style="display: block;" src="'.$sourceIcon.'"></a>
+                           <div class="echo-item-date">'.$time.'</div>
+                           <div class="echo-item-from">&nbsp;from&nbsp;<a href="javascript:void(0)" class="echo-secondaryColor">usanetwork</a></div>
+                           <div class="echo-item-via"></div>
+                           <div class="echo-item-controls"></div>
+                           <div class="echo-clear"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="echo-clear"></div>
+               </div>
+            </div>
+            <div class="echo-clear"></div>
+            <div class="echo-item-childrenMarker"></div>
+         </div>
+         <div class="echo-item-expandChildren echo-item-container-child echo-trinaryBackgroundColor echo-clickable"><span class="echo-item-expandChildrenLabel echo-message-icon"></span></div>
+         <div class="echo-item-children"></div>
+         <div class="echo-item-childrenByCurrentActorLive"></div>
+      </div>
+      ';
+
+    }
+  }
+  return $output;
+}
+
+function usanetwork_social_show_on_now_facebook_response($node, $numCommentsToShow=2) {
+if (!path_is_admin(current_path())) {
+
+  $output = '';
+  $lang = LANGUAGE_NONE;
+  $arg = arg();
+
+  if (empty($node) && isset($arg[1])) {
+  $node = node_load($arg[1]);
+  }
+
+  if (!isset($node->nid)) {
+  drupal_not_found();
+  }
+  $echoAppKey = variable_get('usanetwork_social_chat_echo_app_key', '');
+  $vars = 'var echoAppKey = "' . $echoAppKey . '"; ';
+    // FACEBOOK SECTION
+    $showFacebook = isset($node->field_show_fb_page[$lang][0]['value']) ? $node->field_show_fb_page[$lang][0]['value'] : 0 ;
+    if ($showFacebook) {
+      $eql = isset($node->field_fb_eql_template[$lang][0]['value']) ? $node->field_fb_eql_template[$lang][0]['value'] : '';
+      $eql = empty($eql) ? variable_get('usanetwork_social_facebook_echo_query_template', '') : $eql;
+
+      $tokens = array();
+      $tokens['[CHILDRENOF]'] = isset($node->field_fb_childrenof[$lang][0]['value']) ? $node->field_fb_childrenof[$lang][0]['value'] : '';
+      $tokens['[SHOW]'] = isset($node->field_fb_show[$lang][0]['value']) ? $node->field_fb_show[$lang][0]['value'] : '';
+      $tokens['[FEED]'] = isset($node->field_fb_feed[$lang][0]['value']) ? $node->field_fb_feed[$lang][0]['value'] : '';
+      $tokens['[STATE]'] = isset($node->field_fb_state[$lang][0]['value']) ? $node->field_fb_state[$lang][0]['value'] : '';
+      $tokens['[SOURCE]'] = isset($node->field_fb_source[$lang][0]['value']) ? $node->field_fb_source[$lang][0]['value'] : '';
+      $tokens['[MARKERS]'] = isset($node->field_fb_markers[$lang][0]['value']) ? $node->field_fb_markers[$lang][0]['value'] : '';
+      $tokens['[TAGS]'] = isset($node->field_fb_tags[$lang][0]['value']) ? $node->field_fb_tags[$lang][0]['value'] : '';
+      $tokens['[SORTORDER]'] = isset($node->field_fb_sortorder[$lang][0]['value']) ? $node->field_fb_sortorder[$lang][0]['value'] : '';
+      $tokens['[SAFEHTML]'] = isset($node->field_fb_safehtml[$lang][0]['value']) ? $node->field_fb_safehtml[$lang][0]['value'] : '';
+      $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $numCommentsToShow; // isset($node->field_fb_itemsperpage[$lang][0]['value']) ? $node->field_fb_itemsperpage[$lang][0]['value'] : '';
+      $tokens['[CHILDREN]'] = isset($node->field_fb_children[$lang][0]['value']) ? $node->field_fb_children[$lang][0]['value'] : '';
+
+      $eql = urlencode(str_replace(array_keys($tokens), array_values($tokens), $eql));
+      $echoAppKey = variable_get('usanetwork_social_facebook_echo_app_key', '');
+
+      $echoApi = 'http://api.echoenabled.com/v1/search?appkey=prod.usanetwork&q='.$eql;
+      $session = curl_init($echoApi);
+      curl_setopt($session, CURLOPT_HEADER, false);
+      //curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
+      curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+      $response = drupal_json_decode(trim(curl_exec($session)));
+      if (isset($response['entries'])) {
+        foreach ($response['entries'] as $entries) {
+          $username = (isset($entries['actor']['title'])) ? strval($entries['actor']['title']) : '';
+          $avatar = (isset($entries['actor']['avatar'])) ? strval($entries['actor']['avatar']) : '//c0.echoenabled.com/images/avatar-default.png';
+          $comment = strip_tags(strval($entries['object']['content']));
+          $sourceIcon = (isset($entries['source']['icon'])) ? strval($entries['source']['icon']) : '';
+          $sourceName = strval($entries['source']['name']);
+          $sourceUri = (isset($entries['source']['uri'])) ? strval($entries['source']['uri']) : '';
+
+          if ($sourceName == 'usanetwork') {
+            //$sourceIcon = file_create_url(file_build_uri('../../usanetwork/modules/custom/usanetwork_social/images/chatter_icon_red_16x16.gif'));
+            $sourceUri = 'http://www.usanetwork.com';
+          }
+
+          $time = usanetwork_social_ago(strtotime(strval($entries['postedTime'])));
+
+          $output .= '
+          <div class="echo-item-content">
+             <div class="echo-item-container echo-item-container-root echo-item-depth-0">
+                <div class="echo-item-avatar-wrapper">
+                   <div class="echo-item-avatar"><img src="'.$avatar.'" style="width: 48px; height: 48px;"></div>
+                </div>
+                <div class="echo-item-wrapper echo-item-wrapper-root">
+                   <div class="echo-item-subwrapper">
+                      <div class="echo-item-subcontainer">
+                         <div class="echo-item-frame">
+                            <div class="echo-item-modeSwitch echo-clickable" style="display: none;"></div>
+                            <span class="echo-item-tweetDate"></span>
+                            <div class="echo-item-authorName echo-linkColor">'.$username.'</div>
+                            <span class="echo-item-tweetUserName"></span>
+                            <div class="echo-clear"></div>
+                            <div class="echo-item-data">
+                               <div class="echo-item-re"></div>
+                               <div class="echo-item-body echo-primaryColor">
+                                  <span class="echo-item-text">
+                                     <div>'.$comment.'</div>
+                                  </span>
+                                  <span class="echo-item-textEllipses" style="display: none;">...</span><span class="echo-item-textToggleTruncated echo-linkColor echo-clickable" style="display: none;"></span>
+                               </div>
+                            </div>
+                            <div class="echo-item-footer echo-secondaryColor echo-secondaryFont">
+                               <a href="'.$sourceUri.'"><img class="echo-item-sourceIcon echo-clickable" style="display: block;" src="http://cdn.echoenabled.com/images/favicons/facebook.png"></a>
+                               <div class="echo-item-from">&nbsp;from&nbsp;<a href="#" class="echo-secondaryColor">Facebook</a></div>
+                               <div class="echo-item-via">&nbsp;via&nbsp;<a href="http://aboutecho.com/" class="echo-secondaryColor">Echo</a></div>
+                               <div class="echo-item-controls"></div>
+                               <div class="echo-clear"></div>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="echo-clear"></div>
+                   </div>
+                </div>
+                <div class="echo-clear"></div>
+                <div class="echo-item-childrenMarker"></div>
+             </div>
+             <div class="echo-item-expandChildren echo-item-container-child echo-trinaryBackgroundColor echo-clickable"><span class="echo-item-expandChildrenLabel echo-message-icon"></span></div>
+             <div class="echo-item-children"></div>
+             <div class="echo-item-childrenByCurrentActorLive"></div>
+          </div>';
+
+        }
+
+      }
+    }
+    return $output;
+
+  }
+}
+
+function usanetwork_social_show_on_now_twitter_response($node, $numCommentsToShow=2) {
+if (!path_is_admin(current_path())) {
+
+  $output = '';
+  $lang = LANGUAGE_NONE;
+  $arg = arg();
+
+  if (empty($node) && isset($arg[1])) {
+  $node = node_load($arg[1]);
+  }
+
+  if (!isset($node->nid)) {
+  drupal_not_found();
+  }
+
+  $echoAppKey = variable_get('usanetwork_social_chat_echo_app_key', '');
+  $vars = 'var echoAppKey = "' . $echoAppKey . '"; ';
+
+  // TWEETS SECTION
+  $showTwitter = isset($node->field_show_twitter_page[$lang][0]['value']) ? $node->field_show_twitter_page[$lang][0]['value'] : 0 ;
+  if ($showTwitter) {
+    $eql = isset($node->field_twitter_eql_template[$lang][0]['value']) ? $node->field_twitter_eql_template[$lang][0]['value'] : '';
+    $eql = empty($eql) ? variable_get('usanetwork_social_twitter_echo_query_template', '') : $eql;
+
+    $tokens = array();
+    $tokens['[CHILDRENOF]'] = isset($node->field_twitter_childrenof[$lang][0]['value']) ? $node->field_twitter_childrenof[$lang][0]['value'] : '';
+    $tokens['[SHOW]'] = isset($node->field_twitter_show[$lang][0]['value']) ? $node->field_twitter_show[$lang][0]['value'] : '';
+    $tokens['[FEED]'] = isset($node->field_twitter_feed[$lang][0]['value']) ? $node->field_twitter_feed[$lang][0]['value'] : '';
+    $tokens['[STATE]'] = isset($node->field_twitter_state[$lang][0]['value']) ? $node->field_twitter_state[$lang][0]['value'] : '';
+    $tokens['[SOURCE]'] = isset($node->field_twitter_source[$lang][0]['value']) ? $node->field_twitter_source[$lang][0]['value'] : '';
+    $tokens['[MARKERS]'] = isset($node->field_twitter_markers[$lang][0]['value']) ? $node->field_twitter_markers[$lang][0]['value'] : '';
+    $tokens['[TAGS]'] = isset($node->field_twitter_tags[$lang][0]['value']) ? $node->field_twitter_tags[$lang][0]['value'] : '';
+    $tokens['[SORTORDER]'] = isset($node->field_twitter_sortorder[$lang][0]['value']) ? $node->field_twitter_sortorder[$lang][0]['value'] : '';
+    $tokens['[SAFEHTML]'] = isset($node->field_twitter_safehtml[$lang][0]['value']) ? $node->field_twitter_safehtml[$lang][0]['value'] : '';
+    $tokens['[ITEMSPERPAGE]'] = 'itemsPerPage:' . $numCommentsToShow; // isset($node->field_twitter_itemsperpage[$lang][0]['value']) ? $node->field_twitter_itemsperpage[$lang][0]['value'] : '';
+    $tokens['[CHILDREN]'] = isset($node->field_twitter_children[$lang][0]['value']) ? $node->field_twitter_children[$lang][0]['value'] : '';
+
+    $eql = urlencode(str_replace(array_keys($tokens), array_values($tokens), $eql));
+    $echoAppKey = variable_get('usanetwork_social_twitter_echo_app_key', '');
+
+    $echoApi = 'http://api.echoenabled.com/v1/search?appkey=prod.usanetwork&q='.$eql;
+
+    $session = curl_init($echoApi);
+    curl_setopt($session, CURLOPT_HEADER, false);
+    //curl_setopt($session, CURLOPT_PROXY, 'localhost:1540');
+    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+    $response = json_decode(trim(curl_exec($session)));
+
+    if (isset($response->entries)) {
+    foreach ($response->entries as $entries) {
+      $username = (isset($entries->actor->title)) ? strval($entries->actor->title) : '';
+      $link = (isset($entries->actor->links[0])) ? strval($entries->actor->links[0]) : '';
+      $id = (isset($entries->object->id)) ? strval($entries->object->id) : '';
+      $avatar = (isset($entries->actor->avatar)) ? strval($entries->actor->avatar) : '//c0.echoenabled.com/images/avatar-default.png';
+      $comment = strip_tags(strval($entries->object->content));
+      $sourceIcon = (isset($entries->source->icon)) ? strval($entries->source->icon) : '';
+      $sourceName = strval($entries->source->name);
+      $sourceUri = (isset($entries->source->uri)) ? strval($entries->source->uri) : '';
+      if($sourceUri != '') {
+        $tweetId = explode("/status/", $sourceUri);
+      }
+      $markers = (isset($entries->object->markers) &&
+      is_array($entries->object->markers) &&
+      count($entries->object->markers) > 0) ? $entries->object->markers : null; // $entries->object->markers is an array
+
+      if ($sourceName == 'usanetwork') {
+        $sourceUri = 'http://www.usanetwork.com';
+      }
+      $time = usanetwork_social_ago(strtotime(strval($entries->postedTime)));
+      $output .= '
+              <div class="echo-item-content">
+               <div class="echo-item-container echo-item-container-root echo-item-depth-0">
+                  <div class="echo-item-avatar-wrapper">
+                     <div class="echo-item-avatar"><a href="'.$link.'"><img src="'.$avatar.'" style="width: 48px; height: 48px;"></a></div>
+                  </div>
+                  <div class="echo-item-wrapper echo-item-wrapper-root">
+                     <div class="echo-item-subwrapper">
+                        <div class="echo-item-subcontainer">
+                           <div class="echo-item-frame">
+                              <div class="echo-item-modeSwitch echo-clickable" style="display: none;"></div>
+                              <div class="echo-item-authorName echo-linkColor echo-item-tweetScreenName"><a href="'.$link.'">'.$username.'</a></div>
+                              <span class="echo-item-tweetUserName"><a class="echo-secondaryFont echo-secondaryColor" href="'.$link.'">@'.$username.'</a></span>
+                              <div class="echo-clear"></div>
+                              <div class="echo-item-data">
+                                 <div class="echo-item-re"></div>
+                                 <div class="echo-item-body echo-primaryColor"> <span class="echo-item-text">'.$comment.'</span><span class="echo-item-textEllipses" style="display: none;">...</span><span class="echo-item-textToggleTruncated echo-linkColor echo-clickable" style="display: none;"></span></div>
+                              </div>
+                              <div class="echo-item-footer echo-secondaryColor echo-secondaryFont">
+                                 <a href="'.$sourceUri.'"><img class="echo-item-sourceIcon echo-clickable" style="display: block;" src="http://cdn.echoenabled.com/images/favicons/twitter.png"></a>
+                                 <div class="echo-item-date" style="display: none;">'.$time.'</div>
+                                 <div class="echo-item-from">&nbsp;from&nbsp;<a href="https://twitter.com/saadz94/status/388261974410534912" class="echo-secondaryColor">Twitter</a></div>
+                                 <div class="echo-item-via">&nbsp;via&nbsp;<a href="http://aboutecho.com/" class="echo-secondaryColor">Echo</a></div>
+                                 <div class="echo-item-controls"><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Reply" href="https://twitter.com/intent/tweet?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconReply">&nbsp;</span><span>Reply</span></a><span class="echo-item-control-delim"> . </span><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Retweet" href="https://twitter.com/intent/retweet?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconRetweet">&nbsp;</span><span>Retweet</span></a><span class="echo-item-control-delim"> . </span><a class="echo-item-control echo-clickable echo-item-intentControl echo-secondaryColor echo-item-control-Favorite" href="https://twitter.com/intent/favorite?in_reply_to='.$tweetId[1].'&amp;tweet_id='.$tweetId[1].'"><span class="echo-item-twitterIntentsIcon echo-item-twitterIntentsIconFavorite">&nbsp;</span><span>Favorite</span></a></div>
+                                 <div class="echo-clear"></div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="echo-clear"></div>
+                     </div>
+                  </div>
+                  <div class="echo-clear"></div>
+                  <div class="echo-item-childrenMarker"></div>
+               </div>
+               <div class="echo-item-expandChildren echo-item-container-child echo-trinaryBackgroundColor echo-clickable"><span class="echo-item-expandChildrenLabel echo-message-icon"></span></div>
+               <div class="echo-item-children"></div>
+               <div class="echo-item-childrenByCurrentActorLive"></div>
+            </div>';
+          }
+        }
+      return $output;
+    }
+  }
+}

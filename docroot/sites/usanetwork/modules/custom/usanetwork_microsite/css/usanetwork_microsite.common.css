@@ -1,0 +1,13 @@
+#visible {
+  display: block;
+}
+#activeContent > a[name] {
+  height: 130px;
+  display: block;
+}
+
+/* Microsite admin edit page */
+#field-ms-section-values > tr {
+  border: 2px solid black;
+  margin-bottom: 20px;
+}

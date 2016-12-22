@@ -1,0 +1,125 @@
+<?php
+
+/**
+ * Implements hook_scheme().
+ */
+function usanetwork_page_collection_schema() {
+  $schema = array();
+
+  $schema['page_collection_relations'] = array(
+    'fields' => array(
+      'id' => array(
+        'description' => 'Relation identifier.',
+        'type' => 'serial',
+        'unsigned' => true,
+        'not null' => true,
+      ),
+      'pcid' => array(
+        'description' => 'The identifier for a page collection node.',
+        'type' => 'int',
+        'unsigned' => true,
+        'not null' => true,
+      ),
+      'nid' => array(
+        'description' => 'The identifier for a page collection item.',
+        'type' => 'int',
+        'unsigned' => true,
+        'not null' => true,
+      ),
+      'pnid' => array(
+        'description' => 'The identifier for a page collection item parent. Used to build tree relations.',
+        'type' => 'int',
+        'unsigned' => true,
+        'not null' => true,
+        'default' => 0,
+      ),
+      'prepend_parent_path' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => true,
+        'not null' => true,
+        'default' => 1,
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'unsigned' => false,
+        'not null' => true,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+
+  $schema['page_collection_field_sync'] = array(
+    'fields' => array(
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => true,
+        'not null' => true,
+        'default' => 0,
+      ),
+      'type' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'field_name' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+      ),
+      'enabled' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => true,
+        'not null' => true,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('nid', 'type', 'field_name'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function usanetwork_page_collection_install() {
+  module_load_include('inc', 'usanetwork_page_collection', 'usanetwork_page_collection.field');
+
+  // create fields
+  $field_bases = _usanetwork_page_collection_field_bases();
+  foreach ($field_bases as $field) {
+    $prior_field = field_read_field($field['field_name'], array('include_inactive' => TRUE));
+    if (empty($prior_field)) {
+      field_create_field($field);
+    }
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function usanetwork_page_collection_uninstall() {
+  module_load_include('module', 'usanetwork_page_collection');
+  module_load_include('inc', 'usanetwork_page_collection', 'usanetwork_page_collection.field');
+
+  // delete fields
+  $field_bases = _usanetwork_page_collection_field_bases();
+  foreach ($field_bases as $field) {
+    $prior_field = field_read_field($field['field_name'], array('include_inactive' => TRUE));
+    if (!empty($prior_field)) {
+      field_delete_field($field['field_name']);
+    }
+  }
+  // purge deleted fields
+  field_purge_batch(1000);
+
+  // delete variables
+  db_delete('variable')
+    ->condition('name', db_like(USANETOWRK_PAGE_COLLECTION_NAMESPACE . '_') . '%', 'LIKE')
+    ->execute();
+  cache_clear_all('variables', 'cache_bootstrap');
+}

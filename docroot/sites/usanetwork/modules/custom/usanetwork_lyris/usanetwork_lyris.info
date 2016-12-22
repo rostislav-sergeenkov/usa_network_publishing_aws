@@ -1,0 +1,8 @@
+name = USA Network Lyris Integration
+description = USA Network integration with Sparklist/Lyris
+package = USA Network
+version = "7.15"
+core = "7.x"
+project = "usanetwork_lyris"
+files[] = lyris.php
+files[] = lyrishq.php

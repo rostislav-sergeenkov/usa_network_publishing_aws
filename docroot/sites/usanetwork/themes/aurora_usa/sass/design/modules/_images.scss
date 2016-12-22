@@ -1,0 +1,59 @@
+.caption-overlay {
+  .caption-fields-wrapper {
+    h3 {
+      margin: 0 0 3px;
+      line-height: 22.5px;
+      font-family: $avalon-medium;
+    }
+    .caption {
+      font-family: $avalon-book;
+      font-size: 15px;
+      > div {
+        display: inline;
+      }
+    }
+  }
+}
+
+.node-usanetwork-promo.promo-hide-overlay {
+  .caption-fields-wrapper,
+  .promo-metadata,
+  .title-overlay,
+  .title-overlay.meta {
+    background: none;
+  }
+}
+
+.node-usanetwork-promo {
+  .promo-preview-iframe {
+    border: 0 none;
+    height: 254px;
+    overflow: hidden;
+    width: 304px;
+  }
+}
+
+.node-usanetwork-promo .caption-overlay {
+  .promo-cta {
+    width: 44px;
+    float: left;
+    & ~ .title, & ~ .title-wide, & ~ .caption, & ~ .caption-wide {
+      padding-left: 56px;
+    }
+    .usa-adrails &, .ie8 & {
+      width: 44px;
+      & ~ .title, & ~ .title-wide, & ~ .caption, & ~ .caption-wide {
+        padding-left: 56px;
+      }
+    }
+  }
+}
+
+.view-mode-promo_teaser .caption-overlay {
+  .title-wide,
+  .caption-wide {
+    display: none;
+  }
+}
+
+

@@ -1,0 +1,25 @@
+<?php
+/**
+ * Install changes for the USA Network Dynamic Tag Manager.
+ */
+
+/*
+ * Implements hook_install().
+ */
+function usanetwork_dtm_install() {
+  $file_name = DRUPAL_ROOT . '/' . drupal_get_path('module', 'usanetwork_dtm') . '/js/usanetwork_dtm.js';
+  $handle = fopen($file_name, 'r');
+  if ($handle) {
+    $feed = fread($handle, filesize($file_name));
+    variable_set('usanetwork_dtm_codesnippet', $feed);
+    fclose($handle);
+  }
+}
+
+/*
+ * Implements hook_uninstall().
+ */
+function usanetwork_dtm_uninstall() {
+  variable_del('usanetwork_dtm_mirgation_array');
+  variable_del('usanetwork_dtm_codesnippet');
+}

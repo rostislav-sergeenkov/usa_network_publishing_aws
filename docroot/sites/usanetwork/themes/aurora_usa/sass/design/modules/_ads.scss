@@ -1,0 +1,35 @@
+.usa-adrails {
+  .usa-wrap {
+    max-width: 1000px;   
+    .panel-wrapper {
+      position: relative;
+    }
+    #main,
+    .flexslider {
+      max-width: 1000px;
+    }
+  }
+}
+.usa-wrap {
+  background-color: $poll-back;
+  .page-user & {
+    .region-content {
+      color: $poll-color;
+    }
+  }
+}
+
+.usa-adrails[data-menu-position="closed"] {
+  .usa-wrap {
+    margin: 0 auto;
+  }
+}
+
+#head-sponsored {
+  display: none;
+  float: right;
+  margin: -1px 12px 0 0;
+  @include breakpoint($bp-min-641-width) {
+    display: block;
+  }
+}

@@ -1,0 +1,199 @@
+<?php
+/**
+ * @file
+ * usanetwork_timeline_gallery.field_group.inc
+ */
+
+/**
+ * Implements hook_field_group_info().
+ */
+function usanetwork_timeline_gallery_field_group_info() {
+  $export = array();
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_gallery_additional|node|timeline_gallery|form';
+  $field_group->group_name = 'group_gallery_additional';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'timeline_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Additional Information',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_content_tags',
+      1 => 'field_share_description',
+      2 => 'field_share_title',
+      3 => 'field_summary',
+      4 => 'field_usa_css',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_gallery_additional|node|timeline_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_gallery_basic|node|timeline_gallery|form';
+  $field_group->group_name = 'group_gallery_basic';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'timeline_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Basic Information',
+    'weight' => '0',
+    'children' => array(
+      0 => 'body',
+      1 => 'field_cover_item',
+      2 => 'field_show',
+      3 => 'field_timeline_episode_section',
+      4 => 'field_explore_tag',
+      5 => 'field_timeline_autoplay',
+      6 => 'title',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_gallery_basic|node|timeline_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_promo_details|node|timeline_gallery|form';
+  $field_group->group_name = 'group_promo_details';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'timeline_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Promo Details',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_call_to_action_type',
+      1 => 'field_promo_call_to_action_text',
+      2 => 'field_promo_created_ovts',
+      3 => 'field_promo_exclude_from_related',
+      4 => 'field_promo_image_override',
+      5 => 'field_promo_long_description',
+      6 => 'field_promo_title',
+      7 => 'field_promo_topic',
+      8 => 'field_promo_violator_name',
+      9 => 'field_promo_appear_under',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-promo-details field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_promo_details|node|timeline_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_seo|node|timeline_gallery|form';
+  $field_group->group_name = 'group_seo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'timeline_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'SEO',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_seo_h1',
+      1 => 'field_seo_page_title',
+      2 => 'field_usa_og_description',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-seo field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_seo|node|timeline_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_sponsorship|node|timeline_gallery|form';
+  $field_group->group_name = 'group_sponsorship';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'timeline_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sponsorship',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_sponsored',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-sponsorship field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_sponsorship|node|timeline_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_usa_og_fields|node|timeline_gallery|form';
+  $field_group->group_name = 'group_usa_og_fields';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'timeline_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'USA OG fields',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_usa_og_image',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'USA OG fields',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => 'These fields are used in search index, search results, standard and Open Graph meta tags
+',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $export['group_usa_og_fields|node|timeline_gallery|form'] = $field_group;
+
+  return $export;
+}

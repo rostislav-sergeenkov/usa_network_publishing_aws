@@ -1,0 +1,123 @@
+<?php
+/**
+ * @file
+ * Primary module working with errors.
+ *
+ * Provides basic tve errors settings page, variables,
+ * and errors modal windows for adobe pass and flash errors.
+ */
+define('TVE_ERRORS_VARIABLE_PREFIX', 'tve_errors_');
+define('TVE_ERRORS_IMAGE_DIMENSION', '290x350');
+
+/**
+ * Implements hook_menu().
+ */
+function tve_errors_menu() {
+  $menu = array();
+  $error_types = array('flash', 'adobe');
+
+  foreach ($error_types as $error) {
+    $menu['errors/modal/' . $error] = array(
+      'page callback' => 'tve_errors_errors_window_content',
+      'page arguments' => array(2),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+  }
+
+  return $menu;
+}
+
+/**
+ * Page callback function for errors windows.
+ */
+function tve_errors_errors_window_content($type) {
+  $vars = array();
+
+  switch ($type) {
+    case 'flash':
+      $vars = _tve_errors_get_error_vars('flash_section');
+      break;
+    case 'adobe':
+      $vars = _tve_errors_get_error_vars('adobe_section');
+      break;
+  }
+
+  drupal_json_output($vars);
+}
+
+/**
+ * Getting errors variables
+ */
+function _tve_errors_get_error_vars($section) {
+  $vars = array();
+  $section_vars = _tve_admin_ui_variable_get($section, array(), TVE_ERRORS_VARIABLE_PREFIX);
+  if (!empty($section_vars)) {
+    foreach ($section_vars as $name => $var) {
+      if (preg_match('/image/', $name)) {
+        if (isset($var['fid']) && $var['fid'] && isset($var['url'])) {
+          $vars[$name] = $var['url'];
+        }
+        else {
+          $vars[$name] = NULL;
+        }
+      }
+      else {
+        $vars[$name] = $var;
+      }
+    }
+  }
+  return $vars;
+}
+
+/**
+ * Form build helper function.
+ *
+ * Builds a section of the errors form.
+ */
+function _tve_errors_custom_error_form(&$form, $defaults, $section, $section_title) {
+  // Error settings.
+  $form[$section] = array(
+    '#type' => 'fieldset',
+    '#title' => t($section_title),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#required' => TRUE,
+    '#tree' => TRUE,
+  );
+
+  $form[$section]['header_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Error header title'),
+    '#description' => t("Fill a text of a header title."),
+    '#default_value' => $defaults[$section]['header_title'],
+  );
+
+  $form[$section]['body_text'] = array(
+    '#type' => 'text_format',
+    '#base_type' => 'textarea',
+    '#title' => t('Error body'),
+    '#description' => t('The body text of the error message.'),
+    '#rows' => 15,
+    '#default_value' => $defaults[$section]['body_text']['value'],
+    '#required' => TRUE,
+    '#format' => $defaults[$section]['body_text']['format'],
+  );
+
+  if (isset($defaults[$section]['error_image']['fid'])) {
+    $form[$section]['error_image'] = array(
+      '#type' => 'managed_file',
+      '#title' => t('Window image'),
+      '#description' => t('This image will be used for decoration image in the modal window. The image size should be !image_dimension pixels.',
+        array('!image_dimension' => TVE_ERRORS_IMAGE_DIMENSION)
+      ),
+      '#progress_indicator' => 'bar',
+      '#upload_location' => 'public://modal_windows/',
+      '#default_value' => $defaults[$section]['error_image']['fid'],
+      '#upload_validators' => array(
+        'file_validate_extensions' => array('gif jpg jpeg png'),
+        'file_validate_image_resolution' => array(0,TVE_ERRORS_IMAGE_DIMENSION),
+      ),
+    );
+  }
+}

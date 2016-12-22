@@ -1,0 +1,712 @@
+﻿<?php
+
+require_once 'usanetwork_core.api.inc';
+
+/**
+ * Implements hook_js_alter().
+ */
+function usanetwork_core_js_alter(&$javascript) {
+  $javascript['misc/ajax.js']['data'] = drupal_get_path('module', 'usanetwork_core') . '/js/ajax.js';
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function usanetwork_core_css_alter(&$css) {
+  if (path_is_admin(current_path())) {
+    return;
+  }
+  $is_new_design = NULL;
+  $entity = menu_get_object();
+  $entity_type = 'node';
+  if (empty($entity)) {
+    $entity = menu_get_object('file');
+    $entity_type = 'file';
+  }
+  $theme_path = drupal_get_path('theme', 'aurora_usa');
+  $style_css_item = $css[$theme_path . '/stylesheets/style.css'];
+  if ($entity && $entity->type == 'usanetwork_microsite') {
+    unset($css[$theme_path . '/stylesheets/style.css']);
+    return;
+  }
+  if ($entity && $entity->type != 'usanetwork_aspot') {
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity($entity_type, $entity);
+  }
+  if (!empty($is_new_design)) {
+    if (isset($css[$theme_path . '/stylesheets/style.css'])) {
+      $new_design_css_path = $theme_path . '/stylesheets/style_new.css';
+      unset($css[$theme_path . '/stylesheets/style.css']);
+      $style_css_item['data'] = $new_design_css_path;
+      $css[$new_design_css_path] = $style_css_item;
+    }
+  }
+}
+
+/**
+ * Implements hook_wysiwyg_editor_settings_alter()
+ */
+function usanetwork_core_wysiwyg_editor_settings_alter(&$settings, &$context)
+{
+  $settings['content_css'] .= "," . url(drupal_get_path('module', 'usanetwork_core') . '/css/wysiwyg_admin.css');
+}
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_core_menu() {
+  $items = array();
+
+  $items['admin/structure/content-type-aliases'] = array(
+    'title' => t('Content type aliases'),
+    'description' => t('Allows to create human-readable aliases for content types'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_core_ct_alias_form'),
+    'access arguments' => array('administer content types'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'usanetwork_core.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Helper function. Creates the menu items.
+ * invoked on install
+ */
+function usanetwork_core_create_menu_items() {
+
+  $menus = array();
+  $menu_links = array();
+  $menu_links_child_items = array();
+
+  // Create a custom menu, if Menu module is enabled.
+  if (!module_exists('menu')) {
+    return FALSE;
+  }
+
+  $menus['menu_usa_footer_top'] = array(
+    'menu_name' => 'usa-footer-top',
+    'title' => st('usa footer top'),
+    'description' => st('primary footer menu.'),
+  );
+
+  $menus['menu_usa_footer_bottom'] = array(
+    'menu_name' => 'usa-footer-bottom',
+    'title' => st('usa footer bottom'),
+    'description' => st('secondary footer menu.'),
+  );
+
+  foreach ($menus as $key => $menu) {
+    if (!menu_load($menu['menu_name'])) {
+      menu_save($menu);
+    }
+  }
+
+  // Create the top-level links for the menu_usa_footer_top menu.
+  $menu_links['social'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('social'),
+    'options' => array('attributes' => array('title' => st('social'))),
+    'menu_name' => 'usa-footer-top',
+    'weight' => 0,
+    'expanded' => '1',
+  );
+  $menu_links['mobile'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('mobile'),
+    'options' => array('attributes' => array('title' => st('mobile'))),
+    'menu_name' => 'usa-footer-top',
+    'weight' => 1,
+    'expanded' => '1',
+  );
+  $menu_links['usa_store'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('usa store'),
+    'options' => array('attributes' => array('title' => st('usa store'))),
+    'menu_name' => 'usa-footer-top',
+    'weight' => 2,
+    'expanded' => '1',
+  );
+
+  // Create the top-level links for the menu_usa_footer_bottom menu.
+  $menu_links['ipr'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Independent Programming Report'),
+    'options' => array('attributes' => array('title' => st('Independent Programming Report'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 0,
+    'expanded' => '1',
+  );
+  $menu_links['closed_captioning'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Closed Captioning'),
+    'options' => array('attributes' => array('title' => st('Closed Captioning'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 1,
+    'expanded' => '1',
+  );
+  $menu_links['terms_of_service'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Terms of Service'),
+    'options' => array('attributes' => array('title' => st('Terms of Service'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 2,
+    'expanded' => '1',
+  );
+  $menu_links['privacy_policy'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Privacy Policy'),
+    'options' => array('attributes' => array('title' => st('Privacy Policy'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 3,
+    'expanded' => '1',
+  );
+  $menu_links['help'] = array(
+    'link_path' => '<front>',
+    'link_title' => st('Help'),
+    'options' => array('attributes' => array('title' => st('Help'))),
+    'menu_name' => 'usa-footer-bottom',
+    'weight' => 5,
+    'expanded' => '1',
+  );
+
+
+  // Save top level menu links
+  foreach ($menu_links as $key => &$menu_link) {
+    $mlid = menu_link_save($menu_link);
+  }
+
+  // Add items that require a plid below.
+  // if we need to add child links this is how we do it
+  /*
+    $menu_links_child_items = array(
+    'games' => array(
+    'link_path' => 'games-child',
+    'link_title' => st('games child link'),
+    'options' => array('attributes' => array('title' => st('games-child'))),
+    'menu_name' => 'sprout-header',
+    'hidden' => '0',
+    'expanded' => '0',
+    'weight' => '0',
+    'plid' => $menu_links['more_link']['mlid'],
+    ),
+    );
+   */
+  // save the menu links
+  foreach ($menu_links_child_items as $key => $menu_link) {
+    $mlid = menu_link_save($menu_link);
+    $menu_links_child_items[$key]['mlid'] = $mlid;
+  }
+}
+
+function usanetwork_core_node_presave($node) {
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $files = [];
+  if ('timeline_gallery' == $node->type && usanetwork_core_api_check_field($node, 'field_timeline_episode_section')) {
+    $field_episode_items = $node_wrapper->field_timeline_episode_section;
+    foreach ($field_episode_items as $episode_item) {
+      $scenes_items = $episode_item->field_timeline_media_item;
+      foreach ($scenes_items as $item) {
+        $files[] = file_load($item->value()['fid']);
+      }
+    }
+  }
+  else {
+    $fields = usanetwork_core_get_fields_by_widget('media_multiselect', 'node', $node->type);
+    foreach ($fields as $field) {
+      if (usanetwork_core_api_check_field($node, $field)) {
+        $files = $node_wrapper->$field->value();
+        foreach ($files as &$file) {
+          $file = file_load($file['fid']);
+        }
+      }
+    }
+  }
+  usanetwork_core_set_alt_for_files_list($files, $node_wrapper);
+}
+
+function usanetwork_core_set_alt_for_files_list($files, $node_wrapper) {
+  $alt_text = '';
+  $file_wrappers = [];
+  foreach ($files as $file) {
+    if ($file->type == 'image') {
+      $file_wrapper = entity_metadata_wrapper('file', $file);
+      $file_wrappers[] = $file_wrapper;
+      if (usanetwork_core_api_check_field($file, 'field_image_copy_alt_to_other', 'file')) {
+        if (usanetwork_core_api_check_field($file, 'field_file_image_alt_text', 'file')) {
+          $alt_text = $file_wrapper->field_file_image_alt_text->value();
+        }
+      }
+    }
+  }
+  if (empty($alt_text) && !empty($file_wrappers)) {
+    if (usanetwork_core_api_check_field($node_wrapper, 'field_show')) {
+      $alt_text = $node_wrapper->field_show->title->value();
+    }
+  }
+  if (!empty($alt_text)) {
+    foreach ($file_wrappers as $file_wrapper) {
+      $current_alt = NULL;
+      if (usanetwork_core_api_check_field($file_wrapper, 'field_file_image_alt_text', 'file')) {
+        $current_alt = $file_wrapper->field_file_image_alt_text->value();
+      }
+      if (empty($current_alt)) {
+        $file_wrapper->field_file_image_alt_text->set($alt_text);
+        $file_wrapper->save();
+      }
+    }
+  }
+}
+
+function usanetwork_core_get_fields_by_widget($widget_type, $entity_type = NULL, $bundle_name = NULL) {
+  $fields = [];
+  $field_instances = field_info_instances($entity_type, $bundle_name);
+  foreach ($field_instances as $field_name => $field_instance) {
+    if ($field_instance['widget']['type'] == $widget_type) {
+      $fields[] = $field_name;
+    }
+  }
+  return $fields;
+}
+
+/**
+ * Helper function. Upserts taxonomy vocabularies and terms.
+ * is Upsert a word?
+ *
+ * The vocabularies are keyed by machine name and its values hold an array with
+ * any number of the following keys:
+ *
+ *   - vid: The ID of the vocabulary.
+ *   - name: The human-readable name of the vocabulary.
+ *   - machine_name: The machine name of the vocabulary.
+ *   - description: (optional) The vocabulary's description.
+ *   - hierarchy: The hierarchy level of the vocabulary.
+ *   - module: (optional) The module altering the vocabulary.
+ *   - weight: (optional) The weight of this vocabulary in relation to other
+ *     vocabularies.
+ *   - original: (optional) The original vocabulary object before any changes
+ *     are applied.
+ *   - old_machine_name: (optional) The original machine name of the
+ *     vocabulary.
+ */
+function usanetwork_core_deploy_taxonomy() {
+  // Default vocabulary attributes.
+  $default_vocab_attributes = array(
+    'vid' => NULL,
+    'name' => NULL,
+    'machine_name' => NULL,
+    'description' => NULL,
+    'module' => 'taxonomy',
+    'weight' => 0,
+    'hierarchy' => 0,
+  );
+
+  // Our vocabularies keyed by machine name.
+  $vocabularies = array(
+    'cta_type' => array(
+      'machine_name' => 'cta_type',
+      'name' => st('Call to Action Type'),
+      'description' => st('cta types with associated icons'),
+    ),
+    'usa_video_terms' => array(
+      'machine_name' => 'usa_video_terms',
+      'name' => st('USA Video Terms'),
+      'description' => st('Terms for categorizing thePlatform TVE and MPX videos.'),
+    ),
+  );
+
+  foreach ($vocabularies as $machine_name => $vocabulary) {
+    // Concatenate the default attributes and turn into an object.
+    $vocab = $vocabulary + $default_vocab_attributes;
+    $vocab = (object) $vocab;
+
+    // Check if the vocabulary already exists.
+    $found = taxonomy_vocabulary_machine_name_load($vocab->machine_name);
+
+    if ($found !== FALSE) {
+      $vocab->vid = $found->vid;
+      $vocab->original = $found;
+      $vocab->old_machine_name = $found->machine_name;
+    }
+
+    // Upsert the vocabulary.
+    $result = taxonomy_vocabulary_save($vocab);
+  }
+}
+
+/**
+ * Helper function. Adds default terms to select vocabularies.
+ *
+ *   The taxonomy term object must come with the following properties:
+ *   - vid: The ID of the vocabulary the term is assigned to.
+ *   - name: The name of the term.
+ *   - tid: (optional) The unique ID for the term being saved. If $term->tid is
+ *     empty or omitted, a new term will be inserted.
+ *   - description: (optional) The term's description.
+ *   - format: (optional) The text format for the term's description.
+ *   - weight: (optional) The weight of this term in relation to other terms
+ *     within the same vocabulary.
+ *   - parent: (optional) The parent term(s) for this term. This can be a single
+ *     term ID or an array of term IDs. A value of 0 means this term does not
+ *     have any parents. When omitting this variable during an update, the
+ *     existing hierarchy for the term remains unchanged.
+ *   - vocabulary_machine_name: (optional) The machine name of the vocabulary
+ *     the term is assigned to. If not given, this value will be set
+ *     automatically by loading the vocabulary based on $term->vid.
+ *   - original: (optional) The original taxonomy term object before any changes
+ *     were applied. When omitted, the unchanged taxonomy term object is
+ *     loaded from the database and stored in this property.
+ *   Since a taxonomy term is an entity, any fields contained in the term object
+ *   are saved alongside the term object.
+ */
+function usanetwork_core_deploy_terms() {
+  // Default term attributes.
+  $default_term_attributes = array(
+    'vid' => NULL,
+    'name' => NULL,
+    'tid' => NULL,
+    'description' => st(''),
+    'format' => 'plain_text',
+    'weight' => 0,
+    'parent' => 0,
+  );
+
+  //Prepare our terms.
+  $terms = usanetwork_core_default_taxonomy_terms();
+
+  // Iterate over our terms array.
+  foreach ($terms as $machine_name => $items) {
+    // Load the vocabulary object.
+    $vocab = taxonomy_vocabulary_machine_name_load($machine_name);
+    if (!$vocab) {
+      drupal_set_message(st('Vocabulary !vocab is missing', array('!vocab' => $machine_name)), 'error');
+      continue;
+    }
+
+    // Iterate over the items.
+    foreach ($items as $key => $item) {
+      // Check to see if we have that term in this vocabulary already.
+      $found = taxonomy_term_load_multiple(array(), array('name' => trim($item['name']), 'vid' => $vocab->vid));
+      if ($found) {
+        $item = array_shift($found);
+        $item = (array) $item;
+      }
+      else {
+        // Add the vocabulary vid and the machine name.
+        $item['vid'] = $vocab->vid;
+        $item['vocabulary_machine_name'] = $vocab->machine_name;
+      }
+
+      // Concatenate the default attributes and turn the item into an object.
+      $item = $item + $default_term_attributes;
+      $item = (object) $item;
+
+      taxonomy_term_save($item);
+    }
+  }
+}
+
+/**
+ * Defining the default Taxonomy terms for each vocabulory
+ */
+function usanetwork_core_default_taxonomy_terms() {
+  $terms = array();
+  // article
+  $terms['cta_type'] = array(
+    'video' => array(
+      'name' => st('video'),
+    ),
+    'game' => array(
+      'name' => st('game'),
+    ),
+    'live sync' => array(
+      'name' => st('live sync'),
+    ),
+    'gallery' => array(
+      'name' => st('gallery'),
+    ),
+    'quiz' => array(
+      'name' => st('quiz'),
+    ),
+  );
+
+  return $terms;
+}
+
+/**
+ * Altering pathauto_punctuation_chars.
+ */
+function usanetwork_core_pathauto_punctuation_chars_alter(&$punctuation) {
+  $punctuation['double_curly_left'] = array('value' => '“', 'name' => t('Double curly left'));
+  $punctuation['double_curly_right'] = array('value' => '”', 'name' => t('Double curly right'));
+  $punctuation['single_curly_left'] = array('value' => '‘', 'name' => t('Single curly left'));
+  $punctuation['single_curly_right'] = array('value' => '’', 'name' => t('Single curly right'));
+}
+
+/**
+ * Returns node content type name alias by machine readable name.
+ * If alias does not exist it returns human readable name.
+ */
+function usanetwork_core_get_content_type_alias($content_type_name) {
+  $ctalias_variable_name = 'usanetwork_ctalias_' . $content_type_name;
+
+  $alias = variable_get($ctalias_variable_name, NULL);
+
+  if (!empty($alias)) {
+    return $alias;
+  }
+
+  $content_types = node_type_get_types();
+
+  if (isset($content_types[$content_type_name]->name)) {
+    return $content_types[$content_type_name]->name;
+  }
+
+  return NULL;
+}
+
+/**
+ * Returns file type name alias by machine readable name.
+ * If alias does not exist it returns human readable name.
+ */
+function usanetwork_core_get_file_type_alias($file_type_name) {
+  $ftalias_variable_name = 'usanetwork_ftalias_' . $file_type_name;
+
+  $alias = variable_get($ftalias_variable_name, NULL);
+
+  if (!empty($alias)) {
+    return $alias;
+  }
+
+  $file_types = file_type_get_enabled_types();
+
+  if (isset($file_types[$file_type_name]->label)) {
+    return $file_types[$file_type_name]->label;
+  }
+
+  return NULL;
+}
+
+/**
+ * Sets node content type name alias.
+ */
+function usanetwork_core_set_content_type_alias($content_type_name, $alias) {
+  $ctalias_variable_name = 'usanetwork_ctalias_' . $content_type_name;
+
+  variable_set($ctalias_variable_name, $alias);
+}
+
+/**
+ * Sets file type name alias.
+ */
+function usanetwork_core_set_file_type_alias($file_type_name, $alias) {
+  $ftalias_variable_name = 'usanetwork_ftalias_' . $file_type_name;
+
+  variable_set($ftalias_variable_name, $alias);
+}
+
+/**
+ * Deletes node content type name alias.
+ */
+function usanetwork_core_delete_content_type_alias($content_type_name) {
+  $ctalias_variable_name = 'usanetwork_ctalias_' . $content_type_name;
+
+  variable_del($ctalias_variable_name);
+}
+
+/**
+ * Deletes file type name alias.
+ */
+function usanetwork_core_delete_file_type_alias($file_type_name) {
+  $ftalias_variable_name = 'usanetwork_ftalias_' . $file_type_name;
+
+  variable_del($ftalias_variable_name);
+}
+
+/**
+ * Returns the field value in the language they currently would be displayed.
+ *
+ * @param $entity_type
+ *   The type of $entity; e.g., 'node' or 'user'.
+ * @param $entity
+ *   The entity containing the data to be displayed.
+ * @param $field_name
+ *   The field to be displayed.
+ * @param $field_value
+ *   The name of field  
+ *
+ * @return
+ *   Value of field items, FALSE otherwise.
+ */
+function _usanetwork_get_field_item($entity_type, $entity, $field_name, $field_value) {
+  if ($field = field_get_items($entity_type, $entity, $field_name)) {
+    if (is_array($field)) {
+      return isset($field[0][$field_value]) ? $field[0][$field_value]: FALSE;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Fork of l() function. For fixing issue with respecting Get parameters on setting active class
+ * 
+ * Formats an internal or external URL link as an HTML anchor tag.
+ *
+ * This function correctly handles aliased paths and adds an 'active' class
+ * attribute to links that point to the current page (for theming), so all
+ * internal links output by modules should be generated by this function if
+ * possible.
+ *
+ * However, for links enclosed in translatable text you should use t() and
+ * embed the HTML anchor tag directly in the translated string. For example:
+ * @code
+ * t('Visit the <a href="@url">settings</a> page', array('@url' => url('admin')));
+ * @endcode
+ * This keeps the context of the link title ('settings' in the example) for
+ * translators.
+ *
+ * @param string $text
+ *   The translated link text for the anchor tag.
+ * @param string $path
+ *   The internal path or external URL being linked to, such as "node/34" or
+ *   "http://example.com/foo". After the url() function is called to construct
+ *   the URL from $path and $options, the resulting URL is passed through
+ *   check_plain() before it is inserted into the HTML anchor tag, to ensure
+ *   well-formed HTML. See url() for more information and notes.
+ * @param array $options
+ *   An associative array of additional options. Defaults to an empty array. It
+ *   may contain the following elements.
+ *   - 'attributes': An associative array of HTML attributes to apply to the
+ *     anchor tag. If element 'class' is included, it must be an array; 'title'
+ *     must be a string; other elements are more flexible, as they just need
+ *     to work in a call to drupal_attributes($options['attributes']).
+ *   - 'html' (default FALSE): Whether $text is HTML or just plain-text. For
+ *     example, to make an image tag into a link, this must be set to TRUE, or
+ *     you will see the escaped HTML image tag. $text is not sanitized if
+ *     'html' is TRUE. The calling function must ensure that $text is already
+ *     safe.
+ *   - 'language': An optional language object. If the path being linked to is
+ *     internal to the site, $options['language'] is used to determine whether
+ *     the link is "active", or pointing to the current page (the language as
+ *     well as the path must match). This element is also used by url().
+ *   - Additional $options elements used by the url() function.
+ *
+ * @return string
+ *   An HTML string containing a link to the given path.
+ *
+ * @see url()
+ */
+function usa_l($text, $path, array $options = array()) {
+  global $language_url;
+  static $use_theme = NULL;
+
+  // Merge in defaults.
+  $options += array(
+    'attributes' => array(),
+    'html' => FALSE,
+  );
+  
+  $query = isset($options['query']) ? $options['query'] : array();
+  $query_get_params = drupal_get_query_parameters();
+
+  // Append active class.
+  if ((($path == $_GET['q'] && md5(serialize($query_get_params)) == md5(serialize($query))) || ($path == '<front>' && drupal_is_front_page())) &&
+      (empty($options['language']) || $options['language']->language == $language_url->language)) {
+    $options['attributes']['class'][] = 'active';
+  }
+
+  // Remove all HTML and PHP tags from a tooltip. For best performance, we act only
+  // if a quick strpos() pre-check gave a suspicion (because strip_tags() is expensive).
+  if (isset($options['attributes']['title']) && strpos($options['attributes']['title'], '<') !== FALSE) {
+    $options['attributes']['title'] = strip_tags($options['attributes']['title']);
+  }
+
+  // Determine if rendering of the link is to be done with a theme function
+  // or the inline default. Inline is faster, but if the theme system has been
+  // loaded and a module or theme implements a preprocess or process function
+  // or overrides the theme_link() function, then invoke theme(). Preliminary
+  // benchmarks indicate that invoking theme() can slow down the l() function
+  // by 20% or more, and that some of the link-heavy Drupal pages spend more
+  // than 10% of the total page request time in the l() function.
+  if (!isset($use_theme) && function_exists('theme')) {
+    // Allow edge cases to prevent theme initialization and force inline link
+    // rendering.
+    if (variable_get('theme_link', TRUE)) {
+      drupal_theme_initialize();
+      $registry = theme_get_registry(FALSE);
+      // We don't want to duplicate functionality that's in theme(), so any
+      // hint of a module or theme doing anything at all special with the 'link'
+      // theme hook should simply result in theme() being called. This includes
+      // the overriding of theme_link() with an alternate function or template,
+      // the presence of preprocess or process functions, or the presence of
+      // include files.
+      $use_theme = !isset($registry['link']['function']) || ($registry['link']['function'] != 'theme_link');
+      $use_theme = $use_theme || !empty($registry['link']['preprocess functions']) || !empty($registry['link']['process functions']) || !empty($registry['link']['includes']);
+    }
+    else {
+      $use_theme = FALSE;
+    }
+  }
+  if ($use_theme) {
+    return theme('link', array('text' => $text, 'path' => $path, 'options' => $options));
+  }
+  // The result of url() is a plain-text URL. Because we are using it here
+  // in an HTML argument context, we need to encode it properly.
+  return '<a href="' . check_plain(url($path, $options)) . '"' . drupal_attributes($options['attributes']) . '>' . ($options['html'] ? $text : check_plain($text)) . '</a>';
+}
+/*
+ * Function returns filename with css style if it needed.
+ */
+function _usanetwork_core_get_video_title($file, $title = '') {
+
+  if (empty($title)) {
+    $title = check_plain(!empty($file->filename) ? $file->filename : $title);
+  }
+
+  if (isset($file->type) && $file->type == 'mpx_video_2' && !empty($file->field_show)) {
+    $file_wrapper = entity_metadata_wrapper('file', $file);
+    $show = $file_wrapper->field_show->value();
+    if (!empty($show->field_disable_uppercase)) {
+      if ($file_wrapper->field_show->field_disable_uppercase->value()) {
+        return '<span class="no-uppercase">' . $title . '</span>';
+      }
+    }
+  }
+  return $title;
+}
+
+/*
+ * Function returns filename with css style if it needed.
+ */
+function _usanetwork_core_get_node_title($node, $title = '') {
+  if (empty($title)) {
+    $title = check_plain(!empty($node->title) ? $node->title : $title);
+  }
+
+  if (isset($node->type) && $node->type == 'tv_episode' && !empty($node->field_show)) {
+    $file_wrapper = entity_metadata_wrapper('node', $node);
+    $show = $file_wrapper->field_show->value();
+    if (!empty($show->field_disable_uppercase)) {
+      if ($file_wrapper->field_show->field_disable_uppercase->value()) {
+        return '<span class="no-uppercase">' . $title . '</span>';
+      }
+    }
+  }
+  return $title;
+}
+
+/*
+ * Function returns title with css style if it needed.
+ */
+function _usanetwork_core_get_right_case_title($show_node, $title = '') {
+
+  if (!empty($show_node->field_disable_uppercase)) {
+    $disable_uppercase = field_get_items('node', $show_node, 'field_disable_uppercase');
+    $disable_uppercase = reset($disable_uppercase);
+    if (!empty($disable_uppercase['value'])) {
+      return '<span class="no-uppercase">' . $title . '</span>';
+    }
+  }
+  return $title;
+}
+

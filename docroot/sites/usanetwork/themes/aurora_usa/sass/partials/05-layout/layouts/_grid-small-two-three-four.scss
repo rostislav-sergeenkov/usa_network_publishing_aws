@@ -1,0 +1,90 @@
+%grid-small-two-three-four {
+  .grid-item {
+    @extend %grid-item;
+  }
+  .ie8 & {
+    .grid-item {
+      float:left;
+      clear:none;
+      width:48.4966%;
+      margin:0 7px 15px 0;
+    }
+  }
+  @include breakpoint($bp-grid-small-2-3) {
+    @include layout(2, .062){
+      .grid-item {
+        &:nth-of-type(odd) {
+          @include grid-span(1, 1);
+        }
+        &:nth-of-type(even) {
+          @include grid-span(1, 2);
+          padding-right: 0;
+        }
+        &:nth-of-type(2n + 3) {
+          clear: both;
+        }
+      }
+    }
+  }
+  @include breakpoint($bp-grid-small-2-fence) {
+    width: 477px;
+  }
+  @include breakpoint($bp-grid-small-3-fence) {
+    width: 714px;
+    @include layout(3, .062){
+      .grid-item {
+        &:nth-of-type(3n + 1) {
+          @include grid-span(1, 1);
+        }
+        &:nth-of-type(3n + 2) {
+          @include grid-span(1, 2);
+        }
+        &:nth-of-type(3n + 3) {
+          @include grid-span(1, 3);
+          padding-right: 0;
+        }
+        &:nth-of-type(3n + 4) {
+          clear: both;
+        }
+      }
+    }
+    .ie8 & {
+      .grid-item {
+        float:left;
+        clear:none;
+        width:32.0102%;
+      }
+    }
+  }
+  @include breakpoint($bp-grid-small-4) {
+    width: 953px;
+    @include layout(4, .062){
+      .grid-item {
+        &:nth-of-type(4n + 1) {
+          @include grid-span(1, 1);
+        }
+        &:nth-of-type(4n + 2) {
+          @include grid-span(1, 2);
+        }
+        &:nth-of-type(4n + 3) {
+          @include grid-span(1, 3);
+        }
+        &:nth-of-type(4n + 4) {
+          @include grid-span(1, 4);
+          padding-right: 0;
+        }
+        &:nth-of-type(4n + 5) {
+          clear: both;
+        }
+      }
+    }
+    .ie8 & {
+      .grid-item {
+        float:left;
+        clear:none;
+        width:23.8892%;
+        margin:0 10px 15px 0;
+      }
+    }
+  }
+}

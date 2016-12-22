@@ -1,0 +1,25 @@
+diff --git a/1443158-file-field-presave.patch b/1443158-file-field-presave.patch
+new file mode 100644
+index 0000000..e69de29
+diff --git a/modules/file/file.field.inc b/modules/file/file.field.inc
+index 7a5697c..1229986 100644
+--- a/modules/file/file.field.inc
++++ b/modules/file/file.field.inc
+@@ -215,8 +215,16 @@ function file_field_presave($entity_type, $entity, $field, $instance, $langcode,
+   // Make sure that each file which will be saved with this object has a
+   // permanent status, so that it will not be removed when temporary files are
+   // cleaned up.
+-  foreach ($items as $item) {
++  foreach ($items as $delta => $item) {
++    if (empty($item['fid'])) {
++      unset($items[$delta]);
++      continue;
++    }
+     $file = file_load($item['fid']);
++    if (empty($file)) {
++      unset($items[$delta]);
++      continue;
++    }
+     if (!$file->status) {
+       $file->status = FILE_STATUS_PERMANENT;
+       file_save($file);

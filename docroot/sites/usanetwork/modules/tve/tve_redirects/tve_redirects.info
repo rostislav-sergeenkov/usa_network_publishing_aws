@@ -1,0 +1,5 @@
+name = TVE Redirects
+description = Provides API for custom specific permanent redirects.
+core = 7.x
+package = NBCU TVE
+version = 7.x-1.0

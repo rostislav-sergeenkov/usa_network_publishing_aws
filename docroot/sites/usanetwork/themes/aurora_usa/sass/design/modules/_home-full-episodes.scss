@@ -1,0 +1,264 @@
+#block-usanetwork-mpx-video-usa-mpx-video-home-full-latest {
+  width: 100%;
+}
+
+.full-episodes-block.carousel-block {
+  background: $poll-back;
+  overflow: hidden;
+  padding: 40px 60px;
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-1024-width) {
+    padding: 40px;
+  }
+  @include breakpoint($bp-768-width) {
+    padding: get-vw(60px, 768) 0 0;
+  }
+  @include breakpoint($bp-480-width) {
+    padding: 37.5px 0 0;
+  }
+  .carousel {
+    &.carousel_2_rows {
+      height: 515px;
+      @include breakpoint($bp-min-1601-width) {
+        height: 573px;
+      }
+      @include breakpoint($bp-768-width) {
+        height: auto;
+      }
+      .carousel-item {
+        &.description-item {
+          @include breakpoint($bp-min-769-width) {
+            height: 515px!important;
+          }
+          @include breakpoint($bp-min-1601-width) {
+            height: 573px!important;
+          }
+          @include breakpoint($bp-768-width) {
+            margin-right: 0;
+            height: auto;
+          }
+        }
+        &:not(.description-item) {
+          @include breakpoint($bp-min-769-width) {
+            height: 100%;
+          }
+          .node-usanetwork-promo {
+            @include breakpoint($bp-min-769-width) {
+              height: 250px;
+              margin-bottom: 15px;
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+            @include breakpoint($bp-min-1601-width) {
+              height: 279px;
+            }
+          }
+        }
+      }
+    }
+    .usa-carousel-left {
+      .carousel-item {
+        &.description-item {
+          margin-right: 40px;
+          height: 250px;
+          width: 145px;
+          @include breakpoint($between-769-1024) {
+            width: 125px;
+          }
+          @include breakpoint($bp-min-1601-width) {
+            height: 279px;
+            width: 245px;
+          }
+          @include breakpoint($bp-768-width) {
+            margin-right: 0;
+          }
+        }
+        &:not(.description-item) {
+          @include breakpoint($bp-min-769-width) {
+            margin-right: 15px;
+          }
+          @include breakpoint($bp-min-1601-width) {
+            height: 279px;
+            width: 335px;
+          }
+          @extend %video-promo;
+        }
+      }
+    }
+  }
+  .carousel-description-item {
+    width: 145px;
+    @include breakpoint($between-769-1024) {
+      width: 125px;
+    }
+    @include breakpoint($bp-min-1601-width) {
+      width: 245px;
+    }
+    .description-wrapper {
+      padding: 0;
+      width: 100%;
+    }
+    .caption, .additional-text {
+      font-size: 12px;
+      line-height: 14px;
+      text-align: right;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 17px;
+        line-height: 20px;
+      }
+    }
+    .title {
+      font-size: 22px;
+      margin: 10px 0;
+      position: relative;
+      text-align: right;
+      @include breakpoint($bp-min-1601-width) {
+        font-size: 32px;
+        line-height: 40px;
+        margin: 15px 0;
+      }
+    }
+    .link {
+      text-align: right;
+      a {
+        color: $poll-color;
+        font-family: $tex-gyreschola-bold;
+        font-size: 12px;
+        letter-spacing: 1px;
+        line-height: 14px;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1601-width) {
+          font-size: 14px;
+          line-height: 16px;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  @include breakpoint($bp-768-width) {
+    .carousel {
+      @include clear();
+      margin-left: 0;
+      margin-bottom: 10px;
+      margin-top: get-vw(50px, 768);
+      padding: 0 10px;
+      ul {
+        display: block;
+        width: 100%;
+        li {
+          &:not(.description-item) {
+            margin-bottom: 15px;
+          }
+        }
+      }
+      &.carousel_1_rows {
+        ul {
+          li {
+            float: left;
+            height: 38.5vw;
+            margin-right: 2%;
+            min-height: 115px;
+            width: 49%;
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      &.carousel_2_rows {
+        li {
+          height: 38.5vw;
+          margin-right: 0;
+          width: 100%;
+          .node-usanetwork-promo {
+            float: left;
+            margin-bottom: 0;
+            margin-right: 2%;
+            min-height: 115px;
+            width: 49%;
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+    .carousel-description-item {
+      height: auto;
+      left: 0;
+      padding: 0 20px;
+      position: relative;
+      top: 0;
+      width: 100%;
+      .description-wrapper {
+        display: block;
+        float: none;
+        height: auto;
+        padding: 0;
+        width: 100%;
+      }
+      .description-block {
+        display: block;
+      }
+      .title {
+        background: none;
+        font-size: get-vw(34px, 768);
+        line-height: get-vw(40px, 768);
+        margin: 0;
+        &:after {
+          display: none;
+        }
+      }
+      .link {
+        a {
+          font-size: get-vw(17px, 768);
+          line-height: get-vw(20px, 768);
+        }
+      }
+      .additional-text {
+        font-size: get-vw(17px, 768);
+        line-height: get-vw(20px, 768);
+      }
+      .caption, .title, .additional-text, .link {
+        text-align: left;
+      }
+    }
+  }
+  @include breakpoint($bp-480-width) {
+    .carousel {
+      margin-top: 31.25px;
+      .carousel-item:not(.description-item) {
+        .meta-wrapper-inner {
+          .meta {
+            .title {
+              line-height: 15px;
+            }
+            .additional {
+              line-height: 12px;
+            }
+          }
+        }
+      }
+    }
+    .carousel-description-item {
+      .title {
+        font-size: 21px;
+        line-height: 25px;
+      }
+      .link {
+        a {
+          font-size: 10.5px;
+          line-height: 12.5px;
+        }
+      }
+      .additional-text {
+        font-size: 10.5px;
+        line-height: 12.5px;
+      }
+    }
+  }
+}

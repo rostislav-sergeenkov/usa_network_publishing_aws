@@ -1,0 +1,4 @@
+name = usanetwork_custompages
+description = generates the custom pages for games, quizes, etc., (flex/flash components with custom callback)
+package = USA Network
+core = 7.x

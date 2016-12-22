@@ -1,0 +1,14 @@
+name = usanetwork_movie_relation
+description = Movies Relationship
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_movie_relation
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = options
+dependencies[] = usanetwork_gallery_content
+dependencies[] = usanetwork_movie
+features[features_api][] = api:2
+features[field_base][] = field_movie
+features[field_instance][] = node-media_gallery-field_movie

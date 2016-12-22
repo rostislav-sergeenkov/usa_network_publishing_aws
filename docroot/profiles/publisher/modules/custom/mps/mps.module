@@ -1,0 +1,1205 @@
+<?php
+
+/**
+ * @file
+ * MPS Integration module.
+ */
+
+use Drupal\mps\CagsArray;
+
+define('MPS_DEFAULT_HOST', 'mps.nbcuni.com');
+define('MPS_DEFAULT_SITE', '');
+define('MPS_DEFAULT_CAT_DELIMITER', '|');
+define('MPS_DEFAULT_CAT_TOKEN_LENGTH_LIMIT', 50);
+define('MPS_FIELD_SETTING_NONE', 0);
+define('MPS_FIELD_SETTING_FIELD', 1);
+define('MPS_FIELD_SETTING_CAG', 2);
+
+/**
+ * Implements hook_menu().
+ */
+function mps_menu() {
+  $items = array();
+  $items['admin/config/services/mps'] = array(
+    'title' => 'MPS Configuration',
+    'description' => 'Add your settings to MPS.',
+    'type' => MENU_NORMAL_ITEM,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mps_admin_form'),
+    'access arguments' => array('administer mps account'),
+  );
+  $items['node/%node/mps'] = array(
+    'title' => 'JSON Data',
+    'page callback' => 'mps_load_info',
+    'page arguments' => array('node', 1),
+    'access arguments' => array('access mps information'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'mps.pages.inc',
+    'weight' => 100,
+  );
+  $items['file/%file/mps'] = array(
+    'title' => 'JSON Data',
+    'page callback' => 'mps_load_info',
+    'page arguments' => array('file', 1),
+    'access arguments' => array('access mps information'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'mps.pages.inc',
+    'weight' => 100,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function mps_permission() {
+  return array(
+    'administer mps account' => array(
+      'title' => t('Administer MPS account'),
+    ),
+    'access mps information' => array(
+      'title' => t('View MPS information'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function mps_ctools_plugin_api() {
+  list($module, $api) = func_get_args();
+  if ($module == "mps" && $api == "default_mps_block") {
+    return array("version" => "1");
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function mps_ctools_plugin_directory($module, $type) {
+  // Load the export_ui plugin.
+  if ($type == 'export_ui') {
+    return 'plugins/export_ui';
+  }
+}
+
+/**
+ * Implements hook_default_mps_block().
+ */
+function mps_default_mps_block() {
+  $export = array();
+  $block = new stdClass();
+  $block->api_version = 1;
+  $block->machine_name = '';
+  $block->block_name = '';
+  $export['default_mps_block'] = $block;
+  return $export;
+}
+
+/**
+ * Load function for a ctools block.
+ */
+function mps_block_load($machine_name) {
+  ctools_include('export');
+
+  $blocks = &drupal_static(__FUNCTION__, array());
+
+  if (!isset($blocks[$machine_name])) {
+    // Load the block.
+    $result = ctools_export_load_object('mps_blocks', 'names', array($machine_name));
+    if (isset($result[$machine_name])) {
+      $block = $result[$machine_name];
+    }
+    else {
+      return NULL;
+    }
+
+    // Store the original block. This is used by the block edit form.
+    $block->raw = clone $block;
+
+    // Statically cache the fully loaded block.
+    $blocks[$machine_name] = $block;
+  }
+  else {
+    // Use the statically cached block object.
+    $block = $blocks[$machine_name];
+  }
+
+  return $block;
+}
+
+/**
+ * Delete callback from ctools Export UI.
+ */
+function mps_block_delete($object) {
+  // If we were sent an object, get the export key from it. Otherwise
+  // assume we were sent the export key.
+  $value = is_object($object) ? $object->machine_name : $object;
+  db_delete('mps_blocks')
+    ->condition('machine_name', $value)
+    ->execute();
+
+  // Also delete the block if there is one.
+  db_delete('block')
+    ->condition('module', 'mps')
+    ->condition('delta', $value)
+    ->execute();
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function mps_block_info() {
+  ctools_include('export');
+  $blocks = array();
+
+  foreach (ctools_export_load_object('mps_blocks') as $record) {
+    $blocks[$record->machine_name] = array(
+      'info' => $record->block_name . ' ' . t('(MPS)'),
+    );
+  }
+
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function mps_block_view($delta) {
+  $block = array();
+
+  $block_info = mps_block_load($delta);
+  if ($block_info !== NULL) {
+    $mps_js = '<script>typeof(mps)==\'object\' && typeof(mps.getAd)==\'function\' && document.write(mps.getAd(\'' . $block_info->machine_name . '\'));</script>';
+    $markup = '<div id="' . $delta . '">' . $mps_js . '</div>';
+
+    $block['content'] = array(
+      '#markup' => $markup,
+    );
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function mps_page_alter(&$page) {
+  // @see mps_requirements() for corresponding message.
+  if (current_path() === 'admin/config/services/mps' && module_exists('pixelman')) {
+    drupal_set_message(t('The Pixelman module is enabled, it should not be, disable it.'), 'error');
+  }
+
+  // Do not make MPS calls on admin pages.
+  if (path_is_admin(current_path())) {
+    return;
+  }
+
+  $status = drupal_get_http_header('status');
+  $data = _mps_gather_data($page, $status);
+  mps_sanitize_output($data);
+  if (strpos($status, '40') === 0) {
+    // This use of json_encode requires >= PHP 5.4.0.
+    $data = json_encode($data, JSON_UNESCAPED_SLASHES);
+  }
+  else {
+    // This use of json_encode requires >= PHP 5.4.0.
+    $data = json_encode($data, JSON_UNESCAPED_UNICODE);
+  }
+
+  $mps_options = array(
+    'host' => variable_get('mps_host', MPS_DEFAULT_HOST),
+  );
+
+  // Set up all the other MPS options values.
+  mps_options_setup($mps_options);
+  mps_sanitize_output($mps_options);
+
+  $header_js  = 'var mpscall = ' . $data . "\n";
+  $header_js .= 'var mpsopts = ' . json_encode($mps_options) . "\n";
+
+  if (variable_get('mps_integration') == 0) {
+    $header_js .= 'var mps = mps || {};' . "\n";
+    $header_js .= 'document.write(\'<scr\'+\'ipt id="mps-ext-load" src="//\'+mpsopts.host+\'/fetch/ext/load-\'+mpscall.site+\'.js"></scr\'+\'ipt>\');';
+  }
+  else {
+    $header_js .= 'var mps=mps||{};mps._ext=mps._ext||{};mps._adsheld=[];mps._queue=mps._queue||{};mps._queue.gptloaded=mps._queue.gptloaded||[];mps.__timer=Date.now();mps.__intcode="v2"; "function"!=typeof mps.getAd&&(mps.getAd=function(a){if("string"!=typeof a)return!1;var b="mps-getad-"+a.replace(/\W/g,"");mps._ext&&mps._ext.loaded||(mps._queue.gptloaded.push(function(){"function"==typeof mps._gptfirst&&mps._gptfirst();mps.insertAd("#"+b,a)}),mps._adsheld.push(a));return\'<div id="\'+b+\'" class="mps-wrapper" data-mps-fill-slot="\'+a+\'"></div>\'});(function(){head=document.head||document.getElementsByTagName("head")[0];mpsload=document.createElement("script");mpsload.src="//"+mpsopts.host+"/fetch/ext/load-"+mpscall.site+".js?nowrite=2";mpsload.id="mps-load";head.insertBefore(mpsload,head.firstChild)})();';
+  }
+
+  $header_options = array(
+    'type' => 'inline',
+    'scope' => 'header',
+    'force header' => TRUE,
+    'group' =>  JS_LIBRARY,
+    'weight' => -100,
+  );
+  drupal_add_js($header_js, $header_options);
+
+  $footer_js = 'typeof(mps)==\'object\' && typeof(mps.writeFooter)==\'function\' && mps.writeFooter();';
+  $footer_options = array(
+    'type' => 'inline',
+    'scope' => 'footer',
+    /**
+    * It should be the last thing inlined on the page.
+    * It prevents drupal from unnecessary files splitting on JS aggregation
+    */
+    'group' => JS_THEME + 100,
+  );
+  drupal_add_js($footer_js, $footer_options);
+}
+
+/**
+ * Set up the mpsopts JSON string.
+ *
+ * @param array $mps_options
+ *   The raw options used to generate the MPS JSON.
+ */
+function mps_options_setup(&$mps_options) {
+  $mps_variables = variable_get('mps_variables', array());
+  foreach ($mps_variables as $row) {
+    // If our value is JSON we decode it 1st.
+    if (isset($row['json']) && $row['json'] == 1) {
+      $value = json_decode($row['value']);
+      // Invalid JSON just gets left out.
+      if ($value === NULL) {
+        $row['value'] = '';
+      }
+      else {
+        $row['value'] = $value;
+      }
+    }
+
+    // Make sure we give json_encode() a real integer not a string.
+    if (is_numeric($row['value'])) {
+      $row['value'] = (int) $row['value'];
+    }
+    $mps_options[$row['name']] = $row['value'];
+  }
+}
+
+/**
+ * Helper function to replace token value.
+ *
+ * @param array $parameters
+ * @param object $entity
+ *
+ * @see _mps_gather_data()
+ */
+function mps_calls_get_value(&$parameters, $entity) {
+  $mps_calls_variable = variable_get('mps_calls', array());
+  $token_data = array();
+  if(isset($entity)) {
+    if ($entity->entity_type == 'node') {
+      $token_data = array('node' => $entity);
+    }
+    elseif ($entity->entity_type == 'user'){
+      $token_data = array('user' => $entity);
+    }
+  }
+  foreach ($mps_calls_variable as $row) {
+    // Make sure we give json_encode() a real integer not a string.
+    if (is_numeric($row['value'])) {
+      $row['value'] = (int) $row['value'];
+    }
+    $parameters[$row['name']] = token_replace($row['value'], $token_data, array('clear' => TRUE));
+  }
+}
+
+/**
+ * Builds the array of data required by MPS.
+ */
+function _mps_gather_data($page, $status) {
+  $parameters = array();
+
+  $parameters['site'] = _mps_get_site();
+
+  $path = drupal_is_front_page() ? '/' : '/' . current_path();
+  $parameters['path'] = !empty($path) ? '/' . trim($path, '/') : '/';
+  $parameters['path'] = $path ? $path : '';
+
+  if (strpos($status, '40') === 0) {
+    $http_code = substr($status, 0, strpos($status, ' '));
+    $parameters['path'] = 'ERROR/' . $http_code;
+    $parameters['content_id'] = 'ERROR';
+  }
+  else {
+    $parameters['title'] = drupal_get_title();
+
+    $parameters['qs'] = variable_get('mps_query', 0) ? _mps_safe_encode($_SERVER['QUERY_STRING']) : '';
+
+    $parameters['content_id'] = '';
+    $parameters['is_content'] = 0;
+    // Default type must be other.
+    $parameters['type'] = 'other';
+    $parameters['cag'] = '';
+    $parameters['pubdate'] = '';
+
+    $entity = _mps_get_entity();
+    if ($entity) {
+      list($id, $vid, $bundle) = entity_extract_ids($entity->entity_type, $entity);
+      if (!is_null($id)) {
+        if (in_array($entity->entity_type, array('node', 'file'))) {
+          $parameters['is_content'] = 1;
+          $parameters['content_id'] = $entity->entity_type . $id;
+          $parameters['type'] = $entity->bundle;
+        }
+
+        $cags_array = new CagsArray();
+        module_invoke_all('mps_add_cags', $cags_array, $entity);
+        $cags = $cags_array->getCags();
+        if (!empty($cags)) {
+          $parameters['cag'] = $cags;
+        }
+      }
+      if (isset($entity->created)) {
+        $parameters['pubdate'] = $entity->created;
+      }
+      $parameters['field'] = mps_gather_field_data($entity);
+      mps_calls_get_value($parameters, $entity);
+    }
+  }
+
+  // Allow other modules to alter the MPS parameters.
+  drupal_alter('mps_parameters', $parameters);
+  return $parameters;
+}
+
+/**
+ * Safely base64 encodes a string.
+ *
+ * @todo Consider using drupal_base64_encode() instead.
+ */
+function _mps_safe_encode($string) {
+  if (empty($string)) {
+    return '';
+  }
+
+  $unsafe_chars = array('+','/');
+  $replacement_chars = array('-','_');
+  return str_replace($unsafe_chars, $replacement_chars, base64_encode($string));
+}
+
+/**
+ * Implements hook_mps_add_cags().
+ */
+function mps_mps_add_cags(Drupal\MPS\cagsArray $cags_array, $entity) {
+  $mps_field_settings = variable_get('mps_field_settings', array());
+  foreach (field_info_instances($entity->entity_type, $entity->bundle) as $field_name => $field_instance) {
+    $field_info = field_info_field($field_name);
+
+    // Add any referenced taxonomy terms to the cag array.
+    if ($field_info['type'] == 'taxonomy_term_reference') {
+      $terms = field_view_field($entity->entity_type, $entity, $field_info['field_name']);
+      if (isset($terms['#items']) && is_array($terms['#items'])) {
+        foreach ($terms['#items'] as $item) {
+          if (isset($item['taxonomy_term'])) {
+            $cags_array->addCag($item['taxonomy_term']->vocabulary_machine_name, $item['taxonomy_term']->name);
+          }
+        }
+      }
+    }
+
+    // Add the node title of any referenced nodes to the cag array.
+    elseif ($field_info['type'] == 'entityreference' && $field_instance['entity_type'] == 'node') {
+      $references = field_view_field($entity->entity_type, $entity, $field_info['field_name']);
+      if (isset($references['#items']) && is_array($references['#items'])) {
+        foreach ($references['#items'] as $item) {
+          if (isset($item['entity']->title)) {
+            $cags_array->addCag($field_name, $item['entity']->title);
+          }
+        }
+      }
+    }
+
+    // Add additional CAG fields if configured.
+    if (($entity->entity_type == 'node') &&
+      (isset($mps_field_settings[$entity->bundle][$field_name])) &&
+      ($mps_field_settings[$entity->bundle][$field_name] == MPS_FIELD_SETTING_CAG)) {
+      $values = mps_get_field_data_values($entity, $field_name);
+      if (is_array($values)) {
+        foreach ($values as $value) {
+          $cags_array->addCag($field_name, $value);
+        }
+      }
+      else {
+        $cags_array->addCag($field_name, $values);
+      }
+    }
+
+  }
+}
+
+/**
+ * Gets field data for the given entity.
+ *
+ * @param object $entity
+ *   The entity whose field data is to be retrieved.
+ *
+ * @return array
+ *   An array containing field values, keyed by field names.
+ */
+function mps_gather_field_data($entity) {
+  $result = array();
+
+  $mps_field_settings = variable_get('mps_field_settings', array());
+  if (isset($entity->type) && isset($mps_field_settings[$entity->type])) {
+    foreach ($mps_field_settings[$entity->type] as $field_name => $field_setting) {
+      if ($field_setting == MPS_FIELD_SETTING_FIELD) {
+        $value = mps_get_field_data_values($entity, $field_name);
+        $result[mps_format_field_name($field_name)] = is_array($value) ? implode(MPS_DEFAULT_CAT_DELIMITER, $value) : $value;
+      }
+    }
+  }
+
+  return $result;
+}
+
+/**
+ * Gets field data in MPS format.
+ *
+ * @param $values
+ *   The field value of an entity.
+ *
+ * @return string
+ *   A string with the value in MPS format.
+ *
+ */
+function mps_get_field_data_values($entity, $field_name) {
+  $wrapper = entity_metadata_wrapper($entity->entity_type, $entity);
+  $result = $wrapper->{$field_name}->value() ?: '';
+  $field = field_info_field($field_name);
+  if ($field['type'] == 'pub_tv_relationship_field') {
+    // In case of PUB TV Relationship field, return titles instead of nids.
+    foreach ($result as $key => $value) {
+      if (empty($value)) {
+        unset($result[$key]);
+      }
+      else {
+        $title = db_select('node', 'n')
+          ->fields('n', array('title'))
+          ->condition('nid', $value)
+          ->execute()
+          ->fetchField();
+        $result[$key] = $title;
+      }
+    }
+  }
+  return $result;
+}
+
+/**
+ * Sanitize MPS output.
+ *
+ * @param array $data
+ *   The MPS data to sanitize.
+ */
+function mps_sanitize_output(&$data) {
+  foreach ($data as $key => $value) {
+    // Trim leading and trailing spaces.
+    if (is_string($value) || is_numeric($value)) {
+      $value = $data[$key] = trim($value, ' ');
+    };
+
+    if (empty($value) && !is_numeric($value)) {
+      // Remove keys with empty values.
+      unset($data[$key]);
+    }
+    elseif (is_string($value) && (strlen($value) > 500)) {
+      // Limit values to 500 characters.
+      $data[$key] = substr($value, 0, 500);
+    }
+    elseif (is_array($value)) {
+      // Recursively sanitize array values.
+      mps_sanitize_output($data[$key]);
+    }
+  }
+}
+
+/**
+ * Gets properly formatted the field name.
+ *
+ * @param string $field_name
+ *   The name of the field.
+ *
+ * @return string
+ *   A sanitized string appropriate for a field name.
+ */
+function mps_format_field_name($field_name) {
+  ctools_include('cleanstring');
+
+  return ctools_cleanstring($field_name, array(
+    'lower_case' => TRUE,
+    'replacements' => array(' ' => '_'),
+  ));
+}
+
+/**
+ * Gets a loaded entity object of any type from a router item.
+ *
+ * Unfortunately we can not get the current menu router callback entity object
+ * through menu_get_object() without knowing the hook_menu %type. It is also not
+ * generic enough to call programmatically by type, since the $position param
+ * varies for some entity types (such as taxonomy_term).
+ *
+ * @param string $path
+ *   See menu_get_item() for more on this. Defaults to the current path.
+ *
+ * @return object
+ *   A loaded entity object from the router item, or NULL.
+ */
+function _mps_get_entity($path = NULL) {
+  $entities = &drupal_static(__FUNCTION__);
+
+  // Normalize path if passed, otherwise get the current URL path.
+  $path = (isset($path)) ? drupal_get_normal_path($path) : current_path();
+
+  if (!isset($entities[$path])) {
+    $router_item = menu_get_item($path);
+    $entity = NULL;
+    $entity_type = NULL;
+    $entity_info = NULL;
+
+    if (!empty($router_item['load_functions'])) {
+      // This is awful, but no other way to do it.
+      foreach (entity_get_info() as $type => $info) {
+        // We really must do this to find the entity menu loader,
+        // since there are often multiple loader functions per router item.
+        foreach ($router_item['load_functions'] as $position => $function) {
+          if ($function == $type . '_load') {
+            // There should be no more than one entity loaded per page callback.
+            $entity = $router_item['map'][$position];
+            $entity_type = $type;
+            $entity_info = $info;
+          }
+        }
+      }
+    }
+
+    if (is_object($entity)) {
+      $entity->bundle = !empty($entity_info['entity keys']['bundle']) ? $entity->{$entity_info['entity keys']['bundle']} : $entity_type;
+
+      // Add entity_type key to boost performance. Entity type will be
+      // available on all entities in Drupal 8. For more info, see
+      // @link https://drupal.org/comment/6895882 this issue. @endlink
+      $entity->entity_type = $entity_type;
+    }
+
+    // Allow other modules to alter the MPS $entity.
+    drupal_alter('mps_entity', $entity);
+
+    $entities[$path] = isset($entity) ? $entity : NULL;
+  }
+
+  return $entities[$path];
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function mps_token_info() {
+  $info['types']['mps'] = array(
+    'name' => t('MPS'),
+    'description' => t('Tokens related to the MPS module.'),
+  );
+  $info['tokens']['mps']['cat-pattern'] = array(
+    'name' => t('CAT Property'),
+    'description' => t('A pattern for the CAT property.'),
+    'type' => 'mps',
+    'dynamic' => TRUE,
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function mps_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+
+  if ($type == 'mps') {
+    if ($cat_tokens = token_find_with_prefix($tokens, 'cat-pattern')) {
+      $aliased_path = drupal_get_path_alias();
+      if (is_array($data) && isset($data['aliased-path'])) {
+        $aliased_path = $data['aliased-path'];
+      }
+
+      foreach ($cat_tokens as $name => $original) {
+        $value = '';
+
+        switch ($name) {
+          case '0':
+          case '1':
+          case '2':
+          case '3':
+          case '4':
+            $category_index = (int) $name;
+            $categories = explode('/', $aliased_path);
+
+            if ($category_index < count($categories)) {
+              $value = $categories[$category_index];
+            }
+            else {
+              $value = '';
+            }
+            break;
+
+          case '?':
+          case 'default':
+            $path_segments = explode('/', $aliased_path);
+            $value = implode(MPS_DEFAULT_CAT_DELIMITER, $path_segments);
+            if ($value == $original) {
+              $value = '';
+            }
+        }
+
+        $replacements[$original] = $value;
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Callback for the MPS configuration form.
+ *
+ * @see mps_menu()
+ */
+function mps_admin_form($form, &$form_state) {
+  $form['mps_host'] = array(
+    '#type' => 'textfield',
+    '#title' => t('MPS Host'),
+    '#description' => t("Service hostname."),
+    '#default_value' => variable_get('mps_host', MPS_DEFAULT_HOST),
+    '#maxlength' => 255,
+    '#required' => TRUE,
+    '#attached' => array(
+      'css' => array(drupal_get_path('module', 'mps') . '/css/mps.css'),
+    ),
+  );
+  $form['mps_integration'] = array(
+    '#type' => 'radios',
+    '#title' => t('Page Integration Method'),
+    '#options' => array(
+      t('[deprecated] Document Write'),
+      t('DOM Injection (Asynchronous)'),
+    ),
+    '#max_length' => 32,
+    '#description' => t('Choose which client-side MPS implementation to use.'),
+    '#default_value' => variable_get('mps_integration', 1),
+  );
+  $form['mps_site_override'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Site Instance'),
+    '#description' => t('Report to a specific MPS site instance.'),
+    '#default_value' => variable_get('mps_site_override', MPS_DEFAULT_SITE),
+    '#max_length' => 255,
+  );
+  $form['mps_query'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Send Query Strings'),
+    '#description' => t('If checked, query string parameters will be sent to MPS.'),
+    '#default_value' => variable_get('mps_query', 1),
+  );
+
+  $form['mps_variables'] = array(
+    '#type' => 'markup',
+    '#tree' => FALSE,
+    '#prefix' => '<div id="mps-opts-wrapper"><label for="edit-mps-variables">MPS Request Options (mpsopts)</label>',
+    '#suffix' => '</div>',
+    '#theme' => 'mps_opts_table',
+    '#element_validate' => array('mps_opts_form_validate'),
+  );
+
+  // Add existing options to the form unless they are empty.
+  $existing_opts = isset($form_state['input']['mps_variables']) ? $form_state['input']['mps_variables'] : variable_get('mps_variables', array());
+  foreach ($existing_opts as $key => $data) {
+    _mps_opt_form($form, $key, $data);
+  }
+  if((isset($form_state['mps_variables_add_another']) && $form_state['mps_variables_add_another']) || !isset($form_state['input']['mps_variables'])) {
+    $num = count($existing_opts);
+  }
+  else {
+    $num = 0;
+  }
+  _mps_opt_form($form, $num);
+
+  // Add one blank set of variable fields.
+  $form['add_another_opt'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add another request option'),
+    '#submit' => array('mps_add_another_opt_submit'),
+    '#limit_validation_errors' => array(),
+    '#ajax' => array(
+      'wrapper' => 'mps-opts-wrapper',
+      'effect' => 'fade',
+    ),
+  );
+
+  // To add MPS CALLS fields.
+  $form['mps_calls'] = array(
+    '#type' => 'markup',
+    '#tree' => FALSE,
+    '#prefix' => '<div id="mps-calls-wrapper"><label for="edit-calls-variables">MPS Additional Request Parameters (mpscall)</label>',
+    '#suffix' => '</div>',
+    '#theme' => 'mps_calls_table',
+    '#element_validate' => array('mps_calls_form_validate'),
+  );
+
+  // Add existing calls to the form unless they are empty.
+  $existing_calls = isset($form_state['input']['mps_calls']) ? $form_state['input']['mps_calls'] : variable_get('mps_calls', array());
+  foreach ($existing_calls as $key => $data) {
+    _mps_calls_form($form, $key, $data);
+  }
+  if((isset($form_state['mps_calls_add_another']) && $form_state['mps_calls_add_another']) || !isset($form_state['input']['mps_calls'])) {
+    $num = count($existing_calls);
+  }
+  else {
+    $num = 0;
+  }
+  _mps_calls_form($form, $num);
+
+  $form['tokens'] = array(
+    '#theme' => 'token_tree',
+    '#token_types' => array('node'),
+    '#click_insert' => TRUE,
+    '#dialog' => TRUE,
+  );
+
+  // Add one blank set of variable fields.
+  $form['add_another_call'] = array(
+    '#type' => 'submit',
+    '#prefix' => '<div id="mps-add-another-call">',
+    '#suffix' => '</div>',
+    '#value' => t('Add another request param'),
+    '#submit' => array('mps_add_another_call_submit'),
+    '#limit_validation_errors' => array(),
+    '#ajax' => array(
+      'wrapper' => 'mps-calls-wrapper',
+      'effect' => 'fade',
+    ),
+  );
+
+  // Add options for each field.
+  $field_options = array(
+    MPS_FIELD_SETTING_NONE  => t('None'),
+    MPS_FIELD_SETTING_FIELD => t('Field'),
+    MPS_FIELD_SETTING_CAG   => t('CAG'),
+  );
+
+  $form['mps_field_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Field settings'),
+    '#description' => t('Configuration to pass content type fields to MPS as Field or CAG. Only text, number and TV relationship fields are configurable.'),
+    '#tree' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $mps_field_settings = variable_get('mps_field_settings', array());
+  $info = entity_get_info('node');
+  foreach ($info['bundles'] as $bundle => $bundle_info) {
+    $form['mps_field_settings'][$bundle] = array(
+      '#type' => 'fieldset',
+      '#title' => $bundle_info['label'],
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    $fields = field_info_instances('node', $bundle);
+    $field_count = 0;
+    foreach ($fields as $field) {
+      $field_info = field_info_field($field['field_name']);
+      // Show the field only if it is a text, number or tv relationship field.
+      if (in_array($field_info['type'], array('text', 'number_integer', 'number_decimal', 'number_float', 'pub_tv_relationship_field'))) {
+        $form['mps_field_settings'][$bundle][$field['field_name']] = array(
+          '#type' => 'select',
+          '#options' => $field_options,
+          '#title' => $field['label'] . ' (' . $field['field_name'] . ')',
+          '#default_value' => isset($mps_field_settings[$bundle][$field['field_name']]) ? $mps_field_settings[$bundle][$field['field_name']] : '',
+        );
+        $field_count++;
+      }
+    }
+    // If there are no fields to configure for this bundle, hide the fieldset.
+    if (!$field_count) {
+      unset($form['mps_field_settings'][$bundle]);
+    }
+  }
+
+  // Option to sync ad blocks.
+  $form['ad_blocks'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Ad Blocks Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+    '#prefix' => '<div id="div_ad_blocks">',
+    '#suffix' => '</div>',
+  );
+
+  $form['ad_blocks']['sync_ad_blocks'] = array(
+    '#type' => 'button',
+    '#value' => t('Sync Ad Blocks'),
+    '#ajax' => array(
+      'callback' => 'mps_ajax_callback',
+      'wrapper' => 'div_ad_blocks',
+    ),
+  );
+
+  $form['ad_blocks']['new_blocks'] = array(
+    '#type' => 'item',
+    '#markup' => '',
+    '#access' => FALSE,
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Ajax callback function.
+ */
+function mps_ajax_callback($form, $form_state) {
+  // We don't want people clobbering the MPS host with ad blocks requests, so
+  // remove the button.
+  $form['ad_blocks']['sync_ad_blocks']['#access'] = FALSE;
+
+  $blocks = _mps_sync_ad_blocks();
+  $new_blocks = $blocks['new'];
+  $not_in_feed = $blocks['not_in_feed'];
+
+  // Notify the user of ad blocks that may have been removed from feed.
+  if (count($not_in_feed) > 0) {
+    $not_in_feed_notification = t("These blocks don't exist in the list of ad blocks retrieved: !not_in_feed.",
+      array('!not_in_feed' => implode(', ', $not_in_feed)));
+    drupal_set_message($not_in_feed_notification, 'warning');
+  }
+
+  // Notify the user of newly created blocks.
+  if (count($new_blocks) > 0) {
+    $blocks_result = t('The following new blocks have been created: !new_blocks',
+      array('!new_blocks' => theme('item_list', array('items' => $new_blocks))));
+  }
+  else {
+    $blocks_result = t('No new ad blocks were found.');
+  }
+
+  $form['ad_blocks']['new_blocks']['#markup'] = $blocks_result;
+  $form['ad_blocks']['new_blocks']['#access'] = TRUE;
+
+  return $form['ad_blocks'];
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mps_theme() {
+  return array(
+    'mps_opts_table' => array(
+      'render element' => 'form',
+    ),
+    'mps_calls_table' => array(
+      'render element' => 'form',
+    ),
+  );
+}
+
+/**
+ * Theme function for the MPS Opts form.
+ */
+function theme_mps_opts_table($variables) {
+  $form = $variables['form'];
+  $add_button = drupal_render($form['add_another_opt']);
+  unset($form['add_another_opt']);
+
+  $headers = array(t('Name'), t('Value'), t('JSON'));
+  $rows = array();
+  foreach (element_children($form) as $key) {
+    $rows[] = array(
+      drupal_render($form[$key]['name']),
+      drupal_render($form[$key]['value']),
+      drupal_render($form[$key]['json']),
+    );
+  }
+
+  return theme('table', array('header' => $headers, 'rows' => $rows)) . $add_button;
+}
+
+/**
+ * Theme function for the MPS Calls form.
+ */
+function theme_mps_calls_table($variables) {
+  $form = $variables['form'];
+  $add_button = drupal_render($form['add_another_call']);
+  unset($form['add_another_call']);
+
+  $headers = array(t('Name'), t('Value'));
+  $rows = array();
+  foreach (element_children($form) as $key) {
+    $rows[] = array(
+      drupal_render($form[$key]['name']),
+      drupal_render($form[$key]['value']),
+    );
+  }
+
+  return theme('table', array('header' => $headers, 'rows' => $rows)) . $add_button;
+}
+
+/**
+ * Validation function for Opt names.
+ */
+function mps_validate_opt_name($element, &$form_state, $form) {
+  // Variable names must follow the rules defined by JavaScript syntax.
+  if (!empty($element['#value']) && !preg_match("/^[A-Za-z_$]{1}\S*$/", $element['#value'])) {
+    form_error($element, t('This is not a valid variable name. It must start with a letter, $ or _ and cannot contain spaces.'));
+  }
+}
+
+/**
+ * Validation function.
+ *
+ * Validate that anything marked as JSON is an actual JSON object.
+ */
+function mps_validate_opt_value_json($element, &$form_state, $form) {
+  $key = $element['#attributes']['data-key'][0];
+  if (!empty($form_state['values']['mps_variables'][$key]['json']) && json_decode($element['#value']) === NULL) {
+    form_error($element, t('If the JSON checkbox is checked, this must be a valid JSON object.'));
+  }
+}
+
+/**
+ * Helper form builder for an individual Opt.
+ */
+function _mps_opt_form(&$form, $key, $data = array()) {
+
+  $form['mps_variables'][$key]['name'] = array(
+    '#type' => 'textfield',
+    '#title_display' => 'invisible',
+    '#title' => t('Name'),
+    '#description' => t('Ex: maxcats'),
+    '#default_value' => isset($data['name']) ? $data['name'] : '',
+    '#parents' => array('mps_variables', $key, 'name'),
+    '#attributes' => array('class' => array('field-variable-name'), 'data-key' => array($key)),
+    '#element_validate' => array('mps_validate_opt_name'),
+    '#maxlength' => 500,
+  );
+  $form['mps_variables'][$key]['value'] = array(
+    '#type' => 'textfield',
+    '#description' => t('Ex: 4 or {"key":"value"} if JSON is checked.'),
+    '#title_display' => 'invisible',
+    '#title' => t('Value'),
+    '#default_value' => isset($data['value']) ? $data['value'] : '',
+    '#parents' => array('mps_variables', $key, 'value'),
+    '#attributes' => array('class' => array('field-variable-value'), 'data-key' => array($key)),
+    '#element_validate' => array('mps_validate_opt_value_json'),
+    '#maxlength' => 500,
+  );
+  $form['mps_variables'][$key]['json'] = array(
+    '#type' => 'checkbox',
+    '#title_display' => 'invisible',
+    '#title' => t('JSON'),
+    '#default_value' => isset($data['json']) ? $data['json'] : '',
+    '#parents' => array('mps_variables', $key, 'json'),
+    '#attributes' => array('class' => array('field-variable-json')),
+  );
+}
+
+/**
+ * Ajax callback function for adding variable fields to the settings form.
+ */
+function mps_add_another_opt_js($form, $form_state) {
+  return $form['variables']['mps_variables'];
+}
+
+/**
+ * Remove empty values from the MPS config form.
+ *
+ * Given the values entered into the MPS Opts form, remove any empty
+ * variables (i.e. both "name" & "value" are blank).
+ */
+function mps_opts_trim_empties(&$values, $parent = 'mps_variables') {
+  foreach ($values as $key => &$val) {
+    if ($key === $parent) {
+      // We found the MPS variables.
+      foreach ($val as $k => $v) {
+        if (empty($val[$k]['name']) && empty($val[$k]['value'])) {
+          unset($val[$k]);
+        }
+      }
+      // Reset the array indexes to prevent weird behavior caused by a variable
+      // being removed in the middle of the array.
+      $val = array_values($val);
+      break;
+    }
+    elseif (is_array($val)) {
+      mps_opts_trim_empties($val, $parent);
+    }
+  }
+}
+
+/**
+ * Submit handler to add more variables.
+ */
+function mps_add_another_opt_submit($form, &$form_state) {
+  $form_state['mps_variables'] = $form_state['input']['mps_variables'];
+  $form_state['mps_variables_add_another'] = TRUE;
+  $form_state['mps_calls_add_another'] = FALSE;
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Validation function used by the opts form.
+ */
+function mps_opts_form_validate($form, &$form_state) {
+  if ($form_state['triggering_element']['#value'] != t('Add another request option')) {
+    mps_opts_trim_empties($form_state['values']);
+  }
+}
+
+/**
+ * Helper form builder for an individual Calls.
+ */
+function _mps_calls_form(&$form, $key, $data = array()) {
+
+  $form['mps_calls'][$key]['name'] = array(
+    '#type' => 'textfield',
+    '#title_display' => 'invisible',
+    '#title' => t('Name'),
+    '#default_value' => isset($data['name']) ? $data['name'] : '',
+    '#parents' => array('mps_calls', $key, 'name'),
+    '#attributes' => array('class' => array('field-variable-name'), 'data-key' => array($key)),
+    '#element_validate' => array('mps_calls_name_validate'),
+    '#maxlength' => 500,
+  );
+  $form['mps_calls'][$key]['value'] = array(
+    '#type' => 'textfield',
+    '#title_display' => 'invisible',
+    '#title' => t('Value'),
+    '#default_value' => isset($data['value']) ? $data['value'] : '',
+    '#parents' => array('mps_calls', $key, 'value'),
+    '#attributes' => array('class' => array('field-variable-value'), 'data-key' => array($key)),
+    '#maxlength' => 500,
+  );
+}
+
+/**
+ * Form element submit handler for add_another_call.
+ *
+ * @see mps_admin_form()
+ */
+function mps_add_another_call_submit($form, &$form_state) {
+  $form_state['mps_calls'] = $form_state['input']['mps_calls'];
+  $form_state['mps_calls_add_another'] = TRUE;
+  $form_state['mps_variables_add_another'] = FALSE;
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Form element validation handler for mps_calls.
+ *
+ * @see mps_admin_form()
+ */
+function mps_calls_form_validate($form, &$form_state) {
+  if ($form_state['triggering_element']['#value'] != t('Add another request param')) {
+    mps_opts_trim_empties($form_state['values'], 'mps_calls');
+  }
+}
+
+/**
+ * Form element validation handler for mps_calls[name].
+ *
+ * @see _mps_calls_form()
+ */
+function mps_calls_name_validate($element, &$form_state, $form) {
+  // Variable names must follow the rules defined by JavaScript syntax.
+  if (!empty($element['#value']) && !preg_match("/^[A-Za-z_$]{1}\S*$/", $element['#value'])) {
+    form_error($element, t('This is not a valid variable name. It must start with a letter, $ or _ and cannot contain spaces.'));
+  }
+}
+
+/**
+ * Sync up the site ad blocks with those available through MPS.
+ */
+function _mps_sync_ad_blocks() {
+  ctools_include('export');
+
+  $results = array(
+    'existing' => array(),
+    'not_in_feed' => array(),
+    'new' => array(),
+  );
+
+  $retrieved_blocks = _mps_request_ad_blocks();
+  $existing_blocks = _mps_get_existing_ad_blocks_list();
+
+  // Determine the blocks that /may/ have been removed from the feed.
+  foreach ($existing_blocks as $block) {
+    if (!in_array($block, $retrieved_blocks)) {
+      $results['not_in_feed'][] = $block;
+    }
+  }
+
+  // Create new blocks, where relevant.
+  foreach ($retrieved_blocks as $block) {
+    if (!in_array($block, $existing_blocks)) {
+      $results['new'][] = $block;
+
+      $new_block = new stdClass();
+      $new_block->machine_name = $block;
+      $new_block->block_name = $block;
+      $new_block->export_type = NULL;
+      ctools_export_crud_save('mps_blocks', $new_block);
+    }
+  }
+
+  $results['existing'] = $existing_blocks;
+
+  return $results;
+}
+
+/**
+ * Retrieve the MPS ad blocks for this site.
+ */
+function _mps_request_ad_blocks() {
+  $mps_host = variable_get('mps_host', MPS_DEFAULT_HOST);
+  $mps_site = _mps_get_site();
+  $url = "http://$mps_host/request/describe/$mps_site";
+
+  $results = array();
+  $response = drupal_http_request($url);
+
+  if (isset($response->data)) {
+    $data = json_decode($response->data);
+
+    if (isset($data->adunits)) {
+      foreach ($data->adunits as $unit => $ad_block) {
+        if (!in_array($ad_block->slot, $results)) {
+          $results[] = $ad_block->slot;
+        }
+      }
+    }
+  }
+
+  return $results;
+}
+
+/**
+ * Create a list of existing ad blocks, by machine_name.
+ */
+function _mps_get_existing_ad_blocks_list() {
+  $blocks = array();
+  $result = ctools_export_load_object('mps_blocks');
+
+  foreach ($result as $record) {
+    $blocks[] = $record->machine_name;
+  }
+
+  return $blocks;
+}
+
+/**
+ * Utility method for determining the site instance value.
+ */
+function _mps_get_site() {
+  $override = variable_get('mps_site_override', MPS_DEFAULT_SITE);
+  return $override ? $override : variable_get('pub_site_shortname', '');
+}

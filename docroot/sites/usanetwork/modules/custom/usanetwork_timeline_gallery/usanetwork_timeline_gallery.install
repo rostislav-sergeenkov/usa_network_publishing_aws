@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork gallery content.
+ *
+ * @ingroup USA Network
+ */
+
+/**
+ * Delete Autoplay fields from Timeline gallery.
+ */
+function usanetwork_timeline_gallery_update_7100() {
+  $fields_to_delete = array(
+    'field_autoplay_video',
+    'field_autoplay_gallery',
+  );
+  foreach ($fields_to_delete as $field_name) {
+    field_delete_field($field_name);
+    watchdog('usanetwork_core', 'Deleted the :field_name field from timeline gallery.', array(':field_name' => $field_name));
+  }
+}

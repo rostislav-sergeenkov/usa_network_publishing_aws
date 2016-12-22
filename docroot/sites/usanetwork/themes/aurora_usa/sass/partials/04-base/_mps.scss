@@ -1,0 +1,268 @@
+// advert
+.show-new-design {
+  #head-leaderboard {
+   padding: 10px 0;
+   overflow: hidden;
+    @include breakpoint($bp-768-width) {
+      padding: 0 0 6px;
+    }
+    #topbanner {
+      margin: 0 auto;
+      min-height: 90px;
+      max-width: 970px;
+      overflow: hidden;
+      text-align: center;
+      //@include breakpoint($bp-768-width) {
+      //  min-height: 45px;
+     //}
+    }
+  }
+}
+body:not(.show-new-design) {
+  #topbanner {
+    margin: 10px auto;
+    overflow: hidden;
+    text-align: center;
+    max-width: 970px;
+    @include breakpoint($bp-640-width) {
+      margin: 3px auto;
+    }
+  }
+}
+.midbanner {
+  height: auto;
+  margin: 20px auto;
+  overflow: hidden;
+  text-align: center;
+  max-width: 970px;
+  @include breakpoint($bp-640-width) {
+    margin: 1.47vw auto;
+    max-width: 100%;
+    width: 300px;
+  }
+}
+.companionContainer {
+  margin: 10px auto;
+  overflow: hidden;
+  text-align: center;
+  max-width: 970px;
+}
+.consumptionator-page {
+  header {
+    .header-nav-bar {
+      .nav-bar-tabs {
+        .sponsored {
+          display: block;
+          @supports (display: flex) {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+          float: left;
+          height: get-vw(73px, 1025);
+          max-height: get-vw(73px, 1025);
+          max-width: 282px;
+          overflow: hidden;
+          text-align: center;
+          width: 282px;
+          @include breakpoint($bp-min-1901-width) {
+            height: 135px;
+            max-height: 135px;
+          }
+          @include breakpoint($bp-768-width) {
+            float: none;
+            height: 50px;
+            margin: 0 auto;
+            max-height: 50px;
+          }
+          .mps-slot {
+            //height: 100%;
+            //width: 100%
+          }
+        }
+      }
+    }
+  }
+}
+.featured-block {
+  .usa-carousel-left {
+    .sponsored {
+      & > .mps-slot {
+        margin-bottom: 3px !important;
+        margin-top: 3px !important;
+      }
+      background-color: $sponsorship-dark;
+      bottom: 40%;
+      right: 0;
+      position: absolute;
+      width: 39.5%;
+      z-index: 2;
+    }
+    .carousel-item {
+      &:not(.description-item) {
+        &.large {
+          .sponsored {
+            bottom: 31%;
+            width: 30%;
+          }
+        }
+      }
+    }
+  }
+}
+.page-home {
+  .block-usanetwork-aspot{
+    .slide {
+      .sponsored {
+        & > .mps-slot {
+          margin-bottom: 3px !important;
+          margin-top: 3px !important;
+        }
+        background-color: $sponsorship-dark;
+        bottom: 0;
+        right: 10%;
+        position: absolute;
+        width: 14%;
+        @include breakpoint($bp-640-width) {
+          right: 0;
+          width: 44%;
+        }
+      }
+    }
+  }
+}
+.aspot-and-episodes {
+  .show-aspot {
+    .sponsored {
+      & > .mps-slot {
+        margin-bottom: 3px !important;
+        margin-top: 3px !important;
+      }
+      background-color: $sponsorship-dark;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 14%;
+      @include breakpoint($bp-640-width) {
+        width: 44%;
+      }
+    }
+  }
+  .episodes-list {
+    &.sponsored-enable {
+      > .title {
+        height: calc(10% + 50px);
+        @include breakpoint($bp-768-width) {
+         height: 105px;
+        }
+        .title-wrapper {
+          height: 50%;
+        }
+        .sponsored {
+          height: 50%;
+          position: relative;
+          .mps-slot {
+            height: 100%!important;
+            position: relative;
+            width: 100%!important;
+            div[id*='google_ads_iframe'] {
+              height: 100%;
+              width: 100%;
+              iframe {
+                -moz-transform-origin: 0 0!important;
+                -moz-transform: scale(1)!important;
+                -o-transform-origin: 0 0!important;
+                -o-transform: scale(1)!important;
+                -webkit-transform-origin: 0 0!important;
+                -webkit-transform: scale(1)!important;
+                -ms-transform-origin: 0 0!important;
+                -ms-transform: scale(1)!important;
+                transform-origin: 0 0!important;
+                transform: scale(1)!important;
+                height: 100%;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+      .episodes-list-slider {
+        &.vertical-mode {
+          height: calc(90% - 50px);
+        }
+      }
+    }
+  }
+}
+.pane-usanetwork-tv-shows-usanetwork-tv-shows-related {
+  .show-latest-block {
+    ul {
+      li{
+        .node-usanetwork-promo {
+          .sponsored {
+            & > .mps-slot {
+              margin-bottom: 3px !important;
+              margin-top: 3px !important;
+            }
+            background-color: $sponsorship-dark;
+            bottom: 9.1vw;
+            right: 0;
+            position: absolute;
+            width: 30%;
+            @include breakpoint($bp-min-1901-width) {
+              bottom: 173px;
+            }
+            @include breakpoint($bp-768-width) {
+              bottom: 8.6vw;
+            }
+            @include breakpoint($bp-640-width) {
+              bottom: 12.4vw;
+            }
+          }
+        }
+        .node-usanetwork-promo.big {
+          .sponsored {
+            bottom: 9.1vw;
+            width: 28%;
+            @include breakpoint($bp-min-1901-width) {
+              bottom: 173px;
+            }
+            @include breakpoint($bp-768-width) {
+              bottom: 8.6vw;
+            }
+            @include breakpoint($bp-640-width) {
+              bottom: 29%;
+            }
+            @include breakpoint($bp-480-width) {
+              bottom: 33%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.related-content-block {
+  .node-usanetwork-promo {
+    .sponsored {
+      & > .mps-slot {
+        margin-bottom: 3px !important;
+        margin-top: 3px !important;
+      }
+      background-color: $sponsorship-dark;
+      bottom: 9.1vw;
+      right: 0;
+      position: absolute;
+      width: 30%;
+      @include breakpoint($bp-min-1901-width) {
+        bottom: 173px;
+      }
+      @include breakpoint($bp-768-width) {
+        bottom: 8.6vw;
+      }
+      @include breakpoint($bp-640-width) {
+        bottom: 29%;
+      }
+    }
+  }
+}

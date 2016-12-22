@@ -1,0 +1,131 @@
+.usa-home-popup-overlay {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.85);
+  height: 100%;
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100000001;
+  #popup-effect {
+    pointer-events: none;
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+  }
+}
+
+.usa-home-popup {
+  height: auto;
+  max-height: 90%;
+  max-width: 85%;
+  position: relative;
+  width: auto;
+  z-index: 1;
+  @include breakpoint($bp-768-width) {
+    width: 625px;
+  }
+  @include breakpoint($bp-480-width) {
+    width: 313px;
+  }
+  .touch & {
+    @media all and (orientation: landscape) {
+      @include breakpoint($bp-768-width) {
+        height: 900px;
+        width: auto;
+      }
+      @include breakpoint($bp-480-width) {
+        height: 450px;
+      }
+      .usa-home-popup-close-icon {
+        @include breakpoint($bp-768-width) {
+          height: 35px;
+          width: 35px;
+        }
+        &:before {
+          @include breakpoint($bp-768-width) {
+            font-size: 15px;
+            height: 25px;
+            line-height: 25px;
+            right: 5px;
+            top: 5px;
+            width: 25px;
+          }
+        }
+      }
+      a {
+        height: 100%;
+        width: auto;
+      }
+      .asset-img {
+        height: 100%;
+        max-width: 1280px;
+        width: auto;
+        img {
+          height: 100%;
+          width: auto;
+        }
+      }
+    }
+  }
+  .usa-home-popup-close-icon {
+    cursor: pointer;
+    height: 55px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 55px;
+    @include breakpoint($bp-480-width) {
+      height: 35px;
+      width: 35px;
+    }
+    &:before {
+      display: block;
+      color: white;
+      content: "\e62e";
+      font-family: $ico-font;
+      font-size: 20px;
+      line-height: 35px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      text-align: center;
+      width: 35px;
+      @include breakpoint($bp-480-width) {
+        font-size: 15px;
+        height: 25px;
+        line-height: 25px;
+        right: 5px;
+        top: 5px;
+        width: 25px;
+      }
+    }
+  }
+  a {
+    display: block;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    outline: none;
+    width: 100%;
+  }
+  .asset-img {
+    height: auto;
+    max-height: 100%;
+    max-width: 1280px;
+    width: 100%;
+    img {
+      height: auto;
+      max-height: 100%;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+}

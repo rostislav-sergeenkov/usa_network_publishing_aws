@@ -1,0 +1,10 @@
+name = TVE Errors Pages
+description = Provides configurable 403 and 404 pages
+core = 7.x
+package = NBCU TVE
+version = 7.x-1.0
+
+dependencies[] = tve_admin_ui
+dependencies[] = tve_errors
+
+configure = admin/tve/errors

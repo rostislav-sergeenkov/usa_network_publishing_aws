@@ -1,0 +1,5 @@
+{
+  "require": {
+    "miljar/php-exif": "dev-master"
+  }
+}

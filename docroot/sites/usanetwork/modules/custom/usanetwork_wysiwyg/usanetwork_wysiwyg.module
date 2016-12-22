@@ -1,0 +1,63 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork wysiwyg feature.
+ */
+
+include_once 'usanetwork_wysiwyg.features.inc';
+
+/**
+ *  Implements hook_wysiwyg_plugin().
+ */
+function usanetwork_wysiwyg_plugin($editor, $version) {
+  if ($editor == 'tinymce') {
+    return array(
+      'person_quotation' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'person_quotation_tinymce_plugin.js',
+        'buttons' => array(
+          'person_quotation' => t('Person quotation')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
+      'lines_quotation' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'lines_quotation_tinymce_plugin.js',
+        'buttons' => array(
+          'lines_quotation' => t('Lines quotation')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
+      //JustifyLeft,JustifyCenter,JustifyRight,JustifyFull
+      'usa_justify_left' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'usa_justify_tinymce_plugin.js',
+        'buttons' => array(
+          'usa_justify_left' => t('USA Align Left')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
+      'usa_justify_center' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'usa_justify_tinymce_plugin.js',
+        'buttons' => array(
+          'usa_justify_center' => t('USA Align Center')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
+      'usa_justify_right' => array(
+        'path' => drupal_get_path('module', 'usanetwork_wysiwyg') . '/plugins',
+        'filename' => 'usa_justify_tinymce_plugin.js',
+        'buttons' => array(
+          'usa_justify_right' => t('USA Align Right')
+        ),
+        'load' => TRUE,
+        'settings' => array(),
+      ),
+    );
+  }
+}

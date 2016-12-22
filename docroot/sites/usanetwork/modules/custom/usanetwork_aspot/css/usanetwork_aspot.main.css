@@ -1,0 +1,540 @@
+@import "fonts.css";
+
+/* jquery ui */
+.ui-icon-gripsmall-diagonal-se {
+  background: none;
+  height: 12px;
+  width: 12px;
+}
+.ui-icon-gripsmall-diagonal-se:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-bottom-color: #fff;
+  border-bottom: 12px solid;
+  border-left: 12px solid transparent;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+.ui-icon-gripsmall-diagonal-se:after {
+  background-repeat: no-repeat;
+  background-image: url(../images/ui-icons-222222-256x240.png);
+  background-position: -65px -225px;
+  content: '';
+  display: block;
+  text-indent: -99999px;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+.ui-resizable.active .ui-icon-gripsmall-diagonal-se:before {
+  border-bottom-color: #f00;
+}
+
+/* a-spot */
+#edit-group_usa_aspot_ui,
+#edit-group_usa_tv_aspot_ui {
+  background: #ccc;
+}
+
+#edit-group_usa_aspot_ui .wrapper-desktop,
+#edit-field-aspot-enabled-tgi .wrapper-desktop {
+  box-sizing: border-box;
+  border-bottom: 1px solid #4d4d4d;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+#edit-group_usa_aspot_ui .wrapper-mobile,
+#edit-field-aspot-enabled-tgi .wrapper-mobile {
+  box-sizing: border-box;
+  border-bottom: 1px solid #4d4d4d;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+#edit-group_usa_aspot_ui .wrapper-desktop:after,
+#edit-field-aspot-enabled-tgi .wrapper-desktop:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.draggable-background.desktop {
+  border: solid #aaa 1px;
+  display: block;
+  height: 480px;
+  width: 200px;
+}
+
+.draggable-area {
+  outline: solid #aaa 1px;
+}
+
+.draggable-area img {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.draggable-area.mobile {
+  display: block;
+  line-height: 0;
+  margin-bottom: 30px;
+  position: relative;
+  /*overflow: hidden;*/
+  height: 560px;
+  width: 640px;
+}
+
+.draggable-area.desktop {
+  display: block;
+  line-height: 0;
+  margin-bottom: 30px;
+  position: relative;
+  /*overflow: hidden;*/
+  height: 560px;
+  width: 1280px;
+}
+
+.draggable-area.desktop#edit-field-aspot-enabled-showpage-preview {
+  height: 550px;
+  width: 983px;
+}
+
+/* Draggable elements */
+
+/* default */
+.aspot-draggable-element {
+  /*background-color: rgba(200, 200, 200, 0.6);*/
+  /*border-radius: 6px;*/
+  /*border: solid 1px #666;*/
+  border: none;
+  color: #ffffff;
+  box-sizing: border-box;
+  display: block;
+  line-height: normal;
+  outline: 1px solid #ffffff;
+  /*margin: 0;*/
+  /*padding: 3px;*/
+  left: 0;
+  top: 0;
+}
+
+.aspot-draggable-element.active {
+  outline: 1px dashed #f00;
+}
+
+.aspot-draggable-element p {
+  margin: 0;
+}
+
+.draggable-area.mobile div[data-rel="title"],
+.draggable-area.desktop div[data-rel="title"] {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: initial;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0.5em #333333;
+}
+
+.draggable-area.mobile div[data-rel="aspot_description"],
+.draggable-area.desktop div[data-rel="aspot_description"] {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  line-height: initial;
+  text-shadow: 1px 1px 0.5em #333333;
+}
+
+.draggable-area.mobile div[data-rel="title_prefix"],
+.draggable-area.desktop div[data-rel="title_prefix"] {
+  font-family: "texgyrescholaitalic", Times, serif;
+  line-height: initial;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0.5em #333333;
+}
+
+.draggable-area.mobile div[data-rel="social_meter"],
+.draggable-area.desktop div[data-rel="social_meter"] {
+  background: #2c2c2c;
+}
+
+.draggable-area.mobile .aspot-draggable-cta-button,
+.draggable-area.desktop .aspot-draggable-cta-button {
+  font-family: "avalonmedium", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* mobile */
+.draggable-area.mobile div[data-rel="title"] {
+  font-size: 66.56px;
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+}
+
+.draggable-area.mobile div[data-rel="aspot_description"] {
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.draggable-area.mobile div[data-rel="title_prefix"] {
+  font-size: 17.28px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+}
+
+.draggable-area.mobile .aspot-draggable-cta-button {
+  font-size: 17.28px;
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+  padding: 0 41.6px 0 0;
+}
+
+.draggable-area.mobile .aspot-draggable-cta-button[data-rel="cta_button_0"] {
+  background: #2c2c2c;
+  padding: 8.96px 41.6px 8.96px 22.4px;
+}
+
+.draggable-area.mobile div[data-rel="social_meter"] {
+  font-size: 22px;
+  height: auto;
+  line-height: 26px;
+  padding: 42px 18.24px 70.781px 76.27px;
+  width: 212px;
+}
+
+/* desktop */
+.draggable-area.desktop div[data-rel="title"] {
+  font-size: 76.8px;
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+}
+
+.draggable-area.desktop div[data-rel="aspot_description"] {
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.draggable-area.desktop div[data-rel="title_prefix"] {
+  font-size: 14.08px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+}
+
+.draggable-area.desktop .aspot-draggable-cta-button {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+  padding: 0 57.6px 0 0;
+}
+
+.draggable-area.desktop .aspot-draggable-cta-button[data-rel="cta_button_0"] {
+  background: #2c2c2c;
+  padding: 17.92px 57.6px 17.92px 44.78px;
+}
+
+.draggable-area.desktop div[data-rel="social_meter"] {
+  font-size: 24px;
+  height: auto;
+  line-height: 28.8px;
+  padding: 46px 20px 75.797px 102.48px;
+  width: 231px;
+}
+
+#edit-field-aspot-gi-draggable-data,
+#edit-field-aspot-tgi-draggable-data {
+  display: none;
+  visibility: hidden;
+}
+
+/* reset width button */
+#edit-group_usa_aspot_ui .reset-wrapper,
+#edit-group_usa_tv_aspot_ui .reset-wrapper{
+
+}
+#edit-group_usa_aspot_ui .wrapper-mobile .reset-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile .reset-wrapper {
+  position: absolute;
+  top: 340px;
+  left: 700px;
+}
+
+#edit-group_usa_aspot_ui .wrapper-desktop .reset-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .reset-wrapper{
+  float: left;
+  position: static;
+  padding-left: 20px;
+}
+
+#edit-group_usa_aspot_ui .reset-wrapper .button,
+#edit-group_usa_tv_aspot_ui .reset-wrapper .button,
+.aspot-copy-value-button {
+  background: #e4e4e4;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid #e4e4e4;
+  border-bottom: 1px solid #b4b4b4;
+  border-left-color: #d2d2d2;
+  border-right-color: #d2d2d2;
+  cursor: pointer;
+  padding: 4px 17px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  max-width: 150px;
+  text-align: center;
+}
+
+#edit-group_usa_aspot_ui .reset-wrapper .button:hover,
+#edit-group_usa_tv_aspot_ui .reset-wrapper .button:hover,
+.aspot-copy-value-button:hover {
+  background: #a1a1a1;
+}
+
+
+/* custom buttons*/
+#edit-group_usa_aspot_ui .wrapper-mobile,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile,
+#edit-group_usa_aspot_ui .wrapper-desktop,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop {
+  position: relative;
+}
+
+#edit-group_usa_aspot_ui .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper{
+  position: absolute;
+  top: 30px;
+}
+
+#edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper{
+  float: left;
+  position: static;
+  padding-right: 20px;
+}
+
+#edit-group_usa_aspot_ui .wrapper-mobile .buttons-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile .buttons-wrapper {
+  left: 700px;
+}
+
+#edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper .button,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper .button {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+#edit-group_usa_aspot_ui .wrapper-desktop .buttons-wrapper .button:last-child,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .buttons-wrapper .button:last-child {
+  margin-right: 0;
+}
+
+#edit-group_usa_aspot_ui .buttons-wrapper .button,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper .button{
+  background: #e4e4e4;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid #e4e4e4;
+  border-bottom: 1px solid #b4b4b4;
+  border-left-color: #d2d2d2;
+  border-right-color: #d2d2d2;
+  cursor: pointer;
+  padding: 4px 17px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  max-width: 150px;
+  text-align: center;
+}
+
+#edit-group_usa_aspot_ui .buttons-wrapper .button:hover,
+#edit-group_usa_tv_aspot_ui .buttons-wrapper .button:hover {
+  background: #a1a1a1;
+}
+
+/*
+  change field font size
+*/
+#edit-group_usa_aspot_ui .wrapper-desktop .edit-font-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-desktop .edit-font-wrapper {
+  float: left;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #808080;
+  padding: 0 20px;
+}
+#edit-group_usa_aspot_ui .wrapper-mobile .edit-font-wrapper,
+#edit-group_usa_tv_aspot_ui .wrapper-mobile .edit-font-wrapper {
+  border-bottom: 1px solid #808080;
+  border-top: 1px solid #808080;
+  padding: 20px 0;
+  left: 700px;
+  position: absolute;
+  top: 170px;
+}
+
+#edit-group_usa_aspot_ui .edit-font-wrapper .field-font-size,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .field-font-size {
+  background-color: #ffffff;
+  border: 1px solid #4d4d4d;
+  display: inline-block;
+  margin: 0 5px;
+  padding: 0 5px;
+  text-align: center;
+  width: 60px;
+}
+
+#edit-group_usa_aspot_ui .edit-font-wrapper .name,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .name {
+  display: inline-block;
+  width: 85px;
+}
+
+#edit-group_usa_aspot_ui .edit-font-wrapper .font-button,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .font-button {
+  /*background-color: #ffffff;*/
+  /*border-radius: 3px;*/
+  /*display: inline-block;*/
+  /*text-align: center;*/
+  /*width: 10px;*/
+}
+
+#edit-group_usa_aspot_ui .edit-font-wrapper .decrease-font,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .decrease-font {
+
+}
+
+#edit-group_usa_aspot_ui .edit-font-wrapper .increase-font,
+#edit-group_usa_tv_aspot_ui .edit-font-wrapper .increase-font {
+
+}
+
+.wrapper-mobile .reset-font,
+.wrapper-desktop .reset-font {
+  margin-left: 20px;
+}
+
+.wrapper-mobile h2,
+.wrapper-desktop h2 {
+  text-transform: capitalize;
+}
+
+/* usa-design-select */
+#edit-field-new-design {
+  border-bottom: 1px solid #4d4d4d;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.usa-design-select h2 {
+  text-transform: capitalize;
+}
+.usa-design-select input,
+.usa-design-select label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+ /* violator */
+
+#edit-group_usa_aspot_ui .draggable-area div[data-rel="violator"],
+#edit-group_usa_tv_aspot_ui .draggable-area div[data-rel="violator"] {
+  background: #2c2c2c;
+  color: white;
+  font-family: "FiraSansRegular",sans-serif;
+  line-height: 1.5;
+  text-transform: uppercase;
+  text-align: center;
+  width: auto;
+}
+.draggable-area div[data-rel="violator"] strong,
+.draggable-area div[data-rel="violator"] b,
+.draggable-area div[data-rel="violator"] i {
+  font-family: "FiraSansMedium", sans-serif;
+}
+
+#edit-group_usa_aspot_ui .draggable-area.desktop div[data-rel="violator"],
+#edit-group_usa_tv_aspot_ui .draggable-area.desktop div[data-rel="violator"] {
+  font-size: 15px;
+  letter-spacing: 0.7px;
+  padding: 3px 7px 0;
+}
+
+#edit-group_usa_aspot_ui .draggable-area.mobile div[data-rel="violator"],
+#edit-group_usa_tv_aspot_ui .draggable-area.mobile div[data-rel="violator"] {
+  font-size: 15px;
+  letter-spacing: 0.7px;
+  padding: 3px 7px 0;
+}
+
+/* USA New Design Mr. Robot */
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile{
+  height: 360px;
+  width: 640px;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop{
+  height: 524px;
+  width: 932px;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile div[data-rel="violator"],
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop div[data-rel="violator"] {
+  background: #2c2c2c;
+  width: auto;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile div[data-rel="title"],
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop div[data-rel="title"] {
+  font-family: "firasansregular", sans-serif;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile div[data-rel="aspot_description"],
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop div[data-rel="aspot_description"] {
+  font-family: "firasansregular", sans-serif;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile .aspot-draggable-cta-button,
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop .aspot-draggable-cta-button {
+  font-family: "firasansregular", sans-serif;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop div[data-rel="title"] {
+  letter-spacing: 0.04em;
+  line-height: 0.98;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop .aspot-draggable-cta-button {
+  letter-spacing: 0.23em;
+  line-height: 2.1;
+  padding: 0 18px 0 0;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile .aspot-draggable-cta-button {
+  letter-spacing: 0.23em;
+  line-height: 2.1;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop .aspot-draggable-cta-button[data-rel="cta_button_0"] {
+  background: none;
+  font-size: 23px;
+  padding: 0 27px 9.6px 0;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.desktop .aspot-draggable-cta-button[data-rel="cta_button_0"]:before {
+  border-bottom: 1px dotted white;
+  bottom: 0;
+  display: block;
+  content: '';
+  left: 0;
+  position: absolute;
+  width: 40%;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile div[data-rel="title"] {
+  letter-spacing: 0.04em;
+  line-height: 0.98;
+}
+#edit-field-aspot-enabled-tgi.show-new-design .draggable-area.mobile .aspot-draggable-cta-button[data-rel="cta_button_0"] {
+  background: none;
+  font-size: 23px;
+  padding: 0 27px 0 0;
+}
+#edit-field-aspot-enabled-tgi.show-new-design #preview-new-design-showpage-wrapper-mobile{
+  height: 450px;
+}
+/* END USA New Design Mr. Robot */

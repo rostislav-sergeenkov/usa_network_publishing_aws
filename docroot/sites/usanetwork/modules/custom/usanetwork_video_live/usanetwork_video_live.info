@@ -1,0 +1,6 @@
+name = usanetwork_video_live
+description = Video Live Page for USANetwork
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+project = usanetwork_video_live

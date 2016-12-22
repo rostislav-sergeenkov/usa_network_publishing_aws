@@ -1,0 +1,83 @@
+.node-catchall-seo-page {
+  width: 100%;
+  max-width: 967px;
+  margin: 0 auto;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  text-align: center;
+  overflow: auto;
+  height: auto !important;
+  .field-name-field-h1 {
+    h1 {
+      max-width: 967px;
+      width: 100%;
+      background-color: #313131;
+      color: #fff;
+      padding: 15px;
+      font-family: $avalon-book;
+      font-size: 18px;
+      letter-spacing: 3px;
+    }
+  }
+  .group-left {
+    color: black;
+    float: left;
+    position: relative;
+    margin-right: 7px;
+    max-width: 640px;
+    width: 100%;
+    margin-top: 4px;
+    text-align: left;
+    @include breakpoint($bp-1024-width) {
+      max-width: 967px;
+      width: 100%;
+    }
+    .video-player {
+      height: auto;
+      padding-top: 56.25%;
+      position: relative;
+      width: 100%;
+      iframe {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+  .group-right {
+    float: left;
+    position: relative;
+    margin-top: 4px;
+    width: 300px;
+    @include breakpoint($bp-1024-width) {
+      max-width: 967px;
+      width: 100%;
+    }
+  }
+  .field-name-field-call-to-action {
+    margin: 20px 0;
+    .cta-item {
+      a {
+        display: block;
+        width: 100%;
+        border: 2px solid #fff;
+        background: #000000;
+        color: #fef200;
+        margin-bottom: 20px;
+      }
+      &.cta-text {
+        a {
+          padding: 10px;
+        }
+      }
+    }
+  }
+  .field-name-dart-for-seo-catchall {
+    margin-top: 20px;
+    position: relative;
+    z-index: 100;
+  }
+}

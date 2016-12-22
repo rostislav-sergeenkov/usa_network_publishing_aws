@@ -1,0 +1,17 @@
+<?php
+
+
+/**
+ * Implements hook_update_N().
+ * Delete old microsite theme field and create new text field.
+ */
+function usanetwork_microsite_update_7100() {
+  $modules = array('usanetwork_timeline_gallery');
+  module_enable($modules);
+  field_delete_field('field_ms_theme');
+  features_revert_module('usanetwork_microsite');
+  $node = node_load(55526);
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $node_wrapper->field_ms_theme->set('dig');
+  $node_wrapper->save();
+}

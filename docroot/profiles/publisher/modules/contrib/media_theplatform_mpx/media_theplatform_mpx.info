@@ -1,0 +1,20 @@
+name = Media: ThePlatform mpx
+description = Provides 'ThePlatform mpx' support to the Media module.
+package = "Media"
+core = 7.x
+files[] = includes/MediaThePlatformMpxStreamWrapper.inc
+files[] = includes/MediaInternetThePlatformMpxHandler.inc
+files[] = includes/MediaThePlatformMpxPlayerBrowser.inc
+files[] = includes/MediaThePlatformMpxMediaBrowser.inc
+dependencies[] = media
+dependencies[] = media_internet
+dependencies[] = file_entity
+dependencies[] = libraries (2.x)
+configure = admin/config/media/theplatform
+
+; Information added by Drupal.org packaging script on 2015-01-31
+version = "7.x-3.x-dev"
+core = "7.x"
+project = "media_theplatform_mpx"
+datestamp = "1422725343"
+

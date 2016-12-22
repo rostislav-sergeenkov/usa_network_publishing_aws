@@ -1,0 +1,53 @@
+/* gigya */
+#microsite .field-type-gigya-sharebar {
+  width: 150px;
+  height: 29px;
+  margin: 5px 0 0;
+}
+#microsite #video-gigya-share,
+#microsite #gigya-share {
+  width: 196px;
+  float: left;
+  margin-left: 0;
+  clear: none;
+}
+#microsite div.gig-button-container {
+  padding: 0;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 3px 0;
+}
+#microsite .gig-bar-container .gig-button-container .usa-share-button,
+#microsite .gig-bar-container .gig-button-container .usa-share-button:hover,
+#microsite .field-type-gigya-sharebar .gig-button-container .usa-share-button,
+#microsite .field-type-gigya-sharebar .gig-button-container .usa-share-button:hover {
+  /*background-image: url("../images/social_chatter_icons.png");*/
+  /*background-repeat: no-repeat;*/
+  /*background-image: none !important;*/
+  cursor: pointer;
+  display: block;
+  font-family: "ico-font";
+  font-size: 36px;
+  width: 36px !important;
+  height: 36px !important;
+}
+#microsite .gig-bar-container .gig-button-container.gig-button-container-facebook .usa-share-button:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-facebook .usa-share-button:before {
+  content: "\e602";
+}
+#microsite .gig-bar-container .gig-button-container.gig-button-container-twitter .usa-share-button:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-twitter .usa-share-button:before {
+  content: "\e603";
+}
+#microsite .gig-bar-container .gig-button-container.gig-button-container-tumblr .usa-share-button:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-tumblr .usa-share-button:before {
+  content: "\e604";
+}
+#microsite .gig-bar-container .gig-button-container.gig-button-container-pinterest .usa-share-button:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-pinterest .usa-share-button:before {
+  content: "\e605";
+}
+#microsite .gig-bar-container .gig-button-container.gig-button-container-share .usa-share-button:before,
+#microsite .field-type-gigya-sharebar .gig-button-container.gig-button-container-share .usa-share-button:before {
+  content: "\e606";
+}

@@ -1,0 +1,5 @@
+name = TVE Surf (deprecated)
+description = TVE Surf module for authentication.
+package = NBCU TVE
+core = 7.x
+version = 7.x-1.1

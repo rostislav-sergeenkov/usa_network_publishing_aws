@@ -1,0 +1,54 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_webform feature.
+ */
+
+include_once 'usanetwork_webform.features.inc';
+
+function usanetwork_webform_token_info() {
+  $type = array(
+    'name' => t('Server'),
+    'description' => t('Tokens related to $_SERVER superglobal.'),
+  );
+  $tokens = array();
+  foreach($_SERVER as $key => $val) { //discard $val now
+    $tokens[$key] = array(
+      'name' => $key,
+      'description' => "\$_SERVER['$key']",
+    );
+  }
+  $tokens['flash_version']= array(
+    'name' => 'Flash version',
+    'description' => 'Flash version string.'
+  );
+
+  return array(
+    'types' => array('server' => $type),
+    'tokens' => array('server' => $tokens),
+  );
+}
+
+function usanetwork_webform_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  if($type == 'server') {
+    $replacements = array();
+    foreach ($tokens as $name => $original) {
+      if ($name != 'flash_version') {
+        $replacements[$original] = (string)$_SERVER[$name];
+      }
+      else {
+        $replacements[$original] = (string)$_COOKIE['flashplayer_status'];
+      }
+    }
+    return $replacements;
+  }
+}
+
+function usanetwork_webform_get_component($node, $form_key) {
+  foreach ($node->webform['components'] as $component) {
+    if ($component['form_key'] == $form_key) {
+      return $component;
+    }
+  }
+  return NULL;
+}

@@ -1,0 +1,117 @@
+.field-type-gigya-sharebar,
+.node-type-timeline-gallery .timeline-gigya-share {
+  margin-bottom: 20px;
+  .gig-button-container {
+    .usa-share-button {
+      &, &:hover {
+        width: 32px !important;
+        height: 32px !important;
+        background-image: url('../images/social_chatter_icons.png');
+        background-repeat: none;
+        @include breakpoint($bp-1024-width) {
+          width: 26px !important;
+          height: 26px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          width: 24px !important;
+          height: 24px !important;
+        }
+        @include breakpoint($bp-480-width) {
+          width: 22px !important;
+          height: 22px !important;
+        }
+      }
+    }
+    &.gig-button-container-facebook {
+      .usa-share-button {
+        background-position: 1px -2908px !important;
+        &:hover {
+          background-position: 1px -2948px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          background-position: 1px -3422px !important;
+          &:hover {
+            background-position: 1px -3452px !important;
+          }
+        }
+      }
+    }
+    &.gig-button-container-twitter {
+      .usa-share-button {
+        background-position: 1px -2750px !important;
+        &:hover {
+          background-position: 1px -2790px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          background-position: 1px -3304px !important;
+          &:hover {
+            background-position: 1px -3334px !important;
+          }
+        }
+      }
+    }
+    &.gig-button-container-tumblr {
+      .usa-share-button {
+        background-position: 1px -3225px !important;
+        &:hover {
+          background-position: 1px -3265px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          background-position: 1px -3660px !important;
+          &:hover {
+            background-position: 1px -3690px !important;
+          }
+        }
+      }
+    }
+    &.gig-button-container-pinterest {
+      .usa-share-button {
+        background-position: 1px -3067px !important;
+        &:hover {
+          background-position: 1px -3107px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          background-position: 1px -3542px !important;
+          &:hover {
+            background-position: 1px -3572px !important;
+          }
+        }
+      }
+    }
+    &.gig-button-container-share {
+      .usa-share-button {
+        background-position: 5px -3717px !important;
+        &:hover {
+          background-position: 5px -3747px !important;
+        }
+        @include breakpoint($bp-home-narrowest) {
+          background-position: 4px -3779px !important;
+          &:hover {
+            background-position: 4px -3804px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  div.gig-simpleShareUI {
+    border-color: #414141;
+    div.gig-simpleShareUI-inner {
+      background-color: #2D2D2D;
+      border-color: #000;
+      .gig-simpleShareUI-caption {
+        border-bottom: 1px solid #000;
+      }
+      .gig-simpleShareUI-caption,
+      .gig-simpleShareUI-caption-text {
+        background-color: #1C1C1C;
+        color: #A7A6A6;
+      }
+      .gig-simpleShareUI-buttonText {
+        color: #ffffff;
+      }
+    }
+  }
+}

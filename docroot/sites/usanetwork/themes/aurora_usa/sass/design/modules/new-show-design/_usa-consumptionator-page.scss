@@ -1,0 +1,278 @@
+.show-new-design {
+  &:not(.usa-tv-show) {
+    .usa-wrap {
+      padding: 0 get-vw(16px, 1280);
+      @include breakpoint($bp-min-1601-width) {
+        padding: 0 20px;
+      }
+      @include breakpoint($bp-768-width) {
+        padding: 0;
+      }
+    }
+  }
+  &.consumptionator-page {
+    .usa-wrap {
+      padding-top: get-vw(16px, 1280);
+
+      @include breakpoint($bp-min-1601-width) {
+        padding-top: 20px;
+      }
+
+      @include breakpoint($bp-768-width) {
+        padding-top: 0;
+      }
+    }
+    #block-usanetwork-mpx-video-usanetwork-social-content {
+      .social-block {
+        border-bottom: 0;
+      }
+    }
+    .related-content-block {
+      .section-title {
+        .section-title-wrapper {
+          border-bottom: 2px solid;
+          color: #ffffff;
+          display: block;
+          font-family: $fira-sans-medium;
+          font-size: get-vw(20px, 1280);
+          letter-spacing: 3px;
+          padding-bottom: get-vw(16px, 1280);
+          text-align: center;
+          width: 100%;
+          @include breakpoint ($bp-min-1601-width) {
+            font-size: 28px;
+            padding-bottom: 20px;
+          }
+          @include breakpoint ($bp-1024-width) {
+            font-size: get-vw(20px, 1024);
+            padding-bottom: get-vw(15px, 1024);
+          }
+          @include breakpoint ($bp-768-width) {
+            font-size: get-vw(20px, 768);
+            padding-bottom: get-vw(15px, 768);
+          }
+          @include breakpoint ($bp-640-width) {
+            font-size: get-vw(25px, 640);
+            padding-bottom: get-vw(20px, 640);
+          }
+          &:before,
+          &:after {
+            display: none;
+          }
+          .desktop-title {
+            @include breakpoint ($bp-640-width) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.right-rail-line {
+  #main-block-bottom-line {
+    bottom: 0;
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+  }
+  &.bottom-visible {
+    .sticky-share {
+      @include breakpoint($bp-768-width) {
+        position: absolute !important;
+        top: auto;
+      }
+    }
+  }
+  &:not(.description-visible) {
+    .sticky-share {
+      position: absolute !important;
+      top: auto;
+      width: 100%;
+    }
+  }
+  .touch & {
+    .sticky-share {
+      @include breakpoint($bp-min-769-width) {
+        bottom: 0;
+        top: auto !important;
+        width: 100%;
+      }
+      .field-type-gigya-sharebar {
+        td {
+          @include breakpoint($bp-min-769-width) {
+            float: left;
+            &:nth-last-child(3) {
+              width: calc(100% / 3);
+              & ~ td {
+                width: calc(100% / 3);
+              }
+            }
+            &:nth-last-child(4) {
+              width: 25%;
+              & ~ td {
+                width: 25%;
+              }
+            }
+            &:nth-last-child(5) {
+              width: 20%;
+              & ~ td {
+                width: 20%;
+              }
+            }
+            .gig-button-container {
+              width: 100% !important;
+              .usa-share-button {
+                font-size: 44px !important;
+                height: 80px !important;
+                line-height: 80px !important;
+                width: 100% !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .touch &:not(.bottom-visible).description-visible {
+    .sticky-share {
+      @include breakpoint($bp-min-769-width) {
+        bottom: 0;
+        left: get-vw(20px, 1600);
+        position: fixed !important;
+        z-index: 100;
+        width: calc(100% - 2 * #{get-vw(20px, 1600)});
+      }
+      @include breakpoint($bp-min-1025-width) {
+        width: calc((100% - 2 * #{get-vw(20px, 1600)} - 320px));
+      }
+      @include breakpoint($bp-min-1281-width) {
+        width: calc((100% - 2 * #{get-vw(20px, 1600)}) * 0.75);
+      }
+      @include breakpoint($bp-min-1601-width) {
+        left: calc((100% - 1560px) / 2);
+        width: 1170px;
+      }
+    }
+  }
+  .touch &.bottom-visible {
+    .sticky-share {
+      @include breakpoint($bp-min-769-width) {
+        bottom: -1px;
+        left: 0 !important;
+        position: absolute !important;
+        width: 100%;
+        z-index: 100;
+      }
+    }
+  }
+  .sticky-share {
+    box-shadow: 0 0 5px black;
+    left: 0;
+    position: absolute;
+    @include breakpoint($bp-768-width) {
+      bottom: 0;
+      position: fixed;
+      top: auto;
+      width: 100%;
+      z-index: 100;
+    }
+    .field-label {
+      display: none;
+    }
+    .field-type-gigya-sharebar {
+      table, tbody, tr, td {
+        display: block;
+        width: 100%;
+      }
+      td {
+        @include breakpoint($bp-768-width) {
+          float: left;
+          &:nth-last-child(3) {
+            width: calc(100% / 3);
+            & ~ td {
+              width: calc(100% / 3);
+            }
+          }
+          &:nth-last-child(4) {
+            width: 25%;
+            & ~ td {
+              width: 25%;
+            }
+          }
+          &:nth-last-child(5) {
+            width: 20%;
+            & ~ td {
+              width: 20%;
+            }
+          }
+          .gig-button-container {
+            width: 100%;
+            .usa-share-button {
+              font-size: get-vw(44px, 768) !important;
+              height: get-vw(80px, 768) !important;
+              line-height: get-vw(80px, 768) !important;
+              width: 100% !important;
+            }
+          }
+        }
+      }
+    }
+    @extend %usa-gigya-sticky;
+    .no-touch & {
+      @include breakpoint($bp-min-1025-width) {
+        top: get-vw(50px, 1600);
+        width: get-vw(40px, 1600);
+      }
+      @include breakpoint($bp-min-1601-width) {
+        top: 50px;
+        width: 55px;
+      }
+      @include breakpoint($between-769-1024) {
+        top: get-vw(60px, 1024);
+        width: get-vw(55px, 1024);
+      }
+      .field-type-gigya-sharebar {
+        .gig-button-container {
+          .usa-share-button {
+            @include breakpoint($bp-min-1025-width) {
+              font-size: get-vw(22px, 1600) !important;
+              height: get-vw(58px, 1600) !important;
+              line-height: get-vw(58px, 1600) !important;
+              width: get-vw(40px, 1600) !important;
+            }
+            @include breakpoint($bp-min-1601-width) {
+              font-size: 30px !important;
+              height: 80px !important;
+              line-height: 80px !important;
+              width: 55px !important;
+            }
+            @include breakpoint($between-769-1024) {
+              font-size: get-vw(30px, 1024) !important;
+              height: get-vw(80px, 1024) !important;
+              line-height: get-vw(80px, 1024) !important;
+              width: get-vw(55px, 1024) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  header.off-elements ~ .usa-wrap & {
+    .sticky-share {
+      @include breakpoint($bp-min-769-width) {
+        left: get-vw(20px, 1600);
+        position: fixed;
+        top: get-vw(195px, 1600);
+      }
+      @include breakpoint($bp-min-1601-width) {
+        left: calc((100% - 1560px) / 2);
+        top: 195px;
+      }
+    }
+  }
+}

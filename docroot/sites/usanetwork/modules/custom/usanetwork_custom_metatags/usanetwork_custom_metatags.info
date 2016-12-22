@@ -1,0 +1,6 @@
+name = usanetwork_custom_metatags
+description = Custom metatags for USA
+core = 7.x
+package = USA Network
+
+dependencies[] = metatag

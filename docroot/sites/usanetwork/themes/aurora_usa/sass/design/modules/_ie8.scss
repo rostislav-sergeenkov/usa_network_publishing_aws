@@ -1,0 +1,93 @@
+.ie8 {
+  header {
+    .originals-shows-menu {
+      ul {
+        li {
+          float: left;
+          margin-left: 0;
+          padding-left: 1.5em;
+          width: 50%;
+        }
+      }
+    }
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  #on-now-episode {
+    line-height:62px !important;
+  }
+  .borealis.image-style-episode_wide.borealis-js,
+  .borealis.image-style-video_full.borealis-js {
+    display: none;
+  }
+  #game-wrap .iframe-container.game {
+    width:994px;
+    height:1008px;
+    margin:0 auto;
+    overflow:hidden;
+    iframe {
+      margin:-2px 0 0 -2px !important;
+    }
+  }
+  #utilities-wrap {
+    filter: alpha(opacity=90);
+  }
+  .featured-asset .video-player-wrapper img {
+    width:100%;
+  }
+  //new code
+  .meta-back {
+    filter:alpha(opacity=60);
+  }
+  .meta-icon {
+    &:before {
+      background: url("../images/sprites/circle.png") no-repeat transparent;
+    }
+  }
+  .aspot-and-episodes {
+    .episodes-list {
+      ul {
+        li {
+          .asset-img {
+            img {
+              height: auto!important;
+            }
+          }
+          .meta-wrapper {
+            background:transparent;
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);
+            zoom: 1;
+            .meta {
+              margin-top: -19px!important;
+            }
+          }
+        }
+      }
+    }
+  }
+  footer {
+    .shows-menu, .app-and-services-menu {
+      ul.menu {
+        @include clear;
+        li{
+          float: left;
+          width: 33.33333%;
+          @include breakpoint($bp-768-width) {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+  .show-menu-tab {
+    .show-menu li.active ul.menu {
+      @include clear;
+      li {
+        float: left;
+        width: 33.33333%;
+      }
+    }
+  }
+}

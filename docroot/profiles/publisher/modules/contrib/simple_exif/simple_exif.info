@@ -1,0 +1,8 @@
+name = Simple EXIF
+core = 7.x
+description = Simple Exif with IPTC Support
+php = 5.3
+dependencies[] = file_entity
+dependencies[] = xautoload (>= 7.x-5.0)
+dependencies[] = libraries
+files[] = simple_exif.adapter.inc

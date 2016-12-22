@@ -1,0 +1,151 @@
+<?php
+
+/**
+ * @file
+ * Installation functions for the MPS module.
+ */
+
+/**
+ * Implements hook_requirements().
+ *
+ * @see mps_page_alter()
+ */
+function mps_requirements($phase) {
+  $requirements = array();
+  // Ensure translations don't break during installation.
+  $t = get_t();
+
+  $requirements['mps'] = array(
+    'title' => $t('MPS'),
+    'description' => $t('Master Page Service'),
+  );
+
+  // Ensure that Pixelman is disabled.
+  if (module_exists('pixelman')) {
+    $requirements['mps']['value'] = $t('The Pixelman module is enabled, it should not be if MPS is, disable Pixelman.');
+    $requirements['mps']['severity'] = REQUIREMENT_ERROR;
+  }
+  else {
+    $requirements['mps']['value'] = $t('The Pixelman module is disabled, all is well.');
+    $requirements['mps']['severity'] = REQUIREMENT_OK;
+  }
+
+  // Ensure that the user has exactly one autoloader.
+  $xautoload = $t('X Autoload');
+  $registry_autoload = $t('Registry Autoload');
+  if ($phase == 'runtime') {
+    $xautoload = l($xautoload, 'https://www.drupal.org/project/xautoload');
+    $registry_autoload = l($registry_autoload, 'https://www.drupal.org/project/registry_autoload');
+  }
+  else {
+    $xautoload = '<em>' . $xautoload . '</em>';
+    $registry_autoload = '<em>' . $registry_autoload . '</em>';
+  }
+
+  if (!module_exists('xautoload') && !module_exists('registry_autoload')) {
+    $requirements['mps_autoload'] = array(
+      'title' => $t('Autoloader'),
+      'value' => $t('None'),
+      'description' => $t('You must enable either !xautoload or !registry_autoload to run MPS module.', array(
+        '!xautoload' => $xautoload,
+        '!registry_autoload' => $registry_autoload,
+      )),
+      'severity' => REQUIREMENT_ERROR,
+    );
+  }
+  elseif (module_exists('xautoload') && module_exists('registry_autoload')) {
+    $requirements['mps_autoload'] = array(
+      'title' => $t('Autoloader'),
+      'value' => $t('Multiple'),
+      'description' => $t('!xautoload and !registry_autoload are both enabled. You must disable one of these modules to run MPS module.', array(
+        '!xautoload' => $xautoload,
+        '!registry_autoload' => $registry_autoload,
+      )),
+      'severity' => REQUIREMENT_ERROR,
+    );
+  }
+
+  return $requirements;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function mps_uninstall() {
+  variable_del('mps_host');
+  variable_del('mps_integration');
+  variable_del('mps_site_override');
+  variable_del('mps_query');
+  variable_del('mps_variables');
+  variable_del('mps_calls');
+  variable_del('mps_field_settings');
+}
+
+/**
+ * Implements hook_schema().
+ */
+function mps_schema() {
+  $schema['mps_blocks'] = array(
+    'description' => 'Stores information about MPS blocks.',
+    'export' => array(
+      'key' => 'machine_name',
+      'primary key' => 'block_id',
+      'identifier' => 'block',
+      'default hook' => 'default_mps_block',
+      'api' => array(
+        'owner' => 'mps',
+        'api' => 'default_mps_tags',
+        'minimum_version' => 1,
+        'current_version' => 1,
+      ),
+      'load callback' => 'mps_block_load',
+      'delete callback' => 'mps_block_delete',
+    ),
+    'fields' => array(
+      'block_id' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary ID field for the table. Not used for anything except internal lookups.',
+        'no export' => TRUE,
+      ),
+      'machine_name' => array(
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "The block's unique name.",
+      ),
+      'block_name' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "A human-readable name for the block.",
+      ),
+    ),
+    'primary key' => array('block_id'),
+    'unique keys' => array(
+      'machine_name' => array('machine_name'),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_enable().
+ */
+function mps_enable() {
+  module_load_include('module', 'mps');
+
+  // When we enable the module, load the MPS ad blocks right away.
+  _mps_sync_ad_blocks();
+}
+
+/**
+ * Removing the 'mps_cat_pattern' variable.
+ */
+function mps_update_7100() {
+  variable_del('mps_cat_pattern');
+}

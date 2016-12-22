@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ *
+ * Add landing pages to sitemap.
+ */
+function nbcu_seo_landings_cron() {
+
+  _nbcu_seo_landings_clear_sitemap_show_landings();
+  $tv_shows = _nbcu_seo_landings_get_published_shows();
+  if (!empty($tv_shows)) {
+    $landing_pages = _nbcu_seo_landings_get_landings();
+    $id = 1;
+    foreach($tv_shows as $tv_show) {
+      foreach($landing_pages as $landing_page) {
+        $link['id'] = $id++;
+        $link['type'] = 'landing';
+        $link['subtype'] = 'show';
+        $link['loc'] = 'node/' . $tv_show . '/' . $landing_page;
+        $link['lastmod'] = REQUEST_TIME;
+        $link['access'] = 1;
+        $link['language'] = LANGUAGE_NONE;
+        xmlsitemap_link_save($link);
+      }
+    }
+  }
+}
+
+/*
+ * Removes landing pages from sitemap.
+ */
+function _nbcu_seo_landings_clear_sitemap_show_landings() {
+
+  $query = db_delete('xmlsitemap');
+  $query->condition('type', 'landing');
+  $query->condition('subtype', 'show');
+  $query->execute();
+}
+
+/*
+ * Returns published shows id.
+ */
+function _nbcu_seo_landings_get_published_shows() {
+
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'tv_show')
+    ->propertyCondition('status', NODE_PUBLISHED);
+  $tv_shows = $query->execute();
+  if (!empty($tv_shows['node'])) {
+    $tv_shows = array_keys($tv_shows['node']);
+    return $tv_shows;
+  }
+  return NULL;
+}
+
+/*
+ * Returns array with landings.
+ */
+function _nbcu_seo_landings_get_landings() {
+
+  return array(
+    'photos',
+    'videos',
+    'cast',
+    'blog',
+    'episodes',
+  );
+}

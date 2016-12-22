@@ -1,0 +1,37 @@
+.maintenance-page {
+  #page {
+    padding: 0 15px;
+    margin: 4em auto;
+    @include breakpoint($bp-maintenance) {
+      padding: 0;
+      width: 580px;
+      margin-top: 10em;
+      margin-bottom: 10em;
+    }
+  }  
+  header {
+    width: 160px;
+    margin: 0 auto;
+    @include breakpoint($bp-maintenance) {
+      width: 180px;
+    }  
+  }
+  h1 {
+    line-height: 1em;
+    @include breakpoint($bp-maintenance) {
+      line-height: 24px;
+    }  
+  }
+  #logo {
+    border-right: 0;
+    font-size: 60px;
+    height: auto;
+    margin-bottom: 5px;
+    @include breakpoint($bp-maintenance) {
+      font-size: 66px;
+    }  
+  }
+  #main {
+    text-align: center;
+  }
+}

@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_views feature.
+ */
+
+include_once 'usanetwork_views.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function usanetwork_views_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+    if ($form_state['view']->name == 'usanetwork_content') {
+      asort($form['field_show_target_id']['#options']);
+      drupal_add_js(drupal_get_path('module', 'usanetwork_views') . '/js/usanetwork_views.js');
+    }
+}

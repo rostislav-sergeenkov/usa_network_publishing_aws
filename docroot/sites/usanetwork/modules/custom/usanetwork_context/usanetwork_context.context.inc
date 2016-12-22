@@ -1,0 +1,929 @@
+<?php
+/**
+ * @file
+ * usanetwork_context.context.inc
+ */
+
+/**
+ * Implements hook_context_default_contexts().
+ */
+function usanetwork_context_context_default_contexts() {
+  $export = array();
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'consumpt_post_node';
+  $context->description = '';
+  $context->tag = 'node';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'consumpt_post' => 'consumpt_post',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'usanetwork_consumptionator_post-usanetwork_cons_post_main' => array(
+          'module' => 'usanetwork_consumptionator_post',
+          'delta' => 'usanetwork_cons_post_main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_mpx_video-usanetwork_social_content' => array(
+          'module' => 'usanetwork_mpx_video',
+          'delta' => 'usanetwork_social_content',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'usanetwork_consumptionator_post-usanetwork_cons_post_related' => array(
+          'module' => 'usanetwork_consumptionator_post',
+          'delta' => 'usanetwork_cons_post_related',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('node');
+  $export['consumpt_post_node'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'explore_landing';
+  $context->description = 'Show Explore Landing Page';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~explore_landing_newdesign' => '~explore_landing_newdesign',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/*/explore' => 'node/*/explore',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_lmb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_lmb',
+          'region' => 'content',
+          'weight' => '-93',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_list' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_list',
+          'region' => 'content',
+          'weight' => '-92',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Show Explore Landing Page');
+  t('shows');
+  $export['explore_landing'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'explore_landing_newdesign';
+  $context->description = 'Show Explore Landing Page of New Design';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'new_design_show' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/*/explore' => 'node/*/explore',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_fb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_fb',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_explore_list' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_explore_list',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Show Explore Landing Page of New Design');
+  t('shows');
+  $export['explore_landing_newdesign'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'quiz_node';
+  $context->description = '';
+  $context->tag = 'node';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'quiz' => 'quiz',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'usanetwork_quiz-usanetwork_quiz_main' => array(
+          'module' => 'usanetwork_quiz',
+          'delta' => 'usanetwork_quiz_main',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'usanetwork_quiz-usanetwork_quiz_related' => array(
+          'module' => 'usanetwork_quiz',
+          'delta' => 'usanetwork_quiz_related',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'personalization',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'block_disable' => array(
+      'blocks' => array(
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => '',
+          'weight' => '0',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('node');
+  $export['quiz_node'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'schedule_page';
+  $context->description = 'the tv schedule page context';
+  $context->tag = 'schedule';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'schedule' => 'schedule',
+        'schedule/*' => 'schedule/*',
+        'accessibility' => 'accessibility',
+        'accessibility/*' => 'accessibility/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_schedule-usa_on_now_block' => array(
+          'module' => 'usanetwork_tv_schedule',
+          'delta' => 'usa_on_now_block',
+          'region' => 'head_general',
+          'weight' => '-10',
+        ),
+        'usanetwork_tv_schedule-usa_on_now_panel' => array(
+          'module' => 'usanetwork_tv_schedule',
+          'delta' => 'usa_on_now_panel',
+          'region' => 'on_now',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('schedule');
+  t('the tv schedule page context');
+  $export['schedule_page'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'show_banner';
+  $context->description = 'applies to all show related pages';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'entity_field' => array(
+      'values' => array(
+        'entity_type' => 'a:16:{s:4:"node";s:4:"node";s:4:"file";s:4:"file";s:13:"taxonomy_term";s:13:"taxonomy_term";s:10:"collection";i:0;s:7:"comment";i:0;s:21:"field_collection_item";i:0;s:6:"module";i:0;s:7:"program";i:0;s:6:"queues";i:0;s:11:"queues_type";i:0;s:8:"redirect";i:0;s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;s:25:"state_flow_history_entity";i:0;s:9:"menu_link";i:0;}',
+        'view_mode' => 'a:36:{s:14:"inline_content";i:0;s:4:"full";i:0;s:13:"diff_standard";i:0;s:5:"token";i:0;s:5:"print";i:0;s:6:"teaser";i:0;s:3:"rss";i:0;s:25:"page_collection_resources";i:0;s:16:"user_ref_preview";i:0;s:23:"admin_reference_preview";i:0;s:17:"block_cover_title";i:0;s:20:"block_cover_title_lg";i:0;s:14:"carousel_promo";i:0;s:13:"cast_carousel";i:0;s:13:"follow_social";i:0;s:21:"global_nav_block_more";i:0;s:22:"global_nav_block_shows";i:0;s:10:"home_promo";i:0;s:16:"home_promo_bspot";i:0;s:12:"promo_teaser";i:0;s:18:"vid_teaser_episode";i:0;s:18:"vid_teaser_general";i:0;s:23:"vid_teaser_show_episode";i:0;s:23:"vid_teaser_show_general";i:0;s:18:"promo_teaser_large";i:0;s:7:"preview";i:0;s:28:"entityreference_live_preview";i:0;s:6:"figure";i:0;s:18:"gallery_flexslider";i:0;s:18:"person_cover_image";i:0;s:19:"search_result_files";i:0;s:10:"thumb_tiny";i:0;s:11:"cover_image";i:0;s:16:"vid_teaser_front";i:0;s:13:"usa_term_icon";i:0;s:18:"user_image_preview";i:0;}',
+        'field_name' => 'field_show',
+        'field_value' => '0',
+        'field_empty' => 0,
+        'field_not_empty' => 1,
+      ),
+    ),
+    'node' => array(
+      'values' => array(
+        'media_gallery' => 'media_gallery',
+        'tv_episode' => 'tv_episode',
+        'tv_show' => 'tv_show',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/*/games' => 'node/*/games',
+        'node/*/games/*' => 'node/*/games/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_showpages-show_banner' => array(
+          'module' => 'usanetwork_showpages',
+          'delta' => 'show_banner',
+          'region' => 'head_show',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('applies to all show related pages');
+  t('shows');
+  $export['show_banner'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'show_page';
+  $context->description = '';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'tv_show' => 'tv_show',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array();
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('shows');
+  $export['show_page'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'shows_landing';
+  $context->description = 'All shows landing page';
+  $context->tag = 'shows';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'shows' => 'shows',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_page_header' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_page_header',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_mb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_mb',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_all_shows' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_all_shows',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('All shows landing page');
+  t('shows');
+  $export['shows_landing'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'timeline_gallery';
+  $context->description = '';
+  $context->tag = 'node';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'timeline_gallery' => 'timeline_gallery',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_timeline_gallery-usa_timeline_gal_related' => array(
+          'module' => 'usanetwork_timeline_gallery',
+          'delta' => 'usa_timeline_gal_related',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('node');
+  $export['timeline_gallery'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usa_leader_standard';
+  $context->description = 'standard script based leaderboard ads';
+  $context->tag = 'ads';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'catchall_page' => 'catchall_page',
+        'consumpt_post' => 'consumpt_post',
+        'movie' => 'movie',
+        'person' => 'person',
+        'post' => 'post',
+        'quiz' => 'quiz',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'tv_season' => 'tv_season',
+        'tv_show' => 'tv_show',
+        'usa_homepage' => 'usa_homepage',
+        'usanetwork_static_page' => 'usanetwork_static_page',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'schedule' => 'schedule',
+        'schedule/*' => 'schedule/*',
+        'accessibility' => 'accessibility',
+        'accessibility/*' => 'accessibility/*',
+        '<front>' => '<front>',
+        'search' => 'search',
+        'search/*' => 'search/*',
+        'videos' => 'videos',
+        '*/photos' => '*/photos',
+        '*/episodes' => '*/episodes',
+        '*/episodes/*' => '*/episodes/*',
+        '*/cast' => '*/cast',
+        '*/videos' => '*/videos',
+        '*/explore' => '*/explore',
+        'shows' => 'shows',
+        'node/*/blog' => 'node/*/blog',
+        'node/*/blog/*' => 'node/*/blog/*',
+        'node/*/tag/*' => 'node/*/tag/*',
+        'movies' => 'movies',
+        'home/*' => 'home/*',
+        'feedback' => 'feedback',
+        'news' => 'news',
+      ),
+    ),
+    'taxonomy_term' => array(
+      'values' => array(
+        'blog' => 'blog',
+      ),
+      'options' => array(
+        'term_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'mps-topbanner' => array(
+          'module' => 'mps',
+          'delta' => 'topbanner',
+          'region' => 'leaderboard',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('ads');
+  t('standard script based leaderboard ads');
+  $export['usa_leader_standard'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usanetwork_homepage';
+  $context->description = 'The content in this context will appear on the site front page.';
+  $context->tag = 'homepage';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '<front>' => '<front>',
+        'home/*' => 'home/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_aspot-usanetwork_aspot_carousel' => array(
+          'module' => 'usanetwork_aspot',
+          'delta' => 'usanetwork_aspot_carousel',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'usanetwork_menu-usanetwork_menu_aspot_ot' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_aspot_ot',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'usanetwork_full_bleed_promo-usanetwork_fbp_block' => array(
+          'module' => 'usanetwork_full_bleed_promo',
+          'delta' => 'usanetwork_fbp_block',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+        'usanetwork_home-usanetwork_home_shows_queue' => array(
+          'module' => 'usanetwork_home',
+          'delta' => 'usanetwork_home_shows_queue',
+          'region' => 'content',
+          'weight' => '-7',
+        ),
+        'usanetwork_mpx_video-usa_mpx_video_home_full_latest' => array(
+          'module' => 'usanetwork_mpx_video',
+          'delta' => 'usa_mpx_video_home_full_latest',
+          'region' => 'content',
+          'weight' => '-6',
+        ),
+        'usanetwork_home-usanetwork_home_featured_promos' => array(
+          'module' => 'usanetwork_home',
+          'delta' => 'usanetwork_home_featured_promos',
+          'region' => 'content',
+          'weight' => '-5',
+        ),
+        'usanetwork_blocks-usanetwork_social_carousel' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usanetwork_social_carousel',
+          'region' => 'content',
+          'weight' => '-4',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('The content in this context will appear on the site front page.');
+  t('homepage');
+  $export['usanetwork_homepage'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usanetwork_sitewide';
+  $context->description = '';
+  $context->tag = 'sitewide';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~usanetwork_sitewide_exclude' => '~usanetwork_sitewide_exclude',
+        '~usanetwork_sitewide_exclude_newdesign' => '~usanetwork_sitewide_exclude_newdesign',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        '~videos/live' => '~videos/live',
+      ),
+    ),
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_menu-usanetwork_menu_sm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_sm_menu',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'usanetwork_blocks-usa_footer_promos' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_promos',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+        'usanetwork_lyris-newsletter_subscription' => array(
+          'module' => 'usanetwork_lyris',
+          'delta' => 'newsletter_subscription',
+          'region' => 'footer',
+          'weight' => '-9',
+        ),
+        'usanetwork_menu-usanetwork_menu_fm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_fm_menu',
+          'region' => 'footer',
+          'weight' => '-8',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('sitewide');
+  $export['usanetwork_sitewide'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usanetwork_sitewide_exclude';
+  $context->description = 'Exclude some node types from usanetwork_sitewide context.';
+  $context->tag = 'sitewide';
+  $context->conditions = array(
+    'entity_field' => array(
+      'values' => array(
+        'entity_type' => 'a:16:{s:4:"file";s:4:"file";s:10:"collection";i:0;s:7:"comment";i:0;s:21:"field_collection_item";i:0;s:6:"module";i:0;s:4:"node";i:0;s:7:"program";i:0;s:6:"queues";i:0;s:11:"queues_type";i:0;s:8:"redirect";i:0;s:13:"taxonomy_term";i:0;s:19:"taxonomy_vocabulary";i:0;s:4:"user";i:0;s:15:"wysiwyg_profile";i:0;s:25:"state_flow_history_entity";i:0;s:9:"menu_link";i:0;}',
+        'view_mode' => 'a:40:{s:4:"full";s:4:"full";s:14:"inline_content";i:0;s:13:"diff_standard";i:0;s:5:"token";i:0;s:5:"print";i:0;s:6:"teaser";i:0;s:3:"rss";i:0;s:12:"search_index";i:0;s:13:"search_result";i:0;s:16:"microsite_output";i:0;s:25:"page_collection_resources";i:0;s:16:"user_ref_preview";i:0;s:23:"admin_reference_preview";i:0;s:17:"block_cover_title";i:0;s:20:"block_cover_title_lg";i:0;s:14:"carousel_promo";i:0;s:13:"cast_carousel";i:0;s:13:"follow_social";i:0;s:21:"global_nav_block_more";i:0;s:22:"global_nav_block_shows";i:0;s:10:"home_promo";i:0;s:16:"home_promo_bspot";i:0;s:19:"microsite_thumbnail";i:0;s:12:"promo_teaser";i:0;s:18:"vid_teaser_episode";i:0;s:18:"vid_teaser_general";i:0;s:23:"vid_teaser_show_episode";i:0;s:23:"vid_teaser_show_general";i:0;s:18:"promo_teaser_large";i:0;s:7:"preview";i:0;s:28:"entityreference_live_preview";i:0;s:6:"figure";i:0;s:18:"gallery_flexslider";i:0;s:18:"person_cover_image";i:0;s:19:"search_result_files";i:0;s:10:"thumb_tiny";i:0;s:11:"cover_image";i:0;s:16:"vid_teaser_front";i:0;s:13:"usa_term_icon";i:0;s:18:"user_image_preview";i:0;}',
+        'field_name' => 'field_mpx_full_episode',
+        'field_value' => '1',
+        'field_empty' => 0,
+        'field_not_empty' => 1,
+      ),
+    ),
+    'node' => array(
+      'values' => array(
+        'catchall_page' => 'catchall_page',
+        'consumpt_post' => 'consumpt_post',
+        'media_gallery' => 'media_gallery',
+        'person' => 'person',
+        'quiz' => 'quiz',
+        'timeline_gallery' => 'timeline_gallery',
+        'top3_gallery' => 'top3_gallery',
+        'tv_episode' => 'tv_episode',
+        'usanetwork_microsite' => 'usanetwork_microsite',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/*/microsite' => 'node/*/microsite',
+        'node/*/microsite/*' => 'node/*/microsite/*',
+      ),
+    ),
+  );
+  $context->reactions = array();
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Exclude some node types from usanetwork_sitewide context.');
+  t('sitewide');
+  $export['usanetwork_sitewide_exclude'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usanetwork_sitewide_exclude_newdesign';
+  $context->description = '';
+  $context->tag = 'sitewide';
+  $context->conditions = array(
+    'new_design_consumpt' => array(
+      'values' => array(
+        'catchall_page' => 'catchall_page',
+        'consumpt_post' => 'consumpt_post',
+        'media_gallery' => 'media_gallery',
+        'person' => 'person',
+        'quiz' => 'quiz',
+        'timeline_gallery' => 'timeline_gallery',
+        'tv_episode' => 'tv_episode',
+      ),
+    ),
+    'new_design_file' => array(
+      'values' => array(
+        'mpx_video_1' => 'mpx_video_1',
+        'mpx_video_2' => 'mpx_video_2',
+      ),
+    ),
+    'new_design_show' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_nd_menu' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_nd_menu',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_nd_footer' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_nd_footer',
+          'region' => 'footer_additional',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'block_disable' => array(
+      'blocks' => array(
+        'usanetwork_blocks-usa_footer_promos' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_promos',
+          'region' => '-1',
+          'weight' => '0',
+        ),
+        'usanetwork_lyris-newsletter_subscription' => array(
+          'module' => 'usanetwork_lyris',
+          'delta' => 'newsletter_subscription',
+          'region' => '',
+          'weight' => '0',
+        ),
+        'usanetwork_menu-usanetwork_menu_sm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_sm_menu',
+          'region' => '-1',
+          'weight' => '0',
+        ),
+        'usanetwork_menu-usanetwork_menu_fm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_fm_menu',
+          'region' => '-1',
+          'weight' => '0',
+        ),
+        'usanetwork_menu-usanetwork_menu_consumptionator' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_consumptionator',
+          'region' => '-1',
+          'weight' => '0',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('sitewide');
+  $export['usanetwork_sitewide_exclude_newdesign'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'usanetwork_sitewide_file';
+  $context->description = 'Footer, promo-links';
+  $context->tag = 'sitewide';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~usanetwork_sitewide_exclude_newdesign' => '~usanetwork_sitewide_exclude_newdesign',
+      ),
+    ),
+    'node' => array(
+      'values' => array(
+        'catchall_page' => 'catchall_page',
+        'media_gallery' => 'media_gallery',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'file/*' => 'file/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_blocks-usa_footer_promos' => array(
+          'module' => 'usanetwork_blocks',
+          'delta' => 'usa_footer_promos',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+        'usanetwork_lyris-newsletter_subscription' => array(
+          'module' => 'usanetwork_lyris',
+          'delta' => 'newsletter_subscription',
+          'region' => 'footer',
+          'weight' => '-9',
+        ),
+        'usanetwork_menu-usanetwork_menu_fm_menu' => array(
+          'module' => 'usanetwork_menu',
+          'delta' => 'usanetwork_menu_fm_menu',
+          'region' => 'footer',
+          'weight' => '-8',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Footer, promo-links');
+  t('sitewide');
+  $export['usanetwork_sitewide_file'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'videos_landing';
+  $context->description = 'Show Videos Landing Page';
+  $context->tag = 'show';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~videos_landing_newdesign' => '~videos_landing_newdesign',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/*/videos' => 'node/*/videos',
+        '~node/*/*/videos' => '~node/*/*/videos',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_video_lmb' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_video_lmb',
+          'region' => 'content',
+          'weight' => '0',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_video_vl' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_video_vl',
+          'region' => 'content',
+          'weight' => '1',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Show Videos Landing Page');
+  t('show');
+  $export['videos_landing'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'videos_landing_newdesign';
+  $context->description = 'Show Videos Landing Page Of New Design';
+  $context->tag = 'show';
+  $context->conditions = array(
+    'new_design_show' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/*/videos' => 'node/*/videos',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'usanetwork_tv_shows-usanetwork_tv_shows_filters_vl' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_filters_vl',
+          'region' => 'header',
+          'weight' => '0',
+        ),
+        'usanetwork_tv_shows-usanetwork_tv_shows_video_vl_nd' => array(
+          'module' => 'usanetwork_tv_shows',
+          'delta' => 'usanetwork_tv_shows_video_vl_nd',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Show Videos Landing Page Of New Design');
+  t('show');
+  $export['videos_landing_newdesign'] = $context;
+
+  return $export;
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the USANetwork Static Page feature.
+ */
+
+include_once 'usanetwork_static_page.features.inc';

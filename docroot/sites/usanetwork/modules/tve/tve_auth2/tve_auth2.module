@@ -1,0 +1,558 @@
+<?php
+
+/**
+ * @file
+ * tve_auth2 module.
+ *
+ * Main TVE authentication flow functionality.
+ */
+
+define('TVE_AUTH2_PREFIX_DRAFT', 'tve_auth2_draft_');
+define('TVE_AUTH2_PREFIX_PUBLISHED', 'tve_auth2_published_');
+define('TVE_AUTH2_BEHAVIOR_NONE', 'none');
+define('TVE_AUTH2_BEHAVIOR_ORIG', 'orig');
+define('TVE_AUTH2_BEHAVIOR_AUTH', 'auth');
+define('TVE_AUTH2_STATUS_NOT_SAVED', t('Settings were never saved and published. Enter values, save them, and publish.'));
+define('TVE_AUTH2_STATUS_NOT_PUBLISHED', t('Settings are saved in draft state, but not published.'));
+define('TVE_AUTH2_STATUS_DIFFERENT', t('Draft and published settings are different. Fieldsets with different values are marked with asterisk (*).'));
+define('TVE_AUTH2_STATUS_EQUAL', t('Draft and published settings are equal.'));
+define('TVE_AUTH2_FLASH_ERROR_TITLE', "Oops! Your device isn't currently configured to play our videos.");
+define('TVE_AUTH2_FLASH_ERROR_DESCRIPTION', 'Our native app is coming soon.');
+define('TVE_AUTH2_ADOBEPASS_ERROR_TITLE', "Sorry! There's a problem.");
+define('TVE_AUTH2_ADOBEPASS_ERROR_DESCRIPTION', 'Sorry about that! The login is not available now. Please try again later.');
+define('TVE_AUTH2_MACSAFARI_ERROR_TITLE', "Sorry! There's a problem with your flash version.");
+define('TVE_AUTH2_MACSAFARI_ERROR_DESCRIPTION', 'Please update to the latest flash version.');
+define('TVE_AUTH2_PRIVATE_BROWSING_ERROR_TITLE', 'You are in Private Browsing Mode.');
+define('TVE_AUTH2_PRIVATE_BROWSING_ERROR_DESCRIPTION', 'We noticed you are attempting to use our site in a private or incognito browsing mode which interferes with cookies.  To utilize this site you must be in a normal browser mode with cookies enabled.');
+define('TVE_AUTH2_GENERAL_ERROR_TITLE', "Sorry! There's a problem.");
+define('TVE_AUTH2_GENERAL_ERROR_DESCRIPTION', 'Sorry about that! We seem to be experiencing a technical issue right now. Please try again later.');
+define('TVE_AUTH2_IMAGE_DIMENSION', '290x350');
+define('TVE_AUTH2_WISYWYG_FORMAT', 'tve_wysiwyg');
+
+// Include helper functions.
+module_load_include('inc', 'tve_auth2', 'tve_auth2.helpers');
+
+// Include TVE Auth 2 features.2
+module_load_include('inc', 'tve_auth', 'tve_auth2.features');
+
+/**
+ * Implements hook_menu().
+ */
+function tve_auth2_menu() {
+  $items['admin/tve'] = array(
+    'title' => 'TVE',
+    'description' => 'TVE settings.',
+    'access arguments' => array('administer tve'),
+    'page callback' => '_tve_auth2_config_page',
+  );
+  $items['admin/tve/auth'] = array(
+    'title' => 'Authentication',
+    'description' => 'Authentication settings.',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('administer tve'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+    'weight' => 1,
+  );
+  $items['admin/tve/auth/auth-flow2'] = array(
+    'title' => 'Auth Flow 2',
+    'description' => 'TVE Specific Copy, Imagery and Other Front End Configurations',
+    'access arguments' => array('administer tve'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_tve_auth2_admin_form'),
+    'file' => 'tve_auth2.admin.inc',
+    'weight' => 0,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function tve_auth2_menu_alter(&$items) {
+  if (isset($items['admin/config/services/adobe-pass'])) {
+    $items['admin/tve/auth/adobe-pass'] = $items['admin/config/services/adobe-pass'];
+    $items['admin/tve/auth/adobe-pass']['weight'] = 2;
+    $items['admin/config/services/adobe-pass']['page callback'] = 'drupal_goto';
+    $items['admin/config/services/adobe-pass']['page arguments'] = array('admin/tve/auth/adobe-pass');
+    $items['admin/config/services/adobe-pass']['type'] = MENU_CALLBACK;
+  }
+
+  if (isset($items['admin/config/services/adobe-pass/error-logs'])) {
+    $items['admin/tve/auth/adobe-pass/error-logs'] = $items['admin/config/services/adobe-pass/error-logs'];
+    $items['admin/config/services/adobe-pass/error-logs']['page callback'] = 'drupal_goto';
+    $items['admin/config/services/adobe-pass/error-logs']['page arguments'] = array('admin/tve/auth/adobe-pass/error-logs');
+    $items['admin/config/services/adobe-pass/error-logs']['type'] = MENU_CALLBACK;
+  }
+
+  if (isset($items['admin/config/services/adobe-pass/error-logs/cleanup'])) {
+    $items['admin/tve/auth/adobe-pass/error-logs/cleanup'] = $items['admin/config/services/adobe-pass/error-logs/cleanup'];
+    $items['admin/config/services/adobe-pass/error-logs/cleanup']['page callback'] = 'drupal_goto';
+    $items['admin/config/services/adobe-pass/error-logs/cleanup']['page arguments'] = array('admin/tve/auth/adobe-pass/error-logs/cleanup');
+    $items['admin/config/services/adobe-pass/error-logs/cleanup']['type'] = MENU_CALLBACK;
+  }
+
+  if (isset($items['admin/config/services/mvpd'])) {
+    $items['admin/tve/auth/mvpd'] = $items['admin/config/services/mvpd'];
+    $items['admin/tve/auth/mvpd']['weight'] = 3;
+    $items['admin/config/services/mvpd']['page callback'] = 'drupal_goto';
+    $items['admin/config/services/mvpd']['page arguments'] = array('admin/tve/auth/mvpd');
+    $items['admin/config/services/mvpd']['type'] = MENU_CALLBACK;
+  }
+
+  if (isset($items['admin/config/services/mvpd/default'])) {
+    $items['admin/tve/auth/mvpd/default'] = $items['admin/config/services/mvpd/default'];
+    $items['admin/config/services/mvpd/default']['page callback'] = 'drupal_goto';
+    $items['admin/config/services/mvpd/default']['page arguments'] = array('admin/tve/auth/mvpd/default');
+    $items['admin/config/services/mvpd/default']['type'] = MENU_CALLBACK;
+  }
+
+  if (isset($items['admin/config/services/mvpd/connection'])) {
+    $items['admin/tve/auth/mvpd/connection'] = $items['admin/config/services/mvpd/connection'];
+    $items['admin/config/services/mvpd/connection']['page callback'] = 'drupal_goto';
+    $items['admin/config/services/mvpd/connection']['page arguments'] = array('admin/tve/auth/mvpd/connection');
+    $items['admin/config/services/mvpd/connection']['type'] = MENU_CALLBACK;
+  }
+
+  if (isset($items['admin/config/services/mvpd-reset'])) {
+    $items['admin/tve/auth/mvpd/mvpd-reset'] = $items['admin/config/services/mvpd-reset'];
+    $items['admin/config/services/mvpd-reset']['page callback'] = 'drupal_goto';
+    $items['admin/config/services/mvpd-reset']['page arguments'] = array('admin/tve/auth/mvpd/mvpd-reset');
+    $items['admin/config/services/mvpd-reset']['type'] = MENU_CALLBACK;
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tve_auth2_permission() {
+  return array(
+    'administer tve' => array(
+      'title' => t('Administer TVE authentication'),
+      'description' => t('Perform administration tasks for TVE authentication flow.'),
+    ),
+    'administer tve errors' => array(
+      'title' => t('Administer TVE errors'),
+      'description' => t('Perform administration tasks for TVE Errors page.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function tve_auth2_block_info() {
+  $blocks['tve_auth2_header'] = array(
+    'info' => t('TVE Sign In Block'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'region' => 'header',
+    'status' => 0,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function tve_auth2_block_configure($delta = '') {
+  $form = array();
+  if ('tve_auth2_header' == $delta) {
+    $form['login_link'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Sign In Link Image'),
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+      '#tree' => TRUE,
+    );
+
+    $form['login_link']['image']['fid'] = array(
+      '#type' => 'managed_file',
+      '#title' => t('Sign In Link Image'),
+      '#description' => t('Image for the Login link.'),
+      '#progress_indicator' => 'bar',
+      '#upload_location' => 'public://tve_auth2/',
+      '#default_value' => variable_get('tve_auth2_login_link_image_fid', 0),
+    );
+  }
+
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function tve_auth2_block_save($delta = '', $edit = array()) {
+  if ('tve_auth2_header' == $delta) {
+    $fid_new = $edit['login_link']['image']['fid'];
+    $fid_old = variable_get('tve_auth2_login_link_image_fid', 0);
+
+    if ($fid_new == $fid_old) {
+      return;
+    }
+
+    $file_old = file_load($fid_old);
+    if ($file_old) {
+      file_delete($file_old);
+      variable_set('tve_auth2_login_link_image_fid', 0);
+    }
+
+    $file_new = file_load($fid_new);
+    if ($file_new) {
+      $file_new->status = FILE_STATUS_PERMANENT;
+      file_save($file_new);
+      variable_set('tve_auth2_login_link_image_fid', $fid_new);
+    }
+  }
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function tve_auth2_block_view($delta = '') {
+  $block = array();
+  if ('tve_auth2_header' == $delta) {
+    $block['content'] = theme('tve_auth2_signin_menu');
+  }
+
+  return $block;
+}
+
+/**
+ * Returns file extension for a JS file.
+ *
+ * It directly depends on JS aggregation settings:
+ *  - ".js" in case JS aggregation disabled;
+ *  - ".min.js" in case JS aggregation enabled.
+ *
+ * @return string
+ */
+function _tve_auth2_js_extension() {
+  return variable_get('preprocess_js') ? '.min.js' : '.js';
+}
+
+/**
+ * Implements hook_library().
+ */
+function tve_auth2_library() {
+  // Vendors.
+  $items['tve_vendors'] = array(
+    'title' => t('TVE core'),
+    'version' => '1.0',
+    'js' => array(
+      libraries_get_path('tve') . '/dist/tve-core' . _tve_auth2_js_extension() => array(),
+    ),
+  );
+
+  // Auth Flow.
+  $items['tve_auth2'] = array(
+    'title' => t('TVE Auth2'),
+    'version' => '1.0',
+    'js' => array(
+      libraries_get_path('tve') . '/dist/tve-libraries' . _tve_auth2_js_extension() => array(
+        'scope' => 'footer',
+        'weight' => -2,
+      ),
+      libraries_get_path('tve') . '/dist/auth/tve-auth' . _tve_auth2_js_extension() => array(
+        'scope' => 'footer',
+        'weight' => -1,
+      ),
+    ),
+  );
+
+  $path_prefix = drupal_get_path('module', 'tve_auth2');
+  if (!_tve_auth2_tve_theme_exists()) {
+    // Add pre-compiled CSS if there is no TVE-based (or parent "TVE")
+    // theme found.
+    $css_path = $path_prefix . '/css/auth-modals.css';
+    $items['tve_auth2']['css'][$css_path] = array(
+      'type' => 'file',
+    );
+  }
+
+  if (!theme_get_setting('tve_auth2_styles', variable_get('theme_default'))) {
+    // Add stock CSS styles for text lines.
+    $css_path = $path_prefix . '/css/text-styles.css';
+    $items['tve_auth2']['css'][$css_path] = array(
+      'type' => 'file',
+    );
+  }
+
+  return $items;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function tve_auth2_page_alter(&$page) {
+  if (path_is_admin(current_path())) {
+    // Prevent from adding extra js and css files for admin area.
+    return;
+  }
+
+  _tve_auth2_add_page_js_settings();
+
+  // Attach hidden modal windows to the bottom of the page.
+  $auth_modal_windows_html = theme('tve_auth2_signin_blocks');
+  $page['page_bottom']['tve_auth2_modal_windows'] = array(
+    '#markup' => $auth_modal_windows_html,
+  );
+
+  $page['page_bottom']['tve_auth2'] = array(
+    '#attached' => array(
+      'library' => array(
+        array('system', 'jquery.cookie'),
+        array('tve_auth2', 'tve_vendors'),
+        array('tve_auth2', 'tve_auth2'),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_modules_enabled().
+ */
+function tve_auth2_modules_enabled($modules) {
+  if (in_array('tve_auth', $modules)) {
+    drupal_set_message(t('TVE Auth module is not compatible with TVE Auth 2 module. Disable TVE Auth 2 module in order to enable TVE Auth module.'), 'error');
+    module_disable(array('tve_auth'));
+  }
+}
+
+/**
+ * Adds TVE Auth specific JS settings.
+ */
+function _tve_auth2_add_page_js_settings() {
+  // Array of saved and published auth flow settings.
+  $variables = _tve_auth2_get_published_variables();
+
+  $behavior = isset($variables['additional']['behavior']) ?
+    $variables['additional']['behavior'] :
+    TVE_AUTH2_BEHAVIOR_AUTH;
+
+  global $theme_key;
+  $params = array(
+    'tve_auth' => array(
+      'version' => '2.0',
+      'theme' => $theme_key,
+      'isTve' => (int) theme_get_setting('is_tve', $theme_key),
+      'data' => _tve_auth2_get_windows_data(),
+      'behavior' => $behavior,
+    ),
+  );
+
+  drupal_add_js($params, 'setting');
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tve_auth2_theme() {
+  $items = array(
+    'tve_auth2_signin_menu' => array(
+      'variables' => array(),
+    ),
+    'tve_auth2_signin_blocks' => array(
+      'variables' => array(),
+    ),
+    'tve_auth2_welcome_window' => array(
+      'variables' => array(
+        'settings' => array(),
+      ),
+      'template' => 'templates/tve_auth2_welcome_window',
+    ),
+    'tve_auth2_errors_window' => array(
+      'template' => 'templates/tve_auth2_errors_window',
+    ),
+    'tve_auth2_login_window' => array(
+      'variables' => array(
+        'settings' => array(),
+      ),
+      'template' => 'templates/tve_auth2_login_window',
+    ),
+    'tve_auth2_adobe_pass_window' => array(
+      'template' => 'templates/tve_auth2_adobe_pass_window',
+    ),
+  );
+
+  return $items;
+}
+
+/**
+ * Renders Sign In menu items.
+ *
+ * @return string
+ *   Prepared item list.
+ */
+function theme_tve_auth2_signin_menu() {
+  $menu_items = _tve_auth2_prepare_menu_items();
+  $links = array(
+    '#theme' => 'item_list',
+    '#items' => $menu_items,
+    '#attributes' => array('class' => array('tve-header-links', 'inline')),
+    '#prefix' => '<div class="links-wrapper">',
+    '#suffix' => '</div>',
+  );
+
+  return drupal_render($links);
+}
+
+/**
+ * Renders Sign In blocks.
+ *
+ * @return string
+ *   Returns modal windows to page.
+ */
+function theme_tve_auth2_signin_blocks() {
+  $settings = _tve_auth2_get_windows_data();
+  if (empty($_GET['view_mode'])) {
+    // "Production" (published) mode settings.
+    $settings_welcome = isset($settings['published']['welcome_window']) ? $settings['published']['welcome_window'] : array();
+    $settings_login = isset($settings['published']['login_window']) ? $settings['published']['login_window'] : array();
+  }
+  else {
+    // "Preview" (draft) mode settings.
+    $settings_welcome = isset($settings['draft']['welcome_window']) ? $settings['draft']['welcome_window'] : array();
+    $settings_login = isset($settings['draft']['login_window']) ? $settings['draft']['login_window'] : array();
+  }
+
+  $welcome_window = theme('tve_auth2_welcome_window', array('settings' => $settings_welcome));
+  $errors_window = theme('tve_auth2_errors_window');
+  $login_window = theme('tve_auth2_login_window', array('settings' => $settings_login));
+  $adobe_pass_window = theme('tve_auth2_adobe_pass_window');
+
+  return
+    $welcome_window .
+    $errors_window .
+    $login_window .
+    $adobe_pass_window;
+}
+
+/**
+ * Returns array of menu items for Sign In block.
+ *
+ * @return array
+ *   Menu items for render.
+ */
+function _tve_auth2_prepare_menu_items() {
+
+  $menu_items = array(
+    '<span tve-login-button></span>',
+    '<span tve-logout-button></span>',
+  );
+
+  return $menu_items;
+}
+
+/**
+ * Returns auth windows data array.
+ *
+ * @return array
+ *   Associative array with draft and published data.
+ */
+function _tve_auth2_get_windows_data() {
+  if (user_access('administer tve')) {
+    $draft_variables = _tve_auth2_get_draft_variables();
+    _tve_auth2_prepare_file_urls($draft_variables);
+    drupal_alter('tve_auth2_variables_prepare', $draft_variables);
+  }
+
+  $published_variables = _tve_auth2_get_published_variables();
+  _tve_auth2_prepare_file_urls($published_variables);
+  drupal_alter('tve_auth2_variables_prepare', $published_variables);
+
+  return array(
+    'draft' => (isset($draft_variables)) ? $draft_variables : NULL,
+    'published' => $published_variables,
+  );
+}
+
+/**
+ * Returns login link image url if configured, otherwise NULL.
+ *
+ * @return string|null
+ */
+function _tve_auth2_get_login_link_image_url() {
+  $fid = variable_get('tve_auth2_login_link_image_fid', 0);
+  $file = file_load($fid);
+  if ($file) {
+    return file_create_url($file->uri);
+  }
+
+  return NULL;
+}
+
+/**
+ * Determines if at least one TVE-based theme exists and enabled.
+ * Returns TRUE if base TVE or at least one parent theme (enabled) found.
+ *
+ * @return bool
+ */
+function _tve_auth2_tve_theme_exists() {
+  $themes = list_themes();
+  foreach ($themes as $theme_name => $theme) {
+    if ($theme->status
+      && ((isset($theme->base_theme) && $theme->base_theme == 'tve') || $theme_name == 'tve')
+    ) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
+}
+
+/**
+ * Provides TVE administration overview page.
+ * system_admin_config_page() is a source for this function.
+ * @see system_admin_config_page()
+ *
+ * @return string
+ */
+function _tve_auth2_config_page() {
+  $blocks = array();
+  if ($admin = db_query("SELECT menu_name, mlid FROM {menu_links} WHERE link_path = 'admin/tve' AND module = 'system'")->fetchAssoc()) {
+    $result = db_query("
+      SELECT m.*, ml.*
+      FROM {menu_links} ml
+      INNER JOIN {menu_router} m ON ml.router_path = m.path
+      WHERE ml.link_path <> 'admin/help' AND menu_name = :menu_name AND ml.plid = :mlid AND hidden = 0", $admin, array('fetch' => PDO::FETCH_ASSOC));
+
+    foreach ($result as $item) {
+      _menu_link_translate($item);
+      if (!$item['access']) {
+        continue;
+      }
+      // The link description, either derived from 'description' in hook_menu()
+      // or customized via menu module is used as title attribute.
+      if (!empty($item['localized_options']['attributes']['title'])) {
+        $item['description'] = $item['localized_options']['attributes']['title'];
+        unset($item['localized_options']['attributes']['title']);
+      }
+      $block = $item;
+      $block['content'] = '';
+      $block['content'] .= theme('admin_block_content', array('content' => system_admin_menu_block($item)));
+      if (!empty($block['content'])) {
+        $block['show'] = TRUE;
+      }
+
+      // Prepare for sorting as in function _menu_tree_check_access().
+      // The weight is offset so it is always positive, with a uniform 5-digits.
+      $blocks[(50000 + $item['weight']) . ' ' . $item['title'] . ' ' . $item['mlid']] = $block;
+    }
+  }
+  if ($blocks) {
+    ksort($blocks);
+    return theme('admin_page', array('blocks' => $blocks));
+  }
+  else {
+    return t('You do not have any administrative items.');
+  }
+}
+
+function tve_auth2_preprocess_html(&$variables) {
+  // Add special class to body element for all non-admin pages.
+  if (!path_is_admin(current_path())) {
+    $variables['classes_array'][] = 'auth2-pages';
+  }
+}

@@ -1,0 +1,211 @@
+<?php
+/**
+ * @file
+ * Code for the USA Network Umbel Tracking.
+ */
+
+define('USANETWORK_UMBEL_SHOW_PARAMETER_NUMBER', '2');
+
+/**
+ * Implementation of hook_menu().
+ */
+function usanetwork_umbel_menu() {
+  // admin area
+  $items['admin/usanetwork/umbel'] = array(
+    'title' => 'Umbel Tracking settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('usanetwork_umbel_tracking_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'usanetwork_umbel.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function usanetwork_umbel_page_alter(&$page) {
+  if (!path_is_admin(current_path())) {
+    $usa_umbel_parameters = array();
+    $usa_umbel_parameters = _usanetwork_umbel_variables($usa_umbel_parameters);
+    $usanetwork_umbel_tracking_code = variable_get('usanetwork_umbel_tracking_code', 'iwgdlxrtqfiiortz');
+
+    $is_production = (usanetwork_core_api_get_environment() == 'prod') ? '1' : '0';
+
+    drupal_add_js(array('umbel_code' => $usanetwork_umbel_tracking_code,
+      'umbel_settings' => $usa_umbel_parameters,
+      'umbel_env' => $is_production),'setting');
+
+    $page['page_bottom']['umbel']['#attached']['js'][drupal_get_path('module', 'usanetwork_umbel') . '/js/usanetwork_umbel_main.js'] =  array(
+      'type' => 'file',
+      'scope' => 'footer',
+    );
+  }
+}
+
+/**
+ *  Umbel Scheme
+ */
+function _usanetwork_umbel_variables($settings) {
+  $current_menu_item = menu_get_item();
+  $current_menu_object = menu_get_object();
+  $current_menu_file = menu_get_object('file');
+  switch ($current_menu_item['path']) {
+    case 'home':
+      $settings = array(
+        'usa_umbel_param_1' => "Global",
+        'usa_umbel_param_2' => "Landing Page",
+        'usa_umbel_param_3' => "Homepage",
+      );
+      break;
+    case 'shows':
+      $settings = array(
+        'usa_umbel_param_1' => "Global",
+        'usa_umbel_param_2' => "Landing Page",
+        'usa_umbel_param_3' => "Shows",
+      );
+      break;
+    case 'videos':
+      $settings = array(
+        'usa_umbel_param_1' => "Global",
+        'usa_umbel_param_2' => "Landing Page",
+        'usa_umbel_param_3' => "Full Episodes",
+      );
+      break;
+    case 'schedule':
+      $settings = array(
+        'usa_umbel_param_1' => "Global",
+        'usa_umbel_param_2' => "Schedule",
+        'usa_umbel_param_3' => "Full Schedule",
+      );
+      break;
+    case 'accessibility':
+      $settings = array(
+        'usa_umbel_param_1' => "Global",
+        'usa_umbel_param_2' => "Static Page",
+        'usa_umbel_param_3' => "Accessibility",
+      );
+      break;
+  }
+
+  if (!empty($current_menu_object)) {
+    if (isset($current_menu_object->type)) {
+      if ($current_menu_object->type == 'tv_show') {
+        $settings = array(
+          'usa_umbel_param_1' => $current_menu_object->title,
+          'usa_umbel_param_2' => "Landing Page",
+        );
+        if (empty($current_menu_item['map'][USANETWORK_UMBEL_SHOW_PARAMETER_NUMBER])) {
+          $settings['usa_umbel_param_3'] = "Homepage";
+        } else {
+          switch ($current_menu_item['map'][USANETWORK_UMBEL_SHOW_PARAMETER_NUMBER]) {
+            case 'episodes':
+              $settings['usa_umbel_param_3'] = "Episodes";
+              break;
+            case 'videos':
+              $settings['usa_umbel_param_3'] = "Videos";
+              break;
+            case 'photos':
+              $settings['usa_umbel_param_3'] = "Photos";
+              break;
+            case 'cast':
+              $settings['usa_umbel_param_3'] = "Cast & Info";
+              break;
+            default:
+              $settings['usa_umbel_param_3'] = "Homepage";
+          }
+        }
+      } elseif (in_array($current_menu_object->type, array('person', 'quiz', 'media_gallery', 'catchall_page', 'tv_episode'))) {
+        $tv_show_field = _usanetwork_get_field_item('node', $current_menu_object, 'field_show', 'target_id');
+        if ($tv_show_field) {
+          $tv_show = node_load($tv_show_field);
+          $settings = array(
+            'usa_umbel_param_1' => $tv_show->title,
+            'usa_umbel_param_3' => $current_menu_object->title,
+          );
+          switch ($current_menu_object->type) {
+            case 'person':
+              $settings['usa_umbel_param_2'] = "Bio";
+              break;
+            case 'quiz':
+              $settings['usa_umbel_param_2'] = "Quiz";
+              break;
+            case 'media_gallery':
+              $settings['usa_umbel_param_2'] = "Photo Gallery";
+              break;
+            case 'catchall_page':
+              $settings['usa_umbel_param_2'] = "Games";
+              $custom_omniture_variables = _usanetwork_ads_get_entity_omniture_variables($current_menu_object, 'node');
+              $migrated_vars = _usanetwork_dtm_migrate_vars($custom_omniture_variables);
+
+              if (isset($migrated_vars['AdobeTracking.contentType']) && ($migrated_vars['AdobeTracking.contentType'] == 'Features')) {
+                $promo_call_to_action = _usanetwork_get_field_item('node', $current_menu_object, 'field_call_to_action_type' , 'taxonomy_term');
+                if ($promo_call_to_action->name == 'gallery') {
+                  $settings['usa_umbel_param_2'] = "Photo Gallery";
+                }
+              }
+              break;
+            case 'tv_episode':
+              $settings['usa_umbel_param_2'] = "Episode Guide";
+              break;
+          }
+        } elseif ($tv_show_field = _usanetwork_get_field_item('node', $current_menu_object, 'field_multiple_show', 'target_id')) {
+          $settings = array(
+            'usa_umbel_param_1' => "Multiple Gallery",
+            'usa_umbel_param_2' => "Photo Gallery",
+            'usa_umbel_param_3' => $current_menu_object->title,
+          );
+        }
+      }
+    }
+  }
+
+  if (!empty($current_menu_file)) {
+    if (isset($current_menu_file->type)) {
+      if (in_array($current_menu_file->type, _pub_mpx_get_mpx_account_video_file_types(TRUE))) {
+        $tv_show_field = _usanetwork_get_field_item('file', $current_menu_file, 'field_show', 'target_id');
+        if ($tv_show_field) {
+          $tv_show = node_load($tv_show_field);
+          $settings = array(
+            'usa_umbel_param_1' => $tv_show->title,
+            'usa_umbel_param_2' => "Video",
+            'usa_umbel_param_3' => $current_menu_file->filename,
+          );
+        }
+      }
+    }
+  }
+
+  switch (ltrim($_SERVER['REQUEST_URI'], '/')) {
+    case 'terms':
+      $settings = array(
+        'usa_umbel_param_1' => "Global",
+        'usa_umbel_param_2' => "Static Page",
+        'usa_umbel_param_3' => "Terms of Service",
+      );
+      break;
+    case 'closed-captioning':
+      $settings = array(
+        'usa_umbel_param_1' => "Global",
+        'usa_umbel_param_2' => "Static Page",
+        'usa_umbel_param_3' => "Closed Captioning",
+      );
+      break;
+    case 'help-faq':
+      $settings = array(
+        'usa_umbel_param_1' => "Global",
+        'usa_umbel_param_2' => "Static Page",
+        'usa_umbel_param_3' => "Help & FAQ",
+      );
+      break;
+    case 'app':
+      $settings = array(
+        'usa_umbel_param_1' => "Global",
+        'usa_umbel_param_2' => "Static Page",
+        'usa_umbel_param_3' => "USA Now",
+      );
+      break;
+  }
+
+  return $settings;
+}

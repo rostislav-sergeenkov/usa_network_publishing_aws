@@ -1,0 +1,132 @@
+<?php
+/**
+ * Module provide general related content functionality.
+ *
+ * Date: 30.7.15
+ * Time: 14.23
+ */
+
+define('USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE', 6);
+
+/**
+ *  Implements hook_menu().
+ */
+function usanetwork_related_content_menu() {
+  $items = array();
+
+  $items['ajax/%node/get-related/%/%/%'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_related_content_get_related_content_ajax',
+    'page arguments' => array(1, 3, 4, 5),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['ajax/%file/get-related/%/%/%/file'] = array(
+    'title' => 'Related content',
+    'page callback' => 'usanetwork_related_content_get_related_content_ajax',
+    'page arguments' => array(1, 3, 4, 5, TRUE),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Retrieve json relation content for ajax callbacks.
+ *
+ * @param $consum_node_type
+ * @param $tv_content_node
+ * @param int $start_from
+ * @param int $limit
+ * @return string
+ *  Json object.
+ */
+function usanetwork_related_content_get_related_content_ajax($consum_node, $tv_content_id, $start_from = 0, $limit = 1, $for_video = FALSE) {
+  $response = array(
+    'found' => FALSE,
+    'total' => 0,
+    'overlimited' => TRUE,
+    'rendered' => '',
+  );
+
+  $tv_content_node = node_load($tv_content_id);
+
+  if ($limit == $start_from) {
+    $you_may_also_like_item = usanetwork_tv_show_consumptionator_get_ymal_item($tv_content_node);
+    if (!empty($you_may_also_like_item)) {
+      $start_from--;
+    }
+  }
+
+  if (!$for_video) {
+    $function = '_usanetwork_' . $tv_content_node->type . '_cache_get_limited_related_content';
+    $related_content = $function($tv_content_id, $consum_node, $start_from, $limit + 1);
+  }
+  else {
+    $function = '_usanetwork_' . $tv_content_node->type . '_cache_get_limited_related_video_content';
+    $related_content = $function($tv_content_id, $consum_node, $start_from, $limit + 1);
+  }
+
+  if (!empty($related_content)) {
+    if (count($related_content) > $limit) {
+      $response['overlimited'] = FALSE;
+      $related_content = array_slice($related_content, 0, $limit);
+    }
+    $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_content_node);
+    $function = 'usanetwork_' . $tv_content_node->type . '_consumptionator_render_related_content_items_block';
+    $response['rendered'] = $function($related_content, $start_from, $limit, $is_new_design);
+    $response['total'] = count($related_content);
+    $response['found'] = TRUE;
+  }
+  return drupal_json_output($response);
+}
+
+function usanetwork_related_content_is_load_more_link(&$related_content, $limit, $overlimited = FALSE) {
+  if (!$overlimited) {
+    $load_more_link = &drupal_static('load_more_link');
+  }
+  if (count($related_content) < $limit + 1) {
+    $load_more_link = FALSE;
+  }
+  else {
+    $last_element = end($related_content);
+    if (!empty($last_element->ymal)) {
+      array_splice($related_content, -2, 1);
+      $load_more_link = TRUE;
+    } else {
+      $related_content = array_slice($related_content, 0, $limit);
+      $load_more_link = TRUE;
+    }
+  }
+  if ($overlimited) {
+    $load_more_link = !$load_more_link;
+  }
+  return $load_more_link;
+}
+
+function usanetwork_related_content_get_related_content_for_consumpt_page($consumpt_node, $tv_conten_node) {
+  $function = 'usanetwork_' . $tv_conten_node->type . '_consumptionator_get_ymal_item';
+  $you_may_also_like_item = $function($tv_conten_node);
+  $function = '_usanetwork_' . $tv_conten_node->type . '_cache_get_limited_related_content';
+  $related_content = $function(
+    $tv_conten_node->nid, $consumpt_node,
+    0, !empty($you_may_also_like_item)
+    ? USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE
+    : USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE + 1);
+
+  if (!empty($you_may_also_like_item)) {
+    $related_content[] = $you_may_also_like_item;
+  }
+  if (!empty($related_content)) {
+    drupal_add_js(drupal_get_path('module', 'usanetwork_tv_shows') . '/js/usanetwork_tv_shows_related_items_loader.js');
+    drupal_add_js(array(
+      'usanetwork_' . $tv_conten_node->type . '_nid' => $tv_conten_node->nid,
+      'usanetwork_' . $tv_conten_node->type . '_page_context' => 'consumptionator_node',
+      'usanetwork_' . $tv_conten_node->type . '_offset' => !empty($you_may_also_like_item) ? -1 : 0,
+    ), 'setting');
+  }
+
+  return $related_content;
+}

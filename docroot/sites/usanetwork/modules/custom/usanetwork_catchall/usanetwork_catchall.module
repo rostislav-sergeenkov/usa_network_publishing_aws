@@ -1,0 +1,120 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_catchall feature.
+ */
+
+include_once 'usanetwork_catchall.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_catchall_menu() {
+  $items = array();
+
+  $items['ajax/catchall_create_url'] = array(
+    'page callback' => '_usanetwork_catchall_create_url',
+    'page arguments' => array(),
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function usanetwork_catchall_preprocess_html(&$vars) {
+  // Load node
+  $node = menu_get_object();
+  if ($node && $node->type == 'catchall_page') {
+    $fixedwidth_field = field_get_items('node', $node, 'field_usa_catchall_fixedwidth');
+    // add a body class if this checkbox has been selected
+    if ($fixedwidth_field[0]['value'] == '1') {
+      $vars['classes_array'][] = 'usa-fixed-width';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function usanetwork_catchall_preprocess_page(&$vars) {
+  // Load node, hide title on the frontend
+  $node = menu_get_object();
+  if ($node && $node->type == 'catchall_page') {
+    $vars['title'] = '';
+
+    //Settings for MPS reloadable Ad
+    $field_automatic_refresh = _usanetwork_get_field_item('node', $node, 'field_automatic_refresh' ,'value');
+    if ($field_automatic_refresh && $field_automatic_refresh == '1') {
+      $field_refresh_time = _usanetwork_get_field_item('node', $node, 'field_refresh_time' ,'value');
+      drupal_add_js(array('CatchallRefreshSettings' => array('time' => ($field_refresh_time) ? $field_refresh_time : '')), 'setting');
+    }
+  }
+}
+
+/*
+ * Returns content for usanetwork_catchall_related_content_content block.
+ */
+function _usanetwork_catchall_related_content() {
+  if (path_is_admin(current_path())) {
+    return '';
+  }
+
+  $content = menu_get_object('node');
+  if (!empty($content) && $content->type == 'catchall_page') {
+    if (empty($content->field_tvs_show_latest_feed)) {
+      return '';
+    }
+    else {
+      $latest_content_flag_field = field_get_items('node', $content, 'field_tvs_show_latest_feed');
+
+      if ($latest_content_flag_field[0]['value'] == 0) {
+        return '';
+      }
+    }
+    $tv_content = usanetwork_core_api_get_tv_content_node($content);
+    if (!empty($tv_content)) {
+      $related_content = usanetwork_related_content_get_related_content_for_consumpt_page($content, $tv_content);
+      if (!empty($related_content)) {
+        $is_new_design = _usanetwork_tv_shows_is_new_design_entity('node', $tv_content);
+        $function = 'usanetwork_' . $tv_content->type . '_consumptionator_render_related_content_items_block';
+        $load_more_link =  usanetwork_related_content_is_load_more_link($related_content, USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE);
+        $block_of_items = $function($related_content, 0, 1, $is_new_design);
+        return theme('usanetwork_' . $tv_content->type . '_consumptionator_related_items_container', array(
+          'related_items_block' => $block_of_items,
+          'load_more_link' => $load_more_link,
+          'show_nid' => $tv_content->nid,
+          'items_pre_page_limit' => USA_CONSUMPTIONATOR_RELATED_ITEMS_ON_PAGE,
+          'node_nid' => $content->nid,
+        ));
+      }
+    }
+  }
+  return '';
+}
+
+/*
+ * Callback for ajax call
+ */
+function _usanetwork_catchall_create_url() {
+  if (!empty($_POST['nodeId']) && !empty($_POST['imgStr']) && !empty($_POST['imageSrc'])) {
+    $data = $_POST['imageSrc'];
+    $new_folder = 'public://libs/' . $_POST['nodeId'] . '/';
+    $is_writable = file_prepare_directory($new_folder, FILE_CREATE_DIRECTORY);
+
+    if ($is_writable) {
+      preg_match('/data:image\/([^;]*);base64,(.*)/', $data, $matches);
+      $filename = 'image' . $_POST['imgStr'];
+      $path_name = $new_folder . $filename . '.' . $matches[1];
+      $data = base64_decode($matches[2]);
+      $image_uri = file_unmanaged_save_data($data, $path_name, FILE_EXISTS_REPLACE);
+      if ($image_uri) {
+        $image_url = file_create_url($image_uri);
+      }
+    }
+
+    return drupal_json_output(array('image_url' => $image_url));
+  }
+}

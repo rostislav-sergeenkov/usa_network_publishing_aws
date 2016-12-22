@@ -1,0 +1,1473 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork core needs.
+ *
+ * @ingroup USA Network
+ */
+
+/**
+ *  Implements hook_install().
+ */
+function usanetwork_core_install() {
+  // remove things we do not want for usanetwork
+  usanetwork_core_uninstall_modules();
+
+  // Deploy taxonomy vocabularies.
+  usanetwork_core_deploy_taxonomy();
+
+  // Deploy taxonomy terms.
+  usanetwork_core_deploy_terms();
+
+  // enable our custom modules
+  usanetwork_core_enable_modules();
+
+  // Set the theme
+  usanetwork_core_set_theme();
+
+  // Create menu entries.
+  // node_menu() defines menu items based on node types so it needs to come
+  // after node types are rebuilt.
+  menu_rebuild();
+  usanetwork_core_create_menu_items();
+
+  // Set the homepage
+  variable_set('site_frontpage', 'home');
+
+  // get the new filter format into the db
+  $wysiwyg_full_html = array(
+    'format' => 'wysiwyg_full_html',
+    'name' => 'WYSIWYG Full Html',
+    'weight' => 1,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $wysiwyg_full_html = (object) $wysiwyg_full_html;
+  filter_format_save($wysiwyg_full_html);
+
+  // Let's add this new filter to our user roles.
+  $existing_roles = user_roles();
+  $rids = array_flip($existing_roles);
+  user_role_grant_permissions($rids['administrator'], array('use text format wysiwyg_full_html'));
+  user_role_grant_permissions($rids['editor'], array('use text format wysiwyg_full_html'));
+}
+
+/**
+ * Uninstall modules.
+ *
+ * Uninstall modules that are not necessary for this site.
+ */
+function usanetwork_core_uninstall_modules() {
+  $modules = array(
+    'overlay',
+    'shortcut',
+    'contextual',
+    'gigya',
+    'pub_gigya',
+  );
+
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+
+  $ret = t('The following modules were uninstalled: @modules', array('@modules' => join(', ', $modules)));
+  $ret .= "\n";
+  drupal_set_message($ret);
+  return $ret;
+}
+
+/**
+ * Enable modules.
+ *
+ * Enable modules for this site.
+ */
+function usanetwork_core_enable_modules() {
+  $modules = array(
+    // contrib
+    'modernizr',
+    'panels',
+    'features_override',
+    'views_slideshow',
+    'views_slideshow_cycle',
+    'menu_block',
+    'print',
+    'linkit',
+    'borealis',
+    'borealis_ri',
+    'jquery_update',
+    'views_bulk_operations',
+    'views_load_more',
+    'addanother',
+    'styleguide',
+    'colorfield_minicolors',
+    'colorfield',
+    // custom contrib
+    'context_entity_field',
+    // USA custom
+    'usanetwork',
+    'usanetwork_ds',
+    'usanetwork_blocks',
+    'usanetwork_linkit',
+    'usanetwork_imagestyles',
+    'usanetwork_views',
+    'usanetwork_context',
+    'usanetwork_panels',
+    'usanetwork_strongarm',
+    'usanetwork_social',
+    'usanetwork_static_page',
+    'usanetwork_pathauto',
+    'usanetwork_feedback',
+    'usanetwork_addanother',
+    'usanetwork_tv_schedule',
+    'usanetwork_aspot',
+    'usanetwork_flag',
+    'usanetwork_promo',
+    'usanetwork_home',
+    'usanetwork_cast',
+    'usanetwork_catchall',
+    'usanetwork_user_permissions',
+    'usanetwork_episodes',
+    'usanetwork_layouts',
+    'usanetwork_showpages',
+    'usanetwork_media_gallery',
+    'usanetwork_migrate',
+    'usanetwork_video',
+    'usanetwork_theme_settings',
+    'usanetwork_ads',
+    'usanetwork_widget',
+    'usanetwork_wysiwyg',
+    'usanetwork_home_clone',
+    'usanetwork_home_edit',
+    'usanetwork_tv_shows_color',
+    'usanetwork_tv_shows_color_field',
+    'usanetwork_entityreference',
+    'usanetwork_node_copy',
+    'usanetwork_promo_preview',
+    'usanetwork_tv_shows_display',
+    'usanetwork_tv_shows_display_options',
+    'usanetwork_field_episodic',
+    'usanetwork_catchall_collection',
+    'usanetwork_page_collection',
+    'usanetwork_lyris',
+    'usanetwork_video_mobile',
+//    'surf',
+//    'usanetwork_surf',
+//    'usanetwork_personalization',
+//    'usanetwork_og_metatags',
+//    'usanetwork_mpx_video',
+    // pub ent overrides
+    'pub_files_overrides',
+    'pub_tv_overrides',
+    'pub_media_overrides',
+    'pub_person_overrides',
+    'pub_gigya_overrides',
+  );
+
+  module_enable($modules);
+
+  $ret = t('The following modules were enabled: @modules', array('@modules' => join(', ', $modules)));
+  $ret .= "\n";
+  drupal_set_message($ret);
+  return $ret;
+}
+
+/**
+ * Set the theme.
+ *
+ * Manually set the new theme.
+ */
+function usanetwork_core_set_theme() {
+  $theme = 'aurora_usa';
+
+  // Enable the aurora_usanetwork theme and set it as the site default.
+  db_update('system')
+      ->fields(array('status' => 1))
+      ->condition('type', 'theme')
+      ->condition('name', $theme)
+      ->execute();
+
+  variable_set('theme_default', $theme);
+
+  // unset some blocks so we can manage in context
+  $values = array(
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => '',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => '',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  foreach ($values as $record) {
+    $query->values($record);
+  }
+  $query->execute();
+
+  $ret = t('The theme was set to: @theme', array('@theme' => $theme));
+  drupal_set_message($ret);
+  return $ret;
+}
+
+/**
+ * Enable context_entity_field module
+ */
+function usanetwork_core_update_7100() {
+  $modules = array('context_entity_field');
+  module_enable($modules);
+}
+
+/**
+ * Enable usanetwork_custompages module
+ */
+function usanetwork_core_update_7101() {
+  $modules = array('usanetwork_custompages');
+  module_enable($modules);
+}
+
+/**
+ * Enable queues module
+ */
+function usanetwork_core_update_7102() {
+  $modules = array('queues');
+  module_enable($modules);
+}
+
+/**
+ * Enable usanetwork_nitro module
+ */
+function usanetwork_core_update_7103() {
+  $modules = array('usanetwork_nitro');
+  module_enable($modules);
+}
+
+/**
+ * Enable usanetwork_snipe module
+ */
+function usanetwork_core_update_7104() {
+  $modules = array('usanetwork_snipe');
+  module_enable($modules);
+}
+
+/**
+ * Enable usanetwork_opengraph module
+ */
+function usanetwork_core_update_7105() {
+  $modules = array('usanetwork_opengraph');
+  module_enable($modules);
+}
+
+/**
+ * Disable p7 core modules we no longer wish to use and uninstall the relationships elements
+ * install our new features content modules
+ * this should be run under the p7 v7.14.0 tag
+ */
+function usanetwork_core_update_7106() {
+  $modules = array(
+    'pub_relationships_movie',
+    'pub_relationships',
+    'pub_movie',
+    'pub_character_profile',
+    'pub_person_overrides',
+    'pub_person',
+    'pub_media',
+    'comment',
+    'pub_media_overrides',
+    'pub_theplatform',
+    'pub_gigya_overrides',
+    'pub_gigya',
+    'pub_tv',
+    'pub_tv_overrides',
+  );
+  module_disable($modules);
+
+  $modules_un = array(
+    'pub_relationships_movie',
+    'pub_relationships_tv',
+    'pub_relationships',
+  );
+  drupal_uninstall_modules($modules_un);
+
+  $modules_en = array(
+    'usanetwork_person',
+    'usanetwork_tv_shows',
+    'usanetwork_gallery_content',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Reset our install profile from pub_entertainment to pub_vanilla
+ */
+function usanetwork_core_update_7107() {
+  variable_set('install_profile', 'pub_vanilla');
+}
+
+/**
+ * Disable pub_tv and pub_person
+ */
+function usanetwork_core_update_7108() {
+  $modules = array(
+    'pub_tv',
+    'pub_person',
+  );
+  module_disable($modules);
+
+  $modules_un = array(
+    'pub_tv',
+    'pub_person',
+  );
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * Delete unused content types movie and character_profile from db
+ */
+function usanetwork_core_update_7109() {
+  // deleting the movie and character_profile content type references
+  node_type_delete('movie');
+  node_type_delete('character_profile');
+
+  node_types_rebuild();
+  // forcing the menu cache to be rebuilt
+  variable_set('menu_rebuild_needed', TRUE);
+}
+
+/**
+ * Update environment_indicator to 2.x-dev
+ */
+function usanetwork_core_update_7110() {
+  $modules = array(
+    'environment_indicator',
+  );
+  module_disable($modules);
+
+  $modules_un = array(
+    'environment_indicator',
+  );
+  drupal_uninstall_modules($modules_un);
+
+  $modules_en = array(
+    'environment_indicator',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * remove old environment_indicator vars
+ */
+function usanetwork_core_update_7111() {
+  $color = !is_null(variable_get('environment_indicator_color', NULL));
+  $enabled = !is_null(variable_get('environment_indicator_enabled', NULL));
+  $name = !is_null(variable_get('environment_indicator_text', NULL));
+  $pos = !is_null(variable_get('environment_indicator_position', NULL));
+  if ($color) {
+    variable_del('environment_indicator_color');
+  }
+  if ($enabled) {
+    variable_del('environment_indicator_enabled');
+  }
+  if ($name) {
+    variable_del('environment_indicator_text');
+  }
+  if ($pos) {
+    variable_del('environment_indicator_position');
+  }
+}
+
+/**
+ * Enable new usanetwork_gobal_nav_image module
+ */
+function usanetwork_core_update_7112() {
+  $modules = array('usanetwork_gobal_nav_image');
+  module_enable($modules);
+}
+
+/**
+ * uninstall pub_tv, pub_movie, pub_character_profile, pub_person, pub_media_overrides, pub_person_overrides, pub_tv_overrides,
+ */
+function usanetwork_core_update_7113() {
+
+  $modules_un = array(
+    'pub_tv',
+    'pub_movie',
+    'pub_character_profile',
+    'pub_person',
+    'pub_media_overrides',
+    'pub_person_overrides',
+    'pub_tv_overrides',
+  );
+  module_disable($modules_un);
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * uninstall pub_gigya_overrides, pub_media, pub_theplatform, pub_gigya
+ */
+function usanetwork_core_update_7114() {
+
+  $modules_un = array(
+    'pub_gigya_overrides',
+    'pub_media',
+    'pub_theplatform',
+    'pub_gigya',
+  );
+  module_disable($modules_un);
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * ONLY RUN AGAINST P7 v7.18.0 TAG! Enable Workbench modules, disable state flow schedule, remove state_flow_schedule queue items.
+ */
+function usanetwork_core_update_7115() {
+  module_enable(array('workbench', 'workbench_moderation', 'revision_scheduler', 'pub_workbench'));
+  module_disable(array('sps', 'pub_state_flow', 'state_flow_schedule'));
+}
+
+/**
+ * ONLY RUN AGAINST P7 v7.18.0 TAG! uninstall pub_field_bases, pub_files, pub_files_overrides, pub_display_suite, pub_display_suite, pub_image_styles, pub_taxonomy
+ */
+function usanetwork_core_update_7116() {
+
+  $modules_un = array(
+    'pub_field_bases',
+    'pub_files',
+    'pub_display_suite',
+    'pub_image_styles',
+    'pub_taxonomy',
+  );
+  module_disable($modules_un);
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * Enable new usanetwork_files module
+ */
+function usanetwork_core_update_7117() {
+  $modules = array('usanetwork_files');
+  module_enable($modules);
+
+  $modules_un = array(
+    'pub_files_overrides',
+  );
+  module_disable($modules_un);
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * disable search until it is needed
+ */
+function usanetwork_core_update_7118() {
+
+  $modules_un = array(
+    'acquia_search',
+    'apachesolr',
+    'search',
+  );
+  module_disable($modules_un);
+}
+
+/**
+ * Enable new usanetwork_widget module
+ */
+function usanetwork_core_update_7119() {
+  $modules = array('usanetwork_widget');
+  module_enable($modules);
+}
+
+/**
+ * goodbye to gigya
+ */
+function usanetwork_core_update_7120() {
+
+  $modules_dis = array(
+    'gigya',
+  );
+  $modules_un = array(
+    'gigya',
+    'pub_gigya',
+  );
+  module_disable($modules_dis);
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * disabled coder module
+ */
+function usanetwork_core_update_7121() {
+
+  $modules_dis = array(
+    'coder',
+  );
+  module_disable($modules_dis);
+  drupal_uninstall_modules($modules_dis);
+}
+
+/**
+ * enabled usanetwork_promo_iframe module
+ */
+function usanetwork_core_update_7122() {
+
+  $modules_en = array(
+    'usanetwork_promo_iframe',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * removing gigya share bar on the drupal user login page
+ */
+function usanetwork_core_update_7123() {
+  variable_set('gigya_login_enabled', FALSE);
+}
+
+/**
+ * goodbye to gigya -- AGAIN!
+ */
+function usanetwork_core_update_7124() {
+
+  $modules_dis = array(
+    'gigya',
+  );
+  $modules_un = array(
+    'gigya',
+    'pub_gigya',
+  );
+  module_disable($modules_dis);
+  drupal_uninstall_modules($modules_un);
+}
+
+/**
+ * enable modules: colorfield, colorfield_minicolors, usanetwork_home_clone, usanetwork_home_edit, usanetwork_tv_shows_color, usanetwork_tv_shows_color_field, usanetwork_entityreference, usanetwork_node_copy
+ */
+function usanetwork_core_update_7125() {
+
+  $modules_en = array(
+    'colorfield_minicolors',
+    'colorfield',
+    'usanetwork_home_clone',
+    'usanetwork_home_edit',
+    'usanetwork_tv_shows_color',
+    'usanetwork_tv_shows_color_field',
+    'usanetwork_entityreference',
+    'usanetwork_node_copy',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable modules: usanetwork_promo_preview
+ */
+function usanetwork_core_update_7126() {
+
+  $modules_en = array(
+    'usanetwork_promo_preview',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable modules: usanetwork_tv_shows_display, usanetwork_tv_shows_display_options, usanetwork_field_episodic
+ */
+function usanetwork_core_update_7127() {
+  $modules_en = array(
+    'usanetwork_tv_shows_display',
+    'usanetwork_tv_shows_display_options',
+    'usanetwork_field_episodic',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * ITERATION 3
+ */
+function usanetwork_core_update_7128() {
+  $modules_en = array(
+    'usanetwork_catchall_collection',
+    'usanetwork_page_collection',
+    'usanetwork_lyris',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable modules: metatag_twitter_cards, metatag_twitter_cards_see_it
+ */
+function usanetwork_core_update_7129() {
+  $modules_en = array(
+    'metatag_twitter_cards',
+    'metatag_twitter_cards_see_it',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * ITERATION 4
+ */
+function usanetwork_core_update_7130() {
+  $modules_en = array(
+    'usanetwork_video_mobile'
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable modules: usanetwork_token, metatag_context
+ */
+function usanetwork_core_update_7131() {
+  $modules_en = array(
+    'usanetwork_token',
+    'metatag_context',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable search
+ */
+function usanetwork_core_update_7132() {
+  $modules_en = array(
+    'acquia_search',
+    'apachesolr',
+    'apachesolr_search',
+    'search',
+    'usanetwork_search',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable cloud sticky sessions
+ */
+function usanetwork_core_update_7133() {
+  $modules_en = array(
+    'acquia_cloud_sticky_sessions',
+  );
+  module_enable($modules_en);
+  $modules_dis = array(
+    'acquia_managed_cloud_sticky_sessions'
+  );
+  module_disable($modules_dis);
+}
+
+/**
+ * enable gigya sharing
+ */
+function usanetwork_core_update_7134() {
+  $modules_en = array(
+    'gigya',
+    'usanetwork_gigya',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable usanetwork_admin_menu module
+ */
+function usanetwork_core_update_7135() {
+  $modules_en = array(
+    'usanetwork_admin_menu',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * enable facebook pixel tracking module
+ */
+function usanetwork_core_update_7136() {
+  $modules_en = array(
+    'usanetwork_facebook_tracking',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * VIDEO MPX CODE
+ */
+function usanetwork_core_update_7137() {
+  $modules_en = array(
+    'media_theplatform_mpx',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * NEW VIDEO CODE
+ */
+function usanetwork_core_update_7138() {
+  $modules_en = array(
+    'usanetwork_mpx_video',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * NEW VIDEO CODE
+ */
+function usanetwork_core_update_7139() {
+  $modules_en = array(
+    'usanetwork_tve_video',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable endcard module
+ */
+function usanetwork_core_update_7140() {
+  $modules_en = array(
+    'usanetwork_video_endcard',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Reenable video mobile pop-up
+ */
+function usanetwork_core_update_7141() {
+  $modules_en = array(
+    'usanetwork_video_mobile',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Disable comments
+ */
+function usanetwork_core_update_7142() {
+  $modules_en = array(
+    'usanetwork_comments',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable Blogs and Sidecard.
+ */
+function usanetwork_core_update_7143() {
+  $modules_en = array(
+    'usanetwork_post',
+    'usanetwork_watchwith'
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable video redirects.
+ */
+function usanetwork_core_update_7144() {
+  $modules_en = array(
+    'usanetwork_redirect',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Change install profile to new publisher profile.
+ */
+function usanetwork_core_update_7145() {
+  drupal_static_reset();
+
+  $old_profile = variable_get('install_profile', '');
+  $new_profile = 'publisher';
+  variable_set('install_profile', $new_profile);
+
+  db_query("UPDATE {system} SET filename = REPLACE(filename, 'profiles/all/', 'profiles/publisher/') WHERE filename LIKE 'profiles/all/%'");
+
+  // Unlike modules, profiles aren't added to the system table just because the
+  // files are added to /profiles.  They are added after they are active.  We
+  // need to add them before that so they are BOTH active and enabled.
+  // Cache a fully-built schema.
+  drupal_get_schema(NULL, TRUE);
+  system_rebuild_module_data();
+
+  db_update('system')
+      ->fields(array(
+        'status' => 1,
+        'schema_version' => 0,
+      ))
+      ->condition('name', $new_profile, '=')
+      ->execute();
+
+  db_update('system')
+      ->fields(array(
+        'status' => 0,
+        'schema_version' => -1,
+      ))
+      ->condition('name', $old_profile, '=')
+      ->execute();
+
+  drupal_flush_all_caches();
+}
+
+/**
+ * Enable custom meta tags.
+ */
+function usanetwork_core_update_7146() {
+  $modules_en = array(
+    'usanetwork_quiz',
+    'usanetwork_custom_metatags',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable program guide module.
+ */
+function usanetwork_core_update_7147() {
+  $modules_en = array(
+    'usanetwork_program_guide',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable seo catchall module.
+ */
+function usanetwork_core_update_7148() {
+  $modules_en = array(
+    'usanetwork_seo_page',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable lazy load module.
+ */
+function usanetwork_core_update_7149() {
+  $modules_en = array(
+    'usanetwork_lazy_load',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable usanetwork MPS module with setting for usanetwork.
+ */
+function usanetwork_core_update_7150() {
+  $modules_en = array(
+    'usanetwork_mps',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Enable usanetwork MPS module with setting for usanetwork.
+ */
+function usanetwork_core_update_7151() {
+  $modules_en = array(
+    'usanetwork_seo',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Disable imagefield_focus and enable focal_point module with setting for usanetwork.
+ */
+function usanetwork_core_update_7152() {
+  $modules_dis = array(
+    'imagefield_focus',
+  );
+  module_disable($modules_dis);
+
+  $modules_en = array(
+    'focal_point',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Move settings for files from imagefield_focus to focal_point table.
+ */
+function usanetwork_core_update_7153() {
+  $image_points = db_select('imagefield_focus_file', 'iff')
+      ->fields('iff', array('fid', 'focus_rect'))
+      ->execute()
+      ->fetchAll();
+  foreach ($image_points as $row) {
+
+    if ($row->focus_rect == "")
+      continue;
+
+    list($x, $y,, ) = explode(',', $row->focus_rect);
+
+    db_merge('focal_point')
+        ->key(array('fid' => $row->fid))
+        ->fields(array(
+          'fid' => $row->fid,
+          'focal_point' => "$x,$y",
+        ))->execute();
+  }
+}
+
+/**
+ * Enables 'program_guide' module if it disabled.
+ */
+function usanetwork_core_update_7154() {
+  if (!module_exists('program_guide')) {
+    module_enable(array('program_guide'));
+  }
+}
+
+/**
+ * Enables 'panels_mini', 'page_manager' and 'usanetwork_menu' modules.
+ */
+function usanetwork_core_update_7155() {
+  $to_be_enabled = array(
+    'panels_mini',
+    'page_manager',
+    'usanetwork_menu',
+    'special_menu_items',
+  );
+
+  foreach ($to_be_enabled as $new_module) {
+    if (!module_exists($new_module)) {
+      module_enable(array($new_module));
+    }
+  }
+}
+
+/**
+ * Enables usanetwork_schedule module.
+ */
+function usanetwork_core_update_7156() {
+  module_enable(array('usanetwork_schedule'));
+}
+
+/**
+ *  Changing lazyloader module and enabling usanetwork overlay.
+ */
+function usanetwork_core_update_7160() {
+  $to_be_enabled = array(
+    'lazyloader',
+  );
+
+  $to_be_disabled = array(
+    'usanetwork_lazy_load',
+  );
+
+  foreach ($to_be_enabled as $new_module) {
+    if (!module_exists($new_module)) {
+      module_enable(array($new_module));
+    }
+  }
+
+  foreach ($to_be_disabled as $old_module) {
+    if (module_exists($old_module)) {
+      module_disable(array($old_module));
+    }
+  }
+}
+
+/**
+ * Enables module usanetwork_dynamic_entity_reference.
+ */
+function usanetwork_core_update_7163() {
+  if (!module_exists('usanetwork_dynamic_entity_reference')) {
+    module_enable(array('usanetwork_dynamic_entity_reference'));
+  }
+}
+
+/**
+ * Enables module usanetwork_overlay.
+ */
+function usanetwork_core_update_7164() {
+  if (!module_exists('usanetwork_search')) {
+    module_enable(array('usanetwork_search'));
+  }
+}
+
+/**
+ * Enables module usanetwork_dynamic_entity_reference.
+ */
+function usanetwork_core_update_7165() {
+  if (!module_exists('usanetwork_dynamic_entity_reference')) {
+    module_enable(array('usanetwork_dynamic_entity_reference'));
+  }
+}
+
+/**
+ * Enables module usanetwork_full_bleed_promo.
+ */
+function usanetwork_core_update_7167() {
+  if (!module_exists('usanetwork_full_bleed_promo')) {
+    module_enable(array('usanetwork_full_bleed_promo'));
+  }
+}
+
+/**
+ * Enable usanetwork_microsite module
+ */
+function usanetwork_core_update_7168() {
+  $modules_en = array(
+    'usanetwork_microsite',
+  );
+  module_enable($modules_en);
+}
+
+/**
+ * Disable WatchWith modules
+ */
+function usanetwork_core_update_7169() {
+  $modules_dis = array(
+    'usanetwork_watchwith',
+    'tve_watchwith',
+  );
+  module_disable($modules_dis);
+}
+
+/**
+ * Enables usanetwork_social_meter module.
+ */
+function usanetwork_core_update_7170() {
+  if (!module_exists('usanetwork_social_meter')) {
+    module_enable(array('usanetwork_social_meter'));
+  }
+}
+
+/**
+ * Enables context_block_disable module.
+ */
+function usanetwork_core_update_7171() {
+  if (!module_exists('context_block_disable')) {
+    module_enable(array('context_block_disable'));
+  }
+}
+
+/**
+ * Enables usanetwork_consumptionator_post module.
+ */
+function usanetwork_core_update_7172() {
+  if (!module_exists('usanetwork_consumptionator_post')) {
+    module_enable(array('usanetwork_consumptionator_post'));
+  }
+}
+
+/**
+ * Enables usanetwork_movie module.
+ */
+function usanetwork_core_update_7173() {
+  if (!module_exists('usanetwork_movie')) {
+    module_enable(array('usanetwork_movie'));
+  }
+}
+
+/**
+ * Enables nbcu_seo_landings module.
+ */
+function usanetwork_core_update_7174() {
+  if (!module_exists('nbcu_seo_landings')) {
+    module_enable(array('nbcu_seo_landings'));
+  }
+}
+
+/**
+ * Enables usanetwork_movie_relation module.
+ */
+function usanetwork_core_update_7175() {
+  if (!module_exists('usanetwork_movie_relation')) {
+    module_enable(array('usanetwork_movie_relation'));
+  }
+}
+
+/**
+ * Enables usanetwork_related_content module.
+ */
+function usanetwork_core_update_7176() {
+  if (!module_exists('usanetwork_related_content')) {
+    module_enable(array('usanetwork_related_content'));
+  }
+}
+
+/**
+ * Enables custom_add_another module.
+ */
+function usanetwork_core_update_7177() {
+  if (!module_exists('custom_add_another')) {
+    module_enable(array('custom_add_another'));
+  }
+}
+
+/**
+ * Enables usanetwork_dtm module.
+ */
+function usanetwork_core_update_7178() {
+  if (!module_exists('usanetwork_dtm')) {
+    module_enable(array('usanetwork_dtm'));
+  }
+}
+
+/**
+ * Enables usanetwork_top3 module.
+ */
+function usanetwork_core_update_7179() {
+  if (!module_exists('usanetwork_top3')) {
+    module_enable(array('usanetwork_top3'));
+  }
+}
+
+/**
+ * Enables advagg module.
+ */
+function usanetwork_core_update_7180() {
+  if (!module_exists('advagg')) {
+    module_enable(array('advagg'));
+  }
+  if (!module_exists('advagg_bundler')) {
+    module_enable(array('advagg_bundler'));
+  }
+}
+
+/**
+ * Implements hook_update_N().
+ * Delete ideamelt fields and field groups.
+ */
+function usanetwork_core_update_7181() {
+  $fields_to_delete = array(
+    'field_ideamelt_action_type',
+    'field_ideamelt_object_type',
+    'field_send_ideamelt_notification',
+  );
+  foreach ($fields_to_delete as $field_name) {
+    field_delete_field($field_name);
+    watchdog('usanetwork_core', 'Deleted the :field_name field from all content type instances.', array(':field_name' => $field_name));
+  }
+
+  /**
+   * The fields aren't really deleted until the purge function runs, ordinarily
+   * during cron.  Count the number of fields we need to purge, and add five in
+   * case a few other miscellaneous fields are in there somehow.
+   */
+  field_purge_batch(count($fields_to_delete) + 5);
+
+  ctools_include('export');
+  if ($group = field_group_load_field_group('group_catchall_ideamelt', 'node', 'catchall_page', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_gallery_ideamelt', 'node', 'media_gallery', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_page_ideamelt', 'node', 'usanetwork_static_page', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_gallery_ideamelt', 'node', 'timeline_gallery', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_episode_ideamelt', 'node', 'tv_episode', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  $voc = taxonomy_vocabulary_machine_name_load('object_type');
+  taxonomy_vocabulary_delete($voc->vid);
+
+}
+
+/**
+ * Delete Shop Link.
+ */
+function usanetwork_core_update_7182() {
+  menu_link_delete(NULL, 'http://www.nbcuniversalstore.com/?v=usa');
+}
+
+/**
+ * Install usanetwork_video_live module.
+ */
+function usanetwork_core_update_7183() {
+  if (!module_exists('usanetwork_video_live')) {
+    module_enable(array('usanetwork_video_live'));
+  }
+}
+
+/**
+ * Install usanetwork_blog_migrate module.
+ */
+function usanetwork_core_update_7184() {
+  if (!module_exists('usanetwork_blog_migrate')) {
+    module_enable(array('usanetwork_blog_migrate'));
+  }
+}
+
+/**
+ * Enables AdvAgg Modifier module.
+ */
+function usanetwork_core_update_7185() {
+  if (!module_exists('advagg_mod')) {
+    module_enable(array('advagg_mod'));
+  }
+}
+
+/**
+ * Enables USANetwork News module.
+ */
+function usanetwork_core_update_7186() {
+  if (!module_exists('usanetwork_news')) {
+    module_enable(array('usanetwork_news'));
+  }
+}
+
+/**
+ * Changes for Auth2.
+ */
+function usanetwork_core_update_7187() {
+  if (module_exists('tve_k2')) {
+    module_disable(array('tve_k2'));
+  }
+  if (module_exists('tve_auth')) {
+    module_disable(array('tve_auth'));
+  }
+  if (!module_exists('tve_auth2')) {
+    module_enable(array('tve_auth2'));
+  }
+  if (!module_exists('tve_player')) {
+    module_enable(array('tve_player'));
+  }
+  if (!module_exists('tve_auth2_cookies')) {
+    module_enable(array('tve_auth2_cookies'));
+  }
+}
+
+/**
+ * Enables Akamai module.
+ */
+function usanetwork_core_update_7188() {
+  if (!module_exists('akamai')) {
+    module_enable(array('akamai'));
+  }
+}
+
+/**
+ * Enable Social Plugin Module.
+ */
+function usanetwork_core_update_7189() {
+  if (!module_exists('usanetwork_social_plugin')) {
+    module_enable(array('usanetwork_social_plugin'));
+  }
+}
+
+/**
+ * Enable Usanetwork Pop-up Module.
+ */
+function usanetwork_core_update_7190() {
+  if (!module_exists('usanetwork_popup')) {
+    module_enable(array('usanetwork_popup'));
+  }
+}
+
+/**
+ * Disable usanetwork_nitro module.
+ */
+function usanetwork_core_update_7191() {
+  $fields_to_delete = array(
+    'field_enable_nitro',
+    'field_nitro_action_name',
+  );
+  foreach ($fields_to_delete as $field_name) {
+    field_delete_field($field_name);
+    watchdog('usanetwork_core', 'Deleted the :field_name field from all content type instances.', array(':field_name' => $field_name));
+  }
+
+  ctools_include('export');
+  if ($group = field_group_load_field_group('group_catchall_nitro', 'node', 'catchall_page', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_media_gallery_nitro', 'node', 'media_gallery', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_tv_episode_nitro', 'node', 'tv_episode', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_person_nitro', 'node', 'person', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+  if ($group = field_group_load_field_group('group_timeline_gallery_nitro', 'node', 'timeline_gallery', 'form')) {
+    field_group_group_export_delete($group, FALSE);
+  }
+
+  $modules = array('usanetwork_nitro');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_gobal_nav_image module.
+ */
+function usanetwork_core_update_7192() {
+  $fields_to_delete = array(
+    'field_hp_nav_img_shows',
+  );
+  foreach ($fields_to_delete as $field_name) {
+    field_delete_field($field_name);
+    watchdog('usanetwork_core', 'Deleted the :field_name field from all content type instances.', array(':field_name' => $field_name));
+  }
+
+  $types = array(
+    'global_nav_image',
+  );
+  foreach($types as $type) {
+    // First, delete nodes
+    $results = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('type', $type)
+      ->execute();
+    foreach ($results as $result) {
+      $nids[] = $result->nid;
+    }
+    if (!empty($nids)) {
+      node_delete_multiple($nids);
+      drupal_set_message(t('%count nodes has been deleted.', array('%count' => count($nids))));
+    }
+    // Then, delete content type
+    if (node_type_load($type)) {
+      node_type_delete($type);
+      variable_del('node_preview_' . $type);
+      drupal_set_message(t('%type content type has been deleted.', array('%type' => $type)));
+    }
+  }
+  node_types_rebuild();
+  menu_rebuild();
+
+  $modules = array('usanetwork_gobal_nav_image');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_widget module.
+ */
+function usanetwork_core_update_7193() {
+  $modules = array('usanetwork_widget');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_widget module.
+ */
+function usanetwork_core_update_7194() {
+  $types = array(
+    'snipe',
+  );
+  foreach($types as $type) {
+    // First, delete nodes
+    $results = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('type', $type)
+      ->execute();
+    foreach ($results as $result) {
+      $nids[] = $result->nid;
+    }
+    if (!empty($nids)) {
+      node_delete_multiple($nids);
+      drupal_set_message(t('%count nodes has been deleted.', array('%count' => count($nids))));
+    }
+    // Then, delete content type
+    if (node_type_load($type)) {
+      node_type_delete($type);
+      variable_del('node_preview_' . $type);
+      drupal_set_message(t('%type content type has been deleted.', array('%type' => $type)));
+    }
+  }
+  node_types_rebuild();
+  menu_rebuild();
+
+  $modules = array('usanetwork_snipe');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_custompages module.
+ */
+function usanetwork_core_update_7195() {
+  $modules = array('usanetwork_custompages');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Uninstall disable modules.
+ */
+function usanetwork_core_update_7196() {
+  $modules = array(
+    'usanetwork_personalization',
+    'usanetwork_snipe',
+    'usanetwork_watchwith',
+    );
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_gobal_nav_image module.
+ */
+function usanetwork_core_update_7197() {
+  $types = array(
+    'usanetwork_promo_iframe',
+  );
+  foreach($types as $type) {
+    // First, delete nodes
+    $results = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('type', $type)
+      ->execute();
+    foreach ($results as $result) {
+      $nids[] = $result->nid;
+    }
+    if (!empty($nids)) {
+      node_delete_multiple($nids);
+      drupal_set_message(t('%count nodes has been deleted.', array('%count' => count($nids))));
+    }
+    // Then, delete content type
+    if (node_type_load($type)) {
+      node_type_delete($type);
+      variable_del('node_preview_' . $type);
+      drupal_set_message(t('%type content type has been deleted.', array('%type' => $type)));
+    }
+  }
+  node_types_rebuild();
+  menu_rebuild();
+
+  $modules = array('usanetwork_promo_iframe');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable metatag_twitter_cards_see_it module.
+ */
+function usanetwork_core_update_7198() {
+  $modules = array('metatag_twitter_cards_see_it');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Disable usanetwork_umbel module.
+ */
+function usanetwork_core_update_7199() {
+  $modules = array('usanetwork_umbel');
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}

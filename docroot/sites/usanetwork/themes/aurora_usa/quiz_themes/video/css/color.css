@@ -1,0 +1,12 @@
+.usanetwork-quiz.usanetwork-quiz-theme-video .button {
+  background-color: $accent-color;
+}
+.usanetwork-quiz.usanetwork-quiz-theme-video .button:hover {
+  background-color: $accent-hover-color;
+}
+.usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer .answer-title:hover {
+  background-color: $accent-hover-color;
+}
+.usanetwork-quiz.usanetwork-quiz-theme-video .usanetwork-quiz-answer .answer-image img:hover {
+  border-color: $accent-hover-color;
+}

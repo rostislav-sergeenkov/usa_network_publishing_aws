@@ -1,0 +1,44 @@
+diff --git a/docroot/profiles/all/modules/contrib/media_theplatform_mpx/media_theplatform_mpx.video.php b/docroot/profiles/all/modules/contrib/media_theplatform_mpx/media_theplatform_mpx.video.php
+
+--- a/docroot/profiles/all/modules/contrib/media_theplatform_mpx/media_theplatform_mpx.video.php
++++ b/docroot/profiles/all/modules/contrib/media_theplatform_mpx/media_theplatform_mpx.video.php
+
+@@ -616,7 +616,8 @@
+ 
+   // Check if fid exists in files table for URI = mpx://m/GUID/*.
+   $guid = $video['guid'];
+-  $files = media_theplatform_mpx_get_files_by_guid($guid);
++//  $files = media_theplatform_mpx_get_files_by_guid($guid);
++  $files = media_theplatform_mpx_get_files_by_guid_account($guid, $account->id);
+   $op = '';
+ 
+   // If a file exists:
+@@ -686,7 +687,8 @@
+       ),
+       WATCHDOG_INFO);
+     $provider = media_internet_get_provider($embed_code);
+-    $file = $provider->save($account);
++    //$file = $provider->save($account);
++    $file = $provider->insert($account);
+     $fid = $file->fid;
+     if ($fid) {
+       watchdog('media_theplatform_mpx', 'Successfully created file @fid with uri -- @uri -- for video @id and @account.',
+@@ -983,6 +985,18 @@
+ }
+ 
+ /**
++ * Returns array of all records in file_managed with mpx://m/$guid/% and type of video.
++ */
++function media_theplatform_mpx_get_files_by_guid_account($guid, $account_id) {
++  return db_select('file_managed', 'f')
++    ->fields('f')
++    ->condition('uri', 'mpx://m/' . $guid . '/%', 'LIKE')
++    ->condition('type', 'mpx_video_' . $account_id, '=')
++    ->execute()
++    ->fetchAll();
++}
++
++/**
+  * Returns array of all records in file_managed with mpx://m/%/p/[player_fid].
+  */
+  

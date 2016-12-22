@@ -1,0 +1,5 @@
+/* gigya */
+#microsite .gig-bar-container .gig-button-container .usa-share-button:before,
+#microsite .field-type-gigya-sharebar .gig-button-container .usa-share-button:before {
+  color: #6c6f71;
+}

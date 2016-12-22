@@ -1,0 +1,1661 @@
+header {
+  @include clear();
+  min-width: 300px;
+  position: relative;
+  width: 100%;
+  z-index: 10;
+  #head-leaderboard {
+    overflow: auto;
+  }
+  body:not(.node-type-tv-show):not(.consumptionator-page) & {
+    background-color: $poll-back;
+    .header-nav-bar {
+      -webkit-transition: all 0.5s ease-out 0s;
+      -moz-transition: all 0.5s ease-out 0s;
+      -o-transition: all 0.5s ease-out 0s;
+      transition: all 0.5s ease-out 0s;
+    }
+    .usa-logo {
+      -webkit-transition: all 0.5s ease-out 0s;
+      -moz-transition: all 0.5s ease-out 0s;
+      -o-transition: all 0.5s ease-out 0s;
+      transition: all 0.5s ease-out 0s;
+    }
+    .nav-bar-tabs {
+      @include breakpoint($bp-min-769-width) {
+        a {
+          -webkit-transition: all 0.5s ease-out 0s;
+          -moz-transition: all 0.5s ease-out 0s;
+          -o-transition: all 0.5s ease-out 0s;
+          transition: all 0.5s ease-out 0s;
+        }
+      }
+    }
+    .show-title-block {
+      @include breakpoint($bp-min-769-width) {
+        -webkit-transition: all 0.5s ease-out 0s;
+        -moz-transition: all 0.5s ease-out 0s;
+        -o-transition: all 0.5s ease-out 0s;
+        transition: all 0.5s ease-out 0s;
+      }
+      .title {
+        @include breakpoint($bp-min-769-width) {
+          -webkit-transition: all 0.5s ease-out 0s;
+          -moz-transition: all 0.5s ease-out 0s;
+          -o-transition: all 0.5s ease-out 0s;
+          transition: all 0.5s ease-out 0s;
+        }
+      }
+    }
+    .region-header {
+      &.sticky-shows-submenu {
+        z-index: 10000000;
+        .header-nav-bar {
+          height: get-vw(48.7px, 1025);
+          @include breakpoint($bp-min-1901-width) {
+            height: 90px;
+          }
+        }
+        .usa-logo {
+          background: none!important;
+          width: get-vw(67px, 1025);
+          @include breakpoint($bp-min-1901-width) {
+            width: 123px;
+          }
+          a {
+            background-image: url('../images/usa-logo-small-menu.png');
+          }
+        }
+        .nav-bar-tabs {
+          @include breakpoint($bp-min-769-width) {
+            a {
+              font-size: get-vw(9px, 1025);
+              line-height: get-vw(48.7px, 1025);
+              padding: 0 get-vw(32px, 1025);
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 16.7px;
+                line-height: 90px;
+                padding: 0 59.3px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 9px;
+              }
+            }
+          }
+        }
+        .show-title-block {
+          @include breakpoint($bp-min-769-width) {
+            height: get-vw(62px, 1901);
+          }
+          @include breakpoint($bp-min-1901-width) {
+            height: 62px;
+          }
+          .title {
+            @include breakpoint($bp-min-769-width) {
+              font-size: get-vw(24px, 1901);
+              line-height: get-vw(62px, 1901);
+              margin: 0 get-vw(30px, 1901) 0 20px;
+            }
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 24px;
+              line-height: 62px;
+              margin: 0 30px 0 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  ul, li, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  h2 {
+    margin: 0;
+  }
+  .header-nav-bar {
+    @include clear();
+    background-color: $header-tab-back;
+    height: get-vw(73px, 1025);
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-1901-width) {
+      height: 135px;
+    }
+    @include breakpoint($bp-768-width) {
+      background: $footer-links;
+      height: auto;
+    }
+    .no-refresh {
+      outline: none;
+      position: relative;
+      &.active {
+        &:before {
+          @include breakpoint($bp-min-769-width) {
+            background: $header-tab-back-new;
+            bottom: -1px;
+            content: '';
+            display: block;
+            height: 1px;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+  .usa-logo {
+    background: $usa-logo-back;
+    float: left;
+    height: 100%;
+    width: get-vw(100px, 1025);
+    @include breakpoint($bp-min-1901-width) {
+      width: 185px;
+    }
+    &:hover {
+      background: lighten($usa-logo-back, 15%);
+    }
+    @include breakpoint($bp-768-width) {
+      height: 50px;
+      width: 75px;
+      &.active {
+        display: none;
+      }
+    }
+    a {
+      background: url('../images/logo-bg.png') no-repeat;
+      background-position: 50% 50%;
+      background-size: contain;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .show-title-wrapper {
+    display: none;
+    border-left: 1px solid transparent;
+    margin-left: 75px;
+    margin-right: 50px;
+    position: relative;
+    text-align: center;
+    width: auto;
+    @include breakpoint($bp-768-width) {
+      display: block;
+
+    }
+    @include breakpoint($bp-480-width) {
+      max-height: 50px;
+    }
+  }
+  .nav-bar-tabs {
+    float: left;
+    height: 100%;
+    @include breakpoint($bp-768-width) {
+      clear: both;
+      display: none;
+      float: none;
+      width: 100%;
+      &.active {
+        display: block;
+      }
+      ul {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        li {
+          padding: 0;
+          &.expanded {
+            &.active {
+              height: auto;
+              > ul.menu {
+                display: block;
+              }
+              > .item-list {
+                > ul.menu {
+                  display: block;
+                  margin: 0;
+                }
+              }
+            }
+            > a {
+              &:before {
+                border: 1px solid #ffffff !important;
+                border-radius: 50%;
+                display: block;
+                content: '';
+                height: 30px;
+                position: absolute;
+                right: 9px;
+                top: 9px;
+                width: 30px;
+              }
+              &:after {
+                display: block;
+                content: '';
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                @include sprite-background(plus-icon);
+              }
+              &.active {
+                &:after {
+                  @include sprite-background(minus-icon);
+                }
+              }
+            }
+          }
+          &.header-show-menu {
+            a {
+              border-bottom: 0 !important;
+            }
+            ul.menu {
+              > li {
+                height: 40px;
+                > a {
+                  line-height: 40px;
+                  &.active {
+                    opacity: 0.8;
+                  }
+                  &:before {
+                    bottom: 0;
+                    content: '';
+                    display: block;
+                    height: 1px;
+                    left: 0;
+                    position: absolute;
+                    width: 100%;
+                  }
+                }
+                li {
+                  a {
+                    &:before {
+                      left: 60px;
+                    }
+                  }
+                }
+                &:last-child {
+                  a {
+                    &:before {
+                      display: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        > li {
+          height: 50px;
+          position: relative;
+          width: 100%;
+          a {
+            background: $header-tab-back-new;
+            border-bottom: 2px solid $header-tab-text;
+            color: #ffffff;
+            cursor: pointer;
+            display: block;
+            font-family: $avalon-medium;
+            font-size: 14px;
+            height: 100%;
+            line-height: 50px;
+            padding-left: 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            width: 100%;
+            &:hover, &:active {
+              color: white;
+            }
+            &.log-on {
+              background: $header-tab-back-hover;
+              padding-left: 60px;
+              &:before {
+                content: '';
+                display: block;
+                left: 15px;
+                margin-top: -15px;
+                position: absolute;
+                top: 50%;
+                @include sprite-background(profile-icon);
+              }
+              span {
+                background: $usa-logo-back;
+                border-radius: 50%;
+                color: #ffffff;
+                display: block;
+                font-family: $avalon-medium;
+                font-size: 11px;
+                height: 11px;
+                left: 40px;
+                line-height: 12px;
+                position: absolute;
+                text-align: center;
+                top: 5px;
+                width: 11px;
+              }
+            }
+          }
+          ul.menu {
+            display: none;
+            position: relative;
+            width: 100%;
+            li {
+              height: 30px;
+              position: relative;
+              width: 100%;
+              &.expanded {
+                > a {
+                  &:after {
+                    top: 10px;
+                  }
+                }
+              }
+              a {
+                background: $header-tab-back-hover;
+                border-bottom: 2px solid $footer-links;
+                line-height: 30px;
+                padding-left: 40px;
+              }
+              ul.menu {
+                a {
+                  padding-left: 50px;
+                }
+              }
+            }
+            &.categorized-menu {
+              a {
+                background: $header-menu-item-back;
+                border-color: $header-tab-text;
+                color: #ffffff;
+                padding-left: 50px;
+              }
+              span.no-link {
+                background: $header-menu-item-back;
+                border-bottom: 2px solid $header-tab-text;
+                color: #ffffff;
+                display: block;
+                font-family: $tex-gyreschola-italic;
+                height: 30px;
+                line-height: 30px;
+                padding-left: 30px;
+                text-transform: uppercase;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    @include breakpoint($bp-min-769-width) {
+      ul {
+        display: block;
+        li {
+          &.expanded {
+            list-style: none;
+          }
+        }
+      }
+      .header-show-menu {
+        display: none;
+      }
+      .tab {
+        float: left;
+        height: 100%;
+        padding: 0;
+        .item-list {
+          display: none;
+          ul {
+            margin: 0;
+          }
+        }
+      }
+      a {
+        background: $header-tab-back;
+        border-left: 1px solid $header-tab-back;
+        border-right: 1px solid $header-tab-back;
+        color: $header-tab-text;
+        cursor: pointer;
+        display: block;
+        font-family: $avalon-medium;
+        font-size: get-vw(11.275px, 1025);
+        height: 100%;
+        line-height: get-vw(73px, 1025);
+        letter-spacing: 0.5px;
+        padding: 0 get-vw(38px, 1025);
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 20.9px;
+          line-height: 135px;
+          padding: 0 70.4px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: 11.275px;
+        }
+        @include breakpoint($between-769-1024) {
+          padding: 0 get-vw(25px, 768);
+        }
+        &:hover, &:active {
+          color: $header-tab-text;
+        }
+        &.active {
+          background: $header-tab-back-new;
+          color: #ffffff;
+          &:hover {
+            background: $header-tab-back-new;
+          }
+        }
+        &:hover {
+          background: $header-tab-back-hover;
+        }
+        &:focus, &:visited, &:active {
+          outline: none;
+        }
+      }
+    }
+    #newsletter-container {
+      @include clear();
+      height: auto;
+      position: relative;
+      width: 100%;
+      &.active {
+        form {
+          display: block;
+        }
+      }
+      form {
+        @include clear();
+        display: none;
+        padding: 12px 15px;
+        position: relative;
+        width: 100%;
+        label {
+          clear: both;
+          color: $footer-back-home;
+          display: block;
+          font-family: $avalon-medium;
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+        .form-item-email {
+          display: block;
+          float: left;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          width: calc(100% - 125px);
+          input {
+            color: $footer-back-home;
+            background: none;
+            border: 1px solid #3d3d3d;
+            font-family: $avalon-demi;
+            font-size: 13px;
+            height: 22.5px;
+            letter-spacing: 2px;
+            line-height: 22.5px;
+            margin: 0;
+            overflow: hidden;
+            outline: none;
+            padding: 18px 12px;
+            text-transform: uppercase;
+            width: 100%;
+            &::-webkit-input-placeholder {color:$footer-back-home; text-transform: uppercase;}
+            &::-moz-placeholder          {color:$footer-back-home; text-transform: uppercase;}
+            &:-moz-placeholder           {color:$footer-back-home; text-transform: uppercase;}
+            &:-ms-input-placeholder      {color:$footer-back-home; text-transform: uppercase;}
+          }
+        }
+        .form-submit-wrapper {
+          display: block;
+          float: right;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          width: 100px;
+          input {
+            border: 0;
+            color: $text-color;
+            font-family: $avalon-demi;
+            font-size: 13px;
+            height: 38px;
+            letter-spacing: 2px;
+            line-height: 38px;
+            padding: 0 30px 0 15px;
+            position: relative;
+            text-transform: uppercase;
+          }
+          &:after {
+            color: #ffffff;
+            content: "\e608";
+            display: block;
+            font-family: $ico-font;
+            font-size: 12px;
+            line-height: 1;
+            position: absolute;
+            right: 14px;
+            top: 13px;
+          }
+        }
+        .newsletter-lyris-ajax-wrapper {
+          color: $footer-back-home;
+          font-family: $avalon-medium;
+          font-size: 16px;
+          .placeholder {
+            font-family: $avalon-demi;
+            font-style: normal;
+          }
+        }
+      }
+    }
+    #menu-newsletter {
+      cursor: pointer;
+      font-family: $avalon-medium;
+      font-size: 14px;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 40px;
+      text-transform: uppercase;
+      &:before {
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 1px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+  .main-menu-open {
+    background: $header-tab-text;
+    display: none;
+    height: 50px;
+    right: 0px;
+    position: absolute;
+    top: 0;
+    width: 50px;
+    @include breakpoint($bp-768-width) {
+      display: block;
+    }
+    &.active {
+      border-left: 1px solid $footer-links;
+    }
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      &.active {
+        &:after {
+          @include sprite-background(x-icon);
+          margin-left: -11px;
+          @include breakpoint($bp-1024-width) {
+            margin-top: -10px;
+            margin-left: -11px;
+          }
+        }
+      }
+      &:after {
+        content: '';
+        display: block;
+        left: 50%;
+        margin-top: -8px;
+        margin-left: -13px;
+        position: absolute;
+        top: 50%;
+        @include sprite-background(menu-icon);
+        @include breakpoint($bp-1024-width) {
+          @include sprite-background(menu-icon-small);
+          margin-top: -6px;
+          margin-left: -10px;
+        }
+      }
+    }
+  }
+  .tab-content {
+    @include clear();
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    @include breakpoint($bp-768-width) {
+      display: none;
+    }
+  }
+  .tab-item {
+    @include clear();
+    background: $header-tab-back-new;
+    display: none;
+    letter-spacing: 0.5px;
+    height: auto;
+    padding: get-vw(50px, 1025) get-vw(30px, 1025);
+    position: relative;
+    width: 100%;
+    @include breakpoint($bp-min-1901-width) {
+      padding: 96px 53px;
+    }
+    @include breakpoint($bp-1024-width) {
+      padding: 50px 30px;
+    }
+    @include breakpoint($bp-768-width) {
+      padding: 20px;
+    }
+    @include breakpoint($bp-480-width) {
+      padding: 10px;
+    }
+    &.active {
+      display: block;
+    }
+    .see-all-link {
+      right: 0;
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      a {
+        background: $header-tab-button-back;
+        color: #ffffff;
+        display: block;
+        font-size: get-vw(10px, 1025);
+        font-family: $avalon-book;
+        line-height: 1;
+        padding: get-vw(10px, 1025) get-vw(25px, 1025) get-vw(10px, 1025) get-vw(15px, 1025);
+        position: relative;
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 18px;
+          padding: 18px 46px 18px 27px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: 10px;
+          padding: 10px 25px 10px 15px;
+        }
+        &:after {
+          content: "\e608";
+          color: #ffffff;
+          font-family: "ico-font";
+          font-size: get-vw(10px, 1025);
+          display: block;
+          position: absolute;
+          right: get-vw(8px, 1025);
+          top: 50%;
+          margin-top: get-vw(-5px, 1025);
+          line-height: 1;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 18px;
+            margin-top: -9px;
+            right: 14.8px;
+          }
+          @include breakpoint($bp-1024-width) {
+            font-size: 10px;
+            margin-top: -5px;
+            right: 8px;
+          }
+        }
+      }
+    }
+    &.shows-tab {
+      padding: get-vw(24px, 1025) get-vw(30px, 1025) get-vw(50px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        padding: 48px 53px 96px;
+      }
+      @include breakpoint($bp-1024-width) {
+        padding: 24px 30px 50px;
+      }
+      .show-tab-wrapper {
+        @include clear;
+        margin: 0 auto;
+        max-width: 1778px;
+        position: relative;
+        width: 100%;
+      }
+      .panel-pane {
+        float: left;
+        position: relative;
+        h2 {
+          color: $header-tab-title;
+          font-family: $tex-gyreschola-italic;
+          font-size: get-vw(15px, 1025);
+          letter-spacing: 2px;
+          margin-bottom: get-vw(35px, 1025);
+          padding-top: get-vw(26px, 1025);
+          text-transform: uppercase;
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 28px;
+            margin-bottom: 65px;
+            padding-top: 48px;
+          }
+          @include breakpoint($bp-1024-width) {
+            font-size: 15px;
+            margin-bottom: 35px;
+            padding-top: 26px;
+          }
+        }
+        ul {
+          list-style: none;
+        }
+        li {
+          list-style: outside none none;
+          margin-bottom: get-vw(10px, 1025);
+          @include breakpoint($bp-min-1901-width) {
+            font-size: 18.5px;
+          }
+          a {
+            color: #ffffff;
+            font-family: $avalon-medium;
+            font-size: get-vw(13px, 1025);
+            letter-spacing: 0.5px;
+            line-height: 1;
+            text-decoration: none;
+            text-transform: uppercase;
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 25px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: 13px;
+            }
+            span {
+              color: #000000;
+            }
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      .originals-shows-menu {
+        width: 70%;
+        @include breakpoint($between-769-1024) {
+          width: (100% * (2/3));
+        }
+        &:only-child {
+          width: 100%;
+          ul {
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            -ms-column-count: 3;
+            -o-column-count: 3;
+            column-count: 3;
+            -webkit-column-gap: 3em;
+            -moz-column-gap: 3em;
+            -ms-column-gap: 3em;
+            -o-column-gap: 3em;
+            column-gap: 3em;
+          }
+        }
+        ul {
+          -webkit-column-count: 2;
+          -moz-column-count: 2;
+          -ms-column-count: 2;
+          -o-column-count: 2;
+          column-count: 2;
+          -webkit-column-gap: 2em;
+          -moz-column-gap: 2em;
+          -ms-column-gap: 2em;
+          -o-column-gap: 2em;
+          column-gap: 2em;
+        }
+      }
+      .pane-menu-also-on-usa {
+        width: 30%;
+        @include breakpoint($bp-1280-width) {
+          width: 26%;
+        }
+        @include breakpoint($between-769-1024) {
+          width: (100% * (1/3));
+        }
+        &:only-child {
+          width: 100%;
+          ul {
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            -ms-column-count: 3;
+            -o-column-count: 3;
+            column-count: 3;
+            -webkit-column-gap: 3em;
+            -moz-column-gap: 3em;
+            -ms-column-gap: 3em;
+            -o-column-gap: 3em;
+            column-gap: 3em;
+          }
+        }
+      }
+    }
+    &.full-episode-tab, &.movies-tab, &.news-tab {
+      padding: get-vw(24px, 1025) get-vw(30px, 1025) get-vw(50px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        padding: 48px 53px 96px;
+      }
+      @include breakpoint($bp-1024-width) {
+        padding: 24px 30px 50px;
+      }
+      .full-episode-tab-wrapper, .movies-tab-wrapper, .news-tab-wrapper {
+        @include clear;
+        margin: 0 auto;
+        max-width: 1779px;
+        position: relative;
+        width: 100%;
+      }
+      @include clear;
+      color: #ffffff;
+      h2 {
+        color: $header-tab-title;
+        font-family: $tex-gyreschola-italic;
+        font-size: get-vw(15px, 1025);
+        letter-spacing: 2px;
+        margin-bottom: get-vw(13px, 1025);
+        padding-top: get-vw(26px, 1025);
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 28px;
+          margin-bottom: 24px;
+          padding-top: 48px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: 15px;
+          margin-bottom: 13px;
+          padding-top: 26px;
+        }
+      }
+      .latest-full-episodes, .latest-movies, .latest-news {
+        .full-episodes-list, .movies-list, .news-list {
+          width: 100%;
+          @include clear;
+        }
+        .node {
+          float: left;
+          height: get-vw(174px, 1025);
+          margin-right: 1.1%;
+          position: relative;
+          width: 32.6%;
+          &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+            margin-bottom: get-vw(10.4px, 1025);
+            @include breakpoint($bp-min-1901-width) {
+              margin-bottom: 19.5px;
+            }
+          }
+          &:nth-child(3), &:nth-child(6) {
+            margin-right: 0;
+          }
+          @include breakpoint($bp-min-1901-width) {
+            height: 322.7px;
+          }
+          &:not(.header-news-promo) {
+            a {
+              color: #ffffff;
+              display: block;
+              height: 100%;
+              text-decoration: none;
+              text-transform: uppercase;
+              width: 100%;
+              &:hover {
+                .asset-img {
+                  opacity: 1;
+                }
+                .meta-wrapper {
+                  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+                  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.4)));
+                  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+                  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+                  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+                  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
+                  background-repeat: no-repeat;
+                  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);
+                  z-index: 2;
+                  .meta {
+                    .meta-icon {
+                      display: block;
+                    }
+                    .additional {
+                      display: block;
+                    }
+                    .title {
+                      text-shadow: 1px 1px 0.5em $aspot-shadow;
+                    }
+                  }
+                }
+              }
+              .asset-img {
+                background: $header-full-episodes-back;
+                height: 100%;
+                overflow: hidden;
+                opacity: 0.3;
+                width: 100%;
+                img {
+                  height: 100%;
+                  width: 100%;
+                }
+              }
+              .meta-wrapper-inner {
+                display: table;
+                height: 100%;
+                width: 100%;
+              }
+              .meta-wrapper {
+                height: 100%;
+                position: absolute;
+                width: 100%;
+                .meta {
+                  display: table-cell;
+                  max-width: 100px;
+                  overflow: hidden;
+                  text-align: center;
+                  text-overflow: ellipsis;
+                  vertical-align: middle;
+                  white-space: nowrap;
+                  width: 100%;
+                  .meta-icon {
+                    display: none;
+                    height: get-vw(81px, 1901);
+                    margin: 0 auto get-vw(5px, 1025);
+                    position: relative;
+                    width: get-vw(81px, 1901);
+                    @include breakpoint($bp-min-1901-width) {
+                      height: 81px;
+                      margin-bottom: 9.3px;
+                      width: 81px;
+                    }
+                    //&.movie-play-icon {
+                    //  border: 2px solid white;
+                    //  border-radius: 50%;
+                    //  &:before {
+                    //    content: "\e627";
+                    //    display: block;
+                    //    font-family: $ico-font;
+                    //    font-size: get-vw(45px, 1901);
+                    //    line-height: get-vw(81px, 1901);
+                    //    @include breakpoint($bp-min-1901-width) {
+                    //      font-size: 45px;
+                    //      line-height: 81px;
+                    //    }
+                    //  }
+                    //}
+                  }
+                  .title {
+                    font-family: $avalon-medium;
+                    font-size: get-vw(42px, 1901);
+                    letter-spacing: 1px;
+                    line-height: 1.3;
+                    white-space: normal;
+                    @include breakpoint($bp-min-1901-width) {
+                      font-size: 42px;
+                    }
+                  }
+                  .logo {
+                    height: get-vw(37px, 1025);
+                    line-height: 1;
+                    margin: 0 auto get-vw(5px, 1025);
+                    position: relative;
+                    width: get-vw(183px, 1025);
+                    @include breakpoint($bp-min-1901-width) {
+                      height: 68px;
+                      margin-bottom: 9.3px;
+                      width: 339px;
+                    }
+                    img {
+                      height: 100%;
+                      width: 100%;
+                    }
+                  }
+                  .sponsored {
+                    display: block;
+                    margin: 0 auto get-vw(5px, 1025);
+                    @include breakpoint($between-769-1024) {
+                      margin: 0 auto;
+                    }
+                    @include breakpoint($bp-min-1901-width) {
+                      margin-bottom: 9.3px;
+                    }
+                  }
+                  .additional {
+                    display: none;
+                    font-family: $tex-gyreschola-italic;
+                    font-size: get-vw(11px, 1025);
+                    letter-spacing: 1px;
+                    line-height: 1.3;
+                    @include breakpoint($bp-min-1901-width) {
+                      font-size: 21px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &.news-tab {
+      .latest-news {
+        .header-news-promo {
+          height: auto;
+          a {
+            color: #ffffff;
+            display: block;
+            height: auto;
+            text-decoration: none;
+            width: 100%;
+            .asset-img {
+              background: $header-full-episodes-back;
+              height: get-vw(174px, 1025);
+              overflow: hidden;
+              width: 100%;
+              @include breakpoint($bp-min-1901-width) {
+                height: 322.7px;
+              }
+              img {
+                height: 100%;
+                width: 100%;
+              }
+            }
+            .meta-wrapper {
+              height: auto;
+              position: relative;
+              width: 100%;
+              .title {
+                font-family: $avalon-medium;
+                font-size: get-vw(27px, 1901);
+                line-height: 1.5;
+                @include breakpoint($bp-min-1901-width) {
+                  font-size: 27px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: get-vw(19.5px, 1025);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &.schedule-tab {
+      padding: get-vw(24px, 1025) get-vw(30px, 1025) get-vw(50px, 1025);
+      @include breakpoint($bp-min-1901-width) {
+        padding: 48px 53px 96px;
+      }
+      @include breakpoint($bp-1024-width) {
+        padding: 24px 30px 50px;
+      }
+      .schedule-tab-wrapper {
+        @include clear;
+        margin: 0 auto;
+        max-width: 1778px;
+        position: relative;
+        width: 100%;
+      }
+      h2 {
+        color: $header-tab-title;
+        font-family: $tex-gyreschola-italic;
+        font-size: get-vw(15px, 1025);
+        letter-spacing: 2px;
+        margin-bottom: get-vw(13px, 1025);
+        padding-top: get-vw(45px, 1025);
+        text-transform: uppercase;
+        @include breakpoint($bp-min-1901-width) {
+          font-size: 28px;
+          margin-bottom: 24px;
+          padding-top: 83.5px;
+        }
+        @include breakpoint($bp-1024-width) {
+          font-size: 15px;
+          margin-bottom: 13px;
+          padding-top: 45px;
+        }
+        a {
+          color: $header-tab-title;
+          &:hover {
+            color: $header-tab-title;
+          }
+        }
+      }
+      .on-now-panel {
+        float: left;
+        margin-right: 4%;
+        position: relative;
+        width: 60%;
+        .on-now-panel-title {
+          @include clear();
+          position: relative;
+          width: 100%;
+        }
+        .node {
+          @include clear();
+          position: relative;
+          width: 100%;
+          &.on-now {
+
+          }
+          &.up-next {
+            h2 {
+              float: left;
+              font-family: $tex-gyreschola-italic;
+            }
+          }
+          .asset-img {
+            float: left;
+            height: get-vw(81px, 1025);
+            overflow: hidden;
+            position: relative;
+            width: get-vw(143px, 1025);
+            img {
+              height: 100%;
+              width: 100%;
+            }
+            @include breakpoint($bp-min-1901-width) {
+              height: 150px;
+              width: 265px;
+            }
+            @include breakpoint($bp-1024-width) {
+              height: 81px;
+              width: 143px;
+            }
+          }
+          > a {
+            ~ .meta {
+              margin-left: get-vw(155px, 1025);
+              @include breakpoint($bp-min-1901-width) {
+
+              }
+              @include breakpoint($bp-1024-width) {
+                margin-left: 155px;
+              }
+            }
+            ~ .icons-block {
+              @include breakpoint($bp-1024-width) {
+                left: 10px;
+                margin-top: 0px;
+                right: auto;
+                top: 90px;
+              }
+            }
+          }
+          .meta {
+            margin-left: 0px;
+            position: relative;
+            .title {
+              color: #ffffff;
+              font-family: $avalon-book;
+              font-size: get-vw(15px, 1025);
+              letter-spacing: 1px;
+              line-height: 1.5;
+              text-transform: uppercase;
+              @include breakpoint($bp-min-1025-width) {
+                padding-right: get-vw(170px, 1025);
+              }
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 28px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 15px;
+              }
+            }
+            .caption {
+              color: $schedule-caption-color;
+              font-family: $tex-gyreschola-italic;
+              font-size: get-vw(13px, 1025);
+              letter-spacing: 1px;
+              line-height: 1.5;
+              text-transform: uppercase;
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 24px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 13px;
+              }
+            }
+            .description {
+              clear: none;
+              color: #ffffff;
+              font-family: $avalon-book;
+              font-size: get-vw(13px, 1025);
+              letter-spacing: 1px;
+              line-height: 1.3;
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 24px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 13px;
+              }
+            }
+          }
+        }
+        .icons-block {
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 1;
+          @include breakpoint($bp-1024-width) {
+            width: 155px;
+            right: 100%;
+            top: 90px;
+          }
+          a {
+            color: #ffffff !important;
+            clear: none;
+            display: inline-block;
+            float: none;
+            margin-right: get-vw(18px, 1025);
+            vertical-align: middle;
+            @include breakpoint($bp-min-1901-width) {
+              margin-right: 33.4px;
+            }
+            @include breakpoint($bp-1024-width) {
+              margin-right: 7px;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+            &:before {
+              font-size: get-vw(15px, 1025);
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 28px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 15px;
+              }
+            }
+            &.live-icon {
+              background: $header-tab-button-back;
+              color: #ffffff;
+              display: inline-block;
+              font-size: get-vw(10px, 1025);
+              font-family: $avalon-book;
+              line-height: 1;
+              padding: get-vw(7px, 1025) get-vw(25px, 1025) get-vw(7px, 1025) get-vw(10px, 1025);
+              position: relative;
+              text-transform: uppercase;
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 18px;
+                padding: 13px 46px 13px 18px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 10px;
+                padding: 7px 23px 7px 8px;
+              }
+              &:after {
+                content: "\e608";
+                color: #ffffff;
+                font-family: "ico-font";
+                font-size: get-vw(10px, 1025);
+                display: block;
+                position: absolute;
+                right: get-vw(8px, 1025);
+                top: 50%;
+                margin-top: get-vw(-5px, 1025);
+                line-height: 1;
+                @include breakpoint($bp-min-1901-width) {
+                  font-size: 18px;
+                  margin-top: -9px;
+                  right: 14.8px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: 10px;
+                  margin-top: -5px;
+                  right: 8px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .primetime-panel {
+        float: left;
+        position: relative;
+        width: 36%;
+        .schedule-item {
+          height: get-vw(77px, 1025);
+          overflow: hidden;
+          padding-left: get-vw(20px, 1025);
+          @include breakpoint($bp-min-1901-width) {
+            height: 143px;
+            padding-left: 37px;
+          }
+          @include breakpoint($bp-1024-width) {
+            height: 90px;
+            padding-left: 20px;
+          }
+          &:nth-child(2n-1) {
+            background: $tonight-section-back;
+          }
+          & > div {
+            float: left;
+          }
+          .icons-block {
+            margin-top: get-vw(-10px, 1025);
+            position: absolute;
+            right: get-vw(10px, 1025);
+            top: 50%;
+            @include breakpoint($bp-min-1901-width) {
+              margin-top: -18px;
+              right: 18.5px;
+            }
+            @include breakpoint($bp-1024-width) {
+              bottom: 5px;
+              left: 70px;
+              margin-top: 0px;
+              right: auto;
+              top: auto;
+            }
+            a {
+              color: #ffffff !important;
+              margin-right: get-vw(18px, 1025);
+              @include breakpoint($bp-min-1901-width) {
+                margin-right: 33.4px;
+              }
+              @include breakpoint($bp-1024-width) {
+                margin-right: 18px;
+              }
+              &:before {
+                font-size: get-vw(15px, 1025);
+                @include breakpoint($bp-min-1901-width) {
+                  font-size: 28px;
+                }
+                @include breakpoint($bp-1024-width) {
+                  font-size: 15px;
+                }
+              }
+              &:last-child {
+                margin-right: 0;
+              }
+            }
+          }
+          .time {
+            color: #ffffff;
+            font-family: $avalon-book;
+            font-size: get-vw(10px, 1025);
+            margin-top: get-vw(17px, 1025);
+            text-transform: uppercase;
+            width: get-vw(50px, 1025);
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 18px;
+              margin-top: 31.5px;
+              width: 93px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: 10px;
+              margin-top: 17px;
+              width: 50px;
+            }
+            span {
+              display: block;
+              font-size: get-vw(15px, 1025);
+              line-height: 1.4;
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 28px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 15px;
+              }
+            }
+          }
+          .episode-info {
+            color: #ffffff;
+            font-family: $avalon-book;
+            font-size: get-vw(15px, 1025);
+            line-height: 1.3;
+            margin-top: get-vw(17px, 1025);
+            text-transform: uppercase;
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 28px;
+              margin-top: 31.5px;
+            }
+            @include breakpoint($bp-1024-width) {
+              font-size: 15px;
+              margin-top: 17px;
+              width: calc(100% - 70px);
+            }
+            > div {
+              max-width: get-vw(200px, 1025);
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              @include breakpoint($bp-min-1901-width) {
+                max-width: 371px;
+              }
+              @include breakpoint($bp-1024-width) {
+                max-width: none;
+              }
+            }
+            .episode-title {
+              font-family: $tex-gyreschola-italic;
+              font-size: get-vw(13px, 1025);
+              letter-spacing: 1px;
+              margin-top: 5px;
+              @include breakpoint($bp-min-1901-width) {
+                font-size: 24px;
+              }
+              @include breakpoint($bp-1024-width) {
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #tve-help-link-wrapper {
+    display: none !important;
+    float: right;
+    height: 100%;
+    position: relative;
+    width: get-vw(73px, 1025);
+    @include breakpoint($bp-min-1901-width) {
+      height: 135px;
+    }
+    @include breakpoint($bp-768-width) {
+      display: none;
+    }
+    .panel-pane,
+    .pane-content {
+      height: 100%;
+    }
+  }
+  .tve-help-link {
+    background: $footer-back;
+    display: none !important;
+    float: right;
+    height: 100%;
+    @include breakpoint($bp-768-width) {
+      display: none;
+    }
+    ul, li {
+      font-size: 12px;
+      line-height: normal;
+      margin: 0;
+    }
+    a {
+      color: #ffffff;
+      outline: none;
+      font-size: 16px;
+      @include breakpoint($bp-768-width) {
+        font-size: 14px;
+      }
+    }
+    a:focus {
+      outline: none;
+    }
+    &.signOut {
+      & + .signIn.no-auth {
+        border: none;
+        height: auto;
+        width: auto;
+      }
+      &:hover {
+        background: $footer-back;
+      }
+      .links-wrapper {
+        border-left: 1px solid $header-tab-back;
+        display: table;
+        height: 100%;
+        margin-top: 0;
+        vertical-align: middle;
+        width: get-vw(73px, 1025);
+        @include breakpoint($bp-min-1901-width) {
+          width: 135px;
+        }
+        > .item-list {
+          display: table-cell;
+          vertical-align: middle;
+        }
+      }
+      a {
+        font-size: 16px;
+        line-height: 20px;
+        @include breakpoint($bp-1900-width) {
+          font-size: 12px;
+          line-height: 15px;
+        }
+      }
+      .actionLink {
+        .signOut{
+          display: block;
+          height: 40px;
+          margin: 0 auto;
+          overflow: hidden;
+          text-transform: uppercase;
+          text-align: center;
+          width: 40px;
+          @include breakpoint($bp-1900-width) {
+            height: 30px;
+            width: 30px;
+          }
+        }
+      }
+      ul.tve-header-links {
+        li.first {
+          display: none;
+          bottom: -25px;
+          left: 74.7%;
+          position: absolute;
+          text-align: right;
+          width: 25.3%;
+          z-index: 1;
+          @include breakpoint($bp-1280-width) {
+            left: auto;
+            right: 0;
+            width: 320px;
+          }
+          @include breakpoint($bp-1024-width) {
+            left: 0;
+            width: 100%;
+          }
+          .lazyloader-icon {
+            display: none;
+          }
+        }
+      }
+      .providerLogo {
+        box-sizing: border-box;
+        display: block;
+        padding-right: 15px;
+        text-align: right;
+        width: 100%;
+        img {
+          height: 16px;
+        }
+      }
+    }
+    &.signIn {
+      &.no-auth {
+        border-left: 1px solid $header-tab-back;;
+        display: block;
+        box-sizing: border-box;
+        width: get-vw(73px, 1025);
+        @include breakpoint($bp-min-1901-width) {
+          width: 135px;
+        }
+        &:hover {
+          background: $footer-back;
+        }
+        .loginButton {
+          display: block;
+          height: 100%;
+          position: relative;
+          width: 100%;
+          &:before {
+            content: '\e61e';
+            display: block;
+            font-family: $ico-font;
+            font-size: get-vw(40px, 1901);
+            left: 50%;
+            line-height: 1;
+            margin-left: get-vw(-20px, 1901);
+            margin-top: get-vw(-20px, 1901);
+            position: absolute;
+            top: 50%;
+            @include breakpoint($bp-min-1901-width) {
+              font-size: 40px;
+              margin-left: -20px;
+              margin-top: -20px;
+            }
+            @include breakpoint($bp-768-width) {
+              display: none;
+            }
+          }
+        }
+        .tve-help-sign {
+          left: auto;
+          right: 0;
+          width: 150px;
+        }
+      }
+      .tve-help-sign {
+        box-sizing: border-box;
+        bottom: -33px;
+        left: 74.7%;
+        padding-right: 15px;
+        position: absolute;
+        text-align: right;
+        width: 25.3%;
+        z-index: 1;
+        @include breakpoint($bp-1280-width) {
+          left: auto;
+          right: 0;
+          width: 320px;
+        }
+        @include breakpoint($bp-1024-width) {
+          left: 0;
+          width: 100%;
+        }
+      }
+      .inlineLoader {
+        background: url(../images/ajax-loader.gif) no-repeat scroll 50% 50%;
+        display: inline-block;
+        height: 30px;
+        margin: 0 5px;
+        vertical-align: middle;
+        width: 30px;
+      }
+    }
+  }
+  .newsletter-lyris-ajax-wrapper {
+    .close-form {
+      color: $text-color;
+      cursor: pointer;
+      display: block;
+      font-family: $avalon-demi;
+      font-size: 13px;
+      height: 38px;
+      letter-spacing: 2px;
+      line-height: 38px;
+      margin-top: 5px;
+      padding: 0 15px;
+      position: relative;
+      text-transform: uppercase;
+      width: 100px;
+      &:after {
+        color: #ffffff;
+        content: "\e62e";
+        display: block;
+        font-family: $ico-font;
+        font-size: 16px;
+        line-height: 1;
+        margin-top: -8px;
+        position: absolute;
+        right: 11px;
+        top: 50%;
+      }
+    }
+  }
+}

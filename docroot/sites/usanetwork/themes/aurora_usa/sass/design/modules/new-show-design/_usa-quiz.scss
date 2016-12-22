@@ -1,0 +1,281 @@
+.show-new-design .consumptionator-quiz-main-block {
+  @include clear();
+  overflow: hidden;
+  padding-bottom: 10000px;
+  margin-bottom: -10000px;
+  position: relative;
+  width: 100%;
+  .consum-sidebar {
+    background: black;
+    .items-block {
+      @include breakpoint($bp-min-1025-width) {
+        margin-bottom: 45px;
+      }
+      .episodes-list-slider {
+        &.horizontal-mode {
+          .usa-carousel-item {
+            @include breakpoint($bp-640-width) {
+              height: auto;
+              padding: get-vw(40px, 640) get-vw(40px, 640) 0;
+            }
+            &:nth-child(n+4) {
+              @include breakpoint($bp-640-width) {
+                display: none;
+              }
+            }
+            .meta-wrapper {
+              @include breakpoint($bp-640-width) {
+                padding: get-vw(15px, 640) get-vw(20px, 640) 0;
+              }
+            }
+          }
+          .node {
+            &.active {
+              &:before {
+                @include breakpoint($bp-640-width) {
+                  height: calc((100vw - 2*#{get-vw(40px, 640)})*0.5625);
+                  width: 7px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .items-block-title {
+        @include breakpoint($bp-640-width) {
+          border-top: none;
+          border-bottom: 1px solid;
+          height: auto;
+          line-height: 1;
+          padding: 0;
+          text-align: center;
+        }
+        h2 {
+          @include breakpoint($bp-640-width) {
+            color: white!important;
+            font-size: get-vw(25px, 640);
+            line-height: get-vw(85px, 640);
+          }
+        }
+      }
+    }
+    .more-items {
+      @include breakpoint($bp-640-width) {
+        background: black;
+        text-align: center;
+      }
+      a {
+        @include breakpoint($bp-640-width) {
+          font-size: get-vw(30px, 640);
+          line-height: get-vw(100px, 640);
+          padding: 0;
+        }
+        &:after {
+          @include breakpoint($bp-1024-width) {
+            display: none;
+          }
+        }
+        span {
+          background: none;
+          @include breakpoint($bp-min-1025-width) {
+            display: none;
+          }
+          &:after {
+            content: "\e608";
+            font-family: $ico-font;
+            @include breakpoint($bp-1024-width) {
+              display: inline-block;
+              font-size: 12px;
+              line-height: 1;
+              margin-left: 8px;
+              margin-top: -6px;
+              position: relative;
+              right: auto;
+            }
+            @include breakpoint($bp-640-width) {
+              font-size: get-vw(22px, 640);
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  article.node-quiz {
+    width: 100%;
+  }
+  .right-rail-line {
+    background: black;
+    color: white;
+    float: left;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 75%;
+    @include breakpoint($between-1025-1280) {
+      width: calc(100% - 320px);
+    }
+    @include breakpoint($bp-1024-width) {
+      border-bottom: none;
+      float: none;
+      padding: 0;
+      margin-bottom: 0;
+      width: 100%;
+    }
+    .sharebar {
+      .gig-button-container {
+        [id$='reaction0-facebook_img'] {
+          &:before {
+            color: $usa-video-helper-facebook;
+          }
+        }
+        [id$='reaction1-twitter_img'] {
+          &:before {
+            color: $usa-video-helper-twitter;
+          }
+        }
+        [id$='reaction2-tumblr_img'] {
+          &:before {
+            color: $usa-video-helper-tumblr;
+          }
+        }
+        [id$='reaction3-pinterest_img'] {
+          &:before {
+            color: $usa-video-helper-pinterest;
+          }
+        }
+        [id$='reaction4-share_img'] {
+          &:before {
+            color: $poll-color;
+          }
+        }
+      }
+    }
+    .usanetwork-quiz {
+      background: black;
+      color: white;
+      max-width: 1000px;
+      @include breakpoint($bp-1280-width) {
+        width: auto;
+      }
+      h3 {
+        color: white;
+        font-family: $fira-sans-medium;
+      }
+      .field-type-text-with-summary {
+        font-family: $open-sans-regular;
+      }
+      [type="button"] {
+        font-family: $fira-sans-medium;
+      }
+      .entry-button {
+        margin: 50px 0;
+        @include breakpoint ($bp-640-width) {
+          font-size: get-vw(22px, 640);
+          margin: get-vw(50px, 640) 0;
+        }
+        @include breakpoint ($bp-480-width) {
+          font-size: 16.5px;
+          margin: 37.6px 0;
+        }
+      }
+      .repeat-button {
+        margin: 15px 0;
+        @include breakpoint ($bp-640-width) {
+          font-size: get-vw(22px, 640);
+        }
+        @include breakpoint ($bp-480-width) {
+          font-size: 16.5px;
+        }
+      }
+      .score-container {
+        font-family: $fira-sans-regular;
+      }
+      .result-title {
+        font-family: $fira-sans-medium;
+        line-height: 1.2em;
+      }
+      .result-description {
+        font-family: $open-sans-regular;
+        span {
+          color: white !important;
+        }
+      }
+      .page-note {
+        font-family: $fira-sans-regular;
+      }
+      .content-wrap {
+        background: black;
+        color: white;
+        padding: 40px;
+        @include breakpoint ($bp-640-width) {
+          padding: 20px;
+        }
+        @include breakpoint ($bp-480-width) {
+          padding: 10px;
+        }
+        .center {
+          margin-right: 0;
+          width: 100%;
+        }
+        .sidebar {
+          margin-top: 20px;
+          @include breakpoint ($bp-480-width) {
+            margin-top: 10px;
+          }
+          .ad-container {
+            @include breakpoint ($bp-min-1281-width) {
+              display: none;
+            }
+            @include breakpoint ($bp-640-width) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .usanetwork-quiz-questions {
+      &.questions {
+        .page-note {
+          @include breakpoint ($bp-640-width) {
+            font-size: get-vw(16px, 640);
+          }
+        }
+      }
+    }
+    .usanetwork-quiz-question {
+      .question-title {
+        font-family: $fira-sans-medium;
+        text-align: center;
+        @include breakpoint ($bp-640-width) {
+          font-size: get-vw(26px, 640);
+        }
+      }
+    }
+    .usanetwork-quiz-answer {
+      width: 49%;
+      &:nth-child(2n + 1) {
+        clear: left;
+      }
+      &:nth-child(2n) {
+        clear: right;
+        float: right;
+        @include clear();
+      }
+      .inner {
+        margin: 0!important;
+        max-width: 100%;
+      }
+      .answer-title {
+        font-family: $fira-sans-medium;
+        margin: 0 auto;
+        max-width: 100%;
+        padding: 5px;
+        @include breakpoint ($bp-640-width) {
+          font-size: get-vw(18px, 640);
+        }
+      }
+    }
+  }
+}
+

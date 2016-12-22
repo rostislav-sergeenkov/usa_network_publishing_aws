@@ -1,0 +1,7 @@
+name = USANetwork Homepage Clone
+description = makes possible to clone homepage to another day
+core = 7.x
+package = USA Network
+version = 7.x-1.0
+
+dependencies[] = usanetwork_home

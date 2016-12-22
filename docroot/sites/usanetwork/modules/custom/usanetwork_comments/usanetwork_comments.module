@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_comments feature.
+ */
+
+include_once 'usanetwork_comments.features.inc';

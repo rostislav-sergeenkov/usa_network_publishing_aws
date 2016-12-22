@@ -1,0 +1,154 @@
+<?php
+/**
+ * @file
+ * Defines pages for 404 and 403 errors.
+ */
+
+/**
+ * Define variables.
+ */
+define('TVE_ERRORS_PAGES_DEFAULT_403_URL', 'error_403');
+define('TVE_ERRORS_PAGES_DEFAULT_404_URL', 'error_404');
+define('TVE_ERRORS_PAGES_DEFAULT_403_TEXT', 'Sorry. The requested page is not available. The link you are looking for may be broken or no longer working.');
+define('TVE_ERRORS_PAGES_DEFAULT_404_TEXT', 'Sorry. You do not have access to this page.');
+define('TVE_ERRORS_PAGES_DEFAULT_403_HEADER', 'Oops! Something went wrong');
+define('TVE_ERRORS_PAGES_DEFAULT_404_HEADER', 'Oops! Something went wrong');
+
+/**
+ * Implements hook_menu().
+ */
+function tve_errors_pages_menu() {
+  $menu = array();
+
+  $menu[TVE_ERRORS_PAGES_DEFAULT_403_URL] = array(
+    'title' => variable_get('tve_errors_pages_403_header', TVE_ERRORS_PAGES_DEFAULT_403_HEADER),
+    'page callback' => '_tve_errors_pages_page_content',
+    'page arguments' => array(0),
+    'access callback' => TRUE,
+  );
+
+  $menu[TVE_ERRORS_PAGES_DEFAULT_404_URL] = array(
+    'title' => variable_get('tve_errors_pages_404_header', TVE_ERRORS_PAGES_DEFAULT_404_HEADER),
+    'page callback' => '_tve_errors_pages_page_content',
+    'page arguments' => array(0),
+    'access callback' => TRUE,
+  );
+
+  return $menu;
+}
+
+/**
+ * Page callback for errors
+ */
+function _tve_errors_pages_page_content($error_type) {
+  switch ($error_type) {
+    case TVE_ERRORS_PAGES_DEFAULT_403_URL:
+      // Tve_errors_page_403.
+      $default_error_data = array(
+        'header_title' => TVE_ERRORS_PAGES_DEFAULT_403_HEADER,
+        'body_text' => array(
+          'value' => TVE_ERRORS_PAGES_DEFAULT_403_TEXT,
+        ),
+      );
+
+      $error = variable_get(TVE_ERRORS_VARIABLE_PREFIX . 'page_403', $default_error_data);
+      $output = theme('tve_errors_pages_block', $error);
+      break;
+    case TVE_ERRORS_PAGES_DEFAULT_404_URL:
+      $default_error_data = array(
+        'header_title' => TVE_ERRORS_PAGES_DEFAULT_404_HEADER,
+        'body_text' => array(
+          'value' => TVE_ERRORS_PAGES_DEFAULT_404_TEXT,
+        ),
+      );
+      $error = variable_get(TVE_ERRORS_VARIABLE_PREFIX . 'page_404', $default_error_data);
+      $output = theme('tve_errors_pages_block', $error);
+      break;
+    default:
+      break;
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_init().
+ */
+function tve_errors_pages_init() {
+  $path = drupal_get_path('module', 'tve_errors_pages');
+  drupal_add_css($path . '/css/tve_errors_pages.css');
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tve_errors_pages_theme() {
+  return array(
+    'tve_errors_pages_block' => array(
+      'template' => 'templates/tve_errors_pages_block',
+      'variables' => array(
+        'header_title' => '',
+        'body_text' => '',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function tve_errors_pages_page_alter(&$page) {
+  //Clearing errors page from unnecessary widgets and blocks checking url
+  if (in_array(arg(0), array(
+    TVE_ERRORS_PAGES_DEFAULT_403_URL,
+    TVE_ERRORS_PAGES_DEFAULT_404_URL,
+  ))
+  ) {
+    foreach (element_children($page['content']) as $key) {
+      if (($key != 'system_main')) {
+        unset($page['content'][$key]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_tve_admin_ui_info_alter().
+ */
+function tve_errors_pages_tve_admin_ui_info_alter(&$items) {
+  if (isset($items['errors']['variables'])) {
+
+    $items['errors']['variables']['page_403'] = array(
+      'header_title' => TVE_ERRORS_PAGES_DEFAULT_403_HEADER,
+      'body_text' => array(
+        'value' => TVE_ERRORS_PAGES_DEFAULT_403_TEXT,
+        'format' => 'wysiwyg_full',
+      ),
+    );
+
+    $items['errors']['variables']['page_404'] = array(
+      'header_title' => TVE_ERRORS_PAGES_DEFAULT_404_HEADER,
+      'body_text' => array(
+        'value' => TVE_ERRORS_PAGES_DEFAULT_404_TEXT,
+        'format' => 'wysiwyg_full',
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_form_form_id_alter().
+ */
+function tve_errors_pages_form__tve_admin_ui_section_form_alter(&$form, &$form_state) {
+  if (isset($form_state['build_info']['args'][1]['form callback']) &&
+    ($form_state['build_info']['args'][1]['form callback'] == '_tve_errors_settings_form')
+  ) {
+    $defaults = $form_state['build_info']['args'][0];
+    $apache_errors = array(
+      'page_403' => t('Default 403 (access denied) page'),
+      'page_404' => t('Default 404 (not found) page'),
+    );
+    foreach ($apache_errors as $section => $section_title) {
+      _tve_errors_custom_error_form($form, $defaults, $section, $section_title);
+    }
+  }
+}

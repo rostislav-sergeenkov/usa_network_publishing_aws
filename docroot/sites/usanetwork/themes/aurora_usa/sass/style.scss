@@ -1,0 +1,121 @@
+// FOLLOW THE STEP-BY-STEP
+// ---------------------------------------------------------------------------------------
+// INTRODUCTION
+// This is the central organizing sass file where we manage all the imported partials
+// in The Kit. Don't write custom styles here. Instead, import files that bring in
+// default code from The Kit and files that add your custom code. The checklist below
+// should help you put these files in order.
+// ---------------------------------------------------------------------------------------
+
+// ✔ IMPORT COMPASS AND EXTENSIONS
+// enable / disable as desired
+@import "compass"; // http://compass-style.org
+@import "survivalkit"; // http://canarymason.github.com/Survival-Kit
+@import "breakpoint";  // http://breakpoint-sass.com
+@import "modular-scale"; // https://github.com/scottkellum/modular-scale
+// add any others here
+
+
+// THE FIRST IMPORTS ADD NO CSS UPON COMPILE
+
+// ✔ 1. ADD YOUR OWN VARIABLES
+// base, color, fonts, grids
+// edit these as you see fit
+@import "partials/01-variables/all";
+// ✔ 2. ADD YOUR OWN MIXINS
+@import "partials/02-mixins/custom";
+@import "partials/02-mixins/empathy";
+
+// ✔ 3. ADD YOUR OWN EXTENDABLES
+// typography
+@import "partials/03-extend/all";
+
+// THE FOLLOWING IMPORTS WILL ADD CSS UPON COMPILE
+
+// ✔ ADD A CSS RESET OR NORMALIZATION
+@include init($init-type, $init-headers);
+
+// ✔ 4. EDIT AND ADD YOUR BASE STYLES
+// This is worth going into in detail
+// edit as you see fit for your project
+@import "partials/04-base/all";
+
+// ✔ 5. ESTABLISH A LAYOUT
+// Uncomment to use one of the grid systems below
+// @import "singularitygs"; // http://singularity.gs
+@import "partials/05-layout/grids-singularitygs";
+@import "partials/05-layout/panels/all";
+@import "partials/05-layout/layouts/all";
+
+// ✔ 6. STYLE COMMON UI PATTERNS / DRUPAL UI PATTERNS
+@import "partials/06-ui-patterns/drupal-patterns";
+
+// --------------------------------------------------------------------------------------
+// ✔ YOUR CUSTOM LAYOUT AND DESIGN SASS
+// THIS IS WHERE MOST CUSTOM WORK WILL GO
+@import "icons/*.png";
+@include all-icons-sprites;
+@import "design/modules/sitewide";
+@import "design/modules/swiper";
+@import "design/modules/header";
+@import "design/modules/header-consumptionator";
+@import "design/modules/images";
+@import "design/modules/full-episodes";
+@import "design/modules/five-promo-item-block";
+@import "design/modules/best-of-block";
+@import "design/modules/show-latest";
+@import "design/modules/footer";
+@import "design/modules/blackout";
+@import "design/modules/consumptionator-gallery";
+@import "design/modules/home-featured";
+@import "design/modules/home-social";
+@import "design/modules/home-full-episodes";
+@import "design/modules/consumptionator-content";
+@import "design/modules/consumptionator-video";
+@import "design/modules/usa-endcard";
+@import "design/modules/usa-auth-modals";
+@import "design/modules/usa-tve-help-link";
+@import "design/modules/consumptionator-character";
+@import "design/modules/consumptionator-episode-and-post";
+@import "design/modules/consumptionator-quiz";
+@import "design/modules/social-block";
+@import "design/modules/show";
+@import "design/modules/timeline-gallery";
+@import "design/modules/shows-and-movies-landing";
+@import "design/modules/show-video-landing";
+@import "design/modules/show-episodes-and-blog-landing";
+@import "design/modules/show-cast-and-info";
+@import "design/modules/flexslider";
+@import "design/modules/carousel";
+@import "design/modules/ie8";
+@import "design/modules/ie9";
+@import "design/modules/video";
+//@import "design/modules/social-old";
+@import "design/modules/social";
+@import "design/modules/scroll";
+@import "design/modules/a-spot";
+@import "design/modules/a-spot-preview";
+@import "design/modules/schedule";
+@import "design/modules/schedule-tonight";
+@import "design/modules/movies-page";
+@import "design/modules/maintenance-page";
+@import "design/modules/dev";
+@import "design/modules/blog";
+@import "design/modules/catchall-seo-page";
+@import "design/modules/full-bleed-promo";
+@import "design/modules/footer-promo-links";
+@import "design/modules/slick";
+@import "design/modules/top3";
+@import "design/modules/home-popup";
+@import "design/design";
+
+// load this last
+@import "design/modules/ads";
+
+// --------------------------------------------------------------------------------------
+
+// ✔ 8. ENABLE PRINT STYLES
+// @import "partials/07-media/print";
+// @media print {
+//   @import "_print.scss";
+// }

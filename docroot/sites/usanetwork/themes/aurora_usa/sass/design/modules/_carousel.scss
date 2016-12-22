@@ -1,0 +1,434 @@
+.carousel-block {
+  &.stop {
+    .carousel-controls-wrap {
+      .usa-carousel-controls {
+        display: none !important;
+      }
+    }
+  }
+  &:hover {
+    .carousel-controls-wrap {
+      .usa-carousel-controls {
+        width: 60px;
+        @include breakpoint($bp-1024-width) {
+          width: 40px;
+        }
+        &:after {
+          opacity: 1;
+          visibility: visible;
+        }
+        &.usa-carousel-control-prev {
+          left: 0;
+        }
+        &.usa-carousel-control-next {
+          right: 0;
+        }
+        &.usa-carousel-button-disabled {
+          width: 0;
+          &:after {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  .carousel-controls-wrap {
+    .usa-carousel-controls {
+      background: rgba(255, 255, 255, .6);
+      display: block;
+      top: 50%;
+      height: calc(100% - 80px); // height - (padding-top + padding-bottom)
+      position: absolute;
+      transform: translateY(-50%);
+      width: 60px;
+      z-index: 9;
+
+      @include breakpoint($bp-1024-width) {
+        width: 40px;
+      }
+      @include breakpoint($bp-480-width) {
+        display: none;
+      }
+      &:after {
+        color: $poll-color;
+        display: block;
+        font-family: $ico-font;
+        font-size: 32px;
+        left: 50%;
+        margin-left: -16px;
+        margin-top: -16px;
+        opacity: 1;
+        position: absolute;
+        top: 50%;
+      }
+      &:hover {
+        background: rgba(255, 255, 255, .8);
+      }
+      &.usa-carousel-control-prev {
+        left: -60px;
+        @include breakpoint($bp-1024-width) {
+          left: -40px;
+        }
+        &:after {
+          content: "\e607";
+
+        }
+      }
+      &.usa-carousel-control-next {
+        right: -60px;
+        @include breakpoint($bp-1024-width) {
+          right: -40px;
+        }
+        &:after {
+          content: "\e608";
+        }
+      }
+      &.usa-carousel-button-disabled {
+        width: 0;
+        &:after {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+.carousel {
+  position: relative;
+
+  .usa-carousel-slider {
+    .slick-list {
+      overflow: visible !important;
+    }
+  }
+
+  .stop {
+    ~ .carousel-controls-wrap {
+      .usa-carousel-controls {
+        width: 0 !important;
+        &:after {
+          opacity: 0 !important;
+        }
+      }
+    }
+  }
+  &.destroy {
+    > ul {
+      left: 0 !important;
+      width: auto;
+    }
+  }
+  .usa-carousel-left {
+    height: auto;
+    width: 100%;
+    position: relative;
+    .carousel-item {
+      &.description-item {
+        margin-right: 20px;
+        width: 150px;
+        @include breakpoint($bp-min-1601-width) {
+          margin-right: 40px;
+          width: 250px;
+        }
+        @include breakpoint($bp-480-width) {
+          margin-right: 0;
+          width: 100%;
+        }
+      }
+      &:not(.description-item) {
+        height: 250px;
+        margin: 0 10px 0 0;
+        overflow: hidden;
+        position: relative;
+        width: 300px;
+        @include breakpoint($bp-min-1601-width) {
+          margin-right: 15px;
+        }
+        &.odd {
+          .meta-wrap {
+            background: $social-twitter-back;
+          }
+        }
+        &.other-show {
+          h3 {
+            color: $poll-color;
+            font-family: $tex-gyreschola-italic;
+            font-size: 12px;
+            position: absolute;
+            text-transform: uppercase;
+            top: -20px;
+            z-index: 1;
+          }
+        }
+        a {
+          display: block;
+          height: 100%;
+          width: 100%;
+        }
+        img {
+          height: auto;
+          width: 100%;
+        }
+        .node {
+          height: 100%;
+          width: 100%;
+        }
+        .meta-wrap {
+          background: $promo-dark-back;
+          bottom: 0;
+          height: 82px;
+          position: absolute;
+          width: 100%;
+          z-index: 1;
+          .meta-wrapper-inner {
+            height: 100%;
+            display: table;
+            width: 100%;
+          }
+        }
+        .meta-icon {
+          display: block;
+          height: 37px;
+          left: 10px;
+          margin-top: -19px;
+          position: absolute;
+          top: 50%;
+          width: 37px;
+          ~ .meta {
+            padding-left: 55px;
+          }
+        }
+        @extend %meta;
+        .meta {
+          display: table-cell;
+          max-width: 100px;
+          overflow: hidden;
+          padding-left: 10px;
+          position: relative;
+          vertical-align: middle;
+          width: 100%;
+          .title, .additional, .caption {
+            line-height: 18px;
+          }
+        }
+        &.poll {
+          a {
+            height: 115px;
+          }
+        }
+        .poll-items {
+          @include clear;
+          background-color: $header-show-caption;
+          height: 135px;
+          position: relative;
+          .poll-item {
+            border-right: 1px solid $header-tab-back-hover;
+            float: left;
+            height: 100%;
+            width: 33.33333%;
+            &:last-child {
+              border-right: none;
+            }
+            a {
+              text-decoration: none;
+            }
+            .node {
+              .asset-img {
+                img {
+                  width: 100%;
+                }
+              }
+              .meta-wrapper {
+                @extend %meta;
+                .meta {
+                  position: static;
+                  padding: 20px 0 0;
+                  margin: 0;
+                  .title {
+                    font-size: 20px;
+                    line-height: 28px;
+                    margin-left: 0;
+                    text-align: center;
+                  }
+                  .caption {
+                    line-height: 18px;
+                    text-align: center;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.latest-block, .carousel-block {
+  @include clear();
+  background: $footer-links;
+  padding: 40px 60px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  @include breakpoint($bp-1024-width) {
+    padding: 40px;
+  }
+  @include breakpoint($bp-480-width) {
+    padding: 40px 0 40px 20px;
+  }
+}
+
+.featured-block.carousel-block {
+  @include breakpoint ($bp-min-1281-width) {
+    background-size: contain !important;
+  }
+  @include breakpoint($between-769-1280) {
+    background-size: cover !important;
+  }
+  @include breakpoint($bp-768-width) {
+    background-image: none !important;
+    background-color: $poll-back !important;
+  }
+}
+
+.carousel-description-item {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  .description-button {
+    color: transparent;
+    cursor: default;
+    display: block;
+    left: -40px;
+    margin-top: -12px;
+    position: absolute;
+    text-decoration: none;
+    top: 50%;
+    &:before {
+      color: $poll-color;
+      content: "\e607";
+      display: block;
+      font-family: $ico-font;
+      font-size: 32px;
+      position: absolute;
+    }
+  }
+  .description-wrapper {
+    display: table;
+    height: 100%;
+    //float: right;
+    margin-left: auto;
+    width: 150px;
+    @include breakpoint($bp-min-1601-width) {
+      width: 250px;
+    }
+  }
+  .description-block {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .caption, .additional-text {
+    clear: both;
+    color: $poll-color;
+    font-family: $tex-gyreschola-italic;
+    font-size: 13px;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    @include breakpoint($bp-min-1601-width) {
+      font-size: 23px;
+    }
+  }
+  .title {
+    color: $poll-color;
+    font-family: $avalon-demi;
+    font-size: 24px;
+    letter-spacing: 2px;
+    line-height: 24px;
+    margin: 18px 0;
+    text-transform: uppercase;
+    @include breakpoint($bp-min-1601-width) {
+      font-size: 37px;
+      line-height: 37px;
+    }
+  }
+}
+
+.latest-block {
+  @include breakpoint($bp-480-width) {
+    .carousel-description-item {
+      left: 0;
+      margin-bottom: 20px;
+      position: relative;
+      width: 100%;
+      .description-button {
+        display: none;
+      }
+      .description-wrapper {
+        display: block;
+        float: none;
+      }
+      .title {
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+.carousel-block {
+  > .more-button {
+    display: none;
+    &:after {
+      color: #ffffff;
+      content: "\e609";
+      display: block;
+      font-family: $ico-font;
+      font-size: get-vw(24px, 768);
+      left: 50%;
+      line-height: get-vw(24px, 768);
+      margin-left: get-vw(-12px, 768);
+      margin-top: get-vw(5px, 768);
+      position: absolute;
+      top: 50%;
+      @include breakpoint($bp-480-width) {
+        font-size: 15px;
+        line-height: 15px;
+        margin-left: -7.5px;
+        margin-top: 3.125px;
+      }
+    }
+    &.more {
+      .close-text {
+        display: none;
+      }
+    }
+    &.close {
+      &:after {
+        content: "\e60a";
+      }
+      .more-text {
+        display: none;
+      }
+    }
+    @include breakpoint($bp-768-width) {
+      background: $social-twitter-back;
+      color: #ffffff;
+      display: block;
+      font-family: $avalon-medium;
+      font-size: get-vw(20px, 768);
+      height: get-vw(100px, 768);
+      line-height: get-vw(80px, 768);
+      letter-spacing: 1px;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      width: 100%;
+    }
+    @include breakpoint($bp-480-width) {
+      font-size: 12.5px;
+      height: 62.5px;
+      line-height: 50px;
+    }
+  }
+}

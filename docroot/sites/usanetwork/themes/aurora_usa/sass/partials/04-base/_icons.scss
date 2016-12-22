@@ -1,0 +1,175 @@
+.meta-icon {
+  background-size: contain;
+  @extend %meta-icon;
+}
+
+.font-icon {
+  background: #ffffff;
+  border-radius: 50%;
+  height: 37px;
+  margin-top: -19px;
+  position: absolute;
+  top: 50%;
+  width: 37px;
+  &:before {
+    font-family: $ico-font;
+    font-size: 20px;
+    line-height: 37px;
+    height: 37px;
+    margin-top: -10px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 37px;
+  }
+  &.video-font-icon {
+    &:before {
+      content: '\e60f';
+    }
+  }
+}
+
+.eye-icon {
+  &:before {
+    display: block;
+    content: '\e613';
+    font-family: $ico-font;
+  }
+}
+
+.icons-block {
+  display: block;
+  a {
+    color: #ffffff;
+    display: block;
+    float: left;
+    font-weight: normal;
+    height: auto;
+    margin: 0;
+    margin-right: 27px;
+    position: relative;
+    text-decoration: none;
+    width: auto;
+    &:last-child, .last {
+      margin-right: 0;
+    }
+    &:before {
+      display: block;
+      font-family: $ico-font;
+      font-size: 16px;
+      width: auto;
+    }
+    &.episode-description {
+      &:before {
+        content: '\e601';
+      }
+    }
+    &.calendar-reminder {
+
+      span {
+        display: none;
+      }
+      &:before {
+        content: '\e600';
+      }
+    }
+    &.facebook {
+      &:before {
+        content: "\e602";
+      }
+    }
+    &.twitter {
+      &:before {
+        content: "\e603";
+      }
+    }
+    &.tumblr {
+      &:before {
+        content: "\e604";
+      }
+    }
+    &.pinterest {
+      &:before {
+        content: "\e605";
+      }
+    }
+    &.plus-icon {
+      &:before {
+        content: "\e606";
+      }
+    }
+    &.schedule-icon-font {
+      &:before {
+        content: '\e616';
+      }
+    }
+  }
+}
+
+body:not(.blog), .blog .node-media-gallery.view-mode-inline_content {
+  .field-type-gigya-sharebar,
+  &.node-type-timeline-gallery .timeline-gigya-share,
+  &.node-type-top3-gallery {
+    @extend %usa-gigya;
+  }
+}
+
+.user-content-icon-default {
+  background-image: url(../images/default-promo-icons/user-content-icon.png);
+}
+
+.trending-secondary-icon-default {
+  background-image: url(../images/default-promo-icons/trending-secondary-icon.png);
+}
+
+.trending-primary-icon-default {
+  background-image: url(../images/default-promo-icons/trending-primary-icon.png);
+}
+
+.sounds-icon-default {
+  background-image: url(../images/default-promo-icons/sounds-icon.png);
+}
+
+.schedule-icon-default {
+  background-image: url(../images/default-promo-icons/schedule-icon.png);
+}
+
+.video-clip-icon-default {
+  background-image: url(../images/default-promo-icons/video-clip-icon.png);
+}
+
+.full-video-icon-default {
+  background-image: url(../images/default-promo-icons/full-video-icon.png);
+}
+
+.movie-play-icon {
+  background-image: url(../images/default-promo-icons/full-video-icon.png);
+}
+
+.quiz-icon-default {
+  background-image: url(../images/default-promo-icons/quiz-icon.png);
+}
+
+.game-icon-default {
+  background-image: url(../images/default-promo-icons/game-icon.png);
+}
+
+.featured-icon-default {
+  background-image: url(../images/default-promo-icons/featured-icon.png);
+}
+
+.episode-info-icon-default {
+  background-image: url(../images/default-promo-icons/episode-info-icon.png);
+}
+
+.cast-crew-icon-default {
+  background-image: url(../images/default-promo-icons/cast-crew-icon.png);
+}
+
+.about-show-icon-default {
+  background-image: url(../images/default-promo-icons/about-show-icon.png);
+}
+
+.gallery-icon-default {
+  background-image: url(../images/default-promo-icons/gallery-icon.png);
+}

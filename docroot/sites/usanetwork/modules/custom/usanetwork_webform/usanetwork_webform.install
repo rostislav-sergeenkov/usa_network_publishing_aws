@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for usanetwork_webform.
+ *
+ * @ingroup USA Network
+ */
+
+/**
+ * Disable webform_conditional module.
+ * Because it was merged in new webform module.
+ */
+function usanetwork_webform_update_7101() {
+  module_disable(array('webform_conditional'));
+}

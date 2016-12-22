@@ -1,0 +1,8 @@
+name = USA Network Widget
+version = 7.x-1.0.2
+core = 7.x
+php = 5.2.4
+project = usanetwork_widget
+package = USA Network
+dependencies[] = features
+features[features_api][] = api:2

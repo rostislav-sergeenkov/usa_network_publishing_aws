@@ -1,0 +1,63 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_pathauto feature.
+ */
+
+include_once 'usanetwork_pathauto.features.inc';
+
+/**
+ * Implements hook_pathauto_alias_alter
+ */
+function usanetwork_pathauto_pathauto_alias_alter(&$alias, array &$context) {
+  if (($context['module'] == 'node') && (in_array($context['type'], array('usanetwork_promo', 'person', 'media_gallery', 'quiz', 'catchall_page')))) {
+    $node = $context['data']['node'];
+    $tv_content = usanetwork_core_api_get_tv_content_node($node);
+    if ($tv_content) {
+      if ($tv_content->type == 'movie') {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $movie_title = pathauto_cleanstring($tv_content->title);
+        $alias = 'movies/' . $movie_title . '/' . $alias;
+      }
+    }
+    if ($context['type'] == 'media_gallery') {
+      if (_usanetwork_media_gallery_is_multiple($node)) {
+        module_load_include('inc', 'pathauto', 'pathauto');
+        $gallery_title = pathauto_cleanstring($node->title);
+        $alias = 'photos/' . $gallery_title;
+      }
+    }
+  }
+  if ($context['module'] == 'node' && $context['type'] == 'consumpt_post') {
+    $node = $context['data']['node'];
+    $show = _usanetwork_get_field_item('node', $node, 'field_show', 'target_id');
+    $movie = _usanetwork_get_field_item('node', $node, 'field_multiple_movies', 'target_id');
+    if (!empty($movie)) {
+      module_load_include('inc', 'pathauto', 'pathauto');
+      $pattern = 'movies/[node:title]';
+      $new_alias = token_replace($pattern, $context['data'], array(
+        'sanitize' => FALSE,
+        'clear' => TRUE,
+        'callback' => 'pathauto_clean_token_values',
+        'language' => (object) array('language' => $context['language']),
+        'pathauto' => TRUE,
+      ));
+      if (!empty($new_alias)) {
+        $alias = pathauto_clean_alias($new_alias);
+      }
+    } elseif (empty($show)) {
+      module_load_include('inc', 'pathauto', 'pathauto');
+      $pattern = 'news/[node:title]';
+      $new_alias = token_replace($pattern, $context['data'], array(
+        'sanitize' => FALSE,
+        'clear' => TRUE,
+        'callback' => 'pathauto_clean_token_values',
+        'language' => (object) array('language' => $context['language']),
+        'pathauto' => TRUE,
+      ));
+      if (!empty($new_alias)) {
+        $alias = pathauto_clean_alias($new_alias);
+      }
+    }
+  }
+}

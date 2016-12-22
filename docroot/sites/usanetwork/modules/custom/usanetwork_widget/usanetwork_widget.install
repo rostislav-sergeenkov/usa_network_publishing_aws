@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Remove usanetwork_widget_cors_urls variable from database
+ */
+function usanetwork_widget_update_7000() {
+  variable_del('usanetwork_widget_cors_urls');
+}

@@ -1,0 +1,272 @@
+// DEFAULT COLORS
+$nav-black          : rgba(black, 0.9);
+$black-trans-9      : rgba(black, 0.9);
+$black-trans-85     : rgba(black, 0.85);
+$black-trans        : rgba(black, 0.8);
+$black-trans-5      : rgba(black, 0.5);
+$black-trans-3      : rgba(black, 0.3);
+$black-trans-vid    : rgba(31, 31, 31, 0.3);
+$black-dark         : #161616;
+$black-true         : #000000;
+$black              : #1f1f1f;
+$black-into-gray    : #232323;
+$gray-med           : #3d3d3d;
+$gray-med-darker    : #313131;
+$gray-med-dark      : #414141;
+$gray-ultra-med     : #4B4B4B;
+$gray-ultra-med-alt : #4a4a4a;
+$gray-semi-med      : #5b5b5b;
+$gray-semi-ultra-med: #505050;
+$gray-darker-light  : #636363;
+$gray-dark-light    : #717274;
+$gray-light         : #878785;
+$gray-extra-light   : #A3A3A3;
+$tan                : #b0b0b0;
+$tan-light          : #d6d6d6;
+$beige              : #D0D0D0;
+$off-white          : #EBEBEB;
+$off-white-alt      : #e8e8e8;
+$white              : white;
+$white-trans-1      : rgba($white, 0.1);
+$white-trans-75     : rgba($white, 0.75);
+$white-trans-5      : rgba($white, 0.5);
+$white-trans-3      : rgba($white, 0.3);
+$blue               : #0ab6e8;
+$orange             : #f8981d;
+$red                : #d63c17;
+
+
+// Color variables expected 04-base
+$base-color: $black;
+$text-color: $white;
+$alt-color: $blue;
+$background-color: $black;
+$border-color: $gray-light;
+
+
+// link colors
+$link-normal: $blue;
+$link-hover: $white;
+$link-active: $white;
+$link-visited: $blue;
+$link-focus: $blue;
+$link-border-normal: $blue;
+$link-border-hover: $white;
+$link-border-active: $white;
+$link-border-visited: $blue;
+
+// tve_auth2
+$bg-modalContent: #a9a9a9;
+$tve-modalFooter: #282828;
+$tve-modalBorder: #272727;
+$tve-select: #8b8b8b;
+$tve-provider: #b7b7b7;
+
+//NEW COLORS!!!!
+//color variables
+$aspot-shadow : #333333;
+$forbidden-border : #aaa;
+$usa-logo-back : #2c2c2c;
+$footer-back : #a9a9a9;
+$footer-back-home : #3d3d3d;
+$footer-new-show : #9097a3;
+$footer-promo-links : #dbdcdd;
+$bottom-footer-back : #757575;
+$bottom-footer-back-home : #262626;
+$footer-links : #dcddde;
+$footer-link-separator : #9d9d9d;
+$footer-icon-color: #939393;
+$header-tab-text : #666666;
+$header-tab-back : #e1e1e1;
+$header-tab-back-new : #363435;
+$header-tab-button-back : #8b8b8c;
+$header-menu-item-back : #444444;
+$header-new-menu-item-border : #454545;
+$header-new-menu-item-color : #c7c7c7;
+$header-tab-back-hover : #a9a9a9;
+$header-menu-item-separator : #b9b9b9;
+$header-show-caption : #3a3a3a;
+$header-full-episodes-back : #1c1c1c;
+$schedule-tonight : #2c2c2c;
+$schedule-on-now : #474747;
+$schedule-pm-color : #606060;
+$poll-back : #e9eaeb;
+$poll-color : #545454;
+$social-meter : #303030;
+$social-twitter-back : #3a3a3a;
+$schedule-view-back : #222221;
+$show-info-block : #bbb7b7;
+$show-section-title : #5d5d5d;
+$full-episodes-light-back : #8f8f8f;
+$full-episodes-dark-back : #7a7a7a;
+$promo-dark-back : #636363;
+$free-full-episodes : #d0d0d2;
+$show-card-back : #beb8b8;
+$video-promo-back : #323232;
+$video-promo-back-gray : #656364;
+$consup-gallery-bg : #f3f3f3;
+$consup-gallery-description : #f3f3ec;
+$consup-gallery-pager : #919b99;
+$consup-border : #363636;
+$consum-carousel-back : #262626;
+$consum-also-back : #181818;
+$consum-back : #121212;
+$consum-carousel-odd : #3e3e3e;
+$consum-carousel-even : #343434;
+$consum-carousel-text : #afafaf;
+$gray-light-gamma   : #959595;
+$gray-dark-darker   : #383838;
+$header-tab-title   : #adadad;
+$change-episode-color   : #1e1e1e;
+$sponsorship-dark: #242424;
+$schedule-caption-color: #b5b3b4;
+$tonight-section-back: #2e2c2d;
+$gallery-description-back : #1f1f1f;
+$source-link:  #e5e5e5;
+$usa-movie-back: #3d415b;
+$usa-movie-secondary-back: #434664;
+$usa-movie-tertiary-back: #33374e;
+$microsite-arrow: #56000a;
+$top-three-not-allow : #bc0d1d;
+$usa-endcard-dark: #2b2b2b;
+$continue-gallery-back : #4e4e4e;
+$gray-dark: #2d2d2d;
+$gray-sky: #cccccc;
+$right-rail-usa-show-back: #111111;
+$right-rail-usa-show-color: #cfcfcf;
+$usa-episodes-text: #a6a6a6;
+$usa-episode-item-text: #7c7c7c;
+$usa-articles-color: #cdcdcd;
+$usa-section-title-color: #6c6c6c;
+$usa-special-block: #222222;
+$usa-top-five-block: #151515;
+$usa-related-title: #e6e6e6;
+$usa-bcd-title: #e6e7e8;
+$usa-related-additional: #cdcdcd;
+$usa-footer-color: #bababa;
+$usa-filter-color: #f1f1f1;
+$usa-blog-item-title: #d7d3d1;
+$usa-blog-item-desc: #abb7b7;
+$usa-episodes-link: #cecece;
+$usa-video-helper-color: #dadada;
+$usa-video-helper-facebook: #3b5998;
+$usa-video-helper-twitter: #00aced;
+$usa-video-helper-tumblr: #32506d;
+$usa-video-helper-pinterest: #cb2027;
+$usa-sign-up: #cacaca;
+$usa-sign-up-input-wrap-border: #484848;
+$usa-sign-up-input-border: #515151;
+$usa-episode-title: #aaaaaa;
+
+.show-color-border, .asset-img.show {
+  position: relative;
+  &:before {
+    background: $usa-logo-back;
+    display: block;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 3px;
+    z-index: 2;
+    cursor: pointer;
+  }
+}
+.show-new-design {
+  .show-color-border, .asset-img.show {
+    position: relative;
+    &:before {
+      background: $usa-logo-back;
+      display: block;
+      content: '';
+      height: 2px !important;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 3px;
+      z-index: 2;
+      cursor: pointer;
+    }
+  }
+}
+
+.show-color {
+  background: $usa-logo-back;
+  &.secondary {
+    background: adjust-color($usa-logo-back, $saturation: 30, $lightness: -10);
+  }
+  &.hover-avail {
+    &:hover {
+      background: lighten($usa-logo-back, 15%);
+    }
+  }
+}
+.page-movies, .node-type-movie, .movie-consumptionator, .page-news, body:not([class*=" show-"]).node-type-consumpt-post {
+  .show-color {
+    background: $usa-movie-back;
+    &.secondary {
+      background: $usa-movie-secondary-back;
+      &:before {
+        background: $usa-movie-tertiary-back;
+      }
+    }
+    &.tertiary {
+      background: $usa-movie-tertiary-back;
+      &:before {
+        background: $usa-movie-secondary-back;
+      }
+    }
+    &.hover-avail, &.tertiary {
+      &:hover {
+        background: $usa-movie-tertiary-back;
+      }
+    }
+    &.show-font {
+      color: $usa-movie-back!important;
+    }
+  }
+  .show-border {
+    border-color: $usa-movie-back!important;
+    &:before, &:after {
+      border-color: $usa-movie-back!important;
+    }
+    &.secondary {
+      border-color: $usa-movie-secondary-back!important;
+      &:before, &:after {
+        border-color: $usa-movie-secondary-back!important;
+      }
+    }
+    &.tertiary {
+      border-color: $usa-movie-tertiary-back!important;
+      &:before, &:after {
+        border-color: $usa-movie-tertiary-back!important;
+      }
+    }
+  }
+  .show-color-border, .asset-img.show {
+    &:before {
+      background: $usa-movie-back!important;
+    }
+  }
+  .item-hover {
+    &:hover {
+      background: $usa-movie-back;
+    }
+  }
+  .icons-block {
+    a {
+      color: $usa-movie-back!important;
+    }
+  }
+  .person-quotation {
+    &:before, &:after {
+      color: $usa-movie-back!important;
+    }
+  }
+}
+
+
+
+
+

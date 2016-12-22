@@ -1,0 +1,94 @@
+<?php
+/**
+ * @file
+ * Code for the Usanetwork Social Plugin.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function usanetwork_social_plugin_menu() {
+  $items['social-media/embed/%'] = array(
+    'title' => 'Social Media Embed',
+    'page callback' => 'usanetwork_social_plugin_social_media_embed',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_wysiwyg_include_directory().
+ */
+function usanetwork_social_plugin_wysiwyg_include_directory($type) {
+  switch ($type) {
+    case 'plugins':
+      return 'plugins';
+  }
+}
+
+/**
+ * Menu callback for social embed preview.
+ */
+function usanetwork_social_plugin_social_media_embed($network) {
+  $url = isset($_GET['url']) ? $_GET['url'] : FALSE;
+
+  if (!$network || !$url) {
+    drupal_not_found();
+    return;
+  }
+
+  // Flush JS and CSS.
+  $css = &drupal_static('drupal_add_css', array());
+  $css = array();
+  $js = &drupal_static('drupal_add_js', array());
+  $js = array();
+  $libs = &drupal_static('drupal_add_library', array());
+  $libs = array();
+
+  drupal_add_js(drupal_get_path('module', 'usanetwork_social_plugin') . '/js/social-media.js', array(
+    'requires_jquery' => TRUE,
+  ));
+  drupal_add_html_head(array(
+    '#tag' => 'script',
+    '#value' => '',
+    '#attributes' => array(
+      'type' => 'text/javascript',
+      'src' => '//platform.twitter.com/widgets.js',
+      'id' => 'twitter-wjs',
+    ),
+  ), 'twitter-wjs');
+  drupal_add_css('html, body {margin: 0; padding: 0;} body > * {display: none;} body .social-media-container {display: block;}', 'inline');
+  $page = array(
+    '#theme' => 'html',
+    'page_top' => array(),
+    'page_bottom' => array(),
+    '#children' => '<div class="social-media-container"><img src="' . url(drupal_get_path('module', 'usanetwork_social_plugin') . '/plugins/social/images/social_loading.png') . '" alt="&lt;--social-media--&gt;" title="&lt;--social-media--&gt;" class="pub_blog_post-social" data-social-option="' . $network . '" data-social-value="' . $url . '" /></div>',
+  );
+
+  print drupal_render($page);
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function usanetwork_social_plugin_page_build(&$page) {
+  if (path_is_admin(current_path())) {
+    return;
+  }
+  $page['content']['#attached']['js'][] = drupal_get_path('module', 'usanetwork_social_plugin') . '/js/social-media.js';
+  $page['content']['#attached']['drupal_add_html_head'][] = array(
+    array(
+      '#tag' => 'script',
+      '#value' => '',
+      '#attributes' => array(
+        'type' => 'text/javascript',
+        'src' => '//platform.twitter.com/widgets.js',
+        'id' => 'twitter-wjs',
+      ),
+    ),
+    'twitter-wjs',
+  );
+}

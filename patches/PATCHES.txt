@@ -1,0 +1,24 @@
+================================= LIBRARIES ====================================
+
+  * Changed overflow-y from scroll to auto
+    - libraries/jpanelmenu/jquery.jpanelmenu.min.js
+
+================================== CONTRIB =====================================
+
+  * Remove an access check that blocks our scheduling needs.
+  * TODO added when we updated to pub 7 v7.18.0; remove when the module has this
+  * patch properly integrated as part of a p7 release
+    - modules/contrib/revision_scheduler/revision_scheduler.module
+    - patch_commit_db2a5cd385cc.patch
+
+================================== P7 CUSTOM =====================================
+
+================================== CORE ========================================
+
+  * Overridden the file core module to resolve the missing file reference
+  * exception; patch file: 1443158-file-field-presave-D7.patch
+  * Issue ref in drupal.org: https://drupal.org/node/1443158#comment-6955596
+    - modules/core/file/file.field.inc
+
+  * Changed the require_once statement to use the correct file.field.inc
+    - modules/core/file/file.module

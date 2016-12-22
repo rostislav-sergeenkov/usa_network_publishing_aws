@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the usanetwork_gobal_nav_image feature.
+ */
+
+include_once 'usanetwork_gobal_nav_image.features.inc';

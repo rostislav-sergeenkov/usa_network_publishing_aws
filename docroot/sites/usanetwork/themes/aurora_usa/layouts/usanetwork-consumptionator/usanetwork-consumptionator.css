@@ -1,0 +1,51 @@
+.video-block {
+    margin: 0 auto 10px;
+    max-width: 2260px;
+    padding: 10px 10px 0;
+    position: relative;
+}
+
+.player-wrapper {
+    margin-right: 310px;
+    position: relative;
+}
+
+.consum-sidebar {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 100%;
+    /*overflow: hidden;*/
+    padding: 10px 0 0;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 300px;
+}
+
+.consumptionator-full-episodes,
+.consumptionator-content-block,
+header[data-rel="header-nav-bar"] {
+    /*overflow: hidden;*/
+    padding: 10px 10px;
+    position: relative;
+    max-width: 2260px;
+}
+
+.show-content {
+    float: left;
+    height: 100%;
+    position: relative;
+    width: 59.2%;
+}
+
+.see-also-content {
+    background: none repeat scroll 0 0 #181818;
+    float: left;
+    height: 100%;
+    position: relative;
+    width: 40.8%;
+}
+
+a.more-bottom-button {
+    display: none;
+    visibility: hidden;
+}

@@ -1,0 +1,167 @@
+////////////////////////////
+// Custom Mixins
+// nothing here yet.
+// add your own.
+////////////////////////////
+
+@mixin debug-outline($color: red, $background-color: false) {
+  outline: 1px solid $color;
+  @if $background-color != false {
+    background-color: $background-color;
+  }
+}
+
+
+// Create CSS Right Triangles in a Breeze
+//$triangleDirection : top, bottom
+//$triangleDirection2 : left, right
+@mixin cssRightTriangle($triangleSize, $triangleColor, $triangleDirection, $triangleDirection2 ) {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  @if ($triangleDirection == top) {
+    @if ($triangleDirection2 == left) {
+      border-top: solid $triangleSize $triangleColor;
+      border-right: solid $triangleSize transparent;
+    }
+    @if ($triangleDirection2 == right) {
+      border-top: solid $triangleSize $triangleColor;
+      border-left: solid $triangleSize transparent;
+    }
+  }
+  @if ($triangleDirection == bottom) {
+    @if ($triangleDirection2 == left) {
+      border-bottom: solid $triangleSize $triangleColor;
+      border-right: solid $triangleSize transparent;
+    }
+     @if ($triangleDirection2 == right) {
+      border-bottom: solid $triangleSize $triangleColor;
+      border-left: solid $triangleSize transparent;
+    }
+  }
+  // .example { @include cssRightTriangle(5px, $white, bottom ,left); }
+}
+
+
+// set the size of a carousel item
+@mixin carousel-item($size: (237px, 198px), $margin: 15px) {
+  margin-right: $margin;
+  width: nth($size, 1);
+  height: nth($size, 2);
+  img {
+    width: nth($size, 1);
+    height: nth($size, 2);
+  }
+}
+
+// set the styling for the on-now / up-next social block navigation
+@mixin on-now-panel-social-navigation() {
+  background-attachment : scroll;
+  background-clip : border-box;
+  background-color : rgba(0, 0, 0, 0);
+  background-image : url("/sites/usanetwork/themes/aurora_usa/images/social_chatter_icons.png");
+  background-origin : padding-box;
+  background-position : 0 -2792px;
+  background-repeat : no-repeat;
+  background-size : auto auto;
+  float : left;
+  text-indent : -9999px;
+  width:32px;
+  height:32px;
+}
+
+@mixin clear() {
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+@mixin linksSeparator($separator-font-size, $separator-left, $separator-right, $separator-color) {
+  &:after {
+    color: $separator-color;
+    content: "|";
+    display: inline-block;
+    font-size: $separator-font-size;
+    margin-left: $separator-left;
+    margin-right: $separator-right;
+  }
+}
+
+// Read the article: http://sassbreak.com/viewport-relative-headings-with-sass
+// VW function
+@function get-vw($target, $bp) {
+  // 1 vw is equal to 1% of the viewport width
+  $breakpoint: $bp;
+  $vw-context: ($breakpoint * .01) * 1px; // 1% viewport width
+  @return ($target/$vw-context) * 1vw;
+}
+@function get-row-height($target-line-height, $target-font-size, $rows, $bp) {
+  // 1 vw is equal to 1% of the viewport width
+  $breakpoint: $bp;
+  $font-diff: $target-font-size + ($target-line-height - $target-font-size)/2;
+  $vw-context: ($breakpoint * .01) * 1px; // 1% viewport width
+  @return (($target-line-height * ($rows - 1) + $font-diff)/$vw-context)  * 1vw;
+}
+
+@mixin aspotFonts($step, $default-font-desktop, $default-font-mobile) {
+  @for $i from 1 to 14 {
+    &.font-mobile-#{$i} {
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw($default-font-mobile + $step*($i - 1), 640);
+      }
+    }
+    &.font-desktop-#{$i} {
+      @include breakpoint($bp-min-641-width) {
+        font-size: get-vw($default-font-desktop + $step*($i - 1), 1280);
+      }
+      @include breakpoint($bp-min-2500-width) {
+        font-size: ($default-font-desktop + $step*($i - 1))*1.953125;
+      }
+    }
+  }
+}
+
+@mixin aspotShowFonts($step, $default-font-desktop, $default-font-mobile, $new-design) {
+
+  $end: 14;
+
+  @if ($new-design == true) {
+    $end: 32;
+  }
+  @for $i from 1 to $end {
+    &.font-show-mobile-#{$i} {
+      @include breakpoint($bp-640-width) {
+        font-size: get-vw($default-font-mobile + $step*($i - 1), 640);
+      }
+    }
+    &.font-show-desktop-#{$i} {
+      @include breakpoint($bp-min-641-width) {
+        font-size: get-vw($default-font-desktop + $step*($i - 1), 1280);
+      }
+      @if ($new-design == true) {
+        @include breakpoint($between-641-768) {
+          font-size: get-vw(($default-font-desktop + $step*($i - 1))*1.35, 1280)!important;
+        }
+      }
+      @if ($new-design == false) {
+        @include breakpoint($between-641-768) {
+          font-size: get-vw(($default-font-desktop + $step*($i - 1))*1.285, 1280)!important;
+        }
+      }
+      @if ($new-design == false) {
+        @include breakpoint($bp-min-2500-width) {
+          font-size: ($default-font-desktop + $step*($i - 1))*1.953125;
+        }
+      }
+      @if ($new-design == true) {
+        @include breakpoint($bp-min-1601-width) {
+          font-size: ($default-font-desktop + $step*($i - 1))*1.25;
+        }
+      }
+    }
+  }
+}
+

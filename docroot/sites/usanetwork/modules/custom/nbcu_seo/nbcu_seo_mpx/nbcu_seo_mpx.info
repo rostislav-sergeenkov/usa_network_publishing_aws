@@ -1,0 +1,6 @@
+name = NBCU SEO MPX
+description = SEO support for mpx videos
+core = 7.x
+version = 7.x-1.0
+
+dependencies[] = nbcu_seo

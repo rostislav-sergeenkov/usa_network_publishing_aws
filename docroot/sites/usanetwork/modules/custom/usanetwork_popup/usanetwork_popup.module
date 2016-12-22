@@ -113,6 +113,7 @@ function usanetwork_popup_page_alter(&$page) {
     $popup_window = _usanetwork_popup_window();
     $page['page_bottom']['usanetwork_popup_windows'] = array(
       '#markup' => $popup_window,
+      '#cache' => DRUPAL_CACHE_PER_PAGE,
     );
   }
 }

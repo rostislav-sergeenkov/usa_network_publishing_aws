@@ -6,3 +6,10 @@
  *
  * @ingroup USA Network
  */
+
+/**
+ * Enable OTT modules.
+ */
+function usanetwork_update_7001() {
+  module_enable(array('ott_services', 'ott_publishing', 'tve_publishing_profiles'));
+}

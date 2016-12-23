@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * @file
+ * Installation tasks and schemas for "OTT Publishing" module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function ott_publishing_schema() {
+  $schema['ott_publishing'] = array(
+    'description' => 'Entity publishing information.',
+    'fields' => array(
+      'entity_type' => array(
+        'description' => 'Entity type.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'bundle' => array(
+        'description' => 'Entity bundle.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'entity_id' => array(
+        'description' => 'Entity ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'vid' => array(
+        'description' => 'Entity revision ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+      ),
+      'instance' => array(
+        'description' => 'Services API instance machine name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'ID of pushing user.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'created' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The Unix timestamp when publishing occured.',
+      ),
+    ),
+    'indexes' => array(
+      'id' => array('entity_type', 'entity_id', 'vid', 'instance'),
+    ),
+  );
+
+  $schema['ott_publishing_tracking'] = array(
+    'description' => 'Published items tracking information.',
+    'fields' => array(
+      'data_id' => array(
+        'description' => 'Unique item data id.',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'data_hash' => array(
+        'description' => 'Item data hash.',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+      'instance' => array(
+        'description' => 'Services API instance machine name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'created' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'The Unix timestamp when publishing occured.',
+      ),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Create 'ott_publishing_tracking' table.
+ */
+function ott_publishing_update_7000() {
+  if (!db_table_exists('ott_publishing_tracking')) {
+    db_create_table(
+      'ott_publishing_tracking',
+      drupal_get_schema_unprocessed('ott_publishing', 'ott_publishing_tracking')
+    );
+  }
+}

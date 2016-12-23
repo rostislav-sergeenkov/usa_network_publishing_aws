@@ -1,0 +1,412 @@
+<?php
+
+/**
+ * @file
+ * Main functionality of "OTT Log" module.
+ */
+
+include_once 'ott_log.features.inc';
+
+define('OTT_LOG_MAX_LIFETIME', 604800);
+
+/**
+ * Writes the log message to database.
+ *
+ * @param array $log_info
+ *   Array of log info data.
+ */
+function ott_log_ott_publishing_process_log_info($log_info) {
+  ott_log_start_session();
+
+  global $user;
+
+  $ott_log_record = $log_info + array(
+    'session_id' => ott_log_get_session_id(),
+    'uid' => $user->uid,
+  );
+
+  drupal_write_record('ott_log', $ott_log_record);
+  ott_log_add_syslog_message($ott_log_record);
+}
+
+/**
+ * Adds the message to syslog.
+ *
+ * @param array $ott_log_record
+ */
+function ott_log_add_syslog_message($ott_log_record) {
+  // Initialize the array of fields for syslog message.
+  $syslog_fields = array(
+    'object_type',
+    'object_id',
+    'instance',
+    'endpoint',
+    'response_status',
+    'response_message',
+  );
+
+  // Open the system log connection.
+  ott_log_open_syslog();
+
+  // Fill out the syslog data array, build a message and add it to syslog.
+  $syslog_data = array_intersect_key($ott_log_record, array_flip($syslog_fields));
+  $message = REQUEST_TIME . ' ' . date('Y-m-d\TH:i:s', REQUEST_TIME);
+  foreach ($syslog_data as $key => $value) {
+    $message .= sprintf('|%s=%s', $key, $value);
+  }
+  $message .= '|request_options' . $ott_log_record['request_options']['data'];
+
+  syslog(LOG_INFO, $message);
+}
+
+/**
+ * Open the system log connection.
+ *
+ * Use the static to avoid repeat the opening operation.
+ */
+function ott_log_open_syslog() {
+  $log_init = &drupal_static(__FUNCTION__, FALSE);
+  if ($log_init) {
+    return;
+  }
+
+  $log_init = TRUE;
+  $default_facility = defined('LOG_LOCAL0') ? LOG_LOCAL0 : LOG_USER;
+  openlog(
+    variable_get('syslog_identity', 'drupal'),
+    LOG_NDELAY,
+    variable_get('syslog_facility', $default_facility)
+  );
+}
+
+/**
+ * Implements hook_entity_info().
+ */
+function ott_log_entity_info() {
+  $info = array(
+    'ott_log' => array(
+      'label' => t('TVE Log'),
+      'base table' => 'ott_log',
+      'entity class' => 'OttLogEntity',
+      'controller class' => 'EntityAPIController',
+      'views controller class' => 'EntityDefaultViewsController',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+        'id' => 'id',
+      ),
+      'access callback' => 'ott_log_access_callback',
+    ),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function ott_log_entity_property_info_alter(&$info) {
+  $info['ott_log']['properties']['uid']['type'] = 'user';
+}
+
+/**
+ * Implements hook_permission().
+ */
+function ott_log_permission() {
+  $permissions = array(
+    'view ott log' => array(
+      'title' => t('Access TVE Log'),
+    ),
+    'view ott log message' => array(
+      'title' => t('Access TVE Publishing log message'),
+    ),
+    'view ott log via service' => array(
+      'title' => t('Access TVE Log via service'),
+    ),
+  );
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_exit().
+ */
+function ott_log_exit($destination = NULL, $allow_batch = FALSE) {
+  $session_id = ott_log_get_session_id();
+  // Do not set messages for multiple "Edit multiple files" page, because
+  // the messages in that case will be set incorrectly.
+  if (!$session_id || strstr(current_path(), 'file/edit-multiple')) {
+    return;
+  }
+
+  if ('batch' == substr($session_id, 0, 5)) {
+    if (!$allow_batch) {
+      return;
+    }
+    drupal_set_message(t('Batch ID: !id', array('!id' => str_replace('batch:', NULL, $session_id))));
+  }
+
+  if (user_access('view ott log via service')) {
+    // Display URL to service feed (filtered by session id).
+    drupal_set_message(
+      url(
+        'services/api/v1/log',
+        array(
+          'absolute' => TRUE,
+          'query' => array('parameters[session_id]' => $session_id),
+        )
+      ),
+      'element-invisible'
+    );
+  }
+
+  if (user_access('view ott log message')) {
+    // Display link to the publishing report.
+    drupal_set_message(
+      l(
+        t('Open full publishing report'),
+        'admin/ott/log',
+        array(
+          'query' => array('session_id' => $session_id),
+          'attributes' => array('target' => '_blank'),
+        )
+      )
+    );
+  }
+}
+
+/**
+ * Access callback for "ott_log" entity.
+ *
+ * @param string $op
+ *
+ * @return bool
+ */
+function ott_log_access_callback($op) {
+  return user_access($op . ' ott log');
+}
+
+/**
+ * Starts session.
+ */
+function ott_log_start_session() {
+  if (isset($_REQUEST['ott_log_session_id'])) {
+    return;
+  }
+
+  // Assign session id for batch operation.
+  if ('batch' == arg(0)) {
+    $_REQUEST['ott_log_session_id'] = 'batch:' . $_REQUEST['id'];
+    return;
+  }
+
+  $_REQUEST['ott_log_session_id'] = uniqid();
+}
+
+/**
+ * Returns unique session id.
+ *
+ * @return string
+ */
+function ott_log_get_session_id() {
+  return isset($_REQUEST['ott_log_session_id']) ? $_REQUEST['ott_log_session_id'] : NULL;
+}
+
+/**
+ * Implements hook_ott_media_syslog().
+ */
+function ott_log_ott_media_syslog($messages) {
+  // Open the system log connection.
+  ott_log_open_syslog();
+
+  $posted = &drupal_static(__FUNCTION__, array());
+  foreach ($messages as $nid => $fields) {
+    foreach ($fields as $field => $message) {
+      if (!isset($posted[$nid][$field])) {
+        syslog(LOG_INFO, $message);
+        $posted[$nid][$field] = '';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function ott_log_cron() {
+  // Delete records which are older than 7 days.
+  db_delete('ott_log')
+    ->condition('date', REQUEST_TIME - OTT_LOG_MAX_LIFETIME, '<')
+    ->execute();
+}
+
+/**
+ * Implements hook_views_post_execute().
+ */
+function ott_log_views_post_execute(&$view) {
+  if ('ott_logs' == $view->name) {
+    foreach ($view->result as $row) {
+      $row->ott_log_object_type = str_replace('ott', 'tve', $row->ott_log_object_type);
+      $row->ott_log_info = str_ireplace('ott', 'TVE', $row->ott_log_info);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_views_exposed_form_alter().
+ */
+function ott_log_form_views_exposed_form_alter(&$form, &$form_state) {
+  if ('ott_logs' == $form_state['view']->name) {
+    array_unshift($form['#submit'], 'ott_log_views_exposed_form_submit');
+    foreach (['response_message', 'response_status', 'instance'] as $field) {
+      $form[$field]['#chosen'] = TRUE;
+      $form[$field]['#type'] = 'select';
+      $form[$field]['#multiple'] = TRUE;
+      $form[$field]['#attributes']['style'] = 'max-width: 160px;';
+      if (!empty($form[$field]['#options']['All'])) {
+        $form[$field]['#multiple'] = FALSE;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hooks_view_pre_view().
+ */
+function ott_log_views_pre_view(&$view, &$display_id, &$args) {
+  if ($view->name == 'ott_logs') {
+    static $instances;
+    static $response_statuses;
+    static $response_messages;
+
+    $filters = $view->display_handler->get_option('filters');
+
+    $filters_fields = ['instance', 'response_message', 'response_status'];
+    foreach ($filters_fields as $field) {
+      $filters[$field]['group_info']['group_items'] = [];
+      $values = db_query('SELECT DISTINCT ' . $field . ' FROM {ott_log}')->fetchAllKeyed(0, 0);
+      $values = array_filter($values);
+      if (empty($values)) {
+        $filters[$field]['group_info']['multiple'] = FALSE;
+        $filters[$field]['group_info']['group_items']['All'] = [
+          'title' => 'All',
+          'value' => $k,
+        ];
+        continue;
+      }
+      $i = 1;
+      foreach ($values as $k => $value) {
+        $filters[$field]['group_info']['group_items'][$i++] = [
+          'title' => $value,
+          'operator' => '=',
+          'value' => $k,
+        ];
+      }
+    }
+
+    // Save the new filter options to the view
+    $view->display_handler->override_option('filters', $filters);
+  }
+}
+
+/**
+ * Submit callback for the ott_logs views exposed form.
+ */
+function ott_log_views_exposed_form_submit($form, &$form_state) {
+  if (!empty($form_state['values']['object_type'])) {
+    $replaced_value = str_ireplace('tve', 'ott', $form_state['values']['object_type']);
+    $form_state['values']['object_type'] = $replaced_value;
+  }
+}
+
+/**
+ * Implements hook_ott_publishing_status_trigger().
+ */
+function ott_log_ott_publishing_status_trigger() {
+  $session_ids = &drupal_static(__FUNCTION__, []);
+  $session_id = ott_log_get_session_id();
+
+  // Initialize and check conditions.
+  $is_edit_files = strstr(current_path(), 'file/edit-multiple');
+  $is_access = user_access('view ott log message');
+  if ($is_access && $is_edit_files && $session_id && !in_array($session_id, $session_ids)) {
+    // Prepare the text message.
+    $message = t('Open full publishing report');
+    $message = l($message, 'admin/ott/log', [
+      'query' => ['session_id' => $session_id],
+      'attributes' => ['target' => '_blank'],
+    ]);
+    drupal_set_message($message);
+    $session_ids[$session_id] = $session_id;
+  }
+}
+
+/**
+ * Implements hook_batch_alter().
+ *
+ * Replaces the default finished callback with custom to have ability add log
+ * message.
+ */
+function ott_log_batch_alter(&$batch) {
+  if (!isset($batch['sets'][0]['finished'])) {
+    return;
+  }
+
+  switch ($batch['sets'][0]['finished']) {
+    case '_media_theplatform_mpx_delete_account_finished':
+      $batch['sets'][0]['finished'] = 'ott_log_media_theplatform_mpx_delete_account_finished';
+      break;
+
+    case 'views_bulk_operations_execute_finished':
+      $batch['sets'][0]['finished'] = 'ott_log_views_bulk_operations_execute_finished';
+      break;
+  }
+}
+
+/**
+ * MPX bulk batch finished operation.
+ */
+function ott_log_media_theplatform_mpx_delete_account_finished($success, $results, $operations) {
+  _media_theplatform_mpx_delete_account_finished($success, $results, $operations);
+  ott_log_start_session();
+  ott_log_exit(NULL, TRUE);
+}
+
+/**
+ * Views bulk batch finished operation.
+ */
+function ott_log_views_bulk_operations_execute_finished($success, $results, $operations) {
+  views_bulk_operations_execute_finished($success, $results, $operations);
+  ott_log_start_session();
+  ott_log_exit(NULL, TRUE);
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function ott_log_views_query_alter(&$view, &$query) {
+  if ('ott_logs' == $view->name) {
+    $fields = [
+      'ott_log.instance',
+      'ott_log.response_message',
+      'ott_log.response_status',
+    ];
+    $fields_conditions = array_fill_keys($fields, []);
+    foreach ($query->where[1]['conditions'] as $i => &$condition) {
+      if (in_array($condition['field'], $fields)) {
+        $condition['operator'] = '=';
+        $fields_conditions[$condition['field']][] = $condition;
+        unset($query->where[1]['conditions'][$i]);
+      }
+    }
+    foreach ($fields_conditions as $conditions) {
+      if (empty($conditions)) {
+        continue;
+      }
+      $query->where[] = [
+        'args' => [],
+        'conditions' => $conditions,
+        'type' => 'OR',
+      ];
+    }
+  }
+}

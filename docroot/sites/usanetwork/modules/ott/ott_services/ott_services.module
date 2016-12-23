@@ -1,0 +1,405 @@
+<?php
+
+/**
+ * Schema name for service instances.
+ * @see ott_services_schema().
+ */
+define('OTT_SERVICES_SCHEMA', 'ott_services_instance');
+
+/**
+ * @file
+ * Main functionality of "ott_services" module.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function ott_services_permission() {
+  $permissions = array(
+    'administer api services instances' => array(
+      'title' => t('Administer API Services instances'),
+    ),
+  );
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_default_ott_services_instance().
+ */
+function ott_services_default_ott_services_instance() {
+  $export = array();
+
+  $env = ott_services_get_environment();
+
+  switch ($env) {
+    case 'dev':
+      // "Development" instance.
+      $services_instance = new stdClass();
+      $services_instance->api_version = 1;
+      $services_instance->name = 'dev';
+      $services_instance->admin_title = 'Development';
+      $services_instance->instance_type = 'api_services';
+      $services_instance->url = 'http://dev-api.nbcuni.com/tve';
+      $services_instance->api_key = '684haamcphfa2qhnja93tuxp';
+      $services_instance->status = 1;
+      $export['dev'] = $services_instance;
+      break;
+    case 'stage':
+      // "Staging" instance.
+      $services_instance = new stdClass();
+      $services_instance->api_version = 1;
+      $services_instance->name = 'stage';
+      $services_instance->admin_title = 'Stage';
+      $services_instance->instance_type = 'api_services';
+      $services_instance->url = 'http://stage-api.nbcuni.com/tve';
+      $services_instance->api_key = '9yceajpn7yhhcds9p5a37rv2';
+      $services_instance->status = 1;
+      $export['stage'] = $services_instance;
+      break;
+  }
+
+  return $export;
+}
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function ott_services_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == 'ott_services' && $api == 'default_ott_services_instances') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function ott_services_ctools_plugin_directory($module, $type) {
+  if ($type == 'export_ui') {
+    return 'plugins/export_ui';
+  }
+}
+
+/**
+ * Loads and returns instance or array of instances by name.
+ *
+ * @param string $name
+ *
+ * @return object|array
+ *
+ * @todo refactor, leave only one function to get instances.
+ */
+function ott_services_get_instance($name) {
+  ctools_include('export');
+  $primary_instance = ctools_export_crud_load(OTT_SERVICES_SCHEMA, $name);
+
+  if (!empty($primary_instance->secondary_instance_name)) {
+    $secondary_instance = ctools_export_crud_load(OTT_SERVICES_SCHEMA, $primary_instance->secondary_instance_name);
+    if ($secondary_instance && (!isset($secondary_instance->disabled) || !$secondary_instance->disabled)) {
+      return [
+        'primary' => $primary_instance,
+        'secondary' => $secondary_instance,
+      ];
+    }
+  }
+
+  // @todo refactor this and all related dependencies later.
+  return ['primary' => $primary_instance];
+}
+
+/**
+ * Loads and returns all API Services instances.
+ *
+ * @return array
+ */
+function ott_services_get_instances() {
+  ctools_include('export');
+
+  $instances = ctools_export_crud_load_all(OTT_SERVICES_SCHEMA);
+  $env = ott_services_get_environment();
+
+  foreach ($instances as $name => $instance) {
+    if (empty($instance->environment) || $instance->environment != $env) {
+      ott_services_instance_delete($instances);
+      unset($instances[$name]);
+    }
+  }
+
+  return $instances;
+}
+
+/**
+ * Returns instance name by instance type.
+ *
+ * @param $instance_type
+ *
+ * @return mixed
+ */
+function ott_services_get_instance_name_by_type($instance_type) {
+  return db_select('ott_services_instance', 'osi')
+    ->fields('osi', array('name'))
+    ->condition('osi.instance_type', $instance_type)
+    ->condition('osi.environment', ott_services_get_environment())
+    ->range(0, 1)
+    ->execute()
+    ->fetchField();
+}
+
+/**
+ * Returns array of API Services instances that are currently enabled.
+ *
+ * @param array $types
+ *   (optional) Type of an instance.
+ *
+ * @return array
+ */
+function ott_services_get_active_instances($types = []) {
+  $instances = array();
+
+  foreach (ott_services_get_instances() as $index => $instance) {
+    if ($types && !in_array($instance->instance_type, $types)) {
+      continue;
+    }
+
+    if (!$instance->status || !empty($instance->disabled)) {
+      continue;
+    }
+
+    $instances[$index] = $instance;
+  }
+
+  return $instances;
+}
+
+/**
+ * Returns services instances types.
+ */
+function ott_services_get_instance_types() {
+  $instance_types = [];
+
+  foreach (ott_services_ott_publishing_instance_type_info() as $type => $conf) {
+    $instance_types[$type] = isset($conf['label']) ? $conf['label'] : $type;
+  }
+
+  return $instance_types;
+}
+
+/**
+ * Returns name of the app.
+ *
+ * @param object $instance
+ *
+ * @return string
+ */
+function ott_services_get_app_name($instance) {
+  return $instance->admin_title . ' [' . $instance->instance_type . ']';
+}
+
+/**
+ * Filter API services instances according to settings.
+ *
+ * @param array $instances
+ *
+ * @return void
+ */
+function ott_services_filter_instances(array &$instances) {
+  $denied_instances = variable_get('services_denied_instances', array());
+  foreach ($denied_instances as $instance) {
+    if (isset($instances[$instance])) {
+      $instances[$instance]->disabled = TRUE;
+      $instances[$instance]->status = 0;
+    }
+  }
+}
+
+/**
+ * Callback for Ctools CRUD load function.
+ *
+ * @see ott_services_schema
+ * @see ctools_export_get_schema
+ */
+function ott_services_ctools_load_callback($name = NULL) {
+  $instances = ctools_export_load_object(OTT_SERVICES_SCHEMA, 'names', (array) $name);
+  $env = ott_services_get_environment();
+  ott_services_filter_instances($instances);
+  if (!is_array($name) && isset($instances[$name])) {
+    $instances = $instances[$name];
+  }
+
+  if (!empty($instances)) {
+    if (empty($instances->environment) || $instances->environment != $env) {
+      ott_services_instance_delete($instances);
+    }
+  }
+
+  return $instances;
+}
+
+/**
+ * Callback for Ctools CRUD save function.
+ *
+ * @see ott_services_schema
+ * @see ctools_export_get_schema
+ */
+function ott_services_ctools_save_callback($object) {
+  $key = 'id';
+  $table = 'ott_services_instance';
+  if ($object->export_type & EXPORT_IN_DATABASE) {
+    // Existing record.
+    $update = array($key);
+    $log_operation = 'service_instance_update';
+  }
+  else {
+    // New record.
+    $update = array();
+    $object->export_type = EXPORT_IN_DATABASE;
+    $log_operation = 'service_instance_create';
+  }
+
+  if (module_exists('tve_debug_log')) {
+    TveDebugLogger::logInstance([
+      'event' => $log_operation,
+    ] + (array)$object);
+  }
+
+  return drupal_write_record($table, $object, $update);
+}
+
+/**
+ * Callback for Ctools CRUD delete function.
+ *
+ * @see ott_services_schema
+ * @see ctools_export_get_schema
+ */
+function ott_services_ctools_delete_callback($object) {
+  $table = $object->table;
+  $schema = ctools_export_get_schema($table);
+  $export = $schema['export'];
+
+  // If we were sent an object, get the export key from it. Otherwise
+  // assume we were sent the export key.
+  $value = is_object($object) ? $object->{$export['key']} : $object;
+  db_delete($table)
+    ->condition($export['key'], $value)
+    ->execute();
+
+  if (module_exists('tve_debug_log')) {
+    TveDebugLogger::logInstance([
+        'event' => 'service_instance_delete',
+      ] + (array)$object);
+  }
+}
+
+
+
+/**
+ * Returns actual site environment.
+ *
+ * @return string
+ */
+function ott_services_get_environment() {
+  // @todo think how to identify PR environment.
+  $env = 'local';
+
+  if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+    switch ($_ENV['AH_SITE_ENVIRONMENT']) {
+      case 'lt':
+        $env = 'load';
+        break;
+      default:
+        $env = $_ENV['AH_SITE_ENVIRONMENT'];
+    }
+  }
+
+  return $env;
+}
+
+/**
+ * Callback for Ctools CRUD load all function.
+ *
+ * @see ott_services_schema
+ * @see ctools_export_get_schema
+ */
+function ott_services_ctools_load_all_callback() {
+  $instances = ctools_export_load_object(OTT_SERVICES_SCHEMA, 'all');
+  $env = ott_services_get_environment();
+
+  foreach ($instances as $name => $instance) {
+    if (empty($instance->environment) || $instance->environment != $env) {
+      ott_services_instance_delete($instance);
+      unset($instances[$name]);
+    }
+  }
+
+  ott_services_filter_instances($instances);
+
+  return $instances;
+}
+
+/**
+ * Remove an endpoint.
+ *
+ * @return void
+ */
+function ott_services_instance_delete($instance) {
+  ctools_include('export');
+  ctools_export_crud_delete('ott_services_instance', $instance);
+  ctools_export_load_object_reset('ott_services_instance');
+
+  if (module_exists('tve_debug_log')) {
+    TveDebugLogger::logInstance([
+        'event' => 'service_instance_delete',
+      ] + (array)$instance);
+  }
+}
+
+/**
+ * Implements hook_ott_publishing_instance_type_info().
+ */
+function ott_services_ott_publishing_instance_type_info() {
+  $module_path = drupal_get_path('module', 'ott_services');
+
+  return [
+    'api_services' => [
+      'label' => t('API Services'),
+      'presend callback' => 'ott_services_api_services_presend_callback',
+      'send callback' => 'ott_services_api_services_send_callback',
+      'file' => $module_path . '/ott_services.api_services.inc',
+    ],
+    'amazon_sqs' => [
+      'label' => t('Amazon SQS'),
+      'send callback' => 'ott_services_amazon_sqs_send_callback',
+      'file' => $module_path . '/ott_services.amazon_sqs.inc',
+    ],
+  ];
+}
+
+/**
+ * Returns a list of available secondary instances.
+ *
+ * @param null $instance_name
+ * @param bool $enabled
+ *
+ * @return array
+ */
+function ott_services_get_secondary_instances($instance_name = NULL, $enabled = TRUE) {
+  $instances = array();
+
+  if ($enabled) {
+    $result = db_query('SELECT inst.name, inst.admin_title FROM {ott_services_instance} inst WHERE inst.status = :status ORDER BY inst.admin_title',
+      array(':status' => 1))->fetchAll();
+  }
+  else {
+    $result = db_query('SELECT inst.name, inst.admin_title FROM {ott_services_instance} inst ORDER BY inst.admin_title')->fetchAll();
+  }
+
+  foreach ($result as $item) {
+    $instances[$item->name] = $item->admin_title;
+  }
+
+  if (!empty($instance_name)) {
+    unset($instances[$instance_name]);
+  }
+
+  return $instances;
+}

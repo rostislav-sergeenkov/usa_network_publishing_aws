@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * Implements hook_ott_publishing_profile_info().
+ */
+function tve_publishing_profiles_ott_publishing_profile_info() {
+  // TV Episode publishing profile.
+  $profiles['episode'] = array(
+    'entity type' => 'node',
+    'object label' => t('episode'),
+    'control type' => OTT_PUBLISHING_CONTROL_ADVANCED,
+    'form id' => 'tv_episode_node_form',
+    'process callback' => 'tv_episode_publishing_process_callback',
+    'delete callback' => 'tv_episode_publishing_delete_callback',
+    'response callback' => 'tv_episode_publishing_response_callback',
+    'match callback' => 'tv_episode_publishing_match_callback',
+    'instance types' => ['amazon_sqs'],
+    'mode' => OTT_PUBLISHING_MODE_MANUAL,
+  );
+  return $profiles;
+}
+
+/**
+ * Returns the properly name of item type for publishing.
+ *
+ * @param string $type
+ *   The type of entity.
+ *
+ * @return string|NULL
+ */
+function tve_publishing_profiles_get_item_type($type) {
+  $mapping = [
+    'tve_series' => 'series',
+    'tve_season' => 'season',
+    'tve_episode' => 'episode',
+    'tve_event' => 'event',
+    'tve_post' => 'post',
+    'tve_media_gallery' => 'mediaGallery',
+    'tve_role' => 'role',
+    'tve_person' => 'person',
+    'curated_collection' => 'list',
+    'collection_group' => 'list',
+    'ott_video' => 'video',
+    'ott_promo' => 'promo',
+    'ott_program' => 'series',
+  ];
+
+  return isset($mapping[$type]) ? $mapping[$type] : NULL;
+}

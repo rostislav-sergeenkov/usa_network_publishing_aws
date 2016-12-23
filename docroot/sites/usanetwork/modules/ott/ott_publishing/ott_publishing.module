@@ -1,0 +1,439 @@
+<?php
+
+/**
+ * @file
+ * OTT Publishing module.
+ */
+
+// Publishing modes.
+define('OTT_PUBLISHING_MODE_DISABLED', 0);
+define('OTT_PUBLISHING_MODE_AUTO', 1);
+define('OTT_PUBLISHING_MODE_MANUAL', 2);
+
+// Publishing control types.
+define('OTT_PUBLISHING_CONTROL_DEFAULT', 'default');
+define('OTT_PUBLISHING_CONTROL_ADVANCED', 'advanced');
+
+// Default Watchdog entry key.
+define('OTT_PUBLISHING_WATCHDOG', 'TVE Publishing');
+
+module_load_include('inc', 'ott_publishing', 'ott_publishing.admin');
+module_load_include('inc', 'ott_publishing', 'ott_publishing.instance');
+module_load_include('inc', 'ott_publishing', 'ott_publishing.actions');
+
+/**
+ * Implements hook_menu().
+ */
+function ott_publishing_menu() {
+  $items['admin/ott/publishing'] = [
+    'title' => 'Publishing configuration',
+    'description' => 'Publishing workflow and profiles settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ott_publishing_settings_form'),
+    'access arguments' => array('configure ott publishing'),
+    'file' => 'ott_publishing.admin.inc',
+  ];
+
+  $items['admin/ott/publishing/confirmation'] = [
+    'title' => 'Publishing confirmation instances',
+    'description' => 'Confirmation page for choosing publishing endpoints.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ott_publishing_confirmation_form'),
+    'access arguments' => array('allow publishing'),
+    'file' => 'ott_publishing.admin.inc',
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function ott_publishing_permission() {
+  $permissions = array(
+    'configure ott publishing' => array(
+      'title' => t('Configure publishing'),
+    ),
+    'allow publishing' => array(
+      'title' => t('Allow publishing'),
+    ),
+  );
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_hook_info().
+ */
+function ott_publishing_hook_info() {
+  $hooks = array(
+    'ott_publishing_profile_info',
+    'ott_publishing_profile_info_alter',
+    'ott_publishing_item_data_alter',
+  );
+
+  return array_fill_keys($hooks, array('group' => 'ott_publishing'));
+}
+
+/**
+ * Implements hook_cron().
+ */
+function ott_publishing_cron() {
+  OttPublishingTracker::cleanup();
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function ott_publishing_module_implements_alter(&$implementations, $hook) {
+  // Check for existence $implementations['ott_publishing'] and hook
+  // entity_update or entity_delete.
+  if (isset($implementations['ott_publishing']) && in_array($hook, ['entity_update', 'entity_delete'])) {
+    $group = $implementations['ott_publishing'];
+    unset($implementations['ott_publishing']);
+    $implementations['ott_publishing'] = $group;
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function ott_publishing_entity_update($entity, $type) {
+  $profile = OttPublishingProfile::getProfileByEntity($entity, $type);
+  if (!$profile) {
+    return;
+  }
+
+  if ($profile->isModeAuto($entity)) {
+    $instance_types = $profile->getInstanceTypes();
+    foreach (ott_services_get_active_instances($instance_types) as $instance) {
+      $handler = OttPublishingItemHandler::getHandler($entity, $profile, $instance);
+      if (!$handler) {
+        $message = t('Could not publish item: publishing handler not instantiated. Please check logs.');
+        drupal_set_message($message, 'warning');
+
+        continue;
+      }
+
+      $handler->publishItem();
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function ott_publishing_entity_delete($entity, $type) {
+  /** @var OttPublishingProfile $profile */
+  $profile = OttPublishingProfile::getProfileByEntity($entity, $type);
+  if (!$profile) {
+    return;
+  }
+
+  // There are no any revisions for some types.
+  $exclude_types = [
+    'taxonomy_term',
+    'file',
+    'ott_app',
+  ];
+
+  $instance_types = $profile->getInstanceTypes();
+  foreach (ott_services_get_active_instances($instance_types) as $instance) {
+    if (!in_array($type, $exclude_types)) {
+      $revision = $profile->getItemInstanceRevision($entity, $instance);
+      if (!$revision) {
+        continue;
+      }
+    }
+
+    $handler = OttPublishingItemHandler::getHandler($entity, $profile, $instance);
+    if (!$handler) {
+      watchdog(
+        OTT_PUBLISHING_WATCHDOG,
+        'Could not unpublish !item: publishing handler not instantiated.',
+        array('!item' => $profile->getItemLabel()),
+        WATCHDOG_NOTICE
+      );
+
+      continue;
+    }
+
+    $handler->unpublishItem();
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ott_publishing_form_alter(&$form, $form_state, $form_id) {
+  if (empty($form['#entity'])) {
+    return;
+  }
+
+  $profile = OttPublishingProfile::getProfileByFormId($form_id);
+
+  // Lets other module to make changes for profile.
+  drupal_alter('ott_publishing_get_profile', $profile, $form, $form_state, $form_id);
+
+  $is_mode_not_manual = !$profile || !$profile->isModeManual($form['#entity']);
+  if ($is_mode_not_manual || !$profile->matchCallback($form['#entity'])) {
+    return;
+  }
+
+  ott_publishing_add_entity_publishing_controls_form($form, $profile);
+}
+
+/**
+ * Publishes entity (or other object) to endpoint.
+ *
+ * @param mixed $item
+ * @param OttPublishingProfile $profile
+ * @param object $instance
+ *
+ * @return bool
+ */
+function ott_publishing_publish_item($item, $profile, $instance) {
+  $handler = OttPublishingItemHandler::getHandler($item, $profile, $instance);
+
+  // Get the data and verify the intentional skip property.
+  $data = $profile->prepareItemOutput($item, $instance);
+  $data = $data ? json_decode($data) : [];
+  if (is_object($data) && !empty($data->skip_publishing)) {
+    return NULL;
+  }
+
+  if (!$handler) {
+    watchdog(
+      OTT_PUBLISHING_WATCHDOG,
+      'Could not publish item: publishing handler not instantiated. Please check logs.',
+      [],
+      WATCHDOG_ERROR
+    );
+
+    return FALSE;
+  }
+
+  return $handler->publishItem();
+}
+
+/**
+ * Unpublishes entity (or other object) to endpoint.
+ *
+ * @param mixed $item
+ * @param OttPublishingProfile $profile
+ * @param object $instance
+ *
+ * @return bool
+ */
+function ott_publishing_unpublish_item($item, $profile, $instance) {
+  $handler = OttPublishingItemHandler::getHandler($item, $profile, $instance);
+  if (!$handler) {
+    watchdog(
+      OTT_PUBLISHING_WATCHDOG,
+      'Could not publish item: publishing handler not instantiated. Please check logs.',
+      [],
+      WATCHDOG_ERROR
+    );
+
+    return FALSE;
+  }
+
+  return $handler->unpublishItem();
+}
+
+/**
+ * Reverts item to an instance revision.
+ *
+ * @param $entity
+ * @param OttPublishingProfile $profile
+ * @param $instance
+ *
+ * @return bool
+ */
+function ott_publishing_revert_item($entity, $profile, $instance) {
+  $handler = OttPublishingItemHandler::getHandler($entity, $profile, $instance);
+  if (!$handler) {
+    $message = t('Could not revert item: publishing handler not instantiated. Please check logs.');
+    drupal_set_message($message, 'warning');
+
+    return FALSE;
+  }
+
+  return $handler->revertItem();
+}
+
+/**
+ * Starts publishing session.
+ */
+function ott_publishing_start_session() {
+  global $_ott_publishing_session_started;
+
+  $_ott_publishing_session_started = TRUE;
+}
+
+/**
+ * Returns status of publishing session.
+ *
+ * @return bool
+ */
+function ott_publishing_is_session_started() {
+  global $_ott_publishing_session_started;
+
+  return !empty($_ott_publishing_session_started);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ott_publishing_form_ott_publishing_confirmation_form_alter(&$form, &$form_state, $form_id) {
+  // Add to the "Cancel" link button styles.
+  $path = drupal_get_path('module', 'ott_core');
+  $form['#attached']['css'][] = $path . '/css/ott_core_button.css';
+  $form['actions']['cancel']['#attributes']['class'][] = 'ott-core-button';
+  $form['actions']['cancel']['#attributes']['class'][] = 'button';
+}
+
+/**
+ * Helper function to handle publishing images.
+ *
+ * @param array $images
+ *   Array of image objects that should be prepared for publishing.
+ * @param int $profile_id
+ *   ID of the publishing profile.
+ * @param $parent_entity
+ *   Object of the Entity each image belongs to.
+ * @param object $instance
+ *  Target API service instance.
+ *
+ * @return bool
+ */
+function ott_publishing_image_publish_image($images, $profile_id, $instance, $parent_entity = NULL) {
+  $status = TRUE;
+  $images_ready_for_publishing = array();
+  $profile = OttPublishingProfile::getProfileById($profile_id);
+
+  if (!$profile) {
+    watchdog(
+      OTT_PUBLISHING_WATCHDOG,
+      'Could not load !profile publishing profile.',
+      ['!profile' => $profile_id],
+      WATCHDOG_ERROR
+    );
+    return FALSE;
+  }
+
+  foreach ($images as $key => $item) {
+    $image = file_load($item['fid']);
+    if (!$image) {
+      watchdog(
+        OTT_PUBLISHING_WATCHDOG,
+        'Could not load image by fid=%fid',
+        ['%fid' => $item['fid']],
+        WATCHDOG_ERROR
+      );
+      $status = FALSE;
+      continue;
+    }
+
+    if ($image->type == 'image') {
+      if (!empty($parent_entity)) {
+        $image->parent_entity = $parent_entity;
+      }
+
+      $images_ready_for_publishing[] = $image;
+    }
+  }
+
+  foreach ($images_ready_for_publishing as $image_ready) {
+    if (!ott_publishing_publish_item($image_ready, $profile, $instance)) {
+      $status = FALSE;
+    }
+  }
+
+  return $status;
+}
+
+/**
+ * Helper function to unpublish images.
+ *
+ * @param array $images
+ *   Array of image objects that should be prepared for unpublishing.
+ * @param int $profile_id
+ *   ID of the publishing profile.
+ * @param $parent_entity
+ *   Object of the Entity each image belongs to.
+ * @param object $instance
+ *  Target API service instance.
+ *
+ * @return bool
+ */
+function ott_publishing_image_unpublish_image($images, $profile_id, $instance, $parent_entity = NULL) {
+  $status = TRUE;
+  $images_for_unpublishing = array();
+  $profile = OttPublishingProfile::getProfileById($profile_id);
+
+  if (!$profile) {
+    watchdog(
+      OTT_PUBLISHING_WATCHDOG,
+      'Could not load !profile publishing profile.',
+      ['!profile' => $profile_id],
+      WATCHDOG_ERROR
+    );
+    return FALSE;
+  }
+
+  foreach ($images as $key => $item) {
+    $image = file_load($item['fid']);
+    if (!$image) {
+      watchdog(
+        OTT_PUBLISHING_WATCHDOG,
+        'Could not load image by fid=%fid',
+        ['%fid' => $item['fid']],
+        WATCHDOG_ERROR
+      );
+      $status = FALSE;
+      continue;
+    }
+
+    if ($image->type == 'image') {
+      if (!empty($parent_entity)) {
+        $image->parent_entity = $parent_entity;
+      }
+
+      $images_for_unpublishing[] = $image;
+    }
+  }
+
+  foreach ($images_for_unpublishing as $image_ready) {
+    if (!ott_publishing_unpublish_item($image_ready, $profile, $instance)) {
+      $status = FALSE;
+    }
+  }
+
+  return $status;
+}
+
+/**
+ * Returns array of image IDs ($file->fid) used for iOS.
+ *
+ * @param object $node
+ *   The object of entity.
+ *
+ * @return array
+ */
+function ott_publishing_image_get_images($node, $prefix) {
+  $fids = [];
+  $function = $prefix . '_image_get_fields';
+  if (!is_callable($function)) {
+    return $fids;
+  }
+
+  foreach ($function() as $field_machine_name => $field_value) {
+    if (!empty($node->{$field_machine_name}[LANGUAGE_NONE][0][$field_value])) {
+      $image = $node->{$field_machine_name}[LANGUAGE_NONE][0];
+      $fids[$image['fid']] = $image;
+    }
+  }
+
+  return $fids;
+}

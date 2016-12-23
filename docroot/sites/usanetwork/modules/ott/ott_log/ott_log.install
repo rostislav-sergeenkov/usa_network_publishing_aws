@@ -1,0 +1,134 @@
+<?php
+
+/**
+ * @file
+ *
+ * Installation tasks and schemas for "OTT Log" module.
+ */
+
+include_once 'ott_log.features.inc';
+
+/**
+ * Implements hook_schema().
+ */
+function ott_log_schema() {
+  $schema = array(
+    'ott_log' => array(
+      'description' => 'Base table for ott_log entity.',
+      'fields' => array(
+        'id' => array(
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'description' => 'Unique log id.',
+        ),
+        'session_id' => array(
+          'description' => 'Unique session id.',
+          'type' => 'varchar',
+          'length' => 127,
+          'not null' => TRUE,
+          'default' => '',
+        ),
+        'instance' => array(
+          'description' => 'The instance machine-name.',
+          'type' => 'varchar',
+          'length' => 127,
+          'not null' => TRUE,
+          'default' => '',
+        ),
+        'endpoint' => array(
+          'description' => 'The endpoint URL.',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'default' => '',
+        ),
+        'object_type' => array(
+          'description' => 'Type of the object.',
+          'type' => 'varchar',
+          'length' => 127,
+        ),
+        'object_id' => array(
+          'description' => 'ID of the object.',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+          'default' => NULL,
+        ),
+        'request_options' => array(
+          'type' => 'blob',
+          'size' => 'normal',
+          'serialize' => TRUE,
+          'not null' => TRUE,
+          'description' => 'Request options: http headers and data.',
+        ),
+        'response_status' => array(
+          'description' => 'Response status.',
+          'type' => 'varchar',
+          'length' => 127,
+          'not null' => TRUE,
+          'default' => '',
+        ),
+        'response_message' => array(
+          'type' => 'text',
+          'description' => 'Response message.',
+        ),
+        'response_data' => array(
+          'type' => 'blob',
+          'size' => 'normal',
+          'description' => 'Response data.',
+        ),
+        'date' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 0,
+          'description' => 'The Unix timestamp when the request was performed.',
+        ),
+        'info' => array(
+          'type' => 'blob',
+          'size' => 'normal',
+          'serialize' => TRUE,
+          'not null' => TRUE,
+          'description' => 'Additional information about request.',
+        ),
+        'uid' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'description' => 'The id of the user.',
+        ),
+      ),
+      'primary key' => array('id'),
+      'indexes' => array(
+        'id' => array('id'),
+        'session_id' => array('session_id'),
+        'date' => array('date'),
+        'object_id' => array('object_id'),
+        'object_type' => array('object_type'),
+        'response_status' => array('response_status'),
+      ),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Adds indexes to "ott_log" database table to improve "search" performance.
+ */
+function ott_log_update_7000() {
+  $indexes = array(
+    'session_id' => array('session_id'),
+    'date' => array('date'),
+    'object_id' => array('object_id'),
+    'object_type' => array('object_type'),
+    'response_status' => array('response_status'),
+  );
+
+  foreach ($indexes as $name => $fields) {
+    if (!db_index_exists('ott_log', $name)) {
+      db_add_index('ott_log', $name, $fields);
+    }
+  }
+}

@@ -1,0 +1,16 @@
+name = TVE Publishing
+description = TVE CMS Media content and application (platform) structure monitoring and publishing framework.
+core = 7.x
+package = TVE CMS
+version = 7.x-2.0
+project = ott_publishing
+
+configure = admin/ott/publishing
+
+dependencies[] = ott_services
+
+files[] = classes/OttPublishingProfile.class.inc
+files[] = classes/OttPublishingProfileHelper.class.inc
+files[] = classes/OttPublishingItemHandler.class.inc
+files[] = classes/OttPublishingTracker.class.inc
+files[] = classes/OttPublishingSortTitle.class.inc

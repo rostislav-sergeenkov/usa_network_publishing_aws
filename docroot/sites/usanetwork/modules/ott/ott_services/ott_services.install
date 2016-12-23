@@ -1,0 +1,177 @@
+<?php
+
+/**
+ * @file
+ * Installation tasks and schemas for "ott_services" module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function ott_services_schema() {
+  $schema = array(
+    'ott_services_instance' => array(
+      'description' => t('Table storing API Services instances.'),
+      'export' => array(
+        'key' => 'name',
+        'key name' => 'Name',
+        'primary key' => 'id',
+        'identifier' => 'services_instance',
+        'default hook' => 'default_ott_services_instance',
+        'api' => array(
+          'owner' => 'ott_services',
+          'api' => 'default_ott_services_instances',
+          'minimum_version' => 1,
+          'current_version' => 1,
+        ),
+        'save callback' => 'ott_services_ctools_save_callback',
+        'delete callback' => 'ott_services_ctools_delete_callback',
+        'load callback' => 'ott_services_ctools_load_callback',
+        'load multiple callback' => 'ott_services_ctools_load_callback',
+        'load all callback' => 'ott_services_ctools_load_all_callback',
+      ),
+      'fields' => array(
+        'id' => array(
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'description' => 'Primary ID field for the table. Not used for anything except internal lookups.',
+          'no export' => TRUE,
+        ),
+        'name' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'description' => 'Unique ID for instances. Used to identify them programmatically.',
+        ),
+        'admin_title' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'description' => 'A human readable name of an instance.',
+        ),
+        'instance_type' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'description' => 'A type of an instance.',
+        ),
+        'url' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'description' => 'Instance address. Examples: endpoint base URL; queue name for message queuing systems.',
+        ),
+        'api_key' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'description' => 'Secret key.',
+        ),
+        'secondary_instance_name' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'description' => 'Unique name of the secondary instance. Used to identify them programmatically.',
+        ),
+        'status' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => 1,
+          'size' => 'tiny',
+          'description' => 'Boolean flag indicating instance is active.',
+        ),
+        'environment' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'description' => 'Site environment. Examples: dev, qa etc.',
+        ),
+      ),
+      'primary key' => array('id'),
+      'unique keys' => array(
+        'name' => array('name'),
+      ),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Add "Instance Type" field (column) to `ott_services_instance` database table.
+ * Enable Amazon SQS module.
+ * Configure Amazon SQS integration: set access and secret keys.
+ */
+function ott_services_update_7100() {
+  $field = [
+    'type' => 'varchar',
+    'length' => '255',
+    'description' => 'A type of an instance.',
+  ];
+  db_add_field('ott_services_instance', 'instance_type', $field);
+
+  // Set "api_service" as a default value for all existing records.
+  db_update('ott_services_instance')
+    ->fields(['instance_type' => 'api_services'])
+    ->execute();
+
+  // Enable Amazon SQS module.
+  if (!module_exists('aws_sqs')) {
+    module_enable(['aws_sqs']);
+  }
+
+  // Set Amazon SQS keys (access key, secret key).
+  variable_set('aws_sqs_aws_key', 'AKIAIOAXFJ2UFL2D26IA');
+  variable_set('aws_sqs_aws_secret', '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');
+
+  // Set Amazon SQS "Wait time" value to 10 seconds.
+  variable_set('aws_sqs_waittimeseconds', 10);
+}
+
+/**
+ * Set Amazon SQS wait time value to 3 seconds.
+ */
+function ott_services_update_7101() {
+  // Set Amazon SQS "Wait time" value to 3 seconds.
+  variable_set('aws_sqs_waittimeseconds', 3);
+}
+
+/**
+ * Set Amazon Web Services Region to "us-east-1".
+ */
+function ott_services_update_7102() {
+  variable_set('aws_sqs_region', 'us-east-1');
+}
+
+/**
+ * Add "Secondary Instance Name" field (column) to 'ott_services_instance' database table.
+ */
+function ott_services_update_7105() {
+  if (!db_field_exists('ott_services_instance', 'secondary_instance_name')) {
+    $field = [
+      'type' => 'varchar',
+      'length' => '255',
+      'description' => 'Unique name of the secondary instance. Used to identify them programmatically.',
+    ];
+    db_add_field('ott_services_instance', 'secondary_instance_name', $field);
+  }
+}
+
+/**
+ * Enable Aws Sqs module if its not enabled.
+ */
+function ott_services_update_7106() {
+  // Enable Amazon SQS module.
+  if (!module_exists('aws_sqs')) {
+    module_enable(['aws_sqs']);
+  }
+}
+
+/**
+ * Adds "Environment" field (column) to 'ott_services_instance' database table.
+ */
+function ott_services_update_7107() {
+  if (!db_field_exists('ott_services_instance', 'environment')) {
+    $field = [
+      'type' => 'varchar',
+      'length' => '255',
+      'description' => 'Site environment. Examples: dev, qa etc.',
+    ];
+    db_add_field('ott_services_instance', 'environment', $field);
+  }
+}

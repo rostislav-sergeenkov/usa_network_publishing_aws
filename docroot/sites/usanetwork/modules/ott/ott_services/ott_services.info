@@ -1,0 +1,8 @@
+name = TVE Services
+description = API Services management.
+core = 7.x
+package = TVE CMS
+version = 7.x-1.0
+dependencies[] = ctools
+
+files[] = aws_sqs/ott_aws_sqs.queue.inc

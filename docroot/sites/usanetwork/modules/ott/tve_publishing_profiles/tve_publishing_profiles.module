@@ -1,6 +1,7 @@
 <?php
 
 module_load_include('inc', 'tve_publishing_profiles', 'profiles/usanetwork_episode');
+module_load_include('inc', 'tve_publishing_profiles');
 
 /**
  * Implements hook_ott_publishing_profile_info().

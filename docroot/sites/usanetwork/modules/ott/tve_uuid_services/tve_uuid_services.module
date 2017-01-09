@@ -87,10 +87,9 @@ function tve_uuid_services_form_node_form_alter(&$form, &$form_state, $form_id) 
 
   switch ($form_id) {
     // Node edit forms with the UUID field.
-    case 'tve_episode_node_form':
-    case 'tve_series_node_form':
-    case 'tve_season_node_form':
-    case 'tve_event_node_form':
+    case 'tv_episode_node_form':
+    case 'tv_season_node_form':
+    case 'tv_show_node_form':
 
       // Hides UUID field.
       $form['field_uuid']['#access'] = FALSE;
@@ -109,8 +108,8 @@ function tve_uuid_services_form_node_form_alter(&$form, &$form_state, $form_id) 
  * @param $form_state
  */
 function tve_uuid_services_validate($form, &$form_state) {
-  if ($form['#form_id'] == 'tve_episode_node_form') {
-    $season_number = $form_state['values']['field_series_season_episode'][LANGUAGE_NONE][0]['season'];
+  if ($form['#form_id'] == 'tv_episode_node_form') {
+    $season_number = $form_state['values']['field_season'][LANGUAGE_NONE][0]['target_id'];
 
     if ($season_number == 0) {
       form_set_error('field_series_season_episode',
@@ -128,11 +127,9 @@ function tve_uuid_services_validate($form, &$form_state) {
  */
 function tve_uuid_services_get_uuid($entity) {
   switch ($entity->type) {
-    case 'tve_episode':
-    case 'tve_series':
-    case 'tve_season':
-    case 'tve_event':
-    case 'ott_program':
+    case 'tv_episode':
+    case 'tv_season':
+    case 'tv_show':
 
       $key = tve_uuid_services_generate_key($entity);
       $response = tve_uuid_services_uuid_request($key);
@@ -189,15 +186,13 @@ function tve_uuid_services_generate_key($entity) {
   $entity_type = $entity->type;
 
   switch ($entity_type) {
-    case 'ott_program':
-      $entity_type = 'tve_series';
-    case 'tve_episode':
-    case 'tve_series':
-    case 'tve_season':
-    case 'tve_event':
+    case 'tv_show':
+      $entity_type = 'tv_series';
+    case 'tv_episode':
+    case 'tv_season':
 
       // Converts the node type into a valid '[content_type]' value.
-      $content_type = str_replace('tve_', '', $entity_type);
+      $content_type = str_replace('tv_', '', $entity_type);
 
       // Converts 'title' into a valid '[key_string]' value.
       $key_string = preg_replace('/(\w|\s)?[^\w\s]+(\w|\s)?/', '$1$2', strtolower($entity->title));
@@ -206,26 +201,20 @@ function tve_uuid_services_generate_key($entity) {
 
       // Assigns keys to content types.
       switch ($entity_type) {
-        case 'tve_series':
-        case 'tve_event':
+        case 'tv_series':
           $key = $content_type . ':' . $key_string;
           break;
 
-        case 'tve_season':
-          $season_number = $entity->field_season_number[LANGUAGE_NONE][0]['value'];
+        case 'tv_season':
+          $season_number = $entity->field_season_id[LANGUAGE_NONE][0]['value'];
           $key = $content_type . ':' . $key_string . '::s' . $season_number;
           break;
 
-        case 'tve_episode':
-          $season_number = 0;
-          if (isset($entity->field_series_season_episode[LANGUAGE_NONE][0]['season'])) {
-            $season_number = $entity->field_series_season_episode[LANGUAGE_NONE][0]['season'];
-          }
-
-          if ($season_number > 0) {
-            $season_nid = $entity->field_series_season_episode[LANGUAGE_NONE][0]['season'];
+        case 'tv_episode':
+          if (isset($entity->field_season[LANGUAGE_NONE][0]['target_id'])) {
+            $season_nid = $entity->field_season[LANGUAGE_NONE][0]['target_id'];
             $season_wrapper = entity_metadata_wrapper('node', $season_nid);
-            $season_number = $season_wrapper->field_season_number->value();
+            $season_number = $season_wrapper->field_season_id->value();
 
             // Grabs episode number ('e[integer]').
             $episode_number = $entity->field_episode_number[LANGUAGE_NONE][0]['value'];
@@ -276,11 +265,9 @@ function tve_uuid_services_uuid_request($key) {
 function tve_uuid_services_entity_presave($entity, $type) {
   if (isset($entity->type)) {
     switch ($entity->type) {
-      case 'tve_episode':
-      case 'tve_series':
-      case 'tve_season':
-      case 'tve_event':
-      case 'ott_program':
+      case 'tv_episode':
+      case 'tv_season':
+      case 'tv_show':
 
         $uuid = tve_uuid_services_get_uuid($entity);
 

@@ -18,5 +18,5 @@ function usanetwork_update_7001() {
  * Enable OTT modules (part 2).
  */
 function usanetwork_update_7002() {
-  module_enable(array('aws_sqs', 'uuid', 'tve_uuid_services'));
+  module_enable(array('aws_sqs', 'uuid', 'tve_uuid_services', 'usanetwork_blog_migrate'));
 }

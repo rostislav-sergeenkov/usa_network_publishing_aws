@@ -1,0 +1,327 @@
+<?php
+
+/**
+ * @file
+ * Content Registry UUID API related functionality.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function tve_uuid_services_menu() {
+  $items['admin/config/content_registry'] = [
+    'title' => 'Content Registry',
+    'description' => 'Configuration for the Content Registry (a.k.a. UUID Service)',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tve_uuid_services_form'),
+    'access arguments' => array('administer content registry uuid service'),
+    'type' => MENU_NORMAL_ITEM,
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tve_uuid_services_permission() {
+  return array(
+    'administer content registry uuid service' => array(
+      'title' => t('Administer Content Registry (UUID) service.'),
+    )
+  );
+}
+
+/**
+ * Implements hook_form().
+ *
+ * @param $form
+ * @param $form_state
+ *
+ * @return array
+ */
+function tve_uuid_services_form($form, &$form_state) {
+
+  $form['content_registry_api_key'] = [
+    '#type' => 'textfield',
+    '#title' => t('API key for content Registry.'),
+    '#default_value' => variable_get('content_registry_api_key'),
+    '#description' => t('Content Registry API key.'),
+    '#required' => TRUE,
+  ];
+
+  $form['content_registry_environment_url'] = [
+    '#type' => 'textfield',
+    '#title' => t('Content Registry environment url.'),
+    '#default_value' => variable_get('content_registry_environment_url'),
+    '#description' => t('The URL for the Content Registry end-point.'),
+    '#required' => TRUE,
+  ];
+
+  return system_settings_form($form);
+}
+
+/**
+ * Implements validation for a 'Content Registry' environment url.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function tve_uuid_services_form_validate($form, &$form_state) {
+
+  $url = $form_state['values']['content_registry_environment_url'];
+
+  if (!valid_url($url, TRUE)) {
+    form_set_error('tve_uuid_services', t('Please enter a valid URL.'));
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function tve_uuid_services_form_node_form_alter(&$form, &$form_state, $form_id) {
+
+  switch ($form_id) {
+    // Node edit forms with the UUID field.
+    case 'tve_episode_node_form':
+    case 'tve_series_node_form':
+    case 'tve_season_node_form':
+    case 'tve_event_node_form':
+
+      // Hides UUID field.
+      $form['field_uuid']['#access'] = FALSE;
+
+      // Adds custom validate function.
+      $form['#validate'][] = 'tve_uuid_services_validate';
+
+      break;
+  }
+}
+
+/**
+ * Implements hook_validate().
+ *
+ * @param $form
+ * @param $form_state
+ */
+function tve_uuid_services_validate($form, &$form_state) {
+  if ($form['#form_id'] == 'tve_episode_node_form') {
+    $season_number = $form_state['values']['field_series_season_episode'][LANGUAGE_NONE][0]['season'];
+
+    if ($season_number == 0) {
+      form_set_error('field_series_season_episode',
+        t('There is not a season associated with this episode. The UUID could not be retrieved from Content Registry. Please associate a season with this episode.'));
+    }
+  }
+}
+
+/**
+ * Gets UUID from Content Registry.
+ *
+ * @param $entity
+ *
+ * @return string|null
+ */
+function tve_uuid_services_get_uuid($entity) {
+  switch ($entity->type) {
+    case 'tve_episode':
+    case 'tve_series':
+    case 'tve_season':
+    case 'tve_event':
+    case 'ott_program':
+
+      $key = tve_uuid_services_generate_key($entity);
+      $response = tve_uuid_services_uuid_request($key);
+
+      $log_type = 'Content Registry Service';
+
+      if ($response->code == 200 || $response->code == 201) {
+        // Decodes the data to a PHP object.
+        $response_decoded = json_decode($response->data);
+
+        if (!is_null($response_decoded) && isset($response_decoded->uuid)) {
+          watchdog('uuid', 'Response uuid: !uuid', array('!uuid' => $response_decoded->uuid));
+          // Sets uuid value to node.
+          return $response_decoded->uuid;
+        }
+        elseif (json_last_error()) {
+          $log_message = 'The call to the Content Registry Service has returned an invalid JSON string';
+          watchdog($log_type, $log_message, [], WATCHDOG_WARNING);
+
+          return NULL;
+        }
+      }
+      else {
+        drupal_set_message(t('API call to Content Registry service has failed.'), 'error');
+        $log_message = 'The call to the Content Registry Service has returned a status of %code.';
+        watchdog($log_type, $log_message, ['%code' => $response->code], WATCHDOG_WARNING);
+
+        return NULL;
+      }
+      break;
+
+    default:
+      return isset($entity->uuid) ? $entity->uuid : NULL;
+  }
+}
+
+/**
+ * Helper function to generate key.
+ *
+ * @param $entity
+ *
+ * @return string
+ */
+function tve_uuid_services_generate_key($entity) {
+
+  ////////////////////////////////////////////////////////////////////
+  // Key pattern: [content_type]:[key_string]::s[integer]::e[integer]
+  /////////////////////////////////////////////////////////////////////////
+  // http://docs.contentregistry.apiary.io/#reference/key-generation-rules
+  /////////////////////////////////////////////////////////////////////////
+
+  $key = '';
+
+  $entity_type = $entity->type;
+
+  switch ($entity_type) {
+    case 'ott_program':
+      $entity_type = 'tve_series';
+    case 'tve_episode':
+    case 'tve_series':
+    case 'tve_season':
+    case 'tve_event':
+
+      // Converts the node type into a valid '[content_type]' value.
+      $content_type = str_replace('tve_', '', $entity_type);
+
+      // Converts 'title' into a valid '[key_string]' value.
+      $key_string = preg_replace('/(\w|\s)?[^\w\s]+(\w|\s)?/', '$1$2', strtolower($entity->title));
+      $key_string = trim($key_string);
+      $key_string = preg_replace('/(\s|_)+/', '_', $key_string);
+
+      // Assigns keys to content types.
+      switch ($entity_type) {
+        case 'tve_series':
+        case 'tve_event':
+          $key = $content_type . ':' . $key_string;
+          break;
+
+        case 'tve_season':
+          $season_number = $entity->field_season_number[LANGUAGE_NONE][0]['value'];
+          $key = $content_type . ':' . $key_string . '::s' . $season_number;
+          break;
+
+        case 'tve_episode':
+          $season_number = 0;
+          if (isset($entity->field_series_season_episode[LANGUAGE_NONE][0]['season'])) {
+            $season_number = $entity->field_series_season_episode[LANGUAGE_NONE][0]['season'];
+          }
+
+          if ($season_number > 0) {
+            $season_nid = $entity->field_series_season_episode[LANGUAGE_NONE][0]['season'];
+            $season_wrapper = entity_metadata_wrapper('node', $season_nid);
+            $season_number = $season_wrapper->field_season_number->value();
+
+            // Grabs episode number ('e[integer]').
+            $episode_number = $entity->field_episode_number[LANGUAGE_NONE][0]['value'];
+
+            $key = $content_type . ':' . $key_string . '::s' . $season_number . '::e' . $episode_number;
+          }
+          break;
+      }
+  }
+  return $key;
+}
+
+/**
+ * Requests UUID from Content Registry.
+ *
+ * @param $key
+ *
+ * @return object
+ */
+function tve_uuid_services_uuid_request($key) {
+  // Builds the request url.
+  $request_url = variable_get('content_registry_environment_url') . '/content-registry/uuid?key=' . $key;
+  watchdog('uuid', 'Generated key: !key', array('!key' => $key));
+  watchdog('uuid', 'Request url: !url', array('!url' => $request_url));
+
+  // $options array for drupal_http_request().
+  $uuid_request_options = [
+    'headers' => [
+      'api_key' => variable_get('content_registry_api_key'),
+    ],
+    'method' => 'GET',
+  ];
+
+  // Makes API call.
+  $response = drupal_http_request($request_url, $uuid_request_options);
+
+  return $response;
+}
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * Saves UUID from Content Registry to the specified node UUID property.
+ *
+ * @param $entity
+ * @param $type
+ */
+function tve_uuid_services_entity_presave($entity, $type) {
+  if (isset($entity->type)) {
+    switch ($entity->type) {
+      case 'tve_episode':
+      case 'tve_series':
+      case 'tve_season':
+      case 'tve_event':
+      case 'ott_program':
+
+        $uuid = tve_uuid_services_get_uuid($entity);
+
+        if (!is_null($uuid)) {
+          $entity->uuid = $uuid;
+          if (empty($entity->nid)) {
+            watchdog('Content Registry Service',
+              "The UUID %uuid was successfully saved to the new node '%title'.",
+              ['%uuid' => $uuid, '%title' => $entity->title],
+              WATCHDOG_INFO);
+          }
+          else {
+            watchdog('Content Registry Service',
+              "The UUID %uuid was successfully saved to the '%title' node (nid: %nid).", [
+                '%uuid' => $uuid,
+                '%nid'=> $entity->nid,
+                '%title' => $entity->title,
+              ],
+              WATCHDOG_INFO);
+          }
+        }
+        else {
+          if (empty($entity->nid)) {
+            watchdog('Content Registry Service',
+              "The Content Registry Service returned %uuid for the node '%title'", [
+                '%uuid' => $uuid,
+                '%title' => $entity->title,
+              ],
+              WATCHDOG_INFO);
+          }
+          else {
+            watchdog('Content Registry Service',
+              "The Content Registry Service returned %uuid for the node '%title' (nid: %nid)", [
+                '%uuid' => $uuid,
+                '%nid'=> $entity->nid,
+                '%title' => $entity->title,
+              ],
+              WATCHDOG_INFO);
+          }
+        }
+        break;
+    }
+  }
+}

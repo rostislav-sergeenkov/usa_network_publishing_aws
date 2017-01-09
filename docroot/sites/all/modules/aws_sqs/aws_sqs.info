@@ -4,7 +4,6 @@ package = Other
 core = 7.x
 
 files[] = aws_sqs.queue.inc
-dependencies[] = composer_manager
 configure = admin/config/system/aws-queue
 ; Information added by Drupal.org packaging script on 2014-02-24
 version = "7.x-1.1"

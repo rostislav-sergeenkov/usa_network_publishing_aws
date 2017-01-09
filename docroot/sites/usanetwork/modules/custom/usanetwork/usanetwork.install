@@ -13,3 +13,10 @@
 function usanetwork_update_7001() {
   module_enable(array('ott_services', 'ott_publishing', 'tve_publishing_profiles'));
 }
+
+/**
+ * Enable OTT modules (part 2).
+ */
+function usanetwork_update_7002() {
+  module_enable(array('aws_sqs', 'uuid', 'tve_uuid_services'));
+}

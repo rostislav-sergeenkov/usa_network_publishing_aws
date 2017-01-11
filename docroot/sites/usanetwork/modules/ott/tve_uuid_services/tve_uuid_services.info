@@ -1,0 +1,7 @@
+name = TVE UUID Services
+description = Content Registry (a.k.a. UUID Service) API integration.
+core = 7.x
+package = TVE CMS
+version = 7.x-1.0
+
+configure = admin/config/content_registry

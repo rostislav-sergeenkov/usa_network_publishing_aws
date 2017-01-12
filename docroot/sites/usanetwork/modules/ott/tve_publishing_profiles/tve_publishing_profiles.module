@@ -1,7 +1,12 @@
 <?php
 
-module_load_include('inc', 'tve_publishing_profiles', 'profiles/usanetwork_episode');
-module_load_include('inc', 'tve_publishing_profiles');
+/**
+ * @file
+ * Includes core functions and hooks for TVE Publishing Profiles module.
+ */
+
+// Include necessary publishing profile files.
+tve_publishing_profiles_include_profiles();
 
 /**
  * Implements hook_ott_publishing_profile_info().
@@ -20,6 +25,43 @@ function tve_publishing_profiles_ott_publishing_profile_info() {
     'instance types' => ['amazon_sqs'],
     'mode' => OTT_PUBLISHING_MODE_MANUAL,
   );
+
+  $profiles['file_image'] = array(
+    'entity type' => 'file',
+    'object label' => t('Image'),
+    'match callback' => 'tv_file_image_ott_publishing_match',
+    'form id' => 'file_entity_edit',
+    'control type' => OTT_PUBLISHING_CONTROL_ADVANCED,
+    'process callback' => 'tv_file_image_ott_publishing_process_callback',
+    'delete callback' => 'tv_file_image_ott_delete_callback',
+    'instance types' => ['amazon_sqs'],
+    'mode' => OTT_PUBLISHING_MODE_MANUAL,
+  );
+
+  $profiles['collection'] = [
+    'entity type' => 'queues',
+    'object label' => t('Collection'),
+    'control type' => OTT_PUBLISHING_CONTROL_ADVANCED,
+    'form id' => 'queues_edit_curated_collection_form',
+    'process callback' => 'tv_collection_publishing_process_callback',
+    'delete callback' => 'tv_collection_publishing_delete_callback',
+    'response callback' => 'tv_collection_publishing_response_callback',
+    'instance types' => ['amazon_sqs'],
+    'mode' => OTT_PUBLISHING_MODE_MANUAL,
+  ];
+
+  $profiles['collection_group'] = [
+    'entity type' => 'queues',
+    'object label' => t('collection group'),
+    'control type' => OTT_PUBLISHING_CONTROL_ADVANCED,
+    'form id' => 'queues_edit_collection_group_form',
+    'process callback' => 'tv_collection_group_publishing_process_callback',
+    'delete callback' => 'tv_collection_group_publishing_delete_callback',
+    'response callback' => 'tv_collection_group_publishing_response_callback',
+    'instance types' => ['amazon_sqs'],
+    'mode' => OTT_PUBLISHING_MODE_MANUAL,
+  ];
+
   return $profiles;
 }
 
@@ -49,4 +91,15 @@ function tve_publishing_profiles_get_item_type($type) {
   ];
 
   return isset($mapping[$type]) ? $mapping[$type] : NULL;
+}
+
+/**
+ * Includes the publishing profiles files.
+ */
+function tve_publishing_profiles_include_profiles() {
+  $path  = drupal_get_path('module', 'tve_publishing_profiles');
+  $files = file_scan_directory($path . '/profiles', '/.inc/');
+  foreach ($files as $file) {
+    module_load_include('inc', 'tve_publishing_profiles', 'profiles/' . $file->name);
+  }
 }

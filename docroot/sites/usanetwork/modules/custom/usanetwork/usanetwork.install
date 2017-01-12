@@ -20,3 +20,10 @@ function usanetwork_update_7001() {
 function usanetwork_update_7002() {
   module_enable(array('aws_sqs', 'uuid', 'tve_uuid_services', 'usanetwork_blog_migrate'));
 }
+
+/**
+ * Enable OTT log.
+ */
+function usanetwork_update_7003() {
+  module_enable(array('ott_log'));
+}

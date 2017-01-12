@@ -5,6 +5,8 @@
  * Includes core functions and hooks for TVE Publishing Profiles module.
  */
 
+module_load_include('inc', 'tve_publishing_profiles');
+
 // Include necessary publishing profile files.
 tve_publishing_profiles_include_profiles();
 

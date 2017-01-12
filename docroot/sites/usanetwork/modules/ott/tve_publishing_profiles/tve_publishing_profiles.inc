@@ -68,3 +68,56 @@ function ott_media_process_media_wysiwyg_token($token) {
 
   return $token_encoded;
 }
+
+/**
+ * Helper function to handle publishing image.
+ *
+ * @param array $image
+ *
+ * @return bool
+ */
+function ott_media_publish_image($image) {
+  $profile = OttPublishingProfile::getProfileById('file_image');
+
+  if (!$profile) {
+    watchdog(
+      OTT_PUBLISHING_WATCHDOG,
+      'Could not load !profile publishing profile.',
+      ['!profile' => "file_image"],
+      WATCHDOG_ERROR
+    );
+    return FALSE;
+  }
+
+  $image_file = file_load($image['fid']);
+
+  if (!$image_file) {
+    watchdog(
+      OTT_PUBLISHING_WATCHDOG,
+      'Could not load image by fid=%fid',
+      ['%fid' => $image['fid']],
+      WATCHDOG_ERROR
+    );
+
+    return FALSE;
+  }
+
+  if ($image_file->type != 'image') {
+    return FALSE;
+  }
+
+  $status = TRUE;
+
+  foreach ($profile->getInstanceTypes() as $instance_type) {
+    $instance_name = ott_services_get_instance_name_by_type($instance_type);
+    // Get instances, primary and secondary (if exists).
+    $instances = ott_services_get_instance($instance_name);
+    foreach ($instances as $instance) {
+      if (!ott_publishing_publish_item($image_file, $profile, $instance)) {
+        $status = FALSE;
+      }
+    }
+  }
+
+  return $status;
+}

@@ -31,7 +31,47 @@ function tv_file_image_ott_publishing_match($entity) {
  *   Mapped and prepared array of video entity fields for publishing.
  */
 function tv_file_image_ott_publishing_process_callback($entity, $profile, $instance) {
-  return [];
+  $data = [
+    // Initialize mostly empty values.
+    'uuid' => $entity->uuid,
+    'itemType' => 'image',
+    'revision' => (int) $entity->vid,
+    'title' => $entity->filename,
+    'href' => file_create_url($entity->uri),
+    'imageStyle' => [],
+    'alt' => $entity->alt,
+    'caption' => '',
+    'categories' => [],
+    'tags' => [],
+    'copyright' => '',
+    'credit' => '',
+    'description' => '',
+    'highRes' => '',
+    'source' => '',
+    'published' => (boolean) $entity->status,
+    'programs' => [],
+  ];
+
+  $wrapper = entity_metadata_wrapper('file', $entity);
+
+  if (!empty($wrapper)) {
+    $caption = $wrapper->field_caption->value();
+    $data['caption'] = !empty($caption['value']) ? $caption['value'] : '';
+
+    $fields = [
+      'copyright' => 'field_copyright',
+      'credit' => 'field_credit',
+      'source' => 'field_source',
+    ];
+
+    foreach ($fields as $key => $field) {
+      if (!empty($wrapper->$field->value())) {
+        $data[$key] = $wrapper->$field->value();
+      }
+    }
+  }
+
+  return $data;
 }
 
 /**

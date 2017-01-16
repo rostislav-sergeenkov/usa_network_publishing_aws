@@ -64,6 +64,20 @@ function tve_publishing_profiles_ott_publishing_profile_info() {
     'mode' => OTT_PUBLISHING_MODE_MANUAL,
   ];
 
+  // TV Show publishing profile.
+  $profiles['show'] = array(
+    'entity type' => 'node',
+    'object label' => t('show'),
+    'control type' => OTT_PUBLISHING_CONTROL_ADVANCED,
+    'form id' => 'tv_show_node_form',
+    'process callback' => 'tv_series_publishing_process_callback',
+    'delete callback' => 'tv_series_publishing_delete_callback',
+    'match callback' => 'tv_series_publishing_match_callback',
+    'response callback' => 'tv_series_ott_publishing_response_callback',
+    'instance types' => ['amazon_sqs'],
+    'mode' => OTT_PUBLISHING_MODE_MANUAL,
+  );
+
   return $profiles;
 }
 

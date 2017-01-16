@@ -146,7 +146,7 @@ function tv_episode_publishing_process_callback($episode, $profile, $instance) {
 function tv_episode_publishing_delete_callback($episode, $profile, $instance) {
   return [
     'uuid' => $episode->uuid,
-    'itemType' => 'episode',
+    'itemType' => tve_publishing_profiles_get_item_type($episode->type),
   ];
 }
 
@@ -174,7 +174,7 @@ function tv_episode_publishing_response_callback($episode, $profile, $instance) 
   $status = TRUE;
   $episode = entity_metadata_wrapper('node', $episode);
   foreach (tv_episode_publishing_get_image_fields() as $field => $usage) {
-    if (! ott_media_publish_image($episode->{$field}->value())) {
+    if (!ott_media_publish_image($episode->{$field}->value())) {
       $status = FALSE;
     }
   }
@@ -185,6 +185,7 @@ function tv_episode_publishing_response_callback($episode, $profile, $instance) 
  * Get image fields array.
  *
  * @return array
+ *   Image fields names.
  */
 function tv_episode_publishing_get_image_fields() {
   return [

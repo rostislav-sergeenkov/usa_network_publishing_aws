@@ -19,7 +19,10 @@
  *   Array of output data.
  */
 function tv_collection_publishing_process_callback($collection, $profile, $instance) {
-  return [];
+  return [
+    'title' => $collection->title,
+    'uuid' => $collection->uuid,
+  ];
 }
 
 /**

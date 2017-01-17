@@ -5,3 +5,5 @@ package = TVE CMS
 version = 7.x-1.0
 dependencies[] = ctools
 dependencies[] = ott_publishing
+files[] = profiles/classes/TvCollection.class.inc
+files[] = profiles/classes/OttPublishingProfileCollection.class.inc

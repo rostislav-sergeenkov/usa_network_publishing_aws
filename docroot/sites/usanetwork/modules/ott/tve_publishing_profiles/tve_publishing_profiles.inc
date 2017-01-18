@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Includes helper functions for TVE Publishing Profiles module.
+ */
+
+/**
  * Processes rich text (form inputs with the support of wysiwyg) values.
  *
  * Searches for a token occurrences and process all of them.
@@ -29,8 +34,7 @@ function ott_media_process_media_wysiwyg_text($text) {
  * @return string
  */
 function ott_media_process_media_wysiwyg_token($token) {
-  $token = str_replace('[[', '', $token);
-  $token = str_replace(']]', '', $token);
+  $token = str_replace(['[[', ']]'], ['', ''], $token);
 
   $token_decoded = drupal_json_decode($token[0]);
 

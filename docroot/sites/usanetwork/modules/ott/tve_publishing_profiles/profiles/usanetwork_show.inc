@@ -303,8 +303,11 @@ function &tv_show_publishing_collections_uuids() {
 }
 
 /**
+ * Publish collections.
+ *
  * @param $series
  * @param $instance
+ *
  * @return bool
  */
 function tv_show_publishing_publish_collections($series, $instance) {
@@ -321,7 +324,7 @@ function tv_show_publishing_publish_collections($series, $instance) {
     ];
     $collection_items = $wrapper->{$field}->value();
     foreach ($collection_items as $item) {
-      if (! is_object($item)) {
+      if (!is_object($item)) {
         $item = node_load($item);
       }
       if (is_object($item)) {

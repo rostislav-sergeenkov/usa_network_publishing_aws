@@ -78,6 +78,19 @@ function tve_publishing_profiles_ott_publishing_profile_info() {
     'mode' => OTT_PUBLISHING_MODE_MANUAL,
   );
 
+  $profiles['season'] = array(
+    'entity type' => 'node',
+    'object label' => t('season'),
+    'control type' => OTT_PUBLISHING_CONTROL_ADVANCED,
+    'form id' => 'tv_season_node_form',
+    'process callback' => 'tv_season_publishing_process_callback',
+    'response callback' => 'tv_season_publishing_response_callback',
+    'delete callback' => 'tv_season_publishing_delete_callback',
+    'match callback' => 'tv_season_publishing_match_callback',
+    'instance types' => ['amazon_sqs'],
+    'mode' => OTT_PUBLISHING_MODE_MANUAL,
+  );
+
   return $profiles;
 }
 

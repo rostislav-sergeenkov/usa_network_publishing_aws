@@ -2,12 +2,17 @@
 
 /**
  * @file
- * Class TvCollection
+ * Includes class TvCollection.
  */
 
+/**
+ * Class TvCollection.
+ */
 class TvCollection {
+
   /**
    * TvCollection constructor.
+   *
    * @param $collection
    */
   public function __construct($collection) {
@@ -17,9 +22,12 @@ class TvCollection {
   }
 
   /**
+   * Returns label.
+   *
    * @return mixed
    */
   public function label() {
     return $this->title;
   }
+
 }
